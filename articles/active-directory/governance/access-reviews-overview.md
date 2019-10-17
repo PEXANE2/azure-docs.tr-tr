@@ -16,12 +16,12 @@ ms.date: 08/05/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe8b50775390d60f75fafeae490e0307912600f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 65def17622f026aa4869a4c60e7cb5146d56c5b0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125272"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389536"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmesi nedir?
 
@@ -58,11 +58,11 @@ Gözden geçirmek istediğinize bağlı olarak, Azure AD erişim gözden geçirm
 | --- | --- | --- | --- |
 | Güvenlik grubu üyeleri</br>Office grubu üyeleri | Belirtilen gözden geçirenler</br>Grup sahipleri</br>Kendi kendini gözden geçirme | Azure AD erişim gözden geçirmeleri</br>Azure AD grupları | Erişim paneli |
 | Bağlı bir uygulamaya atandı | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | Azure AD erişim gözden geçirmeleri</br>Azure AD kurumsal uygulamaları (önizlemede) | Erişim paneli |
-| Azure AD rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portal |
-| Azure Kaynak rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portal |
+| Azure AD rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portalı |
+| Azure Kaynak rolü | Belirtilen gözden geçirenler</br>Kendi kendini gözden geçirme | [Azure AD PıM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure portalı |
 
 
-## <a name="onboard-access-reviews"></a>Erişim gözden geçirmeleri ekle
+## <a name="onboard-access-reviews"></a>Erişim gözden geçirmeleri ekleme
 
 Erişim gözden geçirmeleri eklemek için aşağıdaki adımları izleyin.
 
@@ -97,7 +97,7 @@ Kuruluşunuzda erişim gözden geçirmeleri dağıtmaya hazırsanız, bu adımla
 
 ### <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
 
-Erişim incelemeleriyle etkileşim kuran her kullanıcının ücretli Azure AD Premium P2 lisansı olması gerekir. Örneklere şunlar dahildir:
+Erişim incelemeleriyle etkileşim kuran her kullanıcının ücretli Azure AD Premium P2 lisansı olması gerekir. Örneğin:
 
 - Erişim gözden geçirmesi oluşturan Yöneticiler
 - Erişim gözden geçirmesi gerçekleştiren Grup sahipleri
@@ -113,7 +113,7 @@ Sahip olmanız gereken lisansların sayısını belirlemenize yardımcı olacak 
 | Yönetici, 500 Kullanıcıyla Grup A 'nın erişim incelemesini oluşturur. 3 Grup sahibini gözden geçirenler olarak atar. | Her grup sahibine ait yönetici + 3 Lisansı için gözden geçirenler olarak 1 lisans. | 4 |
 | Yönetici, 500 Kullanıcıyla Grup A 'nın erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcı için yönetici + 500 lisansı için kendi kendini gözden geçirenler olarak lisanslayın. | 501 |
 | Yönetici, 5 Kullanıcı ve 25 Konuk kullanıcıyla Grup B 'ye yönelik bir erişim incelemesi oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcı için yönetici + 5 Lisansı için kendi kendini gözden geçirenler olarak lisanslayın.<br/>(Konuk kullanıcılar gereken 1:5 oranına göre ele alınmıştır) | 6 |
-| Yönetici, 5 Kullanıcı ve 108 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcıya yönelik yönetici + 5 Lisansı, gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak şekilde, her bir kullanıcı için kendi kendine gözden geçirenler ve 16 ek lisans olarak lisanslayın.<br/>5\*6 = 30 Konuk kullanıcıyı kapsayan 1 + 5 = 6 lisans. Kalan (108-5\*6) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
+| Yönetici, 5 Kullanıcı ve 108 Konuk kullanıcıyla Grup C 'nin erişim incelemesini oluşturur. Kendi kendine İnceleme yapar. | 1 her kullanıcıya yönelik yönetici + 5 Lisansı, gerekli 1:5 oranında tüm 108 Konuk kullanıcıları kapsayacak şekilde, her bir kullanıcı için kendi kendine gözden geçirenler ve 16 ek lisans olarak lisanslayın.<br/>1 + 5 = 6 lisans, 5 @ no__t-06 = 30 Konuk kullanıcıyı kapsar. Kalan (108-5 @ no__t-06) = 78 Konuk kullanıcılar için 78/5 = 16 ek lisans gerekir. Bu nedenle Total, 6 + 16 = 22 lisans gerekir. | 22 |
 
 Kullanım için lisansları atama hakkında daha fazla bilgi için, bkz. [Azure Active Directory portalını kullanarak lisans atama veya kaldırma](../fundamentals/license-users-groups.md).
 

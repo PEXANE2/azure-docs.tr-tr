@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713b43f720e3bccae3b9c6457a3317427fb3fc1a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960049"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -37,7 +37,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Çoklu oturum açmayı etkinleştirmek için Microsoft Azure Active Directory hesabınızı Atlaseli JIRA sunucusu ile kullanın. Bu sayede, tüm kuruluşunuz kullanıcıları JIRA uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -77,7 +77,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 JıRA SAML SSO 'yu Microsoft tarafından Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize JıRA SAML SSO 'SU eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -113,7 +113,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Tanımlayıcı** kutusuna şu kalıbı kullanarak bir URL yazın: `https://<domain:port>/`
 
-    ,. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<domain:port>/plugins/servlet/saml/auth`
+    c. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Adlandırılmış bir URL olması durumunda bağlantı noktası isteğe bağlıdır. Bu değerler, Öğreticinin ilerleyen kısımlarında açıklanan Jira eklentisinin yapılandırması sırasında alınır.
@@ -132,7 +132,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'u tıklatın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -214,8 +214,8 @@ Bu bölümde, Microsoft tarafından JıRA SAML SSO 'SU erişimi vererek Azure ç
     1. Yalnızca Azure AD kimlik bilgileri aracılığıyla oturum açmak istiyorsanız **Azure oturum açmaya zorla** onay kutusunu etkinleştirin.
     
        > [!Note]
-       >Oturum açma sayfasında Azure oturum açma özelliği etkinken yönetici oturumu açma için varsayılan oturum açma formunu etkinleştirmek üzere tarayıcı URL 'sinde sorgu parametresini ekleyin.
-       > `https://<domain:port>/login.action?force_azure_login=false`
+       > Oturum açma sayfasında Azure oturum açma özelliği etkinken yönetici oturumu açma için varsayılan oturum açma formunu etkinleştirmek üzere tarayıcı URL 'sinde sorgu parametresini ekleyin.
+       > `https://<domain:port>/login.jsp?force_azure_login=false`
 
     1. Ayarları kaydetmek için **Kaydet** düğmesine tıklayın.
 
@@ -250,11 +250,11 @@ Azure AD kullanıcılarının JIRA şirket içi sunucusunda oturum açmasını s
 
     b. **Tam ad** metin kutusuna B. Simon gibi kullanıcının tam adını yazın.
 
-    ,. Kullanıcı **adı** metin kutusuna B.simon@contoso.com gibi kullanıcının e-postasını yazın.
+    c. Kullanıcı **adı** metin kutusuna B.simon@contoso.com gibi kullanıcının e-postasını yazın.
 
-    TID. **Parola** metin kutusuna kullanıcının parolasını yazın.
+    d. **Parola** metin kutusuna kullanıcının parolasını yazın.
 
-    a. **Kullanıcı oluştur**' a tıklayın.
+    e. **Kullanıcı oluştur**' a tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

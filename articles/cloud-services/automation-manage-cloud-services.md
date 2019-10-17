@@ -2,23 +2,20 @@
 title: Azure Otomasyonu 'Nu kullanarak Azure Cloud Services yönetme | Microsoft Docs
 description: Azure Otomasyonu hizmetinin Azure Cloud Services 'ı ölçekte yönetmek için nasıl kullanılabileceği hakkında bilgi edinin.
 services: cloud-services, automation
-documentationcenter: ''
 author: jodoglevy
 manager: timlt
 editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945494"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439081"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak Azure Cloud Services yönetme
 Bu kılavuz size Azure Otomasyonu hizmetini ve Azure bulut hizmetlerinizin yönetimini basitleştirmek için nasıl kullanılabileceğini tanıtacaktır.
@@ -43,4 +40,3 @@ Azure Otomasyonu ile ilgili temel bilgileri ve Azure bulut hizmetlerini yönetme
 
 * [Azure Otomasyonu genel bakış](../automation/automation-intro.md)
 * [İlk runbook’um](../automation/automation-first-runbook-graphical.md)
-* [Azure Otomasyonu öğrenme Haritası](https://azure.microsoft.com/documentation/learning-paths/automation/)

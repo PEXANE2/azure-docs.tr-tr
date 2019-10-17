@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266866"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390554"
 ---
 ## <a name="benefits"></a>Avantajlar 
 
@@ -42,7 +42,7 @@ Yüksek kullanılabilirlik için birden çok sanal makine dağıtmanız gerekir 
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>Hata yalıtımı için Kullanılabilirlik Alanları kullanma
 
-Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Tek bir kullanılabilirlik bölgesinde bir konak grubu oluşturulur. Oluşturulduktan sonra tüm konaklar bu bölgeye yerleştirilir. Bölgeler arasında yüksek kullanılabilirlik elde etmek için birden çok konak grubu oluşturmanız (her bölge için bir tane) ve konaklarınızı uygun şekilde yaymanız gerekir.
+Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Tek bir kullanılabilirlik bölgesinde bir konak grubu oluşturulur. Oluşturulduktan sonra tüm konaklar bu bölgeye yerleştirilir. Bölgeler arasında yüksek kullanılabilirlik elde etmek için birden çok konak grubu oluşturmanız (her bölge için bir tane) ve konaklarınızı uygun şekilde yaymanız gerekir.
 
 Bir kullanılabilirlik bölgesine bir konak grubu atarsanız, bu konakta oluşturulan tüm VM 'Lerin aynı bölgede oluşturulması gerekir.
 
@@ -71,7 +71,7 @@ Sanal makinelerinizi destekleyen altyapı, güvenilirliği, performansı ve güv
 > [!NOTE]
 >  Bakım denetimi şu anda sınırlı bir önizleme aşamasındadır ve bir ekleme işlemi gerektirir. Bir [aday anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)göndererek bu önizleme için geçerlidir.
 
-## <a name="capacity-considerations"></a>Kapasite konuları
+## <a name="capacity-considerations"></a>Kapasite Konuları
 
 Adanmış bir ana bilgisayar sağlandıktan sonra Azure bu uygulamayı fiziksel sunucuya atar. Bu, sanal makinenizin sağlanması gerektiğinde kapasitenin kullanılabilirliğini garanti eder. Azure, ana bilgisayarınız için fiziksel bir sunucu seçmek üzere bölgedeki (veya bölgedeki) tüm kapasiteyi kullanır. Ayrıca, müşterilerin küme içindeki boş alan tükenmeden ayrılmış ana bilgisayar parmak izini büyümesi bekleneceği anlamına gelir.
 
@@ -82,6 +82,8 @@ Bölge başına adanmış konaklar için 3000 vCPU varsayılan kota sınırı va
 ![Portalda kullanım ve Kotalar sayfasının ekran görüntüsü](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 Daha fazla bilgi için bkz. [sanal makine vCPU kotaları](/azure/virtual-machines/windows/quotas).
+
+Ücretsiz deneme ve MSDN aboneliklerinin Azure ayrılmış konakları için kotası yoktur.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -97,11 +99,11 @@ Daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması]
 
 Bir konak için bir SKU tanımlanmıştır ve VM boyut serisini ve türünü temsil eder. Aynı boyut serisinde olduğu sürece, tek bir konak içinde farklı boyutlardaki birden fazla VM 'yi karıştırabilirsiniz. Bu tür, bölgede şu anda kullanılabilir donanım oluşturma türüdür.
 
-Aynı `types` VM serisinin farklı olması farklı CPU satıcılarından ve farklı CPU neslerine ve çekirdek sayısına sahip olacaktır.
+Aynı VM Serisi için farklı `types` farklı CPU satıcılarından olacaktır ve farklı CPU nesilleri ve çekirdek sayısına sahip olur.
 
 Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
-Önizleme sırasında, aşağıdaki konak SKU\types 'ı destekliyoruz:  DSv3_Type1 ve ESv3_Type1
+Önizleme sırasında şu ana bilgisayar SKU\types destekliyoruz: DSv3_Type1 ve ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Ana bilgisayar yaşam döngüsü
@@ -109,10 +111,10 @@ Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| İşlevsel Durum   | Açıklama       |
+| Sistem durumu   | Açıklama       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |
-| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. Etkinleştirilirse, sanal makineleriniz sağlıklı donanıma karşı hizmet olarak çalışır. `autoReplaceOnFailure` Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
+| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. @No__t-0 etkinse sanal makineleriniz, sağlıklı donanıma karşı *hizmet* olarak çalışır. Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
 | Konak serbest bırakıldı  | Tüm sanal makineler konaktan kaldırıldı. Bu ana bilgisayar için artık bu konak için ücret alınmaz çünkü donanım, döndürme dışında bırakıldı.   |
 

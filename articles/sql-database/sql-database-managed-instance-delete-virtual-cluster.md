@@ -10,23 +10,24 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: f6e0b55ad2fbd9b4c45dbd1facaebd4750314c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567533"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431297"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğini sildikten sonra bir alt ağı silme
 
 Bu makalede, içinde bulunan son Azure SQL veritabanı yönetilen örneğini sildikten sonra bir alt ağın el ile nasıl silineceği hakkında yönergeler verilmektedir.
 
-SQL veritabanı, silinen yönetilen örneği içeren bir [sanal küme](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) kullanır. Aynı alt ağda hızlı bir şekilde yönetilen örnekler oluşturmanıza olanak tanımak için, sanal küme örnek silinmeden 12 saat sonra devam ediyor. Boş bir sanal kümenin tutulması ücretsizdir. Bu süre boyunca sanal kümeye ilişkilendirilmiş alt ağa silinemez.
+Yönetilen örnekler [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)dağıtılır. Her sanal küme bir alt ağla ilişkilendirilir. Aynı alt ağda yönetilen örnekleri daha hızlı bir şekilde oluşturmanıza olanak tanımak için sanal küme, son örnek silinmeden sonra 12 saat sonra tasarıma devam ediyor. Boş bir sanal kümenin tutulması ücretsizdir. Bu süre boyunca sanal kümeye ilişkilendirilmiş alt ağa silinemez.
 
-12 saat beklemek istemiyorsanız ve sanal kümeyi ve alt ağını hemen silmeyi tercih ediyorsanız, bunu el ile yapabilirsiniz. Azure portal veya Sanal kümeler API 'sini kullanarak sanal kümeyi el ile silin.
+12 saat beklemek istemiyorsanız ve sanal kümeyi ve alt ağını daha erken silmeyi tercih ediyorsanız, bunu el ile yapabilirsiniz. Azure portal veya Sanal kümeler API 'sini kullanarak sanal kümeyi el ile silin.
 
-> [!NOTE]
-> Silme işleminin başarılı olabilmesi için sanal kümenin yönetilen örnek içermemesi gerekir.
+> [!IMPORTANT]
+> - Silme işleminin başarılı olabilmesi için sanal kümenin yönetilen örnek içermemesi gerekir. 
+> - Sanal bir kümeyi silme işlemi, yaklaşık 1,5 saat boyunca uzun süredir çalışan bir işlemdir (Bu işlem, sanal kümenin portalda hala görülebilmesi için bkz. sanal küme silme zamanı için [yönetilen örnek yönetimi işlemleri](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) ) işlem tamamlandı.
 
 ## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Azure portal sanal kümeyi silme
 
@@ -38,10 +39,10 @@ Silmek istediğiniz sanal kümeyi bulduktan sonra bu kaynağı seçin ve **Sil**
 
 ![Azure portal Sanal kümeler panosu, silme seçeneği vurgulanmış şekilde ekran görüntüsü](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Azure portal bildirimler alanında, sanal kümenin silindiğini onaylamanız gösterilmektedir. Sanal kümenin başarıyla silinmesi, alt ağı yeniden kullanım için hemen yayınlar.
+Azure portal bildirimler, sanal kümeyi silme isteğinin başarıyla gönderildiğini belirten bir onay gösterecektir. Silme işleminin kendisi, sanal kümenin portalda hala görünebileceği yaklaşık 1,5 saat boyunca sona acaktır. İşlem tamamlandıktan sonra, sanal küme artık görünür olmayacaktır ve bununla ilişkili alt ağ yeniden kullanım için serbest bırakılır.
 
 > [!TIP]
-> Sanal kümede gösterilen yönetilen örnek yoksa ve sanal kümeyi silemiyorsa devam eden bir devam eden örnek dağıtımına sahip olduğunuzdan emin olun. Bu, başlatılan ve iptal edilen dağıtımları devam etmektedir. Örnek dağıtılan kaynak grubunun dağıtımlar sekmesini gözden geçirme işlemi, sürmekte olan dağıtımları gösterir. Bu durumda, dağıtımın tamamlanmasını beklemek için, yönetilen örneği ve sonra sanal kümeyi silin.
+> Sanal kümede gösterilen yönetilen örnek yoksa ve sanal kümeyi silemiyorsa devam eden bir devam eden örnek dağıtımına sahip olduğunuzdan emin olun. Bu, başlatılan ve iptal edilen dağıtımları devam etmektedir. Bunun nedeni, bu işlemlerin hala silme işleminden sonra sanal küme kilitlemeyi kullanacaktır. Örnek dağıtılan kaynak grubunun dağıtımlar sekmesini gözden geçirme işlemi, sürmekte olan dağıtımları gösterir. Bu durumda, dağıtımın tamamlanmasını bekleyin, yönetilen örneği ve sonra sanal kümeyi silin.
 
 ## <a name="delete-virtual-cluster-by-using-the-api"></a>Sanal kümeyi API kullanarak silme
 

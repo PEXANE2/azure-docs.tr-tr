@@ -4,14 +4,14 @@ description: Azure Cosmos DB'deki çakışmaları yönetme
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/15/2019
 ms.author: mjbrown
-ms.openlocfilehash: c58828fd8ed0de73c03e9e741d14705ad88b1333
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c62fcc81eb3b045d3b4233e1bb3770ecb9865b3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093222"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388078"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
 
@@ -19,7 +19,7 @@ ms.locfileid: "70093222"
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Son yazıcı oluşturma-WINS çakışma çözümü ilkesi
 
-Bu örnekler, son yazıcı WINS çakışma çözümleme ilkesiyle bir kapsayıcının nasıl ayarlanacağını gösterir. Son-yazıcı için varsayılan yol, zaman damgası alanı veya `_ts` özelliğidir. SQL API 'SI için bu, sayısal türde Kullanıcı tanımlı bir yola de ayarlanabilir. Çakışma durumunda en yüksek değer kazanır. Yol ayarlanmamışsa veya geçersizse, varsayılan olarak `_ts`olur. Bu ilkeyle çözümlenen çakışmalar çakışma akışında gösterilmez. Bu ilke, tüm API 'Ler tarafından kullanılabilir.
+Bu örnekler, son yazıcı WINS çakışma çözümleme ilkesiyle bir kapsayıcının nasıl ayarlanacağını gösterir. Son-yazıcı için varsayılan yol, zaman damgası alanı veya `_ts` özelliğidir. SQL API 'SI için bu, sayısal türde Kullanıcı tanımlı bir yola de ayarlanabilir. Çakışma durumunda en yüksek değer kazanır. Yol ayarlanmamışsa veya geçersizse, varsayılan olarak `_ts` olur. Bu ilkeyle çözümlenen çakışmalar çakışma akışında gösterilmez. Bu ilke, tüm API 'Ler tarafından kullanılabilir.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -107,15 +107,15 @@ Bu örnekler çakışmayı çözümlemek için saklı yordama içeren özel çak
 
 Özel çakışma çözümü saklı yordamları aşağıda gösterilen işlev imzası kullanılarak uygulanmalıdır. İşlev adının, saklı yordamı kapsayıcı ile kaydedilirken kullanılan adla eşleşmesi gerekmez, ancak adlandırmayı basitleştirir. Bu saklı yordam için uygulanması gereken parametrelerin açıklaması aşağıdadır.
 
-- **ıncomingıtem**: Çakışmaların üretilerek işlemede eklenen veya güncellenen öğe. , Silme işlemleri için null.
-- **Existingıtem**: Şu anda taahhüt edilen öğe. Bu değer bir güncelleştirmede null değil ve INSERT veya delete için null.
-- **Isınkaldırılma**: Incomingıtem 'ın daha önce silinmiş bir öğeyle çakışıp çakışmadığını gösteren Boolean. Doğru olduğunda, existingItem da null olur.
-- **Conflictingıtems**: Kapsayıcıda, ID veya diğer benzersiz dizin özelliklerindeki ıncomingıtem ile çakışan tüm öğelerin taahhüt edilen sürümünün dizisi.
+- **ıncomingıtem**: çakışmaların üretilerek işlemede eklenen veya güncellenen öğe. , Silme işlemleri için null.
+- **existingıtem**: Şu anda taahhüt edilen öğe. Bu değer bir güncelleştirmede null değil ve INSERT veya delete için null.
+- **ı# kaldırıldı**: ıncomingıtem 'ın daha önce silinmiş bir öğeyle çakışıp çakışmadığını belirten Boolean. Doğru olduğunda, existingItem da null olur.
+- **Conflictingıtems**: KAPSAYıCıDA, ID veya diğer benzersiz dizin özelliklerindeki ıncomingıtem ile çakışan tüm öğelerin taahhüt edilen sürümünün dizisi.
 
 > [!IMPORTANT]
 > Her türlü saklı yordamda olduğu gibi, özel bir çakışma çözümü yordamı aynı bölüm anahtarına sahip tüm verilere erişebilir ve çakışmaları çözümlemek için herhangi bir ekleme, güncelleştirme veya silme işlemi gerçekleştirebilir.
 
-Bu örnek saklı yordam, `/myCustomId` yoldan en düşük değeri seçerek çakışmaları çözer.
+Bu örnek saklı yordam, `/myCustomId` yolundan en düşük değeri seçerek çakışmaları çözer.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -222,7 +222,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
+Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK’sı
 
@@ -235,7 +235,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
+Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -254,7 +254,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
+Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK’sı
 
@@ -270,7 +270,7 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-Kapsayıcınız oluşturulduktan sonra `resolver` saklı yordamı oluşturmanız gerekir.
+Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Özel bir çakışma çözümleme ilkesi oluşturma
 
@@ -363,7 +363,7 @@ FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.co
 ### <a id="read-from-conflict-feed-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
-FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictIterator();
+FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictQueryIterator();
 while (conflictFeed.HasMoreResults)
 {
     FeedResponse<ConflictProperties> conflicts = await conflictFeed.ReadNextAsync();

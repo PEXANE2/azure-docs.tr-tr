@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API başvurusu: Yapılandırmayı ayarla | Microsoft Docs'
-description: Durum İzleyicisi v2 API başvurusu. Set-Applicationınsiısmonitoringconfig. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: 'Azure Application Insights Agent API başvurusu: set config | Microsoft Docs'
+description: Aracı API başvurusunu Application Insights. Set-Applicationınsiısmonitoringconfig. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6d93be5b01be63a75041b939f6b8deb9106c4262
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2ab941b5587a8836f1e472fbce3966b12bfa1e11
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200437"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388251"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>Durum İzleyicisi v2 API 'SI: Set-Applicationınsiısmonitoringconfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights aracı API 'SI: set-Applicationınsiısmonitoringconfig
 
 Bu belgede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
@@ -43,11 +43,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>İzleme anahtarı eşleme ile örnek
 Bu örnekte:
-- `MachineFilter``'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
-- `AppFilter='WebAppExclude'`bir `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
-- `AppFilter='WebAppOne'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- `AppFilter='WebAppTwo'`belirtilen uygulamaya benzersiz bir izleme anahtarı atar.
-- Son olarak `AppFilter` , önceki kurallarla `'.*'` eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için joker karakteri de kullanır.
+- `MachineFilter` `'.*'` joker karakterini kullanarak geçerli bilgisayarla eşleşir.
+- `AppFilter='WebAppExclude'` `null` izleme anahtarı sağlar. Belirtilen uygulama gösterilmez.
+- `AppFilter='WebAppOne'`, belirtilen uygulamayı benzersiz bir izleme anahtarı olarak atar.
+- `AppFilter='WebAppTwo'`, belirtilen uygulamayı benzersiz bir izleme anahtarı olarak atar.
+- Son olarak, `AppFilter`, önceki kurallarla eşleşmeyen tüm Web uygulamalarını eşleştirmek ve varsayılan bir izleme anahtarı atamak için `'.*'` joker karakterini de kullanır.
 - Okunabilirlik için boşluklar eklenir.
 
 ```powershell
@@ -67,7 +67,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
 **Gerekli.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
-' İ ayarlayarak `MachineFilter`, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
+@No__t-0 ' i ayarlayarak, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.
@@ -89,7 +89,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 **Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Çıktı
 
 Varsayılan olarak, çıkış yok.
 
@@ -132,7 +132,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 - Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
 - İzleme ve günlük çağrısı ekleyebilmeniz için [Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md)
  
- Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
  - Ayarlarınızın doğru kaydedildiğinden emin olmak için [yapılandırmayı alın](status-monitor-v2-api-get-config.md) .
  - İzlemeyi İnceleme [durumunu alın](status-monitor-v2-api-get-status.md) .

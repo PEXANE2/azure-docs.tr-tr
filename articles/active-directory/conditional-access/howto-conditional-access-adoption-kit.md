@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075288"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430044"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Azure AD koşullu erişimini benimseme
 
@@ -30,7 +30,7 @@ Azure AD koşullu erişim kullanmanın başlıca avantajları şunlardır:
 
 * **Üretkenliği artırın:** Koşullu erişim (CA) ilkeleri, kullanıcıların MFA 'yı kullanması, erişimin engellenmesi veya güvenilir bir cihaz kullanması için gerekli olan noktayı hedeflemesini sağlar. Örneğin, yalnızca kullanıcıların şirket ağı kapalıyken bir uygulamaya MFA kullanmasını gerektiren ilkeler belirleyebilirsiniz. MFA isteklerini azaltmak, kullanıcıların her oturum açtıklarında MFA 'ya göre daha üretken olmalarını sağlar. Ayrıca, Azure AD koşullu erişim, her kullanıcı için ilke belirtmenize ve ayrıca uygulamaya özgü ilkeler oluşturmanıza olanak sağlar.
 * **Riski yönetin:** Koşullu erişim ilkelerinin etkinleştirilmesi, size bulut ölçeğinde kimlik koruması, risk tabanlı erişim denetimi özellikleri ve yerel Multi-Factor Authentication desteği sağlar. Kimlik koruması ile, koşullu erişim, bir uygulamaya erişimin ne zaman engellendiğini veya Gated i tanımlamanızı sağlar.
-* **Adres uyumluluğu ve Idare:** Uygulama için erişim isteklerini ve onaylarını denetleme ve genel uygulama kullanımını anlama, gerçekleştirilen her uygulama erişimi isteği için yerel denetim günlüklerini desteklediğinden Azure AD ile daha kolay. Denetim, istek sahibi kimliği, istenen tarih, iş doğrulama, onay durumu ve onaylayan kimliğini içerir. Bu veriler bir API 'den de bulunur, bu da bu verilerin içe aktarılması işlemini bir güvenlik olayı ve olay Izleme (SıEM) sistemi olarak kullanılabilmesini sağlar.
+* **Adres uyumluluğu ve idare:** Uygulama için erişim isteklerini ve onaylarını denetleme ve genel uygulama kullanımını anlama, gerçekleştirilen her uygulama erişimi isteği için yerel denetim günlüklerini desteklediğinden Azure AD ile daha kolay. Denetim, istek sahibi kimliği, istenen tarih, iş doğrulama, onay durumu ve onaylayan kimliğini içerir. Bu veriler bir API 'den de bulunur, bu da bu verilerin içe aktarılması işlemini bir güvenlik olayı ve olay Izleme (SıEM) sistemi olarak kullanılabilmesini sağlar.
 * **Maliyeti yönetme:** Erişim ilkelerini Azure AD 'ye taşımak, koşullu erişim için Active Directory Federasyon Hizmetleri (AD FS) (ADFS) gibi özel veya şirket içi çözümlere karşı, bu altyapıyı çalıştırmanın maliyetini azaltarak azaltır.
 
 ## <a name="customer-case-studies"></a>Müşteri örnek olay incelemeleri
@@ -45,14 +45,14 @@ Azure AD koşullu erişim 'deki müşteri ve iş ortağı deneyimleri hakkında 
 
 ## <a name="announcements"></a>Duyurular
 
-Azure AD iyileştirmeleri düzenli olarak alır. En son gelişmeleri güncel kalmak için bkz. [Azure Active Directory yenilikler nelerdir?](../fundamentals/whats-new.md)
+Azure AD, iyileştirmeleri sürekli olarak alır. En son gelişmeleri güncel kalmak için bkz. [Azure Active Directory yenilikler nelerdir?](../fundamentals/whats-new.md)
 
 Teknoloji Topluluğu ve Microsoft Identity bölümünün son blogları:
 
 * 24 Eylül 2018, [Azure Databricks Azure Active Directory Koşullu erişim](https://azure.microsoft.com/updates/azure-active-directory-conditional-access-in-azure-databricks/)
 * 21 Eylül 2018, [Azure AD koşullu erişim özel denetimleri genel önizlemede](https://azure.microsoft.com/updates/azure-ad-conditional-access-custom-controls-are-in-public-preview/)
 * 21 Eylül 2018, [Microsoft Cloud App Security ile sınırlı erişim Için Azure AD koşullu erişim desteği artık kullanılabilir](https://azure.microsoft.com/updates/azure-ad-conditional-access-support-for-limited-access-with-microsoft-cloud-app-security-is-now-available/)
-* 21 Eylül 2018, [Azure AD koşullu erişim: İOS/Android platformları için Managed Browser desteği şimdi önizlemede](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
+* 21 Eylül 2018, [Azure AD koşullu erişim: iOS/Android platformları Için Managed Browser desteği şimdi önizlemede](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
 * 21 Eylül 2018 ' de, [Ülke kodları Için Azure AD koşullu erişimi genel önizlemede](https://azure.microsoft.com/updates/azure-ad-conditional-access-for-country-codes-is-in-public-preview/)
 * 21 Eylül 2018, [Azure AD kullanım koşulları artık kullanıma sunuldu](https://azure.microsoft.com/updates/azure-ad-terms-of-use-now-available/)
 
@@ -69,7 +69,6 @@ Azure AD koşullu erişim işlevlerinin nasıl yapılacağını öğrenmek için
 
 Ayrıca, Azure Active Directory ile tümleştirilmiş tüm hizmetlere erişimi korumaya yönelik rehberlik için aşağıdaki bağlantılara başvurun.
 
-* [Taban çizgisi koruması (Önizleme) nedir?](baseline-protection.md) Temel koruma, Azure Active Directory ortamınızda en azından güvenlik düzeyi etkinleştirilmiş güvenlik düzeyini almanızı sağlar.
 * [Kimlik ve cihaz erişim yapılandırması](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations). Önceden tanımlanmış koşullu erişim ilkeleri ve ilgili yetenekler dahil olmak üzere önerilen bir ortamı ve yapılandırmayı uygulayarak Enterprise Mobility + Security ürünleri aracılığıyla bulut hizmetlerine güvenli erişimin nasıl yapılandırılacağını açıklar.
 * [Koşullu erişim ayarları başvurusunu Azure Active Directory](technical-reference.md). Oluşturacağınızı
    * Hangi uygulamalar koşullu erişimi kullanır?
@@ -91,13 +90,13 @@ Ayrıca, Azure Active Directory ile tümleştirilmiş tüm hizmetlere erişimi k
 
 [Pluralsight.com](https://www.pluralsight.com/)üzerinde aşağıdaki koşullu erişim kurslarına ve daha fazlasına başvurun:
 
-* Pluralsight.com: [Microsoft Azure 'da kimlik yönetimini tasarlama](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
+* Pluralsight.com: [Microsoft Azure 'Da kimlik yönetimini tasarlama](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
    * "Bu kurs, Azure AD ile kimlik yönetimi çözümünüzü tasarlamak için bilmeniz gereken önemli öğelerde size kılavuzluk eder." Azure AD koşullu erişimi, "Azure AD ile roller ve Access Control kullanımı" modülünden alınmıştır.
 
-* Pluralsight.com: [Microsoft Azure için tasarım kimlik doğrulaması](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
+* Pluralsight.com: [Microsoft Azure Için tasarım kimlik doğrulaması](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
    * "Bu kurs, tüm bulut kimlik doğrulama gereksinimlerinizi çözümlemek için Azure AD 'nin nasıl kullanılacağını açıklar." Azure AD koşullu erişimi, "farklı senaryolar için kimlik doğrulama gereksinimleri" modülünün kapsamına alınmıştır.
 
-* Pluralsight.com: [Microsoft Azure için tasarım yetkilendirmesi](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
+* Pluralsight.com: [Microsoft Azure Için tasarım yetkilendirmesi](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
    * "Bu kurs, Azure ve Azure AD ile kullanılabilir yetkilendirme seçeneklerini öğretir." Azure AD koşullu erişimi, "Azure Resource Manager ve Azure AD ile yetkilendirme" modülü kapsamında ele alınmıştır.
 
 ### <a name="books"></a>Kitaplar
@@ -108,7 +107,7 @@ Ayrıca, Azure Active Directory ile tümleştirilmiş tüm hizmetlere erişimi k
 * Wiley- [Microsoft Azure altyapı hizmetleri](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
    * "Microsoft Azure kullanan ortamları anlamak, değerlendirmek, dağıtmak ve sürdürmek için ihtiyacınız olan her şey."
 
-## <a name="white-papers"></a>Teknik incelemeler
+## <a name="white-papers"></a>Teknik makaleler
 
 * 18 Aralık 2018 ' de yayımlandı, [Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma](../authentication/concept-resilient-controls.md)
    * Bu belge, bir kuruluşun öngörülemeyen kesintiler sırasında kilitleme riskini azaltmak için esnekliği sağlamak üzere benimseyebileceği stratejiler hakkında rehberlik sağlar.
@@ -116,7 +115,7 @@ Ayrıca, Azure Active Directory ile tümleştirilmiş tüm hizmetlere erişimi k
 * 18 Eylül 2018 ' de yayınlanan, [uygulamaları Azure Active Directory geçirme kaynakları](../manage-apps/migration-resources.md)
    * Bu Teknik İnceleme, uygulama erişimini ve kimlik doğrulamasını Azure Active Directory (Azure AD) ile geçirmenize yardımcı olacak kaynakların bir listesini içerir.
 
-* 12 Temmuz 2018 [' de yayımlandı Azure Güvenlik ve uyumluluk şeması: Birleşik Krallık RESMI Iş yükleri için PaaS Web uygulaması barındırma](../../security/blueprints/ukofficial-paaswa-overview.md)
+* 12 Temmuz 2018 ' den yayımlandı [Azure Güvenlik ve uyumluluk şeması: Birleşik KRALLıK resmi Iş yükleri Için PaaS Web uygulaması barındırma](../../security/blueprints/ukofficial-paaswa-overview.md)
    * Azure şemaları, acize veya uyumluluk gereksinimlerine sahip senaryolara çözüm sunmak için bulut tabanlı mimariler dağıtan rehberlik belgelerinden ve otomasyon şablonlarından oluşur.
 
 ## <a name="guidance-for-it-administrators"></a>BT yöneticileri için rehberlik
@@ -129,26 +128,26 @@ Başlamanıza yardımcı olacak yararlı bağlantılar aşağıda verilmiştir:
 
 * [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](best-practices.md)
 * [Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın](../governance/conditional-access-exclusion.md)
-* [Nasıl Yapılır: Koşullu erişim dağıtımınızı Azure Active Directory planlayın](plan-conditional-access.md)
-* [Hızlı Başlangıç: Koşullu erişim Azure Active Directory belirli uygulamalar için MFA gerektir](app-based-mfa.md)
-* [Hızlı Başlangıç: Bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşullarını gerektir](require-tou.md)
-* [Hızlı Başlangıç: Koşullu erişim Azure Active Directory bir oturum riski algılandığında erişimi engelleyin](app-sign-in-risk.md)
+* [Nasıl yapılır: Azure Active Directory 'de koşullu erişim dağıtımınızı planlayın](plan-conditional-access.md)
+* [Hızlı başlangıç: koşullu erişim Azure Active Directory belirli uygulamalar için MFA gerektirme](app-based-mfa.md)
+* [Hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilecek kullanım koşullarını gerektir](require-tou.md)
+* [Hızlı başlangıç: koşullu erişim Azure Active Directory bir oturum riski algılandığında erişimi engelleyin](app-sign-in-risk.md)
 * [Azure AD koşullu erişim SSS](faqs.md)
    * Diğer sorular için [MSDN forumunu](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure)da görüntüleyebilirsiniz.
    * Bir sorunun yanıtını bulamazsanız, destek ekiplerimiz size daha fazla yardımcı olmak için her zaman kullanılabilir. [Microsoft desteğine başvurun](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support)' i kullanın.
 
 ### <a name="tutorials"></a>Öğreticiler
 
-* [**Hızlı başlangıç Koşullu erişim Azure Active Directory belirli uygulamalar için MFA gerektir**](app-based-mfa.md)
+* [**Hızlı başlangıç: koşullu erişim Azure Active Directory belirli uygulamalar için MFA gerektirme**](app-based-mfa.md)
    * Bu hızlı başlangıçta, ortamınızdaki seçili bir bulut uygulaması için çok faktörlü kimlik doğrulaması gerektiren bir Azure AD koşullu erişim ilkesinin nasıl yapılandırılacağı gösterilmektedir.
 
-* [**Hızlı başlangıç Bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşullarını gerektir**](require-tou.md)
+* [**Hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilecek kullanım koşullarını gerektir**](require-tou.md)
    * Bu hızlı başlangıçta, ortamınızdaki seçili bir bulut uygulaması için ToU 'nın kabul edilmesi gereken bir Azure AD koşullu erişim ilkesinin nasıl yapılandırılacağı gösterilmektedir.
 
-* [**Hızlı başlangıç Koşullu erişim Azure Active Directory bir oturum riski algılandığında erişimi engelleyin**](app-sign-in-risk.md)
+* [**Hızlı başlangıç: koşullu erişim Azure Active Directory bir oturum riski algılandığında erişimi engelleyin**](app-sign-in-risk.md)
    * Bu hızlı başlangıçta, yapılandırılmış bir oturum açma risk düzeyi algılandığında oturum açmayı engelleyen bir koşullu erişim ilkesinin nasıl yapılandırılacağı gösterilmektedir.
 
-* [Öğretici: **Azure portal çok faktörlü kimlik doğrulaması gerektiren klasik bir ilkeyi geçirme**](policy-migration-mfa.md)
+* [Öğretici: **Azure Portal çok faktörlü kimlik doğrulaması gerektiren klasik bir Ilkeyi geçirme**](policy-migration-mfa.md)
    * Bu öğreticide, bir bulut uygulaması için Multi-Factor Authentication (MFA) gerektiren klasik bir ilkenin nasıl geçirileceği gösterilmektedir.
 
 ## <a name="end-user-readiness-and-communication"></a>Son Kullanıcı hazırlığı ve iletişim

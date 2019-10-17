@@ -1,6 +1,6 @@
 ---
-title: Azure Durum İzleyicisi v2 sorunlarını giderme ve bilinen sorunlar | Microsoft Docs
-description: Durum İzleyicisi v2 ve sorun giderme örnekleri ile ilgili bilinen sorunlar. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Application Insights Agent sorunlarını giderme ve bilinen sorunlar | Microsoft Docs
+description: Application Insights Aracısı ve sorun giderme örnekleri ile ilgili bilinen sorunlar. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ab1ce01c41679c6ff686ab37692d3b8e9167a4f8
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058285"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388198"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Durum İzleyicisi v2 sorunlarını giderme
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent sorunlarını giderme (eski adıyla Durum İzleyicisi v2)
 
 İzlemeyi etkinleştirdiğinizde, veri toplamayı engelleyen sorunlarla karşılaşabilirsiniz.
 Bu makalede, bilinen tüm sorunlar listelenmekte ve sorun giderme örnekleri sağlanmaktadır.
@@ -32,7 +32,7 @@ Burada listelenmeyen bir sorunla karşılaşırsanız [GitHub](https://github.co
 Bu dll 'Lerden herhangi biri bin dizininde mevcutsa, izleme başarısız olabilir:
 
 - Microsoft. ApplicationInsights. dll
-- Microsoft.AspNet.TelemetryCorrelation.dll
+- Microsoft. AspNet. TelemetryCorrelation. dll
 - System. Diagnostics. DiagnosticSource. dll
 
 Bu dll 'Lerden bazıları, uygulamanız tarafından kullanılmasa bile Visual Studio varsayılan uygulama şablonlarına dahildir.
@@ -93,16 +93,16 @@ Bu sorunu [burada](https://github.com/microsoft/ApplicationInsights-Home/issues/
 ### <a name="troubleshooting-powershell"></a>PowerShell sorunlarını giderme
 
 #### <a name="determine-which-modules-are-available"></a>Hangi modüllerin kullanılabilir olduğunu belirleme
-Hangi modüllerin yükleneceğini öğrenmek `Get-Module -ListAvailable` için komutunu kullanabilirsiniz.
+Hangi modüllerin yükleneceğini öğrenmek için `Get-Module -ListAvailable` komutunu kullanabilirsiniz.
 
 #### <a name="import-a-module-into-the-current-session"></a>Geçerli oturuma bir modül içeri aktar
 Bir modül bir PowerShell oturumuna yüklenmediyse, `Import-Module <path to psd1>` komutunu kullanarak el ile yükleyebilirsiniz.
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>Durum İzleyicisi v2 modülünün sorunlarını giderme
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Application Insights Aracısı modülü sorunlarını giderme
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>Durum İzleyicisi v2 modülünde kullanılabilen komutları listeleyin
-Kullanılabilir komutları almak `Get-Command -Module Az.ApplicationMonitor` için komutunu çalıştırın:
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Application Insights Aracısı modülünde kullanılabilen komutları listeleyin
+Kullanılabilir komutları almak için `Get-Command -Module Az.ApplicationMonitor` komutunu çalıştırın:
 
 ```
 CommandType     Name                                               Version    Source
@@ -117,8 +117,8 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Durum İzleyicisi v2 modülünün güncel sürümünü belirleme
-Modülüyle ilgili aşağıdaki bilgileri göstermek için komutunuçalıştırın:`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Application Insights Aracısı modülünün geçerli sürümünü belirleme
+Modülle ilgili aşağıdaki bilgileri göstermek için `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` komutunu çalıştırın:
    - PowerShell modülü sürümü
    - Application Insights SDK sürümü
    - PowerShell modülünün dosya yolları
@@ -131,7 +131,7 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 Tüm dll 'Lerin yüklenip yüklenmediğini anlamak için, Araçlı bilgisayardaki süreçler inceleyebilirsiniz.
 İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Dll 'leri denetlemek için komutunukullanın.`Get-ApplicationInsightsMonitoringStatus -InspectProcess`
+Dll 'Leri denetlemek için `Get-ApplicationInsightsMonitoringStatus -InspectProcess` komutunu kullanın.
 
 Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için [API başvurusunu](status-monitor-v2-api-get-status.md) gözden geçirin.
 
@@ -145,16 +145,16 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 3. **Gelişmiş Seçenekler**' i genişletin.
 4. Şu onay kutularını temizleyin:
     - **Zip**
-    - **Birleştir**
+    - **Birleþtirmek**
     - **.NET sembol koleksiyonu**
-5. Şu **ek sağlayıcıları**ayarla:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. Şu **ek sağlayıcıları**ayarla: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
-#### <a name="collecting-logs"></a>Günlükler toplanıyor
+#### <a name="collecting-logs"></a>Günlükleri toplama
 
-1. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi ve `iisreset /stop` tüm Web uygulamalarını devre dışı bırakmak için komutunu çalıştırın.
+1. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi ve tüm Web uygulamalarını kapatmak için `iisreset /stop` komutunu çalıştırın.
 2. PerfView içinde **toplamayı Başlat**' ı seçin.
-3. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi başlatmak `iisreset /start` için komutunu çalıştırın.
+3. Yönetici ayrıcalıklarına sahip bir komut konsolunda, IIS 'yi başlatmak için `iisreset /start` komutunu çalıştırın.
 4. Uygulamanıza gözatmayı deneyin.
 5. Uygulamanız yüklendikten sonra PerfView ' a dönüp **toplamayı durdur**' u seçin.
 

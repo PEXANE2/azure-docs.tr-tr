@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d762bddbe098e30cbf9e9c02da3c06073a358b12
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249245"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387866"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory eşleme veri akışı arama dönüşümü
 
 Veri akışınıza başka bir kaynaktan başvuru verileri eklemek için arama ' yı kullanın. Arama dönüşümü, başvuru tablonuzu işaret eden ve anahtar alanları ile eşleşen tanımlı bir kaynak gerektirir.
 
-![Arama dönüşümü](media/data-flow/lookup1.png "arama")
+![Arama dönüşümü](media/data-flow/lookup1.png "Arama")
 
 Gelen akış alanları ve başvuru kaynağındaki alanlar arasında eşleştirmek istediğiniz anahtar alanları seçin. İlk olarak, arama için sağ taraf olarak kullanmak üzere veri akışı tasarım tuvalinde yeni bir kaynak oluşturmuş olmanız gerekir.
 
@@ -29,11 +29,11 @@ Arama dönüştürmesi, bir sol dış birleştirmenin eşdeğerini uygular. Bu n
 
 Arama dönüşümünüzü tamamladıktan sonra, aramanın bir satır eşleşmesi ile sonuçlanıp sonuçlanmadığını temel alarak mantığınızdaki diğer seçimleri yapmak için `isMatch()` ifade işlevini kullanarak her bir eşleşme satırının sonuçlarını incelemek üzere sonraki dönüşümleri kullanabilirsiniz.
 
-## <a name="optimizations"></a>İyileştirmeleri
+## <a name="optimizations"></a>İyileştirmeler
 
 Data Factory, veri akışları ölçekli Spark ortamlarında yürütülür. Veri kümeniz çalışan düğümü bellek alanına uyabiliyorsanız, arama performansınızı iyileştirebiliriz.
 
-![Yayına katılmayı]yayınla(media/data-flow/broadcast.png "katılması")
+![Yayın katılımı](media/data-flow/broadcast.png "Yayın katılımı")
 
 ### <a name="broadcast-join"></a>Yayın katılımı
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs ve Google Cloud Messaging kullanarak belirli Android cihazlara anında iletme bildirimleri gönderme | Microsoft Docs
+title: Azure Notification Hubs ve Google Cloud Messaging kullanarak belirli Android cihazlara bildirim gönderin | Microsoft Docs
 description: Azure Notification Hubs ve Google Cloud Messaging kullanarak belirli Android cihazlara anında iletme bildirimleri göndermek için Notification Hubs kullanma hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: android
@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: aa2aa7b77bf174f4a2ca89408ee037b398a32e4d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212812"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387439"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android cihazlara anında iletme bildirimleri gönderin
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android cihazlara anında Iletme bildirimleri gönderin
 
 > [!WARNING]
 > 10 Nisan 2018 itibariyle, Google Google Cloud Messaging (GCM) kullanım dışıdır. GCM sunucusu ve istemci API 'Leri kullanım dışıdır ve 29 Mayıs 2019 ' den hemen sonra kaldırılacaktır. Daha fazla bilgi için bkz. [GCM ve FCM hakkında sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
@@ -43,17 +43,17 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Mobil uygulamaya kategori seçimi ekleme.
 > * Etiketlerle bildirimler için kaydedilir.
 > * Etiketli bildirimler gönderme.
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğretici, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notification Hubs ve Google Cloud Messaging][get-started]kullanarak Android cihazlarına anında iletme bildirimleri gönderin. Bu öğreticiye başlamadan önce [öğreticiyi doldurun: Azure Notification Hubs ve Google Cloud Messaging][get-started]kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
+Bu öğretici, [öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri aracılığıyla][get-started]oluşturduğunuz uygulamayı oluşturur. Bu öğreticiye başlamadan önce [öğreticiyi izleyin: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri gönderin][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Uygulamaya kategori seçimi ekleme
 
 İlk adım, mevcut ana etkinliğinize kullanıcının kaydolunacak kategorileri seçmesini sağlayan UI öğeleri eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. `res/layout/activity_main.xml file`Öğesini açın ve içeriği aşağıdaki ile değiştirin:
+1. @No__t-0 ' ı açın ve içeriği aşağıdakiler ile değiştirin:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -106,7 +106,7 @@ Bu öğretici, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Noti
             />
     </LinearLayout>
     ```
-2. `res/values/strings.xml` Dosyasını açın ve aşağıdaki satırları ekleyin:
+2. @No__t-0 dosyasını açın ve aşağıdaki satırları ekleyin:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -118,10 +118,10 @@ Bu öğretici, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Noti
     <string name="label_sports">Sports</string>
     ```
 
-    `main_activity.xml` Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
+    @No__t 0 grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
 
     ![][A1]
-3. Sınıfınız ile aynı `Notifications` pakette bir sınıf oluşturun. `MainActivity`
+3. @No__t-1 sınıfınız ile aynı pakette `Notifications` sınıfı oluşturun.
 
     ```java
     import java.util.HashSet;
@@ -196,14 +196,14 @@ Bu öğretici, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Noti
     ```
 
     Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. Ayrıca, bu kategoriler için kaydolma yöntemlerini içerir.
-4. Sınıfınıza `MainActivity` ve `NotificationHub` `Notifications`için özel alanlarınızı kaldırın ve için bir alan ekleyin: `GoogleCloudMessaging`
+4. @No__t-0 sınıfında, `NotificationHub` ve `GoogleCloudMessaging` için özel alanlarınızı kaldırın ve `Notifications` için bir alan ekleyin:
 
     ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Sonra yönteminde, `hub` alanı ve `registerWithNotificationHubs` yöntemini başlatmayı kaldırın. `onCreate` Ardından, `Notifications` sınıfının bir örneğini başlatmak için aşağıdaki satırları ekleyin.
+5. Ardından, `onCreate` yönteminde `hub` alanının ve `registerWithNotificationHubs` yönteminin başlatılmasını kaldırın. Ardından, `Notifications` sınıfının bir örneğini başlatmak için aşağıdaki satırları ekleyin.
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,7 +261,7 @@ Bu öğretici, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Noti
     }
     ```
 
-    Bu yöntem, kategorilerin bir listesini oluşturur ve bu `Notifications` sınıfı kullanarak listeyi yerel depoda depolar ve Bildirim Hub 'ınızla ilgili etiketleri kaydeder. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
+    Bu yöntem, kategorilerin bir listesini oluşturur ve listeyi yerel depolama alanında depolamak ve karşılık gelen etiketleri Bildirim Hub 'ınızla kaydettirmek için `Notifications` sınıfını kullanır. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
 
 Uygulamalarınız artık bir kategori kümesini cihazdaki yerel depolama alanında depolayabilir ve kullanıcının kategori seçimini her değiştirmesinde bildirim hub’ına kaydolabilir.
 
@@ -272,7 +272,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
 > [!NOTE]
 > Google Cloud Messaging (GCM) tarafından atanan registrationId değeri her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
-1. `onCreate` Sınıfındaki yönteminin`MainActivity` sonuna aşağıdaki kodu ekleyin:
+1. @No__t-1 sınıfındaki `onCreate` yönteminin sonuna aşağıdaki kodu ekleyin:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -313,7 +313,7 @@ Uygulama artık tamamlanmıştır ve kullanıcının kategori seçimini her değ
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Uygulamayı test etme
+## <a name="test-the-app"></a>Uygulamayı test edin
 
 1. Android Studio'da, Android cihazınız veya öykünücünüz üzerinde uygulamayı çalıştırın. Uygulama kullanıcı arabirimi, abone olunacak kategorileri seçmenize olanak sağlayan iki durumlu düğmeler sağlar.
 2. Bir veya daha fazla kategori iki durumlu düğmesini etkinleştirin ve **Abone ol**’a tıklayın. Uygulama, seçilen kategorileri etiketlere dönüştürür ve bildirim hub’ından seçilen etiketler için yeni bir cihaz kaydı ister. Kayıtlı kategoriler döndürülür ve bir bildirimde görüntülenir.

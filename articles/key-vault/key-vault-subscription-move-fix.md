@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 3819742e82fe6877b6a1aa58e52eec01b6b05515
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bc2e73d037b05c012002d7a07e2a2af2431423fa
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001252"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428916"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Abonelik taşıma işlemi sonrasında anahtar kasası kiracı kimliğini değiştirme
 
@@ -51,7 +51,7 @@ az keyvault update -n myvault --remove Properties.accessPolicies           # Rem
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski erişim ilkesi girdileri kaldırıldığına göre, Azure PowerShell [set-AzKeyVaultAccessPolicy](https://powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet 'ı veya Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanarak yeni erişim ilkesi girdileri ayarlayın.
+Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski erişim ilkesi girdileri kaldırıldığına göre, Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet 'ı veya Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanarak yeni erişim ilkesi girdileri ayarlayın.
 
 Azure kaynakları için yönetilen bir kimlik kullanıyorsanız, bunu yeni Azure AD kiracısıyla de güncelleştirmeniz gerekir. Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama](managed-identity.md).
 

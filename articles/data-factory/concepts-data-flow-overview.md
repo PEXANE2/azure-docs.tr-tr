@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030180"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387991"
 ---
-# <a name="what-are-mapping-data-flows"></a>Veri Akışlarını Eşleme nedir?
+# <a name="what-are-mapping-data-flows"></a>Eşleme veri akışları nelerdir?
 
 Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışları, veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, ölçeklendirilen Spark kümelerini kullanarak Azure Data Factory işlem hatları içinde etkinlik olarak yürütülür. Veri akışı etkinlikleri mevcut Data Factory zamanlama, denetim, akış ve izleme özellikleri aracılığıyla çalıştırılabilir.
 
@@ -32,13 +32,13 @@ Bu sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvali
 
 Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
 
-![Tuval](media/data-flow/canvas1.png "tuvali")
+![Tuvalinin](media/data-flow/canvas1.png "Tuvalinin")
 
 ### <a name="graph"></a>Graph
 
 Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için ' Kaynak Ekle ' kutusuna tıklayın. Yeni bir dönüşüm eklemek için, var olan bir dönüşümün sağ alt kısmındaki artı işaretine tıklayın.
 
-![Tuval](media/data-flow/canvas2.png "tuvali")
+![Tuvalinin](media/data-flow/canvas2.png "Tuvalinin")
 
 ### <a name="configuration-panel"></a>Yapılandırma bölmesi
 
@@ -50,13 +50,13 @@ Her dönüşümde en az dört Yapılandırma sekmesi vardır:
 
 Her bir dönüşümün yapılandırma bölmesindeki ilk sekme, bu dönüştürmeye özgü ayarları içerir. Daha fazla bilgi için lütfen bu dönüşümün belge sayfasına bakın.
 
-![Kaynak ayarları sekmesi](media/data-flow/source1.png "kaynak ayarları sekmesi")
+![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
 
 #### <a name="optimize"></a>En iyi duruma getirme
 
 _Optimizasyon_ sekmesi, bölümleme düzenlerini yapılandırma ayarlarını içerir.
 
-![](media/data-flow/optimize1.png "İyileştirmeden") iyileştirme
+![İyileştir](media/data-flow/optimize1.png "En iyi duruma getirme")
 
 Varsayılan ayar, Spark üzerinde çalışan veri akışları için yerel bölümlendirme şemasını kullanmak Azure Data Factory bildiren "geçerli bölümleme kullan" dır. Çoğu senaryoda, bu ayar önerilen yaklaşımdır.
 
@@ -92,7 +92,7 @@ Verilerinizin önem düzeyini iyi anlamak istiyorsanız, anahtar bölümleme iyi
 
 _İnceleme_ sekmesi, dönüştürmakta olduğunuz veri akışının meta verilerine bir görünüm sağlar. Sütun sayılarını, sütun değiştirildiğini, eklenen sütunları, veri türlerini, sütun sıralamasını ve sütun başvurularını görebilirsiniz. İnceleme, meta verilerinizin salt okunurdur görünümüdür. Inceleme bölmesinde meta verileri görmek için hata ayıklama modunun etkin olması gerekmez.
 
-![](media/data-flow/inspect1.png "İncelemeyi") İncele
+![Bilgiyi](media/data-flow/inspect1.png "Bilgiyi")
 
 Dönüşümlerinizi kullanarak verilerinizin şeklini değiştirirken, Inceleme bölmesi aracılığıyla meta veri değişiklikleri akışını görürsünüz. Kaynak dönüşümünüze tanımlı bir şema yoksa, veriler Inceleme bölmesinde görünmez. Şema DRFT senaryolarında meta verilerin bulunmaması yaygındır.
 
@@ -104,11 +104,11 @@ Hata ayıklama modu açık ise, _veri önizleme_ sekmesi her dönüşümde veril
 
 Üst çubuk, kaydetme ve doğrulama gibi tüm veri akışını etkileyen eylemler içerir. Grafik ve yapılandırma modları arasında, **grafiği göster** ve **grafiği gizle** düğmelerini kullanarak da geçiş yapabilirsiniz.
 
-![Grafik](media/data-flow/hideg.png "gizleme grafiği") gizle
+![Grafiği gizle](media/data-flow/hideg.png "Grafiği gizle")
 
 Grafınızı gizlerseniz, **önceki** ve **sonraki** düğmelerini kullanarak dönüştürme düğümleriniz arasında geçiş yapabilirsiniz.
 
-![](media/data-flow/showhide.png "Gezinme") git
+![Geçmek](media/data-flow/showhide.png "Geçmek")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

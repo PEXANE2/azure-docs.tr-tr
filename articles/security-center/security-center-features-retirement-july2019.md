@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202217"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438637"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
 
@@ -53,7 +53,7 @@ Bir çalışma alanı seçtiğinizde görüntülenen olaylar panosunu kullanımd
 
 Çalışma Alanlarınızdaki önemli olaylarını görüntülemek için Azure Log Analytics 'in yerel yeteneklerini kullanmanızı öneririz.
 
-Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişilebilir olacaktır. Log Analytics ' de, **çalışma alanı** > **kaydedilmiş aramaları**Seç ' e gidin. Verileriniz kaybolmaz veya değiştirilmez. Yerel önemli olayları, Log Analytics aynı ekrandan de mevcuttur.
+Güvenlik Merkezi 'nde özel önemli olayları oluşturduysanız, bunlar erişilebilir olacaktır. Log Analytics, **çalışma alanı** > **kayıtlı aramalar**' a gidin. Verileriniz kaybolmaz veya değiştirilmez. Yerel önemli olayları, Log Analytics aynı ekrandan de mevcuttur.
 
 ![Çalışma alanı kaydedilmiş aramaları][3]
 
@@ -105,7 +105,7 @@ Güvenlik Merkezi, güvenlik tehditlerini belirlemenize yardımcı olmak için s
 
 **Güvenlik olayları eşlemesini git** düğmesine tıkladığınızda, (şimdi kullanımdan kaldırılan) tehdit bilgileri panosu açılır.
 
-![Tehdit Zekası panosu][11]
+![Tehdit zekası panosu][11]
 
 Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics ' de (artık kullanımdan kaldırılan) güvenlik uyarıları Haritası (Önizleme) ekranını açtınız.
 
@@ -115,7 +115,7 @@ Mevcut verileriniz Log Analytics güvenlik çözümünde kullanılabilir kalır 
 
 ### <a name="security-events-map---the-new-experience"></a>Güvenlik olayları Haritası-yeni deneyim
 
-Güvenlik Merkezi 'Nde yerleşik olarak bulunan uyarılar eşleme işlevini kullanmanızı öneririz: **Güvenlik uyarıları Haritası (Önizleme)** . Bu işlevsellik, iyileştirilmiş bir deneyim sağlar ve tüm aboneliklerde ve ilişkili çalışma alanlarında çalışmaktadır. Ortamınız genelinde üst düzey bir görünüm sunar ve tek bir çalışma alanına odaklanmıyor.
+Güvenlik Merkezi 'Nde yerleşik olarak bulunan uyarılar eşleme işlevini kullanmanızı öneririz: **güvenlik uyarıları Haritası (Önizleme)** . Bu işlevsellik, iyileştirilmiş bir deneyim sağlar ve tüm aboneliklerde ve ilişkili çalışma alanlarında çalışmaktadır. Ortamınız genelinde üst düzey bir görünüm sunar ve tek bir çalışma alanına odaklanmıyor.
 
 ## Özel uyarı kuralları (Önizleme)<a name="menu_customalerts"></a>
 
@@ -169,9 +169,9 @@ Bağlı çözümleriniz varsa Azure Sentinel 'e geçiş yapmanız önerilir.
 
 Azure Güvenlik Merkezi, işletim sistemini güçlendirme amacıyla [150'den fazla önerilen kuraldan](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) oluşan bir küme uygulayarak güvenlik yapılandırmalarını izler. Bu kurallar güvenlik duvarları, denetim, parola ilkeleri ve daha fazlası ile ilgilidir. Bir makinenin yapılandırmasında güvenlik açığı varsa Güvenlik Merkezi bu konuyla ilgili bir güvenlik önerisi oluşturur. [Güvenlik Yapılandırması düzenleme ekranı](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) , müşterilerin Güvenlik Merkezi 'nde varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmesini sağlar.
 
-Bu önizleme özelliğini kullanımdan kaldırdı. Güvenlik yapılandırmalarınızı, kullanımdan kaldırma tarihinden sonra varsayılan değerlerine geri döndürmek için [aşağıdaki yönergeleri](https://aka.ms/ascresetsecurityconfigurations) kullanarak API veya PowerShell aracılığıyla bunu yapın
+Bu önizleme özelliğini kullanımdan kaldırdı. Güvenlik yapılandırmalarınızı, kullanımdan kaldırma tarihinden sonra varsayılan değerlerine geri döndürmek için [aşağıdaki yönergeleri](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) kullanarak API veya PowerShell aracılığıyla bunu yapın
 
-![Güvenlik yapılandırmalarını düzenle][17]
+![Güvenlik yapılandırmasını düzenle][17]
 
 ### <a name="edit-security-configurations---the-new-experience"></a>Güvenlik yapılandırmasını düzenleme-yeni deneyim
 

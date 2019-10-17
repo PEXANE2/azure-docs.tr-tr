@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8e7709abcc97baac9bf657b9fff2110cb2e72c1
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 81382ebecdff6c7b146386b3ae2b0768a7c834bf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489026"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389076"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'ndeki genel senaryolar (Önizleme)
 
@@ -39,42 +39,42 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | [İlk erişim paketinizi oluşturmak için öğreticiyi izleyin](entitlement-management-access-package-first.md) | [![Azure portal simgesi](./media/entitlement-management-scenarios/azure-portal.png)](./media/entitlement-management-scenarios/azure-portal-expanded.png#lightbox) |
+> | [İlk erişim paketinizi oluşturmak için öğreticiyi izleyin](entitlement-management-access-package-first.md) | [![Azure portalı simgesi](./media/entitlement-management-scenarios/azure-portal.png)](./media/entitlement-management-scenarios/azure-portal-expanded.png#lightbox) |
 
 ### <a name="i-want-to-allow-users-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Dizinimde bulunan kullanıcıların gruplara, uygulamalara veya SharePoint sitelerine erişim istemesine izin vermek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** [Bir katalogda yeni bir erişim paketi oluşturma](entitlement-management-access-package-create.md#start-new-access-package) | ![Erişim paketi oluşturma](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [Erişim paketine kaynak rolleri ekleme](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>Gruplar</li><li>Uygulamalar</li><li>SharePoint siteleri</li></ul> | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [İlke Ekle](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>Dizininizdeki kullanıcılar için</li><li>Onay iste</li><li>Süre sonu ayarları</li></ul> | ![İlke ekleme](./media/entitlement-management-scenarios/policy.png) |
+> | **1.** [katalogda yeni bir erişim paketi oluşturun](entitlement-management-access-package-create.md#start-new-access-package) | ![Erişim paketi oluşturma](./media/entitlement-management-scenarios/access-package.png) |
+> | **2.** [erişim paketine kaynak rolleri ekleme](entitlement-management-access-package-resources.md#add-resource-roles)<ul><li>Gruplar</li><li>Uygulamalar</li><li>SharePoint siteleri</li></ul> | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **3.** [bir ilke ekleyin](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)<ul><li>Dizininizdeki kullanıcılar için</li><li>Onay gerektir</li><li>Yaşam döngüsü ayarları</li></ul> | ![İlke ekleme](./media/entitlement-management-scenarios/policy.png) |
 
 ### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Kullanıcılar, iş ortakları dizinimin (henüz dizinimde olmayan kullanıcılar dahil) gruplara, uygulamalara veya SharePoint sitelerine erişim istemesine izin vermek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** [Bir katalogda yeni bir erişim paketi oluşturma](entitlement-management-access-package-create.md#start-new-access-package) | ![Erişim paketi oluşturma](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [Erişim paketine kaynak rolleri ekleme](entitlement-management-access-package-edit.md#add-resource-roles) | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [Dış kullanıcılar için ilke ekleme](entitlement-management-access-package-edit.md#policy-for-users-not-in-your-directory)<ul><li>Dizininizde bulunmayan kullanıcılar için</li><li>Onay iste</li><li>Süre sonu ayarları</li></ul> | ![Dış kullanıcılar için ilke ekleme](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [Erişim paketini iş ortağınıza istemek için erişim portalı bağlantısını gönderin](entitlement-management-access-package-edit.md#copy-my-access-portal-link)<ul><li>İş ortağı, bağlantısını kullanıcılarla paylaşabilir</li></ul> |  |
+> | **1.** [katalogda yeni bir erişim paketi oluşturun](entitlement-management-access-package-create.md#start-new-access-package) | ![Erişim paketi oluşturma](./media/entitlement-management-scenarios/access-package.png) |
+> | **2.** [erişim paketine kaynak rolleri ekleme](entitlement-management-access-package-resources.md#add-resource-roles) | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **3.** [dış kullanıcılar için bir ilke ekleyin](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)<ul><li>Dizininizde bulunmayan kullanıcılar için</li><li>Onay gerektir</li><li>Yaşam döngüsü ayarları</li></ul> | ![Dış kullanıcılar için ilke ekleme](./media/entitlement-management-scenarios/policy-external.png) |
+> | **4.** [iş ortağınıza erişim paketi istemek için bağlantıyı gönderin](entitlement-management-access-package-settings.md)<ul><li>İş ortağı, bağlantısını kullanıcılarla paylaşabilir</li></ul> |  |
 
 ### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>Erişim paketindeki grupları, uygulamaları veya SharePoint sitelerini değiştirmek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** Erişim paketini açın | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [Kaynak rolleri ekleme veya kaldırma](entitlement-management-access-package-edit.md#add-resource-roles) | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles-add.png) |
+> | **1.** erişim paketini açın | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **2.** [kaynak rolleri ekleme veya kaldırma](entitlement-management-access-package-resources.md#add-resource-roles) | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles-add.png) |
 
 ### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>Gruplar, uygulamalar veya SharePoint siteleri için kimin atanma olduğunu görüntülemek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** Bir erişim paketi açın | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [Atamaları görüntüle](entitlement-management-access-package-edit.md#view-who-has-an-assignment)<ul><li>Hangi kullanıcıların erişim paketine erişimi olduğunu görüntüleme</li><li>Hangi kullanıcının erişiminin dolduğunu görüntüleme</li></ul> |  |
+> | **1.** bir erişim paketi açın | ![Kaynak rolleri ekleme](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **2.** [atamaları görüntüle](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)<ul><li>Hangi kullanıcıların erişim paketine erişimi olduğunu görüntüleme</li><li>Hangi kullanıcının erişiminin dolduğunu görüntüleme</li></ul> |  |
 
 ### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>Bir kullanıcının erişimi olan grupları, uygulamaları veya SharePoint sitelerini görüntülemek istiyorum
 
@@ -90,38 +90,38 @@ Kuruluşunuz için yetkilendirme yönetimini yapılandırabileceğiniz çeşitli
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** [Erişim portalından isteği aç](entitlement-management-request-approve.md#open-request) | [![Erişim Portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** [Erişim isteğini onayla](entitlement-management-request-approve.md#approve-or-deny-request) | ![Erişimi onayla](./media/entitlement-management-scenarios/approve-access.png) |
+> | **1.** [erişim portalından isteği aç](entitlement-management-request-approve.md#open-request) | [![ erişim portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
+> | **2.** [erişim isteğini onaylayın](entitlement-management-request-approve.md#approve-or-deny-request) | ![Erişimi onayla](./media/entitlement-management-scenarios/approve-access.png) |
 
-## <a name="requestors"></a>İstek Sahipleri
+## <a name="requestors"></a>İstek sahipleri
 
 ### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-available-to-me-and-request-access"></a>Bana sunulan grupları, uygulamaları veya SharePoint sitelerini görüntülemek ve erişim istemek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![Erişim Portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** Erişim paketi bul |  |
-> | **3.** [Erişim isteği](entitlement-management-request-access.md#request-an-access-package) | ![Erişim izni iste](./media/entitlement-management-scenarios/request-access.png) |
+> | **1.** [erişim portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![ erişim portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
+> | **2.** erişim paketi bulun |  |
+> | **3.** [erişim isteyin](entitlement-management-request-access.md#request-an-access-package) | ![Erişim izni isteme](./media/entitlement-management-scenarios/request-access.png) |
 
 ### <a name="im-an-external-user-and-i-want-to-request-access-to-groups-applications-or-sharepoint-sites-with-a-direct-link"></a>Bir dış Kullanıcı kullanıyorum ve doğrudan bağlantı ile gruplara, uygulamalara veya SharePoint sitelerine erişim istemek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** [Aldığınız erişim portalı bağlantısını bulun](entitlement-management-access-package-edit.md#copy-my-access-portal-link) |  |
-> | **2.** [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![Erişim Portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **3.** [Erişim isteği](entitlement-management-request-access.md#request-an-access-package) | ![Dış Kullanıcı erişimi iste](./media/entitlement-management-scenarios/request-access-external.png) |
+> | **1.** [aldığınız erişim paketi bağlantısını bulun](entitlement-management-access-package-settings.md) |  |
+> | **2.** [erişim portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![ erişim portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
+> | **3.** [erişim isteyin](entitlement-management-request-access.md#request-an-access-package) | ![Dış Kullanıcı erişimi iste](./media/entitlement-management-scenarios/request-access-external.png) |
 
 ### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-i-already-have-access-to"></a>Zaten erişim izni olan grupları, uygulamaları veya SharePoint sitelerini görüntülemek istiyorum
 
 > [!div class="mx-tableFixed"]
 > | Adımlar | Örnek |
 > | --- | --- |
-> | **1.** [Erişim Portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![Erişim Portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** Etkin erişim paketlerini görüntüle |  |
+> | **1.** [erişim portalı 'nda oturum açın](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![ erişim portalı simgesi](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
+> | **2.** etkin erişim paketlerini görüntüleme |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: İlk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
-- [Temsilci görevleri](entitlement-management-delegate.md)
+- [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
+- [Temsili ve roller](entitlement-management-delegate.md)

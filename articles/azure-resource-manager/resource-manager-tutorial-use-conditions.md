@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager şablonlarında koşulları kullanma | Microsoft Docs
-description: Azure kaynaklarını koşullara bağlı olarak dağıtmayı öğrenin.
+description: Azure kaynaklarını koşullara bağlı olarak dağıtmayı öğrenin. Yeni bir kaynağın nasıl dağıtılacağını veya var olan bir kaynağı nasıl kullanacağınızı gösterir.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 50c6c2a1f8be979d10b77793adb168e6bd276e49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258858"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390186"
 ---
-# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarda koşul kullanma
+# <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Öğretici: Azure Resource Manager şablonlarında koşulları kullanma
 
 Azure kaynaklarını koşullara bağlı olarak dağıtmayı öğrenin.
 
@@ -38,25 +38,25 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele alır. Daha fazla bilgi için bkz.
 
-* [Şablon dosyası yapısı: Koşul](conditional-resource-deployment.md).
+* [Şablon dosyası yapısı: koşul](conditional-resource-deployment.md).
 * [Azure Resource Manager şablonunda bir kaynağı koşullu olarak dağıtın](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Şablon işlevi: Eğer](./resource-group-template-functions-logical.md#if).
 * [Azure Resource Manager şablonları için karşılaştırma işlevleri](./resource-group-template-functions-comparison.md)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* [Resource Manager Araçları uzantısı](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites) içeren [Visual Studio Code](https://code.visualstudio.com/).
+* [Visual Studio Code](https://code.visualstudio.com/) ve [Resource Manager Araçları uzantısı](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
 
-    Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için bkz [. Öğretici: Azure Key Vault Kaynak Yöneticisi Şablon dağıtımı](./resource-manager-tutorial-use-key-vault.md)tümleştirin. Ayrıca parolanızı üç ayda bir güncelleştirmenizi öneririz.
+    Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için bkz. [Öğretici: Azure Key Vault'u Resource Manager şablonu dağıtımıyla tümleştirme](./resource-manager-tutorial-use-key-vault.md). Ayrıca parolanızı üç ayda bir güncelleştirmenizi öneririz.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 

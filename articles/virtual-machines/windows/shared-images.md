@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 9842f57c7d8d49aa9d1b3d17f82f3519ecead98c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 01e6d9dff0ea2c2b60d8e2ab42e39e36d998be83
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088599"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390589"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell paylaşılan bir görüntü galerisi oluşturma 
 
@@ -32,18 +32,18 @@ Galeri, tam rol tabanlı erişim denetimi (RBAC) sağlayan en üst düzey bir ka
 
 Paylaşılan görüntü Galerisi özelliğinin birden çok kaynak türü vardır. Bunları bu makalede kullanacağız veya oluşturacağız:
 
-| Resource | Açıklama|
+| Kaynak | Açıklama|
 |----------|------------|
 | **Yönetilen görüntü** | Bu, tek başına kullanılabilen veya bir görüntü galerisinde **görüntü sürümü** oluşturmak için kullanılan temel bir görüntüdür. Yönetilen görüntüler Genelleştirilmiş VM 'lerden oluşturulur. Yönetilen görüntü, birden çok VM oluşturmak için kullanılabilen ve artık paylaşılan görüntü sürümleri oluşturmak için kullanılabilen özel bir VHD türüdür. |
 | **Görüntü Galerisi** | Azure Marketi gibi bir **görüntü Galerisi** , görüntüleri yönetmek ve paylaşmak için bir depodur, ancak kimlerin erişimi olduğunu kontrol edersiniz. |
 | **Görüntü tanımı** | Görüntüler, bir galeri içinde tanımlanır ve bu görüntüyü dahili olarak kullanmaya yönelik gereksinimler hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, sürüm notları ve en düşük ve en yüksek bellek gereksinimleri olduğunu içerir. Bu, bir görüntü türünün tanımıdır. |
 | **Görüntü sürümü** | Bir **görüntü sürümü** , galerı kullanılırken VM oluşturmak için kullandığınız şeydir. Ortamınız için gerektiğinde bir görüntünün birden fazla sürümüne sahip olabilirsiniz. Yönetilen bir görüntü gibi, bir sanal makine oluşturmak için bir **görüntü sürümü** kullandığınızda, sanal makine için yeni diskler oluşturmak üzere görüntü sürümü kullanılır. Görüntü sürümleri birden çok kez kullanılabilir. |
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+Aynı anda oluşturduğunuz her 20 VM için bir çoğaltmayı tutmanız önerilir. Örneğin, bir bölgedeki aynı görüntüyü kullanarak aynı anda 120 VM oluşturuyorsanız, resminizin en az 6 çoğaltmasını tutmanız önerilir. Daha fazla bilgi için bkz. [ölçekleme](/azure/virtual-machines/windows/shared-image-galleries#scaling).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki örneği tamamlayabilmeniz için, mevcut bir yönetilen görüntünüz olmalıdır. Öğreticiyi izleyebilirsiniz [: Gerekirse bir Azure VM 'nin, Azure PowerShell](tutorial-custom-images.md) oluşturmak için özel bir görüntüsünü oluşturun. Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
+Bu makaledeki örneği tamamlayabilmeniz için, mevcut bir yönetilen görüntünüz olmalıdır. [Öğreticiyi izleyebilirsiniz: gerekirse bir Azure VM 'nin özel bir görüntüsünü Azure PowerShell](tutorial-custom-images.md) oluşturun. Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
 
 Bu makalede çalışırken, kaynak grubu ve VM adlarını gerektiği yerde değiştirin.
 

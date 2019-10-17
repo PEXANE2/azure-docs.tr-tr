@@ -12,41 +12,57 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/24/2019
+ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170005"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389310"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma (Önizleme)
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Erişim paketi, erişim paketinin ömrü boyunca erişimi otomatik olarak yöneten kaynak ve ilkelerin bir kerelik kurulumunu yapmanızı sağlar. Bu makalede, yeni bir erişim paketinin nasıl oluşturulacağı açıklanır.
 
-## <a name="overview"></a>İlke
+## <a name="overview"></a>Genel Bakış
 
 Tüm erişim paketleri, Katalog adlı bir kapsayıcıya yerleştirilmelidir. Katalog, erişim paketinize ekleyebileceğiniz kaynakları tanımlar. Bir katalog belirtmezseniz, erişim paketiniz genel kataloğa konur. Şu anda, var olan bir erişim paketini farklı bir kataloğa taşıyamazsınız.
 
-Tüm erişim paketlerinde en az bir ilke olmalıdır. İlkeler, erişim paketini ve ayrıca onay ve süre sonu ayarlarını kimlerin isteyebilen belirler. Yeni bir erişim paketi oluşturduğunuzda, dizininizde kullanıcılar için, dizininizde bulunmayan kullanıcılar için bir başlangıç ilkesi oluşturabilir, yalnızca yönetici doğrudan atamaları için veya ilkeyi daha sonra oluşturmayı tercih edebilirsiniz.
+Bir erişim paketi yöneticisi değilseniz, sahip olduğunuz kaynakları bir kataloğa ekleyemezsiniz. Katalogda bulunan kaynakları kullanmaya kısıtlıdır. Bir kataloğa kaynak eklemeniz gerekiyorsa, Katalog sahibinden sorun olabilir.
 
-Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey işlem gösterilmektedir.
+Tüm erişim paketlerinde en az bir ilke olmalıdır. İlkeler, erişim paketini ve ayrıca onay ve yaşam döngüsü ayarlarını kimlerin isteyebilen belirler. Yeni bir erişim paketi oluşturduğunuzda, dizininizde kullanıcılar için, dizininizde bulunmayan kullanıcılar için bir başlangıç ilkesi oluşturabilir, yalnızca yönetici doğrudan atamaları için veya ilkeyi daha sonra oluşturmayı tercih edebilirsiniz.
 
-![Erişim paketi işlemi oluşturma](./media/entitlement-management-access-package-create/access-package-process.png)
+![Erişim paketi oluşturma](./media/entitlement-management-access-package-create/access-package-create.png)
+
+Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilmiştir.
+
+1. Identity Idare ' de, yeni bir erişim paketi oluşturmak için işlemi başlatın.
+
+1. Erişim paketini oluşturmak istediğiniz kataloğu seçin.
+
+1. Katalogdan erişim paketinize kaynak ekleyin.
+
+1. Her kaynak için kaynak rolleri atayın.
+
+1. Erişim isteyeerişebilecek kullanıcıları belirtin.
+
+1. Herhangi bir onay ayarını belirtin.
+
+1. Yaşam döngüsü ayarlarını belirtin.
 
 ## <a name="start-new-access-package"></a>Yeni erişim paketini Başlat
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
@@ -56,7 +72,7 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
 1. **Yeni erişim paketi**' ne tıklayın.
 
-## <a name="basics"></a>Temel bilgileri
+## <a name="basics"></a>Temel Bilgiler
 
 **Temel bilgiler** sekmesinde, erişim paketine bir ad verirsiniz ve erişim paketinin hangi katalogda oluşturulacağını belirtebilirsiniz.
 
@@ -64,20 +80,19 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
 1. **Katalog** açılan listesinde, erişim paketini oluşturmak istediğiniz kataloğu seçin. Örneğin, istenmiş olan tüm pazarlama kaynaklarını yöneten bir katalog sahibi olabilirsiniz. Bu durumda, pazarlama kataloğunu seçebilirsiniz.
 
-    Yalnızca ' de erişim paketleri oluşturma izniniz olan kataloglar görüntülenir. Mevcut bir katalogda bir erişim paketi oluşturmak için, en az bir genel yönetici, bir Kullanıcı Yöneticisi, bu katalogda Katalog sahibi olmanız veya bu katalogdaki paket yöneticisine erişmeniz gerekir.
+    Yalnızca ' de erişim paketleri oluşturma izniniz olan kataloglar görüntülenir. Mevcut bir katalogda bir erişim paketi oluşturmak için, bir genel yönetici veya Kullanıcı Yöneticisi olmanız ya da söz konusu katalogda bir katalog sahibi ya da paket yöneticisi olmanız gerekir.
 
     ![Erişim paketi-temel bilgiler](./media/entitlement-management-access-package-create/basics.png)
 
-    Bir genel Yöneticiyseniz veya bir Kullanıcı yöneticisiyseniz ve listelenmeyen yeni bir katalogda erişim paketinizi oluşturmak istiyorsanız **Yeni oluştur**' a tıklayın. Katalog adı ve açıklamasını girip **Oluştur**' a tıklayın.
+    Bir genel yönetici, bir Kullanıcı Yöneticisi veya katalog Oluşturucu ise ve listelenmeyen yeni bir katalogda erişim paketinizi oluşturmak istiyorsanız **Yeni Katalog oluştur**' a tıklayın. Katalog adı ve açıklamasını girip **Oluştur**' a tıklayın.
 
     Oluşturmakta olduğunuz erişim paketi ve kendisine dahil edilen kaynaklar yeni kataloğa eklenecektir. Daha sonra da ek Katalog sahipleri ekleyebilirsiniz.
 
-
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 ## <a name="resource-roles"></a>Kaynak rolleri
 
-**Kaynak rolleri** sekmesinde, erişim paketine dahil edilecek kaynakları seçersiniz.  Erişim paketini isteyen ve alan kullanıcılar, erişim paketindeki tüm kaynak rollerini alacaktır.
+**Kaynak rolleri** sekmesinde, erişim paketine dahil edilecek kaynakları seçersiniz. Erişim paketini isteyen ve alan kullanıcılar, erişim paketindeki tüm kaynak rollerini alacaktır.
 
 1. Eklemek istediğiniz kaynak türüne (**gruplar ve takımlar**, **uygulamalar**veya **SharePoint siteleri**) tıklayın.
 
@@ -95,21 +110,19 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
     ![Paket-kaynak rolü seçimine erişin](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
-## <a name="policy"></a>Policy
+## <a name="requests"></a>İstekler
 
-**İlke** sekmesinde, erişim paketini ve ayrıca onay ve süre sonu ayarlarını kimin isteyebilen belirlemek için ilk ilkeyi oluşturursunuz. Daha sonra, ek kullanıcı gruplarının kendi onay ve sona erme ayarlarına sahip erişim paketini istemesine izin vermek için daha fazla ilke oluşturabilirsiniz. İlkeyi daha sonra oluşturmayı da tercih edebilirsiniz.
+**İstekler** sekmesinde, erişim paketini ve ayrıca onay ayarlarını kimin isteyebilen belirlemek için ilk ilkeyi oluşturursunuz. Daha sonra, ek kullanıcı gruplarının kendi onay ayarlarına sahip erişim paketini istemesine izin vermek için daha fazla istek ilkesi oluşturabilirsiniz.
 
-1. **İlk Ilke oluştur** ' a **Şimdi** veya **daha sonra**geç ' i ayarlayın.
+![Paket Istekleri sekmesine erişin](./media/entitlement-management-access-package-create/requests.png)
 
-    ![Erişim paketi-Ilke](./media/entitlement-management-access-package-create/policy.png)
+Aşağıdaki bölümlerden birindeki adımları gerçekleştirin.
 
-1. **Daha sonra**' yi seçerseniz, erişim paketinizi oluşturmak Için [gözden geçir + oluştur](#review--create) bölümüne atlayın.
+[!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-1. **Şimdi**' yi seçerseniz, aşağıdaki ilke bölümlerinden birindeki adımları gerçekleştirin.
-
-[!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
+[!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="review--create"></a>Gözden geçir + oluştur
 
@@ -125,4 +138,5 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Var olan bir erişim paketini düzenleyin ve yönetin](entitlement-management-access-package-edit.md)
+- [Erişim paketi istemek için bağlantıyı paylaşma](entitlement-management-access-package-settings.md)
+- [Erişim paketi için kaynak rollerini değiştirme](entitlement-management-access-package-resources.md)

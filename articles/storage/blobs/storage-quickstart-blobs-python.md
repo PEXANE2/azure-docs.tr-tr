@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331810"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430141"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Hızlı Başlangıç: Python ile blobları karşıya yükleme, indirme ve listeleme
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Hızlı başlangıç: Python ile Azure Blob depolamada Blobları karşıya yükleme, indirme ve listeleme
 
 Bu makalede, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u kullanırsınız. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil olmak üzere büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Azure depolama 'daki Bloblar dosya paylaşımlarından, şema-daha seyrek tablolardan ve ileti kuyruklarından farklıdır.  Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).
 

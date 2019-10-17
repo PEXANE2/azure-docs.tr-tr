@@ -8,15 +8,17 @@ ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.openlocfilehash: afcf5f3ff5f104a95b700616f7c8bdd0723ac70c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9f9d432bc2f7d70396bca5d140f1a66a75fd7231
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331970"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434324"
 ---
-# <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Python'u kullanarak bağlanma ve veri sorgulama
-Bu makalede, [Python](https://python.org) kullanarak MySQL Için Azure veritabanı 'na nasıl bağlanulacağı gösterilmektedir. Mac OS, Ubuntu Linux ve Windows platformlarındaki veritabanında yer alan verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanır. Bu konuda, Python kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
+# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı ile bağlanmak ve veri sorgulamak için Python kullanma
+Bu makalede, [Python](https://python.org) kullanarak MySQL Için Azure veritabanı 'na nasıl bağlanulacağı gösterilmektedir. Mac OS, Ubuntu Linux ve Windows platformlarındaki veritabanında yer alan verileri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini kullanır. 
+
+Bu konuda, Python kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
@@ -66,7 +68,7 @@ MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerin
 2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
 3. Sunucu adını seçin.
 4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
- ![MySQL için Azure Veritabanı sunucu adı](./media/connect-python/1_server-overview-name-login.png)
+ ![MySQL için Azure Veritabanı sunucu adı](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
 ## <a name="run-python-code"></a>Python kodunu çalıştırma
 - Kodu bir metin dosyasına yapıştırın ve dosyayı .py uzantısıyla bir proje klasörüne kaydedin (örneğin, C:\pythonmysql\createtable.py veya /home/username/pythonmysql/createtable.py).

@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350841"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390563"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Azure VM 'nin özel bir görüntüsünü oluşturma
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile bir Azure VM'nin özel görüntüsünü oluşturma
 
 Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, dağıtımları önyüklemek ve birden çok VM arasında tutarlılık sağlamak için kullanılabilir. Bu öğreticide, PowerShell kullanarak bir Azure sanal makinesi için kendi özel görüntünüzü oluşturacaksınız. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -53,7 +53,7 @@ Bir sanal makinenin görüntüsünü oluşturmak için, kaynak VM 'yi genelleşt
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep kullanarak Windows VM'sini genelleştirme
 
-Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkındaki ayrıntılar için bkz.[Sysprep İşlemini Kullanma: Bir giriş @ no__t-0.
+Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkındaki ayrıntılar için bkz. [Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
 
 
 1. Sanal makineye bağlanın.
@@ -134,6 +134,7 @@ New-AzVm `
 ```
 
 Tek bir görüntüden 20 VM 'ye eş zamanlı dağıtım sayısını kısıtlamanızı öneririz. Aynı özel görüntüden 20 ' den fazla VM 'ye ait büyük ölçekli, eşzamanlı dağıtımlar planlarken, birden çok görüntü çoğaltmasıyla paylaşılan bir [görüntü Galerisi](shared-image-galleries.md) kullanmanız gerekir. 
+
 
 ## <a name="image-management"></a>Görüntü yönetimi 
 

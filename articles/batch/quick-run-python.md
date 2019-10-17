@@ -12,18 +12,20 @@ ms.author: lahugh
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: e5ec131e73c40e72862122d360574bb4ee5d3cda
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6c9690a74e8dff9978fa4e07883738d062238121
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329356"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437378"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı başlangıç: Python API’si ile ilk Batch işinizi çalıştırma
 
-Bu hızlı başlangıç, Azure Batch Python API üzerinde derlenmiş bir uygulamadan Azure Batch işi çalıştırır. Uygulama, Azure depolamaya birkaç veri dosyası yükler ve sonra Batch işlem düğümlerinin (sanal makine) *havuzunu* oluşturur. Daha sonra, temel bir komut kullanarak havuz üzerindeki her bir giriş dosyasını işlemek üzere *görevler* çalıştıran örnek bir *iş* oluşturur. Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
+Bu hızlı başlangıç, Azure Batch Python API üzerinde derlenmiş bir uygulamadan Azure Batch işi çalıştırır.  Bu hızlı başlangıcı tamamladıktan sonra, Batch hizmetinin temel kavramlarını anlayacak ve Batch’i daha büyük ölçekte daha gerçekçi iş yükleri ile denemeye hazır olacaksınız.
+
+Uygulama, Azure depolamaya birkaç veri dosyası yükler ve sonra Batch işlem düğümlerinin (sanal makine) *havuzunu* oluşturur. Daha sonra, temel bir komut kullanarak havuz üzerindeki her bir giriş dosyasını işlemek üzere *görevler* çalıştıran örnek bir *iş* oluşturur.
  
-![Hızlı başlangıç uygulama iş akışı](./media/quick-run-python/sampleapp.png)
+![Azure Batch iş akışına genel bakış](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 

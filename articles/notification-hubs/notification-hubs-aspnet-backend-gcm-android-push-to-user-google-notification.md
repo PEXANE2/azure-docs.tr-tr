@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak belirli bir Android uygulama kullanıcılara anında iletme bildirimleri gönderme | Microsoft Docs
+title: Azure Notification Hubs kullanarak belirli Android uygulamalarına bildirim gönderme | Microsoft Docs
 description: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri göndermeyi öğrenin.
 documentationcenter: android
 services: notification-hubs
@@ -17,40 +17,40 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1b867d571e97209c4385c1f23b49fe5a03ab94d5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: c5c9ec26c9387cd9ae129002697210c2b342ab9b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212085"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385897"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android uygulama kullanıcılarına anında iletme bildirimi
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android uygulama kullanıcılarına anında Iletme bildirimi
 
 > [!WARNING]
 > 10 Nisan 2018 itibariyle, Google Google Cloud Messaging (GCM) kullanım dışıdır. GCM sunucusu ve istemci API 'Leri kullanım dışıdır ve 29 Mayıs 2019 ' den hemen sonra kaldırılacaktır. Daha fazla bilgi için bkz. [GCM ve FCM hakkında sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Notification Hubs’ı nasıl kullanacağınız gösterilmektedir. [Uygulama arka ucunuzdan kaydolma](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) başlıklı yönerge makalesinde gösterildiği gibi, istemcilerin kimliğini doğrulamak ve bildirimler oluşturmak için ASP.NET WebAPI arka ucu kullanılır. Bu öğretici, [öğreticide oluşturduğunuz Bildirim Hub 'ını oluşturur: Azure Notification Hubs ve Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md)kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
+Bu öğreticide, belirli bir cihazdaki belirli bir uygulama kullanıcısına anında iletme bildirimleri göndermek için Azure Bildirim Hub'larını nasıl kullanacağınız gösterilir. [Uygulama arka ucunuzdan kaydolma](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) başlıklı yönerge makalesinde gösterildiği gibi, istemcilerin kimliğini doğrulamak ve bildirimler oluşturmak için ASP.NET WebAPI arka ucu kullanılır. Bu öğretici, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisinde oluşturduğunuz bildirim hub’ını temel alır.
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 > [!div class="checklist"]
 > * Kullanıcıların kimliğini doğrulayan arka uç Web API projesi oluşturma.  
 > * Android uygulamasını güncelleştirme.
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Öğreticiyi doldurun: Bu öğreticiyi uygulamadan önce Azure Notification Hubs ve Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md) kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
+Bu öğreticiyi uygulamadan önce [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisini tamamlayın.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Android Projesi oluşturma
 
-Sonraki adım [öğreticide oluşturulan Android uygulamasını güncelleştirmedir: Azure Notification Hubs ve Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md)kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
+Sonraki adım, [Öğretici: Azure Notification Hubs ve Google Cloud Messaging kullanarak Android cihazlara anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisinde oluşturulan Android uygulamasının güncelleştirilmesidir.
 
-1. `res/layout/activity_main.xml` Dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
+1. @No__t-0 dosyanızı açın, aşağıdaki içerik tanımlarını değiştirin:
 
     Kullanıcı olarak oturum açmak için yeni EditText denetimleri ekler. Ayrıca gönderdiğiniz bildirimlerin parçası olacak kullanıcı adı etiketi için bir alan da eklenir:
 
@@ -141,7 +141,7 @@ Sonraki adım [öğreticide oluşturulan Android uygulamasını güncelleştirme
     />  
     </RelativeLayout>
     ```
-2. Dosyanızı açın ve `send_button` tanımını, `send_button` diğer denetimler için ve dizeleri eklemek üzere dizesini yeniden tanımlayarak aşağıdaki satırlarla değiştirin: `res/values/strings.xml`
+2. @No__t-0 dosyanızı açın ve `send_button` tanımını `send_button` dizesini yeniden tanımlayarak aşağıdaki satırlarla değiştirin ve diğer denetimler için dizeler ekleyin:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -152,10 +152,10 @@ Sonraki adım [öğreticide oluşturulan Android uygulamasını güncelleştirme
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    `main_activity.xml` Grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
+    @No__t 0 grafik düzeniniz artık aşağıdaki görüntüye benzer şekilde görünmelidir:
 
     ![][A1]
-3. Sınıfınız ile aynı pakette adlı `RegisterClient` yeni bir sınıf oluşturun. `MainActivity` Yeni sınıf dosyası için aşağıdaki kodu kullanın.
+3. @No__t-1 sınıfınız ile aynı pakette `RegisterClient` adlı yeni bir sınıf oluşturun. Yeni sınıf dosyası için aşağıdaki kodu kullanın.
 
     ```java
     import java.io.IOException;
@@ -406,7 +406,7 @@ Sonraki adım [öğreticide oluşturulan Android uygulamasını güncelleştirme
     }
     ```
 
-    **Oturum açma** düğmesine yönelik `RegisterClient` işleyici,girişKullanıcıadıveparolası(kimlikdoğrulamadüzeniniztarafındankullanılanbelirtecitemsileder)kullanaraktemelbirkimlikdoğrulamabelirtecioluşturur,sonrakayıtiçinarkaucaçağırmaküzerekullanır`login` .
+    **Oturum aç** düğmesi için `login` işleyicisi, giriş Kullanıcı adı ve parolası (kimlik doğrulama şemanızın kullandığı belirteci temsil eder) kullanarak temel bir kimlik doğrulama belirteci oluşturur, ardından arka ucunu kayıt için çağırmak üzere `RegisterClient` kullanır.
 
     `sendPush` yöntemi, kullanıcı etiketine dayalı olarak kullanıcıya güvenli bir bildirim tetiklemek için arka ucu çağırır. `sendPush` tarafından hedeflenen platform bildirim hizmeti, geçirilen `pns` dizesine bağlıdır.
 
@@ -461,14 +461,14 @@ Sonraki adım [öğreticide oluşturulan Android uygulamasını güncelleştirme
         }
     }
     ```
-12. Dosyasında, bölümündeki bölümüne aşağıdaki satırı `android` `buildTypes` ekleyin. `build.gradle`
+12. @No__t-0 dosyasında, `buildTypes` bölümünden sonraki `android` bölümüne aşağıdaki satırı ekleyin.
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Projeyi oluşturun.
+13. Projeyi derleyin.
 
-## <a name="test-the-app"></a>Uygulamayı test etme
+## <a name="test-the-app"></a>Uygulamayı test edin
 
 1. Android Studio kullanarak bir cihazda veya öykünücüde uygulamayı çalıştırın.
 2. Android uygulamasında bir kullanıcı adı ve parola girin. Her ikisi de aynı dize değerine sahip olmalı ve boşluk veya özel karakterler içermemelidir.

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API başvurusu: Durum Al | Microsoft Docs'
-description: Durum İzleyicisi v2 API başvurusu. Get-Applicationınsiısmonitoringstatus. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, sanal makinelerde veya Azure üzerinde ASP.NET web uygulamaları ile çalışır.
+title: 'Azure Application Insights Aracısı API başvurusu: durum Al | Microsoft Docs'
+description: Aracı API başvurusunu Application Insights. Get-Applicationınsiısmonitoringstatus. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, sanal makinelerde veya Azure üzerinde ASP.NET web uygulamaları ile çalışır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6e103e1856e338669224540a991c4b9ea6b10d6d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058265"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389864"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Durum İzleyicisi v2 API 'SI: Get-Applicationınsiısmonitoringstatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights aracı API 'SI: Get-Applicationınsiısmonitoringstatus
 
 Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
@@ -34,9 +34,9 @@ Bu cmdlet, izleme için gerekli olan anahtar dosyaları hakkında sürüm bilgil
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="example-application-status"></a>Örnek: Uygulama durumu
+### <a name="example-application-status"></a>Örnek: uygulama durumu
 
-Web sitelerinin izleme `Get-ApplicationInsightsMonitoringStatus` durumunu göstermek için komutunu çalıştırın.
+Web sitelerinin izleme durumunu göstermek için `Get-ApplicationInsightsMonitoringStatus` komutunu çalıştırın.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -82,7 +82,7 @@ Bu örnekte;
 
 ### <a name="example-powershell-module-information"></a>Örnek: PowerShell modülü bilgileri
 
-Geçerli modülle `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` ilgili bilgileri göstermek için komutunu çalıştırın:
+Geçerli modülle ilgili bilgileri göstermek için `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` komutunu çalıştırın:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -134,11 +134,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Örnek: Çalışma zamanı durumu
+### <a name="example-runtime-status"></a>Örnek: çalışma zamanı durumu
 
 Tüm dll 'Lerin yüklenip yüklenmediğini görmek için, izlenen bilgisayarda işlemi inceleyebilirsiniz. İzleme çalışıyorsa, en az 12 dll 'nin yüklenmesi gerekir.
 
-Şu komutu `Get-ApplicationInsightsMonitoringStatus -InspectProcess`çalıştırın:
+Komutu çalıştırın `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -204,5 +204,5 @@ Bu işlem herhangi bir nedenle başarısız olursa, bu komutları el ile çalı�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.

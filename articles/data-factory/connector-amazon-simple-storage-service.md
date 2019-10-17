@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory kullanarak Amazon Simple Storage Service (S3) verilerini kopyalama | Microsoft Docs
-description: Desteklenen bir havuz veri depolarına Amazon Basit Depolama hizmetinden (S3 için) Azure Data Factory kullanarak veri kopyalama hakkında bilgi edinin.
+description: Azure Data Factory kullanarak Amazon Simple Storage Service (S3) kaynağından desteklenen havuz veri depolarına veri kopyalama hakkında bilgi edinin.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -10,25 +10,25 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: dcfe3807057e9c438d5705b4293de0e76aea8688
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f8f7c33abda8d31d39051a024b9cc381c9f6b192
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008534"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387942"
 ---
-# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Amazon basit depolama hizmeti Azure Data Factory kullanarak veri kopyalama
+# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Simple Storage Service 'ten veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Geçerli sürüm](connector-amazon-simple-storage-service.md)
 
-Bu makalede, Amazon Simple Storage Service 'ten (Amazon S3) verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [giriş makalesi](introduction.md).
+Bu makalede, Amazon Simple Storage Service 'ten (Amazon S3) verilerin nasıl kopyalanacağı özetlenmektedir. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
 >[!TIP]
 >Amazon S3 'den Azure Storage 'a veri geçişi senaryosu için, [Amazon S3 'Ten Azure Storage 'a veri geçirmek üzere Azure Data Factory kullanma](data-migration-guidance-s3-azure-storage.md)hakkında daha fazla bilgi edinin.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
 Bu Amazon S3 Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
@@ -37,43 +37,43 @@ Bu Amazon S3 Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 - [GetMetadata etkinliği](control-flow-get-metadata-activity.md)
 - [Etkinliği sil](delete-activity.md)
 
-Özellikle, bu Amazon S3 bağlayıcı kopyalama dosyaları gibi destekler- ya da dosyaları ayrıştırma [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs.md). S3 'e yönelik isteklerin kimliğini doğrulamak için [AWS Imza sürüm 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) ' ü kullanır.
+Özellikle, bu Amazon S3 Bağlayıcısı dosyaları olduğu gibi kopyalamayı veya [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleriyle](supported-file-formats-and-compression-codecs.md)dosya ayrıştırmayı destekler. S3 'e yönelik isteklerin kimliğini doğrulamak için [AWS Imza sürüm 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) ' ü kullanır.
 
 >[!TIP]
 >Bu Amazon S3 bağlayıcısını, **S3 ile uyumlu herhangi bir depolama sağlayıcısından** (örn. [Google bulut depolaması](connector-google-cloud-storage.md)) veri kopyalamak için kullanabilirsiniz. Bağlı hizmet yapılandırmasında karşılık gelen hizmet URL 'sini belirtin.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Verileri Amazon S3'ten kopyalamak için aşağıdaki izinleri verilmiş olan emin olun:
+Amazon S3 öğesinden veri kopyalamak için aşağıdaki izinlerin verildiğinden emin olun:
 
-- **Kopyalama etkinliği yürütme için:** : `s3:GetObject` ve `s3:GetObjectVersion` Amazon S3 nesnesinin işlemleri için.
-- **Data Factory GUI yazma**: `s3:ListAllMyBuckets` ve `s3:ListBucket` / `s3:GetBucketLocation` bağlantıyı test et ve göz atma ve Git gibi işlemler dosya yolları için Amazon S3 Demetini işlemleri için izinleri ayrıca gereklidir. Bu izni vermek istemiyorsanız, bağlantılı hizmet oluşturma sayfasındaki test bağlantısını atlayın ve yolu doğrudan veri kümesi ayarlarında belirtin.
+- **Kopyalama etkinliği yürütmesi için:** : `s3:GetObject` ve Amazon S3 nesne işlemleri için `s3:GetObjectVersion`.
+- **Data Factory GUI yazma için**: `s3:ListAllMyBuckets` ve `s3:ListBucket` @ no__t-3 @ no__t-4 ' ü Amazon S3 demet işlemleri izinleri, test bağlantısı gibi işlemler için de gereklidir ve dosya yollarına gözatıp/gezinilir. Bu izni vermek istemiyorsanız, bağlantılı hizmet oluşturma sayfasındaki test bağlantısını atlayın ve yolu doğrudan veri kümesi ayarlarında belirtin.
 
-Amazon S3 izinlerin tam listesi hakkında daha fazla ayrıntı için bkz: [izinleri belirten bir ilke](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Amazon S3 izinlerinin tam listesi hakkında daha fazla bilgi için bkz. [ilke Içinde Izinleri belirtme](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
 
-Aşağıdaki bölümler, Amazon S3 belirli Data Factory varlıkları tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde,, Amazon S3 'e özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Amazon S3'bağlı hizmeti için aşağıdaki özellikleri destekler:
+Amazon S3 bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır **AmazonS3**. | Evet |
-| accessKeyId | Gizli erişim anahtarı kimliği. |Evet |
-| secretAccessKey | Gizli erişim anahtarı kendisi. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). |Evet |
-| serviceUrl | Resmi Amazon S3 hizmeti dışında S3 ile uyumlu bir depolama sağlayıcısından veri kopyalıyorsanız, özel S3 uç noktasını belirtin. Örneğin, Google bulut depolamadan veri kopyalamak için, belirtin `https://storage.googleapis.com`. | Hayır |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) veri deposuna bağlanmak için kullanılacak. (Veri deponuz özel ağında bulunuyorsa), Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanı kullanabilirsiniz. Belirtilmezse, varsayılan Azure Integration Runtime kullanır. |Hayır |
+| type | Type özelliği **AmazonS3**olarak ayarlanmalıdır. | Yes |
+| Accesskeyıd | Gizli dizi erişim anahtarının KIMLIĞI. |Yes |
+| secretAccessKey | Gizli dizi erişim anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
+| serviceUrl | Resmi Amazon S3 hizmeti dışında S3 ile uyumlu bir depolama sağlayıcısından veri kopyalıyorsanız, özel S3 uç noktasını belirtin. Örneğin, Google Cloud Storage 'dan veri kopyalamak için `https://storage.googleapis.com` belirtin. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!TIP]
 >Resmi Amazon S3 hizmeti dışında S3 ile uyumlu bir depolama alanından veri kopyalıyorsanız, özel S3 hizmeti URL 'sini belirtin.
 
 >[!NOTE]
->Bu bağlayıcı, Amazon S3'ten veri kopyalamak IAM hesabının erişim anahtarlarını gerektirir. [Geçici güvenlik kimlik bilgisi](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) desteklenmiyor.
+>Bu bağlayıcı, veri Amazon S3 ' dan veri kopyalamak için ıAM hesabının erişim anahtarlarını gerektirir. [Geçici güvenlik kimlik bilgileri](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) desteklenmiyor.
 >
 
 Örnek aşağıda verilmiştir:
@@ -100,22 +100,22 @@ Amazon S3'bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. 
 
 - **Parquet, ayrılmış metin, JSON, avro ve ikili biçimi**Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim veri kümesi](#format-based-dataset) bölümüne bakın.
 - **Orc biçimi**gibi diğer biçimler için [diğer biçim veri kümesi](#other-format-dataset) bölümüne bakın.
 
 ### <a name="format-based-dataset"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim veri kümesi
 
-**Inquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**Amazon S3 öğesinden veri kopyalamak için, biçim tabanlı veri kümesinde [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçime](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın ve desteklenir Ayarlar. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki ayarlar bölümünde `location` Amazon S3 için desteklenir:
+**Inquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**Amazon S3 öğesinden veri kopyalamak için, biçim tabanlı veri kümesinde [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçime](format-avro.md) ve [ikili biçim](format-binary.md) makalesine bakın ve desteklenir Ayarlar. Aşağıdaki özellikler, biçim tabanlı veri kümesindeki `location` ayarları altında Amazon S3 için desteklenir:
 
-| Özellik   | Açıklama                                                  | Gerekli |
+| Özellik   | Açıklama                                                  | Gereklidir |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | DataSet `location` içinde Type özelliği **AmazonS3Location**olarak ayarlanmalıdır. | Evet      |
-| bucketName | S3 demetini adı.                                          | Evet      |
+| type       | Veri kümesindeki `location` ' ın altında bulunan tür özelliği **AmazonS3Location**olarak ayarlanmalıdır. | Yes      |
+| bucketName | S3 demet adı.                                          | Yes      |
 | folderPath | Verilen demet altındaki klasörün yolu. Klasörü filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
 | fileName   | Belirtilen demet + folderPath altındaki dosya adı. Dosyaları filtrelemek için joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda belirtin. | Hayır       |
-| version | S3 sürümü oluşturma etkinse, S3 nesnesinin sürümü. Belirtilmemişse, en son sürüm alınacaktır. |Hayır |
+| version | S3 sürümü etkinse S3 nesnesinin sürümü. Belirtilmemişse, en son sürüm alınacaktır. |Hayır |
 
 > [!NOTE]
 > Sonraki bölümde belirtilen Parquet/metin biçimine sahip **AmazonS3Object** Type veri kümesi, geriye dönük uyumluluk için kopyalama/arama/GetMetadata etkinliğinin olduğu gibi hala desteklenir, ancak eşleme veri akışı ile çalışmaz. Bu yeni modeli ileriye doğru kullanmanız önerilir ve ADF yazma Kullanıcı arabirimi bu yeni türleri oluşturmaya geçti.
@@ -151,22 +151,22 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 **Orc biçimindeki**Amazon S3 öğesinden veri kopyalamak için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Veri kümesinin Type özelliği şu şekilde ayarlanmalıdır: **AmazonS3Object** |Evet |
-| bucketName | S3 demetini adı. Joker karakter filtresi desteklenmez. |GetMetadata etkinliği için Hayır kopyalama/arama etkinliği için Evet |
-| key | **Adı veya joker karakter filtresi** altında belirtilen demetini S3 nesnesinin anahtarı. Yalnızca ne zaman "ön eki" özelliği belirtilmedi geçerlidir. <br/><br/>Joker karakter filtresi, hem klasör bölümü hem de dosya adı bölümü için desteklenir. Joker karakterlere izin verilir: `*` (sıfır veya daha fazla karakter ile eşleşir) ve `?` (eşleşen sıfır ya da tek bir karakter).<br/>-Örnek 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Örnek 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örneğe bakın. Gerçek `^` klasörünüz/dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. |Hayır |
-| prefix | S3 nesnesinin anahtarı için önek. Seçili bir nesne anahtarları bu öneki ile başlayın. Yalnızca "anahtarını" özelliği belirtilmedi uygulanır. |Hayır |
-| version | S3 sürümü oluşturma etkinse, S3 nesnesinin sürümü. Belirtilmemişse, en son sürüm alınacaktır. |Hayır |
-| modifiedDatetimeStart | Özniteliği temel alan dosya filtresi: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
-| modifiedDatetimeEnd | Özniteliği temel alan dosya filtresi: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir.| Hayır |
-| format | İsterseniz **olarak dosya kopyalama-olan** dosya tabanlı depoları arasında (ikili kopya), her iki girdi ve çıktı veri kümesi tanımları biçimi bölümünde atlayın.<br/><br/>Belirli bir biçimdeki dosyaları ayrıştırmak veya oluşturmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Ayarlama **türü** özelliği şu değerlerden biri olarak biçimine altında. Daha fazla bilgi için [metin biçimi](supported-file-formats-and-compression-codecs.md#text-format), [Json biçimine](supported-file-formats-and-compression-codecs.md#json-format), [Avro biçimi](supported-file-formats-and-compression-codecs.md#avro-format), [Orc biçimi](supported-file-formats-and-compression-codecs.md#orc-format), ve [Parquetbiçimi](supported-file-formats-and-compression-codecs.md#parquet-format) bölümler. |Hayır (yalnızca ikili kopya senaryosu için) |
-| compression | Veri sıkıştırma düzeyi ve türünü belirtin. Daha fazla bilgi için [desteklenen dosya biçimleri ve codec sıkıştırma](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Desteklenen türler şunlardır: **Gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler şunlardır: **En iyi** ve **en hızlı**. |Hayır |
+| type | DataSet 'in Type özelliği: **AmazonS3Object** olarak ayarlanmalıdır |Yes |
+| bucketName | S3 demet adı. Joker karakter filtresi desteklenmiyor. |Kopyala/ara etkinliği için Evet, GetMetadata etkinliği için Hayır |
+| anahtar | Belirtilen demet altındaki S3 nesne anahtarının **adı veya joker karakter filtresi** . Yalnızca "önek" özelliği belirtilmediğinde geçerlidir. <br/><br/>Joker karakter filtresi, hem klasör bölümü hem de dosya adı bölümü için desteklenir. İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir).<br/>-Örnek 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Örnek 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örneğe bakın. Gerçek klasörünüz/dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa çıkış için `^` kullanın. |Hayır |
+| koy | S3 nesne anahtarı için ön ek. Anahtarları bu önek ile başlayan nesneler seçilidir. Yalnızca "Key" özelliği belirtilmediğinde geçerlidir. |Hayır |
+| version | S3 sürümü etkinse S3 nesnesinin sürümü. Belirtilmemişse, en son sürüm alınacaktır. |Hayır |
+| modifiedDatetimeStart | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı, `modifiedDatetimeStart` ve `modifiedDatetimeEnd` arasındaki zaman aralığı içinde ise bu dosyalar seçilir. Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  @No__t-0 ' ın DateTime değeri varsa, ancak `modifiedDatetimeEnd` NULL ise, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  @No__t-0 ' ın DateTime değeri varsa, ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
+| modifiedDatetimeEnd | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı, `modifiedDatetimeStart` ve `modifiedDatetimeEnd` arasındaki zaman aralığı içinde ise bu dosyalar seçilir. Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br/><br/> Çok büyük miktarlarda dosyadan dosya filtresi yapmak istediğinizde, bu ayarın etkinleştirilmesi durumunda veri hareketinin genel performansını unutmayın. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  @No__t-0 ' ın DateTime değeri varsa, ancak `modifiedDatetimeEnd` NULL ise, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  @No__t-0 ' ın DateTime değeri varsa, ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir.| Hayır |
+| formatını | Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın.<br/><br/>Belirli bir biçimdeki dosyaları ayrıştırmak veya oluşturmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](supported-file-formats-and-compression-codecs.md#text-format), [JSON biçimi](supported-file-formats-and-compression-codecs.md#json-format), [avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs.md#orc-format)ve [Parquet biçim](supported-file-formats-and-compression-codecs.md#parquet-format) bölümleri. |Hayır (yalnızca ikili kopya senaryosu için) |
+| masıyla | Verilerin türünü ve sıkıştırma düzeyini belirtin. Daha fazla bilgi için bkz. [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**.<br/>Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. |Hayır |
 
 >[!TIP]
->Bir klasör altındaki tüm dosyaları kopyalamak için belirtin **bucketName** demet için ve **önek** klasör bölümü için.<br>Belirli bir ada sahip tek bir dosya kopyalamak için belirtin **bucketName** demet için ve **anahtar** klasör bölümü artı dosya adı.<br>Bir alt klasörü altında bulunan dosyaları kopyalamak için belirtin **bucketName** demet için ve **anahtar** klasör bölümü artı joker karakter filtresi için.
+>Bir klasörün altındaki tüm dosyaları kopyalamak için, for Bucket için **bucketName** ve klasör bölümü için **önek** belirtin.<br>Belirli bir ada sahip tek bir dosyayı kopyalamak için, Aralık için **bucketName** ve klasör bölümü artı dosya adı için **anahtar** belirtin.<br>Bir klasörün altına bir dosya alt kümesini kopyalamak için, Bucket için **bucketName** ve klasör bölümü artı joker karakter filtresi için **anahtar** belirtin.
 
-**Örnek: önek kullanma**
+**Örnek: Using öneki**
 
 ```json
 {
@@ -196,7 +196,7 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 }
 ```
 
-**Örnek: anahtarı ve sürüm (isteğe bağlı) kullanma**
+**Örnek: anahtar ve sürüm kullanma (isteğe bağlı)**
 
 ```json
 {
@@ -227,25 +227,25 @@ Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, Amazon S3 kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Amazon S3 kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="amazon-s3-as-source"></a>Amazon S3 kaynağı olarak
+### <a name="amazon-s3-as-source"></a>Amazon S3 kaynak olarak
 
 - **Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçiminden**kopyalamak Için, [Parquet, SıNıRLANDıRıLMıŞ metin, JSON, avro ve ikili biçim kaynağı](#format-based-source) bölümüne bakın.
 - **Orc biçimi**gibi diğer biçimlerden kopyalamak için [diğer biçim kaynağı](#other-format-source) bölümüne bakın.
 
 #### <a name="format-based-source"></a>Parquet, sınırlandırılmış metin, JSON, avro ve ikili biçim kaynağı
 
-**Inquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**Amazon S3 ' dan verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı 'Nda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine başvurun. desteklenen ayarlar. Aşağıdaki özellikler, biçim tabanlı kopyalama kaynağı ayarları altında `storeSettings` Amazon S3 için desteklenir:
+**Inquet, ayrılmış metin, JSON, avro ve ikili biçimdeki**Amazon S3 ' dan verileri kopyalamak için, biçim tabanlı kopyalama etkinliği kaynağı 'Nda [Parquet biçimine](format-parquet.md), [sınırlandırılmış metin biçimine](format-delimited-text.md), [avro biçimine](format-avro.md) ve [ikili biçim](format-binary.md) makalesine başvurun. desteklenen ayarlar. Aşağıdaki özellikler, `storeSettings` ayarları altında, biçim tabanlı kopyalama kaynağında Amazon S3 için desteklenir:
 
-| Özellik                 | Açıklama                                                  | Gerekli                                                    |
+| Özellik                 | Açıklama                                                  | Gereklidir                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | İçindeki tür özelliği `storeSettings` **AmazonS3ReadSetting**olarak ayarlanmalıdır. | Evet                                                         |
-| recursive                | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında bir dosya tabanlı depolama, bir boş klasör veya alt klasör olduğunu unutmayın kopyalanır değil veya havuz oluşturulur. İzin verilen değerler **true** (varsayılan) ve **false**. | Hayır                                                          |
-| prefix                   | Kaynak nesneleri filtrelemek için veri kümesinde yapılandırılan belirtilen demet altındaki S3 nesne anahtarının ön eki. Seçili bir nesne anahtarları bu öneki ile başlayın. <br>Yalnızca `wildcardFolderPath` ve`wildcardFileName` özellikleri belirtilmediğinde geçerlidir. | Hayır                                                          |
-| Yavaya Cardfolderpath       | Kaynak klasörleri filtrelemek için veri kümesinde yapılandırılan belirtilen demet altında joker karakter olan klasör yolu. <br>İzin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir) `^` ; gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                                          |
-| Yavaya Cardfilename         | Kaynak dosyalarını filtrelemek için, belirtilen demet + folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler `*` : (sıfır veya daha fazla karakterle eşleşir `?` ) ve (sıfır veya tek karakterle eşleşir) `^` ; gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Veri kümesinde `fileName` yoksa ve `prefix` belirtilmemişse Evet |
-| modifiedDatetimeStart    | Özniteliği temel alan dosya filtresi: Son değiştirme. Kendi son değiştirilme zamanı zaman aralığı içinde olduğunda dosyaları seçilir `modifiedDatetimeStart` ve `modifiedDatetimeEnd`. Zaman biçimi UTC saat diliminde uygulanan "2018-12-01T05:00:00Z". <br> Özellikler, hiçbir dosya öznitelik filtresi, veri kümesine uygulanacak anlamına NULL olabilir.  Zaman `modifiedDatetimeStart` datetime değerine sahip ancak `modifiedDatetimeEnd` NULL olduğu için daha büyük olan son değiştirilen özniteliği dosyaları geldiğini veya tarih saat değeri ile eşit seçilir.  Zaman `modifiedDatetimeEnd` datetime değerine sahip ancak `modifiedDatetimeStart` NULL ise, son değiştirilen özniteliği, tarih saat değeri seçilir daha az dosya anlamına gelir. | Hayır                                                          |
+| type                     | @No__t-0 altındaki Type özelliği **AmazonS3ReadSetting**olarak ayarlanmalıdır. | Yes                                                         |
+| öz                | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. İzin verilen değerler **true** (varsayılan) ve **false**şeklindedir. | Hayır                                                          |
+| koy                   | Kaynak nesneleri filtrelemek için veri kümesinde yapılandırılan belirtilen demet altındaki S3 nesne anahtarının ön eki. Anahtarları bu önek ile başlayan nesneler seçilidir. <br>Yalnızca `wildcardFolderPath` ve `wildcardFileName` özellikleri belirtilmediğinde geçerlidir. | Hayır                                                          |
+| Yavaya Cardfolderpath       | Kaynak klasörleri filtrelemek için veri kümesinde yapılandırılan belirtilen demet altında joker karakter olan klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); gerçek klasörünüzün adında joker karakter veya bu kaçış karakteri varsa, çıkış için `^` kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                                          |
+| Yavaya Cardfilename         | Kaynak dosyalarını filtrelemek için, belirtilen demet + folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); gerçek klasörünüzün adında joker karakter veya bu kaçış karakteri varsa, çıkış için `^` kullanın.  [Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Veri kümesinde `fileName` ve `prefix` belirtilmemişse Evet |
+| modifiedDatetimeStart    | Öznitelikleri temel alan dosya filtresi: son değiştirme. Son değiştirilme zamanı, `modifiedDatetimeStart` ve `modifiedDatetimeEnd` arasındaki zaman aralığı içinde ise bu dosyalar seçilir. Saat, UTC saat dilimine "2018-12-01T05:00:00Z" biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmayacak anlamına gelir.  @No__t-0 ' ın DateTime değeri varsa, ancak `modifiedDatetimeEnd` NULL ise, son değiştirilen özniteliği DateTime değeri ile eşit veya daha büyük olan dosyalar seçilir.  @No__t-0 ' ın DateTime değeri varsa, ancak `modifiedDatetimeStart` NULL olduğunda, son değiştirilen özniteliği DateTime değerinden küçük olan dosyalar seçilir. | Hayır                                                          |
 | modifiedDatetimeEnd      | Yukarıdaki gibi.                                               | Hayır                                                          |
 | maxConcurrentConnections | Depolama deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır                                                          |
 
@@ -297,10 +297,10 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 **Orc biçimindeki**Amazon S3 öğesinden veri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gerekli |
+| Özellik | Açıklama | Gereklidir |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağının Type özelliği şu şekilde ayarlanmalıdır: **FileSystemSource** |Evet |
-| recursive | Belirtilen klasörün alt klasörleri ya da yalnızca veri yinelemeli olarak okunur olup olmadığını belirtir. Özyinelemeli true ve havuz için ayarlandığında Not dosya tabanlı depolama, boş klasör/alt-folder havuz kopyalanan/oluşturulmuş olmaz.<br/>İzin verilen değerler: **true** (varsayılan), **false** | Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Filesystemsource** olarak ayarlanmalıdır |Yes |
+| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı depo ise, boş klasör/alt klasör, havuzda kopyalanmayacak/oluşturulmaz.<br/>İzin verilen değerler: **true** (varsayılan), **false** | Hayır |
 | maxConcurrentConnections | Veri deposuna eşzamanlı olarak bağlanmak için bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde belirtin. | Hayır |
 
 **Örnek:**
@@ -339,12 +339,12 @@ Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi i
 
 Bu bölümde, klasör yolu ve dosya adının joker karakter filtreleriyle elde edilen davranışı açıklanmaktadır.
 
-| bucket | key | recursive | Kaynak klasör yapısı ve filtre sonucu (kalın olan dosyalar alınır)|
+| demet | anahtar | öz | Kaynak klasör yapısı ve filtre sonucu (kalın olan dosyalar alınır)|
 |:--- |:--- |:--- |:--- |
-| bucket | `Folder*/*` | false | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| bucket | `Folder*/*` | true | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Dosya2. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. JSON**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| bucket | `Folder*/*.csv` | false | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
-| bucket | `Folder*/*.csv` | true | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FILE1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6. csv |
+| demet | `Folder*/*` | yanlış | demet<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3FolderA<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7**FILE1. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7**dosya2. JSON**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7Subfolder1<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File3.csv<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File4.json<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File5.csv<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3AnotherFolderB<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6&nbsp;File6.csv |
+| demet | `Folder*/*` | doğru | demet<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3FolderA<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7**FILE1. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7**dosya2. JSON**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7Subfolder1<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11**File3. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11**File4. JSON**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11**File5. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3AnotherFolderB<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6&nbsp;File6.csv |
+| demet | `Folder*/*.csv` | yanlış | demet<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3FolderA<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7**FILE1. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6&nbsp;File2.json<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7Subfolder1<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File3.csv<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File4.json<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File5.csv<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3AnotherFolderB<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6&nbsp;File6.csv |
+| demet | `Folder*/*.csv` | doğru | demet<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3FolderA<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7**FILE1. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6&nbsp;File2.json<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7Subfolder1<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11**File3. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10&nbsp;1File4.json<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9 @ no__t-10 @ no__t-11**File5. csv**<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3AnotherFolderB<br/>&nbsp; @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6&nbsp;File6.csv |
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 

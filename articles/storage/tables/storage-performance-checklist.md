@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311616"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389983"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 
@@ -65,7 +65,7 @@ Tablo hizmeti için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi iç
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
-Belirli bir abonelik/bölge birleşimi için izin verilen en fazla depolama hesabı sayısına yaklaşdıysanız, parça, çıkış, saniye başına g/ç işlemi (ıOPS) veya kapasiteyi artırmak için birden fazla depolama hesabı kullanıyor musunuz? Bu senaryoda, Microsoft, mümkünse iş yükünüz için gereken depolama hesabı sayısını azaltmak için standart depolama hesapları için artan limitlerin avantajlarından yararlanmanızı önerir. Depolama Hesabınıza yönelik daha fazla limit istemek için [Azure desteğine](https://azure.microsoft.com/support/options/) başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+Belirli bir abonelik/bölge birleşimi için izin verilen en fazla depolama hesabı sayısına yaklaşdıysanız, parça, çıkış, saniye başına g/ç işlemi (ıOPS) veya kapasiteyi artırmak için birden fazla depolama hesabı kullanıyor musunuz? Bu senaryoda, Microsoft, mümkünse iş yükünüz için gereken depolama hesabı sayısını azaltmak üzere depolama hesapları için artan limitlerin avantajlarından yararlanmanızı öneriyor. Depolama Hesabınıza yönelik daha fazla limit istemek için [Azure desteğine](https://azure.microsoft.com/support/options/) başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapasite ve işlem hedefleri
 
@@ -282,6 +282,4 @@ Batch ekleme ve daha sonra varlık aralıklarını birlikte alma işlemi yapıyo
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
-- [BLOB depolama için performans ve ölçeklenebilirlik denetim listesi](../blobs/storage-performance-checklist.md)
-- [Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi](../queues/storage-performance-checklist.md)
 - [Durum ve hata kodları](/rest/api/storageservices/Status-and-Error-Codes2)

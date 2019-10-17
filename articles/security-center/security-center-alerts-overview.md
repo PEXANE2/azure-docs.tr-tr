@@ -8,14 +8,14 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/25/2019
+ms.date: 10/16/2019
 ms.author: memildin
-ms.openlocfilehash: 3b4b02574c028822d25d841376b127a718243b2e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 69b81417e541bd6853e02065e8cee08e3e04b4a2
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202568"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433886"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -37,7 +37,7 @@ Ayrıca saldırganlar, çok sayıda imza tabanlı savunma ve [bulut ortamlarına
 
 Uyarılar, güvenlik merkezi 'nin kaynaklarınızın tehditleri algıladığında oluşturduğu bildirimlerdir. Güvenlik Merkezi, uyarıları hızlı bir şekilde araştırmanız için gereken bilgilerle birlikte, uyarıları önceliklendirir ve listeler. Güvenlik Merkezi ayrıca bir saldırıyı nasıl düzeltebileceğiniz konusunda öneriler de sağlar.
 
-## Güvenlik Merkezi tehditleri nasıl algılar? <a name="detect-threats"></a>
+## Güvenlik Merkezi tehditleri nasıl algılar? <a name="detect-threats"> </a>
 
 Microsoft güvenlik araştırmacıları sürekli olarak tehditleri araştırmaktadır. Microsoft 'un bulutta ve şirket içinde küresel olup olmadığı için, bir dizi telemetri kümesine erişebilirler. Geniş ve çok sayıda veri kümesi, yeni saldırı desenlerinin ve eğilimler ile şirket içi tüketici ve kurumsal ürünlerin yanı sıra çevrimiçi hizmetler. Sonuç olarak, saldırganlar yeni ve giderek karmaşık hale gelen sömürülerini ortaya çıkardıkça Güvenlik Merkezi algılama algoritmalarını hızlı bir şekilde güncelleştirebilmektedir. Bu yaklaşık hızlı hareket eden bir ortama ayak uydurmanıza yardımcı olmaktadır.
 
@@ -47,34 +47,50 @@ Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları 
 
 Güvenlik Merkezi, imza tabanlı yaklaşımların ötesine geçen gelişmiş güvenlik analizleri kullanır. Büyük veri ve [machine learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) teknolojilerindeki sıçramalar, tüm bulut yapısındaki olayları değerlendirmek için kullanılır: elle yaklaşımlar kullanılarak ve saldırıların gelişimi tahmin edilerek belirlenmesi imkansız olan tehditler algılanır. Bu güvenlik analizleri şunlardır:
 
-* **Tümleşik tehdit bilgileri**: Microsoft ürün ve Hizmetleri, Microsoft Digital Crimes birimi (DCU), Microsoft Güvenlik Yanıt Merkezi (MSRC) ve dış akışların küresel tehdit bilgilerini kullanarak bilinen kötü aktörler için arama yapar.
-* **Davranış analizi**: Kötü amaçlı davranışı bulmaya yönelik bilinen desenler uygular.
-* **Anomali algılama**: Bir geçmiş taban çizgisi oluşturmak için istatistiksel profil oluşturma kullanır. Olası bir saldırı vektörüne uygun olan yerleşik taban çizgilerinden sapmalar konusunda uyarır.
+* **Tümleşik tehdit bilgileri**: Microsoft ürün ve Hizmetleri, Microsoft Digital Crimes birimi (DCU), Microsoft Güvenlik Yanıt MERKEZI (MSRC) ve dış akışların küresel tehdit bilgilerini kullanarak bilinen kötü aktörler için arama yapar.
+* **Davranış analizi**: kötü amaçlı davranışı keşfetmeye yönelik bilinen desenleri uygular.
+* **Anomali algılama**: bir geçmiş taban çizgisi oluşturmak için istatistiksel profil oluşturma kullanır. Olası bir saldırı vektörüne uygun olan yerleşik taban çizgilerinden sapmalar konusunda uyarır.
 
-Aşağıdaki konularda, bu analizlerin her biri daha ayrıntılı bir şekilde ele alınmaktadır.
+Aşağıdaki bölümler, bu analizlerin her birini daha ayrıntılı olarak tartışır.
 
 ### <a name="integrated-threat-intelligence"></a>Tümleşik tehdit bilgileri
 
-Microsoft yoğun miktarda genel tehdit bilgisine sahiptir. Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Dijital Suçlar Birimi (DCU) ve Microsoft Güvenlik Yanıt Merkezi (MSRC) gibi birden fazla kaynaktan telemetri akışı sağlanır. Araştırmacılar ayrıca büyük bulut hizmeti sağlayıcıları ve üçüncü tarafların bilgi akışlarına abone olan kişiler arasında paylaşılan tehdit bilgilerini alır. Azure Güvenlik Merkezi bilinen kötü aktörlerden gelen tehditler konusunda sizi uyarmak için bu bilgileri kullanabilir.
+Microsoft yoğun miktarda genel tehdit bilgisine sahiptir. Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes birimi (DCU) ve Microsoft Güvenlik Yanıt Merkezi (MSRC) gibi birden fazla kaynaktan telemetri akışı. Araştırmacılar, büyük bulut hizmeti sağlayıcıları ve diğer üçüncü taraflardan akışlar arasında paylaşılan tehdit bilgileri bilgilerini de alır. Azure Güvenlik Merkezi bilinen kötü aktörlerden gelen tehditler konusunda sizi uyarmak için bu bilgileri kullanabilir.
 
 ### <a name="behavioral-analytics"></a>Davranış analizi
 
-Davranış analizi, verileri analiz eden ve bilinen modeller koleksiyonuyla karşılaştıran bir tekniktir. Ancak, bu modeller basit imzalar değildir. Bunlar büyük veri kümelerine uygulanan karmaşık machine learning algoritmaları aracılığıyla belirlenir. Bunlar, kötü amaçlı davranışların uzman analistler tarafından dikkatlice çözümlenmesiyle de belirlenir. Azure Güvenlik Merkezi, güvenliği ihlal edilen kaynakları belirlemek amacıyla sanal makine günlükleri, sanal ağ cihazı günlükleri, yapı günlükleri, kilitlenme dökümleri ve diğer kaynakların analizine bağlı olarak davranış analizi kullanabilir.
+Davranış analizi, verileri analiz eden ve bilinen modeller koleksiyonuyla karşılaştıran bir tekniktir. Ancak, bu modeller basit imzalar değildir. Bunlar büyük veri kümelerine uygulanan karmaşık machine learning algoritmaları aracılığıyla belirlenir. Bunlar, kötü amaçlı davranışların uzman analistler tarafından dikkatlice çözümlenmesiyle de belirlenir. Azure Güvenlik Merkezi, sanal makine günlüklerinin, sanal ağ cihaz günlüklerinin, yapı günlüklerinin, kilitlenme dökümlerinin ve diğer kaynakların analizine dayalı olarak güvenliği aşılmış kaynakları belirlemek için davranış analizini kullanabilir.
 
-Ayrıca, yaygın bir kampanyanın kanıtını desteklemek üzere denetlenmesi gereken diğer sinyallerle bir bağlantı vardır. Bu bağıntı yerleşik tehlike göstergeleriyle tutarlı olayları tanımlamaya yardımcı olur. 
+Ayrıca, geniş bir kampanyanın destek kanıtını denetlemek için başka sinyallerle bağıntı vardır. Bu bağıntı yerleşik tehlike göstergeleriyle tutarlı olayları tanımlamaya yardımcı olur. 
 
 ### <a name="anomaly-detection"></a>Anomali algılama
 
 Azure Güvenlik Merkezi, tehditleri tanımlamak için anormallik algılamayı da kullanır. Davranış analizinden (büyük veri kümelerinden türetilmiş bilinen modellere bağlıdır) farklı olarak anormallik algılama daha fazla “kişiselleştirilmiştir” ve dağıtımlarınıza özel taban çizgilerine odaklanır. Dağıtımlarınızın normal etkinliğini belirlemek için machine learning uygulanır ve sonra bir güvenlik olayını gösterebilecek aykırı değer koşullarını tanımlamak üzere kurallar oluşturulur.
 
+## <a name="how-are-alerts-classified"></a>Uyarılar nasıl sınıflandırıldı?
+
+Güvenlik Merkezi, her uyarıya katılma sırasını önceliklendirmenize yardımcı olmak için uyarılara önem derecesi atar. böylece, bir kaynak tehlikeye girdiğinde, hemen bu işe başlayabilirsiniz. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır.
+
+> [!NOTE]
+> Uyarı önem derecesi portalda ve REST API farklı şekilde görüntülenirken, farklar aşağıdaki listede belirtilmiştir.
+
+* **Yüksek:** Kaynağınızın güvenliğinin tehlikeye girdiği büyük bir olasılık vardır. Hemen bir yere bakmanız gerekir. Güvenlik Merkezi, hem kötü amaçlı amaç hem de uyarı vermek için kullanılan bulgularda yüksek güvenilirliğe sahiptir. Örneğin, Mimikatz gibi bilinen kötü amaçlı bir aracın yürütülmesini algılayan bir uyarı, kimlik bilgilerinin çalınması için kullanılan ortak bir araçtır.
+* **Orta (REST API düşük olabilir)** : Bu, büyük olasılıkla bir kaynağın tehlikeye girdiği anlamına gelebilir.
+Güvenlik Merkezi 'nin analitik veya bulma 'daki güvenilirliği orta ve kötü amaçlı amaç 'nin güvenilirliği orta ile yüksektir. Bunlar genellikle makine öğrenimi veya anomali tabanlı algılamalar olur. Örneğin, anormal bir konumdan oturum açma girişimi.
+* **Düşük (REST API bilgiler)** : Bu, bir zararsız veya engellenmiş saldırı olabilir.
+   * Güvenlik Merkezi, amacın kötü amaçlı olduğu ve etkinliğin masum olabileceğinden emin olmak için yeterli değildir. Örneğin, günlük Temizleme, bir saldırgan parçaları gizlemeyi denediğinde gerçekleşemeyen bir eylemdir, ancak çoğu durumda Yöneticiler tarafından gerçekleştirilen bir rutin işlemdir.
+   * Güvenlik Merkezi, baktığımız ilginç bir durum olmadığı takdirde saldırı ne zaman engellendiğine ilişkin bilgi vermez. 
+* **Bilgilendirici (REST API sessiz)** : yalnızca bir güvenlik olayının detayına göre veya REST API belirli BIR uyarı kimliğiyle kullandığınızda bilgilendirme uyarıları görürsünüz. Genellikle bir olay bir dizi uyarıdan oluşur, bazıları yalnızca bilgilendirici olarak görünebilir, ancak diğer uyarıların bağlamında daha yakından bir görünüme sahip olabilir. 
+ 
+
 ## <a name="continuous-monitoring-and-assessments"></a>Sürekli izleme ve değerlendirmeler
 
 Azure Güvenlik Merkezi, Microsoft 'un tamamında güvenlik araştırması ve veri bilimi ekiplerine sahip olmanın yanı sıra tehdit yatadaki değişiklikleri sürekli olarak izlemeye yöneliktir. Buna aşağıdaki girişimler dahildir:
 
-* **Tehdit bilgileri izleme**: Tehdit bilgileri, mevcut veya ortaya çıkan tehditler hakkında mekanizmalar, göstergeler, etkiler ve eyleme dönüştürülebilir öneriler içerir. Bu bilgileri güvenlik topluluğu içinde paylaşılır ve Microsoft, iç ve dış kaynaklardan gelen tehdit bilgisi akışlarını sürekli olarak izler.
-* **Sinyal paylaşımı**: Microsoft 'un genel bulut ve şirket içi hizmetler, sunucular ve istemci uç noktası cihazlarının geniş portföyündeki güvenlik ekiplerinden Öngörüler paylaşılır ve çözümlenir.
-* **Microsoft güvenlik uzmanları**: Microsoft 'un özel güvenlik alanları ve Web saldırısı algılaması gibi özelleştirilmiş güvenlik alanlarında çalışan ekiplerle sürekli katılım.
-* **Algılama ayarı**: Algoritmalar gerçek müşteri veri kümelerine karşı çalıştırılır ve güvenlik araştırmacıları, sonuçları doğrulamak için müşterilerle birlikte çalışır. Doğru ve yanlış pozitifler kullanılarak machine learning algoritmaları iyileştirilir.
+* **Tehdit bilgileri izleme**: tehdit bilgileri, mevcut veya ortaya çıkan tehditler hakkında mekanizmalar, göstergeler, etkiler ve eyleme dönüştürülebilir öneriler içerir. Bu bilgileri güvenlik topluluğu içinde paylaşılır ve Microsoft, iç ve dış kaynaklardan gelen tehdit bilgisi akışlarını sürekli olarak izler.
+* **Sinyal paylaşımı**: Microsoft'un bulut ve şirket içi hizmetler, sunucular ve istemci uç noktası cihazları içeren geniş portföyünde güvenlik ekiplerinden alınan bilgiler paylaşılır ve analiz edilir.
+* **Microsoft güvenlik uzmanları**: Microsoft’ta hukuk ve web saldırıcı algılama gibi uzman güvenlik alanlarında çalışan ekiplerle sürekli iletişim.
+* **Algılama ayarı**: Gerçek müşteri veri kümelerine göre algoritmalar çalıştırılır ve güvenlik araştırmacıları, sonuçları doğrulamak üzere müşterilerle işbirliği yapar. Doğru ve yanlış pozitifler kullanılarak machine learning algoritmaları iyileştirilir.
 
 Bu birleşik çabalar yeni ve geliştirilmiş algılamalarla sonuçlanır ve sizin hiçbir şey yapmanıza gerek kalmaz.
 

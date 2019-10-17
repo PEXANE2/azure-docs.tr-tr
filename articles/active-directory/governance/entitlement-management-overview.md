@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827149"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430303"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD yetkilendirme yönetimi nedir? (Önizleme)
 
@@ -73,7 +73,7 @@ Identity Idare ve yetkilendirme yönetimine genel bir bakış için, Ignite 2018
 Yetkilendirme yönetimiyle erişimi yönetebileceğiniz kaynak türleri şunlardır:
 
 - Azure AD güvenlik grupları
-- Office 365 grupları
+- Office 365 Grupları
 - SaaS uygulaması ve Federasyon veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamaları
 - SharePoint Online site koleksiyonları ve siteleri
 
@@ -105,16 +105,6 @@ Aşağıdaki diyagramda, yetkilendirme yönetiminde farklı öğelerin bir örne
 
 ![Yetkilendirme yönetimine genel bakış](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Dış kullanıcılar
-
-[Azure AD işletmeden işletmeye (B2B)](../b2b/what-is-b2b.md) davet deneyimini kullanırken, kaynak dizininize getirmek istediğiniz dış konuk kullanıcıların e-posta adreslerini zaten bilmeniz ve ile çalışmanız gerekir. Bu, daha küçük veya kısa süreli bir proje üzerinde çalışırken ve tüm katılımcıları zaten öğrendiğinizde harika bir şekilde çalışır, ancak birlikte çalışmak istediğiniz çok sayıda kullanıcınız varsa veya katılımcılar zaman içinde değişiyorlarsa yönetimi daha zordur.  Örneğin, başka bir kuruluşla çalışıyor ve bu kuruluşla tek bir iletişim noktasına sahip olabilirsiniz, ancak bu kuruluştan daha fazla ek kullanıcının da erişime ihtiyacı olacaktır.
-
-Yetkilendirme Yönetimi sayesinde, bir erişim paketi isteyebilmek için, belirttiğiniz kuruluşların (Azure AD kullanan) kullanıcılara izin veren bir ilke tanımlayabilirsiniz. Onayın gerekli olup olmadığını ve erişim için bir sona erme tarihi belirtebilirsiniz. Onay gerekiyorsa, daha önce davet ettiğiniz dış kuruluştan bir veya daha fazla kullanıcı olarak da belirleyebilirsiniz. bu sayede, kuruluşlarından hangi dış kullanıcıların erişmesi gerektiği bilinmekteydi. Erişim paketini yapılandırdıktan sonra, dış kuruluştaki kişi kişinizdeki erişim paketine bir bağlantı gönderebilirsiniz. Bu iletişim, dış kuruluştaki diğer kullanıcılarla paylaşabilir ve bu bağlantıyı, erişim paketini istemek için kullanabilir.  Bu kuruluştan, dizininizden zaten davet edilmiş olan kullanıcılar da bu bağlantıyı kullanabilir.
-
-Bir istek onaylandığında, Yetkilendirme Yönetimi kullanıcıya gerekli erişimi sağlayacak ve bu kullanıcılar zaten dizininizden değilse kullanıcıyı davet edebilir. Azure AD, bunlar için otomatik olarak bir B2B hesabı oluşturur.  Bir yöneticinin daha önce hangi kuruluşların işbirliği için izin verileceğini sınırlı olabileceğini, diğer kuruluşlara yönelik olarak bir [B2B izin verme veya reddetme listesi](../b2b/allow-deny-list.md) ayarlanmasına izin vermek veya engellemek için  Kullanıcıya izin verilenler veya engellenenler listesi tarafından izin verilmezse, bunlar davet edilmeyecektir.
-
-Dış kullanıcının en son sonsuza kadar erişimini istemediğiniz için ilkede 180 gün gibi bir sona erme tarihi belirtirsiniz. 180 gün sonra, erişimleri yenilenmezse, Yetkilendirme Yönetimi bu erişim paketiyle ilişkili tüm erişimi kaldırır.  Yetkilendirme Yönetimi üzerinden davet edilen kullanıcının başka bir erişim paketi ataması yoksa, bunların son atamasını kaybettikleri durumlarda B2B hesaplarının 30 gün boyunca oturum açması engellenir ve daha sonra kaldırılır.  Bu, gereksiz hesapların uzamasını önler.  
-
 ## <a name="terminology"></a>Terminoloji
 
 Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçirmeniz gerekir.
@@ -132,7 +122,7 @@ Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için aşağıdaki ko�
 | Kaynak rolü | Bir kaynakla ilişkili izinler koleksiyonu. |
 | Kaynak dizini | Paylaşılacak bir veya daha fazla kaynağı olan bir dizin. |
 | atanan kullanıcılar | Kullanıcının bu erişim paketinin tüm kaynak rollerine sahip olması için bir erişim paketinin kullanıcıya atanması. |
-| Etkinleştirebilir | Kullanıcılara istemek için bir erişim paketi oluşturma işlemi. |
+| etkinleştirebilir | Kullanıcılara istemek için bir erişim paketi oluşturma işlemi. |
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 

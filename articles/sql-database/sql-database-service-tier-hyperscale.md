@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: dc9acd4fc45de2599ac71427ec2676506071894b
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035054"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428047"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -246,8 +246,9 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | Esnek Havuzlar |  Esnek havuzlar Şu anda SQL veritabanı Hyperscale ile desteklenmemektedir.|
 | Hyperscale 'e geçiş Şu anda tek yönlü bir işlemdir | Bir veritabanı hiper ölçeğe geçirildiğinde doğrudan Hyperscale olmayan bir hizmet katmanına geçirilemez. Mevcut olduğunda, bir veritabanını Hiperscale 'den hiper olmayan ölçeğe geçirmenin tek yolu BACPAC dosyasını veya diğer veri taşıma teknolojilerini (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS, vb.) kullanarak dışarı ve içeri aktarmaya yönelik bir yoldur.|
 | Kalıcı bellek içi nesneleri olan veritabanlarının geçirilmesi | Hiper ölçek yalnızca kalıcı olmayan bellek nesnelerini destekler (tablo türleri, yerel SPs 'ler ve işlevler).  Kalıcı bellek Içi tablolar ve diğer nesneler, bir veritabanını hiper ölçek hizmet katmanına geçirmeden önce, bellek içi nesneler olarak bırakılmalıdır ve yeniden oluşturulmalıdır.|
-| Değişiklik İzleme | Hiper ölçekli veritabanları ile Değişiklik İzleme kullanamazsınız. |
-| Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız.  Coğrafi geri yükleme gerçekleştirebilirsiniz (veritabanını farklı bir Coğrafya 'da, DR veya diğer amaçlar için geri yükleme) |
+| Değişiklik İzleme | Azure SQL Hyperscale veritabanları ile Değişiklik İzleme henüz yapılandırıp kullanamazsınız. |
+| Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
+| Veritabanı kopyalama | Azure SQL Hyperscale 'de yeni bir veritabanı oluşturmak için henüz veritabanı kopyasını kullanamazsınız. |
 | TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır), Azure SQL veritabanı Hyperscale için henüz desteklenmemiştir, ancak hizmet tarafından yönetilen anahtarlarla birlikte TDE desteklenir. |
 |Akıllı veritabanı özellikleri | "Plan zorla" seçeneğinin dışında, diğer tüm otomatik ayarlama seçenekleri hiper ölçekte henüz desteklenmemiştir: seçenekler etkin gibi görünebilir, ancak hiçbir öneri veya eylem yapılmaz. |
 

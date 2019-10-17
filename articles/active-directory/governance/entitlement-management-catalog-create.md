@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169921"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429587"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme (Önizleme)
 
@@ -52,7 +52,7 @@ Katalog, kaynak ve erişim paketlerinin bir kapsayıcısıdır. İlgili kaynakla
 
 1. Seçili dış dizinlerde bulunan kullanıcıların bu katalogda erişim paketleri isteyebilmesini sağlamak istiyorsanız, **dış kullanıcılar Için etkin** ayarını **Evet**olarak belirleyin.
 
-    ![Yeni Katalog bölmesi](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Yeni Katalog bölmesi](./media/entitlement-management-shared/new-catalog.png)
 
 1. Kataloğu oluşturmak için **Oluştur** ' a tıklayın.
 
@@ -130,7 +130,9 @@ Bir kataloğun adını ve açıklamasını düzenleyebilirsiniz. Kullanıcılar 
 
 1. Kataloğun **genel bakış** sayfasında, **Düzenle**' ye tıklayın.
 
-1. Kataloğun adını veya açıklamasını düzenleyin.
+1. Kataloğun adını, açıklamasını veya etkin ayarlarını düzenleyin.
+
+    ![Katalog ayarlarını Düzenle](./media/entitlement-management-shared/catalog-edit.png)
 
 1. **Kaydet** düğmesine tıklayın.
 

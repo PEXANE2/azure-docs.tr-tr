@@ -4,13 +4,13 @@ ms.author: cynthn
 ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: jeconnoc
-ms.openlocfilehash: c881c95fb860befbc978aba5a6c73375dce235fe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+manager: gwallace
+ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919756"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391817"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
@@ -33,11 +33,11 @@ Azure VM görüntü Oluşturucu (Azure görüntü Oluşturucu), bir Windows veya
 - VHD biçimindeki görüntülerin oluşturulması.
  
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Bölgeler
 Azure görüntü Oluşturucu hizmeti bu bölgelerde önizleme için kullanılabilir olacak. Görüntüler, bu bölgelerin dışına dağıtılabilir.
-- East US
+- Doğu ABD
 - Doğu ABD 2
-- Batı Orta ABD
+- Orta Batı ABD
 - Batı ABD
 - Batı ABD 2
 
@@ -58,7 +58,7 @@ AıB, için bir kaynak olarak RHEL ISO 'yu destekleyecektir:
 
 RHEL 7,6 ISOs desteklenmez, ancak test ediliyor.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 
 ![Azure Image Builder kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -72,9 +72,9 @@ Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından eriş
 ![Azure Image Builder işleminin kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Görüntü şablonunu bir. JSON dosyası olarak oluşturun. Bu. JSON dosyası, görüntü kaynağı, özelleştirmeler ve dağıtım hakkındaki bilgileri içerir. [Azure Image Builder GitHub deposunda](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)birden çok örnek vardır.
-1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır ve şu biçimdedir: IT_\<destinationresourcegroup > _\<TemplateName >. 
-1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubunda bir VM (D1v2), ağ, genel IP ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
-1. Görüntü oluşturma işlemi kapsamında, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve sonra IT_\<destinationresourcegroup > _\<TemplateName > kaynak grubundaki ek kaynakları siler işlem.
+1. Bu hizmeti hizmetine gönderirseniz, belirttiğiniz kaynak grubunda bir görüntü şablonu yapıtı oluşturulur. Arka planda, görüntü Oluşturucu kaynak görüntüyü veya ISO ve komut dosyalarını gerektiği şekilde indirir. Bunlar, aboneliğinizde otomatik olarak oluşturulan ayrı bir kaynak grubunda depolanır: IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName >. 
+1. Görüntü şablonu oluşturulduktan sonra görüntüyü oluşturabilirsiniz. Arka plan resmi tasarımcısında, IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > kaynak grubunda bir VM (D1v2), ağ, genel IP ve depolama oluşturmak için şablon ve kaynak dosyalarını kullanır.
+1. Görüntü oluşturma işleminin bir parçası olarak, görüntü Oluşturucu görüntüyü şablona göre dağıtır ve ardından işlem için oluşturulan IT_ @ no__t-0DestinationResourceGroup > _ @ no__t-1TemplateName > kaynak grubundaki ek kaynakları siler.
 
 
 ## <a name="permissions"></a>İzinler
@@ -98,7 +98,7 @@ Hizmet hesabı bulunmazsa, rol atamasını eklediğiniz aboneliğin kaynak sağl
 ## <a name="costs"></a>Maliyetler
 Azure Image Builder ile görüntü oluştururken, derlerken ve depolarken bazı işlem, ağ ve depolama maliyetlerine tabi olursunuz. Bu maliyetler, el ile özel görüntüler oluşturma bölümünde tahakkuk eden maliyetlere benzer. Kaynaklar için Azure ücretlerinizi ücretlendirilecektir. 
 
-Görüntü oluşturma işlemi sırasında dosyalar indirilir ve `IT_<DestinationResourceGroup>_<TemplateName>` kaynak grubunda depolanır ve bu, küçük bir depolama maliyetlerine neden olur. f bu adımları saklamak istemiyorsanız, görüntü oluşturulduktan sonra görüntü şablonunu silin.
+Görüntü oluşturma işlemi sırasında, dosyalar `IT_<DestinationResourceGroup>_<TemplateName>` kaynak grubunda indirilir ve depolanır ve bu, küçük bir depolama maliyetlerine neden olur. Bunları tutmak istemiyorsanız, görüntü oluşturulduktan sonra **görüntü şablonunu** silin.
  
 Image Builder, VM için gereken bir D1v2 VM boyutu, depolama alanı ve ağ kullanarak bir VM oluşturur. Bu kaynaklar, derleme işleminin süresi boyunca son verilecek ve görüntü Oluşturucu görüntüyü oluşturmayı tamamladığında silinir. 
  

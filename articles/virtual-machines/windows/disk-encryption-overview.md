@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e38a58d076f6a8b7b2b07e468c61835ed06f55a4
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255613"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435741"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 'Leri için Azure disk şifrelemesi 
 
@@ -32,11 +32,11 @@ Windows için Azure disk şifrelemesi temellerini yalnızca birkaç dakika için
 
 ### <a name="supported-vm-sizes"></a>Desteklenen VM boyutları
 
-Windows VM 'Leri [çeşitli boyutlarda](sizes-general.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](/pricing/details/virtual-machines/series/)'lerde veya 2 GB 'den az belleğe sahip sanal makinelerde kullanılamaz.
+Windows VM 'Leri [çeşitli boyutlarda](sizes-general.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya 2 GB 'den az belleğe sahip sanal makinelerde kullanılamaz.
 
 Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir.
 
-### <a name="supported-operating-systems"></a>Supported operating systems
+### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 - Windows istemcisi: Windows 8 ve üzeri.
 - Windows Server: Windows Server 2008 R2 ve üzeri.  
@@ -75,10 +75,10 @@ Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yay
 | Terminoloji | Tanım |
 | --- | --- |
 | Azure Key Vault | Key Vault, Federal bilgi Işleme standartları (FIPS) tarafından doğrulanan donanım güvenlik modüllerini temel alan bir şifreleme, anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarınızı ve hassas gizli dizileri korumaya yardımcı olur. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
-| Azure CLı | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
+| Azure CLI | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) , Windows VM 'lerinde disk şifrelemeyi etkinleştirmek için kullanılan sektör tarafından tanınan bir Windows birimi şifreleme teknolojisidir. |
 | Anahtar şifreleme anahtarı (KEK) | Gizli anahtarı korumak veya kaydırmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Donanım güvenlik modülü (HSM) korumalı bir anahtar veya yazılımla korunan anahtar sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
-| PowerShell cmdlet 'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/overview). |
+| PowerShell cmdlet'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

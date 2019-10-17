@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311138"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382053"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -35,7 +35,7 @@ Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir den
 | &nbsp; |Networking (Ağ İletişimi) |[İstemci tarafı cihazlarda gereken performansa ulaşmak için yeterli yüksek bant genişliği ve düşük gecikme süresi var mı?](#throughput) |
 | &nbsp; |Networking (Ağ İletişimi) |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
 | &nbsp; |Networking (Ağ İletişimi) |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
-| &nbsp; |Doğrudan Istemci erişimi |[Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
+| &nbsp; |Doğrudan istemci erişimi |[Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
 | &nbsp; |Önbelleğe Alma |[Uygulamanızın önbelleğe alınması sık erişilen ve nadiren değiştirilen verilerinize mı sahip?](#reading-data) |
 | &nbsp; |Önbelleğe Alma |[Uygulamanız, güncelleştirmeleri istemcide önbelleğe alarak ve daha sonra bunları daha büyük kümelere karşıya yükleyerek toplu olarak güncelleştirir mı?](#uploading-data-in-batches) |
 | &nbsp; |.NET yapılandırması |[En iyi performans için .NET Core 2,1 veya üstünü mi kullanıyorsunuz?](#use-net-core) |
@@ -66,7 +66,7 @@ Belirli bir abonelik/bölge birleşimi için izin verilen en fazla depolama hesa
 
 - Yönetilmeyen diskleri depolamak ve bu diskleri sanal makinelerinize (VM 'Ler) eklemek için depolama hesapları kullanıyor musunuz? Bu senaryo için, Microsoft yönetilen disklerin kullanılmasını önerir. Yönetilen diskler, tek tek depolama hesapları oluşturma ve yönetmeye gerek kalmadan otomatik olarak ve sizin için ölçeklendirilir. Daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](../../virtual-machines/windows/managed-disks-overview.md)
 - Veri yalıtımı amacıyla müşteri başına bir depolama hesabı kullanıyor musunuz? Bu senaryo için, Microsoft tüm depolama hesabı yerine her müşteri için bir blob kapsayıcısı kullanılmasını önerir. Azure depolama artık kapsayıcı temelinde rol tabanlı erişim denetimi (RBAC) rolleri atamanıza olanak tanır. Daha fazla bilgi için, [Azure Portal RBAC Ile Azure Blob ve kuyruk verilerine erişim verme](../common/storage-auth-aad-rbac-portal.md)bölümüne bakın.
-- Giriş, çıkış, saniye başına g/ç işlemi (ıOPS) veya kapasiteyi artırmak için birden fazla depolama hesabı kullanıyor musunuz? Bu senaryoda, Microsoft, mümkünse iş yükünüz için gereken depolama hesabı sayısını azaltmak için standart depolama hesapları için artan limitlerin avantajlarından yararlanmanızı önerir. Depolama Hesabınıza yönelik daha fazla limit istemek için [Azure desteğine](https://azure.microsoft.com/support/options/) başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+- Giriş, çıkış, saniye başına g/ç işlemi (ıOPS) veya kapasiteyi artırmak için birden fazla depolama hesabı kullanıyor musunuz? Bu senaryoda, Microsoft, mümkünse iş yükünüz için gereken depolama hesabı sayısını azaltmak üzere depolama hesapları için artan limitlerin avantajlarından yararlanmanızı öneriyor. Depolama Hesabınıza yönelik daha fazla limit istemek için [Azure desteğine](https://azure.microsoft.com/support/options/) başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapasite ve işlem hedefleri
 
@@ -286,6 +286,4 @@ Sayfa Blobları, uygulamanın verilerde rastgele yazma işlemleri yapması gerek
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi](../queues/storage-performance-checklist.md)
-- [Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi](../tables/storage-performance-checklist.md)
 - [Durum ve hata kodları](/rest/api/storageservices/Status-and-Error-Codes2)

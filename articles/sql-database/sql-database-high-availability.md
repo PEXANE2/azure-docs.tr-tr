@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 10/11/2019
-ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299701"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390710"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Yüksek kullanılabilirlik ve Azure SQL veritabanı
 
@@ -88,6 +88,13 @@ Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diy
 ## <a name="accelerated-database-recovery-adr"></a>Hızlandırılmış veritabanı kurtarma (ADR)
 
 [Hızlandırılmış veritabanı kurtarma (ADR)](sql-database-accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yenı bir SQL veritabanı altyapısı özelliğidir. ADR Şu anda tek veritabanları, elastik havuzlar ve Azure SQL veri ambarı için kullanılabilir.
+
+## <a name="testing-database-fault-resiliency"></a>Veritabanı hata esnekliğini test etme
+
+Yüksek kullanılabilirlik, Azure SQL veritabanı platformunun temel bir parçasıdır ve veritabanı uygulamanız için saydam olarak çalışmaktadır. Ancak, planlı veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin, üretim için dağıtmadan önce uygulamayı ne şekilde etkilediğini test etmek isteyebilirsiniz. Veritabanını veya elastik havuzu yeniden başlatmak için özel bir API çağırabilirsiniz, bu da yük devretmeyi tetikleyecektir. Bölgesel olarak yedekli veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, istemci bağlantılarının yeni birinciyle farklı bir şekilde yeniden yönlendirilme oluşmasına neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, uçtan uca performansı etkileyip etkilemediğinizi da doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda, platformu yoğun bir şekilde zorabileceğinden, her veritabanı veya elastik havuz için her 30 dakikada bir yük devretme çağrısına izin verilir. Ayrıntılar için bkz. [veritabanı yük devretme](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) ve [elastik havuz yük devretme](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+
+> [!IMPORTANT]
+> Yük devretme komutu şu anda Hypescale veritabanları ve yönetilen ınstancler için kullanılamaz.  
 
 ## <a name="conclusion"></a>Sonuç
 

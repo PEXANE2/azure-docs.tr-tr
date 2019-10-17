@@ -17,14 +17,14 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213387"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387411"
 ---
-# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Windows uygulamalarına yerelleştirilmiş bildirimler gönderme
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Windows uygulamalarına yerelleştirilmiş anında iletme bildirimleri gönderme
 
 > [!div class="op_single_selector"]
 > * [Windows Mağazası C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -32,7 +32,7 @@ ms.locfileid: "71213387"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, Notification Hubs hizmetine kaydolmuş mobil cihazlara yerelleştirilmiş anında iletme bildirimleri gönderme işlemi gösterilmektedir. Öğreticide, [öğreticide oluşturulan uygulamaları güncelleşolursunuz: Aşağıdaki senaryoları desteklemek için belirli cihazlara (Evrensel Windows platformu](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) ) bildirimler gönderin:
+Bu öğreticide, Notification Hubs hizmetine kaydolmuş mobil cihazlara yerelleştirilmiş anında iletme bildirimleri gönderme işlemi gösterilmektedir. Öğreticide, [Öğretici: Belirli cihazlara bildirim gönderme (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) içinde oluşturduğunuz uygulamaları, aşağıdaki senaryoları destekleyecek şekilde güncelleştireceksiniz:
 
 - Windows Mağazası uygulaması, istemci cihazların bir dil belirtmesine ve farklı son dakika haber kategorilerine abone olmasına olanak tanır.
 - Arka uç uygulaması, Azure Notification Hubs **etiket** ve **şablon** özelliklerini kullanarak bildirimler yayınlar.
@@ -44,13 +44,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Windows uygulamasını yerel ayar bilgilerini destekleyecek şekilde güncelleştirme
 > * Arka uç uygulamasını yerelleştirilmiş bildirimler gönderecek şekilde güncelleştirme
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Öğreticiyi doldurun: Belirli cihazlara bildirim gönderin (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+[Öğretici: Belirli cihazlara bildirim gönderme (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) öğreticisini tamamlayın.
 
-[Öğreticide: Belirli cihazlara (Evrensel Windows platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)bildirim gönderin, farklı haber **kategorilerine**yönelik bildirimlere abone olmak için **Etiketler** kullanan bir uygulama derlediniz. Bu öğreticide, Notification Hubs’ın **şablon** özelliğini kullanarak **yerelleştirilmiş** son dakika haber bildirimlerini kolayca iletebilirsiniz.
+[Öğretici: Belirli cihazlara bildirim gönderme (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) öğreticisinde **etiketleri** kullanarak farklı haber **kategorileri** için bildirimlere abone olan bir uygulama derlediniz. Bu öğreticide, Notification Hubs’ın **şablon** özelliğini kullanarak **yerelleştirilmiş** son dakika haber bildirimlerini kolayca iletebilirsiniz.
 
 Yüksek bir düzeyde, şablonlar belirli bir cihazın bir bildirimi hangi biçimde alacağını belirtmenin yoludur. Şablon, uygulama arka ucunuz tarafından gönderilen iletinin parçası olan özelliklere başvurarak tam yük biçimini belirtir. Bu öğreticide, arka uç uygulaması tüm desteklenen dilleri içeren, yerel ayardan bağımsız bir ileti gönderir:
 
@@ -78,8 +78,8 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
 
 ## <a name="update-windows-app-to-support-locale-information"></a>Windows uygulamasını yerel ayar bilgilerini destekleyecek şekilde güncelleştirme
 
-1. [Öğretici için oluşturduğunuz Visual Studio çözümünü açın: Belirli cihazlara bildirim gönderin (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
-2. Çözümün `MainPage.xaml` dosyasını yerel ayar ComboBox 'ı içerecek şekilde güncelleştirin:
+1. [Öğretici: Belirli cihazlara bildirim gönderme (Evrensel Windows Platformu)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) için oluşturduğunuz Visual Studio çözümünü açın.
+2. Çözümün `MainPage.xaml` dosyasını yerel ayar açılan kutusu içerecek şekilde güncelleştirin:
 
     ```xml
     <Grid Margin="120, 58, 120, 80"  
@@ -111,7 +111,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
     ```
-3. Sınıfında, `StoreCategoriesAndSubscribe` ve`SubscribeToCategories` yöntemlerine bir yerel ayar parametresi ekleyin. `Notifications`
+3. @No__t-0 sınıfında, `StoreCategoriesAndSubscribe` ve `SubscribeToCategories` yöntemlerine bir yerel ayar parametresi ekleyin.
 
     ```csharp
     public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
@@ -138,7 +138,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
     }
     ```
 
-    `RegisterNativeAsync` Yöntemini çağırmak yerine çağırın `RegisterTemplateAsync`. Şablonun yerel ayara bağlı olduğu belirli bir bildirim biçimi kaydedin. Ayrıca, birden fazla şablon (örneğin, bir tane bildirimler, bir tane de kutucuklar için) kaydetmek istiyorsanız şablon için bir ad ("localizedWNSTemplateExample") belirtin. Şablonları güncelleştirmek veya silmek için de adlandırmanız gerekir.
+    @No__t-0 yöntemini çağırmak yerine, `RegisterTemplateAsync` ' i çağırın. Şablonun yerel ayara bağlı olduğu belirli bir bildirim biçimi kaydedin. Ayrıca, birden fazla şablon (örneğin, bir tane bildirimler, bir tane de kutucuklar için) kaydetmek istiyorsanız şablon için bir ad ("localizedWNSTemplateExample") belirtin. Şablonları güncelleştirmek veya silmek için de adlandırmanız gerekir.
 
     Bir cihaz aynı etiketle birden fazla şablonu kaydederse, o etiketi hedefleyen bir gelen ileti, cihaza birden fazla bildirimin (her şablon için bir tane) iletilmesiyle sonuçlanır. Bu davranış, aynı mantıksal iletinin birden fazla görsel bildirimle sonuçlanması gereken durumlarda (örneğin, Windows Mağazası uygulamasında hem bir gösterge hem de bir bildirim gösterme) yararlıdır.
 4. Depolanan yerel ayarı almak için aşağıdaki yöntemi ekleyin:
@@ -151,7 +151,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
     }
     ```
 
-5. Dosyada, yerel ayar Birleşik giriş kutusunun geçerli değerini almak ve `Notifications` sınıfa yapılan çağrıya sağlamak için düğme işleyicisine tıklayın: `MainPage.xaml.cs`
+5. @No__t-0 dosyasında, yerel ayar açılan kutusunun geçerli değerini almak ve bunu `Notifications` sınıfına olan çağrıya sağlamak için düğme işleyici ' yi güncelleştirin:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -175,7 +175,7 @@ Cihaz, doğru özelliğe başvuran bir şablonla kaydolur. Örneğin, İngilizce
         await dialog.ShowAsync();
     }
     ```
-6. Son olarak, `InitNotificationsAsync` dosyasındayerelayarıalmakveaboneolurkenkullanmak`App.xaml.cs` için yöntemi güncelleştirin:
+6. Son olarak, `App.xaml.cs` dosyasında, yerel ayarı almak ve abone olurken kullanmak için `InitNotificationsAsync` yöntemini güncelleştirin:
 
     ```csharp
     private async void InitNotificationsAsync()

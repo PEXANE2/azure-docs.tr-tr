@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372264"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383560"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -24,8 +24,8 @@ ms.locfileid: "72372264"
 
 Azure sanal makinelerinin bir ikincil bölgeye veya şirket içi VMware VM 'lerine veya fiziksel sunuculara Azure 'da olağanüstü durum kurtarması için aşağıdakilere göz önünde yer verilmiştir:
 
-- Mobility hizmeti uzantısının (Azure VM 'Leri) ve Mobility hizmeti aracısının (VMware/fiziksel makineler için) 9.30. x. x sürümünden, bazı makine işletim sistemlerinin hizmet yığını güncelleştirmesi ve SHA-2 ' yi çalıştırması gerekir. Ayrıntılar aşağıdaki tabloda gösterilmiştir.
-- Güncelleştirmeyi ve SHA-2 ' i bağlı KB 'ye uygun olarak yükler.
+- Mobility hizmeti uzantısının (Azure VM 'Leri) ve Mobility hizmet aracısının (VMware/fiziksel makineler için) 9.30. x. x sürümünden (2019 Kasım 'Dan başlayarak), bazı makine işletim sistemlerinin hizmet yığını güncelleştirmesi ve SHA-2 ' yi çalıştırması gerekir. Ayrıntılar aşağıdaki tabloda gösterilmiştir.
+- Güncelleştirmeyi ve SHA-2 ' i bağlı KB 'ye uygun olarak yükler. SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez.
 - [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
 
 **İşletim sistemi** | **Azure VM** | **VMware VM/fiziksel makine**

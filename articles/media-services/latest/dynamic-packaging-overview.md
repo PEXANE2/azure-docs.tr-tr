@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910285"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383528"
 ---
 # <a name="dynamic-packaging"></a>Dinamik paketleme
 
@@ -26,11 +26,11 @@ Microsoft Azure Media Services, tüm büyük cihazlara (örneğin, iOS ve Androi
 
 Media Services, bir [akış uç noktası](streaming-endpoint-concept.md) , canlı ve isteğe bağlı içeriğinizi, ortak akış medya protokollerinden birini kullanarak doğrudan bir istemci oynatıcı uygulamasına teslim edebilen bir dinamik (tam zamanında) paketleme ve kaynak hizmeti temsil eder Aşağıdaki bölümde bahsedildi. Dinamik Paketleme, tüm Akış Uç Noktalarında (Standart veya Premium) varsayılan olarak sunulan bir özelliktir. 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Kaynak dosyalarınızı teslim edilmek üzere hazırlamak için
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Kaynak dosyalarınızı teslim edilmek üzere hazırlamak Için
 
 Dinamik paketlemeden yararlanmak için, Mezzanine (kaynak) dosyanızı çoklu bit hızı MP4 (ISO tabanlı medya 14496-12) dosyaları kümesine [kodlamanız](encoding-concept.md) gerekir. Kodlanmış MP4 dosyaları ve Media Services dinamik paketleme için gereken akış yapılandırma [dosyalarını içeren bir](assets-concept.md) varlığınız olması gerekir. Bu MP4 dosyaları kümesinden, aşağıdaki akış medya protokolleri aracılığıyla video teslim etmek için dinamik paketleme kullanabilirsiniz:
 
-|Protocol|Örnek|
+|Protokol|Örnek|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
@@ -98,9 +98,9 @@ Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bk
 Dinamik paketleme, [h.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) , (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) Ile kodlanmış video içeren MP4 dosyalarını destekler.
 
 > [!NOTE]
-> En fazla 4K çözünürlük ve 60 kare/saniye kare hızları, dinamik paketleme ile test edilmiştir. [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler. Bu konu amshelp@microsoft.com hakkında sorularınız varsa lütfen iletişim kurun. 
+> En fazla 4K çözünürlük ve 60 kare/saniye kare hızları, dinamik paketleme ile test edilmiştir. [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler. Bu konuyla ilgili sorularınız varsa lütfen amshelp@microsoft.com ile iletişime geçin. 
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Dinamik paketleme tarafından desteklenen ses codec bileşenleri
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen <a id="audio-codecs"/>Ses codec bileşenleri
 
 Dinamik paketleme, aşağıdaki protokollerle kodlanmış sesi destekler:
 
@@ -124,9 +124,9 @@ Dinamik paketleme birden çok codec ve dilde birden çok ses parçası olan akı
 Dinamik paketleme, [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) ses (eski bir codec) içeren dosyaları desteklemez.
 
 > [!NOTE]
-> [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla Dolby Digital Plus kodlamasını destekler. Bu konu amshelp@microsoft.com hakkında sorularınız varsa lütfen iletişim kurun. 
+> [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla Dolby Digital Plus kodlamasını destekler. Bu konuyla ilgili sorularınız varsa lütfen amshelp@microsoft.com ile iletişime geçin. 
 
-## <a name="manifests"></a>Bildirimler 
+## <a name="manifests"></a>Listeleri 
  
 Dinamik paketleme Media Services, HLS, MPEG-DASH ve Kesintisiz Akış için akış istemci bildirimleri, URL 'deki biçim seçicisine göre dinamik olarak oluşturulur.  
 
@@ -220,7 +220,7 @@ Aşağıda bir Kesintisiz Akış bildirim dosyası örneği verilmiştir:
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>Bildirimde parçaların adlandırılması
 
-. ISM dosyasında bir ses izi adı belirtilmişse Media Services, belirli ses izi için textürel bilgilerini belirtmek `AdaptationSet` üzere bir `Label` öğesi ekler. Çıkış DASH bildirimine bir örnek:
+. ISM dosyasında bir ses izi adı belirtilmişse Media Services belirli ses izi için textürel bilgilerini belirtmek üzere bir `AdaptationSet` içine `Label` öğesi ekler. Çıkış DASH bildirimine bir örnek:
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -232,15 +232,34 @@ Aşağıda bir Kesintisiz Akış bildirim dosyası örneği verilmiştir:
 </AdaptationSet>
 ```
 
-Oynatıcı, `Label` Kullanıcı arabiriminde göstermek için öğesini kullanabilir.
+Oynatıcı, Kullanıcı arabiriminde göstermek için `Label` öğesini kullanabilir.
 
 ### <a name="signaling-audio-description-tracks"></a>Ses açıklaması izlerinin sinyali
 
-Bir müşteri, bildirimde ses açıklaması olarak bir ses izlemesine açıklama ekleyebilir. Bunu yapmak için,. ISM dosyasına "Erişilebilirlik" ve "rol" parametrelerini ekler. Bir ses kanalında "Description" değeri ve "alternatif" değerine sahip param "role" parametresi varsa Media Services ses açıklamasını tanır. Media Services. ISM dosyasında ses açıklamasını algılarsa, ses açıklaması bilgileri, `Accessibility="description"` `StreamIndex` öğe olarak istemci bildirimine ve `Role="alternate"` öznitelikleri öğesine geçirilir.
+Görsel açıdan görme istemcilerinin, konuşmayı dinleyerek video kaydını izlemesini sağlamak için videonuza konuşma izi ekleyebilirsiniz. Bildirimde ses açıklaması olarak bir ses izlemesine açıklama eklemeniz gerekir. Bunu yapmak için. ISM dosyasına "Erişilebilirlik" ve "rol" parametreleri ekleyin. Ses açıklaması olarak bir ses izini bildirmek üzere bu parametreleri doğru bir şekilde ayarlamak sizin sorumluluğunuzdadır. Örneğin, belirli bir ses izi için. ISM dosyasına `<param name="accessibility" value="description" />` ve `<param name="role" value="alternate"` ekleyin. 
 
-"Erişilebilirlik" = "Description" ve "role" = "alternatif" birleşimi. ISM dosyasında ayarlandıysa, DASH bildirimi ve Düzgünleştir bildirimi değerleri "Erişilebilirlik" ve "rol" parametrelerinde ayarlandığı şekilde taşır. Bu iki değerin sağına ayarlanması ve bir ses parçasını ses açıklaması olarak işaretlemek için müşterinin sorumluluğundadır. DASH spec başına, "Erişilebilirlik" = "Description" ve "role" = "alternatif" birlikte bir ses izlemenin ses açıklaması olduğu anlamına gelir.
+Daha fazla bilgi için bkz. [açıklayıcı bir ses izleme](signal-descriptive-audio-howto.md) örneği.
 
-HLS v7 ve üzeri (`format=m3u8-cmaf`) için, `CHARACTERISTICS="public.accessibility.describes-video"` çalma listesi yalnızca "Erişilebilirlik" = "Description" ve "role" = "alternatif" birleşimi. ISM dosyasında ayarlandığında. 
+#### <a name="smooth-streaming-manifest"></a>Kesintisiz Akış bildirimi
+
+Bir Kesintisiz Akış akışı yürütüediyorsanız, bildirim, bu ses izini için değerleri `Accessibility` ve `Role` özniteliklerine taşır. Örneğin, `Role="alternate" Accessibility="description"`, bir ses açıklaması olduğunu göstermek için `StreamIndex` öğesine eklenir.
+
+#### <a name="dash-manifest"></a>Kesik çizgi bildirimi
+
+DASH bildirimi için aşağıdaki iki öğe, ses açıklamasına işaret etmek için eklenir:
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS çalma listesi
+
+HLS v7 ve üzeri `(format=m3u8-cmaf)` ' da, ses açıklaması izedildiğinde çalma listesi `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` ' i taşır.
+
+#### <a name="example"></a>Örnek
+
+Daha fazla bilgi için bkz. [ses açıklaması izlemelerinin sinyali](signal-descriptive-audio-howto.md).
 
 ## <a name="dynamic-manifest"></a>Dinamik bildirim
 
@@ -248,7 +267,7 @@ Oyunculara gönderilen iz, biçim, bitme ve sunum süresi pencerelerinin sayıs�
 
 ## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
-*Dinamik şifrelemeyi* kullanarak, canlı veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak YÖNETIMI (DRM) sistemlerinden birini kullanarak dinamik olarak şifreleyebilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services Ayrıca, yetkili istemcilere yönelik AES anahtarları ve DRM lisansları sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
+Etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yönetimi (DRM) sisteminden dinamik olarak şifrelemek için *dinamik şifrelemeyi* kullanabilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Media Services Ayrıca, yetkili istemcilere yönelik AES anahtarları ve DRM lisansları sunmaya yönelik bir hizmet sağlar. Daha fazla bilgi için bkz. [dinamik şifreleme](content-protection-overview.md).
 
 ## <a name="more-information"></a>Daha fazla bilgi
 

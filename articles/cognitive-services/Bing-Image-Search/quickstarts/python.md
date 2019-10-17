@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Görüntü arama-Bing Resim Arama REST API ve Python'
+title: 'Hızlı başlangıç: görüntü arama-Bing Resim Arama REST API ve Python'
 titleSuffix: Azure Cognitive Services
 description: Python kullanarak Bing Resim Arama REST API görüntü arama istekleri göndermek ve JSON yanıtlarını almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034636"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390132"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Hızlı Başlangıç: Bing Resim Arama REST API ve Python kullanarak görüntü arama
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Resim Arama REST API ve Python kullanarak görüntü arama
 
 Bing Resim Arama API'si arama istekleri göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu Python uygulaması, API 'ye bir arama sorgusu gönderir ve sonuçlarda ilk görüntünün URL 'sini görüntüler. Bu uygulama Python 'da yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)’da bir Jupyter not defteri olarak çalıştırabilirsiniz:
+Bu örneği başlatma Bağlayıcı rozetine tıklayarak [Bağlayıcım](https://mybinder.org)'da bir Jupyter not defteri olarak çalıştırabilirsiniz:
 
 [![Bağlayıcı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -53,7 +53,7 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
     search_term = "puppies"
     ```
 
-2. Bir sözlük oluşturarak ve anahtarı bir `Ocp-Apim-Subscription-Key` değer olarak ekleyerek abonelik anahtarınızı üstbilgiye ekleyin. 
+2. Bir sözlük oluşturarak ve anahtarı bir değer olarak ekleyerek abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin. 
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
@@ -61,25 +61,28 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
 
 ## <a name="create-and-send-a-search-request"></a>Arama isteği oluştur ve Gönder
 
-1. Arama isteğinin parametreleri için bir sözlük oluşturun. Arama teriminizi `q` parametreye ekleyin. Genel etki alanındaki resimleri aramak için `license` parametresi için "public" kullanın. Yalnızca fotoğraflar için arama `imageType` yapmak üzere "Photo" kullanın.
+1. Arama isteğinin parametreleri için bir sözlük oluşturun. Arama teriminizi `q` parametresine ekleyin. Genel etki alanındaki resimleri aramak için `license` parametresi için "public" kullanın. Yalnızca fotoğrafları aramak için `imageType` için "Foto" kullanın.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Bing resim arama API'si çağırmak için kitaplığı kullanın. `requests` Üstbilgiye ve parametrelerinizi isteğe ekleyin ve yanıtı JSON nesnesi olarak döndürün. 
+2. Bing Resim Arama API'si çağırmak için `requests` kitaplığını kullanın. Üstbilgiye ve parametrelerinizi isteğe ekleyin ve yanıtı JSON nesnesi olarak döndürün. Yanıtın `thumbnailUrl` alanından birkaç küçük resim resmine ait URL 'Leri alın.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>Yanıtı görüntüleme
 
 1. Dört sütun ile yeni bir şekil ve Matplotlib kitaplığını kullanarak dört satır oluşturun. 
 
-2. Şeklin satırları ve sütunları boyunca ilerleyin ve her alana bir görüntü küçük resmi eklemek için `Image.open()` PIL kitaplığının metodunu kullanın. 
+2. Şeklin satırları ve sütunları boyunca yineleme yapın ve her alana bir görüntü küçük resmi eklemek için PIL kitaplığının `Image.open()` yöntemini kullanın. 
+
+3. Şekil çizmek ve görüntüleri göstermek için `plt.show()` kullanın.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ Bu örneğin kaynak kodu, ek hata işleme ve açıklama notları ile [GitHub](ht
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. Şekli `plt.show()` çizmek ve görüntüleri göstermek için kullanın.
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 59f8035aa69f21196a2134bf6bc1b12f3e5b34c4
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815703"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437943"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla istenen durum yapılandırma uzantısı
 
@@ -193,7 +193,7 @@ Varsayılan yapılandırma betiği için kullanılabilen bağımsız değişkenl
 
 ## <a name="default-configuration-script"></a>Varsayılan yapılandırma betiği
 
-Aşağıdaki değerler hakkında daha fazla bilgi için bkz. [yerel Configuration Manager temel ayarları](/powershell/dsc/metaconfig#basic-settings).
+Aşağıdaki değerler hakkında daha fazla bilgi için bkz. [yerel Configuration Manager temel ayarları](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Yalnızca aşağıdaki tabloda listelenen LCM özelliklerini yapılandırmak için DSC Uzantısı varsayılan yapılandırma komut dosyasını kullanabilirsiniz.
 
 | Özellik adı | Tür | Açıklama |
@@ -430,4 +430,4 @@ ayarlarına. Configuration. URL, Settings. Configuration. işlevin belirtilmesin
 - [Azure DSC Uzantısı ile sanal makine ölçek kümeleri kullanma](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)hakkında bilgi edinin.
 - [DSC 'nin güvenli kimlik bilgisi yönetimi](dsc-credentials.md)hakkında daha fazla ayrıntı bulun.
 - [Azure DSC uzantı işleyicisine bir giriş](dsc-overview.md)alın.
-- PowerShell DSC hakkında daha fazla bilgi için [PowerShell belge merkezine](/powershell/dsc/overview)gidin.
+- PowerShell DSC hakkında daha fazla bilgi için [PowerShell belge merkezine](/powershell/scripting/dsc/overview/overview)gidin.

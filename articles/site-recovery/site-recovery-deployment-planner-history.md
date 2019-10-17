@@ -6,18 +6,26 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620106"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433420"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Dağıtım Planlayıcısı sürümü geçmişi
 
 Bu makalede, tüm Azure Site Recovery Dağıtım Planlayıcısı sürümlerinin yanı sıra düzeltmeler, her biri ve bunların yayın tarihlerinde bilinen sınırlamaları sunulmaktadır.
+
+## <a name="version-251"></a>Sürüm 2,51
+
+**Yayın tarihi: 22 Ağustos 2019**
+
+**Düzeltilen**
+
+- Dağıtım Planlayıcısı sürüm 2,5 ile ilgili maliyet önerisi sorunu düzeltildi
 
 ## <a name="version-25"></a>Sürüm 2,5
 
@@ -101,7 +109,7 @@ Bu makalede, tüm Azure Site Recovery Dağıtım Planlayıcısı sürümlerinin 
 
 **Bilinen sınırlamalar:**
 
-- Hyper-V ' d e, Azure olağanüstü durum kurtarma için: `,` `[`, `"` `]`,, ve ``` ` ``` gibi karakterleri içeren VM 'ler desteklenmez. Profili oluşturulmuş ise, rapor oluşturma başarısız olur veya hatalı bir sonuca sahip olur.
+- Hyper-V ' d e Azure olağanüstü durum kurtarma için, adı: `,`, `"`, `[`, `]` ve ``` ` ``` gibi karakterleri içeren VM desteklenmez. Profili oluşturulmuş ise, rapor oluşturma başarısız olur veya hatalı bir sonuca sahip olur.
 - VMware 'den Azure 'a olağanüstü durum kurtarma için, virgül içeren ada sahip VM desteklenmez. Profil oluşturma, rapor oluşturma başarısız olursa veya hatalı bir sonuç verir.
 
 ## <a name="version-131"></a>Sürüm 1.3.1

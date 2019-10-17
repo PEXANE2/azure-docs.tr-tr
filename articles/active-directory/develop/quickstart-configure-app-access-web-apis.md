@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879387"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389622"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı Başlangıç: Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlangıç: Web API 'Lerine erişmek için bir istemci uygulaması yapılandırma
 
 Bir web/gizli istemci uygulamasının kimlik doğrulaması gerektiren bir yetkilendirme akışına dahil olabilmesi (ve erişim belirteci alabilmesi) için güvenli kimlik bilgileri kullanması gerekir. Azure portal tarafından desteklenen varsayılan kimlik doğrulaması yöntemi istemci kimliği ve gizli anahtar kullanımıdır.
 
@@ -80,8 +80,9 @@ Uygulamanıza yeniden yönlendirme URI’si eklemek için:
 
 1. Ortak istemciler (mobil, masaüstü) için önerilen Yeniden Yönlendirme URI'lerini seçemk için bu adımları izleyin:
     1. **Ortak istemciler (mobil, masaüstü) için önerilen Yeniden Yönlendirme URI'leri** bölümünü bulun.
-    1. Onay kutularını kullanarak uygulamanız için uygun Yeniden Yönlendirme URI’lerini seçin.
+    1. Onay kutularını kullanarak uygulamanız için uygun Yeniden Yönlendirme URI’lerini seçin. Ayrıca, özel bir yeniden yönlendirme URI 'SI de girebilirsiniz. Ne kullandığınızdan emin değilseniz, kitaplık belgelerine göz atın.
 
+Yeniden yönlendirme URI 'Leri için uygulanan bazı kısıtlamalar vardır. [Yeniden YÖNLENDIRME URI kısıtlamaları ve sınırlamaları](https://docs.microsoft.com/azure/active-directory/develop/reply-url)hakkında daha fazla bilgi edinin.
 > [!NOTE]
 > Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni **kimlik doğrulama** ayarları deneyimini deneyin.
 >
@@ -112,7 +113,7 @@ Uygulamayı ilk kez kaydettiğinizde [Desteklenen hesap türlerini yapılandırd
 
 Mevcut bir uygulama kaydı için desteklenen hesap türlerini değiştirmek için:
 
-* Bkz. [uygulama bildirimini yapılandırma](reference-app-manifest.md) ve `signInAudience` anahtarı güncelleştirme.
+* Bkz. [uygulama bildirimini yapılandırma](reference-app-manifest.md) ve `signInAudience` anahtarını güncelleştirme.
 
 ## <a name="configure-platform-settings-for-your-application"></a>Uygulamanız için platform ayarlarını yapılandırma
 
@@ -131,7 +132,7 @@ Uygulama ayarlarını platforma veya cihaza göre yapılandırmak için şunlar�
    | **Web uygulamaları**    | **Web**              | Uygulamanız için **yeniden yönlendirme URI 'si** girin. |
    | **Mobil uygulamalar** | **iOS**              | Info. plist veya Build Settings içinde XCode içinde bulabileceğiniz uygulamanın **paket kimliğini**girin. Paket KIMLIĞINI eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur. |
    |                         | **Android**          | * AndroidManifest. xml dosyasında bulabileceğiniz uygulamanın **paket adını**sağlayın.<br/>* **İmza karmasını**oluşturun ve girin. İmza karmasını eklemek, otomatik olarak uygulama için bir yeniden yönlendirme URI 'SI oluşturur.  |
-   | **Masaüstü + cihazlar**   | **Masaüstü + cihazlar** | Seçim. Masaüstü ve cihazlar için uygulamalar oluşturuyorsanız önerilen **Önerilen yeniden yönlendirme URI** 'lerinden birini seçin.<br/>Seçim. Azure AD 'nin kullanıcıları kimlik doğrulama isteklerine yanıt olarak yeniden yönlendireceği konum olarak kullanılan **özel bir yeniden yönlendirme URI 'si**girin. Örneğin, etkileşim istediğiniz .NET Core uygulamaları için kullanın `https://localhost`. |
+   | **Masaüstü + cihazlar**   | **Masaüstü + cihazlar** | Seçim. Masaüstü ve cihazlar için uygulamalar oluşturuyorsanız önerilen **Önerilen yeniden yönlendirme URI** 'lerinden birini seçin.<br/>Seçim. Azure AD 'nin kullanıcıları kimlik doğrulama isteklerine yanıt olarak yeniden yönlendireceği konum olarak kullanılan **özel bir yeniden yönlendirme URI 'si**girin. Örneğin, etkileşim istediğiniz .NET Core uygulamaları için `https://localhost` ' ı kullanın. |
 
    > [!IMPORTANT]
    > En son MSAL kitaplığını kullanmayan veya bir aracı kullanmayan mobil uygulamalarda, bu uygulamalar için yeniden yönlendirme URI 'Lerini **Masaüstü + cihazlarda**yapılandırmanız gerekir.

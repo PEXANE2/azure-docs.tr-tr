@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API başvurusu: Yapılandırmayı al | Microsoft Docs'
-description: Durum İzleyicisi v2 API başvurusu. Get-Applicationınsiısmonitoringconfig. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: 'Azure Application Insights Agent API başvurusu: yapılandırmayı al | Microsoft Docs'
+description: Aracı API başvurusunu Application Insights. Get-Applicationınsiısmonitoringconfig. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1da24a93a671b388c44d96711bc2fe007f33d197
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e0b389dfb27443b9b26b8ed650399c641c55eb86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033169"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388278"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig"></a>Durum İzleyicisi v2 API 'SI: Get-Applicationınsiısmonitoringconfig
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights aracı API 'SI: Get-Applicationınsiısmonitoringconfig
 
 Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
@@ -40,7 +40,7 @@ PS C:\> Get-ApplicationInsightsMonitoringConfig
 
 Parametre gerekli değil.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Çıktı
 
 
 #### <a name="example-output-from-reading-the-config-file"></a>Yapılandırma dosyasını okumaktan örnek çıkış
@@ -66,6 +66,6 @@ Filters:
 - Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
 - İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
  
- Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
  - [Set config](status-monitor-v2-api-set-config.md) cmdlet 'ini kullanarak yapılandırmada değişiklikler yapın.

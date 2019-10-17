@@ -12,14 +12,14 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: f00d0e4f659c1ebe104dac1a25ea3688c9a1f2e5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3e328d242bccd9f2ab037131d3fcce585bc6b8da
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327259"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432812"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması derleme
+# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Python uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -29,9 +29,11 @@ ms.locfileid: "72327259"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
+Bu hızlı başlangıç belgesinde Azure portalını kullanarak bir Azure Cosmos DB [SQL API](sql-api-introduction.md) hesabını, belge veritabanını ve kapsayıcısını nasıl oluşturacağınız anlatılmıştır. Daha sonra [SQL API](sql-api-sdk-python.md)'si için Python SDK'sı ile bir konsol uygulamasını derleyip çalıştıracaksınız.
+
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Belgeleri, anahtar/değer, geniş sütun ve grafik veritabanlarını hızlıca oluşturup sorgulayabilirsiniz. Bu işlemlerin tümü Azure Cosmos DB dağıtım ve ölçeğinden faydalanır.
 
-Bu hızlı başlangıç belgesinde Azure portalını kullanarak bir Azure Cosmos DB [SQL API](sql-api-introduction.md) hesabını, belge veritabanını ve kapsayıcısını nasıl oluşturacağınız anlatılmıştır. Daha sonra [SQL API](sql-api-sdk-python.md)'si için Python SDK'sı ile bir konsol uygulamasını derleyip çalıştıracaksınız. Bu hızlı başlangıçta [Python SDK 'sının](https://pypi.org/project/azure-cosmos)3,0 sürümü kullanılmaktadır.
+Bu hızlı başlangıçta [Python SDK 'sının](https://pypi.org/project/azure-cosmos)3,0 sürümü kullanılmaktadır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -90,7 +92,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure Portal](https://portal.azure.com/), Azure Cosmos hesabınızda sol gezinti ' ın altında bulunan **anahtarlar**' ı seçin. Ekranın sağ tarafındaki kopyalama düğmelerini kullanarak **URI** ve **Primary Key** değerlerini kopyalayıp sonraki adımda bunları `CosmosGetStarted.py` dosyasına yapıştırın.
 
-    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar dikey penceresi](./media/create-sql-api-dotnet/keys.png)
+    ![Azure portal anahtarlar ayarlarından bir erişim anahtarı ve URI alın](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
 2. Visual Studio Code içinde `CosmosGetStarted.py` dosyasını \git-samples\azure-Cosmos-DB-Python-Getting-Started içinde açın.
 

@@ -1,5 +1,5 @@
 ---
-title: Sanal ağınızda Azure Databricks dağıtma
+title: Sanal ağınızda Azure Databricks'i dağıtma
 description: Bu makalede VNet ekleme olarak da bilinen sanal ağınıza Azure Databricks dağıtma açıklanmaktadır.
 services: azure-databricks
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 07591517211d5334b9bf055d778f00b171e7056f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263458"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432668"
 ---
-# <a name="deploy-azure-databricks-in-your-virtual-network"></a>Sanal ağınızda Azure Databricks dağıtma
+# <a name="deploy-azure-databricks-in-your-virtual-network"></a>Sanal ağınızda Azure Databricks'i dağıtma
 
 Azure Databricks varsayılan dağıtımı, Azure üzerinde tam olarak yönetilen bir hizmettir: bir sanal ağ (VNet) dahil tüm veri düzlemi kaynakları, kilitli bir kaynak grubuna dağıtılır. Ancak ağ özelleştirmeye ihtiyacınız varsa, kendi sanal ağınızda (VNet ekleme da denir) Azure Databricks kaynakları dağıtabilirsiniz:
 
@@ -41,7 +41,7 @@ Azure Databricks çalışma alanınızı dağıttığınız sanal ağın aşağ�
 
 Sanal ağın Azure Databricks çalışma alanıyla aynı konumda bulunması gerekir.
 
-### <a name="subnets"></a>Ağlarda
+### <a name="subnets"></a>Alt ağlar
 
 Sanal ağ Azure Databricks için ayrılmış iki alt ağ içermelidir:
 
@@ -53,7 +53,7 @@ Sanal ağ Azure Databricks için ayrılmış iki alt ağ içermelidir:
 
 Sanal ağ için/16-/24 arasında bir CıDR bloğu ve özel ve genel alt ağlar için/18-/26 arasında bir CıDR bloğu.
 
-### <a name="whitelisting"></a>Beyaz listeye ekleme
+### <a name="whitelisting"></a>Güvenilenler listesine eklenme
 
 Alt ağlar ve Azure Databricks denetim düzlemi arasındaki tüm giden ve gelen trafik, beyaz listeye eklenmelidir.
 
@@ -61,7 +61,7 @@ Alt ağlar ve Azure Databricks denetim düzlemi arasındaki tüm giden ve gelen 
 
 Bu bölümde, Azure portal bir Azure Databricks çalışma alanının nasıl oluşturulduğu ve var olan sanal ağınızda nasıl dağıtılacağı açıklanmaktadır. Azure Databricks sanal ağı, sizin tarafınızdan sunulan CıDR aralıklarını kullanarak iki yeni alt ağ ve ağ güvenlik grubu ile güncelleştirir, gelen ve giden alt ağ trafiğini beyaz listeler ve çalışma alanını güncelleştirilmiş sanal ağa dağıtır.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Databricks çalışma alanını dağıtacaksınız bir sanal ağınız olmalıdır. Var olan bir sanal ağı kullanabilir veya yeni bir tane oluşturabilirsiniz ancak sanal ağın, oluşturmayı planladığınız Azure Databricks çalışma alanıyla aynı bölgede olması gerekir. Sanal ağ için/16-/24 arasında bir CıDR aralığı gereklidir.
 
@@ -101,7 +101,7 @@ Bu şablonu kullandığınızda, alt ağ trafiğinin el ile beyaz listesini alma
 
 ### <a name="network-security-groups"></a>Ağ güvenlik grupları
 
-Mevcut bir sanal ağ için gerekli kurallara sahip ağ güvenlik grupları oluşturmak için, [Databricks VNET ekleme Için ağ güvenlik grubu şablonunu](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection)kullanın.
+Mevcut bir sanal ağ için gerekli kurallara sahip ağ güvenlik grupları oluşturmak için, [Databricks VNET ekleme Için ağ güvenlik grubu şablonunu](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/)kullanın.
 
 Bu şablonu kullandığınızda, alt ağ trafiğinin el ile beyaz listesini almanız gerekmez.
 
@@ -121,7 +121,7 @@ Bu şablonu ağ güvenlik grupları şablonunu da kullanmadan kullanırsanız, s
 
 Ağ güvenlik gruplarınızı oluşturmak için [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) veya [Azure Resource Manager şablonlarını](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) kullanmıyorsanız, alt ağlarınıza aşağıdaki trafiği el ile eklemeniz gerekir.
 
-|Yön|Protokol|Kaynak|Kaynak bağlantı noktası|Hedef|Hedef bağlantı noktası|
+|Yön|Protokol|Kaynak|Kaynak Bağlantı Noktası|Hedef|Hedef Bağlantı Noktası|
 |---------|--------|------|-----------|-----------|----------------|
 |Gelen|\*|VirtualNetwork|\*|\*|\*|
 |Gelen|\*|Denetim düzlemi NAT IP 'si|\*|\*|22|
@@ -139,26 +139,26 @@ Aşağıdaki IP adreslerini kullanarak alt ağ trafiğini beyaz listeye ekleyin.
 |Doğu ABD 2|Denetim düzlemi NAT </br></br>Web|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Orta Kuzey ABD|Denetim düzlemi NAT </br></br>Web|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Orta ABD|Denetim düzlemi NAT </br></br>Web|23.101.152.95/32 </br></br>40.70.58.221/32|
-|Orta Güney ABD|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Güney Orta ABD|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Batı ABD|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Batı ABD 2|Denetim düzlemi NAT </br></br>Web|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Kanada Orta|Denetim düzlemi NAT </br></br>Web|40.85.223.25/32 </br></br>13.71.184.74/32|
 |Kanada Doğu|Denetim düzlemi NAT </br></br>Web|40.85.223.25/32 </br></br>13.71.184.74/32|
-|UK Batı|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
-|UK Güney|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Birleşik Krallık, Batı|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Birleşik Krallık, Güney|Denetim düzlemi NAT </br></br>Web|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Batı Avrupa|Denetim düzlemi NAT </br></br>Web|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Kuzey Avrupa|Denetim düzlemi NAT </br></br>Web|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Orta Hindistan|Denetim düzlemi NAT </br></br>Web|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Güney Hindistan|Denetim düzlemi NAT </br></br>Web|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Batı Hindistan|Denetim düzlemi NAT </br></br>Web|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Güney Doğu Asya|Denetim düzlemi NAT </br></br>Web|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Güneydoğu Asya|Denetim düzlemi NAT </br></br>Web|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Doğu Asya|Denetim düzlemi NAT </br></br>Web|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Avustralya Doğu|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Avustralya Güneydoğu|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Doğu Avustralya|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Güneydoğu Avustralya|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Avustralya Orta|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Avustralya Orta 2|Denetim düzlemi NAT </br></br>Web|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Japonya Doğu|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
-|Japonya Batı|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Doğu Japonya|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Batı Japonya|Denetim düzlemi NAT </br></br>Web|13.78.19.235/32 </br></br>52.246.160.72/32|
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

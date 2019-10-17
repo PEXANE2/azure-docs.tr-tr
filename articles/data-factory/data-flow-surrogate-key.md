@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 144d6298a13d35d94a68b35c443a3a47cefcfc2a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029184"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387173"
 ---
 # <a name="mapping-data-flow-surrogate-key-transformation"></a>Veri akışı yedek anahtar dönüşümünü eşleme
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029184"
 
 Veri akışı satır kümesine artan iş dışı bir anahtar değeri eklemek için vekil anahtar dönüşümünü kullanın. Bu, boyut tablolarınızdaki her üyenin, Kıbol DW metodolojisinin bir parçası olan iş dışı bir anahtar olan benzersiz bir anahtara sahip olması gereken bir yıldız şeması analitik veri modelinde, boyut tabloları tasarlarken yararlıdır.
 
-![Vekil anahtar dönüştürme](media/data-flow/surrogate.png "yedek anahtar dönüşümü")
+![Vekil anahtar dönüşümü](media/data-flow/surrogate.png "Vekil anahtar dönüşümü")
 
 "Anahtar sütun", yeni yedek anahtar sütununuzu verdiğiniz addır.
 
@@ -30,7 +30,7 @@ Veri akışı satır kümesine artan iş dışı bir anahtar değeri eklemek iç
 
 Dizinizi bir kaynakta bulunan bir değerden başlatmak isterseniz, yedek anahtar dönüşümünüzü hemen izleyerek türetilmiş bir sütun dönüştürmesi kullanabilir ve iki değeri birlikte ekleyebilirsiniz:
 
-![SK en fazla](media/data-flow/sk006.png "yedek anahtar dönüşümü en fazla Ekle")
+![SK en fazla Ekle](media/data-flow/sk006.png "Vekil anahtar dönüştürme en fazla Ekle")
 
 Anahtar değerini önceki üst sınır ile temel almak için kullanabileceğiniz iki teknik vardır:
 
@@ -38,17 +38,17 @@ Anahtar değerini önceki üst sınır ile temel almak için kullanabileceğiniz
 
 Kaynak dönüşümünü kullanarak kaynağınızdan MAX () ' i seçmek için "sorgu" seçeneğini kullanın:
 
-![Vekil anahtar sorgusu](media/data-flow/sk002.png "vekil anahtar dönüştürme sorgusu")
+![Vekil anahtar sorgusu](media/data-flow/sk002.png "Vekil anahtar dönüştürme sorgusu")
 
 ### <a name="file-sources"></a>Dosya kaynakları
 
 Önceki en büyük değer bir dosya içinde ise, kaynak dönüşümünüzü bir toplam dönüşümle birlikte kullanabilir ve en büyük () ifade işlevini kullanarak önceki en büyük değeri alabilirsiniz:
 
-![Vekil anahtar dosya](media/data-flow/sk008.png "yedek anahtar dosyası")
+![Vekil anahtar dosyası](media/data-flow/sk008.png "Vekil anahtar dosyası")
 
 Her iki durumda da, gelen yeni verilerinizi önceki en büyük değeri içeren kaynakla birlikte katılmanız gerekir:
 
-![Vekil anahtar birleşimi](media/data-flow/sk004.png "yedek anahtar birleşimi")
+![Vekil anahtar birleşimi](media/data-flow/sk004.png "Vekil anahtar birleşimi")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: c062a75516a1b865c1ff6c35f00d4fbf7c4881c6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 27d968aa5202fbeb38be9a2416514d2185c1d8b9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029382"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436745"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Eşleme veri akışındaki veri dönüştürme ifadeleri 
 
@@ -68,7 +68,13 @@ ___
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
 Bu işin çalışmaya başladığı geçerli tarihi alır. İsteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Yerel Saat dilimi varsayılan olarak kullanılır. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
 İş yerel saat dilimiyle çalışmaya başladığında geçerli zaman damgasını alır * ``currentTimestamp() == toTimestamp('2250-12-31 12:12:12') -> false`` @ no__t-1 @ no__t-2<br/><br/>
-Geçerli zaman damgasını UTC olarak alır. Geçerli saatin, küme saat diliminizdeki farklı bir saat diliminde yorumlanması istiyorsanız, isteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Varsayılan olarak geçerli saat dilimine ayarlanır. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.htmlTo UTC saatini farklı bir saat dilimine Dönüştür fromUTC () * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
+Geçerli zaman damgasını UTC olarak alır. Geçerli saatin, küme saat diliminizdeki farklı bir saat diliminde yorumlanması istiyorsanız, isteğe bağlı bir saat dilimini ' GMT ', ' PST ', ' UTC ', ' Amerika/Cayman ' biçiminde geçirebilirsiniz. Varsayılan olarak geçerli saat dilimine ayarlanır. Kullanılabilir biçimler için Java 'nın SimpleDateFormat bölümüne bakın. UTC saatini farklı bir saat dilimine dönüştürmek için [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) kullanın, fromUTC () kullanın.
+* ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+* ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
+* ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
+___
+### <code>dayOfMonth</code>
+<code><b>dayOfMonth(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 Ayın gününü alır * ``dayOfMonth(toDate('2018-06-08')) -> 8`` @ no__t-1 @ no__t-2<br/><br/>
 Bir tarih verilen haftanın gününü alır. 1-Pazar, 2-Pazartesi..., 7-Cumartesi * ``dayOfWeek(toDate('2018-06-08')) -> 6`` @ no__t-1 @ no__t-2<br/><br/>
 Yıl verilen tarihin gününü alır * ``dayOfYear(toDate('2016-04-09')) -> 100`` @ no__t-1 @ no__t-2<br/><br/>

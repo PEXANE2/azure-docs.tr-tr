@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 755290997cb6aab328cd38ce81a21c598c737b5f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693400"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429014"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -47,7 +47,7 @@ Aşağıdaki tabloda, Visual Studio Code ve Visual Studio 'da **Windows kapsayı
 
 |   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Azure hizmetleri** | Azure Functions (Azure İşlevleri) <br> Azure Stream Analytics |   |
+| **Azure hizmetleri** | Azure İşlevleri <br> Azure Stream Analytics |   |
 | **Diller** | C#(hata ayıklama desteklenmiyor) | C <br> C# |
 | **Daha fazla bilgi** | [Visual Studio Code için Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 için Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools)<br>[Visual Studio 2019 için Azure IoT Edge araçları](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
@@ -206,7 +206,7 @@ Proje şablonuyla C# birlikte gelen örnek kod, .net için IoT Hub SDK 'Sının 
 
 7. $EdgeHub istenen özelliklerin **rotalar** özelliğini bulun. 
 
-   IoT Edge hub modülünün bir dağıtımdaki tüm modüller arasında ileti yönlendirmesi durumunda işlevlerden biri. Rotalar özelliğindeki değerleri gözden geçirin. İlk yol olan **IotEdgeModule1ToIoTHub**, IotEdgeModule1 modülündeki herhangi bir çıkış sırasından gelen herhangi bir iletiyi dahil etmek için bir joker karakter ( **\*** ) kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol, **sensorToIotEdgeModule1**, SimulatedTemperatureSensor modülünden gelen iletileri alır ve IotEdgeModule1 modülünün *input1* giriş kuyruğuna yönlendirir. 
+   IoT Edge hub modülünün işlevlerinden biri, iletileri bir dağıtımdaki tüm modüller arasında yönlendirmekte. Rotalar özelliğindeki değerleri gözden geçirin. İlk yol olan **IotEdgeModule1ToIoTHub**, IotEdgeModule1 modülündeki herhangi bir çıkış sırasından gelen herhangi bir iletiyi dahil etmek için bir joker karakter ( **\*** ) kullanır. Bu iletiler, IoT Hub belirten ayrılmış bir ad olan *$upstream*' a gider. İkinci yol, **sensorToIotEdgeModule1**, SimulatedTemperatureSensor modülünden gelen iletileri alır ve IotEdgeModule1 modülünün *input1* giriş kuyruğuna yönlendirir. 
 
    ![Dağıtım. Template. JSON içindeki yolları gözden geçirin](./media/tutorial-develop-for-windows/deployment-routes.png)
 

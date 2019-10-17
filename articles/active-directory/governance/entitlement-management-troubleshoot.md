@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: ea979731c27a8d332102c3215e80510994f2ab3f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678070"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430227"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme (Önizleme)
 
@@ -45,7 +45,7 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 * SharePoint Online belge kitaplıkları ve bireysel belgeler, kaynak olarak eklenemez.  Bunun yerine, bir Azure AD güvenlik grubu oluşturun, bu grubu ve bir site rolünü erişim paketine ekleyin ve SharePoint Online 'da belge kitaplığına veya belgeye erişimi denetlemek için bu grubu kullanın.
 
-* Bir erişim paketiyle yönetmek istediğiniz bir kaynağa zaten atanmış kullanıcılar varsa, kullanıcıların erişim paketine uygun bir ilkeyle atandığından emin olun. Örneğin, grupta zaten kullanıcıları olan bir erişim paketine bir grup eklemek isteyebilirsiniz. Gruptaki bu kullanıcılar devam eden erişim gerektiriyorsa, gruba erişimleri kaybetmemesi için erişim paketleri için uygun bir ilkeye sahip olmaları gerekir. Erişim paketini, kullanıcıların söz konusu kaynağı içeren erişim paketini istemesini isteyerek veya doğrudan erişim paketine atayarak atayabilirsiniz. Daha fazla bilgi için bkz. [var olan bir erişim paketini düzenleme ve yönetme](entitlement-management-access-package-edit.md).
+* Bir erişim paketiyle yönetmek istediğiniz bir kaynağa zaten atanmış kullanıcılar varsa, kullanıcıların erişim paketine uygun bir ilkeyle atandığından emin olun. Örneğin, grupta zaten kullanıcıları olan bir erişim paketine bir grup eklemek isteyebilirsiniz. Gruptaki bu kullanıcılar devam eden erişim gerektiriyorsa, gruba erişimleri kaybetmemesi için erişim paketleri için uygun bir ilkeye sahip olmaları gerekir. Erişim paketini, kullanıcıların söz konusu kaynağı içeren erişim paketini istemesini isteyerek veya doğrudan erişim paketine atayarak atayabilirsiniz. Daha fazla bilgi için bkz. [bir erişim paketi Için değişiklik isteği ve onay ayarları](entitlement-management-access-package-request-policy.md).
 
 ## <a name="checklist-for-providing-external-users-access"></a>Dış kullanıcılara erişim sağlama denetim listesi
 
@@ -55,16 +55,17 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 ## <a name="checklist-for-request-issues"></a>İstek sorunları için denetim listesi
 
-* Bir Kullanıcı bir erişim paketine erişim istemek istediğinde, erişim paketi için erişim **portalı** ' nı kullandıklarından emin olun. Daha fazla bilgi için bkz. [erişim portalından kopyalama bağlantısı](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Bir dış Kullanıcı **myaccess.Microsoft.com**ziyaret ederse, erişim paketlerini kendi kuruluşlarındaki kullanıcılara görürler.
+* Bir Kullanıcı bir erişim paketine erişim istemek istediğinde, erişim paketi için erişim **portalı** ' nı kullandıklarından emin olun. Daha fazla bilgi için bkz. [erişim paketi istemek için bağlantıyı paylaşma](entitlement-management-access-package-settings.md).  Bir dış Kullanıcı **myaccess.Microsoft.com**ziyaret ederse, erişim paketlerini kendi kuruluşlarındaki kullanıcılara görürler.
 
 * Dizininizde henüz olmayan bir Kullanıcı erişim paketi istemek için erişim portalı 'nda oturum açtığında, kurumsal hesaplarını kullanarak kimlik doğruladıklarından emin olun. Kuruluş hesabı, kaynak dizinindeki bir hesap ya da erişim paketinin ilkelerinden birine dahil olan bir dizin olabilir. Kullanıcının hesabı bir kurumsal hesap değilse veya kimlik doğrulaması yaptıkları Dizin ilkede yer alıyorsa, Kullanıcı erişim paketini görmez. Daha fazla bilgi için bkz. [bir erişim paketine erişim isteme](entitlement-management-request-access.md).
 
 * Bir kullanıcının kaynak dizininde oturum açması engellenirse, bu kişiler erişim portalından erişim isteyemeyecektir. Kullanıcının erişim isteyebilmesi için, oturum açma bloğunu kullanıcının profilinden kaldırmanız gerekir. Oturum açma bloğunu kaldırmak için, Azure portal **Azure Active Directory**, **Kullanıcılar**' a, Kullanıcı ' ya ve ardından **profil**' e tıklayın. **Ayarlar** bölümünü düzenleyin ve blok olarak **oturum aç '** a **değiştirin.** Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../fundamentals/active-directory-users-profile-azure-portal.md).  Kullanıcının bir [kimlik koruma ilkesi](../identity-protection/howto-unblock-user.md)nedeniyle engellenip engellenmediğini da denetleyebilirsiniz.
 
-* Erişim portalındaki bir kullanıcı hem istek sahibi hem de onaylayan ise, **onaylar** sayfasında erişim paketi isteklerini görmez. Bu davranış bilerek yapılır. bir Kullanıcı kendi isteklerini onaylayamaz. İstediği erişim paketinde, ilkede yapılandırılmış ek onaylayanlar bulunduğundan emin olun. Daha fazla bilgi için bkz. [var olan bir Ilkeyi düzenleme](entitlement-management-access-package-edit.md#edit-an-existing-policy).
+* Erişim portalındaki bir kullanıcı hem istek sahibi hem de onaylayan ise, **onaylar** sayfasında erişim paketi isteklerini görmez. Bu davranış bilerek yapılır. bir Kullanıcı kendi isteklerini onaylayamaz. İstediği erişim paketinde, ilkede yapılandırılmış ek onaylayanlar bulunduğundan emin olun. Daha fazla bilgi için bkz. [bir erişim paketi Için değişiklik isteği ve onay ayarları](entitlement-management-access-package-request-policy.md).
 
 * Daha önce dizininizde oturum açmamış yeni bir dış Kullanıcı, SharePoint Online sitesi dahil bir erişim paketi alırsa, hesap SharePoint Online 'da sağlanıncaya kadar erişim paketleri tam olarak teslim edilmemiş olarak görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kullanıcıların yetkilendirme yönetimi 'nde nasıl erişimi olduğunu gösteren raporları görüntüleme](entitlement-management-reports.md)
+- [Dış kullanıcılar için erişimi yönetir](entitlement-management-external-users.md)

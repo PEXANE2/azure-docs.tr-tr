@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079663"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390601"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell kullanarak özel bir diskten Windows sanal makinesi oluşturma
 
@@ -36,9 +36,9 @@ Ayrıca, [özelleştirilmiş BIR VHD 'den yeni BIR VM oluşturmak](create-vm-spe
 
 Bu makalede, yönetilen disklerin nasıl kullanılacağı gösterilir. Depolama hesabı kullanılmasını gerektiren eski bir dağıtıma sahipseniz, bkz. [depolama hesabındaki özelleştirilmiş BIR VHD 'den VM oluşturma](sa-create-vm-specialized.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+Tek bir VHD 'den veya anlık görüntüden 20 VM 'ye eş zamanlı dağıtım sayısını sınırlamanızı öneririz. 
 
-## <a name="option-1-use-an-existing-disk"></a>Seçenek 1: Var olan bir diski kullan
+## <a name="option-1-use-an-existing-disk"></a>Seçenek 1: mevcut bir diski kullanın
 
 Sildiğiniz bir sanal makine varsa ve yeni bir VM oluşturmak için işletim sistemi diskini yeniden kullanmak istiyorsanız [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)' i kullanın.
 
@@ -51,14 +51,14 @@ $osDisk = Get-AzDisk `
 ```
 Artık bu diski işletim sistemi diski olarak [Yeni BIR VM](#create-the-new-vm)'ye ekleyebilirsiniz.
 
-## <a name="option-2-upload-a-specialized-vhd"></a>Seçenek 2: Özelleştirilmiş bir VHD 'YI karşıya yükleme
+## <a name="option-2-upload-a-specialized-vhd"></a>2\. seçenek: özelleştirilmiş bir VHD 'YI karşıya yükleme
 
 VHD 'yi Hyper-V gibi şirket içi bir sanallaştırma aracıyla oluşturulan özel bir VM 'den veya başka bir buluttan aktarılmış bir VM 'den karşıya yükleyebilirsiniz.
 
 ### <a name="prepare-the-vm"></a>VM’yi hazırlama
 Yeni bir VM oluşturmak için VHD 'YI olduğu gibi kullanın. 
   
-  * [Bir WINDOWS VHD 'Yi Azure 'a yüklemek Için hazırlayın](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sysprep 'i kullanarak VM 'yi genelleştirmeyin.
+  * [Bir WINDOWS VHD 'Yi Azure 'a yüklemek Için hazırlayın](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sysprep 'ı kullanarak VM 'yi **genelleştirmeyin** .
   * VM 'de yüklü olan tüm konuk sanallaştırma araçlarını ve aracılarını (VMware araçları gibi) kaldırın.
   * VM 'nin DHCP 'den IP adresi ve DNS ayarlarını almak için yapılandırıldığından emin olun. Bu, sunucunun başladığında sanal ağ içinde bir IP adresi almasını sağlar. 
 
@@ -74,7 +74,7 @@ Get-AzStorageAccount
 
 Mevcut bir depolama hesabını kullanmak için [VHD 'Yi karşıya yükleme](#upload-the-vhd-to-your-storage-account) bölümüne ilerleyin.
 
-Bir depolama hesabı oluşturun.
+Depolama hesabı oluşturma.
 
 1. Depolama hesabının oluşturulacağı kaynak grubunun adı gerekir. Get-AzResourceGroup komutunu, aboneliğinizdeki tüm kaynak gruplarını görüntüleyin.
    
@@ -102,7 +102,7 @@ Bir depolama hesabı oluşturun.
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>VHD 'YI depolama hesabınıza yükleyin 
-VHD 'yi Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, *myvhd. vhd* dosyasını "c:\users\public\belgelerim\sanal sabit disklerinden\" myresourcegroup kaynak grubundaki *mystorageaccount* adlı bir depolama hesabına yükler . Dosya *myContainer* adlı kapsayıcıda depolanır ve yeni dosya adı *Myuploadedvhd. vhd*olacaktır.
+VHD 'yi Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, *Myvhd. vhd* dosyasını "C:\users\public\belgelerim\sanal sabit diskler @ no__t-1" dan *myresourcegroup* kaynak grubundaki *mystorageaccount* adlı bir depolama hesabına yükler. Dosya *myContainer* adlı kapsayıcıda depolanır ve yeni dosya adı *Myuploadedvhd. vhd*olacaktır.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -131,7 +131,7 @@ Bu komutun tamamlanması, ağ bağlantınıza ve VHD dosyanızın boyutuna bağl
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>VHD 'den yönetilen disk oluşturma
 
-[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)' i kullanarak depolama HESABıNıZDAKI özelleştirilmiş VHD 'den yönetilen disk oluşturun. Bu örnek, disk adı için *myOSDisk1* kullanır, diski *Standard_LRS* Storage 'a koyar ve kaynak VHD için *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* URI olarak kullanır.
+[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)' i kullanarak depolama HESABıNıZDAKI özelleştirilmiş VHD 'den yönetilen disk oluşturun. Bu örnek, disk adı için *myOSDisk1* kullanır, diski *Standard_LRS* Storage 'A koyar ve kaynak VHD için URI olarak *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* ' ü kullanır.
 
 Yeni VM için yeni bir kaynak grubu oluşturun.
 
@@ -153,7 +153,7 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>Seçenek 3: Mevcut bir Azure VM 'yi kopyalama
+## <a name="option-3-copy-an-existing-azure-vm"></a>3\. seçenek: mevcut bir Azure VM 'yi kopyalama
 
 VM 'nin bir anlık görüntüsünü alarak yönetilen diskleri kullanan bir VM 'nin kopyasını oluşturabilir ve ardından yeni bir yönetilen disk ve yeni bir VM oluşturmak için bu anlık görüntüyü kullanabilirsiniz.
 
@@ -204,7 +204,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Bu anlık görüntüyü, yüksek performanslı olması gereken bir VM oluşturmak üzere kullanmak için, New-azsnapshotconfig komutuna parametresini `-AccountType Premium_LRS` ekleyin. Bu parametre, anlık görüntüyü, Premium yönetilen disk olarak depolanacak şekilde oluşturur. Premium yönetilen diskler standart 'tan daha pahalıdır, bu nedenle bu parametreyi kullanmadan önce Premium 'A ihtiyacınız olduğundan emin olun.
+Bu anlık görüntüyü yüksek performanslı bir VM oluşturmak üzere kullanmak için, New-AzSnapshotConfig komutuna `-AccountType Premium_LRS` parametresini ekleyin. Bu parametre, anlık görüntüyü, Premium yönetilen disk olarak depolanacak şekilde oluşturur. Premium yönetilen diskler standart 'tan daha pahalıdır, bu nedenle bu parametreyi kullanmadan önce Premium 'A ihtiyacınız olduğundan emin olun.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Anlık görüntüden yeni bir disk oluştur
 
@@ -353,7 +353,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 'nin oluşturulduğunu doğrulama
-Yeni oluşturulan VM 'yi,**sanal makinelere** **gözatada** >  [Azure Portal](https://portal.azure.com) veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir.
+Yeni oluşturulan VM 'yi,  > **sanal makinelere** **gözatarak** [Azure Portal](https://portal.azure.com) veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

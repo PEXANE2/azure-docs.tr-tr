@@ -6,28 +6,28 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d06b5b86737d0940930a3ccea3b6d65be0a802f9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026925"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387897"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>Veri akışı koşullu bölünmüş dönüşümünü eşleme
 
 
 
-![koşullu bölünmüş araç kutusu](media/data-flow/conditionalsplit2.png "koşullu bölünmüş araç kutusu")
+![Koşullu bölünmüş araç kutusu](media/data-flow/conditionalsplit2.png "Koşullu bölünmüş araç kutusu")
 
 Koşullu bölünmüş dönüştürme veri satırlarını, verilerin içeriğine bağlı olarak farklı akışlara yönlendirebilir. Koşullu bölünmüş dönüştürme uygulanması, programlama dilindeki bir CASE karar yapısına benzerdir. Dönüştürme ifadeleri değerlendirir ve sonuçlara dayanarak, veri satırını belirtilen akışa yönlendirir. Bu dönüşüm Ayrıca varsayılan bir çıktı da sağlar, böylece bir satır hiçbir ifadeyle eşleşiyorsa, varsayılan çıktıya yönlendirilir.
 
-![koşullu bölünmüş](media/data-flow/conditionalsplit1.png "koşullu bölünmüş seçenekler")
+![Koşullu bölme](media/data-flow/conditionalsplit1.png "Koşullu bölünmüş seçenekler")
 
 ## <a name="multiple-paths"></a>Birden çok yol
 
 Ek koşullar eklemek için, alt yapılandırma bölmesinde "akış Ekle" yi seçin ve deyiminizi derlemek için Ifade Oluşturucu metin kutusuna tıklayın.
 
-![koşullu bölünmüş çoklu](media/data-flow/conditionalsplit3.png "koşullu bölünmüş çoklu")
+![Koşullu bölünmüş çoklu](media/data-flow/conditionalsplit3.png "Koşullu bölünmüş çoklu")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

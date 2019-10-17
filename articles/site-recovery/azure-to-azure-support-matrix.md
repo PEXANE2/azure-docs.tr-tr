@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376338"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383507"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure VM'lerini bir bölgeden diğerine çoğaltma için destek matrisi
 
@@ -82,18 +82,21 @@ Site Recovery, bu bölümde listelenen işletim sistemlerini çalıştıran Azur
 
 ### <a name="windows"></a>Windows
 
+
 **İşletim sistemi** | **Ayrıntılar**
 --- | ---
 Windows Server 2019 | Sunucu çekirdeği için desteklenir, masaüstü deneyimi olan sunucu.
 Windows Server 2016  | Desteklenen sunucu çekirdeği, masaüstü deneyimi ile sunucu.
 Windows Server 2012 R2 | Destekleniyor.
 Windows Server 2012 | Destekleniyor.
-SP1/SP2 ile Windows Server 2008 R2 | Destekleniyor.<br/><br/> Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden Windows Server 2008 R2 SP1/SP2 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  Bu güncelleştirmeler yüklü değilse, aracı uzantısı beklendiği gibi yüklenmeyebilir/yükseltilemeyebilir. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
-SP2 ile Windows Server 2008 | Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden Windows Server 2008 SP2 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  Bu güncelleştirmeler yüklü değilse, aracı uzantısı beklendiği gibi yüklenmeyebilir/yükseltilemeyebilir. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+SP1/SP2 ile Windows Server 2008 R2 | Destekleniyor.<br/><br/> Azure VM 'lerinin Mobility hizmeti uzantısının 9.30. x. x sürümünden (2019 Kasım 'dan itibaren beklenen yayın), Windows Server 2008 R2 SP1/SP2 çalıştıran makinelerde bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+SP2 ile Windows Server 2008 | Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden (2019 Kasım 'dan başlayarak sürüm bekleniyor), SP2 ile Windows Server 2008 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
 Windows 10 (x64) | Destekleniyor.
 Windows 8.1 (x64) | Destekleniyor.
 Windows 8 (x64) | Destekleniyor.
-SP1 ile Windows 7 (x64) sürümleri | Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden, SP1 ile Windows 7 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  Bu güncelleştirmeler yüklü değilse, aracı uzantısı beklendiği gibi yüklenmeyebilir/yükseltilemeyebilir. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+SP1 ile Windows 7 (x64) sürümleri | Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden (2019 Kasım 'dan başlayan sürüm bekleniyor), SP1 ile Windows 7 çalıştıran makinelerde bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+
+
 
 #### <a name="linux"></a>Linux
 

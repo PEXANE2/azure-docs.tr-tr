@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 612d2e3a9a5a324f7d6d8e1b63b6b7e297047239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063832"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389680"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Özel ilkeleri kullanarak Azure Active Directory B2C bir sayfa düzeni seçme
 
@@ -30,9 +30,9 @@ Bu makalede, bir özel ilkede yapılandırarak Azure AD B2C bir sayfa düzeninin
 > [!NOTE]
 > Kullanıcı akışları için JavaScript 'ı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory B2C JavaScript ve sayfa düzeni sürümleri](user-flow-javascript-overview.md).
 
-## <a name="replace-datauri-values"></a>DataUri değerleri Değiştir
+## <a name="replace-datauri-values"></a>DataUri değerlerini Değiştir
 
-Özel ilkelerinizi etkinleştirmiş olabilirsiniz [ContentDefinitions](contentdefinitions.md) kullanıcı yolculuğunda kullanılan HTML şablonları tanımlayın. **ContentDefinition** içeren bir **DataUri** Azure AD B2C tarafından sağlanan sayfa öğelerine başvurur. **LoadUri** sağladığınız HTML ve CSS içeriği göreli yolu.
+Özel ilkeleriniz içinde, Kullanıcı yolculuğunda kullanılan HTML şablonlarını tanımlayan [ContentDefinitions](contentdefinitions.md) olabilir. **ContentDefinition** , Azure AD B2C tarafından sunulan sayfa öğelerine başvuran bir **datauri** içeriyor. **Loaduri** , sağladığınız HTML ve CSS içeriğinin göreli yoludur.
 
 ```XML
 <ContentDefinition Id="api.idpselections">
@@ -46,11 +46,11 @@ Bu makalede, bir özel ilkede yapılandırarak Azure AD B2C bir sayfa düzeninin
 </ContentDefinition>
 ```
 
-Bir sayfa düzeni seçmek için ilkeleriniz içindeki [ContentDefinitions](contentdefinitions.md) Içindeki **datauri** değerlerini değiştirirsiniz. Eski geçiş tarafından **DataUri** değerleri için yeni değerleri, sabit bir paket seçeneğini belirliyoruz. Bu paket kullanmanın avantajı, değiştirme yüklemeyecekseniz ve beklenmeyen davranışlara neden sayfanızda anlarsınız ' dir.
+Bir sayfa düzeni seçmek için ilkeleriniz içindeki [ContentDefinitions](contentdefinitions.md) Içindeki **datauri** değerlerini değiştirirsiniz. Eski **veri URI** değerlerinden yeni değerlere geçiş yaparak, sabit bir paket seçiyorsunuz. Bu paketi kullanmanın avantajı, bu paketin değişmediğini ve sayfanızda beklenmeyen davranışlara neden olduğunu biliyoruz.
 
 Sayfa düzeni ayarlamak için, **Datauri** değerlerini bulmak için aşağıdaki tabloyu kullanın.
 
-| Eski DataUri değer | Yeni DataUri değeri |
+| Eski DataUri değeri | Yeni DataUri değeri |
 | ----------------- | ----------------- |
 | `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
@@ -68,6 +68,17 @@ Sayfa düzeni ayarlamak için, **Datauri** değerlerini bulmak için aşağıdak
 
 Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü her sürümde tanıtılan değişiklikleri belirtir.
 
+### <a name="120"></a>1.2.0 
+- Tüm sayfalar
+  - Erişilebilirlik düzeltmeleri
+  - Artık CSS ve JavaScript 'in yükleme sırasını denetlemek için, HTML etiketlerinizi `data-preload="true"` özniteliğini ekleyebilirsiniz. Senaryolar şunlardır:
+      - CSS 'yi, dosyaları yükleme arasında ' titreşimsiz ' olacak şekilde HTML 'niz ile aynı anda yüklemek için CSS bağlantılarınızın üzerinde kullanın
+      - Bu öznitelik, sayfa yüklemeden önce betik etiketlerinizin getirilme sırasını denetlemenizi sağlar
+  - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlar
+  - Chrome çevirisi desteği
+- Birleşik ve kendiliğinden onaylanan sayfa
+  - Kullanıcı adı/e-posta ve parola alanları artık HTML öğesi formunu kullanır.  Bu, artık Edge ve IE 'nin bu bilgileri düzgün bir şekilde kaydetmesine izin verir
+  
 ### <a name="110"></a>1.1.0
 
 - Özel durum sayfası (globalexception)
@@ -96,4 +107,4 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanıcı arabirimi, uygulamalarınızın nasıl özelleştirebileceğiniz hakkında daha fazla bilgi [özel bir ilke kullanarak Azure Active Directory B2C'de, uygulamanızın kullanıcı arabirimini özelleştirme](active-directory-b2c-ui-customization-custom.md).
+[Azure Active Directory B2C ' de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](active-directory-b2c-ui-customization-custom.md)bölümünde uygulamalarınızın Kullanıcı arabirimini özelleştirme hakkında daha fazla bilgi edinin.

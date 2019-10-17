@@ -13,20 +13,21 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 44b3259745877ddb43e643f1fa8307e100ca8b38
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025248"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435383"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure için iOS Istemci kitaplığı 'Nı kullanma Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center, mobil uygulama geliştirmeye kadar uçtan uca ve tümleşik hizmetler merkezi 'ni destekler. Geliştiriciler, sürekli tümleştirme ve teslim işlem hattı ayarlamak için **oluşturma**, **Test** etme ve **dağıtma** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **analiz** ve **Tanılama** hizmetlerini kullanarak uygulamasının durumunu ve kullanımını izleyebilir ve **Push** hizmetini kullanarak kullanıcılarla etkileşime geçebilir. Geliştiriciler, uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için kullanıcıların ve **veri** hizmetinin kimliklerini doğrulamak üzere **kimlik** doğrulamasından faydalanabilir.
-> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
+> Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
+>
+> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu kılavuzda, en son [Azure Mobile Apps IOS SDK 'sını][1]kullanarak genel senaryolar gerçekleştirmenizi öğretilir. Azure Mobile Apps 'yi yeni kullanıyorsanız, ilk olarak [azure Mobile Apps hızlı başlangıç] tamamladıktan sonra arka uç oluşturun, tablo oluşturun ve önceden oluşturulmuş bir IOS Xcode projesini indirin. Bu kılavuzda, istemci tarafı iOS SDK 'sına odaklanıyoruz. Arka uca yönelik sunucu tarafı SDK 'Sı hakkında daha fazla bilgi edinmek için bkz. Server SDK HOWTOs.
@@ -909,7 +910,7 @@ Kullanıcıları bir Google hesabı kullanarak uygulamanıza imzalamak için iOS
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Dinamik şema]: https://go.microsoft.com/fwlink/p/?LinkId=296271
+[Dinamik şema]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965

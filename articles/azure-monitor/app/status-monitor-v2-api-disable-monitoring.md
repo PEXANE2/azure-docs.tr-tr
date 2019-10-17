@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API başvurusu: İzlemeyi devre dışı bırak | Microsoft Docs'
-description: Durum İzleyicisi v2 API başvurusu. Disable-ApplicationInsightsMonitoring. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: 'Azure Application Insights Agent API başvurusu: izlemeyi devre dışı bırak | Microsoft Docs'
+description: Aracı API başvurusunu Application Insights. Disable-ApplicationInsightsMonitoring. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d305e664c68af34027510a4e27d293bb24abc021
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203442"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389910"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Durum İzleyicisi v2 API 'SI: Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Application Insights aracı API 'SI: Disable-ApplicationInsightsMonitoring
 
 Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
@@ -42,7 +42,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="-verbose"></a>-Ayrıntılı
 **Ortak parametre.** Ayrıntılı günlükleri göstermek için bu anahtarı kullanın.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Çıktı
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>İzlemeyi başarıyla devre dışı bırakarak oluşan örnek çıkış
@@ -71,5 +71,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.

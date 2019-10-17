@@ -4,12 +4,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 935a6201e24e97deaa0a1a65e499310f74a49e2d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 92f638666d9ac832ee5e6a7d4dccf9a9e669f908
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059062"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427981"
 ---
 ## <a name="what-is-queue-storage"></a>Kuyruk depolama nedir?
 
@@ -19,16 +20,16 @@ Azure Kuyruk depolama, HTTP veya HTTPS kullanan kimlik doğrulaması yapılmış
 
 Azure Kuyruk hizmeti aşağıdaki bileşenleri içerir:
 
-![Kuyruk1](./media/storage-queue-concepts-include/queue1.png)
+![Azure Kuyruk hizmeti bileşenleri](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **URL biçimi:** Kuyruklar aşağıdaki URL biçimi kullanılarak adreslenebilir:   
+* **URL biçimi:** Kuyruklar şu URL biçimi kullanılarak adreslenebilir:   
     http://`<storage account>`.queue.core.windows.net/`<queue>` 
   
     Aşağıdaki URL diyagramdaki bir kuyruğun adresini belirtir:  
   
     `http://myaccount.queue.core.windows.net/images-to-download`
 
-* **Depolama hesabı:** Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için bkz. [Azure Storage Ölçeklenebilirlik ve Performans Hedefleri](../articles/storage/common/storage-scalability-targets.md).
-* **Sıradaki** Sıra bir ileti kümesi içerir. Tüm iletiler bir kuyrukta olmalıdır. Kuyruk adının tamamen küçük harfli olması gerektiğini unutmayın. Kuyrukların adlandırılması hakkında daha fazla bilgi için bkz. [Kuyrukları ve Meta Verileri Adlandırma](https://msdn.microsoft.com/library/azure/dd179349.aspx).
-* **İleti:** Herhangi bir biçimde, 64 KB 'ye kadar bir ileti. Bir iletinin kuyrukta kalabileceği en uzun süre 7 gündür.
+* **Depolama Hesabı:** Tüm Azure Storage erişimi bir depolama hesabıyla yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için bkz. [Azure Storage Ölçeklenebilirlik ve Performans Hedefleri](../articles/storage/common/storage-scalability-targets.md).
+* **Kuyruk:** Kuyrukta bir dizi ileti vardır. Tüm iletiler bir kuyrukta olmalıdır. Kuyruk adının tamamen küçük harfli olması gerektiğini unutmayın. Kuyrukların adlandırılması hakkında daha fazla bilgi için bkz. [Kuyrukları ve Meta Verileri Adlandırma](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+* **İleti:** İleti, biçimi ne olursa olsun en çok 64 KB büyüklüktedir. Bir iletinin kuyrukta kalabileceği en uzun süre 7 gündür.
 

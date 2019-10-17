@@ -14,17 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 440ba2cd7ac9cea19f903dff493790194962e1e8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+ms.openlocfilehash: 7732320e987e6397dde2aff0f6c4328d551d99b1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299472"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427935"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile Linux sanal makinesi oluşturma
 
-Bu hızlı başlangıç, Azure 'da bir Linux sanal makinesini (VM) dağıtmak için Azure komut satırı arabirimi 'ni (CLı) nasıl kullanacağınızı gösterir. Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu öğreticide Ubuntu 16.04 LTS sürümü yüklenmektedir. VM'nin çalıştığını görmek için SSH kullanarak bağlanacak ve NGINX web sunucusunu yükleyeceksiniz.
+Bu hızlı başlangıç, Azure 'da bir Linux sanal makinesini (VM) dağıtmak için Azure komut satırı arabirimi 'ni (CLı) nasıl kullanacağınızı gösterir. Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır.
+
+Bu öğreticide Ubuntu 16.04 LTS sürümü yüklenmektedir. VM'nin çalıştığını görmek için SSH kullanarak bağlanacak ve NGINX web sunucusunu yükleyeceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -107,7 +113,7 @@ sudo apt-get -y install nginx
 
 İstediğiniz web tarayıcısını kullanarak varsayılan NGINX karşılama sayfasını görüntüleyin. Web adresi olarak VM'nizin genel IP adresini kullanın. Aşağıdaki örnekte varsayılan NGINX web sitesi gösterilir:
 
-![NGıNX varsayılan karşılama sayfası](./media/quick-create-cli/nginix-welcome-page.png)
+![NGINX karşılama sayfasını görüntüleme](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

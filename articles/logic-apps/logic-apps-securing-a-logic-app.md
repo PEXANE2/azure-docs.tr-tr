@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: b1331865224d34f731dbd388cebdaec8b7c9fe7f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c7b6abb9874c8b6bb2469595b9ce53541656834f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264653"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430135"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -183,7 +183,7 @@ Başkalarının mantıksal uygulamanızı değiştirmesini veya silmesini engell
 
 ## <a name="access-to-run-history-data"></a>Çalışma geçmişi verilerine erişim
 
-Mantıksal uygulama çalıştırma sırasında, [Aktarım Katmanı Güvenliği (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) ve [bekleyen](../security/fundamentals/encryption-atrest.md)' i kullanarak tüm veriler geçiş sırasında şifrelenir. Mantıksal uygulamanız çalışmayı bitirdiğinde, her eylem için durum, süre, girişler ve çıkışlarla birlikte çalışan adımlar dahil olmak üzere o çalıştırmaya ilişkin geçmişi görüntüleyebilirsiniz. Bu zengin ayrıntı, mantıksal uygulamanızın nasıl çalıştığı ve ortaya çıkan tüm sorunları gidermeye başlayabileceğiniz hakkında öngörüler sağlar.
+Mantıksal uygulama çalıştırma sırasında, Aktarım Katmanı Güvenliği (TLS) ve [bekleyen](../security/fundamentals/encryption-atrest.md)' i kullanarak tüm veriler [geçiş sırasında şifrelenir](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) . Mantıksal uygulamanız çalışmayı bitirdiğinde, her eylem için durum, süre, girişler ve çıkışlarla birlikte çalışan adımlar dahil olmak üzere o çalıştırmaya ilişkin geçmişi görüntüleyebilirsiniz. Bu zengin ayrıntı, mantıksal uygulamanızın nasıl çalıştığı ve ortaya çıkan tüm sorunları gidermeye başlayabileceğiniz hakkında öngörüler sağlar.
 
 Mantıksal uygulamanızın çalıştırma geçmişine eriştiğinizde Logic Apps erişiminizin kimliğini doğrular ve mantıksal uygulamanızın çalıştırmasında isteklerinizin ve yanıtların giriş ve çıkışları için bağlantılar sağlar. Ancak, herhangi bir parolayı, parolayı, anahtarı veya diğer hassas bilgileri işleyen eylemler için başkalarının bu verilere bakmasını ve erişimini engellemek isteyebilirsiniz. Örneğin, mantıksal uygulamanız bir HTTP eyleminin kimlik doğrulaması sırasında kullanmak üzere [Azure Key Vault](../key-vault/key-vault-overview.md) bir gizli dizi alırsa, bu gizli anahtarı görünümden gizlemek istersiniz.
 

@@ -6,18 +6,18 @@ author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 55f82344956af7d6096fce7dbc3d7023589daa69
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830189"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428027"
 ---
 Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için harika olan yüksek bir bellek-CPU oranı sunar. Bu makalede, bu gruplandırmadaki her bir boyut için sanal CPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkında bilgi sağlanır.
 
-* Ev3-Series, bir hiper iş yükleri için E5-2673 v4 2,3 GHz (çok Iyi) işlemciyi, çoğu genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 ' yi diğer bulutların genel amaçlı VM 'Leri ile hizalı hale getiriyor.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlandığı sürece (7 GiB/vCPU 'dan 8 GiB/vCPU 'ya kadar) bellek genişletilir.  Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
+* Ev3-Series, bir hiper iş yükleri için Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş kapsamlı) işlemciler sunar ve bu, genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 diğer bulutların çoğu için genel amaçlı VM 'Ler ile hizalama.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlandığı sürece (7 GiB/vCPU 'dan 8 GiB/vCPU 'ya kadar) bellek genişletilir.  Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
 * Eav3-Series ve Easv3-Series ' in önizleme boyutları, en fazla 256 MB boyutunda L3 önbellek kullanan çok iş parçacıklı bir yapılandırmada AMD 'nin 2.35 GHz EPYıC<sup>TM</sup> 7452 işlemcisini kullanır ve en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır.  Eav3-Series ve Easv3 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
@@ -27,7 +27,7 @@ Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları,
 
 * Dv2 serisi, G serisi ve DSv2/GS karşılıkları, daha hızlı vCPU 'Ları, daha iyi geçici depolama performansını talep eden veya daha yüksek bellek taleplerine sahip olan uygulamalar için idealdir. Birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
 
-* Orijinal D Serisinin üzerine geliştirilen Dv2 Serisi, daha güçlü bir CPU'ya sahiptir. Dv2 Serisi CPU, D Serisi CPU'dan yaklaşık %35 daha hızlıdır. Bu, en son nesil 2,4 GHz Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) veya E5-2673 v4 2,3 GHz (çok Iyi) işlemcileri temel alır ve Intel Turbo Boost Technology 2,0 ile, ' 3,1 ye varan bir mimariye geçebilir. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+* Orijinal D Serisinin üzerine geliştirilen Dv2 Serisi, daha güçlü bir CPU'ya sahiptir. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır ve Intel Turbo Boost Technology 2,0. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 * Azure Compute, belirli bir donanım türüyle sınırlanmış ve tek bir müşteriye ayrılmış olan sanal makine boyutları sunar.  Bu sanal makine boyutları, uyumluluk ve düzenleme gereksinimleri gibi öğeler içeren iş yükleri nedeniyle diğer müşterilerden yüksek ölçüde yalıtıma ihtiyaç duyan iş yükleri için idealdir.  Müşteriler Ayrıca, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölümlere ayırmak da tercih edebilir.  Yalıtılmış VM seçenekleriniz için lütfen aşağıdaki sanal makine ailelerinin tablolarına bakın.
 
@@ -39,7 +39,7 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-ESv3 serisi örnekleri, 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) işlemciyi temel alır, Intel Turbo Boost Technology 2.0 ile 3,5 GHz hıza çıkabilir ve premium depolama kullanır. Ev3 örnekleri, yoğun bellek kullanımlı kurumsal uygulamalar için idealdir.
+ESv3 serisi örnekler, Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) işlemcileri özelliğini kullanır ve Intel Turbo Boost Technology 2,0 ile 3,5 GHz elde edebilir ve Premium depolama kullanabilir. Ev3 örnekleri, yoğun bellek kullanımlı kurumsal uygulamalar için idealdir.
 
 
 | Boyut             | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
@@ -89,7 +89,7 @@ Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
 
-Ev3 serisi örnekleri, 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) işlemciyi temel alır ve Intel Turbo Boost Technology 2.0 ile 3,5 GHz hıza çıkabilir. Ev3 örnekleri, yoğun bellek kullanımlı kurumsal uygulamalar için idealdir.
+Ev3-Series örnekleri, Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) işlemcileri özelliğine sahiptir ve Intel Turbo Boost Technology 2,0 ile 3,5 GHz elde edebilir. Ev3 örnekleri, yoğun bellek kullanımlı kurumsal uygulamalar için idealdir.
 
 Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium depolama disklerini kullanmak için ESv3 boyutlarını kullanın. ESv3 boyutları için fiyatlandırma ve faturalandırma oranları Ev3 serisi ile aynıdır. 
 
@@ -241,7 +241,7 @@ Premium Depolama: desteklenir
 
 Premium depolama önbelleği: desteklenir
 
-DSv2 serisi boyutlar Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz 'yi temel alır
+DSv2 serisi boyutlar Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
 
 | Boyut | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | En fazla veri diski | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS-MB/sn (önbellek boyutu GiB biriminde) | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -266,7 +266,7 @@ Premium Depolama: desteklenmiyor
 
 Premium depolama önbelleği: desteklenmiyor
 
-DSv2 serisi boyutlar Intel (R) Xeon (R) CPU E5-2673 v3 @ 2.40 GHz 'yi temel alır
+DSv2 serisi boyutlar Intel® Xeon® 8171M 2,1 GHz (ufuk Gölü) veya Intel® Xeon® E5-2673 v4 2,3 GHz (geniş) veya Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) işlemcileri üzerinde çalışır.
 
 | Boyut              | vCPU | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | Maksimum veri diski/aktarım hızı: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303534"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430501"
 ---
-# <a name="what-is-passwordless"></a>Parolasız işlevi nedir?
+# <a name="passwordless-authentication-options"></a>Passwordless kimlik doğrulama seçenekleri
 
 Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika bir yoludur, ancak kullanıcılar parolalarını anımsamak için gereken ek katman ile daha kolay bir şekilde yararlanar. Parola kaldırıldığı ve sizin veya bildiğiniz bir şeyi içeren bir şekilde değiştirildiği için passwordless kimlik doğrulama yöntemleri daha uygundur.
 
 |   | Sahip olduğunuz bir şey | Sizin veya bildiğiniz bir şey |
 | --- | --- | --- |
-| Parolasız | Telefon veya güvenlik anahtarı | Biyometrik veya PIN |
+| Parolasız | Windows 10 cihaz, telefon veya güvenlik anahtarı | Biyometrik veya PIN |
 
-Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft şu anda Windows bilgisayarlarımız için Windows Hello 'Yu sunmaktadır. Microsoft Authenticator App ve FIDO2 güvenlik anahtarlarını passwordless ailesine ekliyoruz.
+Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft üç adet parolasız kimlik doğrulama seçeneği sunar:
+
+- İş İçin Windows Hello 
+- Microsoft Authenticator uygulaması 
+- FIDO2 güvenlik anahtarları
+
+![Kimlik doğrulama: güvenlik ve kolaylık](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>İş İçin Windows Hello 
+
+Iş için Windows Hello, kendilerine ait Windows bılgısayar olan bilgi çalışanları için idealdir. Biyometrik ve PIN, kullanıcının BILGISAYARıNA doğrudan bağlanır, bu da sahip dışında bir kişiye erişimi engeller. PKI tümleştirmesi ve çoklu oturum açma (SSO) için yerleşik destek sayesinde Iş için Windows Hello, şirket içi ve buluttaki kurumsal kaynaklara sorunsuz bir şekilde erişmek için basit ve kullanışlı bir yöntem sağlar.
+
+İş için Windows Hello [Planlama Kılavuzu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) , Iş Için Windows Hello dağıtımı ve göz önünde bulundurmanız gereken seçenekler hakkında kararlar almanıza yardımcı olmak için kullanılabilir.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
 
@@ -44,7 +56,7 @@ FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishabl
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-FIDO Alliance tarafından FIDO2 sertifikalı çok sayıda anahtar olmakla kalmaz, Microsoft, en yüksek güvenlik ve en iyi deneyimi sağlamak için FIDO2 CTAP belirtiminin bazı isteğe bağlı uzantılarını satıcı tarafından uygulanması gerekir.
+FIDO Alliance tarafından FIDO2 sertifikalı çok sayıda anahtar olmakla kalmaz, Microsoft en yüksek güvenliği ve en iyi şekilde emin olmak için, FIDO2 Istemci-Authenticator Protokolü (CTAP) belirtiminin bazı isteğe bağlı uzantılarını satıcı tarafından uygulanması gerekir deneyimleri.
 
 Bir güvenlik anahtarı, FIDO2 CTAP protokolünden Microsoft ile uyumlu olmak için aşağıdaki özellikleri ve **uzantıları gerçekleştirmelidir:**
 

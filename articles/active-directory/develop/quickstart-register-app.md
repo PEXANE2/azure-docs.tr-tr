@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80040aab0ea9d1444e1afd77d45d990f3d05f0de
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b0adc75d2da1a8ef053edf0078746df8f36ed5e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853034"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430312"
 ---
-# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı Başlangıç: Microsoft Identity platformu ile uygulama kaydetme
+# <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
 Kurumsal geliştiriciler ve hizmet olarak yazılım (SaaS) sağlayıcıları, hizmetleri için güvenli oturum açma ve yetkilendirme imkanı sunmak için Microsoft kimlik platformu ile tümleştirilebilen ticari bulut hizmetleri veya iş kolu uygulamaları geliştirebilir.
 
@@ -47,18 +47,18 @@ Bu hızlı başlangıçta, uygulamanızın Microsoft Identity platformu ile tüm
        | **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları** | En geniş müşteri kümesini hedeflemek için bu seçeneği belirleyin.<br><br>Bu seçenek Azure AD çok kiracılı ve kişisel Microsoft hesaplarına eşlenir.<br><br>Uygulamayı Azure AD çok kiracılı ve kişisel Microsoft hesapları olarak kaydettiyseniz, bunu kullanıcı arabiriminde değiştiremezsiniz. Bunun yerine, desteklenen hesap türlerini değiştirmek için uygulama bildirimi düzenleyicisini kullanmanız gerekir. |
 
    - **Yeniden yönlendirme URI’si (isteğe bağlı)** - **Web** veya **Genel istemci (mobil ve masaüstü)** seçenekleri arasından oluşturduğunuz uygulamanın türünü seçin ve ardından uygulamanız için yeniden yönlendirme URI’sini (veya yanıt URL’sini) girin.
-       - Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `http://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
+       - Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `https://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
        - Genel istemci uygulamaları için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Uygulamanıza özgü bir değer girin, örn. `myapp://auth`.
 
      Web uygulamalarına veya yerel uygulamalara özgü örnekler görmek için, [hızlı başlangıçlara](https://docs.microsoft.com/azure/active-directory/develop) göz atın.
 
 1. Bittiğinde **Kaydet**’i seçin.
 
-    [![Azure portal yeni bir uygulamanın kaydedileceği ekranı gösterir](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Azure Portal yeni bir uygulamanın kaydedileceği ekranı gösterir](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Azure AD, uygulamanıza benzersiz bir uygulama (istemci) kimliği atar ve uygulamanızın **Genel Bakış** sayfasına yönlendirilirsiniz. Uygulamanıza ek özellikler eklemek için, markalama, sertifikalar ve gizli diziler, API izinleri ve daha fazlasını içeren diğer yapılandırma seçeneklerini belirleyebilirsiniz.
 
-[![Yeni kayıtlı bir uygulamanın genel bakış sayfasına örnek](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[yeni kaydedilen uygulamanın genel bakış sayfasına ![Örnek](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

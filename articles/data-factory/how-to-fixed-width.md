@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962123"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387041"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarını kullanarak sabit uzunluklu metin dosyalarını işleyin
 
@@ -65,13 +65,13 @@ Microsoft Azure Data Factory veri akışlarını eşleme kullanarak, sabit geni�
 
     ```substring(Column_1,1,4)```
 
-    ![Türetilmiş sütun](media/data-flow/fwderivedcol1.png)
+    ![türetilmiş sütun](media/data-flow/fwderivedcol1.png)
 
 11. Ayrıştırmak için gereken tüm sütunlar için 10. adımı tekrarlayın.
 
 12. Oluşturulacak yeni sütunları görmek için **İnceleme** sekmesini seçin:
 
-    ![bilgiyi](media/data-flow/fwinspect.png)
+    ![Bilgiyi](media/data-flow/fwinspect.png)
 
 13. Dönüştürme için gerekli olmayan sütunları kaldırmak için Seç dönüşümünü kullanın:
 

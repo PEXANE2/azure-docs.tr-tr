@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API başvurusu: İzleme altyapısını devre dışı bırak | Microsoft Docs'
-description: Durum İzleyicisi v2 API başvurusu. Disable-ınstrumentationengine. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: 'Azure Application Insights Agent API başvurusu: izleme altyapısını devre dışı bırakma | Microsoft Docs'
+description: Aracı API başvurusunu Application Insights. Disable-ınstrumentationengine. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 98f70a457b1e09f755a854a28cfd31a8fc9ee9f2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: aaf493b5f2075ead62087824773f21643a1246e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033183"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388301"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>Durum İzleyicisi v2 API 'SI: Disable-ınstrumentationengine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights aracı API 'SI: Disable-ınstrumentationengine
 
 Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
@@ -41,7 +41,7 @@ PS C:\> Disable-InstrumentationEngine
 ### <a name="-verbose"></a>-Ayrıntılı
 **Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Çıktı
 
 
 #### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>İzleme altyapısını başarıyla devre dışı bırakma örnek çıkışı
@@ -57,5 +57,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
- Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.

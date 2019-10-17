@@ -7,19 +7,19 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241815"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390088"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli nedir?
 Service Fabric uygulamaların Azure Resource Manager aracılığıyla Service Fabric kümenize dağıtılması önerilir. Bu yöntem, JSON 'daki uygulama ve Hizmetleri tanımlamaya ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtmanıza olanak tanır. Uygulamaları PowerShell veya Azure CLı aracılığıyla dağıtmanın ve yönetmenin aksine, kümenin kullanıma başlamasını beklemeniz gerekmez. Uygulama kaydetme, hazırlama ve dağıtma işlemlerinin tümü tek bir adımda gerçekleşebilir. Bu, kümenizdeki uygulama yaşam döngüsünü yönetmek için kullanılabilecek en iyi yöntemdir. Daha fazla bilgi için [en iyi uygulamalara](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)bakın.
 
 Uygun olduğunda, uygulamalarınızı geliştirmek için Kaynak Yöneticisi kaynak olarak yönetin:
 * Denetim izi: Kaynak Yöneticisi her işlemi denetler ve bu uygulamalarda ve kümeniz üzerinde yapılan değişiklikleri izlemenize yardımcı olabilecek ayrıntılı bir *etkinlik günlüğü* tutar.
-* Rol tabanlı erişim denetimi: Kümeye erişimin yanı sıra küme üzerinde dağıtılan uygulamaların de aynı Kaynak Yöneticisi şablonu aracılığıyla yapılması yapılabilir.
+* Rol tabanlı erişim denetimi: kümelere erişimin yanı sıra küme üzerinde dağıtılan uygulamaların de aynı Kaynak Yöneticisi şablonu aracılığıyla yapılması yapılabilir.
 * Azure Resource Manager (Azure portal aracılığıyla), kümenizin ve kritik uygulama dağıtımlarınızın yönetilmesi için tek bir durdurulmalı bir mağaza haline gelir.
 
 ## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Azure Resource Manager ile uygulama yaşam döngüsünü Service Fabric 
@@ -51,10 +51,10 @@ Uygulama dağıtılmadan önce, blob depolamada hazırlanmalıdır. Bu öğretic
 1. Visual Studio 'da oylama projesine sağ tıklayın ve paket ' i seçin.   
 ![Paket uygulaması][PackageApplication]  
 2. Yeni oluşturduğunuz **.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug** dizinini açın ve içeriği,, ApplicationManifest. xml dosyası ZIP dosyasının kökünde olacak şekilde **Oylama. zip** adlı bir dosyaya ekleyin.  
-![ZIP uygulaması][ZipApplication]  
+![Zip uygulaması @ no__t-1  
 3. Dosyanın uzantısını. zip konumundan **. sfpkg**olarak yeniden adlandırın.
 4. Azure portal, depolama hesabınızın **uygulamalar** kapsayıcısında, **karşıya yükle** ' ye tıklayın ve **Oylama. sfpkg**' ı karşıya yükleyin.  
-![Uygulama paketini karşıya yükle][UploadAppPkg]
+![Uygulama paketini karşıya yükle @ no__t-1
 
 Uygulama artık hazırlandı. Şimdi uygulamayı dağıtmak için Azure Resource Manager şablonu oluşturmaya hazırsınız.      
    
@@ -66,12 +66,12 @@ Uygulama artık hazırlandı. Şimdi uygulamayı dağıtmak için Azure Resource
 >
 >
 
-| Parametre              | Açıklama                                 | Örnek                                                      | Açıklamalar                                                     |
+| Parametre              | Açıklama                                 | Örnek                                                      | Yorumlar                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | Dağıtım yaptığınız kümenin adı | SF-cluster123                                                |                                                              |
-| uygulama            | Uygulamanın adı                 | Lerinizi                                                       |
+| Uygulamanızı            | Uygulamanın adı                 | Lerinizi                                                       |
 | applicationTypeName    | Uygulamanın tür adı           | VotingType                                                   | ApplicationManifest. xml ' deki yeniliklere uymalıdır                 |
-| applicationTypeVersion | Uygulama türü sürümü         | 1.0.0                                                        | ApplicationManifest. xml ' deki yeniliklere uymalıdır                 |
+| ApplicationTypeVersion | Uygulama türü sürümü         | 1.0.0                                                        | ApplicationManifest. xml ' deki yeniliklere uymalıdır                 |
 | HizmetAdı            | Hizmetin hizmetin adı         | Oylama ~ VotingWeb                                             | ApplicationName ~ ServiceType biçiminde olmalıdır            |
 | serviceTypeName        | Hizmetin tür adı                | VotingWeb                                                    | ServiceManifest. xml dosyasındaki yeniliklere uymalıdır                 |
 | appPackageUrl 'Si          | Uygulamanın BLOB depolama URL 'SI     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob depolamada uygulama paketinin URL 'SI (Bu ayarı ayarlama yordamı aşağıda açıklanmıştır) |
@@ -156,8 +156,8 @@ Uygulama kaynak modeli hakkında bilgi alın:
 * [Uygulama ve hizmet bildirimlerini Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-* [En iyi uygulamalar](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Uygulamaları ve Hizmetleri Azure kaynakları olarak yönetme](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [En iyi uygulamalar](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [Uygulamaları ve Hizmetleri Azure kaynakları olarak yönetme](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

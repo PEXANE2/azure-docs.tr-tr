@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Python ile Tablo API'si Azure Cosmos DB"
+title: "Hızlı başlangıç: Python ile Tablo API'si Azure Cosmos DB"
 description: Bu hızlı başlangıçta Azure portalı ve Python ile uygulama oluşturmak için Azure Cosmos DB Tablo API’sinin nasıl kullanılacağı gösterilmektedir
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom: seo-python-october2019
+ms.openlocfilehash: d4cfba26192eb097d06f82e18acb41c1f9640e66
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020145"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437335"
 ---
-# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Hızlı Başlangıç: Python ve Azure Cosmos DB Tablo API'si uygulama oluşturma
+# <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Hızlı Başlangıç: Python ve Azure Cosmos DB ile Tablo API’si uygulaması oluşturma
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -33,7 +34,7 @@ Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritaba
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-Buna ek olarak:
+Ek olarak:
 
 * Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirme** ve **Python geliştirme** iş yüklerini seçtiğinizden emin olun.
 * Ayrıca **Python geliştirme** iş yükünde Python 2 seçeneğini belirleyin veya [python.org](https://www.python.org/downloads/release/python-2712/) adresinden Python 2.7’yi indirin.
@@ -56,7 +57,7 @@ Buna ek olarak:
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub'dan bir Tablo uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz. 
+Şimdi GitHub'dan bir Tablo uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu göreceksiniz. 
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -84,7 +85,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portalında](https://portal.azure.com/) **Bağlantı Dizesi**’ni seçin. 
 
-    ![Bağlantı Dizesi bölmesindeki CONNECTION STRING’i kopyalama ve görüntüleme](./media/create-table-python/connection-string.png)
+    ![Bağlantı dizesi ayarlarındaki bağlantı DIZESINI görüntüleyin ve kopyalayın](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. Sağ taraftaki düğmeyi kullanarak ACCOUNT NAME’i kopyalayın.
 
@@ -94,7 +95,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 5. Portaldan PRIMARY KEY değerini 20. satırdaki STORAGE_ACCOUNT_KEY değerine yapıştırın.
 
-3. Config.py dosyasını kaydedin.
+6. Config.py dosyasını kaydedin.
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 

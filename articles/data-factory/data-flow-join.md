@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029330"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387234"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Eşleme veri akışı JOIN dönüştürmesi
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029330"
 
 Veri akışınızda iki tablodaki verileri birleştirmek için JOIN ' i kullanın. Sol ilişki olacak dönüşüme tıklayın ve araç kutusundan bir JOIN dönüştürmesi ekleyin. JOIN dönüştürmesinin içinde, doğru ilişki olması için veri akışınızdan başka bir veri akışı seçersiniz.
 
-![Dönüştürme](media/data-flow/join.png "katılımı") Birleştir
+![Dönüşümü Birleştir](media/data-flow/join.png "Birleştir")
 
 ## <a name="join-types"></a>JOIN türleri
 
@@ -56,7 +56,7 @@ En az 1 (1.. n) JOIN koşullarını girmeniz gerekir. Bunlar doğrudan başvurul
 
 SSIS gibi araçlarla birleştirme birleştirmenin aksine, ADF veri akışında birleştirme zorunlu bir birleştirme birleştirme işlemi değildir. Bu nedenle, önce JOIN anahtarlarının sıralanması gerekmez. JOIN işlemi Spark: Broadcast----------------JOIN içindeki en iyi JOIN
 
-![Birleşime katılmayı en iyi]duruma(media/data-flow/joinoptimize.png "getirme")
+![Dönüştürme iyileştirmelerine Birleştir](media/data-flow/joinoptimize.png "Birleştirmeyi En Iyi duruma getirme")
 
 Veri kümeniz çalışan düğümü belleğine uyabiliyorsanız, JOIN performansınızı iyileştirebiliriz. Ayrıca, çalışan başına belleğe daha iyi uyum sağlayan veri kümeleri oluşturmak için birleştirme işleminde verilerinizin bölümlenmesini belirtebilirsiniz.
 
@@ -64,7 +64,7 @@ Veri kümeniz çalışan düğümü belleğine uyabiliyorsanız, JOIN performans
 
 Var olan bir akışa alternatif olarak seçme dönüşümü ' nü kullanarak ADF veri akışında kendi kendine JOIN koşullarına ulaşabilirsiniz. İlk olarak, bir akıştan "yeni dal" oluşturun, sonra tüm özgün akışın diğer adına bir seçim ekleyin.
 
-Kendi kendine ![katılmayı](media/data-flow/selfjoin.png "kendine ekleme")
+![Kendi kendine Birleştir](media/data-flow/selfjoin.png "Kendi kendine Birleştir")
 
 Yukarıdaki diyagramda, select Transform en üstte. Tüm BT, "OrigSourceBatting" için özgün akışın diğer adını alıyor. Aşağıdaki Vurgulanan birleşim dönüşümünden, sağ taraftaki birleşim olarak bu Select diğer ad akışını kullandığımızdan, Iç birleştirmenin sağ & sağ tarafında aynı anahtara başvurmamızı sağlayabilirsiniz.
 

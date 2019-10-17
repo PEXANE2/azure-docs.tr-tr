@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: f9d2699c870de21daea9ce421c79f089c04b99fa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 029ce3c509d3f4d241012d3786e60f0c6e95fdc2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029126"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387186"
 ---
 # <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory veri akışı sıralama dönüşümleri
 
 
 
-![Sıralama ayarları](media/data-flow/sort.png "sıralaması")
+![Sıralama ayarları](media/data-flow/sort.png "Sırala")
 
 Sıralama dönüştürmesi, geçerli veri akışındaki gelen satırları sıralamanıza olanak tanır. Sıralama dönüştürmesinin giden satırları daha sonra, ayarladığınız sıralama kurallarını izler. Her bir alanın yanındaki ok göstergesini kullanarak sütunları tek tek seçebilir ve ASC veya DEC olarak sıralayabilirsiniz. Sıralamayı uygulamadan önce sütunu değiştirmeniz gerekiyorsa, ifade düzenleyicisini başlatmak için "hesaplanan sütunlar" a tıklayın. Bu, sıralama için bir sütun uygulamak yerine sıralama işlemi için bir ifade oluşturmak üzere bir fırsat sağlar.
 

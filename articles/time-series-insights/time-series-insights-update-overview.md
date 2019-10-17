@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da81d5603eb26ae3b209bbbc01a8d6fc31e1ba3a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978665"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382024"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights Önizleme nedir?
 
@@ -45,7 +45,7 @@ Sonuç olarak, yalnızca işletimsel ve iş amaçları için verilerin bir böl�
 
 Aşağıdaki görüntüde tipik bir IoT veri akışı gösterilmektedir.
 
-  ![IoT veri akışı][1]
+  [![ıot veri akışı](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Endüstriyel IoT için Azure Time Series Insights
 
@@ -70,7 +70,7 @@ Time Series Insights Şu anda önizleme aşamasında olan operasyonel içgörül
 
 Bu üst düzey veri akışı diyagramı güncelleştirmeleri gösterir.
 
-  ![Temel işlevler][2]
+  [![Anahtar özellikleri](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
 Bu temel Endüstriyel IoT özelliklerine giriş ile Time Series Insights aşağıdaki temel avantajları sağlar.
 
@@ -94,7 +94,3 @@ Kullanım örnekleri hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights Önizleme kullanım örnekleri](./time-series-insights-update-use-cases.md)
-
-<!-- Images -->
-[1]: media/v2-update-overview/overview-one.png
-[2]: media/v2-update-overview/overview-two.png

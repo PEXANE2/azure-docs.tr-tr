@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 09ba4bc9e5ac496a7d1d65ff145d56818e53116e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243347"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432070"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Sunucuları istenen bir duruma göre yapılandırma ve DRFT 'yi yönetme
 
@@ -34,7 +34,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 - Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](automation-sec-configure-azure-runas-account.md).
 - Windows Server 2008 R2 veya üstünü çalıştıran bir Azure Resource Manager VM (klasik değil). VM oluşturma yönergeleri için bkz. [Azure portalında ilk Windows sanal makinenizi oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell modülü 3,6 veya sonraki bir sürümü. Sürümü bulmak için `Get-Module -ListAvailable AzureRM` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/azurerm/install-azurerm-ps).
-- Istenen durum yapılandırması (DSC) ile benzerlik. DSC hakkında daha fazla bilgi için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overviews)
+- Istenen durum yapılandırması (DSC) ile benzerlik. DSC hakkında daha fazla bilgi için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overview)
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 

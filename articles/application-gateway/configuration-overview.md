@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177429"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389965"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -48,7 +48,7 @@ En az/28 olan bir alt ağ boyutu kullanmanızı öneririz. Bu boyut size 11 kull
 
 Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak çeşitli kısıtlamalar vardır:
 
-- Application Gateway v1 SKU 'SU için 65503-65534 bağlantı noktalarında gelen trafiğe yönelik özel durumlar ve v2 SKU 'SU için 65200-65535 bağlantı noktaları dahil etmeniz gerekir. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz.
+- Application Gateway v1 SKU 'SU için 65503-65534 TCP bağlantı noktalarında gelen Internet trafiğine izin vermeniz gerekir ve v2 SKU 'SU için TCP bağlantı noktaları 65200-65535, hedef alt ağa sahip *olmalıdır.* Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Bu ağ geçitlerinin müşterileri de dahil olmak üzere dış varlıklar, uygun sertifikalara sahip olmayan bu uç noktalar üzerinde değişiklik başlatamaz.
 
 - Giden internet bağlantısı engellenmiyor. NSG 'deki varsayılan giden kurallar internet bağlantısına izin verir. Şunları yapmanızı öneririz:
 

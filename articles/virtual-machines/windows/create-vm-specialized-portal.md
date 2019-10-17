@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079652"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390499"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Azure portal kullanarak bir VHD 'den VM oluşturma
 
@@ -34,6 +34,7 @@ Azure 'da bir sanal makine (VM) oluşturmanın birkaç yolu vardır:
 
 Birden çok VM oluşturmak istiyorsanız özel bir disk kullanmayın. Bunun yerine, daha büyük dağıtımlar için [bir görüntü oluşturun](capture-image-resource.md) ve ardından [Bu görüntüyü kullanarak birden çok VM oluşturun](create-vm-generalized-managed.md).
 
+Tek bir anlık görüntü veya VHD 'den 20 VM 'ye eş zamanlı dağıtım sayısını sınırlamanızı öneririz. 
 
 ## <a name="copy-a-disk"></a>Disk kopyalama
 
@@ -67,13 +68,14 @@ Kullanmak istediğiniz yönetilen disk VHD 'sine sahip olduktan sonra, portalda 
 4. **Genel bakış** sayfasında, **DISK durumunun** **eklenmemiş**olarak listelendiğinden emin olun. Değilse, diski VM 'den ayırmanız ya da diski boşaltmak için VM 'yi silmeniz gerekebilir.
 4. Sayfanın üst kısmındaki menüde **VM oluştur**' u seçin.
 5. Yeni VM 'nin **temel bilgiler** sayfasında, bir **sanal makine adı** girin ve var olan bir **kaynak grubunu** seçin ya da yeni bir tane oluşturun.
-6. Boyutiçin boyut sayfasına erişmek üzere boyutu **Değiştir** ' i seçin.
+6. Boyut **için** **Boyut sayfasına erişmek üzere boyutu** **Değiştir** ' i seçin.
 7. Bir VM boyutu satırı seçip **Seç**' i seçin.
 8. **Ağ** sayfasında, portalın tüm yeni kaynaklar oluşturmasına izin verebilir veya var olan bir **sanal ağ** ve **ağ güvenlik grubunu**seçebilirsiniz. Portal, yeni VM için her zaman yeni bir ağ arabirimi ve genel IP adresi oluşturur. 
 9. **Yönetim** sayfasında, izleme seçeneklerinde tüm değişiklikleri yapın.
 10. **Konuk yapılandırması** sayfasında, gereken tüm uzantıları ekleyin.
 11. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin. 
 12. VM yapılandırması doğrulamayı geçerse, dağıtımı başlatmak için **Oluştur** ' u seçin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

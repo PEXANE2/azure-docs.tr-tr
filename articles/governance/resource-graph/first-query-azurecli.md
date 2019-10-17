@@ -3,15 +3,15 @@ title: Azure CLı kullanarak ilk sorgunuzu çalıştırma
 description: Bu makale, Azure CLI için Kaynak Grafiği uzantısını etkinleştirmek ve ilk sorgunuzu çalıştırmak için gereken adımları incelemenizi sağlar.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 34325fe8e8fdf7f53eb730818dc57800b65076e2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976703"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389730"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -54,7 +54,7 @@ Azure CLI uzantısının seçtiğiniz ortamınıza eklenmesiyle birlikte şimdi 
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -64,7 +64,7 @@ Azure CLI uzantısının seçtiğiniz ortamınıza eklenmesiyle birlikte şimdi 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Azure CLI uzantısının seçtiğiniz ortamınıza eklenmesiyle birlikte şimdi 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.

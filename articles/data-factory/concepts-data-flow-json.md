@@ -7,12 +7,12 @@ ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 605564ed541c23a9060879706fb25f91e97a8eac
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326549"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387356"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Veri akışı JSON işlemesini eşleme
 
@@ -24,11 +24,11 @@ Türetilmiş sütun ifade Oluşturucusu aracılığıyla veri akışınıza karm
 
 Çıktı şeması yan bölmesinde bir sütunun üzerine gelin ve artı simgesine tıklayın. Sütunu karmaşık bir tür yapmak için **alt sütun Ekle** ' yi seçin.
 
-![Alt sütun](media/data-flow/addsubcolumn.png "Ekle alt") sütun Ekle
+![Alt sütun Ekle](media/data-flow/addsubcolumn.png "Alt sütun Ekle")
 
 Aynı şekilde ek sütunlar ve alt sütunlar ekleyebilirsiniz. Karmaşık olmayan her bir alan için, ifade düzenleyicisine sağa doğru bir ifade eklenebilir.
 
-![Karmaşık sütun](media/data-flow/complexcolumn.png "karmaşık sütunu")
+![Karmaşık sütun](media/data-flow/complexcolumn.png "Karmaşık sütun")
 
 ### <a name="entering-the-json-structure-manually"></a>JSON yapısını el ile girme
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 992bc7acbb02dcdbc33d00349ddc7ae821f3ed01
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 55ff134bfa76634250b7495120432d7310b07c06
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329468"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431884"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -39,17 +39,17 @@ Fiyatlandırma Application Insights için nasıl çalıştığı hakkında sorul
 
 Henüz Application Insights kullanmıyorsanız, Application Insights kullanım maliyetini tahmin etmek için [Azure izleyici Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=monitor) ' nı kullanabilirsiniz. Arama kutusuna "Azure Izleyici" girerek ve sonuçta elde edilen Azure Izleyici kutucuğuna tıklayarak başlayın. Sayfayı Azure Izleyici 'ye kaydırın ve tür açılan menüsünden Application Insights ' yi seçin.  Buraya, her ay toplamak istediğiniz GB veri sayısını girebilir ve bu sayede, uygulamanızı izlemeye ne kadar veri toplanacağını Application Insights. 
 
-Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen varsayılan izleme ve Uyarlamalı örnekleme kullanımı veya diğer benzer müşterilerin gördük veri alımı 
+Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen varsayılan izleme ve Uyarlamalı örnekleme kullanımı veya benzer müşterilerin gördük göre büyük olasılıkla veri alımını tahmin etme. 
 
 ### <a name="data-collection-when-using-sampling"></a>Örnekleme kullanılırken veri toplama
 
 ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede 5 olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
 
-Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, tutulacak verilerin yüzdesine [](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) veya [ASP.net, ASP.NET Core ve Java için sabit ücret örneklemesine göre Application Insights tarafından ne zaman bekletileceği ile ilgili örnek örnekleme gerçekleştirebilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
+Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, [](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) [ASP.net, ASP.NET Core ve Java için sabit değer yüzdesine göre Application Insights, verilerin ne zaman alındığını gösteren örnek örnekleme kullanabilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
-Application Insights için Azure Izleme Fiyatlandırma Hesaplayıcı ' da, "uygulama etkinliğine göre verileri tahmin etme" işlevini etkinleştirirseniz, uygulamanız hakkında (her ay için istek ve sayfa görüntüleme istekleri) bir giriş sağlayabilirsiniz istemci tarafı Telemetriyi toplayın) ve ardından hesaplayıcı, benzer uygulamalar tarafından toplanan ortalama ve 90. yüzdebirlik veri miktarını size bildirir. Bu uygulama, Application Insights yapılandırma aralığını (bazıları varsayılan [örneklemeye](../../azure-monitor/app/sampling.md)sahip değildir, bazıları örnekleme içermez vb.) yaymıştır. bu nedenle, örnekleme kullanarak ortanca düzeyinin altına aldığınız verilerin hacmini azaltmak için denetime sahip olursunuz. Ancak bu, benzer müşterilerin gördüğünü anlamak için bir başlangıç noktasıdır. 
+Application Insights için Azure Izleme Fiyatlandırma Hesaplayıcı ' da, "uygulama etkinliğine göre verileri tahmin etme" işlevini etkinleştirirseniz, uygulamanız hakkında (her ay için istek ve sayfa görüntüleme istekleri) bir giriş sağlayabilirsiniz istemci tarafı Telemetriyi toplayın) ve ardından hesaplayıcı, benzer uygulamalar tarafından toplanan ortalama ve 90. yüzdebirlik veri miktarını size bildirir. Tabii ki bu uygulamalar Application Insights yapılandırma aralığını yaymıştır (bazıları varsayılan [örneklemeye](../../azure-monitor/app/sampling.md)sahiptir, bazıları örnekleme içermez vb.), bu nedenle, örnekleme kullanarak ortanca düzeyinin altına aldığınız verilerin hacmini azaltmak için denetime sahip olursunuz. Ancak bu, benzer müşterilerin gördüğünü anlamak için bir başlangıç noktasıdır. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Kullanımınız ve Tahmini maliyetlerinizi anlayın
 
@@ -73,7 +73,7 @@ Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın 
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Azure faturanızda Application Insights kullanımı görüntüleme 
 
-Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre (Microsoft. Insights/Application Insights için) ekleme, harcamalarınızı görmenizi sağlar.
+Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre (Microsoft. Insights/Application Insights için) ekleme, harcamalarınızı izlemenize imkan tanır.
 
 Kullanımınızı [Azure portalından indirerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlamak için kazanılabilir. İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Contains" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir Microsoft. Insights/bileşenler ".  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
 
@@ -96,9 +96,15 @@ systemEvents
 
 Bu sorgu, veri birimlerinde uyarı ayarlamak için bir [Azure günlük uyarısında](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) kullanılabilir. 
 
-Göndereceğiniz verilerin hacmi üç şekilde yönetilebilir:
+Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetilebilir:
 
 * **Örnekleme**:, ölçümlerde en az deformasyon ile sunucu ve istemci uygulamalarından gönderilen telemetri miktarını azaltmak için örnekleme kullanabilirsiniz. Örnekleme, göndereceğiniz veri miktarını ayarlamak için kullanabileceğiniz birincil araçtır. [Örnekleme özellikleri](../../azure-monitor/app/sampling.md)hakkında daha fazla bilgi edinin.
+
+* **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](../../azure-monitor/app/javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
+
+* **Gereksiz modülleri devre dışı bırak**: gerekli olmayan koleksiyon modüllerini kapatmak Için [ApplicationInsights. config dosyasını düzenleyin](../../azure-monitor/app/configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
+
+* **Ön toplama ölçümleri**: uygulamanızda trackmetric çağrıları yerleştirirseniz, bir ölçüm toplu işinin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.
  
 * **Günlük üst sınır**: Azure Portal Application Insights kaynak oluşturduğunuzda, günlük sınır 100 GB/gün olarak ayarlanır. Visual Studio 'da bir Application Insights kaynağı oluşturduğunuzda, varsayılan değer küçüktür (yalnızca 32,3 MB/gün). Günlük uç varsayılan, testi kolaylaştırmak için ayarlanır. Kullanıcının uygulamayı üretime dağıtmadan önce günlük üst sınırı oluşturması amaçlanmıştır. 
 
@@ -111,16 +117,6 @@ Göndereceğiniz verilerin hacmi üç şekilde yönetilebilir:
     Application Insights için kullanılamayacak kredi içeren bazı abonelik türlerinde kısıtlama kaldırdık. Daha önce, aboneliğin bir harcama limiti varsa, günlük sınır iletişim kutusunda harcama limitini kaldırma ve günlük ucunun 32,3 MB/gün dışında bir şekilde çıkarılması için yönergeler vardır.
     
 * **Daraltma**: azaltma, veri hızını saniyede 32.000 olay ile sınırlandırır, izleme anahtarı başına 1 dakikadan fazla. Uygulamanızın gönderdiği veri hacmi her dakikada değerlendirilir. Dakika boyunca ortalama saniye başına oranı aşarsa, sunucu bazı istekleri reddeder. SDK verileri arabelleğe alır ve sonra yeniden göndermeyi dener. Birkaç dakika içinde bir aşırı gerilim yayın. Uygulamanız sürekli olarak verileri daraltma hızından daha fazla gönderirse, bazı veriler bırakılır. (ASP.NET, Java ve JavaScript SDK 'Ları verileri bu şekilde yeniden göndermeyi dener; diğer SDK 'lar yalnızca daraltılmış verileri de bırakabilir.) Daraltma gerçekleşirse, bunun oluştuğunu bildiren bir bildirim uyarısı görürsünüz.
-
-## <a name="reduce-your-data-volume"></a>Veri haciminizi azaltma
-
-Veri haciminizi azaltmak için yapabileceğiniz bazı şeyler aşağıda verilmiştir:
-
-* [Örnekleme](../../azure-monitor/app/sampling.md)kullanın. Bu teknoloji, ölçümlerinizi azaltmadan veri hızınızı azaltır. Aramada ilgili öğeler arasında gezinme özelliğini kaybetmezsiniz. Sunucu uygulamalarında örnekleme otomatik olarak çalışır.
-* Her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayın](../../azure-monitor/app/javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
-* Gerekli olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights. config dosyasını düzenleyin](../../azure-monitor/app/configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
-* Telemetrinizi ayrı izleme anahtarları arasında ayırın. 
-* Ön toplama ölçümleri. Uygulamanızda TrackMetric çağrısı yaparsanız, bir ölçüm toplu işleminin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Günlük veri hacminin maksimum sayısını yönetin
 
@@ -174,7 +170,7 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-005.png)
 
-Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/app/powershell#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
+Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](powershell.md) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
 
 Faturalama erken Aralık 2019 ' de daha uzun süre bekletmeye başladığında, 90 günden daha uzun süre tutulan veriler, Azure Log Analytics veri saklama için şu anda faturalandırılan ücret üzerinden faturalandırılacaktır. [Azure Izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)daha fazla bilgi edinin. [Bu öneri için oylama](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ile değişken bekletme ilerlemesini güncel tutun. 
 

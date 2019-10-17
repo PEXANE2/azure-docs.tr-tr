@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061393"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429393"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyonu durum yapılandırmasına genel bakış
 
-Azure Otomasyonu durum yapılandırması, PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/dsc/configurations)yazmanızı, yönetmenizi ve derlemenize, [DSC kaynaklarını](/powershell/dsc/resources)içeri aktarmanıza ve tüm una.
+Azure Otomasyonu durum yapılandırması, PowerShell Istenen durum yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations)yazmanızı, yönetmenizi ve derlemenize, [DSC kaynaklarını](/powershell/scripting/dsc/resources/resources)içeri aktarmanıza ve tüm una.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması neden kullanılmalıdır?
 
@@ -27,11 +27,11 @@ Azure Otomasyonu durum yapılandırması, Azure dışında DSC kullanmaya kıyas
 
 ### <a name="built-in-pull-server"></a>Yerleşik çekme sunucusu
 
-Azure Otomasyonu durum yapılandırması, [Windows ÖZELLIĞI DSC hizmetine](/powershell/dsc/pullserver) benzer bir DSC çekme sunucusu sağlar. böylece hedef düğümler yapılandırmaları otomatik olarak alır, istenen duruma uymalıdır ve uyumluluğuna geri rapor verir. Azure Otomasyonu 'ndaki yerleşik çekme sunucusu, kendi çekme sunucunuzu ayarlama ve sürdürme gereksinimini ortadan kaldırır. Azure Otomasyonu, sanal veya fiziksel Windows veya Linux makinelerini bulutta veya şirket içinde hedefleyebilir.
+Azure Otomasyonu durum yapılandırması, [Windows ÖZELLIĞI DSC hizmetine](/powershell/scripting/dsc/pull-server/pullserver) benzer bir DSC çekme sunucusu sağlar. böylece hedef düğümler yapılandırmaları otomatik olarak alır, istenen duruma uymalıdır ve uyumluluğuna geri rapor verir. Azure Otomasyonu 'ndaki yerleşik çekme sunucusu, kendi çekme sunucunuzu ayarlama ve sürdürme gereksinimini ortadan kaldırır. Azure Otomasyonu, sanal veya fiziksel Windows veya Linux makinelerini bulutta veya şirket içinde hedefleyebilir.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Tüm DSC yapıtlarınızın yönetimi
 
-Azure Otomasyonu durum yapılandırması, PowerShell komut dosyası oluşturma için Azure Otomasyonu teklifleri olarak [PowerShell Istenen durum yapılandırması](/powershell/dsc/overview) için aynı yönetim katmanını getirir.
+Azure Otomasyonu durum yapılandırması, PowerShell komut dosyası oluşturma için Azure Otomasyonu teklifleri olarak [PowerShell Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) için aynı yönetim katmanını getirir.
 
 Azure portal veya PowerShell 'den, tüm DSC yapılandırmalarınızı, kaynaklarınızı ve hedef düğümlerinizi yönetebilirsiniz.
 
@@ -74,10 +74,10 @@ Azure 'da çalışan tüm Linux düğümleri için ekleme sırasında [Linux Iç
 
 Düğümleriniz özel bir ağda bulunuyorsa, otomasyon ile iletişim kurmak için durum yapılandırması (DSC) için aşağıdaki bağlantı noktası ve URL 'Ler gereklidir:
 
-* Bağ Giden internet erişimi için yalnızca TCP 443 gereklidir.
+* Bağlantı noktası: giden internet erişimi için yalnızca TCP 443 gereklidir.
 * Genel URL: *. azure-automation.net
 * US Gov Virginia genel URL 'SI: *. azure-automation.us
-* Aracı hizmeti: https://\<Workspace ID\>. Agentsvc.Azure-Automation.net
+* Aracı hizmeti: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
 
 Bu, yönetilen düğüm için Azure Otomasyonu ile iletişim kurmak üzere ağ bağlantısı sağlar.
 [Waitfor * kaynakları](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)gibi düğümler arasında ILETIŞIM kuran DSC kaynakları kullanıyorsanız, düğümler arasında trafiğe de izin vermeniz gerekir.
@@ -99,19 +99,19 @@ Belirli bir bölge için tanımlanan bir Otomasyon hesabınız varsa, bu bölges
 
 | **Bölge** | **DNS kaydı** |
 | --- | --- |
-| Batı Orta ABD | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| Orta Güney ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| Orta Batı ABD | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| Güney Orta ABD |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| Doğu ABD   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | Doğu ABD 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Orta Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Kanada Orta |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Batı Avrupa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Kuzey Avrupa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Güneydoğu Asya |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Orta Hindistan |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japonya Doğu |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Doğu Japonya |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Avustralya Güneydoğu |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Birleşik Krallık Güney | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| ABD Devleti Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Birleşik Krallık, Güney | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| ABD Hükümeti Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Bölge adları yerine bölge IP adresleri listesi için, Microsoft Indirme Merkezi ' nden [Azure veri MERKEZI IP adresi](https://www.microsoft.com/download/details.aspx?id=41653) XML dosyasını indirin.
 

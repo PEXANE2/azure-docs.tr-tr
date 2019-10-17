@@ -1,6 +1,6 @@
 ---
 title: Azure Kaynak ilkesi ile RequestDisallowedByPolicy hatası | Microsoft Docs
-description: RequestDisallowedByPolicy hatasının nedenini açıklar.
+description: Kaynakları Azure Resource Manager ile dağıttığınızda RequestDisallowedByPolicy hatasının nedenini açıklar.
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c791342bf68f84f6893e549d8528d1a861aa9040
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121243"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390294"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure Kaynak ilkesi ile RequestDisallowedByPolicy hatası
 
@@ -45,7 +45,7 @@ Dağıtımınızı engelleyen ilkeyle ilgili ayrıntıları almak için aşağı
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell 'de, dağıtımınızı engelleyen ilkeyle ilgili ayrıntıları almak `Id` için bu ilke tanımlayıcısını parametre olarak belirtin.
+PowerShell 'de, dağıtımınızı engelleyen ilkeyle ilgili ayrıntıları almak için bu ilke tanımlayıcısını `Id` parametresi olarak belirtin.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json

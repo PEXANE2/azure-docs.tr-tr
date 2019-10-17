@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373384"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429460"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
 
@@ -81,7 +81,7 @@ Uygulamanız için hangi tümleştirme seçeneğinin kullanılacağını belirle
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD sağlama hizmeti (SCıM)
 
-Azure AD sağlama hizmetleri, birçok kimlik sağlayıcısı (IDPs) tarafından desteklenen bir protokol olan [SCıM] (https://aka.ms/SCIMOverview kullanır. Her türlü SCıM uyumlu IDP, SCıM uç noktanıza bağlanabildikleri için Azure AD 'nin yanı sıra IDPs 'yi desteklemek istiyorsanız, Azure AD sağlama hizmetini kullanmanızı öneririz.
+Azure AD sağlama hizmetleri, birçok kimlik sağlayıcısı (IDPs) ve uygulamalar (örn. bolluk, G Suite, Dropbox) tarafından desteklenen sağlama için endüstri standardı olan [SCIM](https://aka.ms/SCIMOverview)'i kullanır. Her türlü SCıM uyumlu IDP, SCıM uç noktanıza bağlanabildikleri için Azure AD 'nin yanı sıra IDPs 'yi desteklemek istiyorsanız, Azure AD sağlama hizmetini kullanmanızı öneririz. Basit bir/User uç noktası oluşturma, kendi eşitleme motorınızı sürdürmek zorunda kalmadan sağlamayı etkinleştirebilirsiniz. 
 
 Azure AD sağlama hizmeti kullanıcılarının SCıM hakkında daha fazla bilgi için bkz.: 
 
@@ -106,16 +106,6 @@ Sağlama için Microsoft Graph kullanma hakkında daha fazla bilgi edinin:
 * [Microsoft Graph auth 'ye Genel Bakış](https://docs.microsoft.com/graph/auth/)
 
 * [Microsoft Graph kullanmaya başlama](https://developer.microsoft.com/graph/get-started)
-
-* [Microsoft Graph API 'sini kullanma](https://docs.microsoft.com/graph/use-the-api)
-
-* [Microsoft Graph Gezgini](https://aka.ms/ge) 
-
-* [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Microsoft Graph çalışmak için en iyi uygulamalar](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Microsoft Graph için öne çıkan senaryolar](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>Sağlama için SAML JıT kullanma
 

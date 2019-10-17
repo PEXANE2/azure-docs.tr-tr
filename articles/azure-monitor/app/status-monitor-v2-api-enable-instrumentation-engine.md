@@ -1,6 +1,6 @@
 ---
-title: 'Azure Durum İzleyicisi v2 API başvurusu: İzleme altyapısını etkinleştir | Microsoft Docs'
-description: Durum İzleyicisi v2 API başvurusu. Enable-ınstrumentationengine. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: 'Azure Application Insights Agent API başvurusu: izleme altyapısını etkinleştirme | Microsoft Docs'
+description: Aracı API başvurusunu Application Insights. Enable-ınstrumentationengine. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3c0f4e015d3e01e86daaf101c15e16857540a520
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9958121c38b96dc9cfa4dda2812fa9ce2b18d785
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033164"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388295"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Durum İzleyicisi v2 API 'SI: Enable-ınstrumentationengine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights aracı API 'SI: Enable-ınstrumentationengine
 
 Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
 
@@ -51,12 +51,12 @@ PS C:\> Enable-InstrumentationEngine
 ## <a name="parameters"></a>Parametreler
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**İsteğe bağlı.** Gözetimsiz yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
+**Seçim.** Gözetimsiz yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
 
 ### <a name="-verbose"></a>-Ayrıntılı
 **Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Çıktı
 
 
 #### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>İzleme altyapısını başarıyla etkinleştirmenin örnek çıkışı
@@ -79,7 +79,7 @@ Configuring registry for instrumentation engine...
 - Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
 - İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
  
- Durum İzleyicisi v2 ile daha fazlasını yapın:
- - Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+ Application Insights aracısıyla daha fazlasını yapın:
+ - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
  - Ayarlarınızın doğru kaydedildiğinden emin olmak için [yapılandırmayı alın](status-monitor-v2-api-get-config.md) .
  - İzlemeyi İnceleme [durumunu alın](status-monitor-v2-api-get-status.md) .

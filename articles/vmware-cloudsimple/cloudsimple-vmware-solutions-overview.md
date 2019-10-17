@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6edbd21eaf6f0a6f4f07263e006cc31fb1529511
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877829"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430712"
 ---
-# <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>CloudSimple tarafından Azure 'da VMware çözümü nedir?
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümü nedir?
 
-**CloudSimple tarafından Azure 'Daki VMware çözümü** , Azure 'da VMware platformunu çalıştırmanızı sağlayan, tam olarak yönetilen bir hizmettir. Bu çözüm vSphere, vCenter, vSAN, NSX-T ve ilgili araçları içerir. VMware ortamınız Azure bulut konumlarında yerel olarak Azure çıplak altyapısında çalışır. Hizmet, VMware platformlarını verimli ve güvenli bir şekilde kullanmak için gereken tüm özellikleri içerir.
+**CloudSimple tarafından yapılan Azure VMware çözümü** , Azure 'da VMware platformunu çalıştırmanızı sağlayan, tam olarak yönetilen bir hizmettir. Bu çözüm vSphere, vCenter, vSAN, NSX-T ve ilgili araçları içerir. VMware ortamınız Azure bulut konumlarında yerel olarak Azure çıplak altyapısında çalışır. Hizmet, VMware platformlarını verimli ve güvenli bir şekilde kullanmak için gereken tüm özellikleri içerir.
 
 ![CloudSimple 'A göre Azure 'da VMware çözümüne genel bakış](media/azure-vmware-solution-by-cloudsimple.png)
 
@@ -38,15 +38,15 @@ ms.locfileid: "69877829"
 
 * **Işlemsel süreklilik**. CloudSimple, VMware platformlarına yerel erişim sağlar. CloudSimple mimarisi, var olan kişilerle uyumludur:
     * Uygulamalar
-    * İşlemler
+    * Operations
     * Güvenlik
-    * Yedekle
+    * Backup
     * Olağanüstü durum kurtarma
     * Denetim
     * Uyumluluk araçları
     * İşlemler
 * **Yeniden eğitim yok**. VMware platformu uyumluluğu, mevcut becerileri ve bilgileri kullanmanıza olanak sağlar.
-* **Altyapı**çevikliği. Artık tüm kapasite ihtiyaçlarınızı tahmin etmek zorunda kalmıyor ve daha sonra boşa harcanan kapasite veya altyapı eksiklikleri ile bitmiyor. CloudSimple bir bulut hizmeti olarak dağıtılır ve istediğiniz zaman kapasiteyi ekleyebilir veya azaltabilirsiniz
+* **Altyapı çevikliği**. Artık tüm kapasite ihtiyaçlarınızı tahmin etmek zorunda kalmıyor ve daha sonra boşa harcanan kapasite veya altyapı eksiklikleri ile bitmiyor. CloudSimple bir bulut hizmeti olarak dağıtılır ve istediğiniz zaman kapasiteyi ekleyebilir veya azaltabilirsiniz
 * **Güvenlik**. Azure üzerinden CloudSimple ortamına erişim, yerleşik DDoS koruması ve güvenlik izleme sağlar.
 * **Daha düşük maliyet**. CloudSimple platformu yüksek düzeyde tasarlanmıştır ve yüksek düzeyde Otomasyon, işlemsel verimlilik ve ölçek ekonomislerini sağlar. Daha ayrıntılı olarak, CloudSimple, maliyetleri düşürmek için genel bir bulutta VMware 'nin varlığından faydalanan çözüm mimarilerini yayınlar. Azure AD, Azure depolama 'ya yedekleme, uygulama ağ geçidi, yük dengeleyici ve diğer örneklere örnek olarak verilebilir.
 * **Yeni bir karma platform**. Hizmet, Azure 'un geri kalanına yüksek hızlı, düşük gecikmeli erişim sağlar. Ayrıca, CloudSimple yönetimi, VMware sanal makinelerinin ve Azure 'un geri kalanının aynı kullanıcı arabirimi ve API 'YI kullanarak birleştirilmiş yönetimine izin verebilir. Geliştirme ekipleriniz hem ortak hem de özel platformlardan yararlanarak Tümleşik, tutarlı bir biçimde yararlanabilir.

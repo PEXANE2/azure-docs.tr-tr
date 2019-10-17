@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2031820843342fb7e6b115865297e08cbee28a0a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030194"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387344"
 ---
 # <a name="mapping-data-flow-move-nodes"></a>Veri akışı taşıma düğümlerini eşleme
 
 
 
-![Toplu dönüştürme seçenekleri](media/data-flow/agghead.png "toplayıcı üstbilgisi")
+![Toplu dönüştürme seçenekleri](media/data-flow/agghead.png "Toplayıcı üst bilgisi")
 
 Azure Data Factory veri akışı tasarım yüzeyi, yukarıdan aşağı doğru veri akışları oluşturduğunuz bir "yapım" yüzeyidir. Her bir dönüşümün bir artı (+) simgesiyle eklenmiş bir araç kutusu vardır. Serbest biçimli bir DAG ortamındaki kenarlar aracılığıyla düğümleri bağlamak yerine iş mantığınızı yoğunlaşın.
 

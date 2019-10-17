@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016341"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430067"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage ile Azure PowerShell’i kullanma
+# <a name="using-azure-powershell-with-azure-storage"></a>Azure PowerShell'i Azure Depolama ile kullanma
 
-Azure PowerShell, PowerShell komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Azure depolama için, bu cmdlet 'ler iki kategoriye ayrılır--denetim düzlemi ve veri düzlemi. Denetim düzlemi cmdlet 'leri depolama hesabını yönetmek için kullanılır; depolama hesapları oluşturmak, özellikleri ayarlamak, depolama hesaplarını silmek, erişim anahtarlarını döndürmek vb. Veri düzlemi cmdlet 'leri, depolama hesabında depolanan verileri yönetmek için kullanılır. Örneğin, Blobları karşıya yükleme, dosya paylaşımları oluşturma ve bir kuyruğa ileti ekleme.
+Azure PowerShell, PowerShell komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Azure depolama için, bu cmdlet 'ler iki kategoriye ayrılır--denetim düzlemi ve veri düzlemi. Denetim düzlemi cmdlet 'leri depolama hesabını yönetmek için kullanılır; depolama hesapları oluşturmak, özellikleri ayarlamak, depolama hesaplarını silmek, erişim anahtarlarını döndürmek vb. Veri düzlemi cmdlet *'leri, depolama hesabında depolanan verileri* yönetmek için kullanılır. Örneğin, Blobları karşıya yükleme, dosya paylaşımları oluşturma ve bir kuyruğa ileti ekleme.
 
 Bu nasıl yapılır makalesi, depolama hesaplarını yönetmek için yönetim düzlemi cmdlet 'lerini kullanan genel işlemleri içerir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -42,7 +42,7 @@ Bu alıştırma için, komutları normal bir PowerShell penceresine yazabilir ve
 
 Depolama hesapları hakkında daha fazla bilgi için bkz. [depolamaya giriş](storage-introduction.md) ve [Azure depolama hesapları hakkında](storage-create-storage-account.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 `Connect-AzAccount` komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
@@ -105,11 +105,11 @@ $ctx = $storageAccount.Context
 
 Betik aşağıdaki PowerShell cmdlet 'lerini kullanır:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --geçerli konumların bir listesini alır. Örnek, konum `eastus` için kullanır.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) --geçerli konumların bir listesini alır. Örnek, konum için `eastus` kullanır.
 
-*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --yeni bir kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarınızın dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bizde çağrılır `teststoragerg`.
+*   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --yeni bir kaynak grubu oluşturur. Kaynak grubu, Azure kaynaklarınızın dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bizde `teststoragerg` olarak adlandırılır.
 
-*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) --depolama hesabı oluşturur. Örnek, kullanılır `testpshstorage`.
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) --depolama hesabı oluşturur. Örnek `testpshstorage` kullanır.
 
 SKU adı, depolama hesabı için LRS (yerel olarak yedekli depolama) gibi çoğaltma türünü gösterir. Çoğaltma hakkında daha fazla bilgi için bkz. [Azure Storage çoğaltma](storage-redundancy.md).
 
@@ -131,15 +131,15 @@ Bir depolama hesabının ayarlarını değiştirmek için [set-AzStorageAccount]
 
 * Depolama hesabına atanan **Etiketler** . Etiketler, genellikle kaynakları Faturalama amacıyla kategorize etmek için kullanılır.
 
-* **SKU** , depolama hesabı Için yerel olarak yedekli depolama için LRS gibi çoğaltma ayarıdır. Örneğin, standart\_LRS 'den standart\_GRS veya standart\_Rat 'lar arasında geçiş yapabilirsiniz. Standart\_ZRS, standart\_GZRS, standart\_ragzrs veya Premium\_LRS 'yi diğer SKU 'lara değiştirebileceğinizi veya diğer SKU 'ları bu şekilde değiştiremediğini unutmayın.
+* **SKU** , depolama hesabı Için yerel olarak yedekli depolama için LRS gibi çoğaltma ayarıdır. Örneğin, standart @ no__t-0LRS 'den standart @ no__t-1GRS veya standart @ no__t-2ARTGRS olarak değişiklik yapabilirsiniz. Standart @ no__t-0ZRS, standart @ no__t-1GZRS, standart @ no__t-2RAGZRS veya Premium @ no__t-3LRS ' yi diğer SKU 'Lara değiştirebileceğinizi veya diğer SKU 'Ları bu şekilde değiştiremediğini unutmayın.
 
-* BLOB depolama hesapları için **erişim katmanı** . Erişim katmanının değeri **sık** erişimli veya seyrek erişimli olarak ayarlanırve depolama hesabını nasıl kullandığınız ile hizalanan erişim katmanını seçerek maliyetinizi en aza indirmenize olanak tanır. Daha fazla bilgi için bkz. sık erişimli, seyrek erişimli [ve arşiv depolama katmanları](../blobs/storage-blob-storage-tiers.md).
+* BLOB depolama hesapları için **erişim katmanı** . Erişim katmanının değeri **sık** **erişimli veya seyrek erişimli olarak ayarlanır**ve depolama hesabını nasıl kullandığınız ile hizalanan erişim katmanını seçerek maliyetinizi en aza indirmenize olanak tanır. Daha fazla bilgi için bkz. sık erişimli, seyrek erişimli [ve arşiv depolama katmanları](../blobs/storage-blob-storage-tiers.md).
 
 * Yalnızca HTTPS trafiğine izin verir.
 
 ### <a name="manage-the-access-keys"></a>Erişim anahtarlarını yönetme
 
-Bir Azure depolama hesabı iki hesap anahtarı ile gelir. Anahtarları almak için [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey)komutunu kullanın. Bu örnek ilk anahtarı alır. Diğerini almak için `Value[1]` `Value[0]`yerine kullanın.
+Bir Azure depolama hesabı iki hesap anahtarı ile gelir. Anahtarları almak için [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey)komutunu kullanın. Bu örnek ilk anahtarı alır. Diğerini almak için `Value[0]` yerine `Value[1]` kullanın.
 
 ```powershell
 $storageAccountKey = `
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Diğer anahtarı yeniden oluşturmak için `key2` `key1`yerine anahtar adı olarak kullanın.
+Diğer anahtarı yeniden oluşturmak için, `key1` yerine anahtar adı olarak `key2` kullanın.
 
 Anahtarlarınızın birini yeniden oluşturun ve ardından yeni değeri görmek için geri alın.
 
@@ -252,4 +252,4 @@ Bu makalede ayrıca veri nesnelerinin nasıl yönetileceği, Depolama Analizi na
 
 * [Azure depolama denetim düzlemi PowerShell cmdlet 'leri](/powershell/module/az.storage/)
 * [Azure depolama veri düzlemi PowerShell cmdlet 'leri](/powershell/module/azure.storage/)
-* [Windows PowerShell Başvurusu](https://msdn.microsoft.com/library/ms714469.aspx)
+* [Windows PowerShell Başvurusu](/powershell/scripting/developer/windows-powershell)

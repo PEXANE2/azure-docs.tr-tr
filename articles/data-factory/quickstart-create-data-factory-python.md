@@ -13,22 +13,22 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 599d1c3cee08bdc8e6e2f663c14244658e0f14e2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afe6ae001712db6d2a0dfa676daf847a2c4cf86e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326312"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438694"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>Hızlı başlangıç: Python kullanarak Azure Data Factory ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-python.md)
 
-Azure Data Factory, bulutta veri hareketi ve veri dönüştürmeyi düzenleyip otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory’yi kullanarak, farklı veri depolarından veri alabilen, Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işleyebilen/dönüştürebilen ve çıktı verilerini iş zekası (BI) uygulamaları tarafından kullanılabilmesi için Azure SQL Veri Ambarı gibi veri depolarında yayımlayabilen veri odaklı iş akışları (işlem hatları olarak adlandırılır) oluşturup zamanlayabilirsiniz.
-
 Bu hızlı başlangıç, Python kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasındaki işlem hattı, verileri Azure blob depolama alanındaki bir klasörden başka bir klasöre kopyalar.
+
+Azure Data Factory, bulutta veri hareketi ve veri dönüştürmeyi düzenleyip otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory’yi kullanarak, farklı veri depolarından veri alabilen, Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işleyebilen/dönüştürebilen ve çıktı verilerini iş zekası (BI) uygulamaları tarafından kullanılabilmesi için Azure SQL Veri Ambarı gibi veri depolarında yayımlayabilen veri odaklı iş akışları (işlem hatları olarak adlandırılır) oluşturup zamanlayabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 

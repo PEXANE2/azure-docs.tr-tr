@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027808"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387365"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -22,11 +22,11 @@ ms.locfileid: "72027808"
 
 Azure Data Factory eşleme veri akışının hata ayıklama modu, veri akışlarınızı oluştururken ve hata ayıkladığınızda veri şekli dönüşümünü etkileşimli bir şekilde izlemenize olanak sağlar. Hata ayıklama oturumu hem veri akışı tasarım oturumlarında hem de veri akışlarının işlem hattı hata ayıklamada yürütülmesi sırasında kullanılabilir. Hata ayıklama modunu açmak için tasarım yüzeyinin en üstündeki "veri akışı hata ayıklaması" düğmesini kullanın.
 
-![Hata ayıklama kaydırıcısı](media/data-flow/debugbutton.png "hata ayıklama kaydırıcısı")
+![Hata ayıklama kaydırıcısı](media/data-flow/debugbutton.png "Hata ayıklama kaydırıcısı")
 
 Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılandırmasını kullanmak istediğinizi seçmeniz istenir. Oto Resolveıntegrationruntime seçilirse, 60 dakikalık bir yaşam süresine sahip sekiz çekirdekli genel işlem olan bir küme de Sun olur. Veri akışı tümleştirme çalışma zamanları hakkında daha fazla bilgi için bkz. [veri akışı performansı](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime).
 
-![IR seçimi]hata(media/data-flow/debugbutton2.png "ayıklama IR") seçimi
+![IR seçiminde hata ayıkla](media/data-flow/debugbutton2.png "IR seçiminde hata ayıkla")
 
 Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışınızı etkileşimli olarak oluşturacaksınız. Azure Data Factory, hata ayıklamayı kapattıktan sonra oturum kapatılacak. Hata ayıklama oturumunun açık olduğu süre boyunca Azure Databricks tarafından tahakkuk edilen saatlik ücretlerden haberdar olmanız gerekir.
 
@@ -42,17 +42,17 @@ Hata ayıklamanız ile işiniz bittiğinde, Azure Databricks kümenizin sonlanab
 
 Hata ayıklama ayarları, veri akışı tuvali araç çubuğunda "hata ayıklama ayarları" seçeneğine tıklanarak düzenlenebilirler. Burada kaynak dönüşümlerinizin her biri için kullanılacak satır sınırını veya dosya kaynağını seçebilirsiniz. Bu ayarda bulunan satır limitleri yalnızca geçerli hata ayıklama oturumu içindir. Ayrıca, bir SQL DW kaynağı için kullanılacak hazırlama bağlantılı hizmetini de seçebilirsiniz. 
 
-![Hata ayıklama ayarları](media/data-flow/debug-settings.png "hata ayıklama ayarları")
+![Hata ayıklama ayarları](media/data-flow/debug-settings.png "Hata ayıklama ayarları")
 
 Veri akışınızda veya başvurulan veri kümelerinde parametrelere sahipseniz, **Parametreler** sekmesini seçerek hata ayıklama sırasında kullanılacak değerleri belirtebilirsiniz.
 
-![Hata ayıklama ayarları parametreleri](media/data-flow/debug-settings2.png "hata ayıklama ayarları parametreleri")
+![Hata ayıklama ayarları parametreleri](media/data-flow/debug-settings2.png "Hata ayıklama ayarları parametreleri")
 
 ## <a name="data-preview"></a>Veri önizleme
 
 Hata ayıklama tarihinde, veri Önizleme sekmesi alt panelde açılır. Üzerinde hata ayıklama modu olmadan veri akışı, Inceleme sekmesindeki dönüştürmelerinizin her birinin içindeki ve çıkan yalnızca geçerli meta verileri gösterir. Veri önizleme, yalnızca hata ayıklama ayarlarınızda sınırınız olarak ayarlamış olduğunuz satır sayısını sorgular. Veri önizlemeyi getirmek için **Yenile** ' ye tıklayın.
 
-![Veri önizleme](media/data-flow/datapreview.png "veri önizleme")
+![Veri önizleme](media/data-flow/datapreview.png "Veri önizleme")
 
 > [!NOTE]
 > Dosya kaynakları, okunan satırları değil yalnızca gördüğünüz satırları sınırlar. Çok büyük veri kümelerinde, bu dosyanın küçük bir bölümünü almanız ve test etmeniz için kullanmanız önerilir. Dosya veri kümesi türü olan her kaynak için hata ayıklama ayarlarında geçici bir dosya seçebilirsiniz.
@@ -67,15 +67,15 @@ Birim testi katıldığında, varsa veya Arama dönüşümlerine göre, testiniz
 
 Veri önizlemesini görtikten sonra, bir sütunda tür atama, kaldırma veya değiştirme yapmak için hızlı bir dönüşüm oluşturabilirsiniz. Sütun başlığına tıklayın ve ardından veri önizleme araç çubuğundan seçeneklerden birini belirleyin.
 
-![Hızlı eylemler](media/data-flow/quick-actions1.png "hızlı eylemler")
+![Hızlı Eylemler](media/data-flow/quick-actions1.png "Hızlı Eylemler")
 
 Bir değişikliği seçtiğinizde, veri önizlemesi hemen yenilenir. Yeni bir dönüşüm oluşturmak için sağ üst köşedeki **Onayla** ' ya tıklayın.
 
-![Hızlı eylemler](media/data-flow/quick-actions2.png "hızlı eylemler")
+![Hızlı Eylemler](media/data-flow/quick-actions2.png "Hızlı Eylemler")
 
 **Tür dönüştürme** ve **değiştirme** türetilmiş bir sütun dönüştürmesi oluşturacak ve **Remove** bir SELECT dönüştürmesi oluşturacak.
 
-![Hızlı eylemler](media/data-flow/quick-actions3.png "hızlı eylemler")
+![Hızlı Eylemler](media/data-flow/quick-actions3.png "Hızlı Eylemler")
 
 > [!NOTE]
 > Veri akışınızı düzenlerseniz hızlı bir dönüştürme eklemeden önce veri önizlemeyi yeniden almanız gerekir.
@@ -84,7 +84,7 @@ Bir değişikliği seçtiğinizde, veri önizlemesi hemen yenilenir. Yeni bir d�
 
 Veri önizleme sekmesinizdeki bir sütunu seçmek ve veri önizleme araç çubuğunda **İstatistikler** ' i tıklatmak, her alanla ilgili ayrıntılı istatistiklerle veri kılavuzunuzun en sağında bir grafik açılır. Azure Data Factory görüntülenecek grafik türünün veri örneklemesi temelinde bir belirleme yapılır. Yüksek kardinalite alanları varsayılan olarak NULL/değil NULL grafiklerine göre NULL/olmayan grafik olarak değişir. Ayrıca, dize alanlarının en fazla/uzun uzunluğunu, sayısal alanlardaki minimum/maksimum değerleri, standart dev, yüzdebirlik değeri, sayımlar ve Ortalama değerlerini de görürsünüz.
 
-![Sütun istatistikleri](media/data-flow/stats.png "sütun istatistikleri")
+![Sütun istatistikleri](media/data-flow/stats.png "Sütun istatistikleri")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

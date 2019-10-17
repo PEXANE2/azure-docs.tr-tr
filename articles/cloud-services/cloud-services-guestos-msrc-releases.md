@@ -10,17 +10,64 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 10/15/2019
 ms.author: raiye
-ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035187"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430174"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="october-2019-guest-os"></a>Ekim 2019 Konuk işletim sistemi
+
+>[!NOTE]
+>Ekim Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Ekim Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir.
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 19-10   |  [4520003]  |  Windows güvenliği   |  2,91  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519985]  |  Windows güvenliği   |  3,78  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519990]  |  Windows güvenliği   |  4,71  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519998]  |  En son birikimli güncelleştirme   |  5,36  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519338]  |  En son birikimli güncelleştirme   |  6,12  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  2,91, 3,78, 4,71  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4516065]  |  Güvenlik dışı   |  2,91  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4516655]  |  SSU   |  2,91  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4516055]  |  Güvenlik dışı   |  3,78  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512939]  |  SSU   |  3,78  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514370]  |  .NET Framework 3,5   |  3,78  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  3,78  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4516067]  |  Güvenlik dışı   |  4,71  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512938]  |  SSU   |  4,71  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514371]  |  .NET Framework 3,5   |  4,71  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  4,71  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512574]  |  SSU   |  5,36  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512577]  |  SSU   |  6,12  |  10 Eylül 2019  |
+
+[4520003]: https://support.microsoft.com/kb/4520003
+[4519985]: https://support.microsoft.com/kb/4519985
+[4519990]: https://support.microsoft.com/kb/4519990
+[4519998]: https://support.microsoft.com/kb/4519998
+[4519338]: https://support.microsoft.com/kb/4519338
+[4519974]: https://support.microsoft.com/kb/4519974
+[4516065]: https://support.microsoft.com/kb/4516065
+[4516655]: https://support.microsoft.com/kb/4516655
+[4516055]: https://support.microsoft.com/kb/4516055
+[4512939]: https://support.microsoft.com/kb/4512939
+[4514370]: https://support.microsoft.com/kb/4514370
+[4514368]: https://support.microsoft.com/kb/4514368
+[4516067]: https://support.microsoft.com/kb/4516067
+[4512938]: https://support.microsoft.com/kb/4512938
+[4514371]: https://support.microsoft.com/kb/4514371
+[4514367]: https://support.microsoft.com/kb/4514367
+[4512574]: https://support.microsoft.com/kb/4512574
+[4512577]: https://support.microsoft.com/kb/4512577
+
+
 
 ## <a name="september-2019-guest-os"></a>Eylül 2019 Konuk işletim sistemi
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082509"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390540"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure 'da OKD dağıtma
 
@@ -40,7 +40,7 @@ Bazı yaygın özelleştirme seçenekleri şunlardır, ancak bunlarla sınırlı
 
 [OKD şablonunda](https://github.com/Microsoft/openshift-origin) farklı OKD sürümleri için kullanılabilen birden çok dal var.  Gereksinimlerinize bağlı olarak, doğrudan depodan dağıtım yapabilir veya depoyu çatalla dağıtmadan önce özel değişiklikler yapabilirsiniz.
 
-Daha önce `aadClientId` parametresi için oluşturduğunuz hizmet sorumlusunun değerinikullanın.`appId`
+Daha önce `aadClientId` parametresi için oluşturduğunuz hizmet sorumlusunun `appId` değerini kullanın.
 
 Aşağıda, tüm gerekli girişlerle birlikte azuredeploy. Parameters. JSON adlı bir parametre dosyası örneği verilmiştir.
 
@@ -124,7 +124,7 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle lütfen kulla
 
 
 > [!NOTE] 
-> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLI sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Aşağıdaki komut, Azure CLı 2.0.8 veya üstünü gerektirir. CLı sürümünü `az --version` komutuyla doğrulayabilirsiniz. CLı sürümünü güncelleştirmek için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Aşağıdaki örnek, OKD kümesini ve tüm ilgili kaynakları myOpenShiftCluster dağıtım adı ile openkaydırıcı Trg adlı bir kaynak grubuna dağıtır. Azuredeploy. Parameters. JSON adlı yerel bir parametre dosyası kullanılırken, şablona doğrudan GitHub deposundan başvurulur.
 
@@ -143,11 +143,11 @@ Dağıtım, dağıtılan toplam düğüm sayısına bağlı olarak en az 30 daki
 }
 ```
 
-Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, Grup dağıtımına yönelik seçeneklerden birini ekleyin `--no-wait` . Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
+Dağıtımın tamamlanmasını bekleyen komut satırını bağlamak istemiyorsanız, grup dağıtımı seçeneklerinden biri olarak `--no-wait` ' ı ekleyin. Dağıtımdan alınan çıkış, kaynak grubunun dağıtım bölümündeki Azure portal alabilir.
 
 ## <a name="connect-to-the-okd-cluster"></a>OKD kümesine bağlanma
 
-Dağıtım tamamlandığında, ' yi kullanarak, `OpenShift Console Url`tarayıcınızla OpenShift konsoluna bağlanın. Alternatif olarak, OKD ana için SSH kullanabilirsiniz. Dağıtımdan alınan çıktıyı kullanan bir örnek aşağıda verilmiştir:
+Dağıtım tamamlandığında, `OpenShift Console Url` ' ı kullanarak, OpenShift konsoluna tarayıcınızla bağlanın. Alternatif olarak, OKD ana için SSH kullanabilirsiniz. Dağıtımdan alınan çıktıyı kullanan bir örnek aşağıda verilmiştir:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -163,6 +163,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dağıtım sonrası görevler](./openshift-post-deployment.md)
-- [OpenShift dağıtımında sorun giderme](./openshift-troubleshooting.md)
+- [Dağıtım sonrası görevler](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift dağıtımında sorun giderme](./openshift-container-platform-3x-troubleshooting.md)
 - [OKD 'yi kullanmaya başlama](https://docs.okd.io)

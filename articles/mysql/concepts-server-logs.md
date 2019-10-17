@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 4d801ada8fd8a8b35c71601d3ca274f26afb24f6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262289"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434291"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yavaş sorgu günlükleri
 MySQL için Azure veritabanı 'nda, yavaş sorgu günlüğü kullanıcılar tarafından kullanılabilir. İşlem günlüğüne erişim desteklenmez. Yavaş sorgu günlüğü, sorun giderme için performans sorunlarını belirlemek için kullanılabilir.
@@ -21,7 +21,7 @@ MySQL yavaş sorgu günlüğü hakkında daha fazla bilgi için MySQL Reference 
 ## <a name="access-slow-query-logs"></a>Yavaş sorgu günlüklerine erişin
 MySQL için Azure veritabanı 'nı, Azure portal ve Azure CLı kullanarak yavaş sorgu günlüklerini listeleyebilir ve indirebilirsiniz.
 
-Azure portalında MySQL için Azure veritabanı sunucunuza seçin. **İzleme** başlığı altında, **sunucu günlükleri** sayfasını seçin.
+Azure portal, MySQL için Azure veritabanı sunucunuzu seçin. **İzleme** başlığı altında, **sunucu günlükleri** sayfasını seçin.
 
 Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI kullanarak sunucu günlüklerini yapılandırma ve erişme](howto-configure-server-logs-in-cli.md).
 
@@ -40,6 +40,9 @@ Ayarlayabileceğiniz diğer parametreler şunlardır:
 - **log_queries_not_using_indexes**: dizinleri kullanmayan sorguların slow_query_log 'e kaydedilip kaydedilmeyeceğini belirler
 - **log_throttle_queries_not_using_indexes**: Bu parametre, yavaş sorgu günlüğüne yazılabilen Dizin dışı sorguların sayısını sınırlar. Bu parametre, log_queries_not_using_indexes açık olarak ayarlandığında devreye girer.
 
+> [!Note]
+> @No__t-0 için günlük, 2048 karakteri aşarsa kesilir.
+
 Yavaş sorgu günlüğü parametrelerinin tam açıklamaları için MySQL 'in [yavaş sorgu günlüğü belgelerini](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) inceleyin.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
@@ -54,7 +57,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 |---|---|
 | `TenantId` | Kiracı KIMLIĞINIZ |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | Günlük kaydedildiği zaman damgası (UTC) |
+| `TimeGenerated` [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
 | `Type` | Günlüğün türü. Her zaman `AzureDiagnostics` |
 | `SubscriptionId` | Sunucunun ait olduğu abonelik için GUID |
 | `ResourceGroup` | Sunucunun ait olduğu kaynak grubunun adı |
@@ -65,10 +68,10 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Çıkış 
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Sunucunun adı |
-| `start_time_t`UTC | Sorgunun başladığı zaman |
-| `query_time_s` | Sorgunun yürütülmesi için geçen toplam süre |
-| `lock_time_s` | Sorgunun kilitlenme toplam süre |
-| `user_host_s` | Kullanıcı Adı |
+| `start_time_t` [UTC] | Sorgunun başladığı zaman |
+| `query_time_s` | Sorgunun yürütülmesi için geçen saniye cinsinden toplam süre |
+| `lock_time_s` | Sorgunun kilitlenme saniye cinsinden toplam süre |
+| `user_host_s` | Kullanıcı adı |
 | `rows_sent_s` | Gönderilen satır sayısı |
 | `rows_examined_s` | İncelenen satır sayısı |
 | `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: Sık sorulan sorular | Microsoft Docs'
+title: 'Azure Data Factory: sık sorulan sorular | Microsoft Docs'
 description: Azure Data Factory hakkında sık sorulan soruların yanıtlarını alın.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: c4836d519556e5a031f81279fef4891ba8d47c05
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141579"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387071"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory SSS
 Bu makale Azure Data Factory hakkında sık sorulan soruların yanıtlarını sağlar.  
@@ -48,7 +48,7 @@ Data Factory, veri tümleştirmesi için gerekli olan ve zamanlamaya göre veya 
 - Delta akışları:
     - Parametreler, verileri Gölü yüklemek için şirket içinde veya bulutta bulunan bir ilişkisel depodan boyut ya da başvuru tablolarını taşırken Delta kopyası için yüksek su işaretini tanımlamak üzere kullanılabilir. 
 
-Daha fazla bilgi için bkz [. Öğretici: Denetim akışları](tutorial-control-flow.md).
+Daha fazla bilgi için bkz. [öğretici: denetim akışları](tutorial-control-flow.md).
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Veriler, kod içermeyen işlem hatları ile ölçeğe dönüştürüldü
 Tarayıcı tabanlı yeni araç deneyimi, modern ve etkileşimli bir Web tabanlı deneyimle kod ücretsiz işlem hattı yazma ve dağıtımı sağlar.
@@ -57,7 +57,7 @@ Visual Data Developers ve veri mühendislerine yönelik Data Factory Web Kullan�
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Gelişmiş kullanıcılar için zengin platformlar arası SDK 'lar
 Data Factory v2, aşağıdakiler dahil olmak üzere en sevdiğiniz IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek ve izlemek için kullanılabilen zengin bir SDK kümesi sağlar:
-* Python SDK'sı
+* Python SDK
 * PowerShell CLı
 * C# SDK’sı
 
@@ -71,7 +71,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK'ler
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -94,9 +94,9 @@ Veri fabrikalarınızı PowerShell, SDK veya tarayıcı kullanıcı arabiriminde
 ## <a name="what-is-the-integration-runtime"></a>Tümleştirme çalışma zamanı nedir?
 Integration Runtime, farklı ağ ortamlarında aşağıdaki veri tümleştirme yeteneklerini sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır:
 
-- **Veri taşıma**: Veri taşıma için Integration Runtime, verileri kaynak ve hedef veri depoları arasında taşılarken, yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performans ve ölçeklenebilir veri aktarımı için destek sağlar.
-- **Gönderme etkinlikleri**: Dönüşüm için Integration Runtime, SSIS paketlerini yerel olarak yürütme yeteneği sağlar.
-- **SSIS paketlerini yürütme**: Integration Runtime, SSIS paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütür. Integration Runtime Ayrıca Azure HDInsight, Azure Machine Learning, SQL veritabanı ve SQL Server gibi çeşitli bilgi işlem hizmetlerinde çalışan dönüştürme etkinliklerinin dağıtımını ve izlenmesini de destekler.
+- **Veri taşıma**: veri taşıma için Integration Runtime, verileri kaynak ve hedef veri depoları arasında taşılarken, yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performans ve ölçeklenebilir veri aktarımı için destek sağlar.
+- **Dağıtım etkinlikleri**: dönüştürme için Integration RUNTIME, SSIS paketlerini yerel olarak yürütme yeteneği sağlar.
+- **SSIS paketlerini yürütme**: Integration RUNTIME, SSIS paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütür. Integration Runtime Ayrıca Azure HDInsight, Azure Machine Learning, SQL veritabanı ve SQL Server gibi çeşitli bilgi işlem hizmetlerinde çalışan dönüştürme etkinliklerinin dağıtımını ve izlenmesini de destekler.
 
 Tümleştirme çalışma zamanının bir veya daha fazla örneğini verileri taşımak ve dönüştürmek için gerektiği gibi dağıtabilirsiniz. Integration Runtime, Azure genel ağında veya özel bir ağda (Şirket içi, Azure sanal ağı veya Amazon Web Services sanal özel bulut [VPC]) çalıştırılabilir. 
 
@@ -108,17 +108,17 @@ Bir veri fabrikasında sahip olabilirsiniz tümleştirme çalışma zamanı örn
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Azure Data Factory en üst düzey kavramları nelerdir?
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, veri taşıma ve dönüştürme adımları ile veri odaklı iş akışları oluşturabileceğiniz bir platform olarak birlikte çalışan dört ana bileşeni içerir.
 
-### <a name="pipelines"></a>Ardışık düzenler
+### <a name="pipelines"></a>İşlem hatları
 Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
 
-### <a name="activities"></a>Etkinlikler
+### <a name="activities"></a>Olaylar
 Etkinlikler bir işlem hattındaki işleme adımını temsil eder. Örneğin, bir veri deposundan başka bir veri deposuna veri kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Benzer şekilde, verilerinizi dönüştürmek veya analiz etmek için bir Azure HDInsight kümesinde Hive sorgusu çalıştıran bir Hive etkinliği kullanabilirsiniz. Data Factory üç tür etkinliği destekler: veri taşıma etkinlikleri, veri dönüştürme etkinlikleri ve denetim etkinlikleri.
 
 ### <a name="datasets"></a>Veri kümeleri
 Veri kümeleri, veri depoları içinde etkinliklerinizde giriş veya çıkış olarak kullanmak istediğiniz verilere işaret eden veya başvuruda bulunan veri yapılarını temsil eder. 
 
 ### <a name="linked-services"></a>Bağlı hizmetler
-Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. Bunu şu şekilde düşünün: Bağlı bir hizmet, veri kaynağıyla bağlantıyı tanımlar ve veri kümesi verilerin yapısını temsil eder. Örneğin, Azure depolama bağlı hizmeti Azure depolama hesabına bağlanacak bağlantı dizesini belirtir. Azure blob veri kümesi, blob kapsayıcısını ve verileri içeren klasörü belirtir.
+Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. Bu şekilde düşünün: bağlı bir hizmet, veri kaynağıyla bağlantıyı tanımlar ve veri kümesi verilerin yapısını temsil eder. Örneğin, Azure depolama bağlı hizmeti Azure depolama hesabına bağlanacak bağlantı dizesini belirtir. Azure blob veri kümesi, blob kapsayıcısını ve verileri içeren klasörü belirtir.
 
 Bağlı hizmetlerin Data Factory iki amacı vardır:
 
@@ -170,13 +170,13 @@ Evet, parametreler Data Factory ' de birinci sınıf, üst düzey bir kavramdır
 Evet. İşlem hatlarında parametreler için varsayılan değerleri tanımlayabilirsiniz. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>İşlem hattındaki bir etkinlik bir işlem hattı çalıştırmasına geçirilen bağımsız değişkenleri kullanıyor musunuz? 
-Evet. İşlem hattının içindeki her etkinlik, işlem hattına aktarılan ve `@parameter` yapı ile çalıştırılan parametre değerini tüketebilir. 
+Evet. İşlem hattının içindeki her etkinlik, işlem hattına aktarılan parametre değerini tüketebilir ve `@parameter` yapısıyla çalıştırılabilir. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Etkinlik çıktısı özelliği başka bir etkinlikte tüketilebilir mi? 
-Evet. Etkinlik çıktısı, `@activity` sonraki bir etkinlikte yapısıyla tüketilebilir.
+Evet. Etkinlik çıktısı, `@activity` yapısıyla sonraki bir etkinlikte tüketilebilir.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Nasıl yaparım? etkinlik çıkışında null değerler düzgün şekilde işlenemedi mi? 
-Deyimlerdeki yapıyı, `@coalesce` null değerleri düzgün bir şekilde işlemek için kullanabilirsiniz. 
+Null değerleri düzgün bir şekilde işlemek için ifadelerde `@coalesce` yapısını kullanabilirsiniz. 
 
 ## <a name="mapping-data-flows"></a>Veri akışlarını eşleme
 
@@ -210,5 +210,5 @@ Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etk
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası oluşturmaya yönelik adım adım yönergeler için aşağıdaki öğreticilere bakın:
 
-- [Hızlı Başlangıç: Veri Fabrikası oluşturma](quickstart-create-data-factory-dot-net.md)
-- [Öğretici: Bulutta veri kopyalama](tutorial-copy-data-dot-net.md)
+- [Hızlı başlangıç: Veri Fabrikası oluşturma](quickstart-create-data-factory-dot-net.md)
+- [Öğretici: bulutta veri kopyalama](tutorial-copy-data-dot-net.md)

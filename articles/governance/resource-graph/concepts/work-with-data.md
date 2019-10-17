@@ -3,15 +3,15 @@ title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinin nasıl alınacağını ve kontrol olduğunu anlayın.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/10/2019
+ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: c78f2e37fa29fa1cdcb9acc6a4600688750b6d74
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274241"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387587"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -29,11 +29,11 @@ Varsayılan olarak, kaynak Graph tüm sorgular yalnızca **100** kayıt döndür
 Varsayılan sınır, kaynak Graph ile etkileşimde bulunmak için tüm yöntemler aracılığıyla geçersiz kılınabilir. Aşağıdaki örneklerde veri kümesi boyut sınırının _200_olarak nasıl değiştirileceği gösterilmektedir:
 
 ```azurecli-interactive
-az graph query -q "project name | order by name asc" --first 200 --output table
+az graph query -q "Resources | project name | order by name asc" --first 200 --output table
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name | order by name asc" -First 200
+Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
 [REST API](/rest/api/azureresourcegraph/resources/resources), Denetim **$top** ve **queryrequestoptions**'ın bir parçasıdır.
@@ -52,11 +52,11 @@ Büyük veri kümeleriyle çalışma için sonraki seçenek, **atlama** denetimi
 Aşağıdaki örneklerde, bir sorgunun neden olacağı ilk _10_ kaydın nasıl atlanacağını, bunun yerine 11. kayıt ile döndürülen sonuç kümesini başlatmak gösterilmektedir:
 
 ```azurecli-interactive
-az graph query -q "project name | order by name asc" --skip 10 --output table
+az graph query -q "Resources | project name | order by name asc" --skip 10 --output table
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name | order by name asc" -Skip 10
+Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
 [REST API](/rest/api/azureresourcegraph/resources/resources), Denetim **$Skip** ve **queryrequestoptions**'ın bir parçasıdır.
@@ -71,11 +71,11 @@ Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek g
 Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve bu kayıtlar Azure CLı ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** ve Azure PowerShell gösterilmektedir:
 
 ```azurecli-interactive
-az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 1000 -Skip 3000
 ```
 
 > [!IMPORTANT]
@@ -156,14 +156,14 @@ _Objectarray_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiş
 
 ```csharp
 var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
-var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+var request = new QueryRequest(subscriptions, "Resources | limit 1", options: requestOptions);
 ```
 
 ```python
 request_options = QueryRequestOptions(
     result_format=ResultFormat.object_array
 )
-request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, options=request_options)
 response = client.resources(request)
 ```
 

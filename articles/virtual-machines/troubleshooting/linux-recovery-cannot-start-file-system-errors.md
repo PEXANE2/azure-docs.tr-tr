@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 298fd336e87d07f9e65221d5e5f539e255c94993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245337"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432299"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Dosya sistemi hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
@@ -71,13 +71,13 @@ Checking all file systems.
 
 Bu sorun, dosya sistemi sorunsuz veya depolamayla ilgili sorunları kapatmadığında ortaya çıkabilir. Sorunlar, donanım veya yazılım hatalarını, sürücü veya programlarla ilgili sorunları, yazma hatalarını vb. içerir. Kritik verilerin yedeklenmesi her zaman önemlidir. Bu makalede açıklanan araçlar dosya sistemlerinin kurtarılmasına yardımcı olabilir, ancak veri kaybı devam edebilir.
 
-Linux 'ta kullanılabilir çeşitli dosya sistemi denetleyicileri vardır. Azure 'daki dağıtımlar için en yaygın olarak şunlardır: [fsck](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)ve [Xfs_repair](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+Linux 'ta kullanılabilir çeşitli dosya sistemi denetleyicileri vardır. Azure 'daki dağıtımlar için en yaygın olarak şunlardır: [fsck](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)ve [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
-## <a name="resolution"></a>Çözüm
+## <a name="resolution"></a>Çözünürlük
 
 Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) kullanarak VM 'yi acil modda önyükleyin ve dosya sistemini onarmak için bu aracı kullanın. Seri konsol VM 'niz üzerinde etkinleştirilmemişse veya işe yaramazsa, bu makaledeki [VM 'yi çevrimdışı ortamda onarma](#repair-the-vm-offline) bölümüne bakın.
 
-## <a name="use-the-serial-console"></a>Seri konsolunu kullanma
+## <a name="use-the-serial-console"></a>Seri konsolu kullanma
 
 1. Seri konsoluna bağlanın.
 

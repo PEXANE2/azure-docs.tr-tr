@@ -17,14 +17,14 @@ ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329876"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435539"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Hızlı başlangıç: Python ile Redsıs için Azure önbelleğini kullanma
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma
 
 Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
@@ -48,7 +48,7 @@ Aşağıdaki örnek, yükseltilmiş yönetici ayrıcalıklarıyla çalışan bir
     pip3 install redis
 ```
 
-![redis-py yükleyin](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Redsıs için Azure önbelleğine Reda-Kopyala Python arabirimini yükler](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>Önbellek üzerinde okuma ve yazma
@@ -100,7 +100,7 @@ for c in result:
 
 Python ile betiği çalıştırın.
 
-![Python testi tamamlandı](./media/cache-python-get-started/cache-python-completed.png)
+![Redsıs için Azure önbelleğinde önbellek erişimini test etmek için Python betiği çalıştırma](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -117,7 +117,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 
 **Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin**.
 
-![Sil](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Redsıs için Azure önbelleği için hızlı başlangıç kaynak grubunuzu silme](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını girin ve **Sil**' i seçin.
 

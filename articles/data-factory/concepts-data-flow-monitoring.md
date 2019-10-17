@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 41b4b7cd911bad40055fcf527c186f8de9466cdc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030263"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387981"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
 
@@ -22,21 +22,21 @@ Veri akışınızı oluşturma ve hata ayıklamayı tamamladıktan sonra, veri a
 
 İşlem hattınızı yürüttüğünüzde, işlem hattını ve veri akışı etkinliği dahil olmak üzere işlem hattında bulunan tüm etkinlikleri izleyebilirsiniz. Sol taraftaki Azure Data Factory UI panelinde bulunan izleyici simgesine tıklayın. Aşağıdakine benzer bir ekran görürsünüz. Vurgulanan simgeler, veri akışı etkinliği dahil olmak üzere işlem hattındaki etkinliklerin ayrıntılarına gitmenizi sağlar.
 
-![Veri akışı izleme](media/data-flow/mon001.png "veri akışı izleme")
+![Veri Akışını İzleme](media/data-flow/mon001.png "Veri Akışını İzleme")
 
 Bu düzeyde, çalışma süreleri ve durumu da dahil olmak üzere istatistikleri görürsünüz. Etkinlik düzeyindeki çalışma KIMLIĞI, işlem hattı düzeyinde çalıştırma KIMLIĞININ farklıdır. Önceki düzeydeki çalıştırma KIMLIĞI işlem hattı içindir. Duygunluğa tıklamak, veri akışı yürütmeyle ilgili ayrıntılı bilgiler verir.
 
-![Veri akışı izleme](media/data-flow/mon002.png "veri akışı izleme")
+![Veri Akışını İzleme](media/data-flow/mon002.png "Veri Akışını İzleme")
 
 Grafik düğüm izleme görünümünde olduğunuzda, veri akışı grafınızı yalnızca Basitleştirilmiş bir görünüm sürümü görürsünüz.
 
-![Veri akışı izleme](media/data-flow/mon003.png "veri akışı izleme")
+![Veri Akışını İzleme](media/data-flow/mon003.png "Veri Akışını İzleme")
 
 ## <a name="view-data-flow-execution-plans"></a>Veri akışı yürütme planlarını görüntüleme
 
 Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akışınızı tamamen temel alarak en iyi kod yollarını belirler. Ek olarak, yürütme yolları farklı genişleme düğümlerinde ve veri bölümlerinde de gerçekleşebilir. Bu nedenle, izleme grafiği, dönüştürmelerinizin yürütme yolunu dikkate alarak akışınızın tasarımını temsil eder. Ayrı düğümlere tıkladığınızda, kümede birlikte yürütülen kodu temsil eden "gruplandırmaları" görürsünüz. Gördüğünüz zamanlamalar ve sayımlar, tasarımınızda bireysel adımlara karşılık bu grupları temsil eder.
 
-![Veri akışı izleme](media/data-flow/mon004.png "veri akışı izleme")
+![Veri Akışını İzleme](media/data-flow/mon004.png "Veri Akışını İzleme")
 
 * İzleme penceresindeki açık alana tıkladığınızda, alt bölmedeki istatistikler her bir havuz için zamanlama ve satır sayılarını ve dönüştürme kökenini için havuz verilerine işaret eden dönüşümleri görüntüler.
 
@@ -52,6 +52,6 @@ Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akış
 
 Bu simge, dönüştürme verilerinin kümede zaten önbelleğe alındığı anlamına gelir; bu nedenle zamanlamalar ve yürütme yolu şu hesaba alınır:
 
-![Veri akışı izleme](media/data-flow/mon004.png "veri akışı izleme")
+![Veri Akışını İzleme](media/data-flow/mon004.png "Veri Akışını İzleme")
 
 Ayrıca, dönüşümde yeşil daire simgeleri görürsünüz. Bunlar, verilerin akan havuz sayısını temsil eder.

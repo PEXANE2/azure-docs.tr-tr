@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670840"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382005"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -24,17 +24,25 @@ Paylaşılan erişim imzası (SAS), verilerinizin güvenliğine ödün vermeden 
 
 Azure depolama, üç tür paylaşılan erişim imzasını destekler:
 
-- **Kullanıcı temsili SAS (Önizleme).** Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsili SAS yalnızca BLOB depolama için geçerlidir. Bir Kullanıcı temsili SAS oluşturmak için, önce SAS imzalamak için kullanılan bir Kullanıcı temsili anahtarı istemeniz gerekir. Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
-- **Hizmet SAS.** Hizmet SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hizmet SAS, Azure depolama hizmetlerinden yalnızca birinde bulunan bir kaynağa erişim temsilcisi sağlar: BLOB depolama, kuyruk depolama, tablo depolama veya Azure dosyaları. Hizmet SAS hakkında daha fazla bilgi için bkz. [HIZMET SAS oluşturma (REST API)](/rest/api/storageservices/create-service-sas).
-- **Hesap SAS.** Bir hesap SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hesap SAS ise bir veya daha fazla depolama hizmetindeki kaynaklara erişim atar. Bir hizmet veya Kullanıcı temsili SAS aracılığıyla kullanılabilen tüm işlemler, hesap SAS 'si aracılığıyla da kullanılabilir. Ayrıca, hesap SAS ile hizmet **Özellikleri al/ayarla** ve **hizmet istatistikleri işlemlerini al** gibi hizmet düzeyinde uygulanan işlemlere erişim yetkisi verebilirsiniz. Bununla birlikte hizmet SAS ile izin verilmeyen blob kapsayıcılar, tablolar kuyruklar ve dosya paylaşımları üzerinde okuma, yazma ve silme işlemleri için yetkilendirme yapabilirsiniz. Hesap SAS 'si hakkında daha fazla bilgi için [bir hesap SAS (REST API) oluşturun](/rest/api/storageservices/create-account-sas).
+- **Kullanıcı temsili SAS (Önizleme).** Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsili SAS yalnızca BLOB depolama için geçerlidir.
+
+    Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+
+- **Hizmet SAS.** Hizmet SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hizmet SAS, Azure depolama hizmetlerinden yalnızca birindeki bir kaynağa erişim temsilcisi seçer: BLOB depolama, kuyruk depolama, tablo depolama veya Azure dosyaları. 
+
+    Hizmet SAS hakkında daha fazla bilgi için bkz. [HIZMET SAS oluşturma (REST API)](/rest/api/storageservices/create-service-sas).
+
+- **Hesap SAS.** Bir hesap SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hesap SAS ise bir veya daha fazla depolama hizmetindeki kaynaklara erişim atar. Bir hizmet veya Kullanıcı temsili SAS aracılığıyla kullanılabilen tüm işlemler, hesap SAS 'si aracılığıyla da kullanılabilir. Ayrıca, hesap SAS ile hizmet **Özellikleri al/ayarla** ve **hizmet istatistikleri işlemlerini al** gibi hizmet düzeyinde uygulanan işlemlere erişim yetkisi verebilirsiniz. Bununla birlikte hizmet SAS ile izin verilmeyen blob kapsayıcılar, tablolar kuyruklar ve dosya paylaşımları üzerinde okuma, yazma ve silme işlemleri için yetkilendirme yapabilirsiniz. 
+
+    Hesap SAS 'si hakkında daha fazla bilgi için [bir hesap SAS (REST API) oluşturun](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
 > Microsoft, Azure AD kimlik bilgilerini, daha kolay tehlikeye giren hesap anahtarını kullanmak yerine en iyi güvenlik uygulaması olarak mümkün olduğunca kullanmanızı önerir. Uygulama tasarımınız blob depolamaya erişim için paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için mümkün olduğunda bir Kullanıcı temsili SAS oluşturmak için Azure AD kimlik bilgilerini kullanın.
 
 Paylaşılan erişim imzası, iki formdan birini alabilir:
 
-- **Geçici SAS:** Bir geçici SAS oluşturduğunuzda, sa 'lar için başlangıç zamanı, süre sonu zamanı ve izin izinleri SAS URI 'sinde belirtilmiştir (veya başlangıç saati atlanırsa ima edilir). Her tür SAS bir geçici SAS olabilir.
-- **Depolanan erişim ilkesiyle hizmet SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde SAS, saklı erişim ilkesi için tanımlanan @ no__t-0başlangıç saati, süre sonu zamanı ve izinleri @ no__t-1olan kısıtlamaları devralır.
+- Geçici **SAS:** Bir geçici SAS oluşturduğunuzda, sa 'lar için başlangıç zamanı, süre sonu zamanı ve izin izinleri SAS URI 'sinde belirtilmiştir (veya başlangıç saati atlanırsa ima edilir). Her tür SAS bir geçici SAS olabilir.
+- **Depolanan erişim Ilkesiyle HIZMET SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde SAS, saklı erişim ilkesi için tanımlanan @ no__t-0başlangıç saati, süre sonu zamanı ve izinleri @ no__t-1olan kısıtlamaları devralır.
 
 > [!NOTE]
 > Kullanıcı temsili SAS veya hesap SA 'ları bir geçici SAS olmalıdır. Depolanan erişim ilkeleri, Kullanıcı temsili SAS veya hesap SAS 'ları için desteklenmez.
@@ -47,7 +55,7 @@ Paylaşılan erişim imzası, bir veya daha fazla depolama kaynağını işaret 
 
 SAS 'yi iki şekilde imzalayabilirsiniz:
 
-- Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir Kullanıcı temsili anahtarıyla. Kullanıcı temsili SAS, Kullanıcı temsili anahtarıyla imzalanır.
+- Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir *Kullanıcı temsili anahtarıyla* . Kullanıcı temsili SAS, Kullanıcı temsili anahtarıyla imzalanır.
 
     Kullanıcı temsilci anahtarını almak ve SAS oluşturmak için, Azure AD güvenlik sorumlusuna **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren rol tabanlı erişim denetımı (RBAC) rolü atanmalıdır. Kullanıcı temsilciliğini almak için izinleri olan RBAC rolleri hakkında ayrıntılı bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -71,7 +79,7 @@ SAS 'ın yararlı olduğu yaygın bir senaryo, kullanıcıların depolama hesab�
 
 1. İstemciler, kimlik doğrulaması gerçekleştiren bir ön uç proxy hizmeti aracılığıyla verileri karşıya yükleyip indirir. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin vermenin avantajlarından yararlanır, ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
 
-   ![Senaryo diyagramı: Ön uç proxy hizmeti](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
+   ![Senaryo diyagramı: ön uç proxy hizmeti](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
 1. Hafif bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, SAS tarafından tanımlanan izinlerle ve SAS tarafından izin verilen aralığa göre depolama hesabı kaynaklarına doğrudan erişebilirler. SAS, ön uç proxy hizmeti aracılığıyla tüm verileri yönlendirme gereksinimini azaltır.
 

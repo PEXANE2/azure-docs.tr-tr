@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71804058"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387381"
 ---
 # <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak, platformlar arası Xamarin uygulaması kullanarak konuşmayı tanıma
 
@@ -64,7 +64,9 @@ Ortak `helloworld` projesi platformlar arası uygulamanız için platformdan ba�
 
 1. @No__t-0 işleyicisine `YourServiceRegion` dizesini bulun ve aboneliğiniz ile ilişkili [bölge](regions.md) ile değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` ' ı kullanın.)
 
-1. Daha sonra, farklı platform projelerinden (UWP, Android ve iOS) mikrofon izinlerini sorgulamak için kullanılan bir [Xamarin hizmeti](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)oluşturmanız gerekir. Bunu yapmak için, `helloworld` projesi altında yeni bir klasör @no__t ve bunun altında yeni C# kaynak dosya oluşturun (`Services` klasörüne sağ tıklayıp  > **Yeni öğe** > **kod dosyası**) **ekleyin**ve tüm kodu `IMicrophoneService.cs` olarak yeniden adlandırın ve Bu dosyada aşağıdaki kod parçacığı: 0 @ no__t-11
+1. Daha sonra, farklı platform projelerinden (UWP, Android ve iOS) mikrofon izinlerini sorgulamak için kullanılan bir [Xamarin hizmeti](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)oluşturmanız gerekir. Bunu yapmak için, `helloworld` projesi altında yeni bir klasör @no__t ve bunun altında yeni C# kaynak dosya oluşturun (`Services` klasörüne sağ tıklayıp  > **Yeni öğe** > **kod dosyası**) **ekleyin**ve tüm kodu `IMicrophoneService.cs` olarak yeniden adlandırın ve Bu dosyada aşağıdaki kod parçacığı:
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>@No__t-0 projesi için örnek kod ekleme
 

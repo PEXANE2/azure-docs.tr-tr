@@ -1,6 +1,6 @@
 ---
-title: Azure Durum İzleyicisi v2 ayrıntılı yönergeleri | Microsoft Docs
-description: Durum İzleyicisi v2 ile çalışmaya başlama hakkında ayrıntılı yönergeler. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Application Insights Agent ayrıntılı yönergeleri | Microsoft Docs
+description: Application Insights aracısıyla çalışmaya başlama hakkında ayrıntılı yönergeler. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d7a6db65b92ec2d3a3fdcf55aea0523f57012be1
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057843"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388239"
 ---
-# <a name="status-monitor-v2-detailed-instructions"></a>Durum İzleyicisi v2: Ayrıntılı yönergeler
+# <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
 
 Bu makalede, PowerShell Galerisi nasıl ekleneceği ve ApplicationMonitor modülünün nasıl indirileceği açıklanır.
 Kullanmaya başlamak için ihtiyacınız olan en yaygın parametreler dahildir.
@@ -34,9 +34,9 @@ Başlamak için bir izleme anahtarına ihtiyacınız vardır. Daha fazla bilgi i
 ### <a name="run-as-admin"></a>Yönetici olarak çalıştır
 
 PowerShell 'in bilgisayarınızda değişiklik yapması için yönetici düzeyinde izinleri olması gerekir.
-### <a name="execution-policy"></a>Yürütme İlkesi
-- Açıklama: Varsayılan olarak, PowerShell betikleri çalıştırıldığında devre dışı bırakılır. RemoteSigned betiklerin yalnızca geçerli kapsam için izin vermesini öneririz.
-- Referans: [Yürütme ilkeleri](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) ve [set-executionpolicy](
+### <a name="execution-policy"></a>Yürütme ilkesi
+- Açıklama: varsayılan olarak, PowerShell betikleri çalıştırıldığında devre dışı bırakılır. RemoteSigned betiklerin yalnızca geçerli kapsam için izin vermesini öneririz.
+- Başvuru: [yürütme ilkeleri](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) ve [set-executionpolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 )hakkında.
 - Komut: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.
@@ -57,7 +57,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
 
-`$PSVersionTable` Komutunu çalıştırarak PowerShell örneğinizi denetleyin.
+@No__t-0 komutunu çalıştırarak PowerShell örneğinizi denetleyin.
 Bu komut aşağıdaki çıktıyı üretir:
 
 
@@ -88,7 +88,7 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
 1. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
 2. NuGet paket sağlayıcısını yükler.
     - Açıklama: Bu sağlayıcının PowerShell Galerisi gibi NuGet tabanlı depolarla etkileşim kurması gerekir.
-    - Referans: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Başvuru: [Install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
     - Komut: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`.
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -105,8 +105,8 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
         [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     
 3. PowerShell Galerisi güvenilir bir depo olarak yapılandırın.
-    - Açıklama: Varsayılan olarak, PowerShell Galerisi güvenilmeyen bir depodur.
-    - Referans: [Set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Açıklama: varsayılan olarak, PowerShell Galerisi güvenilmeyen bir depodur.
+    - Başvuru: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
     - Komut: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`.
     - İsteğe bağlı parametre:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -119,11 +119,11 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    Bu değişikliği onaylayıp, `Get-PSRepository` komutunu çalıştırarak tüm psdepolarında denetim yapabilirsiniz.
+    @No__t-0 komutunu çalıştırarak, bu değişikliği onaylayıp tüm Psdepoları denetleyebilirsiniz.
 
 4. PowerShellGet 'in en yeni sürümünü yükler.
     - Açıklama: Bu modül, PowerShell Galerisi diğer modülleri almak için kullanılan araçları içerir. Sürüm 1.0.0.1, Windows 10 ve Windows Server ile birlikte gelir. Sürüm 1.6.0 veya üzeri gereklidir. Hangi sürümün yükleneceğini öğrenmek için `Get-Command -Module PowerShellGet` komutunu çalıştırın.
-    - Referans: [PowerShellGet yükleniyor](https://docs.microsoft.com/powershell/gallery/installing-psget).
+    - Başvuru: [PowerShellGet yükleniyor](https://docs.microsoft.com/powershell/gallery/installing-psget).
     - Komut: `Install-Module -Name PowerShellGet`.
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -147,7 +147,7 @@ Bu adımlar, PowerShell Galerisi az. ApplicationMonitor modülünü indirir.
 1. PowerShell Galerisi için tüm önkoşulların karşılandığından emin olun.
 2. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
 3. Az. ApplicationMonitor modülünü yükler.
-    - Referans: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
+    - Başvuru: [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
     - Komut: `Install-Module -Name Az.ApplicationMonitor`.
     - İsteğe bağlı parametreler:
         - `-Proxy`. İstek için bir proxy sunucusu belirtir.
@@ -165,7 +165,7 @@ PowerShell modülüne bağlanamazsınız herhangi bir nedenden dolayı, az. Appl
 2. **Sürüm geçmişi** tablosunda dosyanın en son sürümünü seçin.
 3. **Yükleme seçenekleri**altında **el ile indir**' i seçin.
 
-### <a name="option-1-install-into-a-powershell-modules-directory"></a>1\. Seçenek: PowerShell modülleri dizinine yüklensin
+### <a name="option-1-install-into-a-powershell-modules-directory"></a>Seçenek 1: PowerShell modülleri dizinine yüklensin
 PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen PowerShell modülünü bir PowerShell dizinine yükleyebilirsiniz.
 Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
@@ -173,7 +173,7 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.micro
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Arşivi (v 1.0.1.0) kullanarak zip dosyası olarak nupkg sıkıştırması
 
 - Açıklama: Microsoft. PowerShell. Archive (v 1.0.1.0) öğesinin temel sürümü nupkg dosyalarını sıkıştırmasını açamıyor. Dosyayı. zip uzantısıyla yeniden adlandırın.
-- Referans: [Genişlet-Arşivle](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Başvuru: [Expand-arşiv](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
 - Komutundaki
 
     ```
@@ -186,8 +186,8 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.micro
 
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Arşivi (v 1.1.0.0) kullanarak nupkg sıkıştırmasını açın
 
-- Açıklama: Uzantıyı değiştirmeden nupkg dosyalarını açmak için Expand-Arşiv ' in güncel bir sürümünü kullanın.
-- Referans: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) ve [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Açıklama: uzantıyı değiştirmeden nupkg dosyalarını açmak için Expand-Arşivi ' in güncel bir sürümünü kullanın.
+- Başvuru: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) ve [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Komutundaki
 
     ```
@@ -196,7 +196,7 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.micro
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule
     ```
 
-### <a name="option-2-unzip-and-import-nupkg-manually"></a>2\. Seçenek: Nupkg 'yi el ile ayıklayın ve içeri aktarın
+### <a name="option-2-unzip-and-import-nupkg-manually"></a>2\. seçenek: nupkg 'yı el ile ayıklayın ve içeri aktarın
 PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen PowerShell modülünü bir PowerShell dizinine yükleyebilirsiniz.
 Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
@@ -209,22 +209,22 @@ Modülü başka bir dizine yüklüyorsanız, [Import-Module](https://docs.micros
 1. Uzantıyı ". zip" olarak değiştirin ve paketin içeriğini amaçlanan yükleme dizininize ayıklayın.
 2. Az. ApplicationMonitor. psd1 dosyasının yolunu bulun.
 3. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
-4. `Import-Module Az.ApplicationMonitor.psd1` Komutunu kullanarak modülü yükleyin.
+4. @No__t-0 komutunu kullanarak modülü yükleyin.
     
 
 ## <a name="route-traffic-through-a-proxy"></a>Trafiği bir ara sunucu üzerinden yönlendirme
 
 Özel intranetinizdeki bir bilgisayarı izlerken, HTTP trafiğini bir ara sunucu üzerinden yönlendirmenize gerek duyarsınız.
 
-PowerShell Galerisi az. applicationmonitor indirme ve yükleme için PowerShell komutları bir `-Proxy` parametreyi destekler.
+PowerShell Galerisi az. ApplicationMonitor indirme ve yükleme için PowerShell komutları `-Proxy` parametresini destekler.
 Yükleme betiklerinizi yazarken yukarıdaki yönergeleri gözden geçirin.
 
-Application Insights SDK 'sının uygulamanızın telemetrisini Microsoft 'a gönderebilmesi gerekir. Web. config dosyanızda uygulamanız için proxy ayarlarını yapılandırmanızı öneririz. Daha fazla bilgi için bkz [. Application Insights SSS: Proxy geçişi](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+Application Insights SDK 'sının uygulamanızın telemetrisini Microsoft 'a gönderebilmesi gerekir. Web. config dosyanızda uygulamanız için proxy ayarlarını yapılandırmanızı öneririz. Daha fazla bilgi için bkz. [APPLICATION INSIGHTS SSS: proxy geçişi](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
 
 
-## <a name="enable-monitoring"></a>İzlemeyi etkinleştir
+## <a name="enable-monitoring"></a>İzlemeyi etkinleştirme
 
-İzlemeyi etkinleştirmek için komutunu kullanın. `Enable-ApplicationInsightsMonitoring`
+İzlemeyi etkinleştirmek için `Enable-ApplicationInsightsMonitoring` komutunu kullanın.
 
 Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama için bkz. [API başvurusu](status-monitor-v2-api-enable-monitoring.md) .
 
@@ -245,6 +245,6 @@ Bu cmdlet 'in nasıl kullanılacağına ilişkin ayrıntılı bir açıklama iç
 - Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
 - İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
 
-Durum İzleyicisi v2 ile daha fazlasını yapın:
+Application Insights aracısıyla daha fazlasını yapın:
 
-- Durum İzleyicisi v2 [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
+- Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.

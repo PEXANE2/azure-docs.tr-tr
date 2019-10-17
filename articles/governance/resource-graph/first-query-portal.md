@@ -3,15 +3,15 @@ title: Azure Kaynak Grafiği gezginini kullanarak ilk sorgunuzu çalıştırma
 description: Bu makalede, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırma adımlarında adım adım açıklanmaktadır.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981258"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387613"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -27,19 +27,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 1. Sol bölmedeki **tüm hizmetler** ' i seçin. **Kaynak Grafiği Gezginini**arayın ve seçin.
 
-1. Pencerenin **sorgu 1** kısmına `project name, type | limit 5` sorgusunu girin ve **Sorguyu Çalıştır**' ı seçin.
+1. Pencerenin **sorgu 1** kısmına `Resources | project name, type | limit 5` sorgusunu girin ve **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
    > Bu sorgu örneği `order by` gibi bir sıralama değiştiricisi sağlamadığından, bu sorguyu birden çok kez çalıştırmak istek başına farklı bir kaynak kümesi sunabiliyor olabilir.
 
 1. **Sonuçlar** sekmesindeki sorgu yanıtını gözden geçirin. sorgu hakkındaki ayrıntıları ve sorgu süresini görmek için **iletiler** sekmesini seçin. Varsa, bu sekme altında hatalar görüntülenir.
 
-1. Sorguyu `order by` **ad** özelliği: `project name, type | limit 5 | order by name asc` olarak güncelleştirin. Sonra **Sorguyu Çalıştır**' ı seçin.
+1. Sorguyu `order by` **ad** özelliği: `Resources | project name, type | limit 5 | order by name asc` olarak güncelleştirin. Sonra **Sorguyu Çalıştır**' ı seçin.
 
    > [!NOTE]
    > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu, sorgu sonuçlarını önce sınırlar, sonra düzenler.
 
-1. Sorguyu ilk `order by` olarak, **ad** özelliğini ve sonra da ilk beş sonuca `limit` ' ye güncelleştirin: `project name, type | order by name asc | limit 5`. Sonra **Sorguyu Çalıştır**' ı seçin.
+1. Sorguyu ilk `order by` olarak, **ad** özelliğini ve sonra da ilk beş sonuca `limit` ' ye güncelleştirin: `Resources | project name, type | order by name asc | limit 5`. Sonra **Sorguyu Çalıştır**' ı seçin.
 
 Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar, **ad** özelliğine göre sıralanmış, ancak yine de en üstteki beş sonuçla sınırlandırıldı.
 
@@ -54,7 +54,8 @@ Yukarıdaki son sorguyu çalıştırdıktan sonra, **grafikler** sekmesini seçe
 1. Pencerenin **sorgu 1** bölümünde aşağıdaki sorguyu girin ve **Sorguyu Çalıştır**' ı seçin.
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

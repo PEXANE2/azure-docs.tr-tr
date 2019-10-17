@@ -1,6 +1,6 @@
 ---
-title: Azure Durum İzleyicisi v2 'ye Genel Bakış | Microsoft Docs
-description: Durum İzleyicisi v2 'ye genel bakış. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Application Insights aracısına genel bakış | Microsoft Docs
+description: Application Insights aracısına genel bakış. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,23 +12,28 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286452"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389830"
 ---
-# <a name="status-monitor-v2"></a>Durum İzleyicisi v2
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights aracısını dağıtma
 
-Durum İzleyicisi v2, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)yayımlanan bir PowerShell modülüdür.
+> [!IMPORTANT]
+> Bu kılavuz, Application Insights aracısına ait şirket Içi ve Azure olmayan bulut dağıtımları için önerilir. [Azure sanal makinesi ve sanal makine ölçek kümesi dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)için önerilen yaklaşım aşağıda verilmiştir.
+
+Application Insights Aracısı (eski adıyla Durum İzleyicisi v2) [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)yayımlanmış bir PowerShell modülüdür.
 [Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)yerini alır.
-Modül, IIS ile barındırılan .NET Web Apps 'in kodsuz kullanacaksınız izleme sağlar.
 Telemetri Azure portal, uygulamanızı [izleyebileceğiniz](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) bir şekilde gönderilir.
+
+> [!NOTE]
+> Modül Şu anda IIS ile barındırılan .NET Web Apps 'in kodsuz kullanacaksınız araçlarını desteklemektedir. ASP.NET Core, Java ve Node. js uygulamalarını işaretlemek için bir SDK kullanın.
 
 ## <a name="powershell-gallery"></a>PowerShell Galerisi
 
-Durum İzleyicisi v2 şurada bulunur: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Application Insights Aracısı şurada bulunur: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![PowerShell Galerisi](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,9 +59,9 @@ Durum İzleyicisi v2 şurada bulunur: https://www.powershellgallery.com/packages
 
 ## <a name="faq"></a>SSS
 
-- Durum İzleyicisi v2 proxy yüklemelerini destekliyor mu?
+- Application Insights Aracısı proxy yüklemelerini destekliyor mu?
 
-  *Evet*. Durum İzleyicisi v2 'yi indirmek için birden çok yol vardır. Bilgisayarınızda internet erişimi varsa, PowerShell Galerisi `-Proxy` parametrelerini kullanarak ekleyebilirsiniz.
+  *Evet*. Application Insights aracısını indirmek için birden çok yol vardır. Bilgisayarınızda internet erişimi varsa, PowerShell Galerisi `-Proxy` parametrelerini kullanarak ekleyebilirsiniz.
 Ayrıca, modülü el ile indirebilir ve bilgisayarınıza yükleyebilir ya da doğrudan kullanabilirsiniz.
 Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-instructions.md)bölümünde açıklanmıştır.
 

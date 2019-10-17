@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89cdab09e3ae03ddea6259eda657908f900f982e
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6d44a4265c3729bff3d983395a37a6cb64a463d4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169872"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389129"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) temsilciliğini ve rolleri
 
@@ -107,15 +107,15 @@ Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceğ
 | [Erişim paketi yöneticisine temsilci seçme](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [Erişim paketi yöneticisini kaldırma](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [Bir katalogda yeni bir erişim paketi oluşturma](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
-| [Erişim paketindeki kaynak rollerini yönetme](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [İlke oluşturma ve düzenleme](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Bir kullanıcıyı doğrudan bir erişim paketine atama](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Erişim paketine kimin atanmasına sahip olduğunu görüntüleme](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Bir erişim paketinin isteklerini görüntüleme](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Bir isteğin teslim hatalarını görüntüleme](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Bekleyen bir isteği iptal etme](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Erişim paketindeki kaynak rollerini değiştirme](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [İlke oluşturma ve düzenleme](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Bir kullanıcıyı doğrudan bir erişim paketine atama](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Erişim paketine kimin atanmasına sahip olduğunu görüntüleme](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Bir erişim paketinin isteklerini görüntüleme](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Bir isteğin teslim hatalarını görüntüleme](entitlement-management-access-package-requests.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Bekleyen bir isteği iptal etme](entitlement-management-access-package-requests.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Erişim paketini gizle](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Erişim paketini silme](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Erişim paketini silme](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Kataloğa kaynak eklemek için gerekli roller
 

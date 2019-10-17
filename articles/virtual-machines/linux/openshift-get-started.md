@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082566"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390629"
 ---
 # <a name="openshift-in-azure"></a>Azure’da OpenShift
 
@@ -31,7 +31,7 @@ OpenShift, kapsayıcı düzenleme ve yönetimi için Kubernetes içerir. Şunlar
 - Kolay dağıtım ve ölçeklendirme.
 - Takımlar ve uygulamalar için uzun süreli yaşam döngüsü bakımı.
 
-Birden çok OpenShift sürümü mevcuttur.  Bu sürümler, günümüzde müşterilerin Azure 'da dağıtması için yalnızca iki adet bulunabilir: OpenShift kapsayıcı platformu ve OKD (eski adıyla OpenShift Origin).
+Birden çok OpenShift sürümü mevcuttur.  Bu sürümler, günümüzde müşterilerin Azure 'da dağıtılması için yalnızca iki adet bulunabilir: OpenShift kapsayıcı platformu ve OKD (eski adıyla OpenShift Origin).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -49,9 +49,9 @@ OKD, topluluk tarafından desteklenen bir OpenShift 'in [Açık kaynaklı](https
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure 'da OpenShift için ortak önkoşulları yapılandırma](./openshift-prerequisites.md)
-- [Azure 'da OpenShift kapsayıcı platformunu dağıtma](./openshift-container-platform.md)
-- [OpenShift kapsayıcı platformu dağıtımını otomatik olarak yönetilen Market Teklifini dağıtma](./openshift-marketplace-self-managed.md)
+- [Azure 'da OpenShift için ortak önkoşulları yapılandırma](./openshift-container-platform-3x-prerequisites.md)
+- [Azure 'da OpenShift kapsayıcı platformunu dağıtma](./openshift-container-platform-3x.md)
+- [OpenShift kapsayıcı platformu dağıtımını otomatik olarak yönetilen Market Teklifini dağıtma](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [Azure Stack 'de OpenShift dağıtma](./openshift-azure-stack.md)
-- [Dağıtım sonrası görevler](./openshift-post-deployment.md)
-- [OpenShift dağıtımında sorun giderme](./openshift-troubleshooting.md)
+- [Dağıtım sonrası görevler](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift dağıtımında sorun giderme](./openshift-container-platform-3x-troubleshooting.md)

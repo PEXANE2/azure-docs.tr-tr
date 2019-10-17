@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı dinamik veri maskeleme | Microsoft docs
-description: SQL veritabanı dinamik veri maskeleme, hassas verileri ayrıcalıksız kullanıcılara maskeleyerek kısıtlar
+title: Azure SQL veritabanı ve veri ambarı için dinamik veri maskeleme | Microsoft docs
+description: Dinamik veri maskeleme, SQL veritabanı ve veri ambarı için ayrıcalıklı olmayan kullanıcılarla maskeleyerek hassas veri pozlamasını sınırlar
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,14 +11,14 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568766"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430109"
 ---
-# <a name="sql-database-dynamic-data-masking"></a>SQL veritabanı dinamik veri maskeleme
+# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Azure SQL veritabanı ve veri ambarı için dinamik veri maskeleme
 
 SQL veritabanı dinamik veri maskeleme, hassas veri pozlamasını ayrıcalıklı olmayan kullanıcılarla maskeleyerek kısıtlar. 
 
@@ -26,7 +26,7 @@ Dinamik veri maskeleme müşterilerin uygulama katmanını çok az etkileyerek h
 
 Örneğin, bir çağrı merkezindeki hizmet temsilcisi çağıranları kredi kartı numarasının birkaç basamağıyla tanımlayabilir, ancak bu veri öğeleri hizmet temsilcisine tam olarak gösterilmemelidir. Bir maskeleme kuralı, herhangi bir sorgu sonuç kümesinde herhangi bir kredi kartı numarasının son dört basamağının dışında bir maske kuralı tanımlanabilir. Başka bir örnek olarak, bir geliştiricinin uyumluluk düzenlemelerini ihlal etmeden üretim ortamlarını, sorun giderme amacıyla sorgulayabilmesi için, kişisel olarak tanımlanabilen bilgiler (PII) verilerini korumak üzere uygun bir veri maskesi tanımlanabilir.
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>SQL veritabanı dinamik veri maskeleme temelleri
+## <a name="dynamic-data-masking-basics"></a>Dinamik veri maskeleme temelleri
 
 SQL veritabanı yapılandırma dikey penceresinde veya ayarlar dikey penceresinde dinamik veri maskeleme işlemini seçerek Azure portal dinamik veri maskeleme ilkesi ayarlarsınız.
 
@@ -42,11 +42,11 @@ Dinamik veri maskeleme, Azure SQL veritabanı yöneticisi, Sunucu Yöneticisi ve
 
 | Maskeleme Işlevi | Maskeleme mantığı |
 | --- | --- |
-| **Varsayılan** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• XML \<için maskelenmiş/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
+| **Varsayılan** |**Belirlenen alanların veri türlerine göre tam maskeleme**<br/><br/>• Alanın boyutu dize veri türleri için 4 karakterden azsa XXXX veya daha az XS kullanın (nchar, ntext, nvarchar).<br/>• Sayısal veri türleri için sıfır değeri kullanın (BigInt, bit, Decimal, INT, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Tarih/saat veri türleri için 01-01-1900 kullanın (Date, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• SQL değişkeni için geçerli türün varsayılan değeri kullanılır.<br/>• For XML for XML \<maskelenmiş/> kullanılır.<br/>• Özel veri türleri (timestamp tablosu, HierarchyID, GUID, binary, Image, varbinary uzamsal türler) için boş bir değer kullanın. |
 | **Kredi kartı** |**Belirlenen alanların son dört basamağını sunan maskeleme yöntemi** ve bir kredi kartı biçiminde önek olarak bir sabit dize ekler.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-posta** |**İlk harfi kullanıma sunan maskeleme yöntemi ve** bir e-posta adresi biçiminde bir sabit dize öneki kullanarak etki alanını xxx.com ile değiştirir.<br/><br/>aXX@XXXX.com |
-| **Rastgele sayı** |Maske yöntemi, seçilen sınırlara ve gerçek veri türlerine göre **rastgele bir sayı üretir** . Belirlenen sınırlar eşitse, maskeleme işlevi sabit bir sayıdır.<br/><br/>![Gezinti Bölmesi](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Özel metin** |**İlk ve son karakterlerin ortaya** çıkardığı ve ortadaki özel bir doldurma dizesi ekleyen maskeleme yöntemi. Özgün dize, gösterilen önek ve sonek değerinden kısaysa, yalnızca doldurma dizesi kullanılır. <br/>önek [Padding] soneki<br/><br/>![Gezinti Bölmesi](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Rastgele sayı** |Maske yöntemi, seçilen sınırlara ve gerçek veri türlerine göre **rastgele bir sayı üretir** . Belirlenen sınırlar eşitse, maskeleme işlevi sabit bir sayıdır.<br/><br/>![Gezinti bölmesi @ no__t-1 |
+| **Özel metin** |**İlk ve son karakterlerin ortaya** çıkardığı ve ortadaki özel bir doldurma dizesi ekleyen maskeleme yöntemi. Özgün dize, gösterilen önek ve sonek değerinden kısaysa, yalnızca doldurma dizesi kullanılır. <br/>önek [Padding] soneki<br/><br/>![Gezinti bölmesi @ no__t-1 |
 
 <a name="Anchor1"></a>
 

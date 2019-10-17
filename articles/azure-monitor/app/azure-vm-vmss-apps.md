@@ -7,35 +7,40 @@ author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 08/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: f2c6b98fd0be2061e9d8cab5c063cafadf71476a
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3b100fb4d7dfa03cfcc828180f2ca63f7219f610
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597459"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389923"
 ---
-# <a name="monitor-application-performance-hosted-on-azure-vm-and-azure-virtual-machine-scale-sets"></a>Azure VM ve Azure sanal makine ölçek kümelerinde barındırılan uygulama performansını izleme
+# <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
 [Azure sanal makinelerinde](https://azure.microsoft.com/services/virtual-machines/) ve [Azure sanal makine ölçek kümelerinde](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) çalışan .NET tabanlı Web uygulamalarınızda izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Kodunuzda değişiklik yapmadan Application Insights kullanmanın avantajlarından yararlanın.
 
-Bu makale, ApplicationMonitoringWindows uzantısını kullanarak Application Insights izlemeyi etkinleştirme konusunda size kılavuzluk eder ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlar.
+Bu makale, Application Insights Aracısı kullanarak Application Insights izlemeyi etkinleştirme konusunda size kılavuzluk eder ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlar.
 
 > [!IMPORTANT]
-> Azure ApplicationMonitoringWindows uzantısı Şu anda genel önizleme aşamasındadır.
+> .NET için Azure Application Insights Aracısı Şu anda genel önizlemededir.
 > Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmeyebilir ve bazıları kısıtlı özelliklere sahip olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="enable-application-insights"></a>Application Insights'ı Etkinleştir
+## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
-Azure VM ve Azure sanal makine ölçek kümesi barındırılan uygulamalar için uygulama izlemeyi etkinleştirmenin iki yolu vardır:
+Azure sanal makineleri ve Azure sanal makine ölçek kümeleri barındırılan uygulamalar için uygulama izlemeyi etkinleştirmenin iki yolu vardır:
 
-* **Aracı tabanlı uygulama izleme** (ApplicationMonitoringWindows uzantısı).
-    * Bu yöntem etkinleştirilmesi en kolayıdır ve gelişmiş yapılandırma gerekmez. Genellikle "çalışma zamanı" izleme olarak adlandırılır. Azure VM 'Leri ve Azure sanal makine ölçek kümeleri için, bu izleme düzeyini en az etkinleştirmenizi öneririz. Bu tarihten sonra, özel senaryonuza bağlı olarak, el ile izleme gerekip gerekmediğini değerlendirebilirsiniz.
-    * Şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar desteklenir.
+* Application Insights Aracısı aracılığıyla **codeless**
+    * Bu yöntem etkinleştirilmesi en kolayıdır ve gelişmiş yapılandırma gerekmez. Genellikle "çalışma zamanı" izleme olarak adlandırılır.
 
-* Application Insights SDK 'Yı yükleyerek **uygulamayı kodla el ile işaretleme** .
+    * Azure sanal makineleri ve Azure sanal makine ölçek kümeleri için, bu izleme düzeyini en az etkinleştirmenize önerilir. Bu tarihten sonra, özel senaryonuza bağlı olarak, el ile izleme gerekip gerekmediğini değerlendirebilirsiniz.
+
+    * Application Insights Aracısı .NET SDK 'Sı ile aynı bağımlılık sinyallerini otomatik olarak toplar. Daha fazla bilgi için bkz. [bağımlılık otomatik koleksiyonu](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net) .
+        > [!NOTE]
+        > Şu anda yalnızca .NET IIS tarafından barındırılan uygulamalar desteklenir. Bir Azure sanal makinelerinde ve sanal makine ölçek kümelerinde barındırılan ASP.NET Core, Java ve Node. js uygulamalarını işaretlemek için bir SDK kullanın.
+
+* SDK aracılığıyla **kod tabanlı**
 
     * Bu yaklaşım çok daha özelleştirilebilir, ancak [APPLICATION INSIGHTS SDK NuGet paketlerine bağımlılık eklemeyi](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)gerektirir. Bu yöntem, ayrıca paketlerin en son sürümüne yönelik güncelleştirmeleri yönetmeniz anlamına gelir.
 
@@ -44,9 +49,15 @@ Azure VM ve Azure sanal makine ölçek kümesi barındırılan uygulamalar için
 > [!NOTE]
 > Hem aracı tabanlı izleme hem de el ile SDK tabanlı izleme algılanırsa yalnızca el ile izleme ayarları kabul edilir. Bu, yinelenen verilerin gönderilmesini önlemektir. Bu konuda daha fazla bilgi edinmek için aşağıdaki [sorun giderme bölümüne](#troubleshooting) bakın.
 
-## <a name="manage-agent-based-monitoring-for-net-applications-on-vm-using-powershell"></a>PowerShell kullanarak VM 'de .NET uygulamaları için aracı tabanlı izlemeyi yönetme
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell kullanarak Azure sanal makinelerinde .NET uygulamaları için Application Insights aracısını yönetme
 
-VM için uygulama izleme uzantısını yükler veya güncelleştirir
+> [!NOTE]
+> Application Insights aracısını yüklemeden önce bir izleme anahtarına ihtiyacınız olacaktır. [Yeni bir Application Insights kaynağı oluşturun](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) veya mevcut bir Application Insights kaynağından izleme anahtarını kopyalayın.
+
+> [!NOTE]
+> PowerShell 'de yeni misiniz? [Başlarken kılavuzuna](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)göz atın.
+
+Application Insights aracısını Azure sanal makineleri için bir uzantı olarak yükler veya güncelleştirin
 ```powershell
 $publicCfgJsonString = '
 {
@@ -67,20 +78,23 @@ $publicCfgJsonString = '
 ';
 $privateCfgJsonString = '{}';
 
-Set-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Location "South Central US" -Name "ApplicationMonitoring" -Publisher "Microsoft.Azure.Diagnostics" -Type "ApplicationMonitoringWindows" -Version "2.8" -SettingString $publicCfgJsonString -ProtectedSettingString $privateCfgJsonString
+Set-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Location "<myVmLocation>" -Name "ApplicationMonitoring" -Publisher "Microsoft.Azure.Diagnostics" -Type "ApplicationMonitoringWindows" -Version "2.8" -SettingString $publicCfgJsonString -ProtectedSettingString $privateCfgJsonString
 ```
 
-Uygulama izleme uzantısını VM 'den kaldır
+> [!NOTE]
+> Bir PowerShell döngüsü kullanarak, Application Insights aracısını birden çok sanal makine arasında genişleme olarak yükleyebilirsiniz veya güncelleyebilirsiniz.
+
+Application Insights Agent uzantısını Azure sanal makinesinden kaldır
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name "ApplicationMonitoring"
 ```
 
-VM için sorgu uygulaması izleme uzantısı durumu
+Azure sanal makinesi için sorgu Application Insights aracısı uzantı durumu
 ```powershell
 Get-AzVMExtension -ResourceGroupName "<myVmResourceGroup>" -VMName "<myVmName>" -Name ApplicationMonitoring -Status
 ```
 
-VM için yüklü uzantıların listesini al
+Azure sanal makinesi için yüklü uzantıların listesini al
 ```powershell
 Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions"
 
@@ -90,10 +104,14 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
+Ayrıca, portaldaki [Azure sanal makine dikey](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) penceresinde yüklü uzantıları da görüntüleyebilirsiniz.
 
-## <a name="manage-agent-based-monitoring-for-net-applications-on-azure-virtual-machine-scale-set-using-powershell"></a>PowerShell kullanarak Azure sanal makine ölçek kümesi 'nde .NET uygulamaları için aracı tabanlı izlemeyi yönetme
+> [!NOTE]
+> Application Insights Aracısı uzantısını dağıtmak için kullandığınız izleme anahtarıyla ilişkili Application Insights kaynak içindeki Canlı Ölçüm Akışı tıklayarak yüklemeyi doğrulayın. Birden çok sanal makineden veri gönderiyorsanız, sunucu adı altında hedef Azure sanal makinelerini seçin. Verilerin akışa başlaması bir dakika kadar sürebilir.
 
-Azure sanal makine ölçek kümesi için uygulama izleme uzantısını yükler veya güncelleştirir
+## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>PowerShell kullanarak Azure sanal makine ölçek kümelerinde .NET uygulamaları için Application Insights aracısını yönetme
+
+Application Insights aracısını Azure sanal makine ölçek kümesi için bir uzantı olarak yükler veya güncelleştirin
 ```powershell
 $publicCfgHashtable =
 @{
@@ -122,7 +140,7 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Azure sanal makine ölçek kümesinden uygulama izleme uzantısını kaldır
+Azure sanal makine ölçek kümelerinden uygulama izleme uzantısını kaldır
 ```powershell
 $vmss = Get-AzVmss -ResourceGroupName "<myResourceGroup>" -VMScaleSetName "<myVmssName>"
 
@@ -133,12 +151,12 @@ Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -Virtu
 # Note: depending on your update policy, you might need to run Update-AzVmssInstance for each instance
 ```
 
-Azure sanal makine ölçek kümesi için sorgu uygulaması izleme uzantısı durumu
+Azure sanal makine ölçek kümeleri için sorgu uygulaması izleme uzantısı durumu
 ```powershell
 # Not supported by extensions framework
 ```
 
-Azure sanal makine ölçek kümesi için yüklü uzantıların listesini al
+Azure sanal makine ölçek kümeleri için yüklü uzantıların listesini al
 ```powershell
 Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myResourceGroup>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVmssName>/extensions
 
@@ -151,10 +169,10 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Azure VM ve Azure sanal makine ölçek kümeleri üzerinde çalışan .NET uygulamalarına yönelik uzantı tabanlı izleme için adım adım sorun giderme kılavuzumuz aşağıda verilmiştir.
+Azure sanal makinelerinde ve sanal makine ölçek kümelerinde çalışan .NET uygulamaları için Application Insights Izleme Aracısı uzantısı için sorun giderme ipuçları bulabilirsiniz.
 
 > [!NOTE]
-> .NET Core, Java ve Node. js uygulamaları yalnızca Azure VM 'de ve Azure sanal makine ölçek kümelerinde, el ile SDK tabanlı araçlar aracılığıyla desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
+> .NET Core, Java ve Node. js uygulamaları yalnızca el ile SDK tabanlı araçlar aracılığıyla Azure sanal makinelerinde ve Azure sanal makine ölçek kümelerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
 
 Uzantı yürütme çıktısı, aşağıdaki dizinlerde bulunan dosyalara kaydedilir:
 ```Windows

@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834828"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389591"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
 
@@ -24,20 +24,26 @@ Bir yeniden yönlendirme URI 'si veya yanıt URL 'SI, uygulama başarıyla yetki
 
 ## <a name="maximum-number-of-redirect-uris"></a>Maksimum yeniden yönlendirme URI sayısı
 
-Aşağıdaki tabloda, uygulamanızı kaydettiğinizde ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısı gösterilmektedir. 
+Aşağıdaki tabloda, uygulamanızı kaydettiğinizde ekleyebileceğiniz en fazla yeniden yönlendirme URI sayısı gösterilmektedir.
 
 | Oturum açan hesaplar | Maksimum yeniden yönlendirme URI sayısı | Açıklama |
 |--------------------------|---------------------------------|-------------|
-| Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | `signInAudience`uygulama bildirimindeki alan *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
-| Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | `signInAudience`uygulama bildirimindeki alan *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
+| Herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısındaki Microsoft iş veya okul hesapları | 256 | uygulama bildirimindeki `signInAudience` alanı *Azureadmyorg* ya da *Azureadmultipleorgs* olarak ayarlandı |
+| Kişisel Microsoft hesapları ve iş ve okul hesapları | 100 | uygulama bildirimindeki `signInAudience` alanı *Azureadandpersonmicrosoftaccount* olarak ayarlandı |
 
 ## <a name="maximum-uri-length"></a>En fazla URI uzunluğu
 
 Bir uygulama kaydına eklediğiniz her bir yeniden yönlendirme URI 'SI için en fazla 256 karakter kullanabilirsiniz.
 
+## <a name="supported-schemes"></a>Desteklenen düzenler
+Azure AD uygulama modeli, Microsoft iş veya okul hesaplarında herhangi bir kuruluşun Azure Active Directory (Azure AD) kiracısında oturum açmasını sağlayan uygulamalar için hem HTTP hem de HTTPS düzenlerini destekler. Uygulama bildirimindeki `signInAudience` alanı *Azureadmyorg* veya *Azureadmultipleorgs*olarak ayarlanır. Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açılan uygulamalar (`signInAudience` ' ı *Azureadandpersonmicrosoftaccount*olarak ayarlanmıştır) yalnızca https şemasına izin verilir.
+
+> [!NOTE]
+> Yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimi, geliştiricilerin kullanıcı arabiriminde http düzenine sahip URI 'leri eklemesine izin vermez. İş veya okul hesaplarında oturum açma uygulamaları için HTTP URI 'Leri eklemek yalnızca uygulama bildirimi Düzenleyicisi aracılığıyla desteklenir. İleri giderek, yeni uygulamalar yeniden yönlendirme URI 'sinde HTTP şemaları kullanamaz. Ancak, yeniden yönlendirme URI 'Lerinde HTTP şemaları içeren eski uygulamalar çalışmaya devam edecektir. Geliştiricilerin yeniden yönlendirme URI 'Lerinde HTTPS şemaları kullanması gerekir.
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>URI 'Ler içinde bir joker karakter kullanan kısıtlamalar
 
-Gibi joker karakter URI 'leri `https://*.contoso.com`kullanışlıdır, ancak kaçınılmalıdır. Yeniden yönlendirme URI 'sinde joker karakter kullanılması güvenlik etkilerine sahiptir. OAuth 2,0 belirtimine göre ([RFC 6749 ' nin Bölüm 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), bir yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır. 
+@No__t-0 gibi joker karakter URI 'Leri kullanışlıdır, ancak kaçınılmalıdır. Yeniden yönlendirme URI 'sinde joker karakter kullanılması güvenlik etkilerine sahiptir. OAuth 2,0 belirtimine göre ([RFC 6749 ' nin Bölüm 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2)), bir yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır. 
 
 Azure AD uygulama modeli, kişisel Microsoft hesaplarında ve iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerini desteklemez. Ancak, günümüzde bir kuruluşun Azure AD kiracısında iş veya okul hesaplarında oturum açmak üzere yapılandırılan uygulamalar için joker karakter URI 'Lerinde izin verilir. 
  

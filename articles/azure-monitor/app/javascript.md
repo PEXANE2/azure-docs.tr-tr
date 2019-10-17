@@ -1,6 +1,6 @@
 ---
-title: JavaScript Web Apps için Azure Application Insights | Microsoft Docs
-description: Sayfa görüntüleme ve oturum sayılarını, Web istemci verilerini alın ve kullanım düzenlerini izleyin. JavaScript Web sayfalarındaki özel durumları ve performans sorunlarını tespit edin.
+title: JavaScript web uygulamaları için Azure Application Insights | Microsoft Docs
+description: Sayfa görünümü ve oturum sayısını, web istemci verilerini alın ve kullanım desenlerini izleyin. JavaScript web sayfalarında özel durumları ve performans sorunlarını yakalayın.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937085"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430201"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
-Web sayfanızın veya uygulamanızın performansı ve kullanımı hakkında bilgi edinin. Sayfa betiğe [Application Insights](app-insights-overview.md) eklerseniz, sayfa YÜKLEMELERININ ve Ajax çağrılarının zamanlamalarının yanı sıra, tarayıcı özel DURUMLARıNıN ve Ajax hatalarının yanı sıra kullanıcıların ve oturum sayılarındaki ayrıntıları alırsınız. Bunlar sayfa, istemci işletim sistemi ve tarayıcı sürümü, coğrafi konum ve diğer boyutlara göre kesimlere uygulanabilir. Hata sayısı veya yavaş sayfa yüklemesi üzerinde uyarılar ayarlayabilirsiniz. JavaScript kodunuza izleme çağrıları ekleyerek, Web sayfası uygulamanızın farklı özelliklerinin nasıl kullanıldığını izleyebilirsiniz.
+Web sayfanızın veya uygulamanızın performansı ve kullanımı hakkında bilgi edinin. Sayfa betiğe [Application Insights](app-insights-overview.md) eklerseniz, sayfa YÜKLEMELERININ ve Ajax çağrılarının zamanlamalarının yanı sıra, tarayıcı özel DURUMLARıNıN ve Ajax hatalarının yanı sıra kullanıcıların ve oturum sayılarındaki ayrıntıları alırsınız. Bunların tümü sayfaya, istemci işletim sistemi ve tarayıcı sürümüne, coğrafi konuma ve başka boyutlara göre kesimlere ayrılmıştır. Hata sayısı veya yavaş sayfa yüklemesi hakkında uyarı ayarlayabilirsiniz. Ayrıca JavaScript kodunuza izleme çağrıları ekleyerek web sayfası uygulamanızın farklı özelliklerinin nasıl kullanıldığını izleyebilirsiniz.
 
-Application Insights herhangi bir Web sayfası ile kullanılabilir. yalnızca kısa bir JavaScript ekleyin. Web hizmetiniz [Java](java-get-started.md) veya [ASP.net](asp-net.md)ise, uygulamanızın performansını uçtan uca anlamak için istemci tarafı JavaScript SDK 'sı Ile birlikte sunucu tarafı SDK 'larını kullanabilirsiniz.
+Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScript eklemeniz yeterlidir. Web hizmetiniz [Java](java-get-started.md) veya [ASP.net](asp-net.md)ise, uygulamanızın performansını uçtan uca anlamak için istemci tarafı JavaScript SDK 'sı Ile birlikte sunucu tarafı SDK 'larını kullanabilirsiniz.
 
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK 'Sı ekleme
 
@@ -64,7 +64,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
-Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu güncelleştirmeler şunlardır:
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bunlar:
 
 - Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
     - Yığın izleme
@@ -101,46 +101,46 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. @No__t-0 dışında tüm alanlar isteğe bağlıdır.
 
-| Name | Varsayılan | Açıklama |
+| Adı | Varsayılan | Açıklama |
 |------|---------|-------------|
-| Instrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
-| Accoun | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
+| ınstrumentationkey | değer | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
+| Accoun | değer | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
 | sessionRenewalMs | 1800000 | Kullanıcı bu süre boyunca devre dışı bırakılırsa, bir oturum günlüğe kaydedilir. Varsayılan değer 30 dakikadır |
 | sessionExpirationMs | 86400000 | Bu süre boyunca milisaniye cinsinden devam eden bir oturum günlüğe kaydedilir. Varsayılan değer 24 saattir |
 | Maxbatchsizeınbytes | 10000 | Telemetri toplu işinin en büyük boyutu. Bir toplu iş bu sınırı aşarsa, hemen gönderilir ve yeni bir toplu işlem başlatılır |
 | Maxbatchınterval | 15000 | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) |
-| disableExceptionTracking | false | True ise özel durumlar, bir oto toplanmaz. Varsayılan değer false 'dur. |
-| Disabletelemetri | false | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false 'dur. |
-| enableDebug | false | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false 'dur. <br>***Note:*** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, `enableDebug` yerine `consoleLoggingLevel` veya `telemetryLoggingLevel` kullanmayı göz önünde bulundurun. |
+| disableExceptionTracking | yanlış | True ise özel durumlar, bir oto toplanmaz. Varsayılan değer false’tur. |
+| Disabletelemetri | yanlış | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false’tur. |
+| enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>***Note:*** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, `enableDebug` yerine `consoleLoggingLevel` veya `telemetryLoggingLevel` kullanmayı göz önünde bulundurun. |
 | loggingLevelConsole | 0 | **İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
-| Loggingleveltelemetri | 1\. | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
+| Loggingleveltelemetri | 1 | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
 | Diagnosticlogınterval | 10000 | iç İç günlük kuyruğu için yoklama aralığı (MS cinsinden) |
 | samplingPercentage | 100 | Gönderilecek olayların yüzdesi. Varsayılan değer 100 ' dir, yani tüm olaylar gönderilir. Büyük ölçekli uygulamalar için veri ucunu korumak isterseniz bunu ayarlayın. |
-| Oto Trackpagevisittime | false | True ise, bir PageView üzerinde, önceki belgelenmiş sayfanın görünüm süresi izlenir ve telemetri olarak gönderilir ve geçerli PageView için yeni bir Zamanlayıcı başlatılır. Varsayılan değer false 'dur. |
-| disableAjaxTracking | false | True ise, Ajax çağrıları tekrar toplanmamıştır. Varsayılan değer false 'dur. |
-| disableFetchTracking | true | True ise, Fetch istekleri tekrar toplanmaz. Varsayılan değer true 'dur |
-| overridePageViewDuration | false | True ise trackPageView 'ın varsayılan davranışı sayfa görüntüleme süresi aralığının sonuna, trackPageView çağrıldığında bir kayıt olarak değiştirilmiştir. Yanlış olursa ve trackPageView için özel süre sağlanmamışsa, sayfa görünümü performansı, gezinti zamanlaması API 'SI kullanılarak hesaplanır. Varsayılan değer false 'dur. |
+| Oto Trackpagevisittime | yanlış | True ise, bir PageView üzerinde, önceki belgelenmiş sayfanın görünüm süresi izlenir ve telemetri olarak gönderilir ve geçerli PageView için yeni bir Zamanlayıcı başlatılır. Varsayılan değer false’tur. |
+| disableAjaxTracking | yanlış | True ise, Ajax çağrıları tekrar toplanmamıştır. Varsayılan değer false’tur. |
+| disableFetchTracking | doğru | True ise, Fetch istekleri tekrar toplanmaz. Varsayılan değer true 'dur |
+| overridePageViewDuration | yanlış | True ise trackPageView 'ın varsayılan davranışı sayfa görüntüleme süresi aralığının sonuna, trackPageView çağrıldığında bir kayıt olarak değiştirilmiştir. Yanlış olursa ve trackPageView için özel süre sağlanmamışsa, sayfa görünümü performansı, gezinti zamanlaması API 'SI kullanılarak hesaplanır. Varsayılan değer false’tur. |
 | maxAjaxCallsPerView | 500 | Varsayılan 500-sayfa görünümü başına kaç Ajax çağrısının izleneceğini denetler. Sayfadaki tüm (sınırsız) AJAX çağrılarını izlemek için-1 olarak ayarlayın. |
-| disableDataLossAnalysis | true | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. |
-| disableCorrelationHeaders | false | Yanlış ise, SDK, sunucu tarafındaki ilgili isteklerle ilişkilendirmek üzere tüm bağımlılık isteklerine iki üst bilgi (' Istek-kimlik ' ve ' Istek-bağlam ') ekler. Varsayılan değer false 'dur. |
+| disableDataLossAnalysis | doğru | Yanlışsa, iç telemetri gönderici arabellekleri henüz gönderilmemiş öğeler için başlangıçta denetlenir. |
+| disableCorrelationHeaders | yanlış | Yanlış ise, SDK, sunucu tarafındaki ilgili isteklerle ilişkilendirmek üzere tüm bağımlılık isteklerine iki üst bilgi (' Istek-kimlik ' ve ' Istek-bağlam ') ekler. Varsayılan değer false’tur. |
 | correlationHeaderExcludedDomains |  | Belirli etki alanları için bağıntı üstbilgilerini devre dışı bırak |
 | correlationHeaderDomains |  | Belirli etki alanları için bağıntı üstbilgilerini etkinleştir |
-| disableFlushOnBeforeUnload | false | Varsayılan yanlış. True ise, onBeforeUnload olay tetikleyicileri sırasında temizleme yöntemi çağrılmayacak |
-| enableSessionStorageBuffer | true | Varsayılan değer. Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi |
-| Idite ıeusedisabled | false | Varsayılan yanlış. True ise SDK, tanımlama bilgilerinden herhangi bir veriyi depolamaz veya okummaz.|
-| Pişirme etki alanı | null | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur. |
-| ıretrydisabled | false | Varsayılan yanlış. Yanlışsa, 206 (kısmi başarı), 408 (zaman aşımı), 429 (çok fazla istek), 500 (iç sunucu hatası), 503 (hizmet kullanılamıyor) ve 0 (yalnızca algılanırsa) üzerinde yeniden deneyin |
-| ıstorageusedisabled | false | True ise, SDK yerel ve oturum depolamadan hiçbir veriyi depolamaz veya okummaz. Varsayılan değer false 'dur. |
-| ıconlanapidisabled | true | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
-| Onunloaddisableişaret | false | Varsayılan yanlış. sekme kapatıldığında SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak kalan tüm telemetrileri gönderir |
-| SDK uzantısı | null | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). Varsayılan değer null. |
-| isBrowserLinkTrackingEnabled | false | Varsayılan değer false 'dur. Doğru ise, SDK tüm [tarayıcı bağlantısı](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) isteklerini izler. |
-| AppID | null | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. Varsayılan değer null |
-| enableCorsCorrelation | false | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. Varsayılan değer false şeklindedir |
-| namePrefix | tanımlayan | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer.
-| Enableoto Routetracking | false | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri (`example.com/foo#bar`) Ayrıca yeni sayfa görünümleri olarak kaydedilir.
-| enableRequestHeaderTracking | false | True ise, AJAX & getirme isteği üst bilgileri izlenir, varsayılan değer false 'dur.
-| enableResponseHeaderTracking | false | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
+| disableFlushOnBeforeUnload | yanlış | Varsayılan yanlış. True ise, onBeforeUnload olay tetikleyicileri sırasında temizleme yöntemi çağrılmayacak |
+| enableSessionStorageBuffer | doğru | Varsayılan değer. Doğru ise, tüm gönderilmemiş Telemetriyi içeren arabellek oturum depolama alanında depolanır. Arabellek sayfa yüküne geri yüklendi |
+| Idite ıeusedisabled | yanlış | Varsayılan yanlış. True ise SDK, tanımlama bilgilerinden herhangi bir veriyi depolamaz veya okummaz.|
+| Pişirme etki alanı | değer | Özel tanımlama bilgisi etki alanı. Bu, alt etki alanları arasında Application Insights tanımlama bilgilerini paylaştırmak istiyorsanız yararlı olur. |
+| ıretrydisabled | yanlış | Varsayılan yanlış. Yanlışsa, 206 (kısmi başarı), 408 (zaman aşımı), 429 (çok fazla istek), 500 (iç sunucu hatası), 503 (hizmet kullanılamıyor) ve 0 (yalnızca algılanırsa) üzerinde yeniden deneyin |
+| ıstorageusedisabled | yanlış | True ise, SDK yerel ve oturum depolamadan hiçbir veriyi depolamaz veya okummaz. Varsayılan değer false’tur. |
+| ıconlanapidisabled | doğru | False ise, SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak tüm telemetrileri gönderir |
+| Onunloaddisableişaret | yanlış | Varsayılan yanlış. sekme kapatıldığında SDK, [Işaret API](https://www.w3.org/TR/beacon) 'sini kullanarak kalan tüm telemetrileri gönderir |
+| SDK uzantısı | değer | SDK uzantısının adını ayarlar. Yalnızca alfabetik karakterlere izin verilir. Uzantı adı ' AI. Internal. sdkVersion ' etiketinin öneki olarak eklenir (örneğin, ' ext_javascript: 2.0.0 '). Varsayılan değer null. |
+| isBrowserLinkTrackingEnabled | yanlış | Varsayılan değer false’tur. Doğru ise, SDK tüm [tarayıcı bağlantısı](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) isteklerini izler. |
+| appId | değer | Uygulama kimliği, istemci tarafında sunucu tarafı istekleri ile oluşan AJAX bağımlılıkları arasındaki bağıntı için kullanılır. Işaret API 'SI etkinleştirildiğinde, otomatik olarak kullanılamaz, ancak yapılandırmada el ile ayarlanabilir. Varsayılan değer null |
+| enableCorsCorrelation | yanlış | Doğru ise, SDK giden AJAX bağımlılıklarını sunucu tarafındaki ilgili isteklerle ilişkilendirmek için tüm CORS isteklerine iki üst bilgi (' Istek-kimliği ' ve ' Istek-bağlam ') ekler. Varsayılan değer false şeklindedir |
+| namePrefix | Tanımlayan | LocalStorage ve tanımlama bilgisi adı için ad soneki olarak kullanılacak isteğe bağlı bir değer.
+| Enableoto Routetracking | yanlış | Rota değişikliklerini tek sayfalı uygulamalarda (SPA) otomatik olarak izleyin. True ise, her yol değişikliği Application Insights yeni bir PageView gönderir. Karma yol değişiklikleri (`example.com/foo#bar`) Ayrıca yeni sayfa görünümleri olarak kaydedilir.
+| enableRequestHeaderTracking | yanlış | True ise, AJAX & getirme isteği üst bilgileri izlenir, varsayılan değer false 'dur.
+| enableResponseHeaderTracking | yanlış | True ise, AJAX & getirme isteğinin yanıt üst bilgileri izlenir, varsayılan değer false 'dur.
 | distributedTracingMode | `DistributedTracingModes.AI` | Dağıtılmış izleme modunu ayarlar. AI_AND_W3C Mode veya W3C modu ayarlandıysa, W3C Trace bağlam üstbilgileri (traceparent/tracestate) oluşturulur ve tüm giden isteklere dahil edilir. AI_AND_W3C, eski Application Insights belgelenmiş hizmetlerle geri uyumluluk için sağlanır.
 
 ## <a name="single-page-applications"></a>Tek sayfalı uygulamalar
@@ -151,9 +151,9 @@ Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol
 
 ## <a name="react-extensions"></a>Tepki verme uzantıları
 
-| Uzantıları |
+| Uzantılar |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [Tıkla](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Yerel olarak tepki verme](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Tarayıcı/istemci tarafı verilerini keşfet
@@ -253,7 +253,7 @@ Betik CDN 'den indirilirken, sayfanızın tüm izlenmesi sıraya alınır. İndi
 
 ## <a name="browser-support"></a>Tarayıcı desteği
 
-![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![LERIM](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | !['U](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
 En son ✔ | En son ✔ | 9 + ✔ | En son ✔ | En son ✔ |
 
@@ -262,7 +262,7 @@ En son ✔ | En son ✔ | 9 + ✔ | En son ✔ | En son ✔ |
 Application Insights JavaScript SDK 'Sı, kaynak kodu görüntülemek veya projeye katkıda bulunmak için açık kaynaktır ve [resmi GitHub deposunu](https://github.com/Microsoft/ApplicationInsights-JS)ziyaret edebilir.
 
 ## <a name="next"></a> Sonraki adımlar
-* [Kullanımı izle](usage-overview.md)
-* [Özel olaylar ve ölçümler](api-custom-events-metrics.md)
-* [Oluşturma-ölçme-öğrenme](usage-overview.md)
+* [Kullanımı izleme](usage-overview.md)
+* [Özel etkinlikler ve ölçümler](api-custom-events-metrics.md)
+* [Build-measure-learn](usage-overview.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell kullanarak Azure kaynaklarını yönetme | Microsoft Docs
-description: Kaynaklarınızı yönetmek için Azure PowerShell ve Azure Kaynak yönetme 'yi kullanın.
+description: Kaynaklarınızı yönetmek için Azure PowerShell ve Azure Resource Manager kullanın. Kaynakların nasıl dağıtılacağını ve silineceğini gösterir.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: f61fcf7833021f23485992c7445f91d9a7b9ee45
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: aa215555fdd39e9d756d5fc925282b1eaffc9ebf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001524"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390360"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure PowerShell kullanarak Azure kaynaklarını yönetme
 

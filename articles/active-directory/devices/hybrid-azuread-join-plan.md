@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory (Azure AD) içinde karma Azure Active Directory JOIN uygulamasını planlayın | Microsoft Docs
-description: Karma Azure Active Directory katılmış cihazları yapılandırmayı öğrenin.
+description: Hibrit Azure Active Directory'ye katılmış cihazları elle nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,43 +11,43 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960216"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389571"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
 Bir kullanıcıya benzer bir şekilde, bir cihaz korumak istediğiniz başka bir temel kimliktir ve kaynakları dilediğiniz zaman ve herhangi bir konumdan korumak için kullanabilirsiniz. Aşağıdaki yöntemlerden birini kullanarak, Azure AD 'de cihaz kimliklerini taşıyarak ve yöneterek bu hedefi gerçekleştirebilirsiniz:
 
-- Azure AD katılımı
-- Karma Azure AD katılımı
+- Azure AD'ye katılım
+- Hibrit Azure AD'ye katılım
 - Azure AD kaydı
 
-Cihazlarınızı Azure AD 'ye getirerek, kullanıcılarınızın bulut ve şirket içi kaynaklarınız genelinde çoklu oturum açma (SSO) ile üretkenliğini en üst düzeye çıkarmış olursunuz. Aynı zamanda bulut ve şirket içi kaynaklarınız için [koşullu erişimle](../active-directory-conditional-access-azure-portal.md)erişimi güvenli hale getirebilirsiniz.
+Cihazlarınızı Azure AD'ye taşıyarak, çoklu oturum açma (SSO) özelliği sayesinde bulut ve şirket içi kaynaklarınız genelinde kullanıcılarınızın üretkenliğini en üst düzeye çıkarırsınız. Aynı zamanda bulut ve şirket içi kaynaklarınız için [koşullu erişimle](../active-directory-conditional-access-azure-portal.md)erişimi güvenli hale getirebilirsiniz.
 
 Şirket içi Active Directory (AD) ortamınız varsa ve AD alanına katılmış bilgisayarlarınızı Azure AD 'ye eklemek istiyorsanız, karma Azure AD katılımı yaparak bunu yapabilirsiniz. Bu makalede, ortamınızda karma Azure AD katılımı uygulamak için ilgili adımlar sağlanmaktadır. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, [Azure Active Directory ' deki cihaz kimliği yönetimine giriş](../device-management-introduction.md)hakkında bilgi sahibi olduğunuz varsayılır.
 
 > [!NOTE]
 > Windows 10 karma Azure AD JOIN için gereken en düşük etki alanı denetleyicisi sürümü Windows Server 2008 R2 'dir.
 
-## <a name="plan-your-implementation"></a>Uygulamanızı planlayın
+## <a name="plan-your-implementation"></a>Uygulamanızı planlama
 
 Hibrit Azure AD uygulamanızı planlamak için şunu öğrenmeniz gerekir:
 
 |   |   |
 | --- | --- |
-| ![Denetlemez][1] | Desteklenen cihazları gözden geçir |
-| ![Denetlemez][1] | Bilmeniz gereken işlemleri gözden geçirin |
-| ![Denetlemez][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
-| ![Denetlemez][1] | Kimlik altyapınıza göre senaryonuzu seçin |
-| ![Denetlemez][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
+| ![İşaretli][1] | Desteklenen cihazları gözden geçir |
+| ![İşaretli][1] | Bilmeniz gereken işlemleri gözden geçirin |
+| ![İşaretli][1] | Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin |
+| ![İşaretli][1] | Kimlik altyapınıza göre senaryonuzu seçin |
+| ![İşaretli][1] | Karma Azure AD katılımı için şirket içi AD UPN desteğini gözden geçirin |
 
 ## <a name="review-supported-devices"></a>Desteklenen cihazları gözden geçir
 
@@ -97,7 +97,7 @@ Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azu
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin
 
-Tüm önkoşulların yerine Windows cihazları otomatik olarak Azure AD kiracınızda cihaz olarak kaydedilir. Azure AD 'deki bu cihaz kimliklerinin durumu karma Azure AD katılımı olarak adlandırılır. Bu makalede ele alınan kavramlar hakkında daha fazla bilgi [Azure Active Directory içinde cihaz kimliği yönetimine giriş](overview.md) ve [hibrit Azure Active Directory JOIN Uygulamanızı planlayın](hybrid-azuread-join-plan.md).
+Tüm önkoşulların yerine Windows cihazları otomatik olarak Azure AD kiracınızda cihaz olarak kaydedilir. Azure AD 'deki bu cihaz kimliklerinin durumu karma Azure AD katılımı olarak adlandırılır. Bu makalede ele alınan kavramlar hakkında daha fazla bilgi [Azure Active Directory içinde cihaz kimliği yönetimine giriş](overview.md)makalesinde bulabilirsiniz.
 
 Kuruluşlar, karma Azure AD JOIN 'in tüm kuruluşları genelinde tek seferde etkinleştirmeden önce denetimli bir doğrulama yapmak isteyebilir. Nasıl yapılacağını anlamak için [hibrit Azure AD JOIN 'in denetlenen doğrulaması](hybrid-azuread-join-control.md) makalesini gözden geçirin.
 
@@ -129,7 +129,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.
 
-Sürüm 1.1.819.0 ile başlayarak Azure AD Connect, karma Azure AD JOIN 'i yapılandırmanıza yönelik bir sihirbaz sağlar. Sihirbaz, yapılandırma sürecini önemli ölçüde basitleştirmenizi sağlar. Gerekli Azure AD Connect sürümünün yüklenmesi sizin için bir seçenek değilse, bkz. [cihaz kaydını el ile yapılandırma](hybrid-azuread-join-manual.md). 
+1\.1.819.0 sürümünden itibaren Azure AD Connect hibrit Azure AD'ye katılımı yapılandırmak için bir sihirbaz sağlar. Sihirbaz, yapılandırma işlemini önemli ölçüde basitleştirebilmenizi sağlar. Gerekli Azure AD Connect sürümünün yüklenmesi sizin için bir seçenek değilse, bkz. [cihaz kaydını el ile yapılandırma](hybrid-azuread-join-manual.md). 
 
 Kimlik altyapınızla eşleşen senaryoya bağlı olarak, bkz:
 
@@ -149,8 +149,8 @@ Aşağıdaki tabloda, Windows 10 karma Azure AD 'ye yönelik bu şirket içi AD 
 | ----- | ----- | ----- | ----- |
 | Lemez | Federasyon | 1703 sürümünden | Genel olarak kullanılabilir |
 | Yönlendirilemeyen | Federasyon | 1803 sürümünden | Genel olarak kullanılabilir |
-| Lemez | Lebilmesi | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
-| Yönlendirilemeyen | Lebilmesi | Desteklenmez | |
+| Lemez | Yönetilen | 1803 sürümünden | Genel olarak kullanılabilir, Windows kilit ekranı üzerinde Azure AD SSPR desteklenmez |
+| Yönlendirilemeyen | Yönetilen | Desteklenmiyor | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

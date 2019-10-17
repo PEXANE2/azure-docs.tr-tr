@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cbc6932c3bbe11f0c4def17097c1791cbb1687bf
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 82f02f0ac11c80161f709b3b493306bc8aafc8bd
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515896"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435460"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Otomasyonu 'nda modülleri yönetme
 
@@ -24,7 +24,7 @@ Azure Otomasyonu, PowerShell tabanlı runbook 'lar tarafından kullanılmak üze
 Otomasyon hesabınıza bir modül almanın birden çok yolu vardır. Aşağıdaki bölümlerde bir modülün içeri aktarılması için farklı yollar gösterilmektedir.
 
 > [!NOTE]
-> Azure Otomasyonu 'nda kullanılacak modüldeki bir dosyanın en büyük yolu 140 karakterdir. 140 karakter üzerinden herhangi bir yol, ile `Import-Module`PowerShell oturumuna aktarılamaz.
+> Azure Otomasyonu 'nda kullanılacak modüldeki bir dosyanın en büyük yolu 140 karakterdir. 140 karakter üzerinden herhangi bir yol, `Import-Module` ile PowerShell oturumuna aktarılamaz.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -34,7 +34,7 @@ Otomasyon hesabınıza bir modül almanın birden çok yolu vardır. Aşağıdak
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. **+ Modül Ekle**' ye tıklayın. Modülünüzü içeren bir **. zip** dosyası seçin ve işlemi içeri aktarmaya başlamak için **Tamam** ' a tıklayın.
 
@@ -42,11 +42,11 @@ Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altında
 
 PowerShell galerisinden modüller [PowerShell Galerisi](https://www.powershellgallery.com) doğrudan veya Otomasyon hesabınızdan içeri aktarılabilir.
 
-PowerShell Galerisi bir modülü içeri aktarmak için öğesine https://www.powershellgallery.com gidin ve içeri aktarmak istediğiniz modüle arayın. **Yükleme seçenekleri**altındaki **Azure Otomasyonu** sekmesinde **Azure Otomasyonu 'na dağıt** ' a tıklayın. Bu eylem Azure portal açar. **Içeri aktar** sayfasında Otomasyon hesabınızı seçin ve **Tamam**' ı tıklatın.
+PowerShell Galerisi bir modülü içeri aktarmak için https://www.powershellgallery.com ' a gidin ve içeri aktarmak istediğiniz modülü arayın. **Yükleme seçenekleri**altındaki **Azure Otomasyonu** sekmesinde **Azure Otomasyonu 'na dağıt** ' a tıklayın. Bu eylem Azure portal açar. **Içeri aktar** sayfasında Otomasyon hesabınızı seçin ve **Tamam**' ı tıklatın.
 
 ![PowerShell Galerisi içeri aktarma modülü](../media/modules/powershell-gallery.png)
 
-Ayrıca, PowerShell Galerisi modülleri doğrudan Otomasyon hesabınızdan de içeri aktarabilirsiniz. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin. Modüller sayfasında, **Galeriye gözatıp**' ye tıklayın ve ardından PowerShell Galerisi bir modül için arama yapın. İçeri aktarmak istediğiniz modülü seçin ve **Içeri aktar**' a tıklayın. İçeri aktarma sayfasında, içeri aktarma işlemini başlatmak için **Tamam** ' ı tıklatın.
+Ayrıca, PowerShell Galerisi modülleri doğrudan Otomasyon hesabınızdan de içeri aktarabilirsiniz. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin. Modüller sayfasında, **Galeriye gözatıp**' ye tıklayın ve ardından PowerShell Galerisi bir modül için arama yapın. İçeri aktarmak istediğiniz modülü seçin ve **Içeri aktar**' a tıklayın. **İçeri aktarma sayfasında,** içeri aktarma işlemini başlatmak için **Tamam** ' ı tıklatın.
 
 ![Azure portal içeri aktarma PowerShell Galerisi](../media/modules/gallery-azure-portal.png)
 
@@ -54,7 +54,7 @@ Ayrıca, PowerShell Galerisi modülleri doğrudan Otomasyon hesabınızdan de i�
 
 Modülle ilgili sorunlarınız varsa veya bir modülün önceki bir sürümüne geri dönmeniz gerekirse, Otomasyon hesabınızdan silebilirsiniz. Bir Otomasyon hesabı oluşturduğunuzda içeri aktarılan [varsayılan modüllerin](#default-modules) orijinal sürümünü silemezsiniz. Silmek istediğiniz modül yüklü [varsayılan modüllerden](#default-modules) birinin daha yeni bir sürümü Ise, Otomasyon hesabınızla yüklenen sürüme geri gönderilir. Aksi takdirde, Otomasyon hesabınızdan sildiğiniz herhangi bir modül kaldırılır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, Otomasyon hesabınıza gidin ve **paylaşılan kaynaklar**altındaki **modüller** ' i seçin. Kaldırmak istediğiniz modülü seçin. **Modül** sayfasında, clcick **Delete**. Bu modül [varsayılan modüllerden](#default-modules)biri Ise, Otomasyon hesabı oluşturulduğunda mevcut olan sürüme geri alınacaktır.
 
@@ -68,12 +68,12 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 ## <a name="internal-cmdlets"></a>İç cmdlet 'ler
 
-Her Otomasyon hesabına aktarılan iç `Orchestrator.AssetManagement.Cmdlets` modüldeki cmdlet 'lerin bir listesi aşağıda verilmiştir. Bu cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmalarında erişilebilir ve otomasyon hesabınızda varlıklarınızla etkileşime geçmesini sağlar. Ayrıca, iç cmdlet 'ler, şifrelenmiş **değişken** değerleri, **kimlik bilgileri**ve şifrelenmiş **bağlantı** alanlarından gizli dizileri almanızı sağlar. Azure PowerShell cmdlet 'leri bu gizli dizileri alamıyor. Bu cmdlet 'ler, Azure 'da kimlik doğrulaması yapmak için bir farklı çalıştır hesabı kullanma gibi, bunları kullanırken Azure 'a örtülü olarak bağlanmanızı gerektirmez.
+Aşağıda, her Otomasyon hesabına aktarılan iç `Orchestrator.AssetManagement.Cmdlets` modülündeki cmdlet 'lerin bir listesi verilmiştir. Bu cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmalarında erişilebilir ve otomasyon hesabınızda varlıklarınızla etkileşime geçmesini sağlar. Ayrıca, iç cmdlet 'ler, şifrelenmiş **değişken** değerleri, **kimlik bilgileri**ve şifrelenmiş **bağlantı** alanlarından gizli dizileri almanızı sağlar. Azure PowerShell cmdlet 'leri bu gizli dizileri alamıyor. Bu cmdlet 'ler, Azure 'da kimlik doğrulaması yapmak için bir farklı çalıştır hesabı kullanma gibi, bunları kullanırken Azure 'a örtülü olarak bağlanmanızı gerektirmez.
 
-|Name|Açıklama|
+|Adı|Açıklama|
 |---|---|
-|Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
-|Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
+|-AutomationCertificate 'ı al|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
+|-AutomationConnection 'ı al|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
 |Get-AutomationPSCredential|`Get-AutomationPSCredential [-Name] <string> [<CommonParameters>]` |
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
@@ -86,7 +86,7 @@ Modülünüzü isteğe bağlı bir dosya ekleyerek Otomasyon hesabınızda kulla
 
 ![Azure portal özel bir bağlantı kullanın](../media/modules/connection-create-new.png)
 
-Bir Azure Otomasyonu bağlantı türü eklemek için modülünüzün bağlantı türü özelliklerini belirten ada `<ModuleName>-Automation.json` sahip bir dosya içermesi gerekir. JSON dosyası, sıkıştırılmış. zip dosyanızın modül klasörüne yerleştirilir. Bu dosya, modülün temsil ettiği sisteme veya hizmete bağlanmak için gereken bir bağlantının alanlarını içerir. Yapılandırma, Azure Otomasyonu 'nda bir bağlantı türü oluşturmayı sonlandırır. Bu dosyayı kullanarak, modülün bağlantı türü için alan adlarını, türleri ve alanların şifrelenip şifrelenmeyeceğini ve isteğe bağlı olup olmayacağını belirleyebilirsiniz. Aşağıdaki örnek, bir Kullanıcı adı ve parola özelliği tanımlayan JSON dosya biçimindeki bir şablondur:
+Bir Azure Otomasyonu bağlantı türü eklemek için modülünüzün bağlantı türü özelliklerini belirten `<ModuleName>-Automation.json` adında bir dosya içermesi gerekir. JSON dosyası, sıkıştırılmış. zip dosyanızın modül klasörüne yerleştirilir. Bu dosya, modülün temsil ettiği sisteme veya hizmete bağlanmak için gereken bir bağlantının alanlarını içerir. Yapılandırma, Azure Otomasyonu 'nda bir bağlantı türü oluşturmayı sonlandırır. Bu dosyayı kullanarak, modülün bağlantı türü için alan adlarını, türleri ve alanların şifrelenip şifrelenmeyeceğini ve isteğe bağlı olup olmayacağını belirleyebilirsiniz. Aşağıdaki örnek, bir Kullanıcı adı ve parola özelliği tanımlayan JSON dosya biçimindeki bir şablondur:
 
 ```json
 {
@@ -172,7 +172,7 @@ myModule
 
 * Modül bir dış hizmete bağlanırsa, bir [bağlantı türü](#add-a-connection-type-to-your-module)içermelidir. Modüldeki her cmdlet, parametre olarak bir bağlantı nesnesi (ilgili bağlantı türünün bir örneği) alabilmelidir. Kullanıcılar, bir cmdlet 'i her çağırışınızda bağlantı varlığının parametrelerini cmdlet 'inin karşılık gelen parametrelere eşler. Yukarıdaki runbook örneğine bağlı olarak, contoso kaynaklarına erişmek ve dış hizmetten veri döndürmek için ContosoConnection adlı örnek bir contoso bağlantı varlığını kullanır.
 
-  Aşağıdaki örnekte, alanlar bir `PSCredential` nesnenin Kullanıcı adı ve parola özelliklerine eşlenir ve sonra cmdlet 'e geçirilir.
+  Aşağıdaki örnekte, alanlar `PSCredential` nesnesinin UserName ve Password özelliklerine eşlenir ve sonra cmdlet 'e geçirilir.
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -191,11 +191,11 @@ myModule
   }
   ```
 
-  Yalnızca parametreler için bağlantı alanları yerine doğrudan bir parametre olarak bir bağlantı nesnesini kabul etmesine izin vererek cmdlet 'leriniz için önceki örnek gibi davranışı etkinleştirebilirsiniz. Genellikle her biri için bir parametre kümesi istediğinizde, Azure Otomasyonu kullanmayan bir kullanıcının, bağlantı nesnesi olarak davranacak bir Hashtable oluşturmadan cmdlet 'lerinizi çağırabilmesi gerekir. Parametre kümesi `UserAccount`, bağlantı alanı özelliklerini geçirmek için kullanılır. `ConnectionObject`bağlantıyı doğrudan iletmenizi sağlar.
+  Yalnızca parametreler için bağlantı alanları yerine doğrudan bir parametre olarak bir bağlantı nesnesini kabul etmesine izin vererek cmdlet 'leriniz için önceki örnek gibi davranışı etkinleştirebilirsiniz. Genellikle her biri için bir parametre kümesi istediğinizde, Azure Otomasyonu kullanmayan bir kullanıcının, bağlantı nesnesi olarak davranacak bir Hashtable oluşturmadan cmdlet 'lerinizi çağırabilmesi gerekir. @No__t-0 parametre kümesi, bağlantı alanı özelliklerini geçirmek için kullanılır. `ConnectionObject` bağlantıyı doğrudan iletmenize olanak tanır.
 
 * Modüldeki tüm cmdlet 'ler için çıkış türünü tanımlayın. Cmdlet için bir çıktı türünün tanımlanması tasarım zamanında IntelliSense’in, cmdlet’in yazma sırasında kullanılan çıktı özelliklerini belirlemenize yardımcı olmasını sağlar. Tasarım zamanı bilgisinin modülle kolay bir kullanıcı deneyimine göre önemli olduğu Otomasyon Runbook grafik yazma işlemi sırasında özellikle yararlıdır.
 
-Mbir PutType 'ın geçerli bir tür olduğunu ekleyin `[OutputType([<MyOutputType>])]` . OutputType hakkında daha fazla bilgi edinmek için bkz. [About Functions output typeattribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Aşağıdaki kod, bir cmdlet 'e ekleme `OutputType` örneğidir:
+M0,0,PutType geçerli bir tür olan `[OutputType([<MyOutputType>])]` ekleyin. OutputType hakkında daha fazla bilgi edinmek için bkz. [About Functions output typeattribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute). Aşağıdaki kod, bir cmdlet 'e `OutputType` ekleme örneğidir:
 
   ```powershell
   function Get-ContosoUser {
@@ -234,39 +234,39 @@ Mbir PutType 'ın geçerli bir tür olduğunu ekleyin `[OutputType([<MyOutputTyp
 
 * Modül tam olarak xcopy özellikli bir pakette yer almalıdır. Azure Otomasyonu modülleri, runbook 'ların yürütülmesi gerektiğinde Otomasyon korumalı alanlarına dağıtılır. Modüllerin üzerinde çalıştıkları konaktan bağımsız olarak çalışması gerekir. Bir modül paketini oluşturup taşıyabilmeniz ve başka bir konağın PowerShell ortamına aktarıldığında normal olarak çalışmasını sağlayabilirsiniz. Bunun gerçekleşmesi için modülün modül klasörü dışındaki dosyalara bağlı olmaması gerekir. Bu klasör, modül Azure Otomasyonu 'na aktarıldığında sıkıştırılabilen klasördür. Modül Ayrıca, bir ürün yüklendiğinde ayarlanan bu ayarlar gibi bir konaktaki benzersiz kayıt defteri ayarlarına bağlı olmamalıdır. Modüldeki tüm dosyalar 140 karakterden kısa bir yola sahip olmalıdır. 140 karakter üzerindeki tüm yollar runbook 'unuzu içeri aktarma sorunlarına neden olur. Bu en iyi uygulama izlenmemişse, modül Azure Otomasyonu 'nda kullanılamaz.  
 
-* Modülünüzün [az modüllerindeki Azure PowerShell](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) 'e başvurduğunuzdan emin olun `AzureRM`. `Az` Modül`AzureRM` modüllerle birlikte kullanılamaz. `Az`Runbook 'larda desteklenir, ancak varsayılan olarak içeri aktarılmaz. Göz önünde bulundurulması gereken `Az` modüller ve konular hakkında bilgi edinmek için bkz. [Azure Otomasyonu 'nda az Module support](../az-modules.md).
+* Modülünüzün [Azure PowerShell az modüllerine](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) başvuruyorsam, `AzureRM` ' i de başvurmadığından emin olun. @No__t-0 modülü `AzureRM` modülleriyle birlikte kullanılamaz. `Az` runbook 'larda desteklenir, ancak varsayılan olarak içeri aktarılmaz. @No__t-0 modüller ve dikkate alınması gereken noktalar hakkında bilgi edinmek için bkz. [Azure Otomasyonu 'Nda az Module support](../az-modules.md).
 
 ## <a name="default-modules"></a>Varsayılan modüller
 
 Aşağıdaki tabloda, bir Automation hesabı oluşturulduğunda varsayılan olarak içeri aktarılan modüller listelenmektedir. Aşağıda listelenen modüller, içeri aktarılabilen yeni sürümlerine sahip olabilir, ancak daha yeni bir sürümünü silseniz bile orijinal sürümü Otomasyon hesabınızdan kaldırılamaz.
 
-|Modül adı|Version|
+|Modül adı|Sürüm|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
 | Azure Depolama | 1.0.3 |
 | AzureRM.Automation | 1.0.3 |
-| AzureRM.Compute | 1.2.1 |
+| AzureRM.Compute | 1.2.1'i |
 | AzureRM.Profile | 1.0.3 |
 | AzureRM.Resources | 1.0.3 |
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0.2 |
+| GPRegistryPolicyParser | 0,2 |
 | Microsoft. PowerShell. Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
 | Microsoft. PowerShell. Management |  |
 | Microsoft. PowerShell. Security |  |
 | Microsoft.PowerShell.Utility |  |
 | Microsoft. WSMan. Management |  |
-| Orchestrator. AssetManagement. cmdlet 'Leri | 1\. |
+| Orchestrator. AssetManagement. cmdlet 'Leri | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
-| Stateconfigkompozisyon Tereso, | 1\. |
+| Stateconfigkompozisyon Tereso, | 1 |
 | Xdscdomainjoın | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* PowerShell Modülleri oluşturma hakkında daha fazla bilgi için bkz. [Windows PowerShell Modülü Yazma](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)
+* PowerShell Modülleri oluşturma hakkında daha fazla bilgi için bkz. [Windows PowerShell Modülü Yazma](/powershell/scripting/developer/windows-powershell)

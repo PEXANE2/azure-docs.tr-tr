@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e7d69e2258036318b736f245f9e3aec3cf5f54de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67876431"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389935"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights codeless Attach ile çalışma zamanında Web uygulamalarını işaretleme
+
+> [!IMPORTANT]
+> Durum İzleyicisi artık kullanım için önerilmez. Azure Izleyici Application Insights aracısıyla değiştirilmiştir (eski adıyla Durum İzleyicisi v2). Şirket [içi sunucu dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) veya [Azure sanal makine ve sanal makine ölçek kümesi dağıtımları](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)için belgelerimizi inceleyin.
 
 Kodunuzu değiştirmeye veya yeniden dağıtmaya gerek olmadan canlı bir web uygulamasını Azure Application Insights ile izleyebilirsiniz. [Microsoft Azure](https://azure.com) aboneliğiniz olması gerekir.
 
@@ -31,28 +34,28 @@ Durum İzleyicisi, IIS 'de barındırılan bir .NET uygulamasını şirket için
 - ( [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)'yi işaretleme hakkında ayrı makaleler de vardır.)
 
 
-![Başarısız istekler, sunucu yanıt süresi ve sunucu istekleri hakkında bilgi içeren App Insights ekran genel bakış grafikleri](./media/monitor-performance-live-website-now/overview-graphs.png)
+![Başarısız istekler, sunucu yanıt süresi ve sunucu istekleri hakkında bilgi içeren uygulama öngörülerine genel bakış grafiklerinin ekran görüntüsü](./media/monitor-performance-live-website-now/overview-graphs.png)
 
 .NET Web uygulamalarınıza Application Insights uygulamak için iki yol seçeneği vardır:
 
 * **Derleme zamanı:** [Application Insights SDK 'sını][greenbrown] Web uygulaması kodunuza ekleyin.
-* **Çalışma Zamanı:** Kodu yeniden oluşturup yeniden dağıtmaya gerek kalmadan, aşağıda açıklandığı gibi Web uygulamanızı sunucuda yapın.
+* **Çalışma zamanı:** Kodu yeniden derlemeden ve yeniden dağıtmadan web uygulamanızı sunucu üzerinde izleyin.
 
 > [!NOTE]
-> Derleme zamanı izleme kullanıyorsanız, çalışma süresi işaretleme açık olsa bile çalışmaz.
+> Derleme zamanı izleme kullanıyorsanız, çalışma zamanı izleme açık olsa bile çalışmayacaktır.
 
 Burada, her yöntemle kazanacaklarınızın bir özeti verilmiştir:
 
 |  | Derleme zamanı | Çalışma zamanı |
 | --- | --- | --- |
-| İstekler ve özel durumlar |Evet |Evet |
+| İstekler ve özel durumlar |Yes |Yes |
 | [Daha ayrıntılı özel durumlar](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Bağımlılık tanılaması](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ üzerinde ancak daha az ayrıntılı |Evet, tam ayrıntılı: sonuç kodları, SQL komut metni, HTTP fiili|
-| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Evet |Evet |
-| [Özel telemetri için API][api] |Evet |Hayır |
-| [İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md) |Evet |Hayır |
-| [Sayfa görünümü ve kullanıcı verileri](../../azure-monitor/app/javascript.md) |Evet |Hayır |
-| Kodu yeniden derlemeniz gerekir |Evet | Hayır |
+| [Sistem performans sayaçları](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
+| [Özel telemetri için API][api] |Yes |Hayır |
+| [İzleme günlüğü tümleştirmesi](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Hayır |
+| [Sayfa görünümü ve kullanıcı verileri](../../azure-monitor/app/javascript.md) |Yes |Hayır |
+| Kodu yeniden derlemeniz gerekir |Yes | Hayır |
 
 
 
@@ -145,14 +148,14 @@ Bu sorunu [burada](https://github.com/Microsoft/ApplicationInsights-Home/issues/
   
 ### <a name="detailed-logs"></a>Ayrıntılı günlükler
 
-* Varsayılan olarak Durum İzleyicisi şu adreste tanılama günlüklerini çıktısını alacak:`C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Varsayılan olarak Durum İzleyicisi şu adreste tanılama günlüklerini çıktısını alacak: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
-* Ayrıntılı günlükleri çıkarmak için yapılandırma dosyasını `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` değiştirin ve öğesine `appsettings`ekleyin `<add key="TraceLevel" value="All" />` .
+* Ayrıntılı günlükleri çıkarmak için yapılandırma dosyasını değiştirin: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` ve `appsettings` ' ye `<add key="TraceLevel" value="All" />` ekleyin.
 Ardından Durum izleyicisini yeniden başlatın.
 
 * Durum İzleyicisi bir .NET uygulaması olduğu gibi, [yapılandırma dosyasına uygun tanılamayı ekleyerek de .net izlemeyi](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)etkinleştirebilirsiniz. Örneğin, bazı senaryolarda [ağ izlemeyi yapılandırarak](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing) ağ düzeyinde neler olduğunu görmek yararlı olabilir
 
-### <a name="insufficient-permissions"></a>İzinler yetersiz
+### <a name="insufficient-permissions"></a>Yetersiz izinler
   
 * "Yetersiz izinler" hakkında bir ileti görürseniz, sunucuda aşağıdakileri deneyin:
   * IIS Yöneticisi'nde, uygulama havuzunuzu seçin, **Gelişmiş Ayarlar**’ı açın ve **işlem modeli** altında kimliğini not edin.
@@ -189,9 +192,9 @@ Sunucuda Application Insights Durum İzleyicisi için işletim sistemi desteği:
 
 en son SP ve .NET Framework 4,5 (Durum İzleyicisi Framework 'ün bu sürümünde oluşturulmuştur)
 
-İstemci tarafında: Windows 7, 8, 8,1 ve 10, .NET Framework 4,5 ile yeniden
+İstemci tarafında Windows 7, 8, 8.1 ve 10, .NET Framework 4.5 ile
 
-IIS desteği: IIS 7, 7,5, 8, 8,5 (IIS gereklidir)
+IIS desteği: IIS 7, 7.5, 8, 8.5 (IIS gereklidir)
 
 ## <a name="automation-with-powershell"></a>PowerShell ile Automation
 IIS sunucunuzda PowerShell'i kullanarak izlemeyi başlatabilir ve durdurabilirsiniz.
@@ -208,9 +211,9 @@ Hangi uygulamaların izlenmekte olduğunu öğrenin:
 * Bu IIS sunucusundaki her web uygulaması için (veya adlandırılmış uygulama) Application Insights izleme durumunu görüntüler.
 * Her uygulama için `ApplicationInsightsApplication` döndürür:
 
-  * `SdkState==EnabledAfterDeployment`: Uygulama izleniyor ve Durum İzleyicisi aracı ya da tarafından `Start-ApplicationInsightsMonitoring`çalışma zamanında işaretlendi.
-  * `SdkState==Disabled`: Uygulama Application Insights için izlenmiyor. Hiçbir zaman izlenmeyecek veya Durum İzleyicisi aracıyla veya `Stop-ApplicationInsightsMonitoring` ile çalışma zamanı izlemesi devre dışı bırakılmayacaktır.
-  * `SdkState==EnabledByCodeInstrumentation`: Uygulama, kaynak koduna SDK eklenerek işaretlendi. SDK’si güncelleştirilemez veya durdurulamaz.
+  * `SdkState==EnabledAfterDeployment`: Uygulama izleniyor ve çalışma zamanında, Durum İzleyicisi aracıyla ya da `Start-ApplicationInsightsMonitoring` ile izleme eklenmiş.
+  * `SdkState==Disabled`: Uygulama, Application Insights için izleme eklenmemiş. Hiçbir zaman izlenmeyecek veya Durum İzleyicisi aracıyla veya `Stop-ApplicationInsightsMonitoring` ile çalışma zamanı izlemesi devre dışı bırakılmayacaktır.
+  * `SdkState==EnabledByCodeInstrumentation`: Uygulama, kaynak koduna SDK eklenerek izleme eklenmiş. SDK’si güncelleştirilemez veya durdurulamaz.
   * `SdkVersion`, bu uygulamanın izlenmesi için kullanılan sürümü gösterir.
   * `LatestAvailableSdkVersion`, şu anda NuGet galerisinde mevcut olan sürümü gösterir. Uygulama bu sürüme yükseltmek için `Update-ApplicationInsightsMonitoring` kullanın.
 
@@ -243,8 +246,8 @@ Hangi uygulamaların izlenmekte olduğunu öğrenin:
 
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
-* `-Name`: IIS 'deki bir Web uygulamasının adı.
-* `-InstrumentationKey` (İsteğe bağlı.) Uygulamanın telemetri gönderildiği kaynağı değiştirmek için kullanın.
+* `-Name`: Bir web uygulamasının IIS'deki adı.
+* `-InstrumentationKey` (Isteğe bağlı) Uygulama telemetrinin gönderildiği kaynağı değiştirmek için bunu kullanın.
 * Bu cmdlet:
   * Adlandırılmış uygulamaları SDK'nin bu makineye en son indirilen sürümüne yükseltir. (Yalnızca `SdkState==EnabledAfterDeployment` ise çalışır)
   * İzleme anahtarını sağlarsanız, adlandırılmış uygulama, telemetriyi bu anahtarla kaynağa göndermek için yeniden yapılandırılır. (`SdkState != Disabled` ise çalışır)
@@ -274,12 +277,12 @@ Telemetriyi tek başına toplamaz. Yalnızca web uygulamalarını yapılandırı
 
 Durum İzleyicisi’nin izlemesi için bir web uygulaması seçtiğinizde:
 
-* İndirir ve Application Insights derlemelerini ve Applicationınsights.config dosyasını web uygulamasının ikili dosyalar klasörüne yerleştirir.
+* Application Insights derlemelerini ve ApplicationInsights. config dosyasını, Web uygulamasının ikili dosyaları klasörüne indirir ve koyar.
 * Bağımlılık çağrılarını toplamak için CLR profil oluşturma özelliğini etkinleştirir.
 
-### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Application Insights SDK'sı sürümünü, Durum İzleyicisi yükleme?
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Application Insights SDK 'nın hangi sürümü Durum İzleyicisi yüklenir?
 
-Şu anda, Durum İzleyicisi, yalnızca Application Insights SDK'sı sürüm 2.3 veya 2.4 yükleyebilirsiniz. 
+Şimdilik Durum İzleyicisi, yalnızca 2,3 veya 2,4 Application Insights SDK sürümlerini yükleyebilir. 
 
 Application Insights SDK sürümü 2,4, [.net 4,0 ' ü desteklemeye yönelik son sürümdür](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) ve bu, [2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Bu nedenle, şimdi Durum İzleyicisi .NET 4,0 uygulamasını işaretlemek için kullanılabilir. 
 
@@ -295,7 +298,7 @@ Durum İzleyicisi'ni kullanarak yalnızca çalışma zamanında izlediğiniz uyg
 
 * HTTP istekleri
 * Bağımlılık çağrıları
-* Özel durumlar
+* Özel Durumlar
 * Performans sayaçları
 
 Derleme zamanında zaten izlenmekte olan uygulamalar için:

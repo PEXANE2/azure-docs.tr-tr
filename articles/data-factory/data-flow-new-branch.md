@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3f443396627a4bbaba2a3eeb0a3ac05cc1597c85
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: de8cb74d788e3ca7599f226e4204c4b09112e70c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029297"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387210"
 ---
 # <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory eşleme veri akışı yeni dal dönüştürmesi
 
 
 
-![Dal seçenekleri](media/data-flow/menu.png "menüsü")
+![Dal seçenekleri](media/data-flow/menu.png "Menü")
 
 Dallandırma, veri akışınızda geçerli veri akışını alacak ve bunu başka bir akışa çoğaltacaktır. Aynı veri akışına karşı birden çok işlem ve dönüşüm kümesi gerçekleştirmek için yeni dalı kullanın.
 
@@ -29,4 +29,4 @@ Bu yeni akışı bir dizi dönüşümle ve havuz kümesiyle ve bu akışın fark
 > [!NOTE]
 > "Yeni dal", yalnızca dallandırma yapmaya çalıştığınız geçerli konumdan sonraki bir dönüşüm varsa + dönüştürme menüsünde bir eylem olarak gösterilir. Yani, select öğesinden sonra başka bir dönüşüm ekleyene kadar burada bir "yeni dal" seçeneği görmezsiniz
 
-![Dal](media/data-flow/branch2.png "dalı 2")
+![Öğede](media/data-flow/branch2.png "Şube 2")

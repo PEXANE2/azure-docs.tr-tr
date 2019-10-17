@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8b488a079b2da1bcf0dd064025ed251a1dc25213
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
-ms.translationtype: MT
+ms.openlocfilehash: 6048a6d30d37b9d2b46c3105c5f8eac0a9ca41c0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029395"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387848"
 ---
 # <a name="mapping-data-flow-exists-transformation"></a>Eşleme veri akışı var dönüştürmesi
 
@@ -19,7 +19,7 @@ ms.locfileid: "72029395"
 
 Var olan dönüşüm, verilerinize akacak olan veya bu satırları engelleyen bir satır filtreleme dönüşümünüze sahiptir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ```SQL WHERE NOT EXISTS``` ' e benzer. Mevcut dönüşümden sonra, veri akışınızdan elde edilen satırlar, kaynak 2 ' deki sütun değerlerinin kaynak 2 ' de yer aldığı veya kaynak 2 ' de bulunmadığı tüm satırları dahil eder.
 
-![Mevcut ayarlar](media/data-flow/exists.png "var 1")
+![Mevcut ayarlar](media/data-flow/exists.png "1 var")
 
 Veri akışının, Stream 1 ' deki değerleri Stream 2 ' den karşılaştırabilmesi için, mevcut ikinci kaynağı seçin.
 
@@ -31,7 +31,7 @@ Sütun koşullarındaki her bir satırın yanında, erişim satırı üzerine ge
 
 ## <a name="custom-expression"></a>Özel ifade
 
-![Var olan özel ayarlar](media/data-flow/exists1.png "var özel")
+![Özel ayarları var](media/data-flow/exists1.png "Özel var")
 
 Bunun yerine "özel Ifade" e tıklayarak var olan veya mevcut olmayan koşul olarak serbest biçimli bir ifade oluşturabilirsiniz. Bu kutunun işaretlenmesi, kendi ifadenizi koşul olarak yazmanız için izin verir.
 

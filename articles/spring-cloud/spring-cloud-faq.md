@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 09970468a277dcaf3f28b4f5065572568089a12e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039122"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433324"
 ---
 # <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
@@ -30,7 +30,7 @@ Azure Spring Cloud, Azure Izleyici, Application Insights ve Log Analytics tümle
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure yay bulutu hangi hizmet planlarını sunuyor?
 
-Azure yay bulutu, önizleme dönemi boyunca ücretsizdir.
+Azure yay bulutu, önizleme döneminde bir hizmet planı sunar.
 
 Kaynak | Miktar
 ------- | -------

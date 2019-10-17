@@ -12,20 +12,22 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 1129dffa37df4766b98f39a9efa05f4eb7ed9878
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fb57d69b4969bcbf66717a8ca29ede23f2ed8e43
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326131"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429146"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid özel olayları Web uç noktasına yönlendirme
 
-Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
+Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz.
+
+Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
 İşiniz bittiğinde, olay verilerinin web uygulamasına gönderildiğini görürsünüz.
 
-![Sonuçları görüntüleme](./media/custom-event-quickstart/view-result.png)
+![Olay verilerinin gönderildiğini doğrulamak için Azure Event Grid Görüntüleyicisi 'ni kullanın](./media/custom-event-quickstart/azure-event-grid-viewer-displays-event-data.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -96,7 +98,7 @@ az eventgrid event-subscription create \
 
 Web uygulamanızı yeniden görüntüleyin ve buna bir abonelik doğrulama olayının gönderildiğine dikkat edin. Göz simgesini seçerek olay verilerini genişletin. Uç noktanın olay verilerini almak istediğini doğrulayabilmesi için Event Grid doğrulama olayını gönderir. Web uygulaması aboneliği doğrulamak için kod içerir.
 
-![Abonelik olayını görüntüleme](./media/custom-event-quickstart/view-subscription-event.png)
+![Azure Event Grid görüntüleyicisinde Abonelik doğrulama kodunu görüntüleme](./media/custom-event-quickstart/view-subscription-validation-code-in-azure-event-grid-viewer.png)
 
 ## <a name="send-an-event-to-your-custom-topic"></a>Özel konunuza olay gönderme
 

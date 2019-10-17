@@ -1,6 +1,6 @@
 ---
 title: Azure CLı kullanarak Azure kaynaklarını yönetme | Microsoft Docs
-description: Kaynaklarınızı yönetmek için Azure CLı ve Azure Kaynak yönetme 'yi kullanın.
+description: Kaynaklarınızı yönetmek için Azure CLı ve Azure Resource Manager kullanın. Kaynakların nasıl dağıtılacağını ve silineceğini gösterir.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: d3c3ca4a95cff8b9a81be8e75b011ca83799dcaa
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274247"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390375"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure CLı kullanarak Azure kaynaklarını yönetme
 

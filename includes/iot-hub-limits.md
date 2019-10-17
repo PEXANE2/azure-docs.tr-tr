@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: f0de7aedc3883978582da1950e95aaabac9a1695
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273000"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391814"
 ---
 Aşağıdaki tabloda, S1, S2, S3 ve F1 farklı hizmet katmanları ile ilişkili sınırlar listelenmektedir. Her katmandaki her bir *birimin* maliyeti hakkında daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda IoT Hub kaynakları için uygulanan sınırlar listelenmekt
 > Bir Azure aboneliğinde 50 ' den fazla ücretli IoT Hub 'ı gerekiyorsa Microsoft Desteği başvurun.
 
 > [!NOTE]
-> Şu anda, tek bir IoT Hub 'ına bağlanabilecek en fazla cihaz sayısı 1.000.000 ' dir. Bu sınırı artırmak istiyorsanız [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
+> Şu anda, tek bir IoT Hub 'ına kaydedilenebilir cihazların toplam sayısı ve modülleri 1.000.000 adresinden alınabilir. Bu sınırı artırmak istiyorsanız [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.
 
 Aşağıdaki kotalar aşıldığında istekleri kısıtlar IoT Hub.
 

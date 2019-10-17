@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5b0d182e09a4978a4d9c1184f085e140e5c698bc
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811707"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436800"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Büyük bölüm anahtarı ile kapsayıcılar oluşturma
 
@@ -21,7 +21,7 @@ Büyük bölüm anahtarları, karma işlevin gelişmiş bir sürümünün işlev
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>Büyük bölüm anahtarı oluşturma (Azure portal)
 
-Büyük bölüm anahtarı oluşturmak için, Azure portal kullanarak yeni bir kapsayıcı oluştururken, **bölüm anahtarımın 100 baytlık seçeneğinden daha büyük olduğunu** denetleyin. Varsayılan olarak, tüm yeni kapsayıcılar büyük bölüm anahtarlarını kullanarak kabul edilir. Büyük bölüm anahtarlarına ihtiyacınız yoksa veya 1,18 'den eski SDK sürümünde çalışan uygulamalarınız varsa onay kutusunun seçimini kaldırın.
+Büyük bölüm anahtarı oluşturmak için, Azure portal kullanarak yeni bir kapsayıcı oluşturduğunuzda, **bölüm anahtarımın anahtarından 100 daha büyük olduğunu** denetleyin. Büyük bölüm anahtarlarına ihtiyacınız yoksa veya 1,18 'den eski SDK sürümünde çalışan uygulamalarınız varsa onay kutusunun seçimini kaldırın.
 
 ![Azure portal kullanarak büyük bölüm anahtarları oluşturma](./media/large-partition-keys/large-partition-key-with-portal.png)
 

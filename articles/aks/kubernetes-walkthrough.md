@@ -7,38 +7,44 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: mlearned
-ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1d700afe36d51f0b939629f86d770e54072f47a9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.custom:
+- H1Hack27Feb2017
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+ms.openlocfilehash: f98950a73c74537fb0d3762d08810646c9ecb875
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255515"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435601"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
+# <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 
 Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtırsınız. AKS, kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. Bir Web ön ucu ve bir Reda örneği içeren çok kapsayıcılı bir uygulama kümede çalıştırılır. Ardından, uygulamanızı çalıştıran kümenin ve yığınların durumunu nasıl izleyeceğinizi görürsünüz.
 
 Windows Server kapsayıcıları (Şu anda AKS ' de önizlemede) kullanmak istiyorsanız, bkz. [Windows Server kapsayıcılarını destekleyen aks kümesi oluşturma][windows-container-cli].
 
-![Azure oylama uygulaması eylemde](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+![Azure Kubernetes hizmetinde dağıtılan oylama uygulaması](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
-Bu hızlı başlangıçta, Kubernetes kavramlarının temel bir şekilde anlaşıldığı varsayılır. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
+Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.64 veya üstünü çalıştırıyor olmalıdır. Sürümü bulmak için `az --version` ' yı çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][azure-cli-install].
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.64 veya üstünü çalıştırıyor olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 > [!Note]
 > Bu hızlı başlangıçta komutları yerel olarak çalıştırıyorsanız (Azure Cloud Shell yerine), komutları yönetici olarak çalıştırın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluşturduğunuzda bir konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun.
 
-Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur.
+Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -61,7 +67,7 @@ Aşağıdaki örnek çıktıda başarıyla oluşturulan kaynak grubu gösterilme
 
 ## <a name="create-aks-cluster"></a>AKS kümesi oluşturma
 
-AKS kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanın. Aşağıdaki örnek, bir düğüm ile *Myakscluster* adlı bir küme oluşturur. Kapsayıcılar için Azure Izleyici, *--Enable-addons izleme* parametresi kullanılarak da etkinleştirilir.  Bu işlem birkaç dakika sürer.
+AKS kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. *--enable-addons monitoring* parametresiyle Kapsayıcılar için Azure İzleyici de etkinleştirilmiştir.  Bu işlem birkaç dakika sürer.
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -69,7 +75,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür.
 
-## <a name="connect-to-the-cluster"></a>Kümeye Bağlan
+## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
 Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. Azure Cloud Shell kullanırsanız, `kubectl` zaten yüklüdür. @No__t-0 ' ı yerel olarak yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
 
@@ -83,13 +89,13 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Kümenizin bağlantısını doğrulamak için [kubectl Get][kubectl-get] komutunu kullanarak küme düğümlerinin bir listesini döndürün.
+Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu kullanarak küme düğümleri listesini alın.
 
 ```azurecli-interactive
 kubectl get nodes
 ```
 
-Aşağıdaki örnek çıktıda, önceki adımlarda oluşturulan tek düğüm gösterilmektedir. Düğüm *durumunun olduğundan emin olun:*
+Aşağıdaki örnekte önceki adımlarda oluşturulan tek düğüm gösterilmiştir. Düğüm *durumunun olduğundan emin olun:*
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -98,10 +104,10 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerinin çalıştırılacağı gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure oy uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirimde iki [Kubernetes dağıtımı][kubernetes-deployment] vardır-bir örnek Azure oy Python uygulamaları ve diğeri de redin örneği için. İki [Kubernetes hizmeti][kubernetes-service] de oluşturulur; redsıs örneği için bir iç hizmet ve Azure oy uygulamasına internet 'ten erişmek için bir dış hizmet.
+Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerinin çalıştırılacağı gibi istenen durumu tanımlar. Bu hızlı başlangıçta, Azure Vote uygulamasını çalıştırmak için gerekli tüm nesneleri oluşturmak için bir bildirim kullanılır. Bu bildirimde iki [Kubernetes dağıtımı][kubernetes-deployment] vardır-bir örnek Azure oy Python uygulamaları ve diğeri de redin örneği için. İki [Kubernetes hizmeti][kubernetes-service] de oluşturulur; redsıs örneği için bir iç hizmet ve Azure oy uygulamasına internet 'ten erişmek için bir dış hizmet.
 
 > [!TIP]
-> Bu hızlı başlangıçta, uygulama bildirimlerinizi el ile oluşturarak AKS kümesine dağıtırsınız. Daha çok gerçek dünyada senaryolar için [Azure dev Spaces][azure-dev-spaces] kullanarak doğrudan aks kümesinde kodunuzun hatalarını hızla yineleyebilirsiniz ve hatalarını ayıklayabilirsiniz. İşletim sistemi platformları ve geliştirme ortamlarında geliştirme alanlarını kullanabilir ve takımınızda başkalarıyla birlikte çalışabilirsiniz.
+> Bu hızlı başlangıçta, uygulama bildirimlerini el ile oluşturup AKS kümesine dağıtacaksınız. Daha çok gerçek dünyada senaryolar için [Azure dev Spaces][azure-dev-spaces] kullanarak doğrudan aks kümesinde kodunuzun hatalarını hızla yineleyebilirsiniz ve hatalarını ayıklayabilirsiniz. Dev Spaces’ı işletim sistemi platformları ile geliştirme ortamlarında kullanabilir ve ekibinizdeki diğer kişilerle birlikte çalışabilirsiniz.
 
 @No__t-0 adlı bir dosya oluşturun ve aşağıdaki YAML tanımına kopyalayın. Azure Cloud Shell kullanırsanız, bu dosya `vi` veya `nano` kullanılarak bir sanal veya fiziksel sistemde çalışırken oluşturulabilir:
 
@@ -209,7 +215,7 @@ service "azure-vote-front" created
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
-İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
+İlerleme durumunu izlemek için [kubectl get service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch
@@ -230,11 +236,11 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Azure oy uygulamasını çalışırken görmek için, hizmetinizin dış IP adresine bir Web tarayıcısı açın.
 
-![Azure oylama uygulaması eylemde](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+![Azure Kubernetes hizmetinde dağıtılan oylama uygulaması](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
-AKS kümesi oluşturulduğunda, [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , hem küme düğümleri hem de pods için sistem durumu ölçümlerini yakalamak üzere etkinleştirilmiştir. Bu sistem durumu ölçümleri Azure portal kullanılabilir.
+AKS kümesi oluşturulduğunda, [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , hem küme düğümleri hem de pods için sistem durumu ölçümlerini yakalamak üzere etkinleştirilmiştir. Bu sistem durumu ölçümleri Azure portaldan kullanılabilir.
 
-## <a name="delete-the-cluster"></a>Kümeyi silme
+## <a name="delete-the-cluster"></a>Küme silme
 
 Azure ücretlerinden kaçınmak için gereksiz kaynakları temizlemeniz gerekir.  Küme artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve tüm ilgili kaynakları kaldırın.
 
@@ -245,17 +251,17 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [aks hizmet sorumlusu konuları ve silme][sp-delete].
 
-## <a name="get-the-code"></a>Kodu alın
+## <a name="get-the-code"></a>Kodu edinin
 
-Bu hızlı başlangıçta, bir Kubernetes dağıtımı oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanıldı. İlgili uygulama kodu, Dockerfile ve Kubernetes bildirim dosyası GitHub ' da kullanılabilir.
+Bu hızlı başlangıçta, bir Kubernetes dağıtımı oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanıldı. İlgili uygulama kodu, Dockerfile ve Kubernetes bildirim dosyası GitHub'da bulunur.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Kubernetes kümesi dağıttınız ve bu kümeye çok kapsayıcılı bir uygulama dağıttınız. Ayrıca AKS kümeniz için [Kubernetes web panosuna erişebilirsiniz][kubernetes-dashboard] .
+Bu hızlı başlangıçta, bir Kubernetes kümesi dağıtıp ve bu kümeye çok kapsayıcılı bir uygulama dağıttınız. Ayrıca AKS kümeniz için [Kubernetes web panosuna erişebilirsiniz][kubernetes-dashboard] .
 
-AKS hakkında daha fazla bilgi edinmek ve dağıtım örneği için bir bütün kod üzerinde gezinmek için Kubernetes küme öğreticisine geçin.
+AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklaması için Kubernetes küme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
 > [AKS öğreticisi][aks-tutorial]

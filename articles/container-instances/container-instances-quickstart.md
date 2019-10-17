@@ -12,12 +12,12 @@ ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 111191aa664650fe1ffdfd8de492e13e98349b34
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327431"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429207"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure 'da kapsayıcı örneği dağıtma
 
@@ -25,7 +25,7 @@ Azure 'da sunucusuz Docker kapsayıcılarını basitlik ve hızla çalıştırma
 
 Bu hızlı başlangıçta, yalıtılmış bir Docker kapsayıcısını dağıtmak ve uygulamayı tam etki alanı adı (FQDN) ile kullanılabilir hale getirmek için Azure CLı 'yi kullanırsınız. Tek bir dağıtım komutunu yürütmeden birkaç saniye sonra, kapsayıcıda çalışan uygulamaya gidebilirsiniz:
 
-![Azure Container Instances hizmetine dağıtılmış uygulamanın tarayıcıdaki görüntüsü][aci-app-browser]
+![Azure Container Instances tarayıcıda dağıtılan bir uygulamayı görüntüleme][aci-app-browser]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][azure-account] oluşturun.
 
@@ -72,7 +72,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 Kapsayıcının `ProvisioningState` ' ı **başarılı**olursa, tarayıcınızda FQDN 'sine gidin. Aşağıdakine benzer bir web sayfası görüyorsanız kendinizi tebrik edebilirsiniz! Docker kapsayıcısında çalışan bir uygulamayı başarıyla Azure'a dağıttınız.
 
-![Bir Azure kapsayıcı örneğinde çalışan uygulamayı gösteren tarayıcı ekran görüntüsü][aci-app-browser]
+![Azure Container Instances tarayıcıda dağıtılan bir uygulamayı görüntüleme][aci-app-browser]
 
 İlk seferde uygulama görüntülenmezse DNS kayıtlarının yayılması için birkaç saniye bekleyip tarayıcınızı yenilemeyi deneyebilirsiniz.
 
@@ -158,7 +158,7 @@ Bu hızlı başlangıçta, genel Microsoft görüntüsünü kullanarak bir Azure
 Azure 'da bir Orchestration sisteminde kapsayıcıları çalıştırmaya yönelik seçenekleri denemek için bkz. [Azure Kubernetes Service (AKS)][container-service] hızlı başlangıç.
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

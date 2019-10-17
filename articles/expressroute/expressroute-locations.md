@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 29b4c702d39140696a049e17133ad509b25fa7e9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a52325a85c763d122414baa312f786f25dd80616
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325429"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434751"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -125,7 +125,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Desteklenen |Desteklenen |Amsterdam, Hong Kong ÖIB, Londra, Los Angeles, Osaka, Singapur, Sidney, Tokyo, Washington DC |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Desteklenen |Desteklenen |Tokyo |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Desteklenen |Desteklenen |Osaka |
-| **[Optus](https://www.optus.com.au/enterprise/networking/network-connectivity/express-link)** |Desteklenen |Desteklenen |Melbourne, Sidney |
+| **[Optus](https://www.optus.com.au/enterprise/)** |Desteklenen |Desteklenen |Melbourne, Sidney |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Desteklenen |Desteklenen |Amsterdam, Frankfurt, Hong Kong ÖIB, Johannesburg, Londra, Paris, Sao Paulo, Silicon Valley, Singapur, Sidney, Tokyo, Washington DC |
 | **[Cumxcom](https://www.orixcom.com/cloud-solutions/)** | Desteklenen | Desteklenen | Dubai2 |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Silikon Vadisi, Washington DC |

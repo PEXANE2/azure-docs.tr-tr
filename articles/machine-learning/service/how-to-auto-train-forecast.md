@@ -10,19 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170396"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436638"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
 Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi kullanarak zaman serisi tahmin regresyon modelini eğitme hakkında bilgi edineceksiniz. Tahmin modelinin yapılandırılması, otomatik makine öğrenimi kullanılarak standart regresyon modeli ayarlamaya benzer, ancak zaman serisi verileriyle çalışmaya yönelik bazı yapılandırma seçenekleri ve ön işleme adımları mevcuttur. Aşağıdaki örneklerde nasıl yapılacağı gösterilmektedir:
 
 * Zaman serisi modelleme için verileri hazırlama
-* Bir [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) nesnede belirli zaman serisi parametrelerini yapılandırma
+* [@No__t-1](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) nesnesinde belirli zaman serisi parametrelerini yapılandırma
 * Zaman serisi verileriyle tahminleri çalıştırma
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -42,7 +42,7 @@ Eğitim verilerinden ayıklanan Özellikler kritik bir rol oynar. Otomatik ML, s
 
 ## <a name="preparing-data"></a>Veriler hazırlanıyor
 
-Otomatikleştirilmiş makine öğrenimi içindeki bir tahmin gerileme görev türü ve regresyon görev türü arasındaki en önemli fark, verilerinize geçerli bir zaman serisini temsil eden bir özellik dahil etmektedir. Düzenli bir zaman serisinde iyi tanımlanmış ve tutarlı bir sıklık bulunur ve sürekli bir zaman aralığında her örnek noktada bir değer vardır. Bir dosyanın `sample.csv`aşağıdaki anlık görüntüsünü göz önünde bulundurun.
+Otomatikleştirilmiş makine öğrenimi içindeki bir tahmin gerileme görev türü ve regresyon görev türü arasındaki en önemli fark, verilerinize geçerli bir zaman serisini temsil eden bir özellik dahil etmektedir. Düzenli bir zaman serisinde iyi tanımlanmış ve tutarlı bir sıklık bulunur ve sürekli bir zaman aralığında her örnek noktada bir değer vardır. Bir dosyanın aşağıdaki anlık görüntüsünü göz önünde bulundurun `sample.csv`.
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -56,7 +56,7 @@ Otomatikleştirilmiş makine öğrenimi içindeki bir tahmin gerileme görev tü
     9/7/2018,A,2450,36
     9/7/2018,B,650,36
 
-Bu veri kümesi, a ve B olmak üzere iki farklı mağaza içeren bir şirkete ait günlük satış verilerinin basit bir örneğidir. Ayrıca, modelin haftalık mevsimsellik algılamasına izin `week_of_year` veren bir özellik vardır. Alan `day_datetime` , günlük sıklık ile bir temiz zaman serisini temsil eder ve bu alan `sales_quantity` tahmine dayalı çalıştırma için hedef sütundur. Verileri bir Pandas dataframe 'e okuyun, sonra zaman serisinin bir `to_datetime` `datetime` tür olduğundan emin olmak için işlevini kullanın.
+Bu veri kümesi, A ve B olmak üzere iki farklı mağaza içeren bir şirkete ait günlük satış verilerinin basit bir örneğidir. Ayrıca, modelin haftalık mevsimsellik algılamasını sağlayacak `week_of_year` özelliği de vardır. @No__t-0 alanı, günlük sıklık ile bir temiz zaman serisini temsil eder ve `sales_quantity` alanı tahmin çalıştırmaları için hedef sütundur. Verileri bir Pandas dataframe 'e okuyun, sonra `to_datetime` işlevini kullanarak zaman serisinin bir `datetime` türü olduğundan emin olun.
 
 ```python
 import pandas as pd
@@ -64,14 +64,15 @@ data = pd.read_csv("sample.csv")
 data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-Bu durumda, veriler daha önce saat alanına `day_datetime`göre artan düzende sıralanır. Ancak, bir deneme ayarlarken, istenen saat sütununun geçerli bir zaman serisi oluşturmak için artan sırada sıralandığına emin olun. Verilerin 1.000 kaydı içerdiğini varsayıyoruz ve eğitim ve test veri kümeleri oluşturmak için verileri bir belirleyici hale getirin. Ardından, tahmin eğlerini `sales_quantity` ve test kümelerini oluşturmak için hedef alanı ayırın.
+Bu durumda, veriler zaten artan zaman alanına göre sıralanmıştır `day_datetime`. Ancak, bir deneme ayarlarken, istenen saat sütununun geçerli bir zaman serisi oluşturmak için artan sırada sıralandığına emin olun. Verilerin 1.000 kaydı içerdiğini varsayıyoruz ve eğitim ve test veri kümeleri oluşturmak için verileri bir belirleyici hale getirin. Etiket sütun adını belirleyin ve etiketi olarak ayarlayın. Bu örnekte etiket `sales_quantity` olacaktır. Sonra `test_data` ' dan etiket alanını `test_target` kümesini oluşturacak şekilde ayırın.
 
 ```python
-X_train = data.iloc[:950]
-X_test = data.iloc[-50:]
+train_data = data.iloc[:950]
+test_data = data.iloc[-50:]
 
-y_train = X_train.pop("sales_quantity").values
-y_test = X_test.pop("sales_quantity").values
+label =  "sales_quantity"
+ 
+test_labels = test_data.pop(label).values
 ```
 
 > [!NOTE]
@@ -88,9 +89,9 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 * Mevsimsel desenleri öğrenirken zamana dayalı özellikler oluşturma
 * Kategorik değişkenleri sayısal miktarlarla kodla
 
-`AutoMLConfig` Nesnesi, otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. Aşağıdaki tabloda her bir parametre ve kullanımı açıklanmaktadır.
+@No__t-0 nesnesi otomatik makine öğrenimi görevi için gereken ayarları ve verileri tanımlar. Regresyon sorununa benzer şekilde, görev türü, yineleme sayısı, eğitim verileri ve çapraz doğrulamaları sayısı gibi standart eğitim parametrelerini tanımlarsınız. Tahmin görevleri için, denemeyi etkileyen ayarlanması gereken ek parametreler vardır. Aşağıdaki tabloda her bir parametre ve kullanımı açıklanmaktadır.
 
-| param | Açıklama | Gerekli |
+| Larına | Açıklama | Gereklidir |
 |-------|-------|-------|
 |`time_column_name`|Zaman serisini oluşturmak ve sıklığını göstermek için kullanılan giriş verilerinde tarih saat sütununu belirtmek için kullanılır.|✓|
 |`grain_column_names`|Giriş verilerinde ayrı seri gruplarını tanımlayan ad (ler). Gren tanımlanmazsa, veri kümesinin bir adet zaman serisi olduğu varsayılır.||
@@ -100,7 +101,7 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 
 Daha fazla bilgi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) bakın.
 
-Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Öğesini veri kümesindeki alana ayarlayın. `day_datetime` `time_column_name` Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `max_horizon` parametresinitanımlayın;birdiğerimağazaAveB.sonolarak,tümtestkümesinintahminedilmesiiçinbunu50olarakayarlayın.`grain_column_names` Bir tahmin penceresini ile `target_rolling_window_size`10 döneme ayarlayın ve `target_lags` parametresi ile birlikte 2 dönemdeki hedef değerlerde tek bir gecikme süresi belirtin.
+Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. @No__t-0 ' yı veri kümesindeki `day_datetime` alanına ayarlayın. Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `grain_column_names` parametresini tanımlayın; biri mağaza A ve B. son olarak, tüm test kümesinin tahmin edilmesi için `max_horizon` ' yi 50 olarak ayarlayın. @No__t-0 ile 10 dönem için bir tahmin penceresi ayarlayın ve `target_lags` parametresiyle birlikte 2 dönemdeki hedef değerlerde tek bir gecikme süresi belirtin.
 
 ```python
 time_series_settings = {
@@ -113,16 +114,12 @@ time_series_settings = {
 }
 ```
 
-
-
 > [!NOTE]
 > Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
-Yukarıdaki kod parçacığında `grain_column_names` öğesini tanımlayarak, oto ml birden çok zaman serisi olarak da bilinen iki ayrı zaman serisi grubu oluşturur. Gren tanımlanmazsa, oto veri kümesinin tek bir zaman serisi olduğunu varsayacaktır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için bkz. [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+Yukarıdaki kod parçacığında `grain_column_names` ' ı tanımlayarak, oto ml birden çok zaman serisi olarak da bilinen iki ayrı zaman serisi grubu oluşturur. Gren tanımlanmazsa, oto veri kümesinin tek bir zaman serisi olduğunu varsayacaktır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için bkz. [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
 
-
-
-Şimdi, `forecasting` görev türünü `AutoMLConfig` belirterek standart bir nesne oluşturun ve denemeyi iletin. Model bittikten sonra en iyi çalıştırma yinelemesini alın.
+Şimdi bir standart `AutoMLConfig` nesnesi oluşturun, `forecasting` görev türünü belirterek deneyin ve denemeyi iletin. Model bittikten sonra en iyi çalıştırma yinelemesini alın.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -133,8 +130,8 @@ import logging
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
                              iterations=10,
-                             X=X_train,
-                             y=y_train,
+                             training_data=train_data,
+                             label_column_name=label,
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
@@ -172,41 +169,41 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 Test veri kümesi değerlerini tahmin etmek için en iyi model yinelemesini kullanın.
 
 ```python
-y_predict = fitted_model.predict(X_test)
-y_actual = y_test.flatten()
+predict_labels = fitted_model.predict(test_data)
+actual_labels = test_labels.flatten()
 ```
 
-Alternatif olarak, `forecast()` `predict()`yerine işlevini kullanarak, tahmine dayalı olarak ' nin ne zaman başlaması gerektiğine yönelik belirtimlere izin verebilirsiniz. Aşağıdaki örnekte, ilk olarak ' deki `y_pred` `NaN`tüm değerleri değiştirirsiniz. Tahmin kaynağı, normalde kullanırken `predict()`olduğu gibi, bu durumda eğitim verilerinin sonunda olacaktır. Ancak, yalnızca ikinci yarısını `y_pred` ile `NaN`değiştirdiyseniz, işlev sayısal değerleri ilk yarı `NaN` değiştirilmemiş olarak bırakır, ancak ikinci yarısında değerleri tahmin edebilirsiniz. İşlevi, tahmin edilen değerleri ve hizalı özellikleri döndürür.
+Alternatif olarak, `forecast()` işlevini `predict()` yerine kullanabilirsiniz; Bu, tahmine dayalı olarak ne zaman başlaması gerektiğine yönelik belirtimlere izin verir. Aşağıdaki örnekte, ilk olarak `y_pred` ' daki tüm değerleri `NaN` ' le değiştirirsiniz. Tahmin kaynağı, normalde `predict()` kullanılırken olduğu gibi, bu durumda eğitim verilerinin sonunda olacaktır. Ancak, `y_pred` ' ın yalnızca ikinci yarısını `NaN` ile değiştirdiyseniz, işlev sayısal değerleri ilk yarı değiştirilmemiş olarak bırakır, ancak ikinci yarısında @no__t 2 değerlerini tahmin edecektir. İşlevi, tahmin edilen değerleri ve hizalı özellikleri döndürür.
 
-Ayrıca, belirli bir tarihe `forecast_destination` kadar değerleri tahmin `forecast()` etmek için işlevindeki parametresini kullanabilirsiniz.
+Belirli bir tarihe kadar değerleri tahmin etmek için `forecast()` işlevindeki `forecast_destination` parametresini de kullanabilirsiniz.
 
 ```python
-y_query = y_test.copy().astype(np.float)
-y_query.fill(np.nan)
-y_fcst, X_trans = fitted_pipeline.forecast(
-    X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+label_query = test_labels.copy().astype(np.float)
+label_query.fill(np.nan)
+label_fcst, data_trans = fitted_pipeline.forecast(
+    test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
-`y_test` Gerçek değerler ve ' de `y_pred`tahmin edilen değerler arasındaki RMI 'yi (kök ortalama kare hatası) hesaplayın.
+@No__t-0 gerçek değerleri ve `predict_labels` ' deki tahmin edilen değerler arasında RMı 'yi (kök ortalama kare hatası) hesaplayın.
 
 ```python
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(y_actual, y_predict))
+rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
 rmse
 ```
 
-Genel model doğruluğu belirlenmediği için, en gerçekçi bir sonraki adım, bilinmeyen gelecek değerleri tahmin etmek için modeli kullanmaktır. Yalnızca test kümesiyle `X_test` aynı biçimde bir veri kümesi sağlamanız gerekir, gelecek DateTimeS ve sonuçta elde edilen tahmin kümesi her bir zaman serisi adımının tahmin edilen değerlerdir. Veri kümesindeki son seri kayıtlarının 12/31/2018 için olduğunu varsayın. Bir sonraki güne ait talebi tahmin etmek için (veya tahmin için ihtiyaç duyduğunuz sayıda dönem < = `max_horizon`), 01/01/2019 için her mağaza için tek bir zaman serisi kaydı oluşturun.
+Genel model doğruluğu belirlenmediği için, en gerçekçi bir sonraki adım, bilinmeyen gelecek değerleri tahmin etmek için modeli kullanmaktır. Test kümesiyle aynı biçimde bir veri kümesi sağlamanız yeterlidir `test_data`, ancak gelecek DateTimeS ile elde edilen tahmin kümesi, her bir zaman serisi adımının tahmin edilen değerlerdir. Veri kümesindeki son seri kayıtlarının 12/31/2018 için olduğunu varsayın. Bir sonraki güne ait talebi tahmin etmek için (veya tahmin etmeniz gereken çok sayıda dönem < = `max_horizon`), her 01/01/2019 için mağaza için tek bir zaman serisi kaydı oluşturun.
 
     day_datetime,store,week_of_year
     01/01/2019,A,1
     01/01/2019,A,1
 
-Bu gelecekteki verileri bir veri çerçevesine yüklemek için gerekli adımları yineleyin ve ardından gelecekteki değerleri tahmin `best_run.predict(X_test)` etmek için öğesini çalıştırın.
+Bu gelecekteki verileri bir veri çerçevesine yüklemek için gerekli adımları yineleyin ve sonra gelecekteki değerleri tahmin etmek için `best_run.predict(test_data)` ' ı çalıştırın.
 
 > [!NOTE]
-> Değerler değerinden `max_horizon`büyük bir dönem sayısı için tahmin edilemez. Model, gelecekteki değerleri geçerli ufuk ötesinde tahmin etmek için daha büyük bir ufuk ile yeniden eğitilmiş olmalıdır.
+> Değerler `max_horizon` ' dan büyük olan dönem sayısı için tahmin edilemez. Model, gelecekteki değerleri geçerli ufuk ötesinde tahmin etmek için daha büyük bir ufuk ile yeniden eğitilmiş olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

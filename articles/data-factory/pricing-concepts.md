@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140935"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387449"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Örnekler aracılığıyla Data Factory fiyatlandırmasını anlama
 
@@ -42,19 +42,19 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | --- | --- |
 | Bağlı hizmet oluştur | 2 varlık okuma/yazma  |
 | Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Ardışık Düzen Oluştur | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
-| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan Diu ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: Yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
+| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi Için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
 **Toplam senaryo fiyatlandırması: $0,16811**
 
 - Data Factory Işlemler = **$0,0001**
-  - Okuma/yazma = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - İzleme = 2\*000005 = $0,00001 [1 izleme = $0,25/50000 = 0,000005]
-- İşlem hattı &amp; düzenleme yürütmesi = **$0,168**
-  - Etkinlik çalıştırmaları = 001\*2 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
+  - Okuma/yazma = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - İzleme = 2 @ no__t-0000005 = $0,00001 [1 Izleme = $0,25/50000 = 0,000005]
+- İşlem hattı düzenleme &amp; yürütme = **$0,168**
+  - Etkinlik çalıştırmaları = 001 @ no__t-02 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
   - Veri taşıma etkinlikleri = $0,166 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Veri kopyalama ve Azure Databricks saatlik olarak dönüştürme
@@ -73,20 +73,20 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | --- | --- |
 | Bağlı hizmet oluştur | 3 okuma/yazma varlığı  |
 | Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Ardışık Düzen Oluştur | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 3 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 2) |
-| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan Diu ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: Yalnızca 1 çalıştırma gerçekleşti | 3 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 2) |
+| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi Için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 3 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 2) |
 | Databricks etkinlik varsayımını Yürüt: yürütme süresi = 10 dk | 10 dakikalık dış işlem hattı etkinliği yürütme |
 
 **Toplam senaryo fiyatlandırması: $0,16916**
 
 - Data Factory Işlemler = **$0,00012**
-  - Okuma/yazma = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitoring = 3\*000005 = $0,00001 [1 izleme = $0,25/50000 = 0,000005]
-- İşlem hattı &amp; düzenleme yürütmesi = **$0,16904**
-  - Etkinlik çalıştırmaları = 001\*3 = 0,003 [1 Çalıştırma = $1/1000 = 0,001]
+  - Oku/yaz = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 3 @ no__t-0000005 = $0,00001 [1 Izleme = $0,25/50000 = 0,000005]
+- İşlem hattı düzenleme &amp; yürütme = **$0,16904**
+  - Etkinlik çalıştırmaları = 001 @ no__t-03 = 0,003 [1 Çalıştırma = $1/1000 = 0,001]
   - Veri taşıma etkinlikleri = $0,166 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
   - Dış ardışık düzen etkinliği = $0,000041 (10 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.00025/saat)
 
@@ -107,21 +107,21 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | --- | --- |
 | Bağlı hizmet oluştur | 3 okuma/yazma varlığı  |
 | Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Ardışık Düzen Oluştur | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 4 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 3) |
-| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan Diu ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi için [Bu makaleye](copy-activity-performance.md) bakın |
-| İzleme işlem hattı varsayımı: Yalnızca 1 çalıştırma gerçekleşti | 4 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 3) |
+| Veri Kopyalama varsayım: yürütme süresi = 10 dk | 10 \* 4 Azure Integration Runtime (varsayılan DIU ayarı = 4) veri tümleştirme birimleri ve kopyalama performansını iyileştirme hakkında daha fazla bilgi Için [Bu makaleye](copy-activity-performance.md) bakın |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 4 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 3) |
 | Arama etkinlik varsayımını Yürüt: yürütme süresi = 1 dk | 1 dakikalık işlem hattı etkinliği yürütme |
 | Databricks etkinlik varsayımını Yürüt: yürütme süresi = 10 dk | 10 dakikalık dış işlem hattı etkinliği yürütme |
 
 **Toplam senaryo fiyatlandırması: $0,17020**
 
 - Data Factory Işlemler = **$0,00013**
-  - Okuma/yazma = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitoring = 4\*000005 = $0,00002 [1 izleme = $0,25/50000 = 0,000005]
-- İşlem hattı &amp; düzenleme yürütmesi = **$0,17007**
-  - Etkinlik çalıştırmaları = 001\*4 = 0,004 [1 Çalıştırma = $1/1000 = 0,001]
+  - Oku/yaz = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 4 @ no__t-0000005 = $0,00002 [1 Izleme = $0,25/50000 = 0,000005]
+- İşlem hattı düzenleme &amp; yürütme = **$0,17007**
+  - Etkinlik çalıştırmaları = 001 @ no__t-04 = 0,004 [1 çalışma = $1/1000 = 0,001]
   - Veri taşıma etkinlikleri = $0,166 (10 dakikalık yürütme süresi için günlere eşit olarak dağıtılır. Azure Integration Runtime) $0,25/saat)
   - İşlem hattı etkinliği = $0,00003 (1 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.002/saat)
   - Dış ardışık düzen etkinliği = $0,000041 (10 dakikalık yürütme süresi için eşit olarak dağıtılır. Azure Integration Runtime için $0.00025/saat)
@@ -150,19 +150,19 @@ Senaryoyu başarmak için aşağıdaki öğelerle bir işlem hattı oluşturman�
 | --- | --- |
 | Bağlı hizmet oluştur | 2 varlık okuma/yazma  |
 | Veri kümeleri oluştur | 4 okuma/yazma varlıkları (veri kümesi oluşturma için 2, bağlantılı hizmet başvuruları için 2) |
-| Ardışık Düzen Oluştur | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
+| İşlem hattı oluşturma | 3 okuma/yazma varlıkları (işlem hattı oluşturmak için 1, veri kümesi başvuruları için 2) |
 | İşlem hattı al | 1 okuma/yazma varlığı |
 | İşlem hattını Çalıştır | 2 etkinlik çalıştırmaları (tetikleyici çalışması için 1, etkinlik çalıştırmaları için 1) |
-| Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 TTL ile 10 8genelişlem\* |
-| İzleme işlem hattı varsayımı: Yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
+| Veri akışı varsayımları: yürütme süresi = 10 dk + 10 dakikalık TTL | 10 \* 8 TTL ile genel Işlem çekirdeği |
+| İzleme işlem hattı varsayımı: yalnızca 1 çalıştırma gerçekleşti | 2 izleme çalıştırması kayıtları yeniden denendi (işlem hattı çalıştırması için 1, etkinlik çalıştırması için 1) |
 
 **Toplam senaryo fiyatlandırması: $0,3011**
 
 - Data Factory Işlemler = **$0,0001**
-  - Okuma/yazma = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - İzleme = 2\*000005 = $0,00001 [1 izleme = $0,25/50000 = 0,000005]
-- İşlem hattı &amp; düzenleme yürütmesi = **$0,301**
-  - Etkinlik çalıştırmaları = 001\*2 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
+  - Okuma/yazma = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - İzleme = 2 @ no__t-0000005 = $0,00001 [1 Izleme = $0,25/50000 = 0,000005]
+- İşlem hattı düzenleme &amp; yürütme = **$0,301**
+  - Etkinlik çalıştırmaları = 001 @ no__t-02 = 0,002 [1 Çalıştırma = $1/1000 = 0,001]
   - Veri akışı etkinlikleri = $0,299 20 dakika (10 dakikalık yürütme süresi + 10 dakikalık TTL) için eşit olarak dağıtılır. 8 çekirdek genel işlem ile Azure Integration Runtime $0.112/saat
 
 ## <a name="next-steps"></a>Sonraki adımlar

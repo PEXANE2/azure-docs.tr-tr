@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 2513825fcb275aeb3c4f0ca49ff5f2a6bd9441f0
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303021"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434041"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>Blob verilerini anlamak için AI kullanma
 
@@ -30,7 +30,7 @@ AI zenginleştirme, metin olarak yakalanan ve alanlarda depolanan yeni bilgiler 
 
 Bu makalede, Bloblar içindeki ham verileri bir arama dizininde veya bilgi deposunda sorgulanabilir bilgilere dönüştürmek için, tüm süreci hızlı bir şekilde bir lens aracılığıyla bir çok lens aracılığıyla inceleyeceğiz.
 
-## <a name="what-it-means-to-enrich-blob-data"></a>Blob verilerini "zenginleştirme" anlamına gelir
+## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>AI ile "zenginleştirme" blobu verilerinin ne anlama geldiğini
 
 *AI zenginleştirme* , Microsoft 'un veya SAĞLADıĞıNıZ özel AI 'nın yerleşik AI ile tümleşen Azure Search dizin oluşturma mimarisinin bir parçasıdır. Blob 'ları (varsa veya güncelleştirdikleri gibi mevcut olanları ve yeni olanları) işlemek için tüm dosya biçimlerini açmak, çeşitli AI yeteneklerini kullanarak istenen bilgileri ayıklamak, ve ' yi hızlı arama, alma ve araştırma için bir Azure Search dizininde dizin oluşturma. 
 
@@ -40,33 +40,37 @@ Azure Blob depolama alanında, tek bir kapsayıcıda bulunan bloblarınızın gi
 
 Between, ardışık düzen mimarisinin kendisidir. İşlem hattı, AI sağlayan bir veya daha fazla *beceriden* oluşan bir *beceri*atayabileceğiniz *Dizin Oluşturucu* özelliğini temel alır. İşlem hattının amacı, ham içerik olarak girebileceğiniz ancak ardışık düzen boyunca geçiş yaparken ek yapıyı, bağlamı ve bilgileri alan, *zenginleştirilmiş belgeler* oluşturmak için kullanılır. Zenginleştirilmiş belgeler, tam metin aramasında veya araştırmayla ve analizte kullanılan ters dizinler ve diğer yapılar oluşturmak için dizin oluşturma sırasında tüketilecektir.
 
-## <a name="how-to-get-started"></a>Nasıl kullanmaya başlarım
+## <a name="start-with-services-and-data"></a>Hizmetler ve verilerle başlayın
 
-Doğrudan depolama hesabı portalı sayfanızda başlayabilirsiniz. **Azure Search Ekle** ' ye tıklayın ve yeni bir Azure Search hizmeti oluşturun veya var olan bir hizmeti seçin. Aynı abonelikte mevcut bir arama hizmetiniz zaten varsa, **Azure Search Ekle** ' ye tıklayarak veri alma Sihirbazı ' nı açar, böylece dizin oluşturma, zenginleştirme ve Dizin tanımı anında ilerlebilmenizi sağlayabilirsiniz.
+Azure Search ve Azure Blob depolamaya ihtiyacınız vardır. BLOB depolama alanında, kaynak içerik sağlayan bir kapsayıcıya ihtiyacınız vardır.
 
-Depolama hesabınıza Azure Search ekledikten sonra, herhangi bir Azure veri kaynağındaki verileri zenginleştirmek için standart işlemi izleyebilirsiniz. Zaten blob içeriğiniz olduğunu varsayarsak, AI zenginleştirmesi için kolay bir başlangıç girişi için Azure Search veri alma Sihirbazı 'nı kullanabilirsiniz. Bu hızlı başlangıçta, [portalda BIR AI zenginleştirme işlem hattı oluşturma](cognitive-search-quickstart-blob.md)adımları açıklanmaktadır. 
+Doğrudan depolama hesabı portalı sayfanızda başlayabilirsiniz. Sol Gezinti sayfasında, **BLOB hizmeti** altında **Azure Search Ekle** ' ye tıklayarak yeni bir hizmet oluşturun veya var olan bir hizmeti seçin. 
+
+Depolama hesabınıza Azure Search ekledikten sonra, herhangi bir Azure veri kaynağındaki verileri zenginleştirmek için standart işlemi izleyebilirsiniz. AI zenginleştirme 'ya kolay bir başlangıç için Azure Search **veri alma** Sihirbazı 'nı öneririz. Bu hızlı başlangıçta, [portalda BIR AI zenginleştirme işlem hattı oluşturma](cognitive-search-quickstart-blob.md)adımları anlatılmaktadır. 
 
 Aşağıdaki bölümlerde, daha fazla bileşen ve kavram keşfedeceğiz.
 
-## <a name="use-blob-indexers"></a>Blob Dizin oluşturucular kullanma
+## <a name="use-a-blob-indexer"></a>Blob Dizin Oluşturucu kullanma
 
-AI zenginleştirme, dizin oluşturma işlem hattının bir eklentisi ve Azure Search, bu işlem hatları bir *dizin oluşturucunun*üzerine kurulmuştur. Dizin Oluşturucu, verileri örnekleme, meta veri verileri okuma, verileri alma ve yerel biçimlerdeki verileri, sonraki içeri aktarma için JSON belgelerine serileştirmede iç mantığa sahip olan veri kaynağı kullanan bir alt hizmettir. Dizin oluşturucular genellikle AI tarafından içeri aktarma için kullanılır, ancak bir AI zenginleştirme işlem hattı oluşturmak istiyorsanız, bir Dizin Oluşturucu ve bir beceri ile birlikte çalışmak için bir gerekir. Bu bölümde, dizin oluşturucunun kendine odaklanacağız.
+AI zenginleştirme, dizin oluşturma işlem hattının bir eklentisi ve Azure Search, bu işlem hatları bir *dizin oluşturucunun*üzerine kurulmuştur. Dizin Oluşturucu, verileri örnekleme, meta veri verileri okuma, verileri alma ve yerel biçimlerdeki verileri, sonraki içeri aktarma için JSON belgelerine serileştirmede iç mantığa sahip olan veri kaynağı kullanan bir alt hizmettir. Dizin oluşturucular genellikle AI tarafından içeri aktarma için kullanılır, ancak bir AI zenginleştirme işlem hattı oluşturmak istiyorsanız, bir Dizin Oluşturucu ve bir beceri ile birlikte çalışmak için bir gerekir. Bu bölüm, Dizin oluşturucuyu vurgular; sonraki bölüm becerileri 'e odaklanır.
 
-Azure depolama 'daki Bloblar [Azure Search blob Storage Indexer](search-howto-indexing-azure-blob-storage.md)kullanılarak dizinlenir. Türü ayarlayarak ve bir blob kapsayıcısı ile birlikte bir Azure depolama hesabı içeren bağlantı bilgilerini sağlayarak bu dizin oluşturucuyu çağırabilirsiniz. Daha önce blob 'ları bir sanal dizinde düzenlemediğiniz sürece bir parametre olarak geçirebilmeniz için, blob Indexer kapsayıcının tamamını çeker.
+Azure depolama 'daki Bloblar [Azure Search blob Storage Indexer](search-howto-indexing-azure-blob-storage.md)kullanılarak dizinlenir. **Veri alma** Sihirbazı 'nı, bir REST API veya .NET SDK 'sını kullanarak bu dizin oluşturucuyu çağırabilirsiniz. Kod içinde, bu dizin oluşturucuyu türü ayarlayarak ve bir blob kapsayıcısı ile birlikte bir Azure depolama hesabı içeren bağlantı bilgilerini sağlayarak kullanırsınız. Daha sonra bir parametre olarak geçirebilen veya bir dosya türü uzantısı üzerinde filtreleyerek sanal bir dizin oluşturarak bloblarınızı alt kümelayabilirsiniz.
 
-Bir Dizin Oluşturucu "belgeyi çözme" ve veri kaynağına bağlandıktan sonra, işlem hattının ilk adımıdır. Blob verileri için PDF, Office belgeleri, görüntü ve diğer içerik türlerinin algılandığı yerdir. Metin ayıklama ile belge çözme ücretsizdir. Görüntü ayıklama ile belge çözme, Azure Search [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabileceğiniz oranlar üzerinden ücretlendirilir.
+Bir Dizin Oluşturucu, içeriği incelemek için bir blob açan "belgeyi çözme" yapmaz. Veri kaynağına bağlandıktan sonra, işlem hattının ilk adımı vardır. Blob verileri için PDF, Office belgeleri, görüntü ve diğer içerik türlerinin algılandığı yerdir. Metin ayıklama ile belge çözme ücretsizdir. Görüntü ayıklama ile belge çözme, Azure Search [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabileceğiniz oranlar üzerinden ücretlendirilir.
 
-Tüm belgelerin kırdığı halde, zenginleştirme yalnızca açıkça bunu yapmak için becerileri sağladığınızda oluşur. Örneğin, işlem hattınız yalnızca metin analizinden oluşuyorsa, kapsayıcıınızdaki veya belgelerinizdeki tüm görüntüler yok sayılır.
+Tüm belgelerin kırdığı halde, zenginleştirme yalnızca açıkça bunu yapmak için becerileri sağladığınızda oluşur. Örneğin, işlem hattınız yalnızca görüntü analizini içeriyorsa, kapsayıcıınızdaki veya belgelerinizdeki metin yok sayılır.
 
 Blob Indexer yapılandırma parametreleriyle birlikte gelir ve temel alınan veriler yeterli bilgi sağlıyorsa değişiklik izlemeyi destekler. [Azure Search blob Storage Indexer](search-howto-indexing-azure-blob-storage.md)'da çekirdek işlevsellik hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="add-ai"></a>AI Ekle
+## <a name="add-ai-components"></a>AI bileşenleri ekleme
 
-*Yetenekler* , tek başına veya sıralı işleme için diğer becerilerle bırlıkte kullanabileceğiniz AI işlemenin tek tek bileşenleridir. 
+AI zenginleştirme, desenleri veya özellikleri belirten modüller anlamına gelir ve sonra bir işlemi buna göre gerçekleştirir. Fotoğraflarda yüz tanıma, fotoğrafların metin açıklamaları, bir belgedeki anahtar tümceleri algılama ve OCR (ya da ikili dosyalardaki yazdırılmış veya el ile yazılmış metinleri tanıma) tanım örnekleri verilmiştir.
 
-+ Yerleşik yetenekler bilişsel hizmetler tarafından desteklenir, Görüntü İşleme dayalı görüntü analizi ve Metin Analizi temelinde doğal dil işleme. Birkaç örnek [OCR](cognitive-search-skill-ocr.md), [varlık tanıma](cognitive-search-skill-entity-recognition.md)ve [resim analizlidir](cognitive-search-skill-image-analysis.md). [İçerik zenginleştirme Için önceden tanımlanmış yeteneklerin](cognitive-search-predefined-skills.md)içindeki yerleşik yeteneklerin tam listesini inceleyebilirsiniz.
+Azure Search, *beceriler* tek başına kullanabileceğiniz veya diğer becerilerle bırlıkte, AI işlemenin tek tek bileşenleridir. 
 
-+ Özel yetenekler, işlem hattına tümleştirmeye izin veren bir arabirim tanımına Sarmalanan özel koddur. Müşteri çözümlerinde, açık kaynaklı, üçüncü taraf veya birinci taraf AI modülleri sağlayan özel yetenekler ile her ikisini de kullanmak yaygın bir uygulamadır.
++ Yerleşik yetenekler bilişsel hizmetler tarafından desteklenir, Görüntü İşleme dayalı görüntü analizi ve Metin Analizi temelinde doğal dil işleme. [İçerik zenginleştirme Için önceden tanımlanmış yeteneklerin](cognitive-search-predefined-skills.md)içindeki yerleşik yeteneklerin tam listesini inceleyebilirsiniz.
+
++ Özel yetenekler, işlem hattına tümleştirmeye izin veren bir [arabirim tanımına](cognitive-search-custom-skill-interface.md) Sarmalanan özel koddur. Müşteri çözümlerinde, açık kaynaklı, üçüncü taraf veya birinci taraf AI modülleri sağlayan özel yetenekler ile her ikisini de kullanmak yaygın bir uygulamadır.
 
 *Beceri* , bir işlem hattında kullanılan yeteneklerin koleksiyonudur ve belge çözme aşaması içeriği kullanılabilir hale getirdikten sonra çağrılır. Bir Dizin Oluşturucu tam olarak bir beceri tüketebilir, ancak diğer senaryolarda yeniden kullanabilmeniz için bu beceri bir dizin oluşturucudan bağımsız olarak mevcuttur.
 
@@ -76,30 +80,33 @@ Bilişsel hizmetler tarafından desteklenen yerleşik yetenekler, kaynağa eriş
 
 Yalnızca özel yetenekler ve yerleşik yardımcı program becerileri kullanıyorsanız, bilişsel hizmetlerle ilgili bağımlılık veya maliyet yoktur.
 
-## <a name="order-of-operations"></a>İşlem sırası
+<!-- ## Order of operations
 
-Artık Dizin oluşturucular, içerik ayıklama ve beceriler kapsandık, ardışık düzen mekanizmalarına ve işlem sıralarına daha yakından bakalım.
+Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
 
-Bir beceri, bir veya daha fazla becerilerin bir bileşim olur. Birden çok yetenek dahil edildiğinde, Beceri ardışık işlem hattı olarak çalışır ve bu da bir beceriye ait çıktının diğerine giriş haline gelir. 
+A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
 
-Örneğin, büyük bir yapılandırılmamış metin blobu verildiğinde, metin analizi için bir işlem örnek sırası aşağıdaki gibi olabilir:
+For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
 
-1. Blobu daha küçük parçalara bölmek için metin Bölümlendiricisini kullanın.
-1. İçeriğin Ingilizce mi yoksa başka bir dil mi olduğunu anlamak için Dil Algılama kullanın.
-1. Tüm metni ortak bir dile almak için metin çeviricisini kullanın.
-1. Metin öbeklerinin varlık tanıma, Anahtar İfade Ayıklama veya Yaklaşım Analizi çalıştırın. Bu adımda yeni alanlar oluşturulur ve doldurulur. Varlıklar konum, kişi, kuruluş, tarih olabilir. Anahtar tümceleri, birbirine ait olan sözcüklerin kısa birleşimleridir. Yaklaşım puanı negatif (0) ile pozitif (1) yaklaşım için bir derecelendirmenin bir derecelendirmesidir.
-1. Belgeyi daha küçük öbeklerden edilmeyen için metin Merkli 'yi kullanın.
+1. Use Text Splitter to break the blob into smaller parts.
+1. Use Language Detection to determine if content is English or another language.
+1. Use Text Translator to get all text into a common language.
+1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
+1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
+## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>Aşağı akış çözümlerinde AI zenginleştirme çıkışı kullanma
 
-## <a name="outputs-and-use-cases"></a>Çıktılar ve kullanım örnekleri
+AI zenginleştirme çıktısı, Azure Search üzerindeki bir arama dizinidir ya da Azure Storage 'daki bir [bilgi deposudur](knowledge-store-concept-intro.md) .
 
-İşlem hattının sonunda zenginleştirilmiş bir belge, zenginleştirme sırasında ayıklanan veya oluşturulan yeni bilgileri içeren ek alanların varlığına göre orijinal giriş sürümünden farklıdır. Bu nedenle, özgün ve oluşturulmuş değerlerin bir bileşimiyle birkaç şekilde çalışabilirsiniz.
+Azure Search, bir istemci uygulamasında ücretsiz metin ve filtrelenmiş sorgular kullanan etkileşimli araştırma için bir arama dizini kullanılır. AI aracılığıyla oluşturulan zenginleştirilmiş belgeler, bir dizin oluşturucunun sağladığı avantajlardan yararlanarak, JSON içinde ve dizine alınmış tüm belgelerin Azure Search dizinlendiği şekilde biçimlendirilir. Örneğin, dizin oluşturma sırasında, blob Indexer herhangi bir alan eşlemelerini kullanmak veya algılama mantığını değiştirmek için yapılandırma parametreleri ve ayarları anlamına gelir. Bu ayarlar, normal dizin oluşturma ve yapay zeka zenginleştirilmiş iş yükleri için tamamen kullanılabilir. Dizin oluşturma sonrası, içerik Azure Search depolandığında, içeriğinizi anlamak için zengin sorgular ve filtre ifadeleri oluşturabilirsiniz.
 
-Çıktı formaları Azure Search, Azure depolama 'daki bir bilgi deposu veya bir arama dizinidir.
+Azure depolama 'da bir bilgi deposunda iki bildirim bulunur: bir blob kapsayıcısı veya tablo depolamadaki tablolar. 
 
-Azure Search, zenginleştirilmiş belgeler JSON 'da biçimlendirilir ve bir dizin oluşturucunun sağladığı avantajlar sayesinde, tüm belgelerin dizinlendiği şekilde dizin oluşturulabilir. Zenginleştirilmiş belgelerden alınan alanlar bir dizin şemasına eşlenir. Dizin oluşturma sırasında, blob Indexer, belirttiğiniz alan eşlemelerini veya değişiklik algılama mantığını kullanmak için yapılandırma parametreleri ve ayarlar anlamına gelir. Dizin oluşturma sonrası, içerik Azure Search depolandığında, içeriğinizi anlamak için zengin sorgular ve filtre ifadeleri oluşturabilirsiniz.
++ Blob kapsayıcısı, zenginleştirilmiş belgeleri tamamen yakalar ve diğer işlemlere akış yapmak istiyorsanız yararlı olur. 
 
-Azure depolama 'da bir bilgi deposunda iki bildirim bulunur: bir blob kapsayıcısı veya tablo depolamadaki tablolar. Blob kapsayıcısı, zenginleştirilmiş belgeleri tamamen yakalar ve diğer işlemlere akış yapmak istiyorsanız yararlı olur. Buna karşılık tablo depolama, zenginleştirilmiş belgelerin fiziksel projeksiyonlarını kapsayabilmelidir. Belirli kısımları dahil eden veya hariç tutkaya ait belgelerin dilimlerini veya katmanlarını oluşturabilirsiniz. Power BI analize yönelik olarak, Azure Tablo depolamadaki tablolar, daha fazla görselleştirme ve araştırma için veri kaynağı haline gelir.
++ Buna karşılık tablo depolama, zenginleştirilmiş belgelerin fiziksel projeksiyonlarını kapsayabilmelidir. Belirli kısımları dahil eden veya hariç tutkaya ait belgelerin dilimlerini veya katmanlarını oluşturabilirsiniz. Power BI analize yönelik olarak, Azure Tablo depolamadaki tablolar, daha fazla görselleştirme ve araştırma için veri kaynağı haline gelir.
+
+İşlem hattının sonunda zenginleştirilmiş bir belge, zenginleştirme sırasında ayıklanan veya oluşturulan yeni bilgileri içeren ek alanların varlığına göre orijinal giriş sürümünden farklıdır. Bu nedenle, kullandığınız çıkış yapısını ne olursa olsun, orijinal ve oluşturulmuş içeriğin bir bileşimiyle çalışabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

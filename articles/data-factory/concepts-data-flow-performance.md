@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030732"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387313"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -23,11 +23,11 @@ ADF UX 'den veri akışları tasarlarken ve test ederken, bir kümenin ısınma 
 
 Eşleme veri akışları tasarlarken, yapılandırma panelinde veri önizleme sekmesine tıklayarak her bir dönüşüme birim test edebilirsiniz. Mantığınızı doğruladıktan sonra, bir işlem hattındaki etkinlik olarak veri akışınızı uçtan uca test edin. Bir veri akışı yürütme etkinliği ekleyin ve veri akışınızın performansını test etmek için Hata Ayıkla düğmesini kullanın. Veri akışınızın yürütme planını ve performans profilini açmak için, işlem hattınızdaki çıkış sekmesinde ' Eylemler ' altında bulunan göz gözlük simgesine tıklayın.
 
-![Veri akışı izleyicisi](media/data-flow/mon002.png "veri akışı izleyicisi 2")
+![Veri akışı Izleyicisi](media/data-flow/mon002.png "Veri akışı Izleyicisi 2")
 
  Bu bilgileri, veri akışınızın farklı boyutlardaki veri kaynaklarına karşı performansını tahmin etmek için kullanabilirsiniz. Daha fazla bilgi için bkz. [eşleme veri akışlarını izleme](concepts-data-flow-monitoring.md).
 
-![Veri akışı izleme](media/data-flow/mon003.png "veri akışı izleyicisi 3")
+![Veri Akışını İzleme](media/data-flow/mon003.png "Veri akışı Izleyicisi 3")
 
  İşlem hattı hata ayıklama çalıştırmaları için, bir ısınma kümesi için genel performans hesaplamalarınızda bir dakikalık küme ayarlama zamanı gereklidir. Varsayılan Azure Integration Runtime başladıysanız, başlatma süresi yaklaşık 5 dakika sürebilir.
 
@@ -37,7 +37,7 @@ Daha fazla çekirdeğe sahip bir Integration Runtime Spark işlem ortamlarındak
 * İşlem hızlarınızın giriş oranından daha yüksek olmasını istiyorsanız, **işlem Için iyileştirilmiş** bir küme deneyin
 * Bellekte daha fazla veri önbelleğe almak istiyorsanız **bellek Için iyileştirilmiş** bir küme deneyin.
 
-![Yeni]IR(media/data-flow/ir-new.png "Yeni IR")
+![Yeni IR](media/data-flow/ir-new.png "Yeni IR")
 
 Integration Runtime oluşturma hakkında daha fazla bilgi için bkz. [Azure Data Factory Integration Runtime](concepts-integration-runtime.md).
 
@@ -56,7 +56,7 @@ Varsayılan olarak, hata ayıklamayı açmak her bir veri fabrikası için otoma
 1. **Sütun**' ı seçtiyseniz, Bölüm sütununu seçin.
 1. **Sorgu**' yı seçtiyseniz, veritabanı tablonuzun bölümleme düzeniyle eşleşen bir sorgu girin. Bu sorgu, kaynak veritabanı altyapısının Bölüm eleme özelliğinden yararlanmasını sağlar. Kaynak veritabanı tablolarınızın bölümlenmiş olması gerekmez. Kaynağınız zaten bölümlenmemişse ADF, kaynak dönüşümünde seçtiğiniz anahtara göre Spark dönüştürme ortamında veri bölümleme kullanır.
 
-![Kaynak bölümü](media/data-flow/sourcepart3.png "kaynak bölümü")
+![Kaynak bölüm](media/data-flow/sourcepart3.png "Kaynak bölüm")
 
 ### <a name="source-batch-size-input-and-isolation-level"></a>Kaynak toplu iş boyutu, giriş ve yalıtım düzeyi
 
@@ -66,13 +66,13 @@ Kaynak dönüşümünde **kaynak seçenekleri** altında aşağıdaki ayarlar pe
 * Bir sorgu ayarlandığında, işleme için veri akışına geçmeden önce kaynakta satırları filtrelemenize izin verebilir. Bu, ilk veri alımını daha hızlı hale getirir. Bir sorgu kullanıyorsanız, Azure SQL DB 'niz için READ UNCOMMıTTED gibi isteğe bağlı sorgu ipuçları ekleyebilirsiniz.
 * Read UNCOMMITTED, kaynak dönüşümünde daha hızlı sorgu sonuçları sağlar
 
-![Kaynak](media/data-flow/source4.png "kaynak")
+![Kaynak](media/data-flow/source4.png "Kaynak")
 
 ### <a name="sink-batch-size"></a>Havuz toplu iş boyutu
 
 Veri akışlarınızın satır içi işlenmesini önlemek için, Azure SQL VERITABANı ve Azure SQL DW havuzları için ayarlar sekmesinde **toplu iş boyutunu** ayarlayın. Toplu iş boyutu ayarlandıysa, ADF, belirtilen boyuta göre veritabanı yazmaları toplu işlemlere işler.
 
-![Havuz](media/data-flow/sink4.png "havuzu")
+![Ev](media/data-flow/sink4.png "Havuz")
 
 ### <a name="partitioning-on-sink"></a>Havuzda bölümlendirme
 
@@ -101,7 +101,7 @@ Her dönüşümde, Data Factory 'nin en Iyileştirme sekmesinde kullanmasını i
 Veri önizleme ve ardışık düzen Hata ayıklamasında hata ayıklarken, dosya tabanlı kaynak veri kümeleri için sınır ve örnekleme boyutları, okunan satır sayısı için yalnızca döndürülen satır sayısı için geçerlidir. Bu, hata ayıklama yürütmelerinin performansını etkileyebilir ve muhtemelen akışın başarısız olmasına neden olabilir.
 * Hata ayıklama kümeleri, varsayılan olarak tek düğümlü küçük kümelerdir ve hata ayıklama için örnek küçük dosyaları kullanmanızı öneririz. Hata ayıklama ayarları ' na gidin ve geçici bir dosya kullanarak verilerinizin küçük bir alt kümesini işaret edin.
 
-    ![Hata ayıklama ayarları](media/data-flow/debugsettings3.png "hata ayıklama ayarları")
+    ![Hata ayıklama ayarları](media/data-flow/debugsettings3.png "Hata ayıklama ayarları")
 
 ### <a name="file-naming-options"></a>Dosya adlandırma seçenekleri
 

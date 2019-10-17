@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak Xamarin.iOS uygulamalarına anında iletme bildirimleri gönderme | Microsoft Docs
+title: Azure Notification Hubs kullanarak Xamarin iOS 'a anında iletme bildirimleri gönderin | Microsoft Docs
 description: Bu öğreticide, bir Xamarin.iOS uygulamasına anında iletme bildirimleri göndermek için Azure Notification Hubs'ın nasıl kullanılacağını öğrenirsiniz.
 services: notification-hubs
 keywords: ios anında iletme bildirimleri,anında iletme iletileri,anında iletme bildirimleri,anında iletme iletisi
@@ -18,14 +18,14 @@ ms.date: 05/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 38a4924cd6bee2f6e2860320d51cfb61aa6fe1bb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213586"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387699"
 ---
-# <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Xamarin. iOS uygulamalarına anında iletme bildirimleri gönderme
+# <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak Xamarin. iOS uygulamalarına anında iletme bildirimleri gönderme
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -73,13 +73,13 @@ Bu öğreticiyi tamamlamak Xamarin.iOS uygulamalarına ilişkin diğer tüm Noti
 
     ![Visual Studio- iOS Uygulaması Yapılandırması][32]
 
-4. Çözüm görünümünden öğesine çift tıklayın `Entitlements.plist` ve **anında iletme bildirimlerini etkinleştir** ' in işaretli olduğundan emin olun.
+4. Çözüm görünümünden `Entitlements.plist` ' a çift tıklayın ve **anında Iletme bildirimlerini etkinleştir** ' in işaretli olduğundan emin olun.
 
     ![Visual Studio- iOS Destek Hakları Yapılandırması][33]
 
 5. Azure Messaging paketini ekleyin. Çözüm görünümünde projeye sağ tıklayıp **Ekle** > **NuGet Paketleri Ekle**'yi seçin. **Xamarin.Azure.NotificationHubs.iOS** araması yapıp projeyi pakete ekleyin.
 
-6. Sınıfınıza yeni bir dosya ekleyin, bu `Constants.cs` dosyayı adlandırın ve aşağıdaki değişkenleri ekleyin ve dize değişmez yer tutucularını `hubname` ve `DefaultListenSharedAccessSignature` daha önce belirtilen ile değiştirin.
+6. Sınıfınıza yeni bir dosya ekleyin, `Constants.cs` olarak adlandırın ve aşağıdaki değişkenleri ekleyin ve dize sabiti yer tutucularını, daha önce belirtilen `hubname` ve `DefaultListenSharedAccessSignature` ile değiştirin.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -87,20 +87,20 @@ Bu öğreticiyi tamamlamak Xamarin.iOS uygulamalarına ilişkin diğer tüm Noti
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. İçinde `AppDelegate.cs`, aşağıdaki using ifadesini ekleyin:
+7. @No__t-0 ' da, aşağıdaki using ifadesini ekleyin:
 
     ```csharp
     using WindowsAzure.Messaging;
     using UserNotifications
     ```
 
-8. Şunu bir örneği `SBNotificationHub`bildirin:
+8. @No__t bir örneği bildirin-0:
 
     ```csharp
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. ' `AppDelegate.cs`De, `FinishedLaunching()` aşağıdaki kodla eşleşecek şekilde güncelleştirin:
+9. @No__t-0 ' da, `FinishedLaunching()` ' i aşağıdaki kodla eşleşecek şekilde güncelleştirin:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -129,7 +129,7 @@ Bu öğreticiyi tamamlamak Xamarin.iOS uygulamalarına ilişkin diğer tüm Noti
     }
     ```
 
-10. İçinde `AppDelegate.cs`, `RegisteredForRemoteNotifications()` yöntemini geçersiz kılın:
+10. @No__t-0 ' da `RegisteredForRemoteNotifications()` yöntemini geçersiz kılın:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -152,7 +152,7 @@ Bu öğreticiyi tamamlamak Xamarin.iOS uygulamalarına ilişkin diğer tüm Noti
     }
     ```
 
-11. İçinde `AppDelegate.cs`, `ReceivedRemoteNotification()` yöntemini geçersiz kılın:
+11. @No__t-0 ' da `ReceivedRemoteNotification()` yöntemini geçersiz kılın:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -161,7 +161,7 @@ Bu öğreticiyi tamamlamak Xamarin.iOS uygulamalarına ilişkin diğer tüm Noti
     }
     ```
 
-12. İçinde `AppDelegate.cs`, `ProcessNotification()` yöntemini oluşturun:
+12. @No__t-0 ' da `ProcessNotification()` metodunu oluşturun:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -200,13 +200,13 @@ Bu öğreticiyi tamamlamak Xamarin.iOS uygulamalarına ilişkin diğer tüm Noti
     ```
 
     > [!NOTE]
-    > Ağ bağlantısı olmaması gibi durumları `FailedToRegisterForRemoteNotifications()` işlemek için geçersiz kılmayı seçebilirsiniz. Bu seçim, kullanıcı uygulamanızı çevrimdışı modda (örneğin, Uçak) başlattığında ve uygulamanıza özgü anında iletme mesajlaşması senaryoları kullanmak istediğinizde özellikle önemlidir.
+    > Ağ bağlantısı yok gibi durumları işlemek için `FailedToRegisterForRemoteNotifications()` ' ı geçersiz kılmayı seçebilirsiniz. Bu seçim, kullanıcı uygulamanızı çevrimdışı modda (örneğin, Uçak) başlattığında ve uygulamanıza özgü anında iletme mesajlaşması senaryoları kullanmak istediğinizde özellikle önemlidir.
 
 13. Cihazınızda uygulamayı çalıştırın.
 
 ## <a name="send-test-push-notifications"></a>Test amaçlı anında iletme bildirimleri gönderme
 
-[Azure portalındaki] *Test Gönderimi* seçeneğini kullanarak uygulamanızda bildirim alma testi gerçekleştirebilirsiniz. Bu, cihazınıza test amaçlı anında iletme bildirimi gönderir.
+[Azure portalda] *Test Gönderimi* seçeneğini kullanarak uygulamanızda bildirim alma testi gerçekleştirebilirsiniz. Bu, cihazınıza test amaçlı anında iletme bildirimi gönderir.
 
 ![Azure portalı - Test Gönderimi][30]
 
@@ -238,4 +238,4 @@ Bu öğreticide, arka uca kayıtlı olan tüm iOS cihazlarınıza yayın bildiri
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Azure portalındaki]: https://portal.azure.com
+[Azure portalda]: https://portal.azure.com

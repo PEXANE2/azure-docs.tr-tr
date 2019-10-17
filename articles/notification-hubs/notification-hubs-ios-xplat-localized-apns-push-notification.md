@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs kullanarak iOS cihazlarına yerelleştirilmiş bildirimler gönderme | Microsoft Docs
+title: Azure Notification Hubs kullanarak iOS 'a yerelleştirilmiş anında iletme bildirimleri gönderin | Microsoft Docs
 description: Azure Notification Hubs kullanarak iOS cihazlarına yerelleştirilmiş bildirimleri gönderme hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: ios
@@ -16,20 +16,20 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211884"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385654"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS cihazlarına yerelleştirilmiş bildirimler gönderme
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS 'a yerelleştirilmiş anında iletme bildirimleri gönderme
 
 > [!div class="op_single_selector"]
 > * [Windows Mağazası C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-Bu öğreticide, Azure Notification Hubs [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md) özelliğinin, dil ve cihaz tarafından yerelleştirilmiş son haberler bildirimleri yayınlamak için nasıl kullanılacağı gösterilmektedir. Bu öğreticide, [Son dakika haberleri göndermek için Notification Hubs’ı kullanma]iOS uygulaması ile başlayabiliriz. Tamamlandığında, ilgilendiğiniz kategoriler için kaydolabilirsiniz, bildirimlerin alınacağı bir dil belirtebilir ve yalnızca seçili kategoriler için bu dilin anında iletme bildirimlerini alabilirsiniz.
+Bu öğreticide, Azure Notification Hubs [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md) özelliğinin, dil ve cihaz tarafından yerelleştirilmiş son haberler bildirimleri yayınlamak için nasıl kullanılacağı gösterilmektedir. Bu öğreticide, [Son dakika haberleri göndermek için Notification Hubs kullanma]iOS uygulaması ile başlayabiliriz. Tamamlandığında, ilgilendiğiniz kategoriler için kaydolabilirsiniz, bildirimlerin alınacağı bir dil belirtebilir ve yalnızca seçili kategoriler için bu dilin anında iletme bildirimlerini alabilirsiniz.
 
 Bu senaryonun iki bölümü vardır:
 
@@ -46,7 +46,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 ## <a name="overview"></a>Genel Bakış
 
-[Son dakika haberleri göndermek için Notification Hubs’ı kullanma], farklı haber kategorilerine yönelik bildirimlere abone olmak için **Etiketler** kullanan bir uygulama derlediniz. Ancak birçok uygulama, birden çok pazarda hedef ve yerelleştirme gerektirir. Bu, bildirimlerin içeriklerinin kendileri için yerelleştirilmiş olması ve doğru cihaz kümesine teslim edilmesi anlamına gelir. Bu öğreticide, yerelleştirilmiş son haberler bildirimlerini kolayca sunmak için Notification Hubs **şablon** özelliğinin nasıl kullanılacağı gösterilmektedir.
+[Son dakika haberleri göndermek için Notification Hubs kullanma], farklı haber kategorilerine yönelik bildirimlere abone olmak için **Etiketler** kullanan bir uygulama derlediniz. Ancak birçok uygulama, birden çok pazarda hedef ve yerelleştirme gerektirir. Bu, bildirimlerin içeriklerinin kendileri için yerelleştirilmiş olması ve doğru cihaz kümesine teslim edilmesi anlamına gelir. Bu öğreticide, yerelleştirilmiş son haberler bildirimlerini kolayca sunmak için Notification Hubs **şablon** özelliğinin nasıl kullanılacağı gösterilmektedir.
 
 > [!NOTE]
 > Yerelleştirilmiş bildirimler göndermenin bir yolu, her bir etiketin birden çok sürümünü oluşturmaktır. Örneğin, Ingilizce, Fransızca ve MANDARIN desteği için dünya haberleri için üç farklı etikete ihtiyacınız vardır: "world_en", "world_fr" ve "world_ch". Daha sonra bu etiketlerin her birine Dünya haberlerinin yerelleştirilmiş bir sürümünü göndermeniz gerekir. Bu konu başlığı altında, etiketleri ve birden çok ileti gönderme gereksinimini ortadan kaldırmak için şablonları kullanırsınız.
@@ -80,9 +80,9 @@ Ardından cihazların doğru özelliğe başvuran bir şablonla kaydolmanızı s
 
 ## <a name="update-the-app-user-interface"></a>Uygulama kullanıcı arabirimini güncelleştir
 
-Bu bölümde, şablonları kullanarak yerelleştirilmiş son haberler göndermek üzere [Son dakika haberleri göndermek için Notification Hubs’ı kullanma] konusunda oluşturduğunuz son haberler uygulamasını değiştirirsiniz.
+Bu bölümde, şablonları kullanarak yerelleştirilmiş son haberler göndermek üzere [Son dakika haberleri göndermek için Notification Hubs kullanma] konusunda oluşturduğunuz son haberler uygulamasını değiştirirsiniz.
 
-Uygulamanızda `MainStoryboard_iPhone.storyboard`, üç dile bölünmüş bir denetim ekleyin: İngilizce, Fransızca ve MANDARIN.
+@No__t-0 ' da, üç dile bölünmüş bir denetim ekleyin: Ingilizce, Fransızca ve MANDARIN.
 
 ![İOS UI görsel taslağı oluşturma][13]
 
@@ -92,7 +92,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
 
 ## <a name="build-the-ios-app"></a>İOS uygulamasını oluşturma
 
-1. İçinde, `retrieveLocale` yöntemini ekleyin ve aşağıdaki kodda gösterildiği gibi Store ve Subscribe yöntemlerini değiştirin: `Notification.h`
+1. @No__t-0 ' a, `retrieveLocale` metodunu ekleyin ve aşağıdaki kodda gösterildiği gibi mağaza ve abone olma yöntemlerini değiştirin:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
@@ -103,7 +103,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
 
     - (int) retrieveLocale;
     ```
-    İçinde, `locale` parametresini ekleyerek ve `storeCategoriesAndSubscribe` Kullanıcı varsayılanlarıyla depolayarak yöntemi değiştirin: `Notification.m`
+    @No__t-0 ' da, `storeCategoriesAndSubscribe` yöntemini `locale` parametresini ekleyerek ve Kullanıcı varsayılanlarına depolayarak değiştirin:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -141,7 +141,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
     }
     ```
 
-    Yerine yöntemini `registerTemplateWithDeviceToken`kullanırsınız. `registerNativeWithDeviceToken` Bir şablona kaydoldığınızda, JSON şablonunu ve ayrıca şablon için bir ad belirtmeniz gerekir (uygulama farklı şablonları kaydetmek isteyebilir). Bu haber için bildirimleri aldığınızdan emin olmak istediğiniz şekilde kategorilerinizi Etiketler olarak kaydettiğinizden emin olun.
+    @No__t-1 yerine `registerTemplateWithDeviceToken` yöntemini kullanırsınız. Bir şablona kaydoldığınızda, JSON şablonunu ve ayrıca şablon için bir ad belirtmeniz gerekir (uygulama farklı şablonları kaydetmek isteyebilir). Bu haber için bildirimleri aldığınızdan emin olmak istediğiniz şekilde kategorilerinizi Etiketler olarak kaydettiğinizden emin olun.
 
     Kullanıcı varsayılan ayarlarından yerel ayarı almak için bir yöntem ekleyin:
 
@@ -155,13 +155,13 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
     }
     ```
 
-2. Artık `Notifications` sınıfı değiştirdiğimize göre, yeni `UISegmentControl`' `ViewController` nin kullanılmasını sağlar. Şu anda seçili olan yerel ayarı `viewDidLoad` gösterdiğinizden emin olmak için yöntemine aşağıdaki satırı ekleyin:
+2. @No__t-0 sınıfını değiştirdiğimize göre, `ViewController` ' in yeni `UISegmentControl` ' yi kullandığına emin olmanız gerekir. Şu anda seçili olan yerel ayarı gösterdiğinizden emin olmak için `viewDidLoad` yöntemine aşağıdaki satırı ekleyin:
 
     ```objc
     self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
     ```
 
-    `storeCategoriesAndSubscribe` Ardından, `subscribe` yönteyinizdeki çağrısı için aşağıdaki koda değiştirin:
+    Ardından, `subscribe` yönteminde, `storeCategoriesAndSubscribe` ' e yapılan çağrı aşağıdaki kodla değiştirin:
 
     ```objc
     [notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
@@ -176,7 +176,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
     }];
     ```
 
-3. Son olarak, uygulamanızın başlatıldığı sırada kaydınızı `didRegisterForRemoteNotificationsWithDeviceToken` doğru şekilde yenileyebilmeniz için appdelegate. d uygulamanızdaki yöntemi güncelleştirmeniz gerekir. Aşağıdaki kodla bildirim `subscribe` yöntemine yönelik aramanızı değiştirin:
+3. Son olarak, uygulamanızın başlatıldığı sırada kaydınızı doğru şekilde yenileyebilmeniz için AppDelegate. d dosyanızda `didRegisterForRemoteNotificationsWithDeviceToken` yöntemini güncelleştirmeniz gerekir. Aşağıdaki kodla `subscribe` bildirimleri yöntemine yönelik çağrın adını değiştirin:
 
     ```obj-c
     NSSet* categories = [self.notifications retrieveCategories];
@@ -194,7 +194,7 @@ Ardından, aşağıdaki görüntüde gösterildiği gibi ViewController. h 'nize
 
 ## <a name="optional-send-localized-template-notifications-from-the-device"></a>seçim Cihazdan yerelleştirilmiş şablon bildirimleri gönder
 
-Visual Studio 'ya erişiminiz yoksa veya yalnızca cihazdaki uygulamadan yerelleştirilmiş şablon bildirimlerinin gönderilmesini test etmek istiyorsanız. Yerelleştirilmiş şablon parametrelerini `SendNotificationRESTAPI` , önceki öğreticide tanımladığınız yönteme ekleyebilirsiniz.
+Visual Studio 'ya erişiminiz yoksa veya yalnızca cihazdaki uygulamadan yerelleştirilmiş şablon bildirimlerinin gönderilmesini test etmek istiyorsanız. Yerelleştirilmiş şablon parametrelerini, önceki öğreticide tanımladığınız `SendNotificationRESTAPI` yöntemine ekleyebilirsiniz.
 
 ```objc
 - (void)SendNotificationRESTAPI:(NSString*)categoryTag
@@ -274,7 +274,7 @@ Bu öğreticide iOS cihazlarına yerelleştirilmiş bildirimler gönderdiniz. İ
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
-[Son dakika haberleri göndermek için Notification Hubs’ı kullanma]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+[Son dakika haberleri göndermek için Notification Hubs kullanma]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Notify users with Notification Hubs: Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

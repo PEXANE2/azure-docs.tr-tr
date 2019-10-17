@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: erhopf
-ms.openlocfilehash: 0140981a694a7a7cd8556f7139a90d0656679d7d
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 64c93e5c8e139dbdcfd3faad3a9ac4328fb01972
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "70382133"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391811"
 ---
 Evrensel Windows Platformu (UWP) geliştirme için Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz, ses yakalamayı ayarlamanız ve konuşma SDK 'sını yüklemeniz gerekir.
 
@@ -59,7 +59,7 @@ Sonra, projenizi oluşturun:
 
 1. **Hedef sürümde** (ilk açılan kutu), **En düşük sürümdeki**değerden veya daha sonraki bir değere sahip bir değer seçin.
 
-1. **Tamam ' ı**seçin. Visual Studio IDE 'ye geri döndürüyorsunuz, yeni proje oluşturulup **Çözüm Gezgini** bölmesinde görünür.
+1. **Tamam**’ı seçin. Visual Studio IDE 'ye geri döndürüyorsunuz, yeni proje oluşturulup **Çözüm Gezgini** bölmesinde görünür.
 
    ![HelloWorld projesi-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 
@@ -88,20 +88,20 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. **Çözüm Gezgini**, çözümünüze sağ tıklayın ve **çözüm Için NuGet Paketlerini Yönet** ' i seçerek **NuGet-çözüm** penceresine gidin.
 
-1. **Araştır**' ı seçin.
+1. **Gözat**’ı seçin.
 
-   ![Çözüm için paketleri Yönet iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![Çözüm için Paketleri Yönet iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. **Paket kaynağı**' nda **NuGet.org**' yi seçin.
 
 1. **Arama** kutusuna `Microsoft.CognitiveServices.Speech` girin ve sonra arama sonuçlarında göründükten sonra bu paketi seçin.
 
-   ![Çözüm için paketleri Yönet iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+   ![Çözüm için Paketleri Yönet iletişim kutusunun ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
 1. Arama sonuçlarının yanındaki paket durumu bölmesinde **HelloWorld** projenizi seçin.
 
-1. **Yükle**'yi seçin.
+1. **Yükle**’yi seçin.
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 
-1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında, **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`.
+1. **Lisans kabulü** iletişim kutusunda, lisansı görüntüleyin ve **kabul ediyorum**' u seçin. Paket yüklemesi başlar ve yükleme tamamlandığında, **Çıkış** bölmesinde şu metne benzer bir ileti görüntülenir: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`.
