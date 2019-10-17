@@ -5,26 +5,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 10/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 892cbe66222626a6847ad7a5b6c990d23991c182
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 74ca6f15baeeb9fe8adad4bda80e313a4b4cf03a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002262"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376234"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Azure portal Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırın
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, [Azure Portal](https://portal.azure.com/)kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure Portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz [. hızlı başlangıç: Azure portal](../../key-vault/quick-create-portal.md)kullanarak Azure Key Vault bir gizli dizi belirleyin ve alın. 
-
+Bu makalede, [Azure Portal](https://portal.azure.com/)kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../../key-vault/quick-create-portal.md). 
 
 > [!IMPORTANT]
-> Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmasını, **geçici silme** ve **Temizleme işlemi**yapılmasını gerektirir. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
+> Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasında iki özellik ayarlanmasını, **geçici silme** ve **Temizleme işlemi**yapılmasını gerektirir. Bu özellikler varsayılan olarak etkinleştirilmemiştir. Bu özellikleri etkinleştirmek için PowerShell veya Azure CLı kullanın.
 > Yalnızca RSA anahtarları ve anahtar boyutu 2048 desteklenir.
 
 ## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir

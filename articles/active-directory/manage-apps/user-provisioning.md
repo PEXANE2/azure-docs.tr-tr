@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001700"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330018"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory ile SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme
 
@@ -99,7 +99,7 @@ Azure AD sağlama hizmetini seçili bir uygulama için yapılandırmak üzere Az
 
 1. Yönetici kimlik bilgileri, eşlemeler, başlatma ve durdurma ve eşitlemeye yönelik ayarları belirtmek için **sağlama modunun** Otomatik seçeneğini belirleyin.
 
-   - Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için gereken kimlik bilgilerini girmek üzere **yönetici kimlik bilgileri** ' ni genişletin. Bu bölüm ayrıca kimlik bilgileri başarısız olursa veya sağlama işi [karantina](#quarantine)alanına gittiğinde e-posta bildirimlerini etkinleştirmenizi sağlar.
+   - Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için gereken kimlik bilgilerini girmek üzere **yönetici kimlik bilgileri** ' ni genişletin. Bu bölüm ayrıca kimlik bilgileri başarısız olursa veya sağlama işi [karantina](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)alanına gittiğinde e-posta bildirimlerini etkinleştirmenizi sağlar.
    - Kullanıcı hesapları sağlandığında veya güncelleştirilirken Azure AD ile hedef uygulama arasında akan Kullanıcı özniteliklerini görüntülemek ve düzenlemek için **eşlemeler** ' i genişletin. Hedef uygulama destekliyorsa, bu bölüm, isteğe bağlı olarak grupların ve Kullanıcı hesaplarının sağlanması yapılandırmanızı sağlar. Kullanıcı özniteliklerini görüntüleyebileceğiniz ve özelleştirebileceğiniz eşleme düzenleyicisini sağ tarafta açmak için tabloda bir eşleme seçin.
 
      **Kapsam filtreleri** , kaynak sistemdeki hangi kullanıcıların ve grupların hedef sisteme sağlanması veya sağlanması gerektiğini sağlama hizmetine bildirir. **Öznitelik eşleme** bölmesinde, belirli öznitelik değerlerini filtrelemek Için **kaynak nesne kapsamı** ' nı seçin. Örneği yalnızca "Departman" özniteliği "Satış" olan kullanıcıların hazırlama kapsamına girmesini sağlayabilirsiniz. Daha fazla bilgi için bkz. [Kapsam filtrelerini kullanma](define-conditional-rules-for-provisioning-user-accounts.md).
@@ -173,7 +173,7 @@ Hedef sisteme karşı yapılan çağrıların çoğu veya hepsi bir hata nedeniy
 
 Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez yavaş şekilde azaltılır.
 
-Sağlama işi, tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlamasından sonra karantinadan çıkarılır. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır.
+Sağlama işi, tüm sorunlu hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlamasından sonra karantinadan çıkarılır. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır. [Burada karantina durumu hakkında](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)daha fazla bilgi edinin.
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Kullanıcıları sağlamak için ne kadar sürer?
 

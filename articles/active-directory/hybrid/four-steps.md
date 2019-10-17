@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124934"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373490"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory ile güçlü bir kimlik temeli için dört adım
 
@@ -79,11 +79,11 @@ Azure AD Uygulama Ara Sunucusu aşağıdaki avantajları sunmaktadır:
 
 ### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Microsoft Cloud App Security ile gölge BT 'yi bulma
 
-Modern kuruluşlarda, BT departmanları genellikle kullanıcıların işlerini yapması için kullanılan tüm bulut uygulamalarının farkında değildir. BT yöneticileri, çalışanlarının ne kadar olduğunu düşündüklerini yaklaşık olarak 30 veya 40 söyledikleri hakkında bir şekilde görür. Gerçekte, ortalama, kuruluşunuzda çalışanlar tarafından kullanılan 1.000 ayrı uygulama üzerinde bulunur. çalışanların% 80 ' ü incelemeyen ve güvenlik ve uyumluluk ilkelerinizle uyumlu olmayan, tasdiksiz uygulamalar kullanıyor.
+Modern kuruluşlarda, BT departmanları genellikle kullanıcıların işlerini yapması için kullanılan tüm bulut uygulamalarının farkında değildir. BT yöneticileri, çalışanlarının ne kadar olduğunu düşündüklerini yaklaşık olarak 30 veya 40 söyledikleri hakkında bir şekilde görür. Gerçekte, ortalama, kuruluşunuzda çalışanlar tarafından kullanılan 1.000 ayrı uygulama üzerinde bulunur. çalışanların %80 ' ü incelemeyen ve güvenlik ve uyumluluk ilkelerinizle uyumlu olmayan, tasdiksiz uygulamalar kullanıyor.
 
-[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS), kullanıcıların, SSO ve koşullu erişim gibi yeteneklerden yararlanması için, kullanıcıların tasdikme ve kurumsal uygulamalar galerisine ekleyebileceği popüler uygulamaları belirlemenize yardımcı olabilir.
+[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS), KULLANıCıLARıN, SSO ve koşullu erişim gibi yeteneklerden yararlanması için, Kullanıcı tarafından tasdikli ve kurumsal uygulamalar galerisine ekleyebileceği yararlı uygulamaları belirlemenize yardımcı olabilir.
 
-*"**Cloud App Security**, Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."* --- [John Blasi, Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>"**Cloud App Security** , Accenture korumaya yardımcı olan temel güvenlik ilkelerini destekleyecek şekilde, insanlarımızın bulut ve SaaS uygulamalarınızı doğru şekilde kullandığından emin olmamıza yardımcı olur."</em> --- [John Blasi, Direktörü yönetme, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 MCAS Ayrıca, gölge BT 'nin risk düzeyini tespit edebilir, kurumsal verilere yetkisiz erişimi, olası veri sızıntısını ve uygulamalarda bulunan diğer güvenlik risklerini de belirleyebilir.
 
@@ -200,7 +200,7 @@ Bu makalede özetlenen bir karma kimlik çözümü uyguladığınızda, destek a
 
 Destek çağrılarında bir azalmayla karşılaşmıyorsanız, SSPR veya self servis uygulama erişiminin doğru şekilde yapılandırılıp yapılandırılmadığını veya sistematik olabilecek başka yeni sorunlar olup olmadığını onaylama girişiminde destek çağrı sürücülerinizi çözümlemeniz önerilir Belirtilen.
 
-*"Dijital dönüşümde yolculuğunda, etkili bir ekosistem için ABD, iş ortakları ve bulut hizmeti sağlayıcıları arasında sorunsuz bir şekilde tümleştirmeyi kolaylaştırmak amacıyla güvenilir bir kimlik ve erişim yönetim sağlayıcısı gerekiyordu. Azure AD, riskleri algılamamızı ve yanıt verebilmesini sağlayan gerekli özellikleri ve görünürlüğü bize sunan en iyi seçenektir. "* --- [Yazan almasri, küresel bilgi güvenlik Direktörü, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
+*"Dijital dönüşümde yolculuğunda, etkili bir ekosistem için ABD, iş ortakları ve bulut hizmeti sağlayıcıları arasında sorunsuz bir şekilde tümleştirmeyi kolaylaştırmak amacıyla güvenilir bir kimlik ve erişim yönetim sağlayıcısı gerekiyordu. Azure AD, riskleri algılamamızı ve yanıt verebilmesini sağlayan gerekli özellikleri ve görünürlüğü bize sunan en iyi seçenektir. "* --- [yazan almasri, küresel bilgi güvenlik Direktörü, Aramex](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)
 
 ### <a name="monitor-your-usage-of-apps-to-drive-insights"></a>Öngörüleri yönlendirmek için uygulama kullanımınızı izleyin
 
@@ -210,7 +210,7 @@ Gölge BT 'yi bulmaya ek olarak, [Microsoft Cloud App Security](https://docs.mic
 * Gizli verilerin nerede ve ne zaman bulutta depolanıyor?
 * Buluttaki hassas verilere kimler erişiyor?
 
-*"Cloud App Security sayesinde, anormallikleri hızlı bir şekilde belirleyebiliyoruz ve işlem yapabilirsiniz."* --- [Eric Tapenske, üst düzey Müdür, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*"Cloud App Security sayesinde, anormallikleri hızlı bir şekilde belirleyebiliyoruz ve işlem yapabilirsiniz."* --- [Eric Tapenske, üst düzey yönetici, bilgi güvenliği, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 ## <a name="summary"></a>Özet
 
@@ -227,7 +227,7 @@ Bu belgede, kuruluşunuz için güçlü bir kimlik temeli oluşturmaya yönelik 
 
 BT yolculuğuna kuruluşunuzda daha katı bir kimlik temele başladığınızda, başvuru için aşağıdaki denetim listesini yazdırmanızı öneririz.
 
-### <a name="today"></a>Bugün
+### <a name="today"></a>Adresten
 
 |Açtınız mı?|Öğe|
 |:-|:-|
@@ -247,7 +247,7 @@ BT yolculuğuna kuruluşunuzda daha katı bir kimlik temele başladığınızda,
 ||ADFS 'den Azure AD 'ye uygulama geçirmeye başlayın|
 ||Liderliğiniz ve güne ait gün için özel panolar oluşturun|
 
-### <a name="next-month"></a>Gelecek ay
+### <a name="next-month"></a>Sonraki ay
 
 |Açtınız mı?|Öğe|
 |:-|:-|

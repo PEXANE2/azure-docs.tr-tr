@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219375"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376327"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLı kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç noktaya sahip bir SQL veritabanı sunucusu olan bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'ye erişebilir ve özel bağlantı kaynağına (Bu örnekteki özel bir Azure SQL veritabanı sunucusu) güvenli bir şekilde erişebilirsiniz. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLı 'yı yüklemek ve kullanmak isterseniz, bu hızlı başlangıç, Azure CLı sürüm 2.0.28 veya sonraki bir sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version` ' ı çalıştırın. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -29,7 +29,7 @@ Herhangi bir kaynak oluşturabilmeniz için önce sanal ağı barındırmak üze
 az group create --name myResourceGroup --location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Sanal Ağ Oluştur
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 [Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile * mysubnet * * adlı bir alt ağ yapılandırmasını güncelleştirin:
+Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-SQL Server kimliği, bir sonraki adımda SQL Server ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` kimliği kullanacağınızı göz önünde bulunanlara benzer. 
+SQL Server KIMLIĞI @ no__t-0 ' a benzer ve sonraki adımda SQL Server KIMLIĞINI kullanacaksınız. 
 
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
 Sanal ağınızdaki SQL veritabanı sunucusu için özel bir uç nokta oluşturun: 
@@ -127,7 +127,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. Seçin **RDP dosyasını indir**. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. İndirilen. rdp * dosyasını açın.
 
@@ -136,7 +136,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' **ı seçmeniz** > gerekebilir.
+        > Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için,**farklı bir hesap kullanmak**@no__t **daha fazla seçenek**belirlemeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -149,7 +149,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı sunucusuna bağlanacaksınız.
 
  1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
- 2. Nslookup myserver.Database.Windows.net  girin ve şuna benzer bir ileti alırsınız: 
+ 2. Nslookup sunucum. Database. Windows. net @ no__t-0 girerek şuna benzer bir ileti alacaksınız: 
 
 ```
       Server:  UnKnown 
@@ -160,9 +160,9 @@ Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı sunucusuna bağ
       Aliases:  myserver.database.windows.net 
 ```
  3. SQL Server Management Studio yüklensin 
- 4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin: Sunucu türü: Veritabanı altyapısını seçin.
- Sunucu adı: Myserver.database.windows.net Kullanıcı adı seçin: Oluşturma sırasında belirtilen bir Kullanıcı adı girin.
- Parolayı Oluşturma sırasında bir parola girin.
+ 4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin: sunucu türü: veritabanı altyapısını seçin.
+ Sunucu adı: Select myserver.database.windows.net username: oluşturma sırasında belirtilen bir Kullanıcı adı girin.
+ Parola: oluşturma sırasında bir parola girin.
  Parolayı anımsa: Evet ' i seçin.
  
  5.  **Bağlan**' ı seçin.

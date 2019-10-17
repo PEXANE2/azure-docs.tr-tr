@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2508090fa8831c8fefb0e710c28e512ec0c94c6e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074148"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329784"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service gelen ve giden IP adresleri
 
@@ -52,7 +52,7 @@ Bazen, uygulamanız için adanmış ve statik bir IP adresi isteyebilirsiniz. St
 
 Uygulamanızı daha düşük Katmanlar (**temel**, **Standart**ve **Premium**) ve **Premium v2** KATMANı arasında ölçeklendirirseniz, uygulamanız için giden IP adresleri kümesi değişir.
 
-Fiyatlandırma katmanlarından bağımsız olarak, uygulamanızın kullanabileceği tüm olası giden IP adresleri kümesini, `possibleOutboundIPAddresses` özelliği arayarak veya Azure Portal **Özellikler** dikey penceresinde **ek giden IP adresleri** alanında bulabilirsiniz. Bkz. [giden IP 'Leri bulma](#find-outbound-ips).
+Fiyatlandırma katmanlarından bağımsız olarak uygulamanızın kullanabileceği tüm olası giden IP adresleri kümesini, `possibleOutboundIpAddresses` özelliğini arayarak veya Azure portal **Özellikler** dikey penceresinde **ek giden IP adresleri** alanında bulabilirsiniz. Bkz. [giden IP 'Leri bulma](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Giden IP 'Leri bulma
 
