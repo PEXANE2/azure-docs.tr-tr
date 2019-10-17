@@ -240,6 +240,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: Örnek koruması (Önizleme)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: Ölçek Genişletme İlkesi (Önizleme)
+          href: virtual-machine-scale-sets-scale-in-policy.md
         - name: Silindiğinde bildirimi sonlandır (Önizleme)
           href: virtual-machine-scale-sets-terminate-notification.md
         - name: Paylaşılan görüntü galerileri

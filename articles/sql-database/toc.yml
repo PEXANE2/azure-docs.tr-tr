@@ -271,6 +271,8 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: Genişletilmiş olaylar - halka arabelleği
                   href: sql-database-xevent-code-ring-buffer.md
+        - name: Hiper ölçek performans tanılama
+          href: sql-database-hyperscale-performance-diagnostics.md
     - name: Ölçeklenebilirlik
       items:
         - name: Ölçeklenebilirlik belgeleri

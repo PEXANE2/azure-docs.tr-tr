@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082588"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390643"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack 'de OpenShift kapsayıcı platformunu veya OKD 'yi dağıtma
 
@@ -45,7 +45,7 @@ Kaynak Yöneticisi şablonu kullanılıyorsa doğru dalı seçin (azurestack-Rel
 ```
 
 Tüm seçenekler için, Red Hat aboneliği gerekir. Dağıtım sırasında Red Hat Enterprise Linux örneği Red Hat aboneliğine kaydedilir ve OpenShift kapsayıcı platformu için yetkilendirmeleri içeren havuz KIMLIĞINE eklenir.
-Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Alternatif olarak, bir etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI de kullanabilirsiniz.  Bu bilgileri, ' de https://access.redhat.com oturum açarak doğrulayabilirsiniz.
+Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve havuz KIMLIĞINIZ olduğundan emin olun. Alternatif olarak, bir etkinleştirme anahtarı, kuruluş KIMLIĞI ve havuz KIMLIĞI de kullanabilirsiniz.  @No__t-0 ' da oturum açarak bu bilgileri doğrulayabilirsiniz.
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack önkoşulları
 
@@ -66,9 +66,9 @@ Bazı yaygın özelleştirme seçenekleri şunlardır, ancak bunlarla sınırlı
 - OpenShift küme özellikleri, Hosts dosyası aracılığıyla değiştirildi (deployOpenShift.sh)
 - RHEL görüntü başvurusu (azuredeploy. JSON içinde değişken)
 
-Azure CLı kullanarak dağıtma adımları için [OpenShift kapsayıcı platformu](./openshift-container-platform.md) bölümünde veya [OKD](./openshift-okd.md) bölümünde uygun bölümü izleyin.
+Azure CLı kullanarak dağıtma adımları için [OpenShift kapsayıcı platformu](./openshift-container-platform-3x.md) bölümünde veya [OKD](./openshift-okd.md) bölümünde uygun bölümü izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dağıtım sonrası görevler](./openshift-post-deployment.md)
-- [Azure 'da OpenShift dağıtımında sorun giderme](./openshift-troubleshooting.md)
+- [Dağıtım sonrası görevler](./openshift-container-platform-3x-post-deployment.md)
+- [Azure 'da OpenShift dağıtımında sorun giderme](./openshift-container-platform-3x-troubleshooting.md)

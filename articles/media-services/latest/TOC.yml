@@ -285,6 +285,8 @@
       items:
         - name: Varlık yayımlama - CLI
           href: cli-publish-asset.md
+        - name: Sinyal açıklayıcı ses
+          href: signal-descriptive-audio-howto.md
 - name: Başvuru
   items:
     - name: OpenAPI Belirtimi (Swagger)

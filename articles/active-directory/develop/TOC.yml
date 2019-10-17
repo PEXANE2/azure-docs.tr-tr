@@ -345,6 +345,8 @@
               href: active-directory-how-applications-are-added.md
             - name: Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
               href: reply-url.md
+            - name: Desteklenen hesap türlerine göre doğrulama farklılıkları
+              href: supported-accounts-validation.md
             - name: Tek kiracılı ve çok kiracılı uygulamalar
               href: single-and-multi-tenant-apps.md
         - name: İzinler ve onay

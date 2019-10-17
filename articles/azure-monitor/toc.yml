@@ -217,7 +217,7 @@
                   href: app/asp-net-troubleshoot-no-data.md
             - name: Kodsuz izleme
               items:
-                - name: Azure VM ve Azure sanal makine ölçek kümeleri
+                - name: Azure VM ve ölçek kümesi
                   href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   displayname: 'App Service, web app, PaaS, Azure web app'
@@ -231,10 +231,10 @@
                 - name: Kubernetes uygulamaları
                   displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
                   href: app/kubernetes.md
-                - name: Durum İzleyicisi
+                - name: Durum İzleyicisi (eski)
                   displayname: 'IIS monitoring, on premises monitoring, on prem,'
                   href: app/monitor-performance-live-website-now.md
-                - name: Durum İzleyicisi v2
+                - name: Şirket içi sunucular
                   items:
                     - name: Genel Bakış
                       displayname: 'IIS monitoring, on premises monitoring, on prem,'

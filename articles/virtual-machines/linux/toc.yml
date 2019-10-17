@@ -445,18 +445,20 @@
           items:
             - name: OpenShift’e genel bakış
               href: openshift-get-started.md
-            - name: OpenShift önkoşulları
-              href: openshift-prerequisites.md
-            - name: OpenShift Kapsayıcı Platformu
-              href: openshift-container-platform.md
-            - name: Kendi Kendine Yönetilen OpenShift Market
-              href: openshift-marketplace-self-managed.md
+            - name: OpenShift Kapsayıcı Platformu 4.x
+              href: openshift-container-platform-4x.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 önkoşulları
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: OpenShift Kapsayıcı Platformu 3.11
+              href: openshift-container-platform-3x.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 Kendi Kendini Yöneten Market
+              href: openshift-container-platform-3x-marketplace-self-managed.md
             - name: Azure Stack
               href: openshift-azure-stack.md
-            - name: OpenShift dağıtım sonrası görevleri
-              href: openshift-post-deployment.md
-            - name: Dağıtımlarla ilgili sorun giderme
-              href: openshift-troubleshooting.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 dağıtım sonrası görevleri
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 dağıtımlarında sorun giderme
+              href: openshift-container-platform-3x-troubleshooting.md
         - name: Azure’da SAP
           href: ../workloads/sap/get-started.md
         - name: Oracle

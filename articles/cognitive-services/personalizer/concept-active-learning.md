@@ -1,5 +1,5 @@
 ---
-title: Etkin öğrenme-kişiselleştirici
+title: Etkin ve etkin olmayan olaylar-kişiselleştirici
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663722"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429045"
 ---
-# <a name="active-learning-and-learning-policies"></a>Etkin öğrenme ve öğrenme ilkeleri 
+# <a name="active-and-inactive-events"></a>Etkin ve etkin olmayan olaylar
 
-Uygulamanız, derecelendirme API 'sini çağırdığında içeriğin bir derecesini alırsınız. İş mantığı, içeriğin kullanıcıya gösterilmesi gerekip gerekmediğini öğrenmek için bu derecelendirmeyi kullanabilir. Derecelendirilen içeriği görüntülediğinizde, bu _etkin_ bir sıra olayıdır. Uygulamanız, _etkin_ olmayan bir sıra olayıdır. 
+Uygulamanız, derecelendirme API 'sini çağırdığında, uygulamanın Rewarterctionıd alanında hangi eylemde gösterilmesi gerektiğini alırsınız.  Bu andan itibaren, kişiselleştirici aynı EventID ile bir Reward çağrısı bekliyordu. Daha sonraki derecelendirme çağrılarında kullanılacak modeli eğitebilmek için ödül puanı kullanılacaktır. EventID için bir ödül çağrısı alınmıyorsa, bir en da daha sonra uygulanacak bir ödül olur. Varsayılan yeniden ödüller Azure portalında oluşturulur.
 
-Etkin sıra olay bilgileri Kişiselleştiriciye döndürülür. Bu bilgiler, geçerli öğrenme ilkesi aracılığıyla modele eğitim etmeye devam etmek için kullanılır.
-
-## <a name="active-events"></a>Etkin olaylar
-
-Etkin olaylar her zaman kullanıcıya gösterilmeli ve öğrenme döngüsünü kapatmak için yeniden çağrı döndürülmelidir. 
-
-### <a name="inactive-events"></a>Etkin olmayan olaylar 
-
-Etkin olmayan olaylar, kullanıcıya derecelendirilen içerikten seçim yapma şansı verilmediğinden temeldeki modeli değiştirmemelidir.
-
-## <a name="dont-train-with-inactive-rank-events"></a>Etkin olmayan derecelendirme olaylarıyla eğmeyin 
-
-Bazı uygulamalarda, uygulamanızın sonuçları kullanıcıya görüntülemesi durumunda, henüz farkında olmadan sıralama API 'sini çağırmanız gerekebilir. 
-
-Bunun nedeni:
+Bazı durumlarda, uygulamanın kullanıcı için ne olduğunu veya displayedn olduğunu bilse bile, uygulamanın derecelendirme deliği çağrısı yapması gerekebilir. Bu durum, örneğin, yükseltilen içeriğin sayfa işleme bir pazarlama kampanyası ile üzerine yazılmasından kaynaklanıyor olabilir. Derece çağrısının sonucu hiç kullanılmadıysa ve Kullanıcı onu görmüyorsa, her türlü, sıfır veya başka türlü herhangi bir şey ile eğitebilmek hatalı olur.
+Genellikle bu durum oluşur:
 
 * Kullanıcının görebiliyorsa veya görmeyebilir bir kullanıcı ARABIRIMI önceden oluşturuluyor olabilir. 
 * Uygulamanız, daha az gerçek zamanlı bağlamla derecelendirme çağrılarının yapıldığı ve bunların çıktıları uygulama tarafından kullanılabilecek tahmine dayalı kişiselleştirmeye başlayabilir. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Derecelendirme çağrısı sırasında etkin olmayan derecelendirme olayları için etkin öğrenmeyi devre dışı bırak
+Bu gibi durumlarda, kişiselleştirici kullanmanın doğru yolu, olayın _devre dışı_olmasını ısteyen bir sıra çağırarak. Kişiselleştiriciye bu olay için bir ödül beklenmez ve varsayılan olarak bir ödül uygulanmaz. İş mantığınızdaki Lette, uygulama sıralama çağrısından bilgileri kullanıyorsa, tüm yapmanız gereken olayı _etkinleştirir_ . Olayın etkin olduğu andan itibaren, yeniden oluşturma API 'sine açık bir çağrı yapılcaksa, kişiselleştirici olay için bir tepki bekler veya varsayılan bir ödül uygular.
 
-Otomatik öğrenmeyi devre dışı bırakmak için ile birlikte `learningEnabled = False`derece çağırın.
+## <a name="get-inactive-events"></a>Etkin olmayan olayları al
 
-Etkin olmayan bir olay için öğrenme, derece için bir ödül gönderirseniz örtülü olarak etkinleştirilir.
+Bir olayın eğitimini devre dışı bırakmak için `learningEnabled = False` ile ara sıra çağırın.
 
-## <a name="learning-policies"></a>Öğrenme ilkeleri
+Etkinlik kimliği için bir ödül gönderirseniz veya bu EventID için `activate` API 'sini çağırdığınızda etkin olmayan bir olay için öğrenme işlemi açıkça etkinleştirilir.
 
-Öğrenme ilkesi, model eğitiminin belirli *hiper parametrelerini* belirler. Farklı öğrenme ilkelerine eğitilen aynı verilerin iki modeli farklı davranır.
+## <a name="learning-settings"></a>Öğrenme ayarları
 
-### <a name="importing-and-exporting-learning-policies"></a>Öğrenme Ilkelerini içeri ve dışarı aktarma
+Öğrenme ayarları, model eğitiminin belirli *hiper parametrelerini* belirler. Farklı öğrenme ayarları üzerinde eğitilen aynı verilerin iki modeli farklı olacak.
+
+### <a name="import-and-export-learning-policies"></a>Öğrenme ilkelerini içeri ve dışarı aktarma
 
 Azure portal öğrenme ilkesi dosyalarını içeri ve dışarı aktarabilirsiniz. Bu, mevcut ilkeleri kaydetmenize, test etmenize, bunları değiştirmenize ve bunları kaynak kodu denetiinizde daha sonra başvuru ve denetim için yapıtlar olarak arşivlemenize olanak tanır.
 

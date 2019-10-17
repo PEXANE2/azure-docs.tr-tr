@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: Parolasız
       items:
+        - name: Parolasız dağıtım
+          href: howto-authentication-passwordless-deployment.md
         - name: Parolasız güvenlik anahtarları
           href: howto-authentication-passwordless-security-key.md
         - name: Parolasız telefonla oturum açma

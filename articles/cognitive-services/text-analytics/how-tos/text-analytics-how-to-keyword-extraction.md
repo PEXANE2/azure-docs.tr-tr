@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: raymondl
-ms.openlocfilehash: 2d90fe4d40c51b21deea23675d6b51b972429237
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390234"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429033"
 ---
-# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Örnek: Metin Analizi’ni kullanarak anahtar ifadeleri ayıklama
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama
 
 [Anahtar İfade Ayıklama API’si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6), yapılandırılmamış metni değerlendirir ve her bir JSON belgesi için bir anahtar ifade listesi döndürür.
 
@@ -68,13 +68,13 @@ Belge boyutu belge başına 5.120 veya daha az karakter olmalıdır ve koleksiyo
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1\. adım: İsteği yapısı
+## <a name="step-1-structure-the-request"></a>1\. Adım: İsteği yapılandırma
 
 İstek tanımı hakkında bilgi için bkz. [nasıl çağrılacağını Metin Analizi API'si](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
-+ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [Anahtar tümceleri API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
++ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [anahtar tümceleri API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
 
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. URL 'ye dahil `/text/analytics/v2.1/keyPhrases` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. URL 'de `/text/analytics/v2.1/keyPhrases` içermelidir. Örneğin: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
@@ -83,15 +83,15 @@ Belge boyutu belge başına 5.120 veya daha az karakter olmalıdır ve koleksiyo
 > [!Tip]
 > İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) **API testi konsolu**’nu açın.
 
-## <a name="step-2-post-the-request"></a>2\. adım: İsteği gönder
+## <a name="step-2-post-the-request"></a>2\. Adım: İsteği gönderme
 
 İstek alındığında analiz gerçekleştirilir. Dakikada veya saniye başına göndereceğiniz isteklerin boyutu ve sayısı hakkında daha fazla bilgi için genel bakış konusunun [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
 Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
 
-## <a name="step-3-view-results"></a>3\. adım: Sonuçları görüntüleme
+## <a name="step-3-view-results"></a>3\. Adım: Sonuçları görüntüleme
 
-Tüm POST istekleri, kimlikler ve algılanan özelliklerle JSON tarafından biçimlendirilmiş bir yanıt döndürür.
+Tüm POST istekleri, kimlikler ve algılanan özelliklerle JSON tarafından biçimlendirilmiş bir yanıt döndürür. Döndürülen anahtar tümceciklerin sırası, model tarafından dahili olarak belirlenir.
 
 Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
 
@@ -159,7 +159,7 @@ Bu makalede bilişsel hizmetler 'de Metin Analizi kullanarak anahtar tümceciği
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [Metin analizi genel bakış](../overview.md) [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
+ [Metin analizi genel bakış](../overview.md) hakkında [sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
  [Metin Analizi ürün sayfası](//go.microsoft.com/fwlink/?LinkID=759712)
 
 ## <a name="next-steps"></a>Sonraki adımlar

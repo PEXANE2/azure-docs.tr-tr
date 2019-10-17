@@ -3,15 +3,15 @@ title: Başlangıç sorgu örnekleri
 description: Kaynakları sayma, kaynakları sıralama veya belirli bir etiket gibi bazı başlangıç sorgularını çalıştırmak için Azure Kaynak Grafiği ' ni kullanın.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 14bac2299505214b8b087946222c5560a9d90efd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 431c2d5066421efdfa4725d39fc40169b80d9cb2
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976859"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431520"
 ---
 # <a name="starter-resource-graph-queries"></a>Başlangıç Kaynak Grafiği sorguları
 
@@ -21,6 +21,7 @@ Aşağıdaki başlangıç sorgularını inceleyeceğiz:
 
 > [!div class="checklist"]
 > - [Azure kaynaklarını sayma](#count-resources)
+> - [Anahtar Kasası kaynaklarını sayma](#count-keyvaults)
 > - [Ada göre sıralanmış kaynakları listeleme](#list-resources)
 > - [Tüm sanal makineleri ada göre azalan düzende sıralı olarak gösterme](#show-vms)
 > - [Ada ve işletim sistemi türüne göre ilk beş sanal makineyi gösterme](#show-sorted)
@@ -32,6 +33,7 @@ Aşağıdaki başlangıç sorgularını inceleyeceğiz:
 > - [Belirli bir değerine sahip tüm depolama hesaplarını listeleme](#list-specific-tag)
 > - [Bir sanal makine kaynağı için diğer adları göster](#show-aliases)
 > - [Belirli bir diğer ad için farklı değerleri göster](#distinct-alias-values)
+> - [İlişkilendirilmemiş ağ güvenlik gruplarını göster](#unassociated-nsgs)
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
@@ -44,15 +46,34 @@ Azure CLI (bir uzantı yoluyla) ve Azure PowerShell (bir modül yoluyla), Azure 
 Bu sorgu, erişiminiz bulunan aboneliklerde var olan Azure kaynaklarının sayısını döndürür. Ayrıca, seçtiğiniz kabukta uygun Azure Kaynak Grafı bileşenlerinin yüklü ve çalışma düzeninde olduğunu doğrulamak için iyi bir sorgudur.
 
 ```kusto
-summarize count()
+Resources
+| summarize count()
 ```
 
 ```azurecli-interactive
-az graph query -q "summarize count()"
+az graph query -q "Resources | summarize count()"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "summarize count()"
+Search-AzGraph -Query "Resources | summarize count()"
+```
+
+## <a name="a-namecount-keyvaultscount-key-vault-resources"></a><a name="count-keyvaults">Anahtar Kasası kaynaklarını sayma
+
+Bu sorgu döndürülen kayıt sayısını saymak için `summarize` yerine `count` kullanır. Sayıma yalnızca anahtar kasaları dahildir.
+
+```kusto
+Resources
+| where type =~ 'microsoft.compute/virtualmachines'
+| count
+```
+
+```azurecli-interactive
+az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | count"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachines' | count"
 ```
 
 ## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a>ada göre sıralanmış <a name="list-resources"/> liste kaynağı
@@ -60,16 +81,17 @@ Search-AzGraph -Query "summarize count()"
 Bu sorgu herhangi bir türdeki kaynakların yalnızca **name**, **type** ve **location** özelliklerini döndürür. `order by` kullanarak özellikleri **name** özelliğine göre artan (`asc`) düzende sıralar.
 
 ```kusto
-project name, type, location
+Resources
+| project name, type, location
 | order by name asc
 ```
 
 ```azurecli-interactive
-az graph query -q "project name, type, location | order by name asc"
+az graph query -q "Resources | project name, type, location | order by name asc"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name, type, location | order by name asc"
+Search-AzGraph -Query "Resources | project name, type, location | order by name asc"
 ```
 
 ## <a name="a-nameshow-vmsshow-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms"/>Ada göre sıralanmış tüm sanal makineleri azalan sırada göster
@@ -77,17 +99,18 @@ Search-AzGraph -Query "project name, type, location | order by name asc"
 Yalnızca sanal makineleri (`Microsoft.Compute/virtualMachines` türündeki) listelemek için sonuçlarda **type** özelliğini eşleştirebiliriz. Önceki sorguya benzer şekilde `desc`, `order by`’yi azalan olması için değiştirir. Eşleme türündeki `=~`, Kaynak Grafiği’nin büyük/küçük harfe duyarlı olmadığını bildirir.
 
 ```kusto
-project name, location, type
+Resources
+| project name, location, type
 | where type =~ 'Microsoft.Compute/virtualMachines'
 | order by name desc
 ```
 
 ```azurecli-interactive
-az graph query -q "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
+az graph query -q "Resources | project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
+Search-AzGraph -Query "Resources | project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
 ## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Ilk beş sanal makineyi ada göre ve işletim sistemi türlerine göre göster
@@ -95,17 +118,18 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 Bu sorgu `top`’i yalnızca ada göre sıralanmış beş eşleşen kaydı almak için kullanır. Azure kaynağının türü `Microsoft.Compute/virtualMachines`’dir. `project`, Azure Kaynak Grafiği’ne hangi özelliklerin dahil edileceğini bildirir.
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | project name, properties.storageProfile.osDisk.osType
 | top 5 by name desc
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
 ## <a name="a-namecount-oscount-virtual-machines-by-os-type"></a>@no__t-işletim sistemi türüne göre sanal makine sayısı
@@ -114,32 +138,34 @@ Bir önceki sorguyu oluşturmada, hâlâ `Microsoft.Compute/virtualMachines` tü
 Bunu yerine, değerleri (bu örnekte `properties.storageProfile.osDisk.osType`) özelliğe göre gruplandırma ve toplamayı tanımlamak için `summarize` ve `count()` kullandık. Bu dizenin tam nesnede nasıl göründüğüne ilişkin bir örnek için, bkz. [ kaynakları keşfetme - sanal makine bulma](../concepts/explore-resources.md#virtual-machine-discovery).
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | summarize count() by tostring(properties.storageProfile.osDisk.osType)
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
 ```
 
 Aynı sorguyu yazmanın farklı bir yolu da, bir özelliği `extend` yapmak ve sorgu içinde kullanılması için, bu durumda **os** olan geçici bir ad verilmesidir. **os** daha sonra, bir önceki örnekte olduğu gibi `summarize` ve `count()` tarafından kullanılır.
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | extend os = properties.storageProfile.osDisk.osType
 | summarize count() by tostring(os)
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
 ```
 
 > [!NOTE]
@@ -150,15 +176,16 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | exten
 Eşleştirilecek türü şekilde açık olarak tanımlamak yerine, bu örnek sorgu, **depo** sözcüğünü `contains` eden tüm Azure kaynaklarını bulur.
 
 ```kusto
-where type contains 'storage' | distinct type
+Resources
+| where type contains 'storage' | distinct type
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'storage' | distinct type"
+az graph query -q "Resources | where type contains 'storage' | distinct type"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'storage' | distinct type"
+Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type"
 ```
 
 ## <a name="a-namelist-publiciplist-all-public-ip-addresses"></a>Tüm genel IP adreslerini <a name="list-publicip"/>List
@@ -168,17 +195,18 @@ Bu sorgu yalnızca **Properties. ıpaddress @no__t-** 1 @ no__t-2 ' nin yalnızc
 100. Seçtiğiniz kabuğa bağlı olarak tırnak işaretlerinin dışına çıkmanız gerekebilir.
 
 ```kusto
-where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
+Resources
+| where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | project properties.ipAddress
 | limit 100
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
+az graph query -q "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
+Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a>abonelik tarafından yapılandırılan IP adreslerine sahip <a name="count-resources-by-ip"/>Count kaynakları
@@ -186,16 +214,17 @@ Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(pr
 Önceki örnek sorguyu kullanarak ve `summarize` ile `count()` ekleyerek, yapılandırılmış IP adreslerine sahip kaynakların aboneliğe göre listesini elde edebiliriz.
 
 ```kusto
-where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
+Resources
+| where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | summarize count () by subscriptionId
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
+az graph query -q "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
+Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a>@no__t-belirli bir etiket değerine sahip olan kaynakları-0Listeleme
@@ -203,31 +232,33 @@ Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(pr
 Sonuçları, etiket gibi Azure kaynak türünden başka özelliklere göre de sınırlandırabiliriz. Bu örnekte, Azure kaynaklarını **Dahili** değerine sahip **Ortam** etiket adıyla filtreliyoruz.
 
 ```kusto
-where tags.environment=~'internal'
+Resources
+| where tags.environment=~'internal'
 | project name
 ```
 
 ```azurecli-interactive
-az graph query -q "where tags.environment=~'internal' | project name"
+az graph query -q "Resources | where tags.environment=~'internal' | project name"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where tags.environment=~'internal' | project name"
+Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project name"
 ```
 
 Kaynağın sahip olduğu etiketleri ve değerlerini de sağlamak için `project` sözcüğüne **tags** özelliğini ekleyin.
 
 ```kusto
-where tags.environment=~'internal'
+Resources
+| where tags.environment=~'internal'
 | project name, tags
 ```
 
 ```azurecli-interactive
-az graph query -q "where tags.environment=~'internal' | project name, tags"
+az graph query -q "Resources | where tags.environment=~'internal' | project name, tags"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
+Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project name, tags"
 ```
 
 ## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a>@no__t-belirli bir etiket değerine sahip tüm depolama hesaplarını listeleme
@@ -235,16 +266,17 @@ Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
 Önceki örneğin filtre işleviyle birleştirerek Azure kaynak türünü **type** özelliğine göre filtreleyin. Bu sorgu da aramayı belirli bir etiket adına ve değerine sahip olan belirli Azure kaynağı türleriyle sınırlar.
 
 ```kusto
-where type =~ 'Microsoft.Storage/storageAccounts'
+Resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
 | where tags['tag with a space']=='Custom value'
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
+az graph query -q "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
 ```
 
 > [!NOTE]
@@ -255,17 +287,18 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 Azure [ilkesi diğer adları](../../policy/concepts/definition-structure.md#aliases) , Azure ilkesi tarafından kaynak uyumluluğunu yönetmek için kullanılır. Azure Kaynak Grafiği, bir kaynak türünün _diğer adlarını_ döndürebilir. Bu değerler, özel bir ilke tanımı oluştururken diğer adların geçerli değerlerini karşılaştırmak için yararlıdır. _Diğer adlar_ dizisi, bir sorgunun sonuçlarında varsayılan olarak sağlanmaz. Sonuçlara açıkça eklemek için `project aliases` kullanın.
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | limit 1
 | project aliases
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
 ## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Belirli bir diğer ad için ayrı değerleri göster
@@ -273,17 +306,37 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 Diğer adların değerini tek bir kaynakta görmek faydalı olur, ancak abonelikler arasında sorgulama yapmak için Azure Kaynak grafiğinin kullanıldığı doğru değeri göstermez. Bu örnek, belirli bir diğer adın tüm değerlerine bakar ve ayrı değerleri döndürür.
 
 ```kusto
-where type=~'Microsoft.Compute/virtualMachines'
+Resources
+| where type=~'Microsoft.Compute/virtualMachines'
 | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType']
 | distinct tostring(alias)"
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
+az graph query -q "Resources | where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
+Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
+```
+
+## <a name="a-nameunassociated-nsgsshow-unassociated-network-security-groups"></a><a name="unassociated-nsgs"/> ilişkilendirilmemiş ağ güvenlik grupları göster
+
+Bu sorgu, bir ağ arabirimiyle veya alt ağıyla ilişkilendirilmemiş ağ güvenlik gruplarını (NSG 'ler) döndürür.
+
+```kusto
+Resources
+| where type =~ "microsoft.network/networksecuritygroups" and isnull(properties.networkInterfaces) and isnull(properties.subnets)
+| project name, resourceGroup
+| sort by name asc
+```
+
+```azurecli-interactive
+az graph query -q "Resources | where type =~ 'microsoft.network/networksecuritygroups' and isnull(properties.networkInterfaces) and isnull(properties.subnets) | project name, resourceGroup | sort by name asc"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecuritygroups' and isnull(properties.networkInterfaces) and isnull(properties.subnets) | project name, resourceGroup | sort by name asc"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -71,6 +71,10 @@
       items:
         - name: Azure kaynaklarınızı yönetme
           href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: Sanal makineler
+      items:
+        - name: Paylaşılan Görüntü Galerisi oluşturma
+          href: ansible-vm-create-from-shared-generalized-image.md
     - name: Sanal makine ölçek kümeleri
       items:
         - name: Yapılandırma
@@ -81,6 +85,8 @@
           href: ./ansible-auto-scale-vmss.md
         - name: Özel görüntüyü güncelleştirme
           href: ./ansible-vmss-update-image.md
+        - name: Paylaşılan Görüntü Galerisi oluşturma
+          href: ansible-vm-create-from-shared-generalized-image.md
     - name: Sanal ağ
       items:
         - name: Eşlemeyi yapılandırma

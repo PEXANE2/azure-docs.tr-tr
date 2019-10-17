@@ -9,18 +9,19 @@ ms.service: app-service-mobile
 ms.topic: landing-page
 ms.date: 05/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 38b1acad5e8eb869d1ed2a8d218a2416bd3b8098
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a43ef0a527b8533940023b6457f9b0a5a4b22e79
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024744"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388320"
 ---
 # <a name="mobile-apps-documentation"></a>Mobile Apps Belgeleri
 
 > [!NOTE]
 > Visual Studio App Center mobil uygulama dağıtımında merkezi konumdaki uçtan uca ve tümleşik hizmetleri destekler. Geliştiriciler Sürekli Tümleştirme ve Teslim işlem hattını ayarlamak için **Oluşturma**, **Test** ve **Dağıtım** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **Analiz** ve **Tanılama** hizmetlerini kullanarak uygulamanın durumunu ve kullanımını izleyebilir, **Gönderme** hizmetini kullanarak kullanıcılarla etkileşim kurabilir. Geliştiriciler ayrıca kullanıcıların kimliğini doğrulamak için **Kimlik Doğrulaması**'ndan ve uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için **Veri** hizmetinden yararlanabilir.
-> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız bugün [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a kaydolun.
+>
+> Bulut hizmetlerini mobil uygulamanızla tümleştirmek istiyorsanız [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc)'a hemen kaydolun.
 
 Azure App Service’teki Mobile Apps hizmeti ile Xamarin veya Cordova’yı kullanarak yerel iOS, Android veya Windows uygulamaları ya da platformlar arası uygulamalar oluşturma hakkında bilgi edinin. Öğreticiler, videolar, istemci SDK belgeleri ve diğer kaynaklar, mobil uygulamalara yönelik arka uç oluşturma ve barındırma konularına ilişkin bilgiler içerir.
 

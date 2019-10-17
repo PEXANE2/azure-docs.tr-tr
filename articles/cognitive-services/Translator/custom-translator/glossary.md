@@ -9,21 +9,21 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: b00e38259bc3fe8cb6998c64ec453a17963a5ee5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 77e731c1f737b579c68a0eba74fe9918b3f370d3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595779"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388129"
 ---
-# <a name="glossary"></a>Sözlük
+# <a name="custom-translator-glossary"></a>Özel çevirici sözlüğü
 
 Özel [Translator sözlüğü,](https://portal.customtranslator.azure.ai) özel çevirmenle çalışırken karşılaşabileceğiniz terimleri açıklar.
 
 | **Sözcük veya tümcecik**       | **Tanım**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kaynak Dil          | Kaynak dili, ile başlayan ve başka bir dile ("hedef") dönüştürmek istediğiniz dildir.                                                                                                                                                                                                                                                                                                                                                         |
-| Hedef Dil          | Hedef dil, makine çevirisi 'nin kaynak dili aldıktan sonra sağlamasını istediğiniz dildir.                                                                                                                                                                                                                                                                                                                                               |
+| Kaynak dili          | Kaynak dili, ile başlayan ve başka bir dile ("hedef") dönüştürmek istediğiniz dildir.                                                                                                                                                                                                                                                                                                                                                         |
+| Hedef dil          | Hedef dil, makine çevirisi 'nin kaynak dili aldıktan sonra sağlamasını istediğiniz dildir.                                                                                                                                                                                                                                                                                                                                               |
 | Monolingual dosyası         | Bir monolingual dosyası farklı dildeki başka bir dosyayla eşleştirildiği tek bir dile sahiptir.                                                                                                                                                                                                                                                                                                                                                                 |
 | Paralel dosyalar           | Paralel dosya, ilgili metin ile iki dosyanın birleşimidir. Bir dosyanın kaynak dili vardır. Diğeri hedef dile sahiptir.                                                                                                                                                                                                                                                                                                                                         |
 | Tümce hizalaması       | Paralel veri kümesi, her iki dilde de aynı metni temsil eden cümleler için hizalanmış cümleler içermelidir. Örneğin, bir kaynak paralel dosyasında ilk cümle, teorik olarak, hedef paralel dosyadaki ilk cümleden eşlenir.                                                                                                                                                                                                                               |

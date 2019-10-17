@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b25a002cb1e2563ab97a2081c6b6a05362b66779
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338523"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388102"
 ---
-# <a name="immersive-reader-sdk-reference"></a>Modern Okuyucu SDK başvurusu
+# <a name="immersive-reader-sdk-reference-guide"></a>Modern Okuyucu SDK 'Sı başvuru kılavuzu
 
 Modern Okuyucu SDK 'Sı, tam ekran okuyucuyu Web uygulamanızla tümleştirmenize olanak tanıyan bir JavaScript kitaplığıdır.
 
-# <a name="functions"></a>Functions
+# <a name="functions"></a>İşlevler
 
 SDK işlevleri kullanıma sunar:
 
@@ -41,18 +41,18 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametreler
 
-| Name | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | ---- | ---- |------------ |
-| `token` | dize | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
-| `subdomain` | dize | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
-| `content` | [İçeriği](#content) | Tam ekran okuyucu 'da gösterilecek içeriği içeren nesne. |
+| `token` | string | Azure AD kimlik doğrulama belirteci. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
+| `subdomain` | string | Azure 'daki tam ekran okuyucu kaynağınızın özel alt etki alanı. Bkz. [Azure AD kimlik doğrulaması nasıl yapılır](./azure-active-directory-authentication.md). |
+| `content` | [İçerik](#content) | Tam ekran okuyucu 'da gösterilecek içeriği içeren nesne. |
 | `options` | [Seçenekler](#options) | Modern okuyucunun belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
-### <a name="returns"></a>Döndürür
+### <a name="returns"></a>Döndürdüğü
 
 Derinlikli okuyucu yüklendiğinde çözümlenen bir `Promise<HTMLDivElement>` döndürür. @No__t-0, yalnızca alt öğesi, tam ekran okuyucu sayfasını içeren bir `iframe` öğesi olan bir `div` öğesine çözümleniyor.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 Tam ekran okuyucu yükleyemediğinde, döndürülen `Promise` bir [`Error`](#error) nesnesiyle reddedilir. Daha fazla bilgi için bkz. [hata kodları](#error-codes).
 
@@ -80,11 +80,11 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametreler
 
-| Name | Tür | Açıklama |
+| Adı | Tür | Açıklama |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | RenderButtons işlevinin belirli davranışlarını yapılandırmaya yönelik seçenekler. İsteğe bağlı. |
 
-## <a name="types"></a>Türler
+## <a name="types"></a>Türü
 
 ### <a name="content"></a>İçerik
 
@@ -114,7 +114,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 | MIME türü | Açıklama |
 | --------- | ----------- |
 | metin/düz | Düz metin. |
-| metin/html | HTML içeriği. [Daha fazla bilgi edinin](#html-support)|
+| metin/html | HTML içeriği. [Daha fazla bilgi](#html-support)|
 | Application/MathML + XML | Matematik biçimlendirme dili (MathML). [Daha fazla bilgi edinin](https://developer.mozilla.org/en-US/docs/Web/MathML).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx biçim belgesi.
 
@@ -124,7 +124,7 @@ Tam ekran okuyucu Içeriğine geçirilecek tek bir veri öbeği.
 | Yazı tipi stilleri | Kalın, Italik, altı çizili, kod, üstü çizili, üst simge, alt simge |
 | Sırasız listeler | Disk, daire, kare |
 | Sıralı listeler | Ondalık, büyük Alfa, alt Alfa, büyük Latin, alt roman |
-| Köprüleri | Çok Yakında |
+| Lerinin | Yakında |
 
 Desteklenmeyen Etiketler comparably işlenecek. Görüntüler ve tablolar şu anda desteklenmiyor.
 
@@ -168,10 +168,10 @@ Hata hakkındaki bilgileri içerir.
 
 #### <a name="error-codes"></a>Hata kodları
 
-| Kod | Açıklama |
+| Kodlayın | Açıklama |
 | ---- | ----------- |
 | BadArgument | Sağlanan bağımsız değişken geçersiz, Ayrıntılar için bkz. `message`. |
-| zaman aşımı | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
+| aş | Tam ekran okuyucusu belirtilen zaman aşımı süresi içinde yüklenemedi. |
 | Tokenaşımına uğradı | Sağlanan belirtecin geçerliliği zaman aşımına uğradı. |
 | Sürecek | Çağrı hızı sınırı aşıldı. |
 
@@ -189,7 +189,7 @@ Düğmenin genel görünümünü yapılandırmak için aşağıdaki öznitelikle
 
 | Öznitelik | Açıklama |
 | --------- | ----------- |
-| `data-button-style` | Düğmenin stilini ayarlar. `icon` ,`text`Veya olabilir`iconAndText`. Varsayılan olarak `icon`. |
+| `data-button-style` | Düğmenin stilini ayarlar. @No__t-0, `text` veya `iconAndText` olabilir. Varsayılan değer `icon` ' dır. |
 | `data-locale` | Yerel ayarı ayarlar. Örneğin, `en-US` veya `fr-FR`. Varsayılan olarak Ingilizce `en` olur. |
 | `data-icon-px-size` | Simgenin boyutunu piksel cinsinden ayarlar. Varsayılan değer 20 px olur. |
 
@@ -206,4 +206,4 @@ Tam ekran okuyucu ile en iyi deneyim için aşağıdaki tarayıcıların en son 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [GitHub 'Da modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) keşfet
-* [Hızlı Başlangıç: Tam ekran okuyucu (C#) ](./quickstart.md) ' i Başlatan bir Web uygulaması oluşturma
+* [Hızlı başlangıç: tam ekran okuyucuyu (C#) başlatan bir Web uygulaması oluşturma](./quickstart.md)

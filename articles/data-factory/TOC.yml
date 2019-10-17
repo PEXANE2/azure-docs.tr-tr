@@ -80,7 +80,7 @@
           items:
             - name: Veri Kopyalama aracı
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Veri Akışı Eşlemeyi kullanarak verileri dönüştürme
+    - name: Veri akışlarını eşlemeyi kullanarak verileri dönüştürme
       href: tutorial-data-flow.md
     - name: Buluttaki verileri dönüştürme
       items:
@@ -143,7 +143,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Tümleştirme çalışma zamanı
       href: concepts-integration-runtime.md
-    - name: Veri Akışlarını Eşleme
+    - name: Veri akışlarını eşleme
       items:
         - name: Veri akışını eşlemeye genel bakış
           href: concepts-data-flow-overview.md
@@ -616,7 +616,7 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Şirket içi Netezza sunucusundan Azure’a veri geçirme
           href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Veri Akışı Eşlemeyi kullanarak dönüştürme
+    - name: Veri akışlarını eşlemeyi kullanarak dönüştürme
       items:
         - name: Sabit genişlikli metin dosyalarını işleme
           href: how-to-fixed-width.md

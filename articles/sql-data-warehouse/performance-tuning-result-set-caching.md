@@ -1,0 +1,70 @@
+---
+title: Sonuç kümesi önbelleğe alma performans ayarı | Microsoft Docs
+description: Özelliklere genel bakış
+services: sql-data-warehouse
+author: XiaoyuMSFT
+manager: craigg
+ms.service: sql-data-warehouse
+ms.topic: conceptual
+ms.subservice: development
+ms.date: 10/10/2019
+ms.author: xiaoyul
+ms.reviewer: nidejaco;
+ms.openlocfilehash: 2fa3da028e6e897921786889579c6de9a048c3e8
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: HT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72392650"
+---
+# <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesi önbelleğe alma performans ayarı  
+Sonuç kümesi önbelleği etkinleştirildiğinde, Azure SQL veri ambarı yinelenen kullanım için Kullanıcı veritabanındaki sorgu sonuçlarını otomatik olarak önbelleğe alır.  Bu, sonraki sorgu yürütmelerinin sonuçları doğrudan kalıcı önbellekten almasına izin verir, böylece yeniden hesaplama gerekmez.   Sonuç kümesi önbelleğe alma, sorgu performansını geliştirir ve işlem kaynağı kullanımını azaltır.  Ayrıca, önbelleğe alınmış sonuçlar kullanan sorgular bir eşzamanlılık yuvası kullanmaz ve bu nedenle mevcut eşzamanlılık sınırlarına göre sayılmaz. Güvenlik için, kullanıcılar önbelleğe alınmış sonuçlara yalnızca, önbellekteki sonuçları oluşturan kullanıcılarla aynı veri erişimi izinleri varsa erişebilir.  
+
+## <a name="key-commands"></a>Anahtar komutları
+[Bir kullanıcı veritabanı için sonuç kümesi önbelleğe almayı aç/kapat](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+
+[Bir oturum için sonuç kümesi önbelleğe almayı aç/kapat](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+
+[Önbelleğe alınmış sonuç kümesinin boyutunu denetleme](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+
+[Önbelleği Temizleme](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+
+## <a name="whats-not-cached"></a>Önbelleğe alınmamış olanlar  
+
+Sonuç kümesi önbelleği bir veritabanı için açıldıktan sonra, bu sorgular hariç, önbellek tam olarak tüm sorgular için sonuçlar önbelleğe alınır:
+- DateTime. Now () gibi belirleyici olmayan işlevler kullanan sorgular
+- Kullanıcı tanımlı işlevleri kullanan sorgular
+- Satır boyutu 64 KB 'tan büyük verileri döndüren sorgular
+
+Büyük sonuç kümelerine sahip sorgular (örneğin, > 1.000.000 satırları), sonuç önbelleği oluşturulurken ilk çalıştırma sırasında daha yavaş performans yaşayabilir.
+
+## <a name="when-cached-results-are-used"></a>Önbelleğe alınmış sonuçlar kullanıldığında
+
+Aşağıdaki gereksinimlerin hepsi karşılanıyorsa, önbelleğe alınmış sonuç kümesi bir sorgu için yeniden kullanılır:
+- Sorguyu çalıştıran kullanıcının sorguda başvurulan tüm tablolara erişimi vardır.
+- Yeni sorgu ile sonuç kümesi önbelleğini oluşturan önceki sorgu arasında tam eşleşme vardır.
+- Önbelleğe alınmış sonuç kümesinin oluşturulduğu tablolarda veri veya şema değişikliği yoktur.
+
+Bir sorgunun sonuç önbelleği isabeti veya isabetsizlik ile yürütülüp yürütüldüğünden emin olmak için bu komutu çalıştırın. Önbellek okuması varsa, result_cache_hit 1 döndürür.
+
+```sql
+SELECT request_id, command, result_cache_hit FROM sys.pdw_exec_requests 
+WHERE request_id = <'Your_Query_Request_ID'>
+```
+
+## <a name="manage-cached-results"></a>Önbelleğe alınmış sonuçları yönetme 
+
+Sonuç kümesi önbelleğinin en büyük boyutu veritabanı başına 1 TB 'tır.  Önbelleğe alınan sonuçlar, temeldeki sorgu verileri değiştiğinde otomatik olarak geçersiz kılınır.  
+
+Önbellek çıkarma işlemi, Azure SQL veri ambarı tarafından bu zamanlamayı izleyerek otomatik olarak yönetilir: 
+- Sonuç kümesi kullanılmıyorsa veya geçersiz kılınmamışsa, her 48 saatte bir. 
+- Sonuç kümesi önbelleği en büyük boyuta yaklaşırsa.
+
+Kullanıcılar, aşağıdaki seçeneklerden birini kullanarak tüm sonuç kümesi önbelleğini el ile boşaledebilir: 
+- Veritabanı için sonuç kümesi önbelleği özelliğini kapat 
+- Veritabanına bağlıyken DBCC DROPRESULTSETCACHE Çalıştır
+
+Bir veritabanını duraklatma, önbelleğe alınmış sonuç kümesini boş olmayacaktır.  
+
+## <a name="next-steps"></a>Sonraki adımlar
+Geliştirme ile ilgili daha fazla ipucu için bkz. [SQL Data Warehouse geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md). 
