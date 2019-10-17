@@ -150,8 +150,14 @@
     - name: Altyapı otomasyonu
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: Güvenlik ve ilke
-      href: ../virtual-machines/windows/security-policy.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik ve ilke
+          href: ../virtual-machines/windows/security-policy.md
+        - name: Azure Disk Şifrelemesi
+          href: disk-encryption-overview.md
+        - name: Yerleşik güvenlik denetimleri
+          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: İzleme
       href: ../virtual-machines/windows/monitor.md
@@ -163,8 +169,6 @@
           maintainContext: true
     - name: Ölçek Kümesi hakkında SSS
       href: virtual-machine-scale-sets-faq.md
-    - name: Yerleşik güvenlik denetimleri
-      href: virtual-machine-scale-sets-security-controls.md
 - name: Nasıl yapılır
   items:
     - name: Planlama ve tasarım
@@ -212,12 +216,15 @@
         - name: Ölçek kümelerinde diskleri şifreleme
           items:
             - name: PowerShell kullanma
-              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+              href: disk-encryption-powershell.md
             - name: Azure CLI kullanma
-              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+              href: disk-encryption-cli.md
+            - name: Azure Resource Manager şablonlarını kullanma
+              href: disk-encryption-azure-resource-manager.md
             - name: Uzantı sıralama
-              href: ../security/azure-security-disk-encryption-extension-sequencing.md
-              maintainContext: true
+              href: disk-encryption-extension-sequencing.md
+            - name: Azure Disk Şifrelemesi için anahtar kasası
+              href: disk-encryption-key-vault.md
         - name: Büyük ölçek kümeleriyle çalışma
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Yönetilen disk kullanmak üzere bir ölçek kümesi şablonu dönüştürme
