@@ -1,39 +1,39 @@
 ---
-title: Azure Resource Manager şablon işlevleri-diziler ve nesneler | Microsoft Docs
+title: Azure Resource Manager şablon işlevleri-diziler ve nesneler
 description: Diziler ve nesnelerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: cd4a74a9e9e9bb1c91a0a7a103a1cfb861fa7770
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 3366a1be88043c792de8efa3b0d0ab735e558e2a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194418"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528492"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dizi ve nesne işlevleri
 
 Kaynak Yöneticisi diziler ve nesnelerle çalışmak için çeşitli işlevler sağlar.
 
-* [array](#array)
-* [coalesce](#coalesce)
-* [concat](#concat)
-* [contains](#contains)
+* [dizide](#array)
+* [Coalesce](#coalesce)
+* [Concat](#concat)
+* [vardır](#contains)
 * [createArray](#createarray)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
+* [olmamalıdır](#empty)
+* [adı](#first)
+* [imin](#intersection)
 * [nesnesinde](#json)
-* [last](#last)
-* [length](#length)
-* [max](#max)
-* [min](#min)
-* [range](#range)
-* [skip](#skip)
-* [take](#take)
-* [union](#union)
+* [soyadına](#last)
+* [uzunluklu](#length)
+* [Biçimlendir](#max)
+* [Min](#min)
+* [aralığı](#range)
+* [Şimdilik](#skip)
+* [almanız](#take)
+* [birleşim](#union)
 
 Bir değere göre ayrılmış dize değerleri dizisini almak için bkz. [split](resource-group-template-functions-string.md#split).
 
@@ -48,9 +48,9 @@ Değeri bir diziye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Evet |int, string, array veya object |Bir diziye dönüştürülecek değer. |
+| convertToArray |Yes |int, String, array veya Object |Bir diziye dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -97,21 +97,21 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| ıntoutput | Array | [1] |
-| stringOutput | Array | ["EFGH"] |
-| objectOutput | Array | [{"a": "b", "c": "d"}] |
+| ıntoutput | Dizi | 1 |
+| stringOutput | Dizi | ["EFGH"] |
+| objectOutput | Dizi | [{"a": "b", "c": "d"}] |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
@@ -119,17 +119,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="coalesce" />
 
-## <a name="coalesce"></a>coalesce
+## <a name="coalesce"></a>Coalesce
 `coalesce(arg1, arg2, arg3, ...)`
 
 Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler ve boş nesneler null değil.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int, string, array veya object |Null için sınanacak ilk değer. |
-| ek bağımsız değişkenler |Hayır |int, string, array veya object |Null için sınanacak ek değerler. |
+| arg1 |Yes |int, String, array veya Object |Null için sınanacak ilk değer. |
+| ek bağımsız değişkenler |Hayır |int, String, array veya Object |Null için sınanacak ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -183,23 +183,23 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | stringOutput | Dize | default |
-| ıntoutput | Int | 1\. |
-| objectOutput | Object | {"First": "varsayılan"} |
-| arrayOutput | Array | [1] |
-| Emptızput | Bool | Doğru |
+| ıntoutput | 'Tir | 1 |
+| objectOutput | Nesne | {"First": "varsayılan"} |
+| arrayOutput | Dizi | 1 |
+| Emptızput | Bool | True |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
@@ -214,9 +214,9 @@ Birden çok diziyi birleştirir ve birleştirilmiş diziyi döndürür ya da bir
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |Birleştirme için ilk dizi veya dize. |
+| arg1 |Yes |dizi veya dize |Birleştirme için ilk dizi veya dize. |
 | ek bağımsız değişkenler |Hayır |dizi veya dize |Birleştirme için sıralı sırada ek diziler veya dizeler. |
 
 Bu işlev herhangi bir sayıda bağımsız değişken alabilir ve parametreler için dizeleri ya da dizileri kabul edebilir.
@@ -261,19 +261,19 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| döndürülmesini | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| döndürülmesini | Dizi | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
@@ -301,19 +301,19 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | Içtoutput | Dize | önek-5yıj4yıjf5mbg72 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
@@ -321,17 +321,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="contains" />
 
-## <a name="contains"></a>içerir
+## <a name="contains"></a>vardır
 `contains(container, itemToFind)`
 
 Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeriyor veya dize bir alt dize içeriyor. Dize karşılaştırma büyük/küçük harfe duyarlıdır. Ancak, bir nesne bir anahtar içeriyorsa test edilirken karşılaştırma büyük/küçük harfe duyarlıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| container |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -390,24 +390,24 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| stringTrue | Bool | Doğru |
+| stringTrue | Bool | True |
 | stringFalse | Bool | False |
-| objectTrue | Bool | Doğru |
+| objectTrue | Bool | True |
 | Objectfali | Bool | False |
-| arrayTrue | Bool | Doğru |
+| arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
@@ -422,9 +422,9 @@ Parametrelerden bir dizi oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |String, Integer, array veya Object |Dizideki ilk değer. |
+| arg1 |Yes |String, Integer, array veya Object |Dizideki ilk değer. |
 | ek bağımsız değişkenler |Hayır |String, Integer, array veya Object |Dizideki ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -472,22 +472,22 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| stringArray | Array | ["a", "b", "c"] |
-| ıntarray | Array | [1, 2, 3] |
-| objectArray | Array | [{"One": "a", "iki": "b", "üç": "c"}] |
-| arrayArray | Array | [["bir", "iki", "üç"]] |
+| stringArray | Dizi | ["a", "b", "c"] |
+| ıntarray | Dizi | [1, 2, 3] |
+| objectArray | Dizi | [{"One": "a", "iki": "b", "üç": "c"}] |
+| arrayArray | Dizi | [["bir", "iki", "üç"]] |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
@@ -495,7 +495,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="empty" />
 
-## <a name="empty"></a>boş
+## <a name="empty"></a>Olmamalıdır
 
 `empty(itemToTest)`
 
@@ -503,9 +503,9 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -552,21 +552,21 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | Doğru |
-| objectEmpty | Bool | Doğru |
-| stringEmpty | Bool | Doğru |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
@@ -574,16 +574,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="first" />
 
-## <a name="first"></a>adı
+## <a name="first"></a>Adı
 `first(arg1)`
 
 Dizinin ilk öğesini veya dizenin ilk karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |İlk öğe veya karakteri alma değeri. |
+| arg1 |Yes |dizi veya dize |İlk öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -618,20 +618,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | bir |
-| stringOutput | Dize | O |
+| stringOutput | Dize | Gelirken |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
@@ -639,17 +639,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="intersection" />
 
-## <a name="intersection"></a>imin
+## <a name="intersection"></a>İmin
 `intersection(arg1, arg2, arg3, ...)`
 
 Parametrelerden ortak öğelerle tek bir dizi veya nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
+| arg1 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
 | ek bağımsız değişkenler |Hayır |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -697,35 +697,35 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"One": "a", "üç": "c"} |
-| arrayOutput | Array | ["iki", "üç"] |
+| objectOutput | Nesne | {"One": "a", "üç": "c"} |
+| arrayOutput | Dizi | ["iki", "üç"] |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-## <a name="json"></a>json
+## <a name="json"></a>nesnesinde
 `json(arg1)`
 
 JSON nesnesi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize |JSON 'a dönüştürülecek değer. |
+| arg1 |Yes |string |JSON 'a dönüştürülecek değer. |
 
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -769,21 +769,21 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| jsonOutput | Object | {"a": "b"} |
-| nullOutput | Boole değeri | Doğru |
-| paramOutput | Object | {"a": "demo değeri"}
+| jsonOutput | Nesne | {"a": "b"} |
+| nullOutput | Boole | True |
+| paramOutput | Nesne | {"a": "demo değeri"}
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
@@ -798,9 +798,9 @@ Dizinin son öğesini veya dizenin son karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya dize |Son öğe veya karakteri alma değeri. |
+| arg1 |Yes |dizi veya dize |Son öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -835,20 +835,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | üç |
-| stringOutput | Dize | e |
+| stringOutput | Dize | A |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
@@ -856,16 +856,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="length" />
 
-## <a name="length"></a>length
+## <a name="length"></a>Uzunluklu
 `length(arg1)`
 
 Bir dizideki öğelerin sayısını, bir dizedeki karakterleri veya bir nesnedeki kök düzeyi özellikleri döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -923,21 +923,21 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | 'Tir | 3 |
+| stringLength | 'Tir | 13 |
+| objectLength | 'Tir | 4 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
@@ -956,16 +956,16 @@ Bu işlevi bir dizi ile kullanma hakkında daha fazla bilgi için, bkz. [Azure R
 
 <a id="max" />
 
-## <a name="max"></a>en çok
+## <a name="max"></a>Biçimlendir
 `max(arg1)`
 
 Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar listesini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -999,20 +999,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
-| ıntoutput | Int | 5 |
+| arrayOutput | 'Tir | 5 |
+| ıntoutput | 'Tir | 5 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
@@ -1027,9 +1027,9 @@ Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayıla
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1063,20 +1063,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
-| ıntoutput | Int | 0 |
+| arrayOutput | 'Tir | 0 |
+| ıntoutput | 'Tir | 0 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
@@ -1091,10 +1091,10 @@ Bir başlangıç tamnoktasından tamsayılar dizisi oluşturur ve bir dizi öğe
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Evet |int |Dizideki ilk tamsayı. |
-| numberofElements |Evet |int |Dizideki tamsayıların sayısı. |
+| startingInteger |Yes |int |Dizideki ilk tamsayı. |
+| numberofElements |Yes |int |Dizideki tamsayıların sayısı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1128,19 +1128,19 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| rangeOutput | Array | [5, 6, 7] |
+| rangeOutput | Dizi | [5, 6, 7] |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
@@ -1148,17 +1148,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="skip" />
 
-## <a name="skip"></a>atla
+## <a name="skip"></a>Şimdilik
 `skip(originalValue, numberToSkip)`
 
 Dizide belirtilen sayıdan sonraki tüm öğeleri içeren bir dizi döndürür veya dizedeki belirtilen sayıdan sonraki tüm karakterleri içeren bir dize döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Evet |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
-| numberToSkip |Evet |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
+| originalValue |Yes |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
+| numberToSkip |Yes |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1208,20 +1208,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["üç"] |
+| arrayOutput | Dizi | ["üç"] |
 | stringOutput | Dize | 2 3 |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
@@ -1229,17 +1229,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="take" />
 
-## <a name="take"></a>take
+## <a name="take"></a>Almanız
 `take(originalValue, numberToTake)`
 
 Dizinin başından itibaren belirtilen sayıda öğe içeren bir dizi veya dizenin başından itibaren belirtilen sayıda karakter içeren bir dize döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Evet |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
-| numberToTake |Evet |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
+| originalValue |Yes |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
+| numberToTake |Yes |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1289,20 +1289,20 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["bir", "iki"] |
-| stringOutput | Dize | açık |
+| arrayOutput | Dizi | ["bir", "iki"] |
+| stringOutput | Dize | dayanır |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
@@ -1310,17 +1310,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="union" />
 
-## <a name="union"></a>union
+## <a name="union"></a>birleşim
 `union(arg1, arg2, arg3, ...)`
 
 Parametrelerden tüm öğeleri içeren tek bir dizi veya nesne döndürür. Yinelenen değerler veya anahtarlar yalnızca bir kez dahil edilir.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gereklidir | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
-| arg2 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
+| arg1 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
+| arg2 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
 | ek bağımsız değişkenler |Hayır |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -1368,28 +1368,28 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| objectOutput | Object | {"One": "a", "iki": "b", "üç": "C2", "dört": "d", "beş": "e"} |
-| arrayOutput | Array | ["bir", "iki", "üç", "dört"] |
+| objectOutput | Nesne | {"One": "a", "iki": "b", "üç": "C2", "dört": "d", "beş": "e"} |
+| arrayOutput | Dizi | ["bir", "iki", "üç", "dört"] |
 
-Azure CLI ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu Azure CLı ile dağıtmak için şunu kullanın:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
-PowerShell ile bu örnek şablonu dağıtmak için şunu kullanın:
+Bu örnek şablonu PowerShell ile dağıtmak için şunu kullanın:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](resource-group-authoring-templates.md).
-* Birden fazla şablon birleştirmek için bkz: [Azure Resource Manager ile bağlı şablonları kullanma](resource-group-linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](resource-group-create-multiple.md).
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](resource-group-authoring-templates.md).
+* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](resource-group-linked-templates.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](resource-group-create-multiple.md).
 * Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](resource-group-template-deploy.md).
 

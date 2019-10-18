@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/09/2019
+ms.date: 10/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1025041ae69f2048a6c5396aaebb50b5fa884f86
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.openlocfilehash: 78fe9eec757274e4262857ac0441af61c47a992b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444162"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515547"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell veya Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici (Önizleme) etkinleştirme
 
@@ -26,24 +26,25 @@ ms.locfileid: "68444162"
 
 Bu makalede, Azure PowerShell veya Azure Resource Manager şablonları kullanılarak Azure sanal makineler veya sanal makine ölçek kümeleri için VM'ler için Azure İzleyici (Önizleme) nasıl etkinleştirileceği açıklanır. Bu işlemin sonunda, tüm sanal makinelerinizi izlemeye başarıyla başlacaksınız ve herhangi bir performans veya kullanılabilirlik sorunu yaşadığını öğrenirsiniz.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Bir Log Analytics çalışma alanını ayarlama 
+## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics çalışma alanı ayarlama 
 
 Log Analytics çalışma alanınız yoksa bir tane oluşturmanız gerekir. Yapılandırma adımlarına devam etmeden önce [Önkoşullar](vminsights-enable-overview.md#log-analytics) bölümünde önerilen yöntemleri gözden geçirin. Daha sonra, Azure Resource Manager şablonu yöntemini kullanarak VM'ler için Azure İzleyici dağıtımını tamamlayaseçebilirsiniz.
 
-### <a name="enable-performance-counters"></a>Performans sayaçları sağlar
+### <a name="enable-performance-counters"></a>Performans sayaçlarını etkinleştir
 
-Çözüm tarafından başvurulan Log Analytics çalışma alanı zaten çözüm için gerekli performans sayaçları toplamak için yapılandırılmamışsa, bunları etkinleştirmeniz gerekir. Bunu iki şekilde yapabilirsiniz:
-* İçinde açıklandığı şekilde el ile [Log analytics'te Windows ve Linux performans veri kaynakları](../../azure-monitor/platform/data-sources-performance-counters.md)
+Çözüm tarafından başvurulan Log Analytics çalışma alanı, çözüm için gereken performans sayaçlarını toplamak üzere zaten yapılandırılmamışsa, bunları etkinleştirmeniz gerekir. Bunu iki şekilde yapabilirsiniz:
+* [Windows ve Linux performans verileri kaynaklarında](../../azure-monitor/platform/data-sources-performance-counters.md) açıklandığı gibi el ile Log Analytics
 * [Azure PowerShell galerisinde](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) bulunan bir PowerShell betiğini indirip çalıştırarak
 
-### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>ServiceMap ve InfrastructureInsights çözümleri yüklemesi
-Bu yöntem, Log Analytics çalışma alanınızda çözüm bileşenlerini etkinleştirmek için yapılandırmasını belirten bir JSON şablonu içerir.
+### <a name="install-the-servicemap-solution"></a>ServiceMap çözümünü yükler
+
+Bu yöntem, Log Analytics çalışma alanınızda çözüm bileşenlerini etkinleştirmeye yönelik yapılandırmayı belirten bir JSON şablonu içerir.
 
 Bir şablon kullanarak kaynakların nasıl dağıtılacağını bilmiyorsanız, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için çalıştırma `az --version`. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.27 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version` ' ı çalıştırın. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Aşağıdaki JSON söz dizimini kopyalayıp dosyanıza yapıştırın:
 
@@ -84,24 +85,6 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
                             "product": "[Concat('OMSGallery/', 'ServiceMap')]",
                             "promotionCode": ""
                         }
-                    },
-                    {
-                        "apiVersion": "2015-11-01-preview",
-                        "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                        "type": "Microsoft.OperationsManagement/solutions",
-                        "dependsOn": [
-                            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        ],
-                        "properties": {
-                            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        },
-                        "plan": {
-                            "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                            "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
-                            "promotionCode": ""
-                        }
                     }
                 ]
             }
@@ -109,13 +92,13 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
     }
     ```
 
-1. Bu dosyayı farklı Kaydet *installsolutionsforvminsights.json* yerel bir klasöre.
+1. Bu dosyayı *ınstallsolutionsforvminsıghts. JSON* olarak yerel bir klasöre kaydedin.
 
-1. *Çalışmaadı*, *Resourcegroupname*ve *WorkspaceLocation*değerlerini yakalayın. Çalışmaadı değeri  , Log Analytics çalışma alanınızın adıdır. Değeri *WorkspaceLocation* çalışma alanı içinde tanımlanan bölgedir.
+1. *Çalışmaadı*, *Resourcegroupname*ve *WorkspaceLocation*değerlerini yakalayın. *Çalışmaadı* değeri, Log Analytics çalışma alanınızın adıdır. *WorkspaceLocation* değeri, çalışma alanının tanımlandığı bölgedir.
 
 1. Bu şablonu dağıtmaya hazırsınız.
  
-    * Şablonu içeren klasörde aşağıdaki PowerShell komutlarını kullanın:
+    * Aşağıdaki PowerShell komutlarını, şablonu içeren klasörde kullanın:
 
         ```powershell
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
@@ -127,7 +110,7 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
         provisioningState       : Succeeded
         ```
 
-    * Azure CLI kullanarak aşağıdaki komutu çalıştırmak için:
+    * Azure CLı kullanarak aşağıdaki komutu çalıştırmak için:
     
         ```azurecli
         az login
@@ -142,6 +125,7 @@ Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kulla
         ```
 
 ## <a name="enable-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla etkinleştir
+
 Sanal makinelerinizi ve sanal makine ölçek kümelerinizi eklemeye yönelik örnek Azure Resource Manager şablonlar oluşturduk. Bu şablonlar, var olan bir kaynakta izlemeyi etkinleştirmek ve izleme özelliği etkin olan yeni bir kaynak oluşturmak için kullanabileceğiniz senaryolar içerir.
 
 >[!NOTE]
@@ -149,13 +133,13 @@ Sanal makinelerinizi ve sanal makine ölçek kümelerinizi eklemeye yönelik ör
 
 Bir şablon kullanarak kaynakların nasıl dağıtılacağını bilmiyorsanız, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI Sürüm 2.0.27 çalıştırıyor olmanız gerekir veya üzeri. Sürümünüzü belirlemek için çalıştırma `az --version`. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Azure CLı 'yi kullanmak için, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.27 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version` ' ı çalıştırın. Azure CLı 'yı yüklemek veya yükseltmek için bkz. [Azure CLI 'Yi yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Şablonları indir
 
-Azure Resource Manager şablonları, GitHub deponuzdan indirebileceğiniz bir arşiv dosyasında (. zip) verilmiştir [](https://aka.ms/VmInsightsARMTemplates) . Dosya içeriği, bir şablon ve parametre dosyası ile her bir dağıtım senaryosunu temsil eden klasörleri içerir. Çalıştırmadan önce, parametreler dosyasını değiştirin ve gerekli değerleri belirtin. Şablon dosyasını, özel gereksinimlerinizi destekleyecek şekilde özelleştirmeniz gerekmedikçe değiştirmeyin. Parametre dosyasını değiştirdikten sonra, bu makalenin ilerleyen kısımlarında açıklanan aşağıdaki yöntemleri kullanarak dağıtabilirsiniz. 
+Azure Resource Manager şablonları, GitHub deponuzdan [indirebileceğiniz](https://aka.ms/VmInsightsARMTemplates) bir arşiv dosyasında (. zip) verilmiştir. Dosya içeriği, bir şablon ve parametre dosyası ile her bir dağıtım senaryosunu temsil eden klasörleri içerir. Çalıştırmadan önce, parametreler dosyasını değiştirin ve gerekli değerleri belirtin. Şablon dosyasını, özel gereksinimlerinizi destekleyecek şekilde özelleştirmeniz gerekmedikçe değiştirmeyin. Parametre dosyasını değiştirdikten sonra, bu makalenin ilerleyen kısımlarında açıklanan aşağıdaki yöntemleri kullanarak dağıtabilirsiniz. 
 
 İndirme dosyası farklı senaryolar için aşağıdaki şablonları içerir:
 
@@ -163,7 +147,7 @@ Azure Resource Manager şablonları, GitHub deponuzdan indirebileceğiniz bir ar
 - **Newvmontaslak** şablonu, bir sanal makine oluşturur ve VM'ler için Azure izleyici bunu izlemesini sağlar.
 - **ExistingVmssOnboarding** şablonu, sanal makine ölçek kümesi zaten varsa VM'ler için Azure izleyici etkinleştirilir.
 - **NewVmssOnboarding** şablonu, sanal makine ölçek kümeleri oluşturur ve VM'ler için Azure İzleyici bunları izlemesini sağlar.
-- **Configureworksapce** şablonu, Linux ve Windows işletim sistemi performans sayaçlarının çözümlerini ve toplanmasını etkinleştirerek Log Analytics çalışma alanınızı VM'ler için Azure izleyici destekleyecek şekilde yapılandırır.
+- **Configureworkspace** şablonu, Linux ve Windows işletim sistemi performans sayaçlarının çözümlerini ve toplanmasını etkinleştirerek Log Analytics çalışma alanınızı VM'ler için Azure izleyici destekleyecek şekilde yapılandırır.
 
 >[!NOTE]
 >Sanal Makine Ölçek Kümeleri zaten varsa ve yükseltme ilkesi **el ile**olarak ayarlandıysa, **ExistingVmssOnboarding** Azure Resource Manager şablonu çalıştırıldıktan sonra örnekler için VM'ler için Azure izleyici varsayılan olarak etkinleştirilmez. Örnekleri el ile yükseltmeniz gerekir.
@@ -180,6 +164,7 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. İşin
 ```powershell
 provisioningState       : Succeeded
 ```
+
 ### <a name="deploy-by-using-the-azure-cli"></a>Azure CLı kullanarak dağıtma
 
 Aşağıdaki adım Azure CLı kullanarak izlemeye izin vermez.
@@ -196,7 +181,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 provisioningState       : Succeeded
 ```
 
-## <a name="enable-with-powershell"></a>PowerShell ile etkinleştirme
+## <a name="enable-with-powershell"></a>PowerShell ile etkinleştir
 
 Birden çok VM veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici etkinleştirmek için, [Install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)PowerShell betiğini kullanın. Azure PowerShell Galerisi ' nden kullanılabilir. Bu betik şu şekilde yinelenir:
 
@@ -204,11 +189,11 @@ Birden çok VM veya sanal makine ölçek kümesi için VM'ler için Azure İzley
 - *ResourceGroup*tarafından belirtilen kapsamlı kaynak grubu. 
 - *Ad*ile belirtilen tek bir VM veya sanal makine ölçek kümesi.
 
-Her sanal makine veya sanal makine ölçek kümesi için betik VM uzantısı zaten yüklü olup olmadığını doğrular. VM uzantısı yüklü değilse, betik yeniden yüklemeyi dener. VM uzantısı yüklü değilse, betik Log Analytics ve bağımlılık Aracısı VM uzantılarını yükler.
+Her VM veya sanal makine ölçek kümesi için, betik VM uzantısının zaten yüklü olup olmadığını doğrular. VM uzantısı yüklü değilse, betik yeniden yüklemeyi dener. VM Uzantısı yüklüyse, betik Log Analytics ve bağımlılık Aracısı VM uzantılarını yüklenir.
 
-`Enable-AzureRM` Uyumluluk diğer adları etkinken Azure PowerShell Module az Version 1.0.0 veya üzeri kullandığınızı doğrulayın. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, aynı zamanda çalıştırmak ihtiyacınız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için.
+@No__t_0 uyumluluk diğer adları etkinken Azure PowerShell Module az Version 1.0.0 veya üzeri kullandığınızı doğrulayın. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bağlantı oluşturmak için `Connect-AzAccount` çalıştırmanız da gerekir.
 
-Betik bağımsız değişkeni ayrıntıları ve örnek kullanım listesini almak için çalıştırın `Get-Help`.
+Betiğin bağımsız değişken ayrıntılarının ve örnek kullanımının bir listesini almak için `Get-Help` çalıştırın.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
@@ -310,7 +295,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-Aşağıdaki örnek, VM'ler için Azure İzleyici etkinleştirmek ve beklenen çıktıyı anlamak için klasörde PowerShell komutlarını kullanarak göstermektedir:
+Aşağıdaki örnek, VM'ler için Azure İzleyici etkinleştirmek ve beklenen çıktıyı anlamak için klasöründeki PowerShell komutlarının kullanımını gösterir:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -363,7 +348,6 @@ Failed: (0)
 
 Artık sanal makineleriniz için izleme etkin olduğuna göre, bu bilgiler VM'ler için Azure İzleyici analiz için kullanılabilir.
  
-- Sistem durumu özelliğini nasıl kullanacağınızı öğrenmek için bkz. [VM'ler için Azure izleyici durumunu görüntüleme](vminsights-health.md). 
-- Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md). 
+- Bulunan uygulama bağımlılıklarını görüntülemek için bkz. [VM'ler için Azure izleyici haritasını görüntüleme](vminsights-maps.md). 
+
 - VM performanlarınızın performans sorunlarını ve genel kullanımını belirlemek için bkz. [Azure VM performansını görüntüleme](vminsights-performance.md). 
-- Bulunan Uygulama bağımlılıklarını görüntülemek için bkz: [Vm'leri harita görünümü Azure İzleyici](vminsights-maps.md).

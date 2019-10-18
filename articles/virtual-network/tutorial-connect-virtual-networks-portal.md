@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720051"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515722"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
@@ -46,21 +46,18 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
 2. **Ağ**’ı ve sonra **Sanal ağ**’ı seçin.
-3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**’u seçin:
+3. **Temel bilgiler** sayfasında, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin:
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myVirtualNetwork1|
-    |Adres alanı|10.0.0.0/16|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
-    |Konum| **Doğu ABD**’yi seçin.|
-    |Alt Ağ Adı|Subnet1|
-    |Alt Ağ Adresi aralığı|10.0.0.0/24|
-
-      ![Sanal ağ oluşturun](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
-
-4. Aşağıdaki değişikliklerle birlikte 1.-3. adımları tekrar tamamlayın:
+    |Bölge| **Doğu ABD**’yi seçin.|
+    |Adı|myVirtualNetwork1|
+    ! [Temel sanal ağ ayarlarını yapılandırma] (
+4. **IP adresleri** sayfasında **Adres alanı** alanı için 10.0.0.0/16 girin. Aşağıdaki **alt ağ ekle** düğmesine tıklayın ve alt ağ **adı** Için Subnet1 ve IP **adresi aralığı**için 10.0.0.0/24 girin.
+   
+5. Aşağıdaki değişikliklerle birlikte 1.-3. adımları tekrar tamamlayın:
 
     |Ayar|Değer|
     |---|---|
@@ -105,22 +102,26 @@ Sonraki bir adımda aralarında iletişim kurabilmeniz için her sanal ağ üzer
 
     |Ayar|Değer|
     |---|---|
+    |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
     |Adı|myVm1|
+    |Konum| **Doğu ABD**’yi seçin.|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
-    |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
-    |Konum| **Doğu ABD**’yi seçin.|
-4. **Boyut seçin** bölümünden bir sanal makine boyutu seçin.
-5. **Ayarlar** için aşağıdaki değerleri seçin ve **Tamam**’a tıklayın:
+   
+4. **Boyut** seçeneği IÇIN bir VM boyutu seçin.
+5. **Ağ**altında için aşağıdaki değerleri seçin:
 
     |Ayar|Değer|
     |---|---|
-    |Sanal ağ| myVirtualNetwork1 - Önceden seçili değilse **Sanal ağ**’ı seçin ve sonra **Sanal ağ seç** bölümünden **myVirtualNetwork1** seçeneğini belirleyin.|
-    |Alt ağ| Subnet1 - Önceden seçili değilse **Alt ağ**’ı seçin ve sonra **Alt ağ seç** bölümünden **Subnet1** seçeneğini belirleyin.|
+    |Sanal ağ| myVirtualNetwork1-zaten seçili değilse, **sanal ağ** ' ı seçin ve ardından **myVirtualNetwork1**' yi seçin.|
+    |Alt ağ| Subnet1-zaten seçili değilse **alt ağ** ' ı seçin ve ardından **Subnet1**' yi seçin.|
     
+
     ![Sanal makine ayarları](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
- 
-6. **Özet**’in **Oluştur** bölümünde **Oluştur**’u seçerek sanal makine dağıtımını başlatın.
+   
+6. **Ağ**' ı seçin. **Ortak gelen bağlantı noktaları** için **Seçili bağlantı noktalarına izin ver** seçeneğini belirleyin. Bunun altındaki **gelen bağlantı noktaları seçin** seçeneği için **RDP** 'yi seçin. 
+
+7. VM dağıtımını başlatmak için sol köşedeki sağ alt köşedeki **gözden geçir + oluştur** düğmesini seçin.
 
 ### <a name="create-the-second-vm"></a>İkinci sanal makineyi oluşturma
 

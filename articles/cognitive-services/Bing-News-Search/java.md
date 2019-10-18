@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: C# -Bing Web araması REST API bir Web araması gerçekleştirin'
+title: 'Hızlı başlangıç: Java-Bing Web Araması REST API bir Web araması gerçekleştirme'
 titleSuffix: Azure Cognitive Services
 description: Java kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ad322d9418d81c516b97cd8bd4b039b1640aa9c0
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423764"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515653"
 ---
-# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Hızlı Başlangıç: Java ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Java ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirme
 
 Bing Haber Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler.
 
@@ -35,7 +35,7 @@ Bu örneğe ilişkin kaynak kodu [GitHub 'da](https://github.com/Azure-Samples/c
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 

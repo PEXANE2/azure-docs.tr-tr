@@ -1,5 +1,5 @@
 ---
-title: Ayrılmış event hubs - Azure Event Hubs'a genel bakış | Microsoft Docs
+title: Adanmış Olay Hub 'larına genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kiracılı dağıtımlarını sunan bir genel bakış sunulmaktadır.
 services: event-hubs
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ebc6dd672fd180e22cc1edf5c9978e0985427e50
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991864"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516753"
 ---
-# <a name="overview-of-event-hubs-dedicated"></a>Ayrılmış Event Hubs'a genel bakış
+# <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
 
 *Event Hubs kümeler* en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. %99,99 SLA garantisi veren bu tek kiracılı teklif sadece Ayrılmış fiyatlandırma katmanı için sunulur. Bir Event Hubs kümesi, garantili kapasite ve alt saniyelik gecikme süresiyle saniyede milyonlarca olayı alabilir. Adanmış küme içinde oluşturulan ad alanları ve Olay Hub 'ları, standart teklifin tüm özelliklerini ve daha fazlasını içerir, ancak herhangi bir giriş sınırı olmadan. Ayrıca, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak Azure depolama 'ya veya Azure Data Lake günlüğe kaydedebilirsiniz. 
 
@@ -52,18 +52,18 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 
 | Özellik | Standart | Adanmış |
 | --- |:---:|:---:|
-| Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad Alanları |  1\. | CU başına 50 |
+| Bant Genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
+| Ad Alanları |  1 | CU başına 50 |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
-| Giriş olayları | Milyon olay başına ödeme yapın | Dahil |
+| Giriş olayları | Milyon olay başına ödeme | Var |
 | İleti Boyutu | 1\.000.000 bayt | 1\.000.000 bayt |
-| Bölümler | ad alanı başına 40 | CU başına 2000 |
+| Bölümler | Olay Hub 'ı başına 32 | Olay Hub 'ı başına 1024 |
 | Tüketici grupları | Olay Hub 'ı başına 20 | Her saniyedeki limit yok, Olay Hub 'ı başına 1000 |
 | Aracılı bağlantılar | 1\.000 dahil, en fazla 5.000 | 100 K dahil ve maks |
 | İleti Saklama | 7 gün, TU başına 84 GB dahil | 90 gün, CU başına 10 TB dahildir |
-| Capture | Saat başına ödeme yapın | Dahil |
+| Yakalama | Saat başına ödeme | Var |
 
-## <a name="how-to-onboard"></a>Nasıl eklemek için
+## <a name="how-to-onboard"></a>Ekleme
 
 [Azure portalı](https://aka.ms/eventhubsclusterquickstart) aracılığıyla [bir Event Hubs kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yönelik self servis deneyimi artık önizlemededir. Sorularınız varsa veya Event Hubs Ayrılmış için yardıma ihtiyacınız varsa, lütfen [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurun.
 
@@ -73,19 +73,19 @@ Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fi
 
 Bir Event Hubs kümesi için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
 
-Aşağıdaki tabloda, bizim test sırasında alanımız Kıyaslama sonuçlar gösterilir:
+Aşağıdaki tabloda, sınamamız sırasında elde ettiğimiz kıyaslama sonuçları gösterilmektedir:
 
-| Yükü şekli | Alıcılar | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam işleme birimi | CU başına işleme birimi |
+| Yük şekli | Alıcıların | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam DTU | CU başına DTU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB toplu | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 işleme birimi | 100 işleme birimi | 
-| 10x10KB toplu | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1.33 GB/sn | 133k İleti/sn | 666 işleme birimi | 166 işleme birimi |
-| 6x32KB toplu | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 işleme birimi | 250 işleme birimi |
+| 100x1KB toplu işleri | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 tüs | 100 tüs | 
+| 10x10KB toplu işlem | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1,33 GB/sn | 133k İleti/sn | 666 tüs | 166 tüs |
+| 6x32KB toplu işleri | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 tüs | 250 tüs |
 
-Testinizde aşağıdaki ölçütleri izin kullanıldı:
+Sınamada, aşağıdaki ölçütler kullanılmıştır:
 
 - Dört Kapasite birimi (cu düzeyinde kapsanır) içeren bir adanmış katman Event Hubs kümesi kullanıldı. 
-- Alma işlemi için kullanılan olay hub'ı 200 bölümler vardı. 
-- Tüm bölümleri alma iki alıcı uygulamalar tarafından alınan veri alındı.
+- Alma işlemi için kullanılan olay hub 'ının 200 bölümü vardı. 
+- Alınan veriler, tüm bölümlerden alınan iki alıcı uygulaması tarafından alındı.
 
 #### <a name="can-i-scale-updown-my-cluster"></a>Kümemin ölçeğini artırma/azaltma yapabilir miyim?
 
@@ -103,5 +103,5 @@ Ayrılmış katman kümesi altında başka bir ad alanı ile ayrılmış katman 
 Event Hubs Ayrılmış hakkında daha fazla bilgi edinmek için Microsoft satış temsilcinizle veya Microsoft Desteği başvurun. Ayrıca, aşağıdaki bağlantıları ziyaret ederek bir küme oluşturabilir veya Event Hubs fiyatlandırma katmanları hakkında daha fazla bilgi edinebilirsiniz:
 
 - [Azure portalı aracılığıyla Event Hubs kümesi oluşturma](https://aka.ms/eventhubsclusterquickstart) 
-- [Event Hubs Dedicated fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/). Event Hubs adanmış kapasite hakkında ek ayrıntıları almak için Microsoft satış temsilcinize veya Microsoft Support de başvurabilirsiniz.
-- [Event Hubs SSS Sayfasındaki](event-hubs-faq.md) fiyatlandırma bilgileri içeriyor ve Event Hubs hakkında sık sorulan bazı sorular yanıtlanmaktadır.
+- [Event Hubs ayrılmış fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/). Ayrıca, Event Hubs Ayrılmış kapasitesi hakkında ek ayrıntılar almak için Microsoft satış temsilcinizle veya Microsoft Desteği başvurabilirsiniz.
+- [Event HUBS SSS](event-hubs-faq.md) , fiyatlandırma bilgilerini içerir ve Event Hubs hakkında sık sorulan bazı sorulara yanıt verir.

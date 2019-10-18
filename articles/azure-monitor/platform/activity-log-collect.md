@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: bwren
-ms.openlocfilehash: affefa96d6e38a88c994938115ddf44bcf8bd36d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: c9fdd0c530ca34305aa3a9197c3bb938d4fb9f1f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695059"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528707"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin
 [Azure etkinlik günlüğü](activity-logs-overview.md) , Azure aboneliğinizde oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Bu makalede, Etkinlik günlüğünün bir Log Analytics çalışma alanında nasıl toplanacağı ve bu verileri çözümlemek için günlük sorguları ve görünümler sağlayan Etkinlik Günlüğü Analizi [izleme çözümünün](../insights/solutions.md)nasıl kullanılacağı açıklanır. 
@@ -31,7 +31,7 @@ Etkinlik günlüğünü bir Log Analytics çalışma alanına bağlamak aşağı
 - Karmaşık analizler gerçekleştirmek ve etkinlik günlüğü girişleriyle ilgili ayrıntılı Öngörüler elde etmek için [günlük sorgularını](../log-query/log-query-overview.md) kullanın.
 
 ## <a name="connect-to-log-analytics-workspace"></a>Log Analytics çalışma alanına bağlan
-Etkinlik günlüğü yalnızca bir çalışma alanına bağlanabilir, ancak aynı Azure kiracısındaki birden çok abonelik için etkinlik günlüğüne tek bir çalışma alanı bağlanabilir. Birden çok kiracının genelinde koleksiyon için bkz. [Azure etkinlik günlüklerini farklı Azure Active Directory kiracılardaki abonelikler arasında Log Analytics çalışma alanında toplama](activity-log-collect-tenants.md).
+Aynı Azure kiracısındaki birden çok abonelik için etkinlik günlüğüne tek bir çalışma alanı bağlanabilir. Birden çok kiracının genelinde koleksiyon için bkz. [Azure etkinlik günlüklerini farklı Azure Active Directory kiracılardaki abonelikler arasında Log Analytics çalışma alanında toplama](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
 > Microsoft. Operationalınsights ve Microsoft. OperationsManagement kaynak sağlayıcılarının aboneliğiniz için kayıtlı olmadığı durumlarda aşağıdaki yordamla bir hata alabilirsiniz. Bu sağlayıcıları kaydetmek için bkz. [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md) .
@@ -42,7 +42,7 @@ Etkinlik günlüğünü Log Analytics çalışma alanınıza bağlamak için aş
 1. Çalışma alanının menüsündeki **çalışma alanı veri kaynakları** bölümünde **Azure etkinlik günlüğü**' nü seçin.
 1. Bağlanmak istediğiniz aboneliğe tıklayın.
 
-    ![Çalışma Alanları](media/activity-log-export/workspaces.png)
+    ![Çalışma alanları](media/activity-log-export/workspaces.png)
 
 1. Abonelikteki etkinlik günlüğünü seçili çalışma alanına bağlamak için **Bağlan** ' a tıklayın. Abonelik zaten başka bir çalışma alanına bağlıysa bağlantıyı kesmek için önce **bağlantıyı kes** ' e tıklayın.
 
@@ -69,10 +69,10 @@ Azure **etkinlik günlükleri görünümünü açmak** için Azure etkinlik **g�
 
 | Görselleştirme bölümü | Açıklama |
 | --- | --- |
-| Azure etkinlik günlüğü girdileri | Seçtiğiniz tarih aralığı için en üstteki Azure etkinlik günlüğü girişi kayıt toplamlarını gösteren bir çubuk grafiği gösterir ve ilk 10 etkinlik çağıranlarının bir listesini gösterir. @No__t-0 ' a bir günlük araması çalıştırmak için çubuk grafiğine tıklayın. Bu öğe için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir arayan öğesine tıklayın. |
-| Duruma göre etkinlik günlükleri | Seçili tarih aralığı için Azure etkinlik günlüğü durumu ve ilk on durum kayıtlarının listesi için bir halka grafiği gösterir. @No__t-0 ' a bir günlük sorgusu çalıştırmak için grafiğe tıklayın. Bu durum kaydı için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir durum öğesine tıklayın. |
-| Kaynağa göre etkinlik günlükleri | Etkinlik günlüklerinin bulunduğu toplam kaynak sayısını gösterir ve her bir kaynak için kayıt sayısı olan ilk on kaynağı listeler. Çözüm için kullanılabilen tüm Azure kaynaklarını gösteren `AzureActivity | summarize AggregatedValue = count() by Resource` ' a bir günlük araması çalıştırmak için Toplam alanına tıklayın. Kaynak için tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için kaynağa tıklayın. |
-| Kaynak sağlayıcısına göre etkinlik günlükleri | Etkinlik günlükleri üreten ve ilk on olan kaynak sağlayıcılarının toplam sayısını gösterir. Tüm Azure Kaynak sağlayıcılarını gösteren `AzureActivity | summarize AggregatedValue = count() by ResourceProvider` için günlük sorgusu çalıştırmak için Toplam alanına tıklayın. Sağlayıcıya yönelik tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için bir kaynak sağlayıcısına tıklayın. |
+| Azure etkinlik günlüğü girdileri | Seçtiğiniz tarih aralığı için en üstteki Azure etkinlik günlüğü girişi kayıt toplamlarını gösteren bir çubuk grafiği gösterir ve ilk 10 etkinlik çağıranlarının bir listesini gösterir. @No__t_0 için bir günlük araması çalıştırmak için çubuk grafiğine tıklayın. Bu öğe için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir arayan öğesine tıklayın. |
+| Duruma göre etkinlik günlükleri | Seçili tarih aralığı için Azure etkinlik günlüğü durumu ve ilk on durum kayıtlarının listesi için bir halka grafiği gösterir. @No__t_0 günlük sorgusu çalıştırmak için grafiğe tıklayın. Bu durum kaydı için tüm etkinlik günlüğü girdilerini döndüren bir günlük araması çalıştırmak için bir durum öğesine tıklayın. |
+| Kaynağa göre etkinlik günlükleri | Etkinlik günlüklerinin bulunduğu toplam kaynak sayısını gösterir ve her bir kaynak için kayıt sayısı olan ilk on kaynağı listeler. Çözüm için kullanılabilen tüm Azure kaynaklarını gösteren `AzureActivity | summarize AggregatedValue = count() by Resource` için bir günlük araması çalıştırmak için Toplam alanına tıklayın. Kaynak için tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için kaynağa tıklayın. |
+| Kaynak sağlayıcısına göre etkinlik günlükleri | Etkinlik günlükleri üreten ve ilk on olan kaynak sağlayıcılarının toplam sayısını gösterir. Tüm Azure Kaynak sağlayıcılarını gösteren `AzureActivity | summarize AggregatedValue = count() by ResourceProvider` bir günlük sorgusu çalıştırmak için Toplam alanına tıklayın. Sağlayıcıya yönelik tüm etkinlik kayıtlarını döndüren bir günlük sorgusu çalıştırmak için bir kaynak sağlayıcısına tıklayın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

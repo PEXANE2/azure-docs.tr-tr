@@ -1,6 +1,6 @@
 ---
 title: SQL veritabanı yönetilen örneği-zaman içinde geri yükleme | Microsoft Docs
-description: SQL yönetilen örneğindeki bir veritabanını zaman içinde önceki bir noktaya geri yükleme.
+description: Yönetilen bir örnekteki SQL veritabanını önceki bir noktaya geri yükleyin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,78 +11,67 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 67f13d16dcf6bbe4fa13fe3a6e78d3e4d61e1999
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 61249d8ac21c3bb698deb92e5f46a8998205ced9
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862141"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529670"
 ---
-# <a name="restore-a-sql-managed-instance-database-to-a-previous-point-in-time"></a>SQL yönetilen örnek veritabanını zaman içinde önceki bir noktaya geri yükleme
+# <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Yönetilen bir örnekteki SQL veritabanını önceki zaman noktasına geri yükleme
 
-Belirli bir noktaya geri yükleme (ıNR), geçmişteki bir zamanda başka bir veritabanının kopyası olarak bir veritabanı oluşturmanıza olanak sağlar. Bu makalede, yönetilen bir örnekteki veritabanının bir zaman içinde geri yükleme işlemi nasıl gerçekleştirileceği açıklanır.
+Bir veritabanını geçmişteki bir zamanda başka bir veritabanının kopyası olarak oluşturmak için belirli bir noktaya geri yükleme (ıNR) kullanın. Bu makalede, bir Azure SQL veritabanı yönetilen örneğinde bir veritabanının bir noktadan noktaya geri yüklemesi nasıl yapılacağı açıklanır.
 
-Zaman içinde geri yükleme, hatalara neden olan olaylar, yanlış yüklenmiş veriler, önemli verilerin silinmesi ve yalnızca test veya denetim amaçlarıyla diğer sorunlar gibi kurtarma senaryolarında kullanılabilir. Veritabanı ayarlarınıza bağlı olarak, yedekleme dosyaları 7 ila 35 gün arasında bir süre tutulur.
+Zaman içinde geri yükleme, hatalardan kaynaklanan olaylar, yanlış yüklenmiş veriler veya önemli verilerin silinmesi gibi kurtarma senaryolarında yararlıdır. Bunu yalnızca test veya denetim için de kullanabilirsiniz. Yedekleme dosyaları, veritabanı ayarlarınıza bağlı olarak 7-35 gün boyunca tutulur.
 
-Zaman içinde bir noktaya geri yükleme şu şekilde kullanılabilir:
+Zaman içindeki bir noktaya geri yükleme şunları yapabilir:
 
 - Mevcut bir veritabanından bir veritabanını geri yükleyin.
 - Silinen bir veritabanından bir veritabanını geri yükleyin.
 
-Ayrıca, yönetilen bir örnek ile ilgili bir noktadan noktaya geri yükleme şu şekilde kullanılabilir: 
+Yönetilen bir örnek için, bir noktadan noktaya geri yükleme de şunları yapabilir:
 
 - Bir veritabanını aynı yönetilen örneğe geri yükleyin.
 - Veritabanını başka bir yönetilen örneğe geri yükleyin.
 
-
 > [!NOTE]
-> Tüm yönetilen bir örnek için bir noktadan noktaya geri yükleme mümkün değildir. Mümkün olan ve bu makalede açıklanan, yönetilen bir örnekte barındırılan bir veritabanının zaman içindeki bir noktaya geri yüklenmesi olasıdır.
-
+> Tüm yönetilen bir örnek için bir noktadan noktaya geri yükleme mümkün değildir. Bu makalede, yalnızca mümkün olan özellikler açıklanmaktadır: yönetilen bir örnekte barındırılan bir veritabanının zaman içindeki nokta geri yüklemesi.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Başka bir yönetilen örneğe geri yükleme yaparken her iki örnek de aynı abonelikte ve bölgede olmalıdır. Bölgeler arası ve çapraz abonelik geri yüklemeleri şu anda desteklenmiyor.
+Yönetilen bir örnekten diğerine geri yüklerken, her iki örnek de aynı abonelikte ve bölgede olmalıdır. Bölgeler arası ve çapraz abonelik geri yüklemesi şu anda desteklenmiyor.
 
 > [!WARNING]
-> Verilerin geri yükleme boyutuna bağlı olarak, yönetilen örneğinizin depolama boyutuyla ilgili dikkatli olun; örnek depolama tükenmiş olabilirsiniz. Geri yüklenen veriler için yeterli alan yoksa alternatif bir yaklaşım kullanın.
+> Yönetilen örneğinizin depolama boyutunu unutmayın. Geri yüklenecek verilerin boyutuna bağlı olarak, örnek depolamanın dışında kalabilirsiniz. Geri yüklenen veriler için yeterli alan yoksa farklı bir yaklaşım kullanın.
 
-Aşağıdaki tabloda, yönetilen örnek için bir noktadan noktaya kurtarma senaryoları gösterilmektedir:
+Aşağıdaki tabloda, yönetilen örnekler için zaman içinde geri yükleme senaryoları gösterilmektedir:
 
-|           |Mevcut DB 'yi geri yükle| Mevcut DB 'yi geri yükle|Bırakılan DB 'yi geri yükle| Bırakılan DB 'yi geri yükle|
+|           |Mevcut VERITABANıNı aynı yönetilen örneğe geri yükle| Varolan VERITABANıNı başka bir yönetilen örneğe geri yükleme|Bırakılan VERITABANıNı aynı yönetilen örneğe geri yükle|Bırakılan VERITABANıNı başka bir yönetilen örneğe geri yükleme|
 |:----------|:----------|:----------|:----------|:----------|
-|Hedef| Aynı mı?|Başka bir mı |Aynı mı?|Başka bir mı |
-|Azure portal| Evet|Hayır |Hayır|Hayır|
-|Azure CLI|Evet |Evet |Hayır|Hayır|
-|PowerShell| Evet|Evet |Evet|Evet|
+|**Azure portalda**| Yes|Hayır |Hayır|Hayır|
+|**Azure CLI**|Yes |Yes |Hayır|Hayır|
+|**PowerShell**| Yes|Yes |Yes|Yes|
 
+## <a name="restore-an-existing-database"></a>Var olan bir veritabanını geri yükleme
 
-## <a name="restore-existing-database"></a>Mevcut veritabanını geri yükle
-
-Mevcut bir veritabanını Azure portal, PowerShell veya Azure CLı kullanarak aynı örneğe geri yükleyin. Hedef yönetilen örnek ve kaynak grubu özelliklerini belirterek PowerShell veya Azure CLı kullanarak bir veritabanını başka bir örneğe geri yükleyin. Bu parametreler belirtilmemişse, varsayılan olarak veritabanı mevcut örneğe geri yüklenir. Başka bir örneğe geri yükleme, şu anda Azure portal aracılığıyla desteklenmiyor. 
+Azure portal, PowerShell veya Azure CLı kullanarak mevcut bir veritabanını aynı örneğe geri yükleyin. Bir veritabanını başka bir örneğe geri yüklemek için, hedef yönetilen örnek ve kaynak grubunun özelliklerini belirleyebilmeniz için PowerShell veya Azure CLı kullanın. Bu parametreleri belirtmezseniz, veritabanı varsayılan olarak mevcut örneğe geri yüklenir. Azure portal Şu anda başka bir örneğe geri yüklemeyi desteklemiyor.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com) oturum açın. 
-1. Yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin. 
-1. Veritabanı sayfasında **geri yükle** ' yi seçin. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+2. Yönetilen örneğinize gidin ve geri yüklemek istediğiniz veritabanını seçin.
+3. Veritabanı sayfasında **geri yükle** ' yi seçin:
 
-    ![Mevcut veritabanını geri yükle](media/sql-database-managed-instance-point-in-time-restore/restore-database-to-mi.png)
+    ![Azure portal kullanarak bir veritabanını geri yükleme](media/sql-database-managed-instance-point-in-time-restore/restore-database-to-mi.png)
 
-1. **Geri yükle** sayfasında, veritabanının geri yüklenmesini istediğiniz tarih ve saat için noktayı seçin.
-1. Veritabanınızı geri yüklemek için **Onayla** ' yı seçin. Bu, yeni bir veritabanı oluşturan ve istenen noktada özgün veritabanındaki verilerle doldurulan geri yükleme işlemini başlatır. Kurtarma işlemi hakkında daha fazla bilgi için bkz. [Kurtarma süresi](sql-database-recovery-using-backups.md#recovery-time). 
-
-1. Yönetilen örneği bul
-1. Geri yüklemek istediğiniz veritabanını seçin
-1. Veritabanı ekranında geri yükleme eylemi ' ne tıklayın.
-1. Geri yükleme ekranında, veritabanının geri yüklendiği geçmişin tarih ve saat ' i seçin
-1. Onayladıktan sonra geri yükleme işlemi başlar ve veritabanının boyutuna bağlı olarak, yeni veritabanı oluşturulur ve istenen zamanda özgün veritabanındaki verilerle doldurulur. Geri yükleme işleminin süresi boyunca, yedeklemeleri kullanarak kurtarmayı denetleyin.
-
+4. **Geri yükle** sayfasında, veritabanını geri yüklemek istediğiniz tarih ve saat için noktayı seçin.
+5. Veritabanınızı geri yüklemek için **Onayla** ' yı seçin. Bu eylem, yeni bir veritabanı oluşturan ve belirli bir zaman noktasındaki özgün veritabanındaki verilerle dolduran geri yükleme işlemini başlatır. Kurtarma işlemi hakkında daha fazla bilgi için bkz. [Kurtarma süresi](sql-database-recovery-using-backups.md#recovery-time).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Zaten yüklü Azure PowerShell yoksa, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Veritabanını PowerShell kullanarak geri yüklemek için, parametreleri değerlerinizle güncelleştirin ve şu komutu çalıştırın:
+Veritabanını PowerShell kullanarak geri yüklemek için aşağıdaki komutta parametre değerlerini belirtin. Ardından şu komutu çalıştırın:
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -91,19 +80,19 @@ $managedInstanceName = "<Managed instance name>"
 $databaseName = "<Source-database>"
 $pointInTime = "2018-06-27T08:51:39.3882806Z"
 $targetDatabase = "<Name of new database to be created>"
- 
+
 Get-AzSubscription -SubscriptionId $subscriptionId
 Select-AzSubscription -SubscriptionId $subscriptionId
- 
+
 Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -ResourceGroupName $resourceGroupName `
-                               -InstanceName $managedInstanceName `
-                               -Name $databaseName `
-                               -PointInTime $pointInTime `
-                               -TargetInstanceDatabaseName $targetDatabase `
+                              -InstanceName $managedInstanceName `
+                              -Name $databaseName `
+                              -PointInTime $pointInTime `
+                              -TargetInstanceDatabaseName $targetDatabase `
 ```
 
-Veritabanını başka bir yönetilen örneğe geri yüklemek için hedef kaynak grubu adını ve hedef yönetilen örnek adını ayarlayın.  
+Veritabanını başka bir yönetilen örneğe geri yüklemek için, hedef kaynak grubu ve yönetilen örnek adlarını da belirtin:  
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -121,21 +110,18 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 
 Ayrıntılar için bkz. [restore-Azsqlınstancedatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLı yüklü değilse, bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Azure CLı kullanarak veritabanını geri yüklemek için, parametreleri değerlerinizle güncelleştirin ve şu komutu çalıştırın:
-
+Azure CLı kullanarak veritabanını geri yüklemek için aşağıdaki komutta parametre değerlerini belirtin. Ardından şu komutu çalıştırın:
 
 ```azurecli-interactive
 az sql midb restore -g mygroupname --mi myinstancename |
 -n mymanageddbname --dest-name targetmidbname --time "2018-05-20T05:34:22"
 ```
 
-
-Veritabanını başka bir yönetilen örneğe geri yüklemek için hedef kaynak grubu adını ve hedef yönetilen örnek adını ayarlayın.  
+Veritabanını başka bir yönetilen örneğe geri yüklemek için, hedef kaynak grubu ve yönetilen örnek adlarını da belirtin:  
 
 ```azurecli-interactive
 az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
@@ -144,15 +130,15 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Kullanılabilir parametrelerin ayrıntılı açıklaması için bkz. [yönetilen örnek CLI](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore). 
+Kullanılabilir parametrelerin ayrıntılı bir açıklaması için bkz. [yönetilen bir örneğe bir veritabanını geri yüklemek Için CLI belgeleri](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
 
 ---
 
-## <a name="restore-a-deleted-database"></a>Silinen veritabanını geri yükleme 
- 
-Silinen bir veritabanının geri yüklenmesi yalnızca PowerShell ile yapılabilir. Veritabanı aynı örneğe veya başka bir örneğe geri yüklenebilir. 
+## <a name="restore-a-deleted-database"></a>Silinen veritabanını geri yükleme
 
-Silinen bir veritabanını PowerShell kullanarak geri yüklemek için, parametreleri değerlerinizle güncelleştirin ve şu komutu çalıştırın:
+Silinen bir veritabanının geri yüklenmesi, yalnızca PowerShell kullanılarak yapılabilir. Veritabanı aynı örneğe veya başka bir örneğe geri yüklenebilir.
+
+Silinen bir veritabanını PowerShell kullanarak geri yüklemek için aşağıdaki komutta parametre değerlerini belirtin. Ardından şu komutu çalıştırın:
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -173,9 +159,7 @@ $properties | Add-Member -type NoteProperty -name RestorePointInTime -Value $poi
 $properties | Add-Member -type NoteProperty -name RestorableDroppedDatabaseId -Value $deleted_db.Id
 ```
 
-Silinen veritabanını başka bir örneğe geri yüklemek için, kaynak grubu adını ve yönetilen örnek adını değiştirin.
-
-Konum parametresi, kaynak grubu ve yönetilen örnek konumuyla eşleşmelidir.
+Silinen veritabanını başka bir örneğe geri yüklemek için kaynak grubunun ve yönetilen örneğin adlarını değiştirin. Ayrıca, konum parametresinin kaynak grubu ve yönetilen örnek konumuyla eşleştiğinden emin olun.
 
 ```powershell-interactive
 $resourceGroupName = "<Second resource group name>"
@@ -190,39 +174,38 @@ New-AzResource -Location $location -Properties $properties `
         -ResourceId $resource_id -ApiVersion "2017-03-01-preview" -Force
 ```
 
-## <a name="overwrite-existing-database"></a>Var olan veritabanının üzerine yaz 
- 
-Var olan bir veritabanının üzerine yazmak için ayrıca şunları yapmanız gerekir:
+## <a name="overwrite-an-existing-database"></a>Var olan veritabanının üzerine yaz
+
+Var olan bir veritabanının üzerine yazmak için şunları yapmanız gerekir:
 
 1. Üzerine yazmak istediğiniz var olan veritabanını bırakın.
-1. Geri yüklenen zaman aşımı veritabanını, bırakılan veritabanının adına yeniden adlandırın. 
+2. Zaman içinde geri yüklenen veritabanını, bıraktığınız veritabanının adıyla yeniden adlandırın.
 
+### <a name="drop-the-original-database"></a>Özgün veritabanını bırak
 
-### <a name="drop-original-database"></a>Özgün veritabanını bırak 
- 
-Veritabanını bırakma Azure portal, PowerShell veya Azure CLı ile yapılabilir. 
+Azure portal, PowerShell veya Azure CLı kullanarak veritabanını bırakabilirsiniz.
 
-Ayrıca, yönetilen örneğe doğrudan bağlanarak SQL Server Management Studio (SSMS) başlatarak ve aşağıdaki Transact-SQL (T-SQL) komutunu çalıştırarak veritabanını bırakabilirsiniz.
+Ayrıca, yönetilen örneğe doğrudan bağlanarak SQL Server Management Studio (SSMS) ve ardından aşağıdaki Transact-SQL (T-SQL) komutunu çalıştırarak veritabanını da bırakabilirsiniz:
 
 ```sql
 DROP DATABASE WorldWideImporters;
 ```
 
-Yönetilen örnek veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın: 
+Yönetilen örnekteki veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:
 
-- [SQL sanal makinesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
+- [Bir Azure sanal makinesi aracılığıyla SSMS/Azure Data Studio](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Genel bir uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Ortak uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal, yönetilen örnekten veritabanını seçin ve **Sil**' i seçin.
 
-   ![Mevcut veritabanını geri yükle](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
+   ![Azure portal kullanarak bir veritabanını silme](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Yönetilen bir örnekten var olan bir veritabanını bırakmak için aşağıdaki PowerShell komutunu kullanın: 
+Yönetilen bir örnekten var olan bir veritabanını bırakmak için aşağıdaki PowerShell komutunu kullanın:
 
 ```powershell
 $resourceGroupName = "<Resource group name>"
@@ -234,7 +217,7 @@ Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceN
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yönetilen bir örnekten var olan bir veritabanını bırakmak için aşağıdaki Azure CLı komutunu kullanın: 
+Yönetilen bir örnekten var olan bir veritabanını bırakmak için aşağıdaki Azure CLı komutunu kullanın:
 
 ```azurecli-interactive
 az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
@@ -242,23 +225,20 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 
 ---
 
+### <a name="alter-the-new-database-name-to-match-the-original-database-name"></a>Yeni veritabanı adını özgün veritabanı adıyla eşleşecek şekilde değiştirin
 
-### <a name="alter-new-database-name-to-original"></a>Yeni veritabanı adını özgün olarak DEĞIŞTIR
-
-Doğrudan yönetilen örneğe bağlanın, SQL Server Management Studio başlatın ve ardından geri yüklenen veritabanının adını üzerine yazmak istediğiniz bırakılmış veritabanının adını değiştirmek için aşağıdaki Transact-SQL (T-SQL) sorgusunu yürütün. 
-
+Doğrudan yönetilen örneğe bağlanın ve SQL Server Management Studio başlatın. Ardından, aşağıdaki Transact-SQL (T-SQL) sorgusunu çalıştırın. Sorgu, geri yüklenen veritabanının adını üzerine yazmak istediğiniz bırakılmış veritabanının adını değiştirecek.
 
 ```sql
 ALTER WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
+Yönetilen örnekteki veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın:
 
-Yönetilen örnek veritabanınıza bağlanmak için aşağıdaki yöntemlerden birini kullanın: 
-
-- [SQL sanal makinesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
+- [Azure sanal makinesi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Noktadan siteye](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Genel bir uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Ortak uç nokta](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Uzun süreli bekletme](sql-database-long-term-retention.md) ve [otomatik yedeklemeler](sql-database-automated-backups.md)hakkında bilgi edinin. 
+[Otomatikleştirilmiş yedeklemeler](sql-database-automated-backups.md)hakkında bilgi edinin.

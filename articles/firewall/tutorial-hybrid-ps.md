@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 5/3/2019
+ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ecc46f9ce4ec953d481bf8110326630053938524
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073070"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533328"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell kullanarak hibrit bir ağda Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
 
@@ -43,7 +43,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Sanal makineleri oluşturma
 > * Güvenlik duvarını test etme
 
-Bu öğreticiyi tamamlayabilmeniz için Azure Portal kullanmak istiyorsanız, bkz [. Öğretici: Azure portal](tutorial-hybrid-portal.md)kullanarak Azure Güvenlik duvarını karma bir ağda dağıtın ve yapılandırın.
+Bu öğreticiyi tamamlayabilmeniz için Azure portal kullanmak istiyorsanız, bkz. [öğretici: Azure Güvenlik duvarını Azure Portal kullanarak karma ağda dağıtma ve yapılandırma](tutorial-hybrid-portal.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -62,9 +62,9 @@ Bu senaryonun doğru çalışması için üç önemli gereksinimi vardır:
 Bu yolların nasıl oluşturulduğunu görmek için bu makaledeki [yolları oluşturma](#create-the-routes) bölümüne bakın.
 
 >[!NOTE]
->Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir. Azure Güvenlik Duvarı, varsayılan olarak şirket içi bir ağa Zorlamalı tünel oluşturmayı desteklemez.
+>Azure Güvenlik duvarının doğrudan Internet bağlantısı olmalıdır. AzureFirewallSubnet, BGP aracılığıyla şirket içi ağınıza varsayılan bir yol öğrenirse, doğrudan Internet bağlantısını sürdürmek için **Nexthoptype** değeri **Internet** olarak ayarlanmış bir 0.0.0.0/0 UDR ile geçersiz kılmanız gerekir.
 >
->Ancak, yapılandırmanız şirket içi bir ağa Zorlamalı tünel gerektiriyorsa, Microsoft bu servis talebi büyük bir durum temelinde destekleyecektir. Büyük/küçük harf bilgilerinizi gözden geçirebilmemiz için desteğe başvurun. Kabul edilirse, aboneliğinizi beyaz listeye ekleyeceğiz ve gerekli güvenlik duvarı Internet bağlantısının korunduğundan emin olacaksınız.
+>Azure Güvenlik Duvarı şu anda zorlamalı tüneli desteklemiyor. Yapılandırmanız şirket içi bir ağa Zorlamalı tünel gerektiriyorsa ve Internet hedefleriniz için hedef IP öneklerini belirleyebiliyorsanız, bu aralıkları şirket içi ağ ile bir Kullanıcı tanımlı yol aracılığıyla sonraki atlama olarak yapılandırabilirsiniz. AzureFirewallSubnet. Ya da bu yolları tanımlamak için BGP kullanabilirsiniz.
 
 >[!NOTE]
 >Doğrudan eşlenmiş sanal ağlar arasındaki trafik, bir UDR varsayılan ağ geçidi olarak Azure Güvenlik Duvarı 'na işaret ediyorsa doğrudan yönlendirilir. Alt ağ trafiğine Bu senaryodaki güvenlik duvarının alt ağını göndermek için, her iki alt ağda de bir UDR 'nin hedef alt ağ önekini açıkça içermesi gerekir.
@@ -464,7 +464,7 @@ Azure portalından, **VM-Onprem** sanal makinesine bağlanın.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-**VM-onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-ışınsal-01 özel IP\>konumuna gidin.
+**VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-bağlı-01 özel IP \> gidin.
 
 Internet Information Services varsayılan sayfasını görmelisiniz.
 

@@ -1,17 +1,17 @@
 ---
-title: Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme
+title: Tam zamanında erişim iste-Azure yönetilen uygulamalar
 description: Azure yönetilen uygulamalar yayımcılarının, yönetilen bir uygulamaya tam zamanında erişim isteme işlemini açıklar.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 0d595d4c96e9f87f1c8eece5d47bf4c8cdd58d7c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: fdd1dcf5ab6b58a91534a465a8c92c10de0d2097
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574991"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528961"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme
 
@@ -81,7 +81,7 @@ Teklifinizi Market 'te tanımlarken JıT erişimini etkinleştirdiğinizden emin
 
 Kullanıcı arabiriminize bir JıT yapılandırma adımı eklediniz ve Market sunumunda JıT erişimini etkinleştirdiniz. Müşteriler yönetilen uygulamanızı dağıtırken, [kendi örnekleri IÇIN JIT erişimini açabilir](approve-just-in-time-access.md#enable-during-deployment).
 
-## <a name="request-access"></a>Erişim izni iste
+## <a name="request-access"></a>Erişim izni isteme
 
 Tüketicinin yönetilen kaynaklarına erişmeniz gerektiğinde belirli bir rol, süre ve süre için bir istek gönderirsiniz. Tüketici, isteği onaylamalıdır.
 

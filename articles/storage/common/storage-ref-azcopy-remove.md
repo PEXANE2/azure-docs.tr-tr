@@ -4,20 +4,20 @@ description: Bu makale AzCopy Remove komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0cc366ab2cdad9c7258dca905d8f4a06472119fe
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fc23afb9a407fc2e6689c5c8766cb4beba868269
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195912"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513435"
 ---
-# <a name="azcopy-remove"></a>AzCopy kaldır
+# <a name="azcopy-remove"></a>azcopy kaldırma
 
-Azure Depolama Blobu, dosya ve Azure Data Lake Storage 2. varlıkları siler.
+Blob 'ları veya dosyaları bir Azure Storage hesabından silin.
 
 ## <a name="synopsis"></a>Özeti
 
@@ -57,13 +57,24 @@ Sanal bir dizinin tamamını kaldırın, ancak belirli Blobları kapsamdan hari�
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
 ```
 
-Tek bir dosyayı Data Lake Storage 2. Kaldır (dahil etme ve hariç tutma desteklenmiyor):
+Belirli blob 'ları ve sanal dizinleri, göreli yollarını (URL kodlamalı DEĞIL) bir dosyaya koyarak kaldırın:
+
+```azcopy
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
+file content:
+  dir1/dir2
+  blob1
+  blob2
+
+```
+
+Hiyerarşik ad alanı olan bir BLOB depolama hesabından tek bir dosyayı kaldırın (dahil etme/hariç tutma desteklenmiyor).
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Tek bir dizini Data Lake Storage 2. kaldırın (dahil etme ve hariç tutma desteklenmez):
+Hiyerarşik ad alanı olan bir BLOB depolama hesabı olan tek bir dizini kaldırma (dahil etme/hariç tutma desteklenmez):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -71,13 +82,21 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Seçenekler
 
-|Seçenek|Açıklama|
-|--|--|
-|--dizeyi Dışla|Adın, model listesiyle eşleştiği dosyaları dışlayın. Örneğin: *. jpg;* . PDF; exactName|
-|-h,--yardım|Remove komutu için yardım içeriğini göster.|
-|--Include dizesi|Yalnızca adın, model listesiyle eşleştiği dosyaları ekleyin. Örneğin: *. jpg;* . PDF; exactName|
-|--günlük düzeyi dize|Günlük dosyası için günlük ayrıntı düzeyini tanımlayın. Kullanılabilir düzeyler şunları içerir: BILGI (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve HIÇBIRI (çıktı günlüğü yok). (varsayılan "BILGI")|
-|--özyinelemeli|Dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın.|
+**--exclude-Path dizesi**      Bu yolları kaldırırken hariç tutun. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder; myFolder/subDirName/File. PDF.
+
+**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: *. jpg;* . PDF; exactName
+
+**-h,--** kaldırma için yardım yardımı
+
+**--Include-Path** dize yalnızca kaldırılırken Bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder; myFolder/subDirName/File. PDF
+
+**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: *. jpg;* . PDF; exactName
+
+**--dosya listesi** dizesi, silinecek dosya ve dizinlerin listesini içeren bir dosyanın konumunu tanımlar. Göreli yollar satır sonları ile sınırlandırılmalıdır ve yolların URL kodlamalı olmaması gerekir.
+
+**--günlük düzeyi** dize günlük dosyası için günlük ayrıntı düzeyini tanımlar. Kullanılabilir düzeyler şunlardır: BILGI (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve HIÇBIRI (çıktı günlüğü yok). (varsayılan ' BILGI ') (varsayılan "BILGI")
+
+**--özyinelemeli**                Dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın.
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 

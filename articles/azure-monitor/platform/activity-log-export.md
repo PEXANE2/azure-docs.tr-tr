@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258480"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515792"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure etkinlik günlüğünü depolamaya veya Azure Event Hubs dışarı aktarma
 [Azure etkinlik günlüğü](activity-logs-overview.md) , Azure aboneliğinizde oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Etkinlik günlüğünü Azure portal görüntülemeye veya Azure Izleyici tarafından toplanan diğer verilerle çözümlenebileceği bir Log Analytics çalışma alanına kopyalamaya ek olarak, etkinlik günlüğü 'nü bir Azure depolama hesabına arşivlemek veya bir  Olay Hub 'ı.
@@ -23,8 +23,8 @@ Denetim, statik analiz veya yedekleme için günlük verilerinizi 90 günden dah
 
 ## <a name="stream-activity-log-to-event-hub"></a>Etkinlik günlüğünü Olay Hub 'ına akış
 [Azure Event Hubs](/azure/event-hubs/) , saniye başına milyonlarca olayı alabilen ve işleyesağlayan bir veri akışı platformu ve olay alma hizmetidir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Etkinlik günlüğü için akış özelliğini kullanmanın iki yolu şunlardır:
-* **Üçüncü taraf günlüğe kaydetme ve telemetri sistemlerine akış**: Zaman içinde, Azure Event Hubs akışı, etkinlik oturumunuzu üçüncü taraf Sıems ve Log Analytics çözümlerine yöneltmek için mekanizma olur.
-* **Özel telemetri ve günlüğe kaydetme platformu oluşturun**: Zaten özel olarak oluşturulmuş bir telemetri platformunuz varsa veya bir tane oluşturmayı düşünüyorsanız, yüksek düzeyde ölçeklenebilir yayımla-abone ol Event Hubs, etkinlik günlüğünü esnek bir şekilde almanızı sağlar. 
+* **Üçüncü taraf günlük ve telemetri sistemlerine akış**: zaman içinde Azure Event Hubs akışı, etkinlik oturumunuzu üçüncü taraf sıems ve Log Analytics çözümlerine yöneltmek için mekanizma olur.
+* **Özel telemetri ve günlüğe kaydetme platformu oluşturma**: zaten özel olarak oluşturulmuş bir telemetri platformudur veya bir tane oluşturmayı düşünüyorsanız, Event Hubs yüksek düzeyde ölçeklenebilir yayımla-abone ol, etkinlik günlüğünü esnek bir şekilde almanızı sağlar. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -55,9 +55,9 @@ Günlük profili aşağıdakileri tanımlar.
 
 **Hangi bölgeler (konumlar) içe aktarılmalıdır.** Etkinlik günlüğündeki çok sayıda olay genel olaylar olduğundan tüm konumları dahil etmelisiniz.
 
-**Etkinlik günlüğünün bir depolama hesabında tutulacağı süre.** Bekletme günü sayısının sıfır günlükler süresiz olarak tutulur anlamına gelir. Aksi takdirde, değer 1 ile 365 arasında herhangi bir sayıda gün olabilir.
+**Etkinlik günlüğünün bir depolama hesabında tutulacağı süre.** Sıfır günlük bir bekletme, günlüklerin süresiz olarak saklanacağı anlamına gelir. Aksi takdirde, değer 1 ile 365 arasında herhangi bir sayıda gün olabilir.
 
-Bekletme ilkeleri ayarlandıysa, ancak günlükleri bir depolama hesabında depolamak devre dışıysa, bekletme ilkelerinin hiçbir etkisi olmaz. Bekletme ilkeleri uygulanan günlük, olduğundan, bir günün (UTC), şu anda sonra saklama günü günlüklerinden sonunda İlkesi silindi. Örneğin, bir günlük bir bekletme ilkesi olsaydı, bugün günün başında dünden önceki gün kayıtları silinir. Gece yarısı UTC, ancak bu günlükleri depolama hesabınızdan silinecek 24 saate kadar sürebilir not silme işlemi başlar.
+Bekletme ilkeleri ayarlandıysa, ancak günlükleri bir depolama hesabında depolamak devre dışıysa, bekletme ilkelerinin hiçbir etkisi olmaz. Bekletme ilkeleri günde bir uygulanır. bu nedenle, günün sonunda, bekletme ilkesinin ötesinde gün içindeki Günlükler silinir. Örneğin, bir gün bekletme ilkeniz varsa, günün başlangıcında, bugünden önce günün günlükleri silinir. Silme işlemi gece yarısı UTC tarihinde başlar, ancak günlüklerin depolama hesabınızdan silinmesi 24 saate kadar sürebilir.
 
 
 > [!IMPORTANT]
@@ -92,29 +92,29 @@ Azure portal **Olay Hub 'ına ver** seçeneğiyle bir günlük profili oluşturu
 
 Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı ve ardından yeni bir tane oluşturmanız gerekir.
 
-1. Bir `Get-AzLogProfile` günlük profilinin mevcut olup olmadığını belirlemek için kullanın.  Bir günlük profili varsa, *Name* özelliğine göz önünde varın.
+1. Bir günlük profilinin mevcut olup olmadığını belirlemek için `Get-AzLogProfile` kullanın.  Bir günlük profili varsa, *Name* özelliğine göz önünde varın.
 
-1. `Remove-AzLogProfile` *Ad* özelliğinden değeri kullanarak günlük profilini kaldırmak için kullanın.
+1. *Ad* özelliğinden değeri kullanarak günlük profilini kaldırmak için `Remove-AzLogProfile` kullanın.
 
     ```powershell
     # For example, if the log profile name is 'default'
     Remove-AzLogProfile -Name "default"
     ```
 
-3. Yeni `Add-AzLogProfile` bir günlük profili oluşturmak için kullanın:
+3. Yeni bir günlük profili oluşturmak için `Add-AzLogProfile` kullanın:
 
     ```powershell
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Özellik | Gerekli | Açıklama |
+    | Özellik | Gereklidir | Açıklama |
     | --- | --- | --- |
-    | Name |Evet |Günlük profilinizin adı. |
-    | StorageAccountId |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
-    | serviceBusRuleId |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Location |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
-    | Retentionındays |Evet |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
-    | Category |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _Write_, _Delete_, and _Action_. |
+    | Adı |Yes |Günlük profilinizin adı. |
+    | Storageaccountıd |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
+    | Servicebusruleıd |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimdeki bir dizedir: `{service bus resource ID}/authorizationrules/{key name}`. |
+    | Konum |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
+    | Retentionındays |Yes |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
+    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
 
 ### <a name="example-script"></a>Örnek betik
 Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına yazan bir günlük profili oluşturmak için örnek bir PowerShell betiği verilmiştir.
@@ -142,22 +142,22 @@ Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına
 
 Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız ve ardından yeni bir günlük profili oluşturmanız gerekir.
 
-1. Bir `az monitor log-profiles list` günlük profilinin mevcut olup olmadığını belirlemek için kullanın.
-2. `az monitor log-profiles delete --name "<log profile name>` *Ad* özelliğinden değeri kullanarak günlük profilini kaldırmak için kullanın.
-3. Yeni `az monitor log-profiles create` bir günlük profili oluşturmak için kullanın:
+1. Bir günlük profilinin mevcut olup olmadığını belirlemek için `az monitor log-profiles list` kullanın.
+2. *Ad* özelliğinden değeri kullanarak günlük profilini kaldırmak için `az monitor log-profiles delete --name "<log profile name>` kullanın.
+3. Yeni bir günlük profili oluşturmak için `az monitor log-profiles create` kullanın:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Özellik | Gerekli | Açıklama |
+    | Özellik | Gereklidir | Açıklama |
     | --- | --- | --- |
-    | name |Evet |Günlük profilinizin adı. |
-    | storage-account-id |Evet |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
-    | locations |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. Kullanarak `az account list-locations --query [].name`aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz. |
-    | days |Evet |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre true olarak ayarlanmalıdır. |
-    |enabled | Evet |TRUE veya False.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
-    | categories |Evet |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
+    | ad |Yes |Günlük profilinizin adı. |
+    | depolama hesabı-kimliği |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
+    | yerlerini |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. @No__t_0 kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz. |
+    | miş |Yes |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
+    |etkinletir | Yes |True veya false.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
+    | kategoriler |Yes |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
 
 
 
@@ -232,14 +232,14 @@ Bu JSON 'daki öğeler aşağıdaki tabloda açıklanmıştır.
 | category |Eylemin kategorisi, örn. Yazma, okuma, eylem. |
 | resultType |Sonucun türü, örn. Başarılı, başarısız, başlangıç |
 | resultSignature |Kaynak türüne bağlıdır. |
-| durationMs |Milisaniye cinsinden işlem süresi |
+| durationMs |İşlem süresi (milisaniye) |
 | callerIpAddress |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının IP adresi. |
 | correlationId |Genellikle dize biçimindeki bir GUID. Bir CorrelationId 'yi paylaşan olaylar aynı Uber eylemine aittir. |
-| identity |Yetkilendirmeyi ve talepleri açıklayan JSON blobu. |
-| authorization |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
-| level |Etkinliğin düzeyi. Aşağıdaki değerlerden biri: _Kritik_, _hata_, _Uyarı_, _bilgilendirici_ve _ayrıntılı_ |
+| kimlik |Yetkilendirmeyi ve talepleri açıklayan JSON blobu. |
+| Yetkisi |Etkinliğin RBAC özelliklerinin blobu. Genellikle "Action", "role" ve "scope" özelliklerini içerir. |
+| düzeyde |Etkinliğin düzeyi. Şu değerlerden biri: _kritik_, _hata_, _Uyarı_, _bilgilendirici_ve _ayrıntılı_ |
 | location |Konumun gerçekleştiği bölge (veya genel). |
-| properties |Etkinliğin ayrıntılarını açıklayan çiftler (ör. sözlük) kümesi. `<Key, Value>` |
+| properties |Olayın ayrıntılarını açıklayan `<Key, Value>` çiftleri (yani sözlük) kümesi. |
 
 > [!NOTE]
 > Bu özelliklerin özellikleri ve kullanımı kaynağa bağlı olarak farklılık gösterebilir.

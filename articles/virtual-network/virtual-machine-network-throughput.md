@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874935"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529108"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -39,10 +39,10 @@ Azure sanal makinelerinin bir tane olması gerekir, ancak bunlara eklenmiş birk
 Beklenen giden aktarım hızı ve her VM boyutu tarafından desteklenen ağ arabirimlerinin sayısı, Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutlarında ayrıntılıdır. Genel amaçlı gibi bir tür seçin ve sonuç sayfasında, Dv2-Series gibi bir boyut serisi seçin. Her serinin, **en fazla NIC/ağ performansı (MB/sn)** adlı son sütunda ağ özelliklerine sahip bir tablosu vardır. 
 
 Aktarım hızı sınırı, sanal makine için geçerlidir. Aktarım hızı aşağıdaki faktörlerden etkilenmez:
-- **Ağ arabirimi sayısı**: Bant genişliği sınırı, sanal makineden giden tüm trafiğin birikimli bir sayısıdır.
-- **Hızlandırılmış ağ**: Bu özellik yayımlanan sınırı elde etmek için yararlı olabilir, ancak sınırı değiştirmez.
-- **Trafik hedefi**: Tüm hedefler giden sınıra doğru sayılır.
-- **Protokol**: Tüm protokollerin tüm giden trafiği sınıra doğru sayılır.
+- **Ağ arabirimi sayısı**: bant genişliği sınırı, sanal makineden giden tüm trafiğin birikimli bir sayıdır.
+- **Hızlandırılmış ağ**: Bu özellik, yayımlanan sınırı elde etmek için yararlı olabilir, ancak sınırı değiştirmez.
+- **Trafik hedefi**: tüm hedefler giden sınıra doğru sayılır.
+- **Protokol**: tüm protokollerde tüm giden trafik sınıra doğru sayılır.
 
 ## <a name="network-flow-limits"></a>Ağ akışı sınırları
 
@@ -60,7 +60,7 @@ Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çeki
 |---|---|---|
 |<b>İyi performans</b>|100K akış |250K akış|
 |<b>Azaltılmış performans</b>|100.000 akış üzerine|250K akışlar üzerinde|
-|<b>Akış sınırı</b>|1M akış|1M akış|
+|<b>Akış sınırı</b>|500 k akış|500 k akış|
 
 [Azure izleyici](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 'de ölçümler, sanal makine veya VMSS örneklerindeki ağ akışı sayısını ve akış oluşturma hızını izlemek için kullanılabilir.
 

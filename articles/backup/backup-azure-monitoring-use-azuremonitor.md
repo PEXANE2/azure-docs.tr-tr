@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177726"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528200"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -29,15 +29,15 @@ Azure Backup, bir kurtarma hizmetleri kasasında [yerleşik izleme ve uyarı öz
 ## <a name="using-log-analytics-workspace"></a>Log Analytics çalışma alanı kullanma
 
 > [!NOTE]
-> Azure VM yedeklemelerinden veri, Azure Backup Aracısı, System Center Data Protection Manager, Azure VM 'lerdeki SQL yedeklemeleri ve Azure dosya paylaşma yedeklemeleri, Tanılama ayarları aracılığıyla Log Analytics çalışma alanına potılmış olur. 
+> Azure VM yedeklemelerinden veri, Azure Backup Aracısı, System Center Data Protection Manager, Azure VM 'lerdeki SQL yedeklemeleri ve Azure dosya paylaşma yedeklemeleri, Tanılama ayarları aracılığıyla Log Analytics çalışma alanına potılmış olur.
 
-Ölçekteki izlemek/raporlamak için iki Azure hizmetinin özelliklerine ihtiyacınız vardır. *Tanılama ayarları* birden çok Azure Resource Manager kaynağından başka bir kaynağa veri gönderir. *Log Analytics* , diğer bildirim kanallarını tanımlamak için eylem gruplarını kullanabileceğiniz özel uyarılar oluşturur. 
+Ölçekteki izlemek/raporlamak için iki Azure hizmetinin özelliklerine ihtiyacınız vardır. *Tanılama ayarları* birden çok Azure Resource Manager kaynağından başka bir kaynağa veri gönderir. *Log Analytics* , diğer bildirim kanallarını tanımlamak için eylem gruplarını kullanabileceğiniz özel uyarılar oluşturur.
 
 Aşağıdaki bölümlerde, Azure Backup ölçeklendirmede Log Analytics nasıl kullanılacağı açıklanır.
 
 ### <a name="configure-diagnostic-settings"></a>Tanılama ayarlarını yapılandırma
 
-Kurtarma Hizmetleri kasası gibi kaynaklar Azure Resource Manager, zamanlanmış işlemler ve Kullanıcı tarafından tetiklenen işlemler hakkındaki bilgileri Tanılama verileri olarak kaydeder. 
+Kurtarma Hizmetleri kasası gibi kaynaklar Azure Resource Manager, zamanlanmış işlemler ve Kullanıcı tarafından tetiklenen işlemler hakkındaki bilgileri Tanılama verileri olarak kaydeder.
 
 İzleme bölümünde **Tanılama ayarları** ' nı seçin ve kurtarma hizmetleri kasasının tanılama verilerinin hedefini belirtin.
 
@@ -66,21 +66,21 @@ Veriler Log Analytics çalışma alanının içindeyken, verileri görselleştir
 
 Genel Bakış kutucuklarından herhangi birini seçtiğinizde daha fazla bilgi görüntüleyebilirsiniz. Göreceğiniz raporlardan bazıları şunlardır:
 
-* Günlük yedekleme dışı Işler
+- Günlük yedekleme dışı Işler
 
    ![Yedekleme işleri için grafik Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
 
-* Azure kaynakları yedeğinden gelen uyarılar
+- Azure kaynakları yedeğinden gelen uyarılar
 
    ![Geri yükleme işleri için Log Analytics grafiği](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
 Benzer şekilde, diğer kutucuklara tıklayarak, geri yükleme Işleri, bulut depolaması, yedekleme öğeleri, şirket Içi kaynaklardan gelen uyarılar ve günlük yedekleme Işleri hakkında raporları görebileceksiniz.
- 
+
 Bu grafikler, şablonla birlikte sağlanır. Gerektiğinde grafikleri düzenleyebilir veya daha fazla grafik ekleyebilirsiniz.
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Log Analytics kullanarak uyarı oluşturma
 
-Azure Izleyici 'de, bir Log Analytics çalışma alanında kendi uyarılarınızı oluşturabilirsiniz. Çalışma alanında, tercih ettiğiniz bildirim mekanizmasını seçmek için *Azure eylem gruplarını* kullanırsınız. 
+Azure Izleyici 'de, bir Log Analytics çalışma alanında kendi uyarılarınızı oluşturabilirsiniz. Çalışma alanında, tercih ettiğiniz bildirim mekanizmasını seçmek için *Azure eylem gruplarını* kullanırsınız.
 
 > [!IMPORTANT]
 > Bu sorguyu oluşturma maliyeti hakkında daha fazla bilgi için bkz. [Azure Monitor fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
@@ -115,7 +115,7 @@ Daha fazla bilgi için bkz. [Azure izleyici kullanarak günlük uyarıları olu�
 
 Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için kusto sorguları sunar. Ayrıca, uyarı almak istediğiniz verileri almak için sorguları da değiştirebilirsiniz. Aşağıdaki örnek kusto sorgularını **Günlükler** sayfasına yapıştırın ve sorgular üzerinde uyarılar oluşturun:
 
-* Tüm başarılı yedekleme işleri
+- Tüm başarılı yedekleme işleri
 
     ````Kusto
     AzureDiagnostics
@@ -124,8 +124,8 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Completed"
     ````
-    
-* Tüm başarısız yedekleme işleri
+
+- Tüm başarısız yedekleme işleri
 
     ````Kusto
     AzureDiagnostics
@@ -134,8 +134,8 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Failed"
     ````
-    
-* Tüm başarılı Azure VM yedekleme işleri
+
+- Tüm başarılı Azure VM yedekleme işleri
 
     ````Kusto
     AzureDiagnostics
@@ -158,7 +158,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     | project-away Resource
     ````
 
-* Tüm başarılı SQL günlük yedekleme işleri
+- Tüm başarılı SQL günlük yedekleme işleri
 
     ````Kusto
     AzureDiagnostics
@@ -181,7 +181,7 @@ Varsayılan grafikler, size uyarı oluşturabileceğiniz temel senaryolar için 
     | project-away Resource
     ````
 
-* Tüm başarılı Azure Backup Aracısı işleri
+- Tüm başarılı Azure Backup Aracısı işleri
 
     ````Kusto
     AzureDiagnostics
@@ -223,7 +223,7 @@ Kasadaki Tanılama verileri, bazı gecikmeye sahip Log Analytics çalışma alan
 Ayrıca, yedekleme başarısı gibi olaylara yönelik bildirim almak için etkinlik günlüklerini de kullanabilirsiniz. Başlamak için şu adımları izleyin:
 
 1. Azure portal oturum açın.
-1. İlgili kurtarma hizmetleri kasasını açın. 
+1. İlgili kurtarma hizmetleri kasasını açın.
 1. Kasanın özelliklerinde, **etkinlik günlüğü** bölümünü açın.
 
 Uygun günlüğü belirlemek ve bir uyarı oluşturmak için:
@@ -233,7 +233,7 @@ Uygun günlüğü belirlemek ve bir uyarı oluşturmak için:
    ![Azure VM yedeklemeleri için etkinlik günlüklerini bulmak üzere filtreleme](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
 1. İlgili ayrıntıları görmek için işlem adını seçin.
-1. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** ' nı seçin. 
+1. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** ' nı seçin.
 1. [Azure izleyici 'yi kullanarak etkinlik günlüğü uyarılarını oluşturma, görüntüleme ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)bölümündeki adımları izleyerek bir uyarı oluşturun.
 
    ![Yeni uyarı kuralı](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
@@ -244,10 +244,10 @@ Kaynak, kurtarma hizmetleri kasasının kendisidir. Etkinlik günlükleri aracı
 
 Etkinlik günlüklerinden oluşturulan tüm uyarıları ve Azure Izleyici 'de Log Analytics çalışma alanlarını görüntüleyebilirsiniz. Sol taraftaki **Uyarılar** bölmesini açmanız yeterlidir.
 
-Etkinlik günlükleri aracılığıyla bildirim alabilmeniz mümkün olsa da, ölçeklendirerek izleme için etkinlik günlükleri yerine Log Analytics kullanmanızı kesinlikle öneririz. Bunu istememizin nedeni:
+Etkinlik günlükleri aracılığıyla bildirim alabilmeniz mümkün olsa da, ölçeklendirerek izleme için etkinlik günlükleri yerine Log Analytics kullanmanızı kesinlikle öneririz. İşte şunları yapın:
 
 - **Sınırlı senaryolar**: etkinlik günlükleri aracılığıyla yapılan bildirimler yalnızca Azure VM yedeklemeleri için geçerlidir. Bildirimlerin her kurtarma hizmetleri Kasası için ayarlanmış olması gerekir.
-- **Tanım Sığdır**: zamanlanmış yedekleme etkinliği, etkinlik günlüklerinin en son tanımına uymuyor. Bunun yerine, [tanılama günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)ile hizalanır. Bu hizalama, etkinlik günlüğü kanalı üzerinden akan veriler değiştiğinde beklenmeyen etkilere neden olur.
+- **Tanım Sığdır**: zamanlanmış yedekleme etkinliği, etkinlik günlüklerinin en son tanımına uymuyor. Bunun yerine, [kaynak günlükleriyle](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)hizalanır. Bu hizalama, etkinlik günlüğü kanalı üzerinden akan veriler değiştiğinde beklenmeyen etkilere neden olur.
 - **Etkinlik günlüğü kanalında Ilgili sorunlar**: kurtarma hizmetleri kasalarında, Azure Backup POED olan etkinlik günlükleri yeni bir modeli takip ediyor. Ne yazık ki bu değişiklik, Azure Kamu, Azure Almanya ve Azure Çin 21Vianet 'deki etkinlik günlüklerinin oluşturulmasını etkiler. Bu bulut Hizmetleri kullanıcıları Azure Izleyici 'de etkinlik günlüklerinden herhangi bir uyarı oluşturup yapılandırırsa, uyarılar tetiklenmez. Ayrıca, tüm Azure genel bölgelerinde, bir Kullanıcı [Kurtarma Hizmetleri etkinlik günlüklerini bir Log Analytics çalışma alanında topluyorsa](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), bu Günlükler görünmez.
 
 Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve uyarmak için bir Log Analytics çalışma alanı kullanın.

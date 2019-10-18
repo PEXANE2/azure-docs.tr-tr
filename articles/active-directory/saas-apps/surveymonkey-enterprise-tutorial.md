@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Gözetimi Kurumsal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: gözetimi Kurumsal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve gözetimi Kurumsal arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce7f40c300a86acd101d1b38cfef4b2af91c4085
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 4238033f94fe8bfdc677c9eb623a2eab3cdf371c
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772683"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532928"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>Öğretici: Gözetimi Kurumsal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-surveymonkey-enterprise"></a>Öğretici: gözetimi Kurumsal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, Azure Active Directory (Azure AD) ile araştırma ile ilgili bir kurumsal tümleştirmeyi nasıl tümleştirileceğini öğreneceksiniz. Araştırma yaparken, Azure AD ile birlikte tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -45,6 +45,9 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Privya Enterprise, **IDP** tarafından başlatılan SSO 'yu destekler
+
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
 ## <a name="adding-surveymonkey-enterprise-from-the-gallery"></a>Galeriden gözetimi kurumsal ekleme
 
@@ -82,6 +85,18 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
+1. Izleme kurumsal uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/edit-attribute.png)
+
+6. Daha fazla bilgi için, Gözyıllarımızla kurumsal uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+
+    | Adı | Kaynak özniteliği|
+    | ---------------| --------------- |
+    | E-posta | Kullanıcı. Mail |
+    | firstName | Kullanıcı. |
+    | Soyadı | User. soyadı |
+
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
@@ -90,19 +105,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Byımaymun Enterprise 'a erişim vererek B. Simon 'u etkinleştireceksiniz.
 
@@ -110,7 +125,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Byımaymun Enter
 1. Uygulamalar listesinde, **gözetimi kurumsal**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -122,15 +137,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Byımaymun Enter
 
 ## <a name="configure-surveymonkey-enterprise-sso"></a>Gözetimi Kurumsal SSO 'yu yapılandırma
 
-**Izleme kurumsal** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal ' dan gözlemaymun [Kurumsal Destek ekibine](mailto:support@selerix.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Izleme kurumsal** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal ' dan gözlemaymun [Kurumsal Destek ekibine](mailto:support@selerix.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-surveymonkey-enterprise-test-user"></a>Gözetimi kurumsal test kullanıcısı oluşturma
 
-Bu bölümde, Byımaymun Enterprise 'ta B. Simon adlı bir Kullanıcı oluşturacaksınız. Gözetimi kurumsal platformlardaki kullanıcıları eklemek için [gözetimi kurumsal destek ekibi](mailto:support@selerix.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Gözetimi durumunda bir test kullanıcısı oluşturmak gerekli değildir. Kullanıcı, SAML onaylama 'ya göre yeni bir hesap oluşturmayı seçerse Kullanıcı hesapları sağlanacak. Gözlerinizin, Azure meta verileri, Izleme kurumsal yapılandırmasına eklendikten ve doğrulama için hazırlandıktan sonra, bu süreci tamamlamaya yönelik araştırma adımları sağlayacaktır.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde gözetimi kurumsal kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız araştırma kuruluşunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

@@ -4,18 +4,18 @@ description: Bu makale AzCopy Sync komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fb6c3b711a89ae7e4ef403a75927c4c6172523d0
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195769"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513427"
 ---
-# <a name="azcopy-sync"></a>AzCopy eşitleme
+# <a name="azcopy-sync"></a>azcopy eşitleme
 
 Kaynak konumunu hedef konuma çoğaltır.
 
@@ -26,19 +26,18 @@ Son değiştirme zamanları karşılaştırma için kullanılır. Hedefteki son 
 Desteklenen çiftler şunlardır:
 
 - Yerel < > Azure Blobu (SAS veya OAuth kimlik doğrulaması kullanılabilir)
+- Azure Blob <-> Azure Blob (kaynak bir SAS içermeli ya da genel olarak erişilebilir olmalıdır; hedef için SAS veya OAuth kimlik doğrulaması kullanılabilir)
+- Azure dosya <-> Azure dosyası (kaynak bir SAS içermeli veya genel olarak erişilebilir olmalıdır; Hedef için SAS kimlik doğrulaması kullanılmalıdır)
 
 Eşitle komutu kopyalama komutundan farklı yollarla farklılık gösterir:
 
-  1. Özyinelemeli bayrak varsayılan olarak açık olur.
-  2. Kaynak ve hedef desenler içermemelidir (* veya? gibi).
-  3. Include ve exclude bayrakları, dosya adlarıyla eşleşen desenlerin bir listesi olabilir. Lütfen çizim için örnek bölümüne bakın.
-  4. Hedefte mevcut olmayan dosya veya blob 'lar varsa, kullanıcıdan onları silmesi istenir.
-
-     Bu istem, silme sorusuna otomatik olarak yanıt vermek için karşılık gelen bayraklar kullanılarak susuyor olabilir.
+1. Varsayılan olarak, özyinelemeli bayrak true olur ve tüm alt dizinleri eşitler. Eşitleme yalnızca özyinelemeli bayrak false ise, en üst düzey dosyaları bir dizin içinde kopyalar.
+2. Sanal dizinler arasında eşitleme yaparken, bir sanal dizinle aynı ada sahip bir blob varsa yola bir sondaki eğik çizgi ekleyin (örneklere bakın).
+3. ' DeleteDestination ' bayrağı true ya da Prompt olarak ayarlandıysa, eşitleme, hedefteki dosyaları ve Blobları kaynakta mevcut olmayan şekilde siler.
 
 ### <a name="advanced"></a>Gelişmiş
 
-AzCopy, dosya uzantısına veya içeriğe (uzantı belirtilmediyse) göre yerel diskten karşıya yüklenirken dosyaların içerik türünü otomatik olarak algılar.
+Bir dosya uzantısı belirtmezseniz, AzCopy dosya uzantısına veya içeriğe (uzantı belirtilmediyse) göre yerel diskten karşıya yüklenirken dosyaların içerik türünü otomatik olarak algılar.
 
 Yerleşik arama tablosu küçüktür, ancak UNIX üzerinde, bu adlardan biri veya birkaçı altında varsa, yerel sistemin MIME. Types dosyaları tarafından Genişletilebilir:
 
@@ -72,7 +71,7 @@ Tüm dizini alt dizinleriyle birlikte eşitleyin (özyinelemeli, varsayılan ola
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-veya
+or
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -96,22 +95,55 @@ Bir dizinin tamamını eşitleyin, ancak belirli dosyaları kapsamdan dışlayı
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
+Tek bir blobu eşitleme:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+
+Sync a virtual directory:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
+```
+
+Aynı ada sahip bir sanal dizini blob ile eşitleyin (belirsizliği ortadan kaldırmak için yola eğik çizgi ekleyin):
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
+```
+
+Bir Azure dosya dizinini eşitleme (blob ile aynı söz dizimi):
+
+```azcopy
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+```
+
 > [!NOTE]
-> dahil etme/hariç tutma bayrakları birlikte kullanılırsa, yalnızca içerme desenleriyle eşleşen dosyalar aranabilir, ancak dışlama desenleriyle eşleşen dosyalar her zaman yok sayılır.
+> Dahil etme/hariç tutma bayrakları birlikte kullanılırsa, yalnızca içerme desenleriyle eşleşen dosyalar aranabilir, ancak dışlama desenleriyle eşleşen dosyalar her zaman yok sayılır.
 
 ## <a name="options"></a>Seçenekler
 
-|Seçenek|Açıklama|
-|--|--|
-|--blok-boyut-MB float|Azure depolama 'ya yükleme yaparken veya Azure Storage 'dan indirerek bu blok boyutunu (MIB 'de belirtilmiştir) kullanın. Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (örneğin: 0,25).|
-|--Check-MD5 dizesi|İndirme sırasında ne kadar tam MD5 karmalarının doğrulanması gerektiğini belirtir. Bu seçenek yalnızca indirme sırasında kullanılabilir. Kullanılabilir değerler şunlardır: NoCheck, LogOnly, Failiffarklı, Failiffarklıentormissing. (varsayılan "Failiffarklı").|
-|--Sil-hedef dize|kaynak üzerinde mevcut olmayan hedefteki ek dosyaların silinip oluşturulmayacağını tanımlar. True, false veya Prompt olarak ayarlanabilir. Sor olarak ayarlandıysa, kullanıcıya dosyaları ve Blobları silmeye başlamadan önce bir soru sorulur. (varsayılan "false").|
-|--dizeyi Dışla|Adın, model listesiyle eşleştiği dosyaları dışlayın. Örneğin: *. jpg;* . PDF; exactName.|
-|-h,--yardım|Eşitleme komutu için yardım içeriğini göster.|
-|--Include dizesi|Yalnızca adın, model listesiyle eşleştiği dosyaları ekleyin. Örneğin: *. jpg;* . PDF; exactName.|
-|--günlük düzeyi dize|Kullanılabilir düzeyler için günlük dosyası ayrıntı düzeyini tanımlayın: BILGI (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve HIÇBIRI (çıktı günlüğü yok). (varsayılan "BILGI").|
-|--Put-MD5|Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.|
-|--özyinelemeli|Varsayılan olarak, dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın. (varsayılan doğru).|
+**--blok-boyut-MB** float, Azure depolama 'ya yükleme yaparken veya Azure Storage 'dan indirerek bu blok boyutunu (MIB 'de belirtilir) kullanır. Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (örneğin: 0,25).
+
+**--Check-MD5** dizesi, indirme sırasında ne kadar MD5 karmalarının doğrulanması gerektiğini belirtir. Bu seçenek yalnızca indirme sırasında kullanılabilir. Kullanılabilir değerler şunlardır: NoCheck, LogOnly, Failiffarklı, Failiffarklıentormissing. (varsayılan ' Failiffarklı '). (varsayılan "Failiffarklı")
+
+**--Delete-Destination** dizesi, kaynakta mevcut olmayan hedefe ait ek dosyaların silinip oluşturulmayacağını tanımlar. True, false veya Prompt olarak ayarlanabilir. Sor olarak ayarlandıysa, kullanıcıya dosyaları ve Blobları silmeye başlamadan önce bir soru sorulur. (varsayılan ' false '). (varsayılan "false")
+
+**--exclude-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları hariç tutar. Örneğin: A; Malar Sağ
+
+**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: *. jpg;* . PDF; exactName
+
+**-h,--** eşitleme için yardım yardımı
+
+**--Include-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
+
+**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: *. jpg;* . PDF; exactName
+
+**--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler ve yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan BILGI). (varsayılan "BILGI")
+
+**--PUT-MD5**                     Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.
+
+**--özyinelemeli**                   Varsayılan olarak, dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın. (varsayılan doğru). (varsayılan doğru)
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 

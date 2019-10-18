@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/30/2019
 ms.author: aahi
 ms.openlocfilehash: 7fb00fd3ce588aeeba4f315f191f6b82d6b75715
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71695865"
 ---
 # <a name="quickstart-bing-visual-search-client-library-for-java"></a>Hızlı başlangıç: Java için Bing Görsel Arama istemci kitaplığı
@@ -25,7 +25,7 @@ Java için Bing Görsel Arama istemci kitaplığını kullanarak şunları yapı
 * Görsel arama isteği göndermek için bir görüntü karşıya yükleyin.
 * Görüntü Insight belirtecini ve görsel arama etiketlerini alın.
 
-[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Başvuru belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable)  | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  | [yapıt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/)  | [örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +42,7 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 * Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra anahtar için `BING_SEARCH_V7_SUBSCRIPTION_KEY` adlı [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, `BING_SEARCH_V7_SUBSCRIPTION_KEY` adlı anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ### <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
 
@@ -52,7 +52,7 @@ Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bi
 mkdir myapp && cd myapp
 ```
 
-Çalışma dizininizden `gradle init` komutunu çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *Build. Gradle. kts* de dahil olmak üzere Gradle için gerekli derleme dosyaları oluşturur.
+Çalışma dizininizdeki `gradle init` komutunu çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *Build. Gradle. kts* de dahil olmak üzere Gradle için gerekli derleme dosyaları oluşturur.
 
 ```console
 gradle init --type basic
@@ -103,7 +103,7 @@ public class BingVisualSearchSample {
 }
 ```
 
-Uygulamanın `main` yönteminde, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir. Sonra karşıya yüklediğiniz görüntü için bir `byte[]` oluşturun. Daha sonra tanımlayabileceğiniz yöntemler için `try` bloğu oluşturun ve `toByteArray()` ' i kullanarak görüntüyü yükleyin ve bayta dönüştürün.
+Uygulamanın `main` yönteminde, kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir. Ardından karşıya yüklediğiniz görüntü için bir `byte[]` oluşturun. Daha sonra tanımladığınız yöntemler için bir `try` bloğu oluşturun ve `toByteArray()` kullanarak görüntüyü yükleyin ve bayta dönüştürün.
 
 [!code-java[Main method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=main)]
 
@@ -112,7 +112,7 @@ Uygulamanın `main` yönteminde, kaynağınızın Azure uç noktası ve anahtar�
 
 Bu hızlı başlangıç, Gradle bağımlılık yöneticisini kullanır. İstemci kitaplığını ve diğer bağımlılık yöneticilerinin bilgilerini [Maven merkezi deposunda](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)bulabilirsiniz.
 
-Projenizin *Build. Gradle. kts* dosyasında, istemci kitaplığını `implementation` bir ifade olarak eklediğinizden emin olun. 
+Projenizin *Build. Gradle. kts* dosyasında, istemci kitaplığını bir `implementation` bildiri olarak eklediğinizden emin olun. 
 
 ```kotlin
 dependencies {
@@ -133,7 +133,7 @@ Bu kod parçacıkları, Bing Görsel Arama istemci kitaplığı ve Java ile aşa
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu hızlı başlangıçta, Bing Görsel Arama anahtarınız için `BING_SEARCH_V7_SUBSCRIPTION_KEY` adlı [bir ortam değişkeni oluşturdunuz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayılır.
+> Bu hızlı başlangıç, `BING_SEARCH_V7_SUBSCRIPTION_KEY` adlı Bing Görsel Arama anahtarınız için [bir ortam değişkeni oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar.
 
 
 Ana yönteminizin içinde, bir [Bingvisualsearchapı](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable) nesnesi oluşturmak için abonelik anahtarınızı kullandığınızdan emin olun.
@@ -162,7 +162,7 @@ Uygulamayı ile oluşturabilirsiniz:
 gradle build
 ```
 
-@No__t-0 hedefi ile uygulamayı çalıştırın:
+Uygulamayı `run` hedefle çalıştırın:
 
 ```console
 gradle run

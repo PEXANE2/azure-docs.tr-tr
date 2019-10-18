@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 0c7d3ed7e2cbaee7d30f368efa004bbb3daaafdd
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 6ef58d1444eb0ec7b2b8891f944b428a613edf3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996878"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515620"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ile dijital mürekkebi tanıma veC#
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
     - Newtonsoft. json ' i Visual Studio 'da bir NuGet paketi olarak yüklemek için:
         1. **Çözüm Yöneticisi** 'ne sağ tıklayın
         2. **NuGet Paketlerini Yönet...** öğesine tıklayın.
-        3. @No__t-0 araması yapın ve paketi yükler
+        3. @No__t_0 ara ve paketi yüklensin
 - Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
 
 - Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
@@ -49,17 +49,17 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 1. Visual Studio 'da yeni bir konsol çözümü oluşturun ve aşağıdaki paketleri ekleyin. 
     
-    [!code-csharp[imports](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
 2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun ve örnek JSON dosyası. Uç nokta daha sonra, API 'ye erişmek için `inkRecognitionUrl` ile birleştirilir. 
 
-    [!code-csharp[endpoint file path and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
 1. Yukarıda oluşturulan değişkenleri alan `Request` adlı yeni bir zaman uyumsuz işlev oluşturun.
 
-2. @No__t-0 nesnesi kullanarak istemcinin güvenlik protokolünü ve başlık bilgilerini ayarlayın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine eklediğinizden emin olun. Ardından istek için `StringContent` nesnesi oluşturun.
+2. İstemcinin güvenlik protokolünü ve üst bilgi bilgilerini bir `HttpClient` nesnesi kullanarak ayarlayın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine eklediğinizden emin olun. Ardından istek için `StringContent` nesnesi oluşturun.
  
 3. İsteği `PutAsync()` ile gönderin. İstek başarılı olursa yanıtı döndürün.  
     
@@ -67,7 +67,7 @@ Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwli
 
 ## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönder
 
-1. @No__t-0 adlı yeni bir işlev oluşturun. İsteği oluşturun ve uç noktanız, abonelik anahtarınız, API URL 'SI ve dijital mürekkep konturu verileri ile `Request()` işlevini çağırarak gönderin.
+1. @No__t_0 adlı yeni bir işlev oluşturun. İsteği oluşturun ve uç noktanız, abonelik anahtarınız, API URL 'SI ve dijital mürekkep konturu verileri ile `Request()` işlevini çağırarak gönderin.
 
 2. JSON nesnesinin serisini kaldırma ve konsola yazma. 
     

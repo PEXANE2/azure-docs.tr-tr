@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434041"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529385"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>Blob verilerini anlamak için AI kullanma
 
@@ -40,7 +40,7 @@ Azure Blob depolama alanında, tek bir kapsayıcıda bulunan bloblarınızın gi
 
 Between, ardışık düzen mimarisinin kendisidir. İşlem hattı, AI sağlayan bir veya daha fazla *beceriden* oluşan bir *beceri*atayabileceğiniz *Dizin Oluşturucu* özelliğini temel alır. İşlem hattının amacı, ham içerik olarak girebileceğiniz ancak ardışık düzen boyunca geçiş yaparken ek yapıyı, bağlamı ve bilgileri alan, *zenginleştirilmiş belgeler* oluşturmak için kullanılır. Zenginleştirilmiş belgeler, tam metin aramasında veya araştırmayla ve analizte kullanılan ters dizinler ve diğer yapılar oluşturmak için dizin oluşturma sırasında tüketilecektir.
 
-## <a name="start-with-services-and-data"></a>Hizmetler ve verilerle başlayın
+## <a name="start-with-services"></a>Hizmetlerle başlayın
 
 Azure Search ve Azure Blob depolamaya ihtiyacınız vardır. BLOB depolama alanında, kaynak içerik sağlayan bir kapsayıcıya ihtiyacınız vardır.
 

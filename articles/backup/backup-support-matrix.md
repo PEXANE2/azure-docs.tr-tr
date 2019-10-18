@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9671ddcf98ae97c0a3df49cce008faf403f5dcd2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5adcf252fed4ac94ae4261886b24eb087424bdbe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981105"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533137"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -59,7 +59,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 **Sınır** | **Ayrıntılar**
 --- | ---
 **Azure VM veri diskleri** | 16 sınırı
-**Azure VM veri diski boyutu** | , Sanal makinelerin her disk boyutu için 30 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB 'lık şekilde yedeklenmesini destekler.
+**Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM yedekleme seçenekleri
 

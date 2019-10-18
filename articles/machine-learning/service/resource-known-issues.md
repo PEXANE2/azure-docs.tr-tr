@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286540"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533182"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -37,7 +37,7 @@ Bir denemeyi çalıştırmak, veri kümesini görselleştirmek için yalnızca v
  
 Bu yüklemeden önce veri kümesini herhangi bir veri dönüştürme modülüne bağlayabilirsiniz (veri kümesinde sütunları seçin, meta verileri düzenleyebilir, verileri bölebilir vb.) ve denemeyi çalıştırabilirsiniz. Daha sonra veri kümesini görselleştirebilirsiniz. 
 
-Aşağıdaki görüntüde nasıl yapılacağı gösterilmektedir: ![visulize-Data @ no__t-1
+Aşağıdaki görüntüde nasıl kullanıldığı gösterilmektedir: ![visulize-veri ](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK yükleme sorunları
 
@@ -67,7 +67,7 @@ Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, gö
 
 ## <a name="deployment-failure"></a>Dağıtım hatası
 
-@No__t-0 ' ı gözlemlerseniz, dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin.
+@No__t_0 gözlemlerseniz, dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin.
 
 ## <a name="fpgas"></a>FPGA'lar
 
@@ -87,7 +87,7 @@ Databricks ve Azure Machine Learning sorunları.
 
 ### <a name="failure-when-installing-packages"></a>Paketler yüklenirken hata oluştu
 
-Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. @No__t-0 gibi bazı paketler çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
+Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. @No__t_0 gibi bazı paketler çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -101,7 +101,7 @@ Azure Databricks üzerinde otomatik makine öğrenimi özellikleri kullandığı
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>otomatik makine öğrenimi için 10 > yineleme
 
-Otomatik makine öğrenimi ayarları ' nda, 10 ' dan fazla yineleme varsa, çalıştırmayı gönderdiğinizde `show_output` ' ı `False` olarak ayarlayın.
+Otomatik makine öğrenimi ayarları ' nda, 10 ' dan fazla yinelediğiniz bir `show_output`, çalıştırmayı gönderdiğinizde `False` olarak ayarlayın.
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure Machine Learning SDK/otomatik makine öğrenimi için pencere öğesi
 
@@ -130,9 +130,9 @@ Bu adımlar sorunu çözmezse, kümeyi yeniden başlatmayı deneyin.
 
 Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası görürseniz, aşağıdaki çözümlere başvurun:
 
-* @No__t-0 paketini en son sürüme yükseltin.
-* @No__t-0 sürüm 1.1.8 veya üstünü ekleyin.
-* @No__t-0 sürüm 0,11 veya üstünü ekleyin.
+* @No__t_0 paketini en son sürüme yükseltin.
+* @No__t_0 Version 1.1.8 veya üstünü ekleyin.
+* @No__t_0 sürüm 0,11 veya üstünü ekleyin.
 
 ## <a name="azure-portal"></a>Azure portalı
 
@@ -171,7 +171,7 @@ Uzak bir işten bir işlem hedefinde yönetim işlemi gerçekleştirirseniz, aş
 
 ## <a name="overloaded-azurefile-storage"></a>Aşırı yüklenmiş AzureFile depolama
 
--0 @no__t bir hata alırsanız, aşağıdaki geçici çözümleri uygulayın.
+@No__t_0 bir hata alırsanız, aşağıdaki geçici çözümleri uygulayın.
 
 Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyorsanız, dosya paylaşımının çalıştırmaları için kullanılabilmesi için blob 'ları kullanmak, bu nedenle söz konusu çalışma. İş yükünü iki farklı çalışma alanı arasında da bölebilirsiniz.
 
@@ -218,7 +218,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. @No__t-2 ' ye sağlamadan önce gizliliklerin `cert.pem` ve `key.pem` bileşenlerinin kodunu çözmelisiniz. 64 
+>Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. @No__t_2 'e vermeden önce gizliliklerin `cert.pem` ve `key.pem` bileşenlerinin kodunu çözmelisiniz. 64 
 
 ## <a name="recommendations-for-error-fix"></a>Hata düzeltilme önerileri
 Genel gözlemye bağlı olarak, Azure ML 'deki bazı yaygın hataları gidermeye yönelik Azure ML önerileri aşağıda verilmiştir.
@@ -226,7 +226,7 @@ Genel gözlemye bağlı olarak, Azure ML 'deki bazı yaygın hataları gidermeye
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (modül adı yok)
 Azure ML 'de denemeleri gönderirken ModuleErrors 'da çalıştırıyorsanız, eğitim betiğinin bir paketin yüklenmesini beklediği ancak eklenmediği anlamına gelir. Paket adı 'nı sağladığınızda, Azure ML, paketi eğitiminizi için kullanılan ortama yükler. 
 
-Denemeleri göndermek için [estimators](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) kullanıyorsanız, paketi yüklemek istediğiniz kaynağı temel alan tahmin aracı 'da `pip_packages` veya `conda_packages` parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, `conda_dependencies_file`kullanarak tüm bağımlılıklarınızı içeren bir yıml dosyası belirtebilir veya `pip_requirements_file` parametresini kullanarak bir txt dosyasındaki tüm PIP gereksinimlerinizi listeleyebilirsiniz.
+Denemeleri göndermek için [estimators](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) kullanıyorsanız, paketi yüklemek istediğiniz kaynağı temel alan tahmin aracı 'da `pip_packages` veya `conda_packages` parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, `pip_requirements_file` parametresini kullanarak bir txt dosyasındaki tüm zar gereksinimlerinizi listelemek `conda_dependencies_file`or kullanarak, tüm bağımlılıklarınız ile bir de bir de belirtebilirsiniz.
 
 Azure ML, TensorFlow, PyTorch, Chainer ve Sköğren için çerçeveye özel tahminler de sağlar. Bu tahmini kullanımı, Framework bağımlılıklarının eğitim için kullanılan ortamda sizin adınıza yüklü olduğundan emin olur. Yukarıda açıklandığı gibi ek bağımlılıklar belirtme seçeneğiniz vardır. 
  
@@ -236,7 +236,7 @@ Azure ML, TensorFlow, PyTorch, Chainer ve Sköğren için çerçeveye özel tahm
 >[Note!] Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (ad tanımlı değil), AttributeError (nesne bir özniteliğe sahip değil)
-Bu özel durum, eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, hata iletisine bakmak için `run.get_details()` ' ı kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın, yeniden denemeden önce hatayı onarın. 
+Bu özel durum, eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, hata iletisine bakmak için `run.get_details()` kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın, yeniden denemeden önce hatayı onarın. 
 
 ### <a name="horovod-is-shutdown"></a>Horovod kapanıyor
-Çoğu durumda, bu özel durum horovod ' nin kapanmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPı işindeki her bir derecelendirme, Azure ML 'de özel bir günlük dosyası alır. Bu Günlükler `70_driver_logs` olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adlarının `_rank` ile yeniden düzeltilmesi gerekir. Horovod kapatmaya neden olan hatayı tam olarak bulmak için tüm günlük dosyalarını gözden geçirin ve driver_log dosyalarının sonundaki `Traceback` ' a bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
+Çoğu durumda, bu özel durum horovod ' nin kapanmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPı işindeki her bir derecelendirme, Azure ML 'de özel bir günlük dosyası alır. Bu Günlükler `70_driver_logs` olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adları `_rank` ile sonlardır. Horovod kapatmaya neden olan hatayı tam olarak bulmak için tüm günlük dosyalarını gözden geçirin ve driver_log dosyalarının sonundaki `Traceback` bulun. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 

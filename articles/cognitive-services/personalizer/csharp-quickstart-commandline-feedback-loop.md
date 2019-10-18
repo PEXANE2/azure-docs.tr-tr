@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: .NET için kişiselleştirici istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: .NET için kişiselleştirici istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Bir öğrenme döngüsü kullanarak .NET için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345224"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515605"
 ---
-# <a name="quickstart-personalize-client-library-for-net"></a>Hızlı Başlangıç: .NET için istemci kitaplığını kişiselleştirin
+# <a name="quickstart-personalizer-client-library-for-net"></a>Hızlı başlangıç: .NET için kişiselleştirici istemci kitaplığı
 
 Bu C# hızlı başlangıçta kişiselleştirilmiş Içeriği kişiselleştirici hizmeti ile görüntüleyin.
 
@@ -26,7 +26,7 @@ Bu C# hızlı başlangıçta kişiselleştirilmiş Içeriği kişiselleştirici 
  * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
  * En çok kullanılan derecelendirme eyleminin başarısını belirten rapor ödül.
 
-[Başvuru belge](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -53,8 +53,8 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 <!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
 
-* `PERSONALIZER_RESOURCE_KEY`Kaynak anahtarı için.
-* `PERSONALIZER_RESOURCE_ENDPOINT`Kaynak uç noktası için.
+* Kaynak anahtarı için `PERSONALIZER_RESOURCE_KEY`.
+* Kaynak uç noktası için `PERSONALIZER_RESOURCE_ENDPOINT`.
 
 Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
 
@@ -70,7 +70,7 @@ Bir kişiselleştirici döngüsü ilk kez oluşturulduğunda, üzerinden eğitel
 
 Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad `new` `personalizer-quickstart`ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur `Program.cs`:. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `personalizer-quickstart` adında yeni bir konsol uygulaması oluşturmak için DotNet `new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: `Program.cs`. 
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -122,19 +122,19 @@ Bu kod parçacıkları, .NET için kişiselleştirici istemci kitaplığı ile a
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodu aşağıdaki `using` yönergelerle değiştirin:
+Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodunu aşağıdaki `using` yönergeleriyle değiştirin:
 
 [!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-**Program** sınıfında, ve `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT`adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+**Program** sınıfında, kaynak Azure anahtarı ve `PERSONALIZER_RESOURCE_KEY` ve `PERSONALIZER_RESOURCE_ENDPOINT` adlı ortam değişkenlerinden çekilme uç noktası için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
 
-Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine `PERSONALIZER_RESOURCE_ENDPOINT` parametresi, ve apikey `PERSONALIZER_RESOURCE_KEY`' dir.
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine yönelik parametre `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
@@ -146,7 +146,7 @@ Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçim
 
 [!code-csharp[Present food taste preference to the user](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createUserFeatureTastePreference)]
 
-Her iki yöntem de `GetKey` , komut satırından kullanıcının seçimini okumak için yöntemini kullanır. 
+Her iki yöntem de, komut satırından kullanıcının seçimini okumak için `GetKey` yöntemini kullanır. 
 
 [!code-csharp[Read user's choice from the command line](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=readCommandLine)]
 
@@ -154,7 +154,7 @@ Her iki yöntem de `GetKey` , komut satırından kullanıcının seçimini okuma
 
 Kişiselleştirici öğrenme döngüsü, bir derece ve yeniden arama çağrısı döngüsüdür. Bu hızlı başlangıçta, içeriği kişiselleştirmek için her bir derecelendirme çağrısı, kişiselleştirmeden hizmetin içeriği derecelendirerek ne kadar iyi bir şekilde bilgi verdiğini söyleyerek bir ödül çağrısıyla izlenir. 
 
-Program `main` yönteminde aşağıdaki kod, kullanıcıdan komut satırında tercihlerini isteme, bu bilgileri kişisel olarak derecelendirmeyi bir şekilde gönderme ve derecelendirme seçimini bir Kullanıcı arasından seçim yapmak üzere müşteriye sunma daha sonra, kişiselleştirmeden bir ödül göndererek hizmetin seçimi derecelendirerek ne kadar iyi olduğunu işaret edin.
+Programın `main` yönteminde aşağıdaki kod, kullanıcıdan komut satırında tercihlerini isteme, bu bilgileri Kişiselleştiriciye bir şekilde gönderme ve derecelendirme seçimini liste arasından seçim yapmak üzere müşteriye sunma gibi bir döngüyle geçer daha sonra, kişiselleştirmeden bir ödül gönderdiğinizde hizmetin seçimi derecelendirmesi ne kadar iyi olduğunu işaret ediyor.
 
 ```csharp
 static void Main(string[] args)
@@ -242,7 +242,7 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-conten
 
 ## <a name="request-a-rank"></a>Bir derece iste
 
-Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini içerik seçimlerinden `currentContent` birini oluşturacak şekilde sorar. İşlem, olarak `excludeActions`gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
+Program, derecelendirme isteğini gerçekleştirmek için kullanıcının tercihlerine içerik seçeneklerinin `currentContent` oluşturmasını ister. İşlem, `excludeActions` olarak gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
 
 Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](concepts-features.md) belirlemek ve [değerlendirmek](concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.  
 

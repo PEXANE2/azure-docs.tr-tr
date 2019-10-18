@@ -49,6 +49,8 @@
       href: manage-stale-devices.md
     - name: Enterprise State Roaming’i etkinleştirme
       href: enterprise-state-roaming-enable.md
+    - name: Sanal masaüstü altyapısı
+      href: howto-device-identity-virtual-desktop-infrastructure.md
     - name: Azure tarafından yönetilen iş istasyonlarını dağıtma
       href: howto-azure-managed-workstation.md
     - name: Cihaz kimliği sorunlarını giderme

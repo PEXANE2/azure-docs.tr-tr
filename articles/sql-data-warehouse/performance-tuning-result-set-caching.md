@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 2fa3da028e6e897921786889579c6de9a048c3e8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392650"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513989"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesi önbelleğe alma performans ayarı  
 Sonuç kümesi önbelleği etkinleştirildiğinde, Azure SQL veri ambarı yinelenen kullanım için Kullanıcı veritabanındaki sorgu sonuçlarını otomatik olarak önbelleğe alır.  Bu, sonraki sorgu yürütmelerinin sonuçları doğrudan kalıcı önbellekten almasına izin verir, böylece yeniden hesaplama gerekmez.   Sonuç kümesi önbelleğe alma, sorgu performansını geliştirir ve işlem kaynağı kullanımını azaltır.  Ayrıca, önbelleğe alınmış sonuçlar kullanan sorgular bir eşzamanlılık yuvası kullanmaz ve bu nedenle mevcut eşzamanlılık sınırlarına göre sayılmaz. Güvenlik için, kullanıcılar önbelleğe alınmış sonuçlara yalnızca, önbellekteki sonuçları oluşturan kullanıcılarla aynı veri erişimi izinleri varsa erişebilir.  
@@ -37,6 +37,8 @@ Sonuç kümesi önbelleği bir veritabanı için açıldıktan sonra, bu sorgula
 - Satır boyutu 64 KB 'tan büyük verileri döndüren sorgular
 
 Büyük sonuç kümelerine sahip sorgular (örneğin, > 1.000.000 satırları), sonuç önbelleği oluşturulurken ilk çalıştırma sırasında daha yavaş performans yaşayabilir.
+
+Satır düzeyi güvenlik, sonuç kümesi önbelleğe alma tarafından desteklenmez.  
 
 ## <a name="when-cached-results-are-used"></a>Önbelleğe alınmış sonuçlar kullanıldığında
 

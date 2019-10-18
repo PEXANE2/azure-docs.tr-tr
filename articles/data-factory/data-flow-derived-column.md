@@ -1,17 +1,17 @@
 ---
-title: Eşleme veri akışı 'nda türetilmiş sütun dönüşümü-Azure Data Factory | Microsoft Docs
+title: Azure Data Factory eşleme veri akışında türetilmiş sütun dönüşümü | Microsoft Docs
 description: Eşleme veri akışı türetilmiş sütun dönüşümüyle birlikte Azure Data Factory ölçekli verileri nasıl dönüştürebileceğinizi öğrenin.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 5a4ee90717d46fe593d9e10083b349e069216dac
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436779"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514822"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Eşleme veri akışında türetilmiş sütun dönüşümü
 
@@ -46,7 +46,9 @@ Başka türetilmiş sütunlar eklemek için, varolan bir türetilmiş sütunun �
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, `CleanData` adlı ve gelen akış `MoviesYear` ' i alan ve iki türetilmiş sütun oluşturan bir türetilmiş sütundur. İlk türetilmiş sütun, `Rating` sütununun değerini, derecelendirme değeri olan bir tamsayı türü olarak değiştirir. İkinci türetilmiş sütun, adı ' Filmler ' ile başlayan her sütunla eşleşen bir modeldir. Eşleşen her sütun için, ' movie_ ' önekli eşleşen sütunun değerine eşit olan `movie` sütununu oluşturur. Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
+Aşağıdaki örnek, `CleanData` adlı ve gelen akış `MoviesYear` ' i alan ve iki türetilmiş sütun oluşturan bir türetilmiş sütundur. İlk türetilmiş sütun, `Rating` sütununun değerini, derecelendirme değeri olan bir tamsayı türü olarak değiştirir. İkinci türetilmiş sütun, adı ' Filmler ' ile başlayan her sütunla eşleşen bir modeldir. Eşleşen her sütun için, ' movie_ ' önekli eşleşen sütunun değerine eşit olan bir sütun `movie` oluşturur. 
+
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
 ![Örnek türet](media/data-flow/derive-script1.png "Örnek türet")
 

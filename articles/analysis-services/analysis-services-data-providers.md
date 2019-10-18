@@ -4,15 +4,15 @@ description: İstemci uygulamaları ve araçları 'na bağlanmak için gereken i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298667"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512776"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services bağlantı için istemci kitaplıkları
 
@@ -74,7 +74,7 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
   
 1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
   
-2.  @No__t,-3**ayrıntılar** **@no__t** **MSOLAP. dll**' ye sağ tıklayın. Dosya adı msolap140. dll ise, en son sürümden daha eski ve yükseltilmesi gerekir.
+2.  **MSOLAP. dll**  > **Özellikler**  > **Ayrıntılar**' a sağ tıklayın. Dosya adı msolap140. dll ise, en son sürümden daha eski ve yükseltilmesi gerekir.
     
     ![İstemci kitaplığı ayrıntıları](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -87,9 +87,9 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
 ### <a name="adomd"></a>ADOMD
 
 1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` kısmına gidin. Birden fazla klasörünüz varsa, daha yüksek bir sayı seçin.
-2. **Microsoft. AnalysisServices. AdomdClient** > **ayrıntıları** **@no__t '** na sağ tıklayın.  
+2. **Microsoft. AnalysisServices. AdomdClient**  > **Özellikler**  > **Ayrıntılar**' a sağ tıklayın.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Excel @no__t bağlanma](analysis-services-connect-excel.md)-1  
+[Excel    bağlanma](analysis-services-connect-excel.md)  
 [Power BI ile bağlanma](analysis-services-connect-pbi.md)

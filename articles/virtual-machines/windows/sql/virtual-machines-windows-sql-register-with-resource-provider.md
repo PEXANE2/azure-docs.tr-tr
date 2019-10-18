@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023588"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512369"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -203,7 +203,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
      $sqlvm.Properties.sqlManagement
   ```
 
-*Hafif* IaaS uzantısının yüklü olduğu SQL Server VM 'ler, Azure Portal kullanarak modu _tam_ olarak yükseltebilir. _Aracı olmayan_ bir modda SQL Server VM 'ler, Işletim sistemi Windows 2008 R2 ve üzeri sürümlere yükseltildikten sonra _tam_ olarak yükseltilebilir. Bunun için düşürme yapılamaz, bunun için SQL IaaS uzantısını tamamen kaldırmanız ve yeniden yüklemeniz gerekir. 
+*Hafif* IaaS uzantısının yüklü olduğu SQL Server VM 'ler, Azure Portal kullanarak modu _tam_ olarak yükseltebilir. _Aracı olmayan_ bir modda SQL Server VM 'ler, Işletim sistemi Windows 2008 R2 ve üzeri sürümlere yükseltildikten sonra _tam_ olarak yükseltilebilir. Bunun için düşürme yapılamaz, bunun için Azure portal kullanarak SQL VM kaynak sağlayıcısı kaynağını silmeniz ve SQL VM kaynak sağlayıcısına yeniden kaydolmanız gerekecektir. 
 
 Aracı modunu tam olarak yükseltmek için: 
 
@@ -353,7 +353,7 @@ Evet. Yönetilebilirlik modunu hafif ' den Full ' a yükseltmek PowerShell veya 
 
 Hayır. SQL Server IaaS uzantısının yönetilebilirlik modunu eski sürüme düşürme desteklenmez. Yönetilebilirlik modu, tam moddan hafif veya aracı olmayan moda düşürülemez ve hafif moddan aracı olmayan moda düşürülemez. 
 
-Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için SQL Server IaaS uzantısını kaldırın. Ardından, Microsoft. SqlVirtualMachine kaynağını bırakın ve SQL Server VM SQL VM kaynak sağlayıcısı ile yeniden kaydedin.
+Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için, Microsoft. SqlVirtualMachine kaynağını bırakın ve SQL Server VM SQL VM kaynak sağlayıcısı ile yeniden kaydedin.
 
 **Azure portal SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
 

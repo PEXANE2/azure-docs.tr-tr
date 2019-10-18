@@ -4,18 +4,18 @@ description: Bu makale AzCopy komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4da9206f4500941179d781a0fe2a57ad15d7393d
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 984d0c570c6c0d5048d58377f113319157411244
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195899"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513388"
 ---
-# <a name="azcopy"></a>AzCopy
+# <a name="azcopy"></a>azcopy
 
 AzCopy, Azure depolama 'ya ve dışına veri taşınan bir komut satırı aracıdır.
 
@@ -23,15 +23,15 @@ AzCopy, Azure depolama 'ya ve dışına veri taşınan bir komut satırı aracı
 
 Komutların genel biçimi: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
 
-Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
+Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz. [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy).
 
 ## <a name="options"></a>Seçenekler
 
-|Seçenek|Açıklama|
-|---|---|
-|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
-|-h,--yardım|AzCopy için yardım içeriğini gösterir.|
-|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+**--Cap-Mbps uint32**   Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.
+
+**-h,--yardım** AzCopy için yardım
+      
+**--Çıkış türü**  Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer ' text ' değeridir. (varsayılan "metin")
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

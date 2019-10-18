@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
-ms.translationtype: MT
+ms.openlocfilehash: c513a7fe4df14ee21f4b26993a5eddb93bb90eac
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686975"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533317"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -103,7 +103,7 @@ DSVM 'yi bir geliştirme ortamı olarak kullanmak için:
     * Azure CLı:
 
         > [!IMPORTANT]
-        > * Azure CLı 'yı kullandığınızda öncelikle `az login` komutunu kullanarak Azure aboneliğinizde oturum açmanız gerekir.
+        > * Azure CLı 'yı kullandığınızda, önce `az login` komutunu kullanarak Azure aboneliğinizde oturum açmanız gerekir.
         >
         > * Bu adımdaki komutları kullandığınızda, bir kaynak grubu adı, VM için bir ad, Kullanıcı adı ve parola sağlamanız gerekir.
 
@@ -185,7 +185,7 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
 
 1. Paketleri yüklemek için aşağıdaki komutları kullanın:
 
-    Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve `automl` ek özellikler ile birlikte kurar. @No__t-0 ek büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. @No__t-0 ekstra, bir bağımlılık olarak varsayılan olarak Azure Machine Learning veri hazırlama SDK 'sını de içerir.
+    Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve `automl` ek özellikler ile birlikte kurar. @No__t_0 ekstra büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. @No__t_0 ekstra, varsayılan olarak bir bağımlılık olarak Azure Machine Learning Data Prep SDK 'sını içerir.
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -205,13 +205,13 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
 
 1. Machine Learning deneme için diğer paketleri yükler.
 
-    Aşağıdaki komutlardan birini kullanın ve *\<Yeni paket >* yüklemek istediğiniz paket ile değiştirin. @No__t-0 aracılığıyla paketlerin yüklenmesi, paketin geçerli kanalların bir parçası olmasını gerektirir (yeni kanallar Anaconda buluta eklenebilir).
+    Aşağıdaki komutlardan birini kullanın ve *\<new paketi >* yüklemek istediğiniz paket ile değiştirin. Paketlerin `conda install` aracılığıyla yüklenmesi için paketin geçerli kanalların bir parçası olması gerekir (yeni kanallar Anaconda buluta eklenebilir).
 
     ```shell
     conda install <new package>
     ```
 
-    Alternatif olarak, `pip` aracılığıyla paket yükleyebilirsiniz.
+    Alternatif olarak, paketleri `pip` aracılığıyla da yükleyebilirsiniz.
 
     ```shell
     pip install <new package>
@@ -277,7 +277,7 @@ Geliştirme için Visual Studio Code kullanmak için:
 
     - __Python girin: yorumlayıcı__' yı seçin ve ardından uygun ortamı seçin
 
-1. SDK 'yı kullanacağınızı doğrulamak için, aşağıdaki kodu içeren yeni bir Python dosyası (.py) oluşturun:
+1. SDK 'yı kullanacağınızı doğrulamak için, aşağıdaki kodu içeren yeni bir Python dosyası (. köpek) oluşturun:
 
     ```python
     #%%
@@ -318,13 +318,13 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
 1. **Yalnızca bir** seçenek belirleyin (diğer SDK yüklemesi desteklenmez)
 
-   |SDK @ no__t-0package @ no__t-1ekstralar|Kaynak|Pypı @ no__t-0Name @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6|
+   |SDK &nbsp;package &nbsp;extras|Kaynak|Pypı &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
    |----|---|---|
    |Databricks için| Python Yumurg veya Pypı yükleme | azureml-SDK [databricks]|
-   |Databricks için-ile<br> Otomatik ML özellikleri| Python Yumurg veya Pypı yükleme | azureml-SDK [automl_databricks]|
+   |Databricks için-ile<br> Otomatik ML özellikleri| Python Yumurg veya Pypı yükleme | azureml-SDK [Oto ml]|
 
    > [!Warning]
-   > Başka SDK ek özellikleri yüklenemez. Yukarıdaki seçeneklerden yalnızca birini seçin [databricks] veya [automl_databricks].
+   > Başka SDK ek özellikleri yüklenemez. Yukarıdaki seçeneklerden yalnızca birini seçin [databricks] veya [Oto ml].
 
    * **Tüm kümelere otomatik olarak ekle**' yi seçmeyin.
    * Küme adınızın yanındaki **Ekle** ' yi seçin.
@@ -338,15 +338,15 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
    Ayrıca şunları göz önünde bulundurun:
    + Azure Databricks kullanırken, oto ml yapılandırmasında aşağıdaki parametreleri ekleyin:
-       1. ```max_concurrent_iterations```, kümenizdeki çalışan düğüm sayısına bağlıdır.
+       1. ```max_concurrent_iterations``` kümenizdeki çalışan düğüm sayısına bağlıdır.
         2. ```spark_context=sc```, varsayılan Spark bağlamını temel alır.
    + Ya da eski bir SDK sürümünüz varsa, kümenin yüklü olan kitaplıkların seçimini kaldırın ve çöp kutusuna geçiş yapın. Yeni SDK sürümünü yükleyip kümeyi yeniden başlatın. Yeniden başlatmadan sonra bir sorun varsa, kümenizi ayırın ve yeniden bağlayın.
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:
 
-Databricks için otomatik makine öğrenimi **_olmayan_** ![azure Machine Learning SDK 'sı için SDK @ no__t-3
+Databricks için Machine Learning SDK ![Azure otomatik makine öğrenimi **_olmadan_** Databricks sdk 'sı ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Otomatik makine öğrenimi **Ile** databricks için SDK ![Sdk, databricks üzerinde yüklü otomatik makine öğrenimi @ no__t-2
+Databricks 'de yüklü otomatik makine öğrenimi ile otomatik makine öğrenimi ![SDK databricks için SDK ](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>Keşfetmeye başlayın
 
@@ -370,7 +370,7 @@ Deneyin:
 
 Bu JSON dosyası, Python betikleri veya Jupyıter not defterlerini içeren dizin yapısında olmalıdır. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir.
 
-Bu dosyayı kodunuzda kullanmak için `ws=Workspace.from_config()` ' ı kullanın. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
+Bu dosyayı kodunuzda kullanmak için `ws=Workspace.from_config()` kullanın. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
 
 Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 

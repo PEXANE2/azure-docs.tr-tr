@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330084"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529425"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneğini yapılandırma
 
@@ -45,7 +45,7 @@ Ayrıca, aşağıdaki teknolojilerde genel olarak anlaşılmalıdır:
 - [Azure Kaynak grupları](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](virtual-machines-windows-sql-server-agent-extension.md) [basit](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) yönetim moduyla desteklenir. Yük devretme kümesine katılan VM 'lerden tam uzantıyı kaldırın ve ardından bunları `lightweight` modunda SQL VM kaynak sağlayıcısı 'na kaydedin. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı hafif yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'Leri için çalışmaz.
+> Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](virtual-machines-windows-sql-server-agent-extension.md) [basit](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) yönetim moduyla desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, sanal makinelerin "SQL sanal makinesi" kaynağını silin ve ardından bunları `lightweight` modunda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak "SQL sanal makinesi" kaynağı silinirken gerçek sanal makinenin seçimini kaldırın. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı hafif yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'Leri için çalışmaz.
 
 ### <a name="workload-consideration"></a>İş yükü değerlendirmesi
 
@@ -174,7 +174,7 @@ Sanal makineler oluşturulup yapılandırıldıktan sonra Premium dosya paylaş�
 1. SQL Server FCı 'nizin hizmet hesabı için kullanacağı hesabı kullanarak SQL Server VM RDP. 
 1. Bir yönetim PowerShell komut konsolu başlatın. 
 1. Daha önce kaydettiğiniz portaldan komutları çalıştırın. 
-1. @No__t-1 ağ yolunu kullanarak dosya Gezgini ya da **Çalıştır** iletişim kutusu (Windows tuşu + r) ile paylaşıma gidin. Örnek: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
+1. @No__t_1 ağ yolunu kullanarak dosya Gezgini ya da **Çalıştır** iletişim kutusu (Windows tuşu + r) ile paylaşıma gidin. Örnek: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
 1. SQL veri dosyalarınızı içine yerleştirmek için yeni bağlı dosya paylaşımında en az bir klasör oluşturun. 
 1. Kümeye katılacak her bir SQL Server VM bu adımları yineleyin. 
@@ -293,7 +293,7 @@ Yük devretme kümesini yapılandırdıktan sonra, SQL Server FCı 'yi oluştura
 
 1. **Yük devretme kümesi Yöneticisi**, tüm küme çekirdek kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
 
-1. Yükleme medyasını bulun. Sanal makine Azure Marketi görüntülerinden birini kullanıyorsa, medya `C:\SQLServer_<version number>_Full` konumunda bulunur. **Kurulum**'a tıklayın.
+1. Yükleme medyasını bulun. Sanal makine Azure Market görüntülerinden birini kullanıyorsa, medya `C:\SQLServer_<version number>_Full` bulunur. **Kurulum**'a tıklayın.
 
 1. **SQL Server Yükleme Merkezi**'nde **yükleme**' ye tıklayın.
 
@@ -344,8 +344,7 @@ Yük dengeleyiciyi oluşturmak için:
    Aşağıdaki resme bakın:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
-
-   ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
+   
 
 ### <a name="configure-the-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzunu yapılandırma
 

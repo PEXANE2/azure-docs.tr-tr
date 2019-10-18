@@ -1,5 +1,5 @@
 ---
-title: Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON | Microsoft Docs
+title: Createuıdefinition. JSON-Azure yönetilen uygulaması
 description: Azure portal için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar. Azure yönetilen uygulamaları tanımlarken kullanılır.
 services: managed-applications
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7177b9513a1e51bc24672a69935a0e9430292537
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9009d6a54c27617dd0d1d53369405555becde59d
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332696"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529322"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON
 
@@ -50,7 +50,7 @@ Createuıdefinition her zaman üç özellik içerir:
 
 Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler `basics`, `steps` ve `outputs` ' dir. Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager dağıtım şablonunun parametreleriyle eşlemek için kullanılır.
 
-@No__t-0 dahil edilmesi önerilir, ancak isteğe bağlıdır. Belirtilmişse, `version` ' ın değeri, `$schema` URI 'sindeki sürümle aynı olmalıdır.
+@No__t_0 dahil edilmesi önerilir, ancak isteğe bağlıdır. Belirtilmişse, `version` ' ın değeri, `$schema` URI 'sindeki sürümle aynı olmalıdır.
 
 Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir, ardından bunu önizlemek için [Createuıdefinition korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
 

@@ -2,18 +2,18 @@
 title: Azure HDInsight 'ta küme kapasitesi planlama
 description: Azure HDInsight kümesinin kapasite ve performans planlamasına ilişkin önemli soruları belirler.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: hrasheed
-ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/15/2019
+ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916572"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529160"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -31,13 +31,13 @@ Kapasite planlamasına sorulacak önemli sorular şunlardır:
 
 Azure bölgesi, kümenizin fiziksel olarak sağlandığını belirler. Okuma ve yazma gecikmesini en aza indirmek için, kümenin verilerinize yakın olması gerekir.
 
-HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için [bölgeye göre kullanılabilen ürünlerde analizler](https://azure.microsoft.com/regions/services/) *altında bulunan* *HDInsight* girdisine bakın.
+HDInsight birçok Azure bölgesinde kullanılabilir. En yakın bölgeyi bulmak için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/).
 
 ## <a name="choose-storage-location-and-size"></a>Depolama konumu ve boyutunu seçin
 
 ### <a name="location-of-default-storage"></a>Varsayılan depolama konumu
 
-Bir Azure depolama hesabı veya Azure Data Lake Storage varsayılan depolama, kümenizle aynı konumda olmalıdır. Azure depolama, tüm konumlarda kullanılabilir. Data Lake Storage 1. bazı bölgelerde kullanılabilir- [bölgeye göre kullanılabilir olan Azure ürünlerinde](https://azure.microsoft.com/regions/services/) *depolama* alanındaki geçerli Data Lake Storage kullanılabilirliğine bakın.
+Bir Azure depolama hesabı veya Azure Data Lake Storage varsayılan depolama, kümenizle aynı konumda olmalıdır. Azure depolama, tüm konumlarda kullanılabilir. Data Lake Storage 1. bazı bölgelerde kullanılabilir-geçerli [Data Lake Storage kullanılabilirliğine](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage)bakın.
 
 ### <a name="location-of-existing-data"></a>Mevcut verilerin konumu
 
@@ -66,15 +66,15 @@ Küme türü, HDInsight kümenizin çalışmak üzere yapılandırıldığı iş
 
 Her küme türü bir dizi düğüm türüne sahiptir ve her düğüm türü, VM boyutu ve türü için özel seçeneklere sahiptir.
 
-Uygulamanız için en uygun küme boyutunu belirleyebilmek için, küme kapasitesini kıyaslama ve boyutu belirtilen şekilde artırabilirsiniz. Örneğin, sanal bir iş yükü veya *kanarya sorgusu*kullanabilirsiniz. Sanal bir iş yüküyle, beklenen iş yüklerinizi farklı boyut kümelerinde çalıştırırsanız, istenen performansa ulaşılıncaya kadar boyutu kademeli olarak artırabilirsiniz. Kümenin yeterli kaynağa sahip olup olmadığını göstermek için diğer üretim sorguları arasında, Kanarya sorgusu düzenli aralıklarla eklenebilir.
+Uygulamanız için en uygun küme boyutunu belirleyebilmek için, küme kapasitesini kıyaslama ve boyutu belirtilen şekilde artırabilirsiniz. Örneğin, sanal bir iş yükü veya *kanarya sorgusu*kullanabilirsiniz. Sanal bir iş yüküyle, beklenen iş yüklerinizi farklı boyut kümelerinde çalıştırırsanız, istenen performansa ulaşılıncaya kadar boyutu kademeli olarak artırabilirsiniz. Kümenin yeterli kaynağa sahip olup olmadığını göstermek için, diğer üretim sorguları arasında düzenli aralıklarla bir sorgu eklenebilir.
 
 VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından belirlenir:
 
 * CPU: VM boyutu çekirdek sayısını belirler. Daha fazla çekirdek, her bir düğümün elde edilebileceği paralel hesaplamanın derecesi artar. Ayrıca, bazı VM türlerinde daha hızlı çekirdek vardır.
 
-* RAM: VM boyutu Ayrıca VM 'deki kullanılabilir RAM miktarını da belirler. Diskten okumak yerine verileri işlenmek üzere bellekte depolayan iş yükleri için, çalışan düğümlerinizin verilere sığacak kadar yeterli belleğe sahip olduğundan emin olun.
+* RAM: VM boyutu VM 'deki kullanılabilir RAM miktarını da belirler. Diskten okumak yerine verileri işlenmek üzere bellekte depolayan iş yükleri için, çalışan düğümlerinizin verilere sığacak kadar yeterli belleğe sahip olduğundan emin olun.
 
-* Network Çoğu küme türü için, küme tarafından işlenen veriler yerel diskte değildir, bunun yerine Data Lake Storage veya Azure depolama gibi bir harici depolama hizmetidir. Düğüm VM ve depolama hizmeti arasındaki ağ bant genişliğini ve aktarım hızını göz önünde bulundurun. Bir VM için kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için bkz. [VM boyutlarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Ağ: çoğu küme türü Için, küme tarafından işlenen veriler yerel diskte değildir, bunun yerine Data Lake Storage veya Azure depolama gibi bir harici depolama hizmetidir. Düğüm VM ve depolama hizmeti arasındaki ağ bant genişliğini ve aktarım hızını göz önünde bulundurun. Bir VM için kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için bkz. [VM boyutlarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Küme ölçeğini seçin
 
@@ -96,24 +96,23 @@ Bir kümenin ömrü için ücretlendirilirsiniz. Kümenizin yalnızca belirli za
 
 Bazen birden çok eşlemelerin paralel yürütülmesi ve çok düğümlü bir küme üzerindeki bileşenlerin azaltılması nedeniyle hatalar oluşabilir. Sorunu yalıtmaya yardımcı olmak için, tek bir çalışan düğümü kümesinde eşzamanlı birden çok iş çalıştırarak dağıtılmış testi deneyin, daha sonra birden fazla iş içeren kümeler üzerinde eşzamanlı olarak birden çok işi çalıştırmak için bu yaklaşımı genişletin. Azure 'da tek düğümlü HDInsight kümesi oluşturmak için *özel (boyut, ayarlar, uygulamalar)* seçeneğini kullanın ve portalda yeni bir küme sağlarken **küme boyutu** bölümünde *çalışan düğümü sayısı* için 1 değerini kullanın.
 
-
 ## <a name="quotas"></a>Kotalar
 
 Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, aboneliğinizin geçerli kota kapasitesi sınırlarını kontrol edin. Bir kota sınırına ulaştığınızda, yeni kümeler dağıtabilir veya daha fazla çalışan düğümü ekleyerek var olan kümelerin ölçeğini ölçeklendiremeyebilirsiniz. Tek kota sınırı, her abonelik için bölge düzeyinde bulunan CPU çekirdekleri kotasına yöneliktir. Örneğin, aboneliğiniz Doğu ABD bölgesinde 30 çekirdek sınırına sahip olabilir. Bir kota artışı istemeniz gerekiyorsa, aşağıdaki adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
-1. **Yeni destek isteği ' ni**seçin.
+1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasında, **temel bilgiler** sekmesinde aşağıdaki seçenekleri belirleyin:
-   - **Sorun türü**: **Hizmet ve abonelik limitleri (kotalar)**
+   - **Sorun türü**: **hizmet ve abonelik limitleri (kotalar)**
    - **Abonelik**: değiştirmek istediğiniz abonelik
    - **Kota türü**: **HDInsight**
     
      ![HDInsight çekirdek kotasını artırmak için bir destek isteği oluşturma](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. İleri **' yi seçin: Çözümler > >** .
+1. **İleri ' yi seçin: çözümler > >** .
 1. **Ayrıntılar** sayfasında, sorun için bir açıklama girin, sorunun önem derecesini, tercih ettiğiniz iletişim yöntemini ve diğer gerekli alanları seçin.
-1. İleri **' yi seçin: İnceleyin + oluşturma > >** .
+1. Ileri 'yi seçin **: gözden geçir + oluşturma > >** .
 1. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.
 
 > [!NOTE]  
@@ -125,5 +124,5 @@ Ancak, bazı bazı kota limitleri vardır, örneğin tek bir Azure aboneliği en
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight 'ta Apache Hadoop, Spark, Kafka ve daha fazlası ile kümeleri ayarlayın](hdinsight-hadoop-provision-linux-clusters.md): HDInsight 'ta Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Hizmetleri veya fırtınası ile küme ayarlamayı ve yapılandırmayı öğrenin.
-* [Küme performansını izleme](hdinsight-key-scenarios-to-monitor.md): HDInsight kümenizi izlemek için, kümenizin kapasitesini etkileyebilecek önemli senaryolar hakkında bilgi edinin.
+* [HDInsight 'ta Apache Hadoop, Spark, Kafka ve daha fazlası ile kümeleri](hdinsight-hadoop-provision-linux-clusters.md)ayarlama: hdınsight 'ta Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ml Hizmetleri veya fırtınası ile kümeleri ayarlama ve yapılandırma hakkında bilgi edinin.
+* [Küme performansını izleme](hdinsight-key-scenarios-to-monitor.md): HDInsight kümenizi izlemek için kümenizin kapasitesini etkileyebilecek önemli senaryolar hakkında bilgi edinin.

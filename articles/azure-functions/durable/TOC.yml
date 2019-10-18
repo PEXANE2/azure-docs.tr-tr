@@ -1,5 +1,5 @@
 - name: Dayanıklı İşlevler Belgeleri
-  href: durable-functions-overview.md
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Azure İşlevleri hakkında
@@ -34,7 +34,7 @@
 - name: Örnekler
   items:
     - name: Kod örnekleri
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+'
+      href: /samples/browse/?products=azure-functions&term=durable
     - name: Azure CLI
       href: ../functions-cli-samples.md
 - name: Kavramlar
@@ -81,6 +81,8 @@
       href: durable-functions-bindings.md
     - name: HTTP API
       href: durable-functions-http-api.md
+    - name: Dayanıklı uzantı API’si
+      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet-preview
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Geliştirme

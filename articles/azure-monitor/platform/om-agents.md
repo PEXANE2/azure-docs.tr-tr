@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c8d6e949722e291eab4ac45f6abb610acfa10d68
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035625"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532394"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -34,7 +34,7 @@ System Center Operations Manager tümleştirme, Operations Manager günlük veri
 
 Operations Manager yönetim grubuna rapor veren aracılar, çalışma alanınızda etkinleştirdiğiniz [Log Analytics veri kaynaklarına](agent-data-sources.md) ve çözümlere göre sunucularınızdan veri toplar. Etkin çözümlere bağlı olarak, verileri doğrudan bir Operations Manager yönetim sunucusundan hizmete gönderilir ya da aracıyla yönetilen sistemde toplanan verilerin hacmi nedeniyle doğrudan aracıdan bir Log Analytics çalışma alanına gönderilir. Yönetim sunucusu verileri doğrudan hizmete iletir; bunlar hiçbir zaman işlem veya veri ambarı veritabanına yazılmaz. Bir yönetim sunucusu Azure Izleyici ile bağlantıyı kaybettiğinde, iletişim yeniden kuruluncaya kadar verileri yerel olarak önbelleğe alır. Yönetim sunucusu planlı bakım veya plansız kesinti nedeniyle çevrimdışıysa, yönetim grubundaki başka bir yönetim sunucusu Azure Izleyici ile bağlantıyı sürdürür.  
 
-Aşağıdaki diyagramda, yön ve bağlantı noktaları da dahil olmak üzere bir System Center Operations Manager yönetim grubundaki ve Azure Izleyici 'deki yönetim sunucuları ve aracıları arasındaki bağlantı gösterilmektedir.   
+Aşağıdaki diyagramda, yön ve bağlantı noktaları da dahil olmak üzere bir System Center Operations Manager yönetim grubundaki ve Azure Izleyici 'deki yönetim sunucuları ve aracıları arasındaki bağlantı gösterilmektedir.
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
@@ -51,21 +51,21 @@ Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 * [Log Analytics katkıda bulunan rolünün](manage-access.md#manage-access-using-azure-permissions)bir üyesi olan bir hesapla Azure 'da kimlik doğrulaması yapabilirsiniz.
 
 * Desteklenen bölgeler-bir Log Analytics çalışma alanına bağlanmak için System Center Operations Manager tarafından yalnızca aşağıdaki Azure bölgeleri desteklenir:
-    - Batı Orta ABD
+    - Orta Batı ABD
     - Avustralya Güneydoğu
     - Batı Avrupa
-    - East US
+    - Doğu ABD
     - Güneydoğu Asya
-    - Japonya Doğu
-    - Birleşik Krallık Güney
+    - Doğu Japonya
+    - Birleşik Krallık, Güney
     - Orta Hindistan
-    - Orta Kanada
+    - Kanada Orta
     - Batı ABD 2
 
 >[!NOTE]
 >Azure API 'Lerinde yapılan son değişiklikler, müşterilerin yönetim grubu ve Azure Izleyici arasındaki tümleştirmeyi ilk kez başarıyla yapılandırmasını engelleyecek. Yönetim gruplarını hizmetle zaten tümleştirmiş olan müşteriler için, mevcut bağlantınızı yeniden yapılandırmanız gerekmiyorsa bu sorundan etkilenmez.  
 >Aşağıdaki Operations Manager sürümleri için yeni bir yönetim paketi yayımlanmıştır:
-> - System Center Operations Manager 2019 için, yönetim paketi Operations Manager derleme ile birlikte sağlanır.
+> - System Center Operations Manager 2019 için, bu yönetim paketi kaynak medyaya dahildir ve yeni bir yönetim grubunun kurulumu sırasında veya yükseltme sırasında yüklenir.
 >- Operations Manager 1801 yönetim paketi, Operations Manager 1807 için de geçerlidir.
 >- System Center Operations Manager 1801 için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57173)indirin.
 >- System Center 2016-Operations Manager için, yönetim paketini [buradan](https://www.microsoft.com/download/details.aspx?id=57172)indirin.  
@@ -74,9 +74,9 @@ Başlamadan önce, aşağıdaki gereksinimleri gözden geçirin.
 
 ### <a name="network"></a>Ağ
 
-Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Manager Aracısı, yönetim sunucuları ve Işletim konsolu için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listeler. Her bileşenden gelen trafik, ağınızdan Azure Izleyici 'ye giden bir trafiktir.   
+Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Manager Aracısı, yönetim sunucuları ve Işletim konsolu için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listeler. Her bileşenden gelen trafik, ağınızdan Azure Izleyici 'ye giden bir trafiktir.
 
-|Resource | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
+|Kaynak | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
 |---------|------|-----------------------|  
 |**Aracı**|||  
 |\*.ods.opinsights.azure.com| 443 |Yes|  
@@ -87,7 +87,7 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 |\*.service.opinsights.azure.com| 443||  
 |\*.blob.core.windows.net| 443| Yes|  
 |\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Evet|  
+|*.azure-automation.net | 443| Yes|  
 |**Konsolu Azure Izleyici 'ye Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -100,9 +100,9 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 |api.loganalytics.io| 80 ve 443||
 |docs.loganalytics.io| 80 ve 443||  
 
-### <a name="tls-12-protocol"></a>TLS 1.2 Protokolü
+### <a name="tls-12-protocol"></a>TLS 1,2 Protokolü
 
-Azure Izleyici 'ye geçişte verilerin güvenliğini sağlamak için aracıyı ve yönetim grubunu en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) daha eski sürümleri, savunmasız bulundu ve bunlar yine de şu anda geriye dönük uyumluluk izin vermek için çalışırken, bunlar **önerilmez**. Ek bilgi için gözden [TLS 1.2 kullanarak güvenli bir şekilde veri gönderen](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Azure Izleyici 'ye geçişte verilerin güvenliğini sağlamak için aracıyı ve yönetim grubunu en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. Daha fazla bilgi için [TLS 1,2 kullanarak verileri güvenli bir şekilde göndermeyi](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)inceleyin.
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -111,30 +111,30 @@ Operations Manager yönetim grubunuzu Log Analytics çalışma alanlarınızdan 
 Log Analytics çalışma alanı ile Operations Manager yönetim grubunuzun ilk kaydı sırasında, yönetim grubu için proxy yapılandırmasını belirtme seçeneği Işletim konsolunda kullanılamaz.  Bu seçeneğin sağlanması için önce yönetim grubunun hizmete başarıyla kaydedilmiş olması gerekir.  Bu sorunu geçici olarak çözmek için, Işletim konsolunu çalıştıran sistemde Netsh kullanarak sistem proxy yapılandırmasını güncelleştirmeniz gerekir ve yönetim grubundaki tüm yönetim sunucularını yapılandırın.  
 
 1. Yükseltilmiş bir komut istemi açın.
-   a. Git **Başlat** ve türü **cmd**.
-   b. Sağ **komut istemi** ve farklı çalıştır yönetici ** seçin.
+   a. **Başlat** ' a gidin ve **cmd**yazın.
+   b. **Komut istemi** ' ne sağ tıklayın ve yönetici olarak çalıştır * * seçeneğini belirleyin.
 1. Aşağıdaki komutu girin ve **Enter** tuşuna basın:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Azure izleyici ile tümleştirme için aşağıdaki adımları tamamladıktan sonra, çalıştırarak `netsh winhttp reset proxy` yapılandırmayı kaldırabilir ve ardından İşletim konsolundaki **proxy sunucusunu yapılandır** seçeneğini kullanarak proxy veya Log Analytics ağ geçidi sunucusunu belirtebilirsiniz .
+Azure Izleyici ile tümleştirme için aşağıdaki adımları tamamladıktan sonra, `netsh winhttp reset proxy` çalıştırarak yapılandırmayı kaldırabilir ve sonra proxy veya Log Analytics ağ geçidi sunucusunu belirtmek için Işletim konsolundaki **proxy sunucusunu yapılandır** seçeneğini kullanabilirsiniz.
 
 1. Operations Manager konsolunda **Yönetim** çalışma alanını seçin.
 1. Operations Management Suite düğümünü genişletin ve **Bağlantı**'ya tıklayın.
 1. **Operations Management Suite'e kaydolun** bağlantısına tıklayın.
-1. **Operations Management Suite Ekleme Sihirbazı 'nda: Kimlik** doğrulama sayfası, OMS aboneliğinizle ilişkili yönetici hesabının e-posta adresini veya telefon numarasını ve parolasını girin ve **oturum aç**' a tıklayın.
+1. **Operations Management Suite Ekleme Sihirbazı: Kimlik Doğrulama** sayfasında, OMS aboneliğinizle ilişkilendirilmiş yönetici hesabının e-posta adresi veya telefon numarasını ve parolasını girin ve **Oturum aç**'a tıklayın.
 
    >[!NOTE]
    >Operations Management Suite adı kullanımdan kaldırıldı.
 
-1. Kimliği başarıyla doğrulandıktan sonra **Operations Management Suite Ekleme Sihirbazı 'nda: Çalışma alanı** sayfası ' nı seçin, Azure kiracınızı, aboneliğinizi ve Log Analytics çalışma alanınızı seçmeniz istenir. Birden çok çalışma alanınız varsa, açılan listeden Operations Manager yönetim grubuna kaydetmek istediğiniz çalışma alanını seçin ve ardından **İleri**'ye tıklayın.
+1. Kimliği başarıyla doğrulandıktan sonra **Operations Management Suite Ekleme Sihirbazı: çalışma alanı sayfasını seçin** sayfasında Azure kiracınızı, aboneliğinizi ve Log Analytics çalışma alanınızı seçmeniz istenir. Birden çok çalışma alanınız varsa, açılan listeden Operations Manager yönetim grubuna kaydetmek istediğiniz çalışma alanını seçin ve ardından **İleri**'ye tıklayın.
 
    > [!NOTE]
    > Operations Manager bir kerede tek bir Log Analytics çalışma alanını destekler. Önceki çalışma alanıyla Azure Izleyici 'ye kayıtlı olan bağlantı ve bilgisayarlar Azure Izleyici 'den kaldırılır.
    >
    >
-1. **Operations Management Suite Ekleme Sihirbazı 'nda: Özet** sayfası, ayarlarınızı onaylayın ve doğru olursa **Oluştur**' a tıklayın.
-1. **Operations Management Suite Ekleme Sihirbazı 'nda: Son** sayfasında **Kapat**' a tıklayın.
+1. **Operations Management Suite Ekleme Sihirbazı: Özet** sayfasında ayarlarınızı onaylayın ve bunlar doğruysa **Oluştur**'a tıklayın.
+1. **Operations Management Suite Ekleme Sihirbazı: Son** sayfasında **Kapat**'a tıklayın.
 
 ### <a name="add-agent-managed-computers"></a>Aracı tarafından yönetilen bilgisayarlar ekleme
 
@@ -154,7 +154,7 @@ Yönetim grubu ve Azure Izleyici arasında bir iç proxy sunucusu varsa, aşağ�
 1. Operations Manager konsolunu açın ve **Yönetim** çalışma alanını seçin.
 1. Operations Management Suite'i genişletin ve **Bağlantılar**'a tıklayın.
 1. OMS Bağlantısı görünümünde, **Ara Sunucuyu Yapılandır**'a tıklayın.
-1. **Operations Management Suite sihirbazında: Proxy sunucusu** sayfasında, **Operations Management Suite 'e erişmek için bir proxy sunucusu kullan**' ı seçin ve bağlantı noktası numarası ile URL 'yi yazın, örneğin, http://corpproxy:80 ve ardından **son**' a tıklayın.
+1. **Operations Management Suite Sihirbazı: Ara Sunucu** sayfasında **Operations Management Suite erişimi için bir ara sunucu kullan**'ı seçin, ardından bağlantı noktası numarasını içeren URL'yi yazın (örneğin, http://corpproxy:80 ) ve **Son**'a tıklayın.
 
 Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, yönetim grubunda Azure Izleyici 'ye raporlayan yönetilen bilgisayarlara yayılması gereken kimlik bilgilerini ve ayarları yapılandırmak için aşağıdaki adımları gerçekleştirin.
 
@@ -194,7 +194,7 @@ Bu iki kuralı, otomatik indirmeyi devre dışı bırakarak veya yönetim sunucu
 1. **Log Analytics Ekleme sihirbazını** izleyin ve yeni Log Analytics çalışma alanınız ile ilişkili yönetici hesabının e-posta adresini veya telefon numarasını ve parolasını girin.
 
    > [!NOTE]
-   > **Operations Management Suite Ekleme Sihirbazı: Çalışma alanı** sayfası Seç kullanımda olan mevcut çalışma alanını gösterir.
+   > **Operations Management Suite Ekleme Sihirbazı: Çalışma Alanı Seçin** sayfasında kullanımda olan mevcut çalışma alanı gösterilir.
    >
    >
 
@@ -357,7 +357,7 @@ Operations Manager ile tümleştirilen ve Azure Izleyici ile tümleştirmeyi des
 Gelecekte, yönetim grubunuzu bir Log Analytics çalışma alanına yeniden bağlamayı planlıyorsanız, `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` yönetim paketi dosyasını yeniden içeri aktarmanız gerekir. Ortamınıza dağıtılan System Center Operations Manager sürümüne bağlı olarak bu dosyayı aşağıdaki konumda bulabilirsiniz:
 
 * System Center 2016 - Operations Manager ve üstü için kaynak medyada `\ManagementPacks` klasörünün altında.
-* Yönetim grubunuza uygulanan en son güncelleştirme dağıtımından. Operations Manager 2012 için kaynak klasör `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` ve 2012 R2 için `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`bulunur.
+* Yönetim grubunuza uygulanan en son güncelleştirme dağıtımından. Operations Manager 2012 için kaynak klasör `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` ve 2012 R2 için `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

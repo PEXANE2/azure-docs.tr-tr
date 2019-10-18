@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168744"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515555"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Sanal ağ oluşturma, değiştirme veya silme
 
@@ -31,13 +31,13 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
 
 - Henüz bir Azure hesabınız yoksa [ücretsiz deneme hesabı](https://azure.microsoft.com/free)için kaydolun.
 - Portalı kullanıyorsanız, https://portal.azure.com ' ı açın ve Azure hesabınızla oturum açın.
-- Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış ortak Azure araçları vardır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` ' i çalıştırın. Yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için `Connect-AzAccount` ' ı da çalıştırmanız gerekir.
-- Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` ' ı çalıştırmanız gerekir.
+- Bu makaledeki görevleri tamamlamaya yönelik PowerShell komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/powershell)komutları çalıştırın veya PowerShell 'i bilgisayarınızdan çalıştırarak çalıştırın. Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Bu öğretici, Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+- Bu makaledeki görevleri gerçekleştirmek için Azure komut satırı arabirimi (CLı) komutlarını kullanıyorsanız, [Azure Cloud Shell](https://shell.azure.com/bash)komutları çalıştırın ya da bilgisayarınızdan CLI 'yı çalıştırarak. Bu öğretici, Azure CLı sürüm 2.0.31 veya üstünü gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). Azure CLı 'yi yerel olarak çalıştırıyorsanız, Azure ile bağlantı oluşturmak için `az login` ' ı çalıştırmanız gerekir.
 - Oturum açtığınızda veya Azure 'a bağlanmak için kullandığınız hesap, [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya [izinlerde](#permissions)listelenen uygun eylemlere atanmış [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
-1. -1**ağ** > **sanal ağ**@no__t **+ kaynak oluştur**' u seçin.
+1. **Sanal ağ** > **ağ**  >  **kaynak oluştur** ' u seçin.
 2. Aşağıdaki ayarlara ait değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
    - **Ad**: ad, içinde sanal ağı oluşturmak için seçtiğiniz [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) benzersiz olmalıdır. Sanal ağ oluşturulduktan sonra adı değiştiremezsiniz. Zaman içinde birden çok sanal ağ oluşturabilirsiniz. Adlandırma önerileri için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming). Bir adlandırma kuralını takip etmek, birden çok sanal ağı yönetmeyi kolaylaştırır.
    - **Adres alanı**: bir sanal ağın adres alanı, CIDR gösteriminde belirtilen bir veya daha fazla çakışmayan adres aralığından oluşur. Tanımladığınız adres aralığı ortak veya özel olabilir (RFC 1918). Adres aralığını genel veya özel olarak tanımladığınıza göre, adres aralığına yalnızca sanal ağ içinden, birbirine bağlı sanal ağlardan ve sanal ağa bağladığınız şirket içi ağlardan erişilebilir. Aşağıdaki adres aralıklarını ekleyemezsiniz:
@@ -47,7 +47,7 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
      - 169.254.0.0/16 (bağlantı-yerel)
      - 168.63.129.16/32 (iç DNS, DHCP ve Azure Load Balancer [durum araştırması](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
-     Sanal ağı oluştururken yalnızca bir adres aralığı tanımlayabilmenize karşın, sanal ağ oluşturulduktan sonra adres alanına daha fazla adres aralığı ekleyebilirsiniz. Mevcut bir sanal ağa adres aralığı ekleme hakkında bilgi edinmek için bkz. [adres aralığı ekleme veya kaldırma](#add-or-remove-an-address-range).
+     Portalda sanal ağı oluştururken yalnızca bir adres aralığı tanımlayabilmenize karşın, sanal ağ oluşturulduktan sonra adres alanına daha fazla adres aralığı ekleyebilirsiniz. Mevcut bir sanal ağa adres aralığı ekleme hakkında bilgi edinmek için bkz. [adres aralığı ekleme veya kaldırma](#add-or-remove-an-address-range).
 
      >[!WARNING]
      >Bir sanal ağda başka bir sanal ağla veya şirket içi ağla çakışan adres aralıkları varsa, iki ağ bağlanamaz. Bir adres aralığı tanımlayabilmeniz için önce sanal ağı diğer sanal ağlara veya gelecekte şirket içi ağlara bağlamak isteyip istemediğinizi göz önünde bulundurun.
@@ -88,9 +88,9 @@ Bu makalenin herhangi bir bölümündeki adımları tamamlamadan önce aşağıd
    - **Özellikler**: sanal AĞıN kaynak kimliği ve bulunduğu Azure aboneliği dahil olmak üzere sanal ağla ilgili ayarları görüntüler.
    - **Diyagram**: diyagram, sanal ağa bağlı tüm cihazların görsel bir gösterimini sağlar. Diyagramda cihazlarla ilgili bazı önemli bilgiler bulunur. Bu görünümdeki bir cihazı yönetmek için diyagramda aygıtı seçin.
    - **Ortak Azure ayarları**: Genel Azure ayarları hakkında daha fazla bilgi edinmek için aşağıdaki bilgilere bakın:
-     - [Etkinlik günlüğü](../azure-monitor/platform/activity-logs-overview.md)
+     - [Etkinlik Günlüğü](../azure-monitor/platform/activity-logs-overview.md)
      - [Erişim denetimi (ıAM)](../role-based-access-control/overview.md)
-     - [Lerimi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Etiketler](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Kaynaktaki](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Otomasyon betiği](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
@@ -171,7 +171,7 @@ Bir sanal ağı, yalnızca bağlı kaynak yoksa silebilirsiniz. Sanal ağ içind
 
 Sanal ağlarda görevleri gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                  |   Ad                                |
+| Eylem                                  |   Adı                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft. Network/virtualNetworks/Read   |   Sanal ağ okuma              |
 |Microsoft. Network/virtualNetworks/Write  |   Sanal ağ oluşturma veya güncelleştirme  |

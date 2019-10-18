@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 293d0de024ad815b4755d48833b7058c29ebcd5a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326968"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513277"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Depolama hesapları için Azure depolama ölçeklenebilirlik ve performans hedefleri
 
@@ -46,8 +46,8 @@ Azure dosyaları ve Azure Dosya Eşitleme için ölçek ve performans hedefleri 
 > [!IMPORTANT]
 > Depolama hesabı sınırları tüm paylaşımlar için geçerlidir. Depolama hesaplarının en büyük değerine kadar ölçeklendirilmesi yalnızca depolama hesabı başına yalnızca bir adet paylaşma varsa ulaşılabilir.
 >
-> 5 TiB 'den büyük standart dosya paylaşımları önizlemededir ve belirli sınırlamalar vardır.
-> Kısıtlamaların listesi ve bu büyük dosya paylaşım boyutlarının önizlemesine eklenmesi için, Azure dosyaları Planlama Kılavuzu ' nu [Standart dosya paylaşımları](../files/storage-files-planning.md#standard-file-shares) bölümüne bakın.
+> 5 TiB 'den büyük standart dosya paylaşımlarında bazı sınırlamalar ve bölgesel kısıtlamalar vardır.
+> Sınırlamalar, bölgesel bilgiler ve bu büyük dosya paylaşımı boyutlarını etkinleştirmeye yönelik yönergelerin listesi için, Azure dosyaları Planlama Kılavuzu ' ndaki [daha büyük dosya paylaşımlarına (Standart katman)](../files/storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) ekleme bölümüne bakın.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -55,13 +55,13 @@ Azure dosyaları ve Azure Dosya Eşitleme için ölçek ve performans hedefleri 
 
 Premium dosyalar için göz önünde bulundurmanız gereken üç sınırlama kategorisi vardır: depolama hesapları, paylaşımlar ve dosyalar.
 
-Örneğin: Tek bir paylaşımın 100.000 ıOPS elde edebilir ve tek bir dosya 5.000 ıOPS 'ye kadar ölçeklendirebilirler. Bu nedenle, örneğin, bir paylaşımda üç dosya varsa, bu paylaşımdan alabileceğiniz Maksimum IOPS 15.000 olur.
+Örneğin: tek bir paylaşımın 100.000 ıOPS ile elde edilebilir ve tek bir dosya 5.000 ıOPS 'ye kadar ölçeklendirebilirler. Bu nedenle, örneğin, bir paylaşımda üç dosya varsa, bu paylaşımdan alabileceğiniz Maksimum IOPS 15.000 olur.
 
 #### <a name="premium-file-share-limits"></a>Premium dosya paylaşma sınırları
 
 [!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
-### <a name="azure-file-sync-scale-targets"></a>Azure dosya eşitleme ölçek hedefleri
+### <a name="azure-file-sync-scale-targets"></a>Azure Dosya Eşitleme ölçek hedefleri
 
 Azure Dosya Eşitleme sınırsız kullanım hedefi ile tasarlanmıştır, ancak sınırsız kullanım her zaman mümkün değildir. Aşağıdaki tabloda Microsoft 'un test olan sınırları ve hangi hedeflerin sabit sınırları olduğunu gösterilmektedir:
 

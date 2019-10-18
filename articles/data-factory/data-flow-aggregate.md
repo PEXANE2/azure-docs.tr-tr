@@ -1,5 +1,5 @@
 ---
-title: Eşleme veri akışında toplam dönüşüm-Azure Data Factory | Microsoft Docs
+title: Azure Data Factory eşleme veri akışında toplama dönüştürmesi | Microsoft Docs
 description: Veri akışı toplama dönüştürmesiyle Azure Data Factory verileri ölçekte nasıl toplayacağınızı öğrenin.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f2a3219a731133ecaedf30fec1854f1a128caa3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431591"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514834"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi 
 
@@ -68,7 +68,9 @@ Toplam dönüşümler SQL toplama seçme sorgularıyla benzerdir. Group by yan t
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek,-0 @no__t gelen bir akışı alır ve satırları sütuna göre `year` olarak gruplandırır. Dönüştürme `avgrating` `Rating` sütununun ortalamasını değerlendiren bir toplama sütunu oluşturur. Bu toplama dönüştürmesi `AvgComedyRatingsByYear` olarak adlandırılmıştır. Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
+Aşağıdaki örnek, `MoviesYear` gelen bir akış alır ve satırları sütun `year` göre gruplandırır. Dönüştürme `avgrating` `Rating` sütununun ortalamasını değerlendiren bir toplama sütunu oluşturur. Bu toplama dönüştürmesi `AvgComedyRatingsByYear` olarak adlandırılmıştır.
+
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
 
 ![Örneğe göre Gruplandır](media/data-flow/agg-script1.png "Örneğe göre Gruplandır")
 

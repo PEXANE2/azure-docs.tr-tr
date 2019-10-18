@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452997"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527104"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde dış kullanıcılar için erişimi yönetme (Önizleme)
 
@@ -90,12 +90,15 @@ Bir dış Kullanıcı, bir erişim paketi isteği ile dizininizden ne olacağın
 
 1. Dış Kullanıcı herhangi bir erişim paketine son atamasını kaybederse, bu dizinde oturum açmasını engellemek isterseniz, **blok dış kullanıcıyı bu dizine oturum açmasını, bu dizinde** **Evet**olarak ayarlayın.
 
-1. Dış Kullanıcı herhangi bir erişim paketine son atamasını kaybettiğinde, dizininizde Konuk Kullanıcı hesabını kaldırmak istiyorsanız, **dış kullanıcıyı kaldır** ' ı **Evet**olarak ayarlayın.
+    > [!NOTE]
+    > Bir kullanıcının bu dizinde oturum açması engellenirse, Kullanıcı erişim paketini yeniden isteyemeyecek veya bu dizinde ek erişim isteyemeyecektir. Daha sonra diğer erişim paketlerine erişim istemesi gerekiyorsa, bunları oturum açmasını engellemeyi yapılandırmayın.
+
+1. Dış Kullanıcı herhangi bir erişim paketine son atamasını kaybederse, bu dizindeki Konuk Kullanıcı hesabını kaldırmak istiyorsanız, **dış kullanıcıyı kaldır** seçeneğini **Evet**olarak ayarlayın.
 
     > [!NOTE]
-    > Yetkilendirme Yönetimi yalnızca, yetkilendirme yönetimi aracılığıyla davet edilen hesapları kaldırır. Ayrıca, bir kullanıcının, dizininizde bulunan ve paket atamalarındaki kaynaklara eklenmiş olsa bile, oturum açma ve dizininizden kaldırdığına de izin verdiğine unutmayın. Konuk, erişim paketi atamalarını almadan önce dizininizde mevcutsa, bu kalırlar. Bununla birlikte, Konuk bir erişim paketi ataması aracılığıyla davet ediliyorsa ve davet edildikten sonra bir OneDrive Iş veya SharePoint Online sitesine atandıktan sonra yine de kaldırılacaktır.
+    > Yetkilendirme Yönetimi yalnızca, yetkilendirme yönetimi aracılığıyla davet edilen hesapları kaldırır. Ayrıca, bir kullanıcının bu dizindeki ve paket atamalarındaki kaynaklara eklenmiş olması durumunda bile bu dizinden oturum açması ve bu dizinden kaldırılması engellendiğine unutmayın. Konuk, erişim paketi atamaları almadan önce bu dizinde mevcutsa kalır. Bununla birlikte, Konuk bir erişim paketi ataması aracılığıyla davet ediliyorsa ve davet edildikten sonra bir OneDrive Iş veya SharePoint Online sitesine atandıktan sonra yine de kaldırılacaktır.
 
-1. Dizininizde Konuk Kullanıcı hesabını kaldırmak istiyorsanız, kaldırılmadan önce geçecek gün sayısını ayarlayabilirsiniz. Konuk Kullanıcı hesabını, herhangi bir erişim paketine en son atamasını yitirdikleri anda kaldırmak istiyorsanız, **bu dizinden dış Kullanıcı kaldırılmadan önce geçecek gün sayısını** **0**olarak ayarlayın.
+1. Bu dizindeki Konuk Kullanıcı hesabını kaldırmak istiyorsanız, kaldırılmadan önce geçecek gün sayısını ayarlayabilirsiniz. Konuk Kullanıcı hesabını, herhangi bir erişim paketine en son atamasını yitirdikleri anda kaldırmak istiyorsanız, **bu dizinden dış Kullanıcı kaldırılmadan önce geçecek gün sayısını** **0**olarak ayarlayın.
 
 1. **Kaydet** düğmesine tıklayın.
 
@@ -113,6 +116,6 @@ Ayrıca, kataloğu oluşturduktan sonra bu ayarı değiştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dizininizde bulunmayan kullanıcılar için](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [Dizininizde bulunmayan kullanıcılar için](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Kaynak kataloğu oluşturma ve yönetme](entitlement-management-catalog-create.md)
 - [Temsili ve roller](entitlement-management-delegate.md)

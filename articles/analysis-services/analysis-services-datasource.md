@@ -4,15 +4,15 @@ description: Azure Analysis Services veri modelleri için desteklenen veri kayna
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298627"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512448"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6a8eaca029767e1d6bce4bc8ce22ce5523be26d8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186585"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533708"
 ---
 # <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search Dizin Oluşturucu durumunu ve sonuçlarını izleme
 
@@ -27,7 +27,7 @@ Azure Search her dizin oluşturucunun geçerli ve geçmiş çalıştırmaları h
 * Devam eden veya önceki Dizin Oluşturucu çalıştırmasının sonuçlarını gözden geçirin.
 * En üst düzey Dizin Oluşturucu hatalarını ve dizin oluşturulan tek belgelerle ilgili hataları veya uyarıları belirler.
 
-## <a name="find-indexer-status-and-history-details"></a>Dizin Oluşturucu durumunu ve geçmiş ayrıntılarını bulun
+## <a name="get-status-and-history"></a>Durum ve geçmişi al
 
 Dizin Oluşturucu izleme bilgilerine aşağıdakiler dahil olmak üzere çeşitli yollarla erişebilirsiniz:
 
@@ -45,7 +45,7 @@ Büyük hacimler veri işleyen Dizin oluşturucular çalıştırmak uzun sürebi
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>Portalda Dizin oluşturucuyu izleme
+## <a name="monitor-using-the-portal"></a>Portalı kullanarak izleme
 
 Tüm Dizin oluşturucularınızın geçerli durumunu, arama hizmeti genel bakış sayfanızdaki **Dizin oluşturucular** listesinde görebilirsiniz.
 
@@ -79,7 +79,7 @@ Dizin Oluşturucu hatalarını ve uyarılarını araştırma hakkında daha fazl
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>REST API kullanarak Dizin oluşturucuyu izleme
+## <a name="monitor-using-rest-apis"></a>REST API 'Leri kullanarak izleme
 
 Dizin Oluşturucu [durumunu Al komutunu](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kullanarak bir dizin oluşturucunun durum ve yürütme geçmişini alabilirsiniz:
 
@@ -116,7 +116,7 @@ Yanıt genel Dizin Oluşturucu durumunu, son (veya sürmekte olan) Dizin Oluştu
 
 Yürütme geçmişi, geriye doğru kronolojik sıraya (en son ilk) göre sıralanan en güncel 50 çalıştırmaya kadar içerir.
 
-İki farklı durum değeri olduğunu aklınızda edin. En üst düzey durum, dizin oluşturucunun kendisi içindir. Öğesinin Dizin Oluşturucu durumu , dizin oluşturucunun doğru şekilde ayarlandığı ve çalıştırılabileceği, ancak şu anda çalıştığı anlamına gelir.
+İki farklı durum değeri olduğunu aklınızda edin. En üst düzey durum, dizin oluşturucunun kendisi içindir. Öğesinin Dizin Oluşturucu durumu, dizin oluşturucunun doğru şekilde ayarlandığı ve çalıştırılabileceği, ancak şu anda çalıştığı **anlamına gelir.**
 
 Dizin oluşturucunun her çalışmasının Ayrıca, belirli yürütmenin devam eden (**çalışıyor**) veya **başarılı**, **geçişli bir hata**veya **kalıcı bir hata** durumuyla tamamlanmış olup olmadığını belirten kendi durumu vardır. 
 
@@ -126,7 +126,7 @@ Durum kodları ve Dizin Oluşturucu izleme verileri hakkında daha fazla bilgi i
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>.NET SDK kullanarak Dizin oluşturucuyu izleme
+## <a name="monitor-using-the-net-sdk"></a>.NET SDK 'Yı kullanarak izleme
 
 Bir dizin oluşturucunun zamanlamasını Azure Search .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
 
@@ -173,7 +173,7 @@ Konsolundaki çıktı şuna benzer şekilde görünür:
       ErrorMessage: none
       Document Errors: 0, Warnings: 0
 
-İki farklı durum değeri olduğunu aklınızda edin. Üst düzey durum, dizin oluşturucunun durumunun kendisidir. Öğesinin Dizin Oluşturucu durumu , dizin oluşturucunun doğru şekilde ayarlandığı ve yürütme için kullanılabilir olduğu, ancak şu anda yürütülmekte olduğu anlamına gelir.
+İki farklı durum değeri olduğunu aklınızda edin. Üst düzey durum, dizin oluşturucunun durumunun kendisidir. Öğesinin Dizin Oluşturucu durumu, dizin oluşturucunun doğru şekilde ayarlandığı ve yürütme için kullanılabilir olduğu, ancak şu anda yürütülmekte olduğu **anlamına gelir.**
 
 Dizin oluşturucunun her çalışmasının Ayrıca, belirli yürütmenin devam eden (**çalışıyor**) veya **başarılı** veya **geçişli** bir durum ile zaten tamamlanmış olup olmadığı için kendi durumu vardır. 
 
@@ -181,6 +181,6 @@ Bir Dizin Oluşturucu değişiklik izleme durumunu yenilemek üzere sıfırland�
 
 Durum kodları ve Dizin Oluşturucu izleme bilgileri hakkında daha fazla bilgi için REST API [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) bakın.
 
-Belgeye özgü hatalar veya uyarılar ile ilgili ayrıntılar, listeler `IndexerExecutionResult.Errors` ve `IndexerExecutionResult.Warnings`numaralandırarak alınabilir.
+@No__t_0 ve `IndexerExecutionResult.Warnings` listeleri numaralandırarak belgeye özgü hatalar veya uyarılar hakkında ayrıntılı bilgi alınabilir.
 
 Dizin oluşturucuyu izlemek için kullanılan .NET SDK sınıfları hakkında daha fazla bilgi için bkz. [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) and [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

@@ -1,17 +1,17 @@
 ---
-title: Azure sanal makinelerini yeni aboneliğe veya kaynak grubuna taşıyın | Microsoft Docs
+title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286725"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528435"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -36,8 +36,8 @@ Azure Backup ile yapılandırılmış sanal makineleri taşımak için aşağıd
 * Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` Örneğin, AzureBackupRG_westus2_1
 * Azure portal ' de, "gizli türleri göster" seçeneğini işaretleyin.
 * PowerShell 'de `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet 'ini kullanın
-* CLı 'de `az resource list -g AzureBackupRG_<location of your VM>_1` ' ı kullanın.
-* @No__t-0 türünde `AzureBackup_<name of your VM that you're trying to move>_###########` adlandırma düzenine sahip kaynağı bulun
+* CLı 'de, `az resource list -g AzureBackupRG_<location of your VM>_1` kullanın
+* Adlandırma düzenine sahip `Microsoft.Compute/restorePointCollections` türündeki kaynağı bulun `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
 * Silme işlemi tamamlandıktan sonra, kasayı ve sanal makineyi hedef aboneliğe taşıyabilirsiniz. Taşıma işleminden sonra verilerde kayıp olmadan yedeklemeye devam edebilirsiniz.
 * Kurtarma hizmeti kasalarını yedekleme için taşıma hakkında daha fazla bilgi için bkz. [Kurtarma Hizmetleri sınırlamaları](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).

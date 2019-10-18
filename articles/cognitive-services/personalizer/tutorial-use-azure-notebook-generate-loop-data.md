@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: b724e54eb2d9e61bd576ab8a094489bbed6db20d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975411"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515177"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
@@ -47,7 +47,7 @@ Bu öğreticinin kodu, [kişiselleştirici örnekleri GitHub deposunda](https://
 
 ## <a name="how-the-simulation-works"></a>Simülasyonu nasıl çalışacaktır?
 
-Çalışan sistemin başlangıcında, kişiselleştirmeden gelen öneriler yalnızca% 20 ila% 30 arasında (1 ' in yeniden puanı ile gösterilir) geçerlidir. Bazı isteklerden sonra, sistem geliştirilir.
+Çalışan sistemin başlangıcında, kişiselleştirmeden gelen öneriler yalnızca %20 ila %30 arasında (1 ' in yeniden puanı ile gösterilir) geçerlidir. Bazı isteklerden sonra, sistem geliştirilir.
 
 İlk 10.000 istekten sonra çevrimdışı bir değerlendirme çalıştırın. Bu, kişiselleştirici verileri gözden geçirmesine ve daha iyi bir öğrenme ilkesi önerilmesine olanak tanır. Yeni öğrenme ilkesini uygulayın ve Not defterini 2.000 istek ile yeniden çalıştırın. Döngü daha iyi gerçekleştirilir.
 
@@ -97,7 +97,7 @@ Bu öğreticideki değişiklikleri göstermek için bu değerlerin çok kısa bi
 
 ## <a name="run-notebook-cells"></a>Not defteri hücrelerini Çalıştır
 
-Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar `*` yerine bir sayı görüntüler. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır. 
+Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar `*` yerine bir sayı görüntülerne zaman yapıldığını anlarsınız. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır. 
 
 ### <a name="include-the-python-modules"></a>Python modüllerini dahil et
 
@@ -114,7 +114,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Kişiselleştirici kaynak anahtarını ve adını ayarla
 
-Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. @No__t-0 değerini, kişiselleştirici kaynağınızın adı olarak değiştirin. @No__t-0 değerini kişiselleştirici anahtarınızla değiştirin. 
+Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. @No__t_0 değerini, kişiselleştirici kaynağınızın adı olarak değiştirin. @No__t_0 değerini, kişiselleştirici anahtarınızla değiştirin. 
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -122,7 +122,7 @@ personalization_base_url = "https://<your-resource-name>.cognitiveservices.azure
 resource_key = "<your-resource-key>"
 ```
 
-### <a name="print-current-data-and-time"></a>Geçerli verileri ve saati Yazdır
+### <a name="print-current-date-and-time"></a>Geçerli tarih ve saati Yazdır
 Yinelemeli işlevin başlangıç ve bitiş zamanlarını ve yinelemelerini aklınızda bırakmak için bu işlevi kullanın.
 
 Bu hücrelerde çıkış yok. İşlev, çağrıldığında geçerli tarih ve saat çıkışı yapar.
@@ -136,7 +136,7 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Son model güncelleştirme zamanını al
 
-@No__t-0 işlevi çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır. 
+@No__t_0 işlevi çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır. 
 
 Bu hücrelerde çıkış yok. İşlevi çağrıldığında son model eğitim tarihini çıktı olarak yapar.
 
@@ -198,10 +198,10 @@ Bu hücre
 * kişiselleştirici kaynak anahtarınızı kullanarak güvenlik üst bilgisini ayarlar 
 * Sıra olay KIMLIĞI için rastgele çekirdek belirler
 * JSON veri dosyalarında okur
-* çağrılar `get_last_updated` Yöntem-öğrenme ilkesi örnek çıktıda kaldırılmıştır
+* çağrı `get_last_updated` yöntemi-öğrenme ilkesi örnek çıktıda kaldırılmıştır
 * `get_service_settings` yöntemini çağırır
 
-Hücrede `get_last_updated` ve `get_service_settings` işlevlerine yapılan çağrıdan çıkış vardır.
+Hücrede `get_last_updated` ve `get_service_settings` işlevlerine yapılan çağrıdan çıktı vardır.
 
 ```python
 # build URLs
@@ -245,7 +245,7 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Çıkışın `rewardWaitTime` ve `modelExportFrequency` ' in her ikisinin de 15 saniye olarak ayarlandığını doğrulayın. 
+Çıktının `rewardWaitTime` ve `modelExportFrequency` her ikisinin de 15 saniye olarak ayarlandığını doğrulayın. 
     
 ```console
 -----checking model
@@ -349,7 +349,7 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 Bu işlev, derece isteğine gönderilmek üzere bir kahve listesinin tamamını JSON nesnesine ekler. 
 
-Hücrede çıkış yok. İşlev çağrıldığında `rankjsonobj` ' i değiştirir.
+Hücrede çıkış yok. İşlev çağrıldığında `rankjsonobj` değiştirir.
 
 
 Tek bir kahve özelliklerinin örneği şunlardır: 
@@ -390,9 +390,9 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 Sonraki hücre, dizüstü bilgisayarın _ana_ çalışmadır, rastgele bir Kullanıcı alma, kahve listesini alma, her Ikisini de derecelendirme API 'sine gönderme. Kullanıcının bilinen tercihleriyle tahmine göre karşılaştırma yapın ve ardından kişiselleştirici hizmetine geri dönme gönderilmesini sağlar. 
 
-Döngü @no__t 0 kez çalışır. Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor. 
+Döngü `num_requests` süreler boyunca çalışır. Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor. 
 
-Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. @No__t-0 ' da kahve için JSON 'ın tamamını görebilirsiniz.
+Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. @No__t_0 için tüm JSON 'yi görebilirsiniz.
 
 Sıralama API 'sine gönderilen JSON:
 
@@ -549,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Gelişimi görmek için grafik sonuçları 
 
-@No__t-0 ve `rewards` ' den bir grafik oluşturun.
+@No__t_0 ve `rewards` bir grafik oluşturun.
 
 ```python
 def createChart(x, y):
@@ -561,7 +561,7 @@ def createChart(x, y):
 
 ## <a name="run-chart-for-10000-rank-requests"></a>10.000 derecelendirme isteği için grafik Çalıştır
 
-@No__t-0 işlevini çalıştırın.
+@No__t_0 işlevini çalıştırın.
 
 ```python
 createChart(count,rewards)
@@ -574,7 +574,7 @@ Bu grafik, geçerli varsayılan öğrenme ilkesi için modelin başarısını g�
 ![Bu grafik, test süresi için geçerli öğrenme ilkesinin başarısını gösterir.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Testin sonuna kadar ideal hedef olan döngü, araştırmayı yüzde 100 ' a yakın olan bir başarı oranının ortalamasını elde edilir. Varsayılan araştırma ayarı% 20 ' dir. 
+Testin sonuna kadar ideal hedef olan döngü, araştırmayı yüzde 100 ' a yakın olan bir başarı oranının ortalamasını elde edilir. Varsayılan araştırma ayarı %20 ' dir. 
 
 `100-20=80`
 
@@ -587,7 +587,7 @@ Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak içi
 1. Azure portal, kişiselleştirici kaynağın **değerlendirmeler** sayfasını açın.
 1. **Değerlendirme oluştur**' u seçin.
 1. Döngü değerlendirmesi için gerekli değerlendirme adı ve tarih aralığı verilerini girin. Tarih aralığı yalnızca değerlendirmenize odaklandığınız günleri içermelidir. 
-    ![Azure Portal, kişiselleştirici kaynağın değerlendirmeler sayfasını açın. Değerlendirme oluştur ' u seçin. Değerlendirme adını ve tarih aralığını girin. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    Azure portal ![In, kişiselleştirici kaynağın değerlendirmeler sayfasını açın. Değerlendirme oluştur ' u seçin. Değerlendirme adını ve tarih aralığını girin. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Bu çevrimdışı değerlendirmeyi çalıştırmanın amacı, bu döngüde kullanılan özellikler ve eylemler için daha iyi bir öğrenme ilkesi olup olmadığını belirlemektir. Daha iyi öğrenme ilkesini bulmak için **iyileştirme ilkesinin** açık olduğundan emin olun.
 
@@ -608,7 +608,7 @@ Daha fazla [bekleme süresi](concept-rewards.md#reward-wait-time) ve [model gün
 get_service_settings()
 ```
 
-Çıkışın `rewardWaitTime` ve `modelExportFrequency` ' in her ikisinin de 5 dakika olarak ayarlandığını doğrulayın. 
+Çıktının `rewardWaitTime` ve `modelExportFrequency` her ikisinin de 5 dakika olarak ayarlandığını doğrulayın. 
 ```console
 -----checking model
 <Response [200]>
@@ -642,7 +642,7 @@ jsonTemplate2 = rankactionsjsonobj
 
 ## <a name="run-chart-for-2000-rank-requests"></a>2\.000 derecelendirme isteği için grafik Çalıştır
 
-@No__t-0 işlevini çalıştırın.
+@No__t_0 işlevini çalıştırın.
 
 ```python
 createChart(count2,rewards2)

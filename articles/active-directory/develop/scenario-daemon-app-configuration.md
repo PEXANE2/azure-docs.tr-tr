@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394137a1b7901a3272e36f6a6d74944b87f30082
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056499"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527077"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Daemon uygulaması-kod yapılandırması
 
@@ -43,7 +43,7 @@ Daemon uygulamalarının temsilci izinleri kullanmadığında, ancak uygulama iz
 
 Bu nedenle, uygulama yapılandırmasında belirtilen yetkilinin kiracı ile bağlantılı olması gerekir (kiracı KIMLIĞI veya kuruluşunuzla ilişkili bir etki alanı adı belirterek).
 
-Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız, kullanabilirsiniz `organizations`. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için [bir kiracının tamamına Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) konusuna bakın. MSAL ' de şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
+Bir ISV iseniz ve çok kiracılı bir araç sağlamak istiyorsanız `organizations` kullanabilirsiniz. Ancak, müşterilere yönetici onayı verme hakkında da dikkat etmeniz gerektiğini unutmayın. Ayrıntılar için [bir kiracının tamamına Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) konusuna bakın. MSAL ' de şu anda bir sınırlama vardır: `organizations` yalnızca istemci kimlik bilgileri bir uygulama gizli anahtarı (sertifika değil) olduğunda izin verilir.
 
 ## <a name="application-configuration-and-instantiation"></a>Uygulama yapılandırma ve örnekleme
 
@@ -103,7 +103,7 @@ Sertifikalarla gizli bir istemci oluştururken, bu, GitHub 'daki [confidential_c
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Örnekleri yapılandırmak için msal4j dev örnekleri içinde kullanılan sınıf aşağıdadır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Örnekleri yapılandırmak için msal4j dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 public class TestData {
@@ -126,14 +126,14 @@ MSAL uygulamasının örneğini oluşturmak için şunları yapmanız gerekir:
 - MSAL paketini ekleme, başvuru veya içeri aktarma (dile bağlı olarak)
 - Daha sonra, istemci gizli dizileri veya sertifikaları (veya gelişmiş bir senaryo olarak imzalanmış onaylar olarak) kullanıyorsanız, oluşturma işlemi farklı olur
 
-Daemon uygulaması şu şekilde sunulacaktır`IConfidentialClientApplication`
+Daemon uygulaması bir `IConfidentialClientApplication` sunulacaktır
 
 #### <a name="reference-the-package"></a>Pakete başvur
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 Uygulamanıza [Microsoft. ıdentityclient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet paketini ekleyin.
-MSAL.net ' de, gizli istemci uygulaması `IConfidentialClientApplication` arabirim tarafından temsil edilir.
+MSAL.NET ' de, gizli istemci uygulaması `IConfidentialClientApplication` arabirimi tarafından temsil edilir.
 Kaynak kodunda MSAL.NET ad alanını kullan
 
 ```CSharp
@@ -243,7 +243,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         .build();
 ```
 
-veya
+or
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -269,7 +269,7 @@ MSAL.NET, gizli istemci uygulamasına imzalı onaylar sağlamak için iki yönte
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Kullandığınızda `WithClientAssertion`, imzalı bir JWT sağlamanız gerekir. Bu gelişmiş senaryo [istemci onaylamaları](msal-net-client-assertions.md) hakkında ayrıntılı
+@No__t_0 kullandığınızda, imzalı bir JWT sağlamanız gerekir. Bu gelişmiş senaryo [istemci onaylamaları](msal-net-client-assertions.md) hakkında ayrıntılı
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -278,7 +278,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Kullandığınızda `WithClientClaims`, msal.net, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi için işlem görür.
+@No__t_0 kullandığınızda, MSAL.NET, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi için işlem görür.
 Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir:
 
 ```CSharp
@@ -295,7 +295,7 @@ Daha ayrıntılı bilgi için bkz. [istemci onayları](msal-net-client-assertion
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python 'da, bu `ConfidentialClientApplication`özel anahtar tarafından imzalanacak talepleri kullanarak istemci talepleri sağlayabilirsiniz.
+MSAL Python 'da, bu `ConfidentialClientApplication` özel anahtarıyla imzalanacak talepleri kullanarak istemci talepleri sağlayabilirsiniz.
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -321,5 +321,19 @@ msal4j genel önizlemede. İmzalı Onaylamalar henüz desteklenmiyor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Daemon uygulaması-uygulama belirteçleri alınıyor](./scenario-daemon-acquire-token.md)
+> [Daemon uygulaması-uygulama belirteçleri alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon uygulaması-uygulama belirteçleri alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon uygulaması-uygulama belirteçleri alınıyor](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

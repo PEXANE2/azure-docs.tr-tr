@@ -1,22 +1,19 @@
 ---
 title: Azure Işlevleri için PowerShell geliştirici başvurusu
 description: PowerShell kullanarak işlevleri geliştirmeyi anlayın.
-services: functions
-documentationcenter: na
-author: tylerleonhardt
-manager: jeconnoc
+author: eamonoreilly
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha
-ms.reviewer: glenga
-ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: glenga
+ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029023"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515658"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -76,7 +73,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 
 ### <a name="triggermetadata-parameter"></a>TriggerMetadata parametresi
 
-@No__t-0 parametresi, tetikleyici hakkında ek bilgi sağlamak için kullanılır. Ek meta veriler bağlamadan bağlamaya farklılık gösterir, ancak hepsi aşağıdaki verileri içeren bir `sys` özelliği içerir:
+@No__t_0 parametresi, tetikleyici hakkında ek bilgi sağlamak için kullanılır. Ek meta veriler bağlamadan bağlamaya farklılık gösterir, ancak hepsi aşağıdaki verileri içeren bir `sys` özelliği içerir:
 
 ```powershell
 $TriggerMetadata.sys
@@ -96,7 +93,7 @@ PowerShell 'de [bağlamalar](functions-triggers-bindings.md) , bir işlevin func
 
 ### <a name="reading-trigger-and-input-data"></a>Tetikleyici ve giriş verilerini okuma
 
-Tetikleyici ve giriş bağlamaları, işleviniz için parametre olarak okunabilir. Giriş bağlamaları, function. JSON içinde `in` olarak ayarlanmış `direction` ' dır. @No__t-1 ' de tanımlanan `name` özelliği parametrenin adı `param` bloğunda. PowerShell, bağlama için adlandırılmış parametreler kullandığından, parametrelerin sırası bu şekilde değildir. Ancak, `function.json` ' da tanımlanan bağlamaların sırasını izlemek en iyi uygulamadır.
+Tetikleyici ve giriş bağlamaları, işleviniz için parametre olarak okunabilir. Giriş bağlamaları, function. JSON içinde `in` olarak ayarlanmış `direction` ' dır. @No__t_1 tanımlanan `name` özelliği, `param` bloğunda parametrenin adıdır. PowerShell, bağlama için adlandırılmış parametreler kullandığından, parametrelerin sırası bu şekilde değildir. Ancak, `function.json` ' da tanımlanan bağlamaların sırasını izlemek en iyi uygulamadır.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -128,11 +125,11 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * Çıkış bağlaması bir değer koleksiyonunu kabul ettiğinde, birden fazla değeri göndermek için `Push-OutputBinding` ' ı tekrar tekrar çağırabilirsiniz.
 
-* Çıkış bağlaması yalnızca bir tek değeri kabul ettiğinde, ikinci kez @no__t çağrısı bir hata oluşturur.
+* Çıkış bağlaması yalnızca bir tek değeri kabul ettiğinde, `Push-OutputBinding` ikinci kez çağırma bir hata oluşturur.
 
 #### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` sözdizimi
 
-@No__t-0 çağırmak için geçerli parametreler aşağıdadır:
+@No__t_0 çağırmak için geçerli parametreler aşağıda verilmiştir:
 
 | Adı | Tür | Yerine | Açıklama |
 | ---- | ---- |  -------- | ----------- |
@@ -173,7 +170,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Yalnızca Singleton değerlerini kabul eden çıkışlar için, bir koleksiyona ekleme yapmak yerine eski değeri geçersiz kılmak üzere `-Clobber` parametresini kullanabilirsiniz. Aşağıdaki örnek, daha önce bir değer eklediğinizi varsayar. @No__t-0 ' ı kullanarak, aşağıdaki örnekteki yanıt, "çıkış #3" değeri döndürecek varolan değeri geçersiz kılar:
+Yalnızca Singleton değerlerini kabul eden çıkışlar için, bir koleksiyona ekleme yapmak yerine eski değeri geçersiz kılmak üzere `-Clobber` parametresini kullanabilirsiniz. Aşağıdaki örnek, daha önce bir değer eklediğinizi varsayar. @No__t_0 kullanarak, aşağıdaki örnekteki yanıt, "çıkış #3" değeri döndürecek varolan değeri geçersiz kılar:
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -250,7 +247,7 @@ PowerShell işlevlerinde günlüğe kaydetme, normal PowerShell günlüğü gibi
 Bu cmdlet 'lere ek olarak, işlem hattına yazılan her şey `Information` günlük düzeyine yönlendirilir ve varsayılan PowerShell biçimlendirmesi ile görüntülenir.
 
 > [!IMPORTANT]
-> @No__t-0 veya `Write-Debug` cmdlet 'lerinin kullanılması, ayrıntılı ve hata ayıklama düzeyinde günlüğe kaydetmeyi görmek için yeterli değildir. Ayrıca, gerçekten önem verdiğiniz günlükleri bildiren günlük düzeyi eşiğini da yapılandırmanız gerekir. Daha fazla bilgi için bkz. [işlev uygulaması günlük düzeyini yapılandırma](#configure-the-function-app-log-level).
+> @No__t_0 veya `Write-Debug` cmdlet 'lerini kullanmak, ayrıntılı ve hata ayıklama düzeyinde günlüğe kaydetmeyi görmek için yeterli değildir. Ayrıca, gerçekten önem verdiğiniz günlükleri bildiren günlük düzeyi eşiğini da yapılandırmanız gerekir. Daha fazla bilgi için bkz. [işlev uygulaması günlük düzeyini yapılandırma](#configure-the-function-app-log-level).
 
 ### <a name="configure-the-function-app-log-level"></a>İşlev uygulaması günlük düzeyini yapılandırma
 
@@ -327,7 +324,7 @@ Geri göndermeniz gereken yanıt nesnesi, aşağıdaki özelliklere sahip `HttpR
 
 #### <a name="accessing-the-request-and-response"></a>İstek ve yanıta erişme
 
-HTTP tetikleyicilerle çalışırken, HTTP isteğine diğer giriş bağlamalarla aynı şekilde erişebilirsiniz. @No__t-0 bloğunda.
+HTTP tetikleyicilerle çalışırken, HTTP isteğine diğer giriş bağlamalarla aynı şekilde erişebilirsiniz. @No__t_0 bloğunda.
 
 Aşağıdaki şekilde gösterildiği gibi bir yanıt döndürmek için `HttpResponseContext` nesnesi kullanın:
 
@@ -403,13 +400,8 @@ Herhangi bir işlevden `$PSVersionTable` yazdırarak geçerli sürümü görebil
 
 ## <a name="dependency-management"></a>Bağımlılık yönetimi
 
-PowerShell işlevleri, hizmet tarafından [PowerShell Galerisi](https://www.powershellgallery.com) modüllerinin indirilmesini ve yönetilmesini destekler. Host. json dosyasını değiştirerek ve managedDependency Enabled özelliğini true olarak ayarlayarak, requirements. psd1 dosyası işlenir. Belirtilen modüller otomatik olarak indirilir ve işlev için kullanılabilir hale getirilir. 
+İşlevler, bağımlılıkları yönetmek için [PowerShell galerisinden](https://www.powershellgallery.com) yararlanmanızı sağlar. Bağımlılık yönetimi etkinken, gerekli modülleri otomatik olarak indirmek için requirements. psd1 dosyası kullanılır. Bu davranışı, aşağıdaki örnekte olduğu gibi, `managedDependency` özelliğini [Host. json dosyasının](functions-host-json.md)kökündeki `true` olarak ayarlayarak etkinleştirirsiniz:
 
-Şu anda desteklenen en fazla modül sayısı 10 ' dur. Desteklenen söz dizimi, aşağıda gösterildiği gibi MajorNumber. * veya tam modül sürümüdür. Yeni bir PowerShell işlev uygulaması oluşturulduğunda Azure az Module varsayılan olarak dahil edilir.
-
-Dil çalışanı, bir yeniden başlatma üzerinde güncelleştirilmiş modülleri seçer.
-
-Host. JSON
 ```json
 {
   "managedDependency": {
@@ -418,7 +410,7 @@ Host. JSON
 }
 ```
 
-requirements. psd1
+Yeni bir PowerShell işlevleri projesi oluşturduğunuzda, Azure [`Az` modülü](/powershell/azure/new-azureps-module-az) dahil olmak üzere bağımlılık yönetimi varsayılan olarak etkindir. Şu anda desteklenen en fazla modül sayısı 10 ' dur. Desteklenen sözdizimi, aşağıdaki gereksinimlerde gösterildiği gibi _`MajorNumber`_ `.*` veya tam modül sürümüdür. psd1 örnek:
 
 ```powershell
 @{
@@ -427,32 +419,34 @@ requirements. psd1
 }
 ```
 
-Yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için aşağıdaki ayarlar kullanılabilir. Uygulama yükseltmeniz MDMaxBackgroundUpgradePeriod içinde başlayacaktır ve yükseltme işlemi yaklaşık MDNewSnapshotCheckPeriod içinde tamamlanır.
+Requirements. psd1 dosyasını güncelleştirdiğinizde, güncelleştirilmiş modüller yeniden başlatmadan sonra yüklenir.
+
+> [!NOTE]
+> Yönetilen bağımlılıklar, modülleri indirmek için www.powershellgallery.com 'e erişim gerektirir. Yerel olarak çalışırken, gerekli güvenlik duvarı kurallarını ekleyerek çalışma zamanının bu URL 'ye erişebildiğinizden emin olun. 
+
+Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz `MDMaxBackgroundUpgradePeriod` içinde başlar ve yükseltme işlemi yaklaşık `MDNewSnapshotCheckPeriod` yaklaşık olarak tamamlanır.
 
 | İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 gün)     | Her PS çalışanı, çalışan işlemi başlatma ve sonrasında her MDMaxBackgroundUpgradePeriod üzerindeki PS galerisinde modül yükseltmelerini denetlemeyi başlatır. PS galerisinde yeni modül sürümleri varsa, bu sürümler PS çalışanlarının kullanabildiği dosya sistemine yüklenir. Bu değeri azaltmak, Işlev uygulamanızın daha önce daha yeni modül sürümlerini almasına izin verir, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması, uygulama kaynak kullanımını azaltır, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir.      | 
-| MDNewSnapshotCheckPeriod          | "01:00:00" (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PS çalışanının yeniden başlatılması gerekir. PS çalışanlarının yeniden başlatılması, geçerli işlev etkinleştirmeleri kesintiye uğradığı için uygulamanızın kullanılabilirliğini etkileyebilir. Tüm PS çalışanları yeniden başlatılana kadar, işlev etkinleştirmeleri eski ya da yeni modül sürümlerini kullanabilir. Tüm PS çalışanlarının yeniden başlatılması MDNewSnapshotCheckPeriod içinde tamamlanır. Bu değerin artırılması, kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
-| MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son MDMinBackgroundUpgradePeriod içinde herhangi bir çalışan zaten başlatılmış olursa modül yükseltmelerini denetleme işlemi gerçekleştirilmez. |
-
-> [!NOTE]
-> Yönetilen bağımlılıklar, modülleri indirmek için www.powershellgallery.com erişimine bağımlıdır. Gerekli güvenlik duvarı kurallarını ekleyerek işlev çalışma zamanının bu URL 'ye erişiminin olduğundan emin olmanız gerekir.
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma PowerShell Galerisi ve bundan sonra her `MDMaxBackgroundUpgradePeriod` modül yükseltmelerini denetlemeyi başlatır. PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması `MDNewSnapshotCheckPeriod` içinde tamamlanmıştır. Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son `MDMinBackgroundUpgradePeriod` bir çalışan tarafından zaten başlatılmışsa modül yükseltmelerinden dolayı denetim yapılmamaktadır. |
 
 Kendi özel modüllerinizi kullanmak, normal şekilde nasıl yapacağınıza göre biraz farklıdır.
 
-Modülünü yerel makinenize yüklediğinizde, `$env:PSModulePath` ' daki küresel olarak kullanılabilir klasörlerden birine gider. İşleviniz Azure 'da çalıştığından, makinenizde yüklü olan modüllere erişemezsiniz. Bu, bir PowerShell işlev uygulaması için `$env:PSModulePath` ' ın normal bir PowerShell betiğinin `$env:PSModulePath` ' den farklı olmasını gerektirir.
+Yerel bilgisayarınızda, modül `$env:PSModulePath`, genel olarak kullanılabilir klasörlerden birine yüklenir. Azure 'da çalışırken, makinenizde yüklü olan modüllere erişiminiz yok. Bu, bir PowerShell işlevi uygulamasının `$env:PSModulePath`, normal bir PowerShell betiğinin `$env:PSModulePath` farklı olduğu anlamına gelir.
 
 Işlevlerde `PSModulePath` iki yol içerir:
 
-* İşlev Uygulaması kökünde bulunan `Modules` klasörü.
-* PowerShell dil çalışanının içinde yer alan `Modules` klasörünün yolu.
+* İşlev uygulamanızın kökünde bulunan bir `Modules` klasörü.
+* PowerShell dil çalışanı tarafından denetlenen `Modules` klasörünün yolu.
 
 ### <a name="function-app-level-modules-folder"></a>İşlev uygulama düzeyi `Modules` klasör
 
 Özel modülleri kullanmak için işlevlerinizin `Modules` klasörüne bağlı olduğu modülleri yerleştirebilirsiniz. Bu klasörden modüller, işlevler çalışma zamanı tarafından otomatik olarak kullanılabilir. İşlev uygulamasındaki herhangi bir işlev bu modülleri kullanabilir. 
 
 > [!NOTE]
-> Requirements. psd1 dosyasında belirtilen modüller otomatik olarak indirilir ve bunları modüller klasörüne dahil etmeniz gerekmez. Bunlar, bulutta çalıştırıldığında $env: LOCALAPPDATA/AzureFunctions klasöründe ve/data/ManagedDependencies klasöründe yerel olarak depolanır.
+> Requirements. psd1 dosyasında belirtilen modüller otomatik olarak indirilir ve bunları modüller klasörüne dahil etmeniz gerekmez. Bunlar, bulutta çalıştırıldığında `$env:LOCALAPPDATA/AzureFunctions` klasöründe ve `/data/ManagedDependencies` klasöründe yerel olarak depolanır.
 
 Özel modül özelliğinden yararlanmak için, işlev uygulamanızın kökünde bir `Modules` klasörü oluşturun. İşlevleriniz içinde kullanmak istediğiniz modülleri bu konuma kopyalayın.
 
@@ -461,7 +455,7 @@ mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Bir modüller klasörüyle, işlev uygulamanız aşağıdaki klasör yapısına sahip olmalıdır:
+Bir `Modules` klasörüyle, işlev uygulamanız aşağıdaki klasör yapısına sahip olmalıdır:
 
 ```
 PSFunctionApp
@@ -488,7 +482,7 @@ Geçerli modüller listesi aşağıdaki gibidir:
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): `.zip`, `.nupkg` ve diğerleri gibi arşivleri ile çalışmak için kullanılan modül.
 * **Threadjob**: PowerShell iş API 'lerinin iş parçacığı tabanlı bir uygulamasıdır.
 
-Bu modüllerin en son sürümü Işlevler tarafından kullanılır. Bu modüllerin belirli bir sürümünü kullanmak için, belirli sürümü işlev uygulamanızın `Modules` klasörüne yerleştirebilirsiniz.
+Varsayılan olarak, Işlevler bu modüllerin en son sürümünü kullanır. Belirli bir modül sürümünü kullanmak için, söz konusu sürümü işlev uygulamanızın `Modules` klasörüne yerleştirin.
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
@@ -529,11 +523,11 @@ Azure PowerShell, size fazla yazma işleminden tasarruf etmenize yardımcı olma
 
 Bazı işlemler oldukça uzun sürebileceğinden, Azure PowerShell eşzamanlılık içinde de bir değer vardır. Ancak, dikkatli ilerlemeniz gerekir. Bir yarış durumu yaşadığınızı düşünüyorsanız, PSWorkerInProcConcurrencyUpperBound uygulama ayarını `1` olarak ayarlayın ve bunun yerine eşzamanlılık için [dil çalışan işlem düzeyi yalıtımı](functions-app-settings.md#functions_worker_process_count) kullanın.
 
-## <a name="configure-function-scriptfile"></a>@No__t işlevi yapılandırma-0
+## <a name="configure-function-scriptfile"></a>İşlev `scriptFile` Yapılandır
 
 Varsayılan olarak, karşılık gelen `function.json` ile aynı üst dizini paylaşan bir dosya olan `run.ps1` ' dan bir PowerShell işlevi yürütülür.
 
-@No__t-1 ' deki `scriptFile` özelliği aşağıdaki örnekteki gibi görünen bir klasör yapısını almak için kullanılabilir:
+@No__t_1 `scriptFile` özelliği, aşağıdaki örnekte olduğu gibi görünen bir klasör yapısını almak için kullanılabilir:
 
 ```
 FunctionApp
@@ -573,7 +567,7 @@ FunctionApp
  | | - PSFunction.psm1
 ```
 
-@No__t-0 şunu içerir:
+@No__t_0 şunları içerir:
 
 ```powershell
 function Invoke-PSTestFunc {
@@ -585,7 +579,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-Bu örnekte, `myFunction` yapılandırması, başka bir klasördeki bir PowerShell modülü olan `PSFunction.psm1` ' ye başvuran bir `scriptFile` özelliği içerir.  @No__t-0 özelliği, modüldeki giriş noktası olan `Invoke-PSTestFunc` işlevine başvurur.
+Bu örnekte, `myFunction` yapılandırması, başka bir klasördeki bir PowerShell modülü olan `PSFunction.psm1` ' ye başvuran bir `scriptFile` özelliği içerir.  @No__t_0 özelliği, modüldeki giriş noktası olan `Invoke-PSTestFunc` işlevine başvurur.
 
 ```json
 {
@@ -607,7 +601,7 @@ PowerShell işlevleriyle çalışırken, aşağıdaki bölümlerde yer aldığı
 
 [Sunucusuz barındırma modelinde](functions-scale.md#consumption-plan)Azure işlevleri geliştirirken soğuk başlar. *Soğuk başlatma* , bir isteği işlemek için işlev uygulamanızın çalışmaya başlaması için gereken süreyi ifade eder. İşlev uygulamanız işlem yapılmayan dönemler sırasında kapandığı için, tüketim planında soğuk başlatma daha sık gerçekleşir.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>@No__t-0 kullanmak yerine modülleri paketleyin
+### <a name="bundle-modules-instead-of-using-install-module"></a>@No__t_0 kullanmak yerine modülleri paketleyin
 
 Komut dosyası her çağrıdan çalıştırılır. Betiğinizdeki `Install-Module` kullanmaktan kaçının. Bunun yerine, yayımlamadan önce `Save-Module` kullanın, böylece işlevinizin modülü indirme süresini atık olarak almamasını sağlayın. Soğuk başlıyorsa işlevlerinizi etkilese, işlev uygulamanızı *her zaman açık* veya bir [Premium plana](functions-scale.md#premium-plan)ayarlanmış bir [App Service plana](functions-scale.md#app-service-plan) dağıtmaya göz önünde bulundurun.
 

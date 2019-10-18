@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244035"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529016"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -73,7 +73,7 @@ IoT Edge Aracısı için UpstreamProtocol değişkenini cihazın kendisindeki co
 
 IoT Edge cihazınız bağlandıktan sonra, gelecekteki dağıtımlarda her iki çalışma zamanı modülü için UpstreamProtocol değişkenini yapılandırmaya devam ettiğinizden emin olun. Bir [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazı yapılandırma](how-to-configure-proxy-support.md)bölümünde bu işleme bir örnek verilmiştir.
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 * **İpuçları**
     * Yukarı akış protokolüyle tutarlı olun
@@ -93,7 +93,7 @@ Bir [proxy sunucusu üzerinden iletişim kurmak için IoT Edge cihazı yapıland
 
 IoT Edge hub ve aracı modülleri, durumu korumak ve modüller, cihazlar ve bulut arasında mesajlaşma sağlamak için yerel depolama kullanır. Daha iyi güvenilirlik ve performans sağlamak için sistem modüllerini konak dosya sisteminde depolamayı kullanacak şekilde yapılandırın.
 
-Daha fazla bilgi için bkz. [Sistem modülleri Için konak depolama](offline-capabilities.md#host-storage-for-system-modules).
+Daha fazla bilgi için bkz. [Sistem modülleri Için konak depolama](how-to-access-host-storage-from-module.md).
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>IoT Edge hub tarafından kullanılan bellek alanını azaltma
 
@@ -147,7 +147,7 @@ Etiketler, IoT Edge cihazlarınızda güncelleştirmeleri zorunlu etmenize de ya
 
 Etiket kuralına bir örnek için bkz. IoT Edge sıralı etiketleri ve sürümleri izlemek için belirli etiketleri nasıl kullandığını öğrenmek için [IoT Edge çalışma zamanını güncelleştirin](how-to-update-iot-edge.md#understand-iot-edge-tags) . 
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 * **İpuçları**
     * Giden/gelen yapılandırmayı gözden geçir
@@ -232,7 +232,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 **Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla**
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
 
 ```yml
 "createOptions": {

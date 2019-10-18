@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034191"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516575"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Linux kapsayıcılarını çalıştırmak için Windows üzerinde IoT Edge kullanma
 
@@ -47,17 +47,17 @@ IoT Edge cihazınız bir Windows bilgisayar ise, Hyper-V için [sistem gereksini
 ## <a name="install-iot-edge-on-a-new-device"></a>Yeni bir cihaza IoT Edge yüklemesi
 
 >[!NOTE]
->Azure IOT Edge yazılım paketlerini (lisans dizininde) paketleri bulunan lisans koşullarına tabidir. Paket kullanarak önce lisans koşullarını okuyun. Bu koşulları kabul etmeniz, yükleme ve kullanım paket oluşturur. Lisans koşullarını kabul etmiyorsanız, paket kullanmayın.
+>Azure IoT Edge yazılım paketleri, paketlerde bulunan lisans koşullarına tabidir (LISANS dizininde). Lütfen paketi kullanmadan önce lisans koşullarını okuyun. Paketi yüklemeniz ve kullanmanız, bu şartlarınızın kabul edildiğini oluşturur. Lisans koşullarını kabul etmiyorsanız, paketini kullanmayın.
 
 Bir PowerShell betiği, Azure IoT Edge güvenlik cini indirir ve yükler. Güvenlik cini daha sonra, diğer modüllerin uzak dağıtımlarını sağlayan IoT Edge Aracısı olan iki çalışma zamanı modülünün ilki başlatılır. 
 
 IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT Hub 'ından bir kimlikle sağlamanız gerekir. Tek bir IoT Edge cihaz, IoT Hub 'ınız tarafından sağlanan bir cihaz bağlantı dizesi kullanılarak el ile sağlanabilir. Ya da cihaz sağlama hizmeti 'ni kullanarak cihazları otomatik olarak temin edebilir, bu da birçok cihaza sahip olduğunuzda yararlı olur. 
 
-[Windows 'a Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-windows.md)makalesindeki farklı yükleme seçenekleri ve parametreleri hakkında daha fazla bilgi edinebilirsiniz. Docker Desktop 'ı yükledikten ve Linux kapsayıcıları için yapılandırıldıktan sonra, ana yükleme farkı Linux 'u **-containeros** parametresiyle bildiriyor. Örneğin: 
+[Windows 'a Azure IoT Edge çalışma zamanını yükleme](how-to-install-iot-edge-windows.md)makalesindeki farklı yükleme seçenekleri ve parametreleri hakkında daha fazla bilgi edinebilirsiniz. Docker Desktop 'ı yükledikten ve Linux kapsayıcıları için yapılandırıldıktan sonra, ana yükleme farkı Linux 'u **-containeros** parametresiyle bildiriyor. Örnek: 
 
 1. Henüz yapmadıysanız, yeni bir IoT Edge cihazı kaydedin ve cihaz bağlantı dizesini alın. Bu bölümün ilerleyen kısımlarında kullanılacak bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
 
-   * [Azure portal](how-to-register-device-portal.md)
+   * [Azure portalda](how-to-register-device-portal.md)
    * [Azure CLI](how-to-register-device-cli.md)
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
@@ -88,24 +88,29 @@ IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT 
 
 6. İstendiğinde, 1. adımda aldığınız cihaz bağlantı dizesini belirtin. Cihaz bağlantı dizesi, fiziksel cihazı IoT Hub bir cihaz KIMLIĞIYLE ilişkilendirir. 
 
-   Cihaz bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Cihaz bağlantı dizesi aşağıdaki biçimi alır ve tırnak işaretleri içermemelidir: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulamak
+## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulama
 
-IoT Edge hizmetinin durumunu kontrol edin. Çalışıyor olarak listelenmelidir.  
+IoT Edge hizmetinin durumunu kontrol edin: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Son 5 dakika Hizmeti günlüklerini inceleyin. 
+Son 5 dakikadan hizmet günlüklerini inceleyin: 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Çalışan modülleri listeleyin. Yeni bir yüklemeden sonra, çalıştırmayı görmeniz gereken tek modül **Edgeagent**' dir. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, diğer sistem modülü, **edgehub**, cihazda da başlatılır. 
+En yaygın yapılandırma ve ağ hataları için otomatik bir denetim çalıştırın: 
 
+```powershell
+iotedge check
+```
+
+Çalışan modülleri listeleyin. Yeni bir yüklemeden sonra, çalıştırmayı görmeniz gereken tek modül **Edgeagent**' dir. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, diğer sistem modülü, **edgehub**, cihazda da başlatılır. 
 
 ```powershell
 iotedge list
@@ -113,7 +118,7 @@ iotedge list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüklü olan çalışma zamanı ile sağlanan bir IOT Edge cihazına sahip olduğunuza göre şunları yapabilirsiniz [IOT Edge modüllerini dağıtmak](how-to-deploy-modules-portal.md).
+Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
 
 Yükleme IoT Edge düzgün şekilde yüklerken [sorun yaşıyorsanız sorun giderme](troubleshoot.md) sayfasına göz atın.
 

@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802542"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515197"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Hızlı başlangıç: Python için istemci kitaplığını kişiselleştirin
+# <a name="quickstart-personalizer-client-library-for-python"></a>Hızlı başlangıç: Python için kişiselleştirici istemci kitaplığı
 
 Kişiselleştirilmiş içeriği bu Python hızlı penceresinde kişiselleştirici hizmeti ile görüntüleyin.
 
@@ -26,7 +26,7 @@ Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın
  * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
  * En çok kullanılan derecelendirme eyleminin başarısını belirten rapor ödül.
 
-[Package (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [örnek](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Package (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -96,7 +96,7 @@ Bu kod parçacıkları, Python için kişiselleştirici istemci kitaplığı ile
 
 ## <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya `sample.py` adlı IDE 'de yeni bir Python uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya IDE 'de `sample.py` adlı yeni bir Python uygulaması oluşturun. 
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
@@ -106,7 +106,7 @@ Proje dizininden, **Sample.py** dosyasını tercih ettiğiniz DÜZENLEYICIDE vey
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-Kaynağınızın Azure anahtarı ve uç noktası için `PERSONALIZER_RESOURCE_KEY` ve `PERSONALIZER_RESOURCE_ENDPOINT` adlı ortam değişkenlerinden çekilen bir değişken oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+@No__t_0 ve `PERSONALIZER_RESOURCE_ENDPOINT` adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
 
 Kaynak adı, uç nokta URL 'sinin bir parçası: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
@@ -114,7 +114,7 @@ Kaynak adı, uç nokta URL 'sinin bir parçası: `https://<your-resource-name>.a
 
 ## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
 
-Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi `PERSONALIZER_RESOURCE_ENDPOINT` ' dır ve ApiKey, `PERSONALIZER_RESOURCE_KEY` ' dir.
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine yönelik parametre `PERSONALIZER_RESOURCE_ENDPOINT` ve ApiKey `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 

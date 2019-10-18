@@ -10,26 +10,26 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/02/2019
-ms.openlocfilehash: 6f2ef181e7f61696245a4413d7a28d84801f2838
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/12/2019
+ms.openlocfilehash: a5daac9fb34f36620176111e866f493d47f63bba
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72032876"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513937"
 ---
-# <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL hiper ölçek veritabanları hakkında SSS
+# <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 
-Bu makalede, genellikle hiper ölçekli veritabanı olarak adlandırılan Azure SQL veritabanı hiper ölçek hizmeti katmanındaki bir veritabanını ele almak için sık sorulan soruların yanıtları sunulmaktadır. Bu makalede, Hyperscale 'nin desteklediği senaryolar ve platformlar arası hizmetler, genel olarak SQL veritabanı Hyperscale ile uyumludur.
+Bu makalede, bu SSS 'nin geri kalanında yalnızca Hiperscale olarak adlandırılan Azure SQL veritabanı hiper ölçek hizmeti katmanında bir veritabanını ele almak için sık sorulan soruların yanıtları sunulmaktadır. Bu makalede, Hyperscale 'nin desteklediği senaryolar ve Hyperscale ile uyumlu özellikler açıklanmaktadır.
 
 - Bu SSS, hiper ölçek hizmet katmanını kısa bir şekilde anlayabilen ve belirli soruların ve kaygılarının cevaplanmasını isteyen okuyucular için hazırlanmıştır.
-- Bu SSS, bir kılavuz kitabı olması veya bir SQL veritabanı hiper ölçek veritabanının nasıl kullanılacağına ilişkin soruların yanıtlanmasına yöneliktir. Bunun için [Azure SQL veritabanı hiper ölçek](sql-database-service-tier-hyperscale.md) belgelerine başvurmanız önerilir.
+- Bu SSS, bir kılavuz kitabı olması veya bir hiper ölçekli veritabanının nasıl kullanılacağına ilişkin sorulara yanıt vermesi anlamına gelir. Hiper ölçeğe giriş için [Azure SQL veritabanı hiper ölçek](sql-database-service-tier-hyperscale.md) belgelerine başvurmanız önerilir.
 
-## <a name="general-questions"></a>Genel sorular
+## <a name="general-questions"></a>Genel Sorular
 
 ### <a name="what-is-a-hyperscale-database"></a>Hiper ölçekli veritabanı nedir?
 
-Hiper ölçekli bir veritabanı, hiper ölçek genişleme depolama teknolojisi tarafından desteklenen hiper ölçek hizmet katmanındaki bir Azure SQL veritabanıdır. Bir Hyperscale veritabanı en fazla 100 TB veri destekler ve yüksek aktarım hızı ve performans sağlar ve iş yükü gereksinimlerine uyum sağlamak için hızlı ölçeklendirmeye olanak tanır. Ölçeklendirme, uygulama-bağlantı, sorgu işleme vb. için saydam, diğer SQL veritabanı gibi çalışır.
+Hiper ölçekli bir veritabanı, hiper ölçek genişleme depolama teknolojisi tarafından desteklenen hiper ölçek hizmet katmanındaki bir Azure SQL veritabanıdır. Bir Hyperscale veritabanı en fazla 100 TB veri destekler ve yüksek aktarım hızı ve performans sağlar ve iş yükü gereksinimlerine uyum sağlamak için hızlı ölçeklendirmeye olanak tanır. Ölçeklendirme, uygulama bağlantısı, sorgu işleme vb. gibi diğer Azure SQL veritabanı gibi çalışır.
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>Hiper ölçeklendirmeyi destekleyen kaynak türleri ve satın alma modelleri
 
@@ -37,15 +37,11 @@ Hyperscale hizmet katmanı yalnızca Azure SQL veritabanı 'ndaki sanal çekirde
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>Hiper ölçek hizmet katmanının Genel Amaçlı ve İş Açısından Kritik hizmet katmanlarından farkı nedir?
 
-Sanal çekirdek tabanlı hizmet katmanları, birincil olarak kullanılabilirlik, depolama türü ve ıOPS temel alınarak farklılaştırılır.
-
-- Genel Amaçlı hizmet katmanı, iş yüklerinin çoğu için uygun olduğundan, GÇ gecikme süresinin veya yük devretme sürelerinin öncelik olmadığı dengeli bir dizi işlem ve depolama seçeneği sunar.
-- Hiper ölçek hizmeti katmanı çok büyük veritabanı iş yükleri için iyileştirilmiştir.
-- İş Açısından Kritik hizmet katmanı, GÇ gecikmesi önem derecesi olan iş yükleri için uygundur.
+Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığı gibi veritabanı kullanılabilirliğine ve depolama türüne, performansa ve en büyük boyuta göre farklılaştırılır.
 
 | | Kaynak türü | Genel Amaçlı |  Hiper ölçeklendirme | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
-| **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Depolama boyutunu 100 TB 'a kadar otomatik ölçeklendirme, sıvı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
+| **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
 | **İşlem boyutu**|Tek veritabanı/elastik havuz * | 1-80 sanal çekirdek | 1-80 sanal çekirdek * | 1-80 sanal çekirdek |
 | |Yönetilen örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
@@ -53,26 +49,26 @@ Sanal çekirdek tabanlı hizmet katmanları, birincil olarak kullanılabilirlik,
 | **Depolama boyutu** | Tek veritabanı/elastik havuz | 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
 | | Yönetilen örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
 | **'Ye** | Tek veritabanı * * | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
-| | Yönetilen örnek | Dosyanın boyutuna bağlıdır | Yok | Yönetilen örnek: dosyanın boyutuna bağlıdır|
-|**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, 4 okuma ölçeğinde, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği, bölge yedekli HA, tam yerel önbellek |
-|**Lerine**|Tümü|RA-GRS, 7-35 gün (varsayılan olarak 7 gün)| RA-GRS, 7 gün, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün (varsayılan olarak 7 gün) |
+| | Yönetilen örnek | Dosya boyutuna bağlıdır | Yok | 1375 ıOPS/sanal çekirdek |
+|**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 4 okuma ölçeği genişletme, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği genişletme, bölge yedekli HA, tam yerel depolama |
+|**Lerine**|Tümü|RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün)| RA-GRS, 7 günlük bekletme, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün) |
 
-\* elastik havuzlar hiper ölçek hizmeti katmanında desteklenmez
+\* elastik havuzlar hiper ölçek hizmet katmanında desteklenmez
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Hiper ölçek hizmet katmanını kimler kullanmalıdır?
 
-Hyperscale hizmet katmanı, büyük şirket içi SQL Server veritabanlarına sahip olan müşterilere yöneliktir ve buluta veya zaten Azure SQL veritabanı 'nı kullanan müşterilere ya da veritabanı büyümesi için olası. Hiper ölçek, hem yüksek performans hem de yüksek ölçeklenebilirliğe sahip müşteriler için de tasarlanmıştır. Hiperscale ile şunları alırsınız:
+Hyperscale hizmet katmanı, büyük şirket içi SQL Server veritabanlarına sahip olan ve buluta geçerek uygulamalarına modernleştirin veya zaten Azure SQL veritabanı kullanan müşteriler ve bunu önemli ölçüde genişletmek isteyen müşterilere yöneliktir. veritabanı büyümesi için olası. Hiper ölçek, hem yüksek performans hem de yüksek ölçeklenebilirliğe sahip müşteriler için de tasarlanmıştır. Hiperscale ile şunları alırsınız:
 
-- 100 TB 'a kadar veritabanı boyutu desteği
-- Veritabanı boyutundan bağımsız olarak hızlı veritabanı yedeklemeleri (yedeklemeler dosya anlık görüntülerini temel alır)
-- Veritabanı boyutundan bağımsız olarak hızlı veritabanı geri yüklenir (geri yüklemeler dosya anlık görüntülerinden alınır)
-- Daha yüksek günlük verimlilik, veritabanı boyutundan bağımsız olarak hızlı işlem işleme süreleriyle sonuçlanır
-- Okuma iş yükünüzü boşaltmak için bir veya daha fazla salt okunurdur.
-- Sabit zamanlı olarak hızlı bir şekilde işleme, ağır iş yüküne uyum sağlamak ve daha sonra ölçeği sabit bir zamanda genişletmek daha güçlü olacak şekilde. Bu, örneğin, bir P6 ile P11 arasında ölçeği artırma ve azaltma ile benzerdir, ancak bu, veri işlemi boyutunun bir boyutu olmadığından çok daha hızlıdır.
+- Veritabanı boyutu 100 TB 'a kadar
+- Veritabanı boyutundan bağımsız olarak hızlı veritabanı yedeklemeleri (yedeklemeler depolama anlık görüntülerine dayalıdır)
+- Veritabanı boyutundan bağımsız olarak hızlı veritabanı geri yüklenir (geri yüklemeler depolama anlık görüntülerinden alınır)
+- Veritabanı boyutundan ve sanal çekirdek sayısından bağımsız olarak daha yüksek günlük aktarım hızı
+- Okuma yükü boşaltma ve sık erişimli olarak kullanılan bir veya daha fazla salt okuma çoğaltması kullanarak ölçeği okuyun.
+- Sabit zamanlı olarak hızlı bir şekilde işleme, ağır iş yüküne uyum sağlamak ve daha sonra ölçeği sabit bir zamanda genişletmek daha güçlü olacak şekilde. Bu, örneğin bir P6 ve P11 arasında ölçeği artırma ve azaltma ile benzerdir, ancak bu, veri işleme boyutu olmadığından çok daha hızlıdır.
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Şu anda hiper ölçeklendirmeyi destekleyen bölgeler
 
-Azure SQL veritabanı hiper ölçek katmanı Şu anda [Azure SQL veritabanı hiper ölçeğe genel bakış](sql-database-service-tier-hyperscale.md#regions)altında listelenen bölgelerde mevcuttur.
+Hiper ölçek hizmeti katmanı Şu anda [Azure SQL veritabanı hiper ölçek](sql-database-service-tier-hyperscale.md#regions)altında listelenen bölgelerde kullanılabilir.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Mantıksal sunucu başına birden çok hiper ölçekli veritabanı oluşturabilir miyim
 
@@ -80,20 +76,20 @@ Evet. Mantıksal sunucu başına hiper ölçek veritabanlarının sayısı hakk�
 
 ### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>Hiper ölçek veritabanının performans özellikleri nelerdir
 
-SQL veritabanı hiper ölçek mimarisi, büyük veritabanı boyutlarını desteklerken yüksek performans ve verimlilik sağlar. 
+Hiper ölçek mimarisi, büyük veritabanı boyutlarını desteklerken yüksek performans ve verimlilik sağlar. 
 
 ### <a name="what-is-the-scalability-of-a-hyperscale-database"></a>Hiper ölçek veritabanının ölçeklenebilirliği nedir?
 
-SQL veritabanı hiper ölçek, iş yükü talebe göre hızlı ölçeklenebilirlik sağlar.
+Hiper ölçek, iş yükü talebe göre hızlı ölçeklenebilirlik sağlar.
 
 - **Ölçeği artırma/azaltma**
 
-  Hyperscale ile, birincil işlem boyutunu CPU, bellek gibi kaynaklar bakımından ölçeklendirebilir ve sonra ölçeği sabit bir süre içinde azaltabilirsiniz. Depolama paylaşıldığından ölçeği büyütme ve küçültme, veri işleme bir boyut değildir.  
+  Hyperscale ile, birincil işlem boyutunu CPU ve bellek gibi kaynaklar açısından ölçeklendirebilir ve sonra ölçeği sabit bir süre içinde azaltabilirsiniz. Depolama paylaşıldığından ölçeği büyütme ve küçültme, veri işleme bir boyut değildir.  
 - **Ölçeği genişletme/genişletme**
 
-  Hiperscale ile, okuma isteklerinizi karşılamak için kullanabileceğiniz bir veya daha fazla ek işlem düğümü sağlama olanağı da alırsınız. Diğer bir deyişle, okuma iş yükünüzü birincil işlem üzerinden boşaltmak için bu ek işlem düğümlerini salt okuma düğümleri olarak kullanabilirsiniz. Salt okuma özelliklerine ek olarak, bu düğümler birincil sunucudan yük devretme durumunda etkin bekleme işlevi de sunar.
+  Hiperscale ile, okuma isteklerinizi karşılamak için kullanabileceğiniz bir veya daha fazla ek işlem çoğaltması sağlama olanağı da alırsınız. Yani, bu ek bilgi işlem çoğaltmalarını, birincil işlem üzerinden okuma iş yükünüzü boşaltmak için salt okuma çoğaltmaları olarak kullanabilirsiniz. Salt okuma özelliklerine ek olarak, bu çoğaltmalar Ayrıca birincil sunucudan yük devretme durumunda sık erişimli olarak da çalışır.
 
-  Bu ek işlem düğümlerinin her birini sağlamak, sabit zamanlı olarak yapılabilir ve çevrimiçi bir işlemdir. Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `readonly` olarak ayarlayarak, bu ek salt okuma işlem düğümlerine bağlanabilirsiniz. @No__t-0 ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem düğümlerinden birine yönlendirilir.
+  Bu ek bilgi işlem çoğaltmalarının sağlanması, sabit zamanlı olarak yapılabilir ve çevrimiçi bir işlemdir. Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. @No__t_0 uygulama amacına sahip tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.
 
 ## <a name="deep-dive-questions"></a>Derinlemesine bakış soruları
 
@@ -103,101 +99,101 @@ Evet, uygulayabilirsiniz.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>Hiper ölçek, uygulama programlama modelinizin değiştirilmesini gerektiriyor
 
-Hayır, uygulama programlama modeliniz olduğu gibi kalır. Azure SQL veritabanı ile etkileşim kurmak için Bağlantı dizenizi her zamanki gibi ve diğer normal modlar olarak kullanırsınız.
+Hayır, uygulama programlama modeliniz olduğu gibi kalır. Bağlantı dizenizi her zamanki gibi, hiper ölçekli veritabanlarınızla etkileşimde bulunmak için de normal yöntemlerle kullanırsınız.
 
-### <a name="what-transaction-isolation-levels-are-going-to-be-default-on-sql-database-hyperscale-database"></a>SQL veritabanı hiper ölçek veritabanında hangi işlem yalıtım düzeylerinin varsayılan olacak
+### <a name="what-transaction-isolation-level-is-the-default-in-a-hyperscale-database"></a>Hiper ölçek veritabanında varsayılan değer olan işlem yalıtım düzeyi
 
-Birincil düğümde, işlem yalıtım düzeyi RCSı 'dir (okuma kaydedilmiş anlık görüntü yalıtımı). Okuma ölçeği ikincil düğümlerinde, yalıtım düzeyi anlık görüntüdür.
+Birincil çoğaltmada, varsayılan işlem yalıtım düzeyi RCSı 'dir (okuma kaydedilmiş anlık görüntü yalıtımı). Okuma ölçeği genişletme ikincil çoğaltmalarda varsayılan yalıtım düzeyi anlık görüntüdür.
 
-### <a name="can-i-bring-my-on-premises-or-iaas-sql-server-license-to-sql-database-hyperscale"></a>Şirket içi veya IaaS SQL Server lisansımı SQL veritabanı Hyperscale 'ye getirebilir miyim?
+### <a name="can-i-bring-my-on-premises-or-iaas-sql-server-license-to-hyperscale"></a>Şirket içi veya IaaS SQL Server lisansımı hiper ölçekli olarak getirebilir miyim
 
-Evet, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) hiper ölçek için kullanılabilir. Her SQL Server Standard çekirdek, 1 hiper ölçekli sanal çekirdekler ile eşlenir. Her SQL Server Enterprise çekirdek, 4 hiper ölçekli sanal çekirdekler ile eşlenir. İkincil çoğaltmalar için SQL lisansına ihtiyacınız yoktur. Azure Hibrit Avantajı fiyatı, okuma ölçeğinde (ikincil) çoğaltmalar için otomatik olarak uygulanır.
+Evet, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) hiper ölçek için kullanılabilir. Her SQL Server Standard çekirdek, 1 hiper ölçekli sanal çekirdekler ile eşlenir. Her SQL Server Enterprise çekirdek, 4 hiper ölçekli sanal çekirdekler ile eşlenir. İkincil çoğaltmalar için SQL lisansına ihtiyacınız yoktur. Azure Hibrit Avantajı fiyatı, okuma ölçeği genişletme (ikincil) çoğaltmaları için otomatik olarak uygulanır.
 
-### <a name="what-kind-of-workloads-is-sql-database-hyperscale-designed-for"></a>İçin tasarlanan SQL veritabanı hiper ölçeği ne tür iş yükleri
+### <a name="what-kind-of-workloads-is-hyperscale-designed-for"></a>İçin bir tür iş yükü için tasarlanan hiper ölçek
 
-SQL veritabanı hiper ölçek tüm SQL Server iş yüklerini destekler, ancak öncelikle OLTP için iyileştirilmiştir. Karma (HTAP) ve analitik (veri reyonu) iş yüklerini da getirebilirsiniz.
+Hiper ölçek tüm SQL Server iş yüklerini destekler, ancak öncelikle OLTP için iyileştirilmiştir. Karma (HTAP) ve analitik (veri reyonu) iş yüklerini da getirebilirsiniz.
 
-### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Azure SQL veri ambarı ve SQL veritabanı Hyperscale arasından nasıl seçim yapabilirim
+### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-azure-sql-database-hyperscale"></a>Azure SQL veri ambarı ve Azure SQL veritabanı hiper ölçeği arasında nasıl seçim yapabilirim?
 
-Şu anda bir veri ambarı olarak SQL Server kullanarak etkileşimli analiz sorguları çalıştırıyorsanız, daha düşük bir maliyette görece küçük veri ambarlarını (10 GB 'ye kadar birkaç TB 'ye kadar) barındırabilmeniz için SQL veritabanı hiper ölçek harika bir seçenektir ve verilerinizi geçirebilirsiniz. T-SQL kodu değişiklikleri olmadan SQL veritabanı Hyperscale 'e yönelik arehouse iş yükü.
+Şu anda bir veri ambarı olarak SQL Server kullanarak etkileşimli analiz sorguları çalıştırıyorsanız, daha düşük bir maliyetle küçük ve orta ölçekli veri ambarlarını (100 TB 'a kadar birkaç TB) barındırabileceğiniz için Hiperscale harika bir seçenektir ve SQL Server veri War 'i geçirebilirsiniz. en az T-SQL kod değişiklikleriyle hiper ölçek için eHouse iş yükleri.
 
-Karmaşık sorgularla büyük ölçekte veri analizi çalıştırıyorsanız ve paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işlemci (MPP)) veri ambarları kullanıyorsanız SQL veri ambarı en iyi seçim olabilir.
+Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarları kullanarak, SQL veri ambarı şu şekilde olabilir en iyi seçim.
   
-## <a name="sql-database-hyperscale-compute-questions"></a>SQL veritabanı hiper ölçek işlem soruları
+## <a name="hyperscale-compute-questions"></a>Hiper ölçekli Işlem soruları
 
 ### <a name="can-i-pause-my-compute-at-any-time"></a>İşlem için istediğiniz zaman duraklatıp
 
 Bu sırada değil, yoğun olmayan saatlerde maliyeti azaltmak için işlem ve yineleme sayısını ölçeklendirebilirsiniz.
 
-### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Yoğun bellek yoğunluğu olan iş yüküm için ek RAM ile bir işlem sağlayabilir miyim
+### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>Bellek yoğun iş yüküm için ek RAM ile bir işlem çoğaltması sağlayabilir miyim
 
 Hayır. Daha fazla RAM almak için, daha yüksek bir işlem boyutuna yükseltmeniz gerekir. Daha fazla bilgi için bkz. [hiper ölçek depolama ve işlem boyutları](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute).
 
-### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Farklı boyutlarda birden çok işlem düğümü sağlayabilir miyim
+### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>Farklı boyutlarda birden çok işlem çoğaltması sağlayabilir miyim
 
 Hayır.
 
-### <a name="how-many-read-scale-replicas-are-supported"></a>Kaç tane okuma ölçeği çoğaltması desteklenir
+### <a name="how-many-read-scale-out-replicas-are-supported"></a>Kaç okuma ölçeği genişletme çoğaltması desteklenir
 
-Hiper ölçek veritabanları, varsayılan olarak bir okuma ölçeğinde çoğaltma (toplamda iki çoğaltma) ile oluşturulur. [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) veya [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)kullanarak 0 ile 4 arasındaki salt okuma çoğaltması sayısını ölçeklendirebilirsiniz.
+Hiper ölçek veritabanları, varsayılan olarak bir okuma ölçeği genişletme çoğaltması (birincil dahil olmak üzere iki çoğaltma) ile oluşturulur. [Azure Portal](https://portal.azure.com) veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)kullanarak 0 ile 4 arasında salt okuma çoğaltması sayısını ölçeklendirebilirsiniz.
 
-### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Yüksek kullanılabilirlik için ek işlem düğümleri sağlamam gerekir
+### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>Yüksek kullanılabilirlik için ek işlem çoğaltmaları sağlanması gerekir
 
-Hiper ölçekli veritabanlarında esneklik, depolama düzeyinde sağlanır. Dayanıklılık sağlamak için yalnızca bir çoğaltmaya ihtiyacınız vardır. İşlem çoğaltması kapatıldığında, veri kaybı olmadan otomatik olarak yeni bir çoğaltma oluşturulur.
+Hiper ölçekli veritabanlarında, veri dayanıklılığı depolama düzeyinde sağlanır. Dayanıklılık sağlamak için yalnızca bir çoğaltmaya ihtiyacınız vardır. İşlem çoğaltması kapatıldığında, veri kaybı olmadan otomatik olarak yeni bir çoğaltma oluşturulur.
 
-Ancak, yalnızca bir çoğaltma varsa, yük devretmeden sonra yeni çoğaltmada yerel önbelleğin oluşturulması biraz zaman alabilir. Önbellek yeniden oluşturma aşamasında, veritabanı doğrudan sayfa sunucularından verileri getirir, bu da düşürülmüş ıOPS ve sorgu performansına yol açar.
+Ancak, yalnızca bir çoğaltma varsa, yük devretmeden sonra yeni çoğaltmada yerel önbelleğin oluşturulması biraz zaman alabilir. Önbellek yeniden oluşturma aşamasında, veritabanı doğrudan sayfa sunucularından verileri getirir, daha yüksek depolama gecikmesini ve düşürülmüş sorgu performansına yol açar.
 
-Yüksek kullanılabilirlik gerektiren görev açısından kritik uygulamalar için, birincil işlem düğümü (varsayılan) dahil olmak üzere en az 2 işlem düğümü sağlamanız gerekir. Bu şekilde, yük devretme durumunda kullanılabilir bir etkin bekleme vardır.
+En düşük yük devretme etkisi ile yüksek kullanılabilirlik gerektiren görev açısından kritik uygulamalar için, birincil işlem çoğaltması dahil olmak üzere en az 2 işlem yinelemesi sağlamanız gerekir. Bu, varsayılan yapılandırmadır. Bu şekilde, yük devretme hedefi olarak hizmet veren bir etkin bekleme çoğaltması vardır.
 
 ## <a name="data-size-and-storage-questions"></a>Veri boyutu ve depolama soruları
 
-### <a name="what-is-the-max-db-size-supported-with-sql-database-hyperscale"></a>SQL veritabanı Hyperscale ile desteklenen en fazla veritabanı boyutu nedir?
+### <a name="what-is-the-maximum-database-size-supported-with-hyperscale"></a>Hiperscale ile desteklenen en büyük veritabanı boyutu nedir?
 
-100 TB
+100 TB.
 
 ### <a name="what-is-the-size-of-the-transaction-log-with-hyperscale"></a>Hiper ölçeğe sahip işlem günlüğü boyutu nedir?
 
-Hiperscale ile işlem günlüğü, pratik olarak sonsuzdur. Yüksek günlük üretimi olan bir sistemde günlük alanının tükenmek için endişelenmeniz gerekmez. Ancak, sürekli agresif iş yükleri için günlük oluşturma hızı kısıtlanabilir. En yoğun sürekli günlük oluşturma oranı yaklaşık 100 MB/sn 'dir.
+Hiperscale ile işlem günlüğü, pratik olarak sonsuzdur. Yüksek günlük üretimi olan bir sistemde günlük alanının tükenmek için endişelenmeniz gerekmez. Ancak, günlük oluşturma hızı sürekli kararlılık yazma iş yükleri için kısıtlanabilir. En yoğun sürekli günlük oluşturma hızı 100 MB/sn 'dir.
 
-### <a name="does-my-temp-db-scale-as-my-database-grows"></a>Veritabanım arttıkça geçici db ölçeklendirim
+### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Veritabanım büyüdükçe `tempdb` ölçeklendirmi
 
-@No__t-0 veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna göre yapılandırılır. @No__t-0 ' ınız en iyi performans avantajları sağlamak için iyileştirilmiştir ve düzenlenir. @No__t-0 boyutu yapılandırılabilir değildir ve depolama alt sistemi tarafından sizin için yönetilir.
+@No__t_0 veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna göre yapılandırılır. @No__t_0 en yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb` boyutu yapılandırılamaz ve sizin için yönetilir.
 
-### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-the-data-files"></a>Veritabanı boyutumun otomatik olarak büyümesi veya veri dosyalarının boyutunu yönetmesi gerekir
+### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Veritabanı boyutumun otomatik olarak büyümesi veya veri dosyalarının boyutunu yönetmesi gerekir
 
 Veritabanı boyutunuz, daha fazla veri eklerken/alarak otomatik olarak büyür.
 
-### <a name="what-is-the-smallest-database-size-that-sql-database-hyperscale-supports-or-starts-with"></a>SQL veritabanı hiper ölçek tarafından desteklenen veya başlayan en küçük veritabanı boyutu nedir?
+### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Hiperscale tarafından desteklenen veya başlayan en küçük veritabanı boyutu nedir?
 
-10 GB
+10 GB.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Veritabanı boyutumun büyümesi ne kadar artar
 
 Her veri dosyası 10 GB ile artar. Birden çok veri dosyası aynı anda büyümeyebilir.
 
-### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>Depolama, SQL veritabanı hiper ölçekte yerel veya uzak
+### <a name="is-the-storage-in-hyperscale-local-or-remote"></a>Depolama alanı, yerel veya uzak için hiper ölçekte
 
-Hiper ölçekte, veri dosyaları Azure Standart depolama 'da depolanır. Veriler yoğun bir şekilde yerel SSD depolamada önbelleğe alınarak işlem düğümlerine yakın makinelerde yapılır. Ayrıca, uzak düğümlerden veri getirme sıklığını azaltmak için, işlem düğümlerinin yerel SSD ve bellek içi (arabellek havuzu vb.) önbelleğinde bir önbelleği vardır.
+Hiper ölçekte, veri dosyaları Azure Standart depolama 'da depolanır. Veriler, işlem çoğaltmalarına yakın olan sayfa sunucularında yerel SSD depolamada tamamen önbelleğe alınır. Ayrıca, uzak sayfa sunucularından veri getirme sıklığını azaltmak için, işlem çoğaltmalarının yerel SSD 'de ve bellekte veri önbellekleri vardır.
 
 ### <a name="can-i-manage-or-define-files-or-filegroups-with-hyperscale"></a>Hyperscale ile dosya veya dosya gruplarını yönetebilir veya tanımlayabilir miyim?
 
-Hayır
-  
+Hayır. Veri dosyaları otomatik olarak eklenir. Ek dosya grupları oluşturmanın yaygın nedenleri hiper ölçekli depolama mimarisinde uygulanmaz.
+
 ### <a name="can-i-provision-a-hard-cap-on-the-data-growth-for-my-database"></a>Veritabanım için veri büyümesi üzerinde sabit bir büyük harf sağlayabilirim
 
-Hayır
+Hayır.
 
-### <a name="how-are-data-files-laid-out-with-sql-database-hyperscale"></a>Veri dosyaları SQL veritabanı Hyperscale ile nasıl düzenlenir
+### <a name="how-are-data-files-laid-out-with-hyperscale"></a>Veri dosyaları Hyperscale ile nasıl düzenlenir
 
-Veri dosyaları sayfa sunucularıyla denetlenir. Veri boyutu büyüdükçe, veri dosyaları ve ilişkili sayfa sunucusu düğümleri eklenir.
+Veri dosyaları, her veri dosyası için tek sayfalı sunucu ile sayfa sunucularıyla denetlenir. Veri boyutu büyüdükçe, veri dosyaları ve ilişkili sayfa sunucuları eklenir.
 
 ### <a name="is-database-shrink-supported"></a>Veritabanı daraltımı destekleniyor
 
-Hayır
+Hayır.
 
-### <a name="is-database-compression-supported"></a>Veritabanı sıkıştırması destekleniyor
+### <a name="is-data-compression-supported"></a>Veri sıkıştırması destekleniyor
 
-Yes
+Satır, sayfa ve columnstore sıkıştırması dahil olmak üzere Evet.
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Çok büyük bir tablonuz varsa, tablomın verileri birden fazla veri dosyasına yayılmaktadır
 
@@ -207,130 +203,126 @@ Evet. Belirli bir tabloyla ilişkili veri sayfaları, aynı dosya grubunun bir p
 
 ### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>Mevcut Azure SQL veritabanlarınızı hiper ölçek hizmeti katmanına taşıyabilir miyim?
 
-Evet. Mevcut Azure SQL veritabanlarınızı hiper ölçeğe taşıyabilirsiniz. Bu tek yönlü geçişdir. Veritabanlarını Hyperscale 'den başka bir hizmet katmanına taşıyamazsınız. Üretim veritabanlarınızın bir kopyasını oluşturmanızı ve kavram kanıtı (POCs) için Hiperscale 'e geçirmeniz önerilir.
+Evet. Mevcut Azure SQL veritabanlarınızı hiper ölçeğe taşıyabilirsiniz. Bu tek yönlü geçişdir. Veritabanlarını Hyperscale 'den başka bir hizmet katmanına taşıyamazsınız. Kavram provaları (POCs) için veritabanınızın bir kopyasını oluşturmanızı ve kopyayı hiper ölçeğe geçirmeniz önerilir.
   
-### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>Hiperscale veritabanlarınızı diğer sürümlere taşıyabilir miyim?
+### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>Hiperscale veritabanlarınızı diğer hizmet katmanlarına taşıyabilir miyim?
 
 Hayır. Şu anda hiper ölçekli bir veritabanını başka bir hizmet katmanına taşıyamazsınız.
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Hiper ölçek hizmet katmanına geçişten sonra herhangi bir işlevi veya özelliği kaybetmem
 
-Evet. Azure SQL veritabanı özelliklerinden bazıları, henüz uzun süreli saklama yedeklemesi dahil, ancak sınırlı olmamak üzere hiper ölçekte desteklenmez. Veritabanlarınızı Hyperscale 'e geçirdikten sonra, bu özellikler çalışmayı durdurur.  Bu sınırlamaların geçici olması beklenir.
+Evet. Azure SQL veritabanı özelliklerinden bazıları, henüz uzun süreli yedekleme saklama ile sınırlı olmamak üzere hiper ölçekte desteklenmez. Veritabanlarınızı Hyperscale 'e geçirdikten sonra, bu özellikler çalışmayı durdurur.  Bu sınırlamaların geçici olması beklenir.
 
-### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Şirket içi SQL Server veritabanımı veya SQL Server sanal makine veritabanımı hiper ölçeğe taşıyabilir miyim?
+### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-database-in-a-cloud-virtual-machine-to-hyperscale"></a>Şirket içi SQL Server veritabanını veya bir bulut sanal makinesindeki SQL Server veritabanı 'nı hiper ölçeğe taşıyabilir miyim?
 
-Evet. İşlem çoğaltması ve diğer veri taşıma teknolojileri (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS) dahil olmak üzere hiper ölçeğe geçiş yapmak için var olan tüm geçiş teknolojilerini kullanabilirsiniz. Ayrıca bkz. [Azure veritabanı geçiş hizmeti](../dms/dms-overview.md).
+Evet. İşlem çoğaltması ve diğer veri taşıma teknolojileri (toplu kopyalama, Azure Data Factory, Azure Databricks, SSIS) dahil olmak üzere hiper ölçeğe geçiş yapmak için var olan tüm geçiş teknolojilerini kullanabilirsiniz. Ayrıca, birçok geçiş senaryosunu destekleyen [Azure veritabanı geçiş hizmeti](../dms/dms-overview.md)'ne bakın.
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Şirket içi veya sanal makine ortamından hiper ölçeğe geçiş sırasında kapalı kalma süresi nedir ve bunu nasıl en aza indirebilir
 
-Etkin kalma süresi, veritabanlarınızı Azure SQL veritabanı 'nda tek bir veritabanına geçirirken kapalı kalma süresiyle aynıdır. Az sayıda TB 'a kadar olan veritabanlarının kapalı kalma süresini en aza indirmek için [İşlemsel çoğaltmayı](replication-to-sql-database.md#data-migration-scenario
-) kullanabilirsiniz. Çok büyük veritabanı (10 + TB) için ADF, Spark veya diğer veri taşıma teknolojilerini kullanarak verileri geçirmeyi düşünebilirsiniz.
+Hiper ölçeğe geçiş için kapalı kalma süresi, veritabanlarınızı diğer Azure SQL veritabanı hizmet katmanlarına geçirdiğinizde kapalı kalma süresiyle aynıdır. Az sayıda TB 'a kadar olan veritabanlarının kapalı kalma süresini en aza indirmek için [İşlemsel çoğaltmayı](replication-to-sql-database.md#data-migration-scenario
+) kullanabilirsiniz. Çok büyük veritabanları (10 + TB) için ADF, Spark veya diğer veri taşıma teknolojilerini kullanarak verileri geçirmeyi düşünebilirsiniz.
 
-### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>X veri miktarını SQL veritabanı hiper ölçeğe getirmek için ne kadar sürer?
+### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-hyperscale"></a>X veri miktarını hiper ölçeğe getirmek için ne kadar sürer?
 
-Hiper ölçek, 100 MB/sn yeni/değiştirilmiş veri tüketilebilir, ancak verileri Azure SQL veritabanlarına taşımak için gereken süre, kullanılabilir ağ performansı, kaynak okuma hızı ve hedef hiper ölçek veritabanı hizmet düzeyi hedefi 'nden de etkilenir.
+Hiper ölçek, yeni/değiştirilmiş verileri 100 MB/sn alabilir, ancak verileri Azure SQL veritabanlarına taşımak için gereken süre, kullanılabilir ağ aktarım hızı, kaynak okuma hızı ve hedef veritabanı hizmet düzeyi hedefi tarafından da etkilenir.
 
-### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Blob depolamadaki verileri okuyabilir ve hızlı yükleme yapabilir (PolyBase ve SQL veri ambarı gibi)
+### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-sql-data-warehouse"></a>Blob depolamadaki verileri okuyabilir ve hızlı yükleme yapabilir (SQL veri ambarı 'nda PolyBase gibi)
 
-Azure depolama 'dan verileri okuyabilir ve veri yükünü bir hiper ölçekli veritabanına yükleyebilirsiniz (tıpkı normal tek bir veritabanıyla yapabilecekleriniz gibi). PolyBase Şu anda Azure SQL veritabanı 'nda desteklenmiyor. [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) kullanarak PolyBase 'i GERÇEKLEŞTIREBILIR veya [SQL için spark Bağlayıcısı](sql-database-spark-connector.md)ile [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) bir Spark işi çalıştırabilirsiniz. SQL 'e Spark Bağlayıcısı toplu ekleme 'yi destekler.
+Bir istemci uygulamanızın Azure Storage 'dan verileri okumasını ve veri yükünü bir hiper ölçekli veritabanına (tıpkı diğer Azure SQL veritabanı ile yaptığınız gibi) yükleyebilmesini sağlayabilirsiniz. PolyBase Şu anda Azure SQL veritabanı 'nda desteklenmiyor. Hızlı yük sağlamaya alternatif olarak, [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)KULLANABILIR veya [SQL için spark Bağlayıcısı](sql-database-spark-connector.md)ile [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) bir Spark işi kullanabilirsiniz. SQL 'e Spark Bağlayıcısı toplu ekleme 'yi destekler.
 
 BULK INSERT veya OPENROWSET kullanarak Azure Blob mağazasından verileri toplu olarak okumak de mümkündür: [Azure Blob depolama alanındaki verilere toplu erişim örnekleri](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
-Hiper ölçekte basit kurtarma veya toplu günlük modeli desteklenmez. Yüksek kullanılabilirlik sağlamak için tam kurtarma modeli gereklidir. Ancak, Hyperscale, yeni günlük mimarisi nedeniyle tek bir Azure SQL veritabanı ile karşılaştırıldığında daha iyi bir veri alma oranı sağlar.
+Hiper ölçekte basit kurtarma veya toplu günlük modeli desteklenmez. Yüksek kullanılabilirlik ve zaman içinde kurtarma sağlamak için tam kurtarma modeli gereklidir. Ancak, hiper ölçek günlüğü mimarisi diğer Azure SQL veritabanı hizmet katmanlarına kıyasla daha iyi veri alma oranı sağlar.
 
-### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>SQL veritabanı hiper ölçek, büyük miktarlarda veriyi almak için birden çok düğüm sağlanmasına izin veriyor
+### <a name="does-hyperscale-allow-provisioning-multiple-nodes-for-parallel-ingesting-of-large-amounts-of-data"></a>Hiper ölçek, büyük miktarlarda verilerin paralel bir şekilde sağlanması için birden çok düğüm sağlanmasını sağlar
 
-Hayır. SQL veritabanı hiper ölçek bir SMP mimarisidir ve asimetrik çok işlem veya çok yöneticili mimari değildir. Yalnızca salt okuma iş yüklerini ölçeklendirmek için birden çok çoğaltma oluşturabilirsiniz.
+Hayır. Hiper ölçek, simetrik bir çoklu işlem (SMP) mimarisidir ve yüksek düzeyde paralel işleme (MPP) veya çok yöneticili bir mimari değildir. Yalnızca salt okuma iş yüklerini ölçeklendirmek için birden çok çoğaltma oluşturabilirsiniz.
 
-### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>En eski SQL Server sürümü olan SQL veritabanı hiper ölçek desteği geçişi
+### <a name="what-is-the-oldest-sql-server-version-supported-for-migration-to-hyperscale"></a>Hiper ölçeğe geçiş için desteklenen en eski SQL Server sürümü nedir?
 
 SQL Server 2005. Daha fazla bilgi için bkz. [tek bir veritabanına veya havuza alınmış bir veritabanına geçirme](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). Uyumluluk sorunları için bkz. [Veritabanı geçişi uyumluluk sorunlarını çözme](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues).
 
-### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>SQL veritabanı hiper ölçek, Aurora, MySQL, Oracle, DB2 ve diğer veritabanı platformları gibi diğer veri kaynaklarından geçişi destekler
+### <a name="does-hyperscale-support-migration-from-other-data-sources-such-as-amazon-aurora-mysql-postgresql-oracle-db2-and-other-database-platforms"></a>Hiper ölçek, Amazon Aurora, MySQL, PostgreSQL, Oracle, DB2 ve diğer veritabanı platformları gibi diğer veri kaynaklarından geçişi destekler
 
-Evet. SQL Server dışındaki farklı veri kaynaklarından gelen bir mantıksal geçiş gerektirir. [Azure veritabanı geçiş hizmeti](../dms/dms-overview.md) 'ni mantıksal geçiş için kullanabilirsiniz.
+Evet. [Azure veritabanı geçiş hizmeti](../dms/dms-overview.md) birçok geçiş senaryosunu destekler.
 
 ## <a name="business-continuity-and-disaster-recovery-questions"></a>İş sürekliliği ve olağanüstü durum kurtarma soruları
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Hiper ölçek veritabanı için hangi SLA 'lar sağlanır
 
-Varsayılan birincil ve 1 okunabilir ikincil ile SLA% 99,95 kullanılabilir.  Daha fazla çoğaltma ile SLA% 99,99 ' e kadar gider.  
+Bkz. [Azure SQL veritabanı Için SLA](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/). Ek ikincil işlem çoğaltmaları 99,99, iki veya daha fazla ikincil işlem çoğaltması olan bir veritabanı için kullanılabilirliği artırır.
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Veritabanı yedeklemeleri, Azure SQL veritabanı hizmeti tarafından benim için yönetiliyor
 
-Yes
+Evet.
 
 ### <a name="how-often-are-the-database-backups-taken"></a>Veritabanı yedeklemeleri ne sıklıkta alınır
 
-SQL veritabanı hiper ölçek veritabanları için geleneksel bir tam, değişiklik ve günlük yedeklemesi yoktur. Bunun yerine, veri dosyalarının düzenli anlık görüntüleri ve oluşturulan günlük, yapılandırılan veya sizin için kullanılabilen bekletme dönemi için olduğu gibi korunur.
+Hiper ölçekli veritabanları için geleneksel bir tam, değişiklik ve günlük yedeklemesi yoktur. Bunun yerine, veri dosyalarının normal depolama anlık görüntüleri vardır. Oluşturulan günlük, yapılandırılan Bekletme dönemi için olduğu gibi tutulur ve Bekletme dönemi içinde herhangi bir zaman noktasına geri yüklemeye olanak tanır.
 
-### <a name="does-sql-database-hyperscale-support-point-in-time-restore"></a>SQL veritabanı hiper ölçek destek noktası zaman geri yükleme sırasında yapılır
+### <a name="does-hyperscale-support-point-in-time-restore"></a>Hiper ölçek destek noktası zaman geri yükleme sırasında
 
-Yes
+Evet.
 
-### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>SQL veritabanı hiper ölçeğinde yedekleme/geri yükleme ile kurtarma noktası hedefi (RPO)/kurtarma süresi hedefi (RTO) nedir?
+### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-for-database-restore-in-hyperscale"></a>Hiper ölçekte veritabanı geri yüklemesi için kurtarma noktası hedefi (RPO)/kurtarma süresi hedefi (RTO) nedir?
 
 RPO 0 dk. RTO hedefi, veritabanı boyutundan bağımsız olarak 10 dakikadan azdır. 
 
 ### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Büyük veritabanlarının yedeklemeleri, birincil My işlem performansını etkiler
 
-Hayır. Yedeklemeler, depolama alt sistemi tarafından yönetilir ve dosya anlık görüntülerinden yararlanır. Birincil üzerinde Kullanıcı iş yükünü etkilemez.
+Hayır. Yedeklemeler, depolama alt sistemi tarafından yönetilir ve depolama anlık görüntülerinden yararlanır. Birincil üzerinde Kullanıcı iş yükünü etkilemez.
 
-### <a name="can-i-perform-geo-restore-with-a-sql-database-hyperscale-database"></a>Bir SQL veritabanı hiper ölçek veritabanıyla coğrafi geri yükleme yapabilir miyim
+### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Hiper ölçek veritabanı ile coğrafi geri yükleme yapabilir miyim
 
 Evet.  Coğrafi geri yükleme tam olarak desteklenmektedir.
 
-### <a name="can-i-setup-geo-replication-with-sql-database-hyperscale-database"></a>SQL veritabanı hiper ölçek veritabanı ile coğrafi çoğaltma ayarı yapabilir miyim
+### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Hiper ölçekli veritabanı ile Coğrafi çoğaltmayı ayarlayabilir miyim
 
 Şimdilik hayır.
 
-### <a name="do-my-secondary-compute-nodes-get-geo-replicated-with-sql-database-hyperscale"></a>İkincil işlem düğümlerimi, SQL veritabanı Hyperscale ile coğrafi olarak çoğaltılmış olarak al
+### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Hiper ölçekli bir veritabanı yedeklemesini alabilir ve şirket içi sunucuma veya bir VM 'deki SQL Server geri yüklemenize olanak verebilir
 
-Şimdilik hayır.
-
-### <a name="can-i-take-a-sql-database-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-sql-server-in-vm"></a>Bir SQL veritabanı hiper ölçek veritabanı yedeklemesini alabilir ve şirket içi sunucuma veya VM 'de SQL Server geri yüklemenize olanak verebilir
-
-Hayır. Hiper ölçekli veritabanlarının depolama biçimi geleneksel SQL Server farklıdır ve yedeklemeleri denetlemenize veya bunlara erişim sahibi kalmazsınız. Verilerinizi bir SQL veritabanı hiper ölçek veritabanından almak için, dışa aktarma hizmetini kullanın veya betik ve BCP kullanın.
+Hayır. Hiper ölçekli veritabanları için depolama biçimi SQL Server yayınlanan herhangi bir sürümden farklıdır ve yedeklemeleri denetlemenize veya bunlara erişim sahibi kalmazsınız. Verilerinizi bir hiper ölçekli veritabanının dışına çıkarmak için veri taşıma teknolojilerini (örn. Azure Data Factory, Azure Databricks, SSIS vb.) kullanarak verileri ayıklayabilirsiniz.
 
 ## <a name="cross-feature-questions"></a>Çapraz Özellik soruları
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Hiper ölçek hizmet katmanına geçişten sonra herhangi bir işlevi veya özelliği kaybetmem
 
-Evet. Azure SQL veritabanı özelliklerinden bazıları, uzun süreli saklama yedeklemesi dahil, ancak sınırlı olmamak üzere hiper ölçekte desteklenmez. Veritabanlarınızı Hyperscale 'e geçirdikten sonra, bu özellikler çalışmayı durdurur.
+Evet. Azure SQL veritabanı özelliklerinden bazıları, uzun süreli yedek saklama dahil, ancak bunlarla sınırlı olmamak üzere hiper ölçekte desteklenmez. Veritabanlarınızı Hyperscale 'e geçirdikten sonra, bu özellikler çalışmayı durdurur.
 
-### <a name="will-polybase-work-with-sql-database-hyperscale"></a>PolyBase, SQL veritabanı hiper Ölçeklendirimiyle çalışır
+### <a name="will-polybase-work-with-hyperscale"></a>PolyBase, hiper ölçeğe göre çalışır
 
 Hayır. PolyBase, Azure SQL veritabanı 'nda desteklenmiyor.
 
-### <a name="does-the-compute-have-support-for-r-and-python"></a>İşlem için R ve Python desteği vardır
+### <a name="does-hyperscale-have-support-for-r-and-python"></a>Hiper ölçekte R ve Python desteği vardır
 
 Hayır. Azure SQL veritabanı 'nda R ve Python desteklenmez.
 
-### <a name="are-the-compute-nodes-containerized"></a>İşlem düğümleri Kapsayıcılı
+### <a name="are-compute-nodes-containerized"></a>İşlem düğümleri Kapsayıcılı
 
-Hayır. Veritabanınız bir kapsayıcı değil işlem VM 'sinde bulunur.
+Hayır. Hiper ölçekli süreçler, kapsayıcılar içinde değil [Service Fabric](https://azure.microsoft.com/services/service-fabric/) düğümlerinde (VM) çalışır.
 
 ## <a name="performance-questions"></a>Performans soruları
 
-### <a name="how-much-throughput-can-i-push-on-the-largest-sql-database-hyperscale-compute"></a>En büyük SQL veritabanı hiper ölçek işlem üzerine ne kadar aktarım gönderebilirim?
+### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>Hiper ölçek veritabanına ne kadar yazma aktarım hızı gönderebilirim?
 
-Tutarlı bir 100 MB/sn değişiklik verisi gördük (işlem günlüğü veri oluşturma)
+İşlem günlüğü verimlilik sınırı, herhangi bir hiper ölçek işlem boyutu için 100 MB/sn olarak ayarlanır. Bu oranı elde etme yeteneği, iş yükü türü, istemci yapılandırması dahil, ancak bunlarla sınırlı olmamak üzere çok sayıda etkene bağlıdır ve bu hızda günlük oluşturmak için birincil işlem çoğaltmasında yeterli işlem kapasitesi vardır.
 
-### <a name="how-many-iops-do-i-get-on-the-largest-sql-database-hyperscale-compute"></a>En büyük SQL veritabanı hiper ölçek işlem üzerinde kaç ıOPS edinebilirim?
+### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>En büyük işlem üzerinde kaç ıOPS alabilirim?
 
-IOPS ve GÇ gecikmesi, iş yükü desenlerine bağlı olarak değişir.  Erişilmesi gereken veriler, işlem önbelleğinde yereliyorsa, yerel SSD ile aynı GÇ desenleri olur.   
+IOPS ve GÇ gecikmesi, iş yükü desenlerine bağlı olarak değişir. Erişilmekte olan veriler işlem çoğaltmasında önbelleğe alınmışsa, yerel SSD ile aynı GÇ performansını görürsünüz.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>İş aktarım alanım yedeklerden etkilendi
 
-Hayır. İşlem, işlem üzerindeki etkileri önlemek için depolama katmanından ayrılır.
+Hayır. İşlem, depolama katmanından ayrılır. Bu, yedeklemenin performans etkisini ortadan kaldırır.
 
-### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-nodes"></a>Ek işlem düğümleri sağladığımda aktarım hızı etkilendi
+### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Ek işlem çoğaltmaları sağlamam sırasında aktarım hızı etkilendi
 
-Depolama paylaşıldığından ve birincil ve ikincil işlem düğümleri arasında doğrudan fiziksel çoğaltma olmadığı için, teknik olarak birincil düğümdeki aktarım hızı, okuma ölçeği düğümleri eklenerek etkilenmeyecektir. Ancak, ikincil düğümlerde ve sayfa sunucularında günlüğe kaydedilecek, ikincil düğümlerde hatalı okuma performansından kaçınmak için sürekli agresif iş yükünü kısıtlayamaz.
+Depolama paylaşıldığından ve birincil ve ikincil işlem çoğaltmaları arasında doğrudan fiziksel çoğaltma olmadığından, birincil çoğaltmadaki üretilen iş, ikincil çoğaltmalar eklenerek etkilenmeyecektir. Bununla birlikte, ikincil çoğaltmalarda ve sayfa sunucularında günlüğe kaydedilecek ve ikincil çoğaltmalarda zayıf okuma performansından kaçınmak için sürekli kararlılığı sürekli yazma iş yükünü azaltamazuz.
 
 ## <a name="scalability-questions"></a>Ölçeklenebilirlik soruları
 
-### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-node"></a>İşlem düğümünün ölçeğini artırma ve azaltma işlemi ne kadar sürer?
+### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>Bir işlem çoğaltmasının ölçeğini artırma ve azaltma işlemi ne kadar sürer?
 
 İşlem ölçeği artırma veya azaltma, veri boyutundan bağımsız olarak 5-10 dakika sürer.
 
@@ -340,59 +332,59 @@ Hayır. Ölçeği artırma ve azaltma çevrimiçi olacak.
 
 ### <a name="should-i-expect-connection-drop-when-the-scaling-operations-are-in-progress"></a>Ölçeklendirme işlemleri sürerken bağlantı bırakması beklenmeli
 
-Yük devretme işlemi, hedef boyutu ile işlem düğümü olduğunda, mevcut bağlantıların ölçeğini artırma veya azaltma. Okuma çoğaltmaları eklemek, bağlantı düşmelere neden olmaz.
+Ölçeklendirme işleminin sonunda bir yük devretme gerçekleştiğinde, varolan bağlantıların ölçeğini artırma veya azaltma. İkincil çoğaltmaların eklenmesi bağlantı düşmesinin sonucu vermez.
 
-### <a name="is-the-scaling-up-and-down-of-compute-nodes-automatic-or-end-user-triggered-operation"></a>İşlem düğümlerinin otomatik veya son kullanıcı tarafından tetiklenen bir şekilde ölçeğini artırma ve azaltma
+### <a name="is-the-scaling-up-and-down-of-compute-replicas-automatic-or-end-user-triggered-operation"></a>İşlem çoğaltmalarının ölçeğini artırma ve azaltma otomatik veya son kullanıcı tarafından tetiklenen işlem
 
 Son Kullanıcı. Otomatik değil.  
 
-### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>@No__t-0, işlem arttıkça da büyür
+### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>İşlem büyüdükçe `tempdb` veritabanı boyutu da büyür
 
-Evet. İşlem büyüdükçe geçici db otomatik olarak artar.  
+Evet. İşlem büyüdükçe `tempdb` veritabanı otomatik olarak ölçeklendirilir.  
 
-### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Birden çok birincil işlem yöneticisinin daha yüksek bir eşzamanlılık düzeyini sağlayabildiği çok yöneticili bir sistem gibi birden çok birincil işlem düğümü sağlayabilir miyim
+### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Birden fazla birincil bilgi işlem yöneticisinin daha yüksek bir eşzamanlılık düzeyini sağlayabildiği çok yöneticili bir sistem gibi birden çok birincil işlem çoğaltması sağlayabilir miyim
 
-Hayır. Yalnızca birincil işlem düğümü okuma/yazma isteklerini kabul eder. İkincil işlem düğümleri yalnızca salt okuma isteklerini kabul eder.
+Hayır. Yalnızca birincil işlem çoğaltması okuma/yazma isteklerini kabul eder. İkincil işlem çoğaltmaları yalnızca salt okuma isteklerini kabul eder.
 
-## <a name="read-scale-questions"></a>Okuma Ölçeği soruları
+## <a name="read-scale-out-questions"></a>Genişleme sorularını okuyun
 
-### <a name="how-many-secondary-compute-nodes-can-i-provision"></a>Kaç tane ikincil işlem düğümü sağlayabilirim?
+### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>Kaç tane ikincil işlem çoğaltması sağlayabilirim?
 
-Varsayılan olarak hiper ölçekli veritabanları için 2 çoğaltma oluşturacağız. Kopyaların sayısını ayarlamak istiyorsanız [Azure Portal](https://portal.azure.com)kullanarak bunu yapabilirsiniz.
+Hiper ölçek veritabanları için varsayılan olarak bir ikincil çoğaltma oluşturacağız. Kopyaların sayısını ayarlamak istiyorsanız [Azure Portal](https://portal.azure.com) veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)kullanarak bunu yapabilirsiniz.
 
-### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Nasıl yaparım? bu ikincil işlem düğümlerine bağlanın
+### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Nasıl yaparım? bu ikincil işlem çoğaltmalarına bağlanın
 
-Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `readonly` olarak ayarlayarak, bu ek salt okuma işlem düğümlerine bağlanabilirsiniz. @No__t-0 ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem düğümlerinden birine yönlendirilir.  
+Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. @No__t_0 ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.  
 
-### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>SSMS/diğer istemci araçlarını kullanarak ikincil işlem düğümüne başarılı bir şekilde bağlanıp bağlanmadığı Nasıl yaparım? doğrulayın.
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>SSMS veya diğer istemci araçlarını kullanarak ikincil işlem çoğaltmasına başarıyla bağlanıp bağlanmadım Nasıl yaparım? doğrulayın.
 
-SSMS/diğer istemci araçlarını kullanarak şu T-SQL sorgusunu çalıştırabilirsiniz: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
-Bağlantınız `READ_ONLY` ' dır. bağlantınız, salt okunurdur, ikincil düğüme işaret eder veya bağlantınız birincil düğümü işaret ettiğinden `READ_WRITE` ' dir.
+Aşağıdaki T-SQL sorgusunu çalıştırabilirsiniz: `SELECT DATABASEPROPERTYEX ('<database_name>', 'Updateability')`.
+Bir salt okunurdur, ikincil çoğaltmaya bağlıysanız ve birincil çoğaltmaya bağlıysanız `READ_WRITE` `READ_ONLY` sonuç olur. Veritabanı bağlamının `master` veritabanına değil, hiper ölçek veritabanının adına ayarlanması gerektiğini unutmayın.
 
-### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Okuma ölçeği çoğaltması için adanmış bir uç nokta oluşturabilir miyim
+### <a name="can-i-create-a-dedicated-endpoint-for-a-read-scale-out-replica"></a>Okuma ölçeği genişletme çoğaltması için adanmış bir uç nokta oluşturabilir miyim
 
-Hayır. Okuma ölçeği çoğaltmasına yalnızca `ApplicationIntent=ReadOnly` belirterek bağlanabilirsiniz.
+Hayır. Yalnızca `ApplicationIntent=ReadOnly` belirterek, okuma ölçeği çoğaltmaları için bağlanabilirsiniz.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Sistem, okuma iş yükünün akıllı yük dengelemesini yapar
 
-Hayır. Salt okuma iş yükü rastgele bir okuma ölçeği çoğaltmasına yönlendirilir.
+Hayır. Salt okuma amacına sahip bir bağlantı, rastgele bir okuma ölçeği genişletme çoğaltmasına yeniden yönlendirilir.
 
-### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>İkincil işlem düğümlerinin birincil işlem dışında bir şekilde ölçeğini artırma/azaltma yapabilir miyim?
+### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>İkincil işlem çoğaltmalarının birincil çoğaltmadan bağımsız olarak ölçeğini artırma/azaltma yapabilir miyim?
 
-Hayır. İkincil işlem düğümleri aynı zamanda HA için de kullanılır, bu nedenle yük devretme durumunda birincil ile aynı yapılandırma olmaları gerekir.
+Hayır. İkincil işlem çoğaltması aynı zamanda yüksek kullanılabilirlik yük devretme hedefleri olarak da kullanılır, bu nedenle yük devretme sonrasında beklenen performansı sağlamak için birincil ile aynı yapılandırmaya sahip olmaları gerekir.
 
-### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Birincil işlem ve ek ikincil işlem düğümlerim için farklı geçici db Boyutlandırımı alıyorum
+### <a name="do-i-get-different-tempdb-sizing-for-my-primary-compute-and-my-additional-secondary-compute-replicas"></a>Birincil işlem ve ek ikincil işlem çoğaltmalarım için farklı `tempdb` Boyutlandırımı alıyorum
 
-Hayır. @No__t-0 ' ı hesaplama boyutu sağlama temel alınarak yapılandırılır, ikincil işlem düğümleriniz birincil işlem ile aynı boyutlardır.
+Hayır. @No__t_0 veritabanınız, işlem boyutu sağlama temel alınarak yapılandırılır, ikincil işlem çoğaltmalarınız birincil işlem ile aynı boyutlardır.
 
-### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>İkincil işlem düğümlerimde dizin ve görünüm ekleyebilir miyim?
+### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-replicas"></a>İkincil işlem çoğaltmalarıma dizinler ve görünümler ekleyebilir miyim?
 
-Hayır. Hiper ölçek veritabanlarının paylaşılan depolama alanı vardır ve tüm işlem düğümlerinin aynı tabloları, dizinleri ve görünümleri görmeyeceği anlamına gelir. İkincil üzerinde okuma için iyileştirilmiş ek dizinler istiyorsanız, bunları birinciye eklemeniz gerekir.
+Hayır. Hiper ölçekli veritabanlarında paylaşılan depolama vardır ve tüm bilgi işlem çoğaltmalarının aynı tabloları, dizinleri ve görünümleri görmeyeceği anlamına gelir. İkincil üzerinde okuma için iyileştirilmiş ek dizinler istiyorsanız, bunları birinciye eklemeniz gerekir.
 
-### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-node"></a>Birincil ve ikincil işlem düğümü arasında ne kadar gecikme olur?
+### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Birincil ve ikincil işlem çoğaltmaları arasında ne kadar gecikme olur?
 
-Günlük oluşturma hızına bağlı olarak, bir işlemin birincil üzerinde yürütüldüğü zamandan itibaren, anlık veya düşük milisaniyelik olabilir.
+Geçerli günlük oluşturma hızına bağlı olarak, bir işlemin birincil üzerinde yürütüldüğü zamandan itibaren anında veya düşük milisaniyelik olabilir.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="next-steps"></a>Sonraki Adımlar
 
 Hyperscale hizmet katmanı hakkında daha fazla bilgi için bkz. [Hyperscale hizmet katmanı](sql-database-service-tier-hyperscale.md).

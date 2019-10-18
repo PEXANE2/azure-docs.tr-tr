@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb47d60f609e63e5a17fd8abd3efe420ea7fd187
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264094"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533086"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Öğretici: Check Point CloudGuard Dome9 Arc ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,7 +33,7 @@ Bu öğreticide, Check Point CloudGuard Dome9 yay Azure Active Directory (Azure 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -53,7 +53,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 Check Point CloudGuard Dome9 Arc 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden denetim noktası CloudGuard Dome9 yay ' i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -89,17 +89,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
-    > [!NOTE]
-    > Dome9 yönetim portalı 'nda şirket adı değerini seçerek Öğreticinin ilerleyen kısımlarında açıklanmıştır.
-
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Check Point CloudGuard Dome9 Arc istemci destek ekibine](mailto:Dome9@checkpoint.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Öğreticinin ilerleyen kısımlarında açıklanan **Check Point CloudGuard Dome9 Arc SSO 'Yu yapılandırma** bölümünden `<company name>` değeri alırsınız. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. Check Point CloudGuard Dome9 Arc, Azure AD 'de rollerin yapılandırılmasını gerektirir. Rol talebi önceden yapılandırılmıştır, bu sayede onu yapılandırmanız gerekmez, ancak yine de bu [makaleyi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)kullanarak Azure AD 'de oluşturmanız gerekir.
+1. Check Point CloudGuard Dome9 Arc uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+
+    ![image](common/edit-attribute.png)
+
+1. Yukarıdaki ' a ek olarak, Check Point CloudGuard Dome9 Arc uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+    
+    | Adı |  Kaynak özniteliği|
+    | ---------------| --------------- |
+    | üyesi | Kullanıcı. atandroles |
+
+    >[!NOTE]
+    >Azure AD 'de rol oluşturmayı öğrenmek için [buraya](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial) tıklayın.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -119,7 +127,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'u tıklatın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -163,15 +171,15 @@ Bu bölümde, Check Point CloudGuard Dome9 yaya erişim izni vererek Azure çokl
 
     ![Check Point CloudGuard Dome9 Arc yapılandırması](./media/dome9arc-tutorial/configure3.png)
 
-    a. **Hesap kimliği** metin kutusuna şirket adını girin. Bu değer, Azure portal **temel SAML yapılandırması** bölümünde BELIRTILEN yanıt URL 'sinde kullanılır.
+    a. **Hesap kimliği** metin kutusuna şirket adını girin. Bu değer, Azure portal **temel SAML yapılandırması** bölümünde bahsedilen **Yanıtla** ve **oturum aç** URL 'sinde kullanılır.
 
     b. **Veren** metin kutusunda, Azure Portal formunu KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
-    ,. **IDP uç nokta URL 'si** metin kutusunda, Azure Portal formunu kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    c. **IDP uç nokta URL 'si** metin kutusunda, Azure Portal formunu kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    TID. İndirilen Base64 kodlamalı sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve **X. 509.440 sertifika** metin kutusuna yapıştırın.
+    d. İndirilen Base64 kodlamalı sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve **X. 509.440 sertifika** metin kutusuna yapıştırın.
 
-    A. **Kaydet**'e tıklayın.
+    e. **Kaydet** düğmesine tıklayın.
 
 ### <a name="create-check-point-cloudguard-dome9-arc-test-user"></a>Check Point CloudGuard Dome9 Arc test kullanıcısı oluşturma
 
@@ -200,11 +208,11 @@ Azure AD kullanıcılarının Check Point CloudGuard Dome9 Arc ' da oturum açma
 
     b. **Ilk ad** metin kutusuna B gibi kullanıcının adını yazın.
 
-    ,. **Soyadı** metin kutusunda, Simon adlı kullanıcının soyadını yazın.
+    c. **Soyadı** metin kutusunda, Simon adlı kullanıcının soyadını yazın.
 
-    TID. **SSO kullanıcısını** **Açık**yapın.
+    d. **SSO kullanıcısını** **Açık**yapın.
 
-    A. **Oluştur**' a tıklayın.
+    e. **Oluştur**' a tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -221,4 +229,3 @@ Erişim panelinde Check Point CloudGuard Dome9 yay kutucuğuna tıkladığınız
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Check Point CloudGuard Dome9 yaya deneyin](https://aad.portal.azure.com/)
-

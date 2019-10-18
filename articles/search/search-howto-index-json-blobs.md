@@ -10,24 +10,22 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d266f5edb85dd732cc39cfe98a64bee8019cdbd1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 147a2b690139aff546d82fc89a2fbcdefed03e01
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656670"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533756"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Azure Search blob Indexer kullanarak JSON bloblarını dizin oluşturma
 Bu makalede, Azure Blob depolama alanındaki JSON belgelerinden yapılandırılmış içeriği ayıklamak üzere bir Azure Search blob [dizin oluşturucunun](search-indexer-overview.md) nasıl yapılandırılacağı ve Azure Search aranabilir hale getirme gösterilmektedir. Bu iş akışı bir Azure Search dizini oluşturur ve JSON Bloblarından ayıklanan mevcut metinle yükler. 
 
 JSON içeriğini indekslemek için [Portal](#json-indexer-portal), [REST API 'leri](#json-indexer-rest)veya [.NET SDK 'sını](#json-indexer-dotnet) kullanabilirsiniz. Tüm yaklaşımlardan ortak, JSON belgelerinin bir Azure depolama hesabındaki blob kapsayıcısında yer aldığı bir kapsayıcıdır. JSON belgelerini diğer Azure olmayan platformlardan iletme hakkında yönergeler için, bkz. [Azure Search veri içeri aktarma](search-what-is-data-import.md).
 
-Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi veya bir JSON varlıkları koleksiyonudur. JSON koleksiyonları için, blob düzgün biçimlendirilmiş bir JSON öğeleri **dizisine** sahip olabilir. Blob 'lar aynı zamanda bir yeni satır tarafından ayrılmış birden çok bağımsız JSON varlıklarından da oluşabilir. Azure Search blob Indexer, istek üzerinde **Parsingmode** parametresini nasıl ayarlayadiğinize bağlı olarak, bu tür bir oluşturma ayrıştırılabilir.
-
-Tüm JSON ayrıştırma modları (`json`, `jsonArray`, `jsonLines`) artık genel kullanıma sunulmuştur. 
+Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi (ayrıştırma modu `json`) veya bir JSON varlıkları koleksiyonu olur. Koleksiyonlar için, blob düzgün biçimlendirilmiş bir JSON öğeleri **dizisine** sahip olabilir (ayrıştırma modu `jsonArray`). Blob 'lar aynı zamanda bir yeni satır tarafından ayrılan birden çok bağımsız JSON varlıklarından da oluşabilir (ayrıştırma modu `jsonLines`). İstekteki **Parsingmode** parametresi, çıkış yapılarını belirler.
 
 > [!NOTE]
-> Birden çok arama belgesini bir Azure blobundan çıkarmak için [bire çok dizin oluşturma](search-howto-index-one-to-many-blobs.md) içindeki Dizin Oluşturucu yapılandırma önerilerini izleyin.
+> Tek bir Blobun birden çok arama belgesini dizine alma hakkında daha fazla bilgi için bkz. [bire çok dizin oluşturma](search-howto-index-one-to-many-blobs.md).
 
 <a name="json-indexer-portal"></a>
 
@@ -39,17 +37,15 @@ Aynı bölgede, tercihen hem Azure Search hem de Azure depolama için aynı Azur
 
 ### <a name="1---prepare-source-data"></a>1-kaynak verileri hazırlama
 
-1. [Azure Portal oturum açın](https://portal.azure.com/).
-
-1. Verilerinizi içerecek [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Genel erişim düzeyi geçerli değerlerinden herhangi birine ayarlanabilir.
+[Azure Portal oturum açın](https://portal.azure.com/) ve verilerinizi Içerecek [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Genel erişim düzeyi geçerli değerlerinden herhangi birine ayarlanabilir.
 
 Veri **alma** Sihirbazı 'nda verilerinizi almak için depolama hesabı adı, kapsayıcı adı ve erişim anahtarı gerekir.
 
 ### <a name="2---start-import-data-wizard"></a>2-veri alma Sihirbazı 'nı başlatma
 
-Azure Search hizmetinizin Genel Bakış sayfasında Sihirbazı komut çubuğundan [başlatabilir](search-import-data-portal.md) veya depolama hesabınızın sol gezinti bölmesindeki **Blob hizmeti** bölümünde **Azure Search Ekle** ' ye tıklayın.
+Azure Search hizmetinizin Genel Bakış sayfasında Sihirbazı komut çubuğundan [başlatabilirsiniz](search-import-data-portal.md) .
 
-   ![Portalda verileri Içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'Nı başlatma")
+   ![Portalda verileri içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'nı başlatma")
 
 ### <a name="3---set-the-data-source"></a>3-veri kaynağını ayarlama
 
@@ -128,7 +124,7 @@ Kod tabanlı JSON dizin oluşturma için [Postman](search-get-started-postman.md
 
 Azure Blob depolamada JSON blob 'ları genellikle tek bir JSON belgesi veya bir JSON "dizisi" olacaktır. Azure Search blob Indexer, istek üzerinde **Parsingmode** parametresini nasıl ayarlayadiğinize bağlı olarak, her iki oluşturmayı de ayrıştırabilirler.
 
-| JSON belgesi | parsingMode | Açıklama | Kullanılabilirlik |
+| JSON belgesi | parsingMode | Açıklama | Erişilebilirlik |
 |--------------|-------------|--------------|--------------|
 | Blob başına bir tane | `json` | JSON bloblarını tek bir metin öbeği olarak ayrıştırır. Her JSON BLOBU tek bir Azure Search belge haline gelir. | Genellikle [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API ve [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
 | Blob başına birden çok | `jsonArray` | Blob 'da her bir öğe Azure Search bir belge haline geldiği bir JSON dizisi ayrıştırır.  | Genellikle [rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API ve [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 'sında kullanılabilir. |
@@ -176,7 +172,7 @@ Dizin oluşturucular bir dizin şeması ile eşleştirilir. API 'YI kullanıyors
 
 Dizin, Azure Search aranabilir içeriği depolar. Bir dizin oluşturmak için, bir belge, öznitelikler ve arama deneyimini şekillendirip diğer yapılar içindeki alanları belirten bir şema sağlayın. Kaynak ile aynı alan adlarına ve veri türlerine sahip bir dizin oluşturursanız, Dizin Oluşturucu kaynak ve hedef alanlarla eşleşir ve bu da alanları açık bir şekilde eşlemek için sahip olma çalışmalarınız olur.
 
-Aşağıdaki örnekte bir [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index) isteği gösterilmektedir. Dizin, bloblardan ayıklanan metni `content` depolamak için aranabilir bir alana sahip olacaktır:   
+Aşağıdaki örnekte bir [Dizin oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-index) isteği gösterilmektedir. Dizinde, bloblardan ayıklanan metnin depolanması için aranabilir bir `content` alanı olacaktır:   
 
     POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
@@ -209,7 +205,7 @@ Dizin ve veri kaynağında olduğu gibi, Dizin Oluşturucu da Azure Search bir h
 
 Dizin Oluşturucu yapılandırması isteğin gövdesinde. Azure Search zaten var olan bir veri kaynağı ve boş bir hedef dizin gerektirir. 
 
-Zamanlama ve parametreler isteğe bağlıdır. Bunları atlarsanız, Dizin Oluşturucu ayrıştırma modu olarak kullanarak `json` hemen çalışır.
+Zamanlama ve parametreler isteğe bağlıdır. Bunları atlarsanız, Dizin Oluşturucu, ayrıştırma modu olarak `json` kullanarak hemen çalışır.
 
 Bu belirli bir Dizin Oluşturucu alan eşlemelerini içermez. Dizin Oluşturucu tanımı içinde, kaynak JSON belgesinin özellikleri hedef arama dizininizdeki alanlarla eşleşiyorsa **alan eşlemelerini** bırakabilirsiniz. 
 
@@ -300,10 +296,10 @@ JSON blob 'ları birden çok formu kabul edebilir. JSON Dizin oluşturucudaki **
 
 Belgeyi, arama sonuçlarında tek bir öğe olarak düşünebilirsiniz. Dizideki her öğenin arama sonuçlarında bağımsız bir öğe olarak gösterilmesini istiyorsanız, `jsonArray` veya `jsonLines` seçeneğini uygun şekilde kullanın.
 
-Dizin Oluşturucu tanımı içinde, isteğe bağlı olarak, kaynak JSON belgesinin hangi özelliklerinin hedef arama dizininizi doldurmak için kullanıldığını seçmek için [alan eşlemelerini](search-indexer-field-mappings.md) kullanabilirsiniz. Ayrıştırma `jsonArray` modu için, dizi alt düzey bir özellik olarak varsa, dizinin blob içine yerleştirileceğini gösteren bir belge kökü ayarlayabilirsiniz.
+Dizin Oluşturucu tanımı içinde, isteğe bağlı olarak, kaynak JSON belgesinin hangi özelliklerinin hedef arama dizininizi doldurmak için kullanıldığını seçmek için [alan eşlemelerini](search-indexer-field-mappings.md) kullanabilirsiniz. @No__t_0 ayrıştırma modu için, dizi alt düzey bir özellik olarak mevcutsa, dizinin blob içine yerleştirileceğini gösteren bir belge kökü ayarlayabilirsiniz.
 
 > [!IMPORTANT]
-> `json` VeyaayrıştırmamodunukullandığınızdaAzureSearch,verikaynağınızdakitümBlobların`jsonLines` JSON içerdiğini varsayar. `jsonArray` Aynı veri kaynağında JSON ve JSON olmayan Blobların bir karışımını desteklemeniz gerekiyorsa [UserVoice sitemizi](https://feedback.azure.com/forums/263029-azure-search)bize bilgilendirin.
+> @No__t_0, `jsonArray` veya `jsonLines` ayrıştırma modu kullandığınızda, Azure Search veri kaynağınızdaki tüm Blobların JSON içerdiğini varsayar. Aynı veri kaynağında JSON ve JSON olmayan Blobların bir karışımını desteklemeniz gerekiyorsa [UserVoice sitemizi](https://feedback.azure.com/forums/263029-azure-search)bize bilgilendirin.
 
 
 <a name="parsing-single-blobs"></a>
@@ -336,7 +332,7 @@ Alternatif olarak, JSON dizi seçeneğini de kullanabilirsiniz. Blob 'lar *düzg
         { "id" : "3", "text" : "example 3" }
     ]
 
-JSON dizisi için Dizin Oluşturucu tanımı aşağıdaki örneğe benzer görünmelidir. Parsingmode parametresinin `jsonArray` ayrıştırıcısı belirttiğinden emin olun. Doğru ayrıştırıcının belirtilmesi ve doğru veri girişi olması, JSON bloblarını dizine almanın yalnızca iki diziye özgü gereksinimleridir.
+JSON dizisi için Dizin Oluşturucu tanımı aşağıdaki örneğe benzer görünmelidir. ParsingMode parametresinin `jsonArray` ayrıştırıcısı belirttiğinden emin olun. Doğru ayrıştırıcının belirtilmesi ve doğru veri girişi olması, JSON bloblarını dizine almanın yalnızca iki diziye özgü gereksinimleridir.
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -355,7 +351,7 @@ Yine, alan eşlemelerinin atlanabileceğini unutmayın. Aynı "kimlik" ve "metin
 <a name="nested-json-arrays"></a>
 
 ## <a name="parse-nested-arrays"></a>İç içe diziler ayrıştırma
-İç içe yerleştirilmiş öğeleri olan JSON dizileri için, birden çok `documentRoot` düzeyli bir yapıyı göstermek için bir belirtebilirsiniz. Örneğin, bloblarınız şunun gibi görünür:
+İç içe yerleştirilmiş öğeleri olan JSON dizileri için, çok düzeyli bir yapıyı göstermek üzere bir `documentRoot` belirtebilirsiniz. Örneğin, bloblarınız şunun gibi görünür:
 
     {
         "level1" : {
@@ -367,7 +363,7 @@ Yine, alan eşlemelerinin atlanabileceğini unutmayın. Aynı "kimlik" ve "metin
         }
     }
 
-Bu yapılandırmayı, `level2` özelliğinde yer alan diziyi dizinlemek için kullanın:
+@No__t_0 özelliğinde yer alan diziyi indekslemek için bu yapılandırmayı kullanın:
 
     {
         "name" : "my-json-array-indexer",
@@ -383,7 +379,7 @@ Blobun, bir yeni satır tarafından ayrılmış birden çok JSON varlığı içe
     { "id" : "2", "text" : "example 2" }
     { "id" : "3", "text" : "example 3" }
 
-JSON satırları için Dizin Oluşturucu tanımı aşağıdaki örneğe benzer görünmelidir. Parsingmode parametresinin `jsonLines` ayrıştırıcısı belirttiğinden emin olun. 
+JSON satırları için Dizin Oluşturucu tanımı aşağıdaki örneğe benzer görünmelidir. ParsingMode parametresinin `jsonLines` ayrıştırıcısı belirttiğinden emin olun. 
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
@@ -397,7 +393,7 @@ JSON satırları için Dizin Oluşturucu tanımı aşağıdaki örneğe benzer g
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
 
-Yine de, `jsonArray` ayrıştırma moduna benzer şekilde alan eşlemelerinin atlanabileceğini unutmayın.
+Yeniden, `jsonArray` ayrıştırma moduna benzer şekilde alan eşlemelerinin atlanabileceğini unutmayın.
 
 ## <a name="add-field-mappings"></a>Alan eşlemeleri Ekle
 
@@ -415,7 +411,7 @@ Kaynak ve hedef alanlar kusursuz hizalı olmadığında, açık alan-alan ilişk
         }
     }
 
-Şu alanlara sahip bir arama dizini `text` varsayın: `date` `Edm.DateTimeOffset` `Edm.String`türü, türü ve `tags` türü `Collection(Edm.String)`. Dizindeki kaynak ve `date` alanda yer alan "dateyayımlandı" arasındaki tutarsızlığı fark edin. JSON 'nizi istenen şekle eşlemek için aşağıdaki alan eşlemelerini kullanın:
+Aşağıdaki alanlarla bir arama dizini olduğunu varsayalım: tür `Edm.String`, `date` türü `Edm.DateTimeOffset` ve `tags` türündeki `text`. Dizindeki kaynak ve `date` alanında "Dateyayýmlandý" arasındaki tutarsızlığı fark edin. JSON 'nizi istenen şekle eşlemek için aşağıdaki alan eşlemelerini kullanın:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },

@@ -1,39 +1,76 @@
 ---
-title: Azure Data Factory eşleme veri akışı var dönüştürmesi
-description: Mevcut satırları denetleme, Veri Fabrikası eşleme veri akışlarını var olan dönüşümlerle kullanma
+title: Azure Data Factory eşleme veri akışında dönüştürme var | Microsoft Docs
+description: Azure Data Factory eşleme veri akışında var olan dönüştürmeyi kullanarak mevcut satırları denetleyin
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 6048a6d30d37b9d2b46c3105c5f8eac0a9ca41c0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: HT
+ms.date: 10/16/2019
+ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387848"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527435"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>Eşleme veri akışı var dönüştürmesi
+# <a name="exists-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürme var
 
+Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup bulunmadığını denetleyen bir satır filtreleme dönüşümünüze sahiptir. Çıkış akışı, sol akıştaki mevcut veya doğru akışta bulunmayan tüm satırları içerir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ```SQL WHERE NOT EXISTS``` benzerdir.
 
+## <a name="configuration"></a>Yapılandırma
 
-Var olan dönüşüm, verilerinize akacak olan veya bu satırları engelleyen bir satır filtreleme dönüşümünüze sahiptir. Var olan dönüştürme ```SQL WHERE EXISTS``` ve ```SQL WHERE NOT EXISTS``` ' e benzer. Mevcut dönüşümden sonra, veri akışınızdan elde edilen satırlar, kaynak 2 ' deki sütun değerlerinin kaynak 2 ' de yer aldığı veya kaynak 2 ' de bulunmadığı tüm satırları dahil eder.
+**Sağ Akış** açılan menüsünde var olan veri akışını kontrol ettiğiniz verileri seçin.
+
+Mevcut **tür** ayarında verilerin mevcut olup olmadığını mı yoksa mevcut mi olduğunu belirtin.
+
+Mevcut koşullarınız olarak karşılaştırmak istediğiniz anahtar sütunları seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. İşlem değeri ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
 
 ![Mevcut ayarlar](media/data-flow/exists.png "1 var")
 
-Veri akışının, Stream 1 ' deki değerleri Stream 2 ' den karşılaştırabilmesi için, mevcut ikinci kaynağı seçin.
+### <a name="multiple-exists-conditions"></a>Birden çok mevcut koşul
 
-Kaynak 1 ' den ve kaynak 2 ' den, değerlerini denetlemek istediğiniz veya mevcut olmadığından, bu sütunu seçin.
+Her akıştaki birden çok sütunu karşılaştırmak için var olan bir satırın yanındaki artı simgesine tıklayarak yeni bir mevcut koşul ekleyin. Her ek koşul bir "and" ifadesiyle birleştirilir. İki sütunu karşılaştırmak aşağıdaki ifadeyle aynıdır:
 
-## <a name="multiple-exists-conditions"></a>Birden çok mevcut koşul
+`source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
-Sütun koşullarındaki her bir satırın yanında, erişim satırı üzerine geldiğinizde kullanılabilir bir + işareti bulacaksınız. Bu, mevcut koşullar için birden çok satır eklemenizi sağlar. Her ek koşul bir "ve".
+### <a name="custom-expression"></a>Özel ifade
 
-## <a name="custom-expression"></a>Özel ifade
+"Ve" ve "eşittir" dışındaki işleçleri içeren serbest biçimli bir ifade oluşturmak için **özel ifade** alanını seçin. Mavi kutuya tıklayarak veri akışı ifade Oluşturucusu aracılığıyla özel bir ifade girin.
 
 ![Özel ayarları var](media/data-flow/exists1.png "Özel var")
 
-Bunun yerine "özel Ifade" e tıklayarak var olan veya mevcut olmayan koşul olarak serbest biçimli bir ifade oluşturabilirsiniz. Bu kutunun işaretlenmesi, kendi ifadenizi koşul olarak yazmanız için izin verir.
+## <a name="data-flow-script"></a>Veri akışı betiği
+
+### <a name="syntax"></a>Sözdizimi
+
+```
+<leftStream>, <rightStream>
+    exists(
+        <conditionalExpression>,
+        negate: { true | false },
+        broadcast: {'none' | 'left' | 'right' | 'both'}
+    ) ~> <existsTransformationName>
+```
+
+### <a name="example"></a>Örnek
+
+Aşağıdaki örnek, `checkForChanges` adlı, sol akış `NameNorm2` ve sağ Akış `TypeConversions` alan, var olan bir dönüşümdir.  EXISTS koşulu, her bir akışta `EMPID` ve `Region` sütunları eşleşiyorsa true döndüren ifadedir `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`. Varlığını denetliyoruz, `negate` false 'tur. En iyileştirme sekmesinde herhangi bir yayını etkinleştirmedik, `broadcast` değer `'none'`.
+
+Data Factory UX 'de, bu dönüşüm aşağıdaki görüntüye benzer şekilde görünür:
+
+![Mevcut örnek](media/data-flow/exists-script.png "Mevcut örnek")
+
+Bu dönüşüm için veri akışı betiği aşağıdaki kod parçacığında verilmiştir:
+
+```
+NameNorm2, TypeConversions
+    exists(
+        NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
+        negate:false,
+        broadcast: 'none'
+    ) ~> checkForChanges
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

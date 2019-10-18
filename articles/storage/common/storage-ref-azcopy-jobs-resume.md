@@ -4,18 +4,18 @@ description: Bu makale, AzCopy işleri özgeçmişi komutu için başvuru bilgil
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8786da42f000a2f13279499159a7af424aa10748
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195795"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513532"
 ---
-# <a name="azcopy-jobs-resume"></a>AzCopy işleri özgeçmişi
+# <a name="azcopy-jobs-resume"></a>azcopy işleri sürdürme
 
 Verilen iş KIMLIĞI ile mevcut işi sürdürür.
 
@@ -30,7 +30,7 @@ azcopy jobs resume [jobID] [flags]
 |Seçenek|Açıklama|
 |--|--|
 |--hedef-SAS dizesi|Verilen iş kimliği için hedefin hedef SAS 'ları.|
-|--dizeyi Dışla|Filtreyle İşi sürdürülürken bu başarısız olan aktarım (ler) i hariç tutun. Dosyalar '; ' ile ayrılmalıdır.|
+|--dizeyi Dışla|Filtre: iş sürdürülürken bu başarısız olan aktarım (ler) i hariç tut. Dosyalar '; ' ile ayrılmalıdır.|
 |-h,--yardım|Özgeçmişi komutu için yardım içeriğini göster.|
 |--Include dizesi|Filtre: iş sürdürülürken yalnızca bu başarısız aktarmalar dahil edin. Dosyalar '; ' ile ayrılmalıdır.|
 |--Kaynak-SAS dizesi |verilen iş kimliği için kaynağın kaynak SAS 'ları.|

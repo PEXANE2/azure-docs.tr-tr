@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073733"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514844"
 ---
 # <a name="api-management-authentication-policies"></a>API Management kimlik doğrulama ilkeleri
 Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -32,7 +32,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 -   [Yönetilen kimlik Ile kimlik](api-management-authentication-policies.md#ManagedIdentity) doğrulama-API Management hizmeti için [yönetilen kimlikle](../active-directory/managed-identities-azure-resources/overview.md) kimlik doğrulaması yapın.
 
 ##  <a name="Basic"></a>Temel ile kimlik doğrulama
- Temel kimlik doğrulaması kullanarak arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyikullanın.`authentication-basic` Bu ilke, HTTP yetkilendirme üst bilgisini ilkede belirtilen kimlik bilgilerine karşılık gelen değere etkin bir şekilde ayarlar.
+ Temel kimlik doğrulaması kullanarak arka uç hizmetiyle kimlik doğrulaması yapmak için `authentication-basic` ilkesini kullanın. Bu ilke, HTTP yetkilendirme üst bilgisini ilkede belirtilen kimlik bilgilerine karşılık gelen değere etkin bir şekilde ayarlar.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -48,26 +48,26 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 
 ### <a name="elements"></a>Öğeler
 
-|Name|Açıklama|Gerekli|
+|Adı|Açıklama|Gereklidir|
 |----------|-----------------|--------------|
-|kimlik doğrulama-temel|Kök öğe.|Evet|
+|kimlik doğrulama-temel|Kök öğe.|Yes|
 
 ### <a name="attributes"></a>Öznitelikler
 
-|Name|Açıklama|Gerekli|Varsayılan|
+|Adı|Açıklama|Gereklidir|Varsayılan|
 |----------|-----------------|--------------|-------------|
-|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Evet|Yok|
-|password|Temel kimlik bilgisinin parolasını belirtir.|Evet|Yok|
+|kullanıcı adı|Temel kimlik bilgisinin Kullanıcı adını belirtir.|Yes|Yok|
+|password|Temel kimlik bilgisinin parolasını belirtir.|Yes|Yok|
 
 ### <a name="usage"></a>Kullanım
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
 -   **İlke kapsamları:** tüm kapsamlar
 
 ##  <a name="ClientCertificate"></a>İstemci sertifikası ile kimlik doğrulama
- İstemci sertifikası kullanarak bir arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyikullanın.`authentication-certificate` Sertifikanın öncelikle [API Management](https://go.microsoft.com/fwlink/?LinkID=511599) ve parmak izi ile tanımlanması gerekir.
+ İstemci sertifikası kullanarak bir arka uç hizmetiyle kimlik doğrulaması yapmak için `authentication-certificate` ilkesini kullanın. Sertifikanın öncelikle [API Management](https://go.microsoft.com/fwlink/?LinkID=511599) ve parmak izi ile tanımlanması gerekir.
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
@@ -88,26 +88,26 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Name|Açıklama|Gerekli|  
+|Adı|Açıklama|Gereklidir|  
 |----------|-----------------|--------------|  
-|kimlik doğrulama-sertifika|Kök öğe.|Evet|  
+|kimlik doğrulama-sertifika|Kök öğe.|Yes|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Name|Açıklama|Gerekli|Varsayılan|  
+|Adı|Açıklama|Gereklidir|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|İstemci sertifikası için parmak izi.|`thumbprint` Ya`certificate-id` da mevcut olmalıdır.|Yok|  
-|sertifika kimliği|Sertifika kaynağı adı.|`thumbprint` Ya`certificate-id` da mevcut olmalıdır.|Yok|  
+|#c0|İstemci sertifikası için parmak izi.|@No__t_0 ya da `certificate-id` mevcut olmalıdır.|Yok|  
+|sertifika kimliği|Sertifika kaynağı adı.|@No__t_0 ya da `certificate-id` mevcut olmalıdır.|Yok|  
   
 ### <a name="usage"></a>Kullanım  
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)  
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  
   
 -   **İlke bölümleri:** gelen  
   
 -   **İlke kapsamları:** tüm kapsamlar  
 
 ##  <a name="ManagedIdentity"></a>Yönetilen kimlikle kimlik doğrulama  
- API Management hizmetinin yönetilen kimliğini kullanarak arka uç hizmetiyle kimlik doğrulaması yapmak için ilkeyikullanın.`authentication-managed-identity` Bu ilke temelde, belirtilen kaynağa erişmek için Azure Active Directory bir erişim belirteci almak üzere yönetilen kimliği kullanır. Belirteç başarıyla alındıktan sonra, ilke `Authorization` `Bearer` düzeni kullanarak başlıktaki belirtecin değerini ayarlar.
+ API Management hizmetinin yönetilen kimliğini kullanarak bir arka uç hizmetiyle kimlik doğrulaması yapmak için `authentication-managed-identity` ilkesini kullanın. Bu ilke temelde, belirtilen kaynağa erişmek için Azure Active Directory bir erişim belirteci almak üzere yönetilen kimliği kullanır. Belirteç başarıyla alındıktan sonra, ilke `Bearer` düzenini kullanarak `Authorization` üstbilgisindeki belirtecin değerini ayarlar.
   
 ### <a name="policy-statement"></a>İlke ekstresi  
   
@@ -119,6 +119,21 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 #### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Bir arka uç hizmetiyle kimlik doğrulamak için yönetilen kimlik kullanma
 ```xml  
 <authentication-managed-identity resource="https://graph.windows.net"/> 
+```
+```xml  
+<authentication-managed-identity resource="https://management.azure.com/"/> <!--Azure Resource Manager-->
+```
+```xml  
+<authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
+```
+```xml  
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+```
+```xml  
+<authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
+```
+```xml  
+<authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
   
 #### <a name="use-managed-identity-in-send-request-policy"></a>Gönderme isteği ilkesinde yönetilen kimliği kullan
@@ -132,20 +147,20 @@ Bu örnekte istemci sertifikası, kaynak adı ile tanımlanır.
 
 ### <a name="elements"></a>Öğeler  
   
-|Name|Açıklama|Gerekli|  
+|Adı|Açıklama|Gereklidir|  
 |----------|-----------------|--------------|  
-|kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Evet|  
+|kimlik doğrulama-yönetilen-kimlik |Kök öğe.|Yes|  
   
 ### <a name="attributes"></a>Öznitelikler  
   
-|Name|Açıklama|Gerekli|Varsayılan|  
+|Adı|Açıklama|Gereklidir|Varsayılan|  
 |----------|-----------------|--------------|-------------|  
-|resource|Dizisinde. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI URI 'SI.|Evet|Yok|  
-|çıkış-belirteç-değişken-adı|Dizisinde. Bir nesne türü `string`olarak belirteç değeri alacak bağlam değişkeninin adı. |Hayır|Yok|  
-|yoksayma-hata|Boolean. Olarak `true`ayarlanırsa, bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|false|  
+|Kaynak|dizisinde. Azure Active Directory içindeki hedef Web API 'sinin (güvenli kaynak) uygulama KIMLIĞI URI 'SI.|Yes|Yok|  
+|çıkış-belirteç-değişken-adı|dizisinde. @No__t_0 nesne türü olarak belirteç değeri alacak bağlam değişkeninin adı. |Hayır|Yok|  
+|yoksayma-hata|Boolean. @No__t_0 olarak ayarlanırsa, bir erişim belirteci alınmasa bile ilke ardışık düzeni yürütülmeye devam eder.|Hayır|yanlış|  
   
 ### <a name="usage"></a>Kullanım  
- Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)  
+ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.  
   
 -   **İlke bölümleri:** gelen  
   

@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "69997810"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529404"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin 
-
-Bu makale, kuruluşların Azure Active Directory (Azure AD) karma kimlik çözümü uygulamasına yardımcı olan bir dizi makaleye başlar. Bu çözüm [karma kimlik dijital dönüştürme çerçevesi](https://aka.ms/aadframework)olarak özetlenmiştir. Kurumsal sonuçları ve hedefleri, kuruluşların sağlam ve güvenli bir karma kimlik çözümü uygulamak için odaklanabilecek şekilde ele alınmaktadır. 
-
-Framework 'ün ilk iş sonucu, kullanıcılar bulut uygulamalarına erişirken kimlik doğrulama işleminin güvenliğini sağlamak için kuruluşların gereksinimlerini yanlış Kimlik doğrulama güvenliği olan iş sonucu 'ndaki ilk işletme hedefi, kullanıcıların şirket içi kullanıcı adlarını ve parolalarını kullanarak bulut uygulamalarında oturum açmalarına olanak tanır. Bu oturum açma ve kimlik doğrulama işlemi buluttaki her şeyi mümkün hale getirir.
 
 Doğru kimlik doğrulama yöntemini seçmek, kuruluşların uygulamalarını buluta taşıması için ilk konudur. Bu kararı aşağıdaki nedenlerden dolayı aydınlamayın:
 

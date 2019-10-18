@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
 ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71300147"
 ---
 # <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
@@ -25,21 +25,21 @@ Altyapıyı Azure çözümleriniz için kod olarak uygulamak üzere Azure Resour
 
 Kaynak Yöneticisi şablonları ve diğer altyapılardan birini kod hizmetleri olarak kullanmaya karar vermeye çalışıyorsanız, şablonları kullanmanın aşağıdaki avantajlarını göz önünde bulundurun:
 
-* **Bildirime dayalı sözdizimi**: Kaynak Yöneticisi şablonlar, tüm Azure altyapısını bildirimli olarak oluşturmanıza ve dağıtmanıza olanak tanır. Örneğin, yalnızca sanal makineler, aynı zamanda ağ altyapısı, depolama sistemleri ve ihtiyacınız olabilecek diğer kaynaklar için dağıtım yapabilirsiniz.
+* **Bildirime dayalı sözdizimi**: Kaynak Yöneticisi şablonlar tüm Azure altyapısını bildirimli olarak oluşturmanıza ve dağıtmanıza olanak tanır. Örneğin, yalnızca sanal makineler, aynı zamanda ağ altyapısı, depolama sistemleri ve ihtiyacınız olabilecek diğer kaynaklar için dağıtım yapabilirsiniz.
 
-* **Tekrarlanabilir sonuçlar**: Altyapınızı geliştirme yaşam döngüsü boyunca sürekli olarak dağıtın ve kaynaklarınızın tutarlı bir şekilde dağıtılmasının rahatlığını yapın. Şablonlar, aynı şablonu birçok kez dağıtabileceğiniz ve aynı durumda aynı kaynak türlerini alabileceği anlamına gelen ıdempotent. Güncelleştirmeleri temsil etmek için çok sayıda ayrı şablon geliştirmek yerine istenen durumu temsil eden bir şablon geliştirebilirsiniz.
+* **Tekrarlanabilir sonuçlar**: altyapınızı geliştirme yaşam döngüsü boyunca sürekli olarak dağıtın ve kaynaklarınızın tutarlı bir şekilde dağıtılmasını sağlayabilirsiniz. Şablonlar, aynı şablonu birçok kez dağıtabileceğiniz ve aynı durumda aynı kaynak türlerini alabileceği anlamına gelen ıdempotent. Güncelleştirmeleri temsil etmek için çok sayıda ayrı şablon geliştirmek yerine istenen durumu temsil eden bir şablon geliştirebilirsiniz.
 
-* **Düzenleme**: Sıralama işlemlerinin karmaşıklıkları hakkında endişelenmeniz gerekmez. Kaynak Yöneticisi, birbirine bağlı kaynakların dağıtımını doğru sırada oluşturulacak şekilde düzenler. Mümkün olduğunda, dağıtımlarınızın seri dağıtımlardan daha hızlı tamamlanabilmesi için Kaynak Yöneticisi Kaynakları paralel olarak dağıtır. Şablonu, birden çok zorunlu komut yerine bir komut aracılığıyla dağıtırsınız.
+* **Orchestration**: sıralama işlemlerinin karmaşıklıkları hakkında endişelenmeniz gerekmez. Kaynak Yöneticisi, birbirine bağlı kaynakların dağıtımını doğru sırada oluşturulacak şekilde düzenler. Mümkün olduğunda, dağıtımlarınızın seri dağıtımlardan daha hızlı tamamlanabilmesi için Kaynak Yöneticisi Kaynakları paralel olarak dağıtır. Şablonu, birden çok zorunlu komut yerine bir komut aracılığıyla dağıtırsınız.
 
    ![Şablon dağıtımı karşılaştırma](./media/template-deployment-overview/template-processing.png)
 
-* **Yerleşik doğrulama**: Şablonunuz yalnızca doğrulama işlemi yapıldıktan sonra dağıtılır. Kaynak Yöneticisi dağıtımın başarılı olduğundan emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınız, yarı tamamlanmış bir durumda durmak daha az olabilir.
+* **Yerleşik doğrulama**: şablonunuz yalnızca doğrulama işlemi yapıldıktan sonra dağıtılır. Kaynak Yöneticisi dağıtımın başarılı olduğundan emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınız, yarı tamamlanmış bir durumda durmak daha az olabilir.
 
-* **Modüler dosyalar**: Şablonlarınızı daha küçük, yeniden kullanılabilir bileşenlere bölebilir ve dağıtım zamanında birbirine bağlayabilirsiniz. Ayrıca, bir şablonu başka bir şablon içinde iç içe geçirebilirsiniz.
+* **Modüler dosyalar**: şablonlarınızı daha küçük, yeniden kullanılabilir bileşenlere bölebilir ve dağıtım zamanında birbirine bağlayabilirsiniz. Ayrıca, bir şablonu başka bir şablon içinde iç içe geçirebilirsiniz.
 
-* **Herhangi bir Azure kaynağı oluşturun**: Şablonlarda yeni Azure hizmetlerini ve özelliklerini hemen kullanabilirsiniz. Kaynak sağlayıcısı yeni kaynakları kullanıma sunarak, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Yeni hizmetleri kullanmadan önce araçların veya modüllerin güncelleştirilmesini beklemeniz gerekmez.
+* **Herhangi bir Azure kaynağı oluşturun**: şablonlarda yeni Azure hizmetlerini ve özelliklerini hemen kullanabilirsiniz. Kaynak sağlayıcısı yeni kaynakları kullanıma sunarak, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Yeni hizmetleri kullanmadan önce araçların veya modüllerin güncelleştirilmesini beklemeniz gerekmez.
 
-* **İzlenen dağıtımlar**: Azure portal, dağıtım geçmişini gözden geçirebilir ve şablon dağıtımı hakkında bilgi alabilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve tüm çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı Portal üzerinden izlenmez.
+* **İzlenen dağıtımlar**: Azure Portal dağıtım geçmişini gözden geçirebilir ve şablon dağıtımı hakkında bilgi alabilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve tüm çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı Portal üzerinden izlenmez.
 
    ![Dağıtım geçmişi](./media/template-deployment-overview/deployment-history.png)
 
@@ -47,11 +47,11 @@ Kaynak Yöneticisi şablonları ve diğer altyapılardan birini kod hizmetleri o
 
 * **Dağıtım planları**: Microsoft tarafından, mevzuat ve uyumluluk standartlarını karşılamak [için sunulan planların](../governance/blueprints/overview.md) avantajlarından yararlanabilirsiniz. Bu planlar, çeşitli mimarilere yönelik önceden oluşturulmuş şablonlar içerir.
 
-* **CI/CD tümleştirmesi**: Şablonları, sürekli tümleştirme ve sürekli dağıtım (CI/CD) araçlarınızla tümleştirebilir. Bu, hızlı ve güvenilir uygulama ve altyapı güncelleştirmelerine yönelik yayın işlem hatlarınızı otomatik hale getirebilir. Azure DevOps ve Kaynak Yöneticisi şablon görevi kullanarak Azure Resource Manager şablon projelerini sürekli olarak derlemek ve dağıtmak için Azure Pipelines kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. işlem [hatları Ile vs projesi](./vs-resource-groups-project-devops-pipelines.md) ve [Azure Pipelines ile sürekli tümleştirme](./resource-manager-tutorial-use-azure-pipelines.md).
+* **CI/CD tümleştirmesi**: şablonları, sürekli tümleştirme ve sürekli DAĞıTıM (CI/CD) araçlarınızla tümleştirebilir. Bu, hızlı ve güvenilir uygulama ve altyapı güncelleştirmelerine yönelik yayın işlem hatlarınızı otomatikleştirebilirler. Azure DevOps ve Kaynak Yöneticisi şablon görevi kullanarak Azure Resource Manager şablon projelerini sürekli olarak derlemek ve dağıtmak için Azure Pipelines kullanabilirsiniz. Daha fazla bilgi edinmek için bkz. işlem [hatları Ile vs projesi](./vs-resource-groups-project-devops-pipelines.md) ve [Azure Pipelines ile sürekli tümleştirme](./resource-manager-tutorial-use-azure-pipelines.md).
 
-* **Dışarı aktarılabilir kod**: Kaynak grubunun geçerli durumunu dışarı aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek, var olan bir kaynak grubu için bir şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
+* **Dışarı aktarılabilir kod**: kaynak grubunun geçerli durumunu dışarı aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek mevcut kaynak grubu için bir şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
 
-* **Yazma araçları**: Şablonları [Visual Studio Code](resource-manager-tools-vs-code.md) ve şablon aracı uzantısıyla yazabilirsiniz. IntelliSense, sözdizimi vurgulama, çevrimiçi Yardım ve diğer birçok dil işlevini edinirsiniz. Visual Studio Code ' a ek olarak, [Visual Studio 'yu](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)da kullanabilirsiniz.
+* **Yazma araçları**: şablonları [Visual Studio Code](resource-manager-tools-vs-code.md) ve şablon aracı uzantısıyla yazabilirsiniz. IntelliSense, sözdizimi vurgulama, çevrimiçi Yardım ve diğer birçok dil işlevini edinirsiniz. Visual Studio Code ' a ek olarak, [Visual Studio 'yu](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)da kullanabilirsiniz.
 
 ## <a name="template-file"></a>Şablon dosyası
 
@@ -126,4 +126,4 @@ Katmanlarınızın farklı yaşam döngülerine sahip olacağını düşünüyor
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Şablon dosyalarındaki özellikler hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](resource-group-authoring-templates.md).
-* Şablonları dışarı aktarma hakkında bilgi edinmek için [bkz. hızlı başlangıç: Azure portal](./resource-manager-quickstart-create-templates-use-the-portal.md)kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın.
+* Şablonları dışarı aktarma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](./resource-manager-quickstart-create-templates-use-the-portal.md).

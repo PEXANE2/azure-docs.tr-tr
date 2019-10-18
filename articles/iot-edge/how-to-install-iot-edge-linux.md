@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695322"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516672"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Azure IoT Edge çalışma zamanını, detem tabanlı Linux sistemlerine yükler
 
@@ -103,7 +103,7 @@ Apt güncelleştirmesi gerçekleştirin.
    sudo apt-get update
    ```
 
-Güvenlik cini 'nı yükler. Paket `/etc/iotedge/` ' a yüklenir.
+Güvenlik cini 'nı yükler. Paket `/etc/iotedge/` yüklendi.
 
    ```bash
    sudo apt-get install iotedge
@@ -161,7 +161,7 @@ IoT Edge başarıyla yüklendikten sonra, çıkış sizden yapılandırma dosyas
 
 Fiziksel cihazınızı Azure IoT Hub 'ında bulunan bir cihaz kimliğiyle bağlamak için IoT Edge çalışma zamanını yapılandırın.
 
-Daemon, `/etc/iotedge/config.yaml` konumundaki yapılandırma dosyası kullanılarak yapılandırılabilir. Dosya varsayılan olarak yazma korumalı, düzenlemek için yükseltilmiş izinlere sahip olabilirsiniz.
+Daemon, `/etc/iotedge/config.yaml` yapılandırma dosyası kullanılarak yapılandırılabilir. Dosya varsayılan olarak yazma korumalı, düzenlemek için yükseltilmiş izinlere sahip olabilirsiniz.
 
 Tek bir IoT Edge cihaz, IoT Hub tarafından sağlanan bir cihaz bağlantı dizesi kullanılarak el ile sağlanabilir. Veya, cihaz sağlama hizmeti 'ni kullanarak cihazları otomatik olarak temin edebilir, bu da birçok cihaza sahip olduğunuzda yararlı olur. Sağlama seçiminize bağlı olarak, uygun yükleme betiğini seçin.
 
@@ -192,7 +192,7 @@ Dosyanın sağlama yapılandırmalarını bulun ve **el ile sağlama yapılandı
    #     method: "tpm"
    #     registration_id: "{registration_id}"
 ```
-Pano içeriğini nano @no__t yapıştırmak için-0 veya `Shift+Insert` ' e basın.
+Pano içeriğini nano `Shift+Right Click` yapıştırmak veya `Shift+Insert` ' a basın.
 
 Dosyayı kaydedin ve kapatın.
 
@@ -232,7 +232,7 @@ Dosyanın sağlama yapılandırmasını bulun ve kanıtlama mekanizmanız için 
        registration_id: "{registration_id}"
    ```
 
-Pano içeriğini nano @no__t yapıştırmak için-0 veya `Shift+Insert` ' e basın.
+Pano içeriğini nano `Shift+Right Click` yapıştırmak veya `Shift+Insert` ' a basın.
 
 Dosyayı kaydedin ve kapatın.
 
@@ -248,19 +248,25 @@ sudo systemctl restart iotedge
 
 Önceki bölümde **el ile yapılandırma** adımlarını kullandıysanız, IoT Edge çalışma zamanının cihazınızda başarıyla sağlanması ve çalıştırılması gerekir. **Otomatik yapılandırma** adımlarını kullandıysanız, çalışma zamanının cihazınızı sizin adınıza IoT Hub 'ınıza kaydedebilmesi için bazı ek adımlar gerçekleştirmeniz gerekir. Sonraki adımlar için bkz. [Linux sanal makinesi üzerinde sanal BIR TPM IoT Edge cihazı oluşturma ve sağlama](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
-IoT Edge Daemon 'ın durumunu kullanarak denetleyebilirsiniz:
+IoT Edge Daemon 'ın durumunu denetleyebilirsiniz:
 
 ```bash
 systemctl status iotedge
 ```
 
-Kullanarak Daemon günlüklerini inceleyin:
+Daemon günlüklerini inceleyin:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Ve çalıştıran modülleri şu şekilde listeleyin:
+En yaygın yapılandırma ve ağ hataları için otomatik bir denetim çalıştırın: 
+
+```bash
+sudo iotedge check
+```
+
+Ve çalıştıran modülleri listeleyin:
 
 ```bash
 sudo iotedge list
@@ -270,7 +276,7 @@ Cihazınıza IoT Edge yükledikten sonra, çalıştırmayı görmeniz gereken te
 
 ## <a name="tips-and-troubleshooting"></a>İpuçları ve sorun giderme
 
-@No__t-0 komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara sahip olmanız gerekir. Çalışma zamanını yükledikten sonra, makinenizde oturumunuzu kapatın ve izinlerinizi otomatik olarak güncelleştirmek için yeniden oturum açın. Bundan sonra, herhangi bir `iotedge` ' in önünde **sudo** ' ı kullanın.
+`iotedge` komutlarını çalıştırmak için yükseltilmiş ayrıcalıklara ihtiyacınız olacaktır. Çalışma zamanını yükledikten sonra, makinenizde oturumunuzu kapatın ve izinlerinizi otomatik olarak güncelleştirmek için yeniden oturum açın. Bundan sonra, komutların `iotedge` önüne **sudo** kullanın.
 
 Kaynak kısıtlı cihazlarda, [sorun giderme kılavuzunda](troubleshoot.md)her yönerge Için *Optimizeforperformance* ortam değişkenini *false* olarak ayarlamanız kesinlikle önerilir.
 
@@ -286,7 +292,7 @@ Birçok katıştırılmış cihaz üreticisi, kapsayıcı çalışma zamanı uyu
    ./check-config.sh
    ```
 
-Bu işlem, Moby çalışma zamanı tarafından kullanılan çekirdek özelliklerinin durumunu içeren ayrıntılı bir çıktı sağlar. @No__t-0 ve `Network Drivers` altındaki tüm öğelerin, çekirdeğin Moby çalışma zamanına tamamen uyumlu olduğundan emin olmak için etkinleştirildiğinden emin olmanız gerekir.  Eksik özellikleri belirlediyseniz, çekirdeğini kaynaktan yeniden oluşturarak ve uygun çekirdek. config dosyasına eklenmek üzere ilişkili modülleri seçerek etkinleştirin.  Benzer şekilde, defconfig veya menuconfig gibi bir çekirdek yapılandırma Oluşturucu kullanıyorsanız ilgili özellikleri bulup etkinleştirin ve çekirdeğini uygun şekilde yeniden oluşturun.  Yeni değiştirilen çekirdeğini dağıttıktan sonra, gerekli tüm özelliklerin başarıyla etkinleştirildiğini doğrulamak için Check-config betiğini yeniden çalıştırın.
+Bu işlem, Moby çalışma zamanı tarafından kullanılan çekirdek özelliklerinin durumunu içeren ayrıntılı bir çıktı sağlar. @No__t_0 ve `Network Drivers` altındaki tüm öğelerin, çekirdeğin Moby çalışma zamanına tamamen uyumlu olduğundan emin olmak için etkinleştirildiğinden emin olmanız gerekir.  Eksik özellikleri belirlediyseniz, çekirdeğini kaynaktan yeniden oluşturarak ve uygun çekirdek. config dosyasına eklenmek üzere ilişkili modülleri seçerek etkinleştirin.  Benzer şekilde, defconfig veya menuconfig gibi bir çekirdek yapılandırma Oluşturucu kullanıyorsanız ilgili özellikleri bulup etkinleştirin ve çekirdeğini uygun şekilde yeniden oluşturun.  Yeni değiştirilen çekirdeğini dağıttıktan sonra, gerekli tüm özelliklerin başarıyla etkinleştirildiğini doğrulamak için Check-config betiğini yeniden çalıştırın.
 
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge kaldır

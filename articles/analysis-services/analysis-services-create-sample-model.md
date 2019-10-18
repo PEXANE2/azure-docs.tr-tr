@@ -4,15 +4,15 @@ description: Bu öğretici derste, Azure Analysis Services'e örnek model ekleme
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a9721b05fbd478d108f06c36017ee444f721d28
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c6679e8075afd2f25e4baf73c79c35907ded4e2b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298682"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512879"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Öğretici: Portaldan bir örnek model ekleme
 
@@ -43,7 +43,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
     ![Örnek model oluşturma](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. **Yeni model** > **Veri kaynağı seç** alanında, **Örnek veriler**'in seçili olduğunu doğrulayın ve ardından **Ekle**'ye tıklayın.
+2. **Yeni modelde**  > **bir veri kaynağı seçin**, **örnek verilerin** seçili olduğunu doğrulayın ve ardından **Ekle**' ye tıklayın.
 
     ![Örnek verileri seçme](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 

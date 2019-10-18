@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/17/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373538"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532843"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
->Bu URL 'YI kopyalayıp yapıştırarak güncelleştirmeler için ne zaman geri alınacağı hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` ![RSS akış okuyucu simgesi @ no__t-2 akış okuyucusu.
+>Bu URL 'YI kopyalayıp yapıştırarak güncelleştirmeler için ne zaman geri alınacağı hakkında bildirim alın: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` ![RSS akış okuyucu simgenizi ](./media/whats-new/feed-icon-16x16.png) akış okuyucusu.
 
 Azure AD, iyileştirmeleri sürekli olarak alır. En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
@@ -36,6 +36,20 @@ Azure AD, iyileştirmeleri sürekli olarak alır. En son gelişmelerden haberdar
 - Değişiklik planları
 
 Bu sayfa aylık olarak güncelleştirildiğinden düzenli olarak yeniden ziyaret edin. Altı aydan eski olan öğelere bakıyorsanız, [Azure Active Directory yenilikler Için arşivde](whats-new-archive.md)bulabilirsiniz.
+
+---
+
+## <a name="october-2019"></a>2019 Ekim
+
+### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>Azure AD Kimlik Koruması risk algılamaları için ıdentityriskevent API 'sinin kullanımdan kaldırılması  
+
+**Şunu yazın:** Değişiklik planı  
+**Hizmet kategorisi:** Kimlik koruması  
+**Ürün yeteneği:** Kimlik güvenliği & koruması
+
+Geliştirici geri bildirimlerine yanıt olarak Azure AD Premium P2 aboneleri artık Microsoft Graph için yeni riskDetection API 'sini kullanarak Azure AD Kimlik Koruması riskli algılama verilerinde karmaşık sorgular gerçekleştirebilir. Mevcut [ıdentityriskevent](https://docs.microsoft.com/en-us/graph/api/resources/identityriskevent?view=graph-rest-beta) API beta sürümü **10 Ocak 2020 '** den itibaren veri döndürmeyi durdurur. Kuruluşunuz ıdentityriskevent API 'sini kullanıyorsa, yeni riskDetection API 'sine geçiş yapmanız gerekir.
+
+Yeni riskDetection API 'SI hakkında daha fazla bilgi için [risk algılama API 'si başvuru belgelerine](https://aka.ms/RiskDetectionsAPI)bakın.
 
 ---
 
@@ -50,6 +64,8 @@ Bu sayfa aylık olarak güncelleştirildiğinden düzenli olarak yeniden ziyaret
 Power BI, içerik paketlerini mağazalardan kullanımdan kaldırabileceği gibi, **1 ekim 2019**Itibariyle artık Azure AD Power BI içerik paketini destekliyoruz. Şu anda içerik paketini kullanan müşteriler, temeldeki API 'Ler eski sürümse bile bu uygulamayı kullanmaya devam edebilir. Bu içerik paketine alternatif olarak Azure AD çalışma kitaplarını (Log Analytics yerleşik olarak) kullanarak Azure AD ile ilgili hizmetlerinize ilişkin Öngörüler elde edebilirsiniz.
 
 Çalışma kitapları hakkında daha fazla bilgi için bkz. [Azure izleyici çalışma kitaplarını Azure Active Directory raporları için kullanma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). İçerik paketlerinin kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [Power BI Template Apps genel kullanılabilirliği](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) blog gönderisi.
+
+---
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Profilimi yeniden adlandırma ve Microsoft Office hesabı sayfasıyla tümleştirme
 
@@ -400,7 +416,7 @@ Daha fazla bilgi için bkz. [Azure AD bölünmesi değişiklikleri bildirimleri]
 
 ---
 
-## <a name="july-2019"></a>2019 Temmuz
+## <a name="july-2019"></a>Temmuz 2019
 
 ### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>Değişiklik planı: yalnızca TLS 1,2 ' i destekleyecek uygulama proxy hizmeti güncelleştirmesi
 
@@ -444,7 +460,7 @@ MFA sunucusu IP adresini [Office 365 IP adresi ve URL Web hizmetinden](https://d
 
 26 Temmuz 2019 ' de, [istemci kimlik bilgileri verme](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)yoluyla yalnızca uygulama belirteçleri sağlıyoruz. Daha önce, uygulamalar, istemci uygulamanın kiracıda olup olmamasına bakılmaksızın diğer uygulamaları çağırmak için belirteçleri alabilir. Bu davranışı, bazen Web API 'Leri olarak adlandırılan tek kiracılı kaynakların yalnızca kaynak kiracısında bulunan istemci uygulamaları tarafından çağrılabilir şekilde güncelleştirdik.
 
-Uygulamanız kaynak kiracısında değilse, bu sorunu çözmek Için `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` olduğunu belirten bir hata iletisi alırsınız, [Yönetici onay uç noktasını](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) veya [PowerShell aracılığıyla](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)kiracı 'da istemci uygulama hizmeti sorumlusunu oluşturmanız gerekir. Bu, kiracınızın kiracı içinde çalışmaya yönelik uygulama iznini vermiş olmasını sağlar.
+Uygulamanız kaynak kiracısında değilse, bu sorunu çözmek Için `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` bildiren bir hata iletisi alırsınız, [Yönetici onay uç noktasını](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) veya [PowerShell aracılığıyla](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)kiracı 'da istemci uygulama hizmeti sorumlusunu oluşturmanız gerekir, Bu, kiracınızın kiracı içinde çalışmaya yönelik uygulama iznini vermiş olmasını sağlar.
 
 Daha fazla bilgi için bkz. [kimlik doğrulaması yenilikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -927,7 +943,7 @@ Koşullu erişim ve parola sıfırlama hakkında daha fazla bilgi için [Azure A
 
 ---
 
-## <a name="april-2019"></a>2019 Nisan
+## <a name="april-2019"></a>Nisan 2019
 
 ### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Yeni Azure AD tehdit zekası algılaması artık Azure AD Kimlik Koruması bir parçası olarak sağlanıyor
 

@@ -304,19 +304,33 @@
           href: spark-job.md
         - name: GPU'ları kullanma
           href: gpu-cluster.md
-        - name: Istio'yu kullanma
-          items:
-            - name: Yükleme ve yapılandırma
-              href: istio-install.md
-            - name: Akıllı yönlendirme ve kısıtlı dağıtım sürümleri
-              href: istio-scenario-routing.md
-        - name: Hashicorp Consul Connect’i kullanma
-          items:
-            - name: Yükleme ve yapılandırma
-              href: consul-install.md
         - name: PostgreSQL için Azure Veritabanı kullanma
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+    - name: Hizmet ağı seçme ve dağıtma
+      items:
+        - name: Hizmet Ağları hakkında
+          href: servicemesh-about.md
+        - name: Istio'yu kullanma
+          items:
+            - name: Istio hakkında
+              href: servicemesh-istio-about.md
+            - name: Yükleme ve yapılandırma
+              href: servicemesh-istio-install.md
+            - name: Senaryo - Akıllı yönlendirme ve kısıtlı dağıtım sürümleri
+              href: servicemesh-istio-scenario-routing.md
+        - name: Linkerd kullanma
+          items:
+            - name: Linkerd hakkında
+              href: servicemesh-linkerd-about.md
+            - name: Yükleme ve yapılandırma
+              href: servicemesh-linkerd-install.md
+        - name: Consul kullanma
+          items:
+            - name: Consul hakkında
+              href: servicemesh-consul-about.md
+            - name: Yükleme ve yapılandırma
+              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: AKS kümeleri oluşturmak için Ansible kullanma

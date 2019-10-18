@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2019
-ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/16/2019
+ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034124"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529302"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>HDInsight’ı şirket içi ağınıza bağlama
 
@@ -45,7 +45,7 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md).
-* PowerShell kullanıyorsanız, [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
+* PowerShell kullanıyorsanız [az Module](https://docs.microsoft.com/powershell/azure/overview)gerekecektir.
 * Azure CLı 'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, bkz. [Azure CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-virtual-network-configuration"></a>Sanal ağ yapılandırması oluştur
@@ -63,23 +63,23 @@ Aşağıdaki diyagramda yeşil çizgiler, sanal ağın DNS son ekine biten kayna
 
 Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://portal.azure.com) kullanır. Sanal makine oluşturmanın diğer yolları için bkz. [VM oluşturma-Azure CLI](../virtual-machines/linux/quick-create-cli.md) ve [vm oluşturma-Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  [BIND](https://www.isc.org/downloads/bind/) DNS yazılımını kullanan bir Linux sanal makinesi oluşturmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
   
-2. Sol taraftaki menüden **+ kaynak** > **işlem** > **Ubuntu Server 18,04 LTS**öğesine gidin.
+2. Sol taraftaki menüden **+ kaynak oluştur** ** > ,** **Ubuntu Server 18,04 LTS** >  ' a gidin.
 
     ![Ubuntu sanal makinesi oluşturma](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. __Temel bilgiler__ sekmesinde, aşağıdaki bilgileri girin:  
   
-    | Alan | Value |
+    | Alan | Değer |
     | --- | --- |
-    |Subscription |Uygun aboneliğinizi seçin.|
-    |Resource group |Daha önce oluşturulan sanal ağı içeren kaynak grubunu seçin.|
+    |Abonelik |Uygun aboneliğinizi seçin.|
+    |Kaynak grubu |Daha önce oluşturulan sanal ağı içeren kaynak grubunu seçin.|
     |Sanal makine adı | Bu sanal makineyi tanımlayan kolay bir ad girin. Bu örnek **dnsproxy**kullanır.|
     |Bölge | Daha önce oluşturulan sanal ağla aynı bölgeyi seçin.  Tüm bölgelerde tüm VM boyutları kullanılamaz.  |
     |Kullanılabilirlik seçenekleri |  İstediğiniz kullanılabilirlik düzeyini seçin.  Azure, uygulamalarınız için kullanılabilirliği ve dayanıklılığı yönetmeye yönelik çeşitli seçenekler sunar.  Uygulamalarınızı ve verilerinizi veri merkezi kesintilerine ve bakım olaylarına karşı korumak için Kullanılabilirlik Alanları veya kullanılabilirlik kümelerinde çoğaltılan VM 'Leri kullanmak için çözümünüzü mimarın. Bu örnek, **gerekli altyapı yedekliliği**kullanmaz. |
-    |Image | **Ubuntu Server 18,04 LTS**adresinden ayrılın. |
-    |Kimlik doğrulaması türü | __Parola__ veya __SSH ortak anahtarı__: SSH hesabı için kimlik doğrulama yöntemi. Daha güvenli olduklarından ortak anahtarları kullanmanızı öneririz. Bu örnek, **parolayı**kullanır.  Daha fazla bilgi için bkz. [Linux VM 'leri IÇIN SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md) belgesi.|
+    |Görüntü | **Ubuntu Server 18,04 LTS**adresinden ayrılın. |
+    |Kimlik doğrulaması türü | __Parola__ veya __SSH ortak anahtarı__: SSH hesabı için kimlik doğrulama yöntemi. Daha güvenli olduklarından ortak anahtarların kullanılmasını öneririz. Bu örnek, **parolayı**kullanır.  Daha fazla bilgi için bkz. [Linux VM 'leri IÇIN SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md) belgesi.|
     |Kullanıcı adı |VM için yönetici kullanıcı adını girin.  Bu örnek **sshuser**kullanır.|
     |Parola veya SSH ortak anahtarı | Kullanılabilir alan, **kimlik doğrulama türü**için seçtiğiniz seçeneğe göre belirlenir.  Uygun değeri girin.|
     |Ortak gelen bağlantı noktaları|**Seçili bağlantı noktalarına Izin ver**' i seçin. Ardından **gelen bağlantı noktaları seçin** açılır listesinden **SSH (22)** öğesini seçin.|
@@ -90,10 +90,10 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
 
 4. **Ağ** sekmesinde, aşağıdaki bilgileri girin:
 
-    | Alan | Value |
+    | Alan | Değer |
     | --- | --- |
     |Sanal ağ | Daha önce oluşturduğunuz sanal ağı seçin.|
-    |Subnet | Daha önce oluşturduğunuz sanal ağ için varsayılan alt ağı seçin. VPN ağ geçidi tarafından kullanılan alt __ağı seçmeyin.__|
+    |Alt ağ | Daha önce oluşturduğunuz sanal ağ için varsayılan alt ağı seçin. VPN ağ geçidi tarafından kullanılan alt __ağı seçmeyin.__|
     |Genel IP | Oto doldurulmuş değeri kullanın.  |
 
     ![HDInsight sanal ağ ayarları](./media/connect-on-premises-network/virtual-network-settings.png)
@@ -103,6 +103,7 @@ Bu adımlar, Azure sanal makinesi oluşturmak için [Azure Portal](https://porta
 5. **Gözden geçir + oluştur** sekmesinden **Oluştur** ' u seçerek sanal makineyi oluşturun.
 
 ### <a name="review-ip-addresses"></a>IP adreslerini gözden geçirme
+
 Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **dağıtım başarılı** bildirimi alırsınız.  Yeni sanal makinenize gitmek için **Kaynağa Git** ' i seçin.  Yeni sanal makineniz için varsayılan görünümden, ilişkili IP adreslerini belirlemek için aşağıdaki adımları izleyin:
 
 1. **Ayarlar**' dan **Özellikler**' i seçin.
@@ -113,7 +114,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bağlama (DNS yazılımı) yükleyip yapılandırma
 
-1. Sanal makinenin __genel IP adresine__ bağlanmak için SSH kullanın. VM `sshuser` oluştururken belirttiğiniz SSH kullanıcı hesabı ile değiştirin. Aşağıdaki örnek, 40.68.254.142 adresindeki bir sanal makineye bağlanır:
+1. Sanal makinenin __genel IP adresine__ bağlanmak için SSH kullanın. @No__t_0, VM oluştururken belirttiğiniz SSH kullanıcı hesabı ile değiştirin. Aşağıdaki örnek, 40.68.254.142 adresindeki bir sanal makineye bağlanır:
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -126,7 +127,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
     sudo apt-get install bind9 -y
     ```
 
-3. Ad çözümleme isteklerini şirket içi DNS sunucunuza iletecek şekilde bağlamayı yapılandırmak için aşağıdaki metni `/etc/bind/named.conf.options` dosyanın içeriğiyle kullanın:
+3. Ad çözümleme isteklerini şirket içi DNS sunucunuza iletecek şekilde bağlamayı yapılandırmak için, `/etc/bind/named.conf.options` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -153,9 +154,9 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
         };
 
     > [!IMPORTANT]  
-    > `goodclients` Bölümündeki değerleri, sanal ağın ve şirket içi ağın IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
+    > @No__t_0 bölümündeki değerleri, sanal ağın ve şirket içi ağın IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
     >
-    > `forwarders` Bölümündeki girişi, şirket içi DNS sunucunuzun IP adresi ile değiştirin. `192.168.0.1` Bu giriş, çözümleme için DNS isteklerini şirket içi DNS sunucunuza yönlendirir.
+    > @No__t_1 bölümündeki `192.168.0.1` girişi, şirket içi DNS sunucunuzun IP adresi ile değiştirin. Bu giriş, çözümleme için DNS isteklerini şirket içi DNS sunucunuza yönlendirir.
 
     Bu dosyayı düzenlemek için aşağıdaki komutu kullanın:
 
@@ -177,7 +178,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    Metin, bu sanal ağ için __DNS son ekidir.__ `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Bu değeri kaydedin çünkü daha sonra kullanılacaktır.
+    @No__t_0 metin, bu sanal ağ için __DNS son ekidir__ . Bu değeri kaydedin çünkü daha sonra kullanılacaktır.
 
 5. Sanal ağ içindeki kaynakların DNS adlarını çözümlemek üzere bağlamayı yapılandırmak için, `/etc/bind/named.conf.local` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
@@ -188,7 +189,7 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
         };
 
     > [!IMPORTANT]  
-    > Öğesini daha önce aldığınız `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` DNS son eki ile değiştirmelisiniz.
+    > @No__t_0, daha önce aldığınız DNS soneki ile değiştirmelisiniz.
 
     Bu dosyayı düzenlemek için aşağıdaki komutu kullanın:
 
@@ -212,9 +213,9 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
     ```
 
     > [!IMPORTANT]  
-    > Şirket `dns.mynetwork.net` içi ağınızdaki bir kaynağın tam etki alanı adı (FQDN) ile değiştirin.
+    > @No__t_0, şirket içi ağınızdaki bir kaynağın tam etki alanı adı (FQDN) ile değiştirin.
     >
-    > Sanal `10.0.0.4` ağdaki özel DNS sunucunuzun __iç IP adresi__ ile değiştirin.
+    > @No__t_0, sanal ağdaki özel DNS sunucunuzun __Iç IP adresi__ ile değiştirin.
 
     Yanıt aşağıdaki metne benzer şekilde görünür:
 
@@ -231,13 +232,13 @@ Sanal makine oluşturulduktan sonra **Kaynağa Git** düğmesine sahip bir **da�
 
 Sanal ağı Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullanacak şekilde yapılandırmak için, [Azure Portal](https://portal.azure.com)aşağıdaki adımları kullanın:
 
-1. Sol menüden **tüm hizmetler** > **ağ** > **sanal ağlarına**gidin.
+1. Sol menüden **tüm hizmetler**  > **ağ**  > **sanal ağlar**' a gidin.
 
 2. Sanal ağınız için varsayılan görünümü açacak olan listeden Sanal ağınızı seçin.  
 
 3. Varsayılan görünümden **Ayarlar**altında, **DNS sunucuları**' nı seçin.  
 
-4. __Özel__' i seçin ve özel DNS sunucusunun **özel IP adresini** girin.   
+4. __Özel__' i seçin ve özel DNS sunucusunun **özel IP adresini** girin.
 
 5. __Kaydet__’i seçin.  <br />  
 
@@ -260,15 +261,15 @@ Aşağıdaki metin, **BIND** DNS yazılımının koşullu iletici yapılandırma
 
 **Windows Server 2016**' de DNS kullanma hakkında bilgi için bkz. [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) belgeleri...
 
-Şirket içi DNS sunucusunu yapılandırdıktan sonra, sanal ağdaki adları çözebildiğinizi doğrulamak için `nslookup` şirket içi ağdan ' ı kullanabilirsiniz. Aşağıdaki örnek 
+Şirket içi DNS sunucusunu yapılandırdıktan sonra, sanal ağdaki adları çözebildiğinizi doğrulamak için şirket içi ağdan `nslookup` kullanabilirsiniz. Aşağıdaki örnek 
 
 ```bash
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-Bu örnek, özel DNS sunucusunun adını çözümlemek için 196.168.0.4 adresindeki şirket içi DNS sunucusunu kullanır. IP adresini, şirket içi DNS sunucusu için bir ile değiştirin. `dnsproxy` Adresi özel DNS sunucusunun tam etki alanı adıyla değiştirin.
+Bu örnek, özel DNS sunucusunun adını çözümlemek için 196.168.0.4 adresindeki şirket içi DNS sunucusunu kullanır. IP adresini, şirket içi DNS sunucusu için bir ile değiştirin. @No__t_0 adresini özel DNS sunucusunun tam etki alanı adıyla değiştirin.
 
-## <a name="optional-control-network-traffic"></a>İsteğe bağlı: Ağ trafiğini denetleme
+## <a name="optional-control-network-traffic"></a>İsteğe bağlı: ağ trafiğini denetleme
 
 Ağ trafiğini denetlemek için ağ güvenlik grupları (NSG) veya Kullanıcı tanımlı yollar (UDR) kullanabilirsiniz. NSG 'ler gelen ve giden trafiği filtrelemenize ve trafiğe izin verebilir veya bu trafiği reddetmenize olanak tanır. UDRs, trafiğin sanal ağ, internet ve şirket içi ağ arasındaki kaynaklar arasında nasıl akacağını denetlemenize olanak tanır.
 
@@ -279,8 +280,8 @@ Ağ trafiğini denetlemek için ağ güvenlik grupları (NSG) veya Kullanıcı t
 
 2. 1\. adımda belirtilen IP adresleri için IP adreslerinden gelen trafiğe izin verin.
 
-   * __NSG__kullanıyorsanız: IP adresleri için __443__ numaralı bağlantı noktasında __gelen__ trafiğe izin verin.
-   * __UDR__kullanıyorsanız: IP adresleri için yolun __sonraki atlama__ türünü __Internet__ olarak ayarlayın.
+   * __NSG__kullanıyorsanız: bağlantı noktası __443__ üzerinde IP adresleri için __gelen__ trafiğe izin ver.
+   * __UDR__KULLANıYORSANıZ: IP adresleri Için yolun __sonraki atlama__ türünü __Internet__ 'e ayarlayın.
 
 NSG 'ler oluşturmak için Azure PowerShell veya Azure CLı kullanma hakkında bir örnek için bkz. [HDInsight 'ı Azure sanal ağları Ile genişletme](hdinsight-create-virtual-network.md#hdinsight-nsg) belgesi.
 
@@ -299,7 +300,7 @@ HDInsight kümesi oluşturmak için [Azure Portal belgelerini kullanarak HDInsig
 
 HDInsight üzerinde birçok belge, Internet üzerinden kümeye erişiminizin olduğunu varsayar. Örneğin, `https://CLUSTERNAME.azurehdinsight.net` konumundaki kümeye bağlanabildiğiniz kabul edilir. Bu adres, internet 'ten erişimi kısıtlamak için NSG 'ler veya UDRs kullandıysanız kullanılamayan genel ağ geçidini kullanır.
 
-Bazı belgeler, bir `headnodehost` SSH oturumundan kümeye bağlanırken de başvuru sağlar. Bu adres yalnızca bir küme içindeki düğümlerden kullanılabilir ve sanal ağ üzerinden bağlı istemcilerde kullanılamaz.
+Bazı belgeler, bir SSH oturumundan kümeye bağlanırken `headnodehost` de başvurur. Bu adres yalnızca bir küme içindeki düğümlerden kullanılabilir ve sanal ağ üzerinden bağlı istemcilerde kullanılamaz.
 
 Sanal ağ aracılığıyla HDInsight 'a doğrudan bağlanmak için aşağıdaki adımları kullanın:
 

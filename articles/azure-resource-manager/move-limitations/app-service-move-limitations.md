@@ -1,73 +1,73 @@
 ---
-title: Azure App Service kaynaklarını yeni abonelik veya kaynak grubuna taşıma
-description: App Service kaynakları yeni kaynak grubuna veya aboneliğe taşıma için Azure Resource Manager'ı kullanın.
+title: Azure App Service kaynaklarını taşıma
+description: App Service kaynaklarını yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c1a09ff4c29a2fedfea2c165a95c042985b3c83a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 04ddf644c58434531dde708ee3b6432b1fce8f91
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723577"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533556"
 ---
-# <a name="move-guidance-for-app-service-resources"></a>App Service kaynaklarını Taşıma Kılavuzu
+# <a name="move-guidance-for-app-service-resources"></a>App Service kaynakları için kılavuzu taşıma
 
-App Service kaynaklarını farklı taşıma adımları bir abonelik içinde veya yeni bir aboneliğe kaynakları olup Taşımakta olduğunuz temel.
+App Service kaynaklarını taşıma adımları, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşısanız göre farklılık gösterir.
 
-## <a name="move-in-same-subscription"></a>Aynı abonelikte Taşı
+## <a name="move-in-same-subscription"></a>Aynı abonelikte taşı
 
-Bir Web uygulaması taşınırken _aynı abonelik içindeki_, üçüncü taraf SSL sertifikaları taşınamıyor. Ancak, üçüncü taraf sertifikasını taşımadan bir Web uygulaması yeni kaynak grubuna taşıyabilirsiniz ve uygulamanızın SSL işlevselliği yine de çalışır.
+Bir Web uygulamasını _aynı abonelik içinde_taşırken, üçüncü taraf SSL sertifikalarını taşıyamazsınız. Ancak, üçüncü taraf sertifikasını taşımadan bir Web uygulamasını yeni kaynak grubuna taşıyabilirsiniz ve uygulamanızın SSL işlevselliği hala işe yarar.
 
-SSL sertifikası ile Web uygulaması taşımak istiyorsanız, şu adımları izleyin:
+SSL sertifikasını Web uygulamasıyla taşımak istiyorsanız aşağıdaki adımları izleyin:
 
-1. Web uygulamasından üçüncü taraf sertifika silin, ancak sertifikanızın birer kopya bulundurun
-2. Web uygulaması taşıyın.
-3. Üçüncü taraf sertifika taşınan Web uygulamasına yükleyin.
+1. Web uygulamasından üçüncü taraf sertifikayı silin, ancak sertifikanızın bir kopyasını saklayın
+2. Web uygulamasını taşıyın.
+3. Taşınan Web uygulamasına üçüncü taraf sertifikayı yükleyin.
 
-## <a name="move-across-subscriptions"></a>Abonelikler arasında taşıma
+## <a name="move-across-subscriptions"></a>Abonelikler arasında geçiş
 
-Bir Web uygulaması taşınırken _abonelikler arasında_, aşağıdaki sınırlamalar geçerlidir:
+Bir Web uygulamasını _abonelikler arasında_taşırken, aşağıdaki sınırlamalar geçerlidir:
 
-- Hedef kaynak grubu mevcut App Service kaynaklar olmaması gerekir. App Service kaynakları şunlardır:
+- Hedef kaynak grubu, mevcut App Service kaynak içermemelidir. App Service kaynaklar şunlardır:
     - Web Apps
     - App Service planları
-    - Karşıya yüklenen veya içeri aktarılan SSL sertifikaları
-    - App Service ortamları
-- Kaynak grubundaki tüm App Service kaynakların birlikte taşınması gerekir.
-- App Service kaynaklarını, bunlar ilk olarak oluşturulduğu kaynak grubunun yalnızca taşınabilir. Bir App Service kaynak artık özgün kaynak grubunda değilse, geri taşımak için orijinal kaynak grubu. Daha sonra kaynak, abonelikler arasında taşıyın.
+    - SSL sertifikaları karşıya yüklendi veya alındı
+    - App Service Ortamları
+- Kaynak grubundaki tüm App Service kaynakları birlikte taşınmalıdır.
+- App Service kaynaklar yalnızca, başlangıçta oluşturulduğu kaynak grubundan taşınabilir. Bir App Service kaynağı artık özgün kaynak grubunda yoksa, özgün kaynak grubuna geri taşıyın. Ardından, kaynağı abonelikler arasında taşıyın.
 
-Özgün kaynak grubunu hatırlamıyorsanız tanılama bulabilirsiniz. Web uygulamanızı seçin **tanılayın ve sorunlarını çözmek**. Ardından, **yapılandırma ve Yönetim**.
+Özgün kaynak grubunu anımsamıyorsanız tanılama aracılığıyla bulabilirsiniz. Web uygulamanız için **Tanılama ve sorunları çözme**' ı seçin. Ardından **yapılandırma ve yönetim**' i seçin.
 
-![Tanılama seçin](./media/app-service-move-limitations/select-diagnostics.png)
+![Tanılamayı seçin](./media/app-service-move-limitations/select-diagnostics.png)
 
-Seçin **geçiş seçenekleri**.
+**Geçiş seçeneklerini**belirleyin.
 
-![Geçiş seçenekleri seçin](./media/app-service-move-limitations/select-migration.png)
+![Geçiş seçeneklerini belirleyin](./media/app-service-move-limitations/select-migration.png)
 
-Web uygulaması taşımak için önerilen adımlar seçeneğini belirleyin.
+Web uygulamasını taşımak için önerilen adımlar seçeneğini belirleyin.
 
 ![Önerilen adımları seçin](./media/app-service-move-limitations/recommended-steps.png)
 
-Kaynakları taşımadan önce gerçekleştirilecek önerilen eylemler görürsünüz. Web uygulaması için orijinal kaynak grubu bilgileri içerir.
+Kaynakları taşımadan önce gerçekleştirilecek önerilen eylemleri görürsünüz. Bilgiler, Web uygulaması için özgün kaynak grubunu içerir.
 
 ![Öneriler](./media/app-service-move-limitations/recommendations.png)
 
-## <a name="move-app-service-certificate"></a>App Service sertifikası Taşı
+## <a name="move-app-service-certificate"></a>App Service Sertifikası taşı
 
-App Service sertifikanız bir yeni kaynak grubuna veya aboneliğe taşıyabilirsiniz. App Service sertifikanız bir web uygulaması ile ilişkili ise, yeni bir abonelik için kaynakları taşımadan önce bazı adımları atmanız gerekir. Özel sertifika ve SSL bağlaması kaynakları taşımadan önce web uygulamasını silin. App Service sertifikası için silinmesi gereken değil yalnızca web App'te özel sertifika.
+App Service Sertifikası yeni bir kaynak grubuna veya aboneliğe taşıyabilirsiniz. App Service Sertifikası bir Web uygulamasına bağlıysa, kaynakları yeni bir aboneliğe taşımadan önce bazı adımları uygulamanız gerekir. Kaynakları taşımadan önce Web uygulamasındaki SSL bağlamasını ve özel sertifikayı silin. App Service Sertifikası silinmesi gerekmez, yalnızca Web uygulamasındaki özel sertifika.
 
 ## <a name="move-support"></a>Taşıma desteği
 
-Hangi App Service kaynaklarını taşınabileceğini saptamak için bkz: taşıma için destek durumu:
+Hangi App Service kaynaklarının taşınabileceğini öğrenmek için bkz. destek durumunu taşıma:
 
-- [Microsoft.AppService](../move-support-resources.md#microsoftappservice)
-- [Microsoft.CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
-- [Microsoft.DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
-- [Microsoft.Web](../move-support-resources.md#microsoftweb)
+- [Microsoft. AppService](../move-support-resources.md#microsoftappservice)
+- [Microsoft. CertificateRegistration](../move-support-resources.md#microsoftcertificateregistration)
+- [Microsoft. DomainRegistration](../move-support-resources.md#microsoftdomainregistration)
+- [Microsoft. Web](../move-support-resources.md#microsoftweb)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynakları taşıma komutlar için bkz [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../resource-group-move-resources.md).
+Kaynakları taşıma komutları için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../resource-group-move-resources.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331138"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529491"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
 
@@ -96,14 +96,14 @@ Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
 |Blob depolaması|✔| ✔|
-|Depolama hesabı|✔| Yok|
+|Depolama hesabı|✔| X|
 |App Service|✔| ✔|
 |İşlev|✔| X|
 |Bulut Hizmeti|✔| X|
-|Sanal ağ|✔| Yok|
-|Alt ağ|✔| Yok|
-|NIC|✔| Yok|
-|NSG|✔| Yok|
+|Sanal ağ|✔| X|
+|Alt ağ|✔| X|
+|NIC|✔| X|
+|NSG|✔| X|
 |Abonelik|✔ * *| ✔|
 |Batch hesabı|✔| X|
 |Service Fabric hesabı|✔| X|
@@ -114,14 +114,14 @@ Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
 |Stream Analytics|✔| X|
 |Olay hub’ı ad alanı|✔| X|
 |Mantıksal uygulamalar|✔| X|
-|Redis|✔| Yok|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Key vault|✔| X|
 
 \* Bu özellikler Şu anda genel önizlemede destekleniyor.
 
-\* @ no__t-1 Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
+\* \* Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

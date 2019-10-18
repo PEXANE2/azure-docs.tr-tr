@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 513cf477e8c2899da17ee8e9bdfdb9ad2bedd159
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c1b507398a2edd839b610a7c52892e23a88481a0
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828087"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516617"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Azure IoT Edge çalışma zamanını Windows 'a yükler
 
@@ -168,6 +168,12 @@ Son 5 dakikadan hizmet günlüklerini inceleyin. IoT Edge çalışma zamanını 
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
+En yaygın yapılandırma ve ağ hataları için otomatik bir denetim çalıştırın.
+
+```powershell
+iotedge check
+```
+
 Çalışan modülleri listeleyin. Yeni bir yüklemeden sonra, çalıştırmayı görmeniz gereken tek modül **Edgeagent**' dir. [IoT Edge modüllerini](how-to-deploy-modules-portal.md) ilk kez dağıttıktan sonra, diğer sistem modülü, **edgehub**, cihazda da başlatılır. 
 
 ```powershell
@@ -221,7 +227,7 @@ IoT Edge güncelleştirdiğinizde, güncelleştirmeyi değiştirmek için ek par
 
 Bu bilgiler önceki yüklemeden yapılandırma dosyasında zaten ayarlandığından, betik parametreleriyle bir IoT Edge Agent kapsayıcı görüntüsü bildiremezsiniz. Aracı kapsayıcısı görüntüsünü değiştirmek istiyorsanız, config. YAML dosyasında bunu yapın. 
 
-Bu güncelleştirme seçenekleri hakkında daha fazla bilgi için, `Get-Help Update-IoTEdge -full` komutunu kullanın veya [tüm yükleme parametrelerine](#all-installation-parameters)bakın.
+Bu güncelleştirme seçenekleri hakkında daha fazla bilgi için, komut `Get-Help Update-IoTEdge -full` kullanın veya [tüm yükleme parametrelerine](#all-installation-parameters)başvurun.
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge kaldır
 

@@ -7,118 +7,121 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: c67f21a6ed8a7697977bb7737f0e46348efb2530
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71266659"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529575"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase performans sorunlarını giderme
 
-Bu belgede, Azure HDInsight 'ta en iyi performansı elde etmek için çeşitli Apache HBase performans ayarlama yönergeleri ve ipuçları açıklanmaktadır. Bu ipuçlarının birçoğu, belirli iş yüküne ve okuma/yazma/tarama düzenine bağlıdır. Üretim ortamına uygulamadan önce yapılandırma değişikliklerini tamamen test edin.
+Bu makalede, Azure HDInsight 'ta en iyi performansı elde etmek için çeşitli Apache HBase performans ayarlama yönergeleri ve ipuçları açıklanmaktadır. Bu ipuçlarının birçoğu, belirli iş yüküne ve okuma/yazma/tarama düzenine bağlıdır. Bir üretim ortamında yapılandırma değişikliklerini uygulamadan önce bunları tamamen test edin.
 
-## <a name="hdinsight-hbase-performance-insights"></a>HDInsight HBase Performans öngörüleri
+## <a name="hbase-performance-insights"></a>HBase Performans öngörüleri
 
-Çoğu HBase iş yükünün en önemli performans sorunu, önceden yazma Günlüğleridir (WAL). Yazma performansını önemli ölçüde etkiler. HDInsight HBase 'in ayrılmış bir depolama-işlem modeli vardır. diğer bir deyişle, veriler Azure depolama üzerinde uzaktan depolanır, ancak bölge sunucuları VM 'lerde barındırılır. Son olarak, yeni yazma günlüğü de Azure Storage 'a yazıldığından, bu performans, HDInsight durumunda bu sorunu giderin. [Hızlandırılmış](./apache-hbase-accelerated-writes.md) yazma özelliği, Azure Premium SSD tarafından yönetilen disklere yazma öncesinde yazma günlüğü yazarak bu sorunu çözmek için tasarlanmıştır. Bu avantajlar, performans gecenin yazar ve yazma yoğunluklu iş yüklerinden bazılarının karşılaştığı birçok soruna yardımcı olur.
+Çoğu HBase iş yükünün en önemli performans sorunu, önceden yazma Günlüğleridir (WAL). Yazma performansını önemli ölçüde etkiler. HDInsight HBase 'e ayrılmış bir depolama işlem modeli vardır. Sanal makineler bölge sunucularını barındırsa bile, veriler Azure Storage üzerinde uzaktan depolanır. Son olarak, WAL, Azure depolama 'ya de yazıldı. HDInsight 'ta bu davranış sorunu bu şekilde artıroluşturuyor. [Hızlandırılmış yazma](./apache-hbase-accelerated-writes.md) özelliği, bu sorunu çözmek için tasarlanmıştır. WAL 'yi Azure Premium SSD tarafından yönetilen disklere yazar. Bu gecenin, yazma performansını ve yazma açısından yoğun iş yüklerinden bazılarının karşılaştığı birçok soruna yardımcı olur.
 
-Okuma işlemlerinde önemli bir geliştirme elde etmek için uzak depolamanız olarak [Premium Blok Blob Depolama Hesabı](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) kullanın. Bu seçenek ancak Önceden Yazılan Günlük özelliği etkinleştirildiğinde kullanılabilir.
+Okuma işlemlerinde önemli bir geliştirme sağlamak için, uzak depolama birimi olarak [Premium Blok Blob Depolama hesabını](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) kullanın. Bu seçenek yalnızca WAL özelliği etkinse mümkündür.
 
 ## <a name="compaction"></a>Sıkıştırmayı
 
-Sıkıştırma, topluluk üzerinde anlaşıldığı başka bir olası performans sorunu.  Varsayılan olarak, birincil düzenleme HDInsight HBase kümelerinde devre dışıdır. Bunun nedeni, Kaynak yoğunluklu bir işlem olduğu için, müşterilerin iş yükü özelliklerine göre (yani, yoğun olmayan saatlerde) zamanlamaya izin vermek istiyoruz. Ayrıca, depolamamız (Azure depolama tarafından desteklenir), çoğu şirket içi örnek üzerinde yaygın olarak bulunan yerel bir lisans (Azure Storage tarafından desteklenir) olarak da verilmiştir. veri konumu, birincil düzenleme ana hedeflerinden biridir.
+Sıkıştırma, topluluk üzerinde temel olarak kabul edilen bir diğer olası darboğaztır. Varsayılan olarak, HDInsight HBase kümelerinde birincil sıkıştırma devre dışıdır. Yoğun kaynak gerektiren bir işlem olsa da, müşteriler iş yüklerine göre zamanlamaya yönelik tam esnekliğe sahip olduğu için sıkıştırma devre dışı bırakıldı. Örneğin, bu, yoğun olmayan saatlerde zamanlama gösterebilir. Ayrıca, depolama alanı uzak (Azure Storage tarafından desteklenen) bir yerel Hadoop Dağıtılmış Dosya Sistemi (bir Hadoop) yerine, veri konumu sorun değildir.
 
-Varsayım, müşterinin önemli sıkıştırmayı kolay bir şekilde zamanlamak için gereken bir değer olacaktır. Bu bakım yapılmazsa, düzenleme uzun çalıştırmada okuma performansını önemli ölçüde etkiler.
+Müşteriler, kendi kolaylığını önemli bir şekilde zamanlayamaz. Bu bakım yapamıyorsanız, düzenleme uzun çalıştırmada okuma performansını olumsuz etkileyecek.
 
-Özellikle tarama işlemleri için 100 ms 'den fazla gecikme süresi, sorun nedeniyle bir neden olmalıdır. Birincil sıkıştırma 'nın doğru şekilde zamanlandığından emin olun.
+Tarama işlemleri için 100 milisaniyeden çok daha yüksek olan gecikme sürelerinin bir sorun olmasının nedeni olması gerekir. Birincil sıkıştırma 'nın doğru şekilde zamanlandığından emin olun.
 
-## <a name="know-your-apache-phoenix-workload"></a>Apache Phoenix iş yükünüzü öğrenin
+## <a name="apache-phoenix-workload"></a>Apache Phoenix iş yükü
 
 Aşağıdaki sorulara yanıt vermek Apache Phoenix iş yükünüzü daha iyi anlamanıza yardımcı olur:
 
 * "Okumalarınız", taramalara çevirsin mi?
     * Öyleyse, bu taramaların özellikleri nelerdir?
     * Uygun dizin oluşturma da dahil olmak üzere bu taramalar için Phoenix tablo şemanızı iyileştirdiniz mi?
-* "Okuma" oluşturma yaptığınız sorgu planlarını anlamak için `EXPLAIN` ifadesini kullandınız.
+* "Okumalarınızın" üretmesindeki sorgu planlarını anlamak için `EXPLAIN` ifadesini kullandınız mı?
 * Yazmalar "büyük/veya seçer" mı?
-    * Bu durumda, taramalar de yapılır. Noktanın HBase 'de aldığı 10 MS 'nin aksine, taramalar için beklenen gecikme süresi ortalama 100 ' dur.  
+    * Bu durumda, taramalar de yapılır. Tarama için beklenen gecikme süresi yaklaşık 100 milisaniyede ortalanır ve nokta HBase 'e göre 10 milisaniyeye kıyasla.  
 
-## <a name="test-methodology-and-metrics-monitoring"></a>Test metodolojisi ve ölçümleri Izleme
+## <a name="test-methodology-and-metrics-monitoring"></a>Test metodolojisi ve ölçümleri izleme
 
-Perf 'yi test etmek ve ayarlamak için YCSB, JMeter veya Phhataişlev gibi değerlendirmeler kullanıyorsanız aşağıdakilerden emin olun:
+Yahoo! gibi değerlendirmeler kullanıyorsanız Kıyaslama, JMeter veya Fehataişlev hizmeti sunan bulut, performansı test etmek ve ayarlamak için şunları yaptığınızdan emin olun:
 
-1. İstemci makineler bir performans sorunu olmaz (istemci makinelerde CPU kullanımını denetleyin).
+- İstemci makineler bir performans sorunu olmaz. Bunu yapmak için, istemci makinelerdeki CPU kullanımını denetleyin.
 
-1. İstemci tarafı yapılandırmaları (iş parçacığı sayısı gibi), istemci bant genişliğine göre doygunluğu sağlamak için uygun şekilde ayarlanır.
+- İş parçacığı sayısı gibi istemci tarafı yapılandırmaların, istemci bant genişliğine göre doygunluğu için uygun şekilde ayarlanmış olması.
 
-1. Test sonuçları doğru ve sistematik olarak kaydedilir.
+- Test sonuçları doğru ve sistematik olarak kaydedilir.
 
-Sorgularınız aniden çok daha kötüleştiğinde, uygulama kodunuzda olası hataları kontrol edin – büyük miktarlarda geçersiz veri oluşturuyor ve bu nedenle, okuma gecikmeleri doğal olarak artırıyor mu?
+Sorgularınızı aniden daha kötüleştikten sonra uygulama kodunuzda olası hataları kontrol edin. Çok büyük miktarlarda geçersiz veri oluşturuyor mu? Varsa, okuma gecikmeleri artırabilir.
 
 ## <a name="migration-issues"></a>Geçiş sorunları
 
-Azure HDInsight 'a geçiş yapıyorsanız geçişinizin sistematik ve doğru şekilde, tercihen Otomasyon aracılığıyla yapıldığından emin olun. El ile geçişten kaçının. Aşağıdakilerden emin olun:
+Azure HDInsight 'a geçiş yapıyorsanız geçişinizin sistematik ve doğru şekilde, tercihen Otomasyon aracılığıyla yapıldığından emin olun. El ile geçişten kaçının. Şunları yaptığınızdan emin olun:
 
-1. Sıkıştırma, Bloom filtreleri vb. gibi tablo özniteliklerinin doğru geçirilmesi gerekir.
+- Tablo öznitelikleri doğru şekilde geçirilir. Öznitelikler, Compression, Bloom filtreleri vb. içerebilir.
 
-1. Phoenix tabloları için, salbulunan ayarlar yeni küme boyutuna uygun şekilde eşlenmelidir. Örneğin, küme içindeki çalışan düğüm sayısının katı olması önerilir, bu, belirli bir çoktan gözlemlendi, gözlemlenen etkin biriktirme miktarının bir faktörü olur.  
+- Phoenix tablolarındaki salıcı ayarları, yeni küme boyutuna uygun şekilde eşlenir. Örneğin, anahtar demetlerinin sayısı kümedeki çalışan düğümü sayısının katı olmalıdır. Ve etkin biriktirme miktarı faktörü olan bir çoklu değer kullanmanız gerekir.
 
-## <a name="server-side-config-tunings"></a>Sunucu tarafı yapılandırma tunları
+## <a name="server-side-configuration-tunings"></a>Sunucu tarafı yapılandırma tunları
 
-HDInsight HBase 'de, HFiles uzak depolama üzerinde depolanır. bu nedenle, bir önbellek kaçırılması durumunda okuma maliyeti, yerel olarak, dahil edilen ağ gecikmesi sayesinde, yerel olarak desteklenen verilerin bulunduğu şirket içi sistemlerden daha yüksek olacaktır. Çoğu senaryoda, HBase önbelleklerinin (blok önbelleği ve demet önbelleği) akıllı kullanımı bu sorunu aşmak için tasarlanmıştır. Bununla birlikte, bunun müşteri için bir sorun olabileceği zaman zaman bir durumda kalır. Premium blok blob hesabı kullanmak bu işlemi biraz yardımcı oldu. Bununla birlikte, `fs.azure.read.request.size` gibi belirli özelliklere bağlı olarak, okuma moduna (sıralı ve rastgele) göre verileri getirmek için, okuma modunda daha yüksek gecikme sürelerinin örneklerini görmeye devam edebiliriz. Okuma isteği blok boyutunu (`fs.azure.read.request.size`) 512 KB 'ye ayarlamanın yanı sıra HBase tablolarının blok boyutunu aynı olacak şekilde ayarlamaya yönelik empırical denemeleri aracılığıyla, uygulamada en iyi sonucu elde etmenizi sağlar.
+HDInsight HBase 'de, HFiles uzak depolama üzerinde depolanır. Önbellek kaçırılması durumunda, şirket içi sistemlerdeki veriler yerel olarak korunduğundan, okuma maliyeti şirket içi sistemlerden daha yüksektir. Çoğu senaryoda, HBase önbelleklerinin (blok önbelleği ve demet önbelleği) akıllı kullanımı bu sorunu aşmak için tasarlanmıştır. Sorunun atlalanamadığı durumlarda, Premium Blok Blobu hesabı kullanmak bu soruna yardımcı olabilir. Windows Azure Depolama Blobu sürücüsü, okuma modunu (sıralı olarak rastgele) temel alarak blok halinde veri getirmek için `fs.azure.read.request.size` gibi belirli özellikleri kullanır, bu nedenle okumalar üzerinde daha yüksek gecikme sürelerinin örnekleri olmaya devam edebilir. Empırical denemeleri aracılığıyla okuma isteği blok boyutunu (`fs.azure.read.request.size`) 512 KB olarak ayarlamanın yanı sıra HBase tablolarının blok boyutunu aynı boyut olarak eşleştirirken en iyi sonucu elde edin.
 
-HDInsight HBase, çoğu büyük boyutlu düğümler kümesi için, `regionservers` çalıştıran VM 'ye bağlı yerel SSD 'de dosya olarak `bucketcache` sağlar. Her zaman, bunun yerine yığın önbelleğinin kullanılması bazı iyileşme verebilir. Bu, kullanılabilir belleği kullanma ve dosya tabanlı önbellekten daha küçük olabilecek en iyi boyutta olma sınırlamasıdır. bu nedenle, bu her zaman en iyi seçim olmayabilir.
+En büyük boyut düğümleri kümelerinde, HDInsight HBase, `regionservers` çalıştıran sanal makineye bağlı yerel bir Premium SSD dosya olarak `bucketcache` sağlar. Bunun yerine yığın dışı önbelleğin kullanılması bazı geliştirme sağlayabilir. Bu geçici çözüm, kullanılabilir bellek kullanımı ve muhtemelen dosya tabanlı önbellekten daha küçük olabilecek bir sınırlamaya sahiptir, bu nedenle her zaman en iyi seçim olmayabilir.
 
-Aşağıda belirtildiği gibi, biraz daha fazla şekilde adlandırılmış derecenin daha fazla olduğunu belirlediğimiz diğer özel parametrelerden bazıları aşağıda verilmiştir:
+Aşağıda, belirlediğimiz diğer özel parametrelerden bazıları ve değişen derecenin sağlanmasına yardımcı olmak için verilmiştir:
 
-1. Varsayılan 128 MB ile 256 MB arasında `memstore` boyutunu artırın. Bu ayar genellikle ağır yazma senaryosu için önerilir.
+- Varsayılan 128 MB ile 256 MB arasında `memstore` boyutunu artırın. Genellikle, bu ayar ağır yazma senaryolarında önerilir.
 
-1. Varsayılan değer olan 1 ' den 4 ' e kadar sıkıştırma için ayrılan iş parçacığı sayısını artırma. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
+- Varsayılan değer olan **1** ' den **4**' e kadar sıkıştırma için ayrılan iş parçacıklarının sayısını artırın. Sık karşılaşılan küçük işlemleri gözlemlememiz durumunda bu ayar geçerlidir.
 
-1. Depolama sınırı nedeniyle `memstore` temizlemeyi engellemeyi önleyin. `Hbase.hstore.blockingStoreFiles`, bu arabelleği sağlamak için 100 'e artırılabilir.
+- Depolama sınırı nedeniyle `memstore` temizlemeyi engellemeyi önleyin. Bu arabelleği sağlamak için `Hbase.hstore.blockingStoreFiles` ayarını **100**olarak arttırın.
 
-1. Boşaltmaları denetlemek için varsayılanlar aşağıda gösterildiği gibi çözülebilir:
+- Boşaltmaları denetlemek için aşağıdaki ayarları kullanın:
 
-    1. `Hbase.regionserver.maxlogs` 32 ' den 140 ' e (WAL sınırları nedeniyle temizlemeleri önleme) uygulanabilir.
+    - `Hbase.regionserver.maxlogs`: **140** (Wal sınırları nedeniyle boşaltmaları önler)
 
-    1. `Hbase.regionserver.global.memstore.lowerLimit` = 0,55.
+    - `Hbase.regionserver.global.memstore.lowerLimit`: **0,55**
 
-    1. `Hbase.regionserver.global.memstore.upperLimit` = 0,60.
+    - `Hbase.regionserver.global.memstore.upperLimit`: **0,60**
 
-1. İş parçacığı havuzu ayarlama için Phoenix 'e özgü config 'ler:
+- İş parçacığı havuzu ayarlama için Phoenix 'e özgü yapılandırma:
 
-    1. `Phoenix.query.queuesize`, 10000 'e artırılabilir.
+    - `Phoenix.query.queuesize`: **10000**
 
-    1. `Phoenix.query.threadpoolsize`, 512 'e artırılabilir.
+    - `Phoenix.query.threadpoolsize`: **512**
 
-1. Diğer Phoenix 'e özgü config 'ler:
+- Diğer Phoenix 'e özgü konfigürasyonlar:
 
-    1. `Phoenix.rpc.index.handler.count`, büyük veya çok sayıda dizin aramamız varsa 50 olarak ayarlanabilir.
+    - `Phoenix.rpc.index.handler.count`: **50** (büyük veya çok sayıda dizin araması varsa)
 
-    1. `Phoenix.stats.updateFrequency` – varsayılan 15 dakikadan fazla 1 saat olabilir.
+    - `Phoenix.stats.updateFrequency`: **1 saat**
 
-    1. `Phoenix.coprocessor.maxmetadatacachetimetolivems` – 30 dakikadan fazla 1 saat içinde olabilir.
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 saat**
 
-    1. `Phoenix.coprocessor.maxmetadatacachesize` – 20 MB 'tan 50 MB 'ye yükseltilebilir.
+    - `Phoenix.coprocessor.maxmetadatacachesize`: **50 MB**
 
-1. RPC zaman aşımları – HBase RPC zaman aşımı, HBase istemci tarayıcısı zaman aşımı ve Phoenix sorgu zaman aşımı 3 dakikaya artırılabilir. @No__t-0 parametresinin sunucu End ve Client End ile eşleşen bir değere ayarlandığını unutmayın. Aksi takdirde bu ayar, istemci ucunda `OutOfOrderScannerException` ile ilgili hatalara yol açar. Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer 100 olarak ayarlanmıştır.
+- RPC zaman aşımları: **3 dakika**
+
+   - RPC zaman aşımları HBase RPC zaman aşımı, HBase istemci tarayıcısı zaman aşımı ve Phoenix sorgu zaman aşımı içerir. 
+   - @No__t_0 parametresinin hem sunucu ucunda hem de istemci ucunda aynı değere ayarlandığından emin olun. Aynı değillerse, bu ayar `OutOfOrderScannerException` ilişkili istemci-uç hatalarına yol açar. Bu ayar büyük taramalar için düşük bir değere ayarlanmalıdır. Bu değer **100**olarak ayarlanmıştır.
 
 ## <a name="other-considerations"></a>Diğer konular
 
-Ayarlama için göz önünde bulundurmanız için bazı diğer parametreler:
+Ayarlamayı göz önünde bulundurmanız gereken ek parametreler aşağıda verilmiştir:
 
-1. `Hbase.rs.cacheblocksonwrite` – Bu ayar HDI 'de varsayılan olarak true olarak ayarlanır.
+- `Hbase.rs.cacheblocksonwrite` – varsayılan olarak HDI 'de, bu ayar **true**olarak ayarlanır.
 
-1. Daha sonra küçük sıkıştırmayı erteleme ayarlarına izin veren ayarlar.
+- Daha sonra küçük sıkıştırmayı erteleme ayarlarına izin veren ayarlar.
 
-1. Okuma ve yazma istekleri için ayrılan sıraların yüzdelerini ayarlama gibi deneysel ayarlar.
+- Okuma ve yazma istekleri için ayrılan sıraların yüzdelerini ayarlama gibi deneysel ayarlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuz çözümlenmemiş kalırsa, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
 - Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@No__t-1](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@No__t_1](https://twitter.com/azuresupport)bağlayın. Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Microsoft Azure aboneliğiniz abonelik yönetimine ve faturalandırma desteğine erişim içerir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

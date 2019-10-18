@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 23479692e815b5dda010ec2035c206df15715347
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167421"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529361"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric sorular
 
@@ -44,7 +44,7 @@ Evet.
 
 Bu senaryoyla ilgileniyorsanız, ek rehberlik elde etmek için [Service Fabric GitHub sorunları listesi](https://github.com/azure/service-fabric-issues) veya destek temsilcilerinizle iletişim kurmanız önerilir. Service Fabric takım, bu senaryoya yönelik ek netlik, kılavuz ve öneriler sağlamak için çalışmaktadır. 
 
-Göz önünde bulundurulması gereken bazı noktalar: 
+Dikkate alınması gereken bazı noktalar şunlardır: 
 
 1. Azure 'daki Service Fabric küme kaynağı, kümenin üzerinde oluşturulduğu sanal makine ölçek kümeleri olduğundan, bugün bölgesel olarak bölgedir. Bu durum, bölgesel bir hata durumunda Azure Resource Manager veya Azure portal aracılığıyla kümeyi yönetme özelliğini kaybedebileceğinizi gösterir. Bu durum, küme çalışır durumda kalmaya devam edebilir ve doğrudan etkileşime girebileceksiniz. Ayrıca, Azure bugün bölgeler arasında kullanılabilen tek bir sanal ağa sahip olmanın yanı sıra bu özelliği de sunar. Bu, Azure 'daki çok bölgeli bir kümenin, VM Ölçek kümelerinde veya [Azure VPN ağ geçitlerinde](../vpn-gateway/vpn-gateway-about-vpngateways.md) [her VM için genel IP adresleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) gerektirdiği anlamına gelir. Bu ağ seçimleri, maliyet, performans ve bazı derece uygulama tasarımında farklı etkileri vardır. bu nedenle, bu tür bir ortam olmadan önce dikkatli bir analiz ve planlama gereklidir.
 2. Bu makinelerin bakımı, yönetimi ve izlenmesi, özellikle farklı bulut sağlayıcıları veya şirket içi kaynaklar ile Azure arasında gibi ortam _türlerine_ yayıldığınızda karmaşık hale gelebilir. Yükseltmeler, izleme, yönetim ve tanılamayı, bu tür bir ortamda üretim iş yüklerini çalıştırmadan önce hem küme hem de uygulamalar için anlaşılabilmesini sağlamak için dikkatli olunması gerekir. Bu sorunları Azure 'da veya kendi veri merkezlerinizde çözmenizde deneyimleriniz zaten varsa, Service Fabric kümenizi oluştururken veya çalıştırırken aynı çözümlerin uygulanması olasıdır. 
@@ -74,7 +74,7 @@ Aşağıdaki üç nedenden dolayı bir üretim kümesinin en az 5 düğüme sahi
 2. Her zaman düğüm başına bir hizmetin çoğaltmasını yerleştirdik, bu nedenle küme boyutu bir hizmetin (gerçekte bir bölümün) sahip olduğu kopyaların sayısı için üst sınırdır.
 3. Bir küme yükseltmesi en az bir düğüm getirecek olduğundan, en az bir düğüm için bir arabelleğe sahip olmak istiyoruz, bu nedenle bir üretim kümesinin en düşük düzeyde *ek* olarak en az iki düğüme sahip olmasını istiyoruz. En az, aşağıda açıklandığı gibi bir sistem hizmetinin çekirdek boyutudur.  
 
-Kümenin iki düğümden oluşan eşzamanlı hata durumunda kullanılabilmesini istiyoruz. Service Fabric kümesinin kullanılabilir olması için sistem hizmetlerinin kullanılabilir olması gerekir. Adlandırma hizmeti ve yük devretme Yöneticisi hizmeti gibi durum bilgisi olan sistem hizmetleri, kümeye hangi hizmetlerin dağıtıldığını ve şu anda barındırıldığını izleyen, güçlü tutarlılığa bağlıdır. Bu güçlü tutarlılık, buna karşılık, belirtilen bir hizmet için bir çekirdeğin bir katı büyük çoğunluğunu (N/2 + 1) temsil ettiği bu hizmetlerin durumuna bir *çekirdek* alma özelliğine bağlıdır. Bu nedenle, iki düğümün eşzamanlı kaybına karşı dayanıklı olması (Bu nedenle, bir sistem hizmetinin iki çoğaltmasının eşzamanlı kaybolması) için, en düşük boyutu beş olarak zorlayan ClusterSize-QuorumSize > = 2 olması gerekir. Bunu görmek için, kümenin N düğümü olduğunu ve her düğümde bir sistem hizmetinin N çoğaltmaları olduğunu düşünün. Bir sistem hizmeti için çekirdek boyutu (N/2 + 1). Yukarıdaki eşitsizlik, N-(N/2 + 1) > = 2 gibi görünüyor. Göz önünde bulundurulması gereken iki durum vardır: N çift olduğunda ve N tekse. N çift ise, N = 2 @ no__t-0m, burada m > = 1 olduğunda, eşitsizlik 2 @ no__t-1m-(2 @ no__t-2m/2 + 1) > = 2 veya m > = 3 gibi görünüyor. N için en az 6 ve bu, e = 3 olduğunda elde edilir. Öte yandan, N tekse, N = 2 @ no__t-0m + 1; burada m > = 1 ise, eşitsizlik 2 @ no__t-1m + 1-((2 @ no__t-2m + 1)/2 + 1) > = 2 veya 2 @ no__t-3M + 1-(m + 1) > = 2 veya m > = 2 gibi görünüyor. N için en düşük değer 5 ' tir ve bu, a = 2 olduğunda elde edilir. Bu nedenle, eşitsizlik ClusterSize ' > = 2 ' yi karşılayan tüm N değerleri arasında en az 5 ' tir.
+Kümenin iki düğümden oluşan eşzamanlı hata durumunda kullanılabilmesini istiyoruz. Service Fabric kümesinin kullanılabilir olması için sistem hizmetlerinin kullanılabilir olması gerekir. Adlandırma hizmeti ve yük devretme Yöneticisi hizmeti gibi durum bilgisi olan sistem hizmetleri, kümeye hangi hizmetlerin dağıtıldığını ve şu anda barındırıldığını izleyen, güçlü tutarlılığa bağlıdır. Bu güçlü tutarlılık, buna karşılık, belirtilen bir hizmet için bir çekirdeğin bir katı büyük çoğunluğunu (N/2 + 1) temsil ettiği bu hizmetlerin durumuna bir *çekirdek* alma özelliğine bağlıdır. Bu nedenle, iki düğümün eşzamanlı kaybına karşı dayanıklı olması (Bu nedenle, bir sistem hizmetinin iki çoğaltmasının eşzamanlı kaybolması) için, en düşük boyutu beş olarak zorlayan ClusterSize-QuorumSize > = 2 olması gerekir. Bunu görmek için, kümenin N düğümü olduğunu ve her düğümde bir sistem hizmetinin N çoğaltmaları olduğunu düşünün. Bir sistem hizmeti için çekirdek boyutu (N/2 + 1). Yukarıdaki eşitsizlik, N-(N/2 + 1) > = 2 gibi görünüyor. Göz önünde bulundurulması gereken iki durum vardır: N çift olduğunda ve N tekse. N çiftse, N = 2 \*m burada m > = 1 olduğunda, eşitsizlik 2 \*m (2 \*m/2 + 1) > = 2 veya m > = 3 gibi görünür. N için en az 6 ve bu, e = 3 olduğunda elde edilir. Öte yandan, N tek ise, n = 2 \*m + 1 (m > = 1) eşitsizse, eşitsizlik 2 \*m + 1-((2 \*m + 1)/2 + 1) > = 2 veya 2 \*m + 1-(m + 1) > = 2 veya m > = 2 olduğunu söylüyor. N için en düşük değer 5 ' tir ve bu, a = 2 olduğunda elde edilir. Bu nedenle, eşitsizlik ClusterSize ' > = 2 ' yi karşılayan tüm N değerleri arasında en az 5 ' tir.
 
 Yukarıdaki bağımsız değişkende, her düğümün bir sistem hizmeti kopyası olduğunu varsaydık, bu nedenle çekirdek boyutu kümedeki düğümlerin sayısına göre hesaplanır. Ancak, *Targetreplicasetsize* öğesini değiştirerek çekirdek boyutunu (N/2 + 1), bu durum 5 düğümden daha küçük bir küme olabilecek ve yine de çekirdek boyutunun üzerinde 2 ek düğüm bulunan bir duruma sahip olduğumuz izlenimi verebilir. Örneğin, 4 düğümlü bir kümede TargetReplicaSetSize öğesini 3 olarak ayarlarsanız, TargetReplicaSetSize 'yi temel alan çekirdek boyutu (3/2 + 1) veya 2 ' dir. bu nedenle, ClusterSize-QuorumSize = 4-2 > = 2 ' dir. Bununla birlikte, aynı anda herhangi bir çift düğüm kaybederseniz sistem hizmetinin çekirdeği üzerinde veya üzerinde olacağını garanti edemeyiz, kaybedildiğimiz iki düğüm iki çoğaltma barındırıyor olabilir, bu nedenle sistem hizmeti bir çekirdek kaybına (yalnızca bir çoğaltma sola sahip) geçer ND kullanılamaz olacak.
 
@@ -94,7 +94,7 @@ Tek **düğüm**: Bu seçenek, herhangi bir nedenden dolayı tek bir düğümün
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Maliyetleri kaydetmek için kümi gece/hafta sonları üzerinden kapatabilir miyim?
 
-Genellikle yapamazsınız. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümlere göre güncel hale getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
+Genel, hayır. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümlere göre güncel hale getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
 
 Uygulamanızı dağıtılmadan önce test etmek üzere kümeler oluşturmak isterseniz, bu kümeleri [sürekli tümleştirme/sürekli dağıtım işlem hattının](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)bir parçası olarak dinamik olarak oluşturmanızı öneririz.
 
@@ -104,7 +104,7 @@ Uygulamanızı dağıtılmadan önce test etmek üzere kümeler oluşturmak iste
 Günümüzde, geliştirilmiş bir deneyim üzerinde çalışıyoruz, bu da yükseltmeden sorumludur. İşletim sistemi görüntüsünü aynı anda tek bir VM 'nin sanal makinelerinde yükseltmeniz gerekir. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Bir küme düğümü türündeki (sanal makine ölçek kümesi) bağlı veri disklerini şifreleyebilir miyim?
-Evet.  Daha fazla bilgi için bkz. [bağlı veri diskleri ile küme oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [diskleri şifreleme (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)ve [diskleri şifreleme (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+Evet.  Daha fazla bilgi için bkz. [sanal makine ölçek kümeleri için](../virtual-machine-scale-sets/disk-encryption-overview.md)bağlı veri diskleri ve Azure disk şifrelemesi [ile küme oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) .
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Düşük öncelikli VM 'Leri bir küme düğümü türünde (sanal makine ölçek kümesi) kullanabilir miyim?
 Hayır. Düşük öncelikli VM 'Ler desteklenmez. 
@@ -135,8 +135,8 @@ Hayır. Düşük öncelikli VM 'Ler desteklenmez.
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Uygulamamın gizli dizileri almak için Keykasada kimlik doğrulaması nasıl yapılır?
 Aşağıdakiler, uygulamanızın Keykasada kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:
 
-a. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
-kenarı. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+A. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
+B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Uygulama tasarımı
 

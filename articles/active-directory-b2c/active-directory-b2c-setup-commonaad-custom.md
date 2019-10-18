@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a0b9166d24bea28bb3271d719e8ffe0b24d71381
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: aca5714e758038cc7a8d9d570a337b8dd6d26fe8
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826921"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533129"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak çok kiracılı Azure Active Directory için oturum açma ayarlayın
 
@@ -37,7 +37,7 @@ Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleşt
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. Uygulamanız için bir **ad** girin. Örneğin, `Azure AD B2C App`.
 1. Bu uygulama için **herhangi bir kuruluş dizininde hesaplar '** ı seçin.
-1. **Yeniden yönlendirme URI 'si**Için, **Web**'in değerini kabul edin ve aşağıdaki URL 'yi tüm küçük harflerden (`your-B2C-tenant-name` ' nin Azure AD B2C kiracınızın adıyla değiştirildiği) girin.
+1. **Yeniden yönlendirme URI 'si**Için, **Web**'in değerini kabul edin ve aşağıdaki URL 'yi tüm küçük harflerle girin; burada `your-B2C-tenant-name` Azure AD B2C kiracınızın adı ile değiştirilmiştir.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -58,7 +58,7 @@ Azure AD B2C kiracınızda oluşturduğunuz uygulama anahtarını depolamanız g
 1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
 1. **Seçenekler**için `Manual` ' i seçin.
-1. İlke anahtarı için bir **ad** girin. Örneğin, `AADAppSecret`.  @No__t-0 öneki, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_AADAppSecret*olur.
+1. İlke anahtarı için bir **ad** girin. Örneğin, `AADAppSecret`.  Ön ek `B2C_1A_`, oluşturulduğu sırada anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML başvurusu *B2C_1A_AADAppSecret*' dir.
 1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 1. **Anahtar kullanımı**için `Signature` ' i seçin.
 1. **Oluştur**'u seçin.
@@ -83,7 +83,7 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/common/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration</Item>
             <!-- Update the Client ID below to the Application ID -->
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
@@ -93,9 +93,9 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
             <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
             <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
-            <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
+            <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000,https://login.microsoftonline.com/11111111-1111-1111-1111-111111111111</Item>
             <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
-            <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+            <!-- <Item Key="ValidTokenIssuerPrefixes">https://login.microsoftonline.com/</Item> -->
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret"/>
@@ -122,24 +122,24 @@ Azure AD 'yi, ilkenizin uzantısı dosyasındaki **ClaimsProvider** öğesine ek
     ```
 
 1. **ClaimsProvider** öğesi altında, **etki alanı** değerini diğer kimlik sağlayıcılarından ayırt etmek için kullanılabilecek benzersiz bir değer olarak güncelleştirin.
-1. **Teknisyen** öğesinin altında, **DisplayName**için değeri güncelleştirin; Örneğin, `Contoso Employee`. Bu değer, oturum açma sayfanızda oturum açma düğmesinde görüntülenir.
+1. **Teknisyen** öğesinin altında, **DisplayName**için değeri güncelleştirin, örneğin `Contoso Employee`. Bu değer, oturum açma sayfanızda oturum açma düğmesinde görüntülenir.
 1. **Client_id** 'i daha önce KAYDETTIĞINIZ Azure AD çok kiracılı UYGULAMASıNıN uygulama kimliğine ayarlayın.
 1. **Cryptographickeys**altında, **Storagereferenceıd** değerini daha önce oluşturulmuş ilke anahtarının adı olarak güncelleştirin. Örneğin, `B2C_1A_AADAppSecret`.
 
 ### <a name="restrict-access"></a>Erişimi kısıtla
 
 > [!NOTE]
-> **Validtokenıssuerönekler** için değer olarak `https://sts.windows.net` kullanmak tüm Azure AD kullanıcılarının uygulamanızda oturum açmasını sağlar.
+> **Validtokenıssueröneklerini** değer olarak `https://login.microsoftonline.com/` kullanmak tüm Azure AD kullanıcılarının uygulamanızda oturum açmasını sağlar.
 
 Geçerli belirteç verenler listesini güncelleştirmeniz ve erişimi, oturum açabilen Azure AD kiracı kullanıcıları 'nın belirli bir listesiyle kısıtlamanız gerekir.
 
-Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi `https://login.windows.net/your-tenant/.well-known/openid-configuration` ' a benzerdir; burada `your-tenant` Azure AD kiracı adıdır. Örnek:
+Değerleri almak için, kullanıcıların oturum açmasını istediğiniz her bir Azure AD kiracısından oluşan OpenID Connect bulgu meta verilerine bakın. Meta veri URL 'sinin biçimi `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` benzerdir; burada `your-tenant` Azure AD kiracı adınız. Örnek:
 
-`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
+`https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 
 Oturum açmak için kullanılması gereken her Azure AD kiracısı için aşağıdaki adımları gerçekleştirin:
 
-1. Tarayıcınızı açın ve kiracı için OpenID Connect meta veri URL 'sine gidin. **Veren** nesnesini bulun ve değerini kaydedin. @No__t-0 ' a benzer görünmelidir.
+1. Tarayıcınızı açın ve kiracı için OpenID Connect meta veri URL 'sine gidin. **Veren** nesnesini bulun ve değerini kaydedin. @No__t_0 benzer görünmelidir.
 1. Değeri, **Validtokenıssuerönekler** anahtarına kopyalayıp yapıştırın. Birden çok verenler virgülle ayırın. Önceki `ClaimsProvider` XML örneğinde iki veren ile bir örnek görüntülenir.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Uzantı dosyasını doğrulama için karşıya yükle
@@ -155,7 +155,7 @@ Oturum açmak için kullanılması gereken her Azure AD kiracısı için aşağ�
 Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma ekranlarından hiçbirinde kullanılamaz. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından Azure AD kimlik sağlayıcısı 'nı da içerecek şekilde değiştirin.
 
 1. *TrustFrameworkBase. xml* dosyasını başlangıç paketinden açın.
-2. @No__t-1 içeren **Useryolculuney** öğesinin tüm içeriğini bulup kopyalayın.
+2. @No__t_1 içeren **Useryolculuney** öğesinin tüm içeriğini bulup kopyalayın.
 3. *TrustFrameworkExtensions. xml* ' i açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
 4. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
 5. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInContoso`.
@@ -164,7 +164,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma
 
 **Claimsproviderselection** öğesi, kaydolma/oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. Azure AD için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
-1. *TrustFrameworkExtensions. xml*' de oluşturduğunuz Kullanıcı yolculuğunda `Order="1"` ' i Içeren **orchestrationstep** öğesini bulun.
+1. *TrustFrameworkExtensions. xml*içinde oluşturduğunuz Kullanıcı yolculuğunda `Order="1"` Içeren **orchestrationstep** öğesini bulun.
 1. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `AzureADExchange`:
 
     ```XML
@@ -206,7 +206,7 @@ Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosy
 1. **Şimdi Çalıştır uç noktasını** kopyalayın ve özel bir tarayıcı penceresinde açın. Örneğin, Google Chrome 'Da veya Microsoft Edge 'de bir InPrivate penceresinde. Özel bir tarayıcı penceresinde açmak, şu anda önbelleğe alınmış Azure AD kimlik bilgilerini kullanarak tüm Kullanıcı yolculuğunu test etmenize olanak tanır.
 1. Azure AD oturum açma düğmesini (örneğin, *contoso çalışanı*) seçin ve ardından Azure AD kurumsal kiracılarından birindeki bir kullanıcının kimlik bilgilerini girin. Uygulamayı yetkilendirmeniz ve sonra profilinizin bilgilerini girmeniz istenir.
 
-Oturum açma işlemi başarılı olursa, tarayıcınız Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüleyen `https://jwt.ms` ' a yönlendirilir.
+Oturum açma işlemi başarılı olursa, tarayıcınız, Azure AD B2C tarafından döndürülen belirtecin içeriğini görüntüleyen `https://jwt.ms` olarak yönlendirilir.
 
 Çok kiracılı oturum açma özelliğini test etmek için, başka bir Azure AD kiracısı olan bir kullanıcının kimlik bilgilerini kullanarak son iki adımı gerçekleştirin.
 

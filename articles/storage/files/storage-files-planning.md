@@ -4,17 +4,17 @@ description: Azure dosyaları dağıtımı için planlama yaparken göz önünde
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249349"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514668"
 ---
-# <a name="planning-for-an-azure-files-deployment"></a>Azure dosyaları dağıtımını planlama
+# <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
 [Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
 
@@ -22,15 +22,15 @@ ms.locfileid: "72249349"
 
  Aşağıdaki diyagramda Azure dosya yönetimi yapıları gösterilmektedir:
 
-![Dosya yapısı](./media/storage-files-introduction/files-concepts.png)
+![Dosya Yapısı](./media/storage-files-introduction/files-concepts.png)
 
-* **Depolama hesabı**: tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için bkz. [ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
+* **Depolama Hesabı**: Tüm Azure Depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için, [Ölçeklenebilirlik ve Performans Hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) konusuna bakın.
 
-* **Paylaşma**: bir dosya depolama alanı, Azure 'DA bir SMB dosya paylaşımıdır. Tüm dizinlerin ve dosyaların bir üst paylaşımda oluşturulması gerekir. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Standart dosya paylaşımları için toplam kapasite en fazla 5 TiB (GA) veya 100 TiB (Önizleme), Premium dosya paylaşımları için ise toplam kapasite 100 TiB 'ye kadar olur.
+* **Paylaşım**: Dosya Depolama paylaşımı Azure’daki bir SMB dosyası paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Premium ve standart dosya paylaşımlarının toplam kapasitesi 100 TiB 'dir.
 
-* **Dizin**: dizinlerin isteğe bağlı bir hiyerarşisi.
+* **Dizin:** Dizinlerin isteğe bağlı hiyerarşisi.
 
-* **Dosya**: paylaşımdaki bir dosya. Dosya boyutu en fazla 1 TiB olabilir.
+* **Dosya**: Paylaşımdaki bir dosya. Dosya boyutu en fazla 1 TiB olabilir.
 
 * **URL biçimi**: Dosya REST protokolüyle yapılan bir Azure dosya paylaşımıyla ilgili istekler için, dosyalar aşağıdaki URL biçimi kullanılarak adreslenebilir:
 
@@ -79,10 +79,8 @@ Azure dosyaları iki performans katmanı sunar: Standart ve Premium.
 
 Standart dosya paylaşımları sabit disk sürücüleri (HDD 'Ler) tarafından desteklenir. Standart dosya paylaşımları, genel amaçlı dosya paylaşımları ve geliştirme/test ortamları gibi performans çeşitliliğine daha az duyarlı olan GÇ iş yükleri için güvenilir performans sağlar. Standart dosya paylaşımları yalnızca Kullandıkça Öde faturalandırma modelinde kullanılabilir.
 
-Boyutu 5 TiB 'ye kadar olan standart dosya paylaşımları bir GA teklifi olarak kullanılabilir. 5 TiB 'den büyük bir paylaşım olan büyük dosya paylaşımları, en fazla 100 TiB olmak üzere, şu anda önizleme teklifi olarak sunulmaktadır.
-
 > [!IMPORTANT]
-> ' In yanı sıra önizlemenin kapsamını ve kısıtlamalarını görmek için [daha büyük dosya paylaşımlarına (Standart katman)](#onboard-to-larger-file-shares-standard-tier) ekleme bölümüne bakın.
+> 5 TiB 'den büyük dosya paylaşımlarını kullanmak istiyorsanız, ekleme adımları ve bölgesel kullanılabilirlik ve kısıtlamalar için [daha büyük dosya paylaşımlarına (Standart katman)](#onboard-to-larger-file-shares-standard-tier) ekleme bölümüne bakın.
 
 ### <a name="premium-file-shares"></a>Premium dosya paylaşımları
 
@@ -122,7 +120,7 @@ Kullandığınız paylaşımın boyutunu, kullanılan GiB 'nizin altında azaltm
 
 Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç örnek gösterilmektedir:
 
-|Kapasite (GiB) | Temel ıOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
+|Kapasite (GiB) | Temel IOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | 300 kadar     | 66   | 44   |
 |500         | 500     | 1\.500 kadar   | 90   | 60   |
@@ -131,7 +129,7 @@ Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç ö
 |10.240      | 10.240  | 30.720 kadar  | 675 | 450   |
 |33.792      | 33.792  | 100.000 kadar | 2\.088 | 1\.392   |
 |51.200      | 51.200  | 100.000 kadar | 3\.132 | 2\.088   |
-|102.400     | 100,000 | 100.000 kadar | 6\.204 | 4\.136   |
+|102.400     | 100.000 | 100.000 kadar | 6\.204 | 4\.136   |
 
 > [!NOTE]
 > Dosya paylaşımları performansı, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik özelliklerine tabidir. En yüksek performans ölçeğini elde etmek için, yükü birden çok VM arasında yayın. Bazı yaygın performans sorunları ve geçici çözümler için lütfen [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
@@ -171,7 +169,7 @@ Aşağıdaki bölümlerde, farklı artıklık seçenekleri arasındaki farklar a
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
-### <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
+### <a name="geo-redundant-storage"></a>Coğrafi Olarak Yedekli Depolama
 
 > [!Warning]  
 > Azure dosya paylaşımınızı bir GRS depolama hesabında bulut uç noktası olarak kullanıyorsanız, depolama hesabı yük devretmesini başlatmamanız gerekir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir. Azure bölgesinin kaybedilmesi durumunda, Microsoft, depolama hesabı yük devretmesini Azure Dosya Eşitleme ile uyumlu bir şekilde tetikleyecektir.
@@ -195,75 +193,43 @@ Hangi çoğaltma seçeneğinin kullanılacağına karar verirken bu noktaları g
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Daha büyük dosya paylaşımlarına ekleme (Standart katman)
 
-Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Premium dosya paylaşımları, bir GA teklifi olarak 100 TiB ile kullanılabilir.
+Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Premium dosya paylaşımları 100 TiB kapasitesinde kullanılabilir.
 
 ### <a name="restrictions"></a>Kısıtlamalar
 
-- Azure Önizleme [Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) , Azure dosya eşitleme dağıtımlarıyla birlikte kullanıldığında, önizleme sırasında büyük dosya paylaşımları için de geçerlidir.
-- Yeni bir genel amaçlı depolama hesabı oluşturmanızı gerektirir (mevcut depolama hesapları genişletilemiyor).
-- LRS/ZRS 'den GRS/GZRS hesabı dönüştürmesi, abonelik daha büyük dosya paylaşımları önizlemesine kabul edildikten sonra oluşturulan yeni bir depolama hesabında mümkün olmayacaktır.
-
+- Büyük dosya paylaşımları etkin olan herhangi bir depolama hesabı için LRS/ZRS 'den GRS/GZRS hesabı dönüştürme mümkün olmayacaktır.
 
 ### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bu bölge 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
+Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bunlar 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
 
-|Geli |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği * |
-|-------|---------|---------|---------|
-|Avustralya Doğu |LRS     |Hayır    |Evet|
-|Avustralya Güneydoğu|LRS |Hayır    |Evet|
-|Orta Hindistan  |LRS     |Hayır    |Evet|
-|Doğu Asya      |LRS     |Hayır    |Evet|
-|Doğu ABD        |LRS     |Hayır    |Evet|
-|Fransa Orta |LRS, ZRS|Hayır    |Evet|
-|Fransa Güney   |LRS     |Hayır    |Evet|
-|Kuzey Avrupa   |LRS     |Hayır    |Henüz değil|
-|Güney Hindistan    |LRS     |Hayır    |Evet|
-|Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
-|Orta Batı ABD|LRS     |Hayır    |Evet|
-|Batı Avrupa    |LRS, ZRS|Hayır    |Evet|
-|Batı ABD        |LRS     |Hayır    |Evet|
-|Batı ABD 2      |LRS, ZRS|Hayır    |Evet|
+|Bölge |Desteklenen artıklık |
+|-------|---------|
+|Doğu Avustralya |LRS     |
+|Güneydoğu Avustralya|LRS |
+|Orta Hindistan  |LRS     |
+|Doğu Asya      |LRS     |
+|Doğu ABD *        |LRS     |
+|Fransa Orta |LRS, ZRS|
+|Fransa Güney   |LRS     |
+|Güney Hindistan    |LRS     |
+|Güneydoğu Asya |LRS, ZRS|
+|Orta Batı ABD|LRS     |
+|Batı Avrupa *    |LRS, ZRS|
+|Batı ABD *        |LRS     |
+|Batı ABD 2      |LRS, ZRS|
 
-
-\* Portal desteği olmayan bölgelerde, 5 ' ten büyük bir paylaşım oluşturmak için PowerShell veya Azure komut satırı arabirimi 'ni (CLı) kullanmaya devam edebilirsiniz. Alternatif olarak, kota belirtmeden Portal aracılığıyla yeni bir paylaşma oluşturun. Bu, daha sonra PowerShell veya Azure CLı aracılığıyla güncelleştirilebilen 100 TiB varsayılan boyutuyla bir paylaşma oluşturur.
+Yeni hesaplar için desteklenen \*, tüm mevcut hesaplar yükseltme işlemini tamamlamamıştı.
 
 Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.
 
-### <a name="steps-to-onboard"></a>Ekleme adımları
+### <a name="enable-and-create-larger-file-shares"></a>Daha büyük dosya paylaşımları etkinleştirin ve oluşturun
 
-Aboneliğinizi daha büyük dosya paylaşımları önizlemesine kaydetmek için Azure PowerShell kullanmanız gerekir. Aşağıdaki PowerShell komutlarını çalıştırmak için [Azure Cloud Shell](https://shell.azure.com/) kullanabilir ya da [Azure PowerShell modülünü yerel olarak](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) yükleyebilirsiniz:
-
-İlk olarak, önizlemeye kaydetmek istediğiniz aboneliğin seçildiğinden emin olun:
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-Ardından, aşağıdaki komutları kullanarak önizlemeye kaydolun:
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-Her iki komut de çalıştırıldığında aboneliğiniz otomatik olarak onaylanır.
-
-Kayıt durumunuzu doğrulamak için şu komutu çalıştırabilirsiniz:
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz **kaydedildikten sonra özelliğini**kullanabilmeniz gerekir.
-
-### <a name="use-larger-file-shares"></a>Daha büyük dosya paylaşımları kullanın
-
-Daha büyük dosya paylaşımlarını kullanmaya başlamak için yeni bir genel amaçlı v2 depolama hesabı ve yeni bir dosya paylaşımı oluşturun.
+Daha büyük dosya paylaşımlarını kullanmaya başlamak için, [büyük dosya paylaşımlarını etkinleştirme](storage-files-how-to-create-large-file-share.md)makalemize bakın.
 
 ## <a name="data-growth-pattern"></a>Veri büyüme kriteri
 
-Bugün, bir Azure dosya paylaşımının en büyük boyutu 5 TiB 'dir (önizlemede 100 TiB). Bu geçerli sınırlama nedeniyle, bir Azure dosya paylaşımından dağıtım yaparken beklenen verilerin büyümesini göz önünde bulundurmanız gerekir.
+Bugün, bir Azure dosya paylaşımının en büyük boyutu 100 TiB 'dir. Bu geçerli sınırlama nedeniyle, bir Azure dosya paylaşımından dağıtım yaparken beklenen verilerin büyümesini göz önünde bulundurmanız gerekir.
 
 Birden çok Azure dosya paylaşımını Azure Dosya Eşitleme ile tek bir Windows dosya sunucusu ile eşitlemek mümkündür. Bu, şirket içinde sahip olduğunuz eski, büyük dosya paylaşımlarının Azure Dosya Eşitleme olarak getirilebilir olmasını güvence altına almanıza olanak tanır. Daha fazla bilgi için bkz. [Azure dosya eşitleme dağıtım planlaması](storage-files-planning.md).
 

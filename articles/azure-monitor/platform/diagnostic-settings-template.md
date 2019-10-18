@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71262342"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
@@ -59,7 +59,7 @@ Tanılama ayarının [hedeflerine](diagnostic-settings.md#destinations) bağlı 
 ```
 
 ### <a name="resources"></a>Kaynaklar
-Tanılama ayarını oluşturmak istediğiniz kaynağın kaynaklar dizisinde, türünde `[resource namespace]/providers/diagnosticSettings`bir kaynak ekleyin. Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. [Kaynak ölçümlerini destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplayacak özelliğiekleyin.`metrics`
+Tanılama ayarını oluşturmak istediğiniz kaynağın kaynaklar dizisinde `[resource namespace]/providers/diagnosticSettings` türünde bir kaynak ekleyin. Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. [Kaynak ölçümlerini destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplamak için `metrics` özelliğini ekleyin.
    
 ```json
 "resources": [

@@ -35,20 +35,6 @@
       href: policy-samples.md
 - name: Kavramlar
   items:
-    - name: NAT Gateway
-      items:
-        - name: Genel Bakış
-          items:
-            - name: NAT Gateway hakkında
-              href: nat-service-overview.md
-        - name: Hızlı Başlangıçlar
-          items:
-            - name: NAT Gateway oluşturma - Azure CLI
-              href: quickstart-create-nat-gateway-cli.md
-        - name: Öğreticiler
-          items:
-            - name: NAT Gateway oluşturma ve doğrulama - Azure CLI
-              href: tutorial-create-validate-nat-gateway-cli.md
     - name: Güvenlik grupları
       href: security-overview.md
     - name: Yönlendirme
@@ -75,6 +61,8 @@
       href: public-ip-address-prefix.md
     - name: Azure Sanal Ağı için IPv6
       href: ipv6-overview.md
+    - name: Genel IPv6 adresi ön eki
+      href: ipv6-public-ip-address-prefix.md
     - name: DDoS koruması
       href: ddos-protection-overview.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
@@ -248,6 +236,8 @@
           items:
             - name: Alt ağlar
               href: virtual-network-manage-subnet.md
+            - name: Alt ağ temsilcisi
+              href: manage-subnet-delegation.md
             - name: Eşlemeler
               href: virtual-network-manage-peering.md
             - name: DDoS koruması
@@ -271,6 +261,8 @@
           href: virtual-network-public-ip-address.md
         - name: Genel IP ön eki
           href: manage-public-ip-address-prefix.md
+        - name: Genel IPv6 adresi ön eki
+          href: ipv6-reserve-public-ip-address-prefix.md
     - name: Bölgeler arasında taşıma
       items:
         - name: Ağ güvenlik grupları - Portal

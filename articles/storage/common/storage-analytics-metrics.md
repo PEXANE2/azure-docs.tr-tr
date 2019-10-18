@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846891"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514785"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics ölçümleri (klasik)
 
@@ -39,11 +39,11 @@ Depolama Analizi, toplanan işlem istatistiklerini ve bir depolama hizmetine yap
 > [!NOTE]
 >  Şu anda kapasite ölçümleri yalnızca blob hizmeti için kullanılabilir.
 
- Bir depolama hesabının blob hizmeti için kapasite verileri günlük olarak kaydedilir ve iki tablo varlığı yazılır. Bir varlık Kullanıcı verileri için istatistikler sağlar ve diğeri depolama Analizi tarafından kullanılan `$logs` blob kapsayıcısı hakkında istatistikler sağlar. *$MetricsCapacityBlob* tablosu aşağıdaki istatistikleri içerir:  
+ Bir depolama hesabının blob hizmeti için kapasite verileri günlük olarak kaydedilir ve iki tablo varlığı yazılır. Bir varlık Kullanıcı verileri için istatistikler sağlar ve diğeri, Depolama Analizi tarafından kullanılan `$logs` blob kapsayıcısı hakkında istatistikler sağlar. *$MetricsCapacityBlob* tablosu aşağıdaki istatistikleri içerir:  
 
-- **Kapasite**: Depolama hesabının blob hizmeti tarafından bayt cinsinden kullanılan depolama miktarı.  
-- **Containercount**: Depolama hesabının blob hizmetindeki blob kapsayıcıları sayısı.  
-- **ObjectCount**: Depolama hesabının blob hizmetindeki işlenen ve kaydedilmemiş blok veya sayfa Blobları sayısı.  
+- **Kapasite**: depolama hesabının blob hizmeti tarafından bayt cinsinden kullanılan depolama miktarı.  
+- **Containercount**: depolama hesabının blob hizmetindeki blob kapsayıcıları sayısı.  
+- **ObjectCount**: depolama hesabının blob hizmetindeki işlenen ve kaydedilmemiş blok veya sayfa Blobları sayısı.  
 
   Kapasite ölçümleri hakkında daha fazla bilgi için bkz. [ölçüm tablosu şeması depolama Analizi](/rest/api/storageservices/storage-analytics-metrics-table-schema).  
 
@@ -74,45 +74,42 @@ Depolama Analizi, toplanan işlem istatistiklerini ve bir depolama hizmetine yap
 
 [Azure Portal](https://portal.azure.com) , depolama hesabınızda dakika ölçümlerini yapılandırmanıza Şu anda izin vermez; PowerShell veya programlı programlama kullanarak dakika ölçümlerini etkinleştirmeniz gerekir.
 
-> [!NOTE]
->  Azure portal Şu anda depolama hesabınızda dakika ölçümlerini yapılandırmanıza izin vermez. PowerShell veya programlı programlama kullanarak dakika ölçümlerini etkinleştirmeniz gerekir.
-
 ## <a name="enable-storage-metrics-using-powershell"></a>PowerShell kullanarak depolama ölçümlerini etkinleştirme  
-Geçerli ayarları ve cmdlet **'ı almak Için Get-Azurestorampaicsproperty Azure PowerShell cmdlet 'ini kullanarak Depolama hesabınızdaki depolama ölçümlerini yapılandırmak Için yerel makinenizde PowerShell kullanabilirsiniz. Geçerli ayarları değiştirmek için set-Azurestolargeservicemetricsproperty** .  
+Geçerli ayarları ve cmdlet **'i almak Için Get-AzStorageServiceMetricsProperty** **cmdlet 'ini kullanarak Depolama hesabınızdaki depolama ölçümlerini yapılandırmak Için yerel makinenizde PowerShell kullanabilirsiniz Azure PowerShell. Geçerli ayarları değiştirmek için set-AzStorageServiceMetricsProperty** .  
 
 Depolama ölçümlerini denetleyen cmdlet 'ler şu parametreleri kullanır:  
 
 * **ServiceType**, olası değer **BLOB**, **kuyruk**, **tablo**ve **dosyadır**.
 * **Metricstype**, olası değerler **saat** ve **dakikadır**.  
 * **Metricslevel**, olası değerler şunlardır:
-* **Hiçbiri**: İzlemeyi kapatır.
-* **Hizmet**: Blob, kuyruk, tablo ve dosya hizmetleri için toplanan giriş/çıkış, kullanılabilirlik, gecikme süresi ve başarı yüzdeleri gibi ölçümleri toplar.
-* **ServiceAndApi**: Hizmet ölçümlerine ek olarak, Azure depolama hizmeti API 'sindeki her depolama işlemi için aynı ölçüm kümesini toplar.
+* **Hiçbiri**: izlemeyi kapatır.
+* **Hizmet**: blob, kuyruk, tablo ve dosya hizmetleri için toplanan giriş/çıkış, kullanılabilirlik, gecikme süresi ve başarı yüzdeleri gibi ölçümleri toplar.
+* **ServiceAndApi**: hizmet ölçümlerine ek olarak, Azure depolama hizmeti API 'sindeki her depolama işlemi için aynı ölçüm kümesini toplar.
 
 Örneğin, aşağıdaki komut, Depolama hesabınızdaki blob hizmeti için dakika ölçümlerinde, bekletme dönemi beş güne ayarlanmış olarak geçer: 
 
 > [!NOTE]
 > Bu komut, `Connect-AzAccount` komutunu kullanarak Azure aboneliğinizde oturum açmış olduğunuzu varsayar.
 
-```  
+```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
 
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
+Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
 
-* `<resource-group-name>` Yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
-
-* `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+* @No__t_0 yer tutucu değerini kaynak grubunuzun adıyla değiştirin.
+        
+* @No__t_0 yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
 
 
 Aşağıdaki komut, varsayılan depolama hesabınızdaki blob hizmeti için geçerli saatlik ölçüm düzeyini ve bekletme günlerini alır:  
 
-```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
+```powershell
+Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-Azure PowerShell cmdlet 'lerinin Azure aboneliğinizle çalışacak şekilde nasıl yapılandırılacağı ve kullanılacak varsayılan depolama hesabını nasıl seçkullanılacağı hakkında bilgi için, bkz.: [Azure PowerShell nasıl yüklenir ve yapılandırılır](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
+Azure PowerShell cmdlet 'lerinin Azure aboneliğinizle çalışacak şekilde nasıl yapılandırılacağı ve kullanılacak varsayılan depolama hesabını nasıl seçeceksiniz hakkında bilgi için bkz.: [Azure PowerShell nasıl yüklenir ve yapılandırılır](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  
 
 ## <a name="enable-storage-metrics-programmatically"></a>Depolama ölçümlerini programlı olarak etkinleştir  
 Depolama ölçümlerini denetlemek için Azure portal veya Azure PowerShell cmdlet 'lerini kullanmanın yanı sıra Azure Storage API 'Lerinden birini de kullanabilirsiniz. Örneğin, bir .NET dili kullanıyorsanız, depolama Istemci kitaplığını kullanabilirsiniz.  
@@ -157,15 +154,15 @@ Bu tablolara yönelik şemaların tüm ayrıntılarını [depolama Analizi ölç
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**partitionKey**|**RowKey**|**İlişkin**|**Toplam Istek sayısı**|**TotalBillableRequests**|**Totalıngress**|**TotalEgress**|**Kullanılabilirlik**|**AverageE2ELatency**|**Averageserverlatency gösteriyor**|**PercentSuccess**|  
-|20140522T1100|kullanıcısını Bütün|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|kullanıcısını Queryenlikler|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|kullanıcısını QueryEntity|2014-05-22T11:01:16.7650250Z|1\.|1\.|538|633|100|3|3|100|  
-|20140522T1100|kullanıcısını UpdateEntity|2014-05-22T11:01:16.7650250Z|1\.|1\.|771|217|100|9|6|100|  
+|**PartitionKey**|**RowKey**|**İlişkin**|**Toplam Istek sayısı**|**TotalBillableRequests**|**Totalıngress**|**TotalEgress**|**Kullanılabilirlik**|**AverageE2ELatency**|**Averageserverlatency gösteriyor**|**PercentSuccess**|  
+|20140522T1100|kullanıcısını Bütün|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
+|20140522T1100|kullanıcısını Queryenlikler|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
+|20140522T1100|kullanıcısını QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|kullanıcısını UpdateEntity|2014-05-22T11:01:16.7650250 Z|1|1|771|217|100|9|6|100|  
 
 Bu örnek dakikalık ölçüm verilerinde, bölüm anahtarı dakika çözünürlüğündeki zamanı kullanır. Satır anahtarı, satırda depolanan bilgilerin türünü tanımlar ve bu iki bilgi parçasını, erişim türünü ve istek türünü oluşur:  
 
--   Erişim türü kullanıcı veya **sistemdir**ve **Kullanıcı** , depolama hizmetine yönelik tüm Kullanıcı isteklerini ifade eder ve **sistem** depolama Analizi tarafından yapılan istekleri ifade eder.  
+-   Erişim türü **Kullanıcı veya** **sistemdir**ve **Kullanıcı** , depolama hizmetine yönelik tüm kullanıcı isteklerini ifade eder ve **sistem** depolama Analizi tarafından yapılan istekleri ifade eder.  
 
 -   İstek türü **Tümü** bir Özet satırdır ya da **Queryentity** veya **updateentity**gibi belirli API 'yi tanımlar.  
 

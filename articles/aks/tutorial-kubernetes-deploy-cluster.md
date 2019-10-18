@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9f06aa44824c28369b331d4079e9e81417bf17c7
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 8ad542a3614253e11331e9b49513a887aff65890
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263846"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512920"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Hızlı Başlangıç: Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -30,7 +30,7 @@ Ek öğreticilerde, Azure oy uygulaması kümeye dağıtılır, ölçeklendirili
 
 Önceki öğreticilerde, bir kapsayıcı görüntüsü oluşturuldu ve Azure Container Registry örneğine yüklendi. Bu adımları tamamlamadıysanız ve takip etmek istiyorsanız, [öğretici 1 – kapsayıcı görüntüleri oluşturma][aks-tutorial-prepare-app]' dan başlayın.
 
-Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
+Bu öğreticide, Azure CLı sürüm 2.0.75 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 ## <a name="create-a-kubernetes-cluster"></a>Kubernetes kümesi oluşturma
 
@@ -64,7 +64,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>kubectl istemcisini kullanarak kümeye bağlanma
 
-@No__t, Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks Get-Credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *Myakscluster* adlı aks kümesinin kimlik bilgilerini alır:
+Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *Myakscluster* adlı aks kümesinin kimlik bilgilerini alır:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
