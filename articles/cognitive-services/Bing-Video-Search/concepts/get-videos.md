@@ -1,5 +1,5 @@
 ---
-title: Bing Video Arama API'si arama istekleri gönderiliyor
+title: Bing Video Arama API'si kullanarak video arayın
 titleSuffix: Azure Cognitive Services
 description: Bing Video Arama API'si arama sorguları gönderme hakkında bilgi edinin.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879082"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512408"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Sorguyu genişletme
 
-Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Temizleme boşluğu*, genişletilmiş sorgular şu şekilde olabilir: Temizleme **araçlarının**cilt payı, boşluğuTemizleme, temizleme **makinesi**ve **kolay** cilt temizleme.
+Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Boşluk Temizleme* ise, genişletilmiş sorgular şunlar olabilir: Boşluk Temizleme **Araçları**, **Sıfırdan** Boşluk Temizleme, Boşluk Temizleme **Makinesi** ve **Kolay** Boşluk Temizleme.
 
 Aşağıdaki örnekte *Boşluk Temizleme* için genişletilmiş sorgular gösterilmektedir.
 

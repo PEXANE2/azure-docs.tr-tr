@@ -1,7 +1,7 @@
 ---
-title: Azure Container Instances'ı çalıştırma
+title: Azure Container Instances Görüntü İşleme kapsayıcısını Çalıştır
 titleSuffix: Azure Cognitive Services
-description: Görüntü işleme için Azure Container örneği dağıtma ve bir web tarayıcısında test.
+description: Görüntü İşleme kapsayıcısını bir Azure Container Instance 'a dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: 859147d23ea78abac2da4a4c2f1fa26a8d976d02
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2de879d271ab001e62725424ea72e0604176efb4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711620"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516866"
 ---
-# <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>Görüntü işleme kapsayıcıyı Azure Container Instances'a dağıtacaksınız.
+# <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>Görüntü İşleme kapsayıcısını Azure Container Instances dağıtma
 
-Bilişsel hizmetler dağıtmayı öğrenirsiniz [görüntü işleme](computer-vision-how-to-install-containers.md) Azure kapsayıcısına [Container Instances](https://docs.microsoft.com/azure/container-instances/). Bu yordam, görüntü işleme kaynak oluşturmayı göstermektedir. Ardından ilişkili kapsayıcı görüntüsünü çekme tartışın. Son olarak, orchestration bir tarayıcıdan iki çalışma olanağı vurgulayın. Kapsayıcıları kullanarak, bunun yerine, uygulama geliştirme odaklanarak altyapı Yönetimi işlerini hayatınızdan çıkarın, geliştiricilerin dikkat kaydırabilirsiniz.
+Bilişsel Hizmetler [görüntü işleme](computer-vision-how-to-install-containers.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)'a dağıtmayı öğrenin. Bu yordamda Görüntü İşleme kaynağının oluşturulması gösterilmektedir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
+## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
 
 [!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access.md)]
 

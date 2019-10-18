@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4412bc9ce8d78b5810b25b60724575af66774127
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 8ff4234d9fd28e655e868108e37b09c5afe2767c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146272"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517135"
 ---
 # <a name="bulk-import-group-members-preview-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini Toplu içe aktarma (Önizleme)
 
 Azure Active Directory (Azure AD) portalını kullanarak Grup üyelerini toplu olarak içeri aktarmak için bir virgülle ayrılmış değerler (CSV) dosyası kullanarak gruba çok sayıda üye ekleyebilirsiniz.
 
-> [!NOTE]
-> Azure AD toplu işlemleri, Azure AD 'nin genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizleme kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="to-bulk-import-group-members"></a>Grup üyelerini toplu olarak içeri aktarmak için
 
 1. [Azure Portal,](https://portal.azure.com) kuruluştaki bir kullanıcı yönetici hesabıyla oturum açın. Grup sahipleri ayrıca sahip oldukları grupların üyelerini toplu olarak içeri aktarabilir.
-1. Azure AD 'de **gruplar** > **tüm gruplar**' ı seçin.
+1. Azure AD 'de **gruplar**  > **tüm gruplar**' ı seçin.
 1. Üyeler eklemekte olduğunuz grubu açın ve ardından **Üyeler**' i seçin.
 1. **Üyeler** sayfasında, **üyeleri içeri aktar**' ı seçin.
 1. **Toplu içeri aktarma Grup üyeleri (Önizleme)** sayfasında, gerekli Grup ÜYESI özellikleriyle CSV dosya şablonunu almak için **İndir** ' i seçin.

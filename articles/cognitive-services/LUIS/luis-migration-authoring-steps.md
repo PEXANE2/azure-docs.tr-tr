@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935212"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516787"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure yazma kaynağına geçiş adımları
 
@@ -43,7 +43,7 @@ Herhangi bir LUO uygulama sahibiyseniz, geçiş işlemi kullanılabilir.
 
     ![Geçiş işlemindeki ilk açılan pencere, şimdi geçir ' i seçin.](./media/migrate-authoring-key/migrate-now.png)
 
-1. İsteğe bağlı olarak, uygulamalarınızdan birinde ortak çalışanlar varsa, geçiş hakkında bilgi veren **bir e-posta göndermeniz** istenir. Bu isteğe bağlı bir adımdır. 
+1. İsteğe bağlı olarak, uygulamalarınızdan birinde ortak çalışanlar varsa, geçiş hakkında bilgi veren **bir e-posta göndermeniz** istenir. Bu, isteğe bağlı bir adımdır. 
 
     Hesabınızı Azure 'a geçirdikten sonra uygulamalarınız artık ortak olmayan uygulamalar tarafından kullanılamaz.
 
@@ -98,7 +98,7 @@ Herhangi bir LUO uygulama sahibiyseniz, geçiş işlemi kullanılabilir.
 
 ## <a name="app-contributor-begins-the-migration-process"></a>Uygulama katılımcısı geçiş işlemini başlatır
 
-Geçiş için uygulama sahibiyle aynı adımları izleyin. İşlem, türü `LUIS.Authoring`yeni bir yazma kaynağı oluşturur. 
+Geçiş için uygulama sahibiyle aynı adımları izleyin. İşlem `LUIS.Authoring` türü yeni bir yazma kaynağı oluşturur. 
 
 Başkalarının sahip olduğu geçirilmiş uygulamalara katkıda bulunan olarak eklenmek üzere hesabınızı geçirmeniz gerekir.  
 
@@ -110,7 +110,7 @@ Başkalarının sahip olduğu geçirilmiş uygulamalara katkıda bulunan olarak 
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>Geçiş işlemiyle ilgili sorun giderme hataları
 
-Geçiş işlemi sırasında bir `MissingSubscriptionRegistration` Red bildirim çubuğu ile LUI portalında bir hata alırsanız, [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)'de bir bilişsel hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause)hakkında daha fazla bilgi edinin.
+Geçiş işlemi sırasında bir Red bildirim çubuğu ile LUU portalında `MissingSubscriptionRegistration` hatası alırsanız, [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)Içinde bilişsel hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

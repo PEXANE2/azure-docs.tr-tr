@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08708c23f9c8f4c4a8fc9f2f0aa5cd20d8333a42
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146362"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517098"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Azure Active Directory Grup üyelerini toplu kaldırma (Önizleme)
 
 Azure Active Directory (Azure AD) portalını kullanarak, grup üyelerini toplu olarak kaldırmak için bir virgülle ayrılmış değerler (CSV) dosyası kullanarak bir gruptan çok sayıda üyeyi kaldırabilirsiniz.
 
-> [!NOTE]
-> Azure AD toplu işlemleri, Azure AD 'nin genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizleme kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="to-bulk-remove-group-members"></a>Grup üyelerini toplu olarak kaldırmak için
 
 1. [Azure Portal,](https://portal.azure.com) kuruluştaki bir kullanıcı yönetici hesabıyla oturum açın. Grup sahipleri, sahip oldukları grupların üyelerini de toplu olarak kaldırabilir.
-1. Azure AD 'de **gruplar** > **tüm gruplar**' ı seçin.
+1. Azure AD 'de **gruplar**  > **tüm gruplar**' ı seçin.
 1. Üyelerini kaldırdığınız grubu açın ve ardından **Üyeler**' i seçin.
 1. **Üyeler** sayfasında, **üyeleri kaldır**' ı seçin.
 1. **Grup üyelerini toplu Kaldır (Önizleme)** sayfasında, gerekli Grup ÜYESI özellikleriyle CSV dosya şablonunu almak için **İndir** ' i seçin.

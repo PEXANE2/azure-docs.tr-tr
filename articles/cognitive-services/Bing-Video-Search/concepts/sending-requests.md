@@ -1,5 +1,5 @@
 ---
-title: Bing Video Arama API'si arama istekleri gönderiliyor
+title: Bing Video Arama API'si arama istekleri Gönder
 titleSuffix: Azure Cognitive Services
 description: Bing Video Arama API'si arama sorguları gönderme hakkında bilgi edinin.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahill
-ms.openlocfilehash: ba2036c58ae54cc665623e63129ecea6c530b27d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 96f92f0dc1e9e0c6c409fe17680fc57412e2b7d3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878980"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512522"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Bing Video Arama API'si arama istekleri gönderiliyor
 
@@ -53,7 +53,7 @@ Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci u
 
 İstemci IP'si ve konum üstbilgileri konuma duyarlı içerik döndürmek için önemlidir.  
 
-Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üst Bilgiler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
+Tüm istek ve yanıt üstbilgilerinin bir listesi için bkz. [Üstbilgiler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
 
 ## <a name="example-search-request"></a>Örnek arama isteği
 
@@ -147,7 +147,7 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-API’yi deneyin. [Video Arama API'si Test Konsolu](https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8)'na gidin. 
+API'yi deneyin. [Video Arama API'si Test Konsolu](https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8)'na gidin. 
 
 Yenıt nesnelerini kullanmanın ayrıntıları için bkz. [Web'de Video arama](../search-the-web.md).
 

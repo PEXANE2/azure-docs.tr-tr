@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174204"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517068"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory portalında kullanıcıların listesini indirme (Önizleme)
 
@@ -36,7 +36,39 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
 
    ![Listeden indirmek istediğiniz kullanıcıları seçin](./media/users-bulk-download/bulk-download.png)
 
-## <a name="check-status"></a>Durumu Denetle
+   İndirme dosyası, filtrelenmiş Kullanıcı listesini içerecektir.
+
+   Aşağıdaki Kullanıcı öznitelikleri dahil edilecek: 
+
+   - userPrincipalName
+   - DisplayName
+   - Soyadı
+   - -
+   - GivenName
+   - Uzantının
+   - userType
+   - JobTitle
+   - Bölüme
+   - Manager
+   - AccountEnabled
+   - usageLocation
+   - streetAddress
+   - durum
+   - Ülke
+   - physicalDeliveryOfficeName
+   - city
+   - PostalCode
+   - TelephoneNumber 'dır
+   - Mo
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - authenticationEmail
+   - Alternateemaadresi
+   - Yaş
+   - consentProvidedForMinor
+   - Ligalagegroupclassification
+
+## <a name="check-status"></a>Durumu kontrol etme
 
 Bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları (Önizleme)** sayfasında görebilirsiniz.
 

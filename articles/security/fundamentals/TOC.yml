@@ -49,16 +49,6 @@
             - name: Azure Disk Şifrelemesi hakkında
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Hızlı Başlangıçlar
-              items:
-                - name: Azure CLI ile Linux VM şifreleme
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Azure PowerShell ile Linux VM şifreleme
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Azure CLI ile Windows VM şifreleme
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Azure PowerShell ile Windows VM şifreleme
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure Disk Şifrelemesi
               items:
                 - name: Disk şifreleme önkoşulları
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDOS Koruması
           href: ddos-best-practices.md
-        - name: Sınır güvenliği
-          href: network-best-practices.md
 - name: Uygulama
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: Denetim ve günlüğe kaydetme
       items:
-        - name: Güvenlik yönetimi
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: Uzaktan yönetim güvenliği
           href: management.md
         - name: Azure günlük tümleştirmesi
@@ -199,9 +184,6 @@
             - name: Azure AD denetim günlüklerini tümleştirme
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Güvenlik Merkezi uyarılarını tümleştirme
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Key Vault’tan günlükleri tümleştirme
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md

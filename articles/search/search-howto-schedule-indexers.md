@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186580"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533612"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Azure Search için Dizin Oluşturucu zamanlama
 Dizin Oluşturucu normalde, oluşturulduktan hemen sonra bir kez çalışır. Portalı, REST API veya .NET SDK kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Bir dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de yapılandırabilirsiniz.
@@ -48,11 +48,11 @@ Daha somut hale getirmek için bir örnek ele alalım. Bir Dizin Oluşturucu zam
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Portalda bir zamanlama tanımlama
+## <a name="schedule-in-the-portal"></a>Portalda zamanla
 
-Portalda veri Içeri aktarma Sihirbazı, oluşturma zamanında bir dizin oluşturucunun zamanlamasını tanımlamanızı sağlar. Varsayılan zamanlama ayarı her saat' tir. Bu, dizin oluşturucunun oluşturulduktan sonra bir kez çalıştırıldığı ve sonrasında her saat sonra yeniden çalıştırıldığı anlamına gelir.
+Portalda veri Içeri aktarma Sihirbazı, oluşturma zamanında bir dizin oluşturucunun zamanlamasını tanımlamanızı sağlar. Varsayılan zamanlama ayarı **her saat ' tir.** bu, dizin oluşturucunun oluşturulduktan sonra bir kez çalıştırıldığı ve sonrasında her saat sonra yeniden çalıştırıldığı anlamına gelir.
 
-Dizin oluşturucunun yeniden otomatik olarak çalışmasını istemiyorsanız veya günde bir kez çalıştırmak istemiyorsanız, zamanlama ayarını **bir kez** daha değiştirebilirsiniz. Farklı bir Aralık veya belirli bir başlangıç saati belirtmek istiyorsanız, bunu **özel** olarak ayarlayın.
+Dizin oluşturucunun yeniden otomatik olarak çalışmasını istemiyorsanız **veya günde bir** kez çalıştırmak Istemiyorsanız, zamanlama ayarını **bir kez** daha değiştirebilirsiniz. Farklı bir Aralık veya belirli bir başlangıç saati belirtmek istiyorsanız, bunu **özel** olarak ayarlayın.
 
 Zamanlamayı **özel**olarak ayarladığınızda, alanlar, **aralığı** ve **başlangıç saatini (UTC)** belirtmenize izin verecek şekilde görünür. İzin verilen en kısa zaman aralığı 5 dakikadır ve en uzun süre 1440 dakikadır (24 saat).
 
@@ -64,7 +64,7 @@ Bir Dizin Oluşturucu oluşturulduktan sonra, dizin oluşturucunun düzenleme pa
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>REST API kullanarak bir zamanlama tanımlayın
+## <a name="schedule-using-rest-apis"></a>REST API 'Lerini kullanmayı zamanla
 
 REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, var olan bir dizin oluşturucuyu güncelleştirmek için bir PUT isteği gösterilmektedir:
 
@@ -78,7 +78,7 @@ REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsini
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 2 saat `PT2H` için 15 dakikada bir.
+**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))`. Örnekler: her 2 saat için `PT2H` 15 dakikada bir `PT15M`.
 
 İsteğe bağlı **StartTime** , zamanlanan yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme, dizin oluşturucunun özgün **başlangıçzamanından**bu yana sürekli olarak çalışıp çalışmadığını olarak zamanlanır.
 
@@ -86,7 +86,7 @@ Ayrıca, Dizin oluşturucuyu Çalıştır çağrısını kullanarak istediğiniz
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>.NET SDK kullanarak zamanlama tanımlama
+## <a name="schedule-using-the-net-sdk"></a>.NET SDK kullanarak zamanlama
 
 Bir dizin oluşturucunun zamanlamasını Azure Search .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
 

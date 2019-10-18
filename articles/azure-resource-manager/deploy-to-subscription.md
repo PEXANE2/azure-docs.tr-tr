@@ -1,17 +1,17 @@
 ---
-title: Abonelik Azure Resource Manager şablonunda kaynak grupları ve kaynaklar oluşturma
+title: Abonelik düzeyi dağıtma-Azure Resource Manager şablonu
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 913014a9b7e24345cd21979ba20ea1a1a938d022
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001610"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532199"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma
 
@@ -76,7 +76,7 @@ Abonelik düzeyindeki dağıtımlar için, dağıtım için bir konum sağlaman�
 
 Dağıtım için bir ad verebilir veya varsayılan dağıtım adını kullanabilirsiniz. Varsayılan ad şablon dosyasının adıdır. Örneğin, **azuredeploy. JSON** adlı bir şablon dağıtmak, **azuredeploy**varsayılan dağıtım adını oluşturur.
 
-Her dağıtım adı için konum sabittir. Aynı ada ancak farklı konuma sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. @No__t-0 hata kodunu alırsanız, bu adın önceki dağıtımıyla farklı bir ad veya aynı konumu kullanın.
+Her dağıtım adı için konum sabittir. Aynı ada ancak farklı konuma sahip mevcut bir dağıtım olduğunda tek bir konumda dağıtım oluşturamazsınız. @No__t_0 hata kodunu alırsanız, bu adın önceki dağıtımıyla farklı bir ad veya aynı konumu kullanın.
 
 ## <a name="use-template-functions"></a>Şablon işlevlerini kullanma
 

@@ -1,5 +1,5 @@
 ---
-title: Kubernetes hizmetini Çalıştır
+title: Kubernetes hizmetinde Dil Algılama kapsayıcısı çalıştırma
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Dil algılama kapsayıcısını, çalışan bir örnekle, Azure Kubernetes hizmetine dağıtın ve bir Web tarayıcısında test edin.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 927f5bc191c1bbd3e9f8ea89b9f4171ce82df612
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: HT
+ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388150"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515244"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Metin Analizi dil algılama kapsayıcısını Azure Kubernetes hizmetine dağıtma
 
@@ -132,7 +132,7 @@ Kapsayıcıyı Azure Kubernetes hizmetine dağıtmak için kapsayıcı görünt�
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    @No__t 0 hatası alırsanız `az acr login --name <your-container-registry-name>` komutuyla oturum açın. 
+    @No__t_0 bir hata alırsanız `az acr login --name <your-container-registry-name>` komutuyla oturum açın. 
 
     İşlem tamamlandığında, sonuçların şuna benzer olması gerekir:
 
@@ -206,7 +206,7 @@ Bu yordamda daha sonra oluşturduğunuz Azure Kubernetes hizmeti ile kapsayıcı
 
     3\. adım için tam değeri bu bölümde saklayın.
 
-1. AKS kümesine yönelik doğru erişimi, kapsayıcı kayıt defterinizde depolanan görüntüleri kullanmak üzere vermek için, bir rol ataması oluşturun. @No__t-0 ve `<acrId>` ' i önceki iki adımda toplanan değerlerle değiştirin.
+1. AKS kümesine yönelik doğru erişimi, kapsayıcı kayıt defterinizde depolanan görüntüleri kullanmak üzere vermek için, bir rol ataması oluşturun. @No__t_0 ve `<acrId>` önceki iki adımda toplanan değerlerle değiştirin.
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
@@ -307,7 +307,7 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Aşağıdaki dosyayı kopyalayın ve `language.yml` olarak adlandırın. Dosyada `service` bölümü ve her biri iki kapsayıcı türü, `language-frontend` Web sitesi kapsayıcısı ve @no__t 3 algılama kapsayıcısı için `deployment` bölümü vardır.
+1. Aşağıdaki dosyayı kopyalayın ve `language.yml` olarak adlandırın. Dosyada bir `service` bölümü ve her biri iki kapsayıcı türü, `language-frontend` Web sitesi kapsayıcısı ve `language` algılama kapsayıcısı için `deployment` bölümü vardır.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
@@ -329,7 +329,7 @@ Bu bölümde, Azure Kubernetes hizmeti ile konuşmak için **kubectl** CLI kulla
 
     **Apikey** ve **faturalandırma uç noktası** Kubernetes Orchestration tanımının bir parçası olarak ayarlandığı için, Web sitesi kapsayıcısının bu ilgili bilgileri bilmeleri veya isteğin bir parçası olarak iletilmesi gerekmez. Web sitesi kapsayıcısı, dil algılama kapsayıcısını Orchestrator adı `language` olarak ifade eder.
 
-1. @No__t-0 ' i oluşturduğunuz ve kaydettiğiniz klasörden bu örnek için Orchestration tanım dosyasını yükleyin.
+1. @No__t_0 oluşturduğunuz ve kaydettiğiniz klasörden bu örnek için Orchestration tanım dosyasını yükleyin.
 
     ```console
     kubectl apply -f language.yml
@@ -391,7 +391,7 @@ Bir tarayıcı açın ve önceki bölümde `language` kapsayıcısının dış I
 
 ## <a name="test-the-client-application-container"></a>İstemci uygulama kapsayıcısını test etme
 
-Tarayıcıdaki URL 'YI, aşağıdaki biçimi kullanarak `language-frontend` kapsayıcısının dış IP 'sine değiştirin: `http://<external-ip>/helloworld`. @No__t-0 ' ın Ingilizce kültür metni `English` olarak tahmin edilir.
+Tarayıcıdaki URL 'YI, aşağıdaki biçimi kullanarak `language-frontend` kapsayıcısının dış IP 'sine değiştirin: `http://<external-ip>/helloworld`. @No__t_0 Ingilizce kültür metni `English` olarak tahmin edilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

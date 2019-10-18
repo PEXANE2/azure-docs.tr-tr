@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b7c7bfffb5ddf947dc9bd25e6828e2816a7325cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559744"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516770"
 ---
 # <a name="speech-services-for-telephony-data"></a>Telefon verileri için konuşma Hizmetleri
 
@@ -40,7 +40,7 @@ Konuşma hizmetlerinin birincil amacına göre işlevsel en iyi yönlerinin öte
 * Arama gerçekleştiği sırada çeşitli içgörüler ayıklamak için ses sinyalinin gerçek zamanlı analiz işlemesi (önemli bir kullanım durumu olması durumunda) ve
 * Sanal yardımcılar (robotlar), müşterinin aracı katılımı olmadan müşterinin sorununu çözme veya aracıya yardımcı olacak AI protokollerinin uygulaması gibi iletişim kutusu
 
-Bir Batch senaryosu uygulamasının tipik bir mimari diyagramı, çağrı merkezi döküm mimarisinin altındaki ![resimde gösterilmiştir](media/scenarios/call-center-transcription-architecture.png)
+Bir Batch senaryosu uygulamasının tipik bir mimari diyagramı, aşağıdaki resimde ![Call Center döküm mimarisi ](media/scenarios/call-center-transcription-architecture.png) gösterilmiştir.
 
 ## <a name="speech-analytics-technology-components"></a>Konuşma analizi teknoloji bileşenleri
 
@@ -50,7 +50,7 @@ Etki alanı, çağrı sonrası veya gerçek zamanlı olup olmadığı için Azur
 
 [Konuşmayı metne](speech-to-text.md) dönüştürme işlemi, herhangi bir çağrı merkezi çözümünde özelliğinden sonra en çok aranan özelliktir. Aşağı akış analizlerinin birçoğu, metnin sonuna kadar bir metin kullandığından, hata oranı (WER) en önemli öneme sahiptir. Çağrı merkezi 'ndeki önemli güçlüklerden biri, çağrı merkezi 'nde (örneğin, arka planda konuşuyor diğer aracılar) yaygın olarak kullanılan ve gerçek telefon sinyalinin en düşük kalitesindeki, çok sayıda dil yerel ayarı ve diapahı 'nin yaygın olduğu gürültü. WER, belirli bir yerel ayar için akustik ve dil modellerinin eğitilme ve bu sayede modeli yerel ayarınızdaki bir şekilde özelleştirebilme açısından önemli ölçüde bağıntılı bir seçenektir. En son birleştirilmiş sürüm 4. x modellerimiz, hem döküm doğruluğu hem de gecikme süresi çözümüdür. On binlerce saatlik akustik veri ve milyarlarca sözlü bilgi birleştirilmiş modellerle eğitilen, pazara giren en doğru modellerdir.
 
-### <a name="sentiment"></a>Yaklaşım
+### <a name="sentiment"></a>Duygu
 Ölçmek, arama merkezi alanına uygulandığında konuşma analizinin en önemli alanlarından biridir. [Toplu Iş dökümü API](batch-transcription.md) 'imiz, utterance başına yaklaşım analizi sunar. Hem aracılarınız hem de müşteri için çağrının yaklaşımını tespit etmek üzere çağrı dökümünü bir parçası olarak elde edilen değerler kümesini toplayabilirsiniz.
 
 ### <a name="silence-non-talk"></a>Sessizlik (konuş olmayan)
@@ -62,14 +62,14 @@ Bazı şirketler, dağıtım yöneticilerinin müşterilerinin dünya çapında 
 ### <a name="text-to-speech"></a>Metin Okuma
 [Metinden konuşmaya](text-to-speech.md) , müşterilerle etkileşime geçen botları uygulamakta önemli bir alandır. Tipik bir yol, müşterinin konuştuğu, sesin metne göre çözümlenme, amaç için analiz olduğu, tanınan amaca göre bir yanıt elde edilmesi ve bir varlığın müşteriye veya bir sensörle bir ses yanıtı olduğu üret. Kuşkusuz bunun her şey hızlı bir şekilde gerçekleşmelidir; bu nedenle gecikme süresi, bu sistemlerin başarısı için önemli bir bileşendir.
 
-Uçtan uca Geciktiğimiz, [konuşmadan metne](speech-to-text.md), Lua, [bot Framework](https://dev.botframework.com/), [metinden konuşmaya](text-to-speech.md)gibi çeşitli teknolojiler göz önünde bulundurularak [](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)oldukça düşüktür.
+Uçtan uca Geciktiğimiz, [konuşmadan metne](speech-to-text.md), [LUA](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [bot Framework](https://dev.botframework.com/), [metinden konuşmaya](text-to-speech.md)gibi çeşitli teknolojiler göz önünde bulundurularak oldukça düşüktür.
 
 Yeni seslerimiz de insan seslerinden ayırt edilemez. Botunuza benzersiz kişiliğinizi sağlamak için sesler kullanabilirsiniz.
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arama
 Analize ait başka bir zımba, belirli bir olay veya deneyimin gerçekleştiği etkileşimleri belirlemektir. Bu işlem genellikle, kullanıcının bir tümceciği ve sistem yanıt verdiğini veya daha yapılandırılmış bir sorguyu, yani bir analistin çağrı içindeki bir senaryoyu tanımlayan bir mantıksal deyimler kümesi oluşturmasının gerektiği daha yapılandırılmış bir sorgu olan iki yaklaşımdan biriyle yapılır ve sonra her çağrının bu sorgu kümesiyle dizini oluşturulabilir. İyi bir arama örneği, ubititous uyumluluk deyimidir "Bu çağrı kalite amacıyla kaydedilecek... "– birçok şirket, aracıların gerçekten kaydedilmeden önce bu vazgeçme belgesi müşterilere bu bildirimi sağladığından emin olmak istiyor. Çoğu analiz sistemi, bu eğilimleri raporlamak son olarak bir analiz sisteminin en önemli işlevlerinden biri olduğundan, sorgu/arama algoritmaları tarafından bulunan davranışları eğilim özelliğine sahiptir. Bilişsel [Hizmetler dizini](https://azure.microsoft.com/services/cognitive-services/directory/search/) sayesinde uçtan uca çözümünüz, dizin oluşturma ve arama özellikleri ile önemli ölçüde iyileştirilen olabilir.
 
-### <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
+### <a name="key-phrase-extraction"></a>Anahtar Tümcecik Ayıklama
 Bu alan, daha zorlu analitik uygulamalardan biridir ve bunlardan biri AI ve ML uygulamasından yararlanırken. Burada birincil senaryo, müşteri amacını çıkarmaktır. Müşteri neden çağrılıyor? Müşteri sorunu nedir? Müşterinin neden negatif bir deneyimi var? [Metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) hizmetimiz, bu önemli anahtar sözcükleri veya tümceleri ayıklamak üzere uçtan uca çözümünüzü hızlı bir şekilde yükseltmek için kutudan çıkan bir analiz kümesi sağlar.
 
 Artık, toplu işleme ve konuşma tanıma için gerçek zamanlı işlem hatlarına biraz daha ayrıntılı bir göz atalım.
@@ -78,9 +78,9 @@ Artık, toplu işleme ve konuşma tanıma için gerçek zamanlı işlem hatları
 
 Ses dökümü için [toplu Iş dökümü API](batch-transcription.md)'sini geliştirdik. Toplu Iş dökümü API 'SI, büyük miktarlarda ses verisi zaman uyumsuz olacak şekilde geliştirilmiştir. Çözüm çağrı merkezi verilerinin dökümünü yaparken, çözümümüzü bu sayfalarımdayına dayalıdır:
 
-* **Doğruluk**: Dördüncü nesil Birleşik modellerle unsurpassed döküm kalitesi sunuyoruz.
-* **Gecikme süresi**: Toplu döküm yaparken, bu işlemleri hızlı bir şekilde yapmanız gerektiğini anladık. [Toplu Iş dökümü API 'si](batch-transcription.md) aracılığıyla başlatılan döküm işleri hemen sıraya alınır ve iş çalışmaya başladıktan sonra gerçek zamanlı dökümden daha hızlı gerçekleştirilir.
-* **Güvenlik**: Çağrıların hassas verileri içerebileceğini anladık. Güvenlik, en yüksek önceliklerimizden biri olduğundan emin olur. Hizmetimiz ISO, SOC, HIPAA, PCI sertifikaları aldı.
+* **Doğruluk**: dördüncü nesil Birleşik modellerle unsurpassed döküm kalitesi sunuyoruz.
+* **Gecikme süresi**: toplu döküm yaparken, bu işlemleri hızlı bir şekilde yapmanız gerektiğini anladık. [Toplu Iş dökümü API 'si](batch-transcription.md) aracılığıyla başlatılan döküm işleri hemen sıraya alınır ve iş çalışmaya başladıktan sonra gerçek zamanlı dökümden daha hızlı gerçekleştirilir.
+* **Güvenlik**: çağrıların gizli veriler içerebileceğini anladık. Güvenlik, en yüksek önceliklerimizden biri olduğundan emin olur. Hizmetimiz ISO, SOC, HIPAA, PCI sertifikaları aldı.
 
 Çağrı merkezleri günlük olarak büyük hacimli ses verileri oluşturur. İşiniz telefon verilerini Azure depolama gibi merkezi bir konumda depoluyorsa, [toplu Iş dökümü API](batch-transcription.md) 'sini kullanarak zaman uyumsuz istek yapabilir ve bu istekleri alabilirsiniz.
 
@@ -92,7 +92,7 @@ Tipik bir çözüm bu hizmetleri kullanır:
 * [Web kancaları](webhooks.md) , döküm tamamlandığında bildirim almak için kullanılır.
 
 Dahili olarak, Microsoft Müşteri çağrılarını toplu Iş modunda desteklemek için yukarıdaki teknolojileri kullanıyoruz.
-![Batch mimarisi](media/scenarios/call-center-batch-pipeline.png)
+![Batch mimari ](media/scenarios/call-center-batch-pipeline.png)
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Çağrı merkezi verileri için gerçek zamanlı döküm
 
@@ -110,7 +110,7 @@ Konuşma Hizmetleri, [konuşma SDK 'sı](speech-sdk.md) veya [REST API](rest-api
 
 Birçok IR veya telefon hizmet ürünü (Genesys veya AudioCodes gibi), bir Azure hizmetine gelen ve giden ses geçişini etkinleştirmek için yararlanılabilir olabilecek tümleştirme özellikleri sunar. Temel olarak, özel bir Azure hizmeti telefon araması oturumlarını (çağrı başlatma veya çağrı bitişi gibi) tanımlamak için belirli bir arabirim sağlayabilir ve konuşma hizmetleriyle birlikte kullanılan gelen akış sesini almak için bir WebSocket API 'SI sunar. Konuşma ve bot Framework ile bağlantılar gibi giden yanıtlar, Microsoft 'un metin okuma hizmeti ile birlikte bulunabilir ve kayıttan yürütme için ıVR 'ye döndürülür.
 
-Başka bir senaryo doğrudan SIP Tümleştirmesidir. Azure hizmeti bir SIP sunucusuna bağlanır, bu nedenle, konuşma ve metinden konuşmaya aşamalar için kullanılan bir gelen akış ve giden akış elde edilir. Bir SIP sunucusuna bağlanmak için, ozeki SDK gibi ticari yazılım teklifleri veya ses çağrıları için bu tür senaryoyu destekleyecek şekilde tasarlanan [takımlar çağıran ve toplantılar API 'si](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (Şu anda beta sürümünde) bulunur.
+Başka bir senaryo doğrudan SIP Tümleştirmesidir. Azure hizmeti bir SIP sunucusuna bağlanır, bu nedenle, konuşma ve metinden konuşmaya aşamalar için kullanılan bir gelen akış ve giden akış elde edilir. Bir SIP sunucusuna bağlanmak için, ozeki SDK gibi ticari yazılım teklifleri veya ses çağrıları için bu tür senaryoyu destekleyecek şekilde tasarlanan [takımlar çağıran ve toplantılar API 'si](/graph/api/resources/communications-api-overview) (Şu anda beta sürümünde) bulunur.
 
 ## <a name="customize-existing-experiences"></a>Mevcut deneyimleri özelleştirin
 
@@ -118,9 +118,9 @@ Azure konuşma Hizmetleri yerleşik modellerle iyi çalışmaktadır, ancak ür�
 
 | Konuşma hizmeti | Model | Açıklama |
 |----------------|-------|-------------|
-| Konuşmayı Metne Dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
+| Konuşmayı metne dönüştürme | [Akustik model](how-to-customize-acoustic-models.md) | Her biri belirli kayıt koşullarına sahip bir otomobil veya bir fabrika katında gibi belirli ortamlarda kullanılan uygulamalar, araçlar veya cihazlar için özel bir akustik model oluşturun. Bu örneklere, vurgulu konuşma, belirli arka plan gürültüler veya kayıt için belirli bir mikrofon kullanımı dahildir. |
 | | [Dil modeli](how-to-customize-language-model.md) | Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi ya da It jarggibi bir tür dökümü geliştirmek için özel bir dil modeli oluşturun. |
-| | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, bir sözcük veya terimin fonetik biçimini tanımlayabilir ve görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş koşullarını işlemek için kullanışlıdır. Başlamak için ihtiyacınız olan telaffuz dosya--basit .txt dosyası. |
+| | [Söyleniş modeli](how-to-customize-pronunciation.md) | Özel bir telaffuz modeliyle, bir sözcük veya terimin fonetik biçimini tanımlayabilir ve görüntüleyebilirsiniz. Ürün adları veya kısaltmalar gibi özelleştirilmiş terimleri işlemek için faydalıdır. Kullanmaya başlamak için tek yapmanız gereken, basit bir. txt dosyası olan bir telaffuz dosyasıdır. |
 | Metin okuma | [Ses tipi](how-to-customize-voice-font.md) | Özel ses yazı tipleri, markanız için tanınabilir, tek bir tür sesi oluşturmanızı sağlar. Başlamak için yalnızca az miktarda veri alır. Sağladığınız daha fazla veri, ses yazı tipi daha doğal ve insan gibi bir şekilde gönderilir. |
 
 ## <a name="sample-code"></a>Örnek kod
@@ -135,9 +135,9 @@ Azure konuşma Hizmetleri yerleşik modellerle iyi çalışmaktadır, ancak ür�
 
 * [Konuşma SDK'sı](speech-sdk-reference.md)
 * [Konuşma cihazları SDK 'Sı](speech-devices-sdk.md)
-* [REST API: Konuşmayı metne dönüştürme](rest-speech-to-text.md)
-* [REST API: Metin okuma](rest-text-to-speech.md)
-* [REST API: Toplu iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
+* [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
+* [REST API: metinden konuşmaya](rest-text-to-speech.md)
+* [REST API: toplu Iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

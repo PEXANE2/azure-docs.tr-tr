@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/12/2019
 ms.author: diberry
-ms.openlocfilehash: a63b6773a7546f8add0b2f2ab6280801e90bccca
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8f00ffeff4eb353fa70aa7df60b14c97d4b8e724
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248629"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554867"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -46,9 +46,9 @@ Soru ve yanıt kümelerinden en iyi eşleşmeyi elde etmek için, bot veya uygul
 Bilgi bankanızı [soru-cevap oluşturma portalından](https://www.qnamaker.ai)yayımladığınızda veya [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)'Yi kullanarak, generateanswer uç noktanızın ayrıntılarını alabilirsiniz.
 
 Uç nokta ayrıntılarınızı almak için:
-1. [@No__t-1](https://www.qnamaker.ai)' de oturum açın.
+1. [https://www.qnamaker.ai](https://www.qnamaker.ai) adresinde oturum açın.
 1. **Bilgi tabanlarım**' da bilgi tabanınız Için **kodu görüntüle** ' yi seçin.
-    @no__t--bilgi temellerimin @ ekran görüntüsü @ no__t-1
+    bilgi temellerimin ![Screenshot ](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. GenerateAnswer uç noktası ayrıntılarınızı alın.
 
     ![Uç nokta ayrıntılarının ekran görüntüsü](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -73,7 +73,7 @@ GenerateAnswer URL 'SI aşağıdaki biçime sahiptir:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-@No__t-0 ' ın HTTP üst bilgi özelliğini, sonunda boşluk olan `EndpointKey` dizesinin bir değeriyle ve ardından **Ayarlar** sayfasında bulunan uç nokta anahtarıyla ayarlamayı unutmayın.
+@No__t_0 HTTP üst bilgisi özelliğini, bir sonundaki boşluk ve sonra **Ayarlar** sayfasında bulunan uç nokta anahtarı ile bir dize `EndpointKey` olarak ayarlamayı unutmayın.
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -83,6 +83,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
     "top": 6,
     "isTest": true,
     "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -92,7 +93,9 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-Önceki JSON yalnızca% 30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
+[Rankertype](../concepts/best-practices.md#choosing-ranker-type)hakkında daha fazla bilgi edinin.
+
+Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
 
 <a name="generateanswer-response"></a>
 
@@ -141,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-Önceki JSON yalnızca% 30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
+Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
 
 Destek bot, bu koda [bir örnek](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) içerir.
 
@@ -161,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-Önceki JSON yalnızca% 30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
+Önceki JSON yalnızca %30 ' da veya eşik puanı üzerinde olan yanıtları istedi. 
 
 Destek bot, bu koda [bir örnek](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) içerir.
 
@@ -229,7 +232,7 @@ GenerateAnswer yanıtı, eşleşen soru ve yanıt kümesi için karşılık gele
 
 Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için GenerateAnswer isteğinin GÖNDERI gövdesinde `RankerType=QuestionOnly` kullanın.
 
-@No__t-0 ' ı veya `isTest=true` kullanarak test KB ' yi kullanarak yayımlanmış KB içinde arama yapabilirsiniz.
+@No__t_0 kullanarak yayımlanmış KB veya `isTest=true` kullanarak test KB içinde arama yapabilirsiniz.
 
 ```json
 {
@@ -242,7 +245,7 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 
 ## <a name="common-http-errors"></a>Ortak HTTP hataları
 
-|Kod|Açıklama|
+|Kodlayın|Açıklama|
 |:--|--|
 |2xx|Başarılı|
 |400|İsteğin parametreleri yanlış, gerekli parametreler eksik, hatalı biçimlendirilmiş veya çok büyük|

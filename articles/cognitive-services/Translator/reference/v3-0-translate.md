@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299820"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515251"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: çevir
 
@@ -23,7 +23,7 @@ Metni çevirir.
 
 ## <a name="request-url"></a>İstek URL'si
 
-@No__t-0 isteği gönder:
+@No__t_0 isteği gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
@@ -42,7 +42,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>Kaynak</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. @No__t-1 kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. @No__t-0 parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. @No__t_1 kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. @No__t_0 parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
   </tr>
   <tr>
     <td>-</td>
@@ -102,7 +102,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>İçerik türü</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/>Yükün içerik türünü belirtir. Olası değerler: <code>application/json</code>.</td>
+    <td><em>Gerekli istek üst bilgisi</em>.<br/>Yükün içerik türünü belirtir.<br/> Kabul edilen değer <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>İçerik uzunluğu</td>
@@ -110,7 +110,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>X-Clienttraceıd</td>
-    <td><em>İsteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. @No__t-0 adlı bir sorgu parametresi kullanarak sorgu dizesine izleme KIMLIĞI eklerseniz, bu üstbilgiyi atlayabilirsiniz.</td>
+    <td><em>İsteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. @No__t_0 adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
@@ -139,7 +139,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
       * `score`: sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
 
-    @No__t-0 özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
+    @No__t_0 özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
 
   * `translations`: bir çeviri sonuçları dizisi. Dizinin boyutu, `to` sorgu parametresi ile belirtilen hedef dillerin sayısıyla eşleşir. Dizideki her öğe şunları içerir:
 
@@ -153,7 +153,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
       * `text`: hedef betikte çevrilmiş metni sağlayan bir dize.
 
-    @No__t-0 nesnesi, alfabede gerçekleşmezse dahil değildir.
+    @No__t_0 nesnesi, bir alfabeye çevirme gerçekleşmezse dahil edilmez.
 
     * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj` adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca `includeAlignment` olan istek parametresi `true` olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
 
@@ -209,7 +209,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>408</td>
-    <td>Bir kaynak eksik olduğu için istek yerine getirilemedi. Ayrıntılar hata iletisini denetleyin. Özel bir @no__t (0) kullanılırken bu genellikle özel çeviri sisteminin isteklere izin vermek için kullanılabilir olmadığını gösterir. İstek bir bekleme süresinden (ör. 1 dakika) sonra yeniden denenmelidir.</td>
+    <td>Bir kaynak eksik olduğu için istek yerine getirilemedi. Ayrıntılar hata iletisini denetleyin. Özel bir <code>category</code> kullanıldığında, bu genellikle özel çeviri sisteminin istekleri sağlamak için kullanılabilir olmadığını gösterir. İstek bir bekleme süresinden (ör. 1 dakika) sonra yeniden denenmelidir.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -234,7 +234,7 @@ Bir hata oluşursa, istek bir JSON hata yanıtı da döndürür. Hata kodu 3 bas
 Bu örnek, Ingilizce 'den Basitleştirilmiş Çince 'e tek bir tümcenin nasıl çevrileceğini gösterir.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Yanıt gövdesi:
@@ -249,14 +249,14 @@ Yanıt gövdesi:
 ]
 ```
 
-@No__t-0 dizisi, girişte tek metin parçasının çevirisini sağlayan bir öğesi içerir.
+@No__t_0 dizi, girişte tek metin parçasının çevirisini sağlayan bir öğesi içerir.
 
 ### <a name="translate-a-single-input-with-language-auto-detection"></a>Tek bir girişi dil otomatik algılama ile çevir
 
 Bu örnek, Ingilizce 'den Basitleştirilmiş Çince 'e tek bir tümcenin nasıl çevrileceğini gösterir. İstek, giriş dilini belirtmiyor. Bunun yerine kaynak dilin otomatik algılanması kullanılır.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Yanıt gövdesi:
@@ -278,7 +278,7 @@ Yanıt, önceki örnekteki yanıta benzerdir. Dil otomatik algılama işlemi ist
 Daha sonra, bir önceki örneği, alfabeye ekleyerek genişletelim. Aşağıdaki istek Latin komut dosyasında yazılmış bir Çince çevirisi ister.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Yanıt gövdesi:
@@ -305,7 +305,7 @@ Yanıt gövdesi:
 Birden çok dizeyi aynı anda çevirmek, istek gövdesinde dize dizisi belirtmenin bir önemi olur.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 Yanıt gövdesi:
@@ -330,7 +330,7 @@ Yanıt gövdesi:
 Bu örnek, aynı girişin bir istekte birkaç dilde nasıl çevrilebileceğini gösterir.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 Yanıt gövdesi:
@@ -350,7 +350,7 @@ Yanıt gövdesi:
 
 Normalde çevirmen hizmeti, çevirinin kaynağında bulunan küfür 'ı korur. Küfür derecesi ve sözcüklerin küfürlü, kültürler arasında farklı hale getiren bağlam ve sonuç olarak hedef dildeki küfür derecesi indirgenmiş veya azalmış olabilir.
 
-Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almayı önlemek istiyorsanız, küfür filtreleme seçeneğini kullanabilirsiniz. Bu seçenek, profanities uygun etiketlerle işaretlemek isteyip istemediğinizi seçmenizi sağlar (kendi işlem sonrası kendi işlemlerini ekleme seçeneğini sağlar) veya hiçbir işlem yapılıp yapılmayacağını seçebilirsiniz. @No__t-0 ' ın kabul edilen değerleri `Deleted`, `Marked` ve `NoAction` (varsayılan).
+Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almayı önlemek istiyorsanız, küfür filtreleme seçeneğini kullanabilirsiniz. Bu seçenek, profanities uygun etiketlerle işaretlemek isteyip istemediğinizi seçmenizi sağlar (kendi işlem sonrası kendi işlemlerini ekleme seçeneğini sağlar) veya hiçbir işlem yapılıp yapılmayacağını seçebilirsiniz. Kabul edilen `ProfanityAction` değerleri `Deleted`, `Marked` ve `NoAction` (varsayılan).
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
@@ -372,19 +372,19 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   <tr>
     <td><code>Marked</code></td>
     <td>Küfürlü sözcükleri çıktıda bir işaret ile değiştirilmiştir. İşaretleyici <code>ProfanityMarker</code> parametresine bağlıdır.<br/><br/>
-@No__t-0 için küfürlü kelimeleri <code>***</code> ile değiştirilmiştir:<br/>
+@No__t_0 için, küfürlü kelimeleri <code>***</code> ile değiştirilmiştir:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (İngilizce)</strong>: bir \* @ no__t-2 @ no__t-3.<br/><br/>
-@No__t-0 için küfürlü kelimeleri XML etiketleriyle çevrelenmiş &lt;küfür @ no__t-2 ve &lt;/küfür @ no__t-4:<br/>
+    <strong>Örnek çeviri (İngilizce)</strong>: \* bir \* \*.<br/><br/>
+@No__t_0 için, küfürlü kelimeleri &gt; ve &lt;/küfür &gt; &lt;profanity XML etiketleri ile çevrelenmiş:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (İngilizce)</strong>: bir &lt;küfür @ no__t-2jackass @ no__t-3/küfür @ no__t-4.
+    <strong>Örnek çeviri (İngilizce)</strong>: &lt;profanity &gt;jackass &lt;/küfür &gt;.
   </tr>
 </table> 
 
 Örnek:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 Bu değer şunu döndürür:
 
@@ -401,7 +401,7 @@ Bu değer şunu döndürür:
 Karşılaştırma:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 Bu son istek şunu döndürür:
@@ -428,7 +428,7 @@ Bir HTML sayfası veya bir XML belgesinden içerik gibi biçimlendirme içeren i
 Aşağıda, örnek bir istek gösterilmektedir.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 Yanıt:
@@ -448,7 +448,7 @@ Yanıt:
 Hizalama bilgilerini almak için sorgu dizesinde `includeAlignment=true` belirtin.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 Yanıt:
@@ -484,7 +484,7 @@ Aşağıdaki kısıtlamalara göz önünde edin:
 Kaynak metninde ve çevrilmiş metinde cümle uzunluğu hakkında bilgi almak için sorgu dizesinde `includeSentenceLength=true` belirtin.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
 Yanıt:
@@ -516,7 +516,7 @@ Sağlayacak biçimlendirme aşağıdaki sözdizimini kullanır.
 Örneğin, "sözcük çalışma sözcüğü bir sözlük girişi" Ingilizce cümlesini göz önünde bulundurun. Çeviride bir sözcük _dünyayı_ korumak için isteği gönderin:
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 Sonuç:

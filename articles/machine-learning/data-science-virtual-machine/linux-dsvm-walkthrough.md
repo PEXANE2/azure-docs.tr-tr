@@ -58,7 +58,7 @@ Sonra iki dosyayı birlikte birleştirin:
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
-* **Sözcük\_FREQ\_*Word*** gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük\_FREQ\_** **1**ise, e-postadaki tüm sözcüklerin% 1 ' i *haline*getirin.
+* **Sözcük\_FREQ\_ *Word*** gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük\_FREQ\_** **1**ise, e-postadaki tüm sözcüklerin% 1 ' i *haline*getirin.
 * **Char\_değeri*char*gibisütunlar,e-postadakichar'dakitümkarakterlerinyüzdesinigösterir.\_**
 * **büyük\_çalıştırma\_uzunluğu\_uzun** büyük harf dizisini uzun uzunluğu.
 * **büyük\_çalıştırma\_uzunluğu\_ortalama** büyük harf tüm dizileri ortalama uzunluğu.

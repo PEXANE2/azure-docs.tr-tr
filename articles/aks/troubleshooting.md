@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025486"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517084"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -44,8 +44,8 @@ Daha fazla bilgi için bkz. [kümeniz IÇIN IP adresleme planlaması](configure-
 
 Pod 'un bu modda takılmasının çeşitli nedenleri olabilir. Şöyle görünebilir:
 
-* @No__t-0 kullanarak Pod kendisini kullanın.
-* @No__t-0 kullanılarak Günlükler.
+* @No__t_0 kullanarak Pod kendisini kullanın.
+* @No__t_0 kullanarak Günlükler.
 
 Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda hata ayıklama](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
@@ -59,13 +59,13 @@ Panodaki uyarıların nedeni, kümenin RBAC ile etkin hale gelir ve erişim vars
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmam gerekir?
 
-Küme dışında hizmetinize erişmenin en kolay yolu, Kubernetes API sunucusuna localhost bağlantı noktası 8001 ' e gönderilen isteklerin proxy 'sini @no__t çalışacaktır. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+Bir küme dışında hizmetinize erişmenin en kolay yolu, `kubectl proxy` çalıştırmak için, localhost bağlantı noktası 8001 ' e, Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un `kube-system` ad alanında çalışıp çalışmadığını denetleyin. Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmam gerekir?
 
-Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. @No__t-2 komutunu kullanarak *kuin-System* ad alanında `tunnelfront` Pod 'un çalışıp çalışmadığını denetleyin. Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
+Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. @No__t_0 Pod 'ın, `kubectl get pods --namespace kube-system` komutunu kullanarak *kuin-System* ad alanında çalışıp çalışmadığını denetleyin. Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>"ImageReference" özelliğinin değiştirilmesine izin verilmez ve "bir ileti alıyorum" hatası alıyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
 
@@ -88,7 +88,7 @@ Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken o
 
 Tek düğümlü havuz veya [birden çok düğüm](use-multiple-node-pools.md) havuzu içeren bir küme ile bir kümede yükseltme ve ölçeklendirme işlemleri birbirini dışlıyor. Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. Sonuç olarak, etkin yükseltme veya ölçeklendirme işlemleri gerçekleşirken veya denendiğinde ve daha sonra başarısız olduğunda işlemler sınırlıdır. 
 
-Kümenizde ayrıntılı durum almak için @no__t çalıştırma sorunu tanılamaya yardımcı olmak için-0. Sonuca göre:
+@No__t_0 çalıştırma sorunu tanılamaya yardımcı olmak için kümenizde ayrıntılı durum alma. Sonuca göre:
 
 * Küme etkin bir şekilde yükseltildiğinde, işlem sonlanana kadar bekleyin. Başarılı olduysa, daha önce başarısız olan işlemi yeniden deneyin.
 * Kümede yükseltme başarısız olursa, önceki bölümde açıklanan adımları izleyin.
@@ -118,7 +118,7 @@ Bir AKS kümesini doğru şekilde oluşturmak için uygun belge içindeki *başl
 
 Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulanır. Bir kaynak adı veya parametresi bu kısıtlamaların birini keserse, farklı bir giriş sağlamanızı isteyen bir hata döndürülür. Aşağıdaki ortak adlandırma yönergeleri geçerlidir:
 
-* AKS *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. @No__t-0 ' ın otomatik olarak oluşturulan sözdizimi 80 karakterden büyük olmamalıdır. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın.
+* AKS *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. @No__t_0 otomatik olarak oluşturulan sözdizimi 80 karakterden büyük olmamalıdır. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın.
 * *Dnspredüzeltmesinin* alfasayısal değerlerle başlaması ve bitmesi gerekir. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
@@ -147,3 +147,337 @@ Bunun için aşağıdaki geçici çözümleri kullanın:
 AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kuralların herhangi biriyle çakışıyorsa, bazı `kubectl` komutlarını çalıştıramayabilir. AKS kümesi oluştururken de hata görebilirsiniz.
 
 Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kuralları ile çakışmadığından emin olun.
+
+## <a name="azure-storage-and-aks-troubleshooting"></a>Azure depolama ve AKS sorunlarını giderme
+
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Azure disk için, Kubernetes 'in önerilen kararlı sürümleri nelerdir? 
+
+| Kubernetes sürümü | Önerilen sürüm |
+| -- | :--: |
+| 1,12 | 1.12.9 veya üzeri |
+| 1,13 | 1.13.6 veya üzeri |
+| 1,14 | 1.14.2 veya üzeri |
+
+
+### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>Kubernetes 'in hangi sürümleri, Sovereign bulutu üzerinde Azure disk desteğine sahip?
+
+| Kubernetes sürümü | Önerilen sürüm |
+| -- | :--: |
+| 1,12 | 1.12.0 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
+| 1,14 | 1.14.0 veya üzeri |
+
+
+### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>Azure disk için WaitForAttach başarısız oldu: "/dev/disk/Azure/scsi1/lun1" Ayrıştırılıyor: geçersiz sözdizimi
+
+Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach, Azure disk uzaktan bağlantısı ile başarısız olabilir.
+
+Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
+
+```console
+MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
+  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
+```
+
+Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
+
+```console
+Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
+1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
+```
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,10 | 1.10.2 veya üzeri |
+| 1,11 | 1.11.0 veya üzeri |
+| 1,12 ve üzeri | Yok |
+
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
+
+Azure disk, varsayılan olarak Ext4, XFS FileSystem ve UID = x, GID = x gibi bir bağlama zamanında ayarlanamaz. Örneğin, mountOptions uid = 999, GID = 999 ' u ayarlamaya çalıştıysanız, şöyle bir hata görür:
+
+```console
+Warning  FailedMount             63s                  kubelet, aks-nodepool1-29460110-0  MountVolume.MountDevice failed for volume "pvc-d783d0e4-85a1-11e9-8a90-369885447933" : azureDisk - mountDevice:FormatAndMount failed with mount failed: exit status 32
+Mounting command: systemd-run
+Mounting arguments: --description=Kubernetes transient mount for /var/lib/kubelet/plugins/kubernetes.io/azure-disk/mounts/m436970985 --scope -- mount -t xfs -o dir_mode=0777,file_mode=0777,uid=1000,gid=1000,defaults /dev/disk/azure/scsi1/lun2 /var/lib/kubelet/plugins/kubernetes.io/azure-disk/mounts/m436970985
+Output: Running scope as unit run-rb21966413ab449b3a242ae9b0fbc9398.scope.
+mount: wrong fs type, bad option, bad superblock on /dev/sde,
+       missing codepage or helper program, or other error
+```
+
+Aşağıdakilerden birini yaparak sorunu azaltabilirsiniz:
+
+* FsGroup 'ta runAsUser ve GID ' de uid ' i ayarlayarak [pod için güvenlik bağlamını yapılandırın](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) . Örneğin, aşağıdaki ayar Pod Run as kökünü ayarlar ve herhangi bir dosya için erişilebilir hale getirir:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+  >[!NOTE]
+  > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes, bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için `chown` kullanacaktır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
+
+* GID ve uid ayarlamak için ınitcontainers içinde `chown` kullanın. Örnek:
+
+```yaml
+initContainers:
+- name: volume-mount
+  image: busybox
+  command: ["sh", "-c", "chown -R 100:100 /data"]
+  volumeMounts:
+  - name: <your data volume>
+    mountPath: /data
+```
+
+### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Pod tarafından kullanılan Azure disk PersistentVolumeClaim silinirken hata oluştu
+
+Pod tarafından kullanılmakta olan bir Azure disk PersistentVolumeClaim 'yi silmeye çalışırsanız bir hata görebilirsiniz. Örnek:
+
+```console
+$ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
+...
+Message:         disk.DisksClient#Delete: Failure responding to request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=409 Code="OperationNotAllowed" Message="Disk kubernetes-dynamic-pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06 is attached to VM /subscriptions/{subs-id}/resourceGroups/MC_markito-aks-pvc_markito-aks-pvc_westus/providers/Microsoft.Compute/virtualMachines/aks-agentpool-25259074-0."
+```
+
+Kubernetes sürüm 1,10 ve üzeri sürümlerde, bu hatayı engellemek için varsayılan olarak etkinleştirilen bir PersistentVolumeClaim koruma özelliği vardır. Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, PersistentVolumeClaim 'yi silmeden önce PersistentVolumeClaim kullanarak Pod 'u silerek bu sorunu azaltabilirsiniz.
+
+
+### <a name="error-cannot-find-lun-for-disk-when-attaching-a-disk-to-a-node"></a>Bir düğüme disk eklenirken "disk için LUN bulunamıyor" hatası
+
+Bir düğüme bir disk iliştirirken, şu hatayı görebilirsiniz:
+
+```console
+MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6" : Cannot find Lun for disk kubernetes-dynamic-pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6
+```
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,10 | 1.10.10 veya üzeri |
+| 1,11 | 1.11.5 veya üzeri |
+| 1,12 | 1.12.3 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
+| 1,14 ve üzeri | Yok |
+
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, birkaç dakika bekleyip yeniden denemeden sorunu azaltabilirsiniz.
+
+### <a name="azure-disk-attachdetach-failure-mount-issues-or-io-errors-during-multiple-attachdetach-operations"></a>Çoklu iliştirme/ayırma işlemleri sırasında Azure disk iliştirme/ayırma hatası, bağlama sorunları veya g/ç hataları
+
+Kubernetes sürüm 1.9.2 'dan başlayarak, paralel olarak birden çok iliştirme/ayır işlemi çalıştırırken, bir kirli VM önbelleği nedeniyle aşağıdaki disk sorunlarını görebilirsiniz:
+
+* Disk iliştirme/ayırma sorunları
+* Disk g/ç hataları
+* VM 'den beklenmeyen disk kesilmesi
+* Mevcut olmayan disk iliştirilirken VM, başarısız durumunda çalışıyor
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,10 | 1.10.12 veya üzeri |
+| 1,11 | 1.11.6 veya üzeri |
+| 1,12 | 1.12.4 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
+| 1,14 ve üzeri | Yok |
+
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, aşağıdaki adımları deneyerek sorunu azaltabilirsiniz:
+
+* Bir disk uzun bir süre ayrılmayı bekliyorsa, diski el ile ayırmayı deneyin
+
+### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Azure diski sonsuza kadar ayrılmayı bekliyor
+
+Bazı durumlarda, ilk denemede bir Azure disk ayırma işlemi başarısız olursa, ayırma işlemini yeniden denemez ve özgün düğüm sanal makinesine bağlı olarak kalır. Bu hata, bir diski bir düğümden diğerine taşırken ortaya çıkabilir. Örnek:
+
+```console
+[Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
+```
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,11 | 1.11.9 veya üzeri |
+| 1,12 | 1.12.7 veya üzeri |
+| 1,13 | 1.13.4 veya üzeri |
+| 1,14 ve üzeri | Yok |
+
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız, diski el ile ayırarak sorunu azaltabilirsiniz.
+
+### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Olası yarış durumu sorununa ve geçersiz veri diski listesine önde gelen Azure disk ayırma hatası
+
+Bir Azure diski ayrılmazsa, üstel geri kapatmayı kullanarak diski ayırmak en fazla altı kez yeniden dener. Ayrıca, yaklaşık 3 dakika boyunca veri diski listesinde düğüm düzeyinde bir kilit da tutar. Bu süre boyunca bir el ile iliştirme veya ayırma işlemi gibi disk listesi el ile güncelleniyorsa, bu, düğüm düzeyi kilidi tarafından tutulan disk listesinin kullanımdan kalkmasına ve düğüm sanal makinesinde kararsızlığa neden olur.
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,12 | 1.12.9 veya üzeri |
+| 1,13 | 1.13.6 veya üzeri |
+| 1,14 | 1.14.2 veya üzeri |
+| 1,15 ve üzeri | Yok |
+
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğüm sanal makinenizin kullanım dışı bir disk listesi varsa, mevcut olmayan tüm diskleri VM 'den tek bir toplu işlem olarak ayırarak sorunu azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
+
+
+### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>Çok sayıda Azure diski yavaş iliştirme/ayır oluşmasına neden oluyor
+
+Bir düğüm sanal makinesine bağlı Azure disk sayısı 10 ' dan büyükse, Attach ve Detach işlemleri yavaş olabilir. Bu sorun bilinen bir sorundur ve şu anda geçici çözüm bulunmamaktadır.
+
+### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Başarısız durumundaki olası düğüm VM 'sine yönelik Azure disk ayırma hatası
+
+Bazı Edge durumlarında, Azure disk ayırma kısmen başarısız olabilir ve düğüm VM 'sini başarısız bir durumda bırakabilir.
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,12 | 1.12.10 veya üzeri |
+| 1,13 | 1.13.8 veya üzeri |
+| 1,14 | 1.14.4 veya üzeri |
+| 1,15 ve üzeri | Yok |
+
+Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve Node VM 'niz başarısız durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek sorunu azaltabilirsiniz:
+
+* Kullanılabilirlik kümesi tabanlı küme için:
+    ```console
+    az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
+    ```
+
+* Bir VMSS tabanlı küme için:
+    ```console
+    az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
+    ```
+
+## <a name="azure-files-and-aks-troubleshooting"></a>Azure dosyaları ve AKS sorunlarını giderme
+
+### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Azure dosyaları için, Kubernetes 'in önerilen kararlı sürümleri nelerdir?
+ 
+| Kubernetes sürümü | Önerilen sürüm |
+| -- | :--: |
+| 1,12 | 1.12.6 veya üzeri |
+| 1,13 | 1.13.4 veya üzeri |
+| 1,14 | 1.14.0 veya üzeri |
+
+### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Kubernetes 'in hangi sürümleri, Sovereign bulutu üzerinde Azure dosyaları destekliyor?
+
+| Kubernetes sürümü | Önerilen sürüm |
+| -- | :--: |
+| 1,12 | 1.12.0 veya üzeri |
+| 1,13 | 1.13.0 veya üzeri |
+| 1,14 | 1.14.0 veya üzeri |
+
+### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure dosyaları kullanılırken varsayılan mountOptions nedir?
+
+Önerilen Ayarlar:
+
+| Kubernetes sürümü | fileMode ve dirMode değeri|
+| -- | :--: |
+| 1.12.0-1.12.1 | 0755 |
+| 1.12.2 ve üzeri | 0777 |
+
+Kuberetes sürüm 1.8.5 veya üzerini içeren bir küme kullanıyorsanız ve kalıcı birimi bir depolama sınıfıyla dinamik olarak oluşturursanız, depolama sınıfı nesnesinde bağlama seçenekleri belirtilebilir. Aşağıdaki örnek *0777*olarak ayarlanır:
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: azurefile
+provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+  - cache=none
+parameters:
+  skuName: Standard_LRS
+```
+
+Bazı ek kullanışlı *Mountoptions* ayarları:
+
+* *mfsymlinks* , Azure dosyaları bağlama (CIFS) sembolik bağlantıları destekliyor
+* *nobrl* , bayt aralığı kilit isteklerinin sunucuya gönderilmesini engelleyecek. Bu ayar, CIFS stili zorunlu bayt aralığı kilitleriyle kesen belirli uygulamalar için gereklidir. Çoğu CIFS sunucusu henüz danışmanlık bayt aralığı kilitlerini istemeyi desteklemez. *Nobrl*kullanmıyorsanız, CIFS stili zorunlu bayt aralığı kilitleri ile kesen uygulamalar aşağıdakine benzer hata iletilerine neden olabilir:
+    ```console
+    Error: SQLITE_BUSY: database is locked
+    ```
+
+### <a name="error-could-not-change-permissions-when-using-azure-files"></a>Azure dosyaları kullanılırken "izinler değiştirilemedi" hatası
+
+Azure dosyaları eklentisinde PostgreSQL çalıştırırken şuna benzer bir hata görebilirsiniz:
+
+```console
+initdb: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted
+fixing permissions on existing directory /var/lib/postgresql/data
+```
+
+Bu hata, CIFS/SMB protokolü kullanılarak Azure dosyaları eklentisi nedeniyle oluşur. CIFS/SMB protokolünü kullanırken, dosya ve dizin izinleri bağlama işleminden sonra değiştirilemez.
+
+Bu sorunu çözmek için, Azure disk eklentisi ile birlikte alt *yol* kullanın. 
+
+> [!NOTE] 
+> Ext3/4 disk türü için disk biçimlendirildikten sonra kayıp + bulunan bir dizin bulunur.
+
+### <a name="azure-files-has-high-latency-compared-to-azure-disk-when-handling-many-small-files"></a>Azure dosyaları, birçok küçük dosyayı işlerken Azure diskine kıyasla yüksek gecikme süresine sahiptir
+
+Birçok küçük dosyayı işleme gibi bazı durumlarda, Azure disk ile karşılaştırıldığında Azure dosyalarını kullanırken yüksek gecikme süresine karşılaşabilirsiniz.
+
+### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>Depolama hesabı 'ndaki "seçili ağdan erişime izin ver" ayarı etkinleştirilirken hata oluştu
+
+AKS 'de dinamik sağlama için kullanılan bir depolama hesabındaki *Seçili ağdan erişime izin ver* ' i etkinleştirirseniz, aks 'ler bir dosya paylaşma oluşturduğunda bir hata alırsınız:
+
+```console
+persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
+```
+
+Bu hata, *Seçili ağdan erişime izin ver*ayarı yapılırken, Kubernetes *persistentvolume-Controller tarafından* seçilen ağ üzerinde olmayan bir hatadır.
+
+[Azure dosyaları ile statik sağlamayı](azure-files-volume.md)kullanarak sorunu azaltabilirsiniz.
+
+### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Azure dosyaları Windows Pod 'da yeniden bağlama yapamıyor
+
+Azure dosyaları bağlaması olan bir Windows Pod silinirse ve aynı düğümde yeniden oluşturulmak üzere zamanlanırsa, bağlama başarısız olur. Bu hata, Azure dosyaları bağlama, düğüme zaten bağlı olduğundan `New-SmbGlobalMapping` komutunun başarısız olmasından kaynaklanır.
+
+Örneğin şuna benzer bir hata görebilirsiniz:
+
+```console
+E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
+```
+
+Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
+
+| Kubernetes sürümü | Sabit sürüm |
+| -- | :--: |
+| 1,12 | 1.12.6 veya üzeri |
+| 1,13 | 1.13.4 veya üzeri |
+| 1,14 ve üzeri | Yok |
+
+### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
+
+Depolama hesabı anahtarınız değiştiyse Azure dosyaları bağlama hatalarıyla karşılaşabilirsiniz.
+
+*Azurestokgeaccountkey* alanını Azure dosya gizli dizisi ' nde Base64 kodlamalı depolama hesabı anahtarınızla el ile güncelleştirerek sorunu azaltabilirsiniz.
+
+Depolama hesabı anahtarınızı Base64 olarak kodlamak için `base64` kullanabilirsiniz. Örnek:
+
+```console
+echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
+```
+
+Azure gizli dosyanızı güncelleştirmek için `kubectl edit secret` kullanın. Örnek:
+
+```console
+kubectl edit secret azure-storage-account-{storage-account-name}-secret
+```
+
+Birkaç dakika sonra, aracı düğümü güncelleştirilmiş depolama anahtarıyla Azure dosya takasını yeniden dener.

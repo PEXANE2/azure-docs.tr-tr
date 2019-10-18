@@ -1,5 +1,5 @@
 ---
-title: Çevrimdışı değerlendirme-kişiselleştirici
+title: Çevrimdışı değerlendirme gerçekleştirme-kişiselleştirici
 titleSuffix: Azure Cognitive Services
 description: Çevrimdışı değerlendirmede öğrenme döngünüzü çözümlemeyi öğrenin
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884450"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515216"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleyin
 
@@ -35,7 +35,7 @@ Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offli
 
 1. [Azure Portal](https://azure.microsoft.com/free/), kişiselleştirme kaynağınızı bulun.
 1. Azure portal **değerlendirmeler** bölümüne gidin ve **değerlendirme oluştur**' u seçin.
-    ![Azure portal, * * Değerlendirmeler * * bölümüne gidin ve * * değerlendirme oluştur * * seçeneğini belirleyin.](./media/offline-evaluation/create-new-offline-evaluation.png)
+    Azure portal ![In, * * Değerlendirmeler * * bölümüne gidin ve * * değerlendirme oluştur * * seçeneğini belirleyin. ](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Aşağıdaki ayarları seçin:
 
     * Değerlendirme adı
@@ -54,11 +54,11 @@ Tamamlandıktan sonra değerlendirme listesinden değerlendirmeyi seçebilirsini
 
 Öğrenme Ilkelerinin karşılaştırmaları şunları içerir:
 
-* **Çevrimiçi ilke**: Kişiselleştirici içinde kullanılan geçerli öğrenme Ilkesi
-* **Taban çizgisi**: Uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde),
-* **Rastgele ilke**: Her zaman sağlanan Işlemlerden rastgele eylem seçimi döndüren sanal bir sıra davranışı.
-* **Özel ilkeler**: Değerlendirme başlatılırken ek öğrenme Ilkeleri karşıya yüklendi.
-* **Iyileştirilmiş ilke**: Değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.
+* **Çevrimiçi ilke**: kişiselleştirici içinde kullanılan geçerli öğrenme ilkesi
+* **Taban çizgisi**: uygulamanın varsayılan (derece çağrılarında gönderilen ilk eylem tarafından belirlendiği şekilde),
+* **Rastgele ilke**: sağlanan uygulamalardan her zaman rastgele eylem seçimi döndüren sanal bir sıra davranışı.
+* **Özel ilkeler**: değerlendirme başlatıldığında karşıya yüklenen ek öğrenme ilkeleri.
+* **Iyileştirilmiş ilke**: değerlendirme, iyileştirilmiş bir ilkeyi bulma seçeneği ile başlatıldıysa, bu da karşılaştırılır ve bunu indirebilir veya çevrimiçi öğrenme ilkesi haline getirmek için geçerli olanı değiştirin.
 
 ![Çevrimdışı değerlendirme ayarlarının sonuç grafiği](./media/offline-evaluation/evaluation-results.png)
 

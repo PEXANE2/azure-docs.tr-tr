@@ -1,6 +1,6 @@
 ---
 title: Azure Izleyici 'de Log Analytics çalışma alanlarını yönetme | Microsoft Docs
-description: Kaynak, çalışma alanı veya tablo düzeyi izinleri kullanarak Azure Izleyici 'deki bir Log Analytics çalışma alanında depolanan verilere erişimi yönetebilirsiniz. Bu makalede, bunların nasıl tamamlanacağı açıklanır.
+description: Kaynak, çalışma alanı veya tablo düzeyi izinleri kullanarak Azure Izleyici 'deki bir Log Analytics çalışma alanında depolanan verilere erişimi yönetebilirsiniz. Bu makalede nasıl tamamlanacağı açıklanır.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9c50053fca73aeee0ed9a286b4c286486bac86
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329403"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532336"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -68,7 +68,7 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-@No__t-0 değeri, çalışma alanının çalışma alanı bağlamı erişim moduyla yapılandırıldığı anlamına gelir.  @No__t-0 değeri, çalışma alanının kaynak bağlamı erişim moduyla yapılandırıldığı anlamına gelir.
+@No__t_0 değeri, çalışma alanının çalışma alanı bağlamı erişim moduyla yapılandırıldığı anlamına gelir.  @No__t_0 değeri, çalışma alanının kaynak bağlamı erişim moduyla yapılandırıldığı anlamına gelir.
 
 > [!NOTE]
 > Bir çalışma alanı Boole değeri olmadan döndürülürse ve boşsa, bu da `False` değerinin sonuçlarıyla eşleşir.
@@ -148,7 +148,7 @@ Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
 *Log Analytics Katkıda Bulunan* rolünün üyeleri aşağıdakileri yapabilir:
 
-* Log Analytics okuyucu tarafından kullanılabilecek tüm izleme verilerini okuyun
+* *Log Analytics okuyucu rolünün*tüm ayrıcalıklarını içerir ve bu da kullanıcının tüm izleme verilerini okumasına izin verir
 * Otomasyon hesapları oluşturma ve yapılandırma
 * Yönetim çözümlerini ekleme ve kaldırma
 
@@ -187,7 +187,7 @@ Bu rolleri, kullanıcılara farklı kapsamlarda erişim vermek için kullanın:
 * Kaynak grubu - Kaynak grubundaki tüm çalışma alanına erişim
 * Kaynak - Yalnızca belirtilen çalışma alanına erişim
 
-Doğru erişim denetimini güvence altına almak için atamaları Kaynak düzeyinde (çalışma alanı) gerçekleştirmeniz gerekir.  Gereken özel izinlere sahip rolleri oluşturmak için [özel rolleri](../../role-based-access-control/custom-roles.md) kullanın.
+Doğru erişim denetimini güvence altına almak için kaynak düzeyinde (çalışma alanı) atamalar gerçekleştirmenizi öneririz. Gereken özel izinlere sahip rolleri oluşturmak için [özel rolleri](../../role-based-access-control/custom-roles.md) kullanın.
 
 ### <a name="resource-permissions"></a>Kaynak izinleri
 
@@ -198,7 +198,7 @@ Kullanıcılar, kaynak bağlamı erişimi kullanarak bir çalışma alanından g
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Örnekler:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Kaynak için tüm günlük verilerini görüntüleme olanağı.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Tanılama ayarını bu kaynak için günlükleri ayarlamaya izin verecek şekilde yapılandırma özelliği. |
 
-`/read` izni genellikle yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) ve [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolleri gibi _\*/Read veya_ _\*_ izinleri içeren bir rolden verilir. Belirli eylemleri içeren özel rollerin veya adanmış yerleşik rollerin bu izni içeremediğini unutmayın.
+`/read` izni genellikle yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) ve [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolleri gibi _\*/Read veya_ _\*_ izinleri içeren bir rolden verilir. Belirli eylemler veya adanmış yerleşik roller içeren özel roller bu izni içermeyebilir.
 
 Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağıdaki [tablo başına erişim denetimi tanımlama](#table-level-rbac) bölümüne bakın.
 
@@ -224,7 +224,7 @@ Farklı tablolar için farklı erişim denetimi oluşturmak isterseniz, aşağı
 
     * Kullanıcılara kaynakları için aşağıdaki izinleri verin: `Microsoft.Insights/logs/*/read`.
 
-    * Kullanıcıların SecurityEvent türünü okumasını engellemek için aşağıdaki eylemi ekleyin: `Microsoft.Insights/logs/SecurityEvent/read`. Olmayan eylem, okuma izni sağlayan eylem ile aynı özel rolde yer almaktadır (`Microsoft.Insights/logs/*/read`). Kullanıcı bu kaynağa veya abonelik ya da kaynak grubuna atanmış başka bir rolden okuma eylemini içeriyorsa, tüm günlük türlerini okuyabilirler. Bu Ayrıca, örneğin, okuyucu veya katkıda bulunan rolüyle birlikte var olan `*/read` ' ı devralması durumunda da geçerlidir.
+    * Kullanıcıların SecurityEvent türünü okumasını engellemek için aşağıdaki eylemi ekleyin: `Microsoft.Insights/logs/SecurityEvent/read`. Olmayan eylem, okuma izni sağlayan eylem ile aynı özel rolde yer almaktadır (`Microsoft.Insights/logs/*/read`). Kullanıcı bu kaynağa veya abonelik ya da kaynak grubuna atanmış başka bir rolden okuma eylemini içeriyorsa, tüm günlük türlerini okuyabilirler. Bu, örneğin, okuyucu veya katkıda bulunan rolüyle `*/read`, varsa de geçerlidir.
 
 4. Bir kullanıcıya, kaynaklarından günlük verileri için erişim izni vermek ve tüm Azure AD oturum açma ve Güncelleştirme Yönetimi çözüm günlüğü verilerini çalışma alanından okumak için aşağıdakileri yapın:
 
@@ -293,7 +293,7 @@ Yalnızca _Securitybaseline_ 'e erişimi olan ve başka tablolar olmadan bir rol
 * Bir kullanıcıya tablo başına erişim verildiyse ancak başka izinler yoksa, API 'den günlük verilerine erişebilecek ancak Azure portal. Azure portal erişim sağlamak için, temel rolü olarak Log Analytics okuyucu kullanın.
 * Aboneliğin yöneticileri, diğer izin ayarlarından bağımsız olarak tüm veri türlerine erişebilir.
 * Çalışma alanı sahipleri, tablo başına erişim denetimi için diğer kullanıcılar gibi davranır.
-* Atama sayısını azaltmak için bireysel kullanıcılar yerine güvenlik gruplarına roller atamanız gerekir. Bu Ayrıca, erişimi yapılandırmak ve doğrulamak için mevcut Grup Yönetimi araçlarını kullanmanıza yardımcı olur.
+* Bireysel kullanıcılar yerine, atamaların sayısını azaltmak için güvenlik gruplarına roller atanmasını öneririz. Bu Ayrıca, erişimi yapılandırmak ve doğrulamak için mevcut Grup Yönetimi araçlarını kullanmanıza yardımcı olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
