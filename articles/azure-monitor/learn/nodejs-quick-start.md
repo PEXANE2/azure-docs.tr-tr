@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177693"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528815"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Hızlı başlangıç: node. js web uygulamanızı Azure Application Insights izlemeye başlama
 
@@ -43,7 +43,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 1. **Kaynak oluştur** > **Geliştirici araçları** > **Application Insights** seçeneğini belirleyin.
 
-   ![Application Insights Kaynağı ekleme](./media/nodejs-quick-start/1createresourseappinsights.png)
+   ![Azure Application Insights kaynağı ekleme](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
    >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ' a giderek daha fazla bilgi edinebilirsiniz.
@@ -62,7 +62,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 1. **Genel bakış** ' ı seçin ve uygulamanızın **izleme anahtarını**kopyalayın.
 
-   ![Yeni App Insights kaynağı formu](./media/nodejs-quick-start/3key.png)
+   ![Application Insights Izleme anahtarını görüntüleme](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
 2. Uygulamanıza Node.js için Application Insights SDK’sı ekleyin. Uygulamanızın kök klasörü çalıştırmasından:
 
@@ -86,19 +86,19 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 1. Artık izleme anahtarınızı aldığınız Application Insights **Genel Bakış** sayfasını yeniden açarak o anda çalışan uygulamanıza ilişkin ayrıntıları görüntüleyebilirsiniz.
 
-   ![Application Insights’a Genel Bakış Menüsü](./media/nodejs-quick-start/4overview.png)
+   ![Application Insights genel bakış menüsü](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
 2. Uygulama bileşenleriniz arasındaki bağımlılık ilişkilerinin görsel düzeni için **uygulama Haritası** ' nı seçin. Her bileşen yük, performans, hatalar ve uyarılar gibi KPI'leri gösterir.
 
-   ![Uygulama Eşlemesi](./media/nodejs-quick-start/5appmap.png)
+   ![Uygulama haritasını Application Insights](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Analiz içinde ![Uygulama **Haritası simgesi @** no__t-2 **görünümü '** nü seçin.  Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. Analiz ![Application harita simgesini ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **görüntüle '** yi seçerek **App Analytics** simgesini seçin.  Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
-   ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/nodejs-quick-start/6analytics.png)
+   ![Application Insights Analytics grafikleri](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
 4. **Genel Bakış** sayfasına geri dönüp KPI graflarını inceleyin.  Bu pano, gelen istek sayısı, bu isteklerin süresi ve oluşan hatalar dahil olmak üzere uygulamanızın sistem durumu hakkında istatistikler sağlar.
 
-   ![Sistem Durumuna Genel Bakış zaman çizelgesi grafikleri](./media/nodejs-quick-start/7kpidashboards.png)
+   ![Application Insights sistem durumu genel bakış zaman çizelgesi grafikleri](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
    **Sayfa Görünümü Yükleme Süresi** grafiğini **istemci tarafı telemetri** verileriyle doldurmak üzere etkinleştirmek için, bu betiği izlemek istediğiniz her sayfaya ekleyin:
 
@@ -124,7 +124,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 5. Sol tarafta **ölçümler**' i seçin. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. Ek özel görünümler oluşturmak için **yeni grafik Ekle** ' yi veya var olan grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirmek için **Düzenle** ' yi seçebilirsiniz. Örneğin, ölçümler açılan penceresinden "sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
 
-   ![Sunucu ölçüm grafiği](./media/nodejs-quick-start/8metrics.png)
+   ![Application Insights Server ölçümleri grafiği](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
 Node.js izleme hakkında daha fazla bilgi için [ek App Insights Node.js belgelerine](../../azure-monitor/app/nodejs.md) bakın.
 

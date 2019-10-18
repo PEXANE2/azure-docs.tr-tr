@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 83339273d9161c3947df191d10e788980db39b28
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 4a6fd7dd40905a8a81a104c9d6ef22040ff88f15
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "67446002"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516287"
 ---
-# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı Başlangıç: Node. js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Hızlı başlangıç: node. js proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
@@ -42,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 * Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 
   * Orta ABD
-  * Orta ABD EUAP
+  * EUAP Orta ABD
 
 * Bu hızlı başlangıçta hizmet yerel uygulamasını çalıştırmak için, geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
   * Birden çok platform için [Node. js](https://nodejs.org) ' ye indirin.
@@ -60,15 +60,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Daha önce yapmadıysanız, [örnek Node. js projesini indirin](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip) ve ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
-Önceki [hızlı başlangıcı tamamladıysanız: Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-node.md)telemetri gönderin, bu adımı atlayabilirsiniz.
+Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-node.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-[Hızlı başlangıç: Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-node.md)telemetri gönderin, bu adımı atlayabilirsiniz.
+[Hızlı başlangıç: bir cihazdan IoT Hub 'ına telemetri gönderme](quickstart-send-telemetry-node.md)işlemini tamamladıysanız, bu adımı atlayabilirsiniz.
 
 Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için Azure Cloud Shell kullanırsınız.
 
@@ -76,10 +76,10 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu b�
 
    > [!NOTE]
    > * *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
-   > * Gösterilen *Mydevice*' ı kullanın. Kayıtlı cihaz için verilen addır. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanın ve uygulamayı çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+   > * Kaydolduğunuz aygıtın adı için *mydevice* ' ın gösterildiği gibi kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanın ve uygulamayı çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için bir *hizmet bağlantı dizesi*de gereklidir. Aşağıdaki komut, IoT Hub 'ınız için dizeyi alır:
@@ -88,10 +88,10 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu b�
    > *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Daha sonra bu hızlı başlangıçta kullanmak için döndürülen değeri aklınızda yapın. Aşağıdaki örneğe benzer şekilde görünür:
+   Daha sonra bu hızlı başlangıçta kullanılmak üzere döndürülen hizmet bağlantı dizesine göz önünde edin. Aşağıdaki örneğe benzer şekilde görünür:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -110,25 +110,25 @@ Sonraki adıma geçmeden önce, cihaz yerel proxy uygulamasının çalıştığ�
 
 ### <a name="run-the-service-local-proxy-application"></a>Hizmet yerel proxy uygulamasını çalıştırma
 
-Çalıştıran cihaz yerel proxy uygulaması ile, aşağıdakileri yaparak Node. js ' de yazılmış hizmet yerel ara sunucu uygulamasını çalıştırın:
+Çalıştıran cihaz yerel proxy uygulaması ile, yerel bir Terminal penceresinde aşağıdakileri yaparak Node. js ' de yazılmış hizmet yerel ara sunucu uygulamasını çalıştırın:
 
 1. Ortam değişkenleri için, hizmet kimlik bilgilerinizi, SSH arka plan programının çalıştığı hedef cihaz KIMLIĞINI ve cihazda çalışan ara sunucunun bağlantı noktası numarasını sağlayın.
 
    ```
    # In Linux
-   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export IOTHUB_CONNECTION_STRING="{ServiceConnectionString}"
    export STREAMING_TARGET_DEVICE="MyDevice"
    export PROXY_PORT=2222
 
    # In Windows
-   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET IOTHUB_CONNECTION_STRING={ServiceConnectionString}
    SET STREAMING_TARGET_DEVICE=MyDevice
    SET PROXY_PORT=2222
    ```
 
-   Önceki değerleri cihaz KIMLIĞINIZ ve bağlantı dizeniz ile eşleşecek şekilde değiştirin.
+   ServiceConnectionString yer tutucusunu, hizmet bağlantı dizeniz ile eşleşecek şekilde değiştirin **ve daha** sonra farklı bir ad verırsenız cihaz Kimliğinizle eşleşmesi gerekir.
 
-1. Sıkıştırılmış proje klasörünüzdeki *hızlı başlangıçlara/cihaza-Streams-hizmet* dizinine gidin ve hizmet yerel ara sunucu uygulamasını çalıştırın.
+1. Sıkıştırılmış proje klasörünüzdeki `Quickstarts/device-streams-service` dizinine gidin. Hizmet yerel proxy uygulamasını çalıştırmak için aşağıdaki kodu kullanın:
 
    ```
    cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
@@ -143,7 +143,7 @@ Sonraki adıma geçmeden önce, cihaz yerel proxy uygulamasının çalıştığ�
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>Cihaz akışları aracılığıyla cihazınıza SSH
 
-Linux 'ta, bir terminalde kullanarak `ssh $USER@localhost -p 2222` SSH 'yi çalıştırın. Windows 'ta, en sevdiğiniz SSH istemcisini (örneğin, PuTTY) kullanın.
+Linux 'ta, bir terminalde `ssh $USER@localhost -p 2222` kullanarak SSH 'yi çalıştırın. Windows 'ta, en sevdiğiniz SSH istemcisini (örneğin, PuTTY) kullanın.
 
 SSH oturumu oluşturulduktan sonra, hizmet yerel üzerinde konsol çıkışı kurulduktan sonra (hizmet yerel proxy uygulaması 2222 numaralı bağlantı noktasını dinler):
 
@@ -168,7 +168,7 @@ SSH istemci uygulamasının konsol çıkışı (SSH istemcisi, hizmet yerel prox
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir IoT Hub 'ı oluşturdunuz, bir cihaz kaydettiniz ve bir IoT cihazında RDP ve SSH 'yi etkinleştirmek için bir hizmet proxy uygulaması dağıttınız. RDP ve SSH trafiği, IoT Hub aracılığıyla bir cihaz akışı aracılığıyla tünellendirilecektir. Bu işlem, cihaza doğrudan bağlantı gereksinimini ortadan kaldırır.
+Bu hızlı başlangıçta bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz ve bir IoT cihazında RDP ve SSH 'yi etkinleştirmek için bir hizmet proxy uygulaması dağıttınız. RDP ve SSH trafiği, IoT Hub aracılığıyla bir cihaz akışı aracılığıyla tünellendirilecektir. Bu işlem, cihaza doğrudan bağlantı gereksinimini ortadan kaldırır.
 
 Cihaz akışları hakkında daha fazla bilgi edinmek için bkz.:
 

@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744415"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514014"
 ---
-# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı Başlangıç: Veritabanını yönetilen örneğe geri yükleme
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı başlangıç: bir veritabanını yönetilen örneğe geri yükleme
 
 Bu hızlı başlangıçta, Azure Blob depolamadan bir veritabanını (geniş dünya Importers-standart yedekleme dosyası) Azure SQL veritabanı [yönetilen örneğine](sql-database-managed-instance.md)geri yüklemek için SQL Server Management Studio (SSMS) kullanacaksınız.
 
@@ -37,10 +37,10 @@ Bu hızlı başlangıç:
 - Yönetilen örneğinize bağlanmak için SSMS kullanılması gerekir. Nasıl bağlanadığına ilişkin şu hızlı başlangıçlara bakın:
   - [Bir Azure VM'den bir Azure SQL Veritabanı Yönetilen Örneğine bağlanma](sql-database-managed-instance-configure-vm.md)
   - [Şirket Içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırın](sql-database-managed-instance-configure-p2s.md).
-- ,`rw` İzni olan **SAS kimlik bilgisiyle** korunan **genel IP** 'de Azure Blob depolama hesabı (örneğin, Standard_LRS v2) gerektirir. Güvenlik Duvarı ve Azure Blob depolama hizmeti uç noktaları [tarafından korunan BLOB depolama Için özel IP 'ler](https://docs.microsoft.com/azure/storage/common/storage-network-security) Şu anda desteklenmiyor.
+- @No__t_2 izni olan **SAS kimlik bilgisiyle** korunan **genel IP** 'de Azure Blob depolama hesabı (örneğin, Standard_LRS v2) gerektirir. Güvenlik Duvarı ve Azure Blob depolama hizmeti uç noktaları [tarafından korunan BLOB depolama Için özel IP 'ler](https://docs.microsoft.com/azure/storage/common/storage-network-security) Şu anda desteklenmiyor.
 
 > [!NOTE]
-> Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](sql-database-managed-instance-get-started-restore.md).
+> Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Veritabanını bir yedekleme dosyasından geri yükleme
 
@@ -92,4 +92,4 @@ SSMS 'de Wide World Importers veritabanını yönetilen örneğinize geri yükle
 
 - Bir URL 'de yedekleme sorunlarını gidermek için, bkz. [SQL Server yedekleme URL 'Si En Iyi uygulamalar ve sorun giderme](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Uygulama bağlantısı seçeneklerine genel bakış için bkz. [uygulamalarınızı yönetilen örneğe bağlama](sql-database-managed-instance-connect-app.md).
-- En sevdiğiniz araçları veya dilleri kullanarak sorgulamak için bkz [. hızlı başlangıç: Azure SQL veritabanı Connect ve Query](sql-database-connect-query.md).
+- En sevdiğiniz araçları veya dilleri kullanarak sorgulamak için bkz. [hızlı başlangıç: Azure SQL veritabanı Connect ve Query](sql-database-connect-query.md).

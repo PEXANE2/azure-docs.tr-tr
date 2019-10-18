@@ -10,18 +10,18 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: f59a3409d508c63f232294d8d66ade5669815b3c
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: eee8a3b17a23d34610951db8b881397a0649b53a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843376"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516723"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-Bu hızlı başlangıçta, bir Java uygulamasıyla Azure IoT Hub 'ınıza bağlı olan sanal cihazı denetlemek için *doğrudan bir yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz. IoT Hub, IoT cihazlarınızdan buluta yüksek hacimlerde telemetri almanızı ve buluttan cihazlarınızı yönetmenizi sağlayan bir Azure hizmetidir. 
+IoT Hub, IoT cihazlarınızı buluttan yönetmenizi ve depolama ya da işleme için buluta yönelik yüksek hacimli cihaz telemetrisini gerçekleştirmenizi sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, bir Java uygulamasıyla Azure IoT Hub 'ınıza bağlı olan sanal cihazı denetlemek için *doğrudan bir yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz. 
 
 Hızlı başlangıçta, önceden yazılmış iki Java uygulaması kullanılır:
 
@@ -77,11 +77,11 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Myjavadevice**: kayıt yaptığınız cihazın adı. Gösterilen **Myjavadevice** ' i kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
+   **Myjavadevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterildiği gibi **Myjavadevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyJavaDevice
+      --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
@@ -90,7 +90,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyJavaDevice \
       --output table
     ```
@@ -108,14 +108,14 @@ Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına
 **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
+az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
 ```
 
 Şu ifadeye benzer şekilde görünen hizmet bağlantı dizesini not edin:
 
 `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Hizmet bağlantı dizesi, cihaz bağlantı dizesinden farklıdır.
+Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Bu hizmet bağlantı dizesi, önceki adımda not ettiğiniz cihaz bağlantı dizesinden farklıdır.
 
 ## <a name="listen-for-direct-method-calls"></a>Doğrudan yöntem çağrılarını dinleme
 
@@ -125,7 +125,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 2. **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    `connString` değişkeninin değerini, önceden not ettiğiniz cihaz bağlantı dizesiyle değiştirin. Daha sonra **SimulatedDevice.java** dosyasına değişikliklerinizi kaydedin.
+    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java**' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını derleyin:
 
@@ -151,7 +151,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 2. **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** dosyasını istediğiniz bir metin düzenleyicide açın.
 
-    `iotHubConnectionString` değişkeninin değerini, önceden not ettiğiniz hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.java** dosyasına değişikliklerinizi kaydedin.
+    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Ardından **Backendadpplication. Java**' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve arka uç uygulamasını derleyin:
 

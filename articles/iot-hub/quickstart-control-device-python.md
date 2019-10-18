@@ -10,18 +10,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 6a3be3733c5041576d5db49256056ac4f0c03a7f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 13652b287da94adff5bdf2235900734e5908c56f
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003005"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516661"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Hızlı Başlangıç: IoT Hub 'ına (Python) bağlı bir cihazı denetleme
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub, IoT cihazlarınızdan buluta yüksek hacimlerde telemetri almanızı ve buluttan cihazlarınızı yönetmenizi sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT hub’ınıza bağlı bir simülasyon cihazını denetlemek için *doğrudan yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz.
+IoT Hub, IoT cihazlarınızı buluttan yönetmenizi ve depolama ya da işleme için buluta yönelik yüksek hacimli cihaz telemetrisini gerçekleştirmenizi sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT hub’ınıza bağlı bir simülasyon cihazını denetlemek için *doğrudan yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz.
 
 Hızlı başlangıçta, önceden yazılmış iki Python uygulaması kullanılır:
 
@@ -43,34 +43,34 @@ az extension add --name azure-cli-iot-ext
 
 Örnek Python projesini önceden indirmediyseniz https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip adresinden indirip ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
-Önceki [hızlı başlangıcı tamamladıysanız: Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-python.md)telemetri gönderin, bu adımı atlayabilirsiniz.
+Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-python.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Önceki [hızlı başlangıcı tamamladıysanız: Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-python.md)telemetri gönderin, bu adımı atlayabilirsiniz.
+Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-python.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
 Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu hızlı başlangıçta Azure Cloud Shell kullanarak bir simülasyon cihazı kaydedeceksiniz.
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-    **Youriothubname**: Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-    **Mypythondevice**: Bu, kayıtlı cihaz için verilen addır. Gösterilen MyPythonDevice değerini kullanın. Cihazınız için farklı bir ad seçerseniz bu makalenin geri kalan bölümünde aynı adı kullanmanız ve örnek uygulamaları çalıştırmadan önce bunlarda da cihaz adını güncelleştirmeniz gerekir.
+    **Mypythondevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterilen şekilde **Mypyıthondevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-    **Youriothubname**: Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     Şu ifadeye benzer şekilde görünen cihaz bağlantı dizesini not edin:
@@ -81,12 +81,12 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 3. Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına olanak sağlamak için bir _hizmet bağlantı dizesi_ de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
-    **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+    **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --name YourIoTHubName \
       --policy-name service \
+      --name {YourIoTHubName} \
       --output table
     ```
 
@@ -94,7 +94,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
    `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Hizmet bağlantı dizesi, cihaz bağlantı dizesinden farklıdır.
+    Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Bu hizmet bağlantı dizesi, önceki adımda not ettiğiniz cihaz bağlantı dizesinden farklıdır.
 
 ## <a name="listen-for-direct-method-calls"></a>Doğrudan yöntem çağrılarını dinleme
 
@@ -104,7 +104,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 1. **SimulatedDevice.py** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    `CONNECTION_STRING` değişkeninin değerini, önceden not ettiğiniz cihaz bağlantı dizesiyle değiştirin. Daha sonra **SimulatedDevice.py** dosyasına değişikliklerinizi kaydedin.
+    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.py**' ye yaptığınız değişiklikleri kaydedin.
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 
@@ -130,7 +130,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 1. **BackEndApplication.py** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    `CONNECTION_STRING` değişkeninin değerini, önceden not ettiğiniz hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.py** dosyasına değişikliklerinizi kaydedin.
+    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.py**' ye yaptığınız değişiklikleri kaydedin.
 
 1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli kitaplıkları yükleyin:
 
@@ -163,4 +163,4 @@ Bu hızlı başlangıçta, bir arka uç uygulamasındaki cihazda doğrudan yönt
 Cihazdan buluta iletileri, buluttaki farklı hedeflere yönlendirmeyi öğrenmek için sonraki öğreticiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: İşlem için telemetri farklı uç noktalara yol](tutorial-routing.md)
+> [Öğretici: Telemetriyi işlenmek üzere farklı uç noktalara yönlendirme](tutorial-routing.md)

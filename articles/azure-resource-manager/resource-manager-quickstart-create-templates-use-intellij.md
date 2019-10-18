@@ -1,5 +1,5 @@
 ---
-title: IntelliJ FIKRINI kullanarak bir Azure Resource Manager şablonu oluşturun ve dağıtın | Microsoft Docs
+title: Azure Resource Manager şablonu dağıtma-IntelliJ fıkır
 description: IntelliJ FIKRINI kullanarak ilk Azure Resource Manager şablonunuzu oluşturmayı ve bunu dağıtmayı öğrenin.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,26 +13,26 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169439"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533646"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Hızlı başlangıç: IntelliJ FIKRINI kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın
 
-IntelliJ FIKRINI kullanarak Azure 'a bir Kaynak Yöneticisi şablonu dağıtmayı ve doğrudan IDE 'den şablonu düzenlemeyle güncelleştirme işlemini öğrenin. Kaynak Yöneticisi şablonlar, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Azure çözümlerinizi dağıtma ve yönetme ile ilgili kavramları anlamak için bkz. [Azure Resource Manager genel bakış](resource-group-overview.md).
+IntelliJ FIKRINI kullanarak Azure 'a bir Kaynak Yöneticisi şablonu dağıtmayı ve doğrudan IDE 'den şablonu düzenlemeyle güncelleştirme işlemini öğrenin. Resource Manager şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Azure çözümlerinizi dağıtma ve yönetmeyle ilgili kavramları anlamak için bkz. [Azure Resource Manager’a genel bakış](resource-group-overview.md).
 
 ![Kaynak Yöneticisi şablonu hızlı başlangıç portalı diyagramı](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Öğreticiyi tamamladıktan sonra bir Azure depolama hesabı dağıtırsınız. Aynı işlem, diğer Azure kaynaklarını dağıtmak için de kullanılabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaleyi tamamlayabilmeniz için şunlar gerekir:
+Bu makaleyi tamamlamak için gerekenler:
 
 * [IntelliJ fikir](https://www.jetbrains.com/idea/download/) Ultimate sürümü veya Community Edition yüklendi
 * [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) yüklendi, daha fazla bilgi Için [IntelliJ 'ın eklenti yönetim kılavuzunu](https://www.jetbrains.com/help/idea/managing-plugins.html) denetleyin
@@ -40,9 +40,9 @@ Bu makaleyi tamamlayabilmeniz için şunlar gerekir:
 
 ## <a name="deploy-a-quickstart-template"></a>Hızlı başlangıç şablonu dağıtma
 
-Sıfırdan şablon oluşturmak yerine [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/)bir şablon açarsınız. Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir depodur. Bu hızlı başlangıçta kullanılan şablona [Standart depolama hesabı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)adı verilir. Bir Azure depolama hesabı kaynağını tanımlar.
+Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/)’ndan bir şablon açarsınız. Azure hızlı başlangıç şablonları Kaynak Yöneticisi şablonlar için bir depodur. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) olarak adlandırılır. Bir Azure depolama hesabı kaynağını tanımlar.
 
-1. [@No__t-1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) ve [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) ' i sağ tıklayıp yerel bilgisayarınıza kaydedin.
+1. Sağ tıklayın ve [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) ve [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) yerel bilgisayarınıza kaydedin.
 
 1. Azure Toolkit 'niz düzgün yüklenip oturum açmışsa, IntelliJ fıkrın kenar çubuğunda Azure Explorer ' ı görmeniz gerekir. **Kaynak yönetimine** sağ tıklayın ve **dağıtım oluştur**' u seçin.
 
@@ -72,7 +72,7 @@ Sıfırdan şablon oluşturmak yerine [Azure hızlı başlangıç şablonlarınd
 
     ![Kaynak Yöneticisi şablonu dağıtım düzenleme](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Bu sayfadaki iki dosyayı düzenleyebilir ve değişiklikleri Azure 'a dağıtabilirsiniz. Burada, `Standard_LRS` ' den `Standard_GRS` ' ye kadar parametre dosyalarındaki **Storageaccounttype** değerini değiştirirsiniz. Ardından, alt kısımdaki **güncelleştirme dağıtımı** ' na tıklayın ve güncelleştirmeyi onaylayın.
+1. Bu sayfadaki iki dosyayı düzenleyebilir ve değişiklikleri Azure 'a dağıtabilirsiniz. Burada, `Standard_LRS` parametre dosyalarındaki **Storageaccounttype** değerini `Standard_GRS` olarak değiştirirsiniz. Ardından, alt kısımdaki **güncelleştirme dağıtımı** ' na tıklayın ve güncelleştirmeyi onaylayın.
 
     ![Kaynak Yöneticisi şablonu dağıtım düzenleme](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
@@ -80,7 +80,7 @@ Sıfırdan şablon oluşturmak yerine [Azure hızlı başlangıç şablonlarınd
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-1. Azure kaynaklarına artık ihtiyaç duyulmadığında, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Bunu Azure portal veya Azure CLı 'den yapabilirsiniz. Azure Explorer 'ın IntelliJ FIKRINDEN, oluşturduğunuz **kaynak grubunuza** sağ tıklayıp Sil ' i seçin.
+1. Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Bunu Azure portal veya Azure CLı 'den yapabilirsiniz. Azure Explorer 'ın IntelliJ FIKRINDEN, oluşturduğunuz **kaynak grubunuza** sağ tıklayıp Sil ' i seçin.
 
     ![Azure Explorer 'da IntelliJ FIKRINDEN kaynak grubunu silme](./media/resource-manager-quickstart-create-templates-use-intellij/delete-resource-group.png)
 
@@ -89,7 +89,7 @@ Sıfırdan şablon oluşturmak yerine [Azure hızlı başlangıç şablonlarınd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıç 'nin ana odağı, Azure hızlı başlangıç şablonlarından mevcut bir şablonu dağıtmak için IntelliJ FIKRINI kullanmaktır. Ayrıca, Azure 'da var olan bir dağıtımı görüntülemeyi ve güncelleştirmeyi de öğrendiniz. Azure hızlı başlangıç şablonlarından şablonlar, ihtiyacınız olan her şeyi sunmayabilir. Şablon geliştirme hakkında daha fazla bilgi edinmek için bkz. Yeni Başlangıç Öğreticisi serisi:
+Bu hızlı başlangıç 'nin ana odağı, Azure hızlı başlangıç şablonlarından mevcut bir şablonu dağıtmak için IntelliJ FIKRINI kullanmaktır. Ayrıca, Azure 'da var olan bir dağıtımı görüntülemeyi ve güncelleştirmeyi de öğrendiniz. Azure Hızlı Başlangıç şablonlarındaki şablonlar size ihtiyacınız olan her şeyi sağlamayabilir. Şablon geliştirme hakkında daha fazla bilgi edinmek için bkz. Yeni Başlangıç Öğreticisi serisi:
 
 > [!div class="nextstepaction"]
 > [Başlangıç öğreticileri](./template-tutorial-create-first-template.md)

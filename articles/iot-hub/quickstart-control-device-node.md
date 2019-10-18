@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 107b3401d23ea853a16722544385d72432cff308
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ed3946c40d8e3eff665e4454b81f408c2033c09a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841329"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529584"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Hızlı başlangıç: Azure IoT Hub 'ına bağlı bir cihazı denetlemek için Node. js kullanma
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub, IoT cihazlarınızdan buluta yüksek hacimlerde telemetri almanızı ve buluttan cihazlarınızı yönetmenizi sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT hub’ınıza bağlı bir simülasyon cihazını denetlemek için *doğrudan yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz.
+IoT Hub, IoT cihazlarınızı buluttan yönetmenizi ve depolama ya da işleme için buluta yönelik yüksek hacimli cihaz telemetrisini gerçekleştirmenizi sağlayan bir Azure hizmetidir. Bu hızlı başlangıçta, IoT hub’ınıza bağlı bir simülasyon cihazını denetlemek için *doğrudan yöntem* kullanırsınız. IoT hub’ınıza bağlı bir cihazın davranışını uzaktan değiştirmek için doğrudan yöntemler kullanabilirsiniz.
 
 Hızlı başlangıçta, önceden yazılmış iki Node.js uygulaması kullanılır:
 
@@ -69,11 +69,11 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Mynodedevice**: kaydetmekte olduğunuz cihazın adı. Gösterildiği gibi **Mynodedevice** kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
+   **Mynodedevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterildiği gibi **Mynodedevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı da bu makalede kullanmanız gerekir ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyNodeDevice
+      --hub-name {YourIoTHubName} --device-id MyNodeDevice
     ```
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
@@ -82,7 +82,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyNodeDevice \
       --output table
     ```
@@ -99,14 +99,15 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --name YourIoTHubName --policy-name service --output table
+      --policy-name service --name {YourIoTHubName} --output table
+
     ```
 
     Şu ifadeye benzer şekilde görünen hizmet bağlantı dizesini not edin:
 
    `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Hizmet bağlantı dizesi, cihaz bağlantı dizesinden farklıdır.
+    Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Bu hizmet bağlantı dizesi, önceki adımda not ettiğiniz cihaz bağlantı dizesinden farklıdır.
 
 ## <a name="listen-for-direct-method-calls"></a>Doğrudan yöntem çağrılarını dinleme
 
@@ -116,7 +117,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 2. **SimulatedDevice.js** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    `connectionString` değişkeninin değerini, önceden not ettiğiniz cihaz bağlantı dizesiyle değiştirin. Daha sonra **SimulatedDevice.js** dosyasına değişikliklerinizi kaydedin.
+    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. js**' ye yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve simülasyon cihazı uygulamasını çalıştırın:
 
@@ -127,7 +128,7 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
     Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
 
-    ![Simülasyon cihazını çalıştırma](./media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![Simülasyon cihazını çalıştırma](./media/quickstart-control-device-node/simulated-device-telemetry-iot-hub.png)
 
 ## <a name="call-the-direct-method"></a>Doğrudan yöntem çağırma
 
@@ -137,7 +138,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 2. **BackEndApplication.js** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    `connectionString` değişkeninin değerini, önceden not ettiğiniz hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.js** dosyasına değişikliklerinizi kaydedin.
+    @No__t_0 değişkeninin değerini, daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Ardından **Backendadpplication. js**' ye yaptığınız değişiklikleri kaydedin.
 
 3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak gerekli kitaplıkları yükleyin ve arka uç uygulamasını çalıştırın:
 
@@ -148,11 +149,11 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
     Aşağıdaki ekran görüntüsünde, uygulamanın cihaza doğrudan yöntem çağrısı yaptığı ve bir bildirim aldığı için çıkış gösterilmektedir:
 
-    ![Arka uç uygulamasını çalıştırma](./media/quickstart-control-device-node/BackEndApplication.png)
+    ![Uygulama cihaza doğrudan yöntem çağrısını yaptığında çıkış](./media/quickstart-control-device-node/direct-method-device-call.png)
 
     Arka uç uygulamasını çalıştırdıktan sonra, simülasyon cihazını çalıştıran konsol penceresinde bir ileti ve ileti değişikliklerini gönderdiği hızı görürsünüz:
 
-    ![Sanal istemcide değişiklik](./media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![Sanal istemcide değişiklik olduğunda çıkış](./media/quickstart-control-device-node/simulated-device-message-change.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

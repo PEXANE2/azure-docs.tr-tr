@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ab6c381e779ddc19211f183b9bc80e586f58e804
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90fb3fe732889f3ba3965210cd8a681a0487f78e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261419"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515041"
 ---
-# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı Başlangıç: C# Proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C# proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
@@ -26,7 +26,7 @@ Microsoft Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](htt
 
 Bu makalede ilk olarak SSH kurulumu (bağlantı noktası 22 kullanılarak) açıklanmakta ve ardından Kurulum 'un RDP için bağlantı noktasının nasıl değiştirileceği açıklanmaktadır. Cihaz akışları uygulama ve protokol belirsiz olduğundan, aynı örnek diğer uygulama trafiği türlerini kapsayacak şekilde değiştirilebilir. Bu değişiklik genellikle iletişim bağlantı noktasını amaçlanan uygulama tarafından kullanılan bir ile değiştirmeyi içerir.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Aşağıdaki şekilde, bu örnekteki cihaz yerel ve hizmet yerel proxy uygulamalarının SSH istemcisi ile SSH Daemon işlemlerinde uçtan uca bağlantıyı nasıl etkinleştireceğinizi gösterilmektedir. Burada, arka plan programının cihaz yerel ara sunucu uygulamasıyla aynı cihazda çalıştığını varsayalım.
 
@@ -52,9 +52,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 * Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
 
   * Orta ABD
-  * Orta ABD EUAP
+  * EUAP Orta ABD
 
-* Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama kullanılarak C#yazılmıştır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm gerekir.
+* Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama içinde C#yazılmıştır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm gerekir.
 
   [.NET Core SDK .net 'ten birden çok platform için](https://www.microsoft.com/net/download/all)indirebilirsiniz.
 
@@ -74,7 +74,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Kullanıcının kimliğini doğrulamak için kullanılan cihazdaki geçerli bir kullanıcı hesabı ve kimlik bilgisi (Windows veya Linux).
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
@@ -86,10 +86,10 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
    > [!NOTE]
    > * *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
-   > * Gösterilen *Mydevice*' ı kullanın. Kayıtlı cihaz için verilen addır. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanın ve uygulamayı çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+   > * Kaydolduğunuz aygıtın adı için *mydevice* ' ın gösterildiği gibi kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanın ve uygulamayı çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Yeni kaydettiğiniz cihazın *Cihaz bağlantı dizesini* almak için Cloud Shell ' de aşağıdaki komutları çalıştırın:
@@ -98,10 +98,10 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
    > *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Bu hızlı başlangıçta kullanılmak üzere cihaz bağlantı dizesini aklınızda yapın. Aşağıdaki örneğe benzer şekilde görünür:
+    Bu hızlı başlangıçta kullanılmak üzere döndürülen cihaz bağlantı dizesini aklınızda edin. Aşağıdaki örneğe benzer şekilde görünür:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -111,10 +111,10 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
    > *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Daha sonra bu hızlı başlangıçta kullanmak için döndürülen değeri aklınızda yapın. Aşağıdaki örneğe benzer şekilde görünür:
+    Daha sonra bu hızlı başlangıçta kullanılmak üzere döndürülen hizmet bağlantı dizesine göz önünde edin. Aşağıdaki örneğe benzer şekilde görünür:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -124,15 +124,15 @@ Bu bölümde, SSH trafiğini tünele bir uçtan uca akış kurarsınız.
 
 ### <a name="run-the-device-local-proxy-application"></a>Cihaz yerel proxy uygulamasını çalıştırma
 
-Sıkıştırılmış proje klasörünüzdeki *cihaz-akışlar-proxy/cihaz* dizinine gidin. Aşağıdaki bilgileri yararlı tutun:
+Yerel bir Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `device-streams-proxy/device` dizinine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Bağımsız değişken adı | Bağımsız değişken değeri |
 |----------------|-----------------|
-| `deviceConnectionString` | Daha önce oluşturduğunuz cihazın bağlantı dizesi. |
-| `targetServiceHostName` | SSH sunucusunun dinlediği IP adresi. Bu adres `localhost` , cihaz yerel proxy uygulamasının çalıştığı aynı IP ise olur. |
+| `DeviceConnectionString` | Daha önce oluşturduğunuz cihazın cihaz bağlantı dizesi. |
+| `targetServiceHostName` | SSH sunucusunun dinlediği IP adresi. Bu adres, cihaz yerel proxy uygulamasının çalıştığı aynı IP ise `localhost`. |
 | `targetServicePort` | Uygulama protokolü tarafından kullanılan bağlantı noktası (SSH için varsayılan olarak, bu bağlantı noktası 22 ' dir).  |
 
-Kodu derleyin ve aşağıdaki gibi çalıştırın:
+Kodu derleyin ve aşağıdaki komutlarla çalıştırın:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/device/
@@ -142,23 +142,23 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $deviceConnectionString localhost 22
+dotnet run ${DeviceConnectionString} localhost 22
 
 # In Windows
-dotnet run %deviceConnectionString% localhost 22
+dotnet run {DeviceConnectionString} localhost 22
 ```
 
 ### <a name="run-the-service-local-proxy-application"></a>Hizmet yerel proxy uygulamasını çalıştırma
 
-Sıkıştırılmış proje `device-streams-proxy/service` klasörünüzde öğesine gidin. Aşağıdaki bilgiler yararlı olacaktır:
+Başka bir yerel Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `device-streams-proxy/service` ' a gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Parametre adı | Parametre değeri |
 |----------------|-----------------|
-| `iotHubConnectionString` | IoT Hub hizmet bağlantı dizesi. |
-| `deviceId` | Daha önce oluşturduğunuz cihazın tanımlayıcısı. |
+| `ServiceConnectionString` | IoT Hub hizmet bağlantı dizesi. |
+| `MyDevice` | Daha önce oluşturduğunuz cihazın tanımlayıcısı. |
 | `localPortNumber` | SSH istemcinizin bağlanacağı yerel bir bağlantı noktası. Bu örnekte 2222 numaralı bağlantı noktasını kullanıyoruz, ancak diğer rastgele sayılar kullanabilirsiniz. |
 
-Kodu derleyin ve aşağıdaki gibi çalıştırın:
+Kodu derleyin ve aşağıdaki komutlarla çalıştırın:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/service/
@@ -168,10 +168,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $serviceConnectionString MyDevice 2222
+dotnet run ${ServiceConnectionString} MyDevice 2222
 
 # In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
+dotnet run {ServiceConnectionString} MyDevice 2222
 ```
 
 ### <a name="run-the-ssh-client"></a>SSH istemcisini çalıştırma
@@ -179,7 +179,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 Artık SSH istemci uygulamanızı kullanın ve bağlantı noktası 2222 ' de hizmet yerel ara sunucu uygulamasına bağlanın (doğrudan SSH Daemon yerine).
 
 ```
-ssh <username>@localhost -p 2222
+ssh {username}@localhost -p 2222
 ```
 
 Bu noktada, SSH oturum açma penceresi, kimlik bilgilerinizi girmenizi ister.
@@ -198,42 +198,42 @@ SSH istemci uygulamasının konsol çıktısı. SSH istemcisi, hizmet yerel prox
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>Cihaz akışları aracılığıyla bir cihaza RDP
 
-RDP kurulumu, SSH kurulumuna çok benzer (yukarıda açıklanmıştır). Bunun yerine RDP hedef IP 'sini ve bağlantı noktası 3389 ' i kullanın ve RDP istemcisini kullanın (SSH istemcisi yerine).
+RDP kurulumu, SSH kurulumuna (yukarıda açıklanmıştır) benzer. Bunun yerine RDP hedef IP 'sini ve bağlantı noktası 3389 ' i kullanın ve RDP istemcisini kullanın (SSH istemcisi yerine).
 
 ### <a name="run-the-device-local-proxy-application-rdp"></a>Cihaz yerel proxy uygulaması (RDP) çalıştırma
 
-Sıkıştırılmış proje klasörünüzdeki *cihaz-akışlar-proxy/cihaz* dizinine gidin. Aşağıdaki bilgileri yararlı tutun:
+Yerel bir Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `device-streams-proxy/device` dizinine gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Bağımsız değişken adı | Bağımsız değişken değeri |
 |----------------|-----------------|
-| `DeviceConnectionString` | Daha önce oluşturduğunuz cihazın bağlantı dizesi. |
-| `targetServiceHostName` | RDP sunucusunun çalıştığı ana bilgisayar adı veya IP adresi. Bu adres `localhost` , cihaz yerel proxy uygulamasının çalıştığı aynı IP ise olur. |
+| `DeviceConnectionString` | Daha önce oluşturduğunuz cihazın cihaz bağlantı dizesi. |
+| `targetServiceHostName` | RDP sunucusunun çalıştığı ana bilgisayar adı veya IP adresi. Bu adres, cihaz yerel proxy uygulamasının çalıştığı aynı IP ise `localhost`. |
 | `targetServicePort` | Uygulama protokolü tarafından kullanılan bağlantı noktası (RDP için varsayılan olarak bu bağlantı noktası 3389 ' dir).  |
 
-Kodu derleyin ve aşağıdaki gibi çalıştırın:
+Kodu derleyin ve aşağıdaki komutlarla çalıştırın:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/device
 
 # Run the application
 # In Linux or macOS
-dotnet run $DeviceConnectionString localhost 3389
+dotnet run ${DeviceConnectionString} localhost 3389
 
 # In Windows
-dotnet run %DeviceConnectionString% localhost 3389
+dotnet run {DeviceConnectionString} localhost 3389
 ```
 
 ### <a name="run-the-service-local-proxy-application-rdp"></a>Hizmet yerel proxy uygulamasını (RDP) çalıştırma
 
-Sıkıştırılmış proje `device-streams-proxy/service` klasörünüzde öğesine gidin. Aşağıdaki bilgiler yararlı olacaktır:
+Başka bir yerel Terminal penceresinde, sıkıştırılmış proje klasörünüzdeki `device-streams-proxy/service` ' a gidin. Aşağıdaki bilgileri yararlı tutun:
 
 | Parametre adı | Parametre değeri |
 |----------------|-----------------|
-| `iotHubConnectionString` | IoT Hub hizmet bağlantı dizesi. |
-| `deviceId` | Daha önce oluşturduğunuz cihazın tanımlayıcısı. |
+| `ServiceConnectionString` | IoT Hub hizmet bağlantı dizesi. |
+| `MyDevice` | Daha önce oluşturduğunuz cihazın tanımlayıcısı. |
 | `localPortNumber` | SSH istemcinizin bağlanacağı yerel bir bağlantı noktası. Bu örnekte 2222 numaralı bağlantı noktasını kullanıyoruz, ancak bunu diğer rastgele sayılarla değiştirebilirsiniz. |
 
-Kodu derleyin ve aşağıdaki gibi çalıştırın:
+Kodu derleyin ve aşağıdaki komutlarla çalıştırın:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-proxy/service/
@@ -243,10 +243,10 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run $serviceConnectionString MyDevice 2222
+dotnet run ${ServiceConnectionString} MyDevice 2222
 
 # In Windows
-dotnet run %serviceConnectionString% MyDevice 2222
+dotnet run {ServiceConnectionString} MyDevice 2222
 ```
 
 ### <a name="run-rdp-client"></a>RDP istemcisini Çalıştır
@@ -261,7 +261,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, IoT Hub aracılığıyla bir cihaz akışı oluşturmak için bir IoT Hub 'ı oluşturdunuz, bir cihaz kaydettiniz, cihaz yerel ve hizmet yerel proxy uygulamaları dağıtıldı ve SSH ya da RDP trafiğini tünele ara sunucu uygulamaları kullandınız. Aynı paradigma, sunucunun cihazda çalıştığı diğer istemci-sunucu protokollerine (örneğin, SSH daemon) uyum sağlayabilir.
+Bu hızlı başlangıçta, IoT Hub 'ı aracılığıyla bir cihaz akışı oluşturmak için bir IoT Hub 'ı ve bir cihaz kaydettiniz, cihaz yerel ve hizmet yerel proxy uygulamaları dağıttınız ve SSH ya da RDP trafiğini tünele sağlamak için proxy uygulamalarını kullandınız. Aynı paradigma, sunucunun cihazda çalıştığı diğer istemci-sunucu protokollerine (örneğin, SSH daemon) uyum sağlayabilir.
 
 Cihaz akışları hakkında daha fazla bilgi edinmek için bkz.:
 

@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 18a2063c2ee2ae734e481cf663573ab5543e5edf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 22cdfaf1d48c4e93e57f46482eacb66742a6c9d6
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065791"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515705"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Hızlı Başlangıç: Azure Active Directory B2C kullanarak tek sayfalı bir uygulama için oturum açma ayarlayın
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Hızlı başlangıç: Azure Active Directory B2C'yi kullanarak tek sayfalı bir uygulama için oturum açma bilgilerini ayarlama
 
 Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşterilerinin korunmasını sağlamak için bulut kimlik yönetimi sağlar. Azure AD B2C; uygulamalarınızın, açık standart protokolleri kullanarak sosyal hesaplarda ve kurumsal hesaplarda kimlik doğrulaması gerçekleştirmesine olanak tanır. Bu hızlı başlangıçta, sosyal kimlik sağlayıcısı kullanıp Azure AD B2C korumalı web API’si çağırarak oturum açmak için bir tek sayfalı uygulama kullanırsınız.
 
@@ -25,10 +25,12 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) .
-- [Node.js](https://nodejs.org/en/download/)’yi yükleme
-- Facebook, Google veya Microsoft 'dan bir sosyal hesap.
-- GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) veya örnek web uygulamasını kopyalayın.
+- **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+- [Node.js](https://nodejs.org/en/download/)
+- Facebook, Google veya Microsoft 'tan sosyal hesap
+- GitHub 'dan kod örneği: [Active-Directory-B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+    
+    [ZIP arşivini indirebilir](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) veya depoyu klonlayabilirsiniz:
 
     ```
     git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
@@ -50,7 +52,7 @@ Azure Active Directory B2C (Azure AD B2C) uygulamanızın, işinizin ve müşter
     Listening on port 6420...
     ```
 
-2. Uygulamanın URL'sine göz atın. Örneğin: `http://localhost:6420`.
+2. Uygulamanın URL'sine göz atın. Örneğin, `http://localhost:6420`.
 
 ## <a name="sign-in-using-your-account"></a>Hesabınızı kullanarak oturum açın
 

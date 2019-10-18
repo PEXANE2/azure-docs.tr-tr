@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: a5c4ffde886735e096c4c4a96a648c997d1e7dec
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050176"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515047"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı Başlangıç: IoT Hub cihaz akışları aracılığıyla C 'deki bir cihaz uygulamasıyla iletişim kurma (Önizleme)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla C 'deki bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
@@ -58,7 +58,7 @@ Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturula
 
 * Orta ABD
 
-* Orta ABD EUAP
+* EUAP Orta ABD
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
@@ -110,7 +110,7 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
@@ -122,10 +122,10 @@ Bağlanabilmesi için IoT Hub 'ınız ile bir cihaz kaydetmeniz gerekir. Bu böl
 
    > [!NOTE]
    > * *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
-   > * Gösterilen *Mydevice*' ı kullanın. Kayıtlı cihaz için verilen addır. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanın ve uygulamayı çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
+   > * Kaydolduğunuz aygıtın adı için *mydevice* ' ın gösterildiği gibi kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanın ve uygulamayı çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
 1. Yeni kaydettiğiniz cihazın *Cihaz bağlantı dizesini* almak için Cloud Shell ' de aşağıdaki komutu çalıştırın:
@@ -134,10 +134,10 @@ Bağlanabilmesi için IoT Hub 'ınız ile bir cihaz kaydetmeniz gerekir. Bu böl
    > *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
-    Bu hızlı başlangıçta kullanılmak üzere cihaz bağlantı dizesini aklınızda yapın. Aşağıdaki örneğe benzer şekilde görünür:
+    Bu hızlı başlangıçta kullanılmak üzere döndürülen cihaz bağlantı dizesini aklınızda edin. Aşağıdaki örneğe benzer şekilde görünür:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,14 +149,14 @@ Bu bölümde hem cihaz tarafı uygulamasını hem de hizmet tarafı uygulamasın
 
 Cihaz tarafı uygulamasını çalıştırmak için aşağıdaki adımları izleyin:
 
-1. *İothub_client/Samples/iothub_client_c2d_streaming_sample* klasöründeki *iothub_client_c2d_streaming_sample. c* kaynak dosyasını düzenleyerek ve ardından Cihaz Bağlantı dizenizi sağlayarak cihaz kimlik bilgilerinizi sağlayın.
+1. @No__t_1 klasöründeki **iothub_client_c2d_streaming_sample. c** kaynak dosyasını düzenleyerek ve cihaz Bağlantı dizenizi ekleyerek cihaz kimlik bilgilerinizi sağlayın.
 
    ```C
    /* Paste in your iothub connection string  */
-   static const char* connectionString = "[device connection string]";
+   static const char* connectionString = "{DeviceConnectionString}";
    ```
 
-1. Kodu aşağıdaki gibi derleyin:
+1. Aşağıdaki komutlarla kodu derleyin:
 
    ```bash
    # In Linux
@@ -186,7 +186,7 @@ Cihaz tarafı uygulamasını çalıştırmak için aşağıdaki adımları izley
 
 ### <a name="run-the-service-side-application"></a>Hizmet tarafı uygulamasını çalıştırma
 
-Daha önce belirtildiği gibi, IoT Hub C SDK 'Sı yalnızca cihaz tarafında cihaz akışlarını destekler. Hizmet tarafı uygulamasını derlemek ve çalıştırmak için aşağıdaki hızlı başlangıçlardan birindeki yönergeleri izleyin:
+Daha önce belirtildiği gibi, IoT Hub C SDK 'Sı yalnızca cihaz tarafında cihaz akışlarını destekler. Eşlik eden hizmet tarafı uygulamasını derlemek ve çalıştırmak için aşağıdaki hızlı başlangıçlardan birindeki yönergeleri izleyin:
 
 * [IoT Hub cihaz akışları C# aracılığıyla bir cihaz uygulamasıyla iletişim kurma](./quickstart-device-streams-echo-csharp.md)
 
@@ -198,7 +198,7 @@ Daha önce belirtildiği gibi, IoT Hub C SDK 'Sı yalnızca cihaz tarafında cih
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlamış, bir cihaz kaydettiniz, cihazdaki bir C uygulaması ve hizmet tarafındaki başka bir uygulama arasında bir cihaz akışı kurdu ve bu akışı, verileri uygulamalar arasında geri ve ileri göndermek için kullandınız.
+Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz, cihazdaki bir C uygulaması ve hizmet tarafındaki başka bir uygulama arasında bir cihaz akışı kurdu ve bu akışı, verileri uygulamalar arasında ileri ve geri göndermek için kullandınız.
 
 Cihaz akışları hakkında daha fazla bilgi edinmek için bkz.:
 

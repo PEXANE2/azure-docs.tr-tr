@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ace735d116ef73e8a6fee8c0a244d520e730189
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 21a3e8541441e6139c1c84138870b3ffaf3cacc1
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312149"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515794"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Databricks üzerinde bir Spark işi çalıştırma
 
@@ -39,11 +39,11 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
 
-    ![Azure portalında Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks on Azure portal")
+    ![Azure portal databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure portal databricks")
 
 2. **Azure Databricks Hizmeti** bölümünde, Databricks çalışma alanı oluşturmak için değerler sağlayın.
 
-    ![Azure Databricks çalışma alanı oluşturma](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Create an Azure Databricks workspace")
+    ![Azure Databricks çalışma alanı oluşturma](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks çalışma alanı oluşturma")
 
     Aşağıdaki değerleri sağlayın:
     
@@ -54,8 +54,9 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/resource-group-overview.md). |
     |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
     |**Fiyatlandırma Katmanı**     |  **Standart**, **Premium**veya **deneme**arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Sanal Ağ**     |  Bir Azure Databricks çalışma alanını kendi sanal ağınıza (VNet) dağıtmayı seçin. Daha fazla bilgi için bkz. [Azure sanal ağınızda Azure Databricks dağıtma (VNet ekleme)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).        |
 
-    **Oluştur**’a tıklayın.
+    **Oluştur**'u seçin.
 
 4. Çalışma alanının oluşturulması birkaç dakika sürer. Çalışma alanı oluşturma sırasında, **Bildirimler**' de dağıtım durumunu görüntüleyebilirsiniz.
 
@@ -70,11 +71,11 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 2. Azure Databricks portalına yönlendirilirsiniz. Portalda **Yeni küme**' ya tıklayın.
 
-    ![Azure’da Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks on Azure")
+    ![Azure 'da databricks](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Azure 'da databricks")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Azure’da Databricks Spark kümesi oluşturma](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
+    ![Azure 'da Databricks Spark kümesi oluşturma](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
 
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
@@ -92,11 +93,11 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
 
 1. Sol bölmede **Azure Databricks**' yi seçin. **Ortak görevlerden** **Yeni Not defteri**' ni seçin.
 
-    ![Databricks’te not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Create notebook in Databricks")
+    ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
 2. **Not Defteri Oluştur** iletişim kutusuna bir ad girin, dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks’te not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Create notebook in Databricks")
+    ![Databricks 'te Not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Databricks 'te Not defteri oluşturma")
 
     **Oluştur**'u seçin.
 
@@ -136,15 +137,15 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
 
 5. Aşağıdaki ekran görüntüsünde gösterildiği gibi bir tablo çıktısı görürsünüz (yalnızca bazı sütunlar gösterilmiştir):
 
-    ![Örnek veri](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "örneği JSON verileri")
+    ![Örnek veriler](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Örnek JSON verileri")
 
 6. Artık bu verilerin görsel bir gösterimini oluşturarak, diğer kaynaklar yerine vatandaşları Connect app ve City çalışan uygulaması kullanılarak kaç tane güvenlik olayının raporlanacağı gösterilir. Tablo çıkışının alt kısmından **çubuk grafik** simgesini seçin ve ardından **Çizim seçenekleri**' ne tıklayın.
 
-    ![Çubuk grafik oluşturma](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Create bar chart")
+    ![Çubuk grafik oluştur](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Çubuk grafik oluştur")
 
 8. **Çizimi Özelleştir** menüsünde, değerleri ekran görüntüsünde gösterilen şekilde sürükleyip bırakın.
 
-    ![Pasta grafiğini özelleştirme](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "çubuk grafiğini özelleştirme")
+    ![Pasta grafiğini özelleştirme](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Çubuk grafiği Özelleştir")
 
    * **Anahtarları** **kaynağa**ayarlayın.
    * **Değerleri** **\ıd > <** olarak ayarlayın.
@@ -159,7 +160,7 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Küme oluştururken **\_ @ no__t-2 dakika etkin olmama** onay kutusu ' nu seçtikten sonra, kümeyi el ile sonlandıramazsanız, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_ sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

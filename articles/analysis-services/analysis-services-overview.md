@@ -4,15 +4,15 @@ description: Azure’da büyük Analysis Services resmini görün.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25366a550887461c6d36d4870a2c9062120ede47
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294779"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512600"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -134,11 +134,11 @@ Toplam maliyet; seçtiğiniz bölge, katman, sorgu çoğaltmaları ve duraklatma
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services’ı temel alır
 
-Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler, tüm desteklenen @ no__t-0 ' dır. Çok boyutlu modeller ve *SharePoint için PowerPivot Azure Analysis Services desteklenmez.*
+Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler \* desteklenir. Çok boyutlu modeller ve *SharePoint için PowerPivot Azure Analysis Services desteklenmez.*
 
 Hem bellek içi hem de DirectQuery modlarında tablolu modeller desteklenir. Bellek içi modda (varsayılan) tablolu modeller birden çok veri kaynağını destekler. Model verileri yüksek oranda sıkıştırılmış ve bellek içinde önbelleğe alınmış olduğundan, bu mod büyük miktarlarda veriler üzerinde en hızlı sorgu yanıtını sağlar. Ayrıca, karmaşık veri kümeleri ve sorgular için en fazla esnekliği sağlar. Bölümleme, artımlı yükleri etkinleştirir, paralelleştirmeyi artırır ve bellek tüketimini azaltır. Hesaplanmış tablolar gibi diğer gelişmiş veri modelleme özellikleri ve tüm DAX işlevleri desteklenir. Veri kaynaklarından önbelleğe alınmış verileri güncelleştirmek için bellek içi modeller yenilenmelidir (işlenmelidir). Azure hizmet sorumlusu desteği sayesinde, PowerShell, TOM, TMSL ve REST kullanan katılımsız yenileme işlemleri, model verilerinizin her zaman güncel olduğundan emin olmanızı sağlar. 
 
-DirectQuery modu*, depolama ve sorgu yürütme için arka uç ilişkisel veritabanından yararlanır. Tek SQL Server, SQL Server Veri Ambarı, Azure SQL Veritabanı, Azure SQL Veri Ambarı, Oracle ve Teradata veri kaynaklarında son derece büyük veri kümeleri desteklenir. Arka uç veri kümeleri, kullanılabilir sunucu kaynak belleğini aşabilir. Karmaşık veri modeli yenileme senaryoları gerekli değildir. Ayrıca, sınırlı veri kaynağı türleri, DAX formül sınırlamaları ve bazı gelişmiş veri modelleme özelliklerinin desteklenmemesi gibi belirli kısıtlamalar vardır. Sizin için en iyi modu belirlemeden önce bkz. [Direct Query modu](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+DirectQuery modu*, depolama ve sorgu yürütme için arka uç ilişkisel veritabanından yararlanır. Tek SQL Server, SQL Server Veri Ambarı, Azure SQL Veritabanı, Azure SQL Veri Ambarı, Oracle ve Teradata veri kaynaklarında son derece büyük veri kümeleri desteklenir. Arka uç veri kümeleri, kullanılabilir sunucu kaynak belleğini aşabilir. Karmaşık veri modeli yenileme senaryoları gerekli değildir. Ayrıca, sınırlı veri kaynağı türleri, DAX formülü sınırlamaları gibi bazı kısıtlamalar vardır ve bazı gelişmiş veri modelleme özellikleri desteklenmez. Sizin için en iyi modu belirlemeden önce bkz. [Direct Query modu](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Özellik kullanılabilirliği katmana bağlıdır.
 
@@ -200,7 +200,7 @@ Azure Güvenliği hakkında daha fazla bilgi edinmek için bkz. [Microsoft Güve
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Ücretsiz [Visual Studio için SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) ile modeller geliştirin ve dağıtın. SSDT'de, hızla başlangıç yapıp ilerlemeniz için Analysis Services proje şablonları vardır. SSDT şimdi tablosal 1400 modelleri için karma işlevselliğini ve modern Veri Al veri kaynağı sorgusunu içerir. Power BI Masaüstü ve Excel 2016'daki Veri Al işlevini biliyorsanız, üst düzeyde özelleştirilmiş veri kaynağı sorguları oluşturmanın ne kadar kolay olduğunu zaten biliyor olmalısınız. 
+Ücretsiz [Visual Studio için SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) ile modeller geliştirin ve dağıtın. SSDT'de, hızla başlangıç yapıp ilerlemeniz için Analysis Services proje şablonları vardır. SSDT artık tablo 1400 modelleri için modern veri Al veri kaynağı sorgusu ve mashup işlevlerini içerir. Power BI Masaüstü ve Excel 2016'daki Veri Al işlevini biliyorsanız, üst düzeyde özelleştirilmiş veri kaynağı sorguları oluşturmanın ne kadar kolay olduğunu zaten biliyor olmalısınız. 
 
 Visual Studio 2017 veya sonraki bir sürümü kullanıyorsanız, Microsoft Analysis Services projeleri ücretsiz bir yüklenebilir VSıX paketi olarak kullanılabilir. [Market'ten indirin](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
