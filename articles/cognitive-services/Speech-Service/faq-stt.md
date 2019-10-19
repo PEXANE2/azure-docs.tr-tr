@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028503"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595334"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -71,6 +71,28 @@ Y **: modelinizi**20 eşzamanlı istek artışlarına göre ölçeklendirebilirs
 
 Daha yüksek bir ölçeğe ihtiyacınız varsa [konuşma desteğiyle](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) iletişim kurun.
 
+Özel bir modelin Eşzamanlılığını artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
+
+- Modelin dağıtıldığı bölge.
+- Dağıtılan modelin uç nokta KIMLIĞI.
+
+Bir temel modellerin eşzamanlılık düzeyini artırmak için aşağıdaki bilgilere ihtiyacımız vardır:
+
+- Hizmetinizin bölgesi,
+
+ya da
+
+- sizin için bir erişim belirteci ( [buraya](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)bakın)
+
+or
+
+- aboneliğiniz için kaynak KIMLIĞI:
+  - @No__t_0 gidin,
+  - Arama kutusunda `Cognitive Services` ' yi seçin,
+  - görüntülenmiş hizmetlerden, eşzamanlılık artışı istediğiniz konuşma hizmetini seçin,
+  - Bu hizmetin özelliklerini görüntüle,
+  - `Resource ID` tamamını kopyalayın.
+
 **S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
 
 Y **: modeller**yerel olarak indirilemez ve yürütülemez.
@@ -94,7 +116,7 @@ Y **: her**kanalı ayrı ayrı gönderirseniz (her kanal kendi dosyasında), her
 
 **S: bir veri kümesinin boyutuyla ilgili sınır nedir ve neden sınırla?**
 
-**A**: bir veri kümesi için geçerli sınır 2 GB 'dir. Sınır, HTTP karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır. 
+**A**: bir veri kümesi için geçerli sınır 2 GB 'dir. Sınır, HTTP karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır.
 
 **S: daha büyük bir metin dosyasını karşıya yükleyebilmem için metin dosyalarımı ZIP yapabilir miyim?** 
 

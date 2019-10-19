@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972678"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595313"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure komut satırı arabirimi 'ni (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, Azure [komut satırı arabirimi 'ni (CLI)](https://do
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLı 'yı yükleyip oturum açın 
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)'yı yükler. CLı 'nın yerel yüklemesinde oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu çalıştırın:
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)’yi yükleyin. CLı 'nın yerel yüklemesinde oturum açmak için [az Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) komutunu çalıştırın:
 
 ```console
 az login
@@ -60,7 +60,7 @@ az account list-locations \
 
 Azure konumunuz olduktan sonra, [az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak Azure CLI 'de yeni bir kaynak grubu oluşturun.
 
-Aşağıdaki örnekte, Azure location `westus2` ' ı aboneliğiniz için kullanılabilen Azure konumlarından biriyle değiştirin.
+Aşağıdaki örnekte, Azure location `westus2`, aboneliğiniz için kullanılabilen Azure konumlarından biriyle değiştirin.
 
 ```azurecli-interactive
 az group create \
@@ -68,29 +68,36 @@ az group create \
     --location westus2
 ```
 
-## <a name="create-a-cognitive-services-resource"></a>Bilişsel hizmetler kaynağı oluşturma
+## <a name="create-a-cognitive-services-resource"></a>Bilişsel Hizmetler kaynağı oluşturma
 
 ### <a name="choose-a-cognitive-service-and-pricing-tier"></a>Bilişsel hizmet ve fiyatlandırma katmanı seçin
 
 Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve istediğiniz [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/) (veya SKU) bilmeniz gerekir. Kaynağı oluştururken bu ve diğer bilgileri parametre olarak kullanacaksınız.
 
+### <a name="multi-service"></a>Çoklu hizmet
+
+| Hizmet                    | denetlenmesi                      |
+|----------------------------|---------------------------|
+| Birden çok hizmet. Daha fazla bilgi için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/) sayfasına bakın.            | `CognitiveServices`     |
+
+
 > [!NOTE]
-> Birçok bilişsel hizmetler hizmeti denemek için kullanabileceğiniz ücretsiz bir katmana sahiptir. Ücretsiz katmanı kullanmak için, kaynağınız için SKU olarak `F0` ' ı kullanın.
+> Aşağıdaki bilişsel hizmetler 'in çoğunda hizmeti denemek için kullanabileceğiniz ücretsiz bir katman vardır. Ücretsiz katmanı kullanmak için, kaynağınız için SKU olarak `F0` kullanın.
 
-### <a name="vision"></a>Minin
+### <a name="vision"></a>Görüntü
 
-| Hizmet                    | Denetlenmesi                      |
+| Hizmet                    | denetlenmesi                      |
 |----------------------------|---------------------------|
 | Görüntü İşleme            | `ComputerVision`          |
 | Özel Görüntü İşleme tahmin | `CustomVision.Prediction` |
 | Özel Görüntü İşleme-eğitim   | `CustomVision.Training`   |
-| Yüz Tanıma API'si                   | `Face`                    |
-| Form tanıyıcı            | `FormRecognizer`          |
-| Mürekkep tanıyıcı             | `InkRecognizer`           |
+| Yüz API'si                   | `Face`                    |
+| Form Tanıma            | `FormRecognizer`          |
+| Mürekkep Tanıma             | `InkRecognizer`           |
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arama
 
-| Hizmet            | Denetlenmesi                  |
+| Hizmet            | denetlenmesi                  |
 |--------------------|-----------------------|
 | Bing Otomatik Öneri   | `Bing.Autosuggest.v7` |
 | Bing Özel Arama | `Bing.CustomSearch`   |
@@ -98,30 +105,30 @@ Yeni bir kaynak oluştururken, kullanmak istediğiniz hizmetin "tür" i ve isted
 | Bing Arama        | `Bing.Search.v7`      |
 | Bing Yazım Denetimi   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Konuşmayı
+### <a name="speech"></a>Konuşma Tanıma
 
-| Hizmet            | Denetlenmesi                 |
+| Hizmet            | denetlenmesi                 |
 |--------------------|----------------------|
 | Konuşma Hizmetleri    | `SpeechServices`     |
-| Konuşma tanıma | `SpeakerRecognition` |
+| Konuşma Tanıma | `SpeakerRecognition` |
 
-### <a name="language"></a>Dildir
+### <a name="language"></a>Dil
 
-| Hizmet            | Denetlenmesi                |
+| Hizmet            | denetlenmesi                |
 |--------------------|---------------------|
 | Form anlama | `FormUnderstanding` |
-| LUıS               | `LUIS`              |
+| LUIS               | `LUIS`              |
 | Soru-Cevap Oluşturma          | `QnAMaker`          |
 | Metin Analizi     | `TextAnalytics`     |
-| Metin çevirisi   | `TextTranslation`   |
+| Metin Çevirisi   | `TextTranslation`   |
 
-### <a name="decision"></a>Seçim
+### <a name="decision"></a>Karar
 
-| Hizmet           | Denetlenmesi               |
+| Hizmet           | denetlenmesi               |
 |-------------------|--------------------|
-| Anomali algılayıcısı  | `AnomalyDetector`  |
+| Anomali Algılayıcısı  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
-| Kişiselleştirici      | `Personalizer`     |
+| Kişiselleştirme      | `Personalizer`     |
 
 Mevcut bilişsel hizmet hizmeti "türlerinin" bir listesini [az biliveservices hesap listesi-tür](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) komutuyla bulabilirsiniz:
 
@@ -191,7 +198,7 @@ Kaynak grubunu ve ilişkili kaynaklarını kaldırmak için az Group Delete komu
 az group delete --name storage-resource-group
 ```
 
-## <a name="see-also"></a>Ayrıca bkz:
+## <a name="see-also"></a>Ayrıca bkz.
 
 * [Azure bilişsel hizmetler 'e yönelik isteklerin kimliğini doğrulama](authentication.md)
 * [Azure bilişsel hizmetler nedir?](Welcome.md)
