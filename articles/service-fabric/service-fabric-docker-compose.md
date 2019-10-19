@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168828"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553563"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric Docker Compose dağıtım desteği (Önizleme)
 
 Docker, çok Kapsayıcılı uygulamalar tanımlamak için [Docker-Compose. yıml](https://docs.docker.com/compose) dosyasını kullanır. Docker 'ın sunduğumuz müşterilerin Azure Service Fabric 'deki mevcut kapsayıcı uygulamalarını düzenleme konusunda daha kolay hale getirmek için, platformda yerel olarak Docker Compose dağıtımı için Önizleme desteği eklenmiştir. Service Fabric, `docker-compose.yml` dosyalarının sürüm 3 ' ü ve üstünü kabul edebilir. 
 
-Bu destek önizlemede olduğundan, oluşturma yönergelerinin yalnızca bir alt kümesi desteklenir. Örneğin, uygulama yükseltmeleri desteklenmez. Ancak, uygulamaları yükseltmek yerine her zaman kaldırabilir ve dağıtabilirsiniz.
+Bu destek önizlemede olduğundan, oluşturma yönergelerinin yalnızca bir alt kümesi desteklenir.
 
 Bu önizlemeyi kullanmak için, Service Fabric çalışma Azure portal zamanının sürüm 5,7 veya daha büyük bir sürümüyle birlikte ilgili SDK ile birlikte kümenizi oluşturun. 
 
@@ -146,7 +146,7 @@ Service Fabric hizmeti dinleyicisi tarafından kullanılacak bağlantı noktalar
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName hesaplama
 
-Bir oluşturma dosyasında belirttiğiniz hizmet adı tam etki alanı adıdır (yani, bir nokta [.] içeriyorsa) Service Fabric tarafından kaydedilen DNS adı `<ServiceName>` ' dır (nokta dahil). Aksi takdirde, uygulama adındaki her yol segmenti, en üst düzey etki alanı etiketine sahip olan ilk yol segmenti olan hizmet DNS adında bir etki alanı etiketi haline gelir.
+Bir oluşturma dosyasında belirttiğiniz hizmet adı tam etki alanı adıdır (yani, bir nokta [.] içeriyorsa) Service Fabric tarafından kaydedilen DNS adı `<ServiceName>` (nokta dahil). Aksi takdirde, uygulama adındaki her yol segmenti, en üst düzey etki alanı etiketine sahip olan ilk yol segmenti olan hizmet DNS adında bir etki alanı etiketi haline gelir.
 
 Örneğin, belirtilen uygulama adı `fabric:/SampleApp/MyComposeApp` ise, `<ServiceName>.MyComposeApp.SampleApp` kayıtlı DNS adı olacaktır.
 

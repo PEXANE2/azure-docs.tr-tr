@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2201b7701dae90b43a01a6fb45decd94e45bab74
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40d0cd29452b5473d16851451a88c93e78ef3f36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429994"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554432"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
@@ -35,7 +35,7 @@ Bu makalede, korunan Web uygulamaları, Web API 'Leri veya korumalı Web API 'Le
 
 **Yetkilendirme** , kimliği doğrulanmış bir tarafın bir şeyi yapmak için izin verme işlemidir. Hangi verilerin erişebileceğini ve bu verilerle yapabileceklerinizi belirtir. Yetkilendirme bazen AuthZ şeklinde kısaltılabilir.
 
-Her birinin kendi Kullanıcı adı ve parola bilgilerini korumaları yerine, birden çok uygulamanız olduğunda ve bunlara Kullanıcı ekleme veya bunları kaldırma gereksinimi olduğunda, uygulamalar bu sorumluluğu merkezi bir şekilde temsil edebilir kimlik sağlayıcısı.
+Her birinin kendi Kullanıcı adı ve parola bilgilerini korumalarına veya birden çok uygulama arasında Kullanıcı eklemeniz veya kaldırmanız gerektiğinde yüksek bir yönetim yükü sunan uygulamalar oluşturmak yerine, uygulamalar bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
 
 Azure Active Directory (Azure AD), bulutta merkezi bir kimlik oluşturma sağlayıcıdır. Kimlik doğrulama ve yetkilendirmeyi yetkilendirme, bir kullanıcının belirli bir konumda olmasını gerektiren koşullu erişim ilkeleri, çok faktörlü kimlik doğrulamasının kullanılması ve bir kullanıcının bir kez oturum açmasını ve sonra otomatik olarak kullanılabilmesini sağlar. aynı merkezi dizini paylaşan tüm Web uygulamalarında oturum açıldı. Bu yetenek, çoklu oturum açma (SSO) olarak adlandırılır.
 
@@ -43,7 +43,7 @@ Merkezi bir kimlik sağlayıcısı, dünyanın her yerindeki kullanıcıların, 
 
 Microsoft Identity platform, OAuth 2,0 ve OpenID Connect gibi sektör standardı protokoller desteğiyle ve farklı bir şekilde açık kaynak kitaplıkları sunarak uygulama geliştiricileri için kimlik doğrulamasını basitleştirir. kodlamaya hızlı bir şekilde başlamanıza yardımcı olacak platformlar. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Daha fazla bilgi için bkz. [Microsoft Identity platform 'un gelişi](about-microsoft-identity-platform.md).
 
-## <a name="tenants"></a>Kira
+### <a name="tenants"></a>Kira
 
 Bulut kimlik sağlayıcısı birçok kuruluşa hizmet eder. Kullanıcıları farklı kuruluşlardan ayrı tutmak için, Azure AD kiracılar halinde bölümlenmiştir ve kuruluşa göre tek bir kiracı olur.
 
@@ -76,7 +76,7 @@ Belirteçler yalnızca sınırlı bir süre için geçerlidir. STS, genellikle b
 
 Erişim belirteçleri, `Authenticate` üst bilgisinde taşıyıcı belirteci olarak bir Web API 'sine geçirilir. Bir uygulama STS 'ye yenileme belirteci sağlayabilir ve uygulamaya yönelik kullanıcı erişimi iptal edilmediği takdirde, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. Bu, kuruluşa ayrılmaya yönelik senaryonun işlenme yönteminden oluşur. STS yenileme belirtecini aldığında, Kullanıcı artık yetkilendirilmezse başka bir geçerli erişim belirteci vermez.
 
-### <a name="applications"></a>Uygulamalar
+## <a name="application-model"></a>Uygulama modeli
 
 Uygulamalar, kullanıcıların kendilerine oturum açmasını veya bir kimlik sağlayıcısı için oturum açma yetkisini devredebilir. Azure AD tarafından desteklenen oturum açma senaryoları hakkında bilgi edinmek için bkz. [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) .
 
@@ -90,18 +90,16 @@ Bir kimlik sağlayıcısının bir kullanıcının belirli bir uygulamaya erişi
 
 Kaydolduktan sonra uygulamaya, belirteç istediğinde uygulamanın Azure AD ile paylaştığı bir GUID gönderilir. Uygulama gizli bir istemci uygulaması ise, sertifikaların veya gizli anahtarların kullanılıp kullanılmadığını bağlı olarak gizli anahtar veya ortak anahtarı da paylaşır.
 
-### <a name="application-model"></a>Uygulama modeli
-
 Microsoft Identity platform iki ana işlevi yerine getiren bir modeli kullanarak uygulamaları temsil eder:
 
-**Uygulamayı desteklediği kimlik doğrulama protokollerine göre belirleyip kimlik doğrulaması için gereken tüm tanımlayıcıları, URL 'Leri, gizli dizileri ve ilgili bilgileri sağlayın.**
+Uygulamayı desteklediği kimlik doğrulama protokollerine göre belirleyip kimlik doğrulaması için gereken tüm tanımlayıcıları, URL 'Leri, gizli dizileri ve ilgili bilgileri sağlayın.
 Microsoft Identity platformu:
 
 * Çalışma zamanında kimlik doğrulamasını desteklemek için gereken tüm verileri tutar.
 * Bir uygulamanın erişmesi gerekebilecek kaynakları ve belirli bir isteğin yerine getirilmesi gereken koşulları belirlemek için tüm verileri tutar.
 * Uygulama geliştiricisinin kiracısında ve diğer Azure AD kiracılarında uygulama sağlamayı uygulamak için altyapı sağlar.
 
-**Belirteç istek süresi boyunca Kullanıcı onayını işleyin ve kiracılar genelinde uygulamaların dinamik sağlamasını kolaylaştırır** Onay, belirli izinler altında, kaynak sahibi adına korumalı kaynaklara erişmek için bir istemci uygulamasına yetkilendirme izni veren bir işlemdir. Microsoft Identity platformu:
+Belirteç istek süresi boyunca Kullanıcı onayını işleme ve kiracılar arasında uygulamaların dinamik olarak sağlanmasını sağlama işlemi, bir istemci uygulamasına, korunan kaynaklara erişim sağlayan bir kaynak sahibinin, üzerinde belirli izinler altında, Kaynak sahibinin adına. Microsoft Identity platformu:
 
 * Kullanıcıların ve yöneticilerin uygulamanın kendileri adına kaynaklara erişmesine dinamik olarak onay vermesini veya reddetmesini sağlar.
 * Yöneticilerin uygulamaların gerçekleştirebilecekleri işlemler, belirli uygulamalara erişebilecek kullanıcılar ve erişilen dizin kaynakları hakkında son kararı vermesini sağlar.
@@ -154,7 +152,7 @@ Tarayıcı aracılığıyla Kullanıcı kimlik doğrulaması gerçekleşir. Open
 - Yeniden yönlendirme, Web uygulaması tarafından yeniden yönlendirme URI 'SI biçiminde sağlanır. Bu yeniden yönlendirme URI 'SI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama çeşitli URL 'Lerde dağıtılabilmesi için birkaç yeniden yönlendirme URI 'si olabilir. Bu nedenle, Web uygulamasının kullanılacak yeniden yönlendirme URI 'sini belirtmesi de gerekecektir.
 - Azure AD, Web uygulaması tarafından gönderilen yeniden yönlendirme URI 'sinin, uygulamanın kayıtlı yeniden yönlendirme URI 'lerinden biri olduğunu doğrular.
 
-## <a name="generalization-to-desktop-and-mobile-apps"></a>Masaüstü ve mobil uygulamalara Genelleştirme
+## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Azure AD ile masaüstü ve mobil uygulama oturum açma akışı
 
 Yukarıda açıklanan akış, küçük farklılıklar ile masaüstü ve mobil uygulamalar için geçerlidir.
 

@@ -1,23 +1,18 @@
 ---
 title: Azure 'da Office 365 yönetim çözümü | Microsoft Docs
 description: Bu makalede, Azure 'da Office 365 çözümünün yapılandırması ve kullanımıyla ilgili ayrıntılar sağlanmaktadır.  Azure Izleyici 'de oluşturulan Office 365 kayıtlarının ayrıntılı açıklamasını içerir.
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.date: 08/13/2019
+ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061640"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553945"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -67,15 +62,15 @@ Bu yordama başlamadan önce, aşağıdaki bilgileri toplayın.
 Log Analytics çalışma alanınızdan:
 
 - Çalışma alanı adı: Office 365 verilerinin toplanacağı çalışma alanı.
-- Kaynak grubu adı: Çalışma alanını içeren kaynak grubu.
-- Azure abonelik KIMLIĞI: Çalışma alanını içeren abonelik.
+- Kaynak grubu adı: çalışma alanını içeren kaynak grubu.
+- Azure abonelik KIMLIĞI: çalışma alanını içeren abonelik.
 
 Office 365 aboneliğinizden:
 
-- Nitelen Yönetici hesabının e-posta adresi.
+- Kullanıcı adı: yönetici hesabının e-posta adresi.
 - Kiracı KIMLIĞI: Office 365 aboneliğinin benzersiz KIMLIĞI.
 - İstemci KIMLIĞI: Office 365 istemcisini temsil eden 16 karakterlik dize.
-- İstemci parolası: Kimlik doğrulaması için gereken şifreli dize.
+- İstemci parolası: kimlik doğrulaması için şifreli dize gereklidir.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory bir Office 365 uygulaması oluşturma
 
@@ -102,14 +97,14 @@ Office 365 aboneliğinizden:
 1. **API izinleri** ' ni seçin ve ardından **bir izin ekleyin**.
 1. **Office 365 Yönetim API 'leri**' ne tıklayın. 
 
-    ![API Seçin](media/solution-office-365/select-api.png)
+    ![API seçin](media/solution-office-365/select-api.png)
 
 1. **Uygulamanız gereken izin türü altında?** uygulama **izinleri** ve **temsilci izinleri**için aşağıdaki seçenekleri belirtin:
    - Kuruluşunuzun hizmet durumu bilgilerini okuyun
    - Kuruluşunuzun etkinlik verilerini okuyun
    - Kuruluşunuz için etkinlik raporlarını okuyun
 
-     ![API Seçin](media/solution-office-365/select-permissions-01.png)![API Seçin](media/solution-office-365/select-permissions-02.png)
+     ![API seçin](media/solution-office-365/select-permissions-01.png)![API seçin](media/solution-office-365/select-permissions-02.png)
 
 1. **Izin Ekle**' ye tıklayın.
 1. **Yönetici onayı ver** ' e tıklayın ve doğrulama istendiğinde **Evet** ' e tıklayın.
@@ -189,7 +184,7 @@ Yönetim hesabını ilk kez etkinleştirmek için, uygulama için yönetici onay
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
     ```
 
-1. Aşağıda gösterilene benzer bir pencere sunulacaktır. Tıklayın **kabul**.
+1. Aşağıda gösterilene benzer bir pencere sunulacaktır. **Kabul et**' e tıklayın.
     
     ![Yönetici onayı](media/solution-office-365/admin-consent.png)
 
@@ -398,7 +393,7 @@ At line:12 char:18
 
 ```
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
 [Yönetim çözümünü kaldırma](solutions.md#remove-a-monitoring-solution)' daki Işlemi kullanarak Office 365 Yönetim çözümünü kaldırabilirsiniz. Bu, Office 365 ' den toplanan verileri de Azure Izleyici 'ye durdurmayacak. Office 365 aboneliğinizi kaldırmak ve veri toplamayı durdurmak için aşağıdaki yordamı izleyin.
 
@@ -514,7 +509,7 @@ Verilerin başlangıçta toplanması birkaç saat sürebilir. Toplamaya başlad�
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Office 365 çözümünü Log Analytics çalışma alanınıza eklediğinizde panonuza **office 365** kutucuğu eklenecektir. Bu kutucukta, ortamınızdaki bilgisayarların sayısına ve güncelleştirme uyumluluğuna ilişkin bir sayı ve grafik gösterimi görüntülenir.<br><br>
-![Office 365 Özet kutucuğu](media/solution-office-365/tile.png)  
+![Office 365 Özet kutucuğu ](media/solution-office-365/tile.png)  
 
 Office **365** panosunu açmak için **Office 365** kutucuğuna tıklayın.
 
@@ -524,8 +519,8 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 
 | Sütun | Açıklama |
 |:--|:--|
-| İşlemler | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
-| Exchange | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
+| Operations | Tüm izlenen Office 365 aboneliklerinizden etkin kullanıcılar hakkında bilgiler sağlar. Ayrıca, zaman içinde gerçekleşen etkinlik sayısını da görebileceksiniz.
+| Değiştirin | Posta kutusu ekleme Izni veya Set-Mailbox gibi Exchange Server etkinliklerinin dökümünü gösterir. |
 | SharePoint | Kullanıcıların SharePoint belgelerinde gerçekleştirdiği en iyi etkinlikleri gösterir. Bu kutucuktan ayrıntıya indığınızda arama sayfasında, bu etkinliklerin hedef belge ve bu etkinliğin konumu gibi ayrıntıları gösterilir. Örneğin, dosya erişimli bir olay için, erişilen belgeye, ilişkili hesap adına ve IP adresine bakabilirsiniz. |
 | Azure Active Directory | Kullanıcı parolası ve oturum açma girişimlerini sıfırlama gibi ilk kullanıcı etkinliklerini içerir. Ayrıntıya gitmediğiniz zaman, bu etkinliklerin sonuç durumu gibi ayrıntılarını görebileceksiniz. Bu, genellikle Azure Active Directory şüpheli etkinlikleri izlemek istediğinizde yararlı olur. |
 
@@ -540,18 +535,18 @@ Office 365 çözümü tarafından Azure Izleyici 'de Log Analytics çalışma al
 
 Aşağıdaki özellikler tüm Office 365 kayıtları için ortaktır.
 
-| Özellik | Description |
+| Özellik | Açıklama |
 |:--- |:--- |
-| Type | *Officeetkinliği* |
+| Tür | *Officeetkinliği* |
 | ClientIP | Etkinlik günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
-| Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Çalışma | Kullanıcı veya yönetici etkinliğinin adı.  |
+| Officeiş yükü | Kaydın başvurduğu Office 365 hizmeti.<br><br>AzureActiveDirectory<br>Değiştirin<br>SharePoint|
+| İşlem | Kullanıcı veya yönetici etkinliğinin adı.  |
 | Kuruluş kimliği | Kuruluşunuzun Office 365 kiracısı için GUID. Bu değer, gerçekleştiği Office 365 hizmetine bakılmaksızın kuruluşunuzun her zaman aynı olacaktır. |
 | RecordType | Gerçekleştirilen işlem türü. |
 | ResultStatus | Eylemin (Işlem özelliğinde belirtilen) başarılı olup olmadığını gösterir. Olası değerler başarılı, PartiallySucceeded veya başarısız. Exchange yönetici etkinliği için değer true ya da false şeklindedir. |
-| UserId | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
+| UserID | Günlüğe kaydedilen kayda neden olan eylemi gerçekleştiren kullanıcının UPN (Kullanıcı asıl adı); Örneğin, my_name@my_domain_name. Sistem hesapları tarafından gerçekleştirilen etkinlik kayıtlarının (örneğin, SHAREPOINT\system veya NTAUTHORITY\SYSTEM ADLı) da dahil edildiğini unutmayın. | 
 | UserKey | UserID özelliğinde tanımlanan Kullanıcı için alternatif bir KIMLIK.  Örneğin, bu özellik SharePoint, OneDrive Iş ve Exchange kullanıcıları tarafından gerçekleştirilen olaylar için Passport benzersiz KIMLIĞI (PUıD) ile doldurulur. Bu özellik aynı zamanda diğer hizmetlerde gerçekleşen olaylar ve sistem hesapları tarafından gerçekleştirilen olaylar için UserID özelliği ile aynı değeri belirtebilir|
-| UserType | İşlemi gerçekleştiren kullanıcı türü.<br><br>Yönetici<br>Uygulama<br>DcAdmin<br>Normal<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
+| userType | İşlemi gerçekleştiren kullanıcı türü.<br><br>Yöneticileri<br>Uygulama<br>DcAdmin<br>Aralıklarla<br>Ayrılmış<br>ServicePrincipal<br>Sistem |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory taban
@@ -563,7 +558,7 @@ Aşağıdaki özellikler tüm Azure Active Directory kayıtları için ortaktır
 | Officeiş yükü | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Azure AD olayının türü. |
-| ExtendedProperties | Azure AD olayının genişletilmiş özellikleri. |
+| extendedProperties | Azure AD olayının genişletilmiş özellikleri. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Hesap oturum Azure Active Directory
@@ -620,11 +615,11 @@ Bu kayıtlar, Exchange yapılandırmasında değişiklik yapıldığında oluşt
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  Cmdlet 'inin kuruluşunuzdaki bir kullanıcı tarafından, Microsoft veri merkezi personeli veya bir veri merkezi hizmet hesabı tarafından mı yoksa yetkilendirilmiş bir yönetici tarafından mı çalıştırılacağını belirtir. False değeri, cmdlet 'inin kuruluşunuzdaki bir kişi tarafından çalıştırıldığını gösterir. True değeri, cmdlet 'in veri merkezi personeli, bir veri merkezi hizmet hesabı veya yönetici temsilcisi tarafından çalıştırıldığını belirtir. |
 | ModifiedObjectResolvedName |  Bu, cmdlet tarafından değiştirilen nesnenin Kullanıcı dostu adıdır. Bu, yalnızca cmdlet nesneyi değiştirdiğinde günlüğe kaydedilir. |
-| OrganizationName | Kiracının adı. |
+| © | Kiracının adı. |
 | OriginatingServer | Cmdlet 'in yürütüldüğü sunucunun adı. |
 | Parametreler | Operations özelliğinde tanımlanan cmdlet ile kullanılan tüm parametrelerin adı ve değeri. |
 
@@ -635,7 +630,7 @@ Exchange posta kutularına değişiklik veya eklemeler yapıldığında bu kayı
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | RecordType     | Exchangeıtem |
 | Clientınfostring | Bir tarayıcı sürümü, Outlook sürümü ve mobil cihaz bilgileri gibi, işlemi gerçekleştirmek için kullanılan e-posta istemcisiyle ilgili bilgiler. |
 | Client_IPAddress | İşlem günlüğe kaydedildiğinde kullanılan cihazın IP adresi. IP adresi bir IPv4 veya IPv6 adresi biçiminde görüntülenir. |
@@ -658,7 +653,7 @@ Bu kayıtlar, bir posta kutusu denetim girişi oluşturulduğunda oluşturulur.
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | RecordType     | Exchangeıtem |
 | Öğe | İşlemin gerçekleştirildiği öğeyi temsil eder | 
 | SendAsUserMailboxGuid 'Si | E-posta göndermek için erişilen posta kutusunun Exchange GUID 'ı. |
@@ -673,7 +668,7 @@ Bu kayıtlar, Exchange gruplarında değişiklik veya eklemeler yapıldığında
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Officeiş yükü | Exchange |
+| Officeiş yükü | Değiştirin |
 | Officeiş yükü | Exchangeıtemgroup |
 | AffectedItems | Gruptaki her öğe hakkında bilgi. |
 | CrossMailboxOperations | İşlemin birden fazla posta kutusu ile ilişkili olup olmadığını gösterir. |
@@ -683,7 +678,7 @@ Bu kayıtlar, Exchange gruplarında değişiklik veya eklemeler yapıldığında
 | DestMailboxOwnerUPN | Yalnızca CrossMailboxOperations parametresi true ise ayarlanır. Hedef posta kutusunun sahibinin UPN 'sini belirtir. |
 | DestFolder | Taşıma gibi işlemler için hedef klasör. |
 | Klasör | Bir öğe grubunun bulunduğu klasör. |
-| Klasörleri |     Bir işlemde yer alan kaynak klasörleriyle ilgili bilgiler; Örneğin, klasörler seçildiyse ve sonra silinirse. |
+| Klasörler |     Bir işlemde yer alan kaynak klasörleriyle ilgili bilgiler; Örneğin, klasörler seçildiyse ve sonra silinirse. |
 
 
 ### <a name="sharepoint-base"></a>SharePoint temeli
@@ -744,7 +739,7 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtla
 | Sorgu | Açıklama |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; , işleme göre Count () özetleme |
-|SharePoint sitelerinin kullanımı|&#124; Officeiş yükü = ~ "SharePoint" &#124; olarak Count ( \| ) değerini|
+|SharePoint sitelerinin kullanımı|Officeiş &#124; yükü = ~ "SharePoint \|" &#124; olan officeactivity|
 |Kullanıcı türüne göre dosya erişim işlemleri|içinde ara (OfficeActivity) Officeiş yükü = ~ "azureactivedirectory" ve "MyTest"|
 |Belirli bir anahtar sözcükle arama|Tür = OfficeActivity Officeiş yükü = azureactivedirectory "MyTest"|
 |Exchange 'de dış eylemleri izleme|Officeiş &#124; yükü = ~ "Exchange" ve ExternalAccess = = true olduğunda officeetkinliği|

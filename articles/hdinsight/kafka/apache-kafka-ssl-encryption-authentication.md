@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d555c51838f3595367e931341a3cf6161857faef
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431283"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554620"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için Güvenli Yuva Katmanı (SSL) şifrelemesini ve kimlik doğrulamasını ayarlama
 
 Bu makalede, Apache Kafka istemcileri ve Apache Kafka aracıları arasında SSL şifrelemesini ayarlama konusu gösterilmektedir. Ayrıca, istemcilerin kimlik doğrulamasının nasıl ayarlanacağını gösterir (bazen iki yönlü SSL olarak adlandırılır).
 
 > [!Important]
-> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: bir Java istemcisi ve bir konsol istemcisi. Yalnızca `ProducerConsumer.java` Java istemcisi hem üretme hem de kullanma için SSL kullanabilir. @No__t-0 konsol üreticisi istemci SSL ile çalışmıyor.
+> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: bir Java istemcisi ve bir konsol istemcisi. Yalnızca `ProducerConsumer.java` Java istemcisi hem üretme hem de kullanma için SSL kullanabilir. Konsol üreticisi istemci `console-producer.sh` SSL ile çalışmıyor.
 
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka Aracısı kurulumu
 
@@ -49,7 +49,7 @@ Aracı Kurulum işleminin Özeti aşağıdaki gibidir:
 Aracı kurulumunu gerçekleştirmek için aşağıdaki ayrıntılı yönergeleri kullanın:
 
 > [!Important]
-> Aşağıdaki kod parçacıkları wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve uygun şekilde `wn0`, `wn1` veya `wn2` ile değiştirilmelidir. `WorkerNode0_Name` ve `HeadNode0_Name`, ilgili makinelerin (`wn0-abcxyz` veya `hn0-abcxyz` gibi) adlarıyla değiştirilmelidir.
+> Aşağıdaki kod parçacıkları wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve uygun şekilde `wn0`, `wn1` veya `wn2` ile değiştirilmelidir. `WorkerNode0_Name` ve `HeadNode0_Name`, `wn0-abcxyz` veya `hn0-abcxyz` gibi ilgili makinelerin adlarıyla değiştirilmelidir.
 
 1. HDInsight için, sertifika yetkilisinin (CA) rolünü dolduracağı baş düğüm 0 ' da ilk kurulumu gerçekleştirin.
 
@@ -76,6 +76,12 @@ Aracı kurulumunu gerçekleştirmek için aşağıdaki ayrıntılı yönergeleri
     keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
     keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass "MyServerPassword123" -keypass "MyServerPassword123"
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
+    ```
+
+1. CA makinesinde, CA-sertifika ve CA-anahtar dosyaları oluşturmak için aşağıdaki komutu çalıştırın:
+
+    ```bash
+    openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
     ```
 
 1. CA makinesine geçin ve alınan tüm sertifika imzalama isteklerini imzalayın:
@@ -128,30 +134,18 @@ Yapılandırma değişikliğini gerçekleştirmek için aşağıdaki adımları 
 
     ![Kafka SSL yapılandırma özelliklerini ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Aşağıdaki komutları çalıştırarak, tam etki alanı adı (FQDN) yerine IP adreslerini tanıtmak üzere Kafka `server.properties` dosyasına yapılandırma özellikleri eklenir.
+1. **Gelişmiş Kafka-env** altında, **Kafka-env Template** özelliğinin sonuna aşağıdaki satırları ekleyin.
 
-    ```bash
-    IP_ADDRESS=$(hostname -i)
-    echo advertised.listeners=$IP_ADDRESS
-    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    ```
-
-1. Önceki değişikliklerin doğru şekilde yapıldığını doğrulamak için isteğe bağlı olarak, Kafka `server.properties` dosyasında aşağıdaki satırların bulunduğunu kontrol edebilirsiniz.
-
-    ```bash
-    advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
+    ```config
+    # Needed to configure IP address advertising
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
     ssl.keystore.password=MyServerPassword123
     ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
     ssl.truststore.password=MyServerPassword123
     ```
+
+    ![Kafka-env Template özelliğini, ambarı 'nda Düzenle](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. Tüm Kafka aracılarını yeniden başlatın.
 1. Üreticileri ve tüketicilerin 9093 numaralı bağlantı noktasında çalıştığını doğrulamak için yönetici istemcisini üretici ve tüketici seçenekleriyle başlatın.

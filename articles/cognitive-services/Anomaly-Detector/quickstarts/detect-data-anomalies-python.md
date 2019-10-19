@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Anomali algılayıcısı REST API ve Python kullanarak bir Batch olarak anomali algılama'
+title: 'Hızlı başlangıç: anomali algılayıcısı REST API ve Python kullanarak bir Batch olarak anomali algılama'
 titleSuffix: Azure Cognitive Services
 description: Veri serinizdeki tüm verileri toplu olarak veya akış verilerinde saptamak için anomali algılayıcı API 'sini kullanın.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 10/14/2019
 ms.author: aahi
-ms.openlocfilehash: f40f1b94b3e7c2732fd8bed0bc6e503277b533c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 53311567bbfa93cb66999518e5172b6c4ac36b3f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565823"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555141"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Hızlı Başlangıç: Anomali algılayıcısı REST API ve Python kullanarak zaman serisi verilerinizde bozukluklar olup
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Hızlı başlangıç: anomali algılayıcısı REST API ve Python kullanarak zaman serisi verilerinizde bozukluklar Algıla
 
 Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup olmadığı konusunda anomali algılayıcı API 'sinin iki algılama modunu kullanmaya başlayın. Bu Python uygulaması JSON biçimli zaman serisi verilerini içeren iki API isteği gönderir ve yanıtları alır.
 
@@ -36,115 +36,65 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
 - Zaman serisi veri noktalarını içeren bir JSON dosyası. Bu hızlı başlangıçta örnek veriler [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)'da bulunabilir.
 
-[!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
+### <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
+[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 
 ## <a name="create-a-new-application"></a>Yeni uygulama oluşturma
 
-1. En sevdiğiniz metin düzenleyicisinde veya IDE 'de yeni bir Python dosyası oluşturun. Aşağıdaki içeri aktarmaları ekleyin.
+1. Yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarmaları ekleyin.
 
-    ```python
-    import requests
-    import json
-    ```
+    [!code-python[import statements](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=imports)]
 
 2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun. Anomali algılama için kullanabileceğiniz URI 'Ler aşağıda verilmiştir. Bunlar, daha sonra API isteği URL 'Leri oluşturmak için hizmet uç noktanıza eklenecektir.
 
-    |Algılama yöntemi  |URI  |
+    |Algılama yöntemi  |KULLANıLMAMıŞSA  |
     |---------|---------|
     |Toplu iş algılama    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |En son veri noktasında algılama     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
-    ```python
-    batch_detection_url = "/anomalydetector/v1.0/timeseries/entire/detect"
-    latest_point_detection_url = "/anomalydetector/v1.0/timeseries/last/detect"
+    [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-    endpoint = "[YOUR_ENDPOINT_URL]"
-    subscription_key = "[YOUR_SUBSCRIPTION_KEY]"
-    data_location = "[PATH_TO_TIME_SERIES_DATA]"
-    ```
+3. JSON veri dosyasında dosyayı açıp `json.load()` kullanarak okuyun.
 
-3. JSON veri dosyasında dosyayı açıp kullanarak `json.load()`okuyun.
-
-    ```python
-    file_handler = open(data_location)
-    json_data = json.load(file_handler)
-    ```
+    [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Yukarıda oluşturulan değişkenleri alan adlı `send_request()` yeni bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
+1. Yukarıda oluşturulan değişkenleri alan `send_request()` adlı yeni bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
 
-2. İstek üstbilgileri için bir sözlük oluşturun. ' I ' olarak ayarlayın ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. `Content-Type` `application/json`
+2. İstek üstbilgileri için bir sözlük oluşturun. @No__t_0 `application/json` olarak ayarlayın ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine ekleyin.
 
-3. Kullanarak `requests.post()`isteği gönderin. Tam istek URL 'si için uç nokta ve anomali algılama URL 'nizi birleştirip üst bilgilerinizi ve json istek verilerini ekleyin. Ardından yanıtı geri döndürün.
+3. @No__t_0 kullanarak isteği gönderin. Tam istek URL 'si için uç nokta ve anomali algılama URL 'nizi birleştirip üst bilgilerinizi ve json istek verilerini ekleyin. Ardından yanıtı geri döndürün.
 
-```python
-def send_request(endpoint, url, subscription_key, request_data):
-    headers = {'Content-Type': 'application/json',
-               'Ocp-Apim-Subscription-Key': subscription_key}
-    response = requests.post(
-        endpoint+url, data=json.dumps(request_data), headers=headers)
-    return json.loads(response.content.decode("utf-8"))
-```
+[!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
 ## <a name="detect-anomalies-as-a-batch"></a>Bir toplu iş olarak anomali algılama
 
-1. Veri genelinde bir toplu `detect_batch()` iş olarak bozukluklar tespit etmek için adlı bir yöntem oluşturun. Uç nokta, URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan yöntemiçağırın.`send_request()`
+1. Veri genelinde bir toplu iş olarak bozukluklar algılamak için `detect_batch()` adlı bir yöntem oluşturun. Uç nokta, URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan `send_request()` yöntemi çağırın.
 
-2. Bunu `json.dumps()` biçimlendirmek için sonucu çağırın ve konsola yazdırın.
+2. Bunu biçimlendirmek için sonuç üzerinde `json.dumps()` çağırın ve konsola yazdırın.
 
-3. Yanıt alanı içeriyorsa `code` , hata kodunu ve hata iletisini yazdırın.
+3. Yanıt `code` alanı içeriyorsa, hata kodunu ve hata iletisini yazdırın.
 
-4. Aksi takdirde, veri kümesindeki anormalilerin konumlarını bulabilirsiniz. Yanıtın `isAnomaly` alanı, belirli bir veri noktasının bir anomali olup olmadığı ile ilgili bir Boole değeri içerir. Listede yineleme yapın ve herhangi bir `True` değerin dizinini yazdırın. Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
+4. Aksi takdirde, veri kümesindeki anormalilerin konumlarını bulabilirsiniz. Yanıtın `isAnomaly` alanı, belirli bir veri noktasının bir anomali olup olmadığı ile ilgili bir Boole değeri içerir. Listede yineleme yapın ve herhangi bir `True` değerinin dizinini yazdırın. Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
 
-```python
-def detect_batch(request_data):
-    print("Detecting anomalies as a batch")
-    result = send_request(endpoint, batch_detection_url,
-                          subscription_key, request_data)
-    print(json.dumps(result, indent=4))
-
-    if result.get('code') != None:
-        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(
-            result['code'], result['message']))
-    else:
-        # Find and display the positions of anomalies in the data set
-        anomalies = result["isAnomaly"]
-        print("Anomalies detected in the following data positions:")
-        for x in range(len(anomalies)):
-            if anomalies[x] == True:
-                print(x)
-```
+[!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>En son veri noktasının anomali durumunu Algıla
 
-1. Zaman serinizdeki en `detect_latest()` son veri noktasının bir anomali olup olmadığını anlamak için adlı bir yöntem oluşturun. Uç nokta, URL, abonelik anahtarı ve JSON verileri ile yukarıdaki yöntemiçağırın.`send_request()` 
+1. Zaman serinizdeki en son veri noktasının bir anomali olup olmadığını öğrenmek için `detect_latest()` adlı bir yöntem oluşturun. Uç nokta, URL, abonelik anahtarı ve JSON verileri ile yukarıdaki `send_request()` yöntemi çağırın. 
 
-2. Bunu `json.dumps()` biçimlendirmek için sonucu çağırın ve konsola yazdırın.
+2. Bunu biçimlendirmek için sonuç üzerinde `json.dumps()` çağırın ve konsola yazdırın.
 
-```python
-def detect_latest(request_data):
-    print("Determining if latest data point is an anomaly")
-    # send the request, and print the JSON result
-    result = send_request(endpoint, latest_point_detection_url,
-                          subscription_key, request_data)
-    print(json.dumps(result, indent=4))
-```
+[!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>Zaman serisi verilerinizi yükleyin ve isteği gönderin
+## <a name="send-the-request"></a>İsteği gönder
 
-1. JSON zaman serisi verilerinizi bir dosya işleyicisi açarak ve üzerinde kullanarak `json.load()` yükleyin. Ardından yukarıda oluşturulan anomali algılama yöntemlerini çağırın.
+1. Yukarıda oluşturulan anomali algılama yöntemlerini çağırın.
 
-```python
-file_handler = open(data_location)
-json_data = json.load(file_handler)
-
-detect_batch(json_data)
-detect_latest(json_data)
-```
+[!code-python[Method calls](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=methodCalls)]
 
 ### <a name="example-response"></a>Örnek yanıt
 
@@ -155,4 +105,8 @@ JSON biçiminde başarılı bir yanıt döndürülür. GitHub 'da JSON yanıtın
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [REST API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+>[Azure Databricks ile akış anomali algılama](../tutorials/anomaly-detection-streaming-databricks.md)
+
+* [Anomali ALGıLAYıCı API nedir?](../overview.md)
+* Anomali algılayıcı API 'sini kullanırken [en iyi uygulamalar](../concepts/anomaly-detection-best-practices.md) .
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)' da bulunabilir.

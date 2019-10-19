@@ -1,18 +1,18 @@
 ---
 title: Azure Tanılama uzantısına genel bakış
 description: Azure tanılama 'yı kullanarak hata ayıklama, performans, izleme, bulut hizmetlerinde trafik analizi, sanal makineler ve Service Fabric
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 02/13/2019
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 02/13/2019
+ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639419"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552154"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure Tanılama uzantısı nedir?
 Azure Tanılama uzantısı, dağıtılan bir uygulamadaki tanılama verilerinin toplanmasını sağlayan Azure 'daki bir aracıdır. Tanılama uzantısını bir dizi farklı kaynaktan kullanabilirsiniz. Şu anda desteklenen Azure bulut hizmeti (klasik) Web ve çalışan rolleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric. Diğer Azure hizmetlerinde farklı tanılama yöntemleri vardır. Bkz. [Azure 'da Izlemeye genel bakış](../../azure-monitor/overview.md).
@@ -23,11 +23,11 @@ Linux çalıştıran sanal makinelerde [uzantının Linux sürümü](../../virtu
 ## <a name="data-you-can-collect"></a>Toplayacağınız veriler
 Azure Tanılama uzantısı aşağıdaki veri türlerini toplayabilirler:
 
-| Veri Kaynağı | Açıklama |
+| Veri kaynağı | Açıklama |
 | --- | --- |
 | Performans sayacı ölçümleri |İşletim sistemi ve özel performans sayaçları |
 | Uygulama günlükleri |Uygulamanız tarafından yazılan izleme iletileri |
-| Windows Olay günlükleri |Windows olay günlüğü sistemine gönderilen bilgiler |
+| Windows olay günlükleri |Windows olay günlüğü sistemine gönderilen bilgiler |
 | .NET EventSource günlükleri |.NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) sınıfını kullanarak kod yazma olayları |
 | IIS Günlükleri |IIS Web siteleri hakkında bilgi |
 | [Bildirim tabanlı ETW günlükleri](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Herhangi bir işlem tarafından oluşturulan Windows olayları için olay Izleme. (1 |
@@ -35,7 +35,7 @@ Azure Tanılama uzantısı aşağıdaki veri türlerini toplayabilirler:
 | Özel hata günlükleri |Uygulamanız veya hizmetiniz tarafından oluşturulan Günlükler |
 | Azure tanılama altyapı günlükleri |Azure Tanılama hakkında bilgi |
 
-(1) ETW sağlayıcılarının bir listesini almak için, bilgi toplamak `c:\Windows\System32\logman.exe query providers` istediğiniz makinede bir konsol penceresinde çalıştırın.
+(1) ETW sağlayıcılarının bir listesini almak için `c:\Windows\System32\logman.exe query providers`, bilgi toplamak istediğiniz makinede bir konsol penceresinde çalıştırın.
 
 ## <a name="data-storage"></a>Veri depolama
 Uzantı, verilerini belirttiğiniz bir [Azure depolama hesabında](diagnostics-extension-to-storage.md) depolar.
@@ -47,7 +47,7 @@ Diğer bir seçenek de [Olay Hub 'ına](../../event-hubs/event-hubs-about.md)ak�
 Verilerinizi Azure Izleyici ölçümleri zaman serisi veritabanına gönderme seçeneğiniz de vardır. Şu anda, bu havuz yalnızca performans sayaçları için geçerlidir. Performans sayaçlarını özel ölçümler olarak göndermenizi sağlar. Bu özellik önizleme aşamasındadır. Azure Izleyici havuzu şunları destekler:
 * Azure izleyici [ölçümleri API 'leri](https://docs.microsoft.com/rest/api/monitor/) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarını alma.
 * Azure izleyici 'de [ölçüm uyarıları](../../azure-monitor/platform/alerts-overview.md) aracılığıyla Azure izleyici 'ye gönderilen tüm performans sayaçlarında uyarı verme
-* Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor.  Örneğin, "MantıksalDisk (\*)/diskwrites/SEC" sayacını topladıysanız, sanal makine üzerindeki her bir mantıksal disk için (örneğin, C:) disk yazma/sn üzerinde disk yazma/sn üzerinde uyarı oluşturmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
+* Performans sayaçlarındaki joker karakter operatörü, ölçümünüzün "örnek" boyutu olarak değerlendiriliyor.  Örneğin, "MantıksalDisk (\*)/DiskWrites/sec" sayacını topladıysanız, sanal makine üzerindeki her bir mantıksal disk için (örneğin, C:) disk yazma/sn üzerinde disk yazma/sn üzerinde uyarı oluşturmak veya uyarı vermek üzere "örnek" boyutunda filtre uygulayabilir ve bölebilirsiniz.
 
 Bu havuzun nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için [Azure tanılama şeması belgelerine bakın.](diagnostics-extension-schema-1dot3.md)
 
@@ -72,7 +72,7 @@ Daha gelişmiş konular için bkz.
 * [Azure Tanılama bir Cloud Services uygulamasının akışını izleme](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [Cloud Services tanılamayı ayarlamak için PowerShell 'i kullanma](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Virtual Machines (Sanal Makineler)
 * Visual Studio kullanıyorsanız bkz. başlamak için [Azure sanal makinelerini izlemek üzere Visual Studio 'Yu kullanma](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) . Aksi takdirde, bkz.
 * [Azure sanal makinesinde Azure Tanılama ayarlama](/azure/virtual-machines/extensions/diagnostics-windows)
 

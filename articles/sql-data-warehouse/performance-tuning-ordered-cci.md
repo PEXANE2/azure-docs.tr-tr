@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035119"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554541"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
@@ -119,12 +119,16 @@ Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sı
 ## <a name="create-ordered-cci-on-large-tables"></a>Büyük tablolarda sıralı CCı oluşturma
 Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen tablolar için, sıralı CCı oluşturma işlemi tamamlanana kadar verilere kullanıcılar erişemez.   Bölümlenmiş tablolar için, altyapı sıralı CCı bölümünü bölüm tarafından oluşturduğundan, kullanıcılar sıralı CCı oluşturma işleminin işlem içinde olmadığı bölümlerdeki verilere erişmeye devam edebilir.   Büyük tablolarda sıralı CCı oluşturma sırasında kapalı kalma süresini en aza indirmek için bu seçeneği kullanabilirsiniz: 
 
-1.  Hedef büyük tabloda (Tablo A olarak adlandırılır) bölümler oluşturun.
-2.  Tablo A ile aynı tablo ve bölüm şemasına sahip boş bir sıralı CCı tablosu (Tablo B olarak adlandırılır) oluşturun.
+1.  Hedef büyük tabloda (Table_A olarak adlandırılır) bölümler oluşturun.
+2.  Tablo A ile aynı tablo ve bölüm şemasına sahip boş bir sıralı CCı tablosu (Table_B adlı) oluşturun.
 3.  A tablosundan tablo B 'ye bir bölüm geçirin.
-4.  Anahtarlı bölümü yeniden derlemek için ALTER INDEX < Ordered_CCI_Index > yeniden oluşturma PARTITION = < Partition_ID > Tablo B üzerinde çalıştırın.  
-5.  A tablosundaki her bölüm için 3. ve 4. adımı yineleyin.
-6.  Tüm bölümler tablo A 'dan tablo B 'ye geçildiğinde ve yeniden oluşturulduktan sonra tabloyu bir kez bırakın ve tablo B 'yi yeniden adlandırın. 
+4.  Anahtarlı bölümü yeniden derlemek için tablo B üzerinde < Table_B > yeniden oluşturma < bölümünde ALTER INDEX < Ordered_CCI_Index > çalıştırın.  
+5.  Table_A içindeki her bölüm için 3. ve 4. adımı yineleyin.
+6.  Tüm bölümler Table_A ' den Table_B ' ye geçtikten ve yeniden derlendikten sonra Table_A ' i bırakın ve Table_A Table_B olarak yeniden adlandırın. 
+
+>[!NOTE]
+>Azure SQL veri ambarı 'nda sıralı kümelenmiş columnstore dizininin (CCı) önizlemesi sırasında, sıralı CCı oluşturulup bölümlenmiş bir tabloda KÜMELENMIŞ COLUMNSTORE DIZINI oluşturma yoluyla yeniden oluşturulmuşsa Yinelenen veriler oluşturulabilir. Hiçbir veri kaybı yoktur. Bu sorunla bir düzelme yakında sunulacaktır. Geçici bir çözüm için, kullanıcılar CTAS komutunu kullanarak bölümlenmiş bir tabloda sıralı CCı oluşturabilir
+
 
 ## <a name="examples"></a>Örnekler
 

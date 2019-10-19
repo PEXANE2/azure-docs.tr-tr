@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 55ff134bfa76634250b7495120432d7310b07c06
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431884"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554228"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -83,7 +83,7 @@ Uygulamanızın ne kadar veri gönderdiğini anlamak için şunları yapabilirsi
 
 * Günlük veri hacmi grafiğini görmek için **kullanım ve tahmini maliyet** bölmesine gidin. 
 * Ölçüm Gezgini ' de yeni bir grafik ekleyin. Grafik ölçümü için, **veri noktası birimi**' ni seçin. **Gruplamayı**açın ve **veri türüne**göre gruplandırın.
-* @No__t-0 veri türünü kullanın. Örneğin, son gün içinde alınan veri hacmini görmek için sorgu şöyle olacaktır:
+* @No__t_0 veri türünü kullanın. Örneğin, son gün içinde alınan veri hacmini görmek için sorgu şöyle olacaktır:
 
 ```kusto
 systemEvents 
@@ -170,7 +170,7 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-005.png)
 
-Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](powershell.md) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
+Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](powershell.md#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
 
 Faturalama erken Aralık 2019 ' de daha uzun süre bekletmeye başladığında, 90 günden daha uzun süre tutulan veriler, Azure Log Analytics veri saklama için şu anda faturalandırılan ücret üzerinden faturalandırılacaktır. [Azure Izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)daha fazla bilgi edinin. [Bu öneri için oylama](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ile değişken bekletme ilerlemesini güncel tutun. 
 

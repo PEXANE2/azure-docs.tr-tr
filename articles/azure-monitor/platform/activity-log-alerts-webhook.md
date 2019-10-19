@@ -1,19 +1,18 @@
 ---
 title: Etkinlik günlüğü uyarıları 'nda kullanılan Web kancası şemasını anlayın
 description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancası URL 'sine gönderilen JSON şeması hakkında bilgi edinin.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/31/2017
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/31/2017
+ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675205"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552743"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -27,7 +26,7 @@ Eylem grupları hakkında bilgi için bkz. [eylem grupları oluşturma](../../az
 
 
 ## <a name="authenticate-the-webhook"></a>Web kancasının kimliğini doğrulama
-Web kancası isteğe bağlı olarak, kimlik doğrulaması için belirteç tabanlı yetkilendirme kullanabilir. Web kancası URI 'SI bir belirteç KIMLIĞIYLE kaydedilir, örneğin, `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+Web kancası isteğe bağlı olarak, kimlik doğrulaması için belirteç tabanlı yetkilendirme kullanabilir. Web kancası URI 'SI bir belirteç KIMLIĞIYLE kaydedilir, örneğin `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
 
 ## <a name="payload-schema"></a>Yük şeması
 POST işleminde yer alan JSON yükü, yükün Data. Context. activityLog. eventSource alanına göre farklılık gösterir.
@@ -261,7 +260,7 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | Öğe adı | Açıklama |
 | --- | --- |
 | durum |Ölçüm uyarıları için kullanılır. Etkinlik günlüğü uyarıları için her zaman "etkinleştirildi" olarak ayarlayın. |
-| Bağlam |Olayın bağlamı. |
+| bağlam |Olayın bağlamı. |
 | resourceProviderName |Etkilenen kaynağın kaynak sağlayıcısı. |
 | ConditionType 'ı seçin |Always "Event." |
 | ad |Uyarı kuralının adı. |
@@ -272,7 +271,7 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | resourceId |Etkilenen kaynağın kaynak KIMLIĞI. |
 | resourceGroupName |Etkilenen kaynak için kaynak grubunun adı. |
 | properties |Olayla ilgili ayrıntıları içeren `<Key, Value>` çiftleri (yani `Dictionary<String, String>`) kümesi. |
-| Olay |Olay hakkında meta veriler içeren öğe. |
+| olay |Olay hakkında meta veriler içeren öğe. |
 | Yetkisi |Etkinliğin rol tabanlı Access Control özellikleri. Bu özellikler genellikle eylemi, rolü ve kapsamı içerir. |
 | category |Etkinliğin kategorisi. Desteklenen değerler arasında yönetim, uyarı, güvenlik, ServiceHealth ve öneri bulunur. |
 | yapana |Kullanılabilirliği temel alarak işlemi, UPN talebini veya SPN talebini gerçekleştiren kullanıcının e-posta adresi. Belirli sistem çağrıları için null olabilir. |
@@ -281,11 +280,11 @@ Hizmet durumu bildirimi etkinlik günlüğü uyarılarında belirli şema ayrın
 | Eventdataıd |Etkinliğin benzersiz tanımlayıcısı. |
 | EventSource |Olayı oluşturan Azure hizmetinin veya altyapısının adı. |
 | httpRequest |İstek genellikle Clientrequestıd, clientIpAddress ve HTTP yöntemini (örneğin, PUT) içerir. |
-| Düzeyde |Şu değerlerden biri: kritik, hata, uyarı ve bilgilendirici. |
+| düzeyde |Şu değerlerden biri: kritik, hata, uyarı ve bilgilendirici. |
 | operationId |Genellikle tek bir işleme karşılık gelen olaylar arasında paylaşılan bir GUID. |
 | operationName |İşlemin adı. |
 | properties |Etkinliğin özellikleri. |
-| durum |Dizisinde. İşlemin durumu. Ortak değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
+| durum |dizisinde. İşlemin durumu. Ortak değerler başlangıç, devam etme, başarılı, başarısız, etkin ve Çözümlenmiş. |
 | Dosya |Genellikle karşılık gelen REST çağrısının HTTP durum kodunu içerir. Alt durumu tanımlayan diğer dizeleri de içerebilir. Ortak alt durum değerleri Tamam (HTTP durum kodu: 200), oluşturulan (http durum kodu: 201), kabul edildi (http durum kodu: 202), Içerik yok (http durum kodu: 204), hatalı Istek (http durum kodu: 400), bulunamadı (http durum kodu: 404), çakışma (http durum kodu: 409 ), İç sunucu hatası (HTTP durum kodu: 500), hizmet kullanılamıyor (HTTP durum kodu: 503) ve ağ geçidi zaman aşımı (HTTP durum kodu: 504). |
 
 Tüm diğer etkinlik günlüğü uyarılarıyla ilgili belirli şema ayrıntıları için bkz. [Azure etkinlik günlüğü 'Ne genel bakış](../../azure-monitor/platform/activity-logs-overview.md).

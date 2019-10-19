@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: it-pro
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb424866a681316af23e9d2bba28a8da8c3a6f78
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: MT
+ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286806"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551652"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -49,10 +49,15 @@ Aşağıdaki Yönetici rolleri kullanılabilir:
 
 ### <a name="application-administratorapplication-administrator-permissions"></a>[Uygulama Yöneticisi](#application-administrator-permissions)
 
-Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu rol Ayrıca, Microsoft Graph ve Azure AD grafiğini dışlayarak uygulama izinleri için izin verme izni verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
+Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu role atanan kullanıcıların yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmediğini unutmayın.
 
 > [!IMPORTANT]
 > Bu rol, uygulama kimlik bilgilerini yönetme olanağı verir. Bu role atanan kullanıcılar, bir uygulamaya kimlik bilgileri ekleyebilir ve uygulamanın kimliğini taklit etmek için bu kimlik bilgilerini kullanabilir. Uygulamanın kimliğine Kullanıcı veya başka nesneler oluşturma veya güncelleştirme yeteneği gibi Azure Active Directory erişimi verildiyse, bu role atanan bir Kullanıcı, uygulamayı taklit ederken bu eylemleri gerçekleştirebilir. Uygulamanın kimliğini taklit etme özelliği, kullanıcının Azure AD 'de rol atamaları aracılığıyla yapabilecekleri ayrıcalık yükselmesine neden olabilir. Bir kullanıcıyı uygulama yöneticisi rolüne atamanın, uygulamanın kimliğini taklit etme olanağı sağladığını anlamak önemlidir.
+
+Bu rol Ayrıca, Microsoft Graph ve Azure AD grafiğinde izin verilen izinler ve uygulama _izinleri için izin verme olanağı verir_ .
+
+> [!IMPORTANT]
+> Bu özel durum, _diğer_ uygulamalar için izinleri (örneğin, kaydettiğiniz üçüncü taraf uygulamalar veya uygulamalar) kabul edebilirsiniz, ancak Azure AD üzerinde izinler için izin vermenizi sağlar. Bu izinleri, uygulama kaydının bir parçası olarak _isteyebilirsiniz_ , ancak (örneğin, yarışmaya _izin vermek üzere_ ), bu IZINLER için bir Azure AD yöneticisi gerekir. Bu, kötü niyetli bir kullanıcının izinlerini kolayca yükseltebileceği anlamına gelir. Örneğin, tüm dizine yazabilme ve uygulamanın izinlerinin genel yönetici olmaya dönüşmesine yol açabilir.
 
 ### <a name="application-developerapplication-developer-permissions"></a>[Uygulama Geliştirici](#application-developer-permissions)
 

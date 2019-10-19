@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0c941ec5010b6f9c35e81fdbcacd2093724eb21
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3ee1d282506b537ed29592ca9008c88a53220d7d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162346"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554841"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Bir kullanıcı için iki aşamalı doğrulama gerektirme
 
@@ -44,8 +44,8 @@ Azure Multi-Factor Authentication Kullanıcı hesapları aşağıdaki üç farkl
 | Durum | Açıklama | Etkilenen tarayıcı olmayan uygulamalar | Etkilenen tarayıcı uygulamaları | Modern kimlik doğrulaması etkilendi |
 |:---:|:---:|:---:|:--:|:--:|
 | Devre dışı |Azure MFA 'da kayıtlı olan yeni bir kullanıcının varsayılan durumu. |Hayır |Hayır |Hayır |
-| Enabled |Kullanıcı Azure MFA 'ya kaydoldu, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. |Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra, Azure MFA kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra, Azure MFA kaydı gereklidir. |
-| Zorunlu |Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. |Evet. Uygulamalar uygulama parolaları gerektirir. |Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
+| Etkin |Kullanıcı Azure MFA 'ya kaydoldu, ancak kaydolmadı. Bir sonraki oturum açışlarında kaydolmak için bir istem alırlar. |Hayır.  Kayıt işlemi tamamlanana kadar çalışmaya devam eder. | Evet. Oturumun süresi dolduktan sonra, Azure MFA kaydı gereklidir.| Evet. Erişim belirtecinin süresi dolduktan sonra, Azure MFA kaydı gereklidir. |
+| Uygulandı |Kullanıcı kaydedildi ve Azure MFA için kayıt işlemini tamamladı. |Evet. Uygulamalar uygulama parolaları gerektirir. |Evet. Azure MFA, oturum açma sırasında gereklidir. | Evet. Azure MFA, oturum açma sırasında gereklidir. |
 
 Bir kullanıcının durumu, yöneticinin Azure MFA 'ya kaydolduğunu ve kayıt sürecini tamamlamadığını yansıtır.
 
@@ -56,20 +56,20 @@ Tüm kullanıcılar *devre dışı bırakıldı*. Azure MFA 'da kullanıcıları
 Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz sayfaya erişmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory** > **Kullanıcılar ve gruplar** > **tüm kullanıcılar**' a gidin.
+2. **Tüm kullanıcıları** >  **Azure Active Directory**  > **Kullanıcılar ve gruplar** 'a gidin.
 3. **Multi-Factor Authentication**seçin.
-   ![Multi-Factor Authentication seçin](./media/howto-mfa-userstates/selectmfa.png)
+   ![Select Multi-Factor Authentication ](./media/howto-mfa-userstates/selectmfa.png)
 4. Kullanıcı durumlarını görüntüleyen yeni bir sayfa açılır.
-   ![Multi-Factor Authentication Kullanıcı durumu-ekran görüntüsü](./media/howto-mfa-userstates/userstate1.png)
+   ![multi Factor Authentication Kullanıcı durumu-ekran görüntüsü ](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>Kullanıcının durumunu değiştirme
 
 1. Azure Multi-Factor Authentication **kullanıcıları** sayfasına ulaşmak için yukarıdaki adımları kullanın.
 2. Azure MFA için etkinleştirmek istediğiniz kullanıcıyı bulun. Üstteki görünümü değiştirmeniz gerekebilir.
-   ![Durumu Kullanıcı sekmesinden değiştirmek için kullanıcıyı seçin](./media/howto-mfa-userstates/enable1.png)
+   kullanıcıları sekmesinden durumunu değiştirmek için kullanıcıyı ![Select ](./media/howto-mfa-userstates/enable1.png)
 3. Adının yanındaki kutuyu işaretleyin.
 4. Sağ tarafta **hızlı adımlar**' ın altında **Etkinleştir** veya **devre dışı bırak**' ı seçin.
-   ![Hızlı adımlar menüsünde Etkinleştir ' i tıklatarak seçili kullanıcıyı etkinleştirin](./media/howto-mfa-userstates/user1.png)
+   hızlı adımlar menüsünde Etkinleştir ' i tıklatarak seçili kullanıcı ![Enable ](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Etkin* kullanıcılar, Azure MFA için kaydolduklarında otomatik olarak *zorlandı* . Kullanıcı durumunu *Zorlanmış*olarak el ile değiştirmeyin.
@@ -78,11 +78,11 @@ Kullanıcı durumlarını görüntüleyebileceğiniz ve yönetebileceğiniz sayf
 
 Kullanıcıları etkinleştirdikten sonra, e-posta ile bildirim alın. Bunlara bir dahaki sefer oturum açtıklarında kaydolmaları istenir. Ayrıca, kuruluşunuz modern kimlik doğrulamayı desteklemeyen tarayıcı olmayan uygulamalar kullanıyorsa, uygulama parolaları oluşturmaları gerekir. Kullanmaya başlamanıza yardımcı olması için [Azure MFA Son Kullanıcı Kılavuzu ' na](../user-help/multi-factor-authentication-end-user.md) de bir bağlantı ekleyebilirsiniz.
 
-### <a name="use-powershell"></a>PowerShell kullanma
+### <a name="use-powershell"></a>PowerShell'i kullanma
 
-[Azure AD PowerShell](/powershell/azure/overview)kullanarak Kullanıcı durumunu değiştirmek için değiştirin `$st.State`. Üç olası durum vardır:
+[Azure AD PowerShell](/powershell/azure/overview)kullanarak Kullanıcı durumunu değiştirmek için `$st.State` değiştirin. Üç olası durum vardır:
 
-* Enabled
+* Etkin
 * Uygulandı
 * Devre dışı  
 
@@ -170,31 +170,8 @@ function Set-MfaState {
     }
 }
 
-# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
-function Disable-Mfa {
-
-    [CmdletBinding()]
-    param(
-        [Parameter(ValueFromPipeline=$True)]
-        $User,
-        [switch] $KeepMethods
-    )
-
-    Process {
-
-        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
-        $User | Set-MfaState -State Disabled
-
-        if ($KeepMethods) {
-            # Restore the MFA methods which got cleared when disabling MFA
-            Set-MsolUser -ObjectId $User.ObjectId `
-                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
-        }
-    }
-}
-
-# Disable MFA for all users, keeping their MFA methods intact
-Get-MsolUser -All | Disable-MFA -KeepMethods
+# Disable MFA for all users
+Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

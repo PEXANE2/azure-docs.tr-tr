@@ -1,24 +1,18 @@
 ---
 title: Kapsayıcılar için Azure Izleyici günlüklerini gerçek zamanlı olarak görüntüleyin | Microsoft Docs
 description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanmadan kapsayıcı günlüklerinin (stdout/stderr) ve olayların gerçek zamanlı görünümü açıklanır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 07/12/2019
+ms.openlocfilehash: 25cfe10ec192f874d050bca22ce1b85c2d1afbb4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389780"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554094"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Günlükleri ve olayları gerçek zamanlı görüntüleme (Önizleme)
 Kapsayıcılar için Azure Izleyici, şu anda önizleme aşamasında olan ve kubectl komutlarını çalıştırmaya gerek kalmadan Azure Kubernetes Service (AKS) kapsayıcı günlüklerine (stdout/stderr) ve olaylara canlı bir görünüm sağlayan bir özelliği içerir. İki seçenekten birini seçtiğinizde **düğümler**, **denetleyiciler**ve **kapsayıcılar** görünümündeki performans verileri tablosunun altında yeni bir bölme belirir. Gerçek zamanlı sorun giderme sorunları konusunda daha fazla yardım almak için kapsayıcı altyapısı tarafından oluşturulan canlı günlüğe kaydetme ve olayları gösterir.

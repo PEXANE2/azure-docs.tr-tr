@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 6f787760c1224172982e0818d8592ce0d36b5e2c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: 3d4585e032d92049a4f087cd510bdef963025250
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527297"
+ms.locfileid: "72550136"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 'da 2. nesil VM 'Ler (Önizleme) desteği
 
@@ -52,8 +52,8 @@ ms.locfileid: "72527297"
 * [NVv3 serisi](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 
->[!NOTE]
->Mv2-Series için 2. nesil VM görüntülerinin kullanımı genel kullanıma sunulmuştur çünkü Mv2 serisi yalnızca 2. nesil VM görüntüleriyle birlikte çalışıyor. 1\. nesil VM görüntüleri Mv2 serisi ile çalışmıyor. 
+> [!NOTE]
+> Mv2 serisi VM 'Ler için 2. nesil VM görüntülerinin kullanımı, Mv2 serisi yalnızca 2. nesil VM görüntüleriyle çalıştığından genel kullanıma sunulmuştur. 1\. nesil VM görüntüleri Mv2 serisi VM 'lerde desteklenmez. 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketi 'nde 2. nesil VM görüntüleri
 

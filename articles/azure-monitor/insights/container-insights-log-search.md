@@ -1,24 +1,18 @@
 ---
 title: Kapsayıcılar için Azure Izleyici günlüklerini sorgulama | Microsoft Docs
 description: Kapsayıcılar için Azure Izleyici ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ae8dd4cccb6795faa02e6705404644f6ccc24864
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 07/12/2019
+ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948059"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555418"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
 
@@ -40,9 +34,9 @@ Kapsayıcılar için Azure Izleyici tarafından toplanan kayıt örnekleri ve g�
 | Kubernetes kümesindeki hizmetler | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, dir | 
 | Kubernetes kümesinin düğümlerin bir parçası için performans ölçümleri | Perf &#124; WHERE ObjectName = = "K8SNode" | Bilgisayar, ObjectName, CounterName &#40;Cpuallocatablebytes, memoryAllocatableBytes, CpuCapacityNanoCores, Memorycapacitybyte, memoryRssBytes, Cpuusme Anoçekirdekler, memoryWorkingsetBytes,&#41;restartTimeEpoch, CounterValue, TimeGenerated, CounterPath, dir | 
 | Kubernetes kümesinin kapsayıcılar bölümü için performans ölçümleri | Perf &#124; WHERE ObjectName = = "K8SContainer" | CounterName &#40; CpuRequestNanoCores, memoryRequestBytes, CpuLimitNanoCores, memoryWorkingSetBytes, RestartTimeEpoch, Cpuuslationanoçekirdekler, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
-| Özel ölçümler |`InsightsMetrics` | Bilgisayar, ad, ad alanı, Origin, dir, Etiketler<sup>1</sup>, TimeGenerated, Type, VA, _resourceıd | 
+| Özel Ölçümler |`InsightsMetrics` | Bilgisayar, ad, ad alanı, Origin, dir, Etiketler<sup>1</sup>, TimeGenerated, Type, VA, _resourceıd | 
 
-<sup>1</sup> *Etiketler* özelliği, karşılık gelen ölçüm için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. @No__t-0 tablosunda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında daha fazla bilgi için bkz. [ınsightsölçümlerini genel bakış](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
+<sup>1</sup> *Etiketler* özelliği, karşılık gelen ölçüm için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. @No__t_0 tablosunda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında daha fazla bilgi için bkz. [ınsightsölçümlerini genel bakış](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
 
 >[!NOTE]
 >Prometheus desteği şu anda genel önizlemede bir özelliktir.
@@ -54,7 +48,7 @@ Azure Izleyici günlükleri, geçerli küme yapılandırmasının en iyi şekild
 
 Önizleme bölmesindeki **Kubernetes olay günlüklerini görüntüle** veya **kapsayıcı günlüklerini görüntüle** seçeneğini belirleyerek çalışma alanındaki etkileşimli veri analizini gerçekleştirebilirsiniz. **Günlük araması** sayfası, üzerinde olduğunuz Azure Portal sayfanın sağında görüntülenir.
 
-![Log Analytics verileri analiz etme](./media/container-insights-analyze/container-health-log-search-example.png)   
+![Log Analytics’te verileri analiz etme](./media/container-insights-analyze/container-health-log-search-example.png)   
 
 Çalışma alanınıza iletilen kapsayıcı günlüğü çıkışları STDOUT ve STDERR ' dir. Azure Izleyici, Azure tarafından yönetilen Kubernetes (AKS) ' i izlerken, oluşturulan verilerin büyük hacmi nedeniyle Kuof-System bugün toplanmaz. 
 
@@ -67,8 +61,8 @@ Genellikle bir örnekle başlayan sorgular oluşturmak ve sonra gereksinimlerini
 | Containerınventory<br> &#124;Proje bilgisayar, ad, resim, ImageTag, ContainerState, CreatedTime, StartedTime, Sonlandırhedtime<br> &#124;oluşturma tablosu | Kapsayıcının yaşam döngüsü bilgilerinin tümünü listeleme| 
 | KubeEvents_CL<br> &#124;Where Not (IsEmpty (Namespace_s))<br> &#124;TimeGenerated DESC 'e göre sırala<br> &#124;oluşturma tablosu | Kubernetes olayları|
 | Containerımageınventory<br> &#124;Aggregcount değerini özetleme = Count () by Image, ImageTag, çalışıyor | Görüntü envanteri | 
-| **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Perf<br> &#124;Burada ObjectName = = "K8SContainer" ve CounterName = = "Cpuusstananoçekirdekler &#124; ", bin (TimeGenerated, 30gb) tarafından avgcpuusstananoçekirdekleri = Ort (CounterValue) öğesini özetler. | Kapsayıcı CPU 'SU | 
-| **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Perf<br> &#124;Burada ObjectName = = "K8SContainer" ve CounterName = = "memoryRssBytes" &#124; , bin (TimeGenerated, 30D), InstanceName | Kapsayıcı belleği |
+| **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Erişen<br> &#124;Burada ObjectName = = "K8SContainer" ve CounterName = = "Cpuusstananoçekirdekler &#124; ", bin (TimeGenerated, 30gb) tarafından avgcpuusstananoçekirdekleri = Ort (CounterValue) öğesini özetler. | Kapsayıcı CPU 'SU | 
+| **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Erişen<br> &#124;Burada ObjectName = = "K8SContainer" ve CounterName = = "memoryRssBytes" &#124; , bin (TimeGenerated, 30D), InstanceName | Kapsayıcı belleği |
 | Insightsölçümlerini<br> &#124;Burada Name = = "requests_count"<br> &#124;Değer = Any (Val) ile TimeGenerated = bin (TimeGenerated, 1m)<br> &#124;TimeGenerated ASC 'e göre sırala<br> &#124;Proje RequestsPerMinute = Val-önceki (Val), TimeGenerated <br> &#124;oluşturma bargrafiği  | Özel ölçümler ile dakika başına istek |
 
 Aşağıdaki örnek bir Prometheus ölçümleri sorgusudur. Toplanan ölçümler sayılır ve belirli bir dönemde kaç hatanın oluştuğunu öğrenmek için, sayımız sayısından çıkarıdık. Veri kümesi *Partitionkey*tarafından bölümlenir, her bir benzersiz ad, *ana bilgisayar* *adı*ve *OperationType*kümesi için, bu küme üzerinde günlükleri *TimeGenerated*tarafından sipariş eden bir işlem, bunu mümkün kılan bir işlem olan bir alt sorgu çalıştırdık. bir oranı öğrenmek için, önceki *TimeGenerated* ve bu süre için kaydedilen sayıyı bulun.

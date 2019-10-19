@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 10/16/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 518847db727c9d8c527d272f9122ef9850ca9135
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981228"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553091"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Öğretici: Azure Time Series Insights ortamı oluşturma
 
@@ -55,9 +55,9 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
 İlk olarak, Time Series Insights ortamınızı doldurmak için test verileri oluşturan cihaz benzetim çözümünü oluşturun.
 
-1. Ayrı bir pencere veya sekmede [azureiotsolutions.com](https://www.azureiotsolutions.com)adresine gidin. Aynı Azure aboneliği hesabını kullanarak oturum açın ve **cihaz benzetimi** hızlandırıcıyı seçin.
+1. Ayrı bir pencere veya sekmede [azureiotsolutions.com](https://www.azureiotsolutions.com)adresine gidin. Aynı Azure aboneliği hesabını kullanarak oturum açın ve **cihaz benzetimi** hızlandırıcıyı seçin. **Şimdi dene**' yi seçin.
 
-   [![ cihaz benzetimi hızlandırıcıyı Çalıştır](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [Cihaz benzetimi hızlandırıcıyı ![Run](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
 
 1. **Cihaz simülasyonu çözümü oluştur** sayfasında gerekli parametreleri girin.
 
@@ -68,20 +68,20 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
    **Dağıtım seçenekleri** | Bu öğreticiye özgü yeni bir IoT Hub 'ı oluşturmak için **yeni IoT Hub sağla** ' yı seçin.
    **Azure konumu** | Önceki bölümde Time Series Insights ortamınızı oluşturmak için kullanılan bölgeyi belirtin.
 
-   İşiniz bittiğinde çözümün Azure kaynaklarını sağlamak için **çözüm oluştur** ' u seçin. Bu işlemin tamamlanması 20 dakikaya kadar sürebilir.
+   İşiniz bittiğinde, çözümün Azure kaynaklarını sağlamak için **Oluştur** ' u seçin. Bu işlemin tamamlanması 20 dakikaya kadar sürebilir.
 
-   [![ cihaz benzetimi çözümünü sağlama](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [cihaz benzetimi çözümünü ![Provision](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
 
 1. Sağlama tamamlandıktan sonra, yeni çözümünüzün üzerindeki metin, **hazırlama** işleminden **başlamaya**değişir.
 
    >[!IMPORTANT]
    > Henüz **Başlat** seçeneğini seçmeyin! Daha sonra geri döneceksiniz, bu Web sayfasını açık tutun.
 
-   [![Cihaz benzetimi çözüm sağlama Tamam](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [![Device simülasyon çözümü sağlama Tamam](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
 
 1. Şimdi, Azure portal yeni oluşturulan kaynakları inceleyin. **Kaynak grupları** sayfasında, son adımda sunulan **çözüm adı** kullanılarak yeni bir kaynak grubunun oluşturulduğunu fark edersiniz. Cihaz benzetimi için oluşturulan kaynakları unutmayın.
 
-   [![Cihaz benzetimi kaynakları](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [simülasyon kaynaklarını ![Device](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Ortam oluşturma
 
@@ -104,13 +104,15 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
    **Tier** | Gerekli aktarım hızını seçin. **S1**' i seçin.
    **Kapasite** | Kapasite, seçilen SKU ile ilişkili giriş hızına ve depolama kapasitesine uygulanan çarpandır. Oluşturulduktan sonra kapasiteyi değiştirebilirsiniz. **1**kapasitesini seçin.
 
-   İşiniz bittiğinde sonraki adıma geçmek için **gözden geçir + oluştur** ' u seçin.
+   İşiniz bittiğinde sonraki adıma geçmek için **Sonraki: olay kaynağı** ' nı seçin.
 
-   [![Time Series Insights ortam kaynağı oluşturma](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [Time Series Insights ortam kaynağı ![Create](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
 
-1. Şimdi, Time Series Insights ortamını Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına bağlayın. @No__t-1 için **bir hub seçin** ayarla. Daha sonra, **IoT Hub adı**ayarlanırken Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ını seçin.
+1. Şimdi, Time Series Insights ortamını Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına bağlayın. @No__t_1 için **bir hub seçin** ayarla. Daha sonra, **IoT Hub adı**ayarlanırken Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ını seçin.
 
-   [![Time Series Insights ortamını oluşturulan IoT Hub 'ına bağlama](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [Time Series Insights ortamını oluşturulan IoT Hub 'ına ![Connect](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+
+   Son olarak, **gözden geçir + oluştur**' u seçin.
 
 1. Dağıtım tamamlamayı izlemek için **Bildirimler** panelini kontrol edin. 
 
@@ -122,13 +124,13 @@ Dağıtım ve ilk yapılandırmanın tamamlandığına göre, Time Series Insigh
 
 IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir Azure App Service Web uygulaması oluşturulmuştur.
 
-1. [Çözüm hızlandırıcıları panonuza](https://www.azureiotsolutions.com/Accelerators#dashboard) geri dönün. Gerekirse, bu öğreticide kullandığınız Azure hesabını kullanarak yeniden oturum açın. Şimdi "cihaz benzetimi" çözümünüz altında **Başlat** ' ı seçebilirsiniz.
+1. [Çözüm hızlandırıcıları panonuza](https://www.azureiotsolutions.com/Accelerators#dashboard) geri dönün. Gerekirse, bu öğreticide kullandığınız Azure hesabını kullanarak yeniden oturum açın. "Cihaz çözümünüzü" seçin ve ardından dağıtılan çözümünüzü başlatmak için **çözüm hızlandırıcısına gidin** .
 
-     [![Çözüm Hızlandırıcılar panosu](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+     [![Solution Hızlandırıcılar panosu](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
 1. Cihaz benzetimi Web uygulaması, Web uygulamasına "oturumunuzu oturum açma ve profilinizi okuma" iznini vermenizi isteyerek başlar. Bu izin, uygulamanın, uygulamanın çalışmasını desteklemek için gereken kullanıcı profili bilgilerini almasına izin verir.
 
-     [![Cihaz benzetimi Web uygulaması onayı](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+     [![Device simülasyon Web uygulaması onayı](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
 1. **Simülasyon kurulum** sayfası yüklendikten sonra gerekli parametreleri girin.
 
@@ -136,17 +138,17 @@ IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir
    ---|---
    **Hedef IoT Hub'ı** | **Önceden sağlanmış IoT Hub kullan**' ı seçin.
    **Cihaz modeli** | **Chiller**'i seçin.
-   **Cihaz sayısı**  | @No__t-0 **sayısını**girin.
-   **Telemetri sıklığı** | @No__t-0 saniye girin.
+   **Cihaz sayısı**  | **Miktar**altında `1000` girin.
+   **Telemetri sıklığı** | @No__t_0 saniye girin.
    **Benzetim süresi** | **Bitiş: '** i seçin ve `5` dakika girin.
 
    İşiniz bittiğinde **Benzetim Başlat**' ı seçin. Simülasyon toplam 5 dakika boyunca çalışır. Her 10 saniyede 1.000 sanal cihazdan veri üretir. 
 
-   [![Cihaz benzetimi kurulumu](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
+   [![Device simülasyon kurulumu](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
 
 1. Simülasyon çalışırken saniyede **toplam ileti** ve **mesaj** , yaklaşık olarak her 10 saniyede bir güncelleştirme güncelleştiğine dikkat edin. Simülasyon yaklaşık 5 dakikada bir sona erer ve sizi **simülasyon kurulumuna**döndürür.
 
-   [![Cihaz benzetimi çalışıyor](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
+   [![Device simülasyonu çalışıyor](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
 
 ## <a name="verify-the-telemetry-data"></a>Telemetri verilerini doğrulama
 

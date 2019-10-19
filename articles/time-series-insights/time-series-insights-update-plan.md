@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273730"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550184"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights Preview ortamınızı planlayın
 
@@ -54,7 +54,7 @@ Başlamak için üç ek öğe gereklidir:
 Yeni bir Time Series Insights ortamı oluşturmak için bir zaman serisi KIMLIĞI seçin. Bunun yapılması verileriniz için bir mantıksal bölüm işlevi görür. Belirtildiği gibi, zaman serisi kimliklerinizi hazırlayın.
 
 > [!IMPORTANT]
-> Zaman serisi kimlikleri *sabittir* ve *daha sonra değiştirilemez*. Son seçim ve ilk kullanmadan önce her birini doğrulayın.
+> Zaman serisi kimlikleri *daha sonra değiştirilemez*. Son seçim ve ilk kullanmadan önce her birini doğrulayın.
 
 Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, zaman serisi KIMLIĞI ve [depolama ve](./time-series-insights-update-storage-ingress.md)giriş [seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md) okuyun.
 

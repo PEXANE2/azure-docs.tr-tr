@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b7d041b678ccf2a476afc6d0744f6971349677e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034872"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553375"
 ---
 # <a name="data-querying"></a>Veri sorgulama
 
@@ -25,7 +25,7 @@ Time Series Insights ' de üç birincil API kategorisi mevcuttur:
 
 * **Ortam API 'leri**: Time Series Insights ortamının sorgularını etkinleştirilir. Sorgu örnekleri, çağıranın erişimi olan ortamların ve ortam meta verilerinin listesidir.
 
-* **Zaman serisi modeli-sorgu (TSD-Q) API 'leri**: zaman serisi modelinin ortam bölümünde depolanan meta verilerde oluşturma, okuma, güncelleştirme ve silme işlemlerini mümkün. Örnekler, türler ve Hiyerarşiler örnektir.
+* **Zaman serisi modeli-sorgu (TSM-Q) API 'leri**: zaman serisi modelinin ortam bölümünde depolanan meta verilerde oluşturma, okuma, güncelleştirme ve SILME (CRUD) işlemlerine izin vermez. Örnekler, türler ve Hiyerarşiler örnektir.
 
 * **Zaman serisi sorgusu (TSQ) API 'leri**: kaynak sağlayıcıdan kaydedildiğinden olay verilerinin alınmasına izin vermez. Bu API 'Ler, zaman serisi verilerinde hesaplamalar dönüştürmek, birleştirmek ve hesaplamalar gerçekleştirmek için işlemler gerçekleştirebilir.
 
@@ -35,7 +35,7 @@ Time Series Insights ' de üç birincil API kategorisi mevcuttur:
 
 Aşağıdaki temel API 'Ler desteklenir.
 
-[![ zaman serisi sorgusuna genel bakış](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[![Time serisi sorgusuna genel bakış](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Ortam API 'Leri
 

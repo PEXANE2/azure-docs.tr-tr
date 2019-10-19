@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879966"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552802"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin görüntüsünü oluşturma
 
@@ -31,8 +31,6 @@ Azure 'da kullanmak üzere bir sanal makinenin (VM) birden çok kopyasını olu�
 Yedekleme veya hata ayıklama için mevcut Linux sanal makinenizin bir kopyasını oluşturmak veya şirket içi bir VM 'den özelleştirilmiş bir Linux VHD 'yi yüklemek için, bkz. [özel disk görüntüsünden LINUX VM 'Yi karşıya yükleme ve oluşturma](upload-vhd.md).  
 
 Özel görüntünüzü oluşturmak için **Azure VM görüntü Oluşturucu (Genel Önizleme)** hizmetini kullanabilirsiniz, herhangi bir araç öğrenmeniz gerekmez veya yapı işlem hatlarını kurulum, yalnızca bir görüntü yapılandırması sağlamaktan ve görüntü Oluşturucu görüntüyü oluşturacaktır. Daha fazla bilgi için bkz. [Azure VM görüntü Oluşturucu Ile çalışmaya](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)başlama.
-
-Ek olarak, özel yapılandırmanızı oluşturmak için **Packer** kullanın. Daha fazla bilgi için bkz. [Azure 'Da Linux sanal makine görüntüleri oluşturmak Için Packer kullanma](build-image-with-packer.md).
 
 Görüntü oluşturmadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
@@ -45,8 +43,8 @@ Görüntü oluşturmadan önce aşağıdaki öğelere sahip olmanız gerekir:
 Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sınama, değerlendirme veya öğrenme için bkz. [CLI kullanarak Azure VM 'nin özel bir görüntüsünü oluşturma](tutorial-custom-images.md).  Aksi takdirde, tam resmi almak için burada okumayı sürdürün.
 
 
-## <a name="step-1-deprovision-the-vm"></a>1\. adım: VM’nin sağlamasını kaldırma
-İlk olarak, makineye özgü dosyaları ve verileri silmek için Azure VM Aracısı 'nı kullanarak VM 'yi parçalara ayırcaksınız. Komutunu kaynak Linux sanal makinenizde `-deprovision+user` parametresiyle birlikte kullanın. `waagent` Daha fazla bilgi için bkz. [Azure Linux Aracısı kullanıcı kılavuzu](../extensions/agent-linux.md).
+## <a name="step-1-deprovision-the-vm"></a>1\. Adım: sanal makinenin sağlamasını kaldırma
+İlk olarak, makineye özgü dosyaları ve verileri silmek için Azure VM Aracısı 'nı kullanarak VM 'yi parçalara ayırcaksınız. Kaynak Linux sanal makinenizde `-deprovision+user` parametresiyle `waagent` komutunu kullanın. Daha fazla bilgi için bkz. [Azure Linux Aracısı kullanıcı kılavuzu](../extensions/agent-linux.md).
 
 1. Bir SSH istemcisiyle Linux sanal makinenize bağlanın.
 2. SSH penceresinde, aşağıdaki komutu girin:
@@ -55,15 +53,15 @@ Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sı
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. Parametresi `+user` , sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca `-deprovision`kullanın.
+   > Bu komutu yalnızca görüntü olarak yakaladığınız bir VM üzerinde çalıştırın. Bu komut görüntünün tüm hassas bilgilerin temizlenme veya yeniden dağıtım için uygun olduğunu garanti etmez. @No__t_0 parametresi, sağlanan son kullanıcı hesabını da kaldırır. Kullanıcı hesabı kimlik bilgilerini VM 'de tutmak için yalnızca `-deprovision` kullanın.
  
-3. Devam etmek için **y** girin. Bu onay adımından `-force` kaçınmak için parametresini ekleyebilirsiniz.
+3. Devam etmek için **y** girin. Bu onay adımını önlemek için `-force` parametresini ekleyebilirsiniz.
 4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.  VM hala bu noktada çalışmaya devam edecektir.
 
-## <a name="step-2-create-vm-image"></a>2\. adım: VM görüntüsü oluştur
+## <a name="step-2-create-vm-image"></a>2\. Adım: VM görüntüsü oluşturma
 VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için Azure CLı 'yi kullanın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *Myvnet*ve *myvm*' i içerir.
 
-1. [Az VM serbest bırakma](/cli/azure/vm)ile sağladığınız VM 'yi serbest bırakın. Aşağıdaki örnek, Myresourcegroup adlı kaynak grubunda *Myvm* adlı VM 'yi kaldırır.  
+1. [Az VM serbest bırakma](/cli/azure/vm)ile sağladığınız VM 'yi serbest bırakın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'yi kaldırır.  
    
     ```azurecli
     az vm deallocate \
@@ -73,7 +71,7 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
     
     Üzerinde geçiş yapmadan önce VM 'nin tamamen serbest olmasını bekleyin. Bu işlem birkaç dakika sürebilir.  VM, ayırmayı kaldırma sırasında kapatılır.
 
-2. [Az VM generalize](/cli/azure/vm)komutunu kullanarak VM 'yi Genelleştirilmiş olarak işaretleyin. Aşağıdaki örnek, Myresourcegroup adlı kaynak grubunda *Myvm* adlı VM 'yi Genelleştirilmiş olarak işaretler.
+2. [Az VM generalize](/cli/azure/vm)komutunu kullanarak VM 'yi Genelleştirilmiş olarak işaretleyin. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı VM 'yi Genelleştirilmiş olarak işaretler.
    
     ```azurecli
     az vm generalize \
@@ -83,7 +81,7 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
 
     Genelleştirilmiş bir VM artık yeniden başlatılamaz.
 
-3. [Az Image Create](/cli/azure/image#az-image-create)komutuyla VM kaynağının bir görüntüsünü oluşturun. Aşağıdaki örnek *Myresourcegroup* adlı kaynak grubunda MYVM adlı VM kaynağını kullanarak MyImage adlı bir görüntü oluşturur.
+3. [Az Image Create](/cli/azure/image#az-image-create)komutuyla VM kaynağının bir görüntüsünü oluşturun. Aşağıdaki örnek *Myresourcegroup* adlı kaynak grubunda *MYVM*adlı VM kaynağını kullanarak *MyImage* adlı bir görüntü oluşturur.
    
     ```azurecli
     az image create \
@@ -98,7 +96,7 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
    
 Bu komut, VM görüntüsünü açıklayan JSON döndürür. Bu çıktıyı daha sonra başvurmak üzere kaydedin.
 
-## <a name="step-3-create-a-vm-from-the-captured-image"></a>3\. adım: Yakalanan görüntüden VM oluşturma
+## <a name="step-3-create-a-vm-from-the-captured-image"></a>3\. Adım: yakalanan görüntüden VM oluşturma
 [Az VM Create](/cli/azure/vm)ile oluşturduğunuz görüntüyü kullanarak bir VM oluşturun. Aşağıdaki örnek, *MyImage*adlı görüntüden *dağıtılan myvmadlı* bir VM oluşturur.
 
 ```azurecli
@@ -132,7 +130,7 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>4\. Adım: Dağıtımı doğrulama
+## <a name="step-4-verify-the-deployment"></a>4\. Adım: dağıtımı doğrulama
 
 Dağıtımı doğrulamak ve yeni VM 'yi kullanmaya başlamak için oluşturduğunuz sanal makineye SSH. SSH aracılığıyla bağlanmak için [az VM Show](/cli/azure/vm#az-vm-show)komutuyla sanal makinenizin IP ADRESINI veya FQDN 'sini bulun.
 

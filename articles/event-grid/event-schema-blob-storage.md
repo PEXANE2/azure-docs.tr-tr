@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: fa638a00e0d35e1d48bc3205ce2a77e7faf5d22e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 0ab81d3c1d4c68827cf1569bf4a22c3311fe355d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718375"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555830"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>BLOB depolama için olay şeması Azure Event Grid
 
@@ -30,26 +30,23 @@ Bu olaylar, bir istemci blob REST API 'Lerini çağırarak bir blobu oluşturdu�
  |**Microsoft. Storage. BlobDeleted** |Blob silindiğinde tetiklenir. <br>Özellikle, bu olay, istemci blob REST API kullanılabilir `DeleteBlob` işlemini çağırdığında tetiklenir. |
 
 > [!NOTE]
-> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü sırada tetiklendiğinden emin olmak istiyorsanız, `CopyBlob`, `PutBlob` ve `PutBlockList` REST API çağrılarının olayını filtreleyin. Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız, `CopyBlob`, `PutBlob` ve `PutBlockList` REST API çağrılarına yönelik olayı filtreleyin. Bu API çağrıları, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 'Lerinin olayları listesi
 
 Bu olaylar, depolama hesabında hiyerarşik bir ad alanı etkinleştirirseniz ve istemciler Azure Data Lake Storage 2. REST API 'Leri çağırdığında tetiklenir.
 
-> [!NOTE]
-> Bu olaylar genel önizlemede bulunur ve yalnızca **Batı ABD 2** ve **Orta Batı ABD** bölgelerinde kullanılabilir.
-
- |Olay adı|Açıklama|
- |----------|-----------|
- |**Microsoft. Storage. Bloboluşturuldu** | Bir blob oluşturulduğunda veya değiştirildiğinde tetiklenir. <br>Özellikle, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `CreateFile` ve `FlushWithClose` işlemlerini kullandıklarında bu olay tetiklenir. |
- |**Microsoft. Storage. BlobDeleted** |Blob silindiğinde tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `DeleteFile` işlemini çağırdığında da tetiklenir. |
- |**Microsoft. Storage. Blobyeniden adlandırıldı**|Bir blob yeniden adlandırıldığında tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `RenameFile` işlemini kullandıklarında tetiklenir.|
- |**Microsoft. Storage. DirectoryCreated**|Bir dizin oluşturulduğunda tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `CreateDirectory` işlemini kullandıklarında tetiklenir.|
- |**Microsoft. Storage. Directoryyeniden adlandırıldı**|Bir dizin yeniden adlandırıldığında tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `RenameDirectory` işlemini kullandıklarında tetiklenir.|
- |**Microsoft. Storage. DirectoryDeleted**|Bir dizin silindiğinde tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `DeleteDirectory` işlemini kullandıklarında tetiklenir.|
+|Olay adı|Açıklama|
+|----------|-----------|
+|**Microsoft. Storage. Bloboluşturuldu** | Bir blob oluşturulduğunda veya değiştirildiğinde tetiklenir. <br>Özellikle, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `CreateFile` ve `FlushWithClose` işlemlerini kullandıklarında bu olay tetiklenir. |
+|**Microsoft. Storage. BlobDeleted** |Blob silindiğinde tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `DeleteFile` işlemini çağırdığında da tetiklenir. |
+|**Microsoft. Storage. Blobyeniden adlandırıldı**|Bir blob yeniden adlandırıldığında tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `RenameFile` işlemini kullandıklarında tetiklenir.|
+|**Microsoft. Storage. DirectoryCreated**|Bir dizin oluşturulduğunda tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `CreateDirectory` işlemini kullandıklarında tetiklenir.|
+|**Microsoft. Storage. Directoryyeniden adlandırıldı**|Bir dizin yeniden adlandırıldığında tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `RenameDirectory` işlemini kullandıklarında tetiklenir.|
+|**Microsoft. Storage. DirectoryDeleted**|Bir dizin silindiğinde tetiklenir. <br>Özellikle, bu olay, istemciler Azure Data Lake Storage 2. REST API kullanılabilir `DeleteDirectory` işlemini kullandıklarında tetiklenir.|
 
 > [!NOTE]
-> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız `FlushWithClose` REST API çağrısının olayını filtreleyin. Bu API çağrısı, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> **Microsoft. Storage. BlobCreated** olayının yalnızca bir Blok Blobu tamamen yürütüldüğü zaman tetiklendiğinden emin olmak istiyorsanız, `FlushWithClose` REST API çağrısının olayını filtreleyin. Bu API çağrısı, **Microsoft. Storage. BlobCreated** olayını yalnızca veriler bir blok blobuna tam olarak kaydedildikten sonra tetikler. Filtre oluşturmayı öğrenmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 <a id="example-event" />
 
@@ -91,11 +88,11 @@ Bu bölüm, her BLOB depolama etkinliği için verilerin nasıl görüneceğine 
 
 BLOB depolama hesabının hiyerarşik bir ad alanı varsa, veriler önceki örneğe benzer ve bu değişiklikler hariç olacak şekilde görünür:
 
-* @No__t-0 anahtarı, `2` değerine ayarlanır.
+* @No__t_0 anahtarı bir `2` değerine ayarlanır.
 
-* @No__t-0 anahtarı `CreateFile` veya `FlushWithClose` dizesine ayarlanır.
+* @No__t_0 anahtarı dize `CreateFile` veya `FlushWithClose` olarak ayarlanır.
 
-* @No__t-0 anahtarı veri kümesine dahil edilir.
+* @No__t_0 anahtarı veri kümesine dahil edilir.
 
 > [!NOTE]
 > Uygulamalar hesaba yeni bir blob yüklemek için `PutBlockList` işlemini kullanıyorsa, veriler bu değişiklikleri içermez.
@@ -156,11 +153,11 @@ BLOB depolama hesabının hiyerarşik bir ad alanı varsa, veriler önceki örne
 
 BLOB depolama hesabının hiyerarşik bir ad alanı varsa, veriler önceki örneğe benzer ve bu değişiklikler hariç olacak şekilde görünür:
 
-* @No__t-0 anahtarı, `2` değerine ayarlanır.
+* @No__t_0 anahtarı bir `2` değerine ayarlanır.
 
-* @No__t-0 anahtarı `DeleteFile` dizesine ayarlanır.
+* @No__t_0 anahtarı dize `DeleteFile` olarak ayarlanır.
 
-* @No__t-0 anahtarı `dfs.core.windows.net` yolunu içerir.
+* @No__t_0 anahtarı `dfs.core.windows.net` yolunu içerir.
 
 > [!NOTE]
 > Uygulamalar hesaptan bir blobu silmek için `DeleteBlob` işlemini kullanıyorsa, veriler bu değişiklikleri içermez.
@@ -297,7 +294,7 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tanımlı yolu. |
 | Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| EventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
 | id | string | Etkinliğin benzersiz tanımlayıcısı. |
 | Verileri | object | BLOB depolama olay verileri. |
 | Veri sürümü | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
@@ -315,10 +312,10 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | contentLength | integer | Blobun bayt cinsinden boyutu. |
 | BlobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
 | Contenentoffset | number | Olay tetikleme uygulamasının dosyaya yazmayı tamamladığı noktada gerçekleştirilen bir yazma işleminin bayt cinsinden değeri. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir.|
-| Hedef URL |string | İşlem tamamlandıktan sonra var olacak dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa `destinationUrl` özelliği yeni dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir.|
+| Hedef URL |string | İşlem tamamlandıktan sonra var olacak dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa, `destinationUrl` özelliği yeni dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir.|
 | sourceUrl |string | İşlemden önce var olan dosyanın URL 'si. Örneğin, bir dosya yeniden adlandırılırsa `sourceUrl`, yeniden adlandırma işleminden önce özgün dosya adının URL 'sini içerir. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
-| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: *@no__t -1storage-Account-Name\>.blob.core.windows.net/\<container-Name @ no__t-4 @ no__t-5 @ no__t-6dosya-adı @ no__t-7*. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: *@no__t -1storage-Account-Name\>.dfs.core.windows.net/\<file-sistem-adı @ no__t-4 @ no__t-5 @ no__t-6dosya-adı @ no__t-7*. |
-| öz | string | @no__t-tüm alt dizinlerde işlemi gerçekleştirmek için 0; Aksi takdirde `False`. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
+| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: *\<storage-Account-name \>. blob.core.windows.net/\<container-adı \> / \<file-name \>* . <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: *\<storage-Account-name \>. dfs.core.windows.net/\<file-sistem-adı \> / \<file-Name*\>. |
+| öz | string | tüm alt dizinlerde işlemi gerçekleştirmek için `True`; Aksi takdirde `False`. <br>Yalnızca hiyerarşik bir ad alanına sahip BLOB depolama hesaplarında tetiklenen olaylar için görüntülenir. |
 | yana | string | Belirli bir blob adı için olayların mantıksal dizisini temsil eden donuk bir dize değeri.  Kullanıcılar, aynı blob adında iki olayın göreli sırasını anlamak için standart dize karşılaştırması kullanabilir. |
 | storageDiagnostics | object | Azure depolama hizmeti tarafından zaman içinde Tanılama verileri dahildir. Varsa, olay tüketicileri tarafından yok sayılacak. |
 

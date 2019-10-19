@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a0d8f7cdace8d3e810dfcda6e54df5823840307c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1707740d673ea49a4b4494f5d2e6a5753982090
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034335"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553400"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Gezginde verileri görselleştirme (Önizleme)
 
@@ -35,7 +35,7 @@ Azure Time Series Insights önizleme Gezginini kullanmaya başlamak için şunla
 
 Azure Time Series Insights önizleme Gezgini aşağıdaki öğelerden oluşur:
 
-[![Gezgin görünümü](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
+[Gezgin görünümünü ![The](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
 
 - <a href="#environment-drop-down-list">Ortam paneli</a>: Azure Time Series Insights ortamlarınızı görüntüler.
 - <a href="#navigation-menu">Gezinti menüsü</a>: **Çözümle** ve **model** sayfaları arasında geçiş yapmak için kullanın.
@@ -51,13 +51,13 @@ Ortam açılan listesi, erişiminiz olan tüm Time Series Insights ortamlarını
 
 1. Görüntülenmiş ortamınızın yanındaki aşağı açılan oku seçin.
 
-   [![Denetim masası](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
+   [![The Denetim Masası](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
 
 1. Ardından istediğiniz ortamı seçin.
 
 ## <a name="navigation-menu"></a>Gezinti menüsü
 
-  [![Gezinti menüsü](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
+  [Gezinti menüsü ![The](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
 
 İki görünüm arasından seçim yapmak için gezinti menüsünü kullanın:
 
@@ -72,7 +72,7 @@ Hiyerarşi ağacı, cihazlarınızda modeller, belirli cihazlar ve algılayıcı
 
 Grafiğinizde görüntülenmesini istediğiniz belirli zaman serisi örneklerini bulmak için zaman serisi modeli hiyerarşinizde kolayca arama yapmak için model arama panelini kullanabilirsiniz. Örneklerinizi seçtikten sonra, bunlar hem geçerli grafiğe hem de veri kutusuna eklenir.
 
-  [![ model arama paneli](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
+  [![The modeli arama paneli](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
 
 ### <a name="model-authoring"></a>Model yazma
 
@@ -88,11 +88,11 @@ Zaman serisi modeli hakkında daha fazla bilgi edinmek için bkz. [Times Series 
 
 İyi, örnek alanlarını ve seçili Time Series Insights örneklerle ilişkili diğer meta verileri görüntüler. Sağ taraftaki onay kutularını seçerek geçerli grafikten belirli örnekleri gizleyebilir veya görüntüleyebilirsiniz. Ayrıca, öğenin sol tarafındaki kırmızı **silme** (çöp kutusu) denetimini seçerek geçerli verilerdeki belirli veri öğelerini de kaldırabilirsiniz.
 
-  [![Önizleme kutusu](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
+  [![The önizleme kutusu](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
 
 Grafik **Analizi** sayfanızın yerleşimini yeniden yapılandırmak için sağ üst köşedeki üç nokta simgesini seçin:
 
-  [![Telemetri düzen seçenekleri](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
+  [![Telemetry düzen seçenekleri](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
 
 > [!NOTE]
 > Aşağıdaki iletiyi görürseniz, örnek seçilen zaman aralığı boyunca hiçbir veri içermez. Sorunu çözmek için, zaman aralığını artırın veya örneğin veri iletme süresini onaylayın.
@@ -121,7 +121,7 @@ Grafik ile Time Series Insights örnekleri satır olarak görüntüleyebilirsini
 
 Belirli bir veri dilimi hakkında daha fazla ayrıntıya geçmek için, geçerli grafikteki bir veri noktasına sol tıklayın ve sonra seçili alanı seçtiğiniz uç noktaya sürükleyin. Seçilen gri alanına sağ tıklayın ve aşağıdaki görüntüde gösterildiği gibi **Yakınlaştır**' ı seçin:
 
-  [![Preview grafik yakınlaştırması](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
+  [grafik yakınlaştırmasını ![Preview](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
 
 **Yakınlaştırma** eylemini gerçekleştirdikten sonra, seçtiğiniz veri kümesini görürsünüz. Time Series Insights verilerinizin üç y ekseni temsilinden dolaşmak için y ekseni biçim denetimini seçin.
 
@@ -129,13 +129,13 @@ Belirli bir veri dilimi hakkında daha fazla ayrıntıya geçmek için, geçerli
 
 Burada, paylaşılan Y eksenlerinin bir örneğini görebilirsiniz:
 
-  [![Paylaşılan Y eksenleri önizlemesi](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
+  [![Preview paylaşılan Y eksenleri](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
 
 ## <a name="time-editor-panel"></a>Zaman Düzenleyicisi bölmesi
 
 Time Series Insights önizleme ile çalışırken önce bir zaman aralığı seçersiniz. Seçilen zaman aralığı, Time Series Insights önizleme pencere öğeleri ile düzenleme için kullanılabilen veri kümesini denetler. Aşağıdaki Web denetimleri, çalışma zamanı aralığını seçmek için Time Series Insights önizlemede sunulmaktadır:
 
-  [![zaman seçim paneli](media/v2-update-explorer/explorer-twelve.png)](media/v2-update-explorer/explorer-twelve.png#lightbox)
+  [![Time seçim paneli](media/v2-update-explorer/explorer-twelve.png)](media/v2-update-explorer/explorer-twelve.png#lightbox)
 
 1. **İç tarih aralığı kaydırıcı aracı**: iki uç nokta denetimini istediğiniz zaman aralığında sürükleyerek kullanın. Bu iç tarih aralığı, dış tarih aralığı kaydırıcı denetimi tarafından sınırlandırılır.
 
@@ -155,7 +155,7 @@ Time Series Insights önizleme ile çalışırken önce bir zaman aralığı se�
 
 ## <a name="navigation-panel"></a>Gezinti paneli
 
-Time Series Insights önizlemesi gezinti paneli Time Series Insights uygulamanızın en üstünde görünür. Aşağıdaki işlevleri sağlar.
+Time Series Insights önizlemesi gezinti paneli Time Series Insights uygulamanızın en üstünde görünür. Aşağıdaki işlevleri sağlar:
 
 ### <a name="current-session-share-link-control"></a>Geçerli oturum paylaşma bağlantı denetimi
 
@@ -163,11 +163,11 @@ Time Series Insights önizlemesi gezinti paneli Time Series Insights uygulamanı
 
 Ekibinizle bir URL bağlantısı paylaşmak için yeni **paylaşma** simgesini seçin.
 
-  [![ örnek URL 'nizi paylaşma](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
+  [Örnek URL 'nizi ![Share](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
 
 ### <a name="tenant-section"></a>Kiracı bölümü
 
-  [![ kiracı seçimi](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
+  [![Tenant seçimi](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
 
 * Geçerli Time Series Insights oturum açma hesabı bilgilerini görüntüler.
 * Kullanılabilir Time Series Insights temaları arasında geçiş yapmak için bunu kullanın.
@@ -187,7 +187,7 @@ Azure Time Series Insights önizlemesi iki tema destekler:
 * **Açık tema**: Bu belge boyunca gösterilen varsayılan tema.
 * **Koyu tema**: gezgin 'i burada gösterildiği gibi işler:
 
-  [![Seçili Koyu tema](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
+  [koyu ![Selected teması](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>S1/S2 ortam denetimleri
 
@@ -197,11 +197,11 @@ Bu bölüm yalnızca, güncelleştirilmiş Kullanıcı arabiriminde gezgin kulla
 
 Hiyerarşi yerine, ortamınızda sorgular tanımladığınız Time Series Insights terimler panelini görürsünüz. Bir koşula göre verilerinizi filtrelemek için kullanın.
 
-  [![Burada sorgu paneli](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
+  [![Where sorgu paneli](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
 
 Time Series Insights önizleme Koşulları Düzenleyicisi paneli aşağıdaki parametreleri alır:
 
-**Burada**: aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için WHERE yan tümcesini kullanın. Bir işlenen seçerek bir arama yaparsanız, bu arama temelinde koşul otomatik olarak güncelleştirilir. Desteklenen işlenen türleri şunlardır:
+**Burada**: aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için WHERE yan tümcesini kullanın. Bir işlenen seçerek bir arama yaparsanız, bu arama temelinde koşul otomatik olarak güncelleştirilir. Desteklenen işlenen türleri şunları içerir:
 
 | İşlem | Desteklenen türler   | Notlar |
 | --- | --- | --- |
@@ -214,17 +214,17 @@ Desteklenen sorgu işlemleri ve veri türleri hakkında daha fazla bilgi edinmek
 
 ### <a name="examples-of-where-clauses"></a>WHERE yan tümcelerinin örnekleri
 
-  [![Where yan tümcesi örnekleri](media/v2-update-explorer/explorer-nineteen.png)](media/v2-update-explorer/explorer-nineteen.png#lightbox)
+  [![Where yan tümce örnekleri](media/v2-update-explorer/explorer-nineteen.png)](media/v2-update-explorer/explorer-nineteen.png#lightbox)
 
 **Ölçü**: geçerli grafiğiniz için öğe olarak kullanabileceğiniz tüm sayısal sütunları (**Double**) görüntüleyen bir açılan liste.
 
 **Bölme ölçütü**: Bu aşağı açılan liste, modelinizde, verilerinizi gruplabilmeniz için kullanabileceğiniz tüm kullanılabilir kategorik sütunları (dizeler) görüntüler. Aynı x ekseninde görüntülenecek en fazla beş terim ekleyebilirsiniz. İstediğiniz parametreleri girin ve sonra yeni bir terim eklemek için **Ekle** ' yi seçin.
 
-  [![Sorgulanan ve filtrelenmiş görünüm bir](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
+  [![Queried ve filtrelenmiş görünüm bir](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
 
 Aşağıdaki görüntüde gösterildiği gibi görünür simgesini seçerek grafik panelinde öğeleri görüntüleyebilir ve gizleyebilirsiniz. Sorguları tamamen kaldırmak için kırmızı **X**seçeneğini belirleyin.
 
-  [![ sorgulanan ve filtrelenmiş görünüm iki](media/v2-update-explorer/explorer-twenty-one.png)](media/v2-update-explorer/explorer-twenty-one.png#lightbox)
+  [![Queried ve filtrelenmiş görünüm iki](media/v2-update-explorer/explorer-twenty-one.png)](media/v2-update-explorer/explorer-twenty-one.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

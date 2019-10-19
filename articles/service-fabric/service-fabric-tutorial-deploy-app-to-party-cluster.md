@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598817"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553577"
 ---
-# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Öğretici: Azure 'daki bir kümeye Service Fabric uygulaması dağıtma
+# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric uygulamasını kümeye dağıtma
 
 Bu öğretici, bir dizinin ikinci bölümüdür. Azure Service Fabric uygulamasının Azure’da yeni kümeye nasıl dağıtılacağı gösterilir.
 
@@ -46,6 +46,9 @@ Bu öğreticiye başlamadan önce:
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * [Visual Studio 2019](https://www.visualstudio.com/)' i yükledikten sonra **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
 * [Service Fabric SDK'yı yükleyin](service-fabric-get-started.md).
+
+> [!NOTE]
+> Ücretsiz bir hesap, sanal makine oluşturma gereksinimlerini karşılamayabilir. Bu, öğreticinin tamamlanmasına engel olur.
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
@@ -82,15 +85,15 @@ Daha sonraki bir adımda gereken hizmet uç noktası ' nı bir yere göz atın. 
 
 **Bağlantı uç noktası**' nda **Yeni küme oluştur**' u seçin.  Var olan bir kümeye dağıtım yapıyorsanız, listeden küme uç noktasını seçin.  Service Fabric kümesi oluştur iletişim kutusu açılır.
 
-**Küme** sekmesinde, **küme adını** girin (örneğin, "mytestcluster"), aboneliğinizi seçin, küme için bir bölge seçin (Örneğin Orta Güney ABD), küme düğümlerinin sayısını girin (bir test kümesi için üç düğüm önerilir) ve bir kaynak grubu ("mytestclustergroup" gibi) girin.           **İleri**'ye tıklayın.
+**Küme** sekmesinde, **küme adını** girin (örneğin, "mytestcluster"), aboneliğinizi seçin, küme için bir bölge seçin (Örneğin Orta Güney ABD), küme düğümlerinin sayısını girin (bir test kümesi için üç düğüm önerilir) ve bir kaynak grubu ("mytestclustergroup" gibi) girin. **İleri**’ye tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-**Sertifika** sekmesinde, küme sertifikası için parola ve çıkış yolunu girin. Otomatik olarak imzalanan bir sertifika PFX dosyası olarak oluşturulur ve belirtilen çıkış yoluna kaydedilir.  Sertifika, düğümden düğüme ve istemciden düğüme güvenlik için kullanılır.  Üretim kümeleri için kendinden imzalı bir sertifika kullanmayın.  Bu sertifika, Visual Studio tarafından, küme ve uygulama dağıtımı ile kimlik doğrulamak için kullanılır. PFX 'yi bilgisayarınızın Currentuser\certificate deposuna yüklemek için **sertifikayı Içeri aktar** ' ı seçin.            **İleri**'ye tıklayın.
+**Sertifika** sekmesinde, küme sertifikası için parola ve çıkış yolunu girin. Otomatik olarak imzalanan bir sertifika PFX dosyası olarak oluşturulur ve belirtilen çıkış yoluna kaydedilir.  Sertifika, düğümden düğüme ve istemciden düğüme güvenlik için kullanılır.  Üretim kümeleri için kendinden imzalı bir sertifika kullanmayın.  Bu sertifika, Visual Studio tarafından, küme ve uygulama dağıtımı ile kimlik doğrulamak için kullanılır. PFX 'yi bilgisayarınızın Currentuser\certificate deposuna yüklemek için **sertifikayı Içeri aktar** ' ı seçin.  **İleri**’ye tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-**VM ayrıntısı** sekmesinde, Küme Yöneticisi hesabı için **Kullanıcı adını** ve **parolayı** girin.  Küme düğümleri için **sanal makine görüntüsünü** ve her küme düğümünün **sanal makine boyutunu** seçin.  Tıklayın **Gelişmiş** sekmesi.
+**VM ayrıntısı** sekmesinde, Küme Yöneticisi hesabı için **Kullanıcı adını** ve **parolayı** girin.  Küme düğümleri için **sanal makine görüntüsünü** ve her küme düğümünün **sanal makine boyutunu** seçin.  **Gelişmiş** sekmesine tıklayın.
 
 ![Küme oluşturma](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
@@ -105,7 +108,7 @@ Yeni küme hazırsanız, oylama uygulamasını doğrudan Visual Studio 'dan dağ
 Çözüm Gezgini’nde **Oylama**’ya sağ tıklayın ve **Yayımla**’yı seçin. **Yayımla** iletişim kutusu görüntülenir.
 
 **Bağlantı uç noktası**' nda, önceki adımda oluşturduğunuz kümenin uç noktasını seçin.  Örneğin, "mytestcluster.southcentral.cloudapp.azure.com:19000". **Gelişmiş bağlantı parametreleri**' ni seçerseniz, sertifika bilgileri otomatik olarak doldurulmalıdır.  
-![Service Fabric uygulaması yayımlama](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+Service Fabric uygulama ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png) ![Publish
 
 **Yayımla**’yı seçin.
 

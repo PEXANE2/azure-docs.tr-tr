@@ -1,19 +1,18 @@
 ---
 title: Azure 'da uyarı ve bildirim izlemeye genel bakış
 description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarılar ve uyarılar arabirimi.
-author: rboucher
-services: monitoring
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 01/28/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 01/28/2018
+ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091769"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555601"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -37,27 +36,27 @@ Uyarı kuralları uyarılardan ve bir uyarı tetiklendiğinde gerçekleştirilen
 
 Aşağıda bir uyarı kuralının anahtar öznitelikleri verilmiştir:
 
-**Hedef kaynak**: Uyarı için kullanılabilen kapsamı ve sinyalleri tanımlar. Hedef, herhangi bir Azure kaynağı olabilir. Örnek hedefler: bir sanal makine, depolama hesabı, bir sanal makine ölçek kümesi, Log Analytics çalışma alanı veya bir Application Insights kaynağı. Belirli kaynaklar (sanal makineler gibi) için, uyarı kuralının hedefi olarak birden çok kaynak belirtebilirsiniz.
+**Hedef kaynak**: uyarı için kullanılabilen kapsamı ve sinyalleri tanımlar. Hedef, herhangi bir Azure kaynağı olabilir. Örnek hedefler: bir sanal makine, depolama hesabı, bir sanal makine ölçek kümesi, Log Analytics çalışma alanı veya bir Application Insights kaynağı. Belirli kaynaklar (sanal makineler gibi) için, uyarı kuralının hedefi olarak birden çok kaynak belirtebilirsiniz.
 
-**Sinyal**: Hedef kaynak tarafından yayılır. Sinyaller şu türlerde olabilir: ölçüm, etkinlik günlüğü, Application Insights ve günlük.
+**Sinyal**: hedef kaynak tarafından verilmiş. Sinyaller şu türlerde olabilir: ölçüm, etkinlik günlüğü, Application Insights ve günlük.
 
-**Ölçütler**: Hedef kaynağa uygulanan bir sinyal ve mantık birleşimi. Örnekler: 
+**Ölçüt**: bir hedef kaynağa uygulanan sinyal ve mantık birleşimi. Örnekler: 
    - Yüzde 70 CPU >
    - Sunucu yanıt süresi > 4 MS 
    - Günlük sorgusunun sonuç sayısı > 100
 
-**Uyarı adı**: Kullanıcı tarafından yapılandırılan uyarı kuralı için belirli bir ad.
+**Uyarı adı**: Kullanıcı tarafından yapılandırılan uyarı kuralı için özel bir ad.
 
 **Uyarı açıklaması**: Kullanıcı tarafından yapılandırılan uyarı kuralı için bir açıklama.
 
-**Önem derecesi**: Uyarı kuralında belirtilen ölçütlerle sonra uyarının önem derecesi karşılanır. Önem derecesi 0 ile 4 arasında olabilir.
+**Önem derecesi**: uyarı kuralında belirtilen ölçütlerle sonra uyarının önem derecesi karşılanır. Önem derecesi 0 ile 4 arasında olabilir.
    - Sev 0 = kritik
    - Sev 1 = hata
    - Sev 2 = uyarı
    - Sev 3 = bilgilendirici
    - Sev 4 = ayrıntılı 
 
-**Eylem**: Uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](../../azure-monitor/platform/action-groups.md).
+**Eylem**: uyarı harekete geçirildiğinde gerçekleştirilecek belirli bir eylem. Daha fazla bilgi için bkz. [eylem grupları](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Uyarı yapabilecekleriniz
 
@@ -80,11 +79,11 @@ Bir uyarının durumunu, çözüm sürecinde nerede olduğunu belirtmek için ay
 
 Aşağıdaki uyarı durumları desteklenir.
 
-| State | Açıklama |
+| Eyalet | Açıklama |
 |:---|:---|
 | Yeni | Sorun henüz algılandı ve henüz gözden geçirilmedi. |
-| Onaylandı | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
-| Kapatıldı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
+| Mazsa | Bir yönetici uyarıyı inceetti ve üzerinde çalışmaya başladı. |
+| kapandı | Sorun çözüldü. Bir uyarı kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
 *Uyarı durumu* , *izleyici koşulunun*farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *tetiklenir*olarak ayarlanır. Uyarının tetiklenmesine neden olan temeldeki durum temizlediğinde, izleme koşulu *çözüldü*olarak ayarlanır. Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](https://aka.ms/managing-alert-smart-group-states)bilgi edinin.
 
@@ -109,20 +108,20 @@ Bu görünümü, sayfanın en üstündeki açılan menülerde bulunan değerler 
 
 | Sütun | Açıklama |
 |:---|:---|
-| Subscription | Uyarılarını görüntülemek istediğiniz Azure aboneliklerini seçin. İsteğe bağlı olarak, tüm aboneliklerinizi seçebilirsiniz. Yalnızca seçili aboneliklerde erişiminiz olan uyarılar görünüme dahil edilir. |
-| Resource group | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
+| Abonelik | Uyarılarını görüntülemek istediğiniz Azure aboneliklerini seçin. İsteğe bağlı olarak, tüm aboneliklerinizi seçebilirsiniz. Yalnızca seçili aboneliklerde erişiminiz olan uyarılar görünüme dahil edilir. |
+| Kaynak grubu | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 | Zaman aralığı | Yalnızca seçili zaman aralığı içinde tetiklenen uyarılar görünüme dahildir. Desteklenen değerler son saat, son 24 saat, son 7 gün ve son 30 gündür. |
 
 Başka bir sayfa açmak için uyarılar sayfasının en üstünde bulunan aşağıdaki değerleri seçin:
 
-| Value | Açıklama |
+| Değer | Açıklama |
 |:---|:---|
 | Toplam uyarı sayısı | Seçilen ölçütlerle eşleşen toplam uyarı sayısı. Filtre olmadan tüm uyarılar görünümünü açmak için bu değeri seçin. |
 | Akıllı gruplar | Seçili ölçütlerle eşleşen uyarılardan oluşturulan akıllı grupların toplam sayısı. Tüm uyarılar görünümündeki akıllı gruplar listesini açmak için bu değeri seçin.
-| Toplam uyarı kuralı sayısı | Seçili abonelik ve kaynak grubundaki uyarı kurallarının toplam sayısı. Seçilen abonelikte ve kaynak grubunda filtrelenmiş kurallar görünümünü açmak için bu değeri seçin.
+| Toplam uyarı kuralları | Seçili abonelik ve kaynak grubundaki uyarı kurallarının toplam sayısı. Seçilen abonelikte ve kaynak grubunda filtrelenmiş kurallar görünümünü açmak için bu değeri seçin.
 
 
-## <a name="manage-alert-rules"></a>Uyarı kurallarını yönetin
+## <a name="manage-alert-rules"></a>Uyarı kurallarını yönet
 **Kurallar** sayfasını görüntülemek için, **Uyarı kurallarını yönet**' i seçin. Kurallar sayfası, Azure aboneliklerinizde tüm uyarı kurallarını yönetmek için tek bir yerdir. Tüm uyarı kurallarını listeler ve hedef kaynaklara, kaynak gruplarına, kural adına veya duruma göre sıralanabilir. Ayrıca, bu sayfadan uyarı kurallarını düzenleyebilir, etkinleştirebilir veya devre dışı bırakabilirsiniz.  
 
  ![Kurallar sayfasının ekran görüntüsü](./media/alerts-overview/alerts-preview-rules.png)
@@ -152,14 +151,14 @@ Sayfanın en üstündeki açılan menülerde aşağıdaki değerleri seçerek g�
 
 | Sütun | Açıklama |
 |:---|:---|
-| Subscription | Uyarılarını görüntülemek istediğiniz Azure aboneliklerini seçin. İsteğe bağlı olarak, tüm aboneliklerinizi seçebilirsiniz. Yalnızca seçili aboneliklerde erişiminiz olan uyarılar görünüme dahil edilir. |
-| Resource group | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
+| Abonelik | Uyarılarını görüntülemek istediğiniz Azure aboneliklerini seçin. İsteğe bağlı olarak, tüm aboneliklerinizi seçebilirsiniz. Yalnızca seçili aboneliklerde erişiminiz olan uyarılar görünüme dahil edilir. |
+| Kaynak grubu | Tek bir kaynak grubu seçin. Yalnızca seçili kaynak grubunda hedefleri olan uyarılar görünüme dahildir. |
 | Kaynak türü | Bir veya daha fazla kaynak türü seçin. Yalnızca seçilen türdeki hedefleri olan uyarılar görünüme dahildir. Bu sütun yalnızca bir kaynak grubu belirtilmişse kullanılabilir. |
-| Resource | Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
-| severity | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
+| Kaynak | Bir kaynak seçin. Yalnızca hedef olarak bu kaynağa sahip olan uyarılar görünüme dahil edilir. Bu sütun yalnızca bir kaynak türü belirtilmişse kullanılabilir. |
+| Önem Derecesi | Bir uyarı önem derecesi seçin veya tüm önem derecelerinin uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | İzleme koşulu | Bir izleyici koşulu seçin veya tüm koşulların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
 | Uyarı durumu | Bir uyarı durumu seçin veya tüm durumların uyarılarını dahil etmek için **Tümü** ' nü seçin. |
-| İzleme hizmet | Bir hizmet seçin veya tüm hizmetleri dahil etmek için **Tümü** ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
+| Hizmeti izle | Bir hizmet seçin veya tüm hizmetleri dahil etmek için **Tümü** ' nü seçin. Yalnızca hizmeti hedef olarak kullanan kurallar tarafından oluşturulan uyarılar dahildir. |
 | Zaman aralığı | Yalnızca seçili zaman aralığı içinde tetiklenen uyarılar görünüme dahildir. Desteklenen değerler son saat, son 24 saat, son 7 gün ve son 30 gündür. |
 
 Görüntülenecek sütunları seçmek için sayfanın üst kısmındaki **sütunları** seçin. 
@@ -171,7 +170,7 @@ Bir uyarı seçtiğinizde, Bu sayfa uyarının ayrıntılarını sağlar ve duru
 
 Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
-| `Section` | Açıklama |
+| Section | Açıklama |
 |:---|:---|
 | Özet | Uyarı hakkındaki özellikleri ve diğer önemli bilgileri görüntüler. |
 | Geçmiş | Uyarı tarafından gerçekleştirilen her eylemi ve uyarıya yapılan tüm değişiklikleri listeler. Şu anda durum değişiklikleriyle sınırlı. |
@@ -179,7 +178,7 @@ Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin rol tabanlı erişim denetimi (RBAC)
 
-Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunan veya [izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)için yerleşik RBAC rollerine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine `ContosoVM1`için katkıda bulunan erişimi izmışsa, bu kullanıcı yalnızca üzerinde `ContosoVM1`oluşturulan uyarıları kullanabilir ve yönetebilir.
+Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunan veya [izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)için yerleşik RBAC rollerine sahip olmasını gerektirir. Bu roller her bir Azure Resource Manager kapsamında, abonelik düzeyinden kaynak düzeyindeki ayrıntılı atamalara kadar desteklenir. Örneğin, bir Kullanıcı yalnızca sanal makine `ContosoVM1` katkıda bulunan erişimini izlemeye sahipse, bu kullanıcı yalnızca `ContosoVM1` oluşturulan uyarıları kullanabilir ve yönetebilir.
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Uyarı örneklerinizi programlama yoluyla yönetme
 

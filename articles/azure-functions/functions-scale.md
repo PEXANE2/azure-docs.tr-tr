@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180110"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550630"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Işlevleri ölçeklendirme ve barındırma
 
-Azure 'da bir işlev uygulaması oluşturduğunuzda, uygulamanız için bir barındırma planı seçmeniz gerekir. Azure Işlevleri için kullanabileceğiniz üç barındırma planı vardır: [Tüketim planı](#consumption-plan), [Premium plan](#premium-plan)ve [App Service planı](#app-service-plan).
+Azure 'da bir işlev uygulaması oluşturduğunuzda, uygulamanız için bir barındırma planı seçmeniz gerekir. Azure Işlevleri için kullanılabilen üç barındırma planı vardır: [Tüketim planı](#consumption-plan), [Premium plan](#premium-plan)ve [App Service planı](#app-service-plan).
 
 Seçtiğiniz barındırma planı aşağıdaki davranışları belirler:
 
@@ -47,8 +47,8 @@ Aşağıdaki tablo, Windows veya Linux üzerinde çalışırken üç barındırm
 
 | | Tüketim planı | Premium planı | Adanmış plan |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | GA | önizleme | GA |
-| Linux | GA | önizleme | GA |
+| Windows | Genel Kullanım | önizleme | Genel Kullanım |
+| Linux | Genel Kullanım | önizleme | Genel Kullanım |
 
 ## <a name="consumption-plan"></a>Tüketim planı
 
@@ -78,11 +78,12 @@ Premium planı kullanırken, Azure Işlevleri ana bilgisayarının örnekleri, t
 
 Bu seçenekleri nasıl yapılandırabileceğiniz hakkında bilgiler, [Azure işlevleri Premium plan belgesinde](functions-premium-plan.md)bulunabilir.
 
-Yürütme başına faturalandırılması ve tüketilen bellek yerine, Premium plan için faturalandırma, gerekli ve ayrılmış örneklerde kullanılan çekirdek saniyeler, yürütme süresi ve bellek sayısını temel alır.  En az bir örnek her zaman sıcak olmalıdır. Bu, yürütme sayısından bağımsız olarak etkin plan başına sabit bir aylık maliyet olduğu anlamına gelir.
+Yürütme başına faturalandırılması ve tüketilen bellek yerine, Premium plan için faturalandırma, gerekli ve önceden çarpımış örneklerde kullanılan çekirdek saniyelik ve belleğin sayısını temel alır. Plan başına en az bir örnek her zaman sıcak olmalıdır. Bu, yürütmelerin sayısından bağımsız olarak etkin plan başına en az aylık maliyet olduğu anlamına gelir. Premium planındaki tüm işlev uygulamalarının, önceden çarpımış ve etkin örnekleri paylaştığı göz önünde bulundurun.
 
 Aşağıdaki durumlarda Azure Işlevleri Premium planını göz önünde bulundurun:
 
 * İşlev uygulamalarınız sürekli veya neredeyse sürekli çalışır.
+* Çok sayıda küçük yürütmeler ve yüksek bir yürütme faturanız, ancak tüketim planında düşük GB ikinci faturanız vardır.
 * Tüketim planı tarafından sağlandıkından daha fazla CPU veya bellek seçeneği gerekir.
 * Kodunuzun, tüketim planında [izin verilen maksimum yürütme süresinden](#timeout) daha uzun çalışması gerekir.
 * Yalnızca Premium bir planda kullanılabilen, VNET/VPN bağlantısı gibi özellikleri gereklidir.
@@ -112,7 +113,7 @@ App Service bir planda çalıştırırsanız, işlev uygulamanızın doğru çal
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Her zaman etkinleştirilmiş olsa bile, tek tek işlevlerde yürütme zaman aşımı, `functionTimeout` [Host. JSON](functions-host-json.md#functiontimeout) proje dosyasındaki ayarıyla denetlenir.
+Her zaman etkinleştirilmiş olsa bile, tek tek işlevlerde yürütme zaman aşımı, [Host. JSON](functions-host-json.md#functiontimeout) proje dosyasındaki `functionTimeout` ayarıyla denetlenir.
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Mevcut bir uygulamanın barındırma planını belirleme
 
@@ -127,7 +128,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Bu komutun `dynamic`çıktısı olduğunda, işlev uygulamanız tüketim planınızdan olur. Bu komutun `ElasticPremium`çıktısı olduğunda, işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
+Bu komutun çıktısı `dynamic` olduğunda, işlev uygulamanız tüketim planınızdan olur. Bu komutun çıktısı `ElasticPremium` olduğunda, işlev uygulamanız Premium plandır. Diğer tüm değerler App Service planının farklı katmanlarını gösterir.
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
@@ -169,7 +170,7 @@ Farklı tetikleyiciler Ayrıca aşağıda belgelenen farklı ölçekleme sınır
 
 Konak yapılandırması, çalışma zamanı kaplama ve kaynak verimliliği dahil, ne kadar iyi ölçeklendirilemeyeceğini etkileyecek bir işlev uygulamasının birçok yönü vardır.  Daha fazla bilgi için [performans konuları makalesinin ölçeklenebilirlik bölümüne](functions-best-practices.md#scalability-best-practices)bakın. Ayrıca, işlev uygulamanız ölçeklenirken bağlantıların nasıl davranacağını de bilmelisiniz. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](manage-connections.md).
 
-### <a name="billing-model"></a>Faturalama modeli
+### <a name="billing-model"></a>Faturalandırma modeli
 
 Farklı planların [faturalandırılması, Azure işlevleri fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/functions/)ayrıntılı olarak açıklanmıştır. Kullanım işlevi uygulama düzeyinde toplanır ve yalnızca işlev kodunun yürütüldüğü süreyi sayar. Faturalandırma için birimler aşağıda verilmiştir:
 

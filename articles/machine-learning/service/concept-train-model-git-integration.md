@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: db96663ef3d901546e1b32362a9eb9c9ae09dd21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377518"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553662"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -24,17 +24,17 @@ Azure Machine Learning, yerel bir git deposundan bilgileri izlediğinden, belirl
 
 ## <a name="how-does-git-integration-work"></a>Git tümleştirmesi nasıl çalışır?
 
-Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. @No__t-0 komutu geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
+Python SDK 'dan veya CLı Machine Learning bir eğitim çalıştırması gönderdiğinizde, modeli eğitmek için gereken dosyalar çalışma alanınıza yüklenir. @No__t_0 komutu geliştirme ortamınızda kullanılabiliyorsa, karşıya yükleme işlemi, dosyaların bir git deposunda saklanıp saklanmadığını denetlemek için onu kullanır. Bu durumda, git deponuzdaki bilgiler, eğitim çalıştırmasının bir parçası olarak da yüklenir. Bu bilgiler, eğitim çalışması için aşağıdaki özelliklerde depolanır:
 
-| Özellik | Açıklama |
-| ----- | ----- |
-| `azureml.git.repository_uri` | Deponuzdan kopyalanan URI. |
-| `mlflow.source.git.repoURL` | Deponuzdan kopyalanan URI. |
-| `azureml.git.branch` | Çalışma gönderildiğinde etkin dal. |
-| `mlflow.source.git.branch` | Çalışma gönderildiğinde etkin dal. |
-| `azureml.git.commit` | Çalıştırma için gönderilen kodun COMMIT karması. |
-| `mlflow.source.git.commit` | Çalıştırma için gönderilen kodun COMMIT karması. |
-| `azureml.git.dirty` | `True`, COMMIT kirli ise; Aksi takdirde, `false`. |
+| Özellik | Değeri almak için kullanılan git komutu | Açıklama |
+| ----- | ----- | ----- |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Deponuzdan kopyalanan URI. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Çalışma gönderildiğinde etkin dal. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Çalışma gönderildiğinde etkin dal. |
+| `azureml.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun COMMIT karması. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | Çalıştırma için gönderilen kodun COMMIT karması. |
+| `azureml.git.dirty` | `git status --porcelain .` | dal/COMMIT kirli ise `True`; Aksi takdirde, `false`. |
 
 Bu bilgiler, bir Estimator, Machine Learning işlem hattı veya betik çalıştırması kullanan çalıştırmalar için gönderilir.
 
@@ -49,7 +49,9 @@ Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure po
 1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin.
 1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
 1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __@No__t-1 @ no__t-2Azure__ile başlayan bağlantıyı seçin.
+1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __@No__t_1 \_azure__ile başlayan bağlantıyı seçin.
+
+    ![Portalda # # #_azure girişi](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
 Günlüğe kaydedilen bilgiler aşağıdaki JSON 'a benzer bir metin içerir:
 
@@ -80,7 +82,7 @@ run.properties['azureml.git.commit']
 
 ### <a name="cli"></a>CLI
 
-@No__t-0 CLı komutu, bir çalıştırıldan özellikleri almak için kullanılabilir. Örneğin, aşağıdaki komut, `train-on-amlcompute` adlı denemenin son çalıştırmasının özelliklerini döndürür:
+@No__t_0 CLı komutu, bir çalıştırıldan özellikleri almak için kullanılabilir. Örneğin, aşağıdaki komut, `train-on-amlcompute` adlı denemenin son çalıştırmasının özelliklerini döndürür:
 
 ```azurecli-interactive
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'

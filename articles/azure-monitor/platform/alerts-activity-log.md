@@ -1,18 +1,18 @@
 ---
 title: Azure Izleyici 'de etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme
 description: Azure portal, bir Azure Resource Manager şablonu ve Azure PowerShell kullanarak etkinlik günlüğü uyarıları oluşturun.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: rboucher
 ms.author: robb
-ms.openlocfilehash: e93b6f9c74bb44cb7341f5763261ecb699432ae2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.date: 06/25/2019
+ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675272"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552807"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturma, görüntüleme ve yönetme  
 
@@ -40,7 +40,7 @@ Etkinlik günlüğü uyarı kuralları oluşturmak ve değiştirmek için Azure 
 
 Aşağıdaki yordamı kullanın.
 
-1. Azure portal **izleme** > **uyarıları**' nı seçin.
+1. Azure portal **izleme**  > **uyarıları**' nı seçin.
 2. **Uyarılar** penceresinin sol üst köşesindeki **Yeni uyarı kuralı** ' nı seçin.
 
      ![Yeni uyarı kuralı](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -51,7 +51,7 @@ Aşağıdaki yordamı kullanın.
 
 3. **Uyarı koşulunu tanımla**altında, aşağıdaki bilgileri sağlayın ve **bitti**' yi seçin:
 
-   - **Uyarı hedefi:** Yeni uyarının hedefini görüntülemek ve seçmek için, **aboneliğe göre filtrele** / **kaynak türüne göre filtre**kullanın. Görünen listeden kaynağı veya kaynak grubunu seçin.
+   - **Uyarı hedefi:** Yeni uyarının hedefini görüntülemek ve seçmek için, **aboneliğe göre filtrele**  / **kaynak türüne göre filtrele**' yi kullanın. Görünen listeden kaynağı veya kaynak grubunu seçin.
 
      > [!NOTE]
      > 
@@ -106,7 +106,7 @@ Bir etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği ko�
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Azure portal görüntüleyin ve yönetin
 
-1. Azure portal **izleme** > **uyarıları**' nı seçin. Pencerenin sol üst köşesindeki **Uyarı kurallarını yönet** ' i seçin.
+1. Azure portal **izleme**  > **uyarıları**' nı seçin. Pencerenin sol üst köşesindeki **Uyarı kurallarını yönet** ' i seçin.
 
     ![Uyarı kurallarını yönet](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -130,7 +130,7 @@ Bir etkinlik günlüğünde hangi uyarı kurallarının oluşturulabileceği ko�
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
-Bir Azure Resource Manager şablonu kullanarak bir etkinlik günlüğü uyarısı oluşturmak için, `microsoft.insights/activityLogAlerts` türünde bir kaynak oluşturursunuz. Ardından ilgili tüm özellikleri doldurursunuz. Etkinlik günlüğü uyarısı oluşturan bir şablon aşağıda verilmiştir:
+Bir Azure Resource Manager şablonu kullanarak bir etkinlik günlüğü uyarısı oluşturmak için `microsoft.insights/activityLogAlerts` türünde bir kaynak oluşturursunuz. Ardından ilgili tüm özellikleri doldurursunuz. Etkinlik günlüğü uyarısı oluşturan bir şablon aşağıda verilmiştir:
 
 ```json
 {

@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 314056b6e55838d32c70d81570cdeaf7a84b6671
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1b906a9e3ce803b7f319a920f29b5a60f62c47b1
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300643"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550158"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 'da 2. nesil VM 'Ler (Önizleme) desteği
 
@@ -50,6 +50,9 @@ ms.locfileid: "72300643"
 * [NCv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) ve [NCv3 serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [ND serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
 * [NVv3 serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+
+> [!NOTE]
+> Mv2 serisi VM 'Ler için 2. nesil VM görüntülerinin kullanımı, Mv2 serisi yalnızca 2. nesil VM görüntüleriyle çalıştığından genel kullanıma sunulmuştur. 1\. nesil VM görüntüleri Mv2 serisi VM 'lerde desteklenmez. 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketi 'nde 2. nesil VM görüntüleri
 

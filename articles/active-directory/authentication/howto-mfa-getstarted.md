@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162381"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554398"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama
 
@@ -44,7 +44,7 @@ MFA Dağıtım planınız, bir pilot dağıtımı ve ardından destek kapasiteni
 
 Kullanıcılara, planlı iletişimler, yaklaşan değişiklikler, Azure MFA kayıt gereksinimleri ve gerekli Kullanıcı eylemleri hakkında bilgi vermek önemlidir. İletişim, değişiklik yönetimi veya Insan kaynakları departmanları gibi, kuruluşunuzun içinden temsilcileriyle iletişim kurmanızı öneririz.
 
-Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için [iletişim şablonları](https://aka.ms/mfatemplates) ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları [https://myprofile.microsoft.com](https://myprofile.microsoft.com) , bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için [iletişim şablonları](https://aka.ms/mfatemplates) ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere [https://myprofile.microsoft.com](https://myprofile.microsoft.com) gönderebilirsiniz.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
@@ -96,26 +96,26 @@ Kuruluşların, [adlandırılmış konumları](../conditional-access/location-co
    2. Ülke/bölge kullanılıyorsa
       1. Açılan menüyü genişletin ve bu adlandırılmış konum için tanımlamak istediğiniz ülkeleri veya bölgeleri seçin.
       2. Bilinmeyen alanların eklenip eklenmeyeceğini belirleyin. Bilinmeyen alan, bir ülkeye/bölgeye eşlenemeyen IP adresleridir.
-7. **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın
 
 ## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planlayın
 
 Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [kimlik doğrulama yöntemlerini](../authentication/concept-authentication-methods.md) seçebilirler. Birincil yöntemi kullanılamaz durumda olduğunda kullanıcıların bir yedekleme yöntemine sahip olması için birden fazla kimlik doğrulama yöntemine izin vermek önemlidir. Yöneticilerin etkinleştiremeleri için aşağıdaki yöntemler kullanılabilir:
 
-### <a name="notification-through-mobile-app"></a>Mobil uygulama üzerinden bildirim
+### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
 
 Mobil cihazınızda Microsoft Authenticator uygulamasına anında iletme bildirimi gönderilir. Kullanıcı bildirimi görüntüler ve doğrulamayı tamamlamaya yönelik **onaylamayı** seçer. Mobil uygulama aracılığıyla anında iletme bildirimleri, kullanıcılar için en az zorive seçeneğini sağlar. Bunlar ayrıca, telefon yerine bir veri bağlantısı kullandıkları için en güvenilir ve güvenli seçenektir.
 
 > [!NOTE]
 > Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
 
-### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadan alınan doğrulama kodu
+### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 
 Microsoft Authenticator uygulaması gibi bir mobil uygulama, her 30 saniyede yeni bir OATH doğrulama kodu oluşturur. Kullanıcı doğrulama kodunu oturum açma arabirimine girer. Mobil uygulama seçeneği, telefonun bir veri ya da hücresel sinyal içerip içermediğini veya bu şekilde kullanılabilir.
 
-### <a name="call-to-phone"></a>Telefonu arama
+### <a name="call-to-phone"></a>Telefon çağrısı
 
-Kullanıcıya otomatik bir sesli çağrı konur. Kullanıcı, kimlik doğrulamasını onaylamak için çağrıyı **#** yanıtlar ve telefon tuş takımında basar. Telefon çağrısı, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
+Kullanıcıya otomatik bir sesli çağrı konur. Kullanıcı çağrıyı yanıtlar ve kimlik doğrulamasını onaylamak için telefon tuş takımında **#** basarsa. Telefon çağrısı, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
 
 ### <a name="text-message-to-phone"></a>Telefona kısa mesaj
 
@@ -176,32 +176,6 @@ Kullanıcılarınız Kullanıcı başına etkin ve zorunlu kılınan Azure kulla
 Bu PowerShell 'i bir ıSE penceresinde çalıştırın veya olarak kaydedin. Yerel olarak çalıştırılacak PS1 dosyası.
 
 ```PowerShell
-# Disable MFA for all users, keeping their MFA methods intact
-Get-MsolUser -All | Disable-MFA -KeepMethods
-
-# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
-function Disable-MFA {
-
-    [CmdletBinding()]
-    param(
-        [Parameter(ValueFromPipeline=$True)]
-        $User,
-        [switch] $KeepMethods
-    )
-
-    Process {
-
-        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
-        $User | Set-MfaState -State Disabled
-
-        if ($KeepMethods) {
-            # Restore the MFA methods which got cleared when disabling MFA
-            Set-MsolUser -ObjectId $User.ObjectId `
-                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
-        }
-    }
-}
-
 # Sets the MFA requirement state
 function Set-MfaState {
 
@@ -231,6 +205,8 @@ function Set-MfaState {
     }
 }
 
+# Disable MFA for all users
+Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 ## <a name="plan-conditional-access-policies"></a>Koşullu erişim ilkelerini planlayın
@@ -250,17 +226,17 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
    * **Dışla** sekmesinde, **Kullanıcılar ve gruplar** kutusunu işaretleyin ve acil durum erişim hesaplarınızı seçin.
    * **Bitti**’ye tıklayın.
 1. **Bulut uygulamaları**altında **tüm bulut uygulamaları** radyo düğmesini seçin.
-   * I **Dışla** sekmesinde, kuruluşunuzun MFA gerektirmeyen bulut uygulamaları ' nı seçin.
+   * Isteğe bağlı: **Dışla** sekmesinde, kuruluşunuzun MFA gerektirmeyen bulut uygulamaları ' nı seçin.
    * **Bitti**’ye tıklayın.
 1. **Koşullar** bölümünde:
-   * I Azure kimlik koruması 'nı etkinleştirdiyseniz, ilkenin bir parçası olarak oturum açma riskini değerlendirmeyi seçebilirsiniz.
-   * I Güvenilen konumlar veya adlandırılmış konumlar yapılandırdıysanız, bu konumları ilke içinden dahil etmek veya hariç tutmak için belirtebilirsiniz.
+   * Isteğe bağlı: Azure kimlik koruması 'nı etkinleştirdiyseniz, ilkenin bir parçası olarak oturum açma riskini değerlendirmeyi seçebilirsiniz.
+   * Isteğe bağlı: güvenilen konumlar veya adlandırılmış konumlar yapılandırdıysanız, bu konumları ilke içinden dahil etmek veya hariç tutmak için belirtebilirsiniz.
 1. **İzin**ver ' in altında, **erişim verme** radyo düğmesinin seçili olduğundan emin olun.
     * **Multi-Factor Authentication gerektir**kutusunu işaretleyin.
-    * Tıklayın **seçin**.
+    * **Seç**'e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 ![Pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere koşullu erişim ilkesi oluşturma](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -297,11 +273,11 @@ Dağıtılmış ve kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS altya
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA için kayıtlı olmayan kullanıcılar için NPS 'YI hazırlama
 
-MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. Özellik davranışını denetlemek için `REQUIRE_USER_MATCH` kayıt defteri yolundaki `HKLM\Software\Microsoft\AzureMFA` kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
+MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. Özellik davranışını denetlemek için kayıt defteri yolu `HKLM\Software\Microsoft\AzureMFA` `REQUIRE_USER_MATCH` kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
 
-| Anahtar | Value | Varsayılan |
+| Anahtar | Değer | Varsayılan |
 | --- | --- | --- |
-| `REQUIRE_USER_MATCH` | DOĞRU/YANLIŞ | Ayarlanmadı (TRUE değerine denktir) |
+| `REQUIRE_USER_MATCH` | DOĞRU/YANLıŞ | Ayarlanmadı (TRUE değerine denktir) |
 
 Bu ayarın amacı, bir Kullanıcı MFA 'ya kaydolmadıysa ne yapılacağını belirlemektir. Bu ayarı değiştirmenin etkileri aşağıdaki tabloda listelenmiştir.
 
@@ -357,11 +333,11 @@ Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yö
 1. MFA kayıt ilkenizi yapılandırma
    1. [Birleşik MFA ve SSPR](howto-registration-mfa-sspr-combined.md)
    1. [Kimlik koruması](../identity-protection/howto-mfa-policy.md) ile
-1. Kullanıcı iletişimleri gönder ve kaydolmalarını kullanıcılara al[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. Kullanıcı iletişimleri gönder ve [https://aka.ms/mfasetup](https://aka.ms/mfasetup) kaydetmek için kullanıcıları al
 1. [Kimin kaydolduğunu takip edin](#identify-non-registered-users)
 
 > [!TIP]
-> Kamu Bulutu kullanıcıları şurada kaydedebilir:[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Kamu Bulutu kullanıcıları [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup) kaydedebilir
 
 ## <a name="manage-your-solution"></a>Çözümünüzü yönetin
 
@@ -369,7 +345,7 @@ Azure MFA raporları
 
 Azure Multi-Factor Authentication Azure portal aracılığıyla rapor sağlar:
 
-| Rapor | Location | Açıklama |
+| Rapor | Konum | Açıklama |
 | --- | --- | --- |
 | Kullanım ve sahtekarlık uyarıları | Azure AD > oturum açma işlemleri | Genel kullanım, Kullanıcı Özeti ve kullanıcı ayrıntıları hakkında bilgi sağlar; Ayrıca, belirtilen tarih aralığı boyunca gönderilen sahtekarlık uyarılarının geçmişi. |
 

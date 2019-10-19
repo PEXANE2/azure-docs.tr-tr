@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fa0fa6220fd090bf7fcbe14e85556b6010651e0e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: 03fb21197b2e71603b8078945e16ccd69f151577
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675012"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555770"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 
@@ -74,22 +74,22 @@ Machine Learning modelleri Azure Machine Learning çalışma alanınıza kaydedi
 Bu bölümdeki kod parçacıkları, bir eğitim çalıştırmasının nasıl bir model kaydedeceğinizi göstermektedir:
 
 > [!IMPORTANT]
-> Bu kod parçacıklarını kullanmak için daha önce bir eğitim çalıştırması gerçekleştirdiyseniz ve `Run` nesnesine (SDK örneği) veya çalıştırma KIMLIĞI değerine (CLı örneği) erişiminizin olması gerekir. Eğitim modelleri hakkında daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md).
+> Bu kod parçacıklarını kullanmak için, daha önce bir eğitim çalışması gerçekleştirdiyseniz ve `Run` nesnesine (SDK örneği) veya çalıştırma KIMLIĞI değerine (CLı örneği) erişiminizin olması gerekir. Eğitim modelleri hakkında daha fazla bilgi için bkz. [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md).
 
 + **SDK 'Yı kullanma**
 
   Bir modeli eğitebilmeniz için SDK 'yı kullandığınızda, modeli eğitidiğinize bağlı olarak bir [Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) nesnesi ya da bir [oto mlrun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) nesnesi alabilirsiniz. Her nesne, bir deneme çalıştırması tarafından oluşturulan bir modeli kaydetmek için kullanılabilir.
 
-  + @No__t-0 nesnesinden model kaydetme:
+  + @No__t_0 nesnesinden model kaydetme:
  
     ```python
     model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    @No__t-0 parametresi, modelin bulut konumunu ifade eder. Bu örnekte, tek bir dosyanın yolu kullanılır. Model kaydına birden çok dosya eklemek için `model_path` ' ı dosyaları içeren bir klasörün yoluna ayarlayın. Daha fazla bilgi için bkz [. Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) belgeleri.
+    @No__t_0 parametresi, modelin bulut konumunu ifade eder. Bu örnekte, tek bir dosyanın yolu kullanılır. Model kaydına birden çok dosya eklemek için `model_path`, dosyaları içeren bir klasörün yoluna ayarlayın. Daha fazla bilgi için bkz [. Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) belgeleri.
 
-  + @No__t-0 nesnesinden model kaydetme:
+  + @No__t_0 nesnesinden model kaydetme:
 
     ```python
         description = 'My AutoML Model'
@@ -98,7 +98,7 @@ Bu bölümdeki kod parçacıkları, bir eğitim çalıştırmasının nasıl bir
         print(run.model_id)
     ```
 
-    Bu örnekte, `metric` ve `iteration` parametreleri belirtilmedi, bu nedenle en iyi birincil ölçüm ile yineleme kaydedilecek. Çalışma alanından döndürülen `model_id` değeri, model adı yerine kullanılır.
+    Bu örnekte `metric` ve `iteration` parametreleri belirtilmediği için en iyi birincil ölçüye sahip yineleme kaydedilir. Çalışma alanından döndürülen `model_id` değeri bir model adı yerine kullanılır.
 
     Daha fazla bilgi için bkz. [oto Mlrun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) belgeleri.
 
@@ -110,7 +110,7 @@ Bu bölümdeki kod parçacıkları, bir eğitim çalıştırmasının nasıl bir
 
   [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
-  @No__t-0 parametresi, modelin bulut konumunu ifade eder. Bu örnekte, tek bir dosyanın yolu kullanılır. Model kaydına birden çok dosya eklemek için `--asset-path` ' ı dosyaları içeren bir klasörün yoluna ayarlayın.
+  @No__t_0 parametresi, modelin bulut konumunu ifade eder. Bu örnekte, tek bir dosyanın yolu kullanılır. Model kaydına birden çok dosya eklemek için `--asset-path`, dosyaları içeren bir klasörün yoluna ayarlayın.
 
 + **VS Code kullanma**
 
@@ -140,7 +140,7 @@ Modelin yerel yolunu sağlayarak bir modeli kaydedebilirsiniz. Bir klasörün ya
                             description = "MNIST image classification CNN from ONNX Model Zoo",)
     ```
 
-  Model kaydına birden çok dosya eklemek için `model_path` ' ı dosyaları içeren bir klasörün yoluna ayarlayın.
+  Model kaydına birden çok dosya eklemek için `model_path`, dosyaları içeren bir klasörün yoluna ayarlayın.
 
 + **CLı 'yi kullanma**
 
@@ -148,7 +148,7 @@ Modelin yerel yolunu sağlayarak bir modeli kaydedebilirsiniz. Bir klasörün ya
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  Model kaydına birden çok dosya eklemek için `-p` ' ı dosyaları içeren bir klasörün yoluna ayarlayın.
+  Model kaydına birden çok dosya eklemek için `-p`, dosyaları içeren bir klasörün yoluna ayarlayın.
 
 **Tahmini süre**: yaklaşık 10 saniye.
 
@@ -191,7 +191,7 @@ Giriş betiği dağıtılan bir Web hizmetine gönderilen verileri alır ve mode
 
 Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
 
-* `init()`: Bu işlev genellikle genel bir nesneye modeli yükler. Bu işlev, Web hizmetiniz için Docker kapsayıcısı başlatıldığında yalnızca bir kez çalıştırılır.
+* `init()`: Bu işlev genellikle modeli genel bir nesneye yükler. Bu işlev, Web hizmetiniz için Docker kapsayıcısı başlatıldığında yalnızca bir kez çalıştırılır.
 
 * `run(input_data)`: Bu işlev, giriş verilerine göre bir değeri tahmin etmek için modeli kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
 
@@ -232,9 +232,9 @@ Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanıla
 Bir modeli kaydettiğinizde, buna bir ad verirsiniz. Ad, modelin yerel olarak ya da hizmet dağıtımı sırasında yerleştirildiği yere karşılık gelir.
 
 > [!IMPORTANT]
-> Bir modeli eğitebilmeniz için otomatik makine öğrenimi kullandıysanız, model adı olarak bir `model_id` değeri kullanılır. Otomatik makine öğrenimi ile eğitilen bir modeli kaydetme ve dağıtmayla ilgili bir örnek için bkz. GitHub 'da [Azure/Machinelearningnot defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) .
+> Bir modeli eğitebilmeniz için otomatik makine öğrenimi kullandıysanız, model adı olarak `model_id` bir değer kullanılır. Otomatik makine öğrenimi ile eğitilen bir modeli kaydetme ve dağıtmayla ilgili bir örnek için bkz. GitHub 'da [Azure/Machinelearningnot defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment) .
 
-Aşağıdaki örnek, `sklearn_mnist_model.pkl` adlı tek bir dosyanın yolunu döndürür (`sklearn_mnist` adıyla kaydedilir):
+Aşağıdaki örnek, `sklearn_mnist_model.pkl` adlı tek bir dosyanın yolunu döndürür (`sklearn_mnist` adı ile kaydedilir):
 
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
@@ -253,7 +253,7 @@ Bu türler Şu anda destekleniyor:
 * `pyspark`
 * Standart Python nesnesi
 
-Şema oluşturmayı kullanmak için, Conda ortam dosyanıza `inference-schema` paketini dahil edin.
+Şema oluşturmayı kullanmak için, `inference-schema` paketini Conda ortam dosyanıza ekleyin.
 
 ##### <a name="example-dependencies-file"></a>Örnek bağımlılıklar dosyası
 
@@ -271,7 +271,7 @@ dependencies:
 
 Otomatik şema oluşturmayı kullanmak istiyorsanız, giriş betiğinizin `inference-schema` paketlerini içeri aktarması gerekir.
 
-@No__t-0 ve `output_sample` değişkenlerinde, Web hizmeti için istek ve yanıt biçimlerini temsil eden giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri, `run()` işlevindeki giriş ve çıkış işlevi dekoratlarını kullanın. Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
+Web hizmetinin istek ve yanıt biçimlerini temsil eden `input_sample` ve `output_sample` değişkenlerinde giriş ve çıkış örnek biçimlerini tanımlayın. Bu örnekleri, `run()` işlevindeki giriş ve çıkış işlevi dekoratlarını kullanın. Aşağıdaki scikit-örnek, şema oluşturmayı kullanır.
 
 ##### <a name="example-entry-script"></a>Örnek giriş betiği
 
@@ -316,7 +316,7 @@ def run(data):
         return error
 ```
 
-Aşağıdaki örnek, veri çerçevesini kullanarak giriş verilerinin `<key: value>` sözlüğü olarak nasıl tanımlanacağını gösterir. Bu yöntem, dağıtılan Web hizmetinin Power BI tüketmesi için desteklenir. ([Power BI Web hizmetini kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
+Aşağıdaki örnek, veri çerçevesini kullanarak giriş verilerinin bir `<key: value>` sözlüğü olarak nasıl tanımlanacağını göstermektedir. Bu yöntem, dağıtılan Web hizmetinin Power BI tüketmesi için desteklenir. ([Power BI Web hizmetini kullanma hakkında daha fazla bilgi edinin](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
 import json
@@ -378,7 +378,7 @@ Daha fazla örnek için aşağıdaki betiklerine bakın:
 
 Modeliniz bir görüntü gibi ikili verileri kabul ediyorsa, dağıtımınız için kullanılan `score.py` dosyasını ham HTTP isteklerini kabul edecek şekilde değiştirmeniz gerekir. Ham verileri kabul etmek için, giriş betiğinizdeki `AMLRequest` sınıfını kullanın ve `@rawhttp` dekoratörü `run()` işlevine ekleyin.
 
-İkili verileri kabul eden `score.py` ' a bir örnek aşağıda verilmiştir:
+İkili verileri kabul eden bir `score.py` örneği aşağıda verilmiştir:
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -409,7 +409,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> @No__t-0 sınıfı `azureml.contrib` ad alanıdır. Bu ad alanındaki varlıklar, hizmeti geliştirmek için çalışmamız sırasında sıklıkla değişir. Bu ad alanındaki her türlü şey, Microsoft tarafından tam olarak desteklenmeyen bir önizleme olarak düşünülmelidir.
+> @No__t_0 sınıfı `azureml.contrib` ad alanıdır. Bu ad alanındaki varlıklar, hizmeti geliştirmek için çalışmamız sırasında sıklıkla değişir. Bu ad alanındaki her türlü şey, Microsoft tarafından tam olarak desteklenmeyen bir önizleme olarak düşünülmelidir.
 >
 > Bunu yerel geliştirme ortamınızda test etmeniz gerekirse, aşağıdaki komutu kullanarak bileşenleri yükleyebilirsiniz:
 >
@@ -425,7 +425,7 @@ def run(request):
 
 Model dağıtımınızı CORS 'yi destekleyecek şekilde yapılandırmak için giriş betiğinizdeki `AMLResponse` sınıfını kullanın. Bu sınıf, yanıt nesnesindeki üst bilgileri ayarlamanıza olanak sağlar.
 
-Aşağıdaki örnek, giriş betiğindeki yanıt için `Access-Control-Allow-Origin` üst bilgisini ayarlar:
+Aşağıdaki örnek, giriş betiğinin yanıt için `Access-Control-Allow-Origin` üst bilgisini ayarlar:
 
 ```python
 from azureml.contrib.services.aml_response import AMLResponse
@@ -455,7 +455,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> @No__t-0 sınıfı `azureml.contrib` ad alanıdır. Bu ad alanındaki varlıklar, hizmeti geliştirmek için çalışmamız sırasında sıklıkla değişir. Bu ad alanındaki her türlü şey, Microsoft tarafından tam olarak desteklenmeyen bir önizleme olarak düşünülmelidir.
+> @No__t_0 sınıfı `azureml.contrib` ad alanıdır. Bu ad alanındaki varlıklar, hizmeti geliştirmek için çalışmamız sırasında sıklıkla değişir. Bu ad alanındaki her türlü şey, Microsoft tarafından tam olarak desteklenmeyen bir önizleme olarak düşünülmelidir.
 >
 > Bunu yerel geliştirme ortamınızda test etmeniz gerekirse, aşağıdaki komutu kullanarak bileşenleri yükleyebilirsiniz:
 >
@@ -526,7 +526,7 @@ Aşağıdaki tabloda her işlem hedefi için bir dağıtım yapılandırması ol
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-Yerel, Azure Container Instances ve AKS Web Hizmetleri için sınıflar `azureml.core.webservice` ' dan içeri aktarılabilir:
+Yerel, Azure Container Instances ve AKS Web Hizmetleri için sınıflar `azureml.core.webservice` içeri aktarılabilir:
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -546,7 +546,7 @@ test_sample = json.dumps({'data': [
 ]})
 
 profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(true)
+profile.wait_for_profiling(True)
 profiling_results = profile.get_results()
 print(profiling_results)
 ```
@@ -557,7 +557,7 @@ Bu kod, aşağıdaki çıktıya benzer bir sonuç görüntüler:
 {'cpu': 1.0, 'memoryInGB': 0.5}
 ```
 
-Model profil oluşturma sonuçları, `Run` nesnesi olarak yayınlanır.
+Model profil oluşturma sonuçları `Run` nesne olarak dağıtılır.
 
 CLı 'dan profil oluşturmayı kullanma hakkında daha fazla bilgi için, bkz. [az ml model profili](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
 
@@ -590,7 +590,7 @@ Daha fazla bilgi için bkz. [Localwebservice](https://docs.microsoft.com/python/
 
 #### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-CLı kullanarak bir modeli dağıtmak için aşağıdaki komutu kullanın. @No__t-0 ' yı kayıtlı modelin adı ve sürümüyle değiştirin:
+CLı kullanarak bir modeli dağıtmak için aşağıdaki komutu kullanın. @No__t_0, kayıtlı modelin adı ve sürümüyle değiştirin:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -826,11 +826,11 @@ Kenara dağıtım desteği önizleme aşamasındadır. Daha fazla bilgi için bk
 
 1. Makine öğrenimi modelinizi Azure Pipelines kullanarak sürekli olarak dağıtmak için, işlem hatları altında **yayın**' ı seçin. Yeni bir yapıt ekleyin ve ardından daha önce oluşturduğunuz **AzureML model** yapıtını ve hizmet bağlantısını seçin. Bir dağıtımı tetiklemek için modeli ve sürümü seçin:
 
-    [![ AzureML modeli seçin](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
+    [![Select AzureML modeli](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. Model yapıtında model tetikleyiciyi etkinleştirin. Tetikleyiciyi açtığınızda, söz konusu modelin belirtilen sürümü (yani, en yeni sürümü) çalışma alanınıza kaydedildiğinde, bir Azure DevOps sürümü işlem hattı tetiklenir.
 
-    [![Model tetikleyicisini etkinleştir](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
+    [Model tetikleyicisini ![Enable](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 Daha fazla örnek proje ve örnek için GitHub 'daki Şu örnek depolara bakın:
 
@@ -877,7 +877,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için `package.pull()` ' ı kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
+Bir paket oluşturduktan sonra, görüntüyü yerel Docker ortamınıza çekmek için `package.pull()` kullanabilirsiniz. Bu komutun çıktısı görüntünün adını görüntüler. Örnek: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -888,17 +888,17 @@ REPOSITORY                               TAG                 IMAGE ID           
 myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
 ```
 
-Bu görüntüye göre yerel bir kapsayıcı başlatmak için, Shell veya komut satırından adlandırılmış bir kapsayıcı başlatmak üzere aşağıdaki komutu kullanın. @No__t-0 değerini `docker images` komutu tarafından döndürülen görüntü KIMLIĞIYLE değiştirin.
+Bu görüntüye göre yerel bir kapsayıcı başlatmak için, Shell veya komut satırından adlandırılmış bir kapsayıcı başlatmak üzere aşağıdaki komutu kullanın. @No__t_0 değerini `docker images` komutu tarafından döndürülen görüntü KIMLIĞIYLE değiştirin.
 
 ```bash
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-Bu komut `myimage` adlı görüntünün en son sürümünü başlatır. Yerel bağlantı noktası 6789 ' i Web hizmetinin dinlediği kapsayıcıda bağlantı noktasına eşler (5001). Ayrıca, kapsayıcıya `mycontainer` adını atar ve bu da kapsayıcıyı durdurmayı kolaylaştırır. Kapsayıcı başlatıldıktan sonra, `http://localhost:6789/score` ' a istek gönderebilirsiniz.
+Bu komut, `myimage` adlı görüntünün en son sürümünü başlatır. Yerel bağlantı noktası 6789 ' i Web hizmetinin dinlediği kapsayıcıda bağlantı noktasına eşler (5001). Ayrıca, kapsayıcıya daha kolay durmayı kolaylaştıran `mycontainer` adı kapsayıcıya atar. Kapsayıcı başlatıldıktan sonra, `http://localhost:6789/score` istek gönderebilirsiniz.
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>Dockerfile ve bağımlılıklar oluşturma
 
-Aşağıdaki örnek, bir görüntüyü yerel olarak oluşturmak için gereken Dockerfile, model ve diğer varlıkların nasıl indirileceği gösterilmektedir. @No__t-0 parametresi, tam olarak oluşturulmuş bir görüntü değil, dosyaları istediğinizi belirtir.
+Aşağıdaki örnek, bir görüntüyü yerel olarak oluşturmak için gereken Dockerfile, model ve diğer varlıkların nasıl indirileceği gösterilmektedir. @No__t_0 parametresi, tam olarak oluşturulmuş bir görüntü değil, dosyaları istediğinizi belirtir.
 
 ```python
 package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
@@ -914,13 +914,13 @@ print("Password:", acr.password)
 
 Bu kod, `imagefiles` dizinine görüntü oluşturmak için gereken dosyaları indirir. Kayıtlı dosyalara eklenen Dockerfile, bir Azure Container Registry 'de depolanan bir temel görüntüye başvurur. Yerel Docker yüklemenizde görüntüyü oluştururken, kayıt defterinde kimlik doğrulamak için adresi, Kullanıcı adını ve parolayı kullanmanız gerekir. Yerel bir Docker yüklemesi kullanarak görüntüyü derlemek için aşağıdaki adımları kullanın:
 
-1. Bir kabuk veya komut satırı oturumundan, Azure Container Registry ile Docker kimlik doğrulaması yapmak için aşağıdaki komutu kullanın. @No__t-0, `<username>` ve `<password>` ' yi `package.get_container_registry()` tarafından alınan değerlerle değiştirin.
+1. Bir kabuk veya komut satırı oturumundan, Azure Container Registry ile Docker kimlik doğrulaması yapmak için aşağıdaki komutu kullanın. @No__t_0, `<username>` ve `<password>` `package.get_container_registry()` tarafından alınan değerlerle değiştirin.
 
     ```bash
     docker login <address> -u <username> -p <password>
     ```
 
-2. Görüntüyü oluşturmak için aşağıdaki komutu kullanın. @No__t-0 ' i, dosyaları @no__t kaydedildiği dizinin yoluyla değiştirin.
+2. Görüntüyü oluşturmak için aşağıdaki komutu kullanın. @No__t_0, dosyaları `package.save()` kaydedildiği dizinin yoluyla değiştirin.
 
     ```bash
     docker build --tag myimage <imagefiles>
@@ -928,7 +928,7 @@ Bu kod, `imagefiles` dizinine görüntü oluşturmak için gereken dosyaları in
 
     Bu komut, görüntü adını `myimage` olarak ayarlar.
 
-Görüntünün derlendiğini doğrulamak için `docker images` komutunu kullanın. @No__t-0 görüntüsünü listede görmeniz gerekir:
+Görüntünün derlendiğini doğrulamak için `docker images` komutunu kullanın. @No__t_0 görüntüsünü listede görmeniz gerekir:
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
@@ -942,7 +942,7 @@ Bu görüntüye göre yeni bir kapsayıcı başlatmak için aşağıdaki komutu 
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-Bu komut `myimage` adlı görüntünün en son sürümünü başlatır. Yerel bağlantı noktası 6789 ' i Web hizmetinin dinlediği kapsayıcıda bağlantı noktasına eşler (5001). Ayrıca, kapsayıcıya `mycontainer` adını atar ve bu da kapsayıcıyı durdurmayı kolaylaştırır. Kapsayıcı başlatıldıktan sonra, `http://localhost:6789/score` ' a istek gönderebilirsiniz.
+Bu komut, `myimage` adlı görüntünün en son sürümünü başlatır. Yerel bağlantı noktası 6789 ' i Web hizmetinin dinlediği kapsayıcıda bağlantı noktasına eşler (5001). Ayrıca, kapsayıcıya daha kolay durmayı kolaylaştıran `mycontainer` adı kapsayıcıya atar. Kapsayıcı başlatıldıktan sonra, `http://localhost:6789/score` istek gönderebilirsiniz.
 
 ### <a name="example-client-to-test-the-local-container"></a>Yerel kapsayıcıyı test eden örnek istemci
 

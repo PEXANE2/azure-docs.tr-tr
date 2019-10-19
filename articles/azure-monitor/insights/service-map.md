@@ -1,28 +1,22 @@
 ---
 title: Azure 'da Hizmet Eşlemesi çözüm kullanma | Microsoft Docs
-description: Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, ortamınızda hizmet eşlemesi dağıtmak ve çeşitli senaryoları de kullanım için Ayrıntılar sağlanır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
+description: Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, ortamınızda Hizmet Eşlemesi dağıtmak ve çeşitli senaryolarda kullanmak için ayrıntılar sağlanmaktadır.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 07/24/2019
+ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905710"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554007"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure 'da Hizmet Eşlemesi çözümü kullanma
 
-Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Hizmet Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
+Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Sunucu Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
 
 Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadır. Bu çözüme yönelik önkoşulları yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakışı etkinleştirme](vminsights-enable-overview.md#prerequisites). Özetlemek gerekirse, şunlar gerekir:
 
@@ -35,7 +29,7 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 >[!NOTE]
 >Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../../azure-monitor/insights/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map)bölümüne bakın.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -44,11 +38,11 @@ Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadı
 1. Hizmet Eşlemesi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) 'nden veya [Çözüm Galerisi izleme çözümlerini ekleme](solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
 1. [Windows 'A bağımlılık aracısını yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) veya veri almak istediğiniz her bilgisayara [Linux 'a bağımlılık Aracısı 'nı yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) . Bağımlılık Aracısı en yakındaki komşularla bağlantıları izleyebildiğinden her bilgisayarda bir aracıya ihtiyacınız olmayabilir.
 
-Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve sol bölmeden **çözümler** seçeneğini belirleyin.<br><br> ![Çalışma](./media/service-map/select-solution-from-workspace.png)alanında çözüm seçeneğini belirleyin.<br> Çözümler listesinden **Servicemap (Çalışmaalanıadı)** öğesini seçin ve hizmet eşlemesi çözüme genel bakış sayfasında hizmet eşlemesi Özet kutucuğuna tıklayın.<br><br> ![Özet kutucuğunu](./media/service-map/service-map-summary-tile.png)hizmet eşlemesi.
+Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve sol bölmeden **çözümler** seçeneğini belirleyin.<br><br> çalışma alanı ](./media/service-map/select-solution-from-workspace.png) ![Select çözüm seçeneği.<br> Çözümler listesinden **Servicemap (Çalışmaalanıadı)** öğesini seçin ve hizmet eşlemesi çözüme genel bakış sayfasında hizmet eşlemesi Özet kutucuğuna tıklayın.<br><br> Harita Özet kutucuğu ](./media/service-map/service-map-summary-tile.png) ![Service.
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Kullanım örnekleri: BT süreçlerinizin bağımlılığını duyarlı hale getirme
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Kullanım örnekleri: BT süreçlerinizi bağımlılıktan haberdar edin
 
-### <a name="discovery"></a>Bulma
+### <a name="discovery"></a>Keşif
 
 Hizmet Eşlemesi, sunucularınız, süreçleriniz ve üçüncü taraf hizmetlerinizde bulunan bağımlılıkların ortak başvuru haritasını otomatik olarak oluşturur. Tüm TCP bağımlılıklarını bulur ve eşler arası bağlantıları, bağlı olduğunuz uzak üçüncü taraf sistemleri ve Active Directory gibi ağınızın geleneksel karanlık bölümlerine bağımlılıklar. Hizmet Eşlemesi, yönetilen sistemlerinizin oluşturmaya çalıştığından başarısız olan ağ bağlantılarını bulur, bu da olası sunucu yanlış yapılandırma, hizmet kesintisi ve ağ sorunlarını tanımanıza yardımcı olur.
 
@@ -120,7 +114,7 @@ Bazı grupları oluşturduktan sonra gruplar sekmesini seçerek bunları görün
 ![Gruplar sekmesi](media/service-map/machine-groups-tab.png)
 
 Sonra bu makine grubu için Haritayı görüntülemek üzere Grup adını seçin.
-![Makine grubu](media/service-map/machine-group.png) gruba ait olan makineler haritada beyaz olarak özetlenmiştir.
+![Machine grup ](media/service-map/machine-group.png) gruba ait makineler haritada beyaz olarak özetlenmiştir.
 
 Grup genişletildiğinde makine grubunu oluşturan makineler listelenir.
 
@@ -180,11 +174,11 @@ Başarısız bağlantılar, bir istemci sisteminin bir işlem veya bağlantı no
 
 Hatalı bağlantıları anlamak, sorun giderme, geçiş doğrulama, güvenlik Analizi ve genel mimari anlama konusunda yardımcı olabilir. Başarısız olan bağlantılar bazen zararsız olur, ancak genellikle yük devretme ortamı gibi bir doğrudan bir soruna işaret ederler ya da bir bulut geçişinden sonra bir veya iki uygulama katmanı konuşamazlar.
 
-## <a name="client-groups"></a>İstemci Grupları
+## <a name="client-groups"></a>İstemci grupları
 
 İstemci grupları, bağımlılık aracıları olmayan istemci makinelerini temsil eden haritada yer alan kutulardır. Tek bir Istemci grubu, tek bir işlem veya makinenin istemcilerini temsil eder.
 
-![İstemci Grupları](media/service-map/client-groups.png)
+![İstemci grupları](media/service-map/client-groups.png)
 
 Bir Istemci grubundaki sunucuların IP adreslerini görmek için grubunu seçin. Grubun içeriği **Istemci grubu Özellikler** bölmesinde listelenir.
 
@@ -280,16 +274,16 @@ Aşağıdaki görüntü, **Log Analytics Içinde göster '** i seçtikten sonra 
 Performans verilerini görmek için [uygun Log Analytics performans sayaçlarını etkinleştirmeniz](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)gerekebilir.  Etkinleştirmek istediğiniz sayaçlar:
 
 Windows:
-- İşlemci (*)\\% işlemci zamanı
-- Bellek\\% kaydedilmiş bayt kullanımda
-- Ağ bağdaştırıcısı (*)\\gönderilen bayt/sn
-- Ağ bağdaştırıcısı (*)\\alınan bayt/sn
+- İşlemci (*) \\% Işlemci zamanı
+- Bellek \\ kullanılan kaydedilmiş bayt yüzdesi
+- Ağ bağdaştırıcısı (*) gönderilen \\Bytes/sn
+- Ağ bağdaştırıcısı (*) alınan \\Bytes/sn
 
 Linux:
-- İşlemci (*)\\% işlemci zamanı
-- Bellek (*)\\% kullanılan bellek
-- Ağ bağdaştırıcısı (*)\\gönderilen bayt/sn
-- Ağ bağdaştırıcısı (*)\\alınan bayt/sn
+- İşlemci (*) \\% Işlemci zamanı
+- Bellek (*) \\% kullanılan bellek
+- Ağ bağdaştırıcısı (*) gönderilen \\Bytes/sn
+- Ağ bağdaştırıcısı (*) alınan \\Bytes/sn
 
 Ağ performansı verilerini almak için, çalışma alanınızdaki Wire Data 2.0 çözümünü da etkinleştirmiş olmanız gerekir.
  
@@ -320,7 +314,7 @@ Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur; 
 
 Benzersiz işlem ve bilgisayarları tanımlamak için kullanabileceğiniz, dahili olarak oluşturulan özellikler vardır:
 
-- Bilgisayar Log Analytics çalışma alanındaki bir bilgisayarı benzersiz şekilde tanımlamak için *RESOURCEID* veya *ResourceName_s* kullanın.
+- Bilgisayar: Log Analytics çalışma alanındaki bir bilgisayarı benzersiz şekilde tanımlamak için *RESOURCEID* veya *ResourceName_s* kullanın.
 - İşlem: Log Analytics çalışma alanındaki bir işlemi benzersiz şekilde tanımlamak için *RESOURCEID* kullanın. *ResourceName_s* , işlemin çalıştığı makinenin bağlamı içinde benzersizdir (MachineResourceName_s) 
 
 Belirli bir zaman aralığında belirtilen bir işlem ve bilgisayar için birden çok kayıt olabileceğinden, sorgular aynı bilgisayar veya işlem için birden fazla kayıt döndürebilir. Yalnızca en son kaydı dahil etmek için, Ekle "| RESOURCEID "ile sorgu için Yinelenenleri kaldırma.
@@ -399,7 +393,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 | `MaliciousIp` |Remoteıp adresi |
 | `IndicatorThreadType` |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*,  *Listem*.   |
 | `Description` |Gözlemlenen tehdit açıklaması. |
-| `TLPLevel` |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil*,, ve *kırmızı*. |
+| `TLPLevel` |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 | `Confidence` |Değerler *0 – 100*' dir. |
 | `Severity` |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
 | `FirstReportedDateTime` |Sağlayıcı göstergeyi ilk kez raporladı. |
@@ -410,7 +404,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 
 ### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL kayıtları
 
-Bir *ServiceMapComputer_CL* türüne sahip kayıtlar hizmet eşlemesi aracıları olan sunucular için envanter verileri vardır. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Bir *ServiceMapComputer_CL* türüne sahip kayıtlar hizmet eşlemesi aracıları olan sunucular için envanter verileri vardır. Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--|:--|
@@ -436,7 +430,7 @@ Bir *ServiceMapComputer_CL* türüne sahip kayıtlar hizmet eşlemesi aracılar�
 
 ### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL tür kayıtları
 
-Bir *ServiceMapProcess_CL* türüne sahip kayıtlar, hizmet eşlemesi aracıları olan sunucularda TCP bağlantılı işlemlere yönelik envanter verileri vardır. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Bir *ServiceMapProcess_CL* türüne sahip kayıtlar, hizmet eşlemesi aracıları olan sunucularda TCP bağlantılı işlemlere yönelik envanter verileri vardır. Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--|:--|
@@ -492,7 +486,7 @@ ServiceMapProcess_CL | Burada MachineResourceName_s = = "a-559dbcd8-3130-454D-8d
 
 ### <a name="list-all-computers-running-sql"></a>SQL çalıştıran tüm bilgisayarları listeleme
 
-ServiceMapComputer_CL | WHERE ResourceName_s in ((içinde ara (ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s)) | DISTINCT ComputerName_s
+ServiceMapComputer_CL | WHERE ResourceName_s in ((içinde ara (ServiceMapProcess_CL) "\*sql \*" | DISTINCT MachineResourceName_s)) | ayrı ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Veri merkezindeki tüm benzersiz ürün sürümlerini listeleyin
 
@@ -500,7 +494,7 @@ ServiceMapProcess_CL | WHERE ExecutableName_s = = "kıvrık" | ayrı ProductVers
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS çalıştıran tüm bilgisayarların bilgisayar grubunu oluşturma
 
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+ServiceMapComputer_CL | Burada OperatingSystemFullName_s contains_cs "CentOS" | ayrı ComputerName_s
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Bir makine grubundan giden bağlantıları özetleme
 
@@ -551,9 +545,9 @@ Hizmet Eşlemesi içindeki tüm sunucu, işlem ve bağımlılık verileri, [Hizm
 
 ## <a name="diagnostic-and-usage-data"></a>Tanılama ve kullanım verileri
 
-Microsoft hizmet eşlemesi hizmeti kullanımınız vasıtasıyla kullanım ve performans verilerini otomatik olarak toplar. Microsoft, kalite, güvenlik ve hizmet eşlemesi hizmeti bütünlüğünü geliştirmek için bu verileri kullanır. Doğru ve verimli sorun giderme özellikleri sağlamak için, veriler işletim sistemi ve sürümü, IP adresi, DNS adı ve iş istasyonu adı gibi yazılımınızın yapılandırması hakkında bilgiler içerir. Microsoft ad, adres veya diğer iletişim bilgileri toplamaz.
+Microsoft, Hizmet Eşlemesi hizmeti kullanımınız aracılığıyla kullanım ve performans verilerini otomatik olarak toplar. Microsoft bu verileri, Hizmet Eşlemesi hizmetinin kalitesini, güvenliğini ve bütünlüğünü sağlamak ve geliştirmek için kullanır. Doğru ve verimli sorun giderme özellikleri sağlamak için, veriler işletim sistemi ve sürümü, IP adresi, DNS adı ve iş istasyonu adı gibi yazılımınızın yapılandırması hakkında bilgiler içerir. Microsoft ad, adres veya diğer iletişim bilgileri toplamaz.
 
-Veri toplama ve kullanım hakkında daha fazla bilgi için bkz: [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132).
+Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132)' ne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -561,35 +555,35 @@ Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [g�
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Bu bölümde, yüklenmesini veya çalıştırılmasını hizmet eşlemesi herhangi bir sorun varsa, size yardımcı olabilir. Sorununuzu hala çözümleyememesi durumunda Microsoft Support'ne başvurun.
+Hizmet Eşlemesi yüklerken veya çalıştırırken herhangi bir sorun yaşıyorsanız, bu bölüm size yardımcı olabilir. Hala sorununuzu çözemezseniz, lütfen Microsoft Desteği başvurun.
 
 ### <a name="dependency-agent-installation-problems"></a>Bağımlılık Aracısı yükleme sorunları
 
-#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici için yeniden başlatma ister
-Bağımlılık Aracısı *genellikle* yükleme veya kaldırma sonrasında yeniden başlatma gerektirmez. Ancak, bazı nadir durumlarda, Windows Server bir yükleme işlemine devam etmek için bir yeniden başlatma gerektirir. Bu durum, bir bağımlılık olduğunda, genellikle Microsoft Visual C++ yeniden dağıtılabilir kitaplığı, kilitli bir dosya nedeniyle yeniden başlatma gerektirdiğinde oluşur.
+#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici yeniden başlatma sorar
+Bağımlılık Aracısı *genellikle* yükleme veya kaldırma sonrasında yeniden başlatma gerektirmez. Ancak, bazı nadir durumlarda Windows Server, yükleme işlemine devam etmek için yeniden başlatma gerektirir. Bu durum, bir bağımlılık olduğunda, genellikle Microsoft Visual C++ yeniden dağıtılabilir kitaplığı, kilitli bir dosya nedeniyle yeniden başlatma gerektirdiğinde oluşur.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>İleti "bağımlılık Aracısı yüklenemiyor: Visual Studio çalışma zamanı kitaplıkları yüklenemedi (kod = [code_number]) "görünür
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>İleti "bağımlılık Aracısı yüklenemiyor: Visual Studio çalışma zamanı kitaplıkları yüklenemedi (kod = [code_number])" görünüyor
 
-Microsoft Dependency Aracısı, Microsoft Visual Studio çalışma zamanı kitaplıkları oluşturulmuştur. Kitaplık yüklenirken bir sorun varsa bir ileti alırsınız. 
+Microsoft bağımlılık Aracısı, Microsoft Visual Studio çalışma zamanı kitaplıkları üzerine kurulmuştur. Kitaplıkların yüklenmesi sırasında bir sorun oluşursa bir ileti alırsınız. 
 
-Çalışma Zamanı Kitaplığı yükleyicileri %LOCALAPPDATA%\temp klasöründe günlükleri oluşturun. Dosya `dd_vcredist_arch_yyyymmddhhmmss.log`, *Arch* 'in `x86` veya `amd64` ve *yyyyaaggssddss* 'in, günlük oluşturulduğu tarih ve saat (24 saatlik saat) olduğu yerdir. Günlük yükleme engelleme sorunu hakkında ayrıntılar sağlar.
+Çalışma zamanı kitaplığı yükleyicileri,%LOCALAPPDATA%\temp klasöründe Günlükler oluşturur. Dosya `dd_vcredist_arch_yyyymmddhhmmss.log`, *arch* `x86` veya `amd64` ve *yyyyaaggssddss* , günlük oluşturulduğu tarih ve saat (24 saatlik saat). Günlük, yüklemeyi engelleyen sorun hakkında ayrıntılar sağlar.
 
 Önce [en son çalışma zamanı kitaplıklarını](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yüklemek yararlı olabilir.
 
-Aşağıdaki tabloda, kod sayıları ve önerilen çözümler listelenmektedir.
+Aşağıdaki tabloda kod numaraları ve önerilen çözümler listelenmektedir.
 
-| Kod | Açıklama | Çözüm |
+| Kodlayın | Açıklama | Çözünürlük |
 |:--|:--|:--|
-| 0x17 | Kitaplık yükleyici, yüklü olmayan bir Windows update gerektirir. | En son kitaplık yükleyicisi günlüğe bakın.<br><br>Bir başvurunun `Windows8.1-KB2999226-x64.msu` ardından bir satır `Error 0x80240017: Failed to execute MSU package,` gelmesi, KB2999226 yüklemek için önkoşullara sahip değilsiniz. [Windows makalesinde evrensel C çalışma zamanı](https://support.microsoft.com/kb/2999226) 'nın Önkoşullar bölümündeki yönergeleri izleyin. Windows Update'i çalıştırın ve birden çok kez önkoşulları yüklemek için yeniden başlatma gerekebilir.<br><br>Microsoft Dependency aracı yükleyiciyi yeniden çalıştırın. |
+| 0x17 | Kitaplık yükleyicisi yüklü olmayan bir Windows güncelleştirmesi gerektiriyor. | En son kitaplık yükleyicisi günlüğüne bakın.<br><br>@No__t_0 başvurunun ardından bir satır `Error 0x80240017: Failed to execute MSU package,`, KB2999226 yüklemek için önkoşullara sahip olmanız gerekmez. [Windows makalesinde evrensel C çalışma zamanı](https://support.microsoft.com/kb/2999226) 'nın Önkoşullar bölümündeki yönergeleri izleyin. Önkoşulları yüklemek için Windows Update çalıştırmanız ve birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft bağımlılık Aracısı yükleyicisini yeniden çalıştırın. |
 
-### <a name="post-installation-issues"></a>Yükleme sonrası sorunları
+### <a name="post-installation-issues"></a>Yükleme sonrası sorunlar
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Sunucu hizmeti haritada görünmüyor
+#### <a name="server-doesnt-appear-in-service-map"></a>Sunucu Hizmet Eşlemesi görünmüyor
 
 Bağımlılık aracısı yüklemeniz başarılı olduysa, ancak makinenizi Hizmet Eşlemesi çözümde görmezsiniz:
-* Bağımlılık Aracısı'nı başarıyla yüklü mü? Bu hizmet yüklü olup olmadığını denetliyor ve çalıştırarak doğrulayabilirsiniz.<br><br>
+* Bağımlılık Aracısı başarıyla yüklendi mi? Hizmetin yüklü ve çalışır olup olmadığını denetleyerek bunu doğrulayabilirsiniz.<br><br>
 **Windows**: **Microsoft bağımlılık Aracısı**adlı hizmeti arayın.
-**Linux**: Çalışan işlem **Microsoft-Dependency-Agent**' ı arayın.
+**Linux**: çalışan işlem **Microsoft-Dependency-Agent**' ı arayın.
 
 * [Log Analytics ücretsiz katmanda](https://azure.microsoft.com/pricing/details/monitor/)misiniz? Ücretsiz plan, beş adede kadar benzersiz Hizmet Eşlemesi makineye izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm makineler Hizmet Eşlemesi görünmez.
 
@@ -599,13 +593,13 @@ Bağımlılık aracısı yüklemeniz başarılı olduysa, ancak makinenizi Hizme
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Sonuçlar arasında olaylar çeşitli mı aldınız? Verilerin güncel mi? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve çalışma alanıyla iletişim kuruyor. Aksi takdirde, makinenizde aracıyı kontrol edin: [Linux sorun giderme Için](../platform/agent-linux-troubleshoot.md) [Windows sorun giderme](../platform/agent-windows-troubleshoot.md) veya Log Analytics Aracısı Log Analytics Aracısı.
+Sonuçlarda çeşitli olaylar mı kullanıyorsunuz? Veriler son zamanlarda mı? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve çalışma alanıyla iletişim kuruyor. Aksi takdirde, makinenizde aracı denetleyin: [Windows sorun giderme için Log Analytics Aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics Aracısı](../platform/agent-linux-troubleshoot.md).
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Sunucu, hizmet eşlemesinde görünür ancak hiçbir işlem sahiptir
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Sunucu Hizmet Eşlemesi görünüyor ancak işlem içermiyor
 
 Makinenizde Hizmet Eşlemesi görürseniz, ancak işlem veya bağlantı verisi yoksa, bağımlılık aracısının yüklü ve çalışır durumda olduğunu ancak çekirdek sürücüsünün yüklenmediğini gösterir. 
 
-(Windows) veya `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) öğesini kontrol edin. `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` Dosyanın son satırları çekirdek neden yüklenmedi belirtmeniz gerekir. Örneğin, çekirdek güncelleştirilmiş çekirdek Linux üzerinde desteklenmeyebilir.
+@No__t_0 (Windows) veya `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) denetleyin. Dosyanın son satırları, çekirdeğin neden yüklenmediğini göstermelidir. Örneğin, çekirdeğini güncelleştirdiyseniz, çekirdek Linux üzerinde desteklenmeyebilir.
 
 ## <a name="feedback"></a>Geri Bildirim
 

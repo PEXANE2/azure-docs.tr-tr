@@ -1,24 +1,19 @@
 ---
 title: Yönetim çözümlerinde kaydedilen aramalar | Microsoft Docs
 description: Yönetim çözümleri genellikle, çözüm tarafından toplanan verileri çözümlemek için Log Analytics ' de kaydedilmiş aramaları içerir. Ayrıca, kullanıcıya bildirimde bulunan uyarıları tanımlayabilir veya kritik bir soruna yanıt olarak otomatik olarak işlem yapması gerekebilir. Bu makalede, yönetim çözümlerine dahil edilmesini sağlamak üzere Kaynak Yöneticisi şablonda Log Analytics kayıtlı aramaların nasıl tanımlanacağı açıklanmaktadır.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772997"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553915"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Yönetim çözümüne Log Analytics kaydedilmiş aramalar ve uyarılar ekleme (Önizleme)
 
@@ -57,7 +52,7 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynak için API sürümü listele
 ## <a name="saved-searches"></a>Kayıtlı Aramalar
 Kullanıcıların çözümünüz tarafından toplanan verileri sorgulamasına izin vermek için [kaydedilmiş aramaları](../../azure-monitor/log-query/log-query-overview.md) bir çözüme ekleyin. Kayıtlı aramalar Azure portal **kayıtlı aramalar** altında görüntülenir. Her uyarı için de kayıtlı bir arama gerekir.
 
-[Log Analytics kayıtlı arama](../../azure-monitor/log-query/log-query-overview.md) kaynaklarının türü `Microsoft.OperationalInsights/workspaces/savedSearches` vardır ve aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.
+[Log Analytics kayıtlı arama](../../azure-monitor/log-query/log-query-overview.md) kaynakları bir `Microsoft.OperationalInsights/workspaces/savedSearches` türüne sahiptir ve aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -76,19 +71,19 @@ Kullanıcıların çözümünüz tarafından toplanan verileri sorgulamasına iz
 
 Kayıtlı bir aramanın her özelliği aşağıdaki tabloda açıklanmıştır.
 
-| Özellik | description |
+| Özellik | Açıklama |
 |:--- |:--- |
 | category | Kaydedilen arama kategorisi.  Aynı çözümde bulunan tüm kayıtlı aramalar, genellikle konsolda birlikte gruplandırılmaları için tek bir kategoriyi paylaşır. |
-| displayName | Portalda kayıtlı arama için görüntülenecek ad. |
-| query | Çalıştırılacak sorgu. |
+| DisplayName | Portalda kayıtlı arama için görüntülenecek ad. |
+| sorgu | Çalıştırılacak sorgu. |
 
 > [!NOTE]
-> JSON olarak yorumlanabilecek karakterler içeriyorsa, sorguda kaçış karakterleri kullanmanız gerekebilir. Örneğin, sorgunuz **AzureActivity ise | OperationName: "Microsoft. COMPUTE/virtualMachines/Write"** , çözüm dosyasında AzureActivity olarak yazılması gerekir **| OperationName:/\"Microsoft. COMPUTE/virtualmachines/Write\"** .
+> JSON olarak yorumlanabilecek karakterler içeriyorsa, sorguda kaçış karakterleri kullanmanız gerekebilir. Örneğin, sorgunuz **AzureActivity ise | OperationName: "Microsoft. COMPUTE/virtualMachines/Write"** , çözüm dosyasında AzureActivity olarak yazılması gerekir **| OperationName:/\"Microsoft. COMPUTE/virtualMachines/Write \"** .
 
 ## <a name="alerts"></a>Uyarılar
 [Azure günlük uyarıları](../../azure-monitor/platform/alerts-unified-log.md) , belirli günlük sorgularını düzenli aralıklarla çalıştıran Azure uyarı kuralları tarafından oluşturulur. Sorgunun sonuçları belirtilen ölçütlerle eşleşiyorsa, bir uyarı kaydı oluşturulur ve [eylem grupları](../../azure-monitor/platform/action-groups.md)kullanılarak bir veya daha fazla eylem çalıştırılır.
 
-Uyarıları Azure'a genişletme kullanıcılar için Eylemler artık Azure Eylem grupları içinde denetlenir. Bir çalışma alanı ve uyarıları Azure 'a genişletildiğinde, [eylem grubu Azure Resource Manager şablonunu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)kullanarak eylemleri alabilir veya ekleyebilirsiniz.
+Uyarıları Azure 'a genişleten kullanıcılar için, eylemler artık Azure eylem gruplarında kontrol edilir. Bir çalışma alanı ve uyarıları Azure 'a genişletildiğinde, [eylem grubu Azure Resource Manager şablonunu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)kullanarak eylemleri alabilir veya ekleyebilirsiniz.
 Eski yönetim çözümünde uyarı kuralları aşağıdaki üç farklı kaynaktan oluşur.
 
 - **Arama kaydedildi.** Çalıştırılan günlük aramasını tanımlar. Birden çok uyarı kuralı, tek bir kayıtlı aramayı paylaşabilir.
@@ -99,7 +94,7 @@ Kayıtlı arama kaynakları yukarıda açıklanmıştır. Diğer kaynaklar aşa�
 
 ### <a name="schedule-resource"></a>Kaynağı zamanla
 
-Kayıtlı aramada, her zamanlamaya göre ayrı bir uyarı kuralını temsil eden bir veya daha fazla zamanlama bulunabilir. Zamanlama, aramanın ne sıklıkla çalıştırılacağını ve verilerin alınma zaman aralığını tanımlar. Zamanlama kaynaklarının türü `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` vardır ve aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.
+Kayıtlı aramada, her zamanlamaya göre ayrı bir uyarı kuralını temsil eden bir veya daha fazla zamanlama bulunabilir. Zamanlama, aramanın ne sıklıkla çalıştırılacağını ve verilerin alınma zaman aralığını tanımlar. Zamanlanan kaynakların `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` bir türü vardır ve aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name)]",
@@ -117,21 +112,21 @@ Kayıtlı aramada, her zamanlamaya göre ayrı bir uyarı kuralını temsil eden
     }
 Zamanlama kaynaklarının özellikleri aşağıdaki tabloda açıklanmıştır.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gereklidir | Açıklama |
 |:--|:--|:--|
-| enabled       | Evet | Uyarının oluşturulduğu sırada etkinleştirilip etkinleştirilmeyeceğini belirtir. |
-| interval      | Evet | Sorgunun dakikalar içinde çalışma sıklığı. |
-| queryTimeSpan | Evet | Sonuçların değerlendirileceği sürenin dakika cinsinden uzunluğu. |
+| etkinletir       | Yes | Uyarının oluşturulduğu sırada etkinleştirilip etkinleştirilmeyeceğini belirtir. |
+| interval      | Yes | Sorgunun dakikalar içinde çalışma sıklığı. |
+| queryTimeSpan | Yes | Sonuçların değerlendirileceği sürenin dakika cinsinden uzunluğu. |
 
 Zamanlama kaynağı, zamanlamadan önce oluşturulabilmesi için, kaydedilen aramaya bağlı olmalıdır.
 > [!NOTE]
 > Zamanlama adı, belirli bir çalışma alanında benzersiz olmalıdır; farklı kaydedilmiş aramalarla ilişkilendirilseler de iki zamanlama aynı KIMLIĞE sahip olamaz. Ayrıca, Log Analytics API ile oluşturulan tüm kayıtlı aramaların, zamanlamaların ve eylemlerin küçük harfle yazılmalıdır.
 
 ### <a name="actions"></a>Eylemler
-Bir zamanlama birden fazla eylem olabilir. Posta gönderme veya bir runbook başlatma gibi gerçekleştirmek için bir veya daha fazla işlem bir eylem tanımlayabilir veya ne zaman bir aramanın sonuçları bazı ölçütlerle eşleşen belirleyen bir eşiği tanımlayabilir. Eşiğine ulaşıldığında işlemleri gerçekleştirilir böylece bazı eylemler her ikisi de tanımlayın.
+Bir zamanlamada birden çok eylem olabilir. Bir eylem, e-posta gönderme veya Runbook başlatma gibi bir veya daha fazla işlemi gerçekleştirebilir veya bir aramanın sonuçlarının bazı ölçütlerle eşleştiğini belirleyen bir eşik tanımlayabilir. Eşik karşılandığında işlemlerin gerçekleştirilmesi için bazı eylemler her ikisini de tanımlayacaktır.
 Eylemler, [eylem grubu] kaynağı veya eylem kaynağı kullanılarak tanımlanabilir.
 
-**Tür** özelliği tarafından belirtilen iki tür eylem kaynağı vardır. Bir zamanlama, uyarı kuralının ayrıntılarını ve bir uyarı oluşturulduğunda hangi eylemlerin alındığını tanımlayan bir **Uyarı** eylemi gerektirir. Eylem kaynaklarının türü `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`vardır.
+**Tür** özelliği tarafından belirtilen iki tür eylem kaynağı vardır. Bir zamanlama, uyarı kuralının ayrıntılarını ve bir uyarı oluşturulduğunda hangi eylemlerin alındığını tanımlayan bir **Uyarı** eylemi gerektirir. Eylem kaynakları bir tür `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` sahiptir.
 
 Uyarı eylemleri aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalayıp çözüm dosyanıza yapıştırarak parametre adlarını değiştirebilmeniz için ortak değişkenleri ve parametreleri içerir.
 
@@ -169,46 +164,46 @@ Uyarı eylemleri aşağıdaki yapıya sahiptir. Bu kod parçacığını kopyalay
 
 Uyarı eylemi kaynaklarının özellikleri aşağıdaki tablolarda açıklanmıştır.
 
-| Öğe adı | Gerekli | Açıklama |
+| Öğe adı | Gereklidir | Açıklama |
 |:--|:--|:--|
-| `type` | Evet | Eylem türü.  Bu uyarı eylemleri için **uyarıdır** . |
-| `name` | Evet | Uyarı görünen adı.  Bu, uyarı kuralı için konsolunda görüntülenen addır. |
+| `type` | Yes | Eylemin türü.  Bu uyarı eylemleri için **uyarıdır** . |
+| `name` | Yes | Uyarı için görünen ad.  Bu, uyarı kuralı için konsolunda görüntülenen addır. |
 | `description` | Hayır | Uyarının isteğe bağlı açıklaması. |
-| `severity` | Evet | Uyarı kaydının aşağıdaki değerlerden önem derecesi:<br><br> **başlatma**<br>**Warning**<br>**amaçlı**
+| `severity` | Yes | Uyarı kaydının aşağıdaki değerlerden önem derecesi:<br><br> **başlatma**<br>**Warning**<br>**amaçlı**
 
-#### <a name="threshold"></a>Eşik
+#### <a name="threshold"></a>Eşiği
 Bu bölüm gereklidir. Uyarı eşiğinin özelliklerini tanımlar.
 
-| Öğe adı | Gerekli | Açıklama |
+| Öğe adı | Gereklidir | Açıklama |
 |:--|:--|:--|
-| `Operator` | Evet | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür<br>lt = küçüktür** |
-| `Value` | Evet | Sonuçları karşılaştırmak için değer. |
+| `Operator` | Yes | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür <br>lt = küçüktür** |
+| `Value` | Yes | Sonuçları karşılaştırmak için değer. |
 
 ##### <a name="metricstrigger"></a>Metricçabagger
 Bu bölüm isteğe bağlıdır. Ölçüm ölçümü uyarısı için bunu ekleyin.
 
-| Öğe adı | Gerekli | Açıklama |
+| Öğe adı | Gereklidir | Açıklama |
 |:--|:--|:--|
-| `TriggerCondition` | Evet | Eşiğin, şu değerlerden alınan toplam ihlal sayısı veya ardışık ihlal olup olmadığını belirtir:<br><br>**Ardışık<br>toplam** |
-| `Operator` | Evet | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür<br>lt = küçüktür** |
-| `Value` | Evet | Uyarının tetiklenmesi için ölçütlerin karşılanması gereken zaman sayısı. |
+| `TriggerCondition` | Yes | Eşiğin, şu değerlerden alınan toplam ihlal sayısı veya ardışık ihlal olup olmadığını belirtir:<br><br>**Toplam <br>Consecutive** |
+| `Operator` | Yes | Aşağıdaki değerlerden karşılaştırma için işleç:<br><br>**gt = büyüktür <br>lt = küçüktür** |
+| `Value` | Yes | Uyarının tetiklenmesi için ölçütlerin karşılanması gereken zaman sayısı. |
 
 
 #### <a name="throttling"></a>Azaltma
 Bu bölüm isteğe bağlıdır. Bir uyarı oluşturulduktan sonra, belirli bir süre için aynı kuraldaki uyarıları bastırmak istiyorsanız bu bölümü ekleyin.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gereklidir | Açıklama |
 |:--|:--|:--|
 | DurationInMinutes | Daraltma öğesi dahil ise Evet | Aynı uyarı kuralından biri oluşturulduktan sonra uyarıların nasıl gizlenme sayısı. |
 
 #### <a name="azure-action-group"></a>Azure eylem grubu
-Azure'daki tüm uyarılar eylemlerini işleyen varsayılan bir mekanizma olarak eylem grubu kullanın. Eylem grubu ile bir kez eylemleri belirtin ve birden çok uyarı - eylem grubuna Azure genelinde ilişkilendirin. Tekrar tekrar aynı eylemleri tekrar tekrar bildirme gerek kalmadan. Eylem grupları, birden fazla eylem - e-posta, SMS, sesli arama, ITSM bağlantısı, Otomasyon Runbook'u, Web kancası URI ve benzeri destekler.
+Tüm uyarılar Azure 'da, eylemleri işlemek için varsayılan mekanizma olarak eylem grubunu kullanın. Eylem grubuyla, eylemlerinizi bir kez belirtebilir ve ardından Eylem grubunu Azure 'da birden çok uyarı ile ilişkilendirebilirsiniz. Gerek olmadan, aynı eylemleri tekrar tekrar tekrar bildirmek için. Eylem grupları e-posta, SMS, sesli çağrı, ıTSM bağlantısı, Otomasyon Runbook 'u, Web kancası URI ve daha fazlasını içeren birden çok eylemi destekler
 
-Kimin uyarılarını - Azure'a genişletilmiş kullanıcının için bir zamanlama artık bir uyarı oluşturabilmek için eşik yanı sıra, geçirilen eylem grubu ayrıntıları olması gerekir. E-posta ayrıntıları, Web kancası URL 'Leri, runbook Otomasyon ayrıntıları ve diğer eylemler, bir uyarı oluşturmadan önce bir eylem grubu içinde tanımlanmalıdır. Portal 'da [Azure izleyici 'den bir eylem grubu](../../azure-monitor/platform/action-groups.md) oluşturabilir veya [eylem grubu-kaynak şablonu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)' nu kullanabilirsiniz.
+Uyarıları Azure 'a genişletmiş olan kullanıcı için, bir zamanlamaya göre bir uyarı oluşturabilmek için bir zamanlamanın Işlem grubu ayrıntılarının eşikle birlikte geçirilmesi gerekir. E-posta ayrıntıları, Web kancası URL 'Leri, runbook Otomasyon ayrıntıları ve diğer eylemler, bir uyarı oluşturmadan önce bir eylem grubu içinde tanımlanmalıdır. Portal 'da [Azure izleyici 'den bir eylem grubu](../../azure-monitor/platform/action-groups.md) oluşturabilir veya [eylem grubu-kaynak şablonu](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)' nu kullanabilirsiniz.
 
-| Öğe adı | Gerekli | description |
+| Öğe adı | Gereklidir | Açıklama |
 |:--|:--|:--|
-| AzNsNotification | Evet | Uyarı ölçütleri karşılandığında gerekli eylemleri gerçekleştirmek üzere uyarı ile ilişkilendirilecek Azure eylem grubunun kaynak KIMLIĞI. |
+| AzNsNotification | Yes | Uyarı ölçütleri karşılandığında gerekli eylemleri gerçekleştirmek üzere uyarı ile ilişkilendirilecek Azure eylem grubunun kaynak KIMLIĞI. |
 | CustomEmailSubject | Hayır | İlişkili eylem grubunda belirtilen tüm adreslere gönderilen postanın özel konu satırı. |
 | Customwebkancayükü | Hayır | İlişkili eylem grubunda tanımlanan tüm Web kancası uç noktalarına gönderilecek özelleştirilmiş yük. Biçim, Web kancasının beklediği işe bağlıdır ve geçerli bir seri hale getirilmiş JSON olmalıdır. |
 

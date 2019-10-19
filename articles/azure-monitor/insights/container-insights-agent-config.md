@@ -1,24 +1,18 @@
 ---
 title: Kapsayıcılar için Azure Izleyici aracı veri toplamayı yapılandırma | Microsoft Docs
 description: Bu makalede stdout/stderr ve ortam değişkenleri günlük toplamayı denetlemek için kapsayıcılar aracısının Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/08/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: dfa823955cccba4ac7ec6859894a4562f0810d76
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/08/2019
+ms.openlocfilehash: 2b72252c5c85679c1c65fa2dcf9c5acc6c54003c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248750"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554210"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici için aracı veri toplamayı yapılandırma
 
@@ -45,11 +39,11 @@ Aşağıda, veri toplamayı denetlemek için yapılandırılabilecek ayarlar ver
 |----|----------|------|------------|
 |`schema-version` |Dize (büyük/küçük harfe duyarlı) |v1 |Bu, bu ConfigMap ayrıştırılırken aracı tarafından kullanılan şema sürümüdür. Şu anda desteklenen şema sürümü v1. Bu değerin değiştirilmesi desteklenmez ve ConfigMap değerlendirildiğinde reddedilir.|
 |`config-version` |Dize | | , Kaynak denetimi sisteminizde/deponuzda bu yapılandırma dosyasının sürümünün izini sürme yeteneğini destekler. İzin verilen en fazla karakter sayısı 10 ' dur ve diğer tüm karakterler kesilir. |
-|`[log_collection_settings.stdout] enabled =` |Boole değeri | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. @No__t-0 olarak ayarlandığında ve STDOUT günlük toplama için hiçbir ad alanı dışlanmazsa (aşağıdaki `log_collection_settings.stdout.exclude_namespaces` ayarı), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` ' dır. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Dize | Virgülle ayrılmış dizi |Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` `true` olarak ayarlandıysa geçerlidir. ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` ' dır.|
-|`[log_collection_settings.stderr] enabled =` |Boole değeri | true veya false |Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. @No__t-0 olarak ayarlandığında ve STDOUT günlük toplama (`log_collection_settings.stderr.exclude_namespaces` ayarı) için hiçbir ad alanı dışlanmazsa, stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` ' dır. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Dize |Virgülle ayrılmış dizi |Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` `true` olarak ayarlandıysa geçerlidir. ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` ' dır. |
-| `[log_collection_settings.env_var] enabled =` |Boole değeri | true veya false | Bu ayar, kümedeki tüm pods 'ler/düğümler genelinde ortam değişkeni toplamayı denetler ve ConfigMaps içinde belirtilmediğinde varsayılan olarak `enabled = true` olarak ayarlar. Ortam değişkenlerinin toplanması genel olarak etkinleştirilmişse, `AZMON_COLLECT_ENV` ortam değişkenini bir Dockerfile ayarı veya altındaki [pod için yapılandırma dosyasında](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **false** olarak ayarlayarak belirli bir kapsayıcı için devre dışı bırakabilirsiniz.  **env:** bölümü. Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
+|`[log_collection_settings.stdout] enabled =` |Boole | true veya false | Bu, stdout kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. @No__t_0 olarak ayarlandığında ve STDOUT günlük toplama için hiçbir ad alanı dışlanmazsa (aşağıdaki `log_collection_settings.stdout.exclude_namespaces` ayarı), stdout günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` ' dır. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Dize | Virgülle ayrılmış dizi |Stdout günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` `true` olarak ayarlandıysa geçerlidir. ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` olur.|
+|`[log_collection_settings.stderr] enabled =` |Boole | true veya false |Bu, stderr kapsayıcı günlüğü koleksiyonunun etkinleştirilip etkinleştirilmediğini denetler. @No__t_0 olarak ayarlandığında ve STDOUT günlük toplama (`log_collection_settings.stderr.exclude_namespaces` ayarı) için hiçbir ad alanı dışlanmadığı zaman, stderr günlükleri kümedeki tüm düğüm/düğümler genelinde tüm kapsayıcılardan toplanacaktır. ConfigMaps içinde belirtilmemişse, varsayılan değer `enabled = true` ' dır. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Dize |Virgülle ayrılmış dizi |Stderr günlüklerinin toplanmayacak Kubernetes ad alanları dizisi. Bu ayar yalnızca `log_collection_settings.stdout.enabled` `true` olarak ayarlandıysa geçerlidir. ConfigMap içinde belirtilmemişse, varsayılan değer `exclude_namespaces = ["kube-system"]` olur. |
+| `[log_collection_settings.env_var] enabled =` |Boole | true veya false | Bu ayar, kümedeki tüm pods 'ler/düğümler genelinde ortam değişkeni toplamayı denetler ve ConfigMaps içinde belirtilmediğinde varsayılan olarak `enabled = true` olarak ayarlar. Ortam değişkenlerinin toplanması genel olarak etkinleştirilmişse, ortam değişkenini `AZMON_COLLECT_ENV` bir Dockerfile ayarı veya altındaki [](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **pod için yapılandırma dosyasında yanlış olarak ayarlayarak belirli bir kapsayıcı için devre dışı bırakabilirsiniz. env:** bölümü. Ortam değişkenlerinin toplanması genel olarak devre dışıysa, belirli bir kapsayıcı için koleksiyonu etkinleştiremezsiniz (yani, kapsayıcı düzeyinde uygulanabilecek tek geçersiz kılma, genel olarak etkinleştirildiğinde koleksiyonu devre dışı bırakmalıdır.). |
 
 ### <a name="prometheus-scraping-settings"></a>Prometheus scraping ayarları
 
@@ -62,7 +56,7 @@ Prometheus ölçülerinin etkin bir şekilde kullanılması, iki perspektiften b
 * Küme genelinde HTTP URL 'SI ve bir hizmetin listelenen uç noktalarından hedefleri, kuas-DNS ve kuin-eyalet-durum ölçümleri gibi k8s Hizmetleri ve bir uygulamaya özgü Pod ek açıklamalarını bulur. Bu bağlamda toplanan ölçümler ConfigMap bölümünde *[Prometheus data_collection_settings. Cluster]* tanımlanacaktır.
 * Düğüm genelinde HTTP URL 'SI ve bir hizmetin listelenen bitiş noktalarından hedefleri bulur. Bu bağlamda toplanan ölçümler ConfigMap bölümünde *[Prometheus_data_collection_settings. Node]* tanımlanacaktır.
 
-| Uç Noktası | Kapsam | Örnek |
+| Uç nokta | Kapsam | Örnek |
 |----------|-------|---------|
 | Pod ek açıklaması | Küme genelinde | açıklamaları <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000"` <br>`prometheus.io/scheme: "http"` |
 | Kubernetes hizmeti | Küme genelinde | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
@@ -75,8 +69,8 @@ Bir URL belirtildiğinde, kapsayıcılar için Azure Izleyici yalnızca uç nokt
 | Küme genelinde | | | | Ölçümler için atık uç noktalarına aşağıdaki üç yöntemden birini belirtin. |
 | | `urls` | Dize | Virgülle ayrılmış dizi | HTTP uç noktası (IP adresi veya geçerli URL yolu belirtildi). Örneğin: `urls=[$NODE_IP/metrics]`. ($NODE _ıP, kapsayıcılar için belirli bir Azure Izleyici parametresi ve düğüm IP adresi yerine kullanılabilir. Tümü büyük harf olmalıdır.) |
 | | `kubernetes_services` | Dize | Virgülle ayrılmış dizi | Kuin-State-ölçümlerini kullanarak bir Kubernetes hizmeti dizisi. Örneğin, `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boole değeri | true veya false | Küme genelinde ayarları `true` olarak ayarlandığında, kapsayıcılar için Azure Izleyici Aracı, aşağıdaki Prometheus ek açıklamaları için tüm küme genelinde düğüm genellerini hurdaya çıkarabilirsiniz:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boole değeri | true veya false | Pod 'un scraping öğesini sunar. `monitor_kubernetes_pods` ' ın `true` olarak ayarlanması gerekir. |
+| | `monitor_kubernetes_pods` | Boole | true veya false | Küme genelinde ayarları `true` olarak ayarlandığında, kapsayıcılar için Azure Izleyici Aracı, aşağıdaki Prometheus ek açıklamaları için tüm küme genelinde düğüm genellerini hurdaya çıkarabilirsiniz:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boole | true veya false | Pod 'un scraping öğesini sunar. `monitor_kubernetes_pods` `true` olarak ayarlanmalıdır. |
 | | `prometheus.io/scheme` | Dize | http veya https | Varsayılan olarak HTTP üzerinden atık yapılır. Gerekirse, `https` olarak ayarlayın. | 
 | | `prometheus.io/path` | Dize | Virgülle ayrılmış dizi | Ölçümlerinin alınacağı HTTP kaynak yolu. Ölçüm yolu `/metrics` değilse, bu ek açıklama ile tanımlayın. |
 | | `prometheus.io/port` | Dize | 9102 | Iskartaya çıkış için bir bağlantı noktası belirtin. Bağlantı noktası ayarlanmamışsa, varsayılan olarak 9102 olur. |
@@ -96,7 +90,7 @@ ConfigMap yapılandırma dosyanızı yapılandırmak ve kümenize dağıtmak iç
 
     - Stdout günlük toplama için belirli ad alanlarını dışlamak üzere anahtarı/değeri aşağıdaki örneği kullanarak yapılandırırsınız: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
-    - Belirli bir kapsayıcı için ortam değişkeni toplamayı devre dışı bırakmak için `[log_collection_settings.env_var] enabled = true` değerini, değişken toplamayı küresel olarak etkinleştirecek şekilde ayarlayın ve ardından belirli bir kapsayıcının yapılandırmasını gerçekleştirmek için [buradaki](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) adımları izleyin.
+    - Belirli bir kapsayıcı için ortam değişkeni toplamayı devre dışı bırakmak için, anahtar/değer `[log_collection_settings.env_var] enabled = true` değişken toplamayı küresel olarak etkinleştirecek şekilde ayarlayın ve ardından belirli bir kapsayıcının yapılandırmasını gerçekleştirmek için [buradaki](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) adımları izleyin.
     
     - Stderr günlük toplama kümesi genelinde devre dışı bırakmak için anahtar/değer aşağıdaki örneği kullanarak yapılandırılır: `[log_collection_settings.stderr] enabled = false`.
     
@@ -183,7 +177,7 @@ Hatalar omsagent 'ın dosyayı ayrıştırmasını önler, yeniden başlatılmas
 
 ## <a name="applying-updated-configmap"></a>Güncelleştirilmiş ConfigMap uygulanıyor
 
-Kümenize zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve ardından, `kubectl apply -f <configmap_yaml_file.yaml` ' ı kullanarak aynı komutu kullanabilirsiniz.
+Kümenize zaten bir ConfigMap dağıttıysanız ve daha yeni bir yapılandırmayla güncelleştirmek istiyorsanız, daha önce kullandığınız ConfigMap dosyasını düzenleyebilir ve sonra, `kubectl apply -f <configmap_yaml_file.yaml` aynı komutu kullanarak uygulayabilirsiniz.
 
 Yapılandırma değişikliğinin, yürürlüğe girmeden önce tamamlanması birkaç dakika sürebilir ve kümedeki tüm omsagent 'lar yeniden başlatılır. Yeniden başlatma, tüm omsagent pods için aynı anda yeniden başlatma işlemi için bir yeniden başlatma işlemi yapılır. Yeniden başlatmalar tamamlandığında aşağıdakine benzer bir ileti görüntülenir ve sonuç: `configmap "container-azm-ms-agentconfig" updated` olur.
 
@@ -208,7 +202,7 @@ Bu çıktı, ek açıklama şeması sürümleriyle aşağıdakine benzer şekild
 
 ## <a name="query-prometheus-metrics-data"></a>Sorgu Prometheus ölçüm verileri
 
-Azure Izleyici tarafından oluşturulan Prometheus ölçümlerini görüntülemek için ad alanı olarak "Prometheus" belirtin. @No__t-0 Kubernetes ad alanından Prometheus ölçümlerini görüntülemek için örnek bir sorgu aşağıda verilmiştir.
+Azure Izleyici tarafından oluşturulan Prometheus ölçümlerini görüntülemek için ad alanı olarak "Prometheus" belirtin. İşte `default` Kubernetes ad alanından Prometheus ölçümlerini görüntülemek için örnek bir sorgu.
 
 ```
 InsightsMetrics 

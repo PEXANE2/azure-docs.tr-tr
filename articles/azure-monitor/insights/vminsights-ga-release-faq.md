@@ -1,21 +1,18 @@
 ---
 title: VM'ler için Azure İzleyici (GA) sık sorulan sorular | Microsoft Docs
 description: VM'ler için Azure İzleyici Azure 'da, Azure VM işletim sisteminin sistem durumunu ve performans izlemesini birleştiren bir çözümdür ve uygulama bileşenlerini ve bağımlılıklarını diğer kaynaklarla otomatik olarak bulabilir ve arasındaki iletişimi eşler yapıştırabilirsiniz. Bu makalede, GA sürümü hakkında sık sorulan sorular yanıtlanmaktadır.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 10/07/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cb21d3bed1efc8f6ee7e16a0976ce46d03404983
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 10/07/2019
+ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275971"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553804"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>VM'ler için Azure İzleyici genel kullanıma açık (GA) sık sorulan sorular
 
@@ -27,7 +24,7 @@ Kasım ayında VM'ler için Azure İzleyici yeni bir sürümünü serbest bırak
 
 Bu yükseltme ile VM'ler için Azure İzleyici performans veri kümeleri artık, [kapsayıcılar Için Azure izleyici](container-insights-overview.md)ile aynı `InsightsMetrics` tablosunda depolanır ve iki veri kümesini sorgulamanızı kolaylaştırır. Ayrıca, daha önce kullandığımız tabloda depolayabildiğimiz daha fazla farklı veri kümesi depolayabileceksiniz.  Performans görünümlerimiz, bu yeni tabloyu kullanacak şekilde de güncelleştirilecektir.
 
-Bağlantı veri kümelerimiz için yeni veri türlerine geçeceğiz. Şu anda `ServiceMapComputer_CL` ve `ServiceMapProcess_CL` ' de depolanan veriler, özel günlük tabloları kullanan `VMComputer` ve `VMProcess` adlı adanmış veri türlerine taşınır.  Adanmış veri türlerine geçerek veri alımı için bu önceliğe izin verebilir ve tablo şeması tüm müşteriler genelinde standartlaştırılmış olacaktır.
+Bağlantı veri kümelerimiz için yeni veri türlerine geçeceğiz. @No__t_0 ve `ServiceMapProcess_CL` özel günlük tabloları kullanan depolanan veriler, `VMComputer` ve `VMProcess` adlı adanmış veri türlerine taşınır.  Adanmış veri türlerine geçerek veri alımı için bu önceliğe izin verebilir ve tablo şeması tüm müşteriler genelinde standartlaştırılmış olacaktır.
 
 Var olan müşterilerin yükseltmesini isteyen iş akışının kesintiye uğramasına neden olduğunu fark ettik. Bu, daha sonra GA 'ye ulaştıktan sonra genel önizleme aşamasında bunu yapmayı tercih ettiğimiz anlamına gelir.
 
@@ -46,7 +43,7 @@ Kullanıcı arabirimimizi ınsightsölçümler içindeki verileri kullanacak şe
 [!NOTE]
 >Performans tablosunda bu sayaçlara başvuran uyarı kurallarınız varsa, `InsightsMetrics` tablosundaki yeni verilere başvuracak şekilde onları güncelleştirmeniz gerekir.  Bu tabloya başvuran, kullanabileceğiniz günlük sorguları için belgelerimize bakın.
 
-Performans sayaçlarını etkin tutmaya karar verirseniz, toplanan veriler için faturalandırılır ve [Log Analytics fiyatlandırması [(https://azure.microsoft.com/pricing/details/monitor/) ) temelinde performans tablosuna saklanır.
+Performans sayaçlarını etkin tutmaya karar verirseniz, toplanan veriler için faturalandırılır ve bu, [Log Analytics fiyatlandırması [(https://azure.microsoft.com/pricing/details/monitor/) temelinde performans tablosuna saklanır.
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>Bu değişiklik, uyarı kurallarımı nasıl etkiler?
 
@@ -66,7 +63,7 @@ Bu çok uygundur.  Yaklaşan güncelleştirme hakkında VM'ler için Azure İzle
 
 Çalışma alanınızdaki performans sayaçlarını el ile etkinleştirmeyi seçerseniz, bazı performans grafiklerimizden Azure Izleyici 'den görüntülenen verileri görebilirsiniz. Yeni çözüm yayımlandıktan sonra, `InsightsMetrics` tablosunda depolanan verileri sorgulamak için performans grafiklerimizi güncelleştireceğiz. Bu grafiklerde bu tablodaki verileri görmek isterseniz, VM'ler için Azure İzleyici yeni sürümüne yükseltmeniz gerekir.
 
-@No__t-0 ve `ServiceMapProcess_CL` ' den verileri taşıma değişiklikleri hem Hizmet Eşlemesi hem de VM'ler için Azure İzleyici etkiler, bu nedenle yine de bu güncelleştirme için plan yapmanız gerekir.
+@No__t_0 ve `ServiceMapProcess_CL` verileri taşıma değişiklikleri hem Hizmet Eşlemesi hem de VM'ler için Azure İzleyici etkiler, bu nedenle yine de bu güncelleştirme için plan yapmanız gerekir.
 
 **Vminsıghts** çözümüne yükseltmemeyi seçerseniz, `Perf` tablosundaki verilere başvuran performans çalışma kitaplarımızın eski sürümlerini sağlamaya devam edeceğiz.  
 
@@ -74,15 +71,15 @@ Bu çok uygundur.  Yaklaşan güncelleştirme hakkında VM'ler için Azure İzle
 
 Her iki çözüm de kullanırsanız veri kümeleri yinelenmez. Her iki teklif de `VMComputer` (eski adıyla ServiceMapComputer_CL), `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` tablolarında depolanacak veri kümelerini paylaşır ve bu da topladığımız harita veri kümelerini depolar.  
 
-@No__t-0 tablosu, topladığımız VM, işlem ve hizmet veri kümelerini depolamak için ve yalnızca VM'ler için Azure İzleyici kullanıyorsanız doldurulacak şekilde kullanılacaktır.
+@No__t_0 tablosu, topladığımız VM, işlem ve hizmet veri kümelerini depolamak için ve yalnızca VM'ler için Azure İzleyici kullanıyorsanız doldurulacak şekilde kullanılacaktır.
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-on-my-workspace"></a>Çalışma alanım 'da Hizmet Eşlemesi ve Vminsıghts çözümlerini varsa, Double olarak ücretlendirilecektir mıyım?
 
-Hayır, iki çözüm `VMComputer` ' da depoladığımız harita veri kümelerini paylaşır (eski adıyla ServiceMapComputer_CL), `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort`.  Çalışma alanınızda her iki çözüm de varsa bu veriler için iki ücret ödemeniz gerekmez.
+Hayır, iki çözüm, `VMComputer` (eski adı ServiceMapComputer_CL), `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` depodığımız harita veri kümelerini paylaşır.  Çalışma alanınızda her iki çözüm de varsa bu veriler için iki ücret ödemeniz gerekmez.
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data-in-log-analytics"></a>Hizmet Eşlemesi veya Vminsıghts çözümünü kaldırdığımda, verilerimi Log Analytics kaldıracağım mi?
 
-Hayır, iki çözüm `VMComputer` ' da depoladığımız harita veri kümelerini paylaşır (eski adıyla ServiceMapComputer_CL), `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort`.  Çözümlerden birini kaldırırsanız, bu veri kümeleri, verileri kullanan bir çözüm olduğunu ve Log Analytics devam ettiğini fark eder.  Log Analytics çalışma alanınızdan kaldırılacak verilerin çalışma alanınızdan her iki çözümü de kaldırmanız gerekir.
+Hayır, iki çözüm, `VMComputer` (eski adı ServiceMapComputer_CL), `VMProcess` (eski adıyla ServiceMapProcess_CL), `VMConnection` ve `VMBoundPort` depodığımız harita veri kümelerini paylaşır.  Çözümlerden birini kaldırırsanız, bu veri kümeleri, verileri kullanan bir çözüm olduğunu ve Log Analytics devam ettiğini fark eder.  Log Analytics çalışma alanınızdan kaldırılacak verilerin çalışma alanınızdan her iki çözümü de kaldırmanız gerekir.
 
 ## <a name="when-will-this-update-be-released"></a>Bu güncelleştirme ne zaman yayımlanacak?
 

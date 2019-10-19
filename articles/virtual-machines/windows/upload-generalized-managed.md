@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6382a39e67805eb9bddb356a7b76205a82f3f7c2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101571"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553458"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Genelleştirilmiş bir VHD 'YI karşıya yükleyin ve Azure 'da yeni VM 'Ler oluşturmak için kullanın
 
@@ -47,7 +47,7 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 > 
 
 1. Windows sanal makinesinde oturum açın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe`.
+2. Yönetici olarak Komut İstemi penceresini açın. Dizini%windir%\system32\sysprep olarak değiştirip `sysprep.exe` çalıştırın.
 3. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **Genelleştir** onay kutusunun etkinleştirildiğinden emin olun.
 4. **Kapalı seçenekleri**Için, **kapanıyor**' ı seçin.
 5. **Tamam**’ı seçin.
@@ -56,67 +56,14 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 6. Sysprep tamamlandığında, sanal makineyi kapatır. VM 'yi yeniden başlatmayın.
 
 
-## <a name="get-a-storage-account"></a>Depolama hesabı al
-
-Karşıya yüklenen VM görüntüsünü depolamak için Azure 'da bir depolama hesabı gerekir. Var olan bir depolama hesabı kullanabilir veya yeni bir tane oluşturabilirsiniz. 
-
-Bir VM için yönetilen disk oluşturmak üzere VHD 'yi kullanacaksanız, depolama hesabı konumu VM 'yi oluşturacağınız konumla aynı olmalıdır.
-
-Kullanılabilir depolama hesaplarını göstermek için şunu girin:
-
-```azurepowershell
-Get-AzStorageAccount | Format-Table
-```
-
 ## <a name="upload-the-vhd-to-your-storage-account"></a>VHD 'YI depolama hesabınıza yükleyin
 
-VHD 'yi Depolama hesabınızdaki bir kapsayıcıya yüklemek için [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet 'ini kullanın. Bu örnek, *myvhd. vhd* dosyasını *c:\users\ortak\belgelerim\sanal sabit disklerinden\\*  myresourcegroup kaynak grubundaki *mystorageaccount* adlı bir depolama hesabına yükler. Dosya *myContainer* adlı kapsayıcıya yerleştirilecek ve yeni dosya adı *Myuploadedvhd. vhd*olacaktır.
-
-```powershell
-$rgName = "myResourceGroup"
-$urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
-    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Başarılı olursa şuna benzer bir yanıt alırsınız:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-Ağ bağlantınıza ve VHD dosyanızın boyutuna bağlı olarak, bu komutun tamamlanması biraz zaman alabilir.
-
-### <a name="other-options-for-uploading-a-vhd"></a>Bir VHD yüklemek için diğer seçenekler
- 
-Ayrıca, aşağıdakilerden birini kullanarak depolama hesabınıza bir VHD yükleyebilirsiniz:
-
-- [AzCopy](https://aka.ms/downloadazcopy)
-- [Azure depolama kopya blobu API 'SI](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Blobları karşıya yükleme Azure Depolama Gezgini](https://azurestorageexplorer.codeplex.com/)
-- [Depolama Içeri/dışarı aktarma hizmeti REST API başvurusu](https://msdn.microsoft.com/library/dn529096.aspx)
--   Tahmini karşıya yükleme süresi yedi günden uzunsa Içeri/dışarı aktarma hizmetini kullanmanızı öneririz. Veri boyutu ve aktarım biriminden süreyi tahmin etmek için [Datatransferspeedhesaplayıcı](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) ' yı kullanabilirsiniz. 
-    İçeri/dışarı aktarma, standart bir depolama hesabına kopyalamak için kullanılabilir. AzCopy gibi bir araç kullanarak standart depolamadan Premium depolama hesabına kopyalamanız gerekir.
-
-> [!IMPORTANT]
-> VHD 'nizi Azure 'a yüklemek için AzCopy kullanıyorsanız, yükleme betiğinizi çalıştırmadan önce [ **/Blobtype: Page**](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) ' i ayarladığınızdan emin olun. Hedef bir blob ise ve bu seçenek belirtilmemişse, varsayılan AzCopy bir Blok Blobu oluşturur.
-> 
-> 
-
+Artık bir VHD 'YI bir yönetilen diske doğrudan yükleyebilirsiniz. Yönergeler için bkz. [Azure PowerShell kullanarak BIR VHD 'Yi Azure 'A yükleme](disks-upload-vhd-to-managed-disk-powershell.md).
 
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Karşıya yüklenen VHD 'den yönetilen bir görüntü oluşturma 
 
-Genelleştirilmiş işletim sistemi VHD 'nizden yönetilen bir görüntü oluşturun. Aşağıdaki değerleri kendi bilgileriniz ile değiştirin.
+Genelleştirilmiş işletim sistemi tarafından yönetilen diskinizden yönetilen bir görüntü oluşturun. Aşağıdaki değerleri kendi bilgileriniz ile değiştirin.
 
 
 İlk olarak, bazı parametreleri ayarlayın:
@@ -146,7 +93,7 @@ New-AzImage `
 
 ## <a name="create-the-vm"></a>Sanal makine oluşturma
 
-Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek Myresourcegroup içindeki Myvm adlı birVM oluşturur.
+Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek *Myresourcegroup*Içindeki *myvm* adlı birVM oluşturur.
 
 
 ```powershell

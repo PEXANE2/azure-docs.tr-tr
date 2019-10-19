@@ -1,26 +1,25 @@
 ---
 title: Akıllı gruplar
 description: Akıllı gruplar, uyarı gürültüsünü azaltmanıza yardımcı olan uyarıların toplamalarına sahiptir
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 05/15/2018
+ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702866"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552353"
 ---
 # <a name="smart-groups"></a>Akıllı gruplar
 Uyarı ile ilgilenirken sık görülen bir zorluk, önemli olan ve akıllı grupların bu soruna çözüm olarak ne amaçla düşünülbildiğini öğrenmek için gürültü aracılığıyla karmaşıklaştırır.  
 
 Akıllı gruplar, tek bir sorunu temsil eden ilgili uyarıları birleştirmek için makine öğrenimi algoritmaları kullanılarak otomatik olarak oluşturulur.  Bir uyarı oluşturulduğunda, algoritma onu yeni bir akıllı gruba veya geçmiş desenler, benzer özellikler ve benzer yapı gibi bilgilere göre mevcut bir akıllı gruba ekler. Örneğin, bir abonelikteki birkaç sanal makinede bulunan% CPU aynı anda birden çok ayrı uyarı ile önde dursa ve bu uyarılar geçmişte bir yerde gerçekleştiyse, bu uyarılar büyük olasılıkla tek bir akıllı grupta gruplandırılır ve bu durum, olası genel kök nedeni. Diğer bir deyişle, bir sorun giderme uyarısı için, akıllı gruplar yalnızca ilgili uyarıları tek bir toplu birim olarak yöneterek paraziti azaltmalarına izin vermez, bu da bunlara, uyarıları için olası ortak ana nedenlerle kılavuzluk eder.
 
-Şu anda algoritma yalnızca bir abonelik içindeki aynı izleyici hizmetinden gelen uyarıları kabul eder. Akıllı gruplar, bu birleştirme sırasında en fazla% 99 uyarı gürültüsünü azaltabilir. Uyarıların bir gruba dahil edildiğini akıllı Grup ayrıntıları sayfasında görebilirsiniz.
+Şu anda algoritma yalnızca bir abonelik içindeki aynı izleyici hizmetinden gelen uyarıları kabul eder. Akıllı gruplar, bu birleştirme sırasında en fazla %99 uyarı gürültüsünü azaltabilir. Uyarıların bir gruba dahil edildiğini akıllı Grup ayrıntıları sayfasında görebilirsiniz.
 
 Akıllı grupların ayrıntılarını görüntüleyebilir ve durumu benzer şekilde uyarılarla birlikte ayarlayabilirsiniz. Her uyarı bir ve yalnızca bir akıllı grubun üyesidir. 
 
@@ -33,7 +32,7 @@ Aşağıdaki akıllı grup durumları desteklenir.
 |:---|:---|
 | Yeni | Sorun algılandı ve henüz gözden geçirilmedi. |
 | Mazsa | Bir yönetici akıllı grubu incelendi ve üzerinde çalışmaya başladı. |
-| Kapandı | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
+| kapandı | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
 [Akıllı grubunuzun durumunu değiştirme hakkında bilgi edinin.](https://aka.ms/managing-alert-smart-group-states)
 

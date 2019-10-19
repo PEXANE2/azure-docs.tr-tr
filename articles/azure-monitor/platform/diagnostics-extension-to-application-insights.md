@@ -1,19 +1,18 @@
 ---
 title: Application Insights verileri göndermek için Azure Tanılama yapılandırma
 description: Application Insights verileri göndermek için Azure Tanılama genel yapılandırmayı güncelleştirin.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2016
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/19/2016
+ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60396147"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552050"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut hizmeti, sanal makine veya Service Fabric tanılama verilerini Application Insights gönderin
 Bulut Hizmetleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric tümü, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, verileri Azure depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya sonraki bir sürümü kullanarak, verilerin tamamını veya bir alt kümesini diğer konumlara de kanal oluşturarak aktarabilirsiniz.
@@ -67,8 +66,8 @@ Application Insights için bir havuzun örnek yapılandırması:
 - **Channels** öğesi bir veya daha fazla **Kanal** öğesi içeriyor.
     - *Name* özniteliği bu kanala benzersiz bir şekilde başvurur.
     - *LogLevel* özniteliği, kanalın izin verdiği günlük düzeyini belirtmenizi sağlar. En çok en az bilgi için kullanılabilir günlük düzeyleri şunlardır:
-        - Ayrıntılı
-        - Information
+        - Seçeneini
+        - Bilgi
         - Uyarı
         - Hata
         - Kritik

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170653"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550850"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -33,11 +33,11 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 
 |                |[Tüketim planı](functions-scale.md#consumption-plan)|[Premium plan (Önizleme)](functions-scale.md#premium-plan)|[App Service planı](functions-scale.md#app-service-plan)|[App Service Ortamı](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Özel site erişimini & gelen IP kısıtlamaları](#inbound-ip-restrictions)|Evet ✅|Evet ✅|Evet ✅|Evet ✅|
-|[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌ Hayır|✅ Evet (bölgesel)|✅ Evet (bölgesel ve ağ geçidi)|Evet ✅|
-|[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌ Hayır| ❌ Hayır|Evet ✅|Evet ✅|
-|[Karma Bağlantılar](#hybrid-connections)|❌ Hayır|❌ Hayır|Evet ✅|Evet ✅|
-|[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌ Hayır| ❌ Hayır|❌ Hayır|Evet ✅|
+|[Özel site erişimini & gelen IP kısıtlamaları](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌No|✅Yes (bölgesel)|✅Yes (bölgesel ve ağ geçidi)|✅Yes|
+|[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
+|[Karma Bağlantılar](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
 ## <a name="inbound-ip-restrictions"></a>Gelen IP kısıtlamaları
@@ -52,7 +52,7 @@ Daha fazla bilgi için bkz. [Azure App Service statik erişim kısıtlamaları](
 ## <a name="private-site-access"></a>Özel site erişimi
 
 Özel site erişimi, uygulamanızı Azure sanal ağı içindeki gibi özel bir ağdan erişilebilir hale getirme anlamına gelir. 
-* Özel site erişimi, **hizmet uç noktaları** yapılandırıldığında [Premium](./functions-premium-plan.md), [Tüketim](functions-scale.md#consumption-plan) ve [App Service planınızdan](functions-scale.md#app-service-plan) kullanılabilir. 
+* Özel site erişimi [Premium](./functions-premium-plan.md), [tüketim], (işlevler-Scale. MD # tüketim-plan) ile kullanılabilir ve **hizmet uç noktalarının** ne zaman yapılandırıldığını [planApp Service](functions-scale.md#app-service-plan) . 
     * Hizmet uç noktaları, platform özellikleri > Ağ Iletişimi > erişim kısıtlamalarını Yapılandırma > kural ekle ' nin altında uygulama temelinde yapılandırılabilir. Sanal ağlar artık kuralın "türü" olarak seçilebilir.
     * Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md)
         * Hizmet uç noktalarında, işlevinizin hala internet 'e yönelik sanal ağ tümleştirmesiyle birlikte tam giden erişimi olduğunu aklınızda bulundurun.
@@ -102,12 +102,20 @@ Işlevlerde sanal ağ tümleştirmesi App Service Web Apps ile paylaşılan alty
 
 Sanal ağ tümleştirmesini kullanma hakkında daha fazla bilgi için bkz. [bir işlev uygulamasını bir Azure sanal ağı Ile tümleştirme](functions-create-vnet.md).
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla kısıtlama
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Hizmet uç noktası güvenliği sağlanmış kaynaklara bağlanılıyor
 
 > [!note] 
-> Geçici olarak, bu depolama hesabında erişim kısıtlamalarını yapılandırdıktan sonra, depolama hesabınızın işlev uygulamanız için kullanılabilir olması 12 saate kadar sürebilir. Bu süre boyunca uygulamanız tamamen çevrimdışı olur.
+> Geçici olarak, aşağı akış kaynağında erişim kısıtlamalarını yapılandırdıktan sonra, yeni hizmet uç noktalarının işlev uygulamanız için kullanılabilir olması 12 saate kadar sürebilir. Bu süre boyunca, kaynak uygulamanız için tamamen kullanılamaz olur.
 
-Daha yüksek bir güvenlik düzeyi sağlamak için, uygulamanızın depolama hesabını bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, depolama hesabınıza erişmek için sitenizi bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm planlarda desteklenir.
+Daha yüksek bir güvenlik düzeyi sağlamak için, hizmet uç noktalarını kullanarak bir dizi Azure hizmetini bir sanal ağ ile kısıtlayabilirsiniz. Daha sonra, kaynak erişimi için işlev uygulamanızı bu sanal ağla tümleştirmeniz gerekir. Bu yapılandırma, sanal ağ tümleştirmesini destekleyen tüm planlarda desteklenir.
+
+[Sanal ağ hizmeti uç noktaları hakkında buradan daha fazla bilgi edinin.](../virtual-network/virtual-network-service-endpoints-overview.md)
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Depolama hesabınızı bir sanal ağla kısıtlama
+Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Şu anda bu hesapta herhangi bir sanal ağ kısıtlaması kullanılması mümkün değildir. İşlev uygulamanız için kullandığınız depolama hesabında bir sanal ağ hizmet uç noktası yapılandırırsanız, uygulamanız kesilir.
+
+[Depolama hesabı gereksinimleri hakkında buradan daha fazla bilgi edinin.](./functions-create-function-app-portal.md#storage-account-requirements
+) 
 
 ## <a name="virtual-network-triggers-non-http"></a>Sanal ağ Tetikleyicileri (HTTP olmayan)
 

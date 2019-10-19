@@ -1,20 +1,18 @@
 ---
 title: Event Hubs veri akışı Azure Tanılama
 description: Yaygın senaryolar için rehberlik dahil Event Hubs uçtan uca Azure Tanılama yapılandırma.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/13/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 07/13/2017
+ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "64922818"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555538"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Tanılama Event Hubs kullanarak etkin yoldaki verileri akışa alma
 Azure Tanılama, bulut Hizmetleri sanal makinelerinden (VM 'Ler) ölçümleri ve günlükleri toplamanın yanı sıra sonuçları Azure Storage 'a aktarmaya yönelik esnek yollar sunar. Mart 2016 (SDK 2,9) zaman çerçevesinde, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)kullanarak özel veri kaynaklarına tanılama gönderebilir ve dinamik yol verilerini Saniyeler içinde aktarabilirsiniz.
@@ -40,12 +38,12 @@ Azure Tanılama Event Hubs veri alma Cloud Services, VM 'Ler, sanal makine ölç
 * Azure Tanılama uzantısı 1,6 ([.net 2,9 Için Azure SDK veya sonraki sürümler](https://azure.microsoft.com/downloads/) bu varsayılan olarak bunu hedefliyor)
 * [Visual Studio 2013 veya üzeri](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * Bir *. wadcfgx* dosyası ve aşağıdaki yöntemlerden birini kullanarak bir uygulamada Azure tanılama var olan konfigürasyonlar:
-  * Visual Studio: [Azure Cloud Services ve sanal makineler için tanılamayı yapılandırma](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+  * Visual Studio: [Azure Cloud Services ve sanal makineler Için tanılamayı yapılandırma](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
   * Windows PowerShell: [PowerShell kullanarak Azure Cloud Services tanılamayı etkinleştirme](../../cloud-services/cloud-services-diagnostics-powershell.md)
 * Makale başına sağlanan Event Hubs ad alanı [Event Hubs kullanmaya başlayın](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Tanılama Event Hubs havuzuna bağlama
-Azure Tanılama, varsayılan olarak her zaman günlükleri ve ölçümleri bir Azure depolama hesabına gönderir. Bir uygulama, *. wadcfgx* dosyasının **publicconfig** / **wadcfg** öğesi altına yeni bir **Havuz** bölümü ekleyerek Event Hubs verileri de gönderebilir. Visual Studio 'da *. wadcfgx* dosyası şu yolda depolanır: **Bulut hizmeti proje** >  > **rolleri** >  **(roleName)** **Tanılama. wadcfgx** dosyası.
+Azure Tanılama, varsayılan olarak her zaman günlükleri ve ölçümleri bir Azure depolama hesabına gönderir. Bir uygulama, *. wadcfgx* dosyasının **Publicconfig**  / **wadcfg** öğesi altına yeni bir **Havuz** bölümü ekleyerek Event Hubs verileri de gönderebilir. Visual Studio 'da *. wadcfgx* dosyası şu yolda saklanır: **bulut hizmeti projesi**  > **Roller**  >  **(roleName)**  > **Diagnostics. wadcfgx** dosyası.
 
 ```xml
 <SinksConfig>
@@ -100,7 +98,7 @@ Event Hubs havuz Ayrıca *. wadcfgx* yapılandırma dosyasının **privateconfig
 }
 ```
 
-Değer `SharedAccessKeyName` , **Event Hubs** ad alanında tanımlanan bir paylaşılan erişim imzası (SAS) anahtarı ve ilkesiyle eşleşmelidir. [Azure portal](https://portal.azure.com)Event Hubs panosuna gidin, **Yapılandır** sekmesine tıklayın ve *gönderme* izinleri olan adlandırılmış bir Ilke (örneğin, "sendrule") ayarlayın. **Storageaccount** , **privateconfig**içinde de bildirilmiştir. Bu değerler çalışıyorsa burada değişiklik yapmanız gerekmez. Bu örnekte, bir aşağı akış varlığının değerlerini ayarlayacağı bir işaret olan bir işaret olan değerler boş bırakıyoruz. Örneğin, *ServiceConfiguration. Cloud. cscfg* ortam yapılandırma dosyası, ortama uygun adları ve anahtarları ayarlar.  
+@No__t_0 değeri, **Event Hubs** ad alanında tanımlanan bir paylaşılan erişim IMZASı (SAS) anahtarı ve ilkesiyle eşleşmelidir. [Azure portal](https://portal.azure.com)Event Hubs panosuna gidin, **Yapılandır** sekmesine tıklayın ve *gönderme* izinleri olan adlandırılmış bir Ilke (örneğin, "sendrule") ayarlayın. **Storageaccount** , **privateconfig**içinde de bildirilmiştir. Bu değerler çalışıyorsa burada değişiklik yapmanız gerekmez. Bu örnekte, bir aşağı akış varlığının değerlerini ayarlayacağı bir işaret olan bir işaret olan değerler boş bırakıyoruz. Örneğin, *ServiceConfiguration. Cloud. cscfg* ortam yapılandırma dosyası, ortama uygun adları ve anahtarları ayarlar.  
 
 > [!WARNING]
 > Event Hubs SAS anahtarı, *. wadcfgx* dosyasında düz metin olarak depolanır. Bu anahtar genellikle kaynak kodu denetimine iade edilir veya yapı sunucunuzdaki bir varlık olarak kullanılabilir, bu nedenle uygun şekilde korumanız gerekir. Kötü amaçlı bir kullanıcının Olay Hub 'ına yazabilmesi, ancak dinleyememesi veya yönetebilmesi için *yalnızca Send* izinleri Ile bir SAS anahtarı kullanmanızı öneririz.
@@ -184,7 +182,7 @@ Yukarıdaki örnekte havuz, hiyerarşide üst **PerformanceCounters** düğümü
 }
 ```
 
-Önceki örnekte, havuz yalnızca üç sayaca uygulanır: **Sıraya alınan istek**, **Reddedilen Istekler**ve **% işlemci süresi**.  
+Önceki örnekte, havuz yalnızca üç sayaca uygulanır: **sıraya alınan istekler**, **Reddedilen Istekler**ve **% işlemci zamanı**.  
 
 Aşağıdaki örnek, bir geliştiricinin gönderilen veri miktarını bu hizmetin sistem durumu için kullanılan kritik ölçümler olacak şekilde nasıl sınırlayamayacağını gösterir.  
 
@@ -202,7 +200,7 @@ Aşağıdaki örnek, bir geliştiricinin gönderilen veri miktarını bu hizmeti
 Bu örnekte, havuz günlüklere uygulanır ve yalnızca hata düzeyi izleme ile filtrelenmiştir.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services uygulama ve tanılama yapılandırmasını dağıtma ve güncelleştirme
-Visual Studio, uygulama ve Event Hubs havuz yapılandırmasını dağıtmak için en kolay yolu sağlar. Dosyayı görüntülemek ve düzenlemek için, Visual Studio 'da *. wadcfgx* dosyasını açın, düzenleyin ve kaydedin. Yol, **bulut hizmeti proje** > **rolleri** >  **(roleName)**  > **tanılaması. wadcfgx**' dir.  
+Visual Studio, uygulama ve Event Hubs havuz yapılandırmasını dağıtmak için en kolay yolu sağlar. Dosyayı görüntülemek ve düzenlemek için, Visual Studio 'da *. wadcfgx* dosyasını açın, düzenleyin ve kaydedin. Yol, **bulut hizmeti projesi** ** >   > ** **(roleName)**  > **Diagnostic. wadcfgx**' dir.  
 
 Bu noktada, Visual Studio, Visual Studio Team System ve MSBuild 'i temel alan tüm dağıtım ve dağıtım güncelleştirme eylemleri ve **/t: Publish** hedefini kullanan tüm komutlar veya betikler Paketleme sürecinde *. wadcfgx* içerir. Ayrıca, dağıtımlar ve güncelleştirmeler, sanal makinelerinizdeki uygun Azure Tanılama Aracısı uzantısını kullanarak dosyayı Azure 'a dağıtır.
 
@@ -316,12 +314,12 @@ namespace EventHubListener
     İlk olarak, Olay Hub 'ı ve yapılandırma bilgilerinin daha önce anlatıldığı gibi doğru olduğundan emin olun. Bazen bir dağıtım güncelleştirmesinde **Privateconfig** sıfırlanır. Önerilen çözüm, projenin *. wadcfgx* dosyasında tüm değişiklikleri yapmak ve sonra da bir uygulama güncelleştirmesini göndermedir. Bu mümkün değilse, tanılama güncelleştirmesinin SAS anahtarını içeren bir bütün **Privateconfig** 'e iter olduğundan emin olun.  
 * Önerilere çalıştım ve Olay Hub 'ı hala çalışmıyor.
 
-    Azure Tanılama için günlükleri ve hataları içeren Azure Storage tablosuna bakmayı deneyin: **WADDiagnosticInfrastructureLogsTable**. Tek bir seçenek, bu depolama hesabına bağlanmak, bu tabloyu görüntülemek ve son 24 saat içinde zaman damgasına bir sorgu eklemek için [Azure Depolama Gezgini](https://www.storageexplorer.com) gibi bir araç kullanmaktır. Aracı, bir. csv dosyasını dışarı aktarmak ve Microsoft Excel gibi bir uygulamada açmak için kullanabilirsiniz. Excel, hangi hatanın raporlandığını görmek için **Eventhubs**gibi arama kartı dizelerini aramanızı kolaylaştırır.  
+    Azure Tanılama kendisi için Günlükler ve hatalar içeren Azure Storage tablosuna bakmayı deneyin: **WADDiagnosticInfrastructureLogsTable**. Tek bir seçenek, bu depolama hesabına bağlanmak, bu tabloyu görüntülemek ve son 24 saat içinde zaman damgasına bir sorgu eklemek için [Azure Depolama Gezgini](https://www.storageexplorer.com) gibi bir araç kullanmaktır. Aracı, bir. csv dosyasını dışarı aktarmak ve Microsoft Excel gibi bir uygulamada açmak için kullanabilirsiniz. Excel, hangi hatanın raporlandığını görmek için **Eventhubs**gibi arama kartı dizelerini aramanızı kolaylaştırır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 • [Event Hubs hakkında daha fazla bilgi edinin](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Yer Azure Tanılama yapılandırma dosyası (. wadcfgx) örneğini doldurun
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Ek: Azure Tanılama yapılandırma dosyası (. wadcfgx) örneği
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">

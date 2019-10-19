@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: c513a7fe4df14ee21f4b26993a5eddb93bb90eac
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: dca032cceb4f1561d7ee8b35de502f8f5259cfe8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533317"
+ms.locfileid: "72553623"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -315,6 +315,8 @@ Devam etmeden önce küme çalışmaya kadar bekleyin.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Databricks kitaplığına doğru SDK 'Yı yükler
 Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini kümenize eklemek için [bir kitaplık oluşturun](https://docs.databricks.com/user-guide/libraries.html#create-a-library) .
+
+1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. @No__t_1**kitaplığı** **Oluştur** ' u seçin.
 
 1. **Yalnızca bir** seçenek belirleyin (diğer SDK yüklemesi desteklenmez)
 

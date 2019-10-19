@@ -9,15 +9,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: development
-ms.date: 08/15/2019
+ms.date: 10/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e08d0a52903fb488359356707ecedfd81d49084a
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 81c709e7705e16484438ab684a6b1591e5e624ba
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165063"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553502"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>SQL veri ambarı için Visual Studio 2019 ile çalışmaya başlama
 Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapabilmenizi sağlayan tek bir araçtır:
@@ -27,20 +27,18 @@ Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapab
 - Nesneleriniz için T-SQL veri tanımlama dili (DDL) betikleri oluşturun
 - SSDT veritabanı projeleriyle durum tabanlı bir yaklaşım kullanarak veri Ambarınızı geliştirme
 - Veritabanı projenizi git gibi kaynak denetim sistemleriyle Azure DevOps depoları ile tümleştirin
-- Azure DevOps [yakında çıkacak] gibi Otomasyon sunucularıyla sürekli tümleştirme ve dağıtım işlem hatları ayarlayın
+- Azure DevOps gibi Otomasyon sunucularıyla sürekli tümleştirme ve dağıtım işlem hatları ayarlama
 
 > [!NOTE]
 > Visual Studio SSDT veritabanı projeleri Şu anda önizlemededir. Bu özellikte düzenli güncelleştirmeler almak için lütfen [UserVoice]' ı oylayın.
 
 ## <a name="install-visual-studio-2019-preview"></a>Visual Studio 2019 Preview 'ı yükler
-Visual Studio 'Yu indirmek ve yüklemek için bkz. [Visual Studio 2019 Preview sürümünü indirin][] . Yüklemesi sırasında veri depolama ve işleme iş yükünü seçin. Visual Studio 2019 için tek başına SSDT yüklemesi artık gerekli değildir.
+Visual Studio **16,3 ve üstünü**indirmek ve yüklemek için bkz. [Visual Studio 2019 'yi indirin][] . Yüklemesi sırasında veri depolama ve işleme iş yükünü seçin. Visual Studio 2019 için tek başına SSDT yüklemesi artık gerekli değildir.
 
 ## <a name="reporting-issues-with-ssdt-visual-studio-2019-preview"></a>SSDT Visual Studio 2019 (Önizleme) ile ilgili sorunları bildirme
-
-SSDT 'yi SQL veri ambarı ile kullanırken oluşan sorunları bildirmek için şu e-posta dağıtım listesini e-postayla gönderin:<sqldwssdtpreview@service.microsoft.com>
+SSDT 'yi SQL veri ambarı ile kullanırken oluşan sorunları bildirmek için şu e-posta dağıtım listesini e-postayla gönderin: <sqldwssdtpreview@service.microsoft.com>
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
 SSDT 'nin en son sürümüne sahip olduğunuza göre, SQL veri ambarınıza [bağlanmaya][connect] hazırsınız.
 
 <!--Anchors-->
@@ -51,7 +49,7 @@ SSDT 'nin en son sürümüne sahip olduğunuza göre, SQL veri ambarınıza [ba�
 [connect]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-[Visual Studio 2019 Preview sürümünü indirin]: https://visualstudio.microsoft.com/vs/preview/
+[Visual Studio 2019 'yi indirin]: https://visualstudio.microsoft.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

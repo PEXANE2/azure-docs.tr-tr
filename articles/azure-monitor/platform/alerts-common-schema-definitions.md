@@ -1,19 +1,18 @@
 ---
 title: Azure Izleyici için ortak uyarı şeması tanımları
 description: Azure Izleyici için ortak uyarı şeması tanımlarını anlama
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 9e2c3849cca392539b96f47d8d7c32815851cf78
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702878"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552564"
 ---
 # <a name="common-alert-schema-definitions"></a>Ortak uyarı şeması tanımları
 
@@ -88,7 +87,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 | resolvedDateTime | Uyarı örneği için izleyici koşulunun UTC olarak **çözümlendi** olarak ayarlandığı tarih ve saat. Şu anda yalnızca ölçüm uyarıları için geçerlidir.|
 | açıklama | Uyarı kuralında tanımlandığı şekilde açıklama. |
 |essentialsVersion| Essentials bölümünün sürüm numarası.|
-|alertContextVersion | @No__t-0 bölümü için sürüm numarası. |
+|alertContextVersion | @No__t_0 bölümü için sürüm numarası. |
 
 **Örnek değerler**
 ```json
@@ -152,7 +151,7 @@ Herhangi bir uyarı örneği, etkilenen kaynağı ve uyarının nedenini açıkl
 ### <a name="log-alerts"></a>Günlük uyarıları
 
 > [!NOTE]
-> Özel bir JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, yük şemasını aşağıdaki gibi açıklanan birine geri döndürür. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. @No__t-0 bayrağını denetleyerek bunu belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
+> Özel bir JSON yükü tanımlanmış olan günlük uyarıları için ortak şemanın etkinleştirilmesi, yük şemasını aşağıdaki gibi açıklanan birine geri döndürür. Ortak şema etkin olan uyarıların uyarı başına 256 KB üst boyut sınırı vardır. Arama sonuçları, uyarı boyutunun bu eşiğin çapraz olmasına neden olursa, günlük uyarıları yüküne Katıştırılamaz. Bunu, bayrağını `IncludedSearchResults` denetleyerek belirleyebilirsiniz. Arama sonuçları dahil edilmemişse, arama sorgusunu [log ANALYTICS API](https://docs.microsoft.com/rest/api/loganalytics/query/get)'siyle birlikte kullanmanız gerekir. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Izleyici ile tümleştirilen iş ortakları
 description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belgelere nasıl erişebileceğiniz hakkında bilgi edinin.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262292"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552071"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Izleyici iş ortağı tümleştirmeleri
 
@@ -88,7 +87,7 @@ Dataköpek, dünyanın bulut ölçekli uygulamalar için önde gelen izleme hizm
 
 [Belgelere gidin.][datadog-doc]
 
-## <a name="dynatrace"></a>DynaTrace
+## <a name="dynatrace"></a>Dynatrace
 
 ![DynaTrace logosu](./media/partners/dynatrace.png)
 
@@ -96,7 +95,7 @@ DynaTrace OneAgent, Azure uzantı mekanizması aracılığıyla Azure VM 'Leri v
 
 [Belgelere gidin.][dynatrace-doc]
 
-## <a name="elastic"></a>Elastik
+## <a name="elastic"></a>Esnek
 
 ![Elastik logo](./media/partners/elastic.png)
 
@@ -198,7 +197,7 @@ SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel zeka 'nın lide
 
 [Belgelere gidin.][signalfx-doc]
 
-## <a name="signl4"></a>SIGNL4
+## <a name="signl4"></a>SıGNL4
 ![SıGNL4 logosu](./media/partners/signl4.png)
 
 SıGNL4-işlem ekipleri için mobil uyarı uygulaması-Azure Izleyici 'den doğru kişilere, gönderim, metin ve sesli çağrılardan herhangi bir yere kadar olan kritik uyarıları yönlendirmenin en hızlı yoludur. SıGNL4, takımlarınıza yönelik arama görevlerini ve vardiyaları yönetir, uyarıların teslimini ve sahipliğini izler ve gerekirse ilerletir. Takımınız genelinde tam saydamlık sağlanır. SıGNL4 'in süper kolay REST Web kancasını kullanmak herhangi bir Azure hizmeti için herhangi bir çaba olmadan bağlanabilir. SıGNL4 ile e-posta bildirimleri ve el ile uyarı üzerinden 10 kat daha hızlı yanıt görürsünüz.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: memildin
-ms.openlocfilehash: cce57053e265446a6307554509c34c5f802ed07f
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c5e457a6478fce070070ba7d0d610cbfe4f55024
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372604"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554685"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Gelişmiş güvenlik için Güvenlik Merkezi 'nin standart katmanına yükseltme
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber saldırılarına karşı hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -26,9 +26,10 @@ Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalı
 ## <a name="pricing-tiers"></a>Fiyatlandırma katmanları
 Güvenlik Merkezi iki katmanda sunulur:
 
-- Azure portalında ilk kez Azure Güvenlik Merkezi panosunu ziyaret ettiğinizde veya API aracılığıyla progremmaticaly etkinse **ücretsiz** katman tüm Azure aboneliklerinizde etkin olur. Ücretsiz katman, Azure kaynaklarınızı korumanıza yardımcı olmak için güvenlik ilkesi, sürekli güvenlik değerlendirmesi ve eyleme dönüştürülebilir güvenlik önerileri sağlar.
+- Azure portalında ilk kez Azure Güvenlik Merkezi panosunu ziyaret ettiğinizde veya API aracılığıyla progremmaticaly etkinse **ücretsiz** katman tüm Azure aboneliklerinizde etkin olur. Diğer abonelikler eklerseniz, yeni abonelik varsayılan olarak güvenlik merkezi 'ni etkinleştirmeyecektir, ancak yalnızca Güvenlik Merkezi portalı 'nı başlatmanız yeterlidir ve yeni abonelik kaydedilir ve ücretsiz katman uygulanır. Ücretsiz katman, Azure kaynaklarınızı korumanıza yardımcı olmak için güvenlik ilkesi, sürekli güvenlik değerlendirmesi ve eyleme dönüştürülebilir güvenlik önerileri sağlar.
 - **Standart** katman, hibrit bulut iş yüklerinizde birleştirilmiş güvenlik yönetimi ve tehdit koruması sağlayarak, ücretsiz katmanın yeteneklerini özel ve diğer genel bulutlarda çalışan iş yüklerine genişletir. Standart katman Ayrıca, saldırıları ve sıfır günlük güvenlik açıklarını belirlemek için yerleşik davranış analizi ve makine öğrenimi, ağ saldırılarına ve kötü amaçlı yazılımlara maruz kalma olasılığını azaltmak için erişim ve uygulama denetimlerini kullanan gelişmiş tehdit algılama özellikleri de ekler ve daha fazla. Standart katmanı ücretsiz olarak deneyebilirsiniz. Güvenlik Merkezi Standart; VM 'Ler, sanal makine ölçek kümeleri, App Service, SQL sunucuları ve depolama hesapları gibi Azure kaynaklarını destekler. Azure Güvenlik Merkezi standardına sahipseniz, kaynak türüne göre destek dışında bırakabilirsiniz. 
 
+VM 'Ler için ücretsiz katman güvenlik değerlendirmelerinin çoğunun yanı sıra standart katman güvenlik uyarılarının çoğu için Microsoft Monitoring Agent (MMA) özelliğinin yüklenmesi gerekir. Azure VM 'leriniz için aracıyı otomatik olarak dağıtmak üzere, güvenlik merkezi 'nde otomatik sağlamayı etkinleştirebilirsiniz.
 
 Daha fazla bilgi için Güvenlik Merkezi [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
 
@@ -45,7 +46,7 @@ Standart katmanı almak için:
 4. Yükseltmek için **Standart** ' ı seçin.
 5. **Kaydet** düğmesine tıklayın.
 
-(Görüntüdeki fiyatlar yalnızca örnek amaçlıdır.) ![Güvenlik merkezi fiyatlandırması @ no__t-1
+(Görüntüdeki fiyatlar yalnızca örnek amaçlıdır.)  ![Security Center fiyatlandırması ](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > Tüm Güvenlik Merkezi özelliklerini etkinleştirmek için ilgili sanal makinelerin bulunduğu aboneliğe Standart fiyatlandırma katmanını uygulamanız gerekir. Bir çalışma alanı için fiyatlandırmayı yapılandırmak, Azure kaynakları için tam zamanında VM erişimi, uyarlamalı uygulama denetimleri ve ağ algılamalarını etkinleştirmez.

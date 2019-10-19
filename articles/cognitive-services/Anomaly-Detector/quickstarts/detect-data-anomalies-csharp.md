@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Anomali algılayıcısı REST API kullanarak zaman serisi verilerinizde bozukluklar olupC#'
+title: 'Hızlı başlangıç: anomali algılayıcısı REST API kullanarak zaman serisi verilerinizde aykırlılıkları algılayın veC#'
 titleSuffix: Azure Cognitive Services
 description: Veri serinizdeki tüm verileri toplu olarak veya akış verilerinde saptamak için anomali algılayıcı API 'sini kullanın.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 10/14/2019
 ms.author: aahi
-ms.openlocfilehash: 97efa5cd91646809178d685ca51e29ef2fda7c0d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 222fb5d37065bc40e9c96a9ff3487a7ea8ad0570
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564742"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554763"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Hızlı Başlangıç: Anomali algılayıcısı REST API kullanarak zaman serisi verilerinizde bozukluklar olupC# 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Hızlı başlangıç: anomali algılayıcısı REST API kullanarak zaman serisi verilerinizde aykırlılıkları algılayın veC# 
 
 Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup olmadığı konusunda anomali algılayıcı API 'sinin iki algılama modunu kullanmaya başlayın. Bu C# uygulama, JSON biçimli zaman serisi verilerini IÇEREN iki API isteği gönderir ve yanıtları alır.
 
@@ -42,141 +42,64 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
 - Zaman serisi veri noktalarını içeren bir JSON dosyası. Bu hızlı başlangıçta örnek veriler [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)'da bulunabilir.
 
-[!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
+### <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
+[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
 ## <a name="create-a-new-application"></a>Yeni uygulama oluşturma
 
 1. Visual Studio 'da yeni bir konsol çözümü oluşturun ve aşağıdaki paketleri ekleyin. 
 
-    ```csharp
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Text;
-    using System.Threading.Tasks;
-    ```
+    [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
+
 
 2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun. Anomali algılama için kullanabileceğiniz URI 'Ler aşağıda verilmiştir. Bunlar, daha sonra API isteği URL 'Leri oluşturmak için hizmet uç noktanıza eklenecektir.
 
-    |Algılama yöntemi  |URI  |
+    |Algılama yöntemi  |KULLANıLMAMıŞSA  |
     |---------|---------|
     |Toplu iş algılama    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
     |En son veri noktasında algılama     | `/anomalydetector/v1.0/timeseries/last/detect`        |
     
-    ```csharp
-    // Replace the subscriptionKey string value with your valid subscription key.
-    const string subscriptionKey = "[YOUR_SUBSCRIPTION_KEY]";
-    // Replace the endpoint URL with the correct one for your subscription. 
-    // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
-    const string endpoint = "[YOUR_ENDPOINT_URL]";
-    // Replace the dataPath string with a path to the JSON formatted time series data.
-    const string dataPath = "[PATH_TO_TIME_SERIES_DATA]";
-    const string latestPointDetectionUrl = "/anomalydetector/v1.0/timeseries/last/detect";
-    const string batchDetectionUrl = "/anomalydetector/v1.0/timeseries/entire/detect";
-    ```
+    [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Yukarıda oluşturulan değişkenleri alan adlı `Request` yeni bir zaman uyumsuz işlev oluşturun.
+1. Yukarıda oluşturulan değişkenleri alan `Request` adlı yeni bir zaman uyumsuz işlev oluşturun.
 
-2. İstemcinin güvenlik protokolünü ve üst bilgi bilgilerini bir `HttpClient` nesne kullanarak ayarlayın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye eklediğinizden emin olun. Ardından istek için `StringContent` bir nesne oluşturun.
+2. İstemcinin güvenlik protokolünü ve üst bilgi bilgilerini bir `HttpClient` nesnesi kullanarak ayarlayın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgisine eklediğinizden emin olun. Ardından istek için `StringContent` nesnesi oluşturun.
 
-3. İsteği ile `PostAsync()`gönderin ve ardından yanıtı döndürün.
+3. İsteği `PostAsync()` gönderin ve ardından yanıtı döndürün.
 
-```csharp
-static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
-    using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
-        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-        var content = new StringContent(requestData, Encoding.UTF8, "application/json");
-        var res = await client.PostAsync(endpoint, content);
-        return await res.Content.ReadAsStringAsync();
-    }
-}
-```
+    [!code-csharp[Request method](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=requestMethod)]
 
 ## <a name="detect-anomalies-as-a-batch"></a>Bir toplu iş olarak anomali algılama
 
-1. Adlı `detectAnomaliesBatch()`yeni bir işlev oluşturun. Uç nokta, abonelik anahtarınız, Batch anomali `Request()` algılama URL 'si ve zaman serisi verileri ile işlevi çağırarak isteği oluşturun ve gönderin.
+1. @No__t_0 adlı yeni bir işlev oluşturun. İsteği oluşturun ve uç nokta, abonelik anahtarınız, Batch anomali algılama URL 'SI ve zaman serisi verileri ile `Request()` işlevini çağırarak gönderin.
 
 2. JSON nesnesinin serisini kaldırma ve konsola yazma.
 
-3. Yanıt alanı içeriyorsa `code` , hata kodunu ve hata iletisini yazdırın. 
+3. Yanıt `code` alanı içeriyorsa, hata kodunu ve hata iletisini yazdırın. 
 
-4. Aksi takdirde, veri kümesindeki anormalilerin konumlarını bulabilirsiniz. Yanıtın `isAnomaly` alanı, her biri bir veri noktasının bir anomali olup olmadığını gösteren bir Boole değerleri dizisi içerir. Bunu, yanıt nesnesinin `ToObject<bool[]>()` işleviyle bir dize dizisine dönüştürün. Dizi boyunca yineleyin ve herhangi bir `true` değerin dizinini yazdırın. Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
+4. Aksi takdirde, veri kümesindeki anormalilerin konumlarını bulabilirsiniz. Yanıtın `isAnomaly` alanı, her biri bir veri noktasının bir anomali olup olmadığını gösteren bir Boole değerleri dizisi içerir. Bunu, yanıt nesnesinin `ToObject<bool[]>()` işleviyle bir dize dizisine dönüştürün. Dizi boyunca yineleyin ve `true` değerlerinin dizinini yazdırın. Bu değerler, varsa anormal veri noktalarının dizinine karşılık gelir.
 
-```csharp
-static void detectAnomaliesBatch(string requestData){
-    System.Console.WriteLine("Detecting anomalies as a batch");
+    [!code-csharp[Detect anomalies batch](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesBatch)]
 
-    var result = Request(
-        endpoint,
-        batchDetectionUrl,
-        subscriptionKey,
-        requestData).Result;
-
-    dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
-    System.Console.WriteLine(jsonObj);
-
-    if (jsonObj["code"] != null){
-        System.Console.WriteLine($"Detection failed. ErrorCode:{jsonObj["code"]}, ErrorMessage:{jsonObj["message"]}");
-    }
-    else{
-        bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
-        System.Console.WriteLine("\nAnomalies detected in the following data positions:");
-        for (var i = 0; i < anomalies.Length; i++){
-            if (anomalies[i])
-            {
-                System.Console.Write(i + ", ");
-            }
-        }
-    }
-}
-```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>En son veri noktasının anomali durumunu Algıla
 
-1. Adlı `detectAnomaliesLatest()`yeni bir işlev oluşturun. Uç nokta, abonelik anahtarınız, en son nokta `Request()` anomali algılama URL 'si ve zaman serisi verileri ile işlevi çağırarak isteği oluşturun ve gönderin.
+1. @No__t_0 adlı yeni bir işlev oluşturun. İsteği oluşturun ve uç nokta, abonelik anahtarınız, en son nokta anomali algılama URL 'SI ve zaman serisi verileri ile `Request()` işlevini çağırarak gönderin.
 
 2. JSON nesnesinin serisini kaldırma ve konsola yazma.
 
-```csharp
-static void detectAnomaliesLatest(string requestData){
-    System.Console.WriteLine("\n\nDetermining if latest data point is an anomaly");
-    var result = Request(
-        endpoint,
-        latestPointDetectionUrl,
-        subscriptionKey,
-        requestData).Result;
-
-    dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
-    System.Console.WriteLine(jsonObj);
-}
-```
+[!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
 
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Zaman serisi verilerinizi yükleyin ve isteği gönderin
 
-1. Uygulamanızın ana yönteminde, JSON zaman serisi verilerinizi ile `File.ReadAllText()`yükleyin. 
+1. Uygulamanızın ana yönteminde, JSON zaman serisi verilerinizi `File.ReadAllText()` yükleyin. 
 
-2. Yukarıda oluşturulan anomali algılama işlevlerini çağırın. Uygulamayı `System.Console.ReadKey()` çalıştırdıktan sonra konsol penceresini açık tutmak için kullanın.
+2. Yukarıda oluşturulan anomali algılama işlevlerini çağırın. Uygulamayı çalıştırdıktan sonra konsol penceresini açık tutmak için `System.Console.ReadKey()` kullanın.
 
-```csharp
-static void Main(string[] args){
-
-    var requestData = File.ReadAllText(dataPath);
-
-    detectAnomaliesBatch(requestData);
-    detectAnomaliesLatest(requestData);
-
-    System.Console.ReadKey();
-}
-```
+    [!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=main)]
 
 ### <a name="example-response"></a>Örnek yanıt
 
@@ -187,4 +110,8 @@ JSON biçiminde başarılı bir yanıt döndürülür. GitHub 'da JSON yanıtın
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [REST API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+>[Azure Databricks ile akış anomali algılama](../tutorials/anomaly-detection-streaming-databricks.md)
+
+* [Anomali ALGıLAYıCı API nedir?](../overview.md)
+* Anomali algılayıcı API 'sini kullanırken [en iyi uygulamalar](../concepts/anomaly-detection-best-practices.md) .
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)' da bulunabilir.

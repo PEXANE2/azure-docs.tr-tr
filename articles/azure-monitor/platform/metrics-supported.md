@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e2cd3b66385d37815d0fc51a70ca31aba25db29
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528617"
+ms.locfileid: "72551971"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
@@ -1437,68 +1437,78 @@ Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluş
 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Boyut yok|
-|physical_data_read_percent|Veri G/Ç yüzdesi|Yüzde|Ortalama|Veri G/Ç yüzdesi|Boyut yok|
-|log_write_percent|Günlük GÇ yüzdesi|Yüzde|Ortalama|Günlük GÇ yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
-|dtu_consumption_percent|DTU yüzdesi|Yüzde|Ortalama|DTU yüzdesi. DTU tabanlı veritabanları için geçerlidir.|Boyut yok|
-|depolama|Kullanılan veri alanı|Sayacının|Maksimum|Toplam veritabanı boyutu. Veri ambarlarında geçerli değildir.|Boyut yok|
-|connection_successful|Başarılı bağlantılar|Sayı|Toplam|Başarılı bağlantılar|Boyut yok|
-|connection_failed|Başarısız Bağlantılar|Sayı|Toplam|Başarısız Bağlantılar|Boyut yok|
-|blocked_by_firewall|Güvenlik duvarı tarafından engellendi|Sayı|Toplam|Güvenlik duvarı tarafından engellendi|Boyut yok|
-|Çözül|Çık|Sayı|Toplam|Çık. Veri ambarlarında geçerli değildir.|Boyut yok|
-|storage_percent|Kullanılan veri alanı yüzdesi|Yüzde|Maksimum|Veritabanı boyutu yüzdesi. Veri ambarları veya hiper ölçekli veritabanları için geçerli değildir.|Boyut yok|
-|xtp_storage_percent|Bellek içi OLTP depolama yüzdesi|Yüzde|Ortalama|Bellek içi OLTP depolaması yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
-|workers_percent|Çalışan yüzdesi|Yüzde|Ortalama|Çalışan yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
-|sessions_percent|Oturum yüzdesi|Yüzde|Ortalama|Oturum yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
-|dtu_limit|DTU sınırı|Sayı|Ortalama|DTU sınırı. DTU tabanlı veritabanları için geçerlidir.|Boyut yok|
-|dtu_used|Kullanılan DTU|Sayı|Ortalama|DTU kullanıldı. DTU tabanlı veritabanları için geçerlidir.|Boyut yok|
-|cpu_limit|CPU sınırı|Sayı|Ortalama|CPU sınırı. Sanal çekirdek tabanlı veritabanları için geçerlidir.|Boyut yok|
-|cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU. Sanal çekirdek tabanlı veritabanları için geçerlidir.|Boyut yok|
-|dwu_limit|DWU sınırı|Sayı|Maksimum|DWU sınırı. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
-|dwu_consumption_percent|DWU yüzdesi|Yüzde|Maksimum|DWU yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
-|dwu_used|Kullanılan DWU|Sayı|Maksimum|DWU kullanıldı. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
-|dw_cpu_percent|DW düğüm düzeyi CPU yüzdesi|Yüzde|Ortalama|DW düğüm düzeyi CPU yüzdesi|Dwlogicalnodeıd|
-|dw_physical_data_read_percent|DW düğüm düzeyi veri GÇ yüzdesi|Yüzde|Ortalama|DW düğüm düzeyi veri GÇ yüzdesi|Dwlogicalnodeıd|
-|cache_hit_percent|İsabetli önbellek okuması yüzdesi|Yüzde|Maksimum|İsabetli önbellek okuması yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
-|cache_used_percent|Önbellek kullanılan yüzde|Yüzde|Maksimum|Önbellek kullanım yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
-|local_tempdb_usage_percent|Yerel tempdb yüzdesi|Yüzde|Ortalama|Yerel tempdb yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|allocated_data_storage|Ayrılan veri alanı|Sayacının|Ortalama|Ayrılan veri alanı. Veri ambarlarında geçerli değildir.|Boyut yok|
 |app_cpu_billed|Faturalandırılan uygulama CPU 'SU|Sayı|Toplam|Uygulama CPU 'SU faturalandırılır. Sunucusuz veritabanları için geçerlidir.|Boyut yok|
 |app_cpu_percent|Uygulama CPU yüzdesi|Yüzde|Ortalama|Uygulama CPU yüzdesi. Sunucusuz veritabanları için geçerlidir.|Boyut yok|
 |app_memory_percent|Kullanılan uygulama belleği yüzdesi|Yüzde|Ortalama|Kullanılan uygulama belleği yüzdesi. Sunucusuz veritabanları için geçerlidir.|Boyut yok|
-|allocated_data_storage|Ayrılan veri alanı|Sayacının|Ortalama|Ayrılan veri alanı. Veri ambarlarında geçerli değildir.|Boyut yok|
+|blocked_by_firewall|Güvenlik duvarı tarafından engellendi|Sayı|Toplam|Güvenlik duvarı tarafından engellendi|Boyut yok|
+|cache_hit_percent|İsabetli önbellek okuması yüzdesi|Yüzde|Maksimum|İsabetli önbellek okuması yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|cache_used_percent|Önbellek kullanılan yüzde|Yüzde|Maksimum|Önbellek kullanım yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|connection_failed|Başarısız Bağlantılar|Sayı|Toplam|Başarısız Bağlantılar|Boyut yok|
+|connection_successful|Başarılı bağlantılar|Sayı|Toplam|Başarılı bağlantılar|Boyut yok|
+|cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Boyut yok|
+|cpu_limit|CPU sınırı|Sayı|Ortalama|CPU sınırı. Sanal çekirdek tabanlı veritabanları için geçerlidir.|Boyut yok|
+|cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU. Sanal çekirdek tabanlı veritabanları için geçerlidir.|Boyut yok|
+|Çözül|Çık|Sayı|Toplam|Çık. Veri ambarlarında geçerli değildir.|Boyut yok|
+|dtu_limit|DTU sınırı|Sayı|Ortalama|DTU sınırı. DTU tabanlı veritabanları için geçerlidir.|Boyut yok|
+|dtu_consumption_percent|DTU yüzdesi|Yüzde|Ortalama|DTU yüzdesi. DTU tabanlı veritabanları için geçerlidir.|Boyut yok|
+|dtu_used|Kullanılan DTU|Sayı|Ortalama|DTU kullanıldı. DTU tabanlı veritabanları için geçerlidir.|Boyut yok|
+|dw_cpu_percent|DW düğüm düzeyi CPU yüzdesi|Yüzde|Ortalama|DW düğüm düzeyi CPU yüzdesi|Dwlogicalnodeıd|
+|dw_physical_data_read_percent|DW düğüm düzeyi veri GÇ yüzdesi|Yüzde|Ortalama|DW düğüm düzeyi veri GÇ yüzdesi|Dwlogicalnodeıd|
+|dwu_consumption_percent|DWU yüzdesi|Yüzde|Maksimum|DWU yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|dwu_limit|DWU sınırı|Sayı|Maksimum|DWU sınırı. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|dwu_used|Kullanılan DWU|Sayı|Maksimum|DWU kullanıldı. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|local_tempdb_usage_percent|Yerel tempdb yüzdesi|Yüzde|Ortalama|Yerel tempdb yüzdesi. Yalnızca veri ambarlarında geçerlidir.|Boyut yok|
+|log_write_percent|Günlük GÇ yüzdesi|Yüzde|Ortalama|Günlük GÇ yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
+|physical_data_read_percent|Veri G/Ç yüzdesi|Yüzde|Ortalama|Veri G/Ç yüzdesi|Boyut yok|
+|sessions_percent|Oturum yüzdesi|Yüzde|Ortalama|Oturum yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
+|sqlserver_process_core_percent|SQL Server işlem çekirdeği yüzdesi|Yüzde|Maksimum|Bu ölçüm bir yer tutucudur ve şu anda doldurulmamış.|Boyut yok|
+|sqlserver_process_memory_percent|SQL Server işlem belleği yüzdesi|Yüzde|Maksimum|Bu ölçüm bir yer tutucudur ve şu anda doldurulmamış.|Boyut yok|
+|depolama|Kullanılan veri alanı|Sayacının|Maksimum|Toplam veritabanı boyutu. Veri ambarlarında geçerli değildir.|Boyut yok|
+|storage_percent|Kullanılan veri alanı yüzdesi|Yüzde|Maksimum|Veritabanı boyutu yüzdesi. Veri ambarları veya hiper ölçekli veritabanları için geçerli değildir.|Boyut yok|
+|tempdb_data_size|Tempdb veri dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb veri dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir.|Boyut yok|
+|tempdb_log_size|Tempdb günlük dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb günlük dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir.|Boyut yok|
+|tempdb_log_used_percent|Kullanılan tempdb günlüğü yüzdesi|Yüzde|Maksimum|Kullanılan tempdb günlüğü yüzdesi. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir.|Boyut yok|
+|workers_percent|Çalışan yüzdesi|Yüzde|Ortalama|Çalışan yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
+|xtp_storage_percent|Bellek içi OLTP depolama yüzdesi|Yüzde|Ortalama|Bellek içi OLTP depolaması yüzdesi. Veri ambarlarında geçerli değildir.|Boyut yok|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/Servers/Elaun havuzları
 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Boyut yok|
-|physical_data_read_percent|Veri G/Ç yüzdesi|Yüzde|Ortalama|Veri G/Ç yüzdesi|Boyut yok|
-|log_write_percent|Günlük GÇ yüzdesi|Yüzde|Ortalama|Günlük GÇ yüzdesi|Boyut yok|
-|dtu_consumption_percent|DTU yüzdesi|Yüzde|Ortalama|DTU yüzdesi. DTU tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
-|storage_percent|Kullanılan veri alanı yüzdesi||Yüzde|Ortalama|Depolama yüzdesi|Boyut yok|
-|workers_percent|Çalışan yüzdesi|Yüzde|Ortalama|Çalışan yüzdesi|Boyut yok|
-|sessions_percent|Oturum yüzdesi|Yüzde|Ortalama|Oturum yüzdesi|Boyut yok|
-|eDTU_limit|eDTU sınırı|Sayı|Ortalama|eDTU sınırı. DTU tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
-|storage_limit|Veri boyutu üst sınırı|Sayacının|Ortalama|Depolama sınırı|Boyut yok|
-|eDTU_used|eDTU kullanıldı|Sayı|Ortalama|eDTU kullanıldı. DTU tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
-|storage_used|Kullanılan veri alanı|Sayacının|Ortalama|Kullanılan depolama|Boyut yok|
-|xtp_storage_percent|Bellek içi OLTP depolama yüzdesi|Yüzde|Ortalama|Bellek içi OLTP depolama yüzdesi|Boyut yok|
-|cpu_limit|CPU sınırı|Sayı|Ortalama|CPU sınırı. Sanal çekirdek tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
-|cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU. Sanal çekirdek tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
 |allocated_data_storage|Ayrılan veri alanı|Sayacının|Ortalama|Ayrılan veri alanı|Boyut yok|
 |allocated_data_storage_percent|Ayrılan veri alanı yüzdesi|Yüzde|Maksimum|Ayrılan veri alanı yüzdesi|Boyut yok|
+|cpu_limit|CPU sınırı|Sayı|Ortalama|CPU sınırı. Sanal çekirdek tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
+|cpu_percent|CPU yüzdesi|Yüzde|Ortalama|CPU yüzdesi|Boyut yok|
+|cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU. Sanal çekirdek tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
+|dtu_consumption_percent|DTU yüzdesi|Yüzde|Ortalama|DTU yüzdesi. DTU tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
+|eDTU_limit|eDTU sınırı|Sayı|Ortalama|eDTU sınırı. DTU tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
+|eDTU_used|eDTU kullanıldı|Sayı|Ortalama|eDTU kullanıldı. DTU tabanlı elastik havuzlar için geçerlidir.|Boyut yok|
+|log_write_percent|Günlük GÇ yüzdesi|Yüzde|Ortalama|Günlük GÇ yüzdesi|Boyut yok|
+|physical_data_read_percent|Veri G/Ç yüzdesi|Yüzde|Ortalama|Veri G/Ç yüzdesi|Boyut yok|
+|sessions_percent|Oturum yüzdesi|Yüzde|Ortalama|Oturum yüzdesi|Boyut yok|
+|storage_limit|Veri boyutu üst sınırı|Sayacının|Ortalama|Depolama sınırı|Boyut yok|
+|storage_percent|Kullanılan veri alanı yüzdesi||Yüzde|Ortalama|Depolama yüzdesi|Boyut yok|
+|storage_used|Kullanılan veri alanı|Sayacının|Ortalama|Kullanılan depolama|Boyut yok|
+|sqlserver_process_core_percent|SQL Server işlem çekirdeği yüzdesi|Yüzde|Maksimum|Bu ölçüm bir yer tutucudur ve şu anda doldurulmamış.|Boyut yok|
+|sqlserver_process_memory_percent|SQL Server işlem belleği yüzdesi|Yüzde|Maksimum|Bu ölçüm bir yer tutucudur ve şu anda doldurulmamış.|Boyut yok|
+|tempdb_data_size|Tempdb veri dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb veri dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir.|Boyut yok|
+|tempdb_log_size|Tempdb günlük dosyası boyutu kilobayt|Sayı|Maksimum|Tempdb günlük dosyası boyutu kilobayt. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir.|Boyut yok|
+|tempdb_log_used_percent|Kullanılan tempdb günlüğü yüzdesi|Yüzde|Maksimum|Kullanılan tempdb günlüğü yüzdesi. Veri ambarlarında geçerli değildir. Bu ölçüm, DTU tabanlı satın alma modelleri için vCore satın alma modeli veya 100 DTU ve üzeri kullanan veritabanlarında kullanılabilir.|Boyut yok|
+|workers_percent|Çalışan yüzdesi|Yüzde|Ortalama|Çalışan yüzdesi|Boyut yok|
+|xtp_storage_percent|Bellek içi OLTP depolama yüzdesi|Yüzde|Ortalama|Bellek içi OLTP depolama yüzdesi|Boyut yok|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/ManagedInstances
 
 |Ölçüm|Ölçüm görünen adı|Birim|Toplama türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|virtual_core_count|Sanal çekirdek sayısı|Sayı|Ortalama|Sanal çekirdek sayısı|Boyut yok|
 |avg_cpu_percent|Ortalama CPU yüzdesi|Yüzde|Ortalama|Ortalama CPU yüzdesi|Boyut yok|
+|io_bytes_read|Okunan GÇ baytları|Sayacının|Ortalama|Okunan GÇ baytları|Boyut yok|
+|io_requests|GÇ istek sayısı|Sayı|Ortalama|GÇ istek sayısı|Boyut yok|
+|io_bytes_written|Yazılan GÇ baytları|Sayacının|Ortalama|Yazılan GÇ baytları|Boyut yok|
 |reserved_storage_mb|Ayrılan depolama alanı|Sayı|Ortalama|Ayrılan depolama alanı|Boyut yok|
 |storage_space_used_mb|Kullanılan depolama alanı|Sayı|Ortalama|Kullanılan depolama alanı|Boyut yok|
-|io_requests|GÇ istek sayısı|Sayı|Ortalama|GÇ istek sayısı|Boyut yok|
-|io_bytes_read|Okunan GÇ baytları|Sayacının|Ortalama|Okunan GÇ baytları|Boyut yok|
-|io_bytes_written|Yazılan GÇ baytları|Sayacının|Ortalama|Yazılan GÇ baytları|Boyut yok|
+|virtual_core_count|Sanal çekirdek sayısı|Sayı|Ortalama|Sanal çekirdek sayısı|Boyut yok|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

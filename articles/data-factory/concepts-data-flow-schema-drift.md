@@ -7,16 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 8c2764535515d0aeb1eb65a1621148fa58317cac
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387960"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553703"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Eşleme veri akışı 'nda şema kayması
-
-
 
 Şema kayması, kaynaklarınızın genellikle meta verileri değiştirme durumdur. Alanlar, sütunlar ve türler anında eklenebilir, kaldırılabilir veya değiştirilebilir. Şema kayması için işlem yapılmadan veri akışınız, yukarı akış veri kaynağı değişikliklerine karşı savunmasız hale gelir. Gelen sütunlar ve alanlar bu kaynak adlarına bağlı olduğundan, tipik ETL desenleri başarısız olur.
 
@@ -31,6 +29,8 @@ Azure Data Factory, yürütme durumundan yürütmeye değişen esnek şemaları,
 Akış genelinde şema drını kabul etmek için veri akışınızda bir mimari karar vermeniz gerekir. Bunu yaptığınızda, kaynaklardaki şema değişikliklerine karşı koruma sağlayabilirsiniz. Ancak, veri akışınız boyunca sütunlarınızın ve türlerinizi erken bağlamayı kaybedersiniz. Azure Data Factory, şema kuruta akışlarını geç bağlama akışları olarak değerlendirir. bu nedenle, dönüştürmelerinizi oluştururken düzeltebilecekler sütun adları, akış genelindeki şema görünümlerinde sizin için kullanılamaz.
 
 ## <a name="schema-drift-in-source"></a>Kaynaktaki şema kayması
+
+Kaynak tanımınızdan veri akışınıza gelen sütunlar, kaynak projeksiyonda mevcut olmadığında "düzeltebilecekler" olarak tanımlanır. Kaynak dönüşümünüzü yansıtma sekmesinden Kaynak projeksiyonunu görüntüleyebilirsiniz. Kaynağınız için bir veri kümesi seçtiğinizde, ADF otomatik olarak veri kümesinden şemayı alır ve bu veri kümesi şema tanımından bir proje oluşturur.
 
 Kaynak dönüşümünde, şema kayması, veri kümesi şemanız tanımlı olmayan okuma sütunları olarak tanımlanmıştır. Şema drmasını etkinleştirmek için, kaynak dönüşümünüze **şema Drçıkmasına Izin ver** ' i işaretleyin.
 

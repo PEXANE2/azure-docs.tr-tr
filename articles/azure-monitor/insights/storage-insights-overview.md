@@ -1,24 +1,18 @@
 ---
 title: Depolama için Azure Izleyici (Önizleme) ile Azure depolama hizmetlerini izleme | Microsoft Docs
 description: Bu makalede, Azure depolama hesaplarıyla ilgili performans ve kullanım sorunlarını hızlı bir şekilde anlamak için depolama yöneticileri sağlayan depolama için Azure Izleyici özelliği açıklanır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.date: 08/15/2019
+ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212770"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553887"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme (Önizleme)
 
@@ -53,7 +47,7 @@ Azure Izleyici 'den, aboneliğinizdeki birden çok depolama hesabından işlem, 
 
 Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve kullanılabilirliğini görüntülemek için aşağıdaki adımları gerçekleştirin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portal sol bölmeden **izleyici** ' yi seçin ve **Öngörüler** bölümünde **depolama hesapları ' nı (Önizleme)** seçin.
 
@@ -78,8 +72,8 @@ Açılan listelerin altındaki sayaç kutucuğu, abonelikteki toplam depolama he
 
 Varsayılan **kullanılabilirlik** eşiği:
 
-* Uyarı-% 99
-* Kritik-% 90
+* Uyarı-%99
+* Kritik-%90
 
 Bir kullanılabilirlik eşiğini gözlemlerinizin veya gereksinimlerin sonuçlarına göre ayarlamak için, [kullanılabilirlik eşiğini Değiştir](#modify-the-availability-threshold)' i gözden geçirin. 
 
@@ -195,7 +189,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 4. **Kullanılan kapasite zaman çizelgesi** sütununu kaldıracağız, bu nedenle ölçümler kılavuzunda **sütun ayarları** ' nı seçin.
 
-    ![Sütun ayarlarını düzenle](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
+    ![Sütun ayarlarını Düzenle](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
 5. **Sütun ayarlarını Düzenle** bölmesinde, **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli**öğesini seçin. 
 
@@ -213,7 +207,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
 ### <a name="modify-the-availability-threshold"></a>Kullanılabilirlik eşiğini değiştirme
 
-Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışıyoruz ve kullanılabilirlik eşiğini nasıl değiştireceğiniz gösterilir. Varsayılan olarak, kutucuk ve ızgara raporlama yüzdesi kullanılabilirliği, minimum 90 eşiğini ve en fazla 99 eşiğini kullanarak yapılandırılır. En düşük eşik değerini, **API adı ızgarası tarafından kullanılabilirlik** açısından **% 85** olarak değiştirebiliyoruz. bu, eşiğin yüzde 85 ' den küçük olması durumunda sağlık durumunun kritik olarak değiştiği anlamına gelir. 
+Bu örnekte, depolama hesabı kapasite çalışma kitabıyla birlikte çalışıyoruz ve kullanılabilirlik eşiğini nasıl değiştireceğiniz gösterilir. Varsayılan olarak, kutucuk ve ızgara raporlama yüzdesi kullanılabilirliği, minimum 90 eşiğini ve en fazla 99 eşiğini kullanarak yapılandırılır. En düşük eşik değerini, **API adı ızgarası tarafından kullanılabilirlik** açısından **%85** olarak değiştirebiliyoruz. bu, eşiğin yüzde 85 ' den küçük olması durumunda sağlık durumunun kritik olarak değiştiği anlamına gelir. 
 
 1. Portaldan **depolama hesapları** ' nı seçin ve ardından listeden bir depolama hesabı seçin.
 

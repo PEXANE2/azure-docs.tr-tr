@@ -1,24 +1,18 @@
 ---
 title: System Center Operations Manager ile tümleştirme VM'ler için Azure İzleyici | Microsoft Docs
 description: VM'ler için Azure İzleyici Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, Operations Manager ' de otomatik olarak dağıtılmış uygulama diyagramları oluşturmak için harita özelliğinin kullanılması anlatılmaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 07/12/2019
+ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489713"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553966"
 ---
 # <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>VM'ler için Azure İzleyici Map özelliği ile System Center Operations Manager tümleştirme
 
@@ -48,7 +42,7 @@ Microsoft. SystemCenter. ServiceMap yönetim paketi paketini (Microsoft. SystemC
 Hizmet Eşlemesi yönetim paketini yükledikten sonra, **hizmet eşlemesi**yeni bir düğüm, Operations Manager işletim konsolunuzun **Yönetim** bölmesinde **Operations Management Suite** altında görüntülenir.
 
 >[!NOTE]
->[Operations Management Suite](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , Log Analytics dahil olan hizmetlerden oluşan bir koleksiyondur. artık [Azure izleyici](../overview.md)'nin bir parçasıdır.
+>[Operations Management Suite, Log Analytics dahil olan hizmetlerden oluşan bir koleksiyondur](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) . artık [Azure izleyici](../overview.md)'nin bir parçasıdır.
 
 VM'ler için Azure İzleyici eşleme tümleştirmesini yapılandırmak için aşağıdakileri yapın:
 
@@ -94,26 +88,26 @@ Log Analytics çalışma alanı bağlandıktan sonra, Operations Manager Işleti
 
 Hizmet Eşlemesi klasörü dört düğüme sahiptir:
 
-* **Etkin uyarılar**: Operations Manager ile Azure Izleyici arasındaki iletişimle ilgili tüm etkin uyarıları listeler.  
+* **Etkin uyarılar**: Operations Manager Ile Azure izleyici arasındaki iletişimle ilgili tüm etkin uyarıları listeler.  
 
   >[!NOTE]
   >Bu uyarılar Operations Manager ile eşitlenen Log Analytics uyarıları değil, Hizmet Eşlemesi yönetim paketinde tanımlanan iş akışlarına göre yönetim grubunda oluşturulur.
 
-* **Sunucular**: VM'ler için Azure İzleyici eşleme özelliğinden eşitlenecek şekilde yapılandırılan izlenen sunucuları listeler.
+* **Sunucular**: VM'ler için Azure izleyici eşleme özelliğinden eşitlenecek şekilde yapılandırılan izlenen sunucuları listeler.
 
     ![Operations Manager Izleme sunucuları bölmesi](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Makine grubu bağımlılığı görünümleri**: Harita özelliğinden eşitlenen tüm makine gruplarını listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir gruba tıklayabilirsiniz.
+* **Makine grubu bağımlılığı görünümleri**: harita özelliğinden eşitlenen tüm makine gruplarını listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir gruba tıklayabilirsiniz.
 
     ![Operations Manager dağıtılmış uygulama diyagramı](media/service-map-scom/scom-group-dad.png)
 
-* **Sunucu bağımlılığı görünümleri**: Harita özelliğinden eşitlenen tüm sunucuları listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir sunucu ' ya tıklayabilirsiniz.
+* **Sunucu bağımlılığı görünümleri**: harita özelliğinden eşitlenen tüm sunucuları listeler. Dağıtılmış uygulama diyagramını görüntülemek için herhangi bir sunucu ' ya tıklayabilirsiniz.
 
     ![Operations Manager dağıtılmış uygulama diyagramı](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Çalışma alanını düzenleme veya silme
 
-Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesinde düzenleyebilir veya silebilirsiniz (**Yönetim** bölmesi > **Operations Management Suite** > **hizmet eşlemesi**).
+Yapılandırılan çalışma alanını **hizmet eşlemesi genel bakış** bölmesi (**Yönetim** bölmesi > **Operations Management Suite**  > **hizmet eşlemesi**) aracılığıyla düzenleyebilir veya silebilirsiniz.
 
 >[!NOTE]
 >Operations Management Suite, artık [Azure izleyici](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)'nin bir parçası olan Log Analytics dahil olan [hizmetlerden oluşan bir koleksiyondur](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) .
@@ -128,10 +122,10 @@ Bir kural, *Microsoft. SystemCenter. Servicemapımport. Rule*, düzenli aralıkl
 
 ![Operations Manager Özellikler penceresi geçersiz kılınır](media/service-map-scom/scom-overrides.png)
 
-* **Etkin**: Otomatik güncelleştirmeleri etkinleştirin veya devre dışı bırakın.
-* **Interınminutes**: Güncelleştirmeler arasındaki süreyi belirtir. Varsayılan Aralık bir saattir. Haritaları daha sık eşitlemek istiyorsanız, değeri değiştirebilirsiniz.
-* **TimeoutSeconds**: İstek zaman aşımına uğramadan önce geçen sürenin uzunluğunu belirtir.
-* **Timewindowminutes**: Verileri sorgulamak için zaman penceresini belirtir. Varsayılan değer, izin verilen en fazla Aralık olan 60 dakikadır.
+* **Etkin**: otomatik güncelleştirmeleri etkinleştirin veya devre dışı bırakın.
+* **Interınminutes**: güncelleştirmeler arasındaki süreyi belirtir. Varsayılan Aralık bir saattir. Haritaları daha sık eşitlemek istiyorsanız, değeri değiştirebilirsiniz.
+* **TimeoutSeconds**: istek zaman aşımına uğramadan önceki sürenin uzunluğunu belirtir.
+* **Timewindowminutes**: verileri sorgulamak için zaman penceresini belirtir. Varsayılan değer, izin verilen en fazla Aralık olan 60 dakikadır.
 
 ## <a name="known-issues-and-limitations"></a>Bilinen sorunlar ve sınırlamalar
 

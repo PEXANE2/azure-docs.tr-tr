@@ -9,12 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: b5a161e570489e6382f2226ab5dc9a1c34dc67df
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028328"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553620"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure Search içindeki AI zenginleştirme işlem hattının ortak hataları ve uyarıları
 
@@ -35,7 +35,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 
 | Neden | Örnek | Eylem |
 | --- | --- | --- |
-| farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. @No__t-0, yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih saat ise ve ikinci belgede bir dize ise, bu hata olur. |
+| farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. @No__t_0 yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih saat ise ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
 | geçici sorunlar | Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 
@@ -57,40 +57,22 @@ Dizin Oluşturucu veri kaynağından belgeyi okudu, ancak belge içeriği belirt
 | Belge anahtarı eksik | Belge anahtarı eksik veya boş olamaz | Tüm belgelerin geçerli belge anahtarlarına sahip olduğundan emin olun |
 | Belge anahtarı geçersiz | Belge anahtarı 1024 karakterden uzun olamaz | Belge anahtarını doğrulama gereksinimlerini karşılayacak şekilde değiştirin. |
 | Alan eşlemesi bir alana uygulanamadı | Eşleme işlevi `'functionName'` `'fieldName'` alanına uygulanamadı. Dizi null olamaz. Parametre adı: bayt | Dizin oluşturucuda tanımlı [alan eşlemelerini](search-indexer-field-mappings.md) iki kez kontrol edin ve başarısız olan belgenin belirtilen alanındaki verilerle karşılaştırın. Alan eşlemelerini veya belge verilerini değiştirmek gerekebilir. |
-| Alan değeri okunamadı | @No__t-1 dizinindeki `'fieldName'` sütununun değeri okunamadı. Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı.) | Bu hatalar genellikle veri kaynağının temelindeki hizmet ile ilgili beklenmedik bağlantı sorunlarından kaynaklanır. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
+| Alan değeri okunamadı | Dizin `'fieldIndex'` `'fieldName'` sütunun değeri okunamadı. Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı.) | Bu hatalar genellikle veri kaynağının temelindeki hizmet ile ilgili beklenmedik bağlantı sorunlarından kaynaklanır. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 
-### <a name="could-not-index-document"></a>Belge dizini oluşturulamadı
-Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
+### <a name="could-not-execute-skill"></a>Yetenek yürütülemedi
+Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
 
 | Neden | Örnek | Eylem |
 | --- | --- | --- |
-| Bir alan çok büyük bir terim içeriyor | Belgenizdeki bir terim [32 KB sınırından](search-limits-quotas-capacity.md#api-request-limits) daha büyük | Alanın filtrelenebilir, çok yönlü veya sıralanabilir olarak yapılandırılmadığından emin olmak için bu kısıtlamayı önleyebilirsiniz.
-| Belge dizine eklenemeyecek kadar büyük | Belge, [en yüksek API istek boyutundan](search-limits-quotas-capacity.md#api-request-limits) daha büyük | [Büyük veri kümelerini dizin oluşturma](search-howto-large-index.md)
+| Geçici bağlantı sorunları | Geçici bir hata oluştu. Lütfen daha sonra tekrar deneyin. | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
+| Olası ürün hatası | Beklenmeyen bir hata oluştu. | Bu, bilinmeyen bir hata sınıfını gösterir ve bir ürün hatası olduğu anlamına gelebilir. Yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) girin. |
+| Bir beceri yürütme sırasında bir hatayla karşılaştı | (Birleştirme becerinizden) Bir veya daha fazla fark değeri geçersizdi ve ayrıştırılamadı. Metnin sonuna öğe eklendi | Sorunu giderecek hata iletisindeki bilgileri kullanın. Bu tür bir hata çözümü için eylem gerekir. |
 
-### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>' LanguageCode ' yetenek girişinde, en az bir tane geçersiz olan ' X, Y, Z ' dil kodları vardır.
-Bir aşağı akış beceriye ilişkin isteğe bağlı `languageCode` girişine geçirilen bir veya daha fazla değer desteklenmiyor. Bu durum, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) çıktısını sonraki becerilerle geçirmeniz durumunda meydana gelir ve çıktı bu aşağı akış becerilerinizi desteklenenden daha fazla dilde oluşur.
+### <a name="could-not-execute-skill-because-the-web-api-request-failed"></a>Web API isteği başarısız olduğu için yetenek yürütülemedi
+Web API 'sine yapılan çağrı başarısız olduğundan yetenek yürütmesi başarısız oldu. Genellikle, bu hata sınıfı özel yetenekler kullanıldığında oluşur, bu durumda sorunu çözmek için özel kodunuzda hata ayıklaması yapmanız gerekir. Bunun yerine başarısızlık bir yerleşik beceriye ait ise, sorunu gidermeye yardımcı olması için hata iletisine bakın.
 
-Veri ayarlamış olduğunuz tek bir dilde olduğunu biliyorsanız, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` yetenek girişini kaldırmalı ve bu beceri için dilin desteklendiği varsayılarak, bu beceri için `defaultLanguageCode` yetenek parametresini kullanmanız gerekir.
-
-Veri ayarlamış olduğunuz dilin birden çok dil içerdiğini ve bu nedenle [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` girdisine ihtiyacınız olduğunu biliyorsanız, şunu içine geçirmeden önce desteklenmeyen dillerle metni filtrelemek Için bir [conditionalbeceri](cognitive-search-skill-conditional.md) eklemeyi göz önünde bulundurun. aşağı akış beceriye metin.  İşte bunun Entityrecognitionbeceri için nasıl görünebileceğini bir örnek:
-
-```json
-{
-    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
-    "context": "/document",
-    "inputs": [
-        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
-        { "name": "whenTrue", "source": "/document/content" },
-        { "name": "whenFalse", "source": "= null" }
-    ],
-    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
-}
-```
-
-Bu hata iletisini oluşturabilecek yeteneklerin her biri için şu anda desteklenen dillere yönelik bazı başvurular aşağıda verilmiştir:
-* [Desteklenen metin analizi diller](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ( [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)ve [sentimentbecerisi](cognitive-search-skill-sentiment.md)için)
-* [Translator tarafından desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ( [metin Için translationbeceri](cognitive-search-skill-text-translation.md)için)
-* [Metin bölünmüş beceri](cognitive-search-skill-textsplit.md) Desteklenen Diller: `da, de, en, es, fi, fr, it, ko, pt`
+### <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Web API 'SI yetenek yanıtı geçersiz olduğundan yetenek yürütülemedi
+Web API çağrısı geçersiz bir yanıt döndürdüğünden yetenek yürütmesi başarısız oldu. Genellikle, bu hata sınıfı özel yetenekler kullanıldığında oluşur, bu durumda sorunu çözmek için özel kodunuzda hata ayıklaması yapmanız gerekir. Bunun yerine başarısızlık bir yerleşik beceriye ait ise, yardım almak için lütfen bir [destek bileti](https://ms.portal.azure.com/#create/Microsoft.Support) bildirin.
 
 ### <a name="skill-did-not-execute-within-the-time-limit"></a>Yetenek zaman sınırı içinde yürütülemedi
 Bu hata iletisiyle karşılaşacağınız iki durum vardır; bunların her biri farklı bir şekilde ele alınmalıdır. Lütfen bu hatayı sizin için hangi beceriye döndürdiğine bağlı olarak aşağıdaki yönergeleri izleyin.
@@ -123,9 +105,9 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
       }
 ```
 
-@No__t-0 parametresi için ayarlayabileceğiniz maksimum değer 230 saniyedir.  Özel becerinizde sürekli olarak 230 saniye içinde yürütülemediğinde, tek bir yürütmede işlemek üzere daha az belge olması için özel becerinizdeki `batchSize` ' ı azaltmayı düşünebilirsiniz.  @No__t-0 ' ı zaten 1 olarak ayarladıysanız, bu yeteneği 230 saniye altında yürütebilmek için yeniden yazmanız gerekir veya herhangi bir özel yeteneğin yürütme süresi en fazla 230 saniyelik olacak şekilde birden çok özel beceriye bölebilirsiniz. Daha fazla bilgi için [özel beceri belgelerini](cognitive-search-custom-skill-web-api.md) gözden geçirin.
+@No__t_0 parametresi için ayarlayabileceğiniz maksimum değer 230 saniyedir.  Özel becerinizde sürekli olarak 230 saniye içinde yürütülemediğinde, tek bir yürütmede işlemek üzere daha az belge olması için özel becerinizdeki `batchSize` ' ı azaltmayı düşünebilirsiniz.  @No__t_0 zaten 1 olarak ayarladıysanız, yeteneği 230 saniye altında yürütebilmek için yeniden yazmanız gerekir veya herhangi bir özel beceri için yürütme süresi en fazla 230 saniyelik olacak şekilde birden çok özel beceriye bölebilirsiniz. Daha fazla bilgi için [özel beceri belgelerini](cognitive-search-custom-skill-web-api.md) gözden geçirin.
 
-### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>' @No__t-0 ' | arama dizinine ' `Delete` ' belgesi
+### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>' @No__t_0 ' | arama dizinine ' `Delete` ' belgesi
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
@@ -137,8 +119,74 @@ Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi.
 | Arama hizmeti 'nin hizmet güncelleştirmesi için düzeltme eki uygulanıyor veya bir topoloji yeniden yapılandırması ortasında. | Güncelleştirme diziniyle bağlantı kurulamadı. Arama hizmeti şu anda açık/arama hizmeti bir geçiş işlemi yaşıyor. | [SLA belgeleri](https://azure.microsoft.com/support/legal/sla/search/v1_0/) başına% 99,9 kullanılabilirlik için en az 3 çoğaltmalarla hizmeti yapılandırın
 | Temeldeki işlem/ağ kaynağında hata (nadir) | Güncelleştirme diziniyle bağlantı kurulamadı. Bilinmeyen bir hata oluştu. | Başarısız bir durumdan almak için [bir zamanlamaya göre çalıştırılacak](search-howto-schedule-indexers.md) Dizin oluşturucularını yapılandırın.
 
+### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Dizine eklenecek Dizin Oluşturucu verileri geçersiz olduğundan belge dizini oluşturulamadı
+
+Belge okundu ve işlendi, ancak dizin alanlarının yapılandırmasındaki bir uyumsuzluk ve Dizin Oluşturucu tarafından ayıklanan verilerin doğası nedeniyle arama dizinine eklenemedi. Bunun nedeni aşağıdakiler olabilir:
+
+| Neden | Örnek
+| --- | ---
+| Dizin Oluşturucu tarafından ayıklanan alanların veri türü, karşılık gelen hedef dizin alanının veri modeliyle uyumsuz. | '_Data_' anahtarına sahip belgedeki '_Data_' veri alanı ' Edm. String ' ' türünde geçersiz bir değere sahip. Beklenen tür ' Collection (EDM. String) ' idi. |
+| Dize değerinden herhangi bir JSON varlığı ayıklanamadı. | '_Data_' alanının ' Edm. String ' ' DEĞERI bir JSON nesnesi olarak ayrıştırılamadı. Hata: ' bir değer ayrıştırdıktan sonra beklenmeyen bir karakterle karşılaşıldı: ' '. Yol '_yol_', satır 1, konum 3162. ' |
+| JSON varlıklarının bir koleksiyonu bir dize değerinden ayıklanamadı.  | '_Data_' alanının ' Edm. String ' ' DEĞERI bir JSON dizisi olarak ayrıştırılamadı. Hata: ' bir değer ayrıştırdıktan sonra beklenmeyen bir karakterle karşılaşıldı: ' '. Yol ' [0] ', satır 1, konum 27. ' |
+| Kaynak belgede bilinmeyen bir tür bulundu. | Bilinmeyen '_bilinmiyor_' türünün dizini oluşturulamaz |
+| Kaynak belgede Coğrafya noktaları için uyumsuz bir gösterim kullanıldı. | WKT noktası dize sabit değerleri desteklenmiyor. Lütfen bunun yerine GeoJson nokta sabit değerlerini kullanın |
+
+Tüm bu durumlarda, Dizin şemasını doğru bir şekilde oluşturup uygun [Dizin Oluşturucu alan eşlemelerini](search-indexer-field-mappings.md)ayarlamış olduğunuzdan emin olmak Için [desteklenen veri türleri (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [Azure Search Dizinleyicileri için veri türü eşlemesi](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) ' ne bakın. Hata iletisi, uyuşmazlığın kaynağını izlemeye yardımcı olabilecek ayrıntıları içerir.
+
 ##  <a name="warnings"></a>Uyarılarına
 Uyarılar Dizin oluşturmayı durdurmaz, ancak beklenmedik sonuçlar oluşmasına neden olabilecek koşullar olduğunu gösterir. Eyleme ve senaryonuza bağlı olup olmadığına bakılmaksızın.
+
+### <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>Yetenek girişi geçersiz olduğundan yetenek yürütülemedi
+Niteliğin bir girişi eksik, yanlış türde veya geçersiz olduğundan Dizin Oluşturucu beceri içinde bir yetenek çalıştıramıyor.
+
+Bilişsel yetenekler için gerekli girişler ve isteğe bağlı girişler vardır. Örneğin, [anahtar tümceciği ayıklama becerinin](cognitive-search-skill-keyphrases.md) iki gerekli girişi vardır `text`, `languageCode` ve isteğe bağlı giriş yoktur. Gerekli girişler varsa, Beceri atlanır ve bir uyarı oluşturur. Atlanan yetenekler hiçbir çıkış oluşturmaz, bu nedenle diğer yetenekler atlanan yeteneğin çıkışlarını kullanıyorsa, ek uyarılar oluşturabilir.
+
+Eksik giriş durumunda varsayılan bir değer sağlamak istiyorsanız, [koşullu yeteneği](cognitive-search-skill-conditional.md) kullanarak varsayılan bir değer oluşturabilir ve sonra [koşullu yeteneğin](cognitive-search-skill-conditional.md) çıkışını yetenek girişi olarak kullanabilirsiniz.
+
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == null" },
+        { "name": "whenTrue", "source": "= 'en'" },
+        { "name": "whenFalse", "source": "= $(/document/language)" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "languageWithDefault" } ]
+}
+```
+
+| Neden | Örnek | Eylem |
+| --- | --- | --- |
+| Beceri girişi yanlış türde | Gerekli yetenek girişi `X` `String` beklenen türde değil. Gerekli yetenek girişi `X` beklenen biçimde değil. | Bazı yetenekler belirli türlerin girdilerini bekler, örneğin yaklaşım [becerisi](cognitive-search-skill-sentiment.md) `text` bir dize olmasını bekler. Giriş dize olmayan bir değer belirtiyorsa, yetenek yürütülmez ve çıkış oluşturmaz. Veri ayarlamış olduğunuz giriş değerlerinin türünde Tekdüzen olduğundan emin olun veya girişi önceden işlemek için [özel bir Web API 'si](cognitive-search-custom-skill-web-api.md) kullanın. Yeteneği bir dizi üzerinden yineleyorsanız, yetenek bağlamını ve girişin doğru konumlarda `*` olduğunu kontrol edin. Genellikle bağlam ve giriş kaynağı diziler için `*` bitmelidir. |
+| Yetenek girişi eksik | Gerekli yetenek girişi `X` eksik. | Tüm belgeleriniz bu uyarıyı alıyorsa, büyük olasılıkla giriş yollarında bir yazım hatası vardır ve özellik adının büyük küçük harf, ek veya eksik `*` ve veri kaynağından alınan belgeler gerekli girdileri tanımlar. |
+| Yetenek dil kodu girişi geçersiz | Beceri girişi `languageCode`, en az biri geçersiz olan `X,Y,Z` dil kodlarını içerir. | Daha fazla ayrıntı için [aşağıya](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) bakın |
+
+### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>' LanguageCode ' yetenek girişinde, en az bir tane geçersiz olan ' X, Y, Z ' dil kodları vardır.
+Bir aşağı akış beceriye ilişkin isteğe bağlı `languageCode` girişine geçirilen bir veya daha fazla değer desteklenmiyor. Bu durum, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) çıktısını sonraki becerilerle geçirmeniz durumunda meydana gelir ve çıktı bu aşağı akış becerilerinizi desteklenenden daha fazla dilde oluşur.
+
+Veri ayarlamış olduğunuz tek bir dilde olduğunu biliyorsanız, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` yetenek girişini kaldırmalı ve bu beceri için dilin desteklendiği varsayılarak, bu beceri için `defaultLanguageCode` yetenek parametresini kullanmanız gerekir.
+
+Veri ayarlamış olduğunuz dilin birden çok dil içerdiğini ve bu nedenle [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) ve `languageCode` girdisine ihtiyacınız olduğunu biliyorsanız, şunu içine geçirmeden önce desteklenmeyen dillerle metni filtrelemek Için bir [conditionalbeceri](cognitive-search-skill-conditional.md) eklemeyi göz önünde bulundurun. aşağı akış beceriye metin.  İşte bunun Entityrecognitionbeceri için nasıl görünebileceğini bir örnek:
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
+        { "name": "whenTrue", "source": "/document/content" },
+        { "name": "whenFalse", "source": "= null" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
+}
+```
+
+Bu hata iletisini oluşturabilecek yeteneklerin her biri için şu anda desteklenen dillere yönelik bazı başvurular aşağıda verilmiştir:
+* [Desteklenen metin analizi diller](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) ( [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)ve [sentimentbecerisi](cognitive-search-skill-sentiment.md)için)
+* [Translator tarafından desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ( [metin Için translationbeceri](cognitive-search-skill-text-translation.md)için)
+* [Metin bölünmüş beceri](cognitive-search-skill-textsplit.md) Desteklenen Diller: `da, de, en, es, fi, fr, it, ko, pt`
 
 ### <a name="skill-input-was-truncated"></a>Yetenek girişi kesildi
 Bilişsel yetenekler, bir kerede çözümlenebilecek metin uzunluğuna yönelik sınırlara sahiptir. Bu yeteneklerin metin girişi bu sınırın üzerinde ise, sınırı karşılamak için metni kısaltacak ve sonra bu kesilen metinde zenginleştirme gerçekleştiririz. Bu, yeteneğin yürütüldüğü, ancak tüm verilerinizin üzerinde olmadığı anlamına gelir.
@@ -159,3 +207,6 @@ Aşağıdaki örnekte, `'text'` giriş alanı karakter sınırının üzerinde o
 ```
 
 Tüm metinlerin çözümlendiğinden emin olmak istiyorsanız, [bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
+
+### <a name="web-api-skill-response-contains-warnings"></a>Web API 'SI yetenek yanıtı uyarıları içeriyor
+Dizin Oluşturucu beceri içinde bir yetenek çalıştırabiliyor, ancak Web API isteğinden alınan yanıt yürütme sırasında uyarılar olduğunu belirtti. Verilerinizin nasıl etkilendiğini ve eylem gerekip gerekmediğini anlamak için uyarıları gözden geçirin.
