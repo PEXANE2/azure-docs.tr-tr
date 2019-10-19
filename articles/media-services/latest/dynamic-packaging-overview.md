@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383528"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595524"
 ---
 # <a name="dynamic-packaging"></a>Dinamik paketleme
 
@@ -98,7 +98,7 @@ Media Services v3 sürümünde canlı akış hakkında daha fazla bilgi için bk
 Dinamik paketleme, [h.](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) , (MPEG-4 AVC veya avc1) veya [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 veya hvc1) Ile kodlanmış video içeren MP4 dosyalarını destekler.
 
 > [!NOTE]
-> En fazla 4K çözünürlük ve 60 kare/saniye kare hızları, dinamik paketleme ile test edilmiştir. [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler. Bu konuyla ilgili sorularınız varsa lütfen amshelp@microsoft.com ile iletişime geçin. 
+> En fazla 4K çözünürlük ve 60 kare/saniye kare hızları, dinamik paketleme ile test edilmiştir. [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla H. 265 kodlamasını destekler.
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>Dinamik paketleme tarafından desteklenen <a id="audio-codecs"/>Ses codec bileşenleri
 
@@ -124,7 +124,7 @@ Dinamik paketleme birden çok codec ve dilde birden çok ses parçası olan akı
 Dinamik paketleme, [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) ses (eski bir codec) içeren dosyaları desteklemez.
 
 > [!NOTE]
-> [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla Dolby Digital Plus kodlamasını destekler. Bu konuyla ilgili sorularınız varsa lütfen amshelp@microsoft.com ile iletişime geçin. 
+> [Premium kodlayıcı](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) , eski v2 API 'Leri aracılığıyla Dolby Digital Plus kodlamasını destekler. 
 
 ## <a name="manifests"></a>Listeleri 
  
@@ -272,6 +272,10 @@ Etkin veya isteğe bağlı içeriğinizi AES-128 veya üç ana dijital hak yöne
 ## <a name="more-information"></a>Daha fazla bilgi
 
 Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) 'ye göz atın.
+
+## <a name="need-help"></a>Yardım mı gerekiyor?
+
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

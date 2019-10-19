@@ -1,6 +1,6 @@
 ---
 title: Microsoft Flow, Logic Apps, Işlevler ve Web Işleri nelerdir? - Azure
-description: 'Tümleştirme görevleri için iyileştirilmiş Microsoft bulut hizmetlerini karşılaştırın: Microsoft Flow, Logic Apps, Işlevler ve Web Işleri.'
+description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut hizmetlerini karşılaştırın: Microsoft Flow, Logic Apps, Işlevler ve Web Işleri.'
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 47e300bf242f02d458363b7d2ab7af8a4399b399
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: b131a6fd5bb39ee5ec672a8ffb75cb22087a38af
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155051"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597451"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow, Logic Apps, Işlevler ve Web Işleri nelerdir?
 
@@ -27,7 +27,9 @@ Bu makalede aşağıdaki Microsoft bulut hizmetleri karşılaştırılır:
 * [Azure İşlevleri](https://azure.microsoft.com/services/functions/)
 * [Azure App Service Web İşleri](../app-service/webjobs-create.md)
 
-Tüm bu hizmetler, tümleştirme sorunlarını çözebilir ve iş süreçlerini otomatikleştirebilir. Tümü giriş, eylemler, koşullar ve çıkış tanımı yapabilir. Her birini belirli bir zamanlamayla veya tetikleyiciyle çalıştırabilirsiniz. Her hizmetin benzersiz avantajları vardır ve bu makalede farklar açıklanmaktadır.
+Tüm bu hizmetler, tümleştirme sorunlarını çözebilir ve iş süreçlerini otomatikleştirebilir. Tümü giriş, eylemler, koşullar ve çıkış tanımı yapabilir. Her birini belirli bir zamanlamayla veya tetikleyiciyle çalıştırabilirsiniz. Her hizmetin benzersiz avantajları vardır ve bu makalede farklar açıklanmaktadır. 
+
+Azure Işlevleri ve diğer Azure işlem seçenekleri arasında daha genel bir karşılaştırma arıyorsanız, [Azure işlem hizmeti seçme](/azure/architecture/guide/technology-choices/compute-comparison) ve [mikro hizmetler için bir Azure Işlem seçeneği seçme](/azure/architecture/microservices/design/compute-options)ölçütlerine bakın.
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Microsoft Flow ve Azure Logic Apps karşılaştırması
 
@@ -45,7 +47,7 @@ Aşağıdaki tablo, Microsoft Flow veya Logic Apps belirli bir tümleştirme iç
 | Senaryolar |Self servis |Gelişmiş tümleştirmeler |
 | Tasarım Aracı |Tarayıcı içi ve mobil uygulama, yalnızca kullanıcı arabirimi |Tarayıcı içi ve [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Cod görünümü](../logic-apps/logic-apps-author-definitions.md) sağlanır |
 | Uygulama yaşam döngüsü yönetimi (ALM) |Üretim dışı ortamlarda tasarım ve test etme, hazırlık sırasında üretime yükseltme |Azure DevOps: [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) kaynak denetimi, test, destek, otomasyon ve yönetilebilirlik |
-| Yönetici deneyimi |Microsoft Flow ortamları ve veri kaybı önleme (DLP) ilkelerini yönetin, lisanslamayı izleyin: [Microsoft Flow Yönetim Merkezi](https://admin.flow.microsoft.com) |Kaynak gruplarını, bağlantıları, erişim yönetimini ve günlüğe kaydetmeyi yönetme: [Azure portal](https://portal.azure.com) |
+| Yönetici deneyimi |Microsoft Flow ortamları ve veri kaybı önleme (DLP) ilkelerini yönetme, lisanslamayı izleme: [Microsoft Flow Yönetim Merkezi](https://admin.flow.microsoft.com) |Kaynak gruplarını, bağlantıları, erişim yönetimini ve günlüğe kaydetmeyi yönetme: [Azure Portal](https://portal.azure.com) |
 | Güvenlik |Office 365 güvenlik ve uyumluluk denetim günlükleri, DLP, hassas veriler için [bekleyen şifreleme](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure güvenlik güvencesi: [Azure güvenliği](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/), [Denetim günlükleri](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure İşlevleri ve Azure Logic Apps karşılaştırması
@@ -81,13 +83,13 @@ WebJobs ve WebJobs SDK birlikte en iyi şekilde çalışır; ancak WebJobs’ı 
 
 Azure İşlevleri, WebJobs SDK’da derlendiğinden diğer Azure hizmetlerine yönelik aynı bağlantıların ve olay tetikleyicilerinin birçoğunu paylaşır. Web Işleri SDK 'Sı ile Azure Işlevleri ve Web Işleri arasında seçim yaparken göz önünde bulundurmanız gereken bazı etmenler aşağıda verilmiştir:
 
-|  | Functions | WebJobs SDK ile WebJobs |
+|  | İşlevler | WebJobs SDK ile WebJobs |
 | --- | --- | --- |
 |[Otomatik ölçeklendirme](functions-scale.md#how-the-consumption-and-premium-plans-work) ile [sunucusuz uygulama modeli](https://azure.microsoft.com/solutions/serverless/)|✔||
 |[Tarayıcıda geliştirme ve test etme](functions-create-first-azure-function.md) |✔||
 |[Kullanım başına ödeme fiyatlandırması](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps ile tümleştirme](functions-twitter-email.md)|✔||
-| Tetikleyici olayları |[Timer](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dosya sistemi](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| Tetikleyici olayları |[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dosya sistemi](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | Desteklenen diller  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
 |Paket yöneticileri|NPM ve NuGet|NuGet<sup>2</sup>|
 

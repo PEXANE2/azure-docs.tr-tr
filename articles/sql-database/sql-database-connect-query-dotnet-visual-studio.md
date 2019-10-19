@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 4472ff10c42cd9163693e7316b6bdaef50258db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569238"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597916"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı Başlangıç: Azure SQL veritabanına C# bağlanmak ve veritabanını sorgulamak için .net ve Visual Studio 'da kullanın
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Hızlı başlangıç: Azure SQL C# veritabanına bağlanmak ve veritabanını sorgulamak için .net ve Visual Studio 'da kullanın
 
 Bu hızlı başlangıçta Transact-SQL deyimleriyle bir Azure C# SQL veritabanını sorgulamak için [.NET Framework](https://www.microsoft.com/net/) ve Code 'un Visual Studio 'da nasıl kullanılacağı gösterilmektedir.
 
@@ -48,7 +48,7 @@ Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -56,13 +56,13 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="create-code-to-query-the-sql-database"></a>SQL veritabanını sorgulamak için kod oluşturma
 
-1. Visual Studio'da **dosya** > **yeni** > **proje**. 
+1. Visual Studio 'da **dosya**  > **Yeni**  > **Proje**' yi seçin. 
    
 1. **Yeni proje** iletişim kutusunda **görsel C#** ' i seçin ve **konsol uygulaması ' nı (.NET Framework)** seçin.
    
 1. Proje adı için *SQLtest* girin ve ardından **Tamam**' ı seçin. Yeni proje oluşturulur. 
    
-1. **Proje** > **NuGet Paketlerini Yönet**' i seçin. 
+1. **NuGet paketlerini yönetmek** >  **Proje** ' yi seçin. 
    
 1. **NuGet Paket Yöneticisi**' nde, **Gözden** geçirme sekmesini seçin, sonra **System. Data. SqlClient**öğesini arayıp seçin.
    
@@ -72,7 +72,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
    
 1. Yüklemesi tamamlandığında, **NuGet Paket Yöneticisi 'ni**kapatabilirsiniz. 
    
-1. Kod Düzenleyicisi 'nde, **program.cs** içeriğini aşağıdaki kodla değiştirin. , `<server>`, Ve `<username>` `<password>`için değerlerinizideğiştirin.`<database>`
+1. Kod Düzenleyicisi 'nde, **program.cs** içeriğini aşağıdaki kodla değiştirin. @No__t_0, `<username>`, `<password>` ve `<database>` için değerlerinizi değiştirin.
    
    >[!IMPORTANT]
    >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 
@@ -133,7 +133,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-1. Uygulamayı çalıştırmak için hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin ya da araç çubuğundan **Başlat** ' ı seçin veya **F5**tuşuna basın.
+1. Uygulamayı çalıştırmak için **hata ayıkla**  >  hata**ayıklamayı Başlat**' ı seçin ya da araç çubuğundan **Başlat** ' ı seçin veya **F5**tuşuna basın.
 1. Veritabanınızdaki ilk 20 kategori/ürün satırı döndürüldüğünden emin olun ve ardından uygulama penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -142,10 +142,10 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 - [Komut satırını kullanarak Windows/Linus/macOS’ta .NET Core ile çalışmaya başlama](/dotnet/core/tutorials/using-with-xplat-cli) hakkında bilgi edinin.
 - [SSMS kullanarak ilk Azure SQL veritabanınızı tasarlamayı](sql-database-design-first-database.md) veya [.NET kullanarak ilk Azure SQL veritabanınızı tasarlamayı](sql-database-design-first-database-csharp.md) öğrenin.
 - .NET hakkında daha fazla bilgi edinmek için [.NET belgelerine](https://docs.microsoft.com/dotnet/) bakın.
-- Yeniden deneme mantığı örneği: [Dayanıklı bağlantısı 'i ADO.net Ile SQL 'e bağlayın][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Yeniden deneme mantığı örneği: [ADO.net Ile SQL 'e dayanıklı bağlantısı bağlayın][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 

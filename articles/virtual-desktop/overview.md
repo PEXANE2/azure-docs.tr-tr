@@ -1,5 +1,5 @@
 ---
-title: Windows sanal masaüstü nedir?  -Azure
+title: Windows Sanal Masaüstü nedir?  - Azure
 description: Windows sanal masaüstü 'ne genel bakış.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676560"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597894"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>Windows sanal masaüstü nedir? 
+# <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
 Windows sanal masaüstü, bulutta çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir.
 
@@ -35,7 +35,7 @@ Windows sanal masaüstü hakkında, neden benzersiz olduğunu ve bu videodaki ye
 
 Windows sanal masaüstü hakkında daha fazla video için [çalma listemize](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)bakın.
 
-## <a name="key-capabilities"></a>Anahtar özellikleri
+## <a name="key-capabilities"></a>Temel işlevler
 
 Windows sanal masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz:
 
@@ -64,7 +64,7 @@ Windows sanal masaüstü 'Nü kurmak ve kullanıcılarınızı Windows Masaüst�
 
 Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle, dağıtmayı planladığınız masaüstü ve uygulamalara bağlı olarak kullanıcılarınız için [uygun lisanslara](https://azure.microsoft.com/pricing/details/virtual-desktop/) sahip olduğunuzdan emin olun:
 
-|ATAYAMADı|Gerekli lisans|
+|İşletim Sistemi|Gerekli lisans|
 |---|---|
 |Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
 |Windows 7 kurumsal |Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
@@ -75,9 +75,9 @@ Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere
 * Bir [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bu, aracılığıyla etkinleştirilebilir:
   * Azure AD Connect
-  * Azure AD Domain Services
-  >[!NOTE]
-  >Windows sanal masaüstü yalnızca Azure Active Directory kaynaklı Azure AD Domain Services kullanıcıları destekler. Windows Server AD 'den kaynaklanan kullanıcılar şu anda desteklenmiyor.
+  * Azure AD Etki Alanı Hizmetleri
+     >[!NOTE]
+     >Azure AD Domain Services kullanıyorsanız, kullanıcılarınız Azure Active Directory kaynağı olmalıdır. Windows Server AD 'den kaynaklanan kullanıcılarla Azure AD Domain Services kullanımı Şu anda desteklenmiyor.
 * Windows Server 'a bağlı olan veya içeren bir sanal ağ içeren bir Azure aboneliği Active Directory
   
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
@@ -91,9 +91,9 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şeki
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri aşağıdaki URL 'Lere giden TCP 443 erişimine sahip olmalıdır:
 
 * *. wvd.microsoft.com
-* *. blob.core.windows.net
+* *.blob.core.windows.net
 * *. core.windows.net
-* *. servicebus.windows.net
+* *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
 
@@ -130,18 +130,18 @@ Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda göst
 
 |İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Otomatik|
-|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Otomatik|
-|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Otomatik|
-|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Otomatik|
-|Windows 7 kurumsal|Evet|Evet|Hayır|Hayır|El ile|
-|Windows Server 2019|Evet|Evet|Hayır|Hayır|Otomatik|
-|Windows Server 2016|Evet|Evet|Evet|Evet|Otomatik|
-|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 7 kurumsal|Yes|Yes|Hayır|Hayır|Manual|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Automatic|
+|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Automatic|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Başlamak için bir kiracı oluşturmanız gerekir. Kiracı oluşturma hakkında daha fazla bilgi edinmek için kiracı oluşturma öğreticisine devam edin.
 
 > [!div class="nextstepaction"]
-> [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md)
+> [Windows Sanal Masaüstü'nde kiracı oluşturma](tenant-setup-azure-active-directory.md)

@@ -4,15 +4,15 @@ description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300289"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595270"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -132,7 +132,7 @@ Sağladığınız tüm bilgileri memnun olduktan sonra, bir sonraki adımınız 
 
 ## <a name="the-customer-onboarding-process"></a>Müşteri ekleme işlemi
 
-Müşteri teklifinizi eklediğinde, bir [veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini](view-manage-service-providers.md#delegate-resources) alacak ve bu, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olacaktır. Bir müşteri bir teklifi kabul etmiş, ancak henüz hiç kaynak temsilcisi yoksa, Azure portal [**hizmet sağlayıcılar**](view-manage-service-providers.md) sayfasının en üstünde **sağlayıcı teklifleri** bölümünün üst kısmında bir not görür.
+Müşteri teklifinizi eklediğinde, bir [veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini](view-manage-service-providers.md#delegate-resources) alacak ve bu, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olacaktır. Bir müşteri bir teklifi kabul etmiş, ancak henüz hiç kaynak temsilcisi yoksa, Azure portal [**hizmet sağlayıcılar**](view-manage-service-providers.md) sayfasının en üstünde **sağlayıcı teklifleri** bölümünün üst kısmında bir not görür. Müşterinin kiracısındaki bir Kullanıcı bu temsilciyi gerçekleştiremıyorsa, muhtemelen abonelik için sahip rolüne sahip olmadıkları için olabilir. Aboneliği temsilcilibilen kullanıcıları bulmak için Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 Abonelik (veya abonelik içindeki kaynak grupları) eklendi, **Microsoft. ManagedServices** kaynak sağlayıcısını el ile kaydederek, aboneliğin ekleme için yetkilendirilmiş olması gerekir. Katkıda bulunan veya sahip rolü olan müşterinin kiracısındaki bir Kullanıcı, [Azure kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md)bölümünde belirtilen adımları izleyerek bunu yapabilir.
 

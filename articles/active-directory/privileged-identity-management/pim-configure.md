@@ -14,24 +14,24 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b204c3c30d935bc47adf76c3f0f50ccd7172393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 1ae9429920a4d3a6bac8830d6add2782276850d7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554959"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595352"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management nedir?
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kuruluşunuzdaki önemli kaynaklara erişimi yönetmenizi, denetlemenizi ve izlemenizi sağlayan bir hizmettir. Azure AD, Azure kaynakları ve Office 365 veya Microsoft Intune gibi diğer Microsoft Online Services hizmetlerindeki kaynaklara erişim de bu kapsama dahildir.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kuruluşunuzdaki önemli kaynaklara erişimi yönetmenizi, denetlemenizi ve izlemenizi sağlayan bir hizmettir. Bu kaynaklar Azure AD, Azure ve Office 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetlerindeki kaynakları içerir.
 
 ## <a name="reasons-to-use"></a>Kullanım nedenleri
 
-Kuruluşlar, kötü niyetli bir aktörün bu erişimi veya yetkili bir kullanıcının yanlışlıkla hassas bir kaynağı etkileme olasılığını azalttığından, güvenli bilgi veya kaynaklara erişimi olan kişilerin sayısını en aza indirmek ister. Ancak kullanıcıların Azure AD, Azure, Office 365 veya SaaS uygulamalarında yine de ayrıcalıklı işlemler gerçekleştirmesi gerekir. Kuruluşlar, kullanıcıların Azure kaynaklarına ve Azure AD 'ye tam zamanında (JıT) ayrıcalıklı erişim izni verebilir. Bu kullanıcıların yönetici ayrıcalıklarıyla ne yaptığına ilişkin daha fazla bakış için bir gereksinim vardır. Privileged Identity Management, aşırı, gereksiz veya yanlış erişimli erişim haklarının riskini azaltmaya yardımcı olur.
+Kuruluşlar, kötü niyetli bir aktörün bu erişimi veya yetkili bir kullanıcının yanlışlıkla hassas bir kaynağı etkileme olasılığını azalttığından, güvenli bilgi veya kaynaklara erişimi olan kişilerin sayısını en aza indirmek ister. Ancak kullanıcıların Azure AD, Azure, Office 365 veya SaaS uygulamalarında yine de ayrıcalıklı işlemler gerçekleştirmesi gerekir. Kuruluşlar, kullanıcıların Azure kaynaklarına ve Azure AD 'ye tam zamanında (JıT) ayrıcalıklı erişim izni verebilir. Bu kullanıcıların yönetici ayrıcalıklarıyla ne yaptığına ilişkin daha fazla bakış için bir gereksinim vardır.
 
 ## <a name="what-does-it-do"></a>Uygulama ne işe yarıyor?
 
-Privileged Identity Management temel olarak, ilgilendiğiniz kaynakları kimin, ne zaman, ne zaman, nerede ve neden yönetmenize yardımcı olur. Privileged Identity Management temel özelliklerinden bazıları şunlardır:
+Privileged Identity Management, önem verdiğiniz kaynaklarda aşırı, gereksiz veya kötüye erişim izinlerinin riskini azaltmak için zamana dayalı ve onay tabanlı rol etkinleştirmesi sağlar. Privileged Identity Management temel özelliklerinden bazıları şunlardır:
 
 - Azure AD ve Azure kaynaklarına **tam zamanında** ayrıcalıklı erişim sağlama
 - Başlangıç ve bitiş tarihlerini kullanarak kaynaklara **zamana bağlıysa** erişim atama

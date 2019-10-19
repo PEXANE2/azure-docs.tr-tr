@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433324"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592303"
 ---
 # <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
@@ -30,12 +30,10 @@ Azure Spring Cloud, Azure Izleyici, Application Insights ve Log Analytics tümle
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure yay bulutu hangi hizmet planlarını sunuyor?
 
-Azure yay bulutu, önizleme döneminde bir hizmet planı sunar.
+Azure yay bulutu, önizleme döneminde bir hizmet planı sunar.  Bir yay bulutu dağıtımı 16 vCPU çekirdeği ve 32GB bellek içerir.  Bir dağıtım içindeki her mikro hizmet örneği için üst sınır, 8GB bellek içeren 4 sanal CPU çekirdekleri.
 
 Kaynak | Miktar
 ------- | -------
-vCPU | 4
-Hafıza | 8 GBayt
 Yay uygulaması başına uygulama örnekleri | 20
 Azure yay bulut hizmeti örneği başına toplam uygulama örnekleri | 50 *
 Abonelik başına bölge başına Azure yay bulut hizmeti örnekleri | iki

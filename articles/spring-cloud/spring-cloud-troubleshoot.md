@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554381"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592474"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Sık karşılaşılan sorunlar için sorun giderme kılavuzu
 
@@ -151,8 +151,8 @@ _Azure Log Analytics_kullanmaya başlamak için [Bu başlangıç makalesini](htt
 
 Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un uygulamanızı oluşturan hizmetlerin nerede ve nasıl yapılandırılacağını anladığından emin olmanızı sağlar.  Ortam değişkenlerinizin doğru olduğundan emin olmak olası sorunları gidermeye yönelik gerekli bir ilk adımdır.  Yay önyükleme çalıştırıcı uç noktasını, ortam değişkenlerinizi gözden geçirmek için kullanabilirsiniz.  
 
-[!WARNING]
-> Bu yordam, ortam değişkenlerinizi açığa çıkabilir.  Test uç noktanız herkese açık ise veya uygulamanıza bir etki alanı adı atadıysanız devam edin.
+> [!WARNING]
+> Bu yordam, test uç noktanızı kullanarak ortam değişkenlerinizi kullanıma sunar.  Test uç noktanız herkese açık ise veya uygulamanıza bir etki alanı adı atadıysanız devam edin.
 
 1. Bu URL 'ye gidin: `https://<your application test endpoint>/actuator/health`.  
     - @No__t_0 benzer bir yanıt, uç noktanın etkinleştirildiğini gösterir.
@@ -186,6 +186,9 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un
     ```
 
 @No__t_0 adlı alt düğümü bulun.  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
+
+> [!IMPORTANT]
+> Uygulamanızı herkese açık hale getirmeden önce ortam değişkenlerinizin görünürlüğünü ters çevirmeyi unutmayın.  Azure portal gidin, uygulamanızın yapılandırma sayfasını bulun ve bu ortam değişkenini silin: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Uygulamamın ölçümlerini veya günlüklerini bulamıyorum
 

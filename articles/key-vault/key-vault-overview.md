@@ -10,14 +10,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cfaa2598d53fa57b4a628a7ad1b847a9b078bf2b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883207"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598154"
 ---
-# <a name="what-is-azure-key-vault"></a>Azure Anahtar Kasası nedir?
+# <a name="what-is-azure-key-vault"></a>Azure Key Vault nedir?
 
 Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
@@ -71,7 +71,7 @@ Ayrıca, Azure Anahtar Kasalarını kullanarak uygulama gizli dizilerini ayırab
 ### <a name="integrate-with-other-azure-services"></a>Diğer Azure hizmetleri ile tümleştirme
 
 Azure 'da güvenli bir mağaza olarak, şunun gibi senaryoları basitleştirmek için Key Vault kullanılmıştır:
--  [Azure disk şifrelemesi](../security/azure-security-disk-encryption.md)
+-  [Azure disk şifrelemesi](../security/fundamentals/encryption-overview.md)
 -  SQL Server ve Azure SQL veritabanı 'ndaki [her zaman şifrelenmiş]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) işlevler
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
 
@@ -79,5 +79,5 @@ Key Vault, depolama hesapları, olay hub’ları ve günlük analizi ile tümle�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı Başlangıç: CLı kullanarak Azure Key Vault oluşturma](quick-create-cli.md)
+- [Hızlı Başlangıç: CLI kullanarak bir Azure Key Vault oluşturma](quick-create-cli.md)
 - [Anahtar Kasasından gizli dizi okumak için bir Azure web uygulaması yapılandırma](tutorial-web-application-keyvault.md)

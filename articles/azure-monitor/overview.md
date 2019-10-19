@@ -1,21 +1,18 @@
 ---
 title: Azure Izleyicisine genel bakış | Microsoft Docs
 description: Azure hizmetleriniz ve uygulamalarınız için eksiksiz bir izleme stratejisine katkıda bulunan Microsoft hizmetleri ve işlevlerine genel bakış.
-author: bwren
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: overview
-ms.date: 10/07/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 578cb57c9c971874e16ddb75d399e165cc75dfa6
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: d02ea18422e20aa2fede4f25cdffa985607e7b5c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035664"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597337"
 ---
 # <a name="azure-monitor-overview"></a>Azure Izleyicisine genel bakış
 
