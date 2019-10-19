@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: b092c7251bc2a6794db36f8eaa279a7eeb931723
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
-ms.translationtype: HT
+ms.openlocfilehash: 8a0022ce429b1359d8771f5089589fc779b8a751
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533766"
+ms.locfileid: "72554903"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search bilgi deposu nedir?
 
@@ -21,17 +21,17 @@ ms.locfileid: "72533766"
 > Bilgi deposu önizleme aşamasındadır ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
 
-Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıktıyı sürekli olarak sürdüren Azure Search bir özelliktir. *Zenginleştirilmiş bir belge* , bilişsel hizmetler 'deki kaynaklar kullanılarak ayıklanan, yapılandırılmış ve çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI tabanlı işlem hattında, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile belgeler, diğer uygulamalarda veya aşağı akış veri bilimi iş yüklerinde kullanılmak üzere kaydedilir. 
+Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıktıyı sürekli olarak sürdüren Azure Search bir özelliktir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. 
 
-Geçmişte Azure Search AI becerileri kullandıysanız, bir belgeyi bir veya daha çok zenginleştirme yoluyla taşımak için *becerileri* kullanıldığını zaten anlarsınız. Sonuç bir bilgi deposundaki Azure Search bir dizin veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu birbirinden fiziksel olarak birbirinden farklıdır. Aynı içeriği paylaşır, ancak çok farklı yollarla depolanır ve kullanılır.
+Daha önce Azure Search AI becerileri kullandıysanız, *becerileri* bir belgeyi bir dizi enzenginleştirme aracılığıyla taşımış olduğunu zaten anlarsınız. Sonuç bir bilgi deposundaki bir arama dizini veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı içeriği paylaşır, ancak aynı şekilde depolanır ve çok farklı şekillerde kullanılır.
 
-Fiziksel olarak, bir bilgi deposu, işlem hattını nasıl yapılandırdığınıza bağlı olarak Azure Tablo depolama, Azure Blob depolama veya her ikisi de Azure [depolama hesabıdır](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Bir Azure depolama hesabına bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
+Azure [depolama](https://docs.microsoft.com/azure/storage/common/storage-account-overview), Azure Tablo depolama, Azure Blob depolama ya da her ikisi de fiziksel olarak bir bilgi deposu. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
 
-Projeksiyonlar bir bilgi deposundaki verileri yapılandırmak için mekanizmadır. Örneğin, projeksiyonlar aracılığıyla çıktının tek bir blob olarak kaydedilip kaydedilmediğini veya ilgili tabloların bir koleksiyonunu seçebilirsiniz. Bilgi deposu içeriğini görüntülemenin kolay bir yolu, Azure depolama için yerleşik [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) kullanmaktır.
+![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Ardışık düzen diyagramında bilgi deposu")
 
-![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Ardışık düzen diyagramında bilgi deposu")
+Projeksiyonlar bir bilgi deposundaki verileri yapılandırmak için mekanizmadır. Örneğin, projeksiyonlar aracılığıyla çıktının tek bir blob olarak kaydedilip kaydedilmediğini veya ilgili tabloların bir koleksiyonunu seçebilirsiniz. 
 
-Bilgi deposu kullanmak için, bir dizin oluşturma işlem hattındaki adım temelinde işlemleri tanımlayan bir beceri öğesine `knowledgeStore` öğesi ekleyin. Yürütme sırasında Azure Search, Azure depolama hesabınızda bir boşluk oluşturur ve bu belgeleri, ardışık düzen içinde oluşturulan tanımlarla birlikte projeler halinde kaydeder.
+Bilgi deposu kullanmak için, bir dizin oluşturma işlem hattındaki adım temelinde işlemleri tanımlayan bir beceri öğesine `knowledgeStore` öğesi ekleyin. Yürütme sırasında Azure Search, Azure depolama hesabınızda bir boşluk oluşturur ve yapılandırmanıza bağlı olarak, belgeleri Bloblar veya tablolar olarak zenginleştirir.
 
 ## <a name="benefits-of-knowledge-store"></a>Bilgi deposunun avantajları
 

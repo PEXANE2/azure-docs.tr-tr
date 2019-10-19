@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299482"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551603"
 ---
-# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Hızlı Başlangıç: IoT Hub 'de IoT hizmeti için Azure Güvenlik Merkezi 'Ni ekleme
+# <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Hızlı başlangıç: IoT Hub 'da IoT hizmeti için Azure Güvenlik Merkezi 'Ni ekleme
 
 Bu makalede, mevcut IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'nin nasıl etkinleştirileceği hakkında bir açıklama sunulmaktadır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) makalesine bakın. 
 
 > [!NOTE]
 > IoT için Azure Güvenlik Merkezi şu anda yalnızca Standart katman IoT Hub 'Larını desteklemektedir.
-> IoT için Azure Güvenlik Merkezi, tek bir hub çözümüdür. Birden çok hub gerekliyse, IoT çözümleri için birden çok Azure Güvenlik Merkezi gereklidir. 
+
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Hizmeti etkinleştirme önkoşulları
 
@@ -40,19 +40,46 @@ Bu makalede, mevcut IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'nin nası
 
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>IoT Hub IoT için Azure Güvenlik Merkezi 'ni etkinleştirin 
 
-IoT Hub güvenliği etkinleştirmek için aşağıdakileri yapın: 
+IoT Hub güvenliği sağlamak için: 
 
 1. **IoT Hub** Azure Portal açın. 
-1. **Güvenlik** menüsünde, **IoT çözümünüzün güvenliğini sağlama** ' ya tıklayın.
+1. **Güvenlik** menüsünde, **IoT çözümünüzün güvenliğini sağla**' yı tıklatın.
 1. Seçileni Varsayılan olarak **Etkinleştir** ' i bırakın. 
 1. Log Analytics çalışma alanınızı seçin.
 1. Log Analytics çalışma alanınızın ayrıntılarını sağlayın. 
    - **İkizi koleksiyonunu** etkin bırakarak **ikizi toplamayı** etkinleştirmek için **seçin.**
    - **Ham olayları** , Log Analytics depolanan **Ham cihaz güvenlik olaylarını** seçerek depolama varsayılan bilgi türlerine ek olarak depolamayı tercih edin. **Ham olay** geçişi **Açık**bırakın. 
     
-1. **Kaydet**’e tıklayın. 
+1. **Kaydet** düğmesine tıklayın. 
 
 Tebrikler! IoT Hub IoT için Azure Güvenlik Merkezi 'Ni etkinleştirmeyi tamamladınız. 
+
+### <a name="geolocation-and-ip-address-handling"></a>Coğrafi konum ve IP adresi işleme
+
+IoT çözümünüzü güvenli hale getirmek için IoT cihazlarınıza gelen ve giden bağlantıların IP adresleri, IoT Edge ve IoT Hub, varsayılan olarak toplanır ve depolanır. Bu bilgiler şüpheli IP kaynaklarından anormal bağlantıları algılamak için gereklidir. Örneğin, bilinen bir botnet 'in IP kaynağından veya coğrafi konum dışında bir IP kaynağından bağlantı kurmak için denemeler yapılır. IoT hizmeti için Azure Güvenlik Merkezi, IP adresi verilerinin toplanmasını istediğiniz zaman etkinleştirme ve devre dışı bırakma esnekliği sunar. 
+
+IP adresi verilerini toplamayı etkinleştirmek veya devre dışı bırakmak için: 
+
+1. IoT Hub açın ve **güvenlik** menüsünden **genel bakış** ' ı seçin. 
+2. **Ayarlar** ekranını seçin ve coğrafi konum ve/veya IP işleme ayarlarını istediğiniz gibi değiştirin.
+
+### <a name="log-analytics-creation"></a>Log Analytics oluşturma
+
+IoT için Azure Güvenlik Merkezi açıldığında, IoT cihazlarınıza, IoT Edge ve IoT Hub yönelik ham güvenlik olaylarını, uyarıları ve önerilerini depolamak için varsayılan bir Azure Log Analytics çalışma alanı oluşturulur. Her ay, Azure Log Analytics hizmetine müşteri başına alınan ilk beş (5) veri giriş ücretsizdir. Azure Log Analytics çalışma alanınızda alınan her GB veri, ilk 31 gün boyunca ek ücret olmaksızın tutulur. [Log Analytics](https://azure.microsoft.com/pricing/details/monitor/) fiyatlandırması hakkında daha fazla bilgi edinin.
+
+Log Analytics çalışma alanı yapılandırmasını değiştirmek için:
+
+1. IoT Hub açın ve **güvenlik** menüsünden **genel bakış** ' ı seçin. 
+2. **Ayarlar** ekranını seçin ve Log Analytics ayarların çalışma alanı yapılandırmasını istediğiniz gibi değiştirin.
+
+### <a name="customize-your-iot-security-solution"></a>IoT Güvenlik çözümünüzü özelleştirme
+Varsayılan olarak, IoT çözümü için Azure Güvenlik Merkezi 'ni açmak, Azure aboneliğinizdeki tüm IoT Hub 'Larını otomatik olarak korur. 
+
+Belirli bir IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'ni etkinleştirmek veya devre dışı bırakmak için: 
+
+1. IoT Hub açın ve **güvenlik** menüsünden **genel bakış** ' ı seçin. 
+2. **Ayarlar** ekranını seçin ve Azure aboneliğinizdeki herhangi bir IoT Hub 'ının güvenlik ayarlarını istediğiniz gibi değiştirin.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
-ms.translationtype: MT
+ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039031"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554381"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Sık karşılaşılan sorunlar için sorun giderme kılavuzu
 
@@ -31,13 +31,13 @@ Günlüklerinizi aşağıdaki hatanın bulunması olası iki sorunlardan birini 
 `org.springframework.context.ApplicationContextException: Unable to start web server`
 
 * Beans veya bağımlılıklarından biri eksik.
-* Çekirdek özelliklerinden biri eksik veya geçersiz. Büyük olasılıkla bu durumda @no__t (0) görürsünüz.
+* Çekirdek özelliklerinden biri eksik veya geçersiz. Büyük olasılıkla bu durumda `java.lang.IllegalArgumentException` görürsünüz.
 
 Hizmet bağlamaları uygulama başlatma hatalarıyla da neden olabilir. Günlükleri sorgulamak için bağlı hizmetlerle ilgili anahtar sözcükleri kullanın.  Örneğin, uygulamanızın bir MySQL örneğine yerel sistem zamanına ayarlanmış bir bağlaması olduğunu varsayalım. Uygulama başlatılamazsa, günlükte şu hatayı bulabilirsiniz:
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-Bu hatayı onarmak için MySql örneğinizin `server parameters` ' a gidin ve `time_zone` ' i `SYSTEM` ' den `+0:00` ' e değiştirin.
+Bu hatayı onarmak için MySql örneğinizin `server parameters` gidin ve `time_zone` `SYSTEM` 'den `+0:00` 'ye değiştirin.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Uygulamam kilitleniyor veya beklenmeyen bir hata oluşturuyor
@@ -70,7 +70,7 @@ Hangi durumun olduğunu onaylamak için,
 
 1. _Ölçümler_’e gidin ve `Service CPU Usage Percentage` veya `Service Memory Used` öğesini seçin.
 2. İzlemek istediğiniz uygulamayı belirtmek için `App=` filtresini ekleyin ve
-3. Ölçümleri @no__t göre böler-0.
+3. Ölçümleri `Instance` göre ayırın.
 
 Tüm örnekler yüksek CPU/bellek yaşıyorsa, uygulamayı ölçeklendirmeniz veya CPU/bellek ölçeğini ölçeklendirmeniz gerekir. Daha fazla ayrıntı için lütfen [Ölçek uygulamalarını](spring-cloud-tutorial-scale-manual.md) ziyaret edin
 
@@ -147,11 +147,51 @@ Ayrıca _Azure Log Analytics_ _hizmet kayıt defteri_ istemci günlüklerine bak
 
 _Azure Log Analytics_kullanmaya başlamak için [Bu başlangıç makalesini](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ziyaret edin. [Kusto sorgu dilini](https://docs.microsoft.com/azure/kusto/query/)kullanarak günlükleri sorgulayın.
 
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Uygulamamın ortam değişkenlerini incelemek istiyorum
+
+Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un uygulamanızı oluşturan hizmetlerin nerede ve nasıl yapılandırılacağını anladığından emin olmanızı sağlar.  Ortam değişkenlerinizin doğru olduğundan emin olmak olası sorunları gidermeye yönelik gerekli bir ilk adımdır.  Yay önyükleme çalıştırıcı uç noktasını, ortam değişkenlerinizi gözden geçirmek için kullanabilirsiniz.  
+
+[!WARNING]
+> Bu yordam, ortam değişkenlerinizi açığa çıkabilir.  Test uç noktanız herkese açık ise veya uygulamanıza bir etki alanı adı atadıysanız devam edin.
+
+1. Bu URL 'ye gidin: `https://<your application test endpoint>/actuator/health`.  
+    - @No__t_0 benzer bir yanıt, uç noktanın etkinleştirildiğini gösterir.
+    - Yanıt negatifse, `POM.xml` aşağıdaki bağımlılığı ekleyin:
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. Spring Boot çalıştırıcı uç noktası etkinken Azure portal gidin ve uygulamanızın yapılandırma sayfasını bulun.  @No__t_0 * ' adlı bir ortam değişkeni ekleyin. 
+
+1. Uygulamanızı yeniden başlatın.
+
+1. @No__t_0 gidin ve yanıtı inceleyin.  Şu şekilde görünmelidir:
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+@No__t_0 adlı alt düğümü bulun.  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
+
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Uygulamamın ölçümlerini veya günlüklerini bulamıyorum
 
 Uygulamanın _çalıştığından ve çalışır_ hale geldiğinden emin olmak için uygulama _yönetimi_ 'negidin.
 
-_JVM_ 'den ölçümleri görebiliyorsanız ancak _Tomcat_'ten ölçüm yoksa, uygulama paketinizdeki @ no__t-2 bağımlılığının etkinleştirilip etkinleştirilmediğini ve başarıyla önleyip önolmadığını kontrol edin.
+_JVM_ 'den ölçümleri görebiliyorsanız ancak _Tomcat_'ten ölçüm yoksa, uygulama paketinizdeki `spring-boot-actuator` bağımlılığının etkinleştirilip etkinleştirilmediğini ve başarıyla önleyip önolmadığını kontrol edin.
 
 ```xml
 <dependency>
