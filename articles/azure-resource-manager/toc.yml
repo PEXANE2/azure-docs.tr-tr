@@ -170,6 +170,7 @@
       items:
         - name: İşlem hatları ile VS projesi
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: Şablonu dışarı aktarma
       href: export-template-portal.md
     - name: Taşı
