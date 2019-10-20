@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: 0bd66699142e9e03f4a344d499624fe207cb9a45
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 47c2429363945cf1529cee6e49947aaea95b7022
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963597"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597427"
 ---
 ## <a name="timeout"></a>İşlev uygulaması zaman aşımı süresi 
 
@@ -23,8 +23,10 @@ Bir işlev uygulamasının zaman aşımı süresi, [Host. JSON](../articles/azur
 |------|---------|---------|---------|
 | Tüketim | 'in | 5 | 10 |
 | Tüketim | 2.x | 5 | 10 |
-| App Service | 'in | Sınırsız | Sınırsız |
-| App Service | 2.x | 30 | Sınırsız |
+| Tüketim | 3. x (Önizleme) | 5 | 10 |
+| App Service | 'in | İş çalışma zamanında | İş çalışma zamanında |
+| App Service | 2.x | 30 | İş çalışma zamanında |
+| App Service | 3. x (Önizleme) | 30 | İş çalışma zamanında |
 
 > [!NOTE] 
 > İşlev uygulaması zaman aşımı ayarından bağımsız olarak, 230 saniye bir HTTP tetiklenen işlevin bir isteğe yanıt vermek için gidebildiği en uzun süredir. Bunun nedeni, [Azure Load Balancer varsayılan boşta kalma zaman aşımı süresi](../articles/app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds). Daha uzun işlem süreleri için [dayanıklı işlevler zaman uyumsuz model](../articles/azure-functions/durable/durable-functions-overview.md#async-http) kullanmayı veya [gerçek işi erteleyin ve anında yanıt döndürmenizi](../articles/azure-functions/functions-best-practices.md#avoid-long-running-functions)düşünün.

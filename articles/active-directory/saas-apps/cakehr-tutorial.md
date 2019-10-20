@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c0860411c95e48a16d75df4aeeedf3405a5b1835
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026432"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595031"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Öğretici: CakeHR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -67,10 +67,10 @@ CakeHR 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden
 Azure AD SSO 'yu CakeHR ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. **[CakeHR SSO 'Yu yapılandırma](#configure-cakehr-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. **[Cakehr test kullanıcısı oluşturun](#create-cakehr-test-user)** -kullanıcının Azure AD gösterimine bağlı olan cakehr 'da B. Simon 'a karşılık gelen bir karşılığı vardır.
+    * **[Cakehr test kullanıcısı oluşturun](#create-cakehr-test-user)** -kullanıcının Azure AD gösterimine bağlı olan cakehr 'da B. Simon 'a karşılık gelen bir karşılığı vardır.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
@@ -135,25 +135,33 @@ Bu bölümde, Cakesa 'ya erişim vererek Azure çoklu oturum açma özelliğini 
 
 ## <a name="configure-cakehr-sso"></a>CakeHR SSO 'yu yapılandırma
 
-1. Yeni bir Web tarayıcı penceresi açın ve CakeHR şirket sitenizde yönetici olarak oturum açın.
+1. CakeHR 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
-2. Sayfanın sağ üst köşesinde **profil** ' e tıklayın ve ardından **Ayarlar**' a gidin.
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya Uzantı eklendikten sonra, **set up CakeHR** 'a tıkladığınızda sizi cakehr uygulamasına yönlendirebilirsiniz. Buradan, CakeHR 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. CakeHR 'yi el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve CakeHR şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+
+1. Sayfanın sağ üst köşesinde **profil** ' e tıklayın ve ardından **Ayarlar**' a gidin.
 
     ![CakeHR yapılandırması](./media/cakehr-tutorial/config01.png)
 
-3. Menü çubuğunun sol tarafındaki **tümleştirmelere** > **SAML SSO** ' ya tıklayın ve aşağıdaki adımları uygulayın:
+1. Menü çubuğunun sol tarafındaki **tümleştirmelere** > **SAML SSO** ' ya tıklayın ve aşağıdaki adımları uygulayın:
 
-     ![CakeHR yapılandırması](./media/cakehr-tutorial/config02.png)
+    ![CakeHR yapılandırması](./media/cakehr-tutorial/config02.png)
 
-     a. **VARLıK kimliği** metin kutusuna `cake.hr` yazın.
+    a. **VARLıK kimliği** metin kutusuna `cake.hr` yazın.
 
-     b. **Kimlik doğrulama URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Kimlik doğrulama URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-     c. **Anahtar parmak izi (SHA1 biçimi)** metin kutusunda, Azure Portal kopyaladığınız **parmak izi** değerini yapıştırın.
+    c. **Anahtar parmak izi (SHA1 biçimi)** metin kutusunda, Azure Portal kopyaladığınız **parmak izi** değerini yapıştırın.
 
-     d. **Çoklu oturum açmayı etkinleştir** kutusunu işaretleyin.
+    d. **Çoklu oturum açmayı etkinleştir** kutusunu işaretleyin.
 
-     e. **Kaydet** düğmesine tıklayın.
+    e. **Kaydet** düğmesine tıklayın.
 
 ### <a name="create-cakehr-test-user"></a>CakeHR test kullanıcısı oluşturma
 
@@ -192,4 +200,3 @@ Erişim panelinde CakeHR kutucuğuna tıkladığınızda, SSO 'yu ayarladığın
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile CakeHR 'ı deneyin](https://aad.portal.azure.com/)
-

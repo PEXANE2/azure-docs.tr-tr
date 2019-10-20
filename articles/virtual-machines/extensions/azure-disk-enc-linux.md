@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1801ca8bd59153de81ef680253da229e2bd4a338
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084762"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597864"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryptionForLinux)
 
@@ -28,16 +28,11 @@ Azure disk şifrelemesi, [Select Azure Linux dağıtımları](https://aka.ms/ade
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Önkoşulların tam listesi için bkz [. Azure disk şifrelemesi önkoşulları.](
-../../security/azure-security-disk-encryption-prerequisites.md)
+Önkoşulların tam listesi için bkz. [Linux VM 'leri Için Azure disk şifrelemesi](../linux/disk-encryption-overview.md), özellikle aşağıdaki bölümler:
 
-### <a name="operating-system"></a>İşletim sistemi
-
-Azure disk şifrelemesi, şu anda, select dağıtımları ve sürümleri üzerinde desteklenmektedir.  Bkz. [Azure Disk Şifrelemesi tarafından desteklenen işletim sistemleri: Desteklenen](../../security/azure-security-disk-encryption-prerequisites.md#linux) Linux dağıtımları listesi için Linux.
-
-### <a name="internet-connectivity"></a>İnternet bağlantısı
-
-Linux için Azure disk şifrelemesi, Active Directory, Key Vault, depolama ve paket yönetim uç noktalarına erişim için Internet bağlantısı gerektirir.  Daha fazla bilgi için bkz. [Azure disk şifrelemesi önkoşulları](../../security/azure-security-disk-encryption-prerequisites.md).
+- [Linux sanal makineleri için Azure disk şifrelemesi](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Ek VM gereksinimleri](../linux/disk-encryption-overview.md#additional-vm-requirements)
+- [Ağ gereksinimleri](../linux/disk-encryption-overview.md#networking-requirements)
 
 ## <a name="extension-schemata"></a>Uzantı şemaların serileştirilmesi
 
@@ -72,9 +67,9 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 
 ### <a name="schema-v01-with-aad"></a>Şema v 0.1: AAD ile 
 
-0,1 şeması ve ya `aadClientID` `aadClientSecret` `AADClientCertificate`da gerektirir.
+0,1 şeması `aadClientID` ve `aadClientSecret` ya da `AADClientCertificate` gerektirir.
 
-Şunu `aadClientSecret`kullanarak:
+@No__t_0 kullanma:
 
 ```json
 {
@@ -104,7 +99,7 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 }
 ```
 
-Şunu `AADClientCertificate`kullanarak:
+@No__t_0 kullanma:
 
 ```json
 {
@@ -137,33 +132,33 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft. Azure. Security | string |
+| 'ın | Microsoft. Azure. Security | string |
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
-| (0.1 Şeması) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | 'ini | 
 | (0,1 şeması) AADClientSecret | password | string |
-| (0,1 şeması) AADClientCertificate | thumbprint | string |
+| (0,1 şeması) AADClientCertificate | #c0 | string |
 | DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
-| KeyEncryptionKeyURL 'Si | url | string |
+| keyEncryptionKeyURL 'Si | url | string |
 | seçim KeyVaultURL | url | string |
-| Passphrase | password | string | 
-| SequenceVersion | uniqueidentifier | string |
+| Deyimi | password | string | 
+| sequenceVersion | benzersiz tanımlayıcı | string |
 | Birimtürü | İşletim sistemi, veri, tümü | string |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
 Şablon dağıtımı örneği için bkz. [çalışan bir LINUX VM 'de şifrelemeyi etkinleştirme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
+## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
 Yönergeleri en son [Azure CLI belgelerinde](/cli/azure/vm/encryption?view=azure-cli-latest)bulabilirsiniz. 
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
@@ -171,7 +166,7 @@ Sorun giderme için, [Azure disk şifrelemesi sorun giderme kılavuzu](../../sec
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

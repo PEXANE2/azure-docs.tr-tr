@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551652"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592880"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -224,12 +224,14 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 > [!NOTE]
 > Genel okuyucu rolünde Şu anda birkaç kısıtlama vardır-
 >
->* SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' ifadesini görmezsiniz ve *https://{Azure AD kuruluş adı}-admin.SharePoint.com*' e gitmeye çalıştığınızda erişim reddedildi.
+>* SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' öğesini görmezsiniz.
+>* [OneDrive Yönetim Merkezi](https://admin.onedrive.com/) -OneDrive Yönetim Merkezi, genel okuyucu rolünü desteklemez.
 >* [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
 >* [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >* [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
 >* [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
 >* [Privileged Access Management (Pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
+>* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu, yalnızca [merkezi raporlama](https://docs.microsoft.com/azure/information-protection/reports-aip) için ve kiracınız [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)olmadığında desteklenir.
 >
 > Bu özellikler Şu anda geliştirme aşamasındadır.
 >
