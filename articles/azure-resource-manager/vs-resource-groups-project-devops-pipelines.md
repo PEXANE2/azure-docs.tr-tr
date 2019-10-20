@@ -4,14 +4,14 @@ description: Kaynak Yöneticisi şablonlarını dağıtmak üzere Visual Studio 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982453"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597507"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştirme
 
@@ -71,25 +71,25 @@ steps:
   inputs:
     azureSubscription: 'demo-deploy-sp'
     ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' 
+    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion
 ```
 
-Görevi olarak `AzurePowerShell@3`ayarladığınızda, işlem hattı, bağlantının kimliğini doğrulamak için azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Betiğinizi [az Module](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi olarak `AzurePowerShell@4`ayarlayın.
+Görevi `AzurePowerShell@3` ayarladığınızda, işlem hattı, bağlantının kimliğini doğrulamak için Azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Komut dosyanızı [az modülünü](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi `AzurePowerShell@4` olarak ayarlayın.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-İçin `azureSubscription`, oluşturduğunuz hizmet bağlantısının adını belirtin.
+@No__t_0 için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-İçin `scriptPath`, işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
+@No__t_0 için, işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -139,7 +139,7 @@ Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık d
 
 ## <a name="copy-and-deploy-tasks"></a>Görevleri Kopyala ve dağıt
 
-Bu bölümde, yapıtları hazırlamak ve şablonu dağıtmak için iki görevi kullanarak sürekli dağıtımın nasıl yapılandırılacağı gösterilmektedir. 
+Bu bölümde, yapıtları hazırlamak ve şablonu dağıtmak için iki görevi kullanarak sürekli dağıtımın nasıl yapılandırılacağı gösterilmektedir.
 
 Aşağıdaki YAML, [Azure dosya kopyalama görevini](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)göstermektedir:
 
@@ -157,13 +157,13 @@ Aşağıdaki YAML, [Azure dosya kopyalama görevini](/azure/devops/pipelines/tas
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. , `SourcePath` İşlem hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan adlı `AzureResourceGroup1` bir klasörde bulunur.
+Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. @No__t_0, işlem hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan `AzureResourceGroup1` adlı bir klasörde bulunur.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-İçin `azureSubscription`, oluşturduğunuz hizmet bağlantısının adını belirtin.
+@No__t_0 için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
@@ -176,35 +176,45 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-Aşağıdaki YAML, [Azure Kaynak grubu dağıtım görevini](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)göstermektedir:
+Aşağıdaki YAML, [Azure Resource Manager şablonu dağıtım görevini](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)göstermektedir:
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
   displayName: 'Deploy template'
   inputs:
-    azureSubscription: 'demo-deploy-sp'
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'demo-deploy-sp'
+    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'centralus'
+    location: 'Central US'
     templateLocation: 'URL of the file'
     csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
     csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    deploymentMode: 'Incremental'
 ```
 
-Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. İçin `azureSubscription`, oluşturduğunuz hizmet bağlantısının adını belirtin.
+Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır.
 
-```yaml
-azureSubscription: '<your-connection-name>'
-```
+- `deploymentScope`: `Management Group`, `Subscription` ve `Resource Group` seçeneklerden dağıtım kapsamını seçin. Bu kılavuzda **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](./resource-group-template-deploy-rest.md#deployment-scope).
 
-`resourceGroupName` Ve`location`için, dağıtmak istediğiniz kaynak grubunun adını ve konumunu belirtin. Görev, mevcut değilse kaynak grubunu oluşturur.
+- `ConnectedServiceName`: oluşturduğunuz hizmet bağlantısının adını belirtin.
 
-```yaml
-resourceGroupName: '<resource-group-name>'
-location: '<location>'
-```
+    ```yaml
+    ConnectedServiceName: '<your-connection-name>'
+    ```
 
-Dağıtım görevi, adlı `WebSite.json` bir şablona ve Web sitesi. Parameters. JSON adlı parametreler dosyasına bağlanır. Şablon ve parametre dosyalarınızın adlarını kullanın.
+- `subscriptionName`: hedef abonelik KIMLIĞINI sağlayın. Bu özellik yalnızca kaynak grubu dağıtım kapsamı ve abonelik dağıtımı Scoop için geçerlidir.
+
+- `resourceGroupName` ve `location`: dağıtmak istediğiniz kaynak grubunun adını ve konumunu belirtin. Görev, mevcut değilse kaynak grubunu oluşturur.
+
+    ```yaml
+    resourceGroupName: '<resource-group-name>'
+    location: '<location>'
+    ```
+
+Dağıtım görevi `WebSite.json` adlı bir şablona ve Web sitesi. Parameters. JSON adlı parametreler dosyasına bağlanır. Şablon ve parametre dosyalarınızın adlarını kullanın.
 
 Artık görevlerin nasıl oluşturulduğunu anladığınıza göre, işlem hattını düzenleme adımlarını inceleyelim.
 
@@ -226,16 +236,20 @@ Artık görevlerin nasıl oluşturulduğunu anladığınıza göre, işlem hatt�
        outputStorageUri: 'artifactsLocation'
        outputStorageContainerSasToken: 'artifactsLocationSasToken'
        sasTokenTimeOutInMinutes: '240'
-   - task: AzureResourceGroupDeployment@2
-     displayName: 'Deploy template'
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       resourceGroupName: demogroup
-       location: 'centralus'
-       templateLocation: 'URL of the file'
-       csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-       csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-       overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Deploy template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'demo-deploy-sp'
+        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'demogroup'
+        location: 'Central US'
+        templateLocation: 'URL of the file'
+        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
+        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
+        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+        deploymentMode: 'Incremental'
    ```
 
 1. **Kaydet**’i seçin.
@@ -250,4 +264,4 @@ Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak Yöneticisi şablonlarla Azure Pipelines kullanma hakkında adım adım işlemler için bkz [. Öğretici: Azure Pipelines](resource-manager-tutorial-use-azure-pipelines.md)olan Azure Resource Manager şablonlarının sürekli tümleştirilmesi.
+Kaynak Yöneticisi şablonlarla Azure Pipelines kullanma hakkında adım adım işlemler için bkz. [öğretici: Azure Resource Manager şablonlarının Azure Pipelines sürekli tümleştirilmesi](resource-manager-tutorial-use-azure-pipelines.md).

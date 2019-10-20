@@ -8,25 +8,28 @@ ms.topic: include
 ms.date: 07/11/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 099bca7483100da1a4ee2f8f10057c416ad145b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a9a837d8a486e10ea2a62be69b889e657b1dbc05
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67841472"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72601179"
 ---
-Azure kaynaklarınızı bir taksonomi mantıksal olarak düzenlemek için meta verileri vererek etiketler. Her etiket bir ad ve değer çifti oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
+Verileri bir taksonomiye mantıksal olarak düzenlemek için meta veriler sunarak Azure kaynaklarınıza Etiketler uygularsınız. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
-Etiketleri uyguladıktan sonra aboneliğinizde bu etiket adını ve değerini taşıyan tüm kaynakları alabilirsiniz. Etiketler farklı kaynak grupları ilgili kaynakları almanızı sağlar. Bu yaklaşım, faturalama veya yönetim için kaynakları düzenlemeniz gerektiğinde yararlıdır.
+Etiketleri uyguladıktan sonra aboneliğinizde bu etiket adını ve değerini taşıyan tüm kaynakları alabilirsiniz. Etiketler, farklı kaynak gruplarından ilgili kaynakları almanızı sağlar. Bu yaklaşım, faturalama veya yönetim için kaynakları düzenlemeniz gerektiğinde yararlıdır.
 
-Taksonominizi stratejisi kullanıcılar üzerindeki yükü azaltmak ve doğruluğu artırmak için otomatik olarak etiketleme stratejisi yanı sıra etiketleme bir Self Servis meta verileri dikkate almanız gerekir.
+Taksonominiz, kullanıcıların yükünü azaltmak ve doğruluğu artırmak için otomatik etiketleme stratejisine ek olarak bir self servis meta veri etiketleme stratejisini göz önünde bulundurmalıdır.
 
 Etiketler için aşağıdaki sınırlamalar geçerlidir:
 
-* Tüm kaynak türleri etiketleri destekler. Bir kaynak türü için bir etiket uygulamak, belirlemek için bkz: [etiket Azure kaynakları için destek](../articles/azure-resource-manager/tag-support.md).
-* Her kaynak veya kaynak grubu en fazla 50 etiket adı/değer çiftleri olabilir. Şu anda 15 etiket yalnızca destek depolama hesapları, ancak bu sınırı 50 gelecek sürümlerden birinde gerçekleştirilecektir. İzin verilen en yüksek sayıdan daha fazla etiket uygulamak ihtiyacınız varsa etiket değeri için bir JSON dizesi kullanın. JSON dizesi, tek etiket adına uygulanan birden fazla değer içerebilir. Bir kaynak grubu, her 50 etiket adı/değer çiftine sahip çok sayıda kaynak içerebilir.
+* Tüm kaynak türleri etiketleri desteklemez. Bir kaynak türüne etiket uygulayıp uygulayacağınızı öğrenmek için bkz. [Azure kaynakları Için etiket desteği](../articles/azure-resource-manager/tag-support.md).
+* Her kaynak veya kaynak grubu en fazla 50 etiket adı/değer çiftine sahip olabilir. Şu anda, depolama hesapları yalnızca 15 etiketi destekler, ancak bu sınır gelecek sürümlerde 50 'e yükseltilir. İzin verilen maksimum sayıdan daha fazla etiket uygulamanız gerekiyorsa, etiket değeri için bir JSON dizesi kullanın. JSON dizesi, tek etiket adına uygulanan birden fazla değer içerebilir. Bir kaynak grubu, her birinin 50 etiket adı/değer çifti olan çok sayıda kaynak içerebilir.
 * Etiket adı 512 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır. Depolama hesapları için etiket adı 128 karakter ile sınırlıdır ve etiket değeri 256 karakter ile sınırlıdır.
-* Etiketleri genelleştirilmiş sanal makineleri desteklemez.
+* Genelleştirilmiş VM 'Ler etiketleri desteklemez.
 * Kaynak grubuna uygulanan etiketler, bu kaynak grubundaki kaynaklar tarafından devralınmaz.
-* Bulut Hizmetleri gibi Klasik kaynakları için etiketler uygulanamaz.
+* Etiketler, Cloud Services gibi klasik kaynaklara uygulanamaz.
 * Etiket adları şu karakterleri içeremez: `<`, `>`, `%`, `&`, `\`, `?`, `/`
+
+   > [!NOTE]
+   > Şu anda Azure DNS bölgeler ve trafik yöneticisi hizmetleri de etikette boşluk kullanılmasına izin vermez. 

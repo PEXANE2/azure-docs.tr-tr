@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: b8d3a26d015c129a04e54ba9633aa5d1ccfcacf8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f241ac3e1369e32a1f2a4b9ac80492094105ff8c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69016101"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598338"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services Topluluğu  
 
@@ -32,7 +32,7 @@ Bu Azure Media Services topluluk sayfasında, soru sorabileceğiniz, geri bildir
 
 ### <a name="twitter"></a>Twitter
 
-Twitter tanıtıcısını kullanarak [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) bizimle iletişim kurun veya Twitter 'daki güncelleştirmeleri takip edebilirsiniz. Twitter 'da destek istemek için [Twittertanıtıcısınıkullanın.@AzureSupport](https://twitter.com/azuresupport)  
+[@No__t_1](https://twitter.com/MSFTAzureMedia) Twitter tanıtıcısını kullanarak bizimle iletişim kurun veya Twitter 'daki güncelleştirmeleri takip edebilirsiniz. Twitter 'da destek istemek için [@AzureSupport](https://twitter.com/azuresupport) Twitter tanıtıcısını kullanın.  
 
 ### <a name="online-forums"></a>Çevrimiçi forumlar
 
@@ -45,10 +45,6 @@ Aşağıdaki Forumlar, geçerli ürünler ve özellikler hakkında sorular sorma
 Ekip, ' Azure-Media-Services ' ile Stack Overflow etiketli soruları de izler.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
-
-## <a name="contact-the-team"></a>Ekibe ulaşın
-
-Azure Media Services birincil destek e-postası **:\@amshelp Microsoft.com**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

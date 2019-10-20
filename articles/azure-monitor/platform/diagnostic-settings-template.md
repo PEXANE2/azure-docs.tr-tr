@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71262342"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597296"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
 Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, farklı hedeflere platform günlüklerini toplamak üzere tanılama ayarlarını yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) kullanma hakkında ayrıntılı bilgi verilmektedir. Bu, bir kaynak oluşturulduğunda platform günlüklerini toplamaya otomatik olarak başlayabilmenizi sağlar.
@@ -53,7 +53,7 @@ Tanılama ayarının [hedeflerine](diagnostic-settings.md#destinations) bağlı 
 "workspaceId":{
   "type": "string",
   "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
+    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
   }
 }
 ```

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527435"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596507"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Eşleme veri akışında dönüştürme var
 
@@ -20,11 +20,10 @@ Var olan dönüştürme, verilerinizin başka bir kaynakta veya akışta bulunup
 
 ## <a name="configuration"></a>Yapılandırma
 
-**Sağ Akış** açılan menüsünde var olan veri akışını kontrol ettiğiniz verileri seçin.
-
-Mevcut **tür** ayarında verilerin mevcut olup olmadığını mı yoksa mevcut mi olduğunu belirtin.
-
-Mevcut koşullarınız olarak karşılaştırmak istediğiniz anahtar sütunları seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. İşlem değeri ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
+1. **Sağ Akış** açılan menüsünde var olan veri akışını kontrol ettiğiniz verileri seçin.
+1. Mevcut **tür** ayarında verilerin mevcut olup olmadığını mı yoksa mevcut mi olduğunu belirtin.
+1. **Özel bir ifade**isteyip istemediğinizi seçin.
+1. Mevcut koşullarınız olarak karşılaştırmak istediğiniz anahtar sütunları seçin. Varsayılan olarak, veri akışı her akıştaki bir sütun arasında eşitlik arar. Hesaplanan bir değer ile karşılaştırmak için, sütun açılan listesinin üzerine gelin ve **hesaplanan sütun**' u seçin.
 
 ![Mevcut ayarlar](media/data-flow/exists.png "1 var")
 

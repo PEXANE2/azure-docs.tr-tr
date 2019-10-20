@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387770"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596532"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Veri akışı için havuz dönüştürme
 
@@ -61,6 +61,10 @@ Otomatik eşlemeyi devre dışı bırakırsanız, sütun tabanlı eşleme (Sabit
 Kural tabanlı eşleme ' yi seçtiğinizde, gelen model kurallarını eşleştirmek ve giden alan adlarını tanımlamak için eşleşen ifadenizi değerlendirmek üzere ADF 'yi öğreneceksiniz. Hem alan hem de kural tabanlı eşlemelerin birleşimini ekleyebilirsiniz. Daha sonra alan adları, kaynaktan gelen meta veriler temelinde ADF tarafından çalışma zamanında oluşturulur. Oluşturulan alanların adlarını hata ayıklama sırasında ve veri önizleme bölmesini kullanarak görüntüleyebilirsiniz.
 
 Model eşleştirme ayrıntıları, [sütun deseninin belgelerinde](concepts-data-flow-column-pattern.md)yer alır.
+
+Ayrıca, satırı genişleterek ve "ad eşleşmeleri:" nın yanına bir normal ifade girerek kural tabanlı eşleştirmeyi kullanırken normal ifade desenleri de girebilirsiniz.
+
+![Regex eşleme](media/data-flow/scdt1g4.png "Regex eşleme")
 
 ## <a name="file-name-options"></a>Dosya adı seçenekleri
 

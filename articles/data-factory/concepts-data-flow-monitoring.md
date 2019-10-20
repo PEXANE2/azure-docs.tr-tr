@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387981"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597104"
 ---
 # <a name="monitor-data-flows"></a>Veri akışlarını izleme
 
@@ -24,7 +24,7 @@ Veri akışınızı oluşturma ve hata ayıklamayı tamamladıktan sonra, veri a
 
 ![Veri Akışını İzleme](media/data-flow/mon001.png "Veri Akışını İzleme")
 
-Bu düzeyde, çalışma süreleri ve durumu da dahil olmak üzere istatistikleri görürsünüz. Etkinlik düzeyindeki çalışma KIMLIĞI, işlem hattı düzeyinde çalıştırma KIMLIĞININ farklıdır. Önceki düzeydeki çalıştırma KIMLIĞI işlem hattı içindir. Duygunluğa tıklamak, veri akışı yürütmeyle ilgili ayrıntılı bilgiler verir.
+Bu düzeyde istatistikler, çalışma süreleri ve durumu da dahil olmak üzere görüntülenir. Etkinlik düzeyindeki çalışma KIMLIĞI, işlem hattı düzeyinde çalıştırma KIMLIĞININ farklıdır. Önceki düzeydeki çalıştırma KIMLIĞI işlem hattı içindir. Duygunluğa tıklamak, veri akışı yürütmeyle ilgili ayrıntılı bilgiler verir.
 
 ![Veri Akışını İzleme](media/data-flow/mon002.png "Veri Akışını İzleme")
 
@@ -47,6 +47,11 @@ Veri akışınız Spark 'ta yürütüldüğünde, Azure Data Factory veri akış
   * Hesaplandı: sütunu, Koşullu işleme için veya veri akışındaki bir ifade dahilinde kullanın, ancak bunu havuza girmeyin
   * Türetilmiş: sütun, akışta oluşturduğunuz yeni bir sütundur, yani kaynakta yer almıyor
   * Eşlendi: kaynak, kaynaktan geldiğini ve bir havuz alanıyla eşlemenizi sağlar
+  * Veri akışı durumu: yürütmenin geçerli durumu
+  * Küme başlangıç zamanı: veri akışı yürütmenizle ilgili JıT Spark işlem ortamının elde edilecek süre miktarı
+  * Dönüşüm sayısı: akışınızda kaç dönüştürme adımı yürütüldüğü
+  
+![Acıt veri akışı Izleme](media/data-flow/monitornew.png "Veri akışı Izleme yeni")  
   
 ## <a name="monitor-icons"></a>Simgeleri izle
 

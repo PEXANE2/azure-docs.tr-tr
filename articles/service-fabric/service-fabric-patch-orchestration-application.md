@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: d1ff58611278f02d74f064f0536e5f6f77195fb2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a02228593a9d8efc9fb363232da1cede3c80a8b3
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828875"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592525"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
 
@@ -27,8 +27,11 @@ ms.locfileid: "71828875"
 > [!IMPORTANT]
 > 30 Nisan 2019 itibariyle, düzeltme eki Orchestration uygulama sürümü 1,2. * artık desteklenmemektedir. En son sürüme yükseltdiğinizden emin olun.
 
+> [!NOTE]
+> [Sanal makine ölçek kümeniz üzerinde OTOMATIK işletim sistemi görüntüsü yükseltmelerini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) alma, Işletim sisteminizi Azure 'da düzeltme eki uygulama konusunda en iyi uygulamadır. Sanal makine ölçek kümesi tabanlı otomatik işletim sistemi görüntüsü yükseltmeleri, ölçek kümesi üzerinde gümüş veya daha fazla dayanıklılık gerektirir.
+>
 
-[Sanal makine ölçek kümeniz üzerinde OTOMATIK işletim sistemi görüntüsü yükseltmelerini](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) alma, Işletim sisteminizi Azure 'da düzeltme eki uygulama konusunda en iyi uygulamadır. Düzeltme Eki düzenleme uygulaması (POA), Azure 'da barındırılan kümeler için yapılandırma tabanlı işletim sistemi düzeltme eki zamanlamaya izin veren Azure Service Fabric Onarım Yöneticisi hizmeti etrafında bir sarmalayıcıdır. Azure dışı barındırılan kümeler için POA gerekli değildir, ancak kapalı kalma süresi olmadan Service Fabric küme konaklarına yama yapmak için güncelleştirme etki alanı tarafından yapılan düzeltme eki yüklemeyi zamanlama gerekir.
+ Düzeltme Eki düzenleme uygulaması (POA), Azure 'da barındırılan kümeler için yapılandırma tabanlı işletim sistemi düzeltme eki zamanlamaya izin veren Azure Service Fabric Onarım Yöneticisi hizmeti etrafında bir sarmalayıcıdır. Azure dışı barındırılan kümeler için POA gerekli değildir, ancak kapalı kalma süresi olmadan Service Fabric küme konaklarına yama yapmak için güncelleştirme etki alanı tarafından yapılan düzeltme eki yüklemeyi zamanlama gerekir.
 
 POA, kapalı kalma süresi olmadan bir Service Fabric kümesinde işletim sistemi düzeltme eki uygulamayı otomatikleştiren Service Fabric bir uygulamadır.
 
@@ -83,7 +86,7 @@ Alternatif olarak, yeni ve mevcut Service Fabric kümelerinde Onarım Yöneticis
 
 Onarım Yöneticisi hizmetini [Azure Resource Manager dağıtım modeli şablonunu](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)kullanarak etkinleştirmek için aşağıdakileri yapın:
 
-1. *Microsoft. ServiceFabric/kümeler* kaynağı için `apiVersion` ' ın *2017-07-01-Preview* olarak ayarlandığını doğrulayın. Farklıysa, `apiVersion`- *2017-07-01-Preview* veya sonraki bir sürüme güncelleştirmeniz gerekir:
+1. *Microsoft. ServiceFabric/kümeler* kaynağı için `apiVersion` *2017-07-01-Preview* olarak ayarlandığından emin olun. Farklıysa, `apiVersion` *2017-07-01-Preview* veya sonraki bir sürüme güncelleştirmeniz gerekir:
 
     ```json
     {
@@ -95,7 +98,7 @@ Onarım Yöneticisi hizmetini [Azure Resource Manager dağıtım modeli şablonu
     }
     ```
 
-1. @No__t-1 bölümünden sonra aşağıdaki `addonFeatures` bölümünü ekleyerek Onarım Yöneticisi hizmetini etkinleştirin:
+1. @No__t_1 bölümünden sonra aşağıdaki `addonFeatures` bölümünü ekleyerek Onarım Yöneticisi hizmetini etkinleştirin:
 
     ```json
     "fabricSettings": [
@@ -114,7 +117,7 @@ Yeni veya mevcut bir Service Fabric kümesinde Onarım Yöneticisi hizmeti etkin
 
 Onarım Yöneticisi hizmetini etkinleştirmek için:
 
-1. [Genel küme yapılandırmalarında](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) `apiVersion` ' ın, burada gösterildiği gibi *04-2017* veya sonraki bir sürüme ayarlandığından emin olun:
+1. [Genel küme yapılandırmalarında](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) `apiVersion`, burada gösterildiği gibi, *04-2017* veya üzeri bir sürüme ayarlandığından emin olun:
 
     ```json
     {
@@ -125,7 +128,7 @@ Onarım Yöneticisi hizmetini etkinleştirmek için:
     }
     ```
 
-1. Burada gösterildiği gibi `fabricSettings` bölümünden sonra aşağıdaki `addonFeatures` bölümünü ekleyerek Onarım Yöneticisi hizmetini etkinleştirin:
+1. Aşağıda gösterildiği gibi `fabricSettings` bölümünden sonra aşağıdaki `addonFeatures` bölümünü ekleyerek Onarım Yöneticisi hizmetini etkinleştirin:
 
     ```json
     "fabricSettings": [
@@ -150,31 +153,31 @@ Uygulama paketini indirmek için GitHub 'daki [Düzeltme Eki düzenleme uygulama
 
 ## <a name="configure-poa-behavior"></a>POA davranışını yapılandırma
 
-Gereksinimlerinizi karşılamak için POA davranışını yapılandırabilirsiniz. Uygulamayı oluştururken veya güncelleştirirken uygulama parametresini geçirerek varsayılan değerleri geçersiz kılın. @No__t-1 veya `New-ServiceFabricApplication` cmdlet 'lerine `ApplicationParameter` belirterek uygulama parametreleri sağlayabilirsiniz.
+Gereksinimlerinizi karşılamak için POA davranışını yapılandırabilirsiniz. Uygulamayı oluştururken veya güncelleştirirken uygulama parametresini geçirerek varsayılan değerleri geçersiz kılın. @No__t_1 veya `New-ServiceFabricApplication` cmdlet 'lerine `ApplicationParameter` belirterek uygulama parametreleri sağlayabilirsiniz.
 
 | Parametre        | Tür                          | Ayrıntılar |
 |:-|-|-|
-|MaxResultsToCache    |Uzun                              | Önbelleğe alınması gereken Windows Update sonuçlarının en fazla sayısı. <br><br>Varsayılan değer 3000 ' dir, ancak şunları kabul edilir: <br> &nbsp; @ no__t-1-düğüm sayısı 20 ' dir. <br> &nbsp; @ no__t-1-ayda bir düğümdeki güncelleştirme sayısı 5 ' tir. <br> &nbsp; @ no__t-1-işlem başına sonuç sayısı 10 olabilir. <br> &nbsp; @ no__t-1-son üç aya ait sonuçlar depolanmalıdır. |
+|MaxResultsToCache    |Uzun                              | Önbelleğe alınması gereken Windows Update sonuçlarının en fazla sayısı. <br><br>Varsayılan değer 3000 ' dir, ancak şunları kabul edilir: <br> &nbsp; &nbsp;-düğüm sayısı 20 ' dir. <br> &nbsp; &nbsp;-ayda bir düğümdeki güncelleştirme sayısı 5 ' tir. <br> &nbsp; &nbsp;-işlem başına sonuç sayısı 10 olabilir. <br> &nbsp; &nbsp;-son üç aya ait sonuçlar depolanmalıdır. |
 |TaskApprovalPolicy   |Sabit Listesi <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy, Windows güncelleştirmelerini Service Fabric kümesi düğümlerine yüklemek için Düzenleyici hizmeti tarafından kullanılacak ilkeyi gösterir.<br><br>İzin verilen değerler şunlardır: <br>*Nodewise*: Windows güncelleştirmeleri tek seferde bir düğüm yüklenir. <br> *Upgradedomainwise*: Windows güncelleştirmeleri tek seferde bir güncelleştirme etki alanı yüklenir. (En çok, bir güncelleştirme etki alanına ait tüm düğümler Windows Update 'e gidebilir.)<br><br> Kümeniz için en uygun ilke hakkında karar vermeye yardımcı olmak için [SSS](#frequently-asked-questions) bölümüne bakın.
 |Logsdiskquocontainer MB   |Uzun  <br> (Varsayılan: *1024*)               | , Düğümlerde yerel olarak kalıcı hale getirebilen, yama düzenleme uygulamasının en büyük boyutu MB olarak kaydedilir.
 | WUQuery               | string<br>(Varsayılan: *IsInstalled = 0*)                | Windows güncelleştirmelerini almak için sorgu. Daha fazla bilgi için bkz [. Wuquery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | Installwindowsosonlyupdates | *Boolean* <br> (varsayılan: false)                 | Hangi güncelleştirmelerin indirilip yükleneceğini denetlemek için bu bayrağı kullanın. Aşağıdaki değerlere izin verilir <br>true-yalnızca Windows işletim sistemi güncelleştirmelerini kurar.<br>false-makinede bulunan tüm güncelleştirmeleri yükleme.          |
-| Wuoperationtimeoutınminutes | 'tir <br>(Varsayılan: *90*)                   | Herhangi bir Windows Update işlemi için (arama veya indirme veya yükleme) zaman aşımını belirtir. İşlem belirtilen zaman aşımı süresi içinde tamamlanmazsa, durdurulur.       |
-| WURescheduleCount     | 'tir <br> (Varsayılan: *5*)                  | Bir işlemin kalıcı olarak başarısız olması halinde hizmetin Windows Update müşteri sizinle randevusunu en fazla kaç kez başarısız olduğunu.          |
-| WURescheduleTimeInMinutes | 'tir <br>(Varsayılan: *30*) | Hata devam ederse hizmetin Windows güncelleştirmelerini müşteri sizinle randevusunu zaman aralığı. |
-| WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>&nbsp; @ no__t-1-aylık: gg, ss: DD: SS (örneğin, *aylık, 5, 12:22:32*)<br>Alan gg (gün) için izin verilen değerler 1 ile 28 ve "son" sayılardır. <br> &nbsp; @ no__t-1-haftalık, gün, ss: DD: SS (örneğin, *haftalık, Salı, 12:22:32*)  <br> &nbsp; @ no__t-1-günlük, ss: DD: SS (örneğin, *günlük, 12:22:32*)  <br> &nbsp; @ no__t-1 @ no__t-2*yok* , Windows güncelleştirmelerinin gerçekleştirilip gerçekleştirilmeyeceğini gösterir.  <br><br> Süreler UTC olarak.|
+| Wuoperationtimeoutınminutes | 'Tir <br>(Varsayılan: *90*)                   | Herhangi bir Windows Update işlemi için (arama veya indirme veya yükleme) zaman aşımını belirtir. İşlem belirtilen zaman aşımı süresi içinde tamamlanmazsa, durdurulur.       |
+| WURescheduleCount     | 'Tir <br> (Varsayılan: *5*)                  | Bir işlemin kalıcı olarak başarısız olması halinde hizmetin Windows Update müşteri sizinle randevusunu en fazla kaç kez başarısız olduğunu.          |
+| WURescheduleTimeInMinutes | 'Tir <br>(Varsayılan: *30*) | Hata devam ederse hizmetin Windows güncelleştirmelerini müşteri sizinle randevusunu zaman aralığı. |
+| WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>&nbsp; &nbsp;-aylık: gg, ss: DD: SS (örneğin, *aylık, 5, 12:22:32*)<br>Alan gg (gün) için izin verilen değerler 1 ile 28 ve "son" sayılardır. <br> &nbsp; &nbsp;-haftalık, gün, ss: DD: SS (örneğin, *haftalık, Salı, 12:22:32*)  <br> &nbsp; &nbsp;-günlük, ss: DD: SS (örneğin, *günlük, 12:22:32*)  <br> &nbsp; &nbsp; -  *yok* , Windows güncelleştirmelerinin yapılmayacağını gösterir.  <br><br> Süreler UTC olarak.|
 | AcceptWindowsUpdateEula | Boole <br>(Varsayılan: *true*) | Bu bayrak ayarlanarak uygulama, makinenin sahibi adına Windows Update için Son Kullanıcı Lisans sözleşmesini kabul eder.              |
 
 > [!TIP]
-> Windows güncelleştirmelerinin hemen gerçekleşmesini istiyorsanız, `WUFrequency` ' ı uygulama dağıtım zamanına göre ayarlayın. Örneğin, beş düğümlü bir test kümeniz olduğunu ve uygulamayı 5:00 PM UTC 'de dağıtmayı planladığınızı varsayalım. Uygulama yükseltme veya dağıtımın en fazla 30 dakika sürdüğünü varsaydıysanız, WUFrequency *'Yi günlük, 17:30:00*olarak ayarlayın.
+> Windows güncelleştirmelerinin hemen gerçekleşmesini istiyorsanız uygulama dağıtım zamanına göre `WUFrequency` ayarlayın. Örneğin, beş düğümlü bir test kümeniz olduğunu ve uygulamayı 5:00 PM UTC 'de dağıtmayı planladığınızı varsayalım. Uygulama yükseltme veya dağıtımın en fazla 30 dakika sürdüğünü varsaydıysanız, WUFrequency *'Yi günlük, 17:30:00*olarak ayarlayın.
 
 ## <a name="deploy-poa"></a>POA dağıtma
 
 1. Kümeyi hazırlamak için tüm önkoşul adımlarını sona erdirin.
 1. POA 'yı diğer Service Fabric uygulamaları gibi dağıtın. PowerShell kullanarak dağıtmak için bkz. [PowerShell kullanarak uygulama dağıtma ve kaldırma](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-1. Uygulamayı dağıtım sırasında yapılandırmak için `ApplicationParameter` ' ı `New-ServiceFabricApplication` cmdlet 'ine geçirin. Size kolaylık olması için, uygulama ile birlikte Deploy. ps1 betiğini sağladık. Betiği kullanmak için:
+1. Uygulamayı dağıtım sırasında yapılandırmak için `ApplicationParameter` `New-ServiceFabricApplication` cmdlet 'ine geçirin. Size kolaylık olması için, uygulama ile birlikte Deploy. ps1 betiğini sağladık. Betiği kullanmak için:
 
-    - @No__t-0 kullanarak Service Fabric kümesine bağlanın.
+    - @No__t_0 kullanarak Service Fabric kümesine bağlanın.
     - Dağıtım. ps1 PowerShell betiğini uygun `ApplicationParameter` değeriyle yürütün.
 
 > [!NOTE]
@@ -190,7 +193,7 @@ Uygulamayı kaldırmak için [PowerShell kullanarak uygulamaları dağıtma ve k
 
 Kolaylık olması için uygulama ile birlikte undeploy. ps1 betiğini sağladık. Betiği kullanmak için:
 
-  - @No__t-0 kullanarak Service Fabric kümesine bağlanın.
+  - @No__t_0 kullanarak Service Fabric kümesine bağlanın.
   - PowerShell betiğini undeploy. ps1 ' i yürütün.
 
 > [!NOTE]
@@ -235,7 +238,7 @@ JSON alanları aşağıdaki tabloda açıklanmıştır:
 Alan | Değerler | Ayrıntılar
 -- | -- | --
 OperationResult | 0-başarılı<br> 1-hatalarla başarılı oldu<br> 2-başarısız oldu<br> 3-iptal edildi<br> 4-zaman aşımı Ile iptal edildi | Genellikle bir veya daha fazla güncelleştirmenin yüklenmesini içeren genel işlemin sonucunu gösterir.
-resultCode | OperationResult ile aynı | Bu alan, tek bir güncelleştirme için yükleme işleminin sonucunu gösterir.
+ResultCode | OperationResult ile aynı | Bu alan, tek bir güncelleştirme için yükleme işleminin sonucunu gösterir.
 OperationType | 1-yükleme<br> 0-arama ve Indirme| Varsayılan olarak, yükleme sonuçlarında gösterilen tek OperationType ' dır.
 WindowsUpdateQuery | Varsayılan değer "IsInstalled = 0" | Güncelleştirme aramak için kullanılan sorgu Windows Update. Daha fazla bilgi için bkz. [Wuquery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 RebootRequired | doğru-yeniden başlatma gerekiyordu<br> false-yeniden başlatma gerekli değil | Güncelleştirmelerin yüklenmesinin tamamlanabilmesi için yeniden başlatma gerekip gerekmediğini gösterir.
@@ -245,15 +248,15 @@ HResult | 0-başarılı<br> diğer hata| UpdateID ile Windows Update hatasının
 
 Henüz bir güncelleştirme zamanlanmamışsa, JSON sonucu boştur.
 
-Windows Update sonuçları sorgulamak için kümede oturum açın. Koordinatör hizmetinin birincil adresinin çoğaltma IP adresini bulun ve şu URL 'YI tarayıcıdan açın: http://&lt;REPLICA-IP @ no__t-1: &lt;ApplicationPort @ no__t-3/PatchOrchestrationApplication/v1/GetWindowsUpdateResults.
+Windows Update sonuçları sorgulamak için kümede oturum açın. Koordinatör hizmetinin birincil adresinin çoğaltma IP adresini bulun ve şu URL 'YI tarayıcıdan açın: http://&lt;REPLICA-IP &gt;: &lt;ApplicationPort &gt;/PatchOrchestrationApplication/v1/ GetWindowsUpdateResults.
 
-Koordinatör hizmeti için REST uç noktası dinamik bir bağlantı noktasına sahiptir. Tam URL 'yi denetlemek için Service Fabric Explorer başvurun. Örneğin, sonuçlar *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* ' de kullanılabilir.
+Koordinatör hizmeti için REST uç noktası dinamik bir bağlantı noktasına sahiptir. Tam URL 'yi denetlemek için Service Fabric Explorer başvurun. Örneğin, sonuçlar *http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults* kullanılabilir.
 
 ![REST uç noktasının görüntüsü](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 Kümede ters proxy etkinse, URL 'ye küme dışından da erişebilirsiniz.
 
-İsabet etmeniz gereken uç nokta *http://&lt;SERVERURL @ no__t-2: &lt;SMARPROXYPORT @ no__t-4/PatchOrchestrationApplication/Koordinattorservice/v1/GetWindowsUpdateResults*.
+İsabet etmeniz gereken uç nokta, *http://&lt;SERVERURL &gt;: &lt;REVERSEPROXYPORT &gt;/Patchorchestrationapplication/koordinattorservice/v1/getwindowsupdateresults*.
 
 Kümede ters proxy 'yi etkinleştirmek için [Azure Service Fabric 'de ters proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)'deki yönergeleri izleyin. 
 
@@ -274,7 +277,7 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
 1. Her düğümde çalışan NodeAgentNTService, zamanlanan zamanda kullanılabilir Windows güncelleştirmelerini arar. Güncelleştirmeler varsa, bunları düğümüne indirir.
 
-1. Güncelleştirmeler indirildikten sonra, NTService düğüm Aracısı, *POS___ @ no__t-1unique_ıd >* adlı düğüm için karşılık gelen bir onarım görevi oluşturur. Bu onarım görevlerini [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) cmdlet 'ini kullanarak veya düğüm ayrıntıları bölümünde SFX ' i kullanarak görüntüleyebilirsiniz. Onarım görevi oluşturulduktan sonra hızlı bir şekilde, [ *talep* edilen duruma](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)gider.
+1. Güncelleştirmeler indirildikten sonra, NTService düğüm Aracısı, *POS___ \<unique_id >* adlı düğüm için karşılık gelen bir onarım görevi oluşturur. Bu onarım görevlerini [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) cmdlet 'ini kullanarak veya düğüm ayrıntıları bölümünde SFX ' i kullanarak görüntüleyebilirsiniz. Onarım görevi oluşturulduktan sonra hızlı bir şekilde, [ *talep* edilen duruma](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)gider.
 
 1. Koordinatör hizmeti, belirli *bir durumdaki onarım* görevlerini düzenli aralıklarla arar ve ardından TaskApprovalPolicy 'e göre durumu *hazırlamaya* yönelik olarak güncelleştirir. TaskApprovalPolicy NodeWise olacak şekilde yapılandırıldıysa, bir düğüme karşılık gelen bir onarım görevi yalnızca *hazırlama*, *onaylanan*, *yürütme*veya *geri yükleme* durumunda başka bir onarım görevi yoksa hazırlanır. 
 
@@ -282,7 +285,7 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
    POA sürümleri 1.4.0 ve üzeri, düzeltme eki eklenen düğümleri göstermek için Koordinatör Torservice üzerindeki ClusterPatchingStatus özelliğiyle olayları nakleder. Güncelleştirmeler, aşağıdaki görüntüde gösterildiği gibi _poanode_0 üzerine yüklenir:
 
-    [![ küme düzeltme eki uygulama durumu](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+    [küme düzeltme eki uygulama durumu ![Image](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
 1. Düğüm devre dışı bırakıldıktan sonra onarma görevi *yürütülüyor* durumuna taşınır. 
    
@@ -291,11 +294,11 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
 1. Onarım görevi *yürütme* durumundaysa, bu düğümdeki düzeltme eki yüklemesi başlar. Düzeltme eki yüklendikten sonra, düzeltme ekine bağlı olarak düğüm yeniden başlatılmamış olabilir veya başlatılamayabilir. Ardından, onarım görevi, düğümü yeniden sağlayan *geri yükleme* durumuna taşınır. Onarım görevi daha sonra tamamlandı olarak işaretlenir.
 
-   1\.4.0 ve üzeri sürümlerde, NodeAgentService üzerindeki sistem durumu olaylarını WUOperationStatus-\<Düğ> özelliğiyle görüntüleyerek güncelleştirme durumunu bulabilirsiniz. Aşağıdaki resimlerde vurgulanan bölümler, *poanode_0* ve *poanode_2*düğümlerinde Windows güncelleştirmelerinin durumunu gösterir:
+   POA sürümlerinde 1.4.0 ve üzeri sürümlerde, WUOperationStatus-\<NodeName > özelliği ile NodeAgentService üzerindeki sistem durumu olaylarını görüntüleyerek güncelleştirme durumunu bulabilirsiniz. Aşağıdaki resimlerde vurgulanan bölümler, *poanode_0* ve *poanode_2*düğümlerinde Windows güncelleştirmelerinin durumunu gösterir:
 
-   [![Windows Update işlem durumu görüntüsü](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [Windows Update işlem durumunun ![Image](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Windows Update işlem durumu görüntüsü](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [Windows Update işlem durumunun ![Image](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    Ayrıca, PowerShell 'i kullanarak da Ayrıntılar alabilirsiniz. Bunu yapmak için kümeye bağlanır ve [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)kullanarak onarım görevinin durumunu getirebilirsiniz. 
    
@@ -325,7 +328,7 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
 1. POA sürümlerinde 1.4.0 ve sonraki sürümlerde, bir düğüm güncelleştirme denemesi tamamlandığında, Windows güncelleştirmelerini indirme ve yükleme denemesinin başlaması için NodeAgentService üzerinde "WUOperationStatus-[DüğümAdı]" özelliği ile bir olay gönderilir. Bu, aşağıdaki görüntüde görüntülenir:
 
-     [![Windows Update işlem durumu görüntüsü](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [Windows Update işlem durumunun ![Image](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Tanılama günlükleri
 

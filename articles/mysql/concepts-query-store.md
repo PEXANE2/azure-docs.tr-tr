@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/17/2019
+ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029871"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598235"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Sorgu deposu ile MySQL için Azure veritabanı performansını izleme
 
@@ -71,6 +71,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="finding-wait-queries"></a>Bekleme sorguları bulunuyor
 
+> [!NOTE]
+> Bekleme istatistikleri yoğun iş yükü saatlerinde etkinleştirilmemelidir veya hassas iş yükleri için süresiz olarak açık olmalıdır. <br>Yüksek CPU kullanımı veya daha düşük sanal çekirdekler ile yapılandırılmış sunucularda çalışan iş yükleri için bekleme istatistiklerini etkinleştirirken dikkatli olun. Süresiz olarak açılmamalıdır. 
+
 Bekleme olay türleri, farklı bekleme olaylarını benzerliğe göre demetlere birleştirir. Sorgu deposu, bekleme olay türü, belirli bir bekleme olayı adı ve söz konusu sorguyu sağlar. Bu bekleme bilgilerini sorgu çalışma zamanı istatistikleri ile ilişkilendirebilmek, sorgu performansı özelliklerine katkıda bulunan şeyleri daha ayrıntılı bir şekilde anlayabilmeniz anlamına gelir.
 
 İşte iş yükünüze, sorgu deposundaki bekleme istatistiklerini kullanarak nasıl daha fazla öngörü kazankullanabileceğinizi gösteren bazı örnekler:
@@ -104,7 +107,7 @@ Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 > [!NOTE]
 > Şu anda **query_store_capture_mode** , bu yapılandırmanın yerini alır, ancak her iki **query_store_capture_mode** ve **query_store_wait_sampling_capture_mode** de bekleyen istatistiklerin çalışması için her ikisi de etkinleştirilmelidir. **Query_store_capture_mode** devre dışı bırakılırsa, bekleme istatistiği, performance_schema etkin ' i ve sorgu deposu tarafından yakalanan query_text ' den yararlandığından, bekleme istatistikleri de kapanır.
 
-Bir parametre için farklı bir değer almak veya ayarlamak için  veya [Azure clı](howto-configure-server-parameters-using-cli.md)@no__t- [3Azure Portal](howto-server-parameters.md)kullanın.
+Bir parametre için farklı bir değer almak  to [Azure clı](howto-configure-server-parameters-using-cli.md)  or [Azure Portal](howto-server-parameters.md) kullanın.
 
 ## <a name="views-and-functions"></a>Görünümler ve işlevler
 
@@ -174,7 +177,7 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 - Bir MySQL sunucusunda `default_transaction_read_only` parametresi varsa, sorgu deposu veri yakalayamaz.
 - Sorgu deposu işlevselliği, uzun Unicode sorgularıyla karşılaşırsa kesintiye uğrar (\> = 6000 bayt).
 - Bekleme istatistikleri için bekletme süresi 24 saattir.
-- Bekleme istatistikleri örnek TI kullanarak olayların bir bölümünü yakalar. Sıklık `query_store_wait_sampling_frequency` parametresi kullanılarak değiştirilebilir.
+- Bekleme istatistikleri olay kesirini yakalamak için örnek kullanır. Sıklık `query_store_wait_sampling_frequency` parametresi kullanılarak değiştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 03fb21197b2e71603b8078945e16ccd69f151577
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: a5674658fa237e44c7caea45c8f6d587a471b981
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555770"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595647"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 
@@ -263,11 +263,18 @@ Aşağıdaki YAML, çıkarım için Conda Dependencies bir dosya örneğidir:
 name: project_environment
 dependencies:
   - python=3.6.2
+  - scikit-learn=0.20.0
   - pip:
     - azureml-defaults
-    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
+
+> [!IMPORTANT]
+> Eğer koda ve PIP (PyPi) ile bağımlılığı varsa Microsoft, Conda 'in, daha güvenilir bir şekilde yükleme yapan önceden oluşturulmuş ikili dosyalarla birlikte geldiğinden, Conda sürümünün kullanılmasını önerir.
+>
+> Daha fazla bilgi için bkz. [Conda ve PIP 'Yi anlama](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Bağımlılarınızın Conda ile kullanılabilir olup olmadığını denetlemek için `conda search <package-name>` komutunu kullanın veya [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) ve [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)paket dizinlerini kullanın.
 
 Otomatik şema oluşturmayı kullanmak istiyorsanız, giriş betiğinizin `inference-schema` paketlerini içeri aktarması gerekir.
 

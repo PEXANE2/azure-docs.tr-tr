@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166224"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598389"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Sorgu deposu ile MariaDB için Azure veritabanı performansını izleme
 
@@ -71,6 +71,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="finding-wait-queries"></a>Bekleme sorguları bulunuyor
 
+> [!NOTE]
+> Bekleme istatistikleri yoğun iş yükü saatlerinde etkinleştirilmemelidir veya hassas iş yükleri için süresiz olarak açık olmalıdır. <br>Yüksek CPU kullanımı veya daha düşük sanal çekirdekler ile yapılandırılmış sunucularda çalışan iş yükleri için bekleme istatistiklerini etkinleştirirken dikkatli olun. Süresiz olarak açılmamalıdır. 
+
 Bekleme olay türleri, farklı bekleme olaylarını benzerliğe göre demetlere birleştirir. Sorgu deposu, bekleme olay türü, belirli bir bekleme olayı adı ve söz konusu sorguyu sağlar. Bu bekleme bilgilerini sorgu çalışma zamanı istatistikleri ile ilişkilendirebilmek, sorgu performansı özelliklerine katkıda bulunan şeyleri daha ayrıntılı bir şekilde anlayabilmeniz anlamına gelir.
 
 İşte iş yükünüze, sorgu deposundaki bekleme istatistiklerini kullanarak nasıl daha fazla öngörü kazankullanabileceğinizi gösteren bazı örnekler:
@@ -87,16 +90,16 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametresinin** | **Açıklama** | **Varsayılanını** | **Aralığı** |
+| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık** |
 |---|---|---|---|
 | query_store_capture_mode | Değer temelinde sorgu deposu özelliğini açın/kapatın. Note: performance_schema KAPALıYSA, query_store_capture_mode ' ın etkinleştirilmesi, bu özellik için gerekli olan performance_schema ve performans şeması gereçlerinin bir alt kümesini etkinleştirebilir. | Bütün | HIÇBIRI, TÜMÜ |
 | query_store_capture_interval | Sorgu deposu yakalama aralığı dakika olarak. Sorgu ölçümlerinin toplanmış olduğu aralığın belirtilmesine izin verir | 15 | 5 - 60 |
-| query_store_capture_utility_queries | Sistemde yürütülen tüm yardımcı program sorgularını yakalamak için açma veya kapatma. | EŞLEŞEN | EVET, HAYıR |
+| query_store_capture_utility_queries | Sistemde yürütülen tüm yardımcı program sorgularını yakalamak için açma veya kapatma. | NO | EVET, HAYıR |
 | query_store_retention_period_in_days | Sorgu deposundaki verilerin saklanacağı zaman penceresi. | 7 | 1 - 30 |
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametresinin** | **Açıklama** | **Varsayılanını** | **Aralığı** |
+| **Parametresinin** | **Açıklama** | **Varsayılan** | **Aralık** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Bekleme istatistiklerinin açılmasını/KAPATıLMASıNı sağlar. | SEÇIM | HIÇBIRI, TÜMÜ |
 | query_store_wait_sampling_frequency | Saniye cinsinden bekleme örnekleme sıklığını değiştirir. 5-300 saniye. | 30 | 5-300 |
@@ -116,54 +119,54 @@ Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakıla
 
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır.
 
-| **Ad** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Adı** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
-| `schema_name`| varchar (64) | EŞLEŞEN | Şemanın adı |
-| `query_id`| büyük tamsayı (20) | EŞLEŞEN| Belirli sorgu için oluşturulan benzersiz KIMLIK, aynı sorgu farklı şemada yürütülüyorsa yeni bir KIMLIK oluşturulur |
-| `timestamp_id` | ilişkin| EŞLEŞEN| Sorgunun yürütüldüğü zaman damgası. Bu, query_store_interval yapılandırmasına dayalıdır|
-| `query_digest_text`| LONGTEXT| EŞLEŞEN| Tüm sabit değerleri kaldırdıktan sonra normalleştirilmiş sorgu metni|
-| `query_sample_text` | LONGTEXT| EŞLEŞEN| Değişmez değer içeren gerçek sorgunun ilk görünümü|
+| `schema_name`| varchar (64) | NO | Şemanın adı |
+| `query_id`| büyük tamsayı (20) | NO| Belirli sorgu için oluşturulan benzersiz KIMLIK, aynı sorgu farklı şemada yürütülüyorsa yeni bir KIMLIK oluşturulur |
+| `timestamp_id` | timestamp| NO| Sorgunun yürütüldüğü zaman damgası. Bu, query_store_interval yapılandırmasına dayalıdır|
+| `query_digest_text`| LONGTEXT| NO| Tüm sabit değerleri kaldırdıktan sonra normalleştirilmiş sorgu metni|
+| `query_sample_text` | LONGTEXT| NO| Değişmez değer içeren gerçek sorgunun ilk görünümü|
 | `query_digest_truncated` | sürümleri| YES| Sorgu metninin kesilip kesilmediğini belirtir. Sorgu 1 KB 'den uzunsa değer Evet olur|
-| `execution_count` | büyük tamsayı (20)| EŞLEŞEN| Sorgunun bu zaman damgası KIMLIĞI için kaç kez yürütüldüğü (yapılandırılmış Aralık dönemi sırasında)|
-| `warning_count` | büyük tamsayı (20)| EŞLEŞEN| Bu sorgunun iç sırada oluşturduğu uyarı sayısı|
-| `error_count` | büyük tamsayı (20)| EŞLEŞEN| Bu sorgunun Aralık sırasında oluşturduğu hata sayısı|
-| `sum_timer_wait` | Çift| YES| Bu sorgunun Aralık boyunca toplam yürütme süresi|
-| `avg_timer_wait` | Çift| YES| Bu sorgu için Aralık sırasında ortalama yürütme süresi|
-| `min_timer_wait` | Çift| YES| Bu sorgu için en düşük yürütme süresi|
-| `max_timer_wait` | Çift| YES| En fazla yürütme süresi|
-| `sum_lock_time` | büyük tamsayı (20)| EŞLEŞEN| Bu zaman penceresi sırasında bu sorgu yürütmesinin tüm kilitleri için harcanan toplam süre miktarı|
-| `sum_rows_affected` | büyük tamsayı (20)| EŞLEŞEN| Etkilenen satır sayısı|
-| `sum_rows_sent` | büyük tamsayı (20)| EŞLEŞEN| İstemciye gönderilen satır sayısı|
-| `sum_rows_examined` | büyük tamsayı (20)| EŞLEŞEN| İncelenen satır sayısı|
-| `sum_select_full_join` | büyük tamsayı (20)| EŞLEŞEN| Tam birleşim sayısı|
-| `sum_select_scan` | büyük tamsayı (20)| EŞLEŞEN| Seçme taraması sayısı |
-| `sum_sort_rows` | büyük tamsayı (20)| EŞLEŞEN| Sıralanan satır sayısı|
-| `sum_no_index_used` | büyük tamsayı (20)| EŞLEŞEN| Sorgunun herhangi bir dizini kullanmayan zaman sayısı|
-| `sum_no_good_index_used` | büyük tamsayı (20)| EŞLEŞEN| Sorgu yürütme altyapısının herhangi bir iyi Dizin kullanmayan zaman sayısı|
-| `sum_created_tmp_tables` | büyük tamsayı (20)| EŞLEŞEN| Toplam oluşturulan geçici tablo sayısı|
-| `sum_created_tmp_disk_tables` | büyük tamsayı (20)| EŞLEŞEN| Diskte oluşturulan toplam geçici tablo sayısı (g/ç oluşturur)|
-| `first_seen` | ilişkin| EŞLEŞEN| Toplama penceresi sırasında sorgunun ilk oluşumu (UTC)|
-| `last_seen` | ilişkin| EŞLEŞEN| Bu toplama penceresi sırasında sorgunun son oluşumu (UTC)|
+| `execution_count` | büyük tamsayı (20)| NO| Sorgunun bu zaman damgası KIMLIĞI için kaç kez yürütüldüğü (yapılandırılmış Aralık dönemi sırasında)|
+| `warning_count` | büyük tamsayı (20)| NO| Bu sorgunun iç sırada oluşturduğu uyarı sayısı|
+| `error_count` | büyük tamsayı (20)| NO| Bu sorgunun Aralık sırasında oluşturduğu hata sayısı|
+| `sum_timer_wait` | double| YES| Bu sorgunun Aralık boyunca toplam yürütme süresi|
+| `avg_timer_wait` | double| YES| Bu sorgu için Aralık sırasında ortalama yürütme süresi|
+| `min_timer_wait` | double| YES| Bu sorgu için en düşük yürütme süresi|
+| `max_timer_wait` | double| YES| En fazla yürütme süresi|
+| `sum_lock_time` | büyük tamsayı (20)| NO| Bu zaman penceresi sırasında bu sorgu yürütmesinin tüm kilitleri için harcanan toplam süre miktarı|
+| `sum_rows_affected` | büyük tamsayı (20)| NO| Etkilenen satır sayısı|
+| `sum_rows_sent` | büyük tamsayı (20)| NO| İstemciye gönderilen satır sayısı|
+| `sum_rows_examined` | büyük tamsayı (20)| NO| İncelenen satır sayısı|
+| `sum_select_full_join` | büyük tamsayı (20)| NO| Tam birleşim sayısı|
+| `sum_select_scan` | büyük tamsayı (20)| NO| Seçme taraması sayısı |
+| `sum_sort_rows` | büyük tamsayı (20)| NO| Sıralanan satır sayısı|
+| `sum_no_index_used` | büyük tamsayı (20)| NO| Sorgunun herhangi bir dizini kullanmayan zaman sayısı|
+| `sum_no_good_index_used` | büyük tamsayı (20)| NO| Sorgu yürütme altyapısının herhangi bir iyi Dizin kullanmayan zaman sayısı|
+| `sum_created_tmp_tables` | büyük tamsayı (20)| NO| Toplam oluşturulan geçici tablo sayısı|
+| `sum_created_tmp_disk_tables` | büyük tamsayı (20)| NO| Diskte oluşturulan toplam geçici tablo sayısı (g/ç oluşturur)|
+| `first_seen` | timestamp| NO| Toplama penceresi sırasında sorgunun ilk oluşumu (UTC)|
+| `last_seen` | timestamp| NO| Bu toplama penceresi sırasında sorgunun son oluşumu (UTC)|
 
 ### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
 
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-| **Ad**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
+| **Adı**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
-| `interval_start` | ilişkin | EŞLEŞEN| Aralık başlangıcı (15 dakikalık artış)|
-| `interval_end` | ilişkin | EŞLEŞEN| Aralığın sonu (15 dakikalık artış)|
-| `query_id` | büyük tamsayı (20) | EŞLEŞEN| Normalleştirilmiş sorguda (sorgu deposundan) oluşturulan benzersiz KIMLIK|
-| `query_digest_id` | varchar (32) | EŞLEŞEN| Tüm sabit değerleri kaldırıldıktan sonra normalleştirilmiş sorgu metni (sorgu deposundan) |
-| `query_digest_text` | LONGTEXT | EŞLEŞEN| Değişmez değer içeren gerçek sorgunun ilk görünümü (sorgu deposundan) |
-| `event_type` | varchar (32) | EŞLEŞEN| Bekleme olayının kategorisi |
-| `event_name` | varchar (128) | EŞLEŞEN| Bekleme olayının adı |
-| `count_star` | büyük tamsayı (20) | EŞLEŞEN| Sorgu aralığı boyunca örneklenen bekleme olaylarının sayısı |
-| `sum_timer_wait_ms` | Çift | EŞLEŞEN| Bu sorgunun Aralık boyunca toplam bekleme süresi (milisaniye cinsinden) |
+| `interval_start` | timestamp | NO| Aralık başlangıcı (15 dakikalık artış)|
+| `interval_end` | timestamp | NO| Aralığın sonu (15 dakikalık artış)|
+| `query_id` | büyük tamsayı (20) | NO| Normalleştirilmiş sorguda (sorgu deposundan) oluşturulan benzersiz KIMLIK|
+| `query_digest_id` | varchar (32) | NO| Tüm sabit değerleri kaldırıldıktan sonra normalleştirilmiş sorgu metni (sorgu deposundan) |
+| `query_digest_text` | LONGTEXT | NO| Değişmez değer içeren gerçek sorgunun ilk görünümü (sorgu deposundan) |
+| `event_type` | varchar (32) | NO| Bekleme olayının kategorisi |
+| `event_name` | varchar (128) | NO| Bekleme olayının adı |
+| `count_star` | büyük tamsayı (20) | NO| Sorgu aralığı boyunca örneklenen bekleme olaylarının sayısı |
+| `sum_timer_wait_ms` | double | NO| Bu sorgunun Aralık boyunca toplam bekleme süresi (milisaniye cinsinden) |
 
 ### <a name="functions"></a>İşlevler
 
-| **Ad**| **Açıklama** |
+| **Adı**| **Açıklama** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | Verilen zaman damgasından önce tüm sorgu depolama verilerini temizler |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | Verilen zaman damgasından önce tüm bekleme olayı verilerini temizler |
@@ -171,7 +174,7 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 
-- MariaDB sunucusunda `default_transaction_read_only` parametresi varsa, sorgu deposu veri yakalayamaz.
+- Bir MariaDB sunucusunda `default_transaction_read_only` parametresi varsa, sorgu deposu veri yakalayamaz.
 - Sorgu deposu işlevselliği, uzun Unicode sorgularıyla karşılaşırsa kesintiye uğrar (\> = 6000 bayt).
 - Bekleme istatistikleri için bekletme süresi 24 saattir.
 - Bekleme istatistikleri örnek TI kullanarak olayların bir bölümünü yakalar. Sıklık `query_store_wait_sampling_frequency` parametresi kullanılarak değiştirilebilir.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
 ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "71129685"
 ---
 Yapılandırmayı başka bir dağıtım yuvasından kopyaladığınızda, kopyalanmış yapılandırma düzenlenebilir olur. Bazı yapılandırma öğeleri bir takas (yuvaya özgü değil) içindeki içeriği izler, ancak diğer yapılandırma öğeleri bir değiştirme sonrasında aynı yuvada kalır (yuvaya özgü). Aşağıdaki listeler, yuvaları takas yaparken değişen ayarları gösterir.
@@ -36,10 +36,10 @@ Yıldız işareti (*) ile işaretlenen özellikler, takas edilmemiş olarak plan
 * Ölçek ayarları
 * WebJobs zamanlayıcılar
 * IP kısıtlamaları
-* Daima Açık
+* Her Zaman Açık
 * Tanılama günlüğü ayarları
 * Çıkış noktaları arası kaynak paylaşımı (CORS)
 
 > [!NOTE]
-> Takas edilmemiş ayarlara uygulanan bazı uygulama ayarları da takas edilmez. Örneğin, tanılama günlüğü ayarları değiştirilmediğinden, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` ve `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` gibi ilgili uygulama ayarları, yuva ayarı olarak gösterilmese bile de değiştirilmiyor.
+> Takas edilmemiş ayarlara uygulanan bazı uygulama ayarları da takas edilmez. Örneğin, tanılama günlüğü ayarları değiştirilmediğinden, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` ve `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` gibi ilgili uygulama ayarları da, yuva ayarı olarak gösterilmese bile yer değiştirmemelidir.
 >

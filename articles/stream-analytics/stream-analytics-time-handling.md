@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172989"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598028"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics zaman işlemeyi anlama
 
@@ -22,11 +22,11 @@ Bu makalede, Azure Stream Analytics hizmetindeki pratik zaman işleme sorunları
 
 Tartışmayı daha iyi çerçeveetmek için bazı arka plan kavramları tanımlayalim:
 
-- **Olay saati**: Özgün olayın gerçekleştiği zaman. Örneğin, bir hareketli araba otoyol üzerinde bir stand yaklaşırsa.
+- **Olay saati**: özgün olayın gerçekleştiği zaman. Örneğin, bir hareketli araba otoyol üzerinde bir stand yaklaşırsa.
 
-- **İşleme süresi**: Etkinliğin işleme sistemine ulaştığı ve gözlemlendiği zaman. Örneğin, bir stand algılayıcısı arabayı gördüğünde ve bilgisayar sisteminin verileri işlemesi birkaç dakika sürer.
+- **İşleme süresi**: olayın işleme sistemine ulaştığı ve gözlemlendiği zaman. Örneğin, bir stand algılayıcısı arabayı gördüğünde ve bilgisayar sisteminin verileri işlemesi birkaç dakika sürer.
 
-- **Filigran**: Akış işlemcisine hangi nokta olaylarının geçtiğini belirten bir olay zaman işaretleyicisi. Filigranlar, sistemin olayları geri almaya yönelik Temizleme ilerlemesini belirtebilmesine izin verir. Akışların doğası gereği, gelen olay verileri hiçbir şekilde durdurulmayacağından, Filigranlar akışta belirli bir noktaya yönelik ilerlemeyi gösterir.
+- **Filigran**: hangi nokta olaylarının akış işlemcisine geçtiğini gösteren bir olay zaman işaretleyicisi. Filigranlar, sistemin olayları geri almaya yönelik Temizleme ilerlemesini belirtebilmesine izin verir. Akışların doğası gereği, gelen olay verileri hiçbir şekilde durdurulmayacağından, Filigranlar akışta belirli bir noktaya yönelik ilerlemeyi gösterir.
 
    Filigran kavramı önemlidir. Filigranlar, sistemin geri çekilmesi gerekmeyen tamamen, doğru ve yinelenebilir sonuçlara ne zaman üreteceğini belirlemesine izin Stream Analytics verir. İşlem, öngörülebilir ve yinelenebilir olan garantili bir şekilde yapılabilir. Örneğin, bazı hata işleme koşullarınız için bir yeniden sayım yapılması gerekiyorsa, Filigranlar güvenli başlangıç ve bitiş noktalarıdır.
 
@@ -42,7 +42,7 @@ Stream Analytics, kullanıcılara olay saati çekme için iki seçenek sunar:
 
    Varış zamanı kullanımı, varsayılan davranıştır ve en iyi şekilde veri arşivleme senaryolarında kullanılır; burada, hiç zamana bağlı mantık gerekmez.
 
-2. **Uygulama saati** (aynı zamanda olay saati olarak adlandırılır)
+2. **Uygulama saati** (olay saati olarak da adlandırılır)
 
    Uygulama saati, olay oluşturulduğunda atanır ve olay yükünün bir parçasıdır. Olayları uygulama zamanına göre işlemek için, select sorgusunda **timestamp by** yan tümcesini kullanın. **Zaman damgası by** yan tümcesi yoksa, olaylar varış süresine göre işlenir.
 
@@ -86,7 +86,7 @@ Ayarlamanın bir parçası olarak, olayın **System. Timestamp** değeri yeni de
 
 Burada açıklanan buluşsal filigran oluşturma mekanizması, zamanın çoğu zaman çeşitli olay gönderenler arasında eşitlenmiş olduğu durumlarda iyi bir şekilde çalışmaktadır. Ancak, özellikle birçok IoT senaryosunda, sistem, olay göndericlarındaki saat üzerinde çok az denetime sahiptir. Olay gönderenlerin her türlü cihaz, farklı donanım ve yazılım sürümlerinde olabilir.
 
-Bir giriş bölümündeki tüm olaylara küresel bir filigran kullanmak yerine, Stream Analytics yardımcı olması için alt akışlar adlı başka bir mekanizmaya sahiptir. [**Zaman DAMGASı by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini ve **üzerine**anahtar sözcüğünü kullanan bir iş sorgusu yazarak, işinizdeki alt akışlardan yararlanabilirsiniz. Alt akışı belirlemek için, bir gibi, yukarıdaki anahtar sözcüğünden sonra bir `deviceid`anahtar sütun adı sağlayın; böylece sistem bu sütuna zaman ilkeleri uygular. Her alt akış kendi bağımsız filigranını alır. Bu mekanizma, büyük saat ve Olay Gönderenler arasındaki ağ gecikmeleriyle ilgilenirken zamanında çıkış oluşturulmasına izin vermek için yararlıdır.
+Bir giriş bölümündeki tüm olaylara küresel bir filigran kullanmak yerine, Stream Analytics yardımcı olması için alt akışlar adlı başka bir mekanizmaya sahiptir. [**Zaman DAMGASı by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) yan tümcesini ve **üzerine**anahtar sözcüğünü kullanan bir iş sorgusu yazarak, işinizdeki alt akışlardan yararlanabilirsiniz. Alt akışı belirlemek için, `deviceid` gibi, **Over** anahtar sözcüğünden sonra bir anahtar sütun adı sağlayın. böylece sistem bu sütuna zaman ilkeleri uygular. Her alt akış kendi bağımsız filigranını alır. Bu mekanizma, büyük saat ve Olay Gönderenler arasındaki ağ gecikmeleriyle ilgilenirken zamanında çıkış oluşturulmasına izin vermek için yararlıdır.
 
 Alt akışlar Azure Stream Analytics tarafından sağlanan benzersiz bir çözümdür ve diğer akış veri işleme sistemleri tarafından sunulmaz. Stream Analytics, alt akışlar kullanıldığında, gelen olaylara geç varış toleransı penceresini uygular. Varsayılan ayar (5 saniye), daha fazla zaman damgalarına sahip cihazlar için büyük olasılıkla çok küçüktür. 5 dakikada bir başlangıç yapmanızı ve bunların cihaz saati eğriltme düzenine göre ayarlamalar yapmanızı öneririz.
 
@@ -118,7 +118,7 @@ Stream Analytics işlerin birkaç **olay sırası** seçeneği vardır. Azure po
 
 4. Girişler seyrek.
 
-   Belirli bir bölümde giriş olmadığında, eşik zamanı geç varış toleransı penceresi olarak hesaplanır. Sonuç olarak, giriş olayları seyrek ve seyrek olursa çıktı bu süre kadar geciktirilebilir. Geç değere **ulaşan varsayılan olaylar** 5 saniyedir. Örneğin, giriş olaylarını tek seferde gönderirken biraz gecikme görmeniz beklenir. Geç pencereye büyük bir değere **ulaşan olayları** ayarladığınızda gecikmeler daha kötüleştir.
+   Belirli bir bölümde giriş olmadığında, **eşik zamanı geç** varış toleransı penceresi olarak hesaplanır. Sonuç olarak, giriş olayları seyrek ve seyrek olursa çıktı bu süre kadar geciktirilebilir. Geç değere **ulaşan varsayılan olaylar** 5 saniyedir. Örneğin, giriş olaylarını tek seferde gönderirken biraz gecikme görmeniz beklenir. Geç pencereye büyük bir değere **ulaşan olayları** ayarladığınızda gecikmeler daha kötüleştir.
 
 5. **System. Timestamp** değeri, **Olay saati** alanındaki zamandan farklı.
 
@@ -171,7 +171,7 @@ Aşağıdaki resimlerde, filigranların farklı koşullarda nasıl ilerlemesinin
 
 Bu tabloda aşağıdaki örnek veriler gösterilmektedir. Olay saatinin ve varış zamanının, bazen eşleşen ve bazen de değişebileceğini fark edebilirsiniz.
 
-| Etkinlik saati | Varış saati | DeviceId |
+| Olay saati | Varış saati | DeviceID |
 | --- | --- | --- |
 | 12:07 | 12:07 | cihaz1
 | 12:08 | 12:08 | cihaz2
@@ -208,7 +208,7 @@ Bu çizimde, aşağıdaki toleranslar kullanılır:
 
    4. Altıncı olay (Device3) işlendiğinde, varış saati (12:17) ve olay saati (12:12), filigran düzeyinin altında. Olay saati su işareti düzeyine ayarlanır (12:17).
 
-   5. Dokuzuncu olay (Device3) işlendiğinde, varış saati (12:27) olay zamanından önce 6 dakikadır (12:21). Geç varış ilkesi uygulanır. Olay saati ayarlanır (12:22), 12:21 Bu, daha fazla ayarlama uygulanmaz.
+   5. On ikinci olay (Device3) işlendiğinde varış süresi (12:27) olay zamanından önce 6 dakikadır (12:21). Geç varış ilkesi uygulanır. Olay saati ayarlanır (12:22), 12:21 Bu, daha fazla ayarlama uygulanmaz.
 
 2. Erken alma ilkesi olmadan ilerleyen filigranın ikinci çizimi:
 

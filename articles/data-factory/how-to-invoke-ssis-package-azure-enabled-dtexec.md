@@ -1,5 +1,5 @@
 ---
-title: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini yürütün | Microsoft Docs
+title: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketleri yürütün | Microsoft Docs
 description: Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini yürütmeyi öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -12,72 +12,61 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 740e53728356755bcc42e1e0aafb64992b30e113
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 472792351b8b7ab96e055bacd64141840ce7a630
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249025"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596957"
 ---
-# <a name="run-sql-server-integration-services-ssis-packages-with-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services (SSIS) paketlerini çalıştırma
-Bu makalede, Azure etkinleştirilmiş **dtexec** (**azuredtexec**) komut istemi yardımcı programı açıklanır.  Azure Data Factory (ADF) ' de Azure-SSIS Integration Runtime (IR) üzerinde SSIS paketlerini çalıştırmak için kullanılır.
+# <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Integration Services paketlerini çalıştırma
+Bu makalede, Azure etkinleştirilmiş dtexec (AzureDTExec) komut istemi yardımcı programı açıklanır. SQL Server Integration Services (SSIS) paketlerini Azure Data Factory Azure-SSIS Integration Runtime (IR) üzerinde çalıştırmak için kullanılır.
 
-Geleneksel **dtexec** yardımcı programı SQL Server gelir, daha fazla bilgi için bkz. [dtexec yardımcı programı](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017) belgeleri.  Genellikle, şirket içinde SSIS paketlerini çalıştırmak için etkin Batch, Control-d vb. gibi üçüncü taraf düzenleyiciler/zamanlayıcılar tarafından çağrılır.  Modern **Azuredtexec** yardımcı programı SQL Server Management Studio (SSMS) aracıyla birlikte gelir.  Ayrıca, Azure 'da SSIS paketlerini çalıştırmak için üçüncü taraf düzenleyiciler/zamanlayıcılar tarafından çağrılabilir.  SSIS paketlerinizin buluta geçişini/geçirilmesini &, kaldırma işlemini kolaylaştırır.  Geçişten sonra, günlük işlemlarınızda üçüncü taraf düzenleyiciler/zamanlayıcılar kullanmaya devam etmek istiyorsanız, artık **dtexec**yerine **azuredtexec** 'yi çağırabilir.
+Geleneksel dtexec yardımcı programı SQL Server gelir. Daha fazla bilgi için bkz. [dtexec yardımcı programı](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017). Genellikle, şirket içi SSIS paketlerini çalıştırmak için ActiveBatch ve Control-d gibi üçüncü taraf düzenleyiciler veya zamanlayıcılar tarafından çağrılır. 
 
-**Azuredtexec** , PAKETLERINIZI ADF işlem HATLARıNDA SSIS paket etkinliklerini Yürüt olarak çalıştıracak. daha fazla bilgi için bkz. [SSIS paketlerini ADF etkinlikleri olarak çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) makalesi.  ADF 'niz içinde işlem hatları üreten Azure Active Directory (AAD) uygulaması kullanmak için SSMS aracılığıyla yapılandırılabilir.  Ayrıca, paketlerinizi depoladığınız dosya sistemlerine/dosya paylaşımlarına/Azure dosyalarına erişecek şekilde yapılandırılabilir.  **Azuredtexec** , çağırma seçeneklerine verdiğiniz değerlere bağlı olarak, içinde SSIS paketi yürütme etkinliği ile BENZERSIZ bir ADF işlem hattı oluşturur ve çalıştırır.  **Azuredtexec** 'nin seçenekleri için aynı değerlerle çağrılması, mevcut işlem hattını yeniden çalıştırır.
+Modern AzureDTExec yardımcı programı bir SQL Server Management Studio (SSMS) aracıyla birlikte gelir. Ayrıca, Azure 'da SSIS paketlerini çalıştırmak için üçüncü taraf düzenleyiciler veya zamanlayıcılar tarafından çağrılabilir. SSIS paketlerinizin, buluta geçişini ve geçirilmesini veya geçirilmesini kolaylaştırır. Geçişten sonra, günlük işlemlarınızda üçüncü taraf düzenleyiciler veya zamanlayıcılar kullanmaya devam etmek istiyorsanız, artık dtexec yerine AzureDTExec ' ı çağırabilir.
 
-## <a name="prerequisites"></a>Prerequisites
-**Azuredtexec**'yi kullanmak için, en son SSMS 'yi (sürüm 18,3 veya üzeri) [buradan](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)indirin ve yükleyin.
+AzureDTExec, paketlerinizi Data Factory işlem hatları 'nda SSIS paket etkinliklerini yürütme olarak çalıştırır. Daha fazla bilgi için bkz. [SSIS paketlerini Azure Data Factory etkinlikleri olarak çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity). 
 
-## <a name="configure-azuredtexec-utility"></a>AzureDTExec yardımcı programını yapılandırma
-SSMS 'nin yerel makinenize yüklenmesi de **Azuredtexec**' i yükler.  Ayarlarını yapılandırmak için, SSMS 'yi **yönetici olarak çalıştır** seçeneğiyle başlatın ve basamaklı açılan menü öğesi araçlarını seçin > Azure **'a geçirin-> Azure-Enabled dtexec yapılandırın**.
+AzureDTExec, veri fabrikanıza işlem hatları üreten bir Azure Active Directory (Azure AD) uygulaması kullanmak için SSMS aracılığıyla yapılandırılabilir. Ayrıca, paketlerinizi depoladığınız dosya sistemlerine, dosya paylaşımlarına veya Azure dosyalarına erişecek şekilde yapılandırılabilir. AzureDTExec, çağırma seçeneklerine verdiğiniz değerlere bağlı olarak, içinde bir SSIS paketi yürütme etkinliği ile benzersiz bir Data Factory işlem hattı oluşturur ve çalıştırır. Options için aynı değerlerle AzureDTExec çağırma, mevcut ardışık düzeni yeniden çalıştırır.
+
+## <a name="prerequisites"></a>Önkoşullar
+AzureDTExec 'yi kullanmak için sürüm 18,3 veya üzeri olan SSMS 'nin en son sürümünü indirip yükleyin. [Bu Web sitesinden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)indirin.
+
+## <a name="configure-the-azuredtexec-utility"></a>AzureDTExec yardımcı programını yapılandırma
+SSMS 'nin yerel makinenizde yüklenmesi de AzureDTExec ' i de yüklüyor. Ayarlarını yapılandırmak için SSMS 'yi **yönetici olarak çalıştır** seçeneğiyle başlatın. Ardından **Araçlar** ' ı seçin  >  Azure **'A geçir**  > **Azure özellikli dtexec 'ı yapılandırın**.
 
 ![Azure etkin dtexec menüsünü yapılandırma](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
-Bu eylem, **Azuredtexec. Settings** dosyasına yazmak için yönetim ayrıcalıklarıyla açılması gereken **Azuredtexecconfig** penceresini açılır.  SSMS 'yi yönetici olarak çalıştırdıysanız, ayrıcalıklarınızı yükseltmek için yönetici parolanızı girmeniz için bir kullanıcı hesabı denetimi (UAC) penceresi açılır.
+Bu eylem, *Azuredtexec. Settings* dosyasına yazmak için yönetim ayrıcalıklarıyla açılması gereken bir **Azuredtexecconfig** penceresi açar. SSMS 'yi yönetici olarak çalıştırmadığınız takdirde, bir kullanıcı hesabı denetimi (UAC) penceresi açılır. Ayrıcalıklarınızı yükseltmek için yönetici parolanızı girin.
 
 ![Azure etkin dtexec ayarlarını yapılandırma](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
 
-**Azuredtexecconfig** penceresinde yapılandırma ayarlarınızı aşağıdaki gibi girebilirsiniz:
+**Azuredtexecconfig** penceresinde yapılandırma ayarlarınızı aşağıdaki gibi girin:
 
-- **ApplicationId**: ADF 'niz için işlem hatları oluşturmak üzere doğru IZINLERLE oluşturduğunuz AAD uygulamasının benzersiz tanımlayıcısını girin. daha fazla bilgi için, bkz. [Azure Portal makalesini kullanarak AAD uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
+- **ApplicationId**: veri fabrikanıza işlem hatları oluşturmak için doğru Izinlerle oluşturduğunuz Azure AD uygulamasının benzersiz tanımlayıcısını girin. Daha fazla bilgi için bkz. [Azure Portal aracılığıyla Azure AD uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+- **Authenticationkey**: Azure AD uygulamanızın kimlik doğrulama anahtarını girin.
+- **Tenantıd**: Azure AD uygulamanızın altında OLUŞTURULACAĞı Azure AD kiracının benzersiz tanımlayıcısını girin.
+- **SubscriptionID**: veri fabrikanızın oluşturulduğu Azure aboneliğinin benzersiz tanımlayıcısını girin.
+- **ResourceGroup**: veri fabrikanızın oluşturulduğu Azure Kaynak grubunun adını girin.
+- **DataFactory**: Ssredtexec 'yi çağırdığınızda belirtilen seçenek değerlerine dayanarak, içinde SSIS paketi yürütme etkinliği ile benzersiz işlem hatları oluşturulan veri fabrikasının adını girin.
+- **Irname**: veri fabrikanızdaki Azure-SSIS IR adını girin, bu, ' ın evrensel adlandırma KURALı (UNC) yolunda belirtilen paketlerin AzureDTExec ' ı çağırdığınızda çalışacağını belirtin.
+- **Packageaccessdomain**: AzureDTExec 'yi ÇAĞıRDıĞıNıZDA belirtilen UNC yolundaki paketlerinize erişmek için etki alanı kimlik bilgilerini girin.
+- **Packageaccessusername**: AzureDTExec 'yi ÇAĞıRDıĞıNıZDA belirtilen UNC yolundaki paketlerinize erişmek için Kullanıcı adı bilgilerini girin.
+- **Packageaccesspassword**: AzureDTExec 'yi ÇAĞıRDıĞıNıZDA belirtilen UNC yolundaki paketlerinize erişmek için parola kimlik bilgisini girin.
+- **LogPath**: günlük klasörünün UNC yolunu, Azure-SSIS IR paket yürütmelerinin yazıldığı günlük dosyasına girin.
+- **LogLevel**: Azure-SSIS IR paket yürütmeleri için önceden tanımlanmış **null**, **temel**, **ayrıntılı**veya **performans** seçeneklerinden günlük kaydının seçili kapsamını girin.
+- **Logaccessdomain**: **logPath** belirtildiğinde ve **LogLevel** **null**olmadığında, günlük klasörünüze yazmak için, UNC yolundaki günlük klasörünüze erişmek için etki alanı kimlik bilgisini girin.
+- **Logaccessusername**: **logPath** belirtildiğinde ve **LogLevel** **null**olmadığında, günlük klasörünüz için UNC yolundaki günlük klasörünüze erişmek için Kullanıcı adı kimlik bilgisini girin.
+- **Logaccesspassword**: **logPath** belirtildiğinde ve **LogLevel** **null**olmadığında, günlük klasörünüz için UNC yolundaki günlük klasörünüze erişmek üzere parola kimlik bilgisini girin.
+- **Ardışık düzen ınenamehashstrlen**: AzureDTExec 'yi çağırdığınızda sağladığınız seçenek değerlerinden oluşturulacak karma dizelerin uzunluğunu girin. Dizeler, paketlerinizi Azure-SSIS IR çalıştıran Data Factory işlem hatları için benzersiz adlar oluşturmak üzere kullanılır. Genellikle 32 karakterlik bir uzunluk yeterlidir.
 
-- **Authenticationkey**: AAD uygulamanız için kimlik doğrulama anahtarını girin.
+Dosya sistemlerinde veya Şirket içindeki dosya paylaşımlarında paketlerinizi ve günlük dosyalarınızı depolamak için, Azure-SSIS IR paketlerinizi getirip günlük dosyalarınızı yazabilmesi için, şirket içi ağınıza bağlı bir sanal ağa katın. Daha fazla bilgi için bkz. bir [Azure-SSIS IR sanal ağa ekleme](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
-- **Tenantıd**: AAD UYGULAMANıZıN oluşturulduğu AAD kiracısının benzersiz tanımlayıcısını girin.
+*Azuredtexec. Settings* dosyasına yazılmış gizli değerlerin düz metin olarak gösterilmesini önlemek Için bunları Base64 kodlaması dizelerine kodlarız. AzureDTExec 'yi çağırdığınızda, tüm Base64 ile kodlanmış dizelerin özgün değerlerine yeniden çözülür. Bu hesaba erişebilen hesapları sınırlayarak *Azuredtexec. Settings* dosyasını daha da güvenli hale getirebilirsiniz.
 
-- **Abonelik kimliği**: ADF 'Nizin oluşturulduğu Azure aboneliğinin benzersiz tanımlayıcısını girin.
-
-- **ResourceGroup**: ADF 'Nizin oluşturulduğu Azure Kaynak grubunun adını girin.
-
-- **DataFactory**: ADF 'nizin adını girin, bu, içinde SSIS paketi yürütme etkinliği olan benzersiz işlem hatları, **Azuredtexec**çağrılırken belirtilen seçenek değerlerine göre oluşturulur.
-
-- **Irname**: **Azuredtexec** çağrılırken, evrensel adlandırma kuralı (UNC) yolunda BELIRTILEN paketlerin çalıştırılacağı, ADF 'nize Azure-SSIS IR adını girin.
-
-- **Packageaccessdomain**: **Azuredtexec**çağrılırken belirtilen UNC yolundaki paketlerinize erişmek için etki alanı kimlik bilgilerini girin.
-
-- **Packageaccessusername**: **Azuredtexec**çağrılırken belirtilen UNC yolundaki paketlerinize erişmek için Kullanıcı adı bilgilerini girin.
-
-- **Packageaccesspassword**: **Azuredtexec**çağrılırken belirtilen UNC yolundaki paketlerinize erişmek için parola kimlik bilgilerini girin.
-
-- **LogPath**: günlük klasörünün UNC yolunu girin. Azure-SSIS IR paket yürütmelerinin yazılacağı günlük dosyaları.
-
-- **LogLevel**: Azure-SSIS IR üzerinde paket yürütmeleri için önceden tanımlanmış **null**/**temel**/**ayrıntılı**/**performans** seçenekleri için seçilen kapsam kapsamını girin.
-
-- **Logaccessdomain**: günlük dosyalarını yazarken UNC yolundaki günlük klasörünüze erişmek için etki alanı kimlik bilgisini girin, **logPath** belirtildiğinde gerekir ve **LogLevel** **null**değildir.
-
-- **Logaccessusername**: günlük dosyalarını yazarken UNC yolundaki günlük klasörünüze erişmek için Kullanıcı adı kimlik bilgisini girin, **logPath** belirtildiğinde gerekir ve **LogLevel** **null**değildir.
-
-- **Logaccesspassword**: günlük dosyalarını yazarken UNC yolundaki günlük klasörünüze erişmek için parola kimlik bilgisini girin, **logPath** belirtildiğinde gerekir ve **LogLevel** **null**değildir.
-
-- **Ardışık düzen ınenamehashstrlen**: **Azuredtexec**çağrılırken sağladığınız seçenek değerlerinden oluşturulacak karma dizelerin uzunluğunu girin.  Dizeler, Azure-SSIS IR paketlerinizi çalıştıran ADF işlem hatları için benzersiz adlar oluşturmak üzere kullanılır.  Genellikle 32 karakterlik bir uzunluk yeterlidir.
-
-Paketlerinizi ve günlük dosyalarınızı Şirket içindeki dosya sistemlerinde/dosya paylaşımlarında depolamayı planlıyorsanız, Azure-SSIS IR şirket içi ağınıza bağlı bir sanal ağa katılmanız gerekir. böylece, paketlerinizi getirip günlük dosyalarınızı yazabilir, bkz. [bir VNET 'e ekleme Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) makalesine daha fazla bilgi.
-
-**Azuredtexec. Settings** dosyasına yazılmış gizli değerlerin düz metin olarak gösterilmesini önlemek Için bunları Base64 kodlaması dizelerine kodlayacağız.  **Azuredtexec**'yi çağırdığınızda, tüm Base64 kodlamalı dizelerin özgün değerlerine geri gönderilir.  Bu hesaba erişebilen hesapları sınırlayarak **Azuredtexec. Settings** dosyasını daha da güvenli hale getirebilirsiniz.
-
-## <a name="invoke-azuredtexec-utility"></a>AzureDTExec yardımcı programını çağır
-Komut satırı isteminde **Azuredtexec** ' i çağırabilir ve kullanım örneği senaryosundaki belirli seçenekler için ilgili değerleri sağlayabilirsiniz.
+## <a name="invoke-the-azuredtexec-utility"></a>AzureDTExec yardımcı programını çağırma
+Komut satırı isteminde AzureDTExec ' i çağırabilir ve kullanım örneği senaryonuzun belirli seçenekler için ilgili değerleri sağlayabilirsiniz.
 
 Yardımcı program `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` ' a yüklenir. Her yerden çağrılması için yolunu ' PATH ' ortam değişkenine ekleyebilirsiniz.
 
@@ -91,24 +80,20 @@ Yardımcı program `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\15
   /De MyEncryptionPassword
 ```
 
-**Azuredtexec** çağırma, **dtexec**çağırma gibi benzer seçenekler sunar. daha fazla bilgi için bkz. [dtexec yardımcı programı](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017) belgeleri.  Şu anda desteklenen seçenekler şunlardır:
+AzureDTExec çağırma, dtexec 'yi çağırarak benzer seçenekler sunar. Daha fazla bilgi için bkz. [dtexec yardımcı programı](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017). Şu anda desteklenen seçenekler şunlardır:
 
-- **/F [ile]** : dosya sistemi/dosya paylaşımında/Azure dosyalarında depolanan bir paketi yükler.  Bu seçeneğin değeri olarak, dosya sistemi/dosya paylaşımında/Azure dosyalarında dtsx uzantısıyla paket dosyanız için UNC yolunu belirtebilirsiniz.  Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tüm yolun etrafına tırnak işareti koymanız gerekir.
-
-- **/Conf [ıgfile]** : değerlerin ayıklanacağı bir yapılandırma dosyasını belirtir.  Bu seçeneği kullanarak, paketiniz için tasarım zamanında belirtilenden farklı bir çalışma zamanı yapılandırması belirleyebilirsiniz.  Farklı ayarları bir XML yapılandırma dosyasında depolayıp paket yürütmeden önce yükleyebilirsiniz.  Daha fazla bilgi için bkz. [SSIS paket yapılandırması](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017) makalesi.  Bu seçeneğin değeri olarak, dosya sistemi/dosya paylaşımında/Azure dosyalarında dtsConfig uzantısıyla yapılandırma dosyanız için UNC yolunu belirtebilirsiniz.  Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tüm yolun etrafına tırnak işareti koymanız gerekir.
-
-- **/Conn [ection]** : paketinizdeki mevcut bağlantı yöneticileri için bağlantı dizelerini belirtir.  Bu seçeneği kullanarak, paketinizdeki mevcut bağlantı yöneticileri için tasarım zamanında belirtilenlerden farklı çalışma zamanı bağlantı dizeleri ayarlayabilirsiniz.  Bu seçeneğin değeri olarak, bunu şu şekilde belirtebilirsiniz: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
-
-- **/Set**: paketteki bir parametrenin, değişkenin, özelliğin, kapsayıcının, günlük sağlayıcının, Foreach Numaralandırıcı veya bağlantının yapılandırmasını geçersiz kılar.  Bu seçenek birden çok kez belirtilebilir.  Bu seçeneğin değeri olarak, bunu şu şekilde belirtebilirsiniz: `property_path;value`, örneğin `\package.variables[counter].Value;1` `counter` değişkeninin değerini 1 olarak geçersiz kılar.  Paket Yapılandırma Sihirbazı 'Nı kullanarak, paketinizdeki değeri geçersiz kılmak istediğiniz öğeler için `property_path` değerini bulabilir, kopyalayabilir ve yapıştırabilirsiniz. daha fazla bilgi için [paket Yapılandırma Sihirbazı](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014) belgelerine bakın.
-
-- **/De [Crypt]** : **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** koruma düzeyiyle yapılandırılan paketinizin şifre çözme parolasını ayarlar.
+- **/F [ile]** : dosya sistemi, dosya paylaşımında veya Azure dosyalarında depolanan bir paketi yükler. Bu seçeneğin değeri olarak dosya sistemi, dosya paylaşımında veya Azure dosyaları. dtsx uzantısıyla birlikte paket dosyanız için UNC yolunu belirtebilirsiniz. Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tam yolun çevresine tırnak işareti koyun.
+- **/Conf [ıgfile]** : değerlerin ayıklanacağı bir yapılandırma dosyasını belirtir. Bu seçeneği kullanarak, paketiniz için tasarım zamanında belirtilenden farklı bir çalışma zamanı yapılandırması belirleyebilirsiniz. Farklı ayarları bir XML yapılandırma dosyasında depolayıp paket yürütmeden önce yükleyebilirsiniz. Daha fazla bilgi için bkz. [SSIS paketi yapılandırması](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Bu seçeneğin değerini belirtmek için, dosya sistemi, dosya paylaşımında veya Azure dosyalarında dtsConfig uzantılı yapılandırma dosyanız için UNC yolunu kullanın. Belirtilen UNC yolu herhangi bir boşluk içeriyorsa, tam yolun çevresine tırnak işareti koyun.
+- **/Conn [ection]** : paketinizdeki mevcut bağlantı yöneticileri için bağlantı dizelerini belirtir. Bu seçeneği kullanarak, paketinizdeki mevcut bağlantı yöneticileri için tasarım zamanında belirtilenlerden farklı çalışma zamanı bağlantı dizeleri ayarlayabilirsiniz. Bu seçenek için değeri şu şekilde belirtin: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
+- **/Set**: paketteki bir parametrenin, değişkenin, özelliğin, kapsayıcının, günlük sağlayıcının, Foreach Numaralandırıcı veya bağlantının yapılandırmasını geçersiz kılar. Bu seçenek birden çok kez belirtilebilir. Bu seçenek için değeri şu şekilde belirtin: `property_path;value`. Örneğin, `\package.variables[counter].Value;1` `counter` değişkeninin değerini 1 olarak geçersiz kılar. Paketinizdeki değeri geçersiz kılmak istediğiniz öğelerin `property_path` değerini bulmak, kopyalamak ve yapıştırmak için **paket yapılandırma** sihirbazını kullanabilirsiniz. Daha fazla bilgi için bkz. [paket Yapılandırma Sihirbazı](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **/De [Crypt]** : **EncryptAllWithPassword** /**EncryptSensitiveWithPassword** koruma düzeyiyle yapılandırılmış paketinizin şifre çözme parolasını ayarlar.
 
 > [!NOTE]
-> Options için yeni değerlerle **Azuredtexec** çağırmak, **/de [cript]** seçeneği dışında yeni bir işlem hattı oluşturur.
+> Options için yeni değerlerle AzureDTExec çağırmak, **/de [cript]** seçeneği dışında yeni bir işlem hattı oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SSIS paketi yürütme etkinliği ile benzersiz işlem hatları, **Azuredtexec**çağrıldıktan sonra oluşturulup ÇALıŞTıRıLıR, ADF portalında izlenebilirler. Daha fazla bilgi için bkz. [SSIS PAKETLERINI ADF etkinlikleri olarak çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) makalesi.
+SSIS paketini Yürüt etkinliğinin bulunduğu benzersiz işlem hatları, AzureDTExec çağrıldıktan sonra oluşturulup çalıştırılır. Bu, Data Factory portalında izlenebilirler. Daha fazla bilgi için bkz. [SSIS paketlerini Data Factory etkinlikleri olarak çalıştırma](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 > [!WARNING]
-> Oluşturulan işlem hattının yalnızca **Azuredtexec**tarafından kullanılması beklenmektedir. Özellikleri/parametreleri gelecekte değişebilir, bu nedenle **Azuredtexec**'yi bozabilecek başka amaçlar için onları değiştirmemelisiniz/yeniden kullanmamalısınız. Bu durumda, her zaman ardışık düzeni silebilir ve **Azuredtexec** , bir sonraki çağrılışında yeni bir işlem hattı oluşturur.
+> Oluşturulan işlem hattının yalnızca AzureDTExec tarafından kullanılması beklenmektedir. Özellikleri veya parametreleri gelecekte değişebilir, bu nedenle başka amaçlar için bunları değiştirmeyin veya yeniden kullanmayın. Değişiklikler AzureDTExec ile kesilebilir. Bu durumda, işlem hattını silin. AzureDTExec, bir sonraki çağrılışında yeni bir işlem hattı oluşturur.

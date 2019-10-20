@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 709428d420c7d5f725d1b7df85e4860aec765b48
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b1007080c907eecc940b57184954c793b85f5eec
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950672"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595614"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Sorgu Performansı İçgörüleri
 
-**Şunlara uygulanır:** MariaDB için Azure veritabanı 10,2
+**Uygulama hedefi:** MariaDB için Azure veritabanı 10,2
 
 > [!IMPORTANT]
 > Sorgu Performansı İçgörüleri önizlemededir.
@@ -24,7 +24,7 @@ Sorgu Performansı İçgörüleri, en uzun çalışan sorguların ne olduğunu, 
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 
-### <a name="long-running-queries"></a>Uzun süren sorgular
+### <a name="long-running-queries"></a>Uzun süre çalışan sorgular
 
 - Son X saat içinde en uzun çalışan sorguları tanımlama
 - Kaynaklarda bekleyen ilk N sorguyu tanımlama
@@ -48,7 +48,7 @@ Azure portaldaki [Sorgu Performansı İçgörüleri](concepts-query-performance-
 
 MariaDB sunucusu için Azure veritabanı 'nın portal sayfasında, menü çubuğunun **akıllı performans** bölümü altında **sorgu performansı içgörüleri** ' yi seçin.
 
-### <a name="long-running-queries"></a>Uzun süren sorgular
+### <a name="long-running-queries"></a>Uzun süre çalışan sorgular
 
 **Uzun süre çalışan sorgular** sekmesi, 15 dakikalık aralıklarda toplanan, yürütme başına ortalama süreye göre ilk 5 sorguyu gösterir. **Sorgu sayısı** açılan listesinden seçerek daha fazla sorgu görüntüleyebilirsiniz. Bunu yaptığınızda, grafik renkleri belirli bir Sorgu Kimliği için değişebilir.
 
@@ -59,7 +59,7 @@ Belirli bir zaman penceresine daraltmak için grafikte tıklayıp sürükleyebil
 ### <a name="wait-statistics"></a>Bekleme istatistikleri 
 
 > [!NOTE]
-> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir.
+> Bekleme istatistikleri sorgu performans sorunlarını gidermeye yöneliktir. Yalnızca sorun giderme amacıyla açık olması önerilir. <br>Azure portal "hata iletisini alırsanız,"*Microsoft. Dbformarıdb "için karşılaşılan sorun; istek yerine getirilemiyor. Bu sorun devam ederse veya beklenmiyorsa lütfen bu bilgilerle desteğe başvurun.* " Bekleme istatistiklerini görüntülerken, daha kısa bir zaman aralığı kullanın.
 
 Bekleme istatistikleri, belirli bir sorgunun yürütülmesi sırasında oluşan bekleme olaylarının bir görünümünü sağlar. [MySQL Engine belgelerindeki](https://go.microsoft.com/fwlink/?linkid=2098206)bekleme olayı türleri hakkında daha fazla bilgi edinin.
 

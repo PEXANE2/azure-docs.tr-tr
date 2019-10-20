@@ -16,20 +16,20 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056437"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596391"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
 
-Gizli istemci uygulaması oluşturulduktan sonra, uygulamayı çağırarak ``AcquireTokenForClient``, kapsamı geçirerek ve belirtecin yenilenmesini zorlayarak veya yenileyerek uygulama için bir belirteç elde edebilirsiniz.
+Gizli istemci uygulaması oluşturulduktan sonra, ``AcquireTokenForClient`` çağırarak, kapsamı geçirerek ve belirteci yenilemeyi zorlayarak ve değil, uygulama için bir belirteç elde edebilirsiniz.
 
 ## <a name="scopes-to-request"></a>İstek için kapsamlar
 
-İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın ve sonrasında gelen `/.default`addır. Bu gösterim, Azure AD 'nin uygulama kaydı sırasında statik olarak belirtilen **uygulama düzeyi izinlerini** kullanmasını söyler. Ayrıca, daha önce görüldüğü gibi, bu API izinlerinin bir kiracı yöneticisi tarafından verilmesi gerekir
+İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın adı ve ardından `/.default`. Bu gösterim, Azure AD 'nin uygulama kaydı sırasında statik olarak belirtilen **uygulama düzeyi izinlerini** kullanmasını söyler. Ayrıca, daha önce görüldüğü gibi, bu API izinlerinin bir kiracı yöneticisi tarafından verilmesi gerekir
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -62,11 +62,11 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > Bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen MSAL için, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
-> Bu nedenle, Azure SQL ( **https://database.windows.net** ) gibi kaynak bir hedef kitleye eğik çizgi (Azure `https://database.windows.net/` SQL için) bekliyor gibi bir kapsam `https://database.windows.net//.default` istemeniz gerekir (çift eğik çizgiyi aklınızda bulunan). Ayrıca bkz. MSAL.NET sorun [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Kaynak URL 'sinin sondaki eğik çizgi gözardı edilir ve bu da SQL kimlik doğrulama hatasına neden olur.
+> Bu nedenle, Azure SQL ( **https://database.windows.net** ) gibi kaynak, eğik çizgi ile biten bir izleyiciyi beklediğinde (Azure sql: `https://database.windows.net/` ), `https://database.windows.net//.default` kapsamını istemeniz gerekir (çift eğik çizgiyi aklınızda bulunan). Ayrıca bkz. MSAL.NET sorun [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur.
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API 'SI
 
-Uygulamanın bir belirtecini almak için platforma bağlı olarak `AcquireTokenForClient` veya eşdeğerini kullanacaksınız.
+Uygulama için bir belirteç almak üzere platformları bağlı olarak `AcquireTokenForClient` veya eşdeğerini kullanacaksınız.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -148,11 +148,11 @@ future.join();
 
 ---
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protokol
 
 Seçtiğiniz diliniz için henüz bir kitaplığınız yoksa, protokolü doğrudan kullanmak isteyebilirsiniz:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>İlk durum: Paylaşılan gizli dizi ile belirteç isteğine erişim
+#### <a name="first-case-access-token-request-with-a-shared-secret"></a>İlk durum: paylaşılan gizli dizi ile belirteç isteğine erişin
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -165,7 +165,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: Bir sertifikayla erişim belirteci isteği
+#### <a name="second-case-access-token-request-with-a-certificate"></a>İkinci durum: bir sertifikayla erişim belirteci isteği
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
@@ -179,17 +179,17 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md).
+Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platform ve OAuth 2,0 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
 
-MSAL.net ' de `AcquireTokenForClient` , **uygulama belirteci önbelleğini** kullanır (tüm diğer `AcquireTokenSilent` acquiretokenxx yöntemleri kullanıcı belirteci önbelleğini kullanır), çağrılmadan `AcquireTokenForClient` önce `AcquireTokenSilent` çağrı yapmadan **Kullanıcı** belirteci önbelleğini kullanır. `AcquireTokenForClient`**uygulama** belirteci önbelleğinin kendisini denetler ve güncelleştirir.
+@No__t_0, **uygulama belirteci önbelleğini** kullanır (tüm diğer AcquireTokenXX yöntemleri kullanıcı belirteci önbelleğini kullanır), `AcquireTokenSilent` **Kullanıcı** belirteci önbelleğini kullandığından `AcquireTokenForClient` çağrılmadan önce `AcquireTokenSilent` çağırmaz. `AcquireTokenForClient`, **uygulama** belirteci önbelleğinin kendisini denetler ve güncelleştirir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Resource/. Default kapsamını mı kullanıyorsunuz?
 
-Geçersiz bir kapsam kullanacağınızı söyleyen bir hata mesajı alırsanız, büyük olasılıkla `resource/.default` kapsamı kullanmadınız.
+Geçersiz bir kapsam kullandığını söyleyen bir hata mesajı alırsanız, büyük olasılıkla `resource/.default` kapsamını kullanmadınız.
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Yönetici onayı sağlamayı unuttunuz mu? Daemon uygulamalarında şunlar gerekir!
 
@@ -212,5 +212,19 @@ Content: {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Daemon uygulaması-bir Web API 'SI çağırma](scenario-daemon-call-api.md)
+> [Daemon uygulaması-bir Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon uygulaması-bir Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon uygulaması-bir Web API 'SI çağırma](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+
+---

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315972"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596917"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redsıs için Premium bir Azure önbelleği için Redsıs Kümelemesi yapılandırma
 Redin için Azure önbelleğinde, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere, önbellek boyutu ve özellikleri seçimine esneklik sağlayan farklı önbellek teklifleri vardır. Bu makalede, Redsıs örneği için Premium Azure önbelleğinde kümelemenin nasıl yapılandırılacağı açıklanır.
@@ -31,8 +31,8 @@ Redsıs için Azure Cache, redsıs ['de uygulanan](https://redis.io/topics/clust
 
 * Veri kümenizi birden çok düğüm arasında otomatik olarak bölme özelliği. 
 * Düğümlerin bir alt kümesi hatalara sahip olduğunda veya kümenin geri kalanıyla iletişim kuramadıkça işlemlere devam etme yeteneği. 
-* Daha fazla verimlilik: Parça sayısını artırdıkça üretilen iş miktarı artar. 
-* Daha fazla bellek boyutu: Parça sayısını artırdıkça doğrusal olarak artar.  
+* Daha fazla verimlilik: parçalar sayısını artırdıkça üretilen Iş miktarı artar. 
+* Daha fazla bellek boyutu: parça sayısını artırdıkça doğrusal miktarı artırır.  
 
 Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısını artırmaz. Premium önbellekler ile boyut, aktarım hızı ve bant genişliği hakkında daha fazla bilgi için bkz. [redin sunumu Için Azure önbelleği ve boyutu ne kullanmalıyım?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -99,7 +99,7 @@ Aşağıdaki liste, Redsıs Kümelemesi için Azure önbelleği hakkında sık s
 * [StackExchange. reddo ve kümeleme kullanırken ne yapmam gerekir?](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
 
 ### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>Kümeleme kullanmak için istemci uygulamamda herhangi bir değişiklik yapmam gerekiyor mu?
-* Kümeleme etkinleştirildiğinde yalnızca veritabanı 0 kullanılabilir. İstemci uygulamanız birden çok veritabanı kullanıyorsa ve 0 dışında bir veritabanını okumaya veya yazmaya çalışırsa, aşağıdaki özel durum oluşturulur. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->``StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
+* Kümeleme etkinleştirildiğinde yalnızca veritabanı 0 kullanılabilir. İstemci uygulamanız birden çok veritabanı kullanıyorsa ve 0 dışında bir veritabanını okumaya veya yazmaya çalışırsa, aşağıdaki özel durum oluşturulur. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
   Daha fazla bilgi için bkz. [Redsıs küme belirtimi uygulanmış alt küme](https://redis.io/topics/cluster-spec#implemented-subset).
 * [StackExchange. Redo](https://www.nuget.org/packages/StackExchange.Redis/)kullanıyorsanız, 1.0.481 veya üstünü kullanmanız gerekir. Küme etkin olmayan bir önbelleğe bağlanırken kullandığınız [uç noktaları, bağlantı noktalarını ve anahtarları](cache-configure.md#properties) kullanarak önbelleğe bağlanırsınız. Tek fark, tüm okuma ve yazma işlemlerini veritabanı 0 ' a uygulamak olmalıdır.
@@ -109,9 +109,9 @@ Aşağıdaki liste, Redsıs Kümelemesi için Azure önbelleği hakkında sık s
 * Redsıs ASP.NET oturum durumu sağlayıcısını kullanıyorsanız, 2.0.1 veya üstünü kullanmanız gerekir. Bkz [. redin ASP.NET oturum durumu ve çıktı önbelleği sağlayıcılarıyla kümeleme kullanabilir miyim?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Anahtarlar bir kümede nasıl dağıtılır?
-Redsıs [anahtarları dağıtım modeli](https://redis.io/topics/cluster-spec#keys-distribution-model) belgelerine göre: Anahtar alanı 16384 yuvalara ayrılır. Her anahtar karma hale getirilir ve kümenin düğümlerine dağıtılmış olan bu yuvalardan birine atanır. Karma Etiketler kullanılarak aynı parça içinde birden fazla anahtarın bulunduğundan emin olmak için anahtarın hangi kısmının karma hale getirilmiş olduğunu yapılandırabilirsiniz.
+Redsıs [anahtarları dağıtım modeli](https://redis.io/topics/cluster-spec#keys-distribution-model) belgeleri: anahtar alanı 16384 yuvalara bölünür. Her anahtar karma hale getirilir ve kümenin düğümlerine dağıtılmış olan bu yuvalardan birine atanır. Karma Etiketler kullanılarak aynı parça içinde birden fazla anahtarın bulunduğundan emin olmak için anahtarın hangi kısmının karma hale getirilmiş olduğunu yapılandırabilirsiniz.
 
-* Karma etiketine sahip anahtarlar-anahtarın herhangi bir bölümü ve `{` `}`içinde yer alıyorsa, anahtarın karma yuvasını belirleme amacıyla yalnızca anahtarın bir bölümü karma hale getirilir. Örneğin, aşağıdaki 3 `{key}1`anahtar aynı `key` parça içinde bulunur:, `{key}2`, ve `{key}3` yalnızca adın parçası karma hale getirilmiş olduğundan. Anahtarların karma etiket özelliklerinin tamamı listesi için bkz. [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
+* Karma etiketine sahip anahtarlar-anahtarın herhangi bir bölümü `{` ve `}` içindeyse, anahtarın karma yuvasını belirleme amacıyla yalnızca anahtarın bir bölümü karma hale getirilir. Örneğin, aşağıdaki 3 anahtar aynı parça içinde bulunur: `{key}1`, `{key}2` ve `{key}3` yalnızca adının `key` bölümü karma hale getirilmiş. Anahtarların karma etiket özelliklerinin tamamı listesi için bkz. [anahtarlar Karma etiketleri](https://redis.io/topics/cluster-spec#keys-hash-tags).
 * Karma etiketi olmayan anahtarlar-karma için tüm anahtar adı kullanılır. Bu, önbelleğin parçaları genelinde istatistiksel olarak eşit bir dağıtıma neden olur.
 
 En iyi performans ve verimlilik için anahtarları eşit olarak dağıtmanız önerilir. Bir karma etiketi ile anahtar kullanıyorsanız, anahtarların eşit şekilde dağıtılmasını sağlamak uygulamanın sorumluluğundadır.
@@ -124,9 +124,9 @@ Kümeleme ile çalışma ve StackExchange. reddo istemcisiyle aynı parça için
 En büyük Premium önbellek boyutu 120 GB 'dir. En fazla 10 adet parçalama, en fazla 1,2 TB GB boyutunda olabilir. Daha büyük bir boyuta ihtiyacınız varsa [daha fazla istek](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)yapabilirsiniz. Daha fazla bilgi için bkz. [Redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Tüm redin istemcileri kümelemeyi destekliyor mu?
-Şimdiki zamanda tüm istemciler Redsıs kümelemesini desteklemez. StackExchange. Redsıs, desteği olan bir biridir. Diğer istemcilerle ilgili daha fazla bilgi için, [redsıs kümesi öğreticisinin](https://redis.io/topics/cluster-tutorial) [küme ile yürütülmesi](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) bölümüne bakın. 
+Tüm istemciler Redsıs kümelemesini desteklemez! Kümelemeyi destekleyen bir kitaplık ve sürüm kullandığınızı doğrulamak için lütfen kullandığınız kitaplığın belgelerini denetleyin. StackExchange. Redo, daha yeni sürümlerinde kümelemeyi destekleyen bir kitaplıktır. Diğer istemcilerle ilgili daha fazla bilgi için, [redsıs kümesi öğreticisinin](https://redis.io/topics/cluster-tutorial) [küme ile yürütülmesi](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) bölümüne bakın. 
 
-Reddo kümeleme protokolü her bir istemcinin her parçaya doğrudan kümeleme modunda bağlanmasını gerektirir. Kümeleme desteği olmayan bir istemciyi kullanmaya çalışmak, büyük olasılıkla [taşınan yeniden yönlendirme özel durumları](https://redis.io/topics/cluster-spec#moved-redirection)oluşmasına neden olur.
+Reddo kümeleme protokolü, her bir istemcinin her parçaya doğrudan kümeleme modunda bağlanmasını gerektirir ve ayrıca ' TAŞıNMıŞ ' veya ' çapraz YUVALAR ' gibi yeni hata yanıtlarını tanımlar. Küme modu önbelleği ile kümeleme desteği olmayan bir istemciyi kullanma girişimi, çok sayıda [taşınan yeniden yönlendirme özel durumu](https://redis.io/topics/cluster-spec#moved-redirection)oluşmasına neden olabilir veya çapraz yuva çoklu anahtar istekleri yapıyorsanız uygulamanızı kesmeniz yeterlidir.
 
 > [!NOTE]
 > İstemci olarak StackExchange. Redsıs kullanıyorsanız, kümelemenin doğru bir şekilde çalışması için [StackExchange. redsıs](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 veya üzeri sürümünün en son sürümünü kullandığınızdan emin olun. Taşıma özel durumlarıyla ilgili herhangi bir sorununuz varsa daha fazla bilgi için bkz. [özel durumları taşıma](#move-exceptions) .
@@ -137,7 +137,7 @@ Reddo kümeleme protokolü her bir istemcinin her parçaya doğrudan kümeleme m
 Kümelemeye sahip olmayan bir önbelleğe bağlanırken kullandığınız [uç noktaları](cache-configure.md#properties), [bağlantı noktalarını](cache-configure.md#properties)ve [anahtarları](cache-configure.md#access-keys) kullanarak önbelleğinize bağlanabilirsiniz. Redsıs, arka uçta kümelendirmeyi yönetir, böylece istemciden yönetmeniz gerekmez.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Önbelleğim bireysel parçalara doğrudan bağlanabilir miyim?
-Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm, `-c` anahtarla başlatıldığında temel desteği uygular. Daha fazla bilgi için bkz. [https://redis.io](https://redis.io) [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial)üzerinde [kümeyle yürütme](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) .
+Kümeleme protokolü, istemcinin doğru parça bağlantıları yapmasını gerektirir. Bu nedenle, istemcinin bunu sizin için doğru yapması gerekir. Bu şekilde, her parça, toplu olarak bir önbellek örneği olarak bilinen birincil/çoğaltma önbelleği çiftinin oluşur. Bu önbellek örneklerine, GitHub 'da Redsıs deposunun [kararsız](https://redis.io/download) dalında redsıs-CLI yardımcı programını kullanarak bağlanabilirsiniz. Bu sürüm `-c` anahtarla başlatıldığında temel desteği uygular. Daha fazla bilgi için bkz. [redsıs kümesi öğreticisinde](https://redis.io/topics/cluster-tutorial) [https://redis.io](https://redis.io) [kümeyle birlikte yürütme](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) .
 
 SSL olmayan için aşağıdaki komutları kullanın.
 
@@ -147,10 +147,13 @@ SSL olmayan için aşağıdaki komutları kullanın.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-SSL için ile `1500N`değiştirin `1300N` .
+SSL için `1300N` `1500N` ile değiştirin.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Daha önce oluşturulmuş bir önbellek için kümeleme yapılandırabilir miyim?
-Şu anda yalnızca bir önbellek oluşturduğunuzda kümelendirmeyi etkinleştirebilirsiniz. Önbellek oluşturulduktan sonra küme boyutunu değiştirebilirsiniz, ancak bir Premium önbelleğe kümeleme ekleyemez veya önbellek oluşturulduktan sonra bir Premium önbellekten kümeleme kaldıramazsınız. Kümelendirmeyi etkin bir Premium önbellek ve yalnızca bir parça, kümeleme olmadan aynı boyuttaki bir Premium önbellekten farklı.
+Evet. İlk olarak, yoksa ölçeklendirmeye göre önbelleğinizin Premium olduğundan emin olun. Daha sonra, clsuter etkinleştirme seçeneği dahil olmak üzere küme yapılandırma seçeneklerini görebilmeniz gerekir. Önbellek oluşturulduktan sonra veya kümelemeyi ilk kez etkinleştirdikten sonra küme boyutunu değiştirebilirsiniz.
+
+   >[!IMPORTANT]
+   >Kümelemeyi etkinleştirme işlemini geri alamazsınız. Ve kümeleme etkin olan bir önbellek ve yalnızca bir parça, kümeleme *olmadan* aynı boyuttaki bir önbellekten *farklı* davranır.
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Temel veya standart önbellek için kümeleme yapılandırabilir miyim?
 Kümeleme yalnızca Premium önbellekler için kullanılabilir.
@@ -162,7 +165,7 @@ Kümeleme yalnızca Premium önbellekler için kullanılabilir.
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>StackExchange. reddo ve kümeleme kullanırken ne yapmam gerekir?
-Kümeleme kullanırken StackExchange. redsıs kullanıyorsanız ve özel durumlar `MOVE` alıyorsanız, [StackExchange. redsıs 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) veya üstünü kullandığınızdan emin olun. .NET uygulamalarınızı StackExchange. Redsıs kullanacak şekilde yapılandırma yönergeleri için bkz. [önbellek Istemcilerini yapılandırma](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Kümeleme kullanırken StackExchange. Redsıs kullanıyorsanız ve `MOVE` özel durumlar alıyorsanız, [StackExchange. redsıs 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) veya üstünü kullandığınızdan emin olun. .NET uygulamalarınızı StackExchange. Redsıs kullanacak şekilde yapılandırma yönergeleri için bkz. [önbellek Istemcilerini yapılandırma](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Daha fazla Premium önbellek özelliği kullanmayı öğrenin.

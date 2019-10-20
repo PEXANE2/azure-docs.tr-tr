@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299609"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598083"
 ---
 # <a name="azure-storage-security-guide"></a>Azure depolama Güvenlik Kılavuzu
 
@@ -25,7 +25,7 @@ Azure depolama, geliştiricilerin güvenli uygulamalar oluşturmalarına olanak 
     - Depolama hesabına kapsamlı RBAC rollerini güvenlik sorumlularına atayabilir ve anahtar yönetimi gibi kaynak yönetimi işlemlerini yetkilendirmek için Azure AD 'yi kullanabilirsiniz.
     - Azure AD tümleştirmesi, blob ve kuyruk verileri işlemleri için desteklenir. Abonelik, kaynak grubu, depolama hesabı veya bağımsız bir kapsayıcı veya kuyruk kapsamındaki RBAC rollerini bir güvenlik sorumlusu veya Azure kaynakları için yönetilen bir kimliğe atayabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).   
 - Veriler, [Istemci tarafı şifreleme](../storage-client-side-encryption.md), https veya SMB 3,0 kullanılarak bir uygulama ile Azure arasında geçiş için güvenli hale getirilir.  
-- Azure sanal makineleri tarafından kullanılan işletim sistemi ve veri diskleri, [Azure disk şifrelemesi](../../security/azure-security-disk-encryption.md)kullanılarak şifrelenebilir.
+- Azure sanal makineleri tarafından kullanılan işletim sistemi ve veri diskleri, [Azure disk şifrelemesi](../../security/fundamentals/encryption-overview.md)kullanılarak şifrelenebilir.
 - Azure Storage 'da veri nesnelerine temsilci erişimi, paylaşılan erişim imzası kullanılarak verilebilir. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md).
 
 Bu makalede, Azure depolama ile kullanılabilecek olan bu güvenlik özelliklerinin her biri için bir genel bakış sunulmaktadır. Her bir özelliğin ayrıntılarını veren makalelere, her konu üzerinde kolayca daha fazla araştırma yapabilmeniz için bağlantılar sağlanır.
@@ -328,7 +328,7 @@ Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işleti
 Bu özellik, sanal makine disklerinizdeki tüm verilerin Azure Storage 'da bekleyen olarak şifrelenmesini sağlar.
 
 #### <a name="resources"></a>Kaynaklar
-* [Windows ve Linux IaaS VM 'Leri için Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+* [Windows ve Linux IaaS VM 'Leri için Azure disk şifrelemesi](../../security/fundamentals/encryption-overview.md)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure disk şifrelemesi, SSE ve Istemci tarafı şifreleme karşılaştırması
 
@@ -389,7 +389,7 @@ Aşağıdaki kaynaklarda listelenen, günlüklerdeki birçok alanın listesini v
 
 ![Günlük dosyasındaki alanların anlık görüntüsü](./media/storage-security-guide/image3.png)
 
-GetBlob girişleri ve bunların nasıl yetkilendirildikleri ile ilgileniyor. bu nedenle, işlem türü "Get-blob" olan girdileri aramanız ve istek-durumu (dördüncü @ no__t-0 sütunu) ve yetkilendirme türü (sekizinci @ no__t-1 sütunu) kontrol etmeniz gerekir.
+GetBlob girişleri ve bunların nasıl yetkilendirildikleri ile ilgileniyor, bu nedenle işlem türü "Get-blob" olan girdileri aramanız ve istek durumu (dördüncü </sup> sütunu) ve yetkilendirme türü (sekizinci </sup> sütunu) kontrol etmeniz gerekir.
 
 Örneğin, yukarıdaki listede yer aldığı ilk birkaç satırda, istek durumu "başarılı" ve yetkilendirme türü "kimliği doğrulandı" olur. Bu, isteğin depolama hesabı anahtarı kullanılarak yetkilendirildiği anlamına gelir.
 

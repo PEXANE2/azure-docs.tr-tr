@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: aef9eaebc2da12e322ab6eda97385aa9cf14998a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387753"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596491"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Eşleme veri akışı için kaynak dönüşümü 
 
@@ -53,6 +53,8 @@ Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandır�
 
 **Örnekleme:** Kaynağınızdaki satır sayısını sınırlamak için örnekleme 'yi etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
 
+**Çok satırlı satırlar:** Kaynak metin dosyanız birden çok satıra yayılan dize değerleri içeriyorsa (örneğin, bir değer içindeki newlines) çok satırlı satırlar ' ı seçin.
+
 Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıklama modunu açın ve bir veri önizlemesi getirin. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
@@ -73,7 +75,7 @@ Joker karakter örnekleri:
 * ```*``` herhangi bir karakter kümesini temsil eder
 * ```**``` özyinelemeli dizin iç içe geçirmeyi temsil eder
 * ```?``` bir karakter değiştirir
-* ```[]``` köşeli ayraçdaki daha fazla karakterden biriyle eşleşiyor
+* ```[]``` parantez içindeki daha fazla karakterden biriyle eşleşiyor
 
 * ```/data/sales/**/*.csv```/Data/Sales altındaki tüm CSV dosyalarını alır
 * ```/data/sales/20??/**``` ' daki tüm dosyalar 20. yüzyıl içinde alınır

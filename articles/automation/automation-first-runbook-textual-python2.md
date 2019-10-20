@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265095"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596940"
 ---
 # <a name="my-first-python-runbook"></a>İlk Python runbook 'um
 
@@ -173,7 +173,7 @@ VM 'nin başlatıldığını görmek için Runbook 'u yeniden test edin ve çal�
 Runbook Şu anda kaynak grubunun ve VM 'nin adları için sabit kodlanmış değerler kullanıyor.
 Şimdi Giriş parametrelerinden bu değerleri alan kodu ekleyelim.
 
-Parametre değerlerini almak `sys.argv` için değişkenini kullanırsınız.
+Parametre değerlerini almak için `sys.argv` değişkenini kullanırsınız.
 Aşağıdaki kodu diğer `import` deyimlerden hemen sonra runbook 'a ekleyin:
 
 ```python
@@ -184,7 +184,7 @@ vm_name = str(sys.argv[2])
 ```
 
 Bu, `sys` modülünü içeri aktarır ve kaynak grubunu ve VM adlarını tutmak için iki değişken oluşturur.
-Bağımsız değişken listesinin `sys.argv[0]`öğesi,, betiğin adı olduğunu ve Kullanıcı tarafından giriş olmadığına dikkat edin.
+Bağımsız değişken listesinin öğesi `sys.argv[0]`, betiğin adı olduğunu ve Kullanıcı tarafından giriş olmadığına dikkat edin.
 
 Artık runbook 'un son iki satırını, sabit kodlanmış değerler kullanmak yerine giriş parametresi değerlerini kullanacak şekilde değiştirebilirsiniz:
 
@@ -198,13 +198,37 @@ Bir Python runbook 'u başlattığınızda ( **Test** sayfasında veya yayımlan
 
 İlk kutuya bir değer girmeyi başlattıktan sonra, gereken sayıda parametre değeri girebileceğiniz şekilde ikinci olarak bir görünür ve bu şekilde devam eder.
 
-Bu değerler, komut dosyası tarafından, yeni eklediğiniz `sys.argv` koddaki gibi dizi olarak kullanılabilir.
+Bu değerler, az önce eklediğiniz koddaki gibi `sys.argv` dizisi olarak betikte kullanılabilir.
 
 İlk parametrenin değeri olarak kaynak grubunuzun adını ve ikinci parametrenin değeri olarak başlatılacak VM 'nin adını girin.
 
 ![Parametre değerlerini girin](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
 Runbook 'u başlatmak için **Tamam** ' ı tıklatın. Runbook çalışır ve belirttiğiniz VM 'yi başlatır.
+
+## <a name="error-handling-in-python"></a>Python 'da hata Işleme
+
+Ayrıca, Python runbook 'larınızdan **Uyarı**, **hata**ve **hata ayıklama** akışları gibi çeşitli akışlar almak için aşağıdaki kuralları da kullanabilirsiniz.
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+Aşağıdaki örnek, `try...except` bloğunda kullanılan bu kuralı gösterir.
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> **sys. stderr** , Azure Otomasyonu 'nda desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

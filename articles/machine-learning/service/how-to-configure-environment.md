@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: dca032cceb4f1561d7ee8b35de502f8f5259cfe8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553623"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598437"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -353,8 +353,7 @@ Databricks 'de yüklü otomatik makine öğrenimi ile otomatik makine öğrenimi
 ### <a name="start-exploring"></a>Keşfetmeye başlayın
 
 Deneyin:
-+ Azure Databricks/Azure Machine Learning SDK için [Not defteri arşiv dosyasını](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) indirin ve [Arşiv dosyasını](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) databricks kümenize içeri aktarın.
-  Birçok örnek Not defteri kullanılabilir, **ancak [Bu örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) yalnızca Azure Databricks çalışır.**
++ Birçok örnek Not defteri kullanılabilir, **ancak [Bu örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) yalnızca Azure Databricks çalışır.**
 
 + [Eğitim işlemi olarak Databricks ile bir işlem hattı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
 

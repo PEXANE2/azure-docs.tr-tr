@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554541"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595364"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
@@ -125,10 +125,6 @@ Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen 
 4.  Anahtarlı bölümü yeniden derlemek için tablo B üzerinde < Table_B > yeniden oluşturma < bölümünde ALTER INDEX < Ordered_CCI_Index > çalıştırın.  
 5.  Table_A içindeki her bölüm için 3. ve 4. adımı yineleyin.
 6.  Tüm bölümler Table_A ' den Table_B ' ye geçtikten ve yeniden derlendikten sonra Table_A ' i bırakın ve Table_A Table_B olarak yeniden adlandırın. 
-
->[!NOTE]
->Azure SQL veri ambarı 'nda sıralı kümelenmiş columnstore dizininin (CCı) önizlemesi sırasında, sıralı CCı oluşturulup bölümlenmiş bir tabloda KÜMELENMIŞ COLUMNSTORE DIZINI oluşturma yoluyla yeniden oluşturulmuşsa Yinelenen veriler oluşturulabilir. Hiçbir veri kaybı yoktur. Bu sorunla bir düzelme yakında sunulacaktır. Geçici bir çözüm için, kullanıcılar CTAS komutunu kullanarak bölümlenmiş bir tabloda sıralı CCı oluşturabilir
-
 
 ## <a name="examples"></a>Örnekler
 

@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e61b804c20063e87c19df4484291f81fdbb03a7b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67188752"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72601164"
 ---
 >[!NOTE]
 >Düzeltilmeyen kaynaklar için, kotalarda artış istemek üzere bir destek bileti açın. Daha yüksek limitleri elde etmeye yönelik bir denemede ek Azure Media Services hesapları oluşturmayın.
 
-| Resource | Varsayılan limit | 
+| Kaynak | Varsayılan limit | 
 | --- | --- | 
 | Tek bir abonelikteki hesapları Azure Media Services | 25 (sabit) |
 | Media Services hesap başına medya ayrılmış birimleri |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -52,7 +52,7 @@ ms.locfileid: "67188752"
 
 <sup>7</sup> Tek bir blob için desteklenen en büyük boyut Şu anda Azure Blob depolamada 5 TB 'a kadar. Ek sınırlar, hizmet tarafından kullanılan VM boyutlarına göre Media Services geçerlidir. Boyut sınırı, karşıya yüklediğiniz dosyalar ve ayrıca Media Services işleme sonucu olarak oluşturulan dosyalar için geçerlidir (kodlama veya çözümleme). Kaynak dosyanız 260 GB 'tan büyükse, Işiniz muhtemelen başarısız olur. 
 
-Aşağıdaki tabloda S1, S2 ve S3 medya ayrılmış birimleri üzerindeki sınırlar gösterilmektedir. Kaynak dosyanız tabloda tanımlanan sınırlardan daha büyükse, kodlama işiniz başarısız olur. Uzun süreli 4K çözümleme kaynaklarını kodlarsanız, gereken performansı elde etmek için S3 medya ayrılmış birimlerini kullanmanız gerekir. S3 medya ayrılmış birimlerindeki 260 GB sınırından daha büyük olan 4k içeriğiniz varsa, senaryonuzu desteklemeye yönelik olası azaltmaları amshelp@microsoft.com için bizimle iletişime geçin.
+Aşağıdaki tabloda S1, S2 ve S3 medya ayrılmış birimleri üzerindeki sınırlar gösterilmektedir. Kaynak dosyanız tabloda tanımlanan sınırlardan daha büyükse, kodlama işiniz başarısız olur. Uzun süreli 4K çözümleme kaynaklarını kodlarsanız, gereken performansı elde etmek için S3 medya ayrılmış birimlerini kullanmanız gerekir. S3 medya ayrılmış birimlerindeki 260 GB sınırından büyük 4K içeriğiniz varsa bir destek bileti açın.
 
 |Medya ayrılmış birim türü   |Maksimum giriş boyutu (GB)|
 |---|---|

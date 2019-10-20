@@ -14,15 +14,15 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68383146"
 ---
 # <a name="access-and-use-apps-on-the-my-apps-portal"></a>Uygulamalarım portalındaki uygulamalara erişin ve bunları kullanın
 
-İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsiniz Uygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
+İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsinizUygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -70,9 +70,9 @@ Uzantıyı, kullanmakta olduğunuz tarayıcıya göre indirin ve yükleyin:
 #### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Uzantıyı kullanarak My Apps portalınızı değiştirme
 **Son kullanılan** bölümde kaç uygulama görüntüleneceğini seçebilir ve kuruluşunuzun Iç URL 'lerinin yeniden yönlendirmesine izin verip vermeyeceğine karar verebilirsiniz.
 
-1. **Adres** çubuğunuzun sağ tarafındaki yeni **uygulamalarım güvenli oturum açma uzantısı** simgesi ![uzantısını](media/my-apps-portal/my-apps-portal-extension-icon.png) seçin ve ardından oturum aç ' ı seçerek **kullanmaya başlayın**.
+1. Yeni **uygulamalarım güvenli oturum açma uzantısı** simgesini seçin ![Extension simgesi **adres** çubuğunuzun sağında ](media/my-apps-portal/my-apps-portal-extension-icon.png) ve ardından **oturum aç**' ı seçerek başlayın.
 
-2. **Ayarlar** simgesi ![ayarları simgesine](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)sağ tıklayın ve ardından **Ayarlar**' ı seçin.
+2. **Ayarlar** simgesine ![Settings simge ](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) sağ tıklayın ve ardından **Ayarlar**' ı seçin.
 
 3. **Ayarlar** kutusunda, portalda görmek istediğiniz son uygulama sayısını ve kuruluşunuzun Iç URL 'lerinin uzaktan kullanabilmeniz için yeniden yönlendirmesine izin verip vermeyeceğinizi seçin.
 
@@ -88,7 +88,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. İş veya okul hesabınızda oturum açın.
 
-2. Web tarayıcınızı açın ve adresine gidin https://myapps.microsoft.com veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Web tarayıcınızı açın ve https://myapps.microsoft.com gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -102,7 +102,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Intune Managed Browser uygulamasını [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 'dan ve [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)indirin ve yükleyin.
 
-2. Intune Managed Browser uygulamasını açın, öğesine https://myapps.microsoft.com gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için, https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. Intune Managed Browser uygulamasını açın, https://myapps.microsoft.com ' e gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -116,7 +116,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve bunları kullanma iznin
 
 1. Mobil cihazınızda Safari gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.com ' A gidin veya kuruluşunuzun verdiği bağlantıyı kullanın. Örneğin, kuruluşunuz için, https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. @No__t_0 gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 
@@ -130,7 +130,7 @@ Android cihazında **My Apps** portalını görüntüleyin ve kullanın.
 
 1. Mobil cihazınızda, Google Chrome gibi bir Web tarayıcısı uygulaması başlatın.
 
-2. https://myapps.microsoft.com ' A gidin veya kuruluşunuzun verdiği bağlantıyı kullanın. Örneğin, kuruluşunuz için, https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
+2. @No__t_0 gidin veya kuruluşunuz tarafından sunulan bağlantıyı kullanın. Örneğin, kuruluşunuz için https://myapps.microsoft.com/contoso.com gibi özelleştirilmiş bir sayfaya yönlendirilmeyebilirsiniz.
 
     Kuruluşunuzun sahip olduğu ve kullanabileceğiniz bulut tabanlı uygulamaların tümünü gösteren **uygulamalar** sayfası görüntülenir.
 

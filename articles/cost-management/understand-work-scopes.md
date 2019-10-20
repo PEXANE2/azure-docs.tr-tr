@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374476"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597094"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -132,6 +132,7 @@ Microsoft Müşteri Sözleşmesi faturalandırma hesaplarında aşağıdaki kaps
 
 EA faturalandırma kapsamlarından farklı olarak, Müşteri Sözleşmesi _faturalandırma hesapları tek_ bir dizine bağlanır ve birden çok Azure AD dizininde abonelikler olamaz.
 
+Müşteri Sözleşmesi faturalandırma kapsamları iş ortakları için uygulanmaz. İş ortağı rolleri ve izinleri, [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview)konusunda belgelenmiştir.
 
 Müşteri Sözleşmesi faturalandırma kapsamları aşağıdaki rolleri destekler:
 
@@ -159,11 +160,25 @@ AWS tümleştirmesi tamamlandıktan sonra, bkz. [AWS tümleştirmesini ayarlama 
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>Bulut çözümü sağlayıcısı (CSP) kapsamları
 
-Bulut çözümü sağlayıcısı (CSP) iş ortakları, günümüzde maliyet yönetiminde desteklenmez. Bunun yerine, [Iş Ortağı Merkezi](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)'ni kullanabilirsiniz.
+Aşağıdaki kapsamlar, Microsoft Müşteri anlaşmasındaki müşterilerin bulunduğu CSP 'Ler için desteklenir:
+
+- **Faturalandırma hesabı** -birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesi temsil eder. Müşteri Sözleşmesi faturalandırma hesapları, EA kayıtları ile aynı şekilde işlevsel değildir. EA kayıtları, faturalandırma profillerine daha yakından hizalanır.
+
+    Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **Faturalandırma profili** -bir faturaya dahil edilen abonelikleri tanımlar. Fatura profilleri, faturaların oluşturulduğu kapsam olduğundan, bir EA kaydının işlevsel eşdeğeridir. Benzer şekilde, kullanım tabanlı olmayan (Market ve rezervasyonlar gibi) satın alma işlemleri yalnızca bu kapsamda kullanılabilir.
+
+    Kaynak türü: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Müşteri** -bir iş ortağı tarafından Microsoft Müşteri anlaşmasıyla eklendi belirli bir müşteriyle ilişkili bir abonelik grubunu temsil eder.
+
+Yalnızca *genel yönetici* ve yönetici Aracısı rollerine sahip olan kullanıcılar, doğrudan ortağın Azure *kiracısında* faturalandırma hesapları, faturalandırma profilleri ve müşteriler için maliyetleri yönetebilir ve görüntüleyebilir. İş Ortağı Merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview).
+
+Azure maliyet yönetimi yalnızca müşterilerin bir Microsoft Müşteri Anlaşması varsa CSP iş ortağı müşterilerini destekler. Henüz bir Microsoft Müşteri sözleşmenizde olmayan CSP desteği olan müşteriler için bkz. [Iş Ortağı Merkezi](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Maliyet yönetimi 'nde kapsamlar arasında geçiş yapma
 
-Azure Portal tüm maliyet yönetimi görünümleri, görünümün sol üst kısmındaki **kapsam** seçimi hap ' i içerir. Kapsamı hızlı bir şekilde değiştirmek için kullanın. Kapsam seçiciyi açmak için **kapsama** tıklayın. Faturalandırma hesaplarını, kök yönetim grubunu ve kök yönetim grubu altında iç içe olmayan abonelikleri gösterir. Bir kapsam seçmek için, üst plana tıklayarak vurgulayın ve ardından altta **Seç** ' e tıklayın. Bir abonelikteki kaynak grupları gibi iç içe kapsamların ayrıntısına gitmek için kapsam adı bağlantısına tıklayın. Herhangi bir iç içe düzeydeki üst kapsamı seçmek için, kapsam seçicinin en üstündeki **bu &lt;scope @ no__t-2** ' yi seçin.
+Azure Portal tüm maliyet yönetimi görünümleri, görünümün sol üst kısmındaki **kapsam** seçimi hap ' i içerir. Kapsamı hızlı bir şekilde değiştirmek için kullanın. Kapsam seçiciyi açmak için **kapsama** tıklayın. Faturalandırma hesaplarını, kök yönetim grubunu ve kök yönetim grubu altında iç içe olmayan abonelikleri gösterir. Bir kapsam seçmek için, üst plana tıklayarak vurgulayın ve ardından altta **Seç** ' e tıklayın. Bir abonelikteki kaynak grupları gibi iç içe kapsamların ayrıntısına gitmek için kapsam adı bağlantısına tıklayın. Herhangi bir iç içe düzeydeki üst kapsamı seçmek için, kapsam seçicinin üst kısmında **bu &lt;scope seçin &gt;** ' e tıklayın.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Bir kapsamın kaynak KIMLIĞINI tanımla
 

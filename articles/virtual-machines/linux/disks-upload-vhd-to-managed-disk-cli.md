@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717182"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595091"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Azure CLı kullanarak bir VHD 'yi Azure 'a yükleme
 
@@ -41,7 +41,7 @@ Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 - ReadToUpload, diskin karşıya yüklemeyi almaya çalıştığı ancak [güvenli erişim imzası](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) üretilmediği anlamına gelir.
 - ActiveUpload, bu, diskin karşıya yükleme almaya ve SAS üretilmeye hazırlanmasıdır.
 
-Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, diski bir VM 'ye iliştirmek için gereken `revoke-access` ' ı yönetilen diskte çağrılana kadar doğru olacaktır.
+Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, diskin bir VM 'ye eklenmesi için gerekli olan yönetilen diskte `revoke-access` çağrılana kadar doğru olacaktır.
 
 Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, karşıya yüklemek istediğiniz VHD 'nin dosya boyutunu bayt cinsinden yapmanız gerekir. Bunu sağlamak için `wc -c <yourFileName>.vhd` veya `ls -al <yourFileName>.vhd` kullanabilirsiniz. Bu değer, **--karşıya yükleme-boyut-bayt** parametresi belirtildiğinde kullanılır.
 
@@ -81,7 +81,7 @@ Bu karşıya yükleme, eşdeğer [Standart HDD](disks-types.md#standard-hdd)ile 
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-Yükleme sırasında SAS süresinin dolması ve `revoke-access` ' ı henüz çağırmadıysanız, `grant-access` kullanarak karşıya yüklemeye devam etmek için yeni bir SAS alabilirsiniz.
+Yükleme sırasında SAS süresi dolarsa ve `revoke-access` henüz çağırmadıysanız, `grant-access` kullanarak karşıya yüklemeye devam etmek için yeni bir SAS alabilirsiniz.
 
 Karşıya yükleme tamamlandıktan sonra ve diske daha fazla veri yazmanıza gerek kalmadığında, SAS 'yi iptal edin. SAS iptal edildiğinde, yönetilen diskin durumu değişir ve diski bir VM 'ye eklemenize olanak tanır.
 
@@ -98,7 +98,7 @@ Doğrudan karşıya yükleme, yönetilen bir disk kopyalama işlemini de basitle
 > [!IMPORTANT]
 > Azure 'dan yönetilen bir diskin bayt cinsinden disk boyutunu sağlarken 512 sapmasını eklemeniz gerekir. Bunun nedeni, Azure 'un disk boyutunu döndürürken alt bilgiyi atatmesinden kaynaklanır. Bunu yapmazsanız kopya başarısız olur. Aşağıdaki komut dosyası sizin için zaten bunu yapar.
 
-@No__t-0, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` ve `<yourTargetLocationHere>` (bir konum değerinin bir örneği uswest2) değerlerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
+@No__t_0, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` ve `<yourTargetLocationHere>` (bir konum değerinin bir örneği uswest2) değerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
 
 ```bash
 sourceDiskName = <sourceDiskNameHere>
@@ -109,11 +109,11 @@ targetLocale = <yourTargetLocationHere>
 
 sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
 
-az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
-sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
 .\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7fc3508f7f672e277577f92218ff1860b676cb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559482"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596701"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Privileged Identity Management sorun giderme
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) içinde Privileged Identity Management (PıM) 
 
 ### <a name="problem"></a>Sorun
 
-Bir kullanıcıyı Azure AD yöneticisi rolüne uygun hale getirmek istediğinizde bir yetkilendirme hatası alırsınız ve Privileged Identity Management altındaki Azure kaynaklarına erişemedik. Genel yönetici ve aboneliğin sahibi olsanız bile Privileged Identity Management altındaki Azure kaynaklarına erişemedik.
+Bir Azure kaynağı için etkin bir sahip veya Kullanıcı erişimi Yöneticisi olarak, kaynağınızı Privileged Identity Management içinde görebilir, ancak uygun bir atama yapma ya da kaynağın rol atamalarının bir listesini görüntüleme gibi işlemleri gerçekleştiremeyeceksiniz Genel Bakış sayfası. Bu eylemlerin herhangi biri bir yetkilendirme hatasına neden olur.
 
 ### <a name="cause"></a>Nedeni
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268843"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595307"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Geliştirici Kılavuzu Azure Key Vault
 
@@ -28,7 +28,7 @@ Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](ke
 
 ## <a name="public-previews"></a>Genel önizlemeler
 
-Düzenli olarak, yeni bir Key Vault özelliğinin genel önizlemesini yayınlarız. Bunları deneyin ve geri bildirim e-posta adresi ile azurekeyvault@microsoft.comdüşüncelerinizi öğrenmemizi sağlayın.
+Düzenli olarak, yeni bir Key Vault özelliğinin genel önizlemesini yayınlarız. Bunları deneyin ve azurekeyvault@microsoft.com, geri bildirim e-posta adresi ile düşüncelerinizi bize iletin.
 
 ## <a name="creating-and-managing-key-vaults"></a>Anahtar kasaları oluşturma ve yönetme
 
@@ -84,7 +84,7 @@ Node. js ' de, Key Vault yönetim API 'SI ve Key Vault nesne API 'SI ayrıdır. 
 
 [Key Vault için Azure PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Hızlı başlangıç kılavuzları
+### <a name="quickstart-guides"></a>Hızlı Başlangıç Kılavuzu
 
 - [Key Vault oluştur](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Node. js ' de Key Vault kullanmaya başlama](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -117,7 +117,7 @@ Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve �
 
 Bu makaleler, Key Vault kullanan veya ile tümleştirilebilen diğer senaryolar ve hizmetlerle ilgilidir.
 
-- [Azure disk şifrelemesi](../security/azure-security-disk-encryption.md) , işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un sektör standardı [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) özelliğini ve Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır. Çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak üzere Azure Key Vault ile tümleşiktir. böylece, sanal makine disklerindeki tüm verilerin Azure depolamadaki geri kalanında şifrelenmesini sağlayabilirsiniz.
+- [Azure disk şifrelemesi](../security/fundamentals/encryption-overview.md) , işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un sektör standardı [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) özelliğini ve Linux 'un [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) özelliğini kullanır. Çözüm, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak üzere Azure Key Vault ile tümleşiktir. böylece, sanal makine disklerindeki tüm verilerin Azure depolamadaki geri kalanında şifrelenmesini sağlayabilirsiniz.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) hesapta depolanan verilerin şifrelenmesi için seçenek sağlar. Anahtar yönetimi için Data Lake Store, ana şifreleme anahtarlarınızı (MEKs) yönetmek için, Data Lake Store depolanan verilerin şifresini çözmek için gereken iki mod sağlar. Sizin için, MEKs 'leri Data Lake Store yönetebilir veya Azure Key Vault hesabınızı kullanarak MEKs 'in sahipliğini tutmayı seçebilirsiniz. Data Lake Store bir hesap oluştururken anahtar yönetiminin modunu belirtirsiniz.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kendi kiracı anahtarınızı yöneticinize etmenizi sağlar. Örneğin, kiracı anahtarınızı Microsoft 'un yönetmesi yerine (varsayılan), kuruluşunuz için uygun olan belirli düzenlemelere uymak üzere kendi kiracı anahtarınızı yönetebilirsiniz. Kendi kiracı anahtarınızı yönetmek, kendi anahtarını getir veya BYOK olarak da adlandırılır.
 

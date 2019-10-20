@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 9cb86d65c84f9a315541172f5d0efa77eee3e7ed
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d6530eb95dc26b9abe4bb27146b16eb2952e9f9b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529319"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595669"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -49,6 +49,8 @@ Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
   * Sanal ağınızın, ıSE 'de kaynak oluşturup dağıtmak için dört *boş* alt ağa sahip olması gerekir. Bu alt ağları önceden oluşturabilirsiniz veya aynı anda alt ağlar oluşturabileceğiniz için ıSE 'yi oluşturmaya kadar bekleyebilirsiniz. [Alt ağ gereksinimleri](#create-subnet)hakkında daha fazla bilgi edinin.
 
   * Alt ağ adlarının alfabetik bir karakter veya alt çizgi ile başlaması gerekir ve şu karakterleri kullanamaz: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
+  
+  * ISE 'yi bir Azure Resource Manager şablonuyla dağıtmak istiyorsanız, önce bir boş alt ağı Microsoft. Logic/ıntegrationserviceenvironment 'a temsilcdiğinizden emin olun. Azure portal aracılığıyla dağıtırken bu temsilciyi yapmanız gerekmez.
 
   * Sanal ağınızın [Bu bağlantı noktalarını uygun hale getiren](#ports) ve Ise 'nin düzgün bir şekilde çalıştığından emin olun.
 

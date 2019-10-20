@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329422"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597314"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -159,7 +159,7 @@ Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletilmesini 730 gün 
     }
 ```
 
-@No__t-0 ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
+@No__t_0 ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
 
 Veri türüne göre saklama ayarlamak için Azure Resource Manager doğrudan bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dir.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.  ARMClient kullanarak, SecurityEvent verilerinin 730 günlük bekletmeye göre ayarlanması aşağıda verilmiştir:
 
@@ -191,7 +191,7 @@ Log Analytics çalışma alanınızın eski fiyatlandırma katmanlarına erişim
 2. Çalışma alanı bölmesinde, **genel**altında, **fiyatlandırma katmanı**' nı seçin.  
 
 3. **Fiyatlandırma katmanı**altında bir fiyatlandırma katmanı seçin ve ardından **Seç**' e tıklayın.  
-    ![Selected fiyatlandırma planı @ no__t-1
+    ![Selected fiyatlandırma planı ](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 Fiyatlandırma katmanını, `sku` parametresini (ARM şablonunda `pricingTier`) kullanarak [Azure Resource Manager aracılığıyla da ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . 
 
@@ -268,7 +268,7 @@ union withsource = tt *
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 "Isfaturalandırılabilir = true" yan tümcesinin, hiçbir alma ücreti bulunmayan belirli çözümlerden veri türlerini filtreleyeceğini unutmayın. 
@@ -278,12 +278,12 @@ Belirli veri türleri için veri eğilimlerini görmek için daha fazla ayrınt�
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>Bilgisayara göre veri hacmi
 
-Bilgisayar başına alınan faturalandırılabilir olayların **boyutunu** görmek için, boyutu bayt cinsinden sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
+Bilgisayar başına alınan faturalandırılabilir olayların **boyutunu** görmek için, bayt cinsinden boyutu sağlayan `_BilledSize` [özelliğini](log-standard-properties.md#_billedsize)kullanın:
 
 ```kusto
 union withsource = tt * 
@@ -292,7 +292,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-@No__t-0 [özelliği](log-standard-properties.md#_isbillable) , alınan verilerin ücretlendirip ödemeyeceğini belirtir.
+@No__t_0 [özelliği](log-standard-properties.md#_isbillable) , alınan verilerin ücretlendirip tabi olmayacağını belirtir.
 
 Bilgisayar başına alınan **faturalandırılabilir** olay sayısını görmek için şunu kullanın: 
 
@@ -332,7 +332,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-@No__t-0 ' yı `resourceGroup` olarak değiştirmek, faturalandırılabilen veri hacmi ile Azure kaynak grubunu gösterir. 
+@No__t_0 `resourceGroup` olarak değiştirmek, Azure Kaynak grubu 'na göre faturalandırılabilen veri hacmini gösterir. 
 
 
 > [!NOTE]
@@ -428,7 +428,7 @@ Aşağıdaki sorgu, son 24 saatte 100 GB'den fazla veri toplandığında bir son
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ Aşağıdaki sorgu, ne zaman bir günde 100 GB'den fazla veri toplanacağını t
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ Toplanan veri beklenen miktarı aştığında size bildirilmesini sağlamak içi
 - **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
 - **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
    - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
-   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
    - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *1440* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
@@ -465,7 +465,7 @@ Günlük uyarısı ölçütlerle eşleştiğinde bilgilendirme yapılması için
 - **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
 - **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
    - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
-   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
    - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *180* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
 - **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:

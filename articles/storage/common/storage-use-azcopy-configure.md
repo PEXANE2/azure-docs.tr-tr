@@ -4,16 +4,16 @@ description: AzCopy 'i yapılandırın, iyileştirin ve sorun giderin.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273932"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595137"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -28,11 +28,11 @@ AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceği
 
 ## <a name="configure-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
 
-AzCopy için proxy ayarlarını yapılandırmak üzere `https_proxy` ortam değişkenini ayarlayın. AzCopy 'i Windows üzerinde çalıştırırsanız AzCopy proxy ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows 'ta kullanmanız gerekmez. Bu ayarı Windows 'ta kullanmayı seçerseniz, otomatik algılamayı geçersiz kılar.
+AzCopy proxy ayarlarını yapılandırmak için `https_proxy` ortam değişkenini ayarlayın. AzCopy 'i Windows üzerinde çalıştırırsanız AzCopy proxy ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows 'ta kullanmanız gerekmez. Bu ayarı Windows 'ta kullanmayı seçerseniz, otomatik algılamayı geçersiz kılar.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | Komut isteminde şunu kullanın: `set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanımda: `$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | Komut isteminde şunu kullanın: `set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanım: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -68,7 +68,7 @@ Verimlilik veri hızına bir tavan koymak için `cap-mbps` bayrağını kullanab
 azcopy cap-mbps 10
 ```
 
-Küçük dosyalar aktarılırken üretilen iş azalabilir. @No__t-0 ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
+Küçük dosyalar aktarılırken üretilen iş azalabilir. @No__t_0 ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
 
 Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri `32` olarak ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000` ' dır, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
 
@@ -99,7 +99,7 @@ AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları a
 
 Günlüklerde hata durumu (`UPLOADFAILED`, `COPYFAILED` ve `DOWNLOADFAILED`), tam yol ve hatanın nedeni yer alacak.
 
-Varsayılan olarak, günlük ve plan dosyaları, Mac ve Linux 'ta Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE$\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
+Varsayılan olarak, günlük ve plan dosyaları Mac ve Linux üzerindeki Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE$\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
 
 > [!IMPORTANT]
 > Microsoft Desteği bir istek gönderirken (veya herhangi bir üçüncü taraf ile ilgili sorunu gidermeye çalıştığınızda), yürütmek istediğiniz komutun Redaksiyonu yapılmış sürümünü paylaşabilirsiniz. Bu, SAS 'nin yanlışlıkla herhangi bir gövdele paylaşılmamasını sağlar. Redaksiyonu yapılmış sürümü günlük dosyasının başlangıcında bulabilirsiniz.

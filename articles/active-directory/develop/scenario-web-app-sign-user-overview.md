@@ -15,14 +15,14 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 68d47d4233aec62ec5f1955e52025b0d55221af8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086565"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596710"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: Kullanıcıların oturum açtığı web uygulaması
+# <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
 Kullanıcıları Microsoft Identity platformu ile oturum açan bir Web uygulaması oluşturmak için ihtiyacınız olan her şey hakkında bilgi edinin.
 
@@ -30,35 +30,35 @@ Kullanıcıları Microsoft Identity platformu ile oturum açan bir Web uygulamas
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Kullanıcıların oturum açmasını sağlayan ilk taşınabilir (ASP.NET Core) Web uygulamalarınızı oluşturmak istiyorsanız bu hızlı başlangıcı izleyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Kullanıcıları oturum açan ASP.NET Core Web uygulaması](quickstart-v2-aspnet-core-webapp.md)
+> [Hızlı başlangıç: kullanıcıları oturum açan ASP.NET Core Web uygulaması](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 f eski bir ASP.NET Web uygulamasına nasıl oturum ekleneceğini anlamak için aşağıdaki öğreticiyi deneyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Kullanıcıları oturum açan ASP.NET Web uygulaması](quickstart-v2-aspnet-webapp.md)
+> [Hızlı başlangıç: kullanıcıları oturum açan ASP.NET Web uygulaması](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 Java geliştiricisiyseniz aşağıdaki hızlı başlangıcı deneyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme](quickstart-v2-java-webapp.md)
+> [Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 Python ile geliştirirseniz, deneyin:
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme](quickstart-v2-python-webapp.md)
+> [Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -81,5 +81,24 @@ Web uygulamanıza kimlik doğrulaması ekleyerek kullanıcıların oturum açmas
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Uygulama kaydı](scenario-web-app-sign-user-app-registration.md)
+> [Uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)
+
+---

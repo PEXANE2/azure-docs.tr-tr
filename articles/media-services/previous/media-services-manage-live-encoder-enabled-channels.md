@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016499"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598313"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -30,8 +30,8 @@ ms.locfileid: "69016499"
 ## <a name="overview"></a>Genel Bakış
 Azure Media Services (AMS) ' de **Kanal** , canlı akış içeriğini işlemek için bir işlem hattını temsil eder. **Kanal** , canlı giriş akışlarını iki şekilde alır:
 
-* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek üzere etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
-* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete. Aşağıdaki Live kodlayıcılar çıkış RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream kablolu dönüştürme, Haivision, Teradek ve karmaşık Aster kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile canlı kodlama gerçekleştirmek için etkinleştirilen kanala tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içi bir Live Encoder, AMS ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmemiş kanala çoklu bit hızlı **RTMP** veya **KESINTISIZ AKıŞ** (parçalanmış MP4) gönderir. Alınan akışlar, başka bir işlem yapılmadan **Kanal**s üzerinden geçer. Bu yönteme **doğrudan geçiş**adı verilir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream kablolü, haivision, teradek ve karmaşık Aster kodlayıcıları.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
   > [!NOTE]
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
@@ -70,10 +70,10 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 
 | Kanal durumu | Portal Arabirimi Göstergeleri | BT faturalandırma mı? |
 | --- | --- | --- |
-| Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
-| Çalışıyor |Hazır (çalışan program yok)<br/>veya<br/>Akış (en az bir program çalışıyor) |EVET |
+| Başlangıç |Başlangıç |Hayır (geçici durum) |
+| Çalışıyor |Hazır (çalışan program yok)<br/>or<br/>Akış (en az bir program çalışıyor) |YES |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durduruldu |Durduruldu |Hayır |
+| Durdurulan |Durdurulan |Hayır |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Kullanılmayan kanallar için otomatik kapatma
 25 Ocak 2016 tarihinden itibaren, uzun bir süre boyunca kullanılmayan bir durumda çalıştıktan sonra bir kanalı otomatik olarak durduran bir güncelleştirmeyi (canlı kodlama etkin olan) Media Services. Bu, etkin bir programı olmayan ve uzun bir süre için bir giriş katkısı akışı almamış olan kanallar için geçerlidir.
@@ -81,7 +81,7 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 Kullanılmayan bir dönem için eşik, en az 12 saat, ancak değişikliğe tabidir.
 
 ## <a name="live-encoding-workflow"></a>Live Encoding Iş akışı
-Aşağıdaki diyagram, bir kanalın aşağıdaki protokollerden birinde tek bir bit hızı akışı aldığı canlı bir akış iş akışını temsil eder: RTMP veya Kesintisiz Akış; daha sonra akışı çoklu bit hızına sahip bir akışa kodluyor. 
+Aşağıdaki diyagramda, bir kanalın aşağıdaki protokollerden birinde tek bir bit hızı akışı aldığı canlı bir akış iş akışı temsil etmektedir: RTMP veya Kesintisiz Akış; daha sonra akışı çoklu bit hızına sahip bir akışa kodluyor. 
 
 ![Canlı iş akışı][live-overview]
 
@@ -89,9 +89,11 @@ Aşağıdaki diyagram, bir kanalın aşağıdaki protokollerden birinde tek bir 
 Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımlar aşağıdadır.
 
 > [!NOTE]
-> Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir. Daha uzun bir süre için bir Kanal çalıştırmanız gerekiyorsa lütfen amshelp@microsoft.com adresine başvurun. Canlı kodlama için bir faturalandırma etkisi vardır ve "çalışıyor" durumundaki bir canlı kodlama kanalını, saatlik faturalandırma ücretlerine tabi kalabileceğini unutmayın.  Ek saatlik ücretlerden kaçınmak için canlı akış olayınız tamamlandıktan sonra çalışan kanallarınızı hemen durdurmanız önerilir. 
+> Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir.
+>
+> Canlı kodlama için bir faturalandırma etkisi vardır ve "çalışıyor" durumundaki bir canlı kodlama kanalını, saatlik faturalandırma ücretlerine tabi kalabileceğini unutmayın. Ek saatlik ücretlerden kaçınmak için canlı akış olayınız tamamlandıktan sonra çalışan kanallarınızı hemen durdurmanız önerilir. 
 
-1. Bilgisayara bir video kamera bağlayın. Aşağıdaki protokollerden birinde **tek** bit hızlı bir akış çıktısı veren şirket içi bir Live Encoder başlatın ve yapılandırın: RTMP veya Kesintisiz Akış. 
+1. Bilgisayara bir video kamera bağlayın. Aşağıdaki protokollerden birinde **tek** bit hızlı bir akış çıktısı sağlayan şirket içi bir Live Encoder başlatın ve yapılandırın: RTMP veya kesintisiz akış. 
 
     Bu adım, Kanalınızı oluşturduktan sonra da gerçekleştirilebilir.
 2. Bir Kanal oluşturup başlatın. 
@@ -135,7 +137,7 @@ Dikkat edilmesi gerekenler:
 * Video akışı, 15 Mbps 'Lik bir ortalama bit hızında olmalıdır
 * Ses akışı, 1 MB/sn 'Lik bir ortalama bit hızına sahip olmalıdır
 * Desteklenen codec bileşenleri aşağıda verilmiştir:
-* MPEG-4 AVC / H.264 Video
+* MPEG-4 AVC/H. bir video
 * Temel, ana, yüksek profil (8 bit 4:2:0)
 * High 10 profili (10 bit 4:2:0)
 * Yüksek 422 profili (10 bit 4:2:2)
@@ -156,7 +158,7 @@ Dikkat edilmesi gerekenler:
 
 [Tek bit hızı RTMP](media-services-manage-live-encoder-enabled-channels.md#single_bitrate_RTMP)ile aynıdır.
 
-#### <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+#### <a name="other-considerations"></a>Diğer konular
 * Kanal veya ilişkili programları çalışıyorken giriş protokolünü değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir giriş protokolü için farklı bir kanal oluşturmalısınız.
 * Gelen video akışı için en yüksek çözünürlük 1920x1080 ve en fazla 60 alan/saniye, titreşimli ise 30 kare/saniye olur.
 
@@ -202,7 +204,7 @@ Ad işaretçileri sinyallerinin kaynağını belirtebilirsiniz. Varsayılan değ
 ### <a name="cea-708-closed-captions"></a>CEA 708 kapalı açıklamalı altyazı
 Live Encoder 'ın gelen videoda gömülü olan CEA 708 açıklamalı alt yazı verilerini yok saymasını belirten isteğe bağlı bir bayrak. Bayrak false (varsayılan) olarak ayarlandığında, kodlayıcı çıkış video akışlarına CEA 708 verilerini algılayıp yeniden ekleyecektir.
 
-#### <a name="index"></a>Dizin oluşturma
+#### <a name="index"></a>Dizin
 Tek bir program aktarım akışı (SPTS) içinde göndermeniz önerilir. Giriş akışı birden çok program içeriyorsa, kanal içindeki canlı kodlayıcı, girişte program eşleme tablosunu (DEVRESEL_ÖDEME) ayrıştırır, MPEG-2 AAC ADTS veya AC-3 Sistem-A veya AC-3 sistem-B veya MPEG-2 özel PES veya MPEG-1 akış türü adına sahip girdileri tanımlar Ses veya MPEG-2 ses ve bu, DEVRESEL_ÖDEME olarak belirtilen sırayla düzenler. Sıfır tabanlı dizin daha sonra bu düzenlemede n. girişi seçmek için kullanılır.
 
 #### <a name="language"></a>Dil
@@ -210,8 +212,6 @@ Ses akışının, ENG gibi ISO 639-2 ile uyumlu dil tanımlayıcısı. Yoksa, va
 
 ### <a id="preset"></a>Sistem ön ayarı
 Bu kanalda bulunan Live Encoder tarafından kullanılacak ön ayarı belirtir. Şu anda, izin verilen tek değer **Default720p** ' dir (varsayılan).
-
-Özel hazır ayarlar gerekiyorsa, iletişim amshelp@microsoft.comkurmanız gerektiğini unutmayın.
 
 **Default720p** , videoyu aşağıdaki 6 katmana kodlayacaktır.
 
@@ -240,7 +240,7 @@ Kanalınızda Live Encoding etkinleştirildiğinde, işlem hattınızda videoyu 
 
 Aşağıda, reklamları sinyal alırken ayarlayabileceğiniz özellikler verilmiştir. 
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>Süre
 Ticari kesmenin saniye cinsinden süresi. Bu, ticari kesmeyi başlatmak için sıfır olmayan pozitif bir değer olmalıdır. Bir ticari bir kesme devam ederken ve zaman içindeki ticari kesmeyi eşleştirirken süre sıfıra ayarlandığında, bu kesme iptal edilir.
 
 ### <a name="cueid"></a>Cuıd
@@ -256,11 +256,11 @@ Kanal içindeki canlı kodlayıcı bir tablet görüntüsüne geçiş yapmak iç
 
 Live Encoder, bir tablet görüntüsüne geçiş yapmak ve örneğin bir ad kesmesi sırasında belirli durumlarda gelen video sinyalini gizlemek için yapılandırılabilir. Böyle bir kurşun değer yapılandırılmadıysa, bu ad kesmesi sırasında giriş videosu maskelenmez.
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>Süre
 Saniye cinsinden kurşun süre. Bu, kurşun rengi başlatmak için sıfır olmayan pozitif bir değer olmalıdır. Bir devam eden kurşun değer varsa ve sıfır süresi belirtilmişse, bu durumda bu, devam eden kurşun işlem sonlandırılır.
 
-### <a name="insert-slate-on-ad-marker"></a>Reklam işaretçisine maskeleme görüntüsü ekle
-True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırasında bir tablet görüntüsü eklemek üzere yapılandırır. Varsayılan değer true olur. 
+### <a name="insert-slate-on-ad-marker"></a>Ad işaretleyicisi üzerine kurşun ekler
+True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırasında bir tablet görüntüsü eklemek üzere yapılandırır. Varsayılan değer true 'dur. 
 
 ### <a id="default_slate"></a>Varsayılan kurşun varlık kimliği
 
@@ -269,7 +269,6 @@ True olarak ayarlandığında, bu ayar, Live Encoder 'ı bir ad kesmesi sırası
 
 > [!NOTE] 
 > Kanalı oluşturmadan önce, aşağıdaki kısıtlamalara sahip kurşun kurşun görüntünün ayrılmış bir varlık olarak yüklenmesi gerekir (Bu varlık içinde başka hiçbir dosya olması gerekmez). Bu görüntü yalnızca, Live Encoder bir ad kesmesi nedeniyle bir kurşun ya da bir kurşun değer işareti eklemek için açıkça işaret edildiğinde kullanılır. Şu anda, Live Encoder ' giriş sinyali kayıp ' durumuna girdiğinde özel görüntü kullanma seçeneği yoktur. Bu özellik için [buradan](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)oy verebilirsiniz.
-
 
 * En fazla 1920x1080 çözüm içinde.
 * En fazla 3 MB boyutunda.
@@ -313,10 +312,10 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 
 | Kanal durumu | Portal Arabirimi Göstergeleri | Faturalandırılmış mı? |
 | --- | --- | --- |
-| Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
-| Çalışıyor |Hazır (çalışan program yok)<br/>veya<br/>Akış (en az bir program çalışıyor) |Evet |
+| Başlangıç |Başlangıç |Hayır (geçici durum) |
+| Çalışıyor |Hazır (çalışan program yok)<br/>or<br/>Akış (en az bir program çalışıyor) |Yes |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durduruldu |Durduruldu |Hayır |
+| Durdurulan |Durdurulan |Hayır |
 
 > [!NOTE]
 > Şu anda kanal başlangıç ortalaması yaklaşık 2 dakikadır, ancak her zaman 20 + dakikaya kadar sürebilir. Kanal sıfırlamaları 5 dakikaya kadar sürebilir.
@@ -331,7 +330,7 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 * Varsayılan olarak, Media Services hesabınıza yalnızca 5 Kanal ekleyebilirsiniz. Bu, tüm yeni hesaplarda geçici bir kotadır. Daha fazla bilgi için bkz. [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md).
 * Kanal veya ilişkili programları çalışıyorken giriş protokolünü değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir giriş protokolü için farklı bir kanal oluşturmalısınız.
 * Yalnızca kanalınızın **çalışır** durumda olması durumunda faturalandırılırsınız. Daha fazla bilgi için [Bu](media-services-manage-live-encoder-enabled-channels.md#states) bölüme bakın.
-* Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir. Daha uzun bir süre için bir Kanal çalıştırmanız gerekiyorsa lütfen amshelp@microsoft.com adresine başvurun.
+* Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir. 
 * **Çalışma** durumunda içerik akışı yapmak istediğiniz akış uç noktasına sahip olduğunuzdan emin olun.
 * Kodlama önceden kümesi, 30 fps 'nin "Maks. kare hızı" kavramını kullanır. Bu nedenle, giriş 60fps/59.94 i ise, giriş çerçeveleri 30/29.97 fps 'e bırakılır/devre dışı bırakılır. Giriş 50 fps/50i ise, giriş çerçeveleri 25 fps 'e bırakılır/devre dışı bırakılır. Giriş 25 fps ise, çıkış 25 fps 'de kalır.
 * Bittiğinde KANALLARıNıZı DURDURMAYı unutmayın. Bunu yapmazsanız faturalandırma devam eder.
@@ -341,12 +340,17 @@ Aşağıdaki tabloda, Kanal durumlarının faturalandırma modu ile nasıl eşle
 * Kurşun görüntüleri [burada](media-services-manage-live-encoder-enabled-channels.md#default_slate)açıklanan kısıtlamalara uymalıdır. 1920x1080 'den daha büyük bir varsayılan kurşun ile bir kanal oluşturmaya çalışırsanız, istek sonunda hata olur.
 * Bir daha.... akışı bitirdiğinizde KANALLARıNıZı DURDURMAYı unutmayın. Bunu yapmazsanız faturalandırma devam eder.
 
+## <a name="need-help"></a>Yardım mı gerekiyor?
+
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
+
 ## <a name="next-step"></a>Sonraki adım
+
 Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

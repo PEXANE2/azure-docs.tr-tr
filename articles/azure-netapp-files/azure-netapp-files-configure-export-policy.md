@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp dosyalarını kullanarak bir NFS birimi için verme ilkesi yapılandırma | Microsoft Docs
-description: Azure NetApp dosyaları kullanarak bir NFS birimine erişimi denetlemek için verme ilkesi yapılandırılması açıklanmaktadır
+title: Azure NetApp Files kullanarak NFS birimi için dışarı aktarma ilkesini yapılandırma | Microsoft Docs
+description: Azure NetApp Files kullanarak bir NFS birimine erişimi denetlemek için, dışa aktarma ilkesinin nasıl yapılandırılacağını açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: d73ac199df03f4d789db0634be1e926afc77e623
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086193"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597543"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
 
-İsteğe bağlı olarak Azure NetApp Files birimine erişimi denetlemek için dışarı aktarma ilkesi yapılandırabilirsiniz. Dışarı aktarma, NFS birimleri desteği yalnızca ilkesidir. 
+İsteğe bağlı olarak Azure NetApp Files birimine erişimi denetlemek için dışarı aktarma ilkesi yapılandırabilirsiniz. Azure NetApp Files dışarı aktarma ilkesi yalnızca NFS birimlerini destekler.  Hem NFSv3 hem de NFSv4 desteklenir. 
 
 ## <a name="steps"></a>Adımlar 
 
@@ -44,10 +44,6 @@ ms.locfileid: "61086193"
         * Erişim Yok 
         * Okuma ve Yazma
         * Salt Okunur
-
-    * **Protokoller**   
-        Dışarı aktarma ilkesinde kullanılacak protokolü belirtin.   
-        Şu anda Azure NetApp dosyaları dışarı aktarma ilkesi yalnızca NFSv3 destekler.
 
     ![İlkeyi dışarı aktarma](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

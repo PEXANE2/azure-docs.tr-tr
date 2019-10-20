@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294368"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596879"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Işlevlerinin performansını ve güvenilirliğini iyileştirin
 
-Bu makale, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamalarınızın performansını ve güvenilirliğini artırmaya yönelik rehberlik sağlar. 
+Bu makale, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) işlev uygulamalarınızın performansını ve güvenilirliğini artırmaya yönelik rehberlik sağlar.  
 
 ## <a name="general-best-practices"></a>Genel en iyi uygulamalar
 
@@ -98,9 +98,9 @@ Zaman uyumsuz programlama önerilen en iyi uygulamadır. Ancak `Result` özelli�
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Mümkün olduğunda toplu iş içinde ileti alma
 
-Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almayı sağlar.  Toplu işlem iletilerinin çok daha iyi performansı vardır.  @No__t-0 dosyasındaki en büyük toplu iş boyutunu [Host. JSON başvuru belgelerinde](functions-host-json.md) açıklandığı gibi yapılandırabilirsiniz.
+Olay Hub 'ı gibi bazı Tetikleyiciler tek bir çağrıdan bir toplu ileti almayı sağlar.  Toplu işlem iletilerinin çok daha iyi performansı vardır.  @No__t_0 dosyasındaki en büyük toplu iş boyutunu [Host. JSON başvuru belgelerinde](functions-host-json.md) açıklandığı gibi yapılandırabilirsiniz.
 
-İşlevler C# için türü türü kesin belirlenmiş bir dizi olarak değiştirebilirsiniz.  Örneğin `EventData sensorEvent` yerine, yöntem imzası `EventData[] sensorEvent` olabilir.  Diğer diller için, [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)toplu işi etkinleştirmek üzere `function.json` ' daki kardinalite özelliğini `many` olarak ayarlamanız gerekir.
+İşlevler C# için türü türü kesin belirlenmiş bir dizi olarak değiştirebilirsiniz.  Örneğin, `EventData sensorEvent` değil Yöntem imzası `EventData[] sensorEvent` olabilir.  Diğer diller için, [burada gösterildiği gibi](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)toplu işi etkinleştirmek üzere `function.json` ' daki kardinalite özelliğini `many` olarak ayarlamanız gerekir.
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Eşzamanlılık daha iyi işlemek için konak davranışlarını yapılandırın
 

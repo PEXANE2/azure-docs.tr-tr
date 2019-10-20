@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: cba7102c39f9e5231a3fe726f2e4c74e814109f1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529425"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597989"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneğini yapılandırma
 
@@ -45,7 +45,7 @@ Ayrıca, aşağıdaki teknolojilerde genel olarak anlaşılmalıdır:
 - [Azure Kaynak grupları](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](virtual-machines-windows-sql-server-agent-extension.md) [basit](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) yönetim moduyla desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, sanal makinelerin "SQL sanal makinesi" kaynağını silin ve ardından bunları `lightweight` modunda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak "SQL sanal makinesi" kaynağı silinirken gerçek sanal makinenin seçimini kaldırın. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı hafif yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'Leri için çalışmaz.
+> Şu anda Azure sanal makinelerinde SQL Server yük devretme kümesi örnekleri yalnızca [SQL Server IaaS aracı uzantısının](virtual-machines-windows-sql-server-agent-extension.md) [basit](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) yönetim moduyla desteklenir. Tam uzantı modundan hafif olarak geçiş yapmak için, karşılık gelen VM 'Ler için **SQL sanal makine** kaynağını silin ve ardından bunları [basıt](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) modda SQL VM kaynak sağlayıcısı 'na kaydedin. Azure portal kullanarak **SQL sanal makine** kaynağını silerken, doğru sanal makinenin yanındaki onay kutusunu temizleyin. Tam uzantı otomatik yedekleme, düzeltme eki uygulama ve gelişmiş Portal yönetimi gibi özellikleri destekler. Aracı [hafif](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) yönetim modunda yeniden yüklendikten sonra bu özellikler SQL VM 'leri için çalışmaz.
 
 ### <a name="workload-consideration"></a>İş yükü değerlendirmesi
 

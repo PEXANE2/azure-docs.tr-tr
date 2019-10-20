@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 10/19/2019
 ms.author: victorh
-ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130217"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596774"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -40,7 +40,7 @@ Bu modelin avantajı, farklı aboneliklerde birden çok bağlı ağ sanal ağlar
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Azure Güvenlik duvarını nasıl yükleyebilirim?
 
-Azure portal, PowerShell, REST API veya şablonları kullanarak Azure Güvenlik Duvarı 'nı ayarlayabilirsiniz. Öğreticiye bakın [: Adım adım yönergeler için Azure Portal](tutorial-firewall-deploy-portal.md) kullanarak Azure Güvenlik Duvarı 'nı dağıtın ve yapılandırın.
+Azure portal, PowerShell, REST API veya şablonları kullanarak Azure Güvenlik Duvarı 'nı ayarlayabilirsiniz. Adım adım yönergeler için bkz. [öğretici: Azure Güvenlik Duvarı 'Nı dağıtma ve yapılandırma Azure Portal](tutorial-firewall-deploy-portal.md) .
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Azure Güvenlik Duvarı kavramları nelerdir?
 
@@ -48,9 +48,9 @@ Azure Güvenlik Duvarı, kuralları ve kural koleksiyonlarını destekler. Kural
 
 Üç tür kural koleksiyonu vardır:
 
-* *Uygulama kuralları*: Bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
-* *Ağ kuralları*: Kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
-* *NAT kuralları*: Gelen bağlantılara izin vermek için DNAT kurallarını yapılandırın.
+* *Uygulama kuralları*: bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) yapılandırın.
+* *Ağ kuralları*: kaynak adreslerini, protokolleri, hedef bağlantı noktalarını ve hedef adreslerini içeren kuralları yapılandırın.
+* *NAT kuralları*: gelen bağlantılara izin vermek için DNAT kurallarını yapılandırın.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Güvenlik Duvarı gelen trafik filtrelemeyi destekliyor mu?
 
@@ -58,7 +58,7 @@ Azure Güvenlik Duvarı gelen ve giden filtrelemeyi destekler. Gelen koruma, HTT
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Hangi günlük ve analiz hizmetleri Azure Güvenlik Duvarı tarafından destekleniyor?
 
-Azure Güvenlik Duvarı, güvenlik duvarı günlüklerini görüntülemek ve analiz etmek için Azure Izleyici ile tümleşiktir. Günlükler Log Analytics, Azure depolama veya Event Hubs gönderilebilir. Log Analytics veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir. Daha fazla bilgi için bkz [. Öğretici: Azure Güvenlik Duvarı günlüklerini](tutorial-diagnostics.md)izleyin.
+Azure Güvenlik Duvarı, güvenlik duvarı günlüklerini görüntülemek ve analiz etmek için Azure Izleyici ile tümleşiktir. Günlükler Log Analytics, Azure depolama veya Event Hubs gönderilebilir. Log Analytics veya Excel ve Power BI gibi farklı araçlarla analiz edilebilir. Daha fazla bilgi için bkz. [öğretici: Azure Güvenlik Duvarı günlüklerini izleme](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Güvenlik Duvarı Market 'teki NVA 'lar gibi mevcut hizmetlerden farklı şekilde nasıl çalışır?
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı fiyatlandırması](https://azure.microsoft.com/pri
 
 Azure PowerShell *serbest bırakma* ve *ayırma* yöntemleri kullanabilirsiniz.
 
-Örneğin:
+Örnek:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -145,7 +145,7 @@ Hayır. NAT kuralları, çevrilen trafiğe izin vermek için, karşılık gelen 
 
 * **. Contoso.com**yapılandırırsanız, *anyvalue*. contoso.com, ancak contoso.com (etki alanı tepesinde) izin verir. Etki alanı tepesinde izin vermek istiyorsanız, onu hedef FQDN olarak açıkça yapılandırmanız gerekir.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>Sağlama durumu *ne yapar: Başarısız* oldu mu?
+## <a name="what-does-provisioning-state-failed-mean"></a>*Sağlama durumu* ne anlama geliyor?
 
 Her bir yapılandırma değişikliği uygulandığında, Azure Güvenlik Duvarı temeldeki tüm arka uç örneklerini güncelleştirmeye çalışır. Nadir durumlarda, bu arka uç örneklerinden biri yeni yapılandırmayla güncelleştiremeyebilir ve güncelleştirme işlemi başarısız bir sağlama durumuyla birlikte durduruluyor. Azure Güvenlik duvarınız hala çalışıyor, ancak uygulanan yapılandırma tutarsız bir durumda olabilir, burada bazı örnekler başkalarının güncelleştirilmiş kural kümesine sahip olduğu önceki yapılandırmaya sahiptir. Bu durumda, işlem başarılı olana ve güvenlik duvarınız *başarılı* bir sağlama durumunda olduğundan, yapılandırmanızı bir kez daha güncelleştirmeyi deneyin.
 
@@ -163,6 +163,14 @@ Azure Güvenlik duvarının ölçeklendirilen daha fazla sanal makine örneği s
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Hizmet ölçeklendirilirken güvenlik duvarı alt ağı boyutunun değiştirilmesi gerekiyor mu?
 
 Hayır. Azure Güvenlik Duvarı/26 ' dan büyük bir alt ağa gerek yoktur.
+
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Güvenlik Duvarı iş üretimini nasıl artırabilirim?
+
+Azure Güvenlik duvarının ilk verimlilik kapasitesi 2,5-3 Gbps 'dir. Şu anda, ölçeği genişletme yalnızca CPU kullanımına dayanır. Bazı durumlarda ağ kuralları bir güvenlik duvarı, CPU kullanımını önemli ölçüde etkilemediğinden, yalnızca aktarım hızını artırmak için ölçeklenmez. Güvenlik duvarınız için daha yüksek aktarım hızına ihtiyacınız varsa, güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Güvenlik duvarının ölçeği ne kadar sürer?
+
+Şu anda Azure Güvenlik duvarının ölçeğini genişletmek için beş ila yedi dakika sürer. Daha hızlı bir otomatik ölçeklendirme gerektiren artışlarıyla 'niz varsa, güvenlik duvarınızın ilk verimlilik kapasitesini artırmak için desteğe başvurun.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Güvenlik Duvarı varsayılan olarak Active Directory erişimine izin veriyor mu?
 

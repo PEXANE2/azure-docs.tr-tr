@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68561585"
 ---
-# <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlama için Atlasduyma bulutunu yapılandırma
+# <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Atlasduyma bulutu yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Atlasme bulutuna otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Atlasme bulutu ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
@@ -57,9 +57,9 @@ Azure AD ile otomatik Kullanıcı sağlama için Atlasme bulutunu yapılandırma
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna Atlasduyi **bulutu**girin, sonuçlar panelinde **Atlasduyi bulutu** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Atlasduyi bulutu**girin, sonuçlar panelinde **Atlasduyi bulutu** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesinde atlasduyi bulutu](common/search-new-app.png)
 
@@ -82,7 +82,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan atlasi bulutu 'nda bulunan kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımları adım adım kılavuzluk eder.
 
 > [!TIP]
-> Atlasi bulutu [Çoklu oturum](atlassian-cloud-tutorial.md)açma öğreticisinde sunulan yönergeleri Izleyerek atlasizi bulutu için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> [Atlasi bulutu çoklu oturum açma öğreticisinde](atlassian-cloud-tutorial.md)sunulan yönergeleri Izleyerek atlasizi bulutu için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-atlassian-cloud-in-azure-ad"></a>Azure AD 'de Atlasduyi bulutu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -110,7 +110,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 6. [Atlasme kuruluş yöneticisi](https://admin.atlassian.com) **> Kullanıcı hazırlama** ' ya gidin ve **belirteç oluştur ' a**tıklayın. **Dizin temel URL** 'Sini ve **taşıyıcı belirtecini** sırasıyla **kiracı URL 'si** ve **gizli belirteç** alanlarına kopyalayın.
 
-    ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![atlasma bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    ![Atlassian bulut sağlama ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian bulut sağlama ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
@@ -122,7 +122,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Atlasme bulutu sağlama](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-9. **Kaydet**’e tıklayın.
+9. **Kaydet** düğmesine tıklayın.
 
 10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları atlasi bulutu ' nı ile eşitler**' ı seçin.
 
@@ -156,7 +156,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü Izleyip, Atlaslik bulutu ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunu kullanabilirsiniz.
 
-Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](../manage-apps/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 

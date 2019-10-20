@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387866"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596560"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory eşleme veri akışı arama dönüşümü
 
@@ -29,6 +29,20 @@ Arama dönüştürmesi, bir sol dış birleştirmenin eşdeğerini uygular. Bu n
 
 Arama dönüşümünüzü tamamladıktan sonra, aramanın bir satır eşleşmesi ile sonuçlanıp sonuçlanmadığını temel alarak mantığınızdaki diğer seçimleri yapmak için `isMatch()` ifade işlevini kullanarak her bir eşleşme satırının sonuçlarını incelemek üzere sonraki dönüşümleri kullanabilirsiniz.
 
+![Arama kalıbı](media/data-flow/lookup111.png "Arama kalıbı")
+
+Arama dönüşümünü kullandıktan sonra, ```isMatch()``` işlevine koşullu bölünmüş dönüştürme bölme ekleyebilirsiniz. Yukarıdaki örnekte, eşleşen satırlar, ```NoMatch``` akışı aracılığıyla üst akış ve eşleşmesiz satırları akışa geçer.
+
+## <a name="first-or-last-value"></a>İlk veya son değer
+
+Aramaınızdan birden fazla eşleşme olduğunda, ilk veya son eşleşmeyi seçerek eşleşen birden fazla satırı azaltmak isteyebilirsiniz. Bunu, aramalarınızın ardından bir toplama dönüştürmesi kullanarak yapabilirsiniz.
+
+Bu durumda, arama eşleştirmelerinin ilk değerini seçmek için ```PickFirst``` adlı bir toplama dönüştürmesi kullanılır.
+
+![Arama toplamı](media/data-flow/lookup333.png "Arama toplamı")
+
+![İlk arama](media/data-flow/lookup444.png "İlk arama")
+
 ## <a name="optimizations"></a>İyileştirmeler
 
 Data Factory, veri akışları ölçekli Spark ortamlarında yürütülür. Veri kümeniz çalışan düğümü bellek alanına uyabiliyorsanız, arama performansınızı iyileştirebiliriz.
@@ -45,4 +59,5 @@ Ayrıca, bir çalışan başına belleğe daha iyi uyum sağlayan veri kümeleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[JOIN](data-flow-join.md) ve [Exists](data-flow-exists.md) dönüştürmeleri ADF eşleme veri akışlarında benzer görevleri gerçekleştirir. Sonraki Dönüştürmelere göz atın.
+* [JOIN](data-flow-join.md) ve [Exists](data-flow-exists.md) dönüştürmeleri ADF eşleme veri akışlarında benzer görevleri gerçekleştirir. Sonraki Dönüştürmelere göz atın.
+* Eşleşen ve eşleşmeyen değerler üzerinde satırları ayırmak için ```isMatch()``` ile [koşullu bölme](data-flow-conditional-split.md) kullanın

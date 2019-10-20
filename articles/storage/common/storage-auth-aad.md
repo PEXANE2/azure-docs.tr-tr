@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: caf72d4af390956391fdab133cf0897abbee4633
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673147"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598102"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verme
 
@@ -34,7 +34,7 @@ Yetkilendirme adımı, güvenlik sorumlusuna bir veya daha fazla RBAC rolünün 
 
 Azure Blob veya Kuyruk hizmeti istek yapan yerel uygulamalar ve Web uygulamaları da Azure AD ile erişimi yetkilendirebilirler. Erişim belirteci isteme ve BLOB veya kuyruk verileri için istekleri yetkilendirmek üzere kullanma hakkında bilgi edinmek için bkz. Azure depolama uygulamasından Azure [ad Ile Azure depolama 'ya erişim yetkisi verme](storage-auth-aad-app.md).
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rolleri atama
+## <a name="assign-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rolleri atama
 
 Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob ve kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen yerleşik RBAC rollerinin bir kümesini tanımlar. Ayrıca, blob ve kuyruk verilerine erişim için özel roller de tanımlayabilirsiniz.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333319"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598233"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Azure ağ Izleyicisi hakkında sık sorulan sorular (SSS)
 [Azure Ağ İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) hizmeti, bir Azure sanal ağındaki kaynaklara yönelik günlükleri izlemeye, tanılamaya, görüntülemeye ve etkinleştirmeye ve devre dışı bırakacak bir araç paketi sağlar. Bu makalede hizmetle ilgili yaygın soruların yanıtları vardır.
@@ -54,16 +54,26 @@ Ağ Izleyicisi bileşenleri için [fiyatlandırma sayfasını](https://azure.mic
 ### <a name="which-regions-is-network-watcher-available-in"></a>Ağ Izleyicisi hangi bölgelerde kullanılabilir?
 [Azure hizmet kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) en son bölgesel kullanılabilirliği görüntüleyebilirsiniz
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Ağ izleyicisinden kaynak sınırları nelerdir?
+Tüm sınırlar için [hizmet limitleri](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) sayfasına bakın.  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Bölge başına yalnızca bir ağ Izleyicisi örneğine izin veriliyor mu?
+Bu özelliğin çalışması için bir abonelik için ağ Izleyicisi 'nin etkinleştirilmesi yeterlidir, bu bir hizmet sınırı değildir.
+
 ## <a name="nsg-flow-logs"></a>NSG akış günlükleri
 
 ### <a name="what-does-nsg-flow-logs-do"></a>NSG akış günlükleri ne yapar?
 Azure ağ kaynakları, [ağ güvenlik grupları (NSG 'ler)](https://docs.microsoft.com/azure/virtual-network/security-overview)ile birleştirilebilir ve yönetilebilir. NSG akış günlükleri, NSG 'larınız aracılığıyla tüm trafikle ilgili 5 demet akış bilgilerini günlüğe Kaydetetkinleştirmenizi sağlar. Ham akış günlükleri, gerektikçe daha fazla işlenebileceği, çözümlenebildiği, sorgulanan veya verilebilecekleri bir Azure depolama hesabına yazılır.
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>NSG akış günlüklerini kullanmak için uyarılar var mı?
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>NSG akış günlüklerinin kullanılması için herhangi bir uyarılar var mı?
 NSG akış günlüklerinin kullanılması için önkoşul yoktur. Ancak, iki kısıtlama vardır
 - **Hizmet uç noktaları VNET 'iniz üzerinde mevcut**olmamalıdır: NSG akış günlükleri, sanal makinelerinizdeki aracılardan depolama hesaplarına dağıtılır. Ancak bugün, günlükleri yalnızca depolama hesaplarına doğrudan gönderebilir ve sanal ağınıza eklenen bir hizmet uç noktası kullanamaz.
 
-Bunu düzeltmenin iki yolu vardır:
+- **Depolama hesabı güvenlik duvarı olmamalıdır**: iç sınırlamalar nedeniyle, NSG akış günlüklerinin bunlarla birlikte çalışması için genel Internet üzerinden depolama hesaplarına erişilebilir olması gerekir. Trafik yine de Azure üzerinden yönlendirilmeye devam eder ve ek çıkış ücretleri de olmayacaktır.
+
+Bu sorunları geçici olarak çözmek için izlenecek yönergeler için sonraki iki soruya bakın. Bu sınırlamaların her ikisinin de Ocak 2020 tarafından giderilmesi beklenir.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Nasıl yaparım? NSG akış günlüklerini hizmet uç noktaları ile kullanmak mı istiyorsunuz?
 
 *Seçenek 1: NSG akış günlüklerini VNET uç noktaları olmadan Azure Storage hesabı 'na yaymak için yeniden yapılandırın*
 
@@ -88,8 +98,7 @@ Birkaç dakika sonra depolama günlüklerini denetleyebilirsiniz; güncelleştir
 
 Microsoft.Storage hizmet uç noktaları zorunluysa NSG Akış Günlüklerini devre dışı bırakmanız gerekecektir.
 
-
-- **Depolama hesaplarında güvenlik duvarı olmaması gerekir**: iç sınırlamalar nedeniyle, NSG akış günlüklerinin kendileriyle çalışması için genel Internet üzerinden depolama hesaplarına erişilebilir olması gerekir. Trafik yine de Azure üzerinden yönlendirilmeye devam eder ve ek çıkış ücretleri de olmayacaktır.
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Depolama hesabımın güvenlik duvarını devre dışı Nasıl yaparım? mi?
 
 Bu sorun, depolama hesabına erişmek için "tüm ağlar" etkinleştirilerek çözülür:
 
@@ -97,8 +106,6 @@ Bu sorun, depolama hesabına erişmek için "tüm ağlar" etkinleştirilerek ç�
 * Portaldaki genel aramaya depolama hesabının adını yazarak depolama hesabına gidin
 * **AYARLAR** bölümünün altında **Güvenlik duvarları ve sanal ağlar**'ı seçin
 * **Tüm ağlar**'ı seçin ve bunu kaydedin. Zaten seçiliyse, hiçbir değişiklik yapmanız gerekmez.  
-
-Bu sınırlamaların her ikisinin de Ocak 2020 tarafından giderilmesi beklenir.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Akış günlükleri sürümleri 1 & 2 arasındaki fark nedir?
 Akış günlükleri sürüm 2, *akış durumu* kavramını tanıtır & aktarılan bayt ve paketler hakkında bilgi depolar. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

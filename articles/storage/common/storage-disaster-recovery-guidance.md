@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671073"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595200"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
 
@@ -47,16 +47,16 @@ Diğer Azure depolama artıklığı seçenekleri arasında, tek bir bölgedeki k
 
 Uygulamanızı, başlangıçtan itibaren yüksek kullanılabilirlik için tasarlamak önemlidir. Uygulamanızı tasarlama ve olağanüstü durum kurtarmayı planlama konusunda rehberlik için bu Azure kaynaklarına başvurun:
 
-* [Azure için dayanıklı uygulamalar tasarlama](https://docs.microsoft.com/azure/architecture/resiliency/): Azure 'da yüksek oranda kullanılabilir uygulamalar tasarlayarak ilgili temel kavramlara genel bakış.
-* [Kullanılabilirlik denetim listesi](https://docs.microsoft.com/azure/architecture/checklist/availability): Uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
-* [RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md): RA-GRS avantajlarından yararlanmak için uygulama oluşturmaya yönelik tasarım kılavuzu.
-* [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma @ no__t-0: Hatalara ve kurtarmalar arasında otomatik olarak geçiş yapan, yüksek oranda kullanılabilir bir uygulamanın nasıl oluşturulduğunu gösteren bir öğretici. 
+* [Azure için dayanıklı uygulamalar tasarlama](https://docs.microsoft.com/azure/architecture/resiliency/): Azure 'da yüksek oranda kullanılabilir uygulamalar oluşturmaya yönelik temel kavramlara genel bakış.
+* [Kullanılabilirlik denetim listesi](https://docs.microsoft.com/azure/architecture/checklist/availability): uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
+* [RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md): RA-GRS 'nin avantajlarından yararlanmak için uygulama oluşturmaya yönelik tasarım kılavuzu.
+* [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma](../blobs/storage-create-geo-redundant-storage.md): uç noktalar arasında otomatik olarak bir şekilde geçiş yapan ve kurtarmaların benzetilyilmiş olduğu yüksek oranda kullanılabilir bir uygulamanın nasıl oluşturulacağını gösteren bir öğretici. 
 
 Ayrıca, Azure depolama verileriniz için yüksek kullanılabilirlik sağlamak üzere bu en iyi yöntemleri göz önünde bulundurun:
 
-* **Disklerinden** Azure sanal makineleriniz tarafından kullanılan VM disklerini yedeklemek için [Azure Backup](https://azure.microsoft.com/services/backup/) kullanın. Ayrıca, bölgesel bir olağanüstü durum durumunda sanal makinelerinizi korumak için [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanmayı göz önünde bulundurun.
+* **Diskler:** Azure sanal makineleriniz tarafından kullanılan VM disklerini yedeklemek için [Azure Backup](https://azure.microsoft.com/services/backup/) kullanın. Ayrıca, bölgesel bir olağanüstü durum durumunda sanal makinelerinizi korumak için [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) kullanmayı göz önünde bulundurun.
 * **Blok Blobları:** Nesne düzeyinde silme ve üzerine yazma işlemlerini korumak için [geçici silme](../blobs/storage-blob-soft-delete.md) özelliğini açın veya [azcopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)veya [Azure veri taşıma kitaplığı](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)'nı kullanarak blok Blobları farklı bir bölgedeki başka bir depolama hesabına kopyalayın.
-* **Dosyalarý** Dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md) veya [Azure PowerShell](storage-powershell-guide-full.md) kullanın.
+* **Dosyalar:** Dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalamak için [AzCopy](storage-use-azcopy.md) veya [Azure PowerShell](storage-powershell-guide-full.md) kullanın.
 * **Tablolar:** farklı bir bölgedeki başka bir depolama hesabına tablo verilerini dışarı aktarmak Için [AzCopy](storage-use-azcopy.md) kullanın.
 
 ## <a name="track-outages"></a>Kesintileri izleme
@@ -119,8 +119,14 @@ Azure portal, PowerShell, Azure CLı veya Azure depolama kaynak sağlayıcısı 
 
 Hesap yük devretmesi, Azure Resource Manager dağıtımlarıyla GRS veya RA-GRS kullanan tüm müşteriler için önizleme aşamasında kullanılabilir. Genel amaçlı v1, genel amaçlı v2 ve BLOB depolama hesabı türleri desteklenir. Hesap yük devretmesi Şu anda şu bölgelerde kullanılabilir:
 
-- ABD Batı 2
+- Doğu Asya
+- Güneydoğu Asya
+- Doğu Avustralya
+- Güneydoğu Avustralya
+- ABD Orta
+- ABD Doğu 2
 - ABD Orta Batı
+- ABD Batı 2
 
 Önizleme yalnızca üretim dışı kullanım için tasarlanmıştır. Üretim hizmet düzeyi sözleşmeleri (SLA 'Lar) Şu anda kullanılamıyor.
 
@@ -170,7 +176,7 @@ VM kapatılırken geçici bir diskte depolanan tüm verilerin kaybedildiğini ak
 - Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarını içeren depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin durmasına neden olur ve yeni katmanlı dosyalar söz konusu olduğunda beklenmedik veri kaybına neden olabilir.  
 - Arşivlenmiş blob 'ları içeren bir depolama hesabı yük devredilemez. Arşivlenmiş Blobları yük devri planlamadığınız ayrı bir depolama hesabında saklayın.
 - Premium blok bloblarını içeren bir depolama hesabı yük devredilemez. Premium blok bloblarını destekleyen depolama hesapları Şu anda coğrafi artıklığı desteklemez.
-- Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkinse çalışmayı durdurur: [Olay abonelikleri](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [yaşam döngüsü Ilkeleri](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [depolama Analizi günlüğe kaydetme](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- Yük devretme işlemi tamamlandıktan sonra, aşağıdaki özellikler, başlangıçta etkinse çalışmayı durdurur: [olay abonelikleri](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [yaşam döngüsü Ilkeleri](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [depolama Analizi günlüğü](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Yük devretmeye alternatif olarak verileri kopyalama
 

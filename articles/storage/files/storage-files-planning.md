@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6361814a30cc7d1bc9703dae8ddb14d955c1582d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514668"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598038"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -219,13 +219,13 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |Batı ABD *        |LRS     |
 |Batı ABD 2      |LRS, ZRS|
 
-Yeni hesaplar için desteklenen \*, tüm mevcut hesaplar yükseltme işlemini tamamlamamıştı.
+Yeni hesaplar için desteklenen \*, tüm mevcut hesaplar yükseltme işlemini tamamlamamıştı. [Büyük dosya paylaşımlarını etkinleştirmeye](storage-files-how-to-create-large-file-share.md)çalışırken, mevcut depolama hesaplarınızın yükseltme işlemini tamamlayıp tamamlamadığınızı kontrol edebilirsiniz.
 
 Yeni bölgelerin ve özelliklerin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/azurefilesatscalesurvey)doldurun.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Daha büyük dosya paylaşımları etkinleştirin ve oluşturun
 
-Daha büyük dosya paylaşımlarını kullanmaya başlamak için, [büyük dosya paylaşımlarını etkinleştirme](storage-files-how-to-create-large-file-share.md)makalemize bakın.
+Daha büyük dosya paylaşımlarını kullanmaya başlamak için, [büyük dosya paylaşımlarını etkinleştirme ve oluşturma](storage-files-how-to-create-large-file-share.md)makalemize bakın.
 
 ## <a name="data-growth-pattern"></a>Veri büyüme kriteri
 

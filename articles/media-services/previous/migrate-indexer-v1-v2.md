@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719976"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598289"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
 
@@ -77,9 +77,9 @@ Bazı bilinen farklılıklar şunlardır:
 * Ses dizin oluşturma Blobu (AıB) dosyaları artık desteklenmeyecektir. Bu özellik, Dizin Oluşturucu 1 teknolojisine özeldir ve artık sunulmamaktadır.  
 * Bilişsel hizmetler konuşma Hizmetleri anahtar sözcüğünün ayıklanmasını desteklemez. Ancak, Video Indexer ve Media Services v3 Audioanalönayarı, JSON dosya biçiminde daha sağlam bir anahtar sözcük kümesi sunmaktadır. 
 
-## <a name="contact-us"></a>Bize ulaşın 
+## <a name="need-help"></a>Yardım mı gerekiyor?
 
-Azure Media Indexer 1 ve Azure Media Indexer 2 ' nin kullanımdan kaldırılması veya diğer hizmetlerden herhangi birine geçiş yapmak için sorularınız varsa, lütfen amshelp@microsoft.com üzerinden bize ulaşın 
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

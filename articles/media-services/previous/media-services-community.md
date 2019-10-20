@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016642"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598322"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services Topluluğu  
 
@@ -40,7 +40,7 @@ Bu Azure Media Services (AMS) topluluk sayfasında, AMS güncelleştirmelerini a
 
 ### <a name="twitter"></a>Twitter
 
-Bizimle iletişim kurmak veya Twitter 'daki güncelleştirmeleri izlemek için [Twittertanıtıcısınıkullanın.@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter ' da [@AzureSupport](https://twitter.com/azuresupport) destek istemek için Twitter tanıtıcısını kullanabilirsiniz.  
+Bizimle iletişim kurmak veya Twitter 'daki güncelleştirmeleri izlemek için [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter tanıtıcısını kullanın. Twitter 'da destek istemek için [@AzureSupport](https://twitter.com/azuresupport) Twitter tanıtıcısını kullanabilirsiniz.  
 
 ### <a name="online-forums"></a>Çevrimiçi forumlar
 
@@ -54,10 +54,10 @@ Ekip, ' Azure-Media-Services ' ile Stack Overflow etiketli soruları de izler.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Ekibe ulaşın
+## <a name="need-help"></a>Yardım mı gerekiyor?
 
-Azure Media Services birincil destek e-postası **amshelp@microsoft.com** :.
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](media-services-overview.md)
+[Genel Bakış](media-services-overview.md)

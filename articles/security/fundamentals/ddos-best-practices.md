@@ -1,9 +1,9 @@
 ---
-title: Azure DDoS koruması en iyi uygulamaları ve başvuru mimarileri | Microsoft Docs
+title: Azure DDoS koruması-dayanıklı çözümler tasarlama | Microsoft Docs
 description: Uygulamanız hakkında derin Öngörüler elde etmek için günlük verilerini nasıl kullanabileceğinizi öğrenin.
 services: security
 author: barclayn
-manager: barbkess
+manager: RKarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -12,58 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: a5b4451a6d03cec8e100ed67c0ed9333e8a221de
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727481"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595412"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS koruması: En iyi uygulamalar ve başvuru mimarileri
+# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
 
 Bu makale BT karar mekanizmaları ve güvenlik personeli içindir. Azure, ağ ve güvenlik hakkında bilgi sahibi olduğunuzu bekliyor.
-
-Dağıtılmış hizmet reddi (DDoS) dayanıklılığı için tasarlamak, çeşitli hata modlarında planlama ve tasarlama gerektirir. Bu makalede, DDoS saldırılarına karşı dayanıklılık için Azure 'da uygulama tasarlamaya yönelik en iyi yöntemler sunulmaktadır.
-
-## <a name="types-of-attacks"></a>Saldırı türleri
-
-DDoS, uygulama kaynaklarını tüketmeye çalışan bir saldırı türüdür. Amaç, uygulamanın kullanılabilirliğini ve meşru istekleri işleme yeteneğini etkiler. Saldırılar, boyut ve etki açısından daha karmaşık ve daha büyük hale geliyor. DDoS saldırıları internet üzerinden genel olarak erişilebilen herhangi bir uç noktasını hedefleyebilir.
-
-Azure, DDoS saldırılarına karşı sürekli koruma sağlar. Bu koruma, varsayılan olarak ve ek maliyet olmadan Azure platformunda tümleşiktir. 
+DDoS, uygulama kaynaklarını tüketmeye çalışan bir saldırı türüdür. Amaç, uygulamanın kullanılabilirliğini ve meşru istekleri işleme yeteneğini etkiler. Saldırılar, boyut ve etki açısından daha karmaşık ve daha büyük hale geliyor. DDoS saldırıları internet üzerinden genel olarak erişilebilen herhangi bir uç noktasını hedefleyebilir. Dağıtılmış hizmet reddi (DDoS) dayanıklılığı için tasarlamak, çeşitli hata modlarında planlama ve tasarlama gerektirir. Azure, DDoS saldırılarına karşı sürekli koruma sağlar. Bu koruma, varsayılan olarak ve ek maliyet olmadan Azure platformunda tümleşiktir.
 
 [Azure DDoS koruma standardı](https://azure.microsoft.com/services/ddos-protection/) , platformda Core DDoS korumasına ek olarak ağ saldırılarına karşı gelişmiş DDoS azaltma özellikleri sağlar. Belirli Azure kaynaklarınızı korumak için otomatik olarak ayarlanır. Yeni sanal ağların oluşturulması sırasında korumanın etkinleştirilmesi basittir. Ayrıca, oluşturulduktan sonra yapılabilir ve uygulama ya da kaynak değişikliği gerektirmez.
 
 ![Azure DDoS koruması 'nın, müşterileri ve bir saldırgandan bir sanal ağı koruma rolü](./media/ddos-best-practices/image1.png)
 
-DDoS saldırıları üç kategoride sınıflandırılabilir: Volumetric, protokol ve kaynak.
-
-### <a name="volumetric-attacks"></a>Volumetric saldırıları
-
-Volumetric saldırıları en yaygın DDoS saldırısı türüdür. Volumetric saldırıları, ağ ve aktarım katmanlarını hedefleyen deneme yanılma assaults. Ağ bağlantıları gibi kaynakları tüketmeye çalışır. 
-
-Bu saldırılar genellikle birden çok virüslü sistem kullanarak ağ katmanlarını normal şekilde yasal trafikle birlikte kullanır. Bunlar Internet Denetim Iletisi Protokolü (ıCMP), Kullanıcı veri birimi Protokolü (UDP) ve Iletim Denetimi Protokolü (TCP) gibi ağ katmanı protokollerini kullanır.
-
-En yaygın olarak kullanılan ağ katmanı DDoS saldırıları TCP SYN taşması, ıCMP yankı, UDP taşması, DNS ve NTP yükseltme saldırılarına açıktır. Bu tür bir saldırı, yalnızca hizmeti kesintiye uğratan, daha da nefarli ve hedeflenen ağa izinsiz giriş için Smokescreen olarak kullanılabilir. En son Volumetric saldırılarına bir örnek, GitHub 'ın etkilediği [memden önbelleğe alınmış](https://www.wired.com/story/github-ddos-memcached/) bir saldırıya örnektir. Bu saldırı, UDP bağlantı noktası 11211 ' i hedefledi ve TB/s saldırı birimi 1,35 üretti.
-
-### <a name="protocol-attacks"></a>Protokol saldırıları
-
-Protokol saldırıları hedef uygulama protokolleri. Tüm kullanılabilir kaynakları güvenlik duvarları, uygulama sunucuları ve yük dengeleyiciler gibi altyapı cihazlarında kullanmaya çalışır. Protokol saldırıları hatalı biçimlendirilmiş veya protokol normalleştirimleri içeren paketler kullanır. Bu saldırılar, sunucuların ve diğer iletişim cihazlarının yanıt vermesi ve bir paket yanıtı beklemesi için büyük sayıda açık istek göndererek çalışır. Hedef, açık isteklere yanıt vermeye çalışır, sonunda sistemin kilitlenmesine neden olur.
-
-Protokol tabanlı DDoS saldırısının en yaygın örneği TCP SYN taşıdır. Bu saldırıya karşı, TCP SYN isteklerinin her ikisi de bir hedefin sayısını doldurmaya çalışır. Amaç, hedefin yanıt vermemesine neden olmaktır. 2016 dyn kesintisi, uygulama katmanı saldırısı dışında, dyn 'in DNS sunucularının bağlantı noktası 53 ' i hedefleyen TCP SYN (sel ' den oluşur.
-
-### <a name="resource-attacks"></a>Kaynak saldırıları
-
-Kaynak saldırıları uygulama katmanını hedefleyin. Bir sistemin çalışmasını sağlamak için arka uç süreçlerini tetikleyin. Kaynak, normal olan ancak sunucuya CPU yoğun sorgular taşıyan kötü niyetli trafik saldırıları sağlar. Kaynakları tüketmeniz gereken trafik hacmi, diğer saldırı türlerine göre daha düşüktür. Kaynak saldırıdaki trafik, meşru trafikten ayırt edilemez ve algılaması zor olur. En yaygın kaynak saldırıları HTTP/HTTPS ve DNS hizmetlerdir.
-
-## <a name="shared-responsibility-in-the-cloud"></a>Bulutta paylaşılan sorumluluk
-
-Derinlemesine savunma stratejisi, çok sayıda ve gelişmiş algoritmaların mümkündür saldırıların artmasının önlenmesine yardımcı olur. Güvenlik, müşteri ile Microsoft arasında paylaşılan bir sorumluluktur. Microsoft bu paylaşılan bir [sorumluluk modelini](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/)çağırır. Aşağıdaki şekilde bu sorumluluk bölümü gösterilmektedir:
-
-![Müşterinin ve Azure 'un sorumlulukları](./media/ddos-best-practices/image2.png)
-
-Azure müşterileri, Microsoft 'un en iyi uygulamalarını gözden geçirmekle ve hata için tasarlanan ve test edilmiş küresel olarak dağıtılan uygulamalar oluşturmaya yarar.
 
 ## <a name="fundamental-best-practices"></a>Temel en iyi uygulamalar
 
@@ -80,7 +46,7 @@ Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetec
 
 ### <a name="design-for-scalability"></a>Ölçeklenebilirlik için tasarım
 
-Ölçeklenebilirlik, sistemin artan yükü işleyebilme konusunda ne kadar iyi bir sistem olabilir. Uygulamanızı, yükseltilmiş bir yükün talebini karşılayacak şekilde, özellikle de bir DDoS saldırısı durumunda olacak şekilde [ölçeklendirmek](/azure/architecture/guide/design-principles/scale-out) üzere tasarlamanız gerekir. Uygulamanız bir hizmetin tek bir örneğine bağımlıysa, tek bir hata noktası oluşturur. Birden çok örneği sağlamak, sisteminizi daha dayanıklı ve daha ölçeklenebilir hale getirir.
+Ölçeklenebilirlik, sistemin artan yükü işleyebilme konusunda ne kadar iyi bir sistem olabilir. Uygulamalarınızı, özellikle de DDoS saldırısı durumunda, yükseltilmiş bir yükün talebini karşılayacak şekilde [ölçeklendirmek](/azure/architecture/guide/design-principles/scale-out) üzere tasarlayın. Uygulamanız bir hizmetin tek bir örneğine bağımlıysa, tek bir hata noktası oluşturur. Birden çok örneği sağlamak, sisteminizi daha dayanıklı ve daha ölçeklenebilir hale getirir.
 
 [Azure App Service](/azure/app-service/app-service-value-prop-what-is)için, birden çok örnek sunan bir [App Service planı](/azure/app-service/overview-hosting-plans) seçin. Azure Cloud Services için, rollerinizin her birini [birden çok örnek](/azure/cloud-services/cloud-services-choose-me)kullanacak şekilde yapılandırın. [Azure sanal makineler](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için, sanal makıne (VM) mimarinizin bırden fazla VM içerdiğinden ve her VM 'nin bir [kullanılabilirlik kümesine](/azure/virtual-machines/virtual-machines-windows-manage-availability)eklendiğinden emin olun. Otomatik ölçeklendirme özellikleri için [Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) kullanmanızı öneririz.
 
@@ -97,7 +63,7 @@ Müşterilerin Şirket içi kaynaklarını Azure 'daki kaynaklarıyla birlikte s
 
 ## <a name="azure-offerings-for-ddos-protection"></a>DDoS koruması için Azure teklifleri
 
-Azure 'da ağ saldırılarına karşı koruma sağlayan iki DDoS hizmet teklifi vardır (katman 3 ve 4): DDoS koruması temel ve DDoS koruma standardı. 
+Azure 'da ağ saldırılarına karşı koruma sağlayan iki DDoS hizmeti teklifi vardır (katman 3 ve 4): DDoS koruması temel ve DDoS koruma standardı. 
 
 ### <a name="ddos-protection-basic"></a>DDoS koruması temel
 
@@ -107,7 +73,7 @@ Temel koruma, hiçbir ek ücret ödemeden Azure ile varsayılan olarak tümleşi
 
 Azure 'da temel DDoS koruması hem yazılım hem de donanım bileşenlerinden oluşur. Yazılım denetim düzlemi, saldırı trafiğini çözümleyen ve kaldıracak donanım gereçlerinde ne zaman, nerede ve ne tür trafiğe göz atacağını belirler. Denetim düzlemi, altyapı genelinde bir DDoS koruma *ilkesini*temel alarak bu kararı sağlar. Bu ilke, tüm Azure müşterilerine statik olarak ayarlanır ve evrensel olarak uygulanır.
 
-Örneğin, DDoS koruma ilkesi, korumanın hangi trafik biriminde tetikleneceğini belirtir *.* (Yani, kiracının trafiği, temizleme gereçlerine göre yönlendirilmelidir.) İlke daha sonra, temizleme gereçlerinin saldırıyı nasıl azaltmalıdır.
+Örneğin, DDoS koruma ilkesi, korumanın hangi trafik biriminde *tetikleneceğini belirtir.* (Yani, kiracının trafiği, temizleme gereçlerine göre yönlendirilmelidir.) İlke daha sonra, temizleme gereçlerinin saldırıyı nasıl *azaltmalıdır* .
 
 Azure DDoS koruması temel hizmeti, Azure platformunun altyapısının ve korumasının korunmasını hedeflemektedir. Çok kiracılı bir ortamda birden çok müşteriyi etkileyebilecek önemli bir oranı aştığında trafiği azaltır. Uyarı veya müşteri başına özelleştirilmiş ilke sağlamaz.
 
@@ -131,7 +97,7 @@ DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](/azure/azu
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal**ölçümleri** **İzle** > ' yi seçin. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure portal, **izleme**  > **ölçümleri**' ni seçin. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi**kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri**seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
@@ -161,7 +127,7 @@ Planlama ve hazırlık, bir sistemin DDoS saldırısı sırasında nasıl gerçe
 
 DDoS koruma standardı varsa, internet 'e yönelik uç noktaların sanal ağı üzerinde etkinleştirildiğinden emin olun. DDoS uyarılarını yapılandırmak, altyapınızdaki olası saldırıları sürekli olarak izlemenize yardımcı olur. 
 
-Uygulamalarınızı bağımsız olarak izlemeniz gerekir. Bir uygulamanın normal davranışını anlayın. DDoS saldırısı sırasında uygulama beklendiği gibi davranmıyorsa, uygulamaya hazırlanın.
+Uygulamalarınızı bağımsız olarak izleyin. Bir uygulamanın normal davranışını anlayın. DDoS saldırısı sırasında uygulama beklendiği gibi davranmıyorsa, uygulamaya hazırlanın.
 
 #### <a name="testing-through-simulations"></a>Benzetimler üzerinden test etme
 
@@ -183,7 +149,7 @@ Cybersecurity, savunma için sabit yenilik gerektirir. Azure DDoS standart korum
 
 Azure kaynaklarını hedefleyen bir DDoS saldırısı genellikle Kullanıcı açısından çok az müdahale gerektirir. Yine de, bir olay yanıt stratejisinin parçası olarak DDoS azaltma 'yı eklemek, iş sürekliliği etkisini en aza indirmenize yardımcı olur.
 
-### <a name="microsoft-threat-intelligence"></a>Microsoft Tehdit Bilgileri
+### <a name="microsoft-threat-intelligence"></a>Microsoft Threat Intelligence
 
 Microsoft 'un kapsamlı bir tehdit zekası ağı vardır. Bu ağ, Internet güvenlik topluluğundaki Microsoft çevrimiçi hizmetler, Microsoft iş ortakları ve ilişkileri destekleyen bir genişletilmiş güvenlik topluluğunun toplu bilgisini kullanır. 
 
@@ -193,7 +159,8 @@ Ayrıca, Microsoft Digital Crimes birimi (DCU) botları için rahatsız edici st
 
 ### <a name="risk-evaluation-of-your-azure-resources"></a>Azure kaynaklarınızın risk değerlendirmesi
 
-DDoS saldırılarına karşı risk kapsamını sürekli olarak anlamanız zorunludur. Düzenli olarak kendinize sorun: 
+DDoS saldırılarına karşı risk kapsamını sürekli olarak anlamanız zorunludur. Düzenli olarak kendinize sorun:
+
 - Hangi yeni genel kullanıma açık Azure kaynakları koruması gerekir?
 
 - Hizmette tek hata noktası var mı? 
@@ -226,7 +193,7 @@ Azure DDoS koruması standardı, herhangi bir kullanıcı müdahalesi olmadan DD
 
 - Bir aktör, kaynaklarınız için DDoS saldırısı başlatmayı tehdit etti.
 
-- Azure DDoS koruma standardı 'ndan bir IP veya IP aralığını beyaz listeye almanız gerekiyorsa. Trafik bir dış buluttan Azure 'a yönlendirilmemişse, yaygın bir senaryo IP 'yi beyaz listelemez. 
+- Azure DDoS koruma standardı 'ndan bir IP veya IP aralığı listesine izin vermeniz gerekiyorsa. Trafik bir dış buluttan Azure 'a yönlendirilmemişse, yaygın bir senaryo liste IP 'si için izin vermesidir. 
 
 Kritik bir iş etkisi olan saldırılar için bir [destek bileti](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturun.
 
@@ -268,7 +235,7 @@ Bu mimaride, DDoS koruma standardı sanal ağ üzerinde etkinleştirilmiştir. S
 
 #### <a name="paas-web-application"></a>PaaS web uygulaması
 
-Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) ve [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/)kullanan bir Web uygulaması için kanıtlanmış bir uygulamalar kümesi gösterir.
+Bu başvuru mimarisi, tek bir bölgede Azure App Service uygulamasının çalıştığını gösterir. Bu mimari, [Azure SQL veritabanı](https://azure.microsoft.com/documentation/services/sql-database/) and [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) kullanan bir Web uygulaması için kanıtlanmış bir yöntemler kümesi gösterir.
 Yük devretme senaryoları için bir bekleme bölgesi ayarlanır.
 
 ![PaaS Web uygulaması için başvuru mimarisinin diyagramı](./media/ddos-best-practices/image11.png)
@@ -301,8 +268,8 @@ Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure DDoS koruması ürün sayfası](https://azure.microsoft.com/services/ddos-protection/)
+* [Bulutta paylaşılan sorumluluk](shared-responsibility.md)
 
-* [Azure DDoS koruması blogu](https://aka.ms/ddosblog)
+* [Azure DDoS koruması ürün sayfası](https://azure.microsoft.com/services/ddos-protection/)
 
 * [Azure DDoS koruması belgeleri](/azure/virtual-network/ddos-protection-overview)

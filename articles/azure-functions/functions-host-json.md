@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263319"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596869"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -69,7 +69,7 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -115,11 +115,11 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|IsEnabled|true|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
-|maxTelemetryItemsPerSecond|5|Örneklemenin başladığı eşik.| 
-|Enableliveölçümleri |true|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
-|EnableDependencyTracking|true|Bağımlılık izlemeyi etkinleştirilir.|
-|EnablePerformanceCountersCollection|true|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
+|IsEnabled|doğru|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
+|maxTelemetryItemsPerSecond|20|Örneklemenin başladığı eşik.| 
+|Enableliveölçümleri |doğru|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
+|EnableDependencyTracking|doğru|Bağımlılık izlemeyi etkinleştirilir.|
+|EnablePerformanceCountersCollection|doğru|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -133,11 +133,11 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
 
-## <a name="extensions"></a>uzantılar
+## <a name="extensions"></a>Uzantılardan
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
-## <a name="functions"></a>işlevleri
+## <a name="functions"></a>işlevler
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -152,7 +152,7 @@ Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functi
 Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır.  
 Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır: 
 + Sürüm 1. x: varsayılan değer, zaman aşımı olmadığını gösteren *null*.   
-+ Sürüm 2. x: varsayılan değer 30 dakikadır. @No__t-0 değeri, sınırsız yürütmeyi gösterir.
++ Sürüm 2. x: varsayılan değer 30 dakikadır. @No__t_0 değeri, sınırsız yürütmeyi gösterir.
 
 ```json
 {
@@ -178,9 +178,9 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|etkinletir|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|etkinletir|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|@No__t-0 ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckWindow|2 dakika|@No__t_0 ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
 |Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 
@@ -204,7 +204,7 @@ Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bind
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>günlük kaydı
+## <a name="logging"></a>Açmak
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -227,11 +227,11 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always`, `debugOnly` ' dir. |
-|logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|konsolu|yok| [Konsol](#console) günlüğü ayarı. |
-|ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
+|logLevel|Yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
+|console|Yok| [Konsol](#console) günlüğü ayarı. |
+|ApplicationInsights|Yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
-## <a name="console"></a>konsolu
+## <a name="console"></a>console
 
 Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayıklama modunda olmadığında konsol günlüğünü denetler.
 
@@ -249,9 +249,9 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|IsEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
-## <a name="queues"></a>sıralar
+## <a name="queues"></a>klarında
 
 Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
 
@@ -285,9 +285,9 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
 |Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
+|Locktanışmalationpollingınterval|Yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="version"></a>sürüm
+## <a name="version"></a>version
 
 V2 çalışma zamanını hedefleyen bir işlev uygulaması için `"version": "2.0"` sürüm dizesi gereklidir.
 

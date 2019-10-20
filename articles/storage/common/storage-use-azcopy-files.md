@@ -4,15 +4,15 @@ description: AzCopy ve dosya depolama ile veri aktarma.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8f86839a11afca746b228aa9b9c25c9813b69ec7
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3285a0a27455bde6d107451ac803872b9fba3280
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528677"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598052"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy ve dosya depolama ile veri aktarma 
 

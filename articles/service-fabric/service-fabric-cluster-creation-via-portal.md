@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/06/2018
 ms.author: atsenthi
 ms.openlocfilehash: 123795730e8468591bb02fa7c756ad48222dff82
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68600026"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalda](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -53,7 +53,7 @@ Bu amaçlarla kullanılmak üzere, sertifika aşağıdaki gereksinimlere uymalı
 
 * Sertifika bir özel anahtar içermelidir.
 * Sertifika, anahtar değişimi için, kişisel bilgi değişimi (. pfx) dosyasına verilebilir şekilde oluşturulmalıdır.
-* Sertifikanın konu adı, Service Fabric kümesine erişmek için kullanılan **etki alanı ile aynı olmalıdır** . Bu, kümenin HTTPS yönetim uç noktaları ve Service Fabric Explorer için SSL sağlamak üzere gereklidir. `.cloudapp.azure.com` Etki alanı için bir sertifika yetkilisinden (CA) bir SSL sertifikası edinemezsiniz. Kümeniz için özel bir etki alanı adı alın. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı kümeniz için kullanılan özel etki alanı adıyla aynı olmalıdır.
+* Sertifikanın konu adı, Service Fabric kümesine erişmek için kullanılan **etki alanı ile aynı olmalıdır** . Bu, kümenin HTTPS yönetim uç noktaları ve Service Fabric Explorer için SSL sağlamak üzere gereklidir. @No__t_0 etki alanı için bir sertifika yetkilisinden (CA) bir SSL sertifikası edinemezsiniz. Kümeniz için özel bir etki alanı adı alın. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı kümeniz için kullanılan özel etki alanı adıyla aynı olmalıdır.
 
 #### <a name="client-authentication-certificates"></a>İstemci kimlik doğrulama sertifikaları
 Ek istemci sertifikaları, küme yönetim görevleri için yöneticilerin kimliğini doğrular. Service Fabric iki erişim düzeyine sahiptir: **yönetici** ve **salt okuma Kullanıcı**. En azından, yönetim erişimi için tek bir sertifika kullanılmalıdır. Ek Kullanıcı düzeyinde erişim için ayrı bir sertifika sağlanmalıdır. Erişim rolleri hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri için rol tabanlı erişim denetimi][service-fabric-cluster-security-roles].
@@ -79,7 +79,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak b
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric kümesi kaynağını arayın
 
-[Azure Portal][azure-portal] oturum açın.
+[Azure Portal][azure-portal]’ında oturum açın.
 Yeni kaynak şablonu eklemek için **kaynak oluştur** ' a tıklayın. **Market** 'Teki Service Fabric kümesi şablonunu **her şey**için arayın.
 Listeden **Service Fabric kümesi** seçin.
 
@@ -89,7 +89,7 @@ Listeden **Service Fabric kümesi** seçin.
 
 **Oluşturma Service Fabric kümesi** dikey penceresi aşağıdaki dört adıma sahiptir:
 
-### <a name="1-basics"></a>1. Temel
+### <a name="1-basics"></a>1. temel bilgiler
 ![Yeni bir kaynak grubu oluşturma ekranının ekran görüntüsü.][CreateRG]
 
 Temel bilgiler dikey penceresinde, kümenizin temel ayrıntılarını sağlamanız gerekir.
@@ -105,7 +105,7 @@ Temel bilgiler dikey penceresinde, kümenizin temel ayrıntılarını sağlaman�
    > 
 5. Kümeyi oluşturmak istediğiniz **konumu** seçin. Zaten bir anahtar kasasına yüklediğiniz mevcut bir sertifikayı kullanmayı planlıyorsanız, anahtar kasanızın bulunduğu bölgeyi kullanmanız gerekir. 
 
-### <a name="2-cluster-configuration"></a>2. Küme yapılandırması
+### <a name="2-cluster-configuration"></a>2. küme yapılandırması
 ![Düğüm türü oluşturma][CreateNodeType]
 
 Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM sayısını ve bunların özelliklerini tanımlar. Kümeniz birden fazla düğüm türüne sahip olabilir, ancak Service Fabric sistem hizmetlerinin yerleştirildiği düğüm türü olduğundan, birincil düğüm türü (portalda tanımladığınız ilk bir tane) en az beş sanal makineye sahip olmalıdır. "NodeTypeName" öğesinin varsayılan yerleştirme özelliği otomatik olarak eklendiğinden **yerleştirme özelliklerini** yapılandırmayın.
@@ -129,7 +129,7 @@ Küme düğümlerinizi yapılandırın. Düğüm türleri, VM boyutlarını, VM 
 > Yalnızca desteklenen Service Fabric sürümlerini çalıştıran kümeleri destekliyoruz. **El ile** modunu seçtiğinizde, kümenizi desteklenen bir sürüme yükseltme sorumluluğunu alırsınız.
 > 
 
-### <a name="3-security"></a>3. Güvenlik
+### <a name="3-security"></a>3. güvenlik
 ![Azure portal üzerindeki güvenlik yapılandırmalarının ekran görüntüsü.][BasicSecurityConfigs]
 
 Sizin için güvenli bir test kümesi ayarlamayı kolay hale getirmek için **temel** seçeneği sunuyoruz. Zaten bir sertifikanız varsa ve bunu [anahtar kasanıza](/azure/key-vault/) yüklediyseniz (ve dağıtım için anahtar kasasını etkinleştirdiyseniz), **özel** seçeneğini kullanın
@@ -186,7 +186,7 @@ Küme oluşturmayı tamamladıktan sonra **Oluştur**' a tıklayın. İsterseniz
 
 ![Özet]
 
-Oluşturma işleminin ilerleme durumunu bildirimler bölümünden görebilirsiniz. (Ekranınızın sağ üst köşesindeki durum çubuğunun yanında bulunan "Zil" simgesine tıklayın.) Kümeyi oluştururken **Başlangıç Panosuna Sabitle**’ye tıkladıysanız, **Service Fabric Kümesi Dağıtılıyor** öğesinin **Başlangıç** panosuna sabitlendiğini görürsünüz. Bu işlem biraz zaman alacak. 
+Oluşturma işleminin ilerleme durumunu bildirimler bölümünden görebilirsiniz. (Ekranınızın sağ üst köşesindeki durum çubuğunun yanında bulunan "zil" simgesine tıklayın.) Kümeyi oluştururken başlangıç **panosuna sabitle ' ye** tıkladıysanız, **dağıtım Service Fabric kümenin** **Başlangıç** panosuna sabitlenmiş olduğunu görürsünüz. Bu işlem biraz zaman alacak. 
 
 PowerShell veya CLı kullanarak kümenizde yönetim işlemleri gerçekleştirmek için kümenize bağlanmanız gerekir, [kümenize bağlanma](service-fabric-connect-to-secure-cluster.md)hakkında daha fazla bilgi edinin.
 
@@ -233,7 +233,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 [CreateRG]: ./media/service-fabric-cluster-creation-via-portal/CreateRG.png
 [CreateNodeType]: ./media/service-fabric-cluster-creation-via-portal/NodeType.png
 [BasicSecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/BasicSecurityConfigs.PNG
-[CreateKeyVault]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
+[Createkeykasası]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault.PNG
 [CreateKeyVault2]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault2.PNG
 [CreateKeyVault3]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault3.PNG
 [CreateKeyVault4]: ./media/service-fabric-cluster-creation-via-portal/CreateKeyVault4.PNG
