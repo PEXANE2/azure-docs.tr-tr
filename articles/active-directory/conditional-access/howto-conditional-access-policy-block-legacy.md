@@ -37,7 +37,7 @@ Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir k
 1. **Bulut uygulamaları veya eylemler** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. İlkenizin belirli uygulamaları dışlayamazsınız, **Dışlanan bulut uygulamalarını seçin** altında **hariç tut** sekmesinden seçim yapın ve **Seç**' i seçin.
    1. **Done** (Bitti) öğesini seçin.
-1. istemci uygulamaları (Önizleme) **Koşulları** > **altında**Yapılandır** ' ı **Evet**olarak ayarlayın.
+1. istemci uygulamaları (Önizleme) **Koşulları** > **altında** **Yapılandır** ' ı **Evet**olarak ayarlayın.
    1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri** > **diğer diğer istemciler**' i işaretleyin.
    2. **Done** (Bitti) öğesini seçin.
 1. **Erişim denetimleri** > **izin**' ın altında, **erişimi engelle**' yi seçin.

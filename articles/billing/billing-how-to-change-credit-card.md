@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300303"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375583"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme, güncelleştirme veya kaldırma
 
@@ -131,7 +131,7 @@ Varsayılan ödeme yöntemini çek/havale olarak değiştirmek istiyorsanız, [f
 1. Mevcut bir kartı seçin veya yeni bir kart ekleyin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Kredi kartınızı eklerken veya güncelleştirirken hata alıyorsanız tarayıcınızı gizli modda açmayı deneyin.
+Sanal veya ön ödemeli kartları desteklemiyoruz. Geçerli bir kredi kartı eklerken veya güncelleştirirken hata alıyorsanız tarayıcınızı gizli modda açmayı deneyin.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 Aşağıdaki bölümlerde, kredi kartı bilgilerinizi değiştirmeye ilişkin yaygın olarak sorulan soruların yanıtları verilmektedir.

@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806351"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390152"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -40,11 +40,11 @@ Windows sanal makineleri ve SQL veritabanı için [Azure hibrit avantajı](https
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kimler rezervasyon satın almaya uygundur?
 
-Bir plan satın almak için bir Kurumsal (MS-AZR-0017P veya MS-AZR-0148P) ya da Kullandıkça Öde aboneliğinde (MS-AZR-0003P veya MS-AZR-0023P) abonelik sahibi rolünüz olmalıdır. Bulut çözümü sağlayıcıları, Azure Ayrılmış Sanal Makine Örnekleri satın almak için Azure portalını veya  [İş Ortağı Merkezi](/partner-center/azure-reservations) ’ni kullanabilir.
+Bir plan satın almak için bir Kurumsal (MS-AZR-0017P veya MS-AZR-0148P) ya da Kullandıkça Öde aboneliğinde (MS-AZR-0003P veya MS-AZR-0023P) veya Microsoft Müşteri Sözleşmesi aboneliğinde abonelik sahibi rolünüz olmalıdır. Bulut çözümü sağlayıcıları, Azure Ayrılmış Sanal Makine Örnekleri satın almak için Azure portalını veya  [İş Ortağı Merkezi](/partner-center/azure-reservations) ’ni kullanabilir.
 
 Kurumsal Anlaşma (EA) müşterileri, EA Portalındaki **Ayrılmış Örnekler Ekle** seçeneğini devre dışı bırakarak satın alma işlemlerini EA yöneticileriyle sınırlayabilir. EA yöneticilerinin bir rezervasyon satın almak için en az bir EA aboneliğinin abonelik sahibi olması gerekir. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi ekipler, rezervasyonlara maliyet merkezi sahiplerini ekleyebilirler. Bundan sonra sahipler, rezervasyonu aboneliklerinin kapsamına alabilirler. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimine sahip olması gerekmez.
 
-Rezervasyon indirimi yalnızca Kurumsal, Bulut Çözümü Sağlayıcısı (CSP) ile satın alınan abonelikler ve kullandıkça öde tarifelerine sahip bireysel planlar ile ilişkili kaynaklar için geçerlidir.
+Rezervasyon indirimi yalnızca Kurumsal, Bulut Çözümü Sağlayıcısı (CSP) ve Microsoft Müşteri Sözleşmesi ile satın alınan abonelikler ve kullandıkça öde tarifelerine sahip bireysel planlar ile ilişkili kaynaklar için geçerlidir.
 
 ## <a name="scope-reservations"></a>Rezervasyonları kapsama alma
 
@@ -56,7 +56,7 @@ Kaynak grubu kapsamı ile, gereksinimlerinize bağlı olarak bir rezervasyonu ka
 
 - **Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.
 - **Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.
-- **Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. Kurumsal Anlaşma müşterileri için faturalama bağlamı kayıttır. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
+- **Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. Kurumsal Anlaşma müşterileri için faturalama bağlamı kayıttır. Microsoft Müşteri Sözleşmesi müşterileri için faturalama kapsamı, faturalama profilidir. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
 
 Kullanımınıza rezervasyon indirimleri uygulanırken, Azure rezervasyonu aşağıdaki sırayla işler:
 
@@ -84,7 +84,7 @@ Rezervasyon satın aldıktan sonra her zaman kapsamı güncelleştirebilirsiniz.
 
 Rezervasyon kullanımınızı Azure portalı, API'ler veya kullanım verileri aracılığıyla birden çok şekilde izleyebilirsiniz. Erişiminiz olan tüm rezervasyonları görmek için Azure portalında **Rezervasyonlar**'a gidin. Rezervasyonlar kılavuzunda rezervasyon için en son kaydedilen kullanım yüzdesi gösterilir. Rezervasyonun uzun süreli kullanımını görmek için rezervasyona tıklayın.
 
-Ayrıca, bir kurumsal anlaşma müşterisiyseniz [API’leri](billing-reservation-apis.md#see-reservation-usage) kullanarak veya [kullanım verilerinizden](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) rezervasyon alabilirsiniz.
+Ayrıca, bir kurumsal anlaşma veya Microsoft Müşteri Sözleşmesi müşterisiyseniz [API’leri](billing-reservation-apis.md#see-reservation-usage) kullanarak veya [kullanım verilerinizden](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) rezervasyon alabilirsiniz.
 
 Kaynak grubu kapsamına aldığınız rezervasyonun kullanımın düşük olduğunu fark ederseniz, rezervasyon kapsamını tek bir aboneliğe güncelleştirebilir veya faturalandırma bağlamı genelinde paylaşabilirsiniz. Ayrıca rezervasyonu bölebilir ve elde edilen rezervasyonları farklı kaynak gruplarına uygulayabilirsiniz.
 
@@ -99,6 +99,7 @@ Kaynak grubunu bir abonelikten diğerine taşırsanız rezervasyon kapsamı otom
 Rezervasyon indirimleri aşağıdaki uygun aboneliklere ve teklif türlerine uygulanır.
 
 - Kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P)
+- Microsoft Müşteri Sözleşmesi abonelikleri.
 - Kullandıkça öde ücretlerinin uygulandığı bireysel planlar (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P)
 - CSP abonelikleri
 
@@ -106,7 +107,7 @@ Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kayn
 
 ## <a name="how-is-a-reservation-billed"></a>Rezervasyon nasıl faturalandırılır?
 
-Rezervasyon ücreti, aboneliğe bağlı ödeme yöntemiyle tahsil edilir. Kurumsal aboneliğiniz varsa, rezervasyon maliyeti parasal taahhüt bakiyenizden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığında fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartından peşin alma işlemleri için hemen ücret alınır. Aylık ödemeler faturanızda görünür ve kredi kartınızdan aylık olarak ücret alınır. Fatura ile ücret aldığınızda ücretleri bir sonraki faturanızda görürsünüz.
+Rezervasyon ücreti, aboneliğe bağlı ödeme yöntemiyle tahsil edilir. Rezervasyon maliyeti, varsa parasal taahhüt bakiyenizden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığında fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartından peşin alma işlemleri için hemen ücret alınır. Aylık ödemeler faturanızda görünür ve kredi kartınızdan aylık olarak ücret alınır. Fatura ile ücret aldığınızda ücretleri bir sonraki faturanızda görürsünüz.
 
 ## <a name="how-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
@@ -120,7 +121,7 @@ Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki ba�
 
 Sanal makineler, kaydınız/hesabınız içinde farklı aboneliklerde çalışıyorsa, kapsamı paylaşılan olarak seçin. Paylaşılan kapsam, rezervasyon indiriminin abonelikler arasında uygulanmasını sağlar. Bir rezervasyonu satın aldıktan sonra kapsamı değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örneklerini yönetme](billing-manage-reserved-vm-instance.md).
 
-Rezervasyon indirimi yalnızca, Kurumsal, CSP veya kullandıkça öde tarifesine sahip aboneliklerle ilişkili kaynaklar için geçerlidir. Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
+Rezervasyon indirimi yalnızca, Kurumsal, Microsoft Müşteri Sözleşmesi, CSP veya kullandıkça öde tarifesine sahip aboneliklerle ilişkili kaynaklar için geçerlidir. Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
 
 ## <a name="when-the-reservation-term-expires"></a>Rezervasyon dönemi sona erdiğinde
 

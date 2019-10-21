@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709551"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375495"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızda Kurumsal Anlaşma görevlerini tamamlama
 
@@ -27,7 +27,7 @@ Kuruluşunuz Kurumsal Anlaşma kaydınızı yenilemek için bir Microsoft Müşt
 
 Aşağıdaki diyagramda yeni ödeme hesabınızda faturalamanın nasıl düzenlendiği açıklanır.
 
-![ea-mca-post-transition-hierarchy resmi](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![ea-mca-post-transition-hierarchy resmi](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Kurumsal Anlaşma   | Microsoft Müşteri Sözleşmesi    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ Hesaba ait olan aboneliklerin toplam maliyetini görüntülemek için her abonel
 
 Ödeme hesabınızdaki her faturalama profili için bir aylık fatura oluşturulur. Her fatura için Azure kullanım ve ücretler csv dosyasını, fiyat listesini ve vergi belgesini (varsa) indirebilirsiniz. Ayrıca geçerli ayın ücretleri için de Azure kullanım ve ücretler csv dosyasını indirebilirsiniz.
 
-Azure kullanım ve ücretler csv dosyasını indirmeyi öğrenmek için bkz. [Microsoft Müşteri Sözleşmeniz için kullanımı indirme](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
+Azure kullanım ve ücretler csv dosyasını indirmeyi öğrenmek için bkz. [Microsoft Müşteri Sözleşmeniz için kullanımı indirme](billing-download-azure-daily-usage.md).
 
-Fiyat listesini indirmeyi öğrenmek için bkz. [Microsoft Müşteri Sözleşmeniz için fiyatlandırmayı indirme](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
+Fiyat listesini indirmeyi öğrenmek için bkz. [Microsoft Müşteri Sözleşmeniz için fiyatlandırmayı indirme](billing-ea-pricing.md).
 
 Vergi belgelerini indirmeyi öğrenmek için bkz. [Microsoft Müşteri Sözleşmeniz için vergi belgelerini görüntüleme](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
@@ -90,7 +90,7 @@ Gereksinimleriniz temelinde maliyetlerinizi düzenlemek için Kurumsal Anlaşma 
 
 ### <a name="create-a-new-account"></a>Yeni hesap oluşturma
 
-Kurumsal Anlaşma kaydında oluşturulan hesaplar gibi, kullanıcılara Azure aboneliği oluşturma izni vermek için fatura bölümleri üzerinde Azure aboneliği oluşturma rolü atayın. Daha fazla bilgi için bkz. [Diğerlerine Azure abonelikleri oluşturma izni verme](billing-mca-create-subscription.md#give-others-permission).
+Kurumsal Anlaşma kaydında oluşturulan hesaplar gibi, kullanıcılara Azure aboneliği oluşturma izni vermek için fatura bölümleri üzerinde Azure aboneliği oluşturma rolü atayın. Rol atama hakkında daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ## <a name="changes-for-department-administrators"></a>Bölüm yöneticileri açısından değişiklikler
 
@@ -116,7 +116,7 @@ Fatura bölümünüze erişim sağlamayı öğrenmek için bkz. [Azure portalın
 
 ### <a name="create-a-new-account-in-your-department"></a>Bölümünüzde yeni hesap oluşturma
 
-Bölümünüz için oluşturulan fatura bölümü üzerinde kullanıcılara Azure aboneliği oluşturucu rolü atayın. Daha fazla bilgi için bkz. [Diğerlerine Azure abonelikleri oluşturma izni verme](billing-mca-create-subscription.md#give-others-permission).
+Bölümünüz için oluşturulan fatura bölümü üzerinde kullanıcılara Azure aboneliği oluşturucu rolü atayın. Rol atama hakkında daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Bölümlerinizdeki hesaplar için ücretleri görüntüleme
 

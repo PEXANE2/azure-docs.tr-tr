@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 77dd8a5e54697a37a2039238ecdedb3e2a2fa326
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709558"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375471"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Maliyetlerinizi düzenlemek için faturanızda bölümler oluşturma
 
@@ -55,5 +55,5 @@ Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Microsoft Müşteri Sözleşmesi için ek Azure aboneliği oluşturma](billing-mca-create-subscription.md)
-- [Diğerlerine Azure aboneliği oluşturma izni verme](billing-mca-create-subscription.md#give-others-permission)
+- [Azure portalında faturalama rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 - [Diğer ödeme hesaplarındaki kullanıcılardan Azure aboneliklerinin fatura sahipliğini alma](billing-mca-request-billing-ownership.md)

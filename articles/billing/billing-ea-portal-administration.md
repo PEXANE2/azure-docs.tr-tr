@@ -4,16 +4,16 @@ description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdi
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035211"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329349"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -62,7 +62,7 @@ Kurumsal bir hesabı yeni bir kayda aktarırken aşağıdaki noktaları aklını
 
 Geçerli aktarım tarihi, aktarmak istediğiniz kaydın başlangıç tarihi veya sonrasındaki bir tarih olabilir. Aktarımı yapmakta olduğunuz kayıt _hedef kayıttır_. Hesap aktarımından sonra, hesapta geçerli aktarım tarihinden önceki tüm kullanım bilgileri aktardığınız kayıt içinde kalır. Aktarmakta olduğunuz kayıt _kaynak kayıttır_.  Kaynak kayıt kullanımı, parasal taahhüt karşılığında veya fazla kullanım olarak ücretlendirilir. Geçerli aktarım tarihinden sonra gerçekleşen kullanımlar yeni kayda aktarılır ve uygun şekilde ücretlendirilir.
 
-Bir hesap aktarımını, hedef kaydın başlangıç tarihine kadar geçerli olacak şekilde ayarlayabilirsiniz. Veya kaynak kaydının geçerli olduğu başlangıç tarihine kadar.
+Bir kayıt aktarımını, hedef kaydın başlangıç tarihine kadar geçerli olacak şekilde ayarlayabilirsiniz. Veya kaynak kaydının geçerli olduğu başlangıç tarihine kadar.
 
 ### <a name="monetary-commitment"></a>Parasal taahhüt
 
@@ -212,12 +212,11 @@ Bir kullanıcı tarafından bildirim alınmadıysa, kullanıcının bildirim aya
 ![Kişi Ekle kutusunu gösteren örnek ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorluğu teklifi
+
 Azure Sponsorluğu teklifi, bir sınırlı sponsorlu Microsoft Azure hesabıdır. Yalnızca Microsoft tarafından seçilen sınırlı müşteriler tarafından e-posta daveti ile kullanılabilir. Microsoft Azure Sponsorluğu teklifine hak kazandıysanız hesap kimliğinize bir e-posta davetiyesi alırsınız.
+
 Daha fazla bilgi için bkz.
 
-- Sponsorluk teklifine genel bakış - https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- Sponsorluk bakiyesi portalı - https://www.microsoftazuresponsorships.com/balance  
-- Sponsorluk dış SSS - https://azuresponsorships-staging.azurewebsites.net/faq
 - Sponsorluk Etkinleştirme için destek isteği - http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>Sonraki adımlar

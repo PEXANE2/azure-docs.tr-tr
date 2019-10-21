@@ -10,19 +10,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ed69775de71a371153a888749efc9069389e61d5
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709679"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375788"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ücretsiz Azure hesabına dahil hizmetler oluşturma
 
-Ücretsiz Azure hesabı, 12 ay boyunca sınırlı miktarda ücretsiz hizmet içerir. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı nedir?](https://azure.microsoft.com/free/free-account-faq/) Azure, her bir hizmet kullanımınızı izler ve sınırları aşmadığınız takdirde sizi ücretlendirmez. Bu sınırlar dahilinde ücretsiz Azure hesabı size ihtiyaçlarınızı karşılamak için çeşitli hizmet yapılandırmalarını kullanma esnekliği sağlar.
+Ücretsiz Azure hesabınız 12 ay boyunca sınırlı miktarda ücretsiz hizmet içerir. Bu limitler dahilinde, gereksinimlerinizi karşılamak için ücretsiz hizmetleri çeşitli yapılandırmalar halinde kullanma esnekliğiniz bulunur.
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Azure portalında ücretsiz hizmetler oluşturma
-Yeni hizmetler oluşturmak için [Ücretsiz hizmet sayfasını](https://go.microsoft.com/fwlink/?linkid=859151) kullanmanızı öneririz. Veya [Azure portalında](https://portal.azure.com) oturum açabilir, soldan **Tüm hizmetler**’i seçebilir ve **ücretsiz hizmetler** araması yapabilirsiniz.
+Ücretsiz hizmetler oluşturmak için [Ücretsiz hizmet sayfasının](https://go.microsoft.com/fwlink/?linkid=859151) bağlantısını kullanmanızı öneririz. Veya [Azure portalında](https://portal.azure.com) oturum açabilir ve **ücretsiz hizmetler** araması yapabilirsiniz. Ücretsiz hizmetler sayfasından hizmet oluşturduğunuzda, hizmetleri ücretsiz olarak kolayca oluşturmanız için alanların birçoğu önceden seçilmiş durumdadır.
+
+![Ücretsiz hizmet sayfasını gösteren ekran görüntüsü](./media/billing-create-free-services-included-free-account/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>Tüm bölgelerde hizmetler oluşturulabilir
 Limitler dahilinde olduğunuz sürece, hizmetlerin kullanılabilir olduğu tüm bölgelerde ücretsiz hizmetler oluşturabilirsiniz. Örneğin, ücretsiz Azure hesabıyla her ay ücretsiz 750 saat B1S Windows sanal makine elde edersiniz. B serisi sanal makinelerin kullanılabilir olduğu herhangi bir bölgede sanal makine oluşturabilirsiniz. 750 saati aşmadığınız sürece Azure sizi ücretlendirmez. Örneğin, ABD’deki bir müşteri, Batı Avrupa’da bir B1S Windows sanal makinesi sağlayabilir ve 750 saat boyunca bunu ücretsiz kullanabilir.
@@ -37,5 +39,5 @@ Kullanım toplamı, kullanım limiti dahilinde olduğu sürece birden çok hizme
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
+- [Ücretsiz Azure hesabınıza dahil olan ücretsiz hizmetlerin kullanımını denetleme](billing-check-free-service-usage.md) hakkında bilgi edinin.
 - [Ücretsiz Azure hesabınız için ücretlendirilmeyi önleme](billing-avoid-charges-free-account.md) hakkında bilgi edinin.
