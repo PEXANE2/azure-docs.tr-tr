@@ -248,6 +248,16 @@
               href: storage-blob-containers-list.md
             - name: Özellikleri ve meta verileri yönetme (.NET)
               href: storage-blob-container-properties-metadata.md
+        - name: Blobları oluşturma ve yönetme
+          items:
+            - name: Blobları listeleme (.NET)
+              href: storage-blobs-list.md
+            - name: Blob özelliklerini ve meta verilerini yönetme (.NET)
+              href: storage-blob-properties-metadata.md
+            - name: Blob kopyalama (.NET)
+              href: storage-blob-copy.md
+            - name: Blob anlık görüntülerini oluşturma ve yönetme (.NET)
+              href: storage-blob-snapshots.md
         - name: Blob verilerinin güvenliğini sağlama
           items:
             - name: Blob verilerine erişimi yetkilendirme

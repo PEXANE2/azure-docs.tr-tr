@@ -32,6 +32,8 @@
       items:
         - name: Verilere erişim atama
           href: assign-access-acm-data.md
+        - name: Yaygın görevlerde maliyet analizini kullanma
+          href: cost-analysis-common-uses.md
         - name: Maliyet uyarılarını kullanma
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: AWS tümleştirmesini ayarlama ve yapılandırma

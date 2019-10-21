@@ -83,6 +83,8 @@
           href: azure-pim-resource-rbac.md
         - name: Özel rolleri kullanma
           href: pim-resource-roles-custom-role-policy.md
+    - name: PIM sorunlarını giderme
+      href: pim-troubleshoot.md
     - name: Erişim gözden geçirmeleri
       items:
         - name: Azure AD rolleri

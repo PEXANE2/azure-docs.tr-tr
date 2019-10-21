@@ -65,6 +65,8 @@
           href: notifications.md
         - name: Yönetilen bir etki alanını silme
           href: delete-aadds.md
+        - name: Klasik dağıtımdan geçiş yapma (önizleme)
+          href: migrate-from-classic-vnet.md
     - name: Azure AD DS'nin güvenliğini sağlama
       items:
         - name: Yönetilen etki alanınızın güvenliğini sağlama

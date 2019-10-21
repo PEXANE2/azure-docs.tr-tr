@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: Önbelleğe Alma İçin Azure Mimarisi Açısından En İyi Uygulamalar
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: Yük devretme ve yama uygulama açıklaması
+      href: cache-failover.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Planlama

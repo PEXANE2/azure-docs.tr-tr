@@ -75,9 +75,9 @@
       href: functions-cli-samples.md
 - name: Kavramlar
   items:
-    - name: 1.x ve 2.x sürümlerini karşılaştırma
+    - name: Çalışma zamanı sürümlerini karşılaştırma
       href: functions-versions.md
-      displayName: 'migrate, migration'
+      displayName: 'migrate, migration, v3'
     - name: Premium planı
       href: functions-premium-plan.md
     - name: Dağıtımlar
