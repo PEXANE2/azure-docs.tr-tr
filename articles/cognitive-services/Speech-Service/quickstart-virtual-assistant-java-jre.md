@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: özel ses-ilk Sanal Yardımcısı (Önizleme), Java (Windows, Linux)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir Java konsol uygulamasında bilişsel hizmetler konuşma yazılım geliştirme seti 'ni (SDK) nasıl kullanacağınızı öğreneceksiniz. İstemci uygulamanızı, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a nasıl bağlayabileceğinizi ve bir ses ilk Sanal Yardımcısı deneyimini etkinleştirmenizi öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir Java konsol uygulamasında bilişsel hizmetler konuşma SDK 'sını kullanmayı öğreneceksiniz. İstemci uygulamanızı, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış daha önce oluşturulmuş bir bot Framework bot 'a nasıl bağlayabileceğinizi ve bir ses ilk Sanal Yardımcısı deneyimini etkinleştirmenizi öğreneceksiniz.
 services: cognitive-services
 author: bidishac
 manager: nitinme
@@ -10,33 +10,33 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: ca3d650f9a53f536a00f2a11aca37b2a61556129
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800028"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675524"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Hızlı başlangıç: konuşma SDK 'Sı ile bir ses-ilk Sanal Yardımcısı oluşturma, Java
 
-Hızlı başlangıç, [konuşmadan metne](quickstart-java-jre.md), [metinden konuşmaya](quickstart-text-to-speech-java-jre.md)ve [konuşma çevirisi](quickstart-translate-speech-java-jre.md)için de kullanılabilir.
+Hızlı başlangıç, [konuşma metinleri](quickstart-java-jre.md), [metin okuma](quickstart-text-to-speech-java-jre.md)ve [konuşma çevirisi](quickstart-translate-speech-java-jre.md)için de kullanılabilir.
 
-Bu makalede bilişsel [Hizmetler konuşma SDK 'sını](speech-sdk.md)kullanarak bir Java konsol uygulaması oluşturursunuz. Uygulama, doğrudan hat konuşma kanalını kullanacak şekilde yapılandırılmış, bir ses isteği gönderen ve bir sesli yanıt etkinliği döndüren (yapılandırıldıysa) önceden yazılmış bir bot 'a bağlanır. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve Windows, Ubuntu Linux veya macOS 'ta Java IDE tutulma. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
+Bu makalede, Azure bilişsel [Hizmetler konuşma SDK 'sını](speech-sdk.md)kullanarak bir Java konsol uygulaması oluşturursunuz. Uygulama, doğrudan hat konuşma kanalını kullanmak için yapılandırılmış daha önce yazılmış bir bot 'a bağlanır, bir sesli istek gönderir ve bir sesli yanıt etkinliği (yapılandırıldıysa) döndürür. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve Windows, Ubuntu Linux veya macOS 'ta Java IDE tutulma. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* İşletim sistemi: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit) veya macOS 10,13 veya üzeri
-* [Tutulma Java IDE](https://www.eclipse.org/downloads/)
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* İşletim sistemi: Windows (64-bit), Ubuntu Linux 16.04/18.04 (64-bit) veya macOS 10,13 veya üzeri.
+* [Tutulma Java IDE](https://www.eclipse.org/downloads/).
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * Konuşma Hizmetleri için bir Azure abonelik anahtarı. [Ücretsiz olarak bir tane alın](get-started.md) veya [Azure Portal](https://portal.azure.com)oluşturun.
-* Bot Framework sürüm 4,2 veya üzeri kullanılarak oluşturulan önceden yapılandırılmış bir bot. Yeni "doğrudan konuşma" kanalına abone olmak için bot 'ın ses girişleri alması gerekir.
+* Bot Framework sürüm 4,2 veya üzeri kullanılarak oluşturulan önceden yapılandırılmış bir bot. Bir ses girişi almak için bot 'ın yeni doğrudan hat konuşma kanalına abone olması gerekir.
 
     > [!NOTE]
-    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#Voice-first virtual assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+    > Doğrudan hat konuşma önizlemesi, şu anda bir konuşma Hizmetleri bölgesi alt kümesinde mevcuttur. [Sesli ilk sanal Yardımcılar için desteklenen bölgelerin listesine](regions.md#voice-first-virtual-assistants)bakın ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
-Ubuntu 16.04/18.04 çalıştırıyorsanız, tutulma 'yi başlatmadan önce bu bağımlılıkların yüklü olduğundan emin olun:
+Ubuntu 16.04/18.04 çalıştırıyorsanız, çakışan küreler başlamadan önce bu bağımlılıkların yüklü olduğundan emin olun:
 
 ```console
 sudo apt-get update
@@ -48,13 +48,13 @@ Windows (64-bit) çalıştırıyorsanız, platformunuz için Microsoft Visual C+
 
 ## <a name="optional-get-started-fast"></a>İsteğe bağlı: hızlı başlangıç
 
-Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli bot 'a nasıl bağlanacağını betimleyen adım adım açıklanır. Hemen ' yi kullanmayı tercih ediyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu `quickstart` klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
+Bu hızlı başlangıçta, bir basit istemci uygulamasının konuşma özellikli bot 'a nasıl bağlanacağını açıklayan adım adım açıklanmaktadır. Hemen başlamak istiyorsanız, bu hızlı başlangıçta kullanılan tam, kullanıma hazır kaynak kodu `quickstart` klasörü altındaki [konuşma SDK örneklerinde](https://aka.ms/csspeech/samples) bulunur.
 
 ## <a name="create-and-configure-project"></a>Proje oluşturma ve yapılandırma
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını aşağıdaki bağımlılığı içerecek şekilde güncelleştirin.
+Ayrıca, günlüğe kaydetmeyi etkinleştirmek için *Pod. xml* dosyasını aşağıdaki bağımlılığı içerecek şekilde güncelleştirin:
 
    ```xml
     <dependency>
@@ -68,11 +68,11 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 
-1. **Yeni Java Sınıfı** penceresinde, **Paket** alanına **speechsdk.quickstart** ve **Ad** alanına da **Ana** girin.
+1. **Yeni Java sınıfı** penceresinde, **paket** alanına *Speechsdk. QuickStart* yazın ve **ad** alanına *Main* yazın.
 
    ![Yeni Java Sınıfı penceresinin ekran görüntüsü](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Yeni oluşturulan **ana** sınıfı açın ve `Main.java` dosyasının içeriğini aşağıdaki başlangıç kodu ile değiştirin.
+1. Yeni oluşturulan `Main` sınıfını açın ve `Main.java` dosyasının içeriğini aşağıdaki başlangıç kodu ile değiştirin:
 
     ```java
     package speechsdk.quickstart;
@@ -139,58 +139,58 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
     }
     ```
 
-1. **Main** yönteminde ilk olarak `DialogServiceConfig` ' i yapılandırıp `DialogServiceConnector` örneği oluşturmak için kullanacaksınız. Bu, bot 'unuzla etkileşim kurmak için doğrudan hat konuşma kanalına bağlanır. Ses girişi kaynağını belirtmek için bir `AudioConfig` örneği de kullanılır. Bu örnekte, varsayılan mikrofon `AudioConfig.fromDefaultMicrophoneInput()` ile kullanılır.
+1. @No__t_0 yönteminde, önce `DialogServiceConfig` yapılandırıp `DialogServiceConnector` örnek oluşturmak için kullanırsınız. Bu örnek, bot 'unuzla etkileşim kurmak için doğrudan hat konuşma kanalına bağlanır. Ses girişi kaynağını belirtmek için bir `AudioConfig` örneği de kullanılır. Bu örnekte, varsayılan mikrofon `AudioConfig.fromDefaultMicrophoneInput()` ile kullanılır.
 
-    * @No__t-0 dizesini, [burada](get-started.md)alabileceğiniz abonelik anahtarınızla değiştirin.
-    * @No__t-0 dizesini aboneliğinizle ilişkili [bölge](regions.md) ile değiştirin.
-    * @No__t-0 dizesini doğrudan çizgi konuşma kanalı gizli dizeniz ile değiştirin.
+    * @No__t_0 dize anahtarını, [Bu Web sitesinden](get-started.md)alabileceğiniz abonelik anahtarınızla değiştirin.
+    * Dize `YourServiceRegion`, aboneliğinizle ilişkili [bölge](regions.md) ile değiştirin.
+    * Dize `YourChannelSecret` doğrudan çizgi konuşma kanalı gizli dizeniz ile değiştirin.
 
     > [!NOTE]
-    > Doğrudan hat konuşma (Önizleme), konuşma Hizmetleri bölgelerinin bir alt kümesinde Şu anda kullanılabilir. Lütfen [sesli ilk sanal Yardımcılar için desteklenen bölgeler listesine](regions.md#voice-first-virtual-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+    > Doğrudan hat konuşma önizlemesi, şu anda bir konuşma Hizmetleri bölgesi alt kümesinde mevcuttur. [Sesli ilk sanal Yardımcılar için desteklenen bölgelerin listesine](regions.md#voice-first-virtual-assistants) bakın ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
     final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: Only a subset of regions are currently supported.
     final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
-    // Configure audio input from microphone.
+    // Configure audio input from a microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a DialogServiceConnector instance
+    // Create a DialogServiceConnector instance.
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. `DialogServiceConnector`, bot etkinliklerini, konuşma tanıma sonuçlarını ve diğer bilgileri iletmek için çeşitli olaylara bağımlıdır. Daha sonra bu olay dinleyicilerini ekleyin.
+1. Bağlayıcı `DialogServiceConnector`, bot etkinliklerini, konuşma tanıma sonuçlarını ve diğer bilgileri iletmek için çeşitli olaylara bağımlıdır. Daha sonra bu olay dinleyicilerini ekleyin.
 
     ```java
-    // Recognizing will provide the intermediate recognized text while an audio stream is being processed
+    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
     connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // Recognized will provide the final recognized text once audio capture is completed
+    // Recognized will provide the final recognized text once audio capture is completed.
     connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // SessionStarted will notify when audio begins flowing to the service for a turn
+    // SessionStarted will notify when audio begins flowing to the service for a turn.
     connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again
+    // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
     connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
-    // Canceled will be signaled when a turn is aborted or experiences an error condition
+    // Canceled will be signaled when a turn is aborted or experiences an error condition.
     connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
         connector.disconnectAsync();
     });
 
-    // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
+    // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
     connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
@@ -200,7 +200,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
         });
     ```
 
-1. @No__t-1 yöntemini çağırarak `DialogServiceConnector` ' a tıklayarak doğrudan konuşma hattını bağlayın. Botunuzu test etmek için mikrofonunuzdan ses girişi göndermek için `listenOnceAsync` yöntemini çağırabilirsiniz. Ayrıca, seri hale getirilmiş bir dize olarak özel bir etkinlik göndermek için `sendActivityAsync` yöntemini de kullanabilirsiniz. Bu özel etkinlikler, bot 'unuzun konuşmada kullanacağı ek verileri sağlayabilir.
+1. @No__t_1 yöntemini çağırarak konuşmayı doğrudan konuşmaya `DialogServiceConnector` bağlayın. Botunuzu test etmek için mikrofonunuzdan ses girişi göndermek için `listenOnceAsync` yöntemini çağırabilirsiniz. Ayrıca, bir özel etkinliği serileştirilmiş bir dize olarak göndermek için `sendActivityAsync` yöntemini de kullanabilirsiniz. Bu özel etkinlikler, bot 'unuzun konuşmada kullandığı ek verileri sağlayabilir.
 
     ```java
     connector.connectAsync();
@@ -211,13 +211,13 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
     // connector.sendActivityAsync(...)
     ```
 
-1. @No__t-0 dosyasına değişiklikleri kaydedin.
+1. @No__t_0 dosyadaki değişiklikleri kaydedin.
 
-1. Yanıt oynatmayı desteklemek için, getAudio () API 'sinden döndürülen Puldefdiooutputstream nesnesini, işleme kolaylığı için bir Java InputStream 'e dönüştürecek ek bir sınıf ekleyeceksiniz. Bu ActivityAudioStream, "doğrudan hat konuşma kanalından" ses yanıtını işleyecek özelleştirilmiş bir sınıftır. Bu, kayıttan yürütmeyi işlemek için gereken ses biçimi bilgilerini getirmek için erişimcileri sağlar: söz konusu **dosyayı**seçin  > **Yeni** > **sınıfı**.
+1. Yanıt oynatmayı desteklemek için, getAudio () API 'sinden, işleme kolaylığı için bir Java InputStream 'e döndürülen Puldefdiooutputstream nesnesini dönüştüren ek bir sınıf ekleyin. Bu `ActivityAudioStream`, doğrudan hat konuşma kanalından gelen ses yanıtını işleyen özel bir sınıftır. Kayıttan yürütmeyi işlemek için gereken ses biçimi bilgilerini getirmek için erişimcileri sağlar. Bunun için **dosya**  > **Yeni**  > **sınıfı**' nı seçin.
 
-1. **Yeni Java sınıfı** penceresinde, **speechsdk. QuickStart** öğesini **paket** alanına ve **Activityaudiostream** ' i **ad** alanına girin.
+1. **Yeni Java sınıfı** penceresinde, **paket** alanına *speechsdk. QuickStart* ve **ad** alanına *activityaudiostream* yazın.
 
-1. Yeni oluşturulan **Activityaudiostream** sınıfını açın ve aşağıda belirtilen kodla değiştirin.
+1. Yeni oluşturulan `ActivityAudioStream` sınıfını açın ve aşağıdaki kodla değiştirin:
 
     ```java
     package com.speechsdk.quickstart;
@@ -230,11 +230,11 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
 
     public final class ActivityAudioStream extends InputStream {
         /**
-         * The number of samples played per second. (16 kHz)
+         * The number of samples played per second (16 kHz).
          */
         public static final long SAMPLE_RATE = 16000;
         /**
-         * The number of bits in each sample of a sound that has this format. (16 bits)
+         * The number of bits in each sample of a sound that has this format (16 bits).
          */
         public static final int BITS_PER_SECOND = 16;
         /**
@@ -294,7 +294,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
         }
 
         /**
-         * Reads up to a specified maximum number of bytes of data from the activity audio stream
+         * Reads up to a specified maximum number of bytes of data from the activity audio stream,
          * putting them into the given byte array.
          *
          * @param b the buffer into which the data is read
@@ -348,7 +348,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
         }
 
         /**
-         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample and the # channels
+         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample, and the # channels.
          *
          * @return instance of the ActivityAudioFormat associated with the stream
          */
@@ -361,7 +361,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
          * audio input stream without blocking.
          *
          * @return the number of bytes that can be read from this audio input stream without blocking.
-         * As this implementation does not buffer this will be defaulted to 0
+         * As this implementation does not buffer, this will be defaulted to 0
          */
         @Override
         public int available() {
@@ -444,7 +444,7 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
         }
 
         /**
-         * Enum defining the types of audio encoding supported by this stream
+         * Enum defining the types of audio encoding supported by this stream.
          */
         public enum AudioEncoding {
             PCM_SIGNED("PCM_SIGNED");
@@ -459,12 +459,13 @@ Ayrıca, günlüğe kaydetmeyi etkinleştirmek için **Pod. xml** dosyasını a�
 
     ```
 
-1. @No__t-0 dosyasına değişiklikleri kaydedin.
+1. @No__t_0 dosyadaki değişiklikleri kaydedin.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-F11 tuşuna basın veya **Çalıştır** > **Hata Ayıkla** seçeneğini belirleyin.
-Konsol bu noktada "bir şeyi söyleyin" iletisini görüntüler. bu aşamada, bot 'ın anlayabileceği Ingilizce bir tümceciği veya tümceyi konuşabilirsiniz. Konuşmanızı, sizin de, bot 'unuza göre işlenen ve yanıt bir etkinlik olarak döndürülecek olan doğrudan hat konuşma kanalı aracılığıyla bot 'a iletilir. Botunuzun konuşmayı yanıt olarak döndürürse, ses `AudioPlayer` sınıfı kullanılarak kayıttan yürütülür.
+F11 ' i seçin veya**hata ayıklama** >  **Çalıştır** ' ı seçin.
+Konsol "bir şeyi söyleyin" iletisini görüntüler.
+Bu noktada, bot 'ın anlayabilmesi için Ingilizce bir tümcecik veya cümle konuşun. Konuşmanızı, bot 'unuza göre tanınıp işlendiği doğrudan hat konuşma kanalı aracılığıyla sizin bot 'a iletilir. Yanıt bir etkinlik olarak döndürülür. Bot 'niz bir yanıt olarak konuşma döndürürse, ses `AudioPlayer` sınıfı kullanılarak geri yürütülür.
 
 ![Başarılı tanıma sonrası konsol çıktısının ekran görüntüsü](media/sdk/qs-java-jre-08-console-output.png)
 
