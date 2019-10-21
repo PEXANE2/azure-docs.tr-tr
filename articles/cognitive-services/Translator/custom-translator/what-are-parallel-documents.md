@@ -1,5 +1,5 @@
 ---
-title: Paralel belgeler nelerdir? -Özel Translator
+title: Paralel belgeler nelerdir? -Özel çevirici
 titleSuffix: Azure Cognitive Services
 description: Paralel belgeler, birinin diğerinin çevirisi olduğu belge çiftleridir. Çiftteki bir belge kaynak dilde cümleler içeriyor ve diğer belge, hedef dile çevrilmiş olan bu cümleleri içeriyor.
 author: swmachan
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595452"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675476"
 ---
 # <a name="what-are-parallel-documents"></a>Paralel belgeler nelerdir?
 
@@ -23,7 +23,7 @@ Hangi dilin "kaynak" olarak işaretlendiğinden ve hangi dilin "hedef" olarak i�
 
 ## <a name="requirements"></a>Gereksinimler
 
-Bir sistemi eğitebilmeniz için en az 10.000 benzersiz paralel cümle gerekir. En iyi uygulama olarak, çeviri sisteminizin kalitesini artırmak için sürekli olarak daha fazla paralel içerik ve yeniden eğitme ekleyebilirsiniz.
+Bir sistemi eğitebilmeniz için en az 10.000 benzersiz hizalanmış paralel cümleye ihtiyacınız olacaktır. Bu sınırlama, paralel Cümlelerinizin bir çeviri modelini başarıyla eğitmek için yeterli benzersiz sözlük içerdiğinden emin olmak için bir güvenlik ağı sağlar. En iyi uygulama olarak, çeviri sisteminizin kalitesini artırmak için sürekli olarak daha paralel içerik ekleyin ve yeniden eğitme yapın. Lütfen [tümce hizalamasını](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)inceleyin.
 
 Microsoft, özel çevirmene yüklenen belgelerin üçüncü tarafın telif hakkı veya fikri mülkiyet özelliklerini ihlal etmesidir. Daha fazla bilgi için lütfen [kullanım koşullarına](https://azure.microsoft.com/support/legal/cognitive-services-terms/)bakın.
 Portalı kullanarak bir belgeyi karşıya yüklemek, belgede fikri mülkiyet özelliğinin sahipliğini değiştirmez.

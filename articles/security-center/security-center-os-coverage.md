@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201624"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675807"
 ---
 # <a name="supported-platforms"></a>Desteklenen platformlar 
 
@@ -41,15 +41,15 @@ Aşağıdaki bölümlerde, Azure Güvenlik Merkezi tarafından kullanılan [Log 
 
 ### Windows Server işletim sistemleri<a name="os-windows"></a>
 
-* Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> Microsoft Defender ATP ile tümleştirme yalnızca Windows Server 2012 R2 ve Windows Server 2016 ' i destekler.
+[!div class="mx-tableFixed"]
+|İşletim Sistemi|Azure Güvenlik Merkezi tarafından desteklenir|Microsoft Defender ATP ile tümleştirme desteği|
+|---|---|---|
+|Windows Server 2019|✔|X|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012|✔|✔|
+|Windows Server 2008 R2|✔|✔|
+|Windows Server 2008|✔|✔|
 
 Yukarıda listelenen Windows işletim sistemlerine yönelik desteklenen özellikler hakkında daha fazla bilgi edinmek için bkz. [sanal makine/sunucu tarafından desteklenen özellikler](security-center-services.md##vm-server-features).
 
@@ -98,22 +98,22 @@ Aşağıdaki Azure PaaS kaynakları, Azure Güvenlik Merkezi tarafından destekl
 * İşlev
 * Bulut Hizmeti
 * Sanal ağ
-* Subnet
+* Alt ağ
 * NIC
 * NSG
 * Batch hesabı
 * Service Fabric hesabı
 * Otomasyon hesabı
 * Yük dengeleyici
-* Ara
-* Service bus ad alanı
+* Arama
+* Service Bus ad alanı
 * Stream Analytics
 * Olay hub’ı ad alanı
-* Logic Apps
+* Mantıksal uygulamalar
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Anahtar kasası
+* Key vault
 
 Yukarıdaki PaaS kaynakları listesinin desteklenen özellikleri hakkında daha fazla bilgi edinmek için bkz. [PaaS hizmetleri tarafından desteklenen özellikler](security-center-services.md#paas-services).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: d26535d18233533d1d72c02ad997008cba536fce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
-ms.translationtype: HT
+ms.openlocfilehash: 37d8c483a1ef49a87205dcc848aae974f5b0e47e
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595159"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675853"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -294,6 +294,14 @@ URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 
 ### <a name="escape-special-characters-in-sas-tokens"></a>SAS belirteçlerinde kaçış özel karakterleri
 
 @No__t_0 uzantısı olan toplu iş dosyalarında, SAS belirteçlerinde görünen `%` karakterlerinin atlamanız gerekir. Bunu, SAS belirteç dizesindeki mevcut `%` karakterlerinin yanına bir ekleme `%` karakteri ekleyerek yapabilirsiniz.
+
+### <a name="run-scripts-by-using-jenkins"></a>Jenkins kullanarak betikleri çalıştırma
+
+Komut dosyalarını çalıştırmak için [Jenkins](https://jenkins.io/) kullanmayı planlıyorsanız, aşağıdaki komutu betiğin başına yerleştirdiğinizden emin olun.
+
+```
+/usr/bin/keyctl new_session
+```
 
 ## <a name="use-azcopy-in-storage-explorer"></a>Depolama Gezgini AzCopy kullanın
 

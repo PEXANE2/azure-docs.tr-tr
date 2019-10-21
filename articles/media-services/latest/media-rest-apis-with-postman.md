@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308459"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675718"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API çağrıları için Postman yapılandırma
 
@@ -28,11 +28,11 @@ Geliştirmeye başlamadan önce [Media Services v3 API 'leri Ile geliştirmeyi](
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). Kaynak grubu adı ve Media Services hesap adını hatırlamak emin olun. 
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 - [API 'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
 - AMS REST öğreticilerinden bazılarında gösterilen REST API'lerini yürütmek için [Postman](https://www.getpostman.com/) REST istemcisini yükleyin. 
 
-    Biz **Postman**'ı kullanıyoruz, ancak herhangi bir REST aracı da olabilir. Diğer alternatifler: REST eklentisi veya **Telerik Fiddler**ile **Visual Studio Code** . 
+    Biz **Postman**'ı kullanıyoruz, ancak herhangi bir REST aracı da olabilir. Diğer seçenekler şunlardır: REST eklentili **Visual Studio Code** veya **Telerik Fiddler**. 
 
 > [!IMPORTANT]
 > [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
@@ -47,11 +47,9 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 
 ## <a name="configure-postman"></a>Postman'i yapılandırma
 
-Bu bölümde Postman yapılandırılmaktadır.
-
 ### <a name="configure-the-environment"></a>Ortamı yapılandırma 
 
-1. **Postman**'ı açın.
+1. **Postman** uygulamasını açın.
 2. Ekranın sağ tarafında **Ortamı yönet** seçeneğini belirleyin.
 
     ![Ortamı yönetme](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +78,7 @@ Bu bölümde Postman yapılandırılmaktadır.
 
 AMS v3 kaynaklarını değiştirmeye başlamadan önce hizmet sorumlusu kimlik doğrulaması için Azure AD belirtecini almanız ve ayarlamanız gerekir.
 
-1. Postman 'nın sol penceresinde "1. Adım: AAD kimlik doğrulama belirteci al ".
+1. Postman uygulamasının sol penceresinde "1. Adım: AAD kimlik doğrulama belirteci al" seçeneğini belirleyin.
 2. Sonra, "Hizmet Sorumlusu Kimlik Doğrulaması için Azure AD Belirteci alma"'yı seçin.
 3. **Gönder**’e basın.
 
@@ -103,4 +101,4 @@ AMS v3 kaynaklarını değiştirmeye başlamadan önce hizmet sorumlusu kimlik d
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Rest Ile akış dosyaları](stream-files-tutorial-with-rest.md).  
-- [Öğretici: Uzak dosya tabanlı URL kodlama ve video akışı yapma - REST](stream-files-tutorial-with-rest.md)
+- [Öğretici: URL 'ye göre uzak bir dosya kodlama ve video geri kalanı](stream-files-tutorial-with-rest.md)
