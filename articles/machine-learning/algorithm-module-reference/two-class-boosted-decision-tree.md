@@ -1,5 +1,5 @@
 ---
-title: 'İki sınıf önceden artırılmış karar ağacı: Modül başvurusu'
+title: 'İki sınıf tarafından artırılmış karar ağacı: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning hizmetinde, önceden artırılmış karar ağaçları algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Iki sınıf artırılmış karar ağacı modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 812fb8d312b165bd43f600da520f390f9c6399fe
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128412"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692645"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>İki sınıf önceden artırılmış karar ağacı modülü
 
@@ -32,11 +32,11 @@ Bu modül, eğitimli olmayan bir sınıflandırma modeli oluşturur. Sınıfland
 
 Bu tür modeli [eğitme modeli](././train-model.md)kullanarak eğitebilirsiniz. 
 
-1.  Azure Machine Learning ' de, denemenize öngörülü **karar ağacı** modülünü ekleyin.
+1.  Azure Machine Learning ' de, işlem hattınızda, çalıştırılabilir **karar ağacı** modülünü ekleyin.
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.
   
-    + **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
   
   
 3.  **Ağaç başına en fazla yaprakları**için, herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) belirtin.

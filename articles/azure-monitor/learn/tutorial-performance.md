@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69032005"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
@@ -79,7 +79,7 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
 ## <a name="use-logs-data-for-server"></a>Sunucu için günlük verilerini kullan
  Günlükler, Application Insights tarafından toplanan tüm verileri analiz etmenizi sağlayan zengin bir sorgu dili sağlar. Bunu kullanarak istek ve performans verileri üzerinde ayrıntılı analiz gerçekleştirebilirsiniz.
 
-1. İşlem ayrıntısı paneline dönün ve günlüklerde Günlükler simgesi ![görünümü ' ne tıklayın](media/tutorial-performance/app-viewinlogs-icon.png)**(Analiz)**
+1. İşlem ayrıntısı paneline dönün ve günlüklerde ![Logs simge görünümü ' ne tıklayın](media/tutorial-performance/app-viewinlogs-icon.png)**(Analiz)**
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır.  Bu sorguları olduğu gibi çalıştırabilir veya gereksinimlerinize göre özelleştirebilirsiniz.  İlk sorgu, zaman içinde bu işlemin süresini gösterir.
 
@@ -100,7 +100,7 @@ Application Insights, iyileştirilecek sunucu işlemlerini belirlemeye ek olarak
 ## <a name="use-logs-data-for-client"></a>İstemci için günlük verilerini kullan
 Sunucu performansı için toplanan veriler gibi Application Insights, tüm istemci verilerinin Günlükler kullanılarak ayrıntılı analiz için kullanılabilir olmasını sağlar.
 
-1. Tarayıcı özetine geri dönün ve Günlükler simgesi ![](media/tutorial-performance/app-viewinlogs-icon.png) **Görünüm günlüklerde (Analiz)** tıklayın
+1. Tarayıcı özetine dönün ve günlüklerde ![Logs simgesine tıklayın ](media/tutorial-performance/app-viewinlogs-icon.png) **(Analiz)**
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
 

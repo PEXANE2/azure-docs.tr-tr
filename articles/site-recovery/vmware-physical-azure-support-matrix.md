@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 7d46773ce45cb3ef8b70d3c6074b9f1c771e9e24
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 179676ae2a7d68bc0263f897ffededcf8b7a01f4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554631"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693381"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -276,7 +276,6 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 
 **Kaynak veri değişim sıklığı** | **Üst Sınır**
 ---|---
-VM başına ortalama veri değişim sıklığı| 25 MB/sn
 VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 İşlem Sunucusu tarafından desteklenen günlük en fazla veri değişim sıklığı | 2 TB
 

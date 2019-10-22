@@ -9,10 +9,10 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72300335"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
@@ -89,7 +89,7 @@ Güvenliğin diğer yönlerini ayarlama hakkında bilgi edinmek için bkz. [Azur
 
 Bu bölümde, farklı veri kaynakları ve verilerin Data Lake Storage 2. hesaba alınmasının farklı yolları vurgulanmaktadır.
 
-Verilerin(./media/data-lake-storage-data-scenarios/ingest-data.png "Data Lake Storage 2. içine") alınması ![Data Lake Storage 2. verileri]alma
+![Data Lake Storage 2. verileri alma](./media/data-lake-storage-data-scenarios/ingest-data.png "Data Lake Storage 2. verileri alma")
 
 ### <a name="ad-hoc-data"></a>Geçici veri
 
@@ -165,7 +165,7 @@ Azure ExpressRoute, Azure veri merkezleri ve şirket içi altyapı arasında öz
 
 Data Lake Storage 2. veriler kullanılabildiğinde, desteklenen büyük veri uygulamalarını kullanarak bu verilerde analiz gerçekleştirebilirsiniz. 
 
-(./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage 2. verileri analiz") ![Data Lake Storage 2. Içindeki verileri analiz etme]
+![Data Lake Storage 2. verileri analiz etme](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage 2. verileri analiz etme")
 
 Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalıştırmak için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 
@@ -178,7 +178,7 @@ Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalış
 
 Data Lake Storage 2. depolanan verilerin görsel sunumlarını oluşturmak için bir hizmet karışımı kullanabilirsiniz.
 
-(./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage 2. içindeki verileri görselleştirip") ![Data Lake Storage 2. Görselleştir]
+![Data Lake Storage 2. verileri görselleştirme](./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage 2. verileri görselleştirme")
 
 * [Data Lake Storage 2. verileri Azure SQL veri ambarı 'na taşımak için Azure Data Factory](../../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
 * Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SQL veri ambarı ile tümleştirebilirsiniz](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) .
@@ -191,7 +191,7 @@ Ayrıca, gibi senaryolar için Azure Data Lake Storage 2. verileri indirmek veya
 
 * Uygulama prototipleri oluştururken IDE ortamlarında işlenmek üzere verileri yerel bilgisayarınıza indirin.
 
-(./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage 2. Data Lake Storage 2. çıkış verilerinden") ![çıkış verileri]
+![Data Lake Storage 2. çıkış verileri](./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage 2. çıkış verileri")
 
 Data Lake Storage 2. verileri indirmek için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 

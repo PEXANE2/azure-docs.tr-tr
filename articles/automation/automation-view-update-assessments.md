@@ -1,6 +1,6 @@
 ---
 title: Azure Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
-description: Bu makalede güncelleştirme dağıtımları için güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır
+description: Bu makalede, güncelleştirme dağıtımları için güncelleştirme değerlendirmelerinin nasıl görüntüleneceği açıklanır.
 services: automation
 ms.service: automation
 ms.subservice: update-management
@@ -9,26 +9,26 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e88622ede6437086b86a33081d6ec9b9ea50ef65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d4e20b2924504b714dff9f5ba650f9b25c1c26c3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377726"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690856"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Güncelleştirme Yönetimi güncelleştirme değerlendirmelerini görüntüleme
 
-Otomasyon hesabınızda, makinelerinizin durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin.
+Azure Otomasyonu hesabınızda, makinelerinizin durumunu görüntülemek için **güncelleştirme yönetimi** ' yi seçin.
 
-Bu görünüm, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi sağlar. **Uyumluluk sütununda**, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu görebilirsiniz. Sorun varsa, sorunu gidermek için hangi adımların yapılacağını öğrenmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
+Bu görünüm, makineleriniz, eksik güncelleştirmeler, güncelleştirme dağıtımları ve zamanlanmış güncelleştirme dağıtımları hakkında bilgi sağlar. **Uyumluluk** sütununda, makinenin en son değerlendirildiğini görebilirsiniz. **GÜNCELLEŞTIRME ARACıSı hazırlığı** sütununda, güncelleştirme aracısının sistem durumunu görebilirsiniz. Bir sorun varsa, sorunu düzeltmenize yardımcı olabilecek sorun giderme belgelerine gitmek için bağlantıyı seçin.
 
-Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük araması çalıştırmak için listeden öğeyi seçin. **Günlük araması** bölmesi, seçilen öğe için bir sorgu ile açılır:
+Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük araması çalıştırmak için, listeden karşılık gelen öğeyi seçin. **Günlük araması** bölmesi, seçilen öğe için bir sorgu ile açılır:
 
 ![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
 
 ## <a name="view-missing-updates"></a>Eksik güncelleştirmeleri görüntüle
 
-Makinelerinizde bulunmayan güncelleştirmelerin listesini görüntülemek için **eksik güncelleştirmeler** ' i seçin. Her güncelleştirme listelenir ve seçilebilir. Güncelleştirme, işletim sistemi ve daha fazla bilgi için bir bağlantı gerektiren makine sayısı hakkında bilgi gösterilir. **Günlük araması** bölmesinde güncelleştirmeler hakkında daha fazla ayrıntı görüntülenir.
+Makinelerinizde bulunmayan güncelleştirmelerin listesini görüntülemek için **eksik güncelleştirmeler** ' i seçin. Her güncelleştirme listelenir ve seçilebilir. Güncelleştirme, işletim sistemi ayrıntıları ve daha fazla bilgi için bir bağlantının gerekli olduğu makine sayısı hakkında bilgi gösterilir. **Günlük araması** bölmesinde güncelleştirmeler hakkında daha fazla ayrıntı de gösterilmektedir.
 
 ![Eksik güncelleştirmeler](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
@@ -56,14 +56,14 @@ Aşağıdaki tablolar, Güncelleştirme Yönetimi ' deki güncelleştirme sını
 |Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri     | Belirli bir sorun veya ürüne özgü, güvenlikle ilgili bir sorun için güncelleştirmeler.         |
 |Diğer güncelleştirmeler     | Doğası gereği önemli olmayan veya güvenlik güncelleştirmeleri olmayan diğer tüm güncelleştirmeler.        |
 
-Linux için Güncelleştirme Yönetimi, bulutta veri zenginleştirmesi nedeniyle değerlendirme verilerini görüntülerken buluttaki kritik ve güvenlik güncelleştirmeleri arasında ayrım yapabilir. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri kutudan çıkar. Aşağıdaki komutun güvenlik verilerini döndürmek için bir şekilde yapılandırılmış CentOS makineleriniz varsa Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
+Linux için Güncelleştirme Yönetimi, değerlendirme verilerini görüntülerken buluttaki kritik güncelleştirmeleri ve güvenlik güncelleştirmelerini ayırt edebilir. (Bulutta veri zenginleştirme nedeniyle bu ayrıntı düzeyi mümkündür.) Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS ürünün RTM sürümlerinde bu bilgiler bulunmamaktadır. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, sınıflandırmalara göre Güncelleştirme Yönetimi düzeltme eki uygulanabilir:
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-Şu anda yerel sınıflandırmayı etkinleştirmek için yöntem desteklenmekte olan yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu özelliği kendi kendilerine etkinleştirmiş olabilecek müşterilere yalnızca en iyi çaba desteği sağlanır.
+Şu anda yerel sınıflandırmanın etkinleştirilmesi için desteklenen bir yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu işlevselliği kendi kendilerine etkinleştirmiş olan müşterilere yalnızca en iyi çaba desteği sağlanır.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Herhangi bir güncelleştirme değerlendirmelerini güncelleştirdikten sonra, [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)altındaki adımları Izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.
+Güncelleştirme değerlendirmelerini güncelleştirdikten sonra, [Azure sanal makinelerinize yönelik güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)adımlarını izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.

@@ -7,48 +7,47 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188788"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692280"
 ---
 >[!IMPORTANT]
->Oluşturduğunuz kaynakları, diğer Azure Machine Learning hizmeti öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak kullanabilirsiniz.
+>Diğer Azure Machine Learning hizmet öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
 
+### <a name="delete-everything"></a>Her şeyi sil
 
-### <a name="delete-everything"></a>Her şeyi silin
+Oluşturduğunuz herhangi bir şeyi kullanmayı planlamıyorsanız, herhangi bir ücret ödemeniz için tüm kaynak grubunu silin:
 
-Oluşturduğunuz herhangi bir şey kullanmayı planlamıyorsanız, herhangi bir ücret ödememeniz kaynak grubunun tamamını silin:
-
-1. Azure portalında **kaynak grupları** pencerenin sol tarafındaki.
+1. Azure portal, pencerenin sol tarafındaki **kaynak grupları** ' nı seçin.
  
    ![Azure portalında kaynak grubunu silme](./media/aml-ui-cleanup/delete-resources.png)
 
-1. Listesinde, oluşturduğunuz kaynak grubunu seçin.
+1. Listede, oluşturduğunuz kaynak grubunu seçin.
 
-1. Pencerenin sağ tarafında, üç nokta düğmesini seçin ( **...** ).
+1. Pencerenin sağ tarafında üç nokta düğmesini ( **...** ) seçin.
 
 1. **Kaynak grubunu sil**'i seçin.
 
-Kaynak grubunun silinmesi, görsel arabirim içinde oluşturulan tüm kaynakları siler.  
+Kaynak grubu silindiğinde, görsel arabirimde oluşturduğunuz tüm kaynaklar da silinir.  
 
 ### <a name="delete-only-the-compute-target"></a>Yalnızca işlem hedefini Sil
 
-Burada oluşturduğunuz işlem hedef *otomatik olarak daralttığında* değil kullanıldığında sıfır düğümleri. Ücretleri en aza indirmek için budur. İşlem hedefini silmek istiyorsanız, aşağıdaki adımları gerçekleştirin:
+Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu, ücretleri en aza indirmektir. İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
 
-1. İçinde [Azure portalında](https://portal.azure.com), kendi çalışma alanını açın.
+1. [Azure Portal](https://portal.azure.com), çalışma alanınızı açın.
 
-    ![İşlem hedefini Sil](./media/aml-ui-cleanup/delete-compute-target.png)
+    ![İşlem hedefini silme](./media/aml-ui-cleanup/delete-compute-target.png)
 
-1. İçinde **işlem** bölümü, çalışma alanının kaynağı seçin.
+1. Çalışma alanınızın **işlem** bölümünde kaynağı seçin.
 
 1. **Sil**’i seçin.
 
-### <a name="delete-individual-assets"></a>Tek tek varlığını silme
+### <a name="delete-individual-assets"></a>Tek tek varlıkları Sil
 
-Bunları seçip ardından seçerek tek tek varlıklar denemenizi oluşturulduğu görsel arabirim Sil **Sil** düğmesi.
+Denemenizi oluşturduğunuz görsel arabirimde, her bir varlığı seçerek ve ardından **Sil** düğmesini seçerek tek tek varlıkları silin. Veri kümelerinin her bir veri kümesini seçip **kayıt Sil**' i seçerek çalışma alanınızdan kaydı yapılabilir.
 
-![Denemeleri Sil](./media/aml-ui-cleanup/delete-experiment.png)
+![Varlıkları Sil](./media/aml-ui-cleanup/delete-asset.png)

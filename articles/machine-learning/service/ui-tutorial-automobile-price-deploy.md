@@ -1,125 +1,121 @@
 ---
-title: 'Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma'
+title: 'Öğretici: görsel arabirimle bir makine öğrenimi modeli dağıtma'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning görsel arabiriminde tahmine dayalı analiz çözümü oluşturmayı öğrenin. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin eden iki bölümden oluşan bir serinin ikinci bölümüdür.
+description: Azure Machine Learning görsel arabiriminde tahmine dayalı analiz çözümü oluşturmayı öğrenin. Sürükle ve bırak modüllerini kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/09/2019
+ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128977"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693058"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: görsel arabirimle bir makine öğrenimi modeli dağıtma
 
-Başkalarına [öğreticinin birinci kısmında](ui-tutorial-automobile-price-train-score.md)geliştirilen tahmine dayalı modeli kullanma şansı vermek için bunu bir Azure Web hizmeti olarak dağıtabilirsiniz. Şimdiye kadar, modelinize eğitim yapmaya çalıştık. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapabilirsiniz:
+Başkalarına [öğreticinin birinci kısmında](ui-tutorial-automobile-price-train-score.md)geliştirilen tahmine dayalı modeli kullanma şansı vermek için bunu gerçek zamanlı bir uç nokta olarak dağıtabilirsiniz. 1\. Bölüm 'de, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapabilirsiniz:
 
 > [!div class="checklist"]
-> * Bir modeli dağıtım için hazırlama
-> * Bir web hizmetini dağıtma
-> * Web hizmetini test etme
-> * Bir Web hizmetini yönetme
-> * Web hizmetini kullanma
+> * Gerçek zamanlı uç nokta dağıtma
+> * Bir ınıri yalıtma kümesi oluşturma
+> * Gerçek zamanlı uç noktayı test etme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bir makine öğrenimi modelini görsel arabirimde eğitme ve puan alma hakkında bilgi edinmek için [öğreticiden birinin bir kısmını](ui-tutorial-automobile-price-train-score.md) doldurun.
 
-## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
+## <a name="deploy-a-real-time-endpoint"></a>Gerçek zamanlı uç nokta dağıtma
 
-Denemenizi bir Web hizmeti olarak dağıtmadan önce, ilk olarak *eğitim denemenizi* bir tahmine *dayalı deneyle*dönüştürmeniz gerekir.
+İşlem hattınızı dağıtmak için şunları yapmanız gerekir:
 
-1. Deneme tuvalinin en altında, tahmine **dayalı denemeler oluştur**' u seçin.
+1. Eğitim işlem hattını, eğitim modüllerini kaldıran ve ınsekmek istekleri için giriş ve çıkışları ekleyen gerçek zamanlı bir çıkarım işlem hattına dönüştürün.
+1. Çıkarım işlem hattını dağıtın.
 
-    ![Tahmine dayalı bir deneye eğitim denemesinin otomatik dönüştürülmesini gösteren animasyonlu GIF](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+### <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
 
-    Tahmine **dayalı deneme oluştur**' u seçtiğinizde birkaç şey meydana gelir:
+1. Ardışık düzen tuvalinin üst kısmında,**gerçek zamanlı çıkarım işlem hattı**  >  **çıkarım işlem hattı oluştur** ' u seçin.
+
+    Tahmine dayalı işlem **hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
     
-    * Eğitilen model, modül paletinde **eğitilen bir model** modülü olarak depolanır. **Eğitilen modeller**altında bulabilirsiniz.
-    * Eğitim için kullanılan modülleri kaldırılır; özellikle:
-      * Model Eğitme
-      * Verileri Bölme
-      * Modeli Değerlendirme
-    * Kaydedilen eğitilen model denemeye geri eklenir.
-    * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller, Kullanıcı verilerinin modeli nereye giremeyeceğini ve verilerin döndürüldüğü yeri belirler.
+    * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim**altında bulabilirsiniz.
+    * Eğitim için kullanılan model ve **bölünmüş verileri** **eğitme** gibi modüller kaldırılır.
+    * Kaydedilen eğitilen model ardışık düzene geri eklenir.
+    * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller Kullanıcı verilerinin modeli nereye giremeyeceğini ve verilerin döndürüldüğü yeri belirler.
 
-    **Eğitim** denemesi hala deneme tuvalinin en üstündeki yeni sekmelerin altına kaydedilir.
+    > [!Note]
+    > **Eğitim işlem hattı** , ardışık düzen tuvalinin en üstündeki yeni sekmenin altına kaydedilir. Ayrıca, görsel arabirimde yayımlanmış bir işlem hattı olarak bulunabilir.
+    >
 
-1. Denemeyi çalıştırmak için **Run (Çalıştır)** düğmesine basın.
+    İşlem hatlarınız şu şekilde görünmelidir:  
 
-1. **Puan modeli** modülünün çıkışını seçin ve modelin hala çalıştığını doğrulamak Için **sonuçları görüntüle** ' yi seçin. Orijinal verilerin görüntülendiğini ve tahmin edilen fiyat ("puanlanmış Etiketler") ile birlikte görebilirsiniz.
+   ![Dağıtım için hazırlandıktan sonra işlem hattının beklenen yapılandırmasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Denemeniz şu şekilde görünmelidir:  
+1. **Çalıştır** ' ı seçin ve aynı işlem hedefini kullanın ve Bölüm 1 ' de kullanmayı deneyin.
 
-![Dağıtım için hazırlandıktan sonra deneme sürümünün beklenen yapılandırmasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+1. **Puan modeli** modülünü seçin.
 
-## <a name="deploy-the-web-service"></a>Web hizmetini dağıtma
+1. Özellikler bölmesinde, modelin hala çalıştığını doğrulamak için **çıktılar**  > **Görselleştir** ' i seçin. Orijinal verilerin tahmini fiyat ("puanlanmış Etiketler") ile birlikte görüntülendiğini görebilirsiniz.
 
-1. Tuvalin altında **Web Hizmeti Dağıt** ' ı seçin.
+1. **Dağıt**'ı seçin.
 
-1. Web hizmetinizi çalıştırmak istediğiniz **Işlem hedefini** seçin.
+### <a name="create-an-inferencing-cluster"></a>Bir ınıri yalıtma kümesi oluşturma
 
-    Şu anda, görsel arabirim yalnızca Azure Kubernetes Service (AKS) işlem hedeflerine dağıtımı destekler. Machine Learning hizmeti çalışma alanınızda kullanılabilir AKS işlem hedefleri arasından seçim yapabilir veya görüntülenen iletişim kutusunda bulunan adımları kullanarak yeni bir AKS ortamı yapılandırabilirsiniz.
+Görüntülenen iletişim kutusunda, modelinizi dağıtmak için çalışma alanınızdaki mevcut Azure Kubernetes hizmeti (AKS) kümelerinden seçim yapabilirsiniz. AKS kümeniz yoksa, bir tane oluşturmak için aşağıdaki adımları kullanın.
 
-    ![Yeni bir işlem hedefi için olası bir yapılandırmayı gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+1. **İşlem** sayfasına gitmek için Iletişim kutusunda **işlem** ' ı seçin.
 
-1. **Web hizmetini dağıt**' ı seçin. Dağıtım tamamlandığında aşağıdaki bildirimi görürsünüz. Dağıtım birkaç dakika sürebilir.
+1. Gezinti şeridinde, **çıkarım kümeleri**  >  **+ Yeni**' yi seçin.
 
-    ![Başarılı bir dağıtımın onay iletisini gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Yeni çıkarım kümesi bölmesine nasıl gidebileceğiniz gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
-## <a name="test-the-web-service"></a>Web hizmetini test edin
+1. Çıkarım kümesi bölmesinde yeni bir Kubernetes hizmeti yapılandırın.
 
-**Web Hizmetleri** sekmesine giderek, Visual Interface Web hizmetlerinizi test edebilir ve yönetebilirsiniz.
+1. **İşlem adı**için "aks-COMPUTE" yazın.
+    
+1. Yakında kullanılabilir bir **bölge**seçin.
 
-1. Web hizmeti bölümüne gidin. Ad öğreticisiyle dağıttığınız Web hizmeti 'ni görürsünüz **-otomobil Tahmini fiyatını tahmin edin [tahmine dayalı exp]** .
+1. **Oluştur**'u seçin.
 
-     ![Son oluşturulan Web hizmeti vurgulanmış Web hizmeti sekmesini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+    > [!Note]
+    > Yeni bir AKS hizmeti oluşturmak yaklaşık 15 dakika sürer. **Çıkarım kümeleri** sayfasında sağlama durumunu kontrol edebilirsiniz
+    >
 
-1. Ek ayrıntıları görüntülemek için Web hizmeti adını seçin.
+### <a name="deploy-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı dağıtma
+
+AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönelik gerçek zamanlı ıntıma ardışık düzenine geri dönün.
+
+1. Tuvalin üzerinde **Dağıt** ' ı seçin.
+
+1. **Yeni gerçek zamanlı uç noktayı dağıt**' ı seçin. 
+
+1. Oluşturduğunuz AKS kümesini seçin.
+
+1. **Dağıt**'ı seçin.
+
+    [! Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+
+    Dağıtım tamamlandığında tuvalin üzerindeki bir başarı bildirimi görüntülenir, bu işlem birkaç dakika sürebilir.
+
+## <a name="test-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı test etme
+
+Soldaki çalışma alanı gezinti bölmesindeki **uç noktalar** sayfasına giderek gerçek zamanlı uç noktanızı test edebilirsiniz.
+
+1. **Uç noktalar** sayfasında, dağıttığınız uç noktayı seçin.
+
+    ![Son oluşturulan bitiş noktası vurgulanmış şekilde gerçek zamanlı uç noktalar sekmesini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. **Test**' i seçin.
 
-    [![Web hizmeti testi sayfasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
-
 1. Test verilerini girin veya oto dolgulu örnek verileri kullanın ve **Test**' i seçin.
 
-    Test isteği Web hizmetine gönderilir ve sonuçlar sayfada gösterilir. Giriş verileri için bir fiyat değeri oluşturulsa da tahmin değeri oluşturmak için kullanılmaz.
+    Test isteği uç noktaya gönderilir ve sonuçlar sayfada gösterilir. Giriş verileri için bir fiyat değeri oluşturulsa da tahmin değeri oluşturmak için kullanılmaz.
 
-## <a name="consume-the-web-service"></a>Web hizmetini kullanma
-
-Kullanıcılar artık Azure Web hizmetinize API istekleri gönderebilir ve yeni otomobil fiyatlarını tahmin etmek için sonuçlar alabilir.
-
-**İstek/yanıt** -Kullanıcı, bir http protokolünü kullanarak bir veya daha fazla otomobil verilerini hizmete bir veya daha fazla satır gönderir. Hizmet bir veya daha fazla sonuç kümesiyle yanıt verir.
-
-Örnek REST çağrılarını, Web hizmeti ayrıntıları sayfasının **tüketme** sekmesinde bulabilirsiniz.
-
-   ![Kullanıcıların tüketme sekmesinde bulabileceği örnek bir REST çağrısını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-Daha fazla API ayrıntısı bulmak için **API belge** sekmesine gidin.
-
-## <a name="manage-models-and-deployments"></a>Modelleri ve dağıtımları yönetme
-
-Görsel arabirimde oluşturduğunuz modeller ve Web hizmeti dağıtımları da Azure Machine Learning çalışma alanından yönetilebilir.
-
-1. Çalışma alanınızı [Azure Portal](https://portal.azure.com/)açın.  
-
-1. Çalışma alanınızda **modeller**' ı seçin. Sonra oluşturduğunuz denemeyi seçin.
-
-    ![Azure portal 'de denemeleri 'e nasıl gidebileceğiniz gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
-
-    Bu sayfada, modelle ilgili ek ayrıntılar görürsünüz.
-
-1. **Dağıtımları**seçin, modeli kullanan tüm Web hizmetlerini listeler. Web hizmeti adı ' nı seçin, Web hizmeti ayrıntısı sayfasına gider. Bu sayfada, Web hizmeti hakkında daha ayrıntılı bilgi edinebilirsiniz.
-
-    [![Ekran görüntüsü ayrıntılı çalıştırma raporu](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
-
-Ayrıca, bu modelleri ve dağıtımları [çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **modeller** ve **uç noktalar** bölümlerinde bulabilirsiniz.
+    ![Fiyat vurgulanmış olarak gerçek zamanlı uç noktanın puanlanmış etiketle nasıl test leneceğini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -127,7 +123,7 @@ Ayrıca, bu modelleri ve dağıtımları [çalışma alanı giriş sayfanızın 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Visual arabiriminde makine öğrenimi modeli oluşturma, dağıtma ve kullanma konusunda temel adımları öğrendiniz. Diğer sorun türlerini çözümlemek için görsel arabirimi nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için bkz. diğer örnek denemeleri.
+Bu öğreticide, Visual arabiriminde makine öğrenimi modeli oluşturma, dağıtma ve kullanma konusunda temel adımları öğrendiniz. Diğer sorun türlerini çözümlemek için görsel arabirimi nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için diğer örnek işlem hatlarımıza bakın.
 
 > [!div class="nextstepaction"]
 > [Kredi riski sınıflandırma örneği](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

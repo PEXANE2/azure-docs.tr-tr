@@ -1,5 +1,5 @@
 ---
-title: 'Örnek: Çok düzeyli modeller-Azure Search'
+title: 'Örnek: çok düzeyli modeller-Azure Search'
 description: Birden çok düzeyli Taksonomiler için, uygulama sayfalarına dahil ettiğiniz iç içe geçmiş bir gezinti yapısı oluşturma hakkında bilgi edinin.
 author: HeidiSteen
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70274092"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Örnek: Azure Arama’daki çok düzeyli modeller
+# <a name="example-multi-level-facets-in-azure-search"></a>Örnek: Azure Search 'de çok düzeyli modeller
 
 Azure Search şemaları, çok düzeyli taksonomi kategorilerini açık bir şekilde desteklemez, ancak dizin oluşturma işleminden önce içeriği düzenleyerek ve sonra sonuçlara özel bir işleme uygulayarak bunları yaklaşık olarak yapabilirsiniz. 
 
@@ -41,17 +41,17 @@ LEFT JOIN
 
 Bu yapıyı içeren dizinde, bu verileri depolamak için Azure Search şemasında bir **koleksiyon (EDM. String)** alanı oluşturun ve alan özniteliklerinin aranabilir, filtrelenebilir, çok yönlü tablo ve alınabilir durumda olduğundan emin olun.
 
-Artık, belirli bir taksonomi kategorisine başvuran içeriği dizinlerken, taksonomiyi taksonomi düzeyinden metin içeren bir dizi olarak gönderir. Örneğin, ile `ProductCategoryId = 5 (Mountain Bikes)`bir varlık için alanını şu şekilde gönder`[ "Bikes", "Bikes|Mountain Bikes"]`
+Artık, belirli bir taksonomi kategorisine başvuran içeriği dizinlerken, taksonomiyi taksonomi düzeyinden metin içeren bir dizi olarak gönderir. Örneğin, `ProductCategoryId = 5 (Mountain Bikes)` bir varlık için, alanı `[ "Bikes", "Bikes|Mountain Bikes"]` olarak gönder
 
 "Sıradağlar bisikletleri" alt kategori değerindeki "Bisiklet" ana kategorisinin eklenmesine dikkat edin. Her alt kategori, tüm yolunu kök öğesine göre katıştırmalıdır. Kanal karakter ayırıcısı rastgele, ancak tutarlı olmalıdır ve kaynak metinde görünmemelidir. Ayırıcı karakter, uygulama kodunda, model sonuçlarından taksonomi ağacını yeniden oluşturmak için kullanılır.
 
 ## <a name="construct-the-query"></a>Sorguyu oluşturun
 
-Sorgu verirken, aşağıdaki model belirtimini (Taksonomi, çok yönlü tablo taksonomi alanınız) dahil edin:`facet = taxonomy,count:50,sort:value`
+Sorgu verirken, aşağıdaki model belirtimini (Taksonomi, çok yönlü tablo taksonomi alanınız) dahil edin: `facet = taxonomy,count:50,sort:value`
 
 Count değeri, tüm olası taksonomi değerlerini döndürecek kadar yüksek olmalıdır. AdventureWorks verileri 41 farklı taksonomi değerleri içerir, bu nedenle `count:50` yeterlidir.
 
-  Çok ![yönlü filtre] Çok (./media/search-example-adventureworks/facet-filter.png "yönlü filtre")
+  ![Çok yönlü filtre](./media/search-example-adventureworks/facet-filter.png "Çok yönlü filtre")
 
 ## <a name="build-the-structure-in-client-code"></a>Yapıyı istemci kodunda oluştur
 
@@ -87,15 +87,15 @@ categories.count = sum;
   ![çok yönlü çok yönlü filtre](./media/search-example-adventureworks/multi-level-facet.png "çok yönlü çok yönlü filtre")
 
  
-Ağaçtaki her bağlantı ilgili filtreyi uygulamalıdır. Örneğin:
+Ağaçtaki her bağlantı ilgili filtreyi uygulamalıdır. Örnek:
 
-+ **Taksonomi/any** `(x:x eq 'Accessories')` , aksesuarlar dalındaki tüm belgeleri döndürür
-+ **Taksonomi/any** `(x:x eq 'Accessories|Bike Racks')` yalnızca aksesuar dalında Bisiklet raflarının alt kategorisini içeren belgeleri döndürür.
++ **taksonomi/any** `(x:x eq 'Accessories')`, aksesuarlar dalındaki tüm belgeleri döndürür
++ **taksonomi/any** `(x:x eq 'Accessories|Bike Racks')`, yalnızca aksesuar dalında Bisiklet raflarının alt kategorisini içeren belgeleri döndürür.
 
-Bu teknik, daha derin taksonomi ağaçları ve farklı üst Kategoriler altında oluşan yinelenen alt kategoriler gibi daha karmaşık senaryoları kapsayacak şekilde ölçeklendirecektir (örneğin `Bike Components|Forks` , `Camping Equipment|Forks`ve).
+Bu teknik, daha derin taksonomi ağaçları ve farklı üst kategorilerde gerçekleşen yinelenen alt kategoriler gibi daha karmaşık senaryoları kapsayacak şekilde ölçeklendirecektir (örneğin, `Bike Components|Forks` ve `Camping Equipment|Forks`).
 
 > [!TIP]
-> Sorgu hızı döndürülen model sayısından etkilenir. Çok büyük taksonomi kümelerini desteklemek için, her belge için en üst düzey taksonomi değerini tutacak bir çok yönlü **Edm. String** alanı eklemeyi göz önünde bulundurun. Daha sonra aynı tekniği uygulayın, ancak kullanıcı üst düzey bir düğümü genişlediğinde koleksiyon modeli sorgusunu (kök taksonomi alanında filtrelenmiş) gerçekleştirin. Ya da% 100 geri çekme gerekli değilse, model sayısını makul bir sayıya küçültün ve model girişlerinin sayıma göre sıralandığına emin olun.
+> Sorgu hızı döndürülen model sayısından etkilenir. Çok büyük taksonomi kümelerini desteklemek için, her belge için en üst düzey taksonomi değerini tutacak bir çok yönlü **Edm. String** alanı eklemeyi göz önünde bulundurun. Daha sonra aynı tekniği uygulayın, ancak kullanıcı üst düzey bir düğümü genişlediğinde koleksiyon modeli sorgusunu (kök taksonomi alanında filtrelenmiş) gerçekleştirin. Ya da %100 geri çekme gerekli değilse, model sayısını makul bir sayıya küçültün ve model girişlerinin sayıma göre sıralandığına emin olun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

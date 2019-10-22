@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70098754"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için kaynak denetimi tümleştirmesi
@@ -37,7 +37,7 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
    ![Bağlantıları Yönet](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönet")
 
-   ![Bağlan](media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlan")
+   ![Bağlanma](media/sql-data-warehouse-source-control-integration/3-connect.png "Bağlayın")
 
 3. Azure depoyu deponuzu projenizden yerel makinenize kopyalayın
 
@@ -47,19 +47,19 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
 1. Visual Studio 'da **Yerel kopyalanmış deponuzda** bir dizin ve yerel Git deposu ile yeni bir SQL Server veritabanı projesi oluşturun
 
-   ![Yeni proje oluştur](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Yeni proje oluştur")  
+   ![Yeni proje oluştur](media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Yeni proje oluşturma")  
 
 2. Boş sqlprojenize sağ tıklayın ve veri Ambarınızı veritabanı projesine aktarın
 
-   ![Projeyi Içeri aktar](media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Projeyi Içeri aktar")  
+   ![Projeyi içeri aktar](media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Projeyi içeri aktar")  
 
 3. Visual Studio 'da Takım Gezgini 'nde, tüm değişikliklerinizi yerel git deponuza işleyin 
 
-   ![Yürüt](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Yürüt")  
+   ![Uygulayın](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "İşleme")  
 
 4. Kopyalanan depoda yerel olarak işlenen değişikliklere sahip olduğunuza göre, Azure DevOps projenizdeki Azure depo deponuzda yaptığınız değişiklikleri eşitleyin ve yeniden gönderin.
 
-   ![Eşitleme ve itme hazırlama](media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Eşitleme ve itme hazırlama")
+   ![Eşitleme ve Itme hazırlama](media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Eşitleme ve itme hazırlama")
 
    ![Eşitle ve Gönder](media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Eşitle ve Gönder")  
 
@@ -71,11 +71,11 @@ Bu öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi kaynak 
 
 2. Yerel deponuzdaki değişikliği Azure deponuza işleyin ve gönderin
 
-   ![Değişiklikleri Gönder](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Değişiklikleri Gönder")
+   ![Değişiklikleri Gönder](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Değişiklikleri gönderme")
 
 3. Azure depo deponuzda değişikliğin yapıldığını doğrulayın
 
-   ![Doğrula](media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Değişiklikleri doğrula")
+   ![Doğru](media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Değişiklikleri doğrula")
 
 4. (**Isteğe bağlı**) Azure depo deponuzdaki nesne tanımlarının ve yerel deponun veri Ambarınızı yansıttığından emin olmak için, SSDT kullanarak hedef veri ambarınızdaki değişiklikleri güncelleştirme, şema karşılaştırması kullanın
 

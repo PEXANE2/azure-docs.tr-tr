@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265834"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692183"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Bilişsel arama ardışık düzenine özel yetenek ekleme
 
 Azure Search bir bilişsel [Arama Dizin oluşturma işlem hattı](cognitive-search-concept-intro.md) , [önceden tanımlanmış yeteneklerin](cognitive-search-predefined-skills.md) yanı sıra, kişisel olarak oluşturup işlem hattına eklediğiniz [özel becerileri](cognitive-search-custom-skill-web-api.md) de bağlanabilir. Bu makalede, bilişsel arama işlem hattına dahil edilmesini sağlayan bir arabirimi kullanıma sunan özel bir yetenek oluşturmayı öğrenin. 
 
-Özel bir beceri oluşturmak, içeriğinize benzersiz dönüştürmeler eklemek için bir yol sağlar. Özel bir beceri, gerek duyduğunuz zenginleştirme adımını uygulayarak bağımsız olarak yürütülür. Örneğin, alana özgü özel varlıklar tanımlayabilir, iş ve finansal sözleşmeleri ve belgeleri ayırt etmek için özel sınıflandırma modelleri oluşturabilir veya ilgili içerik için ses dosyalarına daha derin ulaşmak üzere bir konuşma tanıma yeteneği ekleyebilirsiniz. Adım adım bir örnek için bkz [. örnek: Bilişsel arama](cognitive-search-create-custom-skill-example.md)için özel bir yetenek oluşturma.
+Özel bir beceri oluşturmak, içeriğinize benzersiz dönüştürmeler eklemek için bir yol sağlar. Özel bir beceri, gerek duyduğunuz zenginleştirme adımını uygulayarak bağımsız olarak yürütülür. Örneğin, alana özgü özel varlıklar tanımlayabilir, iş ve finansal sözleşmeleri ve belgeleri ayırt etmek için özel sınıflandırma modelleri oluşturabilir veya ilgili içerik için ses dosyalarına daha derin ulaşmak üzere bir konuşma tanıma yeteneği ekleyebilirsiniz. Adım adım bir örnek için bkz. örnek: bilişsel [arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md).
 
  İhtiyaç duyduğunuz özel bir yetenek, özel bir beceriye, zenginleştirme işlem hattının geri kalanına bağlamak için basit ve açık bir arabirim vardır. Bir [beceri](cognitive-search-defining-skillset.md) eklemek için tek gereksinim, girişleri kabul etme ve çıkışları bir bütün olarak tüketim kapsamında tüketilen yollarla yayma olanağıdır. Bu makalenin odağı, enzenginleştirme ardışık düzeninin gerektirdiği giriş ve çıkış biçimlerinden oluşur.
 
@@ -36,7 +36,7 @@ Azure Search bir bilişsel [Arama Dizin oluşturma işlem hattı](cognitive-sear
 
 Şu anda, özel bir beceriyle etkileşimde bulunmak için tek mekanizma bir Web API arabirimi aracılığıyla yapılır. Web API 'sinin bu bölümde açıklanan gereksinimleri karşılaması gerekir.
 
-### <a name="1--web-api-input-format"></a>1.  Web API giriş biçimi
+### <a name="1--web-api-input-format"></a>1. Web API giriş biçimi
 
 Web API 'sinin işlenecek bir kayıt dizisini kabul etmesi gerekir. Her kayıt, Web API 'nize girilen giriş olan bir "özellik paketi" içermelidir. 
 
@@ -154,7 +154,8 @@ Bir Web API 'SI oluşturduğunuzda, isteğin bir parçası olarak HTTP üst bilg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Örnek: Bilişsel arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
++ [Güç becerileri: özel yeteneklerin bir deposu](https://aka.ms/powerskills)
++ [Örnek: bilişsel arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Birden çok Lass karar ormanı: Modül başvurusu'
+title: 'Birden çok Lass karar ormanı: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: '*Karar ormanı* algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Azure Machine Learning hizmetinde birden çok Lass karar ormanı modülünü nasıl kullanacağınızı öğrenin.'
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128609"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692774"
 ---
 # <a name="multiclass-decision-forest-module"></a>Birden çok Lass karar ormanı modülü
 
@@ -41,32 +41,32 @@ Azure Machine Learning karar ormanı Sınıflandırıcısı, karar ağaçların�
 
 
 
-1. Arabirimdeki deneyinize çok **Lass karar ormanı** modülünü ekleyin. Bu modülü **Machine Learning**, **modeli başlatabilir**ve **sınıflandırmada**bulabilirsiniz.
+1. Arabirim içindeki işlem hattınıza çok **Lass karar ormanı** modülünü ekleyin. Bu modülü **Machine Learning**, **modeli başlatabilir**ve **sınıflandırmada**bulabilirsiniz.
 
 2. **Özellikler** bölmesini açmak için modüle çift tıklayın.
 
 3. Yeniden **örnekleme yöntemi**için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  Bagging veya çoğaltma arasından seçim yapabilirsiniz.
 
-    + **Bağıntı**: Bagging, *önyükleme toplama*olarak da adlandırılır. Bu yöntemde, her ağaç yeni bir örnek üzerinde büyüerek orijinal veri kümesini rastgele örnekleyerek, özgün veri kümesinin orijinal bir veri kümesine sahip olana kadar bir şekilde oluşturulur. Modellerin çıkışları, bir toplama biçimi olan *Oylama*tarafından birleştirilir. Daha fazla bilgi için bkz. önyükleme toplama için Vikipedi girişi.
+    + **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Bu yöntemde, her ağaç yeni bir örnek üzerinde büyüerek orijinal veri kümesini rastgele örnekleyerek, özgün veri kümesinin orijinal bir veri kümesine sahip olana kadar bir şekilde oluşturulur. Modellerin çıkışları, bir toplama biçimi olan *Oylama*tarafından birleştirilir. Daha fazla bilgi için bkz. önyükleme toplama için Vikipedi girişi.
 
-    + **Çoğaltma**: Çoğaltma sırasında her ağaç, tam olarak aynı giriş verilerinde eğitilir. Her ağaç düğümü için hangi bölünmüş koşulun kullanıldığını belirleme rastgele kalır ve farklı ağaçlar oluşturur.
+    + **Çoğaltma:** çoğaltmadaki her ağaç, tam olarak aynı giriş verilerinde eğitilir. Her ağaç düğümü için hangi bölünmüş koşulun kullanıldığını belirleme rastgele kalır ve farklı ağaçlar oluşturur.
 
    
 
 4. Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.
 
-    + **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak bir değer kümesi sağlamak için bu seçeneği belirleyin.
+    + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak bir değer kümesi sağlamak için bu seçeneği belirleyin.
 
 
-5. **Karar ağacının sayısı**: En yüksek sayıdaki karar ağacının en fazla sayısını yazın. Daha fazla karar ağacı oluşturarak daha iyi kapsam edinebilirsiniz, ancak eğitim süresi artabilir.
+5. **Karar ağacının sayısı**: en yüksek sayıda karar ağacının, en fazla bir şekilde oluşturulabilir. Daha fazla karar ağacı oluşturarak daha iyi kapsam edinebilirsiniz, ancak eğitim süresi artabilir.
 
     Bu değer Ayrıca, eğitilen modeli görselleştirirken sonuçlarda görünen ağaç sayısını da denetler. Tek bir ağacı görmek veya yazdırmak için, değeri 1 olarak ayarlayabilirsiniz. Ancak, bu, yalnızca bir ağacın üretilebileceği (ilk parametre kümesini içeren ağaç) ve başka bir yinelemenin gerçekleştirilmeyeceği anlamına gelir.
 
-6. **Karar ağaçlarının maksimum derinliği**: Herhangi bir karar ağacının maksimum derinliğini sınırlamak için bir sayı yazın. Ağacın derinliğini artırmak, bazı fazla sığdırma ve daha fazla eğitim süresi riskinde duyarlık artırabilir.
+6. **Karar ağaçlarının en yüksek derinliği**: herhangi bir karar ağacının maksimum derinliğini sınırlamak için bir sayı yazın. Ağacın derinliğini artırmak, bazı fazla sığdırma ve daha fazla eğitim süresi riskinde duyarlık artırabilir.
 
-7. **Düğüm başına rastgele bölme sayısı**: Ağacın her düğümünü oluştururken kullanılacak bölme sayısını yazın. *Bölünmüş* , ağaç (node) düzeyindeki özelliklerin rastgele bölündüğü anlamına gelir.
+7. **Düğüm başına rastgele bölme sayısı**: ağacın her bir düğümünü oluştururken kullanılacak bölme sayısını yazın. *Bölünmüş* , ağaç (node) düzeyindeki özelliklerin rastgele bölündüğü anlamına gelir.
 
-8. **Yaprak düğüm başına minimum örnek sayısı**: Bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin. Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız.
+8. **Yaprak düğüm başına minimum örnek sayısı**: bir ağaçta herhangi bir Terminal düğümü (yaprak) oluşturmak için gereken minimum durum sayısını belirtin. Bu değeri artırarak, yeni kurallar oluşturma eşiğini artırırsınız.
 
     Örneğin, varsayılan 1 değeri ile tek bir durum bile yeni bir kuralın oluşturulmasına neden olabilir. Değeri 5 ' e artırırsanız eğitim verilerinin aynı koşulları karşılayan en az beş durum içermesi gerekir.
 
@@ -76,7 +76,7 @@ Azure Machine Learning karar ormanı Sınıflandırıcısı, karar ağaçların�
 
     + **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](./train-model.md) modülünü kullanın.
 
-11. Denemeyi çalıştırın.
+11. İşlem hattını çalıştırma.
 
 ## <a name="results"></a>Sonuçlar
 

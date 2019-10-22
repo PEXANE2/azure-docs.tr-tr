@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69656689"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Azure Search Dizin Oluşturucu kullanarak Cosmos DB Dizin oluşturma
@@ -31,11 +31,11 @@ Terminoloji kafa karıştırıcı olabileceğinden, [Azure Cosmos DB Dizin oluş
 
 Cosmos içeriğini indekslemek için [Portal](#cosmos-indexer-portal), REST API 'leri veya .NET SDK 'sını kullanabilirsiniz. Azure Search Cosmos DB Dizin Oluşturucu şu protokollerle erişilen [Azure Cosmos öğelerine](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) göz alabilir:
 
-* [SQL API'Sİ](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
+* [SQL APı 'SI](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [MongoDB API 'SI (Önizleme)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
-> Kullanıcı sesinizin ek API desteği için var olan öğeleri var. Azure Search desteklenmek istediğiniz Cosmos API 'Leri için bir oy çevirebilirsiniz: [Tablo API'si](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
+> Kullanıcı sesinizin ek API desteği için var olan öğeleri var. Azure Search desteklenmek istediğiniz Cosmos API 'Leri için bir oy çevirebilirsiniz: [tablo API'si](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
 >
 
 <a name="cosmos-indexer-portal"></a>
@@ -50,24 +50,24 @@ Aynı bölgede, tercihen hem Azure Search hem de Azure Cosmos DB için aynı Azu
 
 Bir Cosmos hesabınız, SQL API 'SI veya MongoDB API 'sine eşlenmiş bir Azure Cosmos veritabanı ve JSON belgelerinin kapsayıcısı olmalıdır. 
 
-Cosmos DB veritabanınızın veri içerdiğinden emin olun. [Veri alma Sihirbazı](search-import-data-portal.md) meta verileri okur ve bir dizin şemasını çıkarması için veri örnekleme gerçekleştirir, ancak Ayrıca Cosmos DB verileri yükler. Veriler eksikse, sihirbaz bu hatayla biter "veri kaynağından Dizin şeması algılanırken hata oluştu: DataSource ' emptycollection ' hiç veri döndürülmediği için bir prototip dizini derlenemedi.
+Cosmos DB veritabanınızın veri içerdiğinden emin olun. [Veri alma Sihirbazı](search-import-data-portal.md) meta verileri okur ve bir dizin şemasını çıkarması için veri örnekleme gerçekleştirir, ancak Ayrıca Cosmos DB verileri yükler. Veriler eksikse, sihirbaz bu hatayla biter "veri kaynağından Dizin şeması tespit etme hatası: DataSource ' emptycollection ' hiçbir veri döndürdüğünden bir prototip dizini derlenemedi.
 
 ### <a name="2---start-import-data-wizard"></a>2-veri alma Sihirbazı 'nı başlatma
 
 Sihirbazı Azure Search hizmeti sayfasında komut çubuğundan [başlatabilir](search-import-data-portal.md) veya depolama hesabınızın sol gezinti bölmesindeki **Ayarlar** bölümünde **Azure Search Ekle** ' ye tıklayın.
 
-   ![Portalda verileri Içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'Nı başlatma")
+   ![Portalda verileri içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'nı başlatma")
 
 ### <a name="3---set-the-data-source"></a>3-veri kaynağını ayarlama
 
 > [!NOTE] 
-> Şu anda Azure portal veya .NET SDK kullanarak **MongoDB** veri kaynaklarını oluşturamaz veya düzenleyemezsiniz. Ancak, portalda MongoDB dizin oluşturucularının yürütme geçmişini izleyebilirsiniz.
+> Şu anda Azure portal veya .NET SDK kullanarak **MongoDB** veri kaynaklarını oluşturamaz veya düzenleyemezsiniz. Ancak, portalda MongoDB dizin oluşturucularının yürütme **geçmişini izleyebilirsiniz.**
 
 **Veri kaynağı** sayfasında, kaynak **Cosmos DB**, aşağıdaki belirtimlerle birlikte olmalıdır:
 
 + **Ad** , veri kaynağı nesnesinin adıdır. Oluşturulduktan sonra diğer iş yükleri için bunu seçebilirsiniz.
 
-+ **Cosmos DB hesap** , `AccountEndpoint` ve `AccountKey`ile Cosmos DB arasında birincil veya ikincil bağlantı dizesi olmalıdır. Hesap, verilerin SQL API 'si veya Mongo DB API 'SI olarak verilip verilmeyeceğini belirler
++ **Cosmos DB hesabın** , bir `AccountEndpoint` ve bir `AccountKey` ile Cosmos DB birincil veya ikincil bağlantı dizesi olması gerekir. Hesap, verilerin SQL API 'si veya Mongo DB API 'SI olarak verilip verilmeyeceğini belirler
 
 + **Veritabanı** , hesaptaki mevcut bir veritabanıdır. 
 
@@ -124,12 +124,12 @@ Dizin oluşturma işlemi tamamlandığında, dizini sorgulamak için [Arama Gezg
 
 Azure Search tüm dizin oluşturucular için ortak olan üç bölümlü bir iş akışından sonra Azure Cosmos DB verileri indekslemek için REST API kullanabilirsiniz: veri kaynağı oluşturma, dizin oluşturma, Dizin Oluşturucu oluşturma. Cosmos depolama alanından veri ayıklama, Create Indexer isteği gönderdiğinizde oluşur. Bu istek bittikten sonra, sorgulanabilir bir dizininiz olur. 
 
-MongoDB 'yi değerlendiriyorsanız veri kaynağını oluşturmak için REST `api-version=2019-05-06-Preview` 'i kullanmanız gerekir.
+MongoDB 'yi değerlendiriyorsanız veri kaynağını oluşturmak için REST `api-version=2019-05-06-Preview` kullanmanız gerekir.
 
 Cosmos DB hesabınızda, koleksiyonun tüm belgeleri otomatik olarak dizine almak isteyip istemediğinizi seçebilirsiniz. Varsayılan olarak, tüm belgeler otomatik olarak dizinlenir, ancak otomatik dizinlemeyi devre dışı bırakabilirsiniz. Dizin oluşturma kapalıyken, belgelere yalnızca kendi bağlantıları aracılığıyla veya belge KIMLIĞI kullanılarak sorgular tarafından erişilebilir. Azure Search, Azure Search tarafından Dizin oluşturulacak koleksiyonda Cosmos DB Otomatik Dizin oluşturmayı gerektirir. 
 
 > [!WARNING]
-> Azure Cosmos DB, DocumentDB 'nin yeni nesli. Daha önce API sürüm **2017-11-11** ile `documentdb` söz dizimini kullanabilirsiniz. Bu, veri kaynağı türünü veya `cosmosdb` `documentdb`olarak belirtebileceğiniz anlamına gelir. API sürüm **2019-05-06** ' den başlayarak hem Azure Search API 'ler hem de Portal yalnızca `cosmosdb` Bu makalede belirtildiği gibi söz dizimini destekler. Bu, veri kaynağı türünün bir Cosmos DB uç `cosmosdb` noktasına bağlanmak istediğinizde olması gerektiği anlamına gelir.
+> Azure Cosmos DB, DocumentDB 'nin yeni nesli. Daha önce API sürüm **2017-11-11** ile `documentdb` sözdizimini kullanabilirsiniz. Bu, veri kaynağı türünü `cosmosdb` veya `documentdb` olarak belirtebileceğiniz anlamına gelir. API sürüm **2019-05-06** ' den başlayarak hem Azure Search API 'ler hem de Portal yalnızca bu makalede belirtildiği gibi `cosmosdb` söz dizimini destekler. Bu, bir Cosmos DB uç noktasına bağlanmak istiyorsanız veri kaynağı türünün `cosmosdb` olması gerektiği anlamına gelir.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-istek için girişleri birleştirin
 
@@ -176,10 +176,10 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 
 | Alan   | Açıklama |
 |---------|-------------|
-| **name** | Gerekli. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
-|**type**| Gerekli. `cosmosdb`Olmalıdır. |
-|**Credentials** | Gerekli. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Search Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
-| **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: Gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: İsteğe bağlı. Rastgele bir JSON belgesini, Azure Search dizinleyecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB koleksiyonları için sorgular desteklenmez. |
+| **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
+|**type**| Gereklidir. @No__t_0 olmalıdır. |
+|**Credentials** | Gereklidir. Cosmos DB bir bağlantı dizesi olmalıdır.<br/>SQL koleksiyonları için, bağlantı dizeleri şu biçimdedir: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB koleksiyonları için, bağlantı dizesine **Apikind = MongoDb** ekleyin:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Search Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
+| **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Search dizinleyecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB koleksiyonları için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen. Bkz. [Dizin oluşturma değiştirilen belgeler](#DataChangeDetectionPolicy) bölümü.|
 |**dataDeletionDetectionPolicy** | İsteğe bağlı. Bkz. [Dizin oluşturma silinen belgeler](#DataDeletionDetectionPolicy) bölümü.|
 
@@ -187,7 +187,7 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 İç içe özellikleri veya dizileri, proje JSON özelliklerini düzleştirmek için bir SQL sorgusu belirtebilir ve dizine eklenecek verileri filtreleyebilirsiniz. 
 
 > [!WARNING]
-> **MongoDB** koleksiyonları için özel sorgular desteklenmez: `container.query` parametre null veya atlanmış olarak ayarlanmalıdır. Özel bir sorgu kullanmanız gerekiyorsa lütfen [Kullanıcı sesimizi](https://feedback.azure.com/forums/263029-azure-search)bize bildirin.
+> **MongoDB** koleksiyonları için özel sorgular desteklenmez: `container.query` parametresi null veya atlanmış olarak ayarlanmalıdır. Özel bir sorgu kullanmanız gerekiyorsa lütfen [Kullanıcı sesimizi](https://feedback.azure.com/forums/263029-azure-search)bize bildirin.
 
 Örnek belge:
 
@@ -248,9 +248,9 @@ Henüz yoksa bir [hedef Azure Search dizini oluşturun](/rest/api/searchservice/
 Hedef dizininizin şemasının, kaynak JSON belgelerinin şemasıyla veya özel sorgu projeksiyonunun çıkışıyla uyumlu olduğundan emin olun.
 
 > [!NOTE]
-> Bölümlenmiş koleksiyonlar için, varsayılan belge anahtarı Azure Cosmos DB `_rid` , Azure Search otomatik olarak yeniden adlandırdığı için `rid` , alan adlarının bir undepuanı karakteriyle başlamadığı bir özelliktir. Ayrıca, Azure Cosmos DB `_rid` değerler Azure Search anahtarlarda geçersiz karakterler içeriyor. Bu nedenle, `_rid` değerler Base64 kodlandı.
+> Bölümlenmiş koleksiyonlar için, varsayılan belge anahtarı Azure Cosmos DB, Azure Search otomatik olarak yeniden `rid` adlandıran `_rid` özelliktir, çünkü alan adları bir undepuanı karakteriyle başlayamaz. Ayrıca, Azure Cosmos DB `_rid` değerler Azure Search anahtarlarda geçersiz karakterler içeriyor. Bu nedenle `_rid` değerleri Base64 kodlandı.
 > 
-> MongoDB koleksiyonları için Azure Search `_id` `doc_id`özelliği otomatik olarak yeniden adlandırır.  
+> MongoDB koleksiyonları için, Azure Search `_id` özelliğini otomatik olarak `doc_id` olarak yeniden adlandırır.  
 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>JSON veri türleri ve Azure Search veri türleri arasında eşleme
 | JSON veri türü | Uyumlu hedef dizin alanı türleri |
@@ -261,7 +261,7 @@ Hedef dizininizin şemasının, kaynak JSON belgelerinin şemasıyla veya özel 
 | Dize |Edm.String |
 | Temel türlerin dizileri, örneğin ["a", "b", "c"] |Collection(Edm.String) |
 | Tarihler gibi görünen dizeler |EDM. DateTimeOffset, Edm. String |
-| GeoJSON nesneleri, örneğin {"Type": "Nokta", "koordinatlar": [Long, Lat]} |Edm.GeographyPoint |
+| GeoJSON nesneleri, örneğin {"Type": "Point", "koordinatlar": [Long, Lat]} |Edm.GeographyPoint |
 | Diğer JSON nesneleri |Yok |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4-dizin oluşturucuyu yapılandırma ve çalıştırma
@@ -298,7 +298,7 @@ Genel olarak kullanılabilen .NET SDK, genel olarak kullanılabilir REST API tam
 
 ## <a name="indexing-changed-documents"></a>Değiştirilen belgelerin dizinini oluşturma
 
-Veri değişikliği algılama ilkesinin amacı, değiştirilen veri öğelerini etkili bir şekilde belirlemektir. Şu anda desteklenen tek ilke `High Water Mark` , aşağıdaki gibi belirtilen Azure Cosmos DB tarafından sunulan `_ts` (timestamp) özelliğini kullanan ilkedir.
+Veri değişikliği algılama ilkesinin amacı, değiştirilen veri öğelerini etkili bir şekilde belirlemektir. Şu anda desteklenen tek ilke, aşağıdaki gibi belirtilen Azure Cosmos DB tarafından sunulan `_ts` (timestamp) özelliğini kullanan `High Water Mark` ilkesidir:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -315,9 +315,9 @@ Bu ilkenin kullanılması, iyi bir Dizin Oluşturucu performansını güvence al
 
 Dizin oluşturma sırasında artımlı ilerleme durumu, Dizin Oluşturucu yürütmesi geçici hatalara veya yürütme süresi sınırına göre kesintiye uğrarsa, dizin oluşturucunun, tüm koleksiyonu sıfırdan yeniden eklemek yerine, her çalıştırıldığında kaldığınız yeri açabilmesini sağlar. Büyük koleksiyonlar dizinlenirken bu özellikle önemlidir. 
 
-Özel bir sorgu kullanırken artımlı ilerlemeyi etkinleştirmek için sorgunuzun sonuçları `_ts` sütuna göre sipariş ettiğinden emin olun. Bu, Azure Search hatalara karşı artımlı ilerleme durumunu sağlamak için tarafından kullanılan düzenli denetim noktası sağlar.   
+Özel bir sorgu kullanırken artımlı ilerlemeyi etkinleştirmek için sorgunuzun sonuçları `_ts` sütununa göre sipariş ettiğinden emin olun. Bu, Azure Search hatalara karşı artımlı ilerleme durumunu sağlamak için tarafından kullanılan düzenli denetim noktası sağlar.   
 
-Bazı durumlarda, sorgunuz bir `ORDER BY [collection alias]._ts` yan tümce içeriyorsa bile, Azure Search sorgunun sipariş edildiği `_ts`çıkarmayabilir. Sonuçların `assumeOrderByHighWaterMarkColumn` yapılandırma özelliği kullanılarak sıralanarak Azure Search söyleyebilirsiniz. Bu ipucunu belirtmek için, Dizin oluşturucuyu aşağıdaki şekilde oluşturun veya güncelleştirin: 
+Bazı durumlarda, sorgunuz bir `ORDER BY [collection alias]._ts` yan tümcesi içerse bile, sorgunun `_ts` göre sıralı Azure Search çıkarmayabilir. Sonuçların `assumeOrderByHighWaterMarkColumn` yapılandırma özelliği kullanılarak sıralanarak Azure Search söyleyebilirsiniz. Bu ipucunu belirtmek için, Dizin oluşturucuyu aşağıdaki şekilde oluşturun veya güncelleştirin: 
 
     {
      ... other indexer definition properties
@@ -329,7 +329,7 @@ Bazı durumlarda, sorgunuz bir `ORDER BY [collection alias]._ts` yan tümce içe
 
 ## <a name="indexing-deleted-documents"></a>Silinen belgelerin dizinini oluşturma
 
-Koleksiyondan satırlar silindiğinde, normalde bu satırları arama dizininden da silmek istersiniz. Veri silme algılaması ilkesinin amacı, silinen veri öğelerini etkin bir şekilde tanımlamaktır. Şu anda, `Soft Delete` ilke yalnızca (silme işlemi bir sıralama bayrağıyla işaretlenir), aşağıdaki şekilde belirtilir:
+Koleksiyondan satırlar silindiğinde, normalde bu satırları arama dizininden da silmek istersiniz. Veri silme algılaması ilkesinin amacı, silinen veri öğelerini etkin bir şekilde tanımlamaktır. Şu anda desteklenen tek ilke `Soft Delete` ilkesidir (silme işlemi bir sıralama bayrağıyla işaretlenir) ve aşağıdaki şekilde belirtilir:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
@@ -337,7 +337,7 @@ Koleksiyondan satırlar silindiğinde, normalde bu satırları arama dizininden 
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Özel bir sorgu kullanıyorsanız tarafından `softDeleteColumnName` başvurulan özelliğin sorgu tarafından yansıtıldığınızdan emin olun.
+Özel bir sorgu kullanıyorsanız, `softDeleteColumnName` tarafından başvurulan özelliğin sorgu tarafından yansıtıldığınızdan emin olun.
 
 Aşağıdaki örnek, geçici silme ilkesiyle bir veri kaynağı oluşturur:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Karar ormanı gerileme: Modül başvurusu'
+title: 'Karar ormanı gerileme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Ortalama Perceptron algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Azure Machine Learning hizmetinde Iki sınıftaki ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128436"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693637"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>İki sınıflı ortalama Perceptron modülü
 
@@ -32,11 +32,11 @@ Daha basit Perceptron modelleri öğrenerek doğrusal desenleri öğrenirken, si
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>Iki sınıflı ortalama Perceptron yapılandırma
 
-1.  **Iki sınıftaki ortalama Perceptron** modülünü denemenize ekleyin.  
+1.  Ardışık düzene **Iki sınıftaki ortalama Perceptron** modülünü ekleyin.  
 
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayın.
   
 3.  **Öğrenme oranı**için *öğrenme oranı*için bir değer belirtin. Öğrenme oranı değerleri, her model test edildiğinde ve düzeltildiğinde, stochastik degradede kullanılan adımın boyutunu denetler.
   
@@ -46,7 +46,7 @@ Daha basit Perceptron modelleri öğrenerek doğrusal desenleri öğrenirken, si
   
      Erken durdurma daha iyi Genelleştirme sağlar. Yineleme sayısının artırılması, fazla sığdırma riski altında sığdırmayı geliştirir.
   
-5.  **Rastgele sayı çekirdek**için, isteğe bağlı olarak, çekirdek olarak kullanılacak bir tamsayı değeri yazın. Çalıştırmanın çalışmalarından reproducibility emin olmak istiyorsanız çekirdek kullanılması önerilir.  
+5.  **Rastgele sayı çekirdek**için, isteğe bağlı olarak, çekirdek olarak kullanılacak bir tamsayı değeri yazın. İşlem hattının reproducibility arasında olmasını sağlamak istiyorsanız çekirdek kullanılması önerilir.  
   
 1.  Eğitim veri kümesini ve eğitim modüllerden birini bağlayın:
   

@@ -11,10 +11,10 @@ ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70143152"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için sürekli tümleştirme ve dağıtım
@@ -36,11 +36,11 @@ Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi A
 
 1. Azure Pipelines gidin ve yeni bir derleme işlem hattı oluşturun
 
-      ![Yeni Işlem hattı](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Yeni Işlem hattı")
+      ![Yeni işlem hattı](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Yeni İşlem Hattı")
 
 2. Kaynak kodu deponuzu (Azure Repos git) seçin ve .NET Masaüstü uygulama şablonunu seçin
 
-      İşlem ![hattı kurulumu] İşlem (media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "hattı kurulumu") 
+      ![İşlem hattı kurulumu](media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "İşlem hattı kurulumu") 
 
 3. YAML Dosyanızı, aracınızın uygun havuzunu kullanacak şekilde düzenleyin. YAML dosyanız şuna benzer şekilde görünmelidir:
 

@@ -10,10 +10,10 @@ ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936919"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Azure Search için veri içeri aktarma Sihirbazı
@@ -66,11 +66,11 @@ Sihirbazı çalıştırmadan önce bu tek tablo veya görünüm oluşturmanız g
 | ---------- | ----------- |
 | **Mevcut veri kaynağı** |Arama hizmetinizde zaten tanımlı dizin oluşturucular varsa, yeniden kullanabileceğiniz bir veri kaynağı tanımınız olabilir. Azure Search, veri kaynağı nesneleri yalnızca dizin oluşturucular tarafından kullanılır. Programlı olarak veya **veri Içeri aktarma** Sihirbazı aracılığıyla bir veri kaynağı nesnesi oluşturabilir ve bunları gerektiği gibi yeniden kullanabilirsiniz.|
 | **Örnekler**| Azure Search, öğreticiler ve hızlı başlangıçlarda kullanılan iki yerleşik örnek veri kaynağı sağlar: gerçek bir emlak SQL veritabanı ve Cosmos DB üzerinde barındırılan bir oteller veritabanı. Oteller örneğine bağlı olarak bir izlenecek yol için Azure portal hızlı başlangıçta [Dizin oluşturma](search-get-started-portal.md) bölümüne bakın. |
-| [**Azure SQL veritabanı**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Hizmet adı, okuma izni olan bir veritabanı kullanıcısının kimlik bilgileri ve bir veritabanı adı, sayfada ya da bir ADO.NET bağlantı dizesi aracılığıyla belirtilebilir. Özellikleri görüntülemek veya özelleştirmek için bağlantı dizesi seçeneğini belirleyin. <br/><br/>Satır kümesini sağlayan tablo veya görünümün sayfada belirtilmesi gerekir. Bu seçenek bağlantı başarılı olduktan sonra, bir seçim yapabilmeniz için bir açılır liste vererek görüntülenir.|
-| **Azure VM 'de SQL Server** |Tam hizmet adını, kullanıcı KIMLIĞINI ve parolayı ve bir bağlantı dizesi olarak veritabanını belirtin. Bu veri kaynağını kullanmak için, yerel depoda bağlantıyı şifreleyen bir sertifikayı daha önce yüklemiş olmanız gerekir. Yönergeler için bkz. [SQL VM bağlantısı Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Satır kümesini sağlayan tablo veya görünümün sayfada belirtilmesi gerekir. Bu seçenek bağlantı başarılı olduktan sonra, bir seçim yapabilmeniz için bir açılır liste vererek görüntülenir. |
-| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Gereksinimler hesap, veritabanı ve koleksiyonu içerir. Koleksiyondaki tüm belgeler dizine dahil edilir. Satır kümesini düzleştirmek veya filtrelemek için bir sorgu tanımlayabilir veya sorguyu boş bırakabilirsiniz. Bu sihirbazda bir sorgu gerekli değildir.|
-| [**Azure Blob depolama**](search-howto-indexing-azure-blob-storage.md) |Gereksinimler depolama hesabı ve bir kapsayıcı içerir. İsteğe bağlı olarak, dizin oluşturma amacıyla blob adları sanal bir adlandırma kuralını izlediyseniz, adın sanal dizin bölümünü kapsayıcı altında bir klasör olarak belirtebilirsiniz. Daha fazla bilgi için bkz. [Dizin blobu depolaması](search-howto-indexing-azure-blob-storage.md) . |
-| [**Azure Tablo depolama**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve tablo adı gereksinimleri vardır. İsteğe bağlı olarak, tabloların bir alt kümesini almak için bir sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Dizin oluşturma tablosu depolaması](search-howto-indexing-azure-tables.md) . |
+| [**Azure SQL veritabanı**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Hizmet adı, okuma iznine sahip bir veritabanı kullanıcısının kimlik bilgileri ve veritabanı adı, sayfa üzerinde ya da ADO.NET bağlantı dizesi aracılığıyla belirtilebilir. Özellikleri görüntülemek veya özelleştirmek için bağlantı dizesini seçin. <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir.|
+| **Azure VM’lerde SQL Server** |Tam hizmet adını, kullanıcı KIMLIĞINI ve parolayı ve bir bağlantı dizesi olarak veritabanını belirtin. Bu veri kaynağını kullanmak için bağlantıyı şifreleyen yerel depoya daha önce bir sertifika yüklemiş olmanız gerekir. Yönergeler için bkz. [Azure Search ile SQL VM bağlantısı](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir. |
+| [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Hesap, veritabanı ve bağlantı gereklidir. Koleksiyondaki tüm belgeler dizine dahil edilir. Satır kümesini düzleştirmek veya filtrelemek için bir sorgu tanımlayabilir veya sorguyu boş bırakabilirsiniz. Bu sihirbazda bir sorgu gerekli değildir.|
+| [**Azure Blob depolama**](search-howto-indexing-azure-blob-storage.md) |Depolama hesabı ve bir kapsayıcı gereklidir. İsteğe bağlı olarak, gruplandırma amacıyla blob adlarından önce bir sanal adlandırma kuralı varsa adın sanal dizin kısmını kapsayıcı altındaki bir klasör olarak belirtebilirsiniz. Daha fazla bilgi için bkz. [Blob Depolama Dizini Oluşturma](search-howto-indexing-azure-blob-storage.md). |
+| [**Azure Tablo depolama**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve bir tablo adı gereklidir. İsteğe bağlı olarak, tabloların bir alt kümesini almak için sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Tablo Depolama Dizini Oluşturma](search-howto-indexing-azure-tables.md). |
 
 ## <a name="wizard-output"></a>Sihirbaz çıkışı
 
@@ -78,10 +78,10 @@ Sihirbaz, arka planda aşağıdaki nesneleri oluşturur, yapılandırır ve ça�
 
 | Nesne | Açıklama | 
 |--------|-------------|
-| [Veri kaynağı](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Bağlantı bilgilerini, kimlik bilgileri de dahil olmak üzere kaynak verilere devam ettirir. Veri kaynağı nesnesi yalnızca dizin oluşturucular ile kullanılır. | 
-| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Tam metin araması ve diğer sorgular için kullanılan fiziksel veri yapısı. | 
+| [Veri Kaynağı](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Bağlantı bilgilerini, kimlik bilgileri de dahil olmak üzere kaynak verilere devam ettirir. Veri kaynağı nesnesi yalnızca dizin oluşturucular ile kullanılır. | 
+| [Dizin](https://docs.microsoft.com/rest/api/searchservice/create-index) | Tam metin araması ve diğer sorgular için kullanılan fiziksel veri yapısı. | 
 | [Beceri](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | Görüntü dosyalarından bilgi çözümleme ve ayıklama da dahil olmak üzere içeriği işleme, dönüştürmeye ve şekillendirmeye yönelik bir dizi yönergedir. Çok basit ve sınırlı yapılar haricinde, zenginleştirme sağlayan bilişsel hizmetler kaynağına bir başvuru içerir. İsteğe bağlı olarak, bir bilgi deposu tanımı da içerebilir.  | 
-| [Dizinleyic](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Bir veri kaynağı, hedef dizin, isteğe bağlı bir beceri, isteğe bağlı zamanlama ve hata elde etme ve Base-64 kodlaması için isteğe bağlı yapılandırma ayarları belirleyen bir yapılandırma nesnesi. |
+| [Dizin Oluşturucu](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Bir veri kaynağı, hedef dizin, isteğe bağlı bir beceri, isteğe bağlı zamanlama ve hata elde etme ve Base-64 kodlaması için isteğe bağlı yapılandırma ayarları belirleyen bir yapılandırma nesnesi. |
 
 
 ## <a name="how-to-start-the-wizard"></a>Sihirbazı başlatma
@@ -92,7 +92,7 @@ Veri Içeri aktarma Sihirbazı, hizmet Genel Bakış sayfasındaki komut çubuğ
 
 2. En üstteki hizmete genel bakış sayfasında, **verileri Içeri aktar**' a tıklayın.
 
-   ![Verileri Içeri aktarma Portal 'da](./media/search-import-data-portal/import-data-cmd2.png "Verileri İçeri Aktarma Sihirbazı 'nı başlatma")
+   ![Portalda verileri içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'nı başlatma")
 
 Ayrıca Azure Cosmos DB, Azure SQL veritabanı ve Azure Blob depolama da dahil olmak üzere diğer Azure hizmetlerinden **Içeri aktarma verilerini** de başlatabilirsiniz. Hizmet genel bakış sayfasında sol gezinti bölmesinde **Azure Search Ekle** ' ye bakın.
 

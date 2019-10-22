@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072295"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management sayfa denetimleri
@@ -39,16 +39,16 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 -   [Uygulama-eylemler](#app-actions)  
 -   [temel-oturum açma](#basic-signin)  
 -   [sayfalama denetimi](#paging-control)  
--   [sağlayıcıları](#providers)  
+-   [sağlayıcılarla](#providers)  
 -   [arama denetimi](#search-control)  
 -   [Kaydolma](#sign-up)  
 -   [abone ol-düğme](#subscribe-button)  
 -   [abonelik-iptal et](#subscription-cancel)  
   
 ##  <a name="app-actions"></a>Uygulama-eylemler  
- `app-actions` Denetim, geliştirici portalındaki Kullanıcı profili sayfasında uygulamalarla etkileşim kurmak için bir kullanıcı arabirimi sağlar.  
+ @No__t_0 denetimi, geliştirici portalındaki Kullanıcı profili sayfasında uygulamalarla etkileşim kurmak için bir kullanıcı arabirimi sağlar.  
   
- ![uygulama&#45;eylemleri denetimi](./media/api-management-page-controls/APIM-app-actions-control.png "APIM uygulaması-eylemler denetimi")  
+ ![uygulama&#45;eylemleri denetimi](./media/api-management-page-controls/APIM-app-actions-control.png "APıM uygulaması-eylemler denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -63,14 +63,14 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 |appId|Uygulamanın kimliği.|  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `app-actions` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Uygulamalar](api-management-user-profile-templates.md#Applications)  
   
 ##  <a name="basic-signin"></a>temel-oturum açma  
- `basic-signin` Denetim, geliştirici portalındaki oturum açma sayfasında Kullanıcı oturum açma bilgilerini toplamaya yönelik bir denetim sağlar.  
+ @No__t_0 denetimi, geliştirici portalındaki oturum açma sayfasında Kullanıcı oturum açma bilgilerini toplamaya yönelik bir denetim sağlar.  
   
- ![temel&#45;oturum açma denetimi](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM temel-oturum açma denetimi")  
+ ![temel&#45;oturum açma denetimi](./media/api-management-page-controls/APIM-basic-signin-control.png "APıM temel-oturum açma denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -79,17 +79,17 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Yok.  
+ Hiçbiri.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `basic-signin` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Oturum Aç](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a>sayfalama denetimi  
- , `paging-control` Bir öğe listesini görüntüleyen geliştirici portalı sayfalarında sayfalama işlevselliği sağlar.  
+ @No__t_0, geliştirici portalı sayfalarında öğelerin listesini görüntüleyen sayfalama işlevselliği sağlar.  
   
- ![sayfalama denetimi](./media/api-management-page-controls/APIM-paging-control.png "APIM sayfalama denetimi")  
+ ![sayfalama denetimi](./media/api-management-page-controls/APIM-paging-control.png "APıM sayfalama denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -98,10 +98,10 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Yok.  
+ Hiçbiri.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `paging-control` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [API listesi](api-management-api-templates.md#APIList)  
   
@@ -110,9 +110,9 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 -   [Ürün listesi](api-management-product-templates.md#ProductList)  
   
 ##  <a name="providers"></a>sağlayıcılarla  
- `providers` Denetim, geliştirici portalındaki oturum açma sayfasında kimlik doğrulama sağlayıcılarının seçimine yönelik bir denetim sağlar.  
+ @No__t_0 denetimi, geliştirici portalındaki oturum açma sayfasında kimlik doğrulama sağlayıcılarının seçimine yönelik bir denetim sağlar.  
   
- ![sağlayıcılar denetimi](./media/api-management-page-controls/APIM-providers-control.png "APIM sağlayıcıları denetimi")  
+ ![sağlayıcılar denetimi](./media/api-management-page-controls/APIM-providers-control.png "APıM sağlayıcıları denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -121,17 +121,17 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Yok.  
+ Hiçbiri.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `providers` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Oturum Aç](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a>arama denetimi  
- , `search-control` Bir öğe listesini görüntüleyen geliştirici portalı sayfalarında arama işlevi sağlar.  
+ @No__t_0, geliştirici portalı sayfalarında öğelerin listesini görüntüleyen arama işlevleri sağlar.  
   
- ![arama denetimi](./media/api-management-page-controls/APIM-search-control.png "APIM arama denetimi")  
+ ![arama denetimi](./media/api-management-page-controls/APIM-search-control.png "APıM arama denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -140,19 +140,19 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Yok.  
+ Hiçbiri.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `search-control` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [API listesi](api-management-api-templates.md#APIList)  
   
 -   [Ürün listesi](api-management-product-templates.md#ProductList)  
   
 ##  <a name="sign-up"></a>Kaydolma  
- `sign-up` Denetim, geliştirici portalındaki kaydolma sayfasında Kullanıcı profili bilgilerini toplamaya yönelik bir denetim sağlar.  
+ @No__t_0 denetimi, geliştirici portalındaki kaydolma sayfasında Kullanıcı profili bilgilerini toplamaya yönelik bir denetim sağlar.  
   
- ![kaydolma&#45;denetimi](./media/api-management-page-controls/APIM-sign-up-control.png "APIM kaydolma denetimi")  
+ ![Kaydolma&#45;denetimi](./media/api-management-page-controls/APIM-sign-up-control.png "APıM kaydolma denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -161,17 +161,17 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Yok.  
+ Hiçbiri.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `sign-up` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Kaydolma](api-management-page-templates.md#SignUp)  
   
 ##  <a name="subscribe-button"></a>abone ol-düğme  
- , `subscribe-button` Bir kullanıcıya bir ürüne abone olmak için bir denetim sağlar.  
+ @No__t_0, kullanıcıyı bir ürüne abone olmak için bir denetim sağlar.  
   
- ![abone&#45;ol düğme denetimi](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM Subscribe-düğme denetimi")  
+ ![abone&#45;ol düğme denetimi](./media/api-management-page-controls/APIM-subscribe-button-control.png "APıM Subscribe-düğme denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -180,17 +180,17 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 ```  
   
 ### <a name="parameters"></a>Parametreler  
- Yok.  
+ Hiçbiri.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `subscribe-button` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Ürünüyle](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a>abonelik-iptal et  
- `subscription-cancel` Denetim, geliştirici portalındaki Kullanıcı profili sayfasında bir ürüne aboneliği iptal etmek için bir denetim sağlar.  
+ @No__t_0 denetimi, geliştirici portalındaki Kullanıcı profili sayfasında bir ürüne aboneliği iptal etmek için bir denetim sağlar.  
   
- ![Abonelik&#45;iptal denetimi](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM aboneliği-denetimi iptal et")  
+ ![Abonelik&#45;iptal denetimi](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APıM aboneliği-denetimi iptal et")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -208,7 +208,7 @@ Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda iste
 |cancelUrl 'Si|Abonelik URL 'YI iptal eder.|  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- `subscription-cancel` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ @No__t_0 denetimi aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Ürünüyle](api-management-product-templates.md#Product)
 

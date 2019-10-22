@@ -1,5 +1,5 @@
 ---
-title: 'Veri birleştirin: Modül başvurusu'
+title: 'Veri birleştirin: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Veri kümelerini birleştirmek için Azure Machine Learning hizmetinde birleştirme verilerini birleştirme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128732"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693087"
 ---
 # <a name="join-data"></a>Verileri birleştirme
 
@@ -24,7 +24,7 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
 
 İki veri kümesi üzerinde bir JOIN gerçekleştirmek için, anahtar sütunuyla ilişkili olmaları gerekir. Birden çok sütun kullanan bileşik anahtarlar da desteklenir. 
 
-1. Birleştirmek istediğiniz veri kümelerini ekleyin ve sonra **birleştirme verileri** modülünü denemenize sürükleyin. 
+1. Birleştirmek istediğiniz veri kümelerini ekleyin ve sonra **birleştirme verileri** modülünü işlem hattınızla sürükleyin. 
 
     Modülü, **veri dönüştürme** kategorisinde, **düzenleme**altında bulabilirsiniz.
 
@@ -43,28 +43,28 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
     ![Sütun seçici](media/module/join-data-column-selector.png)
 
 
-1. Metin sütunu birleştirmesinden büyük/küçük harf duyarlılığı korumak istiyorsanız, büyük/küçük **harf** seçeneğini belirleyin. 
+1. Metin sütunu **birleştirmesinden** büyük/küçük harf duyarlılığı korumak istiyorsanız, büyük/küçük harf seçeneğini belirleyin. 
    
 1. Veri kümelerinin nasıl birleştirildiğini belirtmek için **JOIN türü** açılan listesini kullanın.  
   
-    * **Iç birleşim**: Bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
+    * **Iç birleşim**: bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
   
-    * **Sol dış birleşim**: *Sol dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
+    * **Sol dış birleşim**: sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
   
-    * **Tam dış birleşim**: *Tam dış birleşim* , sol tablodaki (**Table1**) ve sağ tablodaki (**Table2**) tüm satırları döndürür.  
+    * **Tam dış birleşim**: *tam dış birleşim* , sol tablodaki (**Table1**) ve sağ tablodaki (**Table2**) tüm satırları döndürür.  
   
          Herhangi bir tabloda, birbirleriyle eşleşen satırları olmayan her bir satır için, sonuç eksik değerler içeren bir satır içerir.  
   
-    * **Sol yarı ekleme**: *Sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
+    * **Sol yarı ekleme**: *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
 
 1. **Birleşik tablodaki doğru anahtar sütunları tut**seçeneği için:
 
     * Her iki giriş tablolarından anahtarları görüntülemek için bu seçeneği belirleyin.
     * Yalnızca sol girdiden anahtar sütunları döndürmek için seçimi kaldırın.
 
-1. Denemeyi çalıştırın veya verileri Birleştir modülünü seçin ve birleşimi gerçekleştirmek için seçili **Çalıştır** ' ı seçin.
+1. İşlem hattını çalıştırın veya veri Birleştir modülünü seçin ve birleşimi gerçekleştirmek için seçili **Çalıştır** ' ı seçin.
 
-1. Sonuçları görüntülemek için, **verileri** > Birleştir**sonuçları veri kümesi** > **Görselleştir**' e sağ tıklayın.
+1. Sonuçları görüntülemek için **verileri birleştir**  > **sonuçları veri kümesine** sağ tıklayıp**görselleştirip** > .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

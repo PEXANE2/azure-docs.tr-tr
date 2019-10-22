@@ -1,5 +1,5 @@
 ---
-title: 'Birden çok sınıf tarafından artırılmış karar ağacı: Modül başvurusu'
+title: 'Birden çok sınıf tarafından artırılmış karar ağacı: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Etiketli verileri kullanarak bir sınıflandırıcı oluşturmak için Azure Machine Learning hizmetinde çoklu sınıf tarafından kullanılan karar ağacı modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a9cf134a3db5b9bc62cd0f9054aefa6092954d9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129919"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692813"
 ---
-# <a name="multiclass-boosted-decision-tree"></a>Birden çok sınıf tarafından artırılmış karar ağacı
+# <a name="multiclass-boosted-decision-tree"></a>Çok Sınıflı Artırmalı Karar Ağacı
 
 Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
@@ -31,11 +31,11 @@ Bu modül, eğitimli olmayan bir sınıflandırma modeli oluşturur. Sınıfland
 
 [Eğitme modelini](././train-model.md)kullanarak bu tür modeli eğitebilirsiniz. 
 
-1.  Çoklu sınıf için çok **maliyetli karar ağacı** modülünü denemenize ekleyin.
+1.  Çoklu sınıf için çok **maliyetli karar ağacı** modülünü ardışık düzene ekleyin.
 
 1.  Model **oluşturma modunu** ayarlayarak modelin nasıl eğitilme etmek istediğinizi belirtin.
 
-    + **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    + **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
 
 
     *  **Ağaç başına en fazla yaprakları** sayısı, herhangi bir ağaçta oluşturulabilecek maksimum Terminal düğümü sayısını (yaprakları) sınırlar.

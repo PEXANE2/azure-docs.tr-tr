@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fd7e94261d8302224b0e31e5f4ac46978dfa812f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498386"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690871"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Otomasyonu farklı çalıştır hesaplarını yönetme
 
@@ -43,20 +43,20 @@ Farklı Çalıştır hesabı oluşturduğunuzda, Azure Active Directory yeni bir
 
 ## <a name="permissions"></a>Farklı Çalıştır hesaplarını yapılandırma izinleri
 
-Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, belirli ayrıcalıklara ve izinlere sahip olmanız gerekir. Azure Active Directory bir genel yönetici ve abonelik içindeki bir sahip tüm görevleri tamamlayabilir. Görevlerinin ayrılmanız durumunda aşağıdaki tabloda, görevlerin bir listesi, eşdeğer cmdlet ve gerekli izinler gösterilmektedir:
+Farklı Çalıştır hesabı oluşturmak veya güncelleştirmek için, belirli ayrıcalıklara ve izinlere sahip olmanız gerekir. Azure Active Directory ve bir abonelikteki bir sahip uygulama Yöneticisi tüm görevleri tamamlayabilir. Görevlerinin ayrılmanız durumunda aşağıdaki tabloda, görevlerin bir listesi, eşdeğer cmdlet ve gerekli izinler gösterilmektedir:
 
 |Görev|Cmdlet  |Minimum Izinler  |İzinleri ayarladığınız yer|
 |---|---------|---------|---|
 |Azure AD uygulaması oluşturma|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Uygulama geliştirici rolü<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Ana > Azure Active Directory > uygulama kayıtları |
 |Uygulamaya bir kimlik bilgisi ekleyin.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Uygulama Yöneticisi veya genel yönetıcı<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Ana > Azure Active Directory > uygulama kayıtları|
 |Azure AD hizmet sorumlusu oluşturma ve edinme|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Uygulama Yöneticisi veya genel yönetıcı<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Ana > Azure Active Directory > uygulama kayıtları|
-|Belirtilen sorumlu için RBAC rolünü ata veya al|[New-Azurermroleatama](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-Azurermroleatama](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Aşağıdaki izinlere sahip olmanız gerekir:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Ya da şunları yapın:</br></br>Kullanıcı erişimi Yöneticisi veya sahibi        | [Abonelik](../role-based-access-control/role-assignments-portal.md)</br>Ana > abonelikleri abonelik \<adı\> >-Access Control (IAM)|
+|Belirtilen sorumlu için RBAC rolünü ata veya al|[New-Azurermroleatama](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-Azurermroleatama](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Aşağıdaki izinlere sahip olmanız gerekir:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Ya da şunları yapın:</br></br>Kullanıcı erişimi Yöneticisi veya sahibi        | [Abonelik](../role-based-access-control/role-assignments-portal.md)</br>Ana > abonelikleri > \<subscription adı \>-Access Control (ıAM)|
 |Otomasyon sertifikası oluşturma veya kaldırma|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Kaynak grubunda katkıda bulunan         |Otomasyon hesabı kaynak grubu|
 |Otomasyon bağlantısı oluşturma veya kaldırma|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Kaynak grubunda katkıda bulunan |Otomasyon hesabı kaynak grubu|
 
 <sup>1</sup> Azure AD kiracınızdaki yönetici olmayan kullanıcılar, **Kullanıcı ayarları** sayfasında **uygulamalar kaydedebiliyorsanız** , [ad uygulamalarını kayıt](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) **edebilir.** Uygulama kayıtları ayarı **Hayır**olarak ayarlanırsa, bu eylemi gerçekleştiren kullanıcının önceki tabloda tanımlanmaları gerekir.
 
-Aboneliğin **genel yönetici** rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, konuk olarak eklendiniz. Bu durumda, **Otomasyon hesabı ekle** sayfasında `You do not have permissions to create…` bir uyarı alırsınız. Önce **genel yönetici** rolüne eklenen kullanıcılar, aboneliğin Active Directory örneğinden kaldırılabilir ve Active Directory bir tam Kullanıcı haline getirmek için yeniden eklenebilir. Bu durumu doğrulamak için Azure portalındaki **Azure Active Directory** bölmesinde **Kullanıcılar ve gruplar**’ı, **Tüm kullanıcılar**’ı seçin ve belirli bir kullanıcıyı seçtikten sonra **Profil**’i seçin. Kullanıcı profili altındaki **Kullanıcı türü** özniteliğinin **Konuk** olmaması gerekir.
+Aboneliğin **genel yönetici** rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, konuk olarak eklendiniz. Bu durumda, **Otomasyon hesabı ekle** sayfasında bir `You do not have permissions to create…` uyarısı alırsınız. Önce **genel yönetici** rolüne eklenen kullanıcılar, aboneliğin Active Directory örneğinden kaldırılabilir ve Active Directory bir tam Kullanıcı haline getirmek için yeniden eklenebilir. Bu durumu doğrulamak için Azure portalındaki **Azure Active Directory** bölmesinde **Kullanıcılar ve gruplar**’ı, **Tüm kullanıcılar**’ı seçin ve belirli bir kullanıcıyı seçtikten sonra **Profil**’i seçin. Kullanıcı profili altındaki **Kullanıcı türü** özniteliğinin **Konuk** olmaması gerekir.
 
 ## <a name="permissions-classic"></a>Klasik farklı çalıştır hesaplarını yapılandırma izinleri
 
@@ -372,14 +372,14 @@ Sertifikayı yenilemek için aşağıdakileri yapın:
 
 Sertifikaları otomatik olarak yenilemek için bir Otomasyon Runbook 'unu kullanabilirsiniz. [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) 'daki aşağıdaki betik Otomasyon hesabınızda bu işlevselliği sunar.
 
-- Betik `GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1` , farklı çalıştır hesabı sertifikalarını yenilemek için haftalık bir zamanlama oluşturur.
+- @No__t_0 betiği, farklı çalıştır hesabı sertifikalarını yenilemek için haftalık bir zamanlama oluşturur.
 - Betik, Otomasyon hesabınıza bir **Update-AutomationRunAsCredential** runbook 'u ekler.
-  - Ayrıca, komut dosyasında GitHub 'daki runbook kodunu görüntüleyebilirsiniz: [Update-AutomationRunAsCredential. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1).
+  - Ayrıca, betik: [Update-AutomationRunAsCredential. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1)Içinde, GitHub 'daki runbook kodunu görüntüleyebilirsiniz.
   - Sertifikaları gerektiğinde el ile yenilemek için, dosyadaki PowerShell kodunu da kullanabilirsiniz.
 
 Yenileme işlemini hemen test etmek için aşağıdaki adımları kullanın:
 
-1. **Update-automationrunascredential** runbook 'unu düzenleyin ve aşağıda gösterildiği gibi`#` `Exit(1)` komutun önünde, satır 122 ' ye bir açıklama karakteri () koyun.
+1. **Update-AutomationRunAsCredential** runbook 'unu düzenleyin ve aşağıda gösterildiği gibi, `Exit(1)` komutunun önüne 122. satıra bir açıklama karakteri (`#`) koyun.
 
    ```powershell
    #Exit(1)
@@ -410,11 +410,11 @@ Yenileme işlemini hemen test etmek için aşağıdaki adımları kullanın:
 Azure 'daki kaynaklara karşı Otomasyon hedefini denetlemek için, mevcut farklı çalıştır hesabı hizmet sorumlunuzu özel bir rol oluşturmak ve kullanmak üzere değiştirmek üzere PowerShell galerisinde [Update-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug8) betiğini çalıştırabilirsiniz tanımı. Bu rolün [Key Vault](https://docs.microsoft.com/azure/key-vault/)hariç tüm kaynaklar için izinleri olacaktır.
 
 > [!IMPORTANT]
-> `Update-AutomationRunAsAccountRoleAssignments.ps1` Betiği çalıştırdıktan sonra, runas hesaplarının kullanımı üzerinden keykasasına erişen runbook 'lar artık çalışmayacaktır. Azure Anahtar Kasası 'na çağrılar için hesabınızdaki runbook 'ları incelemeniz gerekir.
+> @No__t_0 betiğini çalıştırdıktan sonra, RunAs hesaplarının kullanımı üzerinden Keykasasına erişen runbook 'lar artık çalışmayacaktır. Azure Anahtar Kasası 'na çağrılar için hesabınızdaki runbook 'ları incelemeniz gerekir.
 >
 > Azure Otomasyonu runbook 'lardan Keykasasına erişimi etkinleştirmek için [, runas hesabını keykasasının izinlerine eklemeniz](#add-permissions-to-key-vault)gerekir.
 
-RunAs hizmeti sorumlunun daha fazla neler yapabileceğini kısıtlamak isterseniz, özel rol tanımının öğesine `NotActions` diğer kaynak türleri ekleyebilirsiniz. Aşağıdaki örnek, erişimini `Microsoft.Compute`kısıtlar. Bunu rol tanımının **NotActions** ' e eklerseniz, bu rol herhangi bir işlem kaynağına erişemez. Rol tanımları hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için rol tanımlarını anlama](../role-based-access-control/role-definitions.md).
+RunAs hizmeti sorumlusunun daha fazla neler yapabileceğini kısıtlamak isterseniz, özel rol tanımının `NotActions` diğer kaynak türlerini ekleyebilirsiniz. Aşağıdaki örnek `Microsoft.Compute` erişimi kısıtlar. Bunu rol tanımının **NotActions** ' e eklerseniz, bu rol herhangi bir işlem kaynağına erişemez. Rol tanımları hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için rol tanımlarını anlama](../role-based-access-control/role-definitions.md).
 
 ```powershell
 $roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
@@ -422,9 +422,9 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-Farklı Çalıştır hesabınız tarafından kullanılan hizmet sorumlusunun **katkıda** bulunduğunu veya özel bir rol tanımını Otomasyon hesabınıza gidin ve **Hesap ayarları**altında, **Farklı Çalıştır hesapları** > Azure farklı çalıştır hesabı ' nı seçin. **Rol** altında, kullanılmakta olan rol tanımını bulabilirsiniz.
+Farklı Çalıştır hesabınız tarafından kullanılan hizmet sorumlusunun **katkıda** bulunduğu veya özel bir rol tanımında olup olmadığını belirlemek Için Otomasyon hesabınıza gidin ve **Hesap ayarları**altında Azure farklı çalıştır**hesabı** >  **Farklı Çalıştır hesapları** ' nı seçin. **Rol** altında, kullanılmakta olan rol tanımını bulabilirsiniz.
 
-[![](media/manage-runas-account/verify-role.png "Farklı Çalıştır hesabı rolünü doğrulama")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+[![](media/manage-runas-account/verify-role.png "Verify the Run As Account role")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 
 Birden çok abonelik veya Otomasyon hesabı için Otomasyon farklı çalıştır hesapları tarafından kullanılan rol tanımını öğrenmek için PowerShell Galerisi [Check-AutomationRunAsAccountRoleAssignments. ps1](https://aka.ms/AA5hug5) betiğini kullanabilirsiniz.
 

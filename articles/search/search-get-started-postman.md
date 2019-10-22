@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
 ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72176047"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Postman 'da Azure Search dizin oluşturma
@@ -25,7 +25,7 @@ ms.locfileid: "72176047"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-[Azure Search REST API 'leri](https://docs.microsoft.com/rest/api/searchservice) keşfetmenin en kolay yollarından bırı, http isteklerini oluşturmak ve yanıtları Incelemek Için Postman veya başka bir Web testi aracı kullanmaktır. Doğru araçlar ve bu yönergelerle, herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
+[Azure Search REST API 'leri](https://docs.microsoft.com/rest/api/searchservice) keşfetmenin en kolay yollarından bırı, http isteklerini oluşturmak ve yanıtları Incelemek Için Postman veya başka bir Web testi aracı kullanmaktır. Doğru araçlar ve bu yönergelerden yararlanarak herhangi bir kod yazmadan önce istek gönderebilir ve yanıtları görüntüleyebilirsiniz.
 
 Bu makalede, isteklerin etkileşimli olarak nasıl formülleneceği açıklanır. Alternatif olarak, önceden tanımlanmış istekleri kullanmak için [bir Postman koleksiyonunu indirebilir ve içeri aktarabilirsiniz](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) .
 
@@ -41,15 +41,15 @@ Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir.
 
 ## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
-REST çağrıları, her istekte hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle aboneliğinize Azure Search eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
+REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. İkisini de içeren bir arama hizmeti oluşturulur. Bu nedenle aboneliğinize Azure Search hizmetini eklediyseniz gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek bir uç nokta `https://mydemo.search.windows.net` gibi görünebilir.
+1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
 1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-HTTP uç noktası ![ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "http uç noktası ve erişim anahtarı al")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
-Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. Geçerli bir anahtara sahip olmak, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
+Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
 ## <a name="connect-to-azure-search"></a>Azure Search Bağlan
 
@@ -59,7 +59,7 @@ Her iki araç için de bir komut seçmeniz gerekir (GET, POST, PUT, vb.), bir UR
 
     https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
-HTTPS ön ekine, hizmetin adına, bir nesnenin adına (Bu durumda, dizinler koleksiyonuna) ve [api sürümüne](search-api-versions.md)dikkat edin. Api sürümü, geçerli sürüm için `?api-version=2019-05-06` olarak belirtilen küçük harfli bir dizedir. API sürümleri düzenli olarak güncelleştirilir. Her bir istek üzerine API-Version dahil edilmesi, bir bütün olarak kullanılması üzerinde tam denetim sağlar.  
+HTTPS ön ekine, hizmetin adına, bir nesnenin adına (Bu durumda, dizinler koleksiyonuna) ve [api sürümüne](search-api-versions.md)dikkat edin. Api sürümü, geçerli sürüm için `?api-version=2019-05-06` olarak belirtilen küçük harfli bir dizedir. API sürümleri düzenli olarak güncelleştirilir. api-version parametresini her isteğe dahil etmeniz hangisinin kullanıldığıyla ilgili tam denetim sahibi olmanızı sağlar.  
 
 İstek üst bilgisi bileşimi iki öğe, içerik türü ve Azure Search kimlik doğrulaması için kullanılan api anahtarını içerir. Yönetici API anahtarını (-AZURE-SEARCH-ADMIN-API-KEY) geçerli bir değerle değiştirin. 
 
@@ -68,9 +68,9 @@ HTTPS ön ekine, hizmetin adına, bir nesnenin adına (Bu durumda, dizinler kole
 
 Postman 'da, aşağıdaki ekran görüntüsü gibi görünen bir istek girin. Fiil olarak **Al** ' ı SEÇIN, URL 'yi sağlayın ve **Gönder**' e tıklayın. Bu komut Azure Search bağlanır, dizinler koleksiyonunu okur ve başarılı bir bağlantıda HTTP durum kodu 200 döndürür. Hizmetiniz zaten dizinler içeriyorsa, yanıt Dizin tanımlarını da içerir.
 
-![Postman istek URL 'si ve üst bilgi](media/search-get-started-postman/postman-url.png "POSTMAN istek URL 'si ve üstbilgisi")
+![Postman istek URL 'SI ve üstbilgisi](media/search-get-started-postman/postman-url.png "Postman istek URL 'SI ve üstbilgisi")
 
-## <a name="1---create-an-index"></a>1-Dizin oluşturma
+## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
 Azure Search, genellikle dizini verilerle yüklemeden önce oluşturursunuz. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu görev için kullanılır. 
 
@@ -84,15 +84,15 @@ Bunu Postman 'da yapmak için:
 
 3. İsteğin gövdesinde Dizin tanımını (aşağıda, kopyalama öncesi kod verilmiştir) sağlayın.
 
-4. **Gönder**’e tıklayın.
+4. **Gönder**' e tıklayın.
 
-İstek(media/search-get-started-postman/postman-request.png "gövdesinde") JSON belgesi iste JSON belgesi ![Oluştur]
+![İstek gövdesinde JSON belgesi dizini oluştur](media/search-get-started-postman/postman-request.png "İstek gövdesinde JSON belgesi dizini oluştur")
 
 ### <a name="index-definition"></a>Dizin tanımı
 
-Alanlar koleksiyonu belge yapısını tanımlar. Her belge bu alanlara sahip olmalıdır ve her bir alan bir veri türüne sahip olmalıdır. Dize alanları tam metin aramasında kullanıldığından, içeriğe aranabilir olması gerekiyorsa sayısal verileri dizeler olarak dönüştürmek isteyebilirsiniz.
+Alanlar koleksiyonu belge yapısını tanımlar. Her belge bu alanlara sahip olmalıdır ve her bir alan bir veri türüne sahip olmalıdır. Dize alanları tam metin araması için kullanılır. Bu nedenle içerikte arama yapılabilmesini istiyorsanız sayısal verileri dize olarak ayarlamak isteyebilirsiniz.
 
-Alandaki öznitelikler izin verilen eylemi tespit. REST API 'Leri varsayılan olarak birçok eyleme izin verir. Örneğin, tüm dizeler varsayılan olarak aranabilir, alınabilir, filtrelenebilir ve çok yönlü tablolardır. Genellikle, öznitelikleri yalnızca bir davranışı kapatmanız gerektiğinde ayarlamanız gerekir.
+Alan öznitelikleri izin verilen eylemi belirler. REST API'leri varsayılan olarak birçok eyleme izin verir. Örneğin tüm dizelerde arama, getirme, filtreleme ve modelleme özellikleri varsayılan olarak etkindir. Genellikle, öznitelikleri yalnızca bir davranışı kapatmanız gerektiğinde ayarlamanız gerekir.
 
 ```json
 {
@@ -119,32 +119,32 @@ Alandaki öznitelikler izin verilen eylemi tespit. REST API 'Leri varsayılan ol
 }
 ```
 
-Bu isteği gönderdiğinizde, dizinin başarıyla oluşturulduğunu belirten bir HTTP 201 yanıtı almanız gerekir. Portalda bu eylemi doğrulayabilirsiniz, ancak bir dakika veya iki dakika sürecek şekilde, portal sayfasında yenileme aralıkları olduğunu unutmayın.
+Bu isteği gönderdiğinizde dizinin başarıyla oluşturulduğunu belirten HTTP 201 yanıtı almanız gerekir. Bu eylemi portaldan doğrulayabilirsiniz ancak portal sayfasındaki yenileme aralıkları nedeniyle bilgilerin güncellenmesi bir-iki dakika sürebilir.
 
 > [!TIP]
-> HTTP 504 ' i alırsanız URL 'nin HTTPS belirttiğinden emin olun. HTTP 400 veya 404 görürseniz, kopya yapıştırma hatası olmadığını doğrulamak için istek gövdesini kontrol edin. Bir HTTP 403, genellikle API anahtarı ile ilgili bir sorun olduğunu gösterir (geçersiz bir anahtar veya API anahtarı belirtildiğinde sözdizimi sorunu).
+> HTTP 504 yanıtı alırsanız HTTPS'yi belirten URL'yi doğrulayın. HTTP 400 veya 404 yanıtı görürseniz kopyala-yapıştır hatası olmadığını doğrulamak için istek gövdesini kontrol edin. HTTP 403 genelde api anahtarı ile ilgili bir sorunu gösterir (geçersiz anahtar veya api anahtarının nasıl belirtildiğine ilişkin söz dizimi sorunu).
 
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-Dizinin oluşturulması ve dizinin doldurulması ayrı adımlardır. Azure Search, dizin, JSON belgeleri olarak sağlayabilmeniz için tüm aranabilir verileri içerir. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
+Dizini oluşturma ve dizini doldurma ayrı adımlardır. Azure Search'te dizin, arama yapılabilecek ve JSON belgeleri olarak iletebileceğiniz tüm verileri içerir. Bu görev için [REST API belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) işlemi kullanılıyor. 
 
 URL, `docs` koleksiyonlarını ve `index` işlemini içerecek şekilde genişletilir.
 
 Bunu Postman 'da yapmak için:
 
-1. Fiili öğesini **gönderi**olarak değiştirin.
+1. Fiili **POST** olarak değiştirin.
 
 2. Bu URL 'ye kopyalayın `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
 
 3. İsteğin gövdesinde JSON belgelerini (kopya-Ready kodu aşağıda bulunur) sağlayın.
 
-4. **Gönder**’e tıklayın.
+4. **Gönder**' e tıklayın.
 
-İstek(media/search-get-started-postman/postman-docs.png "gövdesinde JSON belgelerinin") ![istek gövdesinde JSON belgeleri]
+![İstek gövdesinde JSON belgeleri](media/search-get-started-postman/postman-docs.png "İstek gövdesinde JSON belgeleri")
 
 ### <a name="json-documents-to-load-into-the-index"></a>Dizine yüklenecek JSON belgeleri
 
-Istek gövdesi, oteller dizinine eklenecek dört belge içerir.
+İstek Gövdesi, oteller dizinine eklenecek dört belge içerir.
 
 ```json
 {
@@ -229,15 +229,15 @@ Istek gövdesi, oteller dizinine eklenecek dört belge içerir.
 }
 ```
 
-Birkaç saniye içinde oturum listesinde bir HTTP 201 yanıtı görmeniz gerekir. Bu, belgelerin başarıyla oluşturulduğunu gösterir. 
+Birkaç saniye içinde oturum listesinde bir HTTP 201 yanıtı görmeniz gerekir. Bu, belgelerin başarıyla oluşturulduğunu belirtir. 
 
-207 alırsanız, en az bir belge karşıya yüklenemedi. 404 alırsanız, bu isteğin üst bilgisinde veya gövdesinde bir sözdizimi hatası vardır: uç noktayı `/docs/index` içerecek şekilde değiştirdiğinizi doğrulayın.
+207 yanıtı alırsanız en az bir belge karşıya yüklenemedi. 404 yanıtı alırsanız üst bilgi veya istek gövdesinde söz dizimi hatanız vardır. Uç noktayı `/docs/index` içerecek şekilde değiştirdiğinizden emin olun.
 
 > [!Tip]
-> Seçili veri kaynakları için, dizin oluşturma için gereken kod miktarını basitleştiren ve azaltan alternatif *Dizin Oluşturucu* yaklaşımını seçebilirsiniz. Daha fazla bilgi için bkz. [Dizin Oluşturucu işlemleri](https://docs.microsoft.com/rest/api/searchservice/indexer-operations).
+> Seçili veri kaynaklarında dizin oluşturma için gerekli kodları sadeleştiren ve miktarını azaltan alternatif *dizin oluşturucu* yaklaşımını kullanabilirsiniz. Daha fazla bilgi için bkz. [Dizin oluşturucu işlemleri](https://docs.microsoft.com/rest/api/searchservice/indexer-operations).
 
 
-## <a name="3---search-an-index"></a>3-dizin arama
+## <a name="3---search-an-index"></a>3 - Dizin arama
 
 Artık bir dizin ve belge yüklendikten sonra, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bunlara yönelik sorgular verebilirsiniz REST API.
 
@@ -249,11 +249,11 @@ Bunu Postman 'da yapmak için:
 
 2. Bu URL 'ye kopyalayın `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
 
-3. **Gönder**’e tıklayın.
+3. **Gönder**' e tıklayın.
 
 Bu sorgu boş ve arama sonuçlarındaki belgelerin sayısını döndürüyor. **Gönder**' e tıkladıktan sonra istek ve yanıt, Postman için aşağıdaki ekran görüntüsüne benzer görünmelidir. Durum kodu 200 olmalıdır.
 
- URL(media/search-get-started-postman/postman-query.png "'de arama dizesiyle birlikte") Get ![URL 'Sindeki arama dizesiyle al]
+ ![URL 'de arama dizesiyle al](media/search-get-started-postman/postman-query.png "URL 'de arama dizesiyle al")
 
 Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. Dize araması yapabilir, tam $filter sorgular yapabilir, sonuç kümesini sınırlayabilir, aramanın belirli alanlarla kapsamını ve daha fazlasını yapabilirsiniz.
 
@@ -282,13 +282,13 @@ Belge sayılarını ve dizin boyutunu sorgulamak için de [Istatistikleri al](ht
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
 ```
 
-URL 'nize `/stats` eklemek dizin bilgilerini döndürür. Postman 'da isteğiniz aşağıdakine benzer görünmelidir ve yanıt, bayt cinsinden kullanılan bir belge sayısı ve alanı içerir.
+URL 'nize `/stats` eklemek dizin bilgilerini döndürür. Postman uygulamasında isteğinizin aşağıdakine benzer olması ve yanıtta belge sayısı ile kullanılan alanın bayt cinsinden değerinin belirtilmesi gerekir.
 
- Dizin ![bilgilerini]Al(media/search-get-started-postman/postman-system-query.png "Dizin bilgilerini al")
+ ![Dizin bilgilerini al](media/search-get-started-postman/postman-system-query.png "Dizin bilgilerini al")
 
-Api sürümü sözdiziminin farklı olduğuna dikkat edin. Bu istek için, api sürümünü eklemek üzere `?` ' ı kullanın. @No__t-0 sorgu dizesindeki URL yolunu ayırır, & sorgu dizesinde her bir ' name = value ' çiftini ayırır. Bu sorgu için, api sürümü sorgu dizesindeki ilk ve tek öğedir.
+api-version söz diziminin farklı olduğuna dikkat edin. Bu istek için api-version parametresine `?` ekleyin. @No__t_0, URL yolunu sorgu dizesinden ayırır, & her bir ' name = value ' çiftini sorgu dizesinde ayırır. Bu sorgu için api-version, sorgu dizesindeki ilk ve tek öğedir.
 
-## <a name="clean-up"></a>Temizle
+## <a name="clean-up"></a>Temizleme
 
 Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
 

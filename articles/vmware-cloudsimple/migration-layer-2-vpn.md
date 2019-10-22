@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72376299"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
@@ -116,7 +116,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 
     ![Note yönetim IP 'si](media/l2vpn-fetch02.png)
 
-3. Uç VM 'nin Yönetim IP adresine bir SSH oturumu açın. @No__t-0 komutunu Kullanıcı adı **yönetici** ve parola **cloudsimple 123!** ile çalıştırın.
+3. Uç VM 'nin Yönetim IP adresine bir SSH oturumu açın. Kullanıcı adı **yönetici** ve parola **cloudsimple 123!** ile ```get logical-router``` komutunu çalıştırın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch03.png)
 
@@ -137,7 +137,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
 
 1. [NSX-T Manager](https://nsx-t-manager-ip-address)'da oturum açın.
-2. **Ağ** > **değiştirme** > **anahtarları** > * * < \logical Switch @ No__t-5 * * > **Genel Bakış ' ı**seçin.
+2. **Ağ** ** >   > ** **anahtarlar** > * * < \Mantıksal anahtar \> * * > **Genel Bakış ' ı**seçin.
 3. L2VPN yapılandırılırken gerekli olan Esnetme mantıksal anahtarının UUID 'sini bir yere unutmayın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch-switch01.png)
@@ -163,9 +163,9 @@ NSX-T Tier0 yönlendiricisi ve tek başına NSX Edge istemcisi arasında IPSec r
 
     ![IP ön eki listesi oluştur](media/l2vpn-routing-security02.png)
 
-4. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **BGP**1**komşuları**' nı seçin. İlk komşuyu seçin. @No__t-1**Adres ailelerini** **Düzenle**' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet** düğmesine tıklayın. İkinci komşu için bu adımı tekrarlayın.
+4. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **BGP**1**komşuları**' nı seçin. İlk komşuyu seçin. @No__t_1**adresi ailelerini** **Düzenle** ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet** düğmesine tıklayın. İkinci komşu için bu adımı tekrarlayın.
 
-    ![ IP ön eki listesi 1 @ no__t-1 ![Attach IP önek listesi 2 @ no__t-3
+    ![Attach IP ön eki listesi 1 ](media/l2vpn-routing-security03.png) ![Attach IP ön eki listesi 2 ](media/l2vpn-routing-security04.png)
 
 5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** >  yönlendirme yeniden**dağıtımı**1**komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** ' ı seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
 
@@ -430,7 +430,7 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
 
 2. Tüm ayıklanan dosyaların bulunduğu klasöre gidin. Büyük gereç boyutu veya NSX-l2t-Client-xlarge. MF ve NSX-l2t-client-Xlarge. ovf için tüm VMDK (NSX-l2t-Client-Large. MF ve NSX-l2t-client-large. ovf 'yi seçerek daha büyük boyutlu gereç boyutu için. **İleri**’ye tıklayın.
 
-    ![Select Template @ no__t-1 ![Select Template @ no__t-3
+    Şablon ](media/l2vpn-deploy-client02.png) ![Select şablon ![Select ](media/l2vpn-deploy-client03.png)
 
 3. NSX-T bağımsız istemcisi için bir ad girin ve **İleri**' ye tıklayın.
 
@@ -460,7 +460,8 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
     * **Ön ek uzunluğu**. Yukarı bağlantı VLAN/alt ağının ön ek uzunluğunu girin.
     * **CLI Yöneticisi/etkinleştir/kök kullanıcı parolası**. Admin/Enable/root hesabının parolasını ayarlayın.
 
-      ![Özelleştirme şablonu @ no__t-1 @ no__t-2Özelleştirme şablonu-daha fazla @ no__t-3
+      ![Customize şablon ](media/l2vpn-deploy-client08.png)
+       ![Customize şablonu-daha fazla ](media/l2vpn-deploy-client09.png)
 
 7. Ayarları gözden geçirin ve **son**' a tıklayın.
 

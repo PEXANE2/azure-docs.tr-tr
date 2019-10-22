@@ -1,5 +1,5 @@
 ---
-title: 'İki sınıf Lojistik gerileme: Modül başvurusu'
+title: 'İki sınıf Lojistik gerileme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: İki sınıf lojistik regresyon modülünü Azure Machine Learning hizmetinde kullanarak iki (ve yalnızca iki) sonucu tahmin etmek için kullanılabilecek bir lojistik regresyon modeli oluşturmayı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128372"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692617"
 ---
 # <a name="two-class-logistic-regression-module"></a>İki sınıf lojistik regresyon modülü
 
@@ -36,11 +36,11 @@ Bu modeli eğitebilmeniz için etiket veya sınıf sütunu içeren bir veri küm
 
 Örneğin, etiket sütunu, olası "Yes" veya "No" değerleriyle [Voted] olabilir. Ya da, olası "yüksek" veya "düşük" değerleriyle [kredi riski] olabilir. 
   
-1.  **Iki sınıf lojistik regresyon** modülünü denemenize ekleyin.  
+1.  **Iki sınıf lojistik regresyon** modülünü işlem hattınıza ekleyin.  
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
   
 3.  **İyileştirme toleransı**için modeli iyileştirirken kullanılacak bir eşik değeri belirtin. Yinelemeler arasındaki geliştirme belirtilen eşiğin altına düşerse, algoritma bir çözüme yakınsamış olarak kabul edilir ve eğitim duraklar.  
   
@@ -54,10 +54,10 @@ Bu modeli eğitebilmeniz için etiket veya sınıf sütunu içeren bir veri küm
   
     -   Buna karşılık L2 düzenleme, seyrek olmayan veriler için tercih edilir.  
   
-     Bu algoritma, L1 ve L2 düzenleme değerlerinin doğrusal bir birleşimini destekler: Yani <code>x = L1</code> , ve <code>y = L2</code> <code>ax + by = c</code> ise düzenleme koşullarının doğrusal yayılımını tanımlar.  
+     Bu algoritma, L1 ve L2 düzenleme değerlerinin doğrusal bir birleşimini destekler: Yani, <code>x = L1</code> ve <code>y = L2</code>, <code>ax + by = c</code> düzenleme koşullarının doğrusal yayılımını tanımlar.  
   
     > [!NOTE]
-    >  L1 ve L2 düzenleme hakkında daha fazla bilgi edinmek istiyor musunuz? Aşağıdaki makalede, L1 ve L2 düzenleme 'in nasıl farklı olduğu ve model sığdırmayı nasıl etkilediği hakkında bir tartışma ve lojistik regresyon ve sinir ağ modelleri için kod örnekleri verilmiştir:  [Machine Learning için L1 ve L2 düzenleme](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  L1 ve L2 düzenleme hakkında daha fazla bilgi edinmek istiyor musunuz? Aşağıdaki makalede, L1 ve L2 düzenleme 'in nasıl farklı olduğu ve model sığdırmayı nasıl etkilediği hakkında bir tartışma sunulmaktadır: lojistik regresyon ve sinir ağ modelleri için kod örnekleri, [Machine Learning Için L1 ve L2 düzenleme](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
     > L1 ve L2 koşullarına ait farklı doğrusal birleşimler lojistik regresyon modelleriyle kaldırılmıştır: Örneğin, [elastik net düzenleme](https://wikipedia.org/wiki/Elastic_net_regularization). Modelinizde etkin olan doğrusal bir bileşim tanımlamak için bu kombinasyonlara başvurulacağını öneririz.
       
@@ -67,14 +67,14 @@ Bu modeli eğitebilmeniz için etiket veya sınıf sütunu içeren bir veri küm
   
      Bu iyileştirme parametresi, sonraki adımı ve yönü hesaplamak için kullanılan bellek miktarını sınırlandırır. Daha az bellek belirttiğinizde, eğitim daha hızlıdır ancak daha az doğru olur.  
   
-6.  **Rastgele numara kaynağı**için bir tamsayı değeri yazın. Sonuçların aynı deneyin birden fazla çalıştırması üzerinden tekrarlanabilir olmasını istiyorsanız, çekirdek değeri tanımlamak önemlidir.  
+6.  **Rastgele numara kaynağı**için bir tamsayı değeri yazın. Sonuçların aynı işlem hattının birden fazla çalıştırması üzerinden tekrarlanabilir olmasını istiyorsanız çekirdek değeri tanımlama önemlidir.  
   
   
-8. Denemeye etiketli bir veri kümesi ekleyin ve [eğitim modüllerden](module-reference.md)birini bağlayın.  
+8. Ardışık düzene etiketli bir veri kümesi ekleyin ve [eğitim modüllerden](module-reference.md)birini bağlayın.  
   
     -   **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](./train-model.md) modülünü kullanın.  
   
-9. Denemeyi çalıştırın.  
+9. İşlem hattını çalıştırma.  
   
 ## <a name="results"></a>Sonuçlar
 

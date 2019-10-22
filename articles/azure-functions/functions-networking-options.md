@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550850"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690818"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Işlevleri ağ seçenekleri
 
@@ -36,7 +36,7 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 |[Özel site erişimini & gelen IP kısıtlamaları](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Sanal ağ tümleştirmesi](#virtual-network-integration)|❌No|✅Yes (bölgesel)|✅Yes (bölgesel ve ağ geçidi)|✅Yes|
 |[Sanal ağ Tetikleyicileri (HTTP olmayan)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[Karma Bağlantılar](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Karma Bağlantılar](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Giden IP kısıtlamaları](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
@@ -127,11 +127,11 @@ Nelerin desteklendiğini iki kez kontrol etmek için [http olmayan tüm tetikley
 
 ## <a name="hybrid-connections"></a>Karma Bağlantılar
 
-[Karma bağlantılar](../service-bus-relay/relay-hybrid-connections-protocol.md) , diğer ağlardaki uygulama kaynaklarına erişmek için kullanabileceğiniz bir Azure Relay özelliğidir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için kullanamazsınız. Karma Bağlantılar, bir [App Service planı](functions-scale.md#app-service-plan) ve bir [App Service ortamı](../app-service/environment/intro.md)çalışan işlevler için kullanılabilir.
+[Karma bağlantılar](../service-bus-relay/relay-hybrid-connections-protocol.md) , diğer ağlardaki uygulama kaynaklarına erişmek için kullanabileceğiniz bir Azure Relay özelliğidir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için kullanamazsınız. Karma Bağlantılar, tüketim planı hariç tüm işlevler için kullanılabilir.
 
 Azure Işlevlerinde kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, bir TCP dinleme bağlantı noktasına eriştiğiniz sürece karma bağlantının uç noktasının herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişeceğimizi bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.
 
-Daha fazla bilgi edinmek için, bir App Service planındaki Işlevleri destekleyen [Karma Bağlantılar App Service belgelerine](../app-service/app-service-hybrid-connections.md)bakın.
+Daha fazla bilgi edinmek için, aynı yapılandırma adımları aracılığıyla Işlevleri destekleyen [karma bağlantılar için App Service belgelerine](../app-service/app-service-hybrid-connections.md)bakın.
 
 ## <a name="outbound-ip-restrictions"></a>Giden IP kısıtlamaları
 

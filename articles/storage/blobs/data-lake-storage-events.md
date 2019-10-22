@@ -9,13 +9,13 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71326985"
 ---
-# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Öğretici: Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama
 
 Bu öğreticide, hiyerarşik ad alanı olan bir depolama hesabındaki olayların nasıl işleneceği gösterilmektedir.
 
@@ -38,16 +38,16 @@ Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada ol
 
   Bkz. [Azure Data Lake Storage 2. hesap oluşturma](data-lake-storage-quickstart-create-account.md).
 
-* Hizmet sorumlusu oluşturun. Bkz [. nasıl yapılır: Kaynaklara](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)ERIŞEBILEN bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalını kullanın.
+* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  :heavy_check_mark: Makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde bulunan adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+  : heavy_check_mark: makalenin [bir role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümündeki adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
   > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
-  :heavy_check_mark: Makalenin [oturum açma için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu değerlere daha sonra ihtiyacınız olacak.
+  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu değerlere daha sonra ihtiyacınız olacak.
 
 ## <a name="create-a-sales-order"></a>Satış siparişi oluşturma
 
@@ -88,11 +88,11 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
 
-    ![Azure portalında Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Databricks on Azure portal")
+    ![Azure portal databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal databricks")
 
 2. **Azure Databricks Hizmeti** bölümünde, Databricks çalışma alanı oluşturmak için değerler sağlayın.
 
-    ![Azure Databricks çalışma alanı oluşturma](./media/data-lake-storage-events/new-databricks-service.png "Create an Azure Databricks workspace")
+    ![Azure Databricks çalışma alanı oluşturma](./media/data-lake-storage-events/new-databricks-service.png "Azure Databricks çalışma alanı oluşturma")
 
     Çalışma alanının oluşturulması birkaç dakika sürer. İşlem durumunu izlemek için üstteki ilerleme çubuğunu görüntüleyin.
 
@@ -102,11 +102,11 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni** > **Küme**'yi seçin.
 
-    ![Azure’da Databricks](./media/data-lake-storage-events/databricks-on-azure.png "Databricks on Azure")
+    ![Azure 'da databricks](./media/data-lake-storage-events/databricks-on-azure.png "Azure 'da databricks")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Azure’da Databricks Spark kümesi oluşturma](./media/data-lake-storage-events/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
+    ![Azure 'da Databricks Spark kümesi oluşturma](./media/data-lake-storage-events/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
 
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
@@ -121,13 +121,13 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 
 1. Sol bölmede **Çalışma Alanı**’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
-    ![Databricks’te not defteri oluşturma](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Create notebook in Databricks")
+    ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
 2. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks’te not defteri oluşturma](./media/data-lake-storage-events/new-databricks-notebook.png "Create notebook in Databricks")
+    ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-events/new-databricks-notebook.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur**’u seçin.
+    **Oluştur**'u seçin.
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks Delta tablosu oluşturma ve doldurma
 
@@ -152,7 +152,7 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
     Bu kod, **source_file**adlı bir pencere öğesi oluşturur. Daha sonra, bu kodu çağıran ve bu pencere öğesine bir dosya yolu geçiren bir Azure Işlevi oluşturacaksınız.  Bu kod ayrıca depolama hesabıyla hizmet sorumlunuzu doğrular ve diğer hücrelerde kullanacağınız bazı değişkenler oluşturur.
 
     > [!NOTE]
-    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`, aşağıdaki kod satırını kullanırsınız: `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
+    > Bir üretim ayarında, kimlik doğrulama anahtarınızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, kimlik doğrulama anahtarı yerine kod blosonra bir arama anahtarı ekleyin. <br><br>Örneğin, bu kod satırını kullanmak yerine şu kod satırını kullanın: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))`. <br><br>Bu Öğreticiyi tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
 
 2. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
@@ -243,7 +243,7 @@ Daha önce oluşturduğunuz Not defterini çalıştıran bir Iş oluşturun. Dah
 
 3. İşe bir ad verin ve sonra `upsert-order-data` çalışma kitabını seçin.
 
-   ![İş]oluşturma(./media/data-lake-storage-events/create-spark-job.png "iş oluşturma")
+   ![İş oluşturma](./media/data-lake-storage-events/create-spark-job.png "Bir iş oluşturma")
 
 ## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma
 
@@ -251,7 +251,7 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
 
 1. Databricks çalışma alanının üst köşesinde kişiler simgesini ve ardından **Kullanıcı ayarları**' nı seçin.
 
-   ![Hesap](./media/data-lake-storage-events/generate-token.png "Kullanıcı ayarlarını") yönetme
+   ![Hesabı yönetme](./media/data-lake-storage-events/generate-token.png "Kullanıcı ayarları")
 
 2. **Yeni belirteç oluştur** düğmesine tıklayın ve ardından **Oluştur** düğmesine tıklayın.
 
@@ -259,30 +259,30 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
   
 3. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem > işlev uygulaması**' yı seçin.
 
-   ![Azure işlevi]oluşturma(./media/data-lake-storage-events/function-app-create-flow.png "Azure") işlevi oluşturma
+   ![Azure işlevi oluşturma](./media/data-lake-storage-events/function-app-create-flow.png "Azure işlevi oluşturma")
 
 4. İşlev Uygulaması **Oluştur** sayfasında, çalışma zamanı yığını Için **.NET Core** ' u seçtiğinizden emin olun ve bir Application Insights örneği yapılandırdığınızdan emin olun.
 
-   İşlev uygulamasını ![yapılandırma](./media/data-lake-storage-events/new-function-app.png "işlev uygulamasını yapılandırma")
+   ![İşlev uygulamasını yapılandırma](./media/data-lake-storage-events/new-function-app.png "İşlev uygulamasını yapılandırma")
 
 5. İşlev Uygulaması **genel bakış** sayfasında **yapılandırma**' ya tıklayın.
 
-   İşlev uygulamasını ![yapılandırma](./media/data-lake-storage-events/configure-function-app.png "işlev uygulamasını yapılandırma")
+   ![İşlev uygulamasını yapılandırma](./media/data-lake-storage-events/configure-function-app.png "İşlev uygulamasını yapılandırma")
 
 6. **Uygulama ayarları** sayfasında, her bir ayarı eklemek için **Yeni uygulama ayarı** düğmesini seçin.
 
-   Yapılandırma ayarı Ekle(./media/data-lake-storage-events/add-application-setting.png "yapılandırma ayarı") ![Ekle]
+   ![Yapılandırma ayarı Ekle](./media/data-lake-storage-events/add-application-setting.png "Yapılandırma ayarı Ekle")
 
    Aşağıdaki ayarları ekleyin:
 
-   |Ayar adı | Value |
+   |Ayar adı | Değer |
    |----|----|
    |**DBX_INSTANCE**| Databricks çalışma alanınızın bölgesi. Örneğin, `westus2.azuredatabricks.net`|
    |**DBX_PAT**| Daha önce oluşturduğunuz kişisel erişim belirteci. |
-   |**DBX_JOB_ID**|Çalışan işin tanımlayıcısı. Bu durumda, bu değer `1` ' dır.|
+   |**DBX_JOB_ID**|Çalışan işin tanımlayıcısı. Bu durumda, bu değer `1`.|
 7. İşlev uygulamasının genel bakış sayfasında, **yeni işlev** düğmesine tıklayın.
 
-   ![New]Function(./media/data-lake-storage-events/new-function.png "New işlevi")
+   ![Yeni işlev](./media/data-lake-storage-events/new-function.png "Yeni işlev")
 
 8. **Azure Event Grid tetikleyiciyi**seçin.
 
@@ -354,7 +354,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
 ## <a name="test-the-event-grid-subscription"></a>Event Grid aboneliğini test etme
 
-1. @No__t-0 adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
+1. @No__t_0 adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
 
    ```
    InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
@@ -373,7 +373,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
    İş tamamlandığında, bir tamamlanma durumu görürsünüz.
 
-   ![İş başarıyla]tamamlanan(./media/data-lake-storage-events/spark-job-completed.png "iş tamamlandı")
+   ![İş başarıyla tamamlandı](./media/data-lake-storage-events/spark-job-completed.png "İş başarıyla tamamlandı")
 
 5. Yeni bir çalışma kitabı hücresinde, güncelleştirilmiş Delta tablosunu görmek için bu sorguyu bir hücrede çalıştırın.
 
@@ -383,7 +383,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
    Döndürülen tabloda en son kayıt gösterilmektedir.
 
-   Tabloda ![en](./media/data-lake-storage-events/final_query.png "son") kayıt görünür
+   ![Tabloda en son kayıt görünür](./media/data-lake-storage-events/final_query.png "Tabloda en son kayıt görünür")
 
 6. Bu kaydı güncelleştirmek için `customer-order-update.csv` adlı bir dosya oluşturun, aşağıdaki bilgileri bu dosyaya yapıştırın ve yerel bilgisayarınıza kaydedin.
 
@@ -392,11 +392,11 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
    536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
    ```
 
-   Bu CSV dosyası, siparişin miktarı `228` ' dan `22` ' e değiştirilmedikçe öncekiyle neredeyse aynıdır.
+   Bu CSV dosyası, siparişin miktarı `228` `22` olarak değiştirilmedikçe öncekiyle neredeyse aynıdır.
 
 7. Depolama Gezgini, bu dosyayı depolama hesabınızın **giriş** klasörüne yükleyin.
 
-8. Güncelleştirilmiş Delta tablosunu görmek için `select` sorgusunu yeniden çalıştırın.
+8. Güncelleştirilmiş Delta tablosunu görmek için `select` sorguyu yeniden çalıştırın.
 
    ```
    %sql select * from customer_data
@@ -404,7 +404,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
    Döndürülen tablo, güncelleştirilmiş kaydı gösterir.
 
-   ![Tablodaki](./media/data-lake-storage-events/final_query-2.png "güncelleştirilmiş kayıt") tabloda görüntülenir
+   ![Güncelleştirilmiş kayıt tabloda görüntülenir](./media/data-lake-storage-events/final_query-2.png "Güncelleştirilmiş kayıt tabloda görüntülenir")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

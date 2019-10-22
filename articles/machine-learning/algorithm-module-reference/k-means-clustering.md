@@ -1,5 +1,5 @@
 ---
-title: 'K-kümelemenin anlamı: Modül başvurusu'
+title: 'K-, kümeleme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Kümeleme modellerini eğitmek için Azure Machine Learning hizmetinde K-anlamı kümeleme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128693"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693106"
 ---
-# <a name="module-k-means-clustering"></a>Birimi K Ortalamaları Kümeleme
+# <a name="module-k-means-clustering"></a>Modül: K-kümeleme anlamına gelir
 
 Bu makalede, eğitilen bir kümeleme modeli oluşturmak için Azure Machine Learning Studio ' de *k-anlamı kümeleme* modülünün nasıl kullanılacağı açıklanır. 
  
-K-anlamı en basit ve en iyi bilinen öğrenme algoritmalarından biridir. Algoritmayı çeşitli makine öğrenimi görevleri için kullanabilirsiniz, örneğin: 
+K-anlamı en basit ve en *iyi bilinen öğrenme* algoritmalarından biridir. Algoritmayı çeşitli makine öğrenimi görevleri için kullanabilirsiniz, örneğin: 
 
 * [Olağan dışı veriler algılanıyor](https://msdn.microsoft.com/magazine/jj891054.aspx).
 * Kümeleme metin belgeleri.
@@ -28,7 +28,7 @@ K-anlamı en basit ve en iyi bilinen öğrenme algoritmalarından biridir. Algor
 
 Bir kümeleme modeli oluşturmak için şunları yapın:
 
-* Bu modülü denemenize ekleyin.
+* Bu modülü ardışık düzene ekleyin.
 * Bir veri kümesini bağlayın.
 * Tahmin ettiğiniz küme sayısı, küme oluştururken kullanılacak mesafe ölçümü ve benzeri parametreleri ayarlayın. 
   
@@ -54,11 +54,11 @@ Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş
 
 ## <a name="configure-the-k-means-clustering-module"></a>K-anlamı kümeleme modülünü yapılandırma
   
-1.  Denemenize **K-anlamı kümeleme** modülünü ekleyin.  
+1.  İşlem hattınızda **K-anlamı kümeleme** modülünü ekleyin.  
   
 2.  Modelin nasıl eğitilme etmek istediğinizi belirtmek için, **eğitmen modunu oluştur** seçeneğini belirleyin.  
   
-    -   **Tek parametre**: Kümeleme modelinde kullanmak istediğiniz tam parametreleri biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
+    -   **Tek parametre**: kümeleme modelinde kullanmak istediğiniz tam parametreleri biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
   
 3.  **Centroıds sayısı**için, algoritmanın başlamasını istediğiniz küme sayısını yazın.  
   
@@ -66,11 +66,11 @@ Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş
   
 4.  Özellikler **başlatma** , ilk küme yapılandırmasını tanımlamak için kullanılan algoritmayı belirtmek için kullanılır.  
   
-    -   **Ilk N**: Veri noktalarından bazılarının ilk sayısı, veri kümesinden seçilir ve ilk anlamı olarak kullanılır. 
+    -   **Ilk N**: veri noktalarının bazı ilk sayısı, veri kümesinden seçilir ve ilk anlamı olarak kullanılır. 
     
          Bu yöntem, *Forgy yöntemi*olarak da adlandırılır.  
   
-    -   **Rastgele**: Algoritma bir kümeye rastgele bir veri noktası koyar ve sonra kümenin Rastgele atanan noktalarının centroıd değeri olacak şekilde ilk ortalaması hesaplar. 
+    -   **Rastgele**: algoritma bir kümeye rastgele bir veri noktası koyar ve sonra kümenin Rastgele atanan noktalarının centroıd değeri olacak şekilde ilk ortalaması hesaplar. 
 
          Bu yöntem, *rastgele bölüm* yöntemi olarak da adlandırılır.  
   
@@ -93,15 +93,15 @@ Eğitim verilerini işlediğinde, K-Ortalamalar algoritması rastgele seçilmiş
   
      K-kümeleme, denetimli bir makine öğrenimi yöntemi olduğu için Etiketler isteğe bağlıdır. Ancak, veri kümeniz zaten bir etiket sütunu içeriyorsa, kümelerin seçimine yol göstermek için bu değerleri kullanabilir veya değerlerin yok sayılmasını belirtebilirsiniz.  
   
-    -   **Etiket sütununu yoksay**: Etiket sütunundaki değerler yok sayılır ve model oluşturulurken kullanılmaz.
+    -   **Etiket sütununu yoksay**: etiket sütunundaki değerler yok sayılır ve model oluşturulurken kullanılmaz.
   
-    -   **Eksik değerleri doldur**: Etiket sütun değerleri, kümeleri oluşturmaya yardımcı olmak için özellikler olarak kullanılır. Herhangi bir satırda etiket eksikse, bu değer diğer özellikler kullanılarak belirlenir.  
+    -   **Eksik değerleri doldur**: Etiket sütun değerleri, kümeleri oluşturmaya yardımcı olacak özellikler olarak kullanılır. Herhangi bir satırda etiket eksikse, bu değer diğer özellikler kullanılarak belirlenir.  
   
-    -   **En yakın-orta arasında üzerine yaz**: Etiket sütun değerleri, geçerli centroıd 'ye en yakın noktanın etiketi kullanılarak öngörülen etiket değerleriyle değiştirilmiştir.  
+    -   **En yakın üzerine yaz**: Etiket sütun değerleri, geçerli centroıd 'ye en yakın noktanın etiketi kullanılarak tahmin edilen etiket değerleriyle değiştirilmiştir.  
 
 8.  Eğitim öncesi özellikleri normalleştirmek istiyorsanız **özellikleri Normalleştir** seçeneğini belirleyin.
   
-     Normalleştirme uygularsanız, öğreticmadan önce veri noktaları MinMaxNormalizer `[0,1]` tarafından normalleştirilir.
+     Normalleştirme uygularsanız, öğreticmadan önce veri noktaları MinMaxNormalizer tarafından `[0,1]` normalleştirilir.
 
 10. Modeli eğitme.  
   
@@ -119,7 +119,7 @@ Modeli yapılandırmayı ve eğitimi tamamladıktan sonra, puanlar oluşturmak i
 
 2. **Eğitim modeli**' ni seçin ve ardından **eğitilen model olarak kaydet**' i seçin.
 
-Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. Deneme sürümünde kullanılan eğitim verilerini daha sonra güncelleştirirseniz, kaydedilen modeli güncelleştirmez. 
+Kaydedilen model, modeli kaydettiğiniz sırada eğitim verilerini temsil eder. İşlem hattında kullanılan eğitim verilerini daha sonra güncelleştirirseniz, kaydedilen modeli güncelleştirmez. 
 
 #### <a name="see-the-clustering-result-dataset"></a>Kümeleme sonucu veri kümesine bakın 
 

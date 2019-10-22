@@ -1,5 +1,5 @@
 ---
-title: 'Kümeleme modelini eğitme: Modül başvurusu'
+title: 'Kümeleme modeli eğitme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Kümeleme modellerini eğitmek için Azure Machine Learning hizmetinde kümeleme modeli eğitimi modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128488"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693661"
 ---
 # <a name="train-clustering-model"></a>Kümeleme Modeli Eğitme
 
@@ -29,7 +29,7 @@ Modül, zaten [K-bit kümeleme](k-means-clustering.md) modülünü kullanarak ya
   
 ## <a name="how-to-use-train-clustering-model"></a>Bir kümeleme modeli eğitimi kullanma  
   
-1.  Studio 'daki denemenize **kümeleme modeli** oluşturma modülünü ekleyin. Modülü, **eğitme** kategorisinde **Machine Learning modüller**altında bulabilirsiniz.  
+1.  Studio 'daki işlem hattınızda **kümeleme modeli eğitimi** modülünü ekleyin. Modülü, **eğitme** kategorisinde **Machine Learning modüller**altında bulabilirsiniz.  
   
 2. [K-anlamı kümeleme](k-means-clustering.md) modülünü veya uyumlu bir kümeleme modeli oluşturan başka bir özel modülü ekleyin ve kümeleme modelinin parametrelerini ayarlayın.  
     
@@ -43,7 +43,7 @@ Modül, zaten [K-bit kümeleme](k-means-clustering.md) modülünü kullanarak ya
 
     Bu seçeneğin işaretini kaldırırsanız yalnızca küme atamaları çıkışlardır. 
 
-7. Denemeyi çalıştırın veya **kümeleme modeli eğitimi** modülüne tıklayın ve **Seçileni Çalıştır**' ı seçin.  
+7. İşlem hattını çalıştırın veya **kümeleme modeli eğitimi** modülüne tıklayın ve **Seçileni Çalıştır**' ı seçin.  
   
 ### <a name="results"></a>Sonuçlar
 

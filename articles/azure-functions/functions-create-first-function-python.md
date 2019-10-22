@@ -1,6 +1,6 @@
 ---
 title: Azure 'da HTTP ile tetiklenen bir işlev oluşturma
-description: Azure işlevleri çekirdek araçları ve Azure CLI kullanarak Azure'da ilk Python uygulamanızı oluşturma konusunda bilgi edinin.
+description: Azure 'da Azure Functions Core Tools ve Azure CLı kullanarak ilk Python işlevinizi oluşturmayı öğrenin.
 author: ggailey777
 ms.author: glenga
 ms.date: 09/11/2019
@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: 03b8e12d63ba84b4e20d7263f1c2ecb8d912936d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203180"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693342"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure 'da HTTP ile tetiklenen bir işlev oluşturma
 
@@ -26,7 +26,7 @@ Bu makale, Azure Işlevleri için iki Python hızlı başlangıçdan birincisi. 
 
 Başlamadan önce şunları yapmanız gerekir:
 
-+ [Python 3.6. x](https://www.python.org/downloads/)'i yükler.
++ [Python 3.6.8](https://www.python.org/downloads/)'i yükler. Python 'un bu sürümü Işlevlerle doğrulandı. 3,7 ve sonraki sürümler henüz desteklenmiyor.
 
 + [Azure Functions Core Tools](./functions-run-local.md#v2) sürüm 2.7.1575 veya sonraki bir sürümü yükler.
 
@@ -38,7 +38,7 @@ Başlamadan önce şunları yapmanız gerekir:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Sanal ortam oluşturma ve etkinleştirme (isteğe bağlı)
 
-Python işlevlerini yerel olarak geliştirmek için bir Python 3.6. x ortamı kullanmanız gerekir. Oluşturma ve adlı bir sanal ortam etkinleştirmek için aşağıdaki komutları çalıştırın `.venv`.
+Python işlevlerini yerel olarak geliştirmek için bir Python 3.6. x ortamı kullanmanız gerekir. @No__t_0 adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın.
 
 > [!NOTE]
 > Python, Linux dağıtımına venv yüklemediyse, aşağıdaki komutu kullanarak yükleyebilirsiniz:
@@ -59,7 +59,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-Artık sanal ortamı etkinleştirdikten sonra, içinde kalan komutları çalıştırın. Sanal ortamdan yararlanmak için öğesini çalıştırın `deactivate`.
+Artık sanal ortamı etkinleştirdikten sonra, içinde kalan komutları çalıştırın. Sanal ortamdan yararlanmak için `deactivate` çalıştırın.
 
 ## <a name="create-a-local-functions-project"></a>Yerel işlevler projesi oluşturma
 
@@ -101,13 +101,13 @@ Yeni projeye bir işlev ekleyin.
 
 Bu komutlar _Httptrigger_adında bir alt klasör oluşturur. Aşağıdaki dosyaları içerir:
 
-* *function. JSON*: işlevi, tetikleyiciyi ve diğer bağlamaları tanımlayan yapılandırma dosyası. Bu dosyada, için `scriptFile` değeri işlevi içeren dosyayı işaret ettiğini `bindings` ve dizi, çağırma tetikleyicisini ve bağlamalarını tanımladığını unutmayın.
+* *function. JSON*: işlevi, tetikleyiciyi ve diğer bağlamaları tanımlayan yapılandırma dosyası. Bu dosyada, `scriptFile` değerinin işlevi içeren dosyayı işaret ettiğini ve `bindings` dizisinin çağırma tetikleyicisi ve bağlamalarını tanımladığından emin olun.
 
-    Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisinin tür [`httpTrigger`](functions-bindings-http-webhook.md#trigger) ve çıkış bağlaması [`http`](functions-bindings-http-webhook.md#output)türünde bir giriş bağlaması vardır.
+    Her bağlama bir yön, tür ve benzersiz bir ad gerektirir. HTTP tetikleyicisinin tür [`httpTrigger`](functions-bindings-http-webhook.md#trigger) ve [`http`](functions-bindings-http-webhook.md#output)türünde çıkış bağlaması olan bir giriş bağlaması vardır.
 
-* *init.Kopyala\_: http ile tetiklenen işleviniz olan betik dosyası.\_ \_ \_* Bu betiğin varsayılan `main()`olduğuna dikkat edin. Tetikleyiciden gelen http verileri, `req` adlandırılmış adı `binding parameter`kullanılarak işleve geçer. Function. json ' da tanımlanan, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. `req` 
+* *\_ \_init \_ \_. Kopyala*: http ile tetiklenen işleviniz olan betik dosyası. Bu betiğin varsayılan bir `main()` olduğunu unutmayın. Tetikleyiciden gelen HTTP verileri, `binding parameter` adlı `req` kullanarak işleve geçer. Function. json ' da tanımlanan `req`, [Azure. Functions. HttpRequest sınıfının](/python/api/azure-functions/azure.functions.httprequest)bir örneğidir. 
 
-    `$return` *Function. JSON*içinde olarak tanımlanan Return nesnesi, [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md).
+    *Function. JSON*içinde `$return` olarak tanımlanan Return nesnesi, [Azure. Functions. HttpResponse sınıfının](/python/api/azure-functions/azure.functions.httpresponse)bir örneğidir. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md).
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -167,12 +167,12 @@ Bu komutlar _Httptrigger_adında bir alt klasör oluşturur. Aşağıdaki dosyal
 
 ## <a name="create-a-function-app-in-azure"></a>Azure 'da bir işlev uygulaması oluşturma
 
-İşlev uygulaması, işlev kodunuzun yürütülmesi için bir ortam sağlar. Bu sayede daha kolay yönetilmesi, dağıtım ve kaynakların paylaşımı için bir mantıksal birim olarak gruplandırmanıza işlevleri.
+İşlev uygulaması, işlev kodunuzun yürütülmesi için bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanızı sağlar.
 
-Aşağıdaki komutu çalıştırın. Benzersiz `<APP_NAME>` bir işlev uygulama adıyla değiştirin. Bir `<STORAGE_NAME>` depolama hesabı adıyla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. Bu ad Azure'daki tüm uygulamalar arasında benzersiz olmalıdır.
+Aşağıdaki komutu çalıştırın. @No__t_0 benzersiz bir işlev uygulama adıyla değiştirin. @No__t_0 bir depolama hesabı adıyla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. Bu ad Azure'daki tüm uygulamalar arasında benzersiz olmalıdır.
 
 > [!NOTE]
-> Linux ve Windows uygulamalarını aynı kaynak grubunda barındıralamazsınız. Bir Windows işlev uygulaması veya Web uygulaması ile `myResourceGroup` adlandırılmış bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
+> Linux ve Windows uygulamalarını aynı kaynak grubunda barındıralamazsınız. Bir Windows işlev uygulaması veya Web uygulamasıyla `myResourceGroup` adlı mevcut bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --os-type Linux \
@@ -186,13 +186,13 @@ Artık yerel işlevler projenizi Azure 'daki işlev uygulamasına yayımlamaya h
 
 ## <a name="deploy-the-function-app-project-to-azure"></a>İşlev uygulaması projesini Azure'a dağıtma
 
-Azure 'da işlev uygulaması oluşturduktan sonra, proje kodunuzu Azure 'a dağıtmak için [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core araçları komutunu kullanabilirsiniz. Bu örnekte, değerini uygulamanızın `<APP_NAME>` adıyla değiştirin.
+Azure 'da işlev uygulaması oluşturduktan sonra, proje kodunuzu Azure 'a dağıtmak için [Func Azure functionapp Publish](functions-run-local.md#project-file-deployment) Core araçları komutunu kullanabilirsiniz. Bu örnekte `<APP_NAME>` değerini uygulamanızın adıyla değiştirin.
 
 ```console
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-Seçeneği `--build remote` , Python projenizi dağıtım paketindeki dosyalardan Azure 'da uzaktan oluşturur. 
+@No__t_0 seçeneği, Python projenizi Azure 'da dağıtım paketindeki dosyalardan uzaktan oluşturur. 
 
 Aşağıdaki iletiye benzer bir çıktı görürsünüz. Buradan daha iyi okuyabilmeniz için bu atılır:
 
@@ -210,7 +210,7 @@ Functions in myfunctionapp:
         Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
 ```
 
-İçin değeri`Invoke url` kopyalayabilir veAzure'daişlevinizidoğrulamakiçinkullanabilirsiniz.`HttpTrigger` URL, işlev anahtarınız `code` olan bir sorgu dizesi değeri içerir, bu da başkalarının Azure 'da http tetikleyici uç noktanızı aramasını zorlaştırır.
+@No__t_1 için `Invoke url` değerini kopyalayabilir ve Azure 'da işlevinizi doğrulamak için kullanabilirsiniz. URL, işlev anahtarınız olan `code` bir sorgu dizesi değeri içerir, bu da başkalarının Azure 'da HTTP tetikleyici uç noktanızı aramasını zorlaştırır.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
