@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
 ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69616415"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>MongoDB için Azure Cosmos DB API 'SI ile angular uygulaması oluşturma-Cosmos DB bağlanmak için Mongoose kullanın
@@ -32,7 +32,7 @@ Bu çok parçalı öğreticide, Express ve angular ile bir Node. js uygulaması 
 > * Hero hizmetini, Hero verilerini almak için oluşturun.
 > * Uygulamayı yerel olarak çalıştırın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -88,7 +88,7 @@ Mongoose, MongoDB ve Node. js için bir nesne veri modelleme (ODM) kitaplığıd
     
 1. Gezgin bölmesinde, **sunucu**altında **ortam**adlı bir klasör oluşturun. **Ortam** klasöründe **Environment. js**adlı bir dosya oluşturun.
 
-1. Mongo. JS dosyasından,, ve `dbName` `cosmosPort` parametrelerinin değerlerini `key`içermesi gerekir. Aşağıdaki kodu **Environment. js** dosyasına kopyalayın:
+1. Mongo. js dosyasında `dbName`, `key` ve `cosmosPort` parametreleri için değerler dahil etmemiz gerekir. Aşağıdaki kodu **Environment. js** dosyasına kopyalayın:
 
     ```javascript
     // TODO: replace if yours are different
@@ -106,13 +106,13 @@ Uygulamanızı Azure Cosmos DB bağlamak için, uygulamanın yapılandırma ayar
 
 1. Azure portal, Azure Cosmos DB hesabınız için bağlantı noktası numarasını, Azure Cosmos DB hesap adını ve birincil anahtar değerlerini alın.
 
-1. **Environment. js** dosyasında, değerini `port` 10255 olarak değiştirin. 
+1. **Environment. js** dosyasında `port` değerini 10255 olarak değiştirin. 
 
     ```javascript
     const port = 10255;
     ```
 
-1. **Environment. js** dosyasında değerini `accountName` , öğreticinin [4](tutorial-develop-mongodb-nodejs-part4.md) . kısmında oluşturduğunuz Azure Cosmos DB hesabının adıyla değiştirin. 
+1. **Environment. js** dosyasında `accountName` değerini, öğreticinin [4](tutorial-develop-mongodb-nodejs-part4.md) . kısmında oluşturduğunuz Azure Cosmos DB hesabının adıyla değiştirin. 
 
 1. Terminal penceresinde aşağıdaki CLI komutunu kullanarak Azure Cosmos DB hesabı için birincil anahtarı alın: 
 
@@ -120,9 +120,9 @@ Uygulamanızı Azure Cosmos DB bağlamak için, uygulamanın yapılandırma ayar
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
-    \<cosmosdb-name >, öğreticinin [4. bölümünde](tutorial-develop-mongodb-nodejs-part4.md) oluşturduğunuz Azure Cosmos DB hesabının adıdır.
+    \<cosmosdb ad >, öğreticinin [4. bölümünde](tutorial-develop-mongodb-nodejs-part4.md) oluşturduğunuz Azure Cosmos DB hesabının adıdır.
 
-1. Birincil anahtarı, `key` değer olarak **Environment. js** dosyasına kopyalayın.
+1. Birincil anahtarı, `key` değeri olarak **Environment. js** dosyasına kopyalayın.
 
 Artık uygulamanızda Azure Cosmos DB bağlanmak için gerekli tüm bilgiler vardır. 
 
@@ -171,8 +171,8 @@ Hero modelini oluşturduktan sonra, verileri okumak için bir hizmet tanımlaman
 
    * Oluşturduğunuz modeli alır.
    * Veritabanına bağlanır.
-   * Tüm Heroes döndüren bir `hero.find` sorgu tanımlamak için yöntemini kullanan bir `docquery` değişken oluşturur.
-   * Yanıt durumunun 200 olduğu Heroes 'nin bir listesini almak için bir taahhütle birlikte bir sorgu `docquery.exec` çalıştırır. 
+   * Tüm Hero 'ları döndüren bir sorgu tanımlamak için `hero.find` yöntemini kullanan bir `docquery` değişkeni oluşturur.
+   * Yanıt durumunun 200 olduğu Heroes 'nin bir listesini almak için Promise ile `docquery.exec` işleviyle bir sorgu çalıştırır. 
    * Durum 500 ise hata iletisini geri gönderir.
    * Modüller kullandığından Heroes 'yi alır. 
 
@@ -199,11 +199,11 @@ Hero modelini oluşturduktan sonra, verileri okumak için bir hizmet tanımlaman
    };
    ```
 
-## <a name="configure-routes"></a>Yolları Yapılandır
+## <a name="configure-routes"></a>Rotaları yapılandırma
 
 Sonra get, Create, Read ve DELETE isteklerinin URL 'Lerini işlemek için yollar ayarlamanız gerekir. Yönlendirme yöntemleri, geri çağırma işlevlerini belirtir (Ayrıca, _işleyici işlevleri_olarak da adlandırılır). Bu işlevler, uygulama belirtilen uç noktaya ve HTTP yöntemine bir istek aldığında çağrılır. Hero hizmetini eklemek ve rotalarınızı tanımlamak için aşağıdaki adımları kullanın:
 
-1. Visual Studio Code, **rotalar. js** dosyasında, örnek Hero verilerini Gönderen `res.send` işlevi not edin. Bunun yerine `heroService.getHeroes` işlevi çağırmak için bir satır ekleyin.
+1. Visual Studio Code, **rotalar. js** dosyasında, örnek Hero verilerini gönderen `res.send` işlevini not edin. Bunun yerine `heroService.getHeroes` işlevini çağırmak için bir satır ekleyin.
 
     ```javascript
     router.get('/heroes', (req, res) => {
@@ -214,13 +214,13 @@ Sonra get, Create, Read ve DELETE isteklerinin URL 'Lerini işlemek için yollar
     });
     ```
 
-1. **Routes. js** dosyasında `require` Hero hizmeti:
+1. **Routes. js** dosyasında Hero hizmetini `require`:
 
     ```javascript
     const heroService = require('./hero.service'); 
     ```
 
-1. **Hero. Service. js** dosyasında, aşağıdaki gibi, `getHeroes` `req` ve `res` parametrelerini almak için işlevi güncelleştirin:
+1. **Hero. Service. js** dosyasında, `req` ve `res` parametrelerini aşağıdaki gibi almak için `getHeroes` işlevini güncelleştirin:
 
     ```javascript
     function getHeroes(req, res) {
@@ -232,9 +232,9 @@ Sonra get, Create, Read ve DELETE isteklerinin URL 'Lerini işlemek için yollar
 
 Ardından, aşağıdaki adımları kullanarak uygulamayı çalıştırın:
 
-1. Visual Studio Code, tüm değişikliklerinizi kaydedin. Sol tarafta, Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) **hata** ![Ayıkla düğmesine tıklayın ve ardından hata **ayıklamayı Başlat** düğmesine ![Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)hata ayıkla simgesini seçin.
+1. Visual Studio Code, tüm değişikliklerinizi kaydedin. Sol tarafta, Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) **Hata Ayıkla** düğmesine ![Debug simgesini seçin ve ardından Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) **hata ayıklamayı Başlat** düğmesine ![Debug simgesini seçin.
 
-1. Şimdi tarayıcıya geçiş yapın. **Geliştirici araçlarını** ve **Ağ sekmesini**açın. `http://localhost:3000`' A gidin ve uygulamamızı görürsünüz.
+1. Şimdi tarayıcıya geçiş yapın. **Geliştirici araçlarını** ve **Ağ sekmesini**açın. @No__t_2 gidin ve uygulamamızı görürsünüz.
 
     ![Azure Portal’daki yeni Azure Cosmos DB hesabı](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
@@ -253,4 +253,4 @@ Kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu, Azure Cosmos DB
 Uygulamaya Post, put ve delete işlevleri eklemek için öğreticinin 6. bölümüne ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Bölüm 6: Uygulamaya Post, put ve delete işlevleri ekleme](tutorial-develop-mongodb-nodejs-part6.md)
+> [6. Bölüm: uygulamaya gönderi, put ve delete işlevleri ekleme](tutorial-develop-mongodb-nodejs-part6.md)

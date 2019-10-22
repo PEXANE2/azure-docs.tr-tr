@@ -1,5 +1,5 @@
 ---
-title: 'Modeli eğitme: Modül başvurusu'
+title: 'Modeli eğitme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Bir sınıflandırma veya regresyon modelini eğiteetmek için Azure Machine Learning hizmetinde **eğitim modeli** modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128441"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693682"
 ---
-# <a name="train-model-module"></a>Train Model Modülü
+# <a name="train-model-module"></a>Model modülünü eğitme
 
 Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
@@ -43,7 +43,7 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
   
 1.  Azure Machine Learning, bir sınıflandırma modeli veya regresyon modeli yapılandırın.
     
-2. Deneyle **model eğitimi** modülünü ekleyin.  Bu modülü **Machine Learning** kategorisi altında bulabilirsiniz. **Eğit**' i genişletin ve ardından **model eğitme** modülünü denemenize sürükleyin.
+2. İşlem hattına **model eğitme** modülünü ekleyin.  Bu modülü **Machine Learning** kategorisi altında bulabilirsiniz. **Eğit**' i genişletin ve ardından **model eğitimi** modülünü işlem hattınızla sürükleyin.
   
 3.  Sol girişte, eğitilen modunu ekleyin. Eğitim veri kümesini, **tren modelinin**sağ girdisine iliştirin.
 
@@ -62,16 +62,16 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
     > [!TIP] 
     > Sütun seçiciyi kullanırken sorun yaşıyorsanız, ipuçları için [veri kümesindeki sütunları seçme](./select-columns-in-dataset.md) makalesine bakın. KURALLARıN ve **ad** seçeneklerinin kullanımı **ile** ilgili bazı yaygın senaryolar ve ipuçları açıklanmaktadır.
   
-5.  Denemeyi çalıştırın. Çok fazla veriniz varsa bu işlem biraz zaman alabilir.
+5.  İşlem hattını çalıştırma. Çok fazla veriniz varsa bu işlem biraz zaman alabilir.
 
 ## <a name="bkmk_results"></a>Sonucunun
 
 Model eğitilirken:
 
 + Model parametrelerini ve özellik ağırlıklarını görüntülemek için, çıkışa sağ tıklayın ve **Görselleştir**' i seçin.
-+ Modeli diğer denemeleri kullanmak için modele sağ tıklayın ve **modeli Kaydet**' i seçin. Model için bir ad yazın. 
++ Modeli başka işlem hatlarında kullanmak için modele sağ tıklayın ve **modeli Kaydet**' i seçin. Model için bir ad yazın. 
 
-    Bu, modeli tekrarlayarak yinelenen çalıştırmaları tarafından güncelleştirilmemiş bir anlık görüntü olarak kaydeder.
+    Bu, modeli, ardışık düzenin yinelenen çalıştırmaları tarafından güncelleştirilmemiş bir anlık görüntü olarak kaydeder.
 + Modeli yeni değerleri tahmin etmek üzere kullanmak için, yeni giriş verileriyle birlikte, [puan modeli](./score-model.md) modülüne bağlayın.
 
 

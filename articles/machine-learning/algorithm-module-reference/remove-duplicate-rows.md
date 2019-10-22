@@ -1,5 +1,5 @@
 ---
-title: 'Yinelenen satırları kaldır: Modül başvurusu'
+title: 'Yinelenen satırları kaldır: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Bir veri kümesinden Potansiyel yinelemeleri kaldırmak için Azure Machine Learning hizmetindeki yinelenen satırları kaldır modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128534"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693675"
 ---
 # <a name="remove-duplicate-rows-module"></a>Yinelenen satırları kaldır modülü
 
@@ -24,17 +24,17 @@ Bir veri kümesinden Potansiyel yinelemeleri kaldırmak için bu modülü kullan
 
 Örneğin, verilerinizin aşağıdaki gibi göründüğünü varsayın ve hastalar için birden çok kaydı temsil eder. 
 
-| Hatıd | Baş harfler| Cinsiyet|Yaş|Kabul edilen|
+| Hatıd | Harf| Cinsiyet|Yaş|Kabul edilen|
 |----|----|----|----|----|
-|1\.|F.M.| M| 53| Oca|
+|1|F.M.| M| 53| Oca|
 |2| F.A.M.| M| 53| Oca|
 |3| F.A.M.| M| 24| Oca|
 |3| F.M.| M| 24| Şub|
 |4| F.M.| M| 23| Şub|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
-|6| F.A.M.| M| NaN| |
-|7| F.A.M.| M| NaN| |
+|6| F.A.M.| M| NBir| |
+|7| F.A.M.| M| NBir| |
 
 Açık olarak, bu örnekte muhtemelen yinelenen verileri olan birden çok sütun vardır. Gerçekte yinelenen olup olmadıkları, verilerin bilgisine bağlıdır. 
 
@@ -51,7 +51,7 @@ Modülünü çalıştırdığınızda, bir aday veri kümesi oluşturur ve belir
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Yinelenen satırları kaldır 'ı kullanma
 
-1. Modülü denemenize ekleyin. **Veri dönüştürme**, **düzenleme**altında **yinelenen satırları kaldır** modülünü bulabilirsiniz.  
+1. İşlem hattınızı modüle ekleyin. **Veri dönüştürme**, **düzenleme**altında **yinelenen satırları kaldır** modülünü bulabilirsiniz.  
 
 2. Yinelenen satırları denetlemek istediğiniz veri kümesini bağlayın.
 
@@ -61,15 +61,15 @@ Modülünü çalıştırdığınızda, bir aday veri kümesi oluşturur ve belir
 
     Örnekler:
 
-    + "Kimliklerin benzersiz olduğundan emin olmak istiyorum": Yalnızca KIMLIK sütununu seçin.
-    + "Ad, son ad ve KIMLIK birleşiminin benzersiz olduğundan emin olmak istiyorum": Üç sütunu da seçin.
+    + "Kimliklerin benzersiz olduğundan emin olmak istiyorum": yalnızca KIMLIK sütununu seçin.
+    + "Ad, son ad ve KIMLIK birleşiminin benzersiz olduğundan emin olmak istiyorum": tüm üç sütunu seçin.
 
 4. Yinelemeler bulunduğunda hangi satırın dönecağını belirtmek için **ilk yinelenen satırı koru** onay kutusunu kullanın:
 
     + Seçilirse, ilk satır döndürülür ve diğerleri atılır. 
     + Bu seçeneğin işaretini kaldırırsanız, son yinelenen satır sonuçlarda tutulur ve diğerleri atılır. 
 
-5. Denemeyi çalıştırın.
+5. İşlem hattını çalıştırma.
 
 6. Sonuçları gözden geçirmek için modüle sağ tıklayın, **sonuçlar veri kümesi**' ni seçin ve **Görselleştir**' e tıklayın. 
 

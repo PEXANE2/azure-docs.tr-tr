@@ -1,7 +1,7 @@
 ---
-title: "HTTP aracılığıyla Web URL 'sinden içeri aktar: Modül başvurusu"
+title: "HTTP: Module başvurusu aracılığıyla Web URL 'sinden içeri aktar"
 titleSuffix: Azure Machine Learning service
-description: Bir makine öğrenimi denemesinin kullanımı için genel bir Web sayfasından veri okumak üzere Azure Machine Learning hizmetindeki HTTP modülü aracılığıyla Web URL 'sinden Içeri aktarmayı nasıl kullanacağınızı öğrenin.
+description: Bir makine öğrenimi ardışık düzeninde kullanmak üzere genel bir Web sayfasından veri okumak için Azure Machine Learning hizmetindeki HTTP modülü aracılığıyla Web URL 'sinden Içeri aktarmayı nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e2521dabdab8e9365019f35514f2d8d235c9c014
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128746"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693130"
 ---
 # <a name="import-from-web-url-via-http-module"></a>HTTP modülü aracılığıyla Web URL 'sinden içeri aktar
 
 Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
-Bir makine öğrenimi denemesinin kullanımı için genel bir Web sayfasından veri okumak için bu modülü kullanın.
+Bir makine öğrenimi ardışık düzeninde kullanmak üzere genel bir Web sayfasından veri okumak için bu modülü kullanın.
 
 Bir Web sayfasında yayımlanan veriler için aşağıdaki kısıtlamalar geçerlidir:
 
@@ -31,7 +31,7 @@ Veri almanın iki yolu vardır: Sihirbazı kullanarak veri kaynağını ayarlama
 
 ## <a name="use-the-data-import-wizard"></a>Veri alma Sihirbazı 'nı kullanma
 
-1. **Veri alma** modülünü denemenize ekleyin. Modülü, **veri girişi ve çıkış** kategorisinde arabiriminde bulabilirsiniz.
+1. **Veri alım** modülünü işlem hattınızı ekleyin. Modülü, **veri girişi ve çıkış** kategorisinde arabiriminde bulabilirsiniz.
 
 2. **Veri alma Sihirbazı 'Nı Başlat** ' a tıklayın ve http aracılığıyla Web URL 'si seçin.
 
@@ -45,7 +45,7 @@ Var olan bir veri bağlantısını düzenlemek için Sihirbazı yeniden başlat�
 
 Aşağıdaki adımlarda, içeri aktarma kaynağının el ile nasıl yapılandırılacağı açıklanır.
 
-1. [Veri alma](import-data.md) modülünü denemenize ekleyin. Modülü, **veri girişi ve çıkış** kategorisinde arabiriminde bulabilirsiniz.
+1. [Veri alım](import-data.md) modülünü işlem hattınızı ekleyin. Modülü, **veri girişi ve çıkış** kategorisinde arabiriminde bulabilirsiniz.
 
 2. **Veri kaynağı**için **http üzerinden Web URL 'si**seçeneğini belirleyin.
 
@@ -63,13 +63,13 @@ Aşağıdaki adımlarda, içeri aktarma kaynağının el ile nasıl yapılandır
 
 5. Veriler CSV veya TSV biçimindeyse, kaynak verilerin bir başlık satırı içerip içermediğini göstermek için **dosyanın üst bilgi satırı** seçeneğini kullanın. Başlık satırı, sütun adlarını atamak için kullanılır.
 
-6. Verilerin büyük ölçüde değişmeyeceğini veya her denemeyi her çalıştırdığınızda verileri yeniden yüklemeyi önlemek istiyorsanız **önbelleğe alınmış sonuçları kullan** seçeneğini belirleyin.
+6. Verilerin çok fazla değişmeyeceğini veya işlem hattını her çalıştırdığınızda verileri yeniden yüklemeyi önlemek istiyorsanız **önbelleğe alınmış sonuçları kullan** seçeneğini belirleyin.
 
-    Bu seçenek belirlendiğinde, deneme, verileri modül ilk kez çalıştırıldığında yükler ve bundan sonra veri kümesinin önbelleğe alınmış bir sürümünü kullanır.
+    Bu seçenek belirlendiğinde, işlem hattı, modül ilk kez çalıştırıldığında verileri yükler ve bundan sonra veri kümesinin önbelleğe alınmış bir sürümünü kullanır.
 
-    Veri kümesini deneme veri kümesinin her yinelemesinde yeniden yüklemek istiyorsanız, **önbelleğe alınmış sonuçları kullan** seçeneğinin işaretini kaldırın. [Içeri aktarma verileri](import-data.md)parametrelerinde herhangi bir değişiklik varsa sonuçlar da yeniden yüklenir.
+    Veri kümesini ardışık düzen veri kümesinin her tekrarında yeniden yüklemek istiyorsanız, **önbelleğe alınmış sonuçları kullan** seçeneğinin işaretini kaldırın. [Içeri aktarma verileri](import-data.md)parametrelerinde herhangi bir değişiklik varsa sonuçlar da yeniden yüklenir.
 
-7. Denemeyi çalıştırın.
+7. İşlem hattını çalıştırma.
 
 ## <a name="results"></a>Sonuçlar
 

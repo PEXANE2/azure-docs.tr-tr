@@ -1,5 +1,5 @@
 ---
-title: Filtreleme, sıralama, Media Services varlıkların sayfalanması-Azure | Microsoft Docs
+title: Media Services varlıkların filtrelenmesi, sıralanması ve sayfalanması-Azure | Microsoft Docs
 description: Bu makalede, Azure Media Services varlıkların filtrelenmesini, sıralanmasını ve sayfalama işlemlerini ele alınmaktadır.
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298957"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693321"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması, sayfalama
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması ve sayfalama
 
-Bu konuda, Azure Media Services v3 varlıklarının listelenmesi sırasında kullanılabilen OData sorgu seçenekleri ve sayfalandırma desteği ele alınmaktadır.
+Bu konu, Azure Media Services v3 varlıklarını listelerken kullanılabilen OData sorgu seçeneklerini ve sayfalandırma desteğini ele alır.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Tarih saat türünde varlıkların özellikleri her zaman UTC biçimindedir.
-* Sorgu dizesindeki boşluk, istek gönderilmeden önce URL kodlamalı olmalıdır.
+* @No__t_0 türündeki varlıkların özellikleri her zaman UTC biçimindedir.
+* İstek gönderilmeden önce sorgu dizesindeki boşluk, URL kodlamalı olmalıdır.
 
 ## <a name="comparison-operators"></a>Karşılaştırma işleçleri
 
@@ -34,21 +34,21 @@ Bir alanı sabit değerle karşılaştırmak için aşağıdaki işleçleri kull
 
 Eşitlik işleçleri:
 
-- `eq`: bir alanın sabit değere **eşit** olup olmadığını test edin
-- `ne`: bir alanın sabit değere **eşit** olup olmadığını test edin
+- `eq`: bir alanın sabit değere *eşit* olup olmadığını test edin.
+- `ne`: bir alanın sabit değere *eşit* olup olmadığını test edin.
 
 Aralık işleçleri:
 
-- `gt`: bir alanın sabit değerden **büyük** olup olmadığını test edin
-- `lt`: bir alanın sabit değerden **küçük** olup olmadığını test edin
-- `ge`: bir alanın sabit değere **eşit veya ondan büyük** olup olmadığını test edin
-- `le`: bir alanın sabit değere **eşit veya ondan küçük** olup olmadığını test edin
+- `gt`: bir alanın sabit değerden *büyük* olup olmadığını test edin.
+- `lt`: bir alanın sabit değerden *küçük* olup olmadığını test edin.
+- `ge`: bir alanın bir *sabitten büyük veya ona eşit* olup olmadığını test edin. değer
+- `le`: bir alanın sabit değere *eşit veya ondan küçük* olup olmadığını test edin.
 
 ## <a name="filter"></a>Filtrele
 
-**$Filter** -yalnızca ilgilendiğiniz nesneleri bulmak Için bir OData filtre parametresi sağlamak üzere filtre kullanın.
+Yalnızca ilgilendiğiniz nesneleri bulmak için bir OData filtre parametresi sağlamak üzere `$filter` kullanın.
 
-Aşağıdaki REST örneği bir varlığın AlternateId 'Si üzerinde filtreliyor:
+Aşağıdaki REST örneği bir varlığın `alternateId` değerine göre filtreliyor:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -63,28 +63,28 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Sıralama ölçütü
 
-**$OrderBy** , döndürülen nesneleri belirtilen parametreye göre sıralamak için bunu kullanın. Örnek:    
+Döndürülen nesneleri belirtilen parametreye göre sıralamak için `$orderby` kullanın. Örnek:    
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Sonuçları artan veya azalan düzende sıralamak için, alan adına `asc` veya `desc` ' i boşlukla ayırarak ekleyin. Örneğin, `$orderby properties/created desc`.
+Sonuçları artan veya azalan düzende sıralamak için, alan adına `asc` veya `desc` ' i boşlukla ayırarak ekleyin. Örneğin: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Belirteci atla
 
-**$skiptoken** -bir sorgu yanıtı çok sayıda öğe içeriyorsa, hizmet bir sonraki sonuç sayfasını elde etmek için kullandığınız bir atlama belirteci (`@odata.nextLink`) değeri döndürür. Bu, tüm sonuç kümesi boyunca sayfa eklemek için kullanılabilir.
+Bir sorgu yanıtı çok sayıda öğe içeriyorsa, hizmet bir sonraki sonuç sayfasına ulaşmak için kullandığınız bir `$skiptoken` (`@odata.nextLink`) değeri döndürür. Tüm sonuç kümesi üzerinden sayfa eklemek için kullanın.
 
-V3 Media Services, sayfa boyutunu yapılandıramazsınız. Sayfa boyutu varlık türüne göre farklılık gösterir, lütfen ayrıntılar için izleyen bölümleri okuyun.
+V3 Media Services, sayfa boyutunu yapılandıramazsınız. Sayfa boyutu varlık türüne göre değişir. Ayrıntılar için aşağıdaki ayrı bölümleri okuyun.
 
-Koleksiyon üzerinden sayfalama sırasında varlıklar oluşturulursa veya silinirse, değişiklikler döndürülen sonuçlara yansıtılır (Bu değişiklikler indirilmemiş koleksiyonun parçasıysa). 
+Koleksiyon üzerinde sayfalama yaparken varlıklar oluşturulur veya silinirse, değişiklikler döndürülen sonuçlara yansıtılır (Bu değişiklikler henüz indirilmemiş koleksiyonun parçasıysa). 
 
 > [!TIP]
-> Koleksiyonu numaralandırmak ve belirli bir sayfa boyutuna bağlı olmaması için her zaman `nextLink` kullanmanız gerekir.
+> Belirli bir sayfa boyutuna bağlı değil, koleksiyonu numaralandırmak için `nextLink` her zaman kullanmalısınız.
 >
-> @No__t-0 yalnızca birden fazla varlık sayfası varsa mevcut olacaktır.
+> @No__t_0 değeri yalnızca birden fazla varlık sayfası varsa mevcut olacaktır.
 
-$Skiptoken kullanıldığı yerde aşağıdaki örneği göz önünde bulundurun. *Amstestaccount* değerini hesap adınızla değiştirdiğinizden ve *api sürümü* değerini en son sürüme ayarladığınızdan emin olun.
+@No__t_0 kullanıldığı yerde aşağıdaki örneği göz önünde bulundurun. *Amstestaccount* değerini hesap adınızla değiştirdiğinizden ve *api sürümü* değerini en son sürüme ayarladığınızdan emin olun.
 
 Aşağıdaki gibi varlıkların bir listesini istemeniz durumunda:
 
@@ -136,7 +136,7 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="using-logical-operators-to-combine-query-options"></a>Sorgu seçeneklerini birleştirmek için mantıksal işleçler kullanma
 
-Media Services v3, ' veya ' ve ' ve ' mantıksal işleçlerini destekler. 
+Media Services **v3** , **ve ve mantıksal işleçleri destekler.** 
 
 Aşağıdaki REST örneği işin durumunu denetler:
 
@@ -153,7 +153,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 ## <a name="filtering-and-ordering-options-of-entities"></a>Varlıkların filtreleme ve sıralama seçenekleri
 
-Aşağıdaki tabloda filtreleme ve sıralama seçeneklerinin farklı varlıklara nasıl uygulanabileceğini gösterilmektedir:
+Aşağıdaki tabloda, filtreleme ve sıralama seçeneklerinin farklı varlıklara nasıl uygulanacağı gösterilmektedir:
 
 |Varlık adı|Özellik adı|Filtrele|Sipariş|
 |---|---|---|---|

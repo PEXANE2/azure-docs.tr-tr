@@ -1,5 +1,5 @@
 ---
-title: 'İki sınıflı destek vektör makinesi: Modül başvurusu'
+title: 'İki sınıf destek vektör makinesi: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için Azure Machine Learning hizmetinde **Iki sınıf destek vektör makinesi** modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128315"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692598"
 ---
 # <a name="two-class-support-vector-machine-module"></a>İki sınıf destek vektör makinesi modülü
 
@@ -38,11 +38,11 @@ Tahmin için SVM algoritması, yeni örnekleri bir kategoriye veya diğerine ata
 
 Bu model türü için, sınıflandırıcının eğitimi için kullanmadan önce veri kümesini normalleştirmeniz önerilir.
   
-1.  **Iki sınıf destek vektör makinesi** modülünü denemenize ekleyin.  
+1.  **Iki sınıf destek vektör makinesi** modülünü ardışık düzene ekleyin.  
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
 
 3.  **Yineleme sayısı**için model oluşturulurken kullanılan yineleme sayısını belirten bir sayı yazın.  
   
@@ -67,7 +67,7 @@ Bu model türü için, sınıflandırıcının eğitimi için kullanmadan önce 
     -   **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](train-model.md) modülünü kullanın.
   
 
-10. Denemeyi çalıştırın.
+10. İşlem hattını çalıştırma.
 
 ## <a name="results"></a>Sonuçlar
 

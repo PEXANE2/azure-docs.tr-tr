@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/29/2019
-ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/21/2019
+ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72032862"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693361"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modelini kullanan tek veritabanlarına yönelik kaynak sınırları
 
@@ -46,8 +46,8 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |Bellek (GB)|7|14|21|28|35|42|
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
-|En fazla veri boyutu (GB)|1024|1024|1024|1536|1536|1536|
-|En fazla günlük boyutu (GB)|307|307|307|461|461|461|
+|En fazla veri boyutu (GB)|1024|1024|1536|1536|1536|3072|
+|En fazla günlük boyutu (GB)|307|307|461|461|461|922|
 |TempDB en fazla veri boyutu (GB)|32|64|6400/96|128|160|192|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
@@ -69,8 +69,8 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |Bellek (GB)|49|56|63|70|112|168|
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
-|En fazla veri boyutu (GB)|1536|3072|3072|3072|4096|4096|
-|En fazla günlük boyutu (GB)|461|922|922|922|1229|1229|
+|En fazla veri boyutu (GB)|3072|3072|3072|3072|4096|4096|
+|En fazla günlük boyutu (GB)|922|922|922|922|1229|1229|
 |TempDB en fazla veri boyutu (GB)|224|256|288|320|384|384|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)
@@ -93,7 +93,7 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|1024|1024|1536|1536|1536|3072|3072|
-|En fazla günlük boyutu (GB)|307|307|307|461|461|461|461|
+|En fazla günlük boyutu (GB)|307|307|461|461|461|922|922|
 |TempDB en fazla veri boyutu (GB)|64|128|192|256|320|384|384|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
@@ -196,8 +196,8 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|1|2|3|4|5|6|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
-|En fazla veri boyutu (GB)|650|650|650|650|650|650|
-|En fazla günlük boyutu (GB)|195|195|195|195|195|195|
+|En fazla veri boyutu (GB)|1024|1024|1024|1024|1024|1024|
+|En fazla günlük boyutu (GB)|307|307|307|307|307|307|
 |TempDB en fazla veri boyutu (GB)|32|64|6400/96|128|160|192|
 |GÇ gecikme süresi (yaklaşık)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|
 |Maksimum veri ıOPS (64 KB)|5000|10000|15000|20000|25000|30000|
@@ -220,8 +220,8 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|7|8|9,5|11|20|36|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
-|En fazla veri boyutu (GB)|650|650|650|650|1024|1024|
-|En fazla günlük boyutu (GB)|195|195|195|195|307|307|
+|En fazla veri boyutu (GB)|1024|1024|1024|1024|1024|1024|
+|En fazla günlük boyutu (GB)|307|307|307|307|307|307|
 |TempDB en fazla veri boyutu (GB)|224|256|288|320|384|384|
 |GÇ gecikme süresi (yaklaşık)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|
 |Maksimum veri ıOPS (64 KB)|35000|40000|45000|50000|80000|120000|
@@ -244,7 +244,7 @@ SQL veritabanı sunucusundaki tek veritabanlarına yönelik DTU tabanlı satın 
 |Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |En fazla veri boyutu (GB)|1024|1024|1536|1536|1536|3072|3072|
-|En fazla günlük boyutu (GB)|307|307|307|461|461|922|922|
+|En fazla günlük boyutu (GB)|307|307|461|461|461|922|922|
 |TempDB en fazla veri boyutu (GB)|64|128|192|256|320|384|384|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |GÇ gecikme süresi (yaklaşık)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|

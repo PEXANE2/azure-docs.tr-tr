@@ -10,10 +10,10 @@ ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69650074"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search içinde sorgu ve dizin oluşturma iş yükleri için bölümleri ve çoğaltmaları ölçeklendirin
@@ -29,7 +29,7 @@ Daha az sayıda SUs sonucu, orantılı bir şekilde daha düşüktür. Hizmet ay
 ## <a name="terminology-replicas-and-partitions"></a>Terminoloji: çoğaltmalar ve bölümler
 Çoğaltmalar ve bölümler, bir arama hizmetini geri yükleyen birincil kaynaklardır.
 
-| Resource | Tanım |
+| Kaynak | Tanım |
 |----------|------------|
 |*Bölümler* | Okuma/yazma işlemleri için dizin depolama ve g/ç sağlar (örneğin, bir dizini yeniden oluşturma veya yenileme).|
 |*Çoğaltmaları* | Arama hizmeti örnekleri, öncelikli olarak sorgu işlemlerinin yükünü dengelemek için kullanılır. Her çoğaltma her zaman bir dizinin kopyasını barındırır. 12 çoğaltmadıysanız, hizmete yüklenen her dizinin 12 kopyasına sahip olursunuz.|

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/10/2019
+ms.openlocfilehash: f5136084530c48815fd6a9f9e25b7358df00af07
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514936"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692556"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları nelerdir?
 
@@ -112,6 +112,14 @@ Bir `Pipeline` nesnesi oluşturup çalıştırdığınızda, aşağıdaki üst d
 Bir Azure ML işlem hattı, bir Azure Machine Learning çalışma alanıyla ilişkilendirilir ve bir işlem hattı adımı söz konusu çalışma alanı içinde kullanılabilir bir işlem hedefi ile ilişkilendirilir. Daha fazla bilgi için bkz. [Azure portal Azure Machine Learning çalışma alanları oluşturma ve yönetme](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) veya [Azure Machine Learning 'Nda işlem hedefleri nelerdir?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 Azure Machine Learning, bir işlem hedefi, bir ML aşamasının gerçekleştiği ortamdır. Yazılım ortamı, uzak bir VM, Azure Machine Learning Işlem, Azure Databricks, Azure Batch vb. olabilir. Ayrıca, donanım ortamı GPU desteğine, belleğe, depolamaya ve benzeri önemli ölçüde farklılık gösterebilir. Her adım için işlem hedefini belirtebilir, bu, maliyetleri üzerinde ayrıntılı denetim sağlar. Projenizin belirli bir eylemi, veri hacmi ve performans ihtiyaçları için daha fazla veya daha az güçlü kaynak kullanabilirsiniz. 
+
+## <a name="how-do-i-build-pipelines-using-the-azure-machine-learning-visual-interface"></a>Azure Machine Learning görsel arabirimini kullanarak Nasıl yaparım? işlem hatları oluştur.
+
+Görsel tasarım yüzeyini tercih eden geliştiriciler, işlem hatları oluşturmak için Azure Machine Learning görsel arabirimini kullanabilir. Bu araca, çalışma alanınızın giriş sayfasındaki **görsel arabirim** seçiminden erişebilirsiniz.  Görsel arabirim, adımları tasarım yüzeyine sürükleyip bırakmayı sağlar. Hızlı geliştirme için, ML görevlerinin spektrumu genelinde mevcut modülleri kullanabilirsiniz; mevcut modüller, veri dönüşümden algoritma seçimine, dağıtıma eğitimlere kadar her şeyi kapsar. Ya da Python betiklerinizde tanımlanan kendi adımlarınızı birleştirerek tamamen özel bir işlem hattı oluşturabilirsiniz.
+
+İşlem hatlarını görsel olarak tasarladığınızda, bir adımın giriş ve çıkışları görünmez bir şekilde görüntülenir. Veri akışını sürükleyip bırakabilir, böylece işlem hattınızdaki veri akışını hızla anlamanıza ve değiştirebilirsiniz.
+ 
+![Azure Machine Learning görsel arabirimi örneği](./media/concept-ml-pipelines/visual-design-surface.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Yürütme grafiğini anlama
 
