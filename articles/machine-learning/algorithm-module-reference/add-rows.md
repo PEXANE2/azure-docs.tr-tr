@@ -1,5 +1,5 @@
 ---
-title: 'Satır ekle: Modül başvurusu'
+title: 'Satır ekleme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: İki veri kümesini birleştirmek için Azure Machine Learning hizmetinde satır ekle modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129003"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693244"
 ---
 # <a name="add-rows-module"></a>Satır ekleme modülü
 
@@ -32,11 +32,11 @@ Satırları birleştirme, aşağıdaki gibi senaryolarda faydalıdır:
 
 İki veri kümesinden satırları birleştirmek için, satırların tam olarak aynı şemaya sahip olması gerekir. Bu, aynı sayıda sütun ve sütunlarda aynı tür verilerin olması anlamına gelir.
 
-1.  **Satırları Ekle** modülünü denemenize sürükleyin, bunu **veri dönüştürme**altında, **işleme** kategorisinde bulabilirsiniz.
+1.  **Satır ekleme** modülünü işlem hattınızla sürükleyin, bunu **veri dönüştürme**altında, **işleme** kategorisinde bulabilirsiniz.
 
 2. Veri kümelerini iki giriş bağlantı noktasına bağlayın. Eklemek istediğiniz veri kümesi ikinci (sağdaki) bağlantı noktasına bağlanmalıdır. 
   
-3.  Denemeyi çalıştırın. Çıktı veri kümesindeki satır sayısı, her iki giriş veri kümesinin satır toplamına eşit olmalıdır.
+3.  İşlem hattını çalıştırma. Çıktı veri kümesindeki satır sayısı, her iki giriş veri kümesinin satır toplamına eşit olmalıdır.
 
     Aynı veri kümesini **satır ekle** modülünün her iki girişe de eklerseniz, veri kümesi yinelenir. 
 

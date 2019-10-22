@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70162409"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Bulutta Azure Multi-Factor Authentication ile Kullanıcı ayarlarını yönetme
@@ -32,8 +32,8 @@ Yönetici kimlik doğrulama Yöneticisi rolünü atadıkları için kullanıcıl
 
 ![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. Sol tarafta,**kullanıcılar**  > **tüm kullanıcıları** **Azure Active Directory**  >  seçin.
 1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin.
    - **Parola sıfırlama** , kullanıcının parolasını sıfırlayıp bir sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atacaktır.
    - **MFA 'Yı yeniden kaydettirmek** için, Kullanıcı bir sonraki sefer oturum açtığında yenı bir MFA kimlik doğrulama yöntemi kurmak istemeleri gerekir.
@@ -45,17 +45,17 @@ Bu ayar, kullanıcıyı kayıt işlemini tamamlamaya zorlar. Tarayıcı olmayan 
 
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>Kullanıcıların iletişim yöntemlerini yeniden sağlamasını isteme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Sol tarafta,**kullanıcılar**  > **tüm kullanıcıları** **Azure Active Directory**  >  seçin.
 3. Sağ tarafta, araç çubuğunda **Multi-Factor Authentication** ' yi seçin. Multi-Factor Authentication sayfası açılır.
 4. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
 5. **Kullanıcı ayarlarını yönet**' i seçin.
 6. **Seçilen kullanıcıların iletişim yöntemlerini yeniden sağlamasını gerektir**kutusunu işaretleyin.
-   ![Kullanıcıların iletişim yöntemlerini yeniden sağlamasını gerektir](./media/howto-mfa-userdevicesettings/reproofup.png)
+   kullanıcıların iletişim yöntemlerini yeniden sağlaması ![Require ](./media/howto-mfa-userdevicesettings/reproofup.png)
 7. **Kaydet**’e tıklayın.
 8. **Kapat**' a tıklayın.
 
-Kuruluşlar aşağıdaki adımları kullanarak PowerShell ile bu adımları tamamlayarak `StrongAuthenticationMethods` özniteliği temizleyebilmektir:
+Kuruluşlar, `StrongAuthenticationMethods` özniteliğini temizlemek için aşağıdaki kılavuzu kullanarak PowerShell ile bu adımları tamamlayabilir:
 
 ```PowerShell
 $Upn = "theuser@domain.com"
@@ -69,13 +69,13 @@ Bu ayar, bir kullanıcının oluşturduğu tüm uygulama parolalarını siler. B
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>Kullanıcı var olan uygulama parolalarını silme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Sol tarafta,**kullanıcılar**  > **tüm kullanıcıları** **Azure Active Directory**  >  seçin.
 3. Sağ tarafta, araç çubuğunda **Multi-Factor Authentication** ' yi seçin. Multi-Factor Authentication sayfası açılır.
 4. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
 5. **Kullanıcı ayarlarını yönet**' i seçin.
 6. **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil**kutusunu işaretleyin.
-   ![Mevcut tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+   Mevcut tüm uygulama parolalarını ![Delete ](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 7. **Kaydet**’e tıklayın.
 8. **Kapat**' a tıklayın.
 
@@ -85,17 +85,17 @@ Azure Multi-Factor Authentication 'nin yapılandırılabilir özelliklerinden bi
 
 Kullanıcılar, düzenli cihazlarda yapılandırılabilir gün sayısı için iki aşamalı doğrulamayı geri alabilir. Bir hesabın güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybolursa, güvenilen durumu kaldırabilmeniz ve iki aşamalı doğrulamayı yeniden gerektirmiş olmanız gerekir.
 
-İşaretlendiğinde, **Tüm hatırlanan cihazlarda Multi-Factor Authentication ı geri yükle** kullanıcıları, cihazlarını güvenilir olarak işaretlemiş olsalar bile, bir sonraki oturum açtıklarında iki adımlı doğrulama gerçekleştirmek için gereklidir.
+İşaretlendiğinde, **Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükle** kullanıcıları, cihazlarını güvenilir olarak işaretlemiş olsalar bile, bir sonraki oturum açtıklarında iki adımlı doğrulama gerçekleştirmek için gereklidir.
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Bir kullanıcı için tüm askıya alınmış cihazlarda MFA 'yı geri yükleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Sol tarafta,**kullanıcılar**  > **tüm kullanıcıları** **Azure Active Directory**  >  seçin.
 3. Sağ tarafta, araç çubuğunda **Multi-Factor Authentication** ' yi seçin. Multi-Factor Authentication sayfası açılır.
 4. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
 5. **Kullanıcı ayarlarını yönet**' i seçin.
-6. **Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükle**kutusunu işaretleyin 
-   ![Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ıgeriyükleyin](./media/howto-mfa-userdevicesettings/rememberdevices.png)
+6. Hatırlanan tüm cihazlarda Multi-Factor Authentication ![Restore 
+    tüm anımsanan cihazlarda **Multi-Factor Authentication 'ı geri yükle** kutusunu işaretleyin ](./media/howto-mfa-userdevicesettings/rememberdevices.png)
 7. **Kaydet**’e tıklayın.
 8. **Kapat**' a tıklayın.
 

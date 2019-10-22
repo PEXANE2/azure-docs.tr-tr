@@ -14,19 +14,19 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71212536"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>SUSE 'in STONITH kullanarak yüksek kullanılabilirlik kurulumu
 Bu belgede, SUSE Işletim sisteminde STONITH cihazını kullanarak yüksek kullanılabilirliği ayarlamak için ayrıntılı adım adım yönergeler sağlanmaktadır.
 
-**Sorumluluk reddi** *Bu kılavuz, kurulumun başarıyla çalıştığı Microsoft HANA büyük örnekler ortamında test edilirken türetilir. HANA büyük örnekleri için Microsoft hizmet yönetimi ekibi, Işletim sistemini desteklemediğinden, daha fazla sorun giderme veya işletim sistemi katmanında açıklama için SUSE 'e başvurmanız gerekebilir. Microsoft hizmet yönetimi ekibi, STONITH cihazını ayarlayabilir ve tamamen destekler ve bu cihaz sorunlarını gidermek için sorun gidermeye dahil edilebilir.*
+**Vazgeçme:** *Bu kılavuz, kurulumun BAŞARıYLA çalıştığı Microsoft Hana büyük örnekler ortamında test edilirken türetilir. HANA büyük örnekleri için Microsoft hizmet yönetimi ekibi, Işletim sistemini desteklemediğinden, daha fazla sorun giderme veya işletim sistemi katmanında açıklama için SUSE 'e başvurmanız gerekebilir. Microsoft hizmet yönetimi ekibi, STONITH cihazını ayarlayabilir ve tamamen destekler ve bu cihaz sorunlarını gidermek için sorun gidermeye dahil edilebilir.*
 ## <a name="overview"></a>Genel Bakış
 SUSE kümeleme kullanarak yüksek kullanılabilirliği ayarlamak için aşağıdaki önkoşulların karşılanması gerekir.
-### <a name="pre-requisites"></a>Ön koşullar
+### <a name="pre-requisites"></a>Önkoşullar
 - HANA büyük örnekleri sağlandı
 - İşletim sistemi kayıtlı
 - HANA büyük örnek sunucuları, yamaları/paketleri almak için SMT sunucusuna bağlanır
@@ -36,9 +36,9 @@ SUSE kümeleme kullanarak yüksek kullanılabilirliği ayarlamak için aşağıd
 
 ### <a name="setup-details"></a>Kurulum Ayrıntıları
 Bu kılavuzda aşağıdaki kurulum kullanılmaktadır:
-- İşletim Sistemi: SAP için SLES 12 SP1
+- İşletim sistemi: SAP için SLES 12 SP1
 - HANA büyük örnekler: 2xS192 (dört yuva, 2 TB)
-- HANA sürümü: HANA 2.0 SP1
+- HANA sürümü: HANA 2,0 SP1
 - Sunucu adları: sapprdhdb95 (Düğüm1) ve sapprdhdb96 (Düğüm2)
 - STONITH cihazı: Iscsı tabanlı STONITH cihazı
 - HANA büyük örnek düğümlerinden birinde NTP ayarlama
@@ -63,7 +63,7 @@ STONITH kullanarak uçtan uca HA ayarlamak için aşağıdaki adımların izlenm
 7.  Kaynakları kümeye yapılandırma
 8.  Yük devretme işlemini test etme
 
-## <a name="1---identify-the-sbd-device"></a>1.   SBD cihazını tanımla
+## <a name="1---identify-the-sbd-device"></a>1. SBD cihazını tanımla
 Bu bölümde, Microsoft hizmet yönetimi ekibi, STONITH yapılandırıldıktan sonra kurulum için SBD cihazının nasıl belirleneceği açıklanmaktadır. **Bu bölüm yalnızca mevcut müşteri için geçerlidir**. Yeni bir müşteriyseniz, Microsoft hizmet yönetimi ekibi sizin için SBD cihaz adı sağlar ve bu bölümü atlayabilirsiniz.
 
 1,1 */etc/Île/ınitiatorname.exe* değiştirme 
@@ -75,7 +75,7 @@ Microsoft hizmet yönetimi bu dizeyi sağlar. Her **iki** düğümdeki dosyayı 
 
 ![ınitiatorname. png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 */etc/iscsi/SCC SID.conf*değiştirme: *Node. Session. Timeo. replacement_timeout = 5* ve *Node. Startup = Automatic*olarak ayarlayın. **Her iki** düğümdeki dosyayı değiştirin.
+1,2 düğümünü Değiştir */SCC SID.conf*: *Node. Session. Timeo. replacement_timeout = 5* ve *Node. Startup = Automatic*olarak ayarlayın. **Her iki** düğümdeki dosyayı değiştirin.
 
 1,3 bulma komutunu yürütür, dört oturum gösterir. Her iki düğümde de çalıştırın.
 
@@ -107,7 +107,7 @@ rescan-scsi-bus.sh
 
 ![Fdisk-l. png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
-## <a name="2---initialize-the-sbd-device"></a>2.   SBD cihazını başlatma
+## <a name="2---initialize-the-sbd-device"></a>2. SBD cihazını başlatın
 
 2,1 **her iki düğümde de** SBD cihazını başlatın
 
@@ -122,7 +122,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>3.   Kümeyi yapılandırma
+## <a name="3---configuring-the-cluster"></a>3. kümeyi yapılandırma
 Bu bölümde, SUSE HA kümesini ayarlama adımları açıklanmaktadır.
 ### <a name="31-package-installation"></a>3,1 paket yüklemesi
 3.1.1 lütfen ha_sles ve SAPHanaSR-doc desenlerinin yüklendiğini kontrol edin. Yüklü değilse, onları yükleme. **Her iki düğüme de** yükler.
@@ -130,14 +130,14 @@ Bu bölümde, SUSE HA kümesini ayarlama adımları açıklanmaktadır.
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles. png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-Doc. png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png ](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+ ![zypperpatternSAPHANASR-Doc. png ](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 kümeyi ayarlama
 3.2.1, *ha-Cluster-init* komutunu kullanabilir ya da kümeyi ayarlamak için YaST2 sihirbazını kullanabilirsiniz. Bu durumda, YaST2 Sihirbazı kullanılır. Bu adımı **yalnızca birincil düğümde**gerçekleştirirsiniz.
 
-YaST2 > yüksek kullanılabilirlik > kümesini ![izleyin yast-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
-![yast-Hawk-install. png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
+YaST2 > yüksek kullanılabilirlik > kümesini izleyin ![yast-Control-Center. png ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
+ ![yast-Hawk-Install. png ](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
 Halk2 paketi zaten yüklü olduğundan **iptal** ' e tıklayın.
 
@@ -145,8 +145,8 @@ Halk2 paketi zaten yüklü olduğundan **iptal** ' e tıklayın.
 
 **Devam** ' a tıklayın
 
-Beklenen değer = dağıtılan düğümlerin sayısı (Bu durumda 2) ![yast-Cluster-Security. png
-](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) İleri![yast-Cluster-configure-csync2. png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) ' de düğüm adları Ekle ' ye tıklayın ve ardından "Ekle Önerilen dosyalar "
+Beklenen değer = dağıtılan düğümlerin sayısı (Bu durumda 2) ![yast-Cluster-Security. png ](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) **ileri** 
+ ![yast-Cluster-configure-csync2. png ](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) düğüm adları Ekle ' ye tıklayın ve ardından "önerilen dosyaları Ekle" ye tıklayın
 
 "Csync2 aç" düğmesine tıklayın
 
@@ -160,13 +160,13 @@ Kimlik doğrulaması, Csync2 ' deki IP adresleri ve önceden paylaşılan anahta
 
 ![yast-Cluster-conntrackd. png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-**İleri**
-yast-Cluster-Service.![png ' ye tıklayın](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+**İleri** ' ye tıklayın 
+ ![yast-Cluster-Service. png ](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 Varsayılan seçenekte önyükleme devre dışı bırakıldı, bu nedenle önyükleme sırasında paceyapıcısı başlatılmalıdır. Kurulum gereksinimlerinize göre seçim yapabilirsiniz.
 **İleri** ' ye tıklayın ve küme yapılandırması tamamlanmıştır.
 
-## <a name="4---setting-up-the-softdog-watchdog"></a>4.   Softköpek Izleyicisi 'ni ayarlama
+## <a name="4---setting-up-the-softdog-watchdog"></a>4. Softköpek Izleyicisi 'ni ayarlama
 Bu bölüm, izleme (softköpek) yapılandırmasını açıklar.
 
 4,1 **her iki** düğüm üzerinde */etc/Init.exe* için aşağıdaki satırı ekleyin.
@@ -185,7 +185,7 @@ SBD_DEVICE="<SBD Device Name>"
 ```
 modprobe softdog
 ```
-![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
+![modprobe-softdog-Command. png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
 4,4 ve **her iki düğümde de** aşağıdaki gibi softköpek 'nın çalıştığından emin olun:
 ```
@@ -211,7 +211,7 @@ sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![SBD-List. png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-4,8 **ikinci** düğüm üzerinde (Düğüm2) ileti durumunu kontrol edebilirsiniz
+**ikinci** düğüm üzerinde 4,8 (Düğüm2) ileti durumunu kontrol edebilirsiniz
 ```
 sbd  -d <SBD Device Name> list
 ```
@@ -231,9 +231,9 @@ systemctl start pacemaker
 ```
 ![Start-pacemaker. png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-Paceoluşturucu hizmeti *başarısız olursa*Senaryo 5 ' e *bakın: Paceoluşturucu hizmeti başarısız oluyor*
+Paceoluşturucu hizmeti *başarısız olursa*, *Senaryo 5: paceoluşturucu hizmeti başarısız oldu* bölümüne başvurun
 
-## <a name="5---joining-the-cluster"></a>5.   Kümeye katılma
+## <a name="5---joining-the-cluster"></a>5. kümeye katılma
 Bu bölümde, düğümü kümeye nasıl katılabileceğinizi anlatmaktadır.
 
 ### <a name="51-add-the-node"></a>5,1 düğümü ekleme
@@ -241,9 +241,9 @@ Düğüm2 kümeye katılmasına izin vermek için **Düğüm2** üzerinde aşağ
 ```
 ha-cluster-join
 ```
-Kümeye katılırken bir *hata* alırsanız, bkz *. Senaryo 6: Düğüm 2 kümeye*katılamadı.
+Kümeye katılırken bir *hata* alırsanız, bkz. *Senaryo 6: düğüm 2 kümeye katılamadı*.
 
-## <a name="6---validating-the-cluster"></a>6.   Küme doğrulanıyor
+## <a name="6---validating-the-cluster"></a>6. küme doğrulanıyor
 
 ### <a name="61-start-the-cluster-service"></a>6,1 küme hizmetini başlatma
 **Her iki** düğümdeki kümeyi ilk kez denetlemek ve isteğe bağlı olarak başlatmak için.
@@ -257,9 +257,9 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![CRM-Mon. png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Ayrıca, küme durumu *https://\<node IP >: 7630*denetlemek için, havk 'da da oturum açabilirsiniz. Varsayılan Kullanıcı hacluster ve parola Linux olur. Gerekirse, *passwd* komutunu kullanarak parolayı değiştirebilirsiniz.
+![crm-Mon. png ](media/HowToHLI/HASetupWithStonith/crm-mon.png) küme durumunu denetlemek için *https://\<node ıp >: 7630*. Varsayılan Kullanıcı hacluster ve parola Linux olur. Gerekirse, *passwd* komutunu kullanarak parolayı değiştirebilirsiniz.
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7. Küme özelliklerini ve kaynaklarını yapılandırma 
+## <a name="7-configure-cluster-properties-and-resources"></a>7. küme özelliklerini ve kaynaklarını yapılandırma 
 Bu bölümde, küme kaynaklarını yapılandırma adımları açıklanmaktadır.
 Bu örnekte, aşağıdaki kaynağı ayarlayın, SUSE HA kılavuzuna başvurarak Rest (gerekirse) yapılandırılabilir. Yapılandırmayı yalnızca **düğümlerden birinde** gerçekleştirin. Birincil düğüm üzerinde yapın.
 
@@ -320,13 +320,13 @@ crm configure load update crm-vip.txt
 ### <a name="74-validate-the-resources"></a>7,4 kaynakları doğrulama
 
 Command *crm_mon*çalıştırdığınızda, iki kaynağı orada görebilirsiniz.
-![crm_mon_command. png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
+![crm_mon_command. png ](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Ayrıca, *https://\<düğüm IP adresi >: 7630/CIB/canlı/durum* konumundaki durumu görebilirsiniz.
+Ayrıca, durumu *https://\<node IP adresi >: 7630/CIB/canlı/durum* ' da görebilirsiniz.
 
 ![hawlk-Status-Page. png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8. Yük devretme işlemini test etme
+## <a name="8-testing-the-failover-process"></a>8. yük devretme işlemini test etme
 Yük devretme sürecini test etmek için Düğüm1 üzerindeki paceoluşturucu hizmetini durdurun ve kaynakları Düğüm2 ' ye devreder.
 ```
 Service pacemaker stop
@@ -334,17 +334,17 @@ Service pacemaker stop
 Şimdi, **Düğüm2** üzerindeki paceyapıcısı hizmetini durdurun ve kaynakları **Düğüm1** 'e devredildi.
 
 **Yük devretmeden önce**  
-![Before-Failover. png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-Failover. png ](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **Yük devretmeden sonra**  
-![After-Failover. png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![CRM-Mon-After-Failover. png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-Failover. png ](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-Mon-After-Failover. png ](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9. Sorun giderme
+## <a name="9-troubleshooting"></a>9. sorun giderme
 Bu bölümde, kurulum sırasında karşılaşılabilecek birkaç hata senaryosu açıklanmaktadır. Bu sorunları hissetmeyebilir.
 
-### <a name="scenario-1-cluster-node-not-online"></a>Senaryo 1: Küme düğümü çevrimiçi değil
+### <a name="scenario-1-cluster-node-not-online"></a>Senaryo 1: küme düğümü çevrimiçi değil
 Düğümlerden herhangi biri, Küme Yöneticisi 'nde çevrimiçi görünmüyorsa, çevrimiçi duruma getirmek için aşağıdakileri deneyebilirsiniz.
 
 Iscsı hizmetini başlatma
@@ -371,7 +371,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>Senaryo 2: YaST2 grafik görünümü göstermez
 YaST2 grafik ekranı, bu belgede yüksek kullanılabilirlik kümesini ayarlamak için kullanılır. YaST2, gösterildiği gibi grafik penceresiyle birlikte açılmadığından ve QT hatası fırladıysanız, adımları aşağıdaki şekilde gerçekleştirin. Grafik penceresiyle açılırsa, adımları atlayabilirsiniz.
 
-**Hata:**
+**Hatayla**
 
 ![YaST2-QT-gui-Error. png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
@@ -389,13 +389,13 @@ Paketleri yüklemek için, yazılım yönetimi > bağımlılıklarını > yast >
 
 ![yast-sofwaremanagement. png](media/HowToHLI/HASetupWithStonith/yast-sofwaremanagement.png)
 
-Bağımlılıklar altında "önerilen paketleri yüklensin" ![yast-Dependencies. png ' yi seçin.](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
+Bağımlılıklar altında "önerilen paketleri yüklensin" ![yast-Dependencies. png ](media/HowToHLI/HASetupWithStonith/yast-dependencies.png)
 
 Değişiklikleri gözden geçirin ve Tamam 'a basın
 
 ![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
-Paket yükleme devam ![yast-Performing-installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
+Paket yükleme devam eder ![yast-Performing-yükleme. png ](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
 İleri’ye tıklayın
 
@@ -411,9 +411,9 @@ zypper -n install libqt4
 ```
 zypper -n install libyui-qt
 ```
-![Zypper-install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
-![zypper-install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) YaST2, şimdi burada gösterildiği gibi grafik görünümünü açabiliyor olmalıdır.
-![YaST2-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![zypper-Install-ligyui. png ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
+ ![zypper-install-ligyui_part2. png ](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) YaST2, şimdi burada gösterildiği gibi grafik görünümünü açabiliyor olmalıdır.
+![yast2-Control-Center. png ](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Senaryo 3: YaST2 yüksek kullanılabilirlik seçeneği değil
 Yüksek kullanılabilirlik seçeneğinin YaST2 denetim merkezinde görünür olması için ek paketleri yüklemeniz gerekir.
@@ -433,8 +433,8 @@ Yazılım Yönetimi > YaST2 > yazılım kullanımı
 
 Desenleri seçin
 
-![yast-pattern1. png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2. png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![yast-pattern1. png ](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+ ![yast-pattern2. png ](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 **Kabul et** 'e tıklayın
 
@@ -508,7 +508,7 @@ Persistent=true
 
 ![Kalıcı. png](media/HowToHLI/HASetupWithStonith/Persistent.png)
 
-### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Senaryo 6: Düğüm 2 kümeye katılamıyor
+### <a name="scenario-6-node-2-unable-to-join-the-cluster"></a>Senaryo 6: düğüm 2 kümeye katılamıyor
 
 Düğüm2, *ha-Cluster-JOIN* komutunu kullanarak var olan kümeye birleştirilirken aşağıdaki hata oluştu.
 
@@ -533,7 +533,7 @@ Yukarıdaki düzeltmeyle sonra, Düğüm2 kümeye eklenmelidir
 
 ![ha-Cluster-Join-Fix. png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10. Genel Belgeler
+## <a name="10-general-documentation"></a>10. genel belgeler
 Aşağıdaki makalelerde SUSE HA kurulumu hakkında daha fazla bilgi edinebilirsiniz: 
 
 - [SAP HANA SR performansı için Iyileştirilmiş senaryo](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )

@@ -1,5 +1,5 @@
 ---
-title: 'Karar ormanı gerileme: Modül başvurusu'
+title: 'Karar ormanı gerileme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak için Azure Machine Learning hizmetinde karar ormanı gerileme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128880"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693182"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
 
@@ -24,7 +24,7 @@ Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak 
 
 Modeli yapılandırdıktan sonra, etiketli bir veri kümesi ve [model eğitimi](./train-model.md) modülünü kullanarak modeli eğmeniz gerekir.  Daha sonra eğitilen model, tahminleri yapmak için kullanılabilir. 
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 Karar ağaçları, her bir örnek için bir dizi basit test gerçekleştiren ve bir yaprak düğümüne (karar) kadar bir ikili ağaç veri yapısına geçiş yapan, parametrik olmayan modellerdir.
 
@@ -38,21 +38,21 @@ Karar ağaçları şu avantajları sunar:
 
 Bu regresyon modeli, karar ağaçlarının bir listesini içerir. Regresyon kararı ormanındaki her bir ağaç, bir tahmin olarak bir Gauss dağılımı çıktı. Modeldeki tüm ağaçlar için Birleşik dağıtıma en yakın bir Gauss dağılımı bulmak üzere ağaçları bir toplama işlemi gerçekleştirilir.
 
-Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilgi için şu makaleye bakın: [Karar ormanları: Sınıflandırma, gerileme, yoğunluk tahmini, eski öğrenme ve yarı denetimli öğrenme için Birleşik bir çerçeve](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Bu algoritmanın ve uygulamanın teorik çerçevesi hakkında daha fazla bilgi için şu makaleye bakın: [karar verme ormanları: sınıflandırma, gerileme, yoğunluk tahmini, bildirim açısından eski öğrenme ve yarı denetimli öğrenme Için Birleşik bir çerçeve ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Karar ormanı regresyon modelini yapılandırma
 
-1. Deneme için **karar ormanı gerileme** modülünü ekleyin. Modülün **Machine Learning**, **modeli Başlat**ve **gerileme**altındaki arabirimde bulabilirsiniz.
+1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. Modülün **Machine Learning**, **modeli Başlat**ve **gerileme**altındaki arabirimde bulabilirsiniz.
 
 2. Modül özelliklerini açın ve yeniden **örnekleme yöntemi**için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma**seçeneklerinden birini belirleyebilirsiniz.
 
-    - **Bağıntı**: Bagging, *önyükleme toplama*olarak da adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm Gaussians birleştirilerek verilen Gaussians 'in karışımındaki süre ile eşleşen bir Gauss bulmadır.
+    - **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm Gaussians birleştirilerek verilen Gaussians 'in karışımındaki süre ile eşleşen bir Gauss bulmadır.
 
          Daha fazla bilgi için bkz. [önyükleme toplama](https://wikipedia.org/wiki/Bootstrap_aggregating)Için Vikipedi girişi.
 
-    - **Çoğaltma**: Çoğaltma sırasında her ağaç, tam olarak aynı giriş verilerinde eğitilir. Her ağaç düğümü için hangi bölünmüş koşulun kullanıldığını belirleme rasgele kalır ve ağaçlar birbirinden farklı olur.
+    - **Çoğaltma:** çoğaltmadaki her ağaç, tam olarak aynı giriş verilerinde eğitilir. Her ağaç düğümü için hangi bölünmüş koşulun kullanıldığını belirleme rasgele kalır ve ağaçlar birbirinden farklı olur.
 
-         **Çoğalt** seçeneğiyle eğitim süreci hakkında daha fazla bilgi için bkz [. görüntü işleme ve tıbbi görüntü analizi için karar ormanları. Criminisi ve J. Shotton. Sprte 2013. ](https://research.microsoft.com/projects/decisionforests/).
+         **Çoğalt** seçeneğiyle eğitim süreci hakkında daha fazla bilgi için bkz [. görüntü işleme ve tıbbi görüntü analizi için karar ormanları. Criminisi ve J. Shotton. Sprte 2013.](https://research.microsoft.com/projects/decisionforests/).
 
 3. Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.
 
@@ -82,7 +82,7 @@ Bu algoritmanın ve uygulamasının teorik çerçevesi hakkında daha fazla bilg
 
    
 
-10. Denemeyi çalıştırın.
+10. İşlem hattını çalıştırma.
 
 ### <a name="results"></a>Sonuçlar
 
@@ -92,7 +92,7 @@ Eğitim tamamlandıktan sonra:
 
 + Her bir düğümün kurallarını görmek için her bir ağaca tıklayın ve bölünmeleri inceleyin.
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünün çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Modelin bu kopyası, denemenin art arda çalıştırmaları üzerinde güncelleştirilmedi. 
++ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünün çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Modelin bu kopyası, ardışık düzenin art arda çalıştırmaları üzerinde güncelleştirilmedi. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

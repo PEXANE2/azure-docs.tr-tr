@@ -9,16 +9,16 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71123455"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute bağlantısını doğrulama
 Bu makale, ExpressRoute bağlantısını doğrulamanıza ve sorunlarını gidermenize yardımcı olur. ExpressRoute, bir bağlantı sağlayıcısı tarafından kolaylaştırılıan özel bir bağlantı üzerinden şirket içi ağı Microsoft bulutuna genişleten, aşağıdaki üç farklı ağ bölgesini içerir:
 
--   Müşteri Ağı
+-   Müşteri ağı
 -   Sağlayıcı ağı
 -   Microsoft veri merkezi
 
@@ -40,10 +40,10 @@ Yukarıdaki diyagramda, numaralar anahtar ağ noktalarını gösterir. Ağ nokta
 ExpressRoute bağlantı modeline (bulut Exchange ortak konumu, noktadan noktaya Ethernet bağlantısı veya herhangi birine (ıPVPN)) bağlı olarak, ağ noktaları 3 ve 4 olabilir (katman 2 cihazları). Gösterilen anahtar ağ noktaları aşağıdaki gibidir:
 
 1.  Müşteri işlem cihazı (örneğin, bir sunucu veya BILGISAYAR)
-2.  Anlamak Müşteri Edge yönlendiricileri 
-3.  PEs (CE 'ye yönelik): Sağlayıcı Edge yönlendiricileri/ilgili müşteri Edge yönlendiricileriyle anahtarlar. Bu belgede PE-CEs adı verilir.
-4.  PEs (MSEE 'e bakan): Sağlayıcıya açık olan sağlayıcı Edge yönlendiricileri/anahtarları. Bu belgede PE-Mas olarak adlandırılır.
-5.  MSEEs Microsoft Enterprise Edge (MSEE) ExpressRoute yönlendiricileri
+2.  CEs: müşteri Edge yönlendiricileri 
+3.  PEs (CE 'ye yönelik): sağlayıcının Edge yönlendiricileri/ilgili müşteri Edge yönlendiricileriyle anahtarlar. Bu belgede PE-CEs adı verilir.
+4.  PEs (MSEE 'e bakan): sağlayıcıya yönelik olan sağlayıcı Edge yönlendiricileri/anahtarları. Bu belgede PE-Mas olarak adlandırılır.
+5.  MSEE: Microsoft Enterprise Edge (MSEE) ExpressRoute yönlendiricileri
 6.  Sanal ağ (VNet) ağ geçidi
 7.  Azure VNet 'te işlem cihazı
 
@@ -157,7 +157,7 @@ Belirli bir ExpressRoute devresini seçmek için aşağıdaki komutu kullanın:
     Sku                              : Standard
     Status                           : Enabled
 
-Bir ExpressRoute bağlantı hattının çalışır durumda olup olmadığını doğrulamak için, aşağıdaki alanlara özellikle dikkat edin: ServiceProviderProvisioningState: Sağlanan durum: Enabled
+Bir ExpressRoute bağlantı hattının çalışır durumda olup olmadığını doğrulamak için, aşağıdaki alanlara özellikle dikkat edin: ServiceProviderProvisioningState: sağlanan durum: etkin
 
 > [!NOTE]
 > *Durum* etkinleştirilmemişse [Microsoft desteği][Support]başvurun. *Serviceproviderprovisioningstate* sağlanmamışsa, hizmet sağlayıcınıza başvurun.
@@ -165,7 +165,7 @@ Bir ExpressRoute bağlantı hattının çalışır durumda olup olmadığını d
 >
 
 ## <a name="validate-peering-configuration"></a>Eşleme yapılandırmasını doğrula
-Hizmet sağlayıcı ExpressRoute bağlantı hattını sağlamayı tamamladıktan sonra, MSEE-PR 'ler (4) ve MSEE (5) arasındaki ExpressRoute devresi üzerinden bir yönlendirme yapılandırması oluşturulabilir. Her ExpressRoute bağlantı hattı bir, iki veya üç yönlendirme bağlamı etkin olabilir: Azure özel eşlemesi (Azure 'daki özel sanal ağlara trafik), Azure genel eşleme (Azure 'da genel IP adreslerine giden trafik) ve Microsoft eşlemesi (Office 365 trafiği). Yönlendirme yapılandırması oluşturma ve değiştirme hakkında daha fazla bilgi için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]makalesine bakın.
+Hizmet sağlayıcı ExpressRoute bağlantı hattını sağlamayı tamamladıktan sonra, MSEE-PR 'ler (4) ve MSEE (5) arasındaki ExpressRoute devresi üzerinden bir yönlendirme yapılandırması oluşturulabilir. Her ExpressRoute bağlantı hattı bir, iki veya üç yönlendirme bağlamı etkin olabilir: Azure özel eşlemesi (Azure 'da özel sanal ağlara trafik), Azure genel eşlemesi (Azure 'da genel IP adreslerine giden trafik) ve Microsoft eşlemesi (Office 365 trafiği). Yönlendirme yapılandırması oluşturma ve değiştirme hakkında daha fazla bilgi için, [bir ExpressRoute bağlantı hattı için yönlendirme oluşturma ve değiştirme][CreatePeering]makalesine bakın.
 
 ### <a name="verification-via-the-azure-portal"></a>Azure portal aracılığıyla doğrulama
 
@@ -295,7 +295,7 @@ Başarılı senaryoda komut için örnek bir yanıt:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Benzer şekilde,/ *özel* genel/Microsoft/peerler için, birincil ikincil yoldaki MSEE ARP tablosunu kontrol edebilirsiniz.
+Benzer şekilde, *özel* /*genel* /*Microsoft* eşlemeleri için *birincil* /*İkincil* yolundaki MSEE ARP tablosunu kontrol edebilirsiniz.
 
 Aşağıdaki örnek, bir eşleme için komutun yanıtı olmadığını gösterir.
 
@@ -352,7 +352,7 @@ Komut için başarılı bir sonuç örneği şunlardır:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Benzer şekilde,/ *özel* genel/Microsoft/a eşleme bağlamı için birincil ikincil yoldaki MSEE içindeki yönlendirme tablosunu kontrol edebilirsiniz.
+Benzer şekilde,*Microsoft* 'un bir eşleme bağlamı olan *özel* /*genel* / için *birincil* /*İkincil* yolundaki MSEE yönlendirme tablosunu kontrol edebilirsiniz.
 
 Aşağıdaki örnek, bir eşleme için komutun yanıtı olmadığını gösterir:
 
@@ -379,14 +379,14 @@ Mevcut olmayan bir eşleme için komutun örnek çıktısı:
         + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Daha fazla bilgi veya Yardım için aşağıdaki bağlantıları kontrol edin:
+Daha fazla bilgi veya yardım için aşağıdaki bağlantıları inceleyin:
 
 - [Microsoft Desteği][Support]
 - [ExpressRoute bağlantı hattı oluşturma ve değiştirme][CreateCircuit]
 - [ExpressRoute devresi için yönlendirme oluşturma ve değiştirme][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png  "Mantıksal Express Route bağlantısı"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "mantıksal Express yol bağlantısı"
 [2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Tüm kaynaklar simgesi"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Genel Bakış simgesi"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "ExpressRoute Essentials örnek ekran görüntüsü"

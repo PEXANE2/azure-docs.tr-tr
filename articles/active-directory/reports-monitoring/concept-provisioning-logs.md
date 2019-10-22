@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983495"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 - **Etkinlik** 
     - **Oturum açma** bilgileri – yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgiler.
-    - **Denetim günlükleri** - [Denetim günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
+    - **Denetim günlükleri  -  denetim** [günlükleri](concept-audit-logs.md) , kullanıcılar ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgilerini sağlar.
     - **Günlükleri sağlama** -Azure AD sağlama hizmeti tarafından sağlanan Kullanıcı, Grup ve roller hakkında sistem etkinliği sağlar. 
 
 - **Güvenlik** 
@@ -85,7 +85,7 @@ Bu sayede ek alanları görüntüleyebilir ya da zaten görüntülenen alanları
 
 Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 
-![Ayrıntılı bilgiler](./media/concept-provisioning-logs/steps.png "Filtre Uygula")
+![Ayrıntılı bilgiler](./media/concept-provisioning-logs/steps.png "Filtrele")
 
 
 ## <a name="filter-provisioning-activities"></a>Sağlama etkinliklerini filtrele
@@ -93,14 +93,14 @@ Daha ayrıntılı bilgi edinmek için liste görünümünde bir öğe seçin.
 Bildirilen verileri sizin için uygun bir düzeye daraltmak için, sağlama verilerini aşağıdaki varsayılan alanları kullanarak filtreleyebilirsiniz. Filtrelerdeki değerlerin kiracınıza göre dinamik olarak doldurulduğunu unutmayın. Örneğin, kiracınızda herhangi bir oluşturma olayınız yoksa, Create için bir filtre seçeneği olmayacaktır.
 
 - Kimlik
-- Action
+- Eylem
 - Kaynak sistem
 - Hedef sistem
 - Durum
-- Date
+- Tarih
 
 
-![Filtre Uygula](./media/concept-provisioning-logs/filter.png "Filtre Uygula")
+![Filtreyle](./media/concept-provisioning-logs/filter.png "Filtrele")
 
 **Kimlik** filtresi, ilgilendiğiniz adı veya kimliği belirtmenize olanak sağlar. Bu kimlik bir Kullanıcı, Grup, rol ya da başka bir nesne olabilir. Nesnenin adına veya KIMLIğINE göre arama yapabilirsiniz. KIMLIK senaryoya göre farklılık gösterir. Örneğin, Azure AD 'den SalesForce 'a bir nesne sağlarken, kaynak KIMLIĞI Azure AD 'deki kullanıcının nesne KIMLIĞIDIR, ancak targetID, Salesforce 'daki kullanıcının KIMLIĞIDIR. Workday 'den Active Directory 'e sağlanırken kaynak KIMLIĞI iş günü çalışan çalışan KIMLIĞIDIR. Kullanıcı adının Kimlik sütununda her zaman mevcut olamayacağını unutmayın. Her zaman bir KIMLIK olur. 
 
@@ -113,14 +113,14 @@ Bildirilen verileri sizin için uygun bir düzeye daraltmak için, sağlama veri
 - Tümü
 - Başarılı
 - Hata
-- Atlandı
+- Atlanmış
 
 **Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
 
 - Create 
-- Güncelleştirme
+- Güncelleştir
 - Sil
-- Devre Dışı Bırak
+- Devre dışı bırakma
 - Diğer
 
 **Tarih** filtresi, döndürülen veriler için bir zaman çerçevesi tanımlamanıza olanak sağlar.  
@@ -161,7 +161,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 - Özet
 
 
-![Filtre Uygula](./media/concept-provisioning-logs/provisioning-tabs.png "Sekmeler")
+![Filtreyle](./media/concept-provisioning-logs/provisioning-tabs.png "Sıralanan")
 
 
 
@@ -176,7 +176,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 
 
-![Filtre Uygula](./media/concept-provisioning-logs/steps.png "Filtre Uygula")
+![Filtreyle](./media/concept-provisioning-logs/steps.png "Filtrele")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Sorun giderme ve öneriler

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Uyarlamalı Öngörüler ile tümleştirme Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: Uyarlamalı Öngörüler ile Azure Active Directory tümleştirme | Microsoft Docs'
 description: Azure Active Directory ve Uyarlamalı Öngörüler arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70213623"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Öğretici: Uyarlamalı öngörüleri Azure Active Directory tümleştirin
@@ -58,7 +58,7 @@ Uyarlamalı Öngörüler 'in Azure AD ile tümleştirilmesini yapılandırmak i�
 1. Sonuçlar panelinden **Uyarlamalı Öngörüler** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak, uyarlamalı Öngörüler Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, uyarlamalı Öngörüler içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -83,9 +83,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    b. **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
     > Uyarlamalı Öngörüler 'in **SAML SSO ayarları** sayfasından tanımlayıcıyı (varlık kimliği) ve yanıt URL 'si değerlerini elde edebilirsiniz.
@@ -104,7 +104,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 2. **Yönetim**bölümüne gidin.
 
-    ![Yönetici](./media/adaptivesuite-tutorial/ic805644.png "Yönetici")
+    ![Yöneticileri](./media/adaptivesuite-tutorial/ic805644.png "Yöneticileri")
 
 3. **Kullanıcılar ve roller** bölümünde **SAML SSO ayarları**' na tıklayın.
 
@@ -136,21 +136,21 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     g. **Uyarlamalı Öngörüler SSO URL 'sini** kopyalayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı (varlık kimliği)** ve **yanıt URL 'si** metin kutularına yapıştırın.
 
-    h. **Kaydet**’e tıklayın.
+    h. **Kaydet** düğmesine tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, uyarlamalı Öngörüler 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -158,7 +158,7 @@ Bu bölümde, uyarlamalı Öngörüler 'e erişim vererek Azure çoklu oturum a�
 1. Uygulamalar listesinde, **Uyarlamalı Öngörüler**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -178,11 +178,11 @@ Azure AD kullanıcılarının Uyarlamalı Öngörüler 'de oturum açmasını sa
 
 2. **Yönetim**bölümüne gidin.
 
-   ![Yönetici](./media/adaptivesuite-tutorial/IC805644.png "Yönetici")
+   ![Yöneticileri](./media/adaptivesuite-tutorial/IC805644.png "Yöneticileri")
 
 3. **Kullanıcılar ve roller** bölümünde **Kullanıcılar**' a tıklayın.
 
-   ![Kullanıcı Ekle](./media/adaptivesuite-tutorial/IC805648.png "Kullanıcı Ekle")
+   ![Kullanıcı Ekle](./media/adaptivesuite-tutorial/IC805648.png "Kullanıcı Ekleme")
 
 4. **Yeni Kullanıcı** bölümünde aşağıdaki adımları gerçekleştirin:
 
@@ -192,14 +192,14 @@ Azure AD kullanıcılarının Uyarlamalı Öngörüler 'de oturum açmasını sa
 
    b. Bir **rol**seçin.
 
-   c. **Gönder**'e tıklayın.
+   c. **Gönder**' e tıklayın.
 
 > [!NOTE]
 > AAD Kullanıcı hesaplarını sağlamak için, uyarlamalı içgörüler tarafından sunulan diğer Uyarlamalı içgörüler Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
 ### <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Uyarlamalı Öngörüler kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Uyarlamalı öngörülere otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

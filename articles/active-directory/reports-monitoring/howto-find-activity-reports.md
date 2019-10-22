@@ -15,10 +15,10 @@ ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70127385"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure portal etkinlik raporlarını bulma
@@ -48,18 +48,18 @@ Denetim günlükleri raporu aşağıdaki raporları birleştirir:
 
 ### <a name="filtering-on-audit-logs"></a>Denetim günlüklerinde filtreleme
 
-Denetim verileri kategori filtresinde belirterek belirli bir denetim verileri kategorisine erişmek için denetim raporundaki Gelişmiş filtreleme ' yi kullanabilirsiniz. Örneğin, kullanıcılarla ilgili tüm etkinlikleri görüntülemek için **Usermanagement** kategorisini seçin. 
+Denetim verileri **Kategori filtresinde belirterek** belirli bir denetim verileri kategorisine erişmek için denetim raporundaki Gelişmiş filtreleme ' yi kullanabilirsiniz. Örneğin, kullanıcılarla ilgili tüm etkinlikleri görüntülemek için **Usermanagement** kategorisini seçin. 
 
 Kategoriler şunlardır:
 
 - Tümü
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
-- Authorization
-- İlgili kişi
+- Kimlik Doğrulaması
+- Yetkilendirme
+- İletişim
 - Cihaz
-- DeviceConfiguration
+- Na
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
@@ -82,9 +82,9 @@ Hizmetlere şunlar dahildir:
 - Koşullu Erişim
 - Çekirdek Dizin
 - Yetkilendirme Yönetimi
-- Identity Protection
+- Kimlik Koruması
 - Davetli Kullanıcılar
-- PIM
+- PıM
 - Self Servis Grup Yönetimi
 - Self Servis Parola Yönetimi
 - Kullanım Koşulları
@@ -149,13 +149,13 @@ Algılanan risk algılamaları hakkındaki raporlara, [Azure portal](https://por
 
 Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden? 
 
- ![Raporlanıyor](./media/troubleshoot-missing-data-download/01.png)
+ ![Raporlama](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Nedeni
 
 Etkinlik günlüklerini Azure portal indirdiğinizde, ölçeği 250000 kayıt olarak sınırlarız ve en son ilk olarak sıralanır. 
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Belirli bir noktadaki bir milyon kaydı getirmek için [Azure AD Raporlama API’lerini](concept-reporting-api.md) kullanabilirsiniz.
 
@@ -176,7 +176,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 | Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
 | Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -186,7 +186,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalında kısa bir süre önce oturum açtım ve bu oturum açma işleminin günlük girişlerini `Activity logs > Sign-ins` dikey penceresinde görmeyi umuyordum, ancak bulamıyorum.
 
- ![Raporlanıyor](./media/troubleshoot-missing-audit-data/02.png)
+ ![Raporlama](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Nedeni
 
@@ -197,7 +197,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 | Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
 | Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -207,7 +207,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
 
- ![Raporlanıyor](./media/troubleshoot-missing-audit-data/03.png)
+ ![Raporlama](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Nedeni
 
@@ -220,7 +220,7 @@ Lisansınıza bağlı olarak, etkinlik raporları Azure Active Directory Actions
 
 Daha fazla bilgi için bkz. [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md).  
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Verileri 30 günden daha uzun bir süre boyunca saklamak için iki seçeneğiniz vardır. [Azure AD Raporlama API'lerini](concept-reporting-api.md) kullanarak verileri program aracılığıyla alabilir ve bir veritabanında kaydedebilirsiniz. Alternatif olarak denetim günlüklerini Splunk veya SumoLogic gibi bir üçüncü taraf SIEM sistemiyle tümleştirebilirsiniz.
 

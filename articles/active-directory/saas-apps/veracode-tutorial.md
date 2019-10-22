@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72372986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Öğretici: Veracode ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -109,13 +109,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Üstteki menüde **Ayarlar**' a ve ardından **yönetici**' ye tıklayın.
    
-    ![Yönetim](./media/veracode-tutorial/ic802911.png "yönetimi")
+    ![Yönetimine](./media/veracode-tutorial/ic802911.png "Yönetim")
 
 1. **SAML** sekmesine tıklayın.
 
 1. **Kuruluş SAML ayarları** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Yönetim](./media/veracode-tutorial/ic802912.png "yönetimi")
+    ![Yönetimine](./media/veracode-tutorial/ic802912.png "Yönetim")
 
     a.  **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
@@ -125,7 +125,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Kendi kendine kayıt ayarları** bölümünde aşağıdaki adımları gerçekleştirin ve ardından **Kaydet**' e tıklayın:
 
-    ![Yönetim](./media/veracode-tutorial/ic802913.png "yönetimi")
+    ![Yönetimine](./media/veracode-tutorial/ic802913.png "Yönetim")
 
     a. **Yeni Kullanıcı etkinleştirmesi**olarak **etkinleştirme gerekli değil**' i seçin.
 

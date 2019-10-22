@@ -1,5 +1,5 @@
 ---
-title: 'Python modeli oluştur: Modül başvurusu'
+title: 'Python modeli oluşturma: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Özel Modelleme veya veri işleme modülü oluşturmak için Azure Machine Learning hizmetinde Python model modeli oluşturma ' yı nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: c6d7aabd41e9d0e872926adbbcb2d18332cb7d5e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128916"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693885"
 ---
 # <a name="create-python-model"></a>Python Modeli Oluşturma
 
@@ -33,11 +33,11 @@ Modeli oluşturduktan sonra, Azure Machine Learning diğer öğrenme gibi bir ve
 Bu modülün kullanımı, Python 'un ara veya uzman bilgisini gerektirir. Modül, Azure Machine Learning ' de zaten yüklü olan Python paketlerine dahil olan herhangi bir Learner 'ın kullanımını destekler. Bkz. [Python betiğini yürütme](execute-python-script.md)içindeki önceden yüklenmiş Python paket listesi.
   
 
-Bu makalede, **Create Python modelinin** basit bir deneyiyle nasıl kullanılacağı gösterilir. Deneme grafiği aşağıda verilmiştir.
+Bu makalede, **Python modelinin** basit bir işlem hattı ile nasıl kullanılacağı gösterilir. Ardışık düzenin grafiği aşağıda verilmiştir.
 
 ![-Python-model oluştur](./media/module/aml-create-python-model.png)
 
-1.  **Python modeli oluştur**' a tıklayın, modellemeyi veya veri yönetimi işleminizi uygulamak için betiği düzenleyin. Modeli, Azure Machine Learning ortamındaki bir Python paketine dahil olan herhangi bir öğrenner üzerinde temel alabilirsiniz.
+1.  **Python modeli oluştur**' a tıklayın, modelleme veya veri yönetimi işleminizi uygulamak için betiği düzenleyin. Modeli, Azure Machine Learning ortamındaki bir Python paketine dahil olan herhangi bir öğrenner üzerinde temel alabilirsiniz.
 
 
     Aşağıda, popüler *sköğren* paketi kullanılarak Iki sınıf Naive Bayes sınıflandırıcının örnek kodu verilmiştir.

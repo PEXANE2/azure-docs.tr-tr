@@ -1,5 +1,5 @@
 ---
-title: 'Verileri el Ile girin: Modül başvurusu'
+title: 'Verileri el Ile girin: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Değer yazarak küçük bir veri kümesi oluşturmak için Azure Machine Learning hizmetinde verileri el Ile gir modülünü nasıl kullanacağınızı öğrenin. Veri kümesinde birden çok sütun olabilir.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128831"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693154"
 ---
 # <a name="enter-data-manually-module"></a>Verileri el Ile gir modülü
 
@@ -32,11 +32,11 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
 
 ## <a name="enter-data-manually"></a>Verileri El ile Girme 
   
-1.  Veri gir modülünü denemenize [el ile](./enter-data-manually.md) ekleyin. Bu modülü, Azure Machine Learning **veri girişi ve çıkış** kategorisinde bulabilirsiniz. 
+1.  [Verileri el Ile gir](./enter-data-manually.md) modülünü ardışık düzene ekleyin. Bu modülü, Azure Machine Learning **veri girişi ve çıkış** kategorisinde bulabilirsiniz. 
   
 2.  **DataFormat**için aşağıdaki seçeneklerden birini seçin. Bu seçenekler, sağladığınız verilerin nasıl ayrıştırılaceğini belirlemektir. Her biçimin gereksinimleri önemli ölçüde farklılık gösterir, bu nedenle ilgili konuları okuduğunuzdan emin olun.  
   
-    -   **ARFF**. WEKA tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
+    -   **Arff**. WEKA tarafından kullanılan öznitelik ilişkisi dosya biçimi.   
   
     -   **CSV**. Virgülle ayrılmış değerler biçimi. Daha fazla bilgi için bkz. [CSV 'ye dönüştürme](./convert-to-csv.md).  
   
@@ -48,21 +48,21 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
 3.  Veri girmeye başlamak için **veri** metin kutusunun içine tıklayın. Aşağıdaki biçimler özel dikkat gerektirir:  
   
-    - **CSV**:  Birden çok sütun oluşturmak için, virgülle ayrılmış metni yapıştırın veya alanlar arasında virgül kullanarak birden çok sütun yazın.
+    - **CSV**: birden çok sütun oluşturmak için, virgülle ayrılmış metinde yapıştırın veya alanlar arasında virgül kullanarak birden çok sütun yazın.
   
         **HasHeader** seçeneğini belirlerseniz, ilk değer satırını sütun başlığı olarak kullanabilirsiniz.  
   
         Bu seçeneğin işaretini kaldırırsanız, sütünadı, col2 vb. sütunları kullanılır. Daha sonra, [verileri Düzenle](./edit-metadata.md)' i kullanarak sütun adlarını ekleyebilir veya değiştirebilirsiniz.  
   
-    - **TSV**: Birden çok sütun oluşturmak için sekmeyle ayrılmış metin içine yapıştırın veya alanlar arasındaki sekmeleri kullanarak birden çok sütun yazın.  
+    - **TSV**: birden çok sütun oluşturmak için sekmeyle ayrılmış metin içine yapıştırın veya alanlar arasındaki sekmeleri kullanarak birden çok sütun yazın.  
   
         **HasHeader** seçeneğini belirlerseniz, ilk değer satırını sütun başlığı olarak kullanabilirsiniz.  
   
         Bu seçeneğin işaretini kaldırırsanız, sütünadı, col2 vb. sütunları kullanılır. Daha sonra, [verileri Düzenle](./edit-metadata.md)' i kullanarak sütun adlarını ekleyebilir veya değiştirebilirsiniz.  
   
-    -   **ARFF**:  Varolan bir ARFF biçim dosyasına yapıştırın. Değerleri doğrudan yazıyorsanız, verilerin başlangıcında isteğe bağlı üstbilgiyi ve gerekli öznitelik alanlarını eklediğinizden emin olun. 
+    -   **Arff**: varolan bir arff biçim dosyasını yapıştırın. Değerleri doğrudan yazıyorsanız, verilerin başlangıcında isteğe bağlı üstbilgiyi ve gerekli öznitelik alanlarını eklediğinizden emin olun. 
     
-        Örneğin, aşağıdaki üst bilgi ve öznitelik satırları basit bir listeye eklenebilir. Sütun başlığı şöyle `SampleText`olacaktır.
+        Örneğin, aşağıdaki üst bilgi ve öznitelik satırları basit bir listeye eklenebilir. Sütun başlığı `SampleText`.
     
         ```text
         % Title: SampleText.ARFF  
@@ -72,7 +72,7 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
         \<type first data row here>  
         ```
 
-    -   **Svmlight**: SVMLight biçimini kullanarak değerleri yazın veya yapıştırın.  
+    -   **Svmlight**: svmlight biçimini kullanarak değerleri yazın veya yapıştırın.  
   
         Örneğin, aşağıdaki örnek, kanlı olarak şu biçimde olan kan bağış veri kümesinin ilk birkaç satırını temsil eder:  
   
@@ -86,8 +86,8 @@ Bu modül bunlar gibi senaryolarda yararlı olabilir:
   
         |Süt|Col2|Col3|Col4|Etiketler|  
         |-|-|-|-|-|  
-        |0,00016|0,004|0,999961|0,00784|1\.|  
-        |0|0,004|0,999955|0,008615|1\.|  
+        |0,00016|0,004|0,999961|0,00784|1|  
+        |0|0,004|0,999955|0,008615|1|  
   
 4.  Her satırdan sonra ENTER tuşuna basarak yeni bir satır başlatın.  
   

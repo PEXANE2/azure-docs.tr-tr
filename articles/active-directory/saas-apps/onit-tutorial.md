@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164235"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Öğretici: OnIt ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
@@ -82,9 +82,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<sub-domain>.onit.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<sub-domain>.onit.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<sub-domain>.onit.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<sub-domain>.onit.com`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [OnIt istemci destek ekibine](https://www.onit.com/support) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -101,19 +101,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak OnIt 'e erişim vererek B. Simon 'u etkinleştireceksiniz.
 
@@ -121,7 +121,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak OnIt 'e erişim 
 1. Uygulamalar listesinde **Onit**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -137,7 +137,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak OnIt 'e erişim 
 
 2. Üstteki menüde **Yönetim**' e tıklayın.
    
-    ![Yönetim](./media/onit-tutorial/IC791174.png "Yönetim")
+    ![Yönetimine](./media/onit-tutorial/IC791174.png "Yönetim")
 
 3. **Şirketi Düzenle**' ye tıklayın.
    
@@ -167,24 +167,24 @@ Azure AD kullanıcılarının oturum açmasını sağlamak için, bunların Onit
 
 1. **OnIt** şirket sitenizde yönetici olarak oturum açın.
 
-2. Tıklayın **kullanıcı ekleme**.
+2. **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Yönetim](./media/onit-tutorial/IC791180.png "Yönetim")
+    ![Yönetimine](./media/onit-tutorial/IC791180.png "Yönetim")
 
 3. **Kullanıcı Ekle** iletişim sayfasında, aşağıdaki adımları uygulayın:
 
-    ![Kullanıcı Ekle](./media/onit-tutorial/IC791181.png "Kullanıcı Ekle")
+    ![Kullanıcı Ekle](./media/onit-tutorial/IC791181.png "Kullanıcı Ekleme")
 
     a. İlgili metin kutularına sağlamak istediğiniz geçerli bir Azure AD hesabının **adını** ve **e-posta adresini** yazın.
 
-    b. **Oluştur**'a tıklayın.
+    b. **Oluştur**’a tıklayın.
 
     > [!NOTE]
     > Azure Active Directory hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını doğrulamak için bir bağlantıyı izler.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde OnIt kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Onit ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

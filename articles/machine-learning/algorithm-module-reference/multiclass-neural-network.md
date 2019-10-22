@@ -1,5 +1,5 @@
 ---
-title: 'Birden çok Lass sinir ağı: Modül başvurusu'
+title: 'Birden çok Lass sinir ağı: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Birden fazla değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning hizmetinde çok Lass sinir ağ modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 44d1e7606efd5bc6d2286254dc4863728e3edbfd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128594"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692716"
 ---
 # <a name="multiclass-neural-network-module"></a>Birden çok Lass sinir ağ modülü
 
@@ -40,17 +40,17 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
 
 ## <a name="configure-multiclass-neural-network"></a>Birden çok Lass sinir ağını yapılandırma
 
-1. Arabirimindeki deneyinize çok **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.
+1. Arabirim içindeki işlem hattınızı çoklu **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.
 
-2. **Eğitmen modu oluşturma**: Modelin nasıl eğitilme etmek istediğinizi belirtmek için bu seçeneği kullanın:
+2. **Eğitmen modu oluşturma**: modelin nasıl eğitilme etmek istediğinizi belirtmek için bu seçeneği kullanın:
 
-    - **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
+    - **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
 
     
 
-3. **Gizli katman belirtimi**: Oluşturulacak ağ mimarisi türünü seçin.
+3. **Gizli katman belirtimi**: oluşturulacak ağ mimarisi türünü seçin.
 
-    - **Tam bağlantılı durum**: Varsayılan sinir ağ mimarisini kullanarak bir model oluşturmak için bu seçeneği belirleyin. Birden çok Lass sinir ağ modelleri için varsayılanlar aşağıdaki gibidir:
+    - **Tam bağlı durum**: varsayılan sinir ağ mimarisini kullanarak bir model oluşturmak için bu seçeneği belirleyin. Birden çok Lass sinir ağ modelleri için varsayılanlar aşağıdaki gibidir:
 
         - Bir gizli katman
         - Çıktı Katmanı gizli katmana tam olarak bağlanır.
@@ -61,21 +61,21 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
   
    
 
-5. **Gizli düğüm sayısı**: Bu seçenek, varsayılan mimarideki gizli düğüm sayısını özelleştirmenizi sağlar. Gizli düğümlerin sayısını yazın. Varsayılan değer, 100 düğümü olan bir gizli katmandır.
+5. **Gizli düğümlerin sayısı**: Bu seçenek, varsayılan mimarideki gizli düğüm sayısını özelleştirmenizi sağlar. Gizli düğümlerin sayısını yazın. Varsayılan değer, 100 düğümü olan bir gizli katmandır.
 
-6. **Öğrenme oranı**: Düzeltmeden önce her yinelemede geçen adımın boyutunu tanımlayın. Öğrenme oranı için daha büyük bir değer modelin daha hızlı yakınsama olmasına neden olabilir, ancak yerel Mini ma 'yı aşırı gerçekleştirebilir.
+6. **Öğrenme oranı**: düzeltmeden önce her yinelemede gerçekleştirilen adımın boyutunu tanımlayın. Öğrenme oranı için daha büyük bir değer modelin daha hızlı yakınsama olmasına neden olabilir, ancak yerel Mini ma 'yı aşırı gerçekleştirebilir.
 
-7. **Öğrenme yinelemesi sayısı**: Algoritmanın eğitim çalışmalarını kaç kez işlemesi gerektiğini belirtin.
+7. **Öğrenme yinelemesi sayısı**: algoritmanın eğitim çalışmalarını kaç kez işlemesi gerektiğini belirtin.
 
-8. **İlk öğrenme ağırlıkları çapı**: Öğrenme sürecinin başlangıcında düğüm ağırlıklarını belirtin.
+8. **İlk öğrenme ağırlıkları çapı**: öğrenme sürecinin başlangıcında düğüm ağırlıklarını belirtin.
 
-9. **İtici güç**: Önceki yinelemelerdeki düğümlere öğrenme sırasında uygulanacak ağırlığı belirtin.
+9. **İtici güç**: önceki yinelemelerdeki düğümlere öğrenme sırasında uygulanacak ağırlığı belirtin.
   
-11. **Karıştırma örnekleri**: Yinelemeler arasındaki örnekleri karıştırmak için bu seçeneği belirleyin.
+11. **Örnekleri karıştır**: yinelemeler arasındaki örnekleri karıştırmak için bu seçeneği belirleyin.
 
-    Bu seçeneğin işaretini kaldırırsanız, denemeler her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
+    Bu seçeneğin işaretini kaldırırsanız, işlem hattını her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
 
-12. **Rastgele sayı çekirdek**: Aynı deneyin çalışmalarından yinelenebilirlik sağlamak istiyorsanız, çekirdek olarak kullanılacak bir değer yazın.
+12. **Rastgele sayı çekirdek**: aynı işlem hattının çalıştırmaları arasında yinelenebilirlik sağlamak istiyorsanız, çekirdek olarak kullanılacak bir değer yazın.
 
 14. Eğitim veri kümesini ve [eğitim modülleriyle](module-reference.md)bir tane bağlayın: 
 
@@ -88,7 +88,7 @@ Eğitim tamamlandıktan sonra:
 
 - Modellerden öğrenilen Özellik ağırlıklarından ve sinir ağın diğer parametreleriyle birlikte model parametrelerinin özetini görmek için eğitim [modeli](./train-model.md) çıktısına sağ tıklayın ve **Görselleştir**' i seçin.  
 
-- Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı deneyin art arda çalıştırmaları üzerinde güncelleştirilmemiş.
+- Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı işlem hattının art arda çalıştırmalarından güncelleştirilmedi.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
