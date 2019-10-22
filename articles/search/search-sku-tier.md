@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
 ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331200"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search için bir fiyatlandırma katmanı seçin
@@ -41,7 +41,7 @@ Seçtiğiniz katman faturalandırılabilir ücreti belirler. Azure portal aşağ
 
 **Free** , bir kümede, diğer aboneler ile paylaşılan sınırlı bir arama hizmeti oluşturur. Hızlı başlangıçler ve öğreticiler dahil olmak üzere küçük projeleri tamamlayabilirsiniz, ancak hizmeti ölçeklendirmez veya önemli iş yüklerini çalıştıramazsınız. **Temel** ve **Standart** , **Standart** olarak varsayılan değer olan en yaygın olarak kullanılan faturalanabilir katmanlardır.
 
-(media/search-sku-tier/tiers.png "Azure Search fiyatlandırma katmanlarının") ![Azure Search fiyatlandırma katmanları]
+![Azure Search fiyatlandırma katmanları](media/search-sku-tier/tiers.png "Azure Search fiyatlandırma katmanları")
 
 Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Standart 3 yüksek yoğunluklu (S3 HD)** , S3 için bir *barındırma modudur* ; burada temeldeki donanım çok sayıda daha küçük dizinler için optimize edilmiştir ve çok kiracılı senaryolar için tasarlanmıştır. S3 HD, S3 ile aynı birim başına ücretine sahiptir, ancak donanım çok sayıda daha küçük dizin üzerinde hızlı dosya okuma için en iyi duruma getirilmiştir.
 

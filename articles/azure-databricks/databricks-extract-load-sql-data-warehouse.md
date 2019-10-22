@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72329766"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
@@ -23,7 +23,7 @@ Bu öğreticideki adımlarda, verileri Azure Databricks'e aktarmak üzere Azure 
 
 Aşağıdaki şekilde uygulama akışı gösterilmektedir:
 
-![Data Lake Store ve SQL Veri Ambarı ile Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store ve SQL Veri Ambarı ile Azure Databricks")
+![Data Lake Store ve SQL veri ambarı ile Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store ve SQL veri ambarı ile Azure Databricks")
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -91,7 +91,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
 1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
 
-    ![Azure portalında Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks on Azure portal")
+    ![Azure portal databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure portal databricks")
 
 2. **Azure Databricks hizmeti**altında, Databricks hizmeti oluşturmak için aşağıdaki değerleri sağlayın:
 
@@ -113,17 +113,17 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
 2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme**’yi seçin.
 
-    ![Azure’da Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Databricks on Azure")
+    ![Azure 'da databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Azure 'da databricks")
 
 3. **Yeni küme** sayfasında, bir küme oluşturmak için değerleri girin.
 
-    ![Azure’da Databricks Spark kümesi oluşturma](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
+    ![Azure 'da Databricks Spark kümesi oluşturma](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Azure 'da Databricks Spark kümesi oluşturma")
 
 4. Aşağıdaki alanlara değerleri girin ve diğer alanlar için varsayılan değerleri kabul edin:
 
     * Küme için bir ad girin.
 
-    * @No__t sonra Sonlandır ' ı seçtiğinizden emin olun, **1 @ no__t-2 dakika etkinlik dışı** onay kutusunu işaretleyin. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
+    * **@No__t_1 sonra \_ dakika etkinliksizlik** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
 
     * **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -135,11 +135,11 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturun v
 
 2. Sol tarafta **çalışma alanı**' nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
-    ![Databricks içinde bir not defteri oluşturma](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "databricks 'te Not defteri oluşturma")
+    ![Databricks 'te Not defteri oluşturma](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
 3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Scala**’yı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-    ![Databricks 'teki bir not defterinin ayrıntılarını sağlama](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "databricks 'teki bir not defteri için Ayrıntılar sağlama")
+    ![Databricks içindeki bir not defterinin ayrıntılarını sağlama](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks içindeki bir not defterinin ayrıntılarını sağlama")
 
 4. **Oluştur**'u seçin.
 
@@ -182,13 +182,13 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturun v
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `<app-id>`, `<password>`, `<tenant-id>` ve `<storage-account-name>` yer tutucu değerlerini topladığınız değerlerle değiştirin. @No__t-0 yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir adla değiştirin.
+6. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `<app-id>`, `<password>`, `<tenant-id>` ve `<storage-account-name>` yer tutucu değerlerini topladığınız değerlerle değiştirin. @No__t_0 yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir adla değiştirin.
 
-   * @No__t-0 ve `<password>`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
+   * @No__t_0 ve `<password>`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
 
-   * @No__t-0 aboneliğinizden.
+   * @No__t_0 aboneliğinizden.
 
-   * @No__t-0 Azure Data Lake Storage 2. depolama hesabınızın adıdır.
+   * @No__t_0, Azure Data Lake Storage 2. depolama hesabınızın adıdır.
 
 7. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
@@ -365,17 +365,17 @@ Daha önce belirtildiği gibi, SQL Data Warehouse Connector, Azure Databricks il
    ```
 
    > [!NOTE]
-   > Bu örnek `forward_spark_azure_storage_credentials` bayrağını kullanır, bu da SQL veri ambarı 'nın bir erişim anahtarı kullanarak blob depolamadan veri erişimine neden olur. Bu, kimlik doğrulama için desteklenen tek yöntemdir.
+   > Bu örnek, SQL veri ambarı 'nın bir erişim anahtarı kullanarak blob depolamadan veriye erişmesine neden olan `forward_spark_azure_storage_credentials` bayrağını kullanır. Bu, kimlik doğrulama için desteklenen tek yöntemdir.
    >
    > Azure Blob depolama alanı sanal ağları seçme kısıtlanmışsa, SQL veri ambarı [erişim tuşları yerine yönetilen hizmet kimliği](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)gerektirir. Bu, "Bu istek bu işlemi gerçekleştirmek için yetkilendirilmemiş." hatasına neden olur.
 
 6. SQL veritabanına bağlanın ve **SampleTable**adlı bir veritabanı gördiğinizi doğrulayın.
 
-   Örnek tabloyu(./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Doğrula") örnek tablosunu ![doğrulama]
+   ![Örnek tabloyu doğrulama](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Örnek tabloyu doğrula")
 
 7. Tablonun içindekileri doğrulamak için bir seçme sorgusu çalıştırın. Tablo, **renamedColumnsDF** dataframe ile aynı verilere sahip olmalıdır.
 
-    Örnek ![tablo içeriğini doğrulama]örnek(./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "tablo içeriğini doğrulama")
+    ![Örnek tablo içeriğini doğrulama](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "Örnek tablo içeriğini doğrulama")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -383,7 +383,7 @@ Daha önce belirtildiği gibi, SQL Data Warehouse Connector, Azure Databricks il
 
 ![Databricks kümesini durdurma](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Kümeyi el ile sonlandırmazsanız, kümeyi oluştururken **\_ @ no__t-2 dakika Etkinliksiz** onay kutusu ' nu tamamladıktan sonra otomatik olarak duraklar. Böyle bir durumda, belirtilen süre boyunca etkin olmadığında küme otomatik olarak duraklar.
+Kümeyi el ile sonlandırmazsanız, kümeyi oluştururken **\_ \_ dakika Etkinliksiz** onay kutusunu seçtiğiniz takdirde otomatik olarak duraklar. Böyle bir durumda, belirtilen süre boyunca etkin olmadığında küme otomatik olarak duraklar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

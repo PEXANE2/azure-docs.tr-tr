@@ -1,5 +1,5 @@
 ---
-title: C#Öğreticide Birden çok veri kaynağını Dizin-Azure Search
+title: 'C#Öğretici: birden çok veri kaynağını Dizin-Azure Search'
 description: Birden çok veri kaynağından verileri tek bir Azure Search dizinine aktarmayı öğrenin.
 author: RobDixon22
 manager: nitinme
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
 ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70241845"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Öğreticide Birden çok veri kaynağından gelen verileri tek bir Azure Search dizininde birleştirme
+# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Öğretici: bir Azure Search dizinde birden çok veri kaynağından verileri birleştirme
 
 Azure Search birden çok veri kaynağından alınan verileri tek bir Birleşik arama dizininde içeri aktarabilir, çözümleyebilir ve dizine alabilir. Bu, yapılandırılmış verilerin metin, HTML veya JSON belgeleri gibi diğer kaynaklardan daha az yapılandırılmış veya hatta düz metin verileriyle toplanmış olduğu durumları destekler.
 
@@ -60,7 +60,7 @@ Azure Search hizmetinize etkileşimde bulunmak için hizmet URL 'SI ve erişim a
 
 1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![Http uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "Http uç noktası ve erişim anahtarı al")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 
@@ -90,7 +90,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. Örnek otel odası JSON dosyalarını depolamak için **otel odaları** adlı [bir blob kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
-   ![BLOB kapsayıcısı oluşturma](media/tutorial-multiple-data-sources/blob-add-container.png "BLOB kapsayıcısı oluşturma")
+   ![Blob kapsayıcısı oluşturma](media/tutorial-multiple-data-sources/blob-add-container.png "Blob kapsayıcısı oluşturma")
 
 1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin.
 
@@ -98,7 +98,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle**' ye tıklayın.
 
-   ![Dosyaları karşıya yükle](media/tutorial-multiple-data-sources/blob-upload.png "Dosyaları karşıya yükle")
+   ![Dosyaları karşıya yükleme](media/tutorial-multiple-data-sources/blob-upload.png "Dosyaları karşıya yükleme")
 
 Karşıya yükleme tamamlandıktan sonra dosyalar veri kapsayıcısının listesinde görünmelidir.
 
@@ -121,13 +121,13 @@ Arama hizmeti ve veri kaynakları için bağlantı bilgileri, çözümdeki **app
 }
 ```
 
-İlk iki girdi Azure Search hizmetiniz için URL ve yönetici anahtarlarını kullanır. İçin bir uç nokta `https://mydemo.search.windows.net`verildiğinde, örneğin, `mydemo`sağlanacak hizmet adı.
+İlk iki girdi Azure Search hizmetiniz için URL ve yönetici anahtarlarını kullanır. Örneğin, sağlanacak hizmet adı `mydemo` `https://mydemo.search.windows.net` uç noktası verilir.
 
 Sonraki girişler, Azure Blob depolama ve Azure Cosmos DB veri kaynakları için hesap adlarını ve bağlantı dizesi bilgilerini belirtir.
 
 ### <a name="identify-the-document-key"></a>Belge anahtarını tanımla
 
-Azure Search, anahtar alanı dizindeki her belgeyi benzersiz bir şekilde tanımlar. Her arama dizininin türünde `Edm.String`tam olarak bir anahtar alanı olmalıdır. Bu anahtar alanı, dizine eklenen bir veri kaynağındaki her belge için mevcut olmalıdır. (Aslında, tek gerekli alandır.)
+Azure Search, anahtar alanı dizindeki her belgeyi benzersiz bir şekilde tanımlar. Her arama dizininin `Edm.String` türünde tam olarak bir anahtar alanı olmalıdır. Bu anahtar alanı, dizine eklenen bir veri kaynağındaki her belge için mevcut olmalıdır. (Aslında, tek gerekli alandır.)
 
 Birden çok veri kaynağından veri dizinlenirken, her veri kaynağı anahtar değeri, Birleşik dizindeki aynı anahtar alanıyla eşleşmelidir. Genellikle dizininiz için anlamlı bir belge anahtarı belirlemek için bazı önde bir planlama gerektirir ve her veri kaynağında bulunduğundan emin olun.
 
@@ -171,7 +171,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-**Program.cs** dosyasında Dizin, `FieldBuilder.BuildForType<Hotel>()` yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır ve sonra aşağıdaki gibi oluşturulur:
+**Program.cs** dosyasında, Dizin `FieldBuilder.BuildForType<Hotel>()` yöntemi tarafından oluşturulan bir ad ve alan koleksiyonuyla tanımlanır ve sonra aşağıdaki gibi oluşturulur:
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -300,9 +300,9 @@ Veri kaynağı oluşturulduktan sonra program, **otel-odalar-blob-Indexer**adlı
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-JSON blob 'ları **Hotelıd**yerine **ID** adlı bir anahtar alanı içerir. Kod, dizin oluşturucunun `FieldMapping` **kimlik** alanı değerini dizindeki **hotelıd** belge anahtarına yönlendirmesini söylemek için sınıfını kullanır.
+JSON blob 'ları **Hotelıd**yerine **ID** adlı bir anahtar alanı içerir. Kod, dizin oluşturucunun **kimlik** alanı değerini dizindeki **hotelıd** belge anahtarına yönlendirmesini söylemek için `FieldMapping` sınıfını kullanır.
 
-BLOB depolama Dizin oluşturucular, kullanılacak ayrıştırma modunu tanımlayan parametreleri kullanabilir. Ayrıştırma modu, tek bir belgeyi veya aynı blob içindeki birden çok belgeyi temsil eden Bloblar için farklılık gösterir. Bu örnekte, her blob tek bir dizin belgesini temsil ettiğinden, kod `IndexingParameters.ParseJson()` parametresini kullanır.
+BLOB depolama Dizin oluşturucular, kullanılacak ayrıştırma modunu tanımlayan parametreleri kullanabilir. Ayrıştırma modu, tek bir belgeyi veya aynı blob içindeki birden çok belgeyi temsil eden Bloblar için farklılık gösterir. Bu örnekte, her blob tek bir dizin belgesini temsil ettiğinden kod `IndexingParameters.ParseJson()` parametresini kullanır.
 
 JSON Blobları için Dizin Oluşturucu ayrıştırma parametreleri hakkında daha fazla bilgi için bkz. [DIZIN JSON blob 'ları](search-howto-index-json-blobs.md). .NET SDK kullanarak bu parametreleri belirtme hakkında daha fazla bilgi için bkz. [IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) sınıfı.
 
@@ -342,14 +342,14 @@ Listedeki otel-odalar-örnek dizinine tıklayın. Dizin için bir arama Gezgini 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir öğretici tamamlandıktan sonra temizlemenin en hızlı yolu, Azure Search hizmetini içeren kaynak grubunu silmektir. Kaynak grubunu silerek içindeki her şeyi kalıcı olarak silebilirsiniz. Portalda, kaynak grubu adı Azure Search hizmetinin genel bakış sayfasında bulunur.
+Öğretici sonrasında temizlemenin en hızlı yolu, Azure Search hizmetini içeren kaynak grubunu silmektir. Kaynak grubunu silerek içindeki her şeyi kalıcı olarak silebilirsiniz. Portalda, kaynak grubu adı Azure Search hizmetinin genel bakış sayfasında bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 JSON bloblarını dizine almanın çeşitli yaklaşımları ve birden çok seçeneği vardır. Kaynak verileriniz JSON içeriği içeriyorsa, senaryonuza en uygun olanı görmek için bu seçenekleri inceleyebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Search blob Indexer kullanarak JSON bloblarını dizin oluşturma](search-howto-index-json-blobs.md)
+> [Azure Search Blob dizin oluşturucu kullanarak JSON bloblarını dizine ekleme](search-howto-index-json-blobs.md)
 
 Yapılandırılmamış bloblardan veya tam metin içeriğinden daha canlı zenginleştirilmiş veriler içeren bir veri kaynağından yapılandırılmış dizin verilerini artırmak isteyebilirsiniz. Aşağıdaki öğreticide, .NET SDK kullanılarak bilişsel hizmetlerin Azure Search ile birlikte nasıl kullanılacağı gösterilmektedir.
 

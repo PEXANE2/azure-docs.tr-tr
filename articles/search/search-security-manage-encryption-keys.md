@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
 ms.openlocfilehash: ce7a8af1416664a3a94b248c95203c8e775e805c
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70182400"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarları kullanarak şifrelemeyi Azure Search
@@ -108,7 +108,7 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
 
 1. Sol gezinti bölmesinden **erişim ilkeleri** ayarını seçin ve **+ Yeni Ekle**' ye tıklayın.
 
-   ![Yeni Anahtar Kasası erişim Ilkesi Ekle](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Yeni Anahtar Kasası erişim Ilkesi Ekle")
+   ![Yeni Anahtar Kasası erişim ilkesi Ekle](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "Yeni Anahtar Kasası erişim ilkesi Ekle")
 
 1. **Sorumlu Seç** ' e tıklayın ve Azure Search hizmetinizi seçin. Yönetilen kimliği etkinleştirdikten sonra adı veya görüntülenen nesne KIMLIĞINE göre arama yapabilirsiniz.
 
@@ -122,7 +122,7 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
    * *Anahtar Sarla* -arama hizmetinizin iç şifreleme anahtarını korumak için anahtarınızı kullanmasına izin verir
    * *Anahtar sarmalaması geri al* -arama hizmetinizin iç şifreleme anahtarını sarmalamak için anahtarınızı kullanmasına izin verir
 
-   ![Anahtar Kasası erişim ilkesi anahtar Izinlerini seçin](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Anahtar Kasası erişim ilkesi anahtar Izinlerini seçin")
+   ![Anahtar Kasası erişim ilkesi anahtar izinlerini seçin](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Anahtar Kasası erişim ilkesi anahtar izinlerini seçin")
 
 1. **Tamam** ' a tıklayın ve erişim Ilkesi değişikliklerini **kaydedin** .
 
@@ -191,7 +191,7 @@ Burada tek fark, Dizin tanımının bir parçası olarak şifreleme anahtarı ay
 ```
 Artık dizin oluşturma isteğini gönderebilir ve sonra dizini normal olarak kullanmaya başlayabilirsiniz.
 
-## <a name="example-synonym-map-encryption"></a>Örnek: Eş anlamlı eşleme şifrelemesi
+## <a name="example-synonym-map-encryption"></a>Örnek: eş anlamlı eşleme şifrelemesi
 
 REST API aracılığıyla yeni bir eş anlamlı eşleme oluşturma ayrıntıları, burada tek fark, eş anlamlı eşleme tanımının bir parçası olarak şifreleme anahtarı ayrıntılarını belirtirken, [eş anlamlı eşleme oluşturma (Azure Search hizmeti REST API)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)yolunda bulunabilir: 
 
@@ -214,7 +214,7 @@ Artık eş anlamlı harita oluşturma isteğini gönderebilir ve normal olarak k
 > **EncryptionKey** , mevcut Azure Search dizinlerine veya eş anlamlı haritalara eklenemediğinden, üç Anahtar Kasası ayrıntılarının (örneğin, anahtar sürümünü güncelleştirme) her biri için farklı değerler sağlanarak güncelleştirilebiliriz. Yeni bir Key Vault anahtarına veya yeni bir anahtar sürümüne geçiş yaparken, anahtarı kullanan tüm Azure Search dizin veya eş anlamlı eşleme, önce önceki key\version. silinmeden **önce** yeni key\version kullanacak şekilde güncellenmelidir Bunun başarısız olması, anahtar erişimi kaybolduktan sonra içeriğin şifresini çözemeyeceği için dizin veya eş anlamlı haritanın kullanılamaz hale gelmesine neden olur.   
 > Anahtar Kasası erişim izinlerini daha sonra geri yüklemek, içerik erişimini geri yükler.
 
-## <a name="aad-app"></a>İleri Dışarıdan yönetilen Azure Active Directory uygulaması kullanma
+## <a name="aad-app"></a>Gelişmiş: dışarıdan yönetilen Azure Active Directory uygulaması kullanma
 
 Yönetilen bir kimlik mümkün olmadığında, Azure Search hizmetiniz için güvenlik sorumlusu olan bir Azure Active Directory uygulaması oluşturabilirsiniz. Özellikle, yönetilen bir kimlik şu koşullarda önemli değildir:
 

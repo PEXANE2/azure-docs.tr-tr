@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163994"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak çok kiracılı bir veritabanı tasarlama (Önizleme)
@@ -130,7 +130,7 @@ Yeni oluşturulan tabloları şu şekilde psql 'de bulunan tablolar listesinde g
 
 Bir hiper ölçek dağıtımı, tablo satırlarını Kullanıcı tarafından belirlenen bir sütunun değerine göre farklı düğümlere depolar. Bu "dağıtım sütunu", hangi kiracının hangi satırlara sahip olduğunu işaretler.
 
-Dağıtım sütununu Şirket\_kimliği, kiracı tanımlayıcısı olacak şekilde ayarlayalim. Psql 'de şu işlevleri çalıştırın:
+Dağıtım sütununu şirket \_id, kiracı tanımlayıcısı olacak şekilde ayarlayalim. Psql 'de şu işlevleri çalıştırın:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -166,7 +166,7 @@ Bu veriler artık çalışan düğümlerine yayılacaktır.
 
 ## <a name="query-tenant-data"></a>Kiracı verilerini sorgulama
 
-Uygulama tek bir kiracı için veri istediğinde, veritabanı sorguyu tek bir çalışan düğümünde yürütebilir. Tek kiracılı sorgular tek bir kiracı KIMLIĞINE göre filtreleyerek. Örneğin, aşağıdaki sorgu reklamlar ve aksaklamalar için filtre uygular `company_id = 5` . Sonuçları görmek için psql 'de çalıştırmayı deneyin.
+Uygulama tek bir kiracı için veri istediğinde, veritabanı sorguyu tek bir çalışan düğümünde yürütebilir. Tek kiracılı sorgular tek bir kiracı KIMLIĞINE göre filtreleyerek. Örneğin, aşağıdaki sorgu, reklamlar ve aksaklamalar için `company_id = 5` filtreler. Sonuçları görmek için psql 'de çalıştırmayı deneyin.
 
 ```sql
 SELECT a.campaign_id,
@@ -185,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Kiracılar arasında veri paylaşma
 
-Artık tüm tablolar tarafından `company_id`dağıtılana kadar, ancak bazı veriler doğal olarak hiçbir kiracıya özel olarak "ait değildir" ve paylaşılabilir. Örneğin, örnek ad platformundaki tüm şirketler, IP adreslerine bağlı olarak kendi hedef kitlesi için coğrafi bilgiler almak isteyebilir.
+Artık tüm tablolar `company_id` tarafından dağıtılana kadar, ancak bazı veriler doğal olarak hiçbir kiracıya özel olarak "ait değildir" ve paylaşılabilir. Örneğin, örnek ad platformundaki tüm şirketler, IP adreslerine bağlı olarak kendi hedef kitlesi için coğrafi bilgiler almak isteyebilir.
 
 Paylaşılan coğrafi bilgileri tutacak bir tablo oluşturun. Psql 'de aşağıdaki komutları çalıştırın:
 
@@ -199,7 +199,7 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Sonra, `geo_ips` her çalışan düğümünde tablonun bir kopyasını depolamak için bir "başvuru tablosu" yapın.
+Sonra, her çalışan düğümünde tablonun bir kopyasını depolamak için bir "başvuru tablosu" `geo_ips`.
 
 ```sql
 SELECT create_reference_table('geo_ips');
@@ -211,7 +211,7 @@ SELECT create_reference_table('geo_ips');
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Tıklama tablosunun coğrafi\_IP 'ler ile katılması tüm düğümlerde etkilidir.
+Tıklama tablosunu coğrafi \_ips ile birleştirmek tüm düğümlerde etkilidir.
 Ad 'ye tıklanan herkesin konumlarını bulmak için bir JOIN aşağıda verilmiştir
 290. Sorguyu psql 'de çalıştırmayı deneyin.
 
@@ -227,7 +227,7 @@ SELECT c.id, clicked_at, latlon
 
 Her kiracının, diğerlerinin gerek duymayan özel bilgileri depolaması gerekebilir. Ancak, tüm kiracılar aynı veritabanı şemasıyla ortak bir altyapı paylaşır. Fazla veri nereden gidebileceği?
 
-Tek bir adım PostgreSQL 'in JSONB gibi bir açık uçlu sütun türü kullanmaktır.  Şemanızın `clicks` çağrılan `user_data`bir jsonb alanı vardır.
+Tek bir adım PostgreSQL 'in JSONB gibi bir açık uçlu sütun türü kullanmaktır.  Şemamız `user_data` adlı `clicks` bir JSONB alanına sahiptir.
 Şirket (Şirket beşini), kullanıcının bir mobil cihazda olup olmadığını izlemek için sütununu kullanabilir.
 
 İşte kimin daha fazla tıklatığını bulmak için bir sorgu: mobil veya geleneksel ziyaretçiler.

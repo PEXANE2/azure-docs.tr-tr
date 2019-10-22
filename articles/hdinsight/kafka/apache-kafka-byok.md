@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122674"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
@@ -81,11 +81,11 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
 
         c. **Anahtar ve** **sarmalama**anahtarını **almak**için **anahtar izinleri** ayarlayın.
 
-        ![Azure Key Vault Access policy1 Için anahtar Izinleri ayarlama](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Azure Key Vault Access policy1 Için anahtar Izinleri ayarlama")
+        ![Azure Key Vault Access policy1 için anahtar Izinleri ayarlama](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Azure Key Vault Access policy1 için anahtar Izinleri ayarlama")
 
         d. **Get**, **set**ve **Delete**için **gizli izinleri** ayarlayın.
 
-        ![Azure Key Vault Access policy2 Için anahtar Izinleri ayarlama](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Azure Key Vault Access policy2 Için anahtar Izinleri ayarlama")
+        ![Azure Key Vault Access policy2 için anahtar Izinleri ayarlama](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Azure Key Vault Access policy2 için anahtar Izinleri ayarlama")
 
         e. **Kaydet**'e tıklayın. 
 

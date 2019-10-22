@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331204"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Kaynak tüketimini ve sorgu etkinliğini izleme Azure Search
@@ -30,8 +30,8 @@ Genel Bakış sayfasında yerleşik olarak bulunan ve kaynak tüketimine ve sorg
 
 **Kullanım** sekmesi, geçerli [limitlere](search-limits-quotas-capacity.md)göre kaynak kullanılabilirliği gösterir. Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
 
-Etkin(./media/search-monitor-usage/usage-tab.png
- "sınırlara göre") kullanım durumu ![geçerli sınırlara göre kullanım durumu]
+![Etkin sınırlara göre kullanım durumu](./media/search-monitor-usage/usage-tab.png
+ "Etkin sınırlara göre kullanım durumu")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Saniyedeki sorgu sayısı (QPS) ve diğer ölçümler
 
@@ -40,7 +40,7 @@ Etkin(./media/search-monitor-usage/usage-tab.png
 
 Bu sayılar yaklaşık değerlerdir ve sisteminizin istekleri ne kadar iyi bir şekilde sunmakta olduğu konusunda genel bir fikir sunacak şekilde tasarlanmıştır. Gerçek QPS, portalda raporlanan sayıdan daha yüksek veya daha düşük olabilir.
 
-Saniyede saniye başına ![etkinlik](./media/search-monitor-usage/monitoring-tab.png "sorgusu") sorgusu
+![Saniye başına sorgu etkinliği](./media/search-monitor-usage/monitoring-tab.png "Saniye başına sorgu etkinliği")
 
 ## <a name="activity-logs"></a>Etkinlik günlükleri
 
@@ -78,13 +78,13 @@ Bu bölümde, günlüğe kaydedilen olayları ve ölçüm verilerini depolamak i
 
 2. Arama hizmeti genel bakış sayfasını açın. Sol gezinti bölmesinde **izleme** ' ye kaydırın ve **izlemeyi etkinleştir**' e tıklayın.
 
-   ![İzlemeyi etkinleştirme](./media/search-monitor-usage/enable-monitoring.png "izlemeyi etkinleştir")
+   ![İzlemeyi etkinleştir](./media/search-monitor-usage/enable-monitoring.png "İzlemeyi etkinleştirme")
 
 3. Dışarı aktarmak istediğiniz verileri seçin: Günlükler, ölçümler veya her ikisi. Bir depolama hesabına kopyalayabilir, bunu bir olay hub 'ına gönderebilir veya Azure Izleyici günlüklerine aktarabilirsiniz.
 
    Blob depolamaya Arşiv için yalnızca depolama hesabının mevcut olması gerekir. Kapsayıcılar ve Bloblar, günlük verileri aktarıldığında gerekli olduğu gibi oluşturulur.
 
-   ![BLOB Storage Arşivi yapılandırma](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB Storage Arşivi") yapılandırma
+   ![BLOB depolama arşivini yapılandırma](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB depolama arşivini yapılandırma")
 
 4. Profili kaydedin.
 

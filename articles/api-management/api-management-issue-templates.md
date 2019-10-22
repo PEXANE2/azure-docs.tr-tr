@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072277"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management 'daki şablonları verme
-Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Dotsıvı Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar Için Dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır [](http://dotliquidmarkup.org/) Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. [Dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
   
  Bu bölümdeki şablonlar, geliştirici portalındaki sorun sayfalarının içeriğini özelleştirmenizi sağlar.  
   
@@ -35,7 +35,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ##  <a name="IssueList"></a>Sorun listesi  
  **Sorun listesi** şablonu, geliştirici portalındaki sorun listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
- ![Sorun listesi geliştirici portalı](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM sorun listesi geliştirici portalı")  
+ ![Sorun listesi geliştirici portalı](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APıM sorun listesi geliştirici portalı")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -90,7 +90,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```
   
 ### <a name="controls"></a>Denetimler  
- Şablon aşağıdaki sayfa denetimlerini kullanabilir. [](api-management-page-controls.md) `Issue list`  
+ @No__t_0 şablonunda aşağıdaki [sayfa denetimleri](api-management-page-controls.md)kullanılabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   
@@ -100,9 +100,9 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 |--------------|----------|-----------------|  
 |`Issues`|[Sorun](api-management-template-data-model-reference.md#Issue) varlıkları koleksiyonu.|Geçerli kullanıcıya görünen sorunlar.|  
 |`Paging`|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Uygulamalar koleksiyonu için sayfalama bilgileri.|  
-|`IsAuthenticated`|boolean|Geçerli kullanıcının Geliştirici Portalında oturum açmış olup olmadığı.|  
-|`CanReportIssues`|boolean|Geçerli kullanıcının bir sorunu dosyaya verme izinleri olup olmadığı.|  
-|`Search`|dize|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
+|`IsAuthenticated`|boole|Geçerli kullanıcının Geliştirici Portalında oturum açmış olup olmadığı.|  
+|`CanReportIssues`|boole|Geçerli kullanıcının bir sorunu dosyaya verme izinleri olup olmadığı.|  
+|`Search`|string|Bu özellik kullanım dışıdır ve kullanılmamalıdır.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
   

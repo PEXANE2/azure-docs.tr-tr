@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70095687"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
@@ -110,8 +110,8 @@ Bu menü seçeneği belirlendiğinde **uygulamalar** penceresi açılır:
 Bu pencere, hesabınızdaki her uygulamanın KIMLIĞINI ve aşağıdaki özellikleri görüntüler:
 
 * **Paketler**: Bu uygulamayla ilişkili sürümlerin sayısı.
-* **Varsayılan sürüm**: Bir havuz için uygulama belirttiğinizde bir sürüm belirtmezseniz, uygulama sürümü yüklenir. Bu ayar isteğe bağlıdır.
-* **Güncelleştirmelere Izin ver**: Paket güncelleştirme, silme ve eklemelerin izin verilip verilmeyeceğini belirten değer. **Hayır**olarak ayarlanırsa, uygulama için paket güncelleştirmeleri ve silmeleri devre dışı bırakılır. Yalnızca yeni uygulama paketi sürümleri eklenebilir. Varsayılan değer **Evet**’tir.
+* **Varsayılan sürüm**: bir havuz için uygulama belirttiğinizde bir sürüm belirtmezseniz, uygulamanın sürümü yüklenir. Bu ayar isteğe bağlıdır.
+* **Güncelleştirmelere Izin ver**: paket güncelleştirme, silme ve eklemelere izin verilip verilmeyeceğini belirten değer. **Hayır**olarak ayarlanırsa, uygulama için paket güncelleştirmeleri ve silmeleri devre dışı bırakılır. Yalnızca yeni uygulama paketi sürümleri eklenebilir. Varsayılan değer **Evet**’tir.
 
 İşlem düğümünüz üzerinde uygulama paketinin dosya yapısını görmek isterseniz, portalda Batch hesabınıza gidin. Batch hesabınızdan **havuzlar**' a gidin. İlgilendiğiniz işlem düğümlerini içeren havuzu seçin.
 
@@ -128,9 +128,9 @@ Bir uygulamanın ayrıntılarını görmek için **uygulamalar** penceresinde uy
 
 Uygulama ayrıntılarında, uygulamanız için aşağıdaki ayarları yapılandırabilirsiniz.
 
-* **Güncelleştirmelere Izin ver**: Uygulama paketlerinin güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini belirtin. Bu makalenin devamındaki "uygulama paketini güncelleştirme veya silme" bölümüne bakın.
-* **Varsayılan sürüm**: İşlem düğümlerine dağıtılacak bir varsayılan uygulama paketi belirtin.
-* **Görünen ad**: Batch çözümünüzün uygulamayla ilgili bilgileri (örneğin, toplu Iş aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde) gösterdiği kolay bir ad belirtin.
+* **Güncelleştirmelere Izin ver**: uygulama paketlerinin güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini belirtin. Bu makalenin devamındaki "uygulama paketini güncelleştirme veya silme" bölümüne bakın.
+* **Varsayılan sürüm**: işlem düğümlerine dağıtılacak bir varsayılan uygulama paketi belirtin.
+* **Görünen ad**: Batch çözümünüzün uygulamayla ilgili bilgileri (örneğin, toplu iş aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde) görüntülediği kolay bir ad belirtin.
 
 ### <a name="add-a-new-application"></a>Yeni uygulama ekle
 Yeni bir uygulama oluşturmak için bir uygulama paketi ekleyin ve yeni, benzersiz bir uygulama KIMLIĞI belirtin. Yeni uygulama KIMLIĞIYLE eklediğiniz ilk uygulama paketi de yeni bir uygulama oluşturur.
@@ -141,7 +141,7 @@ Yeni bir uygulama oluşturmak için bir uygulama paketi ekleyin ve yeni, benzers
 
 Yeni **uygulama** penceresi, yeni uygulamanızın ve uygulama paketinizin ayarlarını belirtmek için aşağıdaki alanları sağlar.
 
-**Uygulama Kimliği**
+**Uygulama KIMLIĞI**
 
 Bu alan, standart Azure Batch KIMLIĞI doğrulama kurallarına tabi olan yeni uygulamanızın KIMLIĞINI belirtir. Uygulama KIMLIĞI sağlama kuralları aşağıdaki gibidir:
 
@@ -171,7 +171,7 @@ Bir dosya seçtikten sonra **Tamam** ' a tıklayarak Azure Storage 'a yükleme i
 > 
 
 ### <a name="add-a-new-application-package"></a>Yeni bir uygulama paketi Ekle
-Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, **uygulamalar** penceresinde bir uygulama seçin ve **paketler** > **Ekle**' ye tıklayın.
+Mevcut bir uygulama için bir uygulama paketi sürümü eklemek için, **uygulamalar** penceresinde bir uygulama seçin ve ardından**Ekle** >  **paketler** ' e tıklayın.
 
 ![Azure portal 'de uygulama paketi dikey penceresi ekleme][8]
 
@@ -251,7 +251,7 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>Yüklü uygulamaları yürütme
-Bir havuz veya görev için belirttiğiniz paketler, düğüm içindeki `AZ_BATCH_ROOT_DIR` adlandırılmış bir dizine indirilir ve ayıklanır. Batch Ayrıca, adlandırılmış dizinin yolunu içeren bir ortam değişkeni oluşturur. Görev komut satırlarında, düğümdeki uygulamaya başvururken bu ortam değişkeni kullanılır. 
+Bir havuz veya görev için belirttiğiniz paketler, düğümün `AZ_BATCH_ROOT_DIR` bir adlandırılmış dizine indirilir ve ayıklanır. Batch Ayrıca, adlandırılmış dizinin yolunu içeren bir ortam değişkeni oluşturur. Görev komut satırlarında, düğümdeki uygulamaya başvururken bu ortam değişkeni kullanılır. 
 
 Windows düğümlerinde, değişkeni aşağıdaki biçimdedir:
 
@@ -260,14 +260,14 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`ve `version` dağıtım için belirttiğiniz uygulama ve paket sürümüne karşılık gelen değerlerdir. Örneğin, *blender* uygulamasının 2,7 sürümünün Windows düğümlerinde yüklü olması gerektiğini belirttiyseniz, görev komut satırları bu ortam değişkenini, dosyalarına erişmek için kullanır:
+`APPLICATIONID` ve `version`, dağıtım için belirttiğiniz uygulama ve paket sürümüne karşılık gelen değerlerdir. Örneğin, *blender* uygulamasının 2,7 sürümünün Windows düğümlerinde yüklü olması gerektiğini belirttiyseniz, görev komut satırları bu ortam değişkenini, dosyalarına erişmek için kullanır:
 
 ```
 Windows:
@@ -281,7 +281,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-Bir uygulama paketini karşıya yüklediğinizde, işlem düğümleriniz için dağıtım yapmak üzere varsayılan bir sürüm belirtebilirsiniz. Bir uygulama için varsayılan bir sürüm belirttiyseniz, uygulamaya başvuru yaptığınızda sürüm sonekini atlayabilirsiniz. Uygulamalar **penceresinde,** [uygulamaları karşıya yükleme ve yönetme](#upload-and-manage-applications)bölümünde gösterildiği gibi, varsayılan uygulama sürümünü Azure Portal belirleyebilirsiniz.
+Bir uygulama paketini karşıya yüklediğinizde, işlem düğümleriniz için dağıtım yapmak üzere varsayılan bir sürüm belirtebilirsiniz. Bir uygulama için varsayılan bir sürüm belirttiyseniz, uygulamaya başvuru yaptığınızda sürüm sonekini atlayabilirsiniz. **Uygulamalar penceresinde,** [uygulamaları karşıya yükleme ve yönetme](#upload-and-manage-applications)bölümünde gösterildiği gibi, varsayılan uygulama sürümünü Azure Portal belirleyebilirsiniz.
 
 Örneğin, uygulama *blender*için varsayılan sürüm olarak "2,7" ayarlarsanız ve görevleriniz aşağıdaki ortam değişkenine Başvurdıysanız, Windows düğümleriniz 2,7 sürümünü yürütür:
 

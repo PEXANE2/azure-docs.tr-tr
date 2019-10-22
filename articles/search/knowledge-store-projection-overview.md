@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265178"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>Azure Search bir bilgi deposunda projeksiyonlarla çalışma
@@ -29,9 +29,9 @@ Tahminler, Azure Tablo depolamada veya Azure Blob depolama alanında depolanan J
 
 Bilgi deposu iki tür projeksiyonu destekler:
 
-+ **Tablolar**: Tablo tahminleri, satır ve sütun olarak en iyi şekilde temsil edilen veriler için tablo depolamadaki şema veya projeksiyon tanımlamanızı sağlar. 
++ **Tablolar**: satır ve sütun olarak en iyi şekilde temsil edilen veriler için tablo projeksiyonları tablo depolamada şema veya projeksiyon tanımlamanızı sağlar. 
 
-+ **Nesneler**: Verilerinizin ve zenginleştirme için bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir.
++ **Nesneler**: verileriniz ve zenginleştirme IÇIN bir JSON temsiline ihtiyacınız olduğunda, nesne projeksiyonlar blob olarak kaydedilir.
 
 Bağlamda tanımlanan projeksiyonları görmek için [bilgi deposu ile çalışmaya](knowledge-store-howto.md)başlayın.
 
@@ -71,11 +71,11 @@ Bir tablo projeksiyon grubu tanımlarken, zenginleştirme ağacındaki tek bir d
 
 Her tablo üç özellik gerektirir:
 
-+ TableName Azure depolama 'daki tablonun adı.
++ tableName: Azure Storage 'daki tablonun adı.
 
 + generatedKeyName: Bu satırı benzersiz bir şekilde tanımlayan anahtarın sütun adı.
 
-+ Kaynaktaki Zenginleştirme ağacınızdaki düğüm, zenginleştirmelerin kaynağını kaynak olarak gerçekleştirebilirsiniz. Bu genellikle biçimlendiricilerin çıktıdır, ancak yeteneklerin herhangi birinin çıktısı olabilir.
++ Kaynak: zenginleştirme ağacınızdaki düğüm, kendi zenginleştirmelerinin kaynağını oluşturur. Bu genellikle biçimlendiricilerin çıktıdır, ancak yeteneklerin herhangi birinin çıktısı olabilir.
 
 Aşağıda tablo projeksiyonlarını örnek verilmiştir.
 
@@ -113,7 +113,7 @@ Bu örnekte gösterildiği gibi, anahtar tümcecikler ve varlıklar farklı tabl
 
 Aşağıdaki çizimde, [bilgi deposu ile çalışmaya başlama makalesindeki](knowledge-store-howto.md)Caselaw alıştırmasına yönelik bir başvuru yer alır. Bir durumda birden çok opvaya sahip olan bir senaryoda ve her bir görüşün içinde yer alan varlıkları tanımlayarak zenginleştirilerek, bu tahminleri burada gösterildiği gibi modelleyebilirsiniz.
 
-![Tablolardaki varlıklar ve ilişkiler](media/knowledge-store-projection-overview/TableRelationships.png "Tablo projeksiyonda Ilişkileri modelleme")
+![Tablolardaki varlıklar ve ilişkiler](media/knowledge-store-projection-overview/TableRelationships.png "Tablo projeksiyonda ilişkileri modelleme")
 
 ## <a name="object-projections"></a>Nesne projeksiyonları
 
@@ -154,9 +154,9 @@ Nesne projeksiyonları herhangi bir düğümden kaynaksız bir şekilde zenginle
 
 Nesne projeksiyonu oluşturmak, nesneye özgü birkaç özniteliği gerektirir:
 
-+ storageContainer: Nesnelerin kaydedileceği kapsayıcı
-+ Kaynaktaki Projeksiyonun kökü olan zenginleştirme ağacının düğümünün yolu
-+ Anahtar Depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
++ storageContainer: nesnelerin kaydedileceği kapsayıcı
++ Kaynak: projeksiyon kökü olan zenginleştirme ağacının düğümünün yolu
++ anahtar: depolanacak nesnenin benzersiz bir anahtarını temsil eden bir yol. Kapsayıcıda Blobun adını oluşturmak için kullanılır.
 
 ## <a name="projection-lifecycle"></a>Projeksiyon yaşam döngüsü
 

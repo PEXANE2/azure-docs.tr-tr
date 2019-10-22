@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
 ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72028286"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
@@ -68,7 +68,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 
          ![Yedekleme verilerini sil bölmesi.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. **Bildirim simgesine bakın** : ![bildirim simgesi. ](./media/backup-azure-delete-vault/messages.png) İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verileri siliniyor*. *Işlem başarıyla tamamlandı*.
+5. **Bildirim** simgesine bakın: ![The bildirim simgesi. ](./media/backup-azure-delete-vault/messages.png) İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verileri siliniyor*. *Işlem başarıyla tamamlandı*.
 6. Yedekleme öğesinin silindiğinden emin olmak için **yedekleme öğeleri** menüsünde **Yenile** ' yi seçin.
 
       ![Yedekleme öğelerini silme sayfası.](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -102,7 +102,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 4. Onay onay kutusunu seçin ve **Sil**' i seçin.
 
 
-5. **Bildirim** simgesine bakın ![Yedekleme verilerini sil @ no__t-2. İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verilerini silme.* *Işlem başarıyla tamamlandı*.
+5. Yedekleme verileri ](./media/backup-azure-delete-vault/messages.png) ![delete **bildirim** simgesine bakın. İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verilerini silme.* *Işlem başarıyla tamamlandı*.
 6. Yedekleme öğesinin silindiğinden emin olmak için **yedekleme öğeleri** menüsünde **Yenile** ' yi seçin.
 
 Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan silebilirsiniz:
@@ -222,7 +222,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için:
 
     Aşağıdaki istemin görüntüleneceği Gönderi:
      
-    *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] Hayır [S] Hayır [S] Hayır [?] Yardım (varsayılan: "Y"):*
+    *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir.  <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] tüm [S] askıya alma [?] Yardım (varsayılan: "Y"):*
 
 
 - MABS (Microsoft Azure Backup Server) veya DPM 'den Azure 'a (System Center Data Protection Manager) korunan şirket içi makineler için, Azure 'daki yedeklenen verileri silmek üzere aşağıdaki komutu kullanın.
@@ -233,7 +233,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için:
 
     Aşağıdaki istemin görüntüleneceği Gönderi: 
          
-   *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] Hayır [S] Hayır [S] Hayır [?] Yardım (varsayılan: "Y"):*
+   *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir.  <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] tüm [S] askıya alma [?] Yardım (varsayılan: "Y"):*
 
 Yedeklenen verileri sildikten sonra şirket içi kapsayıcıların ve yönetim sunucularının kaydını kaldırın. 
 
