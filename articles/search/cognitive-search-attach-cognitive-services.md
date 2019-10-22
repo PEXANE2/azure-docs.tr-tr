@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.openlocfilehash: 113286f829b628d4740fbba34e7279741a934aef
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265925"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search bir beceri ile bilişsel hizmetler kaynağı iliştirme 
@@ -28,7 +28,7 @@ Sınırlı sayıda belgeyi ücretsiz olarak zenginleştirebilirsiniz. Ya da, dah
 
 ## <a name="same-region-requirement"></a>Aynı bölge gereksinimi
 
-Azure Search ve Azure bilişsel hizmetler 'in aynı bölgede mevcut olması gerekir. Aksi takdirde, çalışma zamanında bu iletiyi alırsınız:`"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+Azure Search ve Azure bilişsel hizmetler 'in aynı bölgede mevcut olması gerekir. Aksi takdirde, bu iletiyi çalışma zamanında alırsınız: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Bir hizmeti bölgeler arasında taşımanın bir yolu yoktur. Bu hatayı alırsanız, Azure Search aynı bölgede yeni bir bilişsel hizmetler kaynağı oluşturmalısınız.
 
@@ -43,15 +43,15 @@ Bilişsel arama öğreticisini ve hızlı başlangıç alıştırmaları ' nı t
 
 1. Veri Içeri aktarma Sihirbazı 'nı açın:
 
-   ![Veri Içeri aktarma Sihirbazı 'Nı açın](media/search-get-started-portal/import-data-cmd.png "Veri Içeri aktarma Sihirbazı 'Nı açın")
+   ![Veri Içeri aktarma Sihirbazı 'nı açın](media/search-get-started-portal/import-data-cmd.png "Veri Içeri aktarma Sihirbazı 'nı açın")
 
 1. Bir veri kaynağı seçin ve bilişsel **Arama (Isteğe bağlı) eklemeye**devam edin. Bu sihirbaza yönelik adım adım yönergeler için bkz. [Portal araçlarını kullanarak Içeri aktarma, dizin oluşturma ve sorgulama](search-get-started-portal.md).
 
 1. Bilişsel **Hizmetler Ekle** ' yi genişletin ve ücretsiz ' i **(sınırlı enzenginler)** seçin:
 
-   ![Genişletilmiş ek] bilişsel Hizmetler bölümü (./media/cognitive-search-attach-cognitive-services/attach1.png "Genişletilmiş ek") bilişsel Hizmetler bölümü
+   ![Genişletilmiş ek bilişsel Hizmetler bölümü](./media/cognitive-search-attach-cognitive-services/attach1.png "Genişletilmiş ek bilişsel Hizmetler bölümü")
 
-1. Sonraki adıma geçin ve **zenginleştirme ekleyin**. Portalda kullanılabilen yeteneklerin açıklaması için bkz [. 2. Adım: Bilişsel arama](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) hızlı başlangıç bölümünde bilişsel yetenekler ekleyin.
+1. Sonraki adıma geçin ve **zenginleştirme ekleyin**. Portalda kullanılabilen yeteneklerin bir açıklaması için bkz. [2. Adım:](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) bilişsel arama hızlı başlangıç bölümünde bilişsel yetenekler ekleme.
 
 ## <a name="use-billable-resources"></a>Faturalanabilir kaynakları kullanma
 
@@ -63,7 +63,7 @@ Yalnızca Bilişsel Hizmetler API'si çağıran yetenekler için ücret ödersin
 
 1. Bilişsel **Hizmetler Ekle** ' yi genişletin ve yeni bilişsel **Hizmetler kaynağı oluştur**' u seçin Kaynağı oluşturabilmeniz için yeni bir sekme açılır:
 
-   Bilişsel ![Hizmetler kaynağı oluşturma] Bilişsel (./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Hizmetler kaynağı oluşturma")
+   ![Bilişsel hizmetler kaynağı oluşturma](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Bilişsel Hizmetler kaynağı oluşturma")
 
 1. **Konum** listesinde Azure Search hizmetinizin bulunduğu bölgeyi seçin. Performans nedenleriyle bu bölgeyi kullandığınızdan emin olun. Bu bölge kullanıldığında, bölgeler arasında giden bant genişliği ücretlerini de indirebilirsiniz.
 
@@ -79,9 +79,9 @@ Yalnızca Bilişsel Hizmetler API'si çağıran yetenekler için ücret ödersin
 
 1. Veri Içeri aktarma Sihirbazı 'nı içeren önceki sekmeye geri dönün. Bilişsel hizmetler kaynağını göstermek için **Yenile** ' yi seçin ve ardından kaynağı seçin:
 
-   Bilişsel ![Hizmetler kaynağını seçin] Bilişsel (./media/cognitive-search-attach-cognitive-services/attach2.png "Hizmetler kaynağını seçin")
+   ![Bilişsel hizmetler kaynağını seçin](./media/cognitive-search-attach-cognitive-services/attach2.png "Bilişsel hizmetler kaynağını seçin")
 
-1. Verilerinizde çalıştırmak istediğiniz belirli bilişsel becerileri seçmek için **zenginleştirme Ekle** bölümünü genişletin. Sihirbazın geri kalanını tamamlayın. Portalda kullanılabilen yeteneklerin açıklaması için bkz [. 2. Adım: Bilişsel arama](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) hızlı başlangıç bölümünde bilişsel yetenekler ekleyin.
+1. Verilerinizde çalıştırmak istediğiniz belirli bilişsel becerileri seçmek için **zenginleştirme Ekle** bölümünü genişletin. Sihirbazın geri kalanını tamamlayın. Portalda kullanılabilen yeteneklerin bir açıklaması için bkz. [2. Adım:](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline) bilişsel arama hızlı başlangıç bölümünde bilişsel yetenekler ekleme.
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>Bilişsel hizmetler kaynağına mevcut bir beceri iliştirme
 
@@ -99,9 +99,9 @@ Mevcut bir beceri varsa, bunu yeni veya farklı bir bilişsel hizmetler kaynağ�
 
 ## <a name="attach-cognitive-services-programmatically"></a>Bilişsel hizmetler 'i programlı olarak ekle
 
-Program aracılığıyla beceri tanımlarken, Beceri öğesine bir `cognitiveServices` bölüm ekleyin. Bu bölümde, Beceri ilişkilendirmek istediğiniz bilişsel hizmetler kaynağının anahtarını ekleyin. Kaynağın Azure Search kaynağınız ile aynı bölgede olması gerektiğini unutmayın. Ayrıca dahil `@odata.type`edin ve olarak `#Microsoft.Azure.Search.CognitiveServicesByKey`ayarlayın.
+Program aracılığıyla beceri tanımlarken, Beceri bölümüne bir `cognitiveServices` bölümü ekleyin. Bu bölümde, Beceri ilişkilendirmek istediğiniz bilişsel hizmetler kaynağının anahtarını ekleyin. Kaynağın Azure Search kaynağınız ile aynı bölgede olması gerektiğini unutmayın. Ayrıca `@odata.type` ekleyin ve `#Microsoft.Azure.Search.CognitiveServicesByKey` olarak ayarlayın.
 
-Aşağıdaki örnekte bu desenler gösterilmektedir. Tanımın sonundaki `cognitiveServices` bölüme dikkat edin.
+Aşağıdaki örnekte bu desenler gösterilmektedir. Tanımın sonundaki `cognitiveServices` bölümüne dikkat edin.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -137,7 +137,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="example-estimate-costs"></a>Örnek: Maliyet tahmini yapın
+## <a name="example-estimate-costs"></a>Örnek: tahmini maliyetler
 
 Bilişsel arama dizinlemesi ile ilişkili maliyetleri tahmin etmek için, ortalama bir belgenin nasıl göründüğünü bir fikir ile başlayın, böylece bazı sayılar çalıştırabilirsiniz. Örneğin, şunları yapabilirsiniz:
 

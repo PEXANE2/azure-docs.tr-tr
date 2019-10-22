@@ -1,5 +1,5 @@
 ---
-title: 'Kümeye veri ata: Modül başvurusu'
+title: 'Kümeye veri ata: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Kümeleme modeline puan vermek için Azure Machine Learning hizmetinde verileri kümeye atama modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 56f608044716ea3655576c11aa7a62343215f508
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3caf568590beb5b1f9d346d472c93f134a4f3a5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128982"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693224"
 ---
-# <a name="module-assign-data-to-clusters"></a>Birimi Kümelere veri atama
+# <a name="module-assign-data-to-clusters"></a>Modül: kümelere veri atama
 
 Bu makalede, Azure Machine Learning görsel arabirimindeki *kümelere veri atama* modülünün nasıl kullanılacağı açıklanır. Modül, *K-anlamı kümeleme* algoritması ile eğitilen bir kümeleme modeli aracılığıyla tahmin oluşturur.
 
@@ -27,7 +27,7 @@ Kümelere veri ata modülü, her yeni veri noktası için olası atamaları içe
   
 1. Azure Machine Learning görsel arabiriminde, daha önce eğitilen bir kümeleme modeli bulun. Aşağıdaki yöntemlerden birini kullanarak bir kümeleme modeli oluşturabilir ve eğitebilirsiniz:  
   
-    - K-ortalamalar kümeleme modülünü kullanarak K-bit [](k-means-clustering.md) kümeleme algoritmasını yapılandırın ve bir veri kümesi ve bir veri kümesi (Bu makale) Ile eğitme modeli kullanarak modeli eğitme.  
+    - K- [ortalamalar kümeleme modülünü kullanarak](k-means-clustering.md) k-bit kümeleme algoritmasını yapılandırın ve bir veri kümesi ve bir veri kümesi (Bu makale) Ile eğitme modeli kullanarak modeli eğitme.  
   
     - Ayrıca, çalışma alanınızdaki **kaydedilmiş modeller** grubundan mevcut bir eğitimli kümeleme modeli ekleyebilirsiniz.
 
@@ -44,7 +44,7 @@ Kümelere veri ata modülü, her yeni veri noktası için olası atamaları içe
   
     Bu onay kutusunu temizlerseniz yalnızca sonuçlar döndürülür. Bu seçenek, bir Web hizmetinin parçası olarak tahmin oluştururken yararlı olabilir.
   
-5.  Denemeyi çalıştırın.  
+5.  İşlem hattını çalıştırma.  
   
 ### <a name="results"></a>Sonuçlar
 

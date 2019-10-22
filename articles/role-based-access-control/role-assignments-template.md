@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5f57ea658df0569c4e69e476513863abe6940471
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950054"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692899"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme
 
@@ -26,14 +26,14 @@ ms.locfileid: "71950054"
 
 ## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Kaynak grubu kapsamında (parametresiz) bir rol ataması oluşturma
 
-RBAC 'de, erişim izni vermek için bir rol ataması oluşturun. Aşağıdaki şablonda rol ataması oluşturmanın temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
+RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir. Aşağıdaki şablonda rol ataması oluşturmanın temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
 
 -  Bir kaynak grubu kapsamındaki Kullanıcı, Grup veya uygulamaya [okuyucu](built-in-roles.md#reader) rolü atama
 
 Şablonu kullanmak için aşağıdakileri yapmanız gerekir:
 
 - Yeni bir JSON dosyası oluşturun ve şablonu kopyalayın
-- Rolü atamak için `<your-principal-id>` ' ı bir Kullanıcı, Grup veya uygulamanın benzersiz tanımlayıcısı ile değiştirin. Tanımlayıcı şu biçimdedir: `11111111-1111-1111-1111-111111111111`
+- @No__t_0, rolün atanacağı bir Kullanıcı, Grup veya uygulamanın benzersiz tanımlayıcısı ile değiştirin. Tanımlayıcı şu biçimdedir: `11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -160,7 +160,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
 ```
 
 > [!NOTE]
-> Bu şablon, şablon dağıtımı için bir parametre olarak aynı `roleNameGuid` değeri sağlanmamışsa ıdempotent değildir. @No__t-0 sağlanmamışsa, varsayılan olarak her dağıtımda yeni bir GUID oluşturulur ve sonraki dağıtımlar, `Conflict: RoleAssignmentExists` hatasıyla başarısız olur.
+> Bu şablon, şablon dağıtımı için bir parametre olarak aynı `roleNameGuid` değeri sağlanmamışsa ıdempotent değildir. @No__t_0 sağlanmazsa, varsayılan olarak her dağıtımda yeni bir GUID oluşturulur ve sonraki dağıtımlar `Conflict: RoleAssignmentExists` hata ile başarısız olur.
 
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Kaynak kapsamında rol ataması oluşturma
 
@@ -232,7 +232,7 @@ Aşağıdaki şablonda şunları gösterilmektedir:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(variables('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -266,7 +266,7 @@ Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atam
 Aşağıdaki şablonda şunları gösterilmektedir:
 
 - Yeni bir yönetilen kimlik hizmeti sorumlusu oluşturma
-- @No__t belirtme-0
+- @No__t_0 belirtme
 - Kaynak grubu kapsamındaki bu hizmet sorumlusuna katkıda bulunan rolü atama
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
@@ -329,7 +329,7 @@ Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç: Azure portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Hızlı başlangıç: Azure portalı kullanarak Azure Resource Manager şablonu oluşturma ve dağıtma](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Azure Resource Manager şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../azure-resource-manager/deploy-to-subscription.md)
-- [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -11,10 +11,10 @@ ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: lahugh
 ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70094213"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch için maliyet analizi ve bütçeler
@@ -50,9 +50,9 @@ Azure portal aracılığıyla, toplu Iş havuzlarınız veya Batch hesabınız i
 1. Azure portal, sol gezinti çubuğundan **maliyet yönetimi + faturalandırma** ' i seçin.
 1. **Aboneliklerim** bölümünde aboneliğinizi seçin
 1. Sol gezinti çubuğunun **maliyet yönetimi** bölümünde **Maliyet Analizi** ' ne giderek şöyle bir görünüm gösterir:
-1. **Filtre Ekle**' yi seçin. İlk açılan kutuda **kaynak** ![' ı seçin kaynak filtresini seçin](./media/batch-budget/resource-filter.png)
+1. **Filtre Ekle**' yi seçin. İlk açılan kutuda kaynak filtresi ![Select **kaynak** ' ı seçin ](./media/batch-budget/resource-filter.png)
 1. İkinci açılan kutuda Batch havuzunu seçin. Havuz seçildiğinde, maliyet analizi aşağıdaki Analize benzer şekilde görünür.
-    ![Havuzun maliyet analizi](./media/batch-budget/pool-cost-analysis.png)
+    Havuzun ![Cost analizini ](./media/batch-budget/pool-cost-analysis.png)
 
 Elde edilen maliyet analizi, havuzun maliyetini ve bu maliyete katkıda bulunan kaynakları gösterir. Bu örnekte, havuzda kullanılan VM 'Ler en pahalı kaynaktır.
 
@@ -75,7 +75,7 @@ Düşük öncelikli VM 'Ler, Azure 'daki daha fazla bilgi işlem kapasitesinden 
 
 ### <a name="virtual-machine-os-disk-type"></a>Sanal makine işletim sistemi disk türü
 
-Birden çok [VM işletim sistemi disk türü](../virtual-machines/windows/disks-types.md)var. Çoğu VM Serisi hem Premium hem de standart depolamayı destekleyen boyutlarda. Bir havuz için bir ' VM boyutu seçildiğinde Batch, Premium SSD işletim sistemi disklerini yapılandırır. ' S ' olmayan VM boyutu seçildiğinde, standart HDD Disk türü kullanılır. Örneğin, Premium SSD işletim sistemi diskleri için `Standard_D2s_v3` kullanılır ve standart HDD işletim sistemi diskleri için `Standard_D2_v3`kullanılır.
+Birden çok [VM işletim sistemi disk türü](../virtual-machines/windows/disks-types.md)var. Çoğu VM Serisi hem Premium hem de standart depolamayı destekleyen boyutlarda. Bir havuz için bir ' VM boyutu seçildiğinde Batch, Premium SSD işletim sistemi disklerini yapılandırır. ' S ' olmayan VM boyutu seçildiğinde, standart HDD Disk türü kullanılır. Örneğin, Premium SSD işletim sistemi diskleri `Standard_D2s_v3` için kullanılır ve standart HDD işletim sistemi diskleri `Standard_D2_v3` için kullanılır.
 
 Premium SSD işletim sistemi diskleri daha pahalıdır, ancak Premium diskler içeren daha yüksek performansa ve VM 'lere standart HDD işletim sistemi disklerine sahip VM 'lerden biraz daha hızlı başlayabilirler. Batch ile, işletim sistemi diski genellikle uygulamalar ve görev dosyaları VM 'lerde geçici SSD disk yer aldığı sürece çoğu zaman kullanılmaz. Bu nedenle, çoğu durumda, bir ' VM boyutu belirtildiğinde, Premium SSD için artan maliyeti ödemenizi gerektirmez.
 

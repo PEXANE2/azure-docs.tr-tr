@@ -1,5 +1,5 @@
 ---
-title: 'İki sınıf sinir ağı: Modül başvurusu'
+title: 'İki sınıf sinir ağı: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Yalnızca iki değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning hizmetinde Iki sınıf sinir ağ modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f0ad3cc6f506efdc0579f7b8949c41b539ade6a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128358"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693608"
 ---
 # <a name="two-class-neural-network-module"></a>İki sınıf sinir ağ modülü
 
@@ -38,15 +38,15 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
   
 ## <a name="how-to-configure"></a>Yapılandırma
 
-1.  **Iki sınıf sinir ağ** modülünü denemenize ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.  
+1.  **Iki sınıf sinir ağ** modülünü işlem hattınıza ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.  
   
 2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.  
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.  
 
 3.  **Gizli katman belirtimi**için, oluşturulacak ağ mimarisi türünü seçin.  
   
-    -   **Tam bağlantılı durum**: , İki sınıf sinir ağları için tanımlanan varsayılan sinir ağ mimarisini aşağıdaki gibi kullanır:
+    -   **Tam bağlantılı durum**: iki sınıf sinir ağları için tanımlanan varsayılan sinir ağ mimarisini aşağıdaki gibi kullanır:
   
         -   , Bir gizli katmana sahiptir.
   
@@ -66,17 +66,17 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
 
 8.  **İtici güç**için, önceki yinelemelerdeki düğümlere öğrenme sırasında uygulanacak ağırlığı belirtin  
 
-10. Yinelemeler arasındaki örnekleri karıştırmak için **karışık örnekler** seçeneğini belirleyin. Bu seçeneğin işaretini kaldırırsanız, denemeler her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
+10. Yinelemeler arasındaki örnekleri karıştırmak için **karışık örnekler** seçeneğini belirleyin. Bu seçeneğin işaretini kaldırırsanız, işlem hattını her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
   
 11. **Rastgele sayı**için çekirdek olarak kullanılacak bir değer yazın.
   
-     Bir çekirdek değeri belirtilmesi, aynı denemenin yinelenebilirlik arasında çalışmasını sağlamak istediğinizde faydalıdır.  Aksi takdirde, bir sistem saati değeri çekirdek olarak kullanılır ve bu da denemeyi her çalıştırdığınızda biraz farklı sonuçlara neden olabilir.
+     Aynı işlem hattının yinelenebilirlik üzerinde çalışmasını sağlamak istediğinizde bir çekirdek değeri belirtilmesi yararlı olur.  Aksi takdirde, bir sistem saati değeri çekirdek olarak kullanılır ve bu işlem hattı her çalıştırdığınızda biraz farklı sonuçlara neden olabilir.
   
-13. Denemeye etiketli bir veri kümesi ekleyin ve [eğitim modüllerden](module-reference.md)birini bağlayın.  
+13. Ardışık düzene etiketli bir veri kümesi ekleyin ve [eğitim modüllerden](module-reference.md)birini bağlayın.  
   
     -   **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [model eğitme](train-model.md) modülünü kullanın.  
   
-14. Denemeyi çalıştırın.
+14. İşlem hattını çalıştırma.
 
 ## <a name="results"></a>Sonuçlar
 
@@ -84,7 +84,7 @@ Eğitim tamamlandıktan sonra:
 
 + Modellerden öğrenilen Özellik ağırlıklarından ve sinir ağın diğer parametreleriyle birlikte model parametrelerinin bir özetini görmek için eğitim [modeli](./train-model.md)çıktısına sağ tıklayın ve **Görselleştir**' i seçin.  
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı deneyin art arda çalıştırmaları üzerinde güncelleştirilmemiş.
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı işlem hattının art arda çalıştırmalarından güncelleştirilmedi.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

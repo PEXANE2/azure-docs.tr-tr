@@ -104,7 +104,7 @@ Sunucu performansı için toplanan veriler gibi Application Insights, tüm istem
 
 2. Günlükler, paneldeki her bir görünüm için bir sorgu ile açılır. İlk sorgu, zaman içinde farklı sayfa görüntüleme işlemlerinin süresini gösterir.
 
-    ![Günlük sorgusu](media/tutorial-performance/10-page-view-logs.png)
+    ![günlük sorgusu](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Akıllı tanılama, verilerdeki benzersiz desenleri tanımlayan bir Günlükler özelliğidir. Çizgi grafikte Akıllı Tanılama noktasına tıkladığınızda, aynı sorgu anomaliye yol açan kayıtlar olmadan çalıştırılır. Sürenin aşırı uzun olmasına yol açan sayfa görüntülemelerini tanımlayabilmeniz için sorgunun açıklama bölümünde bu kayıtların ayrıntıları gösterilir.
 

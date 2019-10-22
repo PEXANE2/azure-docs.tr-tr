@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: helohr
 ms.openlocfilehash: 04a65442e86168239f08fb71303b8d9e9e152e72
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71679462"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstünde kiracı oluşturma
 
 Windows sanal masaüstü 'nde kiracı oluşturmak, masaüstü sanallaştırma çözümünüzü oluşturmaya yönelik ilk adımdır. Kiracı, bir veya daha fazla konak havuzu grubudur. Her konak havuzu, Azure 'da sanal makine olarak çalışan ve Windows sanal masaüstü hizmetine kaydedilen birden çok oturum ana bilgisayardan oluşur. Her konak havuzu ayrıca, uzak masaüstü ve uzak uygulama kaynaklarını kullanıcılara yayımlamak için kullanılan bir veya daha fazla uygulama grubundan oluşur. Kiracı ile, konak havuzları oluşturabilir, uygulama grupları oluşturabilir, kullanıcılar atayabilir ve hizmet üzerinden bağlantı yapabilirsiniz.
 
-Bu öğreticide şunları yapmayı öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Windows sanal masaüstü hizmetine Azure Active Directory izinleri verin.
@@ -32,7 +32,7 @@ Windows sanal masaüstü kiracınızı kurmak için gerekenler şunlardır:
    * Bu Ayrıca, müşterileri için bir Windows sanal masaüstü kiracısı oluşturan bulut çözümü sağlayıcısı (CSP) kuruluşları için de geçerlidir. Bir CSP kuruluşunda çalışıyorsanız, müşterinin Azure Active Directory örneğinin genel yöneticisi olarak oturum açabiliyor olmanız gerekir.
    * Yönetici hesabı, Windows sanal masaüstü kiracısı oluşturmaya çalıştığınız Azure Active Directory kiracısından kaynaklıdır. Bu işlem Azure Active Directory B2B (konuk) hesaplarını desteklemez.
    * Yönetici hesabının bir iş veya okul hesabı olması gerekir.
-* Bir Azure aboneliği.
+* Azure aboneliği.
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Windows sanal masaüstüne izin verme
 
@@ -50,7 +50,7 @@ Hizmet izinleri vermek için:
    >```
 
 2. Windows sanal masaüstü onayı sayfasında Genel yönetici hesabıyla oturum açın. Örneğin, contoso kuruluşunuzla karşılaşırsanız, hesabınız admin@contoso.com veya admin@contoso.onmicrosoft.com olabilir.
-3. **Kabul et**'i seçin.
+3. **Kabul Et**’i seçin.
 4. Azure AD 'nin izin kaydı yapabilmesi için bir dakika bekleyin.
 5. Bir tarayıcı açın ve yönetici onay akışını [Windows sanal masaüstü istemci uygulamasına](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)başlatın.
    >[!NOTE]
@@ -60,7 +60,7 @@ Hizmet izinleri vermek için:
    >```
 
 6. 2\. adımda yaptığınız gibi, genel yönetici olarak Windows sanal masaüstü onayı sayfasında oturum açın.
-7. **Kabul et**'i seçin.
+7. **Kabul Et**’i seçin.
 
 ## <a name="assign-the-tenantcreator-application-role"></a>TenantCreator uygulama rolünü atama
 
@@ -73,12 +73,12 @@ TenantCreator uygulama rolünü atamak için:
    Birden çok Azure Active Directory kiracılarıyla çalışıyorsanız, özel bir tarayıcı oturumu açmak ve URL 'Leri kopyalayıp Adres çubuğuna yapıştırmak iyi bir uygulamadır.
 2. Azure portal içindeki arama çubuğunda **Kurumsal uygulamalar** ' ı arayın ve **Hizmetler** kategorisi altında görüntülenen girişi seçin.
 3. **Kurumsal uygulamalar**Içinde **Windows sanal masaüstü**araması yapın. Önceki bölümde için izin verdiğiniz iki uygulamayı görürsünüz. Bu iki uygulama için **Windows sanal masaüstü**' nü seçin.
-   @no__t-"Enterprise Applications" içinde "Windows sanal masaüstü" araması yaparken arama sonuçlarının ekran görüntüsü. "Windows sanal masaüstü" adlı uygulama vurgulanmıştır. ](media/tenant-enterprise-app.png)
-4. **Kullanıcılar ve gruplar ' ı**seçin. Uygulamaya izin veren yöneticinin, **varsayılan erişim** rolü atanmış olarak zaten listelendiğini görebilirsiniz. Bu, bir Windows sanal masaüstü kiracısı oluşturmak için yeterli değildir. Bir kullanıcıya **Tenantcreator** rolünü eklemek için bu yönergeleri takip edin.
-   ![ "Windows sanal masaüstü" Kurumsal uygulamasını yönetmek için atanan kullanıcı ve grupların ekran görüntüsü. Ekran görüntüsünde, "varsayılan erişim" için olan yalnızca bir atama gösterilmektedir. ](media/tenant-default-access.png)
+   "Enterprise Applications" içinde "Windows sanal masaüstü" araması yaparken arama sonuçlarının ekran görüntüsünü ![A. "Windows sanal masaüstü" adlı uygulama vurgulanır. ](media/tenant-enterprise-app.png)
+4. **Kullanıcı ve gruplar**'ı seçin. Uygulamaya izin veren yöneticinin, **varsayılan erişim** rolü atanmış olarak zaten listelendiğini görebilirsiniz. Bu, bir Windows sanal masaüstü kiracısı oluşturmak için yeterli değildir. Bir kullanıcıya **Tenantcreator** rolünü eklemek için bu yönergeleri takip edin.
+   "Windows sanal masaüstü" Kurumsal uygulamasını yönetmek için atanan kullanıcıların ve grupların ekran görüntüsünü ![A. Ekran görüntüsünde, "varsayılan erişim" için olan yalnızca bir atama gösterilir. ](media/tenant-default-access.png)
 5. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** dikey penceresinde **Kullanıcılar ve gruplar** ' ı seçin.
 6. Windows sanal masaüstü kiracınızı oluşturacak bir kullanıcı hesabı arayın. Kolaylık olması için bu genel yönetici hesabı olabilir.
-   - @No__t-0 veya contosoadmin@outlook.com gibi bir Microsoft Identity sağlayıcısı kullanıyorsanız, Windows sanal masaüstü 'nde oturum açabilmeyebilirsiniz. Bunun yerine, admin@contoso.com veya admin@contoso.onmicrosoft.com gibi etki alanına özgü bir hesap kullanmanızı öneririz.
+   - @No__t_0 veya contosoadmin@outlook.com gibi bir Microsoft Identity sağlayıcısı kullanıyorsanız, Windows sanal masaüstü 'nde oturum açabilmeyebilirsiniz. Bunun yerine admin@contoso.com veya admin@contoso.onmicrosoft.com gibi etki alanına özgü bir hesap kullanmanızı öneririz.
 
    !["TenantCreator" olarak eklenecek bir kullanıcı seçme ekran görüntüsü.](media/tenant-assign-user.png)
 
@@ -87,7 +87,7 @@ TenantCreator uygulama rolünü atamak için:
 
 7. Kullanıcı hesabı ' nı seçin, **Seç** düğmesini seçin ve ardından **ata**' yı seçin.
 8. **Windows sanal masaüstü-kullanıcılar ve gruplar** sayfasında, Windows sanal masaüstü kiracı 'yı oluşturacak olan kullanıcıya atanan **tenantcreator** rolü ile yeni bir giriş gördiğinizi doğrulayın.
-   ![ "Windows sanal masaüstü" Kurumsal uygulamasını yönetmek için atanan kullanıcı ve grupların ekran görüntüsü. Ekran görüntüsü şimdi "TenantCreator" rolüne atanan bir kullanıcının ikinci girişini içerir. ](media/tenant-tenant-creator-added.png)
+   "Windows sanal masaüstü" Kurumsal uygulamasını yönetmek için atanan kullanıcıların ve grupların ekran görüntüsünü ![A. Ekran görüntüsünde artık "TenantCreator" rolüne atanan bir kullanıcının ikinci girişi vardır. ](media/tenant-tenant-creator-added.png)
 
 Windows sanal masaüstü kiracınızı oluşturmak için devam etmeden önce iki bilgi parçasına ihtiyacınız vardır:
 - Azure Active Directory kiracı KIMLIĞINIZ (veya **DIZIN kimliğiniz**)
@@ -95,17 +95,17 @@ Windows sanal masaüstü kiracınızı oluşturmak için devam etmeden önce iki
 
 Azure Active Directory kiracı KIMLIĞINIZI (veya **DIZIN kimliğini**) bulmak için:
 1. Aynı Azure portal oturumunda, arama çubuğunda **Azure Active Directory** araması yapın ve **Hizmetler** kategorisinin altında görüntülenen girişi seçin.
-   ![ Azure portal "Azure Active Directory" için arama sonuçlarının ekran görüntüsü. "Hizmetler" altındaki arama sonucu vurgulanır. ](media/tenant-search-azure-active-directory.png)
+   Azure portal "Azure Active Directory" için arama sonuçlarının ekran görüntüsünü ![A. "Hizmetler" altındaki arama sonucu vurgulanır. ](media/tenant-search-azure-active-directory.png)
 2. **Özellikleri**bulana kadar aşağı kaydırın ve bunu seçin.
 3. **DIZIN kimliğini**bulun ve ardından Pano simgesini seçin. Daha sonra **Aadtenantıd** değeri olarak kullanabilmek için bunu kullanışlı bir konuma yapıştırın.
-   ![ Azure Active Directory özelliklerinin ekran görüntüsü. Fare, kopyalamak ve yapıştırmak için "dizin KIMLIĞI" Pano simgesinin üzerine getirildiğinde. ](media/tenant-directory-id.png)
+   Azure Active Directory özelliklerinin ekran görüntüsünü ![A. Fare, kopyalamak ve yapıştırmak için "dizin KIMLIĞI" Pano simgesinin üzerine getirildiğinde. ](media/tenant-directory-id.png)
 
 Azure abonelik KIMLIĞINIZI bulmak için:
 1. Aynı Azure portal oturumunda, arama çubuğunda **abonelikler** ' i arayın ve **Hizmetler** kategorisi altında görüntülenen girişi seçin.
-   ![ Azure portal "Azure Active Directory" için arama sonuçlarının ekran görüntüsü. "Hizmetler" altındaki arama sonucu vurgulanır. ](media/tenant-search-subscription.png)
+   Azure portal "Azure Active Directory" için arama sonuçlarının ekran görüntüsünü ![A. "Hizmetler" altındaki arama sonucu vurgulanır. ](media/tenant-search-subscription.png)
 2. Windows sanal masaüstü hizmeti bildirimleri almak için kullanmak istediğiniz Azure aboneliğini seçin.
 3. **ABONELIK kimliğini**bulun ve ardından bir pano simgesi görünene kadar değerin üzerine gelin. Pano simgesini seçin ve daha sonra Azuyeniden bir konuma yapıştırın, böylece daha sonra **azuyeniden, Scriptionıd** değeri olarak kullanabilirsiniz.
-   ![A Azure abonelik özelliklerinin ekran görüntüsü. Fare, kopyalamak ve yapıştırmak için "abonelik KIMLIĞI" Pano simgesinin üzerine getirildiğinde. ](media/tenant-subscription-id.png)
+   Azure abonelik özelliklerinin ekran görüntüsünü ![A. Fare, kopyalamak ve yapıştırmak için "abonelik KIMLIĞI" Pano simgesinin üzerine getirildiğinde. ](media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-tenant"></a>Windows sanal masaüstü kiracısı oluşturma
 

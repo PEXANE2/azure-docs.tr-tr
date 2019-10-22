@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69611909"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Mevcut Azure Service Bus standart ad alanlarını Premium katmanına geçirin
@@ -94,30 +94,30 @@ Azure CLı veya PowerShell aracını kullanarak Service Bus standart ad alanın�
 Azure portal kullanılarak geçiş, komutları kullanılarak geçişle aynı mantıksal akışa sahiptir. Azure portal kullanarak geçiş yapmak için aşağıdaki adımları izleyin.
 
 1. Sol bölmedeki **Gezinti** menüsünde, **Premium 'a geçir**' i seçin. Sonraki sayfaya devam etmek için **Başlarken** düğmesine tıklayın.
-    ![Geçiş giriş sayfası][]
+    ![Migration giriş sayfası ][]
 
 1. **Kurulumu**tamamladıktan sonra.
-   ![Kurulum ad alanı][]
+   ![Setup ad alanı ][]
    1. Varolan standart ad alanını içine geçirmek için Premium ad alanını oluşturun ve atayın.
-        ![Kurulum ad alanı-Premium ad alanı oluşturma][]
+        ![Setup ad alanı-Premium ad alanı oluşturma ][]
    1. **Geçiş sonrası bir ad**seçin. Geçiş tamamlandıktan sonra bu adı standart ad alanına erişmek için kullanacaksınız.
-        ![Kurulum ad alanı-geçiş sonrası adı seçme][]
+        ![Setup ad alanı-geçiş sonrası adı seçin ][]
    1. Devam etmek için **' ileri '** seçeneğini belirleyin.
 1. Standart ve Premium ad alanları arasında varlıkları eşitleyin.
-    ![Kurulum ad alanı-eşitleme varlıkları-Başlat][]
+    ![Setup ad alanı-eşitleme varlıkları-Başlat ][]
 
    1. Varlıkları eşitlemeye başlamak için **Eşitlemeyi Başlat** ' ı seçin.
    1. Eşitlemeyi onaylamak ve başlatmak için iletişim kutusunda **Evet** ' i seçin.
    1. Eşitleme tamamlanana kadar bekleyin. Durum çubuğunda durum kullanılabilir.
-        ![Kurulum ad alanı-eşitleme varlıkları-ilerleme][]
+        ![Setup ad alanı-eşitleme varlıkları-ilerleme ][]
         >[!IMPORTANT]
         > Herhangi bir nedenle geçiş işlemini iptal etmeniz gerekirse, lütfen bu belgenin SSS bölümünde yer alarak iptal akışını gözden geçirin.
    1. Eşitleme tamamlandıktan sonra sayfanın alt kısmındaki **İleri** ' yi seçin.
 
 1. Özet sayfasındaki değişiklikleri gözden geçirin. Ad alanlarını değiştirmek ve geçişi gerçekleştirmek için **geçişi Tamam** ' ı seçin.
-    ![Ad alanı Değiştir-anahtar menüsü][]  
+    ![Switch ad alanı-anahtar menü ][]  
     Geçiş tamamlandığında onay sayfası görüntülenir.
-    ![Ad alanı değiştirme-başarılı][]
+    ![Switch ad alanı-başarılı ][]
 
 ## <a name="caveats"></a>Uyarılar
 
@@ -169,7 +169,7 @@ Uygulamanın yaşadığı kapalı kalma süresi, DNS girişinin Premium ad alan�
 Hayır, geçiş yapmak için gereken kod veya yapılandırma değişikliği yok. Gönderen ve alıcı uygulamalarının standart ad alanına erişmek için kullandığı bağlantı dizesi, Premium ad alanı için bir diğer ad olarak görev yapacak şekilde otomatik olarak eşlenir.
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>Geçişi iptal ediyorum ne olur?
-Geçiş, `Abort` komutu kullanılarak veya Azure Portal kullanılarak iptal edilebilir. 
+Geçiş, `Abort` komutu kullanılarak veya Azure portal kullanılarak iptal edilebilir. 
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -177,10 +177,10 @@ Geçiş, `Abort` komutu kullanılarak veya Azure Portal kullanılarak iptal edil
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
-![Akışı durdur-eşitleme][]
-![iptali akışını durdur-iptali Tamam][]
+![Abort Flow-eşitlemeyi iptal et ][]
+ ![Abort Flow-iptali Tamam ][]
 
 Geçiş işlemi iptal edildiğinde, varlıkları (konular, abonelikler ve filtreler) standartdan Premium ad alanına kopyalama sürecini durdurur ve eşlemeyi keser.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Bölüm ve örnek: Modül başvurusu'
+title: 'Bölüm ve örnek: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Bir veri kümesinde örnekleme gerçekleştirmek veya veri kümesinizden bölümler oluşturmak için Azure Machine Learning hizmetinde bölüm ve örnek modülün nasıl kullanılacağını öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 79cd6fe9156a785d82e303007d02ce58506dcfcf
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128544"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693749"
 ---
 # <a name="partition-and-sample-module"></a>Bölüm ve örnek modül
 
@@ -38,7 +38,7 @@ Bir veri kümesinde örnekleme gerçekleştirmek veya veri kümesinizden bölüm
 
 - Test için daha küçük bir veri kümesi oluşturma. 
 
-    Çok fazla veriniz varsa, denemeyi ayarlarken yalnızca ilk *n* satırı kullanmak ve ardından modelinizi oluştururken tam veri kümesini kullanmaya geçiş yapmak isteyebilirsiniz. Geliştirme sırasında kullanmak için daha küçük veri kümesi oluşturmak üzere örnekleme de kullanabilirsiniz.
+    Çok fazla veriniz varsa, işlem hattını ayarlarken yalnızca ilk *n* satırı kullanmak ve ardından modelinizi oluştururken tam veri kümesini kullanmaya geçiş yapmak isteyebilirsiniz. Geliştirme sırasında kullanmak için daha küçük veri kümesi oluşturmak üzere örnekleme de kullanabilirsiniz.
 
 ## <a name="configure-partition-and-sample"></a>Bölüm ve örnek yapılandırma
 
@@ -51,9 +51,9 @@ Bu modül, verilerinizi bölümlere bölmek veya örneklemeye yönelik birden ç
 
 ### <a name="get-top-n-rows-from-a-dataset"></a>Bir veri kümesinden Ilk N satır al
 
-Yalnızca ilk *n* satırı almak için bu modu kullanın. Bu seçenek, bir denemeyi az sayıda satırda test etmek isterseniz ve verilerin herhangi bir şekilde dengelenmesi veya örneklenmesi gerekmiyorsa yararlıdır.
+Yalnızca ilk *n* satırı almak için bu modu kullanın. Bu seçenek, bir işlem hattını az sayıda satırda test etmek isterseniz ve verilerin herhangi bir şekilde dengelenmesi veya örneklenmesi gerekmiyorsa yararlıdır.
 
-1. Arabirimindeki deneyinize **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.  
+1. Arabirimde **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.  
 
 2. **Bölüm veya örnek modu**: Bu seçeneği **Head**olarak ayarlayın.
 
@@ -61,7 +61,7 @@ Yalnızca ilk *n* satırı almak için bu modu kullanın. Bu seçenek, bir denem
 
     Belirttiğiniz satır sayısı negatif olmayan bir tamsayı olmalıdır. Seçilen satır sayısı veri kümesindeki satır sayısından büyükse, tüm veri kümesi döndürülür.
 
-4. Denemeyi çalıştırın.
+4. İşlem hattını çalıştırma.
 
 Modül yalnızca belirtilen sayıda satırı içeren tek bir veri kümesi çıkarır. Satırlar her zaman veri kümesinin üstünden okunurdur.
 
@@ -69,21 +69,21 @@ Modül yalnızca belirtilen sayıda satırı içeren tek bir veri kümesi çıka
 
 Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi destekler. Test için daha küçük bir temsili örnek veri kümesi oluşturmak istiyorsanız bu yararlı olur.
 
-1. Deneymenize **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
+1. İşlem hattınızı **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
 
-2. **Bölüm veya örnek modu**: Bunu örneklemeyeayarlayın.
+2. **Bölüm veya örnek mod**: bunu **örneklemeye**ayarlayın.
 
-3. **Örnekleme hızı**: 0 ile 1 arasında bir değer yazın. Bu değer, kaynak veri kümesinden çıktı veri kümesine dahil edilecek satırların yüzdesini belirtir.
+3. **Örnekleme oranı**: 0 ile 1 arasında bir değer yazın. Bu değer, kaynak veri kümesinden çıktı veri kümesine dahil edilecek satırların yüzdesini belirtir.
 
-    Örneğin, özgün veri kümesinin yalnızca yarısını istiyorsanız örnekleme hızının% 50 olması gerektiğini `0.5` belirtmek için yazın.
+    Örneğin, özgün veri kümesinin yalnızca yarısını istiyorsanız örnekleme hızının %50 olması gerektiğini belirtmek için `0.5` yazın.
 
     Giriş veri kümesinin satırları, belirtilen oranına göre karıştırılmış şekilde, çıktı veri kümesine seçmeli olarak konur.
 
-4. **Örnekleme Için rastgele çekirdek**: İsteğe bağlı olarak, çekirdek değeri olarak kullanmak için bir tamsayı yazın.
+4. **Örnekleme Için rastgele çekirdek**: isteğe bağlı olarak, çekirdek değeri olarak kullanılacak bir tamsayı yazın.
 
-    Satırların her seferinde aynı şekilde bölüneceğini istiyorsanız bu seçenek önemlidir. Varsayılan değer 0 ' dır, yani bir başlangıç çekirdeği sistem saatine göre oluşturulur. Bu, denemeyi her çalıştırışınızda biraz farklı sonuçlara yol açabilir.
+    Satırların her seferinde aynı şekilde bölüneceğini istiyorsanız bu seçenek önemlidir. Varsayılan değer 0 ' dır, yani bir başlangıç çekirdeği sistem saatine göre oluşturulur. Bu işlem hattı her çalıştırdığınızda biraz farklı sonuçlara yol açabilir.
 
-5. **Örnekleme için ayrılmış bölme**: Veri kümesindeki satırların örnekleme öncesinde bazı anahtar sütunlara eşit olarak bölünebilmesi önemliyse bu seçeneği belirleyin.
+5. **Örnekleme için ayrılmış bölme**: veri kümesindeki satırların örnekleme öncesinde bazı anahtar sütunlara eşit olarak bölünebilmesi önemliyse bu seçeneği belirleyin.
 
     **Örnekleme Için Stratification anahtar sütunu**için, veri kümesini bölmek üzere tek bir *konuşmasıyla Strata sütunu* seçin. Veri kümesindeki satırlar şu şekilde bölünür:
 
@@ -94,7 +94,7 @@ Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi dest
     3. Her grup, belirtilen oranı karşılamak için, çıktı veri kümesine seçmeli olarak eklenir.
 
 
-6. Denemeyi çalıştırın.
+6. İşlem hattını çalıştırma.
 
     Bu seçenekle modül, verilerin temsili bir örneklemeyi içeren tek bir veri kümesi çıkarır. Veri kümesinin kalan, örneksiz olmayan kısmı çıkış değil. 
 
@@ -102,37 +102,37 @@ Bu seçenek, basit rastgele örnekleme veya düzensiz rastgele örneklemeyi dest
 
 Veri kümesini verilerin alt kümelerine bölmek istediğinizde bu seçeneği kullanın. Bu seçenek ayrıca, çapraz doğrulama için özel sayıda katların oluşturulması veya satırları birkaç gruba bölmek istediğinizde yararlı olur.
 
-1. Deneymenize **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
+1. İşlem hattınızı **bölüm ve örnek** modülünü ekleyin ve veri kümesini bağlayın.
 
 2. **Bölüm veya örnek mod**Için, **katlara ata**' yı seçin.
 
-3. **Bölümlemede değiştirme kullan**: Örneklenen satırın olası yeniden kullanım için satır havuzuna geri dönmesi istiyorsanız bu seçeneği belirleyin. Sonuç olarak, aynı satır birkaç katlara atanabilir.
+3. **Bölümlemede değiştirme kullan**: örneklenmiş satırın olası yeniden kullanım için satır havuzuna geri dönmesi istiyorsanız bu seçeneği belirleyin. Sonuç olarak, aynı satır birkaç katlara atanabilir.
 
     Değiştirme (varsayılan seçenek) kullanmıyorsanız, Örneklenmiş satır olası yeniden kullanım için satır havuzuna geri yerleştirmez. Sonuç olarak, her satır yalnızca bir katlamalı atanabilir.
 
-4. **Rastgele bölme**:  Satırların katlara rastgele atanmasını istiyorsanız bu seçeneği belirleyin.
+4. **Rastgele bölme**: satırların katlara rastgele atanmasını istiyorsanız bu seçeneği belirleyin.
 
     Bu seçeneği seçmezseniz, satırlar hepsini bir kez deneme yöntemi kullanılarak katlara atanır.
 
-5. **Rastgele çekirdek**: İsteğe bağlı olarak, çekirdek değeri olarak kullanmak için bir tamsayı yazın. Satırların her seferinde aynı şekilde bölüneceğini istiyorsanız bu seçenek önemlidir. Aksi takdirde, varsayılan 0 değeri rastgele bir başlangıç temel değerinin kullanılacağı anlamına gelir.
+5. **Rastgele çekirdek**: isteğe bağlı olarak, çekirdek değeri olarak kullanılacak bir tamsayı yazın. Satırların her seferinde aynı şekilde bölüneceğini istiyorsanız bu seçenek önemlidir. Aksi takdirde, varsayılan 0 değeri rastgele bir başlangıç temel değerinin kullanılacağı anlamına gelir.
 
-6. **Bölümleyici yöntemini belirtin**: Bu seçenekleri kullanarak verilerin her bölüme nasıl alınacağını nasıl istediğinizi belirtin:
+6. **Bölümleyici yöntemini belirtin**: şu seçenekleri kullanarak verilerin her bölüme nasıl alınacağını belirtmek istediğinizi belirtin:
 
-    - **Bölüm eşit**: Her bölüme eşit sayıda satır yerleştirmek için bu seçeneği kullanın. Çıkış bölümlerinin sayısını belirtmek için, **eşit olarak bölmek için katlama sayısını belirtin** metin kutusuna bir tamsayı girin.
+    - **Bölüm eşit**: her bölüme eşit sayıda satır yerleştirmek için bu seçeneği kullanın. Çıkış bölümlerinin sayısını belirtmek için, **eşit olarak bölmek için katlama sayısını belirtin** metin kutusuna bir tamsayı girin.
 
-    - **Özelleştirilmiş oranlarla bölüm**: Her bölümün boyutunu virgülle ayrılmış bir liste olarak belirtmek için bu seçeneği kullanın.
+    - **Özelleştirilmiş oranlar Içeren bölüm**: Bu seçeneği, her bölümün boyutunu virgülle ayrılmış bir liste olarak belirtmek için kullanın.
 
-        Örneğin, üç bölüm oluşturmak istiyorsanız, verilerin% 50 ' i ve her biri verilerin% 25 ' i içeren kalan iki bölüm varsa, **virgülle ayrılmış metin kutusuna göre boyut listesine** tıklayın ve şu sayıları yazın:`.5, .25, .25`
+        Örneğin, üç bölüm oluşturmak istiyorsanız, verilerin %50 ' i ve her biri verilerin %25 ' i içeren kalan iki bölüm varsa, **virgülle ayrılmış metin kutusuna göre boyut listesine** tıklayın ve şu sayıları yazın: @no_ _t_1
 
         Tüm bölüm boyutlarının toplamı tam olarak 1 ' i içermelidir.
 
         - **1 ' den az**olan sayı girerseniz, kalan satırları tutmak için ek bir bölüm oluşturulur. Örneğin, .2 ve .3 değerlerini yazarsanız, tüm satırların yüzde 50 ' unu tutan üçüncü bir bölüm oluşturulur.
 
-        - **1 ' den fazla**ekleyen sayılar girerseniz, denemeyi çalıştırdığınızda bir hata oluşur.
+        - **1 ' den fazla**ekleyen sayılar girerseniz, işlem hattını çalıştırdığınızda bir hata oluşur.
 
-7. **Bağlı bölme**: Ayırma sırasında satırların dikey olmasını istiyorsanız bu seçeneği belirleyin ve ardından _konuşmasıyla Strata sütununu_seçin.
+7. Dikey **bölme**: satırların bölünmesi sırasında dikey olmasını istiyorsanız bu seçeneği belirleyin ve ardından _konuşmasıyla Strata sütununu_seçin.
 
-8. Denemeyi çalıştırın.
+8. İşlem hattını çalıştırma.
 
     Bu seçenekle modül, belirttiğiniz kuralları kullanarak bölümlenmiş birden çok veri kümesi çıkışı verir.
 
@@ -140,15 +140,15 @@ Veri kümesini verilerin alt kümelerine bölmek istediğinizde bu seçeneği ku
 
 Bu seçenek, bir veri kümesini birden çok bölüme ayırdığınızda ve şimdi daha fazla analiz veya işleme için her bölümü sırayla yüklemek istediğinizde kullanılır.
 
-1. Denemeye **bölüm ve örnek** modülünü ekleyin.
+1. **Bölüm ve örnek** modülünü işlem hattına ekleyin.
 
 2. Önceki **bölüm ve örnek**örneğinin çıkışına bağlayın. Bu örnek, birkaç bölüm oluşturmak için **katlara ata** seçeneğini kullanmış olmalıdır.
 
-3. **Bölüm veya örnek modu**: **Katlama**Seç ' i seçin.
+3. **Bölüm veya örnek modu**: **katlama**Seç ' i seçin.
 
-4. **Hangi katlamayı örnekleneceğini belirtin**: Dizinini yazarak kullanılacak bir bölüm seçin. Bölüm dizinleri 1 tabanlıdır. Örneğin, veri kümesini üç parçaya ayrılmışsa, bölümler 1, 2 ve 3 ' e sahip olur.
+4. **Hangi katlamayı örnekleneceğini belirtin**: dizinini yazarak kullanılacak bir bölüm seçin. Bölüm dizinleri 1 tabanlıdır. Örneğin, veri kümesini üç parçaya ayrılmışsa, bölümler 1, 2 ve 3 ' e sahip olur.
 
-    Geçersiz bir dizin değeri yazarsanız, bir tasarım zamanı hatası oluşur: "Hata 0018: DataSet geçersiz veri içeriyor. "
+    Geçersiz bir dizin değeri yazarsanız, bir tasarım zamanı hatası oluşur: "hata 0018: veri kümesi geçersiz veri içeriyor."
 
     Veri kümesini katlara göre gruplandırmanın yanı sıra, veri kümesini iki grup halinde ayırabilirsiniz: hedef katlama ve diğer her şey. Bunu yapmak için, tek bir katın dizinini yazın ve ardından seçeneği belirleyin, her şeyi, belirtilen katdaki verileri almak için **Seçili katlamayı**seçin.
 
@@ -156,9 +156,9 @@ Bu seçenek, bir veri kümesini birden çok bölüme ayırdığınızda ve şimd
 
     Örneğin, daha önce yaşı kullanarak dört katta hastaları daha önce bölümlüyordu. Her katlama ile birlikte çalışmak için **bölüm ve örnek** modülün dört kopyası gerekir ve her birinde aşağıda gösterildiği gibi farklı bir katlama seçersiniz. Doğrudan çıktıyı çıkarmak **Için ata** ' yı kullanmak doğru değildir.  
 
-    [![Bölüm ve örnek](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [![Partition ve örnek](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
-5. Denemeyi çalıştırın.
+5. İşlem hattını çalıştırma.
 
     Bu seçenekle, modül yalnızca o katlamalı satırları içeren tek bir veri kümesi çıkarır.
 

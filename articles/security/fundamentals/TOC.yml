@@ -121,15 +121,8 @@
           href: paas-applications-using-storage.md
         - name: PaaS için en iyi DB yöntemleri
           href: paas-applications-using-sql.md
-    - name: IoT
-      href: iot-overview.md
     - name: Azure Service Fabric güvenliği
-      href: service-fabric-overview.md
-      items:
-        - name: En iyi uygulamalar
-          href: service-fabric-best-practices.md
-        - name: Güvenlik denetim listesi
-          href: service-fabric-checklist.md
+      href: service-fabric-best-practices.md
 - name: 'İzleme, denetim ve işlemler'
   href: management-monitoring-overview.md
   items:

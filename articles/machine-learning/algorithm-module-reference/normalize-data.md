@@ -1,5 +1,5 @@
 ---
-title: 'Verileri Normalleştir: Modül başvurusu'
+title: 'Verileri Normalleştir: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Bir veri kümesini *normalleştirme*yoluyla dönüştürmek için Azure Machine Learning hizmetinde Normalleştir modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c77ebbe8569ffd221fadb5b98a54fc26d0d70893
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128560"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692705"
 ---
 # <a name="normalize-data-module"></a>Veri modülünü Normalleştir
 
@@ -32,7 +32,7 @@ Bu modül, sayısal verileri dönüştürmek için çeşitli seçenekler sunar:
 
 - Tüm değerleri bir 0-1 ölçeğinde değiştirebilir veya değerleri mutlak değerler yerine yüzdebirlik dereceleri olarak temsil ederek dönüştürebilirsiniz.
 - Tek bir sütuna veya aynı veri kümesindeki birden çok sütuna normalleştirme uygulayabilirsiniz.
-- Denemeyi tekrarlamanız veya diğer verilere aynı normalleştirme adımlarını uygulamanız gerekiyorsa, adımları bir normalleştirme dönüştürmesi olarak kaydedebilir ve aynı şemaya sahip diğer veri kümelerine uygulayabilirsiniz.
+- İşlem hattını tekrarlamanız veya diğer verilere aynı normalleştirme adımlarını uygulamanız gerekiyorsa, adımları bir normalleştirme dönüştürmesi olarak kaydedebilir ve aynı şemaya sahip diğer veri kümelerine uygulayabilirsiniz.
 
 > [!WARNING]
 > Bazı algoritmalar, bir modeli eğitmek için verilerin normalleştirilmesini gerektirir. Diğer algoritmalar kendi veri ölçeklendirmesini veya normalleştirmesini gerçekleştirir. Bu nedenle, bir tahmine dayalı model oluştururken kullanmak üzere bir makine öğrenimi algoritması seçtiğinizde, eğitim verilerine normalleştirme uygulamadan önce algoritmanın veri gereksinimlerini gözden geçirdiğinizden emin olun.
@@ -41,7 +41,7 @@ Bu modül, sayısal verileri dönüştürmek için çeşitli seçenekler sunar:
 
 Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygulayabilirsiniz. Bu nedenle, seçtiğiniz tüm sütunlara aynı normalleştirme yöntemi uygulanır. Farklı normalleştirme yöntemleri kullanmak için, **verileri normalleştirmek**için ikinci bir örnek kullanın.
 
-1. Denemeniz için **Normalveri** modülünü ekleyin. Modülü, **veri dönüştürme**altında, **ölçek ve azalt** kategorisinde Azure Machine Learning bulabilirsiniz.
+1. İşlem hattınızı **normalleştirmek Için veri** modülünü ekleyin. Modülü, **veri dönüştürme**altında, **ölçek ve azalt** kategorisinde Azure Machine Learning bulabilirsiniz.
 
 2. Tüm sayıların en az bir sütununu içeren bir veri kümesini bağlayın.
 
@@ -54,11 +54,11 @@ Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygula
     > [!TIP]
     > Belirli bir türdeki sütunların giriş olarak sağlandığından emin olmak için, **verileri normalleştirmek**Için veri [kümesinde sütunları seç](./select-columns-in-dataset.md) modülünü kullanmayı deneyin.
 
-4. **İşaretlendiğinde sabit sütunlar için 0 kullanın**:  Herhangi bir sayısal sütun, tek bir değişmeyen değer içerdiğinde bu seçeneği belirleyin. Bu, bu tür sütunların normalleştirme işlemlerinde kullanılmamasını sağlar.
+4. **İşaretlendiğinde sabit sütunlar için 0 kullanın**: herhangi bir sayısal sütun, tek bir değişmeyen değer içerdiğinde bu seçeneği belirleyin. Bu, bu tür sütunların normalleştirme işlemlerinde kullanılmamasını sağlar.
 
 5. **Dönüştürme yöntemi** açılan listesinden, seçili tüm sütunlara uygulamak için tek bir matematik işlevi seçin. 
   
-    - **Zscore**: Tüm değerleri z puanına dönüştürür.
+    - **Zscore**: tüm değerleri z puanına dönüştürür.
     
       Sütunundaki değerler aşağıdaki formül kullanılarak dönüştürülür:  
   
@@ -66,7 +66,7 @@ Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygula
   
       Ortalama ve standart sapma her bir sütun için ayrı olarak hesaplanır. Popülasyon standart sapması kullanılır.
   
-    - **MinMax**: Minimum-Max normalleştirici her özelliği [0, 1] aralığına göre yeniden ölçeklendirin.
+    - **MinMax**: minimum-Max normalleştirici her özelliği [0, 1] aralığına göre.
     
       [0, 1] aralığına yeniden boyutlandırılması, en az değer 0 olacak şekilde her bir özelliğin değerlerini değiştirerek ve sonra yeni maxhayvan değeri (özgün maxhayvan ve en düşük değerler arasındaki fark) ile bölünerek yapılır.
       
@@ -74,25 +74,25 @@ Bu modülü kullanarak tek seferde yalnızca bir normalleştirme yöntemi uygula
   
       ![Min&#45;Max işlevi kullanılarak normalleştirme](media/module/aml-normalization-minmax.png "AML_normalization-MinMax")  
   
-    - **Lojistik**: Sütunundaki değerler aşağıdaki formül kullanılarak dönüştürülür:
+    - **Lojistik**: sütundaki değerler aşağıdaki formül kullanılarak dönüştürülür:
 
-      ![lojistik işlevi tarafından normalleştirilmesi için formül](media/module/aml-normalization-logistic.png "AML_normalization-lojistik")  
+      ![Lojistik işlevi tarafından normalleştirilmesi için formül](media/module/aml-normalization-logistic.png "AML_normalization-lojistik")  
   
-    - **LogNormal**: Bu seçenek tüm değerleri bir lognormal ölçeğe dönüştürür.
+    - **LogNormal**: Bu seçenek tüm değerleri bir LogNormal ölçeğe dönüştürür.
   
       Sütunundaki değerler aşağıdaki formül kullanılarak dönüştürülür:
   
-      ![Formül günlüğü&#45;normal dağıtım](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
+      ![formül günlüğü&#45;normal dağıtım](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
     
       Burada μ ve σ, her bir sütun için, verilerden en yüksek olasılık tahminleri olarak hesaplanan, dağıtım parametreleridir.  
   
-    - **Tanh**: Tüm değerler hiperbolik tanjanta dönüştürülür.
+    - **Tanh**: tüm değerler bir hiperbolik tanjantı dönüştürülür.
     
       Sütunundaki değerler aşağıdaki formül kullanılarak dönüştürülür:
     
       ![tanh işlevini kullanarak normalleştirme](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
 
-6. Denemeyi çalıştırın veya **Normalleştir veri** modülünü çift tıklayın ve **Seçileni Çalıştır**' ı seçin. 
+6. İşlem hattını çalıştırın veya **Normalleştir veri** modülünü çift tıklatıp **Seçileni Çalıştır**' ı seçin. 
 
 ## <a name="results"></a>Sonuçlar
 

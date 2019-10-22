@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: Desteklenen eşleme stilleri
       href: supported-map-styles.md
-    - name: Web SDK destekleyen tarayıcılar
-      href: supported-browsers.md
     - name: Yakınlaştırma düzeyleri ve kutucuk kılavuzu
       href: zoom-levels-and-tile-grid.md
     - name: Ulaşım Hizmeti veri yapısı
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: A'dan B'ye yönleri gösterme
               href: map-route.md
+        - name: Web SDK destekleyen tarayıcılar
+          href: supported-browsers.md
     - name: Android SDK ile geliştirme
       items:
         - name: Android harita denetimini kullanmaya başlama

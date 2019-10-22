@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266204"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Öğretici: Azure Event Hubs ve HDInsight 'ta Apache Spark ile Işlem Işlemlerini Işleme
@@ -74,7 +74,7 @@ Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
 3. Nesnelerin **interneti**altında **Event Hubs**' yi seçin. 
 
-    ![Spark akışı örneği için Olay Hub 'ı oluşturma örnek](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "için Olay Hub 'ı oluşturma örneği")
+    ![Spark akış örneği için Olay Hub 'ı oluşturma](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Spark akış örneği için Olay Hub 'ı oluşturma")
 
 4. **+ Ekle** öğesini seçin.
 
@@ -90,7 +90,7 @@ Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
     |Otomatik Şişir etkinleştir (Isteğe bağlı) |Otomatik şişir, trafiğiniz kendisine atanan üretilen Iş birimi kapasitesini aştığında Event Hubs ad alanına atanan üretilen Iş birimi sayısını otomatik olarak ölçeklendirir.  |
     |Maksimum üretilen Iş birimlerini otomatik Şişir (Isteğe bağlı)|Bu kaydırıcı yalnızca **Otomatik Şişir etkinleştir**' i denetlemeli görünür.  |
 
-    ![Spark akış örneği için bir olay hub 'ı adı belirtin]örnek(./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "için bir olay hub 'ı adı belirtin örnek")
+    ![Spark akış örneği için bir olay hub 'ı adı sağlayın](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark akış örneği için bir olay hub 'ı adı sağlayın")
 
 6. Ad alanını oluşturmak için **Oluştur** ' u seçin.  Dağıtım birkaç dakika içinde tamamlanır.
 
@@ -112,7 +112,7 @@ Event Hubs ad alanı dağıtıldıktan sonra bir olay hub 'ı oluşturun.  Porta
 
     - **İleti bekletme**: 1.   
    
-      Spark akış örneği için ![Olay Hub 'ı ayrıntılarını sağlama]örnek(./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "akışı örneği için Olay Hub 'ı ayrıntıları sağlama")
+      ![Spark akış örneği için Olay Hub 'ı ayrıntılarını sağlama](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark akış örneği için Olay Hub 'ı ayrıntılarını sağlama")
 
 1. **Oluştur**'u seçin.  Dağıtım birkaç saniye içinde tamamlanmalı ve Event Hubs ad alanı sayfasına döndürülecektir.
 
@@ -120,11 +120,11 @@ Event Hubs ad alanı dağıtıldıktan sonra bir olay hub 'ı oluşturun.  Porta
 
 1. **RootManageSharedAccessKey**öğesini seçin.
     
-     Spark akışı örneği için olay ![hub 'ı Ilkelerini ayarlama örnek](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "akışı örneği Için Olay Hub 'ı ilkelerini") ayarlama
+     ![Spark akış örneği için Olay Hub 'ı ilkelerini ayarlama](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark akış örneği için Olay Hub 'ı ilkelerini ayarlama")
 
 1. **Birincil anahtar** ve **bağlantı dizesi-birincil anahtar** değerlerini, öğreticide daha sonra kullanmak üzere kaydedin.
 
-     Spark akışı örneği için ![Olay Hub 'ı ilke anahtarlarını görüntüleme örnek](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "akışı örneği Için Olay Hub 'ı ilke anahtarlarını görüntüleme")
+     ![Spark akış örneği için Olay Hub 'ı ilke anahtarlarını görüntüleme](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark akış örneği için Olay Hub 'ı ilke anahtarlarını görüntüleme")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>Olay Hub 'ına fazla doldurulabilir gönder
@@ -138,7 +138,7 @@ Bir Jupyter Not defteri oluşturun ve bunu **Sendtweetstoeventhub**olarak adland
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. @No__t-0, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` ve `<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
+2. @No__t_0, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` ve `<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
 
     ```scala
     import java.util._
@@ -220,7 +220,7 @@ Başka bir Jupyter Not defteri oluşturun ve bunu **ReadTweetsFromEventHub**olar
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
-2. @No__t-0 ve `<Event hub namespace connection string>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınızdan çilleri okumak için düzenlenmiş kodu çalıştırın:
+2. @No__t_0 değiştirerek aşağıdaki kodu düzenleyin ve uygun değerlerle `<Event hub namespace connection string>`. Olay Hub 'ınızdan çilleri okumak için düzenlenmiş kodu çalıştırın:
 
     ```scala
     import org.apache.spark.eventhubs._
@@ -252,7 +252,7 @@ HDInsight ile Verileriniz Azure Storage 'da depolanır veya Azure Data Lake Stor
 
 Azure portalında kümeyi açıp **Sil**’i seçin.
 
-![HDInsight Azure portalı küme silme](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini silme")
+![HDInsight Azure portalı kümeyi silme](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
 Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil**’i seçebilirsiniz. Kaynak grubunu silerek hem HDInsight Spark kümesini hem de varsayılan depolama hesabını silersiniz.
 

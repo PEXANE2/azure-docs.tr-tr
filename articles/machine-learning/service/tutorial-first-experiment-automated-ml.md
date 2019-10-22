@@ -11,10 +11,10 @@ author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
 ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72035673"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
@@ -73,7 +73,7 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
    Alan | Açıklama | Öğretici için değer
    ----|---|---
    İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Oto ml-işlem
-   Sanal @ no__t-0makine @ no__t-1boyut| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
+   Sanal &nbsp;machine &nbsp;size| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
    En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
 
    >[!NOTE]
@@ -102,7 +102,7 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
         Alan|Açıklama| Öğretici için değer
         ---|---|---
         Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
-        Ayırıcı|Düz metin veya diğer veri akışlarında @ no__t-0 ayrı, bağımsız bölge arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
+        Ayırıcı|Düz metin veya diğer veri akışlarında &nbsp; ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
         Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
@@ -118,10 +118,10 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
    >[!NOTE]
    > Bu öğreticide, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamayacağız. Ya da algoritmaların test edilmeye engel olursunuz.
    
-   Gelişmiş @ no__t-0settings|Açıklama|@ No__t-1öğreticisi için @ no__t-0değeri
+   Gelişmiş &nbsp;settings|Açıklama|Değer &nbsp;for &nbsp;tutorial
    ------|---------|---
    Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
-   Çıkış kriterleri| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim @ no__t-0iş @ no__t-1saat: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-3yinelemeden&#58;10
+   Çıkış kriterleri| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp;job &nbsp;time: 5 <br> <br> En büyük &nbsp; # &nbsp;of&#58;&nbsp;iterations 10
    Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştirme
    Doğrulama türü | Bir çapraz doğrulama türü seçin.|Çapraz doğrulamayı yana kesme
    Doğrulama sayısı | Test sayısı. | 2 çapraz doğrulama 

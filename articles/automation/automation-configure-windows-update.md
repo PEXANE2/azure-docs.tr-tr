@@ -1,6 +1,6 @@
 ---
 title: Windows Update ayarlarını Azure Güncelleştirme Yönetimi ile çalışacak şekilde yapılandırma
-description: Bu makalede, Güncelleştirme Yönetimi birlikte çalışmak üzere yapılandırdığınız Windows Update ayarları açıklanmaktadır
+description: Bu makalede, Azure Güncelleştirme Yönetimi ile çalışmak üzere yapılandırdığınız Windows Update ayarları açıklanmaktadır.
 services: automation
 ms.service: automation
 ms.subservice: update-management
@@ -9,22 +9,22 @@ ms.author: robreed
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f50ca9515f12e8c9b5943904c4d0226f2ca3353c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377570"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690849"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Güncelleştirme Yönetimi için Windows Update ayarlarını yapılandırma
 
-Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yüklemek için Windows Update bağımlıdır. Sonuç olarak, Windows Update tarafından kullanılan birçok ayarı sunuyoruz. Windows dışı güncelleştirmeleri etkinleştirmek için ayarları kullanıyorsanız, Güncelleştirme Yönetimi bu güncelleştirmeleri de yönetecektir. Güncelleştirme dağıtımı gerçekleşmeden önce güncelleştirme indirmeyi etkinleştirmek istiyorsanız, güncelleştirme dağıtımları daha hızlı gidip bakım penceresini aşmaya daha az olabilir.
+Azure Güncelleştirme Yönetimi, Windows güncelleştirmelerini indirmek ve yüklemek için Windows Update bağımlıdır. Sonuç olarak, Windows Update tarafından kullanılan ayarların birçoğunu Güncelleştirme Yönetimi. Windows dışı güncelleştirmeleri etkinleştirmek için ayarları kullanıyorsanız, Güncelleştirme Yönetimi bu güncelleştirmeleri de yönetecektir. Güncelleştirme dağıtımı gerçekleşmeden önce güncelleştirmelerin indirilmesini etkinleştirmek istiyorsanız, güncelleştirme dağıtımı daha hızlı, daha verimli ve bakım penceresini aşmaya daha az olabilir.
 
-## <a name="pre-download-updates"></a>İndirme öncesi güncelleştirmeler
+## <a name="pre-download-updates"></a>Güncelleştirmeleri indirme öncesi
 
-Grup ilkesi güncelleştirmeleri otomatik olarak karşıdan yüklemeyi yapılandırmak için [otomatik güncelleştirmeleri Yapılandır ayarını](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) **3**olarak ayarlayabilirsiniz. Bu, arka planda gerekli olan güncelleştirmeleri indirir, ancak yüklemez. Bu, zamanlamaların denetiminde Güncelleştirme Yönetimi korur ancak güncelleştirmelerin Güncelleştirme Yönetimi bakım penceresi dışında indirilmesine izin verir. Bu, **bakım penceresinin** güncelleştirme yönetimi hatalarını aşılmasına engel olabilir.
+Grup ilkesi güncelleştirmeleri otomatik olarak indirmeyi yapılandırmak için [otomatik güncelleştirmeleri Yapılandır ayarını](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) **3**olarak ayarlayın. Bu ayar, arka planda gerekli güncelleştirmelerin indiribilmesini, ancak yüklemez. Bu şekilde Güncelleştirme Yönetimi zamanlamaların denetiminde kalır, ancak güncelleştirmeler Güncelleştirme Yönetimi bakım penceresinin dışında indirilebilir. Bu davranış, Güncelleştirme Yönetimi "bakım penceresi aşıldı" hatalarını önler.
 
-Bunu PowerShell ile de ayarlayabilirsiniz, güncelleştirmeleri otomatik olarak indirmek istediğiniz bir sistemde aşağıdaki PowerShell 'i çalıştırın.
+Ayrıca, güncelleştirmelerin otomatik indirilmesi için yapılandırmak istediğiniz bir sistemde aşağıdaki PowerShell komutunu çalıştırarak da bu ayarı açabilirsiniz:
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -34,7 +34,7 @@ $WUSettings.Save()
 
 ## <a name="disable-automatic-installation"></a>Otomatik yüklemeyi devre dışı bırak
 
-Azure VM 'Leri varsayılan olarak etkinleştirilen güncelleştirmelerin otomatik olarak yüklenmesine sahiptir. Bu, güncelleştirmelerin Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlanmadan önce yüklenememesine neden olabilir. @No__t-0 kayıt defteri anahtarını `1` olarak ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığı bunu yapmanın bir yolunu gösterir.
+Varsayılan olarak, Azure sanal makineler (VM) üzerinde güncelleştirmelerin otomatik olarak yüklenmesi etkinleştirilir. Bu, Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlamadan önce güncelleştirmelerin yüklenmesine neden olabilir. @No__t_0 kayıt defteri anahtarını `1` olarak ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığında bunun nasıl yapılacağı gösterilmektedir:
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -43,11 +43,11 @@ Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
 
 ## <a name="configure-reboot-settings"></a>Yeniden başlatma ayarlarını yapılandırma
 
-[Yeniden başlatmayı yönetmek için kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-rej7uijui7jgistry) altında listelenen kayıt defteri anahtarları, güncelleştirme dağıtım ayarlarında **hiçbir şekilde yeniden başlatma** belirtseniz bile makinelerinizin yeniden başlatılmasına neden olabilir. . Bu kayıt defteri anahtarlarını ortamınız için istendiği şekilde yapılandırmanız gerekir.
+[Yeniden başlatmayı yönetmek için kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) bölümünde listelenen kayıt defteri anahtarları, **güncelleştirme dağıtım** ayarlarında **hiçbir şekilde yeniden başlatma** belirtseniz bile makinelerinizin yeniden başlatılmasına neden olabilir. . Bu kayıt defteri anahtarlarını ortamınıza en uygun şekilde yapılandırmanız gerekir.
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Diğer Microsoft ürünleri için güncelleştirmeleri etkinleştir
 
-Varsayılan olarak Windows Update yalnızca Windows için güncelleştirmeler sağlar. **Windows 'u güncelleştirdiğimde diğer Microsoft ürünleri için güncelleştirmeleri Izin ver**' i etkinleştirirseniz, SQL Server veya diğer birinci taraf yazılımlar için güvenlik düzeltme ekleri de dahil olmak üzere diğer ürünlerle ilgili güncelleştirmeler sunulur. Bu seçenek grup ilkesi tarafından yapılandırılamaz. Diğer birinci taraf düzeltme eklerini etkinleştirmek istediğiniz sistemlerde aşağıdaki PowerShell 'i çalıştırın ve Güncelleştirme Yönetimi Bu ayarı kabul eder.
+Varsayılan olarak Windows Update yalnızca Windows için güncelleştirmeleri sağlar. **Windows 'u güncelleştirdiğimde diğer Microsoft ürünlerine yönelik güncelleştirmeleri ver** ' i etkinleştirirseniz, Microsoft SQL Server ve diğer Microsoft yazılımları için güvenlik düzeltme ekleri de dahil olmak üzere diğer ürünler için de güncelleştirmeler alırsınız. Bu seçenek grup ilkesi tarafından yapılandırılamaz. Diğer Microsoft güncelleştirmelerini etkinleştirmek istediğiniz sistemlerde aşağıdaki PowerShell komutunu çalıştırın. Güncelleştirme Yönetimi Bu ayarla uyumlu olacak.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -58,12 +58,12 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="wsus-configuration-settings"></a>WSUS Yapılandırma ayarları
 
-**GÜNCELLEŞTIRME YÖNETIMI** WSUS yapılandırma ayarlarına uyar. Güncelleştirme Yönetimi ile çalışmak için yapılandırabileceğiniz WSUS ayarlarının listesi aşağıda listelenmiştir.
+Güncelleştirme Yönetimi, Windows Server Update Services (WSUS) ayarlarına uyar. Güncelleştirme Yönetimi ile çalışmak için yapılandırabileceğiniz WSUS ayarları aşağıda listelenmiştir.
 
 ### <a name="intranet-microsoft-update-service-location"></a>Intranet Microsoft güncelleştirme hizmeti konumu
 
-Güncelleştirmeleri taramak ve indirmek için, [Intranet Microsoft Update hizmet konumu](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)altında kaynakları belirtebilirsiniz.
+Güncelleştirmeleri taramak ve indirmek için, [intranet Microsoft Update hizmet konumunu belirtin](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)altında kaynakları belirtebilirsiniz.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
-Windows Update ayarlarını yapılandırdıktan sonra, [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md) bölümündeki yönergeleri Izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.
+Windows Update ayarlarını yapılandırdıktan sonra, [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](automation-tutorial-update-management.md)bölümündeki yönergeleri izleyerek bir güncelleştirme dağıtımı zamanlayabilirsiniz.

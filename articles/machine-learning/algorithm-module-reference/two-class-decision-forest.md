@@ -1,5 +1,5 @@
 ---
-title: 'İki sınıf karar ormanı: Modül başvurusu'
+title: 'İki sınıf karar ormanı: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Karar ormanları algoritmaya dayalı bir makine öğrenimi modeli oluşturmak için Azure Machine Learning hizmetinde Iki sınıf karar ormanı modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128389"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693615"
 ---
 # <a name="two-class-decision-forest-module"></a>İki sınıf karar ormanı modülü
 
@@ -49,23 +49,23 @@ Daha fazla bilgi için bkz. [karar ormanları](https://go.microsoft.com/fwlink/?
 
 ## <a name="how-to-configure"></a>Yapılandırma
   
-1.  Azure Machine Learning ' de denemenize **Iki sınıf karar ormanı** modülünü ekleyin ve modülün **Özellikler** bölmesini açın. 
+1.  Azure Machine Learning ' de **Iki sınıf karar ormanı** modülünü ardışık düzene ekleyin ve modülün **Özellikler** bölmesini açın. 
 
     Modül **Machine Learning**altında bulunabilir. **Başlat**' ı ve ardından **Sınıflandırma**' yı genişletin.  
   
 2.  Yeniden **örnekleme yöntemi**için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma**seçeneklerinden birini belirleyebilirsiniz.  
   
-    -   **Bağıntı**: Bagging, *önyükleme toplama*olarak da adlandırılır. Bu yöntemde, her ağaç yeni bir örnek üzerinde büyüerek orijinal veri kümesini rastgele örnekleyerek, özgün veri kümesinin orijinal bir veri kümesine sahip olana kadar bir şekilde oluşturulur.  
+    -   **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Bu yöntemde, her ağaç yeni bir örnek üzerinde büyüerek orijinal veri kümesini rastgele örnekleyerek, özgün veri kümesinin orijinal bir veri kümesine sahip olana kadar bir şekilde oluşturulur.  
   
          Modellerin çıkışları, bir toplama biçimi olan *Oylama*tarafından birleştirilir. Sınıflandırma kararı ormanındaki her ağaç, etiketlerin Normalleştirilmemiş bir sıklık histogramı çıkarır. Toplama işlemi, her etiket için "olasılıklara" almak üzere bu histogramları ve normalleştirerek toplanacak. Bu şekilde, yüksek tahmine sahip olan ağaçlar, en son karar veren kararının daha büyük bir ağırlığına sahip olacaktır.  
   
          Daha fazla bilgi için bkz. önyükleme toplama için Vikipedi girişi.  
   
-    -   **Çoğaltma**: Çoğaltma sırasında her ağaç, tam olarak aynı giriş verilerinde eğitilir. Her ağaç düğümü için hangi bölünmüş koşulun kullanıldığını belirleme rasgele kalır ve ağaçlar birbirinden farklı olur.   
+    -   **Çoğaltma:** çoğaltmadaki her ağaç, tam olarak aynı giriş verilerinde eğitilir. Her ağaç düğümü için hangi bölünmüş koşulun kullanıldığını belirleme rasgele kalır ve ağaçlar birbirinden farklı olur.   
   
 3.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.
   
 4.  **Karar ağaçları sayısı**için, en fazla, en fazla sayıda karar ağacının oluşturulabilecek en fazla sayısını yazın. Daha fazla karar ağacı oluşturarak daha iyi tedarik sağlayabilirsiniz, ancak eğitim süresi artar.  
   
@@ -97,9 +97,9 @@ Eğitim tamamlandıktan sonra:
   
     Her bir ağaca tıklayarak her bir düğümün kurallarını inceleyin ve her bir düğüm için kuralları görüntüleyin.
 
-+ Modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **modeli Kaydet**' i seçin. Kaydedilen model, denemenin art arda çalıştırmaları üzerinde güncelleştirilmedi.
++ Modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **modeli Kaydet**' i seçin. Kaydedilen model, ardışık düzenin art arda çalıştırmaları üzerinde güncelleştirilmedi.
 
-+ Puanlama için modeli kullanmak üzere bir denemeye **puan modeli** modülünü ekleyin.
++ Puanlama için modeli kullanmak üzere, bir işlem hattına **puan modeli** modülünü ekleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

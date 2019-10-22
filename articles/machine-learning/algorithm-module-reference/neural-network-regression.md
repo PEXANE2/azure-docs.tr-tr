@@ -1,5 +1,5 @@
 ---
-title: 'Sinir ağ gerileme: Modül başvurusu'
+title: 'Sinir ağ gerileme: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Özelleştirilebilir bir sinir ağ algoritması kullanarak regresyon modeli oluşturmak için Azure Machine Learning hizmetinde sinir ağ gerileme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128580"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692746"
 ---
 # <a name="neural-network-regression-module"></a>Sinir ağ gerileme modülü
 
 *Bir sinir ağ algoritması kullanarak regresyon modeli oluşturur*  
   
- Alan Model/gerileme Machine Learning/Başlat
+ Kategori: model/gerileme Machine Learning/Başlat
   
 ## <a name="module-overview"></a>Modüle genel bakış  
 
@@ -52,11 +52,11 @@ Sinir ağları kapsamlı bir şekilde özelleştirilebilir. Bu bölümde, iki y�
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Varsayılan mimariyi kullanarak bir sinir ağ modeli oluşturma
   
-1.  Arabirimindeki denemenize **sinir ağ regresyon** modülünü ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz. 
+1.  Arabirimindeki **sinir Network regresyon** modülünü işlem hattınızı ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz. 
   
 2. Eğitim **modunu oluşturma** seçeneğini ayarlayarak modelin eğitilme biçimini belirtin.  
   
-    -   **Tek parametre**: Modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.  
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.  
 
 3.  **Gizli katman belirtiminde**, **tam bağlantılı durum**' u seçin. Bu seçenek, bir sinir ağ regresyon modeli için varsayılan sinir ağ mimarisini kullanarak bir model oluşturur ve bu özniteliklere sahiptir:  
   
@@ -76,16 +76,16 @@ Sinir ağları kapsamlı bir şekilde özelleştirilebilir. Bu bölümde, iki y�
 
 8.  **İtici güç**için, öğrenme sırasında önceki yinelemelerdeki düğümlerde bir ağırlık olarak uygulanacak bir değer yazın.
 
-10. Yinelemeler arasındaki durumların sırasını değiştirmek için, **örnekleri karıştır**seçeneğini belirleyin. Bu seçeneğin işaretini kaldırırsanız, denemeler her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
+10. Yinelemeler arasındaki durumların sırasını değiştirmek için, **örnekleri karıştır**seçeneğini belirleyin. Bu seçeneğin işaretini kaldırırsanız, işlem hattını her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
   
-11. **Rastgele sayı kaynağı**için isteğe bağlı olarak, çekirdek olarak kullanılacak bir değer yazabilirsiniz. Bir çekirdek değeri belirtilmesi, aynı denemenin yinelenebilirlik arasında çalışmasını sağlamak istediğinizde faydalıdır.
+11. **Rastgele sayı kaynağı**için isteğe bağlı olarak, çekirdek olarak kullanılacak bir değer yazabilirsiniz. Aynı işlem hattının yinelenebilirlik üzerinde çalışmasını sağlamak istediğinizde bir çekirdek değeri belirtilmesi yararlı olur.
   
 13. Eğitim veri kümesini ve [eğitim modülleriyle](module-reference.md)bir tane bağlayın: 
   
     -   **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [modeli eğitme](./train-model.md)' yi kullanın.  
   
    
-14. Denemeyi çalıştırın.  
+14. İşlem hattını çalıştırma.  
 
 ## <a name="results"></a>Sonuçlar
 
@@ -93,7 +93,7 @@ Eğitim tamamlandıktan sonra:
 
 + Modellerden öğrenilen Özellik ağırlıklarından ve sinir ağın diğer parametreleriyle birlikte model parametrelerinin bir özetini görmek için eğitim [modeli](./train-model.md)çıktısına sağ tıklayın ve **Görselleştir**' i seçin.  
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı deneyin art arda çalıştırmaları üzerinde güncelleştirilmemiş.
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **eğitilen model** çıktısına sağ tıklayın ve **eğitilen model olarak kaydet**' i seçin. Bu model, aynı işlem hattının art arda çalıştırmalarından güncelleştirilmedi.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

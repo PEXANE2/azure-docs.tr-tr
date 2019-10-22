@@ -1,5 +1,5 @@
 ---
-title: 'Meta verileri Düzenle: Modül başvurusu'
+title: 'Meta verileri Düzenle: modül başvurusu'
 titleSuffix: Azure Machine Learning service
 description: Bir veri kümesindeki sütunlarla ilişkili meta verileri değiştirmek için Azure Machine Learning hizmetindeki meta verileri Düzenle modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128877"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693823"
 ---
 # <a name="edit-metadata-module"></a>Meta veri modülünü Düzenle
 
@@ -34,13 +34,13 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
 + Sütunları yeniden adlandırma.
   
- Genellikle bir aşağı akış modülünün gereksinimlerini karşılamak için, bir sütunun tanımını değiştirmeniz gereken her zaman meta verileri Düzenle ' yi kullanın. Örneğin, bazı modüller yalnızca belirli veri türleriyle çalışır veya sütunlarında, `IsFeature` veya `IsCategorical`gibi bayraklar gerektirir.  
+ Genellikle bir aşağı akış modülünün gereksinimlerini karşılamak için, bir sütunun tanımını değiştirmeniz gereken her zaman meta verileri Düzenle ' yi kullanın. Örneğin, bazı modüller yalnızca belirli veri türleriyle çalışır veya `IsFeature` ya da `IsCategorical` gibi sütunlarda bayrak gerektirir.  
   
  Gerekli işlemi gerçekleştirdikten sonra, meta verileri özgün durumuna sıfırlayabilirsiniz.
   
 ## <a name="configure-edit-metadata"></a>Meta verileri düzenleme yapılandırma
   
-1. Azure Machine Learning ' de, denemenize meta veri düzenleme modülünü ekleyin ve güncelleştirmek istediğiniz veri kümesini bağlayın. **Veri kümesini veri dönüştürme** altında, **işleme** kategorisinde bulabilirsiniz.
+1. Azure Machine Learning ' de, meta veri düzenleme modülünü ardışık düzene ekleyin ve güncelleştirmek istediğiniz veri kümesini bağlayın. **Veri kümesini veri dönüştürme** altında, **işleme** kategorisinde bulabilirsiniz.
   
 1. **Sütun seçiciyi Başlat** ' ı seçin ve birlikte çalışmak için sütun veya sütun kümesi seçin. Sütunları ada veya dizine göre tek tek seçebilir veya bir sütun grubunu türüne göre seçebilirsiniz.  
   
@@ -63,9 +63,9 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
 1. Azure Machine Learning bir modeldeki verileri kullanma biçimini değiştirmek istiyorsanız **Fields** seçeneğini kullanın.
 
-    + **Özellik**: Bir sütunu yalnızca özellik sütunlarında çalışan modüllerde bir özellik olarak işaretlemek için bu seçeneği kullanın. Varsayılan olarak, tüm sütunlar başlangıçta özellik olarak değerlendirilir.  
+    + **Özellik**: bir sütunu yalnızca özellik sütunlarında çalışan modüllerde bir özellik olarak işaretlemek için bu seçeneği kullanın. Varsayılan olarak, tüm sütunlar başlangıçta özellik olarak değerlendirilir.  
   
-    + **Etiket**: Tahmin edilebilir öznitelik veya hedef değişken olarak da bilinen etiketi işaretlemek için bu seçeneği kullanın. Birçok modül, veri kümesinde tam olarak bir etiket sütununun bulunmasını gerektirir.
+    + **Etiket**: Bu seçeneği, tahmin edilebilir öznitelik veya hedef değişken olarak da bilinen etiketi işaretlemek için kullanın. Birçok modül, veri kümesinde tam olarak bir etiket sütununun bulunmasını gerektirir.
 
         Çoğu durumda, Azure Machine Learning bir sütunun sınıf etiketi içerdiğini çıkarsçıkarabilir. Bu meta verileri ayarlayarak, sütunun doğru şekilde tanımlanmasını sağlayabilirsiniz. Bu seçeneğin ayarlanması veri değerlerini değiştirmez. Yalnızca bazı makine öğrenimi algoritmalarının verileri işleme biçimi değişir.
   
@@ -80,9 +80,9 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
          Tüm sütunlar başlangıçta özellik olarak değerlendirilir. Matematik işlemleri gerçekleştiren modüller için, sayısal sütunların değişken olarak işlenmesine engel olmak için bu seçeneği kullanmanız gerekebilir.
   
-    + **Etiketi temizle**: Belirtilen sütundan **etiket** meta verilerini kaldırmak için bu seçeneği kullanın.  
+    + **Etiketi temizle**: belirtilen sütundan **etiket** meta verilerini kaldırmak için bu seçeneği kullanın.  
   
-    + **Puanı temizle**: Belirtilen sütundan **puan** meta verilerini kaldırmak için bu seçeneği kullanın.  
+    + **Puanı temizle**: belirtilen sütundan **puan** meta verilerini kaldırmak için bu seçeneği kullanın.  
   
          Şu anda bir sütunu Azure Machine Learning puan olarak açıkça işaretleyemezsiniz. Ancak, bazı işlemler dahili olarak bir puan olarak işaretlenmekte olan bir sütuna neden olacak. Ayrıca, özel bir R modülü çıkış puanı değerlerini de alabilir.
 
@@ -94,7 +94,7 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
     + Tüm seçili sütunlar yeniden adlandırılması gerekir. Sütunları atlayamaz veya atlayamazsınız.  
   
-1. Denemeyi çalıştırın.  
+1. İşlem hattını çalıştırma.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Görsel arabirim ile otomobil fiyatını tahmin edin'
+title: 'Öğretici: görsel arabirim ile otomobil fiyatlarını tahmin etme'
 titleSuffix: Azure Machine Learning
 description: Bir sürükle ve bırak görsel arabirimi kullanarak makine öğrenimi modelini eğitme, Puanlama ve dağıtma hakkında bilgi edinin. Bu öğretici, doğrusal regresyon kullanarak otomobil fiyatlarını tahmin etmeye yönelik iki bölümlü bir serinin bir parçasıdır.
 author: peterclu
@@ -8,66 +8,63 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 08/16/2019
-ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 10/09/2019
+ms.openlocfilehash: b0c9fd85171020c9b78dc166980f85bcd89d8d67
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996772"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692402"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Öğretici: Görsel arabirim ile otomobil fiyatını tahmin edin
+# <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Öğretici: görsel arabirim ile otomobil fiyatlarını tahmin etme
 
-Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden tahmine dayalı analitik çözüm geliştirmek ve dağıtmak için Azure Machine Learning görsel arabirimini kullanmayı öğreneceksiniz. 
+Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden bir tahmine dayalı analiz çözümü geliştirmek ve dağıtmak için Azure Machine Learning görsel arabirimini nasıl kullanacağınızı öğreneceksiniz. 
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
-
-Birinci bölümde, ortamınızı ayarlayacaksınız, veri kümelerini ve analiz modüllerini etkileşimli bir tuvale sürükleyip bırakır ve bir deneme oluşturmak için bunları birbirine bağlayabilirsiniz. 
+Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale sürükleyip bırakın ve bir Azure Machine Learning işlem hattı oluşturmak için bunları birbirine bağlayın.
 
 Öğreticinin bir parçası olarak şunları nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Yeni bir deneme oluşturma
+> * Yeni işlem hattı oluşturma
 > * Veri içeri aktarma
 > * Verileri hazırlama
 > * Makine öğrenimi modelini eğitme
 > * Machine Learning modelini değerlendirme
 
-Öğreticinin [ikinci kısmında](ui-tutorial-automobile-price-deploy.md) , tahmine dayalı modelinizi bir Azure Web hizmeti olarak dağıtmayı öğrenirsiniz ve bu sayede, size gönderilen teknik belirtimlere göre herhangi bir arabasının fiyatını tahmin edebilirsiniz. 
+Öğreticinin [ikinci bölümünde](ui-tutorial-automobile-price-deploy.md) , size gönderilen teknik belirtimlere göre herhangi bir arabasının fiyatını tahmin etmek için tahmine dayalı modelinizi bir Azure Web hizmeti olarak dağıtmayı öğreneceksiniz. 
 
-Bu öğreticinin tamamlanmış sürümü örnek bir deneme olarak sunulmaktadır.
+> [!Note]
+>Bu öğreticinin tamamlanmış sürümü örnek bir işlem hattı olarak sunulmaktadır.
+>
+>Bulmak için, **çalışma alanınızdaki görsel arabirime**gidin. Yeni işlem **hattı** bölümünde **Örnek 1-gerileme: otomobil fiyat tahmini (temel)** öğesini seçin.
 
-**Denemeleri sayfasında**, **Yeni Ekle**' yi seçin ve **ardından örnek 1 gerileme ' yı seçin: Otomobil fiyat tahmini (temel)** denemesi.
+## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
 
-## <a name="create-a-new-experiment"></a>Yeni bir deneme oluşturma
+Azure Machine Learning işlem hatları, birden çok bağımlı veri işleme adımını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza yardımcı olur. Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning hizmeti çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
 
-Bir görsel arabirim denemesi oluşturmak için önce bir Azure Machine Learning hizmet çalışma alanı gerekir. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
-
-### <a name="create-a-new-workspace"></a>Yeni bir çalışma alanı oluşturma
+### <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluştur
 
 Bir Azure Machine Learning çalışma alanınız varsa, sonraki bölüme atlayın.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="create-an-experiment"></a>Deneme oluşturma
+### <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. Çalışma alanınızı [Azure Portal](https://portal.azure.com/)açın.
+1. [Ml.Azure.com](https://ml.azure.com) içinde oturum açın ve birlikte çalışmak istediğiniz çalışma alanını seçin.
 
-1. Çalışma alanınızda **görsel arabirim**' i seçin. Ardından **görsel arabirimi Başlat**' ı seçin. 
+1. **Görsel arabirim**' i seçin.
 
-    ![Machine Learning hizmeti çalışma alanından görsel arabirime nasıl erişediğinin gösterildiği Azure portal ekran görüntüsü](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
+    ![Görsel arabirime nasıl erişediğinin gösterildiği görsel çalışma alanının ekran görüntüsü](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
 
-1. Görsel arabirim penceresinin alt kısmındaki **+ Yeni** ' yi seçerek yeni bir deneme oluşturun.
+1. **Boş Işlem hattı**seçin.
 
-1. **Boş denemeler**' i seçin.
-
-1. Tuvalin en üstündeki **"deneme sürümü oluşturuldu...** " varsayılan deneme adını seçin ve anlamlı bir şekilde yeniden adlandırın. Örneğin, **"otomobil fiyat tahmini"** . Adın benzersiz olması gerekmez.
+1. Tuvalin en üstündeki "işlem **hattı-oluşturuldu-on..."** varsayılan işlem hattı adını seçin ve anlamlı bir şekilde yeniden adlandırın. Örneğin, **"otomobil fiyat tahmini"** . Adın benzersiz olması gerekmez.
 
 ## <a name="import-data"></a>Veri içeri aktarma
 
-Machine Learning verilere bağlıdır. Luckily, bu arabirime dahil edilen birkaç örnek veri kümesi vardır ve bunu denemeniz için kullanılabilir. Bu öğretici için, **otomobil veri kümesi (ham)** örnek veri kümesini kullanın. 
+Denemeniz için görsel arabirimde yer alan birkaç örnek veri kümesi vardır. Bu öğretici için, **otomobil veri kümesi (ham)** örnek veri kümesini kullanın. 
 
-1. Deneme tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. Kaydedilen veri kümelerini görüntülemek için **kayıtlı veri kümelerini** seçin ve **örnekler** ' i seçin.
+1. Ardışık düzen tuvalinin sol tarafında bir veri kümesi ve modül paleti bulunur. Kullanılabilir örnek veri kümelerini görüntülemek için **veri kümeleri** ' ni seçin ve **örnekler** bölümünü görüntüleyin.
 
 1. Veri kümesini, **otomobil fiyat verilerini (ham)** seçin ve tuvale sürükleyin.
 
@@ -77,107 +74,110 @@ Machine Learning verilere bağlıdır. Luckily, bu arabirime dahil edilen birka�
 
 1. **Veri kümesindeki sütunları seçme** modülü ' ne tıklayın ve tuval üzerine sürükleyin. Modülün veri kümesi modülünün altına bırakın.
 
-1. Daha önce eklediğiniz veri kümesini, tıklayıp sürükleyerek **veri kümesindeki sütunları seçme** modülüne bağlayın. Veri kümesinin çıkış bağlantı noktasından, tuvaldeki veri kümesinin en altında bulunan küçük bir daire olan ve modülün en üstünde bulunan küçük bir daire olan **veri kümesindeki sütunları seçme**giriş bağlantı noktasına kadar sürükleyin.
+1. Daha önce eklediğiniz veri kümesini, tıklayıp sürükleyerek **veri kümesindeki sütunları seçme** modülüne bağlayın. Veri kümesinin çıkış bağlantı noktasından, tuvaldeki veri kümesinin en altında bulunan küçük daire, modülün en üstünde bulunan küçük bir daire olan **veri kümesindeki sütun seçme**giriş bağlantı noktasına sürükleyin.
 
     > [!TIP]
-    > Bir modülün çıkış bağlantı noktasını başka bir giriş bağlantı noktasına bağladığınızda, denemenize karşı bir veri akışı oluşturursunuz.
+    > Bir modülün çıkış bağlantı noktasını başka bir giriş bağlantı noktasına bağladığınızda işlem hattınızla veri akışı oluşturursunuz.
     >
 
     ![Modülleri bağlama](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
-    Kırmızı ünlem işareti, modülün özelliklerini henüz belirlemediğiniz anlamına gelir.
-
 1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
-1. Tuvalin sağındaki **Özellikler** bölmesinde **Sütunları Düzenle**' yi seçin.
+1. Tuvalin sağındaki **Özellikler** bölmesinde **sütunu Düzenle**' yi seçin.
 
-    **Sütunları seçin** iletişim kutusunda, **tüm sütunlar** ' ı seçin ve **tüm özellikleri**ekleyin. İletişim kutusu şöyle görünmelidir:
+    **Sütunları seçin** iletişim kutusunda, **tüm sütunlar** ' ı seçin ve **tüm özellikleri**ekleyin.
 
-     ![Sütun seçici](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
+1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
 
-1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Tamam** ' ı seçin.
+### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-### <a name="run-the-experiment"></a>Denemeyi çalıştırma
-
-İstediğiniz zaman, veri akışındaki bu noktada verilerin nasıl göründüğünü görmek için bir veri kümesinin veya modülün çıkış bağlantı noktasına tıklayın. **Görselleştir** seçeneği devre dışıysa, önce denemeyi çalıştırmanız gerekir.
+İstediğiniz zaman, veri akışındaki bu noktada verilerin nasıl göründüğünü görmek için bir veri kümesinin veya modülün çıkış bağlantı noktasına tıklayın. **Çıktılar** sekmesi görünmezse, önce işlem hattını çalıştırmanız gerekir.
 
 [!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
-İşlem hedefi kullanılabilir olduktan sonra, deneme çalışır. Çalıştırma tamamlandığında, her modülde yeşil bir onay işareti görünür.
-
-
 ### <a name="visualize-the-data"></a>Verileri görselleştirme
 
-İlk denemenizi çalıştırdığınıza göre, sahip olduğunuz veri kümesi hakkında daha fazla bilgi edinmek için verileri görselleştirebilirsiniz.
+Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsiniz.
 
-1. **Veri kümesindeki sütunları seç '** in altındaki çıkış bağlantı noktasını seçin ve ardından **Görselleştir**' i seçin.
+1. **Otomobil fiyat verileri (ham)** modülünü seçin.
 
-1. Bu sütun hakkındaki bilgileri görüntülemek için veri penceresinde farklı sütunlara tıklayın.
+1. Tuvalin sağındaki **Özellikler** bölmesinde, **çıktılar**' i seçin.
 
-    Bu veri kümesinde, her satır bir otomobil ve her bir otomobil ile ilişkili değişkenler sütun olarak görünür. Bu veri kümesinde 205 satır ve 26 sütun vardır.
+1. Verileri görselleştirmek için grafik simgesini seçin.
 
-    Bir veri sütununa her tıkladığınızda, söz konusu sütunun **istatistik** bilgileri ve **görselleştirme** görüntüsü solda görünür.
+    ![Verileri görselleştirme](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
 
-    [![Verilerin önizlemesini yapın](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
+1. Her biri hakkındaki bilgileri görüntülemek için veri penceresinde farklı sütunları seçin.
 
-1. Veri kümeniz hakkında daha fazla bilgi edinmek için her sütuna tıklayın ve bu sütunların bir otomobil fiyatını tahmin etmek için yararlı olup olmayacağını düşünün.
+    Her satır bir otomobil ve her bir otomobil ile ilişkili değişkenler sütun olarak görünür. Bu veri kümesinde 205 satır ve 26 sütun vardır.
 
 ## <a name="prepare-data"></a>Verileri hazırlama
 
-Genellikle, bir veri kümesinin çözümlenmesi için önce bazı ön işleme gerekir. Veri kümesini görselleştirirken bazı eksik değerleri fark etmiş olabilirsiniz. Modelin verileri doğru şekilde analiz edebilmesi için bu eksik değerlerin temizlenmesi gerekir. Eksik değerleri olan satırları kaldırırsınız. Ayrıca, **normalleştirilmiş kayıplar** sütununda eksik değerlerin büyük bir oranı bulunur, bu nedenle bu sütunu modelden tamamen dışlayabilirsiniz.
+Veri kümeleri, analiz etmeden önce genellikle bazı ön işleme gerektirir. Veri kümesini görselleştirirken bazı eksik değerleri fark etmiş olabilirsiniz. Modelin verileri doğru şekilde analiz edebilmesi için bu eksik değerlerin temizlenmesi gerekir. Eksik değerleri olan satırları kaldırırsınız.
 
-> [!TIP]
-> Giriş verilerinden eksik değerleri temizleme, çoğu modülü kullanmanın bir önkoşuludur.
+1. **Veri kümesi modülünde sütunları seçme** modülünü bulmak için paletin en üstündeki arama kutusuna **seçin** yazın.
 
-### <a name="remove-column"></a>Sütunu kaldırma
+1. **Veri kümesindeki sütunları seçme** modülü ' ne tıklayın ve tuval üzerine sürükleyin. Modülün veri kümesi modülünün altına bırakın.
 
-İlk olarak, **normalleştirilmiş zararlar** sütununu tamamen kaldırın.
+1. Daha önce eklediğiniz veri kümesini, tıklayıp sürükleyerek **veri kümesindeki sütunları seçme** modülüne bağlayın. Veri kümesinin çıkış bağlantı noktasından, tuvaldeki veri kümesinin en altında bulunan küçük daire, modülün en üstünde bulunan küçük bir daire olan **veri kümesindeki sütun seçme**giriş bağlantı noktasına sürükleyin.
+
+    ![Modülleri bağlama](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
-1. Tuvalin sağındaki **Özellikler** bölmesinde **Sütunları Düzenle**' yi seçin.
+1. Tuvalin sağındaki **Özellikler** bölmesinde **sütunu Düzenle**' yi seçin.
 
-    * Kurallar ve **tüm sütunlar** seçili **olarak** bırakın.
+    **Sütunları seçin** iletişim kutusunda, **tüm sütunlar** ' ı seçin ve **tüm özellikleri**ekleyin.
 
-    * Açılan menülerden **Hariç Tut** ve **sütun adlarını** seçerek metin kutusuna tıklayın. **Normalleştirilmiş zararlar**yazın.
+1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
 
-    * Sütun seçiciyi kapatmak için sağ alt köşedeki **Tamam** ' ı seçin.
+> [!TIP]
+> Giriş verilerinden eksik değerleri Temizleme, Visual arabirimindeki modüllerin çoğunun kullanılmasına yönelik bir önkoşuldur.
 
-    ![Sütun dışlama](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
-        
-    Artık veri kümesindeki Select sütunları için Özellikler bölmesi, **normalleştirilmiş zararlar**hariç veri kümesindeki tüm sütunları geçidiyi gösterir.
+### <a name="remove-column"></a>Sütunu kaldırma
+
+Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız gerekir. Bu veri kümesinde, **normalleştirilmiş kayıplar** sütununda çok sayıda eksik değer bulunur, bu nedenle söz konusu sütunu modelden tamamen dışarıda bırakacaksınız.
+
+1. **Veri kümesi modülünde sütunları seç '** i seçin.
+
+1. Tuvalin sağ tarafındaki **Özellikler** bölmesinde **Parametreler**  > **sütunu Düzenle**' yi seçin.
+
+1. Yeni bir kural eklemek için **+** seçin.
+
+1. Açılan menüden **Dışla** ve **sütun adlarını**seçin.
+    
+1. Metin kutusuna **normalleştirilmiş zararlar** girin.
+
+1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
+
+    ![Sütun dışlama](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
         
     Özellikler bölmesi, **normalleştirilmiş kayıplar** sütununun dışlanacağını gösterir.
 
-1. **Veri kümesi modülünde sütunları seç** ' e çift tıklayın ve "normalleştirilmiş zararları hariç tut" açıklamasını yazın. 
-    
-    Yorumu yazdıktan sonra modülün dışına tıklayın. Modülün bir yorum içerdiğini gösteren bir aşağı ok belirir.
+1. **Veri kümesi modülünde sütunları seç '** i seçin. 
 
-1. Yorumu göstermek için aşağı oka tıklayın.
+1. **Özellikler**' de, **Parametreler**  > **Açıklama** ' yı seçin ve "normalleştirilmiş zararları hariç tut" yazın.
 
-    Modül artık yorumu gizlemek için bir yukarı ok gösterir.
-        
-    ![Açıklamalar](./media/ui-tutorial-automobile-price-train-score/comments.png)
+### <a name="clean-missing-data"></a>Eksik verileri temizle
 
-### <a name="clean-missing-data"></a>Eksik verileri temizleme
-
-Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız gerekir. Bu durumda, eksik verileri olan kalan satırları kaldırmak için bir modül ekleyeceksiniz.
+Veri kümeniz, **normalleştirilmiş zararlar** sütununu kaldırdıktan sonra yine de eksik değerler içeriyor. **Eksik veri silme** modülünü kullanarak kalan eksik verileri kaldırabilirsiniz.
 
 1. **Eksik verileri temizle** modülünü bulmak için arama kutusuna **Clean** yazın.
 
-1. **Eksik verileri temizle** modülünü deneme tuvaline sürükleyin ve **veri kümesindeki sütunları seçme** modülüne bağlayın. 
+1. **Eksik verileri temizle** modülünü ardışık düzen tuvaline sürükleyin ve **veri kümesindeki sütunları seçme** modülüne bağlayın. 
 
 1. Özellikler bölmesinde, **temizleme modu**' nun altındaki **tüm satırı Kaldır** ' ı seçin.
 
-1. Modüle çift tıklayın ve "Eksik değerli satırları kaldır" yorumunu yazın.
+1. Özellikler bölmesinde "eksik değer satırlarını kaldır" yazın. **Açıklama** kutusunda.  
 
-    Denemeniz artık şuna benzer görünmelidir:
+    İşlem hatlarınız şuna benzer şekilde görünmelidir:
     
-    ![Select-Column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
+    ![Select-Column](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
 
 ## <a name="train-a-machine-learning-model"></a>Makine öğrenimi modelini eğitme
 
-Artık veriler hazır olduğuna göre, tahmine dayalı bir model oluşturabilirsiniz. Modeli eğitebilmeniz için verilerinizi kullanacaksınız. Daha sonra, fiyatları tahmin etmeye ne kadar yakından başlayacaklarını görmek için modeli test edersiniz.
+Artık veriler önceden işlense de, tahmine dayalı bir model oluşturabilirsiniz. Modeli eğitebilmeniz için verilerinizi kullanacaksınız. Daha sonra, fiyatları tahmin etmeye ne kadar yakından başlayacaklarını görmek için modeli test edersiniz.
 
 ### <a name="select-an-algorithm"></a>Algoritmayı seçme
 
@@ -187,13 +187,17 @@ Bir sayı olan fiyatı tahmin etmek istediğiniz için, regresyon algoritmasın�
 
 ### <a name="split-the-data"></a>Verileri bölme
 
-Verileri ayrı eğitim ve test veri kümelerine bölerek, hem modeli eğitmek hem de test etmek için verilerinizi kullanın.
+Verileri iki ayrı veri kümesine bölerek modeli eğitim ve test etme için verilerinizi kullanın.
 
 1. **Verileri Böl** modülünü bulmak için arama kutusuna **bölünmüş** verileri yazın ve **eksik verileri temizleme** modülünün sol bağlantı noktasına bağlayın.
 
-1. **Bölünmüş veri** modülünü seçin. Özellikler bölmesinde, ilk çıktı veri kümesindeki satır kesirini 0,7 olarak ayarlayın. Bu şekilde, modeli eğitmek için verilerin yüzde 70 ' ünü kullanacağız ve test için yüzde 30 ' unu geri alacaksınız.
+1. **Bölünmüş veri** modülünü seçin.
 
-1. **Bölünmüş verilere** çift tıklayın ve "veri kümesini eğitim kümesine Böl (0.7) ve test kümesi (0,3)" açıklamasını yazın
+1. Özellikler bölmesinde, **ilk çıktı veri kümesindeki satır kesirini** 0,7 olarak ayarlayın.
+
+    Bu, modeli eğitmek için verilerin yüzde 70 ' ünü böler ve test için yüzde 30 ' u geri tutar.
+
+1. Özellikler bölmesinde, "veri kümesini eğitim kümesine Böl (0.7) ve test kümesi (0,3)." yazın. **Açıklama** kutusunda.
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
@@ -201,48 +205,70 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Model, verileri tarar v
 
 1. Öğrenme algoritmasını seçmek için modül paleti arama kutusunu temizleyin.
 
-1. **Machine Learning** genişletin ve sonra **modeli Başlat**' ı genişletin. Böylece makine öğrenimi algoritmalarını başlatmak için kullanılabilecek çeşitli modül kategorileri görüntülenir.
+1. **Machine Learning algoritmaları**genişletin.
+    
+    Böylece makine öğrenimi algoritmalarını başlatmak için kullanılabilecek çeşitli modül kategorileri görüntülenir.
 
-1. Bu deneme için, **regresyon** > **Doğrusal regresyon** ' i seçin ve deneme tuvaline sürükleyin.
+1. Bu işlem hattı için,**Doğrusal regresyon**  >  **gerileme** ' yı seçin ve işlem hattı tuvaline sürükleyin.
 
-1. **Eğitim modeli** modülünü bulun ve deneme tuvaline sürükleyin. Doğrusal regresyon modülünün çıkışını tren modeli modülünün sol girişine bağlayın ve **bölünmüş veri** modülünün eğitim verileri çıkışını (sol bağlantı noktası) **tren modeli** modülünün doğru girişine bağlayın.
+1. **Eğitim modeli** modülünü bulup ardışık düzen tuvaline sürükleyin. 
 
-    ![Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır](./media/ui-tutorial-automobile-price-train-score/train-model.png)
+1. Doğrusal regresyon modülünün çıkışını eğitme modeli modülünün sol girişine bağlayın.
 
-1. **Model eğitme** modülünü seçin. Özellikler bölmesinde, sütun seçiciyi Başlat ' ı seçin ve ardından **sütun adlarını içer**' in yanındaki **Fiyat** yazın. Fiyatlandırma, modelinizin tahmin edilecek değerdir
+1. **Veri ayırma** modülünün eğitim verileri çıkışını (sol bağlantı noktası), **eğitme modeli** modülünün sağ girişine bağlayın.
 
-    ![Sütun seçici modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Kurallarla > sütun adlarını Içerme > "Price"](./media/ui-tutorial-automobile-price-train-score/select-price.png)
+    ![Eğitim modeli modülünün doğru yapılandırmasını gösteren ekran görüntüsü. Doğrusal regresyon modülü, model eğitimi modülünün sol bağlantı noktasına bağlanır ve bölünmüş veri modülü, tren modelinin sağ bağlantı noktasına bağlanır](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
 
-    Denemenizin şöyle görünmesi gerekir:
+1. **Model eğitme** modülünü seçin.
 
-    ![Eğitim modeli modülü eklendikten sonra denemenin doğru yapılandırmasını gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
+1. Özellikler bölmesinde, **sütun seçiciyi Düzenle** ' yi seçin.
+
+1. **Etiket sütunu** iletişim kutusunda, açılan menüyü genişletin ve **sütun adları**' nı seçin. Metin kutusuna **Price**yazın. Fiyat, modelinizin tahmin edilecek değerdir.
+
+    İşlem hatlarınız şöyle görünmelidir:
+
+    ![Eğitim modeli modülü eklendikten sonra işlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
 
 ## <a name="evaluate-a-machine-learning-model"></a>Machine Learning modelini değerlendirme
 
 Artık, bu modeli verilerinizin yüzde 70 ' ünü kullanarak eğitildiniz, modelin ne kadar iyi olduğunu görmek için, verilerin yüzde 30 ' unu almak üzere onu kullanabilirsiniz.
 
-1. **Puan modeli** modülünü bulmak için arama kutusuna **puan modeli** yazın ve modülü deneme tuvaline sürükleyin. **Eğitim modeli** modülünün çıkışını, **puan modelinin**sol giriş bağlantı noktasına bağlayın. **Veri ayırma** modülünün test verileri çıkışını (sağ bağlantı noktası), **puan modelinin**sağ giriş bağlantı noktasına bağlayın.
+1. **Puan modeli** modülünü bulmak için arama kutusuna **puan modeli** yazın ve modülü işlem hattı tuvaline sürükleyin. 
 
-1. **Modeli değerlendir** ' i bulmak için arama kutusuna **değerlendir** yazın ve modülü deneme tuvaline sürükleyin. **Puan modeli** modülünün çıkışını **modeli değerlendir**modülünün sol girişine bağlayın. Son deneme şuna benzer şekilde görünecektir:
+1. **Eğitim modeli** modülünün çıkışını, **puan modelinin**sol giriş bağlantı noktasına bağlayın. **Veri ayırma** modülünün test verileri çıkışını (sağ bağlantı noktası), **puan modelinin**sağ giriş bağlantı noktasına bağlayın.
 
-    ![Denemenin son doğru yapılandırmasını gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-train-score/final-graph.png)
+1. **Modeli değerlendir** ' i bulmak için arama kutusuna **değerlendir** yazın ve modülü işlem hattı tuvaline sürükleyin. 
 
-1. Daha önce oluşturduğunuz işlem kaynağını kullanarak denemeyi çalıştırın.
+1. **Puan modeli** modülünün çıkışını **modeli değerlendir**modülünün sol girişine bağlayın. 
 
-1. **Puan** modelinin çıkış bağlantı noktasını seçip **Görselleştir**' i seçerek **puan modeli** modülünün çıktısını görüntüleyin. Çıkış, fiyat için tahmin edilen değerleri ve test verileri için bilinen değerleri gösterir.
+    Son işlem hattı şuna benzer görünmelidir:
+
+    ![İşlem hattının doğru yapılandırmasını gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+
+### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
+
+[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
+
+### <a name="view-results"></a>Sonuçları görüntüleme
+
+Çalıştırma tamamlandıktan sonra, işlem hattı çalıştırmasının sonuçlarını görüntüleyebilirsiniz. 
+
+1. **Puan** modeli modülünü seçerek, puan **modeli** modülünün çıktısını görüntüleyin.
+
+1. **Özellikler** bölmesinde, **çıktılar**  > **görselleştirin**' ı seçin. Çıkış, fiyat için tahmin edilen değerleri ve test verileri için bilinen değerleri gösterir.
 
     !["Puanlanmış etiket" sütununu vurgulayan çıkış görselleştirmesinin ekran görüntüsü](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
-1. **Modeli değerlendir** modülünün çıkışını görüntülemek için çıkış bağlantı noktasını seçin ve ardından **Görselleştir**' i seçin.
+1. **Puan modeli** modülünü seçerek **modeli değerlendir** modülünün çıktısını görüntüleyin.
 
-    ![Son deneme için değerlendirme sonuçlarını gösteren ekran görüntüsü.](./media/ui-tutorial-automobile-price-train-score/evaluate-result.png)
+1. **Özellikler** bölmesinde **Çıkış**  > **Görselleştir**' i seçin ve ardından **Görselleştir**' i seçin.
 
 Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 
-* **Ortalama mutlak hata (MAE)** : Mutlak hataların ortalaması (bir hata, tahmin edilen değer ile gerçek değer arasındaki farktır).
-* **Kök ortalama kare hatası (rmo)** : Test veri kümesinde yapılan tahmine dayalı olarak kare içinde oluşan ortalama hata sayısının kare kökü.
-* **Göreli mutlak hata**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak farka göre ortalama mutlak hata sayısı.
-* **Göreli kare hatası**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki kare farklılığa göre ortalama kare dışı hataların ortalaması.
+* **Ortalama mutlak hata (MAE)** : mutlak hataların ortalaması (bir hata, tahmin edilen değer ile gerçek değer arasındaki farktır).
+* **Kök ortalama kare hatası (rmo)** : test veri kümesinde yapılan tahmine dayalı ortalama kare şeklindeki hata sayısının kare kökü.
+* **Relative Absolute Error (Göreli Mutlak Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
+* **Relative Squared Error (Göreli Karesi Alınmış Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
 * **Belirleme katsayısı**: R kare değeri olarak da bilinen bu, modelin verilere ne kadar iyi uyduğunu gösteren istatistiksel bir ölçümdür.
 
 Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük olan bir değer, tahminlerin gerçek değerlerle daha yakından eşleştiğini gösterir. Değer belirleme katsayısı için, değeri bir (1,0), daha iyi tahmine sahip olur.
@@ -255,12 +281,12 @@ Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük
 
 Bu öğreticinin bir parçası olarak şu adımları tamamladınız:
 
-* Deneme oluşturma
-* Verileri hazırlama
-* Modeli eğitme
-* Modeli Puanlama ve değerlendirme
+* İşlem hattı oluşturma
+* Veriler hazırlandı
+* Model eğitimi
+* Model puanlanmış ve model değerlendirildi
 
-İkinci bölümde, modelinizi bir Azure Web hizmeti olarak dağıtmayı öğreneceksiniz.
+İkinci bölümde, modelinizi bir ardışık düzen uç noktası olarak dağıtmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
 > [Modelleri dağıtmaya devam et](ui-tutorial-automobile-price-deploy.md)

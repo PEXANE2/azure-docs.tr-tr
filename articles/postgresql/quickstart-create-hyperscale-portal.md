@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164011"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portal PostgreSQL için Azure veritabanı-hiper ölçek (Citus) (Önizleme) oluşturun
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı-hiper ölçek (Citus) (Önizleme) oluşturma
 
 PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız, yönetilen bir hizmettir. Bu hızlı başlangıçta, Azure portal kullanarak bir PostgreSQL için Azure veritabanı-hiper ölçek (Citus) (Önizleme) sunucu grubu oluşturma gösterilmektedir. Dağıtılmış verileri keşfedeceğiz: düğümler arasında parça tabloları, örnek verileri geri almak ve birden çok düğümde yürütülen sorguları çalıştırmak isteyeceksiniz.
 
@@ -62,16 +62,16 @@ CREATE TABLE github_users
 );
 ```
 
-Alanınınbirjsonbveritürüvardır.`payload` `github_events` JSONB, Postgres 'de ikili biçimdeki JSON veri türüdür. Veri türü, esnek bir şemayı tek bir sütunda depolamayı kolaylaştırır.
+@No__t_1 `payload` alanının bir JSONB veri türü vardır. JSONB, Postgres 'de ikili biçimdeki JSON veri türüdür. Veri türü, esnek bir şemayı tek bir sütunda depolamayı kolaylaştırır.
 
-Postgres bu türde bir `GIN` dizin oluşturabilir ve bu, içindeki her anahtar ve değeri dizine alır. Bir dizin ile yükü çeşitli koşullarla sorgulamak hızlı ve kolay hale gelir. Biz de verilerimizi yüklemeden önce birkaç dizin oluşturalım. Psql 'de:
+Postgres bu tür üzerinde `GIN` bir dizin oluşturabilir ve bu, içindeki her anahtar ve değerin dizinini oluşturur. Bir dizin ile yükü çeşitli koşullarla sorgulamak hızlı ve kolay hale gelir. Biz de verilerimizi yüklemeden önce birkaç dizin oluşturalım. Psql 'de:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, hem olaylar hem de Kullanıcı tablosu ' `user_id`nu parçalara parçalarız:
+Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, `user_id` hem olayları hem de Kullanıcı tablosunu parçalara parçalarız:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -96,13 +96,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Sorgu çalıştırma
 
-Şimdi eğlenceli parçanın süresi, aslında bazı sorgular çalıştırıyor. Ne kadar veri yüklediğimiz hakkında `count (*)` daha basit bir başlangıç yapın:
+Şimdi eğlenceli parçanın süresi, aslında bazı sorgular çalıştırıyor. Ne kadar veri yüklediğimiz hakkında bilgi almak için basit bir `count (*)` başlayalım:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Bu, işe yaramakta. Bu toplama sıralamasına bir bit içinde geri döneceğiz, ancak şimdilik diğer birkaç sorguya göz atalım. Jsonb `payload` sütununun içinde iyi bir veri bulunur, ancak olay türüne göre farklılık gösterir. `PushEvent`olaylar, gönderim için ayrı yürütmelerin sayısını içeren bir boyut içerir. Saat başına toplam işleme sayısını bulmak için kullanabiliriz:
+Bu, işe yaramakta. Bu toplama sıralamasına bir bit içinde geri döneceğiz, ancak şimdilik diğer birkaç sorguya göz atalım. JSONB `payload` sütununda, verilerin iyi bir biti bulunur, ancak olay türüne göre farklılık gösterir. `PushEvent` olaylar, gönderim için ayrı yürütmelerin sayısını içeren bir boyut içerir. Saat başına toplam işleme sayısını bulmak için kullanabiliriz:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Şimdiye kadar sorgular GitHub\_olaylarını özel olarak katıldı, ancak bu bilgileri GitHub\_kullanıcılarıyla birleştirebiliriz. Aynı tanımlayıcı (`user_id`) üzerinde hem Kullanıcı hem de olay paylaşdığımız için, eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) edilir ve kolayca eklenebilir.
+Şimdiye kadar sorgular GitHub \_events özel olarak katıldı, ancak bu bilgileri GitHub \_users birleştirebiliriz. Hem kullanıcıları hem de olayları aynı tanımlayıcı (`user_id`) üzerinde bulundurduğumuz için, eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [edilir ve](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) kolayca eklenebilir.
 
-Katılırsanız `user_id`hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
+@No__t_0 katılıyoruz hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
 
 ```sql
 SELECT gu.login, count(*)

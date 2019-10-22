@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69647365"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Azure Search temel dizin oluşturma
@@ -146,7 +146,7 @@ Bir portal yaklaşımı yerine kod, yinelemeli tasarım için önerilir. Dizin t
 Şemanızı tanımlarken, dizininizdeki her bir alan için ad, tür ve öznitelikler belirtmeniz gerekir. Alan türü, bu alanda depolanan verileri sınıflandırır. Öznitelikler, alanın nasıl kullanıldığını belirtmek için tek tek alanlarda ayarlanır. Aşağıdaki tablolar belirtebileceğiniz türleri ve öznitelikleri numaralandırır.
 
 ### <a name="data-types"></a>Veri türleri
-| Type | Açıklama |
+| Tür | Açıklama |
 | --- | --- |
 | *Edm.String* |İsteğe bağlı olarak tam metin araması için simgeleştirilmiş olabilecek metin (sözcük ayırma, sözcük kökü oluşturma vb.). |
 | *Collection(Edm.String)* |Tam metin araması için isteğe bağlı olarak belirteç haline getirilebilen dize listesi. Bir koleksiyondaki öğelerin sayısında teorik bir üst sınır yoktur ancak yük boyutundaki 16 MB'lık üst sınır, koleksiyonlar için geçerlidir. |
@@ -197,7 +197,7 @@ Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları d
 
 Bir öneri aracı eklenen alanlar, tür öncelikli arama terimleri oluşturmak için kullanılır. Tüm arama terimleri dizin oluşturma sırasında oluşturulur ve ayrı olarak depolanır. Öneri aracı yapısı oluşturma hakkında daha fazla bilgi için bkz. [Add öneri araçları](index-add-suggesters.md).
 
-## <a name="scoring-profiles"></a>Puanlama profilleri
+## <a name="scoring-profiles"></a>Puanlama modelleri
 
 [Puanlama profili](index-add-scoring-profiles.md) , arama sonuçlarında hangi öğelerin göründüğünü etkileyen özel Puanlama davranışlarını tanımlayan şemanın bir bölümüdür. Puanlama profilleri alan ağırlıklarının ve işlevlerden oluşur. Bunları kullanmak için sorgu dizesinde ada göre bir profil belirtirsiniz.
 
@@ -213,11 +213,11 @@ Tarayıcı tüm çapraz kaynak isteklerini önleyediğinden, istemci tarafı Jav
 
 CORS için aşağıdaki seçenekler ayarlanabilir:
 
-+ **Allowedkaynakları** (gerekli): Bu, dizininiz için erişim verilecek olan kaynakları içeren bir listesidir. Bu, bu kaynaklardan sunulan tüm JavaScript kodunun dizininizi sorgulayabileceği anlamına gelir (doğru api anahtarını sağladığını varsayarak). Her kaynak genellikle form `protocol://<fully-qualified-domain-name>:<port>` olur, ancak `<port>` genellikle atlanacaktır. Daha fazla ayrıntı için bkz. [çıkış noktaları arası kaynak paylaşımı (Vikipedi)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
++ **allowederlerin** (gerekli): Bu, dizininiz için erişim verilecek olan kaynakları içeren bir listesidir. Bu, bu kaynaklardan sunulan tüm JavaScript kodunun dizininizi sorgulayabileceği anlamına gelir (doğru api anahtarını sağladığını varsayarak). Her kaynak genellikle `protocol://<fully-qualified-domain-name>:<port>`, ancak `<port>` genellikle atlanamaz. Daha fazla ayrıntı için bkz. [çıkış noktaları arası kaynak paylaşımı (Vikipedi)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
-  Tüm kaynaklardan erişime izin vermek istiyorsanız, **allowedkaynakları** dizisine tek `*` bir öğe olarak dahil edin. *Bu, üretim arama hizmetleri için önerilen bir uygulamadır,* ancak geliştirme ve hata ayıklama için genellikle yararlıdır.
+  Tüm kaynaklardan erişime izin vermek istiyorsanız, `*` **allowedgıas** dizisinde tek bir öğe olarak ekleyin. *Bu, üretim arama hizmetleri için önerilen bir uygulamadır,* ancak geliştirme ve hata ayıklama için genellikle yararlıdır.
 
-+ **Maxageınseconds** (isteğe bağlı): Tarayıcılar, CORS ön denetim yanıtlarını önbelleğe almak için süreyi (saniye cinsinden) belirlemede bu değeri kullanır. Bu negatif olmayan bir tamsayı olmalıdır. Bu değer arttıkça, daha iyi performans olacaktır, ancak CORS ilke değişikliklerinin etkili olması için daha uzun sürer. Ayarlanmamışsa, varsayılan 5 dakikalık bir süre kullanılacaktır.
++ **Maxageınseconds** (isteğe bağlı): TARAYıCıLAR, CORS ön denetim yanıtlarını önbelleğe almak için süreyi (saniye cinsinden) belirlemede bu değeri kullanır. Bu negatif olmayan bir tamsayı olmalıdır. Bu değer arttıkça, daha iyi performans olacaktır, ancak CORS ilke değişikliklerinin etkili olması için daha uzun sürer. Ayarlanmamışsa, varsayılan 5 dakikalık bir süre kullanılacaktır.
 
 ## <a name="encryption-key"></a>Şifreleme anahtarı
 

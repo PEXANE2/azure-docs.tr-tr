@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 36f26808b94893990ceec65e114b11113dbafd6f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177476"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693259"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -96,7 +96,7 @@ Uygulama ağ geçitlerini yönetmek ve sorunlarını gidermek için Azure 'da fa
 
 * **Etkinlik günlüğü**: Azure aboneliğinize gönderilen tüm işlemleri ve bunların durumunu görüntülemek için [Azure etkinlik günlüklerini](../monitoring-and-diagnostics/insights-debugging-with-events.md) (eski adıyla işlemsel Günlükler ve denetim günlükleri olarak bilinir) kullanabilirsiniz. Etkinlik günlüğü girişleri varsayılan olarak toplanır ve bunları Azure portalda görüntüleyebilirsiniz.
 * **Erişim günlüğü**: Bu günlüğü, Application Gateway erişim düzenlerini görüntülemek ve önemli bilgileri çözümlemek için kullanabilirsiniz. Bu, arayanın IP, istenen URL, yanıt gecikmesi, dönüş kodu ve gelen ve giden baytları içerir. Bir erişim günlüğü her 300 saniyede toplanır. Bu günlük Application Gateway örneği başına bir kayıt içerir. Application Gateway örneği InstanceId özelliği tarafından tanımlanır.
-* **Performans günlüğü**: Bu günlüğü, Application Gateway örneklerinin nasıl çalıştığını görüntülemek için kullanabilirsiniz. Bu günlük, her bir örnek için performans bilgilerini, sunulan toplam istek sayısı, bayt cinsinden aktarım hızı, sunulan toplam istek sayısı, başarısız istek sayısı, sağlıklı ve sağlıksız arka uç örnek sayısı dahil olmak üzere yakalar. Performans günlüğü her 60 saniyede toplanır.
+* **Performans günlüğü**: Bu günlüğü, Application Gateway örneklerinin nasıl çalıştığını görüntülemek için kullanabilirsiniz. Bu günlük, her bir örnek için performans bilgilerini, sunulan toplam istek sayısı, bayt cinsinden aktarım hızı, sunulan toplam istek sayısı, başarısız istek sayısı, sağlıklı ve sağlıksız arka uç örnek sayısı dahil olmak üzere yakalar. Performans günlüğü her 60 saniyede toplanır. Performans günlüğü yalnızca v1 SKU 'SU için kullanılabilir. V2 SKU 'SU için performans verileri [ölçümlerini](application-gateway-metrics.md) kullanın.
 * **Güvenlik duvarı günlüğü**: Web uygulaması güvenlik duvarıyla yapılandırılmış bir uygulama ağ geçidinin algılama veya önleme modu aracılığıyla günlüğe kaydedilen istekleri görüntülemek için bu günlüğü kullanabilirsiniz.
 
 > [!NOTE]
@@ -112,11 +112,11 @@ Günlüklerinizi depolamak için kullanabileceğiniz üç seçenek vardır:
 
 Etkinlik günlüğü tüm Kaynak Yöneticisi kaynakları için otomatik olarak etkinleştirilir. Bu Günlükler aracılığıyla kullanılabilir verileri toplamaya başlamak için erişim ve performans günlüğünü etkinleştirmeniz gerekir. Günlüğe kaydetmeyi etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. Günlük verilerinin depolandığı depolama hesabınızın kaynak kimliğini not edin. Bu değer şu biçimdedir:/Subscriptions/\<Subscriptionıd @ no__t-1/resourceGroups/\<resource Group Name @ no__t-3/Providers/Microsoft. Storage/storageAccounts/\<storage hesabı adı @ no__t-5. Aboneliğinizdeki herhangi bir depolama hesabını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz.
+1. Günlük verilerinin depolandığı depolama hesabınızın kaynak kimliğini not edin. Bu değer şu biçimdedir:/Subscriptions/\<subscriptionId \>/resourceGroups/\<resource grup adı \>/providers/Microsoft.Storage/storageAccounts/\<storage hesap adı \>. Aboneliğinizdeki herhangi bir depolama hesabını kullanabilirsiniz. Bu bilgileri Azure portalda bulabilirsiniz.
 
     ![Portal: depolama hesabı için kaynak KIMLIĞI](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Uygulama ağ geçidinizin etkin olan kaynak KIMLIĞI ' ne göz atalım. Bu değer şu biçimdedir:/Subscriptions/\<Subscriptionıd @ no__t-1/resourceGroups/\<resource Group Name @ no__t-3/Providers/Microsoft. Network/Applicationgateway/\<application Gateway Name @ no__t-5. Bu bilgileri portalda bulabilirsiniz.
+2. Uygulama ağ geçidinizin etkin olan kaynak KIMLIĞI ' ne göz atalım. Bu değer şu biçimdedir:/Subscriptions/\<subscriptionId \>/resourceGroups/\<resource grup adı \>/providers/Microsoft.Network/applicationGateways/\<application ağ geçidi adı \>. Bu bilgileri portalda bulabilirsiniz.
 
     ![Portal: uygulama ağ geçidi için kaynak KIMLIĞI](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -252,7 +252,7 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 
 ### <a name="performance-log"></a>Performans günlüğü
 
-Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her bir Application Gateway örneği üzerinde etkinleştirdiyseniz oluşturulur. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Performans günlüğü verileri 1 dakikalık aralıklarla oluşturulur. Aşağıdaki veriler günlüğe kaydedilir:
+Performans günlüğü, yalnızca, önceki adımlarda açıklandığı gibi her bir Application Gateway örneği üzerinde etkinleştirdiyseniz oluşturulur. Veriler, günlüğü etkinleştirdiğinizde belirttiğiniz depolama hesabında depolanır. Performans günlüğü verileri 1 dakikalık aralıklarla oluşturulur. Yalnızca v1 SKU 'SU için kullanılabilir. V2 SKU 'SU için performans verileri [ölçümlerini](application-gateway-metrics.md) kullanın. Aşağıdaki veriler günlüğe kaydedilir:
 
 
 |Değer  |Açıklama  |
