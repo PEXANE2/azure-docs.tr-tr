@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960566"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679865"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
 
@@ -24,12 +24,12 @@ Bu makalede nasıl yapılacağı gösterilmektedir:
 - Azure IoT gezgin aracını yükleyip yapılandırın.
 - Cihazlarınızla etkileşim kurmak ve bunları test etmek için aracını kullanın.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure IoT gezgin aracını kullanmak için şunlar gerekir:
 
 - Azure IoT Hub 'ı. Azure aboneliğinize Azure [CLI kullanarak](../iot-hub/iot-hub-create-using-cli.md)IoT Hub 'ı oluşturma gibi bir IoT Hub 'ı eklemenin birçok yolu vardır. Azure IoT gezgin aracını çalıştırmak için IoT Hub bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz. @No__t-0 ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
+- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz. @No__t_0 ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -65,7 +65,7 @@ Kaynak önceliklerini değiştirin:
 
 Model tanımı kaynaklarından birini, listedeki farklı bir derecelendirmeye sürükleyip bırakabilirsiniz. Bir çakışma varsa, daha yüksek derecelendirici içeren tanım kaynakları, kaynakları daha düşük derecelendirimiyle geçersiz kılar.
 
-### <a name="view-devices"></a>Cihazları görüntüle
+### <a name="view-devices"></a>Cihazları görüntüleme
 
 Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz kimliklerini listeleyen **cihazlar** listesi sayfasını görüntüler. Daha fazla bilgi görmek için listedeki herhangi bir girdiyi genişletebilirsiniz.
 
@@ -73,27 +73,33 @@ Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz ki
 
 - Hub 'ınıza yeni bir cihaz kaydetmek için **Ekle** ' yi seçin. Ardından bir cihaz KIMLIĞI girin. Otomatik olarak kimlik doğrulama anahtarları oluşturmak ve hub 'ınız ile bağlantıyı etkinleştirmek için varsayılan ayarları kullanın.
 - Bir cihaz seçin ve ardından bir cihaz kimliğini silmek için **Sil** ' i seçin. Doğru cihaz kimliğini sildiğinizden emin olmak için bu eylemi tamamlamadan önce cihaz ayrıntılarını gözden geçirin.
-- @No__t-0 ve `interfaceID` ile sorgulayın. Cihazlarınızı sorgulamak için `capabilityID` veya `interfaceID` ' i bir parametre olarak ekleyin.
+- @No__t_0 ve `interfaceID` göre sorgulama. Cihazlarınızı sorgulamak için `capabilityID` ya da `interfaceID` bir parametre olarak ekleyin.
 
 ## <a name="interact-with-a-device"></a>Cihazla etkileşim kurma
 
-**CIHAZ** **kimliği** sütununda, kayıtlı cihazın ayrıntı sayfasını görüntülemek için bir değer seçin. Cihaz için iki bölüm vardır: **Device** ve **Digital ikizi**.
+**CIHAZ** **kimliği** sütununda, kayıtlı cihazın ayrıntı sayfasını görüntülemek için bir değer seçin. Her bir cihaz için iki bölüm vardır: **Device** ve **Digital ikizi**.
 
 ### <a name="device"></a>Cihaz
 
-Bu bölüm, **cihaz kimliği**, **cihaz ikizi**ve **telemetri** sekmelerini içerir.
+Bu bölüm **cihaz kimliği**, **cihaz ikizi**, **telemetri**, **doğrudan yöntem** ve **buluttan cihaza ileti** sekmelerini içerir.
 
 - [Cihaz kimlik bilgilerini](../iot-hub/iot-hub-devguide-identity-registry.md) **cihaz kimliği** sekmesinden görüntüleyebilir ve güncelleştirebilirsiniz.
 - Device [ikizi](../iot-hub/iot-hub-devguide-device-twins.md) bilgilerine **Device ikizi** sekmesinden erişebilirsiniz.
 - Bir cihaz bağlıysa ve etkin bir şekilde veri [gönderiyorsanız telemetri '](../iot-hub/iot-hub-devguide-messages-read-builtin.md) i **telemetri** sekmesinden görüntüleyebilirsiniz.
+- Doğrudan **Yöntem** sekmesinde cihazda [doğrudan yöntem](../iot-hub/iot-hub-devguide-direct-methods.md) çağırabilirsiniz.
+- Buluttan cihaza **iletiler** sekmesinden [buluta cihaz iletisi](../iot-hub/iot-hub-devguide-messages-c2d.md) gönderebilirsiniz.
 
 ### <a name="digital-twin"></a>Dijital ikizi
 
-Aracı bir görüntüleme dijital ikizi örneğine yönelik olarak kullanabilirsiniz. IoT Tak ve Kullan cihazında cihaz yetenek modeliyle ilişkili tüm arabirimler bu makalede görüntülenir. Karşılık gelen [ıot Tak ve Kullan temel](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)öğelerini genişletmek için bir arabirim seçin.
+Aracı bir görüntüleme dijital ikizi örneğine yönelik olarak kullanabilirsiniz. IoT Tak ve Kullan cihazında cihaz yetenek modeliyle ilişkili tüm arabirimler aracın bu bölümünde görüntülenir. Karşılık gelen [ıot Tak ve Kullan temel](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)öğelerini genişletmek için bir arabirim seçin.
+
+### <a name="interface"></a>Arayüz
+
+**Arabirim** sayfasında, arabirimin JSON tanımını görüntüleyebilirsiniz.
 
 #### <a name="properties"></a>Özellikler
 
-**Özellikler** sayfasındaki bir arabirimde tanımlanmış salt okuma özelliklerini görüntüleyebilirsiniz. **Yazılabilir** Özellikler sayfasındaki bir arabirimde tanımlanan yazılabilir özellikleri güncelleştirebilirsiniz.
+**Yazılabilir olmayan özellikler** sayfasındaki bir arabirimde tanımlanmış salt okuma özelliklerini görüntüleyebilirsiniz. **Yazılabilir** Özellikler sayfasındaki bir arabirimde tanımlanan yazılabilir özellikleri güncelleştirebilirsiniz:
 
 1. **Yazılabilir Özellikler** sayfasına gidin.
 1. Güncelleştirmek istediğiniz özelliğe tıklayın.

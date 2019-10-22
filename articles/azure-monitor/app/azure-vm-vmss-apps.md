@@ -1,20 +1,18 @@
 ---
 title: Azure VM ve Azure sanal makine ölçek kümelerinde barındırılan uygulama performansını izleme | Microsoft Docs
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/26/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 3b100fb4d7dfa03cfcc828180f2ca63f7219f610
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 08/26/2019
+ms.openlocfilehash: 4eb515d63d746e2f1f0b96431848a8b450d09358
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389923"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678211"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 

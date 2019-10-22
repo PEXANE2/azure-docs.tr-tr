@@ -1,23 +1,19 @@
 ---
 title: Web uygulamanızı çok adımlı Web testleri ve Azure Application Insights izleyin | Microsoft Docs
 description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlama
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 07/25/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881436"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678229"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -26,12 +22,12 @@ ms.locfileid: "68881436"
 > [!NOTE]
 > Çok adımlı Web testleri, Visual Studio WebTest dosyalarına bağımlıdır. Visual Studio 2019 ' nin, WebTest işlevselliğiyle ilgili son sürüm olacağı [duyurulmuştur](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) . Yeni özellik eklenmadığında, Visual Studio 2019 ' deki WebTest işlevinin hala desteklenmekte olduğunu ve ürünün destek yaşam döngüsü sırasında desteklenmeye devam edecek olduğunu anlamak önemlidir. Azure Izleyici ürün ekibi, [buradaki](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)çok adımlı kullanılabilirlik testlerinin geleceği hakkında sorular buldu.  
 
-## <a name="pre-requisites"></a>Ön koşullar
+## <a name="pre-requisites"></a>Önkoşullar
 
 * Visual Studio 2017 Enterprise veya üzeri.
 * Visual Studio Web performansı ve yük testi araçları.
 
-Test araçlarını önkoşul olarak belirlemek için. **Hata ayıklama ve** > **Web performansını ve yük testi araçlarını**test etmek **Visual Studio yükleyicisi** > **bireysel bileşenleri** > başlatın.
+Test araçlarını önkoşul olarak belirlemek için. **Web performans ve yük testi araçları** > **hata ayıklama ve test etme**  > **bireysel bileşenleri**  >  **Visual Studio yükleyicisi** başlatın.
 
 ![Web performans ve yük testi araçları için öğenin yanında bir onay kutusu ile seçili tek bileşenlere sahip Visual Studio Installer Kullanıcı arabiriminin ekran görüntüsü](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -48,11 +44,11 @@ Test araçlarını önkoşul olarak belirlemek için. **Hata ayıklama ve** > **
 
 Web oturumu kaydetmek için Visual Studio Enterprise kullanın.
 
-1. Web performansı ve yük testi projesi oluşturun. **Dosya** > **Yeni**projegörseltesti >  >   > **C#**
+1. Web performansı ve yük testi projesi oluşturun. **Dosya**  > **Yeni**  > **projesi**  > **görsel C#**   > **Test**
 
     ![Visual Studio yeni proje Kullanıcı arabirimi](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
-2. `.webtest` Dosyayı açın ve kaydetmeye başlayın.
+2. @No__t_0 dosyasını açın ve kaydetmeye başlayın.
 
     ![Visual Studio test kaydı kullanıcı arabirimi](./media/availability-multistep/open-web-test.png)
 
@@ -73,7 +69,7 @@ Web oturumu kaydetmek için Visual Studio Enterprise kullanın.
 
 ## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 
-1. Kullanılabilirlik bölmesindeki Application Insights portalında, **Test** > **test türü** > **çoklu adım Web testi**oluştur ' u seçin.
+1. Kullanılabilirlik bölmesindeki Application Insights portalında,**çok adımlı Web testi** >  test  > **test türü** **Oluştur** ' u seçin.
 
 2. Test konumlarını, sıklığını ve uyarı parametrelerini ayarlayın.
 
@@ -98,7 +94,7 @@ Web oturumu kaydetmek için Visual Studio Enterprise kullanın.
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile test konumlarından oluşan** **Uyarı konum eşiği** = sayısıdır-2.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile, test konumu sayısı-2**  =  **Uyarı konum eşiği** ' dir.|
 
 ## <a name="advanced-configuration"></a>Gelişmiş Yapılandırma
 
@@ -142,7 +138,7 @@ Her durumda, uygulamanızda yalnızca test amacıyla bir hesap oluşturmalısın
 |----|-----|
 | Hedef kitle Uri 'Si | SAML belirteci için hedef kitle URI 'SI.  Bu, ACS ad alanı ve ana bilgisayar adı da dahil olmak üzere Access Control Service (ACS) URI 'sidir. |
 | Sertifika parolası | Katıştırılmış özel anahtara erişim sağlayacak istemci sertifikası parolası. |
-| İstemci Sertifikası  | Base64 kodlamalı biçimde özel anahtara sahip istemci sertifikası değeri. |
+| İstemci sertifikası  | Base64 kodlamalı biçimde özel anahtara sahip istemci sertifikası değeri. |
 | Ad tanımlayıcısı | Belirtecin ad tanımlayıcısı |
 | Sonra değil | Belirtecin geçerli olacağı TimeSpan.  Varsayılan değer 5 dakikadır. |
 | Önce değil | Geçmişte oluşturulan belirtecin geçerli olacağı TimeSpan değeri geçerli olacaktır (zaman eğilerini gidermek için).  Varsayılan değer (negatif) 5 dakikadır. |

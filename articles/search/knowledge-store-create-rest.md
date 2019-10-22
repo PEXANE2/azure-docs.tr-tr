@@ -7,12 +7,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244458"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678451"
 ---
 # <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>REST kullanarak Azure Search bilgi deposu oluşturma
 
@@ -30,7 +30,7 @@ Aşağıdaki hizmetleri oluşturun:
 
 - Örnek verileri ve bilgi deposunu depolamak için bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) oluşturun. Depolama hesabınızın Azure Search hizmetiniz için aynı konumu (ABD-Batı) kullanması gerekir. **Hesap türü** Için değer **StorageV2 (genel amaçlı v2)** (varsayılan) veya **depolama (genel amaçlı v1)** olmalıdır.
 
-- Önerilir: Azure Search istek göndermek için [Postman masaüstü uygulamasını](https://www.getpostman.com/) alın. REST API, HTTP istekleri ve yanıtları ile çalışmayan herhangi bir araçla birlikte kullanabilirsiniz. Postman REST API 'Leri keşfetmek için iyi bir seçimdir. Bu makalede Postman kullanıyoruz. Ayrıca, bu makaleye ait [kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) Isteklerin bir Postman koleksiyonunu içerir. 
+- Önerilir: Azure Search istek göndermek için [Postman masaüstü uygulamasını](https://www.getpostman.com/) alın. REST API, HTTP istekleri ve yanıtları ile çalışmayan herhangi bir araçla birlikte kullanabilirsiniz. Postman REST API 'Leri keşfetmek için iyi bir seçimdir. Bu makalede Postman kullanıyoruz. Ayrıca, bu makaleye ait [kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) Isteklerin bir Postman koleksiyonunu içerir. 
 
 ## <a name="store-the-data"></a>Verileri depolama
 
@@ -46,11 +46,11 @@ Bir Azure Search Indexer tarafından erişilebilmesi ve AI zenginleştirme ardı
 1. Blob kapsayıcısını oluşturmak için **Tamam ' ı** seçin.
 1. Yeni **oteller-gözden geçirme** kapsayıcısını açın, **karşıya yükle**' yi seçin ve ardından ilk adımda indirdiğiniz HotelReviews-Free. csv dosyasını seçin.
 
-    ![Karşıya veri yükleme](media/knowledge-store-create-portal/upload-command-bar.png "otel incelemelerini karşıya yükleyin")
+    ![Verileri karşıya yükleme](media/knowledge-store-create-portal/upload-command-bar.png "Otel incelemelerini karşıya yükleyin")
 
 1. CSV dosyasını Azure Blob depolamaya aktarmak için **karşıya yükle** ' yi seçin. Yeni kapsayıcı gösterilir:
 
-    Blob ![kapsayıcısını oluşturma blob](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "kapsayıcısını oluşturma")
+    ![Blob kapsayıcısını oluşturma](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Blob kapsayıcısını oluşturma")
 
 ## <a name="configure-postman"></a>Postman'i yapılandırma
 
@@ -63,12 +63,12 @@ Postman yükleme ve ayarlama.
 1. **Koleksiyonlar** sekmesini seçin ve ardından **...** (üç nokta) düğmesini seçin.
 1. **Düzenle**’yi seçin. 
    
-   ![Gezinmeyi gösteren Postman uygulaması](media/knowledge-store-create-rest/postman-edit-menu.png "Postman 'da Düzenle menüsüne git")
+   ![Gezintiyi gösteren Postman uygulaması](media/knowledge-store-create-rest/postman-edit-menu.png "Postman 'daki düzenleme menüsüne git")
 1. **Düzenle** Iletişim kutusunda **değişkenler** sekmesini seçin. 
 
 **Değişkenler** sekmesinde, Postman 'ın her bir çift küme içinde belirli bir değişkenle karşılaştığı her seferinde takas eden değerler ekleyebilirsiniz. Örneğin Postman `{{admin-key}}` sembolünü `admin-key` için ayarladığınız geçerli değerle değiştirir. Postman, URL 'Lerde, üst bilgilerde, istek gövdesinde vb. değişiklik yapar. 
 
-@No__t-0 ' a ait değeri almak için, Azure Search hizmetine gidin ve **anahtarlar** sekmesini seçin. `search-service-name` ve `storage-account-name` ' ü, [Hizmetler oluşturma](#create-services)bölümünde seçtiğiniz değerlere değiştirin. Depolama hesabının **erişim anahtarları** sekmesindeki değeri kullanarak `storage-connection-string` olarak ayarlayın. Diğer değerler için varsayılan değerleri bırakabilirsiniz.
+@No__t_0 değerini almak için, Azure Search hizmetine gidin ve **anahtarlar** sekmesini seçin. `search-service-name` ve `storage-account-name`, [Hizmetler oluşturma](#create-services)bölümünde seçtiğiniz değerlere değiştirin. Depolama hesabının **erişim anahtarları** sekmesindeki değeri kullanarak `storage-connection-string` olarak ayarlayın. Diğer değerler için varsayılan değerleri bırakabilirsiniz.
 
 ![Postman uygulama değişkenleri sekmesi](media/knowledge-store-create-rest/postman-variables-window.png "Postman 'ın değişkenler penceresi")
 
@@ -95,7 +95,7 @@ Bir bilgi deposu oluştururken dört HTTP isteği vermelisiniz:
 - **Beceri oluşturma isteği**: Beceri, verilerinize ve bilgi deposunun yapısına uygulanan zenginleştirme bilgilerini belirtir.
 - **Dizin oluşturucuyu oluşturma Isteği koy**: Dizin oluşturucuyu çalıştırmak, verileri okur, Beceri uygular ve sonuçları depolar. Bu isteği en son çalıştırmanız gerekir.
 
-[Kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) , dört isteği olan bir Postman koleksiyonu içerir. İstekleri vermek için, Postman 'da istek için sekmeyi seçin. Sonra, `api-key` ve `Content-Type` istek üst bilgilerini ekleyin. @No__t-0 değerini `{{admin-key}}` olarak ayarlayın. @No__t-0 değerini `application/json` olarak ayarlayın. 
+[Kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) , dört isteği olan bir Postman koleksiyonu içerir. İstekleri vermek için, Postman 'da istek için sekmeyi seçin. Sonra, `api-key` ve `Content-Type` istek üst bilgilerini ekleyin. @No__t_0 değerini `{{admin-key}}` olarak ayarlayın. Değer `Content-type` `application/json` olarak ayarlayın. 
 
 ![Üst bilgiler için Postman arabirimini gösteren ekran görüntüsü](media/knowledge-store-create-rest/postman-headers-ui.png)
 
@@ -105,7 +105,7 @@ Bir bilgi deposu oluştururken dört HTTP isteği vermelisiniz:
 
 ## <a name="create-an-azure-search-index"></a>Bir Azure Search dizini oluşturma
 
-Arama, filtreleme ve geliştirmeleri uygulama hakkında ilgilendiğiniz verileri temsil etmek için bir Azure Search dizini oluşturun. @No__t-0 ' a bir PUT isteği vererek dizini oluşturun. Postman, bir çift küme ayracı (`{{search-service-name}}`, `{{index-name}}` ve `{{api-version}}`), [Postman yapılandırma](#configure-postman)bölümünde ayarladığınız değerlerle değiştirir. REST komutlarınızı vermek için farklı bir araç kullanıyorsanız, bu değişkenleri kendiniz yerine kullanmalısınız.
+Arama, filtreleme ve geliştirmeleri uygulama hakkında ilgilendiğiniz verileri temsil etmek için bir Azure Search dizini oluşturun. @No__t_0 için bir PUT isteği yayımlayarak dizini oluşturun. Postman, bir çift küme ayracı (`{{search-service-name}}`, `{{index-name}}` ve `{{api-version}}`), [Postman yapılandırma](#configure-postman)bölümünde ayarladığınız değerlerle değiştirir. REST komutlarınızı vermek için farklı bir araç kullanıyorsanız, bu değişkenleri kendiniz yerine kullanmalısınız.
 
 İsteğin gövdesinde Azure Search dizininizin yapısını ayarlayın. Postman 'da, `api-key` ve `Content-type` üst bilgilerini ayarladıktan sonra, isteğin **gövde** bölmesine gidin. Aşağıdaki JSON 'ı görmeniz gerekir. Aksi takdirde, **ham** > **JSON (Application/JSON)** öğesini seçin ve ardından aşağıdaki kodu gövde olarak yapıştırın:
 
@@ -144,11 +144,11 @@ Arama, filtreleme ve geliştirmeleri uygulama hakkında ilgilendiğiniz verileri
 
 Bu dizin tanımı, kullanıcıya sunmak istediğiniz verilerin bir birleşimidir (otel adı, içeriği gözden geçirin, tarihi), arama meta verileri ve AI geliştirme verileri (yaklaşım, Keyphrases ve dil).
 
-PUT isteğini vermek için **Gönder** ' i seçin. @No__t-0 durumunu görmeniz gerekir. Farklı bir durum görürseniz, **gövde** bölmesinde bir hata ILETISI içeren JSON yanıtı olup olmadığına bakın. 
+PUT isteğini vermek için **Gönder** ' i seçin. Durum `201 - Created` görmeniz gerekir. Farklı bir durum görürseniz, **gövde** bölmesinde bir hata ILETISI içeren JSON yanıtı olup olmadığına bakın. 
 
 ## <a name="create-the-datasource"></a>Veri kaynağını oluşturma
 
-Sonra, [verileri depolamak](#store-the-data)için depoladığınız otel verilerine Azure Search bağlayın. Veri kaynağını oluşturmak için `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` ' a bir POST isteği gönderin. @No__t-0 ve `Content-Type` üst bilgilerini daha önce anlatıldığı gibi ayarlamanız gerekir. 
+Sonra, [verileri depolamak](#store-the-data)için depoladığınız otel verilerine Azure Search bağlayın. Veri kaynağını oluşturmak için `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` ' a bir POST isteği gönderin. Daha önce anlatıldığı gibi `api-key` ve `Content-Type` üst bilgilerini ayarlamanız gerekir. 
 
 Postman 'da, **veri kaynağı oluştur** isteğine ve sonra **gövde** bölmesine gidin. Aşağıdaki kodu görmeniz gerekir:
 
@@ -166,11 +166,11 @@ POST isteğini vermek için **Gönder** ' i seçin.
 
 ## <a name="create-the-skillset"></a>Beceri oluşturma 
 
-Sonraki adım, uygulanacak geliştirmeleri ve sonuçların depolanacağı bilgi deposunu belirten beceri belirtmektir. Postman 'da **beceri oluştur** sekmesini seçin. Bu istek `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` ' e bir PUT gönderir. @No__t-0 ve `Content-type` üst bilgilerini daha önce yaptığınız gibi ayarlayın. 
+Sonraki adım, uygulanacak geliştirmeleri ve sonuçların depolanacağı bilgi deposunu belirten beceri belirtmektir. Postman 'da **beceri oluştur** sekmesini seçin. Bu istek `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}` ' e bir PUT gönderir. @No__t_0 ve `Content-type` üst bilgilerini daha önce yaptığınız gibi ayarlayın. 
 
-İki büyük üst düzey nesne vardır: `skills` ve `knowledgeStore`. @No__t-0 nesnesi içindeki her nesne bir zenginleştirme hizmetidir. Her bir zenginleştirme hizmeti `inputs` ve `outputs` ' dir. @No__t-0 ' a `Language` ' den bir çıkış @no__t vardır. Bu düğümün değeri, diğer yeteneklerin çoğu tarafından giriş olarak kullanılır. Kaynak `document/Language` ' dır. Bir düğümün başka birine girdi olarak nasıl kullanılacağı özelliği, verilerin bilgi deposunun tablolarına nasıl akacağını belirten `ShaperSkill` ' ın daha da az olması anlamına gelir.
+İki büyük üst düzey nesne vardır: `skills` ve `knowledgeStore`. @No__t_0 nesne içindeki her nesne bir zenginleştirme hizmetidir. Her bir zenginleştirme hizmeti `inputs` ve `outputs` ' dir. @No__t_0, `Language` çıkış `targetName` sahiptir. Bu düğümün değeri, diğer yeteneklerin çoğu tarafından giriş olarak kullanılır. Kaynak `document/Language` ' dır. Bir düğümün başka birine girdi olarak nasıl kullanılacağı özelliği, verilerin bilgi deposunun tablolarına nasıl akacağını belirten `ShaperSkill` ' ın daha da az olması anlamına gelir.
 
-@No__t-0 nesnesi, `{{storage-connection-string}}` Postman değişkeni aracılığıyla depolama hesabına bağlanır. `knowledge_store`, bilgi deposundaki geliştirilmiş belge ve tablolar ile sütunlar arasında bir eşleme kümesi içerir. 
+@No__t_0 nesnesi, `{{storage-connection-string}}` Postman değişkeni aracılığıyla depolama hesabına bağlanır. `knowledge_store`, bilgi deposundaki geliştirilmiş belge ve tablolar ile sütunlar arasında bir eşleme kümesi içerir. 
 
 Beceri oluşturmak için Postman 'daki **Gönder** düğmesini seçerek isteği yerleştirin:
 
@@ -304,9 +304,9 @@ Beceri oluşturmak için Postman 'daki **Gönder** düğmesini seçerek isteği 
 
 Son adım, Dizin oluşturucuyu oluşturmaktır. Dizin Oluşturucu verileri okur ve beceri etkinleştirir. Postman 'da **Dizin oluşturma Isteği oluştur** ' u seçin ve ardından gövdesini gözden geçirin. Dizin oluşturucunun tanımı, zaten oluşturduğunuz diğer birkaç kaynağa başvurur: veri kaynağı, dizin ve beceri. 
 
-@No__t-0 nesnesi, dizin oluşturucunun verileri nasıl geri gediğini denetler. Bu durumda, giriş verileri, üst bilgi satırı ve virgülle ayrılmış değerler içeren tek bir belgedir. Belge anahtarı belge için benzersiz bir tanımlayıcıdır. Kodlamadan önce belge anahtarı kaynak belgenin URL 'sidir. Son olarak, dil kodu, yaklaşım ve anahtar ifadeler gibi beceri çıkış değerleri belgedeki konumlarına eşlenir. @No__t-0 için tek bir değer olsa da, `Sentiment` `pages` dizisindeki her öğeye uygulanır. `Keyphrases`, `pages` dizisindeki her öğe için de uygulanan bir dizidir.
+@No__t_0 nesnesi, dizin oluşturucunun verileri nasıl geri gediğini denetler. Bu durumda, giriş verileri, üst bilgi satırı ve virgülle ayrılmış değerler içeren tek bir belgedir. Belge anahtarı belge için benzersiz bir tanımlayıcıdır. Kodlamadan önce belge anahtarı kaynak belgenin URL 'sidir. Son olarak, dil kodu, yaklaşım ve anahtar ifadeler gibi beceri çıkış değerleri belgedeki konumlarına eşlenir. @No__t_0 için tek bir değer olsa da, `Sentiment` `pages` dizisindeki her öğeye uygulanır. `Keyphrases`, `pages` dizisindeki her öğe için de uygulanan bir dizidir.
 
-@No__t-0 ve `Content-type` üst bilgilerini ayarladıktan ve isteğin gövdesinin aşağıdaki kaynak koda benzediğini doğruladıktan sonra Postman 'da **Gönder** ' i seçin. Postman `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` ' a bir PUT isteği gönderir. Azure Search Dizin oluşturucuyu oluşturup çalıştırır. 
+@No__t_0 ve `Content-type` üst bilgilerini ayarladıktan ve isteğin gövdesinin aşağıdaki kaynak koda benzediğini doğruladıktan sonra Postman 'da **Gönder** ' i seçin. Postman `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` ' a bir PUT isteği gönderir. Azure Search Dizin oluşturucuyu oluşturup çalıştırır. 
 
 ```json
 {

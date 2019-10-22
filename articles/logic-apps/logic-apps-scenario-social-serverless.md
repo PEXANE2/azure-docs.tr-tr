@@ -1,5 +1,5 @@
 ---
-title: Sunucusuz senaryo-Azure hizmetleri ile müşteri öngörüleri panosu oluşturma | Microsoft Docs
+title: Müşteri öngörüleri panosu oluşturma-Azure Logic Apps
 description: Azure Logic Apps ve Azure Işlevleri ile bir müşteri panosu oluşturarak müşteri geri bildirimlerini, sosyal medya verilerini ve daha fazlasını yönetin
 services: logic-apps
 ms.service: logic-apps
@@ -7,17 +7,16 @@ ms.suite: integration
 author: jeffhollan
 ms.author: jehollan
 ms.reviewer: estfan, LADocs
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c9c5cf9c56f2e22faa973c983c6fd81733119daa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164875"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680117"
 ---
-# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps ve Azure Işlevleri ile akış müşteri öngörüleri panosu oluşturma
 
 Azure, altyapı hakkında düşünmenize gerek kalmadan, uygulamaları bulutta hızlı bir şekilde oluşturup barındırmanıza yardımcı olan [sunucusuz](https://azure.microsoft.com/solutions/serverless/) araçlar sunar. Bu öğreticide, müşteri geri bildirimlerinden tetiklenen, Machine Learning ile geri bildirimleri çözümleyen ve Power BI veya Azure Data Lake gibi bir kaynakta Öngörüler yayımlayan bir pano oluşturabilirsiniz.
 
@@ -34,7 +33,7 @@ Bu senaryoda, müşterilerden geri bildirim bulmayı tetikleyen bir mantıksal u
 
    Logic Apps 'e yeni başladıysanız, Azure portal veya [Visual Studio hızlı](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)başlangıcı [için hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md) başlangıcı inceleyin.
 
-2. Mantıksal uygulama Tasarımcısı ' nda, bu eyleme sahip Twitter tetikleyicisini bulun ve ekleyin: **Yeni bir tweet gönderildiğinde**
+2. Mantıksal uygulama Tasarımcısı ' nda, bu eyleme sahip Twitter tetikleyicisini bulun ve ekleyin: **Yeni bir tweet** gönderildiğinde
 
 3. Bir anahtar sözcük veya diyez etiketi temelinde çok fazla ara için dinleme yapmak üzere tetikleyiciyi ayarlayın.
 
@@ -60,10 +59,10 @@ Bazı metinlerin arkasındaki yaklaşımı algılamak için Azure bilişsel [Hiz
 
 Tweet hakkında tweet verilerini ve öngörülerini aldıktan sonra, artık diğer ilgili bağlayıcıları ve bunların eylemlerini kullanabilirsiniz:
 
-* **Power BI-akış veri kümesine satır ekleme**: Power BI panosunda gelen bağlı alanı görüntüleyin.
-* **Azure Data Lake-ekleme dosyası**: Analiz işlerine dahil etmek için bir Azure Data Lake veri kümesine müşteri verileri ekleyin.
-* **SQL-satır ekle**: Verileri daha sonra almak üzere bir veritabanında depolayın.
-* **Bolluk-Ileti gönder**: Eylem gerektirebilecek olumsuz geri bildirimler hakkında bir bolluk kanalına bildirim gönderin.
+* **Power BI-akış veri kümesine satır ekleme**: bir Power BI panosunda gelen çapraz doldurulabilir.
+* **Azure Data Lake-ekleme dosyası**: analiz işlerine dahil etmek için müşteri verilerini bir Azure Data Lake veri kümesine ekleyin.
+* **SQL-satır ekleme**: daha sonra almak üzere verileri bir veritabanında depolayın.
+* **Bolluk-Ileti gönder**: eylem gerektirebilecek olumsuz geri bildirimle Ilgili bir bolluk kanalına bildirme.
 
 Ayrıca, verileriniz üzerinde özel işlem gerçekleştirebilmeniz için bir Azure Işlevi de oluşturabilirsiniz. 
 

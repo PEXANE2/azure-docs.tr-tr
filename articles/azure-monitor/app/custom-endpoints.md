@@ -1,26 +1,22 @@
 ---
 title: Azure Izleyici-Azure Application Insights geçersiz kılma varsayılan SDK uç noktaları | Microsoft Docs
 description: Azure Kamu gibi bölgeler için varsayılan Azure Application Insights SDK uç noktalarını değiştirin.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/26/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 25087c5b3a078b740764f51a7780a24277d5c642
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/26/2019
+ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639570"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677489"
 ---
- # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
+# <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılmak Application Insights
 
-Application Insights verileri belirli bölgelere göndermek için varsayılan uç nokta adreslerini geçersiz kılmanız gerekir. Her SDK, hepsi bu makalede açıklanan biraz farklı değişiklik gerektirir. Bu değişiklikler, örnek kodu ayarlamayı ve,, ve `QuickPulse_Endpoint_Address` `Profile_Query_Endpoint_address` için yer tutucu değerlerini `TelemetryChannel_Endpoint_Address`, belirli bölgeniz için gerçek uç nokta adresleriyle değiştirmeyi gerektirir. Bu makalenin sonunda, bu yapılandırmanın gerekli olduğu bölgelere yönelik uç nokta adreslerinin bağlantıları bulunur.
+Application Insights verileri belirli bölgelere göndermek için varsayılan uç nokta adreslerini geçersiz kılmanız gerekir. Her SDK, hepsi bu makalede açıklanan biraz farklı değişiklik gerektirir. Bu değişiklikler, örnek kodu ayarlamayı ve `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` ve `Profile_Query_Endpoint_address` için yer tutucu değerlerini belirli bölgenizin gerçek uç nokta adresleriyle değiştirmeyi gerektirir. Bu makalenin sonunda, bu yapılandırmanın gerekli olduğu bölgelere yönelik uç nokta adreslerinin bağlantıları bulunur.
 
 ## <a name="sdk-code-changes"></a>SDK kodu değişiklikleri
 
@@ -62,7 +58,7 @@ Ana uç noktayı ayarlamak için projenizdeki appSettings. json dosyasını aşa
   }
 ```
 
-Canlı ölçümler ve profil sorgu uç noktası değerleri yalnızca kod aracılığıyla ayarlanabilir. Tüm uç nokta değerlerinin varsayılan değerlerini kod aracılığıyla geçersiz kılmak için, `ConfigureServices` `Startup.cs` dosyanın yönteminde aşağıdaki değişiklikleri yapın:
+Canlı ölçümler ve profil sorgu uç noktası değerleri yalnızca kod aracılığıyla ayarlanabilir. Tüm uç nokta değerlerinin varsayılan değerlerini kod aracılığıyla geçersiz kılmak için, `Startup.cs` dosyasının `ConfigureServices` yönteminde aşağıdaki değişiklikleri yapın:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -157,7 +153,7 @@ ApplicationInsights. xml dosyasını değiştirerek varsayılan uç nokta adresi
 
 ### <a name="spring-boot"></a>Spring Boot
 
-`application.properties` Dosyayı değiştirin ve ekleyin:
+@No__t_0 dosyasını değiştirin ve şunu ekleyin:
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
@@ -199,22 +195,22 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 Şu anda yalnızca uç nokta değişiklikleri gerektiren bölgeler [Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) ve [Azure Çin](https://docs.microsoft.com/azure/china/resources-developer-guide)' dir.
 
-|Bölge |  Uç nokta adı | Value |
+|Bölge |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
 | Azure Çin | Telemetri kanalı | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure Çin | QuickPulse (canlı ölçümler) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
 | Azure Çin | Profil sorgusu |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
-| Azure Kamu | Telemetri kanalı |`https://dc.applicationinsights.us/v2/track` |
-| Azure Kamu | QuickPulse (canlı ölçümler) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
-| Azure Kamu | Profil sorgusu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+| Azure Devlet Kurumları | Telemetri kanalı |`https://dc.applicationinsights.us/v2/track` |
+| Azure Devlet Kurumları | QuickPulse (canlı ölçümler) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Devlet Kurumları | Profil sorgusu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
-Şu anda [' api.applicationinsights.io ' aracılığıyla erişilen](https://dev.applicationinsights.io/
-) Application Insights REST API kullanıyorsanız, bölgeniz için yerel bir uç nokta kullanmanız gerekir:
+Şu anda ' api.applicationinsights.io ' aracılığıyla erişilen [Application Insights REST API](https://dev.applicationinsights.io/
+) kullanıyorsanız, bölgeniz için yerel bir uç nokta kullanmanız gerekir:
 
-|Bölge |  Uç nokta adı | Value |
+|Bölge |  Uç nokta adı | Değer |
 |-----------------|:------------|:-------------|
 | Azure Çin | REST API | `api.applicationinsights.azure.cn` |
-| Azure Kamu | REST API | `api.applicationinsights.us`|
+| Azure Devlet Kurumları | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Azure Uygulama Hizmetleri için codeless Aracısı/uzantısı tabanlı izleme şu **anda** bu bölgelerde desteklenmiyor. Bu işlevsellik kullanılabilir hale geldiğinde, bu makale güncelleştirilir.

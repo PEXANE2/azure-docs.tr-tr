@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 50059711df195c13ee44061ee4844f0192e0e10d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992092"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677249"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -29,7 +29,7 @@ Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim s
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
+## <a name="sign-in-to-azure-portal"></a>Azure portalında oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure portalı](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    * VM’lerinizin dağıtıldığı **Konum**’u seçin.  Ek bilgi için bkz. [Log Analytics’in sunulduğu bölgeler](https://azure.microsoft.com/regions/services/).
    * 2 Nisan 2018 tarihinden sonra oluşturulan yeni bir abonelikte çalışma alanı oluşturuyorsanız bu, otomatik olarak *GB başına* fiyatlandırma planını kullanır ve fiyatlandırma katmanı seçme seçeneği kullanılamaz.  2 Nisan’dan önce oluşturulmuş mevcut bir abonelik için veya mevcut bir EA kaydına bağlı aboneliğe yönelik çalışma alanı oluşturuyorsanız, tercih ettiğiniz fiyatlandırma katmanını seçin.  Katmanlar hakkında daha fazla bilgi için bkz. [Log Analytics Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. **Log Analytics çalışma alanı** bölmesinde gerekli bilgileri sağladıktan sonra **Tamam**' ı seçin.  
 
@@ -64,7 +64,7 @@ Windows için Log Analytics aracısını (Microsoft Monitoring Agent (MMA) olara
 
 3. **Gelişmiş ayarları**seçin:
 
-    ![Gelişmiş ayarları Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Gelişmiş ayarları Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. **Bağlı Kaynaklar**’ı seçin ve ardından **Windows Sunucuları**’nı seçin.
 
@@ -99,7 +99,7 @@ Aşağıdaki adımlar, Azure ve Azure Kamu 'daki Log Analytics için aracıyı y
 
 10. **Yapılandırma başarıyla tamamlandı** sayfasında **son**' u seçin.
 
-Yükleme ve Kurulum bittiğinde, Denetim Masası 'nda Microsoft Monitoring Agent görüntülenir. Yapılandırmanızı gözden geçirebilir ve aracının Log Analytics çalışma alanına bağlı olduğunu doğrulayabilirsiniz. Bağlandığınızda, **Azure Log Analytics** sekmesinde aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent, Microsoft Log Analytics hizmetine başarıyla bağlandı.**<br><br> ![MMA bağlantı durumu](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Yükleme ve Kurulum bittiğinde, Denetim Masası 'nda Microsoft Monitoring Agent görüntülenir. Yapılandırmanızı gözden geçirebilir ve aracının Log Analytics çalışma alanına bağlı olduğunu doğrulayabilirsiniz. Bağlandığınızda, **Azure Log Analytics** sekmesinde aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Microsoft Log Analytics hizmetine başarıyla bağlandı.**<br><br> ![MMA bağlantı durumu ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Olay ve performans verilerini toplama
 
@@ -109,7 +109,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için Windows olay günlü
 
 2. **Gelişmiş ayarları**seçin:
 
-    ![Gelişmiş ayarları Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png)
+    ![Gelişmiş ayarları Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. **Veri**’yi seçin ve ardından **Windows Olay Günlükleri**’ni seçin.  
 
@@ -129,13 +129,13 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için Windows olay günlü
 
 9. Sayfanın üst kısmındaki **Kaydet** ' i seçin.
 
-## <a name="view-collected-data"></a>Toplanan verileri görüntüleme
+## <a name="view-collected-data"></a>Toplanan verileri görüntüle
 
 Artık veri toplamayı etkinleştirdiğinizden, hedef bilgisayardan bazı verileri görmek için basit bir günlük araması çalıştıralım.  
 
 1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. Günlük sorgusu sayfasında, sorgu Düzenleyicisi ' `Perf` ni yazın ve **Çalıştır**' ı seçin.
+2. Günlükler sorgusu sayfasında sorgu Düzenleyicisi ' ne `Perf` yazın ve **Çalıştır**' ı seçin.
  
     ![Log Analytics günlük araması](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
@@ -157,7 +157,7 @@ Aracıyı kaldırmak için şu adımları izleyin:
 
 Daha önce oluşturduğunuz Log Analytics çalışma alanını silmek için, seçin ve kaynak sayfasında **Sil**' i seçin:
 
-![Log Analytics çalışma alanını silme](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+![Log Analytics çalışma alanını sil](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

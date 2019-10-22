@@ -1,6 +1,6 @@
 ---
-title: Grup veya koleksiyon olarak toplu işlem EDI iletileri Azure Logic Apps | Microsoft Docs
-description: Logic Apps 'te toplu işleme için EDI iletileri gönderin
+title: Grup Azure Logic Apps EDI iletilerini toplu işleme
+description: EDI iletilerini Azure Logic Apps içinde toplu işlemler, gruplar veya koleksiyonlar olarak gönderin ve alın
 services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: HT
+ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827425"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680175"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Azure Logic Apps ile EDI iletilerini toplu iş ortaklarına gönderin
 
@@ -55,24 +55,24 @@ Bir toplu işe ileti gönderebilmeniz için önce bu toplu işin önce bu iletil
 
 Bu toplu iş alıcısı için Batch modunu, adı, yayın ölçütünü, x12 sözleşmesini ve diğer ayarları belirtirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'da, şu ada sahip bir mantıksal uygulama oluşturun: "BatchX12Messages"
+1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'da şu ada sahip bir mantıksal uygulama oluşturun: "BatchX12Messages"
 
 2. [Mantıksal uygulamanızı tümleştirme hesabınıza bağlayın](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. Logic Apps tasarımcısında, mantıksal uygulama iş akışınızı başlatan **Batch** tetikleyicisini ekleyin. Arama kutusuna filtreniz olarak "Batch" yazın. Bu tetikleyiciyi seçin: **Batch iletileri**
+3. Logic Apps tasarımcısında, mantıksal uygulama iş akışınızı başlatan **Batch** tetikleyicisini ekleyin. Arama kutusuna filtreniz olarak "Batch" yazın. Şu tetikleyiciyi seçin: **Batch iletileri**
 
    ![Batch tetikleyicisi Ekle](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. Toplu iş alıcısı özelliklerini ayarlayın: 
 
-   | Özellik | Value | Notlar | 
+   | Özellik | Değer | Notlar | 
    |----------|-------|-------|
-   | **Toplu işlem modu** | Satır içi |  |  
+   | **Toplu işlem modu** | Çizgi |  |  
    | **Toplu iş adı** | TestBatch | Yalnızca **satır içi** Batch moduyla kullanılabilir | 
    | **Yayın ölçütleri** | İleti sayısı tabanlı, zamanlama tabanlı | Yalnızca **satır içi** Batch moduyla kullanılabilir | 
    | **İleti sayısı** | 10 | Yalnızca **ileti sayısı tabanlı** yayın ölçütlerine göre kullanılabilir | 
    | **Aralık** | 10 | Yalnızca **zamanlama tabanlı** yayın ölçütleriyle kullanılabilir | 
-   | **Sıklık** | dakika | Yalnızca **zamanlama tabanlı** yayın ölçütleriyle kullanılabilir | 
+   | **Sıklık** | dakikaya | Yalnızca **zamanlama tabanlı** yayın ölçütleriyle kullanılabilir | 
    ||| 
 
    ![Toplu tetikleyici ayrıntılarını sağlama](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)
@@ -84,7 +84,7 @@ Bu toplu iş alıcısı için Batch modunu, adı, yayın ölçütünü, x12 söz
 
    1. Batch tetikleyicisi altında **yeni adım**' ı seçin.
 
-   2. Arama kutusuna filtreniz olarak "x12 Batch" yazın ve bu eylemi (herhangi bir sürüm) seçin: **Toplu iş kodlama <*sürüm*>-x12** 
+   2. Arama kutusuna filtreniz olarak "x12 Batch" yazın ve bu eylemi (herhangi bir sürüm) seçin: **toplu kodlama <*Sürüm*>-x12** 
 
       ![X12 Batch kodlama eylemini seç](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -118,7 +118,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
 
 1. X12 encode eylemi altında **yeni adım**' ı seçin. 
 
-2. Arama kutusuna filtreniz olarak "http" yazın. Şu eylemi seçin: **HTTP-HTTP**
+2. Arama kutusuna filtreniz olarak "http" yazın. Şu eylemi seçin: **http-http**
     
    ![HTTP eylemi seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -126,7 +126,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
 
    | Özellik | Açıklama | 
    |----------|-------------|
-   | **Yöntemi** | Bu listeden **gönderi**' ı seçin. | 
+   | **Yöntem** | Bu listeden **gönderi**' ı seçin. | 
    | **Kullanılmamışsa** | İstek sepeti için bir URI oluşturun ve bu kutuya bu URI 'yi girin. | 
    | **Gövde** | Bu kutunun içine tıklayın ve dinamik içerik listesi açıldıktan sonra, **sözleşme adına göre toplu kodlama**bölümünde görüntülenen **gövde** belirtecini seçin. <p>**Gövde** belirtecini görmüyorsanız, **sözleşme adına göre Batch kodlama**' nın yanında, **daha fazla göster**' i seçin. | 
    ||| 
@@ -151,7 +151,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
 
 1. Şu adla başka bir mantıksal uygulama oluşturun: "SendX12MessagesToBatch" 
 
-2. Arama kutusuna filtreniz olarak "http isteği" yazın. Bu tetikleyiciyi seçin: **Bir HTTP isteği alındığında** 
+2. Arama kutusuna filtreniz olarak "http isteği" yazın. Bu tetikleyiciyi seçin: **BIR http isteği alındığında** 
    
    ![Istek tetikleyicisini ekleme](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +160,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
    1. HTTP isteği eylemi altında **yeni adım**' ı seçin.
 
    2. Arama kutusuna filtreniz olarak "Batch" yazın. 
-   **Eylemler** listesini seçin ve ardından şu eylemi seçin: **Batch tetikleyicisiyle Logic Apps iş akışı seçin-toplu iş 'e ileti gönderin**
+   **Eylemler** listesini seçin ve ardından şu eylemi seçin: **batch tetikleyicisiyle Logic Apps iş akışı seçme-toplu Iş 'e ileti gönderme**
 
       !["Batch tetikleyicisiyle Logic Apps iş akışı Seç" i seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -168,7 +168,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
 
       !["Batch alıcısı" mantıksal uygulamasını seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Şu eylemi seçin: **Batch_messages-<*Batch alıcılarınızı*>**
+   4. Şu eylemi seçin: **Batch_messages-*Batch-alıcıdan* < >**
 
       !["Batch_messages" eylemini seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

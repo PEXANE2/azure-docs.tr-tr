@@ -1,27 +1,25 @@
 ---
 title: Azure App Services performansını izleme | Microsoft Docs
 description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/04/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 10/04/2019
+ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286164"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677648"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
 [Azure Uygulama hizmetlerinde](https://docs.microsoft.com/azure/app-service/) çalışan ASP.NET ve ASP.NET Core tabanlı Web uygulamalarında izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
 
 > [!NOTE]
-> Application Insights bir site uzantısını @no__t **geliştirme araçları**aracılığıyla el ile ekleme-1**uzantıları** kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ' da bulunur ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
+> **Geliştirme araçları**  > **uzantıları** aracılığıyla Application Insights bir site uzantısının el ile eklenmesi kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ' da bulunur ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
@@ -119,7 +117,7 @@ Aşağıdaki .NET Core sürümleri desteklenir: ASP.NET Core 2,0, ASP.NET Core 2
 
 Bazı nedenlerle istemci tarafı izlemeyi devre dışı bırakmak istiyorsanız:
 
-* @No__t **ayarları**-1**uygulama ayarları** seçin
+* **Uygulama ayarları**  >  **ayarları** seçin
    * Uygulama ayarları ' nın altında yeni bir **uygulama ayarı adı** ve **değeri**ekleyin:
 
      ad: `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -304,7 +302,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 Çalıştırdığınız uzantının hangi sürümünün olduğunu denetlemek için `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-![URL yolunun @no__t ekran görüntüsü-0](./media/azure-web-apps/extension-version.png)
+![URL yolu http://yoursitename.scm.azurewebsites.net/ApplicationInsights ekran görüntüsü](./media/azure-web-apps/extension-version.png)
 
 ### <a name="upgrade-from-versions-100---265"></a>1\.0.0-2.6.5 sürümlerinden yükseltme
 
@@ -330,22 +328,22 @@ Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar
 > ASP.NET Core 3,0 uygulamaları desteklenmez. Lütfen ASP.NET Core 3,0 uygulamaları için kod aracılığıyla [el ile](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) izleme uygulayın.
 
 1. Uygulamanın `ApplicationInsightsAgent` ile izlenip izlenmediğini denetleyin.
-    * @No__t-0 uygulama ayarının "~ 2" değerine ayarlandığını denetleyin.
+    * @No__t_0 uygulama ayarının "~ 2" değerine ayarlandığını denetleyin.
 2. Uygulamanın izlenecek gereksinimleri karşıladığından emin olun.
-    * @No__t gidin-0
+    * @No__t_0 gidin
 
-    ![@No__t-0 sonuçları sayfasının ekran görüntüsü](./media/azure-web-apps/app-insights-sdk-status.png)
+    ![@No__t_0 sonuçları sayfasının ekran görüntüsü](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * @No__t-0 ' ın `Pre-Installed Site Extension, version 2.8.12.1527, is running.` olduğunu onaylayın
+    * @No__t_0 `Pre-Installed Site Extension, version 2.8.12.1527, is running.` olduğunu onaylayın
         * Çalışmıyorsa, [etkinleştirme Application Insights izleme yönergelerini](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights) izleyin
 
-    * Durum kaynağının var olduğunu ve şunun gibi göründüğünü onaylayın: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
+    * Durum kaynağının var olduğunu ve şu şekilde göründüğünü onaylayın: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * Benzer bir değer yoksa, uygulamanın Şu anda çalışmadığı veya desteklenmediği anlamına gelir. Uygulamanın çalıştığından emin olmak için, uygulama URL 'si/uygulama uç noktalarını el ile ziyaret etmeyi deneyin, bu, çalışma zamanı bilgilerinin kullanılabilir hale gelmesini sağlar.
 
-    * @No__t-0 `true` olduğunu onaylayın
+    * @No__t_0 `true` olduğunu onaylayın
         * Yanlış ise, uygulama ayarlarınıza ' APPINSIGHTS_INSTRUMENTATIONKEY ' ekleyin.
 
-    * @No__t-0, `AppContainsDiagnosticSourceAssembly` ve `AppContainsAspNetTelemetryCorrelationAssembly` için girdi olmadığını doğrulayın.
+    * @No__t_0, `AppContainsDiagnosticSourceAssembly` ve `AppContainsAspNetTelemetryCorrelationAssembly` için hiçbir giriş olmadığını doğrulayın.
         * Bu girdilerden herhangi biri mevcutsa, şu paketleri uygulamanızdan kaldırın: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource` ve `Microsoft.AspNet.TelemetryCorrelation`.
 
 Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri ve önerilen düzeltmeleri verilmiştir:
@@ -357,7 +355,7 @@ Aşağıdaki tabloda, bu değerlerin ne anlama geldiğini, temeldeki nedenleri v
 |`AppAlreadyInstrumented:true` | Bu değere, önceki bir dağıtımdan uygulama klasöründeki yukarıdaki dll 'lerin varlığı da neden olabilir. | Bu dll 'lerin kaldırıldığından emin olmak için uygulama klasörünü temizleyin. Hem yerel uygulamanızın bin dizinini hem de App Service Wwwroot dizinini denetleyin. (App Service Web uygulamanızın Wwwroot dizinini denetlemek için: Gelişmiş araçlar (kudu) > hata ayıklama Konsolu > CMD > home\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Bu değer, uzantının uygulamada `Microsoft.AspNet.TelemetryCorrelation` ' a başvurduğu ve geri dönecek olduğunu gösterir. | Başvuruyu kaldırın.
 |`AppContainsDiagnosticSourceAssembly**:true`|Bu değer, uzantının uygulamada `System.Diagnostics.DiagnosticSource` ' a başvurduğu ve geri dönecek olduğunu gösterir.| Başvuruyu kaldırın.
-|`IKeyExists:false`|Bu değer, `APPINSIGHTS_INSTRUMENTATIONKEY` AppSetting 'de izleme anahtarının mevcut olmadığını gösterir. Olası nedenler: değerler yanlışlıkla kaldırılmış olabilir, Otomasyon betikindeki değerleri ayarlamayı unuttu, vb. | Ayarın App Service uygulama ayarlarında bulunduğundan emin olun.
+|`IKeyExists:false`|Bu değer, `APPINSIGHTS_INSTRUMENTATIONKEY` AppSetting 'de izleme anahtarının bulunmadığını gösterir. Olası nedenler: değerler yanlışlıkla kaldırılmış olabilir, Otomasyon betikindeki değerleri ayarlamayı unuttu, vb. | Ayarın App Service uygulama ayarlarında bulunduğundan emin olun.
 
 ### <a name="appinsights_javascript_enabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED ve urlCompression desteklenmez
 

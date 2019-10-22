@@ -1,6 +1,6 @@
 ---
-title: B2B kurumsal tümleştirme için AS2 iletileri-Azure Logic Apps
-description: Enterprise Integration Pack ile Azure Logic Apps 'de Exchange AS2 iletileri
+title: B2B-Azure Logic Apps için AS2 iletileri gönderme ve alma
+description: Azure Logic Apps kullanarak B2B kurumsal tümleştirme senaryoları için Exchange AS2 iletileri
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1f063c0e8dada8eb6c4eee031764f6ca7dd3a91d
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656436"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680377"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange AS2 iletileri
 
@@ -54,7 +54,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 
 * Azure aboneliği. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* AS2 bağlayıcısını kullanmak istediğiniz mantıksal uygulama ve mantıksal uygulamanızın iş akışını başlatan bir tetikleyici. AS2 Bağlayıcısı, Tetikleyiciler değil yalnızca eylemler sağlar. Logic Apps 'e yeni başladıysanız [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç ' ı inceleyin: İlk mantıksal uygulamanızı](../logic-apps/quickstart-create-first-logic-app-workflow.md)oluşturun.
+* AS2 bağlayıcısını kullanmak istediğiniz mantıksal uygulama ve mantıksal uygulamanızın iş akışını başlatan bir tetikleyici. AS2 Bağlayıcısı, Tetikleyiciler değil yalnızca eylemler sağlar. Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin.
 
 * Azure aboneliğinizle ilişkili ve AS2 bağlayıcısını kullanmayı planladığınız mantıksal uygulamaya bağlı olan bir [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) . Hem mantıksal uygulamanız hem de tümleştirme hesabınız aynı konumda veya Azure bölgesinde bulunmalıdır.
 
@@ -76,7 +76,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 
 1. Tasarımcıda mantıksal uygulamanıza yeni bir eylem ekleyin.
 
-1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin. Arama kutusuna "AS2 encode" yazın ve AS2 (v2) eylemini seçtiğinizden emin olun: **AS2 kodlama**
+1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin. Arama kutusuna "AS2 encode" yazın ve AS2 (v2) eylemini seçtiğinizden emin olun: **As2 kodlama**
 
    !["AS2 encode" öğesini seçin](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -89,7 +89,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
    | **AS2** | İleti alıcısının AS2 anlaşmanız tarafından belirtilen tanımlayıcısı |
    |||
 
-   Örneğin:
+   Örnek:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
@@ -101,7 +101,7 @@ Bu makalede, AS2 Encoding ve kod çözme eylemlerinin mevcut bir mantıksal uygu
 
 1. Tasarımcıda mantıksal uygulamanıza yeni bir eylem ekleyin.
 
-1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin. Arama kutusuna "AS2 kodunu çöz" yazın ve AS2 (v2) eylemini seçtiğinizden emin olun: **AS2 kodunu çöz**
+1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin. Arama kutusuna "AS2 kodunu çöz" yazın ve AS2 (v2) eylemini seçtiğinizden emin olun: **As2 kod çözme**
 
    !["AS2 kodunu çöz" seçeneğini belirleyin](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 

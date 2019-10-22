@@ -1,34 +1,29 @@
 ---
 title: Azure Application Insights Web Apps 'teki sorunları ve özel durumları tanılama | Microsoft Docs
 description: ASP.NET uygulamalarından gelen özel durumları, istek telemetriyle birlikte yakalayın.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/11/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c8d46ddc834cb12aa63720673c83d745ab53ab4d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.date: 07/11/2019
+ms.openlocfilehash: 90f03baa35d0bf2b63ec480a23db30409df3845f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226873"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677794"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile Web uygulamalarınızda özel durumları tanılama
 Canlı Web uygulamanızdaki özel durumlar [Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından raporlanır. Nedenleri hızlı bir şekilde tanılamanıza olanak tanımak için hem istemci hem de sunucudaki başarısız istekleri özel durumlarla ve diğer olaylarla ilişkilendirebileceğinizi unutmayın.
 
 ## <a name="set-up-exception-reporting"></a>Özel durum raporlamayı ayarlama
 * Sunucu uygulamanızdan bildirilen özel durumların olması için:
-  * Azure Web Apps: [Application Insights uzantısını](../../azure-monitor/app/azure-web-apps.md) ekleme
-  * Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar: [Uygulama Izleme uzantısını](../../azure-monitor/app/azure-vm-vmss-apps.md) ekleme
+  * Azure Web Apps: [Application Insights uzantısını](../../azure-monitor/app/azure-web-apps.md) ekleyin
+  * Azure VM ve Azure sanal makine ölçek kümesi IIS tarafından barındırılan uygulamalar: [uygulama Izleme uzantısını](../../azure-monitor/app/azure-vm-vmss-apps.md) ekleme
   * Uygulama kodunuza [APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net.md) 'yı yükleyip
-  * IIS Web sunucuları: [Application Insights Aracısı](../../azure-monitor/app/monitor-performance-live-website-now.md)'nı Çalıştır; veya
-  * Java Web uygulamaları: [Java aracısını](../../azure-monitor/app/java-agent.md) yükler
+  * IIS Web sunucuları: [Application Insights aracıyı](../../azure-monitor/app/monitor-performance-live-website-now.md)Çalıştır; veya
+  * Java Web Apps: [Java aracısını](../../azure-monitor/app/java-agent.md) yükler
 * Tarayıcı özel durumlarını yakalamak için Web sayfalarınıza [JavaScript kod parçacığını](../../azure-monitor/app/javascript.md) yükler.
 * Bazı uygulama çerçeveleri veya bazı ayarlarla daha fazla özel durum yakalamak için bazı ek adımlar gerçekleştirmeniz gerekir:
   * [Web formları](#web-forms)
@@ -84,7 +79,7 @@ Birkaç seçeneğiniz vardır:
 
 Bu olayları görmek için, sol menüden [Ara](../../azure-monitor/app/diagnostic-search.md) ' yı açın, açılan menü **olay türlerini**seçin ve ardından özel olay, izleme veya özel durum ' u seçin.
 
-![Detaylandırma](./media/asp-net-exceptions/customevents.png)
+![Detaya git](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
 > Uygulamanız çok sayıda telemetri oluşturuyorsa, uyarlamalı örnekleme modülü olayların yalnızca bir temsilci fraksiyonunu göndererek portala gönderilen hacmi otomatik olarak azaltır. Aynı işlemin parçası olan olaylar, ilgili olaylar arasında gezinebilmeniz için Grup olarak seçilecek veya seçimden kaldırılacak. [Örnekleme hakkında bilgi edinin.](../../azure-monitor/app/sampling.md)
@@ -101,7 +96,7 @@ Bu olayları görmek için, sol menüden [Ara](../../azure-monitor/app/diagnosti
 ## <a name="exceptions"></a>Özel durumları ve ilgili tanılama verilerini yakalama
 İlk olarak, portalda hatalara neden olan tüm özel durumların portalda görmezsiniz. Herhangi bir tarayıcı özel durumu görürsünüz (Web sayfalarınızda [JavaScript SDK 'sını](../../azure-monitor/app/javascript.md) kullanıyorsanız). Ancak, çoğu sunucu özel durumu IIS tarafından yakalanır ve bunları görmek için bir kod yazmanız gerekir.
 
-Şunları yapabilirsiniz:
+Yapabilecekleriniz:
 
 * Özel durumları raporlamak için özel durum işleyicilerinde kod ekleyerek **özel durumları açıkça günlüğe kaydedin** .
 * ASP.NET çerçevesini yapılandırarak **özel durumları otomatik olarak yakalayın** . Gerekli eklemeler farklı çerçeve türleri için farklıdır.
@@ -164,7 +159,7 @@ En kolay yol, bir özel durum işleyicisinde TrackException () çağrısı kulla
 ## <a name="browser-exceptions"></a>Tarayıcı özel durumları
 Çoğu tarayıcı özel durumu raporlanır.
 
-Web sayfanız, içerik teslim ağlarından veya diğer etki alanlarından betik dosyaları içeriyorsa, betik etiketinizin özniteliğe ```crossorigin="anonymous"```sahip olduğundan ve sunucunun [CORS üst bilgilerini](https://enable-cors.org/)gönderdiğinden emin olun. Bu, bu kaynaklardan işlenmemiş JavaScript özel durumları için yığın izlemesi ve ayrıntı almanızı sağlar.
+Web sayfanız, içerik teslim ağlarından veya diğer etki alanlarından betik dosyaları içeriyorsa, betik etiketinizin ```crossorigin="anonymous"``` özniteliğine sahip olduğundan ve sunucunun [CORS üst bilgilerini](https://enable-cors.org/)gönderdiğinden emin olun. Bu, bu kaynaklardan işlenmemiş JavaScript özel durumları için yığın izlemesi ve ayrıntı almanızı sağlar.
 
 ## <a name="reuse-your-telemetry-client"></a>Telemetri istemcinizi yeniden kullanma
 
@@ -206,7 +201,7 @@ Ancak etkin yeniden yönlendirmelere sahipseniz, Global.asax.cs içindeki Applic
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden itibaren, Application Insights MVC 5 + denetleyiciler yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
 
 * Denetleyici oluşturucularından oluşturulan özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.
@@ -216,12 +211,12 @@ Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden itibaren, Appli
 * Arka plan görevlerinde özel durum oluşturuldu.
 
 Uygulama tarafından *işlenen* tüm özel durumların yine de el ile izlenmesi gerekir.
-Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç sunucu hatası" yanıtı ile sonuçlanır. Bu tür bir yanıt işlenmiş özel durumun sonucu olarak el ile oluşturulursa (veya hiç özel durum yoksa), 500 ile `ResultCode` ilgili istek telemetrisi içinde izlenir, ancak Application Insights SDK karşılık gelen özel durumu izleyemiyor.
+Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç sunucu hatası" yanıtı ile sonuçlanır. Bu tür yanıt işlenmiş özel durumun sonucu olarak el ile oluşturulursa (veya hiç özel durum yoksa) `ResultCode` 500 ile karşılık gelen istek telemetrisi içinde izlenir, ancak Application Insights SDK karşılık gelen özel durumu izleyemiyor.
 
 ### <a name="prior-versions-support"></a>Önceki sürümler desteği
 Web SDK 2,5 (ve öncesi) Application Insights MVC 4 (ve öncesi) kullanıyorsanız, özel durumları izlemek için aşağıdaki örneklere bakın.
 
-[CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) yapılandırması ise `Off`, [http modülünün](https://msdn.microsoft.com/library/ms178468.aspx) toplaması için özel durumlar kullanılabilir olacaktır. `On`Ancak, `RemoteOnly` (varsayılan) veya ise, özel durum temizlenir ve Application Insights otomatik olarak toplanacaktır. [System. Web. Mvc. HandleErrorAttribute sınıfını](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)geçersiz kılarak ve AŞAĞıDAKI farklı MVC sürümleri ([GitHub kaynağı](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) için gösterildiği gibi geçersiz kılınan sınıfı uygulayarak bu hatayı çözebilirsiniz:
+[CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) yapılandırması `Off`, [http modülünün](https://msdn.microsoft.com/library/ms178468.aspx) toplaması için özel durumlar kullanılabilir olacaktır. Ancak, `RemoteOnly` (varsayılan) veya `On`, özel durum temizlenir ve Application Insights otomatik olarak toplanacaktır. [System. Web. Mvc. HandleErrorAttribute sınıfını](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)geçersiz kılarak ve AŞAĞıDAKI farklı MVC sürümleri ([GitHub kaynağı](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) için gösterildiği gibi geçersiz kılınan sınıfı uygulayarak bu hatayı çözebilirsiniz:
 
 ```csharp
     using System;
@@ -265,7 +260,7 @@ HandleError özniteliğini denetleyicilerinizdeki yeni öznitelikle değiştirin
 [Örnek](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-Global.asax.cs `AiHandleErrorAttribute` içinde genel filtre olarak Kaydet:
+Global.asax.cs içinde genel bir filtre olarak `AiHandleErrorAttribute` Kaydet:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -295,10 +290,10 @@ AiHandleErrorAttribute 'ı FilterConfig.cs içinde genel bir filtre olarak Kayde
 
 [Örnek](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api"></a>Web API
+## <a name="web-api"></a>Web API’si
 Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden başlayarak, Application Insights, denetleyici yöntemlerinde otomatik olarak oluşturulan işlenmeyen özel durumları, WebAPI 2 + için otomatik olarak toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift izlemesini engellemek için bunu kaldırabilirsiniz.
 
-Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örneğin:
+Özel durum filtrelerinden işleyememesi gereken birkaç durum vardır. Örnek:
 
 * Denetleyici oluşturucularından oluşturulan özel durumlar.
 * İleti işleyicilerinden oluşturulan özel durumlar.
@@ -308,7 +303,7 @@ Application Insights Web SDK 2,6 (Beta3 ve üzeri) sürümünden başlayarak, Ap
 * Arka plan görevlerinde özel durum oluşturuldu.
 
 Uygulama tarafından *işlenen* tüm özel durumların yine de el ile izlenmesi gerekir.
-Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç sunucu hatası" yanıtı ile sonuçlanır. Bu tür bir yanıt işlenmiş özel durumun sonucu olarak el ile oluşturulursa (veya hiç özel durum yoksa), 500 ile ilgili bir istek telemetriyle `ResultCode` izlenir, ancak Application Insights SDK karşılık gelen özel durumu izleyemiyor.
+Denetleyicilerden kaynaklanan işlenmemiş özel durumlar genellikle 500 "Iç sunucu hatası" yanıtı ile sonuçlanır. Bu tür bir yanıt işlenmiş özel durumun sonucu olarak el ile oluşturulursa (veya hiçbir özel durum yoksa) `ResultCode` 500 ile ilgili bir istek telemetriyle izlenir, ancak Application Insights SDK karşılık gelen özel durumu izleyemiyor.
 
 ### <a name="prior-versions-support"></a>Önceki sürümler desteği
 Application Insights Web SDK 2,5 (ve öncesi) için WebAPI 1 (ve öncesi) kullanıyorsanız, özel durumları izlemek için aşağıdaki örneklere bakın.

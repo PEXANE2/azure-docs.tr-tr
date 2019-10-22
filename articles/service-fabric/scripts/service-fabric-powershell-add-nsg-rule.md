@@ -14,16 +14,16 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8e3187ba399ffa4d6c0ca863380205f7fbbfaae8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 44bb0e615453450c401949f0ce76f15cb82fab67
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036123"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680538"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>Gelen ağ güvenlik grubu kuralı ekleme
 
-Bu örnek betik, 8081 numaralı bağlantı noktasında gelen trafiğe izin veren bir ağ güvenlik grubu kuralı oluşturur.  Betik, kümenin bulunduğu `Microsoft.Network/networkSecurityGroups` kaynağı alır, yeni bir ağ güvenliği yapılandırma kuralı oluşturur ve ağ güvenlik grubunu güncelleştirir. Parametreleri gereken şekilde özelleştirin.
+Bu örnek betik, 8081 numaralı bağlantı noktasında gelen trafiğe izin veren bir ağ güvenlik grubu kuralı oluşturur.  Betik ağ güvenlik grubunu alır, yeni bir ağ güvenlik yapılandırması kuralı oluşturur ve ağ güvenlik grubunu güncelleştirir. Parametreleri gereken şekilde özelleştirin.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

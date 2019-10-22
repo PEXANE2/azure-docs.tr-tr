@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici günlükleri ile B2B iletilerini izleme-Azure Logic Apps | Microsoft Docs
-description: Tümleştirme hesapları ve Azure Logic Apps için AS2, x12 ve EDIOLGU iletilerini izleyin ve Azure Izleyici günlükleri ile tanılama günlüğü ayarlama
+title: Azure Izleyici ile B2B iletilerini izleme-Azure Logic Apps
+description: Azure Izleyici 'yi kullanarak Azure Logic Apps AS2, x12 ve EDIOLGU iletileri için tanılama günlüğü ayarlama
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261213"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680197"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Azure Logic Apps Azure Izleyici günlükleri ile B2B iletilerini izleme
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Azure Logic Apps B2B iletileri için tanılama günlüğü ayarlama
 
 Tümleştirme hesabınızdaki ticari iş ortakları arasında B2B iletişimini ayarladıktan sonra, bu iş ortakları birbirleriyle ileti değiş tokuş edebilir. Bu iletişimin istediğiniz şekilde çalışıp çalışmadığını denetlemek için, AS2, x12 ve EDIOLGU iletilerini izleyebilir ve [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md)ile tümleştirme hesabınız için tanılama günlüğü ayarlayabilirsiniz. Bu hizmet bulutunuzu ve şirket içi ortamlarınızı izler, kullanılabilirlik ve performanslarını korumanıza yardımcı olur ve daha zengin hata ayıklama için çalışma zamanı ayrıntılarını ve olayları toplar. Bu verileri Azure depolama ve Azure Event Hubs gibi diğer hizmetlerle de kullanabilirsiniz.
 
@@ -39,22 +39,22 @@ Doğrudan tümleştirme hesabınızdan veya [Azure İzleyici hizmeti aracılığ
 
 ### <a name="turn-on-logging-from-integration-account"></a>Tümleştirme hesabından günlüğe kaydetmeyi aç
 
-1. [Azure Portal](https://portal.azure.com)tümleştirme hesabınızı bulun ve seçin. Altında **izleme**seçin **tanılama ayarları**.
+1. [Azure Portal](https://portal.azure.com)tümleştirme hesabınızı bulun ve seçin. **İzleme**altında **Tanılama ayarları**' nı seçin.
 
    ![Tümleştirme hesabınızı bulun ve seçin, "Tanılama ayarları" nı seçin.](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
 1. Şimdi tümleştirme hesabınızı bulun ve seçin. Filtre listelerinde, tümleştirme hesabınıza uygulanan değerleri seçin.
 İşiniz bittiğinde, **Tanılama ayarı Ekle**' yi seçin.
 
-   | Özellik | Value | Açıklama | 
+   | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
    | **Abonelik** | <*Azure-subscription-name*> | Tümleştirme hesabınızla ilişkili Azure aboneliği | 
-   | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | Tümleştirme hesabınız için Azure Kaynak grubu | 
+   | **Kaynak grubu** | <*Azure-Resource-Group-name*> | Tümleştirme hesabınız için Azure Kaynak grubu | 
    | **Kaynak türü** | **Tümleştirme hesaplarına genel bakış** | Günlük kaydını açmak istediğiniz Azure kaynağının türü | 
-   | **Kaynak** | <*Tümleştirme-hesap-adı*> | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
+   | **Kaynak** | <*tümleştirme-hesap-adı* > | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
    ||||  
 
-   Örneğin:
+   Örnek:
 
    ![Tümleştirme hesabınız için tanılamayı ayarlama](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
@@ -71,7 +71,7 @@ Doğrudan tümleştirme hesabınızdan veya [Azure İzleyici hizmeti aracılığ
 
    1. **Günlük**altında, **ıntegrationaccounttrackingevents** kategorisini seçin ve **Kaydet**' i seçin.
 
-   Örneğin: 
+   Örnek: 
 
    ![Azure Izleyici günlüklerini bir günlüğe Tanılama verileri gönderebilmeniz için ayarlama](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -88,15 +88,15 @@ Doğrudan tümleştirme hesabınızdan veya [Azure İzleyici hizmeti aracılığ
 1. Şimdi tümleştirme hesabınızı bulun ve seçin. Filtre listelerinde, tümleştirme hesabınıza uygulanan değerleri seçin.
 İşiniz bittiğinde, **Tanılama ayarı Ekle**' yi seçin.
 
-   | Özellik | Value | Açıklama | 
+   | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
    | **Abonelik** | <*Azure-subscription-name*> | Tümleştirme hesabınızla ilişkili Azure aboneliği | 
-   | **Kaynak grubu** | <*Azure-Resource-Group-Name*> | Tümleştirme hesabınız için Azure Kaynak grubu | 
+   | **Kaynak grubu** | <*Azure-Resource-Group-name*> | Tümleştirme hesabınız için Azure Kaynak grubu | 
    | **Kaynak türü** | **Tümleştirme hesaplarına genel bakış** | Günlük kaydını açmak istediğiniz Azure kaynağının türü | 
-   | **Kaynak** | <*Tümleştirme-hesap-adı*> | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
+   | **Kaynak** | <*tümleştirme-hesap-adı* > | Günlük kaydını açmak istediğiniz Azure kaynağınızın adı | 
    ||||  
 
-   Örneğin:
+   Örnek:
 
    ![Tümleştirme hesabınız için tanılamayı ayarlama](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
@@ -113,7 +113,7 @@ Doğrudan tümleştirme hesabınızdan veya [Azure İzleyici hizmeti aracılığ
 
    1. **Günlük**altında, **ıntegrationaccounttrackingevents** kategorisini seçin ve **Kaydet**' i seçin.
 
-   Örneğin: 
+   Örnek: 
 
    ![Azure Izleyici günlüklerini bir günlüğe Tanılama verileri gönderebilmeniz için ayarlama](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -126,7 +126,7 @@ Azure Izleyici günlükleriyle birlikte, mantıksal uygulamanızın tanılama ve
 * [Azure depolama 'da Azure Tanılama günlüklerini arşivleme](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Azure Event Hubs akış Azure Tanılama günlükleri](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örneğin:
+Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örnek:
 
 * [Event Hubs veri akışı Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Stream Analytics ile akış verilerini çözümleme ve Power BI bir gerçek zamanlı analiz panosu oluşturma](../stream-analytics/stream-analytics-power-bi-dashboard.md)

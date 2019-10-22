@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps 'da tümleştirme hizmeti ortamları (sesleri) için yapıt ekleme
-description: Azure sanal ağlarına (VNet) erişmek için tümleştirme hizmeti ortamınıza (ıSE) Logic Apps, özel bağlayıcılar ve tümleştirme hesapları ekleme, özel ve genel veya "genel" Azure 'tan yalıtılmış bir şekilde
+title: Tümleştirme hizmeti ortamına yapıt ekleme-Azure Logic Apps
+description: Azure sanal ağlarına (VNet) erişmek için tümleştirme hizmeti ortamınıza (ıSE) Logic Apps, tümleştirme hesapları ve özel bağlayıcılar ekleme
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960482"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680522"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps tümleştirme hizmeti ortamınıza (ıSE) yapıt ekleme
 
 Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturduktan sonra, Azure sanal ağınızdaki kaynaklara erişebilmeleri için Logic Apps, tümleştirme hesapları ve bağlayıcılar gibi yapıtları ekleyin.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * Mantıksal uygulamalarınızı çalıştırmak için oluşturduğunuz ıSE. Bir ıSE yoksa, [önce BIR Ise oluşturun](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
@@ -32,11 +32,11 @@ Bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network
 
 Tümleştirme hizmeti ortamınızda (ıSE) çalışan Logic Apps oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında, **Logic Apps** > **Ekle**' yi seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde **Ayarlar**' ın altında,**Ekle** >  **Logic Apps** ' i seçin.
 
    ![ISE 'ye yeni mantıksal uygulama ekleme](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
-   veya
+   -veya-
 
    Ana Azure menüsünden **kaynak oluştur** > **tümleştirme** > **mantıksal uygulama**' yı seçin.
 
@@ -63,13 +63,13 @@ Oluşturma sırasında seçilen [ıSE SKU 'su](../logic-apps/connect-virtual-net
 
 ISE kullanan bir tümleştirme hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında, **tümleştirme hesapları** > **Ekle**' yi seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında,**Ekle** >  **tümleştirme hesapları** ' nı seçin.
 
    ![ISE 'ye yeni tümleştirme hesabı ekleme](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
-   veya
+   -veya-
 
-   Ana Azure menüsünden **kaynak oluştur** > **tümleştirme** > **tümleştirme hesabı**' nı seçin.
+   Ana Azure menüsünden **kaynak oluştur**  > **tümleştirme**  > **tümleştirme hesabı**' nı seçin.
 
 1. Tümleştirme hesabınız için kullanılacak ad, Azure aboneliği, Azure Kaynak grubu (yeni veya var olan) ve fiyatlandırma katmanını sağlayın.
 
@@ -105,9 +105,9 @@ Kullanım için kullanılabilen, ancak Ise 'de dağıtılmayan Microsoft tarafı
 
 ISE 'de özel bağlayıcılar kullanmak için, bu özel bağlayıcıları doğrudan ıSE içinden oluşturun.
 
-1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında, **özel bağlayıcılar**' ı  > **Ekle**' yi seçin.
+1. Henüz açık değilse, ıSE 'nizi bulun ve açın. ISE menüsünde, **Ayarlar**' ın altında,**Ekle** >  **özel bağlayıcılar** ' ı seçin.
 
-   ![Özel bağlayıcı oluştur](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
+   ![Özel bağlayıcı oluşturma](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 
 1. Özel Bağlayıcınız için kullanılacak ad, Azure aboneliği ve Azure kaynak grubunu (yeni veya var olan) sağlayın.
 

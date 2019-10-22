@@ -1,22 +1,18 @@
 ---
 title: Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 description: Bu belge, TimerTrigger işlevinde verilen yapılandırmaya göre düzenli olarak çalışacak TrackAvailability () ile bir Azure Işlevi oluşturmayı kapsar. Bu testin sonuçları, kullanılabilirlik sonuçları verilerini sorgulayabilir ve uyarılabileceğiniz Application Insights kaynağına gönderilir. Özelleştirilmiş testler, Portal Kullanıcı arabirimini kullanarak mümkün olandan daha karmaşık kullanılabilirlik testleri yazmanızı, Azure VNET 'iniz içindeki bir uygulamayı izlemenizi, uç nokta adresini değiştirmenizi veya bölgenizde yoksa bir kullanılabilirlik testi oluşturmanızı sağlar.
-services: application-insights
-documentationcenter: ''
-author: morgangrobin
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: morgangrobin
 ms.author: mogrobin
-ms.openlocfilehash: 38a83169a7d1ffa03416f5947ada703bcba5017a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: a2b29f2c24a3244cdc800d882e7c2ed8f943eabe
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301379"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677593"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Işlevleri 'ni kullanarak özel kullanılabilirlik testleri oluşturma ve çalıştırma
 

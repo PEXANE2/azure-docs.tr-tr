@@ -1,5 +1,5 @@
 ---
-title: Durumu denetleme, günlüğü ayarlama ve uyarı alma-Azure Logic Apps | Microsoft Docs
+title: Durumu denetleme, günlüğü ayarlama ve uyarıları alma-Azure Logic Apps
 description: Durumu izleyin, tanılama verilerini günlüğe kaydedin ve Azure Logic Apps uyarılarını ayarlayın
 services: logic-apps
 ms.service: logic-apps
@@ -8,14 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 336e2ac93a954c35b7afc8dbb98dd1fca1838985
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261363"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680291"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Durumu izleyin, tanılama günlüğünü ayarlayın ve Azure Logic Apps uyarılarını açın
 
@@ -35,7 +34,7 @@ Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarılar�
 
 2. Mantıksal uygulamanızı seçip **genel bakış**' ı seçin.
 
-   Azure portal, mantıksal uygulamanız için çalıştırma geçmişi ve tetikleme geçmişini gösterir. Örneğin:
+   Azure portal, mantıksal uygulamanız için çalıştırma geçmişi ve tetikleme geçmişini gösterir. Örnek:
 
    ![Mantıksal uygulama geçmişi ve tetikleme geçmişini çalıştırır](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -49,7 +48,7 @@ Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarılar�
 
 3. Belirli bir çalışmadan ilgili adımları görüntülemek için, çalışma **geçmişi**altında o çalıştırmayı seçin. 
 
-   İzleyici görünümü, çalıştırılan her adımı gösterir. Örneğin:
+   İzleyici görünümü, çalıştırılan her adımı gösterir. Örnek:
 
    ![Belirli bir çalıştırma için Eylemler](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -59,7 +58,7 @@ Hataları veya olası diğer sorunlar hakkında bildirim almak için [uyarılar�
 
    Örneğin, [Logic Apps için REST API](https://docs.microsoft.com/rest/api/logic)kullandığınızda ihtiyacınız olabilecek ÇALıŞTıRMANıN **bağıntı kimliğini**alabilirsiniz.
 
-5. Belirli bir adımla ilgili ayrıntıları almak için bu adımı seçin. Artık girişler, çıktılar ve bu adımla ilgili tüm hatalar gibi ayrıntıları gözden geçirebilirsiniz. Örneğin:
+5. Belirli bir adımla ilgili ayrıntıları almak için bu adımı seçin. Artık girişler, çıktılar ve bu adımla ilgili tüm hatalar gibi ayrıntıları gözden geçirebilirsiniz. Örnek:
 
    ![Adım ayrıntıları](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -80,13 +79,13 @@ Başlamadan önce bir Log Analytics çalışma alanına sahip olmanız gerekir. 
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulamanızı bulun ve seçin. 
 
-2. Mantıksal uygulama dikey penceresi menüsünde, **izleme**altında **Tanılama** > **Tanılama ayarları**' nı seçin.
+2. Mantıksal uygulama dikey penceresi menüsünde, **izleme**altında **Tanılama >** **Tanılama ayarları**' nı seçin.
 
    ![Izleme, tanılama ve tanılama ayarlarına git](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
 3. **Tanılama ayarları**altında **Açık**' ı seçin.
 
-   ![Tanılama günlüklerini açın](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
+   ![tanılama günlüklerini aç](media/logic-apps-monitor-your-logic-apps/turn-on-diagnostics-logic-app.png)
 
 4. Şimdi Log Analytics çalışma alanını ve günlüğe kaydetme için olay kategorisini gösterildiği gibi seçin:
 
@@ -139,7 +138,7 @@ Filtre ekleyerek sorgunuzu iyileştirmek için **+ Ekle**' yi seçin.
    Bu örnek, **AzureDiagnostics**altındaki başarısız olayları bulmak için "Status" sözcüğünü kullanır.
    Burada **status_s** filtresi zaten seçilidir.
 
-   ![Filtre seç](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
+   ![Filtre Seç](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
 7. Sol çubukta, kullanmak istediğiniz filtre değerini seçin ve **Uygula**' yı seçin.
 
@@ -160,7 +159,7 @@ Azure Izleyici günlükleriyle birlikte, mantıksal uygulamanızın tanılama ve
 * [Azure depolama 'da Azure Tanılama günlüklerini arşivleme](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Azure Event Hubs akış Azure Tanılama günlükleri](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örneğin:
+Daha sonra [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) ve [Power BI](../azure-monitor/platform/powerbi.md)gibi diğer hizmetlerden telemetri ve analiz kullanarak gerçek zamanlı izleme sağlayabilirsiniz. Örnek:
 
 * [Event Hubs veri akışı Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Stream Analytics ile akış verilerini çözümleme ve Power BI bir gerçek zamanlı analiz panosu oluşturma](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -180,7 +179,7 @@ Mantıksal uygulamanıza yönelik belirli ölçümleri izlemek veya eşikleri a�
 
 Uyarıları [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md)olmadan ayarlamak için aşağıdaki adımları izleyin. Daha gelişmiş uyarılar ölçütü ve eylemleri için [Azure izleyici günlüklerini de ayarlayın](#azure-diagnostics) .
 
-1. Mantıksal uygulama dikey penceresi menüsünde, **izleme**altında **Tanılama** > **Uyarı kuralları** > **Uyarı Ekle** ' yi seçin.
+1. Mantıksal uygulama dikey penceresi menüsünde, **izleme**altında **tanılama**  > **Uyarı  >  kuralları** ' nı seçin ve burada gösterildiği gibi**uyarı ekleyin** :
 
    ![Mantıksal uygulamanız için bir uyarı ekleyin](media/logic-apps-monitor-your-logic-apps/set-up-alerts.png)
 
@@ -211,7 +210,7 @@ Uyarıları [Azure izleyici günlükleri](../log-analytics/log-analytics-overvie
 
 Her tanılama olayının, mantıksal uygulamanız ve bu olay hakkında, örneğin, durum, başlangıç saati, bitiş saati vb. ayrıntıları vardır. Program aracılığıyla izlemeyi, izlemeyi ve günlüğe kaydetmeyi ayarlamak için bu ayrıntıları [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic) ve [Azure tanılama REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)için kullanabilirsiniz.
 
-Örneğin, `ActionCompleted` olay izleme ve izleme için `clientTrackingId` kullanabileceğiniz `trackedProperties` ve özelliklerine sahiptir:
+Örneğin `ActionCompleted` olayı, izleme ve izleme için kullanabileceğiniz `clientTrackingId` ve `trackedProperties` özelliklerine sahiptir:
 
 ``` json
 {
@@ -247,11 +246,11 @@ Her tanılama olayının, mantıksal uygulamanız ve bu olay hakkında, örneği
 }
 ```
 
-* `clientTrackingId`: Sağlanmazsa, Azure bu KIMLIĞI otomatik olarak oluşturur ve mantıksal uygulama tarafından çağrılan iç içe geçmiş iş akışları dahil olmak üzere bir mantıksal uygulama çalıştırması genelinde olayları otomatik olarak oluşturur. Tetikleyici isteğindeki özel kimlik değeri ile bir `x-ms-client-tracking-id` üst bilgi geçirerek bir tetikleyiciden bu kimliği el ile belirtebilirsiniz. İstek tetikleyicisi, HTTP tetikleyicisi veya Web kancası tetikleyicisi kullanabilirsiniz.
+* `clientTrackingId`: sağlanmazsa, Azure bu KIMLIĞI otomatik olarak oluşturur ve mantıksal uygulama tarafından çağrılan iç içe geçmiş iş akışları dahil olmak üzere bir mantıksal uygulama çalıştırması genelinde olayları otomatik olarak oluşturur. Bu KIMLIĞI, tetikleyici isteğindeki özel KIMLIK değeri ile bir `x-ms-client-tracking-id` üst bilgisi geçirerek bir tetikleyiciden el ile belirtebilirsiniz. İstek tetikleyicisi, HTTP tetikleyicisi veya Web kancası tetikleyicisi kullanabilirsiniz.
 
-* `trackedProperties`: Tanılama verilerinde girişleri veya çıkışları izlemek için mantıksal uygulamanızın JSON tanımındaki eylemlere izlenen özellikler ekleyebilirsiniz. İzlenen özellikler yalnızca tek bir eylemin girişlerini ve çıkışlarını izleyebilir, ancak bir çalıştırmada eylemler arasında ilişki kurmak `correlation` için olayların özelliklerini kullanabilirsiniz.
+* `trackedProperties`: Tanılama verilerinde girişleri veya çıkışları izlemek Için mantıksal uygulamanızın JSON tanımında izlenen özellikleri eylemlere ekleyebilirsiniz. İzlenen özellikler yalnızca tek bir eylemin girişlerini ve çıkışlarını izleyebilir, ancak bir çalıştırmada eylemler arasında ilişki kurmak için olayların `correlation` özelliklerini de kullanabilirsiniz.
 
-  Bir veya daha fazla özelliği izlemek için, işlem `trackedProperties` tanımına istediğiniz bölümü ve özellikleri ekleyin. Örneğin, telemetrinizde "Order ID" gibi verileri izlemek istediğinizi varsayalım:
+  Bir veya daha fazla özelliği izlemek için `trackedProperties` bölümünü ve eylem tanımına istediğiniz özellikleri ekleyin. Örneğin, telemetrinizde "Order ID" gibi verileri izlemek istediğinizi varsayalım:
 
   ``` json
   "myAction": {

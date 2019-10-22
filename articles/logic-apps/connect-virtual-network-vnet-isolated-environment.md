@@ -1,6 +1,6 @@
 ---
-title: Tümleştirme hizmeti ortamı (ıSE) üzerinden Azure Logic Apps Azure sanal ağlarına bağlanma
-description: Bir tümleştirme hizmeti ortamı (ıSE) oluşturun. bu nedenle, Logic Apps ve tümleştirme hesapları Azure sanal ağlarına (VNet) erişerek özel ve genel veya "Global" Azure 'tan yalıtılmış bir şekilde olabilir
+title: ISE Azure Logic Apps Azure sanal ağlarına bağlanma
+description: Azure Logic Apps Azure sanal ağlarına (VNet) erişebilen bir tümleştirme hizmeti ortamı (ıSE) oluşturun
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: d6530eb95dc26b9abe4bb27146b16eb2952e9f9b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4c4eb5a6cb7527bcb3eb21beebb8063b0bd021d3
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595669"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680468"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 

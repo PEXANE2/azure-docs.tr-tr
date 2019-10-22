@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 72f50754a28f0bbf5648ae64299d28ff13e2ec31
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703045"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677958"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Karma ortamda bir Linux bilgisayarından veri toplama
 
@@ -29,33 +29,33 @@ Desteklenen yapılandırmayı anlamak için bkz. [desteklenen Windows işletim s
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal oturum açın
+## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-Azure portal [https://portal.azure.com](https://portal.azure.com)' de oturum açın. 
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
-## <a name="create-a-workspace"></a>Çalışma alanı oluştur
+## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics**yazın. Yazmaya başladığınızda liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
-    ![Azure portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Azure portal Log Analytics çalışma alanını bulma](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
-   * Yeni **Log Analytics çalışma alanı**Için *defaultlaworkspace*gibi bir ad sağlayın.  
-   * Varsayılan seçilen değer uygun değilse, açılan listeden seçerek bağlantı için bir **abonelik** seçin.
-   * **Kaynak grubu**için, bir veya daha fazla Azure sanal makinesi içeren var olan bir kaynak grubunu seçin.  
-   * Sanal makinelerinizin dağıtıldığı **konumu** seçin.  Daha fazla bilgi için, [' de hangi bölgelerin kullanılabildiği Log Analytics](https://azure.microsoft.com/regions/services/)bakın.
-   * 2 Nisan 2018 tarihinden sonra oluşturulan yeni abonelikte bir çalışma alanı oluşturuyorsanız, bu, otomatik olarak *GB başına* fiyatlandırma planı kullanır ve fiyatlandırma katmanını seçme seçeneği kullanılamaz.  2 Nisan 'dan önce oluşturulmuş mevcut bir abonelik için veya mevcut bir EA kaydına bağlı olan abonelik için bir çalışma alanı oluşturuyorsanız, tercih ettiğiniz fiyatlandırma katmanını seçin.  Belirli katmanlar hakkında daha fazla bilgi için bkz. [Log Analytics fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/log-analytics/).
+   * Yeni **Log Analytics çalışma alanı** için *DefaultLAWorkspace* gibi bir ad sağlayın.  
+   * Varsayılan seçili abonelik uygun değilse açılan listeden bağlanacak bir **Abonelik** seçin.
+   * **Kaynak Grubu** için, bir veya daha fazla Azure sanal makinesi içeren mevcut bir kaynak grubunu seçin.  
+   * VM’lerinizin dağıtıldığı **Konum**’u seçin.  Ek bilgi için bkz. [Log Analytics’in sunulduğu bölgeler](https://azure.microsoft.com/regions/services/).
+   * 2 Nisan 2018 tarihinden sonra oluşturulan yeni bir abonelikte çalışma alanı oluşturuyorsanız bu, otomatik olarak *GB başına* fiyatlandırma planını kullanır ve fiyatlandırma katmanı seçme seçeneği kullanılamaz.  2 Nisan’dan önce oluşturulmuş mevcut bir abonelik için veya mevcut bir EA kaydına bağlı aboneliğe yönelik çalışma alanı oluşturuyorsanız, tercih ettiğiniz fiyatlandırma katmanını seçin.  Katmanlar hakkında daha fazla bilgi için bkz. [Log Analytics Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Log Analytics kaynak dikey penceresi oluşturma](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Azure portal Log Analytics çalışma alanı oluşturma](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. **Log Analytics çalışma alanı** bölmesinde gerekli bilgileri sağladıktan sonra **Tamam**' ı seçin.  
 
-Bilgiler doğrulanırken ve çalışma alanı oluşturulduktan sonra, menüdeki **Bildirimler** ' in altında ilerleme durumunu izleyebilirsiniz. 
+Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlemin ilerleme durumunu menüdeki **Bildirimler**’in altından izleyebilirsiniz. 
 
-## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı KIMLIĞI ve anahtarı al
+## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı kimliği ve anahtarını alma
 
-Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınız için çalışma alanı KIMLIĞI ve anahtarı gereklidir.  Aracıyı düzgün bir şekilde yapılandırmak ve Azure Izleyici ile başarılı bir şekilde iletişim kurabildiğinden emin olmak için aracı sarmalayıcı betiği tarafından bu bilgiler gereklidir.
+Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınızın kimliği ve anahtarına ihtiyacınız olacak.  Aracıyı düzgün bir şekilde yapılandırmak ve Azure Izleyici ile başarılı bir şekilde iletişim kurabildiğinden emin olmak için aracı sarmalayıcı betiği tarafından bu bilgiler gereklidir.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -65,107 +65,107 @@ Linux için Log Analytics aracısını yüklemeden önce, Log Analytics çalış
 
 3. **Gelişmiş ayarları**seçin:
 
-    ![Log Analytics Gelişmiş ayarları](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png) 
+    ![Azure portal Log Analytics için Gelişmiş ayarlar menüsü](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
  
-4. **Bağlı kaynaklar**' ı seçin ve ardından **Linux sunucuları**' nı seçin.
+4. **Bağlı Kaynaklar**’ı seçin ve ardından **Linux Sunucuları**’nı seçin.
 
-5. **Çalışma alanı kimliği** ve **birincil anahtarın**sağ tarafındaki değer. Hem en sevdiğiniz düzenleyicinize kopyalayıp yapıştırın.
+5. **Çalışma Alanı Kimliği** ve **Birincil Anahtar**’ın sağındaki değer. Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
 
-## <a name="install-the-agent-for-linux"></a>Linux için aracıyı yükler
+## <a name="install-the-agent-for-linux"></a>Linux için aracıyı yükleme
 
-Aşağıdaki adımlar, Azure ve Azure Kamu Bulutu 'nda Log Analytics için aracının kurulumunu yapılandırır.  
+Aşağıdaki adımlar Azure’da ve Azure Kamu bulutunda Log Analytics için aracıyı yapılandırır.  
 
 >[!NOTE]
->Linux için Log Analytics Aracısı birden fazla Log Analytics çalışma alanına rapor verecek şekilde yapılandırılamaz.  
+>Linux için Log Analytics aracısı birden fazla Log Analytics çalışma alanına raporlamak için yapılandırılamaz.  
 
-Linux bilgisayarınızın Log Analytics için bir proxy sunucusu üzerinden iletişim kurması gerekiyorsa, proxy yapılandırması komut satırında `-p [protocol://][user:password@]proxyhost[:port]` eklenerek belirtilebilir.  *Proxyhost* özelliği, proxy sunucusunun tam etki alanı adını veya IP adresini kabul eder. 
+Linux bilgisayarınızın bir ara sunucu üzerinden Log Analytics’le iletişim kurması gerekiyorsa, ara sunucu yapılandırması komut satırında `-p [protocol://][user:password@]proxyhost[:port]` eklenerek belirtilebilir.  *proxyhost* özelliği, ara sunucunun tam etki adı alanı veya IP adresini kabul eder. 
 
-Örneğin: `https://user01:password@proxy01.contoso.com:30443`.
+Örneğin, `https://user01:password@proxy01.contoso.com:30443`
 
-1. Linux bilgisayarı bir Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, daha önce kopyalanmış çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Aşağıdaki komut aracıyı indirir, sağlama toplamını doğrular ve yükler. 
+1. Linux bilgisayarı bir Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, daha önce kopyalanmış çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler. 
     
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-    Aşağıdaki komut `-p` proxy parametresini ve örnek sözdizimini içerir.
+    Aşağıdaki komut, `-p` ara sunucu parametresini ve örnek söz dizimini içerir.
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-2. Linux bilgisayarı Azure Kamu Bulutu 'nda Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, daha önce kopyalanmış çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Aşağıdaki komut aracıyı indirir, sağlama toplamını doğrular ve yükler. 
+2. Linux bilgisayarı Azure Kamu Bulutu 'nda Log Analytics çalışma alanına bağlanacak şekilde yapılandırmak için, daha önce kopyalanmış çalışma alanı KIMLIĞI ve birincil anahtar sağlamak üzere aşağıdaki komutu çalıştırın. Bu komut aracıyı indirir, sağlama toplamını doğrular ve aracıyı yükler. 
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-    Aşağıdaki komut `-p` proxy parametresini ve örnek sözdizimini içerir.
+    Aşağıdaki komut, `-p` ara sunucu parametresini ve örnek söz dizimini içerir.
 
    ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-2. Aşağıdaki komutu çalıştırarak aracı yeniden başlatın: 
+2. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın: 
 
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
 
-## <a name="collect-event-and-performance-data"></a>Olay ve performans verilerini topla
+## <a name="collect-event-and-performance-data"></a>Olay ve performans verilerini toplama
 
-Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Linux Syslog ve performans sayaçlarından olayları toplayabilir. Ayrıca, belirli bir koşul algıladığında eylem gerçekleştirebilir. Linux Syslog 'dan olay toplamayı ve ile başlamak için çeşitli yaygın performans sayaçlarını yapılandırmak için bu adımları izleyin.  
+Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Linux Syslog ve performans sayaçlarından olayları toplayabilir. Ayrıca, belirli bir koşul algıladığında eylem gerçekleştirebilir. Linux Syslog’dan olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
 
 1. Azure portal sol alt köşesinde **diğer hizmetler**' i seçin. Arama kutusuna **Log Analytics**girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını**seçin.
 
 2. **Veri**' yi seçin ve **Syslog**' ı seçin.  
 
-3. Günlüğün adını yazarak Syslog eklersiniz. **Syslog** yazın ve ardından artı işaretini **+** ' yi seçin.  
+3. Günlüğün adını yazarak Syslog eklersiniz. **Syslog** girin ve ardından artı işareti **+** seçin.  
 
-4. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama**seçeneklerinin işaretini kaldırın. 
+4. Tabloda, **Bilgiler**, **Bildirim** ve **Hata Ayıklama** önem derecelerinin işaretini kaldırın. 
 
 5. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
-6. Linux bilgisayarda performans sayaçlarını toplamayı etkinleştirmek için **Linux performans verileri** ' ni seçin. 
+6. Bir Linux bilgisayarda performans sayaçlarını toplamayı etkinleştirmek için **Linux Performans Verileri**’ni seçin. 
 
-7. Yeni bir Log Analytics çalışma alanı için Linux performans sayaçlarını ilk kez yapılandırdığınızda, birkaç ortak sayacı hızlı bir şekilde oluşturma seçeneği sunulur. Her birinin yanında bir onay kutusu ile listelenir.
+7. Yeni bir Log Analytics çalışma alanı için Linux Performans sayaçlarını ilk kez yapılandırırken, birkaç ortak sayacı hızlı bir şekilde oluşturma seçenekleri sunulur. Her birinin yanında bir onay kutusu görüntülenir.
 
-    ![Varsayılan Windows performans sayaçları seçildi](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![Azure Izleyici 'de varsayılan Linux performans sayaçları seçildi](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
-    **Aşağıdaki yapılandırmayı makinelerime Uygula** ' yı seçin ve ardından **Seçili performans sayaçlarını Ekle**' yi seçin. Bunlar eklenen ve on saniyelik bir koleksiyon örnek aralığıyla önceden ayarlanmış.  
+    **Aşağıdaki yapılandırmayı makinelerime Uygula** ' yı seçin ve ardından **Seçili performans sayaçlarını Ekle**' yi seçin. Eklenir ve on saniye koleksiyon örnek aralığı ile ayarlanır.  
 
 8. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
-## <a name="view-data-collected"></a>Toplanan verileri görüntüle
+## <a name="view-data-collected"></a>Toplanan verileri görüntüleyin
 
-Veri toplamayı etkinleştirmiş olduğunuza göre, hedef bilgisayardan bazı verileri görmek için basit bir günlük araması örneği çalıştırmaya izin verir.  
+Veri toplamayı etkinleştirdiyseniz, şimdi hedef bilgisayardan verileri görmek için basit bir günlük araması örneği çalıştıralım.  
 
 1. Seçilen çalışma alanında, sol bölmedeki **Günlükler**' i seçin.
 
-2. Günlük sorgusu sayfasında sorgu Düzenleyicisi ' ne `Perf` yazın ve **Çalıştır**' ı seçin.
+2. Günlükler sorgusu sayfasında sorgu Düzenleyicisi ' ne `Perf` yazın ve **Çalıştır**' ı seçin.
  
     ![Log Analytics günlük araması](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
     Örneğin, aşağıdaki görüntüdeki sorgu 10.000 performans kaydı döndürdü. Sonuçlarınız önemli ölçüde daha az olacaktır.
 
-    ![Günlük arama sonucunu Log Analytics](media/quick-collect-linux-computer/log-analytics-search-perf.png)
+    ![Log Analytics günlük araması sonucu](media/quick-collect-linux-computer/log-analytics-search-perf.png)
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında, aracıyı Linux bilgisayarından kaldırıp Log Analytics çalışma alanını silebilirsiniz.  
+Artık gerekli olmadığında, aracıyı Linux bilgisayardan kaldırıp Log Analytics çalışma alanını silebilirsiniz.  
 
-Aracıyı kaldırmak için Linux bilgisayarda aşağıdaki komutu çalıştırın. *--Temizleme* bağımsız değişkeni, aracıyı ve yapılandırmasını tamamen kaldırır.
+Aracıyı kaldırmak için Linux bilgisayarında aşağıdaki komutu çalıştırın. *--temizleme* bağımsız değişkeni, aracıyı ve yapılandırmasını tamamen kaldırır.
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
 Çalışma alanını silmek için, daha önce oluşturduğunuz Log Analytics çalışma alanını seçin ve kaynak sayfasında **Sil**' i seçin.
 
-![Log Analytics kaynağı Sil](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+![Log Analytics kaynağını silme](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık şirket içi Linux bilgisayarınızdan işletimsel ve performans verilerini topladığınıza göre, *ücretsiz*olarak topladığınız verileri kolayca keşfetmeye, analiz etmeye ve eyleme başlamanızı sağlayabilirsiniz.  
+Şimdi şirket içi Linux bilgisayarınızdan işletimsel verileri ve performans verilerini topluyorsunuz ve *ücretsiz* olarak topladığınız verileri kolayca keşfetmeye, analiz etmeye ve verilerde işlem gerçekleştirmeye başlayabilirsiniz.  
 
-Verileri görüntüleme ve çözümleme hakkında bilgi edinmek için öğreticiye devam edin.
+Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics verileri görüntüleme veya çözümleme](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../../azure-monitor/learn/tutorial-viewdata.md)

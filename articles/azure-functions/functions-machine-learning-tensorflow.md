@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Makine öğrenimini oluşturmak için Azure Işlevlerinde Python ve TensorFlow kullanın | Microsoft Docs'
+title: 'Öğretici: makine öğrenimini oluşturmak için Azure Işlevlerinde Python ve TensorFlow kullanın | Microsoft Docs'
 description: Bu öğreticide, Azure Işlevleri 'nde TensorFlow makine öğrenimi modellerinin nasıl uygulanacağı gösterilmektedir
 services: functions
 author: anthonychu
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729179"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677872"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
 
@@ -52,10 +52,10 @@ cd functions-python-tensorflow-tutorial
 
 Depo birkaç klasör içerir.
 
-- *Başlangıç*:  Bu, öğreticinin çalışma klasörüdür
+- *Başlangıç*: Bu öğretici için çalışma klasörünüzdir
 - *son*: Bu, başvurağınız için nihai sonuç ve tam uygulama
-- *kaynaklar*: Machine Learning modeli ve yardımcı kitaplıklarını içerir
-- *ön uç*: İşlev uygulamasını çağıran bir Web sitesi
+- *kaynaklar*: Machine Learning modelini ve yardımcı kitaplıklarını içerir
+- *ön uç*: işlev uygulamasını çağıran bir Web sitesi
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Python sanal ortamı oluşturma ve etkinleştirme
 
@@ -79,7 +79,7 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-Terminal istemi artık, sanal ortamı başarıyla `(.venv)` etkinleştirmiş olduğunu belirten ön ekine sahiptir. `python` Sanal ortamda gerçekten Python 3.6. x olduğunu doğrulayın.
+Terminal istemi artık sanal ortamı başarıyla etkinleştirmiş olduğunu belirten `(.venv)` ön ekine sahiptir. Sanal ortamdaki `python` gerçekten Python 3.6. x olduğunu doğrulayın.
 
 ```console
 python --version
@@ -98,9 +98,9 @@ func init --worker-runtime python
 
 Bir işlev uygulaması, bir veya daha fazla Azure Işlevi içerebilir. Bir düzenleyicide *Başlangıç* klasörünü açın ve içeriğini inceleyin.
 
-- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): Yerel geliştirme için kullanılan uygulama ayarlarını içerir
-- [*Host. JSON*](functions-host-json.md): Azure Işlevleri Konağı ve uzantıları için ayarları içerir
-- [*requirements. txt*](functions-reference-python.md#python-version-and-package-management): Bu uygulama için gereken Python paketlerini içerir
+- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): yerel geliştirme için kullanılan uygulama ayarlarını içerir
+- [*Host. JSON*](functions-host-json.md): Azure işlevleri Konağı ve uzantıları için ayarları içerir
+- [*requirements. txt*](functions-reference-python.md#python-version-and-package-management): Bu uygulama Için gereken Python paketlerini içerir
 
 ## <a name="create-an-http-function"></a>HTTP işlevi oluşturma
 
@@ -114,8 +114,8 @@ func new --language python --template HttpTrigger --name classify
 
 İki dosya içeren *Sınıflandırma* adlı yeni bir klasör oluşturulur.
 
-- *init.Kopyala\_: \_ \_\_* Main işlevi için bir dosya
-- *function. JSON*:  İşlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan bir dosya
+- *\_ \_init \_ \_. Kopyala*: Main işlevi için bir dosya
+- *function. JSON*: işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan bir dosya
 
 ### <a name="run-the-function"></a>İşlevi çalıştırın
 
@@ -131,7 +131,7 @@ Bir tarayıcı açın ve aşağıdaki URL 'ye gidin. İşlev, *Merhaba Azure* 'u
 http://localhost:7071/api/classify?name=Azure
 ```
 
-İşlev `Ctrl-C` uygulamasını durdurmak için kullanın.
+İşlev uygulamasını durdurmak için `Ctrl-C` kullanın.
 
 ## <a name="import-the-tensorflow-model"></a>TensorFlow modelini içeri aktarma
 
@@ -140,7 +140,7 @@ Azure Özel Görüntü İşleme Hizmeti ile eğitilen ve verilen önceden oluşt
 > [!NOTE]
 > Özel Görüntü İşleme Hizmeti ücretsiz katmanını kullanarak kendinizinkini derlemek isterseniz, [örnek proje deposundaki yönergeleri](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)izleyebilirsiniz.
 
-Model, *< REPOSITORY_ROOT >/Resources/model* klasöründeki iki dosyadan oluşur: *model. db* ve *labels. txt*. Onları *sınıflandır* işlevinin klasörüne kopyalayın.
+Model, *< REPOSITORY_ROOT >/Resources/model* klasöründeki iki dosyadan oluşur: *model. PB* ve *labels. txt*. Onları *sınıflandır* işlevinin klasörüne kopyalayın.
 
 #### <a name="linux-and-macos"></a>Linux ve macOS:
 
@@ -154,7 +154,7 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Yukarıdaki komutuna dahil \* ettiğinizden emin olun. *Sınıflandırın* şimdi *model. PB* ve *labels. txt*adlı dosyaları içerdiğini doğrulayın.
+Yukarıdaki komutuna \* eklediğinizden emin olun. *Sınıflandırın* şimdi *model. PB* ve *labels. txt*adlı dosyaları içerdiğini doğrulayın.
 
 ## <a name="add-the-helper-functions-and-dependencies"></a>Yardımcı işlevleri ve bağımlılıkları ekleme
 
@@ -179,7 +179,7 @@ copy ..\resources\predict.py classify
 Yardımcı kitaplığı, yüklenmesi gereken bazı bağımlılıklara sahiptir. Düzenleyicinizde *Start/requirements. txt* dosyasını açın ve aşağıdaki bağımlılıkları dosyaya ekleyin.
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```
@@ -194,13 +194,13 @@ pip install --no-cache-dir -r requirements.txt
 
 ### <a name="caching-the-model-in-global-variables"></a>Modeli genel değişkenlerde önbelleğe alma
 
-Düzenleyicide *Predict.py* ' ı açın ve dosyanın en üstüne yakın `_initialize` olan işleve bakın. İlk kez çalıştırıldığında ve genel değişkenlere kaydedildiğinde, TensorFlow modelinin diskten yüklendiğine dikkat edin. Diskten yükleme, `_initialize` işlevin sonraki yürütmeleri sırasında atlanır. Modeli bu teknikle bellekte önbelleğe almak, daha sonraki tahminlere hızlanır.
+Düzenleyicide *Predict.py* ' ı açın ve dosyanın en üstündeki `_initialize` işlevine bakın. İlk kez çalıştırıldığında ve genel değişkenlere kaydedildiğinde, TensorFlow modelinin diskten yüklendiğine dikkat edin. Diskten yükleme `_initialize` işlevinin sonraki yürütmeleri sırasında atlanır. Modeli bu teknikle bellekte önbelleğe almak, daha sonraki tahminlere hızlanır.
 
 Genel değişkenler hakkında daha fazla bilgi için [Azure Işlevleri Python Geliştirici Kılavuzu](functions-reference-python.md#global-variables)' na bakın.
 
 ## <a name="update-function-to-run-predictions"></a>Tahminleri çalıştırmak için işlevi Güncelleştir
 
-Düzenleyicinizde *\_sınıflandır\_/\_init\_. Kopyala* öğesini açın. Daha önce eklediğiniz *tahmin* kitaplığını aynı klasöre aktarın. Aşağıdaki `import` deyimleri, dosyasında zaten bulunan diğer içeri aktarmaları altına ekleyin.
+Düzenleyicinizde *Sınıflandırma/\_ \_init \_ \_. Kopyala* ' yı açın. Daha önce eklediğiniz *tahmin* kitaplığını aynı klasöre aktarın. Aşağıdaki `import` deyimlerini, dosyasında zaten bulunan diğer içeri aktarmaları altına ekleyin.
 
 ```python
 import json
@@ -223,12 +223,12 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Değişikliklerinizi kaydettiğinizden emin olun.
 
-Bu işlev, adlı `img`bir sorgu dizesi parametresinde bir görüntü URL 'si alır. Görüntüyü indiren `predict_image_from_url` ve TensorFlow modelini kullanarak bir tahmin döndüren yardımcı kitaplığından çağırır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
+Bu işlev, `img` adlı bir sorgu dizesi parametresinde bir görüntü URL 'SI alır. Görüntüyü indirir ve TensorFlow modelini kullanarak bir tahmin döndüren yardımcı kitaplığından `predict_image_from_url` çağırır. İşlev daha sonra sonuçlarıyla bir HTTP yanıtı döndürür.
 
-HTTP uç noktası, başka bir etki alanında barındırılan bir Web sayfası tarafından çağrıldığından, http yanıtı tarayıcının çıkış noktaları `Access-Control-Allow-Origin` arası kaynak paylaşımı (CORS) gereksinimlerini karşılamak için bir üst bilgi içerir.
+HTTP uç noktası, başka bir etki alanında barındırılan bir Web sayfası tarafından çağrıldığından, HTTP yanıtı tarayıcının çıkış noktaları arası kaynak paylaşımı (CORS) gereksinimlerini karşılamak için bir `Access-Control-Allow-Origin` üst bilgisi içerir.
 
 > [!NOTE]
-> Bir üretim uygulamasında, ek güvenlik `*` için Web sayfasının belirli bir kaynağına geçiş yapın.
+> Bir üretim uygulamasında, ek güvenlik için `*` Web sayfasının belirli bir kaynağına değiştirin.
 
 ### <a name="run-the-function-app"></a>İşlev uygulamasını çalıştırma
 

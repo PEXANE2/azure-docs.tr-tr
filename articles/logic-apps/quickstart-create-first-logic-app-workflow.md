@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure Logic Apps ilk iş akışınızı oluşturun ve otomatikleştirin
-description: Azure Logic Apps kullanarak görevleri, işlemleri ve iş akışlarını otomatikleştiren ilk mantıksal uygulamanızı oluşturun. Bulut Hizmetleri & sistemleriniz için sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için mantıksal uygulamalar oluşturun.
+title: İlk iş akışınızı oluşturun ve otomatikleştirin-Azure Logic Apps
+description: Hızlı başlangıç-sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için Azure Logic Apps kullanarak ilk otomatikleştirilmiş görevinizi veya iş akışınızı oluşturun
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: c85b3e3ced661eb36d9cb1eb0ae443a5ab21a913
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029472"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679137"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps ile ilk otomatik iş akışınızı oluşturma - Azure portal
 
@@ -44,7 +44,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı; yalnızca harfler, rakamlar, tireler (`-`), alt çizgiler (`_`), parantezler (`(`, `)`) ve noktalar (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
+   | **Adı** | <*Logic-App-adı*> | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnek "My-First-Logic-App" kullanır. |
    | **Abonelik** | <*Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | <*Azure-Resource-Group-name*> | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md) adı. Bu örnek "My-First-LA-RG" kullanır. |
    | **Konum** | <*Azure-bölge*> | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |

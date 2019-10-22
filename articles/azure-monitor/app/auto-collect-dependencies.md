@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights-bağımlılık otomatik koleksiyonu | Microsoft Docs
 description: Application Insights bağımlılıkları otomatik olarak toplayıp görselleştirin
-services: application-insights
-documentationcenter: .net
-author: nikmd23
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
+author: nikmd23
+ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.author: nimolnar
-ms.openlocfilehash: 839ab291a99de646053b638520ce43f459d5c41f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297007"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678295"
 ---
 # <a name="dependency-auto-collection"></a>Bağımlılık otomatik toplama
 
@@ -46,8 +42,8 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 | [Jpatron EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Uygulama çerçeveleri</b> |  |
-| [Spring](https://spring.io/) | 3,0 |
-| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
+| [Spring](https://spring.io/) | 3.0 |
+| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup> *</sup> |
 | Java Servlet | 3.1 + |
 | <b>İletişim kitaplıkları</b> |  |
 | [Apache HTTP Istemcisi](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
@@ -70,12 +66,12 @@ Aşağıda, uygulamanızın kodunda ek değişiklik yapılmasına gerek kalmadan
 
 | İletişim kitaplıkları | Sürümler |
 | ------------------------|----------|
-| [HTTP](https://nodejs.org/api/http.html), [HTTPS](https://nodejs.org/api/https.html) | 0.10 + |
+| [http](https://nodejs.org/api/http.html), [https](https://nodejs.org/api/https.html) | 0.10 + |
 | <b>Depolama istemcileri</b> | |
 | [Redis](https://www.npmjs.com/package/redis) | 2.x |
 | [MongoDB](https://www.npmjs.com/package/mongodb); [MongoDB çekirdeği](https://www.npmjs.com/package/mongodb-core) | 2. x-3. x |
 | [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0-2.16. x |
-| [PostgreSql](https://www.npmjs.com/package/pg); | 6. x-7. x |
+| [PostgreSQL](https://www.npmjs.com/package/pg); | 6. x-7. x |
 | [PG havuzu](https://www.npmjs.com/package/pg-pool) | 1. x-2. x |
 | <b>Günlük kitaplıkları</b> | |
 | [konsola](https://nodejs.org/api/console.html) | 0.10 + |

@@ -297,7 +297,15 @@
         - name: Veri girişi ve çıkışı
           items:
             - name: Verileri İçeri Aktarma
-              href: ../algorithm-module-reference/import-data.md
+              items:
+                - name: Verileri İçeri Aktarma
+                  href: ../algorithm-module-reference/import-data.md
+                - name: HTTP aracılığıyla Web URL’sinden içeri aktarma
+                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
+                - name: Azure Blob Depolama modülünden içeri aktarma
+                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
+                - name: Azure SQL Veritabanı’ndan içeri aktarma
+                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Verileri Dışarı Aktarma
               href: ../algorithm-module-reference/export-data.md
             - name: Verileri El ile Girme
@@ -330,6 +338,10 @@
               href: ../algorithm-module-reference/normalize-data.md
             - name: Bölüm ve Örnek
               href: ../algorithm-module-reference/partition-and-sample.md
+            - name: Değerleri Kırpma
+              href: ../algorithm-module-reference/clip-values.md
+            - name: SQL Dönüşümü Uygulama
+              href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: Makine öğrenimi
           items:
             - name: Modeli Puanlama
@@ -382,6 +394,12 @@
               href: ../algorithm-module-reference/create-python-model.md
             - name: R Betiği yürütme
               href: ../algorithm-module-reference/execute-r-script.md
+        - name: İstatistiksel İşlevler
+          items:
+            - name: Matematik İşlemi Uygulama
+              href: ../algorithm-module-reference/apply-math-operation.md
+            - name: Verileri Özetleme
+              href: ../algorithm-module-reference/summarize-data.md
         - name: Hata iletileri ve kodları
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: Kaynaklar

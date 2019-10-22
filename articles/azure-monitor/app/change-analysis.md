@@ -1,21 +1,18 @@
 ---
 title: Web uygulaması sorunlarını bulmak için Azure Izleyici 'de uygulama değişikliği analizini kullanma | Microsoft Docs
 description: Azure App Service üzerindeki canlı sitelerde uygulama sorunlarını gidermek için Azure Izleyici 'de uygulama değişikliği analizini kullanın.
-services: application-insights
-author: cawams
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+author: cawams
 ms.author: cawa
-ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 05/07/2019
+ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033374"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678245"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -51,7 +48,7 @@ Değişiklik analizi, bir uygulamanın dağıtım ve yapılandırma durumunu her
 Kaynak bağımlılıklarındaki değişiklikler de bir Web uygulamasında sorunlara neden olabilir. Örneğin, bir Web uygulaması Redsıs önbelleğine çağırırsa, Redsıs Cache SKU 'SU Web uygulaması performansını etkileyebilir. Bağımlılıklarda yapılan değişiklikleri algılamak için, değişiklik Analizi Web uygulamasının DNS kaydını denetler. Bu şekilde, tüm uygulama bileşenlerinde sorunlara neden olabilecek değişiklikler tanımlanmaktadır.
 Şu anda aşağıdaki bağımlılıklar desteklenir:
 - Web Apps
-- Azure Storage
+- Azure Depolama
 - Azure SQL
 
 
@@ -80,7 +77,7 @@ Azure Izleyici 'de, değişiklik Analizi Şu anda self servis **Tanılama ve ç�
     !["Değişiklik analizini etkinleştir" Kullanıcı arabiriminin ekran görüntüsü](./media/change-analysis/change-analysis-on.png)
 
 
-1. Değişiklik analizine erişmek için, **sorunları Tanıla ve çöz sorun** > **kullanılabilirliği ve performans** > **uygulaması kilitlenmeleri**' ni seçin. Zaman içinde değişiklik türlerini özetleyen bir grafik görürsünüz ve bu değişiklikler hakkındaki ayrıntılarla birlikte:
+1. Değişiklik analizine erişmek için,**kullanılabilirlik ve performans**  > **uygulama kilitlenmelerine** >  **Tanılama ve çözme sorunlarını çözün** . Zaman içinde değişiklik türlerini özetleyen bir grafik görürsünüz ve bu değişiklikler hakkındaki ayrıntılarla birlikte:
 
      ![Değişiklik fark görünümünün ekran görüntüsü](./media/change-analysis/change-view.png)
 
@@ -90,7 +87,7 @@ Azure Izleyici 'de, değişiklik Analizi Şu anda self servis **Tanılama ve ç�
 Aboneliğiniz çok sayıda Web uygulaması içeriyorsa, hizmeti Web uygulaması düzeyinde etkinleştirmek verimsiz olur. Aboneliğinizdeki tüm Web uygulamalarını etkinleştirmek için aşağıdaki betiği çalıştırın.
 
 Önkoşulların önkoşulları:
-* PowerShell az Module. [Azure PowerShell modülünü yüklerken](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0) yönergeleri izleyin
+* PowerShell az Module. [Azure PowerShell modülünü yüklerken](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0) yönergeleri izleyin
 
 Şu betiği çalıştırın:
 

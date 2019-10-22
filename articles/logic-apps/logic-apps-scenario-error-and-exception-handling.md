@@ -1,6 +1,6 @@
 ---
-title: Özel durum işleme & hata günlüğü senaryosu-Azure Logic Apps | Microsoft Docs
-description: Gelişmiş özel durum işleme ve hata günlüğü ile ilgili gerçek bir kullanım durumu aşağıda verilmiştir Azure Logic Apps
+title: Özel durum işleme & hata günlüğü senaryosu-Azure Logic Apps
+description: Gelişmiş özel durum işleme ve hata günlüğü Azure Logic Apps için gerçek kullanım örneği ve senaryo
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,16 @@ ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 7930d487d367ee19b869becae5017f80ea1df8cb
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385467"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680171"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Mantıksal uygulamalar için özel durum işleme ve hata günlüğü
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Senaryo: Logic Apps için özel durum işleme ve hata günlüğü
 
-Bu senaryo, özel durum işlemeyi daha iyi desteklemek için bir mantıksal uygulamayı nasıl genişletebileceğinizi açıklar. Soruyu yanıtlamak için gerçek yaşam kullanım durumunu kullandık: "Azure Logic Apps özel durum ve hata işlemeyi destekliyor mu?"
+Bu senaryo, özel durum işlemeyi daha iyi desteklemek için bir mantıksal uygulamayı nasıl genişletebileceğinizi açıklar. Soruyu yanıtlamak için gerçek yaşam bir kullanım durumu kullandık: "destek özel durum ve hata işleme Azure Logic Apps"
 
 > [!NOTE]
 > Geçerli Azure Logic Apps şeması, eylem yanıtları için standart bir şablon sağlar. Bu şablon, bir API uygulamasından döndürülen iç doğrulama ve hata yanıtlarını içerir.
@@ -36,18 +36,18 @@ Projede iki önemli gereksinim vardı:
 * İş akışında oluşan hataları görüntülemenin bir yolu
 
 > [!TIP]
-> Bu proje hakkında üst düzey bir video için bkz. [tümleştirme Kullanıcı grubu](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "tümleştirmesi Kullanıcı grubu").
+> Bu proje hakkında üst düzey bir video için bkz. [tümleştirme Kullanıcı grubu](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Tümleştirme Kullanıcı grubu").
 
 ## <a name="how-we-solved-the-problem"></a>Sorunu nasıl çözeceğiz
 
 Günlük ve hata kayıtları için depo olarak [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") seçtik (Cosmos DB kayıtları belgeler olarak ifade eder). Azure Logic Apps tüm yanıtlar için standart bir şablon içerdiğinden, özel bir şema oluşturmak zorunda olmamız gerekir. Hem hata hem de günlük kayıtlarını **eklemek** ve **sorgulamak** için bir API uygulaması oluşturacağız. Ayrıca API uygulaması içinde her biri için bir şema tanımlayabiliriz.  
 
-Başka bir gereksinim, belirli bir tarihten sonra kayıtları temizlemelidir. Cosmos DB, yaşam(https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "süresi (TTL") ) yaşam [süresi adlı bir]özelliğe sahiptir. Bu özellik, her bir kayıt veya koleksiyon için bir **yaşam** değeri ayarlanmamıza izin verilir. Bu özellik Cosmos DB kayıtları el ile silme gereksinimini ortadan kaldırmıştır.
+Başka bir gereksinim, belirli bir tarihten sonra kayıtları temizlemelidir. Cosmos DB, [yaşam süresi](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Yaşam süresi") (TTL) adlı bir özelliğe sahiptir ve bu, her bir kayıt veya koleksiyon Için bir **yaşam** değeri ayarlayabileceğimizi sağlar. Bu özellik Cosmos DB kayıtları el ile silme gereksinimini ortadan kaldırmıştır.
 
 > [!IMPORTANT]
 > Bu öğreticiyi tamamlayabilmeniz için bir Cosmos DB veritabanı ve iki koleksiyon (günlüğe kaydetme ve hata) oluşturmanız gerekir.
 
-## <a name="create-the-logic-app"></a>Mantıksal uygulama oluşturma
+## <a name="create-the-logic-app"></a>Mantıksal uygulamayı oluşturma
 
 İlk adım mantıksal uygulama oluşturmak ve uygulamayı Logic App Designer 'da açmak. Bu örnekte, üst-alt mantıksal uygulamaları kullanıyoruz. Zaten üst öğeyi oluşturduğumuz ve bir alt mantıksal uygulama oluşturduğumuz varsayılalım.
 
@@ -121,7 +121,7 @@ Hasta kaydının kaynağını (istek) Dynamics CRM Online portalından günlüğ
 > [!NOTE]
 > Aşağıdaki örnekler yalnızca örnektir. Bu öğretici üretimde bir uygulamaya bağlı olduğundan, **kaynak düğümün** değeri bir randevunun zamanlanması ile ilgili özellikleri görüntülemeyebilir. > 
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Aşağıdaki mantıksal uygulama kodu örneği, günlüğün nasıl işleneceğini gösterir.
 
@@ -429,10 +429,10 @@ Açık kaynaklı Azure Logic Apps özel durum yönetim API 'SI uygulamanız bura
 * **Günlüğe kaydetme denetleyicisi** Bir Azure Cosmos DB koleksiyonuna bir günlük kaydı (belge) ekler.
 
 > [!TIP]
-> Her iki denetleyici `async Task<dynamic>` de işlemleri kullanır, bu nedenle işlemin gövdesinde Azure Cosmos DB şeması oluşturuyoruz. 
+> Her iki denetleyici de `async Task<dynamic>` işlemler kullanır, bu nedenle işlem gövdesinde Azure Cosmos DB şeması oluşturuyoruz. 
 > 
 
-Azure Cosmos DB içindeki her belge benzersiz bir KIMLIĞE sahip olmalıdır. `PatientId` Bir Unix zaman damgası değerine (Double) dönüştürülen bir zaman damgası ekliyoruz. Kesirli değeri kaldırmak için değeri kestik.
+Azure Cosmos DB içindeki her belge benzersiz bir KIMLIĞE sahip olmalıdır. @No__t_0 kullanıyor ve bir Unix zaman damgası değerine (Double) dönüştürülen bir zaman damgası ekliyoruz. Kesirli değeri kaldırmak için değeri kestik.
 
 [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs)'dan hata denetleyicisi API 'sinin kaynak kodunu görüntüleyebilirsiniz.
 
@@ -477,9 +477,9 @@ Aşağıdaki sözdizimini kullanarak bir mantıksal uygulamadan API 'YI çağır
 * Günlük ve hata kayıtları (belgeler) için depo olarak Azure Cosmos DB kullanabilirsiniz.
 * Günlük ve hata kayıtlarını göstermek için bir portal oluşturmak üzere MVC 'yi kullanabilirsiniz.
 
-### <a name="source-code"></a>Kaynak kod
+### <a name="source-code"></a>Kaynak kodu
 
-Logic Apps özel durum yönetim API 'SI uygulamasının kaynak kodu, bu [GitHub deposu](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "mantıksal uygulaması özel durum yönetim API")'sinde bulunabilir.
+Logic Apps özel durum yönetim API 'SI uygulamasının kaynak kodu bu [GitHub deposunda](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Mantıksal uygulama özel durum yönetim API 'SI")kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

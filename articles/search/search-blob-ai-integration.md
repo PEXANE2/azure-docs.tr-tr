@@ -1,5 +1,5 @@
 ---
-title: Blob verilerini anlamak için AI kullanma
+title: BLOB depolama verilerini anlamak için AI kullanma
 titleSuffix: Azure Search
 description: Azure Search ' de bir AI zenginleştirme işlem hattı kullanarak Azure bloblarına anlam, doğal dil işleme ve görüntü analizi ekleyin.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529385"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678428"
 ---
-# <a name="use-ai-to-understand-blob-data"></a>Blob verilerini anlamak için AI kullanma
+# <a name="use-ai-to-understand-blob-storage-data"></a>BLOB depolama verilerini anlamak için AI kullanma
 
 Azure Blob depolamada bulunan veriler genellikle görüntüler, uzun metin, PDF 'Ler ve Office belgeleri gibi yapılandırılmamış içerik olan çok çeşitli içeriktir. Azure Search içindeki AI yeteneklerini kullanarak, çeşitli yollarla bloblardan değerli bilgileri anlayabilir ve ayıklayabilirsiniz. Blob içeriğine AI uygulama örnekleri şunlardır:
 
@@ -112,7 +112,8 @@ Azure depolama 'da bir bilgi deposunda iki bildirim bulunur: bir blob kapsayıc�
 
 Farklı yollarla bilişsel hizmetler 'i birleştirme ve senaryo için mevcut bilişsel hizmet olmadığı durumlar için özel yetenekler yazma dahil olmak üzere, Azure depolama 'daki verilerden en iyi şekilde yararlanmak için, AI zenginleştirmesiyle ilgili çok daha fazla şey vardır. Aşağıdaki bağlantıları izleyerek daha fazla bilgi edinebilirsiniz.
 
-> [!div class="nextstepaction"]
-> [AI zenginleştirme genel bakış](cognitive-search-concept-intro.md) 
->  bir[ek açıklama ağacında](cognitive-search-output-field-mapping.md) beceri 
->  eşleme düğümleri[oluşturma](cognitive-search-defining-skillset.md)
++ [Azure portal (Azure Blob depolama) ile Blobları karşıya yükleme, indirme ve listeleme](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Blob Dizin oluşturucuyu ayarlama (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [AI zenginleştirme genel bakış (Azure Search)](cognitive-search-concept-intro.md) 
++ [Beceri oluşturma (Azure Search)](cognitive-search-defining-skillset.md)
++ [Ek açıklama ağacındaki düğümleri eşleme (Azure Search)](cognitive-search-output-field-mapping.md)

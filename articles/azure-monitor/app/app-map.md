@@ -1,26 +1,21 @@
 ---
 title: Azure Application Insights uygulama Haritası | Microsoft Docs
 description: Uygulama haritası ile karmaşık uygulama topolojilerini izleme
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983761"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678382"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Uygulama eşlemesi: Dağıtılmış uygulamaları önceliklendirme
+# <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
 
 Uygulama Haritası, dağıtılmış uygulamanızın tüm bileşenlerinde performans sorunlarını veya hata etkin noktalarını ayarlamanıza yardımcı olur. Eşlemedeki her düğüm bir uygulama bileşenini veya bağımlılıklarını temsil eder; ve sistem durumu KPI 'si ve uyarı durumu içerir. Herhangi bir bileşenden, Application Insights olayları gibi daha ayrıntılı Tanılamalar 'e tıklayabilirsiniz. Uygulamanız Azure Hizmetleri kullanıyorsa, SQL Veritabanı Danışmanı önerileri gibi Azure tanılama 'ya de tıklayabilirsiniz.
 
@@ -50,7 +45,7 @@ Bu deneyimle önemli amaçların biri, yüzlerce bileşen ile karmaşık topoloj
 
 ![Açılır](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Hataları araştır
+### <a name="investigate-failures"></a>Sorunları araştırın
 
 Arızalar bölmesini başlatmak için **başarısızlığı araştır** ' ı seçin.
 
@@ -74,7 +69,7 @@ Uçtan uca işlem deneyimini araştırmak için **ayrıntılara git** ' i seçin
 
 ![Uçtan uca işlem ayrıntılarının ekran görüntüsü](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Analytics'de görüntüle
+### <a name="view-in-analytics"></a>Analytics 'te görüntüle
 
 Uygulama verilerinizi daha fazla sorgulamak ve araştırmak için Analize **görüntüle**' ye tıklayın.
 
@@ -119,7 +114,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET uygulamalar: Başlatıcıyı etkin TelemetryConfiguration yükleme**
+**ASP.NET Apps: Active TelemetryConfiguration 'a Başlatıcı yükleme**
 
 ApplicationInsights. config dosyasında:
 
@@ -147,11 +142,11 @@ ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindek
 ```
 
 > [!NOTE]
-> `ApplicationInsights.config` Veya kullanarak`TelemetryConfiguration.Active` Başlatıcı eklemek ASP.NET Core uygulamaları için geçerli değildir. 
+> @No__t_0 veya `TelemetryConfiguration.Active` kullanarak Başlatıcı ekleme ASP.NET Core uygulamaları için geçerli değildir. 
 
-**ASP.NET Core uygulamalar: Başlatıcısı TelemetryConfiguration yükleme**
+**ASP.NET Core uygulamalar: Başlatıcı yükleme TelemetryConfiguration**
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi `TelemetryInitializer` , yeni bir ekleme işlemi bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `ConfigureServices` `Startup.cs` sınıfınızın yönteminde yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi, yeni bir `TelemetryInitializer` eklemek, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `Startup.cs` sınıfınızın `ConfigureServices` yönteminde yapılır.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -210,7 +205,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![Uygulama Haritası ekran görüntüsü](media/app-map/cloud-rolename.png)
 
-Yukarıdaki uygulama haritasında yeşil kutular 'daki adların her biri, bu dağıtılan uygulamanın farklı yönleri için bulut rolü adı değerlerdir. Bu nedenle, bu uygulama için rolleri şunlardan oluşur `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
+Yukarıdaki uygulama haritasında yeşil kutular 'daki adların her biri, bu dağıtılan uygulamanın farklı yönleri için bulut rolü adı değerlerdir. Bu nedenle, bu uygulama için rolleri şunlardan oluşur: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
 
 Bu uygulama, bu bulut rolü adlarının her biri aynı zamanda kendi izleme anahtarlarına sahip farklı bir benzersiz Application Insights kaynağını da temsil eder. Bu uygulamanın sahibi bu dört farklı Application Insights kaynağın her birine erişime sahip olduğundan, uygulama haritası temel alınan ilişkilerin bir haritasını birlikte birleştirilebilir.
 
@@ -230,7 +225,7 @@ Alternatif olarak **, bulut** rolü **adı** , sorunun Web ön uçlarınızda bi
 
 Bulut rol örneği için değeri geçersiz kılmak isteyebileceğiniz bir senaryo, uygulamanızın belirli bir sorunu bulmak için yeterli bilgi olmadığını bilmenin bir kapsayıcı ortamda çalışıyor olması olabilir.
 
-Bulut rolü adı özelliğinin telemetri başlatıcılarla nasıl geçersiz kılındığı hakkında daha fazla bilgi için bkz [. Add Properties: Ilemetrybaşlatıcısı](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Bulut rolü adı özelliğinin telemetri başlatıcılarla nasıl geçersiz kılındığı hakkında daha fazla bilgi için bkz. [Add Properties: Itelemetrybaşlatıcısı](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

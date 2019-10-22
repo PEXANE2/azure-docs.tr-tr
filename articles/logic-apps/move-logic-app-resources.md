@@ -1,5 +1,5 @@
 ---
-title: Mantıksal uygulama kaynaklarını abonelikler, kaynak grupları veya bölgeler arasında taşıma-Azure Logic Apps
+title: Mantıksal uygulamaları abonelikler, kaynak grupları veya bölgeler arasında taşıma-Azure Logic Apps
 description: Mantıksal uygulamaları veya tümleştirme hesaplarını diğer Azure aboneliklerine, kaynak gruplarına veya konumlarına (bölgelere) geçirin
 services: logic-apps
 ms.service: logic-apps
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e7c201004be6c4d39f482cc288824cba74e302cb
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 8c3bad32943b83cbfe4c96087f3fef1c51f64bb1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737504"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679103"
 ---
-# <a name="migrate-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Mantıksal uygulama kaynaklarını diğer Azure aboneliklerine, kaynak gruplarına veya bölgelere geçirin
+# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Mantıksal uygulama kaynaklarını diğer Azure aboneliklerine, kaynak gruplarına veya bölgelere taşıyın
 
 Mantıksal uygulamanızı veya ilgili kaynaklarınızı başka bir Azure aboneliğine, kaynak grubuna veya bölgeye taşımak için Azure portal, Azure PowerShell, Azure CLı ve REST API gibi bu görevleri tamamlamaya yönelik çeşitli yöntemlere sahip olursunuz. Kaynakları taşımadan önce şu hususları gözden geçirin: 
 
@@ -82,7 +82,7 @@ Mantıksal uygulamayı farklı bir bölgeye taşımak istediğinizde, seçenekle
 
 Mantıksal uygulamalar için dağıtım şablonları hakkında daha fazla bilgi için şu konulara bakın:
 
-* [Bakýþ Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Genel Bakış: Azure Resource Manager şablonları kullanarak Azure Logic Apps dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Mantıksal uygulamanızı Azure portal Visual Studio 'da bulun, açın ve indirin](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Azure Logic Apps için Azure Resource Manager şablonları oluşturma](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Azure Logic Apps için Azure Resource Manager şablonları dağıtma](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)

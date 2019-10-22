@@ -1,24 +1,18 @@
 ---
 title: Azure Cloud Services için Application Insights | Microsoft Docs
 description: Application Insights ile web ve çalışan rollerinizi etkili bir şekilde izleyin
-services: application-insights
-documentationcenter: ''
-keywords: WAD2AI, Azure Tanılama
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.workload: tbd
-ms.date: 09/05/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/05/2018
+ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933004"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677572"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
@@ -80,7 +74,7 @@ Telemetriyi uygun kaynaklara göndermek için, yapı yapılandırmasına bağlı
 
 Her rol için ayrı bir kaynak oluşturmaya karar verdiyseniz ve her derleme yapılandırması için ayrı bir küme oluşturmak isterseniz, bunların Application Insights portalında oluşturulması en kolay yoldur. Kaynakları çok büyük bir şekilde oluşturursanız, [işlemi otomatikleştirebilirsiniz](../../azure-monitor/app/powershell.md).
 
-1. [Azure Portal][portal] **Yeni** > **Geliştirici**HizmetleriApplicationInsights > ' ni seçin.  
+1. [Azure Portal][portal] **Yeni**  > **Geliştirici Hizmetleri**  > **Application Insights**' nı seçin.  
 
     ![Application Insights bölmesi](./media/cloudservices/01-new.png)
 
@@ -92,7 +86,7 @@ Her kaynak bir izleme anahtarı ile tanımlanır. SDK yapılandırmasını el il
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Her rol için Azure Tanılama ayarlama
 Uygulamanızı Application Insights ile izlemek için bu seçeneği ayarlayın. Web rolleri için bu seçenek performans izleme, uyarılar, Tanılamalar ve kullanım analizi sağlar. Diğer roller için, yeniden başlatma, performans sayaçları ve System. Diagnostics. Trace çağrıları gibi Azure Tanılama arayabilir ve izleyebilirsiniz. 
 
-1. Visual Studio Çözüm Gezgini,  **\<yourcloudservice >**  > **rollerinin**altında her rolün özelliklerini açın.
+1. Visual Studio Çözüm Gezgini **\<YourCloudService >**  > **Roller**' in altında her rolün özelliklerini açın.
 
 1. **Yapılandırma**bölümünde **tanılama verilerini Application Insights gönder** onay kutusunu seçin ve ardından daha önce oluşturduğunuz Application Insights kaynağını seçin.
 
@@ -100,7 +94,7 @@ Her derleme yapılandırması için ayrı bir Application Insights kaynağı kul
 
 ![Application Insights Yapılandır](./media/cloudservices/configure-azure-diagnostics.png)
 
-Bu, Application Insights izleme anahtarlarınızın ServiceConfiguration adlı dosyalara eklenmesi etkisine sahiptir *.\* cscfg*. [Örnek kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
+Bu, Application Insights izleme anahtarlarınızın *ServiceConfiguration. \*. cscfg*adlı dosyalara eklenmesi etkisine sahiptir. [Örnek kod](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)aşağıda verilmiştir.
 
 Application Insights gönderilen tanılama bilgileri düzeyini değiştirmek istiyorsanız, [ *. cscfg* dosyalarını doğrudan düzenleyerek](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)bunu yapabilirsiniz.
 
@@ -142,7 +136,7 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
 
 Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyorsanız gereklidir. 
 
-1. Şuna benzer her [](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) bir rol için dosyaekleme`\*.csdef` başlangıç görevi 
+1. Şuna benzer bir rol için `\*.csdef` dosya [Başlangıç görevi](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) Ekle 
 
     ```xml
     <Startup>
@@ -157,7 +151,7 @@ Bu adım yalnızca .NET Framework üzerinde tam SQL sorguları yakalamak istiyor
     </Startup>
     ```
     
-2. [Installagent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) ve [ınstallagent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)indir, `AppInsightsAgent` bunları her bir rol projesindeki klasörüne yerleştirin. Visual Studio dosya özellikleri veya derleme betikleri aracılığıyla bunları çıkış dizinine kopyalamadığınızdan emin olun.
+2. [Installagent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) ve [ınstallagent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)' ı indirip her bir rol projesindeki `AppInsightsAgent` klasöre koyun. Visual Studio dosya özellikleri veya derleme betikleri aracılığıyla bunları çıkış dizinine kopyalamadığınızdan emin olun.
 
 3. Tüm çalışan rollerinde, ortam değişkenleri ekleyin: 
 
@@ -214,7 +208,7 @@ Web rollerinde, istek modülü otomatik olarak HTTP istekleriyle ilgili verileri
 * [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
-## <a name="exceptions"></a>Özel durumlar
+## <a name="exceptions"></a>Özel Durumlar
 Çeşitli Web uygulaması türlerinden işlenmeyen özel durumları toplama hakkında daha fazla bilgi için bkz. [Application Insights özel durumları izleme](../../azure-monitor/app/asp-net-exceptions.md).
 
 Örnek web rolü, MVC5 ve Web API 2 denetleyicilerine sahiptir. Bu ikisinden toplanan işlenmemiş özel durumlar aşağıdaki işleyicilerle yakalanır:
@@ -230,7 +224,7 @@ Web rollerinde, istek modülü otomatik olarak HTTP istekleriyle ilgili verileri
 ## <a name="performance-counters"></a>Performans sayaçları
 Aşağıdaki sayaçlar varsayılan olarak toplanır:
 
-* \Process(??APP_WIN32_PROC??)\% İşlemci Süresi
+* \Process (?? APP_WIN32_PROC??) \% Işlemci zamanı
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes

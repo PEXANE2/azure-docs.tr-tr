@@ -1,6 +1,6 @@
 ---
-title: Visual Studio ile otomatik iş akışları oluşturma-Azure Logic Apps
-description: Azure Logic Apps ve Visual Studio kullanarak kurumsal tümleştirme için görevleri, iş süreçlerini ve iş akışlarını otomatikleştirin
+title: Visual Studio ile iş akışlarını otomatikleştirme-Azure Logic Apps
+description: Azure Logic Apps ve Visual Studio kullanarak kurumsal tümleştirme için yinelenen iş akışları oluşturma, zamanlama ve çalıştırma
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,18 +8,17 @@ ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d02f0bf8cc880dd39f7bdf0c953fcb130df2e23a
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165928"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680576"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı başlangıç: Azure Logic Apps Visual Studio ile otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma
+# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>Hızlı başlangıç: Azure Logic Apps ve Visual Studio kullanarak görevleri, işlemleri ve iş akışlarını otomatikleştirme
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio ile uygulama, veri, sistem ve hizmetleri kurum ve kuruluşlar arasında otomatik hale getiren iş akışları oluşturabilirsiniz. Bu hızlı başlangıçta, Visual Studio 'da mantıksal uygulamalar oluşturarak ve bu uygulamaları Azure 'a dağıtarak bu iş akışlarını nasıl tasarlayıp oluşturabileceğiniz gösterilmektedir. Bu görevleri Azure portal gerçekleştirmenize rağmen, Visual Studio, mantıksal uygulamalarınızı kaynak denetimine eklemenize, farklı sürümler yayımlamanıza ve farklı dağıtım ortamları için Azure Resource Manager şablonları oluşturmanıza olanak sağlar.
 
@@ -85,7 +84,7 @@ Başlamak için bir [Azure Kaynak Grubu projesi](../azure-resource-manager/vs-az
    ![Azure Kaynak Grubu projesi oluşturma](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > Kaynak grubu adları yalnızca harf, sayı, nokta (`.`), alt çizgi (`_`), tire (`-`) ve parantez (`(`, `)`) içerebilir, ancak dönemlerle *bitemez* (`.`).
+   > Kaynak grubu adları yalnızca harf, sayı, nokta (`.`), alt çizgi (`_`), tire (`-`) ve parantez (`(`, `)`) içerebilir, ancak nokta (`.`) ile *bitemez* .
    >
    > **Bulut** veya **Azure Kaynak grubu** görünmezse, VISUAL Studio için Azure SDK 'yi yüklediğinizden emin olun.
 

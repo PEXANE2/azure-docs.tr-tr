@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights arama kullanma | Microsoft Docs
 description: Web uygulamanız tarafından gönderilen ham Telemetriyi arayın ve filtreleyin.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/30/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d08fd2ac6db63eee01c0653d2dbb1623fb1b51ed
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.date: 07/30/2019
+ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705414"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678010"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights arama kullanma
 
@@ -65,13 +60,13 @@ Olay türleri ' açılan menüsünü açın ve görmek istediğiniz olay türler
 
 Olay türleri şunlardır:
 
-*  - Tracktrace, log4Net, NLog ve System. Diagnostics. Trace çağrılarını içeren[tanılama günlüklerini](../../azure-monitor/app/asp-net-trace-logs.md) izleyin.
+* TrackTrace, log4Net, NLog ve System. Diagnostics. Trace çağrıları dahil olmak üzere[tanılama günlüklerini](../../azure-monitor/app/asp-net-trace-logs.md) **izleme**  - .
 * **İstek** -sunucu uygulamanız tarafından alınan, sayfalar, betikler, görüntüler, stil dosyaları ve veriler dahil http istekleri. Bu olaylar, istek ve yanıt genel bakış grafiklerini oluşturmak için kullanılır.
-*  - Sayfa görüntüleme raporları oluşturmak için kullanılan[Web istemcisi tarafından gönderilen](../../azure-monitor/app/javascript.md)sayfa görünümü telemetrisi.
+* Sayfa görüntüleme raporları oluşturmak için kullanılan[Web istemcisi tarafından gönderilen telemetri](../../azure-monitor/app/javascript.md) -  **sayfa görünümü** .
 * **Özel olay** - [kullanımı Izlemek](../../azure-monitor/app/api-custom-events-metrics.md)için trackevent () çağrıları eklediyseniz, burada arama yapabilirsiniz.
 * **Özel durum** - [sunucuda](../../azure-monitor/app/asp-net-exceptions.md)yakalanamayan özel durumlar ve trackexception () kullanarak oturum açmalarını sağlayabilirsiniz.
-*  - [Sunucu uygulamanızdan](../../azure-monitor/app/asp-net-dependencies.md) REST API 'leri veya veritabanları gibi diğer hizmetlere bağımlılık çağrıları ve [istemci kodunuzun](../../azure-monitor/app/javascript.md)Ajax çağrıları.
-* Kullanılabilirlik- [kullanılabilirlik testlerinin](../../azure-monitor/app/monitor-web-app-availability.md)sonuçları.
+* **Bağımlılık**  - ,[sunucu uygulamanızdan](../../azure-monitor/app/asp-net-dependencies.md) REST API 'leri veya veritabanları gibi diğer HIZMETLERE ve [istemci kodunuzun](../../azure-monitor/app/javascript.md)Ajax çağrılarına çağrı yapılır.
+* **Kullanılabilirlik-** [kullanılabilirlik testlerinin](../../azure-monitor/app/monitor-web-app-availability.md)sonuçları.
 
 ## <a name="filter-on-property-values"></a>Özellik değerlerini filtrele
 
@@ -101,10 +96,10 @@ Daha kısa bir aralıktaki aramalar daha hızlı olduğundan bir zaman aralığ�
 
 Alt dizeler değil, tüm sözcükleri arayın. Özel karakterleri kapsamak için tırnak işaretleri kullanın.
 
-| Dize | *Bulunamadı* | Bulundu |
+| Dize | *Bulunamadı* | Bulunamaz |
 | --- | --- | --- |
 | HomeController. hakkında |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
-|Amerika Birleşik Devletleri|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
+|Birleşik Devletler|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Kullanabileceğiniz arama ifadeleri aşağıda verilmiştir:
 
@@ -142,11 +137,11 @@ Application Insights SDK tarafından gönderilen kullanıma hazır telemetriye e
 
 [Application Insights için günlüklerin ve özel telemetrinin nasıl gönderileceğini öğrenin](../../azure-monitor/app/asp-net-trace-logs.md).
 
-## <a name="questions"></a>SORU-CEVAP &
+## <a name="questions"></a>soru-cevap &
 
 ### <a name="limits"></a>Ne kadar veri tutuluyor?
 
-Limitlerin [özetine](../../azure-monitor/app/pricing.md#limits-summary)bakın.
+[Limitlerin özetine](../../azure-monitor/app/pricing.md#limits-summary)bakın.
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Sunucu isteklerim ' de veri gönderme işlemini nasıl görebilirim?
 

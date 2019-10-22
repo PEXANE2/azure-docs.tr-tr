@@ -1,20 +1,18 @@
 ---
 title: Azure Pipelines ve Azure Application Insights ile DevOps yayın işlem hattınızı sürekli izleme | Microsoft Docs
 description: Application Insights ile sürekli izlemeyi hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/16/2019
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277677"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677526"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Yayın ardışık düzenine sürekli izleme ekleme
 
@@ -26,7 +24,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
 
 1. [Azure DevOps](https://dev.azure.com)'da bir kuruluş ve proje seçin.
    
-1. Proje sayfasının sol menüsünde işlem **hatları** > **yayınları**' nı seçin. 
+1. Proje sayfasının sol menüsünde, işlem **hatları**  > **sürümler**' i seçin. 
    
 1. **Yeni** ' nin yanındaki oku aşağı kaydırın ve **Yeni sürüm işlem hattı**' nı seçin. Ya da henüz bir işlem hattınız yoksa görüntülenen sayfada yeni işlem **hattı** ' nı seçin.
    
@@ -40,7 +38,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
 
 1. 1\. **aşama** Yapılandırma bölmesinde aşağıdaki alanları doldurun: 
 
-    | Parametre        | Value |
+    | Parametre        | Değer |
    | ------------- |:-----|
    | **Aşama adı**      | Bir aşama adı sağlayın veya **1. aşamada**bırakın. |
    | **Azure aboneliği** | Açılır ve kullanmak istediğiniz bağlı Azure aboneliğini seçin.|
@@ -53,7 +51,7 @@ Sürekli izleme sayesinde, yayın işlem hatları Application Insights ve diğer
 
 ## <a name="modify-alert-rules"></a>Uyarı kurallarını değiştirme
 
-Kullanıma hazır, **sürekli izleme şablonuyla Azure App Service dağıtımı** dört uyarı kuralına sahiptir: **Kullanılabilirlik**, **başarısız istekler**, **sunucu yanıt süresi**ve **sunucu özel durumları**. Daha fazla kural ekleyebilir veya kural ayarlarını hizmet seviyesi gereksinimlerinize uyacak şekilde değiştirebilirsiniz. 
+Kullanıma hazır, **sürekli izleme şablonuyla Azure App Service dağıtımı** dört uyarı kuralına sahiptir: **kullanılabilirlik**, **başarısız istekler**, **sunucu yanıt süresi**ve **sunucu özel durumları**. Daha fazla kural ekleyebilir veya kural ayarlarını hizmet seviyesi gereksinimlerinize uyacak şekilde değiştirebilirsiniz. 
 
 Uyarı kuralı ayarlarını değiştirmek için:
 
@@ -87,7 +85,7 @@ Dağıtım kapıları eklemek için:
    
    ![Azure Izleyici uyarılarını sorgulama](media/continuous-monitoring/005.png)
    
-1. **Değerlendirme seçenekleri**altında, **ağ geçitleri için yeniden değerlendirme** ve kapıların **başarısız olduğu zaman aşımı**arasındaki süre gibi ayarlar için istediğiniz değerleri girin. 
+1. **Değerlendirme seçenekleri**altında, **ağ geçitleri için yeniden değerlendirme ve kapıların** **başarısız olduğu zaman aşımı**arasındaki süre gibi ayarlar için istediğiniz değerleri girin. 
 
 ## <a name="view-release-logs"></a>Yayın günlüklerini görüntüle
 

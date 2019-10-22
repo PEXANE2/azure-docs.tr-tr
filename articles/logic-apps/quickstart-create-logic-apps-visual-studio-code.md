@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code iş akışları oluşturma ve yönetme Azure Logic Apps
-description: Hızlı Başlangıç-Visual Studio Code mantıksal uygulama JSON tanımlarını oluşturma ve yönetme (VS Code)
+title: Visual Studio Code Azure Logic Apps iş akışlarını otomatikleştirin
+description: Visual Studio Code ile mantıksal uygulama temel alınan JSON tanımlarını oluşturma veya düzenleme (VS Code)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 34de50517580c84c78ee1f192daa908b3f262670
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035347"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679163"
 ---
-# <a name="quickstart-create-and-manage-logic-app-definitions-by-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak mantıksal uygulama tanımları oluşturma ve yönetme
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code ile mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio Code sayesinde, kuruluşlar ve kuruluşlar genelinde uygulamaları, verileri, sistemleri ve Hizmetleri tümleştirmek için görevleri, iş akışlarını ve işlemleri otomatikleştirmenize yardımcı olan Logic Apps oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıçta, kod tabanlı bir deneyim aracılığıyla JavaScript Nesne Gösterimi (JSON) ' de iş akışı tanımı şemasıyla çalışarak mantıksal uygulama iş akışı tanımlarını nasıl oluşturabileceğiniz ve düzenleyebileceğiniz gösterilmektedir. Ayrıca, Azure 'a zaten dağıtılan mevcut Logic Apps üzerinde de çalışabilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio Code sayesinde, kuruluşlar ve kuruluşlar genelinde uygulamaları, verileri, sistemleri ve Hizmetleri tümleştirmek için görevleri, iş akışlarını ve işlemleri otomatikleştirmenize yardımcı olan Logic Apps oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıçta, kod tabanlı bir deneyim aracılığıyla Logic Apps için JavaScript Nesne Gösterimi (JSON) kullanan temel alınan iş akışı tanımlarını nasıl oluşturabileceğiniz ve düzenleyebileceği gösterilmektedir. Ayrıca, Azure 'a zaten dağıtılan mevcut Logic Apps üzerinde de çalışabilirsiniz.
 
 Aynı görevleri [Azure Portal](https://portal.azure.com) ve Visual Studio 'da gerçekleştirebilmenize karşın, Logic App tanımlarını zaten öğreniyor ve doğrudan kodda çalışmak istediğinizde Visual Studio Code daha hızlı bir şekilde çalışmaya başlayın. Örneğin, önceden oluşturulmuş mantıksal uygulamaları devre dışı bırakabilir, etkinleştirebilir, silebilir ve yenileyebilirsiniz. Ayrıca, Linux, Windows ve Mac gibi Visual Studio Code çalıştığı tüm geliştirme platformlarından Logic Apps ve tümleştirme hesapları üzerinde çalışabilirsiniz.
 
@@ -33,7 +33,7 @@ Başlamadan önce Şu öğelerin bulunduğundan emin olun:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* [Mantıksal uygulama iş akışı tanımları](../logic-apps/logic-apps-workflow-definition-language.md) ve JavaScript nesne gösterimi kullanan yapısı hakkında temel BILGILER (JSON)
+* [Mantıksal uygulama iş akışı tanımları](../logic-apps/logic-apps-workflow-definition-language.md) ve JSON ile açıklandığı şekilde yapısı hakkında temel bilgi
 
   Logic Apps yeni başladıysanız, Azure portal ilk mantıksal uygulamalarınızı oluşturan ve temel kavramlara odaklanmakta olan bu [hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin.
 

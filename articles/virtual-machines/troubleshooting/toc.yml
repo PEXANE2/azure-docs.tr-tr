@@ -127,12 +127,18 @@
   href: storage-resource-deletion-errors.md
 - name: Klasik depolama alanı kaynaklarını silerken karşılaşılan hatalar
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: Ekli VHD’ler ile VM’lerin beklenmeyen yeniden başlatmaları
-  href: unexpected-reboots-attached-vhds.md
-- name: Windows etkinleştirme sorunları
-  href: troubleshoot-activation-problems.md
-- name: Zorlamalı tünel oluşturmayla ilgili etkinleştirme sorunu
-  href: custom-routes-enable-kms-activation.md
+- name: VM yeniden başlatma sorunlarını giderme
+  items:
+    - name: Ekli VHD’ler ile VM’lerin beklenmeyen yeniden başlatmaları
+      href: unexpected-reboots-attached-vhds.md
+    - name: Sistemin yeniden başlatılma nedenini anlama
+      href: understand-vm-reboot.md
+- name: Windows etkinleştirme
+  items:
+    - name: Windows etkinleştirme sorunları
+      href: troubleshoot-activation-problems.md
+    - name: Zorlamalı tünel oluşturmayla ilgili etkinleştirme sorunu
+      href: custom-routes-enable-kms-activation.md
 - name: 0Uygulama erişimi sorunları
   href: troubleshoot-app-connection.md
 - name: Yeni VM dağıtımları
@@ -188,8 +194,6 @@
   href: troubleshooting-throttling-errors.md
 - name: İç içe geçmiş sanallaştırma kullanımı
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Sistemin yeniden başlatılma nedenini anlama
-  href: understand-vm-reboot.md
 - name: Uzaktan sorun giderme araçları
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: Sanal Makine Onarımı

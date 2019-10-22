@@ -1,37 +1,32 @@
 ---
 title: Azure Application Insights kullanılabilirlik uyarılarını ayarlama | Microsoft Docs
 description: Application Insights’ta web testleri ayarlayın. Web sitesi kullanılamaz duruma gelirse veya yavaş yanıt verirse uyarı alın.
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.author: lagayhar
-ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ea2bec541c13ec1615113cef184eb5ad502b158c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114388"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678290"
 ---
 # <a name="availability-alerts"></a>Kullanılabilirlik uyarıları
 
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md), dünyanın her yerindeki noktalarından uygulamanıza düzenli aralıklarla web istekleri gönderir. Uygulamanız yanıt vermiyorsa veya çok yavaş yanıt verirse sizi uyarır.
 
-## <a name="enable-alerts"></a>Uyarıları etkinleştir
+## <a name="enable-alerts"></a>Uyarıları etkinleştirme
 
 Uyarılar artık varsayılan olarak otomatik olarak etkinleştirilir, ancak uyarıyı tamamen yapılandırmak için ilk olarak kullanılabilirlik testinizi oluşturmanız gerekir.
 
 ![Deneyim oluştur](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  [Yeni Birleşik uyarılarla](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), uyarı kuralının önem derecesi ve [eylem gruplarıyla](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) ilgili bildirim tercihleri, uyarı deneyiminde yapılandırılmalıdır. Aşağıdaki adımlar olmadan yalnızca Portal içi bildirimler alacaksınız.
+>  [Yeni Birleşik uyarılarla](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), uyarı kuralının önem derecesi ve [eylem gruplarıyla](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) ilgili bildirim tercihleri, uyarı **deneyiminde yapılandırılmalıdır.** Aşağıdaki adımlar olmadan yalnızca Portal içi bildirimler alacaksınız.
 
 1. Kullanılabilirlik testini kaydettikten sonra, Ayrıntılar sekmesinde, yeni yaptığınız teste göre üç noktaya tıklayın. "Uyarıyı Düzenle" seçeneğine tıklayın.
 

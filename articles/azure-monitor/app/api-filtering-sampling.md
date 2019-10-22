@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights SDK 'sında filtreleme ve ön işleme | Microsoft Docs
 description: Telemetri Application Insights portalına gönderilmeden önce verileri filtrelemek veya eklemek için SDK için telemetri Işlemcileri ve telemetri başlatıcıları yazın.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 38a9e454-43d5-4dba-a0f0-bd7cd75fb97b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/23/2016
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: cae035927217a7e2677cf6ebfcce1b53782e4c01
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/23/2016
+ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248738"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677801"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 'da telemetri filtreleme ve ön işleme
 
@@ -122,9 +117,9 @@ Bu noktadan sonra oluşturulan TelemetryClients, işlemcinizi kullanacaktır.
 **ASP.NET Core/çalışan hizmeti uygulamaları**
 
 > [!NOTE]
-> @No__t-0 kullanılarak işlemcinin eklenmesi veya `TelemetryConfiguration.Active` kullanılması ASP.NET Core uygulamalar için geçerli değildir veya Microsoft. ApplicationInsights. WorkerService SDK kullanıyorsanız.
+> @No__t_0 veya `TelemetryConfiguration.Active` kullanarak işlemciyi eklemek ASP.NET Core uygulamaları için geçerli değildir veya Microsoft. ApplicationInsights. WorkerService SDK kullanıyorsanız.
 
-[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) veya [workerservice](worker-service.md#adding-telemetry-processors)kullanılarak yazılan uygulamalar için, yeni bir @no__t eklemek, aşağıda gösterildiği gibi `IServiceCollection` ' te `AddApplicationInsightsTelemetryProcessor` genişletme yöntemi kullanılarak yapılır. Bu yöntem, `Startup.cs` sınıfınızın `ConfigureServices` yönteminde çağrılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) veya [workerservice](worker-service.md#adding-telemetry-processors)kullanılarak yazılan uygulamalar için, aşağıda gösterildiği gibi yeni bir `TelemetryProcessor` eklemek `IServiceCollection` üzerinde `AddApplicationInsightsTelemetryProcessor` genişletme yöntemi kullanılarak yapılır. Bu yöntem, `Startup.cs` sınıfınızın `ConfigureServices` yönteminde çağrılır.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -197,7 +192,7 @@ public void Process(ITelemetry item)
 }
 ```
 
-#### <a name="diagnose-dependency-issues"></a>Bağımlılık sorunlarını Tanıla
+#### <a name="diagnose-dependency-issues"></a>Bağımlılık sorunlarını tanılama
 
 [Bu blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) , bağımlılıklara otomatik olarak ping göndererek bağımlılık sorunlarını tanılamaya yönelik bir projeyi açıklar.
 
@@ -281,9 +276,9 @@ protected void Application_Start()
 **ASP.NET Core/çalışan hizmeti uygulamaları: başlatıcısını yükleyin**
 
 > [!NOTE]
-> @No__t-0 kullanarak Başlatıcı ekleme veya `TelemetryConfiguration.Active` kullanılması ASP.NET Core uygulamalar için geçerli değildir veya Microsoft. ApplicationInsights. WorkerService SDK kullanıyorsanız.
+> @No__t_0 veya `TelemetryConfiguration.Active` kullanarak Başlatıcı eklemek ASP.NET Core uygulamaları için geçerli değildir veya Microsoft. ApplicationInsights. WorkerService SDK kullanıyorsanız.
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) veya [workerservice](worker-service.md#adding-telemetryinitializers)kullanılarak yazılan uygulamalar için, aşağıda gösterildiği gibi yeni bir @no__t eklemek, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `Startup.ConfigureServices` yönteminde yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) veya [workerservice](worker-service.md#adding-telemetryinitializers)kullanılarak yazılan uygulamalar için, aşağıda gösterildiği gibi, yeni bir `TelemetryInitializer` eklemek, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `Startup.ConfigureServices` yönteminde yapılır.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -410,16 +405,16 @@ Telemetri işlemcileri ve telemetri başlatıcıları arasındaki fark nedir?
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [API 'ye Genel Bakış](../../azure-monitor/app/api-custom-events-metrics.md)
+* [API’ye Genel Bakış](../../azure-monitor/app/api-custom-events-metrics.md)
 * [ASP.NET başvurusu](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>SDK kodu
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [JavaScript SDK 'Sı](https://github.com/Microsoft/ApplicationInsights-JS)
+* [JavaScript SDK'sı](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Sonraki adımlar
 * [Olayları ve günlükleri ara](../../azure-monitor/app/diagnostic-search.md)
-* [Aşağıdakine](../../azure-monitor/app/sampling.md)
+* [Örnekleme](../../azure-monitor/app/sampling.md)
 * [Sorun giderme](../../azure-monitor/app/troubleshoot-faq.md)
