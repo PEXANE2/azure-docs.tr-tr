@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 57e38888249de448f5286baa1b5ebb0e2c01bda9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719677"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757410"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure rezervasyon otomasyonu API’leri
 
@@ -26,7 +26,7 @@ Kuruluş için Azure hizmeti veya yazılım rezervasyonları ile ilgili bilgiler
 
 Kuruluşunuzun kullanımına göre hangi rezervasyon planının satın alınacağına yönelik öneriler almak için Rezervasyon önerisi API’sini kullanın. Daha fazla bilgi için bkz. [Rezervasyon önerileri alma](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Ayrıca Tüketim API Kullanım Ayrıntısını kullanarak da kaynak kullanımınızı analiz edebilirsiniz. Daha fazla bilgi için bkz [Kullanım Ayrıntıları - Ödeme Hesabına Göre Faturalama Dönemi Listesi](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Genellikle rezervasyon için en uygun aday, sürekli olarak kullandığınız Azure kaynaklarıdır.
+Ayrıca Tüketim API Kullanım Ayrıntısını kullanarak da kaynak kullanımınızı analiz edebilirsiniz. Daha fazla bilgi için bkz [Kullanım Ayrıntıları - Ödeme Hesabına Göre Faturalama Dönemi Listesi](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod-legacy). Genellikle rezervasyon için en uygun aday, sürekli olarak kullandığınız Azure kaynaklarıdır.
 
 ## <a name="buy-a-reservation"></a>Ayırma satın alma
 

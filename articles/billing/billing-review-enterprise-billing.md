@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 3ff1a119ed87c8bffff227679bec41bc653c0c42
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 47668169841cc2b180995808349487cefed02391
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718769"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754297"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API’leri kullanarak kurumsal kayıt faturalamasını gözden geçirme
 
@@ -78,7 +78,7 @@ Başarılı yanıt için, hesabın ayrıntılı maliyetlerinin listesini içeren
 }
 ```  
 
-Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Ödeme hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist).
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Ödeme hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy).
 
 ## <a name="department-billing"></a>Bölüm faturalaması 
 
@@ -134,7 +134,7 @@ Aşağıdaki örnekte `1234` bölümü için REST API çıktısı gösterilmekte
 }
 ```  
 
-Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Bölüm için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#departmentusagedetailslist).
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Bölüm için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#departmentusagedetailslist-legacy).
 
 ## <a name="enrollment-account-billing"></a>Kayıt hesabı faturalaması
 
@@ -187,7 +187,7 @@ Aşağıdaki örnekte, `1234` kurumsal kaydı için REST API çıktısı göster
 }
 ``` 
 
-Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Kayıt hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist).
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Kayıt hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy).
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 - [Kurumsal raporlamaya genel bakış](https://docs.microsoft.com/azure/billing/billing-enterprise-api) bölümünü gözden geçirin
