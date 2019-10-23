@@ -599,8 +599,10 @@
       items:
         - name: Giriş
           href: mongodb-introduction.md
-        - name: Kablo protokolü desteği
+        - name: Kablo protokolü desteği (3.2)
           href: mongodb-feature-support.md
+        - name: Kablo protokolü desteği (3.6)
+          href: mongodb-feature-support-36.md
         - name: Hızlı Başlangıçlar
           items:
             - name: .NET

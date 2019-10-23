@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 05ce5fd560168c1f60b7c559539f4a368ba83ca8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718751"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754292"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API’leri kullanarak abonelik faturalamasını gözden geçirme
 
@@ -92,7 +92,7 @@ Başarılı yanıt için, hesabınızın ayrıntılı maliyetlerinin listesini i
 |**meterDetails** | Kullanımla ilgili ayrıntılı bilgiler. |
 |**nextLink**| Bu ayarlandığında, ayrıntılar için sonraki “sayfanın” URL’sini belirtir. Sayfa son sayfa olduğunda boştur. |
 
-Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması için bkz. [Kullanım ayrıntılarını listeleme](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod).
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması için bkz. [Kullanım ayrıntılarını listeleme](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy).
 
 Diğer durum kodları, hata koşullarını belirtir. Bu durumlarda yanıt nesnesi, isteğin neden başarısız olduğunu açıklar.
 

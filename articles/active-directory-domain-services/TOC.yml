@@ -9,8 +9,10 @@
 - name: Öğreticiler
   expanded: true
   items:
-    - name: Yönetilen etki alanı oluşturma
+    - name: Temel yönetilen etki alanı oluşturma
       href: tutorial-create-instance.md
+    - name: Uygulamalar için sanal ağı yapılandırma
+      href: tutorial-configure-networking.md
     - name: Windows Server VM’sini etki alanına ekleme
       href: join-windows-vm.md
     - name: Yönetim araçlarını yükleme
@@ -19,6 +21,8 @@
       href: tutorial-configure-ldaps.md
     - name: Parola karması eşitlemeyi yapılandırma
       href: tutorial-configure-password-hash-sync.md
+    - name: Gelişmiş yönetilen etki alanı oluşturma
+      href: tutorial-create-instance-advanced.md
 - name: Örnekler
   items:
     - name: Azure PowerShell kullanarak yönetilen etki alanı oluşturma

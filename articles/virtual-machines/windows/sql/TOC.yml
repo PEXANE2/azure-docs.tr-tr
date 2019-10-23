@@ -64,9 +64,9 @@
           href: virtual-machines-windows-ps-sql-create.md
     - name: Kaynak sağlayıcısına kaydolma
       href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: SQL VM için lisanslama modelini değiştirme
+    - name: Lisanslama modelini değiştirme
       href: virtual-machines-windows-sql-ahb.md
-    - name: SQL Server sürümünü değiştirme
+    - name: Sürümü değiştirme
       href: virtual-machines-windows-sql-change-edition.md
     - name: Geçiş
       items:
@@ -102,8 +102,8 @@
           items:
             - name: Depolama Alanları Doğrudan ile
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Premium dosya paylaşımı ile
-              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
+            - name: Premium Dosya Paylaşımı ile
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: Başvuru
   items:
     - name: Azure PowerShell
