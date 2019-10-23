@@ -3,10 +3,6 @@
 - name: Mimari ve tasarım
   href: overview.md
   expanded: false
-  items: null
-- name: Mimari ve tasarım
-  href: overview.md
-  expanded: false
   items:
     - name: Bulutta paylaşılan sorumluluk
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure güvenlik hizmetleri
   href: services-technologies.md
-- name: Teknik genel bakışlar
-  href: overviews.md
 - name: En iyi uygulamalar
   href: best-practices-and-patterns.md
 - name: Kaynaklar
   items:
     - name: Yerleşik güvenlik denetimleri
       href: security-controls.md
-    - name: Azure güvenlik MVP programı
-      href: mvp.md
     - name: Siber güvenlik danışmanlığı
       href: cyber-services.md
     - name: Güvenlik olayı destek biletini günlüğe kaydetme

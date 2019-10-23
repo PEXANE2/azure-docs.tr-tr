@@ -98,13 +98,13 @@
     - name: Tanılama ve sorun giderme
       items:
         - name: Redis sunucusu sorunlarını giderme
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: Redis istemcisi sorunlarını giderme
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: Zaman aşımı sorunlarını giderme
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: Veri kaybı sorunlarını giderme
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: Ölçek
       items:
         - name: Farklı bir boyuta ve katmana güncelleştirme
