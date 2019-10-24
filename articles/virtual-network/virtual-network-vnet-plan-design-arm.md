@@ -1,6 +1,6 @@
 ---
 title: Azure sanal ağlarını planlayın | Microsoft Docs
-description: Yalıtım, bağlantı ve konum gereksinimlerinize göre sanal ağları nasıl planlayacağınızı öğrenin.
+description: Yalıtım, bağlantı ve konum gereksinimleriniz temelinde sanal ağları planlamayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168507"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756123"
 ---
 # <a name="plan-virtual-networks"></a>Sanal ağları planlayın
 
@@ -29,7 +29,7 @@ Denemek için bir sanal ağ oluşturmak oldukça kolaydır, ancak olasılığın
 
 Tüm Azure kaynakları bir ada sahiptir. Ad, her kaynak türü için değişebilen bir kapsam içinde benzersiz olmalıdır. Örneğin, bir sanal ağın adı bir [kaynak grubu](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)içinde benzersiz olmalıdır, ancak bir [abonelik](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) veya Azure [bölgesi](https://azure.microsoft.com/regions/#services)içinde yinelenebilir. Zaman içinde birkaç ağ kaynağını yönetirken, kaynak adlandırma yararlı olduğunda tutarlı bir şekilde kullanabileceğiniz bir adlandırma kuralı tanımlama. Öneriler için bkz. [adlandırma kuralları](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#virtual-networking).
 
-## <a name="regions"></a>Düzenleye
+## <a name="regions"></a>Bölgeler
 
 Tüm Azure kaynakları bir Azure bölgesinde ve aboneliğinde oluşturulur. Kaynak, kaynak ile aynı bölgede ve abonelikte bulunan bir sanal ağda oluşturulabilir. Bununla birlikte, farklı aboneliklerde ve bölgelerde bulunan sanal ağları bağlayabilirsiniz. Daha fazla bilgi için bkz. [bağlantı](#connectivity). İçindeki kaynakları dağıtmak için hangi bölgelere karar verirken, kaynakların tüketicilerinin fiziksel olarak bulunduğu yeri göz önünde bulundurun:
 
@@ -37,7 +37,7 @@ Tüm Azure kaynakları bir Azure bölgesinde ve aboneliğinde oluşturulur. Kayn
 - Veri yerleşimi, egemenlik, uyumluluk veya dayanıklılık gereksinimleriniz var mı? Bu durumda, gereksinimlere göre hizalanan bölgenin seçilmesi kritik öneme sahiptir. Daha fazla bilgi için bkz. [Azure coğrafi lıkları](https://azure.microsoft.com/global-infrastructure/geographies/).
 - Dağıttığınız kaynaklar için aynı Azure bölgesindeki Azure Kullanılabilirlik Alanları dayanıklılık gerektirsin mi? Sanal makineler (VM) gibi kaynakları, aynı sanal ağ içindeki farklı kullanılabilirlik bölgelerine dağıtabilirsiniz. Ancak tüm Azure bölgeleri kullanılabilirlik bölgelerini desteklemez. Kullanılabilirlik alanları ve bunları destekleyen bölgeler hakkında daha fazla bilgi edinmek için bkz. [kullanılabilirlik alanları](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="subscriptions"></a>Subscriptions
+## <a name="subscriptions"></a>Abonelikler
 
 Her abonelik için gereken sayıda sanal ağı en fazla [sınıra](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar dağıtabilirsiniz. Bazı kuruluşların, örneğin farklı departmanlar için farklı abonelikleri vardır. Abonelikler hakkında daha fazla bilgi ve ilgili konular için bkz. [abonelik](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)İdaresi.
 
@@ -56,7 +56,7 @@ Sanal ağ, Azure genel ağının sanal, yalıtılmış bir parçasıdır. Her sa
 - Farklı sanal ağlardaki kaynaklar için herhangi bir kuruluş yönetim gereksinimleriniz var mı? Bu durumda, kuruluşunuzdaki bireylere [izin atamasını](#permissions) kolaylaştırmak veya farklı sanal ağlara farklı ilkeler atamak için kaynakları ayrı sanal ağa ayırabilirsiniz.
 - Bazı Azure hizmet kaynaklarını bir sanal ağa dağıttığınızda, kendi sanal ağını oluşturamazlar. Bir Azure hizmetinin kendi sanal ağını oluşturup oluşturmadığını öğrenmek için, [bir sanal ağa dağıtılabilecek her bir Azure hizmeti](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)için bilgiler bölümüne bakın.
 
-### <a name="subnets"></a>Ağlarda
+### <a name="subnets"></a>Alt ağlar
 
 Bir sanal ağ, [sınırlara](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)kadar bir veya daha fazla alt ağa ayrılabilir. Bir abonelikte tek bir alt ağ veya birden çok sanal ağ oluşturma konusunda karar verirken dikkate almanız gerekenler:
 
@@ -87,7 +87,7 @@ Azure, bir alt ağdan giden trafik için birkaç varsayılan yol oluşturur. Azu
 
 Özel yönlendirme uygulamanız gerekiyorsa, [Azure 'da yönlendirmeyi](virtual-networks-udr-overview.md)öğrenmeniz önerilir.
 
-## <a name="connectivity"></a>Bilirlik
+## <a name="connectivity"></a>Bağlantı
 
 Sanal ağ eşlemesi veya şirket içi ağınızda bir Azure VPN ağ geçidi kullanarak sanal bir ağı diğer sanal ağlara bağlayabilirsiniz.
 
@@ -107,13 +107,13 @@ Bir sanal ağdaki kaynaklar, Azure 'un [YERLEŞIK DNS](virtual-networks-name-res
 
 ## <a name="permissions"></a>İzinler
 
-Azure, kaynaklara [göre rol tabanlı erişim denetimi](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) kullanır. İzinler şu hiyerarşide bir [kapsama](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) atandı: abonelik, yönetim grubu, kaynak grubu ve tek kaynak. Hiyerarşi hakkında daha fazla bilgi edinmek için bkz. [kaynaklarınızı düzenleme](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Azure sanal ağları ve eşleme, ağ güvenlik grupları, hizmet uç noktaları ve yol tabloları gibi ilgili tüm özellikleri ile çalışmak için kuruluşunuzun üyelerini yerleşik [Sahibe](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [katkıda](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)buluna 'ya atayabilir veya [ Ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolleri ve ardından rolü uygun kapsama atayın. Bir sanal ağ özellikleri alt kümesi için belirli izinler atamak istiyorsanız, [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oluşturun ve [sanal ağlar](manage-virtual-network.md#permissions), [alt ağlar ve hizmet uç noktaları](virtual-network-manage-subnet.md#permissions), ağ arabirimleri için gereken belirli izinleri atayın [ ](virtual-network-network-interface.md#permissions), [eşleme](virtual-network-manage-peering.md#permissions), [Ağ ve uygulama güvenlik grupları](manage-network-security-group.md#permissions)ya da rol için [Rota tabloları](manage-route-table.md#permissions) .
+Azure, kaynaklara [göre rol tabanlı erişim denetimi](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) kullanır. İzinler şu hiyerarşide bir [kapsama](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) atandı: yönetim grubu, abonelik, kaynak grubu ve tek kaynak. Hiyerarşi hakkında daha fazla bilgi edinmek için bkz. [kaynaklarınızı düzenleme](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Azure sanal ağları ve eşleme, ağ güvenlik grupları, hizmet uç noktaları ve yol tabloları gibi ilgili tüm özellikleri ile çalışmak için kuruluşunuzun üyelerini yerleşik [Sahibe](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [katkıda](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)buluna 'ya atayabilir veya [ Ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolleri ve ardından rolü uygun kapsama atayın. Bir sanal ağ özellikleri alt kümesi için belirli izinler atamak istiyorsanız, [özel bir rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oluşturun ve [sanal ağlar](manage-virtual-network.md#permissions), [alt ağlar ve hizmet uç noktaları](virtual-network-manage-subnet.md#permissions), ağ arabirimleri için gereken belirli izinleri atayın [ ](virtual-network-network-interface.md#permissions), [eşleme](virtual-network-manage-peering.md#permissions), [Ağ ve uygulama güvenlik grupları](manage-network-security-group.md#permissions)ya da rol için [Rota tabloları](manage-route-table.md#permissions) .
 
-## <a name="policy"></a>Policy
+## <a name="policy"></a>İlke
 
 Azure Ilkesi, ilke tanımları oluşturmanıza, atamanıza ve yönetmenize olanak sağlar. İlke tanımları kaynaklarınızın üzerinde farklı kurallar uygular, bu nedenle kaynaklar kurumsal standartlarınızla ve hizmet düzeyi sözleşmelerle uyumlu kalır. Azure Ilkesi, kaynaklarınızın bir değerlendirmesini çalıştırır ve sahip olduğunuz ilke tanımlarıyla uyumlu olmayan kaynaklar için tarama yapar. Örneğin, yalnızca belirli bir kaynak grubunda veya bölgede sanal ağların oluşturulmasına izin veren bir ilke tanımlayabilir ve uygulayabilirsiniz. Başka bir ilke, her alt ağın kendisiyle ilişkilendirilmiş bir ağ güvenlik grubu olmasını gerektirebilir. Daha sonra, kaynaklar oluşturma ve güncelleştirme sırasında ilkeler değerlendirilir.
 
-İlkeler şu hiyerarşiye uygulandı: abonelik, yönetim grubu ve kaynak grubu. [Azure ilkesi](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hakkında daha fazla bilgi edinin veya bazı sanal ağ [ilkesi şablonu](policy-samples.md) örneklerini dağıtın.
+İlkeler şu hiyerarşiye uygulandı: yönetim grubu, abonelik ve kaynak grubu. [Azure ilkesi](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hakkında daha fazla bilgi edinin veya bazı sanal ağ [ilkesi şablonu](policy-samples.md) örneklerini dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

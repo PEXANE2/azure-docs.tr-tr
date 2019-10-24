@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f5b40e59a4ed2393e3b9912f8e4caa06ee267428
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676704"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757516"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
 
@@ -40,7 +40,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. **@No__t-1** veya **+ kaynak oluştur**' u seçin.
+1. **@No__t_1** veya **+ kaynak oluştur**' u seçin.
 2. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
 3. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
 
@@ -52,7 +52,7 @@ Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümde
 
 1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
 2. Kişisel masaüstü için uygun seçeneği belirleyin. **Evet**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
-3. Windows sanal masaüstü istemcilerinde oturum açabilen ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişebilen kullanıcıların virgülle ayrılmış bir listesini girin. Örneğin, user1@contoso.com ve user2@contoso.com erişimi atamak istiyorsanız, "user1@contoso.com, user2@contoso.com" girin.
+3. Windows sanal masaüstü istemcilerinde oturum açabilen ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişebilen kullanıcıların virgülle ayrılmış bir listesini girin. Örneğin, user1@contoso.com atamak ve erişim user2@contoso.com istiyorsanız "user1@contoso.com, user2@contoso.com" yazın.
 4. Yeni **Oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
 5. **Konum**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
 6. **Tamam**’ı seçin.
@@ -73,7 +73,7 @@ Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümde
 **Sanal makine ayarları** dikey penceresi için:
 
 >[!NOTE]
-> VM 'lerinizi bir Azure Active Directory Domain Services (Azure AD DS) ortamına katılıyorsanız, etki alanına katılma kullanıcısının [AAD DC Yöneticiler grubunun](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)da bir üyesi olduğundan emin olun.
+> VM 'lerinizi bir Azure Active Directory Domain Services (Azure AD DS) ortamına katılıyorsanız, etki alanına katılma kullanıcısının [AAD DC Yöneticiler grubunun](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)da bir üyesi olduğundan emin olun.
 
 1. **Görüntü kaynağı**için kaynağı seçin ve nasıl bulacağınızı ve nasıl depolanacağını öğrenmek için uygun bilgileri girin. Yönetilen diskler kullanmayı tercih ederseniz,. vhd dosyasını içeren depolama hesabını seçin.
 2. VM 'Lere Active Directory etki alanına katılacak etki alanı hesabının kullanıcı asıl adını ve parolasını girin. Bu aynı Kullanıcı adı ve parola, sanal makinelerde yerel bir hesap olarak oluşturulacaktır. Bu yerel hesapları daha sonra sıfırlayabilirsiniz.

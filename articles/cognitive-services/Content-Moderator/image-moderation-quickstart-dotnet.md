@@ -1,23 +1,23 @@
 ---
-title: 'Hızlı Başlangıç: Content Moderator sakıncalı içerik C# için görüntüleri analiz etme'
+title: 'Hızlı başlangıç: Content Moderator sakıncalı içerik C# Için görüntüleri analiz etme'
 titleSuffix: Azure Cognitive Services
 description: .NET için Content Moderator SDK kullanarak çeşitli sakıncalı malzemeler için görüntü içeriğini çözümleme
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: pafarley
+ms.openlocfilehash: 3fdc3fa0b7c624558aef84f86afd85c5aedb7054
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946226"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757310"
 ---
-# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Hızlı Başlangıç: ' Deki sakıncalı içerik için görüntüleri analiz etmeC#
+# <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Hızlı başlangıç: ' de sakıncalı içerik için görüntüleri analiz etmeC#
 
 Bu makalede, [.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) için Content Moderator SDK'sını kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanır. Yetişkinlere yönelik içeriği, ayıklanabilir metnini ve insan yüzlerini nasıl tarayacağını potansiyel olarak sakıncalı bir malzemeden nasıl tarayabileceğinizi öğreneceksiniz.
 
@@ -92,7 +92,7 @@ Aşağıdaki kodu **Program** sınıfındaki **Main** yöntemine ekleyin. Bu kod
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Program JSON dize verilerini _ModerationOutput.json_ dosyasına yazacaktır. Bu hızlı başlangıçta kullanılan örnek görüntüler aşağıdaki çıkışı verir. Her görüntüde, `ImageModeration`ve için `FaceDetection`farklı bölümler vardır ve `TextDetection`bu, **EvaluateImage** yönteminizin üç API çağrısına karşılık gelir.
+Program JSON dize verilerini _ModerationOutput.json_ dosyasına yazacaktır. Bu hızlı başlangıçta kullanılan örnek görüntüler aşağıdaki çıkışı verir. Her görüntüde, **EvaluateImage** YÖNTEMINIZIN üç API çağrısına karşılık gelen `ImageModeration`, `FaceDetection` ve `TextDetection` için farklı bölümler bulunur.
 
 ```json
 [{

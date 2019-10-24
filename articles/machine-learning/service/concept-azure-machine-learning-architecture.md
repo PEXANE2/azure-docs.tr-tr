@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c886289f098eb41f4b215b4abc2e206db93a27f9
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710136"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756041"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -34,7 +34,7 @@ Machine Learning modeli iş akışı genellikle bu diziyi izler:
 
 1. **Paket** -tatmin edici bir çalıştırma oluşturulduktan sonra, kalıcı modeli **model kayıt defterine**kaydedin.
 
-1. @No__t **doğrulayın**-1 geçerli ve son çalıştırmaların günlüğe kaydedilen ölçümler Için denemeyi**sorgulayın** . Ölçümler istenen sonucu belirtmezse, 1. adıma dönün ve betiklerinizde yineleme yapın.
+1. Geçerli ve geçmiş çalışmalardan günlüğe kaydedilen ölçümler için denemeyi**sorgulama**  -  **doğrulayın** . Ölçümler istenen sonucu belirtmezse, 1. adıma dönün ve betiklerinizde yineleme yapın.
 
 1. **Dağıtım** -modeli kullanan bir Puanlama betiği geliştirin ve modeli Azure 'da **Web hizmeti** olarak veya **IoT Edge bir cihaza** **dağıtın** .
 
@@ -59,20 +59,20 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#deployment">Dağıtım</a>
 + <a href="#environments">Lý</a>
 + [Tahmini](#estimators)
-+ <a href="#experiments">Denemeleri</a>
++ <a href="#experiments">Denemeler</a>
 + <a href="#github-tracking-and-integration">Git izleme</a>
 + <a href="#iot-module-deployments">IoT modülleri</a>
-+ <a href="#logging">Günlüğe Kaydetme</a>
++ <a href="#logging">Açmak</a>
 + <a href="#ml-pipelines">ML işlem hatları</a>
 + <a href="#models">Modelde</a>
-+ <a href="#runs">Çalıştır</a>
++ <a href="#runs">Çalışmaz</a>
 + <a href="#run-configurations">Yapılandırmayı Çalıştır</a>
-+ <a href="#snapshots">Anlık Görüntü</a>
++ <a href="#snapshots">Görüntüye</a>
 + <a href="#training-scripts">Eğitim betiği</a>
 + <a href="#web-service-deployments">Web Hizmetleri</a>
 + <a href="#workspaces">Alanında</a>
 
-### <a name="activities"></a>Etkinlikler
+### <a name="activities"></a>Olaylar
 
 Etkinlik uzun süren bir işlemi temsil eder. Aşağıdaki işlemler etkinlik örnekleridir:
 
@@ -91,13 +91,13 @@ Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya W
 
 **Azure Machine Learning veri kümeleri** (Önizleme), erişimi daha kolay hale getirir ve verilerinize çalışır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri keşfedebilir ve farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilirsiniz.
 
-Veri kümeleri, `from_delimited_files()` veya `to_pandas_dataframe()` kullanımı gibi popüler biçimlerdeki verilerle çalışma yöntemleri sağlar.
+Veri kümeleri, `from_delimited_files()` veya `to_pandas_dataframe()` kullanma gibi popüler biçimlerdeki verilerle çalışmak için yöntemler sağlar.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
 
 Bir **veri deposu** , bir Azure depolama hesabı üzerinden bir depolama soyutlamasıdır. Veri deposu, arka uç depolama alanı olarak bir Azure Blob kapsayıcısını veya bir Azure dosya paylaşımından kullanabilir. Her çalışma alanının varsayılan bir veri deposu vardır ve ek veri depolarını kaydedebilirsiniz. Veri deposundan dosyaları depolamak ve almak için Python SDK API 'sini veya Azure Machine Learning CLı 'yi kullanın.
 
-### <a name="deployment"></a>Dağıtım
+### <a name="deployment"></a>Kurulum
 
 Dağıtım, modelinize bir Web hizmetine veya tümleşik cihaz dağıtımları için bir IoT modülüne yönelik bir örneklemedir.
 
@@ -119,7 +119,7 @@ Dağıtılan bir IoT modülü, modelinizi ve ilişkili betiği ya da uygulamanı
 
 Azure IoT Edge modülünüzün çalıştığından emin olur ve bunu barındıran cihazı izler.
 
-### <a name="environments"></a>lý
+### <a name="environments"></a>Ortamlar
 
 Azure ML ortamları, veri hazırlama, model eğitimi ve modeli sunan bir yeniden oluşturulabilir ortam oluşturmak için kullanılan yapılandırmayı (Docker/Python/Spark/vb.) belirtmek için kullanılır. Bunlar, farklı işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi iş akışlarını etkinleştiren Azure Machine Learning çalışma alanınızda yönetilen ve sürümlü varlıklardır.
 
@@ -140,7 +140,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 * [TensorFlow modellerini Azure Machine Learning ölçeklendirerek eğitin ve kaydedin](how-to-train-tensorflow.md).
 * [Chainer modellerini Azure Machine Learning ölçeklendirerek eğitin ve kaydedin](how-to-train-chainer.md).
 
-### <a name="experiments"></a>Denemeleri
+### <a name="experiments"></a>Denemeler
 
 Deneme, belirtilen bir betikten birçok çalıştırma gruplandırmasıdır. Her zaman bir çalışma alanına aittir. Bir çalıştırma gönderdiğinizde, bir deneme adı sağlarsınız. Çalıştırma bilgileri bu deneme kapsamında saklanır. Bir çalıştırma gönderirseniz ve var olmayan bir deneme adı belirtirseniz, yeni belirtilen ada sahip yeni bir deneme otomatik olarak oluşturulur.
 
@@ -149,10 +149,11 @@ Deneme kullanmanın bir örneği için bkz. [öğretici: İlk modelinize eğitme
 
 ### <a name="github-tracking-and-integration"></a>GitHub izleme ve Tümleştirme
 
-Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Örneğin, deponun geçerli kayıt KIMLIĞI, geçmişin bir parçası olarak günlüğe kaydedilir. Bu, bir Estimator, ML işlem hattı veya betik çalıştırması kullanılarak gönderilen çalışmalarla birlikte çalışır. Ayrıca SDK veya Machine Learning CLı 'dan gönderilen çalıştırmalar için de çalışır.
+Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Bu, bir Estimator, ML işlem hattı veya betik çalıştırması kullanılarak gönderilen çalışmalarla birlikte çalışır. Ayrıca SDK veya Machine Learning CLı 'dan gönderilen çalıştırmalar için de çalışır.
 
+Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Çözümünüzü geliştirirken, isteğe bağlı ölçümleri günlüğe kaydetmek için Python betikinizdeki Azure Machine Learning Python SDK 'sını kullanın. Çalıştırıldıktan sonra, çalıştırmanın dağıtmak istediğiniz modeli üretmediğini öğrenmek için ölçümleri sorgulayın.
 
@@ -188,7 +189,7 @@ Etkin bir dağıtım tarafından kullanılan kayıtlı bir modeli silemezsiniz.
 Bir modeli kaydetme örneği için bkz. [Azure Machine Learning görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).
 
 
-### <a name="runs"></a>Çalışabilir
+### <a name="runs"></a>Çalıştırmalar
 
 Bir çalıştırma, bir eğitim betiğinin tek yürütülmesinden oluşur. Azure Machine Learning tüm çalıştırmaları kaydeder ve aşağıdaki bilgileri depolar:
 
@@ -206,7 +207,7 @@ Bir modeli eğitme için bir komut dosyası gönderdiğinizde bir çalıştırma
 Çalışma yapılandırması, eğitim betiğinizi içeren dizin içindeki bir dosyaya kalıcı olabilir veya bir bellek içi nesne olarak oluşturulabilir ve bir çalıştırma göndermek için kullanılabilir.
 
 Örneğin, çalışma yapılandırması için bkz. [modelinizi eğitme için bir işlem hedefi seçme ve kullanma](how-to-set-up-training-targets.md).
-### <a name="snapshots"></a>görüntüsünü
+### <a name="snapshots"></a>Anlık Görüntüler
 
 Bir çalıştırma gönderdiğinizde, Azure Machine Learning betiği içeren dizini zip dosyası olarak sıkıştırır ve işlem hedefine gönderir. ZIP dosyası daha sonra ayıklanır ve betik burada çalıştırılır. Azure Machine Learning Ayrıca ZIP dosyasını çalışma kaydının bir parçası olarak bir anlık görüntü olarak depolar. Çalışma alanına erişimi olan herkes bir çalıştırma kaydına gözatabilir, anlık görüntüyü indirebilir.
 
@@ -219,7 +220,7 @@ Bir modeli eğitebilmeniz için eğitim betiğini ve ilişkili dosyaları içere
 
 Bir örnek için bkz. [öğretici: görüntü sınıflandırma modelini Azure Machine Learning eğitme](tutorial-train-models-with-aml.md).
 
-### <a name="workspaces"></a>Çalışma Alanları
+### <a name="workspaces"></a>Çalışma alanları
 
 [Çalışma alanı](concept-workspace.md) Azure Machine Learning için en üst düzey kaynaktır. Azure Machine Learning kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanını başkalarıyla paylaşabilirsiniz. Çalışma alanlarının ayrıntılı bir açıklaması için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
 

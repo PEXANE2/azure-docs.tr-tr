@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 4674dede5912dc1dc64bd0e092e28461f30bebcd
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: MT
+ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554228"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750390"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -45,7 +45,7 @@ Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen
 
 ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede 5 olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
 
-Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, [](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) [ASP.net, ASP.NET Core ve Java için sabit değer yüzdesine göre Application Insights, verilerin ne zaman alındığını gösteren örnek örnekleme kullanabilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
+Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, [](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) [ASP.net, ASP.NET Core ve Java için sabit değer yüzdesine göre Application Insights, verilerin ne zaman alındığını gösteren örnek örnekleme kullanabilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
@@ -164,7 +164,7 @@ Korunan her kayıtta, `itemCount`, temsil ettiği özgün kayıt sayısını gö
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
-Application Insights kaynakları için varsayılan saklama 90 gündür. Her bir Application Insights kaynağı için farklı saklama dönemleri seçilebilir. Kullanılabilir saklama dönemlerinin tam kümesi 30, 60, 90, 120, 180, 270, 365, 550 veya 730 günleridir. 
+Application Insights kaynakları için varsayılan saklama 90 gündür. Her bir Application Insights kaynağı için farklı saklama süreleri seçilebilir. Kullanılabilir saklama dönemlerinin tam kümesi 30, 60, 90, 120, 180, 270, 365, 550 veya 730 günleridir. 
 
 Application Insights kaynağınız, saklama süresini değiştirmek için **kullanım ve tahmini maliyetler** sayfasına gidin ve **veri saklama** seçeneğini belirleyin:
 

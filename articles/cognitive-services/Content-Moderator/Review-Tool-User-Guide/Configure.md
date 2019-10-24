@@ -3,19 +3,19 @@ title: Inceleme Aracı ayarlarını yapılandırma-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Content Moderator için ekibiniz, Etiketler, bağlayıcılar, iş akışları ve kimlik bilgilerinizi yapılandırmak ya da almak için Inceleme aracını kullanın.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882732"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757427"
 ---
 # <a name="configure-the-review-tool"></a>Gözden Geçirme aracını yapılandırma
 
@@ -25,7 +25,7 @@ ms.locfileid: "68882732"
 
 ## <a name="manage-team-and-subteams"></a>Ekip ve alt takımları yönetme
 
-**Takım** sekmesi, belirli [insan İncelemeleri](../review-api.md#reviews) başlatıldığında, takımınızı ve&mdash;diğer ekiplere ait Kullanıcı gruplarını yönetmenize olanak sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
+**Takım** sekmesi, takımınızın ve alt takımlarınızın &mdash;groups, bazı [insan İncelemeleri](../review-api.md#reviews) başlatıldığında bilgilendirilecek kullanıcıların yönetmenizi sağlar. Yalnızca bir ekibiniz olabilir (gözden geçirme aracıyla kaydolduğunuzda oluşturursunuz), ancak birden çok alt takım oluşturabilirsiniz. Ekip Yöneticisi üyeleri davet edebilir, izinlerini ayarlayabilir ve bunları farklı alt takımlara atayabilir.
 
 ![Araç takımı ayarlarını gözden geçirme](images/settings-2-team.png)
 
@@ -43,7 +43,7 @@ Bu bölümde, subekipler oluşturma ve anında İncelemeleri hızlı bir şekild
 
 Zaten varsayılan ekibin üyesi olmayan bir alt ekibe bir Kullanıcı atayamazsınız, bu nedenle önce varsayılan ekibe gözden geçirenler eklemeniz gerekir. **Takım** sekmesinde **davet et** ' e tıklayın.
 
-![Kullanıcıları davet et](images/invite-users.png)
+![Kullanıcıları davet etme](images/invite-users.png)
 
 #### <a name="assign-teammates-to-subteam"></a>Ekip mates 'yi alt ekibe atama
 
@@ -64,9 +64,9 @@ Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incele
 
 ![Alt takımlar arasında geçiş yap](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Etiketler
 
-**Etiketler** sekmesi, iki varsayılan&mdash;denetim etiketlerinin (**a**) ve **isracy** ( **r**) yanı sıra özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
+**Etiketler** sekmesi,**ıyetişkin** (**a**) ve **isracy** (**r**) &mdash; iki varsayılan denetleme etiketine ek olarak özel denetleme etiketleri tanımlamanıza olanak sağlar. Özel bir etiket oluşturduğunuzda, bu, varsayılan etiketlerin yanı sıra incelemelerde kullanılabilir hale gelir. Görünürlük ayarlarını değiştirerek, gözden geçirmeler halinde hangi etiketlerin gösterileceğini değiştirebilirsiniz.
 
 !["Görünür" onay kutuları dahil olmak üzere etiket görünümü](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Birden fazla alt ekibin üyesiyseniz, sizin için görüntülenen içerik incele
 
 Yeni bir etiket oluşturmak için ilgili alanlara kısa bir kod, ad ve açıklama girmeniz gerekir.
 
-- **Kısa kod**: Etiketinize yönelik iki harfli bir kod girin. Örnek: **CB**
-- **Ad**: Boşluk olmadan küçük harf olarak kısa ve açıklayıcı bir etiket adı girin. Örnek: **ıbulber**.
-- **Açıklama**: (isteğe bağlı) etiketlerinizin hedeflediği içerik türünün bir açıklamasını girin. Örnek: **Siber bulun tasviri veya örnekleri**.
+- **Kısa kod**: etiketinize yönelik iki harfli bir kod girin. Örnek: **CB**
+- **Ad**: boşluk olmadan küçük harfli bir kısa ve açıklayıcı etiket adı girin. Örnek: **ıbulber**.
+- **Açıklama**: (isteğe bağlı) etiketlerinizin hedeflediği içerik türünün bir açıklamasını girin. Örnek: **tasber bulun tasviri veya örnekleri**.
 
 Etiket eklemek için **Ekle** ' ye tıklayın ve etiket oluşturmayı bitirdiğinizde **Kaydet** ' e tıklayın.
 
@@ -90,12 +90,12 @@ Etiketler listesindeki girişlerinin yanındaki çöp kutusu simgesini seçerek 
 
 **Bağlayıcılar** sekmesi, içerik [iş akışlarının](../review-api.md#workflows)bir parçası olarak farklı yollarla içeriği işleyebilen, hizmete özgü eklentiler olan bağlayıcılarınızı yönetmenizi sağlar.
 
-Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya korklık olarak işaretleyebilir, küfür bulun vb. Bununla birlikte, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, Yüz Tanıma API'si bağlayıcısını kullanmak için) kullanabilirsiniz. bu şekilde, [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview) bir abonelik anahtarı almanız gerekir.
+Bir iş akışı oluşturduğunuzda varsayılan bağlayıcı Content Moderator bağlayıcıdır. Bu, içeriği **yetişkin** veya **korklık**olarak işaretleyebilir, küfür bulun vb. Bununla birlikte, burada listelenen diğer bağlayıcıları, ilgili hizmetlerinin kimlik bilgileriniz olduğu sürece (örneğin, Yüz Tanıma API'si bağlayıcısını kullanmak için) kullanabilirsiniz. bu şekilde, [Yüz Tanıma API'si](https://docs.microsoft.com/azure/cognitive-services/face/overview) bir abonelik anahtarı almanız gerekir.
 
 [İnceleme aracında](./human-in-the-loop.md) aşağıdaki bağlayıcılar bulunur:
 
-- Duygu Tanıma API'si (Önizleme)
-- Yüz tanıma API'si
+- Duygu Tanıma API'si
+- Yüz API'si
 - PhotoDNA bulut hizmeti
 - Metin Analizi API’si
 
@@ -105,13 +105,13 @@ Bir bağlayıcı eklemek için (ve içerik [iş akışlarında](../review-api.md
 
 ![Content Moderator bağlayıcı ayarları](images/settings-4-connectors.png)
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>İş akışları
 
 **İş** akışları sekmesi, [iş](../review-api.md#workflows)akışlarınızı yönetmenizi sağlar. İş akışları, içerik için bulut tabanlı filtrelerdir ve içeriği farklı yollarla sıralamak ve uygun işlemleri yapmak için bağlayıcılarla birlikte çalışırlar. Burada, iş akışlarınızı tanımlayabilir, düzenleyebilir ve test edebilirsiniz. Bunun nasıl yapılacağını gösteren yönergeler için bkz. [iş akışlarını tanımlama ve kullanma](Workflows.md) .
 
 ![Content Moderator Iş akışı ayarları](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>Kimlik Bilgileri
+## <a name="credentials"></a>Kimlik bilgileri
 
 **Kimlik bilgileri** sekmesi, bir rest çağrısından veya istemci SDK 'sına ait denetleme hizmetlerinden birine erişmeniz gereken Content moderator abonelik anahtarınız için hızlı erişim sağlar.
 

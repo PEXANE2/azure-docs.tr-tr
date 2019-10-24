@@ -14,12 +14,12 @@ ms.date: 06/28/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9d9b2aff1d196d8b2987d77046831e7200ee2fe
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 6007762c897337170dec69c3486302aa62723480
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804479"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756299"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Azure AD rollerimi PıM 'de etkinleştir
 
@@ -27,15 +27,15 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PıM), kurulu�
 
 Bir yönetim rolü için uygun yaptıysanız, ayrıcalıklı eylemleri gerçekleştirmeniz gerektiğinde bu rolü etkinleştirebilmeniz anlamına gelir. Örneğin, bazen Office 365 özelliklerini yönetiyorsanız, bu rol diğer hizmetleri de etkilediği için kuruluşunuzun ayrıcalıklı rol yöneticileri kalıcı bir genel yönetici sunmayabilir. Bunun yerine, Exchange Online Yöneticisi gibi Azure AD rollerine uygun hale getirir. Ayrıcalıklarına ihtiyacınız olduğunda bu rolü etkinleştirmek isteyebilirsiniz ve daha sonra önceden belirlenmiş bir süre için yönetici denetimine sahip olursunuz.
 
-Bu makale, Azure AD rolünü PıM 'de etkinleştirmeleri gereken yöneticiler içindir.
+Bu makale, Privileged Identity Management ' de Azure AD rolünü etkinleştirmesi gereken yöneticilere yöneliktir.
 
 ## <a name="activate-a-role"></a>Rol etkinleştirme
 
-Bir Azure AD rolünü gerçekleştirmeniz gerektiğinde, PıM ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
+Bir Azure AD rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity Management ' de **rollerim** gezinti seçeneğini kullanarak etkinleştirme isteğinde bulunabilir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın. Panonuza PıM kutucuğunu ekleme hakkında daha fazla bilgi için bkz. PıM 'yi [kullanmaya başlama](pim-getting-started.md).
+1. **Azure AD Privileged Identity Management**açın. Privileged Identity Management kutucuğunu panonuza ekleme hakkında daha fazla bilgi için bkz. [Privileged Identity Management kullanmaya başlama](pim-getting-started.md).
 
 1. **Azure AD rolleri**' ne tıklayın.
 
@@ -129,14 +129,14 @@ Onay gerektiren bir rolün etkinleştirilmesini gerektirmiyorsa, bekleyen bir is
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Rol etkinleştirildikten sonra izinler verilmiyor
 
-PıM 'de bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yaymayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme gecikirse, yapmanız gerekenler aşağıda verilmiştir.
+Privileged Identity Management bir rolü etkinleştirdiğinizde, etkinleştirme ayrıcalıklı rol gerektiren tüm portallara anında yaymayabilir. Bazı durumlarda değişiklik yayılsa bile portalda web önbelleği değişikliğin anında geçerlilik kazanmamasına yol açabilir. Etkinleştirme gecikirse, yapmanız gerekenler aşağıda verilmiştir.
 
 1. Azure portalında oturumunuzu kapatın ve sonra yeniden oturum açın.
 
-    Bir Azure AD rolünü etkinleştirdiğinizde, etkinleştirmesinin aşamalarını görürsünüz. Tüm aşamalar tamamlandıktan sonra bir **Oturumu kapat** bağlantısı görürsünüz. Bu bağlantıyı kullanarak oturumu kapatabilirsiniz. Bu işlem çoğu durumda etkinleştirme gecikmesi sorununu çözecektir.
+    Bir Azure AD rolünü etkinleştirdiğinizde, etkinleştirmesinin aşamalarını görürsünüz. Tüm aşamalar tamamlandıktan sonra bir **Oturumu kapat** bağlantısı görürsünüz. Oturumu kapatmak için bu bağlantıyı kullanabilirsiniz. Bu, etkinleştirme gecikmesi için çoğu durumu çöztirecek.
 
-1. PıM 'de rolün üyesi olarak listelendiğinizi doğrulayın.
+1. Privileged Identity Management, rolün üyesi olarak listelendiğinizi doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PIM'de Azure kaynağı rollerimi etkinleştirme](pim-resource-roles-activate-your-roles.md)
+- [Azure Kaynak rollerimi Privileged Identity Management etkinleştir](pim-resource-roles-activate-your-roles.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure sanal makinelerinde tek örnekli SAP HANA el ile yüklenmesi | Microsoft Docs'
+title: 'Hızlı başlangıç: Azure sanal makinelerinde tek örnekli SAP HANA El Ile yüklenmesi | Microsoft Docs'
 description: Azure sanal makinelerinde tek örnekli SAP HANA el ile yüklenmesi için hızlı başlangıç kılavuzu
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100059"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750375"
 ---
-# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Hızlı Başlangıç: Azure sanal makinelerinde tek örnekli SAP HANA el ile yüklenmesi
-## <a name="introduction"></a>Giriş
+# <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Hızlı başlangıç: Azure sanal makinelerinde tek örnekli SAP HANA El Ile yüklenmesi
+## <a name="introduction"></a>Tanıtım
 Bu kılavuz, SAP NetWeaver 7,5 ve SAP HANA 1,0 SP12 SAP HANA el ile yüklerken Azure sanal makinelerinde tek örnekli bir ayarlamanıza yardımcı olur. Bu kılavuzun odaklanarak Azure 'da SAP HANA dağıtma işlemi yapılır. SAP belgelerinin yerini almaz. 
 
 > [!NOTE]
@@ -61,19 +61,19 @@ Azure VM 'lerinde SAP HANA veritabanlarının yedeklenmesi hakkında daha fazla 
 SAP Cloud gereç kitaplığı 'nı kullanarak S/4HANA veya siyah beyaz/4HANA dağıtma hakkında daha fazla bilgi için, bkz. [MICROSOFT Azure SAP S/4HANA veya siyah beyaz/4HANA dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h).
 
 ### <a name="sap-hana-supported-operating-systems"></a>SAP HANA tarafından desteklenen işletim sistemleri
-SAP HANA tarafından desteklenen işletim sistemleri hakkında bilgi için bkz [. sap Note 2235581-SAP HANA: Desteklenen işletim sistemleri](https://launchpad.support.sap.com/#/notes/2235581/E). Azure VM 'Leri bu işletim sistemlerinin yalnızca bir alt kümesini destekler. Azure 'da SAP HANA dağıtmak için aşağıdaki işletim sistemleri desteklenir: 
+SAP HANA tarafından desteklenen işletim sistemleri hakkında bilgi için bkz. [SAP Note 2235581-SAP HANA: desteklenen işletim sistemleri](https://launchpad.support.sap.com/#/notes/2235581/E). Azure VM 'Leri bu işletim sistemlerinin yalnızca bir alt kümesini destekler. Azure 'da SAP HANA dağıtmak için aşağıdaki işletim sistemleri desteklenir: 
 
 * SUSE Linux Enterprise Server 12. x
-* Red Hat Enterprise Linux 7,2
+* Red Hat Enterprise Linux 7.2
 
 SAP HANA ve farklı Linux işletim sistemleri hakkında ek SAP belgeleri için bkz.:
 
-* [SAP Note 171356: Linux 'ta SAP yazılımı: Genel bilgiler](https://launchpad.support.sap.com/#/notes/1984787).
-* [SAP Note 1944799: SLES işletim sistemi yüklemesi](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)için SAP HANA yönergeleri.
-* [SAP Note 2205917: SAP uygulamaları](https://launchpad.support.sap.com/#/notes/2205917/E)için SLES 12 IÇIN önerilen SAP HANA DB işletim sistemi ayarları.
-* [SAP Note 1391070: Linux UUID çözümleri](https://launchpad.support.sap.com/#/notes/1391070).
-* [SAP Note 2009879: Red Hat Enterprise Linux (RHEL) işletim sistemi](https://launchpad.support.sap.com/#/notes/2009879)için SAP HANA yönergeleri.
-* [SAP Note 2292690: SAP HANA DB: RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)için önerilen işletim sistemi ayarları.
+* [SAP Note 171356: Linux 'TA SAP Software: genel bilgiler](https://launchpad.support.sap.com/#/notes/1984787).
+* [SAP Note 1944799: SLES işletim sistemi yükleme yönergelerini SAP HANA](http://service.sap.com/sap/support/notes/1944799).
+* [SAP Note 2205917: SAP uygulamaları IÇIN SLES 12 için önerilen SAP HANA DB OS ayarları](https://launchpad.support.sap.com/#/notes/2205917/E).
+* [SAP Note 1391070: LINUX UUID çözümleri](https://launchpad.support.sap.com/#/notes/1391070).
+* [SAP Note 2009879: Red Hat Enterprise Linux (RHEL) işletim sistemi için SAP HANA yönergeleri](https://launchpad.support.sap.com/#/notes/2009879).
+* [SAP Note 2292690: SAP HANA DB: RHEL 7 Için önerilen işletim sistemi ayarları](https://launchpad.support.sap.com/#/notes/2292690/E).
 
 ### <a name="sap-monitoring-in-azure"></a>Azure 'da SAP izleme
 Azure 'da SAP izleme hakkında bilgi için:
@@ -85,7 +85,7 @@ Azure 'da SAP izleme hakkında bilgi için:
 ### <a name="azure-vm-types"></a>Azure VM türleri
 SAP HANA ile kullanılan Azure VM türleri ve SAP-desteklenen iş yükü senaryoları [SAP sertifikalı IaaS platformlarında](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)belgelenmiştir. 
 
-SAP NetWeaver için SAP tarafından sertifikalı Azure sanal makine türleri veya S/4HANA uygulama katmanı [, SAP Note 1928533: Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533/E).
+SAP NetWeaver için SAP tarafından sertifikalı Azure sanal makine türleri veya S/4HANA uygulama katmanı, [SAP Note 1928533: Azure 'DA SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533/E)bölümünde belgelenmiştir.
 
 > [!NOTE]
 > SAP-Linux-Azure tümleştirmesi, klasik dağıtım modelinde değil yalnızca Azure Resource Manager desteklenir. 
@@ -180,7 +180,7 @@ Sorun türüne bağlı olarak, düzeltme ekleri kategoriye ve önem derecesine g
 - İsteğe Bağlı
 - Özellik
 - Belge
-- Yast
+- yast
 
 Önem derecesi için yaygın olarak kullanılan değerler şunlardır:
 
@@ -188,13 +188,13 @@ Sorun türüne bağlı olarak, düzeltme ekleri kategoriye ve önem derecesine g
 - Önemli
 - Orta
 - Düşük
-- Belirtilmedi
+- Memesi
 
 **Zypper** komutu yalnızca, yüklü paketlerinizin ihtiyaç duyduğu güncelleştirmeler için arama yapar. Örneğin, şu komutu kullanabilirsiniz:
 
 `sudo zypper patch  --category=security,recommended --severity=critical,important`
 
-Güncelleştirmeyi test etmek için parametresini `--dry-run` , sistemi güncelleştirmeden önce ekleyebilirsiniz.
+Sistemi güncelleştirmeden güncelleştirmeyi test etmek için `--dry-run` parametresi ekleyebilirsiniz.
 
 
 ### <a name="disk-setup"></a>Disk kurulumu
@@ -202,7 +202,7 @@ Azure üzerindeki bir Linux sanal makinesinde bulunan kök dosya sisteminin boyu
 
 [SAP HANA TDI depolama gereksinimlerine](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)bağlı olarak, aşağıdaki Azure Premium Depolama yapılandırması önerilir: 
 
-| VM SKU | RAM |  /Hana/Data ve/Hana/log <br /> LVM veya mdaddm ile şeritli | /Hana/Shared | /root birimi | /usr/SAP |
+| VM SKU 'SU | RAM |  /Hana/Data ve/Hana/log <br /> LVM veya mdaddm ile şeritli | /Hana/Shared | /root birimi | /usr/SAP |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
@@ -241,7 +241,7 @@ SLES for SAP Applications 12 genel kullanılabilirlik ve SLES for SAP Applicatio
 
 **Ayarlanmış adm**hakkında daha fazla bilgi için bkz. [ayarlanabilir-adm hakkında SUSE belgeleri](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip).
 
-Aşağıdaki ekran görüntüsünde, gereken SAP HANA ayarlarına göre, ayar **-ADM** ' i `transparent_hugepage` ve `numa_balancing` değerlerini nasıl değiştirdiğinin görebilirsiniz:
+Aşağıdaki ekran görüntüsünde, istenen SAP HANA ayarlarına göre, ayar **-ADM** ' nin `transparent_hugepage` ve `numa_balancing` değerlerini nasıl değiştirdiği hakkında bilgi alabilirsiniz:
 
 ![Ayarlanmış adm Aracı, değerleri gerekli SAP HANA ayarlarına göre değiştirir](./media/hana-get-started/image005.jpg)
 
@@ -251,7 +251,7 @@ Aşağıdaki ekran görüntüsünde, çekirdek ayarlarının yapılandırma dosy
 
 ![Yapılandırma dosyasında ve GRUB2-mkconfig kullanılarak derlenen çekirdek ayarları değiştirildi](./media/hana-get-started/image006.jpg)
 
-Diğer bir seçenek de, yast ve **önyükleme yükleyicisi** > **çekirdek parametreleri** ayarlarını kullanarak ayarları değiştirir:
+Diğer bir seçenek de, YaST ve **önyükleme yükleyicisi**  > **çekirdek parametreleri** ayarlarını kullanarak ayarları değiştirir:
 
 ![YaST Önyükleme yükleyicisindeki çekirdek parametreleri ayarları sekmesi](./media/hana-get-started/image007.jpg)
 
@@ -321,12 +321,12 @@ Windows arka planınız varsa, Firefox, SAPinst, SAP GUI, SAP MC veya HANA Studi
 
    `check /var/run` 
 
-   Arama yapın `xrdp.pid`. Bulursanız, kaldırın ve yeniden başlatmayı deneyin.
+   @No__t_0 bakın. Bulursanız, kaldırın ve yeniden başlatmayı deneyin.
 
 ### <a name="start-sap-mc"></a>SAP MC 'yi Başlat
 GNOME Desktop 'ı yükledikten sonra Firefox 'tan grafik Java tabanlı SAP MC ' yi başlatın. Bir Azure SLES 12/SLES for SAP Applications 12 VM 'de çalışıyorsa, bir hata gösterebilir. Eksik Java tarayıcı eklentisi nedeniyle hata oluşur.
 
-SAP MC `<server>:5<instance_number>13`'yi başlatmak için URL.
+SAP MC 'YI başlatmak için URL `<server>:5<instance_number>13`.
 
 Daha fazla bilgi için bkz. [Web tabanlı sap yönetim konsolunu başlatma](https://help.sap.com/saphelp_nwce10/helpdata/en/48/6b7c6178dc4f93e10000000a42189d/frameset.htm).
 
@@ -419,7 +419,7 @@ HANA HDBLCM aracı hakkında daha fazla bilgi için bkz.:
 * [SAP HANA yaşam döngüsü yönetim araçları](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm).
 * [Sunucu yüklemesi ve güncelleştirme kılavuzu SAP HANA](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf).
 
-Hdblcm aracı tarafından oluşturulan için `\<HANA SID\>adm user`varsayılan grup kimliği ayarıyla ilgili sorunlardan kaçınmak istiyorsunuz. Hdblcm aracılığıyla SAP HANA yüklemeden önce, grup kimliği `sapsys` `1001`kullanarak adlı yeni bir grup tanımlayın:
+HDBLCM aracı tarafından oluşturulan `\<HANA SID\>adm user` için varsayılan Grup KIMLIĞI ayarıyla ilgili sorunlardan kaçınmak istiyorsunuz. HDBLCM aracılığıyla SAP HANA yüklemeden önce, Grup KIMLIĞI `1001` kullanarak `sapsys` adlı yeni bir grup tanımlayın:
 
 ![Grup KIMLIĞI 1001 kullanılarak tanımlanan yeni "sapsys" grubu](./media/hana-get-started/image030.jpg)
 
@@ -432,13 +432,13 @@ Aşağıdaki ekran görüntüsünde, daha önce seçtiğiniz tüm anahtar seçen
 > [!IMPORTANT]
 > HANA günlük ve veri birimleri için adlandırılmış dizinler ve bu örnekte/Hana/Shared olan yükleme yolu ve/usr/SAP kök dosya sisteminin bir parçası olmamalıdır. Bu dizinler, VM 'ye eklenmiş olan Azure Veri disklerine aittir. Daha fazla bilgi için "disk kurulumu" bölümüne bakın. 
 
-Bu yaklaşım, kök dosya sisteminin yer kaplamasını önlemeye yardımcı olur. Hana sistem yöneticisinin Kullanıcı kimliği `1005` olduğunu ve yüklemeden önce tanımlanmış olan `sapsys` grubun `1001`bir parçası olduğunu unutmayın.
+Bu yaklaşım, kök dosya sisteminin yer kaplamasını önlemeye yardımcı olur. HANA sistem yöneticisinin Kullanıcı KIMLIĞI `1005` olduğunu ve yüklemeden önce tanımlanan KIMLIK `1001` olan `sapsys` grubunun bir parçası olduğunu unutmayın.
 
 ![Daha önce seçilen tüm anahtar SAP HANA bileşenleri listesi](./media/hana-get-started/image032.jpg)
 
-/Etc/passwd `\<HANA SID\>adm user` dizinindeki ayrıntıları denetleyin. Aşağıdaki ekran görüntüsünde gösterildiği gibi arama yapın:`azdadm`
+/Etc/passwd dizinindeki `\<HANA SID\>adm user` ayrıntılarını kontrol edin. Aşağıdaki ekran görüntüsünde gösterildiği gibi `azdadm` arayın:
 
-![/Etc/passwd dizininde\>listelenen Hana \<Hana SID adm kullanıcı ayrıntıları](./media/hana-get-started/image033.jpg)
+![HANA \<HANA SID \>adm/etc/passwd dizininde listelenen kullanıcı ayrıntıları](./media/hana-get-started/image033.jpg)
 
 SAP HANA, HDBLCM kullanarak yükledikten sonra, aşağıdaki ekran görüntüsünde gösterildiği gibi, dosya yapısını SAP HANA Studio 'da görebilirsiniz. Tüm SAP NetWeaver tablolarını içeren SAPABAP1 şeması henüz kullanılabilir değil.
 

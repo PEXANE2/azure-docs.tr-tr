@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Python için Content Moderator istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: Python için Content Moderator istemci kitaplığı | Microsoft Docs'
 description: Python için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: pafarley
-ms.openlocfilehash: f3b9a7aefc5fc347c4d5114575388914ea8d6fee
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700247"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755247"
 ---
-# <a name="quickstart-content-moderator-client-library-for-python"></a>Hızlı Başlangıç: Python için Content Moderator istemci kitaplığı
+# <a name="quickstart-content-moderator-client-library-for-python"></a>Hızlı başlangıç: Python için Content Moderator istemci kitaplığı
 
 Python için Content Moderator istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Content Moderator, zararlı olabilecek, riskli veya başka türlü istenmeyen malzemeler için metin, resim ve video içeriğini denetleyen bir bilişsel hizmettir. Hizmet, böyle bir öğeyle karşılaştığında içeriğe uygun etiketler (bayraklar) ekler. Uygulamanız da bu bayraklı içeriği dikkate alarak düzenlemelere uygunluk ya da kullanıcılar için istenen ortamın oluşturulması amacıyla işlem gerçekleştirebilir.
 
@@ -28,7 +28,7 @@ Python için Content Moderator istemci kitaplığını şu şekilde kullanın:
 * [Özel görüntü listesi kullanma](#use-a-custom-image-list)
 * [İnceleme oluştur](#create-a-review)
 
-[Başvuru belge](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [paketi (pipy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [paket (pıy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [örnek](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,7 +44,7 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 * Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra adlı `CONTENT_MODERATOR_SUBSCRIPTION_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, sırasıyla `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ve `CONTENT_MODERATOR_ENDPOINT` adlı anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
  
 ### <a name="create-a-python-script"></a>Python betiği oluşturma
 
@@ -52,12 +52,12 @@ Yeni bir Python betiği oluşturun ve tercih ettiğiniz düzenleyicide veya IDE 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Daha sonra, kaynağınızın Azure konumu ve anahtarınızın bir ortam değişkeni olarak değişkenlerini oluşturun. 
+Daha sonra, kaynağın uç nokta konumu ve anahtarı ortam değişkenleri olarak bir değişken oluşturun. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
 > [!NOTE]
-> Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
+> Uygulamayı başlattıktan sonra ortam değişkenlerini oluşturduysanız, değişkenlere erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
@@ -71,7 +71,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 Aşağıdaki sınıflar, Content Moderator Python SDK 'sının bazı önemli özelliklerini işler.
 
-|Ad|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Bu sınıf tüm Content Moderator işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Imagemoderationoperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Bu sınıf yetişkinlere yönelik içerik, kişisel bilgiler veya insan yüzeyleri için görüntüleri analiz etmek üzere işlevsellik sağlar.|
@@ -92,7 +92,7 @@ Bu kod parçacıkları, Python için Content Moderator istemci kitaplığı ile 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu hızlı başlangıçta adlı `CONTENT_MODERATOR_SUBSCRIPTION_KEY`Content moderator anahtarınız için [bir ortam değişkeni oluşturdunuz](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayılır.
+> Bu hızlı başlangıç, Content Moderator anahtarınız ve uç noktanız için [ortam değişkenleri oluşturduğunuzu](../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayar.
 
 Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [Contentmoderatorclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
@@ -131,7 +131,7 @@ Henüz bir tane tanımınızda klasöre bir başvuru ekleyin.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_textfolder)]
 
-### <a name="create-a-list"></a>Liste oluştur
+### <a name="create-a-list"></a>Liste Oluştur
 
 Özel bir hüküm listesi oluşturmak ve KIMLIK değerini kaydetmek için aşağıdaki kodu Python betiğe ekleyin.
 
@@ -145,7 +145,7 @@ Adını ve açıklamasını düzenlemek için bir listenin KIMLIĞINI kullanabil
 
 ### <a name="add-a-term-to-the-list"></a>Listeye bir terim ekleyin
 
-Aşağıdaki kod terimleri `"term1"` ve `"term2"` listeye ekler.
+Aşağıdaki kod `"term1"` ve `"term2"` terimleri listeye ekler.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_add)]
 
@@ -169,7 +169,7 @@ Listeden terim eklediğinizde veya kaldırdığınızda, güncelleştirilmiş li
 
 ### <a name="remove-a-term-from-a-list"></a>Listeden bir terimi kaldırma
 
-Aşağıdaki kod, listeden terimi `"term1"` kaldırır.
+Aşağıdaki kod `"term1"` terimi listeden kaldırır.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_termslist_remove)]
 
@@ -226,7 +226,7 @@ Bu senaryoda kullanacağınız görüntü URL 'Lerini depolamak için aşağıda
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagelistvars)]
 
 > [!NOTE]
-> Bu, doğru listenin kendisi değildir, ancak kodun `add images` bölümüne eklenecek olan görüntülerin resmi bir listesi.
+> Bu, doğru listenin kendisi değil, kodun `add images` bölümüne eklenecek olan görüntülerin resmi olmayan bir listesi.
 
 
 ### <a name="create-an-image-list"></a>Görüntü listesi oluşturma
@@ -334,7 +334,7 @@ Bu senaryoda bir geri çağırma uç noktası kullandıysanız, bu biçimde bir 
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı hızlı başlangıç dosyanızdaki `python` komutla çalıştırın.
+Uygulamayı hızlı başlangıç dosyanızda `python` komutuyla çalıştırın.
 
 ```console
 python quickstart-file.py
@@ -355,4 +355,4 @@ Bu hızlı başlangıçta, denetleme görevlerini yapmak için Content Moderator
 >[Görüntü denetleme kavramları](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Azure Content Moderator nedir?](./overview.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision)' da bulunabilir.
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)' da bulunabilir.

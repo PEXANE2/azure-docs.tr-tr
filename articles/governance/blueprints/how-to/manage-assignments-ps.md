@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 297c6a51c1f902cf7b5843b2dd47b658ebc705fd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980998"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755933"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell ile atamaları yönetme
 
@@ -42,7 +42,7 @@ PowerShell için planlar modülü **az. Blueprint**olur.
    > [!NOTE]
    > **Az. Accounts** zaten yüklüyse, yüklemeyi zorlamak için `-AllowClobber` kullanılması gerekebilir.
 
-1. Modülün içeri aktarıldığını ve doğru sürüm (0.2.5) olduğunu doğrulayın:
+1. Modülün içeri aktarıldığını ve doğru sürüm (0.2.6) olduğunu doğrulayın:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
@@ -52,7 +52,7 @@ PowerShell için planlar modülü **az. Blueprint**olur.
 ## <a name="get-blueprint-definitions"></a>Şema tanımlarını al
 
 Atama ile çalışmanın ilk adımı, genellikle bir şema tanımına başvuru almaktır.
-@No__t-0 cmdlet 'i bir veya daha fazla şema tanımı alır. Cmdlet 'i `-ManagementGroupId {mgId}` olan bir yönetim grubundan veya `-SubscriptionId {subId}` olan bir aboneliğe şema tanımları alabilir. **Name** parametresi bir şema tanımı alır, ancak **ManagementGroupId** veya **SubscriptionID**ile birlikte kullanılmalıdır. **Sürüm** , **ad** ile birlikte kullanılabilir ve bu, hangi şema tanımının döndürüldüğünden daha açık olacaktır. **Sürüm**yerine, `-LatestPublished` anahtarı en son yayınlanan sürümü olan anahtar.
+@No__t_0 cmdlet 'i bir veya daha fazla şema tanımı alır. Cmdlet 'i, bir yönetim grubundan `-ManagementGroupId {mgId}` veya `-SubscriptionId {subId}` abonelikle bir abonelik için şema tanımları alabilir. **Name** parametresi bir şema tanımı alır, ancak **ManagementGroupId** veya **SubscriptionID**ile birlikte kullanılmalıdır. **Sürüm** , **ad** ile birlikte kullanılabilir ve bu, hangi şema tanımının döndürüldüğünden daha açık olacaktır. **Sürüm**yerine, anahtar en son yayımlanan sürümü `-LatestPublished`.
 
 Aşağıdaki örnek, `{subId}` olarak temsil edilen belirli bir abonelikten ' 101-planlar-Definition-Subscription ' adlı bir şema tanımının tüm sürümlerini almak için `Get-AzBlueprint` kullanır:
 
@@ -128,7 +128,7 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="create-blueprint-assignments"></a>Şema atamaları oluşturma
 
-Şema ataması henüz yoksa, `New-AzBlueprintAssignment` cmdlet 'ini kullanarak oluşturabilirsiniz. Bu cmdlet şu parametreleri kullanır:
+Şema ataması henüz yoksa `New-AzBlueprintAssignment` cmdlet 'ini kullanarak oluşturabilirsiniz. Bu cmdlet şu parametreleri kullanır:
 
 - **Ad** [gerekli]
   - Şema atamasının adını belirtir
@@ -252,7 +252,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
 
 ## <a name="update-blueprint-assignments"></a>Şema atamalarını Güncelleştir
 
-Bazen zaten oluşturulmuş bir şema atamasının güncelleştirilmesi gerekir. @No__t-0 cmdlet 'i bu eylemi işler. Cmdlet 'i `New-AzBlueprintAssignment` cmdlet 'inin yapacağı aynı parametrelerin çoğunu alır, böylece atamada ayarlanan her şey da güncellenir. Özel durumlar _ad_, _Blueprint_ve _SubscriptionID_' dir. Yalnızca belirtilen değerler güncellenir.
+Bazen zaten oluşturulmuş bir şema atamasının güncelleştirilmesi gerekir. @No__t_0 cmdlet 'i bu eylemi işler. Cmdlet 'i `New-AzBlueprintAssignment` cmdlet 'inin en fazla parametre alır, bu da atamada ayarlanan her şeyin güncelleştirilmesine izin verir. Özel durumlar _ad_, _Blueprint_ve _SubscriptionID_' dir. Yalnızca belirtilen değerler güncellenir.
 
 Bir şema atamasını güncelleştirirken ne olduğunu anlamak için bkz. [atamaları güncelleştirme kuralları](./update-existing-assignments.md#rules-for-updating-assignments).
 
@@ -293,7 +293,7 @@ Bir şema atamasını güncelleştirirken ne olduğunu anlamak için bkz. [atama
   - Her kaynak grubu yapıt yer tutucusu, bu kaynak grubu yapıtı üzerinde dinamik ayar **adı** ve **konumu** için anahtar/değer çiftlerine sahiptir
   - Bir kaynak grubu parametresi sağlanmazsa ve **DefaultValue**yoksa, kaynak grubu parametresi isteğe bağlı değildir
 
-Aşağıdaki örnek, kilit modunu değiştirerek ' My-şema ' şema tanımının ' 1,1 ' sürümünün atamasını güncelleştirme `Get-AzBlueprint` ile getirildi:
+Aşağıdaki örnek, kilit modunu değiştirerek `Get-AzBlueprint` ile getirilen ' My-şema ' şema tanımının ' 1,1 ' sürümünün atamasını güncelleştirir:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -322,9 +322,9 @@ ResourceGroups    : ResourceGroup
 
 ## <a name="remove-blueprint-assignments"></a>Şema atamalarını kaldır
 
-Bir şema atamasının kaldırılması sırasında, `Remove-AzBlueprintAssignment` cmdlet 'i bu eylemi işler. Cmdlet 'i hangi şema atamasının kaldırılacağını belirtmek için **Name** ya da **InputObject** değerini alır. **SubscriptionID** _gereklidir_ ve her durumda belirtilmelidir.
+Şema atamasının kaldırılması sırasında, `Remove-AzBlueprintAssignment` cmdlet 'i bu eylemi işler. Cmdlet 'i hangi şema atamasının kaldırılacağını belirtmek için **Name** ya da **InputObject** değerini alır. **SubscriptionID** _gereklidir_ ve her durumda belirtilmelidir.
 
-Aşağıdaki örnek, `Get-AzBlueprintAssignment` ile var olan bir şema atamasını getirir ve `{subId}` olarak temsil edilen belirli bir abonelikten kaldırır:
+Aşağıdaki örnek, `Get-AzBlueprintAssignment` var olan bir şema atamasını getirir ve sonra `{subId}` olarak temsil edilen belirli bir abonelikten kaldırır:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

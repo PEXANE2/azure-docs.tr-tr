@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: Günlük sorgularıyla verileri çözümleme
                   href: insights/vminsights-log-search.md
+                - name: Dependency Agent’ı yükseltme
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: İzlemeyi devre dışı bırakma
                   href: insights/vminsights-optout.md
             - name: Kapasite ve performans çözümü

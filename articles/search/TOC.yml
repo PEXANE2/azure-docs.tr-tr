@@ -1,20 +1,24 @@
-- name: Azure Search Belgeleri
+- name: Azure Bilişsel Arama Belgeleri
   href: index.yml
 - name: Genel Bakış
-  items:
-    - name: Azure Search nedir?
-      href: search-what-is-azure-search.md
-- name: Hızlı Başlangıçlar
   expanded: true
+  items:
+    - name: Azure Bilişsel Arama nedir?
+      href: search-what-is-azure-search.md
+    - name: Yenilikler
+      href: whats-new.md
+- name: Hızlı Başlangıçlar
   items:
     - name: Hizmet oluşturma
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Dizin oluşturma ve kullanma
+        - name: Arama dizini oluşturma
           href: search-get-started-portal.md
-        - name: Bilişsel arama (AI) ile zenginleştirme
+        - name: Bilişsel beceri kümesi oluşturma
           href: cognitive-search-quickstart-blob.md
+        - name: Bilgi deposu oluşturma
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: Tam metin arama
       href: search-lucene-query-architecture.md
-    - name: Bilişsel Arama
+    - name: Yapay zeka zenginleştirme
       href: cognitive-search-concept-intro.md
     - name: Beceri kümeleri
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: Yansıtmalar
       href: knowledge-store-projection-overview.md
+    - name: Artımlı dizin oluşturma
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Planlama
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: Alanları eşleme
           href: search-indexer-field-mappings.md
+        - name: Artımlı dizin oluşturma
+          href: search-howto-incremental-index.md
         - name: SQL Yönetilen Örneğine bağlanma
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: SQL Server VM’lerine bağlanma
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: Bilgi deposu (önizleme)
           items:
-            - name: Azure portalında bilgi deposu oluşturma
-              href: knowledge-store-create-portal.md
             - name: REST ve Postman kullanarak oluşturma
               href: knowledge-store-create-rest.md
             - name: Depolama Gezgini ile görüntüleme

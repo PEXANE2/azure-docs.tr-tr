@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Önceden oluşturulmuş amaçlar ve varlıklar-LUSıS'
+title: 'Öğretici: önceden oluşturulmuş amaçlar ve varlıklar-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, bir uygulamaya önceden oluşturulmuş amaçlar ve varlıklar ekleyerek, hızlı bir şekilde amaç ve veri ayıklama elde edin. Herhangi bir konuşmayı önceden oluşturulmuş varlıklarla etiketlemeniz gerekmez. Varlık otomatik olarak algılanır.
 services: cognitive-services
@@ -9,30 +9,30 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390995"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757116"
 ---
-# <a name="tutorial-identify-common-intents-and-entities"></a>Öğretici: Ortak amaçları ve varlıkları tanımla
+# <a name="tutorial-identify-common-intents-and-entities"></a>Öğretici: ortak amaçları ve varlıkları tanımla
 
 Bu öğreticide, hızlı bir şekilde amaç ve veri ayıklama kazanmak için bir Insan kaynakları öğretici uygulamasına önceden oluşturulmuş amaçlar ve varlıklar ekleyin. Varlık otomatik olarak algılandığından, önceden oluşturulmuş varlıklar ile herhangi bir söyleme işaretlemeniz gerekmez.
 
 Önceden oluşturulmuş modeller (etki alanları, amaçlar ve varlıklar) modelinizi hızlı bir şekilde oluşturmanıza yardımcı olur.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
 > * Önceden oluşturulmuş amaçları ekleme 
 > * Önceden oluşturulmuş varlıkları ekleme 
-> * Eğitim 
+> * Eğitin 
 > * Yayımlama 
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -63,12 +63,9 @@ LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık
 
 1. Önceden oluşturulmuş varlıklar listesinden aşağıdaki varlıkları seçin ve **bitti**' yi seçin:
 
-   * **[Kişi adı](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
 
-     ![Önceden oluşturulmuş varlıklar iletişim kutusunda seçilen sayının ekran görüntüsü](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
-
-     Bu varlıklar, istemci uygulamanıza ad eklemenize ve tanımayı kullanmanıza yardımcı olur.
+     Bu varlık, istemci uygulamanıza yer tanıma eklemenize yardımcı olur.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme 
 
@@ -86,79 +83,83 @@ LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Tarayıcı adres çubuğundaki URL'nin sonuna gidip `I want to cancel my trip to Seattle to see Bob Smith` yazın. Son sorgu dizesi parametresi konuşma **sorgusu** olan `q` öğesidir. 
+1. Tarayıcı adres çubuğundaki URL'nin sonuna gidip `I want to cancel my trip to Seattle` yazın. Son sorgu dizesi parametresi konuşma **sorgusu** olan `q` öğesidir. 
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
+      "query": "I want to cancel my trip to Seattle",
       "topScoringIntent": {
-        "intent": "Utilities.ReadAloud",
-        "score": 0.100361854
+        "intent": "Utilities.Cancel",
+        "score": 0.1055009
       },
       "intents": [
         {
-          "intent": "Utilities.ReadAloud",
-          "score": 0.100361854
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.08102781
-        },
-        {
-          "intent": "Utilities.SelectNone",
-          "score": 0.0398852825
-        },
-        {
           "intent": "Utilities.Cancel",
-          "score": 0.0277276486
+          "score": 0.1055009
         },
         {
           "intent": "Utilities.SelectItem",
-          "score": 0.0220712926
+          "score": 0.02659072
         },
         {
-          "intent": "Utilities.StartOver",
-          "score": 0.0145813478
+          "intent": "Utilities.Stop",
+          "score": 0.0253379084
         },
         {
-          "intent": "None",
-          "score": 0.012434179
+          "intent": "Utilities.ReadAloud",
+          "score": 0.02528683
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.02434013
         },
         {
           "intent": "Utilities.Escalate",
-          "score": 0.0122632384
+          "score": 0.009161292
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.006861785
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00633448
         },
         {
           "intent": "Utilities.ShowNext",
-          "score": 0.008534077
+          "score": 0.0053827134
+        },
+        {
+          "intent": "None",
+          "score": 0.002602003
         },
         {
           "intent": "Utilities.ShowPrevious",
-          "score": 0.00547111453
+          "score": 0.001797354
         },
         {
           "intent": "Utilities.SelectAny",
-          "score": 0.00152912608
+          "score": 0.000831930141
         },
         {
           "intent": "Utilities.Repeat",
-          "score": 0.0005556819
-        },
-        {
-          "intent": "Utilities.FinishTask",
-          "score": 0.000169488427
+          "score": 0.0006924066
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.000149565312
+          "score": 0.000606057351
         },
         {
           "intent": "Utilities.GoBack",
-          "score": 0.000141017343
+          "score": 0.000276725681
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000267822179
         },
         {
           "intent": "Utilities.Reject",
-          "score": 6.27324E-06
+          "score": 3.21784828E-05
         }
       ],
       "entities": [
@@ -167,18 +168,12 @@ LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık
           "type": "builtin.geographyV2.city",
           "startIndex": 28,
           "endIndex": 34
-        },
-        {
-          "entity": "bob smith",
-          "type": "builtin.personName",
-          "startIndex": 43,
-          "endIndex": 51
         }
       ]
     }
     ```
 
-    Sonuç, yardımcı programları tahmin eder. Iptal amacını% 80 güvenilirlikle ve şehir ve kişi adı verilerini ayıklamıştır. 
+    Sonuç, yardımcı programları tahmin eder. Iptal amacını %80 güvenilirlikle ve şehir verilerini ayıklamıştır. 
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

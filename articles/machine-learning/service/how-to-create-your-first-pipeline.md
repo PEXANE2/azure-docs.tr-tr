@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815721"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755977"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -54,7 +54,7 @@ ML işlem hattı çalıştırmak için gereken kaynakları oluşturma:
 
 * İşlem hattı adımlarında gereken verilere erişmek için kullanılan bir veri deposu ayarlayın.
 
-* Bir `DataReference` nesnesini, bir veri deposu içinde bulunan veya içinde erişilebilir olan verileri işaret etmek üzere yapılandırın.
+* Bir veri deposu içinde bulunan veya içinde erişilebilir olan verileri göstermek için bir `DataReference` nesnesi yapılandırın.
 
 * Ardışık düzen adımlarınızın çalıştırılacağı [işlem hedeflerini](concept-azure-machine-learning-architecture.md#compute-targets) ayarlayın.
 
@@ -89,7 +89,7 @@ def_blob_store.upload_files(
 
 ### <a name="configure-data-reference"></a>Veri başvurusunu yapılandırma
 
-Bir işlem hattında bir adım girişi olarak başvurulabilen bir veri kaynağı oluşturdunuz. Bir işlem hattındaki veri kaynağı bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. @No__t-0 nesnesi, veya bir veri deposundan erişilebilen verileri işaret eder.
+Bir işlem hattında bir adım girişi olarak başvurulabilen bir veri kaynağı oluşturdunuz. Bir işlem hattındaki veri kaynağı bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. @No__t_0 nesnesi, bir veri deposundan erişilebilen veya içinde bulunan verilere işaret eder.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -100,7 +100,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Ara veriler (veya bir adımın çıktısı) bir [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesnesiyle temsil edilir. `output_data1` bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `PipelineData`, adımlar arasında bir veri bağımlılığı sağlar ve ardışık düzende bir örtük yürütme sırası oluşturur.
+Ara veriler (veya bir adımın çıktısı) bir [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesnesiyle temsil edilir. `output_data1`, bir adımın çıktısı olarak üretilir ve bir veya daha fazla sonraki adım girişi olarak kullanılır. `PipelineData`, adımlar arasında bir veri bağımlılığı sunar ve işlem hattında örtük bir yürütme sırası oluşturur.
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -113,7 +113,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-compute-target"></a>İşlem hedefini ayarla
 
-Azure Machine Learning, computes__ (veya __COMPUTE Target__) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](how-to-set-up-training-targets.md) ve bunları oluşturma ve çalışma alanınıza iliştirme.  Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak olmanıza bakılmaksızın aynıdır. İşlem hedefini oluşturup iliştirdikten sonra, işlem [hattı adımınızda](#steps)`ComputeTarget` nesnesini kullanın.
+Azure Machine Learning, computes__ (veya __COMPUTE Target__) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](how-to-set-up-training-targets.md) ve bunları oluşturma ve çalışma alanınıza iliştirme.  Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak olmanıza bakılmaksızın aynıdır. İşlem hedefini oluşturup iliştirdikten sonra, işlem [hattı adımınızdaki](#steps)`ComputeTarget` nesnesini kullanın.
 
 > [!IMPORTANT]
 > İşlem hedeflerinde yönetim işlemleri gerçekleştirmek uzak işlerin içinden desteklenmez. Makine öğrenimi ardışık düzenleri uzak bir iş olarak gönderildiğinden, işlem hedefleri üzerinde yönetim işlemlerini işlem hattı içinden kullanmayın.
@@ -259,7 +259,7 @@ except ComputeTargetException:
 Daha ayrıntılı bir örnek için GitHub 'daki [örnek bir not defteri](https://aka.ms/pl-adla) bölümüne bakın.
 
 > [!TIP]
-> Azure Machine Learning işlem hatları yalnızca Data Lake Analytics hesabının varsayılan veri deposunda depolanan verilerle çalışabilir. Üzerinde çalışmanız gereken veriler varsayılan olmayan bir depoda ise, verileri eğitime önce kopyalamak için [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) kullanabilirsiniz.
+> Azure Machine Learning işlem hatları yalnızca Data Lake Analytics hesabının varsayılan veri deposunda depolanan verilerle çalışabilir. Üzerinde çalışmanız gereken veriler varsayılan olmayan bir depoda varsa, verileri eğitim öncesinde kopyalamak için bir [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) kullanabilirsiniz.
 
 ## <a id="steps"></a>İşlem hattı adımlarınızı oluşturun
 
@@ -278,7 +278,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Gereksiz yeniden çalıştırma çeviklerinin ortadan kaldırılması için, bir işbirliği ortamında işlem hatları kullanılırken önceki sonuçların yeniden kullanılması (`allow_reuse`) anahtarıdır. Bir adımın script_name, girişleri ve parametreleri aynı kaldığında yeniden kullanım varsayılan davranıştır. Adımın çıkışı yeniden kullanıldığında, iş işleme gönderilmez, bunun yerine önceki çalıştırmanın sonuçları hemen sonraki adımın çalıştırmasında kullanılabilir. @No__t-0 yanlış olarak ayarlanırsa, işlem hattı yürütmesi sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. 
+Gereksiz yeniden çalışma olanağı sunan çevikliği ortadan kaldıran, önceki sonuçların (`allow_reuse`) kullanılması, işbirliği ortamında işlem hatları kullanırken anahtardır. Bir adımın script_name, girişleri ve parametreleri aynı kaldığında yeniden kullanım varsayılan davranıştır. Adımın çıkışı yeniden kullanıldığında, iş işleme gönderilmez, bunun yerine önceki çalıştırmanın sonuçları hemen sonraki adımın çalıştırmasında kullanılabilir. @No__t_0 false olarak ayarlandıysa işlem hattı yürütme sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. 
 
 Adımlarınızı tanımladıktan sonra, bu adımların bazılarını veya tümünü kullanarak işlem hattını oluşturursunuz.
 
@@ -325,7 +325,7 @@ Daha fazla bilgi için bkz. [Azure-işlem hattı-adımlar paketi](https://docs.m
 İşlem hattını gönderdiğinizde, Azure Machine Learning her adımın bağımlılıklarını denetler ve belirttiğiniz kaynak dizinin bir anlık görüntüsünü yükler. Kaynak dizin belirtilmemişse, geçerli yerel dizin yüklenir. Anlık görüntü Ayrıca çalışma alanınızdaki denemenin bir parçası olarak depolanır.
 
 > [!IMPORTANT]
-> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. @No__t-0 dosyası, [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
+> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. @No__t_0 dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
 >
 > Daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
 
@@ -342,7 +342,7 @@ Bir işlem hattını ilk kez çalıştırdığınızda Azure Machine Learning:
 * Proje anlık görüntüsünü, çalışma alanıyla ilişkili blob depolamadan işlem hedefine indirir.
 * İşlem hattının her adımına karşılık gelen bir Docker görüntüsü oluşturur.
 * Her adım için Docker görüntüsünü kapsayıcı kayıt defterinden işlem hedefine indirir.
-* Bir adımda `DataReference` nesnesi belirtilmişse veri deposunu takar. Bağlama desteklenmiyorsa, veriler işlem hedefine kopyalanır.
+* Bir adımda `DataReference` nesne belirtilmişse veri deposunu takar. Bağlama desteklenmiyorsa, veriler işlem hedefine kopyalanır.
 * Adımı adım tanımında belirtilen işlem hedefi içinde çalıştırır. 
 * Adım tarafından belirtilen Günlükler, STDOUT ve STDERR, ölçümler ve çıkış gibi yapıtlar oluşturur. Bu yapıtlar daha sonra karşıya yüklenir ve kullanıcının varsayılan veri deposunda tutulur.
 
@@ -354,7 +354,7 @@ Daha fazla bilgi için bkz. [deneme sınıfı](https://docs.microsoft.com/python
 
 ## <a name="github-tracking-and-integration"></a>GitHub izleme ve Tümleştirme
 
-Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Örneğin, deponun geçerli kayıt KIMLIĞI, geçmişin bir parçası olarak günlüğe kaydedilir.
+Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
 ## <a name="publish-a-pipeline"></a>İşlem hattı yayımlama
 
@@ -370,7 +370,7 @@ Daha sonra farklı girişlerle çalıştırmak için bir işlem hattı yayımlay
      default_value=10)
    ```
 
-2. Bu `PipelineParameter` nesnesini işlem hattındaki adımların herhangi birine bir parametre olarak aşağıdaki gibi ekleyin:
+2. Bu `PipelineParameter` nesnesini, ardışık düzendeki adımların herhangi birine bir parametre olarak ekleyin:
 
    ```python
    compareStep = PythonScriptStep(
@@ -413,7 +413,7 @@ Tüm yayınlanmış işlem hatlarınızın ve çalıştırma ayrıntılarının 
 1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. İşlem hatları listesini bulmak için [çalışma alanınızı görüntüleyin](how-to-manage-workspace.md#view) .
- ![makine öğrenimi ardışık düzenleri @ no__t-1
+ makine öğrenimi ardışık düzenleri ![list ](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Çalıştırma sonuçlarını görmek için belirli bir işlem hattı seçin.
 
@@ -429,17 +429,17 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-@No__t-0 ile yeniden etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Publishedpipeline sınıf](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) başvurusu.
+@No__t_0 için yeniden etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Publishedpipeline sınıf](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) başvurusu.
 
 
 ## <a name="caching--reuse"></a>Önbelleğe alma & yeniden kullanım  
 
 İşlem hatlarınızın davranışını iyileştirmek ve özelleştirmek için, önbelleğe alma ve yeniden kullanma konusunda birkaç şey yapabilirsiniz. Örneğin, şunları yapabilirsiniz:
-+ Adım [tanımı](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)sırasında `allow_reuse=False` ' i ayarlayarak **adım çalıştırma çıkışının varsayılan yeniden kullanımını devre dışı bırakın** . Gereksiz çalıştırmaları ortadan kaldıran çeviklik sunarak, birlikte çalışma sırasında işlem hattı kullanılırken anahtar kullanın. Ancak, yeniden kullanım dışı bırakabilirsiniz.
-+ @No__t-1 ' i kullanarak diğer dosyalara ve dizinlere yönelik mutlak yol veya göreli yolları da içerecek şekilde, **komut dosyasının ötesine karma genişletme** 
-+ @No__t-1 ile **çalıştırmada tüm adımlarda çıkış yeniden oluşturmayı zorla**
++ Adım [tanımı](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)sırasında `allow_reuse=False` ayarlayarak **adım çalıştırma çıkışının varsayılan yeniden kullanımını devre dışı bırakın** . Gereksiz çalıştırmaları ortadan kaldıran çeviklik sunarak, birlikte çalışma sırasında işlem hattı kullanılırken anahtar kullanın. Ancak, yeniden kullanım dışı bırakabilirsiniz.
++ @No__t_1 kullanarak diğer dosyalara ve dizinlere yönelik mutlak bir yolu veya göreli yolları da içerecek şekilde, **karma kodun ötesine genişletmeyi genişletin**. 
++ @No__t_1 **Çalıştırma içindeki tüm adımlarda çıkış yeniden oluşturmayı zorla**
 
-Varsayılan olarak, adımlar için `allow_reuse` etkinleştirilir ve yalnızca ana betik dosyası karma hale getirilir. Bu nedenle, belirli bir adımın betiği aynı (`script_name`, girişler ve parametreler) olmaya devam ediyorsa, önceki bir adım çalıştırmasının çıkışı yeniden kullanılır, iş işleme gönderilmez ve önceki çalıştırmanın sonuçları, bunun yerine bir sonraki adımla hemen kullanılabilir.  
+Varsayılan olarak, adımlar için `allow_reuse` etkindir ve yalnızca ana betik dosyası karma hale getirilir. Bu nedenle, belirli bir adımın betiği aynı (`script_name`, girişler ve parametreler) olarak kalırsa, önceki bir adım çalıştırmasının çıkışı yeniden kullanılır, iş işleme gönderilmez ve önceki çalıştırmanın sonuçları hemen bir sonraki adımda kullanılabilir.  
 
 ```python
 step = PythonScriptStep(name="Hello World",

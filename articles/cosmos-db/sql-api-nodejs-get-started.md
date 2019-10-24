@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971391"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754831"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK ile Node. js konsol uygulaması oluşturma
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK 'Sı ile Node. js konsol uygulaması derleme
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -69,7 +69,7 @@ Uygulamayı derlemek için kod yazmaya başlamadan önce, uygulamanızın çerç
      * ```touch app.js```
      * ```touch config.js```
 
-4. Bir `package.json` dosya oluşturun ve başlatın. Aşağıdaki komutu kullanın:
+4. @No__t_0 bir dosya oluşturun ve başlatın. Aşağıdaki komutu kullanın:
    * ```npm init -y```
 
 5. npm aracılığıyla @azure/cosmos modülünü yükleyin. Aşağıdaki komutu kullanın:
@@ -99,7 +99,7 @@ Artık uygulamanız mevcut olduğuna göre, Azure Cosmos DB konuştuğunu unutma
 
    JavaScript SDK Genel terimler *kapsayıcısını* ve *öğesini*kullanır. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. 
    
-   `module.exports = config;`kod, ```app.js``` dosyanızın içinde başvurabilmeniz ```config``` için, nesnenizin dışarı aktarılması için kullanılır.
+   `module.exports = config;` kod, ```config``` nesnesini dışarı aktarmak için kullanılır, böylece ```app.js``` dosyasında başvurabilirsiniz.
 
 ## <a id="Connect"></a>Azure Cosmos DB hesabına bağlanma
 
@@ -133,7 +133,7 @@ Artık uygulamanız mevcut olduğuna göre, Azure Cosmos DB konuştuğunu unutma
 
 Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza göre, Azure Cosmos DB kaynaklarıyla çalışmaya bakalım.
 
-## <a name="create-a-database"></a>Veritabanı oluşturma
+## <a name="create-a-database"></a>Veritabanı oluşturun
 
 1. Veritabanı KIMLIĞINI ve kapsayıcı KIMLIĞINI ayarlamak için aşağıdaki kodu kopyalayın ve yapıştırın. Bu kimlikler Azure Cosmos DB istemcisinin doğru veritabanını ve kapsayıcıyı bulmasını sağlayacaktır.
 
@@ -148,9 +148,9 @@ Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza 
    const partitionKey = { kind: "Hash", paths: ["/Country"] };
    ```
 
-   Bir veritabanı, `createIfNotExists` **Databases** sınıfının ya da Create işlevi kullanılarak oluşturulabilir. Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. 
+   **Veritabanları** , veritabanı sınıfının `createIfNotExists` veya Oluştur işlevi kullanılarak oluşturulabilir. Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. 
 
-2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **CreateDatabase** işlevi, zaten yoksa ```FamilyDatabase``` ```config``` nesnesinden belirtilen kimliğe sahip yeni bir veritabanı oluşturur. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
+2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **CreateDatabase** işlevi, zaten mevcut değilse ```config``` NESNESINDEN belirtilen kimlik ```FamilyDatabase``` yeni bir veritabanı oluşturur. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
 
    ```javascript
    /**
@@ -257,7 +257,7 @@ Ardından, verileri depolayabilmeniz ve sorgulayabilmeniz için Azure Cosmos DB 
 > [!WARNING]
 > Bir kapsayıcının oluşturulması fiyatlandırma etkilerine sahiptir. Beklendiklerinizi bilmeniz için [fiyatlandırma](https://azure.microsoft.com/pricing/details/cosmos-db/) sayfamızı ziyaret edin.
 
-Bir kapsayıcı, `createIfNotExists` **kapsayıcılar** sınıfından or oluşturma işlevi kullanılarak oluşturulabilir.  Kapsayıcı öğelerden (SQL API kullanıldığında JSON belgeleri) ve ilişkili JavaScript uygulama mantığından oluşur.
+Bir kapsayıcı, **kapsayıcılar** sınıfından `createIfNotExists` veya Oluştur işlevi kullanılarak oluşturulabilir.  Kapsayıcı öğelerden (SQL API kullanıldığında JSON belgeleri) ve ilişkili JavaScript uygulama mantığından oluşur.
 
 1. **createContainer** ve **readContainer** işlevini kopyalayıp app.js dosyasında **readDatabase** işlevinin altına yapıştırın. **createContainer** işlevi mevcut değilse ```config``` nesnesiyle belirtilen ```containerId``` bilgisine sahip yeni bir kapsayıcı oluşturur. **readContainer** işlevi, kapsayıcının mevcut olduğundan emin olmak için kapsayıcı tanımını okur.
 
@@ -414,7 +414,7 @@ Bir kapsayıcı, `createIfNotExists` **kapsayıcılar** sınıfından or oluştu
    ```
 
 
-## <a id="Query"></a>Azure Cosmos DB kaynaklarını sorgulama
+## <a id="Query"></a>Azure Cosmos DB kaynaklarını sorgula
 
 Azure Cosmos DB, her kapsayıcıda depolanan JSON belgelerine karşı zengin sorguları destekler. Aşağıdaki örnek kod, kapsayıcınızdaki belgeler için çalıştırabileceğiniz bir sorguyu gösterir.
 
@@ -662,7 +662,7 @@ Projenin bağımlılıklarını NPM aracılığıyla yükler. Aşağıdaki komut
 
 * ```npm install``` 
 
-Ardından, [dosyasında, config. Endpoint ve config. PrimaryKey değerlerini adım 3 ' te açıklandığı şekilde güncelleştirin: ```config.js``` Uygulamanızın yapılandırmasını](#Config)ayarlayın.  
+Sonra, ```config.js``` dosyasında config. Endpoint ve config. Key değerlerini [3. Adım: uygulamanızın yapılandırmalarını ayarlama](#Config)bölümünde açıklandığı gibi güncelleştirin.  
 
 Ardından terminalinizde ```app.js``` dosyanızı bulun ve şu komutu çalıştırın:  
 

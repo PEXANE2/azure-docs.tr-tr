@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 'de küresel olarak dağıtılmış analiz kullanan çözümler.
 description: Azure Cosmos DB ' de küresel olarak dağıtılan analizler kullanılarak derlenebilir çözümler hakkında bilgi edinin.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: d5c6b8727a24a7ea8ddf05f7983618b55884d3bf
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338990"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755196"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Azure Cosmos DB 'de küresel olarak dağıtılmış analiz kullanan çözümler
 
@@ -51,7 +51,7 @@ Aşağıdaki görüntüde, IoT cihazlarından ölçümleri okumak ve akıllı k�
 
 ![IoT cihazlarından ölçümleri okumak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
 
-## <a name="predictive-maintenance"></a>Tahmine dayalı bakım
+## <a name="predictive-maintenance"></a>Öngörücü bakım
 
 * Küçük bir ayrıntıya gitme gibi varlıkların, derinlemesine ve derin platformlar arasında saklanması karmaşık bir Endeavor. Bu varlıklar dünya genelinde bulunur ve veri petabaytlarca oluşturur. Azure Cosmos DB kullanarak, büyük miktarlarda algılayıcı telemetrisi, mağaza varlık parçaları ve algılayıcı eşlemeleri verilerini işlemek için Spark akışını kullanan uçtan uca tahmine dayalı bir veri işlem hattı oluşturabilirsiniz.
 

@@ -1,21 +1,21 @@
 ---
 title: Metin denetleme-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Olası istenmeyen metin, PII ve özel terim listeleri için metin denetlemeyi kullanın.
+description: Olası istenmeyen metinler, kişisel veriler ve hüküm özel listeleri için metin denetlemeyi kullanın.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564373"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757247"
 ---
 # <a name="learn-text-moderation-concepts"></a>Metin denetleme kavramlarını öğrenin
 
@@ -34,7 +34,7 @@ Hizmet yanıtı aşağıdaki bilgileri içerir:
 
 ## <a name="profanity"></a>Uygunsuz
 
-API, [desteklenen dillerin](Text-Moderation-API-Languages.md)herhangi birinde herhangi bir küfürlü terimi algılarsa, bu terimler yanıta dahil edilir. Yanıt, özgün metindeki konumunu (`Index`) da içerir. Aşağıdaki örnek JSON, varsa [özel terim listelerinde](try-terms-list-api.md) bulunan terimleri ifade eder. `ListId`
+API, [desteklenen dillerin](Text-Moderation-API-Languages.md)herhangi birinde herhangi bir küfürlü terimi algılarsa, bu terimler yanıta dahil edilir. Yanıt, özgün metindeki konumunu (`Index`) da içerir. Aşağıdaki örnek JSON 'daki `ListId`, varsa [özel terim listelerinde](try-terms-list-api.md) bulunan koşullara başvurur.
 
     "Terms": [
     {
@@ -45,7 +45,7 @@ API, [desteklenen dillerin](Text-Moderation-API-Languages.md)herhangi birinde he
     }
 
 > [!NOTE]
-> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
+> **Dil** parametresi için, makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere `eng` atayın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
 >
 > **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
@@ -70,15 +70,15 @@ JSON ayıklamada aşağıdaki ayıklama örnek bir çıktı gösterir:
 
 ### <a name="explanation"></a>Açıklama
 
-- `Category1`belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen dilin potansiyel olma durumunu ifade eder.
-- `Category2`, belirli durumlarda cinsel veya kötü bir şekilde düşünülmeyen dilin potansiyel olma durumunu gösterir.
-- `Category3`belirli durumlarda rahatsız edici olarak değerlendirilen dilin potansiyel olma durumunu ifade eder.
-- `Score`0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu özellik el ile kodlanmış sonuçlar yerine istatistiksel bir model kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
-- `ReviewRecommended`, iç puan eşiklerine bağlı olarak doğru ya da yanlış şeklindedir. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
+- `Category1`, belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen dilin potansiyel olduğunu ifade eder.
+- `Category2`, belirli durumlarda cinsel bir şekilde veya yetişkinlere yönelik olabilecek bir dilin varlığına başvurur.
+- `Category3`, belirli durumlarda rahatsız edici olarak değerlendirilen dilin potansiyel olduğunu ifade eder.
+- `Score` 0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu özellik el ile kodlanmış sonuçlar yerine istatistiksel bir model kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
+- `ReviewRecommended`, iç puan eşiklerine bağlı olarak doğru ya da yanlış olur. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
 
 ## <a name="personal-data"></a>Kişisel veriler
 
-PII özelliği, bu bilgilerin olası varlığını algılar:
+Kişisel veriler özelliği, bu bilgilerin olası varlığını algılar:
 
 - E-posta adresi
 - ABD posta adresi
@@ -89,51 +89,68 @@ PII özelliği, bu bilgilerin olası varlığını algılar:
 
 Aşağıdaki örnekte bir örnek yanıt gösterilmektedir:
 
-    "PII": {
-        "Email": [{
-            "Detected": "abcdef@abcd.com",
-            "SubType": "Regular",
-            "Text": "abcdef@abcd.com",
-            "Index": 32
-            }],
-        "IPA": [{
-            "SubType": "IPV4",
-            "Text": "255.255.255.255",
-            "Index": 72
-            }],
-        "Phone": [{
-            "CountryCode": "US",
-            "Text": "6657789887",
-            "Index": 56
-            }, {
-            "CountryCode": "US",
-            "Text": "870 608 4000",
-            "Index": 212
-            }, {
-            "CountryCode": "UK",
-            "Text": "+44 870 608 4000",
-            "Index": 208
-            }, {
-            "CountryCode": "UK",
-            "Text": "0344 800 2400",
-            "Index": 228
-            }, {
-            "CountryCode": "UK",
-            "Text": "0800 820 3300",
-            "Index": 245
-            }],
-        "Address": [{
-            "Text": "1 Microsoft Way, Redmond, WA 98052",
-            "Index": 89
-            }],
-        "SSN": [{
-            "Text": "999999999",
-            "Index": 56
-            }, {
-            "Text": "999-99-9999",
-            "Index": 267
-            }]
-        }
+```json
+"PII":{ 
+  "Email":[ 
+    { 
+      "Detected":"abcdef@abcd.com",
+      "SubType":"Regular",
+      "Text":"abcdef@abcd.com",
+      "Index":32
+    }
+  ],
+  "IPA":[ 
+    { 
+      "SubType":"IPV4",
+      "Text":"255.255.255.255",
+      "Index":72
+    }
+  ],
+  "Phone":[ 
+    { 
+      "CountryCode":"US",
+      "Text":"6657789887",
+      "Index":56
+    },
+    { 
+      "CountryCode":"US",
+      "Text":"870 608 4000",
+      "Index":212
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"+44 870 608 4000",
+      "Index":208
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"0344 800 2400",
+      "Index":228
+    },
+    { 
+      "CountryCode":"UK",
+      "Text":"0800 820 3300",
+      "Index":245
+    }
+  ],
+  "Address":[ 
+    { 
+      "Text":"1 Microsoft Way, Redmond, WA 98052",
+      "Index":89
+    }
+  ],
+  "SSN":[ 
+    { 
+      "Text":"999999999",
+      "Index":56
+    },
+    { 
+      "Text":"999-99-9999",
+      "Index":267
+    }
+  ]
+}
+```
 
 ## <a name="auto-correction"></a>Otomatik Düzeltme
 
@@ -150,7 +167,7 @@ Otomatik düzeltme için sorun yaparsanız, yanıt metnin düzeltilmiş sürüm�
 Varsayılan, koşulların genel listesi çoğu durumda harika olduğundan, iş gereksinimlerinize özgü koşullara göre ekran yapmak isteyebilirsiniz. Örneğin, kullanıcılar tarafından gönderilen tüm rekabetçi marka adlarını filtrelemek isteyebilirsiniz.
 
 > [!NOTE]
-> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır**.
+> Üst sınır, her biri **10.000 terimi aşmamak** kaydıyla **5 listedir**.
 >
 
 Aşağıdaki örnek eşleşen liste KIMLIĞINI gösterir:

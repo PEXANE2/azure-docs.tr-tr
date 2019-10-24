@@ -3,26 +3,26 @@ title: Özel listeler ve API konsolu ile orta boyutlu görüntüler-Content Mode
 titleSuffix: Azure Content Moderator
 description: Özel görüntü listeleri oluşturmak için Azure Content Moderator 'da liste yönetimi API 'sini kullanırsınız.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564369"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757186"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API konsolundaki özel görüntü listeleriyle orta
 
 Özel görüntü listeleri oluşturmak için Azure Content Moderator 'da [liste YÖNETIMI API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) 'sini kullanırsınız. Görüntü denetleme API 'SI ile görüntülerin özel listelerini kullanın. Görüntü denetleme işlemi görüntünüzü değerlendirir. Özel listeler oluşturursanız, işlem onu özel listeinizdeki görüntülerle karşılaştırır. Görüntüyü engellemek veya buna izin vermek için özel listeler kullanabilirsiniz.
 
 > [!NOTE]
-> Liste sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 görüntü listesidir**.
+> Listesi sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 listedir**.
 >
 
 Aşağıdaki görevleri yapmak için liste yönetimi API 'sini kullanın:

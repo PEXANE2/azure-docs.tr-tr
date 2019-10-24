@@ -4,31 +4,31 @@ description: Atama Privileged Identity Management için bir Azure AD özel rolü
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3f6eb815677133f3d7fe6ce07d6abf23db1f04
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947341"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756352"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management bir Azure AD özel rolü atama
 
 Bu makalede, Azure Active Directory (Azure AD) yönetim deneyiminde uygulamaları yönetmek için oluşturulan özel rollere tam zamanında ve zamana bağlanacak bir atama oluşturmak üzere Privileged Identity Management (PıM) ' nin nasıl kullanılacağı açıklanır.
 
 - Azure AD 'de uygulama yönetimi için özel roller oluşturma hakkında daha fazla bilgi için, bkz. [Azure Active Directory (Önizleme) Içinde özel yönetici rolleri](../users-groups-roles/roles-custom-overview.md).
-- Henüz Privileged Identity Management kullanmadıysanız, [PIM 'yi kullanmaya başlama](pim-getting-started.md)hakkında daha fazla bilgi alın.
-- Privileged Identity Management yönetmek için başka bir yöneticiye erişim verme hakkında daha fazla bilgi için bkz. [PIM 'yi yönetmek için diğer yöneticilere erişim verme](pim-how-to-give-access-to-pim.md).
+- Privileged Identity Management henüz kullanmadıysanız [Privileged Identity Management kullanmaya başlama](pim-getting-started.md)hakkında daha fazla bilgi alın.
+- Privileged Identity Management yönetmek için başka bir yöneticiye erişim verme hakkında daha fazla bilgi için bkz. [Privileged Identity Management yönetmek için diğer yöneticilere erişim verme](pim-how-to-give-access-to-pim.md).
 
 > [!NOTE]
 > Azure AD özel rolleri, önizleme sırasında yerleşik Dizin rolleriyle tümleştirilmiştir. Yetenek genel kullanıma sunulduğunda, rol yönetimi yerleşik roller deneyiminde gerçekleşmeyecektir.
@@ -51,7 +51,7 @@ Privileged Identity Management, Azure Active Directory (Azure AD) uygulama yöne
 
     ![Azure AD 'de uygun rol atamalarının kapsamını kısıtlama](./media/azure-ad-custom-roles-assign/set-scope.png)
 
-1. Rol seç listesini açmak için bir rol seçin öğesini seçin.
+1. **Rol seç listesini** **açmak için bir rol seçin** öğesini seçin.
 
     ![kullanıcıya atanacak uygun rolü seçin](./media/azure-ad-custom-roles-assign/select-role.png)
 
@@ -71,7 +71,7 @@ Privileged Identity Management, Azure Active Directory (Azure AD) uygulama yöne
 1. **Kalıcı** onay kutusu varsa ve kullanılabiliyorsa (rol ayarlarına bağlı olarak), atamanın kalıcı olup olmadığını belirtebilirsiniz. Atamanın kalıcı olarak uygun veya kalıcı olarak atanmasını sağlamak için onay kutusunu seçin. Atama süresi belirtmek için onay kutusunu temizleyin.
 1. Yeni rol atamasını oluşturmak için **Kaydet** ' e ve ardından **Ekle**' ye tıklayın. Atama işlemi durumu bildirimi görüntülenir.
 
-Rol atamasını doğrulamak için, açık bir rol içinde, **atamalar** > **ata** ' yı seçin ve rol atamalarınızın uygun veya etkin olarak doğru şekilde tanımlandığını doğrulayın.
+Rol atamasını doğrulamak için, açık bir rolde **atamalar**  > **ata** ' yı seçin ve rol atamalarınızın uygun veya etkin olarak doğru şekilde tanımlandığını doğrulayın.
 
  ![Rol atamasının uygun veya etkin olarak görünür olup olmadığını denetleyin](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

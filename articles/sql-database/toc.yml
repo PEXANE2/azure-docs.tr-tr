@@ -719,6 +719,8 @@
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: Yük devretme grubuna yönetilen örnek ekleme
           href: sql-database-managed-instance-failover-group-tutorial.md
+        - name: Şirket içi kullanıcıları ve grupları geçirme
+          href: tutorial-managed-instance-azure-active-directory-migration.md
     - name: Kavramlar
       items:
         - name: Yönetim API'si başvurusu

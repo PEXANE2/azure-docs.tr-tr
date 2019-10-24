@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Lab Services belgeleri
-summary: Azure Lab Services’i kullanarak bulutta takımınız veya öğrencileriniz için bir geliştirme, test, hackathon ya da sınıf laboratuvarını hızlıca ayarlama hakkında bilgi edinin.
+title: Azure DevTest Labs belgeleri
+summary: Azure DevTest Labs’i kullanarak bulutta takımınız veya öğrencileriniz için bir geliştirme, test, hackathon ya da sınıf laboratuvarını hızla ayarlamayı öğrenin.
 metadata:
-  title: Azure Lab Services belgeleri
-  description: Azure Lab Services’i kullanarak bulutta takımınız veya öğrencileriniz için bir geliştirme, test, hackathon ya da sınıf laboratuvarını hızlıca ayarlama hakkında bilgi edinin.
+  title: Azure DevTest Labs belgeleri
+  description: Azure DevTest Labs’i kullanarak bulutta takımınız veya öğrencileriniz için bir geliştirme, test, hackathon ya da sınıf laboratuvarını hızla ayarlamayı öğrenin.
   services: lab-services
   ms.service: lab-services
   ms.subservice: 
@@ -12,75 +12,59 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/26/2019
-  ms.openlocfilehash: 63a5b41fba026cc52cdcc599bfdd38e1e27ad42d
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.openlocfilehash: 1cfb86a37068d4cd928081446e6bf9ad381bbd86
+  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71326969"
+  ms.lasthandoff: 10/23/2019
+  ms.locfileid: "72790958"
 landingContent:
-- title: Yüksek düzey genel bakış
+- title: Başlarken
   linkLists:
   - linkListType: overview
     links:
-    - text: Lab Services Hakkında
+    - text: DevTest Laboratuvarları Hakkında
+      url: devtest-lab-overview.md
+    - text: DevTest Labs ve Lab Services hakkında
       url: lab-services-overview.md
-    - text: DevTest Laboratuvarları Hakkında
-      url: devtest-lab-overview.md
-    - text: Sınıf Laboratuvarları Hakkında
-      url: ./classroom-labs/classroom-labs-overview.md
-- title: DevTest Labs
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: DevTest Laboratuvarları Hakkında
-      url: devtest-lab-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Laboratuvar ayarlama
-      url: tutorial-create-custom-lab.md
-    - text: Laboratuvara erişme
-      url: tutorial-use-custom-lab.md
   - linkListType: concept
     links:
     - text: DevTest Labs kavramları
       url: devtest-lab-concepts.md
     - text: Popüler senaryolar
       url: devtest-lab-guidance-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: Laboratuvar ayarlama
+      url: tutorial-create-custom-lab.md
+    - text: Laboratuvara erişme
+      url: tutorial-use-custom-lab.md
+- title: Yapıtlar
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VM’ye yapıt ekleme
+      url: add-artifact-vm.md
+    - text: Özel yapıtlar oluşturma
+      url: devtest-lab-artifact-author.md
+    - text: Zorunlu yapıtları belirtme
+      url: devtest-lab-mandatory-artifacts.md
+    - text: Yapıt sorunlarını giderme
+      url: devtest-lab-troubleshoot-artifact-failure.md
+- title: Ortamlar
+  linkLists:
   - linkListType: how-to-guide
     links:
     - text: Genel ortamları yapılandırma ve kullanma
       url: devtest-lab-configure-use-public-environments.md
-    - text: Kendi ortamınızı oluşturma ve kullanma
+    - text: Ortam oluşturma
       url: devtest-lab-create-environment-from-arm.md
-    - text: Özel görüntü oluşturma
-      url: devtest-lab-create-custom-image-from-vm-using-portal.md
-    - text: Formülleri yönetme
-      url: devtest-lab-manage-formulas.md
-    - text: Sanal makineye yapıt ekleme
-      url: add-artifact-vm.md
-- title: Sınıf Laboratuvarları
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Sınıf Laboratuvarları Hakkında
-      url: ./classroom-labs/classroom-labs-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Bir laboratuvar hesabı ayarlama
-      url: ./classroom-labs/tutorial-setup-lab-account.md
-    - text: Bir sınıf laboratuvarı ayarlama
-      url: ./classroom-labs/tutorial-setup-classroom-lab.md
-    - text: Bir sınıf laboratuvarına erişim
-      url: ./classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
-    - text: Sınıf laboratuvarının kullanımını izleme
-      url: ./classroom-labs/tutorial-track-usage.md
-  - linkListType: concept
-    links:
-    - text: Sınıf Laboratuvarları kavramları
-      url: ./classroom-labs/classroom-labs-concepts.md
-    - text: Sınıfları yönetmek için laboratuvarları kullanma
-      url: ./classroom-labs/classroom-labs-scenarios.md
+    - text: Hizmet olarak platform hizmetlerini kullanma
+      url: use-paas-services.md
+    - text: Laboratuvarın sanal ağına bağlanma
+      url: connect-environment-lab-virtual-network.md
+    - text: Ortam hatalarında sorun giderme
+      url: troubleshoot-vm-environment-creation-failures.md
 - title: Başvuru içeriğimizi keşfetme
   linkLists:
   - linkListType: reference
@@ -91,3 +75,15 @@ landingContent:
       url: /powershell/module/az.devtestlabs/#devtest_labs
     - text: REST
       url: /rest/api/dtl
+- title: Şablonlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Özel görüntü ve Formül
+      url: devtest-lab-comparing-vm-base-image-types.md
+  - linkListType: how-to-guide
+    links:
+    - text: VM’den özel görüntü oluşturma
+      url: devtest-lab-create-custom-image-from-vm-using-portal.md
+    - text: Formülleri yönetme
+      url: devtest-lab-manage-formulas.md

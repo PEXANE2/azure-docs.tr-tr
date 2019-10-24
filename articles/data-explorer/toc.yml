@@ -15,6 +15,12 @@
       href: web-query-data.md
 - name: Öğreticiler
   items:
+    - name: E2E program aracılığıyla Blob alma
+      items:
+        - name: 'C#'
+          href: end-to-end-csharp.md
+        - name: Python
+          href: end-to-end-python.md
     - name: Kod kullanmadan verileri alma
       href: ingest-data-no-code.md
     - name: Power BI’da verileri görselleştirme

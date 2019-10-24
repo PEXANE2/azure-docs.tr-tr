@@ -1,5 +1,5 @@
 ---
-title: Azure AD Domain Services bir RHEL VM 'ye katma | Microsoft Docs '
+title: Azure AD Domain Services bir RHEL VM 'ye katma | Microsoft Docs
 description: Red Hat Enterprise Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9472abd7a16c887a796e36b8190e8530c84dafa9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702045"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755719"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Red Hat Enterprise Linux sanal makinesini Azure AD Etki Alanı Hizmetleri tarafından yönetilen bir etki alanına katma
 
@@ -72,11 +72,11 @@ Bu adları kendi değerlerinizle güncelleştirin:
 127.0.0.1 rhel rhel.contoso.com
 ```
 
-İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *konaklar* dosyasını kaydedin ve çıkış yapın.
+İşiniz bittiğinde, düzenleyicinin `:wq` komutunu kullanarak *konaklar* dosyasını kaydedin ve kapatın.
 
 ## <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-VM 'nin VM 'ye Azure AD DS tarafından yönetilen etki alanına katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, `yum` ' ı kullanarak etki alanına ekleme araçlarını güncelleştirin ve yüklersiniz:
+VM 'nin VM 'ye Azure AD DS tarafından yönetilen etki alanına katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için `yum` kullanarak etki alanına ekleme araçlarını güncelleştirin ve yapılandırın:
 
  **RHEL 7** 
 
@@ -96,13 +96,13 @@ Gerekli paketler VM 'ye yüklendikten sonra, VM 'yi Azure AD DS yönetilen etki 
  
   **RHEL 7**
      
-1. Azure AD DS yönetilen etki alanını bulmaya yönelik `realm discover` komutunu kullanın. Aşağıdaki örnek, *contoso.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
+1. Azure AD DS yönetilen etki alanını saptamak için `realm discover` komutunu kullanın. Aşağıdaki örnek, *contoso.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   @No__t-0 komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
+   @No__t_0 komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
    
     * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping contoso.com` deneyin.
     * VM 'nin aynı veya Azure AD DS yönetilen etki alanının kullanılabildiği eşlenmiş bir sanal ağa dağıtıldığını denetleyin.
@@ -110,13 +110,13 @@ Gerekli paketler VM 'ye yüklendikten sonra, VM 'yi Azure AD DS yönetilen etki 
 
 1. Şimdi `kinit` komutunu kullanarak Kerberos başlatın. *AAD DC Administrators* grubuna ait olan bir kullanıcı belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, Kerberos 'u başlatmak için `contosoadmin@contoso.com` adlı hesap kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin:
+    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, `contosoadmin@contoso.com` adlı hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin:
     
     ```console
     kinit contosoadmin@CONTOSO.COM
     ``` 
 
-1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS tarafından yönetilen etki alanına katın. Önceki `kinit` komutunda belirttiğiniz (`contosoadmin@CONTOSO.COM` gibi) *AAD DC Yöneticiler* grubunun üyesi olan kullanıcı hesabını kullanın:
+1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS tarafından yönetilen etki alanına katın. Önceki `kinit` komutunda belirttiğiniz *AAD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabını kullanın, örneğin `contosoadmin@CONTOSO.COM`:
 
     ```console
     sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM'
@@ -130,34 +130,34 @@ Successfully enrolled machine in realm
 
   **RHEL 6** 
 
-1. Azure AD DS yönetilen etki alanını bulmaya yönelik `adcli info` komutunu kullanın. Aşağıdaki örnek, *contoso.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
+1. Azure AD DS yönetilen etki alanını saptamak için `adcli info` komutunu kullanın. Aşağıdaki örnek, *contoso.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
 
     ```console
     sudo adcli info contoso.com
     ```
     
-   @No__t-0 komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
+   @No__t_0 komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
    
     * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping contoso.com` deneyin.
     * VM 'nin aynı veya Azure AD DS yönetilen etki alanının kullanılabildiği eşlenmiş bir sanal ağa dağıtıldığını denetleyin.
     * Sanal ağ için DNS sunucu ayarlarının, Azure AD DS yönetilen etki alanının etki alanı denetleyicilerini işaret etmek üzere güncelleştirildiğinden emin olun.
 
-1. İlk olarak, `adcli join` komutunu kullanarak etki alanına katılarak, bu komut makinenin kimliğini doğrulamak için anahtar sekmesini de oluşturur. *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı kullanın. 
+1. İlk olarak, `adcli join` komutunu kullanarak etki alanına katılarak, bu komut makinenin kimliğini doğrulamak için de keytab öğesini oluşturur. *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı kullanın. 
 
     ```console
     sudo adcli join contoso.com -U contosoadmin
     ```
 
-1. Şimdi `/ect/krb5.conf` ' yı yapılandırın ve `contoso.com` Active Directory etki alanını kullanmak için `/etc/sssd/sssd.conf` dosyaları oluşturun. 
-   @No__t-0 ' ın kendi etki alanı adınızla değiştirildiğinden emin olun:
+1. Şimdi `/ect/krb5.conf` yapılandırıp `contoso.com` Active Directory etki alanını kullanmak için `/etc/sssd/sssd.conf` dosyaları oluşturun. 
+   @No__t_0 kendi etki alanı adınızla değiştirildiğinden emin olun:
 
-    @No__t-0 dosyasını bir düzenleyici ile açın:
+    @No__t_0 dosyasını bir düzenleyici ile açın:
 
     ```console
     sudo vi /etc/krb5.conf
     ```
 
-    @No__t-0 dosyasını aşağıdaki örnekle eşleşecek şekilde güncelleştirin:
+    @No__t_0 dosyasını aşağıdaki örnekle eşleşecek şekilde güncelleştirin:
 
     ```console
     [logging]
@@ -184,13 +184,13 @@ Successfully enrolled machine in realm
      CONTOSO.COM = CONTOSO.COM
     ```
     
-   @No__t-0 dosyasını oluşturun:
+   @No__t_0 dosyasını oluşturun:
     
     ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-    @No__t-0 dosyasını aşağıdaki örnekle eşleşecek şekilde güncelleştirin:
+    @No__t_0 dosyasını aşağıdaki örnekle eşleşecek şekilde güncelleştirin:
 
     ```console
     [sssd]
@@ -203,7 +203,7 @@ Successfully enrolled machine in realm
      id_provider = ad
     ```
 
-1. @No__t-0 izinlerinin 600 olduğundan ve kök kullanıcıya ait olduğundan emin olun:
+1. @No__t_0 izinlerinin 600 olduğundan ve kök kullanıcıya ait olduğundan emin olun:
 
     ```console
     sudo chmod 600 /etc/sssd/sssd.conf
@@ -225,7 +225,7 @@ Successfully enrolled machine in realm
 
 VM 'niz etki alanına ekleme işlemini başarıyla tamamlayamadıysanız, VM 'nin ağ güvenlik grubunun TCP + UDP bağlantı noktası 464 üzerinde giden Kerberos trafiğinin Azure AD DS yönetilen etki alanınıza yönelik sanal ağ alt ağına izin verdiğinden emin olun.
 
-Şimdi @no__t kullanarak Kullanıcı AD bilgilerini sorgulayabilir olup olmadığınızı kontrol edin. 0
+Şimdi `getent` kullanarak Kullanıcı AD bilgilerini sorgulayabilir olup olmadığınızı kontrol edin
 
 ```console
 sudo getent passwd contosoadmin
@@ -286,7 +286,7 @@ RHEL VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıklar�
 
 VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. @No__t-1 gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından *RHEL.contoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. @No__t_1 gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından sanal makinenizin adresini girin (örneğin, *RHEL.contoso.com*). Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@CONTOSO.com rhel.contoso.com
@@ -308,7 +308,7 @@ VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığ
 
     Grup üyeliklerinizi Azure AD DS yönetilen etki alanından görmeniz gerekir.
 
-1. VM 'de *AAD DC yöneticileri* grubunun bir üyesi olarak oturum açtıysanız, `sudo` komutunu doğru şekilde kullanıp kullandığınıza emin olun:
+1. VM 'de *AAD DC Administrators* grubunun bir üyesi olarak oturum açtıysanız, `sudo` komutunu doğru şekilde kullanıp kullandığınıza bakın:
 
     ```console
     sudo yum update
