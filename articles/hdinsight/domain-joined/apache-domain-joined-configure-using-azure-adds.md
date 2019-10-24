@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 448b2674aa6021107d138bc0d91f1bda399eb4a6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030368"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755895"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight 'ta Azure Active Directory Domain Services olan Kurumsal Güvenlik Paketi konfigürasyonları
 
@@ -70,7 +70,7 @@ Yönetilen kimlik oluşturulduktan ve doğru rol verildikten sonra, AAD-DS Yöne
 ## <a name="networking-considerations"></a>Ağ konusunda dikkat edilmesi gerekenler
 
 > [!NOTE]  
-> Azure AD-DS Azure Resource Manager tabanlı vNET 'te dağıtılmalıdır. Klasik sanal ağlar Azure AD-DS için desteklenmez. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
+> Azure AD-DS Azure Resource Manager tabanlı vNET 'te dağıtılmalıdır. Klasik sanal ağlar Azure AD-DS için desteklenmez. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network).
 
 Azure AD-DS 'yi etkinleştirdikten sonra, AD sanal makinelerinde (VM 'Ler) bir yerel etki alanı ad hizmeti (DNS) sunucusu çalışır. Azure AD-DS Sanal ağınızı (VNET) bu özel DNS sunucularını kullanacak şekilde yapılandırın. Doğru IP adreslerini bulmak için, **Yönet** kategorisi altında **Özellikler** ' i seçin ve **sanal ağ ÜZERINDE IP adresi**altında listelenen IP adreslerine bakın.
 

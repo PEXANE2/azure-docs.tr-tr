@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 599dd2b44f934bb864acfa9ffe8d03fa0e8bb850
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300089"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757459"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server için belge değişiklikleri
 
@@ -29,7 +29,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | Değişikliklerine | Ayrıntılar |
 | --- | --- |
 | **Performans için Iyileştirilmiş depolama yapılandırması** | Artık yeni bir SQL Server VM oluştururken [depolama yapılandırmanızı tamamen özelleştirebilirsiniz](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) . |
-| **FCı için Premium dosya paylaşma** | Artık [depolama alanları doğrudan](virtual-machines-windows-portal-sql-create-failover-cluster.md)özgün yöntemi yerine [Premium dosya paylaşımından](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) kullanarak bir yük devretme kümesi örneği oluşturabilirsiniz. 
+| **FCı için Premium dosya paylaşma** | Artık [depolama alanları doğrudan](virtual-machines-windows-portal-sql-create-failover-cluster.md)orijinal yöntemi yerine [Premium dosya paylaşma](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) kullanarak bir yük devretme kümesi örneği oluşturabilirsiniz. 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>Ağustos 2019
@@ -40,7 +40,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | &nbsp; | &nbsp; |
 
 
-## <a name="july-2019"></a>2019 Temmuz
+## <a name="july-2019"></a>Temmuz 2019
 
 
 | Değişikliklerine | Ayrıntılar |
@@ -69,7 +69,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 
 
 
-## <a name="april-2019"></a>2019 Nisan
+## <a name="april-2019"></a>Nisan 2019
 
 | Değişikliklerine | Ayrıntılar |
 | --- | --- |
@@ -108,7 +108,7 @@ Azure, içinde yerleşik SQL Server bir görüntü ile sanal makine (VM) dağıt
 | &nbsp; | &nbsp; |
 
 
-### <a name="november-2018"></a>2018 Kasım
+### <a name="november-2018"></a>Kasım 2018
 
 | Değişikliklerine | Ayrıntılar |
 | --- | --- |

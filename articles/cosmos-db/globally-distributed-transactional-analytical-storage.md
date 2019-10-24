@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos kapsayıcıları için küresel olarak dağıtılmış işlem ve analitik depolama
 description: Azure Cosmos kapsayıcıları için işlem ve analitik depolama ve yapılandırma seçenekleri hakkında bilgi edinin.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 27ca2102ee95273fbedd1a870e57d2ae3318e879
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703390"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756897"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos kapsayıcıları için küresel olarak dağıtılmış işlem ve analitik depolama
 
@@ -35,7 +35,7 @@ Azure Cosmos kapsayıcısı, iki depolama altyapısı tarafından dahili olarak,
 |Depolama konumu |   Yerel/küme içi SSD 'Ler tarafından desteklenen çoğaltılmış depolama. |  Yüksek maliyetli uzak/kapalı küme SSD 'Ler tarafından desteklenen çoğaltılmış depolama.       |
 |Dayanıklılık  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
 |Verilere erişen API 'Ler  |   SQL, MongoDB, Cassandra, Gremlin, tablolar ve Etcd.       | Apache Spark         |
-|Bekletme (yaşam süresi veya TTL)   |  İlke odaklı, `DefaultTimeToLive` özelliği kullanılarak Azure Cosmos kapsayıcısında yapılandırılır.       |   İlke odaklı, `ColumnStoreTimeToLive` özelliği kullanılarak Azure Cosmos kapsayıcısında yapılandırılır.      |
+|Bekletme (yaşam süresi veya TTL)   |  İlke odaklı, `DefaultTimeToLive` özelliği kullanılarak Azure Cosmos kapsayıcısında yapılandırıldı.       |   İlke odaklı, `ColumnStoreTimeToLive` özelliği kullanılarak Azure Cosmos kapsayıcısında yapılandırıldı.      |
 |GB başına fiyat    |   $0,25/GB      |  $0,02/GB       |
 |Depolama işlemlerinin fiyatı    | Sağlanan aktarım hızı, saatlik faturalandırma ile 100 RU/sn başına $0,008 üzerinden ücretlendirilir.        |  Tüketim tabanlı verimlilik, 10.000 yazma işlemleri için $0,05, 10.000 okuma işlemleri için $0,004 üzerinden ücretlendirilir.       |
 
@@ -69,7 +69,7 @@ Belirli bir bölgede, işlem iş yükleri kapsayıcının işlem/satır depolama
 
 ### <a name="on-demand-snapshots-and-time-travel-analytics"></a>İsteğe bağlı anlık görüntüler ve zaman gezme Analizi
 
-Azure Cosmos kapsayıcılarınızın analitik deposunda depolanan verilerinizin anlık görüntülerini istediğiniz zaman, kapsayıcıda `CreateSnapshot (name, timestamp)` komutunu çağırarak yapabilirsiniz. Bu anlık görüntüler, kapsayıcıda yapmış olduğunuz güncelleştirmelerin geçmişinde "yer işaretleri" olarak adlandırılır.
+İstediğiniz zaman, kapsayıcıda `CreateSnapshot (name, timestamp)` komutunu çağırarak, Azure Cosmos kapsayıcılarınızın analitik deposunda depolanan verilerinizin anlık görüntülerini alabilirsiniz. Bu anlık görüntüler, kapsayıcıda yapmış olduğunuz güncelleştirmelerin geçmişinde "yer işaretleri" olarak adlandırılır.
 
 ![İsteğe bağlı anlık görüntüler ve zaman gezme Analizi](./media/globally-distributed-transactional-analytical-storage/ondemand-analytical-data-snapshots.png)
 
@@ -90,19 +90,19 @@ Senaryonuza bağlı olarak, iki depolama altyapısının her birini bağımsız 
 
 1. **Kapsayıcıyı analitik iş yükleri için özel olarak yapılandırma (sonsuz bekletme ile)**
 
-   Azure Cosmos kapsayıcınızı, analitik iş yükleri için özel olarak yapılandırabilirsiniz. Bu yapılandırma, işlem depolama alanı için ödeme yapmanız gerekmeyen bir avantajdır. Amacınız yalnızca analitik iş yükleri için kapsayıcıyı kullanıyorsa, Cosmos kapsayıcısında `DefaultTimeToLive` ' ı 0 ' a ayarlayarak işlem depolamayı devre dışı bırakabilirsiniz ve `ColumnStoreTimeToLive` ' i ayarlayarak, sınırsız saklama ile analitik depolamayı etkinleştirebilirsiniz.
+   Azure Cosmos kapsayıcınızı, analitik iş yükleri için özel olarak yapılandırabilirsiniz. Bu yapılandırma, işlem depolama alanı için ödeme yapmanız gerekmeyen bir avantajdır. Amacınız yalnızca analitik iş yükleri için kapsayıcıyı kullanıyorsa, Cosmos kapsayıcısında `DefaultTimeToLive` 0 olarak ayarlayarak işlem depolamayı devre dışı bırakabilir ve `ColumnStoreTimeToLive`-1 ' i ayarlayarak sınırsız saklama ile analitik depolamayı etkinleştirebilirsiniz.
 
    ![Sınırsız saklama ile analitik iş yükleri](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
 
 1. **Kapsayıcıyı işlemsel iş yükleri için özel olarak yapılandırma (sonsuz bekletme ile)**
 
-   Azure Cosmos kapsayıcınızı, yalnızca işlem iş yükleri için yapılandırabilirsiniz. Kapsayıcıda `ColumnStoreTimeToLive` ' ı 0 ' a ayarlayarak analitik depolamayı devre dışı bırakabilirsiniz ve `DefaultTimeToLive` ile-1 ' i ayarlayarak, sınırsız saklama ile analitik depolamayı etkinleştirebilirsiniz.
+   Azure Cosmos kapsayıcınızı, yalnızca işlem iş yükleri için yapılandırabilirsiniz. @No__t_0 kapsayıcıda 0 olarak ayarlayarak analitik depolamayı devre dışı bırakabilirsiniz ve `DefaultTimeToLive`-1 ' i ayarlayarak, sınırsız saklama ile analitik depolamayı etkinleştirebilirsiniz.
 
    ![Sonsuz bekletme içeren işlem iş yükleri](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
 
 1. **Kapsayıcıyı hem işlem hem de analitik iş yükleri için yapılandırın (sonsuz bekletme ile)**
 
-   Azure Cosmos kapsayıcınızı, aralarında tam performans yalıtımıyla hem işlem hem de analitik iş yükleri için yapılandırabilirsiniz. @No__t-0-1 ' i ayarlayarak analitik depolamayı etkinleştirebilir ve `DefaultTimeToLive ` ile-1 ' i ayarlayarak sonsuz bekletme ile işlem depolamayı etkinleştirebilirsiniz.
+   Azure Cosmos kapsayıcınızı, aralarında tam performans yalıtımıyla hem işlem hem de analitik iş yükleri için yapılandırabilirsiniz. @No__t_0-1 ' i ayarlayarak analitik depolamayı etkinleştirebilir ve `DefaultTimeToLive `-1 ' i ayarlayarak sonsuz bekletme ile işlem depolamayı etkinleştirebilirsiniz.
 
    ![Sonsuz bekletme ile işlem ve analitik iş yükleri](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
 
@@ -110,7 +110,7 @@ Senaryonuza bağlı olarak, iki depolama altyapısının her birini bağımsız 
 
    Azure Cosmos kapsayıcınızı, farklı saklama aralıklarıyla aralarında tam performans yalıtımıyla hem işlem hem de analitik iş yükleri için yapılandırabilirsiniz. Azure Cosmos DB, analitik depolama alanınızı işlem depolamadan daha uzun bir süre boyunca korunur.
 
-   @No__t-0 ' i < değer 1 > ayarlayarak ve `ColumnStoreTimeToLive` ' i < değer 2 > olarak ayarlayarak analitik depolamayı etkinleştirerek, işlem depolamayı sonsuz bekletme ile etkinleştirebilirsiniz. Azure Cosmos DB, < değeri 2 > her zaman < değeri 1 > daha büyük olduğunu zorlayacaktır.
+   @No__t_0 < değer 1 > ayarlayarak ve `ColumnStoreTimeToLive` < değer 2 > olarak ayarlayarak analitik depolamayı etkinleştirerek, sınırsız saklama ile işlem depolamayı etkinleştirebilirsiniz. Azure Cosmos DB, < değeri 2 > her zaman < değeri 1 > daha büyük olduğunu zorlayacaktır.
 
    ![Depolama katmanlaması ile işlem ve analitik iş yükleri](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 

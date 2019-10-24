@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025641"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750195"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
@@ -107,6 +107,8 @@ Media Services, aşağıdaki uzun süren işlemlere sahiptir:
 * [Streammingendpoint ölçeklendirin](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
 Uzun bir işlemin başarıyla gönderilmesi için bir ' 202 kabul edildi ' ve döndürülen işlem KIMLIĞINI kullanarak işlem tamamlamayı yoklamalıdır.
+
+[Zaman uyumsuz Azure işlemlerini izle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) makalesinde, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz Azure işlemlerinin durumunun nasıl izleneceği ayrıntılı olarak açıklanmaktadır.
 
 Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 

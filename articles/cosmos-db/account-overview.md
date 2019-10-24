@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB hesaplarıyla çalışma
 description: Bu makalede Azure Cosmos DB hesaplarının nasıl oluşturulduğu ve kullanılacağı açıklanmaktadır
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 833d8533ff3289693e1744db2d77d4bed6a9ea69
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617005"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757085"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos hesabıyla çalışma
 

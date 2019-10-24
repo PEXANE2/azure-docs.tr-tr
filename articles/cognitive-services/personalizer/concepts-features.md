@@ -1,5 +1,5 @@
 ---
-title: 'Özellikler: Eylem ve bağlam kişiselleştirici'
+title: 'Özellikler: eylem ve bağlam kişiselleştirici'
 titleSuffix: Azure Cognitive Services
 description: Kişiselleştirici, daha iyi derecelendirme önerileri sağlamak için özellikleri, Eylemler ve bağlam hakkındaki bilgileri kullanır. Özellikler çok genel veya bir öğeye özgü olabilir.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989097"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756100"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -25,8 +25,8 @@ Kişiselleştirici, en iyi **eylemi**seçmek için **geçerli bağlamla** ilgili
 
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
-* Kullanıcı`Sports_Shopper`gibi. Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
-* Bir video `Documentary`, `Movie`bir veya bir `TV Series`veya bir perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
+* @No__t_1 gibi _Kullanıcı_ . Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
+* Bir video `Documentary`, bir `Movie` veya `TV Series` ya da bir perakende öğesinin mağazada kullanılabilir olup olmadığı gibi _içerikler_ .
 * Haftanın günün saati gibi _geçerli_ süre.
 
 Kişiselleştirici, Eylemler ve bağlam için göndereceğiniz özellikleri etkilemez, sınırlamaz veya düzelmez:
@@ -43,8 +43,8 @@ Kişiselleştirici dize, sayısal ve Boole türlerinin özelliklerini destekler.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Özellik türü seçimi, kişiselleştirici içinde Machine Learning nasıl etkiler
 
-* **Dizeler**: Dize türleri için, her anahtar ve değerin birleşimi, kişiselleştirici makine öğrenimi modelinde yeni ağırlıklar oluşturur. 
-* **Sayısal**: Sayı, kişiselleştirme sonucunu orantılı olarak etkilediği zaman sayısal değerleri kullanmanız gerekir. Bu, çok senaryoya bağımlıdır. Basitleştirilmiş bir örnekte, örneğin, bir perakende deneyimini kişiselleştirmek için, 2 veya 3 pelleri olan kişilerin kişiselleştirme sonucunu iki kez etkilemesini veya 1 Evcil hayvan 'yı büyük ölçüde etkilemesini isteyebileceğiniz için sayısal olan bir özellik olabilir. Sayısal birimleri temel alan, ancak anlamı yaş, sıcaklık veya kişi yüksekliği gibi doğrusal olmayan, en iyi dize olarak kodlanan ve özellik kalitesi genellikle aralıklar kullanılarak iyileştirilen özelliklerdir. Örneğin, Yaş "Age" olarak kodlanıp: "0-5", "Age": "6-10", vb.
+* **Dizeler**: dize türleri için, her anahtar ve değerin birleşimi, kişiselleştirici makine öğrenimi modelinde yeni ağırlıklar oluşturur. 
+* **Sayısal**: sayı, kişiselleştirme sonucunu orantılı bir şekilde etkiliyorsa sayısal değerleri kullanmanız gerekir. Bu, çok senaryoya bağımlıdır. Basitleştirilmiş bir örnekte, örneğin, bir perakende deneyimini kişiselleştirmek için, 2 veya 3 pelleri olan kişilerin kişiselleştirme sonucunu iki kez etkilemesini veya 1 Evcil hayvan 'yı büyük ölçüde etkilemesini isteyebileceğiniz için sayısal olan bir özellik olabilir. Sayısal birimleri temel alan, ancak anlamı yaş, sıcaklık veya kişi yüksekliği gibi doğrusal olmayan, en iyi dize olarak kodlanan ve özellik kalitesi genellikle aralıklar kullanılarak iyileştirilen özelliklerdir. Örneğin, Yaş "Age" olarak kodlanıp: "0-5", "Age": "6-10", vb.
 * "False" değeri ile gönderilen **Boole** değerleri, hiç gönderilmemiş gibi davranır.
 
 Mevcut olmayan özellikler istekten atlanmalıdır. Model eğitimi yaparken, bir null değeri olan ve bir "null" değeri ile işlenen özellikler göndermekten kaçının.
@@ -56,12 +56,12 @@ Kişiselleştirici, ad alanları halinde düzenlenmiş özellikleri alır. Uygul
 Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda verilmiştir:
 
 * User_Profile_from_CRM
-* Time
+* Zaman
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * Userdeviceınfo
-* Hava durumu
+* Gü
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,7 @@ Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda ver
 Özellik ad alanlarını, geçerli JSON anahtarları oldukları sürece kendi kurallarınızı izleyerek adlandırın. Ad alanları, özellikleri farklı kümeler halinde düzenlemek ve benzer adlarla özellikleri ortadan kaldırmak için kullanılır. Ad alanlarını, özellik adlarına eklenen bir ' önek ' olarak düşünebilirsiniz. Ad alanları iç içe olamaz.
 
 
-Aşağıdaki JSON, `user` `state`, ve `device` Özellik ad uzaylardır. Genel Önizleme notunun: Şu anda UTF-8 tabanlı özellik ad alanları için adların kullanılması ve farklı harfler ile başlaması önemle önerilir. `user`Örneğin ,,`s`, ve ile `u`başlayın. `device` `state` `d` Şu anda aynı ilk karakterlerle ad alanları olması makine öğreniminde kullanılan dizinlerde çakışmaları ortaya çıkmasına neden olabilir.
+Aşağıdaki JSON 'da, `user`, `state` ve `device` Özellik ad uzaylardır. Genel Önizleme notunun: Şu anda UTF-8 tabanlı özellik ad alanları için adların kullanılması ve farklı harfler ile başlaması önemle önerilir. Örneğin, `user`, `state` ve `device` `u`, `s` ve `d` ile başlayın. Şu anda aynı ilk karakterlerle ad alanları olması makine öğreniminde kullanılan dizinlerde çakışmaları ortaya çıkmasına neden olabilir.
 
 JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri içerebilir. Bir dizi yalnızca dizi öğeleri sayı ise dahil edilebilir. 
 
@@ -97,6 +97,13 @@ JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri 
     ]
 }
 ```
+
+### <a name="restrictions-in-character-sets-for-namespaces"></a>Ad alanları için karakter kümelerinde kısıtlamalar
+
+Ad alanını adlandırırken kullandığınız dize bazı kısıtlamalara uymalıdır: 
+* Unicode olamaz.
+* Ad alanı adları için < 256 kodlu bazı yazdırılabilir sembolleri kullanabilirsiniz. 
+* Sembolleri < 32 (yazdırılamaz), 32 (boşluk), 58 (iki nokta), 124 (pipe) ve 126 – 140 kodlarla kullanamazsınız.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Özellik kümelerini kişiselleştirici için nasıl daha etkili hale getirme
 
@@ -133,7 +140,7 @@ Yapay zeka ve çalıştırmaya hazırlanma bilişsel hizmetler, Kişiselleştiri
 
 Yapay zeka hizmetlerini kullanarak öğelerinizi ön işlemden yararlanarak, kişiselleştirmeyle ilgili olabilecek olası bilgileri otomatik olarak ayıklayabilirsiniz.
 
-Örneğin:
+Örnek:
 
 * Sahne öğelerini, metni, yaklaşımı ve diğer birçok özniteliği ayıklamak için [video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) aracılığıyla bir film dosyası çalıştırabilirsiniz. Bu öznitelikler daha sonra, özgün öğe meta verilerinde bulunmayan özellikleri yansıtacak şekilde daha yoğun hale getirilebilir. 
 * Görüntüler, nesne algılama, yaklaşım, yüz ve benzeri işlemler aracılığıyla çalıştırılabilir.
@@ -153,7 +160,7 @@ Her eylem:
 * _Olay_ kimliği vardır. Zaten bir olay KIMLIĞINIZ varsa, bunu göndermeniz gerekir. Bir olay KIMLIĞINIZ yoksa, bir tane göndermeyin, kişiselleştirici sizin için bir tane oluşturur ve bu dosyayı sıralama isteğinin yanıtında döndürür. KIMLIK, Kullanıcı değil, sıralama olayı ile ilişkilendirilir. Bir KIMLIK oluşturursanız, bir GUID en iyi şekilde kullanılır. 
 * Özelliklerin bir listesini içerir.
 * Özellikler listesi büyük (yüzlerce) olabilir, ancak bir yandan elde etmeyen özellikleri kaldırmak için özellik verimliliğini değerlendirmeyi öneririz. 
-* Eylemlerdeki özellikler, kişiselleştirici tarafından kullanılan bağlamdaki özelliklerle bağıntılı olabilir veya olmayabilir.
+* **Eylemlerdeki** özellikler, kişiselleştirici tarafından kullanılan **bağlamdaki** özelliklerle bağıntılı olabilir veya olmayabilir.
 * Eylemler için özellikler bazı eylemlerde bulunabilir ve başkaları tarafından kullanılamaz. 
 * Belirli bir eylem KIMLIĞI için özellikler bir gün kullanılabilir, ancak daha sonra kullanılamaz hale gelir. 
 
@@ -166,9 +173,9 @@ Kararlı özellik kümeleri olduğunda, kişiselleştirici 'ın makine öğrenim
 
 Derecelendirme API 'sine göndereceğiniz eylemler, kişiselleştirmeye çalıştığınız işlemlere göre değişir.
 
-Bazı örnekler şunlardır:
+İşte bazı örnekler:
 
-|Amaç|Action|
+|Amaç|Eylem|
 |--|--|
 |Bir haber web sitesinde vurgulanan makaleyi kişiselleştirin.|Her eylem olası bir haber makalelidir.|
 |Web sitesinde ad yerleşimini iyileştirin.|Her eylem, reklamlar için bir düzen (örneğin, en üstte, küçük görüntüler, büyük görüntüler) oluşturmak için bir düzen veya kurallar olacaktır.|

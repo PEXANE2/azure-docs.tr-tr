@@ -3,67 +3,67 @@ title: .NET-Content Moderator kullanarak denetleme işlerini kullanma
 titleSuffix: Azure Cognitive Services
 description: Azure Content Moderator görüntü veya metin içeriğine yönelik uçtan uca içerik denetleme işleri başlatmak için Content Moderator .NET SDK 'sını kullanın.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: bc20af10e2e5b2ceb26c1cc891a8f69eb44e5740
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: c6925b979e5a93a2d73c2d6e8ac48f62714a5cd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242879"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757333"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Denetleme işlerini tanımlama ve kullanma (.NET)
 
 Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevleri için bir sarmalayıcı türü görevi görür. Bu kılavuzda, [.NET için Content moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 'yı kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
 
-- İnsan moderatör taraması yapmak ve incelemeleri oluşturmak için bir denetleme işi başlatın
-- Bekleyen incelemenin durumunu al
-- İncelemenin son durumunu izleyin ve alın
+- Tarama ve insan denetimciler için incelemeler oluşturma için bir denetim işi başlatma
+- Bekleyen incelemenin durumunu alma
+- İncelemeyi izleme ve son durumunu alma
 - İnceleme sonuçlarını geri çağırma URL 'sine gönder
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 - Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>API anahtarınızın İnceleme oluşturma için gözden geçirme API 'sini çağıraerişebildiğinden emin olun
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>API anahtarınızın inceleme oluşturma amacıyla inceleme API'sini çağırabildiğinden emin olun
 
-Önceki adımları tamamladıktan sonra, Azure portal başlatıldığında iki Content Moderator anahtarı ile karşılaşabilirsiniz.
+Önceki adımları tamamladıktan sonra, başlangıcı Azure portaldan yaptıysanız şu anda iki Content Moderator anahtarınız olmalıdır.
 
-SDK örneğinizdeki Azure tarafından sağlanmış API anahtarını kullanmayı planlıyorsanız, uygulamanızın gözden geçirme API 'sini çağırmasını ve incelemeleri oluşturmasını sağlamak için [Azure 'DA API 'yi gözden geçir](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis) bölümünde bahsedilen adımları izleyin.
+SDK örneğinizde Azure tarafından sağlanan API anahtarını kullanmayı planlıyorsanız, uygulamanızın inceleme API’sini çağırmasına ve incelemeler oluşturmasına izin vermek için [inceleme API'siyle Azure anahtarını kullanma](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis) bölümünde anlatılan adımları izleyin.
 
-İnceleme aracı tarafından oluşturulan ücretsiz deneme anahtarını kullanırsanız, gözden geçirme aracı hesabınız anahtarı daha önce bilir ve bu nedenle ek bir adım gerekmez.
+İnceleme aracı tarafından oluşturulan ücretsiz deneme anahtarını kullanırsanız, inceleme aracı hesabınız anahtarı zaten tanıyordur ve bu nedenle ek bir adım gerekli değildir.
 
-## <a name="define-a-custom-moderation-workflow"></a>Özel bir denetleme iş akışı tanımlama
+## <a name="define-a-custom-moderation-workflow"></a>Özel bir denetim iş akışı tanımlama
 
-Bir denetleme işi, API 'Leri kullanarak içeriğinizi tarar ve İncelemeler oluşturulup oluşturulmayacağını anlamak için bir **iş akışı** kullanır.
-İnceleme aracı varsayılan bir iş akışı içerdiğinde, bu hızlı başlangıç için [özel bir iş akışı tanımlayalim](Review-Tool-User-Guide/Workflows.md) .
+Bir denetimi işi, API'leri kullanarak içeriğinizi tarar ve inceleme oluşturmak gerekip gerekmediğini belirlemek için bir **iş akışı** kullanır.
+İnceleme aracı varsayılan bir iş akışı içermekle birlikte bu hızlı başlangıç için [özel bir iş akışı tanımlayacağız](Review-Tool-User-Guide/Workflows.md).
 
-Kodunuzda, denetleme işini başlatan iş akışının adını kullanırsınız.
+İş akışının adını denetim işini başlatan kodunuzda kullanırsınız.
 
-## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturma
+## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturun
 
-1. Çözümünüze yeni bir **konsol uygulaması (.NET Framework)** projesi ekleyin.
+1. Çözümünüze yeni bir **Konsol uygulaması (.NET Framework)** projesi ekleyin.
 
-   Örnek kodda, projeyi **Createreviews**olarak adlandırın.
+   Örnek kodda, projeyi **CreateReviews** olarak adlandırın.
 
-1. Bu projeyi çözüm için tek bir başlangıç projesi olarak seçin.
+1. Bu projeyi çözümün tekil başlangıç projesi olarak seçin.
 
-### <a name="install-required-packages"></a>Gerekli paketleri yükler
+### <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-Aşağıdaki NuGet paketlerini yükler:
+Aşağıdaki NuGet paketlerini yükleyin:
 
-- Microsoft. Azure. Biliveservices. Contentmoderatör
-- Microsoft. Rest. ClientRuntime
-- Newtonsoft. JSON
+- Microsoft.Azure.CognitiveServices.ContentModerator
+- Microsoft.Rest.ClientRuntime
+- Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Programın using deyimlerini güncelleştirme
+### <a name="update-the-programs-using-statements"></a>Programı deyimler kullanarak güncelleştirme
 
-Programın using deyimlerini değiştirin.
+Programı deyimler kullanarak değiştirin.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
@@ -80,7 +80,7 @@ using System.Threading;
 Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin.
 
 > [!IMPORTANT]
-> **Azureregion** ve **cmsubscriptionkey** alanlarını bölge tanımlayıcı ve abonelik anahtarlarınızın değerleriyle güncelleştirin.
+> **AzureRegion** ve **CMSubscriptionKey** alanlarını bölge tanımlayıcınız ve abonelik anahtarınızın değerleri ile güncelleştirin.
 
 ```csharp
 /// <summary>
@@ -128,13 +128,13 @@ public static class Clients
 
 ### <a name="initialize-application-specific-settings"></a>Uygulamaya özgü ayarları başlatma
 
-Program.cs içindeki **Program** sınıfına aşağıdaki sabitleri ve statik alanları ekleyin.
+Aşağıdaki sabitleri ve statik alanları Program.cs dosyasında **Program** sınıfına ekleyin.
 
 > [!NOTE]
-> TeamName sabitini Content Moderator aboneliğinizi oluştururken kullandığınız ada ayarlanır. TeamName 'i [Content moderator Web sitesinden](https://westus.contentmoderator.cognitive.microsoft.com/)alabilirsiniz.
-> Oturum açtıktan sonra **Ayarlar** (dişli) menüsünden **kimlik bilgileri** ' ni seçin.
+> TeamName sabitini, Content Moderator aboneliğinizi oluştururken kullandığınız ada ayarlayın. TeamName değerini [Content Moderator Web sitesinden](https://westus.contentmoderator.cognitive.microsoft.com/) alın.
+> Oturum açtıktan sonra **Ayarlar** (araçlar) menüsünden **Kimlik Bilgileri**'ni seçin.
 >
-> Ekip adınız, **API** bölümündeki **ID** alanının değeridir.
+> Takım adınız **API** bölümündeki **Id** alanının değeridir.
 
 ```csharp
 /// <summary>
@@ -179,10 +179,10 @@ private const int latencyDelay = 45;
 private const string CallbackEndpoint = "";
 ```
 
-## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Otomatik olarak kod ekleyin, bir gözden geçirme oluşturun ve iş ayrıntılarını alın
+## <a name="add-code-to-auto-moderate-create-a-review-and-get-the-job-details"></a>Otomatik denetim, denetim oluşturma ve iş ayrıntılarını alma için kod ekleme
 
 > [!Note]
-> Uygulamada, **Callbackendpoint** GERI çağırma URL 'sini el ile incelemenin SONUÇLARıNı alan URL 'ye ayarlarsınız (bır http post isteği aracılığıyla).
+> Uygulamada, geri çağırma URL'si olan **CallbackEndpoint** değişkenini doğrudan yapılan incelemenin sonuçlarını (bir HTTP POST isteği aracılığıyla) alan URL'ye ayarlarsınız.
 
 Aşağıdaki kodu **Main** yöntemine ekleyerek başlayın.
 
@@ -240,29 +240,29 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 ```
 
 > [!NOTE]
-> Content Moderator hizmet anahtarınız, saniye başına istek (RPS) hız sınırına sahiptir. Sınırı aşarsanız SDK, 429 hata koduyla bir özel durum oluşturur.
+> Content Moderator hizmet anahtarınızın saniyede istek sayısı (RPS) hız sınırı vardır. Sınırı aşarsanız, SDK 429 hata koduyla bir özel durum oluşturulur.
 >
-> Ücretsiz katman anahtarının bir RPS hız sınırı vardır.
+> Ücretsiz katmanı anahtarı bir RPS’lik hız sınırına sahiptir.
 
-## <a name="run-the-program-and-review-the-output"></a>Programı çalıştırın ve çıktıyı gözden geçirin
+## <a name="run-the-program-and-review-the-output"></a>Programı çalıştırma ve çıktıyı gözden geçirme
 
-Konsolunda aşağıdaki örnek çıktıyı görürsünüz:
+Konsolda şu örnek çıktıyı görürsünüz:
 
 ```console
 Perform manual reviews on the Content Moderator site.
 Then, press any key to continue.
 ```
 
-Bekleyen resim incelemesini görmek için Content Moderator İnceleme aracında oturum açın.
+Bekleyen görüntü incelemesini görmek için Content Moderator inceleme aracında oturum açın.
 
 Göndermek için **İleri** düğmesini kullanın.
 
-![İnsan moderatör için görüntü incelemesi](images/ocr-sample-image.PNG)
+![İnsan moderatörler için görüntü incelemesi](images/ocr-sample-image.PNG)
 
-## <a name="see-the-sample-output-in-the-log-file"></a>Günlük dosyasında örnek çıktıya bakın
+## <a name="see-the-sample-output-in-the-log-file"></a>Günlük dosyasında örnek çıktıyı görme
 
 > [!NOTE]
-> Çıkış dosyanızda, **TeamName**, **ContentID**, **Callbackendpoint**ve **workflowıd** dizeleri, daha önce kullandığınız değerleri yansıtır.
+> Çıktı dosyanızda, **Teamname**, **ContentId**, **CallBackEndpoint** ve **WorkflowId** dizeleri daha önce kullandığınız değerleri yansıtır.
 
 ```json
 Create moderation job for an image.
@@ -297,12 +297,12 @@ Get review details.
 }
 ```
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>Sağlanmışsa geri çağırma URL 'niz bu yanıtı alır
+## <a name="your-callback-url-if-provided-receives-this-response"></a>Belirtilmişse geri arama Url’niz bu yanıtı alır
 
-Aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
+Aşağıdaki örneğe benzer bir yanıt alırsınız:
 
 > [!NOTE]
-> Geri çağırma yanıtındaki, **ContentID** ve **workflowıd** dizeleri, daha önce kullandığınız değerleri yansıtır.
+> Geri çağırma yanıtınızda **ContentId** ve **WorkflowId** dizeleri daha önce kullandığınız değerleri yansıtır.
 
 ```json
 {
@@ -323,4 +323,4 @@ Aşağıdaki örnekte olduğu gibi bir yanıt görürsünüz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET için bu ve diğer Content Moderator hızlı başlangıçlara yönelik [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) alın ve tümleştirmenizi kullanmaya başlayın.
+Bu ve diğer .NET için Content Moderator hızlı başlangıçları için [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümünü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) edinin ve tümleştirmeniz üzerinde çalışmaya başlayın.

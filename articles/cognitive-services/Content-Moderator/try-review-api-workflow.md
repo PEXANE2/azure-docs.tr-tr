@@ -3,19 +3,19 @@ title: REST API konsolu ile denetleme iş akışlarını tanımlama Content Mode
 titleSuffix: Azure Cognitive Services
 description: İçerik ilkelerinize göre özel iş akışlarını ve eşikleri tanımlamak için Azure Content Moderator Review API 'Lerini kullanabilirsiniz.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: cb93cf1b7a5338058c6f2d93b4bb27f60286882e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881201"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754176"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Denetleme iş akışlarını tanımlama ve kullanma (REST)
 
@@ -35,15 +35,15 @@ Bir iş akışı oluşturmak veya güncelleştirmek için, **[Iş akışı-API b
 
 **Ekip**, **workflowname**ve **OCP-apim-Subscription-Key**değerlerini girin:
 
-- **Takım**: [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) hesabınızı ayarlarken oluşturduğunuz takım kimliği (gözden geçirme aracınızın kimlik bilgileri ekranındaki **kimlik** alanında bulunur).
-- **workflowname**: Eklenecek yeni bir iş akışının adı (veya var olan bir iş akışını güncelleştirmek istiyorsanız var olan bir ad).
-- **OCP-apim-Subscription-Key**: Content Moderator anahtarınız. Bunu [İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **Ayarlar** sekmesinde bulabilirsiniz.
+- **ekip**: [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) hesabınızı ayarlarken oluşturduğunuz takım kimliği (gözden geçirme aracınızın kimlik bilgileri ekranındaki **kimlik** alanında bulunur).
+- **workflowname**: mevcut bir iş akışını güncelleştirmek istiyorsanız eklenecek yeni bir iş akışının adı (veya var olan bir ad).
+- **OCP-apim-Subscription-Key**: Content moderator anahtarınız. Bunu [İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **Ayarlar** sekmesinde bulabilirsiniz.
 
 ![İş akışı-konsol sorgu parametrelerini ve üstbilgilerini oluşturun veya güncelleştirin](images/workflow-console-parameters.PNG)
 
 ### <a name="enter-a-workflow-definition"></a>İş akışı tanımı girin
 
-1. **Açıklama** `Image` ve **tür ayrıntıları** ile JSON isteğini girmek için **İstek gövdesi** kutusunu düzenleyin (ya da ).`Text`
+1. **Açıklama** ve **türe** ilişkin ayrıntıları içeren JSON isteğini girmek için **istek gövdesi** kutusunu düzenleyin (`Image` ya da `Text`).
 2. **İfade**için, varsayılan Iş akışı JSON ifadesini kopyalayın. Son JSON dizeniz şöyle görünmelidir:
 
 ```json
@@ -80,11 +80,11 @@ Bir iş akışı oluşturmak veya güncelleştirmek için, **[Iş akışı-API b
 
 ### <a name="submit-your-request"></a>İsteğinizi gönderme
   
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu görüntülenir `true`.
+**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** `200 OK` olur ve **yanıt içeriği** kutusu `true` görüntülenir.
 
 ### <a name="examine-the-new-workflow"></a>Yeni iş akışını inceleyin
 
-[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com/) **Ayarlar** > **iş akışları**' nı seçin. Yeni iş akışınız listede görünmelidir.
+[İnceleme aracında](https://contentmoderator.cognitive.microsoft.com/), **Ayarlar**  > **iş akışları**' nı seçin. Yeni iş akışınız listede görünmelidir.
 
 ![İş akışlarının araç listesini gözden geçirin](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ REST çağrı parametrelerini yukarıdaki bölümde olduğu gibi girin. Bu zaman
 
 ![Sorgu parametrelerini ve üstbilgilerini al](images/workflow-get-default.PNG)
 
-**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** olur `200 OK`ve **yanıt içeriği** kutusu, iş akışını aşağıdakine benzer şekilde JSON biçiminde görüntüler:
+**Gönder**’i seçin. İşlem başarılı olursa, **yanıt durumu** `200 OK` olur ve **yanıt içeriği** kutusu, iş AKıŞıNı aşağıdakine benzer şekilde JSON biçiminde görüntüler:
 
 ```json
 {

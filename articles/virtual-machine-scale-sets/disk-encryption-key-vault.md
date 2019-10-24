@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4f6dc068969efd3f66e6808531594ed4063347f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 0252fff84307577ab307e591948e16dc30c38f66
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530881"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750004"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma
 
@@ -31,8 +31,6 @@ Ayrıca, anahtar şifreleme anahtarı (KEK) oluşturabilir veya içeri aktarabil
 ## <a name="install-tools-and-connect-to-azure"></a>Araçları yükleyip Azure 'a bağlanın
 
 Bu makaledeki adımlar [Azure CLI](/cli/azure/), [Azure PowerShell Az Module](/powershell/azure/overview)veya [Azure Portal](https://portal.azure.com)ile tamamlanabilir.
-
-Portal, tarayıcınız aracılığıyla erişilebilir olsa da, Azure CLı ve Azure PowerShell yerel yükleme gerektirir.
 
 ### <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 

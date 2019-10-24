@@ -1,5 +1,5 @@
 ---
-title: Güvenli Azure AD Domain Services | Microsoft Docs '
+title: Güvenli Azure AD Domain Services | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanı için zayıf şifrelemeleri, eski protokolleri ve NTLM parola karması eşitlemesini devre dışı bırakmayı öğrenin.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: db086c56c9f16f4691efaade03571bf8a36c6444
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6d60663e345f297246a423e1b4e7a4fb45f352a5
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842632"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754327"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanının güvenliğini sağlamak için zayıf şifre ve parola karma eşitlemesini devre dışı bırakın
 

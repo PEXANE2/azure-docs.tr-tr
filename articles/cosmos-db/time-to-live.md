@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB yaşam süresi dolan verilerin süresi doluyor
 description: TTL ile, Microsoft Azure Cosmos DB bir süre sonra otomatik olarak sistemden temizlenebilme olanağı sağlar.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c3e1c4f56c641bf5bfa189836a4bcdf99672a3c1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597490"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756859"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi (TTL) 
 
@@ -24,7 +24,7 @@ Süre sonu öğelerin silinmesi, Kullanıcı istekleri tarafından tüketilen Is
 
 Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değiştirilme zamanından Delta olarak yorumlanır. Bir kapsayıcıda veya kapsayıcı içindeki bir öğede yaşam süresi ayarlayabilirsiniz:
 
-1. **Kapsayıcıda yaşam süresi** (kullanarak `DefaultTimeToLive`ayarla):
+1. **Kapsayıcıda yaşam süresi** (`DefaultTimeToLive` kullanarak ayarla):
 
    - Eksik (veya null olarak ayarlandıysa), öğelerin otomatik olarak zaman aşımına ermez.
 
@@ -32,7 +32,7 @@ Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değişti
 
    - Varsa ve değer bir sayı *"n"* olarak ayarlanırsa, son değiştirilme zamanından sonra öğelerin süresi *"n"* saniye dolacak.
 
-2. **Bir öğe üzerinde yaşam süresi** (kullanarak `ttl`ayarla):
+2. **Bir öğe üzerinde yaşam süresi** (`ttl` kullanarak ayarlayın):
 
    - Bu özellik yalnızca `DefaultTimeToLive` varsa ve üst kapsayıcı için null olarak ayarlanmamışsa geçerlidir.
 

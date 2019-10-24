@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529108"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750317"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -54,7 +54,7 @@ Uç noktalar arasındaki veri aktarımı, veri aktarımını gerçekleştirenler
 
 ## <a name="flow-limits-and-recommendations"></a>Akış sınırları ve önerileri
 
-Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çekirdeği olan VM 'Ler için iyi performansa sahip olan 250K toplam ağ akışını destekler. Bu sınırı aşan ağ performansı, ek akışlar bırakıldıktan sonra toplam 1M, 500 bin gelen ve 500 k giden bir üst sınıra kadar ek akışlar için düzgün şekilde düşer.
+Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çekirdeği olan VM 'Ler için iyi performansa sahip olan 250K toplam ağ akışını destekler. Bu sınırı aşan ağ performansı, ek akışlar bırakıldıktan sonra 500 k gelen ve 250K giden bir sabit sınıra kadar ek akışlar için düzgün şekilde düşer.
 
 ||< 8 CPU çekirdeği olan VM 'Ler|8 + CPU çekirdekleri olan VM 'Ler|
 |---|---|---|

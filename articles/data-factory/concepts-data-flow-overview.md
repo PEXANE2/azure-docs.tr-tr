@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 94bde7b2e2a6f3902d83de90b06638035fd34397
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7f6c131737ca63d120e111b3ef4504a36dbd7fc1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679133"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754706"
 ---
-# <a name="what-are-mapping-data-flows"></a>Eşleme veri akışları nelerdir?
+# <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
 Veri akışlarını eşleme, Azure Data Factory ' de görsel olarak tasarlanan veri dönüştürmelerdir. Veri akışları, veri mühendislerinin kod yazmadan grafik veri dönüştürme mantığı geliştirmesini sağlar. Elde edilen veri akışları, ölçeklendirilen Spark kümelerini kullanan Azure Data Factory işlem hatları içinde etkinlik olarak yürütülür. Veri akışı etkinlikleri mevcut Data Factory zamanlama, denetim, akış ve izleme özellikleri aracılığıyla çalıştırılabilir.
 
@@ -39,6 +39,38 @@ Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapı
 Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
 
 ![Tuvalinin](media/data-flow/canvas2.png "Tuvalinin")
+
+### <a name="azure-integration-runtime-data-flow-properties"></a>Azure tümleştirme çalışma zamanı veri akışı özellikleri
+
+![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "Hata ayıklama düğmesi")
+
+ADF 'de veri akışları ile çalışmaya başladığınızda, tarayıcı kullanıcı arabiriminin en üstündeki veri akışları için "hata ayıklama" anahtarını açmak isteyeceksiniz. Bu, etkileşimli hata ayıklama, veri önizlemeleri ve işlem hattı hata ayıklama yürütmeleri için kullanılacak bir Azure Databricks kümesi kullanacaktır. Kullanılan kümenin boyutunu özel bir [Azure Integration Runtime](concepts-integration-runtime.md)seçerek ayarlayabilirsiniz. Hata ayıklama oturumu, son veri önizlemeniz veya son hata ayıklama işlem hattı yürütmesinden sonra 60 dakika boyunca etkin kalır.
+
+Veri akışı etkinlikleriyle işlem hatlarınızı çalıştırdığınızda ADF, "Çalıştır" özelliğindeki [etkinlikle](control-flow-execute-data-flow-activity.md) ilişkili Azure Integration Runtime kullanır.
+
+Varsayılan Azure Integration Runtime, verileri önizlemenize ve hata ayıklama işlem hatlarını en az maliyetle hızlı bir şekilde yürütebilmenizi sağlayan küçük 4 çekirdekli tek çalışan düğümü kümesidir. Büyük veri kümelerine yönelik işlemler gerçekleştiriyorsanız daha büyük bir Azure IR yapılandırma ayarlayın.
+
+Azure IR veri akışı özelliklerinde bir TTL ayarlayarak, ADF 'yi bir küme kaynakları havuzunu (VM 'Ler) tutmaya söyleyebilirsiniz. Bu, sonraki etkinliklerde daha hızlı iş yürütmeye neden olur.
+
+#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure tümleştirme çalışma zamanı ve veri akışı stratejileri
+
+##### <a name="execute-data-flows-in-parallel"></a>Veri akışlarını paralel olarak yürütme
+
+Bir işlem hattındaki veri akışlarını paralel olarak çalıştırırsanız, ADF her bir etkinliğe bağlı Azure Integration Runtime ayarlara bağlı olarak her etkinlik yürütmesi için ayrı Azure Databricks kümelerini alır. ADF işlem hatlarında paralel yürütmeler tasarlamak için, veri akışı etkinliklerinizi Kullanıcı arabiriminde öncelik kısıtlamaları olmadan ekleyin.
+
+Bu üç seçenekten Bu seçenek büyük olasılıkla en kısa sürede yürütülecektir. Ancak, her paralel veri akışı ayrı kümeler üzerinde aynı anda yürütülür, bu nedenle olayların sıralaması belirleyici değildir.
+
+##### <a name="overload-single-data-flow"></a>Tek veri akışını aşırı yükleme
+
+Tüm mantığınızı tek bir veri akışı içinde yerleştirirseniz, ADF 'nin hepsi tek bir Spark küme örneğindeki aynı iş yürütme bağlamında yürütülür.
+
+İş kurallarınız ve iş mantığınızın bir arada olması nedeniyle bu seçeneğin izlenmesi ve sorun gidermesi daha zor olabilir. Bu seçenek ayrıca, daha fazla yeniden kullanılabilirlik sağlamaz.
+
+##### <a name="execute-data-flows-serially"></a>Veri akışlarını hizmet halinde yürütme
+
+Veri akışı etkinliklerinizi işlem hattında seri olarak çalıştırırsanız ve Azure IR yapılandırmasında bir TTL belirlediyseniz, ADF daha hızlı yürütme süreleri elde eden işlem kaynaklarını (VM 'Ler) yeniden kullanacaktır. Her yürütme için yeni bir Spark bağlamı almaya devam edersiniz.
+
+Bu üç seçenekten, bu durum büyük olasılıkla uçtan uca yürütmek için en uzun zaman alır. Ancak, her bir veri akışı adımında mantıksal işlemlerin temiz bir şekilde ayrılmasını sağlar.
 
 ### <a name="configuration-panel"></a>Yapılandırma bölmesi
 
