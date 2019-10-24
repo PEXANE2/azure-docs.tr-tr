@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: aahi
-ms.openlocfilehash: 53311567bbfa93cb66999518e5172b6c4ac36b3f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 571626da0f3f43c8c2a2e33e1147418158c5473b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555141"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754210"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Hızlı başlangıç: anomali algılayıcısı REST API ve Python kullanarak zaman serisi verilerinizde bozukluklar Algıla
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıcı kullanarak, zaman serisi verilerinizde bozukluklar olup
 
 - [Python 2. x veya 3. x](https://www.python.org/downloads/)
 
-- Python için [istekler kitaplığı](http://docs.python-requests.org)
+- Python için [istekler kitaplığı](https://pypi.org/project/requests/)
 
 - Zaman serisi veri noktalarını içeren bir JSON dosyası. Bu hızlı başlangıçta örnek veriler [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)'da bulunabilir.
 

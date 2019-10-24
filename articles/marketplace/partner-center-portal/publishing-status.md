@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883413"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750150"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
 
@@ -20,7 +20,7 @@ Geçerli **Yayımlama durumunuzu** Iş Ortağı Merkezi 'Nde [ticari Market port
 
 Her teklif için aşağıdaki durum göstergelerden biri görüntülenmelidir.
 
-| **Durumu**    | **Açıklama**  |
+| **Durum**    | **Açıklama**  |
 | :---------- | :-------------------|
 | **Görünümündeyken** | Teklif oluşturuldu ancak yayımlanmadı. |
 | **Yayımlama devam ediyor** | Teklif/plan, yayımlama sürecinin adımları aracılığıyla kendi yolunda çalışmaktadır. |
@@ -106,7 +106,7 @@ Bu rapor, gözden geçirme notlarıyla birlikte başarısız olan ilkelerin aç�
 
 Bu adımda, son yayımlama adımından önce teklif önizlemeyi gözden geçirmeniz ve onaylamanız için bir istek ile e-postayla gönderilir.
 
-Teklifinizi Microsoft aracılığıyla satmayı seçtiyseniz, bu Önizleme onay aşaması sırasında gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilirsiniz. Teklifiniz henüz pubic Market ' te mevcut olmayacaktır. Bu önizlemeyi test edin ve onayladıktan sonra [**teklif genel bakış**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) panosunda **Go-Live** ' ı seçmeniz gerekir.
+Teklifinizi Microsoft aracılığıyla satmayı seçtiyseniz, bu Önizleme onay aşaması sırasında gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilirsiniz. Teklifiniz henüz genel Market 'te kullanılamayacak. Bu önizlemeyi test edin ve onayladıktan sonra [**teklif genel bakış**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) panosunda **Go-Live** ' ı seçmeniz gerekir.
 
 Bu önizleme aşamasında teklifte değişiklik yapmak istiyorsanız, yeni bir önizleme yayınlamak için düzenleyebilir ve yeniden gönderebilirsiniz. Daha fazla değişiklik hakkında daha fazla bilgi için [mevcut Market tekliflerini güncelleştirme](#update-existing-marketplace-offers) makalesine bakın.
 

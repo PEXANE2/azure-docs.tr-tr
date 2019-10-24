@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
-ms.translationtype: MT
+ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967098"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750180"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure kaynakları için RBAC sorunlarını giderme
 
@@ -28,15 +28,15 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC rol atamalarıyla ilgili sorunlar
 
-- **Rol Ekle ataması** **Ekle seçeneği** > devre dışı bırakıldığından veya izinleri aldığınız için **erişim denetimi 'nde (IAM)** Azure Portal bir rol ataması ekleyemezse veya "nesne kimliğine sahip istemci eylem gerçekleştirme yetkilendirmesi "Bu durumda, rolü atamaya çalıştığınız kapsamda `Microsoft.Authorization/roleAssignments/write` [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi izne sahip bir rol atanmış kullanıcıyla oturum açmış olup olmadığınızı kontrol edin.
-- "Daha fazla rol ataması Oluşturusız" hata iletisini alırsanız (kod: RoleAssignmentLimitExceeded)" hatasını alıyorsanız, rolleri gruplara atayarak rol atamalarının sayısını azaltmaya çalışın. Azure, abonelik başına en fazla **2000** rol atamasını destekler.
+- Azure portal**rol** **ataması ekleme seçeneği** devre dışı bırakıldığından veya izinleri aldığınız için **erişim denetimi 'nde (IAM  > )** bir rol ataması ekleyemezse veya "nesne kimliği olan istemci eylem gerçekleştirme yetkilendirmesi ", şu anda, rolü atamaya çalıştığınız kapsamda [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi `Microsoft.Authorization/roleAssignments/write` iznine sahip bir kullanıcı ile oturum açtığınızdan emin olun.
+- "Daha fazla rol ataması oluşturuoluşturulamadığı (Code: Roleatamaadı)" hata iletisini alırsanız, rol atamayı denediğinizde, rol atamalarının sayısını azaltmayı deneyin. Azure, abonelik başına en fazla **2000** rol atamasını destekler.
 
 ## <a name="problems-with-custom-roles"></a>Özel rollerle ilgili sorunlar
 
 - Özel rol oluşturma için adımlara ihtiyacınız varsa, [Azure PowerShell](tutorial-custom-role-powershell.md) veya [Azure CLI](tutorial-custom-role-cli.md)kullanarak özel rol öğreticilerine bakın.
-- Mevcut bir özel rolü güncelleştireerişemiyorsanız, `Microsoft.Authorization/roleDefinition/write` [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator)gibi izne sahip bir rol atanmış kullanıcıyla oturum açmış olup olmadığınızı kontrol edin.
-- Özel rolü silemiyor ve "Role başvuran mevcut rol atamaları var (kod: RoleDefinitionHasAssignments)" hata iletisiyle karşılaşıyorsanız, özel rolü kullanan rol atamaları mevcuttur. Bu rol atamalarını kaldırın ve özel rolü silmeyi tekrar deneyin.
-- Yeni bir özel rol oluşturmaya çalıştığınızda "Rol tanımı sınırı aşıldı. Başka rol tanımı oluşturulamaz (kod: Roledefinitionlimitexcelıbaşında) "yeni bir özel rol oluşturmaya çalıştığınızda kullanılmayan tüm özel rolleri silin. Azure, bir kiracıda en fazla **5000** özel rolü destekler. (Azure Kamu, Azure Almanya ve Azure Çin 21Vianet gibi özel Bulutlar için 2000 özel rol sınırı vardır.)
+- Mevcut bir özel rolü güncelleştireerişemiyorsanız, [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator)gibi `Microsoft.Authorization/roleDefinition/write` iznine sahip bir rol atanmış kullanıcıyla oturum açtığınızdan emin olun.
+- Özel bir rolü silemeyseniz ve "role başvuran mevcut rol atamaları var (kod: Roledefinitionhasas,)" hata iletisini alırsanız, hala özel rolü kullanan rol atamaları vardır. Bu rol atamalarını kaldırın ve özel rolü silmeyi tekrar deneyin.
+- Yeni bir özel rol oluşturmaya çalıştığınızda "Rol tanımı sınırı aşıldı. Başka rol tanımı oluşturulamaz (kod: Roledefinitionlimitexcelıo) "yeni bir özel rol oluşturmaya çalıştığınızda kullanılmayan tüm özel rolleri silin. Azure, bir kiracıda en fazla **5000** özel rolü destekler. (Azure Kamu, Azure Almanya ve Azure Çin 21Vianet gibi özel Bulutlar için 2000 özel rol sınırı vardır.)
 - "İstemcinin '/Subscriptions/{SubscriptionID} ' kapsamındaki ' Microsoft. Authorization/roleDefinitions/Write ' eylemini gerçekleştirme izni var, ancak bağlantılı abonelik bulunamadı" özel bir rolü güncelleştirmeye çalıştığınızda, ' i işaretleyin. kiracıya bir veya daha fazla [atanabilir kapsam](role-definitions.md#assignablescopes) silinip silinmediğini belirtir. Kapsam silinmişse, şu anda bir self servis çözüm olmadığı için destek bileti oluşturun.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Abonelikler kiracılar arasında taşınırken RBAC koşullarını kurtarma
@@ -51,12 +51,12 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 
 ## <a name="access-denied-or-permission-errors"></a>Erişim engellendi veya izin hataları
 
-- "Nesne kimliğine sahip istemcinin kapsam üzerinde işlemi gerçekleştirme yetkisi yok (kod: AuthorizationFailed)" izin hatasını kaynak oluşturmaya çalıştığınızda alıyorsanız, seçilen kapsamda kaynak için yazma iznine sahip bir rolün atanmış olduğu kullanıcı hesabıyla oturum açmış olduğunuzdan emin olun. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik rollerin izinlerinin yer aldığı liste için bkz. [Azure kaynakları için yerleşik roller](built-in-roles.md).
-- "Destek talebi oluşturma izniniz yok" hatasını alırsanız bir destek bileti oluşturmaya veya güncelleştirmeye çalıştığınızda şu anda `Microsoft.Support/supportTickets/write` iznine [sahip olan bir rol atanmış olan bir kullanıcıyla oturum açtığınızdan emin olun. Destek Isteği katılımcısı](built-in-roles.md#support-request-contributor).
+- "Nesne kimliği olan istemci, kapsam üzerinde eylem gerçekleştirme yetkisine sahip değil (kod: AuthorizationFailed)" hatası alırsanız, bir kaynak oluşturmaya çalıştığınızda şu anda yazılan bir rolün atandığı kullanıcıyla oturum açtığınızdan emin olun. seçilen kapsamdaki kaynak için izin. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik rollerin izinlerinin yer aldığı liste için bkz. [Azure kaynakları için yerleşik roller](built-in-roles.md).
+- "Destek talebi oluşturma izniniz yok" hatasını alırsanız bir destek bileti oluşturmaya veya güncelleştirmeye çalıştığınızda, şu anda `Microsoft.Support/supportTickets/write` iznine sahip bir rolün atandığı kullanıcıyla oturum açtığınızdan emin olun. gibi, [destek Isteği katılımcısı](built-in-roles.md#support-request-contributor)gibi.
 
-## <a name="role-assignments-without-a-security-principal"></a>Güvenlik sorumlusu olmayan rol atamaları
+## <a name="role-assignments-with-unknown-security-principal"></a>Bilinmeyen güvenlik sorumlusu olan rol atamaları
 
-Rol atamalarınızı Azure PowerShell kullanarak listeünüzde boş `DisplayName` olan `ObjectType` ve bilinmeyen olarak ayarlanan atamaları görebilirsiniz. Örneğin, [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) aşağıdakine benzer bir rol ataması döndürür:
+Rol atamalarınızı Azure PowerShell kullanarak listeünüzde boş bir `DisplayName` ve `ObjectType` bilinmeyen olarak ayarlanan atamaları görebilirsiniz. Örneğin, [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) aşağıdakine benzer bir rol ataması döndürür:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -70,7 +70,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Benzer şekilde, Azure CLı kullanarak rol atamalarınızı listelüünüzde, atamaları boş `principalName`olarak görebilirsiniz. Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdakilere benzer bir rol ataması döndürür:
+Benzer şekilde, Azure CLı kullanarak rol atamalarınızı listelüünüzde boş bir `principalName` atamalar görebilirsiniz. Örneğin, [az role atama listesi](/cli/azure/role/assignment#az-role-assignment-list) aşağıdakilere benzer bir rol ataması döndürür:
 
 ```azurecli
 {
@@ -90,7 +90,7 @@ Bu rol atamaları, bir güvenlik sorumlusu (Kullanıcı, Grup, hizmet sorumlusu 
 
 Bu rol atamalarını kaldırmak için [Remove-Azroleatama](/powershell/module/az.resources/remove-azroleassignment) veya [az role atama Delete](/cli/azure/role/assignment#az-role-assignment-delete) komutlarını kullanın.
 
-PowerShell 'de, rol atamalarını nesne KIMLIĞI ve rol tanımı adı kullanarak kaldırmaya çalışırsanız ve parametreleriniz ile eşleşen birden fazla rol ataması varsa, şu hata iletisini alırsınız: "Belirtilen bilgiler bir rol atamasıyla eşlenmiyor". Aşağıda, hata iletisinin bir örneği gösterilmektedir:
+PowerShell 'de, rol atamalarını nesne KIMLIĞI ve rol tanımı adı kullanarak kaldırmaya çalışırsanız ve parametreleriniz ile eşleşen birden fazla rol ataması varsa, şu hata iletisini alırsınız: "belirtilen bilgiler bir rol atamasıyla eşlenmiyor". Aşağıda, hata iletisinin bir örneği gösterilmektedir:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"

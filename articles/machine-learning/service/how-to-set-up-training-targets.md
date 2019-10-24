@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244427"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755961"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 
@@ -106,7 +106,7 @@ Bir çalıştırmayı zamanladığınızda veya kalıcı bir kaynak olarak, iste
 Çalışma zamanında işlem hedefi olarak Azure Machine Learning Işlem oluşturabilirsiniz. İşlem, çalıştırmanız için otomatik olarak oluşturulur. İşlem, çalıştırma tamamlandıktan sonra otomatik olarak silinir. 
 
 > [!NOTE]
-> Kullanılacak en fazla düğüm sayısını belirtmek için normalde `node_count` ' ı düğüm sayısına ayarlamanız gerekir. Şu anda (04/04/2019) bunun çalışmasını engelleyen bir hata var. Geçici bir çözüm olarak, çalıştırma yapılandırmasının `amlcompute._cluster_max_node_count` özelliğini kullanın. Örneğin, `run_config.amlcompute._cluster_max_node_count = 5`.
+> Kullanılacak en fazla düğüm sayısını belirtmek için, normalde `node_count` düğüm sayısına ayarlamanız gerekir. Şu anda (04/04/2019) bunun çalışmasını engelleyen bir hata var. Geçici bir çözüm olarak, çalıştırma yapılandırmasının `amlcompute._cluster_max_node_count` özelliğini kullanın. Örneğin, `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Azure Machine Learning işlem tabanlı oluşturma işlemi şu anda önizleme aşamasındadır. Otomatik hiper parametre ayarlama veya otomatik makine öğrenimi kullanıyorsanız, çalıştırma tabanlı oluşturma kullanmayın. Hiper parametre ayarlamayı veya otomatik makine öğrenimini kullanmak için, bunun yerine [kalıcı bir işlem](#persistent) hedefi oluşturun.
@@ -154,7 +154,7 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
     > [!WARNING]
     > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya var olan bir VM 'yi seçtiğinizde Ubuntu kullanan bir VM seçmeniz gerekir.
 
-1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<fqdn > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. @No__t-0username > ve \<Password >, VM için SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<fqdn > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. @No__t_0username > ve \<password >, sanal makinenin SSH Kullanıcı adı ve parolasıyla değiştirin.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -198,7 +198,7 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
     
     Küme oluşturulduktan sonra, \<clustername >-ssh.azurehdinsight.net ana bilgisayar adı ile bağlanın, burada \<clustername >, küme için verdiğiniz addır. 
 
-1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, çalışma alanınıza bir küme iliştirmek için SDK 'Yı kullanır. Örnekte \<clustername > değerini kümenizin adıyla değiştirin. @No__t-0username > ve \<Password > ' i kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, çalışma alanınıza bir küme iliştirmek için SDK 'Yı kullanır. Örnekte \<clustername > değerini kümenizin adıyla değiştirin. @No__t_0username > ve \<password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -295,7 +295,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
  
 1. __Uygulamalar__' ın altında, __işlem__' ı seçin.
 
-    [![ işlem sekmesini görüntüle](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [![View işlem sekmesi](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>İşlem hedefi oluştur
 
@@ -379,7 +379,7 @@ Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı 
 > [!IMPORTANT]
 > Eğitim çalıştırmasını gönderdiğinizde, eğitim betiklerinizi içeren dizinin bir anlık görüntüsü oluşturulur ve işlem hedefine gönderilir. Ayrıca çalışma alanınızdaki denemenin bir parçası olarak da depolanır. Dosyaları değiştirir ve çalışmayı yeniden gönderirseniz yalnızca değiştirilen dosyalar karşıya yüklenir.
 >
-> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. @No__t-0 dosyası, [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
+> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. @No__t_0 dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
 > 
 > Daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
 
@@ -406,7 +406,7 @@ Aynı denemeyi, [amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Bu örnek, eğitim için yalnızca bir işlem hedefi düğümü kullanmayı varsayılan olarak belirler. Birden fazla düğüm kullanmak için, çalıştırma yapılandırmasının `node_count` ' ı istenen düğüm sayısına ayarlayın. Örneğin, aşağıdaki kod eğitim için kullanılan düğümlerin sayısını dört olarak ayarlar:
+> Bu örnek, eğitim için yalnızca bir işlem hedefi düğümü kullanmayı varsayılan olarak belirler. Birden fazla düğüm kullanmak için, çalıştırma yapılandırmasının `node_count` istenen düğüm sayısına ayarlayın. Örneğin, aşağıdaki kod eğitim için kullanılan düğümlerin sayısını dört olarak ayarlar:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -499,7 +499,7 @@ Bu ```az ml``` CLı komutları ve tam bağımsız değişken kümesi hakkında d
 
 ## <a name="git-tracking-and-integration"></a>Git izleme ve Tümleştirme
 
-Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Örneğin, deponun geçerli kayıt KIMLIĞI, geçmişin bir parçası olarak günlüğe kaydedilir.
+Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Not defteri örnekleri
 

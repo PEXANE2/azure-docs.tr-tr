@@ -156,7 +156,7 @@ Bu makalede, ülke ve bölge tarafından kullanılan listeler **Geographic** tra
 
         - OM(Oman)
 
-        - PS (Filistin)
+        - PS (Filistin Devleti)
 
         - QA(Qatar)
 
@@ -482,7 +482,7 @@ Bu makalede, ülke ve bölge tarafından kullanılan listeler **Geographic** tra
 
         - CF (Orta Afrika Cumhuriyeti)
 
-        - CI (Fildişi Sahili)
+        - CI (Fildişi Sahili (Côte d’Ivoire))
 
         - CM(Cameroon)
 
