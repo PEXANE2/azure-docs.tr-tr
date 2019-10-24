@@ -14,30 +14,30 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263670"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756606"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reboot"></a>Yeniden başlatın
+## <a name="reboot"></a>Yeniden başlatma
 **Yeniden başlatma** dikey penceresi, önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmanızı sağlar. Bu yeniden başlatma özelliği, bir önbellek düğümünde hata oluşursa uygulamanızı dayanıklılık açısından test etmenizi sağlar.
 
-![Yeniden başlatın](./media/cache-administration/redis-cache-administration-reboot.png)
+![Yeniden başlatma](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Yeniden başlatılacak düğümleri seçin ve **Yeniden Başlat**' a tıklayın.
 
-![Yeniden başlatın](./media/cache-administration/redis-cache-reboot.png)
+![Yeniden başlatma](./media/cache-administration/redis-cache-reboot.png)
 
 Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin hangi parçaları yeniden başlatılacağını seçebilirsiniz.
 
-![Yeniden başlatın](./media/cache-administration/redis-cache-reboot-cluster.png)
+![Yeniden başlatma](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat**' a tıklayın. Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, yeniden başlatmak için istenen parçaları seçin ve ardından **Yeniden Başlat**' a tıklayın. Birkaç dakika sonra, seçili düğümler yeniden başlatılır ve birkaç dakika sonra tekrar çevrimiçi olacak.
 
@@ -71,16 +71,16 @@ Hem **ana** hem de **bağımlı** düğümleri yeniden başlattıktan sonra önb
 Düğümlerden yalnızca birini yeniden yüklerseniz, veriler genellikle kaybedilmez, ancak yine de olabilir. Örneğin, ana düğüm yeniden başlatıldığında ve bir önbellek yazma işlemi devam ediyorsa, önbellek yazma verileri kaybedilir. Veri kaybı için başka bir senaryo da bir düğümü yeniden başlattığınızda ve diğer düğüm aynı anda bir hata nedeniyle sona acaksa olur. Veri kaybına ilişkin olası nedenler hakkında daha fazla bilgi için bkz. [redsıs 'deki verilerim ne oldu?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>PowerShell, CLı veya diğer yönetim araçlarını kullanarak önbelleğinizi yeniden başlatabilirim miyim?
-Evet, PowerShell yönergeleri için bkz. [Reda Için Azure önbelleğini yeniden başlatma](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
+Evet, PowerShell yönergeleri için bkz. [Reda Için Azure önbelleğini yeniden başlatma](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
-## <a name="schedule-updates"></a>Güncelleştirmeleri zamanla
+## <a name="schedule-updates"></a>Güncelleştirmeleri zamanlama
 **Güncelleştirmeleri zamanla** dikey penceresi, önbellek örneğiniz için bir bakım penceresi atamanıza olanak tanır. Bakım penceresi belirtildiğinde, bu pencere sırasında tüm Red, Server güncelleştirmeleri yapılır. 
 
 > [!NOTE] 
 > Bakım penceresi yalnızca Redsıs sunucu güncelleştirmeleri için geçerlidir ve önbelleği barındıran VM 'lerin işletim sisteminde herhangi bir Azure güncelleştirmesi ya da güncelleştirmesi için geçerli değildir.
 >
 
-![Güncelleştirmeleri zamanla](./media/cache-administration/redis-schedule-updates.png)
+![Güncelleştirmeleri zamanlama](./media/cache-administration/redis-schedule-updates.png)
 
 Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam**' a tıklayın. Bakım penceresi saatinin UTC olarak olduğunu unutmayın. 
 

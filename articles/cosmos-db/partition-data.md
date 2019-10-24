@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB bölümlendirme ve yatay ölçekleme
 description: Bölümlemenin Azure Cosmos DB nasıl çalıştığına, bölümleme ve bölüm anahtarlarının nasıl yapılandırılacağını ve uygulamanız için doğru bölüm anahtarının nasıl seçeceğinizi öğrenin.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616789"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754919"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB bölümlendirme ve yatay ölçekleme
 
@@ -19,7 +19,7 @@ Bu makalede Azure Cosmos DB içindeki fiziksel ve mantıksal bölümler açıkla
 
 ## <a name="logical-partitions"></a>Mantıksal bölümler
 
-Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden oluşur. Örneğin, tüm öğelerin bir `City` özelliği içerdiği bir kapsayıcıda, kapsayıcı için bölüm anahtarı olarak kullanabilirsiniz. `City` `London`, `City` `NYC`Ve gibi belirli değerlere sahip öğe grupları, ve gibi mantıksal bölümler oluşturur. `Paris` Temel alınan veriler silindiğinde bir bölümü silme konusunda endişelenmeniz gerekmez.
+Mantıksal bir bölüm, aynı bölüm anahtarına sahip bir öğe kümesinden oluşur. Örneğin, tüm öğelerin `City` özellik içerdiği bir kapsayıcıda, kapsayıcının bölüm anahtarı olarak `City` kullanabilirsiniz. @No__t_1, `Paris` ve `NYC` gibi `City` için belirli değerlere sahip öğe grupları, farklı mantıksal bölümler oluşturur. Temel alınan veriler silindiğinde bir bölümü silme konusunda endişelenmeniz gerekmez.
 
 Azure Cosmos DB, kapsayıcı temel ölçeklenebilirlik birimidir. Kapsayıcıya eklenen veriler ve kapsayıcıda sağladığınız aktarım hızı, mantıksal bölümlerin bir kümesi genelinde otomatik olarak (yatay olarak) bölümlenir. Veri ve aktarım hızı, Azure Cosmos kapsayıcısı için belirttiğiniz bölüm anahtarına göre bölümlendirilir. Daha fazla bilgi için bkz. [Azure Cosmos kapsayıcısı oluşturma](how-to-create-container.md).
 

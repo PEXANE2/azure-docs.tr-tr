@@ -1,62 +1,62 @@
 ---
 title: Content Moderator özel listelere C# karşı görüntüleri denetleme
 titleSuffix: Azure Cognitive Services
-description: İçin C#Content moderator SDK 'sını kullanarak özel görüntü listeleriyle görüntüleri nasıl bir şekilde öğreneceksiniz.
+description: C# için Content Moderator SDK'sını kullanarak görüntüleri özel görüntü listeleriyle denetleme.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: 63eb2285563bf83ac56beb03ff008a2bfa5daab6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 63dd3b782d868994c46e71b55201e65f91678d86
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242898"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755335"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>İçindeki özel görüntü listeleriyle ortaC#
 
-Bu makalede, [.NET için Content moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 'yı kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
+Bu makalede, aşağıdaki amaçlarla [.NET için Content Moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)'sını kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanmaktadır:
 - Özel görüntü listesi oluşturma
-- Listeden resim ekleme ve kaldırma
-- Listedeki tüm görüntülerin kimliklerini al
+- Listeden görüntü ekleyip kaldırma
+- Listedeki tüm görüntülerin kimliklerini alma
 - Liste meta verilerini alma ve güncelleştirme
-- Liste arama dizinini Yenile
-- Listedeki görüntülere karşı ekran görüntüleri
-- Listedeki tüm görüntüleri Sil
+- Liste arama dizinini yenileme
+- Görüntüleri listedeki görüntülere karşı tarama
+- Listedeki tüm görüntüleri silme
 - Özel listeyi silme
 
 > [!NOTE]
-> Her liste **10.000 görüntüsünü aşmayan**en fazla **5 görüntü listesi** vardır.
+> Liste sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 görüntü listesidir**.
 
 Bu kılavuzun konsol uygulaması, görüntü listesi API 'SI ile gerçekleştirebileceğiniz bazı görevleri benzetir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Content Moderator hizmetlere kaydolun
+## <a name="sign-up-for-content-moderator-services"></a>Content Moderator hizmetleri için kaydolma
 
-REST API veya SDK aracılığıyla Content Moderator Hizmetleri kullanabilmeniz için önce bir API abonelik anahtarına ihtiyacınız olacaktır. Sağlamak için [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) Content moderator hizmetine abone olun.
+REST API veya SDK aracılığıyla Content Moderator hizmetlerini kullanabilmeniz için önce bir API abonelik anahtarınız olması gerekir. Almak için [Azure portalda](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) Content Moderator hizmetine abone olabilirsiniz.
 
-## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturma
+## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturun
 
-1. Çözümünüze yeni bir **konsol uygulaması (.NET Framework)** projesi ekleyin.
+1. Çözümünüze yeni bir **Konsol uygulaması (.NET Framework)** projesi ekleyin.
 
-   Örnek kodda projeyi **ImageLists**olarak adlandırın.
+   Örnek kodda projeyi **ImageLists** olarak adlandırın.
 
-1. Bu projeyi çözüm için tek bir başlangıç projesi olarak seçin.
+1. Bu projeyi çözümün tekil başlangıç projesi olarak seçin.
 
-### <a name="install-required-packages"></a>Gerekli paketleri yükler
+### <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-Aşağıdaki NuGet paketlerini yükler:
+Aşağıdaki NuGet paketlerini yükleyin:
 
-- Microsoft. Azure. Biliveservices. Contentmoderatör
-- Microsoft. Rest. ClientRuntime
-- Newtonsoft. JSON
+- Microsoft.Azure.CognitiveServices.ContentModerator
+- Microsoft.Rest.ClientRuntime
+- Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Programın using deyimlerini güncelleştirme
+### <a name="update-the-programs-using-statements"></a>Programı deyimler kullanarak güncelleştirme
 
 Aşağıdaki `using` deyimlerini ekleyin
 
@@ -75,7 +75,7 @@ using System.Threading;
 Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin.
 
 > [!IMPORTANT]
-> **Azureregion** ve **cmsubscriptionkey** alanlarını bölge tanımlayıcı ve abonelik anahtarlarınızın değerleriyle güncelleştirin.
+> **AzureRegion** ve **CMSubscriptionKey** alanlarını bölge tanımlayıcınız ve abonelik anahtarınızın değerleri ile güncelleştirin.
 
 ```csharp
 /// <summary>
@@ -124,7 +124,7 @@ public static class Clients
 
 ### <a name="initialize-application-specific-settings"></a>Uygulamaya özgü ayarları başlatma
 
-Program.cs içindeki **Program** sınıfına aşağıdaki sınıfları ve statik alanları ekleyin.
+Aşağıdaki sınıfları ve statik alanları Program.cs dosyasındaki **Program** sınıfına ekleyin.
 
 ```csharp
 /// <summary>
@@ -247,10 +247,10 @@ private static Body listDetails;
 ```
    
 > [!NOTE]
-> Content Moderator hizmet anahtarınız, saniye başına istek (RPS) oranı sınırına sahiptir ve limiti aşarsanız, SDK 429 hata koduyla bir özel durum oluşturur. Ücretsiz katman anahtarında tek RPS hız sınırı vardır.
+> Content Moderator hizmet anahtarınızın saniye başına istek (RPS) hız sınırı vardır ve bu sınırı aşarsanız SDK 429 hata kodu ile bir özel durum oluşturur. Ücretsiz katman anahtarı bir RPS'lik hız sınırına sahiptir.
 
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Günlük dosyasına ileti yazmak için bir yöntem oluşturma
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Günlük dosyasına iletileri yazmak için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -271,7 +271,7 @@ private static void WriteLine(string message = null, bool echo = false)
 }
 ```
 
-## <a name="create-a-method-to-create-the-custom-list"></a>Özel liste oluşturmak için bir yöntem oluşturma
+## <a name="create-a-method-to-create-the-custom-list"></a>Özel liste oluşturmak için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -300,7 +300,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 }
 ```
 
-## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Listeye bir görüntü koleksiyonu eklemek için bir yöntem oluşturma
+## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Listeye görüntü koleksiyonu eklemek için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. Bu kılavuz, listedeki görüntülere etiketlerin nasıl uygulanacağını göstermez. 
 
@@ -344,7 +344,7 @@ IEnumerable<string> imagesToAdd, string label)
 }
 ```
 
-## <a name="create-a-method-to-remove-images-from-the-list"></a>Listeden görüntüleri kaldırmak için bir yöntem oluşturma
+## <a name="create-a-method-to-remove-images-from-the-list"></a>Listeden görüntü kaldırmak için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -381,7 +381,7 @@ private static void RemoveImages(
 }
 ```
 
-## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Listedeki görüntülerin tüm içerik kimliklerini almak için bir yöntem oluşturma
+## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Listedeki görüntülerin tüm içerik kimliklerini almak için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -408,7 +408,7 @@ private static ImageIds GetAllImageIds(
 }
 ```
 
-## <a name="create-a-method-to-update-the-details-of-the-list"></a>Listenin ayrıntılarını güncelleştirmek için bir yöntem oluşturma
+## <a name="create-a-method-to-update-the-details-of-the-list"></a>Listenin ayrıntılarını güncelleştirmek için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -438,7 +438,7 @@ private static ImageList UpdateListDetails(
 }
 ```
 
-## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Listenin ayrıntılarını almak için bir yöntem oluşturun
+## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Listenin ayrıntılarını almak için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin.
 
@@ -465,9 +465,9 @@ private static ImageList GetListDetails(
 }
 ```
 
-## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Listenin arama dizinini yenilemek için bir yöntem oluşturma
+## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Listenin arama dizinini yenilemek için yöntem oluşturma
 
-**Program** sınıfına aşağıdaki yöntemi ekleyin. Bir listeyi her güncelleştirdiğinizde, listenin ekran görüntülerini kullanmadan önce arama dizinini yenilemeniz gerekir.
+**Program** sınıfına aşağıdaki yöntemi ekleyin. Bir listeyi güncelleştirdiğiniz zaman, listeyi görüntüleri taramak için kullanmadan önce arama dizinini yenilemeniz gerekir.
 
 ```csharp
 /// <summary>
@@ -492,7 +492,7 @@ private static RefreshIndex RefreshSearchIndex(
 }
 ```
 
-## <a name="create-a-method-to-match-images-against-the-list"></a>Resimlerle eşleşen resimleri eşleştirmek için bir yöntem oluşturma
+## <a name="create-a-method-to-match-images-against-the-list"></a>Görüntüleri listeye karşı eşleştirmek için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -522,7 +522,7 @@ private static void MatchImages(
 }
 ```
 
-## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Listedeki tüm görüntüleri silmek için bir yöntem oluşturun
+## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Listedeki tüm görüntüleri silmek için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -546,7 +546,7 @@ private static void DeleteAllImages(
 }
 ```
 
-## <a name="create-a-method-to-delete-the-list"></a>Listeyi silmek için bir yöntem oluşturma
+## <a name="create-a-method-to-delete-the-list"></a>Listeyi silmek için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -570,7 +570,7 @@ private static void DeleteCustomList(
 }
 ```
 
-## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Tüm görüntü listelerinin kimliklerini almak için bir yöntem oluşturma
+## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Tüm görüntü listelerinin kimliklerini almak için yöntem oluşturma
 
 **Program** sınıfına aşağıdaki yöntemi ekleyin. 
 
@@ -595,9 +595,9 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 }
 ```
 
-## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Görüntü listesi kullanımını taklit etmek için kod ekleme
+## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Görüntü listesi kullanımının benzetimini yapmak için kod ekleme
 
-Aşağıdaki kodu **Main** yöntemine ekleyin. Bu kod, listeyi tanımlamak ve yönetmek için ve listenin ekran görüntülerini kullanmak için gerçekleştirdiğiniz birçok işlemi benzetir. Günlüğe kaydetme özellikleri, Content Moderator hizmetine SDK çağrıları tarafından oluşturulan yanıt nesnelerini görmenizi sağlar.
+Aşağıdaki kodu **Main** yöntemine ekleyin. Bu kod, listeyi tanımlayıp yönetmek ve listeyi kullanarak görüntüleri taramak için gerçekleştirdiğiniz işlemlerin birçoğunun benzetimini yapar. Günlüğe kaydetme özellikleri, Content Moderator hizmetine yapılan SDK çağrıları tarafından oluşturulan yanıt nesnelerini görmenize olanak tanır.
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -667,10 +667,10 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Programı çalıştırın ve çıktıyı gözden geçirin
+## <a name="run-the-program-and-review-the-output"></a>Programı çalıştırma ve çıktıyı gözden geçirme
 
-Uygulama her çalıştırdığınızda liste KIMLIĞI ve resim içerik kimlikleri farklıdır.
-Program tarafından yazılan günlük dosyası aşağıdaki çıktıya sahiptir:
+Liste kimliği ile görüntü içeriği kimlikleri, uygulamayı her çalıştırdığınızda farklılık gösterir.
+Program tarafından yazılan günlük dosyasında aşağıdaki çıktı bulunur:
 
 ```json
 Creating list MyList.
@@ -1090,4 +1090,4 @@ Response:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET için bu ve diğer Content Moderator hızlı başlangıçlara yönelik [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) alın ve tümleştirmenizi kullanmaya başlayın.
+Bu ve diğer .NET için Content Moderator hızlı başlangıçları için [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümünü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) edinin ve tümleştirmeniz üzerinde çalışmaya başlayın.

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 'de istek birimleri ve aktarım hızı
 description: Azure Cosmos DB içinde Istek birimi gereksinimlerini belirtme ve tahmin etme hakkında bilgi edinin
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.openlocfilehash: a1143f912d894c1219de05b03a2338dc4e5bdc5f
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 6e5d95a47261445e3031f55368f4e2cd8e2830a7
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467648"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754858"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB istek birimleri
 
@@ -33,24 +33,24 @@ Uygulamanız için ru sayısını saniyede 100 ru 'lik artışlarla saniye baş�
 
 Aktarım hızını iki ayrı granuya temin edebilirsiniz: 
 
-* **Kapsayıcılar**: Daha fazla bilgi için bkz. [Azure Cosmos kapsayıcısında üretilen Iş sağlama](how-to-provision-container-throughput.md).
-* **Veritabanları**: Daha fazla bilgi için bkz. [Azure Cosmos veritabanında üretilen Iş sağlama](how-to-provision-database-throughput.md).
+* **Kapsayıcılar**: daha fazla bilgi için bkz. [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md).
+* **Veritabanları**: daha fazla bilgi için bkz. [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md).
 
 ## <a name="request-unit-considerations"></a>İstek birimi değerlendirmeleri
 
 Sağlamak için saniye başına ru sayısını tahmin ederken aşağıdaki faktörleri göz önünde bulundurun:
 
-* **Öğe boyutu**: Bir öğenin boyutu arttıkça, öğeyi okumak veya yazmak için tüketilen ru sayısı da artar.
+* **Öğe boyutu**: bir öğenin boyutu arttıkça, öğeyi okumak veya yazmak Için tüketilen Rus sayısı da artar.
 
-* **Öğe dizin oluşturma**: Varsayılan olarak, her öğe otomatik olarak dizinlenir. Bir kapsayıcıda bazı öğelerinizin dizinini oluşturma seçeneğini belirlerseniz, daha az RUs kullanılır.
+* **Öğe dizin oluşturma**: varsayılan olarak, her öğe otomatik olarak dizinlenir. Bir kapsayıcıda bazı öğelerinizin dizinini oluşturma seçeneğini belirlerseniz, daha az RUs kullanılır.
 
-* **Öğe özelliği sayısı**: Varsayılan dizin oluşturmanın tüm özelliklerde olduğu varsayıldığında, öğe yazmak için tüketilen RUs sayısı, öğe özelliği sayısı arttıkça artar.
+* **Öğe özelliği sayısı**: varsayılan dizin oluşturmanın tüm özelliklerde olduğu varsayıldığında, öğe yazmak Için tüketilen Rus sayısı, öğe özelliği sayısı arttıkça artar.
 
-* **Dizinli Özellikler**: Her kapsayıcıda bir dizin ilkesi, varsayılan olarak hangi özelliklerin dizine alınacağını belirler. Yazma işlemlerine yönelik RU tüketimini azaltmak için, dizinlenmiş özelliklerin sayısını sınırlayın.
+* **Dizinli Özellikler**: her kapsayıcıda bir dizin ilkesi, varsayılan olarak hangi özelliklerin dizine alınacağını belirler. Yazma işlemlerine yönelik RU tüketimini azaltmak için, dizinlenmiş özelliklerin sayısını sınırlayın.
 
-* **Veri tutarlılığı**: Güçlü ve sınırlanmış eskime düzeyi tutarlılık düzeyleri, diğer gevşek tutarlılık seviyelerine kıyasla okuma işlemleri gerçekleştirirken yaklaşık iki kat daha fazla tüketir.
+* **Veri tutarlılığı**: güçlü ve sınırlanmış stalet tutarlılık düzeyleri, diğer gevşek tutarlılık seviyelerine kıyasla okuma işlemleri gerçekleştirirken yaklaşık iki kat daha fazla tüketir.
 
-* **Sorgu desenleri**: Bir sorgunun karmaşıklığı, bir işlem için kaç tane RUs kullanıldığını etkiler. Sorgu işlemlerinin maliyetini etkileyen faktörler şunlardır: 
+* **Sorgu desenleri**: bir sorgunun karmaşıklığı, bir işlem için kaç ru tüketildiğini etkiler. Sorgu işlemlerinin maliyetini etkileyen faktörler şunlardır: 
     
     - Sorgu sonuçlarının sayısı
     - Koşulların sayısı
@@ -62,7 +62,7 @@ Sağlamak için saniye başına ru sayısını tahmin ederken aşağıdaki fakt�
 
   Azure Cosmos DB aynı verilerdeki aynı sorgunun her zaman aynı şekilde yinelenen yürütmeler üzerinde aynı şekilde maliyetlenmesini garanti eder.
 
-* **Betik kullanımı**: Sorgularda olduğu gibi, saklı yordamlar ve Tetikleyiciler, gerçekleştirilen işlemlerin karmaşıklığına göre RUs kullanır. Uygulamanızı geliştirirken, her işlemin tükettiği RU kapasitesini daha iyi anlamak için [istek ücreti üst bilgisini](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) inceleyin.
+* **Betik kullanımı**: sorgularda olduğu gibi, saklı yordamlar ve Tetikleyiciler, gerçekleştirilen işlemlerin karmaşıklığına göre Rus kullanır. Uygulamanızı geliştirirken, her işlemin tükettiği RU kapasitesini daha iyi anlamak için [istek ücreti üst bilgisini](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,19 +3,19 @@ title: Content Moderator, C# sakıncalı malzeme için video içeriğini analiz 
 titleSuffix: Azure Cognitive Services
 description: .NET için Content Moderator SDK kullanarak çeşitli sakıncalı malzemeler için video içeriğini çözümleme
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564313"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755230"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>' Deki sakıncalı malzeme için video içeriğini çözümleC#
 
@@ -40,7 +40,7 @@ Azure portal yeni AMS aboneliğinize gidin ve Yan menüden **API erişimi** ' ni
 
 **Azure AD uygulaması** bölümünde **Yeni oluştur** ' u SEÇIN ve yeni Azure AD uygulama kaydınızı adlandırın (örneğin, "VideoModADApp"). **Kaydet** ' e tıklayın ve uygulama yapılandırıldıktan sonra birkaç dakika bekleyin. Ardından, yeni uygulama kaydınızı sayfanın **Azure AD uygulaması** bölümünde görmeniz gerekir.
 
-Uygulama kaydınızı seçin ve altındaki **Uygulamayı Yönet** düğmesine tıklayın. **Uygulama kimliği** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak. **Ayarlar** > **anahtarlar**' ı seçin ve yeni anahtar için bir açıklama girin (örneğin, "videomodkey"). **Kaydet**' e tıklayın ve ardından yeni anahtar değerine dikkat edin. Bu dizeyi kopyalayın ve güvenli bir yere kaydedin.
+Uygulama kaydınızı seçin ve altındaki **Uygulamayı Yönet** düğmesine tıklayın. **Uygulama kimliği** alanındaki değeri aklınızda edin; Buna daha sonra ihtiyacınız olacak. **Ayarlar**  > **anahtarlar**' ı seçin ve yeni anahtar için bir açıklama girin (örneğin, "videomodkey"). **Kaydet**' e tıklayın ve ardından yeni anahtar değerine dikkat edin. Bu dizeyi kopyalayın ve güvenli bir yere kaydedin.
 
 Yukarıdaki işlemin daha kapsamlı bir yolu için bkz. [Azure AD kimlik doğrulamasıyla çalışmaya başlama](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Kaynak başvurularını ayarlama
 
-Aşağıdaki statik alanları _Program.cs_ dosyasındaki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` bu uygulama için oluşturduğunuz "videomodkey" değerinin olduğunu unutmayın. `CLIENT_ID`
+Aşağıdaki statik alanları _Program.cs_ dosyasındaki **Program** sınıfına ekleyin. Bu alanlar, AMS aboneliğinize bağlanmak için gereken bilgileri tutar. Bunları yukarıdaki adımlarda aldığınız değerlerle birlikte doldurabilirsiniz. @No__t_0 Azure AD uygulamanızın **uygulama kimliği** değeri olduğunu ve `CLIENT_SECRET` bu uygulama için oluşturduğunuz "VideoModKey" değerinin olduğunu unutmayın.
 
 ```csharp
 // declare constants and globals
@@ -118,9 +118,9 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ```
 
-Yerel bir video dosyası (en basit durum) kullanmak istiyorsanız, projeye ekleyin ve `INPUT_FILE` değerini değer olarak girin (göreli yollar yürütme dizinine göre değişir).
+Yerel bir video dosyası (en basit durum) kullanmak istiyorsanız, projeye ekleyin ve yolunu `INPUT_FILE` değeri olarak girin (göreli yollar yürütme dizinine göre değişir).
 
-Ayrıca, geçerli dizinde _önceden ayarlanmış. JSON_ dosyasını oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örneğin:
+Ayrıca, geçerli dizinde _önceden ayarlanmış. JSON_ dosyasını oluşturmanız ve bir sürüm numarası belirtmek için kullanmanız gerekir. Örnek:
 
 ```JSON
 {
@@ -365,14 +365,14 @@ Içerik denetleme işi tamamlandıktan sonra JSON yanıtını çözümleyin. Şu
 
 - Video bilgileri Özeti
 - "**Parçalar**" olarak **anlık görüntüleri**
-- " **(= True veya false)"** adlı "**Olaylar**" olarak, **yetişkin** ve kcy puanlarını temel alan **ana çerçeveler**
+- " **(= True veya false)"** adlı "**Olaylar**" olarak, **yetişkin** ve **kcy** puanlarını temel alan **ana çerçeveler**
 - **Başlangıç**, **süre**, **TotalDuration**ve **zaman damgası** "ticks" dir. Sayıyı saniye cinsinden almak için **zaman ölçeğinde** ayırın.
  
 > [!NOTE]
-> - `adultScore`belirli durumlarda cinsel açık veya yetişkin olarak değerlendirilen içeriğin olası varlığını ve tahmin Puanını temsil eder.
-> - `racyScore`belirli durumlarda cinsel veya kötü bir şekilde düşünüldüksel olabilecek içeriğin olası varlığını ve tahmin Puanını temsil eder.
-> - `adultScore`ve `racyScore` 0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu önizleme el ile kodlanmış sonuçlar yerine istatistiksel bir modeli kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
-> - `reviewRecommended`, iç puan eşiklerine bağlı olarak doğru ya da yanlış şeklindedir. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
+> - `adultScore`, belirli durumlarda cinsel açık veya yetişkin olarak kabul edilebilir içeriğin olası varlığını ve tahmin Puanını temsil eder.
+> - `racyScore`, belirli durumlarda cinsel veya kötü bir şekilde düşünüldüksel olabilecek içeriğin olası varlığını ve tahmin Puanını temsil eder.
+> - `adultScore` ve `racyScore` 0 ile 1 arasındadır. Puan arttıkça, modelin daha yüksek olması kategorinin uygulanabilir olabileceğini tahmin edilir. Bu önizleme el ile kodlanmış sonuçlar yerine istatistiksel bir modeli kullanır. Her kategorinin gereksinimlerinize göre nasıl hizalanacağını öğrenmek için kendi içeriklerinizi test etmenizi öneririz.
+> - `reviewRecommended`, iç puan eşiklerine bağlı olarak doğru ya da yanlış olur. Müşteriler, bu değerin kullanılıp kullanılmayacağını ya da içerik ilkelerine bağlı olarak özel eşiklere karar vermesini değerlendirmelidir.
 
 ```json
 {

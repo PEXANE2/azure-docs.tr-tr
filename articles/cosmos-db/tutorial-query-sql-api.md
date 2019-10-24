@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB’de SQL ile sorgulama
 description: Azure Cosmos DB’de SQL ile sorgulamayı öğrenin
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ffebdb0a46fdae981ca73a4569344365459dd7b8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932791"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756816"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API 'sini kullanarak Azure Cosmos DB sorgulama
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Öğretici: SQL API’sini kullanarak Azure Cosmos DB’yi sorgulama
 
 Azure Cosmos DB [SQL API’si](documentdb-introduction.md), SQL kullanılarak belgelerin sorgulanmasını destekler. Bu makalede, örnek bir belge ve iki örnek SQL sorgusu ve sonuçları sağlanmaktadır.
 
@@ -65,7 +65,7 @@ SQL sorguları hakkında daha fazla bilgi için bkz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bunlardan biri yok mu? [5 dakikalık hızlı başlangıcı](create-mongodb-nodejs.md) tamamlayın.
+Bu öğreticide, bir Azure Cosmos DB hesabınız ve koleksiyonunuz olduğu varsayılır. Bunlardan biri yok mu? [5 dakikalık hızlı başlangıcı](create-cosmosdb-resources-portal.md) tamamlayın.
 
 ## <a name="example-query-1"></a>Örnek sorgu 1
 
@@ -121,7 +121,7 @@ Sonraki sorgu, ailede kimlikleri `WakefieldFamily` ile eşleşen çocukların t�
 
 **Sonuçlar**
 
-[{"bir": "Jesi"}, {"bir": "Lisa"}]
+[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

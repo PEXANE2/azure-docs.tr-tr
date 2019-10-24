@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: pafarley
-ms.openlocfilehash: 31b8dfc234ac99d6f04061d6596e3dc8113e8d0f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213845"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753479"
 ---
 # <a name="label-images-faster-with-suggested-tags"></a>Önerilen etiketlerle görüntüleri daha hızlı etiketle
 
@@ -27,8 +27,7 @@ Bir Özel Görüntü İşleme modeli için resimleri etiketlediğinizde, hizmet 
 
 Aşağıdaki kısıtlamaları göz önünde bulundurun:
 
-* Yalnızca içeriği zaten eğitilen görüntüler için önerilen Etiketler isteyin. Yeni bir etiket için henüz eğitmeniz gereken öneriler alın.
-* Yalnızca etiketlenmemiş resimlerde önerilen etiketleri kullanabilirsiniz; önceden etiketlenmiş bir görüntüde ek Etiketler için öneri alamazsınız.
+* Yalnızca içeriği zaten eğitilen görüntüler için önerilen Etiketler istemeniz gerekir. Yeni bir etiket için henüz eğitmeniz gereken öneriler alın.
 
 > [!IMPORTANT]
 > Önerilen Etiketler özelliği, normal tahminlerde aynı [fiyatlandırma modelini](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) kullanır. Bir görüntü kümesi için önerilen etiketleri ilk kez tetikleyişinizde, tahmin aramalarıyla aynı şekilde ücretlendirilirsiniz. Bundan sonra hizmet, seçilen görüntülerin sonuçlarını 30 gün boyunca bir veritabanında depolar ve bu süre içinde her zaman ücretsiz olarak erişebilirsiniz. 30 gün sonra önerilen etiketlerini yeniden istemeniz durumunda ücretlendirilirsiniz.
@@ -44,21 +43,21 @@ Aşağıdaki adımlarda önerilen Etiketler özelliğinin nasıl kullanılacağ�
 1. Eğitim sürecini başlatın.
 1. Eğitim tamamlandığında, **etiketlenmemiş** görünüme gidin ve sol bölmedeki **Önerilen etiketleri al** düğmesini seçin.
     > [!div class="mx-imgBorder"]
-    > ![Önerilen Etiketler düğmesi etiketsiz görüntüler sekmesinde gösterilir.](./media/suggested-tags/suggested-tags-button.png)
+    > ![The önerilen Etiketler düğmesi etiketsiz görüntüler sekmesi altında gösterilir. ](./media/suggested-tags/suggested-tags-button.png)
 1. Önerilerini istediğiniz görüntü kümesini seçin. Etiketlenmemiş görüntülerin bir bölümü için yalnızca başlangıç etiketi önerilerini almalısınız. Bu işlem boyunca yineleme yaparken daha iyi etiket önerileri alacaksınız.
 1. Önerilen etiketleri doğrulayın ve düzeltme doğru değil.
     > [!TIP]
     > Önerilen etiketlere sahip görüntüler, kendi tahmine göre sıralanır (düşük değerler daha yüksek güvenilirliğe işaret ediyor). Sıralama düzenini, **belirsizlik Ile Sırala** seçeneğiyle değiştirebilirsiniz. Sıralamayı **yüksek-düşük**olarak ayarlarsanız, önce yüksek belirsizlik tahminlerini düzeltebilir, sonra da düşük belirsizlik ' ı hızla doğrulayabilirsiniz.
     * Görüntü sınıflandırma projelerinde, toplu işlemler içindeki etiketleri seçebilir ve doğrulayabilirsiniz. Görünümü belirtilen önerilen bir etikete göre filtreleyin, yanlış etiketlenmiş görüntülerin seçimini kaldırın ve ardından bir toplu işte geri kalanı onaylayın.
         > [!div class="mx-imgBorder"]
-        > ![Önerilen Etiketler, filtre içeren c için Batch modunda görüntülenir.](./media/suggested-tags/ic-batch-mode.png)
+        > ![Suggested Etiketler, filtreler içeren c için Batch modunda görüntülenir. ](./media/suggested-tags/ic-batch-mode.png)
 
         Galerinin bir görüntüsünü seçerek, önerilen etiketleri ayrı görüntü modunda da kullanabilirsiniz.
 
         ![Önerilen Etiketler, c için ayrı görüntü modunda görüntülenir.](./media/suggested-tags/ic-individual-image-mode.png)
     * Nesne algılama projelerinde toplu iş onayları desteklenmez, ancak daha düzenli bir etiketleme deneyimi için önerilen etiketlere göre filtrelemeye ve sıralamaya devam edebilirsiniz. Etiketlenmemiş görüntülerinizin küçük resimleri, önerilen etiketlerin konumlarını gösteren bir sınırlayıcı kutular kaplaması gösterir. Önerilen bir etiket filtresi seçmezseniz, etiketlenmemiş tüm görüntüleriniz sınırlayıcı kutuların üzerine yerleştirmeden görüntülenir.
         > [!div class="mx-imgBorder"]
-        > ![Önerilen Etiketler filtreler içeren bir OD için Batch modunda görüntülenir.](./media/suggested-tags/od-batch-mode.png)
+        > ![Suggested Etiketler, komut dosyası filtreleri içeren bir toplu iş modunda görüntülenir. ](./media/suggested-tags/od-batch-mode.png)
 
         Nesne algılama etiketlerini onaylamak için, bunları galerideki her bir görüntüye uygulamanız gerekir.
 

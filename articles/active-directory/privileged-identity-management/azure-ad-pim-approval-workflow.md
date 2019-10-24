@@ -4,11 +4,11 @@ description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rol
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -16,14 +16,14 @@ ms.date: 04/09/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a8d373a7e6edeaefd933e4f8ec8ee11e3c14ee
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804031"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756421"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>PıM 'de Azure AD rolleri için istekleri onaylama veya reddetme
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için istekleri onaylama veya reddetme
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PıM) sayesinde, rolleri etkinleştirme için onay gerektirecek şekilde yapılandırabilir ve bir ya da birden çok kullanıcı ya da grubu, temsilci onaylayan olarak seçebilirsiniz. Temsilci onaylamalardan isteklerin onaylaması 24 saati vardır. İstek 24 saat içinde onaylanmamışsa, uygun Kullanıcı yeni bir isteği yeniden göndermesi gerekir. 24 saat onay zaman penceresi yapılandırılamaz.
 
@@ -31,9 +31,9 @@ Azure AD rolleri için istekleri onaylamak veya reddetmek için bu makaledeki ad
 
 ## <a name="view-pending-requests"></a>Bekleyen istekleri görüntüle
 
-Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri PıM ' de görebilirsiniz.
+Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği olduğunda bir e-posta bildirimi alırsınız. Bu bekleyen istekleri Privileged Identity Management görüntüleyebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 
@@ -45,7 +45,7 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği
 
     Onayınızı bekleyen isteklerin bir listesini görürsünüz.
 
-## <a name="approve-requests"></a>İstekleri onayla
+## <a name="approve-requests"></a>İstekleri onaylama
 
 1. Onaylamak istediğiniz istekleri seçin ve ardından **Onayla** ' ya tıklayarak seçili istekleri Onayla bölmesini açın.
 
@@ -77,5 +77,5 @@ Bir temsilci onaylayıcı olarak, Onayınızı bekleyen bir Azure AD rol isteği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PıM 'de e-posta bildirimleri](pim-email-notifications.md)
-- [PıM 'de Azure Kaynak rolleri için istekleri onaylama veya reddetme](pim-resource-roles-approval-workflow.md)
+- [Privileged Identity Management e-posta bildirimleri](pim-email-notifications.md)
+- [Privileged Identity Management Azure Kaynak rolleri için istekleri onaylama veya reddetme](pim-resource-roles-approval-workflow.md)

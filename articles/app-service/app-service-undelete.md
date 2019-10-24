@@ -6,12 +6,12 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: 7b3a21f3cfee806dc94353e0bc6c11e88641ea34
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 7dc3934f486b205febd5be3c0b484dfd2c97bb8f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827533"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755542"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinen App Service uygulamasını geri yükleme
 
@@ -19,7 +19,7 @@ Uygulamanızı Azure App Service yanlışlıkla sildikten sonra, [az PowerShell 
 
 ## <a name="list-deleted-apps"></a>Silinen uygulamaları listeleme
 
-Silinen uygulamalar koleksiyonunu almak için `Get-AzDeletedWebApp` ' ı kullanabilirsiniz.
+Silinen uygulamalar koleksiyonunu almak için `Get-AzDeletedWebApp` kullanabilirsiniz.
 
 Silinen belirli bir uygulamayla ilgili ayrıntılar için şunları kullanabilirsiniz:
 
@@ -51,6 +51,10 @@ Komut girişleri şunlardır:
 - **Ad**: uygulamanın adı, genel olarak benzersiz olmalıdır.
 - **Targetappserviceplanname**: uygulamaya bağlı App Service plan
 
-Varsayılan olarak `Restore-AzDeletedWebApp`, hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız, bu commandlet ile `-RestoreContentOnly` bayrağını kullanın.
+Varsayılan olarak `Restore-AzDeletedWebApp` hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız `-RestoreContentOnly` bayrağını bu commandlet ile birlikte kullanırsınız.
+
+> [!NOTE]
+> Uygulama üzerinde barındırılıyorsa ve sonra bir App Service Ortamı silinirse, bu, yalnızca karşılık gelen App Service Ortamı hala mevcutsa geri yüklenebilir.
+>
 
 Tam komutunu başvurusunu buradan bulabilirsiniz: [restore-azdeletedwebapp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

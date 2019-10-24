@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB değişiklik akışı işlemcisi kitaplığıyla çalışma
 description: Azure Cosmos DB değişiklik akışı işlemci kitaplığını kullanma.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 4bd7a31abf47664d1a6ffdd39fe46d9370dbbc97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073699"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757039"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB akış işlemcisini değiştirme 
 
@@ -39,7 +39,7 @@ Bu dört öğelerin değişiklik akışı işlemcisi ile birlikte nasıl çalı�
 
 ## <a name="implementing-the-change-feed-processor"></a>Değişiklik akışı işlemcisini uygulama
 
-Giriş noktası her zaman izlenen kapsayıcıdır, çağrı `Container` `GetChangeFeedProcessorBuilder`yaptığınız bir örnekten:
+Giriş noktası her zaman izlenen kapsayıcı olur, bu `Container` örneğinden `GetChangeFeedProcessorBuilder` çağırabilirsiniz:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -49,16 +49,16 @@ Bir temsilci örneği şöyle olabilir:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Son olarak bu işlemci örneği `WithInstanceName` için ve ile kira `WithLeaseContainer`durumunun bakımını yapılacak kapsayıcı olan bir ad tanımlarsınız.
+Son olarak, `WithInstanceName` ile bu işlemci örneği için bir ad tanımlarsınız ve bu kapsayıcı, `WithLeaseContainer` kira durumunun bakımını sağlar.
 
-Çağırmak `Build` size, çağırarak `StartAsync`başlayabilmeniz için kullanabileceğiniz işlemci örneğini sağlar.
+@No__t_0 çağırmak, size `StartAsync` çağırarak başlayabilmeniz için kullanabileceğiniz işlemci örneğini verecektir.
 
 ## <a name="processing-life-cycle"></a>İşlem yaşam döngüsü
 
 Bir konak örneğinin normal yaşam döngüsü şu şekilde olur:
 
 1. Değişiklik akışını okuyun.
-1. Değişiklik yoksa, önceden tanımlanmış bir süre (Oluşturucu `WithPollInterval` içinde özelleştirilebilir) için uyku moduna geçin ve #1 gidin.
+1. Değişiklik yoksa, önceden tanımlanmış bir süre (Oluşturucu `WithPollInterval` özelleştirilebilir) için uyku moduna geçin ve #1 gidin.
 1. Değişiklikler varsa **temsilciyi temsilciye**gönderin.
 1. Temsilci değişiklikleri **başarıyla**işlemeyi tamamladığında, kira deposunu en son işlenen zaman noktasıyla güncelleştirin ve #1 gidin.
 

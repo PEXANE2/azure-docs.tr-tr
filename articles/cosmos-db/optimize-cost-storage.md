@@ -1,17 +1,17 @@
 ---
 title: Depolama maliyetini en uygun Azure Cosmos DB
 description: Bu makalede, Azure Cosmos DB depolanan veriler için depolama maliyetlerinin nasıl yönetileceği açıklanmaktadır
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615014"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754954"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Depolama maliyetini en uygun Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Zengin medya türlerini (örneğin, videolar, görüntüler vb.) depolamak istiy
 
 ## <a name="check-storage-consumed"></a>Tüketilen depolamayı denetle
 
-Azure Cosmos kapsayıcısının depolama tüketimini denetlemek için, kapsayıcıda bir Head veya get isteği çalıştırabilir, `x-ms-request-quota` `x-ms-request-usage` ve üst bilgilerini inceleyebilirsiniz. Alternatif olarak, .NET SDK ile çalışırken, kullanılan depolamayı almak için [Documentsizequota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))ve [documentsizeusage](https://msdn.microsoft.com/library/azure/dn850324.aspx) özelliklerini kullanabilirsiniz.
+Azure Cosmos kapsayıcısının depolama tüketimini denetlemek için, kapsayıcıda bir HEAD veya GET isteği çalıştırabilir ve `x-ms-request-quota` ve `x-ms-request-usage` üst bilgilerini inceleyebilirsiniz. Alternatif olarak, .NET SDK ile çalışırken, kullanılan depolamayı almak için [Documentsizequota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))ve [documentsizeusage](https://msdn.microsoft.com/library/azure/dn850324.aspx) özelliklerini kullanabilirsiniz.
 
 ## <a name="using-sdk"></a>SDK 'Yı kullanma
 

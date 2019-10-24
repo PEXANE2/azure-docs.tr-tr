@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: aa683e90a328e9525fa7d0a78981aa107818188a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678181"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755370"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
@@ -214,6 +214,82 @@ Bu özellik `Microsoft.ApplicationInsights.JavaScript`. Varsayılan olarak devre
 Daha fazla bilgi için bkz. [telemetri veri modeli Application Insights](../../azure-monitor/app/data-model.md). 
 
 OpenTracing kavramlarının tanımları için bkz. OpenTracing [belirtimi](https://github.com/opentracing/specification/blob/master/specification.md) ve [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
+
+## <a name="telemetry-correlation-in-opencensus-python"></a>OpenCensus Python 'da telemetri bağıntısı
+
+OpenCensus Python, yukarıda özetlenen `OpenTracing` veri modeli belirtimlerini izler. Ayrıca, herhangi bir yapılandırmaya ihtiyaç duymadan [W3C Trace-Context](https://w3c.github.io/trace-context/) ' i destekler.
+
+### <a name="incoming-request-correlation"></a>Gelen istek bağıntısı
+
+OpenCensus Python, W3C Izleme bağlamı üst bilgilerini gelen isteklerden, isteklerden oluşturulan yayılmaya ilişkilendirir. OpenCensus, `flask`, `django` ve `pyramid` gibi popüler web uygulaması çerçevelerinin tümleştirmelerle otomatik olarak yapılır. W3C Izleme bağlamı üst bilgilerinin [doğru biçimde](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)doldurulması ve istekle birlikte gönderilmesi gerekir. Aşağıda bunu gösteren bir örnek `flask` verilmiştir.
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Bu, yerel makinenizde bir örnek `flask` uygulaması çalıştırır ve bağlantı noktası `8080` dinler. İzleme bağlamını ilişkilendirmek için uç noktaya bir istek göndereceğiz. Bu örnekte, bir `curl` komutu kullanabiliriz.
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+[Izleme bağlamı üst bilgisi biçimine](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bakarak şu bilgileri türetik: `version`: `00` 
+ `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
+ `parent-id/span-id`: `00f067aa0ba902b7` 
+ 0: 1
+
+Azure Izleyici 'ye gönderilen istek girişine göz atalım, izleme üst bilgisi bilgileriyle doldurulmuş alanları görebiliriz.
+
+![Kırmızı kutuda vurgulanan izleme üst bilgi alanları ile günlüklerde (Analiz) istek telemetriinin ekran görüntüsü](./media/opencensus-python/0011-correlation.png)
+
+@No__t_0 alanı, `trace-id` istekte geçirilen izleme başlığından alındığı ve `span-id` Bu yayılma için oluşturulmuş bir 8 baytlık dizi olduğu biçimde `<trace-id>.<span-id>` biçimindedir. 
+
+@No__t_0 alanı, istekte iletilen izleme başlığından hem `trace-id` hem de `parent-id` alındığı biçimde `<trace-id>.<parent-id>` biçimindedir.
+
+### <a name="logs-correlation"></a>Günlük bağıntısı
+
+OpenCensus Python, günlük kayıtlarını izleme KIMLIĞI, yayılma KIMLIĞI ve örnekleme bayrağıyla zenginleştirerek günlüklerin bağıntı almasına izin verir. Bu işlem, OpenCensus [günlüğe kaydetme tümleştirmesi](https://pypi.org/project/opencensus-ext-logging/)yüklenerek yapılır. Aşağıdaki öznitelikler Python `LogRecord`s eklenecektir: `traceId`, `spanId` ve `traceSampled`. Bunun yalnızca tümleştirmeden sonra oluşturulan Günlükçüler için geçerli olduğunu unutmayın.
+Bunu gösteren örnek bir uygulama aşağıda verilmiştir.
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+Bu kod çalıştırıldığında, konsolunda aşağıdakileri sunuyoruz:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+@No__t_0 adlı yayılmasına ait aynı Spanıd olan, yayılma dahilinde olan günlük iletisi için bir Spanıd 'nin nasıl bulunduğunu gözlemleyin.
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 'te telemetri bağıntısı
 

@@ -1,5 +1,5 @@
 ---
-title: Ubuntu VM 'sini Azure AD Domain Services 'e ekleme | Microsoft Docs '
+title: Ubuntu VM 'sini Azure AD Domain Services 'e ekleme | Microsoft Docs
 description: Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
 author: iainfoulds
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: e92327323f632f6b922e3eb948df75bb3666e2a9
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9fb41b08cb29a68b39fb416b4b7b7bcce9e821dd
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075371"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754357"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına katma
 
@@ -42,7 +42,7 @@ Azure 'da mevcut bir Ubuntu Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir Ubuntu Linux VM oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istemeniz gerekiyorsa, aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portalda](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -76,9 +76,9 @@ Bu adları kendi değerlerinizle güncelleştirin:
 
 ## <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
-VM 'nin VM 'ye Azure AD DS tarafından yönetilen etki alanına katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, kullanarak etki alanına ekleme araçları 'nı güncelleştirme ve yüklemeyi`apt-get`
+VM 'nin VM 'ye Azure AD DS tarafından yönetilen etki alanına katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için `apt-get` kullanarak etki alanına ekleme araçlarını güncelleştirin ve yüklemeyi yapın
 
-Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, Azure AD DS yönetilen etki alanının adı *contoso.com*ise, bölge olarak *contoso.com* girin. Yükleme, `[realm]` */etc/kronb5,conf* yapılandırma dosyasına ve `[domain_realm]` bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
+Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, Azure AD DS yönetilen etki alanının adı *contoso.com*ise, bölge olarak *contoso.com* girin. Yükleme, */etc/kronb5,conf* yapılandırma dosyasına `[realm]` ve `[domain_realm]` bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
 
 ```console
 sudo apt-get update
@@ -109,7 +109,7 @@ Etki alanı iletişiminin doğru çalışması için, Ubuntu VM 'nizin tarih ve 
     * Yönetilen etki alanından tarih ve saati güncelleştirme
     * NTP hizmetini başlatın
 
-    Bu adımları gerçekleştirmek için aşağıdaki komutları çalıştırın. Şu `ntpdate` komutla kendi DNS adınızı kullanın:
+    Bu adımları gerçekleştirmek için aşağıdaki komutları çalıştırın. @No__t_0 komutuyla kendi DNS adınızı kullanın:
 
     ```console
     sudo systemctl stop ntp
@@ -121,27 +121,27 @@ Etki alanı iletişiminin doğru çalışması için, Ubuntu VM 'nizin tarih ve 
 
 Gerekli paketler VM 'de yüklü olduğundan ve NTP yapılandırıldıktan sonra, VM 'yi Azure AD DS yönetilen etki alanına ekleyin.
 
-1. Azure AD DS yönetilen etki alanını bulmaya yönelik komutunukullanın.`realm discover` Aşağıdaki örnek, *contoso.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
+1. Azure AD DS yönetilen etki alanını saptamak için `realm discover` komutunu kullanın. Aşağıdaki örnek, *contoso.com*bölgesini bulur. Azure AD DS yönetilen etki alanı adınızı tüm büyük harfle belirtin:
 
     ```console
     sudo realm discover CONTOSO.COM
     ```
 
-   `realm discover` Komut Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
+   @No__t_0 komutu Azure AD DS yönetilen etki alanınızı bulamazsa, aşağıdaki sorun giderme adımlarını gözden geçirin:
 
-    * Etki alanına VM 'den erişilebildiğinden emin olun. Olumlu `ping contoso.com` bir yanıtın döndürülüp döndürülmediğini görmeyi deneyin.
+    * Etki alanına VM 'den erişilebildiğinden emin olun. Pozitif bir yanıtın döndürülüp döndürülmediğini görmek için `ping contoso.com` deneyin.
     * VM 'nin aynı veya Azure AD DS yönetilen etki alanının kullanılabildiği eşlenmiş bir sanal ağa dağıtıldığını denetleyin.
     * Sanal ağ için DNS sunucu ayarlarının, Azure AD DS yönetilen etki alanının etki alanı denetleyicilerini işaret etmek üzere güncelleştirildiğinden emin olun.
 
 1. Şimdi `kinit` komutunu kullanarak Kerberos başlatın. *AAD DC Administrators* grubuna ait olan bir kullanıcı belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, adlı `contosoadmin@contoso.com` hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin:
+    Azure AD DS yönetilen etki alanı adının tümü büyük harfle girilmelidir. Aşağıdaki örnekte, `contosoadmin@contoso.com` adlı hesap, Kerberos 'u başlatmak için kullanılır. *AAD DC Administrators* grubunun üyesi olan kendi kullanıcı hesabınızı girin:
 
     ```console
     kinit contosoadmin@CONTOSO.COM
     ```
 
-1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS yönetilen etki alanına katın. Önceki`kinit`komuttabelirttiğiniz *AAD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabını kullanın, örneğin: `contosoadmin@CONTOSO.COM`
+1. Son olarak, `realm join` komutunu kullanarak makineyi Azure AD DS tarafından yönetilen etki alanına katın. Önceki `kinit` komutunda belirttiğiniz *AAD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabını kullanın, örneğin `contosoadmin@CONTOSO.COM`:
 
     ```console
     sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
@@ -217,7 +217,7 @@ Bir Kullanıcı ilk kez oturum açtığında ana dizinin otomatik olarak oluştu
     sudo vi /etc/pam.d/common-session
     ```
 
-1. Aşağıdaki satırı bu dosyaya satır `session optional pam_sss.so`altına ekleyin:
+1. Bu dosyaya aşağıdaki satırı `session optional pam_sss.so` ekleyin:
 
     ```console
     session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
@@ -242,13 +242,13 @@ Ubuntu VM 'de *AAD DC yöneticileri* grubu yönetici ayrıcalıklarının üyele
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-    İşiniz bittiğinde, `Ctrl-X` komutunu kullanarak düzenleyiciyi kaydedin ve kapatın.
+    İşiniz bittiğinde `Ctrl-X` komutunu kullanarak düzenleyiciyi kaydedin ve kapatın.
 
 ## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Bir etki alanı hesabı kullanarak VM 'de oturum açma
 
 VM 'nin Azure AD DS tarafından yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. `ssh -l` Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, `contosoadmin@contoso.com` Örneğin, *Ubuntu.contoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. @No__t_1 gibi `ssh -l` komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın ve ardından sanal makinenizin adresini girin (örneğin, *Ubuntu.contoso.com*). Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com

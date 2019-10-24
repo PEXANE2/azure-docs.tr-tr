@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Azure AD Uygulama Ara Sunucusu Dağıtma | Microsoft Docs'
+title: Azure AD Domain Services için Azure AD Uygulama Ara Sunucusu Dağıtma | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen etki alanlarında Azure AD Uygulama Ara Sunucusu kullanma
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612999"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754396"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Uygulama Ara Sunucusu Azure AD Domain Services yönetilen bir etki alanında dağıtma
 Azure Active Directory (AD) uygulama proxy 'Si, internet üzerinden erişilecek şirket içi uygulamaları yayımlayarak uzak çalışanları desteklemenize yardımcı olur. Azure AD Domain Services ile, artık şirket içinde çalışan eski uygulamaları Azure altyapı hizmetleri 'ne açabilir ve taşıyabilirsiniz. Böylece, kuruluşunuzdaki kullanıcılara güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu kullanarak bu uygulamaları yayımlayabilirsiniz.
@@ -73,7 +73,7 @@ Daha önce, bir Windows Server sanal makinesi sağladınız ve yönetilen etki a
     ![Yüklenmek üzere koşulları kabul et](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Yükleme sırasında, bağlayıcıyı Azure AD dizininizin uygulama proxy 'Si ile kaydetmeniz istenir.
    * **Azure AD uygulama Yöneticisi kimlik bilgilerinizi**sağlayın. Uygulama Yöneticisi kiracınız Microsoft Azure kimlik bilgilerinizle farklı olabilir.
-   * Bağlayıcıyı kaydetmek için kullanılan yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır. Örneğin, kiracı etki alanı contoso.com ise, yönetici admin@contoso.com bu etki alanında veya diğer geçerli bir diğer ad olmalıdır.
+   * Bağlayıcıyı kaydetmek için kullanılan yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır. Örneğin, kiracı etki alanı contoso.com ise yönetici bu etki alanında admin@contoso.com veya başka bir geçerli diğer ad olmalıdır.
    * Bağlayıcıyı yüklemekte olduğunuz sunucu için IE artırılmış güvenlik yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için hata iletisindeki yönergeleri uygulayın. Internet Explorer Artırılmış Güvenlik seçeneğinin devre dışı olduğundan emin olun.
    * Bağlayıcı kaydı başarısız olursa bkz. [Uygulama Proxy’si Sorunlarını Giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).
 
@@ -95,7 +95,7 @@ Azure AD Uygulama Ara Sunucusu ayarlamış ve Azure AD Domain Services yönetile
 
 * **Uygulamalarınızı Azure sanal makinelerine geçirin:** Şirket içi sunuculardan uygulamalarınızı, yönetilen etki alanına katılmış Azure sanal makinelerine açabilir ve taşıyabilirsiniz. Bunun yapılması, şirket içi sunucuları çalıştırmanın altyapı maliyetlerinden kurtuya yardımcı olur.
 
-* **Azure AD Uygulama Ara Sunucusu kullanarak uygulama yayımlama:** Azure AD Uygulama Ara Sunucusu kullanarak Azure sanal makinelerinizde çalışan uygulamalar yayımlayın. Daha fazla bilgi için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
+* **Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama:** Azure AD Uygulama Ara Sunucusu kullanarak Azure sanal makinelerinizde çalışan uygulamalar yayımlayın. Daha fazla bilgi için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Dağıtım notunun-Azure AD Uygulama Ara Sunucusu kullanarak ıWA (tümleşik Windows kimlik doğrulaması) uygulamalarını yayımlayın

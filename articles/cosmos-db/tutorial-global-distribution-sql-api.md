@@ -1,18 +1,18 @@
 ---
-title: SQL API'si için Azure Cosmos DB genel dağıtım Öğreticisi
+title: SQL API 'SI için Azure Cosmos DB küresel dağıtım öğreticisi
 description: SQL API’sini kullanarak Azure Cosmos DB genel dağıtımını ayarlamayı öğrenin.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 07/15/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a566094f88ba9ffd25eadd046ae7254e26b9c2cf
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234591"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756835"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>SQL API’sini kullanarak Azure Cosmos DB genel dağıtımını ayarlama
 
@@ -47,7 +47,7 @@ PreferredLocations özelliği ayarlanmazsa, tüm istekler geçerli yazma bölges
 ## <a name="net-sdk"></a>.NET SDK
 SDK herhangi bir kod değişikliği olmadan kullanılabilir. Bu durumda SDK hem okuma hem de yazma işlemlerini otomatik olarak geçerli yazma bölgesine yönlendirir.
 
-.NET SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations adlı bir özelliğe sahiptir. Bu özellik `<string>` Koleksiyonu türünde olup bölge adlarının listesini içermelidir. Bölge adı sütununa göre biçimlendirilir dize değerleri [Azure bölgeleri][regions] sayfasında, boşluk içermeyen önce veya sonra ilk ve son karakter.
+.NET SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations adlı bir özelliğe sahiptir. Bu özellik `<string>` Koleksiyonu türünde olup bölge adlarının listesini içermelidir. Dize değerleri, [Azure bölgeleri][regions] sayfasındaki Bölge adı sütununa göre, ilk ve son karakterden önce veya sonra boşluk olmadan biçimlendirilir.
 
 Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.WriteEndpoint ve DocumentClient.ReadEndpoint içinde kullanılabilir.
 
@@ -78,11 +78,11 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node.js/JavaScript
+## <a name="nodejsjavascript"></a>Node. js/JavaScript
 
 SDK herhangi bir kod değişikliği olmadan kullanılabilir. Bu durumda SDK hem okuma hem de yazma işlemlerini otomatik olarak geçerli yazma bölgesine yönlendirir.
 
-Her bir SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, DocumentClient.ConnectionPolicy.PreferredLocations adlı yeni bir özelliğe sahiptir. Bu, bölge adlarının listesini alan bir dize dizisidir. Bölge adı sütununa başına biçimli adları [Azure bölgeleri][regions] sayfası. AzureDocuments.Regions kolaylık nesnesindeki önceden tanımlanmış sabitleri de kullanabilirsiniz
+Her bir SDK’nın 1.8 ve sonraki sürümlerinde, DocumentClient oluşturucusu için ConnectionPolicy parametresi, DocumentClient.ConnectionPolicy.PreferredLocations adlı yeni bir özelliğe sahiptir. Bu, bölge adlarının listesini alan bir dize dizisidir. Adlar, [Azure bölgeleri][regions] sayfasındaki Bölge adı sütununa göre biçimlendirilir. AzureDocuments.Regions kolaylık nesnesindeki önceden tanımlanmış sabitleri de kullanabilirsiniz
 
 Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.getWriteEndpoint ve DocumentClient.getReadEndpoint içinde kullanılabilir.
 
@@ -91,7 +91,7 @@ Geçerli yazma ve okuma uç noktaları sırasıyla DocumentClient.getWriteEndpoi
 >
 >
 
-Bir kod örneği için Node.js/Javascript aşağıdadır.
+Node. js/JavaScript için bir kod örneği aşağıda verilmiştir.
 
 ```JavaScript
 // Creating a ConnectionPolicy object
@@ -107,9 +107,9 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 ```
 
-## <a name="python-sdk"></a>Python SDK'sı
+## <a name="python-sdk"></a>Python SDK
 
-Aşağıdaki kod, Python SDK'sını kullanarak tercih edilen konumlar ayarlanacağı gösterilmektedir:
+Aşağıdaki kod, Python SDK kullanarak tercih edilen konumların nasıl ayarlanacağını gösterir:
 
 ```python
 
@@ -119,9 +119,9 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>V2 Java SDK'sı
+## <a name="java-v2-sdk"></a>Java v2 SDK
 
-Aşağıdaki kod, Java SDK'sını kullanarak tercih edilen konumlar ayarlama işlemini gösterir:
+Aşağıdaki kod, Java SDK kullanarak tercih edilen konumların nasıl ayarlanacağını gösterir:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();

@@ -3,19 +3,19 @@ title: Özel terim listeleriyle orta metin-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Metin denetleme API 'siyle birlikte kullanmak üzere özel terim listeleri oluşturmak için liste yönetimi API 'sini kullanın.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 828e8ae68286d7c208462d77a31a764427c79637
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564387"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755276"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API konsolundaki Özel terim listeleriyle orta
 
@@ -24,7 +24,7 @@ Azure Content Moderator'daki varsayılan genel terim listesi, içerik moderasyon
 Metin denetleme API 'siyle birlikte kullanmak üzere özel terim listeleri oluşturmak için [liste YÖNETIMI API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) 'sini kullanın. Metin **-ekran** işlemi metninizi küfür için tarar ve ayrıca metni özel ve paylaşılan kara listelerle karşılaştırır.
 
 > [!NOTE]
-> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır**.
+> Üst sınır, her biri **10.000 terimi aşmamak** kaydıyla **5 listedir**.
 >
 
 Aşağıdaki görevleri yapmak için liste yönetimi API 'sini kullanabilirsiniz:

@@ -1,23 +1,23 @@
 ---
-title: "Hızlı Başlangıç: Web 'de Content Moderator deneyin Content Moderator"
+title: 'Hızlı başlangıç: Web üzerinde Content Moderator deneyin Content Moderator'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
-ms.author: sajagtap
-ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564454"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757357"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı Başlangıç: Web üzerinde Content Moderator deneyin
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
 Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız. Bu hizmeti uygulamanıza daha hızlı bir şekilde bütünleştirmek istiyorsanız [sonraki adımlar](#next-steps) bölümündeki diğer hızlı başlangıçlara bakın.
 
@@ -50,7 +50,7 @@ Sonra, bir gözden geçirme ekibi oluşturun. Çalışan bir senaryoda bu, hizme
 
 Uygulanan denetleme etiketlerini gözden geçirin. İçeriğinize hangi etiketlerin uygulandığını ve her bir kategoride skor olduğunu görebilirsiniz. Farklı içerik etiketlerinin neleri belirtdikleriniz hakkında daha fazla bilgi edinmek için [görüntü](image-moderation-api.md), [metin](text-moderation-api.md)ve [video](video-moderation-api.md) Denetleme konularına bakın.
 
-![Sonuçları gözden geçirin](images/reviewresults_text.png)
+![Sonuçları gözden geçirme](images/reviewresults_text.png)
 
 Bir projede, sizin veya gözden geçirme ekibiniz bu etiketleri değiştirebilir veya gerektiğinde daha fazla etiket ekleyebilir. Bu değişiklikleri **İleri** düğmesiyle gönderebilirsiniz. İş uygulamanız yönetici API 'Lerini çağırdığında, etiketli içerik burada sıraya alınır ve insan gözden geçirme ekipleri tarafından incelenmeye hazırdır. Bu yaklaşımı kullanarak büyük hacimlerde içerik hızla gözden geçirebilirsiniz.
 
