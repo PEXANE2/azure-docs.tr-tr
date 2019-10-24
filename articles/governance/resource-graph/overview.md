@@ -3,15 +3,15 @@ title: Azure Kaynak Grafiği'ne Genel Bakış
 description: Azure Kaynak Grafiği hizmeti 'nin, ölçekte kaynakların nasıl karmaşık şekilde sorgulanmasını sağladığını anlayın.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/06/2019
+ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976811"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755883"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Kaynak Grafiği hizmetine genel bakış
 
@@ -25,8 +25,8 @@ Azure Kaynak Grafiği, Azure 'da Azure Kaynak yönetimini uzatmak için tasarlan
 Bu belgede her özelliği ayrıntılı olarak inceleyeceksiniz.
 
 > [!NOTE]
-> Azure Kaynak Grafiği Azure portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure Ilkesinin [değişiklik geçmişini](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _görsel fark_olarak güçlendirir. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
+> Azure Kaynak Grafiği Azure portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure Ilkesinin [değişiklik geçmişini](../policy/how-to/determine-non-compliance.md#change-history-preview) 
+> _görsel fark_. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -34,7 +34,7 @@ Bu belgede her özelliği ayrıntılı olarak inceleyeceksiniz.
 
 Azure Resource Manager şu anda temel kaynak alanları, özellikle kaynak adı, KIMLIK, tür, kaynak grubu, abonelik ve konum üzerinde sorguları desteklemektedir. Kaynak Yöneticisi ayrıca, tek seferde bir kaynağın ayrıntılı özelliklerine yönelik ayrı kaynak sağlayıcıları çağırma olanakları sağlar.
 
-Azure Kaynak Grafiği ile, her kaynak sağlayıcısına tek tek çağrı yapmanıza gerek kalmadan, kaynak sağlayıcılarının geri döndürdüğü bu özelliklere erişebilirsiniz. Desteklenen kaynak türlerinin bir listesi için, [kaynaklar için tüm mod dağıtımları](../../azure-resource-manager/complete-mode-deletion.md) tablosunda **Evet** ' i arayın. Desteklenen kaynak türlerini görmenin alternatif bir yolu, [Azure Kaynak Grafiği Gezgini şema tarayıcısı](./first-query-portal.md#schema-browser)aracılığıyla yapılır.
+Azure Kaynak Grafiği ile, her kaynak sağlayıcısına tek tek çağrı yapmanıza gerek kalmadan, kaynak sağlayıcılarının geri döndürdüğü bu özelliklere erişebilirsiniz. Desteklenen kaynak türlerinin bir listesi için, [kaynaklar için tüm mod dağıtımları](../../azure-resource-manager/complete-mode-deletion.md) tablosunda **Evet** ' i arayın. Ek kaynak türleri ilgili [kaynak grafik tablolarında](./concepts/query-language.md#resource-graph-tables)bulunur. Desteklenen kaynak türlerini görmenin alternatif bir yolu, [Azure Kaynak Grafiği Gezgini şema tarayıcısı](./first-query-portal.md#schema-browser)aracılığıyla yapılır.
 
 Azure Kaynak Grafiği ile şunları yapabilirsiniz:
 
@@ -45,6 +45,9 @@ Azure Kaynak Grafiği ile şunları yapabilirsiniz:
 
 Bir Azure kaynağı güncelleştirildiği zaman, kaynak grafiğine değişikliğin Kaynak Yöneticisi bildirilir.
 Kaynak Grafiği daha sonra veritabanını güncelleştirir. Kaynak Grafiği de düzenli bir _tam tarama_yapar. Bu tarama, eksik bildirimler varsa veya bir kaynağın Kaynak Yöneticisi dışında güncelleştirildiği durumlarda kaynak Grafik verilerinin güncel olmasını sağlar.
+
+> [!NOTE]
+> Kaynak Grafiği, özellikleri ve değerleri toplamak için her kaynak sağlayıcının en son önizleme dışı API 'sine yönelik bir `GET` kullanır. Sonuç olarak, beklenen özellik kullanılamıyor olabilir. Bazı durumlarda kullanılan API sürümü, sonuçlarda daha güncel veya yaygın olarak kullanılan özellikler sağlamak için geçersiz kılındı. Ortamınızdaki tüm bir liste için [her kaynak türü örneği IÇIN API sürümünü göster](./samples/advanced.md#apiversion) ' i inceleyin.
 
 ## <a name="the-query-language"></a>Sorgu dili
 
@@ -62,7 +65,7 @@ Kaynak Grafı’nı kullanmak için, sorgulamak istediğiniz kaynaklara en az ok
 > [!NOTE]
 > Kaynak Grafiği, oturum açma sırasında bir sorumlu için kullanılabilen abonelikleri kullanır. Etkin bir oturum sırasında eklenen yeni aboneliğin kaynaklarını görmek için sorumlu bağlamı yenilemeniz gerekir. Bu eylem, oturumunuzu kapatıp yeniden oturum açarken otomatik olarak gerçekleşir.
 
-Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları-liste](/rest/api/resources/resourcegroups/list) \- ' i çağırırken, sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişim sağladığınız kaynak gruplarını elde edersiniz.
+Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) aynıdır \-, girdiğiniz kaynak gruplarını sonucun kısmi olabileceğini belirten herhangi bir belirti olmadan elde edersiniz.
 Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
 
 ## <a name="throttling"></a>Azaltma

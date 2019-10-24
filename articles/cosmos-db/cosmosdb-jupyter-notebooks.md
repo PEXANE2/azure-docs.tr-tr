@@ -4,14 +4,14 @@ description: Sorguları etkileşimli olarak çalıştırmak için Azure Cosmos D
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 09/22/2019
-author: rimman
-ms.author: rimman
-ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+author: markjbrown
+ms.author: mjbrown
+ms.openlocfilehash: 8026140a07ce8ed03a7bec57f03a1ca1708f85ac
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309550"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756971"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği
 
@@ -28,11 +28,11 @@ Azure portal, aşağıdaki görüntüde gösterildiği gibi Jupyter Not defteri 
 
 Jupi Not defterleri, aslında Python, R 'de yazılan veri bilimi uygulamaları için geliştirilmiştir. Ancak, bunlar gibi farklı türlerde projeler için çeşitli şekillerde kullanılabilirler:
 
-* ***Veri görselleştirmeleri:** Jupyter Not defterleri, bir grafik olarak bazı veri kümesini işleyen paylaşılan bir not defteri biçimindeki verileri görselleştirmenize olanak tanır. Jupyter Not defteri görselleştirmeleri yazabilir, paylaşabilir ve paylaşılan kodda ve veri kümesinde etkileşimli değişikliklere izin verir.
+* ***veri görselleştirmeleri:** Jupyter Not defterleri, bir grafik olarak bazı veri kümesini işleyen paylaşılan bir not defteri biçimindeki verileri görselleştirmenize olanak tanır. Jupyter Not defteri görselleştirmeleri yazabilir, paylaşabilir ve paylaşılan kodda ve veri kümesinde etkileşimli değişikliklere izin verir.
 
 * **Kod paylaşımı:** GitHub gibi hizmetler, kod paylaşma yollarını sağlar, ancak büyük ölçüde etkileşimli değildir. Jupyter Not defteri ile kodu görüntüleyebilir, yürütebilir ve sonuçları doğrudan Azure portal görüntüleyebilirsiniz.
 
-* **Kod ile canlı etkileşimler:** Jupyter Not defteri kodu dinamiktir; Bu, düzenlenebilir ve artımlı olarak gerçek zamanlı olarak çalıştırılabilir. Not defterleri, kod, tanıtımlar veya kavram kanıtı (POCs) için giriş kaynağı olarak kullanılabilecek Kullanıcı denetimleri (ör. kaydırıcıları veya metin girişi alanları) de ekleyebilir.
+* **Kod Ile canlı etkileşimler:** Jupyter Not defteri kodu dinamiktir; Bu, düzenlenebilir ve artımlı olarak gerçek zamanlı olarak çalıştırılabilir. Not defterleri, kod, tanıtımlar veya kavram kanıtı (POCs) için giriş kaynağı olarak kullanılabilecek Kullanıcı denetimleri (ör. kaydırıcıları veya metin girişi alanları) de ekleyebilir.
 
 * **Kod örnekleri ve veri araştırma sonuçlarının belgeleri:** Bir kod parçasına sahipseniz ve gerçek zamanlı çıktının Azure Cosmos DB nasıl çalıştığını öğrenmek istiyorsanız, bir Jupyter Notebook ekleyebilirsiniz. bu şekilde, bir ekleyebilirsiniz. Kod tamamen işlevsel olarak kalır. Belgelerle birlikte aynı anda etkileşim ekleyebilirsiniz.
 
@@ -48,11 +48,11 @@ Jupyter Not defterleri, her biri ayrı bloklara düzenlenmiş birkaç bileşen t
 
 * **Kod ve çıkış:** Jupyıter Not defterleri Python kodunu destekler. Yürütülen kodun sonuçları, kod bloklarından hemen sonra görünür ve kod blokları istediğiniz sırada birden çok kez yürütülenebilir.
 
-* **Görüntüler** Grafikler ve grafikler, Matplotlib, Plotly veya bokeh gibi modüller kullanılarak koddan oluşturulabilir. Çıkışa benzer şekilde, bu görselleştirmeler, bunları üreten kodun yanında satır içi görüntülenir.
+* **Görselleştirmeler:** Grafikler ve grafikler, Matplotlib, Plotly veya bokeh gibi modüller kullanılarak koddan oluşturulabilir. Çıkışa benzer şekilde, bu görselleştirmeler, bunları üreten kodun yanında satır içi görüntülenir.
 
-* **Medyanın** Jupyter Not defteri Web teknolojisinden oluşturulduğundan, bir Web sayfasında desteklenen tüm multimedya türlerini görüntüleyebilir. Bunları bir not defterine HTML öğeleri olarak dahil edebilir veya `IPython.display` modülünü kullanarak programlı bir şekilde oluşturabilirsiniz.
+* **Multimedya:** Jupyter Not defteri Web teknolojisinden oluşturulduğundan, bir Web sayfasında desteklenen tüm multimedya türlerini görüntüleyebilir. Bunları bir not defterine HTML öğeleri olarak dahil edebilir veya `IPython.display` modülünü kullanarak programlı bir şekilde oluşturabilirsiniz.
 
-* **Verileri** Azure Cosmos kapsayıcılarından ve sorguların sonuçlarına ait veriler, programlama yoluyla bir Jupyter not defterine aktarılabilir. Örneğin, Cosmos DB API 'lerden herhangi birini kullanarak verileri sorgulamak için not defterine kod ekleyerek veya yerel olarak yerleşik Apache Spark.
+* **Veri:** Azure Cosmos kapsayıcılarından ve sorguların sonuçlarına ait veriler, programlama yoluyla bir Jupyter not defterine aktarılabilir. Örneğin, Cosmos DB API 'lerden herhangi birini kullanarak verileri sorgulamak için not defterine kod ekleyerek veya yerel olarak yerleşik Apache Spark.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
