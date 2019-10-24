@@ -1,5 +1,5 @@
 ---
-title: Azure bulut çözümü sağlayıcıları için Azure Active Directory Domain Services | Microsoft Docs
+title: Bulut çözümü sağlayıcıları için Azure AD Domain Services | Microsoft Docs
 description: Azure bulut çözümü sağlayıcıları için Azure Active Directory Domain Services.
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612973"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754435"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure bulut çözüm sağlayıcıları (CSP) için Azure Active Directory (AD) etki alanı Hizmetleri
 Bu makalede, Azure CSP aboneliğinde Azure AD Domain Services nasıl kullanabileceğiniz açıklanmaktadır.
@@ -74,7 +74,7 @@ Azure CSP aboneliğinde yönetilen bir etki alanını yönetirken aşağıdaki �
 
 * **CSP yönetici aracıları, kimlik bilgilerini kullanarak yönetilen bir etki alanı sağlayabilir:** Azure AD Domain Services Azure CSP aboneliklerini destekler. Bu nedenle, bir CSP iş ortağının yönetici aracıları grubuna ait olan kullanıcılar yeni bir Azure AD Domain Services yönetilen etki alanı sağlayabilir.
 
-* **CSP 'Ler, PowerShell kullanarak müşterileri için yeni yönetilen etki alanlarının komut dosyası oluşturulmasına sahiptir:** Ayrıntılar için bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md) .
+* **CSP 'ler, PowerShell kullanarak müşterileri için yeni yönetilen etki alanlarının komut dosyası oluşturulmasına sahiptir:** Ayrıntılar için bkz. [PowerShell kullanarak Azure AD Domain Services etkinleştirme](powershell-create-instance.md) .
 
 * **CSP yönetim aracıları, kimlik bilgilerini kullanarak yönetilen etki alanında devam eden yönetim görevleri gerçekleştiremez:** CSP yönetici kullanıcıları, kimlik bilgilerini kullanarak yönetilen etki alanı içinde rutin yönetim görevleri gerçekleştiremez. Bu kullanıcılar müşterinin Azure AD dizininin dışında ve kimlik bilgileri müşterinin Azure AD dizininde kullanılamaz. Bu nedenle, Azure AD Domain Services bu kullanıcılar için Kerberos ve NTLM parola karmalarını erişimine sahip değildir. Sonuç olarak, bu tür kullanıcılar Azure AD Domain Services yönetilen etki alanlarında kimlik doğrulaması yapılamaz.
 

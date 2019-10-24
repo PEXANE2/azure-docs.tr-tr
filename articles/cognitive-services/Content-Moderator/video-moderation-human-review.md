@@ -3,19 +3,19 @@ title: İnsan incelemesi ile video denetleme-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Uygun olmayan içeriğe sahip olan makine yardımlı video denetleme ve insan gözden geçirme araçlarını kullanın
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: sajagtap
-ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561168"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754165"
 ---
 # <a name="video-moderation-with-human-review"></a>İnsan incelemesinin bulunduğu video denetlemesi
 
@@ -25,7 +25,7 @@ ms.locfileid: "68561168"
 
 Görüntü eğitilen modeller veya video eğitilen modeller ile makine destekli video sınıflandırması elde edilir. Görüntü eğitilen video sınıflandırıcılarından farklı olarak, Microsoft 'un yetişkinlere yönelik video sınıflandırıcıları videolar ile eğitilir. Bu yöntem, daha iyi eşleşme kalitesine neden olur.
 
-## <a name="shot-detection"></a>Çekim algılama
+## <a name="shot-detection"></a>Görüntü algılama
 
 Sınıflandırma ayrıntılarının çıktıları sırasında, ek video zekası videoları çözümlemede daha fazla esneklik sağlar. Microsoft 'un video denetleme hizmeti, yalnızca çerçevelerin çıktısını almak yerine, görüntü düzeyinde bilgiler de sağlar. Artık videolarınızı, görüntü düzeyinde ve çerçeve düzeyinde analiz etme seçeneğiniz vardır.
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB sorguları çalıştırmak için istek birimlerini ve maliyeti iyileştirin
 description: Bir sorgu için istek birimi ücretlerini değerlendirmeyi ve sorguyu performans ve maliyet açısından en uygun hale getirmeyi öğrenin.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717013"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753298"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB 'de sorgu maliyetini iyileştirin
 
@@ -27,13 +27,13 @@ Azure Cosmos DB sorguları genellikle aktarım açısından en hızlı/en etkili
 
 * Filtre olmadan sorgulayın.
 
-Bir veya daha fazla bölümden verileri okuyan sorgular, daha yüksek gecikme süresine ve daha yüksek sayıda istek birimi tüketir. Her bölümde tüm özellikler için otomatik dizin oluşturma olduğundan, sorgu dizinden verimli bir şekilde sunulabilir. Paralellik seçeneklerini kullanarak birden çok bölüm kullanan sorguları daha hızlı yapabilirsiniz. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi için bkz: [Azure Cosmos DB'de bölümleme](partitioning-overview.md).
+Bir veya daha fazla bölümden verileri okuyan sorgular, daha yüksek gecikme süresine ve daha yüksek sayıda istek birimi tüketir. Her bölümde tüm özellikler için otomatik dizin oluşturma olduğundan, sorgu dizinden verimli bir şekilde sunulabilir. Paralellik seçeneklerini kullanarak birden çok bölüm kullanan sorguları daha hızlı yapabilirsiniz. Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB bölümlendirme](partitioning-overview.md).
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>Bir sorgu için istek birimi ücreti değerlendir
 
 Azure Cosmos kapsayıcılarınızda bazı verileri depoladıktan sonra, sorgularınızı oluşturmak ve çalıştırmak için Azure portal Veri Gezgini kullanabilirsiniz. Ayrıca, Veri Gezgini 'ni kullanarak sorguların maliyetini de alabilirsiniz. Bu yöntem, sisteminizin desteklediği tipik sorgular ve işlemlerle ilgili gerçek ücretler hakkında fikir verecektir.
 
-SDK 'Ları kullanarak, programlı bir şekilde sorgu maliyeti de alabilirsiniz. Oluşturma, güncelleştirme veya silme gibi herhangi bir işlemin ek yükünü ölçmek için REST API kullanırken `x-ms-request-charge` üstbilgiyi inceleyin. .NET veya Java SDK kullanıyorsanız, `RequestCharge` Özellik istek ücretlendirisini almak için eşdeğer özelliktir ve bu özellik resourceres, feedresponse içinde bulunur.
+SDK 'Ları kullanarak, programlı bir şekilde sorgu maliyeti de alabilirsiniz. Oluşturma, güncelleştirme veya silme gibi herhangi bir işlemin ek yükünü ölçmek için REST API kullanırken `x-ms-request-charge` üst bilgisini inceleyin. .NET veya Java SDK kullanıyorsanız, `RequestCharge` özelliği istek ücreti almak için eşdeğer bir özelliktir ve bu özellik Resourceres, FeedResponse içinde bulunur.
 
 ```csharp
 // Measure the performance (request units) of writes 

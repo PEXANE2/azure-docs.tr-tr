@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB aktarım hızını en iyi duruma getirme
 description: Bu makalede, Azure Cosmos DB depolanan veriler için üretilen iş maliyetlerinin nasıl iyileştirileceği açıklanır.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.author: rimman
-ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020103"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753260"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş maliyetini iyileştirin
 
@@ -53,19 +53,19 @@ Aşağıda, sağlanan bir verimlilik stratejisine karar vermek için bazı yöne
 
 Aşağıdaki tabloda gösterildiği gibi, API seçimine bağlı olarak, farklı bir ayırluluya aktarım hızı sağlayabilirsiniz.
 
-|API|**Paylaşılan** verimlilik için yapılandırma |**Adanmış** aktarım hızı için yapılandırma |
+|eklentisi|**Paylaşılan** verimlilik için yapılandırma |**Adanmış** aktarım hızı için yapılandırma |
 |----|----|----|
 |SQL API’si|Database|Kapsayıcı|
-|MongoDB için Azure Cosmos DB API'si|Database|Collection|
-|Cassandra API’si|Keyspace|Tablo|
-|Gremlin API|Veritabanı hesabı|Graf|
+|MongoDB için Azure Cosmos DB API'si|Database|Koleksiyon|
+|Cassandra API’si|anahtar alanı|Tablo|
+|Gremlin API|Veritabanı hesabı|Graph|
 |Tablo API’si|Veritabanı hesabı|Tablo|
 
 Farklı düzeylerde üretilen iş yükünü sağlarken, iş yükünüzün özelliklerine göre maliyetlerinizi iyileştirebilirsiniz. Daha önce belirtildiği gibi, programlama yoluyla ve herhangi bir zamanda tek tek kapsayıcılar veya bir kapsayıcı kümesi genelinde sağlanan aktarım hızını artırabilir ya da azaltabilirsiniz. İş yükünüz değiştikçe ölçek işleme esnek göre yalnızca yapılandırdığınız aktarım hızı için ödeme yaparsınız. Kapsayıcınız veya bir kapsayıcı kümesi birden çok bölgeye dağıtılmışsa, kapsayıcıda yapılandırdığınız üretilen iş veya bir kapsayıcı kümesi tüm bölgelerde kullanılabilir hale getirilir.
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>İsteklerin hız sınırlaması ile en iyileştirin
 
-Gecikme süresine duyarlı olmayan iş yükleri için daha az üretilen iş sağlayabilir ve gerçek aktarım hızı sağlanan aktarım hızını aştığında uygulamanın hız sınırlaması olmasını sağlayabilirsiniz. Sunucu isteği preemptively (http durum kodu 429 `RequestRateTooLarge` ) ile sona erecektir ve kullanıcının isteği yeniden `x-ms-retry-after-ms` denemeden önce beklemesi gereken süreyi milisaniye olarak belirten üst bilgiyi döndürür. 
+Gecikme süresine duyarlı olmayan iş yükleri için daha az üretilen iş sağlayabilir ve gerçek aktarım hızı sağlanan aktarım hızını aştığında uygulamanın hız sınırlaması olmasını sağlayabilirsiniz. Sunucu, isteği `RequestRateTooLarge` (HTTP durum kodu 429) ile sona erpreemptively ve kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye olarak belirten `x-ms-retry-after-ms` üst bilgisini döndürür. 
 
 ```html
 HTTP Status 429, 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Yerel SDK 'lar (.NET/.NET Core, Java, Node. js ve Python), bu yanıtı dolaylı olarak yakalayıp sunucu tarafından belirtilen yeniden deneme üst bilgisine göre yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
 
-İstek hızının sürekli olarak birden fazla istemciniz varsa, şu anda 9 olarak ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Böyle bir durumda, istemci uygulama için 429 `DocumentClientException` durum kodu ile bir oluşturur. Varsayılan yeniden deneme sayısı, `RetryOptions` connectionpolicy örneğinde ayarlanarak değiştirilebilir. Varsayılan olarak, isteğin `DocumentClientException` istek hızının üzerinde çalışmaya devam etmesi durumunda 429 durum kodu ile toplam 30 saniyelik bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
+İstek hızının sürekli olarak birden fazla istemciniz varsa, şu anda 9 olarak ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Böyle bir durumda, istemci, uygulama 429 durum kodu ile bir `DocumentClientException` oluşturur. Varsayılan yeniden deneme sayısı, ConnectionPolicy örneğindeki `RetryOptions` ayarlanarak değiştirilebilir. Varsayılan olarak, istek hızının üzerinde çalışmaya devam ederse, 429 durum koduna sahip `DocumentClientException`, 30 saniyelik birikmeli bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
 
@@ -139,7 +139,7 @@ Yeni bir iş yükünün sağlanan verimini öğrenmek için aşağıdaki adımla
 
 2. Kapsayıcıları beklenenden daha yüksek aktarım hızı ile oluşturmanız ve ardından gerektikçe ölçeklendirilmesi önerilir. 
 
-3. İsteklerin hız sınırlı olduğunda otomatik yeniden denemelerden yararlanmak için yerel Azure Cosmos DB SDK 'Lardan birini kullanmanız önerilir. Desteklenmeyen bir platformda çalışıyorsanız Cosmos DB REST API kullanın, `x-ms-retry-after-ms` üstbilgiyi kullanarak kendi yeniden deneme ilkenizi uygulayın. 
+3. İsteklerin hız sınırlı olduğunda otomatik yeniden denemelerden yararlanmak için yerel Azure Cosmos DB SDK 'Lardan birini kullanmanız önerilir. Desteklenmeyen bir platformda çalışıyorsanız Cosmos DB REST API kullanın `x-ms-retry-after-ms` üst bilgisini kullanarak kendi yeniden deneme ilkenizi uygulayın. 
 
 4. Tüm yeniden denemeler başarısız olduğunda uygulama kodunuzun düzgün şekilde desteklediğinden emin olun. 
 
@@ -171,7 +171,7 @@ Aşağıdaki adımlar Azure Cosmos DB kullanırken çözümlerinizi yüksek düz
 
 9. Daha fazla iş yüküne özgü maliyet iyileştirmeleri gerçekleştirebilirsiniz. Örneğin, toplu iş boyutu, Yük Dengeleme okuma işlemlerini birden çok bölgede artırma ve varsa verileri çoğaltma.
 
-10. Azure Cosmos DB ayrılmış kapasite sayesinde, üç yıl boyunca% 65 ' e kadar önemli iskontolar elde edebilirsiniz. Azure Cosmos DB ayrılmış kapasite modeli, zaman içinde gereken istek birimleri hakkında ön taahhüt niteliğinde bir taahhütdir. İskontolar, daha uzun bir süre boyunca kullandığınız istek birimleri arttıkça, indiriminiz daha fazla olacaktır. Bu indirimler hemen uygulanır. Sağlanan değerlerinizin üzerinde kullanılan tüm ru 'lar, ayrılmamış kapasite maliyetine göre ücretlendirilir. Daha fazla ayrıntı için bkz. [Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md)). Sağlanan verimlilik maliyetlerinizi daha düşük bir düzeye düşürmek için ayrılmış kapasite satın almayı düşünün.  
+10. Azure Cosmos DB ayrılmış kapasite sayesinde, üç yıl boyunca %65 ' e kadar önemli iskontolar elde edebilirsiniz. Azure Cosmos DB ayrılmış kapasite modeli, zaman içinde gereken istek birimleri hakkında ön taahhüt niteliğinde bir taahhütdir. İskontolar, daha uzun bir süre boyunca kullandığınız istek birimleri arttıkça, indiriminiz daha fazla olacaktır. Bu indirimler hemen uygulanır. Sağlanan değerlerinizin üzerinde kullanılan tüm ru 'lar, ayrılmamış kapasite maliyetine göre ücretlendirilir. Daha fazla ayrıntı için bkz. [Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md)). Sağlanan verimlilik maliyetlerinizi daha düşük bir düzeye düşürmek için ayrılmış kapasite satın almayı düşünün.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

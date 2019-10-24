@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066848"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755524"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service tanılamada genel bakış
 
@@ -37,7 +37,7 @@ Azure Işlevleri için, işlev uygulamanıza gidin ve üst gezinti bölmesinde, 
 
 App Service tanılama giriş sayfasında, her bir giriş sayfası kutucuğunda anahtar kelimeleri kullanarak uygulamanızdaki sorunu en iyi şekilde açıklayan kategoriyi seçebilirsiniz. Ayrıca, Bu sayfa Windows uygulamaları için **Tanılama araçları** bulabileceğiniz yerdir. Bkz. [Tanılama araçları (yalnızca Windows uygulaması için)](#diagnostic-tools-only-for-windows-app).
 
-![Giriş sayfası](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
+![Değiştirir](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
 ## <a name="interactive-interface"></a>Etkileşimli arabirim
 
@@ -65,8 +65,8 @@ Uygulamanızda neyin yanlış olduğunu bilmiyorsanız veya sorunlarınızı gid
 
 Sistem durumu denetiminde dört farklı grafik vardır.
 
-- **istekler ve hatalar:** HTTP sunucu hatalarıyla birlikte, son 24 saat içinde yapılan isteklerin sayısını gösteren bir grafik.
-- **Uygulama performansı:** Çeşitli yüzdebirlik grupları için son 24 saat içindeki yanıt süresini gösteren bir grafik.
+- **İstekler ve hatalar:** HTTP sunucu hatalarıyla birlikte, son 24 saat içinde yapılan isteklerin sayısını gösteren bir grafik.
+- **uygulama performansı:** Çeşitli yüzdebirlik grupları için son 24 saat içindeki yanıt süresini gösteren bir grafik.
 - **CPU kullanımı:** Son 24 saat içinde örnek başına yüzde CPU kullanımının genel olarak gösterildiği bir grafik.  
 - **bellek kullanımı:** Son 24 saat içinde örnek başına yüzde fiziksel bellek kullanımının genel olarak gösterildiği bir grafik.
 
@@ -92,17 +92,17 @@ Tanılama araçları, uygulama kodu sorunlarını, yavaşlamaları, bağlantı d
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktif CPU izleme
 
-Proaktif CPU izleme, uygulamanızın uygulamanız veya alt işleminiz yüksek CPU kaynakları tükettiği zaman bir işlem yapmak için kolay ve proaktif bir yol sağlar. Beklenmeyen sorunun gerçek nedeni bulunana kadar yüksek CPU bir sorunu geçici olarak azaltmak için kendi CPU eşik kurallarınızı ayarlayabilirsiniz.
+Proaktif CPU izleme, uygulamanızın uygulamanız veya alt işleminiz yüksek CPU kaynakları tükettiği zaman bir işlem yapmak için kolay ve proaktif bir yol sağlar. Beklenmeyen sorunun gerçek nedeni bulunana kadar yüksek CPU bir sorunu geçici olarak azaltmak için kendi CPU eşik kurallarınızı ayarlayabilirsiniz. Daha fazla bilgi için bkz. [CPU sorunlarınızı gerçekleşmeden önce azaltma](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proaktif CPU izleme](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Otomatik Düzeltme ve proaktif otomatik düzeltme
 
-Otomatik düzeltme, uygulamanız beklenmeyen davranışlara sahip olduğunda gerçekleştirebileceğiniz bir azaltma eylemi eylemdir. Risk azaltma eylemlerini tetiklemek için istek sayısı, yavaş istek, bellek sınırı ve HTTP durum koduna göre kendi kurallarınızı ayarlayabilirsiniz. Asıl nedeni bulana kadar beklenmeyen bir davranışı geçici olarak hafifletmek için aracını kullanın.
+Otomatik düzeltme, uygulamanız beklenmeyen davranışlara sahip olduğunda gerçekleştirebileceğiniz bir azaltma eylemi eylemdir. Risk azaltma eylemlerini tetiklemek için istek sayısı, yavaş istek, bellek sınırı ve HTTP durum koduna göre kendi kurallarınızı ayarlayabilirsiniz. Asıl nedeni bulana kadar beklenmeyen bir davranışı geçici olarak hafifletmek için aracını kullanın. Daha fazla bilgi için bkz. [App Service tanılamasında yeni otomatik düzeltme deneyimi duyurusu](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
 
 ![Otomatik onarım](./media/app-service-diagnostics/auto-healing-10.png)
 
-Proaktif CPU izleme gibi, öngörülü otomatik düzeltme, uygulamanızın beklenmedik bir şekilde davranışını azaltmaya yönelik bir açılan anahtar çözümüdür. Proaktif otomatik düzeltme, App Service uygulamanızın kurtarılamaz bir durumda olduğunu belirlediğinde uygulamanızı yeniden başlatır. Daha fazla bilgi için bkz. [App Service tanılamasında yeni otomatik düzeltme deneyimi duyurusu](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
+Proaktif CPU izleme gibi, öngörülü otomatik düzeltme, uygulamanızın beklenmedik bir şekilde davranışını azaltmaya yönelik bir açılan anahtar çözümüdür. Proaktif otomatik düzeltme, App Service uygulamanızın kurtarılamaz bir durumda olduğunu belirlediğinde uygulamanızı yeniden başlatır. Daha fazla bilgi için bkz. [proaktif Otomatik Heal tanıtımı](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html).
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Gezgin ve değişiklik Analizi (yalnızca Windows uygulaması için)
 

@@ -3,19 +3,19 @@ title: .NET-Content Moderator kullanarak video dökümü oluşturma İncelemeler
 titleSuffix: Azure Cognitive Services
 description: .NET için Content Moderator SDK kullanarak video dökümü oluşturma İncelemeleri oluşturun
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: c7d68685a772bb777fff1dd56a25990b9d0406ef
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.author: pafarley
+ms.openlocfilehash: 7fe254aa6e78133102a295c5e60a10d29f6382a4
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242813"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757182"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET kullanarak video dökümü oluşturma İncelemeleri oluşturun
 
@@ -25,18 +25,18 @@ Bu makalede, [ C# ile Content moderator SDK](https://www.nuget.org/packages/Micr
 - İncelemeye aracılı bir döküm ekleyin
 - İncelemeyi Yayımla
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 - Daha önce yapmadıysanız Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 - Bu makalede [, videoyu](video-moderation-api.md) dağıttığınız ve insan kararı verme için gözden geçirme aracında [video incelemesini oluşturmuş](video-reviews-quickstart-dotnet.md) olduğunuz varsayılmaktadır. Şimdi gözden geçirme aracında aracılı video dökümü eklemek istiyorsunuz.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>API anahtarınızın İnceleme API 'sini (Iş oluşturma) çağırabağlanabildiğinden emin olun
 
-Önceki adımları tamamladıktan sonra, Azure portal başlatıldığında iki Content Moderator anahtarı ile karşılaşabilirsiniz.
+Önceki adımları tamamladıktan sonra, başlangıcı Azure portaldan yaptıysanız şu anda iki Content Moderator anahtarınız olmalıdır.
 
-SDK örneğinizdeki Azure tarafından sağlanmış API anahtarını kullanmayı planlıyorsanız, uygulamanızın gözden geçirme API 'sini çağırmasını ve incelemeleri oluşturmasını sağlamak için [Azure 'DA API 'yi gözden geçir](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis) bölümünde bahsedilen adımları izleyin.
+SDK örneğinizde Azure tarafından sağlanan API anahtarını kullanmayı planlıyorsanız, uygulamanızın inceleme API’sini çağırmasına ve incelemeler oluşturmasına izin vermek için [inceleme API'siyle Azure anahtarını kullanma](./review-tool-user-guide/configure.md#use-your-azure-account-with-the-review-apis) bölümünde anlatılan adımları izleyin.
 
-İnceleme aracı tarafından oluşturulan ücretsiz deneme anahtarını kullanırsanız, gözden geçirme aracı hesabınız anahtarı daha önce bilir ve bu nedenle ek bir adım gerekmez.
+İnceleme aracı tarafından oluşturulan ücretsiz deneme anahtarını kullanırsanız, inceleme aracı hesabınız anahtarı zaten tanıyordur ve bu nedenle ek bir adım gerekli değildir.
 
 ## <a name="prepare-your-video-for-review"></a>Videonuzu gözden geçirilmek üzere hazırlama
 
@@ -46,24 +46,24 @@ Bir video incelemesinin dökümünü ekleyin. Videonun çevrimiçi yayımlanmas�
 
 - Bildirim URL 'SI için bu [Azure Media Services demo](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) sayfasında **URL 'yi** kopyalayın.
 
-## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturma
+## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturun
 
-1. Çözümünüze yeni bir **konsol uygulaması (.NET Framework)** projesi ekleyin.
+1. Çözümünüze yeni bir **Konsol uygulaması (.NET Framework)** projesi ekleyin.
 
 1. Projeyi **Videotranscriptreviews**olarak adlandırın.
 
-1. Bu projeyi çözüm için tek bir başlangıç projesi olarak seçin.
+1. Bu projeyi çözümün tekil başlangıç projesi olarak seçin.
 
-### <a name="install-required-packages"></a>Gerekli paketleri yükler
+### <a name="install-required-packages"></a>Gerekli paketleri yükleme
 
 TermLists projesi için aşağıdaki NuGet paketlerini yükler.
 
-- Microsoft. Azure. Biliveservices. Contentmoderatör
-- Microsoft. Rest. ClientRuntime
-- Microsoft. Rest. ClientRuntime. Azure
-- Newtonsoft. JSON
+- Microsoft.Azure.CognitiveServices.ContentModerator
+- Microsoft.Rest.ClientRuntime
+- Microsoft.Rest.ClientRuntime.Azure
+- Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Programın using deyimlerini güncelleştirme
+### <a name="update-the-programs-using-statements"></a>Programı deyimler kullanarak güncelleştirme
 
 Programın using deyimlerini aşağıdaki şekilde değiştirin.
 
@@ -153,7 +153,7 @@ public static ContentModeratorClient NewClient()
 **Createvideoincelemeleri** aşağıdaki gerekli parametrelere sahiptir:
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
-1. Bir **IList @ no__t-1Createvideo, Sbodyıtem >** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
+1. Bir **ılist \<CreateVideoReviewsBodyItem >** nesnesi. Her **Createvideoreview Sbodyıtem** nesnesi bir video incelemesini temsil eder. Bu hızlı başlangıçta tek seferde bir gözden geçirme oluşturulur.
 
 **Createvideo, Sbodyıtem** 'ın birkaç özelliği vardır. En azından, aşağıdaki özellikleri ayarlarsınız:
 - **İçerik**. Gözden geçirilecek videonun URL 'SI.
@@ -161,7 +161,7 @@ public static ContentModeratorClient NewClient()
 - **Durum**. Değeri "yayımdan kaldırıldı" olarak ayarlayın. Bunu yapmazsanız, varsayılan olarak "bekliyor" olarak ayarlanır; Bu, video incelemesinin yayımlandığı ve insan incelemesi bekleyen bir anlamına gelir. Video incelemesi yayımlandıktan sonra artık video çerçeveleri, bir döküm dosyası veya bir döküm denetimi sonucu ekleyemezsiniz.
 
 > [!NOTE]
-> **Createvideoincelemeleri** bir IList @ no__t-1string > döndürür. Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir.
+> **Createvideoincelemeleri** bir ılist \<string > döndürür. Bu dizelerin her biri video incelemesi için bir KIMLIK içerir. Bu kimlikler GUID 'lerdir ve **ContentID** özelliğinin değeriyle aynı değildir.
 
 Aşağıdaki yöntem tanımını ad alanı Videoincelemeleri, sınıf programına ekleyin.
 
@@ -199,9 +199,9 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 ```
 
 > [!NOTE]
-> Content Moderator hizmet anahtarınız, saniye başına istek (RPS) hız sınırına sahiptir. Sınırı aşarsanız SDK, 429 hata koduyla bir özel durum oluşturur.
+> Content Moderator hizmet anahtarınızın saniyede istek sayısı (RPS) hız sınırı vardır. Sınırı aşarsanız, SDK 429 hata koduyla bir özel durum oluşturulur.
 >
-> Ücretsiz katman anahtarının bir RPS hız sınırı vardır.
+> Ücretsiz katmanı anahtarı bir RPS’lik hız sınırına sahiptir.
 
 ## <a name="add-transcript-to-video-review"></a>Video incelemesinin dökümünü ekleyin
 
@@ -243,15 +243,15 @@ Bir video incelemeye el ile döküm eklemenin yanı sıra, bu dökümü moderonu
 1. "Application/JSON" olması gereken bir MIME türü içeren bir dize. 
 1. Content Moderator takım adınız.
 1. **Createvideoincelemeleri**tarafından döndürülen VIDEO İnceleme kimliği.
-1. Bir IList @ no__t-0Transcriptmoderationbodyıtem >. **Transcriptmoderationbodyıtem** aşağıdaki özelliklere sahiptir:
-1. **Koşullar**. Bir IList @ no__t-0TranscriptModerationBodyItemTermsItem >. Bir **TranscriptModerationBodyItemTermsItem** aşağıdaki özelliklere sahiptir:
+1. Bir IList\<Transcriptmoderationbodyıtem >. **Transcriptmoderationbodyıtem** aşağıdaki özelliklere sahiptir:
+1. **Koşullar**. Bir IList\<TranscriptModerationBodyItemTermsItem >. Bir **TranscriptModerationBodyItemTermsItem** aşağıdaki özelliklere sahiptir:
 1. **Dizin**. Terimin sıfır tabanlı dizini.
 1. **Terim**. Terimi içeren bir dize.
 1. **Zaman damgası**. Koşulların bulunduğu döküm içindeki zamanı saniye cinsinden içeren bir dize.
 
 TRANSCRIPT, WebVTT biçiminde olmalıdır. Daha fazla bilgi için bkz. [WEBVTT: web video metni Izler biçimi](https://www.w3.org/TR/webvtt1/).
 
-Aşağıdaki yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Bu yöntem, **contentmoderatorclient. textmoder. screentext** yöntemine bir döküm gönderir. Ayrıca, sonucu bir IList @ no__t-0Transcriptmoderationbodyıtem > çevirir ve **Addvideotranscriptmoderationresult**' a gönderir.
+Aşağıdaki yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Bu yöntem, **contentmoderatorclient. textmoder. screentext** yöntemine bir döküm gönderir. Ayrıca, sonucu bir IList\<Transcriptmoderationbodyıtem > olarak çevirir ve **Addvideotranscriptmoderationresult**' a gönderir.
 
 ```csharp
 /// <summary>
@@ -321,7 +321,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 }
 ```
 
-## <a name="putting-it-all-together"></a>Tümünü bir araya getirme
+## <a name="putting-it-all-together"></a>Hepsini bir araya getirme
 
 **Ana** yöntem tanımını, VideoTranscriptReviews, Class program ad alanına ekleyin. Son olarak, program sınıfını ve VideoTranscriptReviews ad alanını kapatın.
 
@@ -360,7 +360,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Programı çalıştırın ve çıktıyı gözden geçirin
+## <a name="run-the-program-and-review-the-output"></a>Programı çalıştırma ve çıktıyı gözden geçirme
 
 Uygulamayı çalıştırdığınızda, aşağıdaki satırlarda bir çıktı görürsünüz:
 

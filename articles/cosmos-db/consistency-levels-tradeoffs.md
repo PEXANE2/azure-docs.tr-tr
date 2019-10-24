@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları
 description: Azure Cosmos DB çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2d80e291b3c054fec92b169c8a216a7189e24b79
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384192"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755177"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Tutarlılık, kullanılabilirlik ve performans dengeleri 
 
@@ -20,11 +20,11 @@ Yüksek kullanılabilirlik, düşük gecikme süresi veya her ikisi için çoğa
 
 Azure Cosmos DB, veri tutarlılığını bir seçenek yelpazesi olarak yaklaşır. Bu yaklaşım, güçlü ve nihai tutarlılık için iki aşırı uç daha fazla seçenek içerir. Tutarlılık yelpazesi üzerinde beş iyi tanımlanmış model arasından seçim yapabilirsiniz. En güçlü ve en zayıf, modeller şunlardır:
 
-- *Tanımlayıcı*
-- *Sınırlanmış eskime durumu*
-- *Oturumu*
+- *Lemenize*
+- *Sınırlanmış Eskime durumu*
+- *Oturumuna*
 - *Tutarlı ön ek*
-- *Nihai*
+- *Son*
 
 Her model kullanılabilirlik ve performans avantajları sağlar ve kapsamlı SLA 'Lar tarafından desteklenir.
 
@@ -52,12 +52,12 @@ Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık mo
 
 |**Bölge (ler)**|**Çoğaltma modu**|**Tutarlılık düzeyi**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1\.|Tek veya birden çok yönetici|Herhangi bir tutarlılık düzeyi|< 240 dakika|< 1 hafta|
-|>1|Tek yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
-|>1|Tek yönetici|Sınırlanmış Eskime Durumu|*K*T & |< 15 dakika|
-|>1|Tek yönetici|Güçlü|0|< 15 dakika|
-|>1|Çoklu yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
-|>1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K*T & |0|
+|1|Tek veya birden çok yönetici|Herhangi bir tutarlılık düzeyi|< 240 dakika|< 1 hafta|
+|> 1|Tek yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|< 15 dakika|
+|> 1|Tek yönetici|Sınırlanmış Eskime Durumu|*K* & *t*|< 15 dakika|
+|> 1|Tek yönetici|Strong|0|< 15 dakika|
+|> 1|Çoklu yönetici|Oturum, tutarlı ön ek, nihai|< 15 dakika|0|
+|> 1|Çoklu yönetici|Sınırlanmış Eskime Durumu|*K* & *t*|0|
 
 *K* = bir öğenin *"K"* sürümlerinin (yani Updates) sayısı.
 

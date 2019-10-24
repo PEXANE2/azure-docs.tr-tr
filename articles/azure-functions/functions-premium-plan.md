@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096237"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755407"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Işlevleri Premium planı (Önizleme)
 
@@ -31,7 +31,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Bu örnekte, kaynak grubu `<RESOURCE_GROUP>` ile ve `<PLAN_NAME>` plan için kaynak grubunda benzersiz olan bir adla değiştirin. [ Desteklenen`<REGION>` ](#regions)bir belirtin. Linux destekleyen bir Premium planı oluşturmak için, `--is-linux` seçeneğini dahil edin.
+Bu örnekte, `<RESOURCE_GROUP>` kaynak grubu ile `<PLAN_NAME>` ve plan için kaynak grubunda benzersiz olan bir adla değiştirin. Desteklenen bir [`<REGION>`](#regions)belirtin. Linux destekleyen bir Premium plan oluşturmak için `--is-linux` seçeneğini ekleyin.
 
 Oluşturma planı ile, işlev uygulamanızı oluşturmak için [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) kullanabilirsiniz. Portalda hem plan hem de uygulama aynı anda oluşturulur. 
 
@@ -94,38 +94,46 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
 
-|SKU|Çekirdek|Bellek|Depolama|
+|SKU|Çekirdek|Hafıza|Depolama|
 |--|--|--|--|
-|EP1|1\.|3,5 GB|250 GB|
+|EP1|1|3,5 GB|250 GB|
 |EP2|2|7 GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Bölgeler
 
 Aşağıda, her bir işletim sisteminin genel önizlemesi için desteklenen şu bölgeler verilmiştir.
 
 |Bölge| Windows | Linux |
 |--| -- | -- |
-|Avustralya Doğu| ✔ | |
-|Avustralya Güneydoğu | ✔ | ✔ |
-|Orta Kanada| ✔ |  |
+|Avustralya Orta| ✔ * | |
+|Avustralya Orta 2| ✔ * | |
+|Doğu Avustralya| ✔ | |
+|Güneydoğu Avustralya | ✔ | ✔ |
+|Brezilya Güney| ✔ * * |  |
+|Kanada Orta| ✔ |  |
 |Orta ABD| ✔ |  |
 |Doğu Asya| ✔ |  |
-|East US | | ✔ |
+|Doğu ABD | ✔ | ✔ |
 |Doğu ABD 2| ✔ |  |
 |Fransa Orta| ✔ |  |
-|Japonya Doğu|  | ✔ |
-|Japonya Batı| ✔ | |
+|Doğu Japonya| ✔ | ✔ |
+|Batı Japonya| ✔ | |
 |Kore Orta| ✔ |  |
 |Orta Kuzey ABD| ✔ |  |
 |Kuzey Avrupa| ✔ | ✔ |
-|Orta Güney ABD| ✔ |  |
+|Güney Orta ABD| ✔ |  |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔ |
-|Birleşik Krallık Batı| ✔ |  |
+|Birleşik Krallık, Güney| ✔ | |
+|Birleşik Krallık, Batı| ✔ |  |
 |Batı Avrupa| ✔ | ✔ |
 |Batı Hindistan| ✔ |  |
 |Batı ABD| ✔ | ✔ |
+
+\* en fazla ölçek genişletme, 20 örneğe sınırlı
+
+\** maksimum ölçeği 60 örneğe sınırlı
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 

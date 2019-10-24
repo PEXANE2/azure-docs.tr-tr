@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962657"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752407"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -41,10 +41,10 @@ Tüm program avantajlarının ayrıntılı açıklamaları [Market 'Teki ödüll
 Kullanmaya başlamak için adımlarınız kolaydır:
 
 1. Microsoft AppSource veya Azure Marketi 'nde teklif yayımlayın.
-2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyi ya da diğer adı girmek en iyi uygulamadır: info@company.com genellikle kayıp gibi diğer adlara gönderilen mesajlar.
+2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyin ya da diğer adı girmek en iyi uygulamadır: info@company.com gibi diğer adlara gönderilen iletiler genellikle kaybediliyor.
 
 >[!Note]
->Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa, ' de bir destek bileti https://aka.ms/marketplacepublishersupport yükseltebilirsiniz.
+>Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, lütfen Bulut İş Ortağı Portalı veya Iş Ortağı Merkezi ' nde arayarak söz konusu teklifin sahibi olan kuruluşunuz dahilinde kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa https://aka.ms/marketplacepublishersupport bir destek bileti yükseltebilirsiniz.
 
 Tekliflerinizi Market 'te büyürken genişleyebilmeniz için kullanabileceğiniz etkinliklerin kapsamı. Tüm dökümler, kaynakların ve en iyi yöntemlerin self servis e-postasıyla ilgili bir temel düzey iyileştirme önerisi ve promosyon alır.
 
@@ -60,7 +60,10 @@ Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye pro
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Transact iş ortakları için Market depoları
 
-Azure Market veya Microsoft AppSource 'de transactable teklifinizle canlı olduğunuzda, ticari Market aracılığıyla faturalandırılan satış işlemlerinizi büyürken ek avantajlara erişebilirsiniz. 
+Azure Market veya Microsoft AppSource 'de transactable teklifinizle canlı olduğunuzda, faturalandırılan satış işlemlerinizi veya ticari Market aracılığıyla satılan bilgisayarları büyürken ek avantajlara erişebilirsiniz. 
+
+>[!Note]
+>Satılan bilgisayar eşiği yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
 
 Bu avantajlar, pazarlama, satış ve teknik etkinliklerinizde size yardımcı olmak üzere tasarlanmıştır ve böylece daha fazla ziyaretçi elde etmenizi, daha fazla müşteri adayları almanızı ve daha fazla iş dönüştürmenizi sağlar.
 
@@ -71,6 +74,8 @@ Canlı bir teklif sahibi olan tüm iş ortakları, Market teklifleriniz için en
 ![Satış avantajları](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![Teknik avantajlar](./media/marketplace-publishers-guide/technical-benefit.png)
+
+\* satılan eşik, yalnızca Microsoft 365 uygulamalar için geçerlidir (Microsoft ekipleri, Office, Outlook veya SharePoint ile tümleştirmelere sahip SaaS uygulamaları) ve avantajların 30 Haziran 2020 tarihine kadar tamamlanması gerekir.
 
 Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 

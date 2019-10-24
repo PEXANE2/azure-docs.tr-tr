@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB bölümleniyor
 description: Azure Cosmos DB bölümlemeye genel bakış.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 38b4e4c2541bf30bd9c95d9c0ec61779b0d1d7bb
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717564"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753254"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB bölümleniyor
 
 Azure Cosmos DB, uygulamanızın performans ihtiyaçlarını karşılamak üzere bir veritabanındaki ayrı kapsayıcıları ölçeklendirmek için bölümleme kullanır. Bölümleme bölümünde, bir kapsayıcıdaki öğeler *mantıksal bölümler*adlı farklı alt kümelere bölünür. Mantıksal bölümler, bir kapsayıcıdaki her öğeyle ilişkili bir *bölüm anahtarının* değerine göre oluşturulur. Mantıksal bir bölümdeki tüm öğeler aynı bölüm anahtarı değerine sahiptir.
 
-Örneğin, bir kapsayıcı öğeleri barındırır. Her öğenin `UserID` özellik için benzersiz bir değeri vardır. Kapsayıcıda öğeler için bölüm anahtarı olarak `UserID` görevyaparve1.000benzersizdeğervarsa,kapsayıcıiçin1.000mantıksalbölümleroluşturulur.`UserID`
+Örneğin, bir kapsayıcı öğeleri barındırır. Her öğenin `UserID` özelliği için benzersiz bir değeri vardır. `UserID` kapsayıcıdaki öğeler için bölüm anahtarı görevi görür ve 1.000 benzersiz `UserID` değeri varsa, kapsayıcı için 1.000 mantıksal bölümler oluşturulur.
 
 Öğenin mantıksal bölümünü belirleyen bir bölüm anahtarına ek olarak, bir kapsayıcıdaki her öğe bir *öğe kimliğine* (mantıksal bölüm içinde benzersiz) sahiptir. Bölüm anahtarını ve öğe KIMLIĞINI birleştirmek, öğenin benzersiz şekilde tanımlandığı öğenin *dizinini*oluşturur.
 

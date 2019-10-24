@@ -1,18 +1,18 @@
 ---
 title: Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
 description: Azure Cosmos DB 'teki API 'lerde tutarlılık düzeylerini anlama.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 26cea6243a8b6d06c132325f0b2fe830c4030e9d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 6779e434339935b64440d7cf617c8946338e36e3
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467767"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756991"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Tutarlılık düzeyleri ve Azure Cosmos DB API’leri
 
@@ -33,7 +33,7 @@ Azu, SmoS DB 'nin aksine Apache Cassandra kesin olarak tanımlanmış tutarlıl�
 
 Aşağıdaki tabloda, Cassandra API kullanılırken yerel Cassandra tutarlılık düzeylerinin Azure Cosmos DB tutarlılık düzeylerine nasıl eşlendiği gösterilmektedir:  
 
-[![Cassandra tutarlılık modeli eşleme](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[Cassandra tutarlılık modeli eşlemesi![](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>MongoDB ve Azure Cosmos DB tutarlılık düzeyleri arasında eşleme
 
@@ -51,12 +51,12 @@ Azure Cosmos DB, MongoDB için API 'sini kullanırken:
 
 Aşağıdaki tabloda, MongoDB için Azure Cosmos DB API 'SI kullanılırken yerel MongoDB yazma/okuma sorunlarının Azure Cosmos tutarlılık düzeylerine nasıl eşlendiği gösterilmektedir:
 
-[![MongoDB tutarlılık modeli eşleme](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![MongoDB tutarlılık modeli eşlemesi](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Açık kaynaklı API 'lerle Azure Cosmos DB API 'Ler arasındaki tutarlılık düzeyleri ve uyumluluk hakkında daha fazla bilgi edinin. Aşağıdaki makalelere bakın:
 
-* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans seçenekleri](consistency-levels-tradeoffs.md)
+* [Çeşitli tutarlılık düzeyleri için kullanılabilirlik ve performans avantajları](consistency-levels-tradeoffs.md)
 * [MongoDB için Azure Cosmos DB API 'sinin desteklediği MongoDB özellikleri](mongodb-feature-support.md)
 * [Azure Cosmos DB tarafından desteklenen Apache Cassandra özellikleri Cassandra API](cassandra-support.md)

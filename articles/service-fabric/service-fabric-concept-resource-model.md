@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390088"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752313"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli nedir?
 Service Fabric uygulamaların Azure Resource Manager aracılığıyla Service Fabric kümenize dağıtılması önerilir. Bu yöntem, JSON 'daki uygulama ve Hizmetleri tanımlamaya ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtmanıza olanak tanır. Uygulamaları PowerShell veya Azure CLı aracılığıyla dağıtmanın ve yönetmenin aksine, kümenin kullanıma başlamasını beklemeniz gerekmez. Uygulama kaydetme, hazırlama ve dağıtma işlemlerinin tümü tek bir adımda gerçekleşebilir. Bu, kümenizdeki uygulama yaşam döngüsünü yönetmek için kullanılabilecek en iyi yöntemdir. Daha fazla bilgi için [en iyi uygulamalara](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)bakın.
@@ -41,8 +41,14 @@ Kaynak Yöneticisi şablondan uygulama dağıtmak, uygulama görüntüsünü haz
 ![Depolama hesabı oluşturma][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Depolama hesabını yapılandırma 
-Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturmanız gerekir. Azure portal, uygulamalarınızı depolamak istediğiniz depolama hesabına gidin. **Bloblar** dikey penceresini seçin ve **kapsayıcı Ekle** düğmesine tıklayın. Blob ortak erişim düzeyiyle yeni bir kapsayıcı ekleyin.
-   
+Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturmanız gerekir. Azure portal, uygulamalarınızı depolamak istediğiniz depolama hesabına gidin. **Bloblar** dikey penceresini seçin ve **kapsayıcı Ekle** düğmesine tıklayın. Kümenizin içindeki kaynaklara genel erişim düzeyi özel olarak ayarlanarak güvenli hale getirebilirsiniz. Erişim, birkaç yolla verilebilir:
+* [Azure Active Directory ile bloblara ve kuyruklara erişim yetkisi verme](../storage/common/storage-auth-aad-app.md)
+* [Azure portalında RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](../storage/common/storage-auth-aad-rbac-portal.md)
+* [Paylaşılan erişim imzasıyla (SAS) erişim yetkisi verme](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ Bu örnekte, Bloblar için anonim okuma erişimi kullanmaya devam edeceğiz.
+
 ![Blob oluştur][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>Uygulamayı bir depolama hesabında aşamalandırın
@@ -51,10 +57,10 @@ Uygulama dağıtılmadan önce, blob depolamada hazırlanmalıdır. Bu öğretic
 1. Visual Studio 'da oylama projesine sağ tıklayın ve paket ' i seçin.   
 ![Paket uygulaması][PackageApplication]  
 2. Yeni oluşturduğunuz **.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug** dizinini açın ve içeriği,, ApplicationManifest. xml dosyası ZIP dosyasının kökünde olacak şekilde **Oylama. zip** adlı bir dosyaya ekleyin.  
-![Zip uygulaması @ no__t-1  
+![ZIP uygulaması][ZipApplication]  
 3. Dosyanın uzantısını. zip konumundan **. sfpkg**olarak yeniden adlandırın.
 4. Azure portal, depolama hesabınızın **uygulamalar** kapsayıcısında, **karşıya yükle** ' ye tıklayın ve **Oylama. sfpkg**' ı karşıya yükleyin.  
-![Uygulama paketini karşıya yükle @ no__t-1
+![uygulama paketini karşıya yükle][UploadAppPkg]
 
 Uygulama artık hazırlandı. Şimdi uygulamayı dağıtmak için Azure Resource Manager şablonu oluşturmaya hazırsınız.      
    

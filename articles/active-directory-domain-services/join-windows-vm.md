@@ -1,5 +1,5 @@
 ---
-title: Windows Server VM 'sini yönetilen bir etki alanına katma | Microsoft Docs '
+title: Windows Server VM 'sini yönetilen bir etki alanına katma | Microsoft Docs
 description: Bu öğreticide, Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına nasıl katılacağınızı öğrenin.
 author: iainfoulds
 manager: daveba
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 00e717202116cf9a48c2c2d889374d451b8e4d45
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172036"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754370"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Öğretici: Windows Server sanal makinesini yönetilen bir etki alanına ekleme
 
@@ -63,11 +63,11 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'Yi Azure AD DS yönet
 
     | Parametre            | Önerilen değer   |
     |----------------------|-------------------|
-    | Resource group       | *Myresourcegroup* gibi bir kaynak grubu seçin veya oluşturun |
+    | Kaynak grubu       | *Myresourcegroup* gibi bir kaynak grubu seçin veya oluşturun |
     | Sanal makine adı | VM için *Myvm* gibi bir ad girin |
     | Bölge               | VM 'nizi oluşturmak için bir bölge seçin; örneğin, *Doğu ABD* |
-    | Kullanıcı Adı             | VM üzerinde oluşturulacak yerel yönetici hesabı için bir Kullanıcı adı girin; Örneğin, *azureuser* . |
-    | istemcisiyle yönetilen bir cihaz için)             | Yerel yönetici için VM 'de oluşturulacak güvenli bir parola girin ve ardından onaylayın. Bir etki alanı kullanıcı hesabının kimlik bilgilerini belirtmeyin. |
+    | Kullanıcı adı             | VM üzerinde oluşturulacak yerel yönetici hesabı için bir Kullanıcı adı girin; Örneğin, *azureuser* . |
+    | Parola             | Yerel yönetici için VM 'de oluşturulacak güvenli bir parola girin ve ardından onaylayın. Bir etki alanı kullanıcı hesabının kimlik bilgilerini belirtmeyin. |
 
 4. Varsayılan olarak, Azure 'da oluşturulan sanal makinelere Internet 'ten erişilemez. Bu yapılandırma, sanal makinenin güvenliğini artırmaya yardımcı olur ve olası saldırı için alanı azaltır. Bu öğreticinin bir sonraki adımında, Uzak Masaüstü Protokolü (RDP) kullanarak VM 'ye bağlanmanız ve sonra Windows Server 'ı Azure AD DS yönetilen etki alanına eklemeniz gerekir.
 
@@ -77,8 +77,8 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'Yi Azure AD DS yönet
 
     **Ortak gelen bağlantı noktaları**altında, **Seçili bağlantı noktalarına izin verme**seçeneğini belirleyin. **Gelen bağlantı noktaları Seç**' in açılan menüsünde, *RDP*' yi seçin.
 
-5. İşiniz bittiğinde ileri ' **yi seçin: Diskler**.
-6. **İşletim sistemi diski türünün**açılan menüsünde *Standart SSD*' yi seçin ve ardından İleri ' yi seçin **: Ağ**iletişimi.
+5. İşiniz bittiğinde **İleri: diskler**' i seçin.
+6. **Işletim sistemi diski türünün**açılan menüsünde *Standart SSD*' yi seçin ve ardından İleri ' yi seçin **: ağ**.
 7. SANAL makinenizin, Azure AD DS yönetilen etki alanının dağıtıldığı alt ağ ile iletişim kurabilen bir Azure sanal ağ alt ağına bağlanması gerekir. Azure AD DS yönetilen bir etki alanının kendi adanmış alt ağına dağıtılmasını öneririz. SANAL makinenizin Azure AD DS yönetilen etki alanı ile aynı alt ağda dağıtılmayın.
 
     VM 'nizi dağıtmanın ve uygun bir sanal ağ alt ağına bağlanmanın iki ana yolu vardır:
@@ -139,10 +139,10 @@ Oluşturulan VM ve bir RDP bağlantısı kurmak için Windows Server sanal makin
 
 1. Etki alanına katılacak etki alanı kimlik bilgilerini girin. *Azure AD DC Administrators* grubuna ait olan bir kullanıcının kimlik bilgilerini kullanın. Yalnızca bu grubun üyeleri, makineleri Azure AD DS tarafından yönetilen etki alanına katma ayrıcalıklarına sahiptir. Hesap kimlik bilgileri, aşağıdaki yollarla belirtilebilir:
 
-    * **UPN biçimi** (önerilen)-Kullanıcı hesabı için Azure AD 'de yapılandırıldığı şekilde Kullanıcı asıl adı (UPN) sonekini girin. Örneğin, *contosoadmin* kullanıcısının UPN son eki olacaktır `contosoadmin@contoso.onmicrosoft.com`. UPN biçiminin *sAMAccountName* biçimi yerine etki alanında oturum açmak için güvenilir bir şekilde kullanılabilecek, yaygın olarak kullanılan birkaç kullanım durumu vardır:
+    * **UPN biçimi** (önerilir)-Kullanıcı hesabı IÇIN Azure AD 'de yapılandırıldığı şekilde Kullanıcı asıl adı (UPN) sonekini girin. Örneğin, *contosoadmin* kullanıcısının UPN son eki `contosoadmin@contoso.onmicrosoft.com`olacaktır. UPN biçiminin *sAMAccountName* biçimi yerine etki alanında oturum açmak için güvenilir bir şekilde kullanılabilecek, yaygın olarak kullanılan birkaç kullanım durumu vardır:
         * Bir kullanıcının UPN öneki uzunsa ( *deehasareallylongname*gibi), *sAMAccountName* otomatik olarak oluşturulabilir.
         * Birden çok Kullanıcı Azure AD kiracınızda, *Dee*gıbı aynı UPN ön ekine sahip Ise, *sAMAccountName* biçimleri otomatik olarak oluşturulabilir.
-    * **SAMAccountName biçimi** -hesap adını *sAMAccountName* biçiminde girin. Örneğin, *contosoadmin* kullanıcısının `CONTOSO\contosoadmin` *sAMAccountName* 'ı olacaktır.
+    * **SAMAccountName biçimi** -hesap adını *sAMAccountName* biçiminde girin. Örneğin, *contosoadmin* kullanıcısının *sAMAccountName* 'ı `CONTOSO\contosoadmin`.
 
 1. Azure AD DS yönetilen etki alanına katılması birkaç saniye sürer. Bu tamamlandığında, şu ileti size etki alanına gönderilir:
 
@@ -200,10 +200,10 @@ Etki alanına katılması için kimlik bilgileri isteyen bir istem almazsanız b
 Bu sorun giderme adımlarını her bir kez denemeden sonra, Windows Server VM 'yi yönetilen etki alanına yeniden birleştirmeyi deneyin.
 
 * VM 'nin, Azure AD DS 'de etkinleştirilmiş olduğu sanal ağa bağlı olduğunu veya eşlenmiş bir ağ bağlantısına sahip olduğunu doğrulayın.
-* Yönetilen etki alanının `ping contoso.com`DNS etki alanı adını (gibi) ping yapmayı deneyin.
-    * Ping isteği başarısız olursa, yönetilen etki alanının IP adreslerini (gibi `ping 10.0.0.4`) ping yapmayı deneyin. Azure kaynakları listenizden Azure AD DS yönetilen etki alanını seçtiğinizde, ortamınız için IP adresi *Özellikler* sayfasında görüntülenir.
+* `ping contoso.com`gibi, yönetilen etki alanının DNS etki alanı adına ping işlemi yapmayı deneyin.
+    * Ping isteği başarısız olursa, yönetilen etki alanının IP adreslerini `ping 10.0.0.4`gibi ping yapmayı deneyin. Azure kaynakları listenizden Azure AD DS yönetilen etki alanını seçtiğinizde, ortamınız için IP adresi *Özellikler* sayfasında görüntülenir.
     * Etki alanına değil, IP adresine ping işlemi yapabiliyorsanız, DNS yanlış yapılandırılmış olabilir. Yönetilen etki alanının IP adreslerinin sanal ağ için DNS sunucuları olarak yapılandırıldığını doğrulayın.
-* `ipconfig /flushdns` Komutunu kullanarak sanal makinedeki DNS çözümleyici önbelleğini temizlemeyi deneyin.
+* `ipconfig /flushdns` komutunu kullanarak sanal makinedeki DNS çözümleyici önbelleğini temizlemeyi deneyin.
 
 ### <a name="credentials-related-issues"></a>Kimlik bilgileri ile ilgili sorunlar
 
@@ -212,7 +212,7 @@ Etki alanına katılması için kimlik bilgileri isteyen bir istem alırsanız, 
 Bu sorun giderme adımlarını her bir kez denemeden sonra, Windows Server VM 'yi yönetilen etki alanına yeniden birleştirmeyi deneyin.
 
 * Belirttiğiniz kullanıcı hesabının *AAD DC Administrators* grubuna ait olduğundan emin olun.
-* Gibi kimlik bilgilerini `contosoadmin@contoso.onmicrosoft.com`belirtmek için UPN biçimini kullanmayı deneyin. Kiracınızda aynı UPN ön ekine sahip çok sayıda kullanıcı varsa veya UPN ön eki aşırı uzunsa, hesabınız için *sAMAccountName* otomatik olarak oluşturulabilir. Bu durumlarda, hesabınız için *sAMAccountName* biçimi, şirket içi etki alanında beklediğiniz veya kullandığınız verilerden farklı olabilir.
+* `contosoadmin@contoso.onmicrosoft.com`gibi kimlik bilgilerini belirtmek için UPN biçimini kullanmayı deneyin. Kiracınızda aynı UPN ön ekine sahip çok sayıda kullanıcı varsa veya UPN ön eki aşırı uzunsa, hesabınız için *sAMAccountName* otomatik olarak oluşturulabilir. Bu durumlarda, hesabınız için *sAMAccountName* biçimi, şirket içi etki alanında beklediğiniz veya kullandığınız verilerden farklı olabilir.
 * Yönetilen etki alanınız için [parola eşitlemesini etkinleştirmiş][password-sync] olup olmadığınızı denetleyin. Bu yapılandırma adımı olmadan, oturum açma girişiminizi doğru bir şekilde doğrulamak için gerekli parola karmaları Azure AD DS yönetilen etki alanında yok.
 * Parola eşitlemesinin tamamlanmasını bekleyin. Bir kullanıcı hesabının parolası değiştirildiğinde Azure AD 'den otomatik bir arka plan eşitlemesi Azure AD DS parolasını güncelleştirir. Parolanın, etki alanına katılması için kullanılabilir olması biraz zaman alır.
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning için git tümleştirmesi
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning yerel bir git deposu ile nasıl tümleştireceğinizi öğrenin.
+description: Azure Machine Learning yerel bir git deposu ile nasıl tümleştireceğinizi öğrenin. Bir git deposu olan yerel bir dizinden bir eğitim çalıştırıldığında, depo, dal ve geçerli işleme bilgileri çalıştırmanın bir parçası olarak izlenir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c8b2407b18f0d7115ce51fc28b956e7fd764c71e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553662"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756008"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning için git tümleştirmesi
 
@@ -49,7 +49,7 @@ Git bilgileri bir eğitim çalışmasının özelliklerinde depolanır. Azure po
 1. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin.
 1. __Denemeleri__öğesini seçin ve denemeleri birini seçin.
 1. __Çalıştırma numarası__ sütunundan çalıştırmaların birini seçin.
-1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __@No__t_1 \_azure__ile başlayan bağlantıyı seçin.
+1. __Günlükler__' i seçin ve ardından __Günlükler__ ve __azureml__ girdilerini genişletin. __###azure\___ ile başlayan bağlantıyı seçin.
 
     ![Portalda # # #_azure girişi](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
@@ -92,5 +92,4 @@ Daha fazla bilgi için, [az ml Run](https://docs.microsoft.com/cli/azure/ext/azu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Visual Studio Code Azure Machine Learning ile eğitme hakkında yönergeler için bkz. [öğretici: modelleri Azure Machine Learning Ile eğitme](tutorial-train-models-with-aml.md).
-* Kodu yerel olarak düzenleme, çalıştırma ve hata ayıklama hakkında yönergeler için bkz. [Python Hello-World öğreticisi](https://code.visualstudio.com/docs/Python/Python-tutorial).
+* [Model eğitimi için işlem hedeflerini ayarlama ve kullanma](how-to-set-up-training-targets.md)

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB veri erişimini güvenli hale getirme hakkında bilgi edinin
 description: Ana anahtarlar, salt okuma anahtarları, kullanıcılar ve izinler dahil Azure Cosmos DB erişim denetimi kavramları hakkında bilgi edinin.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7e732f1d35097730d4468b43a2d9804fe7a18514
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616680"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753165"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB verilere güvenli erişim
 
@@ -128,8 +128,8 @@ docUser = await client.CreateUserAsync(UriFactory.CreateDatabaseUri("db"), docUs
 Cosmos DB izin kaynağı bir Cosmos DB kullanıcıyla ilişkilendirilir.  Her Kullanıcı sıfır veya daha fazla Cosmos DB izinleri içerebilir.  Bir izin kaynağı, kullanıcının belirli bir uygulama kaynağına erişmeyi denerken ihtiyaç duyacağı bir güvenlik belirtecine erişim sağlar.
 Bir izin kaynağı tarafından sağlanarak kullanılabilecek iki erişim düzeyi vardır:
 
-* Bütün Kullanıcının kaynakta tam izni vardır.
-* Okuyamaz Kullanıcı yalnızca kaynağın içeriğini okuyabilir, ancak kaynakta yazma, güncelleştirme veya silme işlemlerini gerçekleştiremez.
+* Tümü: kullanıcının kaynakta tam izni vardır.
+* Okuma: Kullanıcı yalnızca kaynağın içeriğini okuyabilir, ancak kaynakta yazma, güncelleştirme veya silme işlemlerini gerçekleştiremez.
 
 > [!NOTE]
 > Cosmos DB saklı yordamları çalıştırmak için kullanıcının saklı yordamın çalıştırılacağı kapsayıcıda tüm izne sahip olması gerekir.
@@ -183,7 +183,7 @@ Kullanıcı hesabınıza Azure Cosmos DB hesap okuyucusu erişimi eklemek için 
 4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
 5. Dizininizde erişim vermek istediğiniz kullanıcı, Grup veya uygulamayı seçin.  Dizinde görünen ad, e-posta adresi veya nesne tanımlayıcıları ile arama yapabilirsiniz.
     Seçilen Kullanıcı, Grup veya uygulama seçilen Üyeler listesinde görünür.
-6. **Kaydet**’e tıklayın.
+6. **Kaydet** düğmesine tıklayın.
 
 Varlık artık Azure Cosmos DB kaynaklarını okuyabilir.
 
@@ -193,5 +193,5 @@ Azure Cosmos DB, veritabanı veya koleksiyonlardaki tüm kişisel verileri arama
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Cosmos veritabanı güvenliği hakkında daha fazla bilgi için bkz [. Cosmos DB: Veritabanı güvenliği](database-security.md).
+* Cosmos veritabanı güvenliği hakkında daha fazla bilgi için bkz. [Cosmos DB: veritabanı güvenliği](database-security.md).
 * Azure Cosmos DB yetkilendirme belirteçleri oluşturmayı öğrenmek için [Azure Cosmos DB kaynaklarında Access Control](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)bakın.

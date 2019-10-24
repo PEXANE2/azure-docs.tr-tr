@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168608"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750352"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -101,7 +101,7 @@ Aşağıda SUSE ile ilgili bağlantılarda ek ve yararlı SAP verilmiştir:
 
 Aşağıda, SLES 12 ' de SAP HANA uygulamak için geçerli olan SAP destek notları verilmiştir:
 
-- [SAP destek notuna #1944799 – SLES işletim sistemi yüklemesi için SAP HANA yönergeleri](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [SAP destek notuna #1944799 – SLES işletim sistemi yüklemesi için SAP HANA yönergeleri](http://service.sap.com/sap/support/notes/1944799)
 - [SAP destek notunun #2205917 – SAP uygulamaları için SLES 12 için önerilen işletim sistemi ayarlarını SAP HANA](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [SAP destek notu #1984787 – SUSE Linux Enterprise Server 12: yükleme notları](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP destek notunun #171356 – Linux 'ta SAP Software: genel bilgiler](https://launchpad.support.sap.com/#/notes/1984787)
@@ -125,7 +125,7 @@ Aşağıda, Red hat üzerinde SAP HANA uygulamak için geçerli olan SAP destek 
 
 ### <a name="time-synchronization"></a>Zaman eşitleme
 
-SAP NetWeaver mimarisinde oluşturulan SAP uygulamaları, SAP sistemini oluşturan çeşitli bileşenlere yönelik zaman farklılıklarına duyarlıdır. SAP ABAP kısa dökümleri, ZDATE @ no__t-0BÜYÜK @ no__t-1TIME @ no__t-2DIFF hata başlığına sahip olabilir. Çünkü bu kısa dökümler, farklı sunucuların veya VM 'lerin sistem saatinin çok fazla ayrı olarak çizmediği durumlarda görüntülenmesidir.
+SAP NetWeaver mimarisinde oluşturulan SAP uygulamaları, SAP sistemini oluşturan çeşitli bileşenlere yönelik zaman farklılıklarına duyarlıdır. SAP ABAP kısa dökümler\_\_ZDATE hata başlığına sahiptir\_fark büyük olasılıkla tanıdık gelecektir. Çünkü bu kısa dökümler, farklı sunucuların veya VM 'lerin sistem saatinin çok fazla ayrı olarak çizmediği durumlarda görüntülenmesidir.
 
 Azure 'da (büyük örnekler) SAP HANA için, Azure 'da gerçekleştirilen zaman eşitlemesi, büyük örnek Damgalarında işlem birimlerine uygulanmaz. Bu eşitleme, yerel Azure VM 'lerinde SAP uygulamalarının çalıştırılması için geçerli değildir, çünkü Azure bir sistem zamanının doğru şekilde eşitlendiğinden emin olmanızı sağlar. 
 
@@ -152,8 +152,8 @@ Depolama birimlerinin adlandırma kuralları aşağıdaki tabloda listelenmişti
 
 | Depolama alanı kullanımı | Bağlama adı | Birim adı | 
 | --- | --- | ---|
-| HANA verileri | /Hana/Data/SID/mnt0000 @ no__t-0d > | Depolama IP 'si:/hana_data_SID_mnt00001_tenant_vol |
-| HANA günlüğü | /Hana/log/SID/mnt0000 @ no__t-0d > | Depolama IP 'si:/hana_log_SID_mnt00001_tenant_vol |
+| HANA verileri | /Hana/Data/SID/mnt0000\<a > | Depolama IP 'si:/hana_data_SID_mnt00001_tenant_vol |
+| HANA günlüğü | /Hana/log/SID/mnt0000\<a > | Depolama IP 'si:/hana_log_SID_mnt00001_tenant_vol |
 | HANA günlük yedeklemesi | /Hana/log/Backups | Depolama IP 'si:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA paylaşılan | /hana/shared/SID | Depolama IP 'si:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /Usr/SAP/SID | Depolama IP 'si:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -172,7 +172,7 @@ HANA/günlük/yedekleme biriminin veritabanı yedeklemeleri için birim olmamas�
 
 Sağlanmış depolama alanının yanı sıra, 1 TB 'lik artışlarla ek depolama kapasitesi satın alabilirsiniz. Bu ek depolama alanı, bir HANA büyük örneğine yeni birimler olarak eklenebilir.
 
-Azure @no__t SAP HANA ile ekleme sırasında, müşteri sıdaddm kullanıcısı ve sapsys grubu için bir kullanıcı KIMLIĞI (UID) ve Grup KIMLIĞI (GID) belirtir (örneğin: 1.000.500). SAP HANA sisteminin yüklenmesi sırasında aynı değerleri kullanmanız gerekir. Bir birimde birden çok HANA örneği dağıtmak istiyorsanız, birden çok birim kümesi (her örnek için bir küme) alırsınız. Sonuç olarak, dağıtım zamanında şunu tanımlamanız gerekir:
+Azure `service management`SAP HANA ile ekleme sırasında, müşteri sıdaddm kullanıcısı ve sapsys grubu için bir kullanıcı KIMLIĞI (UID) ve Grup KIMLIĞI (GID) belirtir (örneğin: 1.000.500). SAP HANA sisteminin yüklenmesi sırasında aynı değerleri kullanmanız gerekir. Bir birimde birden çok HANA örneği dağıtmak istiyorsanız, birden çok birim kümesi (her örnek için bir küme) alırsınız. Sonuç olarak, dağıtım zamanında şunu tanımlamanız gerekir:
 
 - Farklı HANA örneklerinin SID 'SI (sıdaddm bundan türetilir).
 - Farklı HANA örneklerinin bellek boyutları. Örnek başına bellek boyutu, her bir birim kümesindeki birimlerin boyutunu tanımlar.

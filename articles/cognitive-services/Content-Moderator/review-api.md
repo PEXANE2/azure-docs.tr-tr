@@ -3,19 +3,19 @@ title: İncelemeler, Iş akışları ve Işler kavramları-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Incelemeler, Iş akışları ve Işler hakkında bilgi edinin
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: a77b93c46c9989181cf4473e8b908571a3df2f20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565552"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757288"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -29,7 +29,7 @@ Content Moderator, gerçek dünyada senaryolar için en iyi denetleme sürecini 
 
 İncelemeleri oluşturmaya başlamak için [İnceleme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-review.md) bakın.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>İş akışları
 
 Bir iş akışı, içerik için bulut tabanlı özelleştirilmiş bir filtredir. İş akışları, farklı yollarla içerik filtrelemek için çeşitli hizmetlere bağlanabilir ve ardından uygun eylemi gerçekleştirebilir. Content Moderator Bağlayıcısı ile, bir iş akışı otomatik olarak denetleme etiketleri uygulayabilir ve gönderilen içerikle ilgili incelemeler oluşturabilir.
 
@@ -66,7 +66,7 @@ Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://
 
 İş akışlarını oluşturmaya ve kullanmaya başlamak için [Gözden geçirme aracı kılavuzuna](./review-tool-user-guide/workflows.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-workflow.md) bakın.
 
-## <a name="jobs"></a>İşler
+## <a name="jobs"></a>İş
 
 Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevleri için bir sarmalayıcı türü görevi görür. İş, Content Moderator görüntü denetleme API 'SI veya metin denetleme API 'sini kullanarak içeriğinizi tarar ve ardından belirlenen iş akışına karşı denetler. İş akışı sonuçlarına bağlı olarak, [Gözden geçirme aracında](./review-tool-user-guide/human-in-the-loop.md)içerik için bir gözden geçirme oluşturmayabilir veya olmayabilir. Her iki İnceleme ve iş akışı kendi API 'Leriyle oluşturulup yapılandırılabileceği sürece, iş API 'SI işlemin tamamına (belirtilen geri çağırma uç noktasına gönderilebilir) ilişkin ayrıntılı bir rapor elde etmenizi sağlar.
 
