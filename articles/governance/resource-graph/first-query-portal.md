@@ -3,15 +3,15 @@ title: Azure Kaynak Grafiği gezginini kullanarak ilk sorgunuzu çalıştırma
 description: Bu makalede, Azure Kaynak Grafiği gezginini kullanarak Azure portal ilk sorgunuzu çalıştırma adımlarında adım adım açıklanmaktadır.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387613"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752140"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak Graph sorgunuzu çalıştırma
 
@@ -45,7 +45,10 @@ Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin 
 
 ### <a name="schema-browser"></a>Şema tarayıcısı
 
-Şema tarayıcısı, kaynak grafik Gezgini 'nin sol bölmesinde bulunur. Bu kaynak listesi, Azure Kaynak Grafiği tarafından desteklenen ve erişim sahibi olduğunuz bir kiracıda bulunan Azure kaynaklarının tüm _kaynak türlerini_ gösterir. Kaynak türü veya alt özellikleri genişletmek, kaynak grafik sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir. Kaynak türü seçildiğinde sorgu kutusuna `where type =="<resource type>"` yerleştirilir. Alt özelliklerden birini seçmek sorgu kutusuna `where <propertyName> == "INSERT_VALUE_HERE"` ' yı ekler. Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _Insert @ no__t-1VALUE @ no__t-2_ ' yi kendi değer ile değiştirdiğinizden emin olun, sorguyu koşullar, işleçler ve işlevlerle ayarlayıp amaçlanan sonuçlara ulaşın.
+Şema tarayıcısı, kaynak grafik Gezgini 'nin sol bölmesinde bulunur. Bu kaynak listesi, Azure Kaynak Grafiği tarafından desteklenen ve erişim sahibi olduğunuz bir kiracıda bulunan Azure kaynaklarının tüm _kaynak türlerini_ gösterir. Kaynak türü veya alt özellikleri genişletmek, kaynak grafik sorgusu oluşturmak için kullanılabilecek alt özellikleri gösterir.
+
+Kaynak türü seçildiğinde sorgu kutusuna `where type =="<resource type>"` yerleştirilir. Alt özelliklerden birini seçmek sorgu kutusuna `where <propertyName> == "INSERT_VALUE_HERE"` ekler.
+Şema tarayıcısı, sorgularda kullanılacak özellikleri bulmayı çok iyi bir yoldur. _Insert \_VALUE \_HERE_ kendi değer ile değiştirdiğinizden emin olun, istediğiniz sonuçlara ulaşmak için sorguyu koşullar, işleçler ve işlevlerle ayarlayın.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Kaynak grafik sorgusundan grafik oluşturma
 
@@ -88,11 +91,11 @@ Kaynak Grafiği sorgularına örnek sağlamak ve kaynak Graph Explorer 'ın Azur
 
 - [Kaynak Grafiği Gezgini-örnek Pano #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [Örnek Pano için ![Örnek resim #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [Örnek Pano için ![Example resim #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Kaynak Grafiği Gezgini-örnek Pano #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [Örnek Pano için ![Örnek resim #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [Örnek Pano için ![Example resim #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > Yukarıdaki örnek panodaki sayımlar ve grafikler, Azure ortamınıza bağlı olarak değişir.

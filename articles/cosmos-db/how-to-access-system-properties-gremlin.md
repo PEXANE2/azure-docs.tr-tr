@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB Graph aracılığıyla sistem belgesi özelliklerine erişin
 description: Gremlin API aracılığıyla Cosmos DB sistem belge özelliklerini okuma ve yazma hakkında bilgi edinin
-author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/10/2019
-ms.author: olignat
-ms.openlocfilehash: 4354d37a32bde006a9bee70c39df1fee9b269365
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+author: luisbosquez
+ms.author: lbosq
+ms.openlocfilehash: e762674936ab2fbdf198ca67f79acfa545127f02
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910665"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755065"
 ---
 # <a name="system-document-properties"></a>Sistem belgesi özellikleri
 
-Azure Cosmos DB her belgede,,, ```_ts```ve ```_self``` ```_rid``` ```_attachments``` gibi```_etag``` [sistem özelliklerine](https://docs.microsoft.com/rest/api/cosmos-db/databases) sahiptir. Bunun yanı sıra Gremlin altyapısı kenarlara ```inVPartition``` ve ```outVPartition``` özelliklerini ekler. Varsayılan olarak, bu özellikler çapraz geçiş için kullanılabilir. Ancak, Gremlin geçişi içinde belirli özellikleri veya bunların tümünü dahil etmek mümkündür.
+Azure Cosmos DB her belgedeki ```_ts```, ```_self```, ```_attachments```, ```_rid``` ve ```_etag``` gibi [sistem özelliklerine](https://docs.microsoft.com/rest/api/cosmos-db/databases) sahiptir. Bunun yanı sıra Gremlin altyapısı kenarlara ```inVPartition``` ve ```outVPartition``` özelliklerini ekler. Varsayılan olarak, bu özellikler çapraz geçiş için kullanılabilir. Ancak, Gremlin geçişi içinde belirli özellikleri veya bunların tümünü dahil etmek mümkündür.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())
@@ -32,7 +32,7 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 ## <a name="time-to-live-ttl"></a>Etkin kalma süresi (TTL)
 
-Koleksiyonda belge kullanım süresi etkinse ve belgeler ```ttl``` üzerinde özellik ayarlandıysa, bu özellik Gremlin geçiş sırasında normal bir köşe veya kenar özelliği olarak kullanılabilir. ```ProjectionStrategy```yaşam süresi özelliği pozlaması sağlamak için gerekli değildir.
+Koleksiyonda belge kullanım süresi etkinse ve belgelerde ```ttl``` özelliği ayarlanmış ise, bu özellik Gremlin çapraz geçişinin normal köşe veya kenar özelliği olarak kullanıma sunulacaktır. ```ProjectionStrategy```, yaşam süresi özelliği pozlamayı etkinleştirmek için gerekli değildir.
 
 Aşağıdaki dolaşma ile oluşturulan köşe **123 saniye** içinde otomatik olarak silinecektir.
 

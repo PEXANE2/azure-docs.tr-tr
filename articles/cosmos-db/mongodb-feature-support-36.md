@@ -1,31 +1,28 @@
 ---
-title: MongoDB (3,2 sürüm) için API Azure Cosmos DB desteklenen özellikler ve sözdizimi
-description: MongoDB (3,2 sürümü) tarafından desteklenen özellikler ve söz dizimi için Azure Cosmos DB API 'SI hakkında bilgi edinin.
+title: MongoDB (3,6 sürüm) için API Azure Cosmos DB desteklenen özellikler ve sözdizimi
+description: MongoDB (3,6 sürümü) tarafından desteklenen özellikler ve söz dizimi için Azure Cosmos DB API 'SI hakkında bilgi edinin.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
+ms.openlocfilehash: 12311fa476d069d2c866fac82ed2bac25ce88ef4
 ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754996"
+ms.locfileid: "72758004"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>MongoDB için API Azure Cosmos DB (3,2 sürümü): desteklenen özellikler ve sözdizimi
+# <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB için API Azure Cosmos DB (3,6 sürümü): desteklenen özellikler ve sözdizimi
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynaklı MongoDB istemci [sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak mongodb için Azure Cosmos DB API 'si ile iletişim kurabilirsiniz. Azure Cosmos DB MongoDB API 'SI, mevcut istemci sürücülerinin MongoDB [kablo protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlanarak kullanımını sağlar.
 
 MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB avantajlarından yararlanarak, Cosmos DB sağladığı tüm kurumsal yeteneklere sahip olabilirsiniz: [genel dağıtım](distribute-data-globally.md), [Otomatik](partition-data.md)parçalama, kullanılabilirlik ve gecikme garanti, her alanın otomatik dizin oluşturma, bekleyen şifreleme, yedeklemeler ve çok daha fazlası.
 
-> [!NOTE]
-> Bu makale, Azure Cosmos DB MongoDB 3,2 için API 'sidir. MongoDB 3,6 sürümü için bkz. [mongodb 3,6 desteklenen özellikler ve sözdizimi](mongodb-feature-support-36.md).
-
 ## <a name="protocol-support"></a>Protokol desteği
 
-MongoDB için Azure Cosmos DB API 'sine yönelik tüm yeni hesaplar MongoDB sunucu sürümü **3,6**ile uyumludur. Bu makalede MongoDB sürüm 3,2 ele alınmaktadır. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB API 'sine bağlanabilmelidir.
+Azure Cosmos DB MongoDB için API 'SI, yeni hesaplar için varsayılan olarak MongoDB sunucu sürümü **3,6** ile uyumludur. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB API 'sine bağlanabilmelidir.
 
 ## <a name="query-language-support"></a>Sorgu dili desteği
 
@@ -54,6 +51,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 ### <a name="administration-commands"></a>Yönetim komutları
 
 - dropDatabase
+- listDatabases
 - listCollections
 - drop
 - oluşturmaya
@@ -63,6 +61,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 - dropIndexes
 - connectionStatus
 - reIndex
+- killCursors
 
 ### <a name="diagnostics-commands"></a>Tanılama komutları
 
@@ -76,8 +75,6 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 <a name="aggregation-pipeline"/>
 
 ## <a name="aggregation-pipelinea"></a>Toplama ardışık düzeni</a>
-
-Cosmos DB, genel önizlemede MongoDB 3,2 için toplama işlem hattını destekler. Genel önizlemenin katılımı hakkında yönergeler için [Azure bloguna](https://aka.ms/mongodb-aggregation) bakın.
 
 ### <a name="aggregation-commands"></a>Toplama komutları
 
@@ -99,6 +96,8 @@ Cosmos DB, genel önizlemede MongoDB 3,2 için toplama işlem hattını destekle
 - $out
 - $count
 - $addFields
+- $redact
+- $replaceRoot
 
 ### <a name="aggregation-expressions"></a>Toplama ifadeleri
 
@@ -196,14 +195,10 @@ Cosmos DB, genel önizlemede MongoDB 3,2 için toplama işlem hattını destekle
 
 ## <a name="aggregation-accumulators"></a>Toplama biriktiricileri
 
-- $sum
-- $avg
-- $first
-- $last
-- $max
-- $min
-- $push
-- $addToSet
+Cosmos DB, hariç tüm MongoDB v 3.6 işlevindeki biriktiricileri destekler:
+
+- $stdDevPop
+- $stdDevSamp
 
 ## <a name="operators"></a>İşleçler
 
@@ -274,7 +269,7 @@ Normal ifade ($regex) sorgularında, soldan başlayan ifadeler dizin aramasına 
 - $addToSet
 - $pop
 - $pullAll
-- $pull (Not: koşulu $pull desteklenmez)
+- $pull
 - $pushAll
 - $push
 - $each
@@ -311,7 +306,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 İşleç | Örnek | Notlar
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
+$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
 $size | ```{ "Location.coordinates": { $size: 2 } }``` |
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
 $text |  | Desteklenmiyor. Bunun yerine $regex kullanın.
@@ -332,9 +327,7 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Sıralama anahtarı olm
 
 ## <a name="unique-indexes"></a>Benzersiz dizinler
 
-Cosmos DB, varsayılan olarak veritabanına yazılan belgelerdeki her alanı dizine ekler. Benzersiz dizinler, bir koleksiyondaki tüm belgeler genelinde yinelenen değerlere sahip olmadığından, benzersizliğin varsayılan `_id` anahtarında korunduğu yönteme benzer. ' Unique ' kısıtlaması dahil CreateIndex komutunu kullanarak Cosmos DB özel dizinler oluşturabilirsiniz.
-
-Benzersiz dizinler, Azure Cosmos DB MongoDB için API kullanan tüm Cosmos hesaplarında kullanılabilir.
+Benzersiz dizinler, varsayılan "_id" anahtarında özgünlüğün korunmasına benzer bir şekilde bir koleksiyondaki tüm belgeler genelinde belirli bir alanda yinelenen değer olmamasını sağlar. ' Unique ' kısıtlaması dahil CreateIndex komutunu kullanarak Cosmos DB özel dizinler oluşturabilirsiniz.
 
 ## <a name="time-to-live-ttl"></a>Etkin kalma süresi (TTL)
 
@@ -354,7 +347,11 @@ Bazı uygulamalar, yazma işlemi sırasında gereken yanıt sayısını belirten
 
 ## <a name="sharding"></a>Parçalama
 
-Azure Cosmos DB, otomatik, sunucu tarafı parçalamasını destekler. Parça oluşturma, yerleştirme ve dengelemeyi otomatik olarak yönetir. Azure Cosmos DB, el ile parçalı komutları desteklemez, bu da shardCollection, Addkıard, balancerStart, moveChunk vb. gibi komutları çağırmak zorunda olmadığınız anlamına gelir. Yalnızca kapsayıcıları oluştururken veya verileri sorgularken parça anahtarını belirtmeniz gerekir.
+Azure Cosmos DB, otomatik, sunucu tarafı parçalamasını destekler. Parça oluşturma, yerleştirme ve dengelemeyi otomatik olarak yönetir. Azure Cosmos DB, el ile parçalı komutları desteklemez, bu, addShard, balancerStart, moveChunk gibi komutları çağırmak zorunda olmadığınız anlamına gelir. Yalnızca kapsayıcıları oluştururken veya verileri sorgularken parça anahtarını belirtmeniz gerekir.
+
+## <a name="sessions"></a>Oturumlar
+
+Azure Cosmos DB, sunucu tarafı oturumları komutlarını henüz desteklemiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
