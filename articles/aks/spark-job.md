@@ -6,15 +6,15 @@ author: lenadroid
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263902"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675140"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS üzerinde Apache Spark işleri çalıştırma
 
@@ -33,7 +33,7 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Spark, büyük ölçekli veri işleme için kullanılır ve Kubernetes düğümlerinin Spark kaynak gereksinimlerini karşılayacak şekilde boyutlandırılması gerekir. Azure Kubernetes Service (AKS) düğümleriniz için en az `Standard_D3_v2` olması önerilir.
+Spark, büyük ölçekli veri işleme için kullanılır ve Kubernetes düğümlerinin Spark kaynak gereksinimlerini karşılayacak şekilde boyutlandırılması gerekir. Azure Kubernetes Service (AKS) düğümleriniz için en az bir `Standard_D3_v2` önerilir.
 
 Bu en düşük öneriyi karşılayan bir AKS kümesine ihtiyacınız varsa aşağıdaki komutları çalıştırın.
 
@@ -43,10 +43,16 @@ Küme için bir kaynak grubu oluşturun.
 az group create --name mySparkCluster --location eastus
 ```
 
-@No__t-0 boyutundaki düğümlerle AKS kümesi oluşturun.
+Küme için bir hizmet sorumlusu oluşturun. Oluşturulduktan sonra, sonraki komut için hizmet sorumlusu uygulama kimliği ve parolası gerekir.
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+`Standard_D3_v2`boyuttaki düğümlerle AKS kümesini ve hizmet sorumlusu ve istemci gizli parametreleri olarak geçirilen AppID ve parola değerlerini oluşturun.
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 AKS kümesine bağlanın.
@@ -64,7 +70,7 @@ Spark işlerini bir AKS kümesinde çalıştırmadan önce Spark kaynak kodunu o
 Spark proje deposunu geliştirme sisteminize kopyalayın.
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 Kopyalanmış deponun dizinine geçin ve Spark kaynağının yolunu bir değişkene kaydedin.
@@ -74,7 +80,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Birden çok JDK sürümü yüklüyse, `JAVA_HOME` ' ı geçerli oturum için sürüm 8 ' i kullanacak şekilde ayarlayın.
+Birden çok JDK sürümü yüklüyse, `JAVA_HOME` geçerli oturum için sürüm 8 ' i kullanacak şekilde ayarlayın.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -86,7 +92,7 @@ Kubernetes desteğiyle Spark kaynak kodunu derlemek için aşağıdaki komutu ç
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Aşağıdaki komutlar Spark kapsayıcı görüntüsünü oluşturur ve bir kapsayıcı görüntüsü kayıt defterine gönderir. @No__t-0 ' i kapsayıcı kayıt defterinizin adıyla ve kullanmayı tercih ettiğiniz etiketle `v1` ' i ile değiştirin. Docker Hub kullanıyorsanız, bu değer kayıt defteri adıdır. Azure Container Registry (ACR) kullanıyorsanız, bu değer ACR oturum açma sunucusu adıdır.
+Aşağıdaki komutlar Spark kapsayıcı görüntüsünü oluşturur ve bir kapsayıcı görüntüsü kayıt defterine gönderir. `registry.example.com`, kapsayıcı kayıt defterinizin adıyla değiştirin ve kullanmayı tercih ettiğiniz etiketle `v1`. Docker Hub kullanıyorsanız, bu değer kayıt defteri adıdır. Azure Container Registry (ACR) kullanıyorsanız, bu değer ACR oturum açma sunucusu adıdır.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -136,7 +142,7 @@ Projeyi jar dosyası olarak paketlemeye izin veren bir SBT eklentisi eklemek iç
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 Örnek kodu yeni oluşturulan projeye kopyalamak ve tüm gerekli bağımlılıkları eklemek için bu komutları çalıştırın.
@@ -151,7 +157,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -198,7 +204,7 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-@No__t-0 değişkeni artık jar dosyasının genel olarak erişilebilir yolunu içeriyor.
+Değişken `jarUrl`, şimdi jar dosyasının genel olarak erişilebilir yolunu içerir.
 
 ## <a name="submit-a-spark-job"></a>Spark işi gönderme
 
@@ -214,7 +220,14 @@ Spark deposunun köküne geri gidin.
 cd $sparkdir
 ```
 
-İşi `spark-submit` kullanarak gönderebilirsiniz.
+Bir işi çalıştırmak için yeterli izinlere sahip bir hizmet hesabı oluşturun.
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
+`spark-submit`kullanarak işi gönderme.
 
 ```bash
 ./bin/spark-submit \
@@ -223,6 +236,7 @@ cd $sparkdir
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
@@ -245,7 +259,7 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0       
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Spark Kullanıcı arabirimine erişmek için, `127.0.0.1:4040` adresini bir tarayıcıda açın.
+Spark Kullanıcı arabirimine erişmek için adres `127.0.0.1:4040` bir tarayıcıda açın.
 
 ![Spark Kullanıcı arabirimi](media/aks-spark-job/spark-ui.png)
 
@@ -280,9 +294,9 @@ Pi is roughly 3.152155760778804
 
 Yukarıdaki örnekte Spark jar dosyası Azure depolama 'ya yüklendi. Diğer bir seçenek de jar dosyasını özel olarak oluşturulmuş Docker görüntülerine paketlemenize olanak sağlar.
 
-Bunu yapmak için, `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` dizininde bulunan Spark görüntüsü için `dockerfile` ' ı bulun. Spark işi için "`ADD`" `WORKDIR` ve `ENTRYPOINT` bildirimleri arasında bir yerde @no__t ekleyin.
+Bunu yapmak için `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` dizininde bulunan Spark görüntüsünün `dockerfile` bulun. Spark işi için, `WORKDIR` ve `ENTRYPOINT` bildirimleri arasında bir yerde `jar` ÖÖ `ADD` bildirimi ekleyin.
 
-Jar yolunu, geliştirme sisteminizdeki `SparkPi-assembly-0.1.0-SNAPSHOT.jar` dosyasının konumuna güncelleştirin. Kendi özel jar dosyanızı da kullanabilirsiniz.
+Jar yolunu, geliştirme sisteminizdeki `SparkPi-assembly-0.1.0-SNAPSHOT.jar` dosyanın konumuyla güncelleştirin. Kendi özel jar dosyanızı da kullanabilirsiniz.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -299,7 +313,7 @@ Dahil edilen Spark betiklerine sahip görüntüyü derleyin ve gönderin.
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-İşi çalıştırırken, uzak bir jar URL 'SI olarak kullanmak yerine, `local://` şeması Docker görüntüsündeki jar dosyasının yoluyla birlikte kullanılabilir.
+İşi çalıştırırken, uzak bir jar URL 'SI yerine `local://` şeması, Docker görüntüsündeki jar dosyasının yoluyla kullanılabilir.
 
 ```bash
 ./bin/spark-submit \

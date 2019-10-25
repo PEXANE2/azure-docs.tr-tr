@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243271"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674938"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -30,7 +30,7 @@ Python 'da tek başına Işlev örnek projeleri için bkz. [Python işlevleri ö
 
 Azure Işlevleri, bir işlevin girişi işleyen ve çıkış üreten Python betikinizde durum bilgisiz bir yöntem olmasını bekler. Varsayılan olarak, çalışma zamanı yönteminin `__init__.py` dosyasında `main()` adlı genel bir yöntem olarak uygulanması beklenir. Ayrıca, [alternatif bir giriş noktası da belirtebilirsiniz](#alternate-entry-point).
 
-Tetikleyiciler ve bağlamalardan alınan veriler, Function *. JSON* dosyasında tanımlanan `name` özelliği kullanılarak Yöntem öznitelikleri aracılığıyla işleve bağlanır. Örneğin, aşağıdaki _function. JSON_ , `req` ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır:
+Tetikleyiciler ve bağlamalardan alınan veriler, Function *. JSON* dosyasında tanımlanan `name` özelliği kullanılarak Yöntem öznitelikleri aracılığıyla işleve bağlanır. Örneğin, aşağıdaki _function. JSON_ , `req`ADLı bir http isteği tarafından tetiklenen basit bir işlevi anlatmaktadır:
 
 ```json
 {
@@ -50,7 +50,7 @@ Tetikleyiciler ve bağlamalardan alınan veriler, Function *. JSON* dosyasında 
 }
 ```
 
-@No__t-0 dosyası aşağıdaki işlev kodunu içerir:
+`__init__.py` dosyası aşağıdaki işlev kodunu içerir:
 
 ```python
 def main(req):
@@ -73,7 +73,7 @@ Yöntemlerinizi giriş ve çıkışları bağlamak için [Azure. Functions. *](/
 
 ## <a name="alternate-entry-point"></a>Alternatif giriş noktası
 
-İsteğe bağlı olarak Function *. JSON* dosyasında `scriptFile` ve `entryPoint` özelliklerini belirterek bir işlevin varsayılan davranışını değiştirebilirsiniz. Örneğin, aşağıdaki _function. JSON_ , çalışma zamanına Azure işlevinizin giriş noktası olarak _Main.py_ dosyasında `customentry()` metodunu kullanmasını söyler.
+Function *. JSON* dosyasında `scriptFile` ve `entryPoint` özelliklerini belirterek, bir işlevin varsayılan davranışını değiştirebilirsiniz. Örneğin, aşağıdaki _function. JSON_ , çalışma zamanına Azure işlevinizin giriş noktası olarak _Main.py_ dosyasında `customentry()` yöntemini kullanmasını söyler.
 
 ```json
 {
@@ -123,7 +123,7 @@ Azure 'da işlev uygulamanıza bir Işlev projesi dağıttığınızda, *functio
 
 ## <a name="triggers-and-inputs"></a>Tetikleyiciler ve girişler
 
-Girişler Azure Işlevlerinde iki kategoriye ayrılmıştır: giriş ve ek giriş tetikleyin. @No__t-0 dosyasında farklı olsalar da, kullanım Python kodunda aynıdır.  Tetikleyici ve giriş kaynaklarına yönelik bağlantı dizeleri veya parolalar, yerel olarak çalıştırılırken `local.settings.json` dosyasındaki değerlerle eşlenir ve Azure 'da çalışırken uygulama ayarları. 
+Girişler Azure Işlevlerinde iki kategoriye ayrılmıştır: giriş ve ek giriş tetikleyin. `function.json` dosyasında farklı olsalar da, kullanım Python kodunda özdeştir.  Tetikleyici ve giriş kaynaklarına yönelik bağlantı dizeleri veya parolalar, yerel olarak çalıştırılırken `local.settings.json` dosyasındaki değerlerle eşlenir ve Azure 'da çalışırken uygulama ayarları. 
 
 Örneğin, aşağıdaki kod iki arasındaki farkı göstermektedir:
 
@@ -173,16 +173,16 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-İşlev çağrıldığında, HTTP isteği işleve `req` olarak geçirilir. Yol URL 'sindeki _kimliğe_ göre Azure Blob depolama alanından bir giriş alınır ve işlev gövdesinde `obj` olarak kullanılabilir hale getirilir.  Burada belirtilen depolama hesabı, işlev uygulaması tarafından kullanılan depolama hesabı olan ' de bulunan bağlantı dizesidir.
+İşlev çağrıldığında, HTTP isteği işleve `req`olarak geçirilir. Yol URL 'sindeki _kimliğe_ göre Azure Blob depolama alanından bir giriş alınır ve işlev gövdesinde `obj` olarak kullanılabilir hale getirilir.  Burada belirtilen depolama hesabı, işlev uygulaması tarafından kullanılan depolama hesabı olan ' de bulunan bağlantı dizesidir.
 
 
-## <a name="outputs"></a>Çıktılar
+## <a name="outputs"></a>Çıkışlar
 
 Çıkış hem dönüş değeri hem de çıkış parametrelerinde ifade edilebilir. Yalnızca bir çıkış varsa, dönüş değerini kullanmanızı öneririz. Birden çok çıkış için çıkış parametrelerini kullanmanız gerekir.
 
-Bir işlevin dönüş değerini bir çıkış bağlamasının değeri olarak kullanmak için, bağlamanın `name` özelliği `function.json` ' de `$return` olarak ayarlanmalıdır.
+Bir işlevin dönüş değerini bir çıkış bağlamasının değeri olarak kullanmak için, bağlamanın `name` özelliği, `function.json``$return` olarak ayarlanmalıdır.
 
-Birden çok çıktı oluşturmak için, bağlamaya bir değer atamak üzere [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) arabirimi tarafından sunulan `set()` yöntemini kullanın. Örneğin, aşağıdaki işlev bir kuyruğa ileti gönderebilir ve ayrıca bir HTTP yanıtı döndürebilir.
+Birden çok çıkış oluşturmak için, bağlamaya bir değer atamak üzere [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) arabirimi tarafından sunulan `set()` yöntemi kullanın. Örneğin, aşağıdaki işlev bir kuyruğa ileti gönderebilir ve ayrıca bir HTTP yanıtı döndürebilir.
 
 ```json
 {
@@ -222,7 +222,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Azure Işlevleri çalışma zamanı günlükçüsü erişimi, işlev uygulamanızda bir kök [`logging`](https://docs.python.org/3/library/logging.html#module-logging) işleyicisi aracılığıyla kullanılabilir. Bu günlükçü Application Insights bağlıdır ve işlev yürütmesi sırasında uyarıları ve hataları işaretetmenize olanak tanır.
 
@@ -250,7 +250,7 @@ Günlüğe kaydetme hakkında daha fazla bilgi edinmek için bkz. [Azure Işlevl
 
 ## <a name="http-trigger-and-bindings"></a>HTTP tetikleyicisi ve bağlamaları
 
-HTTP tetikleyicisi, function. Jon dosyasında tanımlanmıştır. Bağlamanın `name` ' ın işlevindeki adlandırılmış parametreyle eşleşmesi gerekir. Önceki örneklerde, `req` bağlama adı kullanılır. Bu parametre bir [HttpRequest] nesnesidir ve bir [HttpResponse] nesnesi döndürülür.
+HTTP tetikleyicisi, function. Jon dosyasında tanımlanmıştır. Bağlamanın `name`, işlevdeki adlandırılmış parametreyle eşleşmelidir. Önceki örneklerde `req` bir bağlama adı kullanılır. Bu parametre bir [HttpRequest] nesnesidir ve bir [HttpResponse] nesnesi döndürülür.
 
 [HttpRequest] nesnesinden istek üst bilgilerini, sorgu parametrelerini, yol parametrelerini ve ileti gövdesini alabilirsiniz. 
 
@@ -280,7 +280,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Bu işlevde, `name` sorgu parametresinin değeri, [HttpRequest] nesnesinin `params` parametresinden elde edilir. JSON kodlu ileti gövdesi `get_json` yöntemi kullanılarak okundu. 
 
-Benzer şekilde, döndürülen [HttpResponse] nesnesindeki yanıt iletisi için `status_code` ve `headers` ayarlayabilirsiniz.
+Benzer şekilde, döndürülen [HttpResponse] nesnesindeki yanıt iletisi için `status_code` ve `headers` belirleyebilirsiniz.
 
 ## <a name="concurrency"></a>Eşzamanlılık
 
@@ -292,7 +292,7 @@ Varsayılan olarak, Python Runtime Işlevleri tek seferde yalnızca bir işlev �
 
 Bu durumlarda, zaman uyumsuz olarak çalıştırarak ve birden çok dil çalışan işlemini kullanarak performansı geliştirebilirsiniz.  
 
-### <a name="async"></a>Zaman Uyumsuz
+### <a name="async"></a>Eş
 
 İşlevinizin zaman uyumsuz bir eş yordam olarak çalıştırılmasını sağlamak için `async def` ifadesini kullanmanızı öneririz.
 
@@ -303,7 +303,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-@No__t-0 işlevi zaman uyumlu olduğunda (`async` niteleyicisi olmadan), işlev otomatik olarak bir `asyncio` iş parçacığı havuzunda çalıştırılır.
+`main()` işlevi zaman uyumlu olduğunda (`async` niteleyicisi olmadan), işlev bir `asyncio` iş parçacığı havuzunda otomatik olarak çalıştırılır.
 
 ```python
 # Runs in an asyncio thread-pool
@@ -342,7 +342,7 @@ def main(req: azure.functions.HttpRequest,
 `invocation_id`  
 Geçerli işlev çağırma KIMLIĞI.
 
-## <a name="global-variables"></a>Global değişkenler
+## <a name="global-variables"></a>Genel değişkenler
 
 Uygulamanızın durumunun gelecekteki yürütmeler için korunacağı garanti edilmez. Ancak, Azure Işlevleri çalışma zamanı, aynı uygulamanın birden fazla yürütmeleri için aynı süreci genellikle yeniden kullanır. Pahalı bir hesaplamanın sonuçlarını önbelleğe almak için, genel bir değişken olarak bildirin. 
 
@@ -360,9 +360,9 @@ def main(req):
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara `import os` bildirerek ve sonra `setting = os.environ["setting-name"]` ' i kullanarak erişebilirsiniz.
+Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara, `import os` bildirerek ve sonra `setting = os.environ["setting-name"]`kullanarak erişebilirsiniz.
 
-Aşağıdaki örnek, `myAppSetting` adlı anahtarla [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings)alır:
+Aşağıdaki örnekte, `myAppSetting`adlı anahtarla birlikte [uygulama ayarı](functions-how-to-use-azure-function-app-settings.md#settings)alınır:
 
 ```python
 import logging
@@ -382,7 +382,7 @@ Yerel geliştirme için, uygulama ayarları [yerel. Settings. json dosyasında t
 
 Şu anda Azure Işlevleri yalnızca Python 3.6. x 'i destekliyor (resmi Cpyıthon dağılımı).
 
-Azure Functions Core Tools veya Visual Studio Code kullanarak yerel olarak geliştirilirken, gerekli paketlerin adlarını ve sürümlerini `requirements.txt` dosyasına ekleyin ve `pip` ' i kullanarak bunları yüklemeyin.
+Azure Functions Core Tools veya Visual Studio Code kullanarak yerel olarak geliştirilirken, gerekli paketlerin adlarını ve sürümlerini `requirements.txt` dosyasına ekleyin ve `pip`kullanarak bunları yüklemek.
 
 Örneğin, PyPI 'den `requests` paketini yüklemek için aşağıdaki gereksinimler dosyası ve PIP komutu kullanılabilir.
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 Yayımlamaya hazırsanız, tüm bağımlılıklarınızın proje dizininizin kökünde bulunan *requirements. txt* dosyasında listelendiğinden emin olun. Azure Işlevleri bu bağımlılıkları [Uzaktan](functions-deployment-technologies.md#remote-build) oluşturabilir.
 
-Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir.  
+Sanal ortam klasörü de dahil olmak üzere, yayımlamanın dışında tutulan proje dosyaları ve klasörler. funcignore dosyasında listelenir. 
 
-Azure 'a dağıtmak ve uzak bir derleme gerçekleştirmek için aşağıdaki komutu kullanın:
+VS Code için hem [Azure Functions Core Tools](functions-run-local.md#v2) hem de [Azure işlevleri uzantısı](functions-create-first-function-vs-code.md#publish-the-project-to-azure) , varsayılan olarak uzak bir derleme gerçekleştirir. Örneğin, aşağıdaki komutu kullanın:
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-Uzak derlemeyi kullanmıyorsanız ve Derleyici gerektiren bir paket kullanarak ve PyPI 'den Linux ile uyumlu birçok tekerlekün yüklenmesini desteklemiyorsa, yerel olarak oluşturmadan Azure 'a yayımlama aşağıdaki hatayla başarısız olur:
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-Yerel olarak oluşturmak ve gerekli ikilileri yapılandırmak için, [Docker](https://docs.docker.com/install/) 'ı yerel makinenize yükleyip [Azure Functions Core Tools](functions-run-local.md#v2) (Func) kullanarak yayımlamak için aşağıdaki komutu çalıştırın. @No__t-0 ' yı Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın. 
+Uygulamanızı Azure 'da değil yerel olarak derlemek istiyorsanız, yerel makinenize [Docker 'ı yükleyip](https://docs.docker.com/install/) [Azure Functions Core Tools](functions-run-local.md#v2) (Func) kullanarak yayımlamak için aşağıdaki komutu çalıştırın. `<app name>` Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -423,9 +416,9 @@ Temel araçlar, [MCR.Microsoft.com/Azure-Functions/Python](https://hub.docker.co
 
 Bağımlılıklarınızı derlemek ve sürekli teslim (CD) sistemi kullanarak yayımlamak için [Azure Pipelines kullanın](functions-how-to-azure-devops.md). 
 
-## <a name="unit-testing"></a>Birim Testi
+## <a name="unit-testing"></a>Birim testi
 
-Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer Python kodu gibi test edilebilir. Çoğu bağlamanın, `azure.functions` paketinden uygun bir sınıfın örneğini oluşturarak bir sahte giriş nesnesi oluşturmak mümkündür. [@No__t-1](https://pypi.org/project/azure-functions/) paketi hemen kullanılamadığından, yukarıdaki [Python sürümü ve paket yönetimi](#python-version-and-package-management) bölümünde açıklandığı gibi `requirements.txt` dosyanız aracılığıyla yüklemeyi unutmayın.
+Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer Python kodu gibi test edilebilir. Çoğu bağlamanın, `azure.functions` paketinden uygun bir sınıfın örneğini oluşturarak bir sahte giriş nesnesi oluşturmak mümkündür. [`azure.functions`](https://pypi.org/project/azure-functions/) paketi hemen kullanılamadığından, yukarıdaki [Python sürümü ve paket yönetimi](#python-version-and-package-management) bölümünde açıklandığı gibi `requirements.txt` dosyanız aracılığıyla yüklemeyi unutmayın.
 
 Örneğin, bir HTTP ile tetiklenen bir işlevin sahte testi aşağıdadır:
 
@@ -545,11 +538,11 @@ class TestFunction(unittest.TestCase):
 
 Tüm bilinen sorunlar ve özellik istekleri [GitHub sorunları](https://github.com/Azure/azure-functions-python-worker/issues) listesi kullanılarak izlenir. Bir sorunla karşılaşırsanız ve sorunu GitHub 'da bulamazsanız, yeni bir sorun açın ve sorunun ayrıntılı bir açıklamasını ekleyin.
 
-### <a name="cross-origin-resource-sharing"></a>Çıkış noktaları arası kaynak paylaşımı
+### <a name="cross-origin-resource-sharing"></a>Çıkış noktaları arası kaynak paylaşma
 
-Azure Işlevleri, çıkış noktaları arası kaynak paylaşımını (CORS) destekler. CORS, [portalda](functions-how-to-use-azure-function-app-settings.md#cors) ve [Azure CLI](/cli/azure/functionapp/cors)aracılığıyla yapılandırılır. CORS izin verilen kaynaklar listesi, işlev uygulaması düzeyinde geçerlidir. CORS etkinken, yanıtlar `Access-Control-Allow-Origin` üst bilgisini içerir. Daha fazla bilgi için bkz. [çıkış noktaları arası kaynak paylaşımı](functions-how-to-use-azure-function-app-settings.md#cors).
+Azure Işlevleri, çıkış noktaları arası kaynak paylaşımını (CORS) destekler. CORS, [portalda](functions-how-to-use-azure-function-app-settings.md#cors) ve [Azure CLI](/cli/azure/functionapp/cors)aracılığıyla yapılandırılır. CORS izin verilen kaynaklar listesi, işlev uygulaması düzeyinde geçerlidir. CORS etkinken, yanıtlar `Access-Control-Allow-Origin` üst bilgisini içerir. Daha fazla bilgi için bkz. [Çıkış noktaları arası kaynak paylaşma](functions-how-to-use-azure-function-app-settings.md#cors).
 
-İzin verilen çıkış noktaları listesi [Şu anda](https://github.com/Azure/azure-functions-python-worker/issues/444) Python işlev uygulamaları için desteklenmemektedir. Bu sınırlama nedeniyle, aşağıdaki örnekte gösterildiği gibi HTTP işlevlerinizin `Access-Control-Allow-Origin` başlığını açıkça ayarlamanız gerekir:
+İzin verilen çıkış noktaları listesi [Şu anda](https://github.com/Azure/azure-functions-python-worker/issues/444) Python işlev uygulamaları için desteklenmemektedir. Bu sınırlama nedeniyle, aşağıdaki örnekte gösterildiği gibi HTTP işlevlerinizin `Access-Control-Allow-Origin` üst bilgisini açıkça ayarlamanız gerekir:
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -583,12 +576,12 @@ Bu yöntem, Chrome tarayıcısı tarafından izin verilen çıkış noktaları l
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure Işlevleri paket API 'SI belgeleri](/python/api/azure-functions/azure.functions?view=azure-python)
-* [Azure Işlevleri için en iyi uygulamalar](functions-best-practices.md)
+* [Azure İşlevleri için en iyi uygulamalar](functions-best-practices.md)
 * [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
 * [BLOB depolama bağlamaları](functions-bindings-storage-blob.md)
 * [HTTP ve Web kancası bağlamaları](functions-bindings-http-webhook.md)
 * [Kuyruk depolama bağlamaları](functions-bindings-storage-queue.md)
-* [Süreölçer tetikleyicisi](functions-bindings-timer.md)
+* [Zamanlayıcı tetikleyicisi](functions-bindings-timer.md)
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python

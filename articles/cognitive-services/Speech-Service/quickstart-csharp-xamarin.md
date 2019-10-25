@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: konuşmayı tanıma C# , (Xamarin)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede bilişsel hizmetler konuşma SDK 'sını kullanarak C# Windows UWP, Android ve iOS için platformlar arası bir Xamarin uygulaması oluşturacaksınız. Cihazınızın veya benzeticisinin mikrofonunuzdan konuşmayı gerçek zamanlı olarak metne dönüştürme. Uygulama, konuşma SDK 'Sı NuGet paketiyle oluşturulmuştur ve 2019 Microsoft Visual Studio.
+description: Bu makalede bilişsel hizmetler konuşma SDK 'sını kullanarak C# evrensel WINDOWS platformu (UWP), Android ve iOS için platformlar arası bir Xamarin uygulaması oluşturacaksınız. Cihazınızın veya benzeticisinin mikrofonunuzdan konuşmayı gerçek zamanlı olarak metne dönüştürme. Uygulama, konuşma SDK 'Sı NuGet paketiyle oluşturulmuştur ve 2019 Microsoft Visual Studio.
 services: cognitive-services
 author: jhakulin
 manager: robch
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ad1c6f7d17d1e04fcfa5b187a29dadd2fa61edd8
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387381"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675618"
 ---
-# <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak, platformlar arası Xamarin uygulaması kullanarak konuşmayı tanıma
+# <a name="quickstart-recognize-speech-by-using-a-cross-platform-xamarin-app-that-uses-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanan platformlar arası bir Xamarin uygulaması kullanarak konuşmayı tanıma
 
-Hızlı Başlangıç [özelliği, konuşma](quickstart-csharp-uwp.md)ve [metin okuma](quickstart-text-to-speech-csharp-uwp.md) ve konuşma [çevirisi](quickstart-translate-speech-uwp.md)için de kullanılabilir.
+Hızlı başlangıç, [konuşma metinleri](quickstart-csharp-uwp.md), [metin okuma](quickstart-text-to-speech-csharp-uwp.md)ve [konuşma çevirisi](quickstart-translate-speech-uwp.md)için de kullanılabilir.
 
-Bu makalede, [konuşma SDK 'sını](speech-sdk.md)kullanarak evrensel WINDOWS platformu (UWP) C# , Android ve iOS için Xamarin kullanarak platformlar arası bir uygulama geliştirireceğiz. Program, cihazınızın mikrofonunuzdan gerçek zamanlı olarak konuşmayı metne dönüştürme. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2019 (herhangi bir sürüm) ile oluşturulmuştur.
+Bu makalede, Azure bilişsel Hizmetler C# [konuşma SDK 'sını](speech-sdk.md)kullanan Evrensel Windows platformu (UWP), Android ve iOS için Xamarin kullanarak platformlar arası bir uygulama geliştirirsiniz. Program, cihazınızın mikrofonunuzdan gerçek zamanlı olarak konuşmayı metne dönüştürme. Uygulama, [konuşma SDK 'Sı NuGet paketi](https://aka.ms/csspeech/nuget) ve Microsoft Visual Studio 2019 ' nin herhangi bir sürümüyle oluşturulmuştur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,110 +31,117 @@ Bu hızlı başlangıç şunları gerektirir:
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
 * Windows 10 Fall Creators Update ile Windows BILGISAYARı (10,0; Derleme 16299) veya üzeri ve çalışan bir mikrofonla.
-* [Visual Studio 'Ya Xamarin yüklemesi](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows).
-* [Windows 'Da Xamarin Android yüklemesi](https://docs.microsoft.com/xamarin/android/get-started/installation/windows).
-* [Windows 'Da Xamarin iOS yüklemesi](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/?pivots=windows).
+* [Visual Studio 'ya bir Xamarin yüklemesi](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows).
+* [Windows üzerinde bir Xamarin Android yüklemesi](https://docs.microsoft.com/xamarin/android/get-started/installation/windows).
+* [Windows üzerinde bir Xamarin iOS yüklemesi](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/?pivots=windows).
 * Android 'i hedeflemek için: 
    * Bir Android cihazı (ARM32/64, x86; API 23: Android 6,0 Şekerlow veya üzeri) çalışan bir mikrofonla [geliştirme için etkinleştirildi](https://developer.android.com/studio/debug/dev-options) .
-* İOS hedeflemek için: bir iOS cihazı (ARM64) veya çalışan bir mikrofonla [geliştirmeye yönelik](https://docs.microsoft.com/xamarin/ios/get-started/installation/device-provisioning/) bir iOS Simülatörü (x64) etkin.
-* Windows ARM64 Build desteği için, [isteğe bağlı derleme araçlarını ve ARM/ARM64 Için Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)'yı yüklemelisiniz.
+* İOS hedeflemek için: 
+    * Çalışan bir mikrofonla [geliştirme için](https://docs.microsoft.com/xamarin/ios/get-started/installation/device-provisioning/) bir iOS CIHAZı (ARM64) veya bir iOS Simülatörü (x64) etkin.
+* Windows ARM64 Build desteği için, [isteğe bağlı derleme araçlarını ve ARM/ARM64 Için Windows 10 SDK 'yı](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)yükler.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio projesi oluşturma
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-xamarin-create-proj.md)]
 
-## <a name="add-sample-code-for-the-common-helloworld-project"></a>Ortak `helloworld` projesi için örnek kod ekleme
+## <a name="add-sample-code-for-the-common-helloworld-project"></a>Ortak HelloWorld projesi için örnek kod ekleme
 
-Ortak `helloworld` projesi platformlar arası uygulamanız için platformdan bağımsız uygulamalar içerir.
-Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve uygulamanın arkasındaki C# kodu ekleyin.
+Ortak HelloWorld projesi, platformlar arası uygulamanız için platformdan bağımsız uygulamalar içerir. Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve uygulamanın arkasındaki C# kodu ekleyin.
 
-1. **Çözüm Gezgini**, ortak `helloworld` proje altında `MainPage.xaml` ' yi açın.
+1. **Çözüm Gezgini**, ortak HelloWorld projesi altında `MainPage.xaml`açın.
 
-1. Tasarımcının XAML görünümünde, **kılavuz** ETIKETINE aşağıdaki xaml kod parçacığını ekleyin (`<StackLayout>` ile `</StackLayout>` arasında):
+1. Tasarımcı XAML görünümünde, aşağıdaki XAML kod parçacığını `<StackLayout>` ve `</StackLayout>`arasında **kılavuz** etiketine ekleyin:
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/MainPage.xaml)]
 
-1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs` ' i açın. (@No__t-0 altında gruplandırılır.)
+1. **Çözüm Gezgini**, arka plan kod kaynak dosyası `MainPage.xaml.cs`açın. `MainPage.xaml`altında gruplandırılır.
 
 1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/MainPage.xaml.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/MainPage.xaml.cs)]
 
-1. Kaynak dosyanın `OnRecognitionButtonClicked` işleyicisine `YourSubscriptionKey` dizesini bulun ve abonelik anahtarınızla değiştirin.
+1. Kaynak dosyanın `OnRecognitionButtonClicked` işleyicisinde, `YourSubscriptionKey`dizesini bulun ve abonelik anahtarınızla değiştirin.
 
-1. @No__t-0 işleyicisine `YourServiceRegion` dizesini bulun ve aboneliğiniz ile ilişkili [bölge](regions.md) ile değiştirin. (Örneğin, ücretsiz deneme aboneliği için `westus` ' ı kullanın.)
+1. `OnRecognitionButtonClicked` işleyicisinde, `YourServiceRegion`dizesini bulun ve aboneliğinizle ilişkili [bölge](regions.md) ile değiştirin. Örneğin, ücretsiz deneme aboneliği için `westus` kullanın.
 
-1. Daha sonra, farklı platform projelerinden (UWP, Android ve iOS) mikrofon izinlerini sorgulamak için kullanılan bir [Xamarin hizmeti](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)oluşturmanız gerekir. Bunu yapmak için, `helloworld` projesi altında yeni bir klasör @no__t ve bunun altında yeni C# kaynak dosya oluşturun (`Services` klasörüne sağ tıklayıp  > **Yeni öğe** > **kod dosyası**) **ekleyin**ve tüm kodu `IMicrophoneService.cs` olarak yeniden adlandırın ve Bu dosyada aşağıdaki kod parçacığı:
+1. Daha sonra, UWP, Android ve iOS gibi farklı platform projelerinden gelen mikrofon izinlerini sorgulamak için kullanılan bir [Xamarin hizmeti](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)oluşturmanız gerekir. Bunu yapmak için HelloWorld projesi altında *Hizmetler* adlı yeni bir klasör ekleyin ve bunun altında yeni C# bir kaynak dosya oluşturun. *Hizmetler* klasörüne sağ tıklayıp > **Yeni öğe** > **kod dosyası** **Ekle** ' yi seçebilirsiniz. `IMicrophoneService.cs`dosyayı yeniden adlandırın ve aşağıdaki kod parçacığındaki tüm kodu bu dosyaya yerleştirin:
 
-[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-## <a name="add-sample-code-for-the-helloworldandroid-project"></a>@No__t-0 projesi için örnek kod ekleme
+## <a name="add-sample-code-for-the-helloworldandroid-project"></a>HelloWorld için örnek kod ekleyin. Android projesi
 
 Şimdi uygulamanın Android C# 'e özgü bölümünü tanımlayan kodu ekleyin.
 
-1. **Çözüm Gezgini**' de, `helloworld.Android` projesi altında `MainActivity.cs` ' yi açın.
+1. **Çözüm Gezgini**, HelloWorld altında. Android projesi, `MainActivity.cs`açın.
 
 1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.Android/MainActivity.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.Android/MainActivity.cs)]
 
-1. Ardından, `helloworld.Android` projesi altında yeni klasör @no__t `MicrophoneService` ' a yönelik Android 'e özgü uygulama ekleyin. Bundan sonra bu yeni C# kaynak dosyayı oluşturun ve `MicrophoneService.cs` olarak yeniden adlandırın ve aşağıdaki kod parçacığını bu dosyaya yapıştırın.
+1. Ardından, HelloWorld altında yeni klasör *hizmetlerini* oluşturarak `MicrophoneService` için Android 'e özgü uygulama ekleyin. Android projesi. Bundan sonra, altında yeni C# bir kaynak dosya oluşturun. `MicrophoneService.cs`dosyayı yeniden adlandırın. Aşağıdaki kod parçacığını kopyalayıp bu dosyaya yapıştırın:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.Android/Services/MicrophoneService.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.Android/Services/MicrophoneService.cs)]
 
-1. Bundan sonra, `Properties` klasörü altında `AndroidManifest.xml` ' dır ve `<manifest>` ile `</manifest>` arasında mikrofon için aşağıdaki kullanımlar-izin ayarını ekleyin.
-```xml
+1. Bundan sonra, *Özellikler* klasörü altında `AndroidManifest.xml` açın. `<manifest>` ve `</manifest>`arasında mikrofon için aşağıdaki kullanımlar-izin ayarını ekleyin:
+
+   ```xml
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-```
+   ```
 
-## <a name="add-sample-code-for-the-helloworldios-project"></a>@No__t-0 projesi için örnek kod ekleme
+## <a name="add-sample-code-for-the-helloworldios-project"></a>HelloWorld. iOS projesi için örnek kod ekleme
 
-Şimdi uygulamanın iOS C# 'a özgü bölümünü tanımlayan kodu ekleyin ve ayrıca HelloWorld. IOS projesine Apple cihaza özgü yapılandırma oluşturun.
+Şimdi uygulamanın iOS C# 'a özgü bölümünü tanımlayan kodu ekleyin. Ayrıca HelloWorld. iOS projesinde Apple cihaza özgü yapılandırma oluşturma.
 
-1. **Çözüm Gezgini**' de, `helloworld.iOS` projesi altında `AppDelegate.cs` ' yi açın.
+1. **Çözüm Gezgini**, HelloWorld. iOS projesi altında `AppDelegate.cs`açın.
 
 1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.iOS/AppDelegate.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.iOS/AppDelegate.cs)]
 
-1. Sonra, `helloworld.iOS` projesi altında yeni klasör @no__t `MicrophoneService` ' a yönelik iOS 'a özgü uygulama ekleyin. Bundan sonra bu yeni C# kaynak dosyayı oluşturun ve `MicrophoneService.cs` olarak yeniden adlandırın ve aşağıdaki kod parçacığını bu dosyaya yapıştırın.
+1. Sonra, helloworld.iO projesi altında yeni klasör *hizmetlerini* oluşturarak `MicrophoneService` için iOS 'a özgü uygulama ekleyin. Bundan sonra, altında yeni C# bir kaynak dosya oluşturun. `MicrophoneService.cs`dosyayı yeniden adlandırın. Aşağıdaki kod parçacığını kopyalayıp bu dosyaya yapıştırın:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.iOS/Services/MicrophoneService.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.iOS/Services/MicrophoneService.cs)]
 
-1. @No__t-0 projesi altındaki Info. plist öğesini metin düzenleyicisinde açın ve aşağıdaki anahtar değer çiftini dict bölümüne ekleyin <key>Nsmikro Phoneusagedescription</key>
-   <string>Bu örnek uygulama, mikrofon erişimi gerektirir</string>
-   > Note: iPhone cihazı için derlemeyi hedefliyorsanız, cihazınızın sağlama profili uygulama KIMLIĞIYLE `Bundle Identifier` ile eşleştiğinden emin olun, aksi takdirde derleme başarısız olur. İPhoneSimulator ile bunu olduğu gibi bırakabilirsiniz.
+1. Metin düzenleyicisinde HelloWorld. iOS projesi altında `Info.plist` açın. Aşağıdaki anahtar değer çiftini dict bölümüne ekleyin:
 
-1. Windows BILGISAYARı üzerinde derleme yapıyorsanız, Mac 'e **@no__t-** 1**iOS** >  '**e çift Mac**arasında oluşturma için Mac cihazına bağlantı kurmanız gerekir. Mac cihazına bağlanmayı etkinleştirmek için Visual Studio tarafından sunulan yönerge Sihirbazı ' nı izleyin.
+   <key>Nsmikro Phoneusagedescription</key>
+   <string>Bu örnek uygulama için mikrofon erişimi gerekiyor</string>
 
-## <a name="add-sample-code-for-the-helloworlduwp-project"></a>@No__t-0 projesi için örnek kod ekleme
+   > [!NOTE] 
+   > İPhone cihazı için oluşturuyorsanız `Bundle Identifier` cihazınızın sağlama profili uygulama KIMLIĞIYLE eşleştiğinden emin olun. Aksi takdirde, yapı başarısız olur. İPhoneSimulator ile bunu olduğu gibi bırakabilirsiniz.
+
+1. Bir Windows BILGISAYAR üzerinde derleme yapıyorsanız, Mac > **iOS** > **Mac ile eşleştirme** **araçları** aracılığıyla oluşturmaya yönelik Mac cihazına bir bağlantı kurun. Mac cihazına bağlantıyı etkinleştirmek için Visual Studio tarafından sunulan yönerge Sihirbazı ' nı izleyin.
+
+## <a name="add-sample-code-for-the-helloworlduwp-project"></a>HelloWorld için örnek kod ekleyin. UWP projesi
 
 Şimdi uygulamanın UWP C# 'e özgü bölümünü tanımlayan kodu ekleyin.
 
-1. **Çözüm Gezgini**' de, `helloworld.UWP` projesi altında `MainPage.xaml.cs` ' yi açın.
+1. **Çözüm Gezgini**, HelloWorld altında. UWP projesi, `MainPage.xaml.cs`açın.
 
 1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.UWP/MainPage.xaml.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.UWP/MainPage.xaml.cs)]
 
-1. Daha sonra, `helloworld.UWP` projesi altında yeni bir klasör @no__t `Services` için UWP 'e özgü uygulama ekleyin. Bundan sonra bu yeni C# kaynak dosyayı oluşturun ve `MicrophoneService.cs` olarak yeniden adlandırın ve aşağıdaki kod parçacığını bu dosyaya yapıştırın.
+1. Ardından, HelloWorld altında yeni klasör *hizmetlerini* oluşturarak `MicrophoneService` için UWP 'e özgü bir uygulama ekleyin. UWP projesi. Bundan sonra, altında yeni C# bir kaynak dosya oluşturun. `MicrophoneService.cs`dosyayı yeniden adlandırın. Aşağıdaki kod parçacığını kopyalayıp bu dosyaya yapıştırın:
 
-   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
+   [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
 
-1. Ardından, Visual Studio içindeki `helloworld.UWP` projesi altında `Package.appxmanifest` dosyasına çift tıklayın **ve @no__t-** 3**mikrofon** denetlenir ve dosyayı kaydedin.
-   > Not: bir uyarı görmeniz durumunda: sertifika dosyası yok: HelloWorld. Daha fazla bilgi için lütfen [konuşmayı metin](quickstart-csharp-uwp.md) örneğine göz atın.
+1. Ardından, HelloWorld altındaki `Package.appxmanifest` dosyasına çift tıklayın. Visual Studio içinde UWP projesi. **Yetenekler**altında, **mikrofonun** seçili olduğundan emin olun ve dosyayı kaydedin.
+
+   > [!NOTE] 
+   > "Sertifika dosyası yok: HelloWorld" uyarısını görürseniz UWP_TemporaryKey. pfx, "daha fazla bilgi için [konuşmayı metne](quickstart-csharp-uwp.md) göre örneğe bakın.
 
 1. Değişikliklerinizi kaydetmek için menü çubuğundan **dosya** > **Tümünü Kaydet** ' i seçin.
 
 ## <a name="build-and-run-the-uwp-application"></a>UWP uygulamasını derleme ve çalıştırma
 
-1. @No__t-0 ' ı başlangıç projesi olarak ayarlayın ve `helloworld.UWP` projesinde fareyi kullanarak sağ tıklayın ve uygulamayı derlemek için **Oluştur** ' u seçin. 
+1. HelloWorld ayarlayın. Başlangıç projesi olarak UWP. HelloWorld öğesine sağ tıklayın. UWP projesi ve uygulamayı derlemek için **Oluştur** ' u seçin. 
 
-1. Uygulamayı başlatmak için **hata ayıkla** > **hata ayıklamayı Başlat** (veya **F5**tuşuna basın) seçeneğini belirleyin. **HelloWorld** penceresi görüntülenir.
+1. Uygulamayı başlatmak **için hata ayıklama > ** **başlatın** (veya **F5**' i seçin). **HelloWorld** penceresi görüntülenir.
 
    ![Hızlı başlangıçta örnek UWP konuşma tanıma C# uygulaması](media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
 
-1. **Mikrofonu etkinleştir**' i seçin ve erişim izni Isteği açıldığında **Evet**' i seçin.
+1. **Mikrofonu etkinleştir**' i seçin. Erişim izni isteği göründüğünde **Evet**' i seçin.
 
    ![Mikrofon erişimi izin isteği](media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
@@ -144,7 +151,7 @@ Ortak `helloworld` projesi platformlar arası uygulamanız için platformdan ba�
 
 ## <a name="build-and-run-the-android-and-ios-applications"></a>Android ve iOS uygulamalarını derleyin ve çalıştırın
 
-Android ve iOS uygulamalarını cihazda veya benzeticide oluşturmak ve çalıştırmak UWP ile aynı şekilde gerçekleşir. Önemli, bu belgenin `Prerequisites` bölümünde tüm SDK 'ların doğru yüklendiğinden emin olmak için gereklidir.
+Android ve iOS uygulamalarını cihazda veya simülatörde oluşturmak ve çalıştırmak UWP 'ye benzer bir şekilde gerçekleşir. Tüm SDK 'ların Bu makalenin "Önkoşullar" bölümünde gerektiği şekilde yüklendiğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

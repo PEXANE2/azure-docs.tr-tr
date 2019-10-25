@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: d73ac199df03f4d789db0634be1e926afc77e623
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
-ms.translationtype: HT
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597543"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674922"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS birimine yönelik dışarı aktarma ilkesini yapılandırma
 
@@ -27,7 +27,7 @@ ms.locfileid: "72597543"
 
 ## <a name="steps"></a>Adımlar 
 
-1.  Birim Yönetme dikey penceresindeki **Dışarı aktarma İlkesi Oluştur** dikey penceresine tıklayın. 
+1.  Azure NetApp Files gezinti bölmesinden **Ilkeyi dışarı aktar** ' a tıklayın. 
 
 2.  İlke kuralını oluşturmak veya dışarı aktarmak için aşağıdaki alanların bilgilerini belirtin:   
     *  **Dizin**   
