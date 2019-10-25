@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015992"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881705"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Video özeti oluşturmak için Azure Media Video Thumbnails kullanma  
+
+> [!IMPORTANT]
+> Bazı medya işlemcilerinin [kullanımdan kaldırma planlarını](media-services-analytics-overview.md#retirement-plans) gözden geçirin.
+
 ## <a name="overview"></a>Genel Bakış
 **Azure Media video Thumbnails** medya IŞLEMCISI (MP), yalnızca uzun bir videonun özetini önizlemek isteyen müşteriler için yararlı olan bir videonun özetini oluşturmanızı sağlar. Örneğin, müşteriler bir küçük resmin üzerine gelindiğinde kısa bir "Özet videosu" görmek isteyebilir. Bir yapılandırma ön ayarı aracılığıyla **Azure Media video Thumbnails** parametrelerini ayırarak, açıklayıcı bir alt klip oluşturmak ALGORITHMICALLY için MP 'nin güçlü görüntü algılama ve birleştirme teknolojisini kullanabilirsiniz.  
 
@@ -54,10 +58,10 @@ Azure Media Video Thumbnails medya işlemcisinin yapabilecekleri bazı örnekler
 
 Şu anda aşağıdaki parametreleri değiştirebilirsiniz:
 
-| param | Açıklama |
+| Larına | Açıklama |
 | --- | --- |
-| outputAudio |Sonuç videonun herhangi bir ses içerip içermediğini belirtir. <br/>İzin verilen değerler şunlardır: TRUE veya False. Varsayılan değer true 'dur. |
-| fadeInFadeOut |Ayrı hareket küçük resimleri arasında Soldur geçişlerinin kullanılıp kullanılmayacağını belirtir.  <br/>İzin verilen değerler şunlardır: TRUE veya False.  Varsayılan değer true 'dur. |
+| outputAudio |Sonuç videonun herhangi bir ses içerip içermediğini belirtir. <br/>İzin verilen değerler: true veya false. Varsayılan değer true 'dur. |
+| fadeInFadeOut |Ayrı hareket küçük resimleri arasında Soldur geçişlerinin kullanılıp kullanılmayacağını belirtir.  <br/>İzin verilen değerler: true veya false.  Varsayılan değer true 'dur. |
 | maxMotionThumbnailDurationInSecs |Elde edilen videonun tamamının ne kadar süreyle olması gerektiğini belirten tamsayı.  Varsayılan değer özgün video süresine bağlıdır. |
 
 Aşağıdaki tabloda, **maxMotionThumbnailInSecs** kullanılmazsa varsayılan süre açıklanmaktadır.
@@ -282,7 +286,7 @@ Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Servic
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387071"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880135"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory SSS
 Bu makale Azure Data Factory hakkında sık sorulan soruların yanıtlarını sağlar.  
@@ -180,32 +178,19 @@ Null değerleri düzgün bir şekilde işlemek için ifadelerde `@coalesce` yap�
 
 ## <a name="mapping-data-flows"></a>Veri akışlarını eşleme
 
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Veri akışları oluşturmak için hangi Data Factory sürümünü kullanmalıyım?
-Veri akışları oluşturmak için Data Factory v2 sürümünü kullanın.
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Veri akışları kullanan önceki bir özel önizleme müşterisi kullanıyorum ve veri akışları için Data Factory v2 önizleme sürümünü kullandım.
-Bu sürüm artık kullanılmıyor. Veri akışları için Data Factory v2 kullanın.
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Veri akışlarından bağımsız olarak özel önizlemeden sınırlı genel önizlemeye ne değişti?
-Artık kendi Azure Databricks kümelerinizi getirmeyecektir. Data Factory, küme oluşturmayı ve yırma yönetimini yönetecek. Blob veri kümeleri ve Azure Data Lake Storage 2. veri kümeleri, sınırlandırılmış metin ve Apache Parquet veri kümelerine ayrılır. Bu dosyaları depolamak için Data Lake Storage 2. ve BLOB depolamayı kullanmaya devam edebilirsiniz. Bu depolama motorları için uygun bağlı hizmeti kullanın.
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Özel Önizleme fabrikalarımı Data Factory v2 'ye geçirebilir miyim?
-
-Evet. [Yönergeleri izleyin](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
-
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Veri akışı mantığımın sorunlarını gidermek için yardıma ihtiyacım var. Yardım almak için hangi bilgileri sağlamam gerekir?
 
-Microsoft, veri akışları ile ilgili yardım veya sorun giderme işlemleri yaparken lütfen DSL kod planını belirtin. Bunu yapmak için şu adımları uygulayın:
+Microsoft, veri akışları ile ilgili yardım veya sorun giderme işlemleri yaparken lütfen veri akışı betiğini sağlayın. Bu, veri akışı grafikinizdeki arka plan kod betiğiyle belirlenir. ADF kullanıcı arabiriminden, veri akışınızı açın ve sağ üst köşedeki "komut dosyası" düğmesine tıklayın. Bu betiği kopyalayıp yapıştırın veya bir metin dosyasına kaydedin.
 
-1. Veri akışı tasarımcısında sağ üst köşedeki **kod** ' u seçin. Bu işlem, veri akışı için düzenlenebilir JSON kodunu görüntüler.
-2. Kod görünümünden sağ üst köşedeki **plan** ' ı seçin. Bu geçiş, JSON 'dan Salt okunabilir DSL betiği planına geçiş yapar.
-3. Bu betiği kopyalayıp yapıştırın veya bir metin dosyasına kaydedin.
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Data Factory Nasıl yaparım? diğer 80 veri kümesi türlerini kullanarak verilere erişin mi?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory Nasıl yaparım? diğer 90 veri kümesi türlerini kullanarak verilere erişin mi?
 
 Veri akışı eşleme özelliği şu anda Azure SQL veritabanı, Azure SQL veri ambarı, Azure Blob depolama veya Azure Data Lake Storage 2. ile ayrılmış metin dosyaları ve BLOB depolamadan ya da kaynak ve havuz için yerel olarak Data Lake Storage 2. 
 
 Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etkinliğini kullanın ve sonra verileri hazırlandıktan sonra dönüştürmek için bir veri akışı etkinliği yürütün. Örneğin, işlem hatlarınız önce BLOB depolama alanına kopyalanacak, sonra veri akışı etkinliği bu verileri dönüştürmek için kaynak içinde bir veri kümesi kullanacaktır.
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı veri akışları için kullanılabilir mi?
+
+Şirket içinde barındırılan IR, şirket içi veya VM tabanlı veri kaynaklarına ve havuza veri almak veya buradan veri aktarmak için kopyalama etkinliğiyle birlikte kullanabileceğiniz bir ADF işlem hattı yapısıdır. Verileri bir kopyalama ile önce, ardından dönüştürme için veri akışı ve ardından bu dönüştürülmüş verileri şirket içi depoya geri taşımanız gerekiyorsa sonraki bir kopya.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası oluşturmaya yönelik adım adım yönergeler için aşağıdaki öğreticilere bakın:

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677872"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817449"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure Işlevleri 'nde makine öğrenimi modellerini uygulama
 
@@ -114,7 +114,7 @@ func new --language python --template HttpTrigger --name classify
 
 İki dosya içeren *Sınıflandırma* adlı yeni bir klasör oluşturulur.
 
-- *\_ \_init \_ \_. Kopyala*: Main işlevi için bir dosya
+- *\_\_init\_\_. Kopyala*: Main işlevi için bir dosya
 - *function. JSON*: işlevin tetikleyicisini ve giriş ve çıkış bağlamalarını açıklayan bir dosya
 
 ### <a name="run-the-function"></a>İşlevi çalıştırın
@@ -179,7 +179,7 @@ copy ..\resources\predict.py classify
 Yardımcı kitaplığı, yüklenmesi gereken bazı bağımlılıklara sahiptir. Düzenleyicinizde *Start/requirements. txt* dosyasını açın ve aşağıdaki bağımlılıkları dosyaya ekleyin.
 
 ```txt
-tensorflow==1.15
+tensorflow==1.14
 Pillow
 requests
 ```
@@ -200,7 +200,7 @@ Genel değişkenler hakkında daha fazla bilgi için [Azure Işlevleri Python Ge
 
 ## <a name="update-function-to-run-predictions"></a>Tahminleri çalıştırmak için işlevi Güncelleştir
 
-Düzenleyicinizde *Sınıflandırma/\_ \_init \_ \_. Kopyala* ' yı açın. Daha önce eklediğiniz *tahmin* kitaplığını aynı klasöre aktarın. Aşağıdaki `import` deyimlerini, dosyasında zaten bulunan diğer içeri aktarmaları altına ekleyin.
+Düzenleyicinizde *Sınıflandırma/\_\_init\_\_. Kopyala* ' yı açın. Daha önce eklediğiniz *tahmin* kitaplığını aynı klasöre aktarın. Aşağıdaki `import` deyimlerini, dosyasında zaten bulunan diğer içeri aktarmaları altına ekleyin.
 
 ```python
 import json

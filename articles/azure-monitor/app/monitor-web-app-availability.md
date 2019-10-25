@@ -1,23 +1,19 @@
 ---
 title: Web sitelerinin kullanılabilirlik ve yanıt hızını izleme | Microsoft Docs
 description: Application Insights’ta web testleri ayarlayın. Web sitesi kullanılamaz duruma gelirse veya yavaş yanıt verirse uyarı alın.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812197"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819287"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -31,7 +27,7 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 * [URL ping testi](#create-a-url-ping-test): Azure portalında oluşturabileceğiniz basit bir test.
 * [Çok adımlı Web testi](availability-multistep.md): daha karmaşık senaryoları test etmek için oynatılabilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
-* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz `TrackAvailability()` yöntemi sonuçları Application Insights göndermek için kullanılabilir.
+* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz, sonuçları Application Insights göndermek için `TrackAvailability()` yöntemi kullanılabilir.
 
 **Application Insights kaynak başına en çok 100 kullanılabilirlik testi oluşturabilirsiniz.**
 
@@ -39,7 +35,7 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 Bir kullanılabilirlik testi oluşturmak için önce bir Application Insights kaynağı oluşturmanız gerekir. Zaten bir kaynak oluşturduysanız, [URL ping testi oluşturmak](#create-a-url-ping-test)için sonraki bölüme ilerleyin.
 
-Azure portal, **kaynak oluştur** > **Geliştirici Araçları** > **Application Insights** ve [Application Insights bir kaynak oluştur](create-new-resource.md)' u seçin.
+Azure portal > **Geliştirici Araçları** > **kaynak oluştur** **' u** seçin ve [Application Insights bir kaynak oluşturun](create-new-resource.md).
 
 ## <a name="create-a-url-ping-test"></a>URL ping testi oluşturma
 
@@ -78,7 +74,7 @@ Azure portal, **kaynak oluştur** > **Geliştirici Araçları** > **Application 
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile 1 test konumunun sayısı olan (2) test** **konumunun sayısını @no__t**.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile, test konumu sayısı-2**  =  **Uyarı konum eşiği** ' dir.|
 
 ## <a name="see-your-availability-test-results"></a>Kullanılabilirlik testi sonuçlarınızı görme
 

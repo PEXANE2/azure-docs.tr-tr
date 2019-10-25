@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc8381fe964ce924ed37d6b7e6d22dc730eae89
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 19b29181f023b49cca7159fbbcad4a4675744a96
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453062"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819733"
 ---
 # <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulaması engelleniyor
  
@@ -33,9 +33,11 @@ Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanı
 
 1. Azure portal > Azure Active Directory oturum açma işlemlerini > gidin.
 1. İstemci uygulaması > sütunlara tıklandıktan sonra Istemci uygulama sütununu ekleyin.
-1. Istemci uygulamaya göre filtreleme diğer Istemcileri > ve Uygula ' ya tıklayın.
+1. Istemci uygulamasına göre filtrele > sunulan diğer tüm Istemci seçeneklerini işaretleyin ve Uygula ' ya tıklayın.
+1. Durum > başarılı olarak filtreleyin ve Uygula ' ya tıklayın. 
+1. Tarih filtresini kullanarak gerekirse tarih aralığınızı genişletin.
 
-Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. Temel bilgi sekmesindeki Istemci uygulaması alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir. Bu Günlükler, hangi kullanıcıların eski kimlik doğrulamasına bağlı olduğunu ve hangi uygulamaların kimlik doğrulama isteklerini yapmak için eski protokolleri kullandığını gösterir. Bu günlüklerde görünmeyen ve eski kimlik doğrulaması kullanmayan kullanıcılar için, koşullu erişim ilkesi uygulayın veya temel ilkeyi etkinleştirin: yalnızca bu kullanıcılar için eski kimlik doğrulamasını engelle.
+Filtreleme işlemi yalnızca seçili eski kimlik doğrulama protokolleri tarafından yapılan başarılı oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. Tek bir veri satırı seçildikten sonra temel bilgiler sekmesinin altındaki Istemci uygulaması sütunu veya Istemci uygulaması alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir. Bu Günlükler, hangi kullanıcıların eski kimlik doğrulamasına bağlı olduğunu ve hangi uygulamaların kimlik doğrulama isteklerini yapmak için eski protokolleri kullandığını gösterir. Bu günlüklerde görünmeyen ve eski kimlik doğrulaması kullanmayan kullanıcılar için, koşullu erişim ilkesi uygulayın veya temel ilkeyi etkinleştirin: yalnızca bu kullanıcılar için eski kimlik doğrulamasını engelle.
 
 ## <a name="moving-away-from-legacy-authentication"></a>Eski kimlik doğrulamasından uzaklaşmak 
 
@@ -47,8 +49,8 @@ Bu bölüm, ortamınızı modern kimlik doğrulamaya güncelleştirme hakkında 
 
 Modern kimlik doğrulamayı etkinleştirmenin ilk adımı, dizininizin modern kimlik doğrulamasını desteklediğinden emin olmanızı sağlamak. Modern kimlik doğrulaması, 1 Ağustos 2017 ' de veya sonrasında oluşturulan dizinler için varsayılan olarak etkindir. Bu tarihten önce dizininiz oluşturulduysa, aşağıdaki adımları kullanarak dizininiz için modern kimlik doğrulamayı el ile etkinleştirmeniz gerekir:
 
-1.  [Skype Kurumsal çevrimiçi PowerShell modülünden](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)@ no__t-0 @ no__t-1çalıştırarak dizininizin modern kimlik doğrulamasını destekleyip desteklemediğini denetleyin.
-1. Komutunuz boş bir @ no__t-0 @ no__t-1özelliği döndürürse, modern kimlik doğrulaması devre dışı bırakılır. @ No__t-0 kullanarak modern kimlik doğrulamayı etkinleştirmek için ayarı güncelleştirin. @ No__t-0 @ no__t-1özelliği bir giriş içeriyorsa, gittiğiniz kadar iyi olursunuz.
+1.  [Skype Kurumsal çevrimiçi PowerShell modülünden](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell) `Get-CsOAuthConfiguration` çalıştırarak dizininizin modern kimlik doğrulamasını zaten destekleyip desteklemediğini denetleyin.
+1. Komutunuz boş bir `OAuthServers` özelliği döndürürse, modern kimlik doğrulaması devre dışıdır.  `Set-CsOAuthConfiguration`kullanarak modern kimlik doğrulamayı etkinleştirmek için ayarı güncelleştirin.  `OAuthServers` özelliği bir giriş içeriyorsa, hazırsınız.
 
 İleri ' ye geçmeden önce bu adımı tamamladığınızdan emin olun. Tüm Office istemcileri tarafından hangi protokolün kullanılacağını dikte ettiğinden, Dizin yapılandırmalarınızın ilk önce değiştirilmesi önemlidir. Modern kimlik doğrulamasını destekleyen Office istemcileri kullanıyor olsanız bile, dizininizde modern kimlik doğrulaması devre dışıysa eski protokolleri kullanmak varsayılan olur.
 
@@ -56,7 +58,7 @@ Modern kimlik doğrulamayı etkinleştirmenin ilk adımı, dizininizin modern ki
 
 Dizininizde modern kimlik doğrulamasını etkinleştirdikten sonra, Office istemcileri için modern kimlik doğrulamayı etkinleştirerek uygulamaları güncelleştirmeye başlayabilirsiniz. Office 2016 veya üzeri istemciler, varsayılan olarak modern kimlik doğrulamasını destekler. Ek adım gerekmez.
 
-Office 2013 Windows istemcileri veya daha eski bir sürümü kullanıyorsanız, Office 2016 veya sonraki sürümlere yükseltmeniz önerilir. Dizininizde modern kimlik doğrulamasını etkinleştirmenin önceki adımını tamamladıktan sonra bile eski Office uygulamaları eski kimlik doğrulama protokollerini kullanmaya devam edecektir. Office 2013 istemcilerini kullanıyorsanız ve Office 2016 veya sonraki bir sürüme hemen yükseltirsiniz, [Windows cihazlarında office 2013 Için modern kimlik doğrulamayı etkinleştirmek](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)üzere aşağıdaki makaledeki adımları izleyin. Eski kimlik doğrulaması kullanılırken hesabınızın korunmasına yardımcı olmak için, dizininiz genelinde güçlü parolalar kullanmanızı öneririz. Dizininizde zayıf parolalar için @no__t- [1Azure ad parola koruması](../authentication/concept-password-ban-bad.md)' na göz atın.
+Office 2013 Windows istemcileri veya daha eski bir sürümü kullanıyorsanız, Office 2016 veya sonraki sürümlere yükseltmeniz önerilir. Dizininizde modern kimlik doğrulamasını etkinleştirmenin önceki adımını tamamladıktan sonra bile eski Office uygulamaları eski kimlik doğrulama protokollerini kullanmaya devam edecektir. Office 2013 istemcilerini kullanıyorsanız ve Office 2016 veya sonraki bir sürüme hemen yükseltirsiniz, [Windows cihazlarında office 2013 Için modern kimlik doğrulamayı etkinleştirmek](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)üzere aşağıdaki makaledeki adımları izleyin. Eski kimlik doğrulaması kullanılırken hesabınızın korunmasına yardımcı olmak için, dizininiz genelinde güçlü parolalar kullanmanızı öneririz. Dizininizde zayıf parolalar sağlamak için [Azure AD parola koruması](../authentication/concept-password-ban-bad.md) göz atın.
 
 Office 2010, modern kimlik doğrulamasını desteklemez. Office 2010 ile herhangi bir kullanıcıyı Office 'in daha yeni bir sürümüne yükseltmeniz gerekir. Varsayılan olarak eski kimlik doğrulamasını engellediği için Office 2016 veya sonraki bir sürüme yükseltmeniz önerilir.
 

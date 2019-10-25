@@ -8,13 +8,13 @@ author: tomarcher
 manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b156169e7202319366e337cc7081e02f5de3acad
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 82cee1e5c93eb21fa8db29985d26fe75bde970d2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244802"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882598"
 ---
 # <a name="create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde bir Application Gateway ingcontroller oluşturma
 
@@ -475,11 +475,11 @@ Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun.
 
 1. Dosyayı kaydedin ve düzenleyiciden çıkın.
 
-Bu bölümde sunulan kod, küme, konum ve resource_group_name adını ayarlar. Kümeye erişmek için kullanılan tam etki alanı adının (FQDN) bir parçasını oluşturan `dns_prefix` değeri-ayarlanır.
+Bu bölümde sunulan kod, küme, konum ve resource_group_name adını ayarlar. `dns_prefix` değeri-kümeye erişmek için kullanılan tam etki alanı adının (FQDN) bir parçasını oluşturur.
 
-@No__t-0 kaydı, SSH kullanarak çalışan düğümlerinde oturum açmayı etkinleştiren ayarları yapılandırmanıza olanak tanır.
+`linux_profile` kaydı, SSH kullanarak çalışan düğümlerinde oturum açmayı etkinleştiren ayarları yapılandırmanıza olanak tanır.
 
-AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. @No__t-0 kaydı, bu çalışan düğümlerinin ayrıntılarını yapılandırır. @No__t-0, oluşturulacak çalışan düğümlerinin sayısını ve çalışan düğümlerinin türünü içerir. Daha sonra kümede ölçeği büyütme veya küçültme yapmanız gerekiyorsa, bu kayıttaki `count` değerini değiştirirsiniz.
+AKS ile yalnızca çalışan düğümleri için ödeme yaparsınız. `agent_pool_profile` kaydı bu çalışan düğümlerinin ayrıntılarını yapılandırır. `agent_pool_profile record` oluşturulacak çalışan düğümlerinin sayısını ve çalışan düğümlerinin türünü içerir. Daha sonra kümede ölçeği büyütme veya küçültme yapmanız gerekiyorsa, bu kayıttaki `count` değerini değiştirirsiniz.
 
 ## <a name="create-a-terraform-output-file"></a>Terraform çıkış dosyası oluşturma
 
@@ -568,7 +568,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    `terraform init` komutu arka uç ve sağlayıcı eklentisinin başarıyla başlatıldığını gösterir:
+    `terraform init` komutu, arka uç ve sağlayıcı eklentisinin başlatılma başarısını görüntüler:
 
     !["terraform init" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
@@ -601,7 +601,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
     terraform plan -out out.plan
     ```
 
-    @No__t-0 komutu, `terraform apply` komutunu çalıştırdığınızda oluşturulan kaynakları görüntüler:
+    `terraform plan` komutu, `terraform apply` komutunu çalıştırdığınızda oluşturulan kaynakları görüntüler:
 
     !["terraform plan" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
@@ -711,13 +711,13 @@ Bu bölümdeki kod, [helk](/azure/aks/kubernetes-helm) -Kubernetes paket yöneti
 
 ## <a name="install-ingress-controller-helm-chart"></a>Giriş denetleyicisi Held grafiğini yükler
 
-1. AGIC 'yi yapılandırmak için @no__t indir-0:
+1. AGIC 'yi yapılandırmak için `helm-config.yaml` indirin:
 
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
 
-1. @No__t-0 ' yı düzenleyin ve `appgw` ve `armAuth` bölümleri için uygun değerleri girin.
+1. `helm-config.yaml` düzenleyin ve `appgw` ve `armAuth` bölümleri için uygun değerleri girin.
 
     ```bash
     nano helm-config.yaml
@@ -729,7 +729,7 @@ Bu bölümdeki kod, [helk](/azure/aks/kubernetes-helm) -Kubernetes paket yöneti
     - `appgw.subscriptionId`: uygulama ağ geçidi için Azure abonelik KIMLIĞI. Örnek: `a123b234-a3b4-557d-b2df-a0bc12de1234`
     - `appgw.resourceGroup`: uygulama ağ geçidinin oluşturulduğu Azure Kaynak grubunun adı. 
     - `appgw.name`: Application Gateway adı. Örnek: `applicationgateway1`.
-    - `appgw.shared`: Bu Boole bayrağı varsayılan olarak `false` ' e ayarlanmalıdır. @No__t-0 olarak ayarlayın, [paylaşılan bir uygulama ağ geçidine](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)ihtiyacınız olmalıdır.
+    - `appgw.shared`: Bu Boole bayrağı varsayılan olarak `false` ' e ayarlanmalıdır. `true`, [paylaşılan bir uygulama ağ geçidine](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)ihtiyacınız olacak şekilde ayarlayın.
     - `kubernetes.watchNamespace`: AGIC 'in izlemeniz gereken ad alanını belirtin. Ad alanı, tek bir dize değeri veya ad alanlarının virgülle ayrılmış bir listesi olabilir.
     - `armAuth.type`: `aadPodIdentity` ya da `servicePrincipal` değeri.
     - `armAuth.identityResourceID`: yönetilen kimliğin kaynak KIMLIĞI.
@@ -737,10 +737,10 @@ Bu bölümdeki kod, [helk](/azure/aks/kubernetes-helm) -Kubernetes paket yöneti
     - `armAuth.secretJSON`: yalnızca hizmet sorumlusu gizli türü seçildiğinde gereklidir (`armAuth.type` `servicePrincipal` ' ye ayarlandığında).
 
     Önemli notlar:
-    - @No__t-0 değeri teraform betiklerinde oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_client_id)"`.
-    - @No__t-0 değeri teraform betiklerinde oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_resource_id)"`.
-    - @No__t-0 değeri, uygulama ağ geçidinizin kaynak grubudur.
-    - @No__t-0 değeri oluşturulan kimliğin adıdır.
+    - `identityResourceID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_client_id)"`.
+    - `identityClientID` değeri teraform betiğiyle oluşturulur ve şu şekilde çalıştırılarak bulunabilir: `echo "$(terraform output identity_resource_id)"`.
+    - `<resource-group>` değeri, uygulama ağ geçidinizin kaynak grubudur.
+    - `<identity-name>` değeri oluşturulan kimliğin adıdır.
     - Belirli bir aboneliğin tüm kimlikleri şu kullanılarak listelenebilir: `az identity list`.
 
 1. Application Gateway giriş denetleyicisi paketini yükler:

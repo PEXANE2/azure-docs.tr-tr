@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: 9661bfe9c3b10a31a962767debbe3d7e58bf4fa3
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173506"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882522"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service ve Terraform ile bir Kubernetes kümesi oluşturma
 [Azure Kubernetes Service (AKS)](/azure/aks/), barındırılan Kubernetes ortamınızı yöneterek kapsayıcılı uygulamaları, kapsayıcı yönetimi uzmanlığı gerekmeden hızla ve kolayca dağıtma olanağı sunar. Ayrıca, kaynakları isteğe bağlı olarak sağlama, yükseltme ve ölçeklendirme işlemlerini uygulamalarınızı çevrimdışı duruma geçirmeden yaparak sürekliliği olan işlemlerin ve bakımların yükünü ortadan kaldırır.
@@ -30,9 +30,9 @@ Bu öğreticide aşağıdaki [Terraform](https://terraform.io) ve AKS'yi kullana
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Teroyform 'U Yapılandır**: Bu makaledeki yönergeleri izleyin, [Terrayform ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform'u yapılandırma**: [Terraform'u yükleme ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure) makalesindeki yönergeleri izleyin
 
-- **Azure hizmet sorumlusu**: [Azure CLI ile bir Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)konusunun **hizmet sorumlusu oluşturma** bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
+- **Azure hizmet sorumlusu**: [Azure CLI ile Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) makalesinin **Hizmet sorumlusunu oluşturma** bölümündeki yönergeleri izleyin. appId, displayName, password ve tenant değerlerini not edin.
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 İlk adım, bu alıştırmadaki Terraform yapılandırma dosyalarınızı barındıracak olan dizini oluşturmaktır.
@@ -336,7 +336,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    `terraform init` komutu arka uç ve sağlayıcı eklentisinin başarıyla başlatıldığını gösterir:
+    `terraform init` komutu, arka uç ve sağlayıcı eklentisinin başlatılma başarısını görüntüler:
 
     !["terraform init" komutunun sonuçları](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
@@ -357,7 +357,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
 
     !["terraform plan" komutunun sonuçları](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Kubernetes kümesini oluşturma planını uygulamak için `terraform apply` komutunu çalıştırın. Kubernetes kümesi oluşturma işlemi birkaç dakika sürebilir ve bu durum Cloud Shell oturumunun zaman aşımına uğramasına neden olabilir. Cloud Shell oturum zaman aşımına uğrarsa öğreticiyi tamamlamanızı sağlamak için "Cloud Shell zaman aşımından kurtarma" bölümündeki adımları izleyebilirsiniz.
+1. Kubernetes kümesini oluşturma planını uygulamak için `terraform apply` komutunu çalıştırın. Bir Kubernetes kümesi oluşturma işlemi birkaç dakika sürebilir ve Cloud Shell oturum zaman aşımına uğramaz. Cloud Shell oturum zaman aşımına uğrarsa öğreticiyi tamamlamanızı sağlamak için "Cloud Shell zaman aşımından kurtarma" bölümündeki adımları izleyebilirsiniz.
 
     ```bash
     terraform apply out.plan

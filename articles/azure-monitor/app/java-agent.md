@@ -1,31 +1,26 @@
 ---
 title: Azure Application Insights Java Web uygulamaları için performans izleme | Microsoft Docs
 description: Application Insights ile Java Web sitenizin genişletilmiş performansı ve kullanımı izleniyor.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/10/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 01/10/2019
+ms.openlocfilehash: 181a1f253157fe112d42753d6f824a327457a2fa
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338099"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819406"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web uygulamalarında bağımlılıkları izleme, özel durumlar ve Yöntem yürütme süreleri
 
 
 [Java Web uygulamanızı Application Insights][java]olarak belirttiyseniz, herhangi bir kod değişikliği yapmadan daha derin Öngörüler almak Için Java aracısını kullanabilirsiniz:
 
-* **Bağlantılıdır** Uygulamanızın diğer bileşenlere yaptığı çağrılar hakkındaki veriler (şunlar dahil):
-  * Apache HttpClient, okhttp ve `java.net.HttpURLConnection` ile yapılan **giden http çağrıları** yakalanır.
+* **Bağımlılıklar:** Uygulamanızın diğer bileşenlere yaptığı çağrılar hakkındaki veriler (şunlar dahil):
+  * Apache HttpClient, OkHttp ve `java.net.HttpURLConnection` ile yapılan **gıden http çağrıları** yakalanır.
   * Jedsıs istemcisi aracılığıyla yapılan **redsıs çağrıları** yakalanır.
   * **JDBC sorguları** -MySQL ve PostgreSQL için çağrı 10 saniyeden uzun sürerse, aracı sorgu planını raporlar.
 
@@ -35,8 +30,8 @@ ms.locfileid: "71338099"
   * **Logback**
 
 * **Daha iyi işlem adlandırması:** (portalda isteklerin toplaması için kullanılır)
-  * **Yay** tabanlı `@RequestMapping`.
-  * **Jax-RS** `@Path`tabanlı. 
+  * `@RequestMapping`temelinde **yay** .
+  * **Jax-RS** -`@Path`tabanlı. 
 
 Java aracısını kullanmak için sunucunuza yüklersiniz. Web uygulamalarınızın [Application Insights Java SDK 'sı][java]ile işaretlenmiş olması gerekir. 
 
@@ -52,7 +47,7 @@ Java aracısını kullanmak için sunucunuza yüklersiniz. Web uygulamalarınız
 3. Uygulama sunucunuzu yeniden başlatın.
 
 ## <a name="configure-the-agent"></a>Aracıyı yapılandırma
-Adlı `AI-Agent.xml` bir dosya oluşturun ve aracı jar dosyasıyla aynı klasöre yerleştirin.
+`AI-Agent.xml` adlı bir dosya oluşturun ve aracı JAR dosyasıyla aynı klasöre yerleştirin.
 
 XML dosyasının içeriğini ayarlayın. İstediğiniz özellikleri eklemek veya atlamak için aşağıdaki örneği düzenleyin.
 
@@ -93,17 +88,17 @@ Azure Uygulama Hizmetleri için aşağıdakileri yapın:
 * Ayarlar > Uygulama Ayarları'nı seçin.
 * Uygulama Ayarları'nın altında yeni bir anahtar değer çifti ekleyin:
 
-Anahtar `JAVA_OPTS`Deeri`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Anahtar: `JAVA_OPTS` değer: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
 Java aracısının en son sürümü için [buradaki](https://github.com/Microsoft/ApplicationInsights-Java/releases
-) yayınları kontrol edin. 
+)yayınları kontrol edin. 
 
-Aracı, projenizde D:/Home/site/Wwwroot/dizinde bitecek bir kaynak olarak paketlenmesi gerekir. Aracının doğru App Service dizininde olduğunu, **geliştirme araçları** > **Gelişmiş Araçlar** > **hata ayıklama konsolu** ' na giderek ve site dizininin içeriğini inceleyerek emin olabilirsiniz.    
+Aracı, projenizde D:/Home/site/Wwwroot/dizinde bitecek bir kaynak olarak paketlenmesi gerekir. Aracının doğru App Service dizininde olduğunu, **Gelişmiş araçlar** > **hata ayıklama konsolu** > ve site dizininin içeriğini inceleyerek test **araçları** ' na giderek emin olabilirsiniz.    
 
 * Ayarları kaydedin ve uygulamanızı yeniden başlatın. (Bu adımlar yalnızca Windows üzerinde çalışan uygulama hizmetleri için geçerlidir.)
 
 > [!NOTE]
-> AI-Agent. xml ve aracı jar dosyası aynı klasörde olmalıdır. Bunlar genellikle proje `/resources` klasörüne yerleştirilir.  
+> AI-Agent. xml ve aracı jar dosyası aynı klasörde olmalıdır. Bunlar genellikle projenin `/resources` klasörüne yerleştirilir.  
 
 #### <a name="enable-w3c-distributed-tracing"></a>W3C dağıtılmış izlemeyi etkinleştir
 
@@ -131,7 +126,7 @@ Bağımlılık, özel durum ve Yöntem raporlarının tek tek örneklerini arama
 
 [Bağımlılık sorunlarını tanılama-daha fazla bilgi edinin](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
 
-## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
+## <a name="questions-problems"></a>Sorularınız mı var? Sorunlar?
 * Veri yok mu? [Güvenlik Duvarı özel durumlarını ayarlama](../../azure-monitor/app/ip-addresses.md)
 * [Java Sorun Giderme](java-troubleshoot.md)
 

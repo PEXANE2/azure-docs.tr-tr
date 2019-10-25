@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/23/2019
+ms.openlocfilehash: de68d5217fb455c8d2b3e11163287e00abcf8481
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173487"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882520"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform kullanarak özel bir Packer görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 
@@ -42,9 +42,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Boş bir dizinde aşağıdaki adları kullanarak üç yeni dosya oluşturun:
 
-- `variables.tf` : Bu dosya şablonda kullanılan değişkenlerin değerlerini içerir.
-- `output.tf` : Bu dosya, dağıtımdan sonra görüntülenecek ayarları açıklar.
-- `vmss.tf` : Bu dosya, dağıtmakta olduğunuz altyapının kodunu içerir.
+- `variables.tf`: Bu dosya şablonda kullanılan değişkenlerin değerlerini içerir.
+- `output.tf`: Bu dosya dağıtımdan sonra görüntülenecek ayarları açıklar.
+- `vmss.tf`: Bu dosya, dağıtmakta olduğunuz altyapının kodunu içerir.
 
 ##  <a name="create-the-variables"></a>Değişkenleri oluşturma 
 
@@ -145,7 +145,7 @@ resource "azurerm_public_ip" "vmss" {
 terraform init 
 ```
  
-Sağlayıcı eklentileri Terraform kayıt defterinden komutu çalıştırdığınız dizindeki `.terraform` klasörüne indirilir.
+Sağlayıcı eklentileri, Terrayform kayıt defterinden komutu çalıştırdığınız dizindeki `.terraform` klasörüne indirir.
 
 Altyapıyı Azure'a dağıtmak için aşağıdaki komutu çalıştırın.
 

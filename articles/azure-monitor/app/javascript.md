@@ -1,23 +1,18 @@
 ---
 title: JavaScript web uygulamaları için Azure Application Insights | Microsoft Docs
 description: Sayfa görünümü ve oturum sayısını, web istemci verilerini alın ve kullanım desenlerini izleyin. JavaScript web sayfalarında özel durumları ve performans sorunlarını yakalayın.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: b49206c677e2f1b20c154ae0c9e358e8b2b0bbd8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 09/20/2019
+ms.openlocfilehash: 17765910b379bd4212d171cce6643de561db23ad
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430201"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819370"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -50,7 +45,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Kod parçacığı tabanlı kurulum
 
-Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, bağımlılıklarınızın tüm olası sorunlarını izleyebilmesi için `<head>` bölümündeki ilk betik olmalıdır. Blazor Server uygulaması kullanıyorsanız, `<head>` bölümünde dosyanın en üstüne kod parçacığını ekleyin `_Host.cshtml`.
+Uygulamanız NPM kullanmıyorsa, bu kod parçacığını sayfalarınızın en üstüne yapıştırarak Web sayfalarınızı Application Insights doğrudan bırakabilirsiniz. Tercihen, bağımlılıklarınızın tüm olası sorunlarını izleyebilmesi için `<head>` bölümündeki ilk betik olmalıdır. Blazor Server uygulaması kullanıyorsanız, `<head>` bölümündeki `_Host.cshtml` dosyanın en üstüne kod parçacığını ekleyin.
 
 ```html
 <script type="text/javascript">
@@ -85,7 +80,7 @@ Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sis
 ### <a name="telemetry-initializers"></a>Telemetri başlatıcıları
 Telemetri başlatıcıları, kullanıcının tarayıcısından gönderilmeden önce toplanan telemetrinin içeriğini değiştirmek için kullanılır. Ayrıca, `false` döndürerek belirli telemetri gönderilmesini engellemek için de kullanılabilir. Application Insights örneğinize birden çok telemetri başlatıcıları eklenebilir ve bunlar ekleme sırasında yürütülür.
 
-@No__t-0 ' a yönelik giriş bağımsız değişkeni, bir bağımsız değişken olarak [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer) alan ve bir `boolean` veya `void` döndüren bir geri çağırmasıdır. @No__t-0 döndürüyorsa telemetri öğesi gönderilmez, aksi takdirde bir sonraki telemetri başlatıcısına devam eder veya telemetri toplama uç noktasına gönderilir.
+`addTelemetryInitializer` giriş bağımsız değişkeni, bir [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer) bağımsız değişken olarak alan ve bir `boolean` ya da `void`döndüren bir geri çağırmasıdır. `false`döndürüyorsa telemetri öğesi gönderilmez, aksi takdirde bir sonraki telemetri başlatıcısına devam eder veya telemetri toplama uç noktasına gönderilir.
 
 Telemetri başlatıcılarının kullanılmasına bir örnek:
 ```ts
@@ -99,7 +94,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 ## <a name="configuration"></a>Yapılandırma
-Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. @No__t-0 dışında tüm alanlar isteğe bağlıdır.
+Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. `instrumentationKey`dışında tüm alanlar isteğe bağlıdır.
 
 | Adı | Varsayılan | Açıklama |
 |------|---------|-------------|
@@ -178,7 +173,7 @@ Ayrıca, portaldaki tarayıcı deneyimi aracılığıyla JavaScript SDK 'sindeki
 
 ### <a name="analytics"></a>Analiz 
 
-JavaScript SDK 'Sı tarafından toplanan telemetrinizi sorgulamak için **Günlükler (Analiz) Içinde görüntüle** düğmesini seçin. @No__t-1 ' in `where` bildirisini ekleyerek yalnızca JavaScript SDK 'sindeki verileri görürsünüz ve diğer SDK 'lar tarafından toplanan tüm sunucu tarafı telemetri hariç tutulur.
+JavaScript SDK 'Sı tarafından toplanan telemetrinizi sorgulamak için **Günlükler (Analiz) Içinde görüntüle** düğmesini seçin. `client_Type == "Browser"``where` bir ifade ekleyerek yalnızca JavaScript SDK 'dan verileri görürsünüz ve diğer SDK 'lar tarafından toplanan tüm sunucu tarafı telemetri hariç tutulur.
  
 ```kusto
 // average pageView duration by name
@@ -199,8 +194,8 @@ dataset
 
 Özel durum telemetrinizin mini ' çağrı yığını 'i Azure Portal için küçültülmüş olabilir. Özel durum ayrıntıları panelindeki tüm mevcut tümleştirmeler, yeni bir küçültülmüş Callstack ile birlikte çalışacaktır. Sürükle ve bırak kaynak eşlemesi, tüm mevcut ve gelecekteki JS SDK 'larını (+ node. JS) destekler, bu nedenle SDK sürümünüzü yükseltmeniz gerekmez. Mini olmayan çağrı yığınınızı görüntülemek için
 1. "Uçtan uca işlem ayrıntılarını" görüntülemek için Azure portal bir özel durum telemetrisi öğesi seçin
-2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak @no__t soneki, 0 ile düzeltildi
-3. Kaynak haritalarını Azure portal @no__t çağrı yığınına sürükleyip bırakın-0
+2. Hangi kaynak haritalarının bu çağrı yığınına karşılık geldiğini belirler. Kaynak eşlemesinin bir yığın çerçevesinin kaynak dosyasıyla eşleşmesi gerekir, ancak `.map`
+3. Kaynak haritalarını Azure portal çağrı yığınına sürükleyip bırakın ![](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web temel
 
@@ -208,7 +203,7 @@ Hafif bir deneyim için Application Insights temel sürümünü yükleyebilirsin
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şekilde oluşturmak için size dayanır. Örneğin, hiçbir yeniden koleksiyon (yakalanamayan özel durumlar, AJAX vb.) yoktur. @No__t-0, `trackException` vb. gibi belirli telemetri türlerini göndermek için API 'Ler bu sürüme dahil edilmez, bu nedenle kendi sarmalayıcı sağlamanız gerekir. Kullanılabilir tek API `track` ' dır. [Örnek](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) burada bulunur.
+Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şekilde oluşturmak için size dayanır. Örneğin, hiçbir yeniden koleksiyon (yakalanamayan özel durumlar, AJAX vb.) yoktur. `trackTrace`, `trackException`vb. gibi belirli telemetri türlerini göndermek için API 'Ler bu sürüme dahil edilmez, bu nedenle kendi sarmalayıcı sağlamanız gerekir. Kullanılabilir tek API `track` ' dır. [Örnek](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) burada bulunur.
 
 ## <a name="examples"></a>Örnekler
 
@@ -219,8 +214,8 @@ Bu sürüm, en az özellik ve işlevlere sahiptir ve uygun gördüğünüz şeki
 SDK v2 sürümündeki son değişiklikler:
 - Daha iyi API imzaları sağlamak için, trackPageView, trackException gibi bazı API çağrılarından bazıları güncelleştirilmiştir. IE8 ' te veya tarayıcının alt sürümlerinde çalıştırmak desteklenmez.
 - Telemetri zarfı, veri şeması güncelleştirmeleri nedeniyle alan adı ve yapı değişikliklerine sahiptir.
-- @No__t-0 `context.telemetryTrace` ' e taşındı. Bazı alanlar da değiştirildi (`operation.id` @ no__t-1 @ no__t-2)
-  - Geçerli sayfa görüntülemesi kimliğini (örneğin, spa uygulamalarında) el ile yenilemek istiyorsanız, bu işlem @no__t yapılabilir-0
+- `context.operation` `context.telemetryTrace`taşındı. Bazı alanlar da değiştirildi (`operation.id` --> `telemetryTrace.traceID`)
+  - Geçerli sayfa görüntülemesi kimliğini (örneğin, spa uygulamalarında) el ile yenilemek istiyorsanız, bu işlem `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
 
 Geçerli Application Insights ÜRETIM SDK 'sını (1.0.20) kullanıyorsanız ve yeni SDK 'nın çalışma zamanında çalışıp çalışmadığını görmek istiyorsanız, URL 'YI geçerli SDK yükleme senaryonuza bağlı olarak güncelleştirin.
 

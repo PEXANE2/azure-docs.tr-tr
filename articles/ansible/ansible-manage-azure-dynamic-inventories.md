@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: d89150f43205a4b38612008033ab5649acd9af5b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 38be15cf5771f7eb09bce1154baa3bc6e559d49b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241570"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881500"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Öğretici: Azure kaynaklarınızın dinamik envanterini, anormal kullanarak yapılandırma
 
@@ -28,7 +28,7 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 > * Etiketli sanal makinelere NGINX 'i yükler
 > * Yapılandırılmış Azure kaynaklarını içeren bir dinamik envanter yapılandırma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -36,9 +36,9 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
 
 ## <a name="create-the-test-vms"></a>Test VM 'Leri oluşturma
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)’ında oturum açın.
 
-1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açın.
+1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'i açın.
 
 1. Bu öğreticide sanal makineleri barındıracak bir Azure Kaynak grubu oluşturun.
 
@@ -67,30 +67,39 @@ Anormal, çeşitli kaynaklardan (Azure gibi bulut kaynakları dahil) *dinamik bi
                      --image UbuntuLTS --generate-ssh-keys
         ```
 
-## <a name="tag-a-vm"></a>VM etiketleme
+## <a name="tag-a-vm"></a>Bir VM’yi etiketleme
 
 Azure kaynaklarınızı Kullanıcı tanımlı kategorilere göre [düzenlemek için etiketleri kullanabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#azure-cli) . 
 
-@No__t-1 sanal makinesini `nginx` anahtarıyla etiketlemek için aşağıdaki [az Resource Tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) komutunu girin:
+### <a name="using-ansible-version--28"></a>< 2,8 sürümünü kullanma
+Anahtar `nginx``ansible-inventory-test-vm1` sanal makineyi etiketlemek için aşağıdaki [az Resource Tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) komutunu girin:
 
 ```azurecli-interactive
 az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
+
+### <a name="using-ansible-version--28"></a>Anormal sürümü kullanma > = 2,8
+Anahtar `Ansible=nginx``ansible-inventory-test-vm1` sanal makineyi etiketlemek için aşağıdaki [az Resource Tag](/cli/azure/resource?view=azure-cli-latest.md#az-resource-tag) komutunu girin:
+
+```azurecli-interactive
+az resource tag --tags Ansible=nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+```
+
 ## <a name="generate-a-dynamic-inventory"></a>Dinamik sayım oluşturma
 
 Sanal makinelerinizi tanımladıktan (ve etiketledikten) sonra, dinamik envanteri oluşturmak zaman alabilir.
 
 ### <a name="using-ansible-version--28"></a>< 2,8 sürümünü kullanma
 
-Anerişilebilir, Azure kaynaklarınızın dinamik envanterini oluşturan [azure_rm. Kopyala](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) adlı bir Python betiği sağlar. Aşağıdaki adımlarda, iki test Azure sanal makinelerinize bağlanmak için `azure_rm.py` betiğini kullanma işleminde size yol gösterilmektedir:
+Anerişilebilir, Azure kaynaklarınızın dinamik envanterini oluşturan [azure_rm. Kopyala](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) adlı bir Python betiği sağlar. Aşağıdaki adımlar, iki test Azure sanal makinelerinize bağlanmak için `azure_rm.py` betiğini kullanma konusunda size yol gösterir:
 
-1. @No__t-1 betiğini almak için GNU `wget` komutunu kullanın:
+1. `azure_rm.py` betiğini almak için GNU `wget` komutunu kullanın:
 
     ```azurecli-interactive
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
-1. @No__t-1 komut dosyasına erişim izinlerini değiştirmek için `chmod` komutunu kullanın. Aşağıdaki komut, belirtilen dosyanın (`azure_rm.py`) yürütülmesine (çalıştırmaya) izin vermek için `+x` parametresini kullanır:
+1. `azure_rm.py` betiğinin erişim izinlerini değiştirmek için `chmod` komutunu kullanın. Aşağıdaki komut, belirtilen dosyanın (`azure_rm.py`) yürütülmesine (çalıştırmaya) izin vermek için `+x` parametresini kullanır:
 
     ```azurecli-interactive
     chmod +x azure_rm.py
@@ -119,15 +128,19 @@ Anerişilebilir, Azure kaynaklarınızın dinamik envanterini oluşturan [azure_
 
 ### <a name="ansible-version--28"></a>Anerişilebilir sürüm > = 2,8
 
-Anormal 2,8 ile başlayarak, anormal bir [Azure Dynamic-Inventory eklentisi](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py)sağlar. Aşağıdaki adımlar, eklentiyi kullanma işleminde size yol gösterir:
+Anormal 2,8 ile başlayarak, anormal bir [Azure dinamik envanter eklentisi](https://github.com/ansible/ansible/blob/devel/lib/ansible/plugins/inventory/azure_rm.py)sağlar. Aşağıdaki adımlar, eklentiyi kullanma işleminde size yol gösterir:
 
-1. Envanter eklentisi bir yapılandırma dosyası gerektirir. Yapılandırma dosyası `azure_rm` ile bitmelidir ve `yml` veya `yaml` uzantılı bir uzantıya sahip olmalıdır. Bu öğretici örneği için aşağıdaki PlayBook 'u @no__t olarak kaydedin:
+1. Envanter eklentisi bir yapılandırma dosyası gerektirir. Yapılandırma dosyası `azure_rm` bitmelidir ve `yml` veya `yaml`uzantılı bir uzantıya sahip olmalıdır. Bu öğretici örneği için aşağıdaki PlayBook 'u `myazure_rm.yml`olarak kaydedin:
 
     ```yml
-    plugin: azure_rm
-    include_vm_resource_groups:
-    - ansible-inventory-test-rg
-    auth_source: auto
+        plugin: azure_rm
+        include_vm_resource_groups:
+        - ansible-inventory-test-rg
+        auth_source: auto
+    
+        keyed_groups:
+        - prefix: tag
+          key: tags
     ```
 
 1. Kaynak grubundaki VM 'Lere ping atamak için aşağıdaki komutu çalıştırın:
@@ -156,39 +169,55 @@ Anormal 2,8 ile başlayarak, anormal bir [Azure Dynamic-Inventory eklentisi](htt
     ```
 
 ## <a name="enable-the-vm-tag"></a>VM etiketini etkinleştir
-Bir etiket ayarladıktan sonra bu etiketi "etkinleştirmeniz" gerekir. Etiketi etkinleştirmenin bir yolu, etiketi bir ortam değişkenine dışarı aktarmaya `AZURE_TAGS` `export` komutu aracılığıyla:
 
-```azurecli-interactive
-export AZURE_TAGS=nginx
-```
+### <a name="if-youre-using-ansible--28"></a>< 2,8 kullanıyorsanız,
 
-- < 2,8 kullanıyorsanız, aşağıdaki komutu çalıştırın:
+- Bir etiket ayarladıktan sonra bu etiketi "etkinleştirmeniz" gerekir. Etiketi etkinleştirmenin bir yolu, etiketi bir ortam değişkenine dışarı aktararak `export` komutu aracılığıyla `AZURE_TAGS`.
+
+    ```azurecli-interactive
+    export AZURE_TAGS=nginx
+    ```
+    
+- Şu komutu çalıştırın:
 
     ```bash
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping
     ```
+    
+    Artık yalnızca bir sanal makine görürsünüz (etiketi, `AZURE_TAGS` ortam değişkenine eşlenen değerle eşleşen bir değer):
 
-- Daha erişilebilir > = 2,8 kullanıyorsanız aşağıdaki komutu çalıştırın:
-  
-    ```bash
-    ansible all -m ping -i ./myazure_rm.yml
+    ```Output
+       ansible-inventory-test-vm1 | SUCCESS => {
+        "changed": false,
+        "failed": false,
+        "ping": "pong"
+    }
     ```
 
-Artık yalnızca bir sanal makine görürsünüz (etiketi, `AZURE_TAGS` ortam değişkenine eşlenen değerle eşleşen bir değer):
+### <a name="if-youre-using-ansible---28"></a>Daha erişilebilir > = 2,8 ' i kullanıyorsanız
 
-```Output
-ansible-inventory-test-vm1 | SUCCESS => {
-    "changed": false,
-    "failed": false,
-    "ping": "pong"
-}
-```
+- Aşağıdaki çıktıyı almak için komutu `ansible-inventory -i myazure_rm.yml --graph` çalıştırın:
+
+    ```Output
+        @all:
+          |--@tag_Ansible_nginx:
+          |  |--ansible-inventory-test-vm1_9e2f
+          |--@ungrouped:
+          |  |--ansible-inventory-test-vm2_7ba9
+    ```
+
+- Ayrıca, NGINX VM bağlantısını test etmek için aşağıdaki komutu çalıştırabilirsiniz:
+  
+    ```bash
+    ansible -i ./myazure_rm.yml -m ping tag_Ansible_nginx
+    ```
+
 
 ## <a name="set-up-nginx-on-the-tagged-vm"></a>Etiketli VM 'de NGINX 'i ayarlama
 
 Etiketlerin amacı, sanal makinelerinizin alt grupları ile hızlı ve kolay bir şekilde çalışma olanağı sağlamaktır. Örneğin, yalnızca `nginx` etiketi atadığınız sanal makinelere NGINX yüklemek istediğinizi varsayalım. Aşağıdaki adımlar, ne kadar kolay bir şekilde gerçekleştirileceğini göstermektedir:
 
-1. @No__t adlı bir dosya oluşturun-0:
+1. `nginx.yml`adlı bir dosya oluşturun:
 
    ```azurecli-interactive
    code nginx.yml
@@ -197,36 +226,36 @@ Etiketlerin amacı, sanal makinelerinizin alt grupları ile hızlı ve kolay bir
 1. Aşağıdaki örnek kodu düzenleyiciye yapıştırın:
 
     ```yml
-    ---
-    - name: Install and start Nginx on an Azure virtual machine
-      hosts: all
-      become: yes
-      tasks:
-      - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
-
-      handlers:
-        - name: start nginx
-          service: name=nginx state=started
+        ---
+        - name: Install and start Nginx on an Azure virtual machine
+          hosts: all
+          become: yes
+          tasks:
+          - name: install nginx
+            apt: pkg=nginx state=installed
+            notify:
+            - start nginx
+    
+          handlers:
+            - name: start nginx
+              service: name=nginx state=started
     ```
 
 1. Dosyayı kaydedin ve düzenleyiciden çıkın.
 
-1. @No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+1. `ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
    - Anerişilebilir < 2,8:
 
-    ```bash
-    ansible-playbook -i azure_rm.py nginx.yml
-    ```
+     ```bash
+     ansible-playbook -i azure_rm.py nginx.yml
+     ```
 
    - Anerişilebilir > = 2,8:
 
-    ```bash
-     ansible-playbook  -i ./myazure_rm.yml  nginx.yml
-    ```
+     ```bash
+     ansible-playbook  -i ./myazure_rm.yml  nginx.yml --limit=tag_Ansible_nginx
+     ```
 
 1. PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
 
@@ -250,7 +279,7 @@ Etiketlerin amacı, sanal makinelerinizin alt grupları ile hızlı ve kolay bir
 
 Bu bölümde, NGINX 'in sanal makinenizde yüklü olduğunu test eden bir teknik gösterilmektedir.
 
-1. @No__t-1 sanal makinesinin IP adresini almak için [az VM List-ip-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) komutunu kullanın. Döndürülen değer (sanal makinenin IP adresi), sanal makineye bağlanmak için SSH komutuna parametre olarak kullanılır.
+1. `ansible-inventory-test-vm1` sanal makinenin IP adresini almak için [az VM List-ip-addresses](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) komutunu kullanın. Döndürülen değer (sanal makinenin IP adresi), sanal makineye bağlanmak için SSH komutuna parametre olarak kullanılır.
 
     ```azurecli-interactive
     ssh `az vm list-ip-addresses \
@@ -258,13 +287,13 @@ Bu bölümde, NGINX 'in sanal makinenizde yüklü olduğunu test eden bir teknik
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. @No__t-0 sanal makinesine bağlıyken NGINX [-v](https://nginx.org/en/docs/switches.html) komutunu çalıştırarak NGINX 'nin yüklü olup olmadığını saptayın.
+1. `ansible-inventory-test-vm1` sanal makinesine bağlıyken NGINX [-v](https://nginx.org/en/docs/switches.html) komutunu çalıştırarak NGINX 'nin yüklü olup olmadığını saptayın.
 
     ```azurecli-interactive
     nginx -v
     ```
 
-1. @No__t-0 komutunu çalıştırdığınızda NGINX 'in yüklü olduğunu belirten NGINX sürümü (ikinci satır) görürsünüz.
+1. `nginx -v` komutunu çalıştırdığınızda, NGINX 'in yüklü olduğunu belirten NGINX sürümü (ikinci satır) görürsünüz.
 
     ```Output
     tom@ansible-inventory-test-vm1:~$ nginx -v
@@ -276,7 +305,7 @@ Bu bölümde, NGINX 'in sanal makinenizde yüklü olduğunu test eden bir teknik
 
 1. SSH oturumunun bağlantısını kesmek için `<Ctrl>D` klavye birleşimine tıklayın.
 
-1. @No__t-0 sanal makinesi için önceki adımların yapılması, NGINX 'in nereden alınacağını belirten bir bilgi iletisi verir (Bu noktada yüklü olmadığını gösterir):
+1. `ansible-inventory-test-vm2` sanal makinesi için önceki adımların yapılması, NGINX 'in nereden alınacağını belirten bir bilgi iletisi verir (Bu noktada bu noktada yüklü olmadığını gösterir):
 
     ```Output
     tom@ansible-inventory-test-vm2:~$ nginx -v

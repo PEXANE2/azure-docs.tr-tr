@@ -15,16 +15,31 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: d8470ad759d983f25f8f68b93d58f89f23eeb578
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9427b72faf36106602cb59dc271d72402453e81e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015389"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821425"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services platformunda Media Analytics 
 
+## <a name="retirement-plans"></a>Emeklilik planları
+
+> [!IMPORTANT]
+> Aşağıdaki eski medya işlemcileri 2020 ' de kullanımdan kaldırılacak, aşağıdaki tablodaki ayrıntılara bakın. 
+
+|Medya işlemci adı|Emeklilik tarihi|Ek notlar|
+|---|---|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 Ocak 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştirilmeyecektir. Daha fazla bilgi için, bkz. [Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1 Ekim 2020|Bu medya işlemcisi [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)ile değiştirilmeyecektir. Daha fazla bilgi için bkz. [Azure Media Indexer 'den Azure Media Services 'ye geçirme video Indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Face Detector](media-services-face-and-emotion-detection.md)|1 Şubat 2020|Bu Media Analytics önizleme işlemcisi kullanımdan kaldırılacak ve genel kullanıma taşınmayacak. Gelecekteki yatırımların senaryolarını ve müşterilerle birlikte kullanım durumlarını değerlendireceğiz.|
+|[Azure Media Motion Detector](media-services-motion-detection.md)|1 Şubat 2020|Bu Media Analytics önizleme işlemcisi kullanımdan kaldırılacak ve genel kullanıma taşınmayacak. Gelecekteki yatırımların senaryolarını ve müşterilerle birlikte kullanım durumlarını değerlendireceğiz.|
+|[Azure Medya OCR](media-services-video-optical-character-recognition.md)|1 Şubat 2020|Bu medya işlemcisi, [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ve [Azure Media Services v3 API video Çözümleyicisi önceden ayarlı](../latest/analyzing-video-audio-files-concept.md)olacak şekilde değiştirilmelidir.|
+|[Azure Media Video Thumbnails](media-services-video-summarization.md)|1 Şubat 2020|Bu medya işlemcisi, [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ve [Azure Media Services v3 API video Çözümleyicisi önceden ayarlı](../latest/analyzing-video-audio-files-concept.md)olacak şekilde değiştirilmelidir.|
+
 ## <a name="overview"></a>Genel Bakış
+
 Daha fazla kuruluş, çalışanları eğitme, müşterilerine katılım ve iş işlevlerini belgelemek için tercih edilen ortam olarak videoyu kullanıyor. Bulut bilgi işlem, bu büyük medya dosyalarını depolamak, akışa almak ve bunlara erişmek için bir yol sağlar. Ancak, bir şirketin video içeriği kitaplığı büyüdükçe içerikten içgörüler elde etmek için eşit derecede etkili bir yöntem gerekir. 
 
 Bu büyüyen gereksinimi karşılamak için Azure Media Services Azure Media Analytics sunar. Medya Analizi, kuruluş ve işletmelerin video dosyalarından eyleme dönüştürülebilir öngörüler türetmesini kolaylaştıran bir grup konuşma ve görme bileşenidir. Çekirdek Media Services platform bileşenleri kullanılarak oluşturulan Media Analytics, medya işlemeyi günde bir ölçekte işleyebilir.
@@ -39,7 +54,7 @@ Medya Analizi medya işlemcileri MP4 veya JSON dosyaları üretir. Medya işlemc
 
 ## <a name="media-analytics-services"></a>Media Analytics hizmetleri
 
-### <a name="indexer"></a>Dizin Oluşturucu
+### <a name="indexer"></a>Dizinleyici
 Azure Media Indexer, içeriği aranabilir hale getirebilirsiniz ve kapalı açıklamalı altyazı parçaları oluşturabilirsiniz. Önceki sürümle karşılaştırıldığında, Azure Media Indexer 2 önizlemesinde daha hızlı Dizin oluşturma ve daha geniş dil desteği vardır. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince, Portekizce ve Arapça bulunur. Ayrıntılı bilgi ve örnekler için bkz. [Azure Media Indexer 2 Ile işlem videoları](media-services-process-content-with-indexer2.md).
 ### <a name="motion-detector"></a>Hareket Algılayıcısı
 Hareket algılayıcısının, sabit arka planların bulunduğu bir videodaki hareketi algılamak için kullanabilirsiniz. Bu, gözetim kameraları tarafından algılanan hareket olaylarında hatalı pozitif sonuçlar olup olmadığını denetlemeyi mümkün kılar. Ayrıntılı bilgi ve örnekler için bkz. [Azure Media Analytics Için hareket algılama](media-services-motion-detection.md).
@@ -122,10 +137,10 @@ Yanıt:
        ]
     }
 
-## <a name="demos"></a>Tanıtımlar
+## <a name="demos"></a>Demolar
 Bkz. [Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler

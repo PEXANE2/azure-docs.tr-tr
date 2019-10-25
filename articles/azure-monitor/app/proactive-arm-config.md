@@ -1,24 +1,19 @@
 ---
 title: Azure Application Insights akıllı algılama kuralı ayarlarını Azure Resource Manager şablonlarla yapılandırma | Microsoft Docs
 description: Azure Resource Manager şablonlarıyla Azure Application Insights akıllı algılama kuralları yönetimini ve yapılandırmasını otomatikleştirin
-services: application-insights
-documentationcenter: ''
-author: harelbr
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: harelbr
+ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.author: harelbr
-ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b55271b39bf2a65dababbef58f7389ca07d57d8
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193729"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818840"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Application Insights akıllı algılama kurallarını yönetme
 
@@ -153,7 +148,7 @@ Bu Azure Resource Manager şablonu, 2 önem derecesine sahip bir hata anomali v2
             "name": "Failure Anomalies - my-app",
             "location": "global", 
             "properties": {
-                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls.",
                   "state": "Enabled",
                   "severity": "2",
                   "frequency": "PT1M",
@@ -180,13 +175,13 @@ Aşağıda, portalda göründükleri şekilde, Azure Resource Manager şablonund
 > [!NOTE]
 > _Önizleme_ olarak işaretlenen akıllı algılama kuralları, e-posta bildirimlerini desteklemez. Bu nedenle, bu kurallar için yalnızca _etkin_ özelliği ayarlayabilirsiniz. 
 
-| Azure portal kural adı | İç adı
+| Azure portal kural adı | İç ad
 |:---|:---|
 | Yavaş sayfa yükleme süresi | yavaşpageloadtime |
-| Yavaş sunucu yanıtı süresi | yavaşsunucuresponsetime |
+| Yavaş sunucu yanıt süresi | yavaşsunucuresponsetime |
 | Uzun bağımlılık süresi | longdependencyduration |
-| Sunucu yanıt süresinde performans düşüşü | korlationınserverresponsetime |
-| Bağımlılık süresi düşüşü | degradationindependencyduration |
+| Sunucu yanıt süresi düşüklüğüne | korlationınserverresponsetime |
+| Bağımlılık süresinde düşme | degradationindependencyduration |
 | İzleme önem oranına göre düşme (Önizleme) | extension_traceseveritydetector |
 | Özel durum biriminde olağan dışı artış (Önizleme) | extension_exceptionchangeextension |
 | Olası bellek sızıntısı algılandı (Önizleme) | extension_memoryleakextension |

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596532"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882435"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Veri akışı için havuz dönüştürme
 
@@ -53,8 +53,8 @@ Sütun eşlemelerinizi sıfırlamak için **yeniden eşle**' yi seçin.
 
 Hedef klasördeki hedef dosyaları yazmadan önce havuz klasörünün içeriğini kesmek için **klasörü temizle** ' yi seçin.
 
-## <a name="rule-based-mapping"></a>Kural tabanlı eşleme
-Otomatik eşlemeyi devre dışı bırakırsanız, sütun tabanlı eşleme (Sabit eşleme) veya kural tabanlı eşleme ekleme seçeneğine sahip olursunuz. Kural tabanlı eşleme, kalıp eşleme ile ifade yazmanıza izin verir. 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Sabit eşleme ve kural tabanlı eşleme karşılaştırması
+Otomatik eşlemeyi devre dışı bırakırsanız, sütun tabanlı eşleme (Sabit eşleme) veya kural tabanlı eşleme ekleme seçeneğine sahip olursunuz. Kural tabanlı eşleme, sabit eşleme mantıksal ve fiziksel sütun adlarını eşleyebileceğiniz sırada eşleşen ifadeler yazmanıza izin verir.
 
 ![Kural tabanlı eşleme](media/data-flow/rules4.png "Kural tabanlı eşleme")
 
@@ -65,6 +65,12 @@ Model eşleştirme ayrıntıları, [sütun deseninin belgelerinde](concepts-data
 Ayrıca, satırı genişleterek ve "ad eşleşmeleri:" nın yanına bir normal ifade girerek kural tabanlı eşleştirmeyi kullanırken normal ifade desenleri de girebilirsiniz.
 
 ![Regex eşleme](media/data-flow/scdt1g4.png "Regex eşleme")
+
+Kural tabanlı eşleme ve sabit eşleme ile ilgili temel yaygın bir örnek, tüm gelen alanları Hedefinizdeki aynı ada eşlemek istediğiniz durumdur. Sabit eşlemeler söz konusu olduğunda, tablodaki her sütunu ayrı ayrı listeleyin. Kural tabanlı eşleme için, ```true()``` kullanan tüm alanları ```$$```temsil eden aynı gelen alan adına eşleyen tek bir kuralınız olur.
+
+### <a name="sink-association-with-dataset"></a>Veri kümesiyle havuz ilişkilendirmesi
+
+Havuzunuzu seçtiğiniz veri kümesi, veri kümesi tanımında tanımlanmış bir şemaya sahip olabilir veya olmayabilir. Tanımlı bir şemaya sahip değilse, şema DRA izin vermeniz gerekir. Sabit bir eşleme tanımladığınızda, mantıksal-fiziksel ad eşlemesi havuz dönüşümünde kalır. Veri kümesinin şema tanımını değiştirirseniz, havuz eşlemenizi büyük olasılıkla bozacaksınız. Bunu önlemek için kural tabanlı eşleme kullanın. Kural tabanlı eşlemeler genelleştirilir, yani veri kümenizdeki şema değişikliklerinin eşlemeyi bozmayacak anlamına gelir.
 
 ## <a name="file-name-options"></a>Dosya adı seçenekleri
 

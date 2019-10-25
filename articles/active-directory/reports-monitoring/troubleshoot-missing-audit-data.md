@@ -1,5 +1,5 @@
 ---
-title: 'Sorun giderme: Azure Active Directory etkinlik günlüklerindeki eksik veriler | Microsoft Docs'
+title: Etkinlik günlüklerinde eksik verileri giderme | Microsoft Docs
 description: Azure Active Directory etkinlik günlüklerindeki eksik verilere yönelik bir çözüm sağlar.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 01/15/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a04de319a17255e3b61378cbd716828a237317b3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7aeac1180292ea5200e9eabc30ee01db05b67e75
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989511"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820858"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Giderilmesine Azure Active Directory etkinlik günlüklerinde eksik veriler 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Sorun giderme: Azure Active Directory etkinlik günlüklerindeki eksik veriler 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Azure portalda son eylemlerin denetim günlüklerini bulamıyorum
 
@@ -43,7 +43,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 | Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
 | Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -53,7 +53,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalında kısa bir süre önce oturum açtım ve bu oturum açma işleminin günlük girişlerini `Activity logs > Sign-ins` dikey penceresinde görmeyi umuyordum, ancak bulamıyorum.
 
- ![Raporlanıyor](./media/troubleshoot-missing-audit-data/02.png)
+ ![Raporlama](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Nedeni
 
@@ -64,7 +64,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 | Dizin denetimi | &nbsp; | 2 dk. | 5 dk. |
 | Oturum açma etkinliği | &nbsp; | 2 dk. | 5 dk. | 
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
@@ -74,7 +74,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 Azure portalda 30 günden daha eski oturum açma ve denetim verilerini görüntüleyemiyorum. Neden? 
 
- ![Raporlanıyor](./media/troubleshoot-missing-audit-data/03.png)
+ ![Raporlama](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Nedeni
 
@@ -87,7 +87,7 @@ Lisansınıza bağlı olarak, etkinlik raporları Azure Active Directory Actions
 
 Daha fazla bilgi için bkz. [Azure Active Directory rapor bekletme ilkeleri](reference-reports-data-retention.md).  
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 Verileri 30 günden daha uzun bir süre boyunca saklamak için iki seçeneğiniz vardır. [Azure AD Raporlama API'lerini](concept-reporting-api.md) kullanarak verileri program aracılığıyla alabilir ve bir veritabanında kaydedebilirsiniz. Alternatif olarak denetim günlüklerini Splunk veya SumoLogic gibi bir üçüncü taraf SIEM sistemiyle tümleştirebilirsiniz.
 

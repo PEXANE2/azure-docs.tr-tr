@@ -5,25 +5,20 @@ author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648890"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880214"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 
-Azure Cosmos DB terabaytlarca veri depolayabilirler. Üretim iş yükünüzü Azure Cosmos DB taşımak için büyük ölçekli veri geçişi gerçekleştirebilirsiniz. Bu makalede büyük ölçekli verileri Azure Cosmos DB taşımaya ve sorunları gidermenize yardımcı olan ve Azure Cosmos DB verileri geçirmede size yardımcı olan araç hakkında sorunlar açıklanmaktadır. Bu durumda, müşteri SQL API Cosmos DB kullandı.  
+Azure Cosmos DB terabaytlarca veriyi depolayabilir. Üretim iş yükünüzü Azure Cosmos DB’ye taşımak için büyük ölçekli bir veri geçişi yapabilirsiniz. Bu makalede büyük ölçekli verileri Azure Cosmos DB taşımaya ve sorunları gidermenize yardımcı olan ve Azure Cosmos DB verileri geçirmede size yardımcı olan araç hakkında sorunlar açıklanmaktadır. Bu durumda, müşteri SQL API Cosmos DB kullandı.  
 
 İş yükünün tamamını Azure Cosmos DB geçirmeden önce bölüm anahtarı seçimi, sorgu performansı ve veri modelleme gibi bazı yönleri doğrulamak üzere bir veri alt kümesini geçirebilirsiniz. Kavram kanıtı 'nı doğruladıktan sonra, tüm iş yükünü Azure Cosmos DB taşıyabilirsiniz.  
-
-Ayrıca, Azure Cosmos DB üzerinde uygulamalarınızı oluşturmayı veya geçirmeyi hızlandırmak için [Cosmos DB önyükleme programını](https://azurecosmosdb.github.io/CosmosBootstrap/) da kullanabilirsiniz. Bu programın bir parçası olarak, Azure Cosmos DB takımdan mühendisler projenize atanır ve verilerinizi Azure Cosmos DB geçirmenize yardımcı olur. Cosmos DB önyükleme programına kaydolmak için aşağıdaki düğmeye tıklayın:
-
-> [!div class="nextstepaction"]
-> [Önyükleme programını Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Veri geçiş araçları 
 
@@ -33,11 +28,11 @@ Azure Cosmos DB geçiş stratejileri Şu anda API seçimine ve verilerin boyutun
 
 Azure Cosmos DB veri taşımaya yönelik mevcut araçlar, özellikle büyük ölçeklerde görünen bazı sınırlamalara sahiptir:
 
- * **Sınırlı genişleme özellikleri**: Azure Cosmos DB terabaytlarca verileri mümkün olduğunca hızlı bir şekilde geçirmek ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin süresiz olarak ölçeklendirme özelliği olmalıdır.  
+ * **Sınırlı ölçek genişletme özellikleri**: terabaytlarca veri Azure Cosmos DB, mümkün olduğunca hızlı bir şekilde geçiş yapmak ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin sonsuza kadar ölçeklendirme yeteneği olmalıdır.  
 
-* **İlerleme durumu izlemenin ve iadelerin Işaret olmaması**: Geçiş ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. % 99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
+* **İlerleme izlemenin ve onay durumunun olmaması**: geçiş işleminin ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
 
-* **Sahipsiz sıra olmaması**: Büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümleriyle ilgili sorunlar olabilir. Ayrıca, istemci veya ağla ilgili geçici sorunlar da olabilir. Bu durumların herhangi biri, geçişin tamamının başarısız olmasına neden olmamalıdır. Çoğu geçiş aracının aralıklı sorunlara karşı koruma sağlayan güçlü yeniden deneme özellikleri olsa da, her zaman yeterince olmaz. Örneğin, kaynak veri belgelerinin% 0,01 ' sinden azı boyutu 2 MB 'tan fazlaysa, Azure Cosmos DB belge yazma işlemi başarısız olur. En ideal olarak, geçiş aracının bu ' başarısız ' belgelerini başka bir atılacak ileti kuyruğuna kalıcı hale getirmek için, geçiş sonrası işlenebilen yararlı bir seçenektir. 
+* **Sahipsiz sıra olmaması**durumunda: büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümleriyle ilgili sorunlar olabilir. Ayrıca, istemci veya ağla ilgili geçici sorunlar da olabilir. Bu durumların herhangi biri, geçişin tamamının başarısız olmasına neden olmamalıdır. Çoğu geçiş aracının aralıklı sorunlara karşı koruma sağlayan güçlü yeniden deneme özellikleri olsa da, her zaman yeterince olmaz. Örneğin, kaynak veri belgelerinin% 0,01 ' sinden azı boyutu 2 MB 'tan fazlaysa, Azure Cosmos DB belge yazma işlemi başarısız olur. En ideal olarak, geçiş aracının bu ' başarısız ' belgelerini başka bir atılacak ileti kuyruğuna kalıcı hale getirmek için, geçiş sonrası işlenebilen yararlı bir seçenektir. 
 
 Azure Data Factory, Azure Data Migration hizmetleri gibi araçlar için bu sınırlamaların birçoğu düzeltilmekte. 
 
@@ -129,7 +124,7 @@ Geçişin mümkün olan en kısa sürede tamamlanması gerektiğinden, alınan h
 
 Geçiş işlemi tamamlandıktan sonra, dizin oluşturmayı güncelleştirebilirsiniz.  
 
-## <a name="migration-process"></a>Geçiş işlemi 
+## <a name="migration-process"></a>Geçiş süreci 
 
 Önkoşullar tamamlandıktan sonra, aşağıdaki adımlarla veri geçirebilirsiniz:  
 
@@ -154,10 +149,7 @@ Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek içi
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [.Net](bulk-executor-dot-net.md) ve [Java](bulk-executor-java.md)'daki toplu yürütücü kitaplığını kullanan örnek uygulamaları deneyerek daha fazla bilgi edinin. 
 * Toplu yürütücü kitaplığı, Cosmos DB Spark Bağlayıcısı ile tümleşiktir, daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md) makalesi.  
 * Büyük ölçekli geçişlerle ilgili ek yardım için "genel Danışma belgesi" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun. 
-* Azure Cosmos DB üzerinde uygulamalarınızı oluşturmayı veya geçirmeyi hızlandırmak için [Cosmos DB önyükleme programını](https://azurecosmosdb.github.io/CosmosBootstrap/) kullanın.
-
-> [!div class="nextstepaction"]
-> [Önyükleme programını Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)

@@ -1,20 +1,18 @@
 ---
 title: OpenCensus ile Azure Application Insights izleme | Microsoft Docs
 description: OpenCensus go izlemeyi yerel iletici ve Application Insights tümleştirme hakkında yönergeler sağlar
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67990296"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819274"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Go 'dan dağıtılmış izlemeler toplayın (Önizleme)
 
@@ -30,13 +28,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 ## <a name="create-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
 İlk olarak, bir izleme anahtarı (Ikey) oluşturacak bir Application Insights kaynağı oluşturmanız gerekir. Daha sonra Ikey, OpenCensus tarafından izlenen uygulamanızdaki dağıtılmış izlemeleri Application Insights olarak göndermek üzere yerel ileticisini yapılandırmak için kullanılır.   
 
-1.  > **Application Insights** **Geliştirici Araçları** kaynakoluştur'u > seçin.
+1. **Application Insights** > **Geliştirici Araçları** > **kaynak oluştur** ' u seçin.
 
    ![Application Insights Kaynağı ekleme](./media/opencensus-Go/0001-create-resource.png)
 
@@ -47,11 +45,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
     | Ayarlar        | Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+   | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
    | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıran yeni kaynak grubunun adı |
-   | **Location** | East US | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
+   | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2.           **Oluştur**'a tıklayın.
+2. **Oluştur**’a tıklayın.
 
 ## <a name="configure-local-forwarder"></a>Yerel ileticisi yapılandırma
 
@@ -59,7 +57,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    ![İzleme anahtarının ekran görüntüsü](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. `LocalForwarder.config` Dosyanızı düzenleyin ve izleme anahtarınızı ekleyin. [Önkoşul](./opencensus-local-forwarder.md) ' deki yönergeleri izlediyseniz, dosyanın bulunduğu konum`C:\LF-WindowsServiceHost`
+2. `LocalForwarder.config` dosyanızı düzenleyin ve izleme anahtarınızı ekleyin. [Önkoşul](./opencensus-local-forwarder.md) ' deki yönergeleri izlediyseniz, dosyanın bulunduğu `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,11 +184,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
         }
      ```
 
-3. Basit Go uygulaması çalışmaya başladıktan sonra şuraya gidin `http://localhost:50030`. Her tarayıcıyı yenileme işlemi, yerel iletici tarafından çekilen ilgili yayılmış veriler ile birlikte "Hello World" metnini oluşturur.
+3. Basit Go uygulaması çalışmaya başladıktan sonra `http://localhost:50030`gidin. Her tarayıcıyı yenileme işlemi, yerel iletici tarafından çekilen ilgili yayılmış veriler ile birlikte "Hello World" metnini oluşturur.
 
-4. **Yerel ileticinin** izlemelerin kullanıma hazır olduğunu doğrulamak için `LocalForwarder.config` dosyayı kontrol edin. [Önkoşulun](https://docs.microsoft.com/azure/application-insights/local-forwarder)içindeki adımları izlediyseniz, içinde `C:\LF-WindowsServiceHost`bulunur.
+4. **Yerel ileticinin** izlemelerin kullanıma hazır olduğunu doğrulamak için `LocalForwarder.config` dosyasına bakın. [Önkoşulun](https://docs.microsoft.com/azure/application-insights/local-forwarder)içindeki adımları izlediyseniz `C:\LF-WindowsServiceHost`' de yer alır.
 
-    Günlük dosyasının altındaki görüntüde, bir dışarı aktarma `OpenCensus input BatchesReceived` eklediğimiz ikinci betiği çalıştırmadan önce 0 olduğunu görebilirsiniz. Güncelleştirilmiş betiği `BatchesReceived` çalıştırmaya başladıktan sonra, girdiğimiz değer sayısına eşit olarak artırılır:
+    Günlük dosyasının altındaki görüntüde, `OpenCensus input BatchesReceived` bir dışarı aktarma eklediğimiz ikinci betiği çalıştırmadan önce 0 idi. Güncelleştirilmiş betiği çalıştırmaya başladığımızda, girdiğimiz değer sayısına eşit olarak artırılır `BatchesReceived`:
     
     ![Yeni App Insights kaynağı formu](./media/opencensus-go/0004-batches-received.png)
 
@@ -200,7 +198,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
    ![Kırmızı kutuda seçili canlı ölçüm akışının bulunduğu genel bakış bölmesinin ekran görüntüsü](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. İkinci Go uygulamasını yeniden çalıştırırsanız ve için `http://localhost:50030`tarayıcıyı yenilemeyi başlatırsanız, yerel iletici hizmetinden Application Insights gelen canlı izleme verilerini görürsünüz.
+2. İkinci Go uygulamasını yeniden çalıştırırsanız ve `http://localhost:50030`için tarayıcıyı yenilemeyi başlatırsanız, canlı izleme verilerini yerel iletici hizmetinden Application Insights ulaştığı şekilde görürsünüz.
 
    ![Performans verileri görüntülenirken canlı ölçüm akışının ekran görüntüsü](./media/opencensus-go/0006-stream.png)
 

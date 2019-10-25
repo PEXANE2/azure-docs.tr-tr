@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d49d763dedc5d86557dadd10f5d727e7893dbe
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2e2195c61acbf39b40a7659335afff78ac03cb4b
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563065"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881415"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak Azure sanal ağını CloudSimple 'a bağlama
 
@@ -26,19 +26,26 @@ ms.locfileid: "69563065"
 * Sorun türü: **Teknik**
 * Abonelik: **CloudSimple hizmetinin dağıtıldığı aboneliği seçin**
 * Hizmet: **CloudSimple tarafından VMware çözümü**
-* Sorun türü: **Hizmet isteği**
-* Sorun alt türü: **Azure VNET bağlantısı için yetkilendirme anahtarı**
-* Konu: **Azure VNET bağlantısı için yetkilendirme anahtarı isteği**
+* Sorun türü: **hizmet isteği**
+* Sorun alt türü: **Azure VNet bağlantısı Için yetkilendirme anahtarı**
+* Subject: **Azure VNet bağlantısı için yetkilendirme anahtarı isteği**
 
-## <a name="obtain-peering-information-for-azure-virtual-network-to-cloudsimple-connection"></a>Azure sanal ağı ile CloudSimple bağlantısı arasındaki eşleme bilgilerini alın
+## <a name="get-peering-information-from-cloudsimple-portal"></a>CloudSimple portalından eşleme bilgilerini al
 
 Bağlantıyı kurmak için, Azure sanal ağı ile CloudSimple ortamınız arasında bir bağlantı kurmanız gerekir.  Yordamın bir parçası olarak, eşdüzey devre URI 'sini ve yetkilendirme anahtarını sağlamalısınız. [Cloudsimple PORTALıNDAN](access-cloudsimple-portal.md)URI ve yetkilendirme anahtarını edinin.  Yan menüden **ağ** ' ı seçin ve ardından **Azure ağ bağlantısı**' nı seçin. Veya yan menüden **Hesap** ' ı seçin ve ardından **Azure ağ bağlantısı**' nı seçin.
 
-Eş devre URI 'SI ve her bir bölgenin yetkilendirme anahtarı için kopyalama simgeleri olduğuna dikkat edin. Bağlanmak istediğiniz her bir özel bulut için:
+*Kopya* simgesini kullanarak her bir bölgenin yetkilendirme anahtarını ve eş devre URI 'sini kopyalayın. Bağlamak istediğiniz her CloudSimple bölgesi için:
 
-* URI 'yi kopyalamak için **Kopyala** ' ya tıklayın. Azure portal eklemek için kullanılabilecek bir dosyaya yapıştırın.  
-* Yetkilendirme anahtarını kopyalamak için **Kopyala** ' ya tıklayın ve dosyayı da dosyaya yapıştırın.
+1. URI 'yi kopyalamak için **Kopyala** ' ya tıklayın. Azure portal eklemek için kullanılabilecek bir dosyaya yapıştırın.  
+2. Yetkilendirme anahtarını kopyalamak için **Kopyala** ' ya tıklayın ve dosyayı da dosyaya yapıştırın.
 
-![Sanal ağ bağlantısı sayfası](media/network-virt-conn-page.png)
+**Kullanılabilir** durumda olan yetkilendirme anahtarını ve eş devre dışı URI 'yi kopyalayın.  **Kullanılan** durum, anahtarın zaten bir sanal ağ bağlantısı oluşturmak için kullanıldığını gösterir.
+
+![Sanal ağ bağlantısı sayfası](media/virtual-network-connection.png)
 
 Azure sanal ağını CloudSimple bağlantısına ayarlama hakkında daha fazla bilgi için bkz. [ExpressRoute kullanarak Cloudsimple özel bulut ortamınızı Azure sanal ağına bağlama](azure-expressroute-connection.md).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Özel buluta Azure sanal ağ bağlantısı](azure-expressroute-connection.md)
+* [Azure ExpressRoute kullanarak şirket içi ağa bağlanma](on-premises-connection.md)

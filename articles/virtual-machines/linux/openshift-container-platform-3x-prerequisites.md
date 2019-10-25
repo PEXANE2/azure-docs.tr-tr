@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 591cc7a4b84f75536446abbcbe32a69a122ddf5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0b7eaaf68c1b0907b6d687b823ef71a7c9bd0102
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392676"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882409"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtmaya yönelik genel Önkoşullar
 
@@ -79,7 +79,7 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>SSH anahtarı oluşturma 
-OpenShift kümesine erişimin güvenliğini sağlamak için bir SSH anahtarı gereklidir. @No__t-0 komutunu (Linux veya macOS üzerinde) kullanarak bir SSH anahtar çifti oluşturun:
+OpenShift kümesine erişimin güvenliğini sağlamak için bir SSH anahtarı gereklidir. `ssh-keygen` komutunu kullanarak bir SSH anahtar çifti oluşturun (Linux veya macOS üzerinde):
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
@@ -113,14 +113,16 @@ az group create -l eastus -n openshiftrg
 Hizmet sorumlusu oluşturma:
 
 ```azurecli
-scope=`az group show --name openshiftrg --query id`
-az ad sp create-for-rbac --name openshiftsp \
-      --role Contributor --password {Strong Password} \
-      --scopes $scope \
+az group show --name openshiftrg --query id
 ```
-Windows kullanıyorsanız, ```az group show --name openshiftrg --query id``` yürütün ve $scope yerine çıktıyı kullanın.
+Komutun çıkışını kaydedin ve sonraki komutta $scope yerine kullanın
 
-Komuttan döndürülen AppID özelliğini bir yere göz atın:
+```azurecli
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --scopes $scope \
+```
+
+Komuttan döndürülen AppID özelliğini ve parolayı bir yere göz atın:
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -131,7 +133,7 @@ Komuttan döndürülen AppID özelliğini bir yere göz atın:
 }
 ```
  > [!WARNING] 
- > Güvenli bir parola oluşturmayı unutmayın. [Azure AD parola kuralları ve kısıtlamaları](/azure/active-directory/active-directory-passwords-policy) yönergelerini izleyin.
+ > Bu parolayı yeniden almak mümkün olmadığından, güvenli parolayı yazdığınızdan emin olun.
 
 Hizmet sorumluları hakkında daha fazla bilgi için bkz. [Azure CLI Ile Azure hizmet sorumlusu oluşturma](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 

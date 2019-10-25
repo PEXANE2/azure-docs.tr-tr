@@ -1,30 +1,26 @@
 ---
 title: Azure Application Insights Profiler ayarları bölmesini kullanma | Microsoft Docs
 description: Profil Oluşturucu durumunu görün ve profil oluşturma oturumlarını başlatın
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 12cb8e31617ee6b1e0c8515e66e265f4eccdf3df
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338041"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820481"
 ---
-# <a name="configure-application-insights-profiler"></a>Application Insights Profiler'ı Yapılandır
+# <a name="configure-application-insights-profiler"></a>Application Insights Profiler Yapılandır
 
 ## <a name="updated-profiler-agent"></a>Profil Oluşturucu aracısı güncelleştirildi
 Tetikleyici özellikleri, profil oluşturucu aracısının yalnızca sürüm 2,6 veya daha yeni bir sürümüyle çalışır. Bir Azure App Service çalıştırıyorsanız, aracınız otomatik olarak güncelleştirilir. Web sitenizin kudu URL 'sine giderseniz ve aşağıdaki gibi \DiagnosticServices öğesini sonuna eklemek için aracının hangi sürümünü çalıştırdığınızı görebilirsiniz: https://yourwebsite.scm.azurewebsites.net/diagnosticservices. Application Insights Profiler WebJob sürümü 2,6 veya daha yeni bir sürüm olmalıdır. Web uygulamanızı yeniden başlatarak yükseltmeyi zorlayabilirsiniz. 
 
-Profil oluşturucuyu bir VM veya bulut hizmetinde çalıştırıyorsanız, Windows Azure Tanılama (WAD) uzantısı sürüm 16.0.4 veya daha yeni bir sürümü yüklü olmalıdır. SANAL makinenizde oturum açarak ve bu dizini arayarak WAD sürümünü denetleyebilirsiniz: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Dizin adı, yüklü olan WAD 'nin sürümüdür. Yeni sürümler kullanılabilir olduğunda, Azure VM Aracısı WAD 'yi otomatik olarak güncelleştirir.
+Profil oluşturucuyu bir VM veya bulut hizmetinde çalıştırıyorsanız, Windows Azure Tanılama (WAD) uzantısı sürüm 16.0.4 veya daha yeni bir sürümü yüklü olmalıdır. SANAL makinenizde oturum açarak ve şu dizine bakarak WAD 'nin sürümünü denetleyebilirsiniz: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. Dizin adı, yüklü olan WAD 'nin sürümüdür. Yeni sürümler kullanılabilir olduğunda, Azure VM Aracısı WAD 'yi otomatik olarak güncelleştirir.
 
 ## <a name="profiler-settings-page"></a>Profil Oluşturucu ayarları sayfası
 
@@ -49,7 +45,7 @@ Bu seçenek, isteğe bağlı olarak profil oluşturma oturumu başlatabilmeniz i
 
 Bir kullanıcının profil oluşturucu oturumunu el ile tetiklemesi için, Application Insights bileşeni için rolünde en az "yazma" erişiminin olması gerekir. Çoğu durumda, bu erişimi otomatik olarak alır ve ek bir iş gerekmez. Sorun yaşıyorsanız, eklenecek abonelik kapsamı rolü "Application Insights bileşen katılımcısı" rolü olacaktır. [Azure izleme ile rol erişimi denetimi hakkında daha fazla](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control)bilgi için bkz.
 
-## <a name="trigger-settings"></a>Tetikleyici Ayarları
+## <a name="trigger-settings"></a>Tetikleyici ayarları
 ![Tetikleyici ayarları açılır menüsü][trigger-settings-flyout]
 
 Menü çubuğundaki Tetikleyiciler düğmesine tıkladığınızda tetikleyici ayarları kutusu açılır. CPU veya bellek kullanımı yüzdesi ayarladığınız düzeyi ziyaret edildiğinde profil oluşturmayı başlatacak şekilde tetikleyebilirsiniz.
@@ -58,8 +54,8 @@ Menü çubuğundaki Tetikleyiciler düğmesine tıkladığınızda tetikleyici a
 |-|-|
 Açık/kapalı düğmesi | Açık: Profiler, bu tetikleyici tarafından başlatılabilir; Kapalı: Profil Oluşturucu bu tetikleyici tarafından başlatılmayacak.
 Bellek eşiği | Bu bellek yüzdesi kullanımda olduğunda, profil oluşturucu başlatılır.
-Duration | Profiler 'ın tetiklendiğinde çalışacağı sürenin uzunluğunu ayarlar.
-Bekleme | Profil oluşturucunun, bellek veya CPU kullanımını, tetiklendikten sonra tekrar denetlemeden önce bekleyeceği sürenin uzunluğunu ayarlar.
+Süre | Profiler 'ın tetiklendiğinde çalışacağı sürenin uzunluğunu ayarlar.
+Coolaşağı | Profil oluşturucunun, bellek veya CPU kullanımını, tetiklendikten sonra tekrar denetlemeden önce bekleyeceği sürenin uzunluğunu ayarlar.
 
 ## <a name="recent-profiling-sessions"></a>Son profil oluşturma oturumları
 Sayfanın bu bölümü, son profil oluşturma oturumları hakkında bilgi gösterir. Profil oluşturma oturumu, profil oluşturucu aracısının uygulamanızı barındıran makinelerden birinde bir profil aldığı zaman dilimini temsil eder. Satırlardan birine tıklayarak profilleri bir oturumdan açabilirsiniz. Her oturum için şunu göstereceğiz:
@@ -67,9 +63,9 @@ Sayfanın bu bölümü, son profil oluşturma oturumları hakkında bilgi göste
 | | |
 |-|-|
 Tetikleyen | Oturumun nasıl başlatıldığı, bir tetikleyici, şimdi profil veya varsayılan örnekleme. 
-Uygulama Adı | Profili oluşturulan uygulamanın adı.
+Uygulama adı | Profili oluşturulan uygulamanın adı.
 Makine örneği | Profil Oluşturucu aracısının çalıştırıldığı makinenin adı.
-Timestamp | Profilin yakalandığı zaman.
+Zaman damgası | Profilin yakalandığı zaman.
 Tracee | Bireysel isteklere eklenmiş izleme sayısı.
 'SUNA | Profil Oluşturucu çalışırken kullanılmakta olan CPU yüzdesi.
 Bellek | Profil Oluşturucu çalışırken kullanılmakta olan bellek yüzdesi.
@@ -80,11 +76,11 @@ Profil oluşturucuyu tek bir tıklama ile el ile tetikleyebilirsiniz. Web perfor
 
 Sonraki bölümlerde bu senaryonun nasıl çalıştığı gösterilmektedir:
 
-### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1\. adım: Web performans testini başlatarak Web uygulamanıza trafik oluşturma
+### <a name="step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>1\. Adım: Web performans testini başlatarak Web uygulamanıza trafik oluşturma
 
 Web uygulamanızda zaten gelen trafik varsa veya yalnızca el ile trafik oluşturmak istiyorsanız, bu bölümü atlayın ve adım 2 ' ye geçin.
 
-1. Application Insights portalında,  > **performans testini** **Yapılandır**' ı seçin. 
+1. Application Insights portalında, > **performans testini** **Yapılandır** ' ı seçin. 
 
 1. Yeni bir performans testi başlatmak için **Yeni** düğmesini seçin.
 
@@ -100,14 +96,14 @@ Web uygulamanızda zaten gelen trafik varsa veya yalnızca el ile trafik oluştu
 
     ![Yük testi devam ediyor][load-test-in-progress]
 
-### <a name="step-2-start-a-profiler-on-demand-session"></a>2\. adım: İsteğe bağlı Profil Oluşturucu oturumu başlatma
+### <a name="step-2-start-a-profiler-on-demand-session"></a>2\. Adım: Profil Oluşturucu isteğe bağlı oturumu başlatma
 
 1. Yük testi çalışırken, yük alırken Web uygulamasındaki izlemeleri yakalamak için profil oluşturucuyu başlatın.
 
 1. **Profil oluşturucuyu Yapılandır** bölmesine gidin.
 
 
-### <a name="step-3-view-traces"></a>3\. adım: İzlemeleri görüntüle
+### <a name="step-3-view-traces"></a>3\. Adım: izlemeleri görüntüleme
 
 Profil Oluşturucu çalışmayı tamamladıktan sonra, performans bölmesine gitmek ve izlemeleri görüntülemek için bildirim sayfasındaki yönergeleri izleyin.
 

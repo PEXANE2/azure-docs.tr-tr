@@ -7,22 +7,22 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 02/23/2019
-ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 10/23/2019
+ms.openlocfilehash: 58267c607b0c4f2eaaf242c8e0752451f8c04c9a
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815743"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882032"
 ---
-# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Jenkins Azure Işlevleri eklentisini kullanarak Azure Işlevlerine dağıtma
+# <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Jenkins Azure Işlevleri eklentisini kullanarak Azure Işlevlerine dağıtma
 
-[Azure işlevleri](/azure/azure-functions/) , sunucusuz bir işlem hizmetidir. Azure Işlevleri 'ni kullanarak, altyapıyı sağlamadan veya yönetmeksizin isteğe bağlı kod çalıştırabilirsiniz. Bu öğreticide, Azure işlevleri eklentisini kullanarak bir Java işlevinin Azure Işlevlerine nasıl dağıtılacağı gösterilmektedir.
+[Azure işlevleri](/azure/azure-functions/) , sunucusuz bir işlem hizmetidir. Azure Işlevleri 'ni kullanarak, altyapıyı sağlamadan veya yönetmeksizin isteğe bağlı kod çalıştırabilirsiniz. Bu öğreticide, Azure Işlevleri eklentisini kullanarak bir Java işlevinin Azure Işlevlerine nasıl dağıtılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
-- **Jenkins sunucusu**: Bir Jenkins sunucunuz yüklü değilse, [Azure 'Da Jenkins sunucusu oluşturma](./install-jenkins-solution-template.md)makalesine bakın.
+- **Jenkins sunucusu**: bir Jenkins sunucunuz yüklü değilse, [Azure 'Da Jenkins sunucusu oluşturma](./install-jenkins-solution-template.md)makalesine bakın.
 
   > [!TIP]
   > Bu öğretici için kullanılan kaynak kodu, [Visual Studio Çin GitHub](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)deposunda bulunur.
@@ -33,7 +33,7 @@ Java çalışma zamanı yığını ile bir Java işlevi oluşturmak için [Azure
 
 Aşağıdaki adımlarda, Azure CLı kullanarak bir Java işlevinin nasıl oluşturulacağı gösterilmektedir:
 
-1. Resource_group > yer tutucusunu kaynak grubu adınızla değiştirerek  **&lt;** bir kaynak grubu oluşturun.
+1. **&lt;resource_group >** yer tutucusunu kaynak grubu adınızla değiştirerek bir kaynak grubu oluşturun.
 
     ```cli
     az group create --name <resource_group> --location eastus
@@ -137,7 +137,7 @@ Jenkins işini çalıştırmak artık zaman alabilir.
 
 1. İlk olarak, [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) makalesindeki yönergeler aracılığıyla yetkilendirme anahtarını edinin.
 
-1. Tarayıcınızda uygulamanın URL 'sini girin. Yer tutucuları uygun değerlerle değiştirin ve Java işlevi için girdi olarak  **&lt;input_number >** için sayısal bir değer belirtin.
+1. Tarayıcınızda uygulamanın URL 'sini girin. Yer tutucuları uygun değerlerle değiştirin ve Java işlevi için girdi olarak **&lt;input_number >** için sayısal bir değer belirtin.
 
     ```
     https://<function_app>.azurewebsites.net/api/HttpTrigger-Java?code=<authorization_key>&number=<input_number>

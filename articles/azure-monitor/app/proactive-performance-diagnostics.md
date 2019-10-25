@@ -1,24 +1,19 @@
 ---
 title: Akıllı algılama-performans bozuklulıkları | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin akıllı analizini yapar ve olası sorunlar hakkında sizi uyarır. Bu özelliğin kurulum yapması gerekmez.
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67867719"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820574"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -41,7 +36,7 @@ Akıllı algılama, normal performansın temelini oluşturmak için, uygun bir b
 
 Hayır, bir bildirim uygulamanızın kesinlikle bir sorun olduğu anlamına gelmez. Yalnızca konuyu daha yakından incelemeniz için bir öneridir.
 
-## <a name="how-do-i-fix-it"></a>Bunu nasıl düzeltirim?
+## <a name="how-do-i-fix-it"></a>Nasıl yaparım? düzeltilsin mi?
 
 Bildirimler tanılama bilgilerini içerir. Bir örneği aşağıda verilmiştir:
 
@@ -97,7 +92,7 @@ Akıllı algılamalar performans bozuklukları hakkındaki e-postalar Applicatio
 Yavaş ve başarısız yanıtlar, kendi deneyiminizden haberdar olduğunuz için Web sitesi kullanıcılarının en büyük zayıflarından biridir. Bu nedenle, sorunları çözmek önemlidir.
 
 ### <a name="triage"></a>Değerlendirme
-İlk olarak, ne kadar önemlidir? Bir sayfanın yüklenmesi her zaman yavaşsa, ancak sitenize ait kullanıcılarınızın yalnızca% 1 ' i göz önünde bulundurmasına rağmen, düşünmek için daha fazla önemli şey vardır. Öte yandan, Kullanıcı yalnızca% 1 ' i kullanıyorsa, ancak her seferinde özel durum oluşturur ve bu da araştırma gerektirebilir.
+İlk olarak, ne kadar önemlidir? Bir sayfanın yüklenmesi her zaman yavaşsa, ancak sitenize ait kullanıcılarınızın yalnızca %1 ' i göz önünde bulundurmasına rağmen, düşünmek için daha fazla önemli şey vardır. Öte yandan, Kullanıcı yalnızca %1 ' i kullanıyorsa, ancak her seferinde özel durum oluşturur ve bu da araştırma gerektirebilir.
 
 Etki ifadesini (etkilenen kullanıcılar veya trafik) genel bir kılavuz olarak kullanın, ancak tüm hikayenin olmadığını unutmayın. Onaylamak için başka bir kanıt toplayın.
 
@@ -116,9 +111,9 @@ Tarayıcılar ölçüm dikey penceresini açın. Tarayıcı sayfası yükleme s�
 ### <a name="improve-slow-pages"></a>Yavaş sayfaları iyileştirme
 Sunucu yanıtlarınızı ve sayfa yükleme sürelerinizi iyileştirmeye yönelik bir Web eksiksiz, bu nedenle hepsini tekrarlamaya çalışmayın. İşte size daha önce bildiğiniz, size düşünmeniz gereken birkaç ipucu:
 
-* Büyük dosyalar nedeniyle yavaş yükleme: Betikleri ve diğer parçaları zaman uyumsuz olarak yükleyin. Betik paketlemeyi kullanın. Ana sayfayı, verilerini ayrı olarak yükleyen Pencere öğelerinin içine bölün. Uzun tablolar için düz eski HTML gönderme: verileri JSON veya başka bir sıkıştırma biçiminde istemek için bir betik kullanın, ardından tabloyu yerinde doldurursunuz. Bu konuda yardımcı olacak harika çerçeveler vardır. (Kuşkusuz büyük betikleri de kuyruğa alırlar.)
-* Yavaş sunucu bağımlılıkları: Bileşenlerinizin coğrafi konumlarını göz önünde bulundurun. Örneğin, Azure kullanıyorsanız, Web sunucusunun ve veritabanının aynı bölgede bulunduğundan emin olun. Sorgular gereksiniminden daha fazla bilgi alır mi? Yardım önbelleğe alınıyor veya toplu işlem yapılsın mı?
-* Kapasite sorunları: Yanıt sürelerinin sunucu ölçümlerine ve istek sayılarına bakın. Yanıt süreleri, istek sayımlarında tepe noktaları ile orantılı bir şekilde yükseltilip, sunucularınızın uzatılmasından kaynaklanıyor olabilir.
+* Büyük dosyalar nedeniyle yavaş yükleme: betikleri ve diğer parçaları zaman uyumsuz olarak yükleyin. Betik paketlemeyi kullanın. Ana sayfayı, verilerini ayrı olarak yükleyen Pencere öğelerinin içine bölün. Uzun tablolar için düz eski HTML gönderme: verileri JSON veya başka bir sıkıştırma biçiminde istemek için bir betik kullanın, ardından tabloyu yerinde doldurursunuz. Bu konuda yardımcı olacak harika çerçeveler vardır. (Kuşkusuz büyük betikleri de kuyruğa alırlar.)
+* Yavaş sunucu bağımlılıkları: bileşenlerinizin coğrafi konumlarını göz önünde bulundurun. Örneğin, Azure kullanıyorsanız, Web sunucusunun ve veritabanının aynı bölgede bulunduğundan emin olun. Sorgular gereksiniminden daha fazla bilgi alır mi? Yardım önbelleğe alınıyor veya toplu işlem yapılsın mı?
+* Kapasite sorunları: yanıt sürelerinin sunucu ölçümlerine ve istek sayılarına bakın. Yanıt süreleri, istek sayımlarında tepe noktaları ile orantılı bir şekilde yükseltilip, sunucularınızın uzatılmasından kaynaklanıyor olabilir.
 
 
 ## <a name="server-response-time-degradation"></a>Sunucu yanıt süresi düşme

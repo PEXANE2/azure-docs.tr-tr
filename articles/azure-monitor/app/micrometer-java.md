@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights Java SDK ile mikro ölçüm kullanma | Microsoft Docs
 description: 'Application Insights Spring Boot ve Spring Boot uygulamaları ile mikro ölçer kullanma hakkında adım adım kılavuz. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 11/01/2018
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/01/2018
+ms.openlocfilehash: 267665c97f683740c05ae6602a416225c79aa44c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299583"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819315"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK ile mikro ölçüm kullanma
 Mikro ölçüm uygulama izleme, JVM tabanlı uygulama kodu için ölçümleri ölçer ve verileri en sevdiğiniz izleme sistemlerine aktarmanıza olanak tanır. Bu makale, hem Spring Boot hem de Spring Boot uygulamaları için Application Insights ile mikro ölçer 'i nasıl kullanacağınızı öğretir.
@@ -144,7 +139,7 @@ Adımlar:
         </dependency>
      ```
 
-2. Dosyayı `ApplicationInsights.xml` kaynaklar klasörüne Yerleştir:
+2. `ApplicationInsights.xml` dosyasını Resources klasörüne Yerleştir:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

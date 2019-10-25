@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici kullanarak Arcgörüş ile Azure Active Directory günlüklerini tümleştirme | Microsoft Docs
+title: Günlükleri Azure Izleyici kullanarak Arcizle tümleştirin | Microsoft Docs
 description: Azure Izleyici 'yi kullanarak Azure Active Directory günlüklerini Arcgörüş ile tümleştirmeyi öğrenin
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 037240e6006b5e0625bf8fb75492d8e458899a8e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240904"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820890"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Active Directory günlüklerini Arcizle tümleştirin
 
@@ -30,9 +30,9 @@ ms.locfileid: "72240904"
 
 Bu makalede, Azure Izleyici kullanarak Azure AD günlüklerini Arcize yönlendirmeyi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu özelliği kullanmak için şunlar gerekir:
+Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 * Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](quickstart-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
 * Arcgözetimi syslog, Daemon SmartConnector (SmartConnector) veya Arcgörüş Load Balancer yapılandırılmış bir örneği. Olaylar Arcgörüş Load Balancer gönderilirse, bu, sonuçta Load Balancer tarafından SmartConnector 'a gönderilir.
 

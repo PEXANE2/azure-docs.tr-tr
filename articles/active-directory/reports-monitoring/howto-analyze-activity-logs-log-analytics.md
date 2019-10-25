@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici günlüklerini kullanarak Azure Active Directory etkinlik günlüklerini çözümleme | Microsoft Docs
+title: Azure Izleyici günlüklerini kullanarak etkinlik günlüklerini çözümleme | Microsoft Docs
 description: Azure Izleyici günlüklerini kullanarak Azure Active Directory etkinlik günlüklerini çözümlemeyi öğrenin
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1670c93f83ecd6f5bd557d24ec754998a225db0c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255633"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820956"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme
 
@@ -32,7 +32,7 @@ Bu makalede, Log Analytics çalışma alanınızdaki Azure AD etkinlik günlükl
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu arada izlemek için şunlar gerekir:
 
@@ -47,7 +47,7 @@ Bu arada izlemek için şunlar gerekir:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına gidin
 
-1. [Azure Portal](https://portal.azure.com)oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 2. **Azure Active Directory**' yi seçin ve sonra Log Analytics çalışma alanınızı açmak için **izleme** bölümünde **Günlükler** ' i seçin. Çalışma alanı varsayılan bir sorgu ile açılır.
 
@@ -61,7 +61,7 @@ Günlükler, çalışma alanındaki **auditlogs** ve **signınlogs** tabloların
 1. Önceki bölümde bulunan varsayılan sorgu görünümünden **şema** ' ı seçin ve çalışma alanını genişletin. 
 
 2. Günlük **yönetimi** bölümünü genişletin ve ardından günlük şemasını görüntülemek Için **Auditlogs** veya **signınlogs** seçeneklerinden birini genişletin.
-    ![Audit logs @ no__t-1 ![Signın logs @ no__t-3
+    ![denetim günlüklerini](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![oturum açma günlükleri](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Azure AD etkinlik günlüklerini sorgulama
 

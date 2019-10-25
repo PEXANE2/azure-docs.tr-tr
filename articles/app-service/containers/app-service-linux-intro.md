@@ -4,8 +4,8 @@ description: Linux’ta Azure App Service hakkında bilgi edinin.
 keywords: azure app service, linux, oss
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
@@ -15,29 +15,20 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071319"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819692"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux’ta Azure App Service’e Giriş
 
-[Azure App Service](../overview.md) , Web sitelerini ve Web uygulamalarını barındırmak için optimize edilmiş, tam olarak yönetilen bir işlem platformudur. Müşteriler Linux’ta App Service’i kullanarak desteklenen uygulama yığınları için Linux’ta yerel olarak web uygulamaları barındırabilir. [Diller](#languages) bölümü, şu anda desteklenen uygulama yığınlarını listeler.
+[Azure App Service](../overview.md) , Web sitelerini ve Web uygulamalarını barındırmak için optimize edilmiş, tam olarak yönetilen bir işlem platformudur. Müşteriler Linux’ta App Service’i kullanarak desteklenen uygulama yığınları için Linux’ta yerel olarak web uygulamaları barındırabilir.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Diller
 
-Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşitli Yerleşik görüntüleri destekler. Yerleşik görüntülerde uygulamanızın gerektirdiği çalışma zamanı desteklenmiyorsa, [kendi Docker görüntünüzü](tutorial-custom-docker-image.md) oluşturarak Kapsayıcılar için Web App’e dağıtmaya yönelik yönergeler sunulmaktadır.
-
-| Dil | Desteklenen Sürümler |
-|---|---|
-| Node.js | 4,4, 4,5, 4,8, 6,2, 6,6, 6,9, 6,10, 6,11, 8,0, 8,1, 8,2, 8,8, 8,9, 8,11, 8,12, 9,4, 10,1, 10,10, 10,14 |
-| Java * | Tomcat 8,5, 9,0, Java VAI, yada 14 (tüm JRE 8 çalıştıran) |
-| PHP | 5,6, 7,0, 7,2, 7,3 |
-| Python | 2,7, 3,6, 3,7 |
-| .NET Core | 1,0, 1,1, 2,0, 2,1, 2,2 |
-| Ruby | 2,3, 2,4, 2,5, 2,6 |
+Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşitli Yerleşik görüntüleri destekler. Diller şunlardır: node. js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. En son dilleri ve desteklenen sürümleri görüntülemek için [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) çalıştırın. Yerleşik görüntülerde uygulamanızın gerektirdiği çalışma zamanı desteklenmiyorsa, [kendi Docker görüntünüzü](tutorial-custom-docker-image.md) oluşturarak Kapsayıcılar için Web App’e dağıtmaya yönelik yönergeler sunulmaktadır.
 
 ## <a name="deployments"></a>Dağıtımlar
 
@@ -48,7 +39,7 @@ Linux’ta App Service, geliştirici üretkenliğini artırmaya yönelik çeşit
 
 ## <a name="devops"></a>DevOps
 
-* Hazırlık ortamları
+* Hazırlama ortamları
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-intro) ve DockerHub CI/CD
 
 ## <a name="console-publishing-and-debugging"></a>Konsol, Yayımlama ve Hata Ayıklama
@@ -76,7 +67,7 @@ Aynı kaynak grubu için geçerli bir sınırlamaya bağlı olarak, aynı bölge
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. Kapsayıcısını `stdout` ve`stderr` kapsayıcısından günlüğe kaydetmek için **App Service günlükleri**altında **Docker kapsayıcı günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
+Uygulamanız başlatılamazsa veya uygulamanızdan alınan günlük kayıtlarına bakmak isterseniz LogFiles dizinindeki Docker günlüklerini inceleyin. Bu dizine SCM siteniz üzerinden veya FTP aracılığıyla erişebilirsiniz. `stdout` ve `stderr` kapsayıcısından günlüğe kaydetmek için **App Service günlükleri**altında **Docker kapsayıcı günlüğünü** etkinleştirmeniz gerekir. Ayar hemen yürürlüğe girer. App Service değişikliği algılar ve kapsayıcıyı otomatik olarak yeniden başlatır.
 
 SCM sitesine **Geliştirme Araçları** menüsündeki **Gelişmiş Araçlar**’dan erişebilirsiniz.
 

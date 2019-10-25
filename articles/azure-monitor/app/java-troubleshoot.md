@@ -1,23 +1,18 @@
 ---
 title: Java Web projesinde Application Insights sorunlarını giderme
 description: Sorun giderme kılavuzu-Application Insights ile canlı Java uygulamalarını izleme.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ef602767-18f2-44d2-b7ef-42b404edd0e9
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 03/14/2019
+ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742193"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820809"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java için Application Insights Sorun Giderme, Soru ve Yanıt
 [Java 'Da Azure Application Insights][java]sorular veya sorunlar var mı? İşte bazı ipuçları.
@@ -25,17 +20,17 @@ ms.locfileid: "68742193"
 ## <a name="build-errors"></a>Derleme hataları
 **Çakışan Küreler veya IntelliJ fikri içinde, Maven veya Gradle aracılığıyla Application Insights SDK 'Sı eklerken derleme veya sağlama toplamı doğrulama hataları alıyorum.**
 
-* Dependency `<version>` öğesi joker karakterlerle bir desenler kullanıyorsa (ör. Maven veya (Gradle) `version:'2.0.+'`), bunun yerine belirli `2.0.1`bir sürüm belirtmeyi deneyin. `<version>[2.0,)</version>` En son sürüm için [sürüm notlarına](https://github.com/Microsoft/ApplicationInsights-Java/releases) bakın.
+* Dependency `<version>` öğesi joker karakterlerle (örn. (Maven) `<version>[2.0,)</version>` veya (Gradle) `version:'2.0.+'`) bir model kullanıyorsa, `2.0.1`gibi belirli bir sürüm belirtmeyi deneyin. En son sürüm için [sürüm notlarına](https://github.com/Microsoft/ApplicationInsights-Java/releases) bakın.
 
 ## <a name="no-data"></a>Veri yok
 **Başarıyla Application Insights ekledim ve uygulamamı çalıştırdım, ancak portalda hiç veri gördüm.**
 
 * Bir dakika bekleyip Yenile ' ye tıklayın. Grafikler düzenli aralıklarla yenilenir, ancak el ile de yenileme yapabilirsiniz. Yenileme aralığı, grafiğin zaman aralığına bağlıdır.
 * ApplicationInsights. xml dosyasında tanımlanan bir izleme anahtarınız olup olmadığını denetleyin (Projenizdeki kaynaklar klasöründe) veya ortam değişkeni olarak yapılandırılmış.
-* XML dosyasında `<DisableTelemetry>true</DisableTelemetry>` düğüm olmadığını doğrulayın.
+* XML dosyasında `<DisableTelemetry>true</DisableTelemetry>` düğümü olmadığını doğrulayın.
 * Güvenlik duvarınızdaki dc.services.visualstudio.com 'e giden trafik için 80 ve 443 TCP bağlantı noktalarını açmanız gerekebilir. [Güvenlik Duvarı özel durumlarının tam listesini](../../azure-monitor/app/ip-addresses.md) görüntüleyin
 * Microsoft Azure başlangıç panosunda, hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
-* ApplicationInsights. xml dosyasındaki kök `<SDKLogger />` düğümün altına bir öğe ekleyerek [günlüğü açın](#debug-data-from-the-sdk) (Projenizdeki kaynaklar klasöründe) ve AI ile önceden ortaya çıkacak girdileri kontrol edin: Şüpheli Günlükler için BILGI/uyarı/hata. 
+* ApplicationInsights. xml dosyasındaki kök düğümün altına bir `<SDKLogger />` öğesi ekleyerek [günlüğü açın](#debug-data-from-the-sdk) (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler IÇIN, AI: ıNFO/warn/Error ile kullanıma hazır olan girdileri denetleyin. 
 * Doğru ApplicationInsights. xml dosyasının Java SDK 'Sı tarafından başarılı bir şekilde yüklendiğinden emin olun. bunun için konsolun "yapılandırma dosyası başarıyla bulundu" bildiriminin çıkış iletilerine göz atalım.
 * Yapılandırma dosyası bulunamazsa, yapılandırma dosyasının nerede arandığını görmek için çıkış iletilerini denetleyin ve ApplicationInsights. xml ' in bu arama konumlarından birinde bulunduğundan emin olun. Thumb kuralı olarak, yapılandırma dosyasını Application Insights SDK JARs yakınına yerleştirebilirsiniz. Örneğin: Tomcat 'te bu, WEB-INF/Classes klasörü anlamına gelir. Geliştirme sırasında, ApplicationInsights. xml dosyasını Web projenizin Resources klasörüne yerleştirebilirsiniz.
 * Ayrıca, SDK ile ilgili bilinen sorunlar için [GitHub sorunları sayfasına](https://github.com/Microsoft/ApplicationInsights-Java/issues) bakın.
@@ -48,7 +43,7 @@ ms.locfileid: "68742193"
 * Doğru AI kaynağına mı bakıyorsunuz? Lütfen uygulamanızın Ikey değerini Telemetriyi beklediğiniz kaynakla eşleştirin. Aynı olmaları gerekir.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Beklediğiniz tüm verileri göremiyorum
-* Kullanım ve tahmini maliyet sayfasını açın ve [örnekleme](../../azure-monitor/app/sampling.md) işleminin çalışıp çalışmadığını denetleyin. (% 100 iletim, örnekleme işleminin işlem içinde olmadığı anlamına gelir.) Application Insights hizmeti, yalnızca uygulamanızdan gelen telemetrinin bir bölümünü kabul edecek şekilde ayarlanabilir. Bu, aylık telemetri kotasında tutmanıza yardımcı olur.
+* Kullanım ve tahmini maliyet sayfasını açın ve [örnekleme](../../azure-monitor/app/sampling.md) işleminin çalışıp çalışmadığını denetleyin. (%100 iletim, örnekleme işleminin işlem içinde olmadığı anlamına gelir.) Application Insights hizmeti, yalnızca uygulamanızdan gelen telemetrinin bir bölümünü kabul edecek şekilde ayarlanabilir. Bu, aylık telemetri kotasında tutmanıza yardımcı olur.
 * SDK örneklemesi açık mı? Yanıt Evet ise, veriler tüm uygulanabilir türler için belirtilen hızda örneklenir.
 * Java SDK 'sının eski bir sürümünü çalıştırıyor musunuz? Sürüm 2.0.1 ile başlayarak, aralıklı ağ ve arka uç hatalarının yanı sıra yerel sürücülerde veri kalıcılığını işlemek için hata toleransı mekanizması sunuyoruz.
 * Aşırı telemetri nedeniyle kısıtlanıyor musunuz? BILGI günlüğünü açarsanız, "uygulama kısıtlandı" bir günlük iletisi görürsünüz. Geçerli sınırımız, 32K telemetri öğe/saniye.
@@ -72,7 +67,7 @@ Hem istemci hem de sunucu telemetrinizi ayarlamak için aynı izleme anahtarın�
 ## <a name="disabling-telemetry"></a>Telemetri devre dışı bırakılıyor
 **Telemetri toplamayı nasıl devre dışı bırakabilirim?**
 
-Kod:
+Kodda:
 
 ```Java
 
@@ -80,7 +75,7 @@ Kod:
     config.setTrackingIsDisabled(true);
 ```
 
-**veya**
+**Veya**
 
 ApplicationInsights. xml dosyasını güncelleştirin (Projenizdeki kaynaklar klasöründe). Kök düğümü altına aşağıdakileri ekleyin:
 
@@ -103,7 +98,7 @@ XML yöntemini kullanarak, değeri değiştirirken uygulamayı yeniden başlatma
 
 **SDK 'nın ne yaptığını nasıl öğrenebilirim?**
 
-API 'de neler olduğu hakkında daha fazla bilgi edinmek için, ApplicationInsights `<SDKLogger/>` . xml yapılandırma dosyasının kök düğümü altına ekleyin.
+API 'de neler olduğu hakkında daha fazla bilgi edinmek için, ApplicationInsights. xml yapılandırma dosyasının kök düğümü altına `<SDKLogger/>` ekleyin.
 
 ### <a name="applicationinsightsxml"></a>ApplicationInsights. xml
 
@@ -119,7 +114,7 @@ Günlükçüde bir dosyanın çıktısını almak için de talimat verebilirsini
 
 ### <a name="spring-boot-starter"></a>Spring Boot Starter
 
-Application Insights Spring Boot Starter 'ı kullanarak Spring Boot uygulamalarıyla SDK günlüğünü etkinleştirmek için aşağıdakileri `application.properties` dosyasına ekleyin:
+Application Insights Spring Boot Starter 'ı kullanarak Spring Boot uygulamalarıyla SDK günlüğünü etkinleştirmek için aşağıdaki `application.properties` dosyasına ekleyin:
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -168,7 +163,7 @@ Hayır, dünyanın dört bir yanındaki Azure sunucularının sistem durumunu g�
 
 *Azure başlangıç panosu 'nda (ana ekran), Uygulamam hakkında nasıl veri bulabilirim?*
 
-[Uygulamanızı Application Insights için][java]ayarladığımldığında, sırasıyla Araştır ' a tıklayın, Application Insights ' i seçin ve uygulamanız için oluşturduğunuz uygulama kaynağını seçin. Gelecekte daha hızlı bir şekilde yararlanmak için uygulamanızı başlangıç panosuna sabitleyebilirsiniz.
+[Uygulamanızı Application Insights için ayarladığımldığında][java], sırasıyla Araştır ' a tıklayın, Application Insights ' i seçin ve uygulamanız için oluşturduğunuz uygulama kaynağını seçin. Gelecekte daha hızlı bir şekilde yararlanmak için uygulamanızı başlangıç panosuna sabitleyebilirsiniz.
 
 ## <a name="intranet-servers"></a>Intranet sunucuları
 **İntranetinizdeki bir sunucuyu izleyebilir miyim?**
@@ -183,10 +178,10 @@ Güvenlik duvarınızda, dc.services.visualstudio.com ve f5.services.visualstudi
 Bkz. [veri saklama ve gizliliği][data].
 
 ## <a name="debug-logging"></a>Hata ayıklama günlüğü
-Application Insights kullanır `org.apache.http`. Bu, ad alanı `com.microsoft.applicationinsights.core.dependencies.http`altındaki Application Insights çekirdek jar dosyaları dışındaki içinde yer alan yeniden konumlandırılır. Bu Application Insights, tek bir kod tabanında aynı `org.apache.http` yerde bulunan farklı sürümlerin bulunduğu senaryoları işlemesini sağlar.
+Application Insights `org.apache.http`kullanır. Bu, `com.microsoft.applicationinsights.core.dependencies.http`ad alanı altındaki Application Insights çekirdek jar dosyaları dışındaki 'ın yeniden konumlandırıldı. Bu, Application Insights aynı `org.apache.http` farklı sürümlerinin tek bir kod tabanında bulunduğu senaryoları işlemesini sağlar.
 
 >[!NOTE]
->Uygulamadaki tüm ad alanları için hata ayıklama düzeyinde günlüğe yazmayı etkinleştirirseniz, olarak `org.apache.http` `com.microsoft.applicationinsights.core.dependencies.http`yeniden adlandırıldı dahil tüm çalışan modüller tarafından kabul edilir. Application Insights, günlük çağrısı Apache kitaplığı tarafından yapıldığından, bu çağrılar için filtreleme uygulayamayacak. Hata ayıklama düzeyinde günlüğe kaydetme, önemli miktarda günlük verisi üretir ve canlı üretim örnekleri için önerilmez.
+>Uygulamadaki tüm ad alanları için hata ayıklama düzeyinde günlüğe yazmayı etkinleştirirseniz, `com.microsoft.applicationinsights.core.dependencies.http`olarak yeniden adlandırılan `org.apache.http` dahil olmak üzere tüm çalışan modüller tarafından kabul edilir. Application Insights, günlük çağrısı Apache kitaplığı tarafından yapıldığından, bu çağrılar için filtreleme uygulayamayacak. Hata ayıklama düzeyinde günlüğe kaydetme, önemli miktarda günlük verisi üretir ve canlı üretim örnekleri için önerilmez.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

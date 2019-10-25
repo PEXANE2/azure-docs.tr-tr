@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015471"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881759"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics ile yüz ve duygu algılama
+
+> [!IMPORTANT]
+> Bazı medya işlemcilerinin [kullanımdan kaldırma planlarını](media-services-analytics-overview.md#retirement-plans) gözden geçirin.
+
 ## <a name="overview"></a>Genel Bakış
 **Azure Media Face Detector** medya IŞLEMCISI (MP), yüz ifadeleriyle hareket etmenizi, hareketleri izlemenizi ve hatta ölçek katılımı ve yeniden eylemini izlemenize olanak sağlar. Bu hizmet iki özellik içerir: 
 
@@ -43,7 +47,7 @@ ms.locfileid: "69015471"
 Bu makale, **Azure Media Face Detector** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
 
 ## <a name="face-detector-input-files"></a>Yüz algılayıcısı giriş dosyaları
-Video dosyaları. Şu anda aşağıdaki biçimler desteklenir: MP4, MOV ve WMV.
+Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
 
 ## <a name="face-detector-output-files"></a>Yüz algılayıcısı çıkış dosyaları
 Yüz algılama ve izleme API 'SI, bir videoda en fazla 64 insan yüzü algılayan yüksek duyarlıklı bir konum algılama ve izleme sağlar. En iyi yüzler, yüz ve küçük yüzler (24x24 pikselden küçük veya buna eşit) doğru şekilde en iyi sonuçları sağlar.
@@ -153,7 +157,7 @@ Aşağıdaki JSON çıktısı örneği kesildi.
 #### <a name="attribute-descriptions"></a>Öznitelik açıklamaları
 | Öznitelik adı | Açıklama |
 | --- | --- |
-| Mod |Leri Yalnızca yüz algılama.<br/>Perçok yönlü Emotion: Her yüz algılama için duygu tanıma 'ı bağımsız olarak döndürün.<br/>AggregateEmotion: Çerçevedeki tüm yüzlere ilişkin ortalama duygu tanıma değerlerini döndürür. |
+| Mod |Yüzler: yalnızca yüz algılama.<br/>Perceemotion: her yüz algılama için duygu tanıma 'ı bağımsız olarak döndürün.<br/>Aggregateemotion: çerçevedeki tüm yüzler için Ortalama duygu tanıma değeri döndürür. |
 | AggregateEmotionWindowMs |AggregateEmotion modunu seçtiyseniz kullanın. Her toplama sonucunu oluşturmak için kullanılan videonun milisaniye cinsinden uzunluğunu belirtir. |
 | Aggregateemotionınterlationms |AggregateEmotion modunu seçtiyseniz kullanın. Toplam sonuçların nasıl üretileceğini belirten sıklığı belirtir. |
 
@@ -162,8 +166,8 @@ Toplam pencere ve Aralık ayarları için önerilen değerler aşağıda verilmi
 
 || Varsayılanlar | En fazla (s) | En az (s) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0.25|
-| Aggregateemotionınterlationms |0,5 |1\. |0.25|
+| AggregateEmotionWindowMs |0,5 |2 |0,25|
+| Aggregateemotionınterlationms |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>JSON çıkışı
 Toplam duygu tanıma için JSON çıktısı (kesilmiş):
@@ -517,7 +521,7 @@ namespace FaceDetection
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar

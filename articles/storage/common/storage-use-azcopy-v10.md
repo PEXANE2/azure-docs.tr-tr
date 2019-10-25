@@ -4,15 +4,15 @@ description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğ
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 37d8c483a1ef49a87205dcc848aae974f5b0e47e
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675853"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882490"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -58,6 +58,8 @@ Komutların listesini görmek için `azcopy -h` yazın ve sonra ENTER tuşuna ba
 Belirli bir komut hakkında bilgi edinmek için, yalnızca komutun adını ekleyin (örneğin: `azcopy list -h`).
 
 ![Satır içi yardım](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+Her komut ve komut parametresine ilişkin ayrıntılı başvuru belgelerini bulmak için bkz. [AzCopy](storage-ref-azcopy.md)
 
 > [!NOTE] 
 > Azure depolama hesabınızın sahibi olarak, verilere erişim için otomatik olarak izinler atanmamıştır. AzCopy ile anlamlı bir işlem yapabilmeniz için, depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayacağınıza karar vermeniz gerekir. 
@@ -122,7 +124,7 @@ Birden fazla kuruluşa aitseniz, depolama hesabının ait olduğu kuruluşun kir
 azcopy login --tenant-id=<tenant-id>
 ```
 
-@No__t_0 yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
+`<tenant-id>` yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
@@ -146,7 +148,7 @@ Genel olarak hizmet sorumluları hakkında daha fazla bilgi için, bkz. [Azure A
 
 ##### <a name="using-a-client-secret"></a>İstemci parolası kullanma
 
-@No__t_0 ortam değişkenini, hizmet sorumlusunun uygulama kaydının istemci gizli anahtarı olarak ayarlayarak başlayın.
+`AZCOPY_SPA_CLIENT_SECRET` ortam değişkenini, hizmet sorumlusunun uygulama kaydının istemci gizli anahtarı olarak ayarlayarak başlayın.
 
 > [!NOTE]
 > Bu değeri, işletim sisteminizin ortam değişkeni ayarlarında değil, komut isteminizden ayarladığınızdan emin olun. Bu şekilde, değer yalnızca geçerli oturum için kullanılabilir.
@@ -166,7 +168,7 @@ Sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-@No__t_0 yer tutucusunu, hizmet sorumlusunun uygulama kaydının uygulama KIMLIĞIYLE değiştirin. @No__t_0 yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin. 
+`<application-id>` yer tutucusunu, hizmet sorumlusunun uygulama kaydının uygulama KIMLIĞIYLE değiştirin. `<tenant-id>` yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin. 
 
 ##### <a name="using-a-certificate"></a>Sertifika kullanma
 
@@ -191,7 +193,7 @@ Sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-@No__t_0 yer tutucusunu, sertifika dosyasının göreli veya tam yoluyla değiştirin. AzCopy, bu sertifikaya olan yolu kaydeder ancak sertifikanın bir kopyasını kaydetmez, bu nedenle bu sertifikayı yerinde sakladığınızdan emin olun. @No__t_0 yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
+`<path-to-certificate-file>` yer tutucusunu, sertifika dosyasının göreli veya tam yoluyla değiştirin. AzCopy, bu sertifikaya olan yolu kaydeder ancak sertifikanın bir kopyasını kaydetmez, bu nedenle bu sertifikayı yerinde sakladığınızdan emin olun. `<tenant-id>` yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
 
 > [!NOTE]
 > Bu örnekte gösterildiği gibi bir istem kullanmayı düşünün. Bu şekilde, parolanız konsolunuzun komut geçmişinde görünmez. 
@@ -226,19 +228,19 @@ Ardından, komut konsolunuza aşağıdaki komutlardan birini yazın ve ENTER tu�
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-@No__t_0 yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin istemci KIMLIĞI ile değiştirin.
+`<client-id>` yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin istemci KIMLIĞI ile değiştirin.
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-@No__t_0 yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞIYLE değiştirin.
+`<object-id>` yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞIYLE değiştirin.
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-@No__t_0 yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin kaynak KIMLIĞI ile değiştirin.
+`<resource-id>` yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin kaynak KIMLIĞI ile değiştirin.
 
 ### <a name="option-2-use-a-sas-token"></a>2\. seçenek: SAS belirteci kullanma
 
@@ -293,7 +295,7 @@ URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>SAS belirteçlerinde kaçış özel karakterleri
 
-@No__t_0 uzantısı olan toplu iş dosyalarında, SAS belirteçlerinde görünen `%` karakterlerinin atlamanız gerekir. Bunu, SAS belirteç dizesindeki mevcut `%` karakterlerinin yanına bir ekleme `%` karakteri ekleyerek yapabilirsiniz.
+`.cmd` uzantısı olan toplu iş dosyalarında, SAS belirteçlerinde görünen `%` karakterlerinin atlamanız gerekir. Bunu, SAS belirteç dizesindeki mevcut `%` karakterlerinin yanına bir ekleme `%` karakteri ekleyerek yapabilirsiniz.
 
 ### <a name="run-scripts-by-using-jenkins"></a>Jenkins kullanarak betikleri çalıştırma
 

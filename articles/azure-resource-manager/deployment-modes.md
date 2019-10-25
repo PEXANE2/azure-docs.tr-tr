@@ -4,14 +4,14 @@ description: Azure Resource Manager ile tamamlanmış veya artımlı dağıtım 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258972"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881648"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager Dağıtım modları
 
@@ -21,7 +21,9 @@ Her iki mod için Kaynak Yöneticisi şablonda belirtilen tüm kaynakları oluş
 
 ## <a name="complete-mode"></a>Mod Tamam
 
-Tüm modda Kaynak Yöneticisi kaynak grubunda var olan ancak şablonda belirtilmeyen kaynakları **siler** . Şablonda belirtilen, ancak bir [koşul](conditional-resource-deployment.md) yanlış olarak değerlendirilmediği için dağıtılmayan kaynaklar silinmez.
+Tüm modda Kaynak Yöneticisi kaynak grubunda var olan ancak şablonda belirtilmeyen kaynakları **siler** .
+
+Şablonunuz, [koşul](conditional-resource-deployment.md) false olarak değerlendirildiği için dağıtılan bir kaynağı içeriyorsa, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, kaynağı siler.
 
 [Kopyalama döngülerine](resource-group-create-multiple.md)sahip tüm modu kullanırken dikkatli olun. Kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen kaynaklar silinir.
 
@@ -45,7 +47,7 @@ Kaynak grubu [kilitliyse](resource-group-lock-resources.md), tamamlanmış mod k
 
 Artımlı modda Kaynak Yöneticisi, kaynak grubunda var olan ancak şablonda belirtilmeyen, **değiştirilmemiş kaynakları bırakır** .
 
-Ancak, var olan bir kaynağı artımlı modda yeniden dağıttığınızda, sonuç farklıdır. Yalnızca güncelleştirdikleriniz değil, kaynağın tüm özelliklerini belirtin. Yaygın bir yanıltıcı, belirtime özelliklerinin değiştirilmemiş olduğunu düşündüğlerdir. Belirli özellikleri belirtmezseniz, Kaynak Yöneticisi güncelleştirmeyi bu değerlerin üzerine yazarak yorumlar.
+Ancak, var olan bir kaynağı artımlı modda yeniden dağıttığınızda, sonuç farklıdır. Yalnızca güncelleştirdikleriniz değil, kaynağın tüm özelliklerini belirtin. Yaygın bir yanıltıcı, belirtilmeyen özelliklerin değiştirilmemiş olduğunu düşündüğmeniz. Belirli özellikleri belirtmezseniz, Kaynak Yöneticisi güncelleştirmeyi bu değerlerin üzerine yazarak yorumlar.
 
 ## <a name="example-result"></a>Örnek sonuç
 
@@ -88,7 +90,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Azure CLI ile dağıtma sırasında dağıtım modunu ayarlamak için `mode` parametresini kullanın.
+Azure CLı ile dağıtma sırasında dağıtım modunu ayarlamak için `mode` parametresini kullanın.
 
 ```azurecli-interactive
 az group deployment create \

@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595568"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819804"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni bir Dynamics 365 Iş Merkezi teklifi oluşturma
 
@@ -101,7 +101,7 @@ Teklifinizi uygun Market arama alanına yerleştirmek için kullanılacak en az 
 
 ### <a name="industry"></a>Sektör
 
-İsteğe bağlı olarak en fazla iki sektör seçerek teklifinizi Market 'te kategorilere ayırabilirsiniz. Teklifiniz bir sektöre özgü değilse, bu bölümü boş bırakın. Teklifinizin teklif açıklamasında seçili sektörlerin nasıl desteklediğinizden emin olun. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Uygulama sürümü
 

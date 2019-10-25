@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125336"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880581"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory özelliği dağıtım kılavuzu
 
@@ -37,11 +37,11 @@ Lisanslama hakkında ek bilgiler aşağıdaki sayfalarda bulunabilir:
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD B2B Lisanslama Kılavuzu](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-build-a-foundation-of-security"></a>1\. Aşama: Bir güvenlik temeli oluşturun
+## <a name="phase-1-build-a-foundation-of-security"></a>1\. Aşama: güvenlik temeli oluşturma
 
 Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan veya oluşturmadan önce Azure AD 'de daha güvenli ve kolay bir temel oluşturmak için temel güvenlik özelliklerini etkinleştirir. Bu temel aşama, başlangıçtan itibaren daha güvenli bir durumda olmanızı ve son kullanıcılarınızın yalnızca yeni kavramlara bir kez tanıtılmasını sağlar.
 
-| Görev | Ayrıntı | Gerekli lisans |
+| Görev | Ayrıntılarını | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | [Birden fazla genel yönetici belirleyin](../users-groups-roles/directory-emergency-access.md) | Acil durumda kullanılmak üzere en az iki bulut kalıcı genel yönetici hesabı atayın. Bu hesaplar günlük olarak kullanılmaz ve uzun ve karmaşık parolalara sahip olmalıdır. | Azure AD Ücretsiz |
 | [Mümkün olduğunda genel olmayan yönetim rolleri kullanın](../users-groups-roles/directory-assign-admin-roles.md) | Yöneticilerinize yalnızca erişmesi gereken alanlara yalnızca ihtiyaç duydukları erişimi verin. Tüm yöneticilerin genel yönetici olması gerekmez. | Azure AD Ücretsiz |
@@ -54,52 +54,52 @@ Bu aşamada Yöneticiler, normal kullanıcı hesaplarını içeri aktarmadan vey
 | [Akıllı kilitleme Azure Active Directory özelleştirme](../authentication/howto-password-smart-lockout.md) | Bulut tabanlı kullanıcılardan gelen kilitlenmelerini, şirket içi Active Directory kullanıcılarına çoğaltılmalarını durdurun | |
 | [AD FS için extranet akıllı kilitlemeyi etkinleştir](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS Extranet kilitleme, deneme yanılma, parola tahmin saldırılarına karşı koruma sağlar, ancak geçerli AD FS kullanıcıların hesaplarını kullanmaya devam etmesine izin verir. | |
 | [Koşullu erişim ilkelerini kullanarak Azure AD Multi-Factor Authentication dağıtma](../authentication/howto-mfa-getstarted.md) | Kullanıcıların koşullu erişim ilkelerini kullanarak gizli uygulamalara erişirken iki adımlı doğrulama gerçekleştirmesini gerektir. | Azure AD Premium P1 |
-| [Azure Active Directory kimlik Koruması'nı etkinleştir](../identity-protection/enable.md) | Kuruluşunuzdaki kullanıcılar için riskli oturum açma işlemlerinin ve güvenliği aşılmış kimlik bilgilerinin izlenmesini etkinleştirin. | Azure AD Premium P2 |
+| [Azure Active Directory Kimlik Koruması etkinleştir](../identity-protection/overview-identity-protection.md) | Kuruluşunuzdaki kullanıcılar için riskli oturum açma işlemlerinin ve güvenliği aşılmış kimlik bilgilerinin izlenmesini etkinleştirin. | Azure AD Premium P2 |
 | [Çok faktörlü kimlik doğrulaması ve parola değişikliklerini tetiklemek için risk algılamalarını kullanma](../authentication/tutorial-risk-based-sspr-mfa.md) | Multi-Factor Authentication, parola sıfırlama ve oturum açma işlemlerini riske göre engelleme gibi olayları tetikleyemeyen Otomasyonu etkinleştirin. | Azure AD Premium P2 |
-| [Self Servis parola sıfırlama ve Azure AD multi-Factor Authentication (Önizleme) için yakınsanmış kaydını etkinleştirin](../authentication/concept-registration-mfa-sspr-converged.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
+| [Self servis parola sıfırlama ve Azure AD Multi-Factor Authentication (Önizleme) için yakınsama kaydını etkinleştirme](../authentication/concept-registration-mfa-sspr-converged.md) | Kullanıcılarınızın hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlama için bir ortak deneyimden kaydolmalarına izin verin. | Azure AD Premium P1 |
 
-## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2\. Aşama: Kullanıcıları içeri aktarma, eşitlemeyi etkinleştirme ve cihazları yönetme
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2\. Aşama: kullanıcıları Içeri aktarma, eşitlemeyi etkinleştirme ve cihazları yönetme
 
 Daha sonra, 1. Aşama ' de bulunan, kullanıcılarınızı içeri aktararak ve eşitlemeyi etkinleştirerek, konuk erişimi planlayarak ve ek işlevselliği desteklemeye hazırlanarak temel bir özellik ekleyeceğiz.
 
-| Görev | Ayrıntı | Gerekli lisans |
+| Görev | Ayrıntılarını | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | [Azure AD Connect'i yükleme](../connect/active-directory-aadconnect-select-installation.md) | Mevcut şirket içi dizininizdeki kullanıcıları buluta eşitlemeye hazırlanın. | Azure AD Ücretsiz |
-| [Parola karma eşitlemesi uygulama](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Parola değişikliklerinin çoğaltılmasını, hatalı parola algılamayı ve düzeltmesini ve sızdırılan kimlik bilgisi raporlamasını sağlamak için parola karmalarını eşitler. | Azure AD Ücretsiz |
-| [Parola geri yazma uygulama](../authentication/howto-sspr-writeback.md) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. | Azure AD Premium P1 |
-| [Uygulama Azure AD Connect Health'i](../connect-health/active-directory-aadconnect-health.md) | Azure AD Connect sunucularınız, AD FS sunucularınız ve etki alanı denetleyicileriniz için anahtar sistem durumu istatistiklerinin izlenmesini etkinleştirin. | Azure AD Premium P1 |
-| [Azure Active Directory'de Grup üyeliği kullanıcıları için lisans atama](../users-groups-roles/licensing-groups-assign.md) | Kullanıcı başına ayar yerine gruba göre özellikleri etkinleştiren veya devre dışı bırakan lisanslama grupları oluşturarak zaman ve çaba tasarrufu yapın. | |
+| [Parola karması eşitlemesini Uygula](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Parola değişikliklerinin çoğaltılmasını, hatalı parola algılamayı ve düzeltmesini ve sızdırılan kimlik bilgisi raporlamasını sağlamak için parola karmalarını eşitler. | Azure AD Ücretsiz |
+| [Parola geri yazmayı Uygula](../authentication/howto-sspr-writeback.md) | Bulutta parola değişikliklerinin şirket içi Windows Server Active Directory ortamına geri yazılmasına izin verin. | Azure AD Premium P1 |
+| [Azure AD Connect Health Uygula](../connect-health/active-directory-aadconnect-health.md) | Azure AD Connect sunucularınız, AD FS sunucularınız ve etki alanı denetleyicileriniz için anahtar sistem durumu istatistiklerinin izlenmesini etkinleştirin. | Azure AD Premium P1 |
+| [Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama](../users-groups-roles/licensing-groups-assign.md) | Kullanıcı başına ayar yerine gruba göre özellikleri etkinleştiren veya devre dışı bırakan lisanslama grupları oluşturarak zaman ve çaba tasarrufu yapın. | |
 | [Konuk Kullanıcı erişimi için bir plan oluşturun](../b2b/what-is-b2b.md) | Kendi iş, okul veya sosyal kimliklerini kullanarak uygulamalarınızda ve hizmetlerinizde oturum açmalarına izin vererek Konuk kullanıcılarla işbirliği yapın. | [Azure AD B2B Lisanslama Kılavuzu](../b2b/licensing-guidance.md) |
-| [Cihaz yönetim stratejinize karar verin](../devices/overview.md) | Kuruluşunuzun cihazlara yönelik olarak izin vermesini belirleyin. Vs katılımını kaydetme, kendi cihazını ve şirket tarafından sağlanmış olan cihazları alın. | |
+| [Cihaz yönetimi stratejisine karar verme](../devices/overview.md) | Kuruluşunuzun cihazlara yönelik olarak izin vermesini belirleyin. Vs katılımını kaydetme, kendi cihazını ve şirket tarafından sağlanmış olan cihazları alın. | |
 | [Kuruluşunuzda Iş için Windows Hello 'Yu dağıtma](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello kullanarak passwordless kimlik doğrulaması için hazırlanma | |
 | [Kullanıcılarınız için passwordless kimlik doğrulama yöntemlerini dağıtın](../authentication/concept-authentication-passwordless.md) | Kullanıcılarınıza güvenli parolasız kimlik doğrulama yöntemleri sağlayın | Azure AD Premium P1 |
 
-## <a name="phase-3-manage-applications"></a>3\. Aşama: Uygulamaları yönet
+## <a name="phase-3-manage-applications"></a>3\. Aşama: uygulamaları yönetme
 
 Önceki aşamalarda oluşturmaya devam ettiğimiz için, aday uygulamaları Azure AD ile geçiş ve tümleştirme için tanımladık ve bu uygulamaların kurulumunu tamamlayacağız.
 
-| Görev | Ayrıntı | Gerekli lisans |
+| Görev | Ayrıntılarını | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | Uygulamalarınızı tanımla | Kuruluşunuzda kullanımdaki uygulamaları tanımla: şirket içinde, bulutta SaaS uygulamaları ve diğer iş kolu uygulamaları. Bu uygulamaların Azure AD ile yönetilip yönetilmediğini ve bunların yönetilmesini saptayın. | Lisans gerekli değil |
 | [Galerideki desteklenen SaaS uygulamalarını tümleştirme](../manage-apps/add-application-portal.md) | Azure AD 'nin binlerce önceden tümleştirilmiş uygulama içeren bir Galerisi vardır. Kuruluşunuzun kullandığı uygulamalardan bazıları büyük olasılıkla galeride doğrudan Azure portal erişilebilir. | Azure AD Ücretsiz |
 | [Şirket içi uygulamaları bütünleştirmek için uygulama proxy 'Si kullanma](../manage-apps/application-proxy-add-on-premises-application.md) | Uygulama proxy 'Si, kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesine olanak sağlar. | |
 
-## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>4\. Aşama: Ayrıcalıklı kimlikleri denetleme, erişim incelemesi tamamlamayı ve Kullanıcı yaşam döngüsünü yönetme
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>4\. Aşama: ayrıcalıklı kimlikleri denetleme, erişim incelemesi tamamlamayı ve Kullanıcı yaşam döngüsünü yönetme
 
 4\. aşama, yöneticilere yönetim için en az ayrıcalık ilkeleri uygulayan, ilk erişim incelemelerini tamamlayan ve ortak Kullanıcı yaşam döngüsü görevlerinin otomatikleştirilmesini sağlayan yöneticileri görür.
 
-| Görev | Ayrıntı | Gerekli lisans |
+| Görev | Ayrıntılarını | Gerekli lisans |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management kullanımını zorunlu kıl](../privileged-identity-management/pim-security-wizard.md) | Yönetim rollerini normal günden günlük Kullanıcı hesaplarından kaldırın. Yönetici kullanıcıları, bir Multi-Factor Authentication denetimini tamamladıktan sonra, bir iş gerekçe sağlayarak veya belirlenen onaylayanlardan onay isteyerek, rollerinin kullanımını uygun hale getirin. | Azure AD Premium P2 |
-| [Azure AD dizin rollerini PIM için erişim değerlendirmesi tamamlama](../privileged-identity-management/pim-how-to-start-security-review.md) | Kuruluşunuzun ilkelerine bağlı olarak yönetim erişimini gözden geçirmek için bir erişim gözden geçirme ilkesi oluşturmak üzere güvenlik ve liderlik ekipleriyle birlikte çalışın. | Azure AD Premium P2 |
+| [PıM 'de Azure AD dizin rolleri için erişim gözden geçirmeyi tamamlar](../privileged-identity-management/pim-how-to-start-security-review.md) | Kuruluşunuzun ilkelerine bağlı olarak yönetim erişimini gözden geçirmek için bir erişim gözden geçirme ilkesi oluşturmak üzere güvenlik ve liderlik ekipleriyle birlikte çalışın. | Azure AD Premium P2 |
 | [Dinamik grup üyeliği ilkeleri uygulama](../users-groups-roles/groups-dynamic-membership.md) | Kullanıcıları, kendi özniteliklerine (veya gerçeği kaynağına) göre otomatik olarak gruplara atamak için dinamik grupları kullanın (örneğin, departman, başlık, bölge ve diğer öznitelikler). |  |
 | [Grup tabanlı uygulama sağlamayı Uygula](../manage-apps/what-is-access-management.md) | Kullanıcıları SaaS uygulamalarına otomatik olarak sağlamak için grup tabanlı erişim yönetimi sağlamayı kullanın. |  |
-| [Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../manage-apps/user-provisioning.md) | Yetkisiz erişimi engellemek için, çalışan hesabı yaşam döngünüzün el ile yapılan adımları kaldırın. Getirilir (ik sistemine) kaynağınızdan Azure AD kimlikleri eşitleyin. |  |
+| [Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../manage-apps/user-provisioning.md) | Yetkisiz erişimi engellemek için, çalışan hesabı yaşam döngünüzün el ile yapılan adımları kaldırın. Truth (IK sistem) kaynağınızdan Azure AD 'ye kimlikler eşitler. |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure AD lisanslama ve fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+[Kimlik ve cihaz erişim yapılandırması](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
-[Ortak kimlik ve cihaz erişim ilkeleri önerilir.](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)
+[Sık önerilen kimlik ve cihaz erişim ilkeleri](https://docs.microsoft.com/microsoft-365/enterprise/identity-access-policies)

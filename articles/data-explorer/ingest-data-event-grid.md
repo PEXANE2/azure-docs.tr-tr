@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028367"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881558"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid bildirimlerine abone olarak Azure Veri Gezgini blob alma
 
@@ -35,7 +35,7 @@ Bu makalede, bir [Azure Event Grid](/azure/event-grid/overview) aboneliğini aya
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>Depolama hesabınızda Event Grid aboneliği oluşturma
 
 1. Azure portal depolama hesabınızı bulun.
-1. @No__t**olay aboneliği**' ni seçin.
+1. **Olay aboneliği** > **olayları** seçin.
 
     ![Sorgu uygulama bağlantısı](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -53,7 +53,7 @@ Bu makalede, bir [Azure Event Grid](/azure/event-grid/overview) aboneliğini aya
     | Uç nokta | *test-hub* | Oluşturduğunuz olay hub'ı. |
     | | |
 
-1. Belirli bir kapsayıcıdan dosyaları izlemek istiyorsanız **ek özellikler** sekmesini seçin. Bildirimlerin filtrelerini aşağıdaki gibi ayarlayın:
+1. Belirli bir kapsayıcıdan dosyaları izlemek istiyorsanız **Filtreler** sekmesini seçin. Bildirimlerin filtrelerini aşağıdaki gibi ayarlayın:
     * **Konu, alan Ile başlar** blob kapsayıcısının *değişmez* ön ekidir. Uygulanan model *StartsWith ile birlikte*birden çok kapsayıcıyı kapsayabilir. Joker karakterlere izin verilmez.
      Şu *şekilde ayarlanmalıdır* : *`/blobServices/default/containers/`* [kapsayıcı ön eki]
     * Alanla **Ilgili Konu** , blob 'un *sabit değer* sonekidir. Joker karakterlere izin verilmez.
@@ -90,7 +90,7 @@ Bundan sonra blob kapsayıcısına akan verilerin test tablosuna akışı için 
 
     ![Test veritabanını seçme](media/ingest-data-event-grid/select-test-database.png)
 
-1. **Veri**alma @no__t seçin-1**veri bağlantısı ekleyin**.
+1. Veri **alımını** seçin > **veri bağlantısı ekleyin**.
 
     ![Veri alımı](media/ingest-data-event-grid/data-ingestion-create.png)
 

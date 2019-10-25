@@ -1,5 +1,5 @@
 ---
-title: Sorunu İndirilen Azure Active Directory etkinlik günlüklerinde eksik veriler | Microsoft Docs
+title: 'Sorun giderme: indirilen etkinlik günlüklerinde eksik veriler | Microsoft Docs'
 description: İndirilen Azure Active Directory etkinlik günlüklerindeki eksik verilere yönelik bir çözüm sağlar.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f120c1b86efe94f4ff6316e6116b9049582b07e9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: db96bd99a25ca7803dbdfe412e2cddbbcb57c0e4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987977"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817529"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>İndirdiğim Azure Active Directory etkinlik günlüğündeki tüm verileri bulamıyorum
 
@@ -30,13 +30,13 @@ ms.locfileid: "68987977"
 
 Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre için tüm kayıtları göremiyorum. Neden? 
 
- ![Raporlanıyor](./media/troubleshoot-missing-data-download/01.png)
+ ![Raporlama](./media/troubleshoot-missing-data-download/01.png)
  
 ## <a name="cause"></a>Nedeni
 
 Etkinlik günlüklerini Azure portal indirdiğinizde, ölçeği 250.000 kayıt olarak sınırlarız ve en son ilk olarak sıralanır. 
 
-## <a name="resolution"></a>Çözüm
+## <a name="resolution"></a>Çözünürlük
 
 Belirli bir noktadaki bir milyon kaydı getirmek için [Azure AD Raporlama API’lerini](concept-reporting-api.md) kullanabilirsiniz.
 

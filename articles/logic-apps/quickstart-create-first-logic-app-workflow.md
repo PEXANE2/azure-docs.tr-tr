@@ -1,6 +1,6 @@
 ---
-title: İlk iş akışınızı oluşturun ve otomatikleştirin-Azure Logic Apps
-description: Hızlı başlangıç-sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için Azure Logic Apps kullanarak ilk otomatikleştirilmiş görevinizi veya iş akışınızı oluşturun
+title: İlk otomatik iş akışınızı oluşturma-Azure Logic Apps
+description: Hızlı başlangıç-sistem tümleştirme ve kuruluş uygulaması Tümleştirme (EAı) çözümleri için Azure Logic Apps kullanarak ilk otomatikleştirilmiş görevinizi oluşturun
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,13 +10,13 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/20/2019
-ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 10/20/2019
+ms.openlocfilehash: 246bd7935bf5aaaae569e589e4efa0ea7d39c90a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679137"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821252"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Hızlı başlangıç: Azure Logic Apps ile ilk otomatik iş akışınızı oluşturma - Azure portal
 
@@ -34,9 +34,13 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
-1. Ana Azure menüsünden **kaynak oluştur** > **tümleştirme** > **mantıksal uygulama**' yı seçin.
+1. Azure giriş sayfasında, arama kutusunda **Logic Apps**bulun ve seçin.
 
-   ![Mantıksal uygulama oluşturma - Azure portalı](./media/quickstart-create-first-logic-app-workflow/create-new-logic-app.png)
+   !["Logic Apps" bul ve Seç](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
+
+1. **Logic Apps** sayfasında **Ekle**' yi seçin.
+
+   ![Yeni mantıksal uygulama ekle](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. **Mantıksal uygulama oluştur** bölümünde, mantıksal uygulamanızın ayrıntılarını burada gösterildiği gibi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
 
@@ -69,7 +73,7 @@ Sonra, yeni bir RSS akışı öğesi göründüğünde tetiklenen bir [tetikleyi
 
 1. Mantıksal uygulama Tasarımcısı ' nda, arama kutusunda, **Tümü**' nü seçin.
 
-1. Arama kutusuna "RSS" yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **bir akış öğesi yayımlandığında-RSS**
+1. Arama kutusuna `rss` yazın. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **bir akış öğesi yayımlandığında**
 
    !["Akış öğesi yayımlandığında" tetikleyicisini seçin](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -104,7 +108,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 
 1. **Eylem Seç** ' in altında, arama kutusu ' nun altında **Tümü**' nü seçin.
 
-1. Arama kutusuna "e-posta gönder" yazın. Eylemler listesinden istediğiniz e-posta sağlayıcısıyla "e-posta gönder" eylemini seçin.
+1. Arama kutusuna `send an email` yazın. Eylemler listesinden istediğiniz e-posta sağlayıcısıyla "e-posta gönder" eylemini seçin.
 
    ![Office 365 Outlook için "e-posta gönder" eylemini seçin](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -121,7 +125,7 @@ Mantıksal uygulamanız çalışıyor ancak RSS akışını kontrol etme dışı
 
       Görüntülenen **Dinamik içerik ekle** listesini şimdilik yoksayın. Bazı düzenleme kutularının içine tıkladığınızda bu liste görünür ve önceki adımdan iş akışınıza girdi olarak ekleyebileceğiniz tüm kullanılabilir parametreleri gösterir.
 
-   1. **Konu** kutusuna, sonuna bir boşluk koyarak şu metni girin: ```New RSS item:```
+   1. **Konu** kutusuna, sonuna bir boşluk koyarak şu metni girin: `New RSS item: `
 
       !["Konu" özelliğine e-posta konusunu girin](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
@@ -170,16 +174,12 @@ Artık bu örneğe ihtiyacınız yoksa mantıksal uygulamanızı ve ilgili kayna
 
    ![Kaynak grubunu bulun, seçin ve silin](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. Kaynak grubu adını onay olarak girin ve **Sil**' i seçin.
+1. Onay bölmesi göründüğünde, kaynak grubu adını girin ve **Sil**' i seçin.
 
    ![Silmeyi onaylamak için "Sil" i seçin](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
-
-## <a name="get-support"></a>Destek alın
-
-Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps) ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

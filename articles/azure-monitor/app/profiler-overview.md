@@ -1,23 +1,19 @@
 ---
 title: Azure 'da üretim uygulamalarını Application Insights Profiler ile profili | Microsoft Docs
 description: Web sunucusu kodunuzda düşük boyutlu bir profil Oluşturucu ile etkin yolu belirler.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: fc152aab6d0e62ac5656b50834ce17278bb6676e
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338072"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820511"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights ile Azure 'da üretim uygulamaları profilini yapın
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Uygulamanız için Application Insights Profiler etkinleştirme
@@ -26,7 +22,7 @@ Azure Application Insights Profiler, Azure 'da üretimde çalışan uygulamalar 
 
 Profil Oluşturucu, aşağıdaki Azure hizmetlerinde dağıtılan .NET uygulamalarıyla birlikte çalışmaktadır. Her hizmet türü için profil oluşturucuyu etkinleştirmeye yönelik belirli yönergeler aşağıdaki bağlantılardadır.
 
-* [Azure uygulama hizmeti](profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure sanal makineleri ve sanal makine ölçek kümeleri](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -48,10 +44,10 @@ Uygulamanız bazı trafiği aldıktan sonra ve profil oluşturucunun izlemeleri 
 
 İzleme Gezgini aşağıdaki bilgileri görüntüler:
 
-* **Etkin yolu göster**: En büyük yaprak düğümü veya en az bir kapanış açar. Çoğu durumda bu düğüm performans sorununa yaklaştı.
-* **Etiket**: İşlevin veya etkinliğin adı. Ağaç, SQL ve HTTP olayları gibi oluşan kod ve olayların bir karışımını görüntüler. En üstteki olay genel istek süresini temsil eder.
-* **Geçen süre**: İşlemin başlangıcı ile işlemin sonu arasındaki zaman aralığı.
-* **Ne zaman**: İşlevin veya etkinliğin diğer işlevlerle ilişkili olarak çalıştığı zaman.
+* **Etkin yolu göster**: en büyük yaprak düğümü veya en az bir kapanış açar. Çoğu durumda bu düğüm performans sorununa yaklaştı.
+* **Etiket**: işlevin veya etkinliğin adı. Ağaç, SQL ve HTTP olayları gibi oluşan kod ve olayların bir karışımını görüntüler. En üstteki olay genel istek süresini temsil eder.
+* **Geçen**: işlemin başlangıcı ile işlemin sonu arasındaki zaman aralığı.
+* **Ne zaman**: işlevin veya etkinliğin diğer işlevlerle ilişkili olarak çalıştığı zaman.
 
 ## <a name="how-to-read-performance-data"></a>Performans verilerini okuma
 
@@ -59,9 +55,9 @@ Microsoft hizmet profili Oluşturucu, uygulamanızın performansını analiz etm
 
 Zaman çizelgesi görünümünde görüntülenen çağrı yığını örnekleme ve izleme sonucudur. Her örnek iş parçacığının tüm çağrı yığınını yakaladığından, Microsoft .NET Framework 'ten ve başvurduğunuz diğer çerçevelerden kod içerir.
 
-### <a id="jitnewobj"></a>Nesne ayırma (clr! JıT @ no__t-1Yeni veya clr! JıT @ no__t-2Newarr1)
+### <a id="jitnewobj"></a>Nesne ayırma (clr! JıT\_yeni veya clr! JıT\_Newarr1)
 
-**clr! JıT @ no__t-1Yeni** ve **clr! JıT @ no__t-3Newarr1** , yönetilen bir yığından bellek ayıran .NET Framework yardımcı işlevleridir. **clr! JıT @ no__t-1New** , bir nesne ayrıldığında çağrılır. **clr! Bir nesne dizisi ayrıldığında JıT @ no__t-1Newarr1** çağrılır. Bu iki işlev genellikle hızlıdır ve görece az miktarda zaman alır. Eğer **clr! JıT @ no__t-1Yeni** veya **clr! JıT @ no__t-3Newarr1** zaman çizelgenizde çok zaman alır, kod birçok nesne ayırarak ve önemli miktarda bellek tüketiyor olabilir.
+**clr! JıT\_yeni** ve **clr! JıT\_Newarr1** , yönetilen bir yığından bellek ayıran .NET Framework yardımcı işlevlerdir. **clr! JıT\_yeni** bir nesne ayrıldığında çağrılır. **clr!** Bir nesne dizisi AYRıLDıĞıNDA jıt\_Newarr1 çağrılır. Bu iki işlev genellikle hızlıdır ve görece az miktarda zaman alır. Eğer **clr! JıT\_yeni** veya **clr! JıT\_Newarr1** zaman çizelgenizde çok zaman alır, kod birçok nesne ayırarak ve önemli miktarda bellek tüketiyor olabilir.
 
 ### <a id="theprestub"></a>Kod yükleniyor (clr! ThePreStub)
 
@@ -69,9 +65,9 @@ Zaman çizelgesi görünümünde görüntülenen çağrı yığını örnekleme 
 
 Eğer **clr! Ön saplama** bir istek için uzun bir süre sürer, istek bu yöntemi yürütmek için birinci bir yöntemdir. .NET Framework çalışma zamanının ilk yöntemi yüklemesi için zaman önemlidir. Kullanıcılarınızın erişemez veya yerel görüntü Oluşturucu (Ngen. exe) derlemelerinize çalıştırmayı düşünmeden önce kodun bu kısmını yürüten bir ısınma işlemi kullanmayı düşünebilirsiniz.
 
-### <a id="lockcontention"></a>Kilit çakışması (clr! Jutil @ no__t-1Monçekişme veya clr! Jcanutil @ no__t-2MonEnterWorker)
+### <a id="lockcontention"></a>Kilit çakışması (clr! Monçekişme veya clr\_Jlıutil! Jutil\_MonEnterWorker)
 
-**clr! Jutil @ no__t-1Monçekişme** veya **clr! Jmonenterno__t-3MonEnterWorker** , geçerli iş parçacığının bir kilidin serbest bırakılacağını beklediğini gösterir. Bu metin genellikle bir C# **kilit** ifadesini yürüttüğünüzde, **Monitor. ENTER** metodunu çağırdığınızda veya **MethodImplOptions. eşitlenmiş** özniteliğiyle bir yöntemi çağırdığınızda görüntülenir. Kilit çakışması genellikle _iş parçacığı bir_ kilit aldığında ve _B_ _iş parçacığı BT tarafından serbest bırakmadan_ önce aynı kilidi almaya çalıştığında oluşur.
+**clr! Monçekişme veya clr\_Jlıutil** **! Jutil\_MonEnterWorker** , geçerli iş parçacığının bir kilidin serbest bırakılacağını beklediğini gösterir. Bu metin genellikle bir C# **kilit** ifadesini yürüttüğünüzde, **Monitor. ENTER** metodunu çağırdığınızda veya **MethodImplOptions. eşitlenmiş** özniteliğiyle bir yöntemi çağırdığınızda görüntülenir. Kilit çakışması genellikle _iş parçacığı bir_ kilit aldığında ve _B_ _iş parçacığı BT tarafından serbest bırakmadan_ önce aynı kilidi almaya çalıştığında oluşur.
 
 ### <a id="ngencold"></a>Kod yükleniyor ([soğuk])
 
@@ -87,15 +83,15 @@ Kod yükleme bir istek için önemli miktarda zaman alıyorsa istek, metodun en 
 
 **SqlCommand. Execute** gibi yöntemler, kodun bir veritabanı işleminin bitmesini beklediğini gösterir.
 
-### <a id="await"></a>Bekleniyor (AWAIT @ no__t-1TIME)
+### <a id="await"></a>Bekleniyor (AWAIT\_süre)
 
-**AWAIT @ no__t-1TIME** , kodun başka bir görevin bitmesini beklediğini gösterir. Bu gecikme genellikle C# **AWAIT** ifadesiyle oluşur. Kod bir C# **AWAIT**yaparken, iş parçacığı geri almıyor ve denetim iş parçacığı havuzuna geri döndürüyor ve **AWAIT** 'in bitmesi beklenirken engellenen iş parçacığı yok. Ancak mantıksal olarak, **AWAIT** olan iş parçacığı "engelleniyor" olur ve işlemin tamamlanmasını bekler. **AWAIT @ no__t-1TIME** deyimleri, görevin bitmesi için bekleyen engellenme süresini gösterir.
+**AWAIT\_zamanı** , kodun başka bir görevin bitmesini beklediğini gösterir. Bu gecikme genellikle C# **AWAIT** ifadesiyle oluşur. Kod bir C# **AWAIT**yaparken, iş parçacığı geri almıyor ve denetim iş parçacığı havuzuna geri döndürüyor ve **AWAIT** 'in bitmesi beklenirken engellenen iş parçacığı yok. Ancak mantıksal olarak, **AWAIT** olan iş parçacığı "engelleniyor" olur ve işlemin tamamlanmasını bekler. **AWAIT\_TIME** ifadesinde, görevin bitmesi için bekleyen engellenme süresi gösterilir.
 
 ### <a id="block"></a>Engellenme süresi
 
 **BLOCKED_TIME** , kodun başka bir kaynağın kullanılabilir olmasını beklediğini gösterir. Örneğin, bir eşitleme nesnesi için bir iş parçacığının kullanılabilir olması veya bir isteğin bitmesi bekleniyor olabilir.
 
-### <a name="unmanaged-async"></a>Yönetilmeyen Asenkron
+### <a name="unmanaged-async"></a>Yönetilmeyen zaman uyumsuz
 
 .NET Framework ETW olaylarını yayar ve zaman uyumsuz çağrıların iş parçacıkları arasında izlenmesini sağlamak için iş parçacıkları arasında etkinlik kimliklerini geçirir. Yönetilmeyen kod (yerel kod) ve zaman uyumsuz kodun bazı eski stillerinde bu olaylar ve etkinlik kimlikleri eksiktir, bu nedenle profil oluşturucu iş parçacığı hangi iş parçacığını ve hangi işlevlerin çalıştığını söylemez. Bu, çağrı yığınında ' yönetilmeyen Async ' olarak etiketlenir. ETW dosyasını indirdiğinizde, neler olduğuna ilişkin daha fazla bilgi almak için [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) 'ı kullanabilirsiniz.
 
@@ -123,10 +119,10 @@ Profil Oluşturucu hizmeti kullanımı için herhangi bir ücret alınmaz. Bunu 
 
 ## <a name="overhead-and-sampling-algorithm"></a>Ek yük ve örnekleme algoritması
 
-Profiler, izlemeleri yakalamak için etkin olan uygulamayı barındıran her bir sanal makinede her bir saatte iki dakikada bir çalışır. Profil Oluşturucu çalışırken, sunucuya 5 ' ten% 15 ' e kadar CPU ek yükü ekler.
+Profiler, izlemeleri yakalamak için etkin olan uygulamayı barındıran her bir sanal makinede her bir saatte iki dakikada bir çalışır. Profil Oluşturucu çalışırken, sunucuya 5 ' ten %15 ' e kadar CPU ek yükü ekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure uygulamanız için Application Insights Profiler etkinleştirin. Ayrıca bkz.:
+Azure uygulamanız için Application Insights Profiler etkinleştirin. Ayrıca bkz:
 * [Uygulama Hizmetleri](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)

@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights OpenCensus dağıtılmış izleme yerel ileticisi (Önizleme) | Microsoft docs
 description: Python ve Azure 'da bulunan dillerdeki dağıtılmış izlemeleri ve yayılmaları iletme ve Azure 'a git Application Insights
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.author: mbullwin
-ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: b0d0bc4d711b05dd2206b7437f1f4c7b3444a0c6
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348160"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819207"
 ---
 # <a name="local-forwarder-preview"></a>Yerel iletici (Önizleme)
 
@@ -29,19 +25,19 @@ Yerel iletici [GitHub üzerinde açık kaynaklı bir projem](https://github.com/
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Windows Hizmeti
+#### <a name="windows-service"></a>Windows hizmeti
 
 Windows altında yerel iletici çalıştırmanın en kolay yolu Windows hizmeti olarak yüklemek. Yayın, işletim sistemiyle kolayca kaydedilemeyen bir Windows hizmeti yürütülebilir dosyası (*windowsservicehost/Microsoft. LocalForwarder. WindowsServiceHost. exe*) ile birlikte gelir.
 
 > [!NOTE]
-> Yerel iletici hizmeti en az .NET Framework 4,7 gerektirir. .NET Framework 4,7 yoksa hizmet yüklenir, ancak başlatılmaz. .NET Framework'ün en son sürümüne erişim sağlamak **[.NET Framework Yükleme sayfasını ziyaret edin](
+> Yerel iletici hizmeti en az .NET Framework 4,7 gerektirir. .NET Framework 4,7 yoksa hizmet yüklenir, ancak başlatılmaz. .NET Framework 'nin son sürümüne erişmek için **[.NET Framework indirme sayfasını ziyaret edin](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. LF 'yi indirin. GitHub 'daki [Yerel iletici yayın sayfasından](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) windowsservicehost. zip dosyası.
 
     ![Yerel iletici yayın indirme sayfasının ekran görüntüsü](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
-2. Bu örnekte, tanıtım kolaylığı için yalnızca. zip dosyasını yola `C:\LF-WindowsServiceHost`çıkaracağız.
+2. Bu örnekte, tanıtım kolaylığı için, yalnızca. zip dosyasını `C:\LF-WindowsServiceHost`yola çıkaracağız.
 
     Hizmeti kaydetmek ve sistem önyüklemesi sırasında başlatılacak şekilde yapılandırmak için komut satırından yönetici olarak aşağıdakileri çalıştırın:
 
@@ -53,13 +49,13 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     `[SC] CreateService SUCCESS`
     
-    Yeni hizmetinizi Services GUI türü aracılığıyla incelemek için``services.msc``
+    Yeni hizmetinizi hizmetler GUI türü aracılığıyla incelemek için ``services.msc``
         
      ![Yerel iletici hizmetinin ekran görüntüsü](./media/opencensus-local-forwarder/002-services.png)
 
 3. Yeni yerel ileticiye **sağ tıklayıp Başlat ' ı** seçin. Hizmetiniz artık çalışır duruma girer.
 
-4. Hizmet, varsayılan olarak herhangi bir kurtarma eylemi olmadan oluşturulur. Bir hizmet hatasına otomatik yanıtları yapılandırmak için sağ tıklayıp **Özellikler** > **Kurtarma** **' yı** seçebilirsiniz.
+4. Hizmet, varsayılan olarak herhangi bir kurtarma eylemi olmadan oluşturulur. Bir hizmet hatasına otomatik yanıtları yapılandırmak için sağ tıklayıp **özellikler** > **Kurtarma** **' yı** seçebilirsiniz.
 
     Ya da hataların oluşma zaman programlama yoluyla otomatik kurtarma seçeneklerini ayarlamayı tercih ediyorsanız şunları kullanabilirsiniz:
 
@@ -67,11 +63,11 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     sc failure "Local Forwarder" reset= 432000 actions= restart/1000/restart/1000/restart/1000
     ```
 
-5. ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` Dosyanızdaki aynı konumda, bu ``C:\LF-WindowsServiceHost`` örnekte adlı ``LocalForwarder.config``bir dosya vardır. Bu, localforwader yapılandırmasını ayarlamanıza ve dağıtılmış izleme verilerinizin iletilmesini istediğiniz Application Insights kaynağının izleme anahtarını belirtmenize olanak tanıyan bir XML tabanlı dosyadır. 
+5. ``Microsoft.LocalForwarder.WindowsServiceHost.exe`` dosyanız ile aynı konumda, bu örnekte ``LocalForwarder.config``adlı bir dosya ``C:\LF-WindowsServiceHost``. Bu, localforwader yapılandırmasını ayarlamanıza ve dağıtılmış izleme verilerinizin iletilmesini istediğiniz Application Insights kaynağının izleme anahtarını belirtmenize olanak tanıyan bir XML tabanlı dosyadır. 
 
-    İzleme anahtarınızı eklemek ``LocalForwarder.config`` üzere dosyayı düzenledikten sonra, değişikliklerinizin etkili olması için **Yerel iletici hizmetini** yeniden başlattığınızdan emin olun.
+    İzleme anahtarınızı eklemek için ``LocalForwarder.config`` dosyasını düzenledikten sonra, değişikliklerinizin etkili olması için **Yerel Iletici hizmetini** yeniden başlattığınızdan emin olun.
     
-6. İstediğiniz ayarların yerinde olduğunu ve yerel ileticinin izleme verilerini beklendiği şekilde dinlediğini onaylamak için ``LocalForwarder.log`` dosyayı denetleyin. Dosyanın en altında bulunan görüntüye benzer sonuçlar görmeniz gerekir:
+6. İstediğiniz ayarların yerinde olduğunu ve yerel ileticinin izleme verilerini beklendiği şekilde dinlediğini onaylamak için ``LocalForwarder.log`` dosyasına bakın. Dosyanın en altında bulunan görüntüye benzer sonuçlar görmeniz gerekir:
 
     ![LocalForwarder. log dosyasının ekran görüntüsü](./media/opencensus-local-forwarder/003-log-file.png)
 

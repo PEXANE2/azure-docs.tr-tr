@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671322"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882583"
 ---
 # <a name="azure-storage-account-overview"></a>Azure depolama hesabına genel bakış
 
@@ -29,10 +29,10 @@ Azure depolama hesabı oluşturma hakkında bilgi edinmek için bkz. [depolama h
 
 Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar. Genel amaçlı v2 depolama hesapları, bu Azure depolama hizmetlerini destekler:
 
-- Blob 'lar (tüm türler: Engelle, Ekle, sayfa)
+- Blob 'lar (tüm türler: engelle, Ekle, sayfa)
 - Dosyalar
 - Diskler
-- Sıralar
+- Kuyruklar
 - Tablolar
 
 > [!NOTE]
@@ -44,12 +44,12 @@ Genel amaçlı v2 depolama hesapları, kullanım modellerinize göre veri depola
 
 ### <a name="general-purpose-v1-accounts"></a>Genel amaçlı v1 hesapları
 
-Genel amaçlı v1 hesapları, tüm Azure depolama hizmetlerine erişim sağlar, ancak en son özelliklere veya gigabayt başına en düşük fiyata sahip olmayabilir. Genel amaçlı v1 depolama hesapları, bu Azure depolama hizmetlerini destekler:
+Genel amaçlı v1 depolama hesapları, tüm Azure depolama hizmetlerine erişim sağlar, ancak en son özelliklere veya gigabayt başına en düşük fiyata sahip olmayabilir. Genel amaçlı v1 depolama hesapları, bu Azure depolama hizmetlerini destekler:
 
 - Bloblar (tüm türler)
 - Dosyalar
 - Diskler
-- Sıralar
+- Kuyruklar
 - Tablolar
 
 Genel amaçlı v2 hesapları çoğu durumda önerilse de, genel amaçlı v1 hesapları bu senaryolara en iyi şekilde uygundur:
@@ -60,17 +60,19 @@ Genel amaçlı v2 hesapları çoğu durumda önerilse de, genel amaçlı v1 hesa
 
 * 2014-02-14 tarihinden önceki [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) sürümünü veya 4.x’ten düşük bir istemci kitaplığı sürümü ile kullanmanız ve uygulamanızı güncelleştirememeniz.
 
-### <a name="block-blob-storage-accounts"></a>BLOB depolama hesaplarını engelle
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage hesapları
 
-Blok Blobu depolama hesabı, yapılandırılmamış nesne verilerini blok Blobları olarak depolamak için özel bir depolama hesabıdır. Bu depolama hesabı türü blok bloblarını ve ekleme bloblarını destekler, ancak sayfa Blobları, tablolar veya kuyruklar değildir.
+Bir blok Blobstorage hesabı, yapılandırılmamış nesne verilerini blok Blobları olarak depolamak ve Premium blok blob 'ları oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü blok bloblarını ve ekleme bloblarını destekler, ancak sayfa Blobları, tablolar veya kuyruklar değildir.
 
-Genel amaçlı v2 ve BLOB depolama hesaplarıyla karşılaştırıldığında Blok Blob depolama hesapları, düşük ve tutarlı gecikme süresi ve daha yüksek işlem ücretleri sağlar.
+Blok Blobstorage hesapları, genel amaçlı v2 ve BlobStorage hesaplarıyla karşılaştırıldığında düşük ve tutarlı gecikme süresi ve daha yüksek işlem ücretleri sağlar.
 
-Blok Blobu depolama hesapları Şu anda sık erişimli, seyrek erişimli veya arşiv erişim katmanlarına yönelik katmanlamayı desteklememektedir.
+BlockBlobStorage hesapları Şu anda, sık erişimli, seyrek erişimli veya arşiv erişim katmanlarına yönelik katmanlamayı desteklememektedir.
 
-### <a name="filestorage-storage-accounts"></a>FileStorage depolama hesapları
+### <a name="filestorage-accounts"></a>Dosya depolama hesapları
 
-Dosya depolama depolama hesabı, Premium dosya paylaşımlarını depolamak ve oluşturmak için kullanılan özel bir depolama hesabıdır. FileStorage depolama hesapları, ıOPS patlaması gibi benzersiz performansa özel özellikler sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma performans katmanları](../files/storage-files-planning.md#file-share-performance-tiers) bölümüne bakın.
+Dosya depolama hesabı, Premium dosya paylaşımlarını depolamak ve oluşturmak için kullanılan özel bir depolama hesabıdır. Bu depolama hesabı türü dosyaları destekler ancak blok Blobları, ekleme Blobları, sayfa Blobları, tablolar veya kuyruklar değildir. 
+
+FileStorage hesapları, ıOPS patlaması gibi benzersiz performansa özel özellikler sunar. Bu özellikler hakkında daha fazla bilgi için dosyalar planlama kılavuzunun [dosya paylaşma performans katmanları](../files/storage-files-planning.md#file-share-performance-tiers) bölümüne bakın.
 
 ## <a name="naming-storage-accounts"></a>Depolama hesaplarını adlandırma
 
@@ -86,7 +88,7 @@ Genel amaçlı depolama hesapları aşağıdaki performans katmanlarından biri 
 * Blob, dosya, tablo, kuyruk ve Azure sanal makine disklerini depolamak için standart bir performans katmanı.
 * Yalnızca yönetilmeyen sanal makine disklerini depolamak için Premium performans katmanı.
 
-Blok Blob depolama hesapları, blok bloblarını ve ekleme bloblarını depolamak için Premium bir performans katmanı sağlar.
+BlockBlobStorage Storage hesapları, blok bloblarını ve ekleme bloblarını depolamak için Premium bir performans katmanı sağlar.
 
 FileStorage depolama hesapları, Azure dosya paylaşımları için Premium bir performans katmanı sağlar.
 
@@ -186,5 +188,5 @@ Içeri/dışarı aktarma hizmeti ayrıca Azure Blob depolamadan disk sürücüle
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Genel amaçlı bir Azure depolama hesabı oluşturmayı öğrenmek için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
-* Blok Blobu depolama hesabı oluşturma hakkında bilgi edinmek için bkz. [Blok Blobu depolama hesabı oluşturma](../blobs/storage-blob-create-account-block-blob.md).
+* BlockBlobStorage hesabı oluşturmayı öğrenmek için bkz. [Blok Blobu depolama hesabı oluşturma](../blobs/storage-blob-create-account-block-blob.md).
 * Var olan bir depolama hesabını yönetmek veya silmek için bkz. [Azure depolama hesaplarını yönetme](storage-account-manage.md).

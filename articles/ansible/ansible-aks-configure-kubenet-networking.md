@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 10/23/2019
+ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242175"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881517"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Öğretici: Azure Kubernetes hizmeti 'nde (AKS) Kubernetes kullanan ağını, anormal olarak yapılandırma
 
@@ -35,7 +35,7 @@ AKS 'deki uygulamalarınızın ağı hakkında daha fazla bilgi için bkz. [AKS 
 > * AKS kümesi oluşturma
 > * Azure Kubernetes kullanan ağını yapılandırma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -48,7 +48,7 @@ Bu bölümdeki PlayBook kodu aşağıdaki Azure kaynaklarını oluşturur:
 - Sanal ağ
 - Sanal ağ içindeki alt ağ
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `vnet.yml` olarak kaydedin:
 
 ```yml
 - name: Create vnet
@@ -71,7 +71,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 Bu bölümdeki PlayBook kodu, sanal ağ içinde bir AKS kümesi oluşturur. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `aks.yml` olarak kaydedin:
 
 ```yml
 - name: List supported kubernetes version from Azure
@@ -108,15 +108,15 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
 - Desteklenen sürümü bulmak için `azure_rm_aks_version` modülünü kullanın.
-- @No__t-0, önceki bölümde oluşturulan alt ağıdır.
-- @No__t-0, Kubernetes kullanan Network eklentisinin özelliklerini tanımlar.
-- @No__t-0, AKS kümesindeki iç Hizmetleri bir IP adresine atamak için kullanılır. Bu IP adresi aralığı, ağınızda başka bir yerde kullanılmamış bir adres alanı olmalıdır. 
-- @No__t-0 adresi, hizmet IP adresi aralığınızı ". 10" adresi olmalıdır.
-- @No__t-0, ağ ortamınızda başka bir yerde kullanımda olmayan büyük bir adres alanı olmalıdır. Adres aralığı, ölçeğini genişletmek istediğiniz düğüm sayısına uyacak kadar büyük olmalıdır. Küme dağıtıldıktan sonra bu adres aralığını değiştiremezsiniz.
-- Pod IP adresi aralığı, kümedeki her düğüme/24 adres alanı atamak için kullanılır. Aşağıdaki örnekte, 192.168.0.0/16 ' nın `pod_cidr` ' ı/24 ' ü, ikinci düğüm 192.168.1.0/24 düğümünü ve üçüncü node 192.168.2.0/24 düğümünü atar.
+- `vnet_subnet_id`, önceki bölümde oluşturulan alt ağıdır.
+- `network_profile`, Kubernetes kullanan Network eklentisinin özelliklerini tanımlar.
+- `service_cidr`, AKS kümesindeki iç Hizmetleri bir IP adresine atamak için kullanılır. Bu IP adresi aralığı, ağınızda başka bir yerde kullanılmamış bir adres alanı olmalıdır. 
+- `dns_service_ip` adresi, hizmet IP adresi aralığınızı ". 10" adresi olmalıdır.
+- `pod_cidr`, ağ ortamınızda başka bir yerde kullanımda olmayan büyük bir adres alanı olmalıdır. Adres aralığı, ölçeğini genişletmek istediğiniz düğüm sayısına uyacak kadar büyük olmalıdır. Küme dağıtıldıktan sonra bu adres aralığını değiştiremezsiniz.
+- Pod IP adresi aralığı, kümedeki her düğüme/24 adres alanı atamak için kullanılır. Aşağıdaki örnekte, 192.168.0.0/16 `pod_cidr` ilk düğüm olan 192.168.0.0/24, ikinci düğüm 192.168.1.0/24 ve üçüncü düğüm 192.168.2.0/24 düğümünü atar.
 - Küme ölçeklenirken veya yükseltildikten sonra, Azure her yeni düğüme bir pod IP adres aralığı atamaya devam eder.
-- PlayBook, `~/.ssh/id_rsa.pub` ' den `ssh_key` yükler. Bunu değiştirirseniz, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan tek satır biçimini kullanın.
-- @No__t-0 ve `client_secret` değerleri, varsayılan kimlik bilgisi dosyası olan `~/.azure/credentials` ' den yüklenir. Bu değerleri hizmet sorumlusu olarak ayarlayabilir veya bu değerleri ortam değişkenlerinden yükleyebilirsiniz:
+- PlayBook, `~/.ssh/id_rsa.pub``ssh_key` yükler. Bunu değiştirirseniz, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan tek satır biçimini kullanın.
+- `client_id` ve `client_secret` değerleri, varsayılan kimlik bilgisi dosyası olan `~/.azure/credentials`'dan yüklenir. Bu değerleri hizmet sorumlusu olarak ayarlayabilir veya bu değerleri ortam değişkenlerinden yükleyebilirsiniz:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -127,7 +127,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 Bir AKS kümesi oluşturduğunuzda, bir ağ güvenlik grubu ve yol tablosu oluşturulur. Bu kaynaklar AKS tarafından yönetilir ve hizmetleri oluşturup kullanıma sundığınızda güncelleştirilir. Ağ güvenlik grubu ve yol tablosunu, sanal ağ alt ağınızla aşağıdaki şekilde ilişkilendirin. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydedin-0.
+Aşağıdaki PlayBook 'u `associate.yml`olarak kaydedin.
 
 ```yml
 - name: Get route table
@@ -161,15 +161,15 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydedin-0.
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- @No__t-0, AKS düğümlerinin oluşturulduğu kaynak grubunun adıdır.
-- @No__t-0, önceki bölümde oluşturulan alt ağ olur.
+- `node_resource_group`, AKS düğümlerinin oluşturulduğu kaynak grubunun adıdır.
+- `vnet_subnet_id`, önceki bölümde oluşturulan alt ağ olur.
 
 
 ## <a name="run-the-sample-playbook"></a>Örnek PlayBook 'u çalıştırma
 
 Bu bölümde, bu makalede oluşturulan görevleri çağıran tüm örnek PlayBook listelenmektedir. 
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `aks-kubenet.yml` olarak kaydedin:
 
 ```yml
 ---
@@ -210,13 +210,13 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
            var: output.aks[0]
 ```
 
-@No__t-0 bölümünde aşağıdaki değişiklikleri yapın:
+`vars` bölümünde aşağıdaki değişiklikleri yapın:
 
-- @No__t-0 anahtarı için `aksansibletest` değerini kaynak grubu adınızla değiştirin.
-- @No__t-0 anahtarı için, `aksansibletest` değerini AKS adınızla değiştirin.
-- @No__t-0 anahtarı için `eastus` değerini kaynak grubu konumınızla değiştirin.
+- `resource_group` anahtarı için `aksansibletest` değerini kaynak grubu adınızla değiştirin.
+- `name` anahtarı için `aksansibletest` değerini AKS adınızla değiştirin.
+- `Location` anahtarı için `eastus` değerini kaynak grubu konumınızla değiştirin.
 
-@No__t-0 komutunu kullanarak tam PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak tüm PlayBook 'ları çalıştırın:
 
 ```bash
 ansible-playbook aks-kubenet.yml
@@ -327,11 +327,11 @@ PLAY RECAP
 localhost                  : ok=15   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu @no__t olarak kaydet-0:
+Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
 
 ```yml
 ---
@@ -346,9 +346,9 @@ Aşağıdaki kodu @no__t olarak kaydet-0:
             force: yes
 ```
 
-@No__t-0 bölümünde `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+`vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

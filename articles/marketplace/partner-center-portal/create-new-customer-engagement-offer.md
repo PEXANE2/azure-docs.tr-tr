@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 82a0d98b7a9bb29a69830f1d8bd9b1e7db977273
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 19f06ee2d254e927fde4ca087fdd46f596c7dcbd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598418"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819909"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>PowerApps teklifi & müşteri için yeni bir Dynamics 365 oluşturun
 
@@ -101,7 +101,7 @@ En az bir ve en fazla üç kategori seçin. Bu, teklifinizi uygun Market arama a
 
 ### <a name="industry"></a>Sektör
 
-İsteğe bağlı olarak en fazla iki sektör seçerek teklifinizi Market 'te kategorilere ayırabilirsiniz. Teklifiniz bir sektöre özgü değilse, bu bölümü boş bırakın. Teklifinizin teklif açıklamasında seçili sektörlerin nasıl desteklediğinizden emin olun. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="applicable-dynamics-365-products"></a>Geçerli Dynamics 365 ürünleri
 

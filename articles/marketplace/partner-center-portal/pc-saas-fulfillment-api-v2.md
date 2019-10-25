@@ -5,14 +5,14 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.topic: reference
-ms.date: 05/23/2019
+ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 75e806e56fa94916f76f9e7fa6572ae07987e017
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595552"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821148"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS karşılama API 'Leri, sürüm 2 
 
@@ -87,7 +87,7 @@ Aşağıdaki tabloda, API 'Leri karşılama tarafından kullanılan ortak parame
 | `offerId`                | Her teklif için benzersiz bir dize tanımlayıcı (örneğin: "offer1").  |
 | `planId`                 | Her plan/SKU için benzersiz bir dize tanımlayıcısı (örneğin: "Gümüş"). |
 | `operationId`            | Belirli bir işlemin GUID tanımlayıcısı.  |
-|  `action`                | @No__t_0, `suspend`, `reinstate` veya `changePlan`, `changeQuantity`, `transfer` bir kaynakta gerçekleştirilen eylem.  |
+|  `action`                | `unsubscribe`, `suspend`, `reinstate`veya `changePlan`, `changeQuantity`, `transfer`bir kaynakta gerçekleştirilen eylem.  |
 |   |   |
 
 Genel olarak benzersiz tanımlayıcılar ([GUID 'ler](https://en.wikipedia.org/wiki/Universally_unique_identifier)) genellikle otomatik olarak oluşturulan 128 bitlik (32-onaltılı) sayılardır. 

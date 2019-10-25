@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028087"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819896"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş tehdit koruması
 
@@ -50,7 +50,7 @@ Daha fazla araştırmak için Microsoft Defender ATP 'yi kullanın. Microsoft De
 
 ## <a name="platform-support"></a>Platform desteği
 
-Güvenlik Merkezi 'ndeki Microsoft Defender ATP, standart bir hizmet aboneliğinde Windows Server 2016, 2012 R2 ve 2008 R2 SP1 işletim sistemlerinde algılamayı destekler.
+Güvenlik Merkezi 'ndeki Microsoft Defender ATP, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler, Azure VM 'Leri için Standart katman aboneliğine ve Azure dışı VM 'Lere ihtiyacınız varsa yalnızca çalışma alanı düzeyinde Standart katman gerekir.
 
 > [!NOTE]
 > Sunucuları izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, Microsoft Defender ATP kiracısı otomatik olarak oluşturulur ve Microsoft Defender ATP verileri varsayılan olarak Avrupa 'da depolanır. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurmanız gerekir. Bu tümleştirmenin kullanılmasıyla sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı.
@@ -70,7 +70,7 @@ Sunucuları güvenlik merkezi 'ne eklemek için **Azure Güvenlik Merkezi 'Ne gi
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP tümleştirmesini etkinleştir
 
-Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için, @no__t & **güvenlik merkezi**-1**fiyatlandırma > ayarları** ' nı seçin.
+Microsoft Defender ATP tümleştirmesi 'nin etkin olup olmadığını görmek için **güvenlik merkezi** > **fiyatlandırma & ayarları** ' nı seçin > aboneliğinize tıklayın.
 Burada, şu anda etkin olan entegrasyona bakabilirsiniz.
 
   ![Microsoft Defender ATP tümleştirmesi etkin olan Azure Güvenlik Merkezi tehdit algılama ayarları sayfası](media/security-center-wdatp/enable-integrations.png)

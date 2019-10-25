@@ -1,19 +1,19 @@
 ---
 title: Web uygulamanızı çok adımlı Web testleri ve Azure Application Insights izleyin | Microsoft Docs
-description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlama
+description: Web uygulamalarınızı Azure Application Insights izlemek için çok adımlı Web testleri ayarlayın
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678229"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817395"
 ---
 # <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
@@ -34,38 +34,12 @@ Test araçlarını önkoşul olarak belirlemek için. **Web performans ve yük t
 > [!NOTE]
 > Çok adımlı Web testlerinde bunlarla ilişkili ek maliyetler vardır. Daha fazla bilgi edinmek için [resmi fiyatlandırma kılavuzuna](https://azure.microsoft.com/pricing/details/application-insights/)başvurun.
 
-## <a name="record-a-multi-step-web-test"></a>Çok adımlı bir Web testini kaydetme
+## <a name="record-a-multi-step-web-test"></a>Çok adımlı bir Web testini kaydetme 
 
-Çok adımlı bir test oluşturmak için Visual Studio Enterprise kullanarak senaryoyu kaydedin ve kaydı Application Insights'a yükleyin. Application Insights, senaryoyu ayarlanan aralıklarla yeniden yürütür ve yanıtı doğrular.
+> [!WARNING]
+> Artık multi-step kaydedicisinin kullanılması önerilmez. Kaydedici, temel etkileşimleri olan statik HTML sayfaları için geliştirilmiştir ve modern web sayfaları için işlevsel bir deneyim sağlamıyor.
 
-> [!IMPORTANT]
-> * Testlerinizde kodlanmış işlevler veya döngüler kullanamazsınız. Test tamamen .webtest betiğinde yer almalıdır. Ancak, standart eklentiler kullanabilirsiniz.
-> * Çok adımlı web testlerinde yalnızca İngilizce karakterler desteklenir. Visual Studio’yu diğer dillerde kullanıyorsanız lütfen İngilizce olmayan karakterleri çevirmek/hariç tutmak için web testi tanımı dosyasını güncelleştirin.
-
-Web oturumu kaydetmek için Visual Studio Enterprise kullanın.
-
-1. Web performansı ve yük testi projesi oluşturun. **Dosya**  > **Yeni**  > **projesi**  > **görsel C#**   > **Test**
-
-    ![Visual Studio yeni proje Kullanıcı arabirimi](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. @No__t_0 dosyasını açın ve kaydetmeye başlayın.
-
-    ![Visual Studio test kaydı kullanıcı arabirimi](./media/availability-multistep/open-web-test.png)
-
-3. Testin, kaydın bir parçası olarak benzetimini yapmak istediğiniz adımlara tıklayın.
-
-    ![Tarayıcı kayıt kullanıcı arabirimi](./media/availability-multistep/record.png)
-
-4. Testi düzenleme nedenleri:
-
-    * Alınan metin ve yanıt kodlarını denetlemek için doğrulama ekleme.
-    * Herhangi bir uneccesary etkileşimini kaldırın. Ayrıca, resimlerinize yönelik bağımlı istekleri kaldırabilir veya test başarısını düşünmeyle ilgili olmayan izleme siteleri ekleyebilirsiniz.
-    
-    Yalnızca test betiğini düzenleyebileceğinizi aklınızda bulundurun; özel kod ekleyebilir veya diğer Web testlerini çağırabilirsiniz. Testlere döngü eklemeyin. Standart web testi eklentileri kullanabilirsiniz.
-
-5. Doğrulamak için Visual Studio 'da testi çalıştırın ve çalıştığından emin olun.
-
-    Web test çalıştırıcısı bir web tarayıcısı açar ve kaydettiğiniz eylemleri yineler. Her şeyin beklendiği gibi davrandığından emin olun.
+Visual Studio Web testleri oluşturma konusunda rehberlik için [resmi Visual studio 2019 belgelerine](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)bakın.
 
 ## <a name="upload-the-web-test"></a>Web testini karşıya yükleyin
 
@@ -96,7 +70,7 @@ Web oturumu kaydetmek için Visual Studio Enterprise kullanın.
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
 |**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile, test konumu sayısı-2**  =  **Uyarı konum eşiği** ' dir.|
 
-## <a name="advanced-configuration"></a>Gelişmiş Yapılandırma
+## <a name="configuration"></a>Yapılandırma
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Testinize zaman ve rastgele sayılar takma
 

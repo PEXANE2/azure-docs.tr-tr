@@ -1,24 +1,19 @@
 ---
 title: 'Application Insights: diller, platformlar ve tümleştirmeler | Microsoft Docs'
 description: Application Insights için kullanılabilen diller, platformlar ve tümleştirmeler
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.author: mbullwin
-ms.openlocfilehash: ab573d1d9ca9d9db39135ea76e555bb0720d7b68
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 35d1cf37e1df0b2714505833d40163775e3d090c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878783"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819044"
 ---
 # <a name="supported-languages"></a>Desteklenen diller
 
@@ -31,7 +26,7 @@ ms.locfileid: "68878783"
 
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>Zaten dağıtılan uygulamalar için izleme (codeless, aracı tabanlı)
 * [Azure VM ve Azure sanal makine ölçek kümeleri](../../azure-monitor/app/azure-vm-vmss-apps.md)
-* [Azure uygulama hizmeti](../../azure-monitor/app/azure-web-apps.md)
+* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - zaten canlı olan uygulamalar için](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * Hem Web hem de çalışan rolleri dahil olmak üzere [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)
 * [Azure İşlevleri](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
@@ -56,5 +51,5 @@ ms.locfileid: "68878783"
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Akış Analizi](../../azure-monitor/app/export-power-bi.md)
 
-## <a name="unsupported-sdks"></a>Desteklenmeyen SDK 'lar
+## <a name="unsupported-sdks"></a>Desteklenmeyen SDK’lar
 Diğer topluluk tarafından desteklenen birkaç SDK 'nın mevcut olduğunu biliyoruz. Ancak, Azure Izleyici yalnızca bu sayfada listelenen desteklenen SDK 'Ları kullanırken destek sağlar. Diğer dillere yönelik desteğimizi genişletmeyi sürekli olarak değerlendirdik, bu nedenle en son SDK haberlerini almak için [GitHub duyuruları](https://github.com/microsoft/ApplicationInsights-Announcements/issues) sayfamızı izleyin. 

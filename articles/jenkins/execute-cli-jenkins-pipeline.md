@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 6/7/2017
-ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2019
+ms.openlocfilehash: 3da18bf50c82a32a9cec70555ac0d051e7660184
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162199"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882127"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins ve Azure CLI ile Azure App Service'e dağıtım yapma
 Azure'a Java web uygulaması dağıtmak için [Jenkins İşlem Hattı](https://jenkins.io/doc/book/pipeline/)'ndaki Azure CLI'yi kullanabilirsiniz. Bu öğreticide, aşağıdakileri öğrenerek bir Azure sanal makinesinde CI/CD işlem hattı oluşturursunuz:
@@ -31,13 +31,13 @@ Bu öğretici, Azure CLI 2.0.4 veya sonraki bir sürümü gerektirir. Sürümü 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-configure-jenkins-instance"></a>Jenkins örneği oluşturma ve Jenkins örneğini yapılandırma
-Jenkins ana sunucunuz yoksa, gerekli [Azure Kimlik Bilgileri](https://plugins.jenkins.io/azure-credentials) eklentisini varsayılan olarak içeren [Çözüm Şablonu](install-jenkins-solution-template.md) ile başlayın. 
+Zaten bir Jenkins ana şablonunuz yoksa, varsayılan olarak gerekli [Azure kimlik bilgileri](https://plugins.jenkins.io/azure-credentials) eklentisini Içeren [çözüm şablonuyla](install-jenkins-solution-template.md)başlayın. 
 
-Azure Kimlik Bilgileri eklentisi, Microsoft Azure hizmet sorumlusu kimlik bilgilerini Jenkins'de depolamanıza olanak sağlar. 1\.2 sürümünde, Jenkins İşlem Hattının Azure kimlik bilgilerini alabilmesine yönelik desteği ekledik. 
+Azure kimlik bilgisi eklentisi, Jenkins 'de Microsoft Azure hizmet sorumlusu kimlik bilgilerini depolamanıza olanak tanır. 1\.2 sürümünde, Jenkins İşlem Hattının Azure kimlik bilgilerini alabilmesine yönelik desteği ekledik. 
 
 1\.2 veya sonraki bir sürüme sahip olduğunuzdan emin olun:
 * Jenkins panosunda **Manage Jenkins -> Plugin Manager**'ı (Jenkins'i Yönet -> Eklenti Yöneticisi) seçin ve **Azure Credential**'ı (Azure Kimlik Bilgileri) arayın. 
-* 1\.2'den önceki bir sürüm kullanılıyorsa eklentiyi güncelleştirin.
+* Sürüm 1,2 ' den daha eski ise eklentiyi güncelleştirin.
 
 Java JDK ve Maven, Jenkins ana sunucusunda da gereklidir. Yüklemek için SSH kullanarak Jenkins ana sunucusunda oturum açın ve aşağıdaki komutları çalıştırın:
 ```bash
@@ -147,12 +147,12 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ## <a name="create-jenkins-pipeline"></a>Jenkins işlem hattı oluşturma
 Jenkins'i bir web tarayıcısında açın ve **New Item**'a (Yeni Öğe) tıklayın. 
 
-* İş için bir ad girin ve **İşlem Hattı**'nı seçin. **Tamam** düğmesine tıklayın.
+* İş için bir ad girin ve **İşlem Hattı**'nı seçin. **Tamam**’a tıklayın.
 * Ardından, **Pipeline** (İşlem hattı) sekmesine tıklayın. 
 * **Definition** (Tanım) için **Pipeline script from SCM**'yi (SCM'den işlem hattı betiği) seçin.
 * **SCM** için **Git**'i seçin.
 * Çatalını oluşturduğunuz deponuzun GitHub URL'sini girin: https:\<çatalını oluşturduğunuz depo\>.git
-* **Kaydet**'e tıklayın.
+* **Kaydet**’e tıklayın
 
 ## <a name="test-your-pipeline"></a>İşlem hattınızı test etme
 * Oluşturduğunuz işlem hattına gidin ve **Build Now**'a (Şimdi Derle) tıklayın
@@ -174,7 +174,7 @@ Bu işlem, WAR dosyasının web uygulamanıza başarıyla dağıtıldığını d
 ## <a name="deploy-to-azure-web-app-on-linux"></a>Linux üzerinde Web App'e dağıtım yapma
 Jenkins işlem hattınızda Azure CLI'yi nasıl kullanacağınızı öğrendiğinize göre artık betiği, Linux üzerinde Web App'e dağıtım yapacak şekilde değiştirebilirsiniz.
 
-Linux üzerinde Web App, dağıtım yapmak için farklı bir yöntemi (Docker kullanımı) destekler. Dağıtım yapmak için web uygulamanızı, bir hizmet çalışma zamanı ile Docker görüntüsü olarak paket haline getiren bir Dockerfile sağlamanız gerekir. Ardından, eklenti görüntüyü derleyip Docker kayıt defterine gönderir ve görüntüyü web uygulamanıza dağıtır.
+Linux üzerinde Web App, dağıtım yapmak için farklı bir yöntemi (Docker kullanımı) destekler. Dağıtım yapmak için web uygulamanızı, bir hizmet çalışma zamanı ile Docker görüntüsü olarak paket haline getiren bir Dockerfile sağlamanız gerekir. Daha sonra eklenti görüntüyü oluşturur, bir Docker kayıt defterine gönderir ve görüntüyü Web uygulamanıza dağıtır.
 
 * Linux üzerinde çalışan bir Azure Web App oluşturma adımları için [buraya](../app-service/containers/quickstart-nodejs.md) tıklayın.
 * Bu [makaledeki](https://docs.docker.com/engine/installation/linux/ubuntu/) yönergeleri uygulayarak Jenkins örneğinizde Docker yükleyin.

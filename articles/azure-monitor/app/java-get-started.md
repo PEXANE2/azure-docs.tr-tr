@@ -1,25 +1,20 @@
 ---
 title: Azure Application Insights ile Java web uygulaması analizi | Microsoft Docs
 description: 'Application Insights ile Java web uygulamaları için Uygulama Performansı İzleme. '
-services: application-insights
-documentationcenter: java
-author: lgayhardt
-manager: carmonm
-ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/24/2019
+author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: a6e8187a085d637ad3abc650daf15d92b96755a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 05/24/2019
+ms.openlocfilehash: 28fbb5fcfba2b346d0519dec79e538b1e513b7dd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338107"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817134"
 ---
-# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java web projesinde Application Insights ile başlarken
+# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Bir Java web projesiyle Application Insights’ı kullanmaya başlayın
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/), web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. [İsteği otomatik olarak işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak](auto-collect-dependencies.md#java), performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıları izlemek için [kod yazmak][api] üzere kullanın. 
 
@@ -32,7 +27,7 @@ Gerekenler:
 * Java 7 veya üzeri
 * Bir [Microsoft Azure](https://azure.microsoft.com/) aboneliği.
 
-## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Application Insights izleme anahtarı edinme
+## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Application Insights bir izleme anahtarı alın
 1. [Microsoft Azure portalında](https://portal.azure.com) oturum açın.
 2. Bir Application Insights kaynağı oluşturun. Uygulama türünü Java web uygulaması olarak ayarlayın.
 
@@ -40,7 +35,7 @@ Gerekenler:
 
     ![Yeni kaynağa genel bakışta, Özellikler'e tıklayıp izleme anahtarını kopyalama](./media/java-get-started/instrumentation-key-001.png)
 
-## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Projenize Java için Application Insights SDK’sı ekleme
+## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. Java için Application Insights SDK 'sını projenize ekleyin
 *Projeniz için uygun yolu seçin.*
 
 #### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Maven kullanıyorsanız... <a name="maven-setup" />
@@ -77,10 +72,10 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
 [En son sürümü](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) indirin ve önceki sürümleri değiştirerek gerekli dosyaları projenize kopyalayın.
 
 ### <a name="questions"></a>Sorular...
-* *`-web` `-web-auto` Ve`-core` bileşenleri arasındaki ilişki nedir?*
+* *`-web-auto`, `-web` ve `-core` bileşenleri arasındaki ilişki nedir?*
   * `applicationinsights-web-auto`, çalışma zamanında Application Insights servlet filtresini otomatik olarak kaydederek HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri sağlar.
-  * `applicationinsights-web`Ayrıca, HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri de verir, ancak uygulamanızda Application Insights servlet filtresi 'nin el ile kaydedilmesini gerektirir.
-  * `applicationinsights-core`, uygulamanızın servlet tabanlı olmaması durumunda yalnızca tam API sağlar.
+  * `applicationinsights-web` Ayrıca, HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri de verir, ancak uygulamanızda Application Insights servlet filtresi 'nin el ile kaydedilmesini gerektirir.
+  * `applicationinsights-core`, Örneğin uygulamanızın servlet tabanlı olmaması durumunda yalnızca tam API 'yi sağlar.
   
 * *SDK’yı en son sürüme nasıl güncelleştirmeliyim?*
   * Gradle veya Maven kullanıyorsanız...
@@ -88,7 +83,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
   * Bağımlılıkları el ile yönetiyorsanız...
     * En son [Java için Application Insights SDK’si](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)’ni indirin ve eskilerle değiştirin. Değişiklikler [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) açıklanmıştır.
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>3. ApplicationInsights.xml dosyası ekleme
+## <a name="3-add-an-applicationinsightsxml-file"></a>3. bir ApplicationInsights. xml dosyası ekleyin
 Projenizin kaynaklar klasörüne ApplicationInsights.xml dosyasını ekleyin veya projenizin dağıtım sınıfı yoluna eklendiğinden emin olun. Aşağıdaki XML dosyasını buraya kopyalayın.
 
 Azure portalından aldığınız izleme anahtarını bununla değiştirin.
@@ -131,7 +126,7 @@ Application Insights SDK’sı anahtarı şu sırayla arar:
 
 1. Sistem özelliği:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
 2. Ortam değişkeni: APPINSIGHTS_INSTRUMENTATIONKEY
-3. Yapılandırma dosyası: ApplicationInsights. xml
+3. Yapılandırma dosyası: ApplicationInsights.xml
 
 Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -144,14 +139,14 @@ Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-even
     }
 ```
 
-## <a name="4-add-agent"></a>4. Aracı Ekle
+## <a name="4-add-agent"></a>4. aracı ekle
 
 Giden HTTP çağrılarını, JDBC sorgularını, uygulama günlüğünü ve daha iyi işlem adlandırmayı yakalamak için [Java aracısını yükler](java-agent.md) .
 
-## <a name="5-run-your-application"></a>5. Uygulamanızı çalıştırma
+## <a name="5-run-your-application"></a>5. uygulamanızı çalıştırın
 Geliştirme makinenizde hata ayıklama modunda çalıştırın ya da sunucunuza yayımlayın.
 
-## <a name="6-view-your-telemetry-in-application-insights"></a>6. Application Insights'da telemetrinizi görüntüleme
+## <a name="6-view-your-telemetry-in-application-insights"></a>6. Application Insights içinde telemetrinizi görüntüleyin
 [Microsoft Azure portalında](https://portal.azure.com), Application Insights kaynağınıza dönün.
 
 HTTP isteklerine ilişkin veriler genel bakış dikey penceresinde görüntülenir. (Orada değilse, birkaç saniye bekleyip Yenile’ye tıklayın.)
@@ -173,12 +168,12 @@ Ayrı ayrı örnekleri görmek için belirli bir istek türüne tıklayın.
 
 ![Belirli bir örnek görünüm detayına gitme](./media/java-get-started/007-instance.png)
 
-### <a name="analytics-powerful-query-language"></a>Analiz Güçlü sorgu dili
+### <a name="analytics-powerful-query-language"></a>Analiz: Güçlü sorgu dili
 Daha fazla veri birleştirdiğinizde hem veri toplama, hem de tek tek örneklerini bulmak için sorguları çalıştırabilirsiniz.  [Analiz](../../azure-monitor/app/analytics.md) hem performans, hem de kullanım için olmasının yanı sıra tanılama için de güçlü bir araçtır.
 
 ![Analizi örneği](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7. Uygulamanızı sunucuya yükleme
+## <a name="7-install-your-app-on-the-server"></a>7. uygulamanızı sunucuya yükler
 Artık uygulamanızı sunucuya yayımlayın, herkesin kullanmasını sağlayın ve portalda gösterilen telemetriye bakın.
 
 * Güvenlik duvarınızın, uygulamanıza şu bağlantı noktalarına telemetri göndermesine izin verdiğinden emin olun:
@@ -302,7 +297,7 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 
 [Kullanılabilirlik Web testlerini ayarlama hakkında daha fazla bilgi edinin.][availability]
 
-## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
+## <a name="questions-problems"></a>Sorularınız mı var? Sorunlar?
 [Java Sorun Giderme](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

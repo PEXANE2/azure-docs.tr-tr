@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097655"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819673"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -58,15 +58,15 @@ Azure App Service yerel önbellek özelliği, içeriğinizin bir Web rolü gör�
 ## <a name="enable-local-cache-in-app-service"></a>App Service 'de yerel önbelleği etkinleştir
 Yerel önbelleği, ayrılmış uygulama ayarları birleşimini kullanarak yapılandırırsınız. Aşağıdaki yöntemleri kullanarak bu uygulama ayarlarını yapılandırabilirsiniz:
 
-* [Azure portal](#Configure-Local-Cache-Portal)
+* [Azure portalda](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>Azure portal kullanarak yerel önbelleği yapılandırma
 <a name="Configure-Local-Cache-Portal"></a>
 
-Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına temelinde etkinleştirin:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+Bu uygulama ayarını kullanarak Web uygulaması başına temelinde yerel önbelleği etkinleştirin: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![Azure portal uygulama ayarları: Yerel Önbellek](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![Azure portal App Settings: yerel önbellek](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
 ### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Azure Resource Manager kullanarak yerel önbelleği yapılandırma
 <a name="Configure-Local-Cache-ARM"></a>
@@ -93,23 +93,24 @@ Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına teme
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Yerel önbellekteki boyut ayarını değiştir
-Varsayılan olarak, yerel önbellek boyutu **300 MB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını `WEBSITE_LOCAL_CACHE_SIZEINMB`kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz.
+Varsayılan olarak, yerel önbellek boyutu **1 GB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için `WEBSITE_LOCAL_CACHE_SIZEINMB`uygulama ayarını kullanın. Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
 Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.
 
-* Değeri `WEBSITE_LOCAL_CACHE_OPTION` Üretimyuvasınaekleyerekyapışkan`Always` uygulama ayarını ekleyin. `WEBSITE_LOCAL_CACHE_SIZEINMB`Kullanıyorsanız, üretim yuvasına yapışkan bir ayar olarak da ekleyin.
+* `WEBSITE_LOCAL_CACHE_OPTION` *yapışkan* uygulama ayarı `Always` değerini **Üretim** yuvasıyla ekleyin. `WEBSITE_LOCAL_CACHE_SIZEINMB`kullanıyorsanız, üretim yuvasına yapışkan bir ayar olarak da ekleyin.
 * **Hazırlama** yuvası oluşturun ve hazırlama yuvalamanıza yayımlayın. Hazırlama yuvasını, üretim yuvası için yerel önbelleğin avantajlarından yararlanmanız durumunda, hazırlama için sorunsuz bir yapı-dağıtma-test yaşam döngüsünü etkinleştirmek üzere yerel önbellek kullanacak şekilde ayarlayamazsınız.
 * Sitenizi hazırlama yuvasıyla test edin.  
 * Hazırsanız, hazırlama ve üretim yuvalarınız arasında bir [değiştirme işlemi](../app-service/deploy-staging-slots.md#Swap) yapın.  
 * Yapışkan ayarlar bir yuvaya bir yuva adı ve yapışkan olarak verilebilir. Bu nedenle, hazırlama yuvası üretime takas edildiğinde yerel önbellek uygulama ayarlarını devralır. Yeni takas edilen üretim yuvası, birkaç dakika sonra yerel önbellekte çalışır ve değiştirme sonrasında yuva ısınma bir parçası olarak görünür olur. Bu nedenle, yuva takası tamamlandığında, üretim yuva yerel önbellekte çalışır.
 
 ## <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Yerel önbelleğin uygulamam için geçerli olup olmadığını nasıl anlayabilirim?
 Uygulamanızın yüksek performanslı, güvenilir bir içerik deposu olması gerekiyorsa, çalışma zamanında kritik verileri yazmak için içerik deposunu kullanmaz ve toplam boyutta 2 GB 'den küçükse yanıt "Evet" olur! /SITE ve/siteextensions klasörlerinizin toplam boyutunu almak için, "Azure Web Apps disk kullanımı" site uzantısını kullanabilirsiniz.
 
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Sitemin yerel önbellek kullanmaya geçmiş olup olmadığını nasıl anlayabilirim?
-Yerel önbellek özelliğini hazırlama ortamları ile kullanıyorsanız, yerel önbellek çarpana kadar değiştirme işlemi tamamlanmaz. Sitenizin yerel önbelleğe karşı çalışıp çalışmadığını denetlemek için çalışan işlem ortamı değişkenini `WEBSITE_LOCALCACHE_READY`kontrol edebilirsiniz. Çalışan işlem ortamı değişkenine birden çok örnek üzerinde erişmek için [çalışan işlem ortamı değişkeni](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) sayfasındaki yönergeleri kullanın.  
+Yerel önbellek özelliğini hazırlama ortamları ile kullanıyorsanız, yerel önbellek çarpana kadar değiştirme işlemi tamamlanmaz. Sitenizin yerel önbelleğe karşı çalışıp çalışmadığını denetlemek için, `WEBSITE_LOCALCACHE_READY`çalışan işlem ortamı değişkenini kontrol edebilirsiniz. Çalışan işlem ortamı değişkenine birden çok örnek üzerinde erişmek için [çalışan işlem ortamı değişkeni](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) sayfasındaki yönergeleri kullanın.  
 
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Yeni değişiklikler yayımladım, ancak Uygulamam bunlara sahip görünmüyor. Neden?
 Uygulamanız yerel önbellek kullanıyorsa, en son değişiklikleri almak için sitenizi yeniden başlatmanız gerekir. Bir üretim sitesindeki değişiklikleri yayınlamak istemiyor musunuz? Önceki en iyi yöntemler bölümündeki yuva seçeneklerine bakın.

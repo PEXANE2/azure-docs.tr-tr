@@ -4,16 +4,16 @@ description: Bu makale, kapsayıcılar oluşturmanıza, dosyaları kopyalamaya v
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c65c6b3f6f186e7821ff402eea4494fa60e9c370
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598078"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817053"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve BLOB Storage ile veri aktarma
 
@@ -31,6 +31,9 @@ AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v
 > Örneğin: `'https://<storage-account-name>.blob.core.windows.net/<container-name>?<SAS-token>'`.
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+
+> [!TIP]
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 Bir kapsayıcı oluşturmak için [AzCopy Make](storage-ref-azcopy-make.md) komutunu kullanabilirsiniz. Bu bölümdeki örneklerde `mycontainer` adlı bir kapsayıcı oluşturulur.
 
@@ -54,10 +57,10 @@ Bu bölüm aşağıdaki örnekleri içerir:
 > * Bir dizinin içeriğini karşıya yükleme 
 > * Belirli dosyaları karşıya yükle
 
-> [!NOTE]
-> AzCopy, dosyanın MD5 karma kodunu otomatik olarak hesaplamaz ve depolamaz. AzCopy 'in bunu yapmak istiyorsanız, her kopyalama komutuna `--put-md5` bayrağını ekleyin. Bu şekilde, blob indirildiğinde AzCopy, indirilen veriler için bir MD5 karması hesaplar ve BLOB 'un `Content-md5` özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular.
-
 Ayrıntılı başvuru belgeleri için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 
@@ -70,7 +73,7 @@ Ayrıntılı başvuru belgeleri için bkz. [AzCopy kopyası](storage-ref-azcopy-
 Dosya yolu veya dosya adında herhangi bir yerde joker karakter sembolünü (*) kullanarak da bir dosyayı karşıya yükleyebilirsiniz. Örneğin: `'C:\myDirectory\*.txt'` veya `C:\my*\*.txt`.
 
 > [!NOTE]
-> AzCopy varsayılan olarak blok bloblarına veri yükler. Dosyaları ekleme Blobları olarak yüklemek için veya sayfa Blobları `--blob-type=[BlockBlob|PageBlob|AppendBlob]` bayrağını kullanır.
+> AzCopy varsayılan olarak blok bloblarına veri yükler. Dosyaları ekleme Blobları olarak yüklemek için veya sayfa Blobları `--blob-type=[BlockBlob|PageBlob|AppendBlob]`bayrağını kullanır.
 
 ### <a name="upload-a-directory"></a>Bir dizini karşıya yükle
 
@@ -118,10 +121,9 @@ Tüm dosya adlarını belirtebilir veya joker karakterler (*) ile kısmi adlar k
 | **Örnek** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-Bu örnekte, AzCopy `C:\myDirectory\photos` dizinini ve `C:\myDirectory\documents\myFile.txt` dosyasını aktarır. @No__t_1 dizinindeki tüm dosyaları aktarmak için `--recursive` seçeneğini dahil etmeniz gerekir.
+Bu örnekte, AzCopy `C:\myDirectory\photos` dizinini ve `C:\myDirectory\documents\myFile.txt` dosyasını aktarır. `C:\myDirectory\photos` dizinindeki tüm dosyaları aktarmak için `--recursive` seçeneğini dahil etmeniz gerekir.
 
 Ayrıca, `--exclude-path` seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz. Daha fazla bilgi edinmek için bkz. [AzCopy kopyalama](storage-ref-azcopy-copy.md) başvuru belgeleri.
-
 
 #### <a name="use-wildcard-characters"></a>Joker karakter kullan
 
@@ -135,7 +137,7 @@ Ayrıca, `--exclude-path` seçeneğini kullanarak dosyaları dışarıda bıraka
 
 Ayrıca, `--exclude-pattern` seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz. Daha fazla bilgi edinmek için bkz. [AzCopy kopyalama](storage-ref-azcopy-copy.md) başvuru belgeleri.
 
-@No__t_0 ve `--exclude-pattern` seçenekleri yalnızca dosya adlarıyla uygulanır, yola değildir.  Bir dizin ağacında bulunan tüm metin dosyalarını kopyalamak istiyorsanız, tüm dizin ağacını almak için `–recursive` seçeneğini kullanın ve ardından `–include-pattern` ' i kullanın ve tüm metin dosyalarını almak için `*.txt` ' yi belirtin.
+`--include-pattern` ve `--exclude-pattern` seçenekleri yalnızca dosya adlarıyla uygulanır, yola değildir.  Bir dizin ağacında bulunan tüm metin dosyalarını kopyalamak istiyorsanız, tüm dizin ağacını almak için `–recursive` seçeneğini kullanın ve ardından `–include-pattern` ' i kullanın ve tüm metin dosyalarını almak için `*.txt` ' yi belirtin.
 
 ## <a name="download-files"></a>Dosyaları indirme
 
@@ -153,6 +155,9 @@ Bu bölüm aşağıdaki örnekleri içerir:
 > Bir Blobun `Content-md5` özellik değeri bir karma içeriyorsa, AzCopy indirilen veriler için bir MD5 karması hesaplar ve BLOB 'un `Content-md5` özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular. Bu değerler eşleşmezse, Copy komutuna `--check-md5=NoCheck` veya `--check-md5=LogOnly` ekleyerek bu davranışı geçersiz kılmadığınız müddetçe indirme işlemi başarısız olur.
 
 Ayrıntılı başvuru belgeleri için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 ### <a name="download-a-file"></a>Dosya indirme
 
@@ -201,7 +206,7 @@ Tüm dosya adlarını belirtebilir veya joker karakterler (*) ile kısmi adlar k
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-Bu örnekte, AzCopy `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` dizinini ve `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` dosyasını aktarır. @No__t_1 dizinindeki tüm dosyaları aktarmak için `--recursive` seçeneğini dahil etmeniz gerekir.
+Bu örnekte, AzCopy `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` dizinini ve `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` dosyasını aktarır. `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` dizinindeki tüm dosyaları aktarmak için `--recursive` seçeneğini dahil etmeniz gerekir.
 
 Ayrıca, `--exclude-path` seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz. Daha fazla bilgi edinmek için bkz. [AzCopy kopyalama](storage-ref-azcopy-copy.md) başvuru belgeleri.
 
@@ -217,20 +222,20 @@ Ayrıca, `--exclude-path` seçeneğini kullanarak dosyaları dışarıda bıraka
 
 Ayrıca, `--exclude-pattern` seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz. Daha fazla bilgi edinmek için bkz. [AzCopy kopyalama](storage-ref-azcopy-copy.md) başvuru belgeleri.
 
-@No__t_0 ve `--exclude-pattern` seçenekleri yalnızca dosya adlarıyla uygulanır, yola değildir.  Bir dizin ağacında bulunan tüm metin dosyalarını kopyalamak istiyorsanız, tüm dizin ağacını almak için `–recursive` seçeneğini kullanın ve ardından `–include-pattern` ' i kullanın ve tüm metin dosyalarını almak için `*.txt` ' yi belirtin.
+`--include-pattern` ve `--exclude-pattern` seçenekleri yalnızca dosya adlarıyla uygulanır, yola değildir.  Bir dizin ağacında bulunan tüm metin dosyalarını kopyalamak istiyorsanız, tüm dizin ağacını almak için `–recursive` seçeneğini kullanın ve ardından `–include-pattern` ' i kullanın ve tüm metin dosyalarını almak için `*.txt` ' yi belirtin.
 
 ## <a name="copy-blobs-between-storage-accounts"></a>Depolama hesapları arasında blobları kopyalama
 
 Diğer depolama hesaplarına Blobları kopyalamak için AzCopy kullanabilirsiniz. Kopyalama işlemi, komutun döndürdüğü zaman zaman uyumludur, yani tüm dosyalar kopyalanmış olduğunu gösterir. 
 
-AzCopy, [sunucudan sunucuya](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API 'ler](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)kullanır, bu nedenle veriler doğrudan depolama sunucuları arasında kopyalanır. Bu kopyalama işlemleri bilgisayarınızın ağ bant genişliğini kullanmaz. @No__t_0 ortam değişkeninin değerini ayarlayarak bu işlemlerin verimini artırabilirsiniz. Daha fazla bilgi için bkz. [aktarım hızını iyileştirme](storage-use-azcopy-configure.md#optimize-throughput).
+AzCopy, [sunucudan sunucuya](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API 'ler](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)kullanır, bu nedenle veriler doğrudan depolama sunucuları arasında kopyalanır. Bu kopyalama işlemleri bilgisayarınızın ağ bant genişliğini kullanmaz. `AZCOPY_CONCURRENCY_VALUE` ortam değişkeninin değerini ayarlayarak bu işlemlerin verimini artırabilirsiniz. Daha fazla bilgi için bkz. [aktarım hızını iyileştirme](storage-use-azcopy-configure.md#optimize-throughput).
 
 > [!NOTE]
 > Bu senaryoda, geçerli sürümde aşağıdaki sınırlamalar bulunur.
 >
 > - Yalnızca hiyerarşik bir ad alanı olmayan hesaplar desteklenir.
 > - Her kaynak URL 'ye bir SAS belirteci eklemeniz gerekir. Azure Active Directory (AD) kullanarak yetkilendirme kimlik bilgilerini sağlarsanız, SAS belirtecini yalnızca hedef URL 'den atlayabilirsiniz.
->-  Premium Blok Blob depolama hesapları, erişim katmanlarını desteklemez. @No__t_0 `false` olarak ayarlayarak kopyalama işleminden bir Blobun erişim katmanını atlayın (örneğin: `--s2s-preserve-access-tier=false`).
+>-  Premium Blok Blob depolama hesapları, erişim katmanlarını desteklemez. `s2s-preserve-access-tier` `false` olarak ayarlayarak kopyalama işleminden bir Blobun erişim katmanını atlayın (örneğin: `--s2s-preserve-access-tier=false`).
 
 Bu bölüm aşağıdaki örnekleri içerir:
 
@@ -241,6 +246,9 @@ Bu bölüm aşağıdaki örnekleri içerir:
 > * Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına Kopyala
 
 Ayrıntılı başvuru belgeleri için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md).
+
+> [!TIP]
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Bir blobu başka bir depolama hesabına kopyalama
 
@@ -279,12 +287,15 @@ Bir yerel dosya sisteminin içeriğini bir blob kapsayıcısı ile eşzamanlı h
 
 [Eşitleme](storage-ref-azcopy-sync.md) komutu dosya adlarını ve son değiştirilme zaman damgalarını karşılaştırır. Bu dosyalar artık kaynak dizinde yoksa, hedef dizindeki dosyaları silmek için `--delete-destination` isteğe bağlı bayrağını `true` veya `prompt` değerine ayarlayın.
 
-@No__t_0 bayrağını `true` AzCopy olarak ayarlarsanız, bir istem sağlamadan dosyaları siler. AzCopy bir dosyayı silmesinden önce bir istem görüntülenmesini istiyorsanız `--delete-destination` bayrağını `prompt` olarak ayarlayın.
+`--delete-destination` bayrağını `true` AzCopy olarak ayarlarsanız, bir istem sağlamadan dosyaları siler. AzCopy bir dosyayı silmesinden önce bir istem görüntülenmesini istiyorsanız `--delete-destination` bayrağını `prompt` olarak ayarlayın.
 
 > [!NOTE]
 > Yanlışlıkla silinmeleri engellemek için `--delete-destination=prompt|true` bayrağını kullanmadan önce [geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) özelliğini etkinleştirdiğinizden emin olun.
 
 Ayrıntılı başvuru belgeleri için bkz. [AzCopy eşitleme](storage-ref-azcopy-sync.md).
+
+> [!TIP]
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Yerel dosya sistemindeki değişikliklerle bir kapsayıcıyı güncelleştirme
 

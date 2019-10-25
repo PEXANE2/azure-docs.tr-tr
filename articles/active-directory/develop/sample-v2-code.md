@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f9b6a6139f329a27914eff7a61d0f59c7f48ad
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 01ed7383515a725816679acb405b2ff3b1dc8e92
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678061"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817233"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -47,11 +47,11 @@ Bu örnekler, Microsoft Identity platform ile güvenliği sağlanmış tek sayfa
 
 | Platform | Açıklama | Bağlantı |
 | -------- | --------------------- | -------- |
-| ![bu görüntüde JavaScript logosu @ no__t-1 [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Çağrılar Microsoft Graph |[JavaScript-graphapı-Web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-| ![bu görüntüde JavaScript logosu @ no__t-1 [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | B2C çağırır |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![bu görüntüde JavaScript logosu @ no__t-1 [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Kendi Web API 'sini çağırır |[JavaScript-singlepageapp-DotNet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
-| ![bu görüntüde angular JS logosu @ no__t-1 [JavaScript (msal AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs) gösterilmektedir| Çağrılar Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs/samples/MsalAngularjsDemoApp)
-| ![bu görüntüde angular logosu @ no__t-1 [JavaScript (msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gösterilmektedir| Çağrılar Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular/samples/MSALAngularDemoApp) |
+| Bu görüntüde ![JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Çağrılar Microsoft Graph |[JavaScript-graphapı-Web-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+| Bu görüntüde ![JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | B2C çağırır |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
+| Bu görüntüde ![JavaScript logosu](media/sample-v2-code/logo_js.png) [JavaScript (msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) gösterilmektedir | Kendi Web API 'sini çağırır |[JavaScript-singlepageapp-DotNet-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |
+| Bu görüntüde ![angular JS logosu [JavaScript](media/sample-v2-code/logo_angular.png) (msal AngularJS)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs) gösterilmektedir| Çağrılar Microsoft Graph  | [MsalAngularjsDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MsalAngularjsDemoApp)
+| Bu görüntüde ![, [JavaScript](media/sample-v2-code/logo_angular.png) JavaScript (msal angular)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) gibi angular logosu gösterilmektedir| Çağrılar Microsoft Graph  | [MSALAngularDemoApp](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/MSALAngularDemoApp) |
 
 ## <a name="web-applications"></a>Web uygulamaları
 

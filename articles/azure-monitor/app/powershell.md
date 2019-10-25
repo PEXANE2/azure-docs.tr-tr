@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights PowerShell ile otomatikleştirin | Microsoft Docs
 description: Azure Resource Manager şablonu kullanarak PowerShell 'de kaynakları, uyarıları ve kullanılabilirlik testlerini oluşturmayı ve yönetmeyi otomatikleştirin.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/17/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5cfe09c3c38ffd6e68d45ddc90862b69b305a824
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/17/2019
+ms.openlocfilehash: 938511069500c551eb526b6c7238546b85d59dce
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555480"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72818937"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell kullanarak Application Insights kaynaklarını yönetme
 
@@ -198,7 +193,7 @@ Yeni bir. JSON dosyası oluşturun-Bu örnekte `template1.json` çağıralım. B
 ### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Yeni bir Application Insights kaynağı oluşturmak için Kaynak Yöneticisi şablonunu kullanın
 
 1. PowerShell 'de `$Connect-AzAccount` kullanarak Azure 'da oturum açın
-2. @No__t_0 ile bağlamını bir aboneliğe ayarlayın
+2. `Set-AzContext "<subscription ID>"` ile bağlamını bir aboneliğe ayarlayın
 2. Yeni bir Application Insights kaynak oluşturmak için yeni bir dağıtım çalıştırın:
    
     ```PS
@@ -261,7 +256,7 @@ Yukarıdaki şablonu kullanarak veri bekletmesini 365 güne ayarlamak için şun
                -appName myApp
 ```
 
-Aşağıdaki betik, bekletme değiştirmek için de kullanılabilir. @No__t_0 olarak kaydetmek için bu betiği kopyalayın.
+Aşağıdaki betik, bekletme değiştirmek için de kullanılabilir. `Set-ApplicationInsightsRetention.ps1`olarak kaydetmek için bu betiği kopyalayın.
 
 ```PS
 Param(
@@ -546,7 +541,7 @@ Diğer test konumlarına ait kodları keşfetme veya daha karmaşık Web testi o
 
 Herhangi bir türdeki başka bir kaynağı oluşturmayı otomatikleştirin, bir örneği el ile oluşturun ve ardından [Azure Resource Manager](https://resources.azure.com/)kodunu kopyalayın ve parametreleştirin. 
 
-1. [Azure Resource Manager](https://resources.azure.com/)açın. @No__t_0, uygulama kaynağınızın altına gidin. 
+1. [Azure Resource Manager](https://resources.azure.com/)açın. `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, uygulama kaynağınızın altına gidin. 
    
     ![Azure Kaynak Gezgini gezinti](./media/powershell/01.png)
    
@@ -558,7 +553,7 @@ Herhangi bir türdeki başka bir kaynağı oluşturmayı otomatikleştirin, bir 
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. @No__t_0 ve `alertrules` bölümlerini açın ve tek tek öğeler için JSON öğesini şablonunuza kopyalayın. (@No__t_0 veya `alertrules` düğümlerinden kopyalamayın: altındaki öğelere gidin.)
+4. `webtests` ve `alertrules` bölümlerini açın ve tek tek öğeler için JSON öğesini şablonunuza kopyalayın. (`webtests` veya `alertrules` düğümlerinden kopyalamayın: altındaki öğelere gidin.)
    
     Her Web testinin ilişkili bir uyarı kuralı vardır, bu nedenle her ikisini de kopyalamanız gerekir.
    

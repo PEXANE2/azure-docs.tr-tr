@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB’ye giriş
 description: Azure Cosmos DB hakkında bilgi edinin. Bu genel olarak dağıtılan çok modelli veritabanı; düşük gecikme süresi, esnek ölçeklenebilirlik, yüksek kullanılabilirlik için oluşturulmuştur ve NoSQL verileri için yerel destek sunar.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/01/2019
-ms.author: rimman
-ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 10/23/2019
+ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240700"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882172"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 
@@ -24,11 +24,6 @@ Azure Cosmos DB, Microsoft 'un genel olarak dağıtılmış, çok modelli verita
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB’yi ücretsiz olarak deneyin](https://azure.microsoft.com/try/cosmosdb/)
 
-Ayrıca, Azure Cosmos DB üzerinde uygulamalarınızı oluşturmayı veya geçirmeyi hızlandırmak için [Cosmos DB önyükleme programını](https://azurecosmosdb.github.io/CosmosBootstrap/) da kullanabilirsiniz. Bu programa kaydolduğunuzda, Azure Cosmos DB mühendisler projenize yardımcı olmak üzere atanır ve verilerinizi Azure Cosmos DB veya Azure Cosmos DB yeni uygulamalar oluşturmak için geçirmenize yardımcı olabilirler.
-
-> [!div class="nextstepaction"]
-> [Cosmos DB önyükleme programına kaydolun](https://azurecosmosdb.github.io/CosmosBootstrap/)
-
 ![Azure Cosmos DB, Microsoft'un esnek ölçek genişletme, garantili düşük gecikme süresi, beş tutarlılık modeli ve kapsamlı SLA garantisi ile genel olarak dağıtılmış veritabanı hizmetidir](./media/introduction/azure-cosmos-db.png)
 
 ## <a name="key-benefits"></a>Önemli Avantajlar
@@ -39,7 +34,7 @@ Cosmos DB, dünya çapındaki yüksek oranda yanıt veren ve yüksek oranda kull
 
 Cosmos DB, her zaman bir düğmeye tıklayarak Azure bölgelerini Cosmos hesabınıza eklemenize veya kaldırmanıza olanak sağlar. Cosmos DB, uygulamanız yüksek oranda kullanılabilir olmaya devam ederken, hizmetin *çok sayıda barındırma* özelliği sayesinde verilerinizi Cosmos hesabınızla ilişkili tüm bölgelere sorunsuz bir şekilde çoğaltacaktır. Daha fazla bilgi için bkz. [genel dağıtım](distribute-data-globally.md) makalesi.
 
-### <a name="always-on"></a>Daima Açık
+### <a name="always-on"></a>Her Zaman Açık
 
 Azure altyapısı ve [saydam çok yöneticili çoğaltma](global-dist-under-the-hood.md)ile derin tümleştirme sayesinde, Cosmos DB hem okuma hem de yazma işlemleri için [% 99,999 yüksek kullanılabilirlik](high-availability.md) sağlar. Cosmos DB Ayrıca, Cosmos hesabınızın bölgesel yük devretmesini çağırmak için programlı bir şekilde (veya Portal aracılığıyla) olanak sağlar. Bu özellik, uygulamanızın, bölgesel olağanüstü durum durumunda yük devretmeye yönelik olarak tasarlandığından emin olmanıza yardımcı olur.
 
@@ -53,7 +48,7 @@ Cosmos DB kullanarak yüksek oranda duyarlı, dünya ölçekli uygulamalar oluş
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Tam olarak tanımlanmış, birden çok tutarlılık seçeneği
 
-Cosmos DB ' de küresel olarak dağıtılmış uygulamalar oluştururken, artık [tutarlılık, kullanılabilirlik, gecikme süresi ve aktarım hızı arasında](consistency-levels-tradeoffs.md)aşırı bir denge yapmanız gerekmez. Cosmos DB çok yöneticili çoğaltma protokolü, [iyi tanımlanmış beş tutarlılık seçeneği](consistency-levels.md) - sunan*güçlü*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek*ve *nihai* — küresel olarak dağıtılan uygulamanız için düşük gecikme süresi ve yüksek kullanılabilirliğe sahip sezgisel bir programlama modeli için.
+Cosmos DB ' de küresel olarak dağıtılmış uygulamalar oluştururken, artık [tutarlılık, kullanılabilirlik, gecikme süresi ve aktarım hızı arasında](consistency-levels-tradeoffs.md)aşırı bir denge yapmanız gerekmez. Cosmos DB, çok yöneticili çoğaltma protokolü, *güçlü*, *sınırlanmış Eskime durumu*, *oturum*, *tutarlı ön ek*ve *nihai* gibi [beş iyi tanımlanmış tutarlılık - seçeneği](consistency-levels.md) sunmak üzere dikkatle tasarlanmıştır. küresel olarak dağıtılan uygulamanız için düşük gecikme süresi ve yüksek kullanılabilirliğe sahip sezgisel bir programlama modeli için.
 
 ### <a name="no-schema-or-index-management"></a>Şema veya dizin yönetimi yok
 

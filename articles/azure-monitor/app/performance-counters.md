@@ -1,23 +1,18 @@
 ---
 title: Application Insights 'da performans sayaçları | Microsoft Docs
 description: Application Insights 'de sistem ve özel .NET performans sayaçlarını izleyin.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 12/13/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: fa4e45416e83d933cd21fe482bcead14bfbcae22
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.date: 12/13/2018
+ms.openlocfilehash: 229216ee873ade9418574141017aaf88235ba9e4
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349933"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820703"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 'de sistem performans sayaçları
 
@@ -30,16 +25,16 @@ Windows tarafından CPU doluluğu, bellek, disk ve ağ kullanımı gibi şeylere
 ![Application Insights bildirilen performans sayaçları](./media/performance-counters/performance-counters.png)
 
 ASP.NET/ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış geçerli varsayılan sayaçlar şunlardır:
-- % İşlem @ no__t-0Işlemci zamanı
-- % İşlem @ no__t-0Işlemci zamanı normalleştirilmiş
-- Bellek @ no__t-0 kullanılabilir bayt
+- % İşlem\\Işlemci zamanı
+- % İşlem\\Işlemci zamanı normalleştirmesi
+- Bellek\\kullanılabilir bayt sayısı
 - ASP.NET Istek/sn
 - Oluşturulan .NET CLR özel durumları/sn
 - ASP.NET ApplicationsRequest yürütme süresi
-- İşlem @ no__t-0Özel baytlar
-- İşlem @ no__t-0GÇ veri bayt/sn
-- Uygulama kuyruğundaki ASP.NET uygulamaları @ no__t-0Requests
-- İşlemci (_Toplam) \\% Işlemci zamanı
+- İşlem\\özel baytlar
+- İşlem\\GÇ veri baytı/sn
+- Uygulama kuyruğundaki Istekleri\\ASP.NET uygulamalar
+- İşlemci (_Total)\\% Işlemci zamanı
 
 ## <a name="add-counters"></a>Sayaç Ekle
 
@@ -66,13 +61,13 @@ ASP.NET/ASP.NET Core Web uygulamaları için toplanmaya yapılandırılmış ge�
     ```
 
 > [!NOTE]
-> ASP.NET Core uygulamalar `ApplicationInsights.config` ' a sahip değildir ve bu nedenle yukarıdaki yöntem ASP.NET Core uygulamalar için geçerli değildir.
+> ASP.NET Core uygulamalar `ApplicationInsights.config`sahip değildir ve bu nedenle yukarıdaki yöntem ASP.NET Core uygulamalar için geçerli değildir.
 
-Hem standart sayaçları hem de uyguladığınızı yakalayabilirsiniz. `\Objects\Processes`, tüm Windows sistemlerinde kullanılabilen standart bir sayaca örnektir. `\Sales(photo)\# Items Sold`, bir Web hizmetinde uygulanabilen özel sayaca bir örnektir.
+Hem standart sayaçları hem de uyguladığınızı yakalayabilirsiniz. `\Objects\Processes`, tüm Windows sistemlerinde kullanılabilen standart bir sayaca bir örnektir. `\Sales(photo)\# Items Sold`, bir Web hizmetinde uygulanabilir olabilecek özel bir sayaca örnektir.
 
-Biçim `\Category(instance)\Counter"` ' dır veya örnekleri olmayan kategoriler için yalnızca `\Category\Counter` ' dir.
+Biçim `\Category(instance)\Counter"`veya örnekleri olmayan kategoriler için yalnızca `\Category\Counter`.
 
-`[a-zA-Z()/-_ \.]+` @no__t eşleşmeyen sayaç adları için gereklidir-diğer bir deyişle, şu kümeler içinde olmayan karakterler içerirler: harfler, yuvarlak köşeli ayraç, eğik çizgi, tire, alt çizgi, boşluk, nokta.
+`[a-zA-Z()/-_ \.]+` eşleşmeyen sayaç adları için `ReportAs` gereklidir; diğer bir deyişle, şu kümeler içinde olmayan karakterler içerirler: harfler, yuvarlak köşeli ayraç, eğik çizgi, tire, alt çizgi, boşluk, nokta.
 
 Bir örnek belirtirseniz, bildirilen ölçümün "CounterInstanceName" boyutu olarak toplanır.
 
@@ -98,7 +93,7 @@ Veya oluşturduğunuz özel ölçümlerle aynı şeyi yapabilirsiniz:
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>ASP.NET Core Web uygulamaları için kodda performans sayaçlarını toplama
 
-@No__t-0 yöntemini `Startup.cs` sınıfınıza aşağıda gösterildiği gibi değiştirin.
+`Startup.cs` sınıfınıza `ConfigureServices` yöntemi aşağıda gösterildiği gibi değiştirin.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -120,7 +115,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ## <a name="performance-counters-in-analytics"></a>Analytics 'te performans sayaçları
 [Analiz](../../azure-monitor/app/analytics.md)içinde performans sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
 
-**PerformanceCounters** şeması `category`, `counter` adı ve her bir performans sayacının @no__t 3 adını gösterir.  Her uygulama için telemetri bölümünde yalnızca bu uygulama için sayaçları görürsünüz. Örneğin, hangi sayaçların kullanılabildiğini görmek için: 
+**PerformanceCounters** şeması, her bir performans sayacının `category`, `counter` adını ve `instance` adını gösterir.  Her uygulama için telemetri bölümünde yalnızca bu uygulama için sayaçları görürsünüz. Örneğin, hangi sayaçların kullanılabildiğini görmek için: 
 
 ![Application Insights Analytics 'te performans sayaçları](./media/performance-counters/analytics-performance-counters.png)
 
@@ -130,7 +125,7 @@ En son dönemde kullanılabilir bellek grafiğini almak için:
 
 ![Application Insights Analytics 'te bellek zaman grafiği](./media/performance-counters/analytics-available-memory.png)
 
-Diğer telemetri gibi, **PerformanceCounters** da uygulamanızın üzerinde çalıştığı `cloud_RoleInstance` ana bilgisayar sunucusu örneğinin kimliğini belirten bir sütun içerir. Örneğin, farklı makinelerdeki uygulamanızın performansını karşılaştırmak için: 
+Diğer telemetri gibi, **PerformanceCounters** da uygulamanızın üzerinde çalıştığı ana bilgisayar sunucusu örneğinin kimliğini belirten `cloud_RoleInstance` bir sütun içerir. Örneğin, farklı makinelerdeki uygulamanızın performansını karşılaştırmak için: 
 
 ![Application Insights Analytics 'te rol örneğine göre kesimli performans](./media/performance-counters/analytics-metrics-role-instance.png)
 
@@ -151,7 +146,7 @@ Hem ASP.NET hem de Azure Web Apps dağıtılan ASP.NET Core uygulamaları özel 
 ASP.NET Core performans sayaçları için destek sınırlıdır:
 
 * [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürümleri 2.4.1 ve üzeri, uygulama Azure Web Apps (Windows) üzerinde çalışıyorsa performans sayaçlarını toplar.
-* SDK sürümleri 2.7.1 ve üzeri, uygulama Windows ve hedefler `NETSTANDARD2.0` veya sonraki sürümlerde çalışıyorsa performans sayaçlarını toplar.
+* SDK sürümleri 2.7.1 ve üzeri, uygulama Windows 'da çalışıyorsa ve `NETSTANDARD2.0` veya daha sonra hedeflerse performans sayaçlarını toplar.
 * .NET Framework hedefleyen uygulamalar için SDK 'nın tüm sürümleri performans sayaçlarını destekler.
 * SDK sürümleri 2.8.0 ve üzeri, Linux 'ta CPU/bellek sayacını destekler. Linux 'ta başka bir sayaç desteklenmez. Linux 'ta (ve diğer Windows dışı ortamlarda) sistem sayaçlarını almanın önerilen yolu [Eventcounters](eventcounters.md) kullanmaktır
 

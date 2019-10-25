@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 984d0c570c6c0d5048d58377f113319157411244
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 0772446b0259b12d3f76b2020eeed4c9c2de1119
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513388"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882214"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -36,10 +36,16 @@ Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz. [h
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy tezgahtır](storage-ref-azcopy-bench.md)
 - [AzCopy kopyası](storage-ref-azcopy-copy.md)
 - [AzCopy belgesi](storage-ref-azcopy-doc.md)
 - [AzCopy env](storage-ref-azcopy-env.md)
 - [AzCopy işleri](storage-ref-azcopy-jobs.md)
+- [AzCopy işleri temizle](storage-ref-azcopy-jobs-clean.md)
+- [AzCopy işleri listesi](storage-ref-azcopy-jobs-list.md)
+- [AzCopy işleri kaldır](storage-ref-azcopy-jobs-remove.md)
+- [AzCopy işleri özgeçmişi](storage-ref-azcopy-jobs-resume.md)
+- [AzCopy işlerinin gösterilmesi](storage-ref-azcopy-jobs-show.md)
 - [AzCopy listesi](storage-ref-azcopy-list.md)
 - [AzCopy oturum açma](storage-ref-azcopy-login.md)
 - [AzCopy oturumu kapatma](storage-ref-azcopy-logout.md)

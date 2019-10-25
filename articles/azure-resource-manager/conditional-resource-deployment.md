@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88f8b6a8dcce0e498a7b81b8741072bcf4cfcad8
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259515"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881653"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarda koşullu dağıtım
 
-Bazen bir şablonda kaynak dağıtmanız gerekebilir. Kaynağın dağıtılıp dağıtılmayacağını belirtmek için öğesinikullanın.`condition` Bu öğenin değeri true veya false olarak çözümlenmektedir. Değer true olduğunda kaynak oluşturulur. Değer false olduğunda kaynak oluşturulmaz. Değer yalnızca kaynağın tamamına uygulanabilir.
+Bazen bir şablonda kaynak dağıtmanız gerekebilir. Kaynağın dağıtılıp dağıtılmayacağını belirtmek için `condition` öğesini kullanın. Bu öğenin değeri true veya false olarak çözümlenmektedir. Değer true olduğunda kaynak oluşturulur. Değer false olduğunda kaynak oluşturulmaz. Değer yalnızca kaynağın tamamına uygulanabilir.
 
 ## <a name="new-or-existing-resource"></a>Yeni veya mevcut kaynak
 
@@ -38,7 +38,7 @@ Koşullu dağıtımı, yeni bir kaynak oluşturmak veya var olan bir kaynağı k
 
 **Neworexıting** parametresi **New**olarak ayarlandığında, koşul true olarak değerlendirilir. Depolama hesabı dağıtılır. Ancak, **Neworexıting** özelliği **var**olarak ayarlandığında, koşul yanlış olarak değerlendirilir ve depolama hesabı dağıtılmaz.
 
-`condition` Öğesini kullanan bir örnek şablon için, bkz. [Yeni veya var olan sanal ağ, depolama ve genel IP ile VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+`condition` öğesini kullanan tüm örnek bir şablon için, [Yeni veya var olan sanal ağ, depolama ve genel IP Ile VM 'ye](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)bakın.
 
 ## <a name="allow-condition"></a>Koşula izin ver
 
@@ -81,6 +81,10 @@ Tüm şablon için bkz. [Azure SQL mantıksal sunucusu](https://github.com/Azure
 Koşullu olarak dağıtılan bir kaynakla [başvuru](resource-group-template-functions-resource.md#reference) veya [liste](resource-group-template-functions-resource.md#list) işlevi kullanıyorsanız, işlev, kaynak dağıtılmasa bile değerlendirilir. İşlev mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız.
 
 İşlevin yalnızca kaynak dağıtıldığında koşullara göre değerlendirildiğinden emin olmak için [IF](resource-group-template-functions-logical.md#if) işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve Reference kullanan bir örnek şablon için [IF işlevine](resource-group-template-functions-logical.md#if) bakın.
+
+## <a name="condition-with-complete-mode"></a>Tamamlanmış mod ile koşul
+
+Bir şablonu, [tamamlanma modu](deployment-modes.md) ile dağıtırsanız ve koşul false olarak değerlendirdiği için bir kaynak dağıtılmamışsa, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, koşul false olduğunda kaynağı siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

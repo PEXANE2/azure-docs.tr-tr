@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory portalında kullanım ve Öngörüler raporu | Microsoft Docs
+title: Kullanım ve Öngörüler raporu | Microsoft Docs
 description: Azure Active Directory portalındaki Kullanım ve Öngörüler raporuna giriş
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 568eaa358f6788af525a69cd8ecda76a0591879f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989852"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820948"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki Kullanım ve Öngörüler raporu
 

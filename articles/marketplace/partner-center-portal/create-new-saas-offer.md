@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376279"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819814"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
@@ -96,7 +96,7 @@ Aşağıdaki tabloda, kurum modelini göstermek için maliyetleri ve ödemlardan
 
 |**Microsoft faturaları**|**$100/ay**|
 |:---|:---|
-|Microsoft, lisans maliyetinizi %80 oranında ödetir <br>* *, nitelikli SaaS uygulamaları Için Microsoft, lisans maliyetlerinizin %90 ' ını öder*|$80,00/ay <br>*@no__t-ayda 1*90,00 *|
+|Microsoft, lisans maliyetinizi %80 oranında ödetir <br>*nitelikli SaaS uygulamaları için *, Microsoft Lisans maliyetlerinizin %90 ' ını öder*|$80,00/ay <br>Ayda 90,00 *$* *|
 
 - Bu örnekte, Microsoft, yazılım lisansınızın $100,00 ' i müşteriye faturalandırır ve Yayımcı için $80,00 ' i ödeder.
 - **Azaltılmış Market hizmet ücreti** için uygun olan iş ortakları, 2019 2020 Haziran 'a kadar Mayıs 'a kadar olan SaaS teklifleriyle daha düşük bir işlem ücreti görür. Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır ve Yayımcı için $90,00 ' i ödeder.
@@ -178,7 +178,8 @@ Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) ve en fazla üç (3) kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini lütfen unutmayın. 
 
 ### <a name="industry"></a>Sektör
-Teklifinizi uygun Market arama alanlarıyla gruplandırmak için kullanılan en fazla iki (2) sektör seçin. Teklifiniz bir sektöre özgü değilse, bir tane seçmeyin. Teklifinizin, teklif açıklamasında seçili sektörlerin nasıl destekdiğine lütfen ulaşın. 
+
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Uygulama sürümü
 Bu, teklifinizin sürüm numarasını belirlemek için AppSource marketi 'nde kullanılan isteğe bağlı bir alandır. 
@@ -248,7 +249,7 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
     <p> İlk paragrafım. </p>
     <p> Bu, ikinci paragrafım. </p>
 
-1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi aşağıdaki `<li>` etiketlere yerleştirin. @No__t-2 ve `</ul>` etiketleri içinde daha fazla madde işaretli öğe (`<li>` ve `</li>` etiketleri arasında) kopyalayabilir ve yapıştırabilirsiniz. @No__t (0) eklediğinizden emin olun. 
+1. **Madde işaretli bir öğe listesi**eklemek istiyorsanız, metninizi aşağıdaki `<li>` etiketlere yerleştirin. `<ul>` ve `</ul>` etiketleri içinde daha fazla madde işaretli öğe (`<li>` ve `</li>` etiketleri arasında öğeler) kopyalayabilir ve yapıştırabilirsiniz. `<ul></ul>`eklediğinizden emin olun. 
 
     **Örnek**:
 
@@ -289,12 +290,12 @@ Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamayı bi�
 
     **Örnek**:
 
-    `<h1>`This başlık 1 @ no__t-1 <br>
-    `<h2>`This başlık 2 @ no__t-1 <br>
-    `<h3>`This başlık 3 @ no__t-1 <br>
-    `<h4>`This başlık 4 @ no__t-1 <br>
-    `<h5>`This başlık 5 @ no__t-1 <br>
-    `<h6>`This başlık 6 @ no__t-1 
+    `<h1>`başlık 1`</h1>` <br>
+    `<h2>`başlık 2 ' dir`</h2>` <br>
+    `<h3>`başlık 3 '`</h3>` <br>
+    `<h4>`başlık 4 '`</h4>` <br>
+    `<h5>`başlık 5 ' tir`</h5>` <br>
+    `<h6>`başlık 6 ' dır`</h6>` 
 
     Yukarıdaki şöyle görünür:
 
