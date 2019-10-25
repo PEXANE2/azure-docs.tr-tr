@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: c2d7d7d97dce974ad8d72cc98f9ec6d3d554fb6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72329766"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72783979"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
      
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -123,7 +123,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
     * Küme için bir ad girin.
 
-    * **@No__t_1 sonra \_ dakika etkinliksizlik** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
+    * **\_sonra\_ dakika etkinliksizlik** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
 
     * **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -383,7 +383,7 @@ Daha önce belirtildiği gibi, SQL Data Warehouse Connector, Azure Databricks il
 
 ![Databricks kümesini durdurma](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Kümeyi el ile sonlandırmazsanız, kümeyi oluştururken **\_ \_ dakika Etkinliksiz** onay kutusunu seçtiğiniz takdirde otomatik olarak duraklar. Böyle bir durumda, belirtilen süre boyunca etkin olmadığında küme otomatik olarak duraklar.
+Kümeyi el ile sonlandırmazsanız, kümeyi oluştururken **\_\_ dakika Etkinliksiz** onay kutusunu seçtiğiniz takdirde otomatik olarak duraklar. Böyle bir durumda, belirtilen süre boyunca etkin olmadığında küme otomatik olarak duraklar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,19 +3,19 @@ title: Görüntü denetleme-Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Yetişkin ve kcy içeriği için orta görüntülerde Content Moderator makine yardımlı görüntü denetlemesi ve Kullanıcı döngüsü Inceleme aracını kullanın.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564902"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757348"
 ---
 # <a name="learn-image-moderation-concepts"></a>Görüntü denetleme kavramlarını öğrenin
 
@@ -106,7 +106,7 @@ Birçok çevrimiçi topluluk içinde, kullanıcılar görüntüleri veya diğer 
 Aynı görüntüyü birden çok kez Moderasyon yapmak yerine, rahatsız edici görüntüleri özel engellenen içerik listenize eklersiniz. Bu şekilde, içerik denetleme sisteminiz gelen görüntüleri özel listelerinizle karşılaştırır ve diğer işlemleri de sonlandırır.
 
 > [!NOTE]
-> Liste sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 görüntü listesidir**.
+> Listesi sayısı üst sınırı, her biri **10.000 görüntüyü aşmamak** kaydıyla **5 listedir**.
 >
 
 Content Moderator, özel görüntülerin listesini yönetmeye yönelik işlemler içeren, tamamlanmış bir [görüntü listesi yönetim API 'si](try-image-list-api.md) sağlar. [Görüntü LISTELERI API konsolu](try-image-list-api.md) ile başlayın ve REST API kod örneklerini kullanın. Visual Studio ve hakkında bilgi sahibiyseniz, [görüntü listesi .net hızlı](image-lists-quickstart-dotnet.md) başlangıcı ' C#nı da inceleyin.
@@ -139,11 +139,11 @@ Bir eşleşme bulunursa, işlem eşleşen görüntünün tanımlayıcısını ve
     ....
     }
 
-## <a name="human-review-tool"></a>İnsan inceleme aracı
+## <a name="human-review-tool"></a>İnsan tarafından inceleme aracı
 
 Daha fazla bilgi sahibi olmak için Content Moderator [Gözden geçirme aracını](Review-Tool-User-Guide/human-in-the-loop.md) ve API 'sini kullanarak insan moderatlarınız için gözden geçirme sonuçlarını ve içeriğini kullanın. Makine tarafından atanan etiketleri gözden geçirir ve son kararları onaylanır.
 
-![İnsan denetimciler için görüntü incelemesi](images/moderation-reviews-quickstart-dotnet.PNG)
+![İnsan moderatörler için görüntü incelemesi](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

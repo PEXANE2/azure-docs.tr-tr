@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 7ca6f1bda2dff9a8a9e54cb9d9ce5fd2d34c7245
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428082"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72783776"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -341,11 +341,15 @@ Aşağıdaki öğelerin ön eki vardır:
 - **[2]** : yalnızca düğüm 2 ' de geçerlidir
 
 **[A]** pacemaker yapılandırması için Önkoşullar:
-1. Her iki veritabanı sunucusunu da db2stop ile User DB2 @ no__t-0SID > ile kapatın.
-1. DB2 @ no__t-0SID > User için Shell ortamını */bin/ksh*olarak değiştirin. Yast aracını kullanmanızı öneririz. 
+1. Db2stop ile Kullanıcı DB2\<SID > her iki veritabanı sunucusunu da kapatın.
+1. DB2\<SID > Kullanıcı için Kabuk ortamını */bin/ksh*olarak değiştirin. Yast aracını kullanmanızı öneririz. 
 
 
 ### <a name="pacemaker-configuration"></a>Pacemaker yapılandırması
+
+> [!IMPORTANT]
+> En son test, Netcat 'in biriktirme listesi ve yalnızca bir bağlantıyı işleme sınırlaması nedeniyle isteklere yanıt vermeyi durdurduğu ortaya çıkarılan durumlardır. Netcat kaynağı Azure yük dengeleyici isteklerini dinlemeyi durduruyor ve kayan IP kullanılamaz hale gelir.  
+> Mevcut Paceüreticisi kümeleri için, [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)içindeki yönergeleri izleyerek netcat 'i socat ile değiştirmeyi öneririz. Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
 
 **[1]** IBM DB2 HADR 'e özgü Paceyapıcısı yapılandırması:
 <pre><code># Put Pacemaker into maintenance mode
@@ -371,7 +375,7 @@ sudo crm configure primitive rsc_ip_db2ptr_<b>PTR</b> IPaddr2 \
 
 # Configure probe port for Azure load Balancer
 sudo crm configure primitive rsc_nc_db2ptr_<b>PTR</b> anything \
-        params binfile="/usr/bin/nc" cmdline_options="-l -k <b>62500</b>" \
+        params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>62500</b>,backlog=10,fork,reuseaddr /dev/null" \
         op monitor timeout="20s" interval="10" depth="0"
 
 sudo crm configure group g_ip_db2ptr_<b>PTR</b> rsc_ip_db2ptr_<b>PTR</b> rsc_nc_db2ptr_<b>PTR</b>
@@ -558,7 +562,7 @@ Bir SAP sistemindeki özgün durum, aşağıdaki görüntüde gösterildiği gib
 > Teste başlamadan önce şunları yaptığınızdan emin olun:
 > * Pacemaker başarısız olan eylemlere sahip değil (CRM durumu).
 > * Hiçbir konum kısıtlaması yok (geçiş testinin sol üyesi ol)
-> * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2 @ no__t-0sid ile denetle > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * IBM DB2 HADR eşitlemesi çalışıyor. Kullanıcı DB2\<SID > denetleyin <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Aşağıdaki komutu yürüterek birincil DB2 veritabanını çalıştıran düğümü geçirin:
@@ -592,9 +596,9 @@ Kaynağı *azibmdb01* 'e geri geçirin ve konum kısıtlamalarını temizleyin
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **CRM kaynak geçişi \<res_adı > \<Host >:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
-- **CRM kaynağı temizle \<res_adı >** : konum kısıtlamalarını temizler
-- **CRM kaynak temizleme \<res_adı >** : kaynağın tüm hatalarını temizler
+- **CRM kaynak geçişi \<res_name > \<konak >:** Konum kısıtlamaları oluşturur ve ele alınmasına neden olabilir
+- **CRM kaynağı temizle \<res_name >** : konum kısıtlamalarını temizler
+- **CRM kaynak temizleme \<res_name >** : kaynağın tüm hatalarını temizler
 
 ### <a name="test-the-fencing-agent"></a>Sınırlama aracısını test etme
 
@@ -767,7 +771,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-Kullanıcı DB2 @ no__t-0SID > yürütme komutu db2stop zorla:
+Kullanıcı DB2\<SID > Execute komutu db2stop zorlama:
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 

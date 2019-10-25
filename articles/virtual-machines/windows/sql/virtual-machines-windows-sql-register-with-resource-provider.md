@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: MT
+ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512369"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756162"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -203,7 +203,7 @@ PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüle
      $sqlvm.Properties.sqlManagement
   ```
 
-*Hafif* IaaS uzantısının yüklü olduğu SQL Server VM 'ler, Azure Portal kullanarak modu _tam_ olarak yükseltebilir. _Aracı olmayan_ bir modda SQL Server VM 'ler, Işletim sistemi Windows 2008 R2 ve üzeri sürümlere yükseltildikten sonra _tam_ olarak yükseltilebilir. Bunun için düşürme yapılamaz, bunun için Azure portal kullanarak SQL VM kaynak sağlayıcısı kaynağını silmeniz ve SQL VM kaynak sağlayıcısına yeniden kaydolmanız gerekecektir. 
+*Hafif* IaaS uzantısının yüklü olduğu SQL Server VM 'ler, Azure Portal kullanarak modu _tam_ olarak yükseltebilir. _Aracı olmayan_ bir modda SQL Server VM 'ler, Işletim sistemi Windows 2008 R2 ve üzeri sürümlere yükseltildikten sonra _tam_ olarak yükseltilebilir. Bunun için düşürme yapılamaz, SQL VM kaynağını silerek SQL Server VM SQL VM kaynak sağlayıcısı 'ndan [kaydını](#unregister-vm-from-resource-provider) KALDıRMANıZ ve SQL VM kaynak sağlayıcısına yeniden kaydolmanız gerekir. 
 
 Aracı modunu tam olarak yükseltmek için: 
 
@@ -281,6 +281,49 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 ---
 
+## <a name="unregister-vm-from-resource-provider"></a>Kaynak sağlayıcıdan VM kaydını sil 
+
+SQL Server VM SQL VM kaynak sağlayıcısı ile kaydını silmek için, Azure portal veya Azure CLı kullanarak SQL sanal makine *kaynağını* silin. SQL sanal makine *kaynağını* silme, SQL Server VM silmez. Bununla birlikte, *kaynağı*kaldırmaya çalışırken yanlışlıkla sanal makineyi silmek mümkün olduğundan dikkatli olun ve adımları dikkatle izleyin. 
+
+Yönetim modunun tam olarak indirgenmesini sağlamak için SQL VM kaynak sağlayıcısı ile SQL VM kaydının kaydı gereklidir. 
+
+### <a name="azure-portal"></a>Azure portalı
+
+Azure portal kullanarak SQL Server VM kaynak sağlayıcıyla kaydını silmek için şu adımları izleyin:
+
+1. [Azure portal](https://portal.azure.com) oturum açın.
+1. SQL Server VM kaynağına gidin. 
+  
+   ![SQL sanal makineler kaynağı](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
+
+1. **Sil**’i seçin. 
+
+   ![SQL VM kaynak sağlayıcısını Sil](media/virtual-machines-windows-sql-register-with-rp/delete-sql-vm-resource-provider.png)
+
+1. SQL sanal makinesinin adını yazın ve **sanal makinenin yanındaki onay kutusunu temizleyin**.
+
+   ![SQL VM kaynak sağlayıcısını Sil](media/virtual-machines-windows-sql-register-with-rp/confirm-delete-of-resource-uncheck-box.png)
+
+   >[!WARNING]
+   > Sanal makine adının yanındaki onay kutusunun temizlenmemesi, sanal makineyi tamamen *siler* . Kaynak sağlayıcıdan SQL Server VM kaydını kaldırmak, ancak *gerçek sanal makineyi silmek*için onay kutusunu temizleyin. 
+
+1. SQL Server sanal makinesini değil, SQL sanal makine *kaynağının*silinmesini onaylamak için **Sil** ' i seçin. 
+
+
+### <a name="azure-cli"></a>Azure CLI 
+
+Azure CLı ile kaynak sağlayıcıdan SQL Server sanal makinenizin kaydını silmek için [az SQL VM Delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) komutunu kullanın. Bu, SQL Server sanal makine *kaynağını* kaldırır ancak sanal makineyi silmez. 
+
+
+```azurecli-interactive
+   az sql vm delete 
+     --name <SQL VM resource name> |
+     --resource-group <Resource group name> |
+     --yes 
+```
+
+
+
 ## <a name="remarks"></a>Açıklamalar
 
 - SQL VM kaynak sağlayıcısı yalnızca Azure Resource Manager aracılığıyla dağıtılan SQL Server VM 'Leri destekler. Klasik model aracılığıyla dağıtılan SQL Server VM 'Ler desteklenmez. 
@@ -353,7 +396,7 @@ Evet. Yönetilebilirlik modunu hafif ' den Full ' a yükseltmek PowerShell veya 
 
 Hayır. SQL Server IaaS uzantısının yönetilebilirlik modunu eski sürüme düşürme desteklenmez. Yönetilebilirlik modu, tam moddan hafif veya aracı olmayan moda düşürülemez ve hafif moddan aracı olmayan moda düşürülemez. 
 
-Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için, Microsoft. SqlVirtualMachine kaynağını bırakın ve SQL Server VM SQL VM kaynak sağlayıcısı ile yeniden kaydedin.
+Yönetilebilirlik modunu tam yönetilebilirlik olarak değiştirmek için, SQL Server *kaynağını* bırakarak ve SQL Server VM SQL VM kaynak sağlayıcısı ile yeniden kaydolarak SQL Server sanal makinesinin SQL Server kaynak sağlayıcısından [kaydını kaldırın](#unregister-vm-from-resource-provider) farklı bir yönetim modunda bir kez daha.
 
 **Azure portal SQL VM kaynak sağlayıcısı ile kayıt yapabilir miyim?**
 
