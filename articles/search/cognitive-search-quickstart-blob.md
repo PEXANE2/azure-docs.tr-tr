@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure portal-Azure Search bilişsel arama AI zenginleştirme hakkında bilgi edinin'
+title: 'Hızlı başlangıç: Azure portal Azure Search içinde bilişsel arama AI zenginleştirme hakkında bilgi edinin'
 description: Azure portal ve örnek verileri kullanarak Azure Search dizin oluşturma portalındaki veri ayıklama, doğal dil ve görüntü işleme becerileri.
 manager: nitinme
 author: HeidiSteen
@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: 11c58a891a730c57aae3500911741623dde5d51b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265897"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809661"
 ---
-# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Hızlı Başlangıç: Azure Search bilişsel becerileri kullanarak bir AI zenginleştirme işlem hattı oluşturun
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Hızlı başlangıç: Azure Search bilişsel becerileri kullanarak bir AI zenginleştirme işlem hattı oluşturma
 
 Azure Search bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/)ile tümleşir, içerik ayıklama, doğal dil işleme (NLP) ve görüntü işleme yeteneklerini bir Azure Search dizin oluşturma işlem hattına ekleyerek aranabilir veya yapılandırılmamış içeriğin daha fazla aranabilir olmasını sağlar. 
 
@@ -62,7 +62,7 @@ Azure Search hizmet panosu sayfasına dönün ve dört adımda Bilişsel Zenginl
 
   ![Verileri içeri aktar komutu](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-### <a name="step-1-create-a-data-source"></a>1\. adım: Bir veri kaynağı oluşturun
+### <a name="step-1-create-a-data-source"></a>1\. Adım: Veri kaynağı oluşturma
 
 **Verilerinize bağlanın**bölümünde **Azure Blob depolama**' yı seçin, oluşturduğunuz hesabı ve kapsayıcıyı seçin. Veri kaynağına bir ad verin ve geri kalanı için varsayılan değerleri kullanın. 
 
@@ -72,7 +72,7 @@ Sonraki sayfaya devam edin.
 
   ![Bilişsel arama için sonraki sayfa düğmesi](media/cognitive-search-quickstart-blob/next-button-add-cog-search.png)
 
-### <a name="step-2-add-cognitive-skills"></a>2\. adım: Bilişsel yetenekler ekleme
+### <a name="step-2-add-cognitive-skills"></a>2\. Adım: Bilişsel yetenekler ekleme
 
 Daha sonra dizin oluşturma işlem hattına zenginleştirme adımları ekleyin. Bilişsel hizmetler kaynağınız yoksa, size günlük 20 işlem sağlayan ücretsiz bir sürüm için kaydolabilirsiniz. Örnek veriler 14 dosyadan oluşur; bu nedenle günlük ayırma, bu Sihirbazı çalıştırdığınızda genellikle kullanılır.
 
@@ -93,7 +93,7 @@ Daha sonra dizin oluşturma işlem hattına zenginleştirme adımları ekleyin. 
 > [!NOTE]
 > Doğal dil işleme becerileri, örnek veri kümesindeki metin içeriği üzerinde çalışır. OCR seçeneğini seçmediğinizden, örnek veri kümesinde bulunan JPEG ve PNG dosyaları bu hızlı başlangıçta işlenmez. 
 
-### <a name="step-3-configure-the-index"></a>3\. adım: Dizini yapılandırma
+### <a name="step-3-configure-the-index"></a>3\. Adım: Dizini yapılandırma
 
 Sihirbaz genellikle varsayılan bir dizin çıkarsalabilir. Bu adımda, oluşturulan dizin şemasını görüntüleyebilir ve olabilecek ayarları değiştirebilirsiniz. Demo blob veri kümesi için oluşturulan varsayılan dizin aşağıda verilmiştir.
 
@@ -101,7 +101,7 @@ Bu hızlı başlangıç, makul varsayılanlar ayarlanması konusunda iyi bir iş
 
 + Varsayılan ad, veri kaynağı türüne göre *azureblob-index* ' dir. 
 
-+ Varsayılan alanlar, özgün kaynak veri alanını`content`() ve bilişsel işlem hattı tarafından oluşturulan çıkış alanlarını (`people`, `locations` `organizations`ve) temel alır. Varsayılan veri türleri meta verilerden ve veri örneklemede algılanır.
++ Varsayılan alanlar, özgün kaynak veri alanı (`content`) ve bilişsel işlem hattı tarafından oluşturulan çıkış alanlarını (`people`, `organizations`ve `locations`) temel alır. Varsayılan veri türleri meta verilerden ve veri örneklemede algılanır.
 
 + Varsayılan anahtar *metadata_storage_path* 'dir (Bu alan benzersiz değerler içerir).
 
@@ -109,9 +109,9 @@ Bu hızlı başlangıç, makul varsayılanlar ayarlanması konusunda iyi bir iş
 
   ![Dizin alanları](media/cognitive-search-quickstart-blob/index-fields.png)
 
-`content` Alana göre **alınabilir** özniteliğinde üstü çizili ve soru işaretine dikkat edin. Metin açısından ağır blob belgeleri `content` için, alan büyük olasılıkla binlerce satıra çalışan dosyanın toplu kısmını içerir. Dosya içeriğini istemci koduna geçirmeniz gerekirse, **alınabilir** ' ın seçili olduğundan emin olun. Aksi takdirde `content` , ayıklanan öğeler (`people`, `organizations`, ve `locations`) amacınıza uygun ise bu özniteliği temizlemeyi göz önünde bulundurun.
+`content` alanına göre **alınabilir** özniteliğinde üstü çizili ve soru işaretine dikkat edin. Metin açısından ağır blob belgeleri için `content` alanı, büyük olasılıkla binlerce satıra çalışan dosyanın toplu kısmını içerir. Dosya içeriğini istemci koduna geçirmeniz gerekirse, **alınabilir** ' ın seçili olduğundan emin olun. Aksi takdirde, ayıklanan öğeler (`people`, `organizations`ve `locations`) amacınıza uygun olduğunda bu özniteliği `content` temizlemeyi düşünün.
 
-Bir alanı **alınabilir** olarak işaretlemek alanın arama sonuçlarında bulunması *gerektiği* anlamına gelmez. Hangi alanların ekleneceğini belirlemek için **$Select** sorgu parametresini kullanarak arama sonuçları kompozisyonunu kesin bir şekilde denetleyebilirsiniz. Gibi `content`metin açısından ağır alanlar için, **$Select** parametresi, uygulamanızın insan kullanıcılarına yönetilebilir arama sonuçları sağlamaya yönelik çözümünüzde, istemci kodunun, **gereken tüm bilgilere Alınabilir** öznitelik.
+Bir alanı **alınabilir** olarak işaretlemek alanın arama sonuçlarında bulunması *gerektiği* anlamına gelmez. Hangi alanların ekleneceğini belirlemek için **$Select** sorgu parametresini kullanarak arama sonuçları kompozisyonunu kesin bir şekilde denetleyebilirsiniz. `content`gibi metin açısından ağır alanlar için, **$Select** parametresi, uygulamanızın insan kullanıcılarına yönetilebilir arama sonuçları sağlamaya yönelik çözümünüzde, Istemci kodunun **alınabilir** özniteliği.
   
 Sonraki sayfaya devam edin.
 
@@ -145,7 +145,7 @@ Bir dizin oluşturulduktan sonra, dizinden belgeleri döndürmek için sorgular 
 
 1. Oluşturduğunuz dizini seçmek için üst kısımdaki **Dizini değiştir**'e tıklayın.
 
-1. Dizini sorgulamak için bir arama dizesi girin, örneğin `search=Microsoft&searchFields=organizations`.
+1. Dizini sorgulamak için `search=Microsoft&searchFields=Organizations`gibi bir arama dizesi girin.
 
 Sonuçlar JSON olarak döndürülür, bu nedenle özellikle de Azure bloblardan gelen büyük belgelerde ayrıntılı ve okuması zor olabilir. Sonuçları kolayca tarayamazsanız, belgeler içinde arama yapmak için CTRL-F tuşlarını kullanın. Bu sorgu için, JSON içinde belirli koşullara göre arama yapabilirsiniz. 
 
@@ -184,4 +184,4 @@ Bilişsel hizmetler kaynağını nasıl sağladığınıza bağlı olarak, Sihir
 Alternatif olarak, oluşturduğunuz örnek veri ve hizmetleri yeniden kullanın ve sonraki öğreticide aynı görevleri programlama yoluyla nasıl gerçekleştireceğinizi öğrenin. 
 
 > [!div class="nextstepaction"]
-> [Öğretici: Bilişsel arama REST API 'Lerini öğrenin](cognitive-search-tutorial-blob.md)
+> [Öğretici: Bilişsel arama REST API’lerini öğrenme](cognitive-search-tutorial-blob.md)

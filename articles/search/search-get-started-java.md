@@ -1,22 +1,22 @@
 ---
-title: "Hızlı başlangıç: REST API 'Leri kullanarak Java 'da arama dizini oluşturma-Azure Search"
-description: Java ve Azure Search REST API 'Leri kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
+title: "Hızlı başlangıç: REST API 'Leri kullanarak Java 'da arama dizini oluşturma"
+titleSuffix: Azure Cognitive Search
+description: Java ve Azure Bilişsel Arama REST API 'Leri kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166237"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792807"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Search dizin oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166237"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)ve [Azure Search hizmeti REST API](/rest/api/searchservice/)kullanarak bir Azure Search dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+[IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)ve [Azure Bilişsel Arama REST API](/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturan, yükleyen ve sorgulayan bir Java konsol uygulaması oluşturun. Bu makalede, uygulama oluşturmaya yönelik adım adım yönergeler sağlanmaktadır. Alternatif olarak, [tüm uygulamayı indirebilir ve çalıştırabilirsiniz](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -38,13 +38,13 @@ Bu örneği derlemek ve test etmek için aşağıdaki yazılım ve Hizmetleri ku
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
++ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
-Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahtarı gerektirir. İkisini de içeren bir arama hizmeti oluşturulur. Bu nedenle aboneliğinize Azure Search hizmetini eklediyseniz gerekli bilgileri almak için aşağıdaki adımları izleyin:
+Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahtarı gerektirir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
@@ -133,9 +133,9 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 ### <a name="set-up-the-project-structure"></a>Proje yapısını ayarlama
 
 1. **Dosya** > **Proje yapısını**seçin.
-1. **Modüller**' i seçin ve kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 klasörünün içeriğine erişin.
-1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 klasöründe, `app` ve `service` klasörleri ekleyin. Bunu yapmak için `java` klasörünü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
-1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 klasöründe, `app` ve `service` klasörleri ekleyin.
+1. **Modüller**' i seçin ve kaynak ağacını genişleterek `src` >  `main` klasörünün içeriğine erişin.
+1. `src` >  `main` > `java` klasörü, `app` ve `service` klasörler ekleyin. Bunu yapmak için `java` klasörünü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
+1. `src` >  `main` >`resources` klasörü, `app` ve `service` klasörler ekleyin.
 
     İşiniz bittiğinde, proje ağacının aşağıdaki resim gibi görünmesi gerekir.
 
@@ -143,9 +143,9 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 1. Pencereyi kapatmak için **Tamam** ' ı tıklatın.
 
-### <a name="add-azure-search-service-information"></a>Azure Search hizmeti bilgileri ekleme
+### <a name="add-azure-cognitive-search-service-information"></a>Azure Bilişsel Arama hizmet bilgilerini ekleme
 
-1. **Proje** penceresinde, kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 klasörüne erişin ve bir @no__t 8 dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
+1. **Proje** penceresinde, kaynak ağacını genişleterek `src` >  `main` >`resources` > klasörüne erişin ve bir`app` dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
 
 1. Aşağıdaki ayarları yeni dosyaya kopyalayın ve `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` ve `<YOUR-QUERY-KEY>` ' yi hizmet adınızla ve anahtarlarınız ile değiştirin. Hizmet uç noktanız `https://mydemo.search.windows.net` ise, hizmet adı "mydemo" olacaktır.
 
@@ -159,8 +159,8 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-the-main-method"></a>Main metodunu ekleyin
 
-1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 klasöründe bir `App` sınıfı ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Java Class**' ı seçin ve ardından sınıf adını girin.
-1. @No__t-0 sınıfını açın ve içeriği aşağıdaki kodla değiştirin. Bu kod `main` yöntemini içerir. 
+1. `src` >  `main` > `java` > `app`, `App` bir sınıf ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Java Class**' ı seçin ve ardından sınıf adını girin.
+1. `App` sınıfını açın ve içeriği aşağıdaki kodla değiştirin. Bu kod `main` yöntemini içerir. 
 
     Açıklamalı olmayan kod, arama hizmeti parametrelerini okur ve arama hizmeti istemcisinin bir örneğini oluşturmak için bunları kullanır. Arama hizmeti istemci kodu bir sonraki bölüme eklenecektir.
 
@@ -258,8 +258,8 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-the-http-operations"></a>HTTP işlemlerini ekleme
 
-1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 klasöründe bir @ no__t-7 sınıfı ekleyin. Bunu yapmak için `service` klasörünü seçin, alt + Ekle ' ye basın, **Java Class**' ı seçin ve ardından sınıf adını girin.
-1. @No__t-0 sınıfını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, Azure Search REST API kullanmak için gereken HTTP işlemlerini sağlar. Dizin oluşturmak, belge yüklemek ve dizini sorgulamak için ek yöntemler sonraki bir bölüme eklenecektir.
+1. `src` >  `main` > `java` > `service`,`SearchServiceClient` bir sınıf ekleyin. Bunu yapmak için `service` klasörünü seçin, alt + Ekle ' ye basın, **Java Class**' ı seçin ve ardından sınıf adını girin.
+1. `SearchServiceClient` sınıfını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, Azure Bilişsel Arama REST API kullanmak için gereken HTTP işlemlerini sağlar. Dizin oluşturmak, belge yüklemek ve dizini sorgulamak için ek yöntemler sonraki bir bölüme eklenecektir.
 
     ```java
     package main.java.service;
@@ -374,7 +374,8 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
     ![Proje dizini yapısı](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java` @ no__t-2 @ No__t-3execute Maven hedefi: Verify exec: Java @ no__t-4
+1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java`
+![Maven hedefini yürütün: exec: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
 
 İşlem tamamlandığında, derleme başarılı iletisini ve ardından sıfır (0) çıkış kodunu arayın.
 
@@ -382,9 +383,9 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir alana örnek olarak "HotelName" veya "Description" verilebilir. "Adres" alanı, "sokak adresi" ve "şehir" gibi alt alanlar içerdiğinden karmaşık bir alandır. Bu hızlı başlangıçta, Dizin tanımı JSON kullanılarak belirtilir.
 
-1. **Proje** penceresinde, kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 klasörüne erişin ve bir @no__t 8 dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
+1. **Proje** penceresinde, kaynak ağacını genişleterek `src` >  `main` >`resources` > klasörüne erişin ve bir`service` dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
 
-1. @No__t-0 dosyasını açın ve aşağıdaki dizin tanımını ekleyin.
+1. `index.json` dosyasını açın ve aşağıdaki dizin tanımını ekleyin.
 
     ```json
     {
@@ -511,9 +512,9 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
 
     Dizin adı "oteller-hızlı başlangıç" olacaktır. Dizin alanlarındaki öznitelikler, dizine alınmış verilerin bir uygulamada nasıl arandığını tespit edebilir. Örneğin, `IsSearchable` özniteliği tam metin aramasına dahil edilecek her alana atanmalıdır. Öznitelikler hakkında daha fazla bilgi için bkz. [alanlar koleksiyonu ve alan öznitelikleri](search-what-is-an-index.md#fields-collection).
     
-    Bu dizindeki `Description` alanı varsayılan Lucene dil çözümleyicisini geçersiz kılmak için isteğe bağlı `analyzer` özelliğini kullanır. @No__t-0 alanı Fransızca metin depoladığından, Fransızca Lucene Çözümleyicisi `fr.lucene` ' i kullanıyor. @No__t-0, isteğe bağlı Microsoft dil Çözümleyicisi en. Lucene ' i kullanıyor. Çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [Azure Search metin işleme Için çözümleyiciler](search-analyzers.md).
+    Bu dizindeki `Description` alanı varsayılan Lucene dil çözümleyicisini geçersiz kılmak için isteğe bağlı `analyzer` özelliğini kullanır. `Description_fr` alanı, Fransızca metin depoladığı için Fransızca Lucene çözümleyici `fr.lucene` kullanıyor. `Description`, isteğe bağlı Microsoft dil Çözümleyicisi en. Lucene ' i kullanıyor. Çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama 'de metin işleme Için çözümleyiciler](search-analyzers.md).
 
-1. @No__t-0 sınıfına aşağıdaki kodu ekleyin. Bu yöntemler bir dizin oluşturup silen ve bir dizinin mevcut olup olmadığını belirten Azure Search REST hizmeti URL 'Leri oluşturur. Yöntemler ayrıca HTTP isteğini de yapar.
+1. Aşağıdaki kodu `SearchServiceClient` sınıfına ekleyin. Bu yöntemler, bir dizin oluşturup silen ve bir dizinin mevcut olup olmadığını belirten Azure Bilişsel Arama REST hizmeti URL 'Lerini oluşturur. Yöntemler ayrıca HTTP isteğini de yapar.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -553,7 +554,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-1. @No__t-0 sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, varsa "oteller-hızlı başlangıç" dizinini siler ve "index. JSON" dosyasındaki Dizin tanımına göre yeni bir dizin oluşturur. 
+1. `App` sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, varsa "oteller-hızlı başlangıç" dizinini siler ve "index. JSON" dosyasındaki Dizin tanımına göre yeni bir dizin oluşturur. 
 
     Dizin oluşturma isteğinden sonra tek saniyelik bir duraklatma eklenir. Bu duraklatma, belgeleri karşıya yüklemeden önce dizinin oluşturulmasını sağlar.
 
@@ -569,7 +570,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-1. **Proje** penceresinde, kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 klasörüne erişin ve bir @no__t 8 dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
+1. **Proje** penceresinde, kaynak ağacını genişleterek `src` >  `main` >`resources` > klasörüne erişin ve bir`service` dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
 1. Aşağıdaki otel belgelerini dosyaya ekleyin.
 
     ```json
@@ -655,7 +656,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-1. @No__t-0 sınıfına aşağıdaki kodu ekleyin. Bu kod, otel belgelerini dizine yüklemek için REST hizmeti URL 'sini oluşturur ve ardından HTTP POST isteğini yapar.
+1. `SearchServiceClient` sınıfına aşağıdaki kodu ekleyin. Bu kod, otel belgelerini dizine yüklemek için REST hizmeti URL 'sini oluşturur ve ardından HTTP POST isteğini yapar.
 
     ```java
     public boolean uploadDocuments(String documentsFile) throws IOException, InterruptedException {
@@ -674,7 +675,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-1. @No__t-0 sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, "oteller. JSON" içindeki belgeleri dizine yükler.
+1. `App` sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, "oteller. JSON" içindeki belgeleri dizine yükler.
 
     ```java
     client.uploadDocuments("/service/hotels.json");
@@ -693,11 +694,11 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
 
 Oteller belgelerini yüklemişseniz, otel verilerine erişmek için arama sorguları oluşturabilirsiniz.
 
-1. @No__t-0 sınıfına aşağıdaki kodu ekleyin. Bu kod, dizine alınmış verileri aramak ve arama sonuçlarını yazdıran Azure Search REST hizmeti URL 'Lerini oluşturur.
+1. Aşağıdaki kodu `SearchServiceClient` sınıfına ekleyin. Bu kod, dizinli verileri aramak ve arama sonuçlarını yazdıran Azure Bilişsel Arama REST hizmeti URL 'Lerini oluşturur.
 
-    @No__t-0 sınıfı ve `createSearchOptions` yöntemi, kullanılabilir Azure Search REST API sorgu seçeneklerinin bir alt kümesini belirtmenizi sağlar. REST API sorgu seçenekleri hakkında daha fazla bilgi için bkz. [arama belgeleri (Azure Search hizmeti REST API)](/rest/api/searchservice/search-documents).
+    `SearchOptions` sınıfı ve `createSearchOptions` yöntemi, kullanılabilir Azure Bilişsel Arama REST API sorgu seçeneklerinin bir alt kümesini belirtmenizi sağlar. REST API sorgu seçenekleri hakkında daha fazla bilgi için bkz. [arama belgeleri (Azure Bilişsel Arama REST API)](/rest/api/searchservice/search-documents).
 
-    @No__t-0 yöntemi arama sorgu URL 'sini oluşturur, arama isteğini yapar ve sonuçları konsola yazdırır. 
+    `SearchPlus` yöntemi arama sorgu URL 'sini oluşturur, arama isteğini yapar ve sonuçları konsola yazdırır. 
 
     ```java
     public SearchOptions createSearchOptions() { return new SearchOptions();}
@@ -760,7 +761,7 @@ Oteller belgelerini yüklemişseniz, otel verilerine erişmek için arama sorgul
     }
     ```
 
-1. @No__t-0 sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, döndürülecek arama metni, sorgu parametreleri ve veri alanları dahil olmak üzere beş farklı sorgu ayarlar. 
+1. `App` sınıfında, aşağıdaki kodun açıklamasını kaldırın. Bu kod, döndürülecek arama metni, sorgu parametreleri ve veri alanları dahil olmak üzere beş farklı sorgu ayarlar. 
 
     ```java
     // Query 1

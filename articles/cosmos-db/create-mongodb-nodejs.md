@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: bir Node. js MongoDB uygulamasını Azure Cosmos DB bağlama'
 description: Bu hızlı başlangıçta, Node. js ' de yazılmış mevcut bir MongoDB uygulamasının Azure Cosmos DB 'e nasıl bağlanacağı gösterilmektedir.
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b9cadbf35680953058bd38d7db26a6e6c684836b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327287"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792186"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Hızlı başlangıç: mevcut bir MongoDB Node. js web uygulamasını Azure Cosmos DB geçirin 
 
@@ -55,7 +55,7 @@ Node.js çalıştırma bilgisine sahip olmanız gerekir. Bu hızlı başlangıç
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Git Bash gibi bir Git terminal penceresi açın ve örnek uygulamayı yüklemek üzere yeni bir klasör olarak değiştirmek için `cd` komutunu kullanın.
@@ -111,7 +111,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 [Az cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) komutuyla bir Cosmos hesabı oluşturun.
 
-Aşağıdaki komutta, lütfen `<cosmosdb-name>` yer tutucusunu gördüğünüz benzersiz Cosmos hesabınızın adını yerine koyun. Bu benzersiz ad Cosmos DB uç @no__t noktasının bir parçası olarak kullanılır. bu nedenle, adın Azure 'daki tüm Cosmos hesaplarında benzersiz olması gerekir. 
+Aşağıdaki komutta, lütfen `<cosmosdb-name>` yer tutucusunu gördüğünüz benzersiz Cosmos hesabınızın adını yerine koyun. Bu benzersiz ad Cosmos DB uç noktanızın (`https://<cosmosdb-name>.documents.azure.com/`) bir parçası olarak kullanılır. bu nedenle, adın Azure 'daki tüm Cosmos hesaplarında benzersiz olması gerekir. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -179,10 +179,10 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>Anahtarı alma
 
-Cosmos veritabanına bağlanmak için veritabanı anahtarına ihtiyacınız vardır. Birincil anahtarı almak için [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) komutunu kullanın.
+Cosmos veritabanına bağlanmak için veritabanı anahtarına ihtiyacınız vardır. Birincil anahtarı almak için [az cosmosdb Keys List](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) komutunu kullanın.
 
 ```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
+az cosmosdb keys list --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"
 ```
 
 Azure CLI aşağıdaki örneğe benzer bilgiler çıkarır. 

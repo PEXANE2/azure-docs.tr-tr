@@ -1,93 +1,92 @@
 ---
-title: Azure portal bir bilgi deposu oluşturun Azure Search
-description: Bilişsel arama işlem hattından, Azure portal verileri Içeri aktarma Sihirbazı 'nı kullanarak kalıcı zenginler için Azure Search bilgi deposu oluşturun.
+title: Azure portal bilgi deposu oluşturma
+titleSuffix: Azure Cognitive Search
+description: Kalıcı içerikli içeriğe yönelik bir bilgi deposu oluşturmak için veri Içeri aktarma Sihirbazı 'nı kullanın. Diğer uygulamalardan analizler için bir bilgi deposuna bağlanın veya yukarı akış işlemlerine zenginleştirilmiş içerik gönderin.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: d714e913d5e03233ed3ffcaaebca6eb989a56bd7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265206"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790044"
 ---
-# <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Azure portal Azure Search bilgi deposu oluşturun
+# <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
 
 > [!Note]
-> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. [Azure Search REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
+> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. Hem Azure portal hem de [arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
 
-Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir AI zenginleştirme ardışık düzeninde çıktıyı sürekli olarak sürdüren Azure Search bir özelliktir. Bir AI zenginleştirme işlem hattı, görüntü dosyalarını veya yapılandırılmamış metin dosyalarını kabul eder, Azure Search kullanarak dizinler, bilişsel hizmetlerden AI zenginleştirmelerini (görüntü analizi ve doğal dil işleme) uygular ve sonuçları Azure 'da bir bilgi deposuna kaydeder. Depo. Daha sonra bilgi deposunu araştırmak için Power BI veya Depolama Gezgini gibi araçları kullanabilirsiniz.
+Bilgi deposu, sonraki analizler veya aşağı akış işleme için bilişsel yetenekler ardışık düzeninde çıktıyı sürekli olarak sürdüren Azure Bilişsel Arama özelliğidir. 
 
-Bu makalede, AI zenginleştirmelerini almak, dizinlemek ve bir otel gözden geçirmeleri kümesine uygulamak için Azure portal veri alma Sihirbazı 'nı kullanacaksınız. Otel İncelemeleri Azure blog depolama alanına aktarılır ve sonuçlar Azure Tablo Depolaması 'nda bir bilgi deposu olarak kaydedilir.
+İşlem hattı görüntüleri ve yapılandırılmamış metinleri ham içerik olarak kabul eder, bilişsel hizmetler (görüntü ve doğal dil işleme) aracılığıyla AI uygular ve çıkış olarak zenginleştirilmiş içerik (yeni yapılar ve bilgiler) oluşturur. Bir işlem hattı tarafından oluşturulan fiziksel yapıtlardan biri, içerik çözümlemek ve araştırmak için Araçlar aracılığıyla erişebileceğiniz bir [bilgi deposudur](knowledge-store-concept-intro.md).
 
-Bilgi deposunu oluşturduktan sonra, bu bilgi deposuna Depolama Gezgini veya Power BI kullanarak nasıl erişebileceğinizi öğrenebilirsiniz.
+Bu hızlı başlangıçta, bir bilgi deposu oluşturmak için Azure bulutundaki Hizmetleri ve verileri birleştirebilirsiniz. Her şey oluşturulduktan sonra, portalda **verileri Içeri aktarma** Sihirbazı 'nı çalıştırarak tümünü bir araya getirin. Nihai sonuç orijinaldir ve portalda görüntüleyebileceğiniz AI tarafından oluşturulan içeriktir ([Depolama Gezgini](knowledge-store-view-storage-explorer.md)).
 
-## <a name="prerequisites"></a>Önkoşullar
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-+ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu öğretici için ücretsiz bir hizmet kullanabilirsiniz.
+## <a name="create-services-and-load-data"></a>Hizmet oluşturma ve veri yükleme
 
-+ Örnek verileri ve bilgi deposunu depolamak için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Depolama hesabınızın aynı konumu kullanması gerekir (Azure Search hizmetiniz gibi ABD-WEas) ve *Hesap türü* *StorageV2 (genel amaçlı v2)* (varsayılan) veya *depolama (genel amaçlı v1)* olmalıdır.
+Bu hızlı başlangıç, AI için Azure Bilişsel Arama, Azure Blob depolama ve Azure bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/) 'i kullanır. 
 
-## <a name="load-the-data"></a>Verileri yükleme
+İş yükü çok küçük olduğu için bilişsel hizmetler, Azure Bilişsel Arama çağrıldığında günlük olarak 20 ' ye kadar işlem için ücretsiz işleme sağlamak üzere arka planda dokunmakta. Sağladığımız örnek verileri kullandığınız sürece bilişsel hizmetler kaynağı oluşturma veya ekleme işlemini atlayabilirsiniz.
 
-Bir Azure Search Indexer tarafından erişilebilmesi ve AI zenginleştirme ardışık düzeninde beslenmesini sağlamak için otel, CSV dosyasını Azure Blob depolama alanına yükleyin.
+1. [HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)' i indirin. Bu veriler, bir CSV dosyasına kaydedilmiş (Kaggle.com kaynaklı) Otel gözden geçirme verileri ve tek bir otel hakkında yaklaşık 19 müşteri geri bildirimi içerir. 
 
-### <a name="create-an-azure-blob-container-with-the-data"></a>Verilerle bir Azure Blob kapsayıcısı oluşturma
+1. Geçerli aboneliğinizde [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) veya [mevcut bir hesabı bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) . Azure Storage 'ı içeri aktarılacak ham içerik ve son sonuç olan bilgi deposu için kullanacaksınız.
 
-1. [BIR CSV dosyasına kaydedilmiş otel gözden geçirme verilerini indirin (HotelReviews_Free. csv)](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Bu veriler Kaggle.com adresinden kaynaklanır ve oteller hakkında müşteri geri bildirimi içerir.
-1. [Azure Portal oturum açın](https://portal.azure.com)ve Azure depolama hesabınıza gidin.
-1. [BLOB kapsayıcısı oluşturma](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) Bunu yapmak için, depolama hesabınızın sol gezinti çubuğunda, **Bloblar**' a tıklayın ve ardından komut çubuğunda **+ kapsayıcı** ' ya tıklayın.
-1. Yeni kapsayıcı **adı**için girin `hotel-reviews`.
-1. Herhangi bir **genel erişim düzeyi**seçin. Varsayılan değer kullandık.
-1. Azure Blob kapsayıcısını oluşturmak için **Tamam** ' ı tıklatın.
-1. Yeni `hotels-review` kapsayıcıyı açın, **karşıya yükle**' ye tıklayın ve ilk adımda indirdiğiniz **HotelReviews-Free. csv** dosyasını seçin.
+   Bu hesap için iki gereksinim vardır:
 
-    ![Verileri karşıya yükleme](media/knowledge-store-create-portal/upload-command-bar.png "Otel Incelemelerini karşıya yükleyin")
+   + Azure Bilişsel Arama ile aynı bölgeyi seçin. 
+   
+   + StorageV2 (genel amaçlı v2) hesap türünü seçin. 
 
-1. CSV dosyasını Azure Blob depolamaya aktarmak için **karşıya yükle** ' ye tıklayın. Yeni kapsayıcı görüntülenir.
+1. Blob Hizmetleri sayfalarını açın ve bir kapsayıcı oluşturun.  
+
+1. **Karşıya Yükle**'ye tıklayın.
+
+    ![Verileri karşıya yükleme](media/knowledge-store-create-portal/upload-command-bar.png "Otel incelemelerini karşıya yükleyin")
+
+1. İlk adımda indirdiğiniz **HotelReviews-Free. csv** dosyasını seçin.
 
     ![Azure Blob kapsayıcısını oluşturma](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob kapsayıcısını oluşturma")
 
-### <a name="get-the-azure-storage-account-connection-string"></a>Azure depolama hesabı bağlantı dizesini al
+1. Bu kaynakla neredeyse tamamladınız, ancak bu sayfalardan çıkmadan önce, **erişim tuşları** sayfasını açmak için sol gezinti bölmesindeki bir bağlantıyı kullanın. Blob depolamadan veri almak için bir bağlantı dizesi alın. Bir bağlantı dizesi aşağıdaki örneğe benzer şekilde görünür: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. Portalda Azure depolama hesabınıza gidin.
-1. Hizmetin sol gezinti bölmesinde **erişim tuşları**' na tıklayın.
-1. **Anahtar 1**' ın altında *bağlantı dizesini*kopyalayın ve kaydedin. Dize ile `DefaultEndpointsProtocol=https`başlar. Depolama hesabınızın adı ve anahtarınız dizeye katıştırılır. Bu dizeyi kullanışlı tutun. Bu, gelecekteki adımlarda gerekecektir.
+1. Aynı abonelikte [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz.
 
-## <a name="create-and-run-ai-enrichments"></a>AI zenginleştirme oluşturma ve çalıştırma
+Artık veri alma Sihirbazı 'na taşımaya hazırsınız.
 
-Bilgi deposu oluşturmak için veri alma Sihirbazı 'nı kullanın. Bir veri kaynağı oluşturacaksınız, zenginler ' i seçin, bir bilgi deposu ve bir dizin yapılandırın ve ardından öğesini yürütün.
+## <a name="run-the-import-data-wizard"></a>Veri alma Sihirbazı 'nı çalıştırma
 
-### <a name="start-the-import-data-wizard"></a>Veri alma Sihirbazı 'nı başlatma
+Dört adımda bilgi deposu oluşturmak için, arama hizmeti genel bakış sayfasında, komut çubuğunda **verileri Içeri aktar** ' a tıklayın.
 
-1. Azure portal, [arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+  ![Verileri içeri aktar komutu](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
-1. İçeri Aktarma Sihirbazı 'nı başlatmak için komut çubuğunda **verileri Içeri aktar** ' a tıklayın.
+### <a name="step-1-create-a-data-source"></a>1\. Adım: Veri kaynağı oluşturma
 
-### <a name="connect-to-your-data-import-data-wizard"></a>Verilerinize Bağlanma (veri alma Sihirbazı)
-
-Bu sihirbaz adımında, Azure Blobundan otel verilerinize sahip bir veri kaynağı oluşturacaksınız.
-
-1. **Veri kaynağı** listesinde **Azure Blob depolama**' yı seçin.
-1. **Ad**için girin `hotel-reviews-ds`.
+1. **Verilerinize bağlanın**bölümünde **Azure Blob depolama**' yı seçin, oluşturduğunuz hesabı ve kapsayıcıyı seçin. 
+1. **Ad**için `hotel-reviews-ds`girin.
 1. **Ayrıştırma modu**Için, **sınırlandırılmış metin**' i seçin ve ardından **üstbilgi içerir** onay kutusunu seçin. **Sınırlayıcı karakterin** virgül (,) olduğundan emin olun.
 1. Önceki bir adımda kaydettiğiniz depolama hizmeti **Bağlantı dizenizi** girin.
-1. **Kapsayıcı adı**için girin `hotel-reviews`.
-1. **İleri: Bilişsel arama ekleyin (Isteğe**bağlı).
+1. **Kapsayıcı adı**için `hotel-reviews`girin.
+1. Ileri ' ye tıklayın **: AI zenginleştirme ekleyin (Isteğe bağlı)** .
 
       ![Veri kaynağı nesnesi oluşturma](media/knowledge-store-create-portal/hotel-reviews-ds.png "Veri kaynağı nesnesi oluşturma")
 
-## <a name="add-cognitive-search-import-data-wizard"></a>Bilişsel arama ekleme (veri alma Sihirbazı)
+1. Sonraki sayfaya devam edin.
 
-Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri oluşturacaksınız. Bu örnekte kullandığımız yetenekler, anahtar tümceleri ayıklar ve dili ve yaklaşımı tespit eder. Bu zenginler, Azure tabloları olarak bir bilgi deposunda "yansıtılmaktadır" olacaktır.
+### <a name="step-2-add-cognitive-skills"></a>2\. Adım: Bilişsel yetenekler ekleme
+
+Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri oluşturacaksınız. Bu örnekte kullandığımız yetenekler, anahtar tümceleri ayıklar ve dili ve yaklaşımı tespit eder. Sonraki bir adımda bu zenginler, Azure tabloları olarak bir bilgi deposunda "yansıtılmaktadır" olacaktır.
 
 1. Bilişsel **Hizmetler Ekle**' yi genişletin. **Ücretsiz (sınırlı enzenginler)** varsayılan olarak seçilidir. Bu kaynağı, HotelReviews-Free. csv içindeki kayıt sayısı 19 ve bu ücretsiz kaynak günde en fazla 20 işlem sağladığından kullanabilirsiniz.
-1. **Zenginleştirme Ekle**' yi genişletin.
-1. **Beceri adı**için girin `hotel-reviews-ss`.
+1. Bilişsel **yetenekler ekleme**' yi genişletin.
+1. **Beceri adı**için `hotel-reviews-ss`girin.
 1. **Kaynak veri alanı**için **reviews_text*öğesini seçin.
 1. **Zenginleştirme ayrıntı düzeyi**için **sayfalar (5000 karakter öbekleri)** seçeneğini belirleyin
 1. Bu bilişsel becerileri seçin:
@@ -95,7 +94,7 @@ Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri olu�
     + **Dili algıla**
     + **Yaklaşımı Algıla**
 
-      ![Beceri oluşturma](media/knowledge-store-create-portal/hotel-reviews-ss.png "Beceri oluşturma")
+      ![Beceri oluşturma](media/knowledge-store-create-portal/hotel-reviews-ss.png "Beceri kümesi oluşturma")
 
 1. **Zenginleştirme bilgilerini bilgi deposuna kaydet**' i genişletin.
 1. Önceki bir adımda kaydettiğiniz **depolama hesabı bağlantı dizesini** girin.
@@ -106,48 +105,47 @@ Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri olu�
 
     ![Bilgi deposunu yapılandırma](media/knowledge-store-create-portal/hotel-reviews-ks.png "Bilgi deposunu yapılandırma")
 
-1. **İleri: Hedef dizini**özelleştirin.
+1. Sonraki sayfaya devam edin.
 
-### <a name="import-data-import-data-wizard"></a>Veri alma (veri alma Sihirbazı)
+### <a name="step-3-configure-the-index"></a>3\. Adım: Dizini yapılandırma
 
 Bu sihirbaz adımında isteğe bağlı tam metin arama sorguları için bir dizin yapılandıracaksınız. Sihirbaz, alanları ve veri türlerini çıkarması için veri kaynağınızı örnekedecektir. Yalnızca istediğiniz davranışın özniteliklerini seçmeniz gerekir. Örneğin, **alınabilir** özniteliği arama hizmetinin bir alan değeri döndürmesini sağlar, ancak **aranabilir** bir alanda tam metin aramasını etkinleştirir.
 
-1. **Dizin adı**için girin `hotel-reviews-idx`.
+1. **Dizin adı**için `hotel-reviews-idx`girin.
 1. Öznitelikler için şu seçimleri yapın:
     + Tüm alanlar için **alınabilir** ' i seçin.
-    + Bu alanlar için **filtrelenebilir** ve çok **yönlü tablo** seçin:Yaklaşım, *dil*, *Keyphrases*
+    + Şu alanlar için **filtrelenebilir** ve çok **yönlü tablo** seçin *: yaklaşım*, *dil*, *Keyphrases*
     + Şu alanlar için **aranabilir** öğesini seçin: *şehir*, *ad*, *reviews_text*, *dil*, *Keyphrases*
 
     Dizininiz aşağıdaki görüntüye benzer görünmelidir. Liste uzun olduğundan, tüm alanlar görüntüde görünür değildir.
 
     ![Dizin yapılandırma](media/knowledge-store-create-portal/hotel-reviews-idx.png "Dizin yapılandırma")
 
-1. **İleri: Dizin Oluşturucu**oluşturun.
+1. Sonraki sayfaya devam edin.
 
-### <a name="create-an-indexer"></a>Dizin oluşturucu oluşturun
+### <a name="step-4-configure-the-indexer"></a>4\. Adım: Dizin oluşturucuyu yapılandırma
 
 Bu sihirbaz adımında, veri kaynağını, beceri ve önceki sihirbaz adımlarında tanımladığınız dizini birlikte alacak bir Dizin Oluşturucu yapılandıracaksınız.
 
-1. **Ad**için girin `hotel-reviews-idxr`.
+1. **Ad**için `hotel-reviews-idxr`girin.
 1. **Zamanlama**Için varsayılanı **bir kez**saklayın.
 1. Dizin oluşturucuyu çalıştırmak için **Gönder** ' e tıklayın. Veri ayıklama, dizin oluşturma, bilişsel yeteneklerin uygulaması bu adımda gerçekleşir.
 
-### <a name="monitor-the-notifications-queue-for-status"></a>Durum için bildirim kuyruğunu izleme
+## <a name="monitor-status"></a>İzleme durumu
 
-1. Azure portal, tıklanabilir bir **Azure Search bildirim** durumu bağlantısı için bildirimler etkinlik günlüğünü izleyin. Yürütmenin tamamlanması birkaç dakika sürebilir.
+Bilişsel Beceri dizin oluşturma, tipik metin tabanlı dizin oluşturma özelliğinden daha uzun sürer. İlerlemeyi izleyebilmek için sihirbazın Genel Bakış sayfasında Dizin Oluşturucu listesini açması gerekir. Kendi kendine gezinme için genel bakış sayfasına gidin ve **Dizin oluşturucular**' ye tıklayın.
+
+Azure portal, tıklatılabilir bir **Azure bilişsel arama bildirim** durumu bağlantısı için bildirimler etkinlik günlüğünü de izleyebilirsiniz. Yürütmenin tamamlanması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bilişsel hizmetler 'i kullanarak verilerinizi zenginleştirdikten ve sonuçları bir bilgi deposuna yansıdığınıza göre, zenginleştirilmiş veri kümesini araştırmak için Depolama Gezgini veya Power BI kullanabilirsiniz.
 
-Bu bilgi deposunu Depolama Gezgini kullanarak nasıl keşfedeceğinizi öğrenmek için aşağıdaki izlenecek yolu inceleyin.
+Depolama Gezgini içeriği görüntüleyebilir veya görselleştirme ile ilgili Öngörüler elde etmek için Power BI bir adım adım izleyebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Depolama Gezgini ile görüntüle](knowledge-store-view-storage-explorer.md)
+> [Power BI ile](knowledge-store-connect-power-bi.md)
+> [Depolama Gezgini ile görüntüleme](knowledge-store-view-storage-explorer.md)
 
-Bu bilgi deposunu Power BI nasıl bağlayacağınızı öğrenmek için aşağıdaki izlenecek yolu inceleyin.
-
-> [!div class="nextstepaction"]
-> [Power BI ile bağlanma](knowledge-store-connect-power-bi.md)
-
-Bu alıştırmayı yinelemek veya farklı bir AI zenginleştirme Kılavuzu denemek istiyorsanız, *otel-incelemeler-ıdxr* Dizin oluşturucuyu silin. Dizin oluşturucunun silinmesi, ücretsiz günlük işlem sayacını yeniden sıfıra sıfırlar.
+> [!Tip]
+> Bu alıştırmayı yinelemek veya farklı bir AI zenginleştirme Kılavuzu denemek istiyorsanız, *otel-incelemeler-ıdxr* Dizin oluşturucuyu silin. Dizin oluşturucunun silinmesi, bilişsel hizmetler işleme için ücretsiz günlük işlem sayacını yeniden sıfır olarak sıfırlar.

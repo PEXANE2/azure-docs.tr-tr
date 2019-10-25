@@ -1,22 +1,22 @@
 ---
-title: "Hızlı Başlangıç: REST API 'Leri kullanarak PowerShell 'de arama dizini oluşturma-Azure Search"
-description: PowerShell 'in Invoke-RestMethod ve Azure Search REST API kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
-ms.date: 09/10/2019
-author: heidisteen
+title: "Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de arama dizini oluşturma"
+titleSuffix: Azure Cognitive Search
+description: PowerShell 'in Invoke-RestMethod ve Azure Bilişsel Arama REST API kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
 manager: nitinme
+author: heidisteen
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881722"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792244"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Hızlı Başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Search dizin oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak PowerShell 'de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "70881722"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Bu makalede, PowerShell ve [Azure Search REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/)kullanarak Azure Search bir dizin oluşturma, yükleme ve sorgulama işlemi adım adım açıklanmaktadır. Bu makalede, PowerShell komutlarının etkileşimli olarak nasıl çalıştırılacağı açıklanmaktadır. Alternatif olarak, aynı işlemleri gerçekleştiren [bir PowerShell betiğini indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) .
+Bu makalede, PowerShell ve [azure BILIŞSEL arama REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturma, yükleme ve sorgulama işlemi adım adım açıklanmaktadır. Bu makalede, PowerShell komutlarının etkileşimli olarak nasıl çalıştırılacağı açıklanmaktadır. Alternatif olarak, aynı işlemleri gerçekleştiren [bir PowerShell betiğini indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) .
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -35,21 +35,21 @@ Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir.
 
 + Sıralı ve etkileşimli adımlar için [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) kullanarak [PowerShell 5,1 veya sonraki bir sürümü](https://github.com/PowerShell/PowerShell).
 
-+ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
++ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
 ## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
-REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. İkisini de içeren bir arama hizmeti oluşturulur. Bu nedenle aboneliğinize Azure Search hizmetini eklediyseniz gerekli bilgileri almak için aşağıdaki adımları izleyin:
+REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
 2. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![Http uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "Http uç noktası ve erişim anahtarı al")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="connect-to-azure-search"></a>Azure Search Bağlan
+## <a name="connect-to-azure-cognitive-search"></a>Azure Bilişsel Arama bağlanma
 
 1. PowerShell 'de, içerik türü ve API anahtarını depolamak için bir **$Headers** nesnesi oluşturun. Yönetim API anahtarını (-ADMIN-API-KEY), arama hizmetiniz için geçerli olan bir anahtarla değiştirin. Bu üst bilgiyi oturum süresince bir kez ayarlamanız yeterlidir, ancak bu üstbilgiyi her isteğe eklersiniz. 
 
@@ -87,7 +87,7 @@ Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. 
 
 Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, dizini tanımlar ve hizmete gönderir. [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) , bu adım için kullanılır.
 
-Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki `Edm.String` alanlardan biri belge kimliği için *anahtar* olarak atanmalıdır.
+Bir dizinin gerekli öğeleri bir ad ve alanlar koleksiyonu içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her bir alan, nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, `Edm.String` türündeki alanlardan biri belge kimliği için *anahtar* olarak atanmalıdır.
 
 Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Diğer izlenecek yollarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Bu hızlı başlangıçta breçekimi için kırpıyoruz.
 
@@ -183,7 +183,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 1. Karşıya yüklemek istediğiniz belgeleri içeren **$Body** bir nesne oluşturmak için bu örneği PowerShell 'e yapıştırın. 
 
-    Bu istek iki tam ve bir kısmi kayıt içerir. Kısmi kayıt, eksik belgeleri karşıya yükleyebileceğinizi gösterir. Parametresi `@search.action` , dizin oluşturmanın nasıl yapılacağını belirtir. Geçerli değerler karşıya yükleme, birleştirme, mergeOrUpload ve DELETE değerleridir. MergeOrUpload davranışı, Hotelıd = 3 için yeni bir belge oluşturur ya da zaten varsa içeriği güncelleştirir.
+    Bu istek iki tam ve bir kısmi kayıt içerir. Kısmi kayıt, eksik belgeleri karşıya yükleyebileceğinizi gösterir. `@search.action` parametresi, dizin oluşturmanın nasıl yapılacağını belirtir. Geçerli değerler karşıya yükleme, birleştirme, mergeOrUpload ve DELETE değerleridir. MergeOrUpload davranışı, Hotelıd = 3 için yeni bir belge oluşturur ya da zaten varsa içeriği güncelleştirir.
 
     ```powershell
     $body = @"
@@ -319,11 +319,11 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 Bu adımda, [belgeleri ara API 'sini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulanyapılacağı gösterilir.
 
-Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri karakterleri **$** içerir ve tüm dize tek tırnak içine alınmış olursa kaçış zorunluluğunu atlayabilirsiniz.
+Arama $urls tek tırnakları kullandığınızdan emin olun. Sorgu dizeleri **$** karakterler içerir ve tüm dize tek tırnak içine alınsa bunları kaçış zorunluluğunu atlayabilirsiniz.
 
 1. Son noktayı *oteller-hızlı başlangıç* belgeleri koleksiyonuna ayarlayın ve sorgu dizesinde geçirilecek bir **arama** parametresi ekleyin. 
   
-   Bu dize, rastgele belgeler için bir boş arama (Search = *) yürütür ve dereceli bir liste (arama puanı = 1,0) döndürüyor. Varsayılan olarak, Azure Search her seferinde 50 eşleşme döndürür. Yapılandırılmış olarak, bu sorgu tüm belge yapısını ve değerlerini döndürür. Sonuçlarda tüm belgelerin sayısını almak için **$Count = true** ekleyin.
+   Bu dize, rastgele belgeler için bir boş arama (Search = *) yürütür ve dereceli bir liste (arama puanı = 1,0) döndürüyor. Azure Bilişsel Arama, varsayılan olarak her seferinde 50 eşleşme döndürür. Yapılandırılmış olarak, bu sorgu tüm belge yapısını ve değerlerini döndürür. Sonuçlarda tüm belgelerin sayısını almak için **$Count = true** ekleyin.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -401,7 +401,7 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure Search içerik oluşturmak ve bunlara erişmek için temel iş akışını adım adım yapmak üzere PowerShell kullandınız. Kavramlar göz önünde bulundurularak, Azure veri kaynaklarından dizin oluşturma gibi daha gelişmiş senaryolara geçmeyi öneririz;
+Bu hızlı başlangıçta, Azure Bilişsel Arama 'da içerik oluşturma ve bunlara erişme için temel iş akışını adım adım yapmak üzere PowerShell kullandınız. Kavramlar göz önünde bulundurularak, Azure veri kaynaklarından dizin oluşturma gibi daha gelişmiş senaryolara geçmeyi öneririz;
 
 > [!div class="nextstepaction"]
-> [REST öğreticisi: Azure Search içinde yarı yapılandırılmış verileri (JSON blob 'ları) dizin ve arama](search-semi-structured-data.md)
+> [REST öğreticisi: Azure Bilişsel Arama yarı yapılandırılmış verileri (JSON blob 'ları) dizin ve arama](search-semi-structured-data.md)

@@ -1,44 +1,44 @@
 ---
-title: Bilişsel arama belgesi kaynakları-Azure Search
-description: Azure Search ' deki bilişsel arama iş yükleri ile ilgili makalelerin, öğreticilerin, örneklerin ve blog gönderilerinin açıklamalı bir listesi.
-services: search
+title: AI zenginleştirme için belge bağlantıları
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'de AI zenginleştirme iş yükleri ile ilgili makalelerin, öğreticilerin, örneklerin ve blog gönderilerinin açıklamalı bir listesi.
 manager: nitinme
 author: HeidiSteen
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 7267f40a981b984ab945d956ff3552157267cd43
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265479"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792063"
 ---
-# <a name="documentation-resources-for-cognitive-search-workloads"></a>Bilişsel arama iş yükleri için belge kaynakları
+# <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme için belge kaynakları
 
-Bilişsel arama, artık genel olarak kullanılabilir Azure Search dizin oluşturma içindeki yeni bir zenginleştirme katmanıdır ve metin olmayan kaynaklardaki bilgileri ve ayırt edilmemiş metinleri bulur ve bunu Azure Search tam metin aranabilir içeriğe dönüştürür.
+AI zenginleştirme, Azure Bilişsel Arama Dizin oluşturma özelliğinin metin olmayan kaynaklardaki ve ayırt edilmemiş metinlerin bulunduğu bir özelliktir. Bu özellik, Azure Bilişsel Arama 'de tam metin aranabilir içeriğe dönüştürülüyor.
 
-Aşağıdaki makaleler bilişsel arama için tüm belgeleriniz.
+Aşağıdaki makaleler AI zenginleştirme için tüm belgeleriydi.
 
-## <a name="getting-started"></a>Başlarken
-+ [Bilişsel arama nedir?](cognitive-search-concept-intro.md)
-+ [Hızlı Başlangıç: Portalda bilişsel aramayı deneyin](cognitive-search-quickstart-blob.md)
-+ [Öğretici: Bilişsel arama API 'Lerini öğrenin](cognitive-search-tutorial-blob.md)
-+ [Örnek: Bilişsel arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
+## <a name="getting-started"></a>Başlangıç
++ [Azure Bilişsel Arama 'de AI zenginleştirme 'ye giriş](cognitive-search-concept-intro.md)
++ [Hızlı başlangıç: portalda AI zenginleştirme 'yi deneyin](cognitive-search-quickstart-blob.md)
++ [Öğretici: AI ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)
++ [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Nasıl yapılır Kılavuzu
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Bir beceri içinde ek açıklamaların nasıl başvurulacağını](cognitive-search-concept-annotations-syntax.md)
 + [Alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)
 + [Görüntülerden bilgileri işleme ve ayıklama](cognitive-search-concept-image-scenarios.md)
-+ [Azure Search dizinini yeniden oluşturma](search-howto-reindex.md)
++ [Azure Bilişsel Arama dizinini yeniden oluşturma](search-howto-reindex.md)
 + [Özel yetenekler arabirimi tanımlama](cognitive-search-custom-skill-interface.md)
 + [Sorun giderme ipuçları](cognitive-search-concept-troubleshooting.md)
 
 ## <a name="reference"></a>Başvuru
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
   + [Microsoft. yetenekler. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft. yetenekler. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)
@@ -63,6 +63,6 @@ Aşağıdaki makaleler bilişsel arama için tüm belgeleriniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Azure Search Dizin oluşturucular](search-indexer-overview.md)
-+ [Azure Search nedir?](search-what-is-azure-search.md)
++ [Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/)
++ [Azure Bilişsel Arama Dizin oluşturucular](search-indexer-overview.md)
++ [Azure Bilişsel Arama nedir?](search-what-is-azure-search.md)

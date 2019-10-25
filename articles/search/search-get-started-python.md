@@ -1,22 +1,23 @@
 ---
-title: "Hızlı Başlangıç: REST API 'Leri kullanarak Python 'da arama dizini oluşturma-Azure Search"
-description: Python, jupi Notebook ve Azure Search REST API kullanarak dizin oluşturma, verileri yükleme ve sorguları çalıştırma işlemlerinin nasıl yapılacağını açıklar.
-ms.date: 09/10/2019
+title: "Hızlı başlangıç: REST API 'Leri kullanarak Python 'da arama dizini oluşturma"
+titleSuffix: Azure Cognitive Search
+description: Python, jupi Not defterleri ve Azure Bilişsel Arama REST API kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
 author: heidisteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: 273cd690c56ef01b4fd38398aaef85570dd758a2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881559"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792271"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Hızlı Başlangıç: Jupyıter not defterlerini kullanarak Python 'da Azure Search dizin oluşturma
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Hızlı başlangıç: Jupyter not defterlerini kullanarak Python 'da Azure Bilişsel Arama dizini oluşturma
+
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
@@ -25,7 +26,7 @@ ms.locfileid: "70881559"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Python ve [Azure Search REST API 'leri](https://docs.microsoft.com/rest/api/searchservice/)kullanarak Azure Search bir dizin oluşturan, yükleyen ve sorgulayan bir Jupyter Not defteri oluşturun. Bu makalede, adım adım bir not defteri adım oluşturma açıklanır. Alternatif olarak, [tamamlanmış bir Jupyter Python Not defteri indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-python-samples).
+Python ve [azure BILIŞSEL arama REST API 'lerini](https://docs.microsoft.com/rest/api/searchservice/)kullanarak bir Azure bilişsel arama dizini oluşturan, yükleyen ve sorgulayan bir Jupyter Not defteri oluşturun. Bu makalede, adım adım bir not defteri adım oluşturma açıklanır. Alternatif olarak, [tamamlanmış bir Jupyter Python Not defteri indirebilir ve çalıştırabilirsiniz](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -35,23 +36,23 @@ Bu hızlı başlangıç için aşağıdaki hizmetler ve araçlar gereklidir.
 
 + Python 3. x ve Jupyıter not defterlerini sağlayan [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section).
 
-+ Geçerli aboneliğinizde [bir Azure Search hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz katmanı kullanabilirsiniz. 
++ Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz katmanı kullanabilirsiniz. 
 
 ## <a name="get-a-key-and-url"></a>Anahtar ve URL al
 
-REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. İkisini de içeren bir arama hizmeti oluşturulur. Bu nedenle aboneliğinize Azure Search hizmetini eklediyseniz gerekli bilgileri almak için aşağıdaki adımları izleyin:
+REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarının iletilmesi gerekir. Her ikisiyle de bir arama hizmeti oluşturulur. bu nedenle, aboneliğinize Azure Bilişsel Arama eklediyseniz, gerekli bilgileri almak için aşağıdaki adımları izleyin:
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
 1. **Ayarlar** > **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-![Http uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "Http uç noktası ve erişim anahtarı al")
+![HTTP uç noktası ve erişim anahtarı al](media/search-get-started-postman/get-url-key.png "HTTP uç noktası ve erişim anahtarı al")
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="connect-to-azure-search"></a>Azure Search Bağlan
+## <a name="connect-to-azure-cognitive-search"></a>Azure Bilişsel Arama bağlanma
 
-Bu görevde, bir Jupyter Not defteri başlatın ve Azure Search bağlanabildiğinizi doğrulayın. Bunu, hizmetinizdeki dizinlerin bir listesini isteyerek gerçekleştirirsiniz. Anaconda3 ile Windows 'da Anaconda gezginini kullanarak bir not defteri başlatabilirsiniz.
+Bu görevde, bir Jupyter Not defteri başlatın ve Azure Bilişsel Arama 'e bağlanabildiğinizi doğrulayın. Bunu, hizmetinizdeki dizinlerin bir listesini isteyerek gerçekleştirirsiniz. Anaconda3 ile Windows 'da Anaconda gezginini kullanarak bir not defteri başlatabilirsiniz.
 
 1. Yeni bir Python3 Not defteri oluşturun.
 
@@ -85,15 +86,15 @@ Bu görevde, bir Jupyter Not defteri başlatın ve Azure Search bağlanabildiği
 
 1. Her adımı çalıştırın. Dizinler varsa, yanıt dizin adlarının bir listesini içerir. Aşağıdaki ekran görüntüsünde, hizmette zaten bir azureblob-index ve reatastate-US-Sample dizini vardır.
 
-   ![Azure Search http istekleri olan Jupyter not defterinde Python betiği](media/search-get-started-python/connect-azure-search.png "Azure Search http istekleri olan Jupyter not defterinde Python betiği")
+   ![Azure Bilişsel Arama HTTP istekleri içeren Jupyter not defterinde Python betiği](media/search-get-started-python/connect-azure-search.png "Azure Bilişsel Arama HTTP istekleri içeren Jupyter not defterinde Python betiği")
 
-   Buna karşılık, boş bir dizin koleksiyonu şu yanıtı döndürür:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Buna karşılık, boş bir dizin koleksiyonu şu yanıtı döndürür: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 - Dizin oluşturma
 
 Portalı kullanmıyorsanız, verileri yükleyebilmeniz için önce hizmette bir dizin bulunmalıdır. Bu adım, bir dizin şemasını hizmete göndermek için [Create ındex REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) kullanır.
 
-Bir dizinin gerekli öğeleri bir ad, alan koleksiyonu ve bir anahtar içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her alan, alanın nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, türündeki `Edm.String` alanlardan biri belge kimliği için *anahtar* olarak atanmalıdır.
+Bir dizinin gerekli öğeleri bir ad, alan koleksiyonu ve bir anahtar içerir. Alanlar koleksiyonu bir *belgenin*yapısını tanımlar. Her alan, alanın nasıl kullanıldığını tanımlayan bir ad, tür ve özniteliklere sahiptir (örneğin, tam metin aranabilir, filtrelenebilir veya arama sonuçlarında alınabilir mi olduğunu belirtir). Bir dizin içinde, `Edm.String` türündeki alanlardan biri belge kimliği için *anahtar* olarak atanmalıdır.
 
 Bu dizin "oteller-QuickStart" olarak adlandırılmıştır ve aşağıda gördüğünüz alan tanımlarına sahiptir. Diğer izlenecek yollarda kullanılan daha büyük bir [oteller dizininin](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) bir alt kümesidir. Bu hızlı başlangıçta breçekimi için kırpıyoruz.
 
@@ -251,7 +252,7 @@ Belgeleri göndermek için, dizininizin URL uç noktasına bir HTTP POST isteği
 
 Bu adımda, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservice/search-documents)kullanarak bir dizinin nasıl sorgulankullanılacağı gösterilmektedir REST API.
 
-1. Bir hücrede, boş bir aramayı yürüten bir sorgu ifadesi sağlayın (Search = *), düzensiz bir liste (arama puanı = 1,0) döndürür. Varsayılan olarak, Azure Search her seferinde 50 eşleşme döndürür. Yapılandırılmış olarak, bu sorgu tüm belge yapısını ve değerlerini döndürür. Sonuçlarda tüm belgelerin sayısını almak için $count = true ekleyin.
+1. Bir hücrede, boş bir aramayı yürüten bir sorgu ifadesi sağlayın (Search = *), düzensiz bir liste (arama puanı = 1,0) döndürür. Azure Bilişsel Arama, varsayılan olarak her seferinde 50 eşleşme döndürür. Yapılandırılmış olarak, bu sorgu tüm belge yapısını ve değerlerini döndürür. Sonuçlarda tüm belgelerin sayısını almak için $count = true ekleyin.
 
    ```python
    searchstring = '&search=*&$count=true'
@@ -274,9 +275,9 @@ Bu adımda, [arama belgelerini](https://docs.microsoft.com/rest/api/searchservic
 
 1. Her adımı çalıştırın. Sonuçlar aşağıdaki çıktıya benzer görünmelidir. 
 
-    ![Dizinde ara](media/search-get-started-python/search-index.png "Dizinde ara")
+    ![Dizin arama](media/search-get-started-python/search-index.png "Dizin arama")
 
-1. Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. Öğesini aşağıdaki örneklerle değiştirip `searchstring` arama isteğini yeniden çalıştırabilirsiniz. 
+1. Söz dizimi için bir fikir almak üzere birkaç başka sorgu örneği deneyin. `searchstring` aşağıdaki örneklerle değiştirip arama isteğini yeniden çalıştırabilirsiniz. 
 
    Filtre Uygula: 
 
@@ -309,4 +310,4 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 Basitleştirme olarak, bu hızlı başlangıç, oteller dizininin kısaltılmış bir sürümünü kullanır. Daha ilginç sorgular denemek için tam sürümü oluşturabilirsiniz. Tam sürümü ve tüm 50 belgelerini almak için, yerleşik örnek veri kaynaklarından *oteller-Sample* ' ı seçerek **veri alma** Sihirbazı 'nı çalıştırın.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Azure portal dizin oluşturma](search-get-started-portal.md)
+> [Hızlı başlangıç: Azure portal dizin oluşturma](search-get-started-portal.md)

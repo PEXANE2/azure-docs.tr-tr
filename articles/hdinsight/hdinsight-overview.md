@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: f950d273e16dc7fc25f443fda58f9d6582085129
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 1cea76bec3a1b8b698a604c0bac491ac0319a10e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71076399"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791169"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight nedir?
 
@@ -86,7 +86,7 @@ HDInsight belirli küme türlerinin yanı sıra bileşen, yardımcı program ve 
 |[Apache Spark](https://spark.apache.org/)|Büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen açık kaynaklı bir paralel işleme çerçevesidir. Bkz. [HDInsight’ta Apache Spark nedir?](./spark/apache-spark-overview.md)|
 |[Apache HBase](https://hbase.apache.org/)|Büyük miktarlarda yapılandırılmamış ve yarı yapılandırılmış veriler için rastgele erişim ve güçlü tutarlılık sağlayan Hadoop üzerinde oluşturulmuş bir NoSQL veritabanı (potansiyel olarak milyarlarca satır çarpı milyonlarca sütun). Bkz. [HDInsight'ta HBase nedir?](./hbase/apache-hbase-overview.md)|
 |[ML Hizmetleri](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Paralel ve dağıtılmış R süreçlerini barındırmak ve yönetmek için bir sunucu. Veri uzmanlarının, istatistikçilerin ve R programcılarının HDInsight üzerindeki ölçeklenebilir ve dağıtılmış analitik yöntemlerine istedikleri an erişmesini sağlar. Bkz. [HDInsight'ta ML Services'a genel bakış](./r-server/r-server-overview.md).|
-|[Apache Storm](https://storm.incubator.apache.org/)|Büyük veri akışlarını hızlı bir şekilde işlemek için dağıtılmış, gerçek zamanlı bir hesaplama sistemi. Storm HDInsight’ta yönetilen küme olarak sunulur. Bkz. [Storm ve Hadoop kullanarak gerçek zamanlı algılayıcı verilerini çözümleme](./storm/apache-storm-sensor-data-analysis.md).|
+|[Apache Storm](https://storm.incubator.apache.org/)|Büyük veri akışlarını hızlı bir şekilde işlemek için dağıtılmış, gerçek zamanlı bir hesaplama sistemi. Storm HDInsight’ta yönetilen küme olarak sunulur. Bkz. [Storm ve Hadoop kullanarak gerçek zamanlı algılayıcı verilerini çözümleme](/azure/hdinsight/storm/apache-storm-overview).|
 |[Apache etkileşimli sorgu](https://cwiki.apache.org/confluence/display/Hive/LLAP)|Etkileşimli ve daha hızlı Hive sorguları için bellek içi önbelleğe alma. Bkz. [HDInsight'ta Interactive Query kullanımı](./interactive-query/apache-interactive-query-get-started.md).|
 |[Apache Kafka](https://kafka.apache.org/)|Akış verisi işlem hatları ve uygulamaları oluşturmak için kullanılan açık kaynaklı bir platform. Kafka ayrıca veri akışları yayımlamanızı ve abone olmanızı sağlayan ileti-kuyruk işlevi de sunar. Bkz. [HDInsight'ta Apache Kafka'ya giriş](./kafka/apache-kafka-introduction.md).|
 
