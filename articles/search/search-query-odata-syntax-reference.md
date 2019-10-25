@@ -1,13 +1,13 @@
 ---
-title: OData ifadesi söz dizimi başvurusu-Azure Search
-description: Azure Search sorgularında OData ifadeleri için biçimsel dilbilgisi ve sözdizimi belirtimi.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData ifade söz dizimi başvurusu
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama sorgularında OData ifadeleri için biçimsel dilbilgisi ve sözdizimi belirtimi.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,27 +19,27 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647486"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793228"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Azure Search için OData ifade söz dizimi başvurusu
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu
 
-Azure Search, API 'de [OData ifadelerini](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) parametre olarak kullanır. En yaygın olarak, OData ifadeleri `$orderby` ve `$filter` parametreleri için kullanılır. Bu ifadeler, birden çok yan tümce, işlev ve işleç içeren karmaşık olabilir. Ancak, Azure Search REST API birçok bölümünde Özellik yolları gibi basit OData ifadeleri de kullanılır. Örneğin, yol ifadeleri, API 'de alt alanlar, bir [Puanlama işlevi](index-add-scoring-profiles.md), `$select` parametre, hatta [](index-add-suggesters.md) [Lucene içindeki ara değerli arama gibi karmaşık alanların alt alanlarına başvurmak için kullanılır. sorgular](query-lucene-syntax.md).
+Azure Bilişsel Arama, API 'de [OData ifadelerini](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) parametre olarak kullanır. En yaygın olarak, OData ifadeleri `$orderby` ve `$filter` parametreleri için kullanılır. Bu ifadeler, birden çok yan tümce, işlev ve işleç içeren karmaşık olabilir. Ancak, Azure Bilişsel Arama REST API birçok bölümünde Özellik yolları gibi basit OData ifadeleri de kullanılır. Örneğin, bir [öneri aracı](index-add-suggesters.md)alt alanları, bir [puanlama işlevi](index-add-scoring-profiles.md), `$select` parametresi, hatta [Lucene sorguları içinde alan ara arama gibi karmaşık alanların alt alanlarına başvurmak için yol ifadeleri kullanılır. ](query-lucene-syntax.md).
 
 Bu makalede, bir biçimsel dilbilgisi kullanılarak bu OData ifadelerinin tüm biçimleri açıklanmaktadır. Ayrıca, dilbilgisi görsel olarak araştırmanıza yardımcı olacak [etkileşimli bir diyagram](#syntax-diagram) de vardır.
 
 ## <a name="formal-grammar"></a>Biçimsel dilbilgisi
 
-EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) dilbilgisi kullanılarak Azure Search tarafından desteklenen OData dilinin alt kümesini açıklayabilir. Kurallar, en karmaşık ifadelerle başlayarak "yukarıdan aşağı" listelenir ve bunları daha basit ifadelere bölmek için kullanılır. En üstte Azure Search REST API belirli parametrelere karşılık gelen dilbilgisi kurallarıdır:
+Azure Bilişsel Arama tarafından desteklenen bir EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) dilbilgisi kullanarak desteklenen OData dilinin alt kümesini açıklayabilir. Kurallar, en karmaşık ifadelerle başlayarak "yukarıdan aşağı" listelenir ve bunları daha basit ifadelere bölmek için kullanılır. En üstte Azure Bilişsel Arama REST API özgü parametrelere karşılık gelen dilbilgisi kuralları:
 
-- [`$filter`](search-query-odata-filter.md), `filter_expression` kural tarafından tanımlanır.
-- [`$orderby`](search-query-odata-orderby.md), `order_by_expression` kural tarafından tanımlanır.
-- [`$select`](search-query-odata-select.md), `select_expression` kural tarafından tanımlanır.
-- `field_path` Kural tarafından tanımlanan alan yolları. Alan yolları API 'nin tamamında kullanılır. Bir dizinin en üst düzey alanlarına veya bir ya da daha fazla [karmaşık alan](search-howto-complex-data-types.md) öncülerine sahip alt alanlara başvurabilirler.
+- `filter_expression` kuralı tarafından tanımlanan [`$filter`](search-query-odata-filter.md).
+- `order_by_expression` kuralı tarafından tanımlanan [`$orderby`](search-query-odata-orderby.md).
+- `select_expression` kuralı tarafından tanımlanan [`$select`](search-query-odata-select.md).
+- `field_path` kuralı tarafından tanımlanan alan yolları. Alan yolları API 'nin tamamında kullanılır. Bir dizinin en üst düzey alanlarına veya bir ya da daha fazla [karmaşık alan](search-howto-complex-data-types.md) öncülerine sahip alt alanlara başvurabilirler.
 
 EBNF, dilbilgisi ve kuralları arasındaki ilişkileri etkileşimli bir şekilde keşfetmenizi sağlayan gözatılabilir bir [sözdizimi diyagramıdır](https://en.wikipedia.org/wiki/Syntax_diagram) .
 
@@ -209,14 +209,14 @@ search_mode ::= "'any'" | "'all'"
 
 ## <a name="syntax-diagram"></a>Sözdizimi diyagramı
 
-Azure Search tarafından desteklenen OData dil dilbilgisini görsel olarak araştırmak için etkileşimli sözdizimi diyagramını deneyin:
+Azure Bilişsel Arama tarafından desteklenen OData dil dilbilgisini görsel olarak araştırmak için etkileşimli sözdizimi diyagramını deneyin:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 
-- [Azure Search filtreler](search-filters.md)
-- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama filtreler](search-filters.md)
+- [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene sorgu söz dizimi](query-lucene-syntax.md)
-- [Azure Search basit sorgu söz dizimi](query-simple-syntax.md)
+- [Azure Bilişsel Arama basit sorgu söz dizimi](query-simple-syntax.md)

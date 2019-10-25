@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: dc5c85aaa3c2128b10ba2e6f9c45a66b44593202
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851786"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809214"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -42,7 +42,7 @@ AD 'deki SCP nesnelerini değiştirmek için Active Directory Hizmetleri arabiri
 
 1. Şirket Yöneticisi olarak ve yönetim iş istasyonundan veya bir etki alanı denetleyicisinden **ADSI düzenleme** masaüstü uygulamasını başlatın.
 1. Etki alanınız için **yapılandırma adlandırma bağlamına** bağlanın.
-1. **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = cihaz kayıt yapılandırması** ' na gidin
+1. CN = **Configuration, DC = contoso, DC = com** > **cn = Services** > **CN = cihaz kayıt yapılandırması** ' na gidin
 1. **CN = cihaz kayıt yapılandırması** altındaki yaprak nesnesine sağ tıklayın ve **Özellikler** ' i seçin
    1. **Öznitelik Düzenleyicisi** penceresinde **anahtar sözcükler** ' i seçin ve **Düzenle** ' ye tıklayın.
    1. **Azureadıd** ve **azureadname** değerlerini (tek seferde bir kez) seçip **Kaldır** ' a tıklayın.
@@ -55,25 +55,25 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
 
 1. Grup ilkesi bir Yönetim Konsolu açın ve etki alanında yeni bir grup ilkesi nesnesi oluşturun.
    1. Yeni oluşturduğunuz GPO 'YU bir ad sağlayın (örneğin, ClientSideSCP).
-1. GPO 'YU düzenleyin ve aşağıdaki yolu bulun: **Bilgisayar yapılandırma** > **tercihleri** **Windows ayarları** **kayıt** defteri >  > 
-1. Kayıt defterine sağ tıklayıp **Yeni** > **kayıt defteri öğesi** ' ni seçin
+1. GPO 'YU düzenleyin ve şu yolu bulun: **bilgisayar yapılandırması** > **tercihleri** > **Windows ayarları** > **kayıt defteri**
+1. Kayıt defterine sağ tıklayıp **yeni** > **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
-      1. Eylem: **Güncelleştirme**
-      1. Yığını **KOPYALANMAZ**
-      1. Anahtar yolu: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. Değer adı: **Değerine**
+      1. Eylem: **Güncelleştir**
+      1. Hive: **HKEY_LOCAL_MACHINE**
+      1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
+      1. Değer adı: **Tenantıd**
       1. Değer türü: **REG_SZ**
-      1. Değer verisi: Azure AD örneğinizin GUID veya **dizin kimliği** (Bu değer **Azure Portal** > **Azure Active Directory** > **Özellikler** > **Dizin kimliğinde**bulunabilir)
-   1.           **Tamam**’a tıklayın.
-1. Kayıt defterine sağ tıklayıp **Yeni** > **kayıt defteri öğesi** ' ni seçin
+      1. Değer verileri: Azure AD örneğinizin GUID veya **DIZIN kimliği** (bu değer **Azure portal** > **Azure ACTIVE DIRECTORY** > **Özellikler** > **dizin kimliği**) içinde bulunabilir
+   1. **Tamam**’a tıklayın.
+1. Kayıt defterine sağ tıklayıp **yeni** > **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
-      1. Eylem: **Güncelleştirme**
-      1. Yığını **KOPYALANMAZ**
-      1. Anahtar yolu: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Eylem: **Güncelleştir**
+      1. Hive: **HKEY_LOCAL_MACHINE**
+      1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
       1. Değer adı: **TenantName**
       1. Değer türü: **REG_SZ**
-      1. Değer verisi: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, `contoso.onmicrosoft.com` doğrulanmış **etki alanı adınız** veya onmicrosoft.com etki alanı adınız
-   1.           **Tamam**’a tıklayın.
+      1. Değer verileri: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, `contoso.onmicrosoft.com` doğrulanmış **etki alanı adınız** veya onmicrosoft.com etki alanı adınız
+   1. **Tamam**’a tıklayın.
 1. Yeni oluşturulan GPO için Düzenleyiciyi Kapat
 1. Yeni oluşturulan GPO 'YU, denetimli dağıtım popülasyona ait olan, etki alanına katılmış bilgisayarları içeren istenen OU 'ya bağlayın
 
@@ -82,7 +82,7 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
 AD FS kullanıyorsanız, önce yukarıda bahsedilen yönergeleri kullanarak istemci tarafı SCP 'yi yapılandırmanız gerekir, ancak GPO 'YU AD FS sunucularınız ile bağlantılandırın. SCP nesnesi, cihaz nesneleri için yetki kaynağını tanımlar. Şirket içi veya Azure AD olabilir. AD FS için yapılandırıldığında, cihaz nesneleri kaynağı Azure AD olarak oluşturulur.
 
 > [!NOTE]
-> AD FS sunucularınızda istemci tarafı SCP 'yi yapılandıramadınız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir ve AD FS bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır.
+> AD FS sunucularınızda istemci tarafı SCP 'yi yapılandıramadıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir ve cihaz geri yazma özelliği varsa, AD FS bir hata sonrasında cihaz nesnelerini şirket içi kayıtlı cihaz kapsayıcısından silmeye başlayabilir. Yulan dönem.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows alt düzey cihazlarda karma Azure AD JOIN 'in denetimli doğrulaması
 

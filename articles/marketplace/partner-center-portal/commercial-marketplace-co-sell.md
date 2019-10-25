@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773232"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784808"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Iş Ortağı Merkezi 'nde ortak satış seçeneği
 
@@ -35,11 +35,11 @@ Teklif türünü seçin:
 | Cihaz | Bir cihaz üreticisinden donanım oluşturmayı veya satmasını kapsayan bir teklif. |
 | IP | Müşterinin kullanımı için lisanslı uygulamalar veya diğer copyrightable malzemeleri. Örneğin: lisanslanabilir ve şirket içinde yüklenebilen bir CRM programı. |
 | Hizmet | Genellikle danışmanlar aracılığıyla sunulan belirli bir kerelik proje için uygulamalı uzman. Örneğin: istemci için bir müşteri veritabanı ayarlama (istemcisiyle, teslimatı sonrasında veritabanını çalıştırma sorumluluğunu kabul ediyor). |
-| Yönetilen hizmet | Genellikle sürekli olarak bulut tabanlı bir proje için uygulamalı uzman. Örneğin: Yönetilen hizmet sağlayıcısı tarafından sağlanan devam eden yönetim ile çevrimiçi bir veritabanını çalıştırmaya yönelik bir platform ve araçlar sağlama. |
+| Yönetilen hizmet | Genellikle sürekli olarak bulut tabanlı bir proje için uygulamalı uzman. Örneğin: bir çevrimiçi veritabanını çalıştırmaya yönelik bir platform ve araçlar sağlamak için, yönetilen hizmet sağlayıcısı tarafından sağlanan devam eden yönetim. |
 
 ## <a name="solution-areas"></a>Çözüm bölgeleri
 
-Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz.  Her çözüm alanı için en fazla iki çözüm alt alanı seçebilirsiniz. Birden çok alt kategori seçmek için, `Ctrl` anahtarı (Windows üzerinde) veya komut anahtarını (Mac OS) kullanın.
+Teklifiniz için en fazla üç çözüm alanı ekleyebilirsiniz.  Her çözüm alanı için en fazla iki çözüm alt alanı seçebilirsiniz. Birden çok alt kategori seçmek için `Ctrl` anahtarı (Windows üzerinde) veya komut anahtarını (Mac OS üzerinde) kullanın.
 
 Çözüm bölgeleri, teklifinizin ele almak için tasarlandığı senaryoları tanımlamaya yardımcı olur.
 
@@ -65,17 +65,17 @@ Bu belgede iş ortakları için farklı roller ve aralarında nasıl seçim yap�
 
 Ayrıca, bir teklifin mevcut kişi listesini dışarı aktarabilir ve ardından bu dosyada değişiklik yapabilirsiniz.
 
-* *Ad (gerekli)* : Kişinin adı.
-* *E-posta adresi (gerekli)* : Kişinin e-posta adresi.
-* *İş unvanı (gerekli)* : İş unvanı.
-* *Rol (zorunlu)* : Şablondaki bu alanda aşağıdaki rollerden birini kullanın.
+* *Ad (gerekli)* : kişinin adı.
+* *E-posta adresi (gerekli)* : kişinin e-posta adresi.
+* *İş unvanı (gerekli)* : iş unvanı.
+* *Rol (zorunlu)* : şablonda bu alanda aşağıdaki rollerden birini kullanın.
 
     | **Rol**    | **Açıklama**  |
     | :------------------- | :-------------------|
-    | *İş ortağı pazarlama* | Bu rol, Microsoft satış ekipleri ve kanal satıcıları ile çözümünüze pazarlama ve pazarlama çabalarıyla işbirliği yapmaya odaklanır. Pazarlama görevlendirmelere yönelik ana iletişim noktası ve ürün açıklamaları, Resimler ve videolar gibi liste içeriği teklifi. |
-    | *İş ortağı satışları* | Bu rol, Microsoft satış ekipleriyle ve kanal satıcılarıyla çözümünüze ve satış üzerinde işbirliği yapmaya odaklanır. Ortak satış çözümleri için, ortak satış sağlamak istediğiniz bölge başına en az bir iş ortağı satış kişisi belirtin. Aynı iş ortağı satış kişisi birden çok bölgeyi kapsayabilir. |
-    | *İş ortağı teknik satışları* | Satış çevrimi, satış sonrası tümleştirme ve dağıtım dönemleri sırasında teknik mimariyi ve dağıtım konularını destekler. |
-    | *İş ortağı müşteri başarısı Yöneticisi* | Genellikle, çözümünüzden en iyi şekilde yararlanmalarına yardımcı olmak ve müşterinin kuruluşundaki parmak izini büyütmek için müşterilerin dağıtım sonrası dağıtımını destekler. |
+    | *:::no-loc text="Partner marketing":::* | Bu rol, Microsoft satış ekipleri ve kanal satıcıları ile çözümünüze pazarlama ve pazarlama çabalarıyla işbirliği yapmaya odaklanır. Pazarlama görevlendirmelere yönelik ana iletişim noktası ve ürün açıklamaları, Resimler ve videolar gibi liste içeriği teklifi. |
+    | *:::no-loc text="Partner sales":::* | Bu rol, Microsoft satış ekipleriyle ve kanal satıcılarıyla çözümünüze ve satış üzerinde işbirliği yapmaya odaklanır. Ortak satış çözümleri için, ortak satış sağlamak istediğiniz bölge başına en az bir iş ortağı satış kişisi belirtin. Aynı iş ortağı satış kişisi birden çok bölgeyi kapsayabilir. |
+    | *:::no-loc text="Partner technical sales":::* | Satış çevrimi, satış sonrası tümleştirme ve dağıtım dönemleri sırasında teknik mimariyi ve dağıtım konularını destekler. |
+    | *:::no-loc text="Partner customer success manager":::* | Genellikle, çözümünüzden en iyi şekilde yararlanmalarına yardımcı olmak ve müşterinin kuruluşundaki parmak izini büyütmek için müşterilerin dağıtım sonrası dağıtımını destekler. |
 
 * *Ülkeler/bölgeler (gerekli):*  Şablonu doldururken, [listelenen iki harfli ülke/bölge kodlarını](./commercial-marketplace-co-sell-countries.md)kullanın. Kişi tüm ülkeleri/bölgeleri kapsıyorsa, "OOO" üç harfli kodu kullanın. Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle ayırarak girin (örneğin, şablona tırnak işareti olmadan "ABD, CA, FR" yazın).
 

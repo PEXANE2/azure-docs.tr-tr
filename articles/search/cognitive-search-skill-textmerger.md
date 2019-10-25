@@ -1,22 +1,21 @@
 ---
-title: Metin birleştirme bilişsel arama yeteneği-Azure Search
-description: Bir alan koleksiyonundan metin birleştirme birleştirilmiş bir alan. Bu bilişsel yeteneği bir Azure Search zenginleştirme ardışık düzeninde kullanın.
-services: search
+title: Metin birleştirme Bilişsel Beceri
+titleSuffix: Azure Cognitive Search
+description: Bir alan koleksiyonundan metin birleştirme birleştirilmiş bir alan. Azure Bilişsel Arama 'deki bir AI zenginleştirme ardışık düzeninde bu bilişsel yeteneği kullanın.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265270"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791833"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Metin birleştirme Bilişsel Beceri
+#   <a name="text-merge-cognitive-skill"></a>Metin birleştirme Bilişsel Beceri
 
 **Metin birleştirme** yeteneği, bir alan koleksiyonundan metni tek bir alanda birleştirir. 
 
@@ -32,8 +31,8 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| ınsertpretag  | Her ekleme işleminden önce eklenecek dize. Varsayılan değer `" "` şeklindedir. Alanı atlamak için değerini olarak `""`ayarlayın.  |
-| ınsertposttag | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer `" "` şeklindedir. Alanı atlamak için değerini olarak `""`ayarlayın.  |
+| ınsertpretag  | Her ekleme işleminden önce eklenecek dize. Varsayılan değer `" "`. Alanı atlamak için değeri `""`olarak ayarlayın.  |
+| ınsertposttag | Her ekleme işleminden sonra eklenecek dize. Varsayılan değer `" "`. Alanı atlamak için değeri `""`olarak ayarlayın.  |
 
 
 ##  <a name="sample-input"></a>Örnek giriş
@@ -56,7 +55,7 @@ Bu yetenek için kullanılabilir giriş sağlayan bir JSON belgesi şu olabilir:
 ```
 
 ##  <a name="sample-output"></a>Örnek çıktı
-Bu örnek, *ınsertpretag* öğesinin olarak ayarlandığı `" "`ve *ınsertposttag* 'in olarak `""`ayarlandığı varsayıldığında, önceki girdinin çıktısını gösterir. 
+Bu örnek, *ınsertpretag* 'ın `" "`olarak ayarlandığı ve *ınsertposttag* 'in `""`olarak ayarlandığı varsayıldığında, önceki girdinin çıktısını gösterir. 
 
 ```json
 {
@@ -143,6 +142,6 @@ Yukarıdaki örnekte, normalleştirilmiş görüntüler alanının var olduğu v
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

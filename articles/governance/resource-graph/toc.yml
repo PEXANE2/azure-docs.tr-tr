@@ -17,6 +17,11 @@
     - name: İlk sorgunuzu çalıştırma - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: Öğreticiler
+  items:
+    - name: Azure portalında sorgu oluşturma ve paylaşma
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: Örnekler
   items:
     - name: Başlangıç sorguları

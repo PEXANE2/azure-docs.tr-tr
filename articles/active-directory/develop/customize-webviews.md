@@ -1,5 +1,6 @@
 ---
-title: Tarayıcıları ve Web görünümlerini özelleştirme | Microsoft Identity platformu
+title: Tarayıcıları ve WebView’ları özelleştirme
+titleSuffix: Microsoft identity platform
 description: İOS ve macOS için MSAL tarafından kullanılan tarayıcı deneyiminin kullanıcıları oturum açmasını nasıl özelleştireceğinizi öğrenin
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264209"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803383"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Nasıl yapılır: iOS/macOS için tarayıcıları ve Web görünümlerini özelleştirme
 
@@ -40,7 +41,7 @@ Yalnızca iOS için:
 
 - [Wkwebview](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MacOS için MSAL yalnızca @no__t destekler.
+MacOS için MSAL yalnızca `WKWebView`destekler.
 
 ## <a name="system-browsers"></a>Sistem tarayıcıları
 
@@ -48,7 +49,7 @@ MacOS için MSAL yalnızca @no__t destekler.
 
 Varsayılan olarak, MSAL, iOS sürümünü dinamik olarak algılayacak ve bu sürümde sunulan önerilen sistem tarayıcısını seçmeyecektir. İOS 12 + ' de `ASWebAuthenticationSession` olur. 
 
-| Version | Web tarayıcısı |
+| Sürüm | Web tarayıcısı |
 |:-------------:|:-------------:|
 | iOS 12 + | ASWebAuthenticationSession |
 | iOS 11 | SFAuthenticationSession |
@@ -69,17 +70,17 @@ Kullandığınız tarayıcı, tanımlama bilgilerini paylaşma nedeniyle SSO den
 
 | Teknoloji    | Tarayıcı türü  | iOS kullanılabilirliği | macOS kullanılabilirliği | Tanımlama bilgilerini ve diğer verileri paylaşır  | MSAL kullanılabilirliği | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Evet | yalnızca iOS | w/Safari örnekleri
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Evet | yalnızca iOS |  w/Safari örnekleri
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Sistem | iOS12 ve yukarı | macOS 10,15 ve yukarı | Yes | yalnızca iOS | w/Safari örnekleri
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Sistem | iOS11 ve yukarı | Yok | Yes | yalnızca iOS |  w/Safari örnekleri
 | [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Sistem | iOS11 ve yukarı | Yok | Hayır | yalnızca iOS | Hayır * *
-| **SFSafariViewController** | Sistem | iOS10 | Yok | Evet | yalnızca iOS |  w/Safari örnekleri
+| **SFSafariViewController** | Sistem | iOS10 | Yok | Yes | yalnızca iOS |  w/Safari örnekleri
 | **WKWebView**  | Uygulama içi | iOS8 ve yukarı | macOS 10,10 ve yukarı | Hayır | iOS ve macOS | Hayır * *
 
 \* * SSO 'nun çalışması için, belirteçlerin uygulamalar arasında paylaşılması gerekir. Bu, bir belirteç önbelleği veya iOS için Microsoft Authenticator gibi aracı uygulaması gerektirir.
 
 ## <a name="change-the-default-browser-for-the-request"></a>İstek için varsayılan tarayıcıyı değiştirme
 
-@No__t-0 ' da aşağıdaki özelliği değiştirerek, UX gereksinimlerinize bağlı olarak, uygulama içi tarayıcı veya belirli bir sistem tarayıcısı kullanabilirsiniz:
+`MSALWebviewParameters`' de aşağıdaki özelliği değiştirerek, UX gereksinimlerinize bağlı olarak, uygulama içi tarayıcı veya belirli bir sistem tarayıcısı kullanabilirsiniz:
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -89,9 +90,9 @@ Kullandığınız tarayıcı, tanımlama bilgilerini paylaşma nedeniyle SSO den
 
 Her istek, `acquireTokenWithParameters:completionBlock:` API 'sine geçirmeden önce `MSALInteractiveTokenParameters.webviewParameters.webviewType` özelliğini değiştirerek varsayılan tarayıcıyı geçersiz kılmak üzere yapılandırılabilir.
 
-Ayrıca, MSAL, `MSALInteractiveTokenParameters.webviewParameters.customWebView` özelliğini ayarlayarak özel bir @no__t geçirmeyi destekler.
+Ayrıca, MSAL, `MSALInteractiveTokenParameters.webviewParameters.customWebView` özelliğini ayarlayarak özel bir `WKWebView` geçirmeyi destekler.
 
-Örneğin:
+Örnek:
 
 Objective-C
 ```objc
@@ -104,7 +105,7 @@ MSALInteractiveTokenParameters *interactiveParameters = [[MSALInteractiveTokenPa
     
 [app acquireTokenWithParameters:interactiveParameters completionBlock:completionBlock];
 ```
-SWIFT
+Swift
 ```swift
 let myParentController: UIViewController = ...
 let myCustomWebView: WKWebView = ...

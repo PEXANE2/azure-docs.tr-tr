@@ -1,5 +1,6 @@
 ---
-title: Uygulamalar için markalama yönergeleri | Microsoft Docs
+title: Uygulamalar için markalama yönergeleri
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory'nin geliştirici yönelimli kaynakları için kapsamlı bir kılavuz
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70053250"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803867"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
@@ -60,9 +61,9 @@ Bu yönergelerin daha önceki bir sürümünde “mavi rozet” piktogramı kull
 
 Uygulamanız kaydolma ve oturum açma için ayrı yollar sunabilir. Aşağıdaki bölümlerde her iki duruma uygun görsel kılavuz sağlanmaktadır.
 
-**Uygulamanız Son Kullanıcı kaydolmasını destekliyorsa (örneğin, deneme veya freemıum modeline ücretsiz)** : Kullanıcıların uygulamanıza iş hesabı veya kişisel hesapları ile erişmesini sağlayan bir **oturum açma** düğmesi gösterebilirsiniz. Azure AD, uygulamanıza ilk eriştiklerinde bir izin alma istemi gösterecektir.
+**Uygulamanız son kullanıcının kaydolmasını destekliyorsa (örneğin, ücretsiz deneme sürümü veya freemium modeli)** : Kullanıcıların iş hesapları veya kişisel hesapları ile uygulamanıza erişmesine izin veren bir **oturum aç** düğmesi gösterebilirsiniz. Azure AD, uygulamanıza ilk eriştiklerinde bir izin alma istemi gösterecektir.
 
-Uygulamanız **yalnızca yöneticilerin izin verebilmesine izin gerektiriyorsa veya uygulamanız kuruluş lisansı gerektiriyorsa**: Kullanıcı oturum açma işleminden ayrı yönetici alma. **“Bu uygulamayı al” düğmesi** yöneticileri oturum açma ekranına yeniden yönlendirecek ve ardından kuruluştaki kullanıcılar adına izin vermelerini isteyecektir; bu düğme, son kullanıcı izin alma istemlerini uygulamanıza gizleme açısından ek avantaj sunar.
+**Uygulamanız yalnızca yöneticilerin verebileceği izinleri gerektiriyorsa veya uygulamanız kuruluş lisansı gerektiriyorsa**: Yönetici alımını kullanıcı oturum açma işleminden ayırın. **“Bu uygulamayı al” düğmesi** yöneticileri oturum açma ekranına yeniden yönlendirecek ve ardından kuruluştaki kullanıcılar adına izin vermelerini isteyecektir; bu düğme, son kullanıcı izin alma istemlerini uygulamanıza gizleme açısından ek avantaj sunar.
 
 ## <a name="visual-guidance-for-app-acquisition"></a>Uygulama alımı için görsel kılavuz
 
@@ -72,9 +73,9 @@ Yöneticiler uygulamanıza izin verdikten sonra uygulamanızı kullanıcıların
 
 ![Microsoft logosu ve "kuruluşuma Ekle" metinlerinin gösterildiği düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
 
-> *Office 365 veya diğer bir Microsoft iş hizmeti kullanıyorsanız kuruluşunuzun verilerine <uygulamanızın_adı> erişimi verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesapları ile <uygulamanızın_adı> uygulamanıza erişebilmelerini sağlayacaktır.*
+> *Zaten Microsoft 'tan Office 365 veya başka bir iş hizmeti kullanıyorsanız, kuruluşunuzun verilerine yönelik < your_app_name > erişimine izin verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla < your_app_name > erişmesine izin verir.*
 
 Uygulamanızda kullanmak üzere resmi Microsoft logosunu indirmek için, kullanmak istediğiniz logoya sağ tıklayın ve ardından bilgisayarınıza kaydedin.
 

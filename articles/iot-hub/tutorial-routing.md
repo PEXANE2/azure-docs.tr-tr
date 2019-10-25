@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 5019951ca9628bc3beb849bdb2b148b575bc8618
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: cc084c9ff118aa5405bc12cf4e92ff1e11f24e2a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535129"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809412"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure CLı ve Azure portal kullanma
 
@@ -26,11 +26,13 @@ ms.locfileid: "69535129"
 
 Bu öğretici, temel kaynakları oluşturmak için Azure CLı 'yi kullanır, ardından ileti yönlendirmeyi yapılandırmayı ve test için sanal cihazı ayarlamayı göstermek üzere [Azure Portal](https://portal.azure.com) kullanır.
 
-IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue*adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz.
-
 Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın ve ENTER tuşuna basın. Betiği tek seferde bir satır çalıştırır. Bu işlem, depolama hesabı, IoT Hub, Service Bus ad alanı ve Service Bus kuyruğu dahil olmak üzere Bu öğreticinin temel kaynaklarını oluşturur.
 
-Hata ayıklama hakkında bir dikkat: Bu betik, betiği daha okunabilir hale getirmek `\`için devamlılık simgesini (ters eğik çizgi) kullanır. Betiği çalıştırırken bir sorun yaşıyorsanız, ters eğik çizgi dışında bir boşluk olmadığından emin olun.
+IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue*adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz.
+
+> [!TIP]
+> Hata ayıklama hakkında ipucu: Bu betik, betiği daha okunabilir hale getirmek için devamlılık simgesini (ters eğik çizgi `\`) kullanır. Betiği çalıştırırken bir sorun yaşıyorsanız Cloud Shell oturumunuzun `bash` çalıştığından ve ters eğik çizgi dışında boşluk olmadığından emin olun.
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 
@@ -162,13 +164,13 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
    **Ad**: Yönlendirme sorgunuz için bir ad girin. Bu öğretici **Contosostorageroute**kullanır.
 
-   **Uç nokta**: Bu, az önce ayarladığınız uç noktayı gösterir.
+   **Uç nokta**: Az önce ayarladığınız uç noktayı gösterir.
 
-   **Veri kaynağı**: Açılan listeden **cihaz telemetri iletileri** ' ni seçin.
+   **Veri kaynağı**: Açılan listeden **Cihaz Telemetri İletileri**'ni seçin.
 
-   **Rotayı etkinleştir**: Bu alanın olarak `enabled`ayarlandığından emin olun.
+   **Rotayı etkinleştir**: bu alanın `enabled`olarak ayarlandığından emin olun.
    
-   **Yönlendirme sorgusu**: Sorgu `level="storage"` dizesi olarak girin.
+   **Yönlendirme sorgusu**: Sorgu dizesi olarak `level="storage"` girin.
 
    ![Depolama hesabı için yönlendirme sorgusu oluşturma](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
@@ -188,11 +190,11 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
 4. Şu alanları doldurun:
 
-   **Uç nokta adı**: Uç nokta için bir ad girin. Bu öğretici **Contososbqueueendpoint**kullanır.
+   **Uç Nokta Adı**: Uç nokta için bir ad girin. Bu öğretici **Contososbqueueendpoint**kullanır.
    
-   **Service Bus ad alanı**: Hazırlama adımlarında ayarladığınız Service Bus ad alanını seçmek için açılan listeyi kullanın. Bu öğreticide **ContosoSBNamespace** kullanılır.
+   **Service Bus ad alanı**: hazırlama adımlarında ayarladığınız Service Bus ad alanını seçmek için açılan listeyi kullanın. Bu öğreticide **ContosoSBNamespace** kullanılır.
 
-   **Service Bus kuyruğu**: Service Bus kuyruğu seçmek için açılan listeyi kullanın. Bu öğreticide **contososbqueue** kullanılır.
+   **Service Bus kuyruğu**: Service Bus kuyruğunu seçmek için açılan listeyi kullanın. Bu öğreticide **contososbqueue** kullanılır.
 
 5. Service Bus kuyruğu uç noktasını eklemek için **Oluştur** ' u seçin. **Yol ekle** bölmesine dönersiniz.
 
@@ -200,11 +202,11 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
    **Ad**: Yönlendirme sorgunuz için bir ad girin. Bu öğretici **Contososbqueueroute**kullanır. 
 
-   **Uç nokta**: Bu, az önce ayarladığınız uç noktayı gösterir.
+   **Uç nokta**: Az önce ayarladığınız uç noktayı gösterir.
 
-   **Veri kaynağı**: Açılan listeden **cihaz telemetri iletileri** ' ni seçin.
+   **Veri kaynağı**: Açılan listeden **Cihaz Telemetri İletileri**'ni seçin.
 
-   **Yönlendirme sorgusu**: Sorgu `level="critical"` dizesi olarak girin. 
+   **Yönlendirme sorgusu**: Sorgu dizesi olarak `level="critical"` girin. 
 
    ![Service Bus kuyruğu için bir yönlendirme sorgusu oluşturma](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 

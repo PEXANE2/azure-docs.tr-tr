@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 7483d31b5e4d375d817019b1f81de98a05ef7530
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550255"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799368"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -177,7 +177,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 
 | Adı | Sınır |
 | ---- | ----- |
-| Azure aboneliği başına sistem tarafından atanan yönetilen kimliklere sahip mantıksal uygulama sayısı | 100 |
+| Bölge başına bir Azure aboneliğinde sistem tarafından atanan kimliğe sahip mantıksal uygulama sayısı | 100 |
 |||
 
 <a name="integration-account-limits"></a>

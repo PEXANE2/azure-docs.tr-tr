@@ -1,31 +1,31 @@
 ---
-title: Yerleşik veri ayıklama, doğal dil, görüntü işleme-Azure Search
-description: Veri ayıklama, doğal dil, görüntü işleme bilişsel becerileri, Azure Search işlem hattındaki ham içeriğe semantik ve yapı ekler.
+title: Yerleşik veri ayıklama, doğal dil, görüntü işleme
+titleSuffix: Azure Cognitive Search
+description: Veri ayıklama, doğal dil, görüntü işleme bilişsel becerileri, Azure Bilişsel Arama işlem hattındaki ham içeriğe semantik ve yapı ekler.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 061d969269eb526b8f02f14de58e2da20c459a38
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265484"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792094"
 ---
-# <a name="predefined-skills-for-content-enrichment-azure-search"></a>İçerik zenginleştirme (Azure Search) için önceden tanımlanmış yetenekler
+# <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>İçerik zenginleştirme (Azure Bilişsel Arama) için yerleşik bilişsel yetenekler
 
-Bu makalede, Azure Search ile sunulan bilişsel yetenekler hakkında bilgi edineceksiniz. Bilişsel *beceri* , içeriği bir şekilde dönüştüren bir işlemdir. Genellikle, veri veya devlet yapısını çıkaran ve bu nedenle giriş verilerini anlamamızı genişlettiğini sağlayan bir bileşendir. Neredeyse her zaman çıktı metin tabanlıdır. *Beceri* , enzenginleştirme işlem hattını tanımlayan yeteneklerin koleksiyonudur. 
+Bu makalede, Azure Bilişsel Arama ile sunulan bilişsel yetenekler hakkında bilgi edineceksiniz. Bilişsel *beceri* , içeriği bir şekilde dönüştüren bir işlemdir. Genellikle, veri veya devlet yapısını çıkaran ve bu nedenle giriş verilerini anlamamızı genişlettiğini sağlayan bir bileşendir. Neredeyse her zaman çıktı metin tabanlıdır. *Beceri* , enzenginleştirme işlem hattını tanımlayan yeteneklerin koleksiyonudur. 
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [Azure Search fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
 
-## <a name="predefined-skills"></a>Önceden tanımlanmış beceriler
+## <a name="built-in-skills"></a>Yerleşik yetenekler
 
 Birçok beceri, tüketildikleri veya ürettikleri şekilde esnektir. Genellikle, çoğu beceri önceden eğitilen modelleri temel alır. Bu, modeli kendi eğitim verilerinizi kullanarak eğitemeyeceğiniz anlamına gelir. Aşağıdaki tabloda Microsoft tarafından sunulan yetenekler numaralandırılır ve açıklanmaktadır. 
 
@@ -42,13 +42,13 @@ Birçok beceri, tüketildikleri veya ürettikleri şekilde esnektir. Genellikle,
 | [Microsoft. yetenekler. Vision. Ocrbeceri](cognitive-search-skill-ocr.md) | Optik karakter tanıma. |
 | [Microsoft. yetenekler. util. Conditionalbeceri](cognitive-search-skill-conditional.md) | Filtrelemeye, varsayılan bir değere atamaya ve verileri bir koşula göre birleştirmeye izin verir.|
 | [Microsoft. yetenekler. util. Shaperbeceri](cognitive-search-skill-shaper.md) | Çıktıyı bir karmaşık türe eşler (bir tam ad, çok satırlı bir adres veya soyadı ve bir kişisel tanımlayıcı birleşimi için kullanılabilen çok parçalı veri türü). |
-| [Microsoft. yetenekler. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Özel bir Web API 'sine HTTP çağrısı yaparak bilişsel arama işlem hattının genişletilebilirliğini sağlar |
+| [Microsoft. yetenekler. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Özel bir Web API 'sine HTTP çağrısı yaparak bir AI zenginleştirme işlem hattının genişletilebilirliğini sağlar |
 
 
-[Özel bir yetenek](cognitive-search-custom-skill-web-api.md)oluşturma hakkında yönergeler için bkz. [özel bir arabirim tanımlama](cognitive-search-custom-skill-interface.md) ve [örnek: Bilişsel arama](cognitive-search-create-custom-skill-example.md)için özel bir yetenek oluşturma.
+[Özel bir yetenek](cognitive-search-custom-skill-web-api.md)oluşturma hakkında yönergeler için bkz. [özel bir arabirim tanımlama](cognitive-search-custom-skill-interface.md) ve [örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Özel yetenekler arabirim tanımı](cognitive-search-custom-skill-interface.md)
-+ [Öğretici: Bilişsel arama ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)
++ [Öğretici: AI ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)

@@ -1,24 +1,23 @@
 ---
-title: Özel bilişsel arama yeteneği-Azure Search
-description: Web API 'Lerine çağrı yaparak bilişsel arama becerileri 'in yeteneklerini genişletme
-services: search
+title: Bir zenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
+titleSuffix: Azure Cognitive Search
+description: Web API 'Lerine çağırarak Azure Bilişsel Arama becerileri 'in yeteneklerini genişletin. Özel kodunuzu bütünleştirmek için özel Web API 'SI yeteneklerinizi kullanın.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a148f974671e0d909591cbf24a433384a7570842
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693301"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784900"
 ---
-# <a name="custom-web-api-skill"></a>Özel Web API 'SI yeteneği
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
 
-**Özel Web API 'si** yeteneği, özel işlemler sağlayan BIR Web API uç noktasına çağrı yaparak bilişsel aramayı genişletmenizi sağlar. Yerleşik becerilerle benzer şekilde, **özel Web API 'si** becerilerinin giriş ve çıkışları vardır. Girişlere bağlı olarak, Web API 'niz, Dizin Oluşturucu çalıştırıldığında bir JSON yükü alır ve başarılı durum kodu ile birlikte bir JSON yükünün yanıt olarak çıkışını verir. Yanıtın özel becerinize göre belirtilen çıkışların olması beklenir. Diğer herhangi bir yanıt bir hata olarak değerlendirilir ve hiçbir zenginleştirilmez.
+**Özel Web API 'si** yeteneği, özel işlemler sağlayan BIR Web API uç noktasına çağrı yaparak AI zenginleştirme kapsamını genişletmenizi sağlar. Yerleşik becerilerle benzer şekilde, **özel Web API 'si** becerilerinin giriş ve çıkışları vardır. Girişlere bağlı olarak, Web API 'niz, Dizin Oluşturucu çalıştırıldığında bir JSON yükü alır ve başarılı durum kodu ile birlikte bir JSON yükünün yanıt olarak çıkışını verir. Yanıtın özel becerinize göre belirtilen çıkışların olması beklenir. Diğer herhangi bir yanıt bir hata olarak değerlendirilir ve hiçbir zenginleştirilmez.
 
 JSON yükleri yapısı, bu belgede daha fazla açıklanacaktır.
 
@@ -204,5 +203,5 @@ Web API 'sinin kullanılamadığı veya bir HTTP hatası döndürdüğü durumla
 
 + [Güç becerileri: özel yeteneklerin bir deposu](https://aka.ms/powerskills)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Bilişsel arama 'ya özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
-+ [Örnek: bilişsel arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
++ [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
++ [Örnek: AI zenginleştirme için özel bir yetenek oluşturma (bilişsel-arama-oluşturma-özel-beceri-example.md)

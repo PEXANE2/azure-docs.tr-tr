@@ -1,41 +1,41 @@
 ---
-title: En son Azure Search Service REST API sürümüne yükseltin Azure Search
-description: API sürümlerindeki farklılıkları gözden geçirin ve mevcut kodu en yeni Azure Search Service REST API sürümüne geçirmek için hangi eylemlerin gerekli olduğunu öğrenin.
-author: brjohnstmsft
+title: En son Azure Bilişsel Arama hizmeti REST API sürümüne yükseltin
+titleSuffix: Azure Cognitive Search
+description: API sürümlerindeki farklılıkları gözden geçirin ve mevcut kodu en yeni Azure Bilişsel Arama hizmeti REST API sürümüne geçirmek için hangi eylemlerin gerekli olduğunu öğrenin.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.openlocfilehash: 6c1f7fdb1f349c9e31ba63d79a9b9e26ea9f09da
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9bffb41cce030b7a63e600e5ffaf65130261b4c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182393"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791167"
 ---
-# <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>En son Azure Search Service REST API sürümüne yükseltin
-[Azure Search hizmeti REST API](https://docs.microsoft.com/rest/api/searchservice/)önceki bir sürümünü kullanıyorsanız, bu makale uygulamanızı en yeni genel kullanıma sahıp 2019-05-06 API sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
+# <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>En son Azure Bilişsel Arama hizmeti REST API sürümüne yükseltin
+
+[Arama REST API](https://docs.microsoft.com/rest/api/searchservice/)önceki bir sürümünü kullanıyorsanız, bu makale, uygulamanızı en yeni genel kullanıma sahıp 2019-05-06 API sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
 
 REST API sürüm 2019-05-06, önceki sürümlerden bazı değişiklikler içeriyor. Bunlar çoğunlukla geriye dönük olarak uyumludur; Bu nedenle kodunuzun değiştirilmesi, daha önce kullandığınız sürüme bağlı olarak yalnızca en az çaba gerektirir. [Yükseltme adımları](#UpgradeSteps) , yeni özellikleri kullanmak için gereken kod değişikliklerini özetler.
 
 > [!NOTE]
-> Bir Azure Search hizmet örneği, daha önceki bir sürümü de dahil olmak üzere bir dizi REST API sürümünü destekler. Bu API sürümlerini kullanmaya devam edebilirsiniz, ancak yeni yeteneklere erişebilmek için kodunuzun en yeni sürüme geçirilmesini öneririz.
+> Azure Bilişsel Arama hizmet örneği, daha önceki bir sürümü de dahil olmak üzere bir dizi REST API sürümünü destekler. Bu API sürümlerini kullanmaya devam edebilirsiniz, ancak yeni yeteneklere erişebilmek için kodunuzun en yeni sürüme geçirilmesini öneririz.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2019-05-06"></a>Sürüm 2019-05-06 ' deki yenilikler
-Sürüm 2019-05-06, Azure Search hizmeti REST API en yeni genel kullanıma sunulan sürümüdür. Bu API sürümünde genel olarak kullanılabilir duruma geçti olan özellikler şunlardır:
+Sürüm 2019-05-06 REST API en yeni genel kullanıma hazır sürümüdür. Bu API sürümünde genel olarak kullanılabilir duruma geçti olan özellikler şunlardır:
 
 * [AutoComplete](index-add-suggesters.md) , kısmen belirtilen bir terim girişini tamamlayan bir typeahead özelliğidir.
 
-* [Karmaşık türler](search-howto-complex-data-types.md) , Azure Search dizindeki yapılandırılmış nesne verileri için yerel destek sağlar.
+* [Karmaşık türler](search-howto-complex-data-types.md) , arama dizininde yapılandırılmış nesne verileri için yerel destek sağlar.
 
 * Azure Blob dizinleme 'nin bir parçası olan [Jsonlines ayrıştırma modları](search-howto-index-json-blobs.md), bir yeni satır tarafından ayrılan JSON varlığı başına bir arama belgesi oluşturur.
 
-* Bilişsel [arama](cognitive-search-concept-intro.md) , bilişsel HIZMETLER 'in AI zenginleştirme altyapılarından yararlanan Dizin oluşturmayı sağlar.
+* [AI zenginleştirme](cognitive-search-concept-intro.md) , bilişsel HIZMETLER 'in AI zenginleştirme altyapılarından yararlanan dizin oluşturma olanağı sunar.
 
 Birçok önizleme özelliği yayını, genel olarak kullanılabilen güncelleştirmeyle birlikte bulunur. Yeni Önizleme özellikleri listesini gözden geçirmek için bkz. [arama REST API-sürüm 2019-05-06-önizleme](search-api-preview.md).
 
@@ -45,15 +45,15 @@ Aşağıdaki işlevleri içeren mevcut kod, api-Version = 2019-05-06 ' de kesili
 
 ### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Azure Cosmos DB-DataSource için Dizin Oluşturucu artık "tür": "cosmosdb"
 
-[Cosmos DB bir Dizin Oluşturucu](search-howto-index-cosmosdb.md )kullanıyorsanız, öğesini olarak `"type": "documentdb"` `"type": "cosmosdb"`değiştirmeniz gerekir.
+[Cosmos DB Dizin Oluşturucu](search-howto-index-cosmosdb.md )kullanıyorsanız, `"type": "documentdb"` `"type": "cosmosdb"`olarak değiştirmeniz gerekir.
 
 ### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Dizin Oluşturucu yürütme sonucu hatalarının durumu artık yok
 
-Dizin oluşturucunun yürütülmesi için hata yapısının daha önce bir `status` öğesi vardı. Bu öğe yararlı bilgiler sağlamadığı için kaldırıldı.
+Dizin Oluşturucu yürütmesinin hata yapısının daha önce bir `status` öğesi vardı. Bu öğe yararlı bilgiler sağlamadığı için kaldırıldı.
 
 ### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Dizin Oluşturucu veri kaynağı API 'SI artık bağlantı dizelerini döndürmüyor
 
-API sürümlerinden 2019-05-06 ve 2019-05-06 ' den sonra, veri kaynağı API 'SI artık herhangi bir REST işleminin yanıtında bağlantı dizelerini döndürmez. Önceki API sürümlerinde, POST kullanılarak oluşturulan veri kaynakları için Azure Search, ardından bağlantı dizesinin düz metin olarak yer aldığı OData yanıtı tarafından **201** döndürülür.
+API sürümlerinden 2019-05-06 ve 2019-05-06 ' den sonra, veri kaynağı API 'SI artık herhangi bir REST işleminin yanıtında bağlantı dizelerini döndürmez. Önceki API sürümlerinde, POST kullanılarak oluşturulan veri kaynakları için Azure Bilişsel Arama, bağlantı dizesinin düz metin olarak yer aldığı OData yanıtı ile **201** döndürdü.
 
 ### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Adlandırılmış varlık tanıma bilişsel yeteneği artık kullanımdan kaldırılmıştır
 
@@ -66,7 +66,7 @@ Kodunuzda [ad varlık tanıma özelliğini](cognitive-search-skill-named-entity-
 
 * API yanıtında tanınmayan özellikler döndürüldüğünde kodunuz başarısız olur. Varsayılan olarak uygulamanızın anlayamadığını özellikleri yoksaymalıdır.
 
-* Kodunuzun API istekleri devam ettirir ve yeni API sürümüne yeniden göndermeye çalışır. Örneğin bu durum, uygulamanız arama API 'sinden döndürülen devamlılık belirteçlerini devam ettirir (daha fazla bilgi için [Arama API 'si başvurusunda](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)bölümüne `@search.nextPageParameters` bakın).
+* Kodunuzun API istekleri devam ettirir ve yeni API sürümüne yeniden göndermeye çalışır. Örneğin bu durum, uygulamanız arama API 'sinden döndürülen devamlılık belirteçlerini devam ettirir (daha fazla bilgi için [Arama API başvurusunda](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)`@search.nextPageParameters` arayın).
 
 Bu durumlardan biri sizin için geçerlidir, kodunuzu uygun şekilde değiştirmeniz gerekebilir. Aksi takdirde, sürüm 2019-05-06 ' in [yeni özelliklerini](#WhatsNew) kullanmaya başlamak istemediğiniz takdirde hiçbir değişiklik yapılması gerekmez.
 
@@ -90,7 +90,7 @@ Kodunuz eski önizleme API sürümleri 2017-11-11-Önizleme veya 2016-09-01-öni
 
 + Her belge için karmaşık koleksiyonların öğe sayısında API-sürüm 2019-05-06 ' de yeni bir sınır vardır. Önizleme API-sürümlerini kullanarak bu sınırları aşan belgelerle dizinler oluşturduysanız, API sürümü 2019-05-06 kullanarak bu verileri yeniden dizinle ilgili herhangi bir girişim başarısız olur. Bu sizin için geçerliyse, verilerinizin dizinini yeniden oluşturmadan önce belge başına karmaşık koleksiyon öğelerinin sayısını azaltmanız gerekir.
 
-Daha fazla bilgi için bkz. [Azure Search Için hizmet limitleri](search-limits-quotas-capacity.md).
+Daha fazla bilgi için bkz. [Azure bilişsel arama Için hizmet limitleri](search-limits-quotas-capacity.md).
 
 ### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Eski bir karmaşık tür yapısını yükseltme
 
@@ -144,7 +144,7 @@ API sürüm 2017-11-11-önizleme kullanarak aşağıdaki adımlarla "düz" dizin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Search hizmeti REST API başvuru belgelerini inceleyin. Sorunlarla karşılaşırsanız [StackOverflow](https://stackoverflow.com/) hakkında yardım isteyin veya [desteğe başvurun](https://azure.microsoft.com/support/community/?product=search).
+Arama REST API başvuru belgelerini gözden geçirin. Sorunlarla karşılaşırsanız [StackOverflow](https://stackoverflow.com/) hakkında yardım isteyin veya [desteğe başvurun](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
 > [Arama hizmeti REST API başvurusu](https://docs.microsoft.com/rest/api/searchservice/)

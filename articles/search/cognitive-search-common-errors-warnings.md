@@ -1,24 +1,23 @@
 ---
-title: Sık karşılaşılan hatalar ve uyarılar-Azure Search
-description: Bu makalede, Azure Search ' de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
-services: search
-manager: heidist
+title: Sık karşılaşılan hatalar ve uyarılar
+titleSuffix: Azure Cognitive Search
+description: Bu makalede, Azure Bilişsel Arama 'de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
+manager: nitinme
 author: amotley
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 09/18/2019
 ms.author: abmotley
-ms.openlocfilehash: a8d5fc30299dbb16373b1cfbbd89563bad471f39
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553620"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787987"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure Search içindeki AI zenginleştirme işlem hattının ortak hataları ve uyarıları
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme işlem hattının genel hataları ve uyarıları
 
-Bu makalede, Azure Search ' de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
+Bu makalede, Azure Bilişsel Arama 'de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
 
 ## <a name="errors"></a>Hatalar
 Hata sayısı [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)aştığında dizin oluşturma durduruluyor. 
@@ -210,3 +209,14 @@ Tüm metinlerin çözümlendiğinden emin olmak istiyorsanız, [bölünmüş yet
 
 ### <a name="web-api-skill-response-contains-warnings"></a>Web API 'SI yetenek yanıtı uyarıları içeriyor
 Dizin Oluşturucu beceri içinde bir yetenek çalıştırabiliyor, ancak Web API isteğinden alınan yanıt yürütme sırasında uyarılar olduğunu belirtti. Verilerinizin nasıl etkilendiğini ve eylem gerekip gerekmediğini anlamak için uyarıları gözden geçirin.
+
+### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>Geçerli dizin oluşturucu yapılandırması artımlı ilerlemeyi desteklemiyor
+Bu uyarı yalnızca Cosmos DB veri kaynakları için oluşur.
+
+Dizin oluşturma sırasında artımlı ilerleme durumu, Dizin Oluşturucu yürütmesi geçici hatalara veya yürütme süresi sınırına göre kesintiye uğrarsa, dizin oluşturucunun, sıfırdan tüm koleksiyonu yeniden dizinlemesini sağlamak yerine, bir sonraki çalıştırıldığında kaldığınız yerden seçim yapmasına olanak sağlar. Büyük koleksiyonlar dizinlenirken bu özellikle önemlidir.
+
+Tamamlanmamış bir dizin oluşturma işinin sürdürülebilmesi, `_ts` sütununa göre sıralanmış belgeler elde edilebilir. Dizin Oluşturucu, sonraki hangi belgenin çalıştırılacağını belirleyen zaman damgasını kullanır. `_ts` sütunu eksikse veya Dizin Oluşturucu özel bir sorgunun bu tarafından sıralı olup olmadığını belirleyeemdi, Dizin Oluşturucu başlangıcında başlar ve bu uyarıyı görürsünüz.
+
+Bu davranışı geçersiz kılmak, artımlı ilerleme durumunu etkinleştirmek ve `assumeOrderByHighWatermarkColumn` yapılandırma özelliği kullanılarak bu uyarının gizlenmesi mümkündür.
+
+[Artımlı ilerleme ve özel sorgu Cosmos DB hakkında daha fazla bilgi.](https://go.microsoft.com/fwlink/?linkid=2099593)

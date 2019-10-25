@@ -1,5 +1,6 @@
 ---
-title: Azure AD uygulaması onay deneyimlerini anlama | Microsoft Docs
+title: Azure AD uygulama onayı deneyimlerini anlama
+titleSuffix: Microsoft identity platform
 description: Azure AD 'de uygulamaları yönetirken ve geliştirirken nasıl kullanabileceğinizi öğrenmek için Azure AD onay deneyimleri hakkında daha fazla bilgi edinin
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 012a79969f2fa72589ba6b70aa5398b6f4e7e811
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4356a0a26aa586f99766cc5166c17d301a9a194d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835256"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803910"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD uygulama onayı deneyimlerini anlama
 
@@ -35,7 +36,7 @@ Onay, bir kullanıcının adına korumalı kaynaklara erişmesi için yetkilendi
 İzin verme için gerçek kullanıcı deneyimi, kullanıcının kiracısında ayarlanan ilkelere, kullanıcının yetki kapsamına (veya role) ve istemci uygulaması tarafından istenen [izin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) türüne göre farklılık gösterir. Bu, uygulama geliştiricilerinin ve kiracı yöneticilerinin onay deneyimi üzerinde bir denetim sahibi olduğu anlamına gelir. Yöneticiler, kiracısındaki onay deneyimini denetlemek için bir kiracıya veya uygulamaya ilke ayarlama ve devre dışı bırakma esnekliğine sahiptir. Uygulama geliştiricileri ne tür izinlerin istenmekte olduğunu ve kullanıcılara Kullanıcı onay akışı veya yönetici onay akışı aracılığıyla rehberlik etmek istiyorlar.
 
 - **Kullanıcı onay akışı** , bir uygulama geliştiricisi kullanıcıları yalnızca geçerli kullanıcı için izin kaydetme amacını taşıyan yetkilendirme uç noktasına yönlendirirse.
-- **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için uygulama geliştiricilerinin, uygulama bildirimindeki `RequiredResourceAccess` özelliğindeki tüm izinleri listebilmeleri gerekir. Daha fazla bilgi için bkz. [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Yönetici onay akışı** , bir uygulama geliştiricisi kullanıcıları, kiracının tamamına izin kaydetme amacını taşıyan yönetici onay uç noktasına yönlendirirse. Yönetici onay akışının düzgün çalıştığından emin olmak için, uygulama geliştiricilerinin uygulama bildiriminde `RequiredResourceAccess` özelliğindeki tüm izinleri listebilmeleri gerekir. Daha fazla bilgi için bkz. [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Onay isteminin yapı taşları
 
@@ -47,7 +48,7 @@ Aşağıdaki diyagram ve tablo, onay isteminin yapı taşları hakkında bilgi s
 
 | # | Bileşen | Amaç |
 | ----- | ----- | ----- |
-| 1\. | Kullanıcı tanımlayıcısı | Bu tanımlayıcı, istemci uygulamanın adına korumalı kaynaklara erişmek istediği kullanıcıyı temsil eder. |
+| 1 | Kullanıcı tanımlayıcısı | Bu tanımlayıcı, istemci uygulamanın adına korumalı kaynaklara erişmek istediği kullanıcıyı temsil eder. |
 | 2 | Başlık | Başlık, kullanıcıların kullanıcı veya yönetici onay akışından ilerleyecekseniz değişir. Kullanıcı izin akışı ' nda, yönetici izin akışında başlık "istenen Izinler" olacak şekilde başlıkta "kuruluşunuz için kabul et" adlı ek bir satır olacaktır. |
 | 3 | Uygulama logosu | Bu görüntü, kullanıcıların bu uygulamanın erişmeye yönelik uygulama olup olmadığı konusunda görsel bir ipucu olmasını sağlar. Bu görüntü, uygulama geliştiricileri tarafından sağlanır ve bu görüntünün sahipliği doğrulanmaz. |
 | 4 | Uygulama adı | Bu değer kullanıcılara hangi uygulamanın verilerine erişim istediğini bilgilendirmelidir. Bu ad, geliştiriciler tarafından sağlanır ve bu uygulama adının sahipliği doğrulanmaz. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 2364218a9ccbde1cbfc276e3354cb93e42e5ce0b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: c6135f3ab90a2002c3cf0c8d26211d66d0c637e8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553744"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802414"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>VM'ler için Azure İzleyici (Önizleme) nedir?
 
@@ -33,7 +33,8 @@ VM'ler için Azure İzleyici, Azure sanal makinelerinizi (VM) ve sanal makine ö
 - Eşleme
 
 >[!NOTE]
->Kısa süre önce, genel önizleme müşterilerimizden aldığımız geri bildirimlere göre sistem durumu özelliğinde değişiklikler [yaptığımız için](https://azure.microsoft.com/updates/upcoming-changes-for-azure-monitor-for-vms-as-we-prepare-for-ga) değişiklikler yapıyoruz. Yaptığımız değişikliklerin sayısı verildiğinde, yeni müşterilerin sistem durumu özelliğini sunmayı durduracağız. Mevcut müşteriler sistem durumu özelliğini kullanmaya devam edebilir. Daha fazla ayrıntı için lütfen [genel kullanım hakkında SSS bölümüne](vminsights-ga-release-faq.md)bakın.  
+>Kısa süre önce, genel önizleme müşterilerimizden aldığımız geri bildirimlere göre sistem durumu özelliğinde değişiklikler [yaptığımız için](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) değişiklikler yapıyoruz. Yaptığımız değişikliklerin sayısı verildiğinde, yeni müşterilerin sistem durumu özelliğini sunmayı durduracağız. Mevcut müşteriler sistem durumu özelliğini kullanmaya devam edebilir. Daha fazla ayrıntı için lütfen [genel kullanım hakkında SSS bölümüne](vminsights-ga-release-faq.md)bakın.  
 
 Azure Izleyici günlükleri ile tümleştirme, güçlü toplama ve filtreleme sağlar ve zaman içinde veri eğilimlerini analiz edebilir. Bu kapsamlı iş yükü izleme, Azure Izleyici veya tek başına Hizmet Eşlemesi ile elde alınamaz.  
 

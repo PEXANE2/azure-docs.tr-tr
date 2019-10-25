@@ -1,61 +1,74 @@
 ---
-title: Azure Data Factory eşleme veri akışlarında sütun desenleri
-description: Veri akışlarında eşleme Azure Data Factory sütun desenleri kullanarak Genelleştirilmiş veri dönüştürme desenleri oluşturma
+title: Azure Data Factory eşleme veri akışındaki sütun desenleri
+description: Azure Data Factory eşleme veri akışlarında sütun desenleri kullanarak Genelleştirilmiş veri dönüştürme desenleri oluşturma
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/21/2019
+ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388014"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789910"
 ---
-# <a name="mapping-data-flows-column-patterns"></a>Veri akışları eşleme sütun desenleri
+# <a name="using-column-patterns-in-mapping-data-flow"></a>Eşleme veri akışında sütun düzenlerini kullanma
 
+Birçok eşleme veri akışı dönüştürmesi, sabit kodlanmış sütun adları yerine, şablon sütunlarına göre bir düzen ile başvuru yapmanıza olanak sağlar. Bu eşleştirme *sütun desenleri*olarak bilinir. Sütunları ad, veri türü, akış veya konuma göre eşleştirmek için, tam alan adları gerektirmek yerine desenler tanımlayabilirsiniz. Sütun desenlerinin yararlı olduğu iki senaryo vardır:
 
+* Gelen kaynak alanları, metin dosyalarındaki veya NoSQL veritabanlarındaki sütunları değiştirme durumu gibi genellikle değiştirilirse. Bu senaryo, [şema dradı](concepts-data-flow-schema-drift.md)olarak bilinir.
+* Büyük bir sütun grubu üzerinde ortak bir işlem yapmak istiyorsanız. Örneğin, sütun adında ' Total ' olan her sütunu Double olarak atama.
 
-Birçok Azure Data Factory veri akışı dönüştürmesi "sütun desenleri" fikrini destekler, böylece sabit kodlanmış sütun adları yerine desenleri temel alan şablon sütunları oluşturabilirsiniz. Bu özelliği Ifade Oluşturucu içinde, tam, belirli alan adları istemek yerine dönüştürme için sütunlarla eşleşecek desenler tanımlamak üzere kullanabilirsiniz. Desenler, özellikle metin dosyalarındaki veya NoSQL veritabanlarındaki sütunları değiştirmek durumunda, gelen kaynak alanları sık değiştirilirse yararlıdır. Bu durum bazen "Schema drift" olarak adlandırılır.
+Sütun desenleri Şu anda türetilmiş sütunda, toplama, seçme ve havuz dönüşümlerinde kullanılabilir.
 
-Bu "esnek şema" işleme Şu anda türetilmiş sütunda ve toplam dönüşümlerinde, Select ve Sink dönüştürmelerinin yanı sıra "kural tabanlı eşleme" olarak bulunur.
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>Türetilmiş sütunda ve toplamada sütun desenleri
+
+Bir toplama dönüşümünün türetilmiş bir sütuna veya toplamalar sekmesine bir sütun stili eklemek için, varolan bir sütunun sağ tarafındaki artı simgesine tıklayın. **Sütun Ekle deseninin**seçimini yapın. 
+
+![sütun desenleri](media/data-flow/columnpattern.png "Sütun Desenleri")
+
+Eşleştirme koşulunu girmek için [ifade oluşturucusunu](concepts-data-flow-expression-builder.md) kullanın. Sütunun `name`, `type`, `stream`ve `position` göre sütunlarla eşleşen bir Boole ifadesi oluşturun. Bu model, koşulun true döndüğü düzeltebilecekler veya tanımlanmış tüm sütunları etkiler.
+
+Eşleştirme koşulunun altındaki iki ifade kutusu, etkilenen sütunların yeni adlarını ve değerlerini belirtir. Eşleşen alanın varolan değerine başvurmak için `$$` kullanın. Sol ifade kutusu, adı tanımlar ve sağ ifade kutusu değeri tanımlar.
 
 ![sütun desenleri](media/data-flow/columnpattern2.png "Sütun Desenleri")
 
-## <a name="column-patterns"></a>Sütun desenleri
-Sütun desenleri, hem şema DRFT senaryolarını hem de genel senaryoları işlemek için yararlıdır. Her sütun adını tam olarak bildiğiniz koşullarda iyidir. Sütun adı ve sütun veri türünde bir eşleme deseni oluşturabilir ve bu işlemi, veri akışındaki `name` @ no__t-1 @ no__t-2 desenleriyle eşleşen herhangi bir alana karşı gerçekleştirecek bir ifade oluşturabilirsiniz.
+Yukarıdaki sütun deseninin Double türü her sütunla eşleşiyor ve eşleşme başına bir toplama sütunu oluşturuyor. Yeni sütunun adı, eşleşen sütun adının ' _Total ' ile bitiştirildiği addır. Yeni sütunun değeri, var olan çift değerin yuvarlanmış, toplanmış toplamıdır.
 
-Desenleri kabul eden bir dönüşüme ifade eklerken, "sütun düzeni Ekle" yi seçin. Sütun desenleri, şema DRFT sütun eşleştirme desenlerine izin verir.
+Eşleştirme koşullarınızın doğru olduğunu doğrulamak için **İnceleme** sekmesinde tanımlı sütunların çıktı şemasını doğrulayabilir veya **veri önizleme** sekmesindeki verilerin bir anlık görüntüsünü alabilirsiniz. 
 
-Şablon sütun desenleri oluştururken, giriş veri akışından eşleşen her bir alana bir başvuruyu göstermek için ifadede `$$` kullanın.
+![sütun desenleri](media/data-flow/columnpattern3.png "Sütun Desenleri")
 
-Ifade Oluşturucu Regex işlevlerinden birini kullanmayı seçerseniz, daha sonra $1, $2, $3... seçeneğini kullanabilirsiniz. Regex deyiminizden eşleşen alt desenlere başvurmak için.
+## <a name="rule-based-mapping-in-select-and-sink"></a>Select ve Sink içinde kural tabanlı eşleme
 
-Sütun deseninin bir örneği, bir dizi gelen alanları içeren TOPLAMı kullanmaktır. Toplam SUM hesaplamaları toplam dönüşümde bulunur. Daha sonra, "integer" ile eşleşen alan türlerinin her biriyle TOPLAMı kullanabilir ve sonra deyiminizdeki her eşleştirmeye başvurmak için $ $ kullanabilirsiniz.
+Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, sabit eşleme veya kural tabanlı eşlemeler ekleyebilirsiniz. Verilerinizin şemasını biliyorsanız ve kaynak veri kümesinden belirli sütunların belirli statik adları her zaman eşleşecek şekilde beklediğinizi, sabit eşleme kullanın. Esnek şemalar ile çalışıyorsanız, sütun `name`, `type`, `stream`ve `position` göre bir kalıp eşleşmesi oluşturmak için kural tabanlı eşleme kullanın. Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. 
 
-## <a name="match-columns"></a>Sütunları Eşleştir
-![sütun stili türleri](media/data-flow/pattern2.png "Model türleri")
-
-Sütunları temel alan desenler oluşturmak için, sütun adı, tür, akış veya konum üzerinde eşleştirebilir ve ifade işlevleri ve normal ifadelerle bunların herhangi bir birleşimini kullanabilirsiniz.
-
-![sütun konumu](media/data-flow/position.png "Sütun konumu")
-
-## <a name="rule-based-mapping"></a>Kural tabanlı eşleme
-Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, "sabit eşleme" veya "kural tabanlı eşleme" seçeneğini belirleyebilirsiniz. Verilerinizin şemasını bildiğiniz ve kaynak veri kümesinden her zaman belirli statik adlarıyla eşleşen belirli sütunlar beklendiğinde, sabit eşlemeyi kullanabilirsiniz. Ancak esnek şemalar ile çalışırken kural tabanlı eşleme kullanın. Yukarıda açıklanan kuralları kullanarak bir model eşleşmesi derleyebilirsiniz.
+Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
 
 ![kural tabanlı eşleme](media/data-flow/rule2.png "Kural tabanlı eşleme")
 
-Deyim oluşturucuyu kullanarak kurallarınızı oluşturun. Deyimleriniz sütunlar (true) veya dışlama sütunları (false) için bir Boole değeri döndürür.
+Sol ifade kutusunda, Boolean eşleşme koşulunuz girin. Sağ ifade kutusunda, eşleşen sütunun ne eşleştirileceği belirtin. Eşleşen alanın mevcut adına başvurmak için `$$` kullanın.
 
-## <a name="pattern-matching-special-columns"></a>Özel sütunlar ile eşleşen desenler
+Aşağı köşeli çift ayraç simgesine tıklarsanız, bir Regex eşleme koşulu belirtebilirsiniz.
 
-* `$$`, hata ayıklama modundaki tasarım zamanında ve çalışma zamanında yürütme sonrasında her bir eşleşmenin adına çevrilecek
+Hangi tanımlanmış sütunların eşleştiğini ve ne eşlendiğine bakmak için kural tabanlı eşlemenin yanındaki göz gözlük simgesine tıklayın.
+
+![kural tabanlı eşleme](media/data-flow/rule1.png "Kural tabanlı eşleme")
+
+Yukarıdaki örnekte, iki kural tabanlı eşleme oluşturulur. İlki, ' Movie ' adlı tüm sütunları alır ve bunları mevcut değerleriyle eşler. İkinci kural, ' Movie ' ile başlayan ve bunları ' Movieıd ' sütunuyla eşleyen tüm sütunları eşleştirmek için Regex kullanır.
+
+Kuralınız birden çok özdeş eşleştirmelerle sonuçlanırsa, **yinelenen girişleri atlamayı** etkinleştirin veya **yinelenen çıkışları atlayıp** yinelenenleri önleyin.
+
+## <a name="pattern-matching-expression-values"></a>Model eşleştirme ifadesi değerleri.
+
+* `$$` çalışma zamanında her eşleşmenin adına veya değerine çevirir
 * `name`, her gelen sütunun adını temsil eder
 * `type` her gelen sütunun veri türünü temsil eder
-* `stream`, akışdaki her bir Stream veya dönüşümle ilişkilendirilen adı temsil eder
+* `stream` her bir akışla veya akışdaki dönüşümle ilişkilendirilen adı temsil eder
 * `position`, veri akışındaki sütunların sıralı konumudur
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri dönüştürmeleri için ADF eşleme veri akışı [ifade dili](https://aka.ms/dataflowexpressions) hakkında daha fazla bilgi edinin
-* [Havuz dönüşümünde](data-flow-sink.md) sütun düzenlerini kullanın ve kural tabanlı eşleme Ile [dönüştürme seçeneğini belirleyin](data-flow-select.md)
+* Veri dönüştürmeleri için eşleme veri akışı [ifade dili](data-flow-expression-functions.md) hakkında daha fazla bilgi edinin
+* [Havuz dönüşümünde](data-flow-sink.md) sütun düzenlerini kullanın ve kural tabanlı eşleme ile [dönüştürme seçeneğini belirleyin](data-flow-select.md)

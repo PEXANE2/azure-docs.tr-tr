@@ -1,5 +1,6 @@
 ---
 title: Uygulamaların nasıl ve neden eklendiği Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Uygulamanın Azure AD 'ye eklenmesi ne anlama geliyor?
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835379"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803442"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
@@ -34,7 +35,7 @@ Azure AD 'de uygulamaların iki gösterimi vardır:
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Uygulama nesneleri nedir ve nereden geliyor?
 Uygulama [kayıt](https://aka.ms/appregistrations) deneyimi aracılığıyla Azure Portal [uygulama nesnelerini](app-objects-and-service-principals.md#application-object) yönetebilirsiniz. Uygulama nesneleri, uygulamayı Azure AD 'ye anlatmaktadır ve uygulamanın tanımı olarak düşünülebilir ve bu da hizmetin, ayarlarına bağlı olarak uygulamaya belirteç verme konusunda bilgi sahibi olabilir. Uygulama nesnesi, diğer dizinlerde hizmet sorumlularını destekleyen çok kiracılı bir uygulama olsa bile, yalnızca kendi giriş dizininde bulunur. Uygulama nesnesi aşağıdakilerden herhangi birini (ve burada açıklanmayan ek bilgileri) içerebilir:
 * Ad, logo ve Yayımcı
-* Yeniden Yönlendirme URI'leri
+* Yeniden yönlendirme URI 'Leri
 * Gizlilikler (uygulamanın kimliğini doğrulamak için kullanılan simetrik ve/veya asimetrik anahtarlar)
 * API bağımlılıkları (OAuth)
 * Yayımlanan API 'Ler/kaynaklar/kapsamlar (OAuth)
@@ -104,7 +105,7 @@ Kendinize eklediğiniz uygulamalar (diyagramda **uygulama (sizinkiler)** olarak 
   * Talep dönüştürme kuralları
   * Öznitelik eşlemeleri (Kullanıcı hazırlama)
 * Hizmet sorumlusu ve uygulama nesneleri hakkında daha ayrıntılı bilgi için bkz. Azure AD Graph REST API başvuru belgeleri:
-  * [Uygulama](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Uygulamanızı](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
   * [Hizmet sorumlusu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Uygulamalar neden Azure AD ile tümleştirçalışıyor?
@@ -137,7 +138,7 @@ Hala dizininizdeki kullanıcıların uygulama kaydetmesini ve yönetici onayı o
 
 * Kullanıcıların kendi adına uygulamalara yarışmasını engellemek için:
   1. Azure portal, kurumsal uygulamalar altındaki [Kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) bölümüne gidin.
-  2. **Kullanıcıları, adına şirket verilerine erişen uygulamalara izin verebilir** .
+  2. **Kullanıcıları, adına şirket verilerine erişen uygulamalara izin verebilir** **.**
      
      > [!NOTE]
      > Kullanıcı onayını devre dışı bırakmak isterseniz, bir yöneticinin kullanması gereken yeni bir uygulamaya onay verilmesi gerekecektir.

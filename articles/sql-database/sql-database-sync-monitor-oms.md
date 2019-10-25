@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d1461a1bb026d478d51a5f79cc02b34172524db6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566414"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791750"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle SQL Data Sync izleme 
 
@@ -73,7 +73,7 @@ Aşağıdaki şeyleri ayarladığınızdan emin olun:
 
 Azure Otomasyonu 'nda barındırılan bir PowerShell runbook 'u kullanarak SQL Data Sync günlük verilerini çekin ve Azure Izleyici günlüklerine gönderin. Örnek bir betik dahildir. Bir önkoşul olarak, bir Azure Otomasyonu hesabına sahip olmanız gerekir. Ardından bir runbook oluşturmanız ve çalışacak şekilde zamanlamanız gerekir. 
 
-### <a name="create-a-runbook"></a>Runbook oluştur
+### <a name="create-a-runbook"></a>Runbook oluşturma
 
 Runbook oluşturma hakkında daha fazla bilgi için bkz. [Ilk PowerShell runbook 'Um](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell).
 
@@ -83,15 +83,15 @@ Runbook oluşturma hakkında daha fazla bilgi için bkz. [Ilk PowerShell runbook
 
 3.  **Mevcut bir runbook 'U Içeri aktar**' ı seçin.
 
-4.  **Runbook dosyası**altında, verilen `DataSyncLogPowerShellRunbook` dosyayı kullanın. **Runbook türünü** olarak `PowerShell`ayarlayın. Runbook 'a bir ad verin.
+4.  **Runbook dosyası**altında, verilen `DataSyncLogPowerShellRunbook` dosyasını kullanın. **Runbook türünü** `PowerShell`olarak ayarlayın. Runbook 'a bir ad verin.
 
-5.  **Oluştur**’u seçin. Artık bir runbook 'a sahipsiniz.
+5.  **Oluştur**'u seçin. Artık bir runbook 'a sahipsiniz.
 
 6.  Azure Otomasyonu hesabınız altında, paylaşılan kaynaklar ' ın altındaki **değişkenler** sekmesini seçin.
 
 7.  Değişkenler sayfasında **değişken Ekle** ' yi seçin. Runbook 'un son yürütme süresini depolamak için bir değişken oluşturun. Birden çok runbook 'unuz varsa her runbook için bir değişkene ihtiyacınız vardır.
 
-8.  Değişken adını olarak `DataSyncLogLastUpdatedTime` ayarlayın ve türünü DateTime olarak ayarlayın.
+8.  Değişken adını `DataSyncLogLastUpdatedTime` olarak ayarlayın ve türünü DateTime olarak ayarlayın.
 
 9.  Runbook 'u seçin ve sayfanın üst kısmındaki Düzenle düğmesine tıklayın.
 
@@ -123,7 +123,7 @@ Runbook 'u zamanlamak için:
 
 5.  **Yinelemeyi** yineleme olarak ayarlayın ve istediğiniz aralığı ayarlayın. Burada, komut dosyasında ve Azure Izleyici günlüklerinde aynı aralığı kullanın.
 
-6.  **Oluştur**’u seçin.
+6.  **Oluştur**'u seçin.
 
 ### <a name="check-the-automation"></a>Otomasyonu denetleyin
 
@@ -135,9 +135,9 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 1.  Azure portal **günlük araması**' nı seçin.
 
-2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örneğin:
+2.  Seçtiğiniz Aralık dahilinde eşitleme grubuna göre hataları ve uyarıları seçmek için bir sorgu oluşturun. Örnek:
 
-    `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
+    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 
 3.  Sorguyu çalıştırdıktan sonra, **Uyarı**yazan zili seçin.
 
@@ -149,7 +149,7 @@ Azure Izleyici günlüklerini kullanan bir uyarı oluşturmak için aşağıdaki
 
 5.  **Eylemler**altında, **e-posta bildirimini** "Evet" olarak ayarlayın. İstenen e-posta alıcılarını girin.
 
-6.  **Kaydet**’e tıklayın. Belirtilen alıcılar artık hata oluştuğunda e-posta bildirimleri alıyor.
+6.  **Kaydet** düğmesine tıklayın. Belirtilen alıcılar artık hata oluştuğunda e-posta bildirimleri alıyor.
 
 ## <a name="create-an-azure-monitor-view-for-monitoring"></a>Izleme için bir Azure Izleyici görünümü oluşturma
 
@@ -187,7 +187,7 @@ Azure Izleyici görünümünü yapılandırmak için aşağıdaki işlemleri yap
 
 **Azure Otomasyonu:** Kullanımınıza bağlı olarak, Azure Otomasyonu hesabının bir maliyeti olabilir. Ayda ilk 500 dakikalık iş çalıştırma süresi ücretsizdir. Çoğu durumda, bu çözümün ayda 500 dakikadan kısa bir süre kullanması beklenir. Ücretlerden kaçınmak için, runbook 'u iki saat veya daha uzun bir zaman aralığında çalışacak şekilde zamanlayın. Daha fazla bilgi için bkz. [Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
-**Azure Izleyici günlükleri:** Kullanımınıza bağlı olarak Azure Izleyici günlükleriyle ilişkili bir maliyet olabilir. Ücretsiz katman, günde 500 MB/saniye veri içerir. Çoğu durumda, bu çözümün günde 500 MB 'tan az olması beklenir. Kullanımı azaltmak için, runbook 'a dahil edilen hata filtrelemeyi kullanın. Günde 500 MB 'tan fazla kullanıyorsanız, sınırlamaya ulaşıldığında analiz durdurma riskini önlemek için ücretli katmana yükseltin. Daha fazla bilgi için bkz. [Azure izleyici günlükleri fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Azure izleyici günlükleri:** Kullanımınıza bağlı olarak Azure Izleyici günlükleriyle ilişkili bir maliyet olabilir. Ücretsiz katman, günde 500 MB/saniye veri içerir. Çoğu durumda, bu çözümün günde 500 MB 'tan az olması beklenir. Kullanımı azaltmak için, runbook 'a dahil edilen hata filtrelemeyi kullanın. Günde 500 MB 'tan fazla kullanıyorsanız, sınırlamaya ulaşıldığında analiz durdurma riskini önlemek için ücretli katmana yükseltin. Daha fazla bilgi için bkz. [Azure izleyici günlükleri fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Kod örnekleri
 
@@ -202,11 +202,11 @@ SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
 -   Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](sql-database-sync-data.md)
 -   Veri eşitlemesini ayarlama
-    - Portalda- [öğreticide: Verileri Azure SQL veritabanı ve şirket içi SQL Server arasında eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
+    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](sql-database-get-started-sql-data-sync.md)
     - PowerShell ile
         -  [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell kullanarak bir Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Veri Eşitleme Aracısı - [veri Aracısı Azure SQL Data Sync için eşitleme](sql-database-data-sync-agent.md)
+-   Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](sql-database-data-sync-agent.md)
 -   En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](sql-database-best-practices-data-sync.md)
 -   Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](sql-database-troubleshoot-data-sync.md)
 -   Eşitleme şemasını güncelleştirme

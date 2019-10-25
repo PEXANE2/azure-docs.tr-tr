@@ -1,26 +1,25 @@
 ---
-title: Dizin tanımı ve kavramlar oluşturma-Azure Search
-description: Bileşen bölümleri ve fiziksel yapı dahil olmak üzere Azure Search Dizin hüküm ve kavramlarına giriş.
-author: HeidiSteen
+title: Dizin tanımı ve kavramlar oluşturma
+titleSuffix: Azure Cognitive Search
+description: Bileşen bölümleri ve fiziksel yapı dahil olmak üzere Azure Bilişsel Arama 'daki Dizin koşullarına ve kavramlarına giriş.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69647365"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794205"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Azure Search temel dizin oluşturma
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel dizin oluşturma
 
-Azure Search, *Dizin* , bir Azure Search hizmetinde filtrelenmiş ve tam metin araması için kullanılan bir *belge* ve diğer yapıların kalıcı bir deposudur. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Örneğin, bir e-ticaret satıcısında sattığı her bir öğe için bir belge, bir haber kuruluşunda her bir makale için bir belge, vb. olabilir. Bu kavramları daha çok bilinen veritabanı eşdeğerlerine eşleyen bir *dizin*, kavramsal olarak bir *tabloya* benzer ve *belgeler* de bir tablodaki *satırlarla* kabaca eşdeğerdir.
+Azure Bilişsel Arama, *Dizin* , Azure bilişsel arama hizmetinde filtrelenmiş ve tam metin araması için kullanılan bir *belge* ve diğer yapıların kalıcı bir deposudur. Kavramsal olarak, bir belge, dizininizdeki aranabilir verilerin tek bir birimidir. Örneğin, bir e-ticaret satıcısında sattığı her bir öğe için bir belge, bir haber kuruluşunda her bir makale için bir belge, vb. olabilir. Bu kavramları daha çok bilinen veritabanı eşdeğerlerine eşleyen bir *dizin*, kavramsal olarak bir *tabloya* benzer ve *belgeler* de bir tablodaki *satırlarla* kabaca eşdeğerdir.
 
-Bir dizin eklediğinizde veya yüklediğinizde, Azure Search sağladığınız şemayı temel alan fiziksel yapılar oluşturur. Örneğin, dizininizdeki bir alan aranabilir olarak işaretlenmişse, bu alan için ters bir dizin oluşturulur. Daha sonra, belgeleri eklediğinizde veya karşıya yüklediğinizde ya da Azure Search arama sorguları gönderdiğinizde, istekleri arama hizmetinizde belirli bir dizine gönderiyorsunuz. Belge değerleriyle alanları yüklemeye *dizinleme* veya veri alımı denir.
+Bir dizin eklediğinizde veya karşıya yüklediğinizde, Azure Bilişsel Arama sağladığınız şemaya göre fiziksel yapılar oluşturur. Örneğin, dizininizdeki bir alan aranabilir olarak işaretlenmişse, bu alan için ters bir dizin oluşturulur. Daha sonra, belgeleri eklediğinizde veya karşıya yüklediğinizde ya da Azure Bilişsel Arama arama sorguları gönderdiğinizde, istekleri arama hizmetinizde belirli bir dizine gönderiyorsunuz. Belge değerleriyle alanları yüklemeye *dizinleme* veya veri alımı denir.
 
 Portal, [REST API](search-create-index-rest-api.md)veya [.NET SDK 'sında](search-create-index-dotnet.md)bir dizin oluşturabilirsiniz.
 
@@ -40,7 +39,7 @@ Doğru dizin tasarımına ulaşan genellikle birden çok yineleme aracılığıy
 
    Bu noktada kod tabanlı bir yaklaşıma geçiyorsunuz. Zaten oluşturulmuş bir dizini düzenleyemezsiniz, Portal yineleme için uygun değildir. Ancak geri kalan görevler için Postman ve REST kullanabilirsiniz.
 
-4. [Dizininizi verilerle yükleyin](search-what-is-data-import.md). Azure Search JSON belgelerini kabul eder. Verilerinizi programlı bir şekilde yüklemek için, istek yükünde JSON belgeleriyle Postman kullanabilirsiniz. Verileriniz JSON olarak kolayca ifade edideğilse, bu adım en yoğun işgücü olacaktır.
+4. [Dizininizi verilerle yükleyin](search-what-is-data-import.md). Azure Bilişsel Arama JSON belgelerini kabul eder. Verilerinizi programlı bir şekilde yüklemek için, istek yükünde JSON belgeleriyle Postman kullanabilirsiniz. Verileriniz JSON olarak kolayca ifade edideğilse, bu adım en yoğun işgücü olacaktır.
 
 5. İstediğiniz sonuçları görene kadar dizininizin dizinini sorgulayın, sonuçları inceleyin ve dizin şemasında daha fazla yineleme yapın. Dizininizi sorgulamak için [**Arama Gezgini**](search-explorer.md) 'Ni veya Postman 'ı kullanabilirsiniz.
 
@@ -52,7 +51,7 @@ Bir portal yaklaşımı yerine kod, yinelemeli tasarım için önerilir. Dizin t
 
 ## <a name="components-of-an-index"></a>Bir dizinin bileşenleri
 
-Şemaya göre, bir Azure Search dizin aşağıdaki öğelerden oluşur. 
+Şemaya göre, Azure Bilişsel Arama dizini aşağıdaki öğelerden oluşur. 
 
 [*Alanlar koleksiyonu*](#fields-collection) genellikle bir dizinin en büyük bölümüdür; burada her bir alan adlandırılmış, yazılır ve nasıl kullanılacağını belirleyecek izin verilen davranışlar ile adlandırılır. Diğer öğeler [Öneri araçları](#suggesters), [Puanlama profillerini](#scoring-profiles), özelleştirme, [CORS](#cors) ve [şifreleme anahtarı](#encryption-key) seçeneklerini destekleyen bileşen bölümlerine sahip [Çözümleyicileri](#analyzers) içerir.
 
@@ -157,7 +156,7 @@ Bir portal yaklaşımı yerine kod, yinelemeli tasarım için önerilir. Dizin t
 | *Edm.DateTimeOffset* |OData v4 biçiminde temsil edilen tarih saat değerleri (örneğin, `yyyy-MM-ddTHH:mm:ss.fffZ` veya `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Dünya üzerindeki bir coğrafi konumu temsil eden bir nokta. |
 
-Azure Search'ün [desteklediği veri türleri hakkında burada](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) daha ayrıntılı bilgiler edinebilirsiniz.
+Azure Bilişsel Arama tarafından [desteklenen veri türleri](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)hakkında daha ayrıntılı bilgi edinmek için burada bulabilirsiniz.
 
 ### <a name="index-attributes"></a>Dizin öznitelikleri
 
@@ -190,7 +189,7 @@ Bu dizin çeşitleri yapay olsa da, özniteliklerin depolamayı nasıl etkiledi�
 Filtre ve sıralamayı destekleyen dizinler, tam metin aramasını destekleyen dizinlerden nispeten daha büyüktür. Bunun nedeni, filtre ve sıralama sorgusunun tam eşleştirmelerle, belgelerin bozulmadan depolanmasıdır. Buna karşılık, tam metin ve belirsiz aramayı destekleyen aranabilir alanlar, tüm belgelerden daha az alan tüketen simgeleştirilmiş koşullarla doldurulmuş ters dizinler kullanır.
 
 > [!Note]
-> Depolama mimarisi Azure Search uygulama ayrıntısı olarak değerlendirilir ve bildirimde bulunulmadan değiştirilebilir. Geçerli davranışın gelecekte devam edeceğini garanti vermez.
+> Depolama mimarisi Azure Bilişsel Arama uygulama ayrıntısı olarak değerlendirilir ve bildirimde bulunulmadan değiştirilebilir. Geçerli davranışın gelecekte devam edeceğini garanti vermez.
 
 ## <a name="suggesters"></a>Öneri Araçları
 Bir öneri aracı, aramalardaki otomatik tamamlamayı veya tür ön sorguları desteklemek için bir dizindeki hangi alanların kullanıldığını tanımlayan şemanın bir bölümüdür. Genellikle kısmi arama dizeleri, Kullanıcı bir arama sorgusu yazarken [(REST API) önerilere](https://docs.microsoft.com/rest/api/searchservice/suggestions) GÖNDERILIR ve API önerilen bir tümcecik kümesi döndürür. 
@@ -205,7 +204,7 @@ Varsayılan bir Puanlama profili, bir sonuç kümesindeki her öğe için bir ar
 
 ## <a name="analyzers"></a>Çözümleyiciler
 
-Çözümleyiciler öğesi, alan için kullanılacak dil Çözümleyicisi adını ayarlar. Kullanabileceğiniz çözümleyiciler aralığı hakkında daha fazla bilgi için, bkz. [bir Azure Search dizinine çözümleyici ekleme](search-analyzers.md). Çözümleyiciler yalnızca aranabilir alanlarla kullanılabilir. Çözümleyici bir alana atandıktan sonra, dizini yeniden oluşturmadığınız takdirde değiştirilemez.
+Çözümleyiciler öğesi, alan için kullanılacak dil Çözümleyicisi adını ayarlar. Kullanabileceğiniz çözümleyiciler aralığı hakkında daha fazla bilgi için bkz. [Azure bilişsel arama dizinine çözümleyiciler ekleme](search-analyzers.md). Çözümleyiciler yalnızca aranabilir alanlarla kullanılabilir. Çözümleyici bir alana atandıktan sonra, dizini yeniden oluşturmadığınız takdirde değiştirilemez.
 
 ## <a name="cors"></a>CORS
 
@@ -221,7 +220,7 @@ CORS için aşağıdaki seçenekler ayarlanabilir:
 
 ## <a name="encryption-key"></a>Şifreleme anahtarı
 
-Tüm Azure arama dizinleri, Microsoft tarafından yönetilen anahtarlar kullanılarak varsayılan olarak şifrelense de, dizinler Key Vault içindeki **müşteri tarafından yönetilen anahtarlarla** şifrelenecek şekilde yapılandırılabilir. Daha fazla bilgi edinmek için bkz. [Azure Search şifreleme anahtarlarını yönetme](search-security-manage-encryption-keys.md).
+Tüm Azure Bilişsel Arama dizinleri Microsoft tarafından yönetilen anahtarlar kullanılarak varsayılan olarak şifrelense de, dizinler Key Vault **müşteri tarafından yönetilen anahtarlarla** şifrelenecek şekilde yapılandırılabilir. Daha fazla bilgi için bkz. [Azure 'da şifreleme anahtarlarını yönetme bilişsel arama](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

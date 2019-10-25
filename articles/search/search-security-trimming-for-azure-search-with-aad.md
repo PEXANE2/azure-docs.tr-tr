@@ -1,24 +1,23 @@
 ---
-title: Active Directory kullanarak sonuçları kırpmaya yönelik güvenlik filtreleri Azure Search
-description: Güvenlik filtrelerini ve Azure Active Directory (AAD) kimliklerini kullanarak Azure Search içerikte erişim denetimi.
-author: brjohnstmsft
+title: Active Directory kullanarak sonuçları kırpmak için güvenlik filtreleri
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama içerikte güvenlik filtrelerini ve Azure Active Directory (AAD) kimliklerini kullanarak erişim denetimi.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 11/07/2017
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 8bcc1dcd1d86c0ca18ed03dc60834884a42a39c9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186523"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794313"
 ---
-# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory kimliklerini kullanarak Azure Search sonuçları kırpma için güvenlik filtreleri
+# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory kimliklerini kullanarak Azure Bilişsel Arama sonuçlarını kırpmasına yönelik güvenlik filtreleri
 
-Bu makalede, Kullanıcı grubu üyeliğine göre arama sonuçlarını kırpmak için Azure Search filtreleriyle birlikte Azure Active Directory (AAD) güvenlik kimliklerinin birlikte nasıl kullanılacağı gösterilmektedir.
+Bu makalede, Kullanıcı grubu üyeliğine göre arama sonuçlarını kırpmak için Azure Bilişsel Arama filtreleriyle birlikte Azure Active Directory (AAD) güvenlik kimliklerinin birlikte nasıl kullanılacağı gösterilmektedir.
 
 Bu makale aşağıdaki görevleri kapsar:
 > [!div class="checklist"]
@@ -33,7 +32,7 @@ Bu makale aşağıdaki görevleri kapsar:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure Search içindeki dizininiz, belgeye okuma erişimi olan grup kimliklerinin listesini depolamak için bir [güvenlik alanı](search-security-trimming-for-azure-search.md) içermelidir. Bu kullanım örneği, güvenli kılınabilir bir öğe (örneğin, bir okul uygulaması) ve bu öğeye kimlerin erişimi olduğunu belirten bir güvenlik alanı (Admissions personeli) arasında bire bir yazışma olduğunu varsayar.
+Azure Bilişsel Arama dizininizin, belgeye okuma erişimi olan grup kimliklerinin listesini depolamak için bir [güvenlik alanı](search-security-trimming-for-azure-search.md) olmalıdır. Bu kullanım örneği, güvenli kılınabilir bir öğe (örneğin, bir okul uygulaması) ve bu öğeye kimlerin erişimi olduğunu belirten bir güvenlik alanı (Admissions personeli) arasında bire bir yazışma olduğunu varsayar.
 
 AAD 'de Kullanıcı, Grup ve ilişkilendirme oluşturmak için bu kılavuzda AAD yönetici izinlerinizin olması gerekir.
 
@@ -43,11 +42,11 @@ Uygulamanız Ayrıca, aşağıdaki yordamda açıklandığı gibi AAD ile kayıt
 
 Bu adım, Kullanıcı ve grup hesaplarının oturum açma işlemlerini kabul etmek amacıyla uygulamanızı AAD ile tümleştirir. Kuruluşunuzda bir AAD yöneticisi değilseniz, aşağıdaki adımları gerçekleştirmek için [Yeni bir kiracı oluşturmanız](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) gerekebilir.
 
-1. [**Uygulama kayıt portalı**](https://apps.dev.microsoft.com) >  **yakınsanmış** > uygulama uygulama**Ekle**' ye gidin.
+1. [**Uygulama kayıt portalı**](https://apps.dev.microsoft.com) >  **yakınsanan** uygulama > uygulama **ekleme**bölümüne gidin.
 2. Uygulamanız için bir ad girin ve ardından **Oluştur**' a tıklayın. 
 3. Uygulamalarım sayfasında yeni kayıtlı uygulamanızı seçin.
-4. Uygulama kaydı sayfasında > **platformlar** > **platformu Ekle**' yi seçin.
-5. Hala uygulama kaydı sayfasında > **Microsoft Graph izinler** > **Ekle**' ye gidin.
+4. Uygulama kaydı sayfasında > **platformlar** **Platform Ekle** > **Web API 'si**' ni seçin.
+5. Hala uygulama kaydı sayfasında, > **Microsoft Graph izinler** > **Ekle**' ye gidin.
 6. Izinleri Seç ' de, aşağıdaki temsilci izinlerini ekleyin ve ardından **Tamam**' a tıklayın:
 
    + **Directory. ReadWrite. All**
@@ -60,11 +59,11 @@ Microsoft Graph, bir REST API aracılığıyla AAD 'ye programlı erişim sağla
 
 Oluşturulan bir uygulamaya arama ekliyorsanız, AAD 'de mevcut kullanıcı ve grup tanımlayıcılarından olabilirsiniz. Bu durumda, sonraki üç adımı atlayabilirsiniz. 
 
-Ancak, mevcut kullanıcılarınız yoksa güvenlik sorumlularını oluşturmak için Microsoft Graph API 'Leri kullanabilirsiniz. Aşağıdaki kod parçacıkları, Azure Search dizininizdeki güvenlik alanı için veri değerleri haline gelen tanımlayıcıların nasıl oluşturulacağını göstermektedir. Kuramsal üniversite sayede uygulamamızda bu, sayede personeli için güvenlik tanımlayıcıları olacaktır.
+Ancak, mevcut kullanıcılarınız yoksa güvenlik sorumlularını oluşturmak için Microsoft Graph API 'Leri kullanabilirsiniz. Aşağıdaki kod parçacıkları, Azure Bilişsel Arama dizininizdeki güvenlik alanı için veri değerleri haline gelen tanımlayıcıların nasıl oluşturulacağını göstermektedir. Kuramsal üniversite sayede uygulamamızda bu, sayede personeli için güvenlik tanımlayıcıları olacaktır.
 
-Kullanıcı ve grup üyeliği, özellikle büyük kuruluşlarda çok akıcı olabilir. Kullanıcı ve grup kimliklerini oluşturan kodun, kuruluş üyeliğindeki değişiklikleri çekmek için genellikle yeterince çalıştırması gerekir. Benzer şekilde, Azure Search dizininiz izin verilen kullanıcı ve kaynakların geçerli durumunu yansıtmak için benzer bir güncelleştirme zamanlaması gerektirir.
+Kullanıcı ve grup üyeliği, özellikle büyük kuruluşlarda çok akıcı olabilir. Kullanıcı ve grup kimliklerini oluşturan kodun, kuruluş üyeliğindeki değişiklikleri çekmek için genellikle yeterince çalıştırması gerekir. Benzer şekilde, Azure Bilişsel Arama dizininiz izin verilen kullanıcı ve kaynakların geçerli durumunu yansıtmak için benzer bir güncelleştirme zamanlaması gerektirir.
 
-### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>1\. adım: [AAD grubu](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) oluştur 
+### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>1\. Adım: [AAD grubu](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) oluşturma 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -78,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>2\. adım: [AAD kullanıcısı](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) oluştur
+### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>2\. Adım: [AAD kullanıcısı](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) oluşturma
 ```csharp
 User user = new User()
 {
@@ -93,23 +92,23 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>3\. adım: Kullanıcı ve grup ilişkilendir
+### <a name="step-3-associate-user-and-group"></a>3\. Adım: kullanıcıyı ve grubu Ilişkilendirme
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>4\. Adım: Grup tanımlayıcılarını önbelleğe al
+### <a name="step-4-cache-the-groups-identifiers"></a>4\. Adım: Grup tanımlayıcılarını önbelleğe alma
 İsteğe bağlı olarak, ağ gecikmesini azaltmak için Kullanıcı grubu ilişkilendirmelerini önbelleğe alarak, bir arama isteği verildiğinde, gruplar önbellekten döndürülür ve AAD 'ye gidiş dönüş kaydedilir. Birden çok kullanıcıya sahip tek bir http isteği göndermek ve önbelleği oluşturmak için [AAD Batch API 'sini](https://developer.microsoft.com/graph/docs/concepts/json_batching) kullanabilirsiniz.
 
 Microsoft Graph, yüksek hacimli istekleri işlemek için tasarlanmıştır. İstek sayısı ortaya çıkarsa, Microsoft Graph HTTP durum kodu 429 ile başarısız olur. Daha fazla bilgi için bkz. [Microsoft Graph azaltma](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
 ## <a name="index-document-with-their-permitted-groups"></a>Belge, izin verilen gruplarıyla dizin oluştur
 
-Azure Search sorgu işlemleri Azure Search bir dizin üzerinden yürütülür. Bu adımda, dizin oluşturma işlemi, güvenlik filtreleri olarak kullanılan tanımlayıcılar da dahil olmak üzere aranabilir verileri bir dizine aktarır. 
+Azure Bilişsel Arama 'de sorgu işlemleri bir Azure Bilişsel Arama dizininden yürütülür. Bu adımda, dizin oluşturma işlemi, güvenlik filtreleri olarak kullanılan tanımlayıcılar da dahil olmak üzere aranabilir verileri bir dizine aktarır. 
 
-Azure Search Kullanıcı kimliklerinin kimliğini doğrulamaz veya bir kullanıcının görüntüleme iznine sahip olduğu içeriği oluşturmak için mantık sağlar. Güvenlik kırpması için kullanım örneği, gizli bir belge ile bu belgeye erişim sahibi olan grup tanımlayıcısı arasındaki ilişkiyi, bir arama dizinine bir şekilde içeri aktardığınızı varsayar. 
+Azure Bilişsel Arama, kullanıcı kimliklerinin kimliğini doğrulamaz veya bir kullanıcının görüntüleme iznine sahip olduğu içeriği oluşturmak için mantık sağlar. Güvenlik kırpması için kullanım örneği, gizli bir belge ile bu belgeye erişim sahibi olan grup tanımlayıcısı arasındaki ilişkiyi, bir arama dizinine bir şekilde içeri aktardığınızı varsayar. 
 
-Kuramsal örnekte, bir Azure Search dizindeki PUT isteğinin gövdesi, bir başvuranın okul esi veya dökümünü, bu içeriği görüntüleme izni olan grup tanımlayıcısıyla birlikte içermelidir. 
+Kuramsal örnekte, bir Azure Bilişsel Arama dizinindeki PUT isteğinin gövdesi, bir başvuranın okul esi veya dökümünü, bu içeriği görüntüleme iznine sahip olan grup tanımlayıcısıyla birlikte içermelidir. 
 
 Bu izlenecek yol için kod örneğinde kullanılan genel örnekte, Dizin eylemi şöyle görünebilir:
 
@@ -133,11 +132,11 @@ _indexClient.Documents.Index(batch);
 
 ## <a name="issue-a-search-request"></a>Arama isteği verme
 
-Güvenlik kırpma amacıyla, dizindeki güvenlik alanındaki değerler, arama sonuçlarına belge ekleme veya dışlama için kullanılan statik değerlerdir. Örneğin, Admissions için grup tanımlayıcısı "A11B22C33D44-E55F66G77-H88I99JKK" ise, güvenlik alanındaki bu tanımlayıcıya sahip bir Azure Search dizindeki tüm belgeler, istek sahibine geri gönderilen arama sonuçlarına dahil edilir (veya hariç tutulur).
+Güvenlik kırpma amacıyla, dizindeki güvenlik alanındaki değerler, arama sonuçlarına belge ekleme veya dışlama için kullanılan statik değerlerdir. Örneğin, Admissions için grup tanımlayıcısı "A11B22C33D44-E55F66G77-H88I99JKK" ise, bir Azure Bilişsel Arama dizinindeki tüm belgeler, istek sahibine geri gönderilen arama sonuçlarına dahil edilir (veya hariç tutulur).
 
 İstek veren kullanıcı gruplarına bağlı olarak arama sonuçlarında döndürülen belgeleri filtrelemek için aşağıdaki adımları gözden geçirin.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>1\. adım: Kullanıcının grup tanımlayıcılarını alma
+### <a name="step-1-retrieve-users-group-identifiers"></a>1\. Adım: kullanıcının grup tanımlayıcılarını alma
 
 Kullanıcının grupları zaten önbelleğe alınmamışsa veya önbelleğin süresi dolmuşsa, [gruplar](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) isteğini yayınlayın
 ```csharp
@@ -165,7 +164,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>2\. adım: Arama isteğini oluştur
+### <a name="step-2-compose-the-search-request"></a>2\. Adım: arama isteğini oluşturma
 
 Kullanıcının grup üyeliğine sahip olduğunuz varsayılarak, arama isteğini uygun filtre değerleriyle verebilirsiniz.
 
@@ -179,16 +178,16 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>3\. adım: Sonuçları işleyin
+### <a name="step-3-handle-the-results"></a>3\. Adım: sonuçları Işleme
 
 Yanıt, kullanıcının görüntüleme iznine sahip olduğu öğelerden oluşan filtrelenmiş bir belge listesi içerir. Arama sonuçları sayfasını oluşturma yönteminize bağlı olarak, filtrelenmiş sonuç kümesini yansıtmak için görsel ipuçları dahil etmek isteyebilirsiniz.
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu kılavuzda, istekte belirtilen filtreyle eşleşmeyen belgelerin sonuçlarını kırptırabilmeniz için Azure Search sonuçlarında belge filtrelemeye yönelik AAD oturum açma yöntemlerini kullanmayı öğrendiniz.
+Bu kılavuzda, Azure Bilişsel Arama sonuçlarında belgeleri filtrelemek için AAD oturum açma yöntemlerini kullanarak istekte belirtilen filtreyle eşleşmeyen belgelerin sonuçlarını kırpmamızı öğrendiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Search filtreleri kullanılarak kimlik tabanlı erişim denetimi](search-security-trimming-for-azure-search.md)
-+ [Azure Search filtreler](search-filters.md)
-+ [Azure Search işlemlerinde veri güvenliği ve erişim denetimi](search-security-overview.md)
++ [Azure Bilişsel Arama filtreleri kullanılarak kimlik tabanlı erişim denetimi](search-security-trimming-for-azure-search.md)
++ [Azure Bilişsel Arama filtreler](search-filters.md)
++ [Azure Bilişsel Arama işlemlerinde veri güvenliği ve erişim denetimi](search-security-overview.md)

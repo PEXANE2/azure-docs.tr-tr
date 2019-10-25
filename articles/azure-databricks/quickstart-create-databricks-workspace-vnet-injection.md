@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 12ac5c44a0ee479d84616b138f9e2369a195c275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976475"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791551"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Hızlı Başlangıç: Sanal ağda Azure Databricks çalışma alanı oluşturma
+# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Hızlı başlangıç: Sanal ağda Azure Databricks çalışma alanı oluşturma
 
 Bu hızlı başlangıçta, bir sanal ağda Azure Databricks çalışma alanının nasıl oluşturulacağı gösterilmektedir. Ayrıca, bu çalışma alanı içinde bir Apache Spark kümesi oluşturacaksınız.
 
@@ -23,48 +23,48 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
-1. Azure Portal, **kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
+1. Azure portal > **ağ** > **sanal ağ**' **a kaynak oluştur** ' u seçin.
 
 2. **Sanal ağ oluştur**altında aşağıdaki ayarları uygulayın: 
 
     |Ayar|Önerilen değer|Açıklama|
     |-------|---------------|-----------|
-    |Ad|databricks-hızlı başlangıç|Sanal ağınız için bir ad seçin.|
-    |Adres alanı|10.1.0.0/16|CIDR gösterimiyle sanal ağın adres aralığı.|
-    |Subscription|\<Aboneliğiniz\>|Kullanmak istediğiniz Azure aboneliğini seçin.|
-    |Resource group|databricks-hızlı başlangıç|**Yeni oluştur** ' u seçin ve hesabınız için yeni bir kaynak grubu adı girin.|
-    |Location|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızı barındırabileceğiniz bir coğrafi konum seçin. Kullanıcılarınıza en yakın konumu kullanın.|
+    |Adı|databricks-hızlı başlangıç|Sanal ağınız için bir ad seçin.|
+    |Adres alanı|10.1.0.0/16|CıDR gösteriminde sanal ağın adres aralığı.|
+    |Abonelik|\<Aboneliğiniz\>|Kullanmak istediğiniz Azure aboneliğini seçin.|
+    |Kaynak grubu|databricks-hızlı başlangıç|**Yeni oluştur** ' u seçin ve hesabınız için yeni bir kaynak grubu adı girin.|
+    |Konum|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızı barındırabileceğiniz bir coğrafi konum seçin. Kullanıcılarınıza en yakın konumu kullanın.|
     |Alt ağ adı|default|Sanal ağınızdaki varsayılan alt ağ için bir ad seçin.|
     |Alt Ağ Adresi aralığı|10.1.0.0/24|CIDR gösteriminde alt ağın adres aralığı. Sanal ağın adres alanı tarafından içerilmelidir. Kullanımda olan bir alt ağın adres aralığı düzenlenemiyor.|
 
     ![Azure portal üzerinde sanal ağ oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
-3. Dağıtım tamamlandıktan sonra sanal ağınıza gidin ve **Ayarlar**altında **Adres alanı** ' nı seçin. *Ek adres aralığı Ekle*' nin kutusunda, Ekle `10.179.0.0/16` ' yi ve ardından **Kaydet**' i seçin.
+3. Dağıtım tamamlandıktan sonra sanal ağınıza gidin ve **Ayarlar**altında **Adres alanı** ' nı seçin. *Ek adres aralığı Ekle*' nin kutusunda `10.179.0.0/16` ekleyin ve **Kaydet**' i seçin.
 
     ![Azure sanal ağ adres alanı](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
-1. Azure Portal, **kaynak** > oluştur**Analytics** > **databricks**' i seçin.
+1. Azure portal **kaynak oluştur** > **Analytics** > **databricks**' i seçin.
 
 2. **Azure Databricks hizmeti**altında aşağıdaki ayarları uygulayın:
 
     |Ayar|Önerilen değer|Açıklama|
     |-------|---------------|-----------|
     |Çalışma alanı adı|databricks-hızlı başlangıç|Azure Databricks çalışma alanınız için bir ad seçin.|
-    |Subscription|\<Aboneliğiniz\>|Kullanmak istediğiniz Azure aboneliğini seçin.|
-    |Resource group|databricks-hızlı başlangıç|Sanal ağ için kullandığınız kaynak grubunu seçin.|
-    |Location|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızla aynı konumu seçin.|
+    |Abonelik|\<Aboneliğiniz\>|Kullanmak istediğiniz Azure aboneliğini seçin.|
+    |Kaynak grubu|databricks-hızlı başlangıç|Sanal ağ için kullandığınız kaynak grubunu seçin.|
+    |Konum|\<Kullanıcılarınıza en yakın bölgeyi seçin\>|Sanal ağınızla aynı konumu seçin.|
     |Fiyatlandırma Katmanı|Standart veya Premium arasından seçim yapın.|Fiyatlandırma katmanları hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).|
-    |Sanal ağınızda Azure Databricks çalışma alanı dağıtma|Evet|Bu ayar, sanal ağınıza bir Azure Databricks çalışma alanı dağıtmanıza olanak tanır.|
+    |Sanal ağınızda Azure Databricks çalışma alanı dağıtma|Yes|Bu ayar, sanal ağınıza bir Azure Databricks çalışma alanı dağıtmanıza olanak tanır.|
     |Sanal Ağ|databricks-hızlı başlangıç|Önceki bölümde oluşturduğunuz sanal ağı seçin.|
     |Ortak alt ağ adı|Genel-alt ağ|Varsayılan genel alt ağ adını kullanın.|
     |Ortak alt ağ CıDR aralığı|10.179.64.0/18|Bu alt ağ için CıDR aralığı/18 ile/26 arasında olmalıdır.|
@@ -88,7 +88,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 1. Azure Databricks hizmetinize dönün ve **genel bakış** sayfasında **çalışma alanını Başlat** ' ı seçin.
 
-2. **Kümeler** > ve**küme oluştur**' u seçin. Ardından, *databricks-QuickStart-Cluster*gibi bir küme adı oluşturun ve kalan varsayılan ayarları kabul edin. **Küme oluştur**' u seçin.
+2. **Kümeler** >  **+ küme oluştur**' u seçin. Ardından, *databricks-QuickStart-Cluster*gibi bir küme adı oluşturun ve kalan varsayılan ayarları kabul edin. **Küme oluştur**' u seçin.
 
     ![Azure Databricks kümesi oluşturma](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 
@@ -104,7 +104,7 @@ Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free
 
 Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için Azure Databricks çalışma alanında sol bölmedeki **Kümeler**’i seçin. Sonlandırmak istediğiniz küme için imleci **Eylemler** sütunu altındaki üç noktanın üzerine taşıyın ve **Sonlandır** simgesini seçin. Bu, kümeyi sonlandırır.
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu\_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 Kümeyi yeniden kullanmak istemiyorsanız, Azure portal oluşturduğunuz kaynak grubunu silebilirsiniz.
 

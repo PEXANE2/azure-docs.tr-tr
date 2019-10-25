@@ -1,24 +1,23 @@
 ---
-title: Uygulamalarda arama gezinmesi için model filtreleri-Azure Search
-description: Microsoft Azure üzerinde barındırılan bir bulut arama hizmeti olan Azure Search sorgulardaki arama sonuçlarını azaltmak için ölçütleri Kullanıcı güvenliği kimliği, coğrafi konum veya sayısal değerlere göre filtreleyin.
-author: HeidiSteen
+title: Uygulamalarda arama gezinmesi için model filtreleri
+titleSuffix: Azure Cognitive Search
+description: Microsoft Azure üzerinde barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama 'deki sorgularda arama sonuçlarını azaltmak için ölçütleri Kullanıcı güvenliği kimliği, coğrafi konum veya sayısal değerlere göre filtreleyin.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 5/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649877"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792888"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search bir model filtresi oluşturma 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir model filtresi oluşturma 
 
-Çok yönlü gezinme, bir arama uygulamasındaki sorgu sonuçlarında kendi kendine yönlendirilmiş filtreleme için kullanılır; burada uygulamanız, belge grupları için arama için Kullanıcı arabirimi denetimleri sunar (örneğin, Kategoriler veya markalar) ve Azure Search veri yapısını geri yüklemek için deneyimleri. Bu makalede, sağlamak istediğiniz arama deneyimini yedekleyen çok yönlü bir gezinti yapısı oluşturmaya yönelik temel adımları hızlıca gözden geçirin. 
+Çok yönlü gezinme, bir arama uygulamasındaki sorgu sonuçları için, uygulamanızın belge gruplarına (örneğin, Kategoriler veya markalar) arama kapsamını belirlemek için Kullanıcı arabirimi denetimleri sağladığı ve Azure Bilişsel Arama veri yapısını sağladığı bir arama uygulamasında kendi kendine yönlendirilmiş filtreleme için kullanılır. deneyimini geri yüklemek için. Bu makalede, sağlamak istediğiniz arama deneyimini yedekleyen çok yönlü bir gezinti yapısı oluşturmaya yönelik temel adımları hızlıca gözden geçirin. 
 
 > [!div class="checklist"]
 > * Filtreleme ve Faks oluşturma için alanları seçin
@@ -31,30 +30,30 @@ Modeller dinamiktir ve sorgu üzerinde döndürülür. Arama yanıtları, sonuç
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-Çok yönlü gezinmede yeni ve daha fazla ayrıntı istiyor musunuz? Bkz. [Azure Search çok yönlü gezintiyi uygulama](search-faceted-navigation.md).
+Çok yönlü gezinmede yeni ve daha fazla ayrıntı istiyor musunuz? Bkz. [Azure bilişsel arama 'da çok yönlü gezintiyi uygulama](search-faceted-navigation.md).
 
 ## <a name="choose-fields"></a>Alanları seçin
 
 Modeller, tek değer alanları ve koleksiyonlar üzerinden hesaplanabilir. Çok yönlü gezinmede en iyi şekilde çalışan alanlar düşük kardinalite sahiptir: arama corpminizdeki belgeleri (örneğin, bir renk, ülke/bölge veya marka adı) tekrarlayan çok az sayıda benzersiz değer. 
 
-`facetable` Özniteliği öğesini olarak `true`ayarlayarak, dizin oluşturduğunuzda alan temelinde, her zaman bir alan temelinde etkinleştirilir. Ayrıca, arama uygulamanızın, son `filterable` kullanıcının seçtiği `true` modellerle ilgili alanlara filtre yapabilmesi için, bu tür alanlar için özniteliğini genellikle olarak ayarlamanız gerekir. 
+`facetable` özniteliğini `true`olarak ayarlayarak, dizin oluşturduğunuzda, bir alan temelinde, her zaman bir alan temelinde etkinleştirilir. Ayrıca, arama uygulamanızın son kullanıcının seçtiği modelleri temel alarak bu alanlara filtre yapabilmesi için `filterable` özniteliğini bu alanlar için `true` olarak ayarlamanız gerekir. 
 
-REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek olan herhangi bir [alan türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) varsayılan olarak olarak `facetable` işaretlenir:
+REST API kullanarak bir dizin oluştururken, çok yönlü gezintide kullanılabilecek bir [alan türü](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , varsayılan olarak `facetable` olarak işaretlenir:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
 + `Edm.Boolean`
-+ Sayısal alan türleri: `Edm.Int32`, `Edm.Int64`,`Edm.Double`
-+ Yukarıdaki türlerin koleksiyonları (örneğin, `Collection(Edm.String)` veya) `Collection(Edm.Double)`
++ Sayısal alan türleri: `Edm.Int32`, `Edm.Int64`, `Edm.Double`
++ Yukarıdaki türlerin koleksiyonları (örneğin, `Collection(Edm.String)` veya `Collection(Edm.Double)`)
 
-Çok yönlü gezinmede `Collection(Edm.GeographyPoint)` veya alanlarını kullanamazsınız `Edm.GeographyPoint` . Modeller düşük önem taşıyan alanlarda en iyi şekilde çalışır. Coğrafi koordinatların çözümlenme nedeniyle, her iki ortak ordinonun kümesi, belirli bir veri kümesinde eşit olacaktır. Bu nedenle, coğrafi koordinatlara yönelik modeller desteklenmez. Konuma göre model için bir şehir veya bölge alanı gerekir.
+Çok yönlü gezintide `Edm.GeographyPoint` veya `Collection(Edm.GeographyPoint)` alanlarını kullanamazsınız. Modeller düşük önem taşıyan alanlarda en iyi şekilde çalışır. Coğrafi koordinatların çözümlenme nedeniyle, her iki ortak ordinonun kümesi, belirli bir veri kümesinde eşit olacaktır. Bu nedenle, coğrafi koordinatlara yönelik modeller desteklenmez. Konuma göre model için bir şehir veya bölge alanı gerekir.
 
 ## <a name="set-attributes"></a>Öznitelikleri ayarla
 
-Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindeki ayrı alan tanımlarına eklenir. Aşağıdaki örnekte, düşük önem düzeyi olan alanlar, her zaman için yararlıdır,, aşağıdakilerden oluşur: `category` (otel, Motel, Hostel), `tags`ve `rating`. Bu alanlar, `filterable` tanım amaçları `facetable` için aşağıdaki örnekte açıkça ayarlanmış ve öznitelikleri vardır. 
+Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindeki ayrı alan tanımlarına eklenir. Aşağıdaki örnekte, düşük önem taşıyan alanlar, her zaman, `category` (otel, Motel, Hostel), `tags`ve `rating`' den oluşur. Bu alanlarda, tanım amaçları için aşağıdaki örnekte açıkça ayarlanmış `filterable` ve `facetable` öznitelikleri vardır. 
 
 > [!Tip]
-> Performans ve depolama iyileştirmesi için en iyi uygulama olarak, bir model olarak asla kullanılmamalıdır. Özellikle, bir kimlik veya ürün adı gibi benzersiz değerler için dize alanları, çok yönlü olan gezinmede yanlışlıkla ( `"facetable": false` ve verimsiz) kullanılmasını engellemek için olarak ayarlanmalıdır.
+> Performans ve depolama iyileştirmesi için en iyi uygulama olarak, bir model olarak asla kullanılmamalıdır. Özellikle, bir KIMLIK veya ürün adı gibi benzersiz değerler için dize alanları, çok yönlü olan gezinmede yanlışlıkla (ve verimsiz) kullanılmasını engellemek için `"facetable": false` olarak ayarlanmalıdır.
 
 
 ```json
@@ -78,7 +77,7 @@ Bir alanın nasıl kullanıldığını denetleyen dizin öznitelikleri, dizindek
 ```
 
 > [!Note]
-> Bu dizin tanımı [, REST API kullanılarak Azure Search dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable` Ve `facetable` öznitelikleri`smokingAllowed`,,,, ve`rating` alanlarına açıkça eklenir. `parkingIncluded` `category` `tags` Uygulamada, `filterable` ve `facetable` REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
+> Bu dizin tanımı [, REST API kullanılarak Azure bilişsel arama dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-rest-api)işleminden kopyalanır. Bu, alan tanımlarındaki yararlanmayan farklılıkları dışında aynıdır. `filterable` ve `facetable` öznitelikleri `category`, `tags`, `parkingIncluded`, `smokingAllowed`ve `rating` alanlarında açıkça eklenir. Uygulamada, `filterable` ve `facetable`, REST API kullanılırken bu alanlarda varsayılan olarak etkinleştirilir. .NET SDK kullanırken, bu özniteliklerin açıkça etkinleştirilmesi gerekir.
 
 ## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
 
@@ -99,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>Tıklama olaylarına göre filtrelenmiş sonuçları döndür
 
-Son Kullanıcı bir model değerine tıkladığında, Click olayının işleyicisi kullanıcının hedefini gerçekleştirmek için bir filtre ifadesi kullanmalıdır. Bir `category` model verildiğinde, "Motel" kategorisini tıklatmak, bu türün konaklamaları seçen bir `$filter` ifadeyle uygulanır. Bir Kullanıcı yalnızca Motels gösterilmesi gerektiğini belirtmek için "Motel" öğesini tıkladığında, uygulamanın gönderdiği sonraki sorgu de kapsar `$filter=category eq 'motel'`.
+Son Kullanıcı bir model değerine tıkladığında, Click olayının işleyicisi kullanıcının hedefini gerçekleştirmek için bir filtre ifadesi kullanmalıdır. `category` modeli verildiğinde, "Motel" kategorisini tıklatmak, bu türün konaklamaları seçen bir `$filter` ifadesi ile uygulanır. Kullanıcı yalnızca Motels gösterilmesi gerektiğini belirtmek için "Motel" öğesini tıkladığında, uygulamanın gönderdiği sonraki sorgu `$filter=category eq 'motel'`içerir.
 
 Aşağıdaki kod parçacığı, bir Kullanıcı kategori modeli 'nden bir değer seçerse filtreye kategori ekler.
 
@@ -108,7 +107,7 @@ if (!String.IsNullOrEmpty(categoryFacet))
     filter = $"category eq '{categoryFacet}'";
 ```
 
-Kullanıcı gibi `tags`bir koleksiyon alanı için bir model değerine tıklarsa, örneğin, "Pool" değeri, uygulamanız aşağıdaki filtre sözdizimini kullanmalıdır:`$filter=tags/any(t: t eq 'pool')`
+Kullanıcı `tags`gibi bir koleksiyon alanı için bir model değerine tıklarsa, örneğin "Pool" değeri, uygulamanız şu filtre sözdizimini kullanmalıdır: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>İpuçları ve geçici çözümler
 
@@ -118,12 +117,12 @@ Kullanıcı gibi `tags`bir koleksiyon alanı için bir model değerine tıklarsa
 
 ### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Filtrelenmiş sonuçlardan zaman uyumsuz bir model gezinti yapısını koruma
 
-Azure Search model gezintisi ile ilgili güçlüklerden biri yalnızca geçerli sonuçlar için mevcut olan bir modeldir. Uygulamada, bir statik model kümesinin tutulması yaygın bir yöntemdir. böylece Kullanıcı, arama içeriği aracılığıyla alternatif yolları araştırmak için adımları yeniden izleyerek geri gidebilir. 
+Azure Bilişsel Arama 'de model gezintisi ile ilgili güçlüklerden biri yalnızca geçerli sonuçlar için mevcut olan bir modeldir. Uygulamada, bir statik model kümesinin tutulması yaygın bir yöntemdir. böylece Kullanıcı, arama içeriği aracılığıyla alternatif yolları araştırmak için adımları yeniden izleyerek geri gidebilir. 
 
 Bu, yaygın olarak kullanılan bir kullanım durumu olsa da, model Gezinti yapısının Şu anda kullanıma hazır olarak sağladığı bir şey değildir. Statik modeller isteyen geliştiriciler genellikle iki filtrelenmiş sorgu vererek sınırlamanın etrafında çalışır: sonuçlara kapsamlı bir kapsam, diğer bir deyişle, gezinme amacıyla bir statik model listesi oluşturmak için kullanılır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Search filtreler](search-filters.md)
++ [Azure Bilişsel Arama filtreler](search-filters.md)
 + [Dizin REST API oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Belgelerde ara REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)

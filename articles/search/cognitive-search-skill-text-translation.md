@@ -1,20 +1,19 @@
 ---
-title: Metin çevirisi bilişsel arama yeteneği-Azure Search
-description: Metni değerlendirir ve her kayıt için, Azure Search zenginleştirme ardışık düzeninde belirtilen hedef dile çevrilen metni döndürür.
-services: search
+title: Metin çevirisi Bilişsel Beceri
+titleSuffix: Azure Cognitive Search
+description: Metni değerlendirir ve her kayıt için Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde belirtilen hedef dile çevrilen metni döndürür.
 manager: nitinme
 author: careyjmac
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 06/25/2019
 ms.author: chalton
-ms.openlocfilehash: ddfb35cbfcfbc262f3eff0de67f5cedfc31ea27e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265703"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791852"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Metin çevirisi Bilişsel Beceri
 
@@ -22,18 +21,18 @@ Metin **çevirisi** becerisi metni değerlendirir ve her kayıt için belirtilen
 
 Bu özellik, belgelerinizin tümünün tek bir dilde olmaması beklendiğinde yararlıdır, bu durumda, arama için dizin oluşturmadan önce metni tek bir dile normalleştirilemeyebilirsiniz.  Aynı zamanda birden çok dilde aynı metnin kopyalarının olmasını isteyebileceğiniz yerelleştirme kullanım durumları için de kullanışlıdır.
 
-[Translator metin çevirisi API'si v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) , bölgesel olmayan bir bilişsel hizmettir, yani verilerinizin Azure Search veya bağlı bilişsel hizmetler kaynağı ile aynı bölgede kalması garanti edilmez.
+[Translator metin çevirisi API'si v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) , bölgesel olmayan bir bilişsel hizmettir, yani verilerinizin Azure bilişsel arama veya bağlı bilişsel hizmetler kaynağınız ile aynı bölgede kalması garanti edilmez.
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [Azure Search fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. yetenekler. Text. Translationbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Verileri metin çevirisi yeteneklerine göndermeden önce bölmeniz gerekirse, [metin bölme becerisinin](cognitive-search-skill-textsplit.md)kullanımını göz önünde bulundurun.
+Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Verileri metin çevirisi yeteneklerine göndermeden önce bölmeniz gerekirse, [metin bölme becerisinin](cognitive-search-skill-textsplit.md)kullanımını göz önünde bulundurun.
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
 
@@ -49,7 +48,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 | Giriş adı     | Açıklama |
 |--------------------|-------------|
-| text | Çevrilecek metin.|
+| metin | Çevrilecek metin.|
 | toLanguageCode    | Metnin çevrilmesi gereken dili belirten dize. Bu giriş belirtilmemişse, metni çevirmek için defaultToLanguageCode kullanılır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) görün|
 | fromLanguageCode  | Metnin geçerli dilini gösteren bir dize. Bu parametre belirtilmemişse, metni çevirmek için defaultFromLanguageCode (veya defaultFromLanguageCode sağlanmazsa otomatik dil algılama) kullanılır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) görün|
 
@@ -151,5 +150,5 @@ Metniniz 50.000 karakterden fazlaysa, yalnızca ilk 50.000 karakter çevrilir ve
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)

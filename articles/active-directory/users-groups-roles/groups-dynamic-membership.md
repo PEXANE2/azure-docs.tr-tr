@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241165"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808962"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -78,7 +78,7 @@ Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kural
 
 Üyelik kuralı oluşturmak için kullanılabilecek üç tür özellik vardır.
 
-- Boole değeri
+- Boole
 - Dize
 - Dize koleksiyonu
 
@@ -95,7 +95,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 
 | Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
-| Baş |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
+| city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
 | Ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
 | Bölüme |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
@@ -104,7 +104,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | facsimileTelephoneNumber 'dir |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
 | GivenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
 | JobTitle |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
-| posta |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
+| - |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
 | mailNickName |Herhangi bir dize değeri (kullanıcının posta diğer adı) |(User. Mailtakma ad-EQ "değer") |
 | Mo |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
 | Uzantının |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
@@ -142,10 +142,10 @@ Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunlar�
 | Ile birlikte başlar |-notStartsWith |
 | Ile başlar |-startsWith |
 | İçermez |-notContains |
-| İçerir |-içerir |
+| Contains |-içerir |
 | Eşleşmiyor |-notMatch |
-| Eşleştirme |-Match |
-| İçindeki | -ın |
+| eşleşebilir |-Match |
+| 'Ndaki | -ın |
 | Not ın | -Notın |
 
 ### <a name="using-the--in-and--notin-operators"></a>-İn ve-Notın işleçlerini kullanma
@@ -178,14 +178,14 @@ Bir ifadede kullanılan değerler, aşağıdakiler de dahil olmak üzere çeşit
 
 * Dizeler
 * Boolean – true, false
-* Numaralar
+* Sayılarının
 * Diziler – sayı dizisi, dize dizisi
 
 Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdiziminin kullanılması önemlidir. Bazı sözdizimi ipuçları şunlardır:
 
 * Değer bir dize değilse çift tırnak işaretleri isteğe bağlıdır.
 * Dize ve Regex işlemleri büyük/küçük harfe duyarlı değildir.
-* Bir dize değeri çift tırnak içerdiğinde her iki tırnak de \` karakteri kullanılarak kaçış olmalıdır, örneğin, "Sales" değeri ise, User. Department-EQ \` "Sales @ no__t-2" uygun sözdizimidir.
+* Bir dize değeri çift tırnak içerdiğinde, her iki tırnak de \` karakteri kullanılarak atlanmalıdır, örneğin \`, "Sales" değeri "Sales\`" ise uygun sözdizimidir.
 * Null denetimleri, değer olarak null kullanarak da yapabilirsiniz; Örneğin, `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Null değer kullanımı
@@ -252,7 +252,7 @@ Birden çok değerli özellikler aynı türdeki nesne koleksiyonlarıdır. -Any 
 | Özellikler | Değerler | Kullanım |
 | --- | --- | --- |
 | assignedPlans | Koleksiyondaki her nesne şu dize özelliklerini kullanıma sunar: capabilityStatus, Service, Serviceplanıd |User. assignedPlans-any (assignedPlan. Serviceplanıd-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-ve assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-"contoso" içerir)) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-içerir "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>-Any ve-All işleçlerini kullanma
 
@@ -283,7 +283,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 Alt çizgi (\_) sözdizimi, dinamik bir gruba kullanıcı veya cihaz eklemek için çok değerli dize koleksiyonu özelliklerinden birindeki belirli bir değerin oluşumlarıyla eşleşir. -Any veya-All işleçleri ile kullanılır.
 
-Burada, User. proxyAddress 'a göre üye eklemek için bir kuralda alt çizgi (\_) kullanılmasına örnek verilmiştir (User. Otherpostalarda aynı şekilde çalışmaktadır). Bu kural, "contoso" içeren proxy adresine sahip tüm kullanıcıları gruba ekler.
+Burada, User. proxyAddress tabanlı üye eklemek için bir kuralda alt çizgi (\_) kullanılmasına örnek verilmiştir (User. Otherpostalarda aynı şekilde çalışmaktadır). Bu kural, "contoso" içeren proxy adresine sahip tüm kullanıcıları gruba ekler.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -342,7 +342,7 @@ Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kuralları
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Özel uzantı özellikleri şirket içi Windows Server AD 'den veya bağlı bir SaaS uygulamasından eşitlenir ve `user.extension_[GUID]_[Attribute]` biçiminde bulunur; burada:
+Özel uzantı özellikleri, şirket içi Windows Server AD 'den veya bağlı bir SaaS uygulamasından eşitlenir ve `user.extension_[GUID]_[Attribute]`biçimindedir, burada:
 
 * [GUID], Azure AD 'de özelliği oluşturan uygulama için Azure AD 'de benzersiz tanıtıcıdır
 * [Attribute], oluşturulduğu şekliyle özelliğin adıdır
@@ -379,8 +379,10 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  KayıtAdı | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
- DeviceID | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ organizationalUnit | geçerli bir şirket içi kuruluş birimi (OU) | (Device. organizationalUnit-"dizüstü" içerir)
+ deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ Devicephysicilar | Tüm Autopilot cihazları, OrderID veya PurchaseOrderID gibi Autopilot tarafından kullanılan herhangi bir dize değeri  | (Device. Devicephysicids-any _-Contains "[Ztdıd]") (Device. Devicephysicids-any _-EQ "[OrderID]: 179887111881") (Device. Devicephysicids-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (Device. systemLabels-"M365Managed" içerir)
 
 > [!Note]  
@@ -390,8 +392,8 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
 
 Bu makaleler Azure Active Directory gruplar hakkında ek bilgiler sağlar.
 
-- [Mevcut grupları gör](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Yeni bir grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Var olan grupları görme](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Yeni grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [Bir grubun ayarlarını yönetme](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Bir grubun üyeliklerini yönetme](../fundamentals/active-directory-groups-membership-azure-portal.md)
 - [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](groups-create-rule.md)

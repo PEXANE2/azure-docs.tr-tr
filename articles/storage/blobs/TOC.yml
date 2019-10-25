@@ -627,7 +627,7 @@
       items:
         - name: Depolama hesapları oluşturma ve yönetme
           items:
-            - name: Genel amaçlı depolama hesabı oluşturma
+            - name: Data Lake’iniz için depolama hesabı oluşturma
               href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Depolama hesabını yönetme
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

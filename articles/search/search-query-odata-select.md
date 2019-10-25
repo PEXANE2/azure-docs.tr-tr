@@ -1,13 +1,13 @@
 ---
-title: OData Select başvurusu-Azure Search
-description: Azure Search sorgularında sözdizimi seç için OData dil başvurusu.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData Select başvurusu
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama sorgularında sözdizimi seç için OData dil başvurusu.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647883"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793258"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>Azure Search içinde OData $select söz dizimi
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $select söz dizimi
 
- Azure Search arama sonuçlarına dahil edilecek alanları seçmek için [OData **$Select** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$Select** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$Select** kullanma hakkında daha fazla genel bilgi için bkz. [Azure Search arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
+ Azure Bilişsel Arama arama sonuçlarına dahil edilecek alanları seçmek için [OData **$Select** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$Select** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$Select** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -45,23 +45,23 @@ field_path ::= identifier('/'identifier)*
 Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
+> Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
 **$Select** parametresi iki şekilde gelir:
 
-1. Tüm alınabilir alanların döndürülmesi`*`gerektiğini belirten tek bir yıldız () veya
+1. Tüm alınabilir alanların döndürülmesi gerektiğini belirten tek bir yıldız (`*`) veya
 1. Alan yollarının virgülle ayrılmış bir listesi, hangi alanların döndürüleceğini tanımlar.
 
 İkinci formu kullanırken, yalnızca listede alınabilir alanları belirtebilirsiniz.
 
-Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyorsanız, tüm alınabilir alt alanlar sorgu sonuç kümesine dahil edilir. `Address` Örneğin, dizininizin, `Street` `City`, ve`Country` tüm alınabilir alt alanlar içeren bir alanı olduğunu varsayalım. `Address` **$Select**belirtirseniz, sorgu sonuçları üç alt alanı da içerir.
+Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyorsanız, tüm alınabilir alt alanlar sorgu sonuç kümesine dahil edilir. Örneğin, dizininizin `Street`, `City`ve `Country` tüm alınabilir alt alanlarla `Address` alana sahip olduğunu varsayalım. **$Select**`Address` belirtirseniz, sorgu sonuçları üç alt alanın tümünü de içerir.
 
 ## <a name="examples"></a>Örnekler
 
-`HotelName` `Rating` Sonuçlara ve alt alanına `HotelId` ,veenüst`Address`düzeyalanlarıekleyin: `City`
+`HotelId`, `HotelName`ve `Rating` üst düzey alanlarını ve `Address``City` alt alanını dahil edin:
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyors
 }
 ```
 
-`Rooms` `BaseRate` `Type` `Address`Sonuçlarda en üst düzey alanı, tüm alt alanlarını ve koleksiyondaki her bir nesnenin ve alt alanlarını dahil edin: `HotelName`
+`HotelName` en üst düzey alanını ve tüm alt alanları `Address`ve `Rooms` koleksiyonundaki her bir nesnenin `Type` ve `BaseRate` alt alanlarını dahil edin:
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
@@ -110,7 +110,7 @@ Kendi alt alanlarını açıkça belirtmeden bir karmaşık alanı listelemiyors
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search arama sonuçlarıyla çalışma](search-pagination-page-layout.md)
-- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md)
+- [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

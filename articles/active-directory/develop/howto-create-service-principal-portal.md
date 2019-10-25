@@ -1,5 +1,6 @@
 ---
-title: Portalda Azure uygulaması için kimlik oluşturma | Microsoft Docs
+title: Portalda Azure uygulaması için kimlik oluşturma
+titleSuffix: Microsoft identity platform
 description: Kaynaklara erişimi yönetmek için Azure Resource Manager rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Active Directory uygulaması ve hizmet sorumlusu oluşturma işlemini açıklar.
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324792"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803320"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -126,7 +127,7 @@ Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandı
 1. [Azure Portal](https://portal.azure.com), anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.  
 1. **Erişim Ilkesi Ekle**' yi seçin, ardından uygulamanıza vermek istediğiniz anahtar, gizli dizi ve sertifika izinlerini seçin.  Daha önce oluşturduğunuz hizmet sorumlusunu seçin.
 1. Erişim ilkesini eklemek için **Ekle** ' yi seçin ve sonra değişikliklerinizi yürütmek için **kaydedin** .
-    ![erişim İlkesi Ekle @ no__t-1
+    ![erişim ilkesi Ekle](./media/howto-create-service-principal-portal/add-access-policy.png)
 
 ## <a name="required-permissions"></a>Gerekli izinler
 

@@ -11,41 +11,41 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46abe367c9047616174a1e43dffd57861e6278e8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68811821"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808100"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
-Bu SSS, Azure Multi-Factor Authentication ve Multi-Factor Authentication hizmeti kullanılarak gerçekleştirilen yaygın soruları yanıtlar. Genel, faturalandırma modelleri, kullanıcı deneyimleri ve sorun giderme hizmeti hakkındaki sorulara bölünmüştür.
+Bu SSS, Azure Multi-Factor Authentication ve Multi-Factor Authentication hizmetini kullanarak ilgili sık sorulan soruları yanıtlar. Genel, faturalandırma modelleri, kullanıcı deneyimleri ve sorun giderme hizmeti hakkındaki sorulara bölünmüştür.
 
 ## <a name="general"></a>Genel
 
-**S: Azure Multi-Factor Authentication sunucusu kullanıcı verilerini nasıl işler?**
+**S: Azure Multi-Factor Authentication Sunucusu Kullanıcı verilerini nasıl işler?**
 
-Multi-Factor Authentication sunucusu ile, Kullanıcı verileri yalnızca şirket içi sunucularda depolanır. Kalıcı kullanıcı verileri bulutta depolanmaz. Kullanıcı iki aşamalı doğrulama gerçekleştirdiğinde Multi-Factor Authentication sunucusu kimlik doğrulaması için Azure Multi-Factor Authentication bulut hizmetine veri gönderir. Multi-Factor Authentication sunucusu ile Multi-Factor Authentication bulut hizmeti arasındaki iletişim 443 giden bağlantı noktası üzerinden Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) kullanır.
+Multi-Factor Authentication Sunucusu, Kullanıcı verileri yalnızca şirket içi sunucularda depolanır. Kalıcı kullanıcı verileri bulutta depolanmaz. Kullanıcı iki aşamalı doğrulama gerçekleştirdiğinde, Multi-Factor Authentication Sunucusu kimlik doğrulaması için verileri Azure Multi-Factor Authentication bulut hizmetine gönderir. Multi-Factor Authentication Sunucusu ile Multi-Factor Authentication bulut hizmeti arasındaki iletişim 443 giden bağlantı noktası üzerinden Güvenli Yuva Katmanı (SSL) veya Aktarım Katmanı Güvenliği (TLS) kullanır.
 
 Bulut hizmetine kimlik doğrulama istekleri gönderildiğinde, veriler kimlik doğrulama ve kullanım raporları için toplanır. İki adımlı doğrulama günlüklerinde bulunan veri alanları aşağıdaki gibidir:
 
-* **BENZERSIZ kimlik** (Kullanıcı adı ya da şirket içi Multi-Factor Authentication sunucusu KIMLIĞI)
-* **Ad ve soyadı** seçim
-* **E-posta adresi** seçim
-* **Telefon numarası** (sesli arama veya SMS kimlik doğrulaması kullanırken)
+* **BENZERSIZ kimlik** (Kullanıcı adı ya da şirket ıçı Multi-Factor Authentication sunucusu kimliği)
+* **First ve Last adı** (isteğe bağlı)
+* **E-posta adresi** (isteğe bağlı)
+* **Telefon numarası** (bir sesli arama veya SMS kimlik doğrulaması kullanırken)
 * **Cihaz belirteci** (mobil uygulama kimlik doğrulaması kullanılırken)
 * **Kimlik doğrulama modu**
 * **Kimlik doğrulama sonucu**
-* **Multi-Factor Authentication sunucusu adı**
-* **Multi-Factor Authentication sunucusu IP 'si**
+* **Multi-Factor Authentication Sunucusu adı**
+* **Multi-Factor Authentication Sunucusu IP**
 * **İstemci IP 'si** (varsa)
 
-İsteğe bağlı alanlar Multi-Factor Authentication sunucusu 'nda yapılandırılabilir.
+İsteğe bağlı alanlar Multi-Factor Authentication Sunucusu yapılandırılabilir.
 
 Doğrulama sonucu (başarı veya reddetme) ve reddedilme nedeni kimlik doğrulama verileriyle birlikte depolanır. Bu veriler, kimlik doğrulama ve kullanım raporlarında kullanılabilir.
 
-**S: Kullanıcılarıma SMS iletileri göndermek için hangi SMS kısa kodları kullanılır?**
+**S: kullanıcılarıma SMS iletileri göndermek için hangi SMS kısa kodları kullanılır?**
 
 Birleşik Devletler, Microsoft aşağıdaki SMS kısa kodlarını kullanır:
 
@@ -59,11 +59,11 @@ Kanada 'daki Microsoft, aşağıdaki SMS kısa kodlarını kullanır:
    * 759731 
    * 673801
 
-Microsoft, tutarlı SMS veya ses tabanlı çok faktörlü kimlik doğrulama istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
+Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
 
 ## <a name="billing"></a>Faturalandırma
 
-Birçok faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) veya [Azure Multi-Factor Authentication 'ın nasıl alınacağı](concept-mfa-licensing.md)hakkındaki belgelere başvurarak yanıtlanır.
+Çoğu faturalandırma sorusu, [Multi-Factor Authentication fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) veya [Azure Multi-Factor Authentication alma](concept-mfa-licensing.md)hakkında belgelere başvurarak cevaplanır.
 
 **S: Kuruluşum, kimlik doğrulaması için kullanılan telefon çağrılarını ve SMS iletilerini göndermek için ücretlendiriyor mu?**
 
@@ -73,23 +73,23 @@ Kullanıcılarınız, kendi kişisel telefon hizmetine göre aldıkları telefon
 
 **S: Kullanıcı başına faturalandırma modeli, etkin olan tüm kullanıcılar için mi, yoksa yalnızca iki adımlı doğrulama gerçekleştirenler için mi ücretlendirilir?**
 
-Faturalandırma, ayda iki adımlı doğrulama gerçekleştirdiklerinden bağımsız olarak çok faktörlü kimlik doğrulaması kullanmak üzere yapılandırılan kullanıcı sayısına bağlıdır.
+Faturalandırma, ayda iki adımlı doğrulama gerçekleştirdiklerinden bağımsız olarak Multi-Factor Authentication kullanmak üzere yapılandırılan kullanıcı sayısını temel alır.
 
-**S: Multi-Factor Authentication faturalaması nasıl çalışır?**
+**S: Multi-Factor Authentication Faturalandırma nasıl çalışır?**
 
 Kullanıcı başına veya kimlik doğrulaması başına MFA sağlayıcısı oluşturduğunuzda, kuruluşunuzun Azure aboneliği kullanım için aylık olarak faturalandırılır. Bu Faturalandırma modeli, Azure 'un sanal makinelerin ve Web sitelerinin kullanımıyla ilgili olarak benzerdir.
 
 Azure Multi-Factor Authentication için bir abonelik satın aldığınızda, kuruluşunuz yalnızca her bir kullanıcı için yıllık lisans ücretini ödersiniz. MFA lisansları ve Office 365, Azure AD Premium veya Enterprise Mobility + Security paketleri bu şekilde faturalandırılır. 
 
-[Azure Multi-Factor Authentication alma](concept-mfa-licensing.md)konusundaki seçenekleriniz hakkında daha fazla bilgi edinin.
+[Azure Multi-Factor Authentication alma](concept-mfa-licensing.md)seçenekleriniz hakkında daha fazla bilgi edinin.
 
-**S: Azure Multi-Factor Authentication 'ın ücretsiz bir sürümü var mı?**
+**S: Azure Multi-Factor Authentication 'in ücretsiz bir sürümü var mı?**
 
 Bazı örneklerde, evet.
 
 Azure yöneticileri için Multi-Factor Authentication, [Azure Portal](https://portal.azure.com) ve [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com)de dahil olmak üzere Microsoft çevrimiçi hizmetler ERIŞIM maliyeti olmadan Azure MFA özelliklerinin bir alt kümesini sunar. Bu teklif yalnızca bir MFA lisansı, paket veya tek başına tüketim tabanlı bir sağlayıcı aracılığıyla Azure MFA 'nın tam sürümüne sahip olmayan Azure Active Directory örneklerinde Genel Yöneticiler için geçerlidir. Yöneticileriniz ücretsiz sürümü kullanıyorsa ve Azure MFA 'nın tam sürümünü satın alırsanız tüm genel Yöneticiler otomatik olarak ücretli sürüme yükseltilir.
 
-Office 365 kullanıcıları için Multi-Factor Authentication, Exchange Online ve SharePoint Online dahil olmak üzere Office 365 hizmetlerine erişim için ücretsiz olarak Azure MFA özelliklerinin bir alt kümesini sunar. Bu teklif, bir Office 365 lisansı atanmış kullanıcılar için geçerlidir. buna karşılık gelen Azure Active Directory örneği, MFA lisansı, paket veya tek başına tüketim tabanlı bir sağlayıcı aracılığıyla Azure MFA 'nın tam sürümüne sahip değildir.
+Office 365 kullanıcıları için Multi-Factor Authentication, Exchange Online ve SharePoint Online dahil olmak üzere Office 365 hizmetlerine erişim için ücretsiz olarak Azure MFA özelliklerinin bir alt kümesini sunmaktadır. Bu teklif, bir Office 365 lisansı atanmış kullanıcılar için geçerlidir. buna karşılık gelen Azure Active Directory örneği, MFA lisansı, paket veya tek başına tüketim tabanlı bir sağlayıcı aracılığıyla Azure MFA 'nın tam sürümüne sahip değildir.
 
 **S: Kuruluşum, her zaman Kullanıcı başına ve kimlik doğrulaması başına tüketim faturalama modelleri arasında geçiş yapabilir mi?**
 
@@ -105,17 +105,17 @@ Bazı örneklerde, evet.
 
 Dizininizde *Kullanıcı başına* Azure Multi-Factor Authentication sağlayıcısı varsa MFA lisansları ekleyebilirsiniz. Lisansları olan kullanıcılar, Kullanıcı başına tüketim tabanlı faturalandırma tarafından sayılmaz. Lisansları olmayan kullanıcılar MFA sağlayıcısı aracılığıyla MFA için de etkinleştirilebilir. Multi-Factor Authentication kullanmak üzere yapılandırılmış tüm kullanıcılarınız için lisans satın alıp atarsanız, Azure Multi-Factor Authentication sağlayıcısını silebilirsiniz. Gelecekte lisanslarından daha fazla kullanıcınız varsa, her zaman bir Kullanıcı başına MFA sağlayıcısı oluşturabilirsiniz.
 
-Dizininizde bir *kimlik doğrulaması* Azure Multi-Factor Authentication sağlayıcısı varsa, MFA sağlayıcısı aboneliğinize bağlı olduğu sürece her bir kimlik doğrulaması için her zaman faturalandırılırsınız. Kullanıcılara MFA lisansları atayabilirsiniz, ancak her iki adımlı doğrulama isteği için faturalandırılırsınız ve bu, bir MFA lisansı atanmış birisinden gelir.
+Dizininizde bir *kimlik doğrulaması başına* Azure Multi-Factor Authentication sağlayıcısı varsa, MFA sağlayıcısı aboneliğinize bağlı olduğu sürece her bir kimlik doğrulaması için her zaman faturalandırılırsınız. Kullanıcılara MFA lisansları atayabilirsiniz, ancak her iki adımlı doğrulama isteği için faturalandırılırsınız ve bu, bir MFA lisansı atanmış birisinden gelir.
 
-**S: Kuruluşumun Azure Multi-Factor Authentication 'ı kullanmak için kimlikleri kullanması ve eşitlenmesi gerekiyor mu?**
+**S: Kuruluşumun Azure Multi-Factor Authentication kullanmak için kimlikleri kullanması ve eşitlenmesi gerekir mi?**
 
-Kuruluşunuz tüketim tabanlı bir faturalandırma modeli kullanıyorsa, Azure Active Directory isteğe bağlıdır, ancak gerekli değildir. MFA sağlayıcınız bir Azure AD kiracısına bağlı değilse, yalnızca şirket içi Azure Multi-Factor Authentication sunucusu dağıtabilirsiniz.
+Kuruluşunuz tüketim tabanlı bir faturalandırma modeli kullanıyorsa, Azure Active Directory isteğe bağlıdır, ancak gerekli değildir. MFA sağlayıcınız bir Azure AD kiracısına bağlı değilse, yalnızca şirket içi Azure Multi-Factor Authentication Sunucusu dağıtabilirsiniz.
 
 Lisans modeli için Azure Active Directory gereklidir çünkü bu lisansları, satın alırken ve dizindeki kullanıcılara atadığınızda Azure AD kiracısına eklenir.
 
 ## <a name="manage-and-support-user-accounts"></a>Kullanıcı hesaplarını yönetme ve destekleme
 
-**S: Kullanıcılarım telefonlarına yanıt almadıklarında bana ne yapmam gerekir?**
+**S: Kullanıcılarımı telefonlarına yanıt almadıklarında ne söylemem gerekir?**
 
 Kullanıcılarınızın kimlik doğrulaması için telefon araması veya SMS almak için 5 dakika içinde 5 kez deneme yapmaya çalışın. Microsoft, çağrılar ve SMS iletileri göndermek için birden çok sağlayıcı kullanır. Bu işe yaramazsa, daha fazla sorun gidermek için lütfen Microsoft ile bir destek talebi açın.
 
@@ -127,7 +127,7 @@ Kullanıcılarınızın [Son Kullanıcı sorun giderme kılavuzuna](../user-help
 
 Kullanıcının hesabını, kayıt işlemini tekrar ilerleyerek sıfırlayabilirsiniz. [Bulutta Azure Multi-Factor Authentication ile Kullanıcı ve cihaz ayarlarını yönetme](howto-mfa-userdevicesettings.md)hakkında daha fazla bilgi edinin.
 
-**S: Kullanıcılarımın biri uygulama parolalarını kullanan bir telefonu kaybedersem ne yapmam gerekir?**
+**S: kullanıcılarımın biri uygulama parolalarını kullanan bir telefonu kaybederse ne yapmam gerekir?**
 
 Yetkisiz erişimi engellemek için kullanıcının tüm uygulama parolalarını silin. Kullanıcı bir değiştirme cihazına sahip olduktan sonra parolaları yeniden oluşturabilir. [Bulutta Azure Multi-Factor Authentication ile Kullanıcı ve cihaz ayarlarını yönetme](howto-mfa-userdevicesettings.md)hakkında daha fazla bilgi edinin.
 
@@ -146,11 +146,11 @@ Kuruluşunuzda eski istemciler yoksa, kullanıcılarınızın uygulama parolalar
 
 Hizmetin güvenilirliğini etkileyebilecek denetlenebilir faktörler olduğundan, metin iletilerinin ve yanıtların iki yönlü SMS 'de teslim alınması garanti edilmez. Bu etkenlere, hedef ülke/bölge, cep telefonu taşıyıcısı ve sinyal gücü dahildir.
 
-Kullanıcılarınız genellikle SMS mesajları güvenilir bir şekilde almaya yönelik sorunlar yaşıyorsanız, bunun yerine mobil uygulama veya telefon araması yöntemini kullanmasını söyleyin. Mobil uygulama, hem hücresel hem de Wi-Fi bağlantılarında bildirim alabilir. Ayrıca, mobil uygulama, cihazın hiç sinyali olmadığında bile doğrulama kodları oluşturabilir. Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073)ve [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)için kullanılabilir.
+Kullanıcılarınız genellikle SMS mesajları güvenilir bir şekilde almaya yönelik sorunlar yaşıyorsanız, bunun yerine mobil uygulama veya telefon araması yöntemini kullanmasını söyleyin. Mobil uygulama, hem hücresel hem de Wi-Fi bağlantılarında bildirim alabilir. Ayrıca, mobil uygulama, cihazın hiç sinyali olmadığında bile doğrulama kodları oluşturabilir. Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073)ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)için kullanılabilir.
 
 Metin iletilerini kullanmanız gerekiyorsa, mümkün olduğunda iki yönlü SMS yerine tek yönlü bir SMS kullanmanızı öneririz. Tek yönlü SMS daha güvenilirdir ve kullanıcıların küresel SMS ücretlerinden başka bir ülke/bölge tarafından gönderilen bir SMS iletisine yanıt almasını engeller.
 
-**S: Sistem zaman aşımına uğramadan önce kullanıcılarınızın bir SMS iletisinden doğrulama kodunu girmesi gereken süre miktarını değiştirebilir miyim?**
+**S: sistem zaman aşımına uğramadan önce kullanıcılarınızın bir SMS iletisinden doğrulama kodunu girmesi gereken süre miktarını değiştirebilir miyim?**
 
 Bazı durumlarda, evet. 
 
@@ -166,28 +166,28 @@ Azure MFA sunucusu ile iki yönlü SMS için, MFA Yönetim Portalı zaman aşım
 
 Bulutta Azure MFA ile tek yönlü bir SMS için (AD FS bağdaştırıcısı veya ağ Ilkesi sunucu uzantısı dahil), zaman aşımı ayarını yapılandıramazsınız. Azure AD, 180 saniyelik doğrulama kodunu depolar. 
 
-**S: Azure Multi-Factor Authentication sunucusu ile donanım belirteçlerini kullanabilir miyim?**
+**S: Azure Multi-Factor Authentication Sunucusu ile donanım belirteçlerini kullanabilir miyim?**
 
-Azure Multi-Factor Authentication sunucusu kullanıyorsanız, üçüncü taraf açık kimlik doğrulaması (OATH) zaman tabanlı, bir kerelik parola (TOTP) belirteçlerini içeri aktarabilir ve ardından bunları iki adımlı doğrulama için kullanabilirsiniz.
+Azure Multi-Factor Authentication Sunucusu kullanıyorsanız, üçüncü taraf açık kimlik doğrulaması (OATH) zaman tabanlı, bir kerelik parola (TOTP) belirteçlerini içeri aktarabilir ve ardından bunları iki adımlı doğrulama için kullanabilirsiniz.
 
-Gizli anahtarı bir CSV dosyasına yerleştirip Azure Multi-Factor Authentication sunucusu 'na aktarırsanız, OATH TOTP belirteçleri olan Activeıdentity belirteçlerini kullanabilirsiniz. İstemci sistem kullanıcı girişini kabul edemedikçe, Active Directory Federasyon Hizmetleri (AD FS) (ADFS), Internet Information Server (IIS) form tabanlı kimlik doğrulaması ve uzaktan kimlik doğrulaması Içeri arama Kullanıcı Hizmeti (RADIUS) ile OATH belirteçlerini kullanabilirsiniz.
+Gizli anahtarı bir CSV dosyasına yerleştirip Azure Multi-Factor Authentication Sunucusu içeri aktarırsanız, OATH TOTP belirteçleri olan Activeıdentity belirteçlerini kullanabilirsiniz. İstemci sistem kullanıcı girişini kabul edebileceği sürece Active Directory Federasyon Hizmetleri (AD FS) (ADFS), Internet Information Server (IIS) form tabanlı kimlik doğrulaması ve Arayan Kullanıcının Uzaktan Kimliğini Doğrulama Hizmeti (RADIUS) ile OATH belirteçleri kullanabilirsiniz.
 
 Üçüncü taraf OATH TOTP belirteçlerini aşağıdaki biçimleriyle içeri aktarabilirsiniz:  
 
 - Taşınabilir simetrik anahtar kapsayıcısı (PSKC)  
 - Dosya bir seri numarası, temel 32 biçiminde bir gizli anahtar ve bir zaman aralığı içeriyorsa CSV  
 
-**S: Terminal hizmetlerini güvenli hale getirmek için Azure Multi-Factor Authentication sunucusu kullanabilir miyim?**
+**S: Terminal Hizmetleri 'ni güvenli hale getirmek için Azure Multi-Factor Authentication Sunucusu kullanabilir miyim?**
 
 Evet, ancak Windows Server 2012 R2 veya sonraki bir sürümünü kullanıyorsanız, Terminal Hizmetleri 'ni yalnızca Uzak Masaüstü Ağ Geçidi (RD Ağ Geçidi) kullanarak güvenli hale getirebilirsiniz.
 
-Windows Server 2012 R2 'deki güvenlik değişiklikleri, Azure Multi-Factor Authentication sunucusu 'nun Windows Server 2012 ve önceki sürümlerde yerel güvenlik yetkilisi (LSA) Güvenlik paketine bağlanmasını değiştirdi. Windows Server 2012 veya önceki sürümlerde Terminal Hizmetleri sürümleri için [bir uygulamayı Windows kimlik doğrulaması ile güvenli hale](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)getirebilirsiniz. Windows Server 2012 R2 kullanıyorsanız, RD Ağ Geçidi gerekir.
+Windows Server 2012 R2 'deki güvenlik değişiklikleri, Azure Multi-Factor Authentication Sunucusu 'nin Windows Server 2012 ve önceki sürümlerde yerel güvenlik yetkilisi (LSA) Güvenlik paketine bağlanmasını değiştirdi. Windows Server 2012 veya önceki sürümlerde Terminal Hizmetleri sürümleri için [bir uygulamayı Windows kimlik doğrulaması ile güvenli hale](howto-mfaserver-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)getirebilirsiniz. Windows Server 2012 R2 kullanıyorsanız, RD Ağ Geçidi gerekir.
 
-**S: MFA sunucusu 'nda arayan KIMLIĞINI yapılandırdım, ancak Kullanıcılarım anonim bir çağırandan çok faktörlü kimlik doğrulama çağrıları almaya devam ediyor.**
+**S: MFA sunucusunda arayan KIMLIĞINI yapılandırdım, ancak Kullanıcılarım anonim bir arayandan Multi-Factor Authentication çağrılar alıyor.**
 
-Multi-Factor Authentication çağrıları ortak telefon ağı üzerinden yerleştirildiğinde, bazen arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, çok faktörlü kimlik doğrulama sistemi tarafından her zaman göndermesi mümkün olsa da arayan KIMLIĞI garanti edilmez.
+Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazen arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Multi-Factor Authentication sistemi her zaman tarafından gönderilse de arayan KIMLIĞI garanti edilmez.
 
-**S: Kullanıcılardan neden güvenlik bilgilerini kaydetmesi istenir?**
+**S: Kullanıcılarım neden güvenlik bilgilerini kaydetmeliyim?**
 Kullanıcılardan güvenlik bilgilerini kaydetmesi istenmesinin çeşitli nedenleri vardır:
 
 - Kullanıcı, Azure AD 'de yöneticileri tarafından MFA için etkinleştirildi, ancak henüz hesabı için güvenlik bilgilerine kaydolmadı.
@@ -200,7 +200,7 @@ Kullanıcılardan güvenlik bilgilerini kaydetmesi istenmesinin çeşitli nedenl
 
 ## <a name="errors"></a>Hatalar
 
-**S: Mobil uygulama bildirimleri kullanılırken kullanıcıların "etkinleştirilmiş bir hesap için kimlik doğrulama isteği değildir" hata iletisiyle gördükleri ne yapması gerekir?**
+**S: mobil uygulama bildirimleri kullanılırken kullanıcılar "etkinleştirilmiş bir hesap için kimlik doğrulama isteği değildir" hata iletisi görür.**
 
 Bu yordama, hesaplarını mobil uygulamadan kaldırmak ve sonra yeniden eklemek için bu yordamı takip etmek istediğinizi söyleyin:
 
@@ -209,7 +209,7 @@ Bu yordama, hesaplarını mobil uygulamadan kaldırmak ve sonra yeniden eklemek 
 3. Mevcut hesabı mobil uygulamadan kaldırın.
 4. **Yapılandır**' a tıklayın ve ardından mobil uygulamayı yeniden yapılandırmak için yönergeleri izleyin.
 
-**S: Tarayıcı olmayan bir uygulamada oturum açarken kullanıcılara bir 0x800434D4L hata iletisi görürseniz ne yapması gerekir?**
+**S: tarayıcı olmayan bir uygulamada oturum açarken kullanıcılara bir 0x800434D4L hata iletisi görürseniz ne yapması gerekir?**
 
 Bir yerel bilgisayara yüklenmiş ve iki adımlı doğrulama gerektiren hesaplarla çalışmayan bir tarayıcı olmayan uygulamada oturum açmaya çalıştığınızda 0x800434D4L hatası oluşur.
 
@@ -222,4 +222,4 @@ Sorunuz burada yanıtlanmazsa, lütfen sayfanın altındaki açıklamalarda bır
 * [Microsoft desteği bilgi bankasında](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) , yaygın teknik sorunların çözümlerini arayın.
 * Topluluk aracılığıyla teknik sorular ve yanıtlar arayın ve bunları inceleyin veya [Azure Active Directory forumlarında](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)kendi sorunuzu sorun.
 * Eski bir PhoneFactor müşterisiyseniz ve sorularınız varsa veya bir parolayı sıfırlamanıza yardımcı olması gerekiyorsa, bir destek talebi açmak için [parola sıfırlama](mailto:phonefactorsupport@microsoft.com) bağlantısını kullanın.
-* [Azure Multi-Factor Authentication sunucusu (PhoneFactor) desteği](https://support.microsoft.com/oas/default.aspx?prid=14947)aracılığıyla destek uzmanıyla iletişim kurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfayı, belirli hata kodunu, belirli oturum KIMLIĞINI ve hatayı seçen kullanıcının KIMLIĞINI içerir.
+* [Azure Multi-Factor Authentication sunucusu (PhoneFactor) desteğiyle](https://support.microsoft.com/oas/default.aspx?prid=14947)destek uzmanıyla iletişim kurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfayı, belirli hata kodunu, belirli oturum KIMLIĞINI ve hatayı seçen kullanıcının KIMLIĞINI içerir.

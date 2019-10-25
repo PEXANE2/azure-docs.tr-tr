@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 6f3f0e0b8b5098784359e7703c4a165654ff9894
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179200"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808198"
 ---
 # <a name="create-a-simple-query-in-azure-search"></a>Azure Search basit sorgu oluşturma
 
@@ -29,11 +29,11 @@ Alternatif sorgu söz dizimi, belirsiz ve joker karakter araması gibi daha karm
 
 Aşağıdaki örnekler, [New York OpenData girişiminin City](https://nycopendata.socrata.com/) tarafından sağlanan bir veri kümesine dayalı olarak bulunan işleri içeren bir NYC işleri arama dizininden yararlanır. Bu verilerin geçerli veya tamamlanmış olarak kabul edilmemelidir. Dizin, Microsoft tarafından sağlanmış bir korumalı alan hizmetidir ve bu sorguları denemek için bir Azure aboneliğine gerek duymayın veya Azure Search.
 
-Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz [. hızlı başlangıç: Postman](search-get-started-postman.md)kullanarak Azure Search REST API araştırın.
+Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz. [hızlı başlangıç: Postman kullanarak Azure Search REST API araştırma](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>İstek üst bilgisini ayarlama
 
-1. İstek üstbilgisinde, **Içerik türünü** olarak `application/json`ayarlayın.
+1. İstek üstbilgisinde, **Içerik türünü** `application/json`olarak ayarlayın.
 
 2. Bir **API anahtarı**ekleyin ve bu dizeye ayarlayın: `252044BE3886FE4A8E3BAA4F595114BB`. Bu, NYC Işleri dizinini barındıran korumalı alan arama hizmeti için bir sorgu anahtarıdır.
 
@@ -49,11 +49,11 @@ Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bi
 
 URL kompozisyonu aşağıdaki öğelere sahiptir:
 
-+ **`https://azs-playground.search.windows.net/`** , Azure Search geliştirme ekibi tarafından tutulan bir korumalı alan arama hizmetidir. 
-+ **`indexes/nycjobs/`** Bu hizmetin dizinler koleksiyonundaki NYC Işleri dizinidir. İstekte hem hizmet adı hem de dizin gereklidir.
-+ **`docs`** , aranabilir tüm içeriği içeren belge koleksiyonudur. İstek üstbilgisinde belirtilen sorgu api anahtarı yalnızca belge koleksiyonunu hedefleyen okuma işlemlerinde kullanılabilir.
-+ **`api-version=2019-05-06`** her istekte gerekli bir parametre olan api sürümünü ayarlar.
-+ **`search=*`** İlk sorguda null olan sorgu dizesi, ilk 50 sonucunu döndürüyor (varsayılan olarak).
++ **`https://azs-playground.search.windows.net/`** , Azure Search geliştirme ekibinin tuttuğu bir korumalı alan arama hizmetidir. 
++ **`indexes/nycjobs/`** , bu hizmetin dizinler koleksiyonundaki NYC işleri dizinidir. İstekte hem hizmet adı hem de dizin gereklidir.
++ **`docs`** , tüm aranabilir içeriği içeren belge koleksiyonudur. İstek üstbilgisinde belirtilen sorgu api anahtarı yalnızca belge koleksiyonunu hedefleyen okuma işlemlerinde kullanılabilir.
++ **`api-version=2019-05-06`** , her istekte gerekli bir parametre olan api sürümünü ayarlar.
++ **`search=*`** , ilk sorgu null olduğunda ilk 50 sonucunu döndüren sorgu dizesidir (varsayılan olarak).
 
 ## <a name="send-your-first-query"></a>İlk sorgunuzu gönderin
 
@@ -65,15 +65,15 @@ Bu URL 'YI bir REST istemcisine doğrulama adımı olarak yapıştırın ve belg
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-Sorgu dizesi **`search=*`** , null veya boş arama için belirtilmemiş bir arama eşdeğerdir. Özellikle faydalı değildir, ancak yapabileceğiniz en basit aramadır.
+Sorgu dizesi **`search=*`** , null veya boş aramaya bir belirtilmemiş arama eşdeğerdir. Özellikle faydalı değildir, ancak yapabileceğiniz en basit aramadır.
 
-İsteğe bağlı olarak, arama **`$count=true`** ölçütleriyle eşleşen belgelerin sayısını döndürmek için URL 'ye ekleyebilirsiniz. Boş bir arama dizesinde bu, dizindeki tüm belgelerdir (NYC Işleri durumunda 2800 hakkında).
+İsteğe bağlı olarak, arama ölçütleriyle eşleşen belgelerin sayısını döndürmek için URL 'ye **`$count=true`** ekleyebilirsiniz. Boş bir arama dizesinde bu, dizindeki tüm belgelerdir (NYC Işleri durumunda 2800 hakkında).
 
 ## <a name="how-to-invoke-simple-query-parsing"></a>Basit sorgu ayrıştırmayı çağırma
 
 Etkileşimli sorgular için, herhangi bir şey belirtmeniz gerekmez: Simple varsayılandır. Kodda, daha önce tam sorgu söz dizimi için **QueryType = Full** olarak çağrılırsa, varsayılan değer **QueryType = Simple**ile sıfırlanabilir.
 
-## <a name="example-1-field-scoped-query"></a>Örnek 1: Alan kapsamlı sorgu
+## <a name="example-1-field-scoped-query"></a>Örnek 1: alan kapsamlı sorgu
 
 Bu ilk örnek, ayrıştırmaya özgü değildir, ancak ilk temel sorgu kavramını tanıtmaya neden olacak: kapsama. Bu örnek, yürütmeyi ve yalnızca birkaç belirli alana yanıt olarak sorgu sağlar. Araç Postman veya arama Gezgini olduğunda okunabilir bir JSON yanıtının nasıl ayarlanacağını bilmek önemlidir. 
 
@@ -107,19 +107,19 @@ Yanıtta arama puanı olduğunu fark etmiş olabilirsiniz. Arama tam metin arama
 
 Bu örnek bir bit normaldir, ancak arama davranışları değerlendirilirken, belirli bir belgenin tüm içeriğini incelemek isteyebilirsiniz. bu durum, sonuçların neden dahil edildiğini veya bunun dışında bırakıldığını anlayın. Tek bir belgeyi tümüyle döndürmek için, belge KIMLIĞINI geçirmek üzere bir [arama işlemi](https://docs.microsoft.com/rest/api/searchservice/lookup-document) kullanın.
 
-Tüm belgeler benzersiz bir tanımlayıcıya sahiptir. Bir arama sorgusunun sözdizimini denemek için ilk olarak belge kimliklerinin bir listesini döndürün, böylece kullanmak üzere bir tane bulabilirsiniz. NYC işleri için tanımlayıcılar `id` alanında depolanır.
+Tüm belgeler benzersiz bir tanımlayıcıya sahiptir. Bir arama sorgusunun sözdizimini denemek için ilk olarak belge kimliklerinin bir listesini döndürün, böylece kullanmak üzere bir tane bulabilirsiniz. NYC Işleri için, tanımlayıcılar `id` alanında depolanır.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
-Sonraki örnek, bir önceki yanıtta ilk görüntülenen `id` "9e1e3af9-0660-4E00-AF51-9b654925a2d5" temelinde belirli bir belgeyi döndüren arama sorgusudur. Aşağıdaki sorgu, yalnızca seçili alanları değil, tüm belgeyi döndürür. 
+Sonraki örnek, bir önceki yanıtta ilk görüntülenen `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5" temelinde belirli bir belgeyi döndüren arama sorgusudur. Aşağıdaki sorgu, yalnızca seçili alanları değil, tüm belgeyi döndürür. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
-## <a name="example-3-filter-queries"></a>Örnek 3: Filtre sorguları
+## <a name="example-3-filter-queries"></a>Örnek 3: sorguları filtrele
 
 [Filtre sözdizimi](https://docs.microsoft.com/azure/search/search-query-odata-filter) , **aramayla** veya kendisiyle kullanabileceğiniz bir OData deyimidir. Arama parametresi olmayan tek başına bir filtre, filtre ifadesi ilgilendiğiniz belgeleri tamamen niteleyebiliyorlarsa yararlıdır. Sorgu dizesi olmadan, sözcük temelli veya dil analizi yoktur, Puanlama yoktur (Tüm puanlar 1) ve derecelendirme yoktur. Arama dizesinin boş olduğuna dikkat edin.
 
@@ -128,7 +128,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "select=job_id, business_title, agency, salary_range_from",
+      "select": "job_id, business_title, agency, salary_range_from",
       "count": "true"
     }
 ```
@@ -143,7 +143,7 @@ Bunu al kullanarak Postman 'da denemek istiyorsanız, bu dizeyi yapıştırabili
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-Filtre ve arama **`search.ismatch*()`** 'yı birleştirmenin bir diğer güçlü yolu, filtre içinde bir arama sorgusu kullanabileceğiniz bir filtre ifadesinde kullanmaktır. Bu filtre ifadesi plan, Planner, planlama ve benzeri dönem dahil business_title seçmek için *planda* bir joker karakter kullanır.
+Filtre ve arama birleştirmek için kullanabileceğiniz başka bir yöntem de, filtre içinde bir arama sorgusu kullanabileceğiniz bir filtre ifadesinde **`search.ismatch*()`** . Bu filtre ifadesi plan, Planner, planlama ve benzeri dönem dahil business_title seçmek için *planda* bir joker karakter kullanır.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
@@ -153,7 +153,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-4-range-filters"></a>Örnek 4: Aralık filtreleri
 
-Aralık filtreleme, herhangi bir **`$filter`** veri türü için ifadeler aracılığıyla desteklenir. Aşağıdaki örneklerde sayısal ve dize alanları üzerinde arama yapılır. 
+Aralık filtreleme, herhangi bir veri türü için **`$filter`** ifadeler aracılığıyla desteklenir. Aşağıdaki örneklerde sayısal ve dize alanları üzerinde arama yapılır. 
 
 Veri türleri, Aralık filtrelerinde önemlidir ve sayısal veriler sayısal alanlarda ve dize alanlarında dize verilerinde en iyi şekilde çalışır. Sayısal dizeler Azure Search karşılaştırılabilir olmadığından, dize alanlarındaki sayısal veriler aralıklar için uygun değildir. 
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 > [!NOTE]
 > Değer aralıkları üzerinde her zaman, ortak bir arama uygulaması gereksinimidir. Model gezinti yapıları için filtre oluşturma hakkında daha fazla bilgi ve örnek için, bkz. ["bir aralığa göre filtrele", çok *yönlü gezintiyi uygulama*](search-faceted-navigation.md#filter-based-on-a-range).
 
-## <a name="example-5-geo-search"></a>Örnek 5: Coğrafi arama
+## <a name="example-5-geo-search"></a>Örnek 5: coğrafi arama
 
 Örnek dizin, enlem ve boylam koordinatları içeren bir geo_location alanı içerir. Bu örnek, bir başlangıç noktasının çevresi içindeki belgelerde, sağladığınız rastgele bir uzaklığa (kilometre cinsinden) göre filtreleyen [coğrafi. Distance işlevini](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) kullanır. Sorgunun yüzey alanını azaltmak veya büyütmek için sorgudaki son değeri ayarlayabilirsiniz (4).
 
@@ -221,11 +221,11 @@ Bunu, GET ile Postman 'da da deneyebilirsiniz:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>Örnek 6: Arama hassasiyeti
+## <a name="example-6-search-precision"></a>Örnek 6: arama hassasiyeti
 
 Terim sorguları, bağımsız olarak değerlendirilen ve bağımsız olarak değerlendirilen tek koşullardır. Tümcecik sorguları, tırnak işaretleri içine alınır ve tam bir dize olarak değerlendirilir. Eşleşmenin hassasiyeti, işleçler ve searchMode tarafından denetlenir.
 
-Örnek 1: **`&search=fire`** tüm eşleşmelerin belgede bir yerde harekete geçen kelimeyi içerdiği 150 sonucunu döndürür.
+Örnek 1: **`&search=fire`** , tüm eşleşmelerin belgede bir yerde harekete geçen kelimeyi içerdiği 150 sonucunu döndürür.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
@@ -237,15 +237,15 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-Örnek 3: **`&search="fire department"`** 82 sonucunu döndürür. Dizeyi tırnak işaretleriyle çevrelemek, her iki terim üzerinde de tam bir aramadır ve eşleşmeler, Birleşik terimlerin bulunduğu dizindeki simgeleştirilmiş koşullarda bulunur. Bu, şöyle **`search=+fire +department`** bir aramanın neden eşit olmadığı açıklanmaktadır. Her iki terim de gereklidir, ancak bağımsız olarak taranarak yapılır. 
+Örnek 3: **`&search="fire department"`** 82 sonucunu döndürür. Dizeyi tırnak işaretleriyle çevrelemek, her iki terim üzerinde de tam bir aramadır ve eşleşmeler, Birleşik terimlerin bulunduğu dizindeki simgeleştirilmiş koşullarda bulunur. Bu, **`search=+fire +department`** gibi bir aramanın neden eşit olmadığı açıklanmaktadır. Her iki terim de gereklidir, ancak bağımsız olarak taranarak yapılır. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>Örnek 7: SearchMode ile Boole değerleri
+## <a name="example-7-booleans-with-searchmode"></a>Örnek 7: searchMode ile Boolean
 
-Basit sözdizimi, karakter (`+, -, |`) biçiminde Boole işleçlerini destekler. SearchMode parametresi duyarlık ve geri çekme arasındaki avantajları bildirir; `searchMode=any` favoring geri çağırma (herhangi bir ölçütle eşleşen bir belgeyi sonuç kümesi için nitelendirir) ve `searchMode=all` favoring hassasiyeti (tüm kriterlerin eşleşmesi gerekir). Varsayılan `searchMode=any`olarak, birden çok işleçle bir sorguyu yığınlama ve daha da dar sonuçlar yerine daha geniş bir değer elde ediyorsanız kafa karıştırıcı olabilecek bir değer. Bu durum özellikle doğru DEĞILDIR; burada sonuçlar, belirli bir terimi "içermeyen" tüm belgeleri içerir.
+Basit sözdizimi, karakter biçimindeki Boole işleçlerini destekler (`+, -, |`). SearchMode parametresi duyarlık ve geri çekme arasındaki avantajları bildirir; `searchMode=any` favoring geri çağırma (herhangi bir ölçütle eşleşen bir belgeyi sonuç kümesi için nitelendirir) ve `searchMode=all` favoring hassasiyeti (tüm kriterlerin eşleşmesi gerekir). Varsayılan değer, birden çok işleçle bir sorguyu yığınlama ve daha da dar sonuçlar yerine daha geniş bir değer elde ediyorsanız kafa karıştırıcı olabilecek `searchMode=any`. Bu durum özellikle doğru DEĞILDIR; burada sonuçlar, belirli bir terimi "içermeyen" tüm belgeleri içerir.
 
 Varsayılan searchMode (any) kullanıldığında, 2800 belge döndürülür: çok parçalı "yangın departmanı" terimini ve ayrıca "MetroTech Center" terimine sahip olmayan tüm belgeleri içeren olanlar.
 
@@ -255,14 +255,14 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Arama modu any](media/search-query-simple-examples/searchmodeany.png)
 
-SearchMode ' yi `all` değiştirmek, ölçütlerde bir toplu etki uygulamak ve daha küçük bir sonuç kümesi-21 belge ("Fire Departmanı" ifadesinin tamamını içeren belgelerden ve bu işlerin tamamını MetroTech Center adresinde ortaya çıkar.
+SearchMode ' ı `all` değiştirmek, ölçütlerde birikimli bir etkiye zorlar ve "Fire Departmanı" ifadesinin tamamını içeren belgelerden ve bu işlerin tümünü MetroTech Center adresinde içeren belgelerden oluşan daha küçük bir sonuç kümesi-21 belgesi döndürür.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
   ![Arama modu tümü](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>Örnek 8: Sonuçları yapılandırma
+## <a name="example-8-structuring-results"></a>Örnek 8: sonuçları yapılandırma
 
 Birçok parametre, arama sonuçlarında hangi alanların olduğunu, her toplu işte döndürülen belge sayısını ve sıralama düzenini denetler. Bu örnek, **$Select** ifadesini ve tam arama ölçütlerini kullanarak sonuçları, 82 eşleşme döndüren belirli alanlarla sınırlayan önceki örneklerden birkaç örnekten daha fazla örnektir 
 

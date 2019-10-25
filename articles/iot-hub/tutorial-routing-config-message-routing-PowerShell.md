@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 2c0e66bfe5ec332d25b93305cb2ac8d172ca130d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 8b054fd8008b926cf63a28b0730589eaece5042a
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535138"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809400"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure PowerShell kullanma
 
@@ -34,13 +34,13 @@ PowerShell ile kaynakları oluşturarak başlayın.
 
 ### <a name="use-powershell-to-create-your-base-resources"></a>Temel kaynaklarınızı oluşturmak için PowerShell 'i kullanma
 
+Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın ve ENTER tuşuna basın. Betiği tek seferde bir satır çalıştırır. Betiğin bu ilk bölümü, bu öğreticide depolama hesabı, IoT Hub, Service Bus ad alanı ve Service Bus kuyruğu dahil temel kaynakları oluşturur. Öğreticiye giderek, her bir komut bloğunu kopyalayıp çalıştırmak için Cloud Shell yapıştırın.
+
 IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue*adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz. 
 
 > [!IMPORTANT]
 > İlk betikte ayarlanan değişkenler de yönlendirme betiği tarafından kullanılır, bu nedenle tüm betiği aynı Cloud Shell oturumunda çalıştırın. Yönlendirmeyi ayarlamak için betiği çalıştırmak üzere yeni bir oturum açarsanız, bazı değişkenlerin değerleri eksik olur. 
 >
-
-Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın ve ENTER tuşuna basın. Betiği tek seferde bir satır çalıştırır. Betiğin bu ilk bölümü, bu öğreticide depolama hesabı, IoT Hub, Service Bus ad alanı ve Service Bus kuyruğu dahil temel kaynakları oluşturur. Öğreticiye giderek, her bir komut bloğunu kopyalayıp çalıştırmak için Cloud Shell yapıştırın.
 
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
@@ -140,29 +140,29 @@ Bir yönlendirme uç noktası oluşturmak için [Add-AzIotHubRoutingEndpoint](/p
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-Bu değişkenler ayarlanır:
+Bunlar, Cloud Shell oturumunuz dahilinde ayarlanması gereken komut dosyası tarafından kullanılan değişkenlerdir:
 
-**resourceGroup**: Bu alanın iki oluşumu vardır--her ikisini de kaynak grubunuza ayarlayın.
+**resourceGroup**: Bu alanın iki oluşumu vardır: her ikisini de kaynak grubunuza ayarlayın.
 
 **ad**: Bu alan, yönlendirmenin uygulanacağı IoT Hub adıdır.
 
 **EndpointName**: Bu alan, uç noktayı tanımlayan addır. 
 
-**EndpointType**: Bu alan uç nokta türüdür. `azurestoragecontainer`Bu değer `eventhub` ,,veya`servicebustopic`olarakayarlanmalıdır. `servicebusqueue` Burada amacınıza göre olarak `azurestoragecontainer`ayarlayın.
+**EndpointType**: Bu alan bitiş noktası türüdür. Bu değer `azurestoragecontainer`, `eventhub`, `servicebusqueue`veya `servicebustopic`olarak ayarlanmalıdır. Burada amacınıza göre `azurestoragecontainer`olarak ayarlayın.
 
-**abonelik kimliği**: Bu alan, Azure hesabınız için SubscriptionID olarak ayarlanır.
+**SubscriptionID**: Bu alan, Azure hesabınız için SubscriptionID olarak ayarlanır.
 
 **StorageConnectionString**: Bu değer, önceki betikte ayarlanan depolama hesabından alınır. Bu, depolama hesabına erişmek için yönlendirme tarafından kullanılır.
 
 **ContainerName**: Bu alan, depolama hesabındaki, verilerin yazılacağı kapsayıcının adıdır.
 
-**Kodlama**: Bu alanı ya da `AVRO` `JSON`olarak ayarlayın. Bu, depolanan verilerin biçimini belirler. Varsayılan değer AVRO ' dir.
+**Kodlama**: bu alanı `AVRO` ya da `JSON`olarak ayarlayın. Bu, depolanan verilerin biçimini belirler. Varsayılan değer AVRO ' dir.
 
 **RouteName**: Bu alan, ayarladığınız yolun adıdır. 
 
 **koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Depolamaya yönlendirilmekte olan iletilerin sorgu koşulu `level="storage"`.
 
-**etkin**: Bu alan varsayılan olarak `true`, ileti yolunun oluşturulduktan sonra etkinleştirilmesi gerektiğini gösterir.
+**etkin**: bu alan `true`varsayılan olarak, ileti yolunun oluşturulduktan sonra etkinleştirilmesi gerektiğini gösterir.
 
 Bu betiği kopyalayın ve Cloud Shell pencerenize yapıştırın.
 
@@ -208,7 +208,7 @@ Add-AzIotHubRoute `
 
 ### <a name="route-to-a-service-bus-queue"></a>Service Bus kuyruğuna yönlendirme
 
-Şimdi Service Bus kuyruğu için yönlendirmeyi ayarlayın. Service Bus sırasının bağlantı dizesini almak için, doğru haklara sahip bir yetkilendirme kuralı oluşturmanız gerekir. Aşağıdaki betik adlı `sbauthrule`Service Bus kuyruğu için bir yetkilendirme kuralı oluşturur ve haklarını olarak `Listen Manage Send`ayarlar. Bu yetkilendirme kuralı kurulduktan sonra, kuyruğa yönelik bağlantı dizesini almak için bu ayarı kullanabilirsiniz.
+Şimdi Service Bus kuyruğu için yönlendirmeyi ayarlayın. Service Bus sırasının bağlantı dizesini almak için, doğru haklara sahip bir yetkilendirme kuralı oluşturmanız gerekir. Aşağıdaki betik, `sbauthrule`adlı Service Bus kuyruğu için bir yetkilendirme kuralı oluşturur ve hakları `Listen Manage Send`olarak ayarlar. Bu yetkilendirme kuralı kurulduktan sonra, kuyruğa yönelik bağlantı dizesini almak için bu ayarı kullanabilirsiniz.
 
 ```powershell
 ##### ROUTING FOR SERVICE BUS QUEUE #####
@@ -232,15 +232,15 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-Şimdi Service Bus kuyruğu için yönlendirme uç noktasını ve ileti yolunu ayarlayın. Bu değişkenler ayarlanır:
+Şimdi Service Bus kuyruğu için yönlendirme uç noktasını ve ileti yolunu ayarlayın. Bunlar, Cloud Shell oturumunuz dahilinde ayarlanması gereken komut dosyası tarafından kullanılan değişkenlerdir:
 
 **EndpointName**: Bu alan, uç noktayı tanımlayan addır. 
 
-**EndpointType**: Bu alan uç nokta türüdür. `azurestoragecontainer`Bu değer `eventhub` ,,veya`servicebustopic`olarakayarlanmalıdır. `servicebusqueue` Burada amacınıza göre olarak `servicebusqueue`ayarlayın.
+**EndpointType**: Bu alan bitiş noktası türüdür. Bu değer `azurestoragecontainer`, `eventhub`, `servicebusqueue`veya `servicebustopic`olarak ayarlanmalıdır. Burada amacınıza göre `servicebusqueue`olarak ayarlayın.
 
 **RouteName**: Bu alan, ayarladığınız yolun adıdır. 
 
-**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Service Bus kuyruğuna `level="critical"`yönlendirilmekte olan iletilerin sorgu koşulu.
+**koşul**: Bu alan, bu uç noktaya gönderilen iletileri filtrelemek için kullanılan sorgudur. Service Bus kuyruğuna yönlendirilmekte olan iletilerin sorgu koşulu `level="critical"`.
 
 Service Bus kuyruğu için ileti yönlendirmenin Azure PowerShell aşağıda verilmiştir.
 

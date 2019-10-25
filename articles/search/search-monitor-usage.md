@@ -1,24 +1,24 @@
 ---
-title: Arama hizmeti için kaynak kullanımını ve sorgu ölçümlerini izleme-Azure Search
-description: Günlüğe kaydetmeyi etkinleştirin, sorgu etkinliği ölçümlerini, kaynak kullanımını ve bir Azure Search hizmetinden diğer sistem verilerini alın.
-author: HeidiSteen
+title: Kaynak kullanımını ve sorgu ölçümlerini izleme
+titleSuffix: Azure Cognitive Search
+description: Günlüğe kaydetmeyi etkinleştirin, sorgu etkinliği ölçümlerini, kaynak kullanımını ve Azure Bilişsel Arama hizmetinden diğer sistem verilerini alın.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72331204"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793497"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Kaynak tüketimini ve sorgu etkinliğini izleme Azure Search
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Azure Bilişsel Arama kaynak tüketimini ve sorgu etkinliğini izleme
 
-Azure Search hizmetinizin Genel Bakış sayfasında, kaynak kullanımı ve sorgu ölçümleri hakkındaki sistem verilerini ve daha fazla dizin, Dizin Oluşturucu ve veri kaynağı oluşturmak için ne kadar kota kullanılabildiğini görüntüleyebilirsiniz. Ayrıca, Log Analytics 'i veya kalıcı veri toplama için kullanılan başka bir kaynağı yapılandırmak üzere portalını kullanabilirsiniz. 
+Azure Bilişsel Arama hizmetinizin Genel Bakış sayfasında, kaynak kullanımı ve sorgu ölçümleri hakkındaki sistem verilerini ve daha fazla dizin, Dizin Oluşturucu ve veri kaynağı oluşturmak için ne kadar kota kullanılabildiğini görüntüleyebilirsiniz. Ayrıca, Log Analytics 'i veya kalıcı veri toplama için kullanılan başka bir kaynağı yapılandırmak üzere portalını kullanabilirsiniz. 
 
 Günlükleri ayarlama, kendi kendine tanılama ve işletimsel geçmişi koruma için kullanışlıdır. Dahili olarak, bir destek bileti verirseniz araştırma ve Analize yetecek kadar, günlük arka uçta kısa bir süre boyunca Günlükler bulunur. Denetim ve günlük bilgilerine erişim istiyorsanız, bu makalede açıklanan çözümlerden birini ayarlamanız gerekir.
 
@@ -52,7 +52,7 @@ Bir dizin oluşturma veya bir veri kaynağını silme gibi hizmet içi görevler
 
 ## <a name="add-on-monitoring-solutions"></a>Eklenti izleme çözümleri
 
-Azure Search, yönettiği nesnelerden daha fazla veri depolamaz, bu da günlük verilerinin dışarıdan depolanması gerektiği anlamına gelir. Günlük verilerini kalıcı hale getirmek istiyorsanız aşağıdaki kaynakları yapılandırabilirsiniz. 
+Azure Bilişsel Arama, yönettiği nesnelerden daha fazla veri depolamaz, bu da günlük verilerinin dışarıdan depolanması gerektiği anlamına gelir. Günlük verilerini kalıcı hale getirmek istiyorsanız aşağıdaki kaynakları yapılandırabilirsiniz. 
 
 Aşağıdaki tabloda, günlükleri depolama ve Application Insights aracılığıyla hizmet işlemlerinin ve sorgu iş yüklerinin derinlemesine izlenmesini ekleme seçenekleri karşılaştırılmaktadır.
 
@@ -64,17 +64,17 @@ Aşağıdaki tabloda, günlükleri depolama ve Application Insights aracılığ�
 
 Azure aboneliklerinizin kullanım ömrü boyunca ücretsiz olarak deneyebilmeniz için Azure Izleyici günlükleri ve BLOB depolama alanı ücretsiz bir hizmet olarak kullanılabilir. Application Insights, uygulama veri boyutu belirli limitlerin altında olduğu sürece, kaydolmak ve kullanmak ücretsizdir (Ayrıntılar için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/monitor/) bakın).
 
-Sonraki bölümde, Azure Search işlemler tarafından oluşturulan günlük verilerini toplamak ve erişmek için Azure Blob depolamayı etkinleştirme ve kullanma adımlarında size yol gösterilir.
+Sonraki bölümde, Azure Bilişsel Arama işlemleri tarafından oluşturulan günlük verilerini toplamak ve erişmek için Azure Blob Storage 'ı etkinleştirme ve kullanma adımlarında adım adım gösterilmektedir.
 
 ## <a name="enable-logging"></a>Günlü kaydını etkinleştir
 
-Dizin oluşturma ve sorgu iş yükleri için günlüğe kaydetme varsayılan olarak kapalıdır ve hem günlük altyapısı hem de uzun vadeli dış depolama için eklenti çözümlerine bağımlıdır. Yalnızca Azure Search ' deki kalıcı veriler, oluşturduğu ve yönettiği nesnelerdir, bu nedenle günlüklerin başka bir yerde depolanması gerekir.
+Dizin oluşturma ve sorgu iş yükleri için günlüğe kaydetme varsayılan olarak kapalıdır ve hem günlük altyapısı hem de uzun vadeli dış depolama için eklenti çözümlerine bağımlıdır. Yalnızca Azure Bilişsel Arama kalıcı olan veriler oluşturduğu ve yönettiği nesnelerdir, bu nedenle günlüklerin başka bir yerde depolanması gerekir.
 
 Bu bölümde, günlüğe kaydedilen olayları ve ölçüm verilerini depolamak için blob depolamayı nasıl kullanacağınızı öğreneceksiniz.
 
-1. Henüz yoksa [bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Bu alıştırmada kullanılan tüm kaynakları silmek istiyorsanız, daha sonra temizlemeyi kolaylaştırmak için Azure Search aynı kaynak grubuna yerleştirebilirsiniz.
+1. Henüz yoksa [bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Bu alıştırmada kullanılan tüm kaynakları silmek istiyorsanız, daha sonra temizlemeyi basitleştirmek için Azure Bilişsel Arama ile aynı kaynak grubuna yerleştirebilirsiniz.
 
-   Depolama hesabınızın Azure Search aynı bölgede mevcut olması gerekir.
+   Depolama hesabınızın Azure Bilişsel Arama ile aynı bölgede bulunması gerekir.
 
 2. Arama hizmeti genel bakış sayfasını açın. Sol gezinti bölmesinde **izleme** ' ye kaydırın ve **izlemeyi etkinleştir**' e tıklayın.
 
@@ -158,14 +158,14 @@ Günlük dosyasını görüntülemek için herhangi bir JSON düzenleyicisi kull
 
 1. Azure portal, depolama hesabınızı açın. 
 
-2. Sol gezinti bölmesinde **Bloblar**' a tıklayın. **Öngörüler-logs-operationlogs** ve **Insights-ölçümler-pt1m**görmeniz gerekir. Bu kapsayıcılar, günlük verileri blob depolamaya aktarıldığında Azure Search tarafından oluşturulur.
+2. Sol gezinti bölmesinde **Bloblar**' a tıklayın. **Öngörüler-logs-operationlogs** ve **Insights-ölçümler-pt1m**görmeniz gerekir. Bu kapsayıcılar, günlük verileri blob depolamaya aktarıldığında Azure Bilişsel Arama tarafından oluşturulur.
 
 3. . JSON dosyasına ulaşana kadar klasör hiyerarşisini aşağı tıklayın.  Dosyayı indirmek için bağlam menüsünü kullanın.
 
 Dosya indirildikten sonra içeriği görüntülemek için bir JSON düzenleyicisinde açın.
 
 ## <a name="use-system-apis"></a>Sistem API 'Lerini kullanma
-Hem Azure Search REST API hem de .NET SDK, hizmet ölçümleri, dizin ve Dizin Oluşturucu bilgilerine ve belge sayılarına programlı erişim sağlar.
+Hem Azure Bilişsel Arama REST API hem de .NET SDK, hizmet ölçümleri, dizin ve Dizin Oluşturucu bilgilerine ve belge sayılarına programlı erişim sağlar.
 
 * [Hizmet Istatistiklerini al](/rest/api/searchservice/get-service-statistics)
 * [Dizin Istatistiklerini al](/rest/api/searchservice/get-index-statistics)

@@ -1,5 +1,6 @@
 ---
-title: Azure AD 'de kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırın | Microsoft Docs
+title: Azure AD 'de kurumsal uygulamalar için rol talebi yapılandırma
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory 'de kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırmayı öğrenin
 services: active-directory
 documentationcenter: ''
@@ -17,14 +18,14 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c671626a431a47e5100cf42ca0c9e29ab580ab3a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207196"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803502"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: Kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırın
+# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen rol talebini yapılandırma
 
 Azure Active Directory (Azure AD) kullanarak, bir uygulamayı yetkilendirdikten sonra aldığınız yanıt belirtecindeki rol talebi için talep türünü özelleştirebilirsiniz.
 
@@ -80,7 +81,7 @@ Uygulamanız bir SAML yanıtında özel rollerin geçirilmesini bekliyorsa, bu �
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Birden çok dizin kullanıyorsanız şu modele uyun:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Birden çok dizin kullanıyorsanız şu modele uyun: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Hizmet sorumlularını getirmeye yönelik sorgu ile grafik Gezgini iletişim kutusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -194,7 +195,7 @@ Mevcut bir rolü güncelleştirmek için aşağıdaki adımları gerçekleştiri
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Birden çok dizin kullanıyorsanız şu modele uyun:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Birden çok dizin kullanıyorsanız şu modele uyun: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Hizmet sorumlularını getirmeye yönelik sorgu ile grafik Gezgini iletişim kutusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -232,7 +233,7 @@ Mevcut bir rolü silmek için aşağıdaki adımları gerçekleştirin:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Birden çok dizin kullanıyorsanız şu modele uyun:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Birden çok dizin kullanıyorsanız şu modele uyun: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Hizmet sorumluları listesini getirme sorgusuyla grafik Gezgini iletişim kutusu](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 

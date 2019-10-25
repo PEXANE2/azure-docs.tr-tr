@@ -1,19 +1,19 @@
 ---
-title: "Örnek: Bing Varlık Arama API'si Azure Search özel bilişsel bir yetenek oluşturma"
-description: Azure Search bir bilişsel arama dizin oluşturma işlem hattına eşlenmiş özel bir beceriyle Bing Varlık Arama hizmetini kullanmayı gösterir.
+title: "Örnek: Bing Varlık Arama API'si özel bilişsel bir yetenek oluşturma"
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'de AI zenginlikli bir dizin oluşturma işlem hattına eşlenmiş özel bir beceriyle Bing Varlık Arama hizmetini kullanmayı gösterir.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: ab2f9e8859fba0c906e181727aab923254e9b620
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692211"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784944"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 
@@ -69,7 +69,7 @@ namespace SampleSkills
 {
     /// <summary>
     /// Sample custom skill that wraps the Bing entity search API to connect it with a 
-    /// cognitive search pipeline.
+    /// AI enrichment pipeline.
     /// </summary>
     public static class BingEntitySearch
     {
@@ -418,7 +418,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 Bu örnek, işlevi yerel ortamda çalıştırırken daha önce gördüğünüz sonucu üretmelidir.
 
 ## <a name="connect-to-your-pipeline"></a>İşlem hattınızla bağlantı kurmak
-Artık yeni bir özel beceriye sahip olduğunuza göre, Beceri 'e ekleyebilirsiniz. Aşağıdaki örnekte, belgedeki kuruluşlara açıklama ekleme beceriye nasıl çağrılacağını gösterilmektedir (Bu, konumlar ve kişiler üzerinde de çalışacak şekilde genişletilebilir). @No__t_0, uygulamanızın adıyla değiştirin.
+Artık yeni bir özel beceriye sahip olduğunuza göre, Beceri 'e ekleyebilirsiniz. Aşağıdaki örnekte, belgedeki kuruluşlara açıklama ekleme beceriye nasıl çağrılacağını gösterilmektedir (Bu, konumlar ve kişiler üzerinde de çalışacak şekilde genişletilebilir). `[your-entity-search-app-name]`, uygulamanızın adıyla değiştirin.
 
 ```json
 {

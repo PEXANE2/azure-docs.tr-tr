@@ -1,5 +1,6 @@
 ---
-title: İOS & macOS | için Microsoft kimlik doğrulama kitaplığı (MSAL) Mavisi
+title: İOS & macOS için Microsoft kimlik doğrulama kitaplığı (MSAL)
+titleSuffix: Microsoft identity platform
 description: İOS ve macOS arasındaki Microsoft kimlik doğrulama kitaplığı (MSAL) kullanım farklarını açıklar.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb6e55e83412535f29284db48fb37fd514b35d4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 090f4eaea292c7122db2427ce8730df815506fc0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269018"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803138"
 ---
-# <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>İOS ve macOS farkları için Microsoft kimlik doğrulama kitaplığı
+# <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>iOS ve macOS için Microsoft Kimlik Doğrulaması Kitaplığı farkları
 
 Bu makalede iOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL) arasındaki işlevsellikten oluşan farklar açıklanmaktadır.
 
@@ -37,7 +38,7 @@ MacOS için MSAL, iOS için kullanılabilen işlevlerin bir alt kümesidir.
 
 MacOS için MSAL şunları desteklemez:
 
-- `ASWebAuthenticationSession` ,`SFAuthenticationSession`, ,`SFSafariViewController`gibi farklı tarayıcı türleri.
+- `ASWebAuthenticationSession`, `SFAuthenticationSession``SFSafariViewController`gibi farklı tarayıcı türleri.
 - Microsoft Authenticator uygulama aracılığıyla aracılı kimlik doğrulaması, macOS için desteklenmez.
 
 Aynı yayımcıdan uygulamalar arasında Anahtarlık paylaşımı, macOS 10,14 ve daha önceki sürümlerde daha sınırlıdır. Anahtarlığı paylaşması gereken uygulamaların yollarını belirtmek için [erişim denetimi listelerini](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) kullanın. Kullanıcı, ek Anahtarlık istemler görebilir.

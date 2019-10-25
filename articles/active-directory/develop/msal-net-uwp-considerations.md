@@ -1,5 +1,6 @@
 ---
-title: Evrensel Windows Platformu konuları (.NET için Microsoft kimlik doğrulama kitaplığı) | Mavisi
+title: Evrensel Windows Platformu konuları (.NET için Microsoft kimlik doğrulama kitaplığı)
+titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Evrensel Windows Platformu kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 263264742088a0012ea844946e13cffbab634b29
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 27a41ad084d21c7623011b5678fb84ed27d68325
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532483"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802669"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET ile ilgili Evrensel Windows Platformu özel noktalar
 UWP 'de, MSAL.NET kullanırken dikkate almanız gereken bazı noktalar vardır.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork özelliği
-WinRT platformunda, `PublicClientApplication` aşağıdaki Boolean özelliğine ``UseCorporateNetwork``sahiptir. Bu özellik, kullanıcı federe bir Azure AD kiracısında oturum açmışsa, Win 8.1 ve UWP uygulamalarının tümleşik Windows kimlik doğrulamasından (ve bu nedenle işletim sistemiyle oturum açmış kullanıcı ile oturum açanlar) faydalarına olanak sağlar. Bu özelliği ayarladığınızda, MSAL.NET WAB (Web kimlik doğrulama Aracısı) kullanır.
+WinRT platformunda, `PublicClientApplication` aşağıdaki Boolean özelliğine sahiptir ``UseCorporateNetwork``. Bu özellik, kullanıcı federe bir Azure AD kiracısında oturum açmışsa, Win 8.1 ve UWP uygulamalarının tümleşik Windows kimlik doğrulamasından (ve bu nedenle işletim sistemiyle oturum açmış kullanıcı ile oturum açanlar) faydalarına olanak sağlar. Bu özelliği ayarladığınızda, MSAL.NET WAB (Web kimlik doğrulama Aracısı) kullanır.
 
 > [!IMPORTANT]
 > Bu özelliğin true olarak ayarlanması, uygulama geliştiricisinin uygulamada tümleşik Windows kimlik doğrulamasını (ıWA) etkinleştirdiğinizi varsayar. Bunun için:
-> - UWP uygulamanızda, yetenekler sekmesinde, aşağıdaki özellikleri etkinleştirin: ``Package.appxmanifest``
+> - UWP uygulamanızın ``Package.appxmanifest``, **yetenekler** sekmesinde, aşağıdaki özellikleri etkinleştirin:
 >   - Kurumsal kimlik doğrulama
 >   - Özel ağlar (Istemci & sunucusu)
 >   - Paylaşılan Kullanıcı sertifikası

@@ -1,27 +1,27 @@
 ---
-title: 'Örnek: çok düzeyli modeller-Azure Search'
+title: 'Örnek: çok düzeyli modeller'
+titleSuffix: Azure Cognitive Search
 description: Birden çok düzeyli Taksonomiler için, uygulama sayfalarına dahil ettiğiniz iç içe geçmiş bir gezinti yapısı oluşturma hakkında bilgi edinin.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70274092"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792953"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Örnek: Azure Search 'de çok düzeyli modeller
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Örnek: Azure Bilişsel Arama 'de çok düzeyli modeller
 
-Azure Search şemaları, çok düzeyli taksonomi kategorilerini açık bir şekilde desteklemez, ancak dizin oluşturma işleminden önce içeriği düzenleyerek ve sonra sonuçlara özel bir işleme uygulayarak bunları yaklaşık olarak yapabilirsiniz. 
+Azure Bilişsel Arama şemaları, çok düzeyli taksonomi kategorilerini açık bir şekilde desteklemez, ancak dizin oluşturma işleminden önce içeriği düzenleyerek ve sonra sonuçlara özel bir işleme uygulayarak bunları yaklaşık olarak yapabilirsiniz. 
 
 ## <a name="start-with-the-data"></a>Verilerle başlayın
 
-Bu makaledeki örnek, Azure Search ' de çok düzeyli bir şekilde tam olarak göstermek için [AdventureWorks envanter veritabanını modelleyen](search-example-adventureworks-modeling.md)önceki bir örneği oluşturur.
+Bu makaledeki örnek, Azure Bilişsel Arama 'de çok düzeyli bir şekilde tam olarak göstermek için [AdventureWorks envanter veritabanını modelleyen](search-example-adventureworks-modeling.md)önceki bir örneği oluşturur.
 
 AdventureWorks 'in üst-alt ilişkisi olan basit bir iki düzeyli bir sınıflandırması vardır. Bu yapının sabit uzunluklu taksonomi derinlikleri için, bir basit SQL JOIN sorgusu, taksonomiyi gruplamak için kullanılabilir:
 
@@ -39,9 +39,9 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Koleksiyon alanına dizin oluşturma
 
-Bu yapıyı içeren dizinde, bu verileri depolamak için Azure Search şemasında bir **koleksiyon (EDM. String)** alanı oluşturun ve alan özniteliklerinin aranabilir, filtrelenebilir, çok yönlü tablo ve alınabilir durumda olduğundan emin olun.
+Bu yapıyı içeren dizinde, bu verileri depolamak için Azure Bilişsel Arama şemasında bir **koleksiyon (EDM. String)** alanı oluşturun ve alan özniteliklerinin aranabilir, filtrelenebilir, çok yönlü tablo ve alınabilir olduğundan emin olun.
 
-Artık, belirli bir taksonomi kategorisine başvuran içeriği dizinlerken, taksonomiyi taksonomi düzeyinden metin içeren bir dizi olarak gönderir. Örneğin, `ProductCategoryId = 5 (Mountain Bikes)` bir varlık için, alanı `[ "Bikes", "Bikes|Mountain Bikes"]` olarak gönder
+Artık, belirli bir taksonomi kategorisine başvuran içeriği dizinlerken, taksonomiyi taksonomi düzeyinden metin içeren bir dizi olarak gönderir. Örneğin, `ProductCategoryId = 5 (Mountain Bikes)`bir varlık için, alanı `[ "Bikes", "Bikes|Mountain Bikes"]` olarak gönder
 
 "Sıradağlar bisikletleri" alt kategori değerindeki "Bisiklet" ana kategorisinin eklenmesine dikkat edin. Her alt kategori, tüm yolunu kök öğesine göre katıştırmalıdır. Kanal karakter ayırıcısı rastgele, ancak tutarlı olmalıdır ve kaynak metinde görünmemelidir. Ayırıcı karakter, uygulama kodunda, model sonuçlarından taksonomi ağacını yeniden oluşturmak için kullanılır.
 
@@ -99,4 +99,4 @@ Bu teknik, daha derin taksonomi ağaçları ve farklı üst kategorilerde gerçe
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Örnek: Azure Search için AdventureWorks envanter veritabanını modelleyin](search-example-adventureworks-modeling.md)
+[Örnek: AdventureWorks Inventory Database for Azure Bilişsel Arama modelleme](search-example-adventureworks-modeling.md)

@@ -1,13 +1,13 @@
 ---
-title: OData sıralama-başvuruya göre Azure Search
-description: Azure Search sorgularında order by sözdizimi için OData dil başvurusu.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData sırası başvuruya göre
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama sorgularında order by sözdizimi için OData dil başvurusu.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e3ca19b5696b9a7ad9b68b180313753a5c9de912
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647532"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793296"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>Azure Search içinde OData $orderby söz dizimi
+# <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $orderby söz dizimi
 
- Azure Search Arama sonuçları için özel bir sıralama düzeni uygulamak üzere [OData **$OrderBy** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$OrderBy** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$OrderBy** kullanma hakkında daha fazla genel bilgi için bkz. [Azure Search arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
+ Azure Bilişsel Arama arama sonuçları için özel bir sıralama düzeni uygulamak üzere [OData **$OrderBy** parametresini](query-odata-filter-orderby-syntax.md) kullanabilirsiniz. Bu makalede **$OrderBy** sözdizimi ayrıntılı olarak açıklanmaktadır. Arama sonuçlarını sunarken **$OrderBy** kullanma hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -45,20 +45,20 @@ sortable_function ::= geo_distance_call | 'search.score()'
 Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
+> Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-Her yan tümce sıralama ölçütlerine sahiptir ve isteğe bağlı olarak bir sıralama yönü`asc` (artan veya `desc` azalan için) izler. Bir yön belirtmezseniz, varsayılan değer artan olur. Sıralama ölçütü, bir `sortable` alanın yolu veya ya da [`search.score`](search-query-odata-search-score-function.md) işlevlerine yapılan bir çağrı [`geo.distance`](search-query-odata-geo-spatial-functions.md) olabilir.
+Her yan tümce sıralama ölçütlerine sahiptir ve isteğe bağlı olarak bir sıralama yönü (artan veya `desc` azalan için`asc`) izler. Bir yön belirtmezseniz, varsayılan değer artan olur. Sıralama ölçütü, bir `sortable` alanının yolu veya [`geo.distance`](search-query-odata-geo-spatial-functions.md) ya da [`search.score`](search-query-odata-search-score-function.md) işlevleri için bir çağrı olabilir.
 
-Birden çok belge aynı sıralama ölçütlerine sahip ise ve `search.score` işlev kullanılmazsa (örneğin, bir sayısal `Rating` alana göre sıralarsanız ve hepsi 4 derecelendirmesine sahipseniz), bu siteler belge puanına göre azalan sırada bozulur. Belge puanları aynı olduğunda (örneğin, istekte tam metin arama sorgusu belirtilmediğinde), bağlı belgelerin göreli sıralaması belirsiz olur.
+Birden çok belgede aynı sıralama ölçütü varsa ve `search.score` işlevi kullanılmazsa (örneğin, bir sayısal `Rating` alanına göre sıralarsanız ve hepsi 4 derecelendirmesine sahipseniz), bu siteler belge puanına göre azalan sırada bozulur. Belge puanları aynı olduğunda (örneğin, istekte tam metin arama sorgusu belirtilmediğinde), bağlı belgelerin göreli sıralaması belirsiz olur.
 
-Birden çok sıralama ölçütü belirtebilirsiniz. İfadelerin sırası, son sıralama düzenini belirler. Örneğin, derecelendirmeye göre azalan sırada sıralama yapmak için sözdizimi olur `$orderby=search.score() desc,Rating desc`.
+Birden çok sıralama ölçütü belirtebilirsiniz. İfadelerin sırası, son sıralama düzenini belirler. Örneğin, derecelendirmeye göre azalan sırada sıralama yapmak için, söz konusu sözdizimi `$orderby=search.score() desc,Rating desc`.
 
-`geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $OrderBy kullanılırken `geo.distance` ,geçerli olduğu alan türünde `Edm.GeographyPoint` olmalıdır ve ayrıca `sortable`olmalıdır.
+**$Orderby** `geo.distance` söz dizimi **$Filter**ile aynıdır. **$Orderby**`geo.distance` kullanırken, geçerli olduğu alan `Edm.GeographyPoint` türünde olmalıdır ve ayrıca `sortable`olmalıdır.
 
-`search.score` **$OrderBy** 'deiçinsözdizimi.`search.score()` İşlev `search.score` herhangi bir parametre almaz.
+**$Orderby** `search.score` söz dizimi `search.score()`. `search.score` işlevi herhangi bir parametre almaz.
 
 ## <a name="examples"></a>Örnekler
 
@@ -80,7 +80,7 @@ Oteller, arama. puan ve derecelendirme, ardından verilen koordinatlardan uzakl�
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search arama sonuçlarıyla çalışma](search-pagination-page-layout.md)
-- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama arama sonuçlarıyla çalışma](search-pagination-page-layout.md)
+- [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

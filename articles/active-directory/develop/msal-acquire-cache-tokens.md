@@ -1,5 +1,6 @@
 ---
-title: Belirteçleri yönetme (Microsoft kimlik doğrulama kitaplığı) | Mavisi
+title: Belirteçleri yönetme (Microsoft kimlik doğrulama kitaplığı)
+titleSuffix: Microsoft identity platform
 description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak belirteçleri edinme ve önbelleğe alma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f7914744073f82d8a35d3679a1c65459e10b2f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532893"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803290"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>MSAL kullanarak belirteçleri edinme ve önbelleğe alma
 [Erişim belirteçleri](access-tokens.md) , istemcilerin Azure tarafından korunan Web API 'lerini güvenli bir şekilde çağırmasını sağlar. Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollarla bir Web tarayıcısı aracılığıyla Kullanıcı etkileşimi gerekir. Bazıları hiçbir Kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç alma yöntemi, uygulamanın ortak bir istemci uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (bir Windows hizmeti gibi Web uygulaması, Web API 'SI veya Daemon uygulaması) olması halinde değişir.
@@ -39,23 +40,23 @@ Bir dizi MSAL alma belirteci yöntemi bir *kapsamlar* parametresi gerektirir. Bu
 V 1.0 kaynaklarına erişmek için MSAL de mümkündür. Daha fazla bilgi için, [bir v 1.0 uygulaması Için kapsamları](msal-v1-app-scopes.md)okuyun.
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Bir Web API 'SI için belirli kapsamlar isteme
-Uygulamanızın bir kaynak API 'si için belirli izinlerle belirteç istemesi gerektiğinde, API 'nin uygulama kimliği URI 'sini içeren kapsamları aşağıdaki biçimde geçirmeniz gerekir:  *&lt;uygulama kimliği URI&gt;'si/&lt;kapsamı&gt;*
+Uygulamanızın bir kaynak API 'SI için belirli izinlerle belirteç istemesi gerektiğinde, API 'nin uygulama KIMLIĞI URI 'sini içeren kapsamları aşağıdaki biçimde geçirmeniz gerekir: *&lt;uygulama KIMLIĞI URI 'si&gt;/&lt;kapsam&gt;*
 
-Örneğin, Microsoft Graph API için kapsamlar:`https://graph.microsoft.com/User.Read`
+Örneğin, Microsoft Graph API için kapsamlar: `https://graph.microsoft.com/User.Read`
 
-Ya da, örneğin, özel bir Web API 'SI için kapsamlar:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Ya da, örneğin, özel bir Web API 'SI için kapsamlar: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-Yalnızca Microsoft Graph API 'si için, bir kapsam değeri `user.read` `https://graph.microsoft.com/User.Read` biçimiyle eşlenir ve birbirlerinin yerine kullanılabilir.
+Yalnızca Microsoft Graph API 'SI için, bir kapsam değeri `user.read` `https://graph.microsoft.com/User.Read` biçimine eşlenir ve birbirlerinin yerine kullanılabilir.
 
 > [!NOTE]
-> Azure Resource Manager API gibi bazı Web API 'leri (https://management.core.windows.net/) erişim belirtecinin hedef kitle talebinde (AUD) bir sondaki '/' bekliyor. Bu durumda, belirtecin API 'de geçerli olması için kapsamı (çift https://management.core.windows.net//user_impersonation eğik çizgiye dikkat edin) olarak geçirmek önemlidir.
+> Azure Resource Manager API (https://management.core.windows.net/) gibi bazı Web API 'Leri, erişim belirtecinin hedef kitle talebinde (AUD) sonunda bir '/' bekliyor. Bu durumda, belirtecin API 'de geçerli olması için kapsamı https://management.core.windows.net//user_impersonation (çift eğik çizgiye dikkat edin) olarak geçirmek önemlidir.
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>Artımlı izin için dinamik kapsamlar isteyin
 V 1.0 kullanarak uygulamalar oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekiyordu. V 2.0 'da kapsam parametresini kullanarak gerektiğinde ek izinler isteyebilirsiniz. Bunlara dinamik kapsamlar denir ve kullanıcının kapsamlar için artımlı onay sağlamasına izin verir.
 
 Örneğin, başlangıçta Kullanıcı oturumu açabilir ve her türlü erişimi reddedebilirsiniz. Daha sonra, belirteç al yöntemlerinde takvim kapsamını isteyerek ve kullanıcının iznini elde ederek kullanıcının takvimini okuma özelliği verebilirsiniz.
 
-Örneğin: `https://graph.microsoft.com/User.Read` ve`https://graph.microsoft.com/Calendar.Read`
+Örneğin: `https://graph.microsoft.com/User.Read` ve `https://graph.microsoft.com/Calendar.Read`
 
 ## <a name="acquiring-tokens-silently-from-the-cache"></a>Belirteçleri sessizce alma (önbellekten)
 MSAL, bir belirteç önbelleğini (veya gizli istemci uygulamaları için iki önbellek) tutar ve alındıktan sonra bir belirteci önbelleğe alır.  Çoğu durumda, bir belirteci sessizce almaya çalışmak, önbellekteki bir belirtece göre daha fazla kapsam içeren başka bir belirteç elde eder. Ayrıca, süresi dolmak üzere (belirteç önbelleği de bir yenileme belirteci içerdiğinden) bir belirteci yenileyebilme özelliği de vardır.

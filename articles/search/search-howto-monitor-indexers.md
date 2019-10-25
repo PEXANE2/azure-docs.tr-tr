@@ -1,25 +1,24 @@
 ---
-title: Dizin Oluşturucu durumunu ve sonuçlarını izleme-Azure Search
-description: REST API veya .NET SDK kullanarak Azure portal Azure Search dizin oluşturucularının durumunu, ilerlemesini ve sonuçlarını izleyin.
-ms.date: 06/28/2019
-author: RobDixon22
+title: Dizin Oluşturucu durumunu ve sonuçlarını izleme
+titleSuffix: Azure Cognitive Search
+description: REST API veya .NET SDK kullanarak Azure portal Azure Bilişsel Arama dizin oluşturucularının durumunu, ilerlemesini ve sonuçlarını izleyin.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533708"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793795"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search Dizin Oluşturucu durumunu ve sonuçlarını izleme
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Bilişsel Arama Dizin Oluşturucu durumunu ve sonuçlarını izleme
 
-Azure Search her dizin oluşturucunun geçerli ve geçmiş çalıştırmaları hakkında durum ve izleme bilgileri sağlar.
+Azure Bilişsel Arama her dizin oluşturucunun geçerli ve geçmiş çalıştırmaları hakkında durum ve izleme bilgileri sağlar.
 
 Şunları yapmak istediğinizde Dizin Oluşturucu izleme yararlı olur:
 
@@ -75,7 +74,7 @@ Bu çalıştıra ilişkin ayrıntıları görmek için listede bir yürütme son
 
 Uyarılar bazı Dizin oluşturucular türleriyle ortaktır ve her zaman bir sorun göstermez. Örneğin bilişsel hizmetler kullanan Dizin oluşturucular, görüntü veya PDF dosyaları işlemek için herhangi bir metin içermiyorsa uyarıları rapor edebilir.
 
-Dizin Oluşturucu hatalarını ve uyarılarını araştırma hakkında daha fazla bilgi için bkz. [Azure Search ortak Dizin Oluşturucu sorunlarını giderme](search-indexer-troubleshooting.md).
+Dizin Oluşturucu hatalarını ve uyarılarını araştırma hakkında daha fazla bilgi için bkz. [Azure bilişsel arama 'da ortak Dizin Oluşturucu sorunlarını giderme](search-indexer-troubleshooting.md).
 
 <a name="restapi"></a>
 
@@ -128,7 +127,7 @@ Durum kodları ve Dizin Oluşturucu izleme verileri hakkında daha fazla bilgi i
 
 ## <a name="monitor-using-the-net-sdk"></a>.NET SDK 'Yı kullanarak izleme
 
-Bir dizin oluşturucunun zamanlamasını Azure Search .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
+Bir dizin oluşturucunun zamanlamasını Azure Bilişsel Arama .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
 
 Aşağıdaki C# örnek, bir dizin oluşturucunun durumuyla ilgili bilgileri ve en son (veya devam eden) konsolunun konsola çalıştırılmasını yazar.
 

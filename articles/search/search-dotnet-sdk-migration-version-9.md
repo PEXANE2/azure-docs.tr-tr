@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK sürümü 9-Azure Search sürümüne yükseltin
+title: Azure Search .NET SDK sürümü 9 ' a yükselt
+titleSuffix: Azure Cognitive Search
 description: Kodu eski sürümlerden Azure Search .NET SDK sürümü 9 ' a geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 32908ab209cbe05a0acf9da896e1e1fb11e6f5dd
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183231"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793013"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK sürümü 9 ' a yükseltin
+# <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK sürümü 9 ' a yükselt
 
 [Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 7,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı 9 sürümünü kullanacak şekilde yükseltmenize yardımcı olur.
 
@@ -38,7 +37,7 @@ Azure Search .NET SDK 'sının 9. sürümü, önceki sürümlerden çok sayıda 
 ## <a name="whats-new-in-version-9"></a>Sürüm 9 ' daki yenilikler
 Azure Search .NET SDK 'sının 9. sürümü, Azure Search REST API, özellikle 2019-05-06 olan en son genel kullanılabilir sürümünü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search yeni özelliklerini kullanmayı mümkün kılar:
 
-* Bilişsel [arama](cognitive-search-concept-intro.md) , görüntü, Bloblar ve diğer yapılandırılmamış veri kaynaklarından metin ayıklamak için kullanılan Azure Search bir AI özelliğidir. içeriği bir Azure Search dizininde daha fazla aranabilir hale getirmek üzere zenginleştirir.
+* [AI zenginleştirme](cognitive-search-concept-intro.md) , görüntülerden, bloblardan ve diğer yapılandırılmamış veri kaynaklarından metin ayıklayarak, bir Azure Search dizininde daha fazla aranabilir olmasını sağlamak için içeriği zenginleştirir.
 * [Karmaşık türler](search-howto-complex-data-types.md) için destek, Azure Search bir dizinde neredeyse tüm iç Içe geçmiş JSON yapısını modeletmenizi sağlar.
 * [AutoComplete](search-autocomplete-tutorial.md) , arama türü davranışı uygulamak için **öneri** API 'sine bir alternatif sağlar. Bir kullanıcının şu anda yazmakta olduğu sözcüğü veya tümceciği otomatik tamamlama "bitiyor".
 * Azure Blob dizinleme 'nin bir parçası olan [Jsonlines ayrıştırma modu](search-howto-index-json-blobs.md), bir yeni satır tarafından ayrılan JSON varlığı başına bir arama belgesi oluşturur.
@@ -51,7 +50,7 @@ Sürüm 8,0-Azure Search .NET SDK 'nın önizlemesi API sürüm 2017-11-11-Previ
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet ' i paket `Microsoft.Azure.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet Paket Yöneticisi konsolunu kullanarak veya proje başvurularınız ' a sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz `Microsoft.Azure.Search` güncelleştirin. Visual Studio 'da.
 
 NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
 
@@ -83,9 +82,9 @@ Birkaç model sınıfının ortak özellikleri artık sabittir. Test için bu s�
 
 ### <a name="changes-to-field"></a>Alanda yapılan değişiklikler
 
-Sınıfı `Field` , karmaşık alanları da temsil ettiğinden artık değişmiştir.
+`Field` sınıfı, karmaşık alanları da temsil ettiğinden artık değişmiştir.
 
-Aşağıdaki `bool` özellikler artık null yapılabilir:
+Aşağıdaki `bool` özellikleri artık null yapılabilir:
 
   - `IsFilterable`
   - `IsFacetable`
@@ -94,33 +93,33 @@ Aşağıdaki `bool` özellikler artık null yapılabilir:
   - `IsRetrievable`
   - `IsKey`
 
-Bunun nedeni, bu özelliklerin artık karmaşık alanlar `null` olması durumunda olması gerekir. Bu özellikleri okuyan kodunuz varsa, işleme `null`hazırlanmalıdır. Öğesinin `Field` diğer tüm özelliklerinin her zaman null değer atandığına ve boş bırakılmış olmaya devam etmesine ve bunların bazılarının da karmaşık alanlar `null` olması durumunda (özellikle de şunlar olabilir:
+Bunun nedeni, bu özelliklerin artık karmaşık alanlar olması durumunda `null` olması gerekir. Bu özellikleri okuyan kodunuz varsa, `null`işlemeye hazırlanmalıdır. `Field` diğer tüm özelliklerinin her zaman null değer atandığına ve null yapılabilir olmaya devam etmesine ve bunların bazılarının da karmaşık alanlar olması durumunda `null`, özellikle de aşağıdakiler de vardır:
 
   - `Analyzer`
   - `SearchAnalyzer`
   - `IndexAnalyzer`
   - `SynonymMaps`
 
-Parametresiz oluşturucusu `Field` yapıldı `internal`. Şu andan itibaren, `Field` oluşturma sırasında açık bir ad ve veri türü gerektirir.
+`Field` parametresiz oluşturucusu `internal`yapıldı. Şu andan itibaren, her `Field` oluşturma sırasında açık bir ad ve veri türü gerektirir.
 
 ### <a name="simplified-batch-and-results-types"></a>Basitleştirilmiş toplu işlem ve sonuç türleri
 
 Sürüm 7,0-Önizleme ve önceki sürümlerde, belge gruplarını kapsülleyen çeşitli sınıflar paralel sınıf hiyerarşileri halinde yapılandırılmıştır:
 
-  -  `DocumentSearchResult`ve `DocumentSearchResult<T>` Devralındığı yer`DocumentSearchResultBase`
-  -  `DocumentSuggestResult`ve `DocumentSuggestResult<T>` Devralındığı yer`DocumentSuggestResultBase`
-  -  `IndexAction`ve `IndexAction<T>` Devralındığı yer`IndexActionBase`
-  -  `IndexBatch`ve `IndexBatch<T>` Devralındığı yer`IndexBatchBase`
-  -  `SearchResult`ve `SearchResult<T>` Devralındığı yer`SearchResultBase`
-  -  `SuggestResult`ve `SuggestResult<T>` Devralındığı yer`SuggestResultBase`
+  -  `DocumentSearchResultBase` devralınan `DocumentSearchResult` ve `DocumentSearchResult<T>`
+  -  `DocumentSuggestResultBase` devralınan `DocumentSuggestResult` ve `DocumentSuggestResult<T>`
+  -  `IndexActionBase` devralınan `IndexAction` ve `IndexAction<T>`
+  -  `IndexBatchBase` devralınan `IndexBatch` ve `IndexBatch<T>`
+  -  `SearchResultBase` devralınan `SearchResult` ve `SearchResult<T>`
+  -  `SuggestResultBase` devralınan `SuggestResult` ve `SuggestResult<T>`
 
-Genel tür parametresi olmayan türetilmiş türler, "dinamik olarak yazılmış" senaryolarda kullanılmak ve `Document` türün kullanımını kabul ediyor.
+Genel tür parametresi olmayan türetilmiş türler, "dinamik olarak yazılmış" senaryolarda kullanılmak ve `Document` türünün kullanımını kabul ediyor.
 
-Sürüm 8,0-Önizleme sürümünden itibaren, temel sınıfların ve genel olmayan türetilmiş sınıfların hepsi kaldırılmıştır. Dinamik olarak belirlenmiş senaryolar için,, vb. `IndexBatch<Document>`kullanabilirsiniz `DocumentSearchResult<Document>`.
+Sürüm 8,0-Önizleme sürümünden itibaren, temel sınıfların ve genel olmayan türetilmiş sınıfların hepsi kaldırılmıştır. Dinamik olarak yazılmış senaryolar için `IndexBatch<Document>`, `DocumentSearchResult<Document>`ve benzerlerini kullanabilirsiniz.
  
 ### <a name="removed-extensibleenum"></a>ExtensibleEnum kaldırıldı
 
-`ExtensibleEnum` Temel sınıf kaldırılmıştır. Bundan türetilmiş tüm sınıflar,, ve `AnalyzerName` `DataSourceType` gibi yapılar `DataType`içindir. `Create` Yöntemleri de kaldırılmıştır. Yalnızca bu türlerin dizelerdeki örtülü `Create` olarak dönüştürülemesinden bu yana çağrıları kaldırabilirsiniz. Bu, derleyici hatalarına neden olursa, kesin türleri ayırt etmek için atama yoluyla dönüştürme işlecini açıkça çağırabilirsiniz. Örneğin, aşağıdaki gibi bir kodu değiştirebilirsiniz:
+`ExtensibleEnum` temel sınıfı kaldırılmıştır. Bundan türetilmiş tüm sınıflar artık `AnalyzerName`, `DataType`ve `DataSourceType` gibi yapılar. `Create` yöntemleri de kaldırılmıştır. Bu türler dizelerdeki örtük olarak dönüştürülebilir olduğundan `Create` çağrıları kaldırabilirsiniz. Bu, derleyici hatalarına neden olursa, kesin türleri ayırt etmek için atama yoluyla dönüştürme işlecini açıkça çağırabilirsiniz. Örneğin, aşağıdaki gibi bir kodu değiştirebilirsiniz:
 
 ```csharp
 var index = new Index()
@@ -134,7 +133,7 @@ var index = new Index()
 }
 ```
 
-Şu şekilde:
+şu şekilde:
 
 ```csharp
 var index = new Index()
@@ -152,7 +151,7 @@ Bu türlerin isteğe bağlı değerlerini barındıran özellikler artık isteğ
 
 ### <a name="removed-facetresults-and-hithighlights"></a>FacetResults ve Hithighışıkları kaldırıldı
 
-`FacetResults` Ve`HitHighlights` sınıfları kaldırılmıştır. Model sonuçları artık olarak `IDictionary<string, IList<FacetResult>>` yazılır ve vurgulanana kadar `IDictionary<string, IList<string>>`vurgular. Bu değişiklik tarafından tanıtılan derleme hatalarını çözmek için hızlı bir yol, kaldırılan türleri `using` kullanan her bir dosyanın üst kısmına diğer adlar eklemektir. Örneğin:
+`FacetResults` ve `HitHighlights` sınıfları kaldırıldı. Model sonuçları artık `IDictionary<string, IList<FacetResult>>` olarak yazılır ve `IDictionary<string, IList<string>>`olarak vurgular. Bu değişiklik tarafından tanıtılan derleme hatalarını çözmek için hızlı bir yol, kaldırılan türleri kullanan her bir dosyanın üst kısmına `using` diğer adlar eklemektir. Örnek:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
@@ -161,26 +160,26 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="change-to-synonymmap"></a>Eş Eşmap olarak değiştir 
 
-Oluşturucunun için parametresiartık`enum`yoktur. `SynonymMap` `SynonymMapFormat` Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, yalnızca `SynonymMapFormat` parametreye başvuruları kaldırın.
+`SynonymMap` oluşturucusunun artık `SynonymMapFormat`için `enum` parametresi yok. Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, `SynonymMapFormat` parametresine başvuruları kaldırmanız yeterlidir.
 
 ### <a name="miscellaneous-model-class-changes"></a>Çeşitli model sınıfı değişiklikleri
 
-Özelliği artık null yapılabilir değildir. `AutocompleteParameters` `AutocompleteMode` Bu özelliği ' ye `null`atayan bir kodunuz varsa, bunu kaldırmanız yeterlidir ve özellik otomatik olarak varsayılan değere başlatılır.
+`AutocompleteParameters` `AutocompleteMode` özelliği artık null atanamaz. Bu özelliği `null`atayan bir kodunuz varsa, bunu kaldırmanız yeterlidir ve özellik otomatik olarak varsayılan değere başlatılır.
 
-`IndexAction` Oluşturucunun parametrelerinin sırası, bu oluşturucunun otomatik olarak oluşturuldığına göre değiştirilmiştir. Oluşturucuyu kullanmak yerine, fabrika yöntemlerinin `IndexAction.Upload` `IndexAction.Merge`, vb. kullanılmasını öneririz.
+`IndexAction` oluşturucusuna parametrelerinin sırası, bu oluşturucunun otomatik olarak üretilmesinden hemen sonra değiştirildi. Oluşturucuyu kullanmak yerine, `IndexAction.Upload`, `IndexAction.Merge`ve benzer Fabrika yöntemlerini kullanmanızı öneririz.
 
 ### <a name="removed-preview-features"></a>Önizleme özellikleri kaldırıldı
 
-Sürüm 8,0 ' den sürüm 9 ' a yükseltiyorsanız, bu özellik hala önizleme aşamasında olduğundan, müşteri tarafından yönetilen anahtarlarla şifrelemenin kaldırıldığını unutmayın. Özellikle, `EncryptionKey` `Index` ve özelliklerikaldırılmıştır.`SynonymMap`
+Sürüm 8,0 ' den sürüm 9 ' a yükseltiyorsanız, bu özellik hala önizleme aşamasında olduğundan, müşteri tarafından yönetilen anahtarlarla şifrelemenin kaldırıldığını unutmayın. Özellikle, `Index` ve `SynonymMap` `EncryptionKey` özellikleri kaldırılmıştır.
 
 Uygulamanızda bu özelliğe sabit bir bağımlılık varsa, Azure Search .NET SDK 'sının 9. sürümüne yükseltme yapamazsınız. 8,0-Preview sürümünü kullanmaya devam edebilirsiniz. Ancak, lütfen **Üretim uygulamalarında önizleme SDK 'larını kullanmanızı önermiyoruz**. Önizleme özellikleri yalnızca değerlendirme amaçlıdır ve değişebilir.
 
 > [!NOTE]
-> SDK 'nın 8,0-Preview sürümünü kullanarak şifrelenmiş dizinler veya eş anlamlı eşlemeler oluşturduysanız, bunları kullanmaya devam edersiniz ve kendi tanımlarını, şifreleme durumlarını olumsuz etkilemeden SDK sürüm 9 ' u kullanarak değiştirebilirsiniz. SDK 'nın 9. sürümü, `encryptionKey` özelliği REST API göndermez ve bu nedenle REST API kaynağın şifreleme durumunu değiştirmez. 
+> SDK 'nın 8,0-Preview sürümünü kullanarak şifrelenmiş dizinler veya eş anlamlı eşlemeler oluşturduysanız, bunları kullanmaya devam edersiniz ve kendi tanımlarını, şifreleme durumlarını olumsuz etkilemeden SDK sürüm 9 ' u kullanarak değiştirebilirsiniz. SDK 'nın 9. sürümü REST API `encryptionKey` özelliğini göndermez ve bu nedenle REST API kaynağın şifreleme durumunu değiştirmez. 
 
 ### <a name="behavioral-change-in-data-retrieval"></a>Veri alma sırasında davranış değişikliği
 
-"Dinamik olarak `Search`yazılmış" `Suggest`, ya `Get` da türü `Document`örnekleri döndüren API 'leri kullanıyorsanız `object[]` , artık boş JSON dizilerinin bunun yerine ' a serisini çıkardıkları `string[]`farkında olun.
+"Dinamik olarak yazılmış" `Search`, `Suggest`veya `Document`türünde örnekler döndüren `Get` API 'Leri kullanıyorsanız, artık boş JSON dizilerini `object[]` yerine `string[]`için seri durumdan çıkardığınızı unutmayın.
 
 ## <a name="conclusion"></a>Sonuç
 Azure Search .NET SDK 'yı kullanma hakkında daha fazla ayrıntıya ihtiyacınız varsa bkz. [.NET nasıl yapılır](search-howto-dotnet-sdk.md).

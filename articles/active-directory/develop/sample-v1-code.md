@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: a71eaebcc6345d6550d6ddd38350fe709706d740
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374105"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809290"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -81,7 +81,7 @@ Aşağıdaki örneklerde, bir kullanıcı adına Microsoft Graph veya bir Web AP
 
 İstemci uygulaması | Platform | Flow/ver | Çağrılar Microsoft Graph | Bir ASP.NET veya ASP.NET Core 2. x Web API 'SI çağırır
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Masaüstü (WPF)           | ![Bu görüntüde .NET/C# logo gösterilmektedir](media/sample-v2-code/logo_NET.png)  | Etkileşimli | [DotNet-Native-MultiTarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 'ın parçası | [DotNet-Yerel Masaüstü](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-yerel-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-WebApi-Manual-JWT-doğrulama](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Masaüstü (WPF)           | ![Bu görüntüde .NET/C# logo gösterilmektedir](media/sample-v2-code/logo_NET.png)  | Etkileşimli | [DotNet-Native-MultiTarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 'ın parçası | [DotNet-Yerel Masaüstü](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [DotNet-yerel-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [DotNet-WebApi-Manual-JWT-doğrulama](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
 Mobil (UWP)            | .![Bu görüntüde .NET/C#/UWP gösterilmektedir](media/sample-v2-code/logo_Windows.png)   | Etkileşimli | [DotNet-yerel-UWP-WAM](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> Bu örnek, [adal.net](https://aka.ms/adalnet) değil, [WAM](/windows/uwp/security/web-account-manager)kullanır|  [DotNet-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (tek kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması) </p> [DotNet-WebApi-Multitenant-Windows-Store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (bir çok kiracılı web API 'sini çağırmak için adal.NET kullanan UWP uygulaması)|
 Mobil (Android, iOS, UWP)   | ![Bu görüntüde .NET/C# (Xamarin) gösterilmektedir](media/sample-v2-code/logo_xamarin.png) | Etkileşimli | [DotNet-Native-MultiTarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobil (Android)           | ![Bu resimde Android logosu gösterilir](media/sample-v2-code/logo_Android.png) | Etkileşimli |   [Android](https://github.com/Azure-Samples/active-directory-android) |

@@ -1,23 +1,23 @@
 ---
-title: İçeri ve dizin oluşturma için SQL ilişkisel verilerini modelleme-Azure Search
-description: Azure Search ' de dizin oluşturma ve tam metin araması için ilişkisel verileri, sabit bir sonuç kümesine nasıl modelleyeceğinizi öğrenin.
+title: İçeri ve dizin oluşturma için SQL ilişkisel verilerini modelleyin
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'de dizin oluşturma ve tam metin araması için ilişkisel verileri, sabit bir sonuç kümesine nasıl modelleyeceğinizi öğrenin.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993569"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790089"
 ---
-# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Azure Search içinde içeri ve dışarı dizinlemeye yönelik ilişkisel SQL verilerini modelleme
+# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama içeri ve dışarı dizinlemeye yönelik ilişkisel SQL verilerini modelleme
 
-Azure Search, [Dizin oluşturma ardışık düzenine](search-what-is-an-index.md)giriş olarak düz bir satır kümesini kabul eder. Kaynak verileriniz SQL Server ilişkisel veritabanındaki birleştirilmiş tablolardan kaynaklanıyorsa, bu makalede sonuç kümesinin nasıl oluşturulacağı ve bir Azure Search dizininde üst-alt ilişkisinin nasıl modelleneceği açıklanmaktadır.
+Azure Bilişsel Arama, [Dizin oluşturma ardışık düzenine](search-what-is-an-index.md)giriş olarak düz bir satır kümesini kabul eder. Kaynak verileriniz SQL Server ilişkisel veritabanındaki birleştirilmiş tablolardan kaynaklanıyorsa, bu makalede sonuç kümesinin nasıl oluşturulacağı ve bir Azure Bilişsel Arama dizininde üst-alt ilişkisinin nasıl modelleneceği açıklanmaktadır.
 
 Bir çizim olarak, [tanıtım verilerine](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels)bağlı olarak bir kuramsal oteller veritabanına başvuracağız. Veritabanı, 50 oteller içeren bir oteller $ tablosundan ve toplam 750 Oda için değişen türler, oranlar ve değişiklik odaları içeren bir oda $ tablosu olduğunu varsayalım. Tablolar arasında bire çok ilişki vardır. Yaklaşımda bir görünüm, her bir satıra eklenen ilişkili Oda ayrıntısı ile, her otel için bir satır olmak üzere 50 satırı döndüren sorguyu sağlar.
 
@@ -26,7 +26,7 @@ Bir çizim olarak, [tanıtım verilerine](https://github.com/Azure-Samples/azure
 
 ## <a name="the-problem-of-denormalized-data"></a>Yoğun verilerin sorunu
 
-Bire çok ilişki ile çalışma konusundaki güçlüklerden biri, birleştirilmiş tablolar üzerinde oluşturulan standart sorguların, Azure Search senaryosunda iyi çalışmayan çok sayıda veriyi döndürmesini sağlar. Oteller ve odaları birleştiren aşağıdaki örneği göz önünde bulundurun.
+Bire çok ilişki ile çalışma konusundaki güçlüklerden biri, birleştirilmiş tablolar üzerinde oluşturulan standart sorguların, Azure Bilişsel Arama senaryosunda iyi çalışmayan çok fazla veri döndürmesini sağlar. Oteller ve odaları birleştiren aşağıdaki örneği göz önünde bulundurun.
 
 ```sql
 SELECT * FROM Hotels$
@@ -38,13 +38,13 @@ Bu sorgunun sonuçları, tüm otel alanlarını ve ardından tüm oda alanların
    ![Sallaştırlanmış veriler, Oda alanları eklendiğinde yedekli otel verileri](media/index-sql-relational-data/denormalize-data-query.png "Sallaştırlanmış veriler, Oda alanları eklendiğinde yedekli otel verileri")
 
 
-Bu sorgu, yüzeyde başarılı olsa da, beklenen arama deneyimi için doğru belge yapısını sunarken başarısız olur. Dizin oluşturma sırasında, Azure Search her satır için bir arama belgesi oluşturacaktır. Arama belgeleriniz yukarıdaki sonuçlara benziyorsa, Ikizi Dome otelinin tek başına yedi ayrı belge olduğunu algılanan yinelemelerinizi görürsünüz. "Florida 'daki oteller" üzerinde bir sorgu, yalnızca Ikizi Dome otelinin yedi sonucunu döndürür ve diğer ilgili oteller, arama sonuçlarına göre daha derin bir hale döndürülür.
+Bu sorgu, yüzeyde başarılı olsa da, beklenen arama deneyimi için doğru belge yapısını sunarken başarısız olur. Azure Bilişsel Arama, dizin oluşturma işlemi sırasında her satır için bir arama belgesi oluşturur. Arama belgeleriniz yukarıdaki sonuçlara benziyorsa, Ikizi Dome otelinin tek başına yedi ayrı belge olduğunu algılanan yinelemelerinizi görürsünüz. "Florida 'daki oteller" üzerinde bir sorgu, yalnızca Ikizi Dome otelinin yedi sonucunu döndürür ve diğer ilgili oteller, arama sonuçlarına göre daha derin bir hale döndürülür.
 
 Her otel için bir belgenin beklenen deneyimini almak üzere, doğru ayrıntı düzeyinde bir satır kümesi sağlamanız gerekir, ancak bilgilerin tamamını görürsünüz. Neyse ki, bu makaledeki teknikleri benimseerek bunu kolayca yapabilirsiniz.
 
 ## <a name="define-a-query-that-returns-embedded-json"></a>Gömülü JSON döndüren bir sorgu tanımlayın
 
-Beklenen arama deneyimini sunmak için, veri kümesi Azure Search içindeki her arama belgesi için bir satırdan oluşmalıdır. Bizim örneğimizde, her otel için bir satır istiyoruz, ancak biz de kullanıcılarımızın gecelik oranı, boyut ve sayı ya da bir oda ayrıntısı olan bir plaj görünümü gibi, bu konuyla ilgili olarak ilgilendikleri diğer alanlara arama yapabilmesini istiyoruz.
+Beklenen arama deneyimini sunmak için, veri kümesi Azure Bilişsel Arama 'daki her arama belgesi için bir satırdan oluşmalıdır. Bizim örneğimizde, her otel için bir satır istiyoruz, ancak biz de kullanıcılarımızın gecelik oranı, boyut ve sayı ya da bir oda ayrıntısı olan bir plaj görünümü gibi, bu konuyla ilgili olarak ilgilendikleri diğer alanlara arama yapabilmesini istiyoruz.
 
 Çözüm, iç içe geçmiş JSON olarak Oda Ayrıntısı yakalamak ve ikinci adımda gösterildiği gibi, bir görünümdeki alana JSON yapısını eklemedir. 
 
@@ -84,7 +84,7 @@ Beklenen arama deneyimini sunmak için, veri kümesi Azure Search içindeki her 
     GO
     ```
 
-2. İç içe bir sorgunun çıkışını içeren yeni *Odalar* alanının eklenmesiyle, üst`SELECT * from dbo.Hotels$`tablodaki () tüm alanlardan oluşan bir görünüm oluşturun. Çıktıyı JSON olarak `SELECT * from dbo.Rooms$` yapılara **yönelik bir JSON otomatik** yan tümcesi. 
+2. İç tablodaki tüm alanlardan oluşan bir görünüm oluşturun (`SELECT * from dbo.Hotels$`), iç içe bir sorgunun çıkışını içeren yeni *Odalar* alanının eklenmesiyle birlikte. `SELECT * from dbo.Rooms$` **için bir for JSON Auto** yan tümcesi, çıktıyı JSON olarak yapılandırır. 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]
@@ -98,20 +98,20 @@ Beklenen arama deneyimini sunmak için, veri kümesi Azure Search içindeki her 
 
    Aşağıdaki ekran görüntüsünde, en altta yer alan *Odalar* nvarchar alanı ile elde edilen görünüm gösterilmektedir. *Odalar* alanı yalnızca Hoteloda görünümünde bulunur.
 
-   ![Hoteloda görünümü](media/index-sql-relational-data/hotelsrooms-view.png "Hoterooms görünümü")
+   ![Hoteloda görünümü](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms görünümü")
 
-1. Satır `SELECT * FROM dbo.HotelRooms` kümesini almak için çalıştırın. Bu sorgu, her otel için bir tane olmak üzere, bir JSON koleksiyonu olarak ilişkili Oda bilgileriyle 50 satırı döndürür. 
+1. Satır kümesini almak için `SELECT * FROM dbo.HotelRooms` çalıştırın. Bu sorgu, her otel için bir tane olmak üzere, bir JSON koleksiyonu olarak ilişkili Oda bilgileriyle 50 satırı döndürür. 
 
    ![Hoteloda görünümündeki satır kümesi](media/index-sql-relational-data/hotelrooms-rowset.png "Hoteloda görünümündeki satır kümesi")
 
-Bu satır kümesi artık Azure Search içeri aktarmaya hazırdır.
+Bu satır kümesi artık Azure Bilişsel Arama 'ye aktarmaya hazırdır.
 
 > [!NOTE]
-> Bu yaklaşım gömülü JSON 'ın [SQL Server maksimum sütun boyutu limitlerinin](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)altında olduğunu varsayar. Verileriniz sığmıyorsa, [örnek olarak gösterildiği gibi programlı bir yaklaşım deneyebilirsiniz: Azure Search](search-example-adventureworks-modeling.md)için AdventureWorks envanter veritabanını modelleyin.
+> Bu yaklaşım gömülü JSON 'ın [SQL Server maksimum sütun boyutu limitlerinin](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)altında olduğunu varsayar. Verileriniz sığmıyorsa, [örnek: Azure bilişsel arama AdventureWorks Inventory Database model](search-example-adventureworks-modeling.md)oluşturma gibi bir programlama yaklaşımı deneyebilirsiniz.
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Bire çok ilişkinin "çok" tarafı için karmaşık bir koleksiyon kullanın
 
-Azure Search tarafında, iç içe geçmiş JSON kullanarak bire çok ilişkiyi modelleyen bir dizin şeması oluşturun. Önceki bölümde oluşturduğunuz sonuç kümesi, genellikle aşağıda belirtilen dizin şemasına karşılık gelir (bazı alanları kısaltma için kestik).
+Azure Bilişsel Arama tarafında, iç içe geçmiş JSON kullanarak bire çok ilişkiyi modelleyen bir dizin şeması oluşturun. Önceki bölümde oluşturduğunuz sonuç kümesi, genellikle aşağıda belirtilen dizin şemasına karşılık gelir (bazı alanları kısaltma için kestik).
 
 Aşağıdaki örnek, [karmaşık veri türlerini Modelme](search-howto-complex-data-types.md#creating-complex-fields)içindeki örneğe benzerdir. Bu makalenin konusu olan *Odalar* yapısı, *oteller*adlı bir dizinin alanlar koleksiyonudur. Bu örnek ayrıca, bir koleksiyonda izin verilen çok sayıda öğenin aksine, sabit bir öğe kümesinden oluşan *odalardan* farklı olan *Adres*için karmaşık bir tür gösterir.
 
@@ -148,7 +148,7 @@ Aşağıdaki örnek, [karmaşık veri türlerini Modelme](search-howto-complex-d
 }
 ```
 
-Önceki sonuç kümesi ve yukarıdaki Dizin şeması verildiğinde, başarılı bir dizin oluşturma işlemi için gerekli tüm bileşenlere sahipsiniz. Düzleştirilmiş veri kümesi dizin oluşturma gereksinimlerini karşılıyor ancak ayrıntı bilgilerini korur. Azure Search dizininde arama sonuçları, bireysel odalar ve bunların özniteliklerinin bağlamını korurken, otel tabanlı varlıklara kolayca dönecektir.
+Önceki sonuç kümesi ve yukarıdaki Dizin şeması verildiğinde, başarılı bir dizin oluşturma işlemi için gerekli tüm bileşenlere sahipsiniz. Düzleştirilmiş veri kümesi dizin oluşturma gereksinimlerini karşılıyor ancak ayrıntı bilgilerini korur. Azure Bilişsel Arama dizininde, arama sonuçları, bireysel odalar ve onların özniteliklerinin bağlamını korurken, otel tabanlı varlıklara kolayca dönecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -159,4 +159,4 @@ Kendi veri kümesini kullanarak, dizin oluşturmak ve yüklemek için [veri alma
 Veri alma sihirbazının temel adımlarını öğrenmek için aşağıdaki hızlı başlangıcı deneyin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Azure portal kullanarak arama dizini oluşturma](search-get-started-portal.md)
+> [Hızlı başlangıç: Azure portal kullanarak arama dizini oluşturma](search-get-started-portal.md)

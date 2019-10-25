@@ -1,23 +1,23 @@
 ---
-title: 'Örnek: AdventureWorks envanter veritabanını modelleyin-Azure Search'
-description: Azure Search ' de dizin oluşturma ve tam metin araması için, ilişkisel verileri nasıl modelleyeceğinizi ve düzleştirilmiş bir veri kümesine dönüştürmeyi öğrenin.
+title: 'Örnek: AdventureWorks envanter veritabanını modelleme'
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'de dizin oluşturma ve tam metin araması için, ilişkisel verileri nasıl modelleyeceğinizi ve bunları düzleştirilmiş bir veri kümesine dönüştürmeyi öğrenin.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274030"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793001"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Örnek: Azure Search için AdventureWorks envanter veritabanını modelleyin
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Örnek: AdventureWorks Inventory Database for Azure Bilişsel Arama modelleme
 
-Azure Search, düzleştirilmiş bir satır kümesini [Dizin oluşturma (veri alma) ardışık düzenine](search-what-is-an-index.md)girdi olarak kabul eder. Kaynak verileriniz SQL Server ilişkisel bir veritabanından kaynaklanıyorsa, bu makalede, bir örnek olarak AdventureWorks örnek veritabanını kullanarak dizin oluşturma öncesinde düzleştirilmiş bir satır kümesi oluşturmaya yönelik bir yaklaşım gösterilmektedir.
+Azure Bilişsel Arama, [Dizin oluşturma (veri alımı) ardışık düzenine](search-what-is-an-index.md)giriş olarak düzleştirilmiş bir satır kümesini kabul eder. Kaynak verileriniz SQL Server ilişkisel bir veritabanından kaynaklanıyorsa, bu makalede, bir örnek olarak AdventureWorks örnek veritabanını kullanarak dizin oluşturma öncesinde düzleştirilmiş bir satır kümesi oluşturmaya yönelik bir yaklaşım gösterilmektedir.
 
 ## <a name="about-adventureworks"></a>AdventureWorks hakkında
 
@@ -43,7 +43,7 @@ Bu sorunu çözmek, hedef dizini ProductModel tablosuna taşımak kadar basit de
 
 ## <a name="use-a-collection-data-type"></a>Koleksiyon veri türü kullan
 
-"Doğru yaklaşım" veritabanı modelinde doğrudan paralel olmayan bir arama şeması özelliğinden yararlanmadır: **Koleksiyon (EDM. String)** . Bu yapı Azure Search dizin şemasında tanımlanmıştır. Bir koleksiyon veri türü, çok uzun (tek) bir dize yerine ayrı dizelerin bir listesini temsil etmeniz gerektiğinde kullanılır. Etiketlerde veya anahtar sözcüklerinizle karşılaşırsanız, bu alan için bir koleksiyon veri türü kullanırsınız.
+"Doğru yaklaşım" veritabanı modelinde doğrudan paralel olmayan bir arama şeması özelliğinden yararlanmadır: **koleksiyon (EDM. String)** . Bu yapı Azure Bilişsel Arama dizin şemasında tanımlanmıştır. Bir koleksiyon veri türü, çok uzun (tek) bir dize yerine ayrı dizelerin bir listesini temsil etmeniz gerektiğinde kullanılır. Etiketlerde veya anahtar sözcüklerinizle karşılaşırsanız, bu alan için bir koleksiyon veri türü kullanırsınız.
 
 "Color", "size" ve "image" için **koleksiyonun (EDM. String)** çok değerli dizin alanlarını tanımlayarak, çift yönlü bilgiler, dizini yinelenen girdilerle yoklamadan ve filtrelemeye yönelik olarak tutulur. Benzer şekilde, her bir ürün **ListPrice**yerine **minlistprice** dizini oluşturmak Için toplama işlevlerini sayısal ürün alanlarına uygulayın.
 
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Örnek: Azure Search 'de çok düzeyli model sınıflandırmaları](search-example-adventureworks-multilevel-faceting.md)
+> [Örnek: Azure Bilişsel Arama 'de çok düzeyli model sınıflandırmaları](search-example-adventureworks-multilevel-faceting.md)

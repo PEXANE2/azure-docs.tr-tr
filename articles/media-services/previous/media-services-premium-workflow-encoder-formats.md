@@ -14,18 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015033"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792581"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow biçimleri ve codec bileşenleri
 
 > [!NOTE]
-> Premium kodlayıcı soruları için e- mepd@microsoft.composta.
-> 
 > Bu konuda tartışılan Media Encoder Premium Workflow medya işlemcisi Çin 'de bulunmamaktadır. 
 
 Bu belge, **Media Encoder Premium Workflow** Kodlayıcısı 'nın genel önizleme sürümü tarafından desteklenen giriş ve çıkış dosyası biçimlerinin ve codec bileşenlerinin bir listesini içerir.
@@ -55,7 +53,7 @@ Aşağıdaki bölümde, bu medya işlemcisinin giriş olarak desteklediği codec
 
 * AVC 8 bit/10 bit, AVCIntra dahil olmak üzere 4:2:2 'e kadar
 * AVID DNxHD (MXF içinde)
-* DVCPro/DVCProHD (in MXF)
+* DVCPro/DVCProHD (MXF içinde)
 * HEVC/H. 265, Main ve ana 10 profili
 * JPEG2000
 * MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil)
@@ -93,14 +91,12 @@ Aşağıdaki bölümde, bu medya işlemcisinin çıktısı olarak desteklenen co
 
 * AVC (H., 8 bit; en fazla yüksek profile, düzey 5,2; 4K Ultra HD; AVC Içi)
 * AVID DNxHD (MXF içinde)
-* DVCPro/DVCProHD (in MXF)
+* DVCPro/DVCProHD (MXF içinde)
 * MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil)
 * MPEG-1
 * Windows Media videosu/VC-1
 * JPEG küçük resim oluşturma
 * HEVC (H. 265; 8 bit ve 10 bit, ana ve ana 10 profil)
-
-  HDR 10 desteği bazı senaryolarda kullanılabilir, daha fazla bilgi için lütfen mepd@microsoft.com başvurun
 
 
 ### <a name="output-audio-codecs"></a>Çıkış ses codec bileşenleri
@@ -141,11 +137,14 @@ Alma sırasında **Media Encoder Premium Workflow** şunları destekler:
 
 Giriş videonuz kapalı açıklamalı alt yazı içermiyorsa, çıkış varlığı hala boş bir TTML dosyası içerecektir. 
 
+## <a name="need-help"></a>Yardım mı gerekiyor?
+
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -1,25 +1,23 @@
 ---
-title: Arama dizininde çok dilli içerik için dil filtreleri-Azure Search
-description: Dile özgü alanlara sorgu yürütmeyi kapsayan çoklu dil aramasını desteklemek için ölçütleri filtreleyin.
-author: HeidiSteen
+title: Bir arama dizininde çok dilli içerik için dil filtreleri
+titleSuffix: Azure Cognitive Search
+description: Dile özgü alanlara sorgu yürütmeyi kapsayan çok dilli aramayı desteklemek için ölçütleri filtreleyin.
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649857"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792881"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Azure Search dile göre filtreleme 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Bilişsel Arama dile göre filtreleme 
 
-Çok dilli arama uygulamasındaki önemli bir gereksinim, kullanıcının kendi dilinde arama ve sonuç alma olanağıdır. Azure Search, çok dilli bir uygulamanın dil gereksinimlerini karşılamanın bir yolu, belirli bir dilde dizeleri depolamak için ayrılmış bir dizi alan oluşturmaktır ve sonra tam metin aramasını sorgu sırasında yalnızca bu alanlarla kısıtlar.
+Çok dilli arama uygulamasındaki önemli bir gereksinim, kullanıcının kendi dilinde arama ve sonuç alma olanağıdır. Azure Bilişsel Arama, çok dilli bir uygulamanın dil gereksinimlerini karşılamanın bir yolu, belirli bir dilde dizeleri depolamak için ayrılmış bir dizi alan oluşturmaktır ve sonra tam metin aramasını sorgu sırasında yalnızca bu alanlarla kısıtlar.
 
 İstekteki sorgu parametreleri, her iki arama işlemini de kapsam için kullanılır ve ardından, iletmek istediğiniz arama deneyimiyle uyumlu içerik sağlamayan alanların sonuçlarını kırpabilir.
 
@@ -28,11 +26,11 @@ ms.locfileid: "69649857"
 | **searchFields** | Tam metin aramasını adlandırılmış alanlar listesiyle sınırlandırır. |
 | **$select** | Yanıtı yalnızca belirttiğiniz alanları içerecek şekilde kırpar. Varsayılan olarak, tüm alınabilir alanlar döndürülür. **$Select** parametresi, hangi hangilerinin dönebileceği seçmenize olanak sağlar. |
 
-Bu teknik, alan içeriklerinin bütünlüğünden başarılı oldu. Azure Search dizeleri çevirmez veya dil algılamayı gerçekleştirmez. Alanların, istediğiniz dizeleri içerdiğinden emin olmanız gerekir.
+Bu teknik, alan içeriklerinin bütünlüğünden başarılı oldu. Azure Bilişsel Arama dizeleri çevirmez veya dil algılamayı gerçekleştirmez. Alanların, istediğiniz dizeleri içerdiğinden emin olmanız gerekir.
 
 ## <a name="define-fields-for-content-in-different-languages"></a>Farklı dillerdeki içerik için alanları tanımlama
 
-Azure Search, sorgular tek bir dizini hedefler. Tek bir arama deneyiminde dile özgü dizeler sağlamak isteyen geliştiriciler genellikle değerleri depolamak için ayrılmış alanlar tanımlar: Ingilizce dizeler için bir alan, Fransızca için bir, vb. 
+Azure Bilişsel Arama 'de sorgular tek bir dizini hedefler. Tek bir arama deneyiminde dile özgü dizeler sağlamak isteyen geliştiriciler genellikle değerleri depolamak için ayrılmış alanlar tanımlar: Ingilizce dizeler için bir alan, Fransızca için bir, vb. 
 
 Örneklerimizde, aşağıda gösterilen [gerçek emlak örneği](search-get-started-portal.md) de dahil olmak üzere, aşağıdaki ekran görüntüsüne benzer alan tanımlarını gördünüz. Bu örnekte, bu dizindeki alanlar için dil Çözümleyicisi atamalarını nasıl gösterdiğine dikkat edin. Dizeleri içeren alanlar, hedef dilin dil kurallarını işlemek için mühendislik uygulanan bir çözümleyici ile eşleştirildiği zaman tam metin aramasında daha iyi işlem yapar.
 
@@ -64,8 +62,8 @@ parameters =
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Search filtreler](search-filters.md)
++ [Azure Bilişsel Arama filtreler](search-filters.md)
 + [Dil çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Tam metin aramasının Azure Search nasıl çalıştığı](search-lucene-query-architecture.md)
++ [Tam metin aramasının Azure 'da nasıl çalıştığı Bilişsel Arama](search-lucene-query-architecture.md)
 + [Belgelerde ara REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

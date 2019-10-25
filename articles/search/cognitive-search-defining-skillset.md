@@ -1,25 +1,25 @@
 ---
-title: Bilişsel arama ardışık düzeninde beceri oluşturma-Azure Search
-description: Azure Search ' de kullanabilmeniz için veri ayıklama, doğal dil işleme veya görüntü analizi adımlarını tanımlayarak verileri verilerinize göre zenginleştirin ve ayıklayın.
+title: Zenginleştirme ardışık düzeninde beceri oluşturma
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'da kullanmak üzere verilerinize veri ayıklama, doğal dil işleme veya görüntü analizi adımlarını tanımlayarak verileri zenginleştirin ve verilerinizi ayıklayın.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71265525"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787463"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Bir zenginleştirme ardışık düzeninde beceri oluşturma
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
-Bilişsel arama, Azure Search içinde aranabilir hale getirmek için verileri ayıklar ve zenginleştirir. Ayıklama ve zenginleştirme adımları bilişsel *becerileri*, dizin oluşturma sırasında başvurulan bir *beceri* birleştirilir. Beceri, [yerleşik becerileri](cognitive-search-predefined-skills.md) veya özel becerileri kullanabilir (daha fazla bilgi için bkz. bilişsel [arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md) ).
+AI zenginleştirme, Azure Bilişsel Arama 'te aranabilir hale getirmek için verileri ayıklar ve zenginleştirir. Ayıklama ve zenginleştirme adımları bilişsel *becerileri*, dizin oluşturma sırasında başvurulan bir *beceri* birleştirilir. Beceri, [yerleşik becerileri](cognitive-search-predefined-skills.md) veya özel becerileri kullanabilir (daha fazla bilgi için bkz. [bir AI zenginleştirme ardışık düzeninde özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md) ).
 
-Bu makalede, kullanmak istediğiniz yetenekler için bir zenginleştirme ardışık düzeni oluşturmayı öğreneceksiniz. Bir beceri Azure Search [dizin oluşturucuya](search-indexer-overview.md)eklenir. Bu makalede ele alınan işlem hattı tasarımının bir parçası, Beceri kendisini tasarlayabilmektedir. 
+Bu makalede, kullanmak istediğiniz yetenekler için bir zenginleştirme ardışık düzeni oluşturmayı öğreneceksiniz. Bir Azure Bilişsel Arama [dizin oluşturucusuna](search-indexer-overview.md)bir beceri eklenir. Bu makalede ele alınan işlem hattı tasarımının bir parçası, Beceri kendisini tasarlayabilmektedir. 
 
 > [!NOTE]
 > Ardışık düzen tasarımının başka bir bölümü, bir Dizin Oluşturucu belirleyerek bir [sonraki adımda](#next-step)ele alınmıştır. Dizin Oluşturucu tanımı, hedef dizindeki çıkışlara girdileri bağlamak için kullanılan beceri ve alan eşlemelerine yönelik bir başvuru içerir.
@@ -45,10 +45,10 @@ Aşağıdaki diyagramda bir kuramsal zenginleştirme işlem hattı gösterilmekt
 ![Kuramsal bir zenginleştirme işlem hattı](media/cognitive-search-defining-skillset/sample-skillset.png "Kuramsal bir zenginleştirme işlem hattı")
 
 
-İşlem hattında istediğiniz kadar fikir sahibi olduktan sonra, bu adımları sağlayan beceri ifade edebilirsiniz. İşlev, Dizin Oluşturucu tanımınızı Azure Search için yüklediğinizde beceri ifade edilir. Dizin oluşturucuyu karşıya yükleme hakkında daha fazla bilgi edinmek için bkz. [Dizin Oluşturucu-belgeler](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+İşlem hattında istediğiniz kadar fikir sahibi olduktan sonra, bu adımları sağlayan beceri ifade edebilirsiniz. İşlev, Dizin Oluşturucu tanımınızı Azure Bilişsel Arama yüklediğinizde beceri ifade edilir. Dizin oluşturucuyu karşıya yükleme hakkında daha fazla bilgi edinmek için bkz. [Dizin Oluşturucu-belgeler](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-Diyagramda *belge çözme* adımı otomatik olarak gerçekleşir. Temelde, Azure Search iyi bilinen dosyaların nasıl açılacağını bilir ve her belgeden ayıklanan metni içeren bir *içerik* alanı oluşturur. Beyaz kutular yerleşik zenginler ve noktalı "Bing Varlık Arama" kutusu oluşturmakta olduğunuz özel bir zengini temsil eder. Gösterildiği gibi, beceri üç yetenek içerir.
+Diyagramda *belge çözme* adımı otomatik olarak gerçekleşir. Esas olarak, Azure Bilişsel Arama iyi bilinen dosyaların nasıl açılacağını bilir ve her belgeden ayıklanan metni içeren bir *içerik* alanı oluşturur. Beyaz kutular yerleşik zenginler ve noktalı "Bing Varlık Arama" kutusu oluşturmakta olduğunuz özel bir zengini temsil eder. Gösterildiği gibi, beceri üç yetenek içerir.
 
 ## <a name="skillset-definition-in-rest"></a>Beceri tanımı REST
 
@@ -243,11 +243,11 @@ Olası bir sonuç, aşağıdaki çizime benzer şekilde oluşturulmuş bir yapı
 
 ![Örnek çıkış yapısı](media/cognitive-search-defining-skillset/enriched-doc.png "Örnek çıkış yapısı")
 
-Şu anda bu yapı yalnızca iç, yalnızca bellek ve yalnızca Azure Search dizinlerde kullanılır. Bilgi deposunun eklenmesi, arama dışında kullanmak üzere şekillendirilmiş zenginleştirme tasarrufu için bir yol sağlar.
+Şu anda bu yapı yalnızca iç, yalnızca bellek ve Azure Bilişsel Arama dizinlerinde kullanılır. Bilgi deposunun eklenmesi, arama dışında kullanmak üzere şekillendirilmiş zenginleştirme tasarrufu için bir yol sağlar.
 
 ## <a name="add-a-knowledge-store"></a>Bilgi deposu ekleme
 
-[Bilgi deposu](knowledge-store-concept-intro.md) , zenginleştirilmiş belgeyi kaydetmek için Azure Search bir önizleme özelliğidir. Azure depolama hesabı tarafından desteklenen, oluşturduğunuz bir bilgi deposu, verileri zenginleştirdiği depodur. 
+[Bilgi deposu](knowledge-store-concept-intro.md) , zenginleştirilmiş belgeyi kaydetmek için Azure bilişsel arama bir önizleme özelliğidir. Azure depolama hesabı tarafından desteklenen, oluşturduğunuz bir bilgi deposu, verileri zenginleştirdiği depodur. 
 
 Bir beceri öğesine bilgi deposu tanımı eklenir. İşlemin tamamına yönelik bir anlatım için bkz. [bilgi deposu ile çalışmaya başlama](knowledge-store-howto.md).
 

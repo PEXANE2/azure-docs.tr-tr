@@ -1,5 +1,6 @@
 ---
-title: Uygulamanın yayımcı etki alanını yapılandırma | Mavisi
+title: Uygulamanın yayımcı etki alanını yapılandırma
+titleSuffix: Microsoft identity platform
 description: Kullanıcıların bilgilerinin gönderildiği yeri bilmesini sağlamak için bir uygulamanın yayımcı etki alanını nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257927"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803337"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Nasıl yapılır: Uygulamanın yayımcı etki alanını yapılandırma (Önizleme)
+# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma (Önizleme)
 
 Uygulamanın yayımcı etki alanı, kullanıcıların bilgilerinin gönderildiği yeri bilmesini sağlamak için [uygulamanın onay isteminde](application-consent-experience.md) kullanıcılara görüntülenir. 21 Mayıs 2019 ' den sonra kaydedilen çok kiracılı uygulamalar, yayımcı etki alanı **doğrulanmamış**olarak görünür. Çok kiracılı uygulamalar, tek bir kuruluş dizini dışında hesapları destekleyen uygulamalardır; Örneğin, tüm Azure AD hesaplarını destekler veya tüm Azure AD hesaplarını ve kişisel Microsoft hesaplarını destekler.
 
@@ -38,7 +39,7 @@ Aşağıdaki tabloda, yayımcı etki alanı değerinin varsayılan davranışı 
 
 | Kiracı tarafından doğrulanan etki alanları | Yayımcı etki alanının varsayılan değeri |
 |-------------------------|----------------------------|
-| null | null |
+| değer | değer |
 | *. onmicrosoft.com | *. onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (birincil) | domain2.com |
 
@@ -69,13 +70,13 @@ Uygulamanızın yayımcı etki alanını ayarlamak için aşağıdaki adımları
    - Zaten bir etki alanı yapılandırmadıysanız, **etki alanı Yapılandır** ' ı seçin.
    - Bir etki alanı zaten yapılandırılmışsa **etki alanını güncelleştir** ' i seçin.
 
-Uygulamanız bir kiracıda kayıtlıysa, seçebileceğiniz iki sekme görürsünüz: **Doğrulanmış bir etki alanı seçin** ve **Yeni bir etki alanı doğrulayın**.
+Uygulamanız bir kiracıda kayıtlıysa, seçebileceğiniz iki sekme görürsünüz: **doğrulanmış bir etki alanı seçin** ve **Yeni bir etki alanı doğrulayın**.
 
 Uygulamanız bir kiracıda kayıtlı değilse, yalnızca uygulamanız için yeni bir etki alanı doğrulama seçeneğini görürsünüz.
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>Uygulamanıza yönelik yeni bir etki alanını doğrulamak için
 
-1. Adlı `microsoft-identity-association.json` bir dosya oluşturun ve aşağıdaki JSON kod parçacığını yapıştırın.
+1. `microsoft-identity-association.json` adlı bir dosya oluşturun ve aşağıdaki JSON kod parçacığını yapıştırın.
 
    ```json
    {
@@ -98,7 +99,7 @@ Uygulamanız bir kiracıda kayıtlı değilse, yalnızca uygulamanız için yeni
 - Kiracınızda etki alanları doğrulandıysa, **doğrulanmış etki alanı seç** açılır listesinden etki alanlarından birini seçin.
 
 >[!Note]
-> Döndürülmesi gereken ' Content-Type ' üst bilgisi bekleniyordu `application/json`. Beğendiği gibi başka bir şey kullanıyorsanız, aşağıda belirtildiği gibi bir hata alabilirsiniz`application/json; charset=utf-8` 
+> Döndürülmesi gereken ' Content-Type ' üst bilgisi bekleniyordu `application/json`. Aşağıdaki gibi başka bir şey kullanıyorsanız, aşağıda belirtildiği gibi bir hata alabilirsiniz `application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >
@@ -145,7 +146,7 @@ Ancak, geliştirici kök etki alanını açıkça eklerse, birleşimine izin ver
 "https://app2.contoso.com",
 ```
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 Aşağıdaki durumlar tek köklü etki alanı kısıtlamasına tabi değildir:
 

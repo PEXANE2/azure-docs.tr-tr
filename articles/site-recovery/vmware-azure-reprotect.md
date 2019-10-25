@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331052"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791813"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Azure 'a yük devretmeden sonra makineleri şirket içi bir siteye yeniden koruma ve geri dönme
 
@@ -34,6 +34,7 @@ Sanal makinelerinizi oluşturmak için bir şablon kullandıysanız, her bir san
 - Bir vCenter sunucusu, geri dönecek sanal makineleri yönetirse, vCenter sunucularındaki VM 'Leri bulmak için [gerekli izinlere](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) sahip olduğunuzdan emin olun.
 - Yeniden korumadan önce ana hedef sunucuda anlık görüntüleri silin. Şirket içi ana hedefte veya sanal makinede anlık görüntüler varsa, yeniden koruma başarısız olur. Sanal makinedeki anlık görüntüler, yeniden koruma işleri sırasında otomatik olarak birleştirilir.
 - Bir çoğaltma grubunun tüm sanal makineleri aynı işletim sistemi türünde olmalıdır (tüm Windows veya tüm Linux). Karma işletim sistemlerine sahip bir çoğaltma grubu, şu anda şirket içinde yeniden koruma ve yeniden çalışma için desteklenmez. Bunun nedeni, ana hedefin sanal makineyle aynı işletim sisteminde olması gerekir. Bir çoğaltma grubunun tüm sanal makineleri aynı ana hedefe sahip olmalıdır. 
+- Ana hedefin, çoğaltılan öğelerin işletim sistemi sürümlerinden aynı veya daha yüksek işletim sistemi sürümüne sahip olması gerekir.
 - Bir yapılandırma sunucusu, yeniden başarısız olduğunuzda şirket içi olarak gereklidir. Yeniden çalışma sırasında, sanal makinenin yapılandırma sunucusu veritabanında mevcut olması gerekir. Aksi takdirde, yeniden çalışma başarısız olur. Yapılandırma sunucunuz için düzenli olarak zamanlanmış yedeklemeler yaptığınızdan emin olun. Bir olağanüstü durum varsa, yeniden çalışma çalışması için sunucuyu aynı IP adresiyle geri yükleyin. 
 - Yeniden koruma ve yeniden çalışma, verileri çoğaltmak için siteden siteye (S2S) VPN veya ExpressRoute özel eşlemesi gerektirir. Azure 'daki başarısız olan sanal makinelerin şirket içi yapılandırma sunucusuna ulaşabilmesi için ağı sağlayın. Yük devredilen sanal makinelerin Azure ağında bir işlem sunucusu dağıtmanız gerekir. Bu işlem sunucusu, ayrıca şirket içi yapılandırma sunucusu ve ana hedef sunucu ile iletişim kurabilmelidir.
 - Çoğaltılan öğelerin IP adreslerinin yük devretmede korunması durumunda, Azure sanal makineler ile yapılandırma sunucusunun yeniden çalışma NIC 'i arasında S2S veya ExpressRoute bağlantısı yapılmalıdır. IP adresi saklama 'nın, kaynak makine bağlantısı için ve diğeri de Azure yeniden çalışma bağlantısı için iki NIC 'ye sahip olmasını gerektirdiğini unutmayın. Bunun nedeni, kaynak ve yük devredilen sanal makinelerin alt ağ adres aralıklarının çakışmasını önmaktır.
@@ -92,7 +93,7 @@ Ana hedef sunucu oluşturduktan sonra, aşağıdaki görevleri yapın:
 Azure 'da bir sanal makine önyüklendikten sonra, aracının yapılandırma sunucusuna (15 dakikaya kadar) kaydolması biraz zaman alır. Bu süre boyunca yeniden koruyamazsınız ve bir hata mesajı aracının yüklenmediğini gösterir. Bu durumda, birkaç dakika bekleyin ve sonra yeniden korumayı tekrar deneyin:
 
 
-1. @No__t **kasa**seçin-1**çoğaltılan öğe**. Yük devredilen sanal makineye sağ tıklayın ve ardından **yeniden koru**' yı seçin. Ya da, komut düğmelerinden makineyi seçip **yeniden koru**' yı seçin.
+1. **Çoğaltılan öğeleri** > **kasa** seçin. Yük devredilen sanal makineye sağ tıklayın ve ardından **yeniden koru**' yı seçin. Ya da, komut düğmelerinden makineyi seçip **yeniden koru**' yı seçin.
 2. **Azure 'dan şirket içi** koruma yönünün seçildiğini doğrulayın.
 3. **Ana hedef sunucusu** ve **işlem sunucusu**' nda, şirket içi ana hedef sunucusunu ve işlem sunucusunu seçin.  
 4. **Veri deposu**için, şirket içi diskleri kurtarmak istediğiniz veri deposunu seçin. Bu seçenek, şirket içi sanal makine silindiğinde ve yeni diskler oluşturmanız gerektiğinde kullanılır. Diskler zaten mevcutsa bu seçenek yoksayılır. Yine de bir değer belirtmeniz gerekir.

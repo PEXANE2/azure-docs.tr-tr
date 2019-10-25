@@ -1,5 +1,6 @@
 ---
-title: Korumalı Web API 'SI-uygulama kaydı | Mavisi
+title: Korumalı Web API 'SI-uygulama kaydı
+titleSuffix: Microsoft identity platform
 description: Korumalı bir Web API 'SI oluşturmayı ve uygulamayı kaydettirmek için gereken bilgileri oluşturmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,18 +17,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbccfc38a4e5e4b31cb625c614e838a3c92e7429
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c905dfd86fd80b9e55aa7bd5a9b9b03f277570c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562298"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802551"
 ---
-# <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: Uygulama kaydı
+# <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
 
 Bu makalede, korumalı bir Web API 'SI için uygulama kaydının ayrıntıları açıklanmaktadır.
 
-Bkz [. hızlı başlangıç: Bir uygulamayı kaydetmeye yönelik ortak adımlar için Microsoft](quickstart-register-app.md) Identity platformu ile bir uygulamayı kaydedin.
+Bkz. hızlı başlangıç: uygulamayı kaydetmeye yönelik ortak adımlar için [Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md) .
 
 ## <a name="accepted-token-version"></a>Kabul edilen belirteç sürümü
 
@@ -49,17 +50,17 @@ Uygulamayı oluşturduktan sonra, aşağıdaki adımları izleyerek kabul edilen
 
 Kullanıcı etkileşimli olarak oturum açmamış olduğundan Web API 'Lerinin yeniden yönlendirme URI 'SI kaydetmesi gerekmez.
 
-## <a name="expose-an-api"></a>Bir API'yi kullanıma sunma
+## <a name="expose-an-api"></a>API 'YI kullanıma sunma
 
 Web API 'Lerine özgü başka bir ayar, sunulan API ve sunulan kapsamdır.
 
 ### <a name="resource-uri-and-scopes"></a>Kaynak URI 'SI ve kapsamları
 
-Kapsamlar genellikle biçiminde `resourceURI/scopeName`olur. Microsoft Graph için kapsamlar gibi `User.Read`kısayollar vardır. Bu dize, için `https://graph.microsoft.com/user.read`bir kısayoldur.
+Kapsamlar genellikle `resourceURI/scopeName`biçiminde olur. Microsoft Graph için kapsamlar `User.Read`gibi kısayollara sahiptir. Bu dize, `https://graph.microsoft.com/user.read`için bir kısayoldur.
 
 Uygulama kaydı sırasında şu parametreleri tanımlamanız gerekir:
 
-- Kaynak URI 'SI. Varsayılan olarak, uygulama kayıt portalı kullanmanızı önerir `api://{clientId}`. Bu kaynak URI 'SI benzersizdir, ancak insanlar okunabilir değildir. Bunu değiştirebilirsiniz, ancak yeni değerin benzersiz olduğundan emin olabilirsiniz.
+- Kaynak URI 'SI. Varsayılan olarak, uygulama kayıt portalı `api://{clientId}`kullanmanızı önerir. Bu kaynak URI 'SI benzersizdir, ancak insanlar okunabilir değildir. Bunu değiştirebilirsiniz, ancak yeni değerin benzersiz olduğundan emin olabilirsiniz.
 - Bir veya daha fazla *kapsam*. (İstemci uygulamalarına, Web API 'niz için *temsilci izinleri* olarak gösterilir.)
 - Bir veya daha fazla *uygulama rolü*. (İstemci uygulamalarına, Web API 'niz için *Uygulama izinleri* olarak gösterilir.)
 
@@ -72,7 +73,7 @@ Kapsamlar Ayrıca, uygulamanızın son kullanıcılarına sunulan onay ekranınd
 
 1. Uygulama kaydında **BIR API 'Yi kullanıma** sunma bölümünü seçin.
 1. **Kapsam ekle**’yi seçin.
-1. İstenirse, **Kaydet ve devam et**' i seçerek önerilen`api://{clientId}`uygulama kimliği URI 'sini () kabul edin.
+1. İstenirse, **Kaydet ve devam et**' i seçerek ÖNERILEN uygulama kimliği URI 'sini (`api://{clientId}`) kabul edin.
 1. Şu parametreleri girin:
       - **Kapsam adı**için **access_as_user**kullanın.
       - **Kimler izin verebilir** **yönetici ve kullanıcıların** seçili olduğundan emin olun.
@@ -95,10 +96,10 @@ Bu bölümde, korumalı Web API 'nizi, Daemon uygulamaları tarafından güvenli
 Uygulama izinlerini göstermek için bildirimi düzenlemeniz gerekir.
 
 1. Uygulamanız için uygulama kaydında, **bildirim**' ı seçin.
-1. `appRoles` Ayarı bularak ve bir veya daha fazla uygulama rolü ekleyerek bildirimi düzenleyin. Rol tanımı aşağıdaki örnek JSON bloğunda verilmiştir. Kümeyi yalnızca olarak `"Application"`bırakın. `allowedMemberTypes` ' Nin benzersiz bir GUID olduğundan ve `value` boşlukiçermediğindeneminolun.`displayName` `id`
+1. `appRoles` ayarını bularak ve bir veya daha fazla uygulama rolü ekleyerek bildirimi düzenleyin. Rol tanımı aşağıdaki örnek JSON bloğunda verilmiştir. `allowedMemberTypes` yalnızca `"Application"` olarak ayarlı bırakın. `id` benzersiz bir GUID olduğundan ve `displayName` ve `value` boşluk içermediğinden emin olun.
 1. Bildirimi kaydedin.
 
-Aşağıdaki örnek içeriğini `appRoles`gösterir. `id` (Herhangi bir benzersiz GUID olabilir.)
+Aşağıdaki örnek `appRoles`içeriğini gösterir. (`id` herhangi bir benzersiz GUID olabilir.)
 
 ```JSon
 "appRoles": [
@@ -130,7 +131,7 @@ Web API 'SI, uygulama rolünü denetler. (Uygulama izinlerini kullanıma sunma g
 
    > [!IMPORTANT]
    >
-   > **Gerekli Kullanıcı atamasını** **AYARLARSANıZ, Azure**ad, Web API 'si için bir erişim belirteci istediklerinde, istemcilerin uygulama rolü atamalarını denetlecektir. İstemci herhangi bir uygulama rolüne atanmamışsa, Azure AD bu hatayı `invalid_client: AADSTS501051: Application <application name> is not assigned to a role for the <web API>`döndürür.
+   > **Gerekli Kullanıcı atamasını** **AYARLARSANıZ, Azure AD, Web**API 'si için bir erişim belirteci istediklerinde, istemcilerin uygulama rolü atamalarını denetlecektir. İstemci herhangi bir uygulama rolüne atanmamışsa, Azure AD `invalid_client: AADSTS501051: Application <application name> is not assigned to a role for the <web API>`hata döndürür.
    >
    > **Kullanıcı atamasını gerekli** tutarsanız, **Hayır**olarak AYARLARSANıZ, *istemci Web API 'niz için bir ERIŞIM belirteci istediğinde, Azure AD uygulama rolü atamalarını denetlemez*. Tüm Daemon istemcileri (yani, istemci kimlik bilgileri akışını kullanan tüm istemciler), hedef kitini belirterek API için bir erişim belirteci elde edebilecektir. Herhangi bir uygulama, için izin istemek zorunda kalmadan API 'ye erişebilecektir. Ancak Web API 'niz her zaman, önceki bölümde açıklandığı gibi, uygulamanın doğru rolün (kiracı yöneticisi tarafından yetkilendirilmiş) olduğunu doğrulayın. API, erişim belirtecinin bir rol talebine sahip olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak bu doğrulamayı gerçekleştirir. (Bu durumda, değer `access_as_application`.)
 

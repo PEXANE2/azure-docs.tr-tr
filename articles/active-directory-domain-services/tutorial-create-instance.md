@@ -7,28 +7,27 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336850"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786980"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
 Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Etki alanı denetleyicilerini kendiniz dağıtmadan, yönetmeden ve düzeltme eki uygulamadan bu etki alanı hizmetlerini kullanırsınız. Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların kurumsal kimlik bilgilerini kullanarak oturum açmasını sağlar ve kaynaklara erişimi güvenli hale getirmek için mevcut grupları ve Kullanıcı hesaplarını kullanabilirsiniz.
 
-Bu öğreticide, Azure portal kullanılarak Azure AD DS örneği oluşturma ve yapılandırma gösterilmektedir.
+Ağ ve eşitleme için varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir veya [Bu ayarları el ile tanımlayabilirsiniz][tutorial-create-instance-advanced]. Bu öğreticide, Azure portal kullanarak bir Azure AD DS örneği oluşturmak ve yapılandırmak için varsayılan seçeneklerin nasıl kullanılacağı gösterilmektedir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Yönetilen bir etki alanı için DNS ve sanal ağ ayarlarını yapılandırma
+> * Yönetilen bir etki alanı için DNS gereksinimlerini anlama
 > * Azure AD DS örneği oluşturma
-> * Etki alanı yönetimine yönetici kullanıcılar ekleme
-> * Parola karma eşitlemesini etkinleştirme
+> * Parola karması eşitlemeyi etkinleştirme
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
@@ -52,13 +51,15 @@ Azure AD DS için gerekli olmasa da, Azure AD kiracısı için [self servis paro
 
 Bu öğreticide, Azure portal kullanarak Azure AD DS örneğini oluşturup yapılandırırsınız. Başlamak için öncelikle [Azure Portal](https://portal.azure.com)oturum açın.
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>Örnek oluşturma ve temel ayarları yapılandırma
+## <a name="create-an-instance"></a>Örnek oluşturma
 
 **Etkinleştirme Azure AD Domain Services** Sihirbazı 'nı başlatmak için aşağıdaki adımları izleyin:
 
 1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 1. Arama çubuğuna *etki alanı Hizmetleri* girin, sonra arama önerilerindeki *Azure AD Domain Services* seçin.
 1. Azure AD Domain Services sayfasında **Oluştur**' u seçin. **Etkinleştirme Azure AD Domain Services** Sihirbazı başlatılır.
+1. Yönetilen etki alanını oluşturmak istediğiniz Azure **aboneliğini** seçin.
+1. Yönetilen etki alanının ait olacağı **kaynak grubunu** seçin. **Yeni oluştur** veya var olan bir kaynak grubunu Seç seçeneğini belirleyin.
 
 Azure AD DS örneği oluşturduğunuzda bir DNS adı belirlersiniz. Bu DNS adını seçerken bazı noktalar vardır:
 
@@ -86,80 +87,28 @@ Aşağıdaki DNS adı kısıtlamaları da geçerlidir:
 Azure AD DS örneği oluşturmak için Azure portal *temel bilgiler* penceresindeki alanları doldurun:
 
 1. Yönetilen etki alanınız için bir **DNS etki alanı adı** girin, önceki noktaları dikkate alarak.
-1. Yönetilen etki alanını oluşturmak istediğiniz Azure **aboneliğini** seçin.
-1. Yönetilen etki alanının ait olacağı **kaynak grubunu** seçin. **Yeni oluştur** veya var olan bir kaynak grubunu Seç seçeneğini belirleyin.
 1. Yönetilen etki alanının oluşturulması gereken Azure **konumunu** seçin.
-1. **Ağ** bölümüne geçmek için **Tamam** ' ı tıklatın.
 
-![Azure AD Domain Services örneği için temel ayarları yapılandırma](./media/tutorial-create-instance/basics-window.png)
+    ![Azure AD Domain Services örneği için temel ayarları yapılandırma](./media/tutorial-create-instance/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>Sanal ağ oluşturma ve yapılandırma
+Azure AD DS yönetilen bir etki alanını hızlıca oluşturmak için, ek varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** seçeneğini belirleyebilirsiniz. Bu oluşturma seçeneğini belirlediğinizde aşağıdaki varsayılanlar yapılandırılır:
 
-Bağlantı sağlamak için bir Azure sanal ağı ve özel bir alt ağ gerekir. Azure AD DS bu sanal ağ alt ağında etkin. Bu öğreticide, bir sanal ağ oluşturursunuz, ancak bunun yerine var olan bir sanal ağı kullanmayı tercih edebilirsiniz. Her iki yaklaşımda de Azure AD DS tarafından kullanılmak üzere ayrılmış bir alt ağ oluşturmanız gerekir.
+* *10.0.1.0/24*IP adresi aralığını kullanan *aeklemeleri-VNET* adlı bir sanal ağ oluşturur.
+* *10.0.1.0/24*IP adresi aralığını kullanarak *aeklemesine-subnet* adlı bir alt ağ oluşturur.
+* Azure AD 'deki *Tüm* kullanıcıları Azure AD DS yönetilen etki alanına eşitler.
 
-Bu ayrılmış sanal ağ alt ağı için bazı noktalar aşağıdaki alanlarda yer alır:
+1. Bu varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** ' u seçin.
 
-* Azure AD DS kaynaklarını desteklemek için alt ağın adres aralığında en az 3-5 kullanılabilir IP adresi olmalıdır.
-* Azure AD DS dağıtmaya yönelik *ağ geçidi* alt ağını seçmeyin. Azure AD DS bir *ağ geçidi* alt ağına dağıtılması desteklenmez.
-* Diğer sanal makineleri alt ağa dağıtmayın. Uygulamalar ve VM 'Ler, bağlantıyı güvenli hale getirmek için genellikle ağ güvenlik gruplarını kullanır. Bu iş yüklerini ayrı bir alt ağda çalıştırmak, yönetilen etki alanınız için bağlantıyı kesintiye uğratmadan bu ağ güvenlik gruplarını uygulamanıza olanak sağlar.
-* Azure AD DS etkinleştirdikten sonra yönetilen etki alanınızı farklı bir sanal ağa taşıyamazsınız.
+## <a name="deploy-the-managed-domain"></a>Yönetilen etki alanını dağıtma
 
-Sanal ağın nasıl planlanacağı ve yapılandırılacağı hakkında daha fazla bilgi için bkz. [Azure Active Directory Domain Services için ağ değerlendirmeleri][network-considerations].
+Sihirbazın **Özet** sayfasında, yönetilen etki alanının yapılandırma ayarlarını gözden geçirin. Değişiklik yapmak için sihirbazın herhangi bir adımına geri dönebilirsiniz. Azure AD DS yönetilen bir etki alanını bu yapılandırma seçeneklerini kullanarak tutarlı bir şekilde farklı bir Azure AD kiracısına yeniden dağıtmak için, **Otomasyon için bir şablon da indirebilirsiniz**.
 
-*Ağ* penceresindeki alanları aşağıdaki gibi doldurun:
-
-1. **Ağ** penceresinde, **sanal ağ Seç**' i seçin.
-1. Bu öğretici için Azure AD DS dağıtmak üzere yeni bir sanal ağ **oluşturmayı** seçin.
-1. Sanal ağ için *Myvnet*gibi bir ad girin ve ardından *10.1.0.0/16*gibi bir adres aralığı belirtin.
-1. *DomainServices*gibi açık bir ada sahip ayrılmış bir alt ağ oluşturun. *10.1.0.0/24*gibi bir adres aralığı belirtin.
-
-    ![Azure AD Domain Services ile kullanmak için bir sanal ağ ve alt ağ oluşturun](./media/tutorial-create-instance/create-vnet.png)
-
-    Özel IP adresi aralığınızı içinde olan bir adres aralığı seçtiğinizden emin olun. Ortak adres alanındaki sahip olmadığınız IP adresi aralıkları, Azure AD DS içinde hatalara neden olur.
-
-    > [!TIP]
-    > **Sanal ağ Seç** sayfasında, var olan sanal ağlar, daha önce seçtiğiniz kaynak grubuna ve Azure konumuna ait olacak şekilde görüntülenir. Azure AD DS dağıtmadan önce [adanmış bir alt ağ oluşturmanız][create-dedicated-subnet] gerekir.
-
-1. Sanal ağ ve alt ağ oluşturulduğunda, alt ağ, *DomainServices*gibi otomatik olarak seçilmelidir. Bunun yerine, seçili sanal ağın parçası olan alternatif bir mevcut alt ağı seçebilirsiniz:
-
-    ![Sanal ağ içinde ayrılmış alt ağı seçin](./media/tutorial-create-instance/choose-subnet.png)
-
-1. Sanal ağ yapılandırmasını onaylamak için **Tamam ' ı** seçin.
-
-## <a name="configure-an-administrative-group"></a>Yönetim grubu yapılandırma
-
-Azure AD DS etki alanının yönetimi için *AAD DC yöneticileri* adlı özel bir yönetim grubu kullanılır. Bu grubun üyelerine, yönetilen etki alanına katılmış VM 'lerde yönetim izinleri verilir. Bu grup, etki alanına katılmış VM 'lerde yerel Yöneticiler grubuna eklenir. Bu grubun üyeleri, etki alanına katılmış VM 'lere uzaktan bağlanmak için Uzak Masaüstü 'Nü de kullanabilir.
-
-Azure AD DS kullanarak, yönetilen bir etki alanında *etki alanı yöneticisi* veya *Kuruluş Yöneticisi* izinlerine sahip değilsiniz. Bu izinler hizmet tarafından ayrılmıştır ve kiracının içindeki kullanıcılar için kullanılabilir hale getirilmez. Bunun yerine, *AAD DC Administrators* grubu bazı ayrıcalıklı işlemler gerçekleştirmenize olanak sağlar. Bu işlemler, etki alanına katılmış VM 'lerde yönetim grubuna ait olan ve grup ilkesi yapılandıran bilgisayarların etki alanına katılmasını içerir.
-
-Sihirbaz, Azure AD dizininizde *AAD DC yöneticileri* grubunu otomatik olarak oluşturur. Azure AD dizininizde bu adı taşıyan mevcut bir grubunuz varsa, sihirbaz bu grubu seçer. İsteğe bağlı olarak, dağıtım işlemi sırasında bu *AAD DC Yöneticiler* grubuna ek Kullanıcı eklemeyi seçebilirsiniz. Bu adımlar daha sonra tamamlanabilir.
-
-1. Bu *AAD DC Administrators* grubuna ek kullanıcılar eklemek için **Grup üyeliğini Yönet**' i seçin.
-1. **Üye Ekle** düğmesini seçin, ardından Azure AD dizininizdeki kullanıcıları arayın ve seçin. Örneğin, kendi hesabınızı arayın ve *AAD DC Administrators* grubuna ekleyin.
-
-    ![AAD DC yöneticileri grubunun grup üyeliğini yapılandırma](./media/tutorial-create-instance/admin-group.png)
-
-1. İşiniz bittiğinde **Tamam**’ı seçin.
-
-## <a name="configure-synchronization"></a>Eşitlemeyi yapılandırma
-
-Azure AD DS, Azure AD 'de bulunan *Tüm* kullanıcıları ve grupları ya da yalnızca belirli grupların *kapsamlı* bir eşitlemesini eşitlemenize olanak tanır. *Tüm* kullanıcıları ve grupları eşitlemeyi seçerseniz, daha sonra yalnızca kapsamlı bir eşitleme gerçekleştirmeyi tercih edebilirsiniz. Kapsamlı eşitleme hakkında daha fazla bilgi için bkz. [Azure AD Domain Services kapsamlı eşitleme][scoped-sync].
-
-1. Bu öğreticide **Tüm** kullanıcıları ve grupları eşitlemeyi seçin. Bu eşitleme seçeneği varsayılan seçenektir.
-
-    ![Azure AD 'den Kullanıcı ve grupların tam eşitlemesini gerçekleştirme](./media/tutorial-create-instance/sync-all.png)
-
-1. **Tamam**’ı seçin.
-
-## <a name="deploy-your-managed-domain"></a>Yönetilen etki alanınızı dağıtma
-
-Sihirbazın **Özet** sayfasında, yönetilen etki alanının yapılandırma ayarlarını gözden geçirin. Değişiklik yapmak için sihirbazın herhangi bir adımına geri dönebilirsiniz.
-
-1. Yönetilen etki alanını oluşturmak için **Tamam**' ı seçin.
+1. Yönetilen etki alanını oluşturmak için **Oluştur**' u seçin. Azure AD DS yönetilen oluşturulduktan sonra DNS adı veya sanal ağ gibi belirli yapılandırma seçeneklerinin değiştirilemeytiğine ilişkin bir Note görüntülenir. Devam etmek için **Tamam**' ı seçin.
 1. Yönetilen etki alanınızı sağlama işlemi bir saate kadar sürebilir. Portalda Azure AD DS dağıtımınızın ilerlemesini gösteren bir bildirim görüntülenir. Dağıtım için ayrıntılı ilerlemeyi görmek üzere bildirimi seçin.
 
     ![Dağıtımın Azure portal bildirim devam ediyor](./media/tutorial-create-instance/deployment-in-progress.png)
 
+1. Bu sayfa, dizininizde yeni kaynakların oluşturulması dahil olmak üzere dağıtım işlemindeki güncelleştirmelerle yüklenir.
 1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve Azure kaynakları listesinden Azure AD DS örneğinizi seçin (örneğin, *contoso.com*). **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta*olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
 
     ![Sağlama durumu sırasında etki alanı Hizmetleri durumu](./media/tutorial-create-instance/provisioning-in-progress.png)
@@ -168,7 +117,7 @@ Sihirbazın **Özet** sayfasında, yönetilen etki alanının yapılandırma aya
 
     ![Başarılı bir şekilde sağlandıktan sonra etki alanı Hizmetleri durumu](./media/tutorial-create-instance/successfully-provisioned.png)
 
-Azure AD DS, sağlama işlemi sırasında, dizininizde *etki alanı denetleyicisi Hizmetleri* ve *AzureActiveDirectoryDomainControllerServices* adlı iki kurumsal uygulama oluşturur. Bu kurumsal uygulamaların, yönetilen etki alanınızı hizmetine yönelik olması gerekir. Bu uygulamaların herhangi bir zamanda silinmediği zorunludur.
+Azure Active Directory kiracısında Azure AD Domain Services sunuyoruz ve hizmetin Azure AD Domain Services kaynağı ilişkili Azure aboneliği içinde oluşturulur. Azure AD DS, sağlama işlemi sırasında, Azure Active Directory Örneğinizde *etki alanı denetleyicisi Hizmetleri* ve *AzureActiveDirectoryDomainControllerServices* adlı iki kurumsal uygulama oluşturur. AD etki alanı Hizmetleri. Bu kurumsal uygulamaların, yönetilen etki alanınızı hizmetine yönelik olması gerekir.  Bu uygulamaların herhangi bir zamanda silinmediği zorunludur.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Azure sanal ağı için DNS ayarlarını güncelleştirme
 
@@ -203,14 +152,14 @@ Kullanıcının parolasını sıfırlayabilmesi için Azure AD kiracısı 'nin [
 
 Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, kullanıcının aşağıdaki adımları tamamlaması gerekir:
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)Azure AD erişim paneli sayfasına gidin.
+1. [@No__t_1](https://myapps.microsoft.com)ADRESINDEKI Azure AD erişim paneli sayfasına gidin.
 1. Sağ üst köşede adınızı seçin, sonra açılır menüden **profil** ' i seçin.
 
     ![Profil seçme](./media/tutorial-create-instance/select-profile.png)
 
 1. **Profil** sayfasında, **Parolayı Değiştir**' i seçin.
 1. **Parolayı Değiştir** sayfasında, mevcut (eski) parolanızı girip yeni bir parola girin ve onaylayın.
-1. Seçin **gönderme**.
+1. **Gönder**' i seçin.
 
 Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına katılmış bilgisayarlarda başarıyla oturum açması için parolanızı değiştirdikten birkaç dakika sürer.
 
@@ -219,17 +168,18 @@ Yeni parolanın Azure AD DS kullanılabilir olması ve yönetilen etki alanına 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Yönetilen bir etki alanı için DNS ve sanal ağ ayarlarını yapılandırma
+> * Yönetilen bir etki alanı için DNS gereksinimlerini anlama
 > * Azure AD DS örneği oluşturma
 > * Etki alanı yönetimine yönetici kullanıcılar ekleme
 > * Azure AD DS kullanıcı hesaplarını etkinleştirme ve parola karmaları oluşturma
 
-Bu yönetilen etki alanını işlem içinde görmek için bir sanal makineyi oluşturun ve etki alanına ekleyin.
+VM 'Leri etki alanına katmadan ve Azure AD DS yönetilen etki alanını kullanan uygulamalar dağıtmadan önce, uygulama iş yükleri için bir Azure sanal ağı yapılandırın.
 
 > [!div class="nextstepaction"]
-> [Windows Server sanal makinesini yönetilen etki alanınıza katma](join-windows-vm.md)
+> [Yönetilen etki alanınızı kullanmak için uygulama iş yükleri için Azure sanal ağını yapılandırın](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [network-considerations]: network-considerations.md

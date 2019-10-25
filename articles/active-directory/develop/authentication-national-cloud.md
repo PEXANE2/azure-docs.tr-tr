@@ -1,5 +1,6 @@
 ---
 title: Ulusal bulutlarda Azure Active Directory kullanarak kimlik doğrulaması
+titleSuffix: Microsoft identity platform
 description: Ulusal bulutlar için uygulama kaydı ve kimlik doğrulama uç noktaları hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135866"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803889"
 ---
 # <a name="national-clouds"></a>Ulusal bulutlar
 
@@ -30,7 +31,7 @@ Ulusal bulutlar, Azure 'un fiziksel olarak yalıtılmış örnekleridir. Azure '
 
 Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutlara dağıtılır:  
 
-- Azure Kamu
+- Azure Devlet Kurumları
 - Azure Almanya
 - Azure Çin 21Vianet
 
@@ -80,7 +81,7 @@ Microsoft Identity platformunu kullanarak bir uygulama oluşturmayı öğrenmek 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi:
+Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - [Azure Devlet Kurumları](https://docs.microsoft.com/azure/azure-government/)
 - [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)

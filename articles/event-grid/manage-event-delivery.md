@@ -1,18 +1,18 @@
 ---
-title: Azure Event Grid abonelikler için atılacak mektup ve yeniden deneme ilkeleri
+title: Atılacak mektup ve yeniden deneme ilkeleri-Azure Event Grid
 description: Event Grid için olay teslim seçeneklerini özelleştirmeyi açıklar. Bir atılacak mektup hedefi ayarlayın ve teslimin ne kadar süreyle yeniden deneneceğini belirtin.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
+ms.date: 10/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 63bae62ed89bd0bbc167a88274002d1fa1e9b86d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: caed3c077b4df5da5fd8541b2f7e85ef119604b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933366"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794031"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Atılacak mektup ve yeniden deneme ilkeleri
 
@@ -44,7 +44,7 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın, ancak için `deadletter-endpoint`bir değer sağlayın. Olay aboneliğini silmeniz gerekmez.
+Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın ancak `deadletter-endpoint`için bir değer sağlayın. Olay aboneliğini silmeniz gerekmez.
 
 > [!NOTE]
 > Yerel makinenizde Azure CLı kullanıyorsanız, Azure CLı sürüm 2.0.56 veya üstünü kullanın. Azure CLı 'nın en son sürümünü yükleme yönergeleri için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
@@ -64,7 +64,7 @@ New-AzEventGridSubscription `
   -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
 ```
 
-Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın, ancak için `DeadLetterEndpoint`bir değer sağlayın. Olay aboneliğini silmeniz gerekmez.
+Etkin olmayan devre dışı bırakmak için, olay aboneliği oluşturmak için komutunu yeniden çalıştırın ancak `DeadLetterEndpoint`için bir değer sağlayın. Olay aboneliğini silmeniz gerekmez.
 
 > [!NOTE]
 > Yerel makinenizde Azure PEShell kullanıyorsanız, Azure PowerShell Version 1.1.0 veya üstünü kullanın. [Azure indirmelerinde](https://azure.microsoft.com/downloads/)en son Azure PowerShell indirin ve yükleyin.
@@ -99,7 +99,7 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Hem hem de `event-ttl` `max-deliver-attempts`ayarlarsanız, Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
+Hem `event-ttl` hem de `max-deliver-attempts`ayarlarsanız, Event Grid olay tesliminin ne zaman durdurulacağını anlamak için ilk sona erme tarihi kullanılır.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -127,11 +127,11 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Hem hem de `EventTtl` `MaxDeliveryAttempt`ayarlarsanız, Event Grid olay tesliminin ne zaman durdurulacağını öğrenmek için ilk sona erme tarihi kullanır.
+Hem `EventTtl` hem de `MaxDeliveryAttempt`ayarlarsanız, Event Grid olay tesliminin ne zaman durdurulacağını anlamak için ilk sona erme tarihi kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Kullanılmayan mektup olaylarını işlemek için bir Azure Işlev uygulaması kullanan örnek bir uygulama için bkz. [.NET için Azure Event Grid atılacak harf örnekleri](https://azure.microsoft.com/resources/samples/event-grid-dotnet-handle-deadlettered-events/).
-* Olay teslimi ve yeniden deneme hakkında bilgi için [Event Grid iletiyi teslim ve yeniden deneme](delivery-and-retry.md).
+* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Event Grid ile hızla çalışmaya başlamak için bkz: [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md).
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

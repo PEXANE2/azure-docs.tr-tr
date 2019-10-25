@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e26cf5ede2c8884719152b6d35f1b41eb092eda6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071795"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791891"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Karma Bağlantılar #
 
@@ -28,7 +28,7 @@ Karma Bağlantılar hem Azure 'daki bir hizmettir hem de Azure App Service bir �
 App Service içinde Karma Bağlantılar, diğer ağlardaki uygulama kaynaklarına erişmek için kullanılabilir. Uygulamadan bir uygulama uç noktasına erişim sağlar. Uygulamanıza erişmek için alternatif bir özellik etkinleştirmez. App Service için kullanıldığında, her karma bağlantı tek bir TCP ana bilgisayarı ve bağlantı noktası bileşimiyle söz konusu. Bu, karma bağlantı uç noktasının bir TCP dinleme bağlantı noktasına eriştiğiniz herhangi bir işletim sisteminde ve herhangi bir uygulamada olabileceği anlamına gelir. Karma Bağlantılar özelliği, uygulama protokolünün ne olduğunu veya ne erişeceğimizi bilmez veya ilgilenmez. Yalnızca ağ erişimi sağlar.  
 
 
-## <a name="how-it-works"></a>Nasıl çalışır? ##
+## <a name="how-it-works"></a>Nasıl çalışır ##
 Karma Bağlantılar özelliği Azure Service Bus geçişine yönelik iki giden çağrının oluşur. Uygulamanızın App Service çalıştığı konaktaki bir kitaplıktan bağlantı vardır. Ayrıca, Karma Bağlantı Yöneticisi (HCM) ile Service Bus geçişine bir bağlantı vardır. HCM, erişmeye çalıştığınız kaynağı barındıran ağ içinde dağıttığınız bir geçiş hizmetidir. 
 
 İki Birleşik bağlantıyla, uygulamanızın bir sabit ana bilgisayara TCP tüneli vardır: HCM 'nin diğer tarafındaki bağlantı noktası birleşimi. Bağlantı, kimlik doğrulama ve yetkilendirme için güvenlik ve paylaşılan erişim imzası (SAS) anahtarları için TLS 1,2 kullanır.    
@@ -38,7 +38,7 @@ Karma Bağlantılar özelliği Azure Service Bus geçişine yönelik iki giden �
 Uygulamanız yapılandırılmış bir karma bağlantı uç noktasıyla eşleşen bir DNS isteği yaptığında, giden TCP trafiği karma bağlantı aracılığıyla yeniden yönlendirilir.  
 
 > [!NOTE]
-> Bu, karma bağlantınız için her zaman bir DNS adı kullanmayı denemeniz gerektiği anlamına gelir. Uç nokta bunun yerine bir IP adresi kullanıyorsa, bazı istemci yazılımları DNS araması yapmaz.
+> Bu, karma bağlantınız için her zaman bir DNS adı kullanmayı denemeniz gerektiği anlamına gelir. Uç nokta bunun yerine bir IP adresi kullanıyorsa, bazı istemci yazılımları DNS araması yapmaz. 
 >
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Karma bağlantı avantajlarını App Service ###
@@ -63,9 +63,12 @@ Karma Bağlantılar ile yapaistemediğiniz şeyler şunlardır:
 - UDP 'yi gerektirebileceğinden, LDAP 'yi destekler.
 - App Service çalışanına katılabilmeniz için Active Directory destek.
 
+### <a name="prerequisites"></a>Önkoşullar ###
+ - Windows App Service gereklidir. Yalnızca Windows 'da kullanılabilir.  
+
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Uygulamanıza Karma Bağlantılar ekleme ve oluşturma ##
 
-Karma bağlantı oluşturmak için [Azure Portal][portal] gidin ve uygulamanızı seçin. **Karma bağlantı uç noktalarınızı** **ağ oluşturma** > ' yı seçin. Burada, uygulamanız için yapılandırılmış Karma Bağlantılar görebilirsiniz.  
+Karma bağlantı oluşturmak için [Azure Portal][portal] gidin ve uygulamanızı seçin. **Karma bağlantı uç noktalarınızı yapılandırmak** > **ağ** ' ı seçin. Burada, uygulamanız için yapılandırılmış Karma Bağlantılar görebilirsiniz.  
 
 ![Karma bağlantı listesinin ekran görüntüsü][2]
 
@@ -122,7 +125,7 @@ App Service plan SKU gereksinimi olmasının yanı sıra, Karma Bağlantılar ku
 
 ## <a name="hybrid-connection-manager"></a>Karma Bağlantı Yöneticisi ##
 
-Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran ağda bir geçiş aracısı gerektirir. Bu geçiş aracısına Karma Bağlantı Yöneticisi (HCM) denir. [Azure Portal][portal]uygulamanızdaki HCM 'yi indirmek için,**karma bağlantı uç noktalarınızı** **ağ** > yapılandırma ' yı seçin.  
+Karma Bağlantılar özelliği, karma bağlantı uç noktanızı barındıran ağda bir geçiş aracısı gerektirir. Bu geçiş aracısına Karma Bağlantı Yöneticisi (HCM) denir. [Azure Portal][portal]uygulamanızdaki HCM 'yi indirmek Için, **karma bağlantı uç noktalarınızı yapılandırmak** > **ağ oluşturma** ' yı seçin.  
 
 Bu araç Windows Server 2012 ve üzeri sürümlerde çalışır. HCM bir hizmet olarak çalışır ve 443 numaralı bağlantı noktasında giden Azure Relay bağlanır.  
 
@@ -136,12 +139,12 @@ HCM 'nize bir veya daha fazla Karma Bağlantılar eklemek için:
 
 1. HCM Kullanıcı arabirimini başlatın.
 2. **Başka bir karma bağlantı Yapılandır**' ı seçin.
-![Yeni Karma Bağlantılar yapılandırma ekran görüntüsü][8]
+Yeni Karma Bağlantılar yapılandırma ![ekran görüntüsü][8]
 
 1. Aboneliklerinizle Karma Bağlantılar sağlamak için Azure hesabınızla oturum açın. HCM bunun ötesinde Azure hesabınızı kullanmaya devam etmez. 
 1. Bir abonelik seçin.
 1. HCM 'nin geçişine istediğiniz Karma Bağlantılar seçin.
-![Karma Bağlantılar ekran görüntüsü][9]
+Karma Bağlantılar ekran görüntüsünü ![][9]
 
 1. **Kaydet**’i seçin.
 
@@ -159,7 +162,7 @@ Artık eklediğiniz Karma Bağlantılar görebilirsiniz. Ayrıca, ayrıntıları
 > Azure Relay bağlantı için Web soketlerine bağımlıdır. Bu özellik yalnızca Windows Server 2012 veya üzeri sürümlerde kullanılabilir. Bu nedenle, HCM Windows Server 2012 ' den önceki bir şeye göre desteklenmez.
 >
 
-### <a name="redundancy"></a>Yedeklilik ###
+### <a name="redundancy"></a>Yedekleme ###
 
 Her HCM birden çok Karma Bağlantılar destekleyebilir. Ayrıca, belirli karma bağlantılar birden çok HCMs tarafından desteklenebilir. Varsayılan davranış, trafiği, belirli bir uç nokta için yapılandırılmış HCMs genelinde yönlendirmenize yöneliktir. Karma Bağlantılar ağınızdan yüksek kullanılabilirlik istiyorsanız, ayrı makinelerde birden çok HCMs çalıştırın. Trafiği HCMs 'ye dağıtmak için geçiş hizmeti tarafından kullanılan yük dağıtım algoritması rastgele atamadır. 
 
@@ -169,7 +172,7 @@ Aboneliğiniz dışındaki birinin belirli bir karma bağlantı için bir HCM ö
 
 ![Karma bağlantı el ile ekleme][11]
 
-### <a name="upgrade"></a>Yükseltme ###
+### <a name="upgrade"></a>Yükseltin ###
 
 Sorunları gidermek veya iyileştirmeler sağlamak için Karma Bağlantı Yöneticisi düzenli güncelleştirmeler vardır. Yükseltmeler yayınlandığında, HCM Kullanıcı arabiriminde bir açılan pencere görünür. Yükseltmenin uygulanması değişiklikleri uygular ve HCM 'yi yeniden başlatır. 
 
@@ -196,7 +199,7 @@ Karma bağlantıyla ilişkili JSON nesnesi şöyle görünür:
       }
     }
 
-Bu bilgileri kullanmanın bir yolu, Armclient GitHub projesinden alabileceğiniz armclient ' dır. [][armclient] Uygulamanıza önceden var olan karma bağlantı ekleme hakkında bir örnek aşağıda verilmiştir. Yukarıdaki şema başına şu şekilde bir JSON dosyası oluşturun:
+Bu bilgileri kullanmanın bir yolu, [armclient][armclient] GitHub projesinden alabileceğiniz armclient ' dır. Uygulamanıza önceden var olan karma bağlantı ekleme hakkında bir örnek aşağıda verilmiştir. Yukarıdaki şema başına şu şekilde bir JSON dosyası oluşturun:
 
     {
       "name": "relay-demo-hc",
@@ -224,7 +227,7 @@ Bu API 'yi kullanmak için anahtar gönder ve geçiş kaynak KIMLIĞI gereklidir
 
 İstemcilerin uç noktalara bağlanamadığı birincil neden, uç noktanın DNS adı yerine bir IP adresi kullanılarak belirtilme nedenidir. Uygulamanız istenen uç noktaya ulaşamadıysanız ve bir IP adresi kullandıysanız, HCM 'nin çalıştığı konakta geçerli olan bir DNS adı kullanmaya geçiş yapın. Ayrıca, HCM 'nin çalıştığı konakta DNS adının düzgün şekilde çözümlendiğini kontrol edin. HCM 'nin karma bağlantı uç noktasında çalıştığı konaktan bağlantı olduğunu doğrulayın.  
 
-App Service, Gelişmiş Araçlar (kudu) konsolundan, tcme komut satırı aracı çağrılabilir. Bu araç, bir TCP uç noktasına erişiminiz varsa size söyleyebilir, ancak karma bağlantı uç noktasına erişiminiz varsa size bilgi vermez. Aracı bir karma bağlantı uç noktasına karşı konsolunda kullandığınızda yalnızca bir konak kullandığını onaylanıyor olursunuz: bağlantı noktası birleşimi.  
+App Service, gelişmiş araçlar (kudu) konsolundan, **tcme** komut satırı aracı çağrılabilir. Bu araç, bir TCP uç noktasına erişiminiz varsa size söyleyebilir, ancak karma bağlantı uç noktasına erişiminiz varsa size bilgi vermez. Aracı bir karma bağlantı uç noktasına karşı konsolunda kullandığınızda yalnızca bir konak kullandığını onaylanıyor olursunuz: bağlantı noktası birleşimi.  
 
 Uç noktanız için bir komut satırı istemciniz varsa, bağlantıyı uygulama konsolundan test edebilirsiniz. Örneğin, kıvrımlı kullanarak Web sunucusu uç noktalarına erişimi test edebilirsiniz.
 

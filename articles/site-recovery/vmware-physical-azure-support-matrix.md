@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 179676ae2a7d68bc0263f897ffededcf8b7a01f4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: de9fd8c7cd9470a7ccc9136d1eac91fe373fe03c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693381"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787297"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
@@ -50,7 +50,7 @@ RAM | 16 GB
 Disk sayısı | 3 disk<br/><br/> Diskler işletim sistemi diski, işlem sunucusu önbellek diski ve yeniden çalışma için bekletme sürücüsü içerir.
 Boş disk alanı | işlem sunucusu önbelleği için 600 GB alan.
 Boş disk alanı | bekletme sürücüsü için 600 GB alan.
-İşletim sistemi  | Windows Server 2012 R2 veya masaüstü deneyimi ile Windows Server 2016 |
+İşletim sistemi  | Windows Server 2012 R2 veya masaüstü deneyimi ile Windows Server 2016 <br/><br> Bu gerecin yerleşik ana hedefini yeniden çalışma için kullanmayı planlıyorsanız, işletim sistemi sürümünün çoğaltılan öğelerden aynı veya daha yüksek olduğundan emin olun.|
 İşletim sistemi yerel ayarı | İngilizce (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Yapılandırma sunucusu sürüm [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) veya üzeri için gerekli değildir. 
 Windows Server rolleri | Active Directory Domain Services etkinleştirmeyin; Internet Information Services (IIS) veya Hyper-V. 

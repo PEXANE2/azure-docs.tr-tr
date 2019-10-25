@@ -1,24 +1,23 @@
 ---
-title: Azure portal kullanarak bir arama dizinine veri aktarma Azure Search
+title: Azure portal kullanarak bir arama dizinine veri aktarma
+titleSuffix: Azure Cognitive Search
 description: Azure VM 'lerinde Cosmos DB, BLOB depolama, tablo depolama, SQL veritabanı ve SQL Server Azure verilerini gezinmek için Azure portal veri alma Sihirbazı 'nın nasıl kullanılacağını öğrenin.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71936919"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793670"
 ---
-# <a name="import-data-wizard-for-azure-search"></a>Azure Search için veri içeri aktarma Sihirbazı
+# <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Bilişsel Arama için veri içeri aktarma Sihirbazı
 
-Azure portal, prototip yazmak ve bir dizin yüklemek için Azure Search panosunda **veri alma** Sihirbazı sağlar. Bu makalede, Sihirbazı, girişleri ve çıkışları ve bazı kullanım bilgilerini kullanma avantajları ve sınırlamaları ele alınmaktadır. Yerleşik örnek verileri kullanarak sihirbazda adım adım yönergeler için Azure portal hızlı başlangıcı [kullanılarak Azure Search dizin oluşturma](search-get-started-portal.md) bölümüne bakın.
+Azure portal, prototip yazmak ve bir dizin yüklemek için Azure Bilişsel Arama panosu 'nda **veri Içeri aktarma** Sihirbazı sağlar. Bu makalede, Sihirbazı, girişleri ve çıkışları ve bazı kullanım bilgilerini kullanma avantajları ve sınırlamaları ele alınmaktadır. Yerleşik örnek verileri kullanarak sihirbazda adım adım yönergeler için Azure portal hızlı başlangıcı [kullanılarak Azure bilişsel arama dizini oluşturma](search-get-started-portal.md) bölümüne bakın.
 
 Bu sihirbazın gerçekleştirdiği işlemler şunlardır:
 
@@ -34,7 +33,7 @@ Sihirbaz, arama hizmetinize kaydedilen, program aracılığıyla veya diğer ara
 
 ## <a name="advantages-and-limitations"></a>Avantajlar ve sınırlamalar
 
-Herhangi bir kod yazmadan önce, prototip oluşturma ve kavram kanıtı testi için Sihirbazı kullanabilirsiniz. Sihirbaz dış veri kaynaklarına bağlanır, ilk dizin oluşturmak için verileri örnekler ve sonra verileri JSON belgeleri olarak Azure Search bir dizine aktarır. 
+Herhangi bir kod yazmadan önce, prototip oluşturma ve kavram kanıtı testi için Sihirbazı kullanabilirsiniz. Sihirbaz dış veri kaynaklarına bağlanır, ilk dizin oluşturmak için verileri örnekler ve sonra verileri JSON belgeleri olarak Azure Bilişsel Arama bir dizine aktarır. 
 
 Örnekleme, bir dizin şemasının Çıkarsanan ve bazı sınırlamaları olan bir işlemdir. Veri kaynağı oluşturulduğunda, sihirbaz, veri kaynağının bir parçası olan sütunları belirlemek için bir belge örneği seçer. Çok büyük veri kaynakları için saat sürebileceği için tüm dosyalar okunmaz. Belge seçimi verildiğinde, alan adı veya türü gibi kaynak meta veriler dizin şemasında bir alan koleksiyonu oluşturmak için kullanılır. Kaynak verilerin karmaşıklığına bağlı olarak, ilk şemayı doğruluk için düzenlemeniz veya daha fazla işlem için uzatmanız gerekebilir. Değişikliklerinizi Dizin tanımı sayfasında satır içi yapabilirsiniz.
 
@@ -56,7 +55,7 @@ Bilinen sınırlamalar aşağıdaki gibi özetlenir:
 
 ## <a name="data-source-input"></a>Veri kaynağı girişi
 
-**Veri Içeri aktarma** sihirbazı, Azure Search dizin oluşturma, meta veri okuma, verileri içerik ve yapıyı okumak için belgeleri çözerek ve içeriği JSON olarak seri hale getirmek için kullanılan iç mantığı kullanarak bir dış veri kaynağına bağlanır. Azure Search ' ye sonraki içeri aktarma.
+**Veri Içeri aktarma** Sihirbazı, Azure bilişsel arama Dizin oluşturucular tarafından sunulan iç mantığı kullanarak bir dış veri kaynağına bağlanır. Bu, kaynağı örneklemek, meta verileri okumak, içeriği içerik ve yapıyı okumak için belgeleri çözmek ve içeriği seri hale getirmek için Azure Bilişsel Arama sonraki içeri aktarma için JSON olarak.
 
 Yalnızca tek bir tablo, veritabanı görünümü veya eşdeğer veri yapısından içeri aktarabilirsiniz; ancak yapı hiyerarşik veya iç içe geçmiş alt yapılar içerebilir. Daha fazla bilgi için bkz. [karmaşık türleri Modelme](search-howto-complex-data-types.md).
 
@@ -64,10 +63,10 @@ Sihirbazı çalıştırmadan önce bu tek tablo veya görünüm oluşturmanız g
 
 |  Seçim | Açıklama |
 | ---------- | ----------- |
-| **Mevcut veri kaynağı** |Arama hizmetinizde zaten tanımlı dizin oluşturucular varsa, yeniden kullanabileceğiniz bir veri kaynağı tanımınız olabilir. Azure Search, veri kaynağı nesneleri yalnızca dizin oluşturucular tarafından kullanılır. Programlı olarak veya **veri Içeri aktarma** Sihirbazı aracılığıyla bir veri kaynağı nesnesi oluşturabilir ve bunları gerektiği gibi yeniden kullanabilirsiniz.|
-| **Örnekler**| Azure Search, öğreticiler ve hızlı başlangıçlarda kullanılan iki yerleşik örnek veri kaynağı sağlar: gerçek bir emlak SQL veritabanı ve Cosmos DB üzerinde barındırılan bir oteller veritabanı. Oteller örneğine bağlı olarak bir izlenecek yol için Azure portal hızlı başlangıçta [Dizin oluşturma](search-get-started-portal.md) bölümüne bakın. |
+| **Mevcut veri kaynağı** |Arama hizmetinizde zaten tanımlı dizin oluşturucular varsa, yeniden kullanabileceğiniz bir veri kaynağı tanımınız olabilir. Azure Bilişsel Arama, veri kaynağı nesneleri yalnızca dizin oluşturucular tarafından kullanılır. Programlı olarak veya **veri Içeri aktarma** Sihirbazı aracılığıyla bir veri kaynağı nesnesi oluşturabilir ve bunları gerektiği gibi yeniden kullanabilirsiniz.|
+| **Örnekler**| Azure Bilişsel Arama, öğreticiler ve hızlı başlangıçlarda kullanılan iki yerleşik örnek veri kaynağı sağlar: gerçek bir emlak SQL veritabanı ve Cosmos DB üzerinde barındırılan bir oteller veritabanı. Oteller örneğine bağlı olarak bir izlenecek yol için Azure portal hızlı başlangıçta [Dizin oluşturma](search-get-started-portal.md) bölümüne bakın. |
 | [**Azure SQL veritabanı**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |Hizmet adı, okuma iznine sahip bir veritabanı kullanıcısının kimlik bilgileri ve veritabanı adı, sayfa üzerinde ya da ADO.NET bağlantı dizesi aracılığıyla belirtilebilir. Özellikleri görüntülemek veya özelleştirmek için bağlantı dizesini seçin. <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir.|
-| **Azure VM’lerde SQL Server** |Tam hizmet adını, kullanıcı KIMLIĞINI ve parolayı ve bir bağlantı dizesi olarak veritabanını belirtin. Bu veri kaynağını kullanmak için bağlantıyı şifreleyen yerel depoya daha önce bir sertifika yüklemiş olmanız gerekir. Yönergeler için bkz. [Azure Search ile SQL VM bağlantısı](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir. |
+| **Azure VM’lerde SQL Server** |Tam hizmet adını, kullanıcı KIMLIĞINI ve parolayı ve bir bağlantı dizesi olarak veritabanını belirtin. Bu veri kaynağını kullanmak için bağlantıyı şifreleyen yerel depoya daha önce bir sertifika yüklemiş olmanız gerekir. Yönergeler için bkz. [Azure bilişsel arama SQL VM bağlantısı](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Sayfada satır kümesini sağlayan tablo veya görünüm belirtilmelidir. Bu seçenek bağlantı başarılı olduktan sonra görünür ve bir seçim yapmanızı sağlayan açılır listeyi gösterir. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Hesap, veritabanı ve bağlantı gereklidir. Koleksiyondaki tüm belgeler dizine dahil edilir. Satır kümesini düzleştirmek veya filtrelemek için bir sorgu tanımlayabilir veya sorguyu boş bırakabilirsiniz. Bu sihirbazda bir sorgu gerekli değildir.|
 | [**Azure Blob depolama**](search-howto-indexing-azure-blob-storage.md) |Depolama hesabı ve bir kapsayıcı gereklidir. İsteğe bağlı olarak, gruplandırma amacıyla blob adlarından önce bir sanal adlandırma kuralı varsa adın sanal dizin kısmını kapsayıcı altındaki bir klasör olarak belirtebilirsiniz. Daha fazla bilgi için bkz. [Blob Depolama Dizini Oluşturma](search-howto-indexing-azure-blob-storage.md). |
 | [**Azure Tablo depolama**](search-howto-indexing-azure-tables.md) |Depolama hesabı ve bir tablo adı gereklidir. İsteğe bağlı olarak, tabloların bir alt kümesini almak için sorgu belirtebilirsiniz. Daha fazla bilgi için bkz. [Tablo Depolama Dizini Oluşturma](search-howto-indexing-azure-tables.md). |
@@ -94,7 +93,7 @@ Veri Içeri aktarma Sihirbazı, hizmet Genel Bakış sayfasındaki komut çubuğ
 
    ![Portalda verileri içeri aktar komutu](./media/search-import-data-portal/import-data-cmd2.png "Veri alma Sihirbazı 'nı başlatma")
 
-Ayrıca Azure Cosmos DB, Azure SQL veritabanı ve Azure Blob depolama da dahil olmak üzere diğer Azure hizmetlerinden **Içeri aktarma verilerini** de başlatabilirsiniz. Hizmet genel bakış sayfasında sol gezinti bölmesinde **Azure Search Ekle** ' ye bakın.
+Ayrıca Azure Cosmos DB, Azure SQL veritabanı ve Azure Blob depolama da dahil olmak üzere diğer Azure hizmetlerinden **Içeri aktarma verilerini** de başlatabilirsiniz. Hizmet genel bakış sayfasında sol gezinti bölmesinde **Azure bilişsel arama Ekle** ' ye bakın.
 
 <a name="index-definition"></a>
 
@@ -104,7 +103,7 @@ Sihirbaz, giriş veri kaynağından elde edilen belgelerle doldurulacak tamamlan
 
 1. Alan listesi tamamlansın mı? Eksik örneklemenin bulunduğu yeni alanlar ekleyin ve bir arama deneyimine değer eklememe veya bir [filtre ifadesinde](search-query-odata-filter.md) veya [Puanlama profilinde](index-add-scoring-profiles.md)kullanılmayacak olan her türlü değeri kaldırın.
 
-1. Veri türü gelen veriler için uygun mu? Azure Search, [varlık veri modeli (EDM) veri türlerini](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)destekler. Azure SQL verileri için eşdeğer değerleri oluşturan [eşleme grafiği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#mapping-between-sql-and-azure-search-data-types) vardır. Daha fazla arka plan için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
+1. Veri türü gelen veriler için uygun mu? Azure Bilişsel Arama, [varlık veri modeli (EDM) veri türlerini](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)destekler. Azure SQL verileri için eşdeğer değerleri oluşturan [eşleme grafiği](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) vardır. Daha fazla arka plan için bkz. [alan eşlemeleri ve dönüştürmeleri](search-indexer-field-mappings.md).
 
 1. *Anahtar*olarak kullanılabilecek bir alanınız var mı? Bu alan Edm. String olmalı ve bir belgeyi benzersiz şekilde tanımlamalıdır. İlişkisel veriler için bir birincil anahtarla eşlenmiş olabilir. Blob 'lar için `metadata-storage-path` olabilir. Alan değerleri boşluk veya tire içeriyorsa, bu karakterlerin doğrulama denetimini bastırmak için, **Dizin Oluşturucu oluştur** adımında, **Gelişmiş Seçenekler**altında **Base-64 kodlama anahtarı** seçeneğini ayarlamanız gerekir.
 
@@ -134,4 +133,4 @@ Sihirbaz, giriş veri kaynağından elde edilen belgelerle doldurulacak tamamlan
 Sihirbazın sağladığı avantajları ve sınırlamaları anlamanın en iyi yolu, adım adım ilermektir. Aşağıdaki hızlı başlangıç, her adımda size rehberlik eder.
 
 > [!div class="nextstepaction"]
-> [Azure portal kullanarak Azure Search dizin oluşturma](search-get-started-portal.md)
+> [Azure portal kullanarak bir Azure Bilişsel Arama dizini oluşturma](search-get-started-portal.md)

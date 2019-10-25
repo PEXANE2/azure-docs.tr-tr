@@ -1,5 +1,5 @@
 ---
-title: Visual Studio .NET MVC projelerinde Azure AD ile çalışmaya başlama
+title: Visual Studio .NET MVC projelerinde Azure AD ile çalışmaya başlama | Mavisi
 description: Visual Studio bağlı hizmetleri kullanarak bir Azure AD 'ye bağlandıktan veya bağlantı kurulduktan sonra .NET MVC projelerinde Azure Active Directory kullanmaya başlama
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b0a6265f76cc7c799d162487999c129ec7e6a14
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852015"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803617"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory kullanmaya başlama (ASP.NET MVC projeleri)
 
@@ -35,7 +35,7 @@ Projenizdeki tüm denetleyiciler `[Authorize]` özniteliğiyle donatılmıştı.
 
 ## <a name="adding-signin--signout-controls"></a>SignIn/SignOut denetimleri ekleme
 
-Görünüminizdeki SignIn/SignOut denetimlerini eklemek için, görünümlerinizin birine işlevselliği eklemek `_LoginPartial.cshtml` için kısmi görünümü kullanabilirsiniz. Standart `_Layout.cshtml` görünüme eklenen işlevlere bir örnek aşağıda verilmiştir. (Sınıf gezinti çubuğu ile div içindeki son öğeye göz önünde bulunan):
+Görünümüne SignIn/SignOut denetimleri eklemek için `_LoginPartial.cshtml` kısmi görünümünü kullanarak, işlevselliği görünümlerinizin birine ekleyebilirsiniz. Standart `_Layout.cshtml` görünümüne eklenen işlevlere bir örnek aşağıda verilmiştir. (Sınıf gezinti çubuğu ile div içindeki son öğeye göz önünde bulunan):
 
 ```html
 <!DOCTYPE html>

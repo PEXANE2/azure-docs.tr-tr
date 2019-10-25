@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 952bcb85484e885d45876de1e4cf3326db0a146a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693400"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786056"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -163,7 +163,7 @@ Windows Update, herhangi biri yeniden başlatma davranışını değiştirebilec
 
 ### <a name="resolution"></a>Çözünürlük
 
-Makinelerinizin düzgün yapılandırıldığından emin olmak için [yeniden başlatmayı yönetmek üzere kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-rej7uijui7jgistry) altında listelenen kayıt defteri anahtarlarını gözden geçirin.
+Makinelerinizin düzgün yapılandırıldığından emin olmak için [yeniden başlatmayı yönetmek üzere kullanılan](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kayıt defteri ve kayıt defteri anahtarlarını [düzenleyerek otomatik güncelleştirmeleri yapılandırma](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) altında listelenen kayıt defteri anahtarlarını gözden geçirin.
 
 ## <a name="failed-to-start"></a>Senaryo: bir güncelleştirme dağıtımında makine "başlatılamadı" olarak gösteriliyor
 
@@ -210,7 +210,7 @@ Windows 'da, güncelleştirmeler kullanılabilir duruma geldiğinde otomatik ola
 
 ### <a name="resolution"></a>Çözünürlük
 
-@No__t_0 kayıt defteri anahtarı varsayılan olarak 4: **otomatik indir ve yükle**ayarlarına sahiptir.
+`HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` kayıt defteri anahtarı varsayılan olarak 4: **otomatik indir ve yükle**ayarlarına sahiptir.
 
 Güncelleştirme Yönetimi istemciler için, bu anahtarı 3: **Otomatik İndir ancak otomatik olarak yükle**' ye ayarlamayı öneririz.
 
@@ -334,7 +334,7 @@ Ayrıca, makinede Windows Update sorunları denetlemek için [Windows Update sor
 > [!NOTE]
 > [Windows Update sorun giderici](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) belgeleri Windows istemcilerinde kullanılması gerektiğini gösterir, ancak Windows Server 'da da kullanılabilir.
 
-## <a name="scenario-update-run-returns-failed-status"></a>Senaryo: güncelleştirme çalıştırması "başarısız" durumu döndürüyor
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Senaryo: güncelleştirme çalıştırması "başarısız" durumu (Linux) döndürüyor
 
 ### <a name="issue"></a>Sorun
 
@@ -367,7 +367,7 @@ Düzeltme eki uygulama sorununu çözemezseniz, sonraki güncelleştirme dağıt
 ### <a name="machines-dont-install-updates"></a>Makineler güncelleştirmeleri yüklemez
 
 * Güncelleştirmeleri doğrudan makinede çalıştırmayı deneyin. Makine güncelleştirmeleri uygulayamıyorum, [sorun giderme kılavuzunda olası hataların listesine](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)bakın.
-* Güncelleştirmeler yerel olarak çalışıyorsa, [GÜNCELLEŞTIRME YÖNETIMI VM 'Yi kaldırma](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management)konusunda yer alan kılavuzu izleyerek aracıyı kaldırıp yeniden yüklemeyi deneyin.
+* Güncelleştirmeler yerel olarak çalışıyorsa, [GÜNCELLEŞTIRME YÖNETIMI VM 'Yi kaldırma](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources)konusunda yer alan kılavuzu izleyerek aracıyı kaldırıp yeniden yüklemeyi deneyin.
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Güncelleştirmelerin kullanılabildiğini biliyorum, ancak makinelerimde kullanılabilir olarak gösterilmiyorum
 

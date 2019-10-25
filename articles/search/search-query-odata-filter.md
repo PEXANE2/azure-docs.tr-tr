@@ -1,13 +1,13 @@
 ---
-title: OData filtre başvurusu-Azure Search
-description: Azure Search sorgularında filtre sözdizimi için OData dil başvurusu.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData filtre başvurusu
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama sorgularında filtre sözdizimi için OData dil başvurusu.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8817ce075409a3f166b82404767697dc1326cc89
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647585"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793366"
 ---
-# <a name="odata-filter-syntax-in-azure-search"></a>Azure Search içinde OData $filter söz dizimi
+# <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de OData $filter söz dizimi
 
-Azure Search, tam metin arama terimlerinin yanı sıra bir arama sorgusuna ek ölçütler uygulamak için [OData Filtre ifadelerini](query-odata-filter-orderby-syntax.md) kullanır. Bu makalede, filtrelerin ayrıntılı sözdizimi ayrıntıları açıklanmıştır. Filtrelerin ne olduğu ve belirli sorgu senaryolarına yönelik olarak nasıl kullanılacağı hakkında daha fazla genel bilgi için, bkz. [Azure Search filtreler](search-filters.md).
+Azure Bilişsel Arama, tam metin arama terimlerinin yanı sıra bir arama sorgusuna ek ölçütler uygulamak için [OData Filtre ifadelerini](query-odata-filter-orderby-syntax.md) kullanır. Bu makalede, filtrelerin ayrıntılı sözdizimi ayrıntıları açıklanmıştır. Filtrelerin ne olduğu ve belirli sorgu senaryolarına yönelik olarak nasıl kullanılacağı hakkında daha fazla genel bilgi için bkz. [Azure bilişsel arama filtreleri](search-filters.md).
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -53,27 +53,27 @@ variable ::= identifier | field_path
 Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
+> Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
 Boolean ifadelerinin türleri şunlardır:
 
-- `any` Veya`all`kullanan koleksiyon filtre ifadeleri. Bunlar koleksiyon alanlarına filtre ölçütlerini uygular. Daha fazla bilgi için, bkz. [Azure Search OData koleksiyon işleçleri](search-query-odata-collection-operators.md).
-- , Ve `and` işleçlerini`not`kullanarak diğer Boolean ifadelerini birleştiren mantıksal ifadeler. `or` Daha fazla bilgi için bkz. [Azure Search OData mantıksal işleçleri](search-query-odata-logical-operators.md).
-- ,,,, Ve `eq` `gt` `ne` işleçlerini`ge`kullanarak alanları veya Aralık değişkenlerini sabit değerlerle karşılaştıran Karşılaştırma ifadeleri. `lt` `le` Daha fazla bilgi için [Azure Search Içindeki OData karşılaştırma işleçleri](search-query-odata-comparison-operators.md)bölümüne bakın. Karşılaştırma ifadeleri, `geo.distance` işlevi kullanılarak coğrafi uzamsal koordinatlar arasındaki uzaklıkları karşılaştırmak için de kullanılır. Daha fazla bilgi için, bkz. [Azure Search OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
+- `any` veya `all`kullanarak koleksiyon filtre ifadeleri. Bunlar koleksiyon alanlarına filtre ölçütlerini uygular. Daha fazla bilgi için bkz. [Azure bilişsel arama OData koleksiyon işleçleri](search-query-odata-collection-operators.md).
+- İşleçler `and`, `or`ve `not`kullanarak diğer Boolean ifadeleri birleştiren mantıksal ifadeler. Daha fazla bilgi için bkz. [Azure 'Da OData mantıksal işleçleri bilişsel arama](search-query-odata-logical-operators.md).
+- İşleç `eq`, `ne`, `gt`, `lt`, `ge`ve `le`kullanarak alanları veya Aralık değişkenlerini sabit değerlerle karşılaştıran Karşılaştırma ifadeleri. Daha fazla bilgi için bkz. [Azure 'Da OData karşılaştırma işleçleri bilişsel arama](search-query-odata-comparison-operators.md). Karşılaştırma ifadeleri, `geo.distance` işlevi kullanılarak coğrafi uzamsal koordinatlar arasındaki uzaklıkları karşılaştırmak için de kullanılır. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
 - Boolean sabit değerleri `true` ve `false`. Program aracılığıyla filtre oluştururken bu sabitler yararlı olabilir, ancak Aksi takdirde uygulamada kullanılmayın.
 - Aşağıdakiler dahil olmak üzere, Boole işlevlerine yapılan çağrılar:
-  - `geo.intersects`, belirli bir noktanın belirli bir çokgen içinde olup olmadığını test eder. Daha fazla bilgi için, bkz. [Azure Search OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
-  - `search.in`bir alan veya Aralık değişkenini bir değer listesindeki her bir değerle karşılaştıran. Daha fazla bilgi için bkz [. `search.in` Azure Search OData işlevi](search-query-odata-search-in-function.md).
-  - `search.ismatch`ve `search.ismatchscoring`tam metin arama işlemlerini bir filtre bağlamında yürütür. Daha fazla bilgi için, bkz. [Azure Search OData tam metin arama işlevleri](search-query-odata-full-text-search-functions.md).
-- Türündeki `Edm.Boolean`alan yolları veya Aralık değişkenleri. Örneğin, dizininiz adlı `IsEnabled` bir Boole alanı varsa ve bu `true`alanın olduğu tüm belgeleri döndürmek istiyorsanız, filtre ifadeniz yalnızca ad `IsEnabled`olabilir.
+  - `geo.intersects`, belirli bir noktanın belirli bir çokgen içinde olup olmadığını test eder. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData coğrafi uzamsal işlevleri](search-query-odata-geo-spatial-functions.md).
+  - bir alan veya Aralık değişkenini bir değer listesindeki her bir değerle karşılaştıran `search.in`. Daha fazla bilgi için bkz. [Azure bilişsel arama 'de OData `search.in` işlevi](search-query-odata-search-in-function.md).
+  - `search.ismatch` ve `search.ismatchscoring`bir filtre bağlamında tam metin arama işlemlerini yürütür. Daha fazla bilgi için bkz. [Azure bilişsel arama 'Da OData tam metin arama işlevleri](search-query-odata-full-text-search-functions.md).
+- `Edm.Boolean`türündeki alan yolları veya Aralık değişkenleri. Örneğin, dizininizin `IsEnabled` adlı bir Boole alanı varsa ve bu alanın `true`olduğu tüm belgeleri döndürmek istiyorsanız, filtre ifadeniz yalnızca ad `IsEnabled`olabilir.
 - Parantez içinde Boole ifadeleri. Parantez kullanımı, bir filtredeki işlem sırasını açıkça belirlemede yardımcı olabilir. OData işleçlerinin varsayılan önceliği hakkında daha fazla bilgi için sonraki bölüme bakın.
 
 ### <a name="operator-precedence-in-filters"></a>Filtrelerdeki operatör önceliği
 
-Alt ifadelerinin etrafında parantez olmadan bir filtre ifadesi yazarsanız Azure Search, bir işleç öncelik kuralları kümesine göre değerlendirir. Bu kurallar, alt ifadeleri birleştirmek için kullanılan işleçleri temel alır. Aşağıdaki tablo, işleç gruplarını en yüksekten en düşük önceliğe göre listeler:
+Alt ifadelerinin etrafında parantez olmadan bir filtre ifadesi yazarsanız Azure Bilişsel Arama, bunu bir işleç öncelik kuralları kümesine göre değerlendirir. Bu kurallar, alt ifadeleri birleştirmek için kullanılan işleçleri temel alır. Aşağıdaki tablo, işleç gruplarını en yüksekten en düşük önceliğe göre listeler:
 
 | Grup | İşleç (ler) |
 | --- | --- |
@@ -82,12 +82,12 @@ Alt ifadelerinin etrafında parantez olmadan bir filtre ifadesi yazarsanız Azur
 | Mantıksal işleçler | `and` |
 | Mantıksal işleçler | `or` |
 
-Yukarıdaki tabloda daha yüksek bir operatör, işlenenlerin diğer işleçlerden farklı olarak "daha sıkı bir şekilde bağlanması" olacaktır. Örneğin, `and` öğesinden `or`daha yüksek önceliğe sahip ve karşılaştırma işleçleri, bunlardan birinden daha yüksek önceliğe sahip olduğundan, aşağıdaki iki ifade eşdeğerdir:
+Yukarıdaki tabloda daha yüksek bir operatör, işlenenlerin diğer işleçlerden farklı olarak "daha sıkı bir şekilde bağlanması" olacaktır. Örneğin, `and` `or`kıyasla daha yüksek önceliğe sahiptir ve karşılaştırma işleçleri bunlardan birinden daha yüksek önceliğe sahiptir, bu nedenle aşağıdaki iki ifade eşdeğerdir:
 
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
 
-`not` İşleci, karşılaştırma işleçlerinden daha yüksek olan en yüksek önceliğe sahiptir. Bunun nedeni şöyle bir filtre yazmayı denerseniz:
+`not` işleci, karşılaştırma işleçlerinden çok daha yüksek önceliğe sahiptir. Bunun nedeni şöyle bir filtre yazmayı denerseniz:
 
     not Rating gt 5
 
@@ -95,7 +95,7 @@ Yukarıdaki tabloda daha yüksek bir operatör, işlenenlerin diğer işleçlerd
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-Bu hata, işleç yalnızca `Rating` tür `Edm.Int32`olan ve tüm karşılaştırma ifadesiyle birlikte olmayan alanla ilişkilendirildiğinden oluşur. Bu, işleneni `not` parantez içine koyulamıyor:
+Bu hata, işleç yalnızca `Rating` alanla ilişkili olduğu için (`Edm.Int32`türü tüm karşılaştırma ifadesiyle değil). Bu düzeltilme `not` işleneni parantez içine koyulamıyor:
 
     not (Rating gt 5)
 
@@ -103,10 +103,10 @@ Bu hata, işleç yalnızca `Rating` tür `Edm.Int32`olan ve tüm karşılaştır
 
 ### <a name="filter-size-limitations"></a>Filtre boyutu sınırlamaları
 
-Azure Search için gönderebilmeniz gereken filtre ifadelerinin boyut ve karmaşıklık sınırı vardır. Sınırlar, filtre deyiminizdeki yan tümce sayısına göre kabaca hesaplanır. Yüzlerce yan tümce varsa, sınırı aşmaya risk altında olursunuz. Uygulamanızı, sınırsız boyut filtresi üretmeyen bir şekilde tasarlamayı öneririz.
+Azure Bilişsel Arama 'e gönderebilmeniz için filtre ifadelerinin boyut ve karmaşıklık sınırı vardır. Sınırlar, filtre deyiminizdeki yan tümce sayısına göre kabaca hesaplanır. Yüzlerce yan tümce varsa, sınırı aşmaya risk altında olursunuz. Uygulamanızı, sınırsız boyut filtresi üretmeyen bir şekilde tasarlamayı öneririz.
 
 > [!TIP]
-> Bir işlev çağrısı tek bir yan tümce olarak sayıldığından, [ işlev,eşitlikkarşılaştırmalarınınuzunayırtediciolmasıyerine,filtreyantümcesisınırınıönlemeyeyardımcıolabilir.`search.in` ](search-query-odata-search-in-function.md)
+> Bir işlev çağrısı tek bir yan tümce olarak sayıldığından [`search.in` işlevi](search-query-odata-search-in-function.md) , eşitlik karşılaştırmalarının uzun ayırt edici olması yerine, filtre yan tümcesi sınırından kaçınmaya yardımcı olabilir.
 
 ## <a name="examples"></a>Örnekler
 
@@ -126,7 +126,7 @@ Park eden tüm oteller ve tüm odaların sigpasız olduğunu bulun:
 
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
 
- \-VEYA  
+ \- veya-  
 
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
 
@@ -134,7 +134,7 @@ Merkezlerini veya park alanı dahil olmak üzere tüm oteller bulun ve 5 derecel
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-En az bir odada "WiFi" etiketine sahip tüm oteller bulun (her odada bir `Collection(Edm.String)` alanda depolanan Etiketler bulunur):  
+En az bir odada "WiFi" etiketiyle tüm oteller bulun (her odada bir `Collection(Edm.String)` alanında depolanan Etiketler bulunur):  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -146,11 +146,11 @@ Oda olmayan tüm oteller bulun:
 
     $filter=not Rooms/any()
 
-Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bul (burada `Location` , türünde `Edm.GeographyPoint`bir alandır):
+Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bulun (`Location` `Edm.GeographyPoint`türünde bir alandır):
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
-Bir çokgen ( `Location` Edm. geographyıpoint türünde bir alandır) olarak tanımlanan belirli bir görünüm penceresinin içindeki tüm oteller bulun. Çokgen kapatılmalıdır, yani birinci ve son nokta kümelerinin aynı olması gerekir. Ayrıca, [noktaların saatin tersi sırada listelenmesi gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Bir çokgen (`Location` Edm. Geographyıpoint türünde bir alandır) olarak tanımlanan belirli bir görünüm penceresinin içindeki tüm oteller bulun. Çokgen kapatılmalıdır, yani birinci ve son nokta kümelerinin aynı olması gerekir. Ayrıca, [noktaların saatin tersi sırada listelenmesi gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
@@ -174,11 +174,11 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, ile `search=waterfront`bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir.
+"Su ön" kelimesiyle belge bulun. Bu filtre sorgusu, `search=waterfront`olan bir [arama isteğiyle](https://docs.microsoft.com/rest/api/searchservice/search-documents) özdeştir.
 
     $filter=search.ismatchscoring('waterfront')
 
-"Hostel" sözcüğünü içeren belgeleri bulun ve 4 ' e eşit veya daha büyük derecelendirme veya "Motel" sözcüğünü ve derecesi 5 ' e eşit olan belgeleri bulun. Bu istek, kullanarak `search.ismatchscoring` `or`filtre işlemleri ile tam metin aramasını birleştirilemediğinden, işlev olmadan ifade edilemedi.
+"Hostel" sözcüğünü içeren belgeleri bulun ve 4 ' e eşit veya daha büyük derecelendirme veya "Motel" sözcüğünü ve derecesi 5 ' e eşit olan belgeleri bulun. Bu istek, `or`kullanarak filtre işlemleriyle tam metin aramasını birleştirilemediğinden, `search.ismatchscoring` işlevi olmadan ifade edilemedi.
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +186,7 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 
     $filter=not search.ismatch('luxury')
 
-"Okyanus görünümü" veya derecelendirme 5 ' e eşit olan belgeleri bulun. Sorgu yalnızca alanlara `HotelName` ve ' `Description`a karşı yürütülür. `search.ismatchscoring` Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit olan `Rating` çok--oteller olarak döndürülür. Bu belgeler, ifadenin puanlanmış parçalarından hiçbiriyle eşleşmediğinizden emin olmak için puanı sıfıra eşit olacak şekilde döndürülür.
+"Okyanus görünümü" veya derecelendirme 5 ' e eşit olan belgeleri bulun. `search.ismatchscoring` sorgusu yalnızca `HotelName` ve `Description`alanlara karşı yürütülür. Disbirleşimin yalnızca ikinci yan tümcesiyle eşleşen belgeler, 5 ' e eşit `Rating` için de çok--oteller döndürülür. Bu belgeler, ifadenin puanlanmış parçalarından hiçbiriyle eşleşmediğinizden emin olmak için puanı sıfıra eşit olacak şekilde döndürülür.
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 
@@ -196,7 +196,7 @@ Etiketlerde ' ısıtılan tocekliler ' veya ' ince kurutucu dahil ' gibi bir kol
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search filtreler](search-filters.md)
-- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama filtreler](search-filters.md)
+- [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

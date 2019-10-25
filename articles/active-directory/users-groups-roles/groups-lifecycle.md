@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3cef2bd16907de6e60db2678516f70346a20285
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844305"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803599"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -28,9 +28,16 @@ Bu makalede, Office 365 gruplarının yaşam döngüsünü yönetme hakkında si
 
 Bir grubu sona ermek üzere ayarladıktan sonra:
 
-- Grubun sahipleri, sona erme yaklaştığında grubu yenilemek için bilgilendirilir
+- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir
+- Grubun sahipleri, Grup otomatik yenilenmediğinde grubu yenilemek için bilgilendirilir
 - Yenilenmeyen tüm gruplar silinir
 - Silinen Office 365 Grubu, Grup sahipleri veya yönetici tarafından 30 gün içinde geri yüklenebilir
+
+Bu eylemler, bir grubun otomatik yenilenmesini sağlar:
+
+- SharePoint-dosyaları görüntüleme, düzenleme, Indirme, taşıma, paylaşma ve karşıya yükleme
+- Outlook-Grup, okuma/yazma grubu iletisi ve ileti gibi
+- Takımlar-bir takımlar kanalını ziyaret edin
 
 Şu anda bir kiracıdaki Office 365 grupları için yalnızca bir süre sonu ilkesi yapılandırılabilir.
 
@@ -43,7 +50,7 @@ Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilg
 
 Aşağıda, Azure AD 'de Office 365 grupları için süre sonu yapılandırıp kullanılabilecek roller verilmiştir.
 
-Role | İzinler
+Rol | İzinler
 -------- | --------
 Genel yönetici veya Kullanıcı Yöneticisi | Office 365 grupları süre sonu ilke ayarlarını oluşturabilir, okuyabilir, güncelleştirebilir veya silebilir<br>Herhangi bir Office 365 grubunu yenileyebilirler
 Kullanıcı | Sahip oldukları bir Office 365 grubunu yenileyebilirler<br>Sahip oldukları Office 365 grubunu geri yükleyebilir<br>Süre sonu ilke ayarlarını okuyabilir
@@ -69,7 +76,7 @@ Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azur
   - **Kaydet**' i seçerek yaptığınız ayarları kaydedin.
 
 > [!NOTE]
-> Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, sahip tarafından yenilemediği sürece süresi dolduktan sonra 30 güne ayarlanır. İlk yenileme bildirimi e-postası bir gün içinde gönderilir.
+> Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, Grup otomatik yenilenmediği veya sahip onu yenilemediği sürece süre sonu 35 gün olarak ayarlanır. 
 >
 > Dinamik bir grup silinip geri yüklendiğinde, yeni bir grup olarak görülür ve kurala göre yeniden doldurulur. Bu işlem, 24 saate kadar sürebilir.
 >
@@ -77,7 +84,7 @@ Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azur
 
 ## <a name="email-notifications"></a>E-posta bildirimleri
 
-Bu gibi e-posta bildirimleri, Grup süresi dolmadan 30 gün, 15 gün ve 1 gün önce Office 365 grup sahiplerine gönderilir. E-postanın dili, grupların sahibinin tercih ettiği dil veya Azure AD dil ayarı tarafından belirlenir. Grup sahibi tercih edilen bir dil tanımlıysa veya birden çok sahibi aynı tercih edilen dile sahipse, bu dil kullanılır. Diğer tüm durumlarda Azure AD dil ayarı kullanılır.
+Gruplar otomatik olarak yenilenmezse, bu gibi e-posta bildirimleri Office 365 grup sahiplerine 30 gün, 15 gün ve grubun süresi dolmadan 1 gün önce gönderilir. E-postanın dili, grupların sahibinin tercih ettiği dil veya Azure AD dil ayarı tarafından belirlenir. Grup sahibi tercih edilen bir dil tanımlıysa veya birden çok sahibi aynı tercih edilen dile sahipse, bu dil kullanılır. Diğer tüm durumlarda Azure AD dil ayarı kullanılır.
 
 ![Sona erme e-posta bildirimleri](./media/groups-lifecycle/expiration-notification.png)
 
@@ -119,11 +126,11 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
    ```
 
-1. Mevcut ilkeyi al Get-AzureADMSGroupLifecyclePolicy: Bu cmdlet, yapılandırılmış geçerli Office 365 grup süre sonu ayarlarını alır. Bu örnekte şunları görebilirsiniz:
+1. Mevcut ilkeyi alma Get-AzureADMSGroupLifecyclePolicy: Bu cmdlet, yapılandırılmış olan geçerli Office 365 grup süre sonu ayarlarını alır. Bu örnekte şunları görebilirsiniz:
 
    - İlke KIMLIĞI
    - Azure AD kuruluşundaki tüm Office 365 gruplarının ömrü 365 gün olarak ayarlanır
-   - Sahipleri olmayan Office 365 grupları için yenileme bildirimleri 'emailaddress@contoso.com. ' öğesine gönderilir
+   - Sahipleri olmayan Office 365 grupları için yenileme bildirimleri 'emailaddress@contoso.com' öğesine gönderilir.
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy
@@ -133,7 +140,7 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
    26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
    ```
 
-1. Mevcut ilke kümesini Güncelleştir-AzureADMSGroupLifecyclePolicy: Bu cmdlet, var olan bir ilkeyi güncelleştirmek için kullanılır. Aşağıdaki örnekte, mevcut ilkedeki grup ömrü 365 gün ile 180 gün arasında değişir.
+1. Mevcut ilke kümesini güncelleştirin-AzureADMSGroupLifecyclePolicy: Bu cmdlet, mevcut bir ilkeyi güncelleştirmek için kullanılır. Aşağıdaki örnekte, mevcut ilkedeki grup ömrü 365 gün ile 180 gün arasında değişir.
   
    ```powershell
    Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
@@ -145,7 +152,7 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. Var olan Ilkeyi kaldır-AzureADMSGroupLifecyclePolicy: Bu cmdlet, Office 365 grup süre sonu ayarlarını siler, ancak ilke KIMLIĞINI gerektirir. Bu, Office 365 grupları için süre sonunu devre dışı bırakır.
+1. Var olan Ilkeyi kaldır Remove-AzureADMSGroupLifecyclePolicy: Bu cmdlet, Office 365 grup süre sonu ayarlarını siler, ancak ilke KIMLIĞINI gerektirir. Bu, Office 365 grupları için süre sonunu devre dışı bırakır.
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
@@ -154,11 +161,11 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
 İlkeyi daha ayrıntılı şekilde yapılandırmak için aşağıdaki cmdlet 'ler kullanılabilir. Daha fazla bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
-- Yeni-AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
 - Get-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
-- Ekle-AzureADMSLifecyclePolicyGroup
+- Add-AzureADMSLifecyclePolicyGroup
 - Remove-AzureADMSLifecyclePolicyGroup
 - Reset-AzureADMSLifeCycleGroup
 - Get-AzureADMSLifecyclePolicyGroup

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 42d0d7dcc4e10e6f9bfad02a68f3ec176b8a7fb4
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316003"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785833"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Reda için Azure önbelleği için sık sorulan soruların, desenlerin ve en iyi yöntemlerin yanıtlarını öğrenin.
@@ -73,7 +73,7 @@ Aşağıdaki SSS 'ler, redin için Azure önbelleği ile ilgili temel kavramlar�
 * [Bağlantılar etrafında performans konuları](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>İzleme ve sorun giderme SSS
-Bu bölümdeki SSS 'ler ortak izleme ve sorun giderme sorularını kapsar. Redsıs örnekleri için Azure önbelleğinizi izleme ve sorun giderme hakkında daha fazla bilgi için, bkz. [Azure önbelleğini redsıs için izleme](cache-how-to-monitor.md) ve [Redsıs için Azure önbelleğinde nasıl sorun giderme](cache-how-to-troubleshoot.md).
+Bu bölümdeki SSS 'ler ortak izleme ve sorun giderme sorularını kapsar. Redsıs örnekleri için Azure önbelleğinizi izleme ve sorun giderme hakkında daha fazla bilgi için bkz. [Reda Için Azure önbelleğini izleme](cache-how-to-monitor.md) ve çeşitli sorun giderme kılavuzu.
 
 * [Nasıl yaparım? önbelleğim sistem durumunu ve performansını izlemek mi?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [Neden zaman aşımlarını görüyorum?](#why-am-i-seeing-timeouts)
@@ -90,7 +90,7 @@ Redsıs için Azure önbelleği 'ni kullanmaya başlamanın birkaç yolu vardır
 
 * [.Net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node. js](cache-nodejs-get-started.md)ve [Python](cache-python-get-started.md)için kullanılabilen öğreticilerimizden birine bakabilirsiniz.
 * [Redin için Microsoft Azure cache kullanarak yüksek performanslı uygulamalar oluşturmayı](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)izleyebilirsiniz.
-* Redin 'in nasıl kullanılacağını görmek için, projenizin geliştirme diliyle eşleşen istemciler için istemci belgelerini kullanıma alabilirsiniz. Redsıs için Azure Cache ile kullanılabilen birçok Red, istemcisi vardır. Redsıs istemcilerinin bir listesi için bkz [https://redis.io/clients](https://redis.io/clients).
+* Redin 'in nasıl kullanılacağını görmek için, projenizin geliştirme diliyle eşleşen istemciler için istemci belgelerini kullanıma alabilirsiniz. Redsıs için Azure Cache ile kullanılabilen birçok Red, istemcisi vardır. Redsıs istemcilerinin bir listesi için bkz. [https://redis.io/clients](https://redis.io/clients).
 
 Henüz bir Azure hesabınız yoksa şunları yapabilirsiniz:
 
@@ -104,23 +104,23 @@ Redin teklifi için her Azure önbelleği, farklı düzeylerde **Boyut**, **bant
 
 Aşağıda bir önbellek sunumu seçme konuları verilmiştir.
 
-* **Bellek**: Temel ve Standart katmanlar 250 MB – 53 GB sunar. Premium katman en fazla 1,2 TB (küme olarak) veya 120 GB (kümelenmemiş). Daha fazla bilgi için bkz. [Redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
-* **Ağ performansı**: Yüksek aktarım hızı gerektiren bir iş yükünüz varsa, Premium katmanı standart veya temel ile karşılaştırıldığında daha fazla bant genişliği sunar. Ayrıca, her katmanda daha büyük boyutlu önbellekler, önbelleği barındıran temel VM nedeniyle daha fazla bant genişliğine sahiptir. Daha fazla bilgi için [aşağıdaki tabloya](#cache-performance)bakın.
+* **Bellek**: temel ve standart katmanlar 250 MB – 53 GB sunar. Premium katman en fazla 1,2 TB (küme olarak) veya 120 GB (kümelenmemiş). Daha fazla bilgi için bkz. [Redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
+* **Ağ performansı**: yüksek aktarım hızı gerektiren bir iş yükünüz varsa, Premium katmanı standart veya temel ile karşılaştırıldığında daha fazla bant genişliği sunar. Ayrıca, her katmanda daha büyük boyutlu önbellekler, önbelleği barındıran temel VM nedeniyle daha fazla bant genişliğine sahiptir. Daha fazla bilgi için [aşağıdaki tabloya](#cache-performance)bakın.
 * **Aktarım hızı**: Premium katmanı, kullanılabilir en fazla üretilen işi sunar. Önbellek sunucusu veya istemcisi bant genişliği sınırlarına ulaşırsa, istemci tarafında zaman aşımları alabilirsiniz. Daha fazla bilgi için aşağıdaki tabloya bakın.
-* **Yüksek kullanılabilirlik/SLA**: Redsıs için Azure önbelleği, Standart/Premium önbelleğin en az% 99,9 kullanılabilir olmasını güvence altına alır. SLA 'umuz hakkında daha fazla bilgi edinmek için bkz. [Redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). SLA yalnızca önbellek uç noktalarına olan bağlantıyı içerir. SLA, veri kaybından korumayı kapsamaz. Veri kaybına karşı dayanıklılığı artırmak için Premium katmanda Redsıs veri kalıcılığı özelliğini kullanmanızı öneririz.
+* **Yüksek kullanılabilirlik/SLA**: Reda Için Azure önbelleği, Standart/Premium önbelleğin en az% 99,9 kullanılabilir olmasını güvence altına alır. SLA 'umuz hakkında daha fazla bilgi edinmek için bkz. [Redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). SLA yalnızca önbellek uç noktalarına olan bağlantıyı içerir. SLA, veri kaybından korumayı kapsamaz. Veri kaybına karşı dayanıklılığı artırmak için Premium katmanda Redsıs veri kalıcılığı özelliğini kullanmanızı öneririz.
 * **Redsıs veri kalıcılığı**: Premium katmanı, önbellek verilerini bir Azure depolama hesabında kalıcı hale bırakmanıza olanak tanır. Temel/standart önbellekte, tüm veriler yalnızca bellekte depolanır. Temel altyapı sorunları, olası veri kaybına neden olabilir. Veri kaybına karşı dayanıklılığı artırmak için Premium katmanda Redsıs veri kalıcılığı özelliğini kullanmanızı öneririz. Redsıs için Azure önbelleği, Redsıs kalıcılığı içindeki RDB ve AOF (çok yakında) seçenekleri sunar. Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
-* **Redsıs kümesi**: 120 GB 'tan daha büyük önbellekler oluşturmak veya birden çok redin düğümüne veri eklemek için Premium katmanda bulunan reddo kümeleme kullanabilirsiniz. Her düğüm, yüksek kullanılabilirlik için birincil/çoğaltma önbellek çiftinin oluşur. Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kümeleme yapılandırma](cache-how-to-premium-clustering.md).
-* **Gelişmiş güvenlik ve ağ yalıtımı**: Azure sanal ağ (VNET) dağıtımı, Azure önbelleğiniz için gelişmiş güvenlik ve yalıtımın yanı sıra alt ağlar, erişim denetim ilkeleri ve diğer özellikler için erişimi daha da kısıtlamak sağlar. Daha fazla bilgi için bkz. [bir Premium Azure önbelleği için bkz. redsıs Için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md).
-* **Redsıs 'Yi Yapılandır**: Hem standart hem de Premium katmanlarda, Redsıs 'yi keyspace bildirimleri için yapılandırabilirsiniz.
-* **İstemci bağlantısı sayısı üst sınırı**: Premium katmanı, daha büyük boyutlu önbellekler için daha fazla bağlantı ile redo 'ya bağlanabilecek en fazla istemci sayısını sağlar. Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısını artırmaz. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
-* **Redsıs sunucusu Için adanmış çekirdek**: Premium katmanda, tüm önbellek boyutları Redsıs için adanmış bir çekirdeğe sahiptir. Temel/standart katmanlarında C1 boyutu ve üzeri, Redsıs sunucusu için adanmış bir çekirdeğe sahiptir.
+* **Redsıs kümesi**: 120 GB 'den daha büyük önbellekler oluşturmak veya birden çok redin düğümüne veri eklemek için Premium katmanda bulunan reddo kümeleme kullanabilirsiniz. Her düğüm, yüksek kullanılabilirlik için birincil/çoğaltma önbellek çiftinin oluşur. Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kümeleme yapılandırma](cache-how-to-premium-clustering.md).
+* **Gelişmiş güvenlik ve ağ yalıtımı**: Azure sanal ağ (VNet) dağıtımı, Azure önbelleğiniz için gelişmiş güvenlik ve yalıtımın yanı sıra alt ağlar, erişim denetim ilkeleri ve diğer özellikler için erişimi daha da kısıtlamak sağlar. Daha fazla bilgi için bkz. [bir Premium Azure önbelleği için bkz. redsıs Için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md).
+* **Redsıs 'Yi yapılandırma**: hem standart hem de Premium katmanlarda, Redsıs 'Yi keyspace bildirimleri için yapılandırabilirsiniz.
+* **İstemci bağlantısı sayısı üst sınırı**: Premium katmanı, daha büyük boyutlu önbellekler için daha fazla bağlantı ile redo 'ya bağlanabilecek maksimum istemci sayısını sağlar. Kümeleme, kümelenmiş bir önbellek için kullanılabilen bağlantı sayısını artırmaz. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/).
+* **Redsıs sunucusu Için adanmış çekirdek**: Premium katmanda, redsıs için özel bir çekirdeğe sahiptir. Temel/standart katmanlarında C1 boyutu ve üzeri, Redsıs sunucusu için adanmış bir çekirdeğe sahiptir.
 * **Redsıs tek iş parçacıklı olduğundan** , ikiden fazla çekirdeğe sahip olmak yalnızca iki çekirdeğe sahip olmak için ek avantaj sağlamaz, ancak büyük VM boyutları genellikle daha küçük boyutlarda daha fazla bant genişliğine sahiptir. Önbellek sunucusu veya istemcisi bant genişliği sınırlarına ulaşırsa, istemci tarafında zaman aşımları alırsınız.
 * **Performans iyileştirmeleri**: Premium katmanda bulunan önbellekler, daha hızlı işlemciler içeren donanımda dağıtılır ve temel veya Standart katmana kıyasla daha iyi bir performans sağlar. Premium katman önbelleklerine daha yüksek aktarım hızı ve düşük gecikme süreleri vardır.
 
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Redsıs performansı için Azure önbelleği
-Aşağıdaki tabloda, bir IaaS VM 'sinden redsıs uç noktası için Azure önbelleğine karşı kullanılan `redis-benchmark.exe` çeşitli standart ve Premium önbellekleri test edilirken gözlemlenen maksimum bant genişliği değerleri gösterilmektedir. SSL işleme için redsıs-kıyaslama, Redsıs uç noktası için Azure önbelleğine bağlanmak üzere Stunnel ile birlikte kullanılır.
+Aşağıdaki tabloda, bir IaaS VM 'sinden Redsıs uç noktası için Azure önbelleğine karşı `redis-benchmark.exe` kullanarak standart ve Premium önbellekleri farklı boyutlarda test edilirken gözlemlenen maksimum bant genişliği değerleri gösterilmektedir. SSL işleme için redsıs-kıyaslama, Redsıs uç noktası için Azure önbelleğine bağlanmak üzere Stunnel ile birlikte kullanılır.
 
 >[!NOTE] 
 >Bu değerler garanti edilmez ve bu numaralar için SLA yoktur, ancak tipik olmalıdır. Uygulamanız için doğru önbellek boyutunu tespit etmek üzere kendi uygulamanızı test etmeniz gerekir.
@@ -133,24 +133,24 @@ Bu tablodan aşağıdaki ekibinizle çizebilirsiniz:
 * Redsıs kümelemesiyle, kümedeki parça sayısını (düğümler) artırdıkça üretilen iş miktarı artar. Örneğin, 10 parçalı bir P4 kümesi oluşturursanız, kullanılabilir verimlilik 400.000 * 10 = 4.000.000 RPS olur.
 * Daha büyük anahtar boyutları için üretilen iş, Standart katmana kıyasla Premium katmanda daha yüksektir.
 
-| Fiyatlandırma katmanı | Size | CPU çekirdekleri | Kullanılabilir bant genişliği | 1 KB değer boyutu | 1 KB değer boyutu |
+| Fiyatlandırma katmanı | Boyut | CPU çekirdekleri | Kullanılabilir bant genişliği | 1 KB değer boyutu | 1 KB değer boyutu |
 | --- | --- | --- | --- | --- | --- |
 | **Standart önbellek boyutları** | | |**Megabit/sn (MB/sn)/megabayt/sn (MB/s)** |**Saniye başına istek (RPS) SSL olmayan** |**İstek/saniye (RPS) SSL** |
-| C0 | 250 MB | Paylaşılan | 100 / 12.5  |  15.000 |   7,500 |
-| C1 |   1 GB | 1\.      | 500 / 62.5  |  38.000 |  20.720 |
-| C2 | 2,5 GB | 2      | 500 / 62.5  |  41.000 |  37.000 |
-| C3 |   6 GB | 4      | 1000/125  | 100,000 |  90,000 |
-| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55.000 |
-| C5 |  26 GB | 4      | 1,000 / 125 | 102.000 |  93.000 |
-| C6 |  53 GB | 8      | 2,000 / 250 | 126.000 | 120,000 |
+| C0 | 250 MB | Paylaşılan | 100/12,5  |  15.000 |   7\.500 |
+| C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
+| C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
+| C3 |   6 GB | 4      | 1000/125  | 100.000 |  90.000 |
+| C4 |  13 GB | 2      | 500/62,5  |  60.000 |  55.000 |
+| C5 |  26 GB | 4      | 1\.000/125 | 102.000 |  93.000 |
+| C6 |  53 GB | 8      | 2\.000/250 | 126.000 | 120.000 |
 | **Premium önbellek boyutları** | |**Parça başına CPU çekirdekleri** | **Megabit/sn (MB/sn)/megabayt/sn (MB/s)** |**Saniyedeki istek sayısı (RPS) SSL olmayan, parça başına** |**Saniyedeki istek/saniye (RPS) SSL, parça başına** |
-| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172.000 |
-| P2 |  13 GB |  4 | 3,000 / 375   | 350.000 | 341.000 |
-| P3 |  26 GB |  4 | 3,000 / 375   | 350.000 | 341.000 |
-| P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373.000 |
-| P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373.000 |
+| P1 |   6 GB |  2 | 1\.500/187,5 | 180.000 | 172.000 |
+| P2 |  13 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
+| P3 |  26 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
+| P4 |  53 GB |  8 | 6\.000/750   | 400,000 | 373.000 |
+| P5 | 120 GB | 20 | 6\.000/750   | 400,000 | 373.000 |
 
-Stunnel ayarlama veya gibi `redis-benchmark.exe`redsıs araçlarını indirme hakkında yönergeler için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
+Stunnel ayarlama veya `redis-benchmark.exe`gibi Redsıs araçlarını indirme hakkında yönergeler için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
 
 <a name="cache-region"></a>
 
@@ -167,10 +167,10 @@ Evet, Redu için Azure önbelleği, Azure Kamu bulutu, Azure Çin 21Vianet bulut
 
 | Bulut   | Redsıs için DNS son eki            |
 |---------|---------------------------------|
-| Genel  | *.redis.cache.windows.net       |
-| US Gov  | *.redis.cache.usgovcloudapi.net |
-| Almanya | *.redis.cache.cloudapi.de       |
-| Çin   | *.redis.cache.chinacloudapi.cn  |
+| Genel  | *. redis.cache.windows.net       |
+| ABD Devleti  | *. redis.cache.usgovcloudapi.net |
+| Almanya | *. redis.cache.cloudapi.de       |
+| Çin   | *. redis.cache.chinacloudapi.cn  |
 
 Reda için Azure önbelleğini diğer bulutlarla birlikte kullanma hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın.
 
@@ -178,7 +178,7 @@ Reda için Azure önbelleğini diğer bulutlarla birlikte kullanma hakkında dah
 - [Azure Çin 21Vianet bulutu-Redsıs için Azure önbelleği](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)
 
-Azure için Azure önbelleğini Azure Kamu bulutu, Azure Çin 21Vianet bulutu ve Microsoft Azure Almanya PowerShell ile birlikte kullanma hakkında bilgi için bkz. [diğer bulutlara bağlanma-Redsıs PowerShell Için Azure önbelleği](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+Azure için Azure önbelleğini Azure Kamu bulutu, Azure Çin 21Vianet bulutu ve Microsoft Azure Almanya PowerShell ile birlikte kullanma hakkında bilgi için bkz. [diğer bulutlara bağlanma-Redsıs PowerShell Için Azure önbelleği](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
@@ -197,18 +197,19 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze göre 
   * ConnectRetry ve ConnectTimeout için genel rehberlik hızlı bir şekilde başarısız olur ve yeniden dener. Bu kılavuz, iş yükünüze ve istemcinizin bir Redi komutu vermesi ve yanıt alması için ne kadar süre harcandığından elde edilir.
   * StackExchange. redin bağlantı durumunu denetlemek ve kendiniz yeniden bağlanmak yerine otomatik olarak yeniden bağlanmasına izin verin. **Connectionçoğullayıcı. IsConnected özelliğini kullanmaktan kaçının**.
   * Kar Balling-bazen yeniden denemekte olduğunuz ve yeniden deneme karından ve hiçbir zaman kurtarmadığı bir sorunla karşılaşabilirsiniz. Kar baletini oluşursa, Microsoft düzenleri & Yöntemler grubu tarafından yayımlanan, [yeniden deneme genel Kılavuzu](../best-practices-retry-general.md) ' nda açıklandığı gibi bir üstel geri alma algoritması kullanmayı göz önünde bulundurmanız gerekir.
+  
 * **Zaman aşımı değerleri**
   * İş yükünüzü değerlendirin ve değerleri uygun şekilde ayarlayın. Büyük değerleri depoluyorsanız, zaman aşımını daha yüksek bir değere ayarlayın.
-  * False `AbortOnConnectFail` olarak ayarlayın ve StackExchange. redin sizin için yeniden bağlanmasına izin verin.
+  * `AbortOnConnectFail` false olarak ayarlayın ve StackExchange. redin sizin için yeniden bağlanmasına izin verin.
   * Uygulama için tek bir Connectionçoğullayıcı örneği kullanın. Bir bağlantı özelliği tarafından döndürülen tek bir örnek oluşturmak için bir LazyConnection kullanabilirsiniz, bu, [Connectionçoğullayıcı sınıfı kullanılarak önbelleğe bağlanma](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)bölümünde gösterilmiştir.
-  * Özelliği, `ConnectionMultiplexer.ClientName` tanılama amacıyla bir uygulama örneği benzersiz adı olarak ayarlayın.
-  * Özel iş `ConnectionMultiplexer` yükleri için birden çok örnek kullanın.
-      * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örneğin:
+  * Tanılama amaçları için `ConnectionMultiplexer.ClientName` özelliğini bir uygulama örneği için benzersiz bir ad olarak ayarlayın.
+  * Özel iş yükleri için birden çok `ConnectionMultiplexer` örneği kullanın.
+      * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örnek:
       * Büyük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
       * Küçük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
       * Bağlantı zaman aşımları için farklı değerler ayarlayabilir ve kullandığınız her bir Connectionçoğullayıcı için yeniden deneme mantığı yapabilirsiniz.
-      * Tanılama konusunda yardımcı olmak için her bir Çoğullayıcı özelliğiniayarlayın.`ClientName`
-      * Bu kılavuz, başına `ConnectionMultiplexer`daha kolay gecikme süresine neden olabilir.
+      * Tanılamalarda yardımcı olması için her bir Çoğullayıcı `ClientName` özelliğini ayarlayın.
+      * Bu kılavuz, `ConnectionMultiplexer`başına daha kolay gecikme süresine neden olabilir.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Redsıs istemcileri için hangi Azure önbelleğinde kullanabilirim?
 Redin hakkında harika şeyler birçok farklı geliştirme dilini destekleyen çok sayıda istemci vardır. İstemcilerin geçerli listesi için bkz. [redsıs istemcileri](https://redis.io/clients). Birçok farklı dili ve istemciyi kapsayan öğreticiler için bkz. [Azure Cache 'ı redsıs için kullanma](cache-dotnet-how-to-use-azure-redis-cache.md) ve içerik tablosundaki eşdüzey makaleler.
@@ -247,11 +248,11 @@ Redsıs [komutlarında listelenen](https://redis.io/commands#) komutların herha
 * Standart veya Premium önbelleğiniz varsa, redsıs [konsolunu](cache-configure.md#redis-console)kullanarak redsıs komutlarını çalıştırabilirsiniz. Redin konsolu, Azure portal Redsıs komutlarını çalıştırmak için güvenli bir yol sağlar.
 * Redsıs komut satırı araçlarını da kullanabilirsiniz. Bunları kullanmak için aşağıdaki adımları gerçekleştirin:
 * [Redsıs komut satırı araçlarını](https://github.com/MSOpenTech/redis/releases/)indirin.
-* Kullanarak `redis-cli.exe`önbelleğe bağlanın. Aşağıdaki örnekte gösterildiği gibi-a anahtarını ve-a anahtarını kullanarak önbellek uç noktasını geçirin:
+* `redis-cli.exe`kullanarak önbelleğe bağlanın. Aşağıdaki örnekte gösterildiği gibi-a anahtarını ve-a anahtarını kullanarak önbellek uç noktasını geçirin:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redsıs komut satırı araçları SSL bağlantı noktası ile çalışmaz, ancak `stunnel` [redsıs komut satırı aracının redsıs için Azure Cache ile nasıl kullanılacağı ile](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) ilgili yönergeleri izleyerek araçları SSL bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz .
+> Redsıs komut satırı araçları SSL bağlantı noktasıyla çalışmaz, ancak `stunnel` gibi bir yardımcı programı kullanarak, reddo [komut satırı aracının reddo Için Azure Cache Ile nasıl kullanılacağı ile](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) ilgili yönergeleri IZLEYEREK araçları SSL bağlantı noktasına güvenle bağlayabilirsiniz.
 >
 >
 
@@ -263,14 +264,14 @@ Redsıs için Microsoft Azure önbelleği, redin için popüler açık kaynaklı
 Her istemci farklı olduğundan, MSDN 'de tek bir merkezi sınıf başvurusu yoktur ve her istemci kendi başvuru belgelerini korur. Başvuru belgelerine ek olarak, farklı diller ve önbellek istemcileri kullanarak redin için Azure önbelleği ile çalışmaya nasıl başladığının gösterildiği çeşitli öğreticiler vardır. Bu öğreticilere erişmek için bkz. [Azure Cache 'ı redsıs için kullanma](cache-dotnet-how-to-use-azure-redis-cache.md) ve içerik tablosundaki eşdüzey makaleler.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Redsıs için Azure önbelleğini PHP oturum önbelleği olarak kullanabilir miyim?
-Evet, Redsıs için Azure önbelleğini PHP oturum önbelleği olarak kullanmak için, içindeki `session.save_path`redin örneği için Azure önbelleğiniz için bağlantı dizesini belirtin.
+Evet, Redsıs için Azure önbelleğini PHP oturum önbelleği olarak kullanmak için, `session.save_path`içindeki Redsıs örneği için Azure önbelleğiniz için bağlantı dizesini belirtin.
 
 > [!IMPORTANT]
 > Redsıs için Azure önbellek 'yi bir PHP oturum önbelleği olarak kullanırken, aşağıdaki örnekte gösterildiği gibi, önbelleğe bağlanmak için kullanılan güvenlik anahtarını URL 'ye kodlamanız gerekir:
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Anahtar URL kodlanmışsa, şöyle bir ileti içeren bir özel durum alabilirsiniz:`Failed to parse session.save_path`
+> Anahtar URL kodlanmışsa, şöyle bir ileti içeren bir özel durum alabilirsiniz: `Failed to parse session.save_path`
 >
 >
 
@@ -296,7 +297,7 @@ Redsıs sunucusu, SSL 'yi yerel olarak desteklemez, ancak Redsıs için Azure ö
 >
 >
 
-Gibi redsıs araçları `redis-cli` , SSL bağlantı noktasıyla çalışmaz, ancak `stunnel` [redsıs Preview sürümü için ASP.NET oturum durumu sağlayıcısının yönergelerini izleyerek araçları SSL bağlantı noktasına güvenli bir şekilde bağlamak için gibi bir yardımcı programı kullanabilirsiniz ](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)blog gönderisi.
+`redis-cli` gibi redsıs araçları, SSL bağlantı noktasıyla birlikte çalışmaz, ancak ASP.NET gibi bir yardımcı `stunnel` programı kullanarak, [Redsıs önizleme sürümü blogu Için duyuruldu oturum durumu sağlayıcısının](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) yönergelerini IZLEYEREK araçları SSL bağlantı noktasına güvenle bağlayabilirsiniz. Yayınla.
 
 Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nasıl çalıştırabilirim?](#cache-commands) bölümü.
 
@@ -306,12 +307,12 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 * [Performansı test etme](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange. Redsıs en iyi uygulamaları
-* Yanlış `AbortConnect` olarak ayarlayın, ardından connectionçoğullayıcı 'nın otomatik olarak yeniden bağlanmasına izin verin. [Ayrıntılar için buraya bakın](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* Connectionçoğullayıcısı yeniden kullanma-her istek için yeni bir tane oluşturmayın. `Lazy<ConnectionMultiplexer>` [Burada gösterilen](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) model önerilir.
+* `AbortConnect` false olarak ayarlayın, ardından Connectionçoğullayıcı 'nın otomatik olarak yeniden bağlanmasına izin verin. [Ayrıntılar için buraya bakın](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* Connectionçoğullayıcısı yeniden kullanma-her istek için yeni bir tane oluşturmayın. [Burada gösterilen](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) `Lazy<ConnectionMultiplexer>` deseninin kullanılması önerilir.
 * Red, daha küçük değerlerle çalışır, bu nedenle daha büyük verileri birden fazla anahtara chopping değerlendirin. [Bu redin tartışmasında](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)100 KB büyük olarak değerlendirilir. Büyük değerlerden kaynaklanmış olabilecek örnek bir sorun için [Bu makaleyi](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) okuyun.
 * Zaman aşımlarını önlemek için iş [parçacığı ayarlarınızı](#important-details-about-threadpool-growth) yapılandırın.
 * En azından 5 saniyelik varsayılan connectTimeout değerini kullanın. Bu Aralık, StackExchange 'e, bir ağ BLIP durumunda bağlantıyı yeniden kurmak için yeterli zaman sağlar.
-* Çalıştırdığınız farklı işlemlerle ilişkili performans maliyetlerinden haberdar olun. Örneğin, `KEYS` komut bir O (n) işlemidir ve kaçınılması gerekir. [Redis.io sitesinde](https://redis.io/commands/) , desteklediği her bir işlem için zaman karmaşıklığı etrafında ayrıntılar bulunur. Her bir işlemin karmaşıklığını görmek için her bir komuta tıklayın.
+* Çalıştırdığınız farklı işlemlerle ilişkili performans maliyetlerinden haberdar olun. Örneğin, `KEYS` komutu bir O (n) işlemidir ve kaçınılması gerekir. [Redis.io sitesinde](https://redis.io/commands/) , desteklediği her bir işlem için zaman karmaşıklığı etrafında ayrıntılar bulunur. Her bir işlemin karmaşıklığını görmek için her bir komuta tıklayın.
 
 #### <a name="configuration-and-concepts"></a>Yapılandırma ve kavramlar
 * Üretim sistemleri için standart veya Premium katmanını kullanın. Temel katman, veri çoğaltması olmayan ve SLA olmayan tek düğümlü bir sistemdir. Ayrıca, en az bir C1 önbelleği kullanın. C0 önbellekleri genellikle basit geliştirme ve test senaryoları için kullanılır.
@@ -319,7 +320,7 @@ Redsıs araçlarını indirme yönergeleri için bkz. [redsıs komutlarını nas
 * [Düzeltme eki uygulama ve yük devretme nedeniyle](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md), sisteminizi, bağlantı bliıt 'leri işleyebilecek şekilde geliştirin.
 
 #### <a name="performance-testing"></a>Performansı test etme
-* Kendi performans testlerinizi `redis-benchmark.exe` yazmadan önce olası aktarım hızına yönelik bir fikir sahibi olmak için kullanarak başlayın. , SSL 'yi desteklemediğinden, testi çalıştırmadan önce [Azure Portal aracılığıyla SSL olmayan bağlantı noktasını etkinleştirmeniz gerekir.](cache-configure.md#access-ports) `redis-benchmark` Örnekler için bkz. [önbelleğim performansını nasıl ücretlendirilirim ve test edebilirim?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Kendi performans testlerinizi yazmadan önce olası üretilen iş hızına ulaşmak için `redis-benchmark.exe` kullanarak başlayın. `redis-benchmark` SSL 'yi desteklemediğinden, testi çalıştırmadan önce [Azure Portal aracılığıyla SSL olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir. Örnekler için bkz. [önbelleğim performansını nasıl ücretlendirilirim ve test edebilirim?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Test için kullanılan istemci sanal makinesi, Redsıs örneği için Azure önbelleğiniz ile aynı bölgede olmalıdır.
 * Daha iyi donanımlar olduğundan ve en iyi sonuçları vermesi için istemciniz için dv2 VM serisini kullanmanızı öneririz.
 * Seçtiğiniz önbellek için en az bilgi işlem ve bant genişliği özelliği olan seçtiğiniz istemci VM 'nizin olduğundan emin olun.
@@ -350,7 +351,7 @@ Aşağıdaki komutlar, Redis-benchmark. exe ' nin kullanılmasına bir örnek sa
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
 * Test ardışık düzen bir 1 k yük kullanarak istekleri al.
-  NOT: Önbelleği doldurmak için önce yukarıda gösterilen küme testini çalıştırın
+  NOTE: önbelleği doldurmak için önce yukarıda gösterilen küme testini çalıştırın
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 
@@ -359,7 +360,7 @@ Aşağıdaki komutlar, Redis-benchmark. exe ' nin kullanılmasına bir örnek sa
 ### <a name="important-details-about-threadpool-growth"></a>İş parçacığı büyümesi hakkında önemli ayrıntılar
 CLR ThreadPool 'ın iki tür iş parçacığı vardır-"Worker" ve "g/ç tamamlama bağlantı noktası" (IOCP) iş parçacıkları.
 
-* Çalışan iş parçacıkları `Task.Run(…)`, veya `ThreadPool.QueueUserWorkItem(…)` yöntemlerini işlemek gibi şeyler için kullanılır. Bu iş parçacıkları, bir arka plan iş parçacığında iş olması gerektiğinde CLR içindeki çeşitli bileşenler tarafından da kullanılır.
+* Çalışan iş parçacıkları `Task.Run(…)`veya `ThreadPool.QueueUserWorkItem(…)` yöntemlerini işleme gibi şeyler için kullanılır. Bu iş parçacıkları, bir arka plan iş parçacığında iş olması gerektiğinde CLR içindeki çeşitli bileşenler tarafından da kullanılır.
 * ICP iş parçacıkları, ağdan okurken olduğu gibi zaman uyumsuz GÇ gerçekleştiğinde kullanılır.
 
 İş parçacığı havuzu, her bir iş parçacığı türü için "En düşük" ayarına ulaşıncaya kadar isteğe bağlı olarak (herhangi bir daraltma olmadan) yeni çalışan iş parçacıkları veya g/ç Tamamlama iş parçacıkları sağlar. Varsayılan olarak, en az sayıda iş parçacığı bir sistemdeki işlemci sayısına ayarlanır.
@@ -388,7 +389,7 @@ Bu bilgiler verildiğinde, müşterilerin IOCP ve çalışan iş parçacıkları
 
 Bu ayar nasıl yapılandırılır:
 
-* İçindeki [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde `global.asax.cs`değiştirmenizi öneririz. Örneğin:
+* `global.asax.cs`' de [ThreadPool. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metodunu kullanarak bu ayarı programlı bir şekilde değiştirmenizi öneririz. Örnek:
 
 ```cs
 private readonly int minThreads = 200;
@@ -405,10 +406,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > Bu yöntem tarafından belirtilen değer genel bir ayardır ve tüm AppDomain etki alanı etkilendi. Örneğin, 4 çekirdekli bir makineniz varsa ve çalışma zamanı sırasında *MinWorkerThreads* ve *MINIOTHREADS* 'i CPU başına 50 olarak ayarlamak Istiyorsanız, **ThreadPool. SetMinThreads (200, 200)** kullanın.
 
-* En düşük iş parçacığı ayarlarını, içindeki `<processModel>` `Machine.config`yapılandırma öğesinin altında bulunan `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarı](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) kullanılarak belirlemek de mümkündür. . **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
+* En düşük iş parçacığı ayarlarını, genellikle `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`bulunan `Machine.config``<processModel>` yapılandırma öğesi altındaki [ *miniothreads* veya *MinWorkerThreads* yapılandırma ayarını](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) kullanarak belirtebilirsiniz. **Bu şekilde en düşük iş parçacığı sayısını bu şekilde ayarlamak, sistem genelinde bir ayar olduğundan genellikle önerilmez.**
 
   > [!NOTE]
-  > Bu yapılandırma öğesinde belirtilen değer, *çekirdek başına* ayardır. Örneğin, 4 çekirdekli bir makineniz varsa ve *Miniothreads* ayarınızı çalışma zamanında 200 olarak istiyorsanız, kullanabilirsiniz `<processModel minIoThreads="50"/>`.
+  > Bu yapılandırma öğesinde belirtilen değer, *çekirdek başına* ayardır. Örneğin, 4 çekirdekli bir makineniz varsa ve *Miniothreads* ayarınızı çalışma zamanında 200 olarak istiyorsanız `<processModel minIoThreads="50"/>`kullanırsınız.
   >
 
 <a name="server-gc"></a>
@@ -417,7 +418,7 @@ void Application_Start(object sender, EventArgs e)
 Sunucu GC 'yi etkinleştirmek, istemcisini iyileştirebilirler ve StackExchange. Redsıs kullanırken daha iyi performans ve verimlilik sağlar. Sunucu GC ve nasıl etkinleştirileceği hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Sunucu GC 'yi etkinleştirmek için](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
-* [Atık Toplamanın Temelleri](/dotnet/standard/garbage-collection/fundamentals)
+* [Çöp toplamanın temelleri](/dotnet/standard/garbage-collection/fundamentals)
 * [Çöp toplama ve performans](/dotnet/standard/garbage-collection/performance)
 
 
@@ -443,7 +444,7 @@ Bu araçlar, Redsıs örnekleri için Azure önbelleğinizin durumunu izlemenize
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>Neden zaman aşımlarını görüyorum?
-Redsıs ile konuşmak için kullandığınız istemcide zaman aşımları meydana gelir. Redsıs sunucusuna bir komut gönderildiğinde, komut kuyruğa alınır ve Reddir sunucusu, sonunda komutu seçer ve yürütür. Ancak, bu işlem sırasında istemci zaman aşımına uğrar ve arama tarafında bir özel durum ortaya çıkar. Zaman aşımı sorunlarını giderme hakkında daha fazla bilgi için bkz. [istemci tarafı sorun giderme](cache-how-to-troubleshoot.md#client-side-troubleshooting) ve [StackExchange. redsıs zaman aşımı özel durumları](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+Redsıs ile konuşmak için kullandığınız istemcide zaman aşımları meydana gelir. Redsıs sunucusuna bir komut gönderildiğinde, komut kuyruğa alınır ve Reddir sunucusu, sonunda komutu seçer ve yürütür. Ancak, bu işlem sırasında istemci zaman aşımına uğrar ve arama tarafında bir özel durum ortaya çıkar. Zaman aşımı sorunlarını giderme hakkında daha fazla bilgi için bkz. [istemci tarafı sorun giderme](cache-troubleshoot-client.md) ve [StackExchange. redsıs zaman aşımı özel durumları](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions).
 
 <a name="cache-disconnect"></a>
 
@@ -469,7 +470,7 @@ Redsıs ile konuşmak için kullandığınız istemcide zaman aşımları meydan
 >
 >
 
-### <a name="azure-cache-for-redis"></a>Redis için Azure Önbelleği
+### <a name="azure-cache-for-redis"></a>Redis için Azure Cache
 Redo için Azure Cache, 120 GB 'a kadar olan ve% 99,9 kullanılabilirlik SLA 'sı olan boyutlarda genel kullanıma sunulmuştur. Yeni [Premium katmanı](cache-premium-tier-intro.md) ,% 99,9 SLA Ile 1,2 TB 'a kadar, KÜMELEME, VNET ve kalıcılık desteği sunar.
 
 Redsıs için Azure önbelleği, müşterilere Microsoft tarafından yönetilen, redin için güvenli ve adanmış bir Azure önbelleği kullanma olanağı sunar. Bu teklifle, redin tarafından sunulan zengin özellik kümesi ve ekosistemden ve Microsoft 'un güvenilir barındırma ve izleme özelliğinden faydalanabilirsiniz.

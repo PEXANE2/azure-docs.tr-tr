@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596686"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802034"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure maliyet yönetimi 'ni kullanmaya başlama
 
@@ -30,10 +30,10 @@ CSP iş ortakları maliyet yönetimini şu şekilde kullanır:
 - Maliyet yönetimi verilerine müşteri erişimi sağlayan Azure Resource Manager ilkesini etkinleştirin. Müşteriler daha sonra [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/calculator/)sahip aboneliklerine ait tüketim maliyeti verilerini görüntüleyebilir.
 
 Tüm müşterilerin maliyetlerini gösteren bir örnek aşağıda verilmiştir.
-tüm müşterilerin maliyetlerini gösteren ![Example ](./media/get-started-partners/customer-costs1.png)
+tüm müşterilerin maliyetlerini gösteren örnek ![](./media/get-started-partners/customer-costs1.png)
 
 Tek bir müşterinin maliyetlerini gösteren bir örnek aşağıda verilmiştir.
-tek bir müşterinin maliyetlerini gösteren ![Example ](./media/get-started-partners/customer-costs2.png)
+tek bir müşterinin maliyetlerini gösteren örnek ![](./media/get-started-partners/customer-costs2.png)
 
 Azure maliyet yönetimi 'nde kullanılabilen tüm işlevler REST API 'Leri ile de kullanılabilir. Maliyet yönetimi görevlerini otomatikleştirmek için API 'Leri kullanın.
 
@@ -83,7 +83,7 @@ Faturalandırma profilleri, bir faturaya dahil edilen abonelikleri tanımlar. Fa
 İş ortakları, faturalara mutabık kılmak için kapsamı kullanabilir. Ayrıca, aşağıdaki öğeler için faturalandırma para birimindeki bütçeleri ayarlamak için kapsamı kullanırlar:
 
 - Belirli filtrelenmiş fatura
-- Müşterisi
+- Müşteri
 - Abonelik
 - Kaynak grubu
 - Kaynak
@@ -101,7 +101,7 @@ Müşteri kapsamı, geçerli CSP teklifinde bulunan müşterileri içermez. Kaps
 
 Yalnızca **genel yönetici** ve yönetici Aracısı rollerine sahip olan kullanıcılar, doğrudan ortağın Azure **kiracısında** faturalandırma hesapları, faturalandırma profilleri ve müşteriler için maliyetleri yönetebilir ve görüntüleyebilir. İş Ortağı Merkezi rolleri hakkında daha fazla bilgi için bkz. [Kullanıcı rolleri ve Izinleri atama](/partner-center/permissions-overview).
 
-### <a name="enable-cost-management-in-the-customer-tenant"></a>Müşteri kiracısında maliyet yönetimini etkinleştirme
+## <a name="enable-cost-management-in-the-customer-tenant"></a>Müşteri kiracısında maliyet yönetimini etkinleştirme
 
 İş ortakları, müşterilerin bir Microsoft Müşteri sözleşmesine eklendi sonra maliyet yönetimine erişmesini sağlayabilir. Daha sonra, iş ortakları, müşterilerin maliyetlerini Kullandıkça Öde perakende tarifelerine göre görüntülemesini sağlayan bir ilkeyi etkinleştirebilir. Maliyetler, RBAC aboneliği ve kaynak grupları kapsamlarında tüketilen kullanımlar için müşterinin faturalandırma para biriminde gösterilir.
 
@@ -122,7 +122,7 @@ Müşteriler listesinde, maliyetleri görüntülemek için izin vermek istediği
 **Ayarlar**altında **ilkeler**' e tıklayın.
 
 Geçerli maliyet görünürlüğü ilkesi, Seçili müşteriyle ilgili aboneliklerle ilişkili **Azure kullanım** ücretleri için gösterilir.
-müşterilerin Kullandıkça Öde ücretlerini görüntülemesine izin vermek için ![Policy ](./media/get-started-partners/cost-management-billing-policies.png)
+müşterilerin Kullandıkça Öde ücretlerini görüntülemesine izin vermek için ![](./media/get-started-partners/cost-management-billing-policies.png)
 
 İlke **Hayır**olarak ayarlandığında, müşteriyle ilişkili abonelik kullanıcıları Için Azure maliyet yönetimi kullanılamaz. Bir iş ortağı tarafından etkinleştirilmediği müddetçe, tüm abonelik kullanıcıları için maliyet görünürlük ilkesi varsayılan olarak devre dışıdır.
 

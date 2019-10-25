@@ -1,23 +1,22 @@
 ---
-title: Portalda Azure Search için hizmet yönetimi-Azure Search
-description: Azure portal kullanarak Microsoft Azure barındırılan bir bulut arama hizmeti olan Azure Search hizmetini yönetin.
-author: HeidiSteen
+title: Portalda Azure Bilişsel Arama için hizmet yönetimi
+titleSuffix: Azure Cognitive Search
+description: Azure portal kullanarak Microsoft Azure barındırılan bir bulut arama hizmeti olan Azure Bilişsel Arama hizmetini yönetin.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 03/08/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 052d772c8ef885d594146d456ebb3cdcbbc0e383
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331264"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793512"
 ---
-# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure portal Azure Search için hizmet yönetimi
+# <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal Azure Bilişsel Arama için hizmet yönetimi
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
@@ -25,14 +24,14 @@ ms.locfileid: "72331264"
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Search, özel uygulamalara zengin arama deneyimi oluşturmak için kullanılan, tam olarak yönetilen, bulut tabanlı bir arama hizmetidir. Bu makalede, önceden sağladığınız bir arama hizmeti için [Azure Portal](https://portal.azure.com) gerçekleştirebileceğiniz hizmet yönetim görevleri ele alınmaktadır. Hizmet yönetimi, tasarım açısından hafif ve aşağıdaki görevlerle sınırlıdır:
+Azure Bilişsel Arama, özel uygulamalara zengin arama deneyimi oluşturmak için kullanılan, tam olarak yönetilen, bulut tabanlı bir arama hizmetidir. Bu makalede, önceden sağladığınız bir arama hizmeti için [Azure Portal](https://portal.azure.com) gerçekleştirebileceğiniz hizmet yönetim görevleri ele alınmaktadır. Hizmet yönetimi, tasarım açısından hafif ve aşağıdaki görevlerle sınırlıdır:
 
 > [!div class="checklist"]
 > * Hizmetinize okuma veya yazma erişimi için kullanılan *api anahtarlarına* erişimi yönetin.
 > * Bölümleri ve çoğaltmaları ayırmayı değiştirerek hizmet kapasitesini ayarlayın.
 > * Hizmet katmanınızın en fazla sınırlarına göre kaynak kullanımını izleyin.
 
-*Yükseltmenin* bir yönetim görevi olarak listelenmediğine dikkat edin. Hizmet sağlandığında kaynaklar ayrıldığından, farklı bir katmana taşımak yeni bir hizmet gerektirir. Ayrıntılar için bkz. [Azure Search hizmeti oluşturma](search-create-service-portal.md).
+*Yükseltmenin* bir yönetim görevi olarak listelenmediğine dikkat edin. Hizmet sağlandığında kaynaklar ayrıldığından, farklı bir katmana taşımak yeni bir hizmet gerektirir. Ayrıntılar için bkz. [Azure bilişsel arama hizmeti oluşturma](search-create-service-portal.md).
 
 Sorgu hacmi ve diğer ölçümleri izleyebilir ve bu öngörüleri kullanarak hizmetinizi daha hızlı yanıt süreleri için ayarlayabilirsiniz. Daha fazla bilgi için bkz. [kullanımı ve sorgu ölçümlerini](search-monitor-usage.md) ve [performansı ve iyileştirmeyi](search-performance-optimization.md)izleme.
 
@@ -43,12 +42,12 @@ Hizmetin kendisi için sağlanması veya kullanımdan kaldırılması, bir Azure
 
 Hizmet içinde, hizmet URL 'sine ve yönetici API 'sine erişimi olan herkesin hizmete okuma yazma erişimi vardır. Okuma-yazma erişimi, [RBAC tarafından tanımlanan roller](search-security-rbac.md)aracılığıyla uygulanan API anahtarları, dizinler, Dizin oluşturucular, veri kaynakları, zamanlamalar ve rol atamaları dahil sunucu nesnelerini ekleme, silme veya değiştirme olanağı sağlar.
 
-Azure Search tüm Kullanıcı etkileşimi şu modlardan biri içinde yer aldığından: hizmete okuma/yazma erişimi (yönetici hakları) veya hizmete salt okuma erişimi (sorgu hakları). Daha fazla bilgi için bkz. [API anahtarlarını yönetme](search-security-api-keys.md).
+Azure Bilişsel Arama ile tüm Kullanıcı etkileşimi şu modlardan birine denk gelir: hizmete okuma/yazma erişimi (yönetici hakları) veya hizmete salt okuma erişimi (sorgu hakları). Daha fazla bilgi için bkz. [API anahtarlarını yönetme](search-security-api-keys.md).
 
 <a id="sys-info"></a>
 
 ## <a name="logging-and-system-information"></a>Günlüğe kaydetme ve sistem bilgileri
-Azure Search, portal veya programlı arabirimler aracılığıyla tek bir hizmet için günlük dosyalarını kullanıma sunmaz. Temel katmanda ve yukarıda, Microsoft, hizmet düzeyi sözleşmeleri (SLA) başına% 99,9 kullanılabilirlik için tüm Azure Search hizmetlerini izler. Hizmet yavaşsa veya istek işleme SLA eşiklerinin altına düşerse, destek ekipleri, bu dosyaların kullanabildiği günlük dosyalarını gözden geçirir ve sorunu ele geçirebilir.
+Azure Bilişsel Arama, portal veya programlı arabirimler aracılığıyla tek bir hizmet için günlük dosyalarını sunmaz. Temel katmanda ve yukarıda, Microsoft, hizmet düzeyi sözleşmeleri (SLA) başına% 99,9 kullanılabilirlik için tüm Azure Bilişsel Arama hizmetlerini izler. Hizmet yavaşsa veya istek işleme SLA eşiklerinin altına düşerse, destek ekipleri, bu dosyaların kullanabildiği günlük dosyalarını gözden geçirir ve sorunu ele geçirebilir.
 
 Hizmetiniz hakkındaki genel bilgiler açısından aşağıdaki yollarla bilgi edinebilirsiniz:
 
@@ -59,26 +58,26 @@ Hizmetiniz hakkındaki genel bilgiler açısından aşağıdaki yollarla bilgi e
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>Kaynak kullanımını izleme
-Panoda, kaynak izleme hizmet panosunda gösterilen bilgilerle ve hizmeti sorgulayarak elde ettiğiniz birkaç ölçümle sınırlıdır. Hizmet panosunda, kullanım bölümünde, Bölüm kaynak düzeylerinin uygulamanız için yeterli olup olmadığını hızlı bir şekilde belirleyebilirsiniz. Günlüğe kaydedilen olayları yakalamak ve sürdürmek istiyorsanız, Azure izleme gibi dış kaynakları sağlayabilirsiniz. Daha fazla bilgi için bkz. [izleme Azure Search](search-monitor-usage.md).
+Panoda, kaynak izleme hizmet panosunda gösterilen bilgilerle ve hizmeti sorgulayarak elde ettiğiniz birkaç ölçümle sınırlıdır. Hizmet panosunda, kullanım bölümünde, Bölüm kaynak düzeylerinin uygulamanız için yeterli olup olmadığını hızlı bir şekilde belirleyebilirsiniz. Günlüğe kaydedilen olayları yakalamak ve sürdürmek istiyorsanız, Azure izleme gibi dış kaynakları sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure bilişsel arama izleme](search-monitor-usage.md).
 
-Arama Hizmeti REST API kullanarak, program aracılığıyla belge ve dizinlerde bir sayı alabilirsiniz: 
+Arama hizmeti REST API kullanarak belgeler ve dizinlerde program aracılığıyla bir sayı alabilir: 
 
 * [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Belge sayısı](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Olağanüstü durum kurtarma ve hizmet kesintileri
 
-Verilerinizi, küme veya veri merkezi düzeyinde bir kesinti olursa Azure Search, hizmetin anlık yük devretmesini sağlamamız mümkün olsa da,. Veri merkezinde bir küme başarısız olursa, işlemler ekibi, hizmeti algılar ve geri yükleme işlemini çalışır. Hizmet geri yükleme sırasında kapalı kalma süresi yaşarsınız, ancak [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)başına hizmet kullanım dışı kalması için hizmet kredileri isteyebilirsiniz. 
+Verilerinizi, veri merkezi düzeyinde bir kesinti varsa Azure Bilişsel Arama, hizmetin anında yük devretmesini sağlamaz. Veri merkezinde bir küme başarısız olursa, işlemler ekibi, hizmeti algılar ve geri yükleme işlemini çalışır. Hizmet geri yükleme sırasında kapalı kalma süresi yaşarsınız, ancak [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)başına hizmet kullanım dışı kalması için hizmet kredileri isteyebilirsiniz. 
 
 Microsoft 'un denetimi dışındaki çok sayıda hata oluşması durumunda sürekli hizmet gerekliyse, farklı bir bölgede [ek bir hizmet](search-create-service-portal.md) sağlayabilir ve dizinlerin tamamen yedekli olmasını sağlamak için coğrafi çoğaltma stratejisi uygulayabilirsiniz tüm hizmetler genelinde.
 
-Dizinleri doldurmak ve yenilemek için [Dizin oluşturucular](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağından yararlanan coğrafi olarak özel Dizin oluşturucular aracılığıyla olağanüstü durum kurtarmayı işleyebilir. Her biri Dizin Oluşturucu çalıştıran farklı bölgelerdeki iki hizmet, coğrafi yedeklilik sağlamak için aynı veri kaynağını dizinlede olabilir. Aynı zamanda coğrafi olarak yedekli veri kaynaklarından dizin oluşturuyorsanız Azure Search Dizin oluşturucuların yalnızca birincil çoğaltmalardan artımlı Dizin gerçekleştirebillerinin farkında olun. Bir yük devretme olayında, Dizin oluşturucuyu yeni birincil çoğaltmaya yeniden işaret ettiğinizden emin olun. 
+Dizinleri doldurmak ve yenilemek için [Dizin oluşturucular](search-indexer-overview.md) kullanan müşteriler, aynı veri kaynağından yararlanan coğrafi olarak özel Dizin oluşturucular aracılığıyla olağanüstü durum kurtarmayı işleyebilir. Her biri Dizin Oluşturucu çalıştıran farklı bölgelerdeki iki hizmet, coğrafi yedeklilik sağlamak için aynı veri kaynağını dizinlede olabilir. Aynı zamanda coğrafi olarak yedekli veri kaynaklarından Dizin oluşturdıysanız Azure Bilişsel Arama dizin oluşturucularının yalnızca birincil çoğaltmalardan artımlı Dizin gerçekleştirebillerinin farkında olun. Bir yük devretme olayında, Dizin oluşturucuyu yeni birincil çoğaltmaya yeniden işaret ettiğinizden emin olun. 
 
-Dizin oluşturucular kullanmıyorsanız, nesneleri ve verileri farklı arama hizmetlerine paralel olarak göndermek için uygulama kodunuzu kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Search performans ve iyileştirme](search-performance-optimization.md).
+Dizin oluşturucular kullanmıyorsanız, nesneleri ve verileri farklı arama hizmetlerine paralel olarak göndermek için uygulama kodunuzu kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure bilişsel arama performans ve iyileştirme](search-performance-optimization.md).
 
 ## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
-Azure Search bir birincil veri depolama çözümü olmadığından, self servis yedekleme ve geri yükleme için biçimsel bir mekanizma sağlamayız. Bununla birlikte, Dizin tanımınızı ve anlık görüntüsünü bir dizi JSON dosyasına yedeklemek için bu [Azure Search .NET örnek](https://github.com/Azure-Samples/azure-search-dotnet-samples) deposundaki **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilir ve gerekirse dizini geri yüklemek için bu dosyaları kullanabilirsiniz. Bu araç Ayrıca, dizinleri hizmet katmanları arasında taşıyabilir.
+Azure Bilişsel Arama bir birincil veri depolama çözümü olmadığından, self servis yedekleme ve geri yükleme için biçimsel bir mekanizma sağlamayız. Bununla birlikte, Dizin tanımınızı ve anlık görüntüsünü bir dizi JSON dosyasına yedeklemek için bu [Azure bilişsel arama .NET örnek deposu](https://github.com/Azure-Samples/azure-search-dotnet-samples) ' nda **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilir ve gerekirse dizini geri yüklemek için bu dosyaları kullanabilirsiniz. Bu araç Ayrıca, dizinleri hizmet katmanları arasında taşıyabilir.
 
 Aksi halde, dizin oluşturmak ve doldurmak için kullanılan uygulama kodunuz, yanlışlıkla bir dizini silerseniz geri yükleme ve geri yükleme seçeneğidir. Bir dizini yeniden oluşturmak için (varsa) onu siler, hizmette dizini yeniden oluşturun ve birincil veri deponuzdan verileri alarak yeniden yükleyin.
 
@@ -113,23 +112,12 @@ Belirli bölümlerde hangi dizin parçaları depolandığını belirten bir alg�
 
 Gelecekteki planlamaya yardımcı olmak için, gerçekten ne kadar kullandığınızı görmek üzere depolamayı ( [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)' ı kullanarak) denetlemek isteyebilirsiniz. 
 
-<a id="advanced-deployment"></a>
-
-## <a name="best-practices-on-scale-and-deployment"></a>Ölçek ve dağıtım ile ilgili en iyi uygulamalar
-Bu 30 dakikalık video, coğrafi olarak dağıtılan iş yükleri dahil olmak üzere gelişmiş dağıtım senaryoları için en iyi uygulamaları gözden geçirir. Ayrıca, aynı noktaları kapsayan yardım sayfaları için [Azure Search performans ve iyileştirme '](search-performance-optimization.md) ye bakabilirsiniz.
-
-> [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
-> 
-> 
-
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Hizmet yönetiminin arkasındaki kavramları anladıktan sonra, görevleri otomatikleştirmek için [PowerShell](search-manage-powershell.md) 'i kullanmayı göz önünde bulundurun.
 
 Ayrıca [performans ve iyileştirme makalesinin](search-performance-optimization.md)gözden geçirilmesini öneririz.
-
-Önceki bölümde belirtilen videoyu izlemek, başka bir öneride bulunur. Bu bölümde bahsedilen tekniklerin daha derin bir kapsamını sağlar.
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

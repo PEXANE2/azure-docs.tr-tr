@@ -1,5 +1,6 @@
 ---
-title: Xamarin Android konuları (.NET için Microsoft kimlik doğrulama kitaplığı) | Mavisi
+title: Xamarin Android konuları (.NET için Microsoft kimlik doğrulama kitaplığı)
+titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken belirli hususlar hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 465902cf6ef6db1d867f7cc986da8c9e06e4fbbf
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2d6af9753887ffa593a44fba9faa3376066417a8
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532461"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802638"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>MSAL.NET ile Xamarin Android 'e özgü konular
 Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanılırken belirli noktalar ele alınmaktadır.
@@ -58,7 +59,7 @@ var pca = PublicClientApplicationBuilder
 
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>Kimlik doğrulama akışının etkileşimli kısmı sona erdikten sonra denetimin MSAL 'e geri gitmesini sağlama
-Android 'de, `OnActivityResult` yöntemini `Activity` geçersiz kılmanız ve authenticationcontinuationhelper msal sınıfının setauthenticationcontinuationeventargs yöntemini çağırmanız gerekir.
+Android 'de, `Activity` `OnActivityResult` yöntemini geçersiz kılmanız ve AuthenticationContinuationHelper MSAL sınıfının SetAuthenticationContinuationEventArgs yöntemini çağırmanız gerekir.
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -74,7 +75,7 @@ protected override void OnActivityResult(int requestCode,
 Bu satır, kimlik doğrulama akışının etkileşimli kısmı sona erdikten sonra denetimin MSAL 'e geri gelmesini sağlar.
 
 ## <a name="update-the-android-manifest"></a>Android bildirimini güncelleştirme
-`AndroidManifest.xml` Aşağıdaki değerleri içermelidir:
+`AndroidManifest.xml` aşağıdaki değerleri içermelidir:
 ```csharp
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -115,7 +116,7 @@ Bu sorunları gidermek için şunları yapmalısınız:
 
 ### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Hata: ' AuthenticationContinuationHelper ' adı geçerli bağlamda yok
 
-Bu, Visual Studio 'Nun Android. csproj * dosyasını doğru bir şekilde güncelleştirmediği için büyük olasılıkla oluşur. HintPath > FilePath bazen **monoandroid90**yerine netstandard13 içeriyor.  **\<**
+Bu, Visual Studio 'Nun Android. csproj * dosyasını doğru bir şekilde güncelleştirmediği için büyük olasılıkla oluşur. Bazen **\<HintPath >** FilePath, **monoandroid90**yerine netstandard13 içerir.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,

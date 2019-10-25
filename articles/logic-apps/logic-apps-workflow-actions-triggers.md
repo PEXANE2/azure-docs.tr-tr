@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: a6789f409e26d1310d9e583ac2934e0bae462b21
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679867"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72799437"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps tetikleyici ve eylem türleri için şema başvurusu Kılavuzu
 
@@ -132,7 +132,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
 
 | Değer | Tür | Açıklama | 
 |-------|------|-------------| 
-| <*APIConnection_trigger_name* > | Dize | Tetikleyicinin adı | 
+| <*APIConnection_trigger_name*> | Dize | Tetikleyicinin adı | 
 | <*bağlantı-adı*> | Dize | İş akışının kullandığı yönetilen API bağlantısı için ad | 
 | <*yöntemi-tür* > | Dize | Yönetilen API ile iletişim için HTTP yöntemi: "GET", "PUT", "POST", "PATCH", "DELETE" | 
 | <*API-işlem* > | Dize | Çağrılacak API işlemi | 
@@ -273,19 +273,21 @@ Bu tetikleyici tanımı Office 365 Outlook API 'sine abone olur, API uç noktas�
 
 ### <a name="http-trigger"></a>HTTP tetikleyicisi
 
-Bu tetikleyici belirtilen bitiş noktasını belirtilen yinelenme zamanlaması temelinde denetler veya yoklar. Uç noktanın yanıtı, iş akışının çalışıp çalışmadığını belirler.
+Bu tetikleyici belirtilen yineleme zamanlaması temelinde belirtilen HTTP veya HTTPS uç noktasına bir istek gönderir. Tetikleyici daha sonra iş akışının çalışıp çalışmadığını belirleme yanıtını denetler.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,27 +305,27 @@ Bu tetikleyici belirtilen bitiş noktasını belirtilen yinelenme zamanlaması t
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
-|-------|------|-------------| 
-| <*yöntemi-tür* > | Dize | Belirtilen uç noktayı yoklamak için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*uç noktası-URL* > | Dize | Yoklamaya bitiş noktası için HTTP veya HTTPS URL 'SI <p>En büyük dize boyutu: 2 KB | 
-| <*zaman birimi* > | Dize | Tetikleyicinin ne sıklıkla çalıştığını açıklayan zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay" | 
-| < >*zaman birimi sayısı* | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. | 
-|||| 
+| Özellik | Değer | Tür | Açıklama |
+|----------|-------|------|-------------|
+| `method` | <*yöntemi-tür* > | Dize | Giden isteği göndermek için kullanılacak yöntem: "GET", "PUT", "POST", "PATCH" veya "DELETE" |
+| `uri` | <*http-veya-https-Endpoint-URL* > | Dize | Giden isteği göndermek istediğiniz HTTP veya HTTPS uç noktası URL 'SI. En büyük dize boyutu: 2 KB <p>Bir Azure hizmeti veya kaynağı için, bu URI söz dizimi kaynak KIMLIĞI ve erişmek istediğiniz kaynağın yolunu içerir. |
+| `frequency` | <*zaman birimi* > | Dize | Tetikleyicinin ne sıklıkla çalıştığını açıklayan zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay" |
+| `interval` | < >*zaman birimi sayısı* | Tamsayı | Tetikleyicinin yeniden tetiklenmesi için bekleyeceği zaman birimi sayısı olan sıklık temelinde tetikleyicinin ne sıklıkta tetikleyeceğini belirten bir değer <p>En düşük ve en büyük aralıklar aşağıda verilmiştir: <p>-Ay: 1-16 ay </br>Gün: 1-500 gün </br>-Saat: 1-12000 saat </br>-Dakika: 1-72000 dakika </br>-İkinci: 1-9999999 saniye<p>Örneğin, Aralık 6, sıklık ise "month" ise, yineleme 6 aydır. |
+|||||
 
 *Seçim*
 
-| Değer | Tür | Açıklama | 
-|-------|------|-------------| 
-| <*üstbilgisi-içerik* > | JSON nesnesi | İstekle birlikte gönderilen üstbilgiler <p>Örneğin, bir isteğin dilini ve türünü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*gövdesi-içerik* > | Dize | İstekle birlikte yük olarak gönderilmek üzere ileti içeriği | 
-| <*kimlik doğrulaması-yöntem* > | JSON nesnesi | İsteğin kimlik doğrulaması için kullandığı yöntem. Daha fazla bilgi için bkz. [Scheduler giden kimlik doğrulaması](../scheduler/scheduler-outbound-authentication.md). Zamanlayıcı ötesinde `authority` özelliği desteklenir. Belirtilmediğinde, varsayılan değer `https://login.windows.net`, ancak `https://login.windows\-ppe.net` gibi farklı bir değer kullanabilirsiniz. |
-| <*yeniden deneme davranışı* > | JSON nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
- <*sorgu-parametreler* > | JSON nesnesi | İsteğe dahil edilecek herhangi bir sorgu parametresi <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi isteğe `?api-version=2018-01-01` ekler. | 
-| <*en fazla* çalıştırma > | Tamsayı | Varsayılan olarak, iş akışı örnekleri aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
-| <*en fazla çalıştırma-kuyruk* > | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
-| <*işlem-seçenek* > | Dize | @No__t_0 özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). | 
-|||| 
+| Özellik | Değer | Tür | Açıklama |
+|----------|-------|------|-------------|
+| `headers` | <*üstbilgisi-içerik* > | JSON nesnesi | İsteğe dahil etmeniz gereken tüm üstbilgiler <p>Örneğin, dili ve türünü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*sorgu-parametreler* > | JSON nesnesi | İstekte kullanmanız gereken herhangi bir sorgu parametresi <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi isteğe `?api-version=2018-01-01` ekler. |
+| `body` | <*gövdesi-içerik* > | JSON nesnesi | İstekle birlikte yük olarak gönderilmek üzere ileti içeriği |
+| `authentication` | <*kimlik doğrulaması-tür-ve-özellik-değerleri*> | JSON nesnesi | İsteğin giden isteklerin kimliğini doğrulamak için kullandığı kimlik doğrulama modeli. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Zamanlayıcı ötesinde `authority` özelliği desteklenir. Belirtilmediğinde, varsayılan değer `https://management.azure.com/`, ancak farklı bir değer kullanabilirsiniz. |
+| `retryPolicy` > `type` | <*yeniden deneme davranışı* > | JSON nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| `runs` | <*en fazla* çalıştırma > | Tamsayı | Varsayılan olarak, iş akışı örnekleri aynı anda veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). |
+| `maximumWaitingRuns` | <*en fazla çalıştırma-kuyruk* > | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). |
+| `operationOptions` | <*işlem-seçenek* > | Dize | @No__t_0 özelliğini ayarlayarak varsayılan davranışı değiştirebilirsiniz. Daha fazla bilgi için bkz. [işlem seçenekleri](#operation-options). |
+|||||
 
 *Çıkışlar*
 
@@ -374,7 +376,7 @@ Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümler
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +385,7 @@ Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümler
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,7 +415,7 @@ Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümler
 | <*yöntemi-tür* > | Dize | İptal isteği için kullanılacak HTTP yöntemi: "GET", "PUT", "POST", "PATCH" veya "DELETE" | 
 | <*uç noktası-abonelik-URL* > | Dize | İptal isteğinin gönderileceği uç nokta URL 'SI | 
 | <*gövdesi-içerik* > | Dize | Abonelik veya iptal isteğinde göndermek için herhangi bir ileti içeriği | 
-| <*kimlik doğrulaması-yöntem* > | JSON nesnesi | İsteğin kimlik doğrulaması için kullandığı yöntem. Daha fazla bilgi için bkz. [Scheduler giden kimlik doğrulaması](../scheduler/scheduler-outbound-authentication.md). |
+| <*kimlik doğrulaması-tür*> | JSON nesnesi | İsteğin giden isteklerin kimliğini doğrulamak için kullandığı kimlik doğrulama modeli. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*yeniden deneme davranışı* > | JSON nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*en fazla* çalıştırma > | Tamsayı | Varsayılan olarak, iş akışı örneklerinin hepsi aynı anda çalışır veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar paralel olarak yapılır. Yeni bir <*sayı*> değeri ayarlayarak bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık değiştirme](#change-trigger-concurrency). | 
 | <*en fazla çalıştırma-kuyruk* > | Tamsayı | İş akışınız, `runtimeConfiguration.concurrency.runs` özelliğine göre değiştirebileceğiniz en fazla örnek sayısını zaten çalıştırıyorsa, tüm yeni çalıştırmalar bu kuyruğa [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar yerleştirilir. Varsayılan sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](#change-waiting-runs). | 
@@ -950,7 +952,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +962,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +988,7 @@ Bu eylem, [Microsoft tarafından yönetilen BIR API](../connectors/apis-list.md)
 | <*API-abonelikten çıkma-URL* > | Dize | API 'den aboneliği kaldırma için kullanılacak URI | 
 | <*üstbilgisi-içerik* > | JSON nesnesi | İstekte gönderilen tüm üstbilgiler <p>Örneğin, bir istek için dili ve türü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*gövdesi-içerik* > | JSON nesnesi | İstekte göndermek için herhangi bir ileti içeriği | 
-| <*kimlik doğrulaması-yöntem* > | JSON nesnesi | İsteğin kimlik doğrulaması için kullandığı yöntem. Daha fazla bilgi için bkz. [Scheduler giden kimlik doğrulaması](../scheduler/scheduler-outbound-authentication.md). |
+| <*kimlik doğrulaması-tür*> | JSON nesnesi | İsteğin giden isteklerin kimliğini doğrulamak için kullandığı kimlik doğrulama modeli. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
 | <*yeniden deneme davranışı* > | JSON nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*sorgu-parametreler* > | JSON nesnesi | API çağrısıyla birlikte içerilecek sorgu parametreleri <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi çağrıya `?api-version=2018-01-01` ekler. | 
 | <*diğer eyleme özgü-giriş özellikleri* > | JSON nesnesi | Bu özel eylem için uygulanan diğer tüm giriş özellikleri | 
@@ -1105,9 +1107,9 @@ Bu eylem, mantıksal uygulamanızın adını alan ve sonuç olarak "Hello World 
 
 *Örnek 2*
 
-Bu eylem, Office 365 Outlook hesabına yeni bir e-posta geldiğinde tetiklenen bir mantıksal uygulamadaki kodu çalıştırır. Mantıksal uygulama Ayrıca, alınan e-postadaki içeriği onay isteğiyle birlikte ileten onay e-postası gönder eylemini kullanır. 
+Bu eylem, Office 365 Outlook hesabına yeni bir e-posta geldiğinde tetiklenen bir mantıksal uygulamadaki kodu çalıştırır. Mantıksal uygulama Ayrıca, alınan e-postadaki içeriği onay isteğiyle birlikte ileten onay e-postası gönder eylemini kullanır.
 
-Kod, tetikleyicinin `Body` özelliğinden e-posta adreslerini ayıklar ve bu e-posta adreslerini onay eyleminden `SelectedOption` özellik değeriyle birlikte döndürür. Eylem, `explicitDependencies`  >  `actions` özniteliğinde bağımlılık olarak onay e-postası gönder eylemini açıkça içerir.
+Kod, tetikleyicinin `Body` özelliğinden e-posta adreslerini ayıklar ve onay eyleminden `SelectedOption` özellik değeriyle birlikte adresleri döndürür. Eylem, `explicitDependencies`  >  `actions` özniteliğinde bağımlılık olarak onay e-postası gönder eylemini açıkça içerir.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1208,21 @@ Bu eylem tanımı, önceden oluşturulan "Getproductıd" işlevini çağırır:
 
 ### <a name="http-action"></a>HTTP eylemi
 
-Bu eylem, belirtilen uç noktaya bir istek gönderir ve iş akışının çalıştırılıp çalıştırılmayacağını belirleme yanıtını denetler. 
+Bu eylem, belirtilen HTTP veya HTTPS uç noktasına bir istek gönderir ve iş akışının çalışıp çalışmadığını belirleme yanıtını denetler.
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1230,24 @@ Bu eylem, belirtilen uç noktaya bir istek gönderir ve iş akışının çalı�
 
 *Gerekli*
 
-| Değer | Tür | Açıklama | 
-|-------|------|-------------| 
-| <*yöntemi-tür* > | Dize | İsteği göndermek için kullanılacak yöntem: "GET", "PUT", "POST", "PATCH" veya "DELETE" | 
-| <*http-veya-https-Endpoint-URL* > | Dize | Çağrılacak HTTP veya HTTPS uç noktası. En büyük dize boyutu: 2 KB | 
-|||| 
+| Özellik | Değer | Tür | Açıklama |
+|----------|-------|------|-------------|
+| `method` | <*yöntemi-tür* > | Dize | Giden isteği göndermek için kullanılacak yöntem: "GET", "PUT", "POST", "PATCH" veya "DELETE" |
+| `uri` | <*http-veya-https-Endpoint-URL* > | Dize | Giden isteği göndermek istediğiniz HTTP veya HTTPS uç noktası URL 'SI. En büyük dize boyutu: 2 KB <p>Bir Azure hizmeti veya kaynağı için, bu URI söz dizimi kaynak KIMLIĞI ve erişmek istediğiniz kaynağın yolunu içerir. |
+|||||
 
 *Seçim*
 
-| Değer | Tür | Açıklama | 
-|-------|------|-------------| 
-| <*üstbilgisi-içerik* > | JSON nesnesi | İstekle birlikte göndermek için herhangi bir üst bilgi <p>Örneğin, dili ve türünü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*gövdesi-içerik* > | JSON nesnesi | İstekte göndermek için herhangi bir ileti içeriği | 
-| <*yeniden deneme davranışı* > | JSON nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*sorgu-parametreler* > | JSON nesnesi | İsteğe dahil edilecek herhangi bir sorgu parametresi <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi çağrıya `?api-version=2018-01-01` ekler. | 
-| <*diğer eyleme özgü-giriş özellikleri* > | JSON nesnesi | Bu özel eylem için uygulanan diğer tüm giriş özellikleri | 
-| *diğer eyleme özgü özellikleri* < > | JSON nesnesi | Bu özel eylem için uygulanan diğer özellikler | 
-|||| 
+| Özellik | Değer | Tür | Açıklama |
+|----------|-------|------|-------------|
+| `headers` | <*üstbilgisi-içerik* > | JSON nesnesi | İsteğe dahil etmeniz gereken tüm üstbilgiler <p>Örneğin, dili ve türünü ayarlamak için: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*sorgu-parametreler* > | JSON nesnesi | İstekte kullanmanız gereken herhangi bir sorgu parametresi <p>Örneğin, `"queries": { "api-version": "2018-01-01" }` nesnesi çağrıya `?api-version=2018-01-01` ekler. |
+| `body` | <*gövdesi-içerik* > | JSON nesnesi | İstekle birlikte yük olarak gönderilmek üzere ileti içeriği |
+| `authentication` | <*kimlik doğrulaması-tür-ve-özellik-değerleri*> | JSON nesnesi | İsteğin giden isteklerin kimliğini doğrulamak için kullandığı kimlik doğrulama modeli. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). Zamanlayıcı ötesinde `authority` özelliği desteklenir. Belirtilmediğinde, varsayılan değer `https://management.azure.com/`, ancak farklı bir değer kullanabilirsiniz. |
+| `retryPolicy` > `type` | <*yeniden deneme davranışı* > | JSON nesnesi | 408, 429 ve 5XX durum koduna ve tüm bağlantı özel durumlarına sahip aralıklı olmayan hatalara yönelik yeniden deneme davranışını özelleştirir. Daha fazla bilgi için bkz. [yeniden deneme ilkeleri](../logic-apps/logic-apps-exception-handling.md#retry-policies). |
+| <*diğer eyleme özgü-giriş özellikleri* > | <*Input-property*> | JSON nesnesi | Bu özel eylem için uygulanan diğer tüm giriş özellikleri |
+| *diğer eyleme özgü özellikleri* < > | <*özelliği-değer*> | JSON nesnesi | Bu özel eylem için uygulanan diğer özellikler |
+|||||
 
 *Örnek*
 
@@ -2665,134 +2675,11 @@ Tek bir mantıksal uygulama tanımı için, 5 dakikada bir yürütülen eylemler
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>HTTP Tetikleyicileri ve eylemlerinin kimliklerini doğrulama
+## <a name="authenticate-triggers-and-actions"></a>Tetikleyiciler ve eylemlerin kimliğini doğrulama
 
-HTTP uç noktaları farklı kimlik doğrulama türlerini destekler. Bu HTTP Tetikleyicileri ve eylemleri için kimlik doğrulaması ayarlayabilirsiniz:
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Web kancası](../connectors/connectors-native-webhook.md)
-
-Ayarlayabileceğiniz kimlik doğrulama türleri şunlardır:
-
-* [Temel kimlik doğrulaması](#basic-authentication)
-* [İstemci sertifikası kimlik doğrulaması](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth kimlik doğrulaması](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> Mantıksal uygulama iş akışı tanımınızın işleyeceği tüm hassas bilgileri koruduğunuzdan emin olun. Güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın. Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>Temel kimlik doğrulama
-
-Azure Active Directory kullanarak [temel kimlik doğrulaması](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) için, Tetikleyiciniz veya eylem tanımınız, aşağıdaki tabloda belirtilen özellikleri içeren BIR `authentication` JSON nesnesi içerebilir. Çalışma zamanında parametre değerlerine erişmek için, [Iş akışı Tanım Dili](https://aka.ms/logicappsdocs)tarafından belirtilen `@parameters('parameterName')` ifadesini kullanabilirsiniz. 
-
-| Özellik | Gereklidir | Değer | Açıklama | 
-|----------|----------|-------|-------------| 
-| **type** | Yes | Basit | Burada "temel" olan, kullanılacak kimlik doğrulama türü | 
-| **nitelen** | Yes | "@parameters (' userNameParam ')" | Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
-| **parolayı** | Yes | "@parameters (' passwordParam ')" | Hedef hizmet uç noktasına erişim doğrulaması için parola |
-||||| 
-
-Bu örnek HTTP eylem tanımında `authentication` bölümünde `Basic` kimlik doğrulaması belirtilir. Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Mantıksal uygulama iş akışı tanımınızın işleyeceği tüm hassas bilgileri koruduğunuzdan emin olun. Güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>İstemci sertifikası kimlik doğrulaması
-
-Azure Active Directory kullanarak [sertifika tabanlı kimlik doğrulaması](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) için, Tetikleyiciniz veya eylem tanımınız, aşağıdaki tabloda belirtilen özellikleri içeren BIR `authentication` JSON nesnesi içerebilir. Çalışma zamanında parametre değerlerine erişmek için, [Iş akışı Tanım Dili](https://aka.ms/logicappsdocs)tarafından belirtilen `@parameters('parameterName')` ifadesini kullanabilirsiniz. Kullanabileceğiniz istemci sertifikası sayısına yönelik sınırlar için bkz. [Azure Logic Apps Için sınırlar ve yapılandırma](../logic-apps/logic-apps-limits-and-config.md).
-
-| Özellik | Gereklidir | Değer | Açıklama |
-|----------|----------|-------|-------------|
-| **type** | Yes | ClientCertificate | Güvenli Yuva Katmanı (SSL) istemci sertifikaları için kullanılacak kimlik doğrulaması türü. Otomatik olarak imzalanan sertifikalar desteklenirken, SSL için otomatik olarak imzalanan sertifikalar desteklenmez. |
-| **Türk** | Yes | "@parameters (' pfxParam ') | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
-| **parolayı** | Yes | "@parameters (' passwordParam ')" | PFX dosyasına erişim parolası |
-||||| 
-
-Bu örnek HTTP eylem tanımında `authentication` bölümünde `ClientCertificate` kimlik doğrulaması belirtilir. Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Mantıksal uygulama iş akışı tanımınızın işleyeceği tüm hassas bilgileri koruduğunuzdan emin olun. Güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth kimlik doğrulaması
-
-[Azure AD OAuth kimlik doğrulaması](../active-directory/develop/authentication-scenarios.md)için, Tetikleyiciniz veya eylem tanımınız, aşağıdaki tabloda belirtilen özellikleri içeren BIR `authentication` JSON nesnesi içerebilir. Çalışma zamanında parametre değerlerine erişmek için, [Iş akışı Tanım Dili](https://aka.ms/logicappsdocs)tarafından belirtilen `@parameters('parameterName')` ifadesini kullanabilirsiniz.
-
-| Özellik | Gereklidir | Değer | Açıklama |
-|----------|----------|-------|-------------|
-| **type** | Yes | `ActiveDirectoryOAuth` | Azure AD OAuth için "ActiveDirectoryOAuth" olan kullanılacak kimlik doğrulaması türü |
-| **iniz** | Hayır | <*URL-yetki-belirteç-veren* > | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI |
-| **Kiracı** | Yes | <*KIRACı kimliği* > | Azure AD kiracısı için kiracı KIMLIĞI |
-| **grubu** | Yes | *kaynaktan yetkilendir* > < | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/`) |
-| **ClientID** | Yes | <*ISTEMCI kimliği* > | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
-| **credentialType** | Yes | "Sertifika" veya "gizli" | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer temel tanımda görünmez, ancak kimlik bilgisi türü için gerekli parametreleri belirler. |
-| **Türk** | Evet, yalnızca "sertifika" kimlik bilgisi türü | "@parameters (' pfxParam ') | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
-| **parolayı** | Evet, yalnızca "sertifika" kimlik bilgisi türü | "@parameters (' passwordParam ')" | PFX dosyasına erişim parolası |
-| **gizlilikle** | Evet, yalnızca "gizli" kimlik bilgisi türü | "@parameters (' secretParam ')" | Yetkilendirme isteğinde bulunan istemci parolası |
-|||||
-
-Bu örnek HTTP eylem tanımında, `authentication` bölümü `ActiveDirectoryOAuth` kimlik doğrulaması ve "gizli" kimlik bilgisi türünü belirtir. Parametreleri kullanma ve güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> Mantıksal uygulama iş akışı tanımınızın işleyeceği tüm hassas bilgileri koruduğunuzdan emin olun. Güvenli parametreleri kullanın ve verileri gerektiği şekilde kodlayın. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [mantıksal uygulamanızı güvenli hale](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)getirme.
+HTTP ve HTTPS uç noktaları farklı kimlik doğrulama türlerini destekler. Bu uç noktalara erişmek üzere giden çağrı veya istek yapmak için kullandığınız tetikleyici veya eyleme göre farklı kimlik doğrulama türleri aralığından seçim yapabilirsiniz. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

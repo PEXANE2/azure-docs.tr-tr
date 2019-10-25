@@ -1,5 +1,6 @@
 ---
-title: Anahtarlık yapılandırma | Microsoft Identity platformu
+title: Anahtarlık yapılandırma
+titleSuffix: Microsoft identity platform
 description: Anahtarlığınıza, uygulamanızın belirteçleri anahtarlıkta önbelleğe abilmesi için Anahtarlık yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264186"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803797"
 ---
 # <a name="configure-keychain"></a>Anahtarlık yapılandırma
 
@@ -36,7 +37,7 @@ Bu makalede, MSAL 'in önbelleğe alınmış belirteçleri iOS ve macOS anahtarl
 
 İOS üzerinde MSAL, varsayılan olarak `com.microsoft.adalcache` erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'Ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden çok uygulama arasında en iyi çoklu oturum açma (SSO) deneyimini sağlar.
 
-İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje @no__t ayarları**altındaki Xcode 'da,-4**anahtarlık paylaşımı** @no__t**için**, uygulamanızın yetkilendirme grubuna ekleyin
+İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje > ayarları** ' nın altındaki Xcode 'Da, **anahtar zinciri paylaşımı** ** > Şirket içindeki yetkilendirenlerine** ekleyin
 
 ### <a name="macos"></a>macOS
 

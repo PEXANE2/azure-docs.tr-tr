@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260866"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809373"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -28,10 +28,10 @@ BYOK özelliğinin etkinleştirilmesi, ad alanınız üzerinde bir kerelik kurul
 
 Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya Azure Key Vault API 'Lerini kullanarak anahtarlar oluşturabilirsiniz. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/key-vault-overview.md)
 
-Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için, bkz. [] hızlı başlangıç: Azure portal] (..) kullanarak Azure Key Vault bir gizli dizi belirleyin ve alın. /Key-Vault/Quick-Create-Portal.exe).
+Bu makalede, Azure portal kullanarak, müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../key-vault/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Azure Event Hubs ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar:  **Geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
+> Azure Event Hubs ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmış olmasını gerektirir. Bunlar: **geçici silme** ve **Temizleme**. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
 
 ## <a name="enable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları etkinleştir
 Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için şu adımları izleyin:
@@ -63,7 +63,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
         ![Oluştur/Içeri Aktar düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
     1. Oluşturma **seçeneklerini** belirleyin ve anahtara bir ad verin.
 
-        ![Anahtar oluşturma](./media/configure-customer-managed-key/create-key.png) 
+        ![Bir anahtar oluşturma](./media/configure-customer-managed-key/create-key.png) 
     1. Şimdi, açılan listeden şifrelemek için Event Hubs ad alanıyla ilişkilendirmek üzere bu anahtarı seçebilirsiniz. 
 
         ![Anahtar kasasından anahtar seçin](./media/configure-customer-managed-key/select-key-from-key-vault.png)
@@ -101,20 +101,20 @@ Müşteri tarafından yönetilen anahtarlar için günlükleri etkinleştirmek �
 
     ![Müşteri tarafından yönetilen anahtar Kullanıcı günlükleri seçeneğini belirleyin](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Günlüğü şeması 
-Tüm günlükler, JavaScript nesne gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
+## <a name="log-schema"></a>Günlük şeması 
+Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her girdinin aşağıdaki tabloda açıklanan biçimi kullanan dize alanları vardır. 
 
-| Name | Açıklama |
+| Adı | Açıklama |
 | ---- | ----------- | 
-| TaskName | Başarısız görev açıklaması. |
-| Etkinlik Kimliği | İzleme için kullanılan iç KIMLIK. |
+| Silinecek | Başarısız olan görevin açıklaması. |
+| Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
 | category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
 | resourceId | Azure Resource Manager kaynak KIMLIĞI |
 | KeyVault | Anahtar kasasının tam adı. |
-| key | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
+| anahtar | Event Hubs ad alanını şifrelemek için kullanılan anahtar adı. |
 | version | Kullanılan anahtarın sürümü. |
-| operation | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
-| code | İşlemle ilişkili kod. Örnek: Hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
+| Çalışmasını | Anahtar kasasındaki anahtarda gerçekleştirilen işlem. Örneğin, anahtarı devre dışı bırakma/etkinleştirme, sarmalama veya kaydırmayı kaldırma |
+| Kodudur | İşlemle ilişkili kod. Örnek: hata kodu, 404, anahtarın bulunamadığı anlamına gelir. |
 | message | İşlemle ilişkili herhangi bir hata iletisi |
 
 Müşteri tarafından yönetilen anahtar için günlüğe bir örnek aşağıda verilmiştir:
@@ -154,7 +154,7 @@ En iyi uygulama olarak, önceki bölümde gösterildiği gibi günlükleri her z
 
 Aşağıda, BYOK şifrelemesi etkinleştirildiğinde aranacak ortak hatalar kodları verilmiştir.
 
-| Action | Hata kodu | Verilerin sonuç durumu |
+| Eylem | Hata kodu | Verilerin sonuç durumu |
 | ------ | ---------- | ----------------------- | 
 | Anahtar kasasından kaydırmayı/kaydırmayı kaldırma iznini kaldır | 403 |    Erişilemez |
 | Bir AAD sorumlusunun sarmalama/sarmalama izni verilen AAD rolü üyeliğini kaldırma | 403 |  Erişilemez |

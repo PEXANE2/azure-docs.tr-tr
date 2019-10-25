@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 650e45ca9092b9c81b2127eb995a0297745410a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b452fccf2ae0915592420bdda3a47fef43eba9a8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244149"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788687"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute şifreleme
  
@@ -31,7 +31,7 @@ Hayır. MACsec yapılandırıldıysa ve bir anahtar uyumsuzluğu oluşursa, Micr
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>ExpressRoute Direct üzerinde MACsec 'i etkinleştirmek, ağ performansının düşmesine neden olacak mı?
 MACsec şifreleme ve şifre çözme, kullandığımız yönlendiricilerin donanımında oluşur. Bizim tarafımızda performans etkisi yoktur. Ancak, kullandığınız cihazların ağ satıcısına danışmanız ve MACsec 'in herhangi bir performansa sahip olup olmadığını görmeniz gerekir.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>şifreleme için hangi şifre paketleri destekleniyor?
-AES128 (GCM – AES – 128) ve AES256 (GCM – AES – 256) destekliyoruz.
+AES128 ve AES256 destekliyoruz.
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPSec ile uçtan uca şifreleme hakkında SSS
 IPSec bir [IETF standardıdır](https://tools.ietf.org/html/rfc6071). Internet Protokolü (IP) düzeyinde veya ağ katmanı 3 ' teki verileri şifreler. Azure 'da şirket içi ağınız ile sanal ağınız (VNET) arasında uçtan uca bir bağlantıyı şifrelemek için IPSec kullanabilirsiniz. Aşağıdaki diğer SSS bölümüne bakın.

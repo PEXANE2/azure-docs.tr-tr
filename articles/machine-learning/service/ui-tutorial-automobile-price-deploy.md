@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693058"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792670"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: görsel arabirimle bir makine öğrenimi modeli dağıtma
 
@@ -40,7 +40,7 @@ Bir makine öğrenimi modelini görsel arabirimde eğitme ve puan alma hakkında
 
 1. Ardışık düzen tuvalinin üst kısmında,**gerçek zamanlı çıkarım işlem hattı**  >  **çıkarım işlem hattı oluştur** ' u seçin.
 
-    Tahmine dayalı işlem **hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
+    **Çıkarım işlem hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
     
     * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim**altında bulabilirsiniz.
     * Eğitim için kullanılan model ve **bölünmüş verileri** **eğitme** gibi modüller kaldırılır.
@@ -97,7 +97,7 @@ AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönel
 
 1. **Dağıt**'ı seçin.
 
-    [! Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
 
     Dağıtım tamamlandığında tuvalin üzerindeki bir başarı bildirimi görüntülenir, bu işlem birkaç dakika sürebilir.
 

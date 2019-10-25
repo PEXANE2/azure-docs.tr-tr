@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Facebook tarafından çalışma alanıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici Azure Active Directory: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Facebook tarafından Azure Active Directory ve çalışma alanı arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe02e9d6c3fa69e0ccd88057e10edb6ea1c6e0d0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 15e98bf83cedc22aa565ba0f98089e9f6f217728
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986053"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -63,7 +63,6 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Facebook ile çalışma alanı** yazın.
 1. Sonuçlar panelinden **Facebook tarafından çalışma alanı** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>Facebook tarafından çalışma alanı için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon**adlı bir test kullanıcısı kullanarak Facebook Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Facebook tarafından çalışma alanındaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
@@ -71,17 +70,17 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 Azure AD SSO 'yu Facebook ile çalışma alanıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Facebook SSO Ile çalışma alanı yapılandırma](#configure-workplace-by-facebook-sso)** .
-    1. Facebook 'a ait çalışma alanında, kullanıcının Azure AD gösterimine bağlı olan Facebook tarafından Iş yerinde B. Simon 'ın bir karşılığı olacak şekilde **[çalışma alanı oluşturun](#create-workplace-by-facebook-test-user)** .
+    * Facebook 'a ait çalışma alanında, kullanıcının Azure AD gösterimine bağlı olan Facebook tarafından Iş yerinde B. Simon 'ın bir karşılığı olacak şekilde **[çalışma alanı oluşturun](#create-workplace-by-facebook-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), Facebook uygulama tümleştirmesiyle **çalışma alanı** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/), **Facebook uygulama tümleştirmesiyle çalışma alanı** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -89,34 +88,34 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<instancename>.facebook.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<instancename>.facebook.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.facebook.com/company/<instanceID>`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.facebook.com/company/<instanceID>`
 
     > [!NOTE] 
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Çalışma alanı topluluğlarınızın doğru değerleri için çalışma alanı şirket panosunun kimlik doğrulama sayfasına bakın.
 
-4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **Çalışma alanını Facebook 'a göre ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Çalışma alanını Facebook 'a göre ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -124,7 +123,7 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
 1. Uygulamalar listesinde **Facebook tarafından çalışma alanı**' nı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -136,24 +135,36 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
 
 ## <a name="configure-workplace-by-facebook-sso"></a>Çalışma alanını Facebook SSO ile yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, Facebook Şirket sitesi tarafından yönetici olarak çalışma alanınızda oturum açın.
-  
+1. Çalışma alanındaki yapılandırmayı Facebook tarafından otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+1. Tarayıcıya uzantı ekledikten sonra, **Facebook tarafından çalışma alanı 'Nı ayarla** ' ya tıklayın, sizi Facebook uygulamasına göre çalışma alanına yönlendirir. Buradan, Facebook tarafından çalışma alanında oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-5 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. Çalışma alanını Facebook ile el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve Facebook Şirket sitesi tarafından yönetici olarak çalışma alanınızda oturum açın ve aşağıdaki adımları gerçekleştirin:
+
     > [!NOTE]
     > SAML kimlik doğrulama işleminin bir parçası olarak, çalışma alanı, parametreleri Azure AD 'ye geçirmek için boyut olarak en fazla 2,5 kilobayt olan Sorgu dizelerini kullanabilir.
 
-2. **Yönetim panelinde** **güvenlik** sekmesine gidin.
+1. Sol gezinti panelinde **güvenlik** > **kimlik doğrulaması** sekmesi ' ne gidin.
 
     ![Yönetici paneli](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-3. **Kimlik doğrulama** sekmesinde, **Çoklu oturum açma (SSO)** öğesini seçin ve aşağıdaki adımları gerçekleştirin:
+    a. **Çoklu oturum açma (SSO)** seçeneğini işaretleyin.
+    
+    b. **+ Yenı SSO sağlayıcısı ekle**' ye tıklayın.
+
+1. **Kimlik doğrulama** sekmesinde, **Çoklu oturum açma (SSO)** öğesini seçin ve aşağıdaki adımları gerçekleştirin:
 
     ![Kimlik doğrulama sekmesi](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-    a. **SAML URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **SSO sağlayıcısının adı**' nda, Azureadsso gibi SSO örnek adını girin.
 
-    b. **SAML veren URI metin**kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    b. **SAML URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
 
-    c. **SAML Logout Redirect** (isteğe bağlı) ' de, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
+    c. **SAML veren URL** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
 
     d. Azure portal 'den indirilen Not defteri 'nde **Base-64 kodlu sertifikanızı** açın, bu içeriği panonuza kopyalayın ve **SAML sertifikası** metin kutusuna yapıştırın.
 
@@ -163,13 +174,13 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
 
     g. Bölümün altına kaydırın ve **test SSO** düğmesine tıklayın. Bu, Azure AD oturum açma sayfası sunulan bir açılan pencerenin görünmesine neden olur. Kimlik doğrulaması için kimlik bilgilerinizi normal olarak girin.
 
-    **Sorunu** Azure AD 'den geri döndürülmekte olan e-posta adresinin, oturum açtığınız çalışma alanı hesabıyla aynı olduğundan emin olun.
+    **Sorun giderme:** Azure AD 'den geri döndürülmekte olan e-posta adresinin, oturum açtığınız çalışma alanı hesabıyla aynı olduğundan emin olun.
 
     h. Test başarıyla tamamlandıktan sonra sayfanın alt kısmına gidin ve **Kaydet** düğmesine tıklayın.
 
     i. Artık çalışma alanı kullanan tüm kullanıcılar, kimlik doğrulaması için Azure AD oturum açma sayfasıyla sunulacaktır.
 
-4. **SAML Logout yeniden yönlendirme (isteğe bağlı)**  -
+1. **SAML Logout Redirect (isteğe bağlı)**  -
 
     İsteğe bağlı olarak, Azure AD 'nin oturum kapatma sayfasına işaret etmek için kullanılabilecek bir SAML oturum kapatma URL 'Si yapılandırabilirsiniz. Bu ayar etkinleştirildiğinde ve yapılandırıldığında, Kullanıcı artık çalışma alanı oturumu kapatma sayfasına yönlendirilmeyecektir. Bunun yerine, Kullanıcı SAML Logout yeniden yönlendirme ayarında eklenen URL 'ye yeniden yönlendirilir.
 
@@ -180,7 +191,7 @@ Bu bölümde, Facebook tarafından çalışma alanına erişim izni vererek Azur
 > [!NOTE]
 > Mobil uygulamalarda SAML denetimi için en düşük değer bir hafta olarak ayarlanır.
 
-Ayrıca, düğmesini kullanarak tüm kullanıcılar için bir SAML sıfırlamayı zorunlu hale getirebilirsiniz: Şu anda tüm kullanıcılar için SAML kimlik doğrulaması gerektir.
+Ayrıca, düğmesini kullanarak tüm kullanıcılar için bir SAML sıfırlamayı zorunlu kılabilirsiniz: tüm kullanıcılar için SAML kimlik doğrulamasını gerektir.
 
 ### <a name="create-workplace-by-facebook-test-user"></a>Facebook test kullanıcısına göre çalışma alanı oluştur
 
@@ -193,7 +204,7 @@ Bu bölümde sizin için herhangi bir eylem yoktur. Bir kullanıcı Facebook tar
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Facebook tarafından çalışma alanında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -230,4 +241,3 @@ Erişim panelinde Facebook tarafından çalışma alanı kutucuğuna tıkladığ
 - [Kullanıcı sağlamayı yapılandırma](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Azure AD ile Facebook ile çalışma alanını deneyin](https://aad.portal.azure.com)
-

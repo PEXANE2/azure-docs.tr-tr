@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f3976f69302ff50bf067bbaa2eff4be25ac64f43
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240145"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786355"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -31,7 +31,7 @@ Yeni başladıysanız, kimlik doğrulama temelleri, Microsoft Identity platformu
 
 Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/active-directory/develop/)ile etkin bir şekilde tümleştirildiğinden emin olmak için aşağıdaki denetim listesini kullanın.
 
-## <a name="basics"></a>Temel bilgileri
+## <a name="basics"></a>Temel Bilgiler
 
 |   |   |
 |---|---|
@@ -74,7 +74,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 |---|---|
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Kullanıcıların güvenli bir şekilde oturum açması için modern kimlik doğrulama çözümlerini (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) kullanın. |
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  OAuth 2,0 ve açık KIMLIK gibi protokollere doğrudan programmayın. Bunun yerine, [Microsoft kimlik doğrulama kitaplığı 'ndan (msal)](msal-overview.md)yararlanın. MSAL kitaplıkları, güvenlik protokollerini kullanımı kolay bir kitaplıkta güvenli bir şekilde sarmalıdır ve [koşullu erişim](/azure/active-directory/conditional-access/overview) senaryoları, cihaz genelinde [Çoklu oturum açma (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)ve yerleşik belirteç önbelleğe alma desteği için yerleşik destek alabilirsiniz. Daha fazla bilgi için bkz. Microsoft tarafından desteklenen [istemci kitaplıkları](reference-v2-libraries.md#microsoft-supported-client-libraries) ve [Ara yazılım kitaplıkları](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) ve [uyumlu üçüncü taraf istemci kitaplıkları](reference-v2-libraries.md#compatible-client-libraries)listesi.<br/><br/>Kimlik doğrulama protokolleri için kod oluşturmanız gerekiyorsa, [MICROSOFT SDL](https://www.microsoft.com/sdl/default.aspx)gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.|
-| ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  Mevcut uygulamaları [Azure Active Directory kimlik doğrulama kitaplığından (ADAL)](active-directory-authentication-libraries.md) [Microsoft kimlik doğrulama kitaplığı](msal-overview.md)'na geçirin. MSAL, Microsoft 'un en son kimlik platformu çözümüdür ve ADAL için tercih edilir. .NET ve JavaScript 'te kullanılabilir ve ayrıca Android, iOS, Python ve Java için genel önizlemede bulunur. [Adal.net](msal-net-migration.md), [adal. js](msal-compare-msal-js-and-adal-js.md)ve [adal.net ve iOS Broker](msal-net-migration-ios-broker.md) uygulamalarını geçirme hakkında daha fazla bilgi edinin.|
+| ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  Mevcut uygulamaları [Azure Active Directory kimlik doğrulama kitaplığından (ADAL)](active-directory-authentication-libraries.md) [Microsoft kimlik doğrulama kitaplığı](msal-overview.md)'na geçirin. MSAL, Microsoft 'un en son kimlik platformu çözümüdür ve ADAL için tercih edilir. .NET, JavaScript, Android, iOS, macOS ve ayrıca Python ve Java için genel önizlemede bulunur. [Adal.net](msal-net-migration.md), [adal. js](msal-compare-msal-js-and-adal-js.md)ve [adal.net ve iOS Broker](msal-net-migration-ios-broker.md) uygulamalarını geçirme hakkında daha fazla bilgi edinin.|
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  Mobil uygulamalar için, her platformu uygulama kayıt deneyimini kullanarak yapılandırın. Uygulamanızın çoklu oturum açma için Microsoft Authenticator veya Microsoft Şirket Portalı avantajlarından yararlanması için, uygulamanızın yapılandırılmış bir "aracı yeniden yönlendirme URI 'SI" olması gerekir. Bu sayede, kimlik doğrulamasından sonra Microsoft 'un uygulamanıza denetim döndürmesini sağlar. Her platformu yapılandırırken, uygulama kayıt deneyimi süreç boyunca size yol gösterir. Çalışan bir örnek indirmek için hızlı başlangıcı kullanın. İOS 'ta, mümkün olduğunda aracılar ve sistem Web Görünümü ' ni kullanın.|
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tutun.  Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.  Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir. MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Daha fazla bilgi için [belirteç önbelleği serileştirme](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)hakkında makalesini okuyun.|
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulamanızın gerektirdiği veriler [Microsoft Graph](https://developer.microsoft.com/graph)aracılığıyla kullanılabiliyorsa, bireysel apı yerine Microsoft Graph uç noktasını kullanarak bu veriler için izinleri isteyin. |
@@ -91,7 +91,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Yöneticilerin kiracılarına kolayca onay verebilmeleri için uygulamanızın gerektirdiği tüm izin kümesini kaydedin. Kullanıcıların, uygulamanın ilk kez başlatıldığında istekte bulunma veya karışmasına neden olabilecek izinler istediğini anlamasına yardımcı olmak için çalışma zamanında [artımlı onay](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) kullanın. |
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Temiz bir [Çoklu oturum açma deneyimi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)uygulayın. Bu bir gizlilik ve güvenlik gereksinimidir ve iyi bir kullanıcı deneyimi sunar. |
 
-## <a name="testing"></a>Sınama
+## <a name="testing"></a>Test Etme
 
 |   |   |
 |---|---|
@@ -100,12 +100,12 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-V 2.0 hakkında ayrıntılı bilgi edinmek için:
+V2.0 hakkında ayrıntılı bilgileri keşfedin:
 
 * [Microsoft Identity platform (v 2.0 genel bakış)](v2-overview.md)
 * [Microsoft Identity platform protokolleri başvurusu](active-directory-v2-protocols.md)
 * [Erişim belirteçleri başvurusu](access-tokens.md)
-* [KIMLIK belirteçleri başvurusu](id-tokens.md)
+* [Kimlik belirteçleri başvurusu](id-tokens.md)
 * [Kimlik doğrulama kitaplıkları başvurusu](reference-v2-libraries.md)
 * [Microsoft Identity platformunda izinler ve onay](v2-permissions-and-consent.md)
-* [Microsoft Graph API 'SI](https://developer.microsoft.com/graph)
+* [Microsoft Graph API'si](https://developer.microsoft.com/graph)

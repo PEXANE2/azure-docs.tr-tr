@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri | Microsoft Docs
+title: Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri
+titleSuffix: Microsoft identity platform
 description: Azure AD tarafından verilen belirteçler için yaşam sürelerini ayarlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024452"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809312"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -44,11 +45,19 @@ Bir ilkeyi kuruluşunuz için varsayılan ilke olarak belirleyebilirsiniz. İlke
 
 ## <a name="token-types"></a>Belirteç türleri
 
-Belirteçleri yenileme belirteçleri, erişim belirteçleri, oturum belirteçleri ve KIMLIK belirteçleri için belirteç ömür ilkeleri ayarlayabilirsiniz.
+Yenileme belirteçleri, erişim belirteçleri, SAML belirteçleri, oturum belirteçleri ve KIMLIK belirteçleri için belirteç ömür ilkeleri ayarlayabilirsiniz.
 
 ### <a name="access-tokens"></a>Erişim belirteçleri
 
 İstemciler korumalı bir kaynağa erişmek için erişim belirteçlerini kullanır. Erişim belirteci, yalnızca belirli bir Kullanıcı, istemci ve kaynak birleşimi için kullanılabilir. Erişim belirteçleri iptal edilemez ve süresi sona ermeden geçerli olur. Erişim belirteci elde eden kötü niyetli bir aktör bunu yaşam süresinin kapsamı için kullanabilir. Erişim belirtecinin kullanım süresini ayarlamak, sistem performansını artırma ve kullanıcının hesabı devre dışı bırakıldıktan sonra istemcinin erişimi koruduğunu geçen süreyi artırma arasında bir denge. Gelişmiş sistem performansı, bir istemcinin yeni bir erişim belirteci almak için ihtiyaç duymasının kaç kez daha fazla azaltılmasıyla elde edilir.  Varsayılan değer 1 saattir-1 saat sonra, istemcinin yenileme belirtecini kullanması (genellikle sessizce) yeni bir yenileme belirteci ve erişim belirteci almaları gerekir. 
+
+### <a name="saml-tokens"></a>SAML belirteçleri
+
+SAML belirteçleri birçok Web tabanlı SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir.  Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır.    Belirtecin varsayılan yaşam süresi 1 saattir. Ve uygulamalar perspektifinden sonra, belirtecin geçerlilik süresi < koşulların NotOnOrAfter değeri tarafından belirtilir... belirteçteki > öğesi.  Belirteç geçerlilik süresinden sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan önce karşılanacaktır.
+
+NotOnOrAfter değeri bir TokenLifetimePolicy içindeki AccessTokenLifetime parametresi kullanılarak değiştirilebilir.  Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
+
+<SubjectConfirmationData> öğesinde belirtilen konu onayı NotOnOrAfter, belirteç ömür yapılandırmasından etkilenmediğini unutmayın. 
 
 ### <a name="refresh-tokens"></a>Belirteçleri Yenile
 
@@ -89,7 +98,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
-* <sup>2</sup> Microsoft ekipleri web istemcisinin çalışması için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla olması önerilir.
+* <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
 ### <a name="exceptions"></a>Özel Durumlar
 | Özellik | Ekranlarını | Varsayılan |
@@ -139,7 +148,7 @@ Burada kullanılan tüm zaman C# [aralığı](/dotnet/api/system.timespan) ,-D. 
 ### <a name="access-token-lifetime"></a>Erişim belirteci ömrü
 **Dize:** AccessTokenLifetime
 
-**Şunları etkiler:** Erişim belirteçleri, KIMLIK belirteçleri
+**Şunları etkiler:** Erişim belirteçleri, KIMLIK belirteçleri, SAML belirteçleri
 
 **Özet:** Bu ilke, bu kaynak için ne kadar erişimin ve KIMLIK belirteçlerinin geçerli kabul edileceğini denetler. Erişim belirteci yaşam süresi özelliğinin azaltılması, bir erişim belirtecinin veya kötü amaçlı aktör tarafından uzun bir süre için kullanılan KIMLIK belirtecinin riskini azaltır. (Bu belirteçler iptal edilemez.) Bu konuda, belirteçlerin daha sık değiştirilmeleri gerektiğinden, performansın olumsuz bir şekilde etkilenmesi önemlidir.
 
@@ -355,7 +364,7 @@ Bu örnekte, öncelik sisteminin nasıl çalıştığını öğrenmek için birk
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. @No__t-0 bayrağını false olarak ayarlayın:
+3. `IsOrganizationDefault` bayrağını false olarak ayarlayın:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false

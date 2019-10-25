@@ -1,5 +1,5 @@
 ---
-title: Azure depolama kuyrukları ve Service Bus kuyrukları karşılaştırıldı ve karşılaştırması | Microsoft Docs
+title: Azure depolama kuyruklarını ve Service Bus kuyruklarını karşılaştırın
 description: Azure tarafından sunulan iki kuyruk türü arasındaki farkları ve benzerlikleri analiz eder.
 services: service-bus-messaging
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376325"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792695"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli
-Bu makalede, bugün Microsoft Azure tarafından sunulan iki kuyruk türü arasındaki farklılıklar ve benzerlikler analiz edilir: Depolama kuyrukları ve Service Bus kuyrukları. Bu bilgileri kullanarak, ilgili teknolojileri karşılaştırabilir ve gereksinimlerinize en uygun çözümü seçerken daha bilinçli kararlar verebilirsiniz.
+Bu makalede, bugün Microsoft Azure tarafından sunulan iki kuyruk türü arasındaki farklar ve benzerlikler analiz edilir: depolama kuyrukları ve Service Bus kuyrukları. Bu bilgileri kullanarak, ilgili teknolojileri karşılaştırabilir ve gereksinimlerinize en uygun çözümü seçerken daha bilinçli kararlar verebilirsiniz.
 
-## <a name="introduction"></a>Giriş
-Azure iki tür kuyruk mekanizmasını destekler: **Depolama kuyrukları** ve **Service Bus kuyrukları**.
+## <a name="introduction"></a>Tanıtım
+Azure iki tür kuyruk mekanizmasını destekler: **depolama kuyrukları** ve **Service Bus kuyrukları**.
 
 [Azure depolama](https://azure.microsoft.com/services/storage/) altyapısının bir parçası olan **depolama kuyrukları**, hizmetler içinde ve arasında güvenilir ve kalıcı mesajlaşma sağlayan basıt bir REST tabanlı Get/put/Peek arabirimi özelliği sunar.
 
@@ -67,7 +67,7 @@ Aşağıdaki bölümlerde yer alarak bulunan tablolar, kuyruk özelliklerinin ma
 ## <a name="foundational-capabilities"></a>Temel alınan yetenekler
 Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunulan bazı temel sıraya alma özellikleri karşılaştırılır.
 
-| Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |
+| Karşılaştırma ölçütleri | Depolama kuyrukları | Hizmet Veri Yolu kuyrukları |
 | --- | --- | --- |
 | Sipariş garantisi |**Hayır** <br/><br>Daha fazla bilgi için "ek bilgiler" bölümündeki ilk nota bakın.</br> |**Evet-Ilk çıkar (FıFO)**<br/><br>(mesajlaşma oturumlarının kullanımı aracılığıyla) |
 | Teslimat garantisi |**En az bir kez** |En **az bir kez** (PeekLock alma modunu kullanarak-bu varsayılandır) <br/><br/>**En çok bir kez** (ReceiveAndDelete alma modunu kullanarak) <br/> <br/> Çeşitli [alma modları](service-bus-queues-topics-subscriptions.md#receive-modes) hakkında daha fazla bilgi edinin  |
@@ -76,12 +76,12 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 | Gönderme stili API 'SI |**Hayır** |**Evet**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) ve **OnMessage** oturumları .NET API 'si. |
 | Alma modu |**& Kiralamaya göz atın** |**& Kilidine Gözat**<br/><br/>**& Silme al** |
 | Özel erişim modu |**Kira tabanlı** |**Kilit tabanlı** |
-| Kira/kilitleme süresi |**30 saniye (varsayılan)**<br/><br/>**7 gün (en fazla)** ( [Updatemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 'sini kullanarak bir ileti kiralamasını yenileyebilir veya serbest bırakabilirsiniz.) |**60 saniye (varsayılan)**<br/><br/>[Yenilenebilir kilit](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 'sini kullanarak bir ileti kilidini yenileyebilirsiniz. |
+| Kira/kilitleme süresi |**30 saniye (varsayılan)**<br/><br/>**7 gün (maksimum)** ( [updatemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 'sini kullanarak bir ileti kiralamasını yenileyebilir veya serbest bırakabilirsiniz.) |**60 saniye (varsayılan)**<br/><br/>[Yenilenebilir kilit](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 'sini kullanarak bir ileti kilidini yenileyebilirsiniz. |
 | Kira/kilit hassasiyeti |**İleti düzeyi**<br/><br/>(her ileti farklı bir zaman aşımı değerine sahip olabilir ve bu, daha sonra iletiyi işlerken, [updatemessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API 'sini kullanarak güncelleştirebilirsiniz) |**Sıra düzeyi**<br/><br/>(her kuyruğun tüm iletilerine uygulanan bir kilit duyarlığı vardır, ancak bu kilidi [renewlock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API 'sini kullanarak yenileyebilirsiniz.) |
 | Toplu alma |**Evet**<br/><br/>(iletileri alırken ileti sayısını açıkça belirtme, en fazla 32 ileti) |**Evet**<br/><br/>(bir önceden getirme özelliğini örtülü olarak veya işlem kullanımı aracılığıyla açıkça etkinleştirme) |
 | Toplu gönder |**Hayır** |**Evet**<br/><br/>(işlemler veya istemci tarafı toplu işlem kullanımı aracılığıyla) |
 
-### <a name="additional-information"></a>Ek bilgiler
+### <a name="additional-information"></a>Ek Bilgi
 * Depolama sıralarındaki iletiler genellikle ilk kez ilk çıkar, ancak bazen sıra dışı olabilir; Örneğin, bir iletinin görünürlük zaman aşımı süresi dolduğunda (örneğin, işleme sırasında kilitlenen bir istemci uygulaması sonucu olarak). Görünürlük zaman aşımı süresi dolduğunda, ileti başka bir çalışanın onu kuyruğa almak için kuyrukta yeniden görünür hale gelir. Bu noktada, önceden sıraya alınmış bir iletiden sonra, yeni görünür ileti sıraya yerleştirilebilir (yeniden kuyruğa alınır).
 * Service Bus kuyruklarındaki garantili FıFO deseninin mesajlaşma oturumlarının kullanılması gerekir. Uygulamanın, **Peek & kilit** modunda alınan bir iletiyi işlerken çöktüğü durumda, bir kuyruk alıcısının bir ileti oturumunu kabul ettiği bir sonraki sefer, bu işlem, yaşam SÜRESI (TTL) süresi dolduktan sonra başarısız iletiyle başlar.
 * Depolama kuyrukları, hatalara yönelik ölçeklenebilirlik ve toleransı artırmak, yük dengeleme ve işlem iş akışları oluşturmak için uygulama bileşenlerini ayırma gibi standart sıraya alma senaryolarını desteklemek üzere tasarlanmıştır.
@@ -99,7 +99,7 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 ## <a name="advanced-capabilities"></a>Gelişmiş yetenekler
 Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunulan gelişmiş yetenekler karşılaştırılır.
 
-| Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |
+| Karşılaştırma ölçütleri | Depolama kuyrukları | Hizmet Veri Yolu kuyrukları |
 | --- | --- | --- |
 | Zamanlanmış teslim |**Evet** |**Evet** |
 | Otomatik olarak atılacak |**Hayır** |**Evet** |
@@ -117,7 +117,7 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 | İleti gruplarına göz atma |**Hayır** |**Evet** |
 | KIMLIĞE göre ileti oturumları getiriliyor |**Hayır** |**Evet** |
 
-### <a name="additional-information"></a>Ek bilgiler
+### <a name="additional-information"></a>Ek Bilgi
 * Her iki sıraya alma teknolojisi de bir iletinin daha sonra teslim edilmek üzere zamanlanmasını sağlar.
 * Kuyruk otomatik iletme, binlerce sıranın iletileri, alıcı uygulamanın iletiyi tükettiği tek bir sıraya otomatik olarak iletmesini sağlar. Bu mekanizmayı, güvenlik ve denetim akışı sağlamak ve her bir ileti yayımcısı arasında depolamayı yalıtmak için kullanabilirsiniz.
 * Depolama kuyrukları ileti içeriğini güncelleştirmek için destek sağlar. Bu işlevi, kalıcı durum bilgileri ve artımlı ilerleme güncellemeleri için, sıfırdan başlamak yerine, bilinen son denetim noktasından işlenebilmesi için kullanabilirsiniz. Service Bus kuyruklarında, ileti oturumlarının kullanımı aracılığıyla aynı senaryoyu etkinleştirebilirsiniz. Oturumlar, uygulama işleme durumunu kaydetmenizi ve almanızı sağlar ( [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) ve [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)kullanarak).
@@ -130,15 +130,15 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 ## <a name="capacity-and-quotas"></a>Kapasite ve Kotalar
 Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları, uygulayabilen [Kapasite ve Kotalar](service-bus-quotas.md) açısından karşılaştırılır.
 
-| Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |
+| Karşılaştırma ölçütleri | Depolama kuyrukları | Hizmet Veri Yolu kuyrukları |
 | --- | --- | --- |
 | En büyük sıra boyutu |**500 TB**<br/><br/>( [tek bir depolama hesabı kapasitesine](../storage/common/storage-introduction.md#queue-storage)sınırlı) |**1 GB ila 80 GB**<br/><br/>(bir kuyruk oluşturulduktan ve [bölümleme etkinleştirildikten](service-bus-partitioning.md) sonra tanımlanır), "ek bilgi" bölümüne bakın |
-| En büyük ileti boyutu |**64 KB**<br/><br/>( **Base64** kodlaması KULLANıLıRKEN 48 KB)<br/><br/>Azure, kuyrukları ve Blobları birleştirerek büyük iletileri destekler – bu noktada tek bir öğe için 200 GB 'a kadar sıraya alabilirsiniz. |**256 KB** veya **1 MB**<br/><br/>(hem üst bilgi hem de gövde dahil, en büyük üst bilgi boyutu: 64 KB).<br/><br/>[Hizmet katmanına](service-bus-premium-messaging.md)bağlıdır. |
-| En fazla ileti TTL |**Sonsuz** (API-sürüm 2017-07-27 itibariyle) |**TimeSpan. Max** |
-| En fazla sıra sayısı |**Sınırsız** |**10,000**<br/><br/>(hizmet ad alanı başına) |
+| En büyük ileti boyutu |**64 KB**<br/><br/>( **Base64** kodlaması KULLANıLıRKEN 48 KB)<br/><br/>Azure, kuyrukları ve Blobları birleştirerek büyük iletileri destekler – bu noktada tek bir öğe için 200 GB 'a kadar sıraya alabilirsiniz. |**256 KB** veya **1 MB**<br/><br/>(başlık ve gövde dahil, en büyük üst bilgi boyutu: 64 KB).<br/><br/>[Hizmet katmanına](service-bus-premium-messaging.md)bağlıdır. |
+| En fazla ileti TTL |**Sonsuz** (apı sürümü 2017-07-27 itibariyle) |**TimeSpan. Max** |
+| En fazla sıra sayısı |**Sınırsız** |**10.000**<br/><br/>(hizmet ad alanı başına) |
 | En fazla eş zamanlı istemci sayısı |**Sınırsız** |**Sınırsız**<br/><br/>(100 eşzamanlı bağlantı sınırı yalnızca TCP protokolü tabanlı iletişim için geçerlidir) |
 
-### <a name="additional-information"></a>Ek bilgiler
+### <a name="additional-information"></a>Ek Bilgi
 * Service Bus kuyruk boyutu sınırlarını zorlar. Sıra boyutu üst sınırı, sıranın oluşturulması üzerine belirtilir ve 1 ile 80 GB arasında bir değere sahip olabilir. Sıra oluşturma sırasında ayarlanan sıra boyutu değerine ulaşıldığında, ek gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. Service Bus kotaları hakkında daha fazla bilgi için bkz. [Service Bus kotalar](service-bus-quotas.md).
 * [Premium katmanda](service-bus-premium-messaging.md)bölümlendirme desteklenmez. Standart katmanda, 1, 2, 3, 4 veya 5 GB boyutunda Service Bus kuyrukları oluşturabilirsiniz (varsayılan değer 1 GB 'tır). Standart katmanda bölümlendirme etkin (varsayılan), Service Bus belirttiğiniz her GB için 16 bölüm oluşturur. Bu nedenle, boyutu 5 GB olan bir kuyruk oluşturursanız, 16 bölümlü en büyük sıra boyutu (5 * 16) = 80 GB olur. Bölümlenmiş kuyruğunuzun veya konusunun en büyük boyutunu [Azure Portal][Azure portal]girişine bakarak görebilirsiniz.
 * Depolama kuyrukları ile, iletinin içeriği XML güvenli değilse, **Base64** kodlamalı olmalıdır. İletiyi **Base64**olarak kodlarsanız, kullanıcı yükü 64 kb yerıne 48 KB 'ye kadar olabilir.
@@ -149,21 +149,21 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları, uygulayabilen [Ka
 ## <a name="management-and-operations"></a>Yönetim ve işlemler
 Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunulan yönetim özellikleri karşılaştırılır.
 
-| Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |
+| Karşılaştırma ölçütleri | Depolama kuyrukları | Hizmet Veri Yolu kuyrukları |
 | --- | --- | --- |
 | Yönetim Protokolü |**HTTP/HTTPS üzerinden REST** |**HTTPS üzerinden GERI dön** |
 | Çalışma zamanı Protokolü |**HTTP/HTTPS üzerinden REST** |**HTTPS üzerinden GERI dön**<br/><br/>**AMQP 1,0 standart (TLS ile TCP)** |
 | .NET API’si |**Evet**<br/><br/>(.NET Storage Istemci API 'SI) |**Evet**<br/><br/>(.NET Service Bus API) |
-| Yerel C++ |**Evet** |**Evet** |
+| YerelC++ |**Evet** |**Evet** |
 | Java API’si |**Evet** |**Evet** |
-| PHP API 'SI |**Evet** |**Evet** |
+| PHP APı 'SI |**Evet** |**Evet** |
 | Node. js API 'SI |**Evet** |**Evet** |
 | Rastgele meta veri desteği |**Evet** |**Hayır** |
 | Kuyruk adlandırma kuralları |**En fazla 63 karakter uzunluğunda**<br/><br/>(Bir kuyruk adındaki harfler küçük harfle yazılmalıdır.) |**En fazla 260 karakter uzunluğunda**<br/><br/>(Kuyruk yolları ve adları büyük/küçük harfe duyarlıdır.) |
 | Sıra uzunluğu alma işlevi |**Evet**<br/><br/>(İletilerin silinmeksizin TTL 'nin ötesinde yaklaşık değer.) |**Evet**<br/><br/>(Tam, zaman içinde nokta değeri.) |
 | Peek işlevi |**Evet** |**Evet** |
 
-### <a name="additional-information"></a>Ek bilgiler
+### <a name="additional-information"></a>Ek Bilgi
 * Depolama kuyrukları, ad/değer çiftleri biçiminde kuyruk açıklamasına uygulanabilen rastgele öznitelikler için destek sağlar.
 * Her iki kuyruk teknolojisi de bir iletiyi kilitlemeye gerek kalmadan, bir kuyruk Gezgini/tarayıcı aracı uygularken yararlı olabilecek bir iletiye göz atma özelliği sunar.
 * Service Bus .NET Aracılı mesajlaşma API 'Leri, HTTP üzerinden REST ile karşılaştırıldığında gelişmiş performans için tam çift yönlü TCP bağlantılarını kullanır ve AMQP 1,0 standart protokolünü destekler.
@@ -173,13 +173,13 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 ## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından desteklenen kimlik doğrulama ve yetkilendirme özellikleri açıklanmaktadır.
 
-| Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |
+| Karşılaştırma ölçütleri | Depolama kuyrukları | Hizmet Veri Yolu kuyrukları |
 | --- | --- | --- |
-| Authentication |**Simetrik anahtar** |**Simetrik anahtar** |
-| Güvenlik modeli |SAS belirteçleri aracılığıyla erişim temsilcisi. |'LARININ |
+| Kimlik Doğrulaması |**Simetrik anahtar** |**Simetrik anahtar** |
+| Güvenlik modeli |SAS belirteçleri aracılığıyla erişim temsilcisi. |'LARıNıN |
 | Kimlik sağlayıcısı Federasyonu |**Hayır** |**Evet** |
 
-### <a name="additional-information"></a>Ek bilgiler
+### <a name="additional-information"></a>Ek Bilgi
 * Sıraya alma teknolojilerinin her birine yönelik her bir isteğin kimliğinin doğrulanması gerekir. Anonim erişimi olan genel kuyruklar desteklenmez. [SAS](service-bus-sas.md)kullanarak, bu senaryoya yalnızca bir salt yazılır SAS, salt okunurdur ve hatta tam erişimli SAS yayımlayarak erişebilirsiniz.
 * Depolama kuyrukları tarafından sunulan kimlik doğrulama düzeni, SHA-256 algoritması ile hesaplanan ve **Base64** dizesi olarak kodlanan, karma tabanlı İLETI KIMLIK doğrulama kodu (HMAC) olan simetrik anahtar kullanımını içerir. İlgili protokol hakkında daha fazla bilgi için bkz. [Azure depolama hizmetleri Için kimlik doğrulama](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services). Service Bus kuyrukları, simetrik anahtarlar kullanan benzer bir modeli destekler. Daha fazla bilgi için bkz. [Service Bus Ile paylaşılan erişim Imzası kimlik doğrulaması](service-bus-sas.md).
 

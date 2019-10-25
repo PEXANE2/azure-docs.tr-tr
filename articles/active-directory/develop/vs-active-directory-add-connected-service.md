@@ -1,5 +1,5 @@
 ---
-title: Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
+title: Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme | Mavisi
 description: Visual Studio bağlı hizmetler Ekle iletişim kutusunu kullanarak Azure Active Directory ekleme
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c02821a41faa976f8f35984ecf48f425239e6fd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881181"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802479"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio 'da bağlı hizmetleri kullanarak Azure Active Directory ekleme
 
@@ -46,7 +46,7 @@ Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
 
     ![Giriş sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. **Çoklu oturum açma** sayfasında, **etki alanı** açılır listesinden bir etki alanı seçin. Liste, Visual Studio 'nun hesap ayarları iletişim kutusunda listelenen hesaplar tarafından erişilebilen tüm etki alanlarını içerir (**dosya > hesap ayarları..** .). Alternatif olarak, aradığınız `mydomain.onmicrosoft.com`birini bulamazsanız bir etki alanı adı girebilirsiniz. Azure Active Directory bir uygulama oluşturma veya var olan bir Azure Active Directory uygulamasındaki ayarları kullanma seçeneğini belirleyebilirsiniz. Bittiğinde **İleri ' yi** seçin.
+1. **Çoklu oturum açma** sayfasında, **etki alanı** açılır listesinden bir etki alanı seçin. Liste, Visual Studio 'nun hesap ayarları iletişim kutusunda listelenen hesaplar tarafından erişilebilen tüm etki alanlarını içerir (**dosya > hesap ayarları..** .). Alternatif olarak, aradığınızı bulamazsanız, `mydomain.onmicrosoft.com`gibi bir etki alanı adı girebilirsiniz. Azure Active Directory bir uygulama oluşturma veya var olan bir Azure Active Directory uygulamasındaki ayarları kullanma seçeneğini belirleyebilirsiniz. Bittiğinde **İleri ' yi** seçin.
 
     ![Çoklu oturum açma sayfası](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
@@ -65,7 +65,7 @@ Active Directory bağlı hizmet, ASP.NET Core uygulamalarını desteklemez.
 
 1. Ayrıca, [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)Active Directory etki alanını da görebilirsiniz.
 
-## <a name="how-your-project-is-modified"></a>Projenizi nasıl değiştirilir
+## <a name="how-your-project-is-modified"></a>Projenizin nasıl değiştirildiği
 
 Bağlı hizmeti sihirbaza eklediğinizde, Visual Studio projenize Azure Active Directory ve ilişkili başvuruları ekler. Projenizdeki yapılandırma dosyaları ve kod dosyaları da Azure AD desteği eklemek için değiştirilir. Visual Studio 'Nun yaptığı belirli değişiklikler proje türüne bağlıdır. Ayrıntılar için aşağıdaki makalelere bakın:
 

@@ -1,26 +1,25 @@
 ---
-title: Bilişsel arama 'da görüntülerden metin işleme ve ayıklama-Azure Search
-description: Azure Search 'teki bilişsel arama işlem hatlarında bulunan görüntülerden metin ve diğer bilgileri işleyin ve ayıklayın.
-services: search
+title: Bir zenginleştirme ardışık düzeninde bulunan görüntülerden metin işleme ve ayıklama
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama işlem hatları 'ndaki görüntülerden metin ve diğer bilgileri işleyin ve ayıklayın.
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265860"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787748"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Bilişsel arama senaryolarında görüntülerden bilgi işleme ve çıkarma
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI zenginleştirme senaryolarında görüntülerden bilgi işleme ve ayıklama
 
-Bilişsel aramada, görüntülerle ve görüntü dosyalarıyla çalışmaya yönelik çeşitli yetenekler vardır. Belge çözme sırasında, bir Dur işareti içinde "Durdur" sözcüğü gibi fotoğraflardan veya alfasayısal metin içeren resimlerden metin ayıklamak için *ımageaction* parametresini kullanabilirsiniz. Diğer senaryolar, bir resmin metin gösterimini (örneğin, dans eden bir fotoğraf veya "sarı" rengi) oluşturmayı içerir. Görüntü hakkında, boyutu gibi meta verileri de ayıklayabilirsiniz.
+Azure Bilişsel Arama, görüntülerle ve görüntü dosyalarıyla çalışmaya yönelik çeşitli yeteneklere sahiptir. Belge çözme sırasında, bir Dur işareti içinde "Durdur" sözcüğü gibi fotoğraflardan veya alfasayısal metin içeren resimlerden metin ayıklamak için *ımageaction* parametresini kullanabilirsiniz. Diğer senaryolar, bir resmin metin gösterimini (örneğin, dans eden bir fotoğraf veya "sarı" rengi) oluşturmayı içerir. Görüntü hakkında, boyutu gibi meta verileri de ayıklayabilirsiniz.
 
-Bu makale, görüntü işlemeyi daha ayrıntılı bir şekilde ele almaktadır ve bilişsel arama işlem hattında görüntülerle çalışmaya yönelik rehberlik sağlar.
+Bu makale, görüntü işlemeyi daha ayrıntılı bir şekilde ele alır ve bir AI zenginleştirme ardışık düzeninde görüntülerle çalışmaya yönelik rehberlik sağlar.
 
 <a name="get-normalized-images"></a>
 
@@ -39,7 +38,7 @@ Resim normalleştirmesini kapatamaz. Görüntüler üzerinde yineleme yapan yete
 > [!NOTE]
 > *Imageaction* özelliğini "none" dışında bir şeye ayarlarsanız, *parsingmode* özelliğini "varsayılan" dışında bir şeye ayarlayamazsınız.  Bu iki özelliklerden birini, Dizin Oluşturucu yapılandırmanızda varsayılan olmayan bir değere ayarlayabilirsiniz.
 
-**Parsingmode** parametresini `json` (her Blobun tek bir belge olarak dizinlemek için) veya `jsonArray` (bloblarınız JSON dizileri içeriyorsa ve bir dizinin her bir öğesi ayrı bir belge olarak kabul edilir) olarak ayarlayın.
+**Parsingmode** parametresini `json` (her Blobun tek bir belge olarak dizinini oluşturma) veya `jsonArray` (BLOBLARıNıZ JSON dizileri içeriyorsa ve bir dizinin her bir öğesi ayrı bir belge olarak değerlendirilmelidir) olarak ayarlayın.
 
 Normalleştirilmiş görüntüler için varsayılan değer olan 2000 piksel en fazla genişlik ve yükseklik, [OCR becerisi](cognitive-search-skill-ocr.md) ve [görüntü analizi yeteneği](cognitive-search-skill-image-analysis.md)tarafından desteklenen boyut üst sınırını temel alır. [OCR becerisi](cognitive-search-skill-ocr.md) , İngilizce dışındaki diller için maksimum genişlik ve yükseklik 4200 ve ingilizce için 10000 ' i destekler.  Maksimum sınırları artırırsanız, Beceri tanımınıza ve belgelerin diline bağlı olarak daha büyük görüntülerde işleme başarısız olabilir. 
 
@@ -63,7 +62,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 
 | Görüntü üyesi       | Açıklama                             |
 |--------------------|-----------------------------------------|
-| data               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
+| Verileri               | JPEG biçimindeki normalleştirilmiş görüntünün BASE64 kodlamalı dizesi.   |
 | Genişlik              | Normalleştirilmiş resmin piksel cinsinden genişliği. |
 | Yükseklik             | Normalleştirilmiş resmin piksel cinsinden yüksekliği. |
 | originalWidth      | Normalleştirme yapmadan önce resmin orijinal genişliği. |
@@ -90,7 +89,7 @@ Aşağıdaki şekilde, [Dizin Oluşturucu tanımınızda](https://docs.microsoft
 
 ## <a name="image-related-skills"></a>Görüntüyle ilgili yetenekler
 
-Resimleri giriş olarak alan iki yerleşik bilişsel yetenek vardır: [OCR](cognitive-search-skill-ocr.md) ve [görüntü analizi](cognitive-search-skill-image-analysis.md). 
+Resimleri giriş olarak alan iki yerleşik Bilişsel Beceri vardır: [OCR](cognitive-search-skill-ocr.md) ve [görüntü analizi](cognitive-search-skill-image-analysis.md). 
 
 Şu anda bu yetenekler yalnızca belge çözme adımından oluşturulan görüntülerle çalışır. Bu nedenle, desteklenen tek giriş `"/document/normalized_images"`.
 
@@ -107,7 +106,7 @@ Resimleri giriş olarak alan iki yerleşik bilişsel yetenek vardır: [OCR](cogn
 Yaygın bir senaryo, aşağıdaki adımları gerçekleştirerek hem metin hem de görüntü kaynağı metin olan tüm dosya içeriklerini içeren tek bir dize oluşturmayı kapsar:  
 
 1. [Normalized_images Ayıkla](#get-normalized-images)
-1. Giriş olarak kullanarak `"/document/normalized_images"` OCR becerisi çalıştırma
+1. `"/document/normalized_images"` giriş olarak kullanarak OCR becerisi çalıştırma
 1. Bu görüntülerin metin gösterimini dosyadan ayıklanan ham metinle birleştirin. Metin [birleştirme](cognitive-search-skill-textmerger.md) beceriye her iki metin öbeklerini tek bir büyük dizedeki birleştirmek için kullanabilirsiniz.
 
 Aşağıdaki örnek Beceri, belgenizin metinsel içeriğini içeren bir *merged_text* alanı oluşturur. Ayrıca, katıştırılmış görüntülerden her birinden OCRed metni de içerir. 

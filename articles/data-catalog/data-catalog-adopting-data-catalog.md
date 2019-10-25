@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734669"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801885"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Veri Kataloğu'nu benimseme yaklaşımı ve işlemi
 
@@ -125,7 +125,7 @@ Veri kaynağı kayıt aracı hakkında daha fazla bilgi için bkz. [Azure Veri K
 Nancy'nin ekibi ayrıca, pilot projenin bir parçası olarak, David ve iş arkadaşlarının bakımını yaptığı bir Excel çalışma kitabında açıklanan veri kaynaklarını kullanmaktadır. Kuruluştaki diğer ekipler de veri kaynaklarını açıklamak için Excel çalışma kitaplarını kullandığından, BT ekibi Excel çalışma kitabının Veri Kataloğu'na geçişini sağlamak üzere bir araç oluşturmaya karar verir. Pilot proje ekibi, var olan ek açıklamaları içeri aktarmak için Veri Kataloğu REST API'sini kullanarak, veri kaynağı kayıt aracını kullanma yoluyla veri kaynaklarından ayıklanan meta verilerden oluşan eksiksiz bir veri kataloğuna sahip olabilir ve bu katalog, el ile yeniden girdi olmaksızın veri üreticileri ve tüketicileri tarafından önceden belgelenmiş olan verileri eksiksiz olarak içerir. Kurumsal veri kataloğu büyüdükçe kuruluş, genel veri kaynakları için veri kaynağı kayıt aracını, özel kaynaklar ile genel olmayan senaryolar için de Veri Kataloğu API'sini kullanabilir.
 
 > [!NOTE]
-> Bir Excel çalışma kitabının Veri Kataloğu'na geçişini sağlamak için **Azure Veri Kataloğu** API'sini kullanan bir örnek araç geliştirdik. Veri Kataloğu API'si ve örnek araç hakkında bilgi edinmek için [Geçici çalışma kitabı kod örneğini indirin](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/) ve [Azure Veri Kataloğu REST API'si](/rest/api/datacatalog/) belgelerine başvurun.
+> Bir Excel çalışma kitabının Veri Kataloğu'na geçişini sağlamak için **Azure Veri Kataloğu** API'sini kullanan bir örnek araç geliştirdik. Veri Kataloğu API'si ve örnek araç hakkında bilgi edinmek için [Geçici çalışma kitabı kod örneğini indirin](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets) ve [Azure Veri Kataloğu REST API'si](/rest/api/datacatalog/) belgelerine başvurun.
 
 Pilot proje kullanıma alındığında, Veri Kataloğu benimseme planınızı yürütmenin zamanı gelmiştir.
 

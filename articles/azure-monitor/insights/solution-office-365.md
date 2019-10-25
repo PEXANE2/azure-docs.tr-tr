@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553945"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793860"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -69,7 +69,10 @@ Office 365 aboneliğinizden:
 
 - Kullanıcı adı: yönetici hesabının e-posta adresi.
 - Kiracı KIMLIĞI: Office 365 aboneliğinin benzersiz KIMLIĞI.
-- İstemci KIMLIĞI: Office 365 istemcisini temsil eden 16 karakterlik dize.
+
+Azure Active Directory 'de Office 365 uygulamasının oluşturulması ve yapılandırılması sırasında aşağıdaki bilgiler toplanmalıdır:
+
+- Uygulama (Istemci) KIMLIĞI: Office 365 istemcisini temsil eden 16 karakterlik dize.
 - İstemci parolası: kimlik doğrulaması için şifreli dize gereklidir.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory bir Office 365 uygulaması oluşturma
@@ -87,6 +90,9 @@ Office 365 aboneliğinizden:
 1. **Kaydet** ' e tıklayın ve uygulama bilgilerini doğrulayın.
 
     ![Kayıtlı uygulama](media/solution-office-365/registered-app.png)
+
+1. Uygulama (istemci) KIMLIĞINI, daha önce toplanan bilgilerin geri kalanı ile birlikte kaydedin.
+
 
 ### <a name="configure-application-for-office-365"></a>Office 365 için uygulama yapılandırma
 
@@ -117,7 +123,7 @@ Office 365 aboneliğinizden:
     ![Anahtarlar](media/solution-office-365/secret.png)
  
 1. Yeni anahtar için bir **Açıklama** ve **süre** yazın.
-1. **Ekle** ' ye tıklayın ve ardından oluşturulan **değeri** kopyalayın.
+1. **Ekle** ' ye tıklayın ve daha önce toplanan bilgilerin geri kalanı ile birlikte, istemci gizli dizisi olarak oluşturulan **değeri** kaydedin.
 
     ![Anahtarlar](media/solution-office-365/keys.png)
 
@@ -188,7 +194,12 @@ Yönetim hesabını ilk kez etkinleştirmek için, uygulama için yönetici onay
     
     ![Yönetici onayı](media/solution-office-365/admin-consent.png)
 
+> [!NOTE]
+> Mevcut olmayan bir sayfaya yönlendiriliyorsunuz. Bunu başarılı olarak değerlendirin.
+
 ### <a name="subscribe-to-log-analytics-workspace"></a>Log Analytics çalışma alanına abone ol
+
+Son adım, uygulamayı Log Analytics çalışma alanınıza Abone olunacak. Bunu bir PowerShell betiği ile de yapabilirsiniz.
 
 Son adım, uygulamayı Log Analytics çalışma alanınıza Abone olunacak. Bunu bir PowerShell betiği ile de yapabilirsiniz.
 
@@ -236,18 +247,20 @@ Son adım, uygulamayı Log Analytics çalışma alanınıza Abone olunacak. Bunu
                     $authority = "https://login.windows.net/$adTenant";
                     $ARMResource ="https://management.azure.com/";break} 
                     }
-    
+
     Function RESTAPI-Auth { 
-    
-    $global:SubscriptionID = $Subscription.SubscriptionId
+    $global:SubscriptionID = $Subscription.Subscription.Id
     # Set Resource URI to Azure Service Management API
-    $resourceAppIdURIARM=$ARMResource;
+    $resourceAppIdURIARM=$ARMResource
     # Authenticate and Acquire Token 
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
+
     $authHeader
     }
     
@@ -271,7 +284,7 @@ Son adım, uygulamayı Log Analytics çalışma alanınıza Abone olunacak. Bunu
     
     Function Connection-API
     {
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     
@@ -315,7 +328,7 @@ Son adım, uygulamayı Log Analytics çalışma alanınıza Abone olunacak. Bunu
     Function Office-Subscribe-Call{
     try{
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $SubscriptionId   =  $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_' + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
     
@@ -509,7 +522,7 @@ Verilerin başlangıçta toplanması birkaç saat sürebilir. Toplamaya başlad�
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Office 365 çözümünü Log Analytics çalışma alanınıza eklediğinizde panonuza **office 365** kutucuğu eklenecektir. Bu kutucukta, ortamınızdaki bilgisayarların sayısına ve güncelleştirme uyumluluğuna ilişkin bir sayı ve grafik gösterimi görüntülenir.<br><br>
-![Office 365 Özet kutucuğu ](media/solution-office-365/tile.png)  
+![Office 365 Özet kutucuğu](media/solution-office-365/tile.png)  
 
 Office **365** panosunu açmak için **Office 365** kutucuğuna tıklayın.
 

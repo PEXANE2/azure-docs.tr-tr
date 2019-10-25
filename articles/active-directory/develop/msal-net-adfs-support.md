@@ -1,5 +1,6 @@
 ---
-title: .NET için Microsoft kimlik doğrulama kitaplığı 'nda AD FS desteği | Mavisi
+title: .NET için Microsoft kimlik doğrulama kitaplığı 'nda AD FS desteği
+titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı 'nda (MSAL.NET) Active Directory Federasyon Hizmetleri (AD FS) (AD FS) desteği hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb1bcc4599a891b8748b63c5e7c5c09f5acdac7
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 24f2d43455ff15089accc2463db83349abcea564
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532676"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802889"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET içinde destek Active Directory Federasyon Hizmetleri (AD FS)
 Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), geliştirmekte olduğunuz uygulamalara OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. Bu uygulamalar daha sonra kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Daha fazla bilgi için, [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)makalesini okuyun.
@@ -39,7 +40,7 @@ MSAL.NET, yönetilen kullanıcılar (Azure AD 'de yönetilen kullanıcılar) vey
 Bu durumda kullandığınız [yetkili](msal-client-application-configuration.md#authority) , her zamanki yetkilinin (yetkili ana bilgisayar adı + kiracı, ortak veya kuruluşlar).
 
 ### <a name="acquiring-a-token-interactively"></a>Bir belirteci etkileşimli olarak alma
-`AcquireTokenInteractive` Yöntemini çağırdığınızda, Kullanıcı deneyimi genellikle şu şekilde olur:
+`AcquireTokenInteractive` yöntemini çağırdığınızda, Kullanıcı deneyimi genellikle şu şekilde olur:
 
 1. Kullanıcı hesap KIMLIĞINI girer.
 2. Azure AD, "kuruluşunuzun sayfasına yönlendirilme" iletisini kısaca görüntüler.
@@ -48,10 +49,10 @@ Bu durumda kullandığınız [yetkili](msal-client-application-configuration.md#
 Bu Federasyon senaryosunda desteklenen AD FS sürümleri AD FS v2, AD FS v3 (Windows Server 2012 R2) ve AD FS v4 (AD FS 2016).
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>Acquiretokenbyıntegratedaduthentication veya AcquireTokenByUsernamePassword kullanarak bir belirteç alınıyor
-`AcquireTokenByIntegratedAuthentication` Veya`AcquireTokenByUsernamePassword` yöntemlerini kullanarak bir belirteç edinilirken, msal.NET Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır.  MSAL.NET, kimlik sağlayıcısıyla iletişim kurduktan sonra bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır.  MSAL.NET ardından, SAML belirtecini bir JWT geri almak için Kullanıcı Onayı (örneğin, [akışa](msal-authentication-flows.md#on-behalf-of)benzer) olarak Azure AD 'ye sağlar.
+`AcquireTokenByIntegratedAuthentication` veya `AcquireTokenByUsernamePassword` yöntemlerini kullanarak bir belirteç edinilirken, MSAL.NET Kullanıcı adına göre iletişim kurulacak kimlik sağlayıcısını alır.  MSAL.NET, kimlik sağlayıcısıyla iletişim kurduktan sonra bir [SAML 1,1 belirteci](reference-saml-tokens.md) alır.  MSAL.NET ardından, SAML belirtecini bir JWT geri almak için Kullanıcı Onayı (örneğin, [akışa](msal-authentication-flows.md#on-behalf-of)benzer) olarak Azure AD 'ye sağlar.
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>MSAL AD FS doğrudan bağlanır
-MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekler ve PKI ve kapsamları anlamıştır. Bu destek, Windows Server 'a bir hizmet paketi [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) uygulanmasını gerektirir. AD FS doğrudan bağlanırken, uygulamanızı derlemek için kullanmak istediğiniz yetkili buna benzer `https://mysite.contoso.com/adfs/`.
+MSAL.NET, açık KIMLIK bağlantısı olan AD FS 2019 ' ye bağlanmayı destekler ve PKI ve kapsamları anlamıştır. Bu destek, Windows Server 'a bir hizmet paketi [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) uygulanmasını gerektirir. AD FS doğrudan bağlanırken, uygulamanızı oluşturmak için kullanmak istediğiniz yetkili `https://mysite.contoso.com/adfs/`benzerdir.
 
 Şu anda, ile doğrudan bağlantıyı desteklemeye yönelik bir plan yoktur:
 

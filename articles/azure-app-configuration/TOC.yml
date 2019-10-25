@@ -25,6 +25,8 @@
       items:
         - name: ASP.NET Çekirdeği
           href: quickstart-feature-flag-aspnet-core.md
+        - name: .NET Framework
+          href: quickstart-feature-flag-dotnet.md
         - name: Java Spring
           href: quickstart-feature-flag-spring-boot.md
 - name: Öğreticiler
@@ -33,6 +35,8 @@
       href: enable-dynamic-configuration-aspnet-core.md
     - name: .NET Core uygulamasında dinamik yapılandırmayı etkinleştirme
       href: enable-dynamic-configuration-dotnet-core.md
+    - name: .NET Framework'te dinamik yapılandırmayı etkinleştirme
+      href: enable-dynamic-configuration-dotnet.md
     - name: .NET Core uygulamasında özellik bayraklarını kullanma
       href: use-feature-flags-dotnet-core.md
     - name: Spring Boot uygulamasında özellik bayraklarını kullanma

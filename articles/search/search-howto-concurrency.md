@@ -1,29 +1,28 @@
 ---
-title: Kaynaklara eş zamanlı yazma işlemlerini yönetme-Azure Search
-description: Azure Search dizinler, Dizin oluşturucular, veri kaynakları için güncelleştirmeler veya silmeler üzerinde orta ölçekli çarpışmalardan kaçınmak için iyimser eşzamanlılık kullanın.
-author: HeidiSteen
+title: Kaynaklara eş zamanlı yazma işlemlerini yönetme
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama dizinleri, Dizin oluşturucular, veri kaynakları, güncelleştirmeler veya silmeler üzerinde orta ölçekli çarpışmalardan kaçınmak için iyimser eşzamanlılık kullanın.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656731"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792210"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>Azure Search eşzamanlılık yönetimi
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Bilişsel Arama eşzamanlılık yönetimi
 
-Dizinler ve veri kaynakları gibi Azure Search kaynaklarını yönetirken, özellikle, kaynakların farklı bileşenleriyle aynı anda erişilmesi durumunda kaynakların güvenli bir şekilde güncelleştirilmesi önemlidir. İki istemci eşzamanlı olarak bir kaynağı her zaman koordine etmeden güncelleştirdiğinde, yarış koşulları mümkündür. Bunu engellemek için, Azure Search *iyimser eşzamanlılık modeli*sunar. Bir kaynakta kilit yok. Bunun yerine, yanlışlıkla üzerine yazılmalardan kaçınacak istekleri oluşturabilmeniz için kaynak sürümünü tanımlayan her kaynak için bir ETag vardır.
+Dizinler ve veri kaynakları gibi Azure Bilişsel Arama kaynaklarını yönetirken kaynakların güvenli bir şekilde güncelleştirilmesi önemlidir. özellikle de, kaynaklar uygulamanızın farklı bileşenleriyle aynı anda erişilir. İki istemci eşzamanlı olarak bir kaynağı her zaman koordine etmeden güncelleştirdiğinde, yarış koşulları mümkündür. Bunu engellemek için Azure Bilişsel Arama, *iyimser eşzamanlılık modeli*sunar. Bir kaynakta kilit yok. Bunun yerine, yanlışlıkla üzerine yazılmalardan kaçınacak istekleri oluşturabilmeniz için kaynak sürümünü tanımlayan her kaynak için bir ETag vardır.
 
 > [!Tip]
-> [Örnek C# çözümde](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) kavramsal kod, eşzamanlılık denetiminin Azure Search nasıl çalıştığını açıklar. Kod, eşzamanlılık denetimini çağıran koşullar oluşturur. [Aşağıdaki kod parçasının](#samplecode) okunması büyük olasılıkla çoğu geliştirici için yeterlidir, ancak çalıştırmak istiyorsanız, hizmet adını ve bir yönetici API anahtarını eklemek için appSettings. JSON öğesini düzenleyin. Hizmet URL 'si `http://myservice.search.windows.net`verildiğinde, hizmet `myservice`adı.
+> [Örnek C# çözümde](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) kavramsal kod, eşzamanlılık denetiminin Azure bilişsel arama 'da nasıl çalıştığını açıklar. Kod, eşzamanlılık denetimini çağıran koşullar oluşturur. [Aşağıdaki kod parçasının](#samplecode) okunması büyük olasılıkla çoğu geliştirici için yeterlidir, ancak çalıştırmak istiyorsanız, hizmet adını ve bir yönetici API anahtarını eklemek için appSettings. JSON öğesini düzenleyin. `http://myservice.search.windows.net`hizmet URL 'SI verildiğinde, hizmet adı `myservice`.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
 İyimser eşzamanlılık, dizinlere, Dizin oluşturuculara, veri kaynaklarına ve eş eşleme kaynaklarına yazma API çağrılarında erişim koşulu denetimleri aracılığıyla uygulanır.
 
@@ -32,7 +31,7 @@ Tüm kaynakların, nesne sürümü bilgilerini sağlayan bir [*varlık etiketi (
 + REST API, istek üst bilgisinde [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) kullanır.
 + .NET SDK bir accessCondition nesnesi aracılığıyla ETag 'i ayarlıyor, [IF-Match ayarlanıyor | Kaynakta IF-Match-None üst bilgisi](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) . [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) öğesinden devralan herhangi bir nesne bir accesscondition nesnesine sahiptir.
 
-Bir kaynağı her güncelleştirişinizde ETag, otomatik olarak değişir. Eşzamanlılık yönetimini uyguladığınızda, tek yapmanız gereken, uzak kaynağın istemcide değiştirdiğiniz kaynağın kopyasıyla aynı ETag 'e sahip olmasını gerektiren güncelleştirme isteğine bir ön koşul koyuyor. Eşzamanlı bir işlem uzak kaynağı zaten değiştiriyorsa ETag, önkoşullarla eşleşmez ve istek HTTP 412 ile başarısız olur. .NET SDK kullanıyorsanız, bu bildirimler `CloudException` `IsAccessConditionFailed()` Uzantı yönteminin true döndüğü yerdir.
+Bir kaynağı her güncelleştirişinizde ETag, otomatik olarak değişir. Eşzamanlılık yönetimini uyguladığınızda, tek yapmanız gereken, uzak kaynağın istemcide değiştirdiğiniz kaynağın kopyasıyla aynı ETag 'e sahip olmasını gerektiren güncelleştirme isteğine bir ön koşul koyuyor. Eşzamanlı bir işlem uzak kaynağı zaten değiştiriyorsa ETag, önkoşullarla eşleşmez ve istek HTTP 412 ile başarısız olur. .NET SDK kullanıyorsanız, bu bildirim `IsAccessConditionFailed()` uzantısı yönteminin true döndüğü `CloudException` olarak yapılır.
 
 > [!Note]
 > Eşzamanlılık için yalnızca bir mekanizma vardır. Kaynak güncelleştirmeleri için hangi API 'nin kullanıldığı bağımsız olarak her zaman kullanılır.
@@ -51,7 +50,7 @@ Aşağıdaki kod, anahtar güncelleştirme işlemlerine yönelik accessCondition
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +61,14 @@ Aşağıdaki kod, anahtar güncelleştirme işlemlerine yönelik accessCondition
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +128,9 @@ Aşağıdaki kod, anahtar güncelleştirme işlemlerine yönelik accessCondition
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,7 +169,7 @@ Aşağıdaki kod, anahtar güncelleştirme işlemlerine yönelik accessCondition
 
 İyimser eşzamanlılık uygulamaya yönelik bir tasarım deseninin, erişim koşulu denetimini yeniden deneme, erişim koşulu için test ve isteğe bağlı olarak değişiklikleri yeniden uygulamaya çalışmadan önce güncelleştirilmiş bir kaynağı alan bir döngüsü içermesi gerekir.
 
-Bu kod parçacığı, zaten var olan bir dizine eş bir Eşeşleme eklenmesini gösterir. Bu kod, [Azure Search Için eş C# anlamlı örneğidir](search-synonyms-tutorial-sdk.md).
+Bu kod parçacığı, zaten var olan bir dizine eş bir Eşeşleme eklenmesini gösterir. Bu kod, [Azure bilişsel arama Için C# eş anlamlı örneğidir](search-synonyms-tutorial-sdk.md).
 
 Kod parçacığı, "oteller" dizinini alır, bir güncelleştirme işleminde nesne sürümünü denetler, koşul başarısız olursa bir özel durum oluşturur ve sonra en son sürümü almak için sunucudan Dizin almayla başlayarak işlemi (en fazla üç kez) yeniden dener.
 
@@ -217,6 +216,6 @@ ETags veya AccessCondition nesnelerini içerecek şekilde aşağıdaki örnekler
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Ortak http istek ve yanıt üst bilgileri](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[http durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+[Genel http istek ve yanıt üst bilgileri](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP durum kodları](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
 [Dizin işlemleri (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

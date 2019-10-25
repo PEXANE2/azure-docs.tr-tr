@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 28478f38df6ba6ea356626cc36c23ad498fc1f47
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692417"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792644"
 ---
-İşlem hattı, çalışma alanınıza bağlı bir işlem kaynağı olan işlem hedefi üzerinde çalışır.  Bir işlem hedefi oluşturduktan sonra, gelecekteki çalıştırmalar için onu yeniden kullanabilirsiniz.
+İşlem hattı, çalışma alanınıza bağlı bir işlem kaynağı olan bir işlem hedefi üzerinde çalışır. Bir işlem hedefi oluşturduktan sonra, gelecekteki çalıştırmalar için onu yeniden kullanabilirsiniz.
 
 1. İşlem hattını çalıştırmak için tuvalin en üstünde **Çalıştır** ' ı seçin.
 
@@ -36,6 +36,9 @@ ms.locfileid: "72692417"
 1. **Çalıştır**'ı seçin.
 
 1. İşlem **hattı çalıştırmasını ayarla** iletişim kutusunda, **deneme** için **+ Yeni deneme** ' yı seçin.
+
+    > [!NOTE]
+    > Denemeleri Group benzer işlem hattı birlikte çalışır. Birden çok kez işlem hattı çalıştırırsanız, art arda çalıştırmalar için aynı denemeyi seçebilirsiniz.
 
     * Açıklayıcı bir **deneme adı** girin
 

@@ -8,25 +8,25 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 42819749b019b4b1db77942e22e09ea31a137fe7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 831d3a187a4388a429c6fabb1bb0e0ec6dd584cc
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813861"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800050"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight üzerinde Apache Storm için topolojiler ve bileşenler Apache Storm örnek
 
 Aşağıda, HDInsight üzerinde [Apache Storm](https://storm.apache.org/) kullanılmak üzere Microsoft tarafından oluşturulan ve tutulan örneklerin bir listesi verilmiştir. Bu örnekler, Event Hubs, Cosmos DB, SQL veritabanı, HDInsight C# 'Ta [Apache HBase](https://hbase.apache.org/) ve Azure depolama gibi Azure hizmetleriyle çalışmak üzere temel ve Java topolojileri oluşturmaktan çeşitli konuları kapsar. Bazı örnekler Ayrıca, Azure olmayan ve hatta SignalR ve Socket.IO gibi Microsoft dışı teknolojilerle nasıl çalışabileceğinizi gösterir.
 
-| Açıklama | Gösteriler | Dil/çerçeve |
+| Açıklama | Leceğini | Dil/çerçeve |
 |:--- |:--- |:--- |
 | [Apache Storm Azure Data Lake Storage yazma](apache-storm-write-data-lake-store.md) |Azure Data Lake Storage yazma |Java |
 | [Olay Hub 'ı ve Rulut kaynağı](https://github.com/apache/storm/tree/master/external/storm-eventhubs) |Olay Hub 'ı ve cıvata kaynağı |Java |
 | [HDInsight üzerinde Apache Storm için Java tabanlı topolojiler geliştirme][5797064f] |Maven |Java |
-| [Visual C# Studio kullanarak hdınsight 'ta Apache Storm için topolojiler geliştirin][16fce2d1] |Visual Studio için HDInsight Araçları |C#, Java |
-| [HDInsight üzerinde Apache Storm ile Azure Event hubs'tan olay işleme (C#)][844d1d81] |Event Hubs |C#ve Java |
-| [HDInsight üzerinde Storm ile Azure Event Hubs’tan olay işleme (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/) |Event Hubs |Java |
+| [Visual C# Studio kullanarak hdınsight 'ta Apache Storm için topolojiler geliştirin][16fce2d1] |Visual Studio için HDInsight araçları |C#, Java |
+| [HDInsight 'ta Apache Storm ile Azure Event Hubs olayları işleme (C#)][844d1d81] |Event Hubs |C#ve Java |
+| [HDInsight üzerinde Storm ile Azure Event Hubs’tan olay işleme (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) |Event Hubs |Java |
 | [HDInsight üzerinde Apache Storm kullanarak Event Hubs araç algılayıcısı verilerini işleme][246ee964] |Event Hubs, Cosmos DB, Azure Depolama Blobu (ıLB) |C#, Java |
 | [HDInsight üzerinde Apache Storm kullanarak Azure Event Hubs 'den Apache HBase 'e ayıklama, dönüştürme ve yükleme (ETL)][b4b68194] |Event Hubs, HBase |C# |
 | [HDInsight C# üzerinde Apache Storm Azure hizmetleriyle çalışmak için şablon fırtınası topolojisi projesi][ce0c02a2] |Event Hubs, Cosmos DB, SQL veritabanı, HBase, SignalR |C#, Java |

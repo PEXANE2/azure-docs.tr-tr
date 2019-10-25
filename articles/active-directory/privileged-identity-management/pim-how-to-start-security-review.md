@@ -10,26 +10,26 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/27/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2069f0161ea2600a62ab123206d0ebe3c00642c3
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 72d9f0c7df12bd6746cd5cf0336e7bd58b6cc88d
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804373"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809028"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>PıM 'de Azure AD rolleri için erişim gözden geçirmesi oluşturma
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için erişim gözden geçirmesi oluşturma
 
-Çalışanların zaman içindeki değişiklikleri için ayrıcalıklı Azure AD rollerine erişim. Eski rol atamalarıyla ilişkili riski azaltmak için, erişimi düzenli olarak gözden geçirmeniz gerekir. Ayrıcalıklı Azure AD rolleri için erişim gözden geçirmeleri oluşturmak üzere Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanabilirsiniz. Ayrıca, otomatik olarak gerçekleşen yinelenen erişim incelemelerini yapılandırabilirsiniz.
+Ayrıcalıklı Azure Active Directory (Azure AD) rollerine erişim elde etmek için gerekli olan gereksinimler, zaman içinde değişebilir. Eski rol atamalarıyla ilişkili riski azaltmak için, erişimi düzenli olarak gözden geçirmeniz gerekir. Ayrıcalıklı Azure AD rolleri için erişim gözden geçirmeleri oluşturmak üzere Azure AD Privileged Identity Management (PıM) kullanabilirsiniz. Ayrıca, otomatik olarak gerçekleşen yinelenen erişim incelemelerini yapılandırabilirsiniz.
 
 Bu makalede, ayrıcalıklı Azure AD rolleri için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Açık erişim İncelemeleri
 
@@ -37,19 +37,17 @@ Bu makalede, ayrıcalıklı Azure AD rolleri için bir veya daha fazla erişim i
 
 1. **Azure AD Privileged Identity Management**açın.
 
-1. Sol taraftaki menüden **Azure AD rolleri** ' ne tıklayın ve ardından **erişim İncelemeleri**' ne tıklayın.
+1. Sol taraftaki menüden **Azure AD rolleri** ' ni seçin ve ardından **erişim İncelemeleri**' ni seçin.
 
-1. Yönet altında **erişim gözden geçirmeleri**' na tıklayın.
+1. Yönet altında **erişim gözden geçirmeleri**' nı seçin.
 
     ![Azure AD rolleri-tüm incelemeler durumunu gösteren erişim gözden geçirmeleri listesi](./media/pim-how-to-start-security-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Erişim gözden geçirmesini Başlat
 
-Erişim gözden geçirmesi ayarlarını belirttikten sonra **Başlat**' a tıklayın. Erişim incelemesi, listenizde durumunun bir göstergesi olacak şekilde görünür.
+Erişim gözden geçirmesi ayarlarını belirttikten sonra **Başlat**' ı seçin. Erişim incelemesi, listenizde durumunun bir göstergesi olacak şekilde görünür.
 
 ![Başlangıç incelemelerinin durumunu gösteren erişim gözden geçirmeleri listesi](./media/pim-how-to-start-security-review/access-reviews-list.png)
 

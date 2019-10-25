@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/24/2019
-ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/17/2019
+ms.openlocfilehash: 33ec747edaeba60f1c1e5fdb29fd2af1cb29cf8d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266204"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800076"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Öğretici: Azure Event Hubs ve HDInsight 'ta Apache Spark ile Işlem Işlemlerini Işleme
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * HDInsight üzerinde Spark ile Jupyter Notebook kullanma bilgisi. Daha fazla bilgi için bkz. [HDInsight üzerinde verileri yükleme ve sorguları çalıştırma Apache Spark](./apache-spark-load-data-run-query.md).
 
-* [Twitter hesabı](https://twitter.com/i/flow/signup).
+* Twitter [hesabı](https://twitter.com/i/flow/signup) ve Twitter ile benzerlik.
 
 ## <a name="create-a-twitter-application"></a>Twitter uygulaması oluşturma
 
@@ -40,45 +40,45 @@ Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz.
 
 1. [Twitter uygulama yönetimine](https://apps.twitter.com/)gidin.
 
-1. **Yeni uygulama oluştur**' u seçin.
+1. **Uygulama oluştur**' u seçin.
 
-1. Aşağıdaki değerleri sağlayın:
+1. Aşağıdaki gerekli değerleri sağlayın:
 
     |Özellik |Değer |
     |---|---|
-    |Adı|Uygulama adını belirtin. Bu öğretici için kullanılan değer **HDISparkStreamApp0423**. Bu ad benzersiz bir ad olmalıdır.|
-    |Açıklama|Uygulamanın kısa bir açıklamasını sağlayın. Bu öğretici için kullanılan değer **basit bir HDInsight Spark akış uygulamasıdır**.|
-    |Web sitesi|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici için kullanılan değer `http://www.contoso.com` ' dır.|
-    |Geri çağırma URL 'SI|Boş bırakabilirsiniz.|
+    |Uygulama adı|Uygulama adını belirtin. Bu öğretici için kullanılan değer **HDISparkStreamApp0423**. Bu ad benzersiz bir ad olmalıdır.|
+    |Uygulama açıklaması|Uygulamanın kısa bir açıklamasını sağlayın. Bu öğretici için kullanılan değer **basit bir HDInsight Spark akış uygulamasıdır**.|
+    |Web sitesi URL 'SI|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici için kullanılan değer `http://www.contoso.com` ' dır.|
+    |Bu uygulamanın nasıl kullanılacağını bize bildirin|Yalnızca test amaçlıdır. Azure Olay Hub 'ına yer aktarmak için Apache Spark bir akış uygulaması oluşturma.|
 
-1. **Evet, Twitter geliştirici sözleşmesini okudum ve kabul**ediyorum ' u seçin ve ardından **Twitter uygulamanızı oluştur**' u seçin.
+1. **Oluştur**'u seçin.
 
-1. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
+1. **Geliştirici koşullarımızı gözden geçirin** açılır penceresinde **Oluştur**' u seçin.
 
-1. Sayfanın sonunda **erişim Belirtecimi oluştur** ' u seçin.
+1. **Anahtarlar ve belirteçler** sekmesini seçin.
 
-1. Sayfadan aşağıdaki değerleri yazın.  Öğreticide daha sonra bu değerlere ihtiyacınız vardır:
+1. Erişim **belirteci & erişim belirteci parolası**altında **Oluştur**' u seçin.
 
-    - **Tüketici anahtarı (API anahtarı)**    
-    - **Tüketici gizli dizisi (API parolası)**  
+1. Daha sonra kullanmak üzere sayfada görüntülenen aşağıdaki dört değeri yazın:
+
+    - **Tüketici anahtarı (API anahtarı)**
+    - **Tüketici gizli dizisi (API gizli anahtarı)**
     - **Erişim belirteci**
-    - **Erişim belirteci gizli dizisi**   
+    - **Erişim belirteci gizli dizisi**
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Azure Event Hubs ad alanı oluşturma
 
 Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. Sol menüden **tüm hizmetler**' i seçin.  
-
-3. Nesnelerin **interneti**altında **Event Hubs**' yi seçin. 
+1. Sol menüden, **Event Hubs** > nesnelerin **Interneti** > **tüm hizmetlere** gidin.  
 
     ![Spark akış örneği için Olay Hub 'ı oluşturma](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Spark akış örneği için Olay Hub 'ı oluşturma")
 
-4. **+ Ekle** öğesini seçin.
+1. **+ Ekle** öğesini seçin.
 
-5. Yeni Event Hubs ad alanı için aşağıdaki değerleri girin:
+1. Yeni Event Hubs ad alanı için aşağıdaki değerleri girin:
 
     |Özellik |Değer |
     |---|---|
@@ -92,44 +92,43 @@ Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
     ![Spark akış örneği için bir olay hub 'ı adı sağlayın](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark akış örneği için bir olay hub 'ı adı sağlayın")
 
-6. Ad alanını oluşturmak için **Oluştur** ' u seçin.  Dağıtım birkaç dakika içinde tamamlanır.
+1. Ad alanını oluşturmak için **Oluştur** ' u seçin.  Dağıtım birkaç dakika içinde tamamlanır.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Olay Hub 'ı oluşturma
+
 Event Hubs ad alanı dağıtıldıktan sonra bir olay hub 'ı oluşturun.  Portaldan:
 
-1. Sol menüden **tüm hizmetler**' i seçin.  
+1. Sol menüden, **Event Hubs** > nesnelerin **Interneti** > **tüm hizmetlere** gidin.
 
-1. Nesnelerin **interneti**altında **Event Hubs**' yi seçin.  
-
-1. Listeden Event Hubs ad alanınızı seçin.  
+1. Listeden Event Hubs ad alanınızı seçin.
 
 1. **Event Hubs ad alanı** sayfasında **+ Event hub**' ı seçin.  
+
 1. **Olay Hub 'ı oluştur** sayfasında aşağıdaki değerleri girin:
 
-    - **Ad**: Olay Hub 'ınız için bir ad verin. 
- 
+    - **Ad**: Olay Hub 'ınız için bir ad verin.
+
     - **Bölüm sayısı**: 10.  
 
-    - **İleti bekletme**: 1.   
-   
+    - **İleti bekletme**: 1.
+
       ![Spark akış örneği için Olay Hub 'ı ayrıntılarını sağlama](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark akış örneği için Olay Hub 'ı ayrıntılarını sağlama")
 
-1. **Oluştur**'u seçin.  Dağıtım birkaç saniye içinde tamamlanmalı ve Event Hubs ad alanı sayfasına döndürülecektir.
+1. **Oluştur**'u seçin.  Dağıtım birkaç saniye içinde tamamlanmalı ve Event Hubs ad alanı sayfasına döndürülürsünüz.
 
 1. **Ayarlar**altında, **paylaşılan erişim ilkeleri**' ni seçin.
 
 1. **RootManageSharedAccessKey**öğesini seçin.
-    
+
      ![Spark akış örneği için Olay Hub 'ı ilkelerini ayarlama](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark akış örneği için Olay Hub 'ı ilkelerini ayarlama")
 
-1. **Birincil anahtar** ve **bağlantı dizesi-birincil anahtar** değerlerini, öğreticide daha sonra kullanmak üzere kaydedin.
+1. **Birincil anahtar** ve **bağlantı dizesi-birincil anahtar** değerlerini daha sonra öğreticide kullanmak üzere kaydedin.
 
      ![Spark akış örneği için Olay Hub 'ı ilke anahtarlarını görüntüleme](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark akış örneği için Olay Hub 'ı ilke anahtarlarını görüntüleme")
 
-
 ## <a name="send-tweets-to-the-event-hub"></a>Olay Hub 'ına fazla doldurulabilir gönder
 
-Bir Jupyter Not defteri oluşturun ve bunu **Sendtweetstoeventhub**olarak adlandırın. 
+1. `CLUSTERNAME` Apache Spark Kümenizin adı olduğu `https://CLUSTERNAME.azurehdinsight.net/jupyter` gidin. Bir Jupyter Not defteri oluşturun ve bunu **Sendtweetstoeventhub**olarak adlandırın.
 
 1. Dış Apache Maven kitaplıklarını eklemek için aşağıdaki kodu çalıştırın:
 
@@ -138,53 +137,53 @@ Bir Jupyter Not defteri oluşturun ve bunu **Sendtweetstoeventhub**olarak adland
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-2. @No__t_0, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` ve `<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
+1. @No__t_0, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` ve `<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
 
     ```scala
     import java.util._
     import scala.collection.JavaConverters._
     import java.util.concurrent._
-    
+
     import org.apache.spark._
     import org.apache.spark.streaming._
     import org.apache.spark.eventhubs.ConnectionStringBuilder
 
     // Event hub configurations
-    // Replace values below with yours        
+    // Replace values below with yours
     val eventHubName = "<Event hub name>"
     val eventHubNSConnStr = "<Event hub namespace connection string>"
-    val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
-    
+    val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build
+
     import com.microsoft.azure.eventhubs._
     val pool = Executors.newFixedThreadPool(1)
     val eventHubClient = EventHubClient.create(connStr.toString(), pool)
-    
+
     def sendEvent(message: String) = {
           val messageData = EventData.create(message.getBytes("UTF-8"))
           eventHubClient.get().send(messageData)
           println("Sent event: " + message + "\n")
     }
-    
+
     import twitter4j._
     import twitter4j.TwitterFactory
     import twitter4j.Twitter
     import twitter4j.conf.ConfigurationBuilder
 
     // Twitter application configurations
-    // Replace values below with yours   
+    // Replace values below with yours
     val twitterConsumerKey = "<CONSUMER KEY>"
     val twitterConsumerSecret = "<CONSUMER SECRET>"
     val twitterOauthAccessToken = "<ACCESS TOKEN>"
     val twitterOauthTokenSecret = "<TOKEN SECRET>"
-    
+
     val cb = new ConfigurationBuilder()
     cb.setDebugEnabled(true).setOAuthConsumerKey(twitterConsumerKey).setOAuthConsumerSecret(twitterConsumerSecret).setOAuthAccessToken(twitterOauthAccessToken).setOAuthAccessTokenSecret(twitterOauthTokenSecret)
-    
+
     val twitterFactory = new TwitterFactory(cb.build())
     val twitter = twitterFactory.getInstance()
 
     // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
-    
+
     val query = new Query(" #Azure ")
     query.setCount(100)
     query.lang("en")
@@ -202,16 +201,16 @@ Bir Jupyter Not defteri oluşturun ve bunu **Sendtweetstoeventhub**olarak adland
       }
       query.setMaxId(lowestStatusId - 1)
     }
-    
+
     // Closing connection to the Event Hub
     eventHubClient.get().close()
     ```
 
-3. Olay Hub 'ını Azure portal açın.  **Genel bakışta**, Olay Hub 'ına gönderilen iletileri gösteren bazı grafikler görürsünüz.
+1. Olay Hub 'ını Azure portal açın.  **Genel bakışta**, Olay Hub 'ına gönderilen iletileri gösteren bazı grafikler görürsünüz.
 
 ## <a name="read-tweets-from-the-event-hub"></a>Olay Hub 'ından daha fazla doldurulabilir
 
-Başka bir Jupyter Not defteri oluşturun ve bunu **ReadTweetsFromEventHub**olarak adlandırın. 
+Başka bir Jupyter Not defteri oluşturun ve bunu **ReadTweetsFromEventHub**olarak adlandırın.
 
 1. Bir dış Apache Maven kitaplığı eklemek için aşağıdaki kodu çalıştırın:
 
@@ -225,34 +224,34 @@ Başka bir Jupyter Not defteri oluşturun ve bunu **ReadTweetsFromEventHub**olar
     ```scala
     import org.apache.spark.eventhubs._
     // Event hub configurations
-    // Replace values below with yours        
+    // Replace values below with yours
     val eventHubName = "<Event hub name>"
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build
-    
+
     val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
-    //incomingStream.printSchema    
-    
+    //incomingStream.printSchema
+
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
-    
+
     // Event Hub message format is JSON and contains "body" field
     // Body is binary, so you cast it to string to see the actual content of the message
     val messages = incomingStream.withColumn("Offset", $"offset".cast(LongType)).withColumn("Time (readable)", $"enqueuedTime".cast(TimestampType)).withColumn("Timestamp", $"enqueuedTime".cast(LongType)).withColumn("Body", $"body".cast(StringType)).select("Offset", "Time (readable)", "Timestamp", "Body")
-    
+
     messages.printSchema
-    
+
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
     ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-HDInsight ile Verileriniz Azure Storage 'da depolanır veya Azure Data Lake Storage, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Sonraki öğreticide hemen çalışmayı planlıyorsanız kümeyi tutmak, aksi takdirde devam etmek ve kümeyi silmek isteyebilirsiniz.
+HDInsight ile Verileriniz Azure Storage 'da depolanır veya Azure Data Lake Storage, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Sonraki öğreticide hemen çalışmayı planlıyorsanız kümeyi tutmak, aksi takdirde devam etmek ve kümeyi silmek isteyebilirsiniz.
 
 Azure portalında kümeyi açıp **Sil**’i seçin.
 
-![HDInsight Azure portalı kümeyi silme](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
+![HDInsight Azure portal Kümeyi Sil](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
 Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil**’i seçebilirsiniz. Kaynak grubunu silerek hem HDInsight Spark kümesini hem de varsayılan depolama hesabını silersiniz.
 

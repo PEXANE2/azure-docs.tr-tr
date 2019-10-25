@@ -1,5 +1,6 @@
 ---
-title: Korumalı Web API 'SI-uygulama kodu yapılandırması | Mavisi
+title: Korumalı Web API 'SI-uygulama kodu yapılandırması
+titleSuffix: Microsoft identity platform
 description: Korumalı bir Web API 'SI oluşturmayı ve uygulamanızın kodunu yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,20 +17,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562320"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803708"
 ---
-# <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: Kod yapılandırması
+# <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
 Korunan Web API 'niz için kodu yapılandırmak üzere API 'Leri korumalı olarak tanımlar, bir taşıyıcı belirteci yapılandırma ve belirtecin nasıl doğrulanacağı hakkında bilgi almanız gerekir.
 
 ## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>ASP.NET/ASP.NET Core API 'Leri korumalı olarak tanımlar?
 
-Web Apps gibi, ASP.NET/ASP.NET Core Web API 'leri, denetleyici eylemlerine önek `[Authorize]` olarak eklendiği için "korumalıdır". Bu nedenle, denetleyici eylemleri yalnızca API 'nin yetkilendirilmiş bir kimlikle çağrılması durumunda çağrılabilir.
+Web Apps gibi, ASP.NET/ASP.NET Core Web API 'Leri, denetleyici eylemlerine `[Authorize]` özniteliğiyle ön eki eklendiği için "korumalıdır". Bu nedenle, denetleyici eylemleri yalnızca API 'nin yetkilendirilmiş bir kimlikle çağrılması durumunda çağrılabilir.
 
 Aşağıdaki soruları göz önünde bulundurun:
 
@@ -129,7 +130,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 
-Web Apps 'teki OpenID Connect ara yazılımı gibi jwttaşıyıcı ara yazılımı, belirteci doğrulamak için tarafından `TokenValidationParameters` yönlendirilir. Belirtecin şifresi çözülür (gerektiğinde), talepler ayıklanır ve imza doğrulanır. Bu durumda, ara yazılım bu verileri denetleyerek belirteci doğrular:
+Web Apps 'teki OpenID Connect ara yazılımı gibi Jwttaşıyıcı ara yazılımı, belirteci doğrulamak için `TokenValidationParameters` tarafından yönlendirilir. Belirtecin şifresi çözülür (gerektiğinde), talepler ayıklanır ve imza doğrulanır. Bu durumda, ara yazılım bu verileri denetleyerek belirteci doğrular:
 
 - Web API 'sine (hedef kitle) yöneliktir.
 - Web API 'sini (Sub) çağırmaya izin verilen bir uygulama için verilmıştı.
@@ -141,7 +142,7 @@ Web Apps 'teki OpenID Connect ara yazılımı gibi jwttaşıyıcı ara yazılım
 
 ### <a name="validators"></a>Metninin
 
-Doğrulama adımları, .NET açık kaynak kitaplığı [Için Microsoft IdentityModel uzantılarında](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) , tek bir kaynak dosyasında olan doğrulayıcılar içinde yakalanır. [Microsoft. IdentityModel. Tokens/doğrulayıcılar. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+Doğrulama adımları, .NET açık kaynak kitaplığı [Için Microsoft IdentityModel uzantılarında](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) , tek bir kaynak dosyasında ( [Microsoft. IdentityModel. Tokens/doğrulayıcılar. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs)), tümü olan doğrulayıcılar içinde yakalanır.
 
 Doğrulayıcılar bu tabloda açıklanmıştır:
 
@@ -150,11 +151,11 @@ Doğrulayıcılar bu tabloda açıklanmıştır:
 | `ValidateAudience` | Belirtecin belirteci doğrulayan uygulama için olduğunu sağlar (benim için). |
 | `ValidateIssuer` | Belirtecin güvenilir bir STS tarafından (bir kişiden güvenmediğiniz) verilmiş olmasını sağlar. |
 | `ValidateIssuerSigningKey` | Belirteç, belirteci imzalamak için kullanılan anahtara güvendiğini belirten uygulamayı sağlar. (Anahtarın belirtece gömülü olduğu özel durum. Genellikle gerekli değildir.) |
-| `ValidateLifetime` | Belirtecin hala (veya zaten) geçerli olduğundan emin olur. Doğrulayıcı, belirtecin ömrü (`notbefore` ve `expires` talepler) Aralık içinde olup olmadığını denetler. |
+| `ValidateLifetime` | Belirtecin hala (veya zaten) geçerli olduğundan emin olur. Doğrulayıcı, belirtecin yaşam süresinin (`notbefore` ve `expires` talepler) Aralık içinde olup olmadığını denetler. |
 | `ValidateSignature` | Belirtecin oynanmamasını sağlar. |
 | `ValidateTokenReplay` | Belirtecin yeniden çalınmamasını sağlar. (Bazı kerelik protokolleri için özel durum kullanılır.) |
 
-Doğrulayıcıların hepsi, ASP.NET/ASP.NET çekirdek yapılandırmasından başlatılan `TokenValidationParameters` sınıfının özellikleriyle ilişkilendirilir. Çoğu durumda, parametreleri değiştirmek zorunda kalmazsınız. Tek kiracılar olmayan uygulamalar için bir özel durum vardır. (Diğer bir deyişle, kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eden Web Apps.) Bu durumda, verenin doğrulanması gerekir.
+Doğrulayıcılar, ASP.NET/ASP.NET çekirdek yapılandırmasından başlatılan `TokenValidationParameters` sınıfının özellikleriyle ilişkilendirilir. Çoğu durumda, parametreleri değiştirmek zorunda kalmazsınız. Tek kiracılar olmayan uygulamalar için bir özel durum vardır. (Diğer bir deyişle, kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eden Web Apps.) Bu durumda, verenin doğrulanması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051435"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808419"
 ---
 # <a name="what-are-authentication-methods"></a>Kimlik doğrulaması yöntemleri nelerdir?
 
@@ -28,7 +28,7 @@ Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönt
 
 |Kimlik Doğrulama Yöntemi|Kullanım|
 | --- | --- |
-| istemcisiyle yönetilen bir cihaz için) | MFA ve SSPR |
+| Parola | MFA ve SSPR |
 | Güvenlik soruları | Yalnızca SSPR |
 | E-posta adresi | Yalnızca SSPR |
 | Microsoft Authenticator uygulaması | MFA ve SSPR |
@@ -44,7 +44,7 @@ Microsoft, yöneticilerin erişimi olmayan en az sayıda kimlik doğrulama yönt
 | MFA ve SSPR için OATH Donanım belirteçleri, Azure Active Directory genel önizleme özellikleridir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="password"></a>istemcisiyle yönetilen bir cihaz için)
+## <a name="password"></a>Parola
 
 Azure AD parolanız bir kimlik doğrulama yöntemi olarak kabul edilir. Bu, **devre dışı**bırakıladesteklemeyen bir yöntemdir.
 
@@ -123,20 +123,20 @@ Microsoft, kullanıcının Azure AD parolasının erişmesini gerektirmeyen bir 
 
 Microsoft Authenticator uygulaması, Azure AD iş veya okul hesabınız veya Microsoft hesabı için ek bir güvenlik düzeyi sağlar.
 
-Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) ve [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)'da kullanılabilir.
+Microsoft Authenticator uygulaması [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) ve [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)'da kullanılabilir.
 
 > [!NOTE]
-> Kullanıcılar self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip olmayacaktır. Bunun yerine, kullanıcılar mobil [https://aka.ms/mfasetup](https://aka.ms/mfasetup) uygulamalarını tarihinde [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)veya güvenlik bilgileri kayıt önizlemesine kaydedebilir.
+> Kullanıcılar self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip olmayacaktır. Bunun yerine, kullanıcılar mobil uygulamalarını [https://aka.ms/mfasetup](https://aka.ms/mfasetup) veya güvenlik bilgileri kayıt önizlemesine [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)adresinde kaydedebilir.
 >
 
-### <a name="notification-through-mobile-app"></a>Mobil uygulama üzerinden bildirim
+### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
 
 Microsoft Authenticator uygulaması, Smartphone 'a veya tabletinize bildirim göndererek, hesaplara yetkisiz erişimin önlenmesine ve sahte işlemleri durdurmaya yardımcı olabilir. Kullanıcılar bildirimi görüntüler ve meşru ise Doğrula ' yı seçin. Aksi takdirde, Reddet ' i seçebilir.
 
 > [!WARNING]
 > Yalnızca bir yöntem sıfırlama için gerekliyse, self servis parola sıfırlama için, **en yüksek düzeyde güvenlik sağlamak üzere**kullanıcılara sunulan tek seçenektir.
 >
-> İki yöntem gerekli olduğunda, kullanıcılar diğer etkin yöntemlerin yanı sıra bildirim **veya** doğrulama kodu kullanarak sıfırlayabilecektir.
+> İki yöntem gerekli olduğunda, kullanıcılar diğer etkin yöntemlerin yanı **sıra bildirim** **veya** doğrulama kodu kullanarak sıfırlayabilecektir.
 >
 
 Mobil uygulama ve doğrulama kodu aracılığıyla her iki bildirimin de kullanımını etkinleştirirseniz, bir bildirim kullanarak Microsoft Authenticator uygulamasını kaydeden kullanıcılar kimliklerini doğrulamak için hem bildirimi hem de kodu kullanabilir.
@@ -144,7 +144,7 @@ Mobil uygulama ve doğrulama kodu aracılığıyla her iki bildirimin de kullan�
 > [!NOTE]
 > Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
 
-### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadan alınan doğrulama kodu
+### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 
 Microsoft Authenticator uygulaması veya diğer üçüncü taraf uygulamalar, bir OATH doğrulama kodu oluşturmak için yazılım belirteci olarak kullanılabilir. Kullanıcı adınızı ve parolanızı girdikten sonra, uygulama tarafından belirtilen kodu oturum açma ekranına girersiniz. Doğrulama kodu, ikinci bir kimlik doğrulama biçimi sağlar.
 
@@ -182,7 +182,7 @@ Kullanıcılar, her zaman kullanılmak üzere yapılandırılmış Microsoft Aut
 
 ## <a name="phone-options"></a>Telefon seçenekleri
 
-### <a name="mobile-phone"></a>Mobil telefon
+### <a name="mobile-phone"></a>Cep telefonu
 
 Mobil telefonlarla kullanıcılara iki seçenek mevcuttur.
 
@@ -197,7 +197,7 @@ Doğru şekilde çalışmak için telefon numaralarının *+ CountryCode PhoneNu
 
 Microsoft, tutarlı SMS veya sesli tabanlı Multi-Factor Authentication istemi teslimini aynı numarayla garanti etmez. Kullanıcılarımız konusunda, Microsoft, SMS teslimat yeteneğini geliştirmek üzere rota ayarlamaları yaptığımız için, her zaman kısa kodlar ekleyebilir veya kaldırabilir. Microsoft, Birleşik Devletler ve Kanada yanı sıra ülkeler/bölgeler için kısa kodları desteklemez.
 
-#### <a name="text-message"></a>SMS Mesajı
+#### <a name="text-message"></a>Kısa mesaj
 
 Bir SMS, bir doğrulama kodu içeren cep telefonu numarasına gönderilir. Devam etmek için oturum açma arabiriminde belirtilen doğrulama kodunu girin.
 
@@ -243,7 +243,7 @@ Telefon numarası kullanan kimlik doğrulama yöntemleriyle ilgili yaygın sorun
 * Hatalı Telekom sağlayıcıları (telefon girişi algılanmadı, eksik DTMF tonları sorunları, birden çok cihazda engellenen çağıran KIMLIĞI veya birden çok cihazda engellenen SMS)
    * Microsoft, kimlik doğrulaması için telefon çağrılarını ve SMS iletilerini yönlendirmek üzere birden çok Telekom sağlayıcısı kullanır Yukarıdaki sorunlardan herhangi birini görüyorsanız, bir Kullanıcı, 5 dakika içinde yöntemi en az 5 kez kullanmaya çalışır ve Microsoft Destek ile iletişim kurarken bu kullanıcının bilgilerinin kullanılabilir olmasını sağlar.
 
-## <a name="app-passwords"></a>Uygulama Parolaları
+## <a name="app-passwords"></a>Uygulama parolaları
 
 Tarayıcı olmayan bazı uygulamalar Multi-Factor Authentication 'ı desteklemez, bir Kullanıcı Multi-Factor Authentication için etkinleştirildiyse ve tarayıcı olmayan uygulamaları kullanmaya çalışırsanız, kimlik doğrulaması yapamaz. Uygulama parolası, kullanıcıların kimlik doğrulamaya devam etmesine izin verir
 

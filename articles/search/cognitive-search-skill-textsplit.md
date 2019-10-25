@@ -1,22 +1,21 @@
 ---
-title: Metin bölünmüş bilişsel arama yeteneği-Azure Search
-description: Azure Search zenginleştirme işlem hattındaki uzunluğu temel alarak metin öbeklerine veya metin sayfalarına bölün.
-services: search
+title: Metin bölünmüş Bilişsel Beceri
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde bulunan metni, öbeklere veya metin sayfalarına bölün.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265678"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784843"
 ---
-#   <a name="text-split-cognitive-skill"></a>Metin bölünmüş Bilişsel Beceri
+# <a name="text-split-cognitive-skill"></a>Metin bölünmüş Bilişsel Beceri
 
 Metni **bölünmüş** metin, metni metin parçalara ayırır. Metni cümlelere veya belirli uzunluktaki sayfalara bölmek isteyip istemediğinizi belirtebilirsiniz. Bu beceri, özellikle diğer yeteneklerin akış yönündeki maksimum metin uzunluğu gereksinimi olduğunda yararlıdır. 
 
@@ -33,15 +32,15 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
 | textSplitMode      | "Pages" veya "cümleler" | 
-| maximumPageLength | TextSplitMode, "Pages" olarak ayarlandıysa, bu, ile `String.Length`ölçülen en fazla sayfa uzunluğuna başvurur. Minimum değer 100 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
-| defaultLanguageCode   | seçim Aşağıdaki dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını sonlandırmamak için yararlıdır.</li></ul>  |
+| maximumPageLength | TextSplitMode, "Pages" olarak ayarlanırsa, `String.Length`göre ölçülen maksimum sayfa uzunluğuna başvurur. Minimum değer 100 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
+| defaultLanguageCode   | seçim Şu dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını sonlandırmamak için yararlıdır.</li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
 | Parametre adı       | Açıklama      |
 |----------------------|------------------|
-| text  | Alt dizeden bölünecek metin. |
+| metin  | Alt dizeden bölünecek metin. |
 | languageCode  | Seçim Belge için dil kodu.  |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları 
@@ -133,5 +132,5 @@ Bir dil desteklenmiyorsa, bir uyarı oluşturulur ve metin karakter sınırları
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)

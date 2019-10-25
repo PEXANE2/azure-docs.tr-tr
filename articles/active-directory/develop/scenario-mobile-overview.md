@@ -1,5 +1,6 @@
 ---
-title: Web API 'Lerini çağıran mobil uygulama-genel bakış | Microsoft Identity platformu
+title: Web API 'Lerini çağıran mobil uygulama-genel bakış
+titleSuffix: Microsoft identity platform
 description: Web API 'Leri çağıran bir mobil uygulama oluşturmayı öğrenin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f67f063ab374dec8bac3905ea46f1dfa9d8ed1fb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852600"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803751"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran mobil uygulama
 
@@ -31,16 +32,16 @@ Web API 'Lerini çağıran bir mobil uygulama oluşturmak için bilmeniz gereken
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 İlk mobil uygulamanızı oluşturun ve hızlı başlangıç yapın!
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Bir Android uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-android.md)
+> [Hızlı başlangıç: bir Android uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-android.md)
 >
-> [Hızlı Başlangıç: Bir iOS uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
+> [Hızlı başlangıç: bir iOS uygulamasından belirteç alma ve Microsoft Graph API çağırma](./quickstart-v2-ios.md)
 >
-> [Hızlı Başlangıç: Bir Xamarin iOS & Android uygulamasından belirteç alma ve Microsoft Graph API çağrısı](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [Hızlı başlangıç: bir Xamarin iOS & Android uygulamasından belirteç alma ve Microsoft Graph API çağırma](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -50,9 +51,9 @@ Kişiselleştirilmiş, sorunsuz bir kullanıcı deneyimi, mobil uygulamalar içi
 
 Mobil uygulamalar için dikkat edilmesi gerekenler:
 
-- **Kullanıcı deneyimi anahtardır**: Kullanıcıların oturum açmayı istemeden önce uygulamanızın değerini görmesine ve yalnızca gerekli izinleri istemesine izin verin.
-- **Tüm Kullanıcı yapılandırmalarının desteği**: Birçok mobil iş kullanıcısı, koşullu erişim ve cihaz uyumluluk ilkeleri altındadır. Bu anahtar senaryolarını desteklediğinizden emin olun.
-- **Çoklu oturum açma (SSO) Uygula**: MSAL ve Microsoft Identity platform, cihazın tarayıcısı veya Microsoft Authenticator (ve Android üzerinde Intune Şirket Portalı) aracılığıyla basit çoklu oturum açmayı etkinleştirmeyi kolaylaştırır.
+- **Kullanıcı deneyimi anahtardır**: kullanıcıların oturum açmayı istemeden önce uygulamanızın değerini görmesine izin verin ve yalnızca gerekli izinleri isteyin.
+- **Tüm Kullanıcı yapılandırmalarının desteklenmesi**: birçok mobil Iş kullanıcısı koşullu erişim ve cihaz uyumluluk ilkeleri altındadır. Bu anahtar senaryolarını desteklediğinizden emin olun.
+- **Çoklu oturum açma (SSO) uygulama**: msal ve Microsoft Identity platform, cihazın tarayıcısı veya Microsoft Authenticator (ve Android üzerinde Intune şirket portalı) aracılığıyla basit çoklu oturum açmayı etkinleştirmeyi kolaylaştırır.
 
 ## <a name="specifics"></a>Özelliklerini
 

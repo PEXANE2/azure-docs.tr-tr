@@ -1,22 +1,22 @@
 ---
-title: Olay etki alanlarıyla Azure Event Grid büyük konu kümelerini yönetme
+title: Olay etki alanlarıyla olayları Azure Event Grid ile yayımlama
 description: Azure Event Grid ' deki büyük konu kümelerinin nasıl yönetileceğini ve olay etki alanlarını kullanarak bu olaylara olayları nasıl yayımlayacağınızı gösterir.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 9d7cef35ef6d1138b037f7c520f21bee86567aa8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/22/2019
+ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842571"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786548"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Olay etki alanlarını kullanarak konuları yönetme ve olayları yayımlama
 
-Bu makale nasıl yapılır:
+Bu makalede nasıl yapılacağı gösterilmektedir:
 
 * Event Grid etki alanı oluşturma
 * Olay kılavuzuna abone olma konuları
@@ -27,7 +27,7 @@ Olay etki alanları hakkında bilgi edinmek için bkz. [Event Grid yönetmek iç
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Önizleme özelliğini yükle
+## <a name="install-preview-feature"></a>Önizleme özelliğini yükler
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -78,16 +78,16 @@ Başarılı oluşturma aşağıdaki değerleri döndürür:
 }
 ```
 
-Etki alanını `endpoint` yönetmek `id` ve olayları yayımlamak için gerekli olduğu gibi, ve değerlerini aklınızda yapın.
+`endpoint` ve `id` etki alanını yönetmek ve olayları yayımlamak için gerekli olduğu gibi, bunları aklınızda edin.
 
 ## <a name="manage-access-to-topics"></a>Konulara erişimi yönetin
 
 Konuların erişimini yönetme [rol ataması](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)aracılığıyla yapılır. Rol ataması, Azure kaynaklarındaki işlemleri belirli bir kapsamdaki yetkili kullanıcılarla sınırlamak için rol tabanlı erişim denetimi kullanır.
 
-Event Grid, bir etki alanı içindeki çeşitli konularda belirli kullanıcılara erişim atamak için kullanabileceğiniz iki yerleşik rol içerir. Bu roller `EventGrid EventSubscription Contributor (Preview)`, aboneliklerin oluşturulmasına ve silinmesine izin veren ve yalnızca olay abonelikleri listesine `EventGrid EventSubscription Reader (Preview)`izin veren ve ' dir.
+Event Grid, bir etki alanı içindeki çeşitli konularda belirli kullanıcılara erişim atamak için kullanabileceğiniz iki yerleşik rol içerir. Bu roller, aboneliklerin oluşturulmasına ve silinmesine ve yalnızca olay abonelikleri listesine izin veren `EventGrid EventSubscription Reader (Preview)``EventGrid EventSubscription Contributor (Preview)`.
 
 # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
-Aşağıdaki Azure CLI komutu, yalnızca `alice@contoso.com` konu `demotopic1`üzerinde olay abonelikleri oluşturma ve silme sınırlarına sahiptir:
+Aşağıdaki Azure CLı komutu, yalnızca `demotopic1`konu başlığında olay abonelikleri oluşturma ve silme `alice@contoso.com` kısıtlar:
 
 ```azurecli-interactive
 az role assignment create \
@@ -97,7 +97,7 @@ az role assignment create \
 ```
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-Aşağıdaki PowerShell komutu, yalnızca `alice@contoso.com` konusunda `demotopic1`olay abonelikleri oluşturma ve silme sınırlarına sahiptir:
+Aşağıdaki PowerShell komutu, yalnızca `demotopic1`konu başlığında olay abonelikleri oluşturmak ve silmek için `alice@contoso.com` kısıtlar:
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment `
@@ -113,7 +113,7 @@ Event Grid işlemlerine erişimi yönetme hakkında daha fazla bilgi için bkz. 
 
 Event Grid hizmeti bir etki alanında ilgili konuyu, bir etki alanı konusu için olay aboneliği oluşturma çağrısına göre otomatik olarak oluşturur ve yönetir. Bir etki alanında konu oluşturmak için ayrı bir adım yoktur. Benzer şekilde, bir konunun son olay aboneliği silindiğinde, konu da silinir.
 
-Etki alanındaki bir konuya abone olmak, diğer tüm Azure kaynaklarına abone olma ile aynıdır. Kaynak kaynak KIMLIĞI için, daha önce etki alanı oluştururken döndürülen olay etki alanı KIMLIĞINI belirtin. Abone olmak istediğiniz konuyu belirtmek için kaynak kaynak kimliğinin sonuna ekleyin `/topics/<my-topic>` . Etki alanındaki tüm olayları alan bir etki alanı kapsamı olay aboneliği oluşturmak için herhangi bir konu belirtmeden olay etki alanı KIMLIĞINI belirtin.
+Etki alanındaki bir konuya abone olmak, diğer tüm Azure kaynaklarına abone olma ile aynıdır. Kaynak kaynak KIMLIĞI için, daha önce etki alanı oluştururken döndürülen olay etki alanı KIMLIĞINI belirtin. Abone olmak istediğiniz konuyu belirtmek için kaynak kaynak KIMLIĞI sonuna `/topics/<my-topic>` ekleyin. Etki alanındaki tüm olayları alan bir etki alanı kapsamı olay aboneliği oluşturmak için herhangi bir konu belirtmeden olay etki alanı KIMLIĞINI belirtin.
 
 Genellikle, önceki bölümde erişim izni verdiğiniz kullanıcı aboneliği oluşturur. Bu makaleyi basitleştirmek için aboneliği oluşturursunuz. 
 
@@ -137,7 +137,7 @@ New-AzureRmEventGridSubscription `
 
 ---
 
-Olaylarınızın abone olması için bir test uç noktasına ihtiyacınız varsa, gelen olayları görüntüleyen [önceden oluşturulmuş bir Web uygulamasını](https://github.com/Azure-Samples/azure-event-grid-viewer) her zaman dağıtabilirsiniz. Olaylarınızı ' de `https://<your-site-name>.azurewebsites.net/api/updates`test Web sitenize gönderebilirsiniz.
+Olaylarınızın abone olması için bir test uç noktasına ihtiyacınız varsa, gelen olayları görüntüleyen [önceden oluşturulmuş bir Web uygulamasını](https://github.com/Azure-Samples/azure-event-grid-viewer) her zaman dağıtabilirsiniz. Olaylarınızı `https://<your-site-name>.azurewebsites.net/api/updates`' de test Web sitenize gönderebilirsiniz.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -146,7 +146,7 @@ Bir konu için ayarlanan izinler Azure Active Directory depolanır ve açıkça 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Olayları Event Grid etki alanına yayımlama
 
-Olayları bir etki alanına yayımlamak, [özel bir konuya yayımlama](./post-to-custom-topic.md)ile aynıdır. Ancak, özel konuya yayımlamak yerine, tüm olayları etki alanı uç noktasına yayımlarsınız. JSON olay verilerinde, olayların gitmesini istediğiniz konuyu belirtirsiniz. Aşağıdaki olaylar dizisi, `"id": "1111"` olay ile `"id": "2222"` birlikte olaya gönderilecek `demotopic2`bir olaya neden `demotopic1` olur:
+Olayları bir etki alanına yayımlamak, [özel bir konuya yayımlama](./post-to-custom-topic.md)ile aynıdır. Ancak, özel konuya yayımlamak yerine, tüm olayları etki alanı uç noktasına yayımlarsınız. JSON olay verilerinde, olayların gitmesini istediğiniz konuyu belirtirsiniz. Aşağıdaki olay dizisi, `"id": "2222"` konuya `demotopic2`konusuna `demotopic1` bir olay `"id": "1111"` konusunda olaya neden olur:
 
 ```json
 [{

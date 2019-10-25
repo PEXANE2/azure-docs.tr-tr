@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511007"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784824"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -326,7 +326,7 @@ Genellikle Traffic Manager, trafiği farklı bölgelerde dağıtılan uygulamala
 
 Bir Traffic Manager profiliyle ilişkili Azure uç noktaları, kaynak kimlikleri kullanılarak izlenir. Uç nokta olarak kullanılan bir Azure kaynağı (örneğin, genel IP, klasik bulut hizmeti, WebApp veya iç içe geçmiş bir şekilde kullanılan başka bir Traffic Manager profili) farklı bir kaynak grubuna veya aboneliğe taşındığında, kaynak KIMLIĞI değişir. Şu anda bu senaryoda, Traffic Manager profilini önce silerek ve sonra uç noktaları Profile geri ekleyerek güncelleştirmeniz gerekir.
 
-## <a name="traffic-manager-endpoint-monitoring"></a>Uç nokta izleme Traffic Manager
+## <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager uç nokta izleme
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Azure bölge hatalarıyla Traffic Manager dayanıklı mi?
 
@@ -382,7 +382,7 @@ Bir profille bir sorgu alındığında Traffic Manager önce, belirtilen yönlen
 
 Çoklu değer dışında herhangi bir yönlendirme yöntemine sahip profiller için:
 
-|Gelen sorgu isteği|    Uç noktası türü|  Yanıt sağlanmış|
+|Gelen sorgu isteği|    Uç nokta türü|  Yanıt sağlanmış|
 |--|--|--|
 |KAYDEDILMEMIŞ |  A/AAAA/CNAME |  Hedef uç nokta| 
 |A |    A/CNAME | Hedef uç nokta|
@@ -395,7 +395,7 @@ Bir profille bir sorgu alındığında Traffic Manager önce, belirtilen yönlen
 
 Yönlendirme yöntemi olan profillerin çoklu değer olarak ayarlandığı profiller için:
 
-|Gelen sorgu isteği|    Uç noktası türü | Yanıt sağlanmış|
+|Gelen sorgu isteği|    Uç nokta türü | Yanıt sağlanmış|
 |--|--|--|
 |KAYDEDILMEMIŞ |  A ve AAAA karışımı | Hedef uç noktalar|
 |A |    A ve AAAA karışımı | Yalnızca A türünde hedef uç noktalar|
@@ -416,7 +416,10 @@ Evet. İzleme protokolü olarak TCP belirtebilirsiniz ve Traffic Manager bir TCP
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>TCP izlemesi kullanılırken uç noktadan hangi belirli yanıtlar gerekir?
 
-TCP izleme kullanıldığında Traffic Manager, belirtilen bağlantı noktasında uç noktaya bir SYN isteği göndererek üç yönlü bir TCP el sıkışması başlatır. Ardından uç noktadan bir yanıt için bir süre bekler (zaman aşımı ayarlarında belirtilen şekilde). Uç nokta, izleme ayarlarında belirtilen zaman aşımı süresi içinde bir SYN-ACK yanıtı ile SYN isteğine yanıt verirse, bu uç nokta sağlıklı olarak değerlendirilir. SYN-ACK yanıtı alınmışsa Traffic Manager, bir RST ile geri yanıt vererek bağlantıyı sıfırlar.
+TCP izleme kullanıldığında Traffic Manager, belirtilen bağlantı noktasında uç noktaya bir SYN isteği göndererek üç yönlü bir TCP el sıkışması başlatır. Ardından, uç noktadan bir süre için bir SYN-ACK yanıtı bekler (zaman aşımı ayarlarında belirtilir).
+
+- İzleme ayarlarında belirtilen zaman aşımı süresi içinde bir SYN-ACK yanıtı alınmışsa, bu uç nokta sağlıklı olarak değerlendirilir. Bir FIN veya FIN-ACK, düzenli olarak bir yuva sonlandırdığında Traffic Manager beklenen yanıttır.
+- Belirtilen zaman aşımından sonra bir SYN-ACK yanıtı alınmışsa Traffic Manager bağlantıyı sıfırlamak için bir RST ile yanıt verir.
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Kullanıcılarınızın sağlıksız bir uç noktadan uzakta mi ne kadar hızlı hareket Traffic Manager?
 
@@ -455,7 +458,7 @@ Uç noktanıza ulaşan Traffic Manager durum denetimi sayısı aşağıdakilere 
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Uç noktalarımı bir veya daha fazla kaldığında nasıl bildirim alabilirim?
 
-Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın% 75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
+Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın %75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>İç içe geçmiş profiller Traffic Manager
 
@@ -477,8 +480,8 @@ Evet. Bir profil içindeki farklı türlerin uç noktalarını nasıl birleştir
 
 Traffic Manager faturalandırma iki bileşene sahiptir: Endpoint durum denetimleri ve milyonlarca DNS sorgusu
 
-* Uç nokta sistem durumu denetimleri: Üst profilde bitiş noktası olarak yapılandırıldığında bir alt profil için ücret alınmaz. Alt profildeki uç noktaların izlenmesi, her zamanki şekilde faturalandırılır.
-* DNS sorguları: Her sorgu yalnızca bir kez sayılır. Alt profilden bir uç nokta döndüren üst profile yönelik bir sorgu, yalnızca üst profile karşı sayılır.
+* Uç nokta sistem durumu denetimleri: bir üst profilde bitiş noktası olarak yapılandırıldığında bir alt profil için ücret alınmaz. Alt profildeki uç noktaların izlenmesi, her zamanki şekilde faturalandırılır.
+* DNS sorguları: her sorgu yalnızca bir kez sayılır. Alt profilden bir uç nokta döndüren üst profile yönelik bir sorgu, yalnızca üst profile karşı sayılır.
 
 Tüm ayrıntılar için [Traffic Manager fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/traffic-manager/)bakın.
 
@@ -496,11 +499,11 @@ Aşağıdaki tabloda, iç içe geçmiş bir uç nokta için Traffic Manager sist
 
 | Alt profil Izleme durumu | Üst uç nokta Izleyici durumu | Notlar |
 | --- | --- | --- |
-| Devre dışı. Alt profil devre dışı bırakıldı. |Durduruldu |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
+| Devre dışı. Alt profil devre dışı bırakıldı. |Durdurulan |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
 | Düzey. En az bir alt profil uç noktası düşürülmüş bir durumda. |Çevrimiçi: alt profildeki çevrimiçi uç noktaların sayısı en az MinChildEndpoints değeridir.<BR>CheckingEndpoint: alt profildeki çevrimiçi ve CheckingEndpoint uç noktalarının sayısı en az MinChildEndpoints değeridir.<BR>Düşürülmüş: Aksi durumda. |Trafik, bir durum CheckingEndpoint uç noktasına yönlendirilir. MinChildEndpoints çok yüksek ayarlandıysa, uç nokta her zaman düşürülmüş olur. |
 | Çevrimiç. En az bir alt profil uç noktası çevrimiçi bir durumdur. Düşürülmüş durumunda uç nokta yok. |Yukarıdaki bölümüne bakın. | |
 | CheckingEndpoints. En az bir alt profil uç noktası ' CheckingEndpoint '. Uç nokta ' çevrimiçi ' veya ' düşürülmüş ' yok |Yukarıdaki gibi. | |
-| Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durduruldu | |
+| Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durdurulan | |
 
 ## <a name="next-steps"></a>Sonraki adımlar:
 

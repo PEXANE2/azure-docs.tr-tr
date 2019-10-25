@@ -1,5 +1,6 @@
 ---
 title: Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında bilgi edinin.
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83083026b20573d93777e77f44bf8d5480bfdd97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853318"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803430"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory içindeki uygulama ve hizmet sorumlusu nesneleri
 
@@ -89,7 +90,7 @@ Bu örnek senaryoda:
 
 | Adım | Açıklama |
 |------|-------------|
-| 1\.    | Uygulamanın giriş kiracısında uygulama ve hizmet sorumlusu nesneleri oluşturma işlemidir. |
+| 1    | Uygulamanın giriş kiracısında uygulama ve hizmet sorumlusu nesneleri oluşturma işlemidir. |
 | 2    | Contoso ve Fabrikam yöneticileri onayı tamamladıktan sonra, şirketinin Azure AD kiracısında bir hizmet sorumlusu nesnesi oluşturulur ve yöneticinin verdiği izinler atanır. Ayrıca, IK uygulamasının Kullanıcı tarafından bireysel kullanım için izin verecek şekilde yapılandırılıp tasarlanmadığını unutmayın. |
 | 3    | HR uygulamasının (contoso ve Fabrikam) tüketici kiracılarının her biri kendi hizmet sorumlusu nesnesine sahiptir. Her biri, ilgili yönetici tarafından onaylanan izinlerle yönetilen, çalışma zamanında uygulamanın bir örneğinin kullanımını temsil eder. |
 

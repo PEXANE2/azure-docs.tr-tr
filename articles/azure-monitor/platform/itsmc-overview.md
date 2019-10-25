@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6ae1792d9ef3f07ef7258451be79b587692a1694
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177658"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809449"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
 
@@ -72,7 +72,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-5. **Oluştur**'a tıklayın.
+5. **Oluştur**’a tıklayın.
 
 Çözüm kaynağı dağıtıldığında, pencerenin sağ üst kısmında bir bildirim görüntülenir.
 
@@ -94,7 +94,7 @@ ITSM araçlarınızı önceden doldurduktan sonra bağlantı oluşturmak için a
 
 1. **Tüm kaynaklara**gidin, **ServiceDesk (yourçalışmaalanıadı)** öğesini arayın.
 2. Sol bölmedeki **çalışma alanı VERI kaynakları** altında **ITSM bağlantıları**' na tıklayın.
-   ![ITSM bağlantıları @ no__t-1
+   ıTSM bağlantıları ![](media/itsmc-overview/itsm-connections.png)
 
    Bu sayfada bağlantıların listesi görüntülenir.
 3. **Bağlantı ekle**' ye tıklayın.
@@ -124,20 +124,20 @@ Aşağıdaki yordamı kullanın:
 1. Azure portal, **İzle**' ye tıklayın.
 2. Sol bölmede **eylem grupları**' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
 
-    ![Eylem grupları](media/itsmc-overview/action-groups.png)
+    ![Eylem Grupları](media/itsmc-overview/action-groups.png)
 
 3. Eylem grubunuz için **Name** ve **ShortName** sağlayın. Eylem grubunuzu oluşturmak istediğiniz **kaynak grubunu** ve **aboneliği** seçin.
 
     ![Eylem grupları ayrıntısı](media/itsmc-overview/action-groups-details.png)
 
 4. Eylemler listesinde, **eylem türü**için açılan menüden **ıtssm** ' ı seçin. Eylem için bir **ad** girin ve **Ayrıntıları Düzenle**' ye tıklayın.
-5. Log Analytics çalışma alanınızın bulunduğu **aboneliği** seçin. **Bağlantı** adını (ITSM Bağlayıcısı adınız) ve ardından çalışma alanınızın adını seçin. Örneğin, "MyITSMMConnector (MyWorkspace)."
+5. Log Analytics çalışma alanınızın bulunduğu **aboneliği** seçin. **Bağlantı** adını (ITSM Bağlayıcısı adınız) ve ardından çalışma alanınızın adını seçin. Örneğin, "MyITSMMConnector (MyWorkspace)".
 
     ![ITSM eylemi ayrıntıları](media/itsmc-overview/itsm-action-details.png)
 
 6. Açılır menüden **Iş öğesi** türünü seçin.
    Mevcut bir şablonu kullanmayı veya ıTSM ürününüzün gerektirdiği Alanları doldurmayı seçin.
-7. **Tamam**'ı tıklatın.
+7. **Tamam**’a tıklayın.
 
 Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
@@ -167,7 +167,7 @@ Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluştur
 Daha fazla bilgi: [hizmet eşlemesi](../../azure-monitor/insights/service-map.md)
 
 
-## <a name="additional-information"></a>Ek bilgiler
+## <a name="additional-information"></a>Ek Bilgi
 
 ### <a name="data-synced-from-itsm-product"></a>ITSM ürününden eşitlenen veriler
 Olaylar ve değişiklik istekleri, bağlantı yapılandırmasına bağlı olarak ıTSM ürününüzle Log Analytics çalışma alanınıza eşitlenir.
@@ -185,19 +185,19 @@ ServiceDeskWorkItemType_s = "olay"
 
 - ServiceDeskConnectionName
 - Hizmet Masası KIMLIĞI
-- Durumunda
+- Eyalet
 - Aciliyet
-- ACT
-- Priority
-- Lider
+- Etki
+- Öncelik
+- Önem Yükseltme
 - Oluşturan
 - Çözümleyen
 - Kapatan
 - Kaynak
 - Atanan
-- Category
+- Kategori
 - Başlık
-- Description
+- Açıklama
 - Oluşturulma tarihi
 - Kapatma tarihi
 - Çözümlenme tarihi
@@ -218,14 +218,14 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Atanan
 - Başlık
 - Tür
-- Category
-- Durumunda
-- Lider
+- Kategori
+- Eyalet
+- Önem Yükseltme
 - Çakışma durumu
 - Aciliyet
-- Priority
-- Esini
-- ACT
+- Öncelik
+- Risk
+- Etki
 - Atanan
 - Oluşturulma tarihi
 - Kapatma tarihi
@@ -235,7 +235,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Description
+- Açıklama
 - Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
@@ -243,21 +243,21 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | Log Analytics alanı | ServiceNow alanı |
 |:--- |:--- |
 | ServiceDeskId_s| Sayı |
-| IncidentState_s | Durumunda |
+| IncidentState_s | Eyalet |
 | Urgency_s |Aciliyet |
-| Impact_s |ACT|
-| Priority_s | Priority |
+| Impact_s |Etki|
+| Priority_s | Öncelik |
 | CreatedBy_s | Açan |
 | ResolvedBy_s | Çözümleyen|
 | ClosedBy_s  | Kapatan |
 | Source_s| Kişi türü |
 | AssignedTo_s | Şuna atandı  |
-| Category_s | Category |
+| Category_s | Kategori |
 | Title_s|  Kısa açıklama |
 | Description_s|  Notlar |
 | CreatedDate_t|  Makta |
 | ClosedDate_t| kapandı|
-| ResolvedDate_t|Çözüldü|
+| ResolvedDate_t|Çözülüyor|
 | Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıkış verileri
@@ -270,19 +270,19 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | AssignedTo_s | Şuna atandı  |
 | Title_s|  Kısa açıklama |
 | Type_s|  Tür |
-| Category_s|  Category |
-| CRState_s|  Durumunda|
+| Category_s|  Kategori |
+| CRState_s|  Eyalet|
 | Urgency_s|  Aciliyet |
-| Priority_s| Priority|
-| Risk_s| Esini|
-| Impact_s| ACT|
+| Priority_s| Öncelik|
+| Risk_s| Risk|
+| Impact_s| Etki|
 | RequestedDate_t  | İstek tarihine göre |
 | ClosedDate_t | Kapatma tarihi |
 | PlannedStartDate_t  |     Planlanan başlangıç tarihi |
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Description |
+| Description_s | Açıklama |
 | Bilgisayar  | Yapılandırma öğesi |
 
 
@@ -297,7 +297,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 2. ServiceNow 'daki veriler Log Analytics ile eşitlenmediği için ServiceNow örneğinin uyku modunda olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Aksi takdirde, sorunu bildirin.
 3. Log Analytics uyarılar harekete geçse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa veya yapılandırma öğeleri, iş öğelerine ya da diğer genel bilgiler için oluşturulmadıysa veya bağlanmadıysa, aşağıdaki yerlere bakın:
    -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü** için sizi yönlendirir. Daha fazla bilgi için LogType_S ile günlük kayıtlarına bakın.
-   - **Günlük arama** sayfası: `*`ServiceDeskLog_CL @ no__t-2 sorgusunu kullanarak hataları/ilgili bilgileri doğrudan görüntüleyin.
+   - **Günlük arama** sayfası: `*`ServiceDeskLog_CL`*`sorgusunu kullanarak hataları/ilgili bilgileri doğrudan görüntüleyin.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
 1.  Web uygulaması dağıtımıyla ilgili herhangi bir sorun olması durumunda, kaynak oluşturmak/dağıtmak için belirtilen abonelikte yeterli izinlere sahip olduğunuzdan emin olun.
@@ -305,7 +305,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 3.  Service Bus geçişi ad alanı oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı Azure Portal oluştururken](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) da oluşturabilirsiniz.
 
 
-## <a name="contact-us"></a>Bizimle iletişime geçin
+## <a name="contact-us"></a>Bize ulaşın
 
 BT Hizmet Yönetimi Bağlayıcısı tüm sorgular veya geri bildirimler için [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)' de bizimle iletişim kurun.
 

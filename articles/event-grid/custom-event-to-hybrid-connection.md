@@ -1,22 +1,22 @@
 ---
-title: Karma bağlantı - Event Grid, Azure CLI özel olaylar gönderin
+title: Karma bağlantıya özel olaylar gönder-Event Grid
 description: Azure Event Grid'i ve Azure CLI'yı kullanarak bir konu yayımlayın ve o olaya abone olun. Uç nokta için karma bir bağlantı kullanılır.
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 02/02/2019
+ms.date: 10/22/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 270059537fc8d06648c86088b22aef5b78ff00ec
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 7e1493903cdb51191c942762895644ee12c49f10
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606305"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790251"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Öğretici: Azure CLI ve Event Grid ile özel olayları Azure Relay Karma Bağlantılar’a yönlendirme
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Öğretici: Azure CLı ve Event Grid ile Azure Relay Karma Bağlantılar özel olayları yönlendirme
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Relay Karma Bağlantılar, desteklenen olay işleyicilerinden biridir. Genel uç noktası olmayan uygulamalardan alınan olayları işlemeniz gerektiğinde olay işleyicisi olarak karma bağlantıları kullanırsınız. Bu uygulamalar kurumsal ağınızın içinde olabilir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz. Olayları karma bağlantıya gönderirsiniz.
 
@@ -27,9 +27,9 @@ Bu makalede zaten bir karma bağlantınız ve dinleyici uygulamanız olduğu var
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!NOTE]
-> Yerel makinenizde Azure CLI kullanıyorsanız, Azure CLI Sürüm 2.0.56 kullanın veya daha büyük. Azure CLI'ın en son sürümü yükleme hakkında yönergeler için bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+> Yerel makinenizde Azure CLı kullanıyorsanız, Azure CLı sürüm 2.0.56 veya üstünü kullanın. Azure CLı 'nın en son sürümünü yükleme yönergeleri için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Kaynak grubu oluşturun
+## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Event Grid konuları Azure kaynaklarıdır ve bir Azure kaynak grubuna yerleştirilmelidir. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal koleksiyondur.
 
@@ -51,7 +51,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="subscribe-to-a-custom-topic"></a>Özel konuya abone olma
 
-Event Grid’e hangi olayları izlemek istediğinizi bildirmek için bir Event Grid konusuna abone olursunuz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone olur ve uç nokta için karma bağlantının kaynak kimliğini geçirir. Karma bağlantı kimliği şu biçimdedir:
+İzlemek istediğiniz olayları Event Grid söylemek için bir Event Grid konusuna abone olursunuz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone olur ve uç nokta için karma bağlantının kaynak KIMLIĞINI geçirir. Karma bağlantı kimliği şu biçimdedir:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
@@ -80,7 +80,7 @@ Abonelik için bir [sona erme tarihi](concepts.md#event-subscription-expiration)
 
 Karma bağlantıdan olayları alabilecek bir uygulamaya ihtiyacınız vardır. [Microsoft Azure Event Grid Hybrid Connection Consumer sample for C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination), bu işlemi gerçekleştirir. Önkoşul adımlarını tamamladınız.
 
-1. Visual Studio 2019 veya sonrası olduğundan emin olun.
+1. Visual Studio 2019 veya sonraki bir sürüme sahip olduğunuzdan emin olun.
 
 1. Depoyu yerel makinenize kopyalayın.
 

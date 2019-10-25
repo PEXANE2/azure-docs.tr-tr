@@ -14,86 +14,93 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: a14cb3035c159c82df44f686da7f7b78ef942943
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 277333cbca5a31fdc08ae943d2ff61c35d2c9310
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035861"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802368"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasındaki Key Vault başvurularını kullanma
 
-Bu öğreticide, Azure Key Vault ile birlikte Azure uygulama yapılandırma hizmetini kullanmayı öğreneceksiniz. Bunlar, çoğu uygulama dağıtımında yan yana kullanılacak tamamlayıcı hizmetlerdir. Uygulama yapılandırması, birlikte kullanmanıza yardımcı olmak için Key Vault depolanan değerlere başvuruda bulunan anahtarlar oluşturmanıza olanak sağlar. Bunu yaptığınızda, uygulama yapılandırması URI 'yi değerin kendisi yerine Key Vault değerine depolar. Uygulamanız uygulama yapılandırması istemci sağlayıcısını kullanarak bu anahtarın değerini uygulama yapılandırmasında depolanan diğer tüm anahtarlarınız gibi alır. İstemci sağlayıcısı bunu bir Key Vault başvurusu olarak tanır ve değeri almak için Key Vault çağırır. Uygulamanız hem uygulama yapılandırması hem de Key Vault için düzgün şekilde kimlik doğrulaması yapmaktan sorumludur. İki hizmet doğrudan iletişim kurmaz.
+Bu öğreticide, Azure Key Vault ile birlikte Azure uygulama yapılandırma hizmetini kullanmayı öğreneceksiniz. Uygulama yapılandırması ve Key Vault, çoğu uygulama dağıtımında yan yana kullanılan tamamlayıcı hizmetlerdir.
 
-Bu öğreticide, kodunuzda Key Vault başvurularını nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+Uygulama yapılandırması, Key Vault depolanan değerlere başvuruda bulunan anahtarlar oluşturarak Hizmetleri birlikte kullanmanıza yardımcı olur. Uygulama yapılandırması böyle anahtarlar oluşturduğunda, değerlerinin kendileri yerine Key Vault değerlerinin URI 'Lerini depolar.
 
-Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
+Uygulamanız, uygulama yapılandırmasında depolanan diğer anahtarların yaptığı gibi Key Vault başvurularını almak için uygulama yapılandırma istemci sağlayıcısını kullanır. Bu durumda, uygulama yapılandırmasında depolanan değerler Key Vault değerlere başvuran URI 'Lerdir. Bunlar Key Vault değerler veya kimlik bilgileri değildir. İstemci sağlayıcısı anahtarları Key Vault başvuru olarak tanıdığından, değerlerini almak için Key Vault kullanır.
+
+Uygulamanız hem uygulama yapılandırması hem de Key Vault için düzgün şekilde kimlik doğrulaması yapmaktan sorumludur. İki hizmet doğrudan iletişim kurmaz.
+
+Bu öğretici kodunuzda Key Vault başvuruların nasıl uygulanacağını gösterir. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+
+Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. Örneğin, [Visual Studio Code](https://code.visualstudio.com/) Windows, MacOS ve Linux işletim sistemleri için kullanılabilen platformlar arası bir kod düzenleyicisidir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun
-> * Bu anahtarın değerine bir ASP.NET Core Web uygulamasından erişin
+> * Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturun.
+> * Bu anahtarın değerine bir ASP.NET Core Web uygulamasından erişin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/download)' yi yüklemelisiniz.
+Bu öğreticiye başlamadan önce [.NET Core SDK](https://dotnet.microsoft.com/download)yükleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** seçeneğini belirleyin
+1. Azure portal, sol üst köşedeki **kaynak oluştur** seçeneğini belirleyin:
 
-    ![Key Vault oluşturma işlemi tamamlandıktan sonra alınan çıktı](./media/quickstarts/search-services.png)
-2. Arama kutusuna **Key Vault** yazın.
-3. Sonuç listesinden **Key Vault**’u seçin.
-4. Key Vault bölümünde **Oluştur**’u seçin.
-5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **contoso-vault2**kullanıyoruz. 
-    - **Abonelik**: Bir abonelik seçin.
-    - **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
-    - **Konum** açılır menüsünden bir konum seçin.
-    - Diğer seçenekleri varsayılan değerlerinde bırakın.
-6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
+    ![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/search-services.png)
+1. Arama kutusuna **Key Vault**girin.
+1. Sonuçlar listesinden sol taraftaki **Anahtar kasaları** ' nı seçin.
+1. **Anahtar kasaları**' nda **Ekle**' yi seçin.
+1. **Anahtar Kasası oluşturma**' da sağ tarafta aşağıdaki bilgileri sağlayın:
+    - Abonelik seçmek için **abonelik** ' ı seçin.
+    - **Kaynak grubu**' nda **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    - **Anahtar Kasası adında**, benzersiz bir ad gereklidir. Bu öğretici için **contoso-vault2**girin.
+    - **Bölge** açılan listesinde bir konum seçin.
+1. Diğer **Anahtar Kasası oluşturma** seçeneklerini varsayılan değerleriyle bırakın.
+1. **Oluştur**'u seçin.
 
 Bu noktada, Azure hesabınız, bu yeni kasaya erişme yetkisine sahip tek bir hesaptır.
 
-![Key Vault oluşturma işlemi tamamlandıktan sonra alınan çıktı](./media/quickstarts/vault-properties.png)
+![Anahtar Kasası oluşturma işlemi tamamlandıktan sonra çıkış](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 
-Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu durumda, Key Vault alımı test etmek için kullandığımız bir ileti ekleyeceğiz. İleti **ileti** olarak adlandırılır ve Içindeki **Key Vault Hello** değerini depolarız.
+Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmeniz gerekir. Bu durumda, Key Vault alımı test etmek için kullanabileceğiniz bir ileti ekleyin. İleti **ileti**olarak adlandırılır ve "Hello 'dan Key Vault" değerini depolar.
 
 1. Key Vault Özellikler sayfalarında **gizli**dizileri ' ni seçin.
-1. **Oluştur/İçeri Aktar**’a tıklayın.
-1. **Bir gizli dizi oluştur** ekranında aşağıdaki değerleri seçin:
-    - **Karşıya yükleme seçenekleri**: El ile.
-    - **Ad**: ileti
-    - **Değer**: Key Vault 'den Merhaba
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
+1. **Oluştur/Içeri aktar**' ı seçin.
+1. Gizli dizi **Oluştur** bölmesinde aşağıdaki değerleri girin:
+    - **Karşıya yükleme seçenekleri**: **el ile**girin.
+    - **Ad**: **ileti**girin.
+    - **Değer**: **Key Vault Merhaba**yazın.
+1. Diğerini varsayılan değerleriyle **gizli bir özellikler oluşturmamaya** ayrılın.
+1. **Oluştur**'u seçin.
 
-## <a name="add-a-key-vault-reference-to-app-config"></a>App config 'e Key Vault başvurusu ekleme
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
-1. **Yapılandırma Gezgini** ' ne tıklayın
+1. **Yapılandırma Gezgini**' ni seçin.
 
-1. **+** @No__t-1**Anahtar Kasası başvurusu** ' na tıklayın ve aşağıdaki değerleri seçin:
-    - **Anahtar**: TestApp: ayarlar: KeyVaultMessage
-    - **Etiket**: boş bırakın
-    - **Abonelik**, **kaynak grubu**, **anahtar kasası**: önceki bölümde oluşturduğunuz Key Vault karşılık gelen seçenekleri seçin.
-    - **Gizli**dizi: önceki bölümde oluşturduğunuz gizli dizi **iletisini** seçin.
+1. **+ Oluştur** > **Anahtar Kasası başvurusu**' nu seçin ve ardından aşağıdaki değerleri belirtin:
+    - **Anahtar**: **TestApp: Settings: keyvaultmessage**öğesini seçin.
+    - **Etiket**: Bu değeri boş bırakın.
+    - **Abonelik**, **kaynak grubu**ve **Anahtar Kasası**: önceki bölümde oluşturduğunuz anahtar kasasında bunlara karşılık gelen değerleri girin.
+    - **Gizli**: önceki bölümde oluşturduğunuz gizli anahtar adlı **iletiyi** seçin.
 
 ## <a name="connect-to-key-vault"></a>Key Vault Bağlan
 
-1. Bu öğretici için, Anahtar Kasası kimlik doğrulaması için bir hizmet sorumlusu kullanacaksınız. Bu hizmet sorumlusunu oluşturmak için Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın:
+1. Bu öğreticide, Key Vault kimlik doğrulaması için bir hizmet sorumlusu kullanırsınız. Bu hizmet sorumlusunu oluşturmak için Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanın:
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Bu işlem, bir dizi anahtar/değer çifti döndürür. 
+    Bu işlem bir dizi anahtar/değer çiftini döndürür:
 
     ```console
     {
@@ -112,26 +119,30 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu du
 
 1. Hizmet sorumlusunun anahtar kasanıza erişmesine izin vermek için aşağıdaki komutu çalıştırın:
 
-        az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+    ```
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+    ```
 
-1. Gizli anahtar ve *ClientSecret* için gizli diziler yöneticisine gizli diziler ekleyin. Bu komutların *. csproj* dosyasıyla aynı dizinde yürütülmesi gerekir.
+1. Aşağıdaki komutlarda, gizli *anahtar ve ClientSecret* yerine gizli diziler Yöneticisi 'ne *gizli dizi ekleyin* . Komutların *. csproj* dosyasıyla aynı dizinde çalıştırılması gerekir.
 
-        dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>        
-        dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    ```
+    dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
+    dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    ```
 
 > [!NOTE]
 > Bu Key Vault kimlik bilgileri yalnızca uygulamanız içinde kullanılır. Uygulamanız bu kimlik bilgileriyle Key Vault doğrudan kimlik doğrulaması yapar. Bunlar hiçbir şekilde uygulama yapılandırma hizmetine geçirilmez.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Kodunuzu Key Vault bir başvuru kullanacak şekilde güncelleştirin
 
-1. *Program.cs*'i açın ve gerekli paketlere başvurular ekleyin.
+1. *Program.cs*'i açın ve aşağıdaki gerekli paketlere başvuruları ekleyin:
 
     ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-1. @No__t-0 yöntemini, `config.AddAzureAppConfiguration()` yöntemini çağırarak uygulama yapılandırmasını kullanacak şekilde güncelleştirin. Key Vault yeni bir @no__t 1 başvurusunu geçirerek `UseAzureKeyVault` seçeneğini ekleyin.
+1. `config.AddAzureAppConfiguration` metodunu çağırarak uygulama yapılandırmasını kullanmak için `CreateWebHostBuilder` yöntemini güncelleştirin. Key Vault yeni bir `KeyVaultClient` başvuruya geçirilecek `UseAzureKeyVault` seçeneğini ekleyin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -154,7 +165,9 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu du
             .UseStartup<Startup>();
     ```
 
-1. Uygulama yapılandırmasına bağlantıyı başlatırken *Keyvaultclient* başvurusunu `UseAzureKeyVault` yöntemine geçirdikten sonra, Key Vault başvuruların değerlerine, normal uygulama yapılandırma anahtarlarının değerlerine erişirken aynı şekilde erişebilirsiniz. Bu işlemi eylemde görmek için, Görünümler > giriş dizininde *Index. cshtml* dosyasını açın. İçeriğini şu kodla değiştirin:
+1. Uygulama yapılandırmasına bağlantıyı başlattığınızda, `UseAzureKeyVault` yöntemine `KeyVaultClient` başvurusunu geçirtiniz. Başlangıçtan sonra, Key Vault başvuruların değerlerine, normal uygulama yapılandırma anahtarlarının değerlerine erişirken aynı şekilde erişebilirsiniz.
+
+    Bu işlemi eylemde görmek için, **görünümler** > **giriş** klasöründe *Index. cshtml* dosyasını açın. İçeriğini şu kodla değiştirin:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -174,22 +187,25 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu du
         and @Configuration["TestApp:Settings:KeyVaultMessage"]</h1>
     ```
 
-    *TestApp: Settings: KeyVaultMessage* Key Vault Reference değerine, *TestApp: Settings: Message* yapılandırma değeri ile aynı şekilde erişirsiniz.
+    **TestApp: Settings: Message**yapılandırma değeri ile aynı şekilde, **TestApp: Settings: keyvaultmessage** Key Vault Reference değerine erişirsiniz.
 
 ## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
 1. .NET Core CLI kullanarak uygulamayı derlemek için komut kabuğu 'nda aşağıdaki komutu çalıştırın:
 
-        dotnet build
+    ```
+    dotnet build
+    ```
 
-2. Oluşturma başarıyla tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
+1. Oluşturma işlemi tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu kullanın:
 
-        dotnet run
+    ```
+    dotnet run
+    ```
 
-3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000` ' a gidin.
+1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000` ' a gidin.
 
-    ![Hızlı başlangıç uygulaması başlatma yerel](./media/key-vault-reference-launch-local.png)
-
+    ![Hızlı başlangıç yerel uygulama başlatma](./media/key-vault-reference-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -197,7 +213,7 @@ Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu du
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, uygulama yapılandırmasına erişimi kolaylaştırmak ve uygulamanız için kimlik bilgisi yönetimini geliştirmek üzere bir Azure yönetilen hizmet kimliği eklediniz. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
+Bu öğreticide, Key Vault depolanan bir değere başvuran bir uygulama yapılandırma anahtarı oluşturdunuz. Uygulama yapılandırmasına ve Key Vault erişimi kolaylaştıran Azure tarafından yönetilen bir hizmet kimliği ekleme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [CLI örnekleri](./cli-samples.md)
+> [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)

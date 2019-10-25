@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9fcac058a510b8b7fed5b3967bbbf439dd4c0f71
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561350"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786745"
 ---
-# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
+# <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl kullanılır: Azure AD self servis parola sıfırlama
 
 Self servis parola sıfırlama (SSPR) nasıl çalışır? Bu seçenek arabirimde ne anlama geliyor? Azure Active Directory (Azure AD) SSPR hakkında daha fazla bilgi edinmek için okumaya devam edin.
 
@@ -34,9 +34,9 @@ Bir kullanıcı parola sıfırlama portalına gittiğinde şunları öğrenmek i
 
 Parola sıfırlama sayfasının arkasındaki mantık hakkında bilgi edinmek için aşağıdaki adımları okuyun:
 
-1. Kullanıcı, **Hesap bağlantıhesabınıza erişemez** veya doğrudan öğesine [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)gidemeyeceğini seçer.
+1. Kullanıcı, **Hesap bağlantıhesabınıza erişemez** veya doğrudan [https://aka.ms/sspr](https://passwordreset.microsoftonline.com)gider.
    * Tarayıcı yerel ayarlarına bağlı olarak deneyim uygun dilde işlenir. Parola sıfırlama deneyimi, Office 365 'nin desteklediği dillere yereldir.
-   * Parola sıfırlama portalını farklı bir yerelleştirilmiş dilde görüntülemek için, parola sıfırlama URL 'sinin sonuna "? Mkt =" ekleyerek Ispanyolca [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)olarak yerelleştirilmesi gereken örneği ekleyin.
+   * Parola sıfırlama portalını farklı bir yerelleştirilmiş dilde görüntülemek için, parola sıfırlama URL 'sinin sonuna, Ispanyolca [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us)yerelleştirilmesi gereken örnekle "? Mkt =" ekleyin.
 2. Kullanıcı bir kullanıcı KIMLIĞI girer ve bir CAPTCHA geçirir.
 3. Azure AD, kullanıcının bu özelliği aşağıdaki denetimleri yaparak kullanabildiğini doğrular:
    * Kullanıcının bu özelliğin etkin olduğunu ve atanmış bir Azure AD lisansının olduğunu denetler.
@@ -58,8 +58,8 @@ SSPR etkinse, kimlik doğrulama yöntemleri için aşağıdaki seçeneklerden en
 
 * Mobil uygulama bildirimi
 * Mobil uygulama kodu
-* Email
-* Mobil telefon
+* E-posta
+* Cep telefonu
 * Ofis telefonu
 * Güvenlik soruları
 
@@ -88,14 +88,20 @@ Microsoft Authenticator uygulaması gibi bir mobil uygulama kullanırken, parola
 * Yöneticiler bir parolayı sıfırlamak için bir yöntem kullanılmasını gerektirdiğinde, doğrulama kodu kullanılabilir tek seçenektir.
 * Yöneticiler bir parolayı sıfırlamak için iki yöntem gerektirdiğinde, kullanıcılar herhangi bir etkin yönteme ek olarak bildirim **ya** **da** doğrulama kodunu kullanabilir.
 
-| Sıfırlama için gereken yöntemlerin sayısı | Biriyle | İki |
+| Sıfırlamak için gereken Yöntem sayısı | Biriyle | İki |
 | :---: | :---: | :---: |
-| Mobil uygulama özellikleri kullanılabilir | Kod | Kod veya bildirim |
+| Mobil uygulama özellikleri kullanılabilir | Kodlayın | Kod veya bildirim |
 
-Kullanıcılar, self servis parola sıfırlama [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip değildir. Kullanıcılar mobil [https://aka.ms/mfasetup](https://aka.ms/mfasetup)uygulamalarını tarihinde veya yeni güvenlik bilgileri kaydı [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)önizlemesine kaydedebilirsiniz.
+Kullanıcıların [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)' dan self servis parola sıfırlama kaydı sırasında mobil uygulamalarını kaydetme seçeneği yoktur. Kullanıcılar mobil uygulamalarını [https://aka.ms/mfasetup](https://aka.ms/mfasetup)'e veya [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)yeni güvenlik bilgileri kayıt önizlemeye kaydedebilir.
 
 > [!WARNING]
-> Kullanıcıların yeni deneyimle [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)erişebilmeleri için, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) için yakınsama kaydını](concept-registration-mfa-sspr-converged.md) etkinleştirmeniz gerekir.
+> Kullanıcıların [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)yeni deneyimle erişebilmeleri için, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) için yakınsama kaydını](concept-registration-mfa-sspr-converged.md) etkinleştirmeniz gerekir.
+
+> [!IMPORTANT]
+> Kimlik doğrulayıcı uygulaması, bir 1-Gate ilkesi yapılandırılırken tek kimlik doğrulama yöntemi olarak seçilemez. Benzer şekilde, bir 2 kapıları ilkesi yapılandırılırken kimlik doğrulayıcı uygulaması ve yalnızca bir ek yöntem seçilemez.
+> Daha sonra, bir yöntem olarak Authenticator uygulamasını içeren SSPR ilkelerini yapılandırırken, bir 1-Gate ilkesi yapılandırılırken en az bir ek yöntem seçilmelidir ve 2 kapıları ilkesi yapılandırılırken en az iki ek yöntem seçilmelidir.
+> Bu gereksinimin nedeni, geçerli SSPR kayıt deneyiminin kimlik doğrulayıcı uygulamasını kaydetme seçeneğini içermediğinden oluşur. Kimlik doğrulayıcı uygulamasını kaydetme seçeneği, [self servis parola sıfırlama ve Azure Multi-Factor Authentication (Genel Önizleme) için yeni Yakınsanan kayda](concept-registration-mfa-sspr-converged.md)dahildir.
+> Yalnızca Authenticator uygulamasını (1 kapı ilkeleri için) veya kimlik doğrulayıcı uygulamasını (2 kapıları ilkeleri için) kullanan ilkelere izin vermek, kullanıcıların, yeni bir tane kullanmak üzere yapılandırılıncaya kadar SSPR için kaydolmaları engellenmesine neden olabilir kayıt deneyimi.
 
 ### <a name="change-authentication-methods"></a>Kimlik doğrulama yöntemlerini Değiştir
 
@@ -103,8 +109,8 @@ Sıfırlama veya kilit açma için yalnızca bir gerekli kimlik doğrulama yönt
 
 | Kayıtlı yöntemlerin sayısı | Gereken Yöntem sayısı | Sonuç |
 | :---: | :---: | :---: |
-| 1 veya daha fazla | 1\. | **Sıfırlayabiliyor** veya kilit açıldı |
-| 1\. | 2 | Sıfırlanamıyor veya kilit **açılamıyor** |
+| 1 veya daha fazla | 1 | **Sıfırlayabiliyor** veya kilit açıldı |
+| 1 | 2 | Sıfırlanamıyor veya kilit **açılamıyor** |
 | 2 veya daha fazla | 2 | **Sıfırlayabiliyor** veya kilit açıldı |
 
 Bir kullanıcının kullanabileceği kimlik doğrulama yöntemlerinin türlerini değiştirirseniz, kullanıcıların kullanılabilir en az miktarda veri yoksa SSPR 'yi kullanmalarını istemeden durdurabilirsiniz.
@@ -121,12 +127,12 @@ Bir kullanıcının kullanabileceği kimlik doğrulama yöntemlerinin türlerini
 Bu seçeneğin etkinleştirilmesi, kullanıcının Azure AD kullanan herhangi bir uygulamada oturum açtıklarında parola sıfırlama kaydını tamamlamasını gerektirir. Bu iş akışı aşağıdaki uygulamaları içerir:
 
 * Office 365
-* Azure portal
+* Azure portalı
 * Erişim Paneli
 * Federasyon uygulamaları
 * Azure AD kullanarak özel uygulamalar
 
-Kayıt gereksinimi devre dışı bırakıldığında, kullanıcılar el ile kaydobilirler. Bunlar, erişim paneli [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 'ndeki **profil** sekmesinde bulunan **parola sıfırlama** bağlantısını ziyaret edebilir veya seçebilir.
+Kayıt gereksinimi devre dışı bırakıldığında, kullanıcılar el ile kaydobilirler. [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) ziyaret edebilir veya erişim panelindeki **profil** sekmesinde **parola sıfırlama için kaydol** bağlantısını seçebilir.
 
 > [!NOTE]
 > Kullanıcılar, **iptal** ' i seçerek veya pencereyi kapatarak parola sıfırlama kayıt portalını kapatabilir. Ancak kaydolmaları tamamlanana kadar her oturum açtıklarında kaydolmaları istenir.
@@ -149,7 +155,7 @@ Bu seçenek **Evet**olarak ayarlanırsa, parolalarını sıfırlayan kullanıcı
 
 Bu seçenek **Evet**olarak ayarlanırsa, *Tüm Yöneticiler* Azure AD 'de dosya üzerinde birincil e-posta adresine bir e-posta alır. E-posta, SSPR kullanarak başka bir yöneticinin parolalarını değiştirdiğinizi bildirir.
 
-Örnek: Bir ortamda dört yönetici vardır. Yönetici A, SSPR kullanarak parolalarını sıfırlar. Yöneticiler B, C ve D bir e-posta göndererek parola sıfırlamasının uyarı almasını ister.
+Örnek: bir ortamda dört yönetici vardır. Yönetici A, SSPR kullanarak parolalarını sıfırlar. Yöneticiler B, C ve D bir e-posta göndererek parola sıfırlamasının uyarı almasını ister.
 
 ## <a name="on-premises-integration"></a>Şirket içi tümleştirme
 
@@ -188,11 +194,11 @@ Azure AD self servis parola sıfırlama, Active Directory ' de yönetici tarafı
 
 Parola sıfırlama ve değiştirme, tüm işletmeler arası (B2B) yapılandırmalarda tam olarak desteklenmektedir. B2B Kullanıcı parolası sıfırlama, aşağıdaki üç durumda desteklenir:
 
-* **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: Ortaklığı yaptığınız kuruluşun mevcut bir Azure AD kiracısı varsa, *söz konusu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate*aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Office 365 müşterileri için ek ücret alınmaz ve [parola yönetimi ile çalışmaya başlama](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) Kılavuzu ' nda bulunan adımları izleyerek etkinleştirilebilir.
-* Self Servis kaydolma **ile kaydolan kullanıcılar** : Ortaklığı yaptığınız kuruluş, bir kiracıya ulaşmak için [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandığımızda, kaydoldukları e-posta ile parolayı sıfırlayacağız.
-* **B2B kullanıcıları**: Yeni [Azure AD B2B özellikleri](../active-directory-b2b-what-is-azure-ad-b2b.md) kullanılarak oluşturulan tüm yeni B2B kullanıcıları, parolaları, davet işlemi sırasında kayıtlı olan e-postalarla sıfırlayabilecektir.
+* **Mevcut bir Azure AD kiracısına sahip bir iş ortağı kuruluştan kullanıcılar**: BIR Azure AD kiracısında ortaklığı varsa, *Bu kiracıda hangi parola sıfırlama ilkelerinin etkin olduğunu dikkate*aldık. Parola sıfırlamanın çalışması için, iş ortağı kuruluşun yalnızca Azure AD SSPR 'nin etkinleştirildiğinden emin olması gerekir. Office 365 müşterileri için ek ücret alınmaz ve [parola yönetimi ile çalışmaya başlama](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) Kılavuzu ' nda bulunan adımları izleyerek etkinleştirilebilir.
+* Self Servis kaydolma **ile kaydolan kullanıcılar** : bir kiracıya ulaşmak üzere [self servis kaydolma](../users-groups-roles/directory-self-service-signup.md) özelliğini kullandıysanız, kendilerine kaydoldukları e-posta ile parolayı sıfırlayacağız.
+* **B2B kullanıcıları**: yenı [Azure AD B2B özellikleri](../active-directory-b2b-what-is-azure-ad-b2b.md) KULLANıLARAK oluşturulan tüm yeni B2B kullanıcıları, parolaları, davet işlemi sırasında kayıtlı olan e-postalarla sıfırlayabilecektir.
 
-Bu senaryoyu test etmek için, bu https://passwordreset.microsoftonline.com iş ortağı kullanıcılarından birine gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.
+Bu senaryoyu test etmek için, bu iş ortağı kullanıcılarından birine sahip https://passwordreset.microsoftonline.com gidin. Alternatif bir e-posta veya kimlik doğrulama e-postası tanımlanmışsa, parola sıfırlama beklendiği gibi çalışmaktadır.
 
 > [!NOTE]
 > Hotmail.com, Outlook.com veya diğer kişisel e-posta adreslerinden gelen Azure AD kiracınıza konuk erişimi verilen Microsoft hesapları Azure AD SSPR 'yi kullanamaz. Microsoft hesabı makalemize [oturum açabilmeniz](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) için içinde bulunan bilgileri kullanarak parolalarını sıfırlamaları gerekir.
@@ -211,7 +217,7 @@ Aşağıdaki makaleler, Azure AD aracılığıyla parola sıfırlama konusunda e
 * [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
 * [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [Bir arıza olduğunu düşünüyorum. SSPR’de nasıl sorun giderebilirim?](active-directory-passwords-troubleshoot.md)
+* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)
 * [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Kullanılabilir Azure AD kimlik doğrulama yöntemleri ve gereken miktar"

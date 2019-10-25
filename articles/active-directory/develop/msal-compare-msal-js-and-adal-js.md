@@ -1,5 +1,6 @@
 ---
-title: MSAL. js ve ADAL. js arasındaki farklar | Mavisi
+title: MSAL. js ve ADAL. js arasındaki farklar
+titleSuffix: Microsoft identity platform
 description: JavaScript (MSAL. js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL. js) için Azure AD kimlik doğrulama kitaplığı ve hangisinin kullanılacağını seçme arasındaki farklar hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7149b9d871c43af083774ffb799255e0d1144113
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d831f9f1cf8dbf565d569f63ee6215fac80949d
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429953"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803178"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
 
@@ -59,9 +60,9 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
 
     v 2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Diğer bir deyişle, uygulamanızın MS Graph gibi bir kaynak için izinleri olan belirteçleri istemesi gerektiğinde, kitaplık yöntemlerine geçirilen değerlerin farkı aşağıdaki gibidir:
 
-    v 1.0: Resource = https @ no__t-0//Graf. Microsoft. com
+    v 1.0: kaynak = https\://graph.microsoft.com
 
-    v 2.0: kapsam = https @ no__t-0//Graf. Microsoft. com/user. Read
+    v 2.0: kapsam = https\://graph.microsoft.com/User.Read
 
     Şu biçimdeki API URI 'sini kullanarak tüm kaynak API 'leri için kapsam isteyebilirsiniz: Appıduri/Scope örneğin: https: \//mytenant. onmicrosoft. com/uygulamaı/API. Read
 
@@ -89,7 +90,7 @@ V 2.0 'da, `https://login.microsoftonline.com/common` yetkilisini kullanarak, ku
 
 * V 1.0 API 'Leri için kapsamlar
 
-    MSAL. js kullanarak V 1.0 API 'Leri için belirteçler alırken, API 'de kayıtlı tüm statik kapsamları, API 'nin uygulama KIMLIĞI URI 'sine Scope as @no__t ekleyerek isteyebilirsiniz. Örnek:
+    MSAL. js kullanarak V 1.0 API 'Leri için belirteçler alırken API 'de kayıtlı tüm statik kapsamları, API 'nin uygulama KIMLIĞI URI 'sine kapsam olarak `.default` ekleyerek isteyebilirsiniz. Örnek:
 
     ```javascript
     var request = {

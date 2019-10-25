@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/30/2019
-ms.author: kevin
+ms.date: 10/21/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 90544e182eb25f53232cee9a4dd0c05bd25508a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cf6444b155830326f4876d2d65bcdaa5923fc35
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988482"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788807"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda yedekleme ve geri yükleme
 
@@ -25,11 +25,11 @@ Azure SQL veri ambarı 'nda yedekleme ve geri yüklemeyi nasıl kullanacağını
 
 *Veri ambarı anlık görüntüsü* , veri Ambarınızı kurtarmak veya önceki bir duruma kopyalamak için yararlanabileceğiniz bir geri yükleme noktası oluşturur.  SQL veri ambarı dağıtılmış bir sistem olduğundan, veri ambarı anlık görüntüsü Azure Storage 'da bulunan birçok dosyadan oluşur. Anlık görüntüler, veri Ambarınızda depolanan verilerden artımlı değişiklikler yakalar.
 
-*Veri ambarı geri yüklemesi* , var olan veya silinen bir veri ambarının geri yükleme noktasından oluşturulan yeni bir veri ambarıdır. Veri Ambarınızı geri yükleme, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır çünkü yanlışlıkla bozulma veya silme işleminden sonra verilerinizi yeniden oluşturur. Veri ambarı, test veya geliştirme amaçlarıyla veri ambarınızın kopyalarını oluşturmak için de güçlü bir mekanizmadır.  SQL veri ambarı geri yükleme ücretleri, veritabanı boyutuna ve kaynak ve hedef veri ambarına konuma göre farklılık gösterebilir. Aynı bölge içinde ortalama olarak, geri yükleme ücretleri genellikle 20 dakika sürer. 
+*Veri ambarı geri yüklemesi* , var olan veya silinen bir veri ambarının geri yükleme noktasından oluşturulan yeni bir veri ambarıdır. Veri Ambarınızı geri yükleme, herhangi bir iş sürekliliği ve olağanüstü durum kurtarma stratejisinin önemli bir parçasıdır çünkü yanlışlıkla bozulma veya silme işleminden sonra verilerinizi yeniden oluşturur. Veri ambarı, test veya geliştirme amaçlarıyla veri ambarınızın kopyalarını oluşturmak için de güçlü bir mekanizmadır.  SQL veri ambarı geri yükleme ücretleri, veritabanı boyutuna ve kaynak ve hedef veri ambarına konuma göre farklılık gösterebilir. 
 
-## <a name="automatic-restore-points"></a>Otomatik Geri Yükleme Noktaları
+## <a name="automatic-restore-points"></a>Otomatik geri yükleme noktaları
 
-Anlık görüntüler, geri yükleme noktaları oluşturan hizmetin yerleşik bir özelliğidir. Bu özelliği etkinleştirmek zorunda değilsiniz. Otomatik geri yükleme noktaları şu anda hizmetin, kurtarma için SLA 'Ları sürdürmek üzere bu geri yükleme noktalarını kullandığı kullanıcılar tarafından silinemez.
+Anlık görüntüler, geri yükleme noktaları oluşturan hizmetin yerleşik bir özelliğidir. Bu özelliği etkinleştirmek zorunda değilsiniz. Ancak, geri yükleme noktası oluşturmak için veri ambarının etkin durumda olması gerekir. Veri ambarı sık sık duraklatılmışsa, otomatik geri yükleme noktaları oluşturulmayabilir, bu nedenle veri ambarını duraklatmadan önce Kullanıcı tanımlı geri yükleme noktası oluşturulmasını sağlayın. Otomatik geri yükleme noktaları şu anda Kullanıcı tarafından silinemez çünkü hizmet bu geri yükleme noktalarını kurtarmak için SLA 'Ları sürdürmek üzere kullanır.
 
 SQL veri ambarı, yedi gün için kullanılabilen geri yükleme noktaları oluşturma günü boyunca veri ambarınızın anlık görüntülerini alır. Bu saklama dönemi değiştirilemez. SQL veri ambarı, sekiz saatlik bir kurtarma noktası hedefini (RPO) destekler. Son yedi gün içinde alınan anlık görüntülerden herhangi birinden, birincil bölgedeki veri Ambarınızı geri yükleyebilirsiniz.
 
@@ -42,7 +42,7 @@ order by run_id desc
 ;
 ```
 
-## <a name="user-defined-restore-points"></a>Kullanıcı Tanımlı Geri Yükleme Noktaları
+## <a name="user-defined-restore-points"></a>Kullanıcı tanımlı geri yükleme noktaları
 
 Bu özellik, büyük değişikliklerden önce ve sonra veri ambarınızın geri yükleme noktalarını oluşturmak için anlık görüntüleri el ile tetiklemenize olanak sağlar. Bu özellik, geri yükleme noktalarının mantıksal olarak tutarlı olmasını sağlar ve bu da hızlı kurtarma süresi için herhangi bir iş yükü kesintileri veya Kullanıcı hataları durumunda ek veri koruması sağlar. Kullanıcı tanımlı geri yükleme noktaları yedi gün için kullanılabilir ve sizin adınıza otomatik olarak silinir. Kullanıcı tanımlı geri yükleme noktalarının saklama süresini değiştiremezsiniz. **42 Kullanıcı tanımlı geri yükleme noktaları** , başka bir geri yükleme noktası oluşturmadan önce [silinmesi](https://go.microsoft.com/fwlink/?linkid=875299) gereken her zaman bir noktada garanti edilir. Anlık görüntüleri, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) veya Azure Portal aracılığıyla Kullanıcı tanımlı geri yükleme noktaları oluşturacak şekilde tetikleyebilirsiniz.
 
@@ -61,7 +61,7 @@ Geri yükleme noktası bekletme dönemlerinde ayrıntıları aşağıda listelen
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>Veri ambarı bırakıldığında anlık görüntü bekletme
 
-Bir veri ambarını bıraktığınızda, SQL veri ambarı son bir anlık görüntü oluşturur ve yedi gün boyunca kaydeder. Veri ambarını silme sırasında oluşturulan son geri yükleme noktasına geri yükleyebilirsiniz.
+Bir veri ambarını bıraktığınızda, SQL veri ambarı son bir anlık görüntü oluşturur ve yedi gün boyunca kaydeder. Veri ambarını silme sırasında oluşturulan son geri yükleme noktasına geri yükleyebilirsiniz. Veri ambarı duraklatılmış durumda bırakılmışsa, hiçbir anlık görüntü alınmaz. Bu senaryoda, veri ambarını bırakmadan önce Kullanıcı tanımlı bir geri yükleme noktası oluşturduğunuzdan emin olun.
 
 > [!IMPORTANT]
 > Bir mantıksal SQL Server örneğini silerseniz, örneğe ait olan tüm veritabanları da silinir ve kurtarılamaz. Silinen bir sunucuyu geri yükleyemezsiniz.
@@ -69,8 +69,6 @@ Bir veri ambarını bıraktığınızda, SQL veri ambarı son bir anlık görün
 ## <a name="geo-backups-and-disaster-recovery"></a>Coğrafi yedeklemeler ve olağanüstü durum kurtarma
 
 SQL veri ambarı, [eşleştirilmiş bir veri merkezine](../best-practices-availability-paired-regions.md)günde bir kez coğrafi yedekleme gerçekleştirir. Coğrafi geri yükleme için RPO 24 saattir. Coğrafi yedeklemeyi SQL veri ambarının desteklendiği herhangi bir bölgedeki bir sunucuya geri yükleyebilirsiniz. Coğrafi yedekleme, birincil bölgenizdeki geri yükleme noktalarına erişebilmek için veri ambarını geri yüklemenize da sağlar.
-
-Coğrafi yedeklemeler varsayılan olarak açık. Veri ambarınız Gen1 ise, isterseniz bunu [devre dışı](/powershell/module/az.sql/set-azsqldatabasegeobackuppolicy) bırakabilirsiniz. Veri koruması yerleşik bir garanti olduğundan, Gen2 için coğrafi yedeklemeler devre dışı bırakılamaz.
 
 > [!NOTE]
 > Coğrafi yedeklemeler için daha kısa bir RPO gerekliyse, bu yetenek için [burada](https://feedback.azure.com/forums/307516-sql-data-warehouse)oy verin. Ayrıca, Kullanıcı tanımlı geri yükleme noktası oluşturabilir ve yeni oluşturulan geri yükleme noktasından farklı bir bölgedeki yeni bir veri ambarına geri yükleme yapabilirsiniz. Geri yükledikten sonra, veri ambarını çevrimiçi hale getirebilirsiniz ve işlem maliyetlerini kaydetmek için süresiz olarak duraklatırsınız. Duraklatılmış veritabanı, Azure Premium Depolama fiyatı üzerinden depolama ücretleri doğurur. Veri ambarının etkin bir kopyasına ihtiyacınız olması gerekir, bu işlem yalnızca birkaç dakika sürer.
@@ -83,7 +81,7 @@ Birincil veri ambarınızın toplam maliyeti ve yedi günlük anlık görüntü 
 
 Coğrafi olarak yedekli depolama kullanıyorsanız, ayrı bir depolama ücreti alırsınız. Coğrafi olarak yedekli depolama, standart Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) fiyatı üzerinden faturalandırılır.
 
-SQL veri ambarı fiyatlandırması hakkında daha fazla bilgi için bkz. [SQL veri ambarı fiyatlandırması]. Bölgeler arasında geri yükleme sırasında veri çıkışı için ücretlendirilirsiniz.
+SQL veri ambarı fiyatlandırması hakkında daha fazla bilgi için bkz. [SQL veri ambarı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/). Bölgeler arasında geri yükleme sırasında veri çıkışı için ücretlendirilirsiniz.
 
 ## <a name="restoring-from-restore-points"></a>Geri yükleme noktalarından geri yükleme
 
@@ -97,7 +95,7 @@ Silinen veya duraklatılmış bir veri ambarını geri yüklemek için [bir dest
 
 ## <a name="cross-subscription-restore"></a>Çapraz abonelik geri yükleme
 
-Abonelik genelinde doğrudan geri yüklemeniz gerekiyorsa bu yetenek için bu özelliği oylayın [](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Farklı bir mantıksal sunucuya geri yükleme yapın ve çapraz abonelik geri yükleme işlemi gerçekleştirmek için sunucuyu abonelikler arasında [' taşıyın '](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) . 
+Abonelik genelinde doğrudan geri yüklemeniz gerekiyorsa [Bu yetenek için](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)bu özelliği oylayın. Farklı bir mantıksal sunucuya geri yükleme yapın ve çapraz abonelik geri yükleme işlemi gerçekleştirmek için sunucuyu abonelikler arasında [' taşıyın '](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) . 
 
 ## <a name="geo-redundant-restore"></a>Coğrafi olarak yedekli geri yükleme
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5738161e88c42f4d4033fab091d8e8c8d7162042
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301730"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801871"
 ---
 # <a name="developers-guide-to-durable-entities-in-net-preview"></a>.NET 'teki dayanıklı varlıklara Geliştirici Kılavuzu (Önizleme)
 
@@ -35,7 +35,7 @@ Bu makalede, uygulamanın çoğu uygulama için daha uygun olması beklendiğind
  
 ## <a name="defining-entity-classes"></a>Varlık sınıfları tanımlama
 
-Aşağıdaki örnek, tamsayı türünde tek bir değer depolayan `Counter` varlığının bir uygulamasıdır ve-1, `Reset`, `Get` ve `Delete` @no__t dört işlem sunar.
+Aşağıdaki örnek, tamsayı türünde tek bir değer depolayan `Counter` varlığının bir uygulamasıdır ve `Add`, `Reset`, `Get`ve `Delete`dört işlem sunar.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -71,7 +71,7 @@ public class Counter
 }
 ```
 
-@No__t-0 işlevi, sınıf tabanlı sözdiziminin kullanılması için gereken ortak içeriği içerir. *Statik* bir Azure işlevi olmalıdır. Varlık tarafından işlenen her bir işlem iletisi için bir kez yürütülür. @No__t-0 çağrıldığında ve varlık bellekte yoksa, `T` türünde bir nesne oluşturur ve alanlarını depolama alanında bulunan son kalıcı JSON (varsa) olarak doldurur. Ardından, eşleşen ada sahip yöntemi çağırır.
+`Run` işlevi, sınıf tabanlı sözdiziminin kullanılması için gereken ortak içeriği içerir. *Statik* bir Azure işlevi olmalıdır. Varlık tarafından işlenen her bir işlem iletisi için bir kez yürütülür. `DispatchAsync<T>` çağrıldığında ve varlık bellekte yoksa, `T` türünde bir nesne oluşturur ve alanlarını depolama alanında bulunan son kalıcı JSON (varsa) olarak doldurur. Ardından, eşleşen ada sahip yöntemi çağırır.
 
 > [!NOTE]
 > Sınıf tabanlı bir varlığın durumu, varlık bir işlemi işlemden önce **örtük olarak oluşturulur** ve `Entity.Current.DeleteState()` çağırarak bir işlemde **açıkça silinebilir** .
@@ -120,7 +120,7 @@ Tüm varlık işlemleri varlık durumunu okuyabilir ve güncelleştirebilir ve d
 Sınıf tabanlı varlıklara, varlık ve onun işlemleri için açık dize adları kullanılarak doğrudan erişilebilir. Aşağıda bazı örnekler sunuyoruz; temel kavramların daha derin bir açıklaması (örneğin, sinyaller ve çağrılar) için [varlıklara erişme](durable-functions-entities.md#accessing-entities)bölümünde yer alan tartışmaya bakın. 
 
 > [!NOTE]
-> Mümkün olduğunda, daha fazla tür denetimi sağladığından [varlıklara arabirimler üzerinden erişmenizi]()öneririz.
+> Mümkün olduğunda, daha fazla tür denetimi sağladığından [varlıklara arabirimler üzerinden erişmenizi](#accessing-entities-through-interfaces)öneririz.
 
 ### <a name="example-client-signals-entity"></a>Örnek: istemci sinyalleri varlığı
 
@@ -157,7 +157,7 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> @No__t-0 tarafından döndürülen nesne yalnızca yerel bir kopyadır, diğer bir deyişle, bir önceki zaman noktasından varlık durumunun bir anlık görüntüsüdür. Özellikle, eski olabilir ve bu nesnenin değiştirilmesi gerçek varlık üzerinde hiçbir etkiye sahip değildir. 
+> `ReadEntityStateAsync` tarafından döndürülen nesne yalnızca yerel bir kopyadır, diğer bir deyişle, bir önceki zaman noktasından varlık durumunun bir anlık görüntüsüdür. Özellikle, eski olabilir ve bu nesnenin değiştirilmesi gerçek varlık üzerinde hiçbir etkiye sahip değildir. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity"></a>Örnek: düzenleme ilk sinyalleri, sonra varlığı çağırır
 
@@ -224,7 +224,7 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 Bu örnekte `proxy` parametresi, `ICounter` ' in dinamik olarak üretilmiş bir örneğidir ve bu da `Delete` çağrısını dahili olarak bir sinyallere çevirir.
 
 > [!NOTE]
-> @No__t-0 API 'Leri yalnızca tek yönlü işlemler için kullanılabilir. Bir işlem `Task<T>` döndürürse bile, `T` parametresinin değeri her zaman null veya `default` olur, gerçek sonuç değildir.
+> `SignalEntityAsync` API 'Leri yalnızca tek yönlü işlemler için kullanılabilir. Bir işlem `Task<T>` döndürürse bile, `T` parametresinin değeri her zaman null veya `default` olur, gerçek sonuç değildir.
 Örneğin, hiçbir değer döndürülmediğinden `Get` işlemini işaret etmek mantıklı değildir. Bunun yerine, istemciler sayaç durumuna doğrudan erişmek için `ReadStateAsync` kullanabilir ya da `Get` işlemini çağıran bir Orchestrator işlevini başlatabilir. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Örnek: düzenleme ilk sinyalleri, sonra da varlığı ara sunucu aracılığıyla çağırır
@@ -275,7 +275,7 @@ Ayrıca bazı ek kurallar uyguladık:
 Bu kurallardan herhangi biri ihlal edilirse, arabirim `SignalEntity` veya `CreateProxy` ' ye bir tür bağımsız değişkeni olarak kullanıldığında çalışma zamanında `InvalidOperationException` oluşturulur. Özel durum iletisi hangi kuralın bozulduğunu açıklar.
 
 > [!NOTE]
-> @No__t-0 döndüren arabirim yöntemleri yalnızca (tek yönlü) sinyallenebilir (iki yönlü). @No__t-0 veya `Task<T>` döndüren arabirim yöntemleri çağrılabilir veya signıd olabilir. Çağrılırsa, işlemin sonucunu döndürür ya da işlem tarafından oluşturulan özel durumları yeniden atar. Ancak, imzalaymadığında, işlemden gerçek sonucu veya özel durumu döndürmez, ancak yalnızca varsayılan değer.
+> `void` döndüren arabirim yöntemleri yalnızca sinyal alabilir (tek yönlü), çağrılmaz (iki yönlü). `Task` veya `Task<T>` döndüren arabirim yöntemleri çağrılabilir veya signıd olabilir. Çağrılırsa, işlemin sonucunu döndürür ya da işlem tarafından oluşturulan özel durumları yeniden atar. Ancak, imzalaymadığında, işlemden gerçek sonucu veya özel durumu döndürmez, ancak yalnızca varsayılan değer.
 
 ## <a name="entity-serialization"></a>Varlık serileştirme
 
@@ -313,10 +313,10 @@ public class User
 ### <a name="serialization-attributes"></a>Serileştirme öznitelikleri
 
 Yukarıdaki örnekte, temeldeki Serileştirmeyi daha görünür hale getirmek için birkaç öznitelik eklemeyi tercih ediyoruz:
-- Sınıfın seri hale getirilebilir olması gerektiğini ve yalnızca JSON özellikleri olarak açıkça işaretlenmiş üyeleri kalıcı hale getirmek için `[JsonObject(MemberSerialization.OptIn)]` ile sınıfa Not koyuyoruz.
--  Bir alanın kalıcı varlık durumunun bir parçası olduğunu ve JSON gösteriminde kullanılacak özellik adını belirtmesini hatırlatmak için `[JsonProperty("name")]` ile kalıcı olacak alanlara açıklama eklenir.
+- Sınıfın seri hale getirilebilir olması gerektiğini ve yalnızca JSON özellikleri olarak açıkça işaretlenmiş üyeleri kalıcı hale getirmek için `[JsonObject(MemberSerialization.OptIn)]` ile sınıfa açıklama eklenir.
+-  Bir alanın kalıcı varlık durumunun bir parçası olduğunu ve JSON gösteriminde kullanılacak özellik adını belirtmesini hatırlatmak için `[JsonProperty("name")]` ile kalıcı olacak alanlara açıklama ekleyeceğiz.
 
-Ancak, bu öznitelikler gerekli değildir; Json.NET ile çalıştıkları sürece diğer kurallara veya özniteliklere izin verilir. Örneğin, biri `[DataContract]` öznitelikleri veya hiç öznitelik kullanamaz:
+Ancak, bu öznitelikler gerekli değildir; Json.NET ile çalıştıkları sürece diğer kurallara veya özniteliklere izin verilir. Örneğin, birisi `[DataContract]` öznitelikleri veya hiç öznitelik kullanamaz:
 
 ```csharp
 [DataContract]
@@ -372,7 +372,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="bindings-in-entity-classes"></a>Varlık sınıflarında bağlamalar
 
-Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. @No__t-0 ' a geçirilen tüm nesneler, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
+Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. `DispatchAsync<T>` geçirilen herhangi bir nesne, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
 
 Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob.md#input) bir `CloudBlobContainer` başvurusunun, sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
 
@@ -500,7 +500,7 @@ Aşağıdaki Üyeler varlığın durumunu yönetir (oluşturma, okuma, güncelle
 * `SetState(arg)`: varlığın durumunu oluşturur veya güncelleştirir.
 * `DeleteState()`: varsa varlığın durumunu siler. 
 
-@No__t-0 tarafından döndürülen durum bir nesnedir, uygulama kodu tarafından doğrudan değiştirilebilir. @No__t-0 ' ın sonunda tekrar çağırması gerekmez (aynı zamanda zarar yok). @No__t-0 birden çok kez çağrılırsa aynı tür kullanılmalıdır.
+`GetState` tarafından döndürülen durum bir nesnedir, uygulama kodu tarafından doğrudan değiştirilebilir. `SetState` sonunda yeniden çağırmanız gerekmez (aynı zamanda zarar yok). `GetState<TState>` birden çok kez çağrılırsa aynı tür kullanılmalıdır.
 
 Son olarak, aşağıdaki Üyeler diğer varlıkları işaret etmek veya yeni düzenlemeler başlatmak için kullanılır:
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f5fe49130742d116775b75f17c726b56150c574f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331953"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792346"
 ---
 # <a name="deploy-a-configuration-server"></a>Yapılandırma sunucusunu dağıtma
 
@@ -28,7 +28,7 @@ Yapılandırma sunucusu, belirli minimum donanım ve boyutlandırma gereksinimle
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıdaki tabloda özetlenmiştir.
+Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıdaki bölümlerde özetlenmektedir.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -37,31 +37,19 @@ Bir yapılandırma sunucusu için en düşük donanım gereksinimleri aşağıda
 Configuration Server 'ı Azure Site Recovery Hizmetleri ile kaydetmek için AAD 'de (Azure Active Directory) ayarlanmış olan **aşağıdaki izinlerden birine** sahip bir kullanıcıya ihtiyacınız vardır.
 
 1. Kullanıcı uygulama oluşturmak için "uygulama geliştiricisi" rolüne sahip olmalıdır.
-   1. Doğrulamak için Azure portal oturum açın</br>
-   1. Azure Active Directory > Roller ve yöneticiler 'e gidin</br>
-   1. "Uygulama geliştiricisi" rolünün kullanıcıya atandığını doğrulayın. Aksi takdirde, bu izinle bir Kullanıcı kullanın veya [izni etkinleştirmek için yöneticiye](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)ulaşın.
+    - Doğrulamak için Azure portal oturum açın</br>
+    - Azure Active Directory > Roller ve yöneticiler 'e gidin</br>
+    - "Uygulama geliştiricisi" rolünün kullanıcıya atandığını doğrulayın. Aksi takdirde, bu izinle bir Kullanıcı kullanın veya [izni etkinleştirmek için yöneticiye](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles)ulaşın.
     
-1. "Uygulama geliştiricisi" rolü atanamaz, kullanıcının kimlik oluşturması için "kullanıcının uygulamayı kaydedebilmesi" bayrağının doğru olarak ayarlandığından emin olun. Yukarıdaki izinleri etkinleştirmek için
-   1. Azure portalında oturum açın
-   1. Azure Active Directory > Kullanıcı ayarlarına gidin
-   1. \* * Uygulama kayıtları "," kullanıcılar uygulamaları kaydedebilir "seçeneğinin" Evet "olarak seçilmesi gerekir.
+2. "Uygulama geliştiricisi" rolü atanamaz, kullanıcının kimlik oluşturması için "kullanıcının uygulamayı kaydedebilmesi" bayrağının doğru olarak ayarlandığından emin olun. Yukarıdaki izinleri etkinleştirmek için
+    - Azure portalında oturum açın
+    - Azure Active Directory > Kullanıcı ayarlarına gidin
+    - \* * Uygulama kayıtları "," kullanıcılar uygulamaları kaydedebilir "seçeneğinin" Evet "olarak seçilmesi gerekir.
 
       ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
 > Active Directory Federasyon Hizmetleri (AD FS) (ADFS) **desteklenmez**. Lütfen [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)ile yönetilen bir hesap kullanın.
-
-## <a name="capacity-planning"></a>Kapasite planlaması
-
-Yapılandırma sunucusu için boyutlandırma gereksinimleri, olası veri değişim hızına bağlıdır. Bu tabloyu kılavuz olarak kullanın.
-
-| **'SUNA** | **Bellek** | **Önbellek diski boyutu** | **Veri değişim oranı** | **Korumalı makineler** |
-| --- | --- | --- | --- | --- |
-| 8 vCPU (2 yuva * 4 çekirdek \@ 2,5 GHz) |16 GB |300 GB |500 GB veya daha az |100 'den daha az makine çoğaltın. |
-| 12 vCPU (2 yuva * 6 çekirdek \@ 2,5 GHz) |18 GB |600 GB |500 GB ila 1 TB |100-150 makinelerini çoğaltın. |
-| 16 vCPU (2 yuva * 8 çekirdek \@ 2,5 GHz) |32 GB |1 TB |1 TB-2 TB |150-200 makinelerini çoğaltın. |
-
-Birden fazla VMware VM 'yi çoğaltıyorsanız, [Kapasite planlama konularını](site-recovery-plan-capacity-vmware.md)okuyun. VMWare çoğaltması için [dağıtım planlayıcısı aracını](site-recovery-deployment-planner.md) çalıştırın.
 
 ## <a name="download-the-template"></a>Şablonu indirme
 
@@ -149,7 +137,7 @@ Yapılandırma sunucusuna ek bir NIC eklemek istiyorsanız, sunucuyu kasaya kayd
 
 ## <a name="upgrade-the-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu en son sürüme yükseltmek için aşağıdaki [adımları](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)izleyin. Tüm Site Recovery bileşenlerinin nasıl yükseltileceğiyle ilgili ayrıntılı yönergeler için [buraya](service-updates-how-to.md)tıklayın.
+Yapılandırma sunucusunu en son sürüme yükseltmek için aşağıdaki [adımları](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)izleyin. Tüm Site Recovery bileşenlerinin nasıl yükseltileceğiyle ilgili ayrıntılı yönergeler için, [hizmet güncelleştirme yönetimi](service-updates-how-to.md)' ni ziyaret edin.
 
 ## <a name="manage-the-configuration-server"></a>Yapılandırma sunucusunu yönetme
 
@@ -157,9 +145,9 @@ Devam eden çoğaltmanın kesintiye uğramasını önlemek için yapılandırma 
 
 ## <a name="faq"></a>SSS
 
-1. OVF aracılığıyla dağıtılan yapılandırma sunucusunda ne kadar süre geçerlidir? Lisansı yeniden etkinleştirediğimde ne olur?
+1. OVF aracılığıyla dağıtılan yapılandırma sunucusu 'nda lisans ne kadar süreyle geçerlidir? Lisansı yeniden etkinleştirediğimde ne olur?
 
-    OVA şablonuyla sunulan lisans, 180 gün için geçerli bir değerlendirme lisanssıdır. Süre dolmadan önce, lisansı etkinleştirmeniz gerekir. Diğer bir deyişle, bu, yapılandırma sunucusunun sıklıkla kapatılmasını sağlayabilir ve böylece çoğaltma etkinliklerine yol açabilir.
+    OVA şablonuyla sunulan lisans, 180 gün için geçerli bir değerlendirme lisanssıdır. Süre dolmadan önce, lisansı etkinleştirmeniz gerekir. Diğer bir deyişle, yapılandırma sunucusunun sıklıkla kapatılmasını sağlayabilir ve bu sayede hindrance çoğaltma etkinliklerine neden olur. Ek ayrıntılar için [yapılandırma sunucusu lisansını yönetme](vmware-azure-manage-configuration-server.md#update-windows-license)makalesine bakın.
 
 2. Yapılandırma sunucusunun yüklü olduğu sanal makineyi farklı amaçlar için kullanabilir miyim?
 

@@ -1,5 +1,6 @@
 ---
-title: Azure AD 'de kurumsal uygulamalar için SAML belirteci taleplerini özelleştirme | Microsoft Docs
+title: Azure AD 'de kurumsal uygulamalar için SAML belirteci taleplerini özelleştirme
+titleSuffix: Microsoft identity platform
 description: Azure AD 'de kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirmeyi öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240240"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803467"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -61,7 +62,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa Azure AD, belirttiğiniz
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
-| **Default** | Azure AD varsayılan kaynak biçimini kullanır. |
+| **Varsayılan** | Azure AD varsayılan kaynak biçimini kullanır. |
 | **RESERVATION** | Azure AD, NameID biçimi olarak kalıcı kullanacaktır. |
 | **EmailAddress** | Azure AD, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Memesi** | Azure AD, NameID biçimi olarak belirtilmemiş kullanır. |
@@ -70,16 +71,16 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 ### <a name="attributes"></a>Öznitelikler
 
-@No__t-0 (veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
+`NameIdentifier` (veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Name | Açıklama |
+| Adı | Açıklama |
 |------|-------------|
 | E-posta | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
 | onpremisessamaccount | Şirket içi Azure AD 'den eşitlenmiş SAM hesap adı |
 | uzantının | Azure AD 'de kullanıcının ObjectID |
 | çalışan | kullanıcının ÇalışanKimliği |
-| Dizin uzantıları | [Azure AD Connect eşitleme kullanılarak şirket içi Active Directory eşitlenen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) Dizin uzantıları |
+| Dizin genişletmeleri | [Azure AD Connect eşitleme kullanılarak şirket içi Active Directory eşitlenen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) Dizin uzantıları |
 | Uzantı öznitelikleri 1-15 | Azure AD şemasını genişletmek için kullanılan şirket içi uzantı öznitelikleri |
 
 Daha fazla bilgi için bkz. [Tablo 3: kaynak başına GEÇERLI kimlik değerleri](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
@@ -104,8 +105,8 @@ Talep dönüştürmeleri işlevlerini de kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
-| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.com yerine "joe_smith"). |
-| **JOIN ()** | Doğrulanmış bir etki alanıyla bir özniteliği birleştirir. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' ı seçerseniz, bu, @no__t 1 ile sonuçlanır. |
+| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
+| **JOIN ()** | Doğrulanmış bir etki alanıyla bir özniteliği birleştirir. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' i seçerseniz, bu, joe_smith@contoso.onmicrosoft.comsonuçlanır. |
 | **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
 | **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
 
@@ -123,7 +124,7 @@ Talep dönüştürmeleri işlevlerini de kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
-| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.com yerine "joe_smith"). |
+| **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
 | **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. |
 | **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
 | **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |

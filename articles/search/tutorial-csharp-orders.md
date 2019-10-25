@@ -1,24 +1,25 @@
 ---
-title: C#sonuçları sıralama hakkında öğretici-Azure Search
-description: Bu öğretici, arama sonuçlarının sıralamasını eklemek için "arama sonuçları sayfalandırma-Azure Search" projesinde oluşturulur. Sonuçları birincil bir özelliğe göre nasıl sıraleyeceğinizi ve aynı birincil özelliğe sahip olan sonuçlar için, sonuçları ikincil bir özellik üzerinde nasıl sıraleyeceğinizi öğrenin. Son olarak, bir Puanlama profiline göre sonuçları nasıl sıraleyeceğinizi öğrenin.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#sonuçları sipariş etme öğreticisi
+titleSuffix: Azure Cognitive Search
+description: Bu öğretici, arama sonuçlarının sıralamasını eklemek için "arama sonuçları sayfalandırma-Azure Bilişsel Arama" projesinde oluşturulur. Sonuçları birincil bir özelliğe göre nasıl sıraleyeceğinizi ve aynı birincil özelliğe sahip olan sonuçlar için, sonuçları ikincil bir özellik üzerinde nasıl sıraleyeceğinizi öğrenin. Son olarak, bir Puanlama profiline göre sonuçları nasıl sıraleyeceğinizi öğrenin.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327660"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794045"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#öğreticide Sonuçları sıralama-Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Öğretici: sonuçları sıralama-Azure Bilişsel Arama
 
 Bu noktaya kadar öğretici serimize kadar, sonuçlar döndürülür ve varsayılan sırada görüntülenir. Bu, verilerin bulunduğu sıra veya bir sıralama parametresi belirtilmediğinde kullanılacak olan bir varsayılan _Puanlama profili_ olabilir. Bu öğreticide, sonuçları birincil bir özelliğe göre sipariş etme ve ardından aynı birincil özelliği olan sonuçlar için, bu seçimi ikincil bir özellikte sıralama bölümüne gidecağız. Sayısal değerlere göre sıralamaya alternatif olarak, son örnek özel bir Puanlama profiline göre nasıl sıralanın gösterir. Ayrıca _karmaşık türlerin_görüntüsüne daha ayrıntılı bir şekilde gidecağız.
 
-Döndürülen sonuçları kolayca karşılaştırmak için bu proje, [C# öğreticisinde oluşturulan sonsuz kayan proje üzerine oluşturulur: Arama sonuçları sayfalandırma-Azure Search @ no__t-0 öğreticisi.
+Döndürülen sonuçları kolayca karşılaştırmak için, bu proje [ C# öğreticide oluşturulan sonsuz kayan proje üzerinde oluşturur: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md) öğreticisi.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -31,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-@No__t-0C# öğreticisinin sonsuz kayan sürümüne sahip: Arama sonuçları sayfalandırma-Azure Search @ no__t-0 projesi çalışıyor ve çalışıyor. Bu proje kendi sürümünüz olabilir ya da GitHub 'dan yükleyebilirsiniz: [İlk uygulamayı oluşturun](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Öğreticinin sonsuz kayan sürümüne sahip olmak [: arama sonuçları sayfalandırma-Azure bilişsel arama Project çalışıyor ve çalışıyor. C# ](tutorial-csharp-paging.md) Bu proje kendi sürümünüz olabilir ya da GitHub: [ilk uygulama oluştur](https://github.com/Azure-Samples/azure-search-dotnet-samples)' dan yükleyebilirsiniz.
 
 ## <a name="order-results-based-on-one-property"></a>Sonuçları bir özelliğe göre sıralama
 
@@ -113,7 +114,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     ```
 
     >[!Tip]
-    >Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örneğin:
+    >Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örnek:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -127,7 +128,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Görünümü (index. cshtml) açın ve işleme döngüsünü değiştirin ( **&lt;!--otel verilerini gösterir.--&gt;** ) aşağıdaki kodla değiştirin.
+5. Görünümü (index. cshtml) açın ve oluşturma döngüsünü değiştirin ( **&lt;!--otel verilerini göster.--&gt;** ) aşağıdaki kodla.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -435,7 +436,7 @@ Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Sonuçlar uzaklık filtresi kullanılarak Azure Search tarafından döndürülse de, veriler ve belirtilen nokta arasındaki hesaplanan _uzaklık döndürülmez._ Bu değeri, sonuçlarda görüntülemek istiyorsanız Görünüm veya denetleyicide yeniden hesaplayın.
+3. Sonuçlar, Azure Bilişsel Arama bir uzaklık filtresi kullanılarak döndürülübilse de, veriler ile belirtilen nokta arasındaki hesaplanan _uzaklık döndürülmez._ Bu değeri, sonuçlarda görüntülemek istiyorsanız Görünüm veya denetleyicide yeniden hesaplayın.
 
     Aşağıdaki kod, iki Enlem/Boylam noktası arasındaki mesafeyi hesaplar.
 
@@ -465,7 +466,7 @@ Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Puanlama profili temelinde sonuçları sıralama
 
-Öğreticide verilen örnekler, _tam_ olarak sıralı bir işlem sağlayan sayısal değerleri (derecelendirme, yeniden oluşturma tarihi, coğrafi uzaklık) nasıl sıralayarak göstermektedir. Ancak bazı aramalar ve bazı veriler, bu iki veri öğesi arasında kolay bir karşılaştırmaya kendisini hiçbir şekilde vermez. Azure Search _Puanlama_kavramını içerir. _Puanlama profilleri_ , daha karmaşık ve nitel karşılaştırmaları sağlamak için kullanılabilen bir veri kümesi için belirtilebilir. Bu, ne zaman en değerli olması gerekir, örneğin, ilk olarak görüntülenmek üzere metin tabanlı verileri karşılaştırma.
+Öğreticide verilen örnekler, _tam_ olarak sıralı bir işlem sağlayan sayısal değerleri (derecelendirme, yeniden oluşturma tarihi, coğrafi uzaklık) nasıl sıralayarak göstermektedir. Ancak bazı aramalar ve bazı veriler, bu iki veri öğesi arasında kolay bir karşılaştırmaya kendisini hiçbir şekilde vermez. Azure Bilişsel Arama _Puanlama_kavramını içerir. _Puanlama profilleri_ , daha karmaşık ve nitel karşılaştırmaları sağlamak için kullanılabilen bir veri kümesi için belirtilebilir. Bu, ne zaman en değerli olması gerekir, örneğin, ilk olarak görüntülenmek üzere metin tabanlı verileri karşılaştırma.
 
 Puanlama profilleri kullanıcılar tarafından, genellikle bir veri kümesinin yöneticileri tarafından tanımlanmamıştır. Otel verilerinde çeşitli Puanlama profilleri ayarlanmış. Puanlama profilinin nasıl tanımlandığını inceleyelim, sonra da bunları aramak için kod yazmayı deneyin.
 
@@ -543,7 +544,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Profilleri karşılaştırmak için görünüme kod ekleyin
 
-1. İndex. cshtml dosyasını açın ve &lt;body @ no__t-1 bölümünü aşağıdaki kodla değiştirin.
+1. İndex. cshtml dosyasını açın ve &lt;Body&gt; bölümünü aşağıdaki kodla değiştirin.
 
     ```cs
     <body>
@@ -957,7 +958,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
 ### <a name="resources"></a>Kaynaklar
 
-Daha fazla bilgi için, [Azure Search bir dizine aşağıdaki Puanlama profilleri ekleme](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)bölümüne bakın.
+Daha fazla bilgi için bkz. [Azure bilişsel arama dizinine Puanlama profilleri ekleme](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Paketler
 
@@ -971,6 +972,6 @@ Bu projeden aşağıdaki bu devralmayı göz önünde bulundurun:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu C# öğretici serisini tamamladınız-Azure Search API 'leri için değerli bilgiye sahip olmanız gerekir.
+Bu C# öğretici serisini tamamladınız-Azure bilişsel arama API 'lerinde değerli bilgiye sahip olmanız gerekir.
 
-Daha ayrıntılı bilgi ve öğreticiler için, [Azure Search belgelerindeki](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)göz atmayı veya diğer öğreticileri göz önünde bulundurun.
+Daha fazla başvuru ve öğretici için, [Azure bilişsel arama belgelerindeki](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)veya Diğer öğreticilere göz atmayı düşünün.

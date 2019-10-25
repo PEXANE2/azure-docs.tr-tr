@@ -1,24 +1,23 @@
 ---
-title: Koşullu bilişsel arama becerisi (Azure Search) | Microsoft Docs
-description: Koşullu beceri filtrelemeye, varsayılanlar oluşturulmasına ve değerleri birleştirmeye izin vermez.
-services: search
+title: Koşullu Bilişsel Beceri
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama koşullu yetenek filtreleme, varsayılanlar oluşturma ve bir beceri tanımında değerleri birleştirme imkanı sunar.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265808"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792039"
 ---
-#   <a name="conditional-skill"></a>Koşullu yetenek
+# <a name="conditional-cognitive-skill"></a>Koşullu Bilişsel Beceri
 
-*Koşullu yetenek* , bir çıkışa atanacak verileri belirlemede Boole işlemi gerektiren Azure Search senaryolara olanak sağlar. Bu senaryolar filtreleme, varsayılan bir değer atama ve bir koşula göre verileri birleştirme işlemlerini içerir.
+**Koşullu** Beceri, bir Boole işleminin bir çıkışa atanacak verileri belirlemesini gerektiren Azure bilişsel arama senaryolarına olanak sağlar. Bu senaryolar filtreleme, varsayılan bir değer atama ve bir koşula göre verileri birleştirme işlemlerini içerir.
 
 Aşağıdaki sözde kod, koşullu yeteneğin ne yaptığını göstermektedir:
 
@@ -73,7 +72,7 @@ Aşağıdaki öğeler bir ifadenin geçerli değerleridir:
         "= !true"
     ```
 
--   Sayısal işleçler (+,-, \*,/,%) kullanan ifadeler <br/>
+-   Sayısal işleçler kullanan ifadeler (+,-, \*,/,%) <br/>
     Örnekler: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -88,7 +87,7 @@ Girişler büyük/küçük harfe duyarlıdır.
 
 | Girdi   | Açıklama |
 |-------------|-------------|
-| condition   | Bu giriş, değerlendirilecek koşulu temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Bu koşul, bir Boole değeri (*true* veya *false*) olarak değerlendirilmelidir.   <br/>  Örnekler: <br/> "= true" <br/> "= $ (/Document/Language) = = ' fr '" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/Document/expectedLanguage)" <br/> |
+| Koşul   | Bu giriş, değerlendirilecek koşulu temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Bu koşul, bir Boole değeri (*true* veya *false*) olarak değerlendirilmelidir.   <br/>  Örnekler: <br/> "= true" <br/> "= $ (/Document/Language) = = ' fr '" <br/> "= $ (/Document/Pages/\*/Language) = = $ (/document/expectedLanguage)" <br/> |
 | whenTrue    | Bu giriş, koşul *true*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . Sabitler dizeleri tek tırnak işaretleri (' ve ') olarak döndürülmelidir. <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/> |
 | whenFalse   | Bu giriş, koşul *false*olarak değerlendirilirse döndürülecek değeri temsil eden [değerlendirilmiş bir alandır](#evaluated-fields) . <br/>Örnek değerler: <br/> "=" Sözleşme ' "<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/\*)" <br/>
 
@@ -97,7 +96,7 @@ Yalnızca "çıktı" olarak adlandırılan tek bir çıktı vardır. Koşul fals
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Örnek beceri tanımı 1: Belgeleri yalnızca Fransızca belge döndürecek şekilde filtrele
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Örnek beceri tanımı 1: belgeleri yalnızca Fransızca belge döndürecek şekilde filtreleyin
 
 Aşağıdaki çıktı, belgenin dili Fransızca ise bir dizi cümle ("/Document/frenchcümleler") döndürür. Dil Fransızca değilse, değer *null*olarak ayarlanır.
 
@@ -116,7 +115,7 @@ Aşağıdaki çıktı, belgenin dili Fransızca ise bir dizi cümle ("/Document/
 "/Document/frenchcümleler" başka bir beceri *bağlamı* olarak kullanılırsa, bu beceri yalnızca "/Document/frenchcümleler" *null*olarak ayarlanmamışsa çalışır.
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Örnek beceri tanımı 2: Mevcut olmayan bir değer için varsayılan değer ayarla
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Örnek beceri tanımı 2: var olmayan bir değer için varsayılan değer ayarlayın
 
 Aşağıdaki çıktı, belgenin diline ayarlanmış bir ek açıklama ("/document/languageWithDefault") oluşturur ve dil ayarlanmamışsa "es" olarak ayarlanır.
 
@@ -133,7 +132,7 @@ Aşağıdaki çıktı, belgenin diline ayarlanmış bir ek açıklama ("/documen
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Örnek beceri tanımı 3: İki alandan değerleri tek bir birleştirir
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Örnek beceri tanımı 3: iki alandan bir değer birleştirme
 
 Bu örnekte, bazı Tümcelerin *Frenchsentiment* özelliği vardır. *Frenchsentiment* özelliği null olduğunda, *englisentiment* değerini kullanmak istiyoruz. Çıktıyı, *yaklaşım* ("/Document/Sentiment/*/Sentiment") adlı bir üyeye atacağız.
 
@@ -151,7 +150,7 @@ Bu örnekte, bazı Tümcelerin *Frenchsentiment* özelliği vardır. *Frenchsent
 ```
 
 ## <a name="transformation-example"></a>Dönüştürme örneği
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Örnek beceri tanımı 4: Tek bir alanda veri dönüştürme
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Örnek beceri tanımı 4: tek bir alanda veri dönüştürme
 
 Bu örnekte, 0 ile 1 arasında *bir yaklaşım* alırız. Bunu-1 ile 1 arasında olacak şekilde dönüştürmek istiyoruz. Bu küçük dönüşümü yapmak için koşullu yetenek kullanabiliriz.
 
@@ -170,11 +169,11 @@ Bu örnekte, koşulun her zaman *doğru*olduğu için yeteneğin koşullu yönü
 }
 ```
 
-## <a name="special-considerations"></a>Özel durumlar
+## <a name="special-considerations"></a>Özel Konular
 Bazı parametreler değerlendirilir, bu nedenle belgelenen kalıbı izlemeniz için özellikle dikkatli olmanız gerekir. İfadeler bir eşittir işareti ile başlamalıdır. Yolun "$ (" ve ")" ile ayrılmış olması gerekir. Dizeleri tek tırnak işaretlerine yerleştirdiğinizden emin olun. Bu, değerlendirici dizelerin ve gerçek yolların ve işleçlerin ayırt edilmesini sağlar. Ayrıca, boşluk (örneğin, bir yoldaki bir "*", çarpma dışında bir şey) yerleştirdiğinizden emin olun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)

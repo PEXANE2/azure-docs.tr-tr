@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ef9b55dd17a6f1d190282f369ccb8b9386e65d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 39b727d14419634d413e0f649a43d455c4aeba20
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324271"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803539"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -67,7 +67,7 @@ JWTs üç parçaya ayrılır:
 
 Her parça bir noktayla (`.`) ayrılır ve ayrı olarak Base64 kodlamalı olur.
 
-Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uygulamanız mevcut bir talep üzerine bir bağımlılık alamaz. @No__t-0 (her kiracı parolaların süre sonu gerektirmez) veya `family_name` ([istemci kimlik bilgisi](v1-oauth2-client-creds-grant-flow.md) akışları, adları olmayan uygulamalar adına) içerir. Erişim belirteci doğrulama için kullanılan talepler her zaman mevcut olacaktır.
+Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uygulamanız mevcut bir talep üzerine bir bağımlılık alamaz. Örnekler arasında `pwd_exp` (her kiracı parolaların süre sonu gerektirmez) veya `family_name` ([istemci kimlik bilgisi](v1-oauth2-client-creds-grant-flow.md) akışları, adları olmayan uygulamalar adına). Erişim belirteci doğrulama için kullanılan talepler her zaman mevcut olacaktır.
 
 > [!NOTE]
 > Bazı talepler, Azure AD güvenli belirteçlerinin yeniden kullanım durumunda kullanılmasına yardımcı olmak için kullanılır. Bunlar, açıklamada "donuk" olarak genel tüketim için değil olarak işaretlenir. Bu talepler bir belirteçte görünebilir veya görünmeyebilir ve bildirimde bulunulmadan yenilerini eklenebilir.
@@ -106,9 +106,9 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 | `wids` | [Roletemplateıd](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID dizisi | Bu kullanıcıya atanan kiracı genelindeki rolleri, [yönetici rolleri sayfasında](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)bulunan roller bölümünden gösterir.  Bu talep, [uygulama bildiriminin](reference-app-manifest.md)`groupMembershipClaims` özelliği aracılığıyla uygulama başına temelinde yapılandırılır.  "All" veya "DirectoryRole" olarak ayarlanması gerekir.  Belirteç uzunluğu sorunları nedeniyle örtük akış aracılığıyla alınan belirteçlerde bulunmayabilir. |
 | `groups` | GUID 'lerin JSON dizisi | Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar, [uygulama bildiriminin](reference-app-manifest.md)`groupMembershipClaims` özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Office 365 dağıtım listelerini içerir. <br><br>Örtük izin ile `groups` talebini kullanma hakkında ayrıntılı bilgi için aşağıdaki `hasgroups` talebine bakın. <br>Diğer akışlar için, kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) alıyorsa, Kullanıcı için Grup listesini içeren AAD Graf uç noktasını gösteren talep kaynaklarına fazla kullanım talebi eklenecektir. |
 | `hasgroups` | Boole | Varsa, her zaman `true`, kullanıcının en az bir grupta olduğunu belirten. Tam gruplar talebi, URI parçasını URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs için `groups` talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`) belirleyebilmek için grafiği kullanması gerektiğini belirtir. |
-| `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri için (yukarıdaki `hasgroups` ' a bakın), ancak belirteç için hala çok büyük olduğunda, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. @No__t-0 talebinin yerine yeni bir talep olarak SAML için dağıtılmış bir talep olarak JWTs için. <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri için (yukarıdaki `hasgroups` ' a bakın), ancak belirteç için hala çok büyük olduğunda, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. `groups` talebi yerine yeni bir talep olarak SAML için, bir dağıtılmış talep olarak JWTs için. <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Belirteç bir kaynağa erişmek için kullanıldığında ve veritabanı tablolarında anahtar olarak kullanılabilecek gibi, güvenli bir şekilde yetkilendirme denetimleri gerçekleştirmek için kullanılabilir. Konu her zaman Azure AD 'nin sorun verdiği belirteçlerde bulunduğundan, bu değeri genel amaçlı yetkilendirme sisteminde kullanmanızı öneririz. Bununla birlikte, bir ikili tanımlayıcı, belirli bir uygulama KIMLIĞI için benzersizdir. Bu nedenle, tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya istenmeyebilir. Ayrıca bkz. `oid` talebi (bir Kiracıdaki uygulamalarda aynı olmaya devam eder). |
-| `oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity platformunda bir nesne için sabit tanımlayıcı. Ayrıca, kimlik doğrulama denetimlerini güvenli bir şekilde ve veritabanı tablolarında anahtar olarak gerçekleştirmek için de kullanılabilir. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz bir şekilde tanımlar. aynı kullanıcı için iki farklı uygulama oturumu açmak, `oid` talebinde aynı değeri alacaktır. Bu nedenle, Microsoft Graph gibi Microsoft çevrimiçi hizmetler sorguları yaparken `oid` kullanılabilir. Microsoft Graph, bu KIMLIĞI belirli bir kullanıcı hesabı için `id` özelliği olarak döndürür. @No__t-0 birden fazla uygulamanın kullanıcıları ilişkilendirmenize izin verdiğinden, bu talebi alabilmesi için `profile` kapsamı gereklidir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. |
+| `oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity platformunda bir nesne için sabit tanımlayıcı. Ayrıca, kimlik doğrulama denetimlerini güvenli bir şekilde ve veritabanı tablolarında anahtar olarak gerçekleştirmek için de kullanılabilir. Bu KIMLIK, kullanıcıyı uygulamalar arasında benzersiz bir şekilde tanımlar. aynı kullanıcı için iki farklı uygulama oturumu açmak, `oid` talebinde aynı değeri alacaktır. Bu nedenle, Microsoft Graph gibi Microsoft çevrimiçi hizmetler sorguları yaparken `oid` kullanılabilir. Microsoft Graph, bu KIMLIĞI belirli bir [Kullanıcı hesabı](/graph/api/resources/user)için `id` özelliği olarak döndürür. `oid` birden çok uygulamanın kullanıcıları ilişkilendirme yapmasına izin verdiğinden, bu talebi alabilmesi için `profile` kapsamı gereklidir. Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. |
 | `tid` | Dize, GUID | Kullanıcının ait olduğu Azure AD kiracısını temsil eder. İş ve okul hesapları için GUID, kullanıcının ait olduğu kuruluşun sabit kiracı KIMLIĞIDIR. Kişisel hesaplar için değer `9188040d-6c67-4c5b-b112-36a304b66dad` ' dır. Bu talebi alabilmesi için `profile` kapsamı gereklidir. |
 | `unique_name` | Dize | Yalnızca v 1.0 belirteçlerinde bulunur. Belirtecin konusunu tanımlayan ve okunabilir bir değer sunar. Bu değerin kiracı içinde benzersiz olması garanti edilmez ve yalnızca görüntüleme amacıyla kullanılmalıdır. |
 | `uti` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Kaynaklar bu talebi kullanmaz. |
@@ -145,7 +145,7 @@ Aşağıdaki talepler varsa v 1.0 belirteçlerine dahil edilir, ancak varsayıla
 | İste | Biçimlendir | Açıklama |
 |-----|--------|-------------|
 | `ipaddr`| Dize | Kullanıcının kimliği doğrulanan IP adresi. |
-| `onprem_sid`| Dize, [SID biçiminde](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Kullanıcının şirket içi kimlik doğrulamasına sahip olduğu durumlarda, bu talep SID 'leri sağlar. @No__t-0 ' yı eski uygulamalarda yetkilendirme için kullanabilirsiniz.|
+| `onprem_sid`| Dize, [SID biçiminde](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | Kullanıcının şirket içi kimlik doğrulamasına sahip olduğu durumlarda, bu talep SID 'leri sağlar. Eski uygulamalarda yetkilendirme için `onprem_sid` kullanabilirsiniz.|
 | `pwd_exp`| int, UNIX zaman damgası | Kullanıcının parolasının süresinin dolacağını gösterir. |
 | `pwd_url`| Dize | Parolalarını sıfırlamak için kullanıcıların gönderilebileceği bir URL. |
 | `in_corp`| boole | İstemci şirket ağından oturum açıyorsanız bildirir. Aksi takdirde talep dahil edilmez. |
@@ -154,9 +154,9 @@ Aşağıdaki talepler varsa v 1.0 belirteçlerine dahil edilir, ancak varsayıla
 | `given_name` | Dize | Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının adını veya verilen adı sağlar. |
 | `upn` | Dize | Kullanıcının Kullanıcı adı. Telefon numarası, e-posta adresi veya biçimlendirilmemiş dize olabilir. Yalnızca görüntüleme amacıyla ve yeniden kimlik doğrulama senaryolarında Kullanıcı adı ipuçları sağlamak için kullanılmalıdır. |
 
-#### <a name="the-amr-claim"></a>@No__t-0 talebi
+#### <a name="the-amr-claim"></a>`amr` talebi
 
-Microsoft kimlikleri, uygulamanız için uygun olabilecek farklı yollarla kimlik doğrulaması yapabilir. @No__t-0 talebi, hem parola hem de Authenticator uygulaması kullanan bir kimlik doğrulaması için `["mfa", "rsa", "pwd"]` gibi birden çok öğe içerebilen bir dizidir.
+Microsoft kimlikleri, uygulamanız için uygun olabilecek farklı yollarla kimlik doğrulaması yapabilir. `amr` talebi, hem parola hem de Authenticator uygulaması kullanan bir kimlik doğrulaması için `["mfa", "rsa", "pwd"]`gibi birden çok öğe içerebilen bir dizidir.
 
 | Değer | Açıklama |
 |-----|-------------|
@@ -193,7 +193,7 @@ Azure AD tarafından verilen belirteçler, RSA 256 gibi sektör standardı asime
 }
 ```
 
-@No__t-0 talebi, belirteci imzalamak için kullanılan algoritmayı belirtir. `kid` talebi, belirteci doğrulamak için kullanılan belirli ortak anahtarı gösterir.
+`alg` talebi, belirteci imzalamak için kullanılan algoritmayı belirtir, ancak `kid` talebi belirteci doğrulamak için kullanılan belirli ortak anahtarı gösterir.
 
 Azure AD, belirli bir zamanda belirli bir ortak özel anahtar çiftleri kümesinden herhangi birini kullanarak bir id_token imzalayamayabilir. Azure AD, olası anahtar kümesini düzenli aralıklarla döndürür, bu nedenle uygulamanızın bu anahtar değişikliklerini otomatik olarak işleyecek şekilde yazılması gerekir. Azure AD tarafından kullanılan ortak anahtarlarda güncelleştirmelerin her 24 saatte bir denetlenmesi için makul bir sıklık vardır.
 
@@ -209,14 +209,14 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 Bu meta veri belgesi:
 
 * , OpenID Connect kimlik doğrulaması yapmak için gereken çeşitli uç noktaların konumu gibi çeşitli yararlı bilgi parçalarını içeren bir JSON nesnesidir.
-* Belirteçleri imzalamak için kullanılan ortak anahtar kümesinin konumunu veren bir `jwks_uri` içerir. @No__t-0 ' da bulunan JSON belgesi, zaman içinde o anda kullanılan tüm ortak anahtar bilgilerini içerir. Uygulamanız, bu belgedeki ortak anahtarın belirli bir belirteci imzalamak için kullanıldığını seçmek üzere JWT üstbilgisindeki `kid` talebini kullanabilir. Daha sonra doğru ortak anahtarı ve belirtilen algoritmayı kullanarak imza doğrulaması yapabilir.
+* Belirteçleri imzalamak için kullanılan ortak anahtar kümesinin konumunu veren bir `jwks_uri`içerir. `jwks_uri` bulunan JSON Web anahtarı (JWK), zaman içinde o anda kullanılan tüm ortak anahtar bilgilerini içerir.  JWK biçimi, [RFC 7517](https://tools.ietf.org/html/rfc7517)' de açıklanmaktadır.  Uygulamanız, bu belgedeki ortak anahtarın belirli bir belirteci imzalamak için kullanıldığını seçmek üzere JWT üstbilgisindeki `kid` talebini kullanabilir. Daha sonra doğru ortak anahtarı ve belirtilen algoritmayı kullanarak imza doğrulaması yapabilir.
 
 > [!NOTE]
 > V 1.0 uç noktası hem `x5t` hem de `kid` taleplerini döndürür, ancak v 2.0 uç noktası yalnızca `kid` talebi ile yanıt verir. Bundan sonra, belirtecinizi doğrulamak için `kid` talebinin kullanılmasını öneririz.
 
 İmza doğrulama işlemi, bu belgenin kapsamı dışındadır. gerekirse, bunu yapmanıza yardımcı olmak için kullanılabilecek çok sayıda açık kaynak kitaplığı vardır.  Ancak, Microsoft Identity platformunda standart özel imzalama anahtarlarına tek bir belirteç imzalama uzantısı vardır.  
 
-Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, uygulamanızın imza anahtarı bilgilerine işaret eden bir @no__t almak IÇIN uygulama kimliğini içeren bir `appid` sorgu parametresi eklemeniz gerekir, bu, doğrulama için kullanılmalıdır. Örneğin: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` içerir.
+Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, uygulamanızın doğrulama için kullanılması gereken imzalama anahtarı bilgilerine işaret eden bir `jwks_uri` almak IÇIN uygulama kimliğini içeren `appid` bir sorgu parametresi eklemeniz gerekir. Örneğin: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e``jwks_uri` içerir.
 
 ### <a name="claims-based-authorization"></a>Talep tabanlı yetkilendirme
 
@@ -224,9 +224,9 @@ Uygulamanızın iş mantığı bu adımı dikte edecek, bazı yaygın yetkilendi
 
 * Tüm mevcut kapsamların API 'niz tarafından açığa çıkarılan olanlarla eşleştiğini doğrulamak ve istemcinin istenen eylemi yapmasına izin vermek için `scp` veya `roles` talebini denetleyin.
 * Çağıran istemcinin `appid` talebini kullanarak API 'nizi çağırmasının izin verildiğinden emin olun.
-* @No__t-0 kullanarak çağıran istemcinin kimlik doğrulama durumunu doğrulayın-genel istemcilerin API 'nizi çağırmasını izin verilmiyorsa 0 olmamalıdır.
+* `appidacr` kullanarak çağıran istemcinin kimlik doğrulama durumunu doğrulama-genel istemcilerin API 'nizi çağırmaya izin verilmiyorsa 0 olmaması gerekir.
 * Belirtecin yeniden çalındığını doğrulamak için geçmiş `nonce` taleplerini bir listeye karşı denetleyin.
-* @No__t-0 ' ın API 'nizi çağırması için izin verilen bir kiracı ile eşleştiğinden emin olun.
+* `tid`, API 'nizi çağırmaya izin verilen bir kiracı ile eşleştiğinden emin olun.
 * Kullanıcının MFA gerçekleştirdi olduğunu doğrulamak için `acr` talebini kullanın. Bu, [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)kullanılarak zorunlu kılınmalıdır.
 * Erişim belirtecinde `roles` veya `groups` taleplerini istemiş olmanız durumunda, kullanıcının bu eylemi yapmasına izin verilen grupta olduğunu doğrulayın.
   * Örtük akış kullanılarak alınan belirteçler için, büyük olasılıkla belirtece sığamayacak kadar büyük olduğu için bu verilerin [Microsoft Graph](https://developer.microsoft.com/graph/) sorgulanmak zorunda olacaksınız.
@@ -236,8 +236,8 @@ Uygulamanızın iş mantığı bu adımı dikte edecek, bazı yaygın yetkilendi
 Uygulamanız, bir kullanıcı adına (normal akış) veya doğrudan bir uygulamadan ( [istemci kimlik bilgileri akışı](v1-oauth2-client-creds-grant-flow.md)aracılığıyla) belirteç alabilir. Bu yalnızca uygulama belirteçleri, bu çağrının bir uygulamadan geldiğini ve bunu yedekleyen bir kullanıcıya sahip olmadığını gösterir. Bu belirteçler büyük ölçüde aynı şekilde işlenir ve bazı farklılıklar vardır:
 
 * Yalnızca uygulama belirteçlerinin `scp` talebi olmayacaktır ve bunun yerine `roles` talebi olabilir. Bu, uygulama izninin (temsilci izinlerin aksine) kaydedileceği yerdir. Temsilci ve uygulama izinleri hakkında daha fazla bilgi için, bkz. [v 1.0](v1-permissions-and-consent.md) ve [v 2.0](v2-permissions-and-consent.md)'da izin ve onay.
-* @No__t-0 veya `upn` gibi insana özgü birçok talep eksik olacaktır.
-* @No__t-0 ve `oid` talepleri aynı olacaktır. 
+* `name` veya `upn`gibi insana özgü birçok talep eksik olacaktır.
+* `sub` ve `oid` talepleri aynı olacaktır. 
 
 ## <a name="token-revocation"></a>Belirteç iptali
 
@@ -272,5 +272,5 @@ Farklı nedenlerle yenileme belirteçleri herhangi bir zamanda geçersiz kılın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD 'de `id_tokens`](id-tokens.md)hakkında bilgi edinin.
+* [Azure AD 'de`id_tokens`](id-tokens.md)hakkında bilgi edinin.
 * [V 1.0](v1-permissions-and-consent.md) ve [v 2.0](v2-permissions-and-consent.md)'da izin ve onay hakkında bilgi edinin.

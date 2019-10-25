@@ -1,5 +1,6 @@
 ---
-title: Kimlik doğrulama isteklerinde özel durum geçirme (JavaScript için Microsoft kimlik doğrulama kitaplığı) | Mavisi
+title: Kimlik doğrulama isteklerinde özel durum geçirme (JavaScript için Microsoft kimlik doğrulama kitaplığı)
+titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak kimlik doğrulama isteğinde özel durum parametre değeri geçirme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,17 +18,17 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ae12624b3d897f05437f7795d1a1eee32ca37a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 8d2fa7d7d294d38d29ce8ace744e13bd1bf2d533
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532753"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803040"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>MSAL. js kullanarak kimlik doğrulama isteklerinde özel durum geçirme
 OAuth 2,0 tarafından tanımlanan *durum* parametresi bir kimlik doğrulama isteğine dahildir ve ayrıca, siteler arası istek sahteciliği saldırılarını engellemek için belirteç yanıtında de döndürülür. Varsayılan olarak, JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), kimlik doğrulama isteklerinde rastgele oluşturulmuş benzersiz bir *durum* parametresi değeri geçirir.
 
-Durum parametresi, yeniden yönlendirmenin önüne uygulama durumunun bilgilerini kodlamak için de kullanılabilir. Bu parametreye giriş olarak kullanıcının durumunu uygulamada (sayfada bulunan sayfa veya görüntüleme gibi) geçirebilirsiniz. MSAL. js kitaplığı, özel durumlarınızı `Request` nesne içinde durum parametresi olarak geçirmenize olanak sağlar:
+Durum parametresi, yeniden yönlendirmenin önüne uygulama durumunun bilgilerini kodlamak için de kullanılabilir. Bu parametreye giriş olarak kullanıcının durumunu uygulamada (sayfada bulunan sayfa veya görüntüleme gibi) geçirebilirsiniz. MSAL. js kitaplığı, özel durumlarınızı `Request` nesnesine durum parametresi olarak geçirmenize olanak sağlar:
 
 ```javascript
 // Request type
@@ -46,7 +47,7 @@ export type AuthenticationParameters = {
 };
 ```
 
-Örneğin:
+Örnek:
 
 ```javascript
 let loginRequest = {
@@ -57,7 +58,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-Geçirilen durum, istek gönderilirken MSAL. js tarafından ayarlanan benzersiz GUID 'ye eklenir. Yanıt döndürüldüğünde, msal. js bir durum eşleşmesi olup olmadığını denetler ve ardından `Response` `accountState`nesne içindeki özel geçti durumunu döndürür.
+Geçirilen durum, istek gönderilirken MSAL. js tarafından ayarlanan benzersiz GUID 'ye eklenir. Yanıt döndürüldüğünde, MSAL. js bir durum eşleşmesi denetler ve sonra `Response` nesnesinde özel olarak geçirilen durumu `accountState`olarak döndürür.
 
 ```javascript
 export type AuthResponse = {

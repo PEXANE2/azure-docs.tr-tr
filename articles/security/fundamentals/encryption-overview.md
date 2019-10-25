@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003939"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804047"
 ---
 # <a name="azure-encryption-overview"></a>Azure şifrelemeye genel bakış
 
 Bu makalede, Microsoft Azure ' de şifrelemenin nasıl kullanıldığına ilişkin bir genel bakış sunulmaktadır. Bekleyen şifreleme, uçuşta şifreleme ve Azure Key Vault ile anahtar yönetimi dahil olmak üzere, şifrelemenin ana bölgelerini ele alır. Her bölüm daha ayrıntılı bilgi için bağlantılar içerir.
 
-## <a name="encryption-of-data-at-rest"></a>Bekleyen veri şifrelemesi
+## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
 
 Bekleyen veriler, fiziksel medyada kalıcı depolamada bulunan ve herhangi bir dijital biçimdeki bilgileri içerir. Medya, manyetik veya optik medya, arşivlenmiş veriler ve veri yedeklemeleri üzerinde dosya içerebilir. Microsoft Azure, dosya, disk, blob ve tablo depolama dahil olmak üzere farklı ihtiyaçları karşılamak için çeşitli veri depolama çözümleri sunar. Microsoft ayrıca [Azure SQL veritabanı](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)ve Azure Data Lake korumak için şifreleme sağlar.
 
@@ -51,15 +51,15 @@ Azure, hizmet tarafından yönetilen anahtarlar, Key Vault içindeki müşteri t
 
 Üç sunucu tarafı şifreleme modeli, gereksinimlerinize göre seçebileceğiniz farklı anahtar yönetim özellikleri sunar:
 
-- **Hizmet tarafından yönetilen anahtarlar**: Düşük yük ile denetim ve kolaylık sağlayan bir bileşim sunar.
+- **Hizmet tarafından yönetilen anahtarlar**: düşük ek yük ile denetim ve kolaylık sağlayan bir bileşim sunar.
 
-- **Müşteri tarafından yönetilen anahtarlar**: , Kendi anahtarlarını getir (BYOK) desteği de dahil olmak üzere anahtarlar üzerinde denetim sağlar veya yeni bir tane oluşturmanıza olanak sağlar.
+- **Müşteri tarafından yönetilen anahtarlar**: kendi anahtarlarınızı getır (bYok) desteği de dahil olmak üzere anahtarlar üzerinde denetim sağlar veya yenilerini oluşturmanıza izin verir.
 
-- **Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar**: Özel deponuzdaki anahtarları Microsoft denetimi dışında yönetmenizi sağlar. Bu özellik kendi anahtarınızı barındırın (HYOK) olarak adlandırılır. Ancak, yapılandırma karmaşıktır ve çoğu Azure hizmeti bu modeli desteklemez.
+- **Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar**: özel deponuzdaki anahtarları Microsoft denetimi dışında yönetmenizi sağlar. Bu özellik kendi anahtarınızı barındırın (HYOK) olarak adlandırılır. Ancak, yapılandırma karmaşıktır ve çoğu Azure hizmeti bu modeli desteklemez.
 
 ### <a name="azure-disk-encryption"></a>Azure disk şifrelemesi
 
-Windows ve Linux sanal makinelerini, [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) teknolojisini ve Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) [' i kullanarak](/azure/security/azure-security-disk-encryption), hem işletim sistemi disklerini hem de tam birim şifrelemesi ile veri disklerini korumak üzere koruyabilirsiniz.
+Windows ve Linux sanal makinelerini, [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) teknolojisini ve Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) [' i kullanarak](/azure/security/fundamentals/azure-disk-encryption-vms-vmss), hem işletim sistemi disklerini hem de tam birim şifrelemesi ile veri disklerini korumak üzere koruyabilirsiniz.
 
 Şifreleme anahtarları ve gizli dizileri [Azure Key Vault aboneliğinizde](../../key-vault/key-vault-overview.md)korunmuş. Azure Backup hizmetini kullanarak, anahtar şifreleme anahtarı (KEK) yapılandırmasını kullanan şifrelenmiş sanal makineleri (VM) yedekleyebilir ve geri yükleyebilirsiniz.
 
@@ -79,7 +79,7 @@ Azure Blob 'larının istemci tarafı şifrelemesini çeşitli şekillerde gerç
 
 Key Vault ile istemci tarafı şifrelemesini kullandığınızda verileriniz, Azure depolama istemci SDK 'Sı tarafından oluşturulan tek seferlik bir simetrik Içerik şifreleme anahtarı (CEK) kullanılarak şifrelenir. CEK, bir simetrik anahtar veya asimetrik anahtar çifti olabilen bir anahtar şifreleme anahtarı (KEK) kullanılarak şifrelenir. Yerel olarak yönetebilir veya Key Vault ' de kaydedebilirsiniz. Şifrelenmiş veriler daha sonra Azure depolama alanına yüklenir.
 
-Key Vault ile istemci tarafı şifreleme hakkında daha fazla bilgi edinmek ve nasıl yapılır yönergeleriyle çalışmaya başlamak için bkz [. Öğretici: Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)kullanarak Azure depolama 'daki Blobları şifreleyin ve şifresini çözün.
+Key Vault ile istemci tarafı şifreleme hakkında daha fazla bilgi edinmek ve nasıl yapılır yönergeleriyle çalışmaya başlamak için bkz. [öğretici: Azure depolama 'daki blobları Key Vault kullanarak şifreleme ve şifre çözme](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Son olarak, Azure depolama 'ya veri yüklemeden önce, istemci tarafı şifrelemeyi gerçekleştirmek ve verileri istemciye indirdiğinizde şifrelerini çözmek için, Java için Azure Storage Istemci kitaplığı ' nı da kullanabilirsiniz. Bu kitaplık Ayrıca depolama hesabı anahtar yönetimi için [Key Vault](https://azure.microsoft.com/services/key-vault/) tümleştirmeyi destekler.
 
@@ -105,7 +105,7 @@ CLE, simetrik veya asimetrik anahtarları, bir sertifikanın ortak anahtarını 
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB veritabanı şifrelemesi
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) , Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanıdır. Geçici olmayan depolamada Cosmos DB depolanan kullanıcı verileri (katı hal sürücüleri) varsayılan olarak şifrelenir. Açmak veya kapatmak için denetim yoktur. Bekleme sırasında şifreleme birkaç güvenli anahtar depolama sistemleri, şifreli ağları ve şifreleme API'leri dahil güvenlik teknolojileri kullanılarak uygulanır. Şifreleme anahtarları Microsoft tarafından yönetilir ve Microsoft iç yönergeleri uyarınca döndürülür.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) , Microsoft 'un genel olarak dağıtılmış, çok modelli veritabanıdır. Geçici olmayan depolamada Cosmos DB depolanan kullanıcı verileri (katı hal sürücüleri) varsayılan olarak şifrelenir. Açmak veya kapatmak için denetim yoktur. Bekleyen şifreleme, güvenli anahtar depolama sistemleri, şifrelenmiş ağlar ve şifreleme API 'Leri dahil olmak üzere çeşitli güvenlik teknolojileri kullanılarak uygulanır. Şifreleme anahtarları Microsoft tarafından yönetilir ve Microsoft iç yönergeleri uyarınca döndürülür.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 'de Rest şifreleme
 

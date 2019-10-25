@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK sürüm 5 ' e yükseltin-Azure Search
+title: Azure Search .NET SDK sürüm 5 ' e yükseltme
+titleSuffix: Azure Cognitive Search
 description: Kodu eski sürümlerden Azure Search .NET SDK sürüm 5 ' e geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c64d13e4bcad11ef729f34ee71b7c7461a507fc7
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183252"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793032"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK sürüm 5 ' e yükseltme
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK sürüm 5 ' e yükseltme
 
 [Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 4,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 5 ' i kullanacak şekilde yükseltmenize yardımcı olur.
 
@@ -36,14 +35,14 @@ Azure Search .NET SDK 'sının 5. sürümü önceki sürümlerden bazı değişi
 Azure Search .NET SDK 'nın 5. sürümü, Azure Search REST API, özellikle 2017-11-11 olan en son genel kullanıma sunulan sürümü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search yeni özelliklerini kullanmayı mümkün kılar:
 
 * [Eş anlamlılar](search-synonyms.md).
-* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz (daha fazla `Warning` ayrıntı için `IndexerExecutionResult` bkz. [.net Reference](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) içindeki özelliği).
+* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz (daha fazla ayrıntı için bkz. [.net Reference](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) içindeki `IndexerExecutionResult` `Warning` özelliği).
 * .NET Core 2 desteği.
 * Yeni paket yapısı yalnızca ihtiyacınız olan SDK bölümlerinin kullanılmasını destekler (Ayrıntılar için [sürüm 5 ' teki son değişikliklere](#ListOfChanges) bakın).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet ' i paket `Microsoft.Azure.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet Paket Yöneticisi konsolunu kullanarak veya proje başvurularınız ' a sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz `Microsoft.Azure.Search` güncelleştirin. Visual Studio 'da.
 
 NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
 
@@ -65,7 +64,7 @@ Herhangi bir derleme hatasını veya uyarıyı düzelttikten sonra, isterseniz y
 
 ### <a name="new-package-structure"></a>Yeni paket yapısı
 
-Sürüm 5 ' teki en önemli önemli değişiklik, `Microsoft.Azure.Search` derlemenin ve içeriğinin artık dört ayrı NuGet paketi olarak dağıtılan dört ayrı derlemeye bölündüğü gibidir:
+Sürüm 5 ' teki en önemli önemli değişiklik, `Microsoft.Azure.Search` derlemesinin ve içeriğinin artık dört ayrı NuGet paketi olarak dağıtılan dört ayrı derlemeye bölünmesinin yanı sıra,
 
  - `Microsoft.Azure.Search`: Bu, tüm diğer Azure Search paketlerini bağımlılık olarak içeren bir meta pakettir. SDK 'nın önceki bir sürümünden yükseltiyorsanız, bu paketin yükseltilmesi ve yeniden oluşturulması yeni sürümü kullanmaya başlamak için yeterli olmalıdır.
  - `Microsoft.Azure.Search.Data`: Azure Search kullanarak bir .NET uygulaması geliştiriyorsanız bu paketi kullanın ve yalnızca dizininizdeki belgeleri sorgulayıp güncelleştirmeniz yeterlidir. Ayrıca dizinleri, eş anlamlı haritaları veya diğer hizmet düzeyi kaynaklarını oluşturmanız ya da güncelleştirmeniz gerekiyorsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
@@ -78,14 +77,14 @@ Sürüm 5 ' te, uygulamanızı yeniden oluşturmak için ek olarak kod değişik
 
 ### <a name="change-to-suggesters"></a>Öneri araçları olarak değiştir 
 
-Oluşturucunun için parametresiartık`enum`yoktur. `Suggester` `SuggesterSearchMode` Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, yalnızca `SuggesterSearchMode` parametreye başvuruları kaldırın.
+`Suggester` oluşturucusunun artık `SuggesterSearchMode`için `enum` parametresi yok. Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, `SuggesterSearchMode` parametresine başvuruları kaldırmanız yeterlidir.
 
 ### <a name="removed-obsolete-members"></a>Artık kullanılmayan Üyeler kaldırıldı
 
 Önceki sürümlerde eski olarak işaretlenen ve daha sonra sürüm 5 ' te kaldırılan yöntemlerle veya özelliklerle ilgili derleme hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bu sorunları çözmek için aşağıdaki adımları uygulayın:
 
-- `IndexingParametersExtensions.IndexStorageMetadataOnly` Yöntemini kullanıyorsanız bunun yerine kullanın `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` .
-- `IndexingParametersExtensions.SkipContent` Yöntemini kullanıyorsanız bunun yerine kullanın `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` .
+- `IndexingParametersExtensions.IndexStorageMetadataOnly` yöntemini kullanıyorsanız, bunun yerine `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` kullanın.
+- `IndexingParametersExtensions.SkipContent` yöntemini kullanıyorsanız, bunun yerine `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` kullanın.
 
 ### <a name="removed-preview-features"></a>Önizleme özellikleri kaldırıldı
 

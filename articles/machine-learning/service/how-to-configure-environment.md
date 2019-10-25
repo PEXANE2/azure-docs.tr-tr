@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5080ec4db46f717a9e9ecdcdfbea42fbe43c349d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598437"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804181"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -305,7 +305,7 @@ Azure Databricks Azure Machine Learning ile nasıl kullanılır:
 | Ayar |Uygulama hedefi| Değer |
 |----|---|---|
 | Küme adı |Her| yourclustername |
-| Databricks Çalışma Zamanı |Her| ML dışı çalışma zamanı (ML olmayan 4. x, 5. x) |
+| Databricks Çalışma Zamanı |Her|ML olmayan çalışma zamanı 6,0 (Scala 2,11, Spark 2.4.3) |
 | Python sürümü |Her| 3 |
 | Çalışanlarınız |Her| 2 veya üzeri |
 | Çalışan düğümü VM türleri <br>(en fazla eşzamanlı yineleme sayısını belirler) |Otomatikleştirilmiş ML<br>yalnızca| Bellek için iyileştirilmiş VM tercih edilen |
@@ -346,14 +346,17 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 
 Yüklemesi başarılı olduysa, içeri aktarılan kitaplık aşağıdakilerden biri gibi görünmelidir:
 
-Databricks için Machine Learning SDK ![Azure otomatik makine öğrenimi **_olmadan_** Databricks sdk 'sı ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Databricks için Azure Machine Learning SDK ![otomatik makine öğrenimi **_olmadan_** Databricks sdk 'sı](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Databricks 'de yüklü otomatik makine öğrenimi ile otomatik makine öğrenimi ![SDK databricks için SDK ](./media/how-to-configure-environment/automlonadb.jpg)
+Databricks 'de yüklü otomatik makine öğrenimi ile otomatik makine öğrenimi ![SDK **Ile** databricks için SDK](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Keşfetmeye başlayın
 
 Deneyin:
 + Birçok örnek Not defteri kullanılabilir, **ancak [Bu örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) yalnızca Azure Databricks çalışır.**
+
++ Bu örnekleri doğrudan çalışma alanınızdan içeri aktarın. Aşağıya bakın: ![içeri aktar](media/how-to-configure-environment/azure-db-screenshot.png)
+![Içeri aktarma paneli ' ni seçin](media/how-to-configure-environment/azure-db-import.png)
 
 + [Eğitim işlemi olarak Databricks ile bir işlem hattı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
 
@@ -371,7 +374,7 @@ Deneyin:
 
 Bu JSON dosyası, Python betikleri veya Jupyıter not defterlerini içeren dizin yapısında olmalıdır. Aynı dizinde, *. azureml*adlı bir alt dizin veya bir üst dizin içinde olabilir.
 
-Bu dosyayı kodunuzda kullanmak için `ws=Workspace.from_config()` kullanın. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
+Bu dosyayı kodunuzda kullanmak için `ws=Workspace.from_config()`kullanın. Bu kod, dosyadaki bilgileri yükler ve çalışma alanınıza bağlanır.
 
 Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 

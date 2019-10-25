@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 35f11ee9bce4dc7c68e12749f69d2f2e4253d4bc
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: b5839ef7d9f1e5498beabfcdf0f1605fc1378498
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996254"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800420"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturmaC#
 
@@ -24,21 +24,21 @@ ms.locfileid: "71996254"
 > * [Python](create-cluster-database-python.md)
 > * [ARM şablonu](create-cluster-database-resource-manager.md)
 
-Azure Veri Gezgini, uygulamalardan, Web sitelerinden, IoT cihazlarından ve daha pek çok büyük miktarlarda veri akışı için gerçek zamanlı analizler için hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, kullanarak C#bir küme ve veritabanı oluşturursunuz.
+Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, kullanarak C#bir küme ve veritabanı oluşturursunuz.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-* Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio Kurulumu sırasında **Azure geliştirmeyi** etkinleştirdiğinizden emin olun.
+* Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="install-c-nuget"></a>NuGet C# 'i yükler
 
-1. [Azure Veri Gezgini (kusto) NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)yükler.
+* [Azure Veri Gezgini (kusto) NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)yükler.
 
-1. Kimlik doğrulaması için [Microsoft. IdentityModel. clients. ActiveDirectory NuGet paketini](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) yükler.
+* Kimlik doğrulaması için [Microsoft. IdentityModel. clients. ActiveDirectory NuGet paketini](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) yükler.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu olması gerekir. [Azure AD uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) ' yı denetleyerek ücretsiz BIR Azure AD uygulaması oluşturun ve abonelik kapsamında rol ataması ekleyin. Ayrıca, `Directory (tenant) ID`, `Application ID` ve `Client Secret` ' nin nasıl alınacağını gösterir.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi oluşturma
@@ -72,12 +72,12 @@ Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure
     await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
 
-   |**Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**|
+   |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | :/ | *mykustocluster* | Kümenizin istenen adı.|
+   | clusterName | *mykustocluster* | Kümenizin istenen adı.|
    | skuName | *Standard_D13_v2* | Kümeniz için kullanılacak SKU. |
-   | katman | *Stand* | SKU katmanı. |
-   | kü | *sayısından* | Küme örneklerinin sayısı. |
+   | tier | *Standart* | SKU katmanı. |
+   | capacity | *sayısından* | Küme örneklerinin sayısı. |
    | resourceGroupName | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
 
     > [!NOTE]
@@ -104,9 +104,9 @@ Sonuç `Succeeded` değeriyle `ProvisioningState` içeriyorsa, küme başarıyla
     await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
-   |**Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**|
+   |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | :/ | *mykustocluster* | Veritabanının oluşturulacağı Kümenizin adı.|
+   | clusterName | *mykustocluster* | Veritabanının oluşturulacağı Kümenizin adı.|
    | Dosyasında | *mykustodatabase* | Veritabanınızın adı.|
    | resourceGroupName | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
    | softDeletePeriod | *3650:00:00:00* | Verilerin sorgu için kullanılabilir kalacağı zaman miktarı. |
@@ -120,7 +120,7 @@ Sonuç `Succeeded` değeriyle `ProvisioningState` içeriyorsa, küme başarıyla
 
 Artık bir kümeniz ve veritabanınız var.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 * Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları saklayın.
 * Kaynakları temizlemek için kümeyi silin. Bir kümeyi sildiğinizde, içindeki tüm veritabanlarını da siler. Kümenizi silmek için aşağıdaki komutu kullanın:

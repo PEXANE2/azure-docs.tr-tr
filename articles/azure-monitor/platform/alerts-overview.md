@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555601"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802313"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure uyarılara genel bakış 
 
@@ -184,9 +184,9 @@ Uyarı örneklerinin tüketimi ve yönetimi, kullanıcının, [katkıda](https:/
 
 Aboneliğinize göre oluşturulan uyarılar için programlı olarak sorgulamak isteyebilirsiniz. Bu, Azure portal dışında özel görünümler oluşturmak veya desenleri ve eğilimleri belirlemek için uyarılarınızı analiz etmek olabilir.
 
-Aboneliklerinizde oluşturulan uyarıları, [Uyarı Yönetimi REST API](https://aka.ms/alert-management-api) veya [Uyarılar Için Azure Kaynak Grafiği REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources)kullanarak sorgulayabilirsiniz.
+Aboneliklerinize göre oluşturulan uyarıları, [Uyarı Yönetimi REST API](https://aka.ms/alert-management-api) veya [Uyarılar Için REST API Azure Kaynak grafiğini](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)kullanarak sorgulayabilirsiniz.
 
-[Uyarılar Için Azure Kaynak grafiği REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) , uyarı örneklerini ölçekteki sorgulamanızı sağlar. Birçok abonelik üzerinde oluşturulan uyarıları yönetmeniz gerektiğinde bu önerilir. 
+[Azure Kaynak Grafiği uyarılar için REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)), uyarı örneklerini ölçekteki sorgulamanızı sağlar. Birçok abonelik üzerinde oluşturulan uyarıları yönetmeniz gerektiğinde bu önerilir. 
 
 Aşağıdaki örnek API isteği bir abonelik içindeki uyarı sayısını döndürür:
 

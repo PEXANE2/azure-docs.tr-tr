@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162340"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809654"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için otomatik ayarlamayı etkinleştirin
 
@@ -34,11 +34,11 @@ Otomatik ayarlama, [Azure Portal](sql-database-automatic-tuning-enable.md#azure-
 
 Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanları" ndan devralmayı veya yapılandırmayı devralma seçeneğini belirleyebilirsiniz. Azure Varsayılanları FORCE_LAST_GOOD_PLAN etkindir, CREATE_INDEX etkindir ve DROP_INDEX devre dışıdır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure SQL veritabanı mantıksal **sunucusunda**otomatik ayarlamayı etkinleştirmek için Azure Portal ' deki sunucuya gidin ve menüden **otomatik ayarlama** ' yı seçin.
 
-![Sunucusu](./media/sql-database-automatic-tuning-enable/server.png)
+![Sunucu](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > Lütfen bu **DROP_INDEX** seçeneğinin, bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına ve bu durumlarda etkinleştirilmemelidir. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez.
@@ -60,7 +60,7 @@ Azure SQL veritabanı, her bir veritabanı için otomatik ayarlama yapılandırm
 > Genel öneri, otomatik ayarlama yapılandırmasını **sunucu düzeyinde** yönetmelidir, böylece aynı yapılandırma ayarları her veritabanına otomatik olarak uygulanabilir. Yalnızca veritabanının aynı sunucudan gelen ayarları devrallarından farklı ayarlara sahip olması gerekiyorsa, tek bir veritabanında otomatik ayarlamayı yapılandırın.
 >
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 **Tek bir veritabanında**otomatik ayarlamayı etkinleştirmek için Azure Portal veritabanında veritabanına gidin ve **otomatik ayarlama**' yı seçin.
 
@@ -103,6 +103,12 @@ Daha fazla doğrulamaya ilişkin T-SQL seçeneklerini bulma otomatik ayarlamayı
 ## <a name="disabled-by-the-system"></a>Sistem tarafından devre dışı
 
 Otomatik ayarlama, veritabanında aldığı tüm işlemleri izliyor ve bazı durumlarda otomatik ayarlamanın veritabanında düzgün şekilde çalışamadığı tespit edebilir. Bu durumda ayarlama seçeneği sistem tarafından devre dışı bırakılacaktır. Çoğu durumda bunun nedeni, sorgu deposunun etkin olmaması veya belirli bir veritabanında salt okuma durumunda olması olabilir.
+
+## <a name="permissions"></a>İzinler
+
+Otomatik ayarlama Azure özelliği olduğundan, bunu kullanmak için Azure 'ın yerleşik RBAC rollerini kullanmanız gerekir. Yalnızca SQL kimlik doğrulaması kullanmak Azure portal özelliği kullanmak için yeterli olmaz.
+
+Otomatik ayarlamayı kullanmak için, kullanıcıya verilmesi gereken en düşük izin Azure 'un yerleşik [SQL DB katılımcısı](../role-based-access-control/built-in-roles.md#sql-db-contributor) rolüdür. Ayrıca, katkıda bulunan, katkıda bulunan ve sahip SQL Server daha yüksek ayrıcalık rollerini kullanmayı da düşünebilirsiniz.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Otomatik ayarlama e-posta bildirimlerini yapılandırma
 

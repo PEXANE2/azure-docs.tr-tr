@@ -1,13 +1,13 @@
 ---
-title: OData coğrafi uzamsal işlev başvurusu-Azure Search
-description: Azure Search sorgularda OData coğrafi uzamsal işlevler, coğrafi. uzaklık ve coğrafi. kesişiyor.
-ms.date: 09/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData coğrafi uzamsal işlev başvurusu
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama sorgularında OData coğrafi uzamsal işlevler, coğrafi. uzaklık ve coğrafi. kesişiyor.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,25 +19,25 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 09034423e16c652cf6994b38f8d92574abc0ce55
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003450"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793334"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Azure Search `geo.distance` ve içindeki OData coğrafi uzamsal işlevleri`geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Bilişsel Arama-`geo.distance` ve `geo.intersects` OData coğrafi uzamsal işlevleri
 
-Azure Search, `geo.distance` ve `geo.intersects` işlevleri aracılığıyla [OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) coğrafi uzamsal sorguları destekler. `geo.distance` İşlevi iki noktası arasındaki mesafeyi kilometre cinsinden, biri alan veya Aralık değişkeni, diğeri ise filtrenin bir parçası olarak geçen bir sabit değer olarak döndürür. `geo.intersects` Bu`true` işlev, belirli bir noktanın belirli bir çokgen içindeyse, noktanın bir alan veya Aralık değişkeni olduğu ve çokgenin, filtrenin bir parçası olarak geçirildiği bir sabit olarak belirtildiği şekilde belirtilir.
+Azure Bilişsel Arama, `geo.distance` ve `geo.intersects` işlevleri aracılığıyla [OData filtre ifadelerinde](query-odata-filter-orderby-syntax.md) coğrafi uzamsal sorguları destekler. `geo.distance` işlevi iki noktaya, biri bir alan veya Aralık değişkeni, diğeri de filtrenin bir parçası olarak geçen bir sabit değer arasındaki mesafeyi kilometre olarak döndürür. `geo.intersects` işlevi, verilen bir bir çokgen içindeyse, noktanın bir alan veya Aralık değişkeni olduğu ve çokgenin, filtrenin parçası olarak geçirildiği bir sabit olarak belirtildiği şekilde `true` döndürür.
 
-İşlev, arama sonuçlarını belirli bir noktadan uzaklığına göre sıralamak için [ **$OrderBy** parametresinde](search-query-odata-orderby.md) de kullanılabilir. `geo.distance` `geo.distance` **$OrderBy** ' deki sözdizimi **$Filter**' deki ile aynıdır. $OrderBy kullanılırken `geo.distance` ,geçerli olduğu alan türünde `Edm.GeographyPoint` olmalıdır ve aynı zamanda **sıralanabilir**olmalıdır.
+`geo.distance` işlevi, arama sonuçlarını belirli bir noktadan uzaklığına göre sıralamak için [ **$OrderBy** parametresinde](search-query-odata-orderby.md) de kullanılabilir. **$Orderby** `geo.distance` söz dizimi **$Filter**ile aynıdır. **$Orderby**`geo.distance` kullanırken, geçerli olduğu alan `Edm.GeographyPoint` türünde olmalıdır ve aynı zamanda **sıralanabilir**olmalıdır.
 
 > [!NOTE]
-> $OrderBy parametresinde `geo.distance` kullanırken, işleve geçirdiğiniz alan yalnızca tek bir coğrafi nokta içermelidir. Diğer bir deyişle, türünde `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)`olması gerekir. Azure Search içindeki koleksiyon alanlarında sıralama yapılamaz.
+> **$OrderBy** parametresinde `geo.distance` kullanırken, işleve geçirdiğiniz alan yalnızca tek bir coğrafi nokta içermelidir. Diğer bir deyişle, `Collection(Edm.GeographyPoint)`değil `Edm.GeographyPoint` türünde olması gerekir. Azure Bilişsel Arama 'de koleksiyon alanlarını sıralamak mümkün değildir.
 
 ## <a name="syntax"></a>Sözdizimi
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), `geo.distance` ve işlevlerinin dilbilgisini ve `geo.intersects` üzerinde çalıştıkları coğrafi uzamsal değerleri tanımlar:
+Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) `geo.distance` ve `geo.intersects` işlevlerinin dilbilgisini ve üzerinde çalıştıkları coğrafi uzamsal değerleri tanımlar:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -64,25 +64,25 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
+> Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
 ### <a name="geodistance"></a>coğrafi. mesafe
 
-İşlevi `geo.distance` , türünde `Edm.GeographyPoint` iki parametre alır ve bunlar arasındaki mesafe `Edm.Double` , kilometre cinsinden bir değer döndürür. Bu, genellikle ölçümlerdeki uzaklıkları döndüren OData coğrafi uzamsal işlemlerini destekleyen diğer hizmetlerden farklıdır.
+`geo.distance` işlevi `Edm.GeographyPoint` iki parametre alır ve bunlar arasındaki uzaklığı kilometre cinsinden olan `Edm.Double` bir değer döndürür. Bu, genellikle ölçümlerdeki uzaklıkları döndüren OData coğrafi uzamsal işlemlerini destekleyen diğer hizmetlerden farklıdır.
 
-Parametrelerinden `geo.distance` birinin bir Coğrafya noktası sabiti olması gerekir ve diğeri, bir alan yolu olmalıdır (veya bir filtre `Collection(Edm.GeographyPoint)`olması durumunda bir Aralık değişkeni olması gerekir). Bu parametrelerin sırası böyle değildir.
+`geo.distance` parametrelerden biri bir Coğrafya noktası sabiti olmalıdır ve diğeri de bir alan yolu olmalıdır (veya bir filtre durumunda `Collection(Edm.GeographyPoint)`) bir alanda yineleme olması durumunda bir Aralık değişkeni olmalıdır. Bu parametrelerin sırası böyle değildir.
 
-Coğrafya noktası sabiti, boylam ve enlem 'nin `geography'POINT(<longitude> <latitude>)'`Sayısal sabitler olduğu formdur.
+Coğrafya noktası sabiti, boylam ve enlem 'nin Sayısal sabitler olduğu `geography'POINT(<longitude> <latitude>)'`formundadır.
 
 > [!NOTE]
-> Bir filtrede `geo.distance` kullanırken,,, veya `gt` `lt` `le` kullanarak`ge`işlev tarafından döndürülen uzaklığı bir sabit ile karşılaştırmalısınız. Uzaklıklar karşılaştırılırken `ne` işleçler `eq` ve desteklenmez. Örneğin, bu doğru bir kullanımdır `geo.distance`:. `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
+> Bir filtrede `geo.distance` kullanırken, işlev tarafından döndürülen uzaklığı `lt`, `le`, `gt`veya `ge`kullanarak bir sabit ile karşılaştırmanız gerekir. Uzaklıklar karşılaştırılırken işleçler `eq` ve `ne` desteklenmez. Örneğin, bu `geo.distance`doğru bir kullanımdır: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.
 
 ### <a name="geointersects"></a>coğrafi. kesişiyor
 
-`Edm.Boolean` `Edm.GeographyPolygon`  --  `false` `true` İşlevi, türünde `Edm.GeographyPoint` bir değişken ve bir sabiti alır ve nokta çokgenin sınırları içindeyse, aksi takdirde bir değeri döndürür. `geo.intersects`
+`geo.intersects` işlevi `Edm.GeographyPoint` ve sabit `Edm.GeographyPolygon` türünde bir değişken alır ve nokta çokgenin sınırları içindeyse bir `Edm.Boolean` -- `true`, aksi takdirde `false`.
 
 Çokgen, bir sınırlayıcı halkasını tanımlayan bir punto sırası olarak depolanan iki boyutlu bir yüzeydir (aşağıdaki [örneklere](#examples) bakın). Poligonun kapatılması gerekir, yani ilk ve son nokta kümeleri aynı olmalıdır. [Bir çokgen Içindeki noktaların saatin ters sırada olması gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
@@ -90,40 +90,40 @@ Coğrafya noktası sabiti, boylam ve enlem 'nin `geography'POINT(<longitude> <la
 
 Çok sayıda coğrafi uzamsal sorgu kitaplığı, 180. meriyen 'i (Dateline yakınında) içeren bir sorguyu formül dışında sınırlar veya bir geçici çözüm gerektirir (örneğin, her iki tarafında da çokgeni ikiye bölmek gibi).
 
-Azure Search, sorgu şekli dikdörtgen ise ve koordinatlarınız boylam ve Enlem (örneğin, `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`) üzerinde bir ızgara düzenine hizalandıysanız, 180 derece boylam içeren coğrafi uzamsal sorgular beklendiği gibi çalışır. Aksi halde, dikdörtgen olmayan veya hizalanmamış şekiller için bölünmüş Çokgen yaklaşımını göz önünde bulundurun.  
+Azure Bilişsel Arama 'de, sorgu şekli dikdörtgen ise ve koordinatlarınız boylam ve Enlem (örneğin, `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`) üzerinde bir ızgara düzenine hizalandıysanız, 180 derece boylam içeren coğrafi uzamsal sorgular beklendiği gibi çalışır. Aksi halde, dikdörtgen olmayan veya hizalanmamış şekiller için bölünmüş Çokgen yaklaşımını göz önünde bulundurun.  
 
-### <a name="geo-spatial-functions-and-null"></a>Coğrafi uzamsal işlevler ve`null`
+### <a name="geo-spatial-functions-and-null"></a>Coğrafi uzamsal işlevler ve `null`
 
-Azure Search içindeki diğer tüm koleksiyon olmayan alanlar gibi, türündeki `Edm.GeographyPoint` alanlar değer içerebilir. `null` Bir alan `geo.intersects` `false`için Azure Search değerlendirirken, sonuç her zaman olur. `null` Bu durumda öğesinin `geo.distance` davranışı, bağlama göre değişir:
+Azure Bilişsel Arama içindeki diğer tüm koleksiyon dışı alanlar gibi, `Edm.GeographyPoint` türündeki alanlar `null` değerler içerebilir. Azure Bilişsel Arama, `null`olan bir alan için `geo.intersects` değerlendirirken, sonuç her zaman `false`olur. Bu durumda `geo.distance` davranışı, bağlama göre değişir:
 
-- `null`Bir `geo.distance` alanınfiltrelerindesonucuolur`null` . Bu, null olmayan hiçbir değere `null` karşılık olarak değerlendirilmediği için `false`belgenin eşleşmeyeceği anlamına gelir.
-- Sonuçları **$OrderBy**kullanarak sıralarken, `geo.distance` bir `null` alanın en fazla olası uzaklığa neden olur. Bu alan içeren belgeler, sıralama yönü `asc` kullanıldığında (varsayılan) ve diğer tüm diğerlerine `desc`göre daha yükseği olduğunda, bu alana sahip olan belgeler diğerlerinden daha düşük sıralanır.
+- Filtreler ' de bir `null` alanının `geo.distance` `null`sonuçlanır. Bu, null olmayan hiçbir değere kıyasla `null` `false`olarak değerlendirilmediği için belgenin eşleşmeyeceği anlamına gelir.
+- Sonuçları **$OrderBy**kullanarak sıralarken, bir `null` alanının `geo.distance` olası en yüksek uzaklığa neden olur. Bu alan içeren belgeler, sıralama yönü `asc` kullanıldığında (varsayılan) ve diğer tüm diğer `desc`diğerlerinden daha yükseği varsa, diğer tüm diğerlerine göre sıralanır.
 
 ## <a name="examples"></a>Örnekler
 
 ### <a name="filter-examples"></a>Filtre örnekleri
 
-Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bul (konum, konum türünde `Edm.GeographyPoint`bir alandır):
+Belirli bir başvuru noktasındaki 10 kiloters içindeki tüm oteller bulun (konum `Edm.GeographyPoint`türünde bir alandır):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-Belirli bir görünüm içindeki tüm otelleri bir çokgen (konum türünde `Edm.GeographyPoint`bir alandır) olarak tanımlanan bir görünüm içinde bulun. Çokgenin kapatıldığını unutmayın (ilk ve son nokta kümeleri aynı olmalıdır) ve [noktaların saatin tersi sırada listelenmesi gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Bir çokgen (konum `Edm.GeographyPoint`türünde bir alandır) olarak tanımlanan belirli bir görünüm penceresinin içindeki tüm oteller bulun. Çokgenin kapatıldığını unutmayın (ilk ve son nokta kümeleri aynı olmalıdır) ve [noktaların saatin tersi sırada listelenmesi gerekir](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
 ### <a name="order-by-examples"></a>Sıralama örnekleri
 
-Oteller `rating`, daha sonra verilen koordinatlardan uzaklıktan artan düzende sıralayın:
+Oteller `rating`göre azalan şekilde sıralayın, sonra verilen koordinatlardan uzaklıktan sonra artan:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Oteller `search.score` ve ardından, aynı derecelendirmelere `rating`sahip iki otel arasında, en yakın bir değer olacak şekilde, ve daha sonra verilen koordinatlardan uzaklıktan artan düzende bir şekilde sıralayın.
+Oteller `search.score` ve `rating`göre azalan sırada sıralayın, sonra da aynı derecelendirmelere sahip iki otel arasında, en yakın bir tane olmak üzere verilen koordinatlardan uzaklıktan artan sırada sıralama yapın:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search filtreler](search-filters.md)
-- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama filtreler](search-filters.md)
+- [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

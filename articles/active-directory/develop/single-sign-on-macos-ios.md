@@ -1,5 +1,6 @@
 ---
-title: MacOS ve iOS 'ta SSO 'yu yapılandırma | Microsoft Identity platformu
+title: MacOS ve iOS 'ta SSO 'yu yapılandırma
+titleSuffix: Microsoft identity platform
 description: MacOS ve iOS 'ta çoklu oturum açma (SSO) yapılandırma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: b43319f3a456c7ea56ee3c6d5b3f9a1a4526bbe0
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268940"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802495"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: MacOS ve iOS 'ta SSO 'yu yapılandırma
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma
 
 MacOS ve iOS için Microsoft kimlik doğrulama kitaplığı (MSAL), macOS/iOS uygulamaları ve tarayıcıları arasında çoklu oturum açmayı (SSO) destekler. Bu makalede aşağıdaki SSO senaryoları ele alınmaktadır:
 
@@ -69,9 +70,9 @@ Uygulamalarınızda SSO 'yu etkinleştirmek için aşağıda daha ayrıntılı o
 
 Hangi uygulamaların belirteçleri paylaşabileceği hakkında bilgi sahibi olmak için Microsoft Identity platformu için, bu uygulamaların aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI paylaşması gerekir. Bu, portalda ilk uygulamanızı kaydettiğinizde size sağlanmış olan benzersiz tanıtıcıdır.
 
-Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örneğin:
+Microsoft Identity platform 'un aynı uygulama KIMLIĞINI kullanan uygulamalara **yeniden yönlendirme URI 'leri**tarafından nasıl olduğunu söyleme şekli. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Örnek:
 
-APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`App2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth`App3 yeniden yönlendirme URI 'SI:`msauth.com.contoso.mytestapp3://auth`
+APP1 Redirect URI: `msauth.com.contoso.mytestapp1://auth` app2 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp2://auth` App3 yeniden yönlendirme URI 'si: `msauth.com.contoso.mytestapp3://auth`
 
 > [!IMPORTANT]
 > Yeniden yönlendirme URI 'lerinin biçimi, [msal yeniden yönlendirme URI 'si biçim gereksinimleri](redirect-uris-ios.md#msal-redirect-uri-format-requirements)bölümünde belgelenen msal desteği biçimiyle uyumlu olmalıdır.
@@ -80,7 +81,7 @@ APP1 yeniden yönlendirme URI 'SI: `msauth.com.contoso.mytestapp1://auth`App2 ye
 
 Anahtarlık paylaşımını etkinleştirmek için Apple 'ın [özellik ekleme](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) makalesine bakın. Önemli olan şey, anahtarlarınızın ne şekilde çağrdığına karar vereceğinize ve bu yeteneği SSO 'ya dahil edilecek tüm uygulamalarınıza eklemektir.
 
-Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde aşağıdaki örneğe benzer bir `entitlements.plist` dosya görürsünüz:
+Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde bu örneğe benzer bir şey içeren bir `entitlements.plist` dosyası görürsünüz:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +97,7 @@ Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde aşağıda
 </plist>
 ```
 
-Her uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra ve SSO kullanmaya hazırsanız, aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun yapılandırın `MSALPublicClientApplication` :
+Her bir uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra, SSO kullanmaya hazırsanız, aşağıdaki örnekte olduğu gibi Anahtarlık erişim grubumun `MSALPublicClientApplication` yapılandırın:
 
 Amaç-C:
 
@@ -137,7 +138,7 @@ MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. 
 
 Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullanarak SSO 'yu nasıl etkinleştirirsiniz:
 
-1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örneğin:
+1. Uygulamanın Info. plist dosyasında uygulama için bir aracı uyumlu yeniden yönlendirme URI 'SI biçimi kaydedin. Aracı uyumlu yeniden yönlendirme URI 'SI biçimi `msauth.<app.bundle.id>://auth`. ' < App. demeti. ID > ' ' değerini uygulamanızın paket KIMLIĞIYLE değiştirin. Örnek:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -146,7 +147,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     </array>
     ```
 
-1. Aşağıdaki şemaları uygulamanızın Info. plist `LSApplicationQueriesSchemes`öğesine ekleyin:
+1. `LSApplicationQueriesSchemes`altındaki uygulamanızın Info. plist ' e aşağıdaki şemaları ekleyin:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -175,7 +176,7 @@ Aşağıdaki adımlar, uygulamanız için bir kimlik doğrulama Aracısı kullan
     }
     ```
     
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma `SceneDelegate` işlemini dosyaya yerleştirmeniz gerekir.
+**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini `SceneDelegate` dosyasına yerleştirmeniz gerekir.
 Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
 
 Amaç-C:

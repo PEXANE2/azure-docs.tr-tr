@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 814be49c972e444f2a4e4a703501e88fa1272b89
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392148"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808951"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Öğretici: Azure Paylaşılan görüntü galerisinden bir VM veya sanal makine ölçek kümesi oluşturma
 
@@ -44,7 +44,7 @@ Tüm örnek PlayBook 'ları almanın iki yolu vardır:
 - [SIG klasörünü indirin](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) ve yerel makinenize kaydedin.
 - Her bölüm için yeni bir dosya oluşturun ve örnek PlayBook 'u kopyalayın.
 
-@No__t-0 dosyası, bu öğretici için tüm örnek PlayBook 'lar tarafından kullanılan değişkenleri içerir. Benzersiz adlar ve değerler sağlamak için dosyayı düzenleyebilirsiniz.
+`vars.yml` dosyası, bu öğretici için tüm örnek PlayBook 'lar tarafından kullanılan değişkenleri içerir. Benzersiz adlar ve değerler sağlamak için dosyayı düzenleyebilirsiniz.
 
 İlk örnek PlayBook `00-prerequisites.yml`, bu öğreticiyi tamamlamaya yönelik gerekenleri oluşturur:
 - Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir kapsayıcı olan bir kaynak grubu.
@@ -104,13 +104,13 @@ Tüm örnek PlayBook 'ları almanın iki yolu vardır:
           version: latest
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 00-prerequisites.yml
 ```
 
-[Azure Portal](https://portol.azure.com), yeni sanal makineyi ve oluşturduğunuz çeşitli kaynakları görmek için, `vars.yml` ' de belirttiğiniz kaynak grubunu kontrol edin.
+[Azure Portal](https://portal.azure.com), yeni sanal makineyi ve oluşturduğunuz çeşitli kaynakları görmek için, `vars.yml` ' de belirttiğiniz kaynak grubunu kontrol edin.
 
 ## <a name="generalize-the-vm-and-create-a-custom-image"></a>VM 'yi genelleştirin ve özel bir görüntü oluşturun
 
@@ -136,7 +136,7 @@ Bir sonraki PlayBook, `01a-create-generalized-image.yml`, önceki adımda oluşt
         source: "{{ source_vm_name }}"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 01a-create-generalized-image.yml
@@ -146,7 +146,7 @@ Kaynak grubunuzu denetleyin ve `testimagea` ' ın göründüğünden emin olun.
 
 ## <a name="create-the-shared-image-gallery"></a>Paylaşılan görüntü galerisini oluşturma
 
-Görüntü Galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. @No__t-0 ' daki örnek PlayBook kodu, kaynak grubunuzda paylaşılan bir görüntü Galerisi oluşturur.
+Görüntü Galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. `02-create-shared-image-gallery.yml` örnek PlayBook kodu, kaynak grubunuzda paylaşılan bir görüntü Galerisi oluşturur.
 
 ```yml
 - hosts: localhost
@@ -163,7 +163,7 @@ Görüntü Galerisi, görüntüleri paylaşmak ve yönetmek için bir depodur. @
         description: This is the gallery description.
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 02-create-shared-image-gallery.yml
@@ -225,7 +225,7 @@ Görüntü tanımları, görüntü türü (Windows veya Linux), sürüm notları
         var: output
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 03a-create-shared-image-generalized.yml
@@ -256,7 +256,7 @@ Son olarak, önceki adımda oluşturduğunuz Genelleştirilmiş görüntüye gö
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 04a-create-vm-using-generalized-image.yml
@@ -289,7 +289,7 @@ Genelleştirilmiş görüntüye göre bir sanal makine ölçek kümesi de oluşt
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 05a-create-vmss-using-generalized-image.yml
@@ -297,7 +297,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>Galeri hakkında bilgi alın
 
-@No__t-0 ' ı çalıştırarak Galeri, görüntü tanımı ve sürüm hakkında bilgi edinebilirsiniz.
+`06-get-info.yml`çalıştırarak Galeri, görüntü tanımı ve sürüm hakkında bilgi edinebilirsiniz.
 
 ```yml
 - hosts: localhost
@@ -323,7 +323,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
       name: "{{ shared_image_version }}"
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 06-get-info.yml
@@ -362,7 +362,7 @@ Galeri kaynaklarını silmek için örnek PlayBook `07-delete-gallery.yml` ' a b
       state: absent
 ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook 07-delete-gallery.yml
@@ -392,10 +392,10 @@ Aşağıdaki playbook'u `cleanup.yml` olarak kaydedin:
 
 Örnek PlayBook ile çalışırken göz önünde bulundurmanız gereken bazı önemli notlar şunlardır:
 
-- @No__t-0 yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+- `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 - Belirtilen iki kaynak grubu içindeki tüm kaynaklar silinecek.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml

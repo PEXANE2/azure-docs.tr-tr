@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090895"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792566"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL veritabanı bağlantı sorunlarıyla ve geçici hatalarla çalışma
 
@@ -57,8 +57,8 @@ Bazen geçici bir hatayla karşılaşan istemci programları, yeniden deneme man
 ### <a name="principles-for-retry"></a>Yeniden deneme ilkeleri
 
 - Hata geçicidir, bir bağlantıyı açmayı yeniden deneyin.
-- Geçici bir hatayla başarısız olan bir `SELECT` SQL ifadesini doğrudan yeniden denemeyin. Bunun yerine, yeni bir bağlantı oluşturun ve sonra yeniden deneyin `SELECT`.
-- Bir SQL `UPDATE` açıklaması geçici bir hata ile başarısız olduğunda, güncelleştirmeyi yeniden denemeden önce yeni bir bağlantı kurun. Yeniden deneme mantığı, tüm veritabanı işleminin bittiğini veya işlemin tamamının geri alındığından emin olmalıdır.
+- Geçici bir hatayla başarısız olan bir SQL `SELECT` ifadesini doğrudan yeniden denemeyin. Bunun yerine, yeni bir bağlantı oluşturun ve `SELECT`yeniden deneyin.
+- Bir SQL `UPDATE` deyimleri geçici bir hata ile başarısız olduğunda, GÜNCELLEŞTIRMEYI yeniden denemeden önce yeni bir bağlantı kurun. Yeniden deneme mantığı, tüm veritabanı işleminin bittiğini veya işlemin tamamının geri alındığından emin olmalıdır.
 
 ### <a name="other-considerations-for-retry"></a>Yeniden denemeye yönelik diğer noktalar
 
@@ -91,7 +91,7 @@ Yeniden deneme mantığınızı test etmek için, programınız çalışmaya dev
 Yeniden deneme mantığınızı test etmenin bir yolu, program çalışırken istemci bilgisayarınızın ağ bağlantısını kesmenin bir yoludur. Hata:
 
 - **SqlException. Number** = 11001
-- İleti: "Böyle bir konak bilinmiyor"
+- İleti: "böyle bir konak bilinmiyor"
 
 İlk yeniden deneme denemesinin bir parçası olarak, istemci bilgisayarınızı ağa yeniden bağlayıp bağlanmayı deneyebilirsiniz.
 
@@ -109,7 +109,7 @@ Bu testi pratik hale getirmek için, programınızı çalıştırmadan önce bil
 Programınız, ilk bağlantı denemesinden önce Kullanıcı adını kasıtlı olarak yanlış şekilde hatalı yazalabilir. Hata:
 
 - **SqlException. Number** = 18456
-- İleti: "Kullanıcı ' WRONG_MyUserName ' için oturum açma başarısız."
+- İleti: "' WRONG_MyUserName ' kullanıcısı için oturum açma başarısız."
 
 İlk yeniden deneme denemesinin bir parçası olarak, programınız yanlış yazımı düzeltip bağlanmayı deneyebilir.
 
@@ -133,11 +133,11 @@ Bu testi pratik hale getirmek için programınız programın şunları yapmasın
 
 **SqlConnection** nesneniz için [bağlantı dizesi](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) oluşturduğunuzda, değerleri aşağıdaki parametreler arasında koordine edin:
 
-- **ConnectRetryCount**:&nbsp;&nbsp;varsayılan 1 ' dir. Aralık 0 ile 255 arasındadır.
+- **ConnectRetryCount**:&nbsp;&nbsp;varsayılan değer 1 ' dir. Aralık 0 ile 255 arasındadır.
 - **ConnectRetryInterval**:&nbsp;&nbsp;varsayılan değer 10 saniyedir. Aralık 1 ile 60 arasındadır.
-- **Bağlantı zaman aşımı**:&nbsp;&nbsp;varsayılan 15 saniyedir. Aralık 0 ile 2147483647 arasındadır.
+- **Bağlantı zaman aşımı**:&nbsp;&nbsp;varsayılan değer 15 saniyedir. Aralık 0 ile 2147483647 arasındadır.
 
-Özellikle, seçtiğiniz değerler aşağıdaki eşitliği doğru hale getirir: Bağlantı zaman aşımı = ConnectRetryCount * Connectionretryınterval
+Özellikle, seçtiğiniz değerler aşağıdaki eşitliği doğru hale getirir: bağlantı zaman aşımı = ConnectRetryCount * Connectionretryınterval
 
 Örneğin, sayı 3 ' e eşitse ve Aralık 10 saniyeye eşitse, yalnızca 29 saniyelik bir zaman aşımı sisteme, üçüncü ve son yeniden denemeye bağlanmayı yeterli zaman vermez: 29 < 3 * 10.
 
@@ -162,7 +162,7 @@ Uygulamanızın sağlam özel yeniden deneme mantığı olduğunu varsayalım. B
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
-### <a name="connection-connection-string"></a>Bağlantı: Bağlantı dizesi
+### <a name="connection-connection-string"></a>Bağlantı: bağlantı dizesi
 
 SQL veritabanına bağlanmak için gerekli olan bağlantı dizesi, SQL Server bağlanmak için kullanılan dizeden biraz farklıdır. Veritabanınızın bağlantı dizesini [Azure Portal](https://portal.azure.com/)kopyalayabilirsiniz.
 
@@ -181,14 +181,14 @@ IP adresini yapılandırmayı unutursanız, programınız gerekli IP adresini be
 Daha fazla bilgi için bkz. [SQL veritabanında güvenlik duvarı ayarlarını yapılandırma](sql-database-configure-firewall-settings.md).
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-### <a name="connection-ports"></a>Bağlantı: Bağlantı Noktaları
+### <a name="connection-ports"></a>Bağlantı: bağlantı noktaları
 
 Genellikle, istemci programınızı barındıran bilgisayardaki giden iletişim için yalnızca bağlantı noktası 1433 ' ün açık olduğundan emin olmanız gerekir.
 
 Örneğin, istemci programınız bir Windows bilgisayarında barındırılıyorsa, 1433 numaralı bağlantı noktasını açmak için konakta Windows Güvenlik Duvarı 'nı kullanabilirsiniz.
 
 1. Denetim Masası 'Nı açın.
-2. **Tüm Denetim Masası öğeleri** > **Windows Güvenlik Duvarı** > **Gelişmiş ayarlar** > **giden kuralları** > eylemlerYeni > **kural**' ı seçin.
+2. **Tüm Denetim Masası öğeleri** > **Windows Güvenlik Duvarı** > **gelişmiş ayarlar** > **giden kuralları** > **Eylemler** > **Yeni kural**' ı seçin.
 
 İstemci programınız bir Azure sanal makinesinde (VM) barındırılıyorsa, [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarını](sql-database-develop-direct-route-ports-adonet-v12.md)okuyun.
 
@@ -219,27 +219,27 @@ ADO.NET 4,0 veya önceki bir sürümünü kullanıyorsanız en son ADO.NET sür�
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 
-### <a name="diagnostics-test-whether-utilities-can-connect"></a>'Ya Yardımcı programların bağlanıp bağlanamayacağını test etme
+### <a name="diagnostics-test-whether-utilities-can-connect"></a>Tanılama: yardımcı programların bağlanıp bağlanamayacağını test edin
 
 Programınız SQL veritabanı 'na bağlanamıyorsa, tek bir tanılama seçeneği, bir yardımcı programı ile bağlanmayı denemenize yardımcı olur. İdeal olarak, yardımcı program, programınızın kullandığı kitaplığı kullanarak bağlanır.
 
 Herhangi bir Windows bilgisayarında, bu yardımcı programları deneyebilirsiniz:
 
 - ADO.NET kullanarak bağlanan SQL Server Management Studio (SSMS. exe)
-- `sqlcmd.exe`, [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) kullanarak bağlanan
+- [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) kullanarak bağlanan `sqlcmd.exe`
 
 Programınız bağlandıktan sonra, kısa bir SQL SELECT sorgusunun çalışıp çalışmadığını test edin.
 
 <a id="f-diagnostics-check-open-ports" name="f-diagnostics-check-open-ports"></a>
 
-### <a name="diagnostics-check-the-open-ports"></a>'Ya Açık bağlantı noktalarını denetle
+### <a name="diagnostics-check-the-open-ports"></a>Tanılama: açık bağlantı noktalarını denetleyin
 
 Bağlantı noktası sorunları nedeniyle bağlantı girişimlerinin başarısız olduğunu kuşkulanıyorsanız, bilgisayarınızda bağlantı noktası yapılandırmalarına rapor veren bir yardımcı program çalıştırabilirsiniz.
 
 Linux 'ta aşağıdaki yardımcı programlar yararlı olabilir:
 
 - `netstat -nap`
-- `nmap -sS -O 127.0.0.1`: Örnek değeri, IP adresiniz olacak şekilde değiştirin.
+- `nmap -sS -O 127.0.0.1`: örnek değeri IP adresiniz olacak şekilde değiştirin.
 
 Windows 'da, [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) yardımcı programı yararlı olabilir. Aşağıda, bir SQL veritabanı sunucusunda bağlantı noktası durumu sorgulanan ve bir dizüstü bilgisayarda çalıştırılan örnek bir yürütme verilmiştir:
 
@@ -261,17 +261,17 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-### <a name="diagnostics-log-your-errors"></a>'Ya Hatalarınızı günlüğe kaydedin
+### <a name="diagnostics-log-your-errors"></a>Tanılama: hatalarınızı günlüğe kaydedin
 
 Aralıklı bir sorun bazen gün veya hafta içinde genel bir düzenin algılanması ile en iyi şekilde tanılanıyor.
 
 İstemciniz, karşılaştığı tüm hataları günlüğe kaydederek bir tanılamada yardımcı olabilir. Günlük girişlerini SQL veritabanı 'nın kendisini kendi kendine kaydettiği hata verileriyle ilişkilendirebileceksiniz.
 
-Enterprise Library 6 (EntLib60), günlüğe kaydetmeye yardımcı olacak .NET yönetilen sınıfları sağlar. Daha fazla bilgi için bkz [. 5-bir günlüğün altına düşme kadar kolay: Günlük uygulama bloğunu](https://msdn.microsoft.com/library/dn440731.aspx)kullanın.
+Enterprise Library 6 (EntLib60), günlüğe kaydetmeye yardımcı olacak .NET yönetilen sınıfları sağlar. Daha fazla bilgi için bkz. [5-bir günlüğün altına düşme kadar kolay: günlük uygulama bloğunu kullanın](https://msdn.microsoft.com/library/dn440731.aspx).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
-### <a name="diagnostics-examine-system-logs-for-errors"></a>'Ya Hatalar için sistem günlüklerini inceleyin
+### <a name="diagnostics-examine-system-logs-for-errors"></a>Tanılama: hatalar için sistem günlüklerini Inceleyin
 
 Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT deyimleri aşağıda verilmiştir.
 
@@ -282,7 +282,7 @@ Hata günlüklerini ve diğer bilgileri sorgulayan bazı Transact-SQL SELECT dey
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
-### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>'Ya SQL veritabanı günlüğünde sorun olaylarını arayın
+### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Tanılama: SQL veritabanı günlüğünde sorun olaylarını arama
 
 SQL veritabanı günlüğündeki sorun olaylarıyla ilgili girdiler için arama yapabilirsiniz. *Ana* veritabanında aşağıdaki Transact-SQL SELECT ifadesini deneyin:
 
@@ -327,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 Enterprise Library 6 (EntLib60), biri SQL veritabanı hizmeti olan bulut hizmetleri için güçlü istemcileri uygulamanıza yardımcı olan bir .NET sınıfları çerçevesidir. EntLib60 'in yardımcı olduğu her bir alana adanmış konuları bulmak için bkz. [Enterprise Library 6-nisan 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
-Geçici hataları işlemek için yeniden deneme mantığı, EntLib60 'in yardımcı olabilecek tek bir alandır. Daha fazla bilgi için bkz [. 4-Perseverance, tüm üç aylık gizlilik: Geçici hata Işleme uygulama bloğunu](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)kullanın.
+Geçici hataları işlemek için yeniden deneme mantığı, EntLib60 'in yardımcı olabilecek tek bir alandır. Daha fazla bilgi için bkz. [4-Perseverance, tüm üç aylık gizlilik: geçici hata Işleme uygulama bloğunu kullanma](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
 > EntLib60 için kaynak kodu, [Indirme merkezinden](https://go.microsoft.com/fwlink/p/?LinkID=290898)genel karşıdan yükleme için kullanılabilir. Microsoft 'un EntLib 'e daha fazla özellik güncelleştirmesi veya bakım güncelleştirmesi yapma planı yoktur.
@@ -354,13 +354,13 @@ Aşağıdaki EntLib60 sınıfları, yeniden deneme mantığı için özellikle k
 
 EntLib60 hakkındaki bilgilerin bazı bağlantıları aşağıda verilmiştir:
 
-- Ücretsiz kitap indirme: [Geliştirici Kılavuzu Microsoft Kurumsal kitaplığı, 2. sürüm](https://www.microsoft.com/download/details.aspx?id=41145).
-- En iyi yöntemler: [Yeniden deneme genel Kılavuzu](../best-practices-retry-general.md) , yeniden deneme mantığı hakkında mükemmel bir ayrıntılı tartışmadır.
+- Ücretsiz kitap indirme: [Geliştirici Kılavuzu Microsoft Kurumsal kitaplığı, 2. sürümde](https://www.microsoft.com/download/details.aspx?id=41145).
+- En iyi uygulamalar: [yeniden deneme genel Kılavuzu](../best-practices-retry-general.md) , yeniden deneme mantığı hakkında harika bir tartışmaya sahiptir.
 - NuGet indirme: [Kurumsal kitaplık-geçici hata Işleme uygulama bloğu 6,0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
-### <a name="entlib60-the-logging-block"></a>EntLib60: Günlüğe kaydetme bloğu
+### <a name="entlib60-the-logging-block"></a>EntLib60: günlük bloğu
 
 - Günlüğe kaydetme bloğu, aşağıdakileri yapmak için kullanabileceğiniz, son derece esnek ve yapılandırılabilir bir çözümdür:
   - Günlük iletilerini çok çeşitli konumlarda oluşturun ve saklayın.
@@ -368,7 +368,7 @@ EntLib60 hakkındaki bilgilerin bazı bağlantıları aşağıda verilmiştir:
   - Hata ayıklama ve izleme için yararlı olan bağlamsal bilgileri, ayrıca denetim ve genel günlük gereksinimlerini toplayın.
 - Günlüğe kaydetme bloğu, hedef günlük deposunun konumu ve türü ne olursa olsun, uygulama kodunun tutarlı olması için günlük hedefinden günlük oluşturma işlevini soyutlar.
 
-Daha fazla bilgi için bkz [. 5-bir günlüğün altına düşme kadar kolay: Günlük uygulama bloğunu](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)kullanın.
+Daha fazla bilgi için bkz. [5-bir günlüğün altına düşme kadar kolay: günlük uygulama bloğunu kullanın](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
@@ -451,6 +451,6 @@ public bool IsTransient(Exception ex)
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
 [step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php

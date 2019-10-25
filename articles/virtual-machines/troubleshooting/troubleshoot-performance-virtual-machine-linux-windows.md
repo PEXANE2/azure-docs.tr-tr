@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170289"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790937"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Linux veya Windows çalıştıran Azure sanal makinesi için genel performans sorunlarını giderme
+# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Linux veya Windows çalıştıran Azure Virtual Machine için genel performans sorunlarını giderme
 
-Bu makalede, performans sorunlarını izleme ve gözlemleyerek sanal makine (VM) genel performans sorunlarını giderme ve oluşabilecek sorunlar için olası düzeltme sağlar.
+Bu makalede, performans sorunlarını izleme ve gözlemleyerek sanal makine (VM) genel performans sorunlarını giderme ve oluşabilecek sorunlar için olası düzeltme sağlar. İzlemenin yanı sıra, GÇ/CPU/bellek üzerinde en iyi yöntem önerilerini ve temel sorunları içeren bir rapor sağlayabilen Perfinsıghts ' i de kullanabilirsiniz. Perfinsıghts, Azure 'da hem [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) hem de [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) VM 'leri için kullanılabilir.
+
+Bu makale, performans sorunlarını tanılamak için izlemeyi kullanma konusunda yol gösterecektir.
 
 ## <a name="enabling-monitoring"></a>İzlemeyi etkinleştirme
 
@@ -34,32 +36,55 @@ Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey
  
 ### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Microsoft Azure portal aracılığıyla VM tanılamayı etkinleştirme
 
-VM tanılamayı etkinleştirmek için VM 'ye gidin, **Ayarlar**' a ve ardından **Tanılama**' ya tıklayın.
+VM tanılamayı etkinleştirmek için:
 
-![Ayarlar ' a ve ardından Tanılama ' ya tıklayın](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
- 
+1. VM 'ye git
+2. **Tanılama ayarları** ' na tıklayın
+3. Depolama hesabını seçin ve **Konuk düzeyinde Izlemeyi etkinleştir**' e tıklayın.
+
+   ![Ayarlar ' a ve ardından Tanılama ' ya tıklayın](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+
+Tanılama **ayarları**' nın altındaki **Aracı** sekmesinden tanılama kurulumu için kullanılan depolama hesabını kontrol edebilirsiniz.
+
+![Depolama hesabını denetle](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
+
 ### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Azure portal aracılığıyla depolama hesabı tanılamayı etkinleştirme
 
-İlk olarak, VM 'yi seçerek sanal makinenizin hangi depolama hesabını (veya hesaplarını) kullandığını belirlersiniz. **Ayarlar**' a ve ardından **diskler**' e tıklayın:
+Azure 'da bir sanal makine için GÇ performansını çözümlemeyi düşüntiğimiz zaman, depolama çok önemli bir katmandır. Depolama ile ilgili ölçümler için, tanılamayı ek bir adım olarak etkinleştirmemiz gerekir. Bu, yalnızca depolamayla ilgili sayaçları çözümlemek istiyorsam de etkinleştirilebilir.
 
-![Ayarlar ' a ve ardından diskler ' e tıklayın](media/troubleshoot-performance-virtual-machine-linux-windows/3-storage-disks-disks-selection.png)
+1. VM 'YI seçerek sanal makinenizin hangi depolama hesabını (veya hesaplarını) kullandığını belirler. **Ayarlar**' a ve ardından **diskler**' e tıklayın:
 
-Portalda, VM için depolama hesabına (veya hesaplara) gidin ve aşağıdaki adımlarla çalışın:
+   ![Ayarlar ' a ve ardından diskler ' e tıklayın](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
-![Blob ölçümlerini seçin](media/troubleshoot-performance-virtual-machine-linux-windows/4-select-blob-metrics.png)
- 
-1. **Tüm ayarlar**' ı seçin.
-2. Tanılamayı açın.
-3. **BLOB* ölçümleri*' ni seçin ve bekletme 'yi **30** güne ayarlayın.
-4. Değişiklikleri kaydedin.
+2. Portalda, VM için depolama hesabına (veya hesaplara) gidin ve aşağıdaki adımlarla çalışın:
+
+   1. Yukarıdaki adımda bulduğunuz depolama hesabı için genel bakış ' a tıklayın.
+   2. Varsayılan ölçümler gösterilir. 
+
+    ![Varsayılan ölçümler](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+
+3. Ölçüm yapılandırma ve ekleme hakkında daha fazla seçeneğe sahip başka bir dikey pencere gösteren ölçülerden birine tıklayın.
+
+   ![Ölçüm Ekle](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
+
+Bu seçenekleri yapılandırmak için:
+
+1.  **Ölçümler**’i seçin.
+2.  **Kaynağı** (depolama hesabı) seçin.
+3.  **Ad alanını** seçin
+4.  **Ölçüm**' i seçin.
+5.  **Toplama** türünü seçin
+6.  Bu görünümü panoda sabitleyebilir.
 
 ## <a name="observing-bottlenecks"></a>Performans sorunlarını gözlemleme
+
+Gerekli ölçümler için ilk kurulum işlemini gerçekleştirmemiz ve VM ve ilgili depolama hesabı için tanılamayı etkinleştirdikten sonra analiz aşamasına kaydırabiliriz.
 
 ### <a name="accessing-the-monitoring"></a>İzlemeye erişme
 
 Araştırmak istediğiniz Azure VM 'yi seçin ve **izleme**' yi seçin.
 
-![Izlemeyi Seç](media/troubleshoot-performance-virtual-machine-linux-windows/5-observe-monitoring.png)
+![Izlemeyi Seç](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
 ### <a name="timelines-of-observation"></a>Gözlem zaman çizelgeleri
 
@@ -67,12 +92,12 @@ Kaynak sorunları olup olmadığını belirlemek için verilerinizi gözden geç
 
 ### <a name="check-for-cpu-bottleneck"></a>CPU performans sorunlarını denetle
 
-![CPU performans sorunlarını denetle](media/troubleshoot-performance-virtual-machine-linux-windows/6-cpu-bottleneck-time-range.png)
+![CPU performans sorunlarını denetle](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
 
 1. Grafiği düzenleyin.
 2. Zaman aralığını ayarlayın.
 3. Daha sonra sayaca eklemeniz gerekir: CPU yüzdesi Konuk işletim sistemi
-4. Kaydet.
+4. Kaydedin.
 
 ### <a name="cpu-observe-trends"></a>CPU gözleme eğilimleri
 
@@ -88,12 +113,14 @@ Artmasıyla artıyor – tüketimde sabit artış, genellikle verimsiz bir koddu
 
 ### <a name="high-cpu-utilization-remediation"></a>Yüksek CPU kullanımı düzeltmesi
 
-Uygulamanız veya işleminiz doğru performans düzeyinde çalışmıyorsa ve% 95 + CPU kullanım sabiti görüyorsanız, aşağıdaki görevlerden birini gerçekleştirebilirsiniz:
+Uygulamanız veya işleminiz doğru performans düzeyinde çalışmıyorsa ve %95 + CPU kullanım sabiti görüyorsanız, aşağıdaki görevlerden birini gerçekleştirebilirsiniz:
 
 * Anında yardım için sanal makinenin boyutunu daha fazla çekirdeğe sahip bir boyuta büyütün
 * Sorunu anlayın – uygulama/işlem bulun ve uygun şekilde sorun giderin.
 
-VM 'yi artırdıysanız ve CPU hala% 95 çalıştırıyorsa, bu ayarın kabul edilebilir bir düzeyde daha iyi performans veya daha yüksek uygulama performansı sunmakta olup olmadığını saptayın. Aksi takdirde, tek bir application\processdosyasında sorun giderin.
+VM 'yi artırdıysanız ve CPU hala %95 çalıştırıyorsa, bu ayarın kabul edilebilir bir düzeyde daha iyi performans veya daha yüksek uygulama performansı sunmakta olup olmadığını saptayın. Aksi takdirde, tek bir application\processdosyasında sorun giderin.
+
+Hangi işlemin CPU tüketimini yönlendirdiğini çözümlemek için [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) Için perfınsıghts kullanabilirsiniz. 
 
 ## <a name="check-for-memory-bottleneck"></a>Bellek sorunu olup olmadığını denetleyin
 
@@ -122,11 +149,15 @@ Yüksek bellek kullanımını çözümlemek için aşağıdaki görevlerden herh
 * Sorunu anlama – uygulamaları/işlemleri bulun ve yüksek tüketen bellek uygulamalarını tanımlamaya yönelik sorunları giderin.
 * Uygulamayı biliyorsanız, bellek ayırmasının erişilebilir olup olmadığını görün.
 
-Daha büyük bir VM 'ye yükseltme yaptıktan sonra, hala% 100 ' e kadar sabit bir artış olduğunu fark edersiniz, uygulama/işlem ve sorun giderme işlemlerini belirlemeniz gerekir.
+Daha büyük bir VM 'ye yükseltme yaptıktan sonra, hala %100 ' e kadar sabit bir artış olduğunu fark edersiniz, uygulama/işlem ve sorun giderme işlemlerini belirlemeniz gerekir.
+
+Bellek tüketimini hangi işlemin yönlendirdiğini çözümlemek için [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) Için perfınsıghts kullanabilirsiniz. 
 
 ## <a name="check-for-disk-bottleneck"></a>Disk sorunu olup olmadığını denetleyin
 
 VM 'nin depolama alt sistemini denetlemek için, VM tanılama 'daki sayaçları ve ayrıca depolama hesabı tanılamayı kullanarak Azure VM düzeyinde tanılamayı denetleyin.
+
+VM 'ye özel sorun giderme işleminde, [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) veya [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)Için perfinsıghts ' i kullanarak, GÇ 'leri hangi işlemin yönlendirdiğini çözümlemeye yardımcı olabilir. 
 
 Bölgesel olarak yedekli ve Premium Depolama hesapları için sayaçların olmadığı unutulmamalıdır. Bu sayaçlarla ilgili sorunlar için bir destek talebi yükseltin.
 
@@ -134,7 +165,7 @@ Bölgesel olarak yedekli ve Premium Depolama hesapları için sayaçların olmad
 
 Aşağıdaki öğeler üzerinde çalışmak için portaldaki VM için depolama hesabına gidin:
 
-![Izleme sırasında depolama hesabı tanılamayı görüntüleme](media/troubleshoot-performance-virtual-machine-linux-windows/7-virtual-machine-storage-account.png)
+![Izleme sırasında depolama hesabı tanılamayı görüntüleme](media/troubleshoot-performance-virtual-machine-linux-windows/9-virtual-machine-storage-account.png)
 
 1. Izleme grafiğini düzenleyin.
 2. Zaman aralığını ayarlayın.
@@ -175,7 +206,11 @@ Bu ölçüm sayesinde, hangi Blobun bu kısma neden olduğunu ve bundan etkilend
 
 IOPS sınırına ulaşıp ulaşmayacağını belirlemek için, depolama hesabı tanılamalarına gidin ve TotalRequests ' i denetleyerek 20000 TotalRequests 'e yaklaşarak göz atın. Bir değişikliği ilk kez görüyor musunuz, ya da bu sınırın belirli bir zamanda olup olmadığı gibi, düzende bir değişiklik yapın.
 
-#### <a name="references"></a>Başvur
+Standart depolama alanındaki yeni disk teklifleriyle, ıOPS ve aktarım hızı sınırları farklı olabilir, ancak standart depolama hesabının birikimli limiti 20000 ıOPS 'dir (Premium Depolama, hesap veya disk düzeyinde farklı sınırlara sahiptir). Farklı standart depolama disk teklifleri ve disk başına sınırlar hakkında daha fazla bilgi edinin:
+
+* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+
+#### <a name="references"></a>Başvurular
 
 * [Sanal makine diskleri için ölçeklenebilirlik hedefleri](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 
@@ -187,7 +222,9 @@ Depolama hesabı yedeklilik türü ve bölgesi için giriş ve çıkış sınır
 
 VM 'ye bağlı VHD 'lerin verimlilik sınırlarını denetleyin. Okuma ve yazma VM ölçümleri diskini ekleyin.
 
-Her VHD, en fazla 60 MB/sn destekleyebilir (ıOPS, VHD başına gösterilmez). Disk okuma ve yazma kullanarak VM düzeyinde VHD 'ler için Birleşik üretilen iş MB/sn 'nin sınırlarına göz atın ve ardından sanal makine depolama yapılandırmanızı, son VHD limitlerini ölçeklendirmek için iyileştirin.
+Standart depolama alanındaki yeni disk teklifleri farklı ıOPS ve verimlilik sınırlarına sahiptir (ıOPS, VHD başına gösterilmez). Disk okuma ve yazma kullanarak VM düzeyinde VHD 'ler için Birleşik üretilen iş MB/sn 'nin sınırlarına göz atın ve ardından sanal makine depolama yapılandırmanızı, son VHD limitlerini ölçeklendirmek için iyileştirin. Farklı standart depolama disk teklifleri ve disk başına sınırlar hakkında daha fazla bilgi edinin:
+
+* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Yüksek disk kullanımı/gecikme süresi düzeltmesi
 
@@ -207,7 +244,7 @@ Gecikme süresine duyarlı bir uygulamanız varsa ve yüksek verimlilik gerekliy
 
 Bu makaleler, belirli senaryoları tartışır:
 
-* [Azure Premium Depolama 'ya geçiş](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Azure Premium Depolama’ya Geçiş](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
 
 * [SQL Server ile Azure Premium depolama kullanma](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
 

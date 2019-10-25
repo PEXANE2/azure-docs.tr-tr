@@ -4,7 +4,7 @@ description: Bu makalede, Azure sanal makinelerle kullanılabilecek çekirdek Az
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828566"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792628"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure sanal makineler güvenliğine genel bakış
 Bu makale, sanal makinelerle kullanılabilecek çekirdek Azure Güvenlik özelliklerine genel bir bakış sağlar.
 
 Azure sanal makinelerini, çok çeşitli bilgi işlem çözümlerini çevik bir şekilde dağıtmak için kullanabilirsiniz. Hizmet Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP ve Azure BizTalk Services destekler. Böylece, herhangi bir iş yükünü ve herhangi bir dili neredeyse tüm işletim sistemlerinde dağıtabilirsiniz.
 
-Azure sanal makinesi, sanal makineyi çalıştıran fiziksel donanımı satın alıp sürdürmenize gerek kalmadan sanallaştırma esnekliği sunar. Uygulamalarınızın yüksek güvenlikli veri merkezlerinde korunduğu ve güvende olduğundan emin olmak için uygulamalarınızı derleyip dağıtabilirsiniz.
+Bir Azure sanal makinesi, sanal makineyi çalıştıran fiziksel donanımı satın almanıza ve muhafaza etmenize gerek kalmadan size sanallaştırma esnekliği sunar. Uygulamalarınızın yüksek güvenlikli veri merkezlerinde korunduğu ve güvende olduğundan emin olmak için uygulamalarınızı derleyip dağıtabilirsiniz.
 
 Azure sayesinde, şu şekilde güvenliğe yönelik gelişmiş, uyumlu çözümler oluşturabilirsiniz:
 
@@ -37,7 +37,7 @@ Azure sayesinde, şu şekilde güvenliğe yönelik gelişmiş, uyumlu çözümle
 * Tehditleri belirleyip algılayın.
 * Uyumluluk gereksinimlerini karşılayın.  
 
-## <a name="antimalware"></a>Korunma
+## <a name="antimalware"></a>Kötü Amaçlı Yazılımdan Koruma
 
 Azure ile Microsoft, Symantec, Trend Micro ve Kaspersky gibi güvenlik satıcılarından kötü amaçlı yazılımdan koruma yazılımı kullanabilirsiniz. Bu yazılım, sanal makinelerinizi kötü amaçlı dosyalardan, reklam yazılımlarından ve diğer tehditlerden korumanıza yardımcı olur.
 
@@ -45,23 +45,11 @@ Azure Cloud Services için Microsoft Antimalware ve sanal makineler, virüsler, 
 
 Azure için Microsoft kötü amaçlı yazılımdan koruma, uygulamalar ve kiracı ortamları için tek bir aracı çözümüdür. Bu, bir kullanıcı müdahalesi olmadan arka planda çalışacak şekilde tasarlanmıştır. Kötü amaçlı yazılımdan koruma izleme de dahil olmak üzere temel güvenli veya gelişmiş özel yapılandırma ile uygulama iş yüklerinizin ihtiyaçlarına göre koruma dağıtabilirsiniz.
 
-Azure için Microsoft Antimalware 'i dağıtırken ve etkinleştirdiğinizde aşağıdaki temel özellikler kullanılabilir:
-
-* **Gerçek zamanlı koruma**: kötü amaçlı yazılım yürütmeyi algılamak ve engellemek için Cloud Services ve sanal makinelerde etkinlik izler.
-* **Zamanlanmış tarama**: etkin olarak çalışan programlar dahil olmak üzere, düzenli aralıklarla, kötü amaçlı yazılım algılamak için hedeflenen tarama
-* **Kötü amaçlı yazılım düzeltmesi**: kötü amaçlı dosyaları silme veya karantinaya alma ve kötü amaçlı kayıt defteri girişlerini temizleme gibi algılanan kötü amaçlı yazılımlar için otomatik olarak eylem gerçekleştirir.
-* **İmza güncelleştirmeleri**: korumanın önceden belirlenmiş bir sıklıkta güncel olduğundan emin olmak için en son koruma imzalarını (virüs tanımları) otomatik olarak yüklenir.
-* **Kötü amaçlı yazılımdan koruma altyapısı güncelleştirmeleri**: Azure Için Microsoft Antimalware altyapısını otomatik olarak güncelleştirir.
-* **Kötü amaçlı yazılımdan koruma platformu güncelleştirmeleri**: Azure Için Microsoft Antimalware platformunu otomatik olarak güncelleştirir.
-* **Etkin koruma**: hızlı yanıt sağlamak için algılanan tehditler ve şüpheli kaynaklar hakkında telemetri meta verilerini Azure 'a bildirir. Microsoft etkin koruma sistemi (HARITALAR) aracılığıyla gerçek zamanlı zaman uyumlu imza teslimini mümkün bir şekilde sunar.
-* **Örnek raporlama**: hizmeti geliştirmeye ve sorun gidermeyi etkinleştirmeye yardımcı olmak üzere Azure Için Microsoft kötü amaçlı yazılımdan koruma hizmetine örnekler sağlar ve rapor verir.
-* **Dışlamalar**: uygulama ve hizmet yöneticilerinin belirli dosya, işlem ve sürücüleri, performansı ve diğer nedenlerle koruma ve tarama dışında bırakacak şekilde yapılandırmasına izin verir.
-* **Kötü amaçlı yazılımdan koruma olayı koleksiyonu**: işletim sistemi olay günlüğünde gerçekleştirilen kötü amaçlı yazılımdan koruma hizmet durumu, şüpheli etkinlikler ve düzeltme eylemlerini kaydeder ve bunları Azure Storage hesabınızda toplar.
+[Azure Için Microsoft kötü amaçlı yazılımdan koruma](antimalware.md) ve kullanılabilir temel özellikler hakkında daha fazla bilgi edinin.
 
 Sanal makinelerinizi korumaya yardımcı olmak için kötü amaçlı yazılımdan koruma yazılımları hakkında daha fazla bilgi
 
-* [Azure Cloud Services ve sanal makineler için Microsoft kötü amaçlı yazılımdan koruma](antimalware.md)
-* [Azure sanal makinelerinde kötü amaçlı yazılımdan koruma çözümleri dağıtma](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
+* [Azure Sanal Makinelerinde Kötü Amaçlı Yazılıma Karşı Koruma Çözümleri Dağıtma](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Windows VM 'de bir hizmet olarak Trend mikro derin güvenliği 'ni yüklemek ve yapılandırmak](/azure/virtual-machines/windows/classic/install-trend)
 * [Windows VM 'de Symantec Endpoint Protection 'i yüklemek ve yapılandırmak](/azure/virtual-machines/windows/classic/install-symantec)
 * [Azure Marketi 'nde güvenlik çözümleri](https://azure.microsoft.com/marketplace/?term=security)
@@ -86,7 +74,7 @@ Daha fazla bilgi edinin:
 
 Anahtar güvenliğini iyileştirmek, şifreleme ve kimlik doğrulama korumalarını geliştirebilir. Kritik gizli dizilerlerinizin ve anahtarların yönetim ve güvenliğini Azure Key Vault içinde depolayarak kolaylaştırabilirsiniz.
 
-Key Vault, anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
+Key Vault, anahtarlarınızı FIPS 140-2 2. Düzey standartlarıyla sertifikalanmış olan donanım güvenlik modüllerinde (HSM'ler) depolama seçeneği sunar. Yedekleme veya [Saydam veri şifrelemesi](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızda herhangi bir anahtar veya gizli dizi ile Key Vault depolanabilir. Bu korumalı öğelere izinler ve erişim [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)üzerinden yönetilir.
 
 Daha fazla bilgi edinin:
 
@@ -104,9 +92,9 @@ Daha fazla bilgi edinin:
 * [IaaS VM 'Leri için Azure disk şifrelemesi](/azure/security/azure-security-disk-encryption-overview)
 * [Hızlı başlangıç: Azure PowerShell ile Windows IaaS VM 'yi şifreleme](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
-## <a name="virtual-machine-backup"></a>Sanal makine yedeklemesi
+## <a name="virtual-machine-backup"></a>Sanal makine yedekleme
 
-Azure Backup, uygulama verilerinizi sıfır sermaye yatırımı ve en az işletim maliyetleriyle korumanıza yardımcı olan ölçeklenebilir bir çözümdür. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınıza hata verebilir. Azure Backup, Windows ve Linux çalıştıran sanal makineleriniz korunur.
+Azure Backup, uygulama verilerinizi sıfır sermaye yatırımı ve en az işletim maliyetleriyle korumanıza yardımcı olan ölçeklenebilir bir çözümdür. Uygulama hataları verilerinizi bozabilir ve insan hataları, uygulamalarınızda hatalar oluşturabilir. Azure Backup, Windows ve Linux çalıştıran sanal makineleriniz korunur.
 
 Daha fazla bilgi edinin:
 
@@ -121,7 +109,7 @@ Site Recovery:
 
 * **BCDR stratejinizi basitleştirir**: Site Recovery, tek bir konumdan birden çok iş iş yükünün ve uygulamanın çoğaltma, yük devretme ve kurtarma işlemlerini kolayca yapmayı kolaylaştırır. Site Recovery, çoğaltma ve yük devretme işlemlerini düzenler, ancak uygulama verilerinizi engellemez veya onunla ilgili herhangi bir bilgi vermez.
 * **Esnek çoğaltma sağlar**: Site Recovery kullanarak Hyper-V sanal makinelerinde, VMware sanal makinelerinde ve Windows/Linux fiziksel sunucularında çalışan iş yüklerini çoğaltabilirsiniz.
-* **Yük devretmeyi ve kurtarmayı destekler**: Site Recovery, üretim ortamlarını etkilemeden olağanüstü durum kurtarma detaylarını desteklemek için test yük devretmesi sağlar. Ayrıca, beklenen kesintiler için sıfır veri kaybı veya beklenmeyen olağanüstü durumlar için (çoğaltma sıklığına bağlı olarak) planlanmamış yük devretme işlemleri için planlanmış yük devretme işlemleri de çalıştırabilirsiniz. Yük devretmeden sonra, birincil sitelerinize geri dönebilirsiniz. Site Recovery, çok katmanlı uygulamaların yük devretmesini ve kurtarılmasını özelleştirebilmeniz için betikleri ve Azure Otomasyonu çalışma kitaplarını içerebilen kurtarma planları sağlar.
+* **Yük devretmeyi ve kurtarmayı destekler**: Site Recovery, üretim ortamlarını etkilemeden olağanüstü durum kurtarma detaylarını desteklemek için test yük devretmesi sağlar. Ayrıca, beklenen kesintilere yönelik olarak sıfır veri kaybı sunan planlanan yük devretmeler veya beklenmeyen olağanüstü durumlar için minimum düzeyde veri kaybıyla sonuçlanan (çoğaltma sıklığına bağlı olarak) planlanmamış yük devretmeler çalıştırabilirsiniz. Yük devretmeden sonra, birincil sitelerinize geri dönebilirsiniz. Yük devretme işlemini özelleştirebilmeniz ve çok katmanlı uygulamaları kurtarabilmeniz için Site Recovery, betikleri ve Azure otomasyonu çalışma kitaplarını içeren kurtarma planları sunar.
 * **İkincil veri merkezlerini ortadan kaldırır**: ikincil bir şirket içi siteye veya Azure 'a çoğaltabilirsiniz. Olağanüstü durum kurtarma için Azure 'un bir hedef olarak kullanılması, ikincil bir sitenin korunmasının maliyetini ve karmaşıklığını ortadan kaldırır. Çoğaltılan veriler Azure depolama 'da depolanır.
 * **Mevcut BCDR teknolojileriyle tümleştirilir**: diğer uygulamaların BCDR özellikleriyle Site Recovery iş ortakları. Örneğin, kurumsal iş yüklerinin SQL Server arka ucunun korunmasına yardımcı olmak için Site Recovery kullanabilirsiniz. Bu, kullanılabilirlik gruplarının yük devretmesini yönetmek için SQL Server her zaman açık için yerel destek içerir.
 
@@ -140,7 +128,7 @@ Azure sanal ağı, fiziksel Azure ağ dokusunun üzerine oluşturulan mantıksal
 Daha fazla bilgi edinin:
 
 * [Azure ağ güvenliğine genel bakış](network-overview.md)
-* [Sanal ağa genel bakış](/azure/virtual-network/virtual-networks-overview)
+* [Sanal Ağ’a genel bakış](/azure/virtual-network/virtual-networks-overview)
 * [Kurumsal senaryolar için ağ özellikleri ve ortaklıkları](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Güvenlik İlkesi Yönetimi ve raporlama
@@ -154,7 +142,7 @@ Güvenlik Merkezi, sanal makinelerinizin güvenliğini en uygun hale getirmenize
 
 Daha fazla bilgi edinin:
 
-* [Azure Güvenlik Merkezi 'ne giriş](/azure/security-center/security-center-intro)
+* [Azure Güvenlik Merkezi'ne Giriş](/azure/security-center/security-center-intro)
 * [Azure Güvenlik Merkezi hakkında sık sorulan sorular](/azure/security-center/security-center-faq)
 * [Azure Güvenlik Merkezi planlama ve işlemler](/azure/security-center/security-center-planning-and-operations-guide)
 
@@ -171,7 +159,7 @@ Daha fazla bilgi edinin:
 
 Gizli bilgi işlem, sanal makine güvenliğinin teknik bir parçası olmadığından, sanal makine güvenliği konusu "işlem" güvenliğinin üst düzey konusuna aittir. Gizli bilgi işlem, "işlem" güvenliği kategorisinde yer alıyor.
 
-Gizli bilgi işlem işlemleri, veriler "açık" olduğunda, verimli işleme için gerekli olduğunda, verilerin aşağıdaki şekilde gösterildiği bir örnek olan güvenilir bir yürütme ortamında (t-aynı zamanda bir şifreleme olarak da bilinir) @no__t.  
+Gizli bilgi işlem verileri, verimli işleme için gerekli olan "açık" olduğunda, verilerin bir güvenilir yürütme ortamında (t-aynı zamanda bir şifreleme olarak da bilinir) https://en.wikipedia.org/wiki/Trusted_execution_environment, aşağıdaki şekilde gösterildiği bir örnek olarak korunur.  
 
 TEEs, bir hata ayıklayıcıyla birlikte, verileri veya dışarıdaki içindeki işlemleri görüntülemenin bir yolu olmadığından emin olun. Bunlara, yalnızca yetkili kodun verilere erişmesine izin verildiğinden emin olun. Kod değiştirilirse veya üzerinde değişiklik yapılmışsa, işlemler reddedilir ve ortam devre dışı bırakılır. T, bu korumaların içindeki kodun yürütülmesi boyunca uygulanmasını zorlar.
 
@@ -179,3 +167,7 @@ Daha fazla bilgi edinin:
 
 * [Azure gizli bilgi işlem tanıtımı](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure gizli bilgi işlem](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+VM 'Ler ve işletim sistemleri için [en iyi güvenlik yöntemleri](iaas.md) hakkında bilgi edinin.

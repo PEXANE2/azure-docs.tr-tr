@@ -5,15 +5,15 @@ description: Azure Search ' de bir AI zenginleştirme işlem hattı kullanarak A
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5f65667ac8ffacdd12e57ae0d46e25c586624a31
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678428"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792464"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>BLOB depolama verilerini anlamak için AI kullanma
 
@@ -68,7 +68,7 @@ AI zenginleştirme, desenleri veya özellikleri belirten modüller anlamına gel
 
 Azure Search, *beceriler* tek başına kullanabileceğiniz veya diğer becerilerle bırlıkte, AI işlemenin tek tek bileşenleridir. 
 
-+ Yerleşik yetenekler bilişsel hizmetler tarafından desteklenir, Görüntü İşleme dayalı görüntü analizi ve Metin Analizi temelinde doğal dil işleme. [İçerik zenginleştirme Için önceden tanımlanmış yeteneklerin](cognitive-search-predefined-skills.md)içindeki yerleşik yeteneklerin tam listesini inceleyebilirsiniz.
++ Yerleşik yetenekler bilişsel hizmetler tarafından desteklenir, Görüntü İşleme dayalı görüntü analizi ve Metin Analizi temelinde doğal dil işleme. Tam liste için bkz. [içerik zenginleştirme Için yerleşik yetenekler](cognitive-search-predefined-skills.md).
 
 + Özel yetenekler, işlem hattına tümleştirmeye izin veren bir [arabirim tanımına](cognitive-search-custom-skill-interface.md) Sarmalanan özel koddur. Müşteri çözümlerinde, açık kaynaklı, üçüncü taraf veya birinci taraf AI modülleri sağlayan özel yetenekler ile her ikisini de kullanmak yaygın bir uygulamadır.
 

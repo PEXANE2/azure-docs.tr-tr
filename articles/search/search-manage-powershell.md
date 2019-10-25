@@ -1,22 +1,22 @@
 ---
-title: Az. Search Module kullanan PowerShell betikleri-Azure Search
-description: PowerShell ile bir Azure Search hizmeti oluşturun ve yapılandırın. Bir hizmeti yukarı veya aşağı ölçeklendirebilir, yönetici ve sorgu api anahtarlarını yönetebilir ve sistem bilgilerini sorgulayabilirsiniz.
-author: HeidiSteen
+title: Az. Search modülünü kullanan PowerShell betikleri
+titleSuffix: Azure Cognitive Search
+description: PowerShell ile bir Azure Bilişsel Arama hizmeti oluşturun ve yapılandırın. Bir hizmeti yukarı veya aşağı ölçeklendirebilir, yönetici ve sorgu api anahtarlarını yönetebilir ve sistem bilgileri için sorgu yapabilirsiniz.
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331252"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793537"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Azure Search hizmetinizi PowerShell ile yönetme
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Bilişsel Arama hizmetinizi PowerShell ile yönetme
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "72331252"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Search oluşturmak ve yapılandırmak için Windows, Linux veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 'de PowerShell cmdlet 'lerini ve betikleri çalıştırabilirsiniz. **Az. Search** modülü, [Azure Search yönetimi REST API 'lerine](https://docs.microsoft.com/rest/api/searchmanagement)tam eşlik ile Azure PowerShell] öğesini genişletir. Azure PowerShell ve **az. Search**ile aşağıdaki görevleri gerçekleştirebilirsiniz:
+Azure Bilişsel Arama oluşturmak ve yapılandırmak için Windows, Linux veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 'de PowerShell cmdlet 'leri ve betikleri çalıştırabilirsiniz. **Az. Search** modülü Azure PowerShell] öğesini [Azure bilişsel arama Management REST API 'lerine](https://docs.microsoft.com/rest/api/searchmanagement)tam eşlik ile genişletir. Azure PowerShell ve **az. Search**ile aşağıdaki görevleri gerçekleştirebilirsiniz:
 
 > [!div class="checklist"]
 > * [Aboneliğinizdeki tüm arama hizmetlerini listeleyin](#list-search-services)
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>Aboneliğinizdeki tüm Azure Search hizmetlerini listeleyin
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Aboneliğinizdeki tüm Azure Bilişsel Arama hizmetlerini listeleyin
 
 Aşağıdaki komutlar [**az. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), aboneliğinizde zaten sağlanmış olan mevcut kaynaklar ve hizmetler hakkında bilgi döndürüyor. Kaç tane arama hizmeti oluşturulduğunu bilmiyorsanız, bu komutlar bu bilgileri döndürür ve portala seyahat ister.
 
@@ -197,11 +197,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) , yönetici [API anahtarlarını](search-security-api-keys.md)almak için kullanılır. Kimliği doğrulanmış erişim için her bir hizmetle iki yönetici anahtarı oluşturulur. Her istekte anahtarlar gereklidir. Her iki yönetici anahtarı da işlevsel olarak eşdeğerdir, bir arama hizmetine tüm bilgileri alma veya herhangi bir nesne oluşturma ve silme imkanına tam yazma erişimi veriliyor. Diğerini değiştirirken bir tane kullanabilmeniz için iki anahtar mevcuttur. 
 
-@No__t-0 veya `secondary` anahtarı olarak belirtilen her seferinde yalnızca bir tane oluşturabilirsiniz. Kesintisiz hizmet için, birincil anahtar üzerinde çalışırken tüm istemci kodlarını ikincil anahtar kullanacak şekilde güncelleştirmeyi unutmayın. İşlemler uçuşdayken anahtarları değiştirmekten kaçının.
+`primary` veya `secondary` anahtarı olarak belirtilen her seferinde yalnızca bir tane oluşturabilirsiniz. Kesintisiz hizmet için, birincil anahtar üzerinde çalışırken tüm istemci kodlarını ikincil anahtar kullanacak şekilde güncelleştirmeyi unutmayın. İşlemler uçuşdayken anahtarları değiştirmekten kaçının.
 
 Beklenirken, istemci kodunu güncelleştirmeden anahtarları yeniden oluşturursanız, eski anahtarı kullanan istekler başarısız olur. Tüm yeni anahtarların yeniden oluşturulması, hizmetinizi kalıcı olarak kilitlemez ve Portal üzerinden hizmete erişmeye devam edebilirsiniz. Birincil ve ikincil anahtarları yeniden oluşturduktan sonra, yeni anahtarları kullanmak için istemci kodunu güncelleştirebilirsiniz ve işlemler buna uygun şekilde sürdürülür.
 
-API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Search kullanmak için özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular `primary` veya `secondary` olan sabit dizelerdir. 
+API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Bilişsel Arama kullanılmak üzere özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular `primary` veya `secondary` olan sabit dizelerdir. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Sorgu anahtarları oluşturma veya silme
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) , istemci uygulamalarından bir Azure Search dizinine salt okuma erişimi Için sorgu [API anahtarları](search-security-api-keys.md) oluşturmak üzere kullanılır. Sorgu anahtarları, arama sonuçlarının alınması amacıyla belirli bir dizin için kimlik doğrulaması yapmak üzere kullanılır. Sorgu anahtarları, hizmette, dizin, veri kaynağı veya Dizin Oluşturucu gibi diğer öğelere salt okuma erişimi vermez.
+[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) , istemci uygulamalarından bir Azure bilişsel arama dizinine salt okuma erişimi Için sorgu [API anahtarları](search-security-api-keys.md) oluşturmak üzere kullanılır. Sorgu anahtarları, arama sonuçlarının alınması amacıyla belirli bir dizin için kimlik doğrulaması yapmak üzere kullanılır. Sorgu anahtarları, hizmette, dizin, veri kaynağı veya Dizin Oluşturucu gibi diğer öğelere salt okuma erişimi vermez.
 
-Azure Search kullanmak için bir anahtar sağlayamezsiniz. API anahtarları hizmet tarafından oluşturulur.
+Azure Bilişsel Arama kullanılmak üzere bir anahtar sağlayamezsiniz. API anahtarları hizmet tarafından oluşturulur.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Bir [Dizin](search-what-is-an-index.md)oluşturun, PORTALı, REST API 'leri veya .NET SDK 'sını kullanarak [bir dizini sorgulayın](search-query-overview.md) .
 
-* [Azure portal Azure Search dizin oluşturma](search-create-index-portal.md)
+* [Azure portal Azure Bilişsel Arama dizini oluşturma](search-create-index-portal.md)
 * [Diğer hizmetlerden veri yüklemek için Dizin Oluşturucu ayarlama](search-indexer-overview.md)
-* [Azure portal arama Gezgini 'ni kullanarak bir Azure Search dizinini sorgulama](search-explorer.md)
-* [.NET’te Azure Search kullanma](search-howto-dotnet-sdk.md)
+* [Azure portal arama Gezgini 'ni kullanarak bir Azure Bilişsel Arama dizinini sorgulama](search-explorer.md)
+* [.NET Bilişsel Arama Azure 'da kullanma](search-howto-dotnet-sdk.md)

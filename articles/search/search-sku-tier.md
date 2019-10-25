@@ -1,28 +1,27 @@
 ---
-title: Azure Search hizmeti için bir fiyatlandırma katmanı veya SKU seçin Azure Search
-description: "Azure Search şu SKU 'Larda sağlanabilir: ücretsiz, temel ve standart ve standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir."
-services: search
-author: HeidiSteen
+title: Arama hizmeti sağlama sırasında bir fiyatlandırma katmanı veya SKU seçin
+titleSuffix: Azure Cognitive Search
+description: "Azure Bilişsel Arama, bu SKU 'Larda sağlanabilir: ücretsiz, temel ve standart ve standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir."
 manager: nitinme
-tags: ''
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/15/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 249ce8e51ff61bac5d418d9e173ec2caed24e0e5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72331200"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794264"
 ---
-# <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search için bir fiyatlandırma katmanı seçin
+# <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
-Bir Azure Search hizmeti oluşturduğunuzda, hizmet ömrü boyunca düzeltilen bir fiyatlandırma katmanında (veya SKU) bir [kaynak oluşturulur](search-create-service-portal.md) . Katmanlar ücretsiz, temel, standart ve depolama için Iyileştirilmiş. Standart ve depolama için Iyileştirilmiş çeşitli yapılandırmalarda ve kapasitelerde kullanılabilir.
+Bir Azure Bilişsel Arama hizmeti oluşturduğunuzda, hizmet ömrü boyunca düzeltilen bir fiyatlandırma katmanında (veya SKU) bir [kaynak oluşturulur](search-create-service-portal.md) . Katmanlar ücretsiz, temel, standart ve depolama için Iyileştirilmiş. Standart ve depolama için Iyileştirilmiş çeşitli yapılandırmalarda ve kapasitelerde kullanılabilir.
 
 Çoğu müşteri, hizmeti değerlendirebilmeleri için ücretsiz katmanla başlar. Değerlendirme sonrası, geliştirme ve üretim dağıtımları için daha yüksek katmanlardan birinde ikinci bir hizmet oluşturmak yaygındır.
 
-Ücretsiz katmanı da dahil olmak üzere tüm katmanların, genellikle özellik eşliği sunan, daha büyük iş yükleri daha yüksek katmanlar gereksinimini ortadan yabilse de. Örneğin, bilişsel [Hizmetler Ile AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına geçen becerileri uzun süredir çalıştırmaya çalışır.
+Ücretsiz katmanı da dahil olmak üzere tüm katmanların, genellikle özellik eşliği sunan, daha büyük iş yükleri daha yüksek katmanlar gereksinimini ortadan yabilse de. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
 
 > [!NOTE] 
 > Özellik eşliği için özel durum, S3 HD 'de kullanılamayan [Dizin oluşturuculardır](search-indexer-overview.md).
@@ -41,17 +40,17 @@ Seçtiğiniz katman faturalandırılabilir ücreti belirler. Azure portal aşağ
 
 **Free** , bir kümede, diğer aboneler ile paylaşılan sınırlı bir arama hizmeti oluşturur. Hızlı başlangıçler ve öğreticiler dahil olmak üzere küçük projeleri tamamlayabilirsiniz, ancak hizmeti ölçeklendirmez veya önemli iş yüklerini çalıştıramazsınız. **Temel** ve **Standart** , **Standart** olarak varsayılan değer olan en yaygın olarak kullanılan faturalanabilir katmanlardır.
 
-![Azure Search fiyatlandırma katmanları](media/search-sku-tier/tiers.png "Azure Search fiyatlandırma katmanları")
+![Azure Bilişsel Arama fiyatlandırma katmanları](media/search-sku-tier/tiers.png "Azure Bilişsel Arama fiyatlandırma katmanları")
 
 Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Standart 3 yüksek yoğunluklu (S3 HD)** , S3 için bir *barındırma modudur* ; burada temeldeki donanım çok sayıda daha küçük dizinler için optimize edilmiştir ve çok kiracılı senaryolar için tasarlanmıştır. S3 HD, S3 ile aynı birim başına ücretine sahiptir, ancak donanım çok sayıda daha küçük dizin üzerinde hızlı dosya okuma için en iyi duruma getirilmiştir.
 
 **Depolama Için iyileştirilmiş** katmanlar, standart katmanlardan TB başına daha büyük depolama kapasitesi sunar. Birincil zorunluluğunu getirir, belirli uygulama gereksinimleriniz için doğrulamanız gereken daha yüksek sorgu gecikmedir.  Bu katmanın performans konuları hakkında daha fazla bilgi için bkz. [performans ve iyileştirme konuları](search-performance-optimization.md).
 
-[Fiyatlandırma sayfasındaki](https://azure.microsoft.com/pricing/details/search/)çeşitli katmanlar hakkında daha fazla bilgi edinmek için, [Azure Search makalesinde hizmet limitleri](search-limits-quotas-capacity.md) ' nde ve hizmet sağlanırken portal sayfasında.
+[Fiyatlandırma sayfasındaki](https://azure.microsoft.com/pricing/details/search/)çeşitli katmanlar hakkında daha fazla bilgi edinmek için bkz. [Azure bilişsel arama 'deki hizmet sınırları](search-limits-quotas-capacity.md) ve hizmet sağlanırken Portal sayfası.
 
 ## <a name="billable-events"></a>Faturalandırılabilir olaylar
 
-Azure Search oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret alabilir:
+Azure Bilişsel Arama 'de oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret alabilir:
 
 + En düşük yapılandırmada hizmetin temel maliyeti (hizmet oluşturma)
 + Ölçeği artırma sırasında artımlı maliyet (çoğaltmalar veya bölümler ekleme)
@@ -60,7 +59,7 @@ Azure Search oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret a
 
 ### <a name="service-costs"></a>Hizmet maliyetleri
 
-Ücretlendirmeden kaçınmak için sanal makinelerden veya "duraklatılmış" olabilecek diğer kaynaklardan farklı olarak, Azure Search bir hizmet, özel kullanım için ayrılmış donanımlar üzerinde her zaman kullanılabilir. Bu nedenle, hizmet oluşturma hizmeti oluştururken başlayan faturalandırılabilir bir olaydır ve hizmeti sildiğinizde sona erer. 
+Ücretlendirmeden kaçınmak için sanal makinelerden veya "duraklatılmış" olabilecek diğer kaynaklardan farklı olarak Azure Bilişsel Arama hizmeti, özel kullanım için ayrılmış donanımlar üzerinde her zaman kullanılabilir. Bu nedenle, hizmet oluşturma hizmeti oluştururken başlayan faturalandırılabilir bir olaydır ve hizmeti sildiğinizde sona erer. 
 
 Minimum ücret, faturalandırılabilir fiyata ilk arama birimidir (bir çoğaltma x bir bölüm). Hizmet bu yapılandırmadan daha küçük bir süre içinde çalışmadığından hizmetin kullanım ömrü için bu minimum değer düzeltildi. En düşük değerin ötesinde, çoğaltmaları ve bölümleri birbirinden bağımsız olarak ekleyebilirsiniz. Çoğaltmalar ve bölümler aracılığıyla kapasitenin artımlı artışları, faturanızı aşağıdaki formüle göre artırır: [(çoğaltmalar x Partitions x oranı)](#search-units), burada ücretlendirilebilecek ücret seçtiğiniz fiyatlandırma katmanına bağlıdır.
 
@@ -68,29 +67,29 @@ Bir arama çözümünün maliyetini tahmin ediyorsanız, fiyatlandırma ve kapas
 
 ### <a name="bandwidth-charges"></a>Bant genişliği ücretleri
 
-[Azure Search dizin oluşturucularının](search-indexer-overview.md) kullanılması, hizmetlerinizin konumuna bağlı olarak faturalandırmayı etkileyebilir. Azure Search hizmetini verileriniz ile aynı bölgede oluşturursanız, veri çıkış ücretlerini tamamen ortadan kaldırabilirsiniz. [Bant genişliği fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/bandwidth/)bazı bilgiler aşağıda verilmiştir:
+[Azure bilişsel arama dizin oluşturucularının](search-indexer-overview.md) kullanılması, hizmetlerinizin konumuna bağlı olarak faturalandırmayı etkileyebilir. Azure Bilişsel Arama hizmetini verileriniz ile aynı bölgede oluşturursanız, veri çıkış ücretlerini tamamen ortadan kaldırabilirsiniz. [Bant genişliği fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/bandwidth/)bazı bilgiler aşağıda verilmiştir:
 
-+ Microsoft, tüm gelen verileri Azure 'daki herhangi bir hizmete veya Azure Search giden veriler için ücretlendirmez.
++ Microsoft, tüm gelen verileri Azure 'daki herhangi bir hizmete veya Azure Bilişsel Arama giden veriler için ücretlendirmez.
 + Çoklu hizmet çözümlerinde, tüm hizmetler aynı bölgedeyse, bu, kablo ile kesişen veriler için ücret alınmaz.
 
-Hizmetler farklı bölgelerde olduğunda, giden veriler için ücretler uygulanır. Bu ücretler aslında Azure Search faturanızın bir parçası değildir. Farklı bölgelerdeki verileri çekmek için veri veya AI zenginleştirilmiş dizinleyiciler kullanıyorsanız, maliyetleri genel faturanızda görürsünüz.
+Hizmetler farklı bölgelerde olduğunda, giden veriler için ücretler uygulanır. Bu ücretler aslında Azure Bilişsel Arama faturanızın bir parçası değildir. Farklı bölgelerdeki verileri çekmek için veri veya AI zenginleştirilmiş dizinleyiciler kullanıyorsanız, maliyetleri genel faturanızda görürsünüz.
 
-### <a name="cognitive-search-ai-enrichment-with-cognitive-services"></a>Bilişsel hizmetler ile bilişsel arama AI zenginleştirme
+### <a name="ai-enrichment-with-cognitive-services"></a>Bilişsel hizmetler ile AI zenginleştirme
 
-Bilişsel [Hizmetler Ile AI zenginleştirme](cognitive-search-concept-intro.md)için, Kullandıkça Öde Işleme için S0 fiyatlandırma katmanında Azure Search ile aynı bölgede [faturalandırılabilir bir Azure bilişsel hizmetler kaynağı eklemeyi](cognitive-search-attach-cognitive-services.md)planlamalısınız. Bilişsel hizmetler ekleme ile ilişkili sabit bir maliyet yoktur. Yalnızca ihtiyacınız olan işleme için ödeme yaparsınız.
+[AI zenginleştirme](cognitive-search-concept-intro.md)için, Kullandıkça Öde Işleme için S0 fiyatlandırma katmanında Azure bilişsel arama ile aynı bölgede [faturalandırılabilir bir Azure bilişsel hizmetler kaynağı eklemeyi](cognitive-search-attach-cognitive-services.md)planlamalısınız. Bilişsel hizmetler ekleme ile ilişkili sabit bir maliyet yoktur. Yalnızca ihtiyacınız olan işleme için ödeme yaparsınız.
 
 | İşlem | Faturalama etkisi |
 |-----------|----------------|
 | Belge çözme, metin ayıklama | Ücretsiz |
-| Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Search için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|
-| [Önceden oluşturulmuş bilişsel yetenekler](cognitive-search-predefined-skills.md) | Bilişsel hizmetler 'i doğrudan kullanarak görevi gerçekleştirdiyseniz aynı hızda faturalandırılır. |
+| Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|
+| [Yerleşik bilişsel yetenekler](cognitive-search-predefined-skills.md) | Bilişsel hizmetler 'i doğrudan kullanarak görevi gerçekleştirdiyseniz aynı hızda faturalandırılır. |
 | Özel beceriler | Özel bir beceri sağladığınız işlevsellikdir. Özel bir beceri kullanmanın maliyeti, tamamen özel kodun diğer ölçülen Hizmetleri çağırarak çağrılmayacağı konusunda farklılık gösterir. |
 
 <a name="search-units"></a>
 
 ## <a name="billing-formula-r-x-p--su"></a>Faturalandırma formülü (R x P = SU)
 
-Azure Search işlemler için anlaşılması için en önemli faturalandırma kavramı, *arama birimidir* (su). Azure Search, dizin oluşturma ve sorgular için hem çoğaltmalara hem de bölümlere bağlı olduğundan, yalnızca bir veya diğeri tarafından faturalandırılmıyor. Bunun yerine, faturalandırma her ikisinin de bir bileşimini temel alır.
+Azure Bilişsel Arama işlemlerinde anlaşılması için en önemli faturalandırma kavramı, *arama birimidir* (su). Azure Bilişsel Arama Dizin oluşturma ve sorgular için hem çoğaltmalara hem de bölümlere bağlı olduğundan, yalnızca bir veya başka bir fatura tarafından faturalandırılmıyor. Bunun yerine, faturalandırma her ikisinin de bir bileşimini temel alır.
 
 SU, bir hizmet tarafından kullanılan *kopyaların* ve *bölümlerin* ürünüdür: **(R x P = su)** .
 
@@ -106,17 +105,17 @@ Aşağıdaki önerilere ek olarak [faturalandırma ve maliyet yönetimi](https:/
 
 - Bant genişliği ücretlerini en aza indirmek veya ortadan kaldırmak için, aynı bölgedeki veya mümkün olduğunca az sayıda bölgede tüm kaynakları oluşturun.
 
-- Tüm hizmetleri Azure Search, bilişsel hizmetler ve çözümünüzde kullanılan diğer Azure hizmetleri gibi tek bir kaynak grubunda birleştirin. Azure portal, kaynak grubunu bulun ve gerçek ve tahmini harcama hakkında bilgi edinmek için **maliyet yönetimi** komutlarını kullanın.
+- Tüm hizmetleri Azure Bilişsel Arama, bilişsel hizmetler ve çözümünüzde kullanılan diğer Azure hizmetleri gibi tek bir kaynak grubunda birleştirin. Azure portal, kaynak grubunu bulun ve gerçek ve tahmini harcama hakkında bilgi edinmek için **maliyet yönetimi** komutlarını kullanın.
 
 - İstek ve yanıtların veri merkezi sınırının içinde kalması için, ön uç uygulamanız için Azure Web App 'i göz önünde bulundurun.
 
-- Dizin oluşturma gibi yoğun kaynak gerektiren işlemlere göre ölçeklendirin ve normal sorgu iş yükleri için hemen aşağı doğru. Azure Search için en düşük yapılandırma (bir bölümden ve bir çoğaltmayla bir SU) ile başlayın ve ardından daha fazla kapasiteye ihtiyacı olan kullanım düzenlerini belirlemek için Kullanıcı etkinliğini izleyin. Tahmin edilebilir bir model varsa, ölçeklendirmeyi etkinlikle eşitlenebilir (Bunu otomatikleştirmek için kod yazmanız gerekir).
+- Dizin oluşturma gibi yoğun kaynak gerektiren işlemlere göre ölçeklendirin ve normal sorgu iş yükleri için hemen aşağı doğru. Azure Bilişsel Arama için en düşük yapılandırma (bir bölümden ve bir çoğaltmayla bir SU) ile başlayın ve ardından daha fazla kapasiteye ihtiyacı olan kullanım düzenlerini belirlemek için Kullanıcı etkinliğini izleyin. Tahmin edilebilir bir model varsa, ölçeklendirmeyi etkinlikle eşitlenebilir (Bunu otomatikleştirmek için kod yazmanız gerekir).
 
 Faturanızı azaltmak için bir arama hizmetini kapatamaz. Adanmış kaynaklar her zaman çalışır ve hizmetinizin kullanım ömrü boyunca özel kullanım için ayrılır. Hizmetin kendisi açısından, faturanızı düşürmenin tek yolu, çoğaltmaları ve bölümleri, kabul edilebilir performans ve [SLA uyumluluğu](https://azure.microsoft.com/support/legal/sla/search/v1_0/)sağlayan bir düzeye düşürmeniz veya daha düşük bir katmanda bir hizmet oluşturmanız (S1 saatlik fiyatlar S2 veya S3 oranlarından daha düşüktür). Hizmetinizi yük projeksiyonlarınızın alt ucunda sağladığınızda, hizmeti büyüyerek ikinci bir daha büyük katmanlı hizmet oluşturabilir, dizinlerinizi ikinci hizmette yeniden oluşturabilir ve sonra birincisini silebilirsiniz.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>Kapasite gereksinimlerini değerlendirme
 
-Azure Search, kapasite *çoğaltmalar* ve *bölümler*olarak yapılandırılır.
+Azure Bilişsel Arama, kapasite *çoğaltmalar* ve *bölümler*olarak yapılandırılır.
 
 + Çoğaltmalar, arama hizmetinin örnekleridir. Her çoğaltma, bir dizinin yük dengeli bir kopyasını barındırır. Örneğin, altı çoğaltmaya sahip bir hizmetin, hizmete yüklenen her dizinin altı kopyası vardır.
 
@@ -161,7 +160,7 @@ Hizmetin kapasitesi ve maliyetleri, el ile çalışmaya devam ediyor. Katmanlar 
 
 İş gereksinimleri genellikle ihtiyaç duyacağınız dizin sayısını belirler. Örneğin, büyük bir belge deposu için genel bir dizine ihtiyacınız bulunabilir. Ya da bölge, uygulama veya iş kolu tabanlı birden çok dizine ihtiyacınız bulunabilir.
 
-Bir dizinin boyutunu öğrenmek için [bir tane oluşturmanız](search-create-index-portal.md)gerekir. Azure Search veri yapısı, birincil olarak kaynak verilerden farklı özelliklere sahip olan [ters çevrilmiş bir dizin](https://en.wikipedia.org/wiki/Inverted_index) yapısıdır. Ters bir dizin için boyut ve karmaşıklık, içeriğe göre belirlenir, bu, içinde yer alan veri miktarına göre değildir. Yüksek artıklığa sahip büyük bir veri kaynağı, yüksek oranda değişken içerik içeren küçük bir veri kümesinden daha küçük bir dizin oluşmasına neden olabilir. Bu nedenle, özgün veri kümesinin boyutuna bağlı olarak dizin boyutunu çıkarsmak nadiren mümkündür.
+Bir dizinin boyutunu öğrenmek için [bir tane oluşturmanız](search-create-index-portal.md)gerekir. Azure Bilişsel Arama 'daki veri yapısı, birincil olarak kaynak verilerden farklı özelliklere sahip olan [ters çevrilmiş bir dizin](https://en.wikipedia.org/wiki/Inverted_index) yapısıdır. Ters bir dizin için boyut ve karmaşıklık, içeriğe göre belirlenir, bu, içinde yer alan veri miktarına göre değildir. Yüksek artıklığa sahip büyük bir veri kaynağı, yüksek oranda değişken içerik içeren küçük bir veri kümesinden daha küçük bir dizin oluşmasına neden olabilir. Bu nedenle, özgün veri kümesinin boyutuna bağlı olarak dizin boyutunu çıkarsmak nadiren mümkündür.
 
 > [!NOTE] 
 > Dizinler ve depolama için gelecekteki ihtiyaçları tahmin etmek de tahmin etmek gibi görünse de bunun yapılması gerekir. Bir katmanın kapasitesi çok düşük olursa, daha yüksek bir katmanda yeni bir hizmet sağlamanız ve ardından [dizinlerinizi yeniden yüklemeniz](search-howto-reindex.md)gerekir. Bir hizmetin bir SKU 'dan diğerine yerinde yükseltilmesi gerekmez.
@@ -196,7 +195,7 @@ Adanmış kaynaklar, geliştirme sırasında dizin miktarının, boyutunun ve so
 Dizin numarası ve boyutu, analizinizi eşit derecede önemlidir. Bunun nedeni, en fazla depolama (bölüm) kullanımı veya kaynakların (dizinler, Dizin oluşturucular, vb.) en üst limitlerinin (hangisi önce geldiğini) tam olarak ulaşılmasını içerir. Portal, Genel Bakış sayfasında geçerli kullanımı ve en fazla sınırları yan yana göstererek her ikisini de izlemenize yardımcı olur.
 
 > [!NOTE]
-> Belgeler, fazlalık veriler içeriyorsa depolama gereksinimleri daraltılabilir. İdeal olarak, belgeler yalnızca arama deneyimi için gereken verileri içerir. İkili veriler aranabilir değildir ve ayrı ayrı depolanmalıdır (Belki de bir Azure tablosu veya blob depolamada olabilir). Bir alan, dış verilere bir URL başvurusu tutmak için dizine eklenmelidir. Tek bir belgenin en büyük boyutu 16 MB 'tır (veya bir istekte birden çok belgeyi toplu olarak karşıya yüklüyorsanız, daha az). Daha fazla bilgi için bkz. [Azure Search hizmet limitleri](search-limits-quotas-capacity.md).
+> Belgeler, fazlalık veriler içeriyorsa depolama gereksinimleri daraltılabilir. İdeal olarak, belgeler yalnızca arama deneyimi için gereken verileri içerir. İkili veriler aranabilir değildir ve ayrı ayrı depolanmalıdır (Belki de bir Azure tablosu veya blob depolamada olabilir). Bir alan, dış verilere bir URL başvurusu tutmak için dizine eklenmelidir. Tek bir belgenin en büyük boyutu 16 MB 'tır (veya bir istekte birden çok belgeyi toplu olarak karşıya yüklüyorsanız, daha az). Daha fazla bilgi için bkz. [Azure bilişsel arama hizmet limitleri](search-limits-quotas-capacity.md).
 >
 
 **Sorgu hacmi konuları**
@@ -205,7 +204,7 @@ Saniyedeki sorgu sayısı (QPS), performans ayarlama sırasında önemli bir öl
 
 Standart katmanlar, çoğaltmaları ve bölümleri dengeleyebilir. Yük Dengeleme için çoğaltmalar ekleyerek veya paralel işleme için bölüm eklemek yoluyla sorgu kapatma işlemini artırabilirsiniz. Daha sonra hizmet sağlandıktan sonra performansı ayarlayabilirsiniz.
 
-Outset 'ten yüksek hacimli sorgu birimleri düşünüyorsanız, daha güçlü donanımlar tarafından desteklenen, daha yüksek standart katmanları göz önünde bulundurmanız gerekir. Daha sonra, bu sorgu birimleri gerçekleşmese de bölümleri ve çoğaltmaları çevrimdışı duruma geçirebilir veya alt katman bir hizmete geçebilirsiniz. Sorgu verimini hesaplama hakkında daha fazla bilgi için bkz. [Azure Search performans ve iyileştirme](search-performance-optimization.md).
+Outset 'ten yüksek hacimli sorgu birimleri düşünüyorsanız, daha güçlü donanımlar tarafından desteklenen, daha yüksek standart katmanları göz önünde bulundurmanız gerekir. Daha sonra, bu sorgu birimleri gerçekleşmese de bölümleri ve çoğaltmaları çevrimdışı duruma geçirebilir veya alt katman bir hizmete geçebilirsiniz. Sorgu verimini hesaplama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama performansı ve iyileştirmesi](search-performance-optimization.md).
 
 Depolama için Iyileştirilmiş katmanlar, büyük veri iş yükleri için yararlıdır ve sorgu gecikme süresi gereksinimleri daha az önemli olduğunda için daha fazla genel kullanılabilir dizin depolaması destekler. Yük Dengeleme için ek çoğaltmalar ve paralel işleme için ek bölümler kullanmanız gerekir. Daha sonra hizmet sağlandıktan sonra performansı ayarlayabilirsiniz.
 
@@ -221,7 +220,7 @@ Depolama için Iyileştirilmiş katmanlar, büyük veri iş yükleri için yarar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ücretsiz bir katmanla başlayın ve özelliklerini anlamak için verilerinizin bir alt kümesini kullanarak bir başlangıç dizini oluşturun. Azure Search veri yapısı ters bir dizin yapısıdır. Ters çevrilen bir dizinin boyutu ve karmaşıklığı içeriğe göre belirlenir. Yüksek oranda yedekli içeriğin çok sayıda düzensiz içerikten daha küçük bir dizine neden olduğunu unutmayın. Bu nedenle, veri kümesinin boyutu yerine içerik özellikleri dizin depolama gereksinimlerini belirlemektir.
+Ücretsiz bir katmanla başlayın ve özelliklerini anlamak için verilerinizin bir alt kümesini kullanarak bir başlangıç dizini oluşturun. Azure Bilişsel Arama veri yapısı ters bir dizin yapısıdır. Ters çevrilen bir dizinin boyutu ve karmaşıklığı içeriğe göre belirlenir. Yüksek oranda yedekli içeriğin çok sayıda düzensiz içerikten daha küçük bir dizine neden olduğunu unutmayın. Bu nedenle, veri kümesinin boyutu yerine içerik özellikleri dizin depolama gereksinimlerini belirlemektir.
 
 Dizin boyutunuzu ilk tahmine sahip olduktan sonra, bu makalede ele alınan katmanlardan birinde [faturalandırılabilir bir hizmet sağlayın](search-create-service-portal.md) : temel, standart veya depolama için iyileştirilmiş. Veri boyutlandırmasına ilişkin yapay kısıtlamaları rahatlaın ve dizinizi, aranabilir olmasını istediğiniz tüm verileri içerecek şekilde [yeniden derleyin](search-howto-reindex.md) .
 

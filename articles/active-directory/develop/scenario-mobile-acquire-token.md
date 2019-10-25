@@ -1,5 +1,6 @@
 ---
-title: Web API 'Lerini çağıran mobil uygulama-uygulama için belirteç alma | Microsoft Identity platformu
+title: Web API 'Lerini çağıran mobil uygulama-uygulama için belirteç alma
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin (uygulama için belirteç alma)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 454d62f871290d2e7dd8d0eee4b1a2429625a5fc
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 9b1d6a0e4bfffaaf4ed0fa836bcf62a7f1104e6a
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268259"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803773"
 ---
 # <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Web API 'Lerini çağıran mobil uygulama-belirteç al
 
@@ -31,7 +32,7 @@ Korumalı Web API 'Lerini çağırmaya başlamadan önce, uygulamanız bir eriş
 
 Bir belirteç istediğinizde, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın erişebileceği verileri belirler.  
 
-En kolay yaklaşım, istenen Web API 'sinin `App ID URI` kapsamını kapsamıyla `.default`birleştirmenin bir yoludur. Bunun yapılması, Microsoft Identity platformunu uygulamanızın portalda ayarlanmış tüm kapsamları gerektirdiğini söyler.
+En kolay yaklaşım, istenen Web API 'sinin `App ID URI` kapsam `.default`birleştirmenin bir yoludur. Bunun yapılması, Microsoft Identity platformunu uygulamanızın portalda ayarlanmış tüm kapsamları gerektirdiğini söyler.
 
 #### <a name="android"></a>Android
 ```Java
@@ -152,7 +153,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-**MSAL dönerse `MSALErrorInteractionRequired`belirteçleri etkileşimli olarak almaya çalışın:**
+**MSAL `MSALErrorInteractionRequired`döndürürse belirteçleri etkileşimli olarak almaya çalışın:**
 
 Amaç-C:
 
@@ -218,25 +219,25 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET 'de zorunlu parametreler
 
-`AcquireTokenInteractive`yalnızca bir zorunlu parametreye ``scopes``sahiptir ve bu, belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içerir. Belirteç Microsoft Graph için ise, gereken kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekecektir. Ayrıca bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`, belirtecin gerekli olduğu kapsamları tanımlayan dizelerin bir listesini içeren ``scopes``yalnızca bir zorunlu parametre içerir. Belirteç Microsoft Graph için ise, gereken kapsamlar, "Permissions" adlı bölümdeki her bir Microsoft Graph API 'sinin API başvurusunda bulunabilir. Örneğin, [kullanıcının kişilerini listelemek](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)için, "User. Read", "Contacts. Read" kapsamının kullanılması gerekecektir. Ayrıca bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-Uygulamayı oluştururken belirtiniz yoksa, Android 'de üst etkinliği (kullanarak `.WithParentActivityOrWindow`, aşağıdaki gibi) de belirtmeniz gerekir. bu sayede, belirtecin etkileşime geçtikten sonra bu üst etkinliğe geri dönmesi sağlanır. Bunu belirtmezseniz, çağrılırken `.ExecuteAsync()`bir özel durum oluşturulur.
+Uygulamayı oluştururken belirtininiz varsa, Android 'de ana etkinliği (`.WithParentActivityOrWindow`kullanarak) da belirtmeniz gerekir. böylece, belirtecin etkileşime geçtikten sonra bu üst etkinliğe geri dönmesi sağlanır. Belirtmezseniz, `.ExecuteAsync()`çağrılırken bir özel durum oluşturulur.
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET içinde belirli isteğe bağlı parametreler
 
 ##### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()`bir Istem belirterek kullanıcıyla etkileşimi denetlemek için kullanılır
+`WithPrompt()` bir Istem belirterek kullanıcıyla etkileşimi denetlemek için kullanılır
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 Sınıfı aşağıdaki sabitleri tanımlar:
 
-- ``SelectAccount``: STS 'nin, kullanıcının oturumu olan hesapları içeren hesap seçme iletişim kutusunu sunmasını zorlayacaktır. Bu seçenek, uygulamalar geliştiriciler kullanıcıların farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde yararlıdır. Bu seçenek, msal 'in kimlik ``prompt=select_account`` sağlayıcısına gönderilmesini sağlar. Bu seçenek varsayılandır ve kullanılabilir bilgilere (hesap, Kullanıcı için bir oturumun varlığına vb.) göre olası en iyi deneyimi sağlamanın iyi bir işidir. ...). Bunu yapmak için iyi bir nedeniniz olmadığı müddetçe değiştirmeyin.
-- ``Consent``: daha önce izin verilse bile, uygulama geliştiricisinin kullanıcıya onay istenmesini sağlar. Bu durumda, msal kimlik sağlayıcısına `prompt=consent` gönderilir. Bu seçenek, kuruluşun yönetilebileceği bazı güvenlik odaklı uygulamalarda, uygulamanın her kullanıldığı her seferinde kullanıcıdan onay iletişim kutusunu sunduğunu talep etmek için kullanılabilir.
-- ``ForceLogin``: Bu Kullanıcı istemi gerekli olmasa bile, uygulama geliştiricisinin kullanıcıya hizmet tarafından kimlik bilgileri istenmesini sağlar. Bu seçenek, kullanıcının yeniden oturum açmasını sağlamak için bir belirteç alma başarısız olursa yararlı olabilir. Bu durumda, msal kimlik sağlayıcısına `prompt=login` gönderilir. Bu durumda, kuruluşun idare ettiği bazı güvenlik odaklı uygulamalarda, uygulamanın belirli bölümlerine her erişirken kullanıcı tarafından yeniden oturum açtığı görüldü.
-- ``Never``(yalnızca .NET 4,5 ve WinRT için) kullanıcıya sormaz, bunun yerine gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener (aşağıya bakın: MSAL.NET 'de Web görünümleri). Bu seçeneğin kullanılması başarısız olabilir ve bu durumda `AcquireTokenInteractive` , Kullanıcı arabirimi etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturulur ve başka `Prompt` bir parametre kullanmanız gerekir.
-- ``NoPrompt``: Kimlik sağlayıcısına hiçbir istem göndermez. Bu seçenek yalnızca Azure AD B2C düzenleme profili ilkeleri için yararlıdır ( [B2C özelliklerine](https://aka.ms/msal-net-b2c-specificities)bakın).
+- ``SelectAccount``: STS 'nin, kullanıcının oturumu olan hesapları içeren hesap seçme iletişim kutusunu sunmasını zorlayacaktır. Bu seçenek, uygulamalar geliştiriciler kullanıcıların farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde yararlıdır. Bu seçenek, kimlik sağlayıcısına ``prompt=select_account`` göndermek için MSAL. Bu seçenek varsayılandır ve kullanılabilir bilgilere (hesap, Kullanıcı için bir oturumun varlığına vb.) göre olası en iyi deneyimi sağlamanın iyi bir işidir. ...). Bunu yapmak için iyi bir nedeniniz olmadığı müddetçe değiştirmeyin.
+- ``Consent``: daha önce izin verilse bile, uygulama geliştiricisinin kullanıcıyı onay istenmesini sağlar. Bu durumda, MSAL kimlik sağlayıcısına `prompt=consent` gönderir. Bu seçenek, kuruluşun yönetilebileceği bazı güvenlik odaklı uygulamalarda, uygulamanın her kullanıldığı her seferinde kullanıcıdan onay iletişim kutusunu sunduğunu talep etmek için kullanılabilir.
+- ``ForceLogin``: Bu Kullanıcı istemi gerekli olmasa bile, uygulama geliştiricisinin kullanıcıya hizmet tarafından kimlik bilgileri istenmesini sağlar. Bu seçenek, kullanıcının yeniden oturum açmasını sağlamak için bir belirteç alma başarısız olursa yararlı olabilir. Bu durumda, MSAL kimlik sağlayıcısına `prompt=login` gönderir. Bu durumda, kuruluşun idare ettiği bazı güvenlik odaklı uygulamalarda, uygulamanın belirli bölümlerine her erişirken kullanıcı tarafından yeniden oturum açtığı görüldü.
+- ``Never`` (yalnızca .NET 4,5 ve WinRT için) kullanıcıya sormaz, bunun yerine gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener (bkz. MSAL.NET 'de Web views). Bu seçeneğin kullanılması başarısız olabilir ve bu durumda `AcquireTokenInteractive`, Kullanıcı arabirimi etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur ve başka bir `Prompt` parametresi kullanmanız gerekir.
+- ``NoPrompt``: kimlik sağlayıcısına hiçbir istem göndermez. Bu seçenek yalnızca Azure AD B2C düzenleme profili ilkeleri için yararlıdır ( [B2C özelliklerine](https://aka.ms/msal-net-b2c-specificities)bakın).
 
 ##### <a name="withextrascopetoconsent"></a>Withextrascopetoonay
 
@@ -250,7 +251,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Diğer isteğe bağlı parametreler
 
-[Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) için başvuru `AcquireTokenInteractive` belgelerinden diğer tüm isteğe bağlı parametreler hakkında daha fazla bilgi edinin
+[Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) başvuru belgelerindeki `AcquireTokenInteractive` için diğer isteğe bağlı parametreler hakkında daha fazla bilgi edinin
 
 ### <a name="acquire-tokens-via-the-protocol"></a>Protokol aracılığıyla belirteçleri alma
 
@@ -258,7 +259,7 @@ Protokolü doğrudan kullanmanızı önermiyoruz. Bunu yaparsanız uygulama, baz
 
 Mobil uygulamalar için belirteçleri almak üzere Protokolü kullandığınızda iki istek yapmanız gerekir: bir yetkilendirme kodu alın ve belirteç için Exchange 'i değiştirin.
 
-#### <a name="get-authorization-code"></a>Yetkilendirme kodu alın
+#### <a name="get-authorization-code"></a>Yetkilendirme kodunu al
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?

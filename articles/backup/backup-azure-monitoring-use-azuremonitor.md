@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528200"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792851"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -29,7 +29,7 @@ Azure Backup, bir kurtarma hizmetleri kasasında [yerleşik izleme ve uyarı öz
 ## <a name="using-log-analytics-workspace"></a>Log Analytics çalışma alanı kullanma
 
 > [!NOTE]
-> Azure VM yedeklemelerinden veri, Azure Backup Aracısı, System Center Data Protection Manager, Azure VM 'lerdeki SQL yedeklemeleri ve Azure dosya paylaşma yedeklemeleri, Tanılama ayarları aracılığıyla Log Analytics çalışma alanına potılmış olur.
+> Azure VM yedeklemelerinden veri, Azure Backup Aracısı, System Center Data Protection Manager, Azure VM 'lerdeki SQL yedeklemeleri ve Azure dosya paylaşma yedeklemeleri, Tanılama ayarları aracılığıyla Log Analytics çalışma alanına potılmış olur. Microsoft Azure Backup Server (MABS) desteği yakında eklenecektir
 
 Ölçekteki izlemek/raporlamak için iki Azure hizmetinin özelliklerine ihtiyacınız vardır. *Tanılama ayarları* birden çok Azure Resource Manager kaynağından başka bir kaynağa veri gönderir. *Log Analytics* , diğer bildirim kanallarını tanımlamak için eylem gruplarını kullanabileceğiniz özel uyarılar oluşturur.
 

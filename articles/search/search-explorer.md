@@ -1,24 +1,23 @@
 ---
-title: Azure portal Azure Search verileri sorgulamak için arama Gezgini aracını kullanma
-description: Arama Gezgini Azure portal yerleşik olarak bulunur, içeriği keşfetmek ve Azure Search sorguları doğrulamak için kullanışlıdır. Terim veya tümcecik araması için dizeler veya gelişmiş sözdizimi ile tam nitelikli arama ifadeleri girin.
+title: Azure portal verileri sorgulamak için arama Gezgini aracını kullanma
+titleSuffix: Azure Cognitive Search
+description: Arama Gezgini Azure portal yerleşik olarak bulunur, içeriği keşfetmek ve Azure Bilişsel Arama sorguları doğrulamak için kullanışlıdır. Terim veya tümcecik araması için dizeler veya gelişmiş sözdizimi ile tam nitelikli arama ifadeleri girin.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178144"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792959"
 ---
-# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Azure Search belge sorgulamak için Azure portal arama Gezgini 'ni kullanın 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Azure 'da belge sorgulamak için Azure portal arama Gezgini 'ni kullanın Bilişsel Arama 
 
-Bu makalede, Azure portal **Arama Gezgini** 'ni kullanarak mevcut bir Azure Search dizininin nasıl sorgulanyapılacağı gösterilir. Hizmetinizdeki mevcut herhangi bir dizine basit veya tam Lucene sorgu ifadeleri göndermek için komut çubuğundan arama Gezgini 'ni başlatabilirsiniz. 
+Bu makalede, Azure portal **Arama Gezgini** 'ni kullanarak mevcut bir Azure bilişsel arama dizininin nasıl sorgulanyapılacağı gösterilir. Hizmetinizdeki mevcut herhangi bir dizine basit veya tam Lucene sorgu ifadeleri göndermek için komut çubuğundan arama Gezgini 'ni başlatabilirsiniz. 
 
    ![Portalda gezgin komutu ara](./media/search-explorer/search-explorer-cmd2.png "Portalda gezgin komutu ara")
 
@@ -28,9 +27,9 @@ Aşağıdaki örneklerde, yerleşik gerçek emlak örnek dizini varsayılır. Bu
 
 ### <a name="example-1---empty-search"></a>Örnek 1-boş arama
 
-İçeriğinize ilk bakış için, bir terim sağlanmadıysa **Ara** ' ya tıklayarak boş bir arama yürütün. Boş bir arama ilk sorgu olarak faydalıdır çünkü belge oluşturmayı gözden geçirebilmeniz için tüm belgeleri geri döndürür. Boş bir aramada, Arama derecelendirmesi yoktur ve belgeler rastgele sırada döndürülür (`"@search.score": 1` tüm belgeler için). Varsayılan olarak, 50 belge bir arama isteğinde döndürülür.
+İçeriğinize ilk bakış için, bir terim sağlanmadıysa **Ara** ' ya tıklayarak boş bir arama yürütün. Boş bir arama ilk sorgu olarak faydalıdır çünkü belge oluşturmayı gözden geçirebilmeniz için tüm belgeleri geri döndürür. Boş bir aramada, Arama derecelendirmesi yoktur ve belgeler rastgele sırada (tüm belgeler için`"@search.score": 1`) döndürülür. Varsayılan olarak, 50 belge bir arama isteğinde döndürülür.
 
-Boş bir arama için eşdeğer sözdizimi, `*` veya `search=*`.
+Boş bir arama için eşdeğer sözdizimi `*` veya `search=*`.
 
    ```Input
    search=*
@@ -42,7 +41,7 @@ Boş bir arama için eşdeğer sözdizimi, `*` veya `search=*`.
 
 ### <a name="example-2---free-text-search"></a>Örnek 2-ücretsiz metin arama
 
-İşleçlere sahip veya olmayan serbest biçimli sorgular, özel bir uygulamadan Azure Search gönderilen Kullanıcı tanımlı sorguların benzetimini yapmak için yararlıdır. Sorgu terimleri veya ifadeler sağladığınızda arama sırasının oynatıldığına dikkat edin. Aşağıdaki örnekte, ücretsiz bir metin araması gösterilmektedir.
+İşleçlere sahip veya olmayan serbest biçimli sorgular, özel bir uygulamadan Azure Bilişsel Arama gönderilen Kullanıcı tanımlı sorguların benzetimini yapmak için faydalıdır. Sorgu terimleri veya ifadeler sağladığınızda arama sırasının oynatıldığına dikkat edin. Aşağıdaki örnekte, ücretsiz bir metin araması gösterilmektedir.
 
    ```Input
    Seattle apartment "Lake Washington" miele OR thermador appliance
@@ -67,7 +66,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count** ekleyin. B
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>Örnek 4-arama sonuçlarında alanları kısıtlama
 
-**Arama Gezgini**'nde daha okunaklı çıkış için sonuçları açıkça adlandırılmış alanlarla sınırlamak üzere **$Select** ekleyin. Arama dizesini ve **$Count = true**tutmak için, bağımsız değişkenlerini ile **&** öneki. 
+**Arama Gezgini**'nde daha okunaklı çıkış için sonuçları açıkça adlandırılmış alanlarla sınırlamak üzere **$Select** ekleyin. Arama dizesini ve **$Count = true**tutmak için, **&** bağımsız değişkenlerini önek olarak ekleyin. 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
@@ -79,7 +78,7 @@ Bir dizinde bulunan eşleşmelerin sayısını almak için **$Count** ekleyin. B
 
 ### <a name="example-5---return-next-batch-of-results"></a>Örnek 5-sonraki sonuç toplu işlemini döndürür
 
-Azure Search, arama derecesine göre ilk 50 eşleşme döndürür. Sonraki eşleşen belge kümesini almak için, **$Top = 100 & $Skip = 50 '** i ekleyerek sonucu 100 belgeler olarak ayarlayın (varsayılan değer 50, en fazla 1000), ilk 50 belgeleri atlar. Derecelendirilen sonuçları almak için Sorgu terimi veya ifade gibi arama ölçütleri sağlamanız gerektiğini hatırlayın. Arama puanlarını, arama sonuçlarına ulaşmanıza daha derin bir şekilde azaldığına dikkat edin.
+Azure Bilişsel Arama, arama derecesine göre ilk 50 eşleşme döndürür. Sonraki eşleşen belge kümesini almak için, **$Top = 100 & $Skip = 50 '** i ekleyerek sonucu 100 belgeler olarak ayarlayın (varsayılan değer 50, en fazla 1000), ilk 50 belgeleri atlar. Derecelendirilen sonuçları almak için Sorgu terimi veya ifade gibi arama ölçütleri sağlamanız gerektiğini hatırlayın. Arama puanlarını, arama sonuçlarına ulaşmanıza daha derin bir şekilde azaldığına dikkat edin.
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
@@ -87,7 +86,7 @@ Azure Search, arama derecesine göre ilk 50 eşleşme döndürür. Sonraki eşle
 
    **Sonuçlar**
 
-   ![Toplu işlem arama sonuçları](./media/search-explorer/search-explorer-example-topskip.png "Sonraki arama sonuçları toplu Işlemini Döndür")
+   ![Toplu işlem arama sonuçları](./media/search-explorer/search-explorer-example-topskip.png "Sonraki arama sonuçları toplu işlemini döndür")
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filtre ifadeleri (büyüktür, küçüktür, eşittir)
 
@@ -143,7 +142,7 @@ Sonuçları arama puanının yanı sıra başka bir alana göre sıralamak için
 
 + Ticari bir Web tarayıcısına girebilecekleri gibi serbest biçimli sorgular, son kullanıcı deneyiminin test edilmesi için yararlıdır. Örneğin, yerleşik realestate örnek dizinini varsayarsak, "Seattle apartmanlar Gölü" girebilir ve sonra arama sonuçları içindeki terimleri bulmak için CTRL-F ' y i kullanabilirsiniz. 
 
-+ Sorgu ve filtre ifadeleri Azure Search tarafından desteklenen bir sözdiziminde ifade alınmalıdır. Varsayılan değer basit bir [sözdizimidir](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ancak daha güçlü sorgular için isteğe bağlı olarak [tam Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) kullanabilirsiniz. [Filtre ifadeleri](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) bir OData sözdizimidir.
++ Sorgu ve filtre ifadeleri Azure Bilişsel Arama tarafından desteklenen bir sözdiziminde ifade alınmalıdır. Varsayılan değer basit bir [sözdizimidir](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), ancak daha güçlü sorgular için isteğe bağlı olarak [tam Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) kullanabilirsiniz. [Filtre ifadeleri](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) bir OData sözdizimidir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

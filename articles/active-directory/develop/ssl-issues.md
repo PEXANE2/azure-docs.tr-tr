@@ -1,5 +1,6 @@
 ---
-title: Amaç-C sorunları için MSAL sorunlarını giderme | Microsoft Identity platformu
+title: Amaç-C sorunları için MSAL sorunlarını giderme
+titleSuffix: Microsoft identity platform
 description: MSAL ile SSL sertifikalarını kullanarak çeşitli sorunlar hakkında ne yapacağınızı öğrenin. Amaç-C Kitaplığı.
 services: active-directory
 documentationcenter: ''
@@ -17,22 +18,22 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268914"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803659"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Nasıl yapılır: İOS ve macOS SSL sorunları için MSAL sorunlarını giderme
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Nasıl yapılır: iOS ve macOS SSL sorunları için MSAL sorunlarını giderme
 
 Bu makalede, [iOS ve macOS Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](reference-v2-libraries.md) kullanırken, içinde karşılaşabileceğiniz sorunları gidermenize yardımcı olacak bilgiler sağlanmaktadır
 
 ## <a name="network-issues"></a>Ağ sorunları
 
-**Hata-1200**: "Bir SSL hatası oluştu ve sunucuyla güvenli bir bağlantı kurulamıyor."
+**Hata-1200**: "bir SSL hatası oluştu ve sunucuyla güvenli bir bağlantı kurulamıyor."
 
-Bu hata bağlantının güvenli olmadığı anlamına gelir. Bir sertifika geçersiz olduğunda meydana gelir. SSL denetiminde başarısız olan sunucu dahil olmak üzere daha fazla bilgi için, hata nesnesinin `NSURLErrorFailingURLErrorKey` `userInfo` sözlüğünde öğesine bakın.
+Bu hata bağlantının güvenli olmadığı anlamına gelir. Bir sertifika geçersiz olduğunda meydana gelir. SSL denetiminde başarısız olan sunucu dahil olmak üzere daha fazla bilgi için, hata nesnesinin `userInfo` sözlüğünde `NSURLErrorFailingURLErrorKey` bakın.
 
 Bu hata, Apple 'ın ağ kitaplığından yapılır. NSURL hata kodlarının tam listesi, macOS ve iOS SDK 'lerinde NSURLError. h içinde bulunur. Bu hatayla ilgili daha fazla bilgi için bkz. [URL yükleme sistem hata kodları](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
 

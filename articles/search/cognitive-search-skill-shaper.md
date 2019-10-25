@@ -1,22 +1,21 @@
 ---
-title: Bilişsel arama becerisi için mil-Azure Search
-description: Yapılandırılmamış verilerden meta verileri ve yapılandırılmış bilgileri ayıklayın ve bir Azure Search zenginleştirme ardışık düzeninde onu karmaşık bir tür olarak şekillendirin.
-services: search
+title: Bilişsel Beceri başına mil
+titleSuffix: Azure Cognitive Search
+description: Yapılandırılmamış verilerden meta verileri ve yapılandırılmış bilgileri ayıklayın ve Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde bir karmaşık tür olarak şekillendirin.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265344"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791869"
 ---
-#   <a name="shaper-cognitive-skill"></a>Bilişsel Beceri başına mil
+# <a name="shaper-cognitive-skill"></a>Bilişsel Beceri başına mil
 
 **Mil başına** , birkaç girişi, daha sonra zenginleştirme ardışık düzeninde başvurulabilen [karmaşık bir türde](search-howto-complex-data-types.md) birleştirir. Her **Beceri,** temel olarak bir yapı oluşturmanızı, bu yapının üyelerinin adını tanımlamanızı ve her üyeye değer atamanızı sağlar. Birleştirme senaryolarında yararlı olan birleştirilmiş alan örnekleri, tek bir yapıya bir ad ve soyadı, tek bir yapıya şehir ve eyalet, benzersiz kimlik oluşturmak için ise tek bir yapıya bir ad ve Doğum tarihi birleştirmek içerir.
 
@@ -32,7 +31,7 @@ Microsoft. yetenekler. util. Shaperbeceri
 
 ## <a name="scenario-1-complex-types"></a>Senaryo 1: karmaşık türler
 
-İki üyeye sahip olan *çözümleyiciler* adlı bir yapı oluşturmak istediğiniz bir senaryo düşünün: *metin* *ve yaklaşım*sırasıyla. Azure Search dizinde, çok parçalı aranabilir bir alana *karmaşık tür* denir ve genellikle kaynak verilere eşlenen karşılık gelen bir karmaşık yapıya sahip olduğunda oluşturulur.
+İki üyeye sahip olan *çözümleyiciler* adlı bir yapı oluşturmak istediğiniz bir senaryo düşünün: *metin* *ve yaklaşım*sırasıyla. Bir dizinde, çok parçalı aranabilir bir alana *karmaşık tür* denir ve genellikle kaynak verilere eşlenen karşılık gelen bir karmaşık yapıya sahip olduğunda oluşturulur.
 
 Ancak karmaşık türler oluşturmaya yönelik başka bir yaklaşım, Beceri **başına biçimlendiricilerledir** . Bu yeteneği bir beceri dahil ederek, Beceri işleme sırasında bellek içi işlemler veri şekillerini, daha sonra dizininizdeki karmaşık bir türle eşleştirilebilen iç içe yapılar ile çıktısını alabilir. 
 
@@ -110,7 +109,7 @@ Yetenek **başına bu mil** için kullanılabilir giriş sağlayan gelen JSON be
 
 ### <a name="skill-output"></a>Yetenek çıkışı
 
-**Biçimlendiriciye** , *metin* ve yaklaşım birleştirilmiş öğeleri Ile *çözümleyiciler, Çözümleyicileri edtext* adlı yeni bir öğe *oluşturur.* Bu çıktı dizin şemasına uyar. Azure Search dizinde içeri ve dizine alınır.
+**Biçimlendiriciye** , *metin* ve yaklaşım birleştirilmiş öğeleri Ile *çözümleyiciler, Çözümleyicileri edtext* adlı yeni bir öğe *oluşturur.* Bu çıktı dizin şemasına uyar. Azure Bilişsel Arama dizininde içeri ve dizinli olur.
 
 ```json
 {
@@ -249,8 +248,8 @@ Bu durumda, **Shaper** karmaşık bir tür oluşturur. Bu yapı bellek içinde m
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Karmaşık türleri kullanma](search-howto-complex-data-types.md)
-+ [Bilgi deposuna genel bakış](knowledge-store-concept-intro.md)
++ [Bilgi deposu (Önizleme)](knowledge-store-concept-intro.md)
 + [Bilgi deposu ile çalışmaya başlama](knowledge-store-howto.md)

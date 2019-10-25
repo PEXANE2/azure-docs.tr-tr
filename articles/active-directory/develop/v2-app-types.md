@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6799e604b9e5e2acc3af35e4038ea6f14271d5c8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834721"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809279"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft Identity platform için uygulama türleri
 
@@ -110,7 +110,7 @@ Web API 'SI, Web sunucusu uygulamaları, masaüstü ve mobil uygulamalar, tek sa
 
 OAuth2 erişim belirteçlerini kullanarak bir Web API 'sinin güvenliğini sağlama hakkında bilgi edinmek için [Microsoft Identity platform Başlarken](v2-overview.md#getting-started) bölümündeki Web API 'si kod örneklerine bakın.
 
-Çoğu durumda, Web API 'Lerinin Microsoft Identity platform tarafından güvenliği sağlanmış diğer aşağı akış Web API 'Lerine giden istekler de yapması gerekir. Bunu yapmak için Web API 'Leri, Web API 'sinin giden isteklerde kullanılacak başka bir erişim belirtecinin gelen erişim belirtecini değiş tokuş etmesine olanak tanıyan akışdan faydalanabilir. Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0-adına akışı](v2-oauth2-on-behalf-of-flow.md).
+Çoğu durumda, Web API 'Lerinin Microsoft Identity platform tarafından güvenliği sağlanmış diğer aşağı akış Web API 'Lerine giden istekler de yapması gerekir. Bunu yapmak için Web API 'Leri, Web API 'sinin giden isteklerde kullanılacak başka bir erişim belirtecinin gelen erişim belirtecini değiş tokuş etmesine olanak **tanıyan akışdan** faydalanabilir. Daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0-adına akışı](v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobil ve yerel uygulamalar
 
@@ -122,9 +122,9 @@ Bu akışta, uygulama, Kullanıcı oturum açtığında Microsoft Identity platf
 
 ## <a name="daemons-and-server-side-apps"></a>Daemon 'ları ve sunucu tarafı uygulamalar
 
-Uzun süre çalışan işlemlere sahip olan veya Kullanıcı etkileşimi olmadan çalışan uygulamalar, Web API 'Leri gibi güvenli kaynaklara erişmek için de bir yönteme ihtiyaç duyar. Bu uygulamalar, OAuth 2,0 istemci kimlik bilgileri akışı ile kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak belirteçleri doğrulayabilir ve belirteçlere alabilir. Uygulamanın kimliğini bir istemci gizli dizisi veya sertifikası kullanarak kanıtlayabilirsiniz. Daha fazla bilgi için bkz. [sertifikalarla birlikte Daemon uygulamalarında Microsoft Identity platformunda kimlik doğrulama](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
+Uzun süre çalışan işlemlere sahip olan veya Kullanıcı etkileşimi olmadan çalışan uygulamalar, Web API 'Leri gibi güvenli kaynaklara erişmek için de bir yönteme ihtiyaç duyar. Bu uygulamalar, OAuth 2,0 istemci kimlik bilgileri akışı ile kullanıcının temsilci kimliği yerine uygulamanın kimliğini kullanarak belirteçleri doğrulayabilir ve belirteçlere alabilir. Uygulamanın kimliğini bir istemci gizli dizisi veya sertifikası kullanarak kanıtlayabilirsiniz. Daha fazla bilgi için bkz. [sertifikalarla birlikte Daemon uygulamalarında Microsoft Identity platformunda kimlik doğrulama](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/).
 
-Bu akışta, uygulama erişim sağlamak için `/token` uç noktayla doğrudan etkileşime girer:
+Bu akışta, uygulama, erişim elde etmek için `/token` uç noktasıyla doğrudan etkileşime girer:
 
 ![Daemon uygulaması kimlik doğrulama akışını gösterir](./media/v2-app-types/convergence-scenarios-daemon.svg)
 

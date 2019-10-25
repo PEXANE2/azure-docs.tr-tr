@@ -1,23 +1,22 @@
 ---
-title: Azure Search .NET SDK sürüm 3 ' e yükseltin-Azure Search
+title: Azure Search .NET SDK sürüm 3 ' e yükseltin
+titleSuffix: Azure Cognitive Search
 description: Kodu eski sürümlerden Azure Search .NET SDK sürüm 3 ' e geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: cab0da93bbea117c216969faf2f1e194e16d675f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183226"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792975"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK sürüm 3 ' e yükseltme
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK sürüm 3 ' e yükseltin
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -46,13 +45,13 @@ Azure Search .NET SDK 'nın 3. sürümü, Azure Search REST API, özellikle 2016
 * [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md) ve [Azure Tablo depolama](search-howto-indexing-azure-tables.md) Dizin Oluşturucu desteği
 * [Alan eşlemeleri](search-indexer-field-mappings.md) aracılığıyla Dizin Oluşturucu özelleştirmesi
 * ETags, Dizin tanımlarının, dizin oluşturucularının ve veri kaynaklarının güvenli eşzamanlı güncelleştirilmesini sağlamak için desteklenir
-* Model sınıfınızı dekorasyon ve yeni `FieldBuilder` sınıfı kullanarak Dizin alanı tanımlarını bildirimli olarak oluşturma desteği.
+* Model sınıfınızı dekorasyon ve yeni `FieldBuilder` sınıfını kullanarak Dizin alanı tanımlarını bildirimli olarak oluşturma desteği.
 * .NET Core ve .NET taşınabilir profili 111 için destek
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet ' i paket `Microsoft.Azure.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
+İlk olarak, NuGet Paket Yöneticisi konsolunu kullanarak veya proje başvurularınız ' a sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz `Microsoft.Azure.Search` güncelleştirin. Visual Studio 'da.
 
 NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
 
@@ -62,7 +61,7 @@ Derlemeniz başarısız olursa, aşağıdaki gibi bir yapı hatası görmeniz ge
 
 Sonraki adım bu derleme hatasını düzeltemedi. Hataya neden olan ve nasıl düzeltileceğini gösteren Ayrıntılar için [sürüm 3 ' teki son değişikliklere](#ListOfChanges) bakın.
 
-Eski yöntemler veya özelliklerle ilgili ek derleme uyarıları görebilirsiniz. Uyarılar, kullanım dışı özellik yerine, nelerin kullanılacağı hakkında yönergeler içerir. Örneğin, uygulamanız `IndexingParameters.Base64EncodeKeys` özelliğini kullanıyorsa, şöyle bir uyarı alırsınız`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Eski yöntemler veya özelliklerle ilgili ek derleme uyarıları görebilirsiniz. Uyarılar, kullanım dışı özellik yerine, nelerin kullanılacağı hakkında yönergeler içerir. Örneğin, uygulamanız `IndexingParameters.Base64EncodeKeys` özelliğini kullanıyorsa, şöyle bir uyarı almanız gerekir `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Herhangi bir derleme hatasını düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK 'daki yeni özellikler, [sürüm 3 ' teki](#WhatsNew)Yenilikler bölümünde ayrıntılı olarak açıklanmıştır.
 
@@ -72,7 +71,7 @@ Herhangi bir derleme hatasını düzelttikten sonra, isterseniz yeni işlevlerde
 Sürüm 3 ' te, uygulamanızı yeniden oluşturmak için ek olarak kod değişikliği gerektirebilecek az sayıda Son değişiklik vardır.
 
 ### <a name="indexesgetclient-return-type"></a>Indexes. GetClient dönüş türü
-`Indexes.GetClient` Yöntemin yeni bir dönüş türü vardır. Daha önce döndürüldü `SearchIndexClient`, ancak bu, sürüm 2,0- `ISearchIndexClient` önizleme sürümünde olarak değiştirilmiştir ve bu değişiklik 3 ' e kadar sürer. Bu, ' nin `GetClient` `ISearchIndexClient`bir sahte uygulamasını döndürerek birim testleri için yöntemini sahte yapmak isteyen müşterileri desteklemek içindir.
+`Indexes.GetClient` yöntemi yeni bir dönüş türüne sahiptir. Daha önce `SearchIndexClient`döndürüldü, ancak bu, sürüm 2,0-Önizleme sürümünde `ISearchIndexClient` olarak değiştirilmiştir ve bu değişiklik 3 ' e kadar geçiş yapar. Bu, `ISearchIndexClient`bir sahte uygulama döndürerek birim testleri için `GetClient` yöntemini sahte yapmak isteyen müşterileri desteklemek içindir.
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -88,7 +87,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 ### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Analiz Zeradı, veri türü ve diğerleri artık dizelere örtük olarak dönüştürülebilir değildir
-Azure Search .NET SDK 'sında türetilmiş `ExtensibleEnum`birçok tür vardır. Daha önce bu türlerin türüne `string`örtük olarak dönüştürülebilir. Ancak, bu sınıfların `Object.Equals` uygulamasında bir hata keşfedildi ve bu örtük dönüştürmeyi devre dışı bırakmak için gereken hata düzeltiliyor. Öğesine `string` açık dönüştürmeye hala izin verilir.
+Azure Search .NET SDK 'da `ExtensibleEnum`türetilen birçok tür vardır. Daha önce bu türler `string`türüne örtük olarak dönüştürülebilir. Ancak, bu sınıfların `Object.Equals` uygulamasında bir hata keşfedildi ve bu örtük dönüştürmeyi devre dışı bırakmak için gereken hata düzeltiliyor. `string` açık dönüştürmeye hala izin veriliyor.
 
 #### <a name="example"></a>Örnek
 Kodunuz şuna benziyorsa:
@@ -131,9 +130,9 @@ index.Analyzers = new Analyzer[]
 
 Sürüm 2,0 ' de eski olarak işaretlenen ve sürüm 3 ' te kaldırılan yöntemlerle veya özelliklerle ilgili derleme hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bu sorunları çözmek için aşağıdaki adımları uygulayın:
 
-- Bu oluşturucuyu `ScoringParameter(string name, string value)`kullanıyorsanız, bunun yerine kullanın:`ScoringParameter(string name, IEnumerable<string> values)`
-- `ScoringParameter.Value` Özelliğini kullanıyorsanız, bunun yerine `ScoringParameter.Values` özelliğini veya `ToString` yöntemini kullanın.
-- `SearchRequestOptions.RequestId` Özelliğini kullanıyorsanız, bunun yerine `ClientRequestId` özelliğini kullanın.
+- Bu oluşturucuyu kullanıyorsanız: `ScoringParameter(string name, string value)`bunun yerine şunu kullanın: `ScoringParameter(string name, IEnumerable<string> values)`
+- `ScoringParameter.Value` özelliğini kullanıyorsanız, bunun yerine `ScoringParameter.Values` özelliğini veya `ToString` metodunu kullanın.
+- `SearchRequestOptions.RequestId` özelliğini kullanıyorsanız, bunun yerine `ClientRequestId` özelliğini kullanın.
 
 ### <a name="removed-preview-features"></a>Önizleme özellikleri kaldırıldı
 

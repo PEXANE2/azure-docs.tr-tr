@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: b0c9fd85171020c9b78dc166980f85bcd89d8d67
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 10/22/2019
+ms.openlocfilehash: 3852531615418ffe5397295bc194de34139d6e81
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692402"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792641"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Öğretici: görsel arabirim ile otomobil fiyatlarını tahmin etme
 
@@ -40,15 +40,15 @@ Birinci bölümde, ortamınızı ayarlayın, modülleri etkileşimli bir tuvale 
 
 ## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
 
-Azure Machine Learning işlem hatları, birden çok bağımlı veri işleme adımını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza yardımcı olur. Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning hizmeti çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
+Azure Machine Learning işlem hatları, birden çok, bağımlı makine öğrenimi ve veri işleme adımlarını tek bir kaynakta düzenler. İşlem hatları, projeler ve kullanıcılar arasında karmaşık makine öğrenimi iş akışlarını düzenlemenize, yönetmenize ve yeniden kullanmanıza yardımcı olur. Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Learning hizmeti çalışma alanına ihtiyacınız vardır. Bu bölümde, bu kaynakların her ikisini de oluşturmayı öğreneceksiniz.
 
 ### <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluştur
 
-Bir Azure Machine Learning çalışma alanınız varsa, sonraki bölüme atlayın.
+Bir Azure Machine Learning hizmeti çalışma alanınız varsa, sonraki bölüme atlayın.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-### <a name="create-a-pipeline"></a>İşlem hattı oluşturma
+### <a name="create-the-pipeline"></a>İşlem hattını oluşturma
 
 1. [Ml.Azure.com](https://ml.azure.com) içinde oturum açın ve birlikte çalışmak istediğiniz çalışma alanını seçin.
 
@@ -56,7 +56,7 @@ Bir Azure Machine Learning çalışma alanınız varsa, sonraki bölüme atlayı
 
     ![Görsel arabirime nasıl erişediğinin gösterildiği görsel çalışma alanının ekran görüntüsü](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
 
-1. **Boş Işlem hattı**seçin.
+1. Kullanımı **kolay önceden oluşturulmuş modüller**' i seçin.
 
 1. Tuvalin en üstündeki "işlem **hattı-oluşturuldu-on..."** varsayılan işlem hattı adını seçin ve anlamlı bir şekilde yeniden adlandırın. Örneğin, **"otomobil fiyat tahmini"** . Adın benzersiz olması gerekmez.
 
@@ -69,32 +69,6 @@ Denemeniz için görsel arabirimde yer alan birkaç örnek veri kümesi vardır.
 1. Veri kümesini, **otomobil fiyat verilerini (ham)** seçin ve tuvale sürükleyin.
 
    ![Verileri tuvale sürükleyin](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
-
-1. Hangi veri sütunlarının birlikte çalışabileceği seçin. **Veri kümesi modülünde sütunları seçme** modülünü bulmak için paletin en üstündeki arama kutusuna **seçin** yazın.
-
-1. **Veri kümesindeki sütunları seçme** modülü ' ne tıklayın ve tuval üzerine sürükleyin. Modülün veri kümesi modülünün altına bırakın.
-
-1. Daha önce eklediğiniz veri kümesini, tıklayıp sürükleyerek **veri kümesindeki sütunları seçme** modülüne bağlayın. Veri kümesinin çıkış bağlantı noktasından, tuvaldeki veri kümesinin en altında bulunan küçük daire, modülün en üstünde bulunan küçük bir daire olan **veri kümesindeki sütun seçme**giriş bağlantı noktasına sürükleyin.
-
-    > [!TIP]
-    > Bir modülün çıkış bağlantı noktasını başka bir giriş bağlantı noktasına bağladığınızda işlem hattınızla veri akışı oluşturursunuz.
-    >
-
-    ![Modülleri bağlama](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. **Veri kümesi modülünde sütunları seç '** i seçin.
-
-1. Tuvalin sağındaki **Özellikler** bölmesinde **sütunu Düzenle**' yi seçin.
-
-    **Sütunları seçin** iletişim kutusunda, **tüm sütunlar** ' ı seçin ve **tüm özellikleri**ekleyin.
-
-1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
-
-### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
-
-İstediğiniz zaman, veri akışındaki bu noktada verilerin nasıl göründüğünü görmek için bir veri kümesinin veya modülün çıkış bağlantı noktasına tıklayın. **Çıktılar** sekmesi görünmezse, önce işlem hattını çalıştırmanız gerekir.
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
 
 ### <a name="visualize-the-data"></a>Verileri görselleştirme
 
@@ -114,30 +88,23 @@ Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsini
 
 ## <a name="prepare-data"></a>Verileri hazırlama
 
-Veri kümeleri, analiz etmeden önce genellikle bazı ön işleme gerektirir. Veri kümesini görselleştirirken bazı eksik değerleri fark etmiş olabilirsiniz. Modelin verileri doğru şekilde analiz edebilmesi için bu eksik değerlerin temizlenmesi gerekir. Eksik değerleri olan satırları kaldırırsınız.
+Veri kümeleri, analiz etmeden önce genellikle bazı ön işleme gerektirir. Veri kümesini görselleştirirken bazı eksik değerleri fark etmiş olabilirsiniz. Modelin verileri doğru şekilde analiz edebilmesi için bu eksik değerlerin temizlenmesi gerekir. Birçok eksik değeri olan sütunları kaldırır ve eksik değerleri olan tüm satırları kaldırabilirsiniz.
 
-1. **Veri kümesi modülünde sütunları seçme** modülünü bulmak için paletin en üstündeki arama kutusuna **seçin** yazın.
+### <a name="remove-a-column"></a>Sütun kaldırma
+
+Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız gerekir. Bu veri kümesinde, **normalleştirilmiş kayıplar** sütununda çok sayıda değer yok, bu nedenle bu sütunu modelden tamamen hariç tutacağız.
+
+1. Hangi veri sütunlarının birlikte çalışabileceği seçin. **Veri kümesi modülünde sütunları seçme** modülünü bulmak için paletin en üstündeki arama kutusuna **seçin** yazın.
 
 1. **Veri kümesindeki sütunları seçme** modülü ' ne tıklayın ve tuval üzerine sürükleyin. Modülün veri kümesi modülünün altına bırakın.
 
 1. Daha önce eklediğiniz veri kümesini, tıklayıp sürükleyerek **veri kümesindeki sütunları seçme** modülüne bağlayın. Veri kümesinin çıkış bağlantı noktasından, tuvaldeki veri kümesinin en altında bulunan küçük daire, modülün en üstünde bulunan küçük bir daire olan **veri kümesindeki sütun seçme**giriş bağlantı noktasına sürükleyin.
 
+    > [!TIP]
+    > Bir modülün çıkış bağlantı noktasını başka bir giriş bağlantı noktasına bağladığınızda işlem hattınızla veri akışı oluşturursunuz.
+    >
+
     ![Modülleri bağlama](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
-
-1. **Veri kümesi modülünde sütunları seç '** i seçin.
-
-1. Tuvalin sağındaki **Özellikler** bölmesinde **sütunu Düzenle**' yi seçin.
-
-    **Sütunları seçin** iletişim kutusunda, **tüm sütunlar** ' ı seçin ve **tüm özellikleri**ekleyin.
-
-1. Sütun seçiciyi kapatmak için sağ alt köşedeki **Kaydet** ' i seçin.
-
-> [!TIP]
-> Giriş verilerinden eksik değerleri Temizleme, Visual arabirimindeki modüllerin çoğunun kullanılmasına yönelik bir önkoşuldur.
-
-### <a name="remove-column"></a>Sütunu kaldırma
-
-Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız gerekir. Bu veri kümesinde, **normalleştirilmiş kayıplar** sütununda çok sayıda eksik değer bulunur, bu nedenle söz konusu sütunu modelden tamamen dışarıda bırakacaksınız.
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
@@ -162,6 +129,9 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 ### <a name="clean-missing-data"></a>Eksik verileri temizle
 
 Veri kümeniz, **normalleştirilmiş zararlar** sütununu kaldırdıktan sonra yine de eksik değerler içeriyor. **Eksik veri silme** modülünü kullanarak kalan eksik verileri kaldırabilirsiniz.
+
+> [!TIP]
+> Giriş verilerinden eksik değerleri Temizleme, Visual arabirimindeki modüllerin çoğunun kullanılmasına yönelik bir önkoşuldur.
 
 1. **Eksik verileri temizle** modülünü bulmak için arama kutusuna **Clean** yazın.
 
@@ -286,7 +256,7 @@ Bu öğreticinin bir parçası olarak şu adımları tamamladınız:
 * Model eğitimi
 * Model puanlanmış ve model değerlendirildi
 
-İkinci bölümde, modelinizi bir ardışık düzen uç noktası olarak dağıtmayı öğreneceksiniz.
+İkinci bölümde, modelinizi gerçek zamanlı bir uç nokta olarak dağıtmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
 > [Modelleri dağıtmaya devam et](ui-tutorial-automobile-price-deploy.md)

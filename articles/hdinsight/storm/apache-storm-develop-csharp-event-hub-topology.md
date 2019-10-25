@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915298"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800062"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 'ta Apache Storm ile Azure Event Hubs olayları işleme (C#)
 
 HDInsight üzerinde [Apache Storm](https://storm.apache.org/) Azure Event Hubs ile nasıl çalışacağınızı öğrenin. Bu belge Event Hubs verileri C# okumak ve yazmak için bir fırtınası topolojisi kullanır
 
 > [!NOTE]  
-> Bu projenin Java sürümü için bkz. [HDInsight 'ta Apache Storm Ile Azure Event Hubs işleme olayları (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> Bu projenin Java sürümü için bkz. [HDInsight 'ta Apache Storm Ile Azure Event Hubs işleme olayları (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -44,17 +44,17 @@ C#topolojiler ayrıca .NET 4,5 ' i de hedeflemelidir.
 
 ## <a name="how-to-work-with-event-hubs"></a>Event Hubs ile çalışma
 
-Microsoft, bir fırtınası topolojisinden Event Hubs iletişim kurmak için kullanılabilecek bir Java bileşenleri kümesi sağlar. Bu bileşenlerin HDInsight 3,6 ile uyumlu bir sürümünü içeren Java Arşivi (JAR) dosyasını adresinde [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)bulabilirsiniz.
+Microsoft, bir fırtınası topolojisinden Event Hubs iletişim kurmak için kullanılabilecek bir Java bileşenleri kümesi sağlar. Bu bileşenlerin HDInsight 3,6 ile uyumlu bir sürümünü içeren Java Arşivi (JAR) dosyasını [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)adresinde bulabilirsiniz.
 
 > [!IMPORTANT]  
 > Bileşenler Java 'da yazılırken, bunları bir C# topolojiden kolayca kullanabilirsiniz.
 
 Aşağıdaki bileşenler bu örnekte kullanılır:
 
-* __Eventhubspout__: Event Hubs verileri okur.
-* __Eventhubcıvata__: Verileri Event Hubs yazar.
+* __Eventhubspout__: Event Hubs verilerini okur.
+* __Eventhubcıvata__: verileri Event Hubs yazar.
 * __Eventhubspoutconfig__: EventHubSpout 'yi yapılandırmak için kullanılır.
-* __Eventhubcıvatconfig__: Eventhubcıvanu yapılandırmak için kullanılır.
+* __Eventhubcıvatconfig__: eventhubcıvaı yapılandırmak için kullanılır.
 
 ### <a name="example-spout-usage"></a>Örnek Spout kullanımı
 
@@ -125,9 +125,9 @@ Bu makalede oluşturulan projenin tüm sürümünü [GitHub](https://github.com/
 
 ## <a name="download-the-event-hubs-components"></a>Event Hubs bileşenlerini indirin
 
-Event Hubs Spout ve cıvam bileşenini şuradan [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)indirin.
+[https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar)Event Hubs Spout ve cıvam bileşenini indirin.
 
-Adlı `eventhubspout`bir dizin oluşturun ve dosyayı dizine kaydedin.
+`eventhubspout`adlı bir dizin oluşturun ve dosyayı dizine kaydedin.
 
 ## <a name="configure-event-hubs"></a>Event Hubs Yapılandır
 
@@ -135,10 +135,10 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 1. Olay Hub 'ı oluşturulduktan sonra, Azure portal **EventHub** ayarlarını görüntüleyin ve **paylaşılan erişim ilkeleri**' ni seçin. Aşağıdaki ilkeleri eklemek için **+ Ekle** ' yi seçin:
 
-   | Name | İzinler |
+   | Adı | İzinler |
    | --- | --- |
-   | yazıcı |Gönder |
-   | okuyucu |Dinle |
+   | yazarı |Gönder |
+   | Okuyucu |Dinle |
 
     ![Erişim ilkelerini paylaşma penceresinin ekran görüntüsü](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
@@ -152,7 +152,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 3. **Eventhubwriter** projesinde **app. config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
 
-   | Anahtar | Value |
+   | Anahtar | Değer |
    | --- | --- |
    | EventHubPolicyName |Yazıcı (ilke için *gönderme* izni olan farklı bir ad kullandıysanız bunun yerine kullanın.) |
    | EventHubPolicyKey |Yazıcı ilkesi için anahtar. |
@@ -168,7 +168,7 @@ Event Hubs Bu örnek için veri kaynağıdır. [Event Hubs kullanmaya başlama](
 
 2. **Eventhubreader**için **app. config** dosyasını açın. Daha önce aşağıdaki anahtarlar için değeri dolduracak olan olay hub 'ında bulunan bilgileri kullanın:
 
-   | Anahtar | Value |
+   | Anahtar | Değer |
    | --- | --- |
    | EventHubPolicyName |okuyucu ( *dinleme* izniyle ilke için farklı bir ad kullandıysanız, bunun yerine kullanın.) |
    | EventHubPolicyKey |Okuyucu ilkesi için anahtar. |

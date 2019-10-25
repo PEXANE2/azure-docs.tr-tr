@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949789"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800220"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API 'lerle bağlantı kurmak ve kimlik doğrulamak
 
@@ -24,7 +24,7 @@ Azure AD 'ye genel bakış için, adım adım kılavuzlar, kavramlar ve hızlı 
 > [!TIP]
 > Azure dijital TWINS örnek uygulamasını ayarlamak ve çalıştırmak için [öğreticiyi](tutorial-facilities-setup.md) izleyin.
 
-Bir uygulamayı veya hizmeti Azure AD ile bütünleştirmek için, bir geliştiricinin uygulamayı önce Azure AD ile kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için bkz. [Bu hızlı başlangıç](../active-directory/develop/quickstart-register-app.md).
+Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin önce uygulamayı Azure AD'ye kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için bkz. [Bu hızlı başlangıç](../active-directory/develop/quickstart-register-app.md).
 
 Azure AD tarafından [beş birincil uygulama senaryosu](../active-directory/develop/v2-app-types.md) desteklenir:
 
@@ -49,7 +49,7 @@ Geliştiriciler dijital TWINS çözümlerini mimarilerlerse, genellikle bir orta
 
 1. Elde edilen belirteç daha sonra kimlik doğrulaması için veya şirket içi akış kullanarak daha fazla aşağı akış olan API 'Leri çağırmak için kullanılır
 
-Şirket adına akışı düzenleme hakkında yönergeler için bkz. [OAuth 2,0 on-the Flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Ayrıca, [bir aşağı akış Web API 'Sini çağırarak](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/)kod örneklerini görüntüleyebilirsiniz.
+Şirket adına akışı düzenleme hakkında yönergeler için bkz. [OAuth 2,0 on-the Flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Ayrıca, [bir aşağı akış Web API 'Sini çağırarak](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)kod örneklerini görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

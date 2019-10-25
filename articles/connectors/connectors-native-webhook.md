@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: ee86f53795b1b3e7bd61480a490d4e18c844d4c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264331"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804267"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP Web kancalarını kullanarak otomatik olay tabanlı iş akışları oluşturun ve çalıştırın
 
@@ -75,7 +75,7 @@ Bu yerleşik tetikleyici, belirtilen hizmetle bir geri çağırma URL 'SI kayded
 
 1. Kullanılabilir başka parametreler eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz parametreleri seçin.
 
-   HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [http Tetikleyicileri ve eylemlerini kimlik](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)doğrulama.
+   HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Tetikleyici tetiklendiğinde çalıştırılan eylemlerle mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
@@ -111,7 +111,7 @@ Bu yerleşik eylem, belirtilen hizmetle bir geri çağırma URL 'SI kaydeder, ma
 
 1. Kullanılabilir başka parametreler eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz parametreleri seçin.
 
-   HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [http Tetikleyicileri ve eylemlerini kimlik](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)doğrulama.
+   HTTP Web kancası için kullanılabilen kimlik doğrulama türleri hakkında daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydetmeyi unutmayın. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 

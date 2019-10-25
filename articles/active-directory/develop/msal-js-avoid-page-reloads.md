@@ -1,5 +1,6 @@
 ---
-title: Sayfa yeniden yüklemeden kaçının (JavaScript için Microsoft kimlik doğrulama kitaplığı) | Mavisi
+title: Sayfa yeniden yüklemeden kaçının (JavaScript için Microsoft kimlik doğrulama kitaplığı)
+titleSuffix: Microsoft identity platform
 description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak belirteçleri sessizce alırken sayfa yeniden yüklemeden kaçınmanın nasıl yapılacağını öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,29 +18,29 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c382c78cf631def74272768b78ee489e49820d04
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532825"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803113"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL. js kullanarak belirteçleri sessizce alırken ve yenilerken sayfa yeniden yüklemeden kaçının
-JavaScript için Microsoft kimlik doğrulama kitaplığı (msal. js), `iframe` arka planda belirteçleri sessizce almak ve yenilemek için gizli öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri öğesine geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, ' `redirect_uri` `iframe`de yüklenen almaya karşılık gelen HTML ile sonuçlanır. Genellikle uygulama `redirect_uri` kök sayfasıdır ve bu, yeniden yüklenmesine neden olur.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), arka planda belirteçleri sessizce almak ve yenilemek için gizli `iframe` öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri öğesine geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, `iframe`yüklenmesi `redirect_uri` buna karşılık gelen HTML ile sonuçlanır. Genellikle uygulamanın `redirect_uri` kök sayfasıdır ve bunun yeniden yüklenmesine neden olur.
 
-Diğer durumlarda, uygulamanın kök sayfasına gidildiğinde kimlik doğrulaması yapılması gerekiyorsa, iç içe geçmiş `iframe` öğelere veya `X-Frame-Options: deny` hataya yol açabilir.
+Diğer durumlarda, uygulamanın kök sayfasına gidildiğinde kimlik doğrulaması yapılması gerekiyorsa, iç içe `iframe` öğelere veya `X-Frame-Options: deny` hataya yol açabilir.
 
-MSAL. js, Azure AD tarafından verilen 302 'yı kapata, ve döndürülen belirteci işlemek için gerekli olduğundan, `redirect_uri` `iframe`içinde yüklenmesini engellemez.
+MSAL. js, Azure AD tarafından verilen 302 'yı kapata, ve döndürülen belirteci işlemek için gerekli olduğundan, `redirect_uri` `iframe`yüklenmesini engellemez.
 
 Uygulamanın tamamının yeniden yüklenmesi veya bunun nedeniyle oluşan diğer hataların olmaması için lütfen bu geçici çözümleri izleyin.
 
 ## <a name="specify-different-html-for-the-iframe"></a>İframe için farklı HTML belirtme
 
-Config üzerinde `redirect_uri` özelliğini, kimlik doğrulaması gerektirmeyen basit bir sayfaya ayarlayın. Azure Portal `redirect_uri` kayıtlı ile eşleştiğinden emin olun. Bu, kullanıcının oturum açma işlemini başlatması ve oturum açma işlemi tamamlandıktan sonra tam konuma yeniden yönlendirdiği için MSAL olarak kullanıcının oturum açma deneyimini etkilemez.
+Config üzerinde `redirect_uri` özelliğini, kimlik doğrulaması gerektirmeyen basit bir sayfa olarak ayarlayın. Azure portal kayıtlı `redirect_uri` eşleştiğinden emin olmanız gerekir. Bu, kullanıcının oturum açma işlemini başlatması ve oturum açma işlemi tamamlandıktan sonra tam konuma yeniden yönlendirdiği için MSAL olarak kullanıcının oturum açma deneyimini etkilemez.
 
 ## <a name="initialization-in-your-main-app-file"></a>Ana uygulama dosyanızda başlatma
 
-Uygulamanız, uygulamanın başlatma, Yönlendirme ve diğer öğeleri tanımlayan bir merkezi JavaScript dosyası gibi yapılandırılmış ise, uygulama modüllerinizi uygulamanın bir `iframe` uygulamasına yüklenip yüklenmemesine göre koşullu olarak yükleyebilirsiniz. Örneğin:
+Uygulamanız, uygulamanın başlatma, Yönlendirme ve diğer öğeleri tanımlayan bir merkezi JavaScript dosyası gibi yapılandırılmış ise, uygulama modüllerinizi uygulamanın bir `iframe` yüklenip yüklenmemesine göre koşullu olarak yükleyebilirsiniz. Örnek:
 
 AngularJS içinde: App. js
 

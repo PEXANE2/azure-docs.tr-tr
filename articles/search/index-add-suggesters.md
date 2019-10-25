@@ -1,13 +1,13 @@
 ---
-title: Dizine typeahead sorguları ekleme-Azure Search
-description: Otomatik tamamlama veya otomatik önerilen sorgu koşullarını çağıran istekleri öneri araçları ve formülleyerek tür ön sorgu Azure Search eylemlerini etkinleştirin.
-ms.date: 09/30/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Dizine typeahead sorguları ekleme
+titleSuffix: Azure Cognitive Search
+description: Otomatik tamamlama veya otomatik önerilmiş sorgu koşulları çağıran istekleri öneri araçları ve formül oluşturarak Azure Bilişsel Arama 'de yazma öncesi sorgu eylemlerini etkinleştirin.
+manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,24 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d3f934bea5df821e51a4747170af4f7efd1eaacc
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828288"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790111"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Azure Search typeahead için bir dizine öneri araçları ekleyin
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Azure Bilişsel Arama typeahead için bir dizine öneri araçları ekleme
 
-Azure Search, "yazarken arama" veya typeahead işlevselliği, bir [arama dizinine](search-what-is-an-index.md)eklediğiniz bir **öneri aracı** yapısını temel alır. Bu, typeahead 'in etkinleştirilmesini istediğiniz bir veya daha fazla alanın listesidir.
+Azure Bilişsel Arama 'de, "yazarken arama" veya typeahead işlevselliği, bir [arama dizinine](search-what-is-an-index.md)eklediğiniz bir **öneri aracı** yapısını temel alır. Bu, typeahead 'in etkinleştirilmesini istediğiniz bir veya daha fazla alanın listesidir.
 
 Bir öneri aracı, yazmakta olduğunuz terimi veya tümceciği tamamlayan ve eşleşen belgelerin kısa bir listesini döndüren *önerilerden* oluşan iki typeahead çeşidini destekler: *AutoComplete*.  
 
 Aşağıdaki ekran görüntüsünde, örnek [olarak ilk uygulamanızı oluşturma bölümünde C# ](tutorial-csharp-type-ahead-and-suggestions.md) typeahead gösterilmektedir. Kullanıcının arama kutusuna girebileceği anticipates otomatik tamamlama. Gerçek giriş "tw" dir, bu da otomatik tamamlama "ın" ile biter ve olası arama terimi olarak "ikizi" olarak çözümleniyor. Öneriler, açılan listede görselleştirilir. Öneriler için, sonucu en iyi açıklayan bir belgenin herhangi bir bölümünü yüzeyinize ekleyebilirsiniz. Bu örnekte, öneriler otel adlarıdır. 
 
-![Otomatik tamamlama ve önerilen sorguların görsel karşılaştırması](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "otomatik tamamlama ve önerilen sorguların görsel karşılaştırması")
+![Otomatik tamamlama ve önerilen sorguların görsel karşılaştırması](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Otomatik tamamlama ve önerilen sorguların görsel karşılaştırması")
 
-Bu davranışları Azure Search uygulamak için bir dizin ve sorgu bileşeni vardır. 
+Bu davranışları Azure Bilişsel Arama uygulamak için bir dizin ve sorgu bileşeni vardır. 
 
 + Dizinde bir öneri aracı ekleyin. Portal, [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)veya [.NET SDK 'sını](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)kullanabilirsiniz. Bu makalenin geri kalanında bir öneri aracı oluşturmaya odaklanılmıştır. 
 
@@ -44,7 +44,7 @@ Bu davranışları Azure Search uygulamak için bir dizin ve sorgu bileşeni var
 
 Arama ölçütü türü, alan temelinde desteklenir. Ekran görüntüsünde gösterilenle benzer bir deneyim istiyorsanız, aynı arama çözümü içinde her iki typeahead davranışını da uygulayabilirsiniz. Her iki istek de, bir Kullanıcı en az üç karakter girişi dizesi sağladıktan sonra, belirli dizin ve yanıtların *belge* koleksiyonunu hedefler.
 
-## <a name="create-a-suggester"></a>Öneri aracı oluşturma
+## <a name="create-a-suggester"></a>Öneri oluşturucu oluşturma
 
 Bir öneri aracı birçok özelliğe sahip olsa da, birincil olarak bir typeahead deneyimini etkinleştirilebilmeniz için bir alanlar koleksiyonudur. Örneğin, bir seyahat uygulaması, hedefler, şehirler ve atlamalar üzerinde typeahead aramasını etkinleştirmek isteyebilir. Bu nedenle, üç alan de alanlar koleksiyonunda gider.
 
@@ -54,7 +54,7 @@ Bir öneri aracı oluşturmak için bir dizin şemasına bir tane ekleyin. Bir d
 
 Bir öneri aracı oluşturmak için en iyi zaman, alan tanımının kendisini de oluşturmaktır.
 
-Önceden var olan alanları kullanarak bir öneri aracı oluşturmaya çalışırsanız, API buna izin vermez. İki veya daha fazla karakter kombinasyondaki kısmi terimler, tüm koşullara göre simgeleştirilmiştir, dizin oluşturma sırasında typeahead metni oluşturulur. Mevcut alanlar zaten simgeleştirilmiş olduğunda, bir öneri aracı eklemek istiyorsanız dizini yeniden oluşturmanız gerekir. Yeniden dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure Search dizin oluşturma](search-howto-reindex.md).
+Önceden var olan alanları kullanarak bir öneri aracı oluşturmaya çalışırsanız, API buna izin vermez. İki veya daha fazla karakter kombinasyondaki kısmi terimler, tüm koşullara göre simgeleştirilmiştir, dizin oluşturma sırasında typeahead metni oluşturulur. Mevcut alanlar zaten simgeleştirilmiş olduğunda, bir öneri aracı eklemek istiyorsanız dizini yeniden oluşturmanız gerekir. Yeniden dizin oluşturma hakkında daha fazla bilgi için bkz. [Azure bilişsel arama dizin oluşturma](search-howto-reindex.md).
 
 ### <a name="create-using-the-rest-api"></a>REST API kullanarak oluşturma
 
@@ -108,12 +108,12 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |Özellik      |Açıklama      |
 |--------------|-----------------|
 |`name`        |Öneri aracı adı.|
-|`searchMode`  |Aday tümcecikleri aramak için kullanılan strateji. Şu anda desteklenen tek mod `analyzingInfixMatching` ' dır ve Tümcelerin ortasında veya başındaki tümceciklerden esnek eşleştirme gerçekleştirir.|
-|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanlar `Edm.String` ve `Collection(Edm.String)` türünde olmalıdır. Alanda bir çözümleyici belirtilmişse, [Bu listeden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/>En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
+|`searchMode`  |Aday tümcecikleri aramak için kullanılan strateji. Şu anda desteklenen tek mod, Tümcelerin başındaki veya ortasındaki tümceciklerden esnek eşleme gerçekleştiren `analyzingInfixMatching`.|
+|`sourceFields`|Önerilerin içerik kaynağı olan bir veya daha fazla alanın listesi. Alanların `Edm.String` ve `Collection(Edm.String)`türünde olması gerekir. Alanda bir çözümleyici belirtilmişse, [Bu listeden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) bir adlandırılmış çözümleyici olmalıdır (özel çözümleyici değil).<p/>En iyi uygulama olarak, bir arama çubuğunda veya açılan listede bir tamamlanmış dize olup olmadığı için, yalnızca beklenen ve uygun bir yanıta ödünç veren alanları belirtin.<p/>Bir otel adı duyarlık içerdiğinden iyi bir adaydır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, Kategoriler ve Etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden fazla alanı dahil etbileceğinizi göstermek için, "Category" de yer alır. |
 
 ### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Bir öneri aracı içindeki sourceFields için çözümleyici kısıtlamaları
 
-Azure Search, alan içeriğini çözümleyerek tek tek şartlar üzerinde sorgu yapmayı etkinleştirir. Öneri araçları, kaynak alanları üzerinde ek analizler gerektiren tüm koşullara ek olarak ön eklerin dizinlenmesini gerektirir. Özel çözümleyici yapılandırması, çeşitli belirteçlerin ve filtrelerin herhangi birini, genellikle öneriler için gerekli olan ön ekleri üreten yöntemlerle birleştirebilir. Bu nedenle Azure Search, özel Çözümleyicileri olan alanların bir öneri aracı dahil edilmesini engeller.
+Azure Bilişsel Arama, alan içeriğini çözümleyerek tek tek şartlar üzerinde sorgu yapmayı etkinleştirir. Öneri araçları, kaynak alanları üzerinde ek analizler gerektiren tüm koşullara ek olarak ön eklerin dizinlenmesini gerektirir. Özel çözümleyici yapılandırması, çeşitli belirteçlerin ve filtrelerin herhangi birini, genellikle öneriler için gerekli olan ön ekleri üreten yöntemlerle birleştirebilir. Bu nedenle, Azure Bilişsel Arama özel Çözümleyicileri olan alanların bir öneri aracı dahil edilmesini engeller.
 
 > [!NOTE] 
 >  Yukarıdaki sınırlamaya geçici çözüm yapmanız gerekiyorsa, aynı içerik için iki ayrı alan kullanın. Bu, diğer alanlardan birinin bir öneri aracı sahip olmasını sağlar, ancak diğeri özel bir çözümleyici yapılandırmasıyla ayarlanacaktır.
@@ -140,7 +140,7 @@ Dizinde tanımlı bir öneri aracı yoksa otomatik tamamlama veya önerilere ça
 
 ## <a name="sample-code"></a>Örnek kod
 
-+ Örnek [olarak C# ilk uygulamanızı oluşturun](tutorial-csharp-type-ahead-and-suggestions.md) , bir öneri aracı yapımı, önerilen sorgular, otomatik tamamlama ve çok yönlü gezinme gösterir. Bu kod örneği bir korumalı alan Azure Search hizmeti üzerinde çalışır ve tüm yapmanız gerekir, uygulamayı çalıştırmak için F5 'e basın. Abonelik ya da oturum açma gerekli değildir.
++ Örnek [olarak C# ilk uygulamanızı oluşturun](tutorial-csharp-type-ahead-and-suggestions.md) , bir öneri aracı yapımı, önerilen sorgular, otomatik tamamlama ve çok yönlü gezinme gösterir. Bu kod örneği, korumalı alan Azure Bilişsel Arama hizmetinde çalışır ve tüm yapmanız gerekir. böylece, uygulamayı çalıştırmak için F5 'e basın. Abonelik ya da oturum açma gerekli değildir.
 
 + [Dotnethowtoautocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) , hem hem de C# Java kodunu içeren eski bir örnektir. Ayrıca, bir öneri aracı yapımı, önerilen sorgular, otomatik tamamlama ve çok yönlü gezinme gösterir. Bu kod örneği barındırılan [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) örnek verilerini kullanır. 
 

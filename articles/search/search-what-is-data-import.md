@@ -1,33 +1,32 @@
 ---
-title: Arama dizinine giriş için veri içeri aktarma-Azure Search
-description: Dış veri kaynaklarından Azure Search verileri doldurun ve dizine yükleyin.
-author: HeidiSteen
+title: Arama dizinine veri alımı için veri içeri aktarma
+titleSuffix: Azure Cognitive Search
+description: Dış veri kaynaklarından Azure Bilişsel Arama verileri doldurun ve dizine yükleyin.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 71ee63dfbe880cbf6018f3dd13d360850ed994f9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a05291012bcf44b1a07d9b451eef1302862b2fce
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647325"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794150"
 ---
-# <a name="data-import-overview---azure-search"></a>Veri içeri genel bakış-Azure Search
+# <a name="data-import-overview---azure-cognitive-search"></a>Veri içeri genel bakış-Azure Bilişsel Arama
 
-Azure Search, sorgular ' a yüklenmiş ve bir [arama dizinine](search-what-is-an-index.md)kaydedilen içeriklerinizin üzerinde yürütülür. Bu makalede, bir dizini doldurmak için iki temel yaklaşım incelenir: verilerinizi dizine programlamayla *gönderin* veya desteklenen bir veri kaynağında [Azure Search Dizin oluşturucuyu](search-indexer-overview.md) , verileri *çekmek* için işaretleyin.
+Azure Bilişsel Arama 'de sorgular, ' a yüklenmiş ve bir [arama dizinine](search-what-is-an-index.md)kaydedilen içeriklerinizin üzerinde yürütülür. Bu makalede, bir dizini doldurmak için iki temel yaklaşım incelenir: verileri programlı bir şekilde dizine *gönderin* veya desteklenen bir veri kaynağındaki [Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) , verileri *çekmek* için işaretleyin.
 
-Her iki yaklaşımla de amaç bir dış veri kaynağından Azure Search dizine *veri yükleme* . Azure Search boş bir dizin oluşturmanıza izin verir, ancak veri göndermeye veya çekene kadar sorgulanabilir değildir.
+Her iki yaklaşımla de amaç bir dış veri kaynağından Azure Bilişsel Arama dizinine *veri yükleme* . Azure Bilişsel Arama, boş bir dizin oluşturmanıza izin verir, ancak veri göndermeye veya çekene kadar sorgulanabilir değildir.
 
 ## <a name="pushing-data-to-an-index"></a>Verileri dizine gönderme
-Verilerinizi programlama yoluyla Azure Search'e göndermek için kullanılan gönderme yöntemi, en esnek yöntemdir. Birincisi, veri kaynağı türüne hiçbir kısıtlama getirmez. Veri kümesindeki her belgede, dizin şemanızda tanımlanan alanlarla eşlenen alanlar bulunduğu varsayımıyla, JSON belgelerinden oluşan tüm veri kümeleri Azure Search dizinine gönderilebilir. İkincisi, yürütme frekansı üzerinde hiçbir kısıtlaması yoktur. Değişiklikleri istediğiniz sıklıkta dizine gönderebilirsiniz. Çok düşük gecikme süresi gereksinimlerine sahip uygulamalar için (örneğin, arama işlemlerinin dinamik stok veritabanlarıyla eşitlenmiş olması gerekiyorsa), tek seçeneğiniz gönderme modelidir.
+Verilerinizi Azure Bilişsel Arama 'a programlı bir şekilde göndermek için kullanılan anında iletme modeli, en esnek yaklaşımdır. Birincisi, veri kaynağı türüne hiçbir kısıtlama getirmez. JSON belgelerinden oluşan herhangi bir veri kümesi, bir Azure Bilişsel Arama dizinine itilmiş olduğundan, veri kümesindeki her belgenin dizin şemanızda tanımlı alanlarla alanları eşleştirmiş olduğunu varsayarsak. İkincisi, yürütme frekansı üzerinde hiçbir kısıtlaması yoktur. Değişiklikleri istediğiniz sıklıkta dizine gönderebilirsiniz. Çok düşük gecikme süresi gereksinimlerine sahip uygulamalar için (örneğin, arama işlemlerinin dinamik stok veritabanlarıyla eşitlenmiş olması gerekiyorsa), tek seçeneğiniz gönderme modelidir.
 
-Belgeleri tek tek veya toplu işlemle karşıya yükleyebileceğinizden (toplu işlem başına en fazla 1000 veya 16 MB sınırlarından hangisi önce gelirse), bu yaklaşım çekme modelinden daha esnektir. Gönderme modeli, verilerinizin nerede olduğuna bakılmaksızın Azure Search'e dosyalarınızı yüklemenizi de sağlar.
+Belgeleri tek tek veya toplu işlemle karşıya yükleyebileceğinizden (toplu işlem başına en fazla 1000 veya 16 MB sınırlarından hangisi önce gelirse), bu yaklaşım çekme modelinden daha esnektir. Anında iletme modeli, verilerinizi nerede olursa olsun Azure Bilişsel Arama yüklemenize de olanak tanır.
 
-### <a name="how-to-push-data-to-an-azure-search-index"></a>Verileri Azure Search dizinine gönderme
+### <a name="how-to-push-data-to-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine veri gönderme
 
 Dizin bir tek veya birden çok belge yüklemek için şu API'leri kullanabilirsiniz:
 
@@ -36,7 +35,7 @@ Dizin bir tek veya birden çok belge yüklemek için şu API'leri kullanabilirsi
 
 Şu an portal aracılığıyla veri gönderme için hiçbir araç desteği yoktur.
 
-Her metodolojiye giriş için bkz [. hızlı başlangıç: PowerShell](search-create-index-rest-api.md) veya [ hızlı başlangıç kullanarak Azure Search Dizin C# oluşturma: .NET SDK](search-get-started-dotnet.md)kullanarak bir Azure Search dizini oluşturun.
+Her metodolojiye giriş için bkz. [hızlı başlangıç: PowerShell](search-create-index-rest-api.md) veya [ C# hızlı başlangıç kullanarak Azure bilişsel arama dizini oluşturma: .NET SDK kullanarak Azure bilişsel arama dizini oluşturma](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -44,15 +43,15 @@ Her metodolojiye giriş için bkz [. hızlı başlangıç: PowerShell](search-cr
 
 Belge başına temelinde dizin oluşturma eylemi türünü denetleyebilir, belgenin tam olarak karşıya yüklenip yüklenmeyeceğini, varolan belge içeriğiyle birleştirilip silinmeyeceğini belirtebilir.
 
-REST API, Azure Search dizininizin uç nokta URL 'sine JSON istek gövdeleriyle HTTP POST istekleri verin. "Value" dizisindeki her JSON nesnesi belgenin anahtarını içerir ve bir dizin oluşturma eyleminin belge içeriğini ekleyip eklemediğini veya silmediğini belirtir. Kod örneği için bkz. [belgeleri yükleme](search-get-started-dotnet.md#load-documents).
+REST API Azure Bilişsel Arama dizininizin Endpoint URL 'nize JSON istek gövdeleriyle HTTP POST istekleri verin. "Value" dizisindeki her JSON nesnesi belgenin anahtarını içerir ve bir dizin oluşturma eyleminin belge içeriğini ekleyip eklemediğini veya silmediğini belirtir. Kod örneği için bkz. [belgeleri yükleme](search-get-started-dotnet.md#load-documents).
 
-.NET SDK 'sında verilerinizi bir `IndexBatch` nesneye paketleyin. , Her biri bir belge `IndexAction` ve bu belgede hangi eylemin gerçekleştirileceğini Azure Search söyleyen bir özellik içeren bir nesne koleksiyonunu kapsüller.`IndexBatch` Kod örneği için [ C# hızlı başlangıç](search-get-started-dotnet.md)bölümüne bakın.
+.NET SDK 'sında verilerinizi bir `IndexBatch` nesnesine paketleyin. `IndexBatch`, her biri bir belge içeren ve Azure 'a bu belgede hangi eylemin gerçekleştirileceğini Bilişsel Arama söyleyen bir özelliği içeren bir `IndexAction` nesneleri koleksiyonunu kapsüller. Kod örneği için [ C# hızlı başlangıç](search-get-started-dotnet.md)bölümüne bakın.
 
 
 | @search.action | Açıklama | Her bir belge için gerekli alanlar | Notlar |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Bir `upload` eylemi, belgenin yeni olması durumunda ekleneceği ve var olması durumunda güncelleştirileceği/değiştirileceği bir "upsert" ile benzerlik gösterir. |anahtar ve tanımlamak istediğiniz diğer alanlar |Var olan bir belgeyi güncelleştirirken/değiştirirken istekte belirtilmeyen herhangi bir alan `null` olarak ayarlanır. Bu durum, alan daha önce değersiz olmayan bir değere ayarlanmış olsa dahi gerçekleşir. |
-| `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, türünde `DataType.Collection(DataType.String)`alanlar içerir. REST API, bu, türünde `Collection(Edm.String)`alanlar içerir. Örneğin, belge `["budget"]` değerine sahip bir `tags` alanını içeriyorsa ve `tags` için `["economy", "pool"]` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
+| `merge` |Var olan belgeyi belirtilen alanlarla güncelleştirir. Belge dizinde mevcut değilse birleştirme işlemi başarısız olur. |anahtar ve tanımlamak istediğiniz diğer alanlar |Birleştirmede belirttiğiniz herhangi bir alan belgede var olan alanın yerini alır. .NET SDK 'sında bu, `DataType.Collection(DataType.String)`türünde alanlar içerir. REST API, bu, `Collection(Edm.String)`türündeki alanları içerir. Örneğin, belge `["budget"]` değerine sahip bir `tags` alanını içeriyorsa ve `tags` için `["economy", "pool"]` değeriyle bir birleştirme yürütürseniz `tags` alanının son değeri `["economy", "pool"]` olur. `["budget", "economy", "pool"]` olmayacaktır. |
 | `mergeOrUpload` |Belirtilen anahtara sahip bir belge dizinde zaten mevcutsa bu eylem `merge` gibi davranır. Belge mevcut değilse yeni bir belgeyle `upload` gibi davranır. |anahtar ve tanımlamak istediğiniz diğer alanlar |- |
 | `delete` |Belirtilen belgeyi dizinden kaldırır. |yalnızca anahtar |Anahtar alanı dışında belirttiğiniz tüm alanlar yoksayılır. Bir belgeden tek bir alanı kaldırmak istiyorsanız bunun yerine `merge` kullanıp alanı açık bir şekilde null olarak ayarlamanız yeterlidir. |
 
@@ -71,7 +70,7 @@ POST için biçim aynıdır ancak sorgu dizesi parametrelerinde yalnızca api s�
 
 
 ## <a name="pulling-data-into-an-index"></a>Verileri dizine çekme
-Çekme modeli, desteklenen veri kaynağında gezinir ve dizininize verileri otomatik olarak yükler. Azure Search'te bu özellik *dizin oluşturucular* aracılığıyla uygulanır ve şu anda aşağıdaki platformlarda kullanılabilir:
+Çekme modeli, desteklenen veri kaynağında gezinir ve dizininize verileri otomatik olarak yükler. Azure Bilişsel Arama, bu özellik şu anda bu platformlar için kullanılabilen *Dizin oluşturucular*aracılığıyla uygulanır:
 
 + [Blob depolama](search-howto-indexing-azure-blob-storage.md)
 + [Tablo depolama](search-howto-indexing-azure-tables.md)
@@ -81,18 +80,18 @@ POST için biçim aynıdır ancak sorgu dizesi parametrelerinde yalnızca api s�
 Dizin oluşturucular bir dizini bir veri kaynağına (genelde tablo, görünüm veya eşdeğer bir yapı) bağlar ve kaynak alanları dizindeki eşdeğer alanlara eşler. Yürütme sırasında satır kümesi otomatik olarak JSON'a dönüştürülür ve belirtilen dizine yüklenir. Tüm dizin oluşturucular zamanlamayı destekler ve bu sayede verilerin yenilenme sıklığını belirleyebilirsiniz. Çoğu dizin oluşturucular veri kaynağının desteklemesi durumunda değişiklik izleme özelliği sunar. Dizin oluşturucular, var olan belgelerdeki değişiklikleri ve silmeleri takip etmenin yanı sıra yeni belgeleri tanıyarak, dizininizdeki verileri aktif şekilde yönetme ihtiyacını ortadan kaldırır. 
 
 
-### <a name="how-to-pull-data-into-an-azure-search-index"></a>Verileri Azure Search dizinine çekme
+### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinine veri çekme
 
 Dizin oluşturucu işlevleri [Azure portalı](search-import-data-portal.md), [REST API'sı](/rest/api/searchservice/Indexer-operations) ve [.NET SDK'sında](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) belirtilmiştir. 
 
-Portalı kullanmanın avantajlarından biri, Azure Search'ün genelde kaynak veri kümesinin meta verilerini okuyarak sizin için varsayılan dizin şeması oluşturabilmesidir. Oluşturulan dizini işlenene kadar değiştirebilirsiniz ancak işlendikten sonra yalnızca dizinin yeniden oluşturulmasını gerektirmeyen şema düzenlemelerine izin verilir. Yapmak istediğiniz değişikliklerin şemayı doğrudan etkilemesi halinde dizini yeniden oluşturmanız gerekir. 
+Portalı kullanmanın bir avantajı, Azure Bilişsel Arama kaynak veri kümesinin meta verilerini okuyarak genellikle sizin için varsayılan bir dizin şeması oluşturabilir. Oluşturulan dizini işlenene kadar değiştirebilirsiniz ancak işlendikten sonra yalnızca dizinin yeniden oluşturulmasını gerektirmeyen şema düzenlemelerine izin verilir. Yapmak istediğiniz değişikliklerin şemayı doğrudan etkilemesi halinde dizini yeniden oluşturmanız gerekir. 
 
 ## <a name="verify-data-import-with-search-explorer"></a>Arama Gezgini ile veri içeri aktarmayı doğrulama
 
 Karşıya belge yükleme sırasında bir ön denetim yapmanın hızlı bir yolu, portalda **Arama Gezgini** 'ni kullanmaktır. Bu gezgin, bir dizini kod yazmadan sorgulamanızı sağlar. Arama deneyimi [basit söz dizimi](/rest/api/searchservice/simple-query-syntax-in-azure-search) ve varsayılan [searchMode sorgu parametresi](/rest/api/searchservice/search-documents) gibi varsayılan ayarlara bağlıdır. Belgenin tamamını inceleyebilmeniz için sonuçlar JSON biçiminde döndürülür.
 
 > [!TIP]
-> Çok sayıda [Azure Search kod örneği](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tarafından sunulan yerleşik veya hazır veri kümeleri hızlı bir şekilde kullanmaya başlamanızı sağlar. Portalda ayrıca örnek dizin oluşturucu ve küçük bir emlak veri kümesini ("realestate-us-sample" adlı) içeren veri kaynağı mevcuttur. Önceden yapılandırılmış dizin oluşturucuyu örnek veri kaynağında çalıştırdığınızda, bir dizin oluşturulur ve daha sonra arama Gezgini 'nde veya yazdığınız kodla sorgulanabilecek belgeler ile yüklenir.
+> Birçok [Azure bilişsel arama kod örneği](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) , kolayca kullanmaya başlamak için kolay bir yol sunan eklenmiş veya hazır veri kümelerini içerir. Portalda ayrıca örnek dizin oluşturucu ve küçük bir emlak veri kümesini ("realestate-us-sample" adlı) içeren veri kaynağı mevcuttur. Önceden yapılandırılmış dizin oluşturucuyu örnek veri kaynağında çalıştırdığınızda, bir dizin oluşturulur ve daha sonra arama Gezgini 'nde veya yazdığınız kodla sorgulanabilecek belgeler ile yüklenir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

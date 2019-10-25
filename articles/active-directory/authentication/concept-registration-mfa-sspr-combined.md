@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a312c39352f0d13b4354e7b0dfcd897bf4cc0992
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162411"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808456"
 ---
 # <a name="combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydı (Önizleme)
 
@@ -34,9 +34,12 @@ Azure AD Birleşik güvenlik bilgileri kaydı Şu anda Azure ABD Kamu, Azure Alm
 |     |
 
 > [!IMPORTANT]
-> Hem özgün önizleme hem de geliştirilmiş Birleşik kayıt deneyimi için etkinleştirilen kullanıcılar yeni davranışı görür. Her iki deneyim için de etkinleştirilen kullanıcılar yalnızca yeni profil deneyimimi görecektir. Yeni profilim, Birleşik kaydın görünümü ve hissi ile hizalanır ve kullanıcılar için sorunsuz bir deneyim sağlar. Kullanıcılar profilimi öğesine [https://myprofile.microsoft.com](https://myprofile.microsoft.com)giderek görebilir.
+> Hem özgün önizleme hem de geliştirilmiş Birleşik kayıt deneyimi için etkinleştirilen kullanıcılar yeni davranışı görür. Her iki deneyim için de etkinleştirilen kullanıcılar yalnızca yeni profil deneyimimi görecektir. Yeni profilim, Birleşik kaydın görünümü ve hissi ile hizalanır ve kullanıcılar için sorunsuz bir deneyim sağlar. Kullanıcılar [https://myprofile.microsoft.com](https://myprofile.microsoft.com)giderek profilimi görebilir.
 
-Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı olarak yerelleştirilir. Microsoft, tarayıcı önbelleğinde kullanılan en son dili saklar, böylece sayfalara erişmeye yönelik sonraki denemeler kullanılan son dilde işlemeye devam eder. Önbelleği temizlerseniz sayfalar yeniden işlenir. Belirli bir dili zorlamak istiyorsanız URL 'nin sonuna ekleyebilirsiniz `?lng=<language>` ; burada `<language>` , işlemek istediğiniz dilin kodudur.
+> [!NOTE] 
+> Güvenlik bilgisi seçeneğine erişmeye çalışırken bir hata iletisiyle karşılaşabilirsiniz. Örneğin, "Üzgünüz, oturumunuzu açamıyoruz". Bu durumda, Web tarayıcısında üçüncü taraf tanımlama bilgilerini engelleyen bir yapılandırma veya Grup İlkesi nesneniz olmadığından emin olun. 
+
+Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı olarak yerelleştirilir. Microsoft, tarayıcı önbelleğinde kullanılan en son dili saklar, böylece sayfalara erişmeye yönelik sonraki denemeler kullanılan son dilde işlemeye devam eder. Önbelleği temizlerseniz sayfalar yeniden işlenir. Belirli bir dili zorlamak istiyorsanız URL 'nin sonuna `?lng=<language>` ekleyebilirsiniz; burada `<language>`, işlemek istediğiniz dilin kodudur.
 
 ![SSPR veya diğer güvenlik doğrulama yöntemlerini ayarlama](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -44,17 +47,17 @@ Profil sayfalarınız, sayfaya erişen bilgisayarın dil ayarlarına bağlı ola
 
 Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri destekler:
 
-|   | Kaydet | Değiştir | Sil |
+|   | Kaydol | Değiştir | Sil |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
-| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
-| Donanım belirteci | Hayır | Hayır | Evet |
-| Phone | Evet | Evet | Evet |
-| Alternatif telefon | Evet | Evet | Evet |
+| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Yes |
+| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Yes |
+| Donanım belirteci | Hayır | Hayır | Yes |
+| Telefon | Yes | Yes | Yes |
+| Alternatif telefon | Yes | Yes | Yes |
 | Ofis telefonu | Hayır | Hayır | Hayır |
-| Email | Evet | Evet | Evet |
-| Güvenlik soruları | Evet | Hayır | Evet |
-| Uygulama parolaları | Evet | Hayır | Evet |
+| E-posta | Yes | Yes | Yes |
+| Güvenlik soruları | Yes | Hayır | Yes |
+| Uygulama parolaları | Yes | Hayır | Yes |
 
 > [!NOTE]
 > Uygulama parolaları yalnızca Multi-Factor Authentication için zorlanan kullanıcılar tarafından kullanılabilir. Uygulama parolaları, koşullu erişim ilkesi aracılığıyla Multi-Factor Authentication için etkinleştirilen kullanıcılar tarafından kullanılamaz.
@@ -84,15 +87,15 @@ Her ikisi de kiracınız için etkinse, birleştirilmiş kayıt hem Multi-Factor
 
 Kullanıcılara güvenlik bilgilerini kaydetmek veya yenilemek için istenen çeşitli senaryolar aşağıda verilmiştir:
 
-- Kimlik koruması aracılığıyla Multi-Factor Authentication kaydı zorlandı: Kullanıcıların oturum açma sırasında kaydolması istenir. Multi-Factor Authentication yöntemleri ve SSPR yöntemlerini (Kullanıcı SSPR için etkinleştirildiyse) kaydeder.
-- Kullanıcı başına Multi-Factor Authentication üzerinden Multi-Factor Authentication kaydı zorlandı: Kullanıcıların oturum açma sırasında kaydolması istenir. Multi-Factor Authentication yöntemleri ve SSPR yöntemlerini (Kullanıcı SSPR için etkinleştirildiyse) kaydeder.
-- Koşullu erişim veya diğer ilkeler aracılığıyla Multi-Factor Authentication kaydı zorlandı: Kullanıcılardan, Multi-Factor Authentication gerektiren bir kaynağı kullandıklarında kaydolmaları istenir. Multi-Factor Authentication yöntemleri ve SSPR yöntemlerini (Kullanıcı SSPR için etkinleştirildiyse) kaydeder.
-- SSPR kaydı zorlandı: Kullanıcıların oturum açma sırasında kaydolması istenir. Bunlar yalnızca SSPR yöntemlerini kaydeder.
-- SSPR yenileme zorlandı: Kullanıcıların, güvenlik bilgilerini yönetici tarafından ayarlanan bir aralığa incebilmeleri gerekir. Kullanıcılar bilgilerini gösterilir ve gerekirse geçerli bilgileri doğrulayabilirler veya değişiklik yapabilir.
+- Kimlik koruması aracılığıyla Multi-Factor Authentication kayıt zorlandı: kullanıcıların oturum açma sırasında kaydolması istenir. Multi-Factor Authentication yöntemleri ve SSPR yöntemlerini (Kullanıcı SSPR için etkinleştirildiyse) kaydeder.
+- Kullanıcı başına Multi-Factor Authentication üzerinden Multi-Factor Authentication kaydı zorlandı: kullanıcıların oturum açma sırasında kaydolması istenir. Multi-Factor Authentication yöntemleri ve SSPR yöntemlerini (Kullanıcı SSPR için etkinleştirildiyse) kaydeder.
+- Koşullu erişim veya diğer ilkeler aracılığıyla Multi-Factor Authentication kaydı zorlandı: kullanıcılardan Multi-Factor Authentication gerektiren bir kaynak kullandıklarında kaydolmaları istenir. Multi-Factor Authentication yöntemleri ve SSPR yöntemlerini (Kullanıcı SSPR için etkinleştirildiyse) kaydeder.
+- SSPR kaydı zorlandı: kullanıcıların oturum açma sırasında kaydolması istenir. Bunlar yalnızca SSPR yöntemlerini kaydeder.
+- SSPR yenileme zorlandı: kullanıcıların, güvenlik bilgilerini yönetici tarafından ayarlanan bir aralığa incebilmeleri gerekir. Kullanıcılar bilgilerini gösterilir ve gerekirse geçerli bilgileri doğrulayabilirler veya değişiklik yapabilir.
 
 Kayıt zorlandığında, kullanıcılara en az Multi-Factor Authentication ve SSPR ilkeleriyle uyumlu olması için gereken en az sayıda yöntem gösterilir.
 
-Örneğin:
+Örnek:
 
 - Bir Kullanıcı SSPR için etkinleştirilmiştir. SSPR ilkesi, mobil uygulama kodu, e-posta ve telefon 'i sıfırlamak ve etkinleştirmek için iki yöntem gerektirir.
    - Bu kullanıcının iki yöntemi kaydetmesi gerekir.
@@ -109,7 +112,7 @@ SSPR ilkesi, kullanıcıların güvenlik bilgilerini düzenli aralıklarla incel
 
 ### <a name="manage-mode"></a>Yönetim modu
 
-Kullanıcılar, Profilimin **güvenlik bilgilerini** seçerek veya [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ' ye giderek yönetme moduna erişebilir. Kullanıcılar buradan Yöntemler ekleyebilir, var olan yöntemleri silebilir veya değiştirebilir, varsayılan yöntemi değiştirebilir ve daha fazlasını yapabilir.
+Kullanıcılar, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) giderek veya Profilimin **güvenlik bilgilerini** seçerek Yönetim moduna erişebilir. Kullanıcılar buradan Yöntemler ekleyebilir, var olan yöntemleri silebilir veya değiştirebilir, varsayılan yöntemi değiştirebilir ve daha fazlasını yapabilir.
 
 ## <a name="key-usage-scenarios"></a>Anahtar kullanımı senaryoları
 
@@ -123,15 +126,15 @@ Bir kullanıcı gerekli tüm güvenlik bilgilerini ayarlamadı ve Azure portal g
 
 Yönetici kaydı zormadı.
 
-Gerekli güvenlik bilgilerini henüz ayarlamış olan bir Kullanıcı öğesine [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gider. Kullanıcı sol bölmedeki **güvenlik bilgilerini** seçer. Buradan Kullanıcı bir yöntem eklemeyi seçer, kullanılabilir yöntemlerin birini seçer ve bu yöntemi ayarlama adımlarını izler. İşiniz bittiğinde, Kullanıcı güvenlik bilgileri sayfasında ayarlanmış olan yöntemi görür.
+Gerekli güvenlik bilgilerini henüz ayarlamış bir Kullanıcı [https://myprofile.microsoft.com](https://myprofile.microsoft.com)gider. Kullanıcı sol bölmedeki **güvenlik bilgilerini** seçer. Buradan Kullanıcı bir yöntem eklemeyi seçer, kullanılabilir yöntemlerin birini seçer ve bu yöntemi ayarlama adımlarını izler. İşiniz bittiğinde, Kullanıcı güvenlik bilgileri sayfasında ayarlanmış olan yöntemi görür.
 
 ### <a name="delete-security-info-from-my-profile"></a>Profilimi güvenlik bilgilerini sil
 
-Daha önce en az bir yöntemi kuran bir Kullanıcı öğesine [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)gider. Kullanıcı önceden kaydedilmiş yöntemlerden birini silmeyi seçer. İşiniz bittiğinde, Kullanıcı artık güvenlik bilgileri sayfasında bu yöntemi görmediğini.
+Daha önce en az bir yöntemi kuran bir Kullanıcı [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)gider. Kullanıcı önceden kaydedilmiş yöntemlerden birini silmeyi seçer. İşiniz bittiğinde, Kullanıcı artık güvenlik bilgileri sayfasında bu yöntemi görmediğini.
 
 ### <a name="change-the-default-method-from-my-profile"></a>Varsayılan yöntemi profilimi değiştirme
 
-Daha önce Multi-Factor Authentication için kullanılabilecek en az bir yöntemi ayarlamış olan bir Kullanıcı ' A gider [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Kullanıcı geçerli varsayılan yöntemi farklı bir varsayılan yönteme geçirir. İşiniz bittiğinde, Kullanıcı, güvenlik bilgileri sayfasında yeni varsayılan yöntemi görür.
+Daha önce Multi-Factor Authentication için kullanılabilecek en az bir yöntemi ayarlamış olan bir Kullanıcı [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)gider. Kullanıcı geçerli varsayılan yöntemi farklı bir varsayılan yönteme geçirir. İşiniz bittiğinde, Kullanıcı, güvenlik bilgileri sayfasında yeni varsayılan yöntemi görür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

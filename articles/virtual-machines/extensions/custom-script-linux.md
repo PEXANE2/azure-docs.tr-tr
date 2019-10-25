@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: akjosh
-ms.openlocfilehash: 3a999b93ce7246a91db8dd3df7536513b6e11029
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 86c05519e7027ec8b7434919bf43f9b4602b0300
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174047"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789949"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux sanal makineleri ile Azure Özel Betik uzantısı sürüm 2 kullanın
 Özel Betik uzantısı sürüm 2, Azure sanal makinelerinde betikleri indirir ve çalıştırır. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yükleme veya başka bir yapılandırma/yönetim görevi için yararlıdır. Azure depolama veya başka bir erişilebilir internet konumundan betikleri indirebilir veya onları uzantı çalışma zamanına verebilirsiniz. 
@@ -33,12 +33,12 @@ Bu makalede, Azure CLı 'deki özel betik uzantısının nasıl kullanılacağı
 * Sürüm 1-Microsoft. OSTCExtensions. CustomScriptForLinux
 * Sürüm 2-Microsoft. Azure. Extensions. CustomScript
 
-Lütfen yeni ve mevcut dağıtımları yeni sürüm 2 kullanmak üzere değiştirin. Yeni sürümün bir iade değişikliği olması amaçlanmıştır. Bu nedenle, geçiş işlemi adı ve sürümü değiştirmek kadar kolaydır, uzantı yapılandırmanızı değiştirmeniz gerekmez.
+Lütfen yeni ve mevcut dağıtımları yeni sürüm 2 kullanmak üzere değiştirin. Yeni sürümün öncekinin yerine bırakılması hedeflenmiştir. Dolayısıyla geçiş işlemi adı ve sürümü değiştirmek kadar kolaydır; uzantı yapılandırmanızı değiştirmeniz gerekmez.
 
 
-### <a name="operating-system"></a>İşletim sistemi
+### <a name="operating-system"></a>İşletim Sistemi
 
-Linux için özel Betik uzantısı, uzantının desteklenen uzantısı işletim sisteminde çalışır, daha fazla bilgi için bu [makaleye](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems)bakın.
+Linux için özel Betik uzantısı, uzantının desteklenen uzantısı işletim sisteminde çalışır, daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.
 
 ### <a name="script-location"></a>Betik konumu
 
@@ -55,7 +55,7 @@ Betiğiniz yerel bir sunucu üzerinde ise, hala ek güvenlik duvarı/ağ güvenl
 * Betiklerin çalıştıklarında Kullanıcı girişi gerektirmediğinden emin olun.
 * Betiğin çalışması için izin verilen 90 dakika, daha uzun bir süre uzantının başarısız olmasına neden olur.
 * Yeniden başlatmalar betiğin içine yerleştirmeyin, bu, yüklenmekte olan diğer uzantılarla ilgili sorunlara neden olur ve yeniden başlatma sonrası, uzantı yeniden başlatmadan sonra devam etmez. 
-* Yeniden başlatmaya neden olacak bir betiğiniz varsa uygulamaları yükleyip betikleri sonra çalıştırma yöntemini izleyin. Bir cron işi kullanarak ya da DSC veya Chef, Pupevcil hayvan uzantıları gibi araçları kullanarak yeniden başlatmayı zamanlamanız gerekir.
+* Yeniden başlatmaya neden olacak bir betiğe sahipseniz, uygulamaları yükleyip komut dosyalarını çalıştır. Bir cron işi kullanarak ya da DSC veya Chef, Pupevcil hayvan uzantıları gibi araçları kullanarak yeniden başlatmayı zamanlamanız gerekir.
 * Uzantı yalnızca bir kez betik çalıştırır, her önyüklemede bir betik çalıştırmak istiyorsanız, [Cloud-init görüntüsünü](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) kullanabilir ve [önyükleme modülü başına betikleri](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) kullanabilirsiniz. Alternatif olarak, komut dosyasını bir systemd hizmet birimi oluşturmak için de kullanabilirsiniz.
 * Bir betiğin ne zaman çalışacağını zamanlamak isterseniz, bir cron işi oluşturmak için uzantısını kullanmanız gerekir. 
 * Betik çalışırken Azure portalı veya CLI üzerinden uzantı durumunu yalnızca "geçiş durumunda" şeklinde görürsünüz. Çalışan bir betikte daha sık durum güncelleştirmeleri istiyorsanız kendi çözümünüzü oluşturmanız gerekir.
@@ -70,7 +70,7 @@ Betiğiniz yerel bir sunucu üzerinde ise, hala ek güvenlik duvarı/ağ güvenl
 
 Gizli verileri, şifrelenen ve yalnızca sanal makine içinde şifresi çözülen korunan bir yapılandırmada saklayabilirsiniz. Korunan yapılandırma, yürütme komutu parola gibi gizli dizileri içerdiğinde yararlıdır.
 
-Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar yapılandırmasında belirtilmelidir. Azure VM uzantısının korumalı ayarı veriler şifrelenir ve yalnızca hedef sanal makinede şifresi.
+Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar yapılandırmasında belirtilmelidir. Azure VM Uzantısı korumalı ayar verileri şifrelenir ve yalnızca hedef sanal makinede şifresi çözülür.
 
 ```json
 {
@@ -106,27 +106,27 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer / örnek | Veri Türü | 
+| Adı | Değer/örnek | Veri Türü | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft. COMPUTE. uzantıları | dize |
-| type | CustomScript | dize |
+| 'ın | Microsoft. COMPUTE. uzantıları | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | Dosya URI 'leri (ör.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (ör.) | Python MyPythonScript.py \<My-Param1 > | dize |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | dize |
-| skipDos2Unix (ör.) | false | boolean |
-| timestamp (örn.) | 123456789 | 32 bit tamsayı |
-| storageAccountName (ör.) | örnek storageacct | dize |
-| storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | dize |
+| commandToExecute (ör.) | Python MyPythonScript.py \<My-Param1 > | string |
+| betiğini çalıştırın | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | string |
+| skipDos2Unix (ör.) | yanlış | boole |
+| zaman damgası (ör.) | 123456789 | 32 bit tamsayı |
+| storageAccountName (ör.) | örnek storageacct | string |
+| storageAccountKey (ör.) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | string |
 
 ### <a name="property-value-details"></a>Özellik değeri ayrıntıları
 * `skipDos2Unix`: (isteğe bağlı, Boole) betik tabanlı dosya URL 'Leri veya betiği dos2unix dönüştürmeyi atlayın.
-* `timestamp`(isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılmasını tetiklemek için kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
-  * `commandToExecute`: (betik ayarlanmamışsa**gereklidir** , dize) çalıştırılacak giriş noktası betiği. Komutunuz parolalar gibi gizli dizileri içeriyorsa bunun yerine bu alanı kullanın.
-* `script`: ( commandToExecute ayarlanmadı, String)/bin/sh. tarafından yürütülen bir Base64 kodlamalı (ve isteğe bağlı olarak gziped) betiği
-* `fileUris`: (isteğe bağlı, dize dizisi) indirilecek dosya (ler) i URL 'Leri.
-* `storageAccountName`: (isteğe bağlı, dize) depolama hesabının adı. Depolama kimlik bilgilerini belirtirseniz, Azure Blobları için tümünün `fileUris` URL 'si olması gerekir.
+* `timestamp` (isteğe bağlı, 32-bit tamsayı) bu alanı yalnızca bu alanın değerini değiştirerek betiğin yeniden çalıştırılmasını tetiklemek için kullanın.  Herhangi bir tamsayı değeri kabul edilebilir; yalnızca önceki değerden farklı olmalıdır.
+  * `commandToExecute`: (betik ayarlanmamışsa**gereklidir** , dize) ve yürütülecek giriş noktası betiği. Komutunuz parolalar gibi gizli dizileri içeriyorsa bunun yerine bu alanı kullanın.
+* `script` **: (** commandToExecute ayarlanmadı, String)/bin/sh. tarafından yürütülen bir Base64 kodlamalı (ve isteğe bağlı olarak gziped) betiği
+* `fileUris`: (isteğe bağlı, dize dizisi) indirilecek dosya (ler) in URL 'Leri.
+* `storageAccountName`: (isteğe bağlı, dize) depolama hesabının adı. Depolama kimlik bilgilerini belirtirseniz, tüm `fileUris` Azure Blob 'larının URL 'Si olması gerekir.
 * `storageAccountKey`: (isteğe bağlı, dize) depolama hesabının erişim anahtarı
 
 
@@ -143,10 +143,10 @@ Ortak ayarlar, betiğin yürütüleceği sanal makineye şifresiz metin olarak g
 
 Varsayılan değer false 'dur, bu da **dos2unix dönüştürmenin yürütüldüğü** anlamına gelir.
 
-CustomScript 'in önceki sürümü olan Microsoft. ostcextensions. customscriptforlinux, ' a çevirerek `\r\n` `\n`DOS dosyalarını otomatik olarak UNIX dosyalarına dönüştürür. Bu çeviri hala mevcuttur ve varsayılan olarak açık olur. Bu dönüştürme, aşağıdaki ölçütlerden birine bağlı olarak, fileUris veya betik ayarından indirilen tüm dosyalara uygulanır.
+CustomScript 'in önceki sürümü olan Microsoft. OSTCExtensions. CustomScriptForLinux, `\r\n` `\n`olarak çevirerek DOS dosyalarını otomatik olarak UNIX dosyalarına dönüştürür. Bu çeviri hala mevcuttur ve varsayılan olarak açık olur. Bu dönüştürme, aşağıdaki ölçütlerden birine bağlı olarak, fileUris veya betik ayarından indirilen tüm dosyalara uygulanır.
 
-* Uzantı `.sh` `.txt` `.pl` ,,,,,,, veya dönüştürülürse. `.py` Betik ayarı,/bin/sh ile yürütülen bir betik olduğu varsayıcağından ve sanal makinede script.sh olarak kaydedildiği için her zaman bu ölçütlerle eşleşir.
-* Dosya ile `#!`başlıyorsa.
+* Uzantı `.sh`, `.txt`, `.py`veya `.pl` dönüştürülecektir. Betik ayarı,/bin/sh ile yürütülen bir betik olduğu varsayıcağından ve sanal makinede script.sh olarak kaydedildiği için her zaman bu ölçütlerle eşleşir.
+* Dosya `#!`başlıyorsa.
 
 Dos2unix dönüştürmesi, skipDos2Unix true olarak ayarlanarak atlanabilir.
 
@@ -201,7 +201,7 @@ CustomScript bir betiği yürütmek için aşağıdaki algoritmayı kullanır.
 
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Özel Betik uzantısı çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. Özel Betik uzantısını içeren örnek bir şablon burada [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)'da bulunabilir.
+Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı JSON şeması, bir Azure Resource Manager şablon dağıtımı sırasında Özel Betik uzantısı çalıştırmak için bir Azure Resource Manager şablonunda kullanılabilir. Özel Betik uzantısını içeren örnek bir şablon burada [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)'da bulunabilir.
 
 
 ```json
@@ -329,7 +329,7 @@ az vm extension set \
 ```
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Özel Betik uzantısı çalıştırıldığında, komut dosyası oluşturulur veya aşağıdaki örneğe benzer bir dizine indirilir. Komut çıktısı Ayrıca bu dizine `stdout` ve `stderr` dosyalarına kaydedilir.
+Özel Betik uzantısı çalıştırıldığında, komut dosyası oluşturulur veya aşağıdaki örneğe benzer bir dizine indirilir. Komut çıktısı Ayrıca bu dizine `stdout` ve `stderr` dosyalarında kaydedilir.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/

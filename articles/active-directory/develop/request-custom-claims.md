@@ -1,5 +1,6 @@
 ---
-title: İOS ve macOS için MSAL kullanarak özel talepler isteme | Microsoft Identity platformu
+title: İOS ve macOS için MSAL kullanarak özel talepler isteme
+titleSuffix: Microsoft identity platform
 description: Özel talepler isteme hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
@@ -17,28 +18,28 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e09d58742bffd74f07f79b3ec55c1e81533632
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268992"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802601"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapılır: İOS ve macOS için MSAL kullanarak özel talepler isteme
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapılır: iOS ve macOS için MSAL kullanarak özel talepler ISTEME
 
 OpenID Connect, isteğe bağlı olarak, UserInfo uç noktasından ve/veya KIMLIK belirtecinde tek tek taleplerin döndürülmesini ister. Talep isteği, istenen talepler listesini içeren bir JSON nesnesi olarak temsil edilir. Daha fazla bilgi için bkz. [OpenID Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
 
 İOS ve macOS için Microsoft kimlik doğrulama kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç alma senaryolarında belirli talepler istemeyi sağlar. Bu, `claimsRequest` parametresi aracılığıyla yapılır.
 
-Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
+Bunun gerekli olduğu birden çok senaryo vardır. Örnek:
 
 - Uygulamanız için standart küme dışında talepler isteme.
 - Uygulamanız için kapsamlar kullanılarak belirtilemez standart talepler için belirli birleşimler isteniyor. Örneğin, eksik talepler nedeniyle erişim belirteci reddedilirse, uygulama MSAL kullanarak eksik talepleri isteyebilir.
 
 > [!NOTE]
-> MSAL, bir talep isteği belirtildiğinde erişim belirteci önbelleğini atlar. Yalnızca ek talepler gerektiğinde parametre sağlanması `claimsRequest` önemlidir (her bir msal API çağrısında aynı `claimsRequest` parametreyi her zaman sağlama aksine).
+> MSAL, bir talep isteği belirtildiğinde erişim belirteci önbelleğini atlar. Ek talepler gerektiğinde yalnızca `claimsRequest` parametre sağlanması önemlidir (her bir MSAL API çağrısında aynı `claimsRequest` parametresini her zaman sağlamanın aksine).
 
-`claimsRequest`, ve `MSALSilentTokenParameters` `MSALInteractiveTokenParameters`içinde belirtilebilir:
+`claimsRequest`, `MSALSilentTokenParameters` ve `MSALInteractiveTokenParameters`belirtilebilir:
 
 ```objc
 /*!
@@ -54,7 +55,7 @@ Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 
 @end
 ```
-`MSALClaimsRequest`JSON talep isteğinin NSString gösteriminden oluşturulabilir. 
+`MSALClaimsRequest`, JSON talep isteğinin NSString gösteriminden oluşturulabilir. 
 
 Amaç-C:
 
@@ -103,7 +104,7 @@ do {
 
 
 
-`MSALClaimsRequest`daha sonra belirteç parametrelerinde ayarlanmalıdır ve MSAL Token alımlar API 'Lerinden birine sağlanmalıdır:
+`MSALClaimsRequest`, belirteç parametrelerinde ayarlanmalıdır ve MSAL Token alma API 'Lerinden birine sağlanmalıdır:
 
 Amaç-C:
 

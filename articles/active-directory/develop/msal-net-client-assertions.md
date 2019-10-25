@@ -1,5 +1,6 @@
 ---
-title: .NET için Microsoft kimlik doğrulama kitaplığı 'nda istemci onayları | Mavisi
+title: .NET için Microsoft kimlik doğrulama kitaplığı 'nda istemci onayları
+titleSuffix: Microsoft identity platform
 description: .NET için Microsoft kimlik doğrulama kitaplığı 'nda bulunan gizli istemci uygulamaları için imzalanmış istemci onayları desteği (MSAL.NET) hakkında bilgi edinin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442497"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802857"
 ---
 # <a name="confidential-client-assertions"></a>Gizli istemci onayları
 Gizli istemci uygulamalarının kimliğini kanıtlamak için Azure AD ile gizli bir parola değişimi yapın. Gizli dizi şu olabilir:
@@ -50,14 +51,14 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD tarafından beklenen talepler şunlardır:
 
-Talep türü | Value | Açıklama
+Talep türü | Değer | Açıklama
 ---------- | ---------- | ----------
 AUD | https://login.microsoftonline.com/{tenantId}/v2.0 | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Section 4.1.3]
-exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]
-iss | ClientID | "ISS" (veren) talebi, JWT veren sorumluyu tanımlar. Bu talebin işlenmesi uygulamaya özgüdür. "ISS" değeri, bir StringOrURI değeri içeren büyük küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.1]
+Exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]
+ğe | ClientID | "ISS" (veren) talebi, JWT veren sorumluyu tanımlar. Bu talebin işlenmesi uygulamaya özgüdür. "ISS" değeri, bir StringOrURI değeri içeren büyük küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.1]
 JTI dili | (GUID) | "JTI" (JWT ID) talebi, JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanabileceği bir olasılık olmasını sağlayacak şekilde atanmalıdır; uygulama birden çok veren kullanıyorsa, çarpışmaların de farklı verenler tarafından üretilen değerler arasında engellenmeleri gerekır. "JTI" talebi, JWT 'ın yeniden çalınmasını engellemek için kullanılabilir. "JTI" değeri büyük/küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.7]
 NBF | Per Haz 27 2019 14:54:17 GMT + 0200 (Romanya yaz saati) | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar. [RFC 7519, Bölüm 4.1.5]
-sub | ClientID | "Sub" (konu) talebi, JWT konusunu tanımlar. Bir JWT içindeki talepler normalde konu hakkında ifadelerdir. Konu değeri, verenin bağlamında yerel olarak benzersiz olmalıdır ya da genel olarak benzersiz olmalıdır. Bkz. [RFC 7519, Section 4.1.2]
+alt | ClientID | "Sub" (konu) talebi, JWT konusunu tanımlar. Bir JWT içindeki talepler normalde konu hakkında ifadelerdir. Konu değeri, verenin bağlamında yerel olarak benzersiz olmalıdır ya da genel olarak benzersiz olmalıdır. Bkz. [RFC 7519, Section 4.1.2]
 
 Bu taleplerin nasıl yapıldığını gösteren bir örnek aşağıda verilmiştir:
 
@@ -135,7 +136,7 @@ string GetAssertion()
 
 ### <a name="withclientclaims"></a>Withclientclaim
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Varsayılan olarak, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır. Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir.
+Varsayılan olarak `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır. Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir.
 
 ```CSharp
 string ipAddress = "192.168.1.2";
@@ -150,4 +151,4 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Geçirdiğiniz sözlüklerdeki taleplerden biri zorunlu taleplerden biriyle aynıysa, ek talebin değeri hesaba alınacaktır. Bu, MSAL.NET tarafından hesaplanan talepleri geçersiz kılar.
 
-Azure AD tarafından beklenen zorunlu talepler dahil olmak üzere kendi taleplerinizi sağlamak istiyorsanız, `false` `mergeWithDefaultClaims` parametresi için geçirin.
+Azure AD tarafından beklenen zorunlu talepler dahil olmak üzere kendi taleplerinizi sağlamak istiyorsanız, `mergeWithDefaultClaims` parametresi için `false` geçirin.

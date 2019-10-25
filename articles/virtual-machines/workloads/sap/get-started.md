@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/16/2019
+ms.date: 10/21/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99e3cbc157817321e41a273b2bcf31128d71db18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b857ea5380fb13f8c8b1ff30b9dd9d8b6c723c2
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431022"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809687"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -120,7 +120,10 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik günlüğü
-- 10/16/2019: [yedekleme ve geri yükleme](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-backup-restore) sırasında kopuk bağlantıları çözme
+- 10/22/2019: SAP [uygulamaları için SUSE Linux Enterprise Server Azure VM 'Lerde yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)değişikliği, SAP uygulamaları için [Azure NetApp Files SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) [SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde NFS için yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), [Azure 'Daki SUSE Linux Enterprise Server pacemaker 'ı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), Azure VM 'Lerinde [yüksek kullanılabilirliğe sahip IBM DB2 LUW, pacemaker ile SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) Azure yük dengeleyici algılama sağlamlaştırma için [SUSE Linux Enterprise Server Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ANF bölümü ve üst bilgi bölümünü değiştirir
+- 10/21/2019: [SLES 'de Azure NetApp Files Ile Azure VM 'lerinde bekleme düğümüyle SAP HANA genişleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) sürümü
+- 10/16/2019: [yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore) sırasında kopuk bağlantıları çözme
 - 10/16/2019: WLES 12 SP3 'ün en düşük önerilen işletim sistemini, [SUSE Linux Enterprise Server pacemaker Ile Azure VM 'Lerinde yüksek kullanılabilirlik Ile](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) SLES 12 SP4 olarak değiştirin
 - 10/11/2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra disk depolama yapılandırmalarının ve ANF 'ye giriş değişiklikleri
 - 10/01/2019: daha fazla açıklık elde etmek için [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) grafiklerde değişiklik yapın
@@ -129,8 +132,8 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 - 09/17/2019: SAP için VM uzantısının etrafındaki terimleri bütünleştirme NetWeaver planlama ve dağıtım kılavuzunda değiştirin  
 - 08/22/2019: özel rol oluşturmaya yönelik URL 'Leri güncelleştirmek için [Azure 'daki SUSE Linux Enterprise Server pacemaker ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) değişiklikleri  
 - 08/16/2019: Azure ['da Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , Azure sınır aracısının yeni sürümüne güncelleştirilüyorsam, müşterilere özel roldeki eylemleri güncelleştirme  
-- 08/15/2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra diskin genel kullanılabilirliğini yansıtacak değişiklikler (eski adıyla Ultra SSD)
-- 08/01/2019: [Azure 'daki SUSE Linux Enterprise Server pacemaker 'ı ayarlamaya](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler, SLES 15 için değişiklikleri özellikle tümleştirin 
+- 08/15/2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra diskin genel kullanılabilirliğini yansıtacak değişiklikler (eski adıyla Ultra SSD)
+- 08/01/2019: [Azure 'daki SUSE Linux Enterprise Server pacemaker 'ı ayarlamaya](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler, SLES 15 için değişiklikleri özellikle tümleştirin 
 - 07/23/2019: [bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği kümesindeki](sap-high-availability-guide-wsfc-file-share.md) değişiklikler, Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşımının kullanılması
 - 07/14/2019: [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](sap-proximity-placement-scenarios.md) yayını
 - 07/11/2019: Hana büyük örneklerinin 3. düzeltmesini kapsayan çeşitli belgelerdeki değişiklikler

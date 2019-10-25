@@ -1,23 +1,24 @@
 ---
-title: Power BI Azure Search bir bilgi deposuna bağlanma
-description: Analiz ve araştırma için bir Azure Search bilgi deposu Power BI bağlayın.
+title: Power BI ile bir bilgi deposuna bağlanma
+titleSuffix: Azure Cognitive Search
+description: Analiz ve araştırma için Power BI bir Azure Bilişsel Arama bilgi deposu bağlayın.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265659"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790078"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
 
 > [!Note]
-> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. [Azure Search REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
+> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. [Azure Bilişsel Arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
 Bu makalede, Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposunu nasıl bağlayacağınızı ve keşfedeceğinizi öğreneceksiniz. Bu kılavuzda kullanılan bilgi deposu örneğini oluşturmak için, bkz. [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md).
 
@@ -39,7 +40,7 @@ Bu makalede, Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi 
 
 1. İstenirse, depolama hesabı anahtarını girin.
 
-1. *Hotelbelge\sdocument*, *HotelReviewsSsKeyPhrases*ve *Hotelbelge\spages* tablolarını seçin. Bu tablolar, otel 'nin Azure Tablo projeksiyonları, örnek verileri inceler ve bilgi deposu oluşturulduğunda seçilen bilişsel hizmet zenginleştirmelerini içerir.
+1. *Hotelbelge\sdocument*, *HotelReviewsSsKeyPhrases*ve *Hotelbelge\spages* tablolarını seçin. Bu tablolar, otel 'in Azure Tablo projeksiyonları, örnek verileri inceler ve bilgi deposu oluşturulduğunda seçilen AI zenginlerini içerir.
 
 1. **Yükle**' ye tıklayın.
 
@@ -53,7 +54,7 @@ Bu makalede, Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi 
 
 1. *İçeriği*genişletmek için tablonun sağ üst tarafındaki karşıt oklu simgeye tıklayın. Sütun listesi göründüğünde, tüm sütunlar ' ı seçin ve ardından ' Metadata ' ile başlayan sütunların seçimini kaldırın. Seçilen sütunları göstermek için **Tamam** ' ı tıklatın.
 
-   ![Tabloları Düzenle](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Içeriği Genişlet")
+   ![Tabloları Düzenle](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "İçeriği Genişlet")
 
 1. Sütunun sol üst kısmındaki ABC-123 simgesine tıklayarak aşağıdaki sütunlar için veri türünü değiştirin.
 
@@ -70,7 +71,7 @@ Bu makalede, Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi 
 
 1. Sol gezinti bölmesindeki model kutucuğuna tıklayın ve Power BI üç tablo arasındaki ilişkileri gösterir.
 
-   ![Ilişkileri doğrula](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Ilişkileri doğrula")
+   ![İlişkileri doğrula](media/knowledge-store-connect-power-bi/powerbi-relationships.png "İlişkileri doğrula")
 
 1. Her bir ilişkiye çift tıklayın ve **çapraz filtre yönünün** **her ikisine de**ayarlandığından emin olun.  Bu, bir filtre uygulandığında görsellerinizin yenilenmesini sağlar.
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

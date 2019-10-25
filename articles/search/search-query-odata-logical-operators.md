@@ -1,13 +1,13 @@
 ---
-title: OData mantıksal işleç başvurusu-Azure Search
-description: Azure Search sorgularında OData mantıksal işleçleri, ve, veya, ve değildir.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData mantıksal işleç başvurusu
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama sorgularında OData mantıksal işleçleri ve, veya, ve değildir.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bf4939a40a2fdf1c8fc6cf97beca0184b1604c98
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647991"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793320"
 ---
-# <a name="odata-logical-operators-in-azure-search---and-or-not"></a>Azure Search- `and`, `or`,,`not`
+# <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Bilişsel Arama OData mantıksal işleçleri-`and`, `or`, `not`
 
-Azure Search içindeki [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) , `true` veya `false`sonucunu veren Boole ifadeleridir. Bir dizi [daha basit](search-query-odata-comparison-operators.md) filtre yazarak ve bunları [Boolean ALKU](https://en.wikipedia.org/wiki/Boolean_algebra)'dan mantıksal işleçler kullanarak oluşturarak karmaşık bir filtre yazabilirsiniz:
+Azure Bilişsel Arama 'de [OData filtre ifadeleri](query-odata-filter-orderby-syntax.md) `true` veya `false`değerlendiren Boole ifadeleridir. Bir dizi [daha basit](search-query-odata-comparison-operators.md) filtre yazarak ve bunları [Boolean ALKU](https://en.wikipedia.org/wiki/Boolean_algebra)'dan mantıksal işleçler kullanarak oluşturarak karmaşık bir filtre yazabilirsiniz:
 
-- `and`: Hem sol hem de sağ alt `true` ifadelerinin olarak `true`değerlendirilmesi için değerlendirilen bir ikili işleç.
-- `or`: Sol veya sağ alt ifadelerden birinin `true` olarak `true`değerlendirilip değerlendirilmeyeceğini değerlendiren bir ikili işleç.
-- `not`: Alt ifadesi olarak `false`değerlendirilen ve tam `true` tersi olarak değerlendirilen birli işleç.
+- `and`: hem sol hem de sağ alt ifadeleri `true`değerlendirdiğinde `true` değerlendirilen bir ikili işleç.
+- `or`: sol veya sağ alt ifadelerinden biri `true`olarak değerlendirilirse `true` değerlendirilen bir ikili işleç.
+- `not`: alt ifadesi `false`ve tam tersi olursa `true` değerlendirilen birli bir işleç.
 
-Bunlar, [ `any` koleksiyon işleçleri ve `all` ](search-query-odata-collection-operators.md)ile birlikte çok karmaşık arama ölçütlerine hızlı bir şekilde ifade edebilen filtreler oluşturmanız için izin verir.
+Bunlar, [koleksiyon işleçleri `any` ve `all`](search-query-odata-collection-operators.md)ile birlikte çok karmaşık arama ölçütlerine hızlı bir şekilde ifade edebilen filtreler oluşturmanız için izin verir.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -51,28 +51,28 @@ logical_expression ::=
 Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
-> [Azure Search için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
+> [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> Tüm EBNF için [Azure Search Için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
+> Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-İki mantıksal ifade biçimi`and`vardır: ikili (/`or`), burada iki alt ifade ve birli (`not`) vardır; burada yalnızca bir tane vardır. Alt ifadeler herhangi bir türden Boolean ifadeler olabilir:
+İki mantıksal ifade biçimi vardır: ikili (`and`/`or`) ve burada iki alt ifade ve birli (`not`). Alt ifadeler herhangi bir türden Boolean ifadeler olabilir:
 
-- Türündeki alanlar veya Aralık değişkenleri`Edm.Boolean`
-- Türü `Edm.Boolean`değer döndüren işlevler, `geo.intersects` örneğin veya`search.ismatch`
-- [Karşılaştırma ifadeleri](search-query-odata-comparison-operators.md), örneğin`rating gt 4`
-- Gibi [koleksiyon ifadeleri](search-query-odata-collection-operators.md)`Rooms/any(room: room/Type eq 'Deluxe Room')`
+- `Edm.Boolean` türündeki alanlar veya Aralık değişkenleri
+- `geo.intersects` veya `search.ismatch` gibi `Edm.Boolean`türünde değerler döndüren işlevler
+- `rating gt 4` gibi [Karşılaştırma ifadeleri](search-query-odata-comparison-operators.md)
+- `Rooms/any(room: room/Type eq 'Deluxe Room')` gibi [koleksiyon ifadeleri](search-query-odata-collection-operators.md)
 - Boolean sabit değerleri `true` veya `false`.
-- , `and` `or`Ve kullanılarakoluşturulandiğermantıksalifadeler.`not`
+- `and`, `or`ve `not`kullanılarak oluşturulan diğer mantıksal ifadeler.
 
 > [!IMPORTANT]
-> Özellikle lambda ifadeleri içinde, tüm alt ifade türlerinin birlikte `and` / `or`kullanılabileceği bazı durumlar vardır. Ayrıntılar için [Azure Search ' de OData koleksiyon işleçleri '](search-query-odata-collection-operators.md#limitations) ne bakın.
+> Tüm alt ifade türlerinin, özellikle lambda ifadeleri içinde `and`/`or`ile kullanılabileceğini bazı durumlar vardır. Ayrıntılar için bkz. [Azure 'Da OData koleksiyon işleçleri bilişsel arama](search-query-odata-collection-operators.md#limitations) .
 
-### <a name="logical-operators-and-null"></a>Mantıksal işleçler ve`null`
+### <a name="logical-operators-and-null"></a>Mantıksal işleçler ve `null`
 
-İşlevler ve karşılaştırmalar gibi çoğu Boole ifadesi değer üretemiyor `null` ve mantıksal işleçler doğrudan `null` sabit değere uygulanamaz (örneğin, `x and null` buna izin verilmez). Ancak, Boolean `null`alanları olabilir, bu nedenle, ve `not` işleçlerinin, null durumunda `and`nasıl `or`davrandığına dikkat etmeniz gerekir. Bu, aşağıdaki tabloda özetlenmiştir, burada `b` , türünde `Edm.Boolean`bir alandır:
+İşlevler ve karşılaştırmalar gibi çoğu Boole ifadesi `null` değer üretemiyor ve mantıksal işleçler doğrudan `null` değişmez değerine uygulanamaz (örneğin, `x and null` izin verilmez). Ancak, Boolean alanları `null`olabilir, bu nedenle `and`, `or`ve `not` işleçlerinin null durumunda nasıl davrandığına dikkat etmeniz gerekir. Bu, `b` `Edm.Boolean`türünde bir alan olan aşağıdaki tabloda özetlenmiştir:
 
-| İfade | Ne zaman `b` sonuç`null` |
+| İfadeler | `b` `null` olduğunda sonuç |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,19 +87,19 @@ Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Bir `b` Boole alanı bir filtre ifadesinde kendisiyle göründüğünde, yazılmış `b` `b eq true`gibi davranır, yani ise `null`ifadesi olarak `false`değerlendirilir. Benzer şekilde `not b` , gibi `not (b eq true)`davranır, olarak `true`değerlendirilir. Bu şekilde, `null` alanlar aynı şekilde `false`davranır. Bu, yukarıdaki tabloda gösterildiği gibi ve `and` `or`kullanan diğer ifadelerle birleştirildiğinde, nasıl davrandıklarından tutarlıdır. Buna rağmen, ( `false` `b eq false`) öğesine doğrudan karşılaştırma olmaya devam edecektir. `false` Diğer bir deyişle, `null` Boolean ifadelerde gibi davransa bile, öğesine `false`eşit değildir.
+Bir Boole alanı `b` bir filtre ifadesinde kendisiyle göründüğünde, `b eq true`yazılmış gibi davranır, bu nedenle `b` `null`, ifade `false`olarak değerlendirilir. Benzer şekilde, `not b` `not (b eq true)`gibi davranır, bu nedenle `true`olarak değerlendirilir. Bu şekilde, `null` alanları `false`ile aynı şekilde davranır. Bu, yukarıdaki tabloda gösterildiği gibi `and` ve `or`kullanarak diğer ifadelerle birleştirildiğinde nasıl davrandıklarından tutarlıdır. Buna rağmen, `false` (`b eq false`) bir doğrudan karşılaştırması hala `false`olarak değerlendirilir. Diğer bir deyişle, Boolean ifadelerde gibi davransa bile, `null` `false`eşit değildir.
 
 ## <a name="examples"></a>Örnekler
 
-`rating` Alanın 3 ile 5 arasında (dahil) olduğu belgeleri eşleştirin:
+`rating` alanın 3 ile 5 arasında (dahil) olduğu belgeleri eşleştirin:
 
     rating ge 3 and rating le 5
 
-`ratings` Alanın tüm öğelerinin 3 ' ten küçük veya 5 ' ten büyük olduğu belgeleri eşleştirin:
+`ratings` alanının tüm öğelerinin 3 ' ten az veya 5 ' ten büyük olduğu belgeleri eşleştirin:
 
     ratings/all(r: r lt 3 or r gt 5)
 
-`location` Alanın verilen çokgen içinde bulunduğu belgeleri eşleştirin ve belge "genel" terimini içermez.
+`location` alanın verilen çokgen içinde olduğu belgelerde ve belge "public" terimini içermiyorsa eşleştirin.
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
 
@@ -109,7 +109,7 @@ Bir `b` Boole alanı bir filtre ifadesinde kendisiyle göründüğünde, yazılm
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Search filtreler](search-filters.md)
-- [Azure Search için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Search için OData ifade söz dizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Belgeleri &#40;Azure Search arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama filtreler](search-filters.md)
+- [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Belgeleri &#40;Azure Bilişsel Arama ara REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

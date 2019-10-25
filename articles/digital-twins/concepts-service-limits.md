@@ -7,15 +7,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/22/2019
+ms.openlocfilehash: 97bcb4e6fad9c766f2ad059469e75ffd5ab8ec8c
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949236"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800226"
 ---
-# <a name="public-preview-service-limits"></a>Genel Önizleme hizmeti sınırları
+# <a name="public-preview-service-limits"></a>Genel önizleme hizmet sınırları
 
 Genel Önizleme sırasında Azure dijital TWINS 'in aşağıdaki geçici abonelik, örnek ve hız sınırları vardır.
 
@@ -70,7 +70,8 @@ Aşağıdaki sınırlar, Azure dijital TWINS örneğiniz için yapılan tüm Kul
 
 Aşağıdaki sınırlar, cihazlarınızın Azure dijital TWINS örneğine gönderebileceği tüm iletilerin toplam sayısıdır:
 
-- saniye başına 100 ileti
+- tüm cihazlarda saniye başına 100 ileti
+-   cihaz başına saniyede 25 ileti
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

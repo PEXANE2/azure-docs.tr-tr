@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: c055e1e94d6bc636292fef5da63e7a8c8eb7fa07
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8bbfef9d9873669120f792bce3e50e457791d4b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299862"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787189"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Işlevleri C# betiği (. CSX) geliştirici başvurusu
 
@@ -58,7 +58,7 @@ Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gere
 
 ## <a name="binding-to-arguments"></a>Bağımsız değişkenlere bağlama
 
-Giriş veya çıkış verileri, C# *function. json* yapılandırma dosyasında `name` özelliği aracılığıyla bir betik işlevi parametresine bağlanır. Aşağıdaki örnek, bir *function. JSON* dosyasını gösterir ve *. CSX* dosyasını Queue-tetiklenen bir işlev için çalıştırır. @No__t-1 özelliğinin değeri olduğundan, kuyruk iletisinden veri alan parametre `myQueueItem` olarak adlandırılır.
+Giriş veya çıkış verileri, C# *function. json* yapılandırma dosyasında `name` özelliği aracılığıyla bir betik işlevi parametresine bağlanır. Aşağıdaki örnek, bir *function. JSON* dosyasını gösterir ve *. CSX* dosyasını Queue-tetiklenen bir işlev için çalıştırır. Kuyruk iletisinden veri alan parametresi, `name` özelliğinin değeri olduğundan `myQueueItem` olarak adlandırılır.
 
 ```json
 {
@@ -88,7 +88,7 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-@No__t-0 deyimleri [Bu makalenin ilerleyen kısımlarında](#referencing-external-assemblies)açıklanmıştır.
+`#r` deyimleri [Bu makalenin ilerleyen kısımlarında](#referencing-external-assemblies)açıklanmıştır.
 
 ## <a name="supported-types-for-bindings"></a>Bağlamalar için desteklenen türler
 
@@ -211,13 +211,13 @@ public class Order
 }
 ```
 
-@No__t-0 yönergesi ile göreli bir yol kullanabilirsiniz:
+`#load` yönergesi ile göreli bir yol kullanabilirsiniz:
 
 * `#load "mylogger.csx"`, işlev klasöründe bulunan bir dosyayı yükler.
 * `#load "loadedfiles\mylogger.csx"`, işlev klasöründeki bir klasörde bulunan bir dosyayı yükler.
 * `#load "..\shared\mylogger.csx"`, bir klasörde bulunan bir dosyayı işlev klasörüyle aynı düzeyde, yani doğrudan *Wwwroot*altında yükler.
 
-@No__t-0 yönergesi, *. cs* dosyalarıyla değil yalnızca *. CSX* dosyalarıyla birlikte kullanılabilir.
+`#load` yönergesi, *. cs* dosyalarıyla değil yalnızca *. CSX* dosyaları ile kullanılabilir.
 
 ## <a name="binding-to-method-return-value"></a>Metot dönüş değerine bağlama
 
@@ -241,7 +241,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Günlüğe kaydetme
 
-Çıktıyı içindeki C#akış günlüklerinizi günlüğe kaydetmek Için [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. @No__t-0 olarak adınızın olmasını öneririz. Azure Işlevlerinde `Console.Write` kullanmaktan kaçının.
+Çıktıyı içindeki C#akış günlüklerinizi günlüğe kaydetmek Için [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. `log`adını etmenizi öneririz. Azure Işlevlerinde `Console.Write` kullanmaktan kaçının.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -251,7 +251,7 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> @No__t-0 yerine kullanabileceğiniz daha yeni bir günlüğe kaydetme çerçevesi hakkında daha fazla bilgi için bkz. **Azure Işlevlerini izleme** makalesindeki [ C# günlüklere yazma işlevleri](functions-monitoring.md#write-logs-in-c-functions) .
+> `TraceWriter`yerine kullanabileceğiniz daha yeni bir günlük çerçevesi hakkında daha fazla bilgi için bkz. **Azure Işlevleri 'Ni izleme** makalesindeki [günlüklere yazma C# işlemleri](functions-monitoring.md#write-logs-in-c-functions) .
 
 ## <a name="async"></a>Eş
 
@@ -364,7 +364,7 @@ Aşağıdaki derlemelere basit ad (örneğin, `#r "AssemblyName"`) tarafından b
 
 * Paylaşılan derlemeler bir işlev uygulaması içindeki tüm işlevler arasında paylaşılır. Özel bir derlemeye başvurmak için, derlemeyi [işlev uygulaması kök klasörünüzde](functions-reference.md#folder-structure) (wwwroot) `bin` adlı bir klasöre yükleyin.
 
-* Özel derlemeler belirli bir işlevin bağlamının parçasıdır ve farklı sürümlerin dışarıdan yüklenmesini destekler. Özel derlemelerin işlev dizinindeki bir `bin` klasörüne yüklenmesi gerekir. @No__t-0 gibi dosya adını kullanarak derlemelere başvurun.
+* Özel derlemeler belirli bir işlevin bağlamının parçasıdır ve farklı sürümlerin dışarıdan yüklenmesini destekler. Özel derlemelerin işlev dizinindeki bir `bin` klasörüne yüklenmesi gerekir. `#r "MyAssembly.dll"`gibi dosya adını kullanarak derlemelere başvurun.
 
 İşlev klasörünüze dosya yükleme hakkında daha fazla bilgi için bkz. [Paket Yönetimi](#using-nuget-packages)hakkındaki bölüm.
 
@@ -452,7 +452,7 @@ Ve diğer .NET dillerinde, *function. JSON*içindeki [*bildirim temelli*](https:
 Zorunlu bir bağlamayı aşağıdaki gibi tanımlayın:
 
 - İstediğiniz kesinlik bağlamalarınız için *function. JSON* içine bir **giriş eklemeyin.**
-- [@No__t-1](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)giriş parametresini geçirin.
+- [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)bir giriş parametresi geçirin.
 - Veri bağlamayı gerçekleştirmek C# için aşağıdaki kalıbı kullanın.
 
 ```cs
@@ -462,7 +462,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`, bağlamayı tanımlayan .NET özniteliğidir ve `T`, bu bağlama türü tarafından desteklenen bir giriş veya çıkış türüdür. `T` `out` parametre türü olamaz (`out JObject` gibi). Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak `T` Için yalnızca [ICollector @ No__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) kullanabilirsiniz.
+`BindingTypeAttribute`, bağlamayı tanımlayan .NET özniteliğidir ve `T`, bu bağlama türü tarafından desteklenen bir giriş veya çıkış türüdür. `T` `out` parametre türü olamaz (`out JObject` gibi). Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak `T`Için yalnızca [ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) kullanabilirsiniz.
 
 ### <a name="single-attribute-example"></a>Tek öznitelik örneği
 
@@ -485,7 +485,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (`AzureWebJobsStorage`) için uygulama ayarını alır. [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) öğesini ekleyerek ve öznitelik dizisini `BindAsync<T>()` ' e geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz. @No__t-1 değil `Binder` parametresini kullanın.  Örnek:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (`AzureWebJobsStorage`) için uygulama ayarını alır. [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) öğesini ekleyerek ve öznitelik dizisini `BindAsync<T>()` ' e geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz. `IBinder`değil `Binder` parametresi kullanın.  Örnek:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -512,7 +512,7 @@ Aşağıdaki tabloda, her bir bağlama türü ve tanımlandıkları paketler iç
 > | Bağlayıcısı | Öznitelik | Başvuru Ekle |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
-> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
+> | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |

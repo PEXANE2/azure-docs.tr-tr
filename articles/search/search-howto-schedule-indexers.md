@@ -1,31 +1,31 @@
 ---
-title: Dizin oluşturucular zamanlama-Azure Search
-description: İçeriğe düzenli aralıklarla veya belirli zamanlarda dizin eklemek için Azure Search Dizinleyicileri zamanlayın.
-ms.date: 05/31/2019
+title: Dizin oluşturucularının zamanlaması
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama dizin oluşturucularının içeriği düzenli aralıklarla veya belirli zamanlarda dizine almak için zamanlayın.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72533612"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793687"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Azure Search için Dizin Oluşturucu zamanlama
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
+
 Dizin Oluşturucu normalde, oluşturulduktan hemen sonra bir kez çalışır. Portalı, REST API veya .NET SDK kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Bir dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de yapılandırabilirsiniz.
 
 Dizin Oluşturucu çizelgelemenin yararlı olduğu bazı durumlar:
 
-* Kaynak veriler zamanla değişecektir ve Azure Search dizin oluşturucularının değiştirilen verileri otomatik olarak işlemesini istiyorsunuz.
+* Kaynak veriler zamanla değişecektir ve Azure Bilişsel Arama dizin oluşturucularının değiştirilen verileri otomatik olarak işlemesini istiyorsunuz.
 * Dizin birden çok veri kaynağından doldurulacak ve oluşturucuların çakışmaları azaltmak için farklı zamanlarda çalıştığından emin olmak istiyorsunuz.
-* Kaynak veriler çok büyükse ve Dizin Oluşturucu işlemesini zaman içinde yaymak istiyorsunuz. Büyük hacimde veri dizinleme hakkında daha fazla bilgi için bkz. [Azure Search büyük veri kümelerini Dizin](search-howto-large-index.md)oluşturma.
+* Kaynak veriler çok büyükse ve Dizin Oluşturucu işlemesini zaman içinde yaymak istiyorsunuz. Büyük hacimteki verileri dizinleme hakkında daha fazla bilgi için bkz. [Azure bilişsel arama büyük veri kümelerini Dizin](search-howto-large-index.md)oluşturma.
 
-Zamanlayıcı, Azure Search yerleşik bir özelliğidir. Arama dizin oluşturucularının denetlemek için bir dış Zamanlayıcı kullanamazsınız.
+Zamanlayıcı, Azure Bilişsel Arama 'ın yerleşik bir özelliğidir. Arama dizin oluşturucularının denetlemek için bir dış Zamanlayıcı kullanamazsınız.
 
 ## <a name="define-schedule-properties"></a>Zamanlama özelliklerini tanımla
 
@@ -88,7 +88,7 @@ Ayrıca, Dizin oluşturucuyu Çalıştır çağrısını kullanarak istediğiniz
 
 ## <a name="schedule-using-the-net-sdk"></a>.NET SDK kullanarak zamanlama
 
-Bir dizin oluşturucunun zamanlamasını Azure Search .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
+Bir dizin oluşturucunun zamanlamasını Azure Bilişsel Arama .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
 
 Aşağıdaki C# örnek, önceden tanımlanmış bir veri kaynağı ve dizini kullanarak bir dizin oluşturucu oluşturur ve zamanlamasını 30 dakika sonra her gün çalışacak şekilde ayarlar.
 

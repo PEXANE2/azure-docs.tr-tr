@@ -1,10 +1,9 @@
 ---
-title: Java Message Service API 'SI ve Azure Service Bus AMQP 1,0 kullanın
+title: Java Message Service API & AMQP kullanın Azure Service Bus
 description: Java Ileti hizmeti 'ni (JMS) Azure Service Bus ve Gelişmiş İleti Sıraya Alma Protokolü (AMQP) 1,0 ile kullanma.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
@@ -12,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9dff2cc11b71f314de81fd99ed3b72c6337d977f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: f1a679deca8ee33bb4801eb1d1023684a37d0f59
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967972"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793172"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmeti 'ni (JMS) kullanma
 Bu makalede, popüler Java Ileti hizmeti (JMS) API standardı kullanılarak Java uygulamalarından Azure Service Bus mesajlaşma özelliklerinin (kuyruklar ve yayımlama/abone olma konuları) nasıl kullanılacağı açıklanmaktadır. Azure Service Bus .NET API 'SI ile nasıl yapılacağını açıklayan bir [yardımcı makale](service-bus-amqp-dotnet.md) vardır. AMQP 1,0 kullanarak platformlar arası mesajlaşma hakkında bilgi edinmek için bu iki Kılavuzu birlikte kullanabilirsiniz.
@@ -38,7 +37,7 @@ Bu kılavuzda, **basicqueue**adlı bir sırayı içeren bir Service Bus ad alan�
 > 
 
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>AMQP 1,0 JMS istemci kitaplığı indiriliyor
-Apache Qpid JMS AMQP 1,0 istemci kitaplığı 'nın en son sürümünü indirme yeri hakkında daha fazla bilgi için, adresini [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)ziyaret edin.
+Apache Qpid JMS AMQP 1,0 istemci kitaplığı 'nın en son sürümünü indirecek hakkında daha fazla bilgi için [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)ziyaret edin.
 
 Aşağıdaki dört JAR dosyasını Apache Qpid JMS AMQP 1,0 dağıtım arşivinden, Service Bus JMS uygulamaları oluşturup çalıştırırken Java SıNıFYOLUNA eklemeniz gerekir:
 
@@ -50,7 +49,7 @@ Aşağıdaki dört JAR dosyasını Apache Qpid JMS AMQP 1,0 dağıtım arşivind
 
 ## <a name="coding-java-applications"></a>Java uygulamalarını kodlama
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java adlandırma ve Dizin arabirimi (JNDI)
-JMS, mantıksal adlar ve fiziksel adlar arasında bir ayrım oluşturmak için Java adlandırma ve Dizin arabirimini (JNDı) kullanır. JNDI kullanılarak iki tür JMS nesnesi çözüldü: ConnectionFactory ve hedef. JNDı, ad çözümlemesi görevlerini işlemek üzere farklı Dizin Hizmetleri ekleyebileceğiniz bir sağlayıcı modeli kullanır. Apache Qpid JMS AMQP 1,0 kitaplığı, aşağıdaki biçimdeki bir özellikler dosyası kullanılarak yapılandırılmış basit bir özellikler dosya tabanlı JNDı sağlayıcısı ile birlikte gelir:
+JMS, mantıksal adlar ve fiziksel adlar arasında bir ayrım oluşturmak için Java adlandırma ve Dizin arabirimini (JNDı) kullanır. JNDı: ConnectionFactory ve Destination kullanılarak iki tür JMS nesnesi çözümlenir. JNDı, ad çözümlemesi görevlerini işlemek üzere farklı Dizin Hizmetleri ekleyebileceğiniz bir sağlayıcı modeli kullanır. Apache Qpid JMS AMQP 1,0 kitaplığı, aşağıdaki biçimdeki bir özellikler dosyası kullanılarak yapılandırılmış basit bir özellikler dosya tabanlı JNDı sağlayıcısı ile birlikte gelir:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -342,7 +341,7 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>JMS konuları ile Service Bus Konuları
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS konuları ile Service Bus konuları
 Java Ileti hizmeti (JMS) API 'SI aracılığıyla Azure Service Bus konuları ve abonelikleri kullanmak, temel gönderme ve alma özellikleri sağlar. JMS uyumlu API 'Ler ile diğer ileti aracılarından uygulamalar taşırken kullanışlı bir seçenektir. Service Bus konular, JMS konularından farklı olsa da birkaç ayarlama gerektirir. 
 
 Azure Service Bus, iletileri Azure Kaynak yönetimi arabirimi, Azure komut satırı araçları veya Azure portal aracılığıyla yönetilen adlandırılmış, paylaşılan ve dayanıklı aboneliklere yönlendirir. Her abonelik, her biri bir filtre koşuluna sahip olabilecek ve SQL filtreleri için de bir meta veri dönüştürme eylemi olan 2000 adede kadar seçim kuralına izin verir. Her filtre koşulu eşleşmesi, tehj aboneliğine kopyalanacak giriş iletisini seçer.  

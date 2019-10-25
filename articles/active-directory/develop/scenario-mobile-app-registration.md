@@ -1,5 +1,6 @@
 ---
-title: Web API 'Lerini çağıran mobil uygulama-uygulamanın kod yapılandırması | Microsoft Identity platformu
+title: Web API 'Lerini çağıran mobil uygulama-uygulamanın kod yapılandırması
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir mobil uygulama oluşturmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413587"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803728"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran mobil uygulama-uygulama kaydı
 
@@ -52,25 +53,25 @@ Bu deneyim, uygulamanızın Microsoft Authenticator (ve Android 'de Intune Şirk
 
 İOS ve Android uygulamaları için aracılı yanıt URI 'sini hesaplamanıza yardımcı olmak üzere uygulama kayıt portalında bir önizleme deneyimi olduğunu unutmayın:
 
-1. Uygulama kaydı ' nda **kimlik doğrulama** ve seçim ' i seçin **yeni deneyim**
-   ![görüntüsünü deneyin](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+1. Uygulama kaydı ' nda, **kimlik doğrulama** ve seçim ' i seçin
+   **yeni deneyim**![görüntüsünü deneyin](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. **Platform**
-   görüntüsü![Ekle ' yi seçin](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+2. 
+   **platform**![görüntü Ekle ' yi seçin](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
 3. Platformların listesi desteklenmiş olduğunda **iOS**
-   ![görüntüsü ' nü seçin.](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+   ![görüntüsü ' nü seçin](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Paket kimliğinizi istenen şekilde girin ve sonra görüntüyü **Kaydet**
-   ![' e basın.](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+4. Paket KIMLIĞINIZI istenen şekilde girin ve ardından
+   ![görüntüsüne **Kaydet** ' e basın](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. Yeniden yönlendirme URI 'SI sizin için hesaplanır.
-   ![görüntüyle](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![resim](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Yeniden yönlendirme URI 'sini el ile yapılandırmayı tercih ediyorsanız, bunu uygulama bildirimi aracılığıyla yapabilirsiniz. Önerilen biçim aşağıda verilmiştir:
 
 - ***iOS***: `msauth.<BUNDLE_ID>://auth` (örneğin, "msauth. com. yourcompany. AppName:/Auth")
-- ***Android***:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- ***Android***: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Android imza karması, anahtar aracı komutu aracılığıyla sürüm veya hata ayıklama anahtarları kullanılarak oluşturulabilir.
 
 ### <a name="username-password"></a>Kullanıcı adı parolası

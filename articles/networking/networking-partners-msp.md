@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 60127a8aebaf45969ba78a65676093210ea6de78
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828194"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804209"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -26,7 +26,7 @@ Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet
 
 ## <a name="msp"></a>Azure ağ MSP iş ortakları
 
-Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. @No__t-0 ' a bir e-posta göndererek bizimle iletişim kurabilirler. 
+Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. ManagedVirtualWAN@microsoft.comadresine bir e-posta göndererek bizimle iletişim kurabilirler. 
 
 [ANS grubu UK](https://www.ans.co.uk/)
 
@@ -38,11 +38,11 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 
 [Equinix](https://www.equinix.com/)
 
-[Intercloud](https://www.intercloud.com/partners/cloud-service-providers/get-azure-expressroute)
+[Intercloud](https://intercloud.com/partners/get-to-azure-via-expressroute/)
 
 [IıJ](https://www.iij.ad.jp/biz/cloudex/)
 
-[Interxiyon](https://www.interxion.com/products/interconnection/cloud-connect/)
+[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/)
 
 [ixreach](https://www.ixreach.com/)
 

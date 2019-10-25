@@ -1,24 +1,23 @@
 ---
-title: OCR bilişsel arama yeteneği-Azure Search
-description: Azure Search bir zenginleştirme ardışık düzeninde optik karakter tanıma (OCR) kullanarak görüntü dosyalarından metin ayıklayın.
-services: search
+title: OCR Bilişsel Beceri
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'de bir zenginleştirme ardışık düzeninde optik karakter tanıma (OCR) kullanarak görüntü dosyalarından metin ayıklayın.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265336"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791917"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR Bilişsel Beceri
 
-Optik karakter tanıma (OCR) yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
+**Optik karakter tanıma (OCR)** yeteneği, görüntü dosyalarında yazdırılmış ve el yazısı metinleri tanır. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. **OCR** becerisi aşağıdaki işlevlere eşlenir:
 
 + Ingilizce dışındaki diller için ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API 'si kullanılır. 
 + Ingilizce için yeni ["okuma"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API 'si kullanılır.
@@ -27,15 +26,15 @@ Optik karakter tanıma (OCR) yeteneği, görüntü dosyalarında yazdırılmış
 
 + . JPEG
 + . JPG
-+ . KITAPLIĞINI
++ . KITAPLıĞıNı
 + . BMP
 + . GIF
-+ . DOSYALARINDA
++ . DOSYALARıNDA
 
 > [!NOTE]
-> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [Azure Search fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
 
 ## <a name="skill-parameters"></a>Yetenek parametreleri
@@ -54,13 +53,13 @@ Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıkla
 
 | Giriş adı      | Açıklama                                          |
 |---------------|------------------------------------------------------|
-| image         | Karmaşık tür. Şu anda yalnızca, ' den ```imageAction``` ```none```farklı bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_ımages" alanı ile birlikte çalışıyor. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
+| image         | Karmaşık tür. Şu anda, ```imageAction``` ```none```dışında bir değere ayarlandığında Azure Blob Indexer tarafından oluşturulan "/Document/normalized_ımages" alanı ile birlikte çalışıyor. Daha fazla bilgi için [örneğe](#sample-output) bakın.|
 
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 | Çıkış adı     | Açıklama                   |
 |---------------|-------------------------------|
-| text          | Görüntüden ayıklanan düz metin.   |
+| metin          | Görüntüden ayıklanan düz metin.   |
 | layoutText    | Ayıklanan metni ve metnin bulunduğu konumu açıklayan karmaşık tür.|
 
 
@@ -135,7 +134,7 @@ Daha önce, yeteneğin "yazdırılmış" veya "el ile" metin ayıklanıp ayıkla
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Örnek: Katıştırılmış görüntülerden ayıklanan metni belgenin içeriğiyle birleştirme.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Örnek: katıştırılmış görüntülerden ayıklanan metni belge içeriğiyle birleştirme.
 
 Metin Merbilirliği için ortak kullanım örneği, görüntülerin metinsel gösterimini (bir OCR özelliğinden metin veya bir görüntünün başlığını) belgenin içerik alanına birleştirebilme yeteneğidir.
 
@@ -206,7 +205,7 @@ Yukarıdaki beceri örnek, normalleştirilmiş görüntüler alanının bulundu�
 ```
 
 ## <a name="see-also"></a>Ayrıca bkz.
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [TextMerger yeteneği](cognitive-search-skill-textmerger.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
