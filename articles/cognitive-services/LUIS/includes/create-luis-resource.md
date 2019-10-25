@@ -6,33 +6,33 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
+ms.date: 10/23/2019
 ms.author: dapine
-ms.openlocfilehash: 52d8e1355558b197b193a50c7cde571799541268
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ecb172aec37fdab21bed8373ac7484dc52a54829
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717179"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72822049"
 ---
-## <a name="create-a-luis-resource"></a>LUIS kaynak oluştur
+## <a name="create-a-luis-resource"></a>LUSıS kaynağı oluşturma
 
-1. Oturum [Azure portalı](https://portal.azure.com)
-1. Tıklayın [oluşturma **dil anlama**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS)
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [Oluştur **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) tıklayın
 1. Tüm gerekli ayarları girin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |--|--|
-    |Ad|İstenen ad (2-64 karakter)|
-    |Subscription|Uygun aboneliği seçin|
-    |Location|Herhangi bir yakındaki ve kullanılabilir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0` -en az bir fiyatlandırma katmanı|
-    |Kaynak Grubu|Kullanılabilir kaynak grubu seçin|
+    |Adı|İstenen ad (2-64 karakter)|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
 
-1. Tıklayın **Oluştur** ve kaynak oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
-1. Toplama yapılandırılmış `endpoint` ve API anahtarı:
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
+1. Yapılandırılmış `endpoint` ve bir API anahtarı toplayın:
 
-    |Portal'daki kaynak sekmesi|Ayar|Value|
+    |Portalda kaynak sekmesi|Ayar|Değer|
     |--|--|--|
-    |**Genel bakış**|Uç Nokta|Uç nokta kopyalayın. Benzer şekilde görünür `https://luis.cognitiveservices.azure.com/luis/v2.0`|
-    |**anahtarları**|API anahtarı|İki anahtar 1 kopyalayın. Boşluk veya tire ile 32 bir alfasayısal karakter dizesi olduğu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Genel Bakış**|Uç nokta|Uç noktayı kopyalayın. Şuna benzer `https://luis.cognitiveservices.azure.com/luis/v2.0`|
+    |**Belirlenmesine**|API anahtarı|İki anahtardan oluşan 1 ' i kopyalayın. Boşluk veya kesik çizgi olmayan 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

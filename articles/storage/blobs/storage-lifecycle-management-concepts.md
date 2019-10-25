@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: e4d961603ab0ade1bb175161fffd7f085a1f644b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5cf4689534a813d778c25a7a712b983aafe6f5a9
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934092"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881594"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob depolama yaşam döngüsünü yönetme
 
@@ -46,17 +46,17 @@ Yaşam döngüsü yönetimi özelliği tüm Azure bölgelerinde kullanılabilir.
 
 Aşağıdaki yöntemlerden birini kullanarak bir ilkeyi ekleyebilir, düzenleyebilir veya kaldırabilirsiniz:
 
-* [Azure portal](https://portal.azure.com)
+* [Azure portalda](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API'ler](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [REST API'leri](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 Bu makalede Portal ve PowerShell yöntemlerini kullanarak ilkenin nasıl yönetileceği gösterilmektedir.  
 
 > [!NOTE]
 > Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Güvenilen Microsoft Hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)Içindeki özel durumlar bölümü.
 
-### <a name="azure-portal"></a>Azure portal
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal bir ilke eklemenin iki yolu vardır. 
 
@@ -65,7 +65,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 #### <a name="azure-portal-list-view"></a>Azure portal liste görünümü
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
@@ -86,7 +86,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 9. Yeni ilkeyi eklemek için **Ekle** ' yi seçin.
 
 #### <a name="azure-portal-code-view"></a>Azure portal kod görünümü
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. **Tüm kaynaklar** ' ı seçin ve ardından depolama hesabınızı seçin.
 
@@ -126,9 +126,9 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 6. Bu JSON örneği hakkında daha fazla bilgi için bkz. [ilke](#policy) ve [kurallar](#rules) bölümleri.
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Aşağıdaki PowerShell betiği, depolama hesabınıza bir ilke eklemek için kullanılabilir. Değişken `$rgname` , kaynak grubu adınızla başlatılmalıdır. Değişken `$accountName` , depolama hesabı adınızla başlatılmalıdır.
+Aşağıdaki PowerShell betiği, depolama hesabınıza bir ilke eklemek için kullanılabilir. `$rgname` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır.
 
 ```powershell
 #Install the latest module
@@ -156,7 +156,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-## <a name="azure-resource-manager-template-with-lifecycle-management-policy"></a>Yaşam döngüsü yönetimi ilkesiyle Azure Resource Manager şablonu
+# <a name="templatetabtemplate"></a>[Şablon](#tab/template)
 
 Yaşam döngüsü yönetimini Azure Resource Manager şablonları kullanarak tanımlayabilirsiniz. Bir RA-GRS GPv2 depolama hesabını bir yaşam döngüsü yönetimi ilkesiyle dağıtmaya yönelik örnek bir şablon aşağıda verilmiştir.
 
@@ -198,6 +198,8 @@ Yaşam döngüsü yönetimini Azure Resource Manager şablonları kullanarak tan
 }
 ```
 
+---
+
 ## <a name="policy"></a>İlke
 
 Yaşam döngüsü yönetimi ilkesi, bir JSON belgesindeki kuralların koleksiyonudur:
@@ -228,10 +230,10 @@ Yaşam döngüsü yönetimi ilkesi, bir JSON belgesindeki kuralların koleksiyon
 
 İlke içindeki her bir kural birkaç parametreye sahiptir:
 
-| Parametre adı | Parametre türü | Notlar | Gerekli |
+| Parametre adı | Parametre türü | Notlar | Gereklidir |
 |----------------|----------------|-------|----------|
 | `name`         | Dize |Bir kural adı en fazla 256 alfasayısal karakter içerebilir. Kural adı büyük/küçük harfe duyarlıdır.  Bir ilke içinde benzersiz olmalıdır. | Doğru |
-| `enabled`      | Boole değeri | Bir kuralın geçici olarak devre dışı bırakılması için isteğe bağlı bir Boole değeri. Ayarlanmamışsa varsayılan değer true 'dur. | False | 
+| `enabled`      | Boole | Bir kuralın geçici olarak devre dışı bırakılması için isteğe bağlı bir Boole değeri. Ayarlanmamışsa varsayılan değer true 'dur. | Yanlış | 
 | `type`         | Sabit listesi değeri | Geçerli geçerli tür `Lifecycle`. | Doğru |
 | `definition`   | Yaşam döngüsü kuralını tanımlayan bir nesne | Her tanım bir filtre kümesinden ve bir eylem kümesinden oluşur. | Doğru |
 
@@ -241,7 +243,7 @@ Her kural tanımı bir filtre kümesi ve bir eylem kümesi içerir. [Filtre küm
 
 ### <a name="sample-rule"></a>Örnek kural
 
-Aşağıdaki örnek kural, içinde `container1` bulunan ve ile `foo`başlayan nesneler üzerinde eylemleri çalıştırmak için hesabı filtreler.  
+Aşağıdaki örnek kural, `container1` içinde bulunan nesneler üzerinde eylemleri çalıştırmak ve `foo`başlamak için hesabı filtreler.  
 
 - Katman blobu son değişiklikten sonra 30 gün sonra seyrek erişimli katmana
 - Son değişiklikten sonra katman blobu 90 gün sonra arşiv katmanı
@@ -278,14 +280,14 @@ Aşağıdaki örnek kural, içinde `container1` bulunan ve ile `foo`başlayan ne
 
 ### <a name="rule-filters"></a>Kural filtreleri
 
-Filtre, kural eylemlerini depolama hesabındaki Blobların bir alt kümesiyle sınırlar. Birden çok filtre tanımlanmışsa, tüm filtrelerdeki mantıksal `AND` bir çalışır.
+Filtre, kural eylemlerini depolama hesabındaki Blobların bir alt kümesiyle sınırlar. Birden çok filtre tanımlanmışsa, bir mantıksal `AND` tüm filtreler üzerinde çalışır.
 
 Filtreler şunları içerir:
 
-| Filtre adı | Filtre türü | Notlar | Gerekli |
+| Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın şunları destekler `blockBlob`. | Evet |
-| prefixMatch | Öneklerin eşleşmesi için bir dize dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki `https://myaccount.blob.core.windows.net/container1/foo/...` tüm Blobları eşleştirmek istiyorsanız, prefixMatch olur. `container1/foo` | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | Hayır |
+| blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın `blockBlob`destekler. | Yes |
+| prefixMatch | Öneklerin eşleşmesi için bir dize dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için `https://myaccount.blob.core.windows.net/container1/foo/...` altındaki tüm Blobları eşleştirmek istiyorsanız, prefixMatch `container1/foo`. | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir.  | Hayır |
 
 ### <a name="rule-actions"></a>Kural eylemleri
 
@@ -293,14 +295,14 @@ Filtreler şunları içerir:
 
 Yaşam döngüsü yönetimi, Blobları ve silme işlemini ve BLOB anlık görüntülerinin silinmesini destekler. Bloblarda veya blob anlık görüntülerinde her kural için en az bir eylem tanımlayın.
 
-| Action        | Temel blob                                   | Anlık Görüntü      |
+| Eylem        | Temel blob                                   | Anlık Görüntü      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Şu anda sık erişimli bir katmanda blob 'ları destekle         | Desteklenmiyor |
 | tierToArchive | Şu anda sık erişimli veya seyrek erişimli bir katmanda blob 'ları destekleme | Desteklenmiyor |
-| sil        | Desteklenen                                   | Desteklenen     |
+| delete        | Desteklenen                                   | Desteklenen     |
 
 >[!NOTE]
->Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem `delete` , eylemden `tierToArchive`daha fazla. Eylem `tierToArchive` eylemden`tierToCool`daha fazla.
+>Aynı blob üzerinde birden fazla eylem tanımlarsanız, yaşam döngüsü yönetimi Blobun en az maliyetli eylemi uygular. Örneğin eylem `delete`, eylem `tierToArchive`göre daha ucuz. Eylem `tierToArchive` `tierToCool`eylem.
 
 Çalışma koşulları yaşa göre yapılır. Temel Bloblar, yaşı izlemek için son değiştirme süresini kullanır ve BLOB anlık görüntüleri, yaşı izlemek için anlık görüntü oluşturma süresini kullanır.
 
@@ -315,7 +317,7 @@ Aşağıdaki örneklerde, yaşam döngüsü ilke kurallarıyla yaygın senaryola
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Eskime verilerini daha soğuk bir katmana taşıyın
 
-Bu örnek, veya `container1/foo` `container2/bar`ile ön önekli blok bloblarının nasıl yapılacağını gösterir. İlke, 30 gün boyunca seyrek erişimli depolamaya değiştirilmeyen Blobları ve arşiv katmanına 90 gün içinde değiştirilmeyen Blobları geçirir:
+Bu örnek, `container1/foo` veya `container2/bar`ön önekli blok bloblarının nasıl yapılacağını gösterir. İlke, 30 gün boyunca seyrek erişimli depolamaya değiştirilmeyen Blobları ve arşiv katmanına 90 gün içinde değiştirilmeyen Blobları geçirir:
 
 ```json
 {
@@ -343,7 +345,10 @@ Bu örnek, veya `container1/foo` `container2/bar`ile ön önekli blok blobların
 
 ### <a name="archive-data-at-ingest"></a>Alma sırasında verileri arşivleme
 
-Bazı veriler bulutta boş kalır ve şimdiye kadar, kaydedildikten sonra erişiliyorsa nadiren olur. Aşağıdaki yaşam döngüsü ilkesi, verileri alındıktan sonra arşivlemek üzere yapılandırılmıştır. Bu örnek, kapsayıcı `archivecontainer` içindeki depolama hesabındaki Blobları bir arşiv katmanına geçirir. Geçiş, son değiştirilme zamanından sonra blob 0 gün sonra işlem yaparak gerçekleştirilir:
+Bazı veriler bulutta boş kalır ve şimdiye kadar, kaydedildikten sonra erişiliyorsa nadiren olur. Aşağıdaki yaşam döngüsü ilkesi, verileri alındıktan sonra arşivlemek üzere yapılandırılmıştır. Bu örnek, kapsayıcı içindeki depolama hesabındaki blok bloblarını bir arşiv katmanına `archivecontainer` geçirir. Geçiş, son değiştirilme zamanından sonra blob 0 gün sonra işlem yaparak gerçekleştirilir:
+
+> [!NOTE] 
+> Bloblarınızı doğrudan arşiv katmanının daha verimli olması için yüklemeniz önerilir. [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) veya [putblocklist](https://docs.microsoft.com/rest/api/storageservices/put-block-list) için x-MS-acess-tier başlığını Rest sürüm 2018-11-09 ve daha yeni veya en son BLOB depolama istemci kitaplıklarımızla birlikte kullanabilirsiniz. 
 
 ```json
 {
@@ -397,7 +402,7 @@ Bazı verilerin oluşturulduktan sonra gün veya ay sonu bekleniyor. Bir yaşam 
 
 ### <a name="delete-old-snapshots"></a>Eski anlık görüntüleri Sil
 
-Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görüntüler genellikle verilerin eski sürümlerini izlemek için kullanılır. Anlık görüntü yaşı temelinde eski anlık görüntüleri silen bir ilke oluşturabilirsiniz. Anlık görüntü yaşı, anlık görüntü oluşturma süresi hesaplanarak belirlenir. Bu ilke kuralı, anlık görüntü oluşturulduktan sonra 90 `activedata` gün veya daha eski kapsayıcı içindeki Blok Blobu anlık görüntülerini siler.
+Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görüntüler genellikle verilerin eski sürümlerini izlemek için kullanılır. Anlık görüntü yaşı temelinde eski anlık görüntüleri silen bir ilke oluşturabilirsiniz. Anlık görüntü yaşı, anlık görüntü oluşturma süresi hesaplanarak belirlenir. Bu ilke kuralı, anlık görüntü oluşturulduktan sonra 90 gün veya daha eski olan kapsayıcı içindeki blok blob anlık görüntülerini siler `activedata`.
 
 ```json
 {
@@ -427,9 +432,8 @@ Düzenli aralıklarla değiştirilen ve erişilen veriler için, anlık görünt
 **Yeni bir ilke oluşturdum, neden eylemler hemen çalıştırılmadı?**  
 Platform yaşam döngüsü ilkesini günde bir kez çalıştırır. Bir ilkeyi yapılandırdıktan sonra, bazı eylemlerin ilk kez çalışması 24 saate kadar sürebilir.  
 
-**Arşivlenmiş bir blobu el ile yeniden doldurma, bunu arşiv katmanına geçici olarak geri taşımaya nasıl engel olabilirim?**  
-Bir blob bir erişim katmanından diğerine taşındığında, son değiştirilme zamanı değişmez. Arşivlenmiş bir blobu sık erişimli katmana el ile yeniden alırsanız, yaşam döngüsü yönetim altyapısı tarafından arşiv katmanına geri taşınır. Yeniden arşivlenmesini engellemek için bu blobu geçici olarak etkileyen kuralı devre dışı bırakın. Blob 'u, etkin katmanda kalıcı olarak kalması gerekiyorsa başka bir konuma kopyalayın. Blob güvenli bir şekilde arşiv katmanına geri taşınabileceği zaman kuralı yeniden etkinleştirin. 
-
+**Arşivlenmiş bir blobu el ile yeniden aldım, bunun arşiv katmanına geçici olarak geri taşınmasını nasıl önleyebilirim?**  
+Bir blob bir erişim katmanından diğerine taşındığında, son değiştirilme zamanı değişmez. Arşivlenmiş bir blobu sık erişimli katmana el ile yeniden alırsanız, yaşam döngüsü yönetim altyapısı tarafından arşiv katmanına geri taşınır. Yeniden arşivlenmesini engellemek için bu blobu geçici olarak etkileyen kuralı devre dışı bırakın. Blob güvenli bir şekilde arşiv katmanına geri taşınabileceği zaman kuralı yeniden etkinleştirin. Blob 'u, etkin veya seyrek erişimli katmanda kalıcı olarak kalması gerekiyorsa başka bir konuma da kopyalayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

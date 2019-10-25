@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750180"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819776"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure kaynakları için RBAC sorunlarını giderme
 
@@ -29,7 +29,7 @@ Bu makalede, Azure kaynakları için rol tabanlı erişim denetimi (RBAC) hakkı
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC rol atamalarıyla ilgili sorunlar
 
 - Azure portal**rol** **ataması ekleme seçeneği** devre dışı bırakıldığından veya izinleri aldığınız için **erişim denetimi 'nde (IAM  > )** bir rol ataması ekleyemezse veya "nesne kimliği olan istemci eylem gerçekleştirme yetkilendirmesi ", şu anda, rolü atamaya çalıştığınız kapsamda [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi `Microsoft.Authorization/roleAssignments/write` iznine sahip bir kullanıcı ile oturum açtığınızdan emin olun.
-- "Daha fazla rol ataması oluşturuoluşturulamadığı (Code: Roleatamaadı)" hata iletisini alırsanız, rol atamayı denediğinizde, rol atamalarının sayısını azaltmayı deneyin. Azure, abonelik başına en fazla **2000** rol atamasını destekler.
+- "Daha fazla rol ataması oluşturuoluşturulamadığı (Code: Roleatamaadı)" hata iletisini alırsanız, rol atamayı denediğinizde, rol atamalarının sayısını azaltmayı deneyin. Azure, abonelik başına en fazla **2000** rol atamasını destekler. Bu rol atama sınırı düzeltildi ve artırılabilir.
 
 ## <a name="problems-with-custom-roles"></a>Özel rollerle ilgili sorunlar
 

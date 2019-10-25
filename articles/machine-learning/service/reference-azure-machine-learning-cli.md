@@ -1,7 +1,7 @@
 ---
 title: Machine Learning CLı uzantısı
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning CLI uzantı hakkında Azure CLI için öğrenin. Azure CLI'yı Azure buluttaki kaynaklar ile çalışmanıza olanak sağlayan bir platformlar arası komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning çalışmanıza olanak sağlar.
+description: Azure CLı için Azure Machine Learning CLı uzantısı hakkında bilgi edinin. Azure CLı, Azure bulutundaki kaynaklarla çalışmanıza olanak sağlayan platformlar arası bir komut satırı yardımcı programıdır. Machine Learning uzantısı, Azure Machine Learning çalışmanıza olanak sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 08/20/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 597cc4e03257b544187fc2bc131974954b64c84b
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997074"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819874"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLı uzantısını kullanın
 
-Azure Machine Learning CLI uzantısıdır [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), Azure platformu için platformlar arası komut satırı arabirimi. Bu uzantı Azure Machine Learning ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
+Azure Machine Learning CLı, Azure platformu için platformlar arası komut satırı arabirimi olan [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'nin bir uzantısıdır. Bu uzantı Azure Machine Learning ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
 
-+ Makine öğrenimi modelleri oluşturma çalıştırın
++ Makine öğrenimi modelleri oluşturmak için denemeleri çalıştırma
 
-+ Makine öğrenimi modelleri müşteri kullanım için kaydolun
++ Müşteri kullanımı için makine öğrenimi modellerini Kaydet
 
-+ Paketlemeyi, dağıtmayı ve makine öğrenimi Modellerinizi ömrünü izleme
++ Makine öğrenimi modellerinizin yaşam döngüsünü paketleyin, dağıtın ve izleyin
 
-CLI, Azure Machine Learning SDK'sı yerine değil. Otomasyonuna uygun olan yüksek parametreli görevleri işlemek için optimize edilmiş, tamamlayıcı bir araçtır.
+CLı Azure Machine Learning SDK 'sının yerini almaz. Otomasyonuna uygun olan yüksek parametreli görevleri işlemek için optimize edilmiş, tamamlayıcı bir araçtır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* CLI kullanmak için Azure aboneliğiniz olmalıdır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* CLı 'yi kullanmak için bir Azure aboneliğinizin olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -42,7 +42,7 @@ CLI, Azure Machine Learning SDK'sı yerine değil. Otomasyonuna uygun olan yüks
 
 ## <a name="install-the-extension"></a>Uzantıyı yükleme
 
-Machine Learning CLI uzantısını yüklemek için aşağıdaki komutu kullanın:
+Machine Learning CLı uzantısını yüklemek için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -51,9 +51,9 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Aşağıdaki komutlarla kullanabileceğiniz örnek dosyaları [burada](https://aka.ms/azml-deploy-cloud)bulabilirsiniz.
 
-Sorulduğunda, `y` uzantıyı yüklemek için.
+İstendiğinde, uzantıyı yüklemek için `y` ' yi seçin.
 
-Uzantı yüklü olduğunu doğrulamak için ML özgü alt komutları listesini görüntülemek için aşağıdaki komutu kullanın:
+Uzantının yüklendiğini doğrulamak için, ML 'ye özgü alt komutların listesini göstermek üzere aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az ml -h
@@ -68,9 +68,9 @@ az extension update -n azure-cli-ml
 ```
 
 
-## <a name="remove-the-extension"></a>Uzantıyı kaldırın
+## <a name="remove-the-extension"></a>Uzantıyı kaldırma
 
-CLI uzantısını kaldırmak için aşağıdaki komutu kullanın:
+CLı uzantısını kaldırmak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az extension remove -n azure-cli-ml
@@ -78,7 +78,7 @@ az extension remove -n azure-cli-ml
 
 ## <a name="resource-management"></a>Kaynak yönetimi
 
-Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakları yönetmek için CLI'yı kullanmayı göstermektedir.
+Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynakları yönetmek için CLı 'nın nasıl kullanılacağını göstermektedir.
 
 + Henüz bir tane yoksa, bir kaynak grubu oluşturun:
 
@@ -100,7 +100,7 @@ Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakla
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Bu komut, örnek `.azureml` runconfig ve Conda ortam dosyalarını içeren bir alt dizin oluşturur. Ayrıca, Azure Machine Learning çalışma `config.json` alanınız ile iletişim kurmak için kullanılan bir dosya içerir.
+    Bu komut, örnek runconfig ve Conda ortam dosyalarını içeren bir `.azureml` alt dizini oluşturur. Ayrıca, Azure Machine Learning çalışma alanınız ile iletişim kurmak için kullanılan bir `config.json` dosyası içerir.
 
     Daha fazla bilgi için bkz. [az ml Folder Attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -138,18 +138,18 @@ Aşağıdaki komutları, Azure Machine Learning tarafından kullanılan kaynakla
 
 ## <a id="experiments"></a>Denemeleri Çalıştır
 
-* Çalıştırma denemenizi başlatın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını (dosya sisteminize bakıyorsanız \*. runconfig öğesinden önceki metin) belirtin.
+* Denemenizin bir çalıştırmasını başlatın. Bu komutu kullanırken,-c parametresine karşı runconfig dosyasının adını (dosya sisteminize bakıyorsanız \*. runconfig öğesinden önce metin) belirtin.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > Komut, iki örnek `.azureml` runconfig dosyası içeren bir alt dizin oluşturur. `az ml folder attach` 
+    > `az ml folder attach` komutu, iki örnek runconfig dosyası içeren bir `.azureml` alt dizini oluşturur. 
     >
-    > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, runconfig [. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
+    > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
     >
-    > Daha fazla örnek runconfig dosyası için bkz [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
+    > Daha fazla örnek runconfig dosyası için bkz. [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
 
     Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
@@ -197,11 +197,45 @@ Aşağıdaki komutlarda, çalışma alanınız için Azure Machine Learning [ort
 
     Daha fazla bilgi için bkz. [az ml Environment Download](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download).
 
+## <a name="ml-pipeline-management"></a>ML işlem hattı yönetimi
+
+Aşağıdaki komutlarda makine öğrenimi ardışık düzenleri ile nasıl çalışılacağı gösterilmektedir:
+
++ Machine Learning işlem hattı oluşturma:
+
+    ```azurecli-interactive
+    az ml pipeline create -n mypipeline -y mypipeline.yml
+    ```
+
+    Daha fazla bilgi için bkz. [az ml işlem hattı oluşturma](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create).
+
+    İşlem hattı YAML dosyası hakkında daha fazla bilgi için bkz. [YAML 'de makine öğrenimi işlem hatlarını tanımlama](reference-pipeline-yaml.md).
+
++ İşlem hattı çalıştırma:
+
+    ```azurecli-interactive
+    az ml run submit-pipeline -n myexperiment -y mypipeline.yml
+    ```
+
+    Daha fazla bilgi için bkz. [az ml Run gönderme-işlem hattı](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-pipeline).
+
+    İşlem hattı YAML dosyası hakkında daha fazla bilgi için bkz. [YAML 'de makine öğrenimi işlem hatlarını tanımlama](reference-pipeline-yaml.md).
+
++ İşlem hattı zamanlama:
+
+    ```azurecli-interactive
+    az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
+    ```
+
+    Daha fazla bilgi için bkz. [az ml işlem hattı oluşturma-zamanlama](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/pipeline?view=azure-cli-latest#ext-azure-cli-ml-az-ml-pipeline-create-schedule).
+
+    İşlem hattı zamanlaması YAML dosyası hakkında daha fazla bilgi için bkz. [YAML 'de makine öğrenimi işlem hatlarını tanımlama](reference-pipeline-yaml.md#schedules).
+
 ## <a name="model-registration-profiling-deployment"></a>Model kaydı, profil oluşturma, dağıtım
 
-Aşağıdaki komutlar, eğitilen bir modeli kaydedin ve ardından bunu bir üretim hizmeti dağıtacağız göstermektedir:
+Aşağıdaki komutlar, eğitilen bir modelin nasıl kaydedileceği ve sonra bir üretim hizmeti olarak nasıl dağıtılacağı gösterilmektedir:
 
-+ Bir modeli Azure Machine Learning ile kaydedin:
++ Bir modeli Azure Machine Learning Kaydet:
 
     ```azurecli-interactive
     az ml model register -n mymodel -p sklearn_regression_model.pkl

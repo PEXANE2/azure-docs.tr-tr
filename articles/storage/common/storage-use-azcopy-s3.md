@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 73eed48bd34a8c8d81a66872888ebf5481074648
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274092"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821387"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>AzCopy kullanarak Amazon S3 demetlerinden veri kopyalama
 
@@ -52,6 +52,9 @@ AzCopy, [URL API 'Den put bloğunu](https://docs.microsoft.com/rest/api/storages
 
 > [!IMPORTANT]
 > Bu özellik şu anda önizleme sürümündedir. Kopyalama işleminden sonra S3 demetlerinden verileri kaldırmaya karar verirseniz, verileri kaldırmadan önce verilerin depolama hesabınıza düzgün şekilde kopyalandığından emin olun.
+
+> [!TIP]
+> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak (' ') ile çevreler. Windows komut kabuğu (cmd. exe) dışında tüm komut kabukleriyle tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd. exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
 ### <a name="copy-an-object"></a>Nesne kopyalama
 
@@ -123,11 +126,11 @@ AzCopy şu adımları gerçekleştirir:
 
 1. Geçersiz karakterleri ' _ ' ile değiştirir.
 
-2. @No__t-0 dizesini yeni bir geçerli anahtarın başlangıcına ekler.
+2. Yeni bir geçerli anahtarın başlangıcına `rename_` dize ekler.
 
    Bu anahtar, özgün meta veri **değerini**kaydetmek için kullanılacaktır.
 
-3. @No__t-0 dizesini yeni bir geçerli anahtarın başlangıcına ekler.
+3. Yeni bir geçerli anahtarın başlangıcına `rename_key_` dize ekler.
    Bu anahtar, özgün meta veriler geçersiz **anahtarını**kaydetmek için kullanılacaktır.
    Meta veri anahtarı BLOB depolama hizmetindeki bir değer olarak korunduğu için Azure tarafında meta verileri denemek ve kurtarmak üzere bu anahtarı kullanabilirsiniz.
 

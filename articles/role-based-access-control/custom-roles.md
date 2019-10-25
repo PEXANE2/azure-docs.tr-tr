@@ -15,18 +15,18 @@ ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fbea0567ec125ce12acd8f757b32df723876fe09
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 64161451c0c8b1af7666fcd104d337856e5803c7
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338563"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821457"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Azure kaynakları için özel roller
 
 [Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, abonelik, kaynak grubu ve kaynak kapsamlarındaki kullanıcılara, gruplara ve hizmet sorumlularına özel roller de atayabilirsiniz.
 
-Özel Roller bir Azure Active Directory (Azure AD) dizininde depolanır ve abonelikler arasında paylaşılabilir. Her bir dizin en fazla **5000** özel role sahip olabilir. (Azure Kamu, Azure Almanya ve Azure Çin 21Vianet gibi özel Bulutlar için 2000 özel rol sınırı vardır.) Özel roller Azure PowerShell, Azure CLı veya REST API kullanılarak oluşturulabilir.
+Özel Roller aynı Azure AD dizinine güvenen abonelikler arasında paylaşılabilir. Dizin başına **5.000** özel rol sınırı vardır. (Azure Kamu, Azure Almanya ve Azure Çin 21Vianet gibi özelleştirilmiş bulutlar için sınır 2.000 özel rollerdir.) Özel roller Azure PowerShell, Azure CLı veya REST API kullanılarak oluşturulabilir.
 
 ## <a name="custom-role-example"></a>Özel rol örneği
 
@@ -74,42 +74,42 @@ Aşağıda, özel bir rolün JSON biçiminde gösterildiği gibi nasıl göründ
 
 1. İhtiyaç duyduğunuz izinleri belirleme
 
-    Özel bir rol oluşturduğunuzda, izinlerinizi tanımlamak için kullanılabilir kaynak sağlayıcısı işlemlerini bilmeniz gerekir. İşlem listesini görüntülemek için [Azure Resource Manager kaynak sağlayıcısı işlemlerine](resource-provider-operations.md)bakın. İşlemleri [Rol tanımının](role-definitions.md)`Actions` veya `NotActions` özelliklerine ekleyeceksiniz. Veri İşlemsiz sahipseniz, `DataActions` veya `NotDataActions` özelliklerine eklersiniz.
+    Özel bir rol oluşturduğunuzda, izinlerinizi tanımlamak için kullanılabilir kaynak sağlayıcısı işlemlerini bilmeniz gerekir. İşlem listesini görüntülemek için [Azure Resource Manager kaynak sağlayıcısı işlemlerine](resource-provider-operations.md)bakın. İşlemleri [Rol tanımının](role-definitions.md)`Actions` veya `NotActions` özelliklerine ekleyeceksiniz. Veri işlemlerdir, `DataActions` veya `NotDataActions` özelliklerine ekleyebilirsiniz.
 
 1. Özel rol oluşturma
 
-    Genellikle, mevcut yerleşik bir rolle başlayıp gereksinimlerinize göre değiştirirsiniz. Ardından, özel rolü oluşturmak için [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) veya [az role Definition Create](/cli/azure/role/definition#az-role-definition-create) komutlarını kullanırsınız. Özel bir rol oluşturmak için, [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi yöneticisi](built-in-roles.md#user-access-administrator)gibi tüm `AssignableScopes` `Microsoft.Authorization/roleDefinitions/write` izninizin olması gerekir.
+    Genellikle, mevcut yerleşik bir rolle başlayıp gereksinimlerinize göre değiştirirsiniz. Ardından, özel rolü oluşturmak için [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) veya [az role Definition Create](/cli/azure/role/definition#az-role-definition-create) komutlarını kullanırsınız. Özel bir rol oluşturmak için, [sahip](built-in-roles.md#owner) veya [Kullanıcı erişimi yöneticisi](built-in-roles.md#user-access-administrator)gibi tüm `AssignableScopes``Microsoft.Authorization/roleDefinitions/write` izninizin olması gerekir.
 
 1. Özel rolü test etme
 
     Özel rolünüzü aldıktan sonra, beklendiği gibi çalıştığını doğrulamak için test etmeniz gerekir. Daha sonra ayarlamalar yapmanız gerekiyorsa, özel rolü güncelleştirebilirsiniz.
 
-Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [Öğreticisi: Azure PowerShell @ no__t-0 veya [Öğreticisi kullanarak özel bir rol oluşturun: Azure CLı @ no__t-0 kullanarak özel bir rol oluşturun.
+Özel rol oluşturma hakkında adım adım bir öğretici için bkz. [öğretici: Azure PowerShell veya öğretici kullanarak özel rol oluşturma](tutorial-custom-role-powershell.md) [: Azure CLI kullanarak özel bir rol oluşturma](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Özel rol özellikleri
 
 Özel bir rol aşağıdaki özelliklere sahiptir.
 
-| Özellik | Gerekli | Tür | Açıklama |
+| Özellik | Gereklidir | Tür | Açıklama |
 | --- | --- | --- | --- |
-| `Name` | Evet | Dize | Özel rolün görünen adı. Rol tanımı, abonelik düzeyinde bir kaynaktır, ancak aynı Azure AD dizinini paylaşan birden çok abonelikte rol tanımı kullanılabilir. Bu görünen ad, Azure AD dizininin kapsamında benzersiz olmalıdır. Harfler, rakamlar, boşluklar ve özel karakterler içerebilir. En fazla karakter sayısı 128 ' dir. |
-| `Id` | Evet | Dize | Özel rolün benzersiz KIMLIĞI. Azure PowerShell ve Azure CLı için bu KIMLIK, yeni bir rol oluşturduğunuzda otomatik olarak oluşturulur. |
-| `IsCustom` | Evet | Dize | Bunun özel bir rol olup olmadığını gösterir. Özel roller için `true` olarak ayarlayın. |
-| `Description` | Evet | Dize | Özel rolün açıklaması. Harfler, rakamlar, boşluklar ve özel karakterler içerebilir. En fazla karakter sayısı 1024 ' dir. |
-| `Actions` | Evet | String[] | Rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [Eylemler](role-definitions.md#actions). |
-| `NotActions` | Hayır | String[] | İzin verilen `Actions` ' dan dışlanan yönetim işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [NotActions](role-definitions.md#notactions). |
-| `DataActions` | Hayır | String[] | Rolün bu nesne içindeki verilerinize gerçekleştirilmesine izin verdiği veri işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [Dataactions](role-definitions.md#dataactions). |
-| `NotDataActions` | Hayır | String[] | İzin verilen `DataActions` ' dan dışlanan veri işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [Notdataactions](role-definitions.md#notdataactions). |
-| `AssignableScopes` | Evet | String[] | Özel rolün atama için kullanılabilir olduğu kapsamları belirten dizeler dizisi. Özel roller için şu anda `AssignableScopes` ' ı kök kapsamına (`"/"`) veya bir yönetim grubu kapsamına ayarlayamazsınız. Daha fazla bilgi için bkz. [Astifblescopes](role-definitions.md#assignablescopes) ve [kaynaklarınızı Azure Yönetim gruplarıyla düzenleme](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment). |
+| `Name` | Yes | Dize | Özel rolün görünen adı. Rol tanımı, abonelik düzeyinde bir kaynaktır, ancak aynı Azure AD dizinini paylaşan birden çok abonelikte rol tanımı kullanılabilir. Bu görünen ad, Azure AD dizininin kapsamında benzersiz olmalıdır. Harfler, rakamlar, boşluklar ve özel karakterler içerebilir. En fazla karakter sayısı 128 ' dir. |
+| `Id` | Yes | Dize | Özel rolün benzersiz KIMLIĞI. Azure PowerShell ve Azure CLı için bu KIMLIK, yeni bir rol oluşturduğunuzda otomatik olarak oluşturulur. |
+| `IsCustom` | Yes | Dize | Bunun özel bir rol olup olmadığını gösterir. Özel roller için `true` olarak ayarlayın. |
+| `Description` | Yes | Dize | Özel rolün açıklaması. Harfler, rakamlar, boşluklar ve özel karakterler içerebilir. En fazla karakter sayısı 1024 ' dir. |
+| `Actions` | Yes | String [] | Rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [Eylemler](role-definitions.md#actions). |
+| `NotActions` | Hayır | String [] | İzin verilen `Actions`hariç tutulan yönetim işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [NotActions](role-definitions.md#notactions). |
+| `DataActions` | Hayır | String [] | Rolün bu nesne içindeki verilerinize gerçekleştirilmesine izin verdiği veri işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [Dataactions](role-definitions.md#dataactions). |
+| `NotDataActions` | Hayır | String [] | İzin verilen `DataActions`hariç tutulan veri işlemlerini belirten dizeler dizisi. Daha fazla bilgi için bkz. [Notdataactions](role-definitions.md#notdataactions). |
+| `AssignableScopes` | Yes | String [] | Özel rolün atama için kullanılabilir olduğu kapsamları belirten dizeler dizisi. Özel roller için şu anda `AssignableScopes` kök kapsamına (`"/"`) veya bir yönetim grubu kapsamına ayarlayamazsınız. Daha fazla bilgi için bkz. [Astifblescopes](role-definitions.md#assignablescopes) ve [kaynaklarınızı Azure Yönetim gruplarıyla düzenleme](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Özel bir rol oluşturabilir, silebilir, güncelleştirebilir veya görüntüleyebilir
 
-Yerleşik rollerde olduğu gibi, `AssignableScopes` özelliği rolün atama için kullanılabilir olduğu kapsamları belirtir. Özel bir rol için `AssignableScopes` özelliği ayrıca, özel rolü kimlerin oluşturerişebileceğini, silediğini, güncelleştirediğini veya görüntüleyemeyeceğini de denetler.
+Yerleşik rollerde olduğu gibi `AssignableScopes` özelliği de rolün atama için kullanılabilir olduğu kapsamları belirtir. Özel bir rolün `AssignableScopes` özelliği, özel rolü kimin oluşturabileceğiniz, silebilen, güncelleştirebilen veya görüntüleyebileceği kişileri de denetler.
 
 | Görev | İşlem | Açıklama |
 | --- | --- | --- |
-| Özel bir rol oluşturma/silme | `Microsoft.Authorization/ roleDefinitions/write` | Özel rolün tüm `AssignableScopes` ' larında bu işleme verilen kullanıcılar, bu kapsamlarda kullanılmak üzere özel roller oluşturabilir (veya silebilir). Örneğin, [sahipler](built-in-roles.md#owner) ve [Kullanıcı erişimi](built-in-roles.md#user-access-administrator) aboneliklerinin, kaynak gruplarının ve kaynakların yöneticileri. |
-| Özel rolü güncelleştirme | `Microsoft.Authorization/ roleDefinitions/write` | Özel rolün tüm `AssignableScopes` ' larında bu işleme verilen kullanıcılar, bu kapsamlardaki özel rolleri güncelleştirebilir. Örneğin, [sahipler](built-in-roles.md#owner) ve [Kullanıcı erişimi](built-in-roles.md#user-access-administrator) aboneliklerinin, kaynak gruplarının ve kaynakların yöneticileri. |
+| Özel bir rol oluşturma/silme | `Microsoft.Authorization/ roleDefinitions/write` | Özel rolün tüm `AssignableScopes` bu işleme verilen kullanıcılar, bu kapsamlarda kullanılmak üzere özel roller oluşturabilir (veya silebilir). Örneğin, [sahipler](built-in-roles.md#owner) ve [Kullanıcı erişimi](built-in-roles.md#user-access-administrator) aboneliklerinin, kaynak gruplarının ve kaynakların yöneticileri. |
+| Özel rolü güncelleştirme | `Microsoft.Authorization/ roleDefinitions/write` | Özel rolün tüm `AssignableScopes` bu işleme verilen kullanıcılar, bu kapsamlardaki özel rolleri güncelleştirebilir. Örneğin, [sahipler](built-in-roles.md#owner) ve [Kullanıcı erişimi](built-in-roles.md#user-access-administrator) aboneliklerinin, kaynak gruplarının ve kaynakların yöneticileri. |
 | Özel bir rol görüntüleme | `Microsoft.Authorization/ roleDefinitions/read` | Bu işlem bir kapsamda verilen kullanıcılar, bu kapsamda atama için kullanılabilen özel rolleri görüntüleyebilir. Tüm yerleşik roller, özel rollerin atama için kullanılabilir olmasını sağlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
