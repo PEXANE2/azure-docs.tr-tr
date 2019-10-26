@@ -1,119 +1,117 @@
 ---
-title: Azure Application Insights hızlı başlangıç | Microsoft Docs
+title: Azure Application Insights ile Hızlı Başlangıç | Microsoft Docs
 description: Application Insights ve App Center izleme için bir mobil uygulamayı hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 2c198ce8af17912d3174269b6cced96b5c1ac8bd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: fe514e7a05701901759ab5453e1c1d02870da91d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243242"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900545"
 ---
-# <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center ve Application Insights mobil uygulamanızı analiz etmeye başlayın
+# <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobil uygulamanızı App Center ve Application Insights ile analiz etmeye başlama
 
-Bu hızlı başlangıç, uygulamanızın App Center örneğini Application Insights bağlama konusunda size rehberlik eder. Application Insights ile, App Center [analiz](https://docs.microsoft.com/mobile-center/analytics/) hizmetinde kullanılabilir olandan daha güçlü araçlarla telemetrinizi sorgulayabilir, segmentleyerek, filtreleyip analiz edebilirsiniz.
+Bu hızlı başlangıç, uygulamanızın App Center örneğini Application Insights'a bağlama işleminde size yol gösterir. Application Insights ile, telemetrinizi App Center'ın [Analytics](https://docs.microsoft.com/mobile-center/analytics/) hizmetinde sağlanandan daha güçlü araçlarla sorgulayabilir, segmentlere ayırabilir, filtreleyebilir ve analiz edebilirsiniz.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
+Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
-- Bir Azure aboneliği.
-- İOS, Android, Xamarin, Evrensel Windows veya tepki verme yerel uygulaması.
+- Azure aboneliği.
+- iOS, Android, Xamarin, Evrensel Windows veya React Native uygulaması.
  
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-up-with-app-center"></a>App Center kaydolun
 Başlamak için bir hesap oluşturun ve [App Center kaydolun](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
 
-## <a name="onboard-to-app-center"></a>App Center ekleme
+## <a name="onboard-to-app-center"></a>App Center'a ekleme
 
-Mobil uygulamanızla Application Insights kullanabilmeniz için uygulamanızı [App Center](https://docs.microsoft.com/mobile-center/)eklemeniz gerekir. Application Insights, mobil uygulamanızdan doğrudan telemetri almaz. Bunun yerine, uygulamanız App Center için özel olay telemetrisi gönderir. Daha sonra, App Center bu özel olayların kopyalarını sürekli olarak Application Insights olaylar alındığından dışa aktarır. (Bu, [APPLICATION INSIGHTS js SDK 'sı](https://github.com/Microsoft/ApplicationInsights-JS) için veya Telemetriyi doğrudan Application Insights ' e gönderilen [tepki verme yerel eklentisine](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) uygulanmaz.)
+Application Insights'ı mobil uygulamanızla kullanabilmeniz için, önce uygulamanızı [App Center](https://docs.microsoft.com/mobile-center/)'a eklemelisiniz. Application Insights doğrudan mobil uygulamanızdan telemetri almaz. Bunun yerine, uygulamanız özel olay telemetrisini App Center'a gönderir. Ardından, App Center olaylar alındıkça bu özel olayların kopyalarını sürekli Application Insights'a aktarır. (Bu, [APPLICATION INSIGHTS js SDK 'sı](https://github.com/Microsoft/ApplicationInsights-JS) için veya Telemetriyi doğrudan Application Insights ' e gönderilen [tepki verme yerel eklentisine](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/vNext/extensions/applicationinsights-react-native) uygulanmaz.)
 
-Uygulamanızı eklemek için uygulamanızın desteklediği her platform için App Center hızlı başlangıcı ' nı izleyin. Her platform için ayrı App Center örnekleri oluşturun:
+Uygulamanızı eklemek için, uygulamanızın desteklediği her platform için App Center hızlı başlangıç yönergelerini izleyin. Her platform için ayrı App Center örnekleri oluşturun:
 
 * [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios).
 * [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android).
 * [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin).
-* [Evrensel Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp).
-* [Yerel olarak tepki](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native)verin.
+* [Universal Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp).
+* [React Native](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native).
 
-## <a name="track-events-in-your-app"></a>Uygulamanızdaki olayları izleyin
+## <a name="track-events-in-your-app"></a>Uygulamanızda olayları izleme
 
-Uygulamanız App Center için eklendi sonra, App Center SDK kullanılarak özel olay telemetrisi gönderecek şekilde değiştirilmesi gerekir. Özel olaylar, Application Insights 'ye aktarılmış tek App Center telemetri türüdür.
+Uygulamanız App Center'a eklendikten sonra, App Center SDK'sını kullanarak özel olay telemetrisi gönderecek şekilde değiştirilmesi gerekir. Application Insights'a aktarılan tek App Center telemetrisi türü, özel olaylardır.
 
-İOS uygulamalarından özel olayları göndermek için App Center SDK 'sında `trackEvent` veya `trackEvent:withProperties` yöntemlerini kullanın. [İOS uygulamalarından olayları izleme hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/mobile-center/sdk/analytics/ios)
+iOS uygulamalarından özel olayları göndermek için App Center SDK'sında `trackEvent` veya `trackEvent:withProperties` yöntemlerini kullanın. [iOS uygulamalarındaki olayları izleme hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/mobile-center/sdk/analytics/ios)
 
 ```Swift
 MSAnalytics.trackEvent("Video clicked")
 ```
 
-Android uygulamalarından özel olayları göndermek için App Center SDK 'sında `trackEvent` yöntemini kullanın. [Android uygulamalarından olayları izleme hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/mobile-center/sdk/analytics/android)
+Android uygulamalarından özel olayları göndermek için App Center SDK'sında `trackEvent` yöntemini kullanın. [Android uygulamalarındaki olayları izleme hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/mobile-center/sdk/analytics/android)
 
 ```Java
 Analytics.trackEvent("Video clicked")
 ```
 
-Diğer uygulama platformlarından özel olayları göndermek için App Center SDK 'lerinde `trackEvent` yöntemlerini kullanın.
+Diğer uygulama platformlarından özel olayları göndermek için, App Center SDK'larında `trackEvent` yöntemlerini kullanın.
 
-Özel olaylarınızın alındığından emin olmak için App Center **analiz** bölümünün altındaki **Olaylar** sekmesine gidin. Olayların, uygulamanızdan gönderildiklerinde gösterilmesi birkaç dakika sürebilir.
+Özel olaylarınızın alındığından emin olmak için, App Center'daki **Analiz** bölümünün altında **Olaylar** sekmesine gidin. Uygulamanızdan gönderilen olayların gösterilmesi birkaç dakika sürebilir.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
-Uygulamanız özel olayları gönderdikten ve bu olaylar App Center tarafından alındıktan sonra, Azure portal bir App Center türü Application Insights kaynağı oluşturmanız gerekir:
+Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alındıktan sonra, Azure Portal'da App Center türünde bir Application Insights kaynağı oluşturmalısınız:
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. @No__t **kaynak oluştur**-1**Geliştirici Araçları** > **Application Insights**' yı seçin.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+2. **Kaynak oluştur** > **Geliştirici araçları** > **Application Insights** seçeneğini belirleyin.
 
     > [!NOTE]
     > İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ' a giderek daha fazla bilgi edinebilirsiniz.
 
-    Bir yapılandırma kutusu görünür. Giriş alanlarını doldurmanız için aşağıdaki tabloyu kullanın.
+    Yapılandırma kutusu görüntülenir. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
     | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
-   | **Ad**      | "MyApp-iOS" gibi bazı genel benzersiz değerler | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-     | **Kaynak grubu**     | Yeni bir kaynak grubu veya menüden var olan bir grup | Yeni Application Insights kaynağın oluşturulacağı kaynak grubu |
-   | **Konum** | Menüden bir konum | Size yakın bir konum seçin veya uygulamanızın nerede barındırıldığını neredeyse |
+   | **Adı**      | Genel olarak benzersiz bir değer, örneğin "Uygulamam-iOS" | İzlemekte olduğunuz uygulamayı tanımlayan ad |
+     | **Kaynak Grubu**     | Yeni bir kaynak grubu veya menüde var olanlardan biri | İçinde yeni Application Insights kaynağının oluşturulacağı kaynak grubu |
+   | **Konum** | Menüden bir konum | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-3. **Oluştur**'u tıklatın.
+3. **Oluştur**’a tıklayın.
 
-Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, her platform için bir tane olmak üzere ayrı Application Insights kaynakları oluşturmak en iyisidir.
+Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, en iyisi her platform için ayrı bir Application Insights kaynağı oluşturmaktır.
 
-## <a name="export-to-application-insights"></a>Application Insights dışarı aktar
+## <a name="export-to-application-insights"></a>Application Insights'a aktarma
 
 Yeni Application Insights kaynağında **genel bakış** sayfasında. İzleme anahtarını kaynağından kopyalayın.
 
 Uygulamanızın [App Center](https://appcenter.ms/) örneğinde:
 
-1. **Ayarlar** sayfasında, **dışarı aktar**' a tıklayın.
-2. **Yeni dışarı aktarma**' yı seçin, **Application Insights**seçin ve **Özelleştir**' e tıklayın.
+1. **Ayarlar** sayfasında **Dışarı Aktar**'a tıklayın.
+2. **Yeni Dışarı Aktarma**'yı seçin, **Application Insights**'ı seçin ve ardından **Özelleştir**'e tıklayın.
 3. Application Insights izleme anahtarınızı kutuya yapıştırın.
-4. Application Insights kaynağınızı içeren Azure aboneliğinin kullanımının arttırılmasının onayı. Her Application Insights kaynak, ayda alınan ilk 1 GB veri için ücretsizdir. [Application Insights fiyatlandırması hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/application-insights/)
+4. Application Insights kaynağınızı içeren Azure aboneliğinin kullanımını artırmayı onaylayın. Her Application Insights kaynağı için, her ay alınan ilk 1 GB veri ücretsizdir. [Application Insights fiyatlandırması hakkında daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/application-insights/)
 
-Uygulamanızın desteklediği her platform için bu işlemi tekrarlamaya unutmayın.
+Uygulamanızın desteklediği her platformda bu işlemi yinelemeyi unutmayın.
 
-[Dışarı aktarma](https://docs.microsoft.com/mobile-center/analytics/export) kurulduktan sonra, App Center tarafından alınan her özel olay Application Insights kopyalanır. Olayların Application Insights gelmesi birkaç dakika sürebilir, bu nedenle hemen gösterilmediğinde daha fazla tanı yapmadan önce bir bit bekleyin.
+[Dışarı aktarma](https://docs.microsoft.com/mobile-center/analytics/export) ayarlandıktan sonra, App Center tarafından alınan her özel olay Application Insights'a kopyalanır. Olayların Application Insights'a ulaşması birkaç dakika sürebileceğinden, olaylar hemen görüntülenmezse başka tanılama işlemlerine geçmeden önce biraz bekleyin.
 
-İlk kez bağlandığınızda daha fazla veri sağlamak için App Center içindeki özel olayların en son 48 saati Application Insights otomatik olarak verilir.
+İlk bağlandığınızda size daha fazla veri vermek için, App Center'daki son 48 saatin özel olayları otomatik olarak Application Insights'a aktarılır.
 
-## <a name="start-monitoring-your-app"></a>Uygulamanızı izlemeye başlayın
+## <a name="start-monitoring-your-app"></a>Uygulamanızı izlemeyi başlatma
 
-Application Insights, uygulamalarınızdan özel olay telemetrisini, App Center analiz araçlarının ötesinde sorgulayabilir, segmentleyip çözümleyebilir ve analiz edebilir.
+Application Insights, uygulamalarınızın özel olay telemetrisini App Center'ın sağladığı analiz araçlarının çok ötesinde sorgulayabilir, segmentlere ayırabilir, filtreleyebilir ve analiz edebilir.
 
 1. **Özel olay telemetrinizi sorgulayın.** Application Insights **genel bakış** sayfasında **Günlükler (Analiz)** öğesini seçin.
 
    Application Insights kaynağınız ile ilişkili Application Insights günlükleri (Analiz) portalı açılır. Günlükler (Analiz) portalı Log Analytics sorgu dilini kullanarak verilerinizi doğrudan sorgulamanıza olanak tanıyarak, uygulamanız ve kullanıcılarınızla ilgili rastgele karmaşık sorular sorabilirsiniz.
    
-   Günlükler (Analiz) portalında yeni bir sekme açın, sonra aşağıdaki sorguyu yapıştırın. Son 24 saat içinde uygulamanızdan her bir özel olayı kaç farklı kullanıcının gönderdiğini, bu ayrı sayımlar halinde sıralanmış bir sayı döndürür.
+   Günlükler (Analiz) portalında yeni bir sekme açın, sonra aşağıdaki sorguyu yapıştırın. Son 24 saat içinde uygulamanızdan her özel olayı ayrı ayrı kaç kullanıcının gönderdiğini, bu ayrı sayımlara göre sıralanmış olarak döndürür.
 
    ```AIQL
    customEvents
@@ -124,50 +122,50 @@ Application Insights, uygulamalarınızdan özel olay telemetrisini, App Center 
 
    ![Günlükler (Analiz) portalı](./media/mobile-center-quickstart/analytics-portal-001.png)
 
-   1. Metin düzenleyicisinde sorgu üzerinde herhangi bir yere tıklayarak sorguyu seçin.
-   2. Sonra sorguyu çalıştırmak için **Git** ' e tıklayın. 
+   1. Metin düzenleyicisinde sorgunun herhangi bir yerine tıklayarak sorguyu seçin.
+   2. Ardından, **Git**'e tıklayarak sorguyu çalıştırın. 
 
-   [Application Insights Analytics](../../azure-monitor/app/analytics.md) ve [Log Analytics sorgu dili](https://aka.ms/LogAnalyticsLanguageReference)hakkında daha fazla bilgi edinin.
+   [Application Insights Analytics](../../azure-monitor/app/analytics.md) ve [Log Analytics sorgu dili](https://aka.ms/LogAnalyticsLanguageReference) hakkında daha fazla bilgi edinin.
 
 
-2. **Özel olay telemetrinizi segmentlere ayırın ve filtreleyin.** Application Insights **genel bakış** sayfasında, Içindekiler tablosunda **Kullanıcılar** ' ı seçin.
+2. **Özel olay telemetrinizi segmentlere ayırın ve filtreleyin.** Application Insights **Genel Bakış** sayfasında, içindekiler tablosundan **Kullanıcılar**'ı seçin.
 
-   ![Kullanıcılar araç simgesi](./media/mobile-center-quickstart/users-icon-001.png)
+   ![Kullanıcılar aracı simgesi](./media/mobile-center-quickstart/users-icon-001.png)
 
-   Kullanıcılar Aracı, uygulamanızın kaç kullanıcının belirli düğmelere tıkladığını, belirli ekranları ziyaret edildiğini veya App Center SDK ile bir olay olarak izlemekte olduğunuz başka herhangi bir eylemi gerçekleştirmiş olduğunu gösterir. App Center olaylarınızı segmentleyip filtrelemeye yönelik bir yol arıyorsanız, kullanıcılar aracı harika bir seçimdir.
+   Kullanıcılar aracı, belirli düğmelere tıklayan, belirli ekranları ziyaret eden veya App Center SDK'sıyla olay olarak izlediğiniz başka herhangi bir eylemi gerçekleştiren uygulama kullanıcılarınızın sayısını gösterir. App Center olaylarınızı segmentlere ayırmanın ve filtrelemenin bir yolunu arıyorsanız, Kullanıcılar aracı harika bir seçenektir.
 
    ![Kullanıcılar aracı](./media/mobile-center-quickstart/users-001.png) 
 
-   Örneğin, **bölme** ölçütü açılır menüsünde **ülke veya bölge** ' yi seçerek, kullanımınızı coğrafya ile segmentleyebilirsiniz.
+   Örneğin, **Bölme ölçütü** açılan menüsünde **Ülke veya bölge**'yi seçerek kullanımınızı bölgelere göre segmentlere ayırın.
 
-3. **Uygulamanızda dönüştürme, bekletme ve gezinme düzenlerini çözümleyin.** Application Insights **genel bakış** sayfasında, içindekiler tablosunda **Kullanıcı akışları** ' i seçin.
+3. **Uygulamanızdaki dönüştürme, elde tutma ve gezinme desenlerini analiz edin.** Application Insights **Genel Bakış** sayfasında, içindekiler tablosundan **Kullanıcı Akışları**'nı seçin.
 
    ![Kullanıcı Akışları aracı](./media/mobile-center-quickstart/user-flows-001.png)
 
-   Kullanıcı Akışları Aracı, kullanıcıların bir başlangıç olayından sonra hangi olayların gönderileceğini görselleştirir. Kullanıcıların uygulamanızda nasıl gezindiğinden ilgili genel bir resim almak için faydalıdır. Ayrıca, çok sayıda kullanıcının uygulamanızdan aldığı yerleri açığa çıkarır veya aynı eylemleri ve üzerine tekrarlayan şekilde tekrarda bulunabilir.
+   Kullanıcı Akışları aracı bazı başlangıç olaylarından sonra kullanıcıların gönderdiği olayları görselleştirir. Kullanıcıların uygulamanızdaki gezintilerinin genel bir görünümünü elde etme açısından yararlı olur. Ayrıca, kullanıcıların uygulamanızdan ayrıldığı veya aynı eylemleri tekrar tekrar kullandığı yerleri ortaya koyabilir.
 
-   Kullanıcı Akışları ek olarak, Application Insights belirli soruları yanıtlamak için birkaç farklı Kullanıcı davranışı analiz aracı vardır:
+   Kullanıcı Akışları'na ek olarak, Application Insights'ta belirli soruları yanıtlamak için başka kullanıcı davranış analizi araçları da vardır:
 
-   * Dönüştürme oranlarını analiz etmek ve izlemek için **funlar** .
-   * Uygulamanızın zaman içindeki kullanıcıları ne kadar iyi koruduğunu çözümlemek için **bekletme** .
-   * Görsel öğeleri ve metinleri paylaşılabilir bir raporda birleştirmek için **çalışma kitapları** .
-   * Daha sonra diğer analiz araçlarından kolayca başvurulabilmeleri için belirli kullanıcı veya olay gruplarını adlandırmak ve kaydetmek üzere **Cohorts** .
+   * **Huniler**, dönüştürme oranlarını analiz etmek ve izlemek için kullanılır.
+   * **Elde tutma**, uygulamanızın zaman içinde kullanıcılarını ne düzeyde elinde tutabildiğini analiz etmek için kullanılır.
+   * **Çalışma kitapları**, görsellerle metinleri paylaşılabilir bir raporda bir araya getirmek için kullanılır.
+   * **Kohortlar**, başka analiz araçlarından kolayca başvuruda bulunabilmek amacıyla belirli kullanıcı veya olay gruplarını adlandırmak ve kaydetmek için kullanılır.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-App Center Application Insights kullanmaya devam etmek istemiyorsanız, App Center dışarı aktarmayı kapatın ve Application Insights kaynağını silin. Bu, Application Insights bu kaynak için daha fazla ücretlendirileceğini engeller.
+Application Insights'ı App Center ile kullanmaya devam etmek istemiyorsanız, App Center'da dışarı aktarmayı kapatın ve Application Insights kaynağını silin. Bu işlem, Application Insights'ın bu kaynak için sizi daha fazla ücretlendirmesini önler.
 
-App Center dışarı aktarmayı devre dışı bırakmak için:
+App Center'da dışarı aktarmayı kapatmak için:
 
-1. App Center, **Ayarlar** ' a gidin ve **dışarı aktar**' ı seçin.
-2. Silmek istediğiniz Application Insights dışarı aktarmayı tıklatın, ardından alt kısımdaki **dışarı aktarmayı Sil** ' e tıklayın ve onaylayın.
+1. App Center'da **Ayarlar**'a gidin ve **Dışarı Aktar**'ı seçin.
+2. Silmek istediğiniz Application Insights dışarı aktarmasına tıklayın, sonra da alt kısımdaki **Dışarı aktarmayı sil**'e tıklayın ve onaylayın.
 
 Application Insights kaynağını silmek için:
 
-1. Azure portal sol taraftaki menüsünde **kaynak grupları** ' na tıklayın ve ardından Application Insights kaynağınızın oluşturulduğu kaynak grubunu seçin.
-2. Silmek istediğiniz Application Insights kaynağını açın. Sonra kaynağın üst menüsünde **Sil** ' e tıklayın ve onaylayın. Bu işlem, Application Insights aktarılmış verilerin kopyasını kalıcı olarak siler.
+1. Azure Portal'ın sol menüsünde **Kaynak grupları**'na tıklayın ve ardından içinde Application Insights kaynağınızın oluşturulduğu kaynak grubunu seçin.
+2. İstediğiniz Application Insights kaynağını açın ve silin. Sonra, kaynağın üstteki menüsünde **Sil**'e tıklayın ve onaylayın. Bu işlem, verilerin Application Insights'a aktarılan kopyasını kalıcı olarak siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Müşterilerin uygulamanızı nasıl kullandığını anlayın](../../azure-monitor/app/usage-overview.md)
+> [Müşterilerin uygulamanızı nasıl kullandığını anlama](../../azure-monitor/app/usage-overview.md)

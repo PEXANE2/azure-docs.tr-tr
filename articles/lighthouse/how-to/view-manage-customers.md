@@ -4,15 +4,15 @@ description: Azure tarafından atanan kaynak yönetimini kullanan bir hizmet sa�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302753"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898904"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
 
@@ -20,7 +20,7 @@ ms.locfileid: "72302753"
 
 Azure portal **müşterilerimiz** sayfasına erişmek Için, **tüm hizmetler**' i seçin, ardından **müşterilerimi** arayın ve seçin. Ayrıca, Azure portal üst kısmındaki arama kutusuna "My Customers" girerek de bulabilirsiniz.
 
-**Müşterilerimin** yalnızca, abonelikleri veya kaynak grupları temsil eden müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle çalışıyorsanız (örneğin, [bulut çözüm sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview)aracılığıyla), kaynakları Temsilcili kaynak yönetimine yerleştirmediğiniz sürece burada bu müşterilerle ilgili bilgileri görmezsiniz.
+**Müşterilerimin** en üst bölümünde yalnızca abonelik veya kaynak grubu atanmış olan müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle çalışıyorsanız (örneğin, [bulut çözüm sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview)aracılığıyla), kaynakları Temsilcili kaynak yönetimine yerleştirmediğiniz sürece burada bu müşterilerle ilgili bilgileri görmezsiniz. Sayfada daha düşük olan **bulut çözümü sağlayıcısı (Önizleme)** bölümü, [Microsoft Müşteri SÖZLEŞMESI 'ni (MCA) imzalayan](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve eklendi olup olmadıkları bağımsız olarak Azure planına ait olan CSP müşterileriniz için fatura bilgilerini ve kaynakları gösterir. Azure tarafından atanan kaynak yönetimi için. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
 > Müşterileriniz, Azure portal hizmet **sağlayıcılarına** giderek hizmet sağlayıcılarıyla ilgili bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [hizmet sağlayıcılarını görüntüleme ve yönetme](view-manage-service-providers.md).

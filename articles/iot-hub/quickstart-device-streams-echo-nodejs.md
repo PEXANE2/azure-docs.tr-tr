@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c7257ec35f9a53f84edebd5e15b7144c49daf682
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514943"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900838"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla Node. js ' de bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -44,9 +44,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'Lar için desteklenir:
 
-*  **Orta ABD**
-
-*  **EUAP Orta ABD**
+  * Orta ABD
+  * EUAP Orta ABD
+  * Kuzey Avrupa
+  * Güneydoğu Asya
 
 Bu hızlı başlangıçta hizmet tarafı uygulamasını çalıştırmak için, geliştirme makinenizde Node. js ile v10 arasındaki. x. x veya üzeri gerekir.
 

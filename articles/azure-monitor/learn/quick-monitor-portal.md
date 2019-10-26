@@ -1,21 +1,19 @@
 ---
 title: ASP.NET Web Uygulamanızı Azure Application Insights ile izleme | Microsoft Docs
 description: Application Insights ile izlemek üzere bir ASP.NET Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 1edb83fcbe03fd113c59986bdbb6afcf2a0970bb
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1aab9009c2c33522abdeae6ca865a35b9fc104e4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916078"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900482"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>ASP.NET Web Uygulamanızı izlemeye başlama
 
@@ -33,7 +31,7 @@ Bu hızlı başlangıcı tamamlamak için:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="enable-application-insights"></a>Application Insights'ı Etkinleştir
+## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
 1. Projenizi Visual Studio 2019 ' de açın.
 2. Proje menüsünden **Application Insights’ı Yapılandır**’ı seçin. Visual Studio, uygulamanıza Application Insights SDK'sını ekler.
@@ -47,7 +45,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 4. Aboneliğinizi seçin ve **Kaydet**’e tıklayın.
 
-5.  >  **Proje** seçin NuGetpaketleri > **paket kaynağını seçin: NuGet.org**Application Insights SDK paketlerini en son kararlı sürüme güncelleştirin. > 
+5. **Proje** seçin > **NuGet Paketlerini Yönet** > **paket kaynağı: NuGet.org** > Application Insights SDK paketlerini en son kararlı sürüme **güncelleştirin** .
 
 6. **Hata Ayıkla** menüsünden **Hata Ayıklamayı Başlat**’ı seçerek veya F5 tuşuna basarak uygulamanızı çalıştırın.
 
@@ -71,7 +69,7 @@ Artık Application Insights’ı Azure portalında açarak çalışan uygulaman�
 
     ![Uygulama Eşlemesi](media/quick-monitor-portal/05-appmap.png)
 
-3. Uygulama bileşenlerinden birinde bulunan **günlüklerde (Analiz)** uygulama **Analizi** simgesine ![](media/quick-monitor-portal/app-viewinlogs-icon.png) tıklayın. Bu, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Günlükler (Analiz)** açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. Uygulama **Analizi** simgesine, uygulama bileşenlerinden birindeki application Map](media/quick-monitor-portal/app-viewinlogs-icon.png) **View for logs (Analytics)** ![tıklayın. Bu, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Günlükler (Analiz)** açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
     ![Analiz](media/quick-monitor-portal/6viewanalytics.png)
 

@@ -4,15 +4,15 @@ description: CSP iş ortakları için, Azure tarafından atanan kaynak yönetimi
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/17/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cf9b834d79fa36bbe327a72089388b3f1a1a0c14
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550304"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901827"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure açık Thouse ve bulut çözümü sağlayıcısı programı
 
@@ -36,6 +36,11 @@ Azure Temsilcili kaynak yönetimini kullanarak, aşağıdaki diyagramda gösteri
 CSP programı aracılığıyla oluşturduğunuz bir aboneliği [eklemek, Azure 'un Temsilcili kaynak yönetimine abonelik](../how-to/onboard-customer.md)ekleme bölümünde açıklanan adımları izler. Kiracınızda yönetici Aracısı rolüne sahip olan tüm kullanıcılar bu ekleme işlemini gerçekleştirebilir.
 
 ![AOI ve Azure tarafından atanan kaynak yönetimini kullanan Kiracı Yönetimi](../media/csp-2.jpg)
+
+> [!NOTE]
+> Azure portal [ **müşteriler** sayfasında](../how-to/view-manage-customers.md) , [MICROSOFT Müşteri Sözleşmesi 'ni (MCA) IMZALAYAN](https://docs.microsoft.com/partner-center/confirm-customer-agreement) ve şu anda bulunan CSP müşterilerinin fatura bilgilerini ve kaynaklarını görüntüleyen bir **bulut çözümü sağlayıcısı (Önizleme)** bölümü vardır. Azure planı altında. Daha fazla bilgi için bkz. [Microsoft Iş ortağı sözleşmesi Faturalandırma hesabınızı kullanmaya başlama](https://docs.microsoft.com/azure/billing/mpa-overview).
+>
+> CSP müşterileri, Azure tarafından yetkilendirilen kaynak yönetimi için eklendi olup olmadığı konusunda bu bölümde görünebilir. Sahip olmaları durumunda **müşteriler bölümünde,** [müşterileri görüntüleme ve yönetme](../how-to/view-manage-customers.md)bölümünde açıklandığı gibi da görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

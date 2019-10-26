@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0226c9f1b90495cdfd47a5c5c7a415a36761753d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816097"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901587"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric'e genel bakış
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri ve kapsayıcıları paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur. Service Fabric ayrıca bulut yerel uygulamalarını geliştirme ve yönetme sürecinde karşılaşılan başlıca sorunların giderilmesini de sağlar. Geliştiriciler ve yöneticiler, karmaşık altyapı sorunlarını çözmeye çalışmak yerine görev açısından kritik, zorlu iş yüklerini uygulamaya odaklanabilir. Service Fabric, bu iş yüklerinin ölçeklenebilir, güvenilir ve yönetilebilir olmasını sağlar. Service Fabric, kapsayıcılarda çalıştırılan 1. katman bulut ölçeğindeki bu kurumsal sınıf uygulamaları oluşturmak ve yönetmek için tasarlanan yeni nesil bir platformdur.
@@ -36,9 +36,7 @@ Service Fabric, makinenin küme olarak adlandırılan bir paylaşılan havuzunda
 
 Service Fabric bugün Azure SQL Veritabanı, Azure Cosmos DB, Cortana, Microsoft Power BI, Microsoft Intune, Azure Event Hubs, Azure IoT Hub, Dynamics 365, Skype Kurumsal ve birçok temel Azure hizmeti gibi çok sayıda Microsoft hizmetini güçlendirir.
 
-Service Fabric, gerektiği kadar küçükten başlatılabilecek ve yüzlerce veya binlerce makineyle muazzam bir ölçeğe kadar büyütülebilecek bulut yerel hizmetleri oluşturmaya uyarlanmıştır.
-
-Günümüzde İnternet ölçeğindeki hizmetler mikro hizmetlerden oluşturulur. Mikro hizmetlere örnek olarak protokol ağ geçitleri, kullanıcı profilleri, alışveriş sepetleri, envanter işleme, kuyruklar ve önbellekler verilebilir. Service Fabric, durum bilgisi olan veya olmayan her mikro hizmete (veya kapsayıcıya) benzersiz bir ad veren bir mikro hizmetler platformudur.
+Service Fabric, gerektiği kadar küçükten başlatılabilecek ve yüzlerce veya binlerce makineyle muazzam bir ölçeğe kadar büyütülebilecek bulut yerel hizmetleri oluşturmaya uyarlanmıştır. Günümüzde İnternet ölçeğindeki hizmetler mikro hizmetlerden oluşturulur. Mikro hizmetlere örnek olarak protokol ağ geçitleri, kullanıcı profilleri, alışveriş sepetleri, envanter işleme, kuyruklar ve önbellekler verilebilir. 
 
 Service Fabric, bu mikro hizmetlerden oluşturulmuş uygulamalara kapsamlı çalışma zamanı ve yaşam döngüsü yönetim özellikleri sağlar. Mikro hizmetleri, Service Fabric kümesi genelinde dağıtılan ve etkinleştirilen kapsayıcıların içinde barındırır. Sanal makinelerden taşıyıcılara geçiş, büyüklük sırasına göre yoğunluk artışını mümkün kılar. Benzer biçimde, kapsayıcılardan bu kapsayıcıların içindeki mikro hizmetlere geçtiğinizde de yoğunlukta başka bir büyüklük sırası mümkün olur. Örneğin, Azure SQL Veritabanı'nın tek bir kümesi, toplamda yüz binlerce veritabanını barındıran on binlerce kapsayıcının çalıştırıldığı yüzlerce makineden oluşur. Her veritabanı bir durum bilgisi olan bir Service Fabric mikro hizmetidir. 
 

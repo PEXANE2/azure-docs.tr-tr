@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4474a36c2b87a618a9f755d2f42e330e837568f4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5d610f14dc037d1585b7f8ec1e0dd28944847b7a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516475"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900865"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -56,6 +56,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
   * Orta ABD
   * EUAP Orta ABD
+  * Kuzey Avrupa
+  * Güneydoğu Asya
 
 * [Visual Studio 2019](https://www.visualstudio.com/vs/) ' i, iş yükünün etkin [ C++ olduğu masaüstü geliştirmeyle](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) birlikte yükler.
 * En son [Git](https://git-scm.com/download/) sürümünü yükleyin.
@@ -149,7 +151,7 @@ Bu bölümde, SSH trafiğini tünele bir uçtan uca akış kurarsınız.
 
 ### <a name="run-the-device-local-proxy-application"></a>Cihaz yerel proxy uygulamasını çalıştırma
 
-1. @No__t_1 klasöründe **iothub_client_c2d_streaming_proxy_sample. c** kaynak dosyasını düzenleyin ve cihaz Bağlantı dizenizi, hedef cihazın IP/ana bilgisayar adını ve SSH bağlantı noktasını 22:
+1. `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`klasöründe **iothub_client_c2d_streaming_proxy_sample. c** kaynak dosyasını düzenleyin ve cihaz Bağlantı dizenizi, hedef cihazın IP/ana bilgisayar adını ve SSH bağlantı noktasını 22:
 
    ```C
    /* Paste in your device connection string  */
@@ -203,7 +205,7 @@ ssh {username}@localhost -p 2222
 
 Bu noktada, SSH oturum açma penceresi, kimlik bilgilerinizi girmenizi ister.
 
-Aşağıdaki görüntüde, `IP_address:22` adresindeki SSH Daemon 'a bağlanan cihaz yerel ara sunucusunda konsol çıktısı gösterilmektedir:
+Aşağıdaki görüntüde, `IP_address:22`adresindeki SSH Daemon 'a bağlanan cihaz yerel ara sunucusunda konsol çıktısı gösterilmektedir:
 
 ![Cihaz-yerel proxy çıkışı](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 

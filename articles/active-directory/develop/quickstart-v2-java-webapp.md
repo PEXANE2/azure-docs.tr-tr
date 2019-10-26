@@ -15,105 +15,130 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 8bb9073ccb4aef81b46b3b2b87730ddede5c0ff7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
-ms.translationtype: MT
+ms.openlocfilehash: d54a4f52d6ddf064ef612d789c80ab01605b7740
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240201"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893329"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Bu hızlı başlangıçta, bir Java Web uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulamanız bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar. 
+Bu hızlı başlangıçta, bir Java Web uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulamanız bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar.
 
-Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder.
+Bu hızlı başlangıcı tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerini ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesaplarını kabul eder.
 
 ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-java-webapp/java-quickstart.svg)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
+
 - [Java Development Kit (JDK)](https://openjdk.java.net/) 8 veya üzeri ve [Maven](https://maven.apache.org/).
+- Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz. [Azure AD kiracısı alma](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/).
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydedin ve indirin
+> ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için iki seçeneğiniz vardır: Express (seçenek 1) veya el ile (seçenek 2)
 > 
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. seçenek: uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
->
-> 1. [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)gidin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet**' i seçin.
-> 1. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
->
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. seçenek: uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 > 
->
+> 1. [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)gidin.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
+> 1. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
+> 
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
+> 
 > #### <a name="step-1-register-your-application"></a>1\. Adım: Uygulamanızı kaydetme
+> 
 > Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini çözümünüze el ile eklemek için şu adımları izleyin:
->
-> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
+> 
+> 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
+> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+> 
+> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->    - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `java-webapp`.
+> 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
+>    - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `java-webapp`.
 >    - **Yeniden yönlendirme URI 'sini** Şu anda boş bırakın ve **Kaydet**' i seçin.
-> 1. Uygulamanın **uygulama (istemci) kimliği** değerini bulun. Bu değeri kopyalayın, daha sonra ihtiyacınız olacaktır.
-> 1. Uygulamanın **Dizin (kiracı) kimliği** değerini bulun. Bu değeri kopyalayın, daha sonra ihtiyacınız olacaktır.
-> 1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsamples/secure/aad` ve `https://localhost:8080/msal4jsamples/graph/users` ' yi ekleyin.
->    - **Kaydet**' i seçin.
-> 1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
->     
->    - Bir anahtar açıklaması (örnek uygulama gizli anahtarı) yazın.
+> 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
+> 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
+>    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsamples/secure/aad` ve `https://localhost:8080/msal4jsamples/graph/me`ekleyin.
+>    - **Kaydet**’i seçin.
+> 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
+> 
+>    - Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı).
 >    - **1 yılda**bir anahtar süresi seçin.
->    - **Ekle**' ye tıkladığınızda, anahtar değeri görüntülenecektir. 
->    - Anahtarın değerini kopyalayın, daha sonra ihtiyacınız olacaktır.
+>    - **Ekle**' yi seçtiğinizde anahtar değeri görüntülenecektir.
+>    - Anahtarın değerini daha sonra kopyalayın. Bu anahtar değeri bir daha görüntülenmez veya başka yollarla alınabilir, bu nedenle Azure portal görünür hale geldiğinde onu kaydedin.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1\. Adım: uygulamanızı Azure portal yapılandırma
+> 
 > Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
-> 1. @No__t-0 ve `https://localhost:8080/msal4jsamples/graph/users` olarak yanıt URL 'Leri ekleyin.
+> 
+> 1. `http://localhost:8080/msal4jsamples/secure/aad` ve `https://localhost:8080/msal4jsamples/graph/me`olarak yanıt URL 'Leri ekleyin.
 > 1. Bir Istemci gizli dizisi oluşturun.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Zaten yapılandırılmış @ no__t-1, uygulamanız bu özniteliklerle yapılandırıldı.
+> > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
 #### <a name="step-2-download-the-code-sample"></a>2\. Adım: kod örneğini Indirme
- 
+
  [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
- 
- #### <a name="step-3-configure-the-code-sample"></a>3\. Adım: kod örneğini yapılandırma 
- 
+
+#### <a name="step-3-configure-the-code-sample"></a>3\. Adım: kod örneğini yapılandırma
+
  1. ZIP dosyasını yerel bir klasöre ayıklayın.
  1. Tümleşik bir geliştirme ortamı kullanıyorsanız, örneği en sevdiğiniz IDE (isteğe bağlı) içinde açın.
- 1. *Src/Main/Resources/* konumunda bulunan **Application. Properties** dosyasını açın.
- 1. Uygulama özelliklerini değiştirin.
-   1. @No__t-0 ' i bulun ve kaydettiğiniz uygulamanın **uygulama (istemci) kimliği** değeriyle `Enter_the_Application_Id_here` değerini güncelleştirin. 
-   1. @No__t-0 ' i bulun ve kaydettiğiniz uygulamanın **Dizin (kiracı) kimliği** değeriyle `Enter_the_Tenant_Name_Here` değerini güncelleştirin.
-   1. @No__t-0 ' yı bulun ve kaydettiğiniz uygulama için **gizli dizileri & sertifikalarda** oluşturduğunuz **istemci sırrı** ile `Enter_the_Client_Secret_Here` değerini güncelleştirin.
+
+ 1. Src/Main/Resources/klasöründe bulunan Application. Properties dosyasını açın ve *AAD. ClientID*, *AAD. Authority* ve *AAD. SecretKey* alanlarının değerlerini **uygulama kimliği**' nin ilgili değerleriyle değiştirin. **Kiracı kimliği** ve **istemci gizli anahtarı** aşağıdaki gibi:
+
+    ```file
+    aad.clientId=Enter_the_Application_Id_here
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Name_Here/
+    aad.secretKey=Enter_the_Client_Secret_Here
+    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    ```
 
 > [!div renderon="docs"]
-> Konum:
+> Nerede:
 >
-> - `Enter_the_Application_Id_here`-kaydettiğiniz uygulamanın uygulama kimliğidir.
-> - `Enter_the_Client_Secret_Here`- **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .
+> - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
+> - `Enter_the_Client_Secret_Here`, **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .
+> - `Enter_the_Tenant_Name_Here`-kaydettiğiniz uygulamanın **Dizin (kiracı) kimlik** değeridir.
 
 #### <a name="step-4-run-the-code-sample"></a>4\. Adım: kod örneğini çalıştırma
-1. Kod örneğini çalıştırın ve bir tarayıcı açın ve *http://localhost:8080* ' e gidin.
-1. Ön sayfa bir **oturum açma** düğmesi içerir. Azure Active Directory yeniden yönlendirmek için **oturum aç** düğmesine tıklayın. Kullanıcıdan kimlik bilgileri istenir.  
-1. Azure Active Directory kimlik doğrulamasından başarıyla doğruladıktan sonra, *http://localhost:8080/msal4jsamples/secure/aad* ' e yönlendirilir. Bunlar, uygulamada resmi olarak oturum açırlar ve sayfada oturum açmış olan hesabın bilgileri gösterilmelidir. Ayrıca, için düğmeler de içerir: 
-    - *Oturumu*kapat: geçerli kullanıcının uygulamadan oturumunu açacaksınız ve giriş sayfasına yönlendirirsiniz.
-    - *Kullanıcıları göster*: Microsoft Graph için bir belirteç alır ve sonra Kiracıdaki tüm kullanıcıları almak için isteğe ekli belirteçle Microsoft Graph çağırır.
+
+Projeyi çalıştırmak için şunlardan birini yapabilirsiniz:
+
+Katıştırılmış yay önyükleme sunucusunu kullanarak doğrudan IDE 'nizden çalıştırın veya [Maven](https://maven.apache.org/plugins/maven-war-plugin/usage.html) kullanarak bir War dosyasına paketleyin ve bunu [Apache TOMCAT](http://tomcat.apache.org/)gibi bir J2EE kapsayıcı çözümüne dağıtın.
+
+##### <a name="running-from-ide"></a>IDE 'den çalıştırma
+
+Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' a tıklayın ve ardından projenin giriş sayfasına gidin. Bu örnek için, standart giriş sayfası URL 'SI http://localhost:8080
+
+1. Ön sayfada, Azure Active Directory yeniden yönlendirmek için **oturum aç** düğmesini seçin ve kullanıcıdan kimlik bilgilerini girmesini isteyebilirsiniz.
+
+1. Kullanıcının kimliği doğrulandıktan sonra, *http://localhost:8080/msal4jsamples/secure/aad* yeniden yönlendirilir. Bunlar artık oturum açırlar ve sayfada oturum açmış hesap hakkında bilgi gösterilir. Örnek kullanıcı arabirimi aşağıdaki düğmelere sahiptir:
+    - *Oturumu*kapat: geçerli kullanıcıyı uygulamanın dışına imzalar ve bunları giriş sayfasına yönlendirir.
+    - *Kullanıcı bilgilerini göster*: Microsoft Graph için bir belirteç alır ve Microsoft Graph çağırır, bu belirteç içeren bir istekle birlikte oturum açan kullanıcı hakkında temel bilgileri döndürür.
+
+> [!IMPORTANT]
+> Bu hızlı başlangıç uygulaması, kendisini gizli istemci olarak tanımlamak için bir istemci gizli anahtarı kullanır. İstemci parolası proje dosyalarınıza düz metin olarak eklendiğinden, güvenlik nedenleriyle, uygulamayı üretim uygulaması olarak düşünmeden önce istemci parolası yerine bir sertifika kullanmanız önerilir. Sertifika kullanma hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulaması Için sertifika kimlik bilgileri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
 ## <a name="more-information"></a>Daha fazla bilgi
 
 ### <a name="getting-msal"></a>MSAL alma
-MSAL4J, kullanıcıların oturum açması ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri istemek için kullanılan bir kitaplıktır. Uygulamanızda Pod. xml veya Build. Gradle dosyasında aşağıdaki değişiklikleri yaparak bağımlılıklarınızı yönetmek için Maven veya Gradle kullanarak uygulamanıza MSAL4J ekleyebilirsiniz. 
+
+MSAL4J, kullanıcıları oturum açmak için kullanılan Java kitaplığı ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister.
+
+Uygulamanın Pod. xml (Maven) veya Build. Gradle (Gradle) dosyasında aşağıdaki değişiklikleri yaparak bağımlılıklarınızı yönetmek için Maven veya Gradle kullanarak uygulamanıza MSAL4J ekleyin.
 
 ```XML
 <dependency>
@@ -127,9 +152,9 @@ MSAL4J, kullanıcıların oturum açması ve Microsoft Identity platformu taraf�
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ```
 
-
 ### <a name="msal-initialization"></a>MSAL başlatma
-Aşağıdaki kodu MSAL4J kullanacağınız dosyanın en üstüne ekleyerek MSAL4J başvurusunu ekleyebilirsiniz: 
+
+MSAL4J kullanacağınız dosyanın en üstüne aşağıdaki kodu ekleyerek MSAL4J öğesine bir başvuru ekleyin:
 
 ```Java
 import com.microsoft.aad.msal4j.*;
@@ -140,16 +165,16 @@ import com.microsoft.aad.msal4j.*;
 İzinler ve onay hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [İzinler ve onay](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
+> [İzinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
 Bu senaryoya yönelik kimlik doğrulama akışı hakkında daha fazla bilgi edinmek için bkz. OAuth 2,0 yetkilendirme kodu akışı:
 
 > [!div class="nextstepaction"]
-> [Yetkilendirme kodu OAuth akışı](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [Yetkilendirme kodu OAuth akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
 
 Microsoft Identity platformunu geliştirmemize yardımcı olun. Kısa bir iki sorulık anketi tamamlayarak düşüncelerinizi bize söyleyin.
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Microsoft Identity platform Anketi](https://forms.office.com/Pages/ResponsePage.aspxid=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
