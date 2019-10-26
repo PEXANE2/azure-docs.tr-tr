@@ -251,6 +251,10 @@
           items:
             - name: Azure portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Sorun giderme
+          items:
+            - name: Bağlantı hatalarını giderme
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Başvuru
   items:
     - name: Azure CLI

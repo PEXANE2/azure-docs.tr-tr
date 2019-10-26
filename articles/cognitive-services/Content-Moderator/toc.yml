@@ -120,7 +120,7 @@
         - name: 'C# dilinde REST API örnekleri'
           href: samples-rest.md
         - name: Diğer Azure örnekleri
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator'
     - name: Azure web semineri serisi
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Fiyatlandırma ve limitler
