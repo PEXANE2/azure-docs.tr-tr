@@ -17,6 +17,8 @@
           href: quickstarts-sdk/java-sdk.md
         - name: Node.js SDK'sı
           href: quickstarts-sdk/node-sdk.md
+        - name: Go SDK'sı
+          href: quickstarts-sdk/go-sdk.md
     - name: REST API’sini kullanma
       items:
         - name: Uzak resmi çözümleme
