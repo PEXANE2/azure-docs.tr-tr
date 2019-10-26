@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b63a8c9defdf154f35a847f29182b49ff94ff3a6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061927"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933198"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL veritabanı ve veri ambarı için saydam veri şifrelemesi
 
@@ -69,7 +69,10 @@ Saydam bir veri şifreleme korumalı veritabanını dışarı aktardığınızda
 
 Bir SQL veritabanına veya sunucudan dışarı aktardığınızda tek bir istisna olur. Saydam veri şifrelemesi yeni veritabanında etkinleştirilmiştir, ancak BACPAC dosyası yine de şifrelenmemiştir.
 
-## <a name="manage-transparent-data-encryption-in-the-azure-portal"></a>Azure portal saydam veri şifrelemesini yönetme
+
+## <a name="manage-transparent-data-encryption"></a>Saydam veri şifrelemesini yönetme
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+Azure portal saydam veri şifrelemesini yönetin.
 
 Saydam veri şifrelemesini Azure portal aracılığıyla yapılandırmak için Azure sahibi, katkıda bulunan veya SQL güvenlik yöneticisi olarak bağlı olmanız gerekir.
 
@@ -81,7 +84,8 @@ Saydam veri şifreleme koruyucusu olarak da bilinen saydam veri şifrelemesi ana
 
 ![Kendi Anahtarını Getir desteği ile saydam veri şifrelemesi](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
-## <a name="manage-transparent-data-encryption-by-using-powershell"></a>PowerShell kullanarak saydam veri şifrelemesini yönetme
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+PowerShell kullanarak saydam veri şifrelemesini yönetin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -108,7 +112,8 @@ Azure SQL veritabanı ve veri ambarı için aşağıdaki cmdlet 'leri kullanın:
 > [!IMPORTANT]
 > Azure SQL yönetilen örneği için, bir veritabanı düzeyinde saydam veri şifrelemeyi açmak ve kapatmak için T-SQL [alter database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) komutunu kullanın ve örnek düzeyinde saydam veri şifrelemesini yönetmek Için [örnek PowerShell betiğini](transparent-data-encryption-byok-azure-sql-configure.md) kontrol edin.
 
-## <a name="manage-transparent-data-encryption-by-using-transact-sql"></a>Transact-SQL kullanarak saydam veri şifrelemesini yönetme
+# <a name="transact-sqltabazure-transactsql"></a>[Transact-SQL](#tab/azure-TransactSQL)
+Transact-SQL ' i kullanarak saydam veri şifrelemesini yönetin.
 
 Ana veritabanında bir yönetici veya **DBManager** rolünün üyesi olan bir oturum kullanarak veritabanına bağlanın.
 
@@ -116,12 +121,13 @@ Ana veritabanında bir yönetici veya **DBManager** rolünün üyesi olan bir ot
 | --- | --- |
 | [ALTER DATABASE (Azure SQL veritabanı)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | ŞIFRELEMEYI ayarlama/kapatma bir veritabanının şifresini şifreler veya şifresini çözer |
 | [sys. DM _database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Bir veritabanının şifreleme durumu ve ilişkili veritabanı şifreleme anahtarları hakkında bilgi döndürür |
-| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Her bir veri ambarı düğümünün ve ilişkili veritabanı şifreleme anahtarlarının şifreleme durumu hakkında bilgi döndürür |
+| [sys. DM _pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Her bir veri ambarı düğümünün ve ilişkili veritabanı şifreleme anahtarlarının şifreleme durumu hakkında bilgi döndürür |
 |  | |
 
 Transact-SQL ' y i kullanarak, saydam veri şifreleme koruyucusunu Key Vault bir anahtara geçirebilirsiniz. PowerShell veya Azure portal kullanın.
 
-## <a name="manage-transparent-data-encryption-by-using-the-rest-api"></a>REST API kullanarak saydam veri şifrelemesini yönetme
+# <a name="rest-apitabazure-restapi"></a>[REST API](#tab/azure-RESTAPI)
+REST API kullanarak saydam veri şifrelemesini yönetin.
 
 Saydam veri şifrelemesini REST API aracılığıyla yapılandırmak için Azure sahibi, katkıda bulunan veya SQL güvenlik yöneticisi olarak bağlı olmanız gerekir.
 Azure SQL veritabanı ve veri ambarı için aşağıdaki komut kümesini kullanın:

@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics 'de depolanan kişisel veriler için rehberlik | Microsoft Docs
 description: Bu makalede, Azure Log Analytics 'de depolanan kişisel verilerin ve bunları belirleme ve kaldırma yöntemlerinde nasıl yönetileceği açıklanır.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617300"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932139"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights depolanan kişisel verilere yönelik kılavuz
 
@@ -49,32 +43,32 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *Kullanıcı kimlikleri*: Kullanıcı kimlikleri, çok çeşitli çözümler ve tablolar içinde bulunur. Arama komutunu kullanarak, tüm veri kümeniz genelinde belirli bir kullanıcı adına bakabilirsiniz:
+* *Kullanıcı kimlikleri*: Kullanıcı kimlikleri, çok çeşitli çözüm ve tablolarda bulunur. Arama komutunu kullanarak, tüm veri kümeniz genelinde belirli bir kullanıcı adına bakabilirsiniz:
     ```
     search "[username goes here]"
     ```
   Yalnızca insan tarafından okunabilen kullanıcı adlarına değil, ayrıca doğrudan belirli bir kullanıcıya geri görünebilirler.
 * *Cihaz kimlikleri*: Kullanıcı kimlikleri gibi, cihaz kimlikleri bazen "özel" olarak kabul edilir. Bunun sorun olabileceği tabloları belirlemek için Kullanıcı kimlikleri için yukarıda listelenen yaklaşımı kullanın. 
 * *Özel veriler*: Log Analytics, koleksiyonu çeşitli yöntemlerle sağlar: özel Günlükler ve özel alanlar, [http veri toplayıcı API 'si](../../azure-monitor/platform/data-collector-api.md) ve sistem olay günlüklerinin bir parçası olarak toplanan özel veriler. Bunların tümü özel verileri içerecek şekilde açıktır ve bu tür verilerin mevcut olup olmadığını doğrulamak için incelenmelidir.
-* *Çözüm-yakalanan veriler*: Çözüm mekanizması bir açık sonlandırdığı için, uyumluluk sağlamak için çözümler tarafından oluşturulan tüm tabloları gözden geçirmeyi öneririz.
+* *Çözüm-yakalanan veriler*: çözüm mekanizması bir açık sonlandırdığı için, uyumluluk sağlamak için çözümler tarafından oluşturulan tüm tabloları gözden geçirmeyi öneririz.
 
 ### <a name="application-data"></a>Uygulama verileri
 
-* *IP adresleri*: Application Insights, varsayılan olarak tüm IP adresi alanlarını "0.0.0.0" olarak gösterir. oturum bilgilerini sürdürmek için bu değeri gerçek Kullanıcı IP 'si ile geçersiz kılmak oldukça yaygın bir modeldir. Aşağıdaki analiz sorgusu, IP adresi sütununda, son 24 saat içinde "0.0.0.0" dışındaki değerleri içeren herhangi bir tabloyu bulmak için kullanılabilir:
+* *IP adresleri*: Application Insights, varsayılan olarak tüm IP adresi alanlarını "0.0.0.0" olarak saklar, oturum bilgilerini sürdürmek için bu değeri gerçek Kullanıcı IP 'si ile geçersiz kılan oldukça yaygın bir modeldir. Aşağıdaki analiz sorgusu, IP adresi sütununda, son 24 saat içinde "0.0.0.0" dışındaki değerleri içeren herhangi bir tabloyu bulmak için kullanılabilir:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Kullanıcı kimlikleri*: Varsayılan olarak Application Insights, Kullanıcı ve oturum izleme için rastgele oluşturulan kimlikleri kullanır. Bununla birlikte, bir KIMLIĞI uygulamayla ilgili daha uygun bir şekilde depolamak için bu alanların geçersiz kılındığından, yaygın bir şekilde görüntülenir. Örneğin: Kullanıcı adları, AAD GUID 'Leri, vb. Bu kimlikler genellikle kişisel veri olarak kapsam içi olarak değerlendirilir ve bu nedenle uygun şekilde işlenmelidir. Önerimiz, bu kimlikleri gizleme veya Anonimleştir her zaman denenmektir. Bu değerlerin yaygın olarak bulunduğu alanlar session_Id, user_Id, user_AuthenticatedId, user_AccountId ve customDimensions içerir.
-* *Özel veriler*: Application Insights, herhangi bir veri türüne özel boyutlar kümesini eklemenizi sağlar. Bu boyutlar *herhangi bir* veri olabilir. Son 24 saat içinde toplanan özel boyutları belirlemek için aşağıdaki sorguyu kullanın:
+* *Kullanıcı kimlikleri*: Application Insights, varsayılan olarak, Kullanıcı ve oturum izleme için rastgele oluşturulan kimlikleri kullanır. Bununla birlikte, bir KIMLIĞI uygulamayla ilgili daha uygun bir şekilde depolamak için bu alanların geçersiz kılındığından, yaygın bir şekilde görüntülenir. Örneğin: Kullanıcı adları, AAD GUID 'Leri, vb. Bu kimlikler genellikle kişisel veri olarak kapsam içi olarak değerlendirilir ve bu nedenle uygun şekilde işlenmelidir. Önerimiz, bu kimlikleri gizleme veya Anonimleştir her zaman denenmektir. Bu değerlerin yaygın olarak bulunduğu alanlar session_Id, user_Id, user_AuthenticatedId, user_AccountId ve customDimensions içerir.
+* *Özel veriler*: Application Insights tüm veri türlerine bir dizi özel boyut eklemenizi sağlar. Bu boyutlar *herhangi bir* veri olabilir. Son 24 saat içinde toplanan özel boyutları belirlemek için aşağıdaki sorguyu kullanın:
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Bellek içi ve aktarım içi veriler*: Application Insights, özel durumları, istekleri, bağımlılık çağrılarını ve izlemeleri izler. Özel veriler genellikle kod ve HTTP çağrı düzeyinde toplanabilir. Bu tür verileri belirlemek için özel durumları, istekleri, bağımlılıkları ve izleme tablolarını gözden geçirin. Bu verileri gizleme olasılığı bulunan [telemetri başlatıcıları](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) 'nı kullanın.
+* *Bellek içi ve aktarım verileri*: Application Insights özel durumları, istekleri, bağımlılık çağrılarını ve izlemeleri izler. Özel veriler genellikle kod ve HTTP çağrı düzeyinde toplanabilir. Bu tür verileri belirlemek için özel durumları, istekleri, bağımlılıkları ve izleme tablolarını gözden geçirin. Bu verileri gizleme olasılığı bulunan [telemetri başlatıcıları](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) 'nı kullanın.
 * *Snapshot Debugger yakalamaları*: Application Insights [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) özelliği, uygulamanızın üretim örneğinde bir özel durum yakalandığında hata ayıklama anlık görüntülerini toplamanıza olanak tanır. Anlık görüntüler, yığının her adımında yerel değişkenlerin değerlerinin yanı sıra özel durumlar için tam yığın izlemenin önde gelen listesini ortaya çıkarır. Ne yazık ki, bu özellik yapışma noktalarının seçmeli silinmesine veya anlık görüntü içindeki verilere programlı erişime izin vermez. Bu nedenle, varsayılan anlık görüntü saklama oranı uyumluluk gereksinimlerinizi karşılamıyorsa, özelliği kapatmanız önerilir.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Özel verileri dışarı aktarma ve silme
@@ -109,7 +103,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="log-data"></a>Günlük verileri
 
 * [Temizleme sonrası](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür 
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -121,7 +115,7 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 #### <a name="application-data"></a>Uygulama verileri
 
 * [Temizleme sonrası](https://docs.microsoft.com/rest/api/application-insights/components/purge) -Silinecek verilerin parametrelerini belirten bir nesne alır ve bir başvuru GUID 'si döndürür
-* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örneğin:
+* Temizleme durumunu Al-Temizleme API 'sinin durumunu öğrenmek için çağırabileceğiniz bir URL 'YI içeren bir ' x-MS-Status-Location ' üst bilgisi döndürür. Örnek:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

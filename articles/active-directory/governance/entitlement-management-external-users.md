@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527104"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934406"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde dış kullanıcılar için erişimi yönetme (Önizleme)
 
@@ -50,11 +50,13 @@ Aşağıdaki diyagram ve adımlar, dış kullanıcılara bir erişim paketine er
 
 ![Dış kullanıcıların yaşam döngüsünü gösteren diyagram](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. Azure AD dizini veya işbirliği yapmak istediğiniz etki alanı için [bağlı bir kuruluş eklersiniz](entitlement-management-organization.md) .
+
 1. Dizininizde, [dizininizde olmayan kullanıcılar için](entitlement-management-access-package-create.md#for-users-not-in-your-directory)bir ilke içeren bir erişim paketi oluşturun.
 
 1. Bir [erişim portalı bağlantısını](entitlement-management-access-package-settings.md) , kendi kullanıcılarına erişim paketi istemek için paylaştıkları dış kuruluştan gönderebilirsiniz.
 
-1. Dış Kullanıcı (Bu örnekteki**Istek sahibi** ), erişim paketine [erişim istemek](entitlement-management-request-access.md) için erişim portalı bağlantısını kullanır.
+1. Dış Kullanıcı (Bu örnekteki**Istek sahibi** ), erişim paketine [erişim istemek](entitlement-management-request-access.md) için erişim portalı bağlantısını kullanır. Kullanıcının oturum açması, bağlı kuruluşta tanımlanan dizinin veya etki alanının kimlik doğrulama türüne bağlıdır.
 
 1. Onaylayan [, isteği onaylar](entitlement-management-request-approve.md) (veya istek otomatik olarak onaylandı).
 
@@ -116,6 +118,6 @@ Ayrıca, kataloğu oluşturduktan sonra bu ayarı değiştirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Bağlı kuruluş ekleme](entitlement-management-organization.md)
 - [Dizininizde bulunmayan kullanıcılar için](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Kaynak kataloğu oluşturma ve yönetme](entitlement-management-catalog-create.md)
-- [Temsili ve roller](entitlement-management-delegate.md)

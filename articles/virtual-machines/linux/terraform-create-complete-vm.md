@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: b9e379907f28c0d8698eb11aacb88970cf8d6dc4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: bb4628477719d0aa2f176c466047531b42d7cfc3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173856"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924882"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform ile Azure'da eksiksiz bir Linux sanal makine altyapısı oluşturma
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terrayform ile Azure 'da tamamen bir Linux sanal makine altyapısı oluşturma
 
 Terrayform, Azure 'da tüm altyapı dağıtımlarını tanımlamanızı ve oluşturmanızı sağlar. Azure kaynaklarını tutarlı, tekrarlanabilir bir şekilde oluşturup yapılandıran, Kullanıcı tarafından okunabilen bir biçimde Terrayform şablonları oluşturursunuz. Bu makalede, tüm Linux ortamının nasıl oluşturulduğu ve Terrayform ile destekleyici kaynakların nasıl oluşturulduğu gösterilir. Ayrıca, [Terrayform 'U yüklemeyi ve yapılandırmayı](terraform-install-configure.md)da öğrenebilirsiniz.
 
@@ -30,7 +30,7 @@ Terrayform, Azure 'da tüm altyapı dağıtımlarını tanımlamanızı ve oluş
 
 Bir Terrayform şablonunun her bir bölümünü inceleyelim. Ayrıca, kopyalayabilir ve yapıştırabileceğiniz [Terrayform şablonunun](#complete-terraform-script) tam sürümünü de görebilirsiniz.
 
-Bu `provider` bölüm, teraform 'un bir Azure sağlayıcısı kullanmasını söyler. *Subscription_id*, *client_id*, *client_secret*ve *Tenant_id*değerlerini almak için bkz. [terrayform 'u yükleyip yapılandırma](terraform-install-configure.md). 
+`provider` bölümü, Teraform 'un bir Azure sağlayıcısı kullanmasını söyler. *Subscription_id*, *client_id*, *client_secret*ve *Tenant_id*değerlerini almak için bkz. [terrayform 'u yükleyip yapılandırma](terraform-install-configure.md). 
 
 > [!TIP]
 > Değerler için ortam değişkenleri oluşturursanız veya [Azure Cloud Shell Bash deneyimini](/azure/cloud-shell/overview) kullanıyorsanız, bu bölüme değişken bildirimleri eklemeniz gerekmez.
@@ -44,7 +44,7 @@ provider "azurerm" {
 }
 ```
 
-Aşağıdaki bölümde, `myResourceGroup` `eastus` konumunda adlı bir kaynak grubu oluşturulur:
+Aşağıdaki bölümde `eastus` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturulur:
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -67,7 +67,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
 
     tags = {
         environment = "Terraform Demo"
@@ -80,21 +80,21 @@ Aşağıdaki bölüm, *Myvnet* sanal ağında *mysubnet* adlı bir alt ağ oluş
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
-    resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
-    virtual_network_name = "${azurerm_virtual_network.myterraformnetwork.name}"
+    resource_group_name  = azurerm_resource_group.myterraformgroup.name
+    virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
     address_prefix       = "10.0.2.0/24"
 }
 ```
 
 
-## <a name="create-public-ip-address"></a>Ortak IP adresi oluştur
+## <a name="create-public-ip-address"></a>Genel IP adresi oluştur
 Internet üzerindeki kaynaklara erişmek için, VM 'nize bir genel IP adresi oluşturun ve atayın. Aşağıdaki bölüm *Mypublicıp*adlı BIR genel IP adresi oluşturur:
 
 ```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
-    resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name          = azurerm_resource_group.myterraformgroup.name
     allocation_method            = "Dynamic"
 
     tags = {
@@ -111,7 +111,7 @@ Ağ güvenlik grupları, sanal makinenizin içindeki ve dışı ağ trafiği ak�
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
     
     security_rule {
         name                       = "SSH"
@@ -137,10 +137,10 @@ Sanal ağ arabirim kartı (NIC), VM 'nizi belirli bir sanal ağ, genel IP adresi
 
 ```hcl
 resource "azurerm_network_interface" "myterraformnic" {
-    name                = "myNIC"
-    location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    network_security_group_id = "${azurerm_network_security_group.myterraformnsg.id}"
+    name                        = "myNIC"
+    location                    = "eastus"
+    resource_group_name         = azurerm_resource_group.myterraformgroup.name
+    network_security_group_id   = azurerm_network_security_group.myterraformnsg.id
 
     ip_configuration {
         name                          = "myNicConfiguration"
@@ -163,7 +163,7 @@ Bir VM için önyükleme tanılamayı depolamak üzere bir depolama hesabı gere
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
-        resource_group = "${azurerm_resource_group.myterraformgroup.name}"
+        resource_group = azurerm_resource_group.myterraformgroup.name
     }
     
     byte_length = 8
@@ -174,11 +174,11 @@ Artık bir depolama hesabı oluşturabilirsiniz. Aşağıdaki bölümde, önceki
 
 ```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
-    name                = "diag${random_id.randomId.hex}"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
-    location            = "eastus"
-    account_replication_type = "LRS"
-    account_tier = "Standard"
+    name                        = "diag${random_id.randomId.hex}"
+    resource_group_name         = azurerm_resource_group.myterraformgroup.name
+    location                    = "eastus"
+    account_replication_type    = "LRS"
+    account_tier                = "Standard"
 
     tags = {
         environment = "Terraform Demo"
@@ -197,8 +197,8 @@ Son adım, bir sanal makine oluşturmak ve oluşturulan tüm kaynakları kullanm
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
-    resource_group_name   = "${azurerm_resource_group.myterraformgroup.name}"
-    network_interface_ids = ["${azurerm_network_interface.myterraformnic.id}"]
+    resource_group_name   = azurerm_resource_group.myterraformgroup.name
+    network_interface_ids = [azurerm_network_interface.myterraformnic.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_os_disk {
@@ -230,7 +230,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
     boot_diagnostics {
         enabled     = "true"
-        storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
+        storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
     }
 
     tags = {
@@ -267,7 +267,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
 
     tags = {
         environment = "Terraform Demo"
@@ -277,8 +277,8 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 # Create subnet
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
-    resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
-    virtual_network_name = "${azurerm_virtual_network.myterraformnetwork.name}"
+    resource_group_name  = azurerm_resource_group.myterraformgroup.name
+    virtual_network_name = azurerm_virtual_network.myterraformnetwork.name
     address_prefix       = "10.0.1.0/24"
 }
 
@@ -286,7 +286,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
-    resource_group_name          = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name          = azurerm_resource_group.myterraformgroup.name
     allocation_method            = "Dynamic"
 
     tags = {
@@ -298,7 +298,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
-    resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name = azurerm_resource_group.myterraformgroup.name
     
     security_rule {
         name                       = "SSH"
@@ -321,14 +321,14 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 resource "azurerm_network_interface" "myterraformnic" {
     name                      = "myNIC"
     location                  = "eastus"
-    resource_group_name       = "${azurerm_resource_group.myterraformgroup.name}"
-    network_security_group_id = "${azurerm_network_security_group.myterraformnsg.id}"
+    resource_group_name       = azurerm_resource_group.myterraformgroup.name
+    network_security_group_id = azurerm_network_security_group.myterraformnsg.id
 
     ip_configuration {
         name                          = "myNicConfiguration"
-        subnet_id                     = "${azurerm_subnet.myterraformsubnet.id}"
+        subnet_id                     = azurerm_subnet.myterraformsubnet.id
         private_ip_address_allocation = "Dynamic"
-        public_ip_address_id          = "${azurerm_public_ip.myterraformpublicip.id}"
+        public_ip_address_id          = azurerm_public_ip.myterraformpublicip.id
     }
 
     tags = {
@@ -340,7 +340,7 @@ resource "azurerm_network_interface" "myterraformnic" {
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
-        resource_group = "${azurerm_resource_group.myterraformgroup.name}"
+        resource_group = azurerm_resource_group.myterraformgroup.name
     }
     
     byte_length = 8
@@ -349,7 +349,7 @@ resource "random_id" "randomId" {
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "mystorageaccount" {
     name                        = "diag${random_id.randomId.hex}"
-    resource_group_name         = "${azurerm_resource_group.myterraformgroup.name}"
+    resource_group_name         = azurerm_resource_group.myterraformgroup.name
     location                    = "eastus"
     account_tier                = "Standard"
     account_replication_type    = "LRS"
@@ -363,8 +363,8 @@ resource "azurerm_storage_account" "mystorageaccount" {
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
-    resource_group_name   = "${azurerm_resource_group.myterraformgroup.name}"
-    network_interface_ids = ["${azurerm_network_interface.myterraformnic.id}"]
+    resource_group_name   = azurerm_resource_group.myterraformgroup.name
+    network_interface_ids = [azurerm_network_interface.myterraformnic.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_os_disk {
@@ -396,7 +396,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
     boot_diagnostics {
         enabled = "true"
-        storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
+        storage_uri = azurerm_storage_account.mystorageaccount.primary_blob_endpoint
     }
 
     tags = {

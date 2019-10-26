@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6f9b6a73e279ca5923e32c7c524f9a55e260526d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173509"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924826"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Azure için Terraform yapılandırması oluşturma
 
@@ -22,7 +22,7 @@ Bu örnekte, bir Teraform yapılandırması oluşturma ve bu yapılandırmayı A
 
 Bu bölümde, bir Azure Cosmos DB örneği için yapılandırma oluşturacaksınız.
 
-Azure Cloud Shell 'i açmak için **Şimdi deneyin** ' i seçin. Açıldığında, Cloud Shell kod `code .` düzenleyicisini açmak için yazın.
+Azure Cloud Shell 'i açmak için **Şimdi deneyin** ' i seçin. Açıldığında, Cloud Shell kod düzenleyicisini açmak için `code .` girin.
 
 ```bash
 code .
@@ -32,7 +32,7 @@ Aşağıdaki Terpform yapılandırmasında kopyalayıp yapıştırın.
 
 Bu yapılandırma, bir Azure kaynak grubunu, rastgele bir tamsayıyı ve bir Azure Cosmos DB örneğini modeller. Rastgele tamsayı Cosmos DB örnek adında kullanılır. Çeşitli Cosmos DB ayarları da yapılandırılır. Cosmos DB Teraform yapılandırmalarının tüm listesi için bkz. [Cosmos DB terrayform başvurusu](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html).
 
-Dosyayı `main.tf` tamamlandığında kaydedin. Bu işlem, kod düzenleyicisinin sağ üst kısmındaki üç nokta kullanılarak yapılabilir.
+Bitince dosyayı `main.tf` olarak kaydedin. Bu işlem, kod düzenleyicisinin sağ üst kısmındaki üç nokta kullanılarak yapılabilir.
 
 ```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
@@ -47,8 +47,8 @@ resource "random_integer" "ri" {
 
 resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = azurerm_resource_group.vote-resource-group.location
+  resource_group_name = azurerm_resource_group.vote-resource-group.name
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
 
@@ -65,7 +65,7 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 }
 ```
 
-[Terrayform init](https://www.terraform.io/docs/commands/init.html) komutu çalışma dizinini başlatır. Yeni `terraform init` yapılandırmanın dağıtımına hazırlanmak için Cloud Shell terminalinde çalıştırın.
+[Terrayform init](https://www.terraform.io/docs/commands/init.html) komutu çalışma dizinini başlatır. Yeni yapılandırmanın dağıtımına hazırlanmak için Cloud Shell terminalinde `terraform init` çalıştırın.
 
 ```bash
 terraform init
@@ -73,7 +73,7 @@ terraform init
 
 [Terrayform plan](https://www.terraform.io/docs/commands/plan.html) komutu, yapılandırmanın düzgün şekilde biçimlendirildiğini doğrulamak ve hangi kaynakların oluşturulacağını, güncelleştirileceğini veya yok edildiğini görselleştirmek için kullanılabilir. Sonuçlar bir dosyada depolanabilir ve daha sonra yapılandırmayı uygulamak için kullanılabilir.
 
-Yeni `terraform plan` teraform yapılandırmasını test etmek için ' i çalıştırın.
+Yeni Teraform yapılandırmasını test etmek için `terraform plan` çalıştırın.
 
 ```bash
 terraform plan --out plan.out
@@ -91,9 +91,9 @@ terraform apply plan.out
 
 Yapılandırmayı bir Azure Container Instance içerecek şekilde güncelleştirin. Kapsayıcı Cosmos DB verileri okuyan ve yazan bir uygulamayı çalıştırır.
 
-Aşağıdaki yapılandırmayı `main.tf` dosyanın en altına kopyalayın. Bitince dosyayı kaydedin.
+Aşağıdaki yapılandırmayı `main.tf` dosyasının altına kopyalayın. Bitince dosyayı kaydedin.
 
-İki ortam değişkeni ayarlanır `COSMOS_DB_ENDPOINT` ve. `COSMOS_DB_MASTERKEY` Bu değişkenler veritabanına erişmek için konum ve anahtarı tutar. Bu değişkenlerin değerleri, son adımda oluşturulan veritabanı örneğinden alınır. Bu işlem ilişkilendirme olarak bilinir. Terrayform ilişkilendirme hakkında daha fazla bilgi için bkz. [enterpolasyon sözdizimi](https://www.terraform.io/docs/configuration/interpolation.html).
+İki ortam değişkeni ayarlanır, `COSMOS_DB_ENDPOINT` ve `COSMOS_DB_MASTERKEY`. Bu değişkenler veritabanına erişmek için konum ve anahtarı tutar. Bu değişkenlerin değerleri, son adımda oluşturulan veritabanı örneğinden alınır. Bu işlem ilişkilendirme olarak bilinir. Terrayform ilişkilendirme hakkında daha fazla bilgi için bkz. [enterpolasyon sözdizimi](https://www.terraform.io/docs/configuration/interpolation.html).
 
 
 Yapılandırma ayrıca kapsayıcı örneğinin tam etki alanı adını (FQDN) döndüren bir çıkış bloğu da içerir.
@@ -101,8 +101,8 @@ Yapılandırma ayrıca kapsayıcı örneğinin tam etki alanı adını (FQDN) d�
 ```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
-  location            = "${azurerm_resource_group.vote-resource-group.location}"
-  resource_group_name = "${azurerm_resource_group.vote-resource-group.name}"
+  location            = azurerm_resource_group.vote-resource-group.location
+  resource_group_name = azurerm_resource_group.vote-resource-group.name
   ip_address_type     = "public"
   dns_name_label      = "vote-aci"
   os_type             = "linux"
@@ -118,8 +118,8 @@ resource "azurerm_container_group" "vote-aci" {
     }
 
     secure_environment_variables = {
-      "COSMOS_DB_ENDPOINT"  = "${azurerm_cosmosdb_account.vote-cosmos-db.endpoint}"
-      "COSMOS_DB_MASTERKEY" = "${azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key}"
+      "COSMOS_DB_ENDPOINT"  = azurerm_cosmosdb_account.vote-cosmos-db.endpoint
+      "COSMOS_DB_MASTERKEY" = azurerm_cosmosdb_account.vote-cosmos-db.primary_master_key
       "TITLE"               = "Azure Voting App"
       "VOTE1VALUE"          = "Cats"
       "VOTE2VALUE"          = "Dogs"
@@ -128,17 +128,17 @@ resource "azurerm_container_group" "vote-aci" {
 }
 
 output "dns" {
-  value = "${azurerm_container_group.vote-aci.fqdn}"
+  value = azurerm_container_group.vote-aci.fqdn
 }
 ```
 
-Güncelleştirilmiş `terraform plan` planı oluşturmak ve yapılacak değişiklikleri görselleştirmek için ' i çalıştırın. Yapılandırmaya bir Azure Container Instance kaynağının eklendiğini görmeniz gerekir.
+Güncelleştirilmiş planı oluşturmak ve yapılacak değişiklikleri görselleştirmek için `terraform plan` çalıştırın. Yapılandırmaya bir Azure Container Instance kaynağının eklendiğini görmeniz gerekir.
 
 ```bash
 terraform plan --out plan.out
 ```
 
-Son olarak, `terraform apply` yapılandırmayı uygulamak için ' i çalıştırın.
+Son olarak, yapılandırmayı uygulamak için `terraform apply` çalıştırın.
 
 ```bash
 terraform apply plan.out

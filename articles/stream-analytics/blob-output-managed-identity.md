@@ -1,17 +1,17 @@
 ---
-title: Azure Stream Analytics işinizin Azure Blob depolama çıkışına (Önizleme) kimliğini doğrulamak için yönetilen kimlik kullanma
+title: Yönetilen kimlik Azure Stream Analytics blob çıkışının kimliğini doğrulama
 description: Bu makalede, Azure Blob depolama çıktısında Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 2bde1e8556fb1255e27595630e061f6b80870ce1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4215dc85da6d507b08f23cf248044ea807fe5319
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278700"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935200"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Azure Stream Analytics işinizin Azure Blob depolama çıkışına (Önizleme) kimliğini doğrulamak için yönetilen kimlik kullanma
 
@@ -25,7 +25,7 @@ Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyl
 
    ![Stream Analytics yönetilen kimliği yapılandırma](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-enable-managed-identity.png)
 
-2. Azure Blob depolama çıkış havuzunun çıkış özellikleri penceresinde kimlik doğrulama modu açılan listesini seçin ve **yönetilen kimlik**' i seçin. Diğer çıkış özellikleriyle ilgili daha fazla bilgi için bkz. [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md). İşlemi tamamladığınızda, tıklayın **Kaydet**.
+2. Azure Blob depolama çıkış havuzunun çıkış özellikleri penceresinde kimlik doğrulama modu açılan listesini seçin ve **yönetilen kimlik**' i seçin. Diğer çıkış özellikleriyle ilgili daha fazla bilgi için bkz. [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md). İşiniz bittiğinde **Kaydet**' e tıklayın.
 
    ![Azure Blob depolama çıkışını yapılandırma](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -237,5 +237,5 @@ Bu özelliğin geçerli sınırlamaları aşağıda verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md)
+* [Azure Stream Analytics çıkışlarını anlayın](./stream-analytics-define-outputs.md)
 * [Özel blob çıkış bölümlendirme Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)

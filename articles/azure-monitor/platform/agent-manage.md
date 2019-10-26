@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics aracısını yönetme | Microsoft Docs
 description: Bu makalede, bir makineye dağıtılan Log Analytics Windows veya Linux aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/14/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 06/14/2019
+ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67146301"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932795"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows ve Linux için Log Analytics aracısını yönetme ve sürdürme
 
@@ -36,11 +30,11 @@ Windows ve Linux için Log Analytics Aracısı en son sürüme el ile veya VM 'n
 
 ### <a name="upgrade-windows-agent"></a>Windows aracısını yükselt 
 
-Bir Windows VM 'deki aracıyı Log Analytics VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için, komut istemi, komut dosyası veya başka bir Otomasyon çözümünden ya da MMASetup-\<Platform\>. msi kurulumunu kullanarak çalıştırırsınız Ekleme.  
+Bir Windows sanal makinesi üzerindeki aracıyı Log Analytics VM uzantısı kullanılarak yüklenmeyen en son sürüme güncelleştirmek için, komut Istemi, komut dosyası veya diğer otomasyon çözümünden veya MMASetup-\<platform\>. msi kurulum sihirbazını kullanarak komutunu çalıştırın.  
 
 Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızdan Windows aracısının en son sürümünü indirebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 2. Azure portalında **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 
@@ -58,11 +52,11 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kurulum sihirbazını başlatmak için **MMASetup-\<\>platform. exe** ' yi yürütün.
+2. Kurulum sihirbazını başlatmak için **MMASetup-\<platform\>. exe** ' yi yürütün.
 
 3. Kurulum sihirbazının ilk sayfasında, **İleri**' ye tıklayın.
 
-4. **Microsoft Monitoring Agent kurulum** iletişim kutusunda lisans sözleşmesini kabul etmek için kabul ediyorum ' a tıklayın.
+4. **Microsoft Monitoring Agent kurulum** iletişim kutusunda lisans sözleşmesini kabul etmek için **kabul ediyorum ' a tıklayın.**
 
 5. **Microsoft Monitoring Agent kurulum** Iletişim kutusunda **Yükselt**' e tıklayın. Durum sayfası yükseltmenin ilerlemesini görüntüler.
 
@@ -72,7 +66,7 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `MMASetup-<platform>.exe /c` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri `MMASetup-<platform>.exe /c /t:<Full Path>`geçirerek yolu belirtebilirsiniz.
+2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden `MMASetup-<platform>.exe /c` ' ı çalıştırın ve dosyaları ayıklama yolunu sorar. Alternatif olarak, `MMASetup-<platform>.exe /c /t:<Full Path>` bağımsız değişkenlerini geçirerek yolu belirtebilirsiniz.
 
 3. Şu komutu çalıştırın, burada D:\ , yükseltme günlük dosyasının konumudur.
 
@@ -82,7 +76,7 @@ Aşağıdaki adımları gerçekleştirerek Log Analytics çalışma alanınızda
 
 ### <a name="upgrade-linux-agent"></a>Linux aracısını yükselt 
 
-Önceki sürümlerden yükseltme (> 1.0.0-47) desteklenir. `--upgrade` Komutuyla yüklemeyi gerçekleştirmek aracının tüm bileşenlerini en son sürüme yükseltir.
+Önceki sürümlerden yükseltme (> 1.0.0-47) desteklenir. `--upgrade` komutuyla yüklemeyi gerçekleştirmek aracının tüm bileşenlerini en son sürüme yükseltir.
 
 Aracıyı yükseltmek için aşağıdaki komutu çalıştırın.
 
@@ -137,7 +131,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Aracıyı yüklemek veya yapılandırmak için daha önce komut satırını veya betiğini kullandıysanız, `EnableAzureOperationalInsights` `AddCloudWorkspace` ve `RemoveCloudWorkspace`ile değiştirilmiştir.
+>Aracıyı yüklemek veya yapılandırmak için daha önce komut satırını veya betiği kullandıysanız `EnableAzureOperationalInsights` `AddCloudWorkspace` ve `RemoveCloudWorkspace`ile değiştirilmiştir.
 >
 
 ### <a name="linux-agent"></a>Linux Aracısı
@@ -244,16 +238,16 @@ Komut satırı veya Kurulum Sihirbazı 'nı kullanarak Windows veya Linux Aracı
 3. **Programlar ve Özellikler**' de **Microsoft Monitoring Agent**' a, **Kaldır**' a ve ardından **Evet**' e tıklayın.
 
 >[!NOTE]
->Aracı Kurulum Sihirbazı, Ayrıca, Azure Portal bir çalışma alanından indirileceği **MMASetup-\<Platform\>. exe**' ye çift tıklayarak da çalıştırılabilir.
+>Aracı Kurulum Sihirbazı ayrıca, Azure portal bir çalışma alanından indirileceği **MMASetup-\<platform\>. exe**' ye çift tıklayarak da çalıştırılabilir.
 
 #### <a name="uninstall-from-the-command-line"></a>Komut satırından kaldır
 Aracının indirilen dosyası, IExpress ile oluşturulan, kendi içinde bulunan bir yükleme paketidir. Aracının ve destekleyici dosyaların kurulum programı pakette bulunur ve aşağıdaki örnekte gösterilen komut satırı kullanılarak düzgün bir şekilde kaldırılması için ayıklanmalıdır.
 
 1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `extract MMASetup-<platform>.exe` ve dosyaları ayıklama yolunu sorar. Alternatif olarak, bağımsız değişkenleri `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`geçirerek yolu belirtebilirsiniz. IExpress tarafından desteklenen komut satırı anahtarları hakkında daha fazla bilgi için bkz. [IExpress Için komut satırı anahtarları](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) ve bu örneği gereksinimlerinize uyacak şekilde güncelleştirin.
+2. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden `extract MMASetup-<platform>.exe` çalıştırın ve dosyaları ayıklama yolunu sorar. Alternatif olarak, `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`bağımsız değişkenleri geçirerek de yolu belirtebilirsiniz. IExpress tarafından desteklenen komut satırı anahtarları hakkında daha fazla bilgi için bkz. [IExpress Için komut satırı anahtarları](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) ve bu örneği gereksinimlerinize uyacak şekilde güncelleştirin.
 
-3. İstemine yazın `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
+3. İsteminde `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`yazın.
 
 ### <a name="linux-agent"></a>Linux Aracısı
 Aracıyı kaldırmak için Linux bilgisayarında aşağıdaki komutu çalıştırın. *--temizleme* bağımsız değişkeni, aracıyı ve yapılandırmasını tamamen kaldırır.
@@ -292,11 +286,11 @@ Linux için Log Analytics aracısını bir System Center Operations Manager yön
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. Dosyayı Düzenle`/etc/opt/omi/conf/omiserver.conf`
+1. Dosyayı düzenleme `/etc/opt/omi/conf/omiserver.conf`
 
-2. İle `httpsport=` başlayan satırın 1270 numaralı bağlantı noktasını tanımladığından emin olun. Örneğin:`httpsport=1270`
+2. `httpsport=` ile başlayan satırın 1270 numaralı bağlantı noktasını tanımladığından emin olun. Örneğin: `httpsport=1270`
 
-3. OMı sunucusunu yeniden başlatın:`sudo /opt/omi/bin/service_control restart`
+3. OMı sunucusunu yeniden başlatın: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

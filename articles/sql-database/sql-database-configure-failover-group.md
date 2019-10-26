@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 9206fd264854cd9e5d8e46473dd60b05a3362fdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 626677ef9444e0ad99fd3678e23bdeec62fd920c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329363"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933384"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL veritabanı için bir yük devretme grubu yapılandırma
 
@@ -48,7 +48,7 @@ Yük devretme grubunuzu oluşturun ve Azure portal kullanarak tek veritabanını
 
 1. **Yük devretme grubu** sayfasında, gerekli değerleri girin veya seçin ve ardından **Oluştur**' u seçin.
 
-   - **Grup Içindeki veritabanları**: Yük devretme grubunuza eklemek istediğiniz veritabanını seçin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
+   - **Grup Içindeki veritabanları**: yük devretme grubunuza eklemek istediğiniz veritabanını seçin. Veritabanını yük devretme grubuna eklemek, coğrafi çoğaltma işlemini otomatik olarak başlatır. 
         
     ![SQL DB 'yi yük devretme grubuna ekle](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
@@ -102,7 +102,7 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak tek veritabanınız�
 
 ---
 
-### <a name="test-failover"></a>Test yük devretmesi 
+### <a name="test-failover"></a>Yük devretme testi 
 
 Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
@@ -263,7 +263,7 @@ Yük devretme grubunuzu oluşturun ve PowerShell kullanarak elastik havuzunuzu e
 
 ---
 
-### <a name="test-failover"></a>Test yük devretmesi
+### <a name="test-failover"></a>Yük devretme testi
 
 Azure portal veya PowerShell kullanarak elastik havuzunuzun yük devretmesini test edin. 
 
@@ -355,7 +355,7 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
 
    ![Birincil yönetilen örnek için ağ geçidi ekle](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve arama kutusuna yazın `Virtual network gateway` . **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
+1. Alt ağ geçidi oluşturulduktan sonra sol gezinti bölmesinden **kaynak oluştur** ' u seçin ve arama kutusuna `Virtual network gateway` yazın. **Microsoft**tarafından yayınlanan **sanal ağ geçidi** kaynağını seçin. 
 
    ![Yeni bir sanal ağ geçidi oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -363,15 +363,15 @@ Azure portal kullanarak birincil sanal ağ geçidini oluşturun.
 
    Aşağıdaki tabloda, birincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
  
-    | **Alan** | Value |
+    | **Alan** | Değer |
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin bulunduğu abonelik. |
-    | **Name** | Sanal ağ geçidinizin adı. | 
+    | **Adı** | Sanal ağ geçidinizin adı. | 
     | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
     | **Ağ Geçidi türü** | **VPN**' yi seçin. |
     | **VPN türü** | **Rota tabanlı** seçin |
-    | **SKU**| Varsayılan `VpnGw1`bırakın. |
-    | **Location**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
+    | **SKU**| `VpnGw1`varsayılan olarak bırakın. |
+    | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
     | **Sanal ağ**| İkincil yönetilen örneğiniz için sanal ağı seçin. |
     | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
     | **Genel IP adresi adı**| IP adresiniz için bir ad girin. |
@@ -424,18 +424,18 @@ Azure portal veya PowerShell kullanarak ikincil sanal ağ geçidini oluşturun.
 
    Aşağıdaki tabloda, ikincil yönetilen örnek için ağ geçidi için gereken değerler gösterilmektedir:
 
-   | **Alan** | Value |
+   | **Alan** | Değer |
    | --- | --- |
    | **Abonelik** |  İkincil yönetilen örneğinizin olduğu abonelik. |
-   | **Name** | Sanal ağ geçidinizin adı, `secondary-mi-gateway`örneğin. | 
+   | **Adı** | `secondary-mi-gateway`gibi sanal ağ geçidinizin adı. | 
    | **Bölge** | İkincil yönetilen örneğinizin bulunduğu bölge. |
    | **Ağ Geçidi türü** | **VPN**' yi seçin. |
    | **VPN türü** | **Rota tabanlı** seçin |
-   | **SKU**| Varsayılan `VpnGw1`bırakın. |
-   | **Location**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
-   | **Sanal ağ**| 2 `vnet-sql-mi-secondary`. bölümde oluşturulan sanal ağı seçin. |
+   | **SKU**| `VpnGw1`varsayılan olarak bırakın. |
+   | **Konum**| İkincil yönetilen örneğinizin ve ikincil sanal ağınızın bulunduğu konum.   |
+   | **Sanal ağ**| Bölüm 2 ' de oluşturulan sanal ağı seçin, örneğin `vnet-sql-mi-secondary`. |
    | **Genel IP adresi**| **Yeni oluştur**’u seçin. |
-   | **Genel IP adresi adı**| IP adresiniz `secondary-gateway-IP`için gibi bir ad girin. |
+   | **Genel IP adresi adı**| IP adresiniz için `secondary-gateway-IP`gibi bir ad girin. |
    | &nbsp; | &nbsp; |
 
    ![İkincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -484,20 +484,24 @@ Her iki bağlantı için de kullanılan paylaşılan anahtar her bağlantı içi
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Azure portal kullanarak iki ağ geçidi arasında bağlantı oluşturun. 
 
-1. [Azure Portal](https://portal.azure.com) kaynak grubunuza gidin ve 4. adımda oluşturduğunuz birincil ağ geçidini seçin. 
-1. **Ayarlar** altında **Bağlantılar** ' ı seçin ve ardından **Ekle** ' yi seçerek yeni bir bağlantı oluşturun. 
+1. Azure portal **kaynak oluştur** ' u seçin [](https://portal.azure.com).
+1. Arama kutusuna `connection` yazın ve ardından arama yapmak için ENTER tuşuna basın ve Microsoft tarafından yayımlanan **bağlantı** kaynağına gidersiniz.
+1. Bağlantınızı oluşturmak için **Oluştur** ' u seçin. 
+1. **Temel bilgiler** sekmesinde, aşağıdaki değerleri seçip **Tamam**' ı seçin. 
+    1. **Bağlantı türü**için `VNet-to-VNet` seçin. 
+    1. Açılan listeden aboneliğinizi seçin. 
+    1. Açılan kutuda yönetilen örneğiniz için kaynak grubunu seçin. 
+    1. Açılan listeden birincil yönetilen örneğinizin konumunu seçin 
+1. **Ayarlar** sekmesinde, aşağıdaki değerleri seçin veya girin ve sonra **Tamam**' ı seçin:
+    1. **İlk sanal ağ geçidi**için `Primary-Gateway`gibi birincil ağ geçidini seçin.  
+    1. **İkinci sanal ağ geçidi**için `Secondary-Gateway`gibi ikincil ağ geçidini seçin. 
+    1. **Çift yönlü bağlantı oluştur**' un yanındaki onay kutusunu işaretleyin. 
+    1. Varsayılan birincil bağlantı adını bırakın ya da seçtiğiniz bir değerle yeniden adlandırın. 
+    1. Bağlantı için `mi1m2psk`gibi bir **paylaşılan anahtar (PSK)** sağlayın. 
 
-   ![Birincil ağ geçidine bağlantı ekle](media/sql-database-managed-instance-failover-group-tutorial/add-primary-gateway-connection.png)
+   ![Ağ Geçidi bağlantısı oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. Bağlantınız için bir ad girin ve **paylaşılan anahtar**için bir değer yazın. 
-1. **İkinci sanal ağ geçidini** seçin ve ardından ikincil yönetilen örnek için ağ geçidini seçin. 
-
-   ![Birincil-ikincil bağlantı oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-primary-to-secondary-connection.png)
-
-1. Yeni birincil-ikincil ağ geçidi bağlantınızı eklemek için **Tamam ' ı** seçin.
-1. İkincil yönetilen örneğin ağ geçidinden, birincil yönetilen örneğin ağ geçidine bağlantı oluşturmak için bu adımları tekrarlayın. 
-
-   ![İkincil-birincil bağlantı oluştur](media/sql-database-managed-instance-failover-group-tutorial/create-secondary-to-primary-connection.png)
+1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantıyı oluşturmak için **Tamam** ' ı seçin. 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -573,7 +577,7 @@ PowerShell kullanarak yönetilen örneklerinizin yük devretme grubunu oluşturu
    ```
 ---
 
-### <a name="test-failover"></a>Test yük devretmesi
+### <a name="test-failover"></a>Yük devretme testi
 
 Azure portal veya PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin. 
 
@@ -637,13 +641,13 @@ PowerShell kullanarak yük devretme grubunuzun yük devretmesini test edin.
 
 Yük devretme grubunuz yapılandırıldıktan sonra, uygulamanız için bağlantı dizesini dinleyici uç noktasına güncelleştirin. Bu işlem, uygulamanızı birincil veritabanı, elastik havuz veya yönetilen örnek yerine yük devretme grubu dinleyicisine bağlı tutar. Bu şekilde, Azure SQL veritabanı varlığınızın her seferinde bağlantı dizesini el ile güncelleştirmeniz gerekmez ve trafik şu anda birincil olan varlığa yönlendirilir. 
 
-Dinleyici uç noktası `fog-name.database.windows.net` biçiminde olur ve yük devretme grubunu görüntülerken Azure portal görünür:
+Dinleyici uç noktası `fog-name.database.windows.net`biçimindedir ve Azure portal, yük devretme grubu görüntülenirken görünür:
 
 ![Yük devretme grubu bağlantı dizesi](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Tek veya havuza alınmış bir veritabanının yük devretme grubunu kaldırmak çoğaltmayı durdurmaz ve çoğaltılan veritabanını silmez. Bir yük devretme grubuna kaldırıldıktan sonra tek veya havuza alınmış bir veritabanı eklemek istiyorsanız Coğrafi çoğaltmayı el ile durdurmanız ve veritabanını ikincil sunucudan silmeniz gerekir. Veritabanı, yük devretme grubuna eklenmeye çalışılırken `The operation cannot be performed due to multiple errors` ' a benzer bir hata oluşmasına neden olabilir. 
+- Tek veya havuza alınmış bir veritabanının yük devretme grubunu kaldırmak çoğaltmayı durdurmaz ve çoğaltılan veritabanını silmez. Bir yük devretme grubuna kaldırıldıktan sonra tek veya havuza alınmış bir veritabanı eklemek istiyorsanız Coğrafi çoğaltmayı el ile durdurmanız ve veritabanını ikincil sunucudan silmeniz gerekir. Bunun yapılması, veritabanının yük devretme grubuna eklenmeye çalışıldığında `The operation cannot be performed due to multiple errors` benzer bir hata oluşmasına neden olabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici 'de aracı veri kaynaklarını yapılandırma | Microsoft Docs
 description: Veri kaynakları, Azure Izleyici 'nin aracılardan ve diğer bağlı kaynaklardan topladığı günlük verilerini tanımlar.  Bu makalede, Azure Izleyici 'nin veri kaynaklarını nasıl kullandığı kavramı açıklanmakta, nasıl yapılandırılacağı hakkında ayrıntılı bilgi verilmektedir ve kullanılabilir farklı veri kaynaklarının bir özeti sağlanır.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 67710115-c861-40f8-a377-57c7fa6909b4
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f4e86a3a7b6a0781ea6c020bd0afc9364b7132f7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 11/28/2018
+ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839345"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932827"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Izleyici 'de aracı veri kaynakları
 Azure Izleyicisinin aracılardan topladığı veriler, yapılandırdığınız veri kaynakları tarafından tanımlanır.  Aracılardan alınan veriler bir kayıt kümesiyle [günlük verileri](data-platform-logs.md) olarak depolanır.  Her veri kaynağı, her tür kendi özellik kümesine sahip olan belirli bir türün kayıtlarını oluşturur.

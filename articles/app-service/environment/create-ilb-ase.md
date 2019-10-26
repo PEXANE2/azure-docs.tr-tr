@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dad2841d680702786cfc1f175a70390158444e02
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069500"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928638"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Iç Load Balancer App Service Ortamı oluşturma ve kullanma 
 
@@ -31,7 +31,7 @@ Bu makale bir ILB ASE oluşturma işlemini gösterir. Ao 'ya genel bakış için
 
 ## <a name="overview"></a>Genel Bakış 
 
-Bir ASE’yi İnternet’ten erişilebilen bir uç nokta ile ya da sanal ağınızdaki bir IP adresi ile dağıtabilirsiniz. IP adresini bir sanal ağ adresine ayarlamak için, ASE’nin ILB ile dağıtılması gerekir. ATıCı 'nizi bir ıLB ile dağıtırken Ao 'nizin adını sağlamalısınız. Ao 'nizin adı, Ao 'daki uygulamalar için etki alanı son ekinde kullanılır.  ILB atıcı &lt;'niz için etki alanı son eki Ao Name&gt;. appservicewebsites.net. ILB Ao 'da yapılan uygulamalar genel DNS 'ye yerleştirmez. 
+Bir ASE’yi İnternet’ten erişilebilen bir uç nokta ile ya da sanal ağınızdaki bir IP adresi ile dağıtabilirsiniz. IP adresini bir sanal ağ adresine ayarlamak için, ASE’nin ILB ile dağıtılması gerekir. ATıCı 'nizi bir ıLB ile dağıtırken Ao 'nizin adını sağlamalısınız. Ao 'nizin adı, Ao 'daki uygulamalar için etki alanı son ekinde kullanılır.  ILB ATıCı için etki alanı soneki &lt;Ao adı&gt;. appserviceenvironment.net. ILB Ao 'da yapılan uygulamalar genel DNS 'ye yerleştirmez. 
 
 ILB ASE 'nin önceki sürümleri, bir etki alanı soneki ve HTTPS bağlantıları için varsayılan bir sertifika sağlamanız gerekir. Etki alanı soneki artık ıLB AI oluşturma sırasında toplanmaz ve varsayılan sertifika da artık toplanmaz. Artık bir ıLB AI oluşturduğunuzda, varsayılan sertifika Microsoft tarafından sağlanır ve tarayıcı tarafından güvenilirdir. Ao 'da uygulamalar üzerinde özel etki alanı adları ayarlayabiliyor ve bu özel etki alanı adlarında sertifikalar ayarlamış olabilirsiniz. 
 
@@ -74,13 +74,13 @@ ILB ASE oluşturmak için:
 
     ![ATıCı ağı][1]
 
-7. **Gözden geçir '** i seçin veoluştur ' u seçin.
+7. **Gözden geçir '** i seçin ve **Oluştur**' u seçin.
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>ILB ASE'de uygulama oluşturma ##
 
 ILB ASE'de uygulama oluşturma işlemi, normalde bir ASE’de uygulama oluşturma işlemiyle aynıdır.
 
-1. Azure Portal, **kaynak** > oluştur**Web** > **Web uygulaması**' nı seçin.
+1. Azure portal **bir kaynak oluştur** > **Web** > **Web uygulaması**' nı seçin.
 
 1. Uygulamanın adını girin.
 
@@ -102,24 +102,25 @@ Hem İşlevler hem de web işleri ILB ASE’de desteklenir, ancak portalın bunl
 
 ## <a name="dns-configuration"></a>DNS yapılandırması 
 
-Dış VIP kullandığınızda DNS, Azure tarafından yönetilir. ASE’nizde oluşturulan herhangi bir uygulama, genel bir DNS olan Azure DNS'e otomatik olarak eklenir. ILB ASE'de kendi DNS’inizi yönetmeniz gerekir. ILB as ile kullanılan etki alanı soneki Ao 'nun adına bağlıdır. Etki alanı son eki  *&lt;Ao Name&gt;. appserviceenvironment.net*. ILB 'nizin IP adresi, portalda **IP adresleri**altında bulunur. 
+Dış VIP kullandığınızda DNS, Azure tarafından yönetilir. ASE’nizde oluşturulan herhangi bir uygulama, genel bir DNS olan Azure DNS'e otomatik olarak eklenir. ILB ASE'de kendi DNS’inizi yönetmeniz gerekir. ILB as ile kullanılan etki alanı soneki Ao 'nun adına bağlıdır. Etki alanı son eki *&lt;Ao adı&gt;. appserviceenvironment.net*. ILB 'nizin IP adresi, portalda **IP adresleri**altında bulunur. 
 
 DNS 'nizi yapılandırmak için:
 
-- *&lt;alname&gt;. appserviceenvironment.NET için bir bölge oluşturun*
-- Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun 
-- *AoName&gt;. appserviceenvironment.net adlı SCM adlı bir bölge oluşturun &lt;*
-- SCM bölgesinde ıLB IP adresini işaret eden bir kayıt oluştur
+- *&lt;atıcı adı* için bir bölge oluşturun&gt;. appserviceenvironment.net
+- Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
+- Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
+- *&lt;Ao adı&gt;. appserviceenvironment.net* adlı SCM adlı bir bölge oluşturun
+- SCM bölgesinde * ıLB IP adresine işaret eden bir kayıt oluşturun
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE ile yayımlama
 
-Oluşturulan her uygulama için iki uç nokta vardır. Bir ILB Ao 'da  *&lt;&gt;uygulama adı vardır.&lt; ILB atıcı etki&gt; alanı* ve  *&lt;uygulama&gt;adı. SCM&lt; . ILB ATıCı etki&gt;alanı*. 
+Oluşturulan her uygulama için iki uç nokta vardır. ILB Ao 'da, *&lt;app name&gt;.&lt;ILB Ao etki alanı&gt;* ve *&lt;uygulama adı&gt;. scm.&lt;ILB ao etki alanı&gt;* . 
 
 SCM site adı sizi Azure portalı içinde **Gelişmiş portal** olarak adlandırılan Kudu konsoluna götürür. Kudu konsolunu kullanarak ortam değişkenlerini görüntüleyebilir, diski keşfedebilir, bir konsolu kullanabilir ve daha fazlasını yapabilirsiniz. Daha fazla bilgi için bkz. [Azure App Service Için kudu konsolu][Kudu]. 
 
 GitHub ve Azure DevOps gibi İnternet tabanlı CI sistemleri, derleme aracısına İnternet’ten erişilebiliyorsa ve aracı ILB ASE ile aynı ağdaysa ILB ASE ile çalışmaya devam eder. Bu nedenle, Azure DevOps örneğinde derleme aracısı ILB ASE ile aynı sanal ağda (alt ağın farklı olması sorun yaratmaz) oluşturulursa Azure DevOps git’ten kod çekip ILB ASE’ye dağıtabilir. Kendi derleme aracınızı oluşturmak istemiyorsanız çekme modeli kullanan bir CI sistemi (Dropbox gibi) kullanmanız gerekir.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın portal dikey penceresinde görünür (**Genel Bakış** > **Temel Bilgiler** ve ayrıca **Özellikler**). *&lt;Ao Name&gt;. appserviceenvironment.net*etki alanı sonekini ve *MyTest*adlı bir uygulamayı içeren bir ILB aşiri varsa, *MyTest kullanın.&lt; FTP için Ao Name&gt;. appserviceenvironment.net* ve Web dağıtımı için *MyTest.scm.contoso.net* .
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın portal dikey penceresinde görünür (**Genel Bakış** > **Temel Bilgiler** ve ayrıca **Özellikler**). Etki alanı sonekine sahip bir ıLB Ao *adı&gt;. appserviceenvironment.net&lt;* ve *MyTest*adlı bir uygulama varsa, *MyTest.&lt;ao adı&gt;. appserviceenvironment.net* for FTP veWeb dağıtımı için MyTest.scm.contoso.net.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Bir ıDB ATıCı 'yi WAF cihazından yapılandırma ##
 
@@ -131,7 +132,7 @@ ILB ATıCı 'nizi bir WAF cihazından yapılandırma hakkında daha fazla bilgi 
 
 2019 tarihinden önce yapılan ıLB 'ler, ASE oluşturma sırasında etki alanı sonekini ayarlamanıza gerek yoktur. Ayrıca, bu etki alanı sonekine dayalı bir varsayılan sertifikayı karşıya yüklemeniz gerekir. Ayrıca, daha eski bir ıLB ASE ile kudu konsolunda o ıLB ASE 'deki uygulamalarla çoklu oturum açma işlemleri gerçekleştiremezsiniz. Daha eski bir ıLB ASE için DNS yapılandırırken, etki alanı sonekinden eşleşen bir bölgede bir kayıt joker karakterini ayarlamanız gerekir. 
 
-## <a name="get-started"></a>başlarken ##
+## <a name="get-started"></a>Kullanmaya Başlayın ##
 
 * ASE 'yi kullanmaya başlamak için bkz. [App Service ortamlara giriş][Intro]. 
 

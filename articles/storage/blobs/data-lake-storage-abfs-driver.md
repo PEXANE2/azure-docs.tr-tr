@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901636"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933146"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü
 
@@ -49,6 +49,9 @@ ABFS sürücüsü, Hadoop uygulamasının Data Lake Storage 2. özellikli bir he
 - **Paylaşılan anahtar:** Bu, kullanıcıların hesaptaki tüm kaynaklara erişmesine izin verir. Anahtar şifrelenir ve Hadoop yapılandırmasında depolanır.
 
 - **Azure Active Directory OAuth taşıyıcı belirteci:** Azure AD taşıyıcı belirteçleri, son kullanıcının kimliği veya yapılandırılmış bir hizmet sorumlusu kullanılarak sürücü tarafından alınır ve yenilenir. Bu kimlik doğrulama modelini kullanarak tüm erişim, sağlanan belirteçle ilişkilendirilen kimlik kullanılarak çağrı başına ve atanan POSIX Access Control listesi (ACL) ile değerlendirilir.
+
+   > [!NOTE] 
+   > Azure Data Lake Storage 2. yalnızca Azure AD v 1.0 uç noktalarını destekler.
 
 ### <a name="configuration"></a>Yapılandırma
 

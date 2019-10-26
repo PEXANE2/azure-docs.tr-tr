@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9767282b3dd764a45f25a14d62af70a13c80b0ac
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300262"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933130"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Azure Data Lake Storage çoklu protokol erişimi (Önizleme)
 
@@ -35,7 +35,7 @@ Bu ayrıca üçüncü taraf araçları ve uygulamaları da içerir. Bunları de�
 
 ## <a name="use-all-blob-storage-features"></a>Tüm blob depolama özelliklerini kullan
 
-[Tanılama günlüğü](../common/storage-analytics-logging.md), [erişim katmanları](storage-blob-storage-tiers.md)ve [BLOB depolama yaşam döngüsü yönetim ilkeleri](storage-lifecycle-management-concepts.md) gibi BLOB depolama özellikleri artık hiyerarşik bir ad alanı olan hesaplarla çalışır. Bu nedenle, bu önemli özelliklere erişimi kaybetmeden BLOB depolama hesaplarınızda hiyerarşik ad alanlarını etkinleştirebilirsiniz. 
+[Tanılama günlüğü](../common/storage-analytics-logging.md), [erişim katmanları](storage-blob-storage-tiers.md)ve [BLOB depolama yaşam döngüsü yönetim ilkeleri](storage-lifecycle-management-concepts.md) gibi BLOB depolama özellikleri artık hiyerarşik bir ad alanı olan hesaplarla çalışır. Bu nedenle, bu önemli özelliklere erişimi kaybetmeksizin BLOB depolama hesaplarınızda hiyerarşik ad alanlarını etkinleştirebilirsiniz. 
 
 > [!NOTE]
 > Sınırlamaları gözden geçirmek için, [bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın.

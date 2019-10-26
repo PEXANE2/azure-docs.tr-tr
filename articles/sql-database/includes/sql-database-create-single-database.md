@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099078"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933222"
 ---
 Bu adımda, bir Azure SQL veritabanı tek veritabanı oluşturacaksınız. 
 
@@ -31,26 +31,26 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
 3. **Temel bilgiler** sekmesinde, **proje ayrıntıları** bölümünde aşağıdaki değerleri yazın veya seçin:
 
-   - **Abonelik**: Açılır ve görünmüyorsa doğru aboneliği seçin.
-   - **Kaynak grubu**: **Yeni oluştur**' u seçin `myResourceGroup`, yazın ve **Tamam**' ı seçin.
+   - **Abonelik**: açılır ve görünmüyorsa doğru aboneliği seçin.
+   - **Kaynak grubu**: **Yeni oluştur**' u seçin, `myResourceGroup`yazın ve **Tamam**' ı seçin.
 
      ![Yeni SQL veritabanı-temel sekmesi](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
 4. **Veritabanı ayrıntıları** bölümünde, aşağıdaki değerleri yazın veya seçin:
 
-   - **Veritabanı adı**: `mySampleDatabase` yazın.
+   - **Veritabanı adı**: `mySampleDatabase`girin.
    - **Sunucu**: **Yeni oluştur**' u seçin, aşağıdaki değerleri girin ve ardından **Seç**' i seçin.
-       - **Sunucu adı**: Benzersizlik `mysqlserver`için bazı sayılarla birlikte yazın.
-       - **Sunucu Yöneticisi oturum açma**: `azureuser`yazın.
-       - **Parola**: Parola gereksinimlerini karşılayan karmaşık bir parola yazın.
-       - **Konum**: Açılan kutudan, `West US`gibi bir konum seçin.
+       - **Sunucu adı**: tür `mysqlserver`; Benzersizlik için bazı sayılarla birlikte.
+       - **Sunucu Yöneticisi oturum açma**: tür `azureuser`.
+       - **Parola**: parola gereksinimlerini karşılayan karmaşık bir parola yazın.
+       - **Konum**: açılır listeden `West US`gibi bir konum seçin.
 
          ![Yeni sunucu](../media/sql-database-get-started-portal/new-server.png)
 
       > [!IMPORTANT]
       > Bu ve diğer hızlı başlangıçlara yönelik sunucu ve veritabanlarında oturum açabilmek için Sunucu Yöneticisi oturum açma bilgilerini ve parolayı kaydetmeyi unutmayın. Oturum açma veya parolayı unutursanız **SQL Server** sayfasında oturum açma adını alabilir veya parolayı sıfırlayabilirsiniz. **SQL Server** sayfasını açmak için veritabanı oluşturulduktan sonra veritabanına **genel bakış** sayfasında sunucu adını seçin.
 
-   - **SQL elastik havuzu kullanmak istiyor**: **Hayır** seçeneğini belirleyin.
+   - **SQL elastik havuzu kullanmak Istiyor musunuz**: **Hayır** seçeneğini belirleyin.
    - **İşlem + depolama**: **Veritabanını yapılandır**' ı seçin. 
 
      ![SQL veritabanı ayrıntıları](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
@@ -64,7 +64,7 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
    - **Uygula**’yı seçin.
 
 5. **Ek ayarlar** sekmesini seçin. 
-6. **Veri kaynağı** bölümünde **var olan verileri kullan**altında öğesini seçin `Sample`.
+6. **Veri kaynağı** bölümünde, **mevcut verileri kullan**altında `Sample`' yi seçin.
 
    ![Ek SQL VERITABANı ayarları](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
@@ -142,6 +142,15 @@ PowerShell kullanarak kaynak grubunuzu ve tek bir veritabanınızı oluşturun.
    $database
    ```
 
+Makalenin bu bölümü aşağıdaki PowerShell cmdlet 'lerini kullanır:
+
+| Komut | Notlar |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Tek veritabanları ve elastik havuzlar barındıran bir SQL veritabanı sunucusu oluşturur. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Mantıksal sunucu için bir güvenlik duvarı kuralı oluşturur. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Yeni bir Azure SQL veritabanı tek veritabanı oluşturur. | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
@@ -207,5 +216,16 @@ AZ CLı kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
       --family Gen5 \
       --capacity 2
    ```
+
+Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+
+| Komut | Notlar |
+|---|---|
+| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Aboneliği geçerli etkin abonelik olacak şekilde ayarlar. | 
+| [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tek veritabanları ve elastik havuzlar barındıran bir SQL veritabanı sunucusu oluşturur. |
+| [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Sunucunun güvenlik duvarı kurallarını oluşturur. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Bir veritabanı oluşturur. | 
+
 
 ---

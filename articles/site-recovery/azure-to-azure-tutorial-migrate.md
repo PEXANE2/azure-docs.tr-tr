@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376242"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933890"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM’lerini başka bir bölgeye taşıma
 
@@ -51,7 +51,7 @@ Bu öğreticide şunları yapacaksınız:
 
 - En son kök sertifikaların, taşımak istediğiniz Azure sanal makinelerinde bulunduğundan emin olun. En son kök sertifikalar VM 'de değilse, güvenlik kısıtlamaları hedef bölgeye veri kopyalamayı engeller.
 
-- Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
+- Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
     
 - Linux sanal makineleri için, VM 'deki en son güvenilen kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcısının sunduğu yönergeleri izleyin.
 - Taşımak istediğiniz VM 'Ler için ağ bağlantısını denetlemek üzere bir kimlik doğrulama proxy 'si kullanmadığınız emin olun.
@@ -77,17 +77,17 @@ Bu öğreticide şunları yapacaksınız:
 
 
 
-## <a name="prepare"></a>Hazırlama
+## <a name="prepare"></a>Hazırlanın
 Aşağıdaki adımlarda, bir çözüm olarak Azure Site Recovery kullanarak sanal makinenin taşıma için nasıl hazırlanacağı gösterilmektedir. 
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Kaynak bölgesi dışında herhangi bir bölgede kasa oluşturma
 
 1. [Azure Portal](https://portal.azure.com) > **Kurtarma Hizmetleri**’nde oturum açın.
-1. **Kaynak** > **yönetimi**araçlarıyedeklemesi > **ve Site Recovery oluştur '** u seçin.
+1. **Yedekleme ve Site Recovery** > **Yönetim Araçları** > **kaynak oluştur** ' u seçin.
 1. **Ad** bölümünde **ContosoVMVault** kolay adını belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 1. **ContosoRG**kaynak grubunu oluşturun.
 1. Bir Azure bölgesi belirtin. Desteklenen bölgeleri denetlemek için [Azure Site Recovery fiyatlandırma ayrıntılarında](https://azure.microsoft.com/pricing/details/site-recovery/)coğrafi kullanılabilirlik bölümüne bakın.
-1. **Kurtarma Hizmetleri kasalarında** **genel bakış** > **contosovmkasası** >  **+ Çoğalt**' ı seçin.
+1. **Kurtarma Hizmetleri kasalarında** **genel bakış** > **Contosovmkasa > ** **+ Çoğalt**' ı seçin.
 1. **Kaynak** bölümünde **Azure** seçeneğini belirleyin.
 1. **Kaynak konumu**’nda, VM’lerinizin çalışmakta olduğu kaynak Azure bölgesini seçin.
 1. Kaynak Yöneticisi dağıtım modelini seçin. Ardından **kaynak aboneliği** ve **kaynak kaynak grubunu**seçin.
@@ -109,18 +109,18 @@ Site Recovery, abonelikle ve kaynak grubuyla ilişkili VM 'lerin listesini alır
 
 Aşağıdaki adımlarda, hedef bölgeye taşımanın nasıl gerçekleştirileceği gösterilmektedir.
 
-1. Kasaya gidin. **Ayarlar** > **çoğaltılan öğeler**' de VM ' yi seçin ve ardından **Yük devretme**' yı seçin.
+1. Kasaya gidin. **Yinelenen öğeleri** > **Ayarlar** ' da, VM ' yi seçin ve ardından **Yük devretme**' yı seçin.
 2. **Yük devretme** bölümünde **En geç** seçeneğini belirleyin.
-3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+3. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery, yük devretmeyi tetiklemeden önce kaynak sanal makineyi kapatmaya çalışır. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
 4. İş bittikten sonra, sanal makinenin hedef Azure bölgesinde beklenen şekilde göründüğünden emin olun.
 
 
-## <a name="discard"></a>At 
+## <a name="discard"></a>Mı 
 
 Taşınan VM 'yi denetlediyseniz ve yük devretme noktası olarak değiştirilmesi veya önceki bir noktaya geri dönmek istiyorsanız, **çoğaltılan öğelerde**VM 'yi sağ seçin > **kurtarma noktasını değiştirin**. Bu adım size, farklı bir kurtarma noktası ve bunun için yük devretme belirtme seçeneği sağlar. 
 
 
-## <a name="commit"></a>Yürüt 
+## <a name="commit"></a>İşleme 
 
 Taşınan sanal makineyi denetledikten ve değişikliği kaydetmeye hazırladıktan sonra, **çoğaltılan öğelerde**, VM > **Kaydet**' i sağ seçin. Bu adım, hedef bölgeye taşıma işlemini tamamlar. Tamamlama işi bitene kadar bekleyin.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: b118a509f72af2146abf854b881fa34d8de302a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3c4f1c641865fa8aa1d01d370063c03bbc0680c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564925"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936042"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Öğretici: Azure Content Moderator ile orta e-ticaret ürün görüntüleri
 
@@ -65,11 +65,13 @@ Bu öğretici üç bilişsel hizmet kullanır; Bu nedenle, üç ilgili anahtar v
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-`___Key` Alanları abonelik anahtarlarınızın değerleriyle güncelleştirmeniz gerekir ( `CustomVisionKey` daha sonra alacaksınız) ve `___Uri` alanları doğru bölge tanımlayıcılarını içerecek şekilde değiştirmeniz gerekebilir. Daha önce oluşturduğunuz gözden geçirme ekibinin `ReviewUri` kimliğiyle alanın parçasınıgirin.`YOURTEAMID` Daha sonra `CustomVisionUri` alanının son bölümünü doldurmanız gerekir.
+`___Key` alanlarını abonelik anahtarlarınızın değerleriyle güncelleştirmeniz gerekir ve `___Uri` alanlarını doğru uç nokta URL 'Leriyle değiştirmeniz gerekir (Özel Görüntü İşleme anahtarını ve uç noktasını daha sonra alacaksınız). Bu değerleri, her bir Azure kaynağının **hızlı başlangıç** sekmelerinde bulabilirsiniz. `ReviewUri` alanının `YOURTEAMID` bölümünü, daha önce oluşturduğunuz gözden geçirme ekibinin KIMLIĞIYLE girin. Daha sonra `CustomVisionUri` alanının son bölümünü doldurursunuz.
+
+[!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="primary-method-calls"></a>Birincil yöntem çağrıları
 
-**Ana** yöntemde, bir görüntü URL 'si listesi üzerinden döngü gösteren aşağıdaki koda bakın. Her görüntüyü üç farklı hizmet ile analiz eder, uygulanan etiketleri, **belgeincelemeetiketi** dizisine kaydeder ve ardından görüntüleri Content moderator gözden geçirme aracına göndererek insan moderatörleri için bir gözden geçirme oluşturur. Aşağıdaki bölümlerde bu yöntemler araştırılacak. İsterseniz, hangi etiketlerin uygulanacağını denetlemek için bir koşullu ifadede, gözden geçirmek üzere hangi görüntülerin  gönderileceğini kontrol edebilirsiniz.
+**Ana** yöntemde, bir görüntü URL 'si listesi üzerinden döngü gösteren aşağıdaki koda bakın. Her görüntüyü üç farklı hizmet ile analiz eder, uygulanan etiketleri, **belgeincelemeetiketi** dizisine kaydeder ve ardından görüntüleri Content moderator gözden geçirme aracına göndererek insan moderatörleri için bir gözden geçirme oluşturur. Aşağıdaki bölümlerde bu yöntemler araştırılacak. İsterseniz, hangi etiketlerin uygulanacağını denetlemek için bir koşullu **ifadede, gözden** geçirmek üzere hangi görüntülerin gönderileceğini kontrol edebilirsiniz.
 
 [!code-csharp[Main: evaluate each image and create review](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=53-70)]
 
@@ -87,11 +89,11 @@ Sonraki yöntem, bir görüntü URL 'sini ve Görüntü İşleme abonelik bilgil
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags yöntemi
 
-Ardından, bu Case  Flags, toys ve kalemlerdeki gerçek ürünleri&mdash;sınıflandırın EvaluateCustomVisionTags yöntemine bakın. Kendi özel görüntü sınıflandırıcınızı oluşturmak ve görüntülerde, oyunlarınızı ve kalemleri (veya özel etiketleriniz olarak seçtiğiniz herhangi bir şeyi) anlamak için [nasıl sınıflandırıcı oluşturma](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) Kılavuzu ' nda bulunan yönergeleri izleyin. Bu örnekteki kategorilerden bazılarını hızlıca eğitebilmeniz için [GitHub deposunun](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **örnek görüntüler** klasöründeki görüntüleri kullanabilirsiniz.
+Daha sonra, bu Case Flags, toys ve kalemlerdeki&mdash;gerçek ürünleri sınıflandırın **EvaluateCustomVisionTags** yöntemine bakın. Kendi özel görüntü sınıflandırıcınızı oluşturmak ve görüntülerde, oyunlarınızı ve kalemleri (veya özel etiketleriniz olarak seçtiğiniz herhangi bir şeyi) anlamak için [nasıl sınıflandırıcı oluşturma](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) Kılavuzu ' nda bulunan yönergeleri izleyin. Bu örnekteki kategorilerden bazılarını hızlıca eğitebilmeniz için [GitHub deposunun](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) **örnek görüntüler** klasöründeki görüntüleri kullanabilirsiniz.
 
 ![Kalemlerin, oyunların ve bayrakların eğitim görüntüleriyle Web sayfası Özel Görüntü İşleme](images/tutorial-ecommerce-custom-vision.PNG)
 
-Sınıflandırıcınızı eğittikten sonra, tahmin anahtarını ve tahmin uç nokta URL 'sini alın (bkz. alma konusunda yardıma ihtiyacınız varsa [URL 'yi ve tahmin anahtarını alma](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) ) ve bu değerleri sırasıyla ve `CustomVisionKey` `CustomVisionUri` alanlarınıza atayın. Yöntemi sınıflandırıcının sorgulamak için bu değerleri kullanır. Sınıflandırıcı görüntüde bir veya daha fazla özel etiket bulursa, bu yöntem, Ayrıntılar **Etiketler** dizisindeki karşılık gelen değerleri **true**olarak ayarlar.
+Sınıflandırıcınızı eğittikten sonra, tahmin anahtarını ve tahmin uç nokta URL 'sini alın (bkz. alma konusunda yardıma ihtiyacınız varsa [URL 'yi ve tahmin anahtarını alma](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) ) ve bu değerleri sırasıyla `CustomVisionKey` ve `CustomVisionUri` alanlarına atayın. Yöntemi sınıflandırıcının sorgulamak için bu değerleri kullanır. Sınıflandırıcı görüntüde bir veya daha fazla özel etiket bulursa, bu yöntem, Ayrıntılar **Etiketler** dizisindeki karşılık gelen değerleri **true**olarak ayarlar.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

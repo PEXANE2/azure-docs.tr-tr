@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70273a45bb60fca57292275ea0bb564e17a6f4e9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389310"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934792"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma (Önizleme)
 
@@ -68,9 +68,9 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
 1. Sol menüde, **erişim paketleri**' ne tıklayın.
 
-    ![Azure portal Yetkilendirme Yönetimi](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. **Yeni erişim paketi**' ne tıklayın.
+
+    ![Azure portal Yetkilendirme Yönetimi](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Temel Bilgiler
 
@@ -104,7 +104,7 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
     Erişim paketini mevcut bir katalogda oluşturuyorsanız, zaten katalogda olan herhangi bir kaynağı sahip olmadan seçebilirsiniz.
 
-    Bir genel yöneticiyseniz, bir Kullanıcı Yöneticisi veya katalog sahibiyseniz, sahip olduğunuz kaynakları seçerken henüz katalogda olmayan ek bir seçeneğe sahip olursunuz. Seçili katalogda mevcut olmayan kaynakları seçerseniz, bu kaynaklar diğer katalog yöneticilerinin ile erişim paketleri oluşturması için kataloğa da eklenecektir. Yalnızca seçili katalogda olan kaynakları seçmek istiyorsanız, kaydırma kutusunun en üstündeki **yalnızca göster** onay kutusunu işaretleyin.
+    Genel yönetici, bir Kullanıcı Yöneticisi veya katalog sahibiyseniz, sahip olduğunuz kaynakları seçmek için henüz katalogda olmayan ek bir seçeneğe sahip olursunuz. Seçili katalogda mevcut olmayan kaynakları seçerseniz, bu kaynaklar diğer katalog yöneticilerinin ile erişim paketleri oluşturması için kataloğa da eklenecektir. Yalnızca seçili katalogda olan kaynakları seçmek istiyorsanız, Seç bölmesinin en üstündeki **tek gör** onay kutusunu işaretleyin.
 
 1. Kaynakları seçtikten sonra, **rol** listesinde, kullanıcıların kaynak için atanmasını istediğiniz rolü seçin.
 
@@ -118,7 +118,7 @@ Yeni bir erişim paketi oluşturmak için üst düzey adımlar aşağıda verilm
 
 ![Paket Istekleri sekmesine erişin](./media/entitlement-management-access-package-create/requests.png)
 
-Aşağıdaki bölümlerden birindeki adımları gerçekleştirin.
+Bu erişim paketini isteyebilmek istediğinize bağlı olarak, aşağıdaki bölümlerden birindeki adımları gerçekleştirin.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

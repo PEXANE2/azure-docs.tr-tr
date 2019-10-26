@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Kıvrımlı biçimli tanıyıcı kullanarak alış verilerini ayıklama'
+title: 'Hızlı başlangıç: kıvrımlı biçimli tanıyıcı kullanarak makbuz verilerini ayıklama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, satış alındıları görüntülerinden veri ayıklamak için, biçim tanıyıcı REST API kıvrımlı olarak kullanacaksınız.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: badd674030ec014f2e70050c3c45599a26b17882
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c533949cf0ce69ddc5237dd893dd75e43447c4a9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073821"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931594"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Hızlı Başlangıç: Kıvrımlı REST API form tanıyıcı kullanarak alma verilerini ayıklama
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Hızlı başlangıç: biçim tanıyıcı ile REST API kullanarak alış verilerini ayıklama
 
 Bu hızlı başlangıçta, satış girişlerinde ilgili bilgileri ayıklamak ve tanımlamak için Azure form tanıyıcısı 'nı kıvrımlı REST API kullanacaksınız.
 
@@ -36,15 +36,15 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Bir alındısı analizine başlamak için aşağıdaki kıvrımlı komutunu kullanarak **Çözümleme alındı** API 'sini çağırabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Bir `<your receipt URL>` makbuz resminin URL adresiyle değiştirin.
-1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<Endpoint>`, form tanıyıcı aboneliğinizle edindiğiniz uç noktayla değiştirin.
+1. `<your receipt URL>`, bir makbuz resminin URL adresiyle değiştirin.
+1. `<subscription key>`, önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-**İşlem konumu** üst bilgisi `202 (Success)` içeren bir yanıt alacaksınız. Bu üstbilginin değeri, işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnekte, sonraki `operations/` dize işlem kimliğidir.
+**Işlem konumu** üst bilgisi içeren `202 (Success)` bir yanıt alırsınız. Bu üstbilginin değeri, işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnekte, `operations/` sonraki dize işlem KIMLIĞIDIR.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -54,7 +54,7 @@ https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations
 
 **Çözümleme alındı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **alma sonucu** API 'sini çağırın.
 
-1. Önceki `<operationId>` adımdaki işlem kimliğiyle değiştirin.
+1. `<operationId>`, önceki adımdaki işlem KIMLIĞIYLE değiştirin.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
@@ -63,7 +63,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/ope
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-JSON çıkışıyla bir `200 (Success)` yanıt alacaksınız. İlk alan `"status"`,, işlemin durumunu gösterir. İşlem tamamlandıysa, `"recognitionResults"` alan, alış irsaliyesinden ayıklanan her metin satırını içerir `"understandingResults"` ve alan, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir. İşlem tamamlanmadıysa, değeri `"status"` `"Running"` veya `"NotStarted"`olur ve API 'yi el ile ya da bir komut dosyası aracılığıyla tekrar çağırmanız gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
+JSON çıkışıyla `200 (Success)` bir yanıt alacaksınız. `"status"`ilk alan, işlemin durumunu gösterir. İşlem tamamlandıysa, `"recognitionResults"` alanı alış irsaliyesinden ayıklanan her metin satırını içerir ve `"understandingResults"` alanı, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir. İşlem tamamlanmadıysa, `"status"` değeri `"Running"` veya `"NotStarted"`olur ve API 'yi el ile veya bir komut dosyası aracılığıyla tekrar çağırmanız gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
 
 Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı okunabilirlik için kısaltıldı.
 

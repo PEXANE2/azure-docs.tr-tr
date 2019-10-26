@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Python form tanıyıcısı kullanarak alış verilerini ayıklama'
+title: 'Hızlı başlangıç: Python form tanıyıcısı kullanarak alındı verilerini ayıklama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, satış alındıları görüntülerinden veri ayıklamak için Python ile REST API adlı form tanıyıcıyı kullanacaksınız.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: ef5c9e8d548e8acbcbdbe83f6e7c9965c798ad44
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073741"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931247"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı Başlangıç: Python ile REST API form tanıyıcı kullanarak alındı verilerini ayıklama
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak alındı verilerini ayıklama
 
 Bu hızlı başlangıçta, satış girişlerinde ilgili bilgileri ayıklamak ve tanımlamak için Python ile Azure form tanıyıcı REST API kullanacaksınız.
 
@@ -36,9 +36,9 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanarak **Çözümleme alındı** API 'sini çağırabilirsiniz. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Bir `<your receipt URL>` makbuz resminin URL adresiyle değiştirin.
-1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<Endpoint>`, form tanıyıcı aboneliğinizle edindiğiniz uç noktayla değiştirin.
+1. `<your receipt URL>`, bir makbuz resminin URL adresiyle değiştirin.
+1. `<subscription key>`, önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
     ```python
     import http.client, urllib.request, urllib.parse, urllib.error, base64
@@ -68,9 +68,9 @@ Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanar
 
 1. Kodu. Kopyala uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-receipts.py*.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin: `python form-recognizer-receipts.py`.
+1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-receipts.py`.
 
-Komut dosyasının konsola yazdırabileceği bir `202 (Success)` **işlem konumu** üst bilgisi içeren bir yanıt alırsınız. Bu üst bilgi, işlemin durumunu sorgulamak ve analiz sonuçlarını almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerinde, sonraki `operations/` dize işlem kimliğidir.
+Komut dosyasının konsola yazdırılacağı bir **Işlem konumu** üst bilgisi içeren `202 (Success)` yanıtını alırsınız. Bu üst bilgi, işlemin durumunu sorgulamak ve analiz sonuçlarını almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnek değerde, `operations/` sonraki dize işlem KIMLIĞIDIR.
 
 ```console
 https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -100,11 +100,11 @@ while True:
 ```
 
 1. Betiği kaydedin.
-1. Örneği çalıştırmak için `python` komutunu yeniden kullanın. Örneğin: `python form-recognize-analyze.py`.
+1. Örneği çalıştırmak için `python` komutunu yeniden kullanın. Örneğin, `python form-recognize-analyze.py`.
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-Betik, Çözümle işlemi tamamlanana kadar yanıtları konsola yazdıracaktır. Daha sonra, ayıklanan metin verilerini JSON biçiminde yazdıracaktır. Alan, alış irsaliyesinden ayıklanan her metin satırını içerir `"understandingResults"` ve alan, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir. `"recognitionResults"`
+Betik, Çözümle işlemi tamamlanana kadar yanıtları konsola yazdıracaktır. Daha sonra, ayıklanan metin verilerini JSON biçiminde yazdıracaktır. `"recognitionResults"` alanı, alış irsaliyesinden ayıklanan her metin satırını içerir ve `"understandingResults"` alanı, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir.
 
 Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı okunabilirlik için kısaltıldı.
 

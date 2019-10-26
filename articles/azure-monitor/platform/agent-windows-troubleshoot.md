@@ -1,24 +1,18 @@
 ---
 title: Windows için Log Analytics aracısında sorunlar nasıl giderilir | Microsoft Docs
 description: Azure Izleyici 'de Windows için Log Analytics Aracısı ile ilgili en yaygın sorunların belirtilerini, nedenlerini ve çözümlemesini açıklama.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 96f020f24e27ff799f9bfbc08d899e8375b86094
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 06/12/2019
+ms.openlocfilehash: a218ac09c7a0983796700229c65ae523b61dae10
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431829"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932757"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics Aracısı ile ilgili sorunları giderme 
 
@@ -28,7 +22,7 @@ Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanallar�
 
 * Premier destek avantajlarına sahip müşteriler, [Premier](https://premier.microsoft.com/)ile bir destek isteği açabilir.
 * Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://manage.windowsazure.com/?getsupport=true)bir destek talebi açabilir.
-* Gönderilen fikirleri ve hataları gözden geçirmek için Log Analytics geri bildirim sayfasını ziyaret edin veya yeni bir dosya [@no__t](https://aka.ms/opinsightsfeedback) . 
+* Gönderilen fikirleri ve hataları [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya dosyasını gözden geçirmek Için Log Analytics geri bildirim sayfasını ziyaret edin. 
 
 ## <a name="important-troubleshooting-sources"></a>Önemli sorun giderme kaynakları
 
@@ -53,7 +47,7 @@ Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğ
 
 - Çalışma alanında [Azure Log Analytics Aracı durumu değerlendirmesini](../insights/solution-agenthealth.md) etkinleştirin. Aracının listelenip listelenmediğini görmek için Aracı Durumu panosundan, **yanıt vermeyen aracılar sütununun sayısını** görüntüleyin.  
 
-- Aracının raporlamak üzere yapılandırıldığı çalışma alanına bir sinyal gönderdiğini doğrulamak için aşağıdaki sorguyu çalıştırın. @No__t-0 değerini makinenin gerçek adıyla değiştirin.
+- Aracının raporlamak üzere yapılandırıldığı çalışma alanına bir sinyal gönderdiğini doğrulamak için aşağıdaki sorguyu çalıştırın. `<ComputerName>`, makinenin gerçek adıyla değiştirin.
 
     ```
     Heartbeat 

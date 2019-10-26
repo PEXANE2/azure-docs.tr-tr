@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/25/2019
 ms.locfileid: "71261320"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
@@ -25,10 +25,10 @@ Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölç
 
 Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz Aşağıdaki seçenekleri göz önünde bulundurun:
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 <a id="direct-connection"></a>
 
-1. **Bağlantı ilkesi: Doğrudan bağlantı modunu kullan**
+1. **Bağlantı ilkesi: doğrudan bağlantı modunu kullan**
 
     İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de gözlemlenen istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. İstemci bağlantı Ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *Protokolü*.  Kullanılabilir iki mod şunlardır:
 
@@ -46,7 +46,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
      |Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
      |---------|---------|---------|---------|
-     |Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+     |Ağ Geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
      |Doğrudan    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
 
      Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. Hem doğrudan TCP hem de HTTPS, ilk kimlik doğrulaması ve trafiği şifrelemek için SSL kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
@@ -94,7 +94,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Mümkün olduğunda Azure Cosmos veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. Yaklaşık bir karşılaştırma için, 1-2 ms içinde aynı bölgedeki Azure Cosmos DB çağrıları tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS >. Bu gecikme süresi büyük olasılıkla istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine farklılık gösterebilir. Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak elde edilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
 
-    ![Azure Cosmos DB bağlantı ilkesinin çizimi](./media/performance-tips/same-region.png)
+    Azure Cosmos DB bağlantı ilkesinin ![çizimi](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
 4. **İş parçacığı sayısını/görevleri artır**
 
@@ -128,11 +128,11 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
      SQL .NET SDK sürüm 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır. Paralel sorgular, kullanıcıların gereksinimlerine göre özel olarak ayarlayabilen iki parametre sağlar: (a) Maxdegreeofparalellik: en fazla bölüm sayısını denetlemek için paralel olarak sorgulanabilir ve (b) MaxBufferedItemCount: sayısını denetlemek için önceden getirilen sonuçlar.
 
-    (a) ***paralellik\: paralel sorgu ayarlama derecesi,*** birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak, tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) veya`MaxConcurrency` [SDK V3](sql-api-sdk-dotnet-standard.md) içinde, bölüm sayısının en yüksek performanslı bir sorgu elde etmemesi durumunda, diğer tüm sistem koşullarının aynı kalması şartıyla, Bölüm sayısını bilmiyorsanız, paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz ve sistem paralellik derecesi olarak en az (bölüm sayısı, Kullanıcı tarafından girilen giriş) seçer.
+    (a) paralel sorgu ***\:paralellik ayarlama derecesi*** paralel olarak birden çok bölümü sorgulayarak, paralel sorgu kullanılır. Ancak, tek bir bölümden alınan veriler sorguya göre işlem içine alınır. SDK [v2](sql-api-sdk-dotnet.md) 'de `MaxDegreeOfParallelism` veya [sdk v3](sql-api-sdk-dotnet-standard.md) 'teki `MaxConcurrency`, bölüm sayısının en yüksek performanslı bir sorgu elde etmemesi durumunda, diğer tüm sistem koşullarının aynı kalması şartıyla, bu sorgunun en fazla olması ihtimaline sahip olur. Bölüm sayısını bilmiyorsanız, paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz ve sistem paralellik derecesi olarak en az (bölüm sayısı, Kullanıcı tarafından girilen giriş) seçer.
 
     Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-    (b) ***maxbuffereditemcount\:***  paralel sorgusunun ayarlanması, geçerli sonuç kümesi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. MaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlayan parametredir. MaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına izin verir.
+    (b) ***MaxBufferedItemCount\:ayarlama*** paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. MaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlayan parametredir. MaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına izin verir.
 
     Önceden getirme, paralellik derecesi ne olursa olsun aynı şekilde çalışıyor ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
 6. **Sunucu tarafı GC 'yi aç**
@@ -165,13 +165,13 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
    > [!NOTE] 
    > Maxıtemcount özelliği yalnızca sayfalandırma amacıyla kullanılmamalıdır. Tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmak için bu asıl kullanım önemlidir.  
 
-   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount` -1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örneğin:
+   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
    ```
     
-   Bir sorgu yürütüldüğünde, sonuçta elde edilen veriler bir TCP paketi içinde gönderilir. İçin `maxItemCount`çok düşük değer belirtirseniz, verileri TCP paketi içinde göndermek için gereken gidiş sayısı yüksek olur ve bu da performansı etkiler. Bu nedenle, özelliği için `maxItemCount` hangi değerin ayarlanacağını bilmiyorsanız, bunu-1 olarak ayarlamak ve SDK 'nın varsayılan değeri seçmesini sağlamak en iyisidir. 
+   Bir sorgu yürütüldüğünde, sonuçta elde edilen veriler bir TCP paketi içinde gönderilir. `maxItemCount`için çok düşük değer belirtirseniz, verileri TCP paketi içinde göndermek için gereken gidiş sayısı yüksektir ve bu da performansı etkiler. `maxItemCount` özelliği için hangi değerin ayarlanacağını bilmiyorsanız, bunu-1 olarak ayarlamak ve SDK 'nın varsayılan değeri seçmesini sağlamak en iyisidir. 
 
 11. **İş parçacığı sayısını/görevleri artır**
 
@@ -183,9 +183,9 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     - Yürütülebilir uygulamalar için bu işlem, **derleme** sekmesindeki **proje özellikleri** penceresinde **32 bit tercih et** seçeneğinin işaretlenmesi yoluyla yapılabilir.
 
-    - VSTest tabanlı test projeleri için, **Visual Studio test** menü seçeneğinde test**Test ayarları**->**Varsayılan işlemci mimarisi x64 olarak**' **yi seçerek**->bu işlemi gerçekleştirebilirsiniz.
+    - VSTest **tabanlı test projeleri** Için, **Visual Studio test** menü seçeneğinden **X64 olarak varsayılan Işlemci mimarisi**->test->**Test ayarları** ' nı seçerek bu işlemi gerçekleştirebilirsiniz.
 
-    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için, **Araçlar**->**Seçenekler**->**Projeler ve çözümler** altında **Web siteleri ve projeleri için IIS Express 64 bitlik sürümü kullanılarak**bu yapılabilir. **Web projeleri**. ->
+    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için, bu işlem, **Web siteleri ve projeleri için IIS Express 64 bitlik sürümünü kullan**, **araçlar**->**Seçenekler**->**Projeler ve çözümler** altında-> **Web projeleri**.
 
     - Azure 'da dağıtılan ASP.NET Web uygulamaları için, Azure portal **uygulama ayarlarında** **Platform 64-bit olarak** seçilerek bu yapılabilir.
 
@@ -204,7 +204,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md).
 
-## <a name="throughput"></a>Aktarım hızı
+## <a name="throughput"></a>İşleme
 <a id="measure-rus"></a>
 
 1. **Düşük istek birimleri/ikinci kullanım için ölçme ve ayarlama**
@@ -215,7 +215,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Bir sorgunun karmaşıklığı, bir işlem için kaç Istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
 
-    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya .NET SDK 'da\<resourceresvert > veya feedresponse\<T > ' de eşdeğer requestücretle) inceleyin. Bu işlemler tarafından tüketilen istek birimi sayısını ölçün.
+    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya .NET SDK 'Da bulunan Resourceres,\<t > veya feedresponse\<t > ile) inceleyin. Bu işlemler tarafından tüketilen istek birimi sayısı.
 
     ```csharp
     // Measure the performance (request units) of writes

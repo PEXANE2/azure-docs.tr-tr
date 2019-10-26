@@ -3,16 +3,16 @@ title: SSS-Azure 'da Ağ Performansı İzleyicisi çözüm | Microsoft Docs
 description: Bu makale, Azure 'daki Ağ Performansı İzleyicisi hakkında sık sorulan soruları yakalar. Ağ Performansı İzleyicisi (NPM), ağların performansını neredeyse gerçek zamanlı olarak izlemenize ve ağ performansı performans sorunlarını saptamanıza ve bulmanıza yardımcı olur.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: article
+ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898862"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931311"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 

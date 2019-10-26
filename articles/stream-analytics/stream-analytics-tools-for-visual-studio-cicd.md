@@ -1,5 +1,5 @@
 ---
-title: Tümleştirme ve geliştirme için Azure Stream Analytics CI/CD NuGet paketini kullanın
+title: Azure Stream Analytics CI/CD NuGet paketini kullanın
 description: Bu makalede bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için Azure Stream Analytics CI/CD NuGet paketinin nasıl kullanılacağı açıklanır.
 services: stream-analytics
 author: su-jie
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 47bcd29ca8a1da0c42f7bc39aeb4ffc1ad8e8571
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 6f5ba06841af580cd80b3b46bec972f717ded044
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172896"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934232"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Tümleştirme ve geliştirme için Azure Stream Analytics CI/CD NuGet paketini kullanın 
 Bu makalede, Azure Stream Analytics CI/CD NuGet paketinin bir sürekli tümleştirme ve dağıtım işlemi ayarlamak için nasıl kullanılacağı açıklanır.
@@ -26,7 +26,7 @@ Bir NuGet paketi kullanılabilir: [Microsoft. Azure. Stream Analytics. CICD](htt
 
 Daha fazla bilgi için bkz. [Visual Studio için Stream Analytics araçları](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
-## <a name="msbuild"></a>MSBuild
+## <a name="msbuild"></a>MSBUILD
 Standart Visual Studio MSBuild deneyimi gibi bir proje oluşturmak için iki seçeneğiniz vardır. Projeye sağ tıklayıp ardından **Oluştur**' u seçin. Ayrıca, komut satırından NuGet paketindeki **MSBuild** 'i de kullanabilirsiniz.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
@@ -60,7 +60,7 @@ Azure Data Lake Store Gen1 için yönetilen kimliği çıkış havuzu olarak kul
 
 ## <a name="command-line-tool"></a>Komut satırı aracı
 
-### <a name="build-the-project"></a>Proje derleme
+### <a name="build-the-project"></a>Projeyi derleme
 NuGet paketinin **sa. exe**adlı bir komut satırı aracı vardır. Sürekli tümleştirme ve sürekli teslim sürecinde kullanabileceğiniz rastgele bir makinede proje derlemesini ve yerel sınamayı destekler. 
 
 Dağıtım dosyaları varsayılan olarak geçerli dizinin altına yerleştirilir. Aşağıdaki-OutputPath parametresini kullanarak çıkış yolunu belirtebilirsiniz:
@@ -93,6 +93,6 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı Başlangıç: Visual Studio 'da Azure Stream Analytics bulut işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Stream Analytics sorguları Visual Studio ile yerel olarak test etme](stream-analytics-vs-tools-local-run.md)
+* [Hızlı başlangıç: Visual Studio 'da Azure Stream Analytics bulut işi oluşturma](stream-analytics-quick-create-vs.md)
+* [Visual Studio ile yerel olarak Stream Analytics sorguları test etme](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio ile Azure Stream Analytics işleri keşfet](stream-analytics-vs-tools.md)

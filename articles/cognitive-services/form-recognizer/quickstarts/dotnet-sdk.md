@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264442"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931563"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
@@ -43,7 +43,7 @@ ms.locfileid: "72264442"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra anahtar için `FORM_RECOGNIZER_KEY` adlı [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, sırasıyla `FORM_RECOGNIZER_KEY` ve `FORM_RECOGNIZER_ENDPOINT`adlı anahtar ve uç nokta için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
@@ -120,7 +120,6 @@ Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aş
 
 Herhangi bir yöntemi tanımladıktan önce, aşağıdaki değişken tanımlarını **Program** sınıfınızın en üstüne ekleyin. Değişkenlerin bazılarını kendiniz doldurmanız gerekir. 
 
-* Hizmetin uç nokta değerini, Azure portal **genel bakış** bölümünde bulabilirsiniz. 
 * Eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Analiz etmek için bir örnek form gerekiyorsa, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyalardan birini kullanabilirsiniz. Bu kılavuz yalnızca PDF formlarını kullanır.
 
@@ -128,7 +127,7 @@ Herhangi bir yöntemi tanımladıktan önce, aşağıdaki değişken tanımları
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-@No__t-0 yönteminin altında, `Main` ' de başvurulan görevi tanımlayın. Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak istemci nesnesinin kimliğini doğrulacaksınız. Daha sonra diğer yöntemleri tanımlayacaksınız.
+`Main` yönteminin altında, `Main`başvuruda bulunulan görevi tanımlayın. Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak istemci nesnesinin kimliğini doğrulacaksınız. Daha sonra diğer yöntemleri tanımlayacaksınız.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 

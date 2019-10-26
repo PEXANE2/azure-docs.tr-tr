@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 45eaa6d4c66c9ec8e25d728fb70f389912a00793
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551603"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928429"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Hızlı başlangıç: IoT Hub 'da IoT hizmeti için Azure Güvenlik Merkezi 'Ni ekleme
 
@@ -43,13 +43,7 @@ Bu makalede, mevcut IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'nin nası
 IoT Hub güvenliği sağlamak için: 
 
 1. **IoT Hub** Azure Portal açın. 
-1. **Güvenlik** menüsünde, **IoT çözümünüzün güvenliğini sağla**' yı tıklatın.
-1. Seçileni Varsayılan olarak **Etkinleştir** ' i bırakın. 
-1. Log Analytics çalışma alanınızı seçin.
-1. Log Analytics çalışma alanınızın ayrıntılarını sağlayın. 
-   - **İkizi koleksiyonunu** etkin bırakarak **ikizi toplamayı** etkinleştirmek için **seçin.**
-   - **Ham olayları** , Log Analytics depolanan **Ham cihaz güvenlik olaylarını** seçerek depolama varsayılan bilgi türlerine ek olarak depolamayı tercih edin. **Ham olay** geçişi **Açık**bırakın. 
-    
+1. **Güvenlik** menüsünde, **IoT çözümünüzün güvenliğini sağla**' yı tıklatın.    
 1. **Kaydet** düğmesine tıklayın. 
 
 Tebrikler! IoT Hub IoT için Azure Güvenlik Merkezi 'Ni etkinleştirmeyi tamamladınız. 

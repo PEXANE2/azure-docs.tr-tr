@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514763"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926660"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -150,7 +150,7 @@ Bir erişim anahtarı ve bir SAS belirteci kullanarak AWS S3 'ten bir dizinin ta
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak tüm demetleri Amazon Web Services (AWS) ' den blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
+- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. net? [SAS] "--özyinelemeli = true
 
 Bir erişim anahtarı ve bir SAS belirteci kullanarak, tüm demetleri bir Amazon Web Services (AWS) bölgesinden blob depolamaya kopyalayın. İlk olarak, AWS S3 kaynağı için AWS_ACCESS_KEY_ID ve AWS_SECRET_ACCESS_KEY ortam değişkenini ayarlayın.
 
@@ -172,7 +172,7 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--Çek uzunluğu**                         Aktarımdan sonra hedefteki bir dosyanın uzunluğunu denetleyin. Kaynak ve hedef arasında uyuşmazlık varsa, aktarım başarısız olarak işaretlenir. (varsayılan doğru)
 
-**--Check-MD5** dizesi, indirme sırasında ne kadar MD5 karmalarının doğrulanması gerektiğini belirtir. Yalnızca indirme sırasında kullanılabilir. Kullanılabilir seçenekler: NoCheck, LogOnly, Failiffarklı, Failiffarklıentormissing. (varsayılan ' Failiffarklı ') (varsayılan "Failiffarklı")
+**--Check-MD5** dizesi, indirme sırasında ne kadar MD5 karmalarının doğrulanması gerektiğini belirtir. Yalnızca indirme sırasında kullanılabilir. Kullanılabilir seçenekler: NoCheck, LogOnly, Failiffarklı, Failiffarklıentormissing. (varsayılan "Failiffarklı")
 
 **--Content-Disposition** dize, Content-Disposition üst bilgisini ayarlar. İndirilmek üzere döndürüldü.
 
@@ -204,15 +204,15 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--Include-model** dize, kopyalama sırasında yalnızca bu dosyaları içerir. Bu seçenek joker karakterler (*) destekler. '; ' Kullanarak dosyaları ayırın.
 
-**--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan ' BILGI '). (varsayılan "BILGI")
+**--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan "BILGI")
 
 **--meta veri** dizesi bu anahtar-değer çiftleri ile meta veri olarak Azure depolama 'Ya karşıya yükleyin.
 
 **--No-tahmin-MIME türü**                   AzCopy 'in, dosyanın uzantısına veya içeriğine göre içerik türünü algılamasını önler.
 
-**--** bu bayrak true olarak ayarlandıysa, dizenin üzerine yazma, hedefteki çakışan dosya ve Blobların üzerine yazar. (varsayılan ' true ') Olası değerler ' true ', ' false ' ve ' Prompt ' değerleridir. (varsayılan "true")
+**--** bu bayrak true olarak ayarlandıysa, dizenin üzerine yazma, hedefteki çakışan dosya ve Blobların üzerine yazar. Olası değerler ' true ', ' false ' ve ' Prompt ' değerleridir. (varsayılan "true")
 
-**--Page-blob katmanı** dizesi bu blob katmanını kullanarak sayfa blobunu Azure depolama 'ya yükler. (varsayılan ' none '). (varsayılan "none")
+**--Page-blob katmanı** dizesi bu blob katmanını kullanarak sayfa blobunu Azure depolama 'ya yükler. (varsayılan "none")
 
 **--Preserve-son değiştirilme zamanı**          Yalnızca hedef dosya sistemi olduğunda kullanılabilir.
 
@@ -222,9 +222,9 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 
 **--S2S-Algıla-kaynak-değiştirildi**           Numaralandırdıktan sonra kaynağın değiştirilip değiştirilmediğini denetleyin.
 
-**--S2S-Handle-geçersiz-Metadata** dize, geçersiz meta veri anahtarlarının nasıl işleneceğini belirtir. Kullanılabilir seçenekler: Excludeifgeçersiz, Failifgeçersiz, Renameifgeçersiz. (varsayılan ' Excludeifgeçersiz '). (varsayılan "Excludeifgeçersiz")
+**--S2S-Handle-geçersiz-Metadata** dize, geçersiz meta veri anahtarlarının nasıl işleneceğini belirtir. Kullanılabilir seçenekler: Excludeifgeçersiz, Failifgeçersiz, Renameifgeçersiz. (varsayılan "Excludeifgeçersiz")
 
-**--S2S-Preserve-Access-Tier**             Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için lütfen [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanlarını](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) inceleyin. Erişim katmanını ayarlamanın desteklenme durumlarında, lütfen s2sPreserveAccessTier = false kullanarak erişim katmanını kopyalamayı atlayın. (varsayılan doğru).  (varsayılan doğru)
+**--S2S-Preserve-Access-Tier**             Hizmetten hizmete kopyalama sırasında erişim katmanını koruyun. Hedef depolama hesabının erişim katmanını ayarlamayı desteklediğinden emin olmak için lütfen [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanlarını](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) inceleyin. Erişim katmanını ayarlamanın desteklenme durumlarında, lütfen s2sPreserveAccessTier = false kullanarak erişim katmanını kopyalamayı atlayın. (varsayılan doğru)
 
 **--S2S-Preserve-Özellikler**              Hizmetten hizmete kopyalama sırasında tam özellikleri koruyun. AWS S3 ve Azure dosya için tek dosya kaynağı için liste işlemi, nesnelerin ve dosyaların tam özelliklerini döndürmez. Tam özellikleri korumak için AzCopy, nesne veya dosya başına bir ek istek göndermelidir. (varsayılan doğru)
 

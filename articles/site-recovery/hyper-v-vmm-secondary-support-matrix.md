@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813611"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933820"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM 'lerinin ikincil bir siteye olağanüstü durum kurtarması için destek matrisi
 
@@ -21,7 +21,9 @@ Bu makalede, System Center Virtual Machine Manager (VMM) bulutlarında yönetile
 > [!NOTE]
 > Yalnızca Hyper-V konaklarınız VMM bulutlarında yönetilmiyorsa ikincil bir siteye çoğaltabilirsiniz.
 
-  
+> [!WARNING]
+> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
+
 
 ## <a name="host-servers"></a>Ana bilgisayar sunucuları
 
@@ -54,15 +56,15 @@ Yalnızca aşağıdaki depolama alanına sahip Linux makineleri çoğaltılabili
 
 **Yapılandırma** | **Destekleniyor**  
 --- | --- 
-Konak-NIC Grubu oluşturma | Evet 
-Konak-VLAN | Evet 
-Ana bilgisayar-IPv4 | Evet 
+Konak-NIC Grubu oluşturma | Yes 
+Konak-VLAN | Yes 
+Ana bilgisayar-IPv4 | Yes 
 Ana bilgisayar-IPv6 | Hayır 
 Konuk VM-NIC ekibi oluşturma | Hayır
-Konuk VM-IPv4 | Evet
+Konuk VM-IPv4 | Yes
 Konuk VM-IPv6 | Hayır
-Konuk VM-Windows/Linux-statik IP adresi | Evet
-Konuk VM-çoklu NIC | Evet
+Konuk VM-Windows/Linux-statik IP adresi | Yes
+Konuk VM-çoklu NIC | Yes
 
 
 ## <a name="storage"></a>Depolama
@@ -72,9 +74,9 @@ Konuk VM-çoklu NIC | Evet
 **Depolama (ana bilgisayar)** | **Destekleniyor**
 --- | --- 
 NFS | Yok
-SMB 3.0 |  Evet
-SAN (ISCSI) | Evet
-Çoklu yol (MPIO) | Evet
+SMB 3.0 |  Yes
+SAN (ISCSı) | Yes
+Çoklu yol (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Konuk veya fiziksel sunucu depolaması
 
@@ -82,19 +84,19 @@ SAN (ISCSI) | Evet
 --- | --- | 
 VMDK |  Yok
 VHD/VHDX | Evet (16 diske kadar)
-Gen 2 VM | Evet
+Gen 2 VM | Yes
 Paylaşılan küme diski | Hayır
 Şifrelenmiş disk | Hayır
 UEFI| Yok
 NFS | Hayır
 SMB 3.0 | Hayır
 RDM | Yok
-Disk > 1 TB | Evet
-Dizili disk > 1 TB olan birim<br/><br/> LVM | Evet
-Depolama alanları | Evet
+Disk > 1 TB | Yes
+Dizili disk > 1 TB olan birim<br/><br/> LVM | Yes
+Depolama alanları | Yes
 Dinamik disk Ekle/Kaldır | Hayır
-Diski hariç tutma | Evet
-Çoklu yol (MPIO) | Evet
+Diski hariç tutma | Yes
+Çoklu yol (MPIO) | Yes
 
 ## <a name="vaults"></a>Kasalar
 

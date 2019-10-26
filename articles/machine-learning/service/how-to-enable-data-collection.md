@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330743"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929375"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modeller için veri toplama
 
@@ -47,9 +47,12 @@ Aşağıdaki veriler toplanabilir:
 Blob 'daki çıkış verilerinin yolu şu sözdizimini izler:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> `0.1.0a16` öncesindeki SDK sürümlerinde `designation` bağımsız değişkeni `identifier`olarak adlandırılmıştır. Kodunuz daha önceki bir sürümle geliştirilmişse, buna uygun olarak güncelleştirmeniz gerekecektir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -76,19 +79,19 @@ Bunu etkinleştirmek için şunları yapmanız gerekir:
    from azureml.monitoring import ModelDataCollector
    ```
 
-2. @No__t-0 işlevinizde veri toplama değişkenlerinizi bildirin:
+2. `init()` işlevinizde veri toplama değişkenlerinizi bildirin:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     *CorrelationId* isteğe bağlı bir parametredir, modelinizin gerekmiyorsa ayarlamanız gerekmez. Bir Bağıntıkimliği 'ın yerinde olması, diğer verilerle daha kolay eşleme yapmanıza yardımcı olur. (Örnekler şunlardır: Krenumber, CustomerID, vb.)
     
     *Tanımlayıcı* daha sonra Blobun klasör yapısını oluşturmak için kullanıldığında, "ham" verileri "işlenmiş" olarak bölmek için kullanılabilir.
 
-3.  Aşağıdaki kod satırlarını `run(input_df)` işlevine ekleyin:
+3.  `run(input_df)` işlevine aşağıdaki kod satırlarını ekleyin:
 
     ```python
     data = np.array(data)
@@ -116,13 +119,13 @@ Bunu etkinleştirmek için şunları yapmanız gerekir:
 
 1. Çalışma alanınızı açın.
 
-1. **Dağıtımlar**@no__t git-1 hizmet  -> **Düzenle**' yi**seçin**.
+1. **Dağıtımlar** ' a gidin -> hizmet -> **Düzenle**' yi **seçin** .
 
    ![Hizmeti Düzenle](media/how-to-enable-data-collection/EditService.PNG)
 
 1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir**' i seçimden çıkar. 
 
-    [![ veri toplamayı denetle](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [Veri toplamayı denetim![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    Bu pencerede, hizmetinizin sistem durumunu izlemek için "Appınsights tanılamayı etkinleştir" i de seçebilirsiniz.  
 
@@ -137,13 +140,13 @@ Verileri toplamayı her zaman durdurabilirsiniz. Veri toplamayı devre dışı b
 
   1. Çalışma alanınızı açın.
 
-  1. **Dağıtımlar**@no__t git-1 hizmet  -> **Düzenle**' yi**seçin**.
+  1. **Dağıtımlar** ' a gidin -> hizmet -> **Düzenle**' yi **seçin** .
 
-     [![Edit seçeneği](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [![düzenleme seçeneği](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir**' i seçimden çıkar. 
 
-     [![ veri toplamayı kaldır](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [![veri toplamayı kaldır](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Değişikliği uygulamak için **Güncelleştir** ' i seçin.
 
@@ -165,12 +168,12 @@ Blobun verilere hızlıca erişmek için:
 1. Çalışma alanınızı açın.
 1. **Depolama**' ya tıklayın.
 
-    [![Depolama](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [![depolama](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Blob 'daki çıkış verilerinin yolunu şu sözdizimiyle izleyin:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -181,26 +184,26 @@ Blobun verilere hızlıca erişmek için:
 
 1. **Veri al** ' ı seçin ve [**Azure Blob depolama**](https://docs.microsoft.com/power-bi/desktop-data-sources)' ya tıklayın.
 
-    [![PBı blobu kurulumu](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [PBı blob kurulumunu![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, blob **ayarlarınızda** > erişim anahtarlarına > bulabilirsiniz. 
 
 1. Kapsayıcı **modeldata** ' ı seçin ve **Düzenle**' ye tıklayın. 
 
-    [![PBI Gezgini](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [![PBı Gezgini](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Sorgu Düzenleyicisi 'nde, "ad" sütununa tıklayın ve depolama hesabınızı ekleyin 1. Filtre içindeki model yolu. Note: belirli bir yıldan veya aydan yalnızca dosyalara bakmak isterseniz, filtre yolunu genişletmeniz yeterlidir. Örneğin, yalnızca Mart verilerine göz atın:/modeldata/SubscriptionID >/resourcegroupname >/çalışmaadı >/WebServiceName >/ModelName >/modelversion >/Identifier >/Year >/3
+1. Sorgu Düzenleyicisi 'nde, "ad" sütununa tıklayın ve depolama hesabınızı ekleyin 1. Filtre içindeki model yolu. Note: belirli bir yıldan veya aydan yalnızca dosyalara bakmak isterseniz, filtre yolunu genişletmeniz yeterlidir. Örneğin, yalnızca Mart verilerine göz atın:/modeldata/SubscriptionID >/resourcegroupname >/çalışmaadı >/WebServiceName >/ModelName >/modelversion >/GroupName >/Year >/3
 
 1. **Adına**göre sizin için uygun olan verileri filtreleyin. **Tahminleri** ve **girişleri**depoladıysanız, her biri için bir sorgu oluşturmanız gerekir.
 
 1. Dosyaları birleştirmek için **içerik** sütununu iki katına kaydederek çift oka tıklayın. 
 
-    [![PBI Içeriği](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [![PBı Içeriği](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. Tamam ' a tıklayın ve veriler önyüklenir.
 
-    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+    [![Pbımbine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
 1. Şimdi **Kapat ve Uygula** ' ya tıklayabilirsiniz.
 

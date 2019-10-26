@@ -5,14 +5,14 @@ author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
 ms.date: 09/25/2019
-ms.author: de
+ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 05c9558479e0ad0bf9e05c8f5cae25d7fce6be42
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023851"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931497"
 ---
 # <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
@@ -121,7 +121,7 @@ Verileri çözümlemek için sorguları çalıştırmadan önce, analiz için ka
 {Query text}
 ```
 
-Daha fazla bilgi edinmek için [Azure Cosmos DB makalesinde yerleşik Not defteri komutları ve özellikleri](use-notebook-features-and-commands.md) bölümüne bakın. @No__t-0 sorgusunu çalıştıracaksınız. Sonuçlar df_cosmos adlı bir Pandas veri çerçevesine kaydedilir. Aşağıdaki komutu yeni bir not defteri hücresine yapıştırın ve çalıştırın:
+Daha fazla bilgi edinmek için [Azure Cosmos DB makalesinde yerleşik Not defteri komutları ve özellikleri](use-notebook-features-and-commands.md) bölümüne bakın. `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`sorgusunu çalıştıracaksınız. Sonuçlar df_cosmos adlı bir Pandas veri çerçevesine kaydedilir. Aşağıdaki komutu yeni bir not defteri hücresine yapıştırın ve çalıştırın:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos

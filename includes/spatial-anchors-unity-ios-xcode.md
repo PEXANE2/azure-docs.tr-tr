@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562490"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933496"
 ---
 **Oluştur**' u seçin. Açılan iletişim kutusunda, Xcode projesinin dışarı aktarılacağı klasörü seçin.
 
@@ -26,20 +26,20 @@ Proje için gerekli CocoaPods yüklemek üzere, dışarıya aktarılmış Xcode 
 pod install --repo-update
 ```
 
-Artık projeyi Xcode `Unity-iPhone.xcworkspace` 'da açmak için açabilirsiniz:
+Artık projeyi Xcode 'da açmak için `Unity-iPhone.xcworkspace` açabilirsiniz:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> Bir `library not found for -lPods-Unity-iPhone` hata görürseniz dosya yerine `.xcodeproj` `.xcworkspace` dosyayı açmış olabilirsiniz. 
+> MacOS Catalina 'e yükselttikten sonra CocoaPod sorunları [yaşıyorsanız, sorun giderme adımlarına bakın](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) (10,15).
 
 Proje ayarlarını görüntülemek için kök **Unity-iPhone** düğümünü seçin ve ardından **genel** sekmesini seçin.
 
 **İmza**' ın altında, **imzalamayı otomatik olarak Yönet** ' in etkinleştirildiğinden emin olun. Yoksa, etkinleştirin ve sonra yapı ayarlarını sıfırla açılan iletişim kutusunda **Otomatik Etkinleştir** ' i seçin.
 
-**Dağıtım bilgileri**altında **dağıtım hedefinin** olarak `11.0`ayarlandığından emin olun.
+**Dağıtım bilgileri**altında **dağıtım hedefinin** `11.0`olarak ayarlandığından emin olun.
 
 ### <a name="deploy-the-app-to-your-ios-device"></a>Uygulamayı iOS cihazınıza dağıtma
 
@@ -50,3 +50,6 @@ Proje ayarlarını görüntülemek için kök **Unity-iPhone** düğümünü se�
 **Oluştur ' u seçin ve ardından geçerli düzeni çalıştırın**.
 
 ![Dağıt ve Çalıştır](./media/spatial-anchors-unity/deploy-run.png)
+
+> [!NOTE]
+> `library not found for -lPods-Unity-iPhone` bir hata görürseniz, büyük olasılıkla `.xcworkspace` dosyası yerine `.xcodeproj` dosyasını açtınız.

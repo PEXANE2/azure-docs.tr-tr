@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 27063702729d8a61ab8919c2685fcfc6f743ce09
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858997"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935388"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi nedir?
 
@@ -26,7 +26,7 @@ IoT Tak ve Kullan önizlemesi, çözüm geliştiricilerinin, ekli kod yazmadan c
 
 İşbirliğini kolaylaştırmak ve geliştirmeyi hızlandırmak için cihaz yetenek modelleri genelinde arabirimleri yeniden kullanabilirsiniz.
 
-IoT Tak ve Kullan [Azure dijital TWINS](../digital-twins/about-digital-twins.md)ile sorunsuz bir şekilde çalışmasını sağlamak Için, IoT Tak ve kullan şeması [dijital ikizi tanım dili (dtdl)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)kullanılarak tanımlanmıştır. IoT Tak ve Kullan ve DTDL, topluluk için açıktır ve Microsoft, müşteriler, iş ortakları ve sektörle işbirliği ile gelir. Her ikisi de JSON-LD ve RDF gibi açık W3C standartlarına dayalıdır ve bu da hizmetler ve araçlar arasında daha kolay benimseme olanağı sağlar. Ayrıca, IoT Tak ve Kullan ve DTDL kullanımı için ek bir maliyet yoktur. Azure [IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/overview-iot-central.md)ve diğer Azure hizmetleri için standart ücretler aynı kalır.
+IoT Tak ve Kullan [Azure dijital TWINS](../digital-twins/about-digital-twins.md)ile sorunsuz bir şekilde çalışmasını sağlamak Için, IoT Tak ve kullan şeması [dijital ikizi tanım dili (dtdl)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)kullanılarak tanımlanmıştır. IoT Tak ve Kullan ve DTDL, topluluk için açıktır ve Microsoft, müşteriler, iş ortakları ve sektörle işbirliği ile gelir. Her ikisi de JSON-LD ve RDF gibi açık W3C standartlarına dayalıdır ve bu da hizmetler ve araçlar arasında daha kolay benimseme olanağı sağlar. Ayrıca, IoT Tak ve Kullan ve DTDL kullanımı için ek bir maliyet yoktur. Azure [IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/core/overview-iot-central.md)ve diğer Azure hizmetleri için standart ücretler aynı kalır.
 
 IoT Hub veya IoT Central oluşturulan çözümler, IoT Tak ve Kullan yararlanabilir.
 
@@ -48,7 +48,7 @@ IoT Tak ve Kullan iki tür geliştirici için yararlıdır:
 
 Çözüm geliştiricisi olarak IoT Tak ve Kullan cihazları kullanan, bulutta barındırılan bir IoT çözümü geliştirebilirsiniz. Aşağıdaki Azure hizmetlerinden birini kullanabilirsiniz:
 
-- [IoT Central](../iot-central/overview-iot-central.md) -fiziksel ve dijital çalışma LDS 'yi bağlayan ürünler oluşturmayı kolaylaştıran, tam olarak yönetilen bir hizmet olarak yazılım çözümü.
+- [IoT Central](../iot-central/core/overview-iot-central.md) -fiziksel ve dijital çalışma LDS 'yi bağlayan ürünler oluşturmayı kolaylaştıran, tam olarak yönetilen bir hizmet olarak yazılım çözümü.
 - [IoT Hub](../iot-hub/about-iot-hub.md) , IoT uygulamanız ve cihazlarınız arasında güvenli, çift yönlü iletişim için ileti hub 'ı görevi gören yönetilen bir bulut hizmetidir.
 
 IoT Tak ve Kullan cihazlarını IoT için Azure Sertifikalı cihaz Kataloğu aracılığıyla bulabilirsiniz. Katalogdaki her bir IoT Tak ve Kullan aygıtı doğrulandıktan sonra bir cihaz yetenek modeli vardır. Cihazın işlevselliğini anlamak veya cihazın Azure IoT Central benzetimini yapmak için onu kullanmak üzere cihaz yetenek modelini görüntüleyin.

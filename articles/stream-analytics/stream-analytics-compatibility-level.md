@@ -1,17 +1,17 @@
 ---
-title: Azure Stream Analytics işleri için uyumluluk düzeyini anlayın
-description: Son uyumluluk düzeyinde bir Azure Stream Analytics işi ve önemli değişiklikler için uyumluluk düzeyi hakkında bilgi edinin
+title: Uyumluluk düzeylerini Azure Stream Analytics
+description: Azure Stream Analytics işi için bir uyumluluk düzeyi ayarlamayı ve en son uyumluluk düzeyindeki önemli değişiklikleri nasıl ayarlayacağınızı öğrenin
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 888c1f0bb38a5317cc27790ea47917c182d49593
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173236"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72925636"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -21,7 +21,7 @@ Ancak, hizmette bulunan bazı yeni işlevler, var olan bir işin davranışında
 
 ## <a name="choose-a-compatibility-level"></a>Uyumluluk düzeyi seçin
 
-Uyumluluk düzeyi, bir stream analytics işi çalışma zamanı davranışını denetler. 
+Uyumluluk düzeyi bir Stream Analytics işinin çalışma zamanı davranışını denetler. 
 
 Azure Stream Analytics Şu anda üç uyumluluk düzeyini desteklemektedir:
 
@@ -40,14 +40,14 @@ Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur 
 Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
 1. Stream Analytics işinizi bulmak için [Azure Portal](https://portal.azure.com) kullanın.
-2. Uyumluluk düzeyini güncelleştirmeden önce işi **durdurun** . İşinizi çalışır durumda olup olmadığını uyumluluk düzeyini güncelleştirilemiyor.
+2. Uyumluluk düzeyini güncelleştirmeden önce işi **durdurun** . İşiniz çalışır durumdaysa uyumluluk düzeyini güncelleştiremezsiniz.
 3. **Yapılandır** başlığı altında, **Uyumluluk düzeyi**' ni seçin.
 4. İstediğiniz uyumluluk düzeyi değerini seçin.
 5. Sayfanın alt kısmındaki **Kaydet** ' i seçin.
 
-![Azure portalında Stream Analytics uyumluluk düzeyi](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Azure portal Stream Analytics uyumluluk düzeyi](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Uyumluluk düzeyini güncelleştirdiğinizde, T-SQL derleyicisi iş seçili uyumluluk düzeyine karşılık gelen söz dizimi ile doğrular.
+Uyumluluk düzeyini güncelleştirdiğinizde T-SQL derleyicisi, işi seçilen uyumluluk düzeyine karşılık gelen sözdizimiyle doğrular.
 
 ## <a name="compatibility-level-12-preview"></a>Uyumluluk düzeyi 1,2 (Önizleme)
 
@@ -101,9 +101,9 @@ Upsert davranış *INSERT veya Replace*.
 
 **Önceki düzeyler:** İşlev ön eklerinin kesin doğrulaması yoktu.
 
-**1,2 düzeyi:** Azure Stream Analytics, işlev öneklerinden oluşan katı bir doğrulamaya sahiptir. Yerleşik bir işleve ön ek eklemek hataya neden olur. Örneğin,`myprefix.ABS(…)` desteklenmez.
+**1,2 düzeyi:** Azure Stream Analytics, işlev öneklerinden oluşan katı bir doğrulamaya sahiptir. Yerleşik bir işleve ön ek eklemek hataya neden olur. Örneğin`myprefix.ABS(…)` desteklenmez.
 
-Yerleşik toplamalar için bir ön ek eklemek de hataya neden olur. Örneğin, `myprefix.SUM(…)` desteklenmez.
+Yerleşik toplamalar için bir ön ek eklemek de hataya neden olur. Örneğin `myprefix.SUM(…)` desteklenmez.
 
 Kullanıcı tanımlı herhangi bir işlev için "sistem" önekini kullanmak hataya neden olur.
 
@@ -115,11 +115,11 @@ Kullanıcı tanımlı herhangi bir işlev için "sistem" önekini kullanmak hata
 
 ## <a name="compatibility-level-11"></a>Uyumluluk düzeyi 1,1
 
-Uyumluluk düzeyi 1.1 aşağıdaki önemli değişiklikler yapılmıştır:
+Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,1 ' de kullanıma sunulmuştur:
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML biçimi
 
-**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örneğin:
+**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örnek:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
@@ -132,21 +132,21 @@ Uyumluluk düzeyi 1.1 aşağıdaki önemli değişiklikler yapılmıştır:
 **1,1 düzeyi:** büyük/küçük harf duyarlılığı, Azure Stream Analytics altyapısı tarafından işlendiğinde alan adları için kalıcıdır.
 
 > [!NOTE]
-> Kalıcı büyük küçük harf duyarlılığı Edge ortamı kullanarak barındırılan bir Stream Analytic işleri için henüz desteklenmiyor. Sonuç olarak, işinizin Edge üzerinde barındırılıyorsa tüm alan adlarının küçük harfe dönüştürülür.
+> Edge ortamı kullanılarak barındırılan akış analitik işleri için kalıcı büyük/küçük harf duyarlılığı henüz kullanılamaz. Sonuç olarak, işiniz Edge üzerinde barındırılıyorsa tüm alan adları küçük harfe dönüştürülür.
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**1,0 düzeyi:** CREATE TABLE komut, olayları NaN (a-number değil) ile filtremedi. Örneğin, sonsuz, - sonsuz) kayan noktalı sayı sütunundaki bu numaraları için belgelenmiş aralık dışında olduğundan yazın.
+**1,0 düzeyi:** CREATE TABLE komut, olayları NaN (a-number değil) ile filtremedi. Örneğin, sonsuz,-sonsuzluk bir sütun türünde, bu sayılar için belgelenmiş aralığın dışında.
 
-**1,1 düzeyi:** CREATE TABLE güçlü bir şema belirtmenize olanak tanır. Stream Analytics altyapısı, verileri bu şemaya uygun olduğunu doğrular. Bu modelde, komut NaN değerleri ile olayları filtreleyebilirsiniz.
+**1,1 düzeyi:** CREATE TABLE güçlü bir şema belirtmenize olanak tanır. Stream Analytics altyapısı, verilerin bu şemaya uygun olduğunu doğrular. Bu modelde, komut, olayları NaN değerleriyle filtreleyebilir.
 
 ### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>JSON 'da DateTime dizeleri için otomatik yukarı dönüştürmeyi devre dışı bırak
 
 **1,0 düzeyi:** JSON ayrıştırıcısı tarih/saat/bölge bilgileri ile dize değerlerini otomatik olarak tarih/saat/bölge bilgileriyle yukarı aktarır ve UTC 'ye dönüştürür. Bu davranış, saat dilimi bilgilerini kaybetme ile sonuçlandı.
 
-**1,1 düzeyi:** Tarih/saat/bölge bilgileriyle DateTime türüne sahip dize değerleri için otomatik olarak başka bir dönüştürme yoktur. Sonuç olarak, saat dilimi bilgilerini tutulur.
+**1,1 düzeyi:** Tarih/saat/bölge bilgileriyle DateTime türüne sahip dize değerleri için otomatik olarak başka bir dönüştürme yoktur. Sonuç olarak, saat dilimi bilgileri tutulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream Analytics girişleri sorunlarını giderme](stream-analytics-troubleshoot-input.md)
+* [Azure Stream Analytics giriş sorunlarını giderme](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics kaynak durumu](stream-analytics-resource-health.md)

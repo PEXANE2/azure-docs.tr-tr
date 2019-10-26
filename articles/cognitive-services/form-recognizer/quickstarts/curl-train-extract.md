@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 098dc5e2ab7d4b9533f58e03557db533eaa49a90
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264371"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931289"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
 
@@ -38,9 +38,9 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki kıvrımlı komutunu çalıştırarak **eğitme** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. @No__t-0 değerini, form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. @No__t-0 ' yı önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. @No__t-0 ' yı Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. `<Endpoint>`, form tanıyıcı aboneliğinizle edindiğiniz uç noktayla değiştirin.
+1. `<subscription key>`, önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. `<SAS URL>` Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
@@ -87,16 +87,16 @@ Aşağıdaki JSON çıkışıyla bir `200 (Success)` yanıtı alacaksınız:
 }
 ```
 
-@No__t-0 değerini aklınızda edin. Aşağıdaki adımlarda buna ihtiyacınız olacaktır.
+`"modelId"` değerini aklınızda edin. Aşağıdaki adımlarda buna ihtiyacınız olacaktır.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Formlardaki anahtar-değer çiftlerini ve tabloları Ayıkla
 
 Daha sonra, bir belgeyi analiz edip anahtar-değer çiftlerini ve tabloları buradan ayıklayacaksınız. Aşağıdaki kıvrımlı komutunu çalıştırarak **model analizi** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. @No__t-0 ' yı form tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. @No__t-0 ' i önceki bölümde aldığınız model KIMLIĞIYLE değiştirin.
-1. @No__t-0 değerini formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.exe). Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
-1. @No__t-0 ' i dosya türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`.
+1. `<Endpoint>`, form tanıyıcı aboneliğinizden aldığınız uç noktayla değiştirin.
+1. `<modelID>`, önceki bölümde aldığınız model KIMLIĞIYLE değiştirin.
+1. `<path to your form>`, formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.exe). Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
+1. `<file type>` dosya türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 

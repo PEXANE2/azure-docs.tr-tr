@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147068"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933537"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V-Azure olağanüstü durum kurtarma mimarisi
 
@@ -39,6 +39,8 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM tarafından yönetilmediği
 ![Mimari](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
+> [!WARNING]
+> Lütfen SCVMM yapılandırması 'nın hesapta kullanılması için ASR desteğinin yakında kullanım dışı olacağını unutmayın. bu nedenle, devam etmeden önce [kullanımdan](scvmm-site-recovery-deprecation.md) kaldırma ayrıntılarını okumanızı öneririz.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Mimari bileşenler-VMM ile Hyper-V
 
@@ -70,7 +72,7 @@ Aşağıdaki tablo ve grafik, Hyper-V konakları VMM bulutlarında yönetilmiyor
 1. Azure portalında veya şirket içinde bir Hyper-V VM’si için koruma etkinleştirdikten sonra, **Korumayı etkinleştir** başlatılır.
 2. İş, makinenin önkoşullarla uyumlu olup olmadığını denetler, ardından, çoğaltmayı daha önce yapılandırdığınız ayarları uygulamak üzere [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) çağırır.
 3. İş, tam bir VM çoğaltması başlatmak için [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) yöntemini çağırarak ilk çoğaltmayı başlatır ve VM’lerin sanal disklerini Azure’a gönderir.
-4. **İşler** sekmesinde işi izleyebilirsiniz.      ![İşler listesi](media/hyper-v-azure-architecture/image1.png) ![Korumayı etkinleştir ayrıntıları](media/hyper-v-azure-architecture/image2.png)
+4. İşi **işler** sekmesinde izleyebilirsiniz.      ![Işleri listesi](media/hyper-v-azure-architecture/image1.png) korumayı etkinleştirmek ![](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>İlk veri çoğaltma
@@ -131,9 +133,9 @@ Bir çoğaltma hatası meydana gelirse, yerleşik yeniden deneme işlevi vardır
 Şirket içi altyapınız tekrar çalışır duruma geçtikten sonra yeniden çalıştırabilirsiniz. Yeniden çalışma üç aşamada gerçekleşir:
 
 1. Azure 'dan şirket içi siteye planlanmış bir yük devretme başlatın:
-    - **Kapalı kalma süresini Küçült**: Bu seçeneği kullanırsanız, yük devretmeden önce verileri eşitler Site Recovery. Değiştirilen veri bloklarını denetler ve Azure VM çalışmaya devam ederken, kapalı kalma süresini en aza indirirken bunları şirket içi siteye indirir. Yük devretmenin tamamlanması gerektiğini el ile belirttiğinizde, Azure VM kapanır, son Delta değişikliği kopyalanır ve yük devretme başlatılır.
-    - **Tam indirme**: Bu seçenekle ilgili veriler, yük devretme sırasında eşitlenir. Bu seçenek tüm diski indirir. Bir sağlama toplamı hesaplanmadığından daha hızlıdır, ancak daha fazla kapalı kalma süresi vardır. Çoğaltma Azure VM 'lerini bir süre çalıştırıyorsanız veya şirket içi VM silinmişse bu seçeneği kullanın.
-    - **VM oluşturma**: Aynı VM 'ye veya alternatif bir VM 'ye yeniden yük devredeseçebilirsiniz. Zaten mevcut değilse Site Recovery VM 'nin oluşturulmasını belirtebilirsiniz.
+    - **Kapalı kalma süresini en aza indir**: Bu Site Recovery seçeneği kullanırsanız, yük devretme işleminden önce verileri eşitler. Değiştirilen veri bloklarını denetler ve Azure VM çalışmaya devam ederken, kapalı kalma süresini en aza indirirken bunları şirket içi siteye indirir. Yük devretmenin tamamlanması gerektiğini el ile belirttiğinizde, Azure VM kapanır, son Delta değişikliği kopyalanır ve yük devretme başlatılır.
+    - **Tam indirme**: Bu seçenek verileri, yük devretme sırasında eşitlenir. Bu seçenek tüm diski indirir. Bir sağlama toplamı hesaplanmadığından daha hızlıdır, ancak daha fazla kapalı kalma süresi vardır. Çoğaltma Azure VM 'lerini bir süre çalıştırıyorsanız veya şirket içi VM silinmişse bu seçeneği kullanın.
+    - **VM oluşturma**: aynı VM 'ye veya ALTERNATIF bir VM 'ye yeniden yük devredeseçebilirsiniz. Zaten mevcut değilse Site Recovery VM 'nin oluşturulmasını belirtebilirsiniz.
 
 2. İlk eşitleme bittikten sonra, yük devretmeyi tamamlamayı seçersiniz. Tamamlandıktan sonra, her şeyin beklendiği gibi çalıştığını denetlemek için şirket içi VM 'de oturum açabilirsiniz. Azure portal, Azure VM 'lerinin durdurulmuş olduğunu görebilirsiniz.
 3.  Sonra, tamamlamak için yük devretmeyi işleyin ve şirket içi VM 'den iş yüküne yeniden erişmeye başlayabilirsiniz.

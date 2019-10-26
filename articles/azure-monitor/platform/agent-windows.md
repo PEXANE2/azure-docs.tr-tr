@@ -1,24 +1,18 @@
 ---
 title: Windows bilgisayarlarını Azure Izleyici 'ye bağlama | Microsoft Docs
 description: Bu makalede, Windows için Log Analytics aracısıyla diğer bulutlarda veya şirket içinde barındırılan Windows bilgisayarlarının Azure Izleyici 'ye nasıl bağlanacağı açıklanır.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/07/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: abe114a989c4ec672d391a7fd7d83341d4c52638
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033960"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932783"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -67,9 +61,9 @@ Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](htt
 
 Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü güvenli şifrelemeyi destekleyecek şekilde yapılandırın. [Güçlü şifreleme](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) , TLS 1,2 gibi daha güvenli ağ protokolleri kullanır ve güvenli olmayan protokolleri engeller. 
 
-1. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\Software\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
+1. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
 2. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun.  
-3. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
+3. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
 4. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun. 
 5. Ayarların etkili olması için sistemi yeniden başlatın. 
 

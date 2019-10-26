@@ -19,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 208c644c26006fb99139abe1b05c63f90eff448d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 514a74ed0ae52fb7f2a7b7d7f19c0b364dc2ba91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803281"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934871"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
 
@@ -73,7 +73,7 @@ MSAL içinde kapsam sağlamanın iki yolu vardır:
 
 * Uygulamalarınızın ihtiyaç duyacağı tüm izinlerin bir listesini sağlayın. Örnek: 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
     Bu durumda, uygulama `directory.read` ve `directory.write` izinlerini ister. Bu uygulama için önceden kabul etmedikleri takdirde, kullanıcıdan bu izinleri onaylaması istenir. Uygulama, kullanıcının uygulama için zaten onay aldığı ek izinler de alabilir. Kullanıcılardan yalnızca yeni izinleri veya verilmemiş izinleri onaylaması istenir.
 

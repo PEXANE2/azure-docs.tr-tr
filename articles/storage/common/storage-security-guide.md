@@ -1,6 +1,6 @@
 ---
 title: Azure depolama Güvenlik Kılavuzu | Microsoft Docs
-description: Azure Storage 'ın güvenliğini sağlama, Depolama Hizmeti Şifrelemesi, Istemci tarafı şifreleme, SMB 3,0 ve Azure disk şifrelemesi ile sınırlı olmamak üzere birçok yöntem hakkında ayrıntılı bilgi sağlar.
+description: Yönetim düzlemi güvenlik, yetkilendirme, ağ güvenliği, şifreleme vb. dahil olmak üzere Azure depolama hesaplarının güvenliğini sağlamaya yönelik ayrıntılar yöntemleri.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,54 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 15c59a29bff50f13eea104cb436d1a3764f6d713
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598083"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926716"
 ---
 # <a name="azure-storage-security-guide"></a>Azure depolama Güvenlik Kılavuzu
 
-Azure depolama, geliştiricilerin güvenli uygulamalar oluşturmalarına olanak tanıyan kapsamlı bir dizi güvenlik özelliği sağlar:
+Azure depolama, kuruluşların güvenli uygulamalar oluşturup dağıtmalarına olanak tanıyan kapsamlı bir dizi güvenlik özelliği sağlar:
 
-- Azure depolama 'ya yazılan tüm veriler (meta veriler dahil) [depolama hizmeti şifrelemesi (SSE)](storage-service-encryption.md)kullanılarak otomatik olarak şifrelenir. Daha fazla bilgi için bkz. [Azure Blobları, dosyalar, tablo ve kuyruk depolaması Için varsayılan şifrelemeyi bildirme](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Azure Active Directory (Azure AD) ve rol tabanlı Access Control (RBAC), aşağıdaki gibi hem kaynak yönetimi işlemleri hem de veri işlemleri için Azure depolama için desteklenir:   
+- Azure depolama 'ya yazılan tüm veriler (meta veriler dahil) [depolama hizmeti şifrelemesi (SSE)](storage-service-encryption.md)kullanılarak otomatik olarak şifrelenir. Daha fazla bilgi için bkz. [Azure Blobları, dosyalar, tablolar ve kuyruklar depolama Için varsayılan şifrelemeyi bildirme](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- Azure Active Directory (Azure AD) ve rol tabanlı Access Control (RBAC) hem kaynak yönetimi işlemleri hem de veri düzlemi işlemleri için desteklenir:   
     - Depolama hesabına kapsamlı RBAC rollerini güvenlik sorumlularına atayabilir ve anahtar yönetimi gibi kaynak yönetimi işlemlerini yetkilendirmek için Azure AD 'yi kullanabilirsiniz.
-    - Azure AD tümleştirmesi, blob ve kuyruk verileri işlemleri için desteklenir. Abonelik, kaynak grubu, depolama hesabı veya bağımsız bir kapsayıcı veya kuyruk kapsamındaki RBAC rollerini bir güvenlik sorumlusu veya Azure kaynakları için yönetilen bir kimliğe atayabilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).   
-- Veriler, [Istemci tarafı şifreleme](../storage-client-side-encryption.md), https veya SMB 3,0 kullanılarak bir uygulama ile Azure arasında geçiş için güvenli hale getirilir.  
+    - Azure AD tümleştirmesi, blob ve kuyruk verileri işlemleri için desteklenir. RBAC rolleri bir abonelik, kaynak grubu, depolama hesabı, tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Roller, bir güvenlik sorumlusuna veya Azure kaynakları için yönetilen kimliğe atanabilir. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
+- Veriler, [Istemci tarafı şifreleme](../storage-client-side-encryption.md), https veya SMB 3,0 kullanarak bir uygulama ile Azure arasında geçiş için güvenli hale getirilir.  
 - Azure sanal makineleri tarafından kullanılan işletim sistemi ve veri diskleri, [Azure disk şifrelemesi](../../security/fundamentals/encryption-overview.md)kullanılarak şifrelenebilir.
 - Azure Storage 'da veri nesnelerine temsilci erişimi, paylaşılan erişim imzası kullanılarak verilebilir. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md).
+- Uygulama bileşenleriniz ve depolama alanı arasındaki ağ katmanı güvenliği, depolama güvenlik duvarı, hizmet uç noktaları veya özel uç noktalar kullanılarak etkinleştirilebilir.
 
-Bu makalede, Azure depolama ile kullanılabilecek olan bu güvenlik özelliklerinin her biri için bir genel bakış sunulmaktadır. Her bir özelliğin ayrıntılarını veren makalelere, her konu üzerinde kolayca daha fazla araştırma yapabilmeniz için bağlantılar sağlanır.
+Bu makalede, Azure depolama ile kullanılabilecek olan bu güvenlik özelliklerinin her biri için bir genel bakış sunulmaktadır. Makalelere bağlantılar sağlandığında her bir özellik hakkında ek ayrıntılar sağlar.
 
-Bu makalede ele alınanlara yönelik konular aşağıda verilmiştir:
+Bu makalede ele alınan bölgeler şunlardır:
 
-* [Yönetim düzlemi güvenliği](#management-plane-security) – depolama hesabınızın güvenliğini sağlama
+* [Yönetim düzlemi güvenliği](#management-plane-security) – depolama hesabınıza kaynak düzeyinde erişimin güvenliğini sağlama
 
-  Yönetim düzlemi, depolama hesabınızı yönetmek için kullanılan kaynaklardan oluşur. Bu bölümde Azure Resource Manager dağıtım modeli ve depolama hesaplarınıza erişimi denetlemek için rol tabanlı Access Control (RBAC) nasıl kullanılacağı ele alınmaktadır. Ayrıca, depolama hesabı anahtarlarınızı yönetme ve bunları yeniden oluşturma da ele alınmaktadır.
-* [Veri düzlemi güvenliği](#data-plane-security) – verilerinize erişimin güvenliğini sağlama
+  Yönetim düzlemi, depolama hesabınızı yönetmek için kullanılan işlemlerden oluşur. Bu bölümde Azure Resource Manager dağıtım modeli ve depolama hesaplarınıza erişimi denetlemek için rol tabanlı Access Control (RBAC) nasıl kullanılacağı ele alınmaktadır. Ayrıca, depolama hesabı anahtarlarınızı yönetme ve bunları yeniden oluşturma da ele alınmaktadır.
 
-  Bu bölümde, paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanarak Depolama hesabınızdaki Bloblar, dosyalar, kuyruklar ve tablolar gibi gerçek veri nesnelerine erişime izin vermeyi inceleyeceğiz. Hem hizmet düzeyi SAS hem de hesap düzeyi SAS 'ları ele alınacaktır. Ayrıca, erişimi belirli bir IP adresine (veya IP adresi aralığına) sınırlamayı, HTTPS için kullanılan protokolü sınırlamayı ve paylaşılan erişim Imzasının süre sonu beklemeden nasıl iptal edileceği de görüyoruz.
+* [Ağ güvenliği](#network-security) -depolama hesabınıza ağ düzeyinde erişimin güvenliğini sağlama
+
+  Bu bölüm, depolama hizmetleri uç noktalarına ağ düzeyinde erişimin nasıl güvence altına alınacağını anlatmaktadır. Belirli sanal ağlardan veya IP adresi aralıklarından verilerinize erişim sağlamak için depolama güvenlik duvarını nasıl kullanabileceğinizi anlatır. Ayrıca, hizmet uç noktalarının ve depolama hesaplarıyla özel uç noktaların kullanımını da ele alır.
+
+* [Yetkilendirme](#authorization) – verilerinize erişimi yetkilendirme
+
+  Bu bölümde, paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanarak Depolama hesabınızdaki Bloblar, dosyalar, kuyruklar ve tablolar gibi veri nesnelerine yönelik erişim açıklanmaktadır. Hem hizmet düzeyi SAS hem de hesap düzeyi SAS 'ları ele alınacaktır. Ayrıca, erişimi belirli bir IP adresine (veya IP adresi aralığına) sınırlamayı, HTTPS için kullanılan protokolü sınırlamayı ve paylaşılan erişim Imzasının süre sonu beklemeden nasıl iptal edileceği de görüyoruz.
+
 * [Aktarım Sırasında Şifreleme](#encryption-in-transit)
 
-  Bu bölümde, Azure depolama alanına veya dışına aktarırken verilerin nasıl güvenliği anlatılmaktadır. Azure dosya paylaşımları için SMB 3,0 tarafından önerilen HTTPS ve şifrelemenin kullanılması hakkında konuşacağız. Ayrıca, bir istemci uygulamasında depolamaya aktarılmadan önce verileri şifrelemenizi ve verilerin depolama dışına aktarıldıktan sonra şifresinin çözülmesi için Istemci tarafı şifrelemeye göz atacağız.
+  Bu bölümde, Azure depolama alanına veya dışına aktarırken verilerin nasıl güvenliği anlatılmaktadır. Azure dosya paylaşımları için SMB 3,0 tarafından önerilen HTTPS ve şifrelemenin kullanılması hakkında konuşacağız. Ayrıca, depolama alanına aktarmadan önce verileri şifrelemenizi ve depolama dışına aktarıldıktan sonra verilerin şifresini çözmeyi sağlayan Istemci tarafı şifrelemesini de tartışacağız.
+
 * [Bekleme Sırasında Şifreleme](#encryption-at-rest)
 
   Artık yeni ve var olan depolama hesapları için otomatik olarak etkinleştirilen Depolama Hizmeti Şifrelemesi (SSE) hakkında konuşacağız. Ayrıca, Azure disk şifrelemesi 'ni nasıl kullanabileceğinizi ve disk şifrelemesi ile Istemci tarafı şifrelemeye karşı temel farklılıkları ve durumları nasıl keşfededeceğiz. ABD devlet bilgisayarları için FIPS uyumluluğuna kısaca bakacağız.
+
 * Azure Storage erişimini denetlemek için [depolama Analizi](#storage-analytics) kullanma
 
   Bu bölümde, bir istek için depolama Analizi günlüklerinde bilgi bulma açıklanmaktadır. Gerçek depolama analiz günlüğü verilerine göz atacağız ve depolama hesabı anahtarıyla bir isteğin, paylaşılan erişim imzası ile mi yoksa anonim olarak mı yoksa başarısız mı olduğunu ve başarılı olup olmadığını nasıl ayırt ettireceğiz.
+
 * [CORS kullanarak tarayıcı tabanlı Istemcileri etkinleştirme](#cross-origin-resource-sharing-cors)
 
   Bu bölüm, çıkış noktaları arası kaynak paylaşımına (CORS) izin verme hakkında bilgi verir. Etki alanları arası erişim hakkında konuşacak ve Azure depolama 'da yerleşik CORS özellikleri ile nasıl işleneceğini inceleyeceğiz.
@@ -112,16 +122,16 @@ Depolama hesabı anahtarları, depolama hesabında depolanan 512 bitlik dizelerd
 
 Her depolama hesabının, [Azure Portal](https://portal.azure.com/) ve PowerShell cmdlet 'Lerinde "anahtar 1" ve "anahtar 2" olarak adlandırılan iki anahtarı vardır. Bunlar, [Azure Portal](https://portal.azure.com/), PowerShell, Azure CLI veya .net depolama istemci kitaplığı 'nı ya da Azure depolama hizmetleri REST API kullanarak programlı bir şekilde, ancak bunlarla sınırlı olmamak üzere çeşitli yöntemlerden birini kullanarak el ile oluşturulabilir.
 
-Depolama hesabı anahtarlarınızı yeniden oluşturmak için herhangi bir sayıda neden vardır.
+Depolama hesabı anahtarlarınızı yeniden oluşturmak için çeşitli nedenler vardır.
 
-* Güvenlik nedenleriyle bunları düzenli aralıklarla yeniden oluşturabilirsiniz.
-* Birisi bir uygulamaya hackmek üzere yönetiliyorsa ve bir yapılandırma dosyasına sabit olarak kodlanmış ya da kaydedilen anahtarı almak için depolama hesabınıza tam erişim sağlayan depolama hesabı anahtarlarınızı yeniden oluşturmanız gerekir.
-* Anahtar yeniden oluşturma için başka bir durum, takımınızın depolama hesabı anahtarını koruyan bir Depolama Gezgini uygulaması kullanıyorsa ve takım üyelerinden birinin ayrılmaları olur. Uygulama çalışmaya devam eder ve bu sayede depolama hesabınıza erişim izni verir. Bu aslında hesap düzeyinde paylaşılan erişim Imzaları oluşturdukları birincil nedendir; erişim anahtarlarını bir yapılandırma dosyasında depolamak yerine hesap düzeyi SAS kullanabilirsiniz.
+* Güvenliği için düzenli aralıklarla yeniden oluşturabilirsiniz.
+* Uygulamanızın veya ağ güvenliğinin tehlikeye düşmesi durumunda depolama hesabı anahtarlarınızı yeniden oluşturabilirsiniz.
+* Anahtar yeniden oluşturma için başka bir örnek ise, anahtarlara erişimi olan takım üyelerinin ne zaman çıkış olduğunu. Paylaşılan erişim Imzaları öncelikle bu senaryoya yönelik olarak tasarlanmıştır. erişim anahtarlarını paylaşmak yerine, en çok bireyler veya uygulamalarla bir hesap düzeyi SAS bağlantı dizesi veya belirteci paylaşmanız gerekir.
 
 #### <a name="key-regeneration-plan"></a>Anahtar yeniden oluşturma planı
-Yalnızca bir planlama yapmadan kullandığınız anahtarı yeniden oluşturmak istemezsiniz. Bunu yaparsanız, bu depolama hesabına yönelik tüm erişimleri kesebilir ve bu da büyük kesintiye neden olabilir. Bu nedenle iki anahtar vardır. Tek seferde bir anahtarı yeniden oluşturmanız gerekir.
+Bir erişim anahtarı 'nı planlamadan gerek olmadan yeniden oluşturmanız gerekmez. Ani anahtar yeniden oluşturma, mevcut uygulamalar için bir depolama hesabına erişimi engelleyebilir ve bu da büyük kesintiye yol açabilir. Azure depolama hesapları iki anahtar sağlar, böylece bir seferde bir anahtarı yeniden oluşturmanız için.
 
-Anahtarlarınızı yeniden oluşturmadan önce, depolama hesabına bağlı olan tüm uygulamalarınızın ve Azure 'da kullandığınız diğer hizmetlerin bir listesine sahip olduğunuzdan emin olun. Örneğin, depolama hesabınıza bağımlı Azure Media Services kullanıyorsanız, anahtarı yeniden oluşturduktan sonra erişim anahtarlarını medya hizmetinize yeniden eşitlemeniz gerekir. Depolama Gezgini gibi uygulamalar kullanıyorsanız, bu uygulamalara da yeni anahtarlar sağlamanız gerekir. VHD dosyaları depolama hesabında depolanan sanal makinelere sahipseniz, depolama hesabı anahtarlarını yeniden oluşturma işleminden etkilenmeyecektir.
+Anahtarlarınızı yeniden oluşturmadan önce, depolama hesabına bağımlı tüm uygulamaların bir listesini ve Azure 'da kullandığınız diğer hizmetleri de kullandığınızdan emin olun. Örneğin, depolama hesabınızı kullanmak Azure Media Services kullanıyorsanız, anahtarı yeniden oluşturduktan sonra erişim anahtarlarını medya hizmetinize yeniden eşitlemeniz gerekir. Depolama Gezgini gibi bir uygulama kullanıyorsanız, bu uygulamalara da yeni anahtarlar sağlamanız gerekir. VHD dosyaları depolama hesabında depolanan sanal makinelere sahipseniz, depolama hesabı anahtarlarını yeniden oluşturma işleminden etkilenmeyecektir.
 
 Azure portal anahtarlarınızı yeniden oluşturabilirsiniz. Anahtarlar yeniden üretildikten sonra, depolama hizmetleri arasında eşitlenmesi 10 dakika kadar sürebilir.
 
@@ -135,11 +145,11 @@ Hazır olduğunuzda, anahtarınızı nasıl değiştirmeniz gerektiğine ilişki
 
 Her bir uygulamayı yeni anahtarı kullanmak ve yayımlamak üzere değiştirerek birkaç gün boyunca geçiş yapabilirsiniz. Bunların tümü yapıldıktan sonra geri dönüp eski anahtarı yeniden oluşturmanız gerekir, böylece artık çalışmaz.
 
-Diğer bir seçenek de, depolama hesabı anahtarını bir [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) gizli olarak koymak ve uygulamalarınızın anahtarı buradan alması gerekir. Anahtarı yeniden oluşturup Azure Key Vault güncelleştirdiğinizde uygulamaların yeniden dağıtılması gerekmez, çünkü yeni anahtarı otomatik olarak Azure Key Vault alırlar. Uygulamanın her ihtiyaç duyduğunuzda anahtarı okuyabileceğinizi veya bellekte önbelleğe alma işlemi gerçekleştirebileceğinizi ve bunu kullanırken başarısız olursa, anahtarı yeniden Azure Key Vault alın.
+Diğer bir seçenek de, depolama hesabı anahtarını bir [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) gizli olarak koymak ve uygulamalarınızın anahtarı buradan alması gerekir. Anahtarı yeniden oluşturup Azure Key Vault güncelleştirdiğinizde uygulamaların yeniden dağıtılması gerekmez, çünkü yeni anahtarı otomatik olarak Azure Key Vault alırlar. Uygulamanın her ihtiyaç duyduğunda anahtarı okumasını sağlayabilir veya uygulama onu bellekte önbelleğe alabilir ve kullanırken başarısız olursa, anahtarı Azure Key Vault yeniden alın.
 
-Azure Key Vault kullanmak, depolama anahtarlarınız için başka bir güvenlik düzeyi de ekler. Bu yöntemi kullanırsanız, bir yapılandırma dosyasında depolama anahtarı sabit kodlanmış olmaz. Bu, bir kişinin belirli bir izni olmadan anahtarlara erişim elde etmeme durumunu ortadan kaldırır.
+Azure Key Vault kullanmak, depolama anahtarlarınız için başka bir güvenlik düzeyi de ekler. Key Vault kullanarak, uygulama yapılandırma dosyalarında depolama anahtarları yazılmasını önlemenize olanak sağlar. Ayrıca, anahtarların bu yapılandırma dosyalarına erişimi olan herkese maruz kalmalarına engel olur.
 
-Azure Key Vault kullanmanın başka bir avantajı da, Azure Active Directory kullanarak Anahtarlarınıza erişimi de denetleyebilirsiniz. Bu, Azure Key Vault anahtarları alması gereken el ile uygulamalara erişim sağlayabildiğiniz ve diğer uygulamaların özel olarak izin vermeden anahtarlara erişemeyeceği anlamına gelir.
+Azure Key Vault, Anahtarlarınıza erişimi denetlemek için Azure AD kullanmanın avantajlarından de yararlanır. Anahtarları Key Vault ' den alması gereken belirli uygulamalara erişim verebilirsiniz. bu uygulamalar, anahtarları erişmesi gerekmeyen diğer uygulamalar için bunları ortaya çıkarmaz.
 
 > [!NOTE]
 > Microsoft, tüm uygulamalarınızda aynı anda yalnızca bir tane anahtar kullanılmasını önerir. Anahtar 1 ' i bazı yerlerde ve anahtar 2 ' de kullanırsanız, bazı uygulama erişimi kaybetmeksizin anahtarlarınızı döndüremezsiniz.
@@ -149,7 +159,35 @@ Azure Key Vault kullanmanın başka bir avantajı da, Azure Active Directory kul
 * [Azure Portalında depolama hesabı ayarlarını yönetme](storage-account-manage.md)
 * [Azure Depolama Kaynak Sağlayıcısı REST API Başvurusu](https://msdn.microsoft.com/library/mt163683.aspx)
 
-## <a name="data-plane-security"></a>Veri düzlemi güvenliği
+## <a name="network-security"></a>Ağ Güvenliği
+Ağ güvenliği, bir Azure depolama hesabındaki verilere erişimi, select Networks 'tan kısıtlamanıza olanak sağlar. Belirli genel IP adresi aralıklarından istemcilere erişimi kısıtlamak için Azure Storage güvenlik duvarı 'nı kullanabilir, Azure 'da sanal ağları (VNet) veya belirli Azure kaynaklarını seçebilirsiniz. Ayrıca, erişmesi gereken VNet 'te depolama hesabınız için özel bir uç nokta oluşturma ve genel uç nokta aracılığıyla tüm erişimi engelleme seçeneğiniz de vardır.
+
+Depolama hesabınız için ağ erişim kurallarını, Azure portal [güvenlik duvarları ve sanal ağlar](storage-network-security.md) sekmesinden yapılandırabilirsiniz. Depolama güvenlik duvarını kullanarak, genel İnternet trafiği için erişimi reddedebilir ve yapılandırılmış ağ kurallarına göre istemcileri Seç erişimine izin verebilirsiniz.
+
+Özel [bağlantıları](../../private-link/private-link-overview.md)kullanarak bir VNET 'ten bir depolama hesabına özel olarak ve güvenli bir şekilde bağlanmak Için [Özel uç noktaları](../../private-link/private-endpoint-overview.md) da kullanabilirsiniz.
+
+Depolama güvenlik duvarı kuralları yalnızca depolama hesabı için genel uç nokta için geçerlidir. Bir depolama hesabı için özel bir uç nokta barındıran alt ağ, bu özel uç noktanın oluşturulmasını onayladığınızda hesaba örtülü erişimi alır.
+
+> [!NOTE]
+> Depolama güvenlik duvarı kuralları, Azure portal ve Azure depolama yönetim API 'SI aracılığıyla gerçekleştirilen depolama yönetimi işlemlerine uygulanamaz.
+
+### <a name="access-rules-for-public-ip-address-ranges"></a>Genel IP adresi aralıkları için erişim kuralları
+Azure depolama güvenlik duvarı, belirli genel IP adresi aralıklarından bir depolama hesabına erişimi kısıtlamak için kullanılabilir. IP adresi kurallarını, sabit bir genel IP uç noktası ile iletişim kuran belirli internet tabanlı hizmetlere erişimi kısıtlamak veya şirket içi ağları seçmek için kullanabilirsiniz.
+
+### <a name="access-rules-for-azure-virtual-networks"></a>Azure sanal ağları için erişim kuralları
+Depolama hesapları varsayılan olarak herhangi bir ağdaki istemcilerden gelen bağlantıları kabul eder. Depolama hesabındaki verilere yönelik istemci erişimini, depolama güvenlik duvarını kullanarak seçili ağlarla sınırlayabilirsiniz. [Hizmet uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md) bir Azure sanal ağından depolama hesabına trafik yönlendirmeyi etkinleştirir. 
+
+### <a name="granting-access-to-specific-trusted-resource-instances"></a>Belirli güvenilir kaynak örneklerine erişim verme
+[Azure güvenilir Hizmetleri 'nin bir alt kümesinin](storage-network-security.md#trusted-microsoft-services) , hizmet kaynak türüne veya bir kaynak örneğine göre güçlü kimlik doğrulaması ile güvenlik duvarı aracılığıyla depolama hesabına erişmesine izin verebilirsiniz.
+
+Depolama güvenlik duvarı aracılığıyla kaynak örneği tabanlı erişimi destekleyen hizmetler için, depolama hesabındaki verilere yalnızca seçili örnek erişebilir. Bu durumda, hizmet, sistem tarafından atanan [yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak kaynak örneği kimlik doğrulamasını desteklemelidir.
+
+### <a name="using-private-endpoints-for-securing-connections"></a>Bağlantıları güvenli hale getirmek için özel uç noktaları kullanma
+Azure depolama, Azure sanal ağından depolama hesabına güvenli erişim sağlayan özel uç noktaları destekler. Özel uç noktalar, sanal ağınızın adres alanından depolama hizmetine özel bir IP adresi atar. Özel uç noktalar kullanılırken, depolama bağlantı dizesi depolama hesabı için hedeflenen trafiği özel IP adresine yönlendirir. Özel uç nokta ve depolama hesabı arasındaki bağlantı özel bir bağlantı kullanır. Özel uç noktaları kullanarak sanal ağınızdan veri alımını engelleyebilirsiniz.
+
+VPN veya [ExpressRoute](../../expressroute/expressroute-locations.md) özel eşlemesi ve diğer eşlenmiş sanal ağlar üzerinde bağlanmış şirket içi ağlar, depolama hesabına özel uç nokta üzerinden da erişebilir. Depolama hesaplarınız için özel uç nokta, her bölgedeki bir sanal ağda oluşturulabilir ve güvenli küresel bir erişim olanağı tanır. Diğer [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) kiracılarda, depolama hesapları için özel uç noktalar da oluşturabilirsiniz.
+
+## <a name="authorization"></a>Yetkilendirme
 Veri düzlemi güvenliği, Azure depolama 'da depolanan veri nesnelerinin güvenliğini sağlamak için kullanılan yöntemleri belirtir: Bloblar, kuyruklar, tablolar ve dosyalar. Verileri aktarma sırasında verileri ve güvenliği şifrelemek için yöntemler görüldü, ancak nesnelere erişimi denetleme hakkında nasıl devam edersiniz?
 
 Azure Storage 'da veri nesnelerine erişimi yetkilendirmek için kullanabileceğiniz üç seçenek vardır:
@@ -159,8 +197,6 @@ Azure Storage 'da veri nesnelerine erişimi yetkilendirmek için kullanabileceğ
 - Belirli bir süre boyunca belirli veri nesnelerine denetimli izinler vermek için paylaşılan erişim Imzalarını kullanma.
 
 Bunlara ek olarak, BLOB depolama için Blobları uygun şekilde tutan kapsayıcının erişim düzeyini ayarlayarak bloblarınıza genel erişime izin verebilirsiniz. Blob veya kapsayıcıya bir kapsayıcı için erişim ayarlarsanız, bu kapsayıcıdaki Bloblar için genel okuma erişimine izin verir. Bu, söz konusu kapsayıcıdaki bir blobu işaret eden bir URL 'ye sahip olan herkes, paylaşılan erişim Imzası kullanmadan veya depolama hesabı anahtarlarına sahip olmayan bir tarayıcıda açabilme anlamına gelir.
-
-Erişimi yetkilendirme yoluyla sınırlandırmaya ek olarak, ağ kurallarına göre depolama hesabına erişimi sınırlandırmak için [güvenlik duvarları ve sanal ağlar](storage-network-security.md) da kullanabilirsiniz.  Bu yaklaşım, genel İnternet trafiğine erişimi reddetmenizi ve yalnızca belirli Azure sanal ağlarına veya genel İnternet IP adresi aralıklarına erişim izni vermenizi sağlar.
 
 ### <a name="storage-account-keys"></a>Depolama Hesabı Anahtarları
 Depolama hesabı anahtarları, depolama hesabı adı ile birlikte Azure tarafından oluşturulan 512 bitlik dizelerdir ve depolama hesabında depolanan veri nesnelerine erişim için kullanılabilir.
@@ -236,6 +272,11 @@ Paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanma hakk�
     Bu makalede, Bloblar, kuyruk iletileri, tablo aralıkları ve dosyalarla hizmet düzeyi SAS kullanma örnekleri verilmektedir.
   * [Hizmet SAS oluşturma](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Hesap SAS oluşturma](https://msdn.microsoft.com/library/mt584140.aspx)
+
+* Bu, paylaşılan erişim Imzaları ve depolanan erişim Ilkeleri oluşturmak için .NET istemci kitaplığını kullanmaya yönelik bir öğreticidir.
+  * [Paylaşılan erişim Imzalarını kullanma (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
+
+    Bu makale SAS modeli hakkında bir açıklama, paylaşılan erişim Imzaları örnekleri ve SAS 'ın en iyi uygulama kullanımı için öneriler içerir. Ayrıca, verilen iznin iptali de ele alınmıştır.
 
 * Kimlik Doğrulaması
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453140"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933111"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Parolasız kimlik doğrulama dağıtımını tamamlandırma
 
@@ -185,7 +185,7 @@ Aşağıda, güvenlik anahtarlarına sahip parolasız kimlik doğrulaması için
 | Kullanıcı FIDO2 cihazla oturum açabilir (1809) | Kullanıcı oturum açma penceresinde güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
 | Kullanıcı FIDO2 cihazını kaydedebilir (1903) | Kullanıcı, FIDO2 cihaz ayarlarını > Hesaplar > oturum açma seçenekleri > güvenlik anahtarı ' na kaydedebilir |
 | Kullanıcı FIDO2 cihazını sıfırlayabilir (1903) | Kullanıcı, FIDO2 cihaz ayarlarını > Hesaplar > oturum açma seçenekleri > güvenlik anahtarı ' nda sıfırlayabilir |
-| Kullanıcı FIDO2 cihazla oturum açabilir (1809) | Kullanıcı oturum açma penceresinde güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
+| Kullanıcı FIDO2 cihazla oturum açabilir (1903) | Kullanıcı oturum açma penceresinde güvenlik anahtarı seçebilir ve başarıyla oturum açabilir. |
 
 **Azure AD Web Apps 'te passwordless FIDO oturum açma**
 
@@ -276,7 +276,7 @@ Bu makaledeki adımları izleyerek, FIDO2 güvenlik anahtarlarını kuruluşunuz
 | **Hata iletisi**: bu tarayıcının veya IŞLETIM sisteminin FIDO2 güvenlik anahtarlarını desteklemediğini algıladık. | Passwordless FIDO2 güvenlik cihazları, Windows 10 sürüm 1809 veya üzeri sürümlerde yalnızca desteklenen tarayıcılarda (Microsoft Edge, Firefox sürüm 67) kaydedilebilir. |
 | **Hata iletisi**: Şirket ilkeniz, oturum açmak için farklı bir yöntem kullanmanızı gerektirir. | Kiracıda güvenlik anahtarlarının etkin olmadığından emin değil. |
 | Kullanıcı Windows 10 sürüm 1809 üzerinde güvenlik anahtarımı yönemedi | Sürüm 1809, FIDO2 anahtar satıcısı tarafından sağlanmış olan güvenlik anahtarı yönetim yazılımını kullanmanızı gerektirir. Destek için satıcıya başvurun. |
-| FIDO2 güvenlik anahtarımın bozuk olabileceğini sanırım, nasıl test edebilirim? | [@No__t-1](https://webauthntest.azurewebsites.net/)' e gidin, bir test hesabı için kimlik bilgilerini girin, şüpheli güvenlik anahtarını takın, ekranın sağ üst kısmındaki "+" düğmesine tıklayın, Oluştur ' a tıklayın ve oluşturma işlemi boyunca ilerleyin. Bu senaryo başarısız olursa, cihazınız bozulmuş olabilir. |
+| FIDO2 güvenlik anahtarımın bozuk olabileceğini sanırım, nasıl test edebilirim? | [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)gidin, bir test hesabı için kimlik bilgilerini girin, şüpheli güvenlik anahtarını takın, ekranın sağ üst kısmındaki "+" düğmesine tıklayın, Oluştur ' a tıklayın ve oluşturma işlemi boyunca ilerleyin. Bu senaryo başarısız olursa, cihazınız bozulmuş olabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,20 +3,20 @@ title: Model eğitimi için işlem hedefleri oluşturma ve kullanma
 titleSuffix: Azure Machine Learning
 description: Machine Learning model eğitimi için eğitim ortamlarını (işlem hedefleri) yapılandırın. Eğitim ortamları arasında kolayca geçiş yapabilirsiniz. Eğitimi yerel olarak başlatın. Ölçeği ölçeklendirmeniz gerekiyorsa, bulut tabanlı bir işlem hedefine geçiş yapın.
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: rastala
+ms.author: roastala
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 95ded3c184836ac58a0f97d1bf30dd2e3c123ccb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755961"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935360"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 
@@ -154,7 +154,7 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
     > [!WARNING]
     > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya var olan bir VM 'yi seçtiğinizde Ubuntu kullanan bir VM seçmeniz gerekir.
 
-1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<fqdn > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. @No__t_0username > ve \<password >, sanal makinenin SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<fqdn > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. \<Kullanıcı adı > ve \<Password >, VM için SSH Kullanıcı adı ve parolasıyla değiştirin.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -198,7 +198,7 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
     
     Küme oluşturulduktan sonra, \<clustername >-ssh.azurehdinsight.net ana bilgisayar adı ile bağlanın, burada \<clustername >, küme için verdiğiniz addır. 
 
-1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, çalışma alanınıza bir küme iliştirmek için SDK 'Yı kullanır. Örnekte \<clustername > değerini kümenizin adıyla değiştirin. @No__t_0username > ve \<password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, çalışma alanınıza bir küme iliştirmek için SDK 'Yı kullanır. Örnekte \<clustername > değerini kümenizin adıyla değiştirin. \<Kullanıcı adı > ve \<Password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -295,7 +295,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
  
 1. __Uygulamalar__' ın altında, __işlem__' ı seçin.
 
-    [![View işlem sekmesi](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [işlem sekmesini![görüntüleme](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>İşlem hedefi oluştur
 
@@ -379,7 +379,7 @@ Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı 
 > [!IMPORTANT]
 > Eğitim çalıştırmasını gönderdiğinizde, eğitim betiklerinizi içeren dizinin bir anlık görüntüsü oluşturulur ve işlem hedefine gönderilir. Ayrıca çalışma alanınızdaki denemenin bir parçası olarak da depolanır. Dosyaları değiştirir ve çalışmayı yeniden gönderirseniz yalnızca değiştirilen dosyalar karşıya yüklenir.
 >
-> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. @No__t_0 dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
+> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. `.amlignore` dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
 > 
 > Daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
 

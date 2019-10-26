@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1faf6e4c9124d494507a124013d5fd8588f4b41b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750331"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934912"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -40,7 +40,7 @@ Farklı depolama türleri için en düşük SAP HANA sertifikalı koşullar şun
 
 - Azure Premium SSD-/Hana/log Azure [yazma Hızlandırıcısı](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)önbelleğe alınması gerekir. /Hana/Data birimi Azure Yazma Hızlandırıcısı veya ultra disk olmadan Premium SSD yerleştirilebilecek
 - En azından/Hana/log birimi için Azure Ultra disk. /Hana/Data Volume Premium SSD Azure Yazma Hızlandırıcısı olmadan veya daha hızlı yeniden başlatma süreleri Ultra disk elde etmek için eklenebilir
-- /Hana/log **ve** /Hana/Data için Azure NetApp Files üzerinde **NFS v 4.1** birimleri
+- **NFS v 4.1** ,/Hana/log **ve** /Hana/Dataiçin Azure NetApp Files en üstünde bulunan birimleri. /Hana/Shared birimi NFS v3 veya NFS v 4.1 protokolünü kullanabilir. NFS v 4.1 protokolü/Hana/Data ve/Hana/günlük birimleri için zorunludur.
 
 Bazı depolama türleri birleştirilebilir. Örneğin,/Hana/Data ' ı Premium depolamaya koymak mümkündür ve gereken düşük gecikme süresini elde etmek için/Hana/log Ultra disk depolama alanına yerleştirilebilir. Ancak, örneğin,/Hana/Data için NFS birimlerinin karıştırılması ve/Hana/log için diğer sertifikalı depolama türlerinden birini kullanmanız önerilmez
 
@@ -230,10 +230,10 @@ Bu yapılandırmada, aynı disk üzerinde/Hana/Data ve/Hana/log birimleri olursu
 M416xx_v2 VM türleri henüz Microsoft tarafından genel kullanıma açık hale getirilmez. Listelenen değerlerin başlangıç noktası olması amaçlanmıştır ve gerçek taleplere göre değerlendirilmesi gerekir. Azure Ultra disk 'in avantajı, ıOPS ve aktarım hızı değerlerinin, VM 'yi kapatma veya sisteme uygulanan iş yükünü durdurma gerekmeden uyarlanabilme gereği elde edilebilir.  
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>Azure NetApp Files NFS v 4.1 birimleri
-Azure NetApp Files/Hana/Shared,/Hana/Data ve/Hana/log birimleri için kullanılabilen yerel NFS paylaşımları sağlar. Bu birimler için ANF tabanlı NFS paylaşımlarının kullanılması, v 4.1 NFS protokolünün kullanımını gerektirir. NFS Protokolü v3, paylaşımları ANF 'ye dayandırırken HANA ile ilgili birimlerin kullanımı için desteklenmez. 
+Azure NetApp Files/Hana/Shared,/Hana/Data ve/Hana/log birimleri için kullanılabilen yerel NFS paylaşımları sağlar. /Hana/Data ve/Hana/log birimleri için ANF tabanlı NFS paylaşımlarının kullanılması, v 4.1 NFS protokolünün kullanımını gerektirir. NFS Protokolü v3, paylaşımları ANF üzerinde dayandırırken/Hana/Data ve/Hana/log birimlerinin kullanımı için desteklenmez. 
 
 > [!IMPORTANT]
-> Azure NetApp Files uygulanan NFS v3 protokolünün/Hana/Shared,/Hana/Data ve/Hana/log için kullanılması desteklenmez
+> Azure NetApp Files uygulanan NFS v3 protokolünün/Hana/Data ve/Hana/log için kullanılması desteklenmez. NFS 4,1 kullanımı,/Hana/Data ve/Hana/log birimleri için bir işlev noktasından bir görünüm açısından zorunludur. Öte yandan,/Hana/Shared birimi için NFS v3 veya NFS v 4.1 protokolü, bir görünüm noktasından kullanılabilir.
 
 ### <a name="important-considerations"></a>Önemli konular
 SAP NetWeaver ve SAP HANA için Azure NetApp Files düşünürken, aşağıdaki önemli noktalara dikkat edin:
@@ -270,21 +270,21 @@ Birim kotasının 1 TiB başına [Azure NetApp Files verimlilik limitleri](https
 
 Veri ve günlük SAP minimum aktarım hızı gereksinimlerini karşılamak ve `/hana/shared` yönelik yönergelere göre, önerilen boyutlar şöyle görünür:
 
-| Birim | Boyut<br /> Premium depolama katmanı | Boyut<br /> Ultra depolama katmanı |
+| Birim | Boyut<br /> Premium depolama katmanı | Boyut<br /> Ultra depolama katmanı | Desteklenen NFS Protokolü |
 | --- | --- | --- |
-| /Hana/log/ | 4 TiB | 2 TiB |
-| /Hana/Data | 6,3 TiB | 3,2 TiB |
-| /Hana/Shared | 4 çalışan düğümü başına en fazla (512 GB, 1xRAM) | 4 çalışan düğümü başına en fazla (512 GB, 1xRAM) |
+| /Hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /Hana/Data | 6,3 TiB | 3,2 TiB | v 4.1 |
+| /Hana/Shared | 4 çalışan düğümü başına en fazla (512 GB, 1xRAM) | 4 çalışan düğümü başına en fazla (512 GB, 1xRAM) | V3 veya v 4.1 |
 
 Bu makalede sunulan düzenin SAP HANA yapılandırması, Azure NetApp Files Ultra Storage katmanını kullanarak şöyle görünür:
 
-| Birim | Boyut<br /> Ultra depolama katmanı |
+| Birim | Boyut<br /> Ultra depolama katmanı | Desteklenen NFS Protokolü |
 | --- | --- |
-| /Hana/log/mnt00001 | 2 TiB |
-| /Hana/log/mnt00002 | 2 TiB |
-| /Hana/Data/mnt00001 | 3,2 TiB |
-| /Hana/Data/mnt00002 | 3,2 TiB |
-| /Hana/Shared | 2 TiB |
+| /Hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /Hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /Hana/Data/mnt00001 | 3,2 TiB | v 4.1 |
+| /Hana/Data/mnt00002 | 3,2 TiB | v 4.1 |
+| /Hana/Shared | 2 TiB | V3 veya v 4.1 |
 
 > [!NOTE]
 > Burada belirtilen Azure NetApp Files boyutlandırma önerileri, altyapı sağlayıcıları doğrultusunda, SAP 'nin ifade edilen en düşük gereksinimlerini karşılayacak şekilde hedefleniyor. Gerçek müşteri dağıtımları ve iş yükü senaryolarında bu yeterli olmayabilir. Bu önerileri bir başlangıç noktası olarak kullanın ve belirli iş yükünüzün gereksinimlerine göre uyarlayın.  

@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592474"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929159"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Sık karşılaşılan sorunlar için sorun giderme kılavuzu
 
@@ -37,7 +37,7 @@ Hizmet bağlamaları uygulama başlatma hatalarıyla da neden olabilir. Günlük
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-Bu hatayı onarmak için MySql örneğinizin `server parameters` gidin ve `time_zone` `SYSTEM` 'den `+0:00` 'ye değiştirin.
+Bu hatayı onarmak için MySql örneğinizin `server parameters` gidin ve `time_zone` `SYSTEM` 'den `+0:00`'ye değiştirin.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Uygulamam kilitleniyor veya beklenmeyen bir hata oluşturuyor
@@ -119,7 +119,7 @@ Yoklama kesintiye uğrarsa, yine de şu komutu kullanarak dağıtım günlükler
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-Uygulamanızın doğru [yürütülebilir jar biçiminde](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html)paketlendiğinden emin olun. Değilse, aşağıdakine benzer bir hatayla karşılaşırsınız:
+Uygulama paketinin doğru [yürütülebilir jar biçiminde](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html) olduğundan emin olun. Değilse, aşağıdakine benzer bir hatayla karşılaşırsınız:
 
 `Error: Invalid or corrupt jarfile /jar/38bc8ea1-a6bb-4736-8e93-e8f3b52c8714`
 
@@ -155,7 +155,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un
 > Bu yordam, test uç noktanızı kullanarak ortam değişkenlerinizi kullanıma sunar.  Test uç noktanız herkese açık ise veya uygulamanıza bir etki alanı adı atadıysanız devam edin.
 
 1. Bu URL 'ye gidin: `https://<your application test endpoint>/actuator/health`.  
-    - @No__t_0 benzer bir yanıt, uç noktanın etkinleştirildiğini gösterir.
+    - `{"status":"UP"}` benzer bir yanıt, uç noktanın etkinleştirildiğini gösterir.
     - Yanıt negatifse, `POM.xml` aşağıdaki bağımlılığı ekleyin:
 
         ```xml
@@ -165,11 +165,11 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un
             </dependency>
         ```
 
-1. Spring Boot çalıştırıcı uç noktası etkinken Azure portal gidin ve uygulamanızın yapılandırma sayfasını bulun.  @No__t_0 * ' adlı bir ortam değişkeni ekleyin. 
+1. Spring Boot çalıştırıcı uç noktası etkinken Azure portal gidin ve uygulamanızın yapılandırma sayfasını bulun.  Ad `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` ve değer `*` bir ortam değişkeni ekleyin. 
 
 1. Uygulamanızı yeniden başlatın.
 
-1. @No__t_0 gidin ve yanıtı inceleyin.  Şu şekilde görünmelidir:
+1. `https://<the test endpoint of your app>/actuator/env` gidin ve yanıtı inceleyin.  Şu şekilde görünmelidir:
 
     ```json
     {
@@ -185,7 +185,7 @@ Ortam değişkenleri, Azure Spring Cloud Framework 'ü bilgilendirerek Azure 'un
     }
     ```
 
-@No__t_0 adlı alt düğümü bulun.  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
+`systemEnvironment`adlı alt düğümü bulun.  Bu düğüm, uygulamanızın ortam değişkenlerini içerir.
 
 > [!IMPORTANT]
 > Uygulamanızı herkese açık hale getirmeden önce ortam değişkenlerinizin görünürlüğünü ters çevirmeyi unutmayın.  Azure portal gidin, uygulamanızın yapılandırma sayfasını bulun ve bu ortam değişkenini silin: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.

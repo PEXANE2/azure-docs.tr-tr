@@ -1,19 +1,18 @@
 ---
 title: Log Analytics çalışma alanı oluşturmak ve yapılandırmak için PowerShell 'i kullanma | Microsoft Docs
 description: Azure Izleyici 'de Log Analytics çalışma alanları, şirket içi veya bulut altyapınızdaki sunuculardaki verileri depolar. Azure tanılama tarafından oluşturulduğunda, Azure Storage 'dan makine verileri toplayabilirsiniz.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
-ms.devlang: powershell
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 16cad34290ecc518e95ec1a0ce0950722cfe0780
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 05/19/2019
+ms.openlocfilehash: 9d5bbaf02798c0fd87c40f1d952db19aac7b0b7e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71836137"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932088"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell kullanarak Azure Izleyici 'de Log Analytics çalışma alanını yönetme
 
@@ -180,7 +179,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 Yukarıdaki örnekte regexDelimiter, yeni satır için "\\n" olarak tanımlanmıştır. Günlük sınırlayıcısı de bir zaman damgası olabilir.  Desteklenen biçimler şunlardır:
 
-| Biçimlendir | JSON RegEx biçimi her bir standart RegEx için iki \\ kullanır, bu nedenle bir RegEx uygulamasında test yapmak, \\ ' e kadar azaltır | | |
+| Biçimlendir | JSON RegEx biçimi her bir standart RegEx için iki \\ kullanır, bu nedenle bir RegEx uygulamasında test etmek \\ \ ' a düşürüyorsam | | |
 | --- | --- | --- | --- |
 | `YYYY-MM-DD HH:MM:SS` | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 | `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\d)|[0-9])/(([0-3]\\d)|(\\d))/((\\d{2})|(\\d{4}))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\s(AM|PM|am|pm)` | | |

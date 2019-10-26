@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 07c23d3b93c85e3409814ab0eb635a51344e2ab2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436700"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929259"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 
@@ -55,7 +55,7 @@ Bir Azure depolama çözümünü bir veri deposu olarak kaydettiğinizde, bu ver
 
 ### <a name="using-the-python-sdk"></a>Python SDK'yı kullanma
 
-Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıfınundadır ve register_azure_ * biçiminde olmalıdır.
+Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıfta bulunur ve register_azure_ * biçiminde olmalıdır.
 
 Register () metodunu doldurmanız için gereken bilgiler [Azure Portal](https://ms.portal.azure.com)aracılığıyla bulunabilir. Sol bölmede **depolama hesapları** ' nı seçin ve kaydettirmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı ve kapsayıcısı ya da dosya paylaşma adı gibi bilgiler sağlar. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama bilgileri için sol taraftaki **Ayarlar** bölmesi altındaki **Hesap anahtarlarına** gidin. 
 
@@ -63,7 +63,7 @@ Aşağıdaki örneklerde bir Azure Blob kapsayıcısını veya Azure dosya payla
 
 + **Azure Blob kapsayıcısı veri deposu**için [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) kullanın
 
-    Aşağıdaki kod, `my_datastore`, veri deposunu oluşturup `ws` ' e kaydeder. Bu veri deposu, Azure depolama hesabındaki `my_blob_container` ' da Azure Blob kapsayıcısına erişir, belirtilen hesap anahtarını kullanarak-1 @no__t.
+    Aşağıdaki kod, `my_datastore`veri deposunu oluşturup `ws`çalışma alanına kaydeder. Bu veri deposu Azure Blob kapsayıcısına, Azure depolama hesabındaki `my_blob_container`, sağlanmış hesap anahtarını kullanarak `my_storage_account` erişir.
 
     ```Python
        datastore = Datastore.register_azure_blob_container(workspace=ws, 
@@ -73,10 +73,11 @@ Aşağıdaki örneklerde bir Azure Blob kapsayıcısını veya Azure dosya payla
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
+    Depolama hesabınız bir sanal ağda ise, yalnızca Azure blob veri deposu oluşturma desteklenir. Çalışma alanınızın depolama hesabınıza erişmesine izin vermek için, `True` `grant_workspace_access` parametresini ayarlayın.
 
 + **Azure dosya paylaşımında veri deposu**için [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)kullanın. 
 
-    Aşağıdaki kod, `my_datastore`, veri deposunu oluşturup `ws` ' e kaydeder. Bu veri deposu, Azure depolama hesabındaki `my_file_share` ' da Azure dosya paylaşımına erişir, belirtilen hesap anahtarı kullanılarak 1 @no__t.
+    Aşağıdaki kod, `my_datastore`veri deposunu oluşturup `ws`çalışma alanına kaydeder. Bu veri deposu, Azure depolama hesabındaki `my_file_share`Azure dosya paylaşımına (`my_storage_account`, belirtilen hesap anahtarı kullanılarak) erişir.
 
     ```Python
        datastore = Datastore.register_azure_file_share(workspace=ws, 
@@ -126,7 +127,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımının sırasıyla `workspaceblobstore` ve `workspacefilestore` adlı çalışma alanına kayıtlı olması gerekir. Blob kapsayıcısının bağlantı bilgilerini ve çalışma alanına bağlı depolama hesabında sağlanan dosya paylaşımının depolarlar. @No__t-0 varsayılan veri deposu olarak ayarlanır.
+Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımının sırasıyla `workspaceblobstore` ve `workspacefilestore` adlı çalışma alanına kayıtlı olması gerekir. Blob kapsayıcısının bağlantı bilgilerini ve çalışma alanına bağlı depolama hesabında sağlanan dosya paylaşımının depolarlar. `workspaceblobstore` varsayılan veri deposu olarak ayarlanır.
 
 Çalışma alanının varsayılan veri deposunu almak için:
 
@@ -134,7 +135,7 @@ Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir A
 datastore = ws.get_default_datastore()
 ```
 
-Geçerli çalışma alanı için farklı bir varsayılan veri deposu tanımlamak üzere çalışma alanı nesnesinde [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) metodunu kullanın:
+Geçerli çalışma alanı için farklı bir varsayılan veri deposu tanımlamak üzere çalışma alanı nesnesi üzerinde [`set_default_datastore()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#set-default-datastore-name-) yöntemi kullanın:
 
 ```Python
 #define default datastore for current workspace
@@ -161,9 +162,9 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-@No__t-0 parametresi dosya paylaşımında (veya blob kapsayıcısında) karşıya yüklenecek konumu belirtir. Varsayılan değer `None` ' dır, bu durumda veriler köke yüklenir. @No__t-0 ' da `target_path` ' deki mevcut verilerin üzerine yazılır.
+`target_path` parametresi, karşıya yüklenecek dosya paylaşımında (veya blob kapsayıcısında) konumu belirtir. Varsayılan değer `None` ' dır, bu durumda veriler köke yüklenir. `target_path` konumundaki mevcut verilerin üzerine yazıldığında `overwrite=True`.
 
-Veya `upload_files()` yöntemiyle tek tek dosyaların bir listesini veri deposuna yükleyin.
+Ya da `upload_files()` yöntemi aracılığıyla veri deposuna tek tek dosyaların bir listesini yükleyin.
 
 ### <a name="download"></a>İndirin
 
@@ -175,7 +176,7 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-@No__t-0 parametresi, verilerin indirileceği yerel dizinin konumudur. İndirilecek dosya paylaşımında (veya blob kapsayıcısında) klasörün yolunu belirtmek için bu yolu `prefix` ' a sağlayın. @No__t-0 `None` ise, dosya paylaşımınızın (veya blob kapsayıcısının) tüm içerikleri indirilir.
+`target_path` parametresi, verilerin indirileceği yerel dizinin konumudur. İndirilecek dosya paylaşımında (veya blob kapsayıcısında) klasörün yolunu belirtmek için bu yolu `prefix` ' a sağlayın. `prefix` `None`, dosya paylaşımınızın (veya blob kapsayıcısının) tüm içerikleri indirilir.
 
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Eğitim sırasında verilerinize erişin
@@ -188,8 +189,8 @@ Aşağıdaki tabloda, işlem hedefine çalışma sırasında veri depolarını n
 Yapmanın|Yöntem|Açıklama|
 ----|-----|--------
 Bağlama| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Veri deposunu işlem hedefine bağlamak için kullanın.
-İndirin|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Veri deposunun içeriğini `path_on_compute` tarafından belirtilen konuma indirmek için kullanın. <br><br> Bu indirme, çalıştırmadan önce oluşur.
-Karşıya Yükleme|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| @No__t-0 tarafından belirtilen konumdan veri deposuna dosya yüklemek için kullanın. <br><br> Bu karşıya yükleme, çalıştırıldıktan sonra olur.
+İndirin|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Veri deposunun içeriğini `path_on_compute`tarafından belirtilen konuma indirmek için kullanın. <br><br> Bu indirme, çalıştırmadan önce oluşur.
+Karşıya Yükleme|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| `path_on_compute` tarafından belirtilen konumdan bir dosyayı veri deposuna yüklemek için kullanın. <br><br> Bu karşıya yükleme, çalıştırıldıktan sonra olur.
 
 Veri deposundaki belirli bir klasöre veya dosyaya başvurmak ve işlem hedefinde kullanılabilir hale getirmek için, veri deposu [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) metodunu kullanın.
 
@@ -201,7 +202,7 @@ datastore.as_mount()
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
-> Belirtilen `datastore` veya `datastore.path` nesnesi, değeri hedef işlem üzerindeki bağlama/indirme yolunu temsil eden `"$AZUREML_DATAREFERENCE_XXXX"` biçimindeki bir ortam değişkeni adına çözümleniyor. Hedef işlem üzerindeki veri deposu yolu, eğitim betiğinin yürütme yoluyla aynı olmayabilir.
+> Belirtilen `datastore` veya `datastore.path` nesnesi, değeri, hedef işlem üzerindeki bağlama/indirme yolunu temsil eden biçim `"$AZUREML_DATAREFERENCE_XXXX"`ortam değişkeni adına çözümleniyor. Hedef işlem üzerindeki veri deposu yolu, eğitim betiğinin yürütme yoluyla aynı olmayabilir.
 
 ### <a name="examples"></a>Örnekler 
 
@@ -224,8 +225,8 @@ est = Estimator(source_directory='your code directory',
 ```
 
 Ayrıca veri depolamalardan/bu kaynaklardan veri bağlamak veya veri kopyalamak için `inputs` parametresine bir veri depoları listesini de geçirebilirsiniz. Bu kod örneği:
-* @No__t-0 ' daki tüm içerikleri, eğitim betiğinizdeki `train.py` çalıştırılmadan önce işlem hedefine indirir
-* @No__t-2 çalıştırılmadan önce `datastore2` ' deki `'./foo'` klasörünü işlem hedefine indirir
+* Eğitim betiğinizin `train.py` çalıştırılabilmesi için `datastore1` tüm içeriğini işlem hedefine indirir
+* `train.py` çalıştırılmadan önce `datastore2` `'./foo'` klasörü işlem hedefine indirir
 * Komut dosyanız çalıştırıldıktan sonra işlem hedefinden `'./bar.pkl'` dosyasını `datastore3` ' e yükler
 
 ```Python
@@ -243,16 +244,16 @@ Datamağazaların Şu anda aşağıdaki matriste listelenen depolama hizmetlerin
 |İşlem|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [azuressqldatabasedatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
 |--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
 | Yerel|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|Yok         |Yok                                                                         |
-| Azure Machine Learning Işlem |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4işlem hatları](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml @ no__t-4işlem hatları](concept-ml-pipelines.md)|Yok         |Yok                                                                         |
+| Azure Machine Learning Işlem |[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml&nbsp;işlem hatları](concept-ml-pipelines.md)|[as_mount ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--), [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-), [ml&nbsp;işlem hatları](concept-ml-pipelines.md)|Yok         |Yok                                                                         |
 | Sanal makineler               |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-), [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |Yok         |Yok                                                                         |
 | HDInsight                      |[as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |Yok         |Yok                                                                         |
-| Veri aktarımı                  |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)                                               |Yok                                           |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)            |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)                                                                            |
-| Databricks                     |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)                                              |Yok                                           |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)             |Yok                                                                         |
-| Azure Batch                    |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)                                               |Yok                                           |Yok         |Yok                                                                         |
-| Azure Data Lake Analytics       |Yok                                           |Yok                                           |[ML @ no__t-1işlem hatları](concept-ml-pipelines.md)             |Yok                                                                         |
+| Veri aktarımı                  |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)                                               |Yok                                           |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)            |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)                                                                            |
+| Databricks                     |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)                                              |Yok                                           |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)             |Yok                                                                         |
+| Azure Batch                    |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)                                               |Yok                                           |Yok         |Yok                                                                         |
+| Azure Data Lake Analytics       |Yok                                           |Yok                                           |[ML&nbsp;işlem hatları](concept-ml-pipelines.md)             |Yok                                                                         |
 
 > [!NOTE]
-> Son derece yinelemeli, büyük veri işlemlerinin @no__t @no__t yerine 0 ' ı kullanarak daha hızlı çalıştığı senaryolar olabilir. Bu, experimentally doğrulanabilir.
+> Son derece yinelemeli, büyük veri işlemlerinin `as_mount()`yerine `as_download()` kullanarak daha hızlı çalıştığı senaryolar olabilir. Bu, experimentally doğrulanabilir.
 
 ### <a name="accessing-source-code-during-training"></a>Eğitim sırasında kaynak koduna erişme
 

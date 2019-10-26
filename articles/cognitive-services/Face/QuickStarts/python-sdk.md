@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b265ec68039f03c09d45c9605965de8ce0baba99
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176126"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935866"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Hızlı başlangıç: Python için yüz istemci kitaplığı
 
@@ -22,14 +22,14 @@ Python için yüz istemci kitaplığı ile çalışmaya başlayın. Paketi yükl
 
 Python için yüz istemci kitaplığını kullanarak şunları yapın:
 
-* Görüntüdeki yüzeyleri algılama
-* Benzer yüzeyleri bulun
+* Bir görüntüdeki yüzleri algılama
+* Benzer yüzleri bulma
 * Kişi grubu oluşturma ve eğitme
 * Yüz tanıma
 * Yüzeyleri doğrula
 * Veri geçişi için bir anlık görüntü alın
 
-[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paket (pıy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnek](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
+[Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [paket (pıy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [örnek](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,16 +40,16 @@ Python için yüz istemci kitaplığını kullanarak şunları yapın:
 
 ### <a name="create-a-face-azure-resource"></a>Yüz Azure kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak yüz için bir kaynak oluşturun. Ayrıca şunları yapabilirsiniz:
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak yüz için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
 * Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra anahtar için `FACE_SUBSCRIPTION_KEY` adlı [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, `FACE_SUBSCRIPTION_KEY`adlı anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
  
-### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
+### <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
 
-Örneğin, yeni bir Python betiği oluşturun @ no__t-0*QuickStart-File.py*. Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
+Örneğin, *quickstart-file.py*&mdash;yeni bir Python betiği oluşturun. Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 Aşağıdaki sınıflar ve arabirimler, yüz Python SDK 'sının önemli özelliklerinden bazılarını işler.
 
-|Ad|Description|
+|Adı|Açıklama|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Bu sınıf, yüz hizmetini kullanma yetkinizi temsil eder ve tüm yüz işlevleri için buna ihtiyacınız vardır. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. |
 |[Çok yönlü Işlemler](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Bu sınıf, insan yüzeyleri ile gerçekleştirebileceğiniz temel algılama ve tanıma görevlerini işler. |
@@ -97,13 +97,13 @@ Bu kod parçacıkları, Python için yüz istemci kitaplığıyla aşağıdaki g
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu hızlı başlangıç, yüz anahtarınız için `FACE_SUBSCRIPTION_KEY` adlı [bir ortam değişkeni oluşturduğunuzu](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayar.
+> Bu hızlı başlangıç, `FACE_SUBSCRIPTION_KEY`adlı yüz anahtarınız için [bir ortam değişkeni oluşturduğunuzu](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) varsayar.
 
 Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızla bir [Biliveservicescredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [faceclient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) nesnesi oluşturmak için bunu uç noktanızla birlikte kullanın.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
 
-## <a name="detect-faces-in-an-image"></a>Görüntüdeki yüzeyleri algılama
+## <a name="detect-faces-in-an-image"></a>Bir görüntüdeki yüzleri algılama
 
 Aşağıdaki kod, uzak görüntüde bir yüz algılar. Algılanan yüz KIMLIĞINI konsola yazdırır ve ayrıca program belleğine depolar. Daha sonra, birden çok kişiye sahip bir görüntüdeki yüzeyleri algılar ve kimliklerini konsola yazdırır. [Detect_with_url](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) yöntemindeki parametreleri değiştirerek, her bir [detectedface](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python) nesnesiyle farklı bilgiler döndürebilirsiniz.
 
@@ -119,7 +119,7 @@ Aşağıdaki kod, görüntüye verilen görüntünün çıktısını verir ve De
 
 ![Yüz çevresinde çizilmiş kırmızı bir dikdörtgenle genç kadın](../images/face-rectangle-result.png)
 
-## <a name="find-similar-faces"></a>Benzer yüzeyleri bulun
+## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
 Aşağıdaki kod, algılanan tek bir yüzeyi alır ve eşleşmeleri bulmak için bir dizi diğer yüzü arar. Bir eşleşme bulduğunda, eşleşen yüzün dikdörtgen koordinatlarını konsola yazdırır. 
 
@@ -182,7 +182,7 @@ Aşağıdaki kod, _Test-image-Person-Group. jpg_ görüntüsü için projenizin 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
-### <a name="identify-faces"></a>Yüzeyleri tanımla
+### <a name="identify-faces"></a>Yüzleri belirleme
 
 **Tanımla** yöntemi, algılanan yüzlerin bir dizisini alır ve bunları bir **persongroup**ile karşılaştırır. Algılanan bir yüzü bir **kişiye**eşleştirebilir, sonucu kaydeder. Bu kod, ayrıntılı eşleşen sonuçları konsola yazdırır.
 
@@ -254,7 +254,7 @@ Anlık görüntü işlemlerinin geri kalanı zaman uyumsuz bir işlev içinde ge
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
 
-1. Yeniden, işlem tamamlanana kadar KIMLIĞI sorgulamak için `wait_for_operation` işlevini kullanın.
+1. Daha sonra, işlem tamamlanana kadar KIMLIĞI sorgulamak için `wait_for_operation` işlevini kullanın.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
 
@@ -273,7 +273,7 @@ python quickstart-file.py
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
 * [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
-* [Azure CLı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
+* [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 Bu hızlı başlangıçta bir **kişilik grubu** oluşturduysanız ve onu silmek istiyorsanız, betiğinizdeki aşağıdaki kodu çalıştırın:
 

@@ -1,17 +1,17 @@
 ---
-title: Sorguları Visual Studio Code ile yerel olarak test Azure Stream Analytics (Önizleme)
+title: Visual Studio Code ile test Azure Stream Analytics sorguları
 description: Bu makalede, Visual Studio Code için Azure Stream Analytics araçlarıyla sorguların yerel olarak nasıl test edileceğini açıklar.
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 2791fb923f193815d718dbd2269cbcd11583a4ea
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673033"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924967"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Sorguları Visual Studio Code ile yerel olarak test Stream Analytics
 
@@ -27,7 +27,7 @@ Visual Studio Code kullanarak Stream Analytics işi oluşturmayı öğrenmek iç
 
 Visual Studio Code için Azure Stream Analytics uzantısını kullanarak, örnek verilerle Stream Analytics işlerinizi yerel olarak test edebilirsiniz.
 
-1. Stream Analytics işinizi oluşturduktan sonra, komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın. Sonra @no__t yazın ve seçin-0ASA: # No__t-0 girişi ekleyin.
+1. Stream Analytics işinizi oluşturduktan sonra, komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın. Ardından asa yazın ve seçin **: giriş Ekle**.
 
     ![Visual Studio Code 'da ASA girişi ekleme](./media/vscode-local-run/add-input.png)
 

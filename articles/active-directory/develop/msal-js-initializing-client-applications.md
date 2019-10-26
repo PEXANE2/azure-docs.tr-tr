@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24d9d79bf34325ec033b6ae6847579fa51769ac
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c4cd3e2ab18c05c8adfda1a54ea4f7820916eab5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803090"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934879"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL. js kullanarak istemci uygulamalarını başlatma
 Bu makalede, Kullanıcı Aracısı uygulamasının bir örneğiyle JavaScript (MSAL. js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır. Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir ortak istemci uygulaması biçimidir. Tarayıcı bağlamı başarıyla erişilebilir olduğundan bu istemciler gizli dizileri depolamaz. İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakış](msal-client-applications.md)makalesini okuyun.
@@ -91,6 +91,7 @@ export type SystemOptions = {
     logger?: Logger;
     loadFrameTimeout?: number;
     tokenRenewalOffsetSeconds?: number;
+    navigateFrameWait?: number;
 };
 
 // Developer App Environment Support
@@ -139,6 +140,8 @@ export type Configuration = {
 - **Loadframetimeout**: isteğe bağlı.  Azure AD 'den bir belirteç yenileme yanıtı zaman aşımına uğramadan önce geçen işlem yapılmayan milisaniye sayısı. Varsayılan değer 6 saniyedir.
 
 - **tokenRenewalOffsetSeconds**: isteğe bağlı. Süre sonu öncesinde belirteci yenilemek için gereken konum penceresini ayarlayan milisaniye sayısı. Varsayılan değer 300 milisaniyedir.
+
+- **Navigateframewait**: isteğe bağlı. Gizli iframe 'ler hedefine geçmeden önce bekleme süresini ayarlayan milisaniye sayısı. Varsayılan değer 500 milisaniyedir.
 
 Bunlar yalnızca MSAL angular sarmalayıcı kitaplığından geçirilme için geçerlidir:
 - **Unprotectedresources**: isteğe bağlı.  Korumasız kaynakları olan URI 'Ler dizisi. MSAL, bu URI 'ye sahip giden isteklere belirteç iliştirmez. Varsayılan olarak `null`olur.

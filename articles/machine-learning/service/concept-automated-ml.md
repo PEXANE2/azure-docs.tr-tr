@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793904"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929331"
 ---
 # <a name="what-is-automated-machine-learning"></a>Otomatik makine öğrenimi nedir?
 
@@ -95,9 +95,7 @@ Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek i�
 
 Eksik değerler imputation, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess). Bu ayarı şu şekilde etkinleştirin:
 
-+ Azure portal: **Gelişmiş ayarlarda** [Bu adımlarla](how-to-create-portal-experiments.md) **önceden işlem** onay kutusunu seçme.
-
-+ Python SDK: [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)için `"preprocess": True` belirtme.
++ Python SDK: [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)Için `"feauturization": auto' / 'off' / FeaturizationConfig` belirtme.
 
 
 ## <a name="time-series-forecasting"></a>Zaman serisi tahmin etme

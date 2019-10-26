@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 27b4a6f5614b79b2e9d8f3730441d702f2d7cc77
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059269"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933271"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Veritabanı için Azure PowerShell örnekleri
 
@@ -41,6 +41,7 @@ Aşağıdaki tablo, Azure SQL Veritabanı’na yönelik örnek Azure PowerShell 
 | [Etkin coğrafi çoğaltmayı kullanarak havuza alınan veritabanını yapılandırma ve havuza alınmış veritabanının yükünü devretme](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, SQL elastik havuzundaki bir Azure SQL veritabanı için etkin coğrafi çoğaltmayı yapılandırır ve ikincil bir çoğaltmaya yük devreder. |
 |**Yük devretme grubu yapılandırma**||
 | [Tek bir veritabanı için yük devretme grubu yapılandırma](scripts/sql-database-add-single-db-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği bir veritabanı ve bir yük devretme grubu oluşturur, veritabanını yük devretme grubuna ekler ve ikincil sunucuya yük devretmeyi sınar. | 
+| [Elastik havuz için bir yük devretme grubu yapılandırma](scripts/sql-database-add-elastic-pool-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği bir veritabanı oluşturur, bir elastik havuza ekler, elastik havuzu yük devretme grubuna ekler ve ikincil sunucuya yük devretmeyi sınar. | 
 |**Tek bir veritabanını ve elastik havuzu ölçekleme**||
 | [Tek bir veritabanını ölçekleme](scripts/sql-database-monitor-and-scale-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure SQL veritabanının performans ölçümlerini izler, veritabanını daha yüksek bir işlem boyutuna ölçekler ve performans ölçümlerinden birinde bir uyarı kuralı oluşturur. |
 | [Elastik havuzu ölçekleme](scripts/sql-database-monitor-and-scale-pool-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, Azure SQL Veritabanı elastik havuzu performans ölçümlerini izler, veritabanını daha yüksek bir işlem boyutuna ölçekler ve performans ölçümlerinden birinde bir uyarı kuralı oluşturur. |
@@ -70,6 +71,8 @@ Aşağıdaki tabloda, Azure SQL veritabanı yönetilen örneği için örnek Azu
 | [Veritabanını başka bir coğrafi bölgede yönetilen bir örneğe geri yükleme](scripts/sql-managed-instance-restore-geo-backup.md) | Bu PowerShell betiği, bir veritabanının yedeğini almak ve başka bir bölgeye geri yüklemektir. Bu, coğrafi geri yükleme olağanüstü durum kurtarma senaryosu olarak bilinir. |
 | **Saydam Veri Şifrelemesi yapılandırma (TDE)**||
 | [Yönetilen bir örnekteki Saydam Veri Şifrelemesi, Azure Key Vault kendi anahtarınızı kullanarak yönetin](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell betiği, Azure Key Vault bir anahtar kullanarak Azure SQL yönetilen örneği için Kendi Anahtarını Getir senaryosunda Saydam Veri Şifrelemesi (TDE) yapılandırır|
+|**Yük devretme grubu yapılandırma**||
+| [Yönetilen örnek için bir yük devretme grubu yapılandırma](scripts/sql-database-add-managed-instance-to-failover-group-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bu PowerShell betiği, iki yönetilen örnek oluşturur, bunları bir yük devretme grubuna ekler ve ardından birincil yönetilen örnekten yük devretmeyi ikinci yönetilen örneğe sınar. | 
 |||
 
 [Yönetilen örnek Azure PowerShell API 'si](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)hakkında daha fazla bilgi edinin.

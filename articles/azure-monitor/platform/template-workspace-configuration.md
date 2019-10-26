@@ -1,24 +1,18 @@
 ---
 title: Log Analytics çalışma alanı oluşturmak ve yapılandırmak için Azure Resource Manager şablonları kullanma | Microsoft Docs
 description: Log Analytics çalışma alanları oluşturmak ve yapılandırmak için Azure Resource Manager şablonlarını kullanabilirsiniz.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/22/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 77ba9ceda3644b64aa23fbd264b4125f9a90cf81
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 10/22/2019
+ms.openlocfilehash: fe5fe6a10d30847db3ed5b4aab703a7f431a395e
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809477"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932054"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
