@@ -1,19 +1,18 @@
 ---
 title: Azure Izleyici 'de günlük sorgu kapsamı Log Analytics | Microsoft Docs
 description: Azure Izleyici Log Analytics bir günlük sorgusunun kapsamını ve zaman aralığını açıklar.
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/25/2019
+ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405713"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900228"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
 [Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
@@ -24,7 +23,7 @@ Sorgu kapsamı sorgu tarafından değerlendirilen kayıtları tanımlar. Bu, gen
 
 Kapsam her zaman Log Analytics penceresinin sol üst kısmında görüntülenir. Bir simge, kapsamın bir Log Analytics çalışma alanı mı yoksa Application Insights uygulaması mı olduğunu gösterir. Hiçbir simge başka bir Azure kaynağını gösterir.
 
-![`Scope`](media/scope/scope.png)
+![Kapsam](media/scope/scope.png)
 
 Kapsam, Log Analytics başlamak için kullandığınız yönteme göre belirlenir ve bazı durumlarda, üzerine tıklayarak kapsamı değiştirebilirsiniz. Aşağıdaki tabloda, kullanılan farklı kapsam türleri ve her biri için farklı Ayrıntılar listelenmektedir.
 
@@ -32,16 +31,16 @@ Kapsam, Log Analytics başlamak için kullandığınız yönteme göre belirleni
 |:---|:---|:---|:---|
 | Log Analytics çalışma alanı | Log Analytics çalışma alanındaki tüm kayıtlar. | **Azure izleyici** menüsünde veya **Log Analytics çalışma alanları** menüsünden **Günlükler** ' i seçin.  | Kapsamı diğer kaynak türlerine değiştirebilir. |
 | Application Insights uygulaması | Application Insights uygulamasındaki tüm kayıtlar. | Application Insights **genel bakış** sayfasından **analiz** ' ı seçin. | Kapsam yalnızca başka bir Application Insights uygulama olarak değiştirilebilir. |
-| Resource group | Kaynak grubundaki tüm kaynaklar tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir. | Kaynak grubu menüsünden **Günlükler** ' i seçin. | Kapsam değiştirilemiyor.|
-| Subscription | Abonelikteki tüm kaynaklar tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir. | Abonelik menüsünden **Günlükler** ' i seçin.   | Kapsam değiştirilemiyor. |
-| Diğer Azure kaynakları | Kaynak tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir.  | Kaynak menüsünden **Günlükler** ' i seçin.<br>OR<br>**Azure izleyici** menüsünden **Günlükler** ' i seçin ve ardından yeni bir kapsam seçin. | Kapsam yalnızca aynı kaynak türüne değiştirilebilir. |
+| Kaynak grubu | Kaynak grubundaki tüm kaynaklar tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir. | Kaynak grubu menüsünden **Günlükler** ' i seçin. | Kapsam değiştirilemiyor.|
+| Abonelik | Abonelikteki tüm kaynaklar tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir. | Abonelik menüsünden **Günlükler** ' i seçin.   | Kapsam değiştirilemiyor. |
+| Diğer Azure kaynakları | Kaynak tarafından oluşturulan kayıtlar. Birden çok Log Analytics çalışma alanındaki verileri içerebilir.  | Kaynak menüsünden **Günlükler** ' i seçin.<br>VEYA<br>**Azure izleyici** menüsünden **Günlükler** ' i seçin ve ardından yeni bir kapsam seçin. | Kapsam yalnızca aynı kaynak türüne değiştirilebilir. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Kaynak kapsamına alınan sınırlamalar
 
 Sorgu kapsamı bir Log Analytics çalışma alanı veya Application Insights uygulaması olduğunda, portaldaki tüm seçenekler ve tüm sorgu komutları kullanılabilir. Aynı halde bir kaynak kapsamında, portalda aşağıdaki seçenekler tek bir çalışma alanı veya uygulamayla ilişkilendirildiğinden kullanılamaz:
 
 - Kaydet
-- Sorgu gezgini
+- Sorgu Gezgini
 - Yeni uyarı kuralı
 
 Sorgu kapsamı, kaynak veya kaynak kümesi için veri içeren herhangi bir çalışma alanı içerdiğinden, bir kaynağa kapsam yaparken aşağıdaki komutları kullanamazsınız:
@@ -67,7 +66,7 @@ Kapsam, 20 veya daha fazla bölgede çalışma alanları içeriyorsa, bu sorgunu
 ## <a name="time-range"></a>Zaman aralığı
 Zaman aralığı, kaydın oluşturulduğu zamana göre sorgu için değerlendirilen kayıt kümesini belirtir. Bu, aşağıdaki tabloda belirtildiği gibi çalışma alanı veya uygulamadaki her kayıtta standart bir özellik tarafından tanımlanır.
 
-| Location | Özellik |
+| Konum | Özellik |
 |:---|:---|
 | Log Analytics çalışma alanı          | TimeGenerated |
 | Application Insights uygulaması | timestamp     |

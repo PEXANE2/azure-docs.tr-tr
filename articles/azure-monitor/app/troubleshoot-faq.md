@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights SSS | Microsoft Docs
 description: Application Insights hakkında sık sorulan sorular.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
-ms.service: application-insights
-ms.workload: mobile
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/16/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 09/16/2019
+ms.openlocfilehash: 55a096cd4971664e55bb2cfd17f9f8927d7c32f5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802299"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899516"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: sık sorulan sorular
 
@@ -138,11 +133,11 @@ Evet, şu sunucuda yazabilirsiniz:
 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)kullanarak web istemcisinin IP adresini (IPv4 veya IPv6) arar.
 
 * Tarayıcı telemetrisi: gönderenin IP adresini topladık.
-* Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. @No__t-0 ayarlanmışsa bu toplanmaz.
+* Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. `X-Forwarded-For` ayarlandıysa toplanmaz.
 * IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)bakın.
 
 
-IP adresini farklı bir üst bilgiden almak için `ClientIpHeaderTelemetryInitializer` yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN tarafından `X-Originating-IP` ' a taşınır. [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+`ClientIpHeaderTelemetryInitializer`, IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, `X-Originating-IP`için bir proxy, yük dengeleyici veya CDN tarafından taşınır. [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 İstek telemetrinizi bir haritada göstermek için [Power BI kullanabilirsiniz](export-power-bi.md ) .
 
@@ -265,7 +260,7 @@ Web sunucunuzun, uç noktalarımıza telemetri göndermesini sağlar.
 Yapılandırmanızda bulunan uç noktaların üzerine yazarak intranetteki trafiği intranetinizdeki bir ağ geçidine yönlendirin.
 Bu "uç nokta" özellikleri, config uygulamanızda yoksa, bu sınıflar örnek ApplicationInsights. config örneğinde aşağıda gösterilen varsayılan değerleri kullanır. 
 
-Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda, varsayılan değerleri `http://<your.gateway.address>/<relative path>` ile değiştirin.
+Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda, varsayılan değerleri `http://<your.gateway.address>/<relative path>`değiştirin.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Varsayılan bitiş noktaları ile örnek ApplicationInsights. config:

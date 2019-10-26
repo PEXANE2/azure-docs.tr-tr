@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173393"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897576"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Cihaz sağlama hizmeti cihaz kavramlarını IoT Hub
 
-IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti ile milyonlarca cihazı güvenli ve ölçeklenebilir bir şekilde sağlayabilirsiniz.
+IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz Sağlama Hizmeti ile güvenli ve ölçeklenebilir bir şekilde milyonlarca cihaz sağlayabilirsiniz.
 
 Bu makale, cihaz sağlama ile ilgili *cihaz* kavramlarına genel bir bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamak için [Üretim adımında](about-iot-dps.md#manufacturing-step) yer alan personbuna uygundur.
 
@@ -44,7 +44,7 @@ Cihaz gizli dizileri de yazılımda (bellek) depolanabilir, ancak bir HSM 'den d
 
 ## <a name="registration-id"></a>Kayıt KIMLIĞI
 
-Kayıt KIMLIĞI, cihaz sağlama hizmetinde bir cihazı benzersiz şekilde tanımlamak için kullanılır. Kayıt KIMLIĞI, sağlama hizmeti [kimlik kapsamında](#id-scope)benzersiz olmalıdır. Her cihazın bir kayıt KIMLIĞI olmalıdır. Kayıt KIMLIĞI alfasayısal, küçük harf ve kısa çizgi içerebilir.
+Kayıt KIMLIĞI, cihaz sağlama hizmetinde bir cihazı benzersiz şekilde tanımlamak için kullanılır. Cihaz KIMLIĞI, sağlama hizmeti [kimlik kapsamında](#id-scope)benzersiz olmalıdır. Her cihazın bir kayıt KIMLIĞI olmalıdır. Kayıt KIMLIĞI alfasayısal, büyük/küçük harfe duyarsız ve iki nokta, nokta, alt çizgi ve kısa çizgi gibi özel karakterler içerebilir.
 
 * TPM söz konusu olduğunda kayıt KIMLIĞI TPM tarafından sağlanır.
 * X. 509.440 tabanlı kanıtlama söz konusu olduğunda, kayıt KIMLIĞI sertifikanın konu adı olarak sağlanır.

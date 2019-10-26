@@ -5,22 +5,22 @@ keywords: App Service, Azure App Service, ölçek, App Service planı, değişik
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067217"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898996"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure 'da App Service planını yönetme
 
@@ -33,23 +33,17 @@ Bir [Azure App Service planı](overview-hosting-plans.md) , bir App Service uygu
 
 Boş bir App Service planı oluşturabilir veya uygulama oluşturmanın bir parçası olarak bir plan oluşturabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) **Yeni** > **Web + mobil**' i seçin ve ardından **Web uygulaması** ' nı veya başka türde bir App Service uygulaması ' nı seçin.
-
-2. Mevcut bir App Service planı seçin veya yeni uygulama için bir plan oluşturun.
+1. [Azure Portal](https://portal.azure.com) **Yeni** > **Web uygulaması** veya başka bir App Service App türü seçin.
 
    ![Azure portal bir uygulama oluşturun.][createWebApp]
 
-   Bir plan oluşturmak için:
+2. App Service planını yapılandırmadan önce **örnek ayrıntıları** bölümünü yapılandırın. **Yayımlama** ve **işletim sistemleri** gibi ayarlar, App Service planınız için kullanılabilir fiyatlandırma katmanlarını değiştirebilir. **Bölge** App Service planınızın nerede oluşturulduğunu belirler.
+   
+3. **App Service planı** bölümünde, mevcut bir planı seçin veya **Yeni oluştur**' u seçerek bir plan oluşturun.
 
-   a. **[+] Yeni oluştur**seçeneğini belirleyin.
+   ![App Service planı oluşturun.][createASP] 
 
-      ![App Service planı oluşturun.][createASP] 
-
-   b. **App Service planı**için planın adını girin.
-
-   c. **Konum**için uygun bir konum seçin.
-
-   d. **Fiyatlandırma katmanı**için, hizmet için uygun bir fiyatlandırma katmanı seçin. **Ücretsiz** ve **paylaşılan**gibi daha fazla fiyatlandırma seçeneği görüntülemek için **Tümünü görüntüle** ' yi seçin. Fiyatlandırma katmanını seçtikten sonra **Seç** düğmesine tıklayın.
+4. Bir plan oluştururken, yeni planın fiyatlandırma katmanını seçebilirsiniz. **SKU ve boyut**' ta, fiyatlandırma katmanını değiştirmek Için **boyutu Değiştir** ' i seçin. 
 
 <a name="move"></a>
 
@@ -65,25 +59,20 @@ Kaynak planı ve hedef plan _aynı kaynak grubunda ve coğrafi bölgede_olduğu 
 
 1. [Azure Portal](https://portal.azure.com), taşımak istediğiniz uygulamaya gidin.
 
-1. Menüsünde **App Service planı** bölümünü bulun.
+2. Sol menüden **App Service planı değiştir**' i seçin.
 
-1. **App Service planı** seçicisini açmak için **App Service planı değiştir** ' i seçin.
+3. **App Service planı** açılır listesinde, uygulamayı taşımak için mevcut bir planı seçin. Açılan listede yalnızca geçerli App Service planı ile aynı kaynak grubunda ve coğrafi bölgede bulunan planlar gösterilir. Böyle bir plan yoksa, varsayılan olarak bir plan oluşturmanıza olanak sağlar. Yeni **Oluştur**' a tıklayarak da el ile yeni bir plan oluşturabilirsiniz.
 
+4. Bir plan oluşturursanız, yeni planın fiyatlandırma katmanını seçebilirsiniz. **Fiyatlandırma katmanında**, değiştirmek için mevcut katmanı seçin. 
+   
+   > [!IMPORTANT]
+   > Daha yüksek katmanlı bir plandaki bir uygulamayı **D1** 'den **F1**'e gibi daha düşük katmanlı bir plana taşıyorsanız, uygulama hedef planda belirli özellikleri kaybedebilir. Örneğin, uygulamanız SSL sertifikaları kullanıyorsa şu hata iletisini görebilirsiniz:
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. İşiniz bittiğinde **Tamam**' ı seçin.
+   
    ![App Service planı seçici.][change] 
-
-1. **App Service planı** seçicide bu uygulamayı taşımak için mevcut bir planı seçin.   
-
-**App Service planı seç** sayfası, yalnızca geçerli uygulamanın App Service planı ile aynı kaynak grubunda ve coğrafi bölgede bulunan planları gösterir.
-
-Her planın kendi fiyatlandırma katmanı vardır. Örneğin, bir siteyi **ücretsiz** bir katmandan **Standart** katmana taşımak, kendisine atanan tüm uygulamaların **Standart** katmanın özelliklerini ve kaynaklarını kullanmasına olanak sağlar. Ancak, bir uygulamayı daha yüksek katmanlı bir plandan daha düşük katmanlı bir plana taşımak, artık bazı özelliklere erişiminizin olmadığı anlamına gelir. Uygulamanız hedef planda kullanılamayan bir özellik kullanıyorsa, kullanımda olan hangi özelliğin kullanımda olduğunu gösteren bir hata alırsınız. 
-
-Örneğin, uygulamalarınızdan biri SSL sertifikaları kullanıyorsa şu hata iletisini görebilirsiniz:
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-Bu durumda, uygulamayı hedef plana taşıyabilmeniz için aşağıdakilerden birini yapmanız gerekir:
-- Hedef planın fiyatlandırma katmanını **temel** veya daha yüksek olarak ölçeklendirin.
-- Uygulamanıza yönelik tüm SSL bağlantılarını kaldırın.
 
 ## <a name="move-an-app-to-a-different-region"></a>Uygulamayı farklı bir bölgeye taşıma
 

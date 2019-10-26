@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory portalındaki riskli oturum açma işlemleri raporu | Microsoft Docs
+title: Portalda riskli oturum açma işlemleri raporu | Microsoft Docs
 description: Azure Active Directory portalındaki riskli oturum açma işlemleri raporu hakkında bilgi edinin
 services: active-directory
 author: cawrites
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 31a002af32ac6c07e6358a3ccd0f1420d3e8c9ef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127427"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895179"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki riskli oturum açma işlemleri raporu
 
@@ -44,7 +44,7 @@ Riskli oturum açma işlemleri raporları aşağıdaki rollerdeki kullanıcılar
 
 - Güvenlik Yöneticisi
 - Genel Yönetici
-- Güvenlik Okuyucusu
+- Güvenlik okuyucusu
 
 Azure Active Directory ' de bir kullanıcıya yönetim rolleri atamayı öğrenmek için, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 
@@ -72,7 +72,7 @@ Azure AD ücretsiz ve temel sürümleri, kullanıcılarınız için algılanan r
 
 Riskli oturum açma araştırmanıza bağlı olarak, aşağıdaki eylemleri gerçekleştirerek Azure AD 'ye geri bildirim sağlayabilirsiniz:
 
-- Çözümle
+- Çözümleme
 - Yanlış pozitif olarak işaretleme
 - Yoksayma
 - Yeniden etkinleştirme
@@ -81,7 +81,7 @@ Riskli oturum açma araştırmanıza bağlı olarak, aşağıdaki eylemleri ger�
 
 Bu rapor ayrıca şunları yapmak için bir seçenek sunar:
 
-- Kaynak ara
+- Kaynakları arayın
 - Rapor verilerini indir
 
 ![Riskli Oturum Açma İşlemleri](./media/concept-risky-sign-ins/93.png)
@@ -98,7 +98,7 @@ Azure AD Premium sürümlerindeki riskli oturum açma işlemleri raporu şunlar�
 
 Risk algılamayı seçtiğinizde, bu risk algılamasında şunları yapmanızı sağlayan ayrıntılı bir rapor görünümü alırsınız:
 
-- Bir [kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırabilirsiniz.  
+- [Kullanıcı riskini azaltma ilkesi](../identity-protection/howto-user-risk-policy.md) yapılandırma seçeneği  
 
 - Risk algılama için algılama zaman çizelgesini gözden geçirin  
 
@@ -117,7 +117,7 @@ Bir kullanıcıyı seçtiğinizde bu kullanıcıya ilişkin, aşağıdakileri ge
 
 - Kullanıcının parolasını sıfırlayabilirsiniz.
 
-- Tüm olayları kapat
+- Tüm olayları kapatabilirsiniz.
 
 - Kullanıcı için bildirilen risk algılamalarını araştırın. 
 

@@ -3,27 +3,20 @@ layout: HubPage
 hide_bc: false
 title: Azure Izleyici Application Insights belgeleri-öğreticiler, API başvurusu | Microsoft Docs
 description: Azure Izleyici Application Insights derin kod düzeyinde uygulama performansı izleme sağlar.
-ms.service: application-insights
-ms.subservice: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: hub-page
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 01/15/2019
-ms.openlocfilehash: 254cd4e67c0c64ba9b21133e957ae2cacfefe7a7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4feeeabf4718718d8dbdfa150d6c14cfd3242053
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596814"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899154"
 ---
-<div id="main" class="v2">
-    <div class="container">
-        <h1>Azure Izleyici Application Insights belgeleri</h1>
-        <p>Azure Izleyici Application Insights derin kod düzeyinde uygulama performansı izleme sağlar.</p>
-        <hr style="margin: 30px 0;" />
-        <ul class="pivots">
-            <li>
-                <a href="#products"></a>
+#<a name="productsa"></a>Ürünler "></a>
                 <ul id="products">
                     <li>
                         <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
@@ -44,9 +37,9 @@ ms.locfileid: "72596814"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Temelleri öğrenin</h3>
+                                                                    <h3>Learn the fundamentals</h3>
                                                                     <p>
-                                                                        <a href="./app/app-insights-overview.md">Application Insights nedir?</a><br>
+                                                                        <a href="./app/app-insights-overview.md">What is Application Insights?</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -63,58 +56,58 @@ ms.locfileid: "72596814"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Yenilikler neler?</h3>
+                                                        <h3>What's new?</h3>
                                                         <p>
-                                                            <a href="./app/azure-vm-vmss-apps.md">Azure VM ve Azure sanal makine ölçek kümesi uygulamaları için codeless izleme</a><br>
-                                                            <a href="./app/kubernetes.md">Kubernetes uygulamalarını izleme</a><br>
-                                                            <a href="./app/status-monitor-v2-overview.md">IIS uygulamaları için Durum İzleyicisi v2</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Codeless monitoring for Azure VM and Azure virtual machine scale set applications</a><br>
+                                                            <a href="./app/kubernetes.md">Monitor Kubernetes applications</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">Status Monitor v2 for IIS apps</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Hızlı Başlangıçlar</h3>
+                                                        <h3>Quickstarts</h3>
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
-                                                            <a href="./learn/mobile-center-quickstart.md">Mo</a><br>
-                                                            <a href="./app/website-monitoring.md">Tarayıcı/istemci tarafı izleme</a> 
+                                                            <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
+                                                            <a href="./app/website-monitoring.md">Browser/client-side monitoring</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Öğreticiler</h3>
+                                                        <h3>Tutorials</h3>
                                                         <p>
-                                                            <a href="./learn/tutorial-runtime-exceptions.md">Çalışma zamanı özel durumlarını bulma ve tanılama</a><br>
-                                                            <a href="./learn/tutorial-performance.md">Performans sorunlarını bulma ve tanılama</a><br>
-                                                            <a href="./learn/tutorial-alert.md">Uygulama durumunu izleme ve uyarılar gönderme</a><br>
-                                                            <a href="./learn/tutorial-users.md">Kullanıcı davranışını anlama</a><br>
-                                                            <a href="./learn/tutorial-app-dashboards.md">Özel panolar oluşturma</a> 
+                                                            <a href="./learn/tutorial-runtime-exceptions.md">Find and diagnose run-time exceptions</a><br>
+                                                            <a href="./learn/tutorial-performance.md">Find and diagnose performance issues</a><br>
+                                                            <a href="./learn/tutorial-alert.md">Monitor and alert on application health</a><br>
+                                                            <a href="./learn/tutorial-users.md">Understand user behavior</a><br>
+                                                            <a href="./learn/tutorial-app-dashboards.md">Create custom dashboards</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>Dağıtılmış izleme</h3>
+                                                        <h3>Distributed tracing</h3>
                                                         <p>
-                                                            <a href="./app/distributed-tracing.md">Dağıtılmış izleme nedir?</a><br>
-                                                            <a href="./app/opencensus-python.md">Python için OpenCensus</a><br>
-                                                            <a href="./app/opencensus-go.md">Go için OpenCensus</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Yerel iletici</a> 
+                                                            <a href="./app/distributed-tracing.md">What is distributed tracing?</a><br>
+                                                            <a href="./app/opencensus-python.md">OpenCensus for Python</a><br>
+                                                            <a href="./app/opencensus-go.md">OpenCensus for Go</a><br>
+                                                            <a href="./app/opencensus-local-forwarder.md">Local forwarder</a>
                                                             </p>
                                                         <br><br>
-                                                        <h3>Otomatik akıllı algılama</h3>
+                                                        <h3>Automatic smart detection</h3>
                                                         <p>
-                                                            <a href="./app/proactive-failure-diagnostics.md">Hata anormallikleri</a><br>
-                                                            <a href="./app/proactive-performance-diagnostics.md">Performans anormallikleri</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">İzleme performansında azalma</a><br>
-                                                            <a href="./app/proactive-exception-volume.md">Özel durumlarda anormal RID</a><br>
-                                                            <a href="./app/proactive-potential-memory-leak.md">Bellek sızıntıları</a><br>
-                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Düşük CPU kullanımı</a><br>
-                                                            <a href="./app/proactive-application-security-detection-pack.md">Güvenlik sorunları</a><br>
+                                                            <a href="./app/proactive-failure-diagnostics.md">Failure anomalies</a><br>
+                                                            <a href="./app/proactive-performance-diagnostics.md">Performance anomalies</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">Trace degradation</a><br>
+                                                            <a href="./app/proactive-exception-volume.md">Abnormal rises in exceptions</a><br>
+                                                            <a href="./app/proactive-potential-memory-leak.md">Memory leaks</a><br>
+                                                            <a href="./app/proactive-low-utilization-cloud-resources.md">Low CPU utilization</a><br>
+                                                            <a href="./app/proactive-application-security-detection-pack.md">Security issues</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
-                                                            <a href="./app/proactive-arm-config.md">Şablonlar ile akıllı algılamayı yönetme</a> 
+                                                            <a href="./app/proactive-arm-config.md">Manage smart detection with templates</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3>Başvuru</h3>
+                                                        <h3>Reference</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Bağımlılık otomatik koleksiyonu</a><br>
-                                                            <a href="./app/correlation.md">Telemetri bağıntısı</a><br>
-                                                            <a href="./app/nuget.md">NuGet paketleri</a><br>
-                                                            <a href="./app/azure-functions-supported-features.md">Azure İşlevleri</a>
+                                                            <a href="./app/auto-collect-dependencies.md">Dependency auto-collection</a><br>
+                                                            <a href="./app/correlation.md">Telemetry correlation</a><br>
+                                                            <a href="./app/nuget.md">NuGet packages</a><br>
+                                                            <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
                                                             </p>
                                                     </div>
                                                 </div>
@@ -126,18 +119,18 @@ ms.locfileid: "72596814"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Java uygulamaları</h3>
+                                                        <h3>Java applications</h3>
                                                         <p>
-                                                            <a href="./app/java-get-started.md">Derinlemesine izleme yapılandırması</a><br>
-                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot Starter</a><br>
-                                                            <a href="./app/micrometer-java.md">Mikro ölçüm ölçümleri</a><br>
-                                                            <a href="./app/java-filter-telemetry.md">Telemetri filtreleme</a><br>
-                                                            <a href="./app/java-trace-logs.md">İzleme günlüğü</a><br>
-                                                            <a href="./app/java-agent.md">Bağımlılık izleme için aracı yapılandırması</a><br>
-                                                            <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
+                                                            <a href="./app/java-get-started.md">In-depth monitoring configuration</a><br>
+                                                            <a href="https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights?view=azure-java-stable">Spring Boot starter</a><br>
+                                                            <a href="./app/micrometer-java.md">Micrometer metrics</a><br>
+                                                            <a href="./app/java-filter-telemetry.md">Filter telemetry</a><br>
+                                                            <a href="./app/java-trace-logs.md">Trace logging</a><br>
+                                                            <a href="./app/java-agent.md">Agent config for dependency tracking</a><br>
+                                                            <a href="./app/api-custom-events-metrics.md">Custom events and metrics</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-">Config. xml</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Açık kaynak Java SDK GitHub deposu</a> 
+"> Config. xml</a><br>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Açık kaynak Java SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>.NET uygulamaları</h3>
@@ -147,7 +140,7 @@ ms.locfileid: "72596814"
                                                             <a href="./app/azure-web-apps.md">App Service izleme</a><br>
                                                             <a href="./app/azure-vm-vmss-apps.md">VM ve sanal makine ölçek kümesi uygulama izleme</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Açık kaynak .NET SDK GitHub deposu</a> 
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Açık kaynak .NET SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
                                                           <h3>.NET Core Uygulamaları</h3>
@@ -155,14 +148,14 @@ ms.locfileid: "72596814"
                                                             <a href="./app/asp-net-core.md">Derinlemesine izleme yapılandırması</a><br>
                                                             <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profili oluşturma</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Açık kaynak .NET Core SDK GitHub deposu</a> 
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Açık kaynak .NET Core SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
                                                           <h3>Node. js uygulamaları</h3>
                                                         <p>
                                                             <a href="./app/nodejs.md">Derinlemesine izleme yapılandırması</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Özel etkinlikler ve ölçümler</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Açık kaynak Node. js SDK GitHub deposu</a> 
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Açık kaynak Node. js SDK GitHub deposu</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>İstemci/tarayıcı tarafı izleme</h3>
@@ -190,7 +183,7 @@ ms.locfileid: "72596814"
                                                             <a href="./app/usage-cohorts.md">Kohortlar</a><br>
                                                             <a href="./app/usage-impact.md">Etki</a><br>
                                                             <a href="./app/usage-retention.md">Bekletme</a><br>
-                                                            <a href="./app/usage-flows.md">Kullanıcı Akışları</a> 
+                                                            <a href="./app/usage-flows.md">Kullanıcı Akışları</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Gerçek zamanlı izleme,<br> görselleştirme, &amp; Analizi</h3>
@@ -202,8 +195,8 @@ ms.locfileid: "72596814"
                                                             <a href="../monitoring-and-diagnostics/resource-group-insights.md">Kaynak grubu düzeyinde izleme</a><br>
                                                             <a href="./app/usage-workbooks.md">Etkileşimli raporlama</a><br>
                                                             <a href="./app/export-power-bi.md">Power BI tümleştirme</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Ölçümleri araştırın</a> 
-                                                        </p>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Ölçümleri</a>
+                                                         araştırın</p>
                                                         <br><br>
                                                         <h3>Gizlilik, güvenlik, kullanım &amp; maliyeti</h3>
                                                         <p>
@@ -211,7 +204,7 @@ ms.locfileid: "72596814"
                                                             <a href="./app/data-retention-privacy.md">Veri toplama, saklama, &amp; depolama</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Rol tabanlı erişim</a><br>
                                                             <a href="./app/ip-addresses.md">Güvenlik Duvarı özel durumları &amp; IP adresi</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Kullanım ve tahmini maliyetler</a> 
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Kullanım ve tahmini maliyetler</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Veri modeli</h3>
@@ -223,7 +216,7 @@ ms.locfileid: "72596814"
                                                             <a href="./app/data-model-trace-telemetry.md">İzleme</a><br>
                                                             <a href="./app/data-model-event-telemetry.md">Olay</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Ölçüm</a><br>
-                                                            <a href="./app/data-model-context.md">Bağlam</a> 
+                                                            <a href="./app/data-model-context.md">Bağlam</a>
                                                             </p>
                                                         </p>
                                                     </div>

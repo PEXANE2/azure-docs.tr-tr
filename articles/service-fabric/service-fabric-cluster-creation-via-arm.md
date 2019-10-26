@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 241349724929845afa2fd2a4bacabf9b5017cc7c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599962"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901560"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric kümesi oluşturma 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalda](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
 [Azure Service Fabric kümesi](service-fabric-deploy-anywhere.md) , mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal makineler kümesidir.  Azure 'da çalışan bir Service Fabric kümesi, bir Azure kaynağıdır ve Azure Resource Manager kullanılarak dağıtılır. Bu makalede, Azure 'da Kaynak Yöneticisi kullanarak güvenli bir Service Fabric kümesinin nasıl dağıtılacağı açıklanır. Varsayılan bir küme şablonu veya özel şablon kullanabilirsiniz.  Zaten özel şablonunuz yoksa, [bir tane oluşturma hakkında bilgi](service-fabric-cluster-creation-create-template.md)edinebilirsiniz.
 
-Küme güvenliği, kümenin ilk kurulumu yapıldığında yapılandırılır ve daha sonra değiştirilemez. Bir küme ayarlamadan önce [Service Fabric küme güvenliği senaryolarını][service-fabric-cluster-security]okuyun. Azure 'da Service Fabric, kümenizin ve uç noktalarının güvenliğini sağlamak, istemcilerin kimliğini doğrulamak ve verileri şifrelemek için x509 sertifikası kullanır. Yönetim uç noktalarına erişimin güvenliğini sağlamak için de Azure Active Directory önerilir. Kümeyi oluşturmadan önce Azure AD kiracılarının ve kullanıcılarının oluşturulması gerekir.  Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.
+Kümenin güvenliğini sağlamak için seçilen güvenlik türü (örn.: Windows kimliği, x509 vb.) kümenin ilk oluşturulması için belirtilmelidir ve bundan sonra değiştirilemez. Bir küme ayarlamadan önce [Service Fabric küme güvenliği senaryolarını][service-fabric-cluster-security]okuyun. Azure 'da Service Fabric, kümenizin ve uç noktalarının güvenliğini sağlamak, istemcilerin kimliğini doğrulamak ve verileri şifrelemek için x509 sertifikası kullanır. Yönetim uç noktalarına erişimin güvenliğini sağlamak için de Azure Active Directory önerilir. Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.
 
 Üretim iş yüklerini çalıştırmak için bir üretim kümesi oluşturuyorsanız, önce [Üretim hazırlığı denetim listesini](service-fabric-production-readiness-checklist.md)okumanız önerilir.
 
@@ -47,7 +47,7 @@ Service Fabric modülleriyle ilgili başvuru belgelerini buradan bulabilirsiniz:
 * [Az. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLı modülü](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
-### <a name="sign-in-to-azure"></a>Azure'da oturum açma
+### <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 Bu makaledeki komutlardan birini çalıştırmadan önce önce Azure 'da oturum açın.
 
@@ -173,7 +173,7 @@ Kümenizin güvenliğini sağlamak için kullanmak istediğiniz bir sertifikanı
 Bu, diğer amaçlar için kullanarak da kullanacağınız CA imzalı bir sertifikasa, anahtar kasanıza özel olarak ayrı bir kaynak grubu sağlamanız önerilir. Anahtar kasasını kendi kaynak grubuna yerleştirmenizi öneririz. Bu eylem, anahtar ve gizli dizileri kaybetmeden Service Fabric kümenizi içeren kaynak grubu dahil olmak üzere işlem ve depolama kaynak gruplarını kaldırmanızı sağlar. **Anahtar kasanızı içeren kaynak grubunun, kendisini kullanan kümeyle *aynı bölgede olması gerekir* .**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Modülde birlikte gelen bir düğüm türü şablonu olan varsayılan beş düğümü kullanın
-Kullanılan şablon [Azure örnekleri üzerinde kullanılabilir: Windows şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) ve [Ubuntu şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
+Kullanılan şablon [Azure örnekleri: Windows şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) ve [Ubuntu şablonu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure) üzerinde kullanılabilir
 
 PowerShell kullanarak kümeyi dağıtma:
 

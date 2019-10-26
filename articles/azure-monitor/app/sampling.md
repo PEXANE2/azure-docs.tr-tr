@@ -1,24 +1,19 @@
 ---
 title: Azure Application Insights telemetri örnekleme | Microsoft Docs
 description: Denetim altında telemetri hacmini tutma.
-services: application-insights
-documentationcenter: windows
-author: cijothomas
-manager: carmonm
-ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: cijothomas
+ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.author: cithomas
-ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372557"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899854"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -33,7 +28,7 @@ Portalda ölçüm sayıları sunulduklarında, bunlar hesap örneklemesi içine 
 * Uyarlamalı örnekleme, ASP.NET ve ASP.NET Core yazılım geliştirme setlerinin (SDK) tüm en son sürümlerinde varsayılan olarak etkindir.
 * Ayrıca, örneklemesi el ile de ayarlayabilirsiniz. Bu, Portal 'da *kullanım ve tahmini maliyetler sayfasında*, ASP.NET SDK 'Daki ApplicationInsights. config dosyasında, kod aracılığıyla ASP.NET Core SDK 'Daki ve ApplicationInsights. xml dosyasındaki Java SDK 'sında yapılandırılabilir.
 * Özel olayları günlüğe kaydeder ve bir olay kümesinin birlikte tutulup tutulmayacağından emin olmanız gerekiyorsa, olayların aynı operationId değerine sahip olması gerekir.
-* @No__t-1 özelliğindeki her kayıtta, aramada "istek sayısı" veya "olay sayısı" kolay adı altında görünen örnekleme *böleçini* rapor edilir. örnekleme işlem içinde olmadığında-0@no__t.
+* "İstek sayısı" veya "olay sayısı" kolay adı altında görüntülenen, özellik `itemCount`her bir kayıtta örnekleme *böleçini* rapor edilir. örnekleme işlem içinde olmadığında `itemCount==1`.
 * Analiz sorguları yazarsanız, [örnekleme hesabı](../../azure-monitor/log-query/aggregations.md)almalısınız. Yalnızca kayıtları saymak yerine, `summarize sum(itemCount)` kullanmanız gerekir.
 
 ## <a name="types-of-sampling"></a>Örnekleme türleri
@@ -150,7 +145,7 @@ Uyarlamalı örnekleme, tüm ASP.NET Core uygulamalar için varsayılan olarak e
 
 ### <a name="turning-off-adaptive-sampling"></a>Uyarlamalı örnekleme kapatılıyor
 
-@No__t-2 dosyasında ```ApplicationInsightsServiceOptions``` kullanarak ```ConfigureServices``` yönteminde Application Insights hizmeti eklenirken varsayılan örnekleme özelliği devre dışı bırakılabilir:
+Application Insights hizmeti eklenirken varsayılan örnekleme özelliği devre dışı bırakılabilir. Bu, `Startup.cs` dosyası içinde ```ApplicationInsightsServiceOptions``` kullanarak Yöntem ```ConfigureServices```.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

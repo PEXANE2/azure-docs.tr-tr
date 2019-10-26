@@ -1,5 +1,5 @@
 ---
-title: PıM-Azure Active Directory 'de konukları davet edin ve Azure Kaynak rolleri atayın | Microsoft Docs
+title: Privileged Identity Management 'de konukları davet edin ve Azure Kaynak rolleri atayın Azure Active Directory | Microsoft Docs
 description: Dış Konuk kullanıcıları davet etmeyi ve Azure AD Privileged Identity Management (PıM) içinde Azure Kaynak rolleri atamayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e01b58a2a2fc6f93ae5ccc15e200a0cea69a0c
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 08c2ef1695d118c248abfc500025479d1186eb05
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804220"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895641"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>PıM 'de Konuk kullanıcıları davet etme ve Azure Kaynak rolleri atama
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management ' de Konuk kullanıcıları davet edin ve Azure Kaynak rolleri atayın
 
-Azure Active Directory (Azure AD) işletmeden işletmeye (B2B), kuruluşların herhangi bir hesabı kullanarak dış Konuk kullanıcılar (konuklar) ve satıcılarla işbirliği yapmasına olanak tanıyan Azure AD 'nin içindeki bir dizi özellik kümesidir. B2B 'yı Azure AD Privileged Identity Management (PıM) ile birleştirdiğinizde, daha sonra, konuklarınız için uyumluluk ve idare gereksinimlerinizi uygulamaya devam edebilirsiniz. Örneğin, bu PıM özelliklerini konuklarla Azure kimlik görevleri için kullanabilirsiniz:
+Azure Active Directory (Azure AD) Konuk kullanıcılar, Azure AD 'deki işletmeden işletmeye (B2B) işbirliği olanaklarından bir parçasıdır. böylece, dış Konuk kullanıcılarını ve satıcıları Azure AD 'de Konuk olarak yönetebilirsiniz. B2B işbirliğini Azure AD Privileged Identity Management (PıM) ile birleştirdiğinizde, uyumluluk ve idare gereksinimlerinizi konuklara genişletebilirsiniz. Örneğin, bu Privileged Identity Management özelliklerini konuklarla Azure kimlik görevleri için kullanabilirsiniz:
 
 - Belirli Azure kaynaklarına erişim atama
 - Tam zamanında erişimi etkinleştir
 - Atama süresini ve bitiş tarihini belirtin
-- Etkin atama veya etkinleştirme üzerinde MFA gerektir
+- Etkin atama veya etkinleştirme sırasında çok faktörlü kimlik doğrulaması gerektir
 - Erişim gözden geçirmeleri gerçekleştirin
 - Uyarıları ve denetim günlüklerini kullanma
 
@@ -37,7 +37,7 @@ Bu makalede, kuruluşunuza bir konuğa davet etme ve Privileged Identity Managem
 
 ## <a name="when-would-you-invite-guests"></a>Konukları ne zaman davet edersiniz?
 
-Aşağıda, konukları kuruluşa davet edebilmeniz için birkaç örnek senaryo verilmiştir:
+Aşağıda, kuruluşunuza konukları davet etmeye yönelik birkaç örnek verilmiştir:
 
 - Yalnızca bir proje için Azure kaynaklarınıza erişmek üzere bir e-posta hesabına sahip olan bir dış şirket içi satıcıya izin verin.
 - Şirket içi Active Directory Federasyon Hizmetleri (AD FS) kullanan büyük bir kuruluşta, harcama uygulamanıza erişmek için bir dış ortağa izin verin.
@@ -45,9 +45,9 @@ Aşağıda, konukları kuruluşa davet edebilmeniz için birkaç örnek senaryo 
 
 ## <a name="how-does-collaboration-using-b2b-guests-work"></a>B2B konukları kullanarak işbirliği nasıl çalışır?
 
-B2B işbirliği kullandığınızda, bir dış kullanıcıyı kuruluşunuza Konuk olarak davet edebilirsiniz. Konuk, kuruluşunuzda bulunur, ancak konuk ile ilişkili herhangi bir kimlik bilgisi yok. Bir konuğun kimlik doğrulaması gerektiğinde, kuruluşunuzda kimlik doğrulaması yapılmalıdır. Bu, konuğun artık ev kuruluşuna erişimi yoksa kuruluşunuza erişimi kaybetmemesi anlamına gelir. Örneğin, Konuk organizasyonlarını bırakırsa, herhangi bir şey yapmanıza gerek kalmadan Azure AD 'de paylaştığınız kaynaklara erişimi otomatik olarak kaybeder. B2B hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B 'de Konuk Kullanıcı erişimi nedir?](../b2b/what-is-b2b.md).
+B2B işbirliği kullandığınızda, bir dış kullanıcıyı kuruluşunuza Konuk olarak davet edebilirsiniz. Konuk, kuruluşunuzda bir kullanıcı olarak yönetilebilir, ancak bir konuğun Azure AD kuruluşunuzda değil, kendi ana kuruluşunda kimlik doğrulaması yapmak gerekir. Bu, konuğun artık ev kuruluşuna erişimi yoksa kuruluşunuza erişimi kaybetmemesi anlamına gelir. Örneğin, Konuk organizasyonlarını bırakırsa, herhangi bir şey yapmanıza gerek kalmadan Azure AD 'de paylaştığınız kaynaklara erişimi otomatik olarak kaybeder. B2B işbirliği hakkında daha fazla bilgi için bkz. [Azure ACTIVE DIRECTORY B2B 'de Konuk Kullanıcı erişimi nedir?](../b2b/what-is-b2b.md).
 
-![Bir Konuk kullanıcının dizininizde nasıl göründüğünü gösteren diyagram, ancak kendi giriş dizininde kimlik doğrulaması yapılır](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![Konuk kullanıcının kendi giriş dizininde kimlik doğrulamasının nasıl yapıldığını gösteren diyagram](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
 ## <a name="check-guest-collaboration-settings"></a>Konuk işbirliği ayarlarını denetleme
 
@@ -55,39 +55,39 @@ Konukları kuruluşa davet edebilmeniz için, Konuk işbirliği ayarlarınızı 
 
 1. [Azure portalda](https://portal.azure.com/) oturum açın.
 
-1. **Azure Active Directory** > **Kullanıcı ayarları**' na tıklayın.
+1. **Azure Active Directory** > **Kullanıcı ayarları**' nı seçin.
 
-1. **Dış işbirliği ayarlarını yönet**' e tıklayın.
+1. **Dış işbirliği ayarlarını yönet**' i seçin.
 
     ![İzin, davet ve işbirliği kısıtlama ayarlarını gösteren dış işbirliği ayarları sayfası](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
-1. **Konuk davet eden rolündeki yöneticilerin ve kullanıcıların Switch 'e davet edebir** şekilde ayarlandığından emin **olun.**
+1. **Konuk davet eden rolündeki yöneticilerin ve kullanıcıların, davet** etmesini sağlamak Için anahtarı **Evet**olarak ayarlayın.
 
 ## <a name="invite-a-guest-and-assign-a-role"></a>Konuk davet etme ve rol atama
 
-PıM 'yi kullanarak bir konuk davet edebilir ve bunları bir Azure Kaynak rolü için üye kullanıcı gibi uygun hale getirebilirsiniz.
+Privileged Identity Management kullanarak, bir konuğa davet edebilir ve bunları bir Azure Kaynak rolü için uygun hale getirebilirsiniz.
 
 1. [Ayrıcalıklı rol yöneticisinin](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) veya [Kullanıcı Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Privileged Identity Management**açın.
 
-1. **Azure kaynakları**' na tıklayın.
+1. **Azure kaynakları**' nı seçin.
 
 1. Yönetilen kaynakların listesini filtrelemek için **kaynak filtresini** kullanın.
 
-1. Yönetmek istediğiniz kaynak, kaynak grubu, abonelik veya yönetim grubu gibi bir kaynağa tıklayın.
+1. Yönetmek istediğiniz kaynağı seçin (örneğin, kaynak, kaynak grubu, abonelik veya yönetim grubu).
 
     Kapsamı yalnızca konuğun ihtiyaçlarına göre ayarlamanız gerekir.
 
-1. Yönet altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' e tıklayın.
+1. Yönet altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
 
     ![Etkin ve uygun kullanıcı sayısını gösteren Azure kaynakları rol listesi](./media/pim-resource-roles-external-users/resources-roles.png)
 
-1. Kullanıcının ihtiyacı olacak en düşük role tıklayın.
+1. Kullanıcının ihtiyacı olacak en düşük rolü seçin.
 
     ![Seçilen rol sayfası bu rolün geçerli üyelerini listelemesi](./media/pim-resource-roles-external-users/selected-role.png)
 
-1. Rol sayfasında, yeni atama bölmesini açmak için **üye Ekle** ' ye tıklayın.
+1. Rol sayfasında, yeni atama bölmesini açmak için **üye Ekle** ' yi seçin.
 
 1. **Üye veya Grup Seç**' e tıklayın.
 
@@ -107,7 +107,7 @@ PıM 'yi kullanarak bir konuk davet edebilir ve bunları bir Azure Kaynak rolü 
 
     ![Atama türü, başlangıç tarihi ve bitiş tarihi belirtme seçenekleriyle yeni atama-Üyelik ayarları sayfası](./media/pim-resource-roles-external-users/membership-settings.png)
 
-1. Atamayı tamamladıktan sonra **bitti** ' ye ve ardından **Ekle**' ye tıklayın.
+1. Atamayı tamamladıktan sonra **bitti** ' yi ve ardından **Ekle**' yi seçin.
 
     Konuk rolü ataması, rol listenizde görünür.
 
@@ -115,31 +115,29 @@ PıM 'yi kullanarak bir konuk davet edebilir ve bunları bir Azure Kaynak rolü 
 
 ## <a name="activate-role-as-a-guest"></a>Rolü Konuk olarak etkinleştir
 
-Dış Kullanıcı olarak, ilk olarak Azure AD kuruluşunuza daveti kabul etmeniz ve büyük olasılıkla rolünüzü etkinleştirmeniz gerekir.
+Dış bir Kullanıcı kullanıyorsanız, daveti Azure AD kuruluşunda Konuk olarak kabul etmeniz ve muhtemelen rol atamasını etkinleştirmeniz gerekir.
 
 1. Davetiniz ile e-postayı açın. E-posta aşağıdakine benzer şekilde görünür.
 
     ![Dizin adı, kişisel ileti ve kullanmaya başlama bağlantısı ile e-posta daveti](./media/pim-resource-roles-external-users/email-invite.png)
 
-1. E-postadaki **Başlarken** bağlantısına tıklayın.
+1. E-postadaki **Başlarken** bağlantısını seçin.
 
 1. İzinleri inceledikten sonra **kabul et**' e tıklayın.
 
     ![Bir tarayıcıdaki izin sayfasını, kuruluşunuzun incelemenizi istediğiniz izin listesiyle birlikte gözden geçirin](./media/pim-resource-roles-external-users/invite-accept.png)
 
-1. Kullanım koşullarını kabul etmeniz ve oturum açmış kalmak isteyip istemediğinizi belirtmeniz istenebilir.
+1. Kullanım koşullarını kabul etmeniz ve oturum açmış kalmak isteyip istemediğinizi belirtmeniz istenebilir. Azure portal, bir rol için *uygunsanız* , henüz kaynaklara erişemezsiniz.
 
-    Azure portal açılır. Yalnızca bir rol için uygun hale getirmeniz durumunda kaynaklara erişemezsiniz.
+1. Rol atamasını etkinleştirmek için, rol etkinleştir bağlantısına sahip e-postayı açın. E-posta aşağıdakine benzer şekilde görünür.
 
-1. Rolünüzü etkinleştirmek için, rol etkinleştirme bağlantısına sahip e-postayı açın. E-posta aşağıdakine benzer şekilde görünür.
+    ![Rol etkinleştirme bağlantısı olan bir rol için uygun olduğunuzu belirten e-posta](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
-    ![Rol etkinleştirme bağlantısı olan bir rol için uygun olduğunuzu belirten PıM 'den e-posta iletisi](./media/pim-resource-roles-external-users/email-role-assignment.png)
+1. Privileged Identity Management uygun rollerinizi açmak için **rolü etkinleştir** ' i seçin.
 
-1. Uygun rollerinizi PıM 'de açmak için **rolü etkinleştir** ' e tıklayın.
+    ![Uygun rollerinizi listelemek Privileged Identity Management roller sayfası](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
-    ![Uygun rollerinizi listelemesi PıM 'de roller sayfası](./media/pim-resource-roles-external-users/my-roles-eligible.png)
-
-1. Eylem altında **Etkinleştir** bağlantısına tıklayın.
+1. Eylem altında **Etkinleştir** bağlantısını seçin.
 
     Rol ayarlarına bağlı olarak, rolü etkinleştirmek için bazı bilgiler belirtmeniz gerekir.
 
@@ -151,21 +149,21 @@ Dış Kullanıcı olarak, ilk olarak Azure AD kuruluşunuza daveti kabul etmeniz
 
 ## <a name="view-activity-for-a-guest"></a>Konuk için etkinliği görüntüleme
 
-Yalnızca bir üye kullanıcı gibi, konukların yaptığın yaptıklarını izlemek için Denetim günlüklerini görüntüleyebilirsiniz.
+Konukların neler yaptığını izlemek için Denetim günlüklerini görüntüleyebilirsiniz.
 
-1. Yönetici olarak, PıM 'yi açın ve paylaşılan kaynağı seçin.
+1. Yönetici olarak, Privileged Identity Management açın ve paylaşılan kaynağı seçin.
 
-1. Kaynak **denetimi** ' ne tıklayarak o kaynağa yönelik etkinliği görüntüleyin. Aşağıda, bir kaynak grubu için etkinliğin bir örneği gösterilmektedir.
+1. Bu kaynağa yönelik etkinliği görüntülemek için **kaynak denetimi** ' ni seçin. Aşağıda, bir kaynak grubu için etkinliğin bir örneği gösterilmektedir.
 
     ![Azure kaynakları-saat, istek sahibi ve eylemi listeleme kaynak denetimi sayfası](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Konuğun etkinliğini görüntülemek için **Azure Active Directory** > **Kullanıcılar** konuk adı > ' ne tıklayın.
+1. Konuğun etkinliğini görüntülemek için **Azure Active Directory** > **Kullanıcı** > *Konuk adı*' nı seçin.
 
-1. Kuruluş için Denetim günlüklerini görmek üzere **Denetim günlükleri** ' ne tıklayın. Gerekirse, filtreler belirtebilirsiniz.
+1. Kuruluş için Denetim günlüklerini görmek üzere **Denetim günlükleri** ' ni seçin. Gerekirse, filtreler belirtebilirsiniz.
 
     ![Tarih, hedef, başlatılan ve etkinliği listeleme dizin denetim günlükleri](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PıM 'de Azure AD yönetici rolleri atama](pim-how-to-add-role-to-user.md)
-- [Azure Active Directory B2B 'de Konuk Kullanıcı erişimi nedir?](../b2b/what-is-b2b.md)
+- [Privileged Identity Management Azure AD yönetici rolleri atama](pim-how-to-add-role-to-user.md)
+- [Azure AD B2B işbirliğinde Konuk Kullanıcı erişimi nedir?](../b2b/what-is-b2b.md)

@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0b93f898924d73636c31826b6b63a228f75fc8ba
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374542"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900160"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
 Bu makale, Azure maliyet yönetimi 'ne dahil edilen Azure maliyet ve kullanım verilerini daha iyi anlamanıza yardımcı olur. Verilerin ne sıklıkta işlendiğini, toplanacağını, gösterildiğini ve kapatıldığını açıklar. Azure kullanım için aylık olarak faturalandırılırsınız. Fatura döngüleri aylık dönemler olsa da, döngü başlangıç ve bitiş tarihleri abonelik türüne göre farklılık gösterir. Maliyet yönetiminin kullanım verilerini alma sıklığı, farklı faktörlere göre farklılık gösterir. Bu tür etkenler, verilerin işlenmesi için geçen süreyi ve Azure hizmetlerinin kullanım sıklığını faturalandırma sistemine nasıl yayduğunu içerir.
 
-Maliyet yönetimi, Kurumsal Anlaşma (EA) hesapları için rezervasyonlar ve üçüncü taraf teklifleri dahil olmak üzere tüm kullanım ve satın alma işlemlerini içerir. Kullandıkça Öde tarifelerine sahip Microsoft Müşteri Sözleşmesi (MCA) hesapları ve bireysel abonelikler yalnızca Azure ve Market hizmetlerinden kullanım içerir. Destek ve diğer maliyetler dahil değildir. Bir fatura oluşturuluncaya kadar maliyetler tahmin edilir ve krediler üzerinde etken olmaz.
+Maliyet yönetimi, Kurumsal Anlaşma (EA) hesapları için rezervasyonlar ve üçüncü taraf teklifleri dahil olmak üzere tüm kullanım ve satın alma işlemlerini içerir. Kullandıkça Öde tarifelerine sahip Microsoft müşteri anlaşması hesapları ve bireysel abonelikler yalnızca Azure ve Market hizmetlerinden kullanım içerir. Destek ve diğer maliyetler dahil değildir. Bir fatura oluşturuluncaya kadar maliyetler tahmin edilir ve krediler üzerinde etken olmaz.
 
 ## <a name="supported-microsoft-azure-offers"></a>Desteklenen Microsoft Azure teklifleri
 
@@ -34,7 +34,7 @@ Aşağıdaki bilgiler, Azure maliyet yönetimi 'nde Şu anda desteklenen [Micros
 | **Kurumsal Anlaşma (EA)** | [Microsoft Azure Kurumsal](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | <sup>2014 mayıs</sup> |
 | **Microsoft Müşteri Sözleşmesi** | [Microsoft Azure planı](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | Yok | Mart 2019<sup>3</sup> |
 | **Microsoft Müşteri Sözleşmesi** | [Geliştirme ve test için plan Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | Yok | Mart 2019<sup>3</sup> |
-| **Microsoft Iş ortağı sözleşmesi** | Microsoft Azure Planı | CSP_2015-05-01, CSP_MG_2017-12-01, CSPDEVTEST_2018-05-01 | Yok | 2019 Ekim |
+| **İş ortakları tarafından desteklenen Microsoft Müşteri Sözleşmesi** | Microsoft Azure Planı | CSP_2015-05-01, CSP_MG_2017-12-01 ve CSPDEVTEST_2018-05-01<br><br>Kota KIMLIĞI, Microsoft Müşteri Sözleşmesi ve eski CSP abonelikleri için yeniden kullanılır. Şu anda yalnızca Microsoft Müşteri Sözleşmesi abonelikleri desteklenir. | Yok | 2019 Ekim |
 | **Microsoft Developer Network (MSDN)** | [MSDN Platformları](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 2 Ekim 2018<sup>2</sup> |
 | **Kullandıkça Öde** | [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 2 Ekim 2018<sup>2</sup> |
 | **Kullandıkça Öde** | [Kullandıkça Öde Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 2 Ekim 2018<sup>2</sup> |

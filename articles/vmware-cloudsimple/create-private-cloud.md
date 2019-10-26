@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828154"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893933"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutu oluşturma
 
@@ -31,13 +31,23 @@ ms.locfileid: "71828154"
 
 Özel bir bulut oluşturduğunuzda, tek bir vSphere kümesi ve bu kümede oluşturulan tüm yönetim VM 'Leri alırsınız.
 
-## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişin
+## <a name="before-you-begin"></a>Başlamadan önce
+
+Özel bulutunuzu oluşturabilmeniz için önce düğümlerin sağlanması gerekir. Düğüm sağlama hakkında daha fazla bilgi için bkz. [CloudSimple Için Azure VMware çözümü için düğüm sağlama](create-nodes.md).
+
+Özel bulut için vSphere/vSAN alt ağları için bir CıDR aralığı ayırın. Özel bulut, bir vCenter sunucusu tarafından yönetilen yalıtılmış bir VMware Stack ortamı (ESXi Konakları, vCenter, vSAN ve NSX ile) olarak oluşturulur. Yönetim bileşenleri, vSphere/vSAN alt ağları CıDR için seçilen ağa dağıtılır. Ağ CıDR aralığı, dağıtım sırasında farklı alt ağlara bölünmüştür. VSphere/vSAN alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır. CloudSimple ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağları bulunur. VSphere/vSAN alt ağları hakkında daha fazla bilgi için bkz. VLAN ve alt ağlara genel bakış.
+
+* Minimum vSphere/vSAN alt ağları CıDR aralığı ön eki:/24
+* Maksimum vSphere/vSAN alt ağları CıDR aralığı ön eki:/21
+
+
+## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
 [Cloudsimple portalına](access-cloudsimple-portal.md)erişin.
 
 ## <a name="create-a-new-private-cloud"></a>Yeni bir özel bulut oluşturun
 
-1. **Tüm hizmetler**' i seçin.
+1. **Tüm Hizmetler**’i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. **Özel bulut oluştur** **' a tıklayarak**cloudsimple portalı için yeni bir tarayıcı sekmesi açın. İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.
@@ -46,7 +56,7 @@ ms.locfileid: "71828154"
 
 5. CloudSimple portalında, özel bulutunuz için bir ad sağlayın.
 6. Özel bulutunuzun **konumunu** seçin.
-7. Azure 'da satın aldığınız verilerle tutarlı olan **düğüm türünü**seçin.
+7. Azure 'da sağladığınız verilerle tutarlı bir **düğüm türü**seçin.
 8. **Düğüm sayısını**belirtin.  Özel bir bulut oluşturmak için en az üç düğüm gerekir.
 
     ![Özel bulut oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)
@@ -61,7 +71,7 @@ ms.locfileid: "71828154"
 
 11. Ileri ' ye tıklayın. **İnceleme ve oluşturma**.
 12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
-13. **Oluştur**'u tıklatın.
+13. **Oluştur**’a tıklayın.
 
 Özel bulut sağlama işlemi başlar. Özel bulutun sağlanması iki saate kadar sürebilir.
 

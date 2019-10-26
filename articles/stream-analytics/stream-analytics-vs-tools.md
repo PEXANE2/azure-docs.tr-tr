@@ -1,6 +1,6 @@
 ---
 title: Visual Studio 'da Azure Stream Analytics işleri görüntüleme
-description: Bu makalede, Visual Studio 'da Azure Stream Analytics işlerinin nasıl görüntüleneceği ve yönetileceği açıklanmaktadır.
+description: Visual Studio kullanarak bağlantıları görüntüleme, başlatma ve durdurma, test etme, sonuçları denetleme ve Azure Stream Analytics işlerinizi dışarı aktarma hakkında bilgi edinin.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173020"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893547"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri görüntülemek için Visual Studio 'Yu kullanma
 
@@ -38,9 +38,7 @@ Visual Studio 'dan Azure Stream Analytics işlerle etkileşim kurmak için iş g
 
     ![Sunucu Gezgini listesini Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
-2. İş düğümünü genişletin ve iş görünümü düğümüne çift tıklayarak iş görünümünü açın.
+2. İş düğümünü genişletin **ve iş görünümü düğümüne çift** tıklayarak iş görünümünü açın.
     
    ![Genişletilen iş düğümü](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -50,13 +48,11 @@ Azure Stream Analytics işleri Visual Studio 'daki iş görünümünden tamamen 
     
    ![Stream Analytics iş denetimleri](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>İş sonuçlarını denetle
 
 Visual Studio için Stream Analytics araçları şu anda Azure Data Lake Storage ve BLOB depolama için çıkış önizlemeyi desteklemektedir. Sonucu görüntülemek için, **Iş görünümü** ' nde iş diyagramının çıkış düğümüne çift tıkladıktan sonra uygun kimlik bilgilerini girmeniz yeterlidir.
 
    ![Stream Analytics iş blobu çıkışı](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>İşleri projeye dışarı aktarma
 
@@ -87,6 +83,6 @@ Giriş ve çıkış bağlantıları, **test bağlantısı** açılan menüsünde
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Visual Studio 'Yu kullanarak Azure Stream Analytics işlerini izleme ve yönetme](stream-analytics-monitor-jobs-use-vs.md)
-* [Hızlı Başlangıç: Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
+* [Hızlı başlangıç: Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
 * [Öğretici: Azure Pipelines kullanarak CI/CD ile Azure Stream Analytics işi dağıtma](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics araçlarıyla sürekli tümleştirme ve geliştirme](stream-analytics-tools-for-visual-studio-cicd.md)

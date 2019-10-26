@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210360"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900298"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -67,16 +67,16 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
     - download.microsoft.com
     - Kurtarma Hizmeti URL 'Leri (coğrafi ad, kurtarma hizmeti kasasının bulunduğu bölgeyi ifade eder)
-        - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.com (Azure genel geos için)
-        - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.cn (Azure Çin 21Vianet için)
-        - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.us (Azure ABD kamu için)
-        - https:\//pod01-rec2.Geo-Name.Backup.windowsazure.de (Azure Almanya için)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (Azure genel geos Için)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (Azure Çin 21Vianet Için)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (Azure ABD kamu Için)
+        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (Azure Almanya Için)
     - giden bağlantı noktası 3260
 
 > [!Note]
 > 
-> * İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: İndirilen betik adı, ContosoVM_wcus_12345678. \'..\'. gibi VMName\'\_\'geoname\'_ GUID\'ile başlar.<br><br>
-> * URL "https:\//pod01-rec2.wcus.Backup.windowsazure.com" olacaktır
+> * İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı, ContosoVM_wcus_12345678.... gibi \'VMname\'\_\'geoname\'_\'GUID\'ile başlar.<br><br>
+> * URL "https:\//pod01-rec2.wcus.backup.windowsazure.com" olur
 
 
    Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.
@@ -89,7 +89,7 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
 
 #### <a name="for-windows"></a>Windows için
 
-Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birimleri takar ve sürücü harfleri atar. Bu sürücülere gözatabilmeniz için Windows Gezgini veya dosya Gezgini ' ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harflerde olmayabilir, ancak birim adı korunur. Örneğin, özgün sanal makinedeki birim "veri diski (E:`\`)" ise, bu birim yerel bilgisayara "veri diski (' herhangi bir harf ':`\`) olarak iliştirilebilir. Dosyalarınız/klasörünüz bulunana kadar betik çıkışında bahsedilen tüm birimlere göz atabilirsiniz.  
+Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birimleri takar ve sürücü harfleri atar. Bu sürücülere gözatabilmeniz için Windows Gezgini veya dosya Gezgini ' ni kullanabilirsiniz. Birimlere atanan sürücü harfleri, özgün sanal makineyle aynı harflerde olmayabilir, ancak birim adı korunur. Örneğin, özgün sanal makinedeki birim "veri diski (E:`\`)" ise, bu birim yerel bilgisayara "veri diski (' herhangi bir harf ':`\`) olarak eklenebilir. Dosyalarınız/klasörünüz bulunana kadar betik çıkışında bahsedilen tüm birimlere göz atabilirsiniz.  
 
    ![Dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -168,7 +168,7 @@ Aşağıdaki komut tüm RAID disklerinin ayrıntılarını görüntüler.
 $ mdadm –detail –scan
 ```
 
- İlgili RAID diski şöyle görüntülenir`/dev/mdm/<RAID array name in the protected VM>`
+ İlgili RAID diski `/dev/mdm/<RAID array name in the protected VM>` olarak görüntülenir
 
 RAID diskinde fiziksel birimler varsa bağlama komutunu kullanın.
 
@@ -189,14 +189,14 @@ Aşağıdaki tabloda sunucu ve bilgisayar işletim sistemleri arasındaki uyumlu
 | --------------- | ---- |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
+| Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Linux işletim sistemi için
 
 Linux 'ta, dosyaları geri yüklemek için kullanılan bilgisayarın işletim sisteminin korumalı sanal makinenin dosya sistemini desteklemesi gerekir. Betiği çalıştırmak için bir bilgisayar seçerken, bilgisayarın uyumlu bir işletim sistemi olduğundan emin olun ve aşağıdaki tabloda belirtilen sürümlerden birini kullandığından emin olun:
 
-|Linux İşletim Sistemi | Sürümler  |
+|Linux işletim sistemi | Sürümler  |
 | --------------- | ---- |
 | Ubuntu | 12,04 ve üzeri |
 | CentOS | 6,5 ve üzeri  |
@@ -213,11 +213,40 @@ Linux 'ta, dosyaları geri yüklemek için kullanılan bilgisayarın işletim si
 
 Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir şekilde yürütülmesi ve güvenli bir şekilde bağlanmasını gerektirir.
 
-|Bileşen | Version  |
+|Bileşen | Sürüm  |
 | --------------- | ---- |
 | Bash | 4 ve üzeri |
-| python | 2.6.6 ve üzeri  |
-| TLS | 1,2 desteklenmelidir  |
+| Python | 2.6.6 ve üzeri  |
+| IOCTL | 1,2 desteklenmelidir  |
+
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Büyük disklere sahip sanal makine yedeklemelerinden dosya kurtarma
+
+Bu bölümde, disk sayısı 16 > ve her disk boyutu > 4 TB olan Azure sanal makine yedeklemelerinden nasıl dosya kurtarmasının gerçekleştirileceği açıklanmaktadır.
+
+Dosya kurtarma işlemi, çok sayıda disk (> 16) veya büyük diskler (> 4TB) olması durumunda tüm diskleri yedekten iliştirdiğinden, aşağıdaki eylem noktaları önerilir.
+
+- Dosya kurtarma için ayrı bir geri yükleme sunucusunu (Azure VM D2v3 VM 'Ler) saklayın. Bu yalnızca dosya kurtarma 'yı kullanabilir ve gerekli olmadığında kapatılabilir. Özgün makineye geri yükleme, sanal makinenin kendisi üzerinde önemli bir etkiye sahip olacağı için önerilmez.
+- Sonra, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için betiği bir kez çalıştırın.
+- Dosya kurtarma işlemi askıda kalırsa (diskler hiçbir şekilde bağlanmamışsa veya bağlanmamışsa ancak birimler görünmezse), aşağıdaki adımları uygulayın.
+  - Geri yükleme sunucusu bir Windows sanal makinesi ise
+    - İşletim sisteminin WS 2012 + olduğundan emin olun.
+    - Kayıt defteri anahtarlarının geri yükleme sunucusunda aşağıda önerildiği şekilde ayarlandığından ve sunucuyu yeniden başlattığınızdan emin olun. GUID 'nin yanındaki sayı 0001-0005 aralığında değişebilir. Aşağıdaki örnekte, 0,0004 ' dir. Parametreler bölümüne kadar kayıt defteri anahtarı yolunda ilerleyin.
+
+    ![iscsi-reg-Key-Changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- Geri yükleme sunucusu bir Linux sanal makinesi ise
+  - /Etc/IDL/SCC \ dosya \ dosya & lt; 1} dosyasında, ayarı
+    - Node. Conn [0]. Timeo. noop_out_timeout = 5 ila Node. Conn [0]. Timeo. noop_out_timeout = 30
+- Aşağıdaki işlemi gerçekleştirdikten sonra betiği yeniden çalıştırın. Bu değişikliklerle dosya kurtarmanın başarılı olması oldukça yüksektir.
+- Kullanıcı bir betiği her indirdiğinde, Azure Backup kurtarma noktasını indirme işlemini hazırlama işlemini başlatır. Büyük diskler söz konusu olduğunda bu durum oldukça zaman alır. İsteklerin birbirini izleyen bir kopyası varsa, hedef hazırlık bir indirme içine gider. Bu nedenle, Portal/PowerShell/CLı 'dan bir betiği indirmeniz, 20-30 dakika boyunca (buluşsal bir değer) bekleyip çalıştırmanız önerilir. Bu süre içinde, hedefin betikten bağlantı için hazırlanma beklenmektedir.
+- Dosya kurtarmasından sonra, birimleri takabileceğiniz kurtarma noktaları için "diskleri çıkar" seçeneğine tıklayarak portala geri gitdiğinizden emin olun. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -225,13 +254,13 @@ Dosyaları sanal makinelerden kurtarırken sorunlarla karşılaşırsanız, daha
 
 | Hata Iletisi/senaryo | Olası neden | Önerilen eylem |
 | ------------------------ | -------------- | ------------------ |
-| Exe çıkışı: *Hedefe bağlanma özel durumu* |Betik, kurtarma noktasına erişemiyor    | Makinenin önceki erişim gereksinimlerini yerine getirip getirmediğini denetleyin. |  
-| Exe çıkışı: *Hedef, bir Iscsı oturumu aracılığıyla zaten oturum açtı.* | Betik aynı makinede zaten yürütüldü ve sürücüler eklendi | Kurtarma noktasının birimleri zaten eklenmiş. Özgün VM 'nin aynı sürücü harflerine bağlı olmayabilir. Dosya Gezgini 'nde dosyanız için kullanılabilir tüm birimlere göz at |
-| Exe çıkışı: *Diskler Portal üzerinden çıkartılırsa/12-hr sınırını aştığından bu betik geçersizdir. Portaldan yeni bir komut dosyası indirin.* |    Diskler portaldan çıkarıldı veya 12 saatlik limit aşıldı | Bu belirli bir exe artık geçersiz ve çalıştırılamaz. Bu kurtarma noktasının dosyalarına erişmek isterseniz, yeni bir exe için portalı ziyaret edin|
-| Exe 'nin çalıştırıldığı makinede: Yeni birimler çıkarma düğmesine tıklandıktan sonra çıkartılırsa | Makinedeki Iscsı Başlatıcısı yanıt vermiyor/hedefe yönelik bağlantısını yenilemedi ve önbelleğin saklanması. |  **Çıkarma**' ya tıkladıktan sonra birkaç dakika bekleyin. Yeni birimler çıkartılırsa, tüm birimlere göz atabilirsiniz. Tüm birimlere göz atmak başlatıcıyı bağlantıyı yenilemeye zorlar ve birim, diskin kullanılamadığı bir hata iletisiyle çıkarılır.|
-| Exe çıkışı: Betik başarıyla çalıştırıldı, ancak "eklenen yeni birimler" betik çıktısında görüntülenmiyor |    Bu geçici bir hatadır    | Birimler zaten eklenmiş durumda. Gezinmek için Explorer 'ı açın. Her seferinde betikleri çalıştırmak için aynı makineyi kullanıyorsanız, makineyi yeniden başlatmayı düşünün ve listenin sonraki exe çalıştırmaları içinde görüntülenmesi gerekir. |
-| Linux 'a özgü: İstenen birimler görüntüleyemeyebilir | Betiğin çalıştırıldığı makinenin işletim sistemi, korunan sanal makinenin temelindeki dosya sistemini tanımıyor olabilir | Kurtarma noktasının kilitlenmeyle tutarlı veya dosya tutarlılığı olduğunu denetleyin. Dosya tutarlı ise, işletim sistemi, korunan VM 'nin dosya sistemini algılayan başka bir makinede betiği çalıştırın |
-| Windows 'a özgü: İstenen birimler görüntüleyemeyebilir | Diskler eklenmiş olabilir, ancak birimler yapılandırılmadı | Disk Yönetimi ekranından, kurtarma noktasıyla ilgili ek diskleri tanımla. Bu disklerden herhangi biri çevrimdışı durumdaysa, diske sağ tıklayıp ' çevrimiçi ' seçeneğine tıklayarak bunları çevrimiçi yapmayı deneyin.|
+| Exe çıkışı: *hedefe bağlanma özel durumu* |Betik, kurtarma noktasına erişemiyor    | Makinenin önceki erişim gereksinimlerini yerine getirip getirmediğini denetleyin. |  
+| Exe çıkışı: *hedef, bir iSCSI oturumu aracılığıyla zaten oturum açtı.* | Betik aynı makinede zaten yürütüldü ve sürücüler eklendi | Kurtarma noktasının birimleri zaten eklenmiş. Özgün VM 'nin aynı sürücü harflerine bağlı olmayabilir. Dosya Gezgini 'nde dosyanız için kullanılabilir tüm birimlere göz at |
+| Exe çıkışı: *diskler Portal üzerinden çıkartılırsa/12-hr sınırını aştığından bu betik geçersizdir. Portaldan yeni bir komut dosyası indirin.* |    Diskler portaldan çıkarıldı veya 12 saatlik limit aşıldı | Bu belirli bir exe artık geçersiz ve çalıştırılamaz. Bu kurtarma noktasının dosyalarına erişmek isterseniz, yeni bir exe için portalı ziyaret edin|
+| Exe 'nin çalıştırıldığı makinede: çıkarma düğmesine tıklandıktan sonra yeni birimler çıkartılırsa | Makinedeki Iscsı Başlatıcısı yanıt vermiyor/hedefe yönelik bağlantısını yenilemedi ve önbelleğin saklanması. |  **Çıkarma**' ya tıkladıktan sonra birkaç dakika bekleyin. Yeni birimler çıkartılırsa, tüm birimlere göz atabilirsiniz. Tüm birimlere göz atmak başlatıcıyı bağlantıyı yenilemeye zorlar ve birim, diskin kullanılamadığı bir hata iletisiyle çıkarılır.|
+| Exe çıkışı: betik başarıyla çalıştırıldı, ancak "yeni birimler eklendi" betik çıktısında görüntülenmiyor |    Bu geçici bir hatadır    | Birimler zaten eklenmiş durumda. Gezinmek için Explorer 'ı açın. Her seferinde betikleri çalıştırmak için aynı makineyi kullanıyorsanız, makineyi yeniden başlatmayı düşünün ve listenin sonraki exe çalıştırmaları içinde görüntülenmesi gerekir. |
+| Linux 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Betiğin çalıştırıldığı makinenin işletim sistemi, korunan sanal makinenin temelindeki dosya sistemini tanımıyor olabilir | Kurtarma noktasının kilitlenmeyle tutarlı veya dosya tutarlılığı olduğunu denetleyin. Dosya tutarlı ise, işletim sistemi, korunan VM 'nin dosya sistemini algılayan başka bir makinede betiği çalıştırın |
+| Windows 'a özgü: istenen birimleri görüntüleyemeyebilirsiniz | Diskler eklenmiş olabilir, ancak birimler yapılandırılmadı | Disk Yönetimi ekranından, kurtarma noktasıyla ilgili ek diskleri tanımla. Bu disklerden herhangi biri çevrimdışı durumdaysa, diske sağ tıklayıp ' çevrimiçi ' seçeneğine tıklayarak bunları çevrimiçi yapmayı deneyin.|
 
 ## <a name="security"></a>Güvenlik
 

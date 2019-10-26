@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828605"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896946"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 'Ler için depolama yapılandırması
 
@@ -28,7 +28,7 @@ Bu konu, Azure 'un sağlama ve mevcut VM 'Ler için SQL Server sanal makinelerin
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz aşağıdaki özellikleri gerektirir:
 
@@ -40,7 +40,7 @@ Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz a
 
 Aşağıdaki bölümlerde, yeni SQL Server sanal makineler için depolamanın nasıl yapılandırılacağı açıklanır.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 SQL Server Galeri görüntüsü kullanarak bir Azure VM sağlarken, **SQL Server ayarları** sekmesinde **yapılandırmayı Değiştir** ' i seçerek performans için iyileştirilmiş depolama yapılandırması sayfasını açın. Değerleri varsayılan olarak bırakabilir ya da iş yükünüze göre gereksinimlerinize en uygun disk yapılandırma türünü değiştirebilirsiniz. 
 
@@ -83,7 +83,7 @@ Aşağıdaki Kaynak Yöneticisi şablonlarını kullanıyorsanız, varsayılan o
 * [Otomatik düzeltme eki uygulama ile VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [AKV tümleştirmesi ile VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
-### <a name="quickstart-template"></a>Hızlı başlangıç şablonu
+### <a name="quickstart-template"></a>Hızlı Başlangıç şablonu
 
 Depolama iyileştirmesi kullanarak bir SQL Server VM dağıtmak için aşağıdaki hızlı başlangıç şablonunu kullanabilirsiniz. 
 
@@ -128,25 +128,22 @@ Azure, SQL Server VM 'lerde depolama havuzu oluşturmak için aşağıdaki ayarl
 | --- | --- |
 | Şerit boyutu |256 KB (veri ambarı); 64 KB (Işlem) |
 | Disk boyutları |1 TB her |
-| Önbellek |Oku |
+| Önbellek |Okuma |
 | Ayırma boyutu |64 KB NTFS ayırma birimi boyutu |
-| Anlık dosya başlatma |Etkin |
-| Bellekteki sayfaları kilitleme |Etkin |
-| Kurtarma |Basit kurtarma (dayanıklılık yok) |
-| Sütun sayısı |Veri diski sayısı<sup>1</sup> |
-| TempDB konumu |Veri disklerinde depolandı<sup>2</sup> |
+| Kurtarma | Basit kurtarma (dayanıklılık yok) |
+| Sütun sayısı |8<sup>1</sup> adede kadar veri diski sayısı |
+
 
 <sup>1</sup> depolama havuzu oluşturulduktan sonra, depolama havuzundaki sütun sayısını değiştiremezsiniz.
 
-<sup>2</sup> Bu ayar yalnızca depolama yapılandırma özelliğini kullanarak oluşturduğunuz ilk sürücü için geçerlidir.
 
 ## <a name="workload-optimization-settings"></a>İş yükü iyileştirme ayarları
 
 Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunların karşılık gelen iyileştirmeleri açıklanmaktadır:
 
-| İş yükü türü | Açıklama | İyileştirmeleri |
+| İş yükü türü | Açıklama | İyileştirmeler |
 | --- | --- | --- |
-| **Genel** |Çoğu iş yüklerini destekleyen varsayılan ayar |Yok. |
+| **Genel** |Çoğu iş yüklerini destekleyen varsayılan ayar |Hiçbiri |
 | **İşlemsel işleme** |Geleneksel veritabanı OLTP iş yükleri için depolamayı iyileştirir |İzleme bayrağı 1117<br/>İzleme bayrağı 1118 |
 | **Veri depolama** |Analitik ve raporlama iş yükleri için depolamayı iyileştirir |İzleme bayrağı 610<br/>İzleme bayrağı 1117 |
 

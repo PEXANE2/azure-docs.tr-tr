@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 37e833e5ba2fcbc9fcfe0a27d5b607a5c6cdd55b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39abe054869bf68a254b9305a680ecc892359300
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079525"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898879"
 ---
 # <a name="download-the-template-for-a-vm"></a>VM için şablon indirme
 Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin için otomatik olarak bir Kaynak Yöneticisi şablonu oluşturulur. Bu şablonu, bir dağıtımı hızlı bir şekilde yinelemek için kullanabilirsiniz. Şablon, bir kaynak grubundaki tüm kaynaklarla ilgili bilgiler içerir. Bu, bir sanal makine için, şablonda ağ kaynakları dahil olmak üzere o kaynak grubundaki VM 'nin desteğiyle oluşturulan her şeyi içerdiği anlamına gelir.
@@ -32,17 +32,13 @@ Portal veya PowerShell kullanarak Azure 'da bir VM oluşturduğunuzda, sizin iç
 5. Üstteki menüden **İndir** ' i seçin ve. zip dosyasını yerel bilgisayarınıza kaydedin.
 6. . Zip dosyasını açın ve dosyaları bir klasöre ayıklayın. . Zip dosyası şunları içerir:
    
-   * Deploy. ps1
-   * deploy.sh 
-   * Deployer. RB
-   * DeploymentHelper.cs
    * Parameters. JSON
    * Template. JSON
 
 Template. JSON dosyası şablondur.
 
 ## <a name="download-the-template-using-powershell"></a>PowerShell kullanarak şablonu indirme
-. JSON şablon dosyasını [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) cmdlet 'ini kullanarak da indirebilirsiniz. . Json dosyasının dosya `-path` adını ve yolunu sağlamak için parametresini kullanabilirsiniz. Bu örnek, **Myresourcegroup** adlı kaynak grubunun şablonunun yerel bilgisayarınızdaki **c:\users\public\downloads** klasörüne nasıl indirileceği gösterilmektedir.
+. JSON şablon dosyasını [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) cmdlet 'ini kullanarak da indirebilirsiniz. . Json dosyasının dosya adını ve yolunu sağlamak için `-path` parametresini kullanabilirsiniz. Bu örnek, **Myresourcegroup** adlı kaynak grubunun şablonunun yerel bilgisayarınızdaki **c:\users\public\downloads** klasörüne nasıl indirileceği gösterilmektedir.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"

@@ -1,23 +1,18 @@
 ---
-title: 'Azure Application Insights Agent API başvurusu: izlemeyi etkinleştir | Microsoft Docs'
+title: Azure Application Insights Aracısı API başvurusu
 description: Aracı API başvurusunu Application Insights. Enable-ApplicationInsightsMonitoring. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 2a310a83677bffc8843fdb8979ec272f197a8a39
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389884"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899702"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights aracı API 'SI: Enable-ApplicationInsightsMonitoring
 
@@ -77,7 +72,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-Instrumentationkeymap
 **Gerekli.** Birden çok izleme anahtarı ve her bir uygulama tarafından kullanılan izleme anahtarlarının bir eşlemesini sağlamak için bu parametreyi kullanın.
-@No__t-0 ' i ayarlayarak, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
+`MachineFilter`ayarlayarak, birkaç bilgisayar için tek bir yükleme betiği oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Uygulamalar kuralların sağlandığı sırada kurallarla eşleştirecektir. Bu nedenle, önce en özel kuralları ve en son genel kuralları belirtmeniz gerekir.

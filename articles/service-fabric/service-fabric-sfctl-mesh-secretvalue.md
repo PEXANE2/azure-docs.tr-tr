@@ -3,22 +3,23 @@ title: Azure Service Fabric CLı-sfctl ağ secretvalue | Microsoft Docs
 description: Service Fabric CLı sfctl ağ secretvalue komutlarını açıklar.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035935"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901186"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 Ağ secretvalue kaynaklarını alın ve silin.
@@ -27,9 +28,9 @@ Ağ secretvalue kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| sil | Adlandırılmış gizli kaynağın belirtilen değerini siler. |
+| delete | Adlandırılmış gizli kaynağın belirtilen değerini siler. |
 | list | Belirtilen gizli kaynağın tüm değerlerinin adlarını listeleyin. |
-| göster | Gizli bir kaynağın belirtilen sürümünün değerini alır. |
+| göster | Gizli kaynağın belirtilen değerini listeler. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl ağ secretvalue Delete
 Adlandırılmış gizli kaynağın belirtilen değerini siler.
@@ -49,8 +50,8 @@ Ad tarafından tanımlanan gizli değer kaynağını siler. Kaynağın adı gene
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-mesh-secretvalue-list"></a>sfctl ağ secretvalue listesi
@@ -70,12 +71,12 @@ Belirtilen gizli kaynağın tüm gizli değer kaynakları hakkında bilgi alır.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl ağı secretvalue Show
-Gizli bir kaynağın belirtilen sürümünün değerini alır.
+Gizli kaynağın belirtilen değerini listeler.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
@@ -91,8 +92,8 @@ Gizli bir kaynağın belirtilen sürümünün değerini alır.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 

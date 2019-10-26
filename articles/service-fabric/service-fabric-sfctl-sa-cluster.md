@@ -3,22 +3,23 @@ title: Azure Service Fabric CLı-sfctl sa-Cluster | Microsoft Docs
 description: CLı sfctl bağımsız kümesi komutlarını Service Fabric açıklar.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 902ebab5dc12d7649edd0ed6e594e663e5332ce3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: ecdd288d7cb320b91ab4c69697d334f8d9459e62
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035239"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901010"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Tek başına Service Fabric kümelerini yönetin.
@@ -29,7 +30,7 @@ Tek başına Service Fabric kümelerini yönetin.
 | --- | --- |
 | kurulumunun | Tek başına Service Fabric küme yapılandırmasını alın. |
 | yapılandırma-yükseltme | Tek başına Service Fabric küme yapılandırmasını yükseltmeye başlayın. |
-| upgrade-status | Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumunu alın. |
+| yükseltme-durum | Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumunu alın. |
 
 ## <a name="sfctl-sa-cluster-config"></a>sfctl sa-küme yapılandırması
 Tek başına Service Fabric küme yapılandırmasını alın.
@@ -41,7 +42,7 @@ Küme yapılandırması küme üzerinde farklı düğüm türlerini, güvenlik y
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Configuration-api-Version [gerekli] | Tek başına küme JSON yapılandırmasının API sürümü. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -49,8 +50,8 @@ Küme yapılandırması küme üzerinde farklı düğüm türlerini, güvenlik y
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-sa-cluster-config-upgrade"></a>sfctl sa-küme yapılandırması-yükseltme
@@ -68,7 +69,7 @@ Sağlanan yapılandırma yükseltme parametrelerini doğrulayın ve parametreler
 | --sistem durumu-denetimi-yeniden dene | Uygulama veya küme sağlıklı değilse sistem durumu denetimleri gerçekleştirme denemeleri arasındaki süre uzunluğu.  Varsayılan\: PT0H0M0S. |
 | --Sistem Durumu-Çek-kararlı | Yükseltme bir sonraki yükseltme etki alanına geçmeden önce uygulamanın veya kümenin sağlıklı kalması gereken süre.  Varsayılan\: PT0H0M0S. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
 | --Sistem Durumu-Çek-bekle | Durum denetimleri işlemini başlatmadan önce bir yükseltme etki alanını tamamladıktan sonra beklenecek sürenin uzunluğu.  Varsayılan\: PT0H0M0S. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | Varsayılan\: 60. |
 | --sağlıksız-uygulamalar | Yükseltme sırasında, sağlıksız uygulamaların izin verilen en büyük yüzdesi. İzin verilen değerler 0 ile 100 arasında bir tamsayı değerlerdir. |
 | --sağlıksız-düğümler | Yükseltme sırasında, sağlıksız düğümlerin izin verilen en büyük yüzdesi. İzin verilen değerler 0 ile 100 arasında bir tamsayı değerlerdir. |
 | --Upgrade-Domain-Delta-sağlıksız-Nodes | Yükseltme sırasında etki alanı Delta durumu düşüşünün izin verilen maksimum yüzdesi. İzin verilen değerler 0 ile 100 arasında bir tamsayı değerlerdir. |
@@ -81,17 +82,16 @@ Sağlanan yapılandırma yükseltme parametrelerini doğrulayın ve parametreler
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ### <a name="examples"></a>Örnekler
 
 Bir küme yapılandırma güncelleştirmesi Başlat
-
-```
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+``` 
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-küme yükseltme-durum
@@ -103,7 +103,7 @@ Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumu
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -111,8 +111,8 @@ Service Fabric tek başına kümesinin küme yapılandırması yükseltme durumu
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 

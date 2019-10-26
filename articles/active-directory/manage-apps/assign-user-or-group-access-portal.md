@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15f7e830079c224e9e15dd45d14c1741376f8762
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851708"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896464"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulamaya Kullanıcı veya Grup atama
 
-Bir kullanıcı veya grubu kurumsal bir uygulamaya atamak için, kurumsal uygulamayı yönetmek için uygun izinlere sahip olmanız ve dizin için genel yönetici olmanız gerekir. Microsoft uygulamaları (örneğin, Office 365 uygulamaları) için, PowerShell kullanarak kullanıcıları Kurumsal bir uygulamaya atayın.
+Bir kullanıcı veya grubu kurumsal bir uygulamaya atamak için şu yönetici rollerinden herhangi birini atamış olmanız gerekir: genel yönetici, uygulama Yöneticisi, bulut uygulama Yöneticisi veya kurumsal uygulamanın sahibi olarak atanmış.  Microsoft uygulamaları (örneğin, Office 365 uygulamaları) için, PowerShell kullanarak kullanıcıları Kurumsal bir uygulamaya atayın.
 
 > [!NOTE]
 > Bu makalede ele alınan özelliklerle ilgili lisans gereksinimleri için [Azure Active Directory fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/active-directory)bakın.
@@ -65,9 +65,9 @@ Bir kullanıcı veya grubu kurumsal bir uygulamaya atamak için, kurumsal uygula
 1. Yükseltilmiş bir Windows PowerShell komut istemi açın.
 
    > [!NOTE]
-   > AzureAD modülünü yüklemeniz gerekir (komutunu `Install-Module -Name AzureAD`kullanın). NuGet modülünü veya yeni Azure Active Directory v2 PowerShell modülünü yüklemek isteyip istemediğiniz sorulursa, Y yazın ve ENTER tuşuna basın.
+   > AzureAD modülünü yüklemeniz gerekir (`Install-Module -Name AzureAD`komutunu kullanın). NuGet modülünü veya yeni Azure Active Directory v2 PowerShell modülünü yüklemek isteyip istemediğiniz sorulursa, Y yazın ve ENTER tuşuna basın.
 
-1. ' `Connect-AzureAD` İ çalıştırın ve bir genel yönetici kullanıcı hesabıyla oturum açın.
+1. `Connect-AzureAD` çalıştırın ve bir genel yönetici kullanıcı hesabıyla oturum açın.
 1. Bir uygulamaya Kullanıcı ve rol atamak için aşağıdaki betiği kullanın:
 
     ```powershell
@@ -87,7 +87,7 @@ Bir kullanıcı veya grubu kurumsal bir uygulamaya atamak için, kurumsal uygula
 
 Bir kullanıcıyı bir uygulama rolüne atama hakkında daha fazla bilgi için, [New-Azureaduserapprotaatama](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) belgelerini ziyaret edin
 
-Bir kurumsal uygulamaya bir grup atamak için ile `Get-AzureADUser` `Get-AzureADGroup`değiştirmeniz gerekir.
+Bir kurumsal uygulamaya bir grup atamak için `Get-AzureADUser` `Get-AzureADGroup`ile değiştirmeniz gerekir.
 
 ### <a name="example"></a>Örnek
 
@@ -109,7 +109,7 @@ Bu örnek, PowerShell kullanarak [Microsoft çalışma alanı analizi](https://p
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Çalışma alanı analizi `$sp.AppRoles` uygulaması için kullanılabilen rolleri göstermek için komutunu çalıştırın. Bu örnekte, çözümleyici (sınırlı erişim) rolüne Britta Simı atamak istiyoruz.
+1. Çalışma alanı analizi uygulamasının kullanabileceği rolleri göstermek için `$sp.AppRoles` komutunu çalıştırın. Bu örnekte, çözümleyici (sınırlı erişim) rolüne Britta Simı atamak istiyoruz.
 
    ![Çalışma alanı analizi rolü kullanan bir kullanıcının kullanabileceği rolleri gösterir](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 

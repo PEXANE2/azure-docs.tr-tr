@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 15ff84bf8a194c6172864601e3aefe78f9cc13a3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 51a6721c8bbac86e9c96ee392de3199b0456860f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140593"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901352"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Bir kaynak veri deposundan hedef veri deposuna artımlı olarak veri yükleme
 
@@ -54,7 +54,7 @@ Adım adım yönergeler için şu öğreticilere bakın: <br/>
 - [Yeni dosyaları LastModifiedDate göre Kopyala](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Yeni dosyalar yalnızca bölümlenmiş klasör veya dosya adı kullanılarak yükleniyor.
-Dosya veya klasör adının (örneğin,/yyyy/mm/dd/File.exe) bir parçası olarak timeslice bilgileriyle bölümlenen dosya veya klasörleri yalnızca yeni dosyaları kopyalayabilirsiniz. Yeni dosyalar artımlı yükleme için en çok performans yaklaşımıdır. 
+Dosya veya klasör adının (örneğin,/yyyy/mm/dd/File.exe) bir parçası olarak timeslice bilgileriyle bölümlenen dosya veya klasörleri yalnızca yeni dosyaları kopyalayabilirsiniz. Yeni dosyaları artımlı olarak yüklemek için en iyi performansa yaklaşımlar. 
 
 Adım adım yönergeler için şu öğreticilere bakın: <br/>
 - [Azure Blob depolama 'dan Azure Blob depolama alanı 'na bölümlenmiş bir klasöre veya dosya adına göre yeni dosyaları artımlı olarak kopyalama](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

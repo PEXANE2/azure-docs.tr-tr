@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143667"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901618"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum SSS
+# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
 Bu makalede, sık sorulan sorular yanıtlanacaktır ve Windows 10 Kurumsal Çoklu oturum için en iyi yöntemler ele alınacaktır.
  
@@ -28,7 +28,7 @@ Aynı anda etkin olabilecek kaç etkileşimli oturum, sisteminizin donanım kayn
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Uygulamamın neden Windows 10 Kurumsal Çoklu oturumunu sunucu işletim sistemi olarak raporlıyor?
 
-Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise 'ın sanal bir sürümüdür. Farklardan biri, bu işletim sisteminin (OS) [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) 'ı 2 değerine sahip olacak şekilde, Windows Server ile aynı değere raporlarlarıdır. Bu özellik, işletim sisteminin mevcut RDSH yönetimi araçları, RDSH çoklu oturum kullanan uygulamalar ve en düşük düzeyde sistem performansı iyileştirmeleri olan RDSH ortamları ile uyumlu kalmasını önler. Bazı uygulama yükleyicileri, ProductType 'ın Istemci olarak ayarlandığını algılamadığına bağlı olarak Windows 10 çoklu oturumunda yüklemeyi engelleyebilir. Uygulamanız yüklenemezse, güncelleştirilmiş bir sürüm için uygulama satıcınıza başvurun. 
+Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise 'ın sanal bir sürümüdür. Farklardan biri, bu işletim sisteminin (OS) [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) 'ı, Windows Server ile aynı değeri 3 değerine sahip olarak raporlarıdır. Bu özellik, işletim sisteminin mevcut RDSH yönetimi araçları, RDSH çoklu oturum kullanan uygulamalar ve en düşük düzeyde sistem performansı iyileştirmeleri olan RDSH ortamları ile uyumlu kalmasını önler. Bazı uygulama yükleyicileri, ProductType 'ın Istemci olarak ayarlandığını algılamadığına bağlı olarak Windows 10 çoklu oturumunda yüklemeyi engelleyebilir. Uygulamanız yüklenemezse, güncelleştirilmiş bir sürüm için uygulama satıcınıza başvurun. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Windows 10 Enterprise çoklu oturum 'nı şirket içi çalıştırabilir miyim?
 
@@ -77,5 +77,5 @@ Geçerli lisansların tam listesi için bkz. [Windows sanal masaüstü fiyatland
 Windows sanal masaüstü ve Windows 10 Enterprise çoklu oturum hakkında daha fazla bilgi edinmek için:
 
 - [Windows sanal masaüstü önizleme belgelerimizi](overview.md) okuyun
-- [Windows sanal masaüstü teknik](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) topluluğumuzu ziyaret edin
+- [Windows sanal masaüstü teknik topluluğumuzu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) ziyaret edin
 - Windows sanal masaüstü [öğreticileri](tenant-setup-azure-active-directory.md) ile Windows sanal masaüstü dağıtımınızı ayarlama

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285776"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901452"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
@@ -42,7 +42,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
 5. CloudSimple portalında, özel bulutunuz için bir ad sağlayın.
 6. Özel bulutunuzun **konumunu** seçin.
-7. Azure 'da satın aldığınız verilerle tutarlı olan **düğüm türünü**seçin.
+7. Azure 'da sağladığınız verilerle tutarlı bir **düğüm türü**seçin.
 8. **Düğüm sayısını**belirtin.  Özel bir bulut oluşturmak için en az üç düğüm gerekir.
 
     ![Özel bulut oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)

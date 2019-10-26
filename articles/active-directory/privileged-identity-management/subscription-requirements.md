@@ -1,5 +1,5 @@
 ---
-title: PıM-Azure Active Directory kullanmak için lisans gereksinimleri | Microsoft Docs
+title: Privileged Identity Management kullanılacak lisans gereksinimleri-Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) kullanmak için lisans gereksinimlerini açıklar.
 services: active-directory
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/16/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c31c2731a8e872dfd2750fced8b91d283d0892
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: e6e336ec40ba2b9f6d3018e6a4f5b2ac721077aa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804064"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895109"
 ---
-# <a name="license-requirements-to-use-pim"></a>PıM 'yi kullanmak için lisans gereksinimleri
+# <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management kullanılacak lisans gereksinimleri
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanmak için, bir dizinin geçerli bir lisansı olması gerekir. Ayrıca, lisansların Yöneticiler ve ilgili kullanıcılara atanması gerekir. Bu makalede, PıM 'yi kullanmak için lisans gereksinimleri açıklanmaktadır.
+Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanmak için, bir dizinin geçerli bir lisansı olması gerekir. Ayrıca, lisansların Yöneticiler ve ilgili kullanıcılara atanması gerekir. Bu makalede Privileged Identity Management kullanmak için lisans gereksinimleri açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-PıM 'yi kullanmak için dizininiz aşağıdaki ücretli veya deneme lisanslarından birine sahip olmalıdır:
+Privileged Identity Management kullanmak için, dizininiz aşağıdaki ücretli veya deneme lisanslarından birine sahip olmalıdır:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
@@ -40,7 +40,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory nedir?](../fundamentals/acti
 
 ## <a name="which-users-must-have-licenses"></a>Hangi kullanıcıların Lisansı olmalıdır?
 
-PıM 'den faydalanabilir veya bu avantajlardan yararlanan her yönetici veya Kullanıcı bir lisansa sahip olmalıdır. Örneklere şunlar dahildir:
+Privileged Identity Management avantajlarından sorumlu olan veya bir avantajdan yararlanan her yönetici veya Kullanıcı bir lisansa sahip olmalıdır. Örneğin:
 
 - Azure AD rollerine yönelik PıM kullanılarak yönetilen Yöneticiler
 - Azure Kaynak rolleri ile PıM kullanılarak yönetilen Yöneticiler
@@ -55,16 +55,16 @@ Kullanım için lisansları atama hakkında daha fazla bilgi için, bkz. [Azure 
 
 ## <a name="what-happens-when-a-license-expires"></a>Lisansın süresi dolarsa ne olur?
 
-Bir Azure AD Premium P2, EMS E5 veya deneme lisansının süresi dolarsa, artık dizininizde PıM özellikleri kullanılamaz:
+Bir Azure AD Premium P2, EMS E5 veya deneme lisansının süresi dolarsa Privileged Identity Management özellikler artık dizininizde kullanılamaz:
 
 - Azure AD rollerine yönelik kalıcı rol atamaları bundan etkilenmeyecektir.
-- Azure portal Graph API cmdlet 'leri ve PıM 'nin PowerShell arabirimleri, kullanıcıların ayrıcalıklı rolleri etkinleştirmesine, ayrıcalıklı erişimi yönetmesine veya ayrıcalıklı rollere yönelik erişim gözden geçirmeleri gerçekleştirmesine izin vermez.
+- Azure portal Privileged Identity Management hizmetinin yanı sıra Privileged Identity Management Graph API cmdlet 'leri ve PowerShell arabirimleri artık kullanıcıların ayrıcalıklı rolleri etkinleştirmesine, ayrıcalıklı erişimi yönetmesine veya gerçekleştirmesine izin vermez ayrıcalıklı rollerin erişim gözden geçirmeleri.
 - Azure AD rollerinin uygun rol atamaları kaldırılacak, çünkü kullanıcılar artık ayrıcalıklı rolleri etkinleştiremeyecektir.
-- Azure AD rollerinin devam eden tüm erişim İncelemeleri sona acaktır ve PıM yapılandırma ayarları kaldırılır.
-- PıM, rol atama değişikliklerinde artık e-posta göndermeyecektir.
+- Azure AD rollerinin devam eden tüm erişim İncelemeleri sona acaktır ve Privileged Identity Management yapılandırma ayarları kaldırılır.
+- Privileged Identity Management, artık rol atama değişikliklerinde e-posta göndermeyecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PıM dağıtma](pim-deployment-plan.md)
-- [PIM kullanmaya başlama](pim-getting-started.md)
-- [PıM 'de yöneteceğiniz roller](pim-roles.md)
+- [Privileged Identity Management dağıt](pim-deployment-plan.md)
+- [Privileged Identity Management kullanmaya başlayın](pim-getting-started.md)
+- [Privileged Identity Management içinde yönetemezsiniz roller](pim-roles.md)

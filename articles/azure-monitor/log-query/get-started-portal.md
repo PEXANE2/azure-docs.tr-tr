@@ -1,19 +1,18 @@
 ---
 title: Azure Izleyici 'yi kullanmaya başlama Log Analytics | Microsoft Docs
 description: Bu makalede, sorguları yazmak için Azure portal Log Analytics kullanmaya yönelik bir öğretici sunulmaktadır.
-services: log-analytics
-author: bwren
-manager: carmonm
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 07/19/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 07/19/2019
+ms.openlocfilehash: 1babd0828e21f0125dba55199d808a579a10f049
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076817"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900360"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics kullanmaya başlama
 
@@ -41,11 +40,11 @@ Log Analytics, Azure Izleyici günlük sorgularını yazmak ve yürütmek için 
 ## <a name="firewall-requirements"></a>Güvenlik duvarı gereksinimleri
 Log Analytics kullanmak için tarayıcınızda aşağıdaki adreslere erişim gerekir. Tarayıcınız bir güvenlik duvarı üzerinden Azure portal erişiyorsa, bu adreslere erişimi etkinleştirmeniz gerekir.
 
-| Uri | IP | Bağlantı Noktaları |
+| Kullanılmamışsa | IP | Bağlantı Noktaları |
 |:---|:---|:---|
-| portal.loganalytics.io | Dinamik | 80,443 |
-| api.loganalytics.io | Dinamik | 80,443 |
-| docs.loganalytics.io | Dinamik | 80,443 |
+| portal.loganalytics.io | Dinamik | 80.443 |
+| api.loganalytics.io | Dinamik | 80.443 |
+| docs.loganalytics.io | Dinamik | 80.443 |
 
 ## <a name="basic-queries"></a>Temel sorgular
 Sorgular terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve verilerinize göre birçok diğer öngörü sağlamak için kullanılabilir. Temel bir sorgu ile başlayın:
@@ -69,8 +68,8 @@ Bu örnekte, arama _olay_ tablosuna kapsamlıdır ve bu tablodaki tüm kayıtlar
 ## <a name="running-a-query"></a>Sorgu çalıştırma
 **Çalıştır** düğmesine tıklayarak veya **SHIFT + enter**tuşlarına basarak bir sorgu çalıştırın. Çalıştırılacak kodu ve döndürülen verileri belirleyen aşağıdaki ayrıntıları göz önünde bulundurun:
 
-- Satır sonları: Tek bir kesme, sorgunuzu okumayı daha kolay hale getirir. Birden çok satır sonu, ayrı sorgulara bölünür.
-- Oraya İmlecinizi yürütmek için imlecinizi bir yere yerleştirin. Geçerli sorgu boş bir satır bulunana kadar kod olarak kabul edilir.
+- Satır sonları: tek bir kesme, sorgunuzu okumayı daha kolay hale getirir. Birden çok satır sonu, ayrı sorgulara bölünür.
+- İmleç: imlecinizi yürütmek için imleci sorgunun içine yerleştirin. Geçerli sorgu boş bir satır bulunana kadar kod olarak kabul edilir.
 - Zaman aralığı- _son 24 saatin_ zaman aralığı varsayılan olarak ayarlanır. Farklı bir Aralık kullanmak için, zaman seçiciyi kullanın veya sorgunuza açık bir zaman aralığı filtresi ekleyin.
 
 
@@ -90,8 +89,8 @@ Event
 
 Log Analytics otomatik olarak kapsam sonuçları:
 
-- Zaman aralığı:  Varsayılan olarak, sorgular son 24 saat ile sınırlandırılmıştır.
-- Sonuç Sayısı: Sonuçlar maksimum 10.000 kayıtla sınırlıdır.
+- Zaman aralığı: varsayılan olarak, sorgular son 24 saat ile sınırlıdır.
+- Sonuç Sayısı: sonuçlar maksimum 10.000 kayıtla sınırlıdır.
 
 Bu sorgu çok genel ve yararlı olacak çok fazla sonuç döndürüyor. Sonuçları Tablo öğelerinden ya da sorguya açıkça bir filtre ekleyerek filtreleyebilirsiniz. Tablo öğeleri aracılığıyla sonuçları filtreleme, mevcut sonuç kümesi için geçerlidir, ancak sorgunun bir filtresi yeni bir filtrelenmiş sonuç kümesi döndürür ve bu nedenle daha doğru sonuçlar üretebilir.
 
@@ -107,7 +106,7 @@ Görüntülenecek "+" ve "-" simgelerinin sütun adının üstüne gelin. Yalnı
 
 Sütun başlığının yanındaki filtre simgesine tıklayın ve açılır pencerede metin _hatasıyla_ _başlayan_ değerleri seçin:
 
-![Filtre](media/get-started-portal/filter.png)
+![Filtrele](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Sonuçları Sırala ve Gruplandır
@@ -122,7 +121,7 @@ Sonuçları düzenlemenin başka bir yolu da gruplara göre yapılır. Sonuçlar
 ## <a name="select-columns-to-display"></a>Görüntülenecek sütunları seçin
 Sonuçlar tablosu genellikle çok sayıda sütun içerir. Döndürülen sütunlardan bazılarının varsayılan olarak görüntülenmediğini ya da görüntülenen bazı sütunları kaldırmak istediğinizi görebilirsiniz. Gösterilecek sütunları seçmek için sütunlar düğmesine tıklayın:
 
-![Sütun seçme](media/get-started-portal/select-columns.png)
+![Sütun seçin](media/get-started-portal/select-columns.png)
 
 
 ## <a name="select-a-time-range"></a>Bir zaman aralığı seçin
@@ -135,7 +134,7 @@ Varsayılan olarak, Log Analytics _son 24 saatlik_ zaman aralığını uygular. 
 Sorgu, _TimeGenerated_için açıkça bir filtre içeriyorsa, saat seçici başlığı _sorgu olarak ayarlanır_. Çakışmayı engellemek için el ile seçim devre dışı bırakılacak.
 
 
-## <a name="charts"></a>Grafikler
+## <a name="charts"></a>grafik
 Sonuçları bir tabloya döndürmenin yanı sıra, sorgu sonuçları görsel biçimlerde sunulabilir. Örnek olarak aşağıdaki sorguyu kullanın:
 
 ```Kusto
@@ -147,11 +146,11 @@ Event
 
 Varsayılan olarak, sonuçlar bir tabloda görüntülenir. Sonuçları bir grafik görünümünde görmek için _grafik_ ' e tıklayın:
 
-![Çubuk grafiği](media/get-started-portal/bar-chart.png)
+![Çubuk grafik](media/get-started-portal/bar-chart.png)
 
 Sonuçlar yığılmış çubuk grafiğinde gösterilir. _Yığılmış sütun_ ' a tıklayın ve sonuçların başka bir görünümünü göstermek için _pasta_ ' ı seçin:
 
-![Pasta grafiği](media/get-started-portal/pie-chart.png)
+![Pasta grafik](media/get-started-portal/pie-chart.png)
 
 Görünümün x ve y eksenleri gibi farklı özellikleri veya gruplama ve bölme tercihleri, denetim çubuğundan el ile değiştirilebilir.
 
@@ -169,9 +168,9 @@ Bir diyagramı veya tabloyu paylaşılan Azure Panolarınızın birine sabitleme
 
 Belirli basitleştirmeleri bir panoya sabitlemeyi yaptığınızda bir grafiğe uygulanır:
 
-- Tablo sütunları ve satırları: Bir tabloyu panoya sabitlemek için dört veya daha az sütunu olmalıdır. Yalnızca ilk yedi satır görüntülenir.
-- Saat kısıtlaması: Sorgular, son 14 güne göre otomatik olarak sınırlandırılır.
-- Bin sayısı kısıtlaması: Çok sayıda farklı bölme içeren bir grafik görüyorsanız, daha az doldurulmuş depo gözleri otomatik olarak tek bir _diğer_ bin olarak gruplandırılır.
+- Tablo sütunları ve satırları: bir tabloyu panoya sabitlemek için dört veya daha az sütunu olmalıdır. Yalnızca ilk yedi satır görüntülenir.
+- Zaman kısıtlaması: sorgular son 14 güne göre otomatik olarak sınırlandırılır.
+- Bin sayısı kısıtlaması: çok sayıda farklı bölme içeren bir grafik görüntülediğinizde, daha az doldurulmuş depo gözleri otomatik olarak tek bir _diğer_ bin içine gruplandırılır.
 
 ## <a name="save-queries"></a>Sorguları Kaydet
 Faydalı bir sorgu oluşturduktan sonra, bunu kaydetmek veya başkalarıyla paylaşmak isteyebilirsiniz. **Kaydet** simgesi üst çubukta bulunur.
@@ -181,21 +180,21 @@ Sorgu sayfasının tamamını ya da tek bir sorguyu işlev olarak kaydedebilirsi
 ![İşlevi Kaydet](media/get-started-portal/save-function.png)
 
 >[!NOTE]
->Kaydedilen sorgu kaydedilirken veya düzenlenirken, `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` **ad** alanında aşağıdaki karakterler desteklenir.
+>Aşağıdaki karakterler desteklenir-kaydedilen sorguyu kaydederken veya düzenlenirken **ad** alanında `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |`.
 
 Log Analytics sorguları her zaman seçili bir çalışma alanına kaydedilir ve bu çalışma alanının diğer kullanıcılarıyla paylaşılır.
 
 ## <a name="load-queries"></a>Sorguları yükle
 Sorgu Gezgini simgesi sağ üst alandır. Bu, tüm kaydedilmiş sorguları kategoriye göre listeler. Ayrıca, belirli sorguları gelecekte hızlı bir şekilde bulmak için sık kullanılanlar olarak işaretlemenize de olanak sağlar. Kayıtlı bir sorguyu geçerli pencereye eklemek için çift tıklayın.
 
-![Sorgu gezgini](media/get-started-portal/query-explorer.png)
+![Sorgu Gezgini](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Dışarı ve farklı paylaşma bağlantısı
 Log Analytics birkaç dışarı aktarma yöntemini destekler:
 
-- Excel Sonuçları bir CSV dosyası olarak kaydedin.
-- Power BI: Sonuçları Power BI dışarı aktarın. Ayrıntılar için bkz. [Azure izleyici günlük verilerini Içeri aktarma Power BI](../../azure-monitor/platform/powerbi.md) .
-- Bağlantı paylaşma: Sorgunun kendisi, aynı çalışma alanına erişimi olan diğer kullanıcılar tarafından gönderilebilen ve çalıştırılabilen bir bağlantı olarak paylaşılabilir.
+- Excel: sonuçları bir CSV dosyası olarak kaydedin.
+- Power BI: sonuçları Power BI dışarı aktarın. Ayrıntılar için bkz. [Azure izleyici günlük verilerini Içeri aktarma Power BI](../../azure-monitor/platform/powerbi.md) .
+- Bağlantı paylaşma: sorgunun kendisi, aynı çalışma alanına erişimi olan diğer kullanıcılar tarafından gönderilebileceği ve çalıştırılabilen bir bağlantı olarak paylaşılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

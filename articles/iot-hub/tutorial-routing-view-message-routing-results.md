@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f1dfbbc6036273e6ddf724e185e23073e7a78505
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: HT
+ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809100"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900805"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
 
@@ -116,9 +116,9 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
-4. **Iş topolojisi**altında **girişler**' i seçin.
+1. **Iş topolojisi**altında **girişler**' i seçin.
 
-5. **Girişler** bölmesinde **akış girişi Ekle** ' yi seçin ve IoT Hub ' ı seçin. Görüntülenen ekranda aşağıdaki alanları doldurun:
+2. **Girişler** bölmesinde **akış girişi Ekle** ' yi seçin ve IoT Hub ' ı seçin. Görüntülenen ekranda aşağıdaki alanları doldurun:
 
    **Giriş diğer adı**: Bu öğreticide **contosoinputs** kullanılır.
 
@@ -138,7 +138,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
    ![Stream Analytics işi için girişleri ayarlama](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. **Kaydet**’i seçin.
+3. **Kaydet**’i seçin.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici günlük sorgusu dil farklılıkları | Microsoft Docs
 description: Azure Izleyici tarafından kullanılan kusto sorgu dili için başvuru bilgileri. Azure izleyici günlük sorgularında desteklenmeyen Azure Izleyici ve öğelerine özgü ek öğeler içerir.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 08/13/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.date: 08/13/2019
+ms.openlocfilehash: 6d3c2daafc9116d23d837e86e60ca628bbe34647
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990177"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900378"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Izleyici günlük sorgusu dil farklılıkları
 
@@ -31,7 +25,7 @@ Aşağıdaki bölümlerde, Azure Izleyici tarafından desteklenmeyen kusto sorgu
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen deyimler
 
-* [Diğer ad](/azure/kusto/query/aliasstatement)
+* [Ek](/azure/kusto/query/aliasstatement)
 * [Sorgu parametreleri](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure Izleyici 'de desteklenmeyen işlevler
@@ -59,7 +53,7 @@ Aşağıdaki bölümlerde, Azure Izleyici tarafından desteklenmeyen kusto sorgu
 ## <a name="additional-operators-in-azure-monitor"></a>Azure Izleyici 'de ek işleçler
 Aşağıdaki operatörler belirli Azure Izleyici özelliklerini destekler ve Azure Izleyici dışında kullanılamaz.
 
-* [app()](app-expression.md)
+* [uygulama ()](app-expression.md)
 * [çalışma alanı ()](workspace-expression.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

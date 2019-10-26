@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 056bd1293e0593a7fb7f9909cfd85043577686c4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598012"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901345"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Azure disk şifrelemesi, Windows çalıştıran Azure sanal makinelerinde tam di
 
 ## <a name="extension-schemata"></a>Uzantı şemaların serileştirilmesi
 
-Azure disk şifrelemesi için iki şemaların serileştirilmesi vardır: v 1.1, daha yeni ve Azure Active Directory (AAD) özellikleri kullanmayan, önerilen bir şema ve AAD özellikleri gerektiren eski bir şema. Kullanmakta olduğunuz uzantıya karşılık gelen şema sürümünü kullanmanız gerekir: AzureDiskEncryption uzantısı sürüm 1,1 için şema v 1.1, AzureDiskEncryption uzantısı sürümü 0,1 için şema v 0,1.
+Windows AzureDiskEncryption uzantısı için iki şemaların serileştirilmesi vardır: v 2.2, daha yeni, önerilen bir şema Azure Active Directory (AAD) özelliklerini kullanmayan bir şema ve AAD özellikleri gerektiren eski bir şema. Kullanmakta olduğunuz uzantıya karşılık gelen şema sürümünü kullanmanız gerekir: AzureDiskEncryption uzantısı sürüm 2,2 için şema v 2.2, AzureDiskEncryption uzantısı sürüm 1,1 için şema v 1.1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Şema v 1.1: AAD yok (önerilir)
+### <a name="schema-v22-no-aad-recommended"></a>Şema v 2.2: AAD yok (önerilen)
 
-V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
+V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik gerektirmez.
 
 ```json
 {
@@ -67,11 +67,11 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Şema v 0.1: AAD ile 
+### <a name="schema-v11-with-aad"></a>Şema v 1.1: AAD ile 
 
-0,1 şeması `aadClientID` ve `aadClientSecret` ya da `AADClientCertificate` gerektirir.
+1,1 şeması `aadClientID` ve `aadClientSecret` ya da `AADClientCertificate` gerektirir ve yeni VM 'Ler için önerilmez.
 
-@No__t_0 kullanma:
+`aadClientSecret`kullanma:
 
 ```json
 {
@@ -101,7 +101,7 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 }
 ```
 
-@No__t_0 kullanma:
+`AADClientCertificate`kullanma:
 
 ```json
 {
@@ -139,10 +139,10 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 | apiVersion | 2015-06-15 | date |
 | 'ın | Microsoft. Azure. Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0,1, 1,1 | int |
-| (0,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | 'ini | 
-| (0,1 şeması) AADClientSecret | password | string |
-| (0,1 şeması) AADClientCertificate | #c0 | string |
+| typeHandlerVersion | 1,1, 2,2 | string |
+| (1,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | 'ini | 
+| (1,1 şeması) AADClientSecret | password | string |
+| (1,1 şeması) AADClientCertificate | #c0 | string |
 | DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |

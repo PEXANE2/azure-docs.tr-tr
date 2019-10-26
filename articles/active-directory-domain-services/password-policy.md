@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248289"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893427"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
 Azure Active Directory Domain Services (Azure AD DS) ' de Kullanıcı güvenliğini yönetmek için hesap kilitleme ayarlarını veya en düşük parola uzunluğunu ve karmaşıklığı denetleyen hassas parola ilkeleri tanımlayabilirsiniz. Azure AD DS yönetilen bir etki alanındaki tüm kullanıcılara varsayılan bir hassas parola ilkesi oluşturulur ve uygulanır. Ayrıntılı denetim sağlamak ve belirli iş veya uyumluluk ihtiyaçlarını karşılamak için, ek ilkeler oluşturulup belirli kullanıcı gruplarına uygulanabilir.
 
 Bu makalede, Azure AD DS Active Directory Yönetim Merkezi kullanarak hassas bir parola ilkesi oluşturma ve yapılandırma açıklanmaktadır.
+
+> [!NOTE]
+> Parola ilkeleri yalnızca Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Azure AD DS yönetilen etki alanları için kullanılabilir. Klasik kullanılarak oluşturulan eski yönetilen etki alanları için, [Klasik sanal ağ modelinden Kaynak Yöneticisi 'e geçiş][migrate-from-classic]yapın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -34,6 +37,7 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
   * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
   * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
+  * Azure AD DS örneği, Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulmuş olmalıdır. Gerekirse, [Klasik sanal ağ modelinden Kaynak Yöneticisi ' ye geçirin][migrate-from-classic].
 * Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
   * Gerekirse, [bir yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticiyi izleyin.
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
@@ -130,3 +134,4 @@ Parola ilkeleri hakkında daha fazla bilgi ve Active Directory Yönetim Merkezi 
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

@@ -1,5 +1,5 @@
 ---
-title: PıM-Azure Active Directory 'de Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma | Microsoft Docs
+title: Privileged Identity Management-Azure Active Directory | Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) içinde Azure Kaynak rolleri için erişim gözden geçirmesi oluşturmayı öğrenin.
 services: active-directory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/29/2019
+ms.date: 10/23/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba674c143cd8d85b9764c8ade776b52dd1d3598d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 56ccab2162a8f0ea9405d834e3f25558d8236b52
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804150"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895420"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>PıM 'de Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma
+# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma
 
 Çalışanların zaman içindeki değişiklikleri için ayrıcalıklı Azure Kaynak rollerine erişim. Eski rol atamalarıyla ilişkili riski azaltmak için, erişimi düzenli olarak gözden geçirmeniz gerekir. Ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturmak üzere Azure Active Directory (Azure AD) Privileged Identity Management (PıM) kullanabilirsiniz. Ayrıca, otomatik olarak gerçekleşen yinelenen erişim incelemelerini yapılandırabilirsiniz.
 
@@ -30,7 +30,7 @@ Bu makalede, ayrıcalıklı Azure Kaynak rolleri için bir veya daha fazla eriş
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Açık erişim İncelemeleri
 
@@ -38,17 +38,15 @@ Bu makalede, ayrıcalıklı Azure Kaynak rolleri için bir veya daha fazla eriş
 
 1. **Azure AD Privileged Identity Management**açın.
 
-1. Sol taraftaki menüden **Azure kaynakları**' na tıklayın.
+1. Sol taraftaki menüden **Azure kaynakları**' nı seçin.
 
-1. Yönetmek istediğiniz kaynağa (abonelik veya yönetim grubu gibi) tıklayın.
+1. Yönetmek istediğiniz kaynağı bir abonelik veya yönetim grubu gibi seçin.
 
-1. Yönet altında **erişim gözden geçirmeleri**' na tıklayın.
+1. Yönet altında **erişim gözden geçirmeleri**' nı seçin.
 
     ![Azure kaynakları-tüm incelemelerinin durumunu gösteren erişim gözden geçirmeleri listesi](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Erişim gözden geçirmesini Başlat
 

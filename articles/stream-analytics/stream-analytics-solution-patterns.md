@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics çözüm desenleri
-description: Azure Stream Analytics için farklı ortak çözüm desenleri hakkında bilgi edinin.
+description: Parçalama, olay mesajlaşma, veri depoları, başvuru verileri zenginleştirme ve izleme gibi Azure Stream Analytics yönelik yaygın çözüm desenleri hakkında bilgi edinin.
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173030"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901684"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics çözüm desenleri
 
@@ -40,7 +40,7 @@ SQL yüksek bir işleme veri deposu değildir. Azure Stream Analytics bir SQL ve
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Olay mesajlaşması ile uygulamanıza gerçek zamanlı Öngörüler ekleyin
 
-En popüler Stream Analytics kullanımı gerçek zamanlı uyarılar oluşturmak için kullanılır. Bu çözüm desenindeki Stream Analytics iş mantığı, zamana bağlı [ve uzamsal desenleri](stream-analytics-geospatial-functions.md) ve anormallikleri algılamak [](stream-analytics-machine-learning-anomaly-detection.md)için kullanılabilir ve ardından uyarı sinyalleri üretir. Ancak, Stream Analytics tercih edilen bir uç nokta olarak Power BI kullandığı Pano çözümünün aksine, bir dizi ara veri havuzları kullanılabilir. Bu havuzlar Event Hubs, Service Bus ve Azure Işlevlerini içerir. Uygulama Oluşturucu olarak, senaryolarınız için hangi veri havuzunun en iyi şekilde çalıştığına karar vermeniz gerekir.
+En popüler Stream Analytics kullanımı gerçek zamanlı uyarılar oluşturmak için kullanılır. Bu çözüm desenindeki Stream Analytics iş mantığı, zamana bağlı [ve uzamsal desenleri](stream-analytics-geospatial-functions.md) ve [anormallikleri](stream-analytics-machine-learning-anomaly-detection.md)algılamak için kullanılabilir ve ardından uyarı sinyalleri üretir. Ancak, Stream Analytics tercih edilen bir uç nokta olarak Power BI kullandığı Pano çözümünün aksine, bir dizi ara veri havuzları kullanılabilir. Bu havuzlar Event Hubs, Service Bus ve Azure Işlevlerini içerir. Uygulama Oluşturucu olarak, senaryolarınız için hangi veri havuzunun en iyi şekilde çalıştığına karar vermeniz gerekir.
 
 Mevcut iş iş akışınızda uyarı oluşturmak için aşağı akış olay tüketicisi mantığı uygulanmalıdır. Azure Işlevlerinde özel mantık uygulayabilmeniz için, Azure Işlevleri Bu tümleştirmeyi gerçekleştirmenin en hızlı yoludur. Azure Işlevi 'nin bir Stream Analytics işi için çıkış olarak kullanılmasına yönelik bir öğretici, [Azure Stream Analytics ışlerden Azure Işlevleri çalıştırma](stream-analytics-with-azure-functions.md)bölümünde bulunabilir. Azure Işlevleri, metin ve e-posta gibi çeşitli bildirim türlerini de destekler. Mantıksal uygulama, Stream Analytics ve Logic App arasında Event Hubs bir tümleştirme için de kullanılabilir.
 
@@ -174,7 +174,7 @@ Geri doldurma için, sabit durum işleme gereksinimlerinden daha yüksek aktarı
 |**Kesik taslak**   |Boşluk oluşturur    |Kısa süreli kesinti için Tamam    |Uzun süreli kullanım için kullanın |
 |**Uyarı**   |Kabul edilebilir |Kısa süreli kesinti için Tamam    |Gerekli değil |
 |**Olay kaynağını belirleme uygulaması** |Kabul edilebilir |Kısa süreli kesinti için Tamam    |Uzun süreli kullanım için kullanın |
-|**Veri ambarı**   |Veri kaybı  |Kabul edilebilir |Gerekli değil |
+|**Veri depolama**   |Veri kaybı  |Kabul edilebilir |Gerekli değil |
 |**Çevrimdışı analiz**  |Veri kaybı  |Kabul edilebilir |Gerekli değil|
 
 ## <a name="putting-it-all-together"></a>Hepsini bir araya getirme

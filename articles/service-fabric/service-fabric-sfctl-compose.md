@@ -3,22 +3,23 @@ title: Azure Service Fabric CLı-sfctl oluştur | Microsoft Docs
 description: Service Fabric CLı sfctl oluşturma komutlarını açıklar.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035109"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901663"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose uygulamalar oluşturun, silin ve yönetin.
@@ -27,13 +28,13 @@ Docker Compose uygulamalar oluşturun, silin ve yönetin.
 
 |Komut|Açıklama|
 | --- | --- |
-| create | Service Fabric oluşturma dağıtımı oluşturur. |
+| oluşturmaya | Service Fabric oluşturma dağıtımı oluşturur. |
 | list | Service Fabric kümesinde oluşturulan oluşturma dağıtımlarının listesini alır. |
-| kaldır | Kümeden varolan bir Service Fabric oluşturma dağıtımını siler. |
-| status | Service Fabric oluşturma dağıtımı hakkında bilgi alır. |
-| upgrade | Service Fabric kümesinde bir oluşturma dağıtımını yükseltmeye başlar. |
-| upgrade-rollback | Service Fabric kümesinde bir dağıtım yükseltmesini oluşturma ile çalışmaya başlar. |
-| upgrade-status | Bu Service Fabric oluşturma dağıtımı üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını alır. |
+| temizlenmesine | Kümeden varolan bir Service Fabric oluşturma dağıtımını siler. |
+| durum | Service Fabric oluşturma dağıtımı hakkında bilgi alır. |
+| yükseltmenizi | Service Fabric kümesinde bir oluşturma dağıtımını yükseltmeye başlar. |
+| yükseltme-geri alma | Service Fabric kümesinde bir dağıtım yükseltmesini oluşturma ile çalışmaya başlar. |
+| yükseltme-durum | Bu Service Fabric oluşturma dağıtımı üzerinde gerçekleştirilen en son yükseltmenin ayrıntılarını alır. |
 
 ## <a name="sfctl-compose-create"></a>sfctl oluşturma oluştur
 Service Fabric oluşturma dağıtımı oluşturur.
@@ -42,11 +43,11 @@ Service Fabric oluşturma dağıtımı oluşturur.
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Dağıtım-adı [gerekli] | Dağıtım adı. |
+| --Dağıtım-adı [gerekli] | Dağıtımın adı. |
 | --File-Path [gerekli] | Hedef Docker Compose dosyasının yolu. |
 | --şifrelenmiş-Pass | Bir kapsayıcı kayıt defteri parolası istemek yerine, zaten şifrelenmiş bir geçiş ifadesi kullanın. |
 | --sahip-Pass | , Kapsayıcı kayıt defteri için bir parola sorar. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | Varsayılan\: 60. |
 | --kullanıcı | Kapsayıcı kayıt defterine bağlanmak için Kullanıcı adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
@@ -55,8 +56,8 @@ Service Fabric oluşturma dağıtımı oluşturur.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-compose-list"></a>sfctl oluşturma listesi
@@ -70,7 +71,7 @@ Service Fabric kümesinde oluşturulma sürecinde veya oluşturulurken oluşturu
 | --- | --- |
 | --Devamlılık-belirteç | Devam belirteci parametresi, sonraki sonuç kümesini almak için kullanılır. Boş olmayan bir değere sahip devamlılık belirteci, sistemin sonuçları tek bir yanıta sığmıyor olduğunda API 'nin yanıtına dahil edilir. Bu değer sonraki API çağrısına geçirildiğinde, API sonraki sonuç kümesini döndürür. Başka sonuç yoksa devamlılık belirteci bir değer içermez. Bu parametrenin değeri, URL kodlamalı olmamalıdır. |
 | --en fazla sonuç | Disk belleği sorgularının bir parçası olarak döndürülecek en fazla sonuç sayısı. Bu parametre döndürülen sonuç sayısı üzerinde üst sınırı tanımlar. Döndürülen sonuçlar, yapılandırmada tanımlanan en fazla ileti boyutu kısıtlamalarına göre iletiye sığmıyor durumunda belirtilen en fazla sonuçtan daha az olabilir. Bu parametre sıfırsa veya belirtilmemişse, disk belleğine alınan sorgu, dönüş iletisine sığan mümkün olduğunca fazla sonuç içerir. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -78,8 +79,8 @@ Service Fabric kümesinde oluşturulma sürecinde veya oluşturulurken oluşturu
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-compose-remove"></a>sfctl oluşturma kaldırma
@@ -92,7 +93,7 @@ Var olan bir Service Fabric Compose dağıtımını siler.
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -100,8 +101,8 @@ Var olan bir Service Fabric Compose dağıtımını siler.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-compose-status"></a>sfctl oluşturma durumu
@@ -114,7 +115,7 @@ Oluşturulan veya Service Fabric kümesinde oluşturulma sürecinde ve adı para
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -122,8 +123,8 @@ Oluşturulan veya Service Fabric kümesinde oluşturulma sürecinde ve adı para
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl oluşturma yükseltmesi
@@ -135,7 +136,7 @@ Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağ�
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Dağıtım-adı [gerekli] | Dağıtım adı. |
+| --Dağıtım-adı [gerekli] | Dağıtımın adı. |
 | --File-Path [gerekli] | Hedef Docker Compose dosyasının yolu. |
 | --Varsayılan-svc-tür-sistem durumu-eşleme | Hizmetlerin sistem durumunu değerlendirmek için kullanılan sistem durumu ilkesini tanımlayan JSON kodlu sözlük. |
 | --şifrelenmiş-Pass | Bir kapsayıcı kayıt defteri parolası istemek yerine, zaten şifrelenmiş bir geçiş ifadesi kullanın. |
@@ -147,11 +148,11 @@ Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağ�
 | --Sistem Durumu-Çek-bekle | Durum denetimleri işlemini başlatmadan önce bir yükseltme etki alanını tamamladıktan sonra beklenecek sürenin uzunluğu. |
 | --çoğaltma-Set-Check | Bir yükseltme etki alanının işlenmesi engellenecek en uzun süre (veya beklenmedik sorunlar olduğunda kullanılabilirlik kaybını önleme). <br><br> Bu zaman aşımı süresi dolduğunda, yükseltme etki alanının işlenmesi, kullanılabilirlik kaybı sorunlarından bağımsız olarak devam edecektir. Zaman aşımı, her yükseltme etki alanının başlangıcında sıfırlanır. Geçerli değerler 0 ile 42949672925 (dahil) arasındadır. |
 | --svc-tür-sistem durumu-eşleme | Farklı hizmet türlerinin sistem durumunu değerlendirmek için kullanılan sistem durumu ilkelerini tanımlayan nesnelerin JSON kodlu listesi. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
-| --sağlıksız-uygulama | Bir hata raporlanmadan önce, sağlıksız uygulamaların izin verilen en büyük yüzdesi. <br><br> Örneğin, uygulamaların% 10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde değeri, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek uygulamaların en yüksek toleranslı yüzdesini temsil eder. Yüzde oranı dikkate alınmaz ancak en az bir sağlıksız uygulama varsa, sistem durumu uyarı olarak değerlendirilir. Bu, sağlıksız uygulama sayısı kümedeki Toplam uygulama örneği sayısına bölünerek hesaplanır. |
+| --timeout-t | Varsayılan\: 60. |
+| --sağlıksız-uygulama | Bir hata raporlanmadan önce, sağlıksız uygulamaların izin verilen en büyük yüzdesi. <br><br> Örneğin, uygulamaların %10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde değeri, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek uygulamaların en yüksek toleranslı yüzdesini temsil eder. Yüzde oranı dikkate alınmaz ancak en az bir sağlıksız uygulama varsa, sistem durumu uyarı olarak değerlendirilir. Bu, sağlıksız uygulama sayısı kümedeki Toplam uygulama örneği sayısına bölünerek hesaplanır. |
 | --Upgrade-etki alanı zaman aşımı | Her yükseltme etki alanının, FailureAction yürütülmeden önce tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
-| --yükseltme-tür | Varsayılan\: olarak alınıyor. |
-| --yükseltme modu | Olası değerler '\: geçersiz ', ' unmonitortoredauto ', ' unmonitortoredmanual ', ' izleniyor ' değerleridir.  Varsayılan\: olarak depountoredauto. |
+| --yükseltme-tür | Varsayılan\: alınıyor. |
+| --yükseltme modu | Olası değerler\: ' geçersiz ', ' Unmonitortoredauto ', ' Unmonitortoredmanual ', ' Izleniyor ' değerleridir.  Varsayılan\: Monitortoredauto. |
 | --Upgrade-Timeout | FailureAction yürütülmeden önce genel yükseltmenin tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
 | --kullanıcı | Kapsayıcı kayıt defterine bağlanmak için Kullanıcı adı. |
 | --hata olarak uyarı | Uyarıların hatalarla aynı önem derecesine sahip olup olmadığını gösterir. |
@@ -162,8 +163,8 @@ Sağlanan yükseltme parametrelerini doğrular ve parametreler geçerliyse dağ�
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-compose-upgrade-rollback"></a>sfctl oluşturma yükseltmesi-geri alma
@@ -176,7 +177,7 @@ Service Fabric oluşturma dağıtım yükseltmesini geri alın.
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -184,8 +185,8 @@ Service Fabric oluşturma dağıtım yükseltmesini geri alın.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-compose-upgrade-status"></a>sfctl oluşturma yükseltme-durum
@@ -198,7 +199,7 @@ Dağıtım yükseltmesinin oluşturma durumuyla birlikte, uygulama sistem durumu
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Dağıtım-adı [gerekli] | Dağıtımın kimliği. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -206,8 +207,8 @@ Dağıtım yükseltmesinin oluşturma durumuyla birlikte, uygulama sistem durumu
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 

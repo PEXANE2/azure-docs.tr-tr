@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights Agent ayrıntılı yönergeleri | Microsoft Docs
 description: Application Insights aracısıyla çalışmaya başlama hakkında ayrıntılı yönergeler. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: d7a6db65b92ec2d3a3fdcf55aea0523f57012be1
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: 8a9ae2364b51c0c201f2efffb3a7433594f76c49
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388239"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899635"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Aracısı (eski adıyla Durum İzleyicisi v2): ayrıntılı yönergeler
 
@@ -57,7 +52,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
 
-@No__t-0 komutunu çalıştırarak PowerShell örneğinizi denetleyin.
+`$PSVersionTable` komutunu çalıştırarak PowerShell örneğinizi denetleyin.
 Bu komut aşağıdaki çıktıyı üretir:
 
 
@@ -119,7 +114,7 @@ Bu adımlar, sunucunuzu PowerShell Galerisi 'dan modül indirmek üzere hazırla
         'PSGallery'?
         [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
 
-    @No__t-0 komutunu çalıştırarak, bu değişikliği onaylayıp tüm Psdepoları denetleyebilirsiniz.
+    `Get-PSRepository` komutunu çalıştırarak bu değişikliği onaylayıp tüm Psdepolarında denetleyebilirsiniz.
 
 4. PowerShellGet 'in en yeni sürümünü yükler.
     - Açıklama: Bu modül, PowerShell Galerisi diğer modülleri almak için kullanılan araçları içerir. Sürüm 1.0.0.1, Windows 10 ve Windows Server ile birlikte gelir. Sürüm 1.6.0 veya üzeri gereklidir. Hangi sürümün yükleneceğini öğrenmek için `Get-Command -Module PowerShellGet` komutunu çalıştırın.
@@ -209,7 +204,7 @@ Modülü başka bir dizine yüklüyorsanız, [Import-Module](https://docs.micros
 1. Uzantıyı ". zip" olarak değiştirin ve paketin içeriğini amaçlanan yükleme dizininize ayıklayın.
 2. Az. ApplicationMonitor. psd1 dosyasının yolunu bulun.
 3. PowerShell 'i yükseltilmiş bir yürütme ilkesiyle yönetici olarak çalıştırın.
-4. @No__t-0 komutunu kullanarak modülü yükleyin.
+4. `Import-Module Az.ApplicationMonitor.psd1` komutunu kullanarak modülü yükleyin.
     
 
 ## <a name="route-traffic-through-a-proxy"></a>Trafiği bir ara sunucu üzerinden yönlendirme

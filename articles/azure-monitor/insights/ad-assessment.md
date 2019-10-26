@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici ile Active Directory ortamınızı iyileştirin | Microsoft Docs
 description: Düzenli aralıklarla ortamlarınızın riskini ve sistem durumunu değerlendirmek için Active Directory sistem durumu denetimi çözümünü kullanabilirsiniz.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/10/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: bdc84a9213bd98981040775d3fec90f45edac54f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883075"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899198"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Izleyici 'de Active Directory sistem durumu denetimi çözümüyle Active Directory ortamınızı iyileştirin
 
@@ -47,7 +41,7 @@ Kuruluşunuz için en önemli odak alanını seçebilir ve risk ücretsiz ve sa�
 * Azure portal Azure Marketi 'nden Active Directory sistem durumu denetimi çözümünü eklemek için bir Log Analytics çalışma alanı. Ek yapılandırma gerekmez.
 
   > [!NOTE]
-  > Çözümü ekledikten sonra, danışmanlı Assessment. exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Mantıksal alınan verilere uygulanır ve bulut hizmeti olan verileri kaydeder.
+  > Çözümü ekledikten sonra, danışmanlı Assessment. exe dosyası aracıları olan sunuculara eklenir. Yapılandırma verileri okuyup işlenmek üzere Bulutta Azure Izleyici 'ye gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder.
   >
   >
 
@@ -63,7 +57,7 @@ Etki alanı denetleyicinizde bir Operations Manager yönetim grubuna rapor veren
 
 Active Directory sistem durumu denetimi, etkinleştirdiğiniz aracıyı kullanarak aşağıdaki kaynaklardan veri toplar:
 
-- Kayıt defteri
+- Kayıt Defteri
 - LDAP
 - .NET Framework
 - Olay günlüğü
@@ -89,7 +83,7 @@ Ağırlıklı değerler üç ana etkene göre toplam değerlerdir:
 * Soruna neden olursa sorunun kuruluşunuza *etkisi* . Daha yüksek bir etkisi, önerinin daha büyük bir genel puanı ile aynıdır.
 * Öneriyi uygulamak için gereken *çaba* . Daha yüksek bir çaba, önerinin daha küçük bir genel puanı ile aynıdır.
 
-Her öneri ağırlığı, her bir odak alanı için kullanılabilen toplam puanların yüzdesi olarak ifade edilir. Örneğin, güvenlik ve uyumluluk odağında bir önerinin% 5 puanı varsa, bu öneriyi uygulamak genel güvenlik ve uyumluluk puanınızı% 5 oranında artırır.
+Her öneri ağırlığı, her bir odak alanı için kullanılabilen toplam puanların yüzdesi olarak ifade edilir. Örneğin, güvenlik ve uyumluluk odağında bir önerinin %5 puanı varsa, bu öneriyi uygulamak genel güvenlik ve uyumluluk puanınızı %5 oranında artırır.
 
 ### <a name="focus-areas"></a>Odak alanı
 
@@ -101,7 +95,7 @@ Her öneri ağırlığı, her bir odak alanı için kullanılabilen toplam puanl
 
 **Yükseltme, geçiş ve dağıtım** -bu odak alanı, mevcut altyapınıza Active Directory yükseltmenize, geçirmenize ve dağıtmanıza yardımcı olacak öneriler gösterir.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Her odak alanında% 100 puan elde etmeniz gerekir mi?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Her odak alanında %100 puan elde etmeniz gerekir mi?
 
 Olmayabilir. Öneriler, binlerce müşteri ziyaretinde Microsoft mühendisleri tarafından kazanılan bilgi ve deneyimlere dayalıdır. Ancak, iki sunucu altyapısı aynı değildir ve belirli öneriler sizinle daha fazla veya daha az olabilir. Örneğin, sanal makineleriniz Internet 'e açık değilse bazı güvenlik önerileri daha az ilgili olabilir. Bazı kullanılabilirlik önerileri düşük öncelikli geçici veri toplama ve raporlama sağlayan hizmetlerle daha az ilgili olabilir. Yetişkin iş açısından önemli olan sorunlar, başlangıç için daha az önemli olabilir. Önceliklerinizin hangi odak alanlarından olduğunu belirlemek ve sonra puanlarınızın zaman içinde nasıl değişdiklerini görmek isteyebilirsiniz.
 
@@ -179,7 +173,7 @@ Zamanlanan bir sonraki sistem durumu denetimi çalıştıktan sonra, varsayılan
 
 *Sistem durumu denetiminin ne sıklıkta çalışacağını yapılandırmak için bir yol var mı?*
 
-* Şu anda değil.
+* Şimdilik hayır.
 
 *Bir sistem durumu denetimi çözümünü ekledikten sonra başka bir sunucu bulunursa, denetlenecek*
 
@@ -199,7 +193,7 @@ Zamanlanan bir sonraki sistem durumu denetimi çalıştıktan sonra, varsayılan
 
 *Verilerin toplanması sırasında yapılandırmak için bir yol var mı?*
 
-* Şu anda değil.
+* Şimdilik hayır.
 
 *Neden yalnızca ilk 10 öneriyi görüntülersin?*
 

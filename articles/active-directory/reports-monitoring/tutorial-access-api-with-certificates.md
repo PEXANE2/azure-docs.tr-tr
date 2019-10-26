@@ -1,5 +1,5 @@
 ---
-title: Azure AD Raporlama API 'sini sertifikalarla kullanarak veri edinme öğreticisi | Microsoft Docs
+title: Sertifikalarla AD Raporlama API 'SI için öğretici | Microsoft Docs
 description: Bu öğreticide, Kullanıcı müdahalesi olmadan dizinlerden veri almak üzere sertifika kimlik bilgileriyle Azure AD Raporlama API 'sinin nasıl kullanılacağı açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdab5bc4be366f778213127a307fb4fcf7cf38a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989476"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895141"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: Sertifikalarla Azure Active Directory raporlama API’sini kullanarak veri alma
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Öğretici: sertifikalarla Azure Active Directory Raporlama API 'sini kullanarak veri edinme
 
 [Azure Active Directory (Azure AD) raporlama API'leri](concept-reporting-api.md), bir dizi REST tabanlı API aracılığıyla verilere programlı erişim sağlar. Çeşitli programlama dilleri ve araçlarından bu API'leri çağırabilirsiniz. Azure AD Raporlama API 'sine Kullanıcı müdahalesi olmadan erişmek istiyorsanız, erişimi sertifikaları kullanacak şekilde yapılandırmanız gerekir.
 
@@ -44,7 +44,7 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
     - ADAL kullanarak kullanıcı, uygulama anahtarları ve sertifikalardan erişim belirteçleri
     - Disk belleğine alınmış Graph API işleme sonuçları
 
-6. Modülü ilk kez kullanıyorsanız **Install-MSCloudIdUtilsModule**komutunu çalıştırın, aksi takdirde **Import-Module** PowerShell komutunu kullanarak içeri aktarın. Oturumunuz bu ekrana benzer görünmelidir: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Modülü ilk kez kullanıyorsanız **Install-MSCloudIdUtilsModule**komutunu çalıştırın, aksi takdirde **Import-Module** PowerShell komutunu kullanarak içeri aktarın. Oturumunuz Şu ekrana benzemelidir: ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Bir test sertifikası oluşturmak için **New-SelfSignedCertificate** PowerShell komutunu kullanın.
 
@@ -87,15 +87,15 @@ Bu öğreticide, raporlama için MS Graph API erişmek üzere bir test sertifika
   
 7. Şimdi bu sertifikayı kullanarak MS Graph API için bir erişim belirteci alabilirsiniz. MSCloudIdUtils PowerShell modülünden **Get-Mscloudıdmsgraphaccesstokenfromcert** cmdlet 'Ini kullanarak uygulama kimliğini ve önceki adımdan edindiğiniz parmak izini geçirerek kullanın. 
 
-   ![Azure portal](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure portalı](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Graph API sorgulamak için PowerShell betiğinizdeki erişim belirtecini kullanın. Signins ve directoryAudits uç noktasını numaralandırmak için MSCloudIDUtils öğesinden **Invoke-Mscloudıdmsgraphquery** cmdlet 'ini kullanın. Bu cmdlet çok sayfalı sonuçları işler ve bu sonuçları PowerShell işlem hattına gönderir.
 
 9. Denetim günlüklerini almak için directoryAudits uç noktasını sorgulayın. 
-   ![Azure portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure portalda](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. Oturum açma günlüklerini almak için signins uç noktasını sorgulayın.
-    ![Azure portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure portalda](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. Artık bu verileri bir CSV 'ye vermeyi ve bir SıEM sistemine kaydetmeyi seçebilirsiniz. Ayrıca, betiğinizi zamanlanmış bir göreve kaydırarak, uygulama anahtarlarını kaynak kodda depolamak zorunda kalmadan kiracınızdan Azure AD verilerini düzenli olarak alabilirsiniz. 
 

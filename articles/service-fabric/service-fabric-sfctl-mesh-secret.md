@@ -3,22 +3,23 @@ title: Azure Service Fabric CLı-sfctl kafesi gizli dizisi | Microsoft Docs
 description: Service Fabric CLı sfctl kafesi gizli komutlarını açıklar.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5e58e6a401cc166c176dc465d58ba9e8a8ed83b0
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 706f3250236bf7cab591530c1cefba8e503225fe
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035961"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901197"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Ağ gizli anahtarı kaynaklarını alın ve silin.
@@ -27,7 +28,7 @@ Ağ gizli anahtarı kaynaklarını alın ve silin.
 
 |Komut|Açıklama|
 | --- | --- |
-| sil | Gizli kaynağı siler. |
+| delete | Gizli kaynağı siler. |
 | list | Tüm gizli kaynakları listeler. |
 | göster | Verilen ada sahip gizli kaynağı alır. |
 
@@ -40,7 +41,7 @@ Belirtilen gizli kaynağı ve tüm adlandırılmış değerlerini siler.
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Name-n [gerekli] | Gizli anahtar adı. |
+| --Name-n [gerekli] | Gizli kaynağın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -48,8 +49,8 @@ Belirtilen gizli kaynağı ve tüm adlandırılmış değerlerini siler.
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-mesh-secret-list"></a>sfctl kafesi gizli listesi
@@ -63,8 +64,8 @@ Belirli bir kaynak grubundaki tüm gizli kaynaklarla ilgili bilgileri alır. Bil
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-mesh-secret-show"></a>sfctl kafesi gizli gösterme
@@ -76,7 +77,7 @@ Verilen ada sahip gizli kaynakla ilgili bilgileri alır. Bilgiler, gizli dizinin
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --Name-n [gerekli] | Gizli anahtar adı. |
+| --Name-n [gerekli] | Gizli kaynağın adı. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -84,8 +85,8 @@ Verilen ada sahip gizli kaynakla ilgili bilgileri alır. Bilgiler, gizli dizinin
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 

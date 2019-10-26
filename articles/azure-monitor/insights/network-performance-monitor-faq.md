@@ -1,23 +1,18 @@
 ---
 title: SSS-Azure 'da Ağ Performansı İzleyicisi çözüm | Microsoft Docs
 description: Bu makale, Azure 'daki Ağ Performansı İzleyicisi hakkında sık sorulan soruları yakalar. Ağ Performansı İzleyicisi (NPM), ağların performansını neredeyse gerçek zamanlı olarak izlemenize ve ağ performansı performans sorunlarını saptamanıza ve bulmanıza yardımcı olur.
-services: log-analytics
-documentationcenter: ''
-author: vinynigam
-manager: agummadi
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/12/2018
+author: vinynigam
 ms.author: vinigam
-ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
-ms.translationtype: MT
+ms.date: 10/12/2018
+ms.openlocfilehash: 26e9215c7e00eca59d33f7e8d259a689ad642f19
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782120"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898862"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Ağ Performansı İzleyicisi çözümü SSS
 
@@ -43,7 +38,7 @@ Aşağıda, NPM 'nin çeşitli özellikleri için Platform gereksinimleri verilm
 Linux tabanlı düğümleri kullanarak ağları izleme özelliği şu anda önizlemededir. Daha fazla bilgi edinmek için hesap yöneticinize ulaşın. Linux Agents yalnızca NPM 'nin performans Izleyicisi özelliği için izleme özelliği sağlar ve hizmet bağlantısı Izleyicisi ile ExpressRoute Izleyici özellikleri için kullanılamaz
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM tarafından izleme için kullanılacak düğümlerin boyut gereksinimleri nelerdir?
-Ağları izlemek üzere düğüm VM 'lerinde NPM çözümünü çalıştırmak için düğümlerin en az 500 MB ve bir çekirdeğe sahip olması gerekir. NPM 'yi çalıştırmak için ayrı düğümler kullanmanız gerekmez. Çözüm, üzerinde çalışan diğer iş yükleri olan düğümlerde çalıştırılabilir. Çözüm,% 5 ' ten fazla CPU kullanıyorsa izleme işlemini durdurma özelliğine sahiptir.
+Ağları izlemek üzere düğüm VM 'lerinde NPM çözümünü çalıştırmak için düğümlerin en az 500 MB ve bir çekirdeğe sahip olması gerekir. NPM 'yi çalıştırmak için ayrı düğümler kullanmanız gerekmez. Çözüm, üzerinde çalışan diğer iş yükleri olan düğümlerde çalıştırılabilir. Çözüm, %5 ' ten fazla CPU kullanıyorsa izleme işlemini durdurma özelliğine sahiptir.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>NPM 'yi kullanmak için, düğümlerimi doğrudan aracı olarak veya System Center Operations Manager aracılığıyla bağlamanız gerekir mi?
 Hem performans Izleyicisi hem de hizmet bağlantısı Izleyicisi özellikleri [doğrudan aracılar olarak bağlanan](../../azure-monitor/platform/agent-windows.md) ve [Operations Manager aracılığıyla bağlanan](../../azure-monitor/platform/om-agents.md)düğümleri destekler.
@@ -64,7 +59,7 @@ Düğümün TCP protokolünü kullanarak izlemeyi desteklemesi için:
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>NPM tarafından izleme için kullanılan TCP bağlantı noktasını nasıl değiştirebilirim?
-İzleme için, [Enablerules. ps1](https://aka.ms/npmpowershellscript) betiğini çalıştırarak, NPM tarafından kullanılan TCP bağlantı noktasını değiştirebilirsiniz. Parametre olarak kullanmayı düşündüğünüz bağlantı noktası numarasını girmeniz gerekir. Örneğin, 8060 numaralı bağlantı noktasında TCP 'yi etkinleştirmek için öğesini `EnableRules.ps1 8060`çalıştırın. İzleme için kullanılan tüm düğümlerde aynı TCP bağlantı noktasını kullandığınızdan emin olun.
+İzleme için, [Enablerules. ps1](https://aka.ms/npmpowershellscript) betiğini çalıştırarak, NPM tarafından kullanılan TCP bağlantı noktasını değiştirebilirsiniz. Parametre olarak kullanmayı düşündüğünüz bağlantı noktası numarasını girmeniz gerekir. Örneğin, 8060 numaralı bağlantı noktasında TCP 'yi etkinleştirmek için `EnableRules.ps1 8060`çalıştırın. İzleme için kullanılan tüm düğümlerde aynı TCP bağlantı noktasını kullandığınızdan emin olun.
 
 Betik yalnızca Windows güvenlik duvarını yerel olarak yapılandırır. Ağ güvenlik duvarı veya ağ güvenlik grubu (NSG) kurallarınız varsa, NPM tarafından kullanılan TCP bağlantı noktasına giden trafiğe izin verdiklerinden emin olun.
 
@@ -165,17 +160,17 @@ E2EMedianLatency, TCP ping testlerinin sonuçları alındıktan sonra her üç d
 
 ### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Atlama gecikmesi sayıları neden, Hoplatnby değerlerinden farklı 
 Hoplatşifreli değerler bitiş noktası kaynağıdır.
-Örneğin: Atlamalar-A, B, C. AvgHopLatency-10, 15, 20. Bu, kaynağın bir gecikme süresi = 10, kaynak-B gecikme süresi = 15 ve kaynak-C gecikme süresinin 20 olduğu anlamına gelir. Kullanıcı arabirimi, topolojide 5 olarak A-B atlama gecikmesini hesaplar
+Örneğin: atlamaları-A, B, C. AvgHopLatency-10, 15, 20. Bu, kaynağın bir gecikme süresi = 10, kaynak-B gecikme süresi = 15 ve kaynak-C gecikme süresinin 20 olduğu anlamına gelir. Kullanıcı arabirimi, topolojide 5 olarak A-B atlama gecikmesini hesaplar
 
-### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Çözüm% 100 kayıp olduğunu ancak kaynak ile hedef arasında bağlantı olduğunu gösteriyor
+### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Çözüm %100 kayıp olduğunu ancak kaynak ile hedef arasında bağlantı olduğunu gösteriyor
 Bu durum, ana bilgisayar güvenlik duvarı veya ara güvenlik duvarı (ağ güvenlik duvarı ya da Azure NSG), kaynak Aracısı ve NPM tarafından izleme için kullanılan bağlantı noktası üzerinden hedef arasındaki iletişimi engelliyorsa (varsayılan olarak, bağlantı noktası 8084, yoksa, Müşteri bunu değiştirdi).
 
-* Ana bilgisayar güvenlik duvarının gerekli bağlantı noktasındaki iletişimi engellemediğinden emin olmak için, aşağıdaki görünümden kaynak ve hedef düğümlerin sistem durumunu görüntüleyin: Ağ Performansı İzleyicisi-> Yapılandırma-> düğümleri. 
+* Ana bilgisayar güvenlik duvarının gerekli bağlantı noktasındaki iletişimi engellemediğinden emin olmak için şu görünümden kaynak ve hedef düğümlerin sistem durumunu görüntüleyin: Ağ Performansı İzleyicisi-> Yapılandırma-> düğümleri. 
   Sağlıksız olmaları durumunda yönergeleri görüntüleyin ve düzeltici eylem gerçekleştirin. Düğümler sağlıklı ise, b adımına geçin. öğrenin.
 * Bir ara ağ güvenlik duvarının veya Azure NSG 'nin gerekli bağlantı noktasındaki iletişimi engellemediğinden emin olmak için aşağıdaki yönergeleri kullanarak üçüncü taraf PsPing yardımcı programını kullanın:
   * psping yardımcı programı [buradan](https://technet.microsoft.com/sysinternals/psping.aspx) indirilebilir 
   * Kaynak düğümden aşağıdaki komutu çalıştırın.
-    * psping-n 15 \<hedef düğümü IPAddress\>:p, varsayılan NPM 8084 bağlantı noktasını kullanır. Bunu, EnableRules. ps1 betiğini kullanarak açıkça değiştirdiyseniz, kullanmakta olduğunuz özel bağlantı noktası numarasını girin. Bu, Azure makinesinden şirket içine bir ping işlemi sağlar
+    * psping-n 15 \<hedef düğüm IPAddress:p\>, varsayılan NPM 8084 bağlantı noktasını kullanır. Bunu, EnableRules. ps1 betiğini kullanarak açıkça değiştirdiyseniz, kullanmakta olduğunuz özel bağlantı noktası numarasını girin. Bu, Azure makinesinden şirket içine bir ping işlemi sağlar
 * Pingler 'in başarılı olup olmadığını denetleyin. Aksi takdirde, bir ara ağ güvenlik duvarının veya Azure NSG 'nin Bu bağlantı noktasındaki trafiği engellediğini gösterir.
 * Şimdi, komutu hedef düğümden kaynak düğüm IP 'si olarak çalıştırın.
 
@@ -190,7 +185,7 @@ NPM artık kullanıcının erişimi olan tüm aboneliklerde ExpressRoute devrele
 
 Şirket içi ve Azure düğümleri arasında sağlıklı bir bağlantının olduğu, ancak trafiğin NPM tarafından izlenmesi için yapılandırılmış ExpressRoute bağlantı hattı üzerinden gitmediği bir senaryo olabilir. 
 
-Bu durum şu durumlarda oluşabilir:
+Bu hata şu durumlarda oluşabilir:
 
 * ER devresi devre dışı.
 * Yol filtreleri, istenen ExpressRoute bağlantı hattı üzerinden diğer yollara (bir VPN bağlantısı veya başka bir ExpressRoute bağlantı hattı gibi) öncelik vertikleri şekilde yapılandırılır. 
@@ -219,16 +214,16 @@ Bir veya daha fazla doğruysa bu durum oluşabilir:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>Hizmet bağlantısı Izleyicisi özelliği ' nde, hizmet yanıt süresi yok ancak ağ kaybı ve gecikme süresi geçerli
 Hedef hizmet bir Web uygulaması değilse ancak test bir Web testi olarak yapılandırıldığında bu durum oluşabilir. Test yapılandırmasını düzenleyin ve test türünü web yerine ağ olarak seçin.
 
-## <a name="miscellaneous"></a>Çeşitli
+## <a name="miscellaneous"></a>Muhtelif Hükümler
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>İzleme için kullanılan düğüm üzerinde bir performans etkisi var mı?
-NPM işlemi, ana bilgisayar CPU kaynaklarının% 5 ' inden fazlasını kullanıyorsa durdurulacak şekilde yapılandırıldı. Bu, performansı etkilemeden olağan iş yükleri için düğümleri kullanmaya devam etmek zorunda kalmasından emin olmak içindir.
+NPM işlemi, ana bilgisayar CPU kaynaklarının %5 ' inden fazlasını kullanıyorsa durdurulacak şekilde yapılandırıldı. Bu, performansı etkilemeden olağan iş yükleri için düğümleri kullanmaya devam etmek zorunda kalmasından emin olmak içindir.
 
 ### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>İzleme için güvenlik duvarı kuralları düzenlensin mi?
 NPM yalnızca, aracıların belirtilen bağlantı noktasında birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için EnableRules. ps1 PowerShell betiğinin çalıştırıldığı düğümlerde yerel bir Windows güvenlik duvarı kuralı oluşturur. Çözüm herhangi bir ağ güvenlik duvarı veya ağ güvenlik grubu (NSG) kuralını değiştirmez.
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>İzleme için kullanılan düğümlerin sistem durumunu nasıl kontrol edebilirim?
-İzleme için kullanılan düğümlerin sistem durumunu aşağıdaki görünümden görebilirsiniz: Ağ Performansı İzleyicisi-> Yapılandırma-> düğümleri. Bir düğüm sağlıksız ise, hata ayrıntılarını görüntüleyebilir ve önerilen eylemi gerçekleştirebilirsiniz.
+İzleme için kullanılan düğümlerin sistem durumunu şu görünümden görebilirsiniz: Ağ Performansı İzleyicisi-> Yapılandırma-> düğümleri. Bir düğüm sağlıksız ise, hata ayrıntılarını görüntüleyebilir ve önerilen eylemi gerçekleştirebilirsiniz.
 
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>Gecikme sayısını mikrosaniye cinsinden bildirebilirler mi?
 NPM, Kullanıcı arabirimindeki ve milisaniye cinsinden gecikme sayılarını yuvarlar. Aynı veriler daha yüksek bir ayrıntı düzeyinde (bazen dört ondalık basamağa kadar) depolanır.

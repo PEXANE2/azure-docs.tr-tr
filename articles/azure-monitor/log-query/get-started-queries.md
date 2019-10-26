@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici 'de günlük sorgularını kullanmaya başlama | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'de günlük sorguları yazmaya başlama hakkında bir öğretici sunulmaktadır.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/09/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: MT
+ms.date: 05/09/2019
+ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076753"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894295"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını kullanmaya başlama
 
@@ -63,7 +57,7 @@ Yukarıda gösterilen sorgu, belirli bir sırada *Securityevent* tablosundan 10 
 * Kanal (|) karakteri komutları ayırır, bu nedenle aşağıdaki komutun girişinde ilk bir çıkış oluşur. Herhangi bir sayıda yöneltilen öğe ekleyebilirsiniz.
 * Kanalı takip eden, tablodan belirli sayıda rastgele kayıt döndüren **Al** komutu olur.
 
-Gerçekten de geçerli olmaya devam edecek şekilde sorguyu `| take 10` çalıştırırız, ancak en fazla 10.000 sonuç döndürebilir.
+Gerçekten de geçerli olmaya devam edecek `| take 10` eklemeden bile sorguyu çalıştırabiliyoruz, ancak en fazla 10.000 sonuç döndürebilir.
 
 ### <a name="search-queries"></a>Arama sorguları
 Arama sorguları daha az yapılandırılmıştır ve sütunlarında belirli bir değeri içeren kayıtları bulmaya yönelik genellikle daha uygundur:
@@ -73,7 +67,7 @@ search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
 
-Bu sorgu, "şifreleme" tümceciğini içeren kayıtlar için *Securityevent* tablosunu arar. Bu kayıtlardan 10 kayıt döndürülür ve görüntülenir. `in (SecurityEvent)` Bölümü atlıyoruz ve yalnızca çalıştırırsanız `search "Cryptographic"`, arama *Tüm* tablolara giderek daha uzun sürer ve daha az etkili olur.
+Bu sorgu, "şifreleme" tümceciğini içeren kayıtlar için *Securityevent* tablosunu arar. Bu kayıtlardan 10 kayıt döndürülür ve görüntülenir. `in (SecurityEvent)` parçasını atlıyoruz ve yalnızca `search "Cryptographic"`çalıştırırsanız, arama *Tüm* tabloların üzerine giderek daha uzun sürer ve daha az etkili olur.
 
 > [!WARNING]
 > Arama sorguları genellikle tablo tabanlı sorgulardan daha yavaştır, çünkü daha fazla veri işleyebilir. 
@@ -112,7 +106,7 @@ SecurityEvent
 
 Filtre koşullarını yazarken aşağıdaki ifadeleri kullanabilirsiniz:
 
-| İfade | Açıklama | Örnek |
+| İfadeler | Açıklama | Örnek |
 |:---|:---|:---|
 | == | Eşitliği denetle<br>(büyük/küçük harfe duyarlı) | `Level == 8` |
 | =~ | Eşitliği denetle<br>(büyük/küçük harf duyarsız) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -135,7 +129,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Değerler farklı türlerde olabilir, bu nedenle doğru türde karşılaştırma gerçekleştirmek için bunları atamalısınız. Örneğin, SecurityEvent *düzeyi* sütunu dize türündedir, bu yüzden sayısal işleçleri kullanabilmeniz için önce *int* veya *Long*gibi sayısal bir türe dönüştürmeniz gerekir:`SecurityEvent | where toint(Level) >= 10`
+> Değerler farklı türlerde olabilir, bu nedenle doğru türde karşılaştırma gerçekleştirmek için bunları atamalısınız. Örneğin, SecurityEvent *düzeyi* sütunu dize türündedir, bu yüzden sayısal işleçleri kullanabilmeniz için önce *int* veya *Long*gibi sayısal bir türe dönüştürmeniz gerekir: `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Bir zaman aralığı belirtin
 
@@ -154,7 +148,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-Yukarıdaki zaman filtresi `ago(30m)` "30 dakika önce" anlamına gelir, bu nedenle bu sorgu yalnızca son 30 dakikadan kayıtları döndürür. Diğer zaman birimleri gün (2B), dakika (25m) ve saniye (10 s).
+Yukarıdaki zaman filtresinde `ago(30m)` "30 dakika önce" anlamına gelir, bu nedenle bu sorgu yalnızca son 30 dakikadan kayıtları döndürür. Diğer zaman birimleri gün (2B), dakika (25m) ve saniye (10 s).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Proje ve genişletme: sütunları seçme ve hesaplama
@@ -226,7 +220,7 @@ Perf
 ```
 
 ### <a name="summarize-by-a-time-column"></a>Bir zaman sütunuyla özetleme
-Gruplandırma sonuçları ayrıca bir zaman sütununa veya başka bir sürekli değere göre de yapılabilir. Yalnızca özetleme `by TimeGenerated` , benzersiz değerler olduğundan zaman aralığı boyunca her bir milisaniyelik için gruplar oluşturur. 
+Gruplandırma sonuçları ayrıca bir zaman sütununa veya başka bir sürekli değere göre de yapılabilir. Yalnızca benzersiz değerler olduğundan `by TimeGenerated` özetleme, zaman aralığı boyunca her tek milisaniyelik için gruplar oluşturur. 
 
 Sürekli değerleri temel alan gruplar oluşturmak için, **bin**kullanarak aralığı yönetilebilir birimlere bölmek en iyisidir. Aşağıdaki sorgu, belirli bir bilgisayardaki boş belleği (*kullanılabilir MBayt*) ölçen *performans* kayıtlarını analiz eder. Son 7 günde her bir 1 saatlik dönemin ortalama değerini hesaplar:
 

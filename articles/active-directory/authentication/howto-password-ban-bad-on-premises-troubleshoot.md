@@ -4,19 +4,19 @@ description: Azure AD parola koruması genel sorunlarını anlama
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314925"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893281"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD parola koruması sorunlarını giderme
 
@@ -40,7 +40,7 @@ Bu sorunun ana belirtisi, DC Aracısı Yönetici olay günlüğündeki 30018 ola
 
 1. Proxy konak makinesi, proxy hizmeti tarafından dinlenen RPC uç noktasına (dinamik veya statik) erişimi engelliyor
 
-   Azure AD parola koruma proxy yükleyicisi, Azure AD parola koruma proxy hizmeti tarafından listelenen tüm gelen bağlantı noktalarına erişime izin veren bir Windows Güvenlik Duvarı gelen kuralı otomatik olarak oluşturur. Bu kural daha sonra silinirse veya devre dışıysa, DC aracıları ara sunucu hizmetiyle iletişim kuramaz. Yerleşik Windows Güvenlik Duvarı başka bir güvenlik duvarı ürününün yerine devre dışı bırakılmışsa, bu güvenlik duvarını Azure AD parola koruma proxy hizmeti tarafından listelenen tüm gelen bağlantı noktalarına erişime izin verecek şekilde yapılandırmanız gerekir. Bu yapılandırma, proxy hizmeti belirli bir statik RPC bağlantı noktasını dinlemek üzere yapılandırılmışsa ( `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 'ini kullanarak) daha belirgin hale getirilebilir.
+   Azure AD parola koruma proxy yükleyicisi, Azure AD parola koruma proxy hizmeti tarafından listelenen tüm gelen bağlantı noktalarına erişime izin veren bir Windows Güvenlik Duvarı gelen kuralı otomatik olarak oluşturur. Bu kural daha sonra silinirse veya devre dışıysa, DC aracıları ara sunucu hizmetiyle iletişim kuramaz. Yerleşik Windows Güvenlik Duvarı başka bir güvenlik duvarı ürününün yerine devre dışı bırakılmışsa, bu güvenlik duvarını Azure AD parola koruma proxy hizmeti tarafından listelenen tüm gelen bağlantı noktalarına erişime izin verecek şekilde yapılandırmanız gerekir. Bu yapılandırma, proxy hizmeti belirli bir statik RPC bağlantı noktasını dinlemek üzere yapılandırıldıysa (`Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 'ini kullanarak) daha belirgin hale getirilebilir.
 
 1. Proxy konak makinesi, etki alanı denetleyicilerinin makinede oturum açmasına izin verecek şekilde yapılandırılmamış. Bu davranış, "Bu bilgisayara ağ üzerinden eriş" Kullanıcı ayrıcalık ataması aracılığıyla denetlenir. Ormandaki tüm etki alanlarında bulunan tüm etki alanı denetleyicilerine bu ayrıcalık verilmelidir. Bu ayar genellikle daha büyük ağ sağlamlaştırma çabalarının bir parçası olarak sınırlandırılır.
 
@@ -50,9 +50,9 @@ Bu sorunun ana belirtisi, DC Aracısı Yönetici olay günlüğündeki 30018 ola
 
 1. Ormanın ve tüm proxy sunucularının aynı Azure kiracısına karşı kaydedildiğinden emin olun.
 
-   `Get-AzureADPasswordProtectionProxy` Ve `Get-AzureADPasswordProtectionDCAgent` PowerShell`AzureTenant` cmdlet 'lerini çalıştırarak bu gereksinimi denetleyebilir ve ardından döndürülen her bir öğenin özelliğini karşılaştırabilirsiniz. Doğru işlem için, bildirilen kiracı adı tüm DC aracıları ve proxy sunucuları genelinde aynı olmalıdır.
+   `Get-AzureADPasswordProtectionProxy` ve `Get-AzureADPasswordProtectionDCAgent` PowerShell cmdlet 'lerini çalıştırıp, ardından döndürülen her öğenin `AzureTenant` özelliğini karşılaştıran bu gereksinimi kontrol edebilirsiniz. Doğru işlem için, bildirilen kiracı adı tüm DC aracıları ve proxy sunucuları genelinde aynı olmalıdır.
 
-   Bir Azure kiracı kaydı uyuşmazlığı koşulu varsa, bu sorun `Register-AzureADPasswordProtectionProxy` ve/veya `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 'leri gerektiği şekilde çalıştırılarak düzeltilebilir ve tüm kayıtlar için aynı Azure kiracısındaki kimlik bilgilerini kullandığınızdan emin olabilirsiniz.
+   Bir Azure kiracı kaydı uyuşmazlığı koşulu varsa, bu sorun, gerekli olduğu gibi `Register-AzureADPasswordProtectionProxy` ve/veya `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 'leri çalıştırılarak düzeltilebilir ve tüm kayıtlar için aynı Azure kiracısındaki kimlik bilgilerini kullandığınızdan emin olabilir.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC Aracısı, parola ilkesi dosyalarını şifreleyemedi veya şifresini çözemedi
 
@@ -166,7 +166,7 @@ Son Tarih yalnızca ilk önyüklemede denetlendiğinden, takvim son tarihi geçt
 > [!IMPORTANT]
 > Microsoft, zaman aşımına uğradı genel önizleme DC aracılarının en son sürüme hemen yükseltilmesini önerir.
 
-Ortamınızda yükseltilmesi gereken DC aracılarını bulmayı kolay bir yöntem `Get-AzureADPasswordProtectionDCAgent` cmdlet 'i çalıştırıyor, örneğin:
+Ortamınızdaki, yükseltilmesi gereken DC aracılarını bulmayı kolaylaştıran kolay bir yol `Get-AzureADPasswordProtectionDCAgent` cmdlet 'ini çalıştırmalıdır, örneğin:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -187,7 +187,7 @@ PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-Azure AD parola koruma proxy yazılımı, hiçbir sürümde zaman sınırlı değildir. Microsoft, hem DC 'nin hem de ara sunucu aracılarının yayımlandıklarında en son sürümlere yükseltilmesini öneriyor. `Get-AzureADPasswordProtectionProxy` Cmdlet 'i, DC aracıları için yukarıdaki örneğe benzer şekilde yükseltmeleri gerektiren proxy aracılarını bulmak için kullanılabilir.
+Azure AD parola koruma proxy yazılımı, hiçbir sürümde zaman sınırlı değildir. Microsoft, hem DC 'nin hem de ara sunucu aracılarının yayımlandıklarında en son sürümlere yükseltilmesini öneriyor. `Get-AzureADPasswordProtectionProxy` cmdlet 'i, DC aracıları için yukarıdaki örneğe benzer şekilde yükseltmeler gerektiren proxy aracılarını bulmak için kullanılabilir.
 
 Belirli yükseltme yordamları hakkında daha fazla bilgi için [DC aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) ve [proxy aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) bölümüne bakın.
 
@@ -197,7 +197,7 @@ DC Aracısı hizmetinin soruna neden olduğu bir durum oluşursa, DC Aracısı h
 
 Başka bir düzeltme ölçüsü, etkinleştirme modunu Azure AD parola koruma portalında Hayır olarak ayarlamak olacaktır. Güncelleştirilmiş ilke indirildikten sonra, her DC Aracısı hizmeti, tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Daha fazla bilgi için bkz. [zorla modu](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
-## <a name="removal"></a>Çıkarma
+## <a name="removal"></a>Kaldırılmasını
 
 Azure AD parola koruma yazılımını kaldırmaya ve etki alanından ve ormandan ilgili tüm durumu temizlemesine karar verdiyseniz, bu görev aşağıdaki adımlar kullanılarak gerçekleştirilebilir:
 
@@ -216,7 +216,7 @@ Azure AD parola koruma yazılımını kaldırmaya ve etki alanından ve ormandan
 
    $Keywords değişken değerinin sonundaki yıldız işaretini ("*") atlayın.
 
-   `Get-ADObject` Komut aracılığıyla bulunan sonuç nesneleri, daha sonra `Remove-ADObject`el ile veya silinmiş olabilir.
+   `Get-ADObject` komutu aracılığıyla bulunan elde edilen nesneler, `Remove-ADObject`veya el ile silinmiş olabilir.
 
 4. Her bir etki alanı adlandırma bağlamındaki tüm DC Aracısı bağlantı noktalarını el ile kaldırın. Yazılımın ne kadar büyük ölçüde dağıtıldığını bağlı olarak, ormanda etki alanı denetleyicisi başına bu nesnelerden biri olabilir. Bu nesnenin konumu aşağıdaki Active Directory PowerShell komutuyla bulunabilir:
 
@@ -226,7 +226,7 @@ Azure AD parola koruma yazılımını kaldırmaya ve etki alanından ve ormandan
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   `Get-ADObject` Komut aracılığıyla bulunan sonuç nesneleri, daha sonra `Remove-ADObject`el ile veya silinmiş olabilir.
+   `Get-ADObject` komutu aracılığıyla bulunan elde edilen nesneler, `Remove-ADObject`veya el ile silinmiş olabilir.
 
    $Keywords değişken değerinin sonundaki yıldız işaretini ("*") atlayın.
 

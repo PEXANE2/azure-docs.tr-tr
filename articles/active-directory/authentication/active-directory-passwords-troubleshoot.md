@@ -4,7 +4,7 @@ description: Azure AD self servis parola sıfırlama sorunlarını giderme
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4f236f2f2fdbf2736f87f754f48387f9f41850d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 003ceb19fafade4972ebb0cf4e60ceda34dc1928
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024630"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893455"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Self servis parola sıfırlama sorunlarını giderme
 
@@ -127,7 +127,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 | 31018| KeyPairCreationSuccess| Bu olay parola şifreleme anahtarını başarıyla oluşturduğumuz anlamına gelir. Bu anahtar, şirket içi ortamınıza gönderilmek üzere buluttan parolaları şifrelemek için kullanılır.|
 | 32000| UnknownError| Bu olay, parola yönetimi işlemi sırasında bilinmeyen bir hata oluştuğunu gösterir. Daha fazla ayrıntı için olaydaki özel durum metnine bakın. Sorun yaşıyorsanız, parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin. Bu yardım yoksa, etkinlik günlüğlerinizin bir kopyasını, Destek mühendisinize belirtilen izleme KIMLIĞIYLE birlikte ekleyin.|
 | 32001| ServiceError| Bu olay, bulut parola sıfırlama hizmetine bağlanılırken bir hata olduğunu gösterir. Bu hata genellikle şirket içi hizmet, parola sıfırlama Web hizmetine bağlanamadığı zaman oluşur.|
-| 32002| ServiceBusError| Bu olay, kiracının Service Bus örneğine bağlanılırken bir hata olduğunu gösterir. Şirket içi ortamınızda giden bağlantıları engelliyorsanız bu durum oluşabilir. TCP 443 üzerinden bağlantılara izin verdiğinizden emin olmak için güvenlik duvarınızı denetleyip https://ssprsbprodncu-sb.accesscontrol.windows.net/ ve yeniden deneyin. Hala sorun yaşıyorsanız, parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin.|
+| 32002| ServiceBusError| Bu olay, kiracının Service Bus örneğine bağlanılırken bir hata olduğunu gösterir. Şirket içi ortamınızda giden bağlantıları engelliyorsanız bu durum oluşabilir. TCP 443 üzerinden bağlantılara izin verildiğinden ve https://ssprdedicatedsbprodncu.servicebus.windows.net için güvenlik duvarınızı denetleyin ve sonra yeniden deneyin. Hala sorun yaşıyorsanız, parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin.|
 | 32003| Inputvalidationerror| Bu olay, Web hizmeti API 'imize geçirilen girişin geçersiz olduğunu gösterir. İşlemi yeniden deneyin.|
 | 32004| DecryptionError| Bu olay, buluttan gelen parolanın şifresini çözerken bir hata olduğunu gösterir. Bunun nedeni, bulut hizmeti ile şirket içi ortamınız arasında bir şifre çözme anahtarı uyumsuzluğu olabilir. Bu sorunu çözmek için, şirket içi ortamınızda parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirin.|
 | 32005| ConfigurationError| Ekleme sırasında, kiracıya özgü bilgileri şirket içi ortamınızdaki bir yapılandırma dosyasına kaydedebiliyoruz. Bu olay, bu dosyayı kaydederken bir hata olduğunu veya hizmetin başlatıldığı sırada dosyayı okurken bir hata olduğunu gösterir. Bu sorunu gidermek için, yapılandırma dosyasının yeniden yazmayı zorlamak üzere parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin.|
@@ -135,14 +135,14 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 | 32008| Doğrulama hatası| Bu olay, parola sıfırlama Web hizmetinden geçersiz bir yanıt aldığınızı gösterir. Bu sorunu gidermek için parola geri yazma özelliğini devre dışı bırakıp yeniden etkinleştirmeyi deneyin.|
 | 32009| AuthTokenError| Bu olay, Azure AD Connect kurulumu sırasında belirtilen genel yönetici hesabı için bir yetkilendirme belirteci alamadık. Bu hata, genel yönetici hesabı için belirtilen Hatalı Kullanıcı adı veya parola nedeniyle oluşabilir. Bu hata, belirtilen genel yönetici hesabı federe olduğunda da oluşabilir. Bu sorunu gidermek için yapılandırmayı doğru Kullanıcı adı ve parolayla yeniden çalıştırın ve yöneticinin yönetilen (salt bulut veya parola eşitlenmiş) hesap olduğundan emin olun.|
 | 32010| CryptoError| Bu olay, parola şifreleme anahtarını oluştururken veya bulut hizmetinden gelen bir parolanın şifresini çözerken bir hata olduğunu gösterir. Bu hata büyük olasılıkla ortamınızla ilgili bir sorun olduğunu gösterir. Bu sorunu çözme hakkında daha fazla bilgi edinmek için olay günlüğlerinizin ayrıntılarına bakın. Ayrıca parola geri yazma hizmetini devre dışı bırakıp yeniden etkinleştirmeyi deneyebilirsiniz.|
-| 32011| OnBoardingServiceError| Bu olay, şirket içi hizmetin ekleme işlemini başlatmak için parola sıfırlama Web hizmetiyle düzgün şekilde iletişim kuramadığını gösterir. Bu, bir güvenlik duvarı kuralı nedeniyle veya kiracınız için bir kimlik doğrulama belirteci alınırken bir sorun oluşursa oluşabilir. Bu sorunu gidermek için TCP 443 ve TCP 9350-9354 üzerinden giden bağlantıları veya https://ssprsbprodncu-sb.accesscontrol.windows.net/ ' ı engellemediğinizden emin olun. Ayrıca, eklemek için kullandığınız Azure AD yönetici hesabının Federasyonun olmadığından emin olun.|
-| 32013| OffBoardingError| Bu olay, şirket içi hizmetin çıkarma işlemini başlatmak için parola sıfırlama Web hizmeti ile düzgün şekilde iletişim kuramadığını gösterir. Bu, bir güvenlik duvarı kuralı nedeniyle veya kiracınızın yetkilendirme belirtecini alırken bir sorun oluşursa oluşabilir. Bu sorunu gidermek için, 443 veya-0 @no__t giden bağlantıları engellemediğinden ve kullandığınız Azure Active Directory yönetici hesabının federasyona sahip olmadığından emin olun.|
+| 32011| OnBoardingServiceError| Bu olay, şirket içi hizmetin ekleme işlemini başlatmak için parola sıfırlama Web hizmetiyle düzgün şekilde iletişim kuramadığını gösterir. Bu, bir güvenlik duvarı kuralı nedeniyle veya kiracınız için bir kimlik doğrulama belirteci alınırken bir sorun oluşursa oluşabilir. Bu sorunu gidermek için TCP 443 ve TCP 9350-9354 veya https://ssprdedicatedsbprodncu.servicebus.windows.net için giden bağlantıları engellemediğinizden emin olun. Ayrıca, eklemek için kullandığınız Azure AD yönetici hesabının Federasyonun olmadığından emin olun.|
+| 32013| OffBoardingError| Bu olay, şirket içi hizmetin çıkarma işlemini başlatmak için parola sıfırlama Web hizmeti ile düzgün şekilde iletişim kuramadığını gösterir. Bu, bir güvenlik duvarı kuralı nedeniyle veya kiracınızın yetkilendirme belirtecini alırken bir sorun oluşursa oluşabilir. Bu sorunu gidermek için 443 veya https://ssprdedicatedsbprodncu.servicebus.windows.net üzerinden giden bağlantıları engellemediğinden ve kullandığınız Azure Active Directory yönetici hesabının federasyona sahip olmadığından emin olun.|
 | 32014| ServiceBusWarning| Bu olay, kiracının Service Bus örneğine bağlanmayı yeniden denememiz gerektiğini gösterir. Normal koşullar altında bu bir sorun olmaması gerekir, ancak bu olayı birçok kez görürseniz, özellikle yüksek Gecikmeli veya düşük bant genişliğine sahip bir bağlantı olması halinde, ağ bağlantınızı Service Bus kontrol etmeyi göz önünde bulundurun.|
 | 32015| ReportServiceHealthError| Parola geri yazma hizmetinizin sistem durumunu izlemek için, her beş dakikada bir parola sıfırlama Web hizmetinize sinyal verileri göndereceğiz. Bu olay, bu durum bilgilerini bulut Web hizmetine geri gönderirken bir hata olduğunu gösterir. Bu durum bilgileri, nesne tarafından tanımlanabilen bilgileri (OII) veya kişisel olarak tanımlanabilir bilgileri (PII) verilerini içermez ve bulutta hizmet durumu bilgileri sağlayabilmemiz için yalnızca bir sinyal ve temel hizmet istatistiklerdir.|
 | 33001| ADUnKnownError| Bu olay Active Directory tarafından döndürülen bilinmeyen bir hata olduğunu gösterir. Daha fazla bilgi için, ADSync kaynağından olaylar için Azure AD Connect Server olay günlüğünü denetleyin.|
 | 33002| Adusernotfoun| Bu olay, bir parolayı sıfırlamaya veya değiştirmeye çalışan kullanıcının şirket içi dizinde bulunamadığını gösterir. Bu hata, Kullanıcı şirket içinde silindiğinde ve bulutta olmadığında ortaya çıkabilir. Bu hata, eşitleme ile ilgili bir sorun varsa da oluşabilir. Daha fazla bilgi için eşitleme günlüklerinizi ve son birkaç eşitleme çalıştırması ayrıntılarını kontrol edin.|
 | 33003| ADMutliMatchError| Bir parola sıfırlama veya değişiklik isteği buluttan kaynaklanıyorsa, bu isteğin şirket içi ortamınızdaki bir kullanıcıya nasıl bağlanacağını öğrenmek için Azure AD Connect kurulum işlemi sırasında belirtilen bulut bağlayıcısını kullanırız. Bu olay, şirket içi dizininizde aynı bulut bağlayıcısı özniteliğiyle iki Kullanıcı bulduğumuz anlamına gelir. Daha fazla bilgi için eşitleme günlüklerinizi ve son birkaç eşitleme çalıştırması ayrıntılarını kontrol edin.|
-| 33004| ADPermissionsError| Bu olay, Active Directory Yönetim Aracısı (ADMA) hizmet hesabının yeni bir parola ayarlamak için söz konusu hesapta uygun izinlere sahip olmadığını gösterir. Kullanıcının ormanındaki ADMA hesabının ormandaki tüm nesnelerde sıfırlama ve parola değiştirme izinlerine sahip olduğundan emin olun. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. 4. Adım: uygun Active Directory izinleri ayarlama.|
+| 33004| ADPermissionsError| Bu olay, Active Directory Yönetim Aracısı (ADMA) hizmet hesabının yeni bir parola ayarlamak için söz konusu hesapta uygun izinlere sahip olmadığını gösterir. Kullanıcının ormanındaki ADMA hesabının ormandaki tüm nesnelerde sıfırlama ve parola değiştirme izinlerine sahip olduğundan emin olun. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. 4. Adım: uygun Active Directory izinleri ayarlama. Bu hata, kullanıcının AdminCount özelliği 1 olarak ayarlandığında da oluşabilir.|
 | 33005| ADUserAccountDisabled| Bu olay, şirket içinde devre dışı bırakılmış bir hesabın parolasını sıfırlama veya değiştirme girişiminde bulunulmadığını gösterir. Hesabı etkinleştirin ve işlemi yeniden deneyin.|
 | 33006| ADUserAccountLockedOut| Bu olay, şirket içinde kilitlenen bir hesabın parolasını sıfırlama veya değiştirme girişiminde bulunulmadığını gösterir. Bir Kullanıcı kısa bir süre içinde çok fazla kez değişiklik veya sıfırlama işlemini denediğinde kilitleme işlemleri gerçekleşebilir. Hesabın kilidini açın ve işlemi yeniden deneyin.|
 | 33007| ADUserIncorrectPassword| Bu olay, kullanıcının bir parola değiştirme işlemi gerçekleştirirken yanlış geçerli parolayı belirtdiğini gösterir. Doğru geçerli parolayı belirtip yeniden deneyin.|
@@ -175,7 +175,7 @@ Daha fazla ayrıntı elde etmek için, her Çarşamba güncelleştirilmiş [Micr
 Daha fazla bilgi için [Azure AD Connect önkoşulları](../hybrid/how-to-connect-install-prerequisites.md) makalesindeki bağlantı önkoşullarını gözden geçirin.
 
 > [!NOTE]
-> Ayrıca, "parolanın süresi dolmasın" veya "Kullanıcı parolayı değiştiremez" ayarları şirket içi AD DS hesapta yapılandırılırsa, SSPR de başarısız olabilir. 
+> "Parolanın süresi dolmasın" veya "Kullanıcı parolayı değiştiremez" ayarları şirket içi AD DS hesapta yapılandırılırsa SSPR de başarısız olabilir. 
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Azure AD Connect eşitleme hizmetini yeniden başlatın
 
@@ -230,9 +230,9 @@ Azure AD Connect sunucusunun en son sürümünü yüklemek sorununuzu gidermezse
 
 Azure AD Connect parola geri yazma işlemini gerçekleştirmek için **parola sıfırlama** izninin Active Directory gerekir. Azure AD Connect belirli bir şirket içi Active Directory Kullanıcı hesabı için gerekli izinlere sahip olup olmadığını öğrenmek için, Windows etkin Izin özelliğini kullanabilirsiniz:
 
-1. Azure AD Connect sunucusunda oturum açın **ve @no__t-** 2**eşitleme hizmeti**'ni seçerek **Synchronization Service Manager** başlatın.
+1. Azure AD Connect sunucusunda oturum açın ve > **eşitleme hizmetini** **Başlat** ' a tıklayarak **Synchronization Service Manager** başlatın.
 1. **Bağlayıcılar** sekmesinde şirket içi **Active Directory Domain Services** Bağlayıcısı ' nı seçin ve ardından **Özellikler**' i seçin.  
-   ![No__t-1 özelliklerini nasıl düzenleyileceğini gösteren-0Service Manager Synchronization  
+   özelliklerin nasıl düzenleneceğini gösteren ![Synchronization Service Manager](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
 1. Açılır pencerede **Active Directory ormana Bağlan** ' ı seçin ve **Kullanıcı adı** özelliğini unutmayın. Bu özellik, dizin eşitlemesi gerçekleştirmek için Azure AD Connect tarafından kullanılan AD DS hesabıdır. Parola geri yazma işlemini gerçekleştirmek için Azure AD Connect AD DS hesabının parola sıfırlama iznine sahip olması gerekir.  
 

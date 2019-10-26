@@ -6,25 +6,24 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 10/01/2019
+ms.topic: article
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9994d5f882e7bf27ac822a69c4310bc7c6fabe1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
-ms.translationtype: HT
+ms.openlocfilehash: 4307c9036db45145a7c0e95cb5e55a667c6851eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803467"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893375"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -79,7 +78,7 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
 | onpremisessamaccount | Şirket içi Azure AD 'den eşitlenmiş SAM hesap adı |
 | uzantının | Azure AD 'de kullanıcının ObjectID |
-| çalışan | kullanıcının ÇalışanKimliği |
+| çalışan | Kullanıcının çalışan KIMLIĞI |
 | Dizin genişletmeleri | [Azure AD Connect eşitleme kullanılarak şirket içi Active Directory eşitlenen](../hybrid/how-to-connect-sync-feature-directory-extensions.md) Dizin uzantıları |
 | Uzantı öznitelikleri 1-15 | Azure AD şemasını genişletmek için kullanılan şirket içi uzantı öznitelikleri |
 
@@ -91,7 +90,7 @@ Ayrıca, Azure AD 'de tanımladığınız talepler için herhangi bir sabit (sta
 
 1. Değiştirmek istediğiniz gerekli talebe tıklayın.
 
-1. **Kaynak özniteliğinde** kuruluşa göre sabit değeri girin ve **Kaydet**' e tıklayın.
+1. **Kaynak özniteliğinde** kuruluşunuza göre sabit değeri tırnak işareti olmadan girin ve **Kaydet**' e tıklayın.
 
     ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
@@ -118,19 +117,27 @@ Uygulamaya özel talepler eklemek için:
 1. Taleplerin **adını** girin. Değer, SAML spec başına, bir URI deseninin tamamen izlenmesi gerekmez. Bir URI deseninin olması gerekiyorsa, bunu **ad alanı** alanına koyabilirsiniz.
 1. Talebin değerini almak için gereken **kaynağı** seçin. Kaynak özniteliği açılan listesinden bir kullanıcı özniteliği seçebilir veya bir talep olarak yaymadan önce Kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
 
-### <a name="application-specific-claims---transformations"></a>Uygulamaya özgü talepler-dönüşümler
+### <a name="claim-transformations"></a>Talep dönüştürmeleri
 
-Talep dönüştürmeleri işlevlerini de kullanabilirsiniz.
+Bir Kullanıcı özniteliğine dönüşüm uygulamak için:
+
+1. **Talebi Yönet**bölümünde, isteği kaynak olarak *dönüştürme* ' yi seçerek **Dönüştürmeyi Yönet** sayfasını açın.
+2. Dönüştürme açılan listesinden işlevi seçin. Seçili işleve bağlı olarak, dönüşümde değerlendirmek için parametreler ve sabit bir değer sağlamanız gerekir. Kullanılabilir işlevler hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
+3. Birden çok dönüşüm uygulamak için **dönüştürme Ekle**' ye tıklayın. Bir talebe en fazla iki dönüşüm uygulayabilirsiniz. Örneğin, önce `user.mail`e-posta önekini ayıklayabilirsiniz. Ardından, dizeyi büyük harfe getirin.
+
+   ![NameID (ad tanımlayıcı) değerini Düzenle](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
+
+Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 
 | İşlev | Açıklama |
 |----------|-------------|
 | **ExtractMailPrefix ()** | Etki alanı sonekini e-posta adresinden veya Kullanıcı asıl adından kaldırır. Bu, yalnızca Kullanıcı adının geçirildiği ilk kısmını ayıklar (örneğin, joe_smith@contoso.comyerine "joe_smith"). |
-| **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. |
+| **JOIN ()** | İki özniteliği birleştirerek yeni bir değer oluşturur. İsteğe bağlı olarak, iki öznitelik arasında bir ayırıcı kullanabilirsiniz. NameID talep dönüştürmesi için, JOIN doğrulanmış bir etki alanıyla kısıtlıdır. Seçilen Kullanıcı tanımlayıcı değeri bir etki alanına sahipse, seçilen doğrulanmış etki alanını eklemek için Kullanıcı adını ayıklar. Örneğin, Kullanıcı tanımlayıcı değeri olarak e-postayı (joe_smith@contoso.com) seçip doğrulanmış etki alanı olarak contoso.onmicrosoft.com ' i seçerseniz, bu, joe_smith@contoso.onmicrosoft.comsonuçlanır. |
 | **ToLower ()** | Seçili özniteliğin karakterlerini küçük harfli karakterlere dönüştürür. |
 | **ToUpper ()** | Seçili özniteliğin karakterlerini büyük harfli karakterlere dönüştürür. |
 | **Contains ()** | Giriş belirtilen değerle eşleşiyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, "@contoso.com" etki alanını içeriyorsa değerin kullanıcının e-posta adresi olduğu bir talep oluşturmak istiyorsanız, aksi takdirde Kullanıcı asıl adını çıkarmak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. email<br/>*Değer*: "@contoso.com"<br/>Parametre 2 (çıkış): User. email<br/>Parametre 3 (eşleşme yoksa çıkış): User. UserPrincipalName |
-| **EndWith ()** | Giriş belirtilen değerle sona ererse bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ÇalışanNo "000" ile bitiyorsa değerin kullanıcının EmployeeID olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak istersiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. EmployeeID<br/>*Değer*: "000"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
-| **StartWith ()** | Giriş belirtilen değerle başlıyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ülke/bölge "US" ile başlıyorsa değerin kullanıcının EmployeeID olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. Country<br/>*Değer*: "US"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
+| **EndWith ()** | Giriş belirtilen değerle sona ererse bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, çalışan KIMLIĞI "000" ile bitiyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak istersiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. EmployeeID<br/>*Değer*: "000"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
+| **StartWith ()** | Giriş belirtilen değerle başlıyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ülke/bölge "ABD" ile başlıyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)* : User. Country<br/>*Değer*: "US"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
 | **Ayıkla ()-sonrasında eşleme** | Belirtilen değerle eşleştirdikten sonra alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon" ise, eşleşen değer "Finance_" ise, talebin çıktısı "Bsıon" olur. |
 | **Extract ()-öncesinde eşleme** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "BSimon_US" ise, eşleşen değer "_US" ise, talebin çıktısı "Bsıon" olur. |
 | **Ayıkla ()-eşleşen** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon_US" ise, ilk eşleşen değer "Finance_", ikinci eşleşen değer "_US" ise, talebin çıktısı "Bsıon" olur. |
@@ -138,10 +145,39 @@ Talep dönüştürmeleri işlevlerini de kullanabilirsiniz.
 | **ExtractAlpha ()-sonek** | Dizenin son ek alfabetik bölümünü döndürür.<br/>Örneğin, girişin değeri "123_Simon" ise, "Simon" döndürür. |
 | **ExtractNumeric ()-ön ek** | Dizenin ön ek sayısal parçasını döndürür.<br/>Örneğin, girişin değeri "123_BSimon" ise, "123" döndürür. |
 | **ExtractNumeric ()-sonek** | Dizenin son ek sayısal parçasını döndürür.<br/>Örneğin, girişin değeri "BSimon_123" ise, "123" döndürür. |
-| **IfEmpty ()** | Giriş null veya boşsa bir öznitelik veya sabit verir.<br/>Örneğin, belirli bir kullanıcı için EmployeeID boşsa, bir ExtensionAttribute içinde depolanan bir özniteliğin çıktısını almak istiyorsanız. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>Parametre 1 (giriş): User. EmployeeID<br/>Parametre 2 (çıkış): User. extensionAttribute1<br/>Parametre 3 (eşleşme yoksa çıkış): User. EmployeeID |
-| **IfNotEmpty ()** | Giriş null veya boş değilse bir öznitelik veya sabit verir.<br/>Örneğin, belirli bir kullanıcı için EmployeeID boş değilse, bir ExtensionAttribute içinde depolanan bir özniteliğin çıktısını almak istiyorsanız. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>Parametre 1 (giriş): User. EmployeeID<br/>Parametre 2 (çıkış): User. extensionAttribute1 |
+| **IfEmpty ()** | Giriş null veya boşsa bir öznitelik veya sabit verir.<br/>Örneğin, belirli bir kullanıcının çalışan KIMLIĞI boşsa, bir ExtensionAttribute içinde depolanan bir özniteliğin çıktısını almak istiyorsanız. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>Parametre 1 (giriş): User. EmployeeID<br/>Parametre 2 (çıkış): User. extensionAttribute1<br/>Parametre 3 (eşleşme yoksa çıkış): User. EmployeeID |
+| **IfNotEmpty ()** | Giriş null veya boş değilse bir öznitelik veya sabit verir.<br/>Örneğin, belirli bir kullanıcının çalışan KIMLIĞI boş değilse, bir ExtensionAttribute içinde depolanan bir özniteliğin çıktısını almak istiyorsanız. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>Parametre 1 (giriş): User. EmployeeID<br/>Parametre 2 (çıkış): User. extensionAttribute1 |
 
 Ek Dönüştürmelere ihtiyacınız varsa, *SaaS uygulaması* kategorisi altında [Azure AD 'deki geri bildirim forumuna](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) fikir gönderin.
+
+## <a name="emitting-claims-based-on-conditions"></a>Koşullara göre talepleri yayma
+
+Kullanıcı türüne ve kullanıcının ait olduğu gruba göre bir talebin kaynağını belirtebilirsiniz. 
+
+Kullanıcı türü şu olabilir:
+- **Any**: tüm kullanıcıların uygulamaya erişmesine izin verilir.
+- **Üyeler**: kiracının yerel üyesi
+- **Tüm konuklar**: Kullanıcı, Azure AD ile veya olmayan bir dış kuruluştan alınır.
+- **AAD konukları**: Konuk Kullanıcı Azure ad kullanan başka bir kuruluşa aittir.
+- **Dış konuklar**: Konuk Kullanıcı Azure AD olmayan bir dış kuruluşa aittir.
+
+
+Bunun yararlı olduğu bir senaryo, bir talebin kaynağı bir konuk ve bir uygulamaya erişen çalışan için farklılık gösteren bir senaryodur. Kullanıcı bir çalışan ise, NameID 'nin Kullanıcı. email kaynağı olduğunu belirtmek isteyebilirsiniz, ancak kullanıcı bir konuysanız, NameID User. extensionAttribute1 'tan kaynaklıdır.
+
+Talep koşulu eklemek için:
+
+1. **Talep yönetme**' de talep koşullarını genişletin.
+2. Kullanıcı türünü seçin.
+3. Kullanıcının ait olacağı grupları seçin. Belirli bir uygulama için tüm talepler genelinde en fazla 10 benzersiz grup seçebilirsiniz. 
+4. Talebin değerini almak için gereken **kaynağı** seçin. Kaynak özniteliği açılan listesinden bir kullanıcı özniteliği seçebilir veya bir talep olarak yaymadan önce Kullanıcı özniteliğine bir dönüşüm uygulayabilirsiniz.
+
+Koşulları eklediğiniz sıra önemlidir. Azure AD, talebe göre hangi değerin yayacağına karar vermek için koşulları yukarıdan aşağıya değerlendirir. 
+
+Örneğin, Brita Simon, contoso kiracısındaki bir Konuk Kullanıcı. Aynı zamanda Azure AD kullanan başka bir kuruluşa aittir. Fabrikam uygulaması için aşağıdaki yapılandırma verildiğinde, Brita Fabrikam ' ta oturum açmaya çalıştığında Azure AD, koşulları takip edecek şekilde değerlendirir.
+
+İlk olarak, Azure AD, Brita 'ın Kullanıcı türünün `All guests`olup olmadığını doğrular. Bu, doğru olduğundan Azure AD, `user.extensionattribute1`talebine yönelik kaynağı atar. İkinci olarak, Azure AD, Brita 'ın Kullanıcı türünün `AAD guests`olup olmadığını doğrular, bu da doğru olduğundan Azure AD, talebin kaynağını `user.mail`atar. Son olarak, talep, Brita için `user.email` değer ile yayılır.
+
+![Talep koşullu yapılandırması](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

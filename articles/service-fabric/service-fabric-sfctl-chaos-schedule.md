@@ -3,22 +3,23 @@ title: Azure Service Fabric CLı-sfctl Chaos zamanlaması | Microsoft Docs
 description: CLı sfctl Chaos zamanlama komutlarını Service Fabric açıklar.
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1664978110b7c700906cbf4e6c80806ac70f1f05
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036527"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897549"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Chaos zamanlamasını alın ve ayarlayın.
@@ -39,7 +40,7 @@ Kullanımdaki Chaos zamanlamasının sürümünü ve Chaos 'ın ne zaman ve nas�
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
@@ -47,24 +48,24 @@ Kullanımdaki Chaos zamanlamasının sürümünü ve Chaos 'ın ne zaman ve nas�
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl Chaos zamanlama kümesi
 Chaos tarafından kullanılan zamanlamayı ayarlayın.
 
-Chaos, Chaos zamanlaması temelinde otomatik olarak çalıştırmalar zamanlar. Belirtilen giriş zamanlamadaki sürümün sunucudaki Chaos zamanlaması sürümü ile eşleşmesi gerekir. Belirtilen sürüm, sunucudaki sürümle eşleşmezse, Chaos zamanlaması güncellenmez. Belirtilen sürüm, sunucudaki sürümle eşleşiyorsa, Chaos zamanlaması güncelleştirilir ve sunucudaki Chaos zamanlamasının sürümü bir artırılır ve 2.147.483.647 sonrasında 0 ' a geri sarar. Bu çağrı yapıldığında Chaos çalışıyorsa, çağrı başarısız olur.
+Chaos, Chaos zamanlaması temelinde otomatik olarak çalıştırmalar zamanlar. Belirtilen sürüm sunucudaki sürümle eşleşiyorsa, Chaos zamanlaması güncelleştirilecektir. Chaos zamanlaması güncelleştirilirken, sunucudaki sürüm 1 artırılır. Sunucu üzerindeki sürüm, büyük bir sayıya ulaştıktan sonra tekrar 0 olarak kaydırılır. Bu çağrı yapıldığında Chaos çalışıyorsa, çağrı başarısız olur.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
 | --Chaos-Parameters-sözlük | Iş tarafından kullanılacak bir dize adları ile ChaosParameters eşlemesini temsil eden JSON kodlu liste. |
-| --süre sonu-tarih-UTC | Chaos zamanlamak için zamanlamanın ne zaman durdurulacağını durdurulacağı tarih ve saat.  Varsayılan\: 9999-12-31t23\:59\:59.999 z. |
+| --süre sonu-tarih-UTC | Chaos zamanlamak için zamanlamanın ne zaman durdurulacağını durdurulacağı tarih ve saat.  Varsayılan\: 9999-31-31T23\:59\:59.999 Z. |
 | --işler | Chaos 'ın ne zaman çalıştırılacağını temsil eden ve ile Chaos 'in hangi parametreleri çalıştıracağınızı temsil eden JSON kodlu bir liste. |
-| --başlangıç-tarih-UTC | Chaos zamanlamak için zamanlamayı kullanmanın bitiş tarihi ve saati.  Varsayılan\: 1601-01-01T00\:00\:00.000 z. |
-| --timeout-t | Saniye cinsinden sunucu zaman aşımı.  Varsayılan\: 60. |
+| --başlangıç-tarih-UTC | Chaos zamanlamak için zamanlamayı kullanmanın bitiş tarihi ve saati.  Varsayılan\: 1601-01-01T00\:00\:00.000 Z. |
+| --timeout-t | Varsayılan\: 60. |
 | --sürüm | Zamanlamanın sürüm numarası. |
 
 ### <a name="global-arguments"></a>Genel bağımsız değişkenler
@@ -73,8 +74,8 @@ Chaos, Chaos zamanlaması temelinde otomatik olarak çalıştırmalar zamanlar. 
 | --- | --- |
 | --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
 | --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
-| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
-| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen değerler JSON, jsonc, tablo, TSV\:.  JSON\: varsayılan. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla bilgi ve örnek için bkz. http\://jmespath.org/. |
 | --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ### <a name="examples"></a>Örnekler

@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: MT
+ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166503"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901636"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Dahili olarak, ABFS sürücüsü URI 'de belirtilen kaynakları dosya ve dizinlere çevirir ve bu başvurularla Azure Data Lake Storage REST API çağrıları yapar.
 
-### <a name="authentication"></a>Kimlik doğrulama
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 ABFS sürücüsü, Hadoop uygulamasının Data Lake Storage 2. özellikli bir hesapta bulunan kaynaklara güvenli bir şekilde erişebilmesi için iki kimlik doğrulama biçimini destekler. Kullanılabilir kimlik doğrulama düzenlerinin tam ayrıntıları, [Azure Depolama Güvenliği Kılavuzu](../common/storage-security-guide.md)'nda verilmiştir. Bunlar:
 
@@ -54,13 +54,13 @@ ABFS sürücüsü, Hadoop uygulamasının Data Lake Storage 2. özellikli bir he
 
 ABFS sürücüsüne yönelik tüm yapılandırma <code>core-site.xml</code> yapılandırma dosyasında depolanır. [Ambarı](https://ambari.apache.org/)sağlayan Hadoop dağıtımları üzerinde, yapılandırma ayrıca Web portalı veya ambarı REST API kullanılarak yönetilebilir.
 
-Desteklenen tüm yapılandırma girişlerinin ayrıntıları [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)belirtilmiştir.
+Desteklenen tüm yapılandırma girişlerinin ayrıntıları [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)belirtilmiştir.
 
 ### <a name="hadoop-documentation"></a>Hadoop belgeleri
 
-ABFS sürücüsü [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html) tam olarak belgelenmiştir
+ABFS sürücüsü [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html) tam olarak belgelenmiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Databricks kümesi oluşturma](./data-lake-storage-quickstart-create-databricks-account.md)
-- [Azure Data Lake Storage 2. URI 'sini kullanma](./data-lake-storage-introduction-abfs-uri.md)
+- [Azure Data Lake Storage 2. Nesil URI'sini kullanma](./data-lake-storage-introduction-abfs-uri.md)

@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845540"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899026"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple düğümlerine genel bakış
 
 Düğümler, özel bulutun yapı taşlarıdır. Düğüm:
 
 * VMware ESXi hiper yöneticinin yüklü olduğu adanmış çıplak işlem Konağı  
-* Özel bulutlar oluşturmak için satın alabileceğiniz veya ayırabilmeniz için bir bilgi işlem birimi
-* CloudSimple hizmetinin kullanılabildiği bir bölgede satın alınabilir veya rezerve edilir
+* Özel bulutlar oluşturmak için sağlayabileceğiniz veya ayırabileceğiniz bir bilgi işlem birimi
+* CloudSimple hizmetinin kullanılabildiği bir bölgede sağlama veya ayırma için kullanılabilir
 
-Satın alınan düğümlerden özel bir bulut oluşturursunuz. Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gerekir. Özel bir bulutu genişletmek için ek düğümler ekleyin.  Mevcut bir kümeye düğüm ekleyebilir veya Azure portal düğümleri satın alarak ve CloudSimple hizmetiyle ilişkilendirerek yeni bir küme oluşturabilirsiniz.  Satın alınan tüm düğümler CloudSimple hizmeti altında görünür.  
+Sağlanan düğümlerden özel bir bulut oluşturabilirsiniz. Özel bir bulut oluşturmak için aynı SKU 'nun en az üç düğümü gerekir. Özel bir bulutu genişletmek için ek düğümler ekleyin.  Mevcut bir kümeye düğüm ekleyebilir veya Azure portal düğümleri sağlayıp CloudSimple hizmetiyle ilişkilendirerek yeni bir küme oluşturabilirsiniz.  Sağlanan tüm düğümler CloudSimple hizmeti altında görünür.  
 
-## <a name="purchased-nodes"></a>Satın alınan düğümler
+## <a name="provisioned-nodes"></a>Sağlanan düğümler
 
-Satın alınan düğümler, Kullandıkça Öde kapasitesi sağlar. Düğüm satın alma, VMware kümenizi isteğe bağlı olarak hızlıca ölçeklendirmenize yardımcı olur. Gerekli olan düğümleri ekleyebilir veya VMware kümenizi ölçeklendirmek için satın alınan bir düğümü silebilirsiniz. Satın alınan düğümler aylık olarak faturalandırılır ve satın alındığı abonelik üzerinden ücretlendirilir.
+Sağlanan düğümler, Kullandıkça Öde kapasitesi sağlar. Sağlama düğümleri, VMware kümenizi isteğe bağlı olarak hızlıca ölçeklendirmenize yardımcı olur. Gerekli olan düğümleri ekleyebilir veya VMware kümenizi ölçeklendirmek için sağlanan bir düğümü silebilirsiniz. Sağlanan düğümler aylık olarak faturalandırılır ve sağlandıkları aboneliğe ücretlendirilir.
 
 * Azure aboneliğiniz için kredi kartı ile ödeme yaparsanız, kart hemen faturalandırılır.
 * Faturaya göre faturalandırıldıysanız ücretler bir sonraki faturanızda görünür.
 
 ## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>CloudSimple düğümleri SKU 'SU tarafından VMware çözümü
 
-Satın alma veya rezervasyon için aşağıdaki düğüm türleri kullanılabilir.
+Aşağıdaki düğüm türleri, sağlama veya ayırma için kullanılabilir.
 
 | SKU           | CS28-Node                 | CS36-Node                 | CS36m-Node                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
@@ -58,5 +58,5 @@ Aşağıdaki düğüm limitleri özel bulutlar için geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Düğümleri satın almayı](create-nodes.md) öğrenin
+* [Düğüm sağlamayı](create-nodes.md) öğrenin
 * [Özel bulutlar](cloudsimple-private-cloud.md) hakkında bilgi edinin

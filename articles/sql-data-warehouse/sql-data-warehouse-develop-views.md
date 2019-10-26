@@ -10,34 +10,39 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8a770e66120e69271744942899186ece39b2a3c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 1fd406243f0f2f5339c4170c4ec17286fcf2ef6d
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479514"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901719"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda görünümler
-Azure SQL veri ambarı 'nda çözüm geliştirmeye yönelik T-SQL görünümlerini kullanma ipuçları. 
+Görünümler, çözümünüzün kalitesini artırmak için çeşitli şekillerde kullanılabilir. 
 
-## <a name="why-use-views"></a>Görünümler neden kullanılmalıdır?
-Görünümler, çözümünüzün kalitesini artırmak için çeşitli şekillerde kullanılabilir.  Bu makalede, çözümünüzü görünümlerle nasıl zenginleştirmenin yanı sıra göz önünde bulundurulması gereken sınırlamalar gösterilmektedir.
+Azure SQL veri ambarı, standart ve gerçekleştirilmiş görünümleri destekler. Her ikisi de SELECT ifadelerle oluşturulmuş ve sorguları Mantıksal tablolar olarak sunulan sanal tablolardır. Görünümler ortak veri hesaplamasının karmaşıklığını yalıtır ve değişiklikleri hesaplama için bir soyutlama katmanı ekler. böylece sorguları yeniden yazmaya gerek kalmaz.
 
+## <a name="standard-view"></a>Standart Görünüm
+Standart Görünüm, görünümün her seferinde verilerini hesaplar. Diskte depolanan veri yok. İnsanlar genellikle standart görünümleri, bir veritabanındaki mantıksal nesneleri ve sorguları düzenlemeye yardımcı olan bir araç olarak kullanır. Standart bir görünüm kullanmak için bir sorgunun kendisine doğrudan başvuru yapması gerekir. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql) documentation.
 
-> [!IMPORTANT]
-> [GERÇEKLEŞTIRILMIŞ Görünüm Oluştur ' da Select olarak](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)yeni gerçekleştirilmiş görünüm sözdizimine bakın.  Daha fazla bilgi için [sürüm notlarına](/azure/sql-data-warehouse/release-notes-10-0-10106-0)bakın.
->
+SQL veri ambarı 'ndaki görünümler yalnızca meta veri olarak depolanır. Sonuç olarak, aşağıdaki seçenekler kullanılamaz:
+* Şema bağlama seçeneği yok
+* Temel tablolar görünüm aracılığıyla güncelleştirilemez
+* Görünümler geçici tablolar üzerinde oluşturulamaz
+* GENIŞLETME/NOEXPAND ipuçları desteği yok
+* SQL Data Warehouse 'da dizinli görünüm yok
 
+Standart Görünümler, tablolar arasında performans için iyileştirilmiş birleştirmeleri zorlamak için kullanılabilir. Örneğin, bir görünüm, veri hareketini en aza indirmek için katılım ölçütlerinin bir parçası olarak yedekli bir dağıtım anahtarı içerebilir. Bir görünümün başka bir avantajı, belirli bir sorguyu veya katılma ipucunu zorlamak olabilir. Bu şekilde görünümlerin kullanılması, birleşimlerin her zaman en iyi şekilde gerçekleştirilmesini sağlar ve kullanıcıların birleştirmeler için doğru yapıyı hatırlamaları gereksinimini ortadan önler.
 
-> [!NOTE]
-> OLUŞTURMA görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql) documentation.
-> 
+## <a name="materialized-view"></a>Gerçekleştirilmiş görünüm
+Gerçekleştirilmiş bir görünüm, verileri Azure SQL veri ambarı 'nda tıpkı bir tablo gibi önceden hesaplar, depolar ve korur. Gerçekleştirilmiş bir görünüm kullanıldığında her seferinde yeniden hesaplama gerekmez. Veriler temel tablolara yüklendiği için, Azure SQL veri ambarı gerçekleştirilmiş görünümleri zaman uyumlu olarak yeniler.  Sorgu iyileştirici, görünümler sorguda başvurulmamış olsa bile sorgu performansını artırmak için dağıtılmış gerçekleştirilmiş görünümleri otomatik olarak kullanır.  Gerçekleştirilmiş görünümlerin en büyük yararlanırken sorguları, küçük sonuç kümesi üreten büyük tablolarda karmaşık sorgulardır (genellikle birleşimler ve toplamaları olan sorgular).  
 
-## <a name="architectural-abstraction"></a>Mimari soyutlama
+Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest).  
 
-Ortak bir uygulama deseninin ardından CREATE TABLE SELECT (CTAS) kullanarak tabloları yeniden oluşturmak ve ardından verileri yüklerken bir nesne yeniden adlandırma deseninin oluşturulması.
+Sorgu ayarlama Kılavuzu için, [gerçekleştirilmiş görünümlerle performans ayarlamayı](https://docs.microsoft.com/azure/sql-data-warehouse/performance-tuning-materialized-views)kontrol edin. 
 
-Aşağıdaki örnek bir tarih boyutuna yeni tarih kayıtları ekler. Yeni bir tablo olan DimDate_New, ilk olarak nasıl oluşturulduğunu ve tablonun orijinal sürümünün yerini alacak şekilde yeniden adlandırdığını aklınızda edin.
+## <a name="example"></a>Örnek
+Ortak bir uygulama deseninin ardından CREATE TABLE SELECT (CTAS) kullanarak tabloları yeniden oluşturmak ve ardından verileri yüklerken bir nesne yeniden adlandırma deseninin oluşturulması.  Aşağıdaki örnek bir tarih boyutuna yeni tarih kayıtları ekler. Yeni bir tablo olan DimDate_New, ilk olarak nasıl oluşturulduğunu ve tablonun orijinal sürümünün yerini alacak şekilde yeniden adlandırdığını aklınızda edin.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -49,27 +54,13 @@ SELECT *
 FROM   dbo.DimDate  AS prod
 UNION ALL
 SELECT *
-FROM   dbo.DimDate_stg AS stg
-;
+FROM   dbo.DimDate_stg AS stg;
 
 RENAME OBJECT DimDate TO DimDate_Old;
 RENAME OBJECT DimDate_New TO DimDate;
 
 ```
-
 Bununla birlikte, bu yaklaşım, tabloların bir kullanıcının görünümünden görünmesine ve görünmesine neden olabilir ve "tablo yok" hata iletileri de görünür. Görünümler, kullanıcılara, temel alınan nesnelerin yeniden adlandırıldığını tutarlı bir sunum katmanı sağlamak için kullanılabilir. Görünümler aracılığıyla verilere erişim sağlayarak, kullanıcılar temeldeki tablolara yönelik görünürlüğe gerek kalmaz. Bu katman, veri ambarı tasarımcılarının veri modelini gelişebilmesini sağlarken tutarlı bir kullanıcı deneyimi sağlar. Temel tabloları geliştirmekte olan tasarımcılar, tasarımcı 'nın veri yükleme işlemi sırasında performansı en üst düzeye çıkarmak için CTAS 'yi kullanabileceği anlamına gelir.   
-
-## <a name="performance-optimization"></a>Performans iyileştirmesi
-Görünümler, tablolar arasında performans için iyileştirilmiş birleştirmeleri zorlamak için de kullanılabilir. Örneğin, bir görünüm, veri hareketini en aza indirmek için katılım ölçütlerinin bir parçası olarak yedekli bir dağıtım anahtarı içerebilir. Bir görünümün başka bir avantajı, belirli bir sorguyu veya katılma ipucunu zorlamak olabilir. Bu şekilde görünümlerin kullanılması, birleşimlerin her zaman en iyi şekilde gerçekleştirilmesini sağlar ve kullanıcıların birleştirmeler için doğru yapıyı hatırlamaları gereksinimini ortadan önler.
-
-## <a name="limitations"></a>Sınırlamalar
-SQL veri ambarı 'ndaki görünümler yalnızca meta veri olarak depolanır. Sonuç olarak, aşağıdaki seçenekler kullanılamaz:
-
-* Şema bağlama seçeneği yok
-* Temel tablolar görünüm aracılığıyla güncelleştirilemez
-* Görünümler geçici tablolar üzerinde oluşturulamaz
-* GENIŞLETME/NOEXPAND ipuçları desteği yok
-* SQL Data Warehouse 'da dizinli görünüm yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Geliştirme ile ilgili daha fazla ipucu için bkz. [SQL Data Warehouse geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

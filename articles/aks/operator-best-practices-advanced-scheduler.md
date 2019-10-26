@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026115"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900122"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki gelişmiş Zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -179,7 +179,7 @@ Daha fazla bilgi için bkz. [benzeşim ve benzeşim önleme][k8s-affinity].
 | WEBAPP-1   | WEBAPP-2   | WEBAPP-3   |
 | Önbellek-1    | önbellek-2    | önbellek-3    |
 
-Bu örnek, düğüm seçicileri veya düğüm benzeşimi kullanmaktan daha karmaşık bir dağıtımdır. Dağıtım, Kubernetes 'in düğümlerde düğüm zamanlamalarına ilişkin denetim sağlar ve kaynakları mantıksal olarak yalıtabilir. Redin örneği için Azure Cache ile bu Web uygulamasına yönelik tüm bir örnek için bkz. [aynı düğümdeki Pod][k8s-pod-affinity]'leri birlikte bulundurma.
+Bu örnek, düğüm seçicileri veya düğüm benzeşimi kullanmaktan daha karmaşık bir dağıtımdır. Dağıtım, Kubernetes 'in düğümlerde düğüm zamanlamalarına ilişkin denetim sağlar ve kaynakları mantıksal olarak yalıtabilir. Redin örneği için Azure Cache ile bu Web uygulamasının tam bir örneği için bkz. [aynı düğümdeki aynı düğüm üzerinde yer alan ortak bulma][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

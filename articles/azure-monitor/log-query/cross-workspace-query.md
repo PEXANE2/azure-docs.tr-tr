@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici ile kaynaklar arasında sorgu | Microsoft Docs
 description: Bu makalede, aboneliğinizdeki birden çok çalışma alanı ve App Insights uygulamasının kaynaklarında nasıl sorgu yapılacağı açıklanır.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/05/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 06/05/2019
+ms.openlocfilehash: e74c81956ab0590b8b7237d3ecf60ae242a43b73
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650147"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894481"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme  
 
@@ -59,7 +53,7 @@ Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebil
 
 * Azure Kaynak KIMLIĞI: çalışma alanının Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır.  Çalışma alanları için şu biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/çalışma alanları/componentName*.  
 
-    Örneğin:
+    Örnek:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -90,7 +84,7 @@ Application Insights ' de bir uygulamanın tanımlanması, *uygulama (tanımlay�
 
 * Azure Kaynak KIMLIĞI-uygulamanın Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır. Biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/bileşenler/componentName*.  
 
-    Örneğin:
+    Örnek:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -110,7 +104,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Birden çok kaynak için çapraz kaynak sorgusu kullanma
 Çoklu Log Analytics çalışma alanları ve Application Insights kaynaklarından verileri ilişkilendirmek için çapraz kaynak sorguları kullanırken, sorgu karmaşık ve bakım açısından zor hale gelebilir. Sorgu mantığını sorgu yapısını kolaylaştıran sorgu kaynaklarının kapsamından ayırmak için [Azure izleyici günlük sorgularının işlevlerinden](functions.md) yararlanabilirsiniz. Aşağıdaki örnek, birden çok Application Insights kaynağını nasıl izleyebileceğinizi ve uygulama adına göre başarısız isteklerin sayısını görselleştirmenizi gösterir. 
 
-Aşağıdaki gibi Application Insights kaynak kapsamına başvuran bir sorgu oluşturun. `withsource= SourceApp` Komut, günlüğü gönderen uygulama adını atayan bir sütun ekler. Sorguyu, _Applicationsscoping_diğer adı ile birlikte bir [işlev olarak kaydedin](functions.md#create-a-function) .
+Aşağıdaki gibi Application Insights kaynak kapsamına başvuran bir sorgu oluşturun. `withsource= SourceApp` komutu, günlüğü gönderen uygulama adını atayan bir sütun ekler. Sorguyu, _Applicationsscoping_diğer adı ile birlikte bir [işlev olarak kaydedin](functions.md#create-a-function) .
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources

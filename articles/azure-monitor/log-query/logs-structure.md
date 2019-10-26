@@ -1,18 +1,18 @@
 ---
 title: Azure Izleyici günlüklerinin yapısı | Microsoft Docs
 description: Azure Izleyici 'den günlük verilerini almak için bir günlük sorgusu gerekir.  Bu makalede, yeni günlük sorgularının Azure Izleyici 'de nasıl kullanıldığı açıklanır ve bir tane oluşturmadan önce anlamanız gereken kavramlar sağlanır.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/22/2019
+ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034865"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894242"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
 [Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
@@ -59,12 +59,12 @@ Log Analytics çalışma alanının aksine, bir Application Insights uygulaması
 | Browserzamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler. |
 | customEvents        | Uygulamanız tarafından oluşturulan özel olaylar. |
 | customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler. |
-| bağımlılıklar        | Uygulamadan dış bileşenlere çağrılar. |
-| özel durumlar          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
-| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
+| Bağlantılıdır        | Uygulamadan dış bileşenlere çağrılar. |
+| Larý          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
+| PageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
 | performanceCounters | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri. |
-| istekler            | Her uygulama isteğinin ayrıntıları.  |
-| lerin              | Dağıtılmış izlemenin sonuçları. |
+| istekleri            | Her uygulama isteğinin ayrıntıları.  |
+| Lerin              | Dağıtılmış izlemenin sonuçları. |
 
 Her tablo için şemayı, uygulama için Log Analytics **şema** sekmesinde görüntüleyebilirsiniz.
 
@@ -76,7 +76,7 @@ Azure Izleyici günlüklerindeki her tablo kendi şemasına sahip olsa da, tüm 
 | Log Analytics çalışma alanı | Application Insights uygulaması | Açıklama |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | Kaydın oluşturulduğu tarih ve saat. |
-| Type          | ItemType   | Kaydın alındığı tablonun adı. |
+| Tür          | ItemType   | Kaydın alındığı tablonun adı. |
 | _Resourceıd   |            | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
 | _Faturalandırılabilir   |            | Alınan verilerin faturalandırılabilir olup olmadığını belirtir. |
 | _BilledSize   |            | Faturalanacak verilerin bayt cinsinden boyutunu belirtir. |

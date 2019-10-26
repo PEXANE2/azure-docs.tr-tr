@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici günlüğü sorgu örnekleri | Microsoft Docs
 description: Azure Izleyici 'de kusto sorgu dilini kullanan günlük sorgularının örnekleri.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: article
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.openlocfilehash: 2ded97e427c8ecf4584ee486408de14a26f014eb
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718905"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900362"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
 Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için [kusto sorgu dilini](/azure/kusto/query/) kullanan çeşitli [sorgu](log-query-overview.md) örnekleri yer almaktadır. Verileri birleştirmek ve analiz etmek için farklı yöntemler kullanılır. bu sayede, kendi gereksinimleriniz için kullanabileceğiniz farklı stratejileri belirlemek için bu örnekleri kullanabilirsiniz.  
@@ -79,7 +73,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Korumalı durum kayıtlarını sinyal kayıtlarıyla Eşleştir
 
 Bu örnek, hem bilgisayar hem de zaman ile eşleşen ilgili koruma durum kayıtlarını ve sinyal kayıtlarını bulur.
-Zaman alanı en yakın dakikaya yuvarlanır. Çalışma zamanı bölme hesaplamasını bunu yapmak için kullandık: `round_time=bin(TimeGenerated, 1m)`.
+Zaman alanı en yakın dakikaya yuvarlanır. Bunu yapmak için çalışma zamanı bölme hesaplamasını kullandık: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -92,7 +86,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="server-availability-rate"></a>Sunucu kullanılabilirlik oranı
 
 Sinyal kayıtlarına göre sunucu kullanılabilirlik oranını hesaplayın. Kullanılabilirlik, "saat başına en az 1 sinyal" olarak tanımlanır.
-Bu nedenle, bir sunucu 100 saat 98 ile kullanılabilirse, kullanılabilirlik oranı% 98.
+Bu nedenle, bir sunucu 100 saat 98 ile kullanılabilirse, kullanılabilirlik oranı %98.
 
 ```Kusto
 let start_time=startofday(datetime("2018-03-01"));
@@ -237,7 +231,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Etkinlik KIMLIĞINE göre güvenlik olaylarını say
 
 
-Bu örnek, **etkinlik** sütununun sabit yapısına bağımlıdır: \<id @ no__t-2 @ no__t-3 @ No__t-4name @ no__t-5.
+Bu örnek, **etkinlik** sütununun sabit yapısına bağımlıdır: \<ıd\>-\<Name\>.
 **Etkinlik** değerini iki yeni sütuna ayrıştırır ve her bir **ActivityId**'nin oluşma sayısını sayar.
 
 ```Kusto
@@ -278,7 +272,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Ayrıştırma etkinliği adı ve KIMLIĞI
-Aşağıdaki iki örnek, **etkinlik** sütununun sabit yapısına dayanır: \<id @ no__t-2 @ no__t-3 @ No__t-4name @ no__t-5. İlk örnek, iki yeni sütuna değer atamak için **Parse** işlecini kullanır: **ActivityId** ve **activitydesc**.
+Aşağıdaki iki örnek, **etkinlik** sütununun sabit yapısına dayanır: \<kimliği\>-\<adı\>. İlk örnek, iki yeni sütuna değer atamak için **Parse** işlecini kullanır: **ActivityId** ve **activitydesc**.
 
 ```Kusto
 SecurityEvent

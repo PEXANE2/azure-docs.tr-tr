@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 433480b4a587b3a085c3b1c0ba4122ae98eb4508
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756162"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897711"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -246,9 +246,9 @@ Aşağıdaki PowerShell kod parçacığını çalıştırın:
   ```
 ---
 
-## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>SQL VM kaynak sağlayıcısını bir aboneliğe kaydetme 
+## <a name="register-subscription-with-rp"></a>Aboneliği RP ile kaydetme
 
-SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için, aboneliğiniz ile kaynak sağlayıcısını kaydetmeniz gerekir. Azure portal, Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz.
+SQL Server VM SQL VM kaynak sağlayıcısına kaydetmek için öncelikle aboneliğinizi kaynak sağlayıcısına kaydetmeniz gerekir.  Azure portal, Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz.
 
 ### <a name="azure-portal"></a>Azure portalı
 

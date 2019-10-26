@@ -1,24 +1,19 @@
 ---
 title: Azure Application Insights kullanımı ve maliyetlerini yönetme | Microsoft Docs
 description: Application Insights telemetri birimlerini yönetin ve maliyetleri izleyin.
-services: application-insights
-documentationcenter: ''
-author: DaleKoetke
-manager: carmonm
-ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 10/03/2019
+author: DaleKoetke
 ms.author: dalek
-ms.openlocfilehash: f9d92f03b1f55ad9d1f1e272886095ae48033266
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.date: 10/03/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 5d8c0420f680371ab63a2ddd09071769586a42ca
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750390"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900036"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -77,13 +72,15 @@ Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/az
 
 Kullanımınızı [Azure portalından indirerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlamak için kazanılabilir. İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Contains" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir Microsoft. Insights/bileşenler ".  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
 
-## <a name="managing-your-data-volume"></a>Veri hacminin yönetilmesi 
+## <a name="understanding-ingested-data-volume"></a>Alınan veri birimini anlama
 
-Uygulamanızın ne kadar veri gönderdiğini anlamak için şunları yapabilirsiniz:
+Application Insights ne kadar veri alınacağını anlamak için şunları yapabilirsiniz:
 
-* Günlük veri hacmi grafiğini görmek için **kullanım ve tahmini maliyet** bölmesine gidin. 
-* Ölçüm Gezgini ' de yeni bir grafik ekleyin. Grafik ölçümü için, **veri noktası birimi**' ni seçin. **Gruplamayı**açın ve **veri türüne**göre gruplandırın.
-* @No__t_0 veri türünü kullanın. Örneğin, son gün içinde alınan veri hacmini görmek için sorgu şöyle olacaktır:
+1. Yukarıda açıklanan günlük veri hacmi grafiğini görmek için **kullanım ve tahmini maliyet** bölmesine gidin.
+2. Ölçüm Gezgini ' de yeni bir grafik ekleyin. Grafik ölçümü için, **veri noktası birimi**' ni seçin. **Gruplamayı**açın ve **veri türüne**göre gruplandırın.
+3. `systemEvents` tablosunu aşağıda gösterildiği gibi kullanın. 
+
+Örneğin, sorgu ile son 24 saat içinde alınan veri hacmi görmek için `systemEvents` tablosunu kullanabilirsiniz:
 
 ```kusto
 systemEvents 
@@ -94,7 +91,20 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes)
 ```
 
+Ya da son 30 güne ait veri türüne göre veri hacmi grafiğini görmek için şunu kullanabilirsiniz:
+
+```kusto
+systemEvents 
+| where timestamp >= ago(30d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
+```
+
 Bu sorgu, veri birimlerinde uyarı ayarlamak için bir [Azure günlük uyarısında](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) kullanılabilir. 
+
+## <a name="managing-your-data-volume"></a>Veri hacminin yönetilmesi 
 
 Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetilebilir:
 
@@ -172,8 +182,6 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](powershell.md#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
 
-Faturalama erken Aralık 2019 ' de daha uzun süre bekletmeye başladığında, 90 günden daha uzun süre tutulan veriler, Azure Log Analytics veri saklama için şu anda faturalandırılan ücret üzerinden faturalandırılacaktır. [Azure Izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)daha fazla bilgi edinin. [Bu öneri için oylama](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ile değişken bekletme ilerlemesini güncel tutun. 
-
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights kullanarak veri aktarımı ücretleri
 
 Verilerin Application Insights gönderilmesi veri bant genişliği ücretlerine neden olabilirler. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Application Insights günlük verisi alma maliyetleriyle karşılaştırılır. Sonuç olarak, Log Analytics için maliyetleri denetlemek, verileri alınan veri hacminin üzerine odaklamalıdır ve [burada](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)bu konuda bilgi sağlanmasına yardımcı olacak rehberlik sunuyoruz.   
@@ -250,4 +258,5 @@ Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: ../../azure-monitor/app/app-insights-overview.md
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/

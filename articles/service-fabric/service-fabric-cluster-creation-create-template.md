@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4a2fe8238a1ac6f668450aca4e2fd6d2b4ba04a5
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599980"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901542"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric kümesi Kaynak Yöneticisi şablonu oluşturma
 
@@ -38,7 +38,7 @@ Küme güvenliği, küme ilk kez ayarlandığında yapılandırılır ve daha so
 Bu makale [beş düğümlü güvenli küme][service-fabric-secure-cluster-5-node-1-nodetype] örnek şablonunu ve şablon parametrelerini kullanır. *Azuredeploy. JSON* ve *azuredeploy. Parameters. JSON* dosyasını bilgisayarınıza indirin ve her iki dosyayı da en sevdiğiniz metin düzenleyicisinde açın.
 
 > [!NOTE]
-> Ulusal bulutlarda (Azure Kamu, Azure Çin `fabricSettings` , Azure Almanya), aşağıdakileri şablonunuza de eklemeniz gerekir: `AADLoginEndpoint`, `AADTokenEndpointFormat` ve `AADCertEndpointFormat`.
+> Ulusal bulutlar (Azure Kamu, Azure Çin, Azure Almanya) için şu `fabricSettings` şablonunuza de eklemeniz gerekir: `AADLoginEndpoint`, `AADTokenEndpointFormat` ve `AADCertEndpointFormat`.
 
 ## <a name="add-certificates"></a>Sertifika ekle
 Sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna sertifikalar eklersiniz. Bu Anahtar Kasası parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy. Parameters. JSON*) ekleyin.
@@ -146,7 +146,7 @@ Küme kimlik doğrulama sertifikası, sanal makine ölçek kümesi kaynağındak
 Azure AD yapılandırmasını, sertifika anahtarlarını içeren anahtar kasasına başvurarak bir küme Kaynak Yöneticisi şablonuna eklersiniz. Bu Azure AD parametrelerini ve değerlerini bir Kaynak Yöneticisi şablon parametreleri dosyasına (*azuredeploy. Parameters. JSON*) ekleyin. 
 
 > [!NOTE]
-> Kümeyi oluşturmadan önce Azure AD kiracılarının ve kullanıcılarının oluşturulması gerekir.  Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.
+> Linux 'ta, kümeyi oluşturmadan önce Azure AD kiracılarının ve kullanıcılarının oluşturulması gerekir.  Daha fazla bilgi için, [istemcilerin kimliğini doğrulamak üzere Azure AD ayarlama](service-fabric-cluster-creation-setup-aad.md)makalesini okuyun.
 
 ```json
 {

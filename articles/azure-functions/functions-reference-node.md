@@ -12,18 +12,18 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255007"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898937"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
 Bu kılavuzda, JavaScript ile Azure Işlevleri yazma hakkında bilgiler yer alır.
 
-JavaScript işlevi, tetiklendiğinde yürütülen ([Tetikleyiciler, function. JSON içinde yapılandırıldığında](functions-triggers-bindings.md)) bir @no__t verilir. Her işleve geçirilen ilk bağımsız değişken, bağlama verilerini almak ve göndermek için kullanılan `context` nesnesi, günlüğe kaydetme ve çalışma zamanına iletişim kurmak için kullanılır.
+JavaScript işlevi, tetiklendiğinde yürütülen ([Tetikleyiciler, function. JSON içinde yapılandırıldığında](functions-triggers-bindings.md)) bir dışarıya aktarılmış `function`. Her işleve geçirilen ilk bağımsız değişken, bağlama verilerini almak ve göndermek için kullanılan `context` nesnesi, günlüğe kaydetme ve çalışma zamanına iletişim kurmak için kullanılır.
 
 Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. [Visual Studio Code](functions-create-first-function-vs-code.md) veya [portalda](functions-create-first-azure-function.md)kullanarak ilk işlevinizi oluşturmak için hızlı başlangıç işlevlerini doldurun.
 
@@ -50,7 +50,7 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-Projenin kökünde, işlev uygulamasını yapılandırmak için kullanılabilecek paylaşılan bir [Host. JSON](functions-host-json.md) dosyası vardır. Her işlevde kendi kod dosyası (. js) ve bağlama yapılandırma dosyası (Function. JSON) içeren bir klasör vardır. @No__t-0 ' ın üst dizininin adı her zaman işlevinizin adıdır.
+Projenin kökünde, işlev uygulamasını yapılandırmak için kullanılabilecek paylaşılan bir [Host. JSON](functions-host-json.md) dosyası vardır. Her işlevde kendi kod dosyası (. js) ve bağlama yapılandırma dosyası (Function. JSON) içeren bir klasör vardır. `function.json`üst dizininin adı her zaman işlevinizin adıdır.
 
 Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları, `bin` klasöründeki gerçek kitaplık dosyalarıyla birlikte `extensions.csproj` dosyasında tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](./functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
 
@@ -83,7 +83,7 @@ module.exports = async function (context) {
 
 Zaman uyumsuz bir işlevi dışarı aktarırken, bir çıkış bağlamayı de `return` değerini alacak şekilde yapılandırabilirsiniz. Yalnızca bir çıkış bağlaması varsa bu önerilir.
 
-@No__t-0 kullanarak bir çıktı atamak için, `name` özelliğini `function.json` ' te `$return` ' e değiştirin.
+`return`kullanarak bir çıktı atamak için `name` özelliğini `function.json``$return` olarak değiştirin.
 
 ```json
 {
@@ -116,7 +116,7 @@ Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici gir
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **[@No__t-2](#contextbindings-property) nesnesinin üyeleri olarak.** Her üye, *function. JSON*içinde tanımlanan `name` özelliği tarafından adlandırılır.
+ - **[`context.bindings`](#contextbindings-property) nesnesinin üyeleri olarak.** Her üye, *function. JSON*içinde tanımlanan `name` özelliği tarafından adlandırılır.
  
    ```javascript
    module.exports = async function(context) { 
@@ -157,7 +157,7 @@ Giriş, Azure Işlevlerinde iki kategoriye ayrılmıştır: biri tetikleyici gir
 
   Zaman uyumlu bir işlev kullanıyorsanız, bu nesneyi [`context.done`](#contextdone-method) ' i kullanarak döndürebilirsiniz (bkz. örnek).
 - **_[Tek çıkış Için önerilir]_ Doğrudan bir değer döndürme ve $return bağlama adı kullanma.** Bu yalnızca zaman uyumsuz/Promise döndüren işlevler için geçerlidir. [Zaman uyumsuz bir işlevi dışarı aktarırken](#exporting-an-async-function)örneğe bakın. 
-- **@No__t-1 ' e değer atama** Değerleri doğrudan Context. Bindings öğesine atayabilirsiniz.
+- **`context.bindings`değerler atama** Değerleri doğrudan Context. Bindings öğesine atayabilirsiniz.
 
   ```javascript
   module.exports = async function(context) {
@@ -183,12 +183,12 @@ Bir giriş bağlamasının veri türünü tanımlamak için bağlama tanımında
 }
 ```
 
-@No__t-0 seçenekleri şunlardır: `binary`, `stream` ve `string`.
+`dataType` seçenekleri şunlardır: `binary`, `stream`ve `string`.
 
 ## <a name="context-object"></a>bağlam nesnesi
 Çalışma zamanı, işlevinizden ve bu işlevden veri geçirmek ve çalışma zamanıyla iletişim kurmanızı sağlamak için bir `context` nesnesi kullanır. Bağlam nesnesi bağlamalardan veri okumak ve ayarlamak, günlükleri yazmak ve verdiğiniz işleviniz zaman uyumlu olduğunda `context.done` geri aramasını kullanmak için kullanılabilir.
 
-@No__t-0 nesnesi her zaman bir işleve ilk parametredir. @No__t-0 ve `context.log` gibi önemli yöntemlere sahip olduğu için dahil edilmelidir. Nesneyi istediğiniz her şey olarak adlandırabilirsiniz (örneğin, `ctx` veya `c`).
+`context` nesnesi her zaman bir işleve ilk parametredir. `context.done` ve `context.log`gibi önemli yöntemlere sahip olduğundan dahil edilmelidir. Nesneyi istediğiniz her şey olarak adlandırabilirsiniz (örneğin, `ctx` veya `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -204,7 +204,7 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Bağlama verilerini okumak veya atamak için kullanılan adlandırılmış bir nesne döndürür. @No__t-0 ' da özellikleri okuyarak, giriş ve tetikleyici bağlama verilerine erişilebilir. Çıkış bağlama verileri, @no__t veri eklenerek atanabilir-0
+Bağlama verilerini okumak veya atamak için kullanılan adlandırılmış bir nesne döndürür. `context.bindings`özellikleri okunarak giriş ve tetikleyici bağlama verilerine erişilebilir. Çıkış bağlama verileri, `context.bindings` veri eklenerek atanabilir
 
 Örneğin, işlevinizdeki aşağıdaki bağlama tanımları. JSON, `context.bindings.myInput` ' dan bir kuyruğun içeriğine erişmenize ve `context.bindings.myOutput` kullanarak bir kuyruğa çıktılar atamanıza izin verir.
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-@No__t-1 nesnesi yerine `context.done` yöntemini kullanarak çıkış bağlama verilerini tanımlamanızı seçebilirsiniz (aşağıya bakın).
+`context.binding` nesnesi yerine `context.done` yöntemi kullanarak çıkış bağlama verilerini tanımlamanızı seçebilirsiniz (aşağıya bakın).
 
 ### <a name="contextbindingdata-property"></a>Context. bindingData özelliği
 
@@ -248,11 +248,11 @@ Tetikleyici meta verilerini ve işlev çağırma verilerini içeren adlandırıl
 context.done([err],[propertyBag])
 ```
 
-Çalışma zamanının kodunuzun tamamlandığını bilmesini sağlar. İşleviniz [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) bildirimini kullandığında, @no__t 2 ' yi kullanmanız gerekmez. @No__t-0 geri çağırması örtük olarak çağırılır. Zaman uyumsuz işlevler, Node 8 veya daha sonraki bir sürümde kullanılabilir ve bu Işlevler çalışma zamanının 2. x sürümünü gerektirir.
+Çalışma zamanının kodunuzun tamamlandığını bilmesini sağlar. İşleviniz [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) bildirimini kullandığında `context.done()`kullanmanıza gerek yoktur. `context.done` geri çağırması örtük olarak çağırılır. Zaman uyumsuz işlevler, Node 8 veya daha sonraki bir sürümde kullanılabilir ve bu Işlevler çalışma zamanının 2. x sürümünü gerektirir.
 
 İşleviniz zaman uyumsuz bir işlev değilse, çalışma zamanına işlevinizin tamamlandığını bildirmek için `context.done` ' i **çağırmanız gerekir** . Eksik ise yürütme zaman aşımına uğrar.
 
-@No__t-0 yöntemi, hem Kullanıcı tanımlı bir hatayı çalışma zamanına hem de çıkış bağlama verilerini içeren bir JSON nesnesine geri geçirmenize olanak sağlar. @No__t-0 ' a geçirilen Özellikler `context.bindings` nesnesinde ayarlanmış herhangi bir şeyin üzerine yazar.
+`context.done` yöntemi, hem Kullanıcı tanımlı bir hatayı çalışma zamanına hem de çıkış bağlama verilerini içeren bir JSON nesnesine geri geçirmenize olanak sağlar. `context.done` geçirilen Özellikler `context.bindings` nesnesi üzerinde ayarlanan her şeyin üzerine yazılır.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -270,7 +270,7 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 context.log(message)
 ```
 
-Akış işlev günlüklerine varsayılan izleme düzeyinde yazmanızı sağlar. @No__t-0 ' da, diğer izleme düzeylerinde işlev günlükleri yazmanıza izin veren ek günlüğe kaydetme yöntemleri vardır:
+Akış işlev günlüklerine varsayılan izleme düzeyinde yazmanızı sağlar. `context.log`, diğer izleme düzeylerinde işlev günlükleri yazmanıza izin veren ek günlüğe kaydetme yöntemleri vardır:
 
 
 | Yöntem                 | Açıklama                                |
@@ -294,7 +294,7 @@ Host. json dosyasında [günlüğe kaydetmek için izleme düzeyi eşiğini yap�
 
 Işlevlerde, konsola izleme çıktısı yazmak için `context.log` yöntemlerini kullanırsınız. V2. x Işlevlerinde `console.log` kullanan izleme çıktıları İşlev Uygulaması düzeyinde yakalanır. Bu, `console.log` ' dan gelen çıkışların belirli bir işlev çağrısına bağlı olmadığı ve belirli bir işlevin günlüklerinde görüntülenmediği anlamına gelir. Ancak, Application Insights yayırlar. V1. x Işlevlerinde `console.log` ' ı konsola yazmak için kullanamazsınız.
 
-@No__t-0 ' ı çağırdığınızda iletiniz, _bilgi_ izleme düzeyi olan varsayılan izleme düzeyinde konsola yazılır. Aşağıdaki kod, bilgi izleme düzeyinde konsola yazar:
+`context.log()`çağırdığınızda iletiniz, _bilgi_ izleme düzeyi olan varsayılan izleme düzeyinde konsola yazılır. Aşağıdaki kod, bilgi izleme düzeyinde konsola yazar:
 
 ```javascript
 context.log({hello: 'world'});  
@@ -348,7 +348,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 ### <a name="request-object"></a>İstek nesnesi
 
-@No__t-0 (istek) nesnesi aşağıdaki özelliklere sahiptir:
+`context.req` (istek) nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik      | Açıklama                                                    |
 | ------------- | -------------------------------------------------------------- |
@@ -363,7 +363,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 ### <a name="response-object"></a>Yanıt nesnesi
 
-@No__t-0 (yanıt) nesnesi aşağıdaki özelliklere sahiptir:
+`context.res` (yanıt) nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik  | Açıklama                                               |
 | --------- | --------------------------------------------------------- |
@@ -376,7 +376,7 @@ Http ve Web kancası Tetikleyicileri ve HTTP çıkış bağlamaları, HTTP ileti
 
 HTTP tetikleyicilerle çalışırken, HTTP isteğine ve yanıt nesnelerine çeşitli yollarla erişebilirsiniz:
 
-+ **@No__t-3 nesnesindeki `req` ve `res` özelliklerinden.** Bu şekilde, tam `context.bindings.name` deseninin kullanılması yerine bağlam nesnesinden HTTP verilerine erişmek için geleneksel bir stili kullanabilirsiniz. Aşağıdaki örnek, `context` ' de `req` ve `res` nesnelerine nasıl erişekullanacağınızı gösterir:
++ **`context` nesnesindeki `req` ve `res` özelliklerden.** Bu şekilde, tam `context.bindings.name` deseninin kullanılması yerine bağlam nesnesinden HTTP verilerine erişmek için geleneksel bir stili kullanabilirsiniz. Aşağıdaki örnek, `context` ' de `req` ve `res` nesnelerine nasıl erişekullanacağınızı gösterir:
 
     ```javascript
     // You can access your http request off the context ...
@@ -397,9 +397,9 @@ HTTP tetikleyicilerle çalışırken, HTTP isteğine ve yanıt nesnelerine çeş
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Yalnızca yanıt]_ @No__t-2 çağırarak.** Yanıt gövdesi olarak giriş `body` ile bir HTTP yanıtı oluşturulur. `context.done()` örtük olarak çağırılır.
++ **_[Yalnızca yanıt]_ `context.res.send(body?: any)`çağırarak.** Yanıt gövdesi olarak giriş `body` ile bir HTTP yanıtı oluşturulur. `context.done()` örtük olarak çağırılır.
 
-+ **_[Yalnızca yanıt]_ @No__t-2 çağırarak.** Özel bir HTTP bağlama türü, `context.done()` yöntemine geçirilen yanıtı döndürür. Aşağıdaki HTTP çıkış bağlaması `$return` çıkış parametresini tanımlar:
++ **_[Yalnızca yanıt]_ `context.done()`çağırarak.** Özel bir HTTP bağlama türü, `context.done()` yöntemine geçirilen yanıtı döndürür. Aşağıdaki HTTP çıkış bağlaması `$return` çıkış parametresini tanımlar:
 
     ```json
     {
@@ -421,7 +421,7 @@ Aşağıdaki tabloda, Işlevler çalışma zamanının her ana sürümü tarafı
 | İşlevler sürümü | Node. js sürümü | 
 |---|---|
 | 'in | 6.11.2 (çalışma zamanı tarafından kilitlendi) |
-| 2.x  | _ETKIN LTS_ ve _bakım LTS_ Node. js sürümleri (~ 10 önerilir). WEBSITE_NODE_DEFAULT_VERSION [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) `~10` olarak ayarlayarak Azure 'daki sürümü hedefleyin.|
+| 2.x  | _ETKIN LTS_ ve _bakım LTS_ Node. js sürümleri (~ 10 önerilir). WEBSITE_NODE_DEFAULT_VERSION [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings) `~10`olarak ayarlayarak Azure 'daki sürümü hedefleyin.|
 
 Yukarıdaki uygulama ayarını denetleyerek veya herhangi bir işlevden `process.version` yazdırarak çalışma zamanının kullandığı geçerli sürümü görebilirsiniz.
 
@@ -442,12 +442,12 @@ module.exports = function(context) {
 > [!NOTE]
 > İşlev Uygulaması kökünde bir `package.json` dosyası tanımlamalısınız. Dosyayı tanımlama, uygulamadaki tüm işlevlerin aynı önbelleğe alınmış paketleri paylaşmasını sağlar ve bu da en iyi performansı verir. Bir sürüm çakışması oluşursa, belirli bir işlevin klasörüne bir `package.json` dosyası ekleyerek bu sorunu çözebilirsiniz.  
 
-Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan herhangi bir @no__t 0 dosyası, dağıtım sırasında klasöründe bir `npm install` tetikleyecektir. Ancak portal veya CLı aracılığıyla dağıtım yaparken paketleri el ile kurmanız gerekir.
+Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan tüm `package.json` dosyaları, dağıtım sırasında klasöründe bir `npm install` tetikler. Ancak portal veya CLı aracılığıyla dağıtım yaparken paketleri el ile kurmanız gerekir.
 
 İşlev Uygulaması paketleri yüklemek için iki yol vardır: 
 
 ### <a name="deploying-with-dependencies"></a>Bağımlılıklarla dağıtma
-1. @No__t-0 ' i çalıştırarak tüm önkoşul paketlerini yerel olarak yükler.
+1. `npm install`çalıştırarak tüm önkoşul paketlerini yerel olarak yükler.
 
 2. Kodunuzu dağıtın ve `node_modules` klasörünün dağıtıma eklendiğinden emin olun. 
 
@@ -455,9 +455,9 @@ Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan
 ### <a name="using-kudu"></a>Kudu kullanma
 1. `https://<function_app_name>.scm.azurewebsites.net` kısmına gidin.
 
-2. @No__t-1**cmd** **konsolunda hata ayıkla**' ya tıklayın.
+2. **CMD** > **hata ayıklama konsolu** ' na tıklayın.
 
-3. @No__t-0 ' a gidin ve ardından Package. JSON dosyanızı sayfanın üst yarısında **Wwwroot** klasörüne sürükleyin.  
+3. `D:\home\site\wwwroot`' e gidin ve ardından Package. JSON dosyanızı sayfanın üst yarısında **Wwwroot** klasörüne sürükleyin.  
     Dosyaları işlev uygulamanıza başka yollarla da yükleyebilirsiniz. Daha fazla bilgi için bkz. [işlev uygulama dosyalarını güncelleştirme](functions-reference.md#fileupdate). 
 
 4. Package. JSON dosyası karşıya yüklendikten sonra, **kudu uzaktan yürütme konsolunda**`npm install` komutunu çalıştırın.  
@@ -465,7 +465,7 @@ Kaynak denetiminden Işlev uygulamaları dağıttığınızda, deponuzda bulunan
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara, burada gösterildiği gibi `process.env` kullanarak ve `AzureWebJobsStorage` ve `WEBSITE_SITE_NAME` ortam değişkenlerini günlüğe kaydettiğiniz `context.log()` ' e yönelik üçüncü çağrılarla erişebilirsiniz:
+Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara, burada gösterildiği gibi `process.env`kullanarak erişebilirsiniz ve `AzureWebJobsStorage` ve `WEBSITE_SITE_NAME` ortam değişkenlerini günlüğe kaydettiğiniz `context.log()` için üçüncü çağrılar:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -483,9 +483,9 @@ Yerel olarak çalışırken, uygulama ayarları [yerel. Settings. JSON](function
 
 ## <a name="configure-function-entry-point"></a>İşlev giriş noktasını yapılandır
 
-@No__t-1 ve `entryPoint` `function.json` özellikleri, verdiğiniz işlevinizin konumunu ve adını yapılandırmak için kullanılabilir. JavaScript transpiled olduğunda bu özellikler önemli olabilir.
+`function.json` Özellikler `scriptFile` ve `entryPoint`, verdiğiniz işlevinizin konumunu ve adını yapılandırmak için kullanılabilir. JavaScript transpiled olduğunda bu özellikler önemli olabilir.
 
-### <a name="using-scriptfile"></a>@No__t kullanma-0
+### <a name="using-scriptfile"></a>`scriptFile` kullanma
 
 Varsayılan olarak, bir JavaScript işlevi, karşılık gelen `function.json` ile aynı üst dizini paylaşan bir dosya olan `index.js` ' dan yürütülür.
 
@@ -503,7 +503,7 @@ FunctionApp
  | - package.json
 ```
 
-@No__t-1 için `function.json`, çalıştırılacak işlevi çalıştıran dosyaya işaret eden bir `scriptFile` özelliği içermelidir.
+`myNodeFunction` için `function.json`, çalıştırılacak işlevi çalıştıran dosyaya işaret eden bir `scriptFile` özelliği içermelidir.
 
 ```json
 {
@@ -514,9 +514,9 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>@No__t kullanma-0
+### <a name="using-entrypoint"></a>`entryPoint` kullanma
 
-@No__t-0 ' da (veya `index.js`), bir işlevin bulunması ve çalışması için `module.exports` kullanılarak aktarılması gerekir. Varsayılan olarak, tetiklendiğinde yürütülen işlev bu dosyadan tek dışarı aktarma, `run` adlı dışarı aktarma veya `index` adlı dışarı aktarma.
+`scriptFile` (veya `index.js`) içinde, bir işlev, bulunması ve çalışması için `module.exports` kullanılarak verilmelidir. Varsayılan olarak, tetiklendiğinde yürütülen işlev bu dosyadan tek dışarı aktarma, `run` adlı dışarı aktarma veya `index` adlı dışarı aktarma.
 
 Bu, aşağıdaki örnekte olduğu gibi `function.json` ' de `entryPoint` kullanılarak yapılandırılabilir:
 
@@ -590,7 +590,7 @@ Bir TypeScript projesinin, temel araçları kullanırken bir JavaScript projesin
 
 Çekirdek araçları kullanarak bir TypeScript işlev uygulaması projesi oluşturmak için, işlev uygulamanızı oluştururken TypeScript dil seçeneğini belirtmeniz gerekir. Bunu aşağıdaki yöntemlerle yapabilirsiniz:
 
-- @No__t-0 komutunu çalıştırın, dil yığınınızın olarak `node` ' i seçin ve ardından `typescript` ' yi seçin.
+- `func init` komutunu çalıştırın, dil yığınınızın olarak `node` ' ı seçin ve ardından `typescript`' yı seçin.
 
 - `func init --worker-runtime typescript` komutunu çalıştırın.
 
@@ -603,7 +603,7 @@ npm install
 npm start
 ```
 
-@No__t-0 komutu aşağıdaki komutlarla eşdeğerdir:
+`npm start` komutu aşağıdaki komutlarla eşdeğerdir:
 
 - `npm run build`
 - `func extensions install`
@@ -621,7 +621,7 @@ npm run build:production
 func azure functionapp publish <APP_NAME>
 ```
 
-Bu komutta `<APP_NAME>` değerini işlev uygulamanızın adıyla değiştirin.
+Bu komutta `<APP_NAME>`, işlev uygulamanızın adıyla değiştirin.
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript işlevleriyle ilgili konular
 
@@ -639,9 +639,9 @@ Sunucusuz barındırma modelinde Azure Işlevleri geliştirirken soğuk başlar.
 
 Azure Işlevleri uygulamasında hizmete özel bir istemci kullandığınızda, her işlev çağrısında yeni bir istemci oluşturmayın. Bunun yerine, genel kapsamda tek bir statik istemci oluşturun. Daha fazla bilgi için bkz. [Azure işlevlerinde bağlantıları yönetme](manage-connections.md).
 
-### <a name="use-async-and-await"></a>@No__t-0 ve `await` kullanın
+### <a name="use-async-and-await"></a>`async` ve `await` kullanın
 
-JavaScript 'e Azure Işlevleri yazarken `async` ve `await` anahtar sözcüklerini kullanarak kod yazmalısınız. @No__t-0 ve `await` kullanarak kod yazmak geri çağırmalar veya `.then` ile `.catch`, iki genel sorunun önlenmesine yardımcı olur:
+JavaScript 'e Azure Işlevleri yazarken `async` ve `await` anahtar sözcüklerini kullanarak kod yazmalısınız. Geri çağrılar veya `.catch` `.then` `async` ve `await` kullanarak kod yazmak, bu iki genel sorunun önlenmesine yardımcı olur:
  - [Node. js işlemini](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)engelleyen ve potansiyel olarak diğer işlevlerin yürütülmesini etkileyen yakalanamayan özel durumlar oluşturuluyor.
  - Doğru şekilde beklememiş olmayan zaman uyumsuz çağrılar nedeniyle Context. log ' dan eksik Günlükler gibi beklenmeyen davranışlar.
 
@@ -666,9 +666,9 @@ module.exports = function (context) {
 }
 ```
 
-@No__t-0 ve `await` anahtar sözcüklerinin kullanılması, bu hatalardan her ikisinin de önlenmesine yardımcı olur. Hata ilk geri çağırma stili işlevlerini zaman uyumlu işlevlere dönüştürmek için Node. js yardımcı programı [`util.promisify` ' i](https://nodejs.org/api/util.html#util_util_promisify_original) kullanın.
+`async` ve `await` anahtar sözcüklerini kullanmak bu hatalardan her ikisinin de önlenmesine yardımcı olur. Hata ilk geri çağırma stili işlevlerini zaman uyumlu işlevlere dönüştürmek için Node. js yardımcı programı [`util.promisify` ' i](https://nodejs.org/api/util.html#util_util_promisify_original) kullanın.
 
-Aşağıdaki örnekte, işlev yürütmesi sırasında oluşan işlenmemiş özel durumlar yalnızca bir özel durum oluşturan tek bir çağrıyı başarısız hale getirilir. @No__t-0 anahtar sözcüğü, `readFileAsync` ' i izleyen adımların yalnızca `readFile` tamamlandıktan sonra yürütüleceğini belirtir. @No__t-0 ve `await` ile, ayrıca `context.done()` geri çağrısını çağırmanız gerekmez.
+Aşağıdaki örnekte, işlev yürütmesi sırasında oluşan işlenmemiş özel durumlar yalnızca bir özel durum oluşturan tek bir çağrıyı başarısız hale getirilir. `await` anahtar sözcüğü, `readFileAsync` aşağıdaki adımlar yalnızca `readFile` tamamlandıktan sonra yürütme anlamına gelir. `async` ve `await`ile `context.done()` geri çağırmayı da çağırmanız gerekmez.
 
 ```javascript
 // Recommended pattern
@@ -677,8 +677,9 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 module.exports = async function (context) {
+    let data;
     try {
-        const data = await readFileAsync('./hello.txt');
+        data = await readFileAsync('./hello.txt');
     } catch (err) {
         context.log.error('ERROR', err);
         // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation

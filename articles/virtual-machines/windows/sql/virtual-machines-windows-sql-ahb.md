@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262865"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900685"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
@@ -31,7 +31,7 @@ Kullandıkça Öde modeli, Azure VM 'yi çalıştırmanın ikinci başına maliy
 
 Azure Hibrit Avantajı, Azure sanal makinelerinde yazılım güvencesi ("nitelikli lisans") ile SQL Server lisansların kullanılmasına izin verir. Azure Hibrit Avantajı, müşteriler bir sanal makinede SQL Server Lisansı kullanımı için ücretlendirilmez. Ancak yine de temel alınan bulut işlem maliyeti (yani, taban fiyat), depolama ve yedeklemeler için ücret ödemelidir. Ayrıca, Hizmetleri kullanımıyla ilişkili g/ç için de ödeme yapılmalıdır (geçerli olduğu gibi).
 
-Microsoft Ürün koşullarına göre: "Müşterilerin yapılandırma sırasında SQL Server için Azure SQL veritabanı (yönetilen örnek, Elastik Havuz ve Tek Veritabanı), Azure Data Factory, SQL Server Integration Services veya Azure hibrit avantajı sanal makineler kullandığını belirtmesi gerekir Azure üzerinde iş yükleri. "
+Microsoft Ürün koşullarına göre: "Müşterilerin Azure 'da Azure SQL veritabanı (yönetilen örnek, Elastik Havuz ve Tek Veritabanı), Azure Data Factory, SQL Server Integration Services veya SQL Server sanal makineler kullandığını belirtmesi gerekir Azure 'da iş yüklerini yapılandırırken SQL Server hibrit avantajı. "
 
 Bir Azure sanal makinesinde SQL Server için Azure Hibrit Avantajı kullanımını göstermek ve uyumlu olmak için üç seçeneğiniz vardır:
 
@@ -149,12 +149,12 @@ SQL Server VM lisans türünü, yalnızca SQL Server VM SQL VM kaynak sağlayıc
 
 ## <a name="known-errors"></a>Bilinen hatalar
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>\<'\<Resource-Group > ' kaynak grubundaki ' Microsoft. sqlvirtualmachine/sqlvirtualmachines/Resource-Group > ' kaynağı bulunamadı.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>'\<Resource-Group > ' kaynak grubundaki ' Microsoft. SqlVirtualMachine/SqlVirtualMachines/\<Resource-Group > ' kaynağı bulunamadı.
 Bu hata, SQL VM kaynak sağlayıcısına kayıtlı olmayan bir SQL Server VM lisans modelini değiştirmeye çalıştığınızda oluşur:
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
-Kaynak sağlayıcısını [aboneliğinize](virtual-machines-windows-sql-register-with-resource-provider.md#register-the-sql-vm-resource-provider-with-a-subscription)kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md)gerekir. 
+Aboneliğinizi kaynak sağlayıcısına kaydetmeniz ve ardından [SQL Server VM kaynak sağlayıcısına kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md)gerekir. 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>' SKU ' parametresindeki bağımsız değişken doğrulanamıyor
 4,0 ' den sonraki Azure PowerShell sürümlerini kullanarak SQL Server VM lisans modelinizi değiştirmeye çalışırken bu hatayla karşılaşabilirsiniz:

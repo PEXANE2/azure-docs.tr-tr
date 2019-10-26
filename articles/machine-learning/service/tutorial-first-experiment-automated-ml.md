@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 726ac906b5f237cfc40a8399b7b1bef3071f98f3
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72035673"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901796"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -169,6 +169,8 @@ Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en
     
 Artık tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır.
 
+Yeni Web hizmetinizi kullanma hakkında daha fazla bilgi edinmek için [**sonraki adımlara**](#next-steps) ilerleyin ve Power BI yerleşik Azure Machine Learning desteğini kullanarak tahminlerinizi test edin.
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle daha fazla depolama alanı maliyetlidir. Hesap maliyetlerini en aza indirmek için yalnızca dağıtım dosyalarını silin veya çalışma alanınızı ve deneme dosyalarını korumak istiyorsanız. Aksi takdirde, herhangi bir dosyayı kullanmayı planlamıyorsanız tüm kaynak grubunu silin.  
@@ -192,7 +194,7 @@ Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alan�
 Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluşturmak ve dağıtmak için çalışma alanı giriş sayfasını kullandınız. Daha fazla bilgi ve sonraki adımlar için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [Web hizmeti kullanma](how-to-consume-web-service.md)
+> [Web hizmeti kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [Ön işleme](how-to-create-portal-experiments.md#preprocess)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.

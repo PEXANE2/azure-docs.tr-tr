@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici 'de oturum açma günlüğü şeması Azure Active Directory | Microsoft Docs
+title: Azure Izleyici 'de oturum açma günlüğü şeması | Microsoft Docs
 description: Azure Izleyici 'de kullanılmak üzere Azure AD oturum açma günlüğü şemasını açıkla
 services: active-directory
 documentationcenter: ''
@@ -17,16 +17,16 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a05a531fd03cbd77bf3460ec45300692764565
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4259a23778db175de2a0331e692e878df39d0a07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259149"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895011"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Izleyici 'de Azure AD oturum açma günlüğü şemasını yorumlama
 
-Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma günlüğü şeması açıklanmaktadır. Oturum açma bilgileriyle ilgili bilgilerin çoğu, `records` nesnenin *Özellikler* özniteliği altında sağlanır.
+Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma günlüğü şeması açıklanmaktadır. Oturum açma bilgileriyle ilgili bilgilerin çoğu, `records` nesnesinin *Özellikler* özniteliği altında sağlanır.
 
 
 ```json
@@ -145,27 +145,27 @@ Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) oturum açma g
 
 | Alan adı | Açıklama |
 |------------|-------------|
-| Time | Tarih ve saat, UTC olarak. |
+| Zaman | Tarih ve saat, UTC olarak. |
 | ResourceId | Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz.  |
-| OperationName | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | Oturum açma işlemleri için bu değer her zaman *oturum açma etkinliğidir*. |
 | OperationVersion | İstemci tarafından istenen REST API sürümü. |
-| Category | Oturum açma işlemleri için bu değer her zaman *oturum*açadır. | 
-| TenantId | Günlüklerle ilişkili kiracı GUID 'SI. |
-| ResultType | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
+| Kategori | Oturum açma işlemleri için bu değer her zaman *oturum*açadır. | 
+| Değerine | Günlüklerle ilişkili kiracı GUID 'SI. |
+| 'I | Oturum açma işleminin sonucu *başarılı* veya *başarısız*olabilir. | 
 | ResultSignature | Varsa, oturum açma işlemi için hata kodunu içerir. |
 | ResultDescription | Oturum açma işlemi için hata açıklaması sağlar. |
-| riskDetail | riskDetail | Riskli bir kullanıcının, oturum açmanın veya risk algılamanın arkasındaki ' neden ' durumunu sağlar. Olası `none`değerler şunlardır:, ,`adminConfirmedSigninSafe` ,,`adminDismissedAllRiskForUser`, ,`unknownFutureValue`,, ,`adminConfirmedSigninCompromised`. `userPassedMFADrivenByRiskBasedPolicy` `userPerformedSecuredPasswordChange` `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `aiConfirmedSigninSafe` Değer `none` , Kullanıcı veya şimdiye kadar oturum açma işlemleri için hiçbir eylem gerçekleştirilmediği anlamına gelir. <br>**Not:** Bu özelliğe ilişkin ayrıntılar Azure AD Premium P2 lisansı gerektirir. Diğer lisanslar değeri `hidden`döndürür. |
-| riskEventTypes | riskEventTypes | Oturum açma ile ilişkili risk algılama türleri. Olası `unlikelyTravel`değerler şunlardır:, `malwareInfectedIPAddress` ,`unknownFutureValue`,,,, ,`investigationsThreatIntelligence`,, ve`generic`. `unfamiliarFeatures` `maliciousIPAddress` `anonymizedIPAddress` `suspiciousIPAddress` `leakedCredentials` |
-| riskLevelAggregated | riskLevel | Toplu risk düzeyi. Olası değerler şunlardır: `none`, `low`, `medium` `high`, ,`hidden`, ve `unknownFutureValue`. Değer `hidden` , kullanıcının veya oturum açma Azure AD kimlik koruması için etkinleştirilmemiş anlamına gelir. **Not:** Bu özelliğin ayrıntıları yalnızca Azure AD Premium P2 müşterileri için kullanılabilir. Diğer tüm müşteriler döndürülür `hidden`. |
-| riskLevelDuringSignIn | riskLevel | Oturum açma sırasında risk düzeyi. Olası değerler şunlardır: `none`, `low`, `medium` `high`, ,`hidden`, ve `unknownFutureValue`. Değer `hidden` , kullanıcının veya oturum açma Azure AD kimlik koruması için etkinleştirilmemiş anlamına gelir. **Not:** Bu özelliğin ayrıntıları yalnızca Azure AD Premium P2 müşterileri için kullanılabilir. Diğer tüm müşteriler döndürülür `hidden`. |
-| riskState | riskState | Riskli kullanıcının, oturum açma işleminin veya risk algılamanın durumunu raporlar. Olası `none`değerler şunlardır:, `confirmedSafe`, `remediated`,, `atRisk`, ,.`confirmedCompromised` `dismissed` `unknownFutureValue` |
+| riskDetail | riskDetail | Riskli bir kullanıcının, oturum açmanın veya risk algılamanın arkasındaki ' neden ' durumunu sağlar. Olası değerler şunlardır: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Değer `none`, bu ana kadar Kullanıcı veya oturum açma işlemleri üzerinde hiçbir işlem gerçekleştirilmediği anlamına gelir. <br>**Note:** Bu özelliğe ilişkin ayrıntılar Azure AD Premium P2 lisansı gerektirir. Diğer lisanslar `hidden`değer döndürür. |
+| riskEventTypes | riskEventTypes | Oturum açma ile ilişkili risk algılama türleri. Olası değerler şunlardır: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`ve `unknownFutureValue`. |
+| riskLevelAggregated | riskLevel | Toplu risk düzeyi. Olası değerler şunlardır: `none`, `low`, `medium`, `high`, `hidden`ve `unknownFutureValue`. Değer `hidden`, kullanıcının veya oturum açma Azure AD Kimlik Koruması için etkinleştirilmemiş anlamına gelir. **Note:** Bu özelliğin ayrıntıları yalnızca Azure AD Premium P2 müşterileri için kullanılabilir. Diğer tüm müşteriler `hidden`döndürülecek. |
+| riskLevelDuringSignIn | riskLevel | Oturum açma sırasında risk düzeyi. Olası değerler şunlardır: `none`, `low`, `medium`, `high`, `hidden`ve `unknownFutureValue`. Değer `hidden`, kullanıcının veya oturum açma Azure AD Kimlik Koruması için etkinleştirilmemiş anlamına gelir. **Note:** Bu özelliğin ayrıntıları yalnızca Azure AD Premium P2 müşterileri için kullanılabilir. Diğer tüm müşteriler `hidden`döndürülecek. |
+| riskState | riskState | Riskli kullanıcının, oturum açma işleminin veya risk algılamanın durumunu raporlar. Olası değerler şunlardır: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
 | Ort |  Bu değer eşlenmemiş ve bu alanı güvenle yoksayabilirsiniz. |
 | Callerıpaddress | İsteği yapan istemcinin IP adresi. | 
 | CorrelationId | İstemci tarafından geçirilen isteğe bağlı GUID. Bu değer, istemci tarafı işlemlerini sunucu tarafı işlemleriyle ilişkilendirmenize yardımcı olabilir ve hizmetleri kapsayan günlükleri izlerken yararlıdır. |
 | Kimlik | İsteği yaptığınızda sunulan belirtecin kimliği. Bu bir kullanıcı hesabı, sistem hesabı veya hizmet sorumlusu olabilir. |
 | Düzey | İleti türünü sağlar. Denetim için her zaman *bilgilendirme amaçlıdır*. |
-| Location | Oturum açma etkinliğinin konumunu sağlar. |
-| properties | Oturum açma işlemleri ile ilişkili tüm özellikleri listeler. Daha fazla bilgi için bkz. [MICROSOFT Graph API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Bu şema, okunabilirlik için oturum açma kaynağıyla aynı öznitelik adlarını kullanır.
+| Konum | Oturum açma etkinliğinin konumunu sağlar. |
+| Özellikler | Oturum açma işlemleri ile ilişkili tüm özellikleri listeler. Daha fazla bilgi için bkz. [MICROSOFT Graph API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Bu şema, okunabilirlik için oturum açma kaynağıyla aynı öznitelik adlarını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

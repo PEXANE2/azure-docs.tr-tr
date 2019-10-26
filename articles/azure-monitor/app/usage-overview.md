@@ -1,22 +1,18 @@
 ---
 title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/19/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 77aa39ae68800128409beb17ce3eb636ddcf28d1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/19/2019
+ms.openlocfilehash: 7131cf1902cc92fed66ae4db59449700973c6913
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128957"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899427"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
@@ -30,7 +26,7 @@ En iyi deneyim, hem App Server kodunuzda hem de Web sayfalarınızda Application
 
     * *Sunucu kodunu yüklemek istemiyor musunuz? Yalnızca [bir Azure Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Web sayfası kodu:** Kapatmadan ``</head>``önce Web sayfanıza aşağıdaki betiği ekleyin. İzleme anahtarını Application Insights kaynağınız için uygun değerle değiştirin:
+2. **Web sayfası kodu:** Kapatma ``</head>``önce Web sayfanıza aşağıdaki betiği ekleyin. İzleme anahtarını Application Insights kaynağınız için uygun değerle değiştirin:
     
     ```html
     <script type="text/javascript">
@@ -77,7 +73,7 @@ Saklama, kullanıcılarınızın, belirli bir zaman aralığı boyunca bazı iş
 - Gerçek kullanıcı verilerine göre hipotezleri formu 
 - Üretim, ürününüzün bir sorun olup olmadığını belirleme 
 
-![Bekletme](./media/usage-overview/retention.png) 
+![Saklama](./media/usage-overview/retention.png) 
 
 En üstteki bekletme denetimleri, saklama süresini hesaplamak için belirli olayları ve zaman aralığını tanımlamanızı sağlar. Ortadaki grafik, belirtilen zaman aralığına göre genel bekletme yüzdesinin görsel bir gösterimini sağlar. Alt kısımdaki grafik belirli bir dönemde tek tek bekletme 'yi temsil eder. Bu ayrıntı düzeyi, kullanıcılarınızın ne yaptığını ve daha ayrıntılı bir ayrıntı düzeyi üzerinde Kullanıcı döndürmeyi neyin etkileyebileceğini anlamanıza olanak tanır.  
 
@@ -159,9 +155,9 @@ Global.asax.cs gibi Web uygulaması başlatıcısında:
 **ASP.NET Core uygulamalar**
 
 > [!NOTE]
-> `ApplicationInsights.config` Veya kullanarak`TelemetryConfiguration.Active` Başlatıcı eklemek ASP.NET Core uygulamaları için geçerli değildir. 
+> `ApplicationInsights.config` veya `TelemetryConfiguration.Active` kullanarak Başlatıcı ekleme ASP.NET Core uygulamaları için geçerli değildir. 
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi `TelemetryInitializer` , yeni bir ekleme işlemi bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `ConfigureServices` `Startup.cs` sınıfınızın yönteminde yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) uygulamalar için, aşağıda gösterildiği gibi, yeni bir `TelemetryInitializer` eklemek, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `Startup.cs` sınıfınızın `ConfigureServices` yönteminde yapılır.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

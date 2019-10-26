@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f00e7663c4ed2211927f5c8d1c131d85bc6c96dd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030403"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900895"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS yapılandırma
 
@@ -23,7 +23,7 @@ ms.locfileid: "72030403"
 
 1. [Cloudsimple portalında](access-cloudsimple-portal.md)oturum açın.
 
-2. @No__t-1**özel bulutları** için **kaynaklara**gidin ve bağlanmak istediğiniz özel bulutu seçin.
+2. **Özel bulutlar** > **kaynaklar** ' a gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
 3. **Temel bilgi**altında özel bulutun **Özet** SAYFASıNDA, özel bulut DNS sunucusu IP adresini kopyalayın.
 
@@ -80,7 +80,7 @@ zone “cloudsimple.io”
 
 Koşullu iletici, tüm DNS ad çözümleme isteklerini belirtilen sunucuya iletir. Bu kurulumla, tüm *. cloudsimple.io istekleri özel bulutta bulunan DNS sunucularına iletilir. Aşağıdaki örneklerde, farklı türlerde DNS sunucularında ileticilerin nasıl ayarlanacağı gösterilmektedir.
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>BIND DNS sunucusunda bir koşullu iletilen koşullu oluşturma
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS sunucusunda koşullu iletici oluşturma
 
 Belirli dosya ve yapılandırılacak parametreler, bireysel DNS kuruluma göre farklılık gösterebilir.
 
