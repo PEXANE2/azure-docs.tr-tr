@@ -133,6 +133,8 @@
           href: managed-disks-overview.md
         - name: IaaS VM’leri için disk türü seçme
           href: disks-types.md
+        - name: Şifreleme
+          href: disk-encryption.md
         - name: Yüksek performansa uygun tasarım yapma
           href: premium-storage-performance.md
         - name: Diskler için ölçeklenebilirlik hedefleri

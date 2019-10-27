@@ -245,8 +245,12 @@
         - name: İşlevi devre dışı bırakma
           href: disable-function.md
     - name: İzleme
-      href: functions-monitoring.md
-      displayName: 'App Insights, Application Insights, logs, logging'
+      items:
+        - name: İzleme işlevleri
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: Günlükleri analiz etme
+          href: functions-monitor-log-analytics.md
     - name: Güvenlik
       items:
         - name: SSL sertifikası satın alma
