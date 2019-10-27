@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d184201c21c31336e31dcba9884d84f6cc224ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285706"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924830"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure 'a yüklemek için bir Windows VHD veya VHDX hazırlama
 
@@ -52,9 +52,9 @@ Sanal diskinizi Azure için gereken biçime dönüştürmeniz gerekiyorsa, bu b�
 Diski dönüştürdükten sonra, diski kullanan bir VM oluşturun. Karşıya yüklemek için hazırlama işini başlatmak üzere VM 'de başlatın ve oturum açın.
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V Yöneticisi 'Ni kullanarak diski dönüştürme 
-1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, 1. @no__t **Işlem** **diski Düzenle**' yi seçin.
+1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **disk düzenle** > **eylem** ' i seçin.
 2. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
-3. **Eylem Seç** sayfasında,**sonraki**@no__t **Dönüştür**' ü seçin.
+3. **Eylem Seç** sayfasında, **İleri** > **Dönüştür** ' ü seçin.
 4. VHDX 'ten dönüştürmeniz gerekiyorsa,**daha sonra** **VHD** >  ' i seçin.
 5. Dinamik olarak genişleyen bir diskten dönüştürmeniz gerekiyorsa,**sonra** **sabit boyut** >  ' i seçin.
 6. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
@@ -72,7 +72,7 @@ Aşağıdaki örnek komut, diski VHDX 'ten VHD 'ye dönüştürür. Bu komut Ayr
 Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
-Bu komutta, `-Path` değerini dönüştürmek istediğiniz sanal sabit disk yoluyla değiştirin. @No__t-0 değerini, dönüştürülmüş diskin yeni yolu ve adıyla değiştirin.
+Bu komutta, `-Path` değerini dönüştürmek istediğiniz sanal sabit disk yoluyla değiştirin. `-DestinationPath` değerini, dönüştürülmüş diskin yeni yolu ve adıyla değiştirin.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK disk biçiminden Dönüştür
 [VMDK dosya biçiminde](https://en.wikipedia.org/wiki/VMDK)bir Windows sanal makine görüntünüz varsa, vhd biçimine dönüştürmek Için [Microsoft Virtual Machine dönüştürücüsünü](https://www.microsoft.com/download/details.aspx?id=42497) kullanın. Daha fazla bilgi için bkz. [bir VMware VMDK 'Yi Hyper-V VHD 'ye dönüştürme](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
@@ -84,7 +84,7 @@ Azure 'a yüklemeyi planladığınız sanal makinede, [yükseltilmiş bir komut 
 1. Yönlendirme tablosundaki tüm statik kalıcı rotayı kaldırın:
    
    * Yol tablosunu görüntülemek için komut isteminde `route print` komutunu çalıştırın.
-   * @No__t-0 bölümlerini denetleyin. Kalıcı bir yol varsa kaldırmak için `route delete` komutunu kullanın.
+   * `Persistence Routes` bölümüne bakın. Kalıcı bir yol varsa kaldırmak için `route delete` komutunu kullanın.
 2. WinHTTP proxy 'sini kaldır:
    
     ```PowerShell
@@ -124,7 +124,7 @@ Azure 'a yüklemeyi planladığınız sanal makinede, [yükseltilmiş bir komut 
     ```PowerShell
     powercfg /setactive SCHEME_MIN
     ```
-6. @No__t-0 ve `TMP` ortam değişkenlerinin varsayılan değerlerine ayarlandığından emin olun:
+6. `TEMP` ve `TMP` ortam değişkenlerinin varsayılan değerlerine ayarlandığından emin olun:
 
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
@@ -153,7 +153,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 Aşağıdaki ayarların uzaktan erişim için doğru yapılandırıldığından emin olun:
 
 >[!NOTE] 
->@No__t-0 ' i çalıştırdığınızda bir hata iletisi alabilirsiniz. Bu iletiyi güvenle yoksayabilirsiniz. Bu, yalnızca etki alanının bu yapılandırmayı grup ilkesi nesne aracılığıyla göndermediği anlamına gelir.
+>`Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`çalıştırdığınızda bir hata iletisi alabilirsiniz. Bu iletiyi güvenle yoksayabilirsiniz. Bu, yalnızca etki alanının bu yapılandırmayı grup ilkesi nesne aracılığıyla göndermediği anlamına gelir.
 
 1. Uzak Masaüstü Protokolü (RDP) etkin:
    
@@ -417,11 +417,11 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 ### <a name="generalize-a-vhd"></a>Bir VHD 'YI genelleştirin
 
 >[!NOTE]
-> @No__t çalıştırdıktan sonra, aşağıdaki adımlarda VM 'yi kapatın. Azure 'da bir görüntü oluşturana kadar tekrar açın.
+> Aşağıdaki adımlarda `sysprep.exe` çalıştırdıktan sonra, VM 'yi kapatın. Azure 'da bir görüntü oluşturana kadar tekrar açın.
 
 1. Windows VM 'de oturum açın.
 1. **Komut istemi** 'ni yönetici olarak çalıştırın. 
-1. Dizini `%windir%\system32\sysprep` olarak değiştirin. Ardından `sysprep.exe` komutunu çalıştırın.
+1. Dizini `%windir%\system32\sysprep`değiştirin. Ardından `sysprep.exe` komutunu çalıştırın.
 1. **Sistem Hazırlama Aracı** iletişim kutusunda  **Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 
     ![Sistem Hazırlama Aracı](media/prepare-for-upload-vhd-image/syspre.png)
@@ -433,7 +433,7 @@ Artık VHD karşıya yüklenmeye hazırdır. Genelleştirilmiş bir diskten VM o
 
 
 >[!NOTE]
-> Özel bir *Unattend. xml* dosyası desteklenmez. @No__t-0 özelliğini destekliyoruz, ancak [Microsoft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *Unattend. xml* dosyasına eklemek için yalnızca sınırlı destek sağlar. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Özel bir *Unattend. xml* dosyası desteklenmez. `additionalUnattendContent` özelliğini destekliyoruz, ancak [Microsoft-Windows-Shell-Setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *Unattend. xml* dosyasına eklemek için yalnızca sınırlı destek sağlar. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 
 ## <a name="complete-the-recommended-configurations"></a>Önerilen konfigürasyonları doldurun
@@ -446,7 +446,7 @@ Aşağıdaki ayarlar, VHD karşıya yüklemeyi etkilemez. Ancak, bunları yapıl
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
   SANAL makineye bir veri diski eklenmişse, zamana bağlı sürücü biriminin harfi genellikle *D*olur. Ayarlarınıza ve kullanılabilir sürücü sayısına bağlı olarak bu atama farklı olabilir.
-  * Virüsten koruma yazılımı tarafından sağlangerekebilecek komut dosyası engelleyicilerini devre dışı bırakmayı öneririz. Bu kişiler, yansımanıza yeni bir VM dağıtırken yürütülen Windows sağlama Aracısı betikleri interfer ve engelleyebilirler.
+  * Virüsten koruma yazılımı tarafından sağlangerekebilecek komut dosyası engelleyicilerini devre dışı bırakmayı öneririz. Bu kişiler, yansımasından yeni bir VM dağıtırken yürütülen Windows sağlama Aracısı betikleri kesintiye uğratabilecek ve engelleyebilirler.
   
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Kaynak Yöneticisi dağıtımları için Azure 'a bir Windows VM görüntüsü yükleme](upload-generalized-managed.md)

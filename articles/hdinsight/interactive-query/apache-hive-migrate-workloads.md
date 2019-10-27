@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b270663a83461ecd777599fead9d717e93482c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091464"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930898"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -30,14 +30,14 @@ Bu makalede aşağıdaki konular ele alınmaktadır:
 Hive 'nin bir avantajı, meta verileri bir dış veritabanına dışarı aktarma (Hive meta veri deposu olarak adlandırılır) özelliğidir. **Hive meta** veri tablosu, tablo depolama konumu, sütun adları ve tablo dizini bilgileri de dahil olmak üzere tablo istatistiklerini depolamaktan sorumludur. Meta veri deposu veritabanı şeması Hive sürümleri arasında farklılık gösterir. HDInsight 4,0 ile uyumlu olması için HDInsight 3,6 Hive meta veri deposunu yükseltmek üzere aşağıdakileri yapın.
 
 1. Dış meta veri deposu 'nun yeni bir kopyasını oluşturun. HDInsight 3,6 ve HDInsight 4,0 farklı meta veri deposu şemaları gerektirir ve tek bir meta veri deposu paylaşamaz. HDInsight kümesine dış meta veri deposu ekleme hakkında daha fazla bilgi edinmek için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](../hdinsight-use-external-metadata-stores.md) . 
-2. Yürütme için düğüm türü olarak "baş düğümler" ile HDI 3,6 kümenize karşı bir betik eylemi başlatın. Aşağıdaki URI 'yi "Bash betiği URI 'SI" olarak işaretlenen metin kutusuna yapıştırın https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh:. "Bağımsız değişkenler" olarak işaretlenen metin kutusunda, **kopyalanmış** Hive meta veri deposu için sunucuadı, veritabanı, Kullanıcı adı ve parolayı boşluklarla ayırarak girin. ServerName ' i belirtirken ". database.windows.net" eklemeyin.
+2. Yürütme için düğüm türü olarak "baş düğümler" ile HDI 3,6 kümenize karşı bir betik eylemi başlatın. Aşağıdaki URI 'yi "Bash betiği URI 'SI" olarak işaretlenen metin kutusuna yapıştırın: https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. "Bağımsız değişkenler" olarak işaretlenen metin kutusunda, **kopyalanmış** Hive meta veri deposu için sunucuadı, veritabanı, Kullanıcı adı ve parolayı boşluklarla ayırarak girin. ServerName ' i belirtirken ". database.windows.net" eklemeyin.
 
 > [!Warning]
 > HDInsight 3,6 meta veri şemasını HDInsight 4,0 şemasına dönüştüren yükseltme, geri alınamaz.
 
 ## <a name="migrate-hive-tables-to-hdinsight-40"></a>Hive tablolarını HDInsight 4,0 'e geçirme
 
-Hive meta veri deposunu HDInsight 4,0 ' ye geçirmek için önceki adım kümesini tamamladıktan sonra, meta veri deposu 'nda kaydedilen tablolar ve veritabanları, küme içinden `show tables` veya `show databases` içinden çalıştırılarak HDInsight 4,0 kümesi içinden görünür olacaktır . HDInsight 4,0 kümelerinde sorgu yürütme hakkında bilgi için bkz. [HDInsight sürümleri arasında sorgu yürütme](#query-execution-across-hdinsight-versions) .
+Hive meta veri deposunu HDInsight 4,0 ' ye geçirmeye yönelik önceki adım kümesini tamamladıktan sonra, meta veri deposu 'nda kaydedilen tablolar ve veritabanları, `show tables` veya küme içinden `show databases` yürüterek HDInsight 4,0 kümesi içinden görünür olacaktır. HDInsight 4,0 kümelerinde sorgu yürütme hakkında bilgi için bkz. [HDInsight sürümleri arasında sorgu yürütme](#query-execution-across-hdinsight-versions) .
 
 Ancak tablolardaki gerçek veriler, kümenin gerekli depolama hesaplarına erişimi olana kadar erişilebilir değildir. HDInsight 4,0 kümenizin eski HDInsight 3,6 kümeniz ile aynı verilere erişebildiğinizden emin olmak için aşağıdaki adımları izleyin:
 
@@ -66,9 +66,9 @@ Geçişi yürütmeden önce ambarınızın özelliklerini ayarlamanız gerekebil
 Tablo özelliklerinizi doğru şekilde ayarladıktan sonra, SSH kabuğu 'nu kullanarak küme yayın düğümlerinden birindeki Hive ambarı geçiş aracını yürütün:
 
 1. SSH kullanarak küme baş düğümüne 'a bağlanın. Yönergeler için bkz. [SSH kullanarak HDInsight 'A bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md)
-1. Şunu çalıştırarak bir oturum açma kabuğunu Hive kullanıcısı olarak açın`sudo su - hive`
-1. Yürüterek `ls /usr/hdp`Hortonçalışmalar veri platformu yığın sürümünü belirleme. Bu, sonraki komutta kullanmanız gereken bir sürüm dizesi görüntüler.
-1. Kabuktan aşağıdaki komutu yürütün. Önceki `${{STACK_VERSION}}` adımdaki sürüm dizesiyle değiştirin:
+1. `sudo su - hive` çalıştırarak Hive kullanıcısı olarak bir oturum açma kabuğu açın
+1. `ls /usr/hdp`yürüterek veri platformu yığın sürümünü belirleme. Bu, sonraki komutta kullanmanız gereken bir sürüm dizesi görüntüler.
+1. Kabuktan aşağıdaki komutu yürütün. `${{STACK_VERSION}}` önceki adımdaki sürüm dizesiyle değiştirin:
 
 ```bash
 /usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
@@ -99,12 +99,12 @@ HDInsight 3,6 ' de Hive sunucusu ile etkileşim için GUI istemcisi, ambarı Hiv
 
 Yürütme için düğüm türü olarak "baş düğümler" ile kümenize karşı bir betik eylemi başlatın. Aşağıdaki URI 'yi "Bash betiği URI 'SI" olarak işaretlenen metin kutusuna yapıştırın: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-5 ila 10 dakika bekleyin, sonra şu URL 'yi kullanarak Data Analytics Studio 'yu başlatın:\<https://clustername >. azurehdinsight. net/das/
+5 ila 10 dakika bekleyin, sonra şu URL 'YI kullanarak Data Analytics Studio 'Yu başlatın: https://\<clustername >. azurehdinsight. net/das/
 
 DAS yüklendikten sonra, sorgular görüntüleyicisinde çalıştırdığınız sorguları görmüyorsanız, aşağıdaki adımları uygulayın:
 
 1. [Das yüklemesinde sorun giderme için bu kılavuzda](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)açıklanan Hive, tez ve das için yapılandırma ayarlayın.
-2. Aşağıdaki Azure depolama dizini yapılandırması 'nın sayfa Blobları olduğundan ve altında `fs.azure.page.blob.dirs`listelendiğinden emin olun:
+2. Aşağıdaki Azure depolama dizini yapılandırması ' nın sayfa Blobları olduğundan ve `fs.azure.page.blob.dirs`altında listelendiğinden emin olun:
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
 3. Her iki headnode üzerinde de IV, Hive, tez ve DAS 'i yeniden başlatın.

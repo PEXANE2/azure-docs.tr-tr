@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici günlüklerinde sorgu arama | Microsoft Docs
 description: Bu makalede, Azure Izleyici günlük sorgularında arama ile çalışmaya başlama hakkında bir öğretici sunulmaktadır.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a0ceb5aa82b0d38ab5d2567689e3e131ba781ce9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.date: 08/06/2018
+ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254993"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932991"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde sorgu arama
 Azure Izleyici günlük sorguları, bir tablo adı ya da bir arama komutu ile başlayabilir. Bu öğretici, arama tabanlı sorguları ele alır. Her yöntemin avantajları vardır.
@@ -58,7 +52,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> @No__t-1 yerine `==` kullanırsanız sonuçlar, *kaynak* sütunun tam değeri "Error" olan ve bu tam durumda olduğu kayıtları içerir. ': ' Kullanılması, *kaynağın* "hata kodu 404" veya "hata" gibi değerlere sahip olduğu kayıtları içerecektir.
+> `:`yerine `==` kullanırsanız sonuçlar, *kaynak* sütunun "Error" değerine sahip olduğu kayıtları ve bu tam durumu içerir. ': ' Kullanılması, *kaynağın* "hata kodu 404" veya "hata" gibi değerlere sahip olduğu kayıtları içerecektir.
 
 ## <a name="case-sensitivity"></a>Büyük/küçük harf duyarlılığı
 Varsayılan olarak, terim arama büyük/küçük harfe duyarlıdır; bu nedenle "DNS" araması "DNS", "DNS" veya "DNS" gibi sonuçlar verebilir. Arama durumunu duyarlı hale getirmek için `kind` seçeneğini kullanın:
@@ -101,7 +95,7 @@ Yalnızca bir joker karakter (`search in (Event) *`) kullanarak bir tablodaki he
 > [!TIP]
 > Her tablodaki her sütunu almak için `search *` ' ı kullanabilirsiniz, ancak sorgularınızın her zaman belirli tablolara kapsamını oluşturmanız önerilir. Kapsamlı olmayan sorguların tamamlanması biraz zaman alabilir ve çok fazla sonuç döndürebilir.
 
-## <a name="add-and--or-to-search-queries"></a>@No__t ekleyin *ve* sorgular arayın
+## <a name="add-and--or-to-search-queries"></a>Sorgu ekleme *ve* / *veya* arama
 Birden çok terim içeren kayıtları aramak için **ve** kullanın:
 
 ```Kusto

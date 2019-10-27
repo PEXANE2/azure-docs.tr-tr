@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 10/25/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: a2b00173f463cf5bf0cda321286042a516b7e322
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 527114adbe2422148605fd878723ae74fa7c3304
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70130125"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72958820"
 ---
 | Kategori | Veri deposu |
 |:--- |:--- |
@@ -25,19 +25,19 @@ ms.locfileid: "70130125"
 | &nbsp; |[MariaDB için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mariadb.md) |
 | &nbsp; |[MySQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |
-| &nbsp; |[Azure dosyaları](../articles/data-factory/connector-azure-file-storage.md) |
+| &nbsp; |[Azure Dosyalar](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Veritabanı](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL veritabanı yönetilen örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Azure SQL Veritabanı Yönetilen Örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
 | &nbsp; |[Azure SQL Veri Ambarı](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Tablo Depolama](../articles/data-factory/connector-azure-table-storage.md) |
 | **Veritabanı** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
-| &nbsp; |[Drill (Önizleme)](../articles/data-factory/connector-drill.md) |
+| &nbsp; |[İncelemek](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
 | &nbsp; |[Greenplum](../articles/data-factory/connector-greenplum.md) |
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |
-| &nbsp; |[Apache Impala (Önizleme)](../articles/data-factory/connector-impala.md) |
+| &nbsp; |[Apache Impala](../articles/data-factory/connector-impala.md) |
 | &nbsp; |[Informix](../articles/data-factory/connector-informix.md) 
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |
 | &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
@@ -67,32 +67,32 @@ ms.locfileid: "70130125"
 | **Genel protokol** |[Genel HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[Genel OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[Genel ODBC](../articles/data-factory/connector-odbc.md) |
-| **Hizmetler ve uygulamalar** |[Amazon Marketplace Web Service (Önizleme)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
+| **Hizmetler ve uygulamalar** |[Amazon Market Web hizmeti](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Uygulamalar için Common Data Service](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Concur (Önizleme)](../articles/data-factory/connector-concur.md) |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Dynamics AX (Önizleme)](../articles/data-factory/connector-dynamics-ax.md) |
+| &nbsp; |[Dynamics AX](../articles/data-factory/connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[Google AdWords (Önizleme)](../articles/data-factory/connector-google-adwords.md) |
+| &nbsp; |[Google AdWords](../articles/data-factory/connector-google-adwords.md) |
 | &nbsp; |[HubSpot (Önizleme)](../articles/data-factory/connector-hubspot.md) |
-| &nbsp; |[Jira (Önizleme)](../articles/data-factory/connector-jira.md) |
+| &nbsp; |[JIRA](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento (Önizleme)](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo (Önizleme)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Önizleme)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Önizleme)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Oracle hizmet Bulutu (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Oracle hizmet bulutu (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Önizleme)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Önizleme)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |
-| &nbsp; |[Salesforce Marketing Cloud (Önizleme)](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
+| &nbsp; |[Salesforce pazarlama bulutu](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
 | &nbsp; |[Müşteri için SAP Cloud (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |
 | &nbsp; |[Shopify (Önizleme)](../articles/data-factory/connector-shopify.md) |
 | &nbsp; |[Square (Önizleme)](../articles/data-factory/connector-square.md) |
 | &nbsp; |[Web Tablosu (HTML tablosu)](../articles/data-factory/connector-web-table.md) 
-| &nbsp; |[Xero (Önizleme)](../articles/data-factory/connector-xero.md) |
+| &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |
 | &nbsp; |[Zoho (Önizleme)](../articles/data-factory/connector-zoho.md) |
 
 > [!NOTE]

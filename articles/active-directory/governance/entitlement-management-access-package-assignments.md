@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a20ff526ba00f5b6521198122972071360bb58d6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392520"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934482"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma
 
@@ -70,11 +70,9 @@ Bazı durumlarda, kullanıcıların erişim paketini isteme işlemini istememele
 
     ![Atamalar-erişim paketine Kullanıcı ekleme](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Erişim paketini atamak istediğiniz kullanıcıları seçmek için **Kullanıcı Ekle** ' ye tıklayın.
+1. Bu erişim paketini atamak istediğiniz kullanıcıları seçmek için **Kullanıcı Ekle** ' ye tıklayın.
 
-1. **Ilke Seç** listesinde, [none (yalnızca yönetici doğrudan atamaları)](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) ayarı olan bir ilke seçin.
-
-    Bu erişim paketinde bu ilke türü yoksa, **Yeni Ilke oluştur** ' a tıklayarak bir tane ekleyebilirsiniz.
+1. **Ilke Seç** listesinde, kullanıcıların gelecekteki istekleri ve yaşam döngüsünün tarafından yönetilecektir ve izlendiğini belirten bir ilke seçin. Seçili kullanıcıların farklı ilke ayarlarına sahip olmasını istiyorsanız yeni ilke **Oluştur** ' a tıklayarak yeni ilke ekleyebilirsiniz.
 
 1. Seçili kullanıcıların atamasının başlamasını ve bitmesini istediğiniz tarih ve saati ayarlayın. Bir bitiş tarihi sağlanmazsa, ilkenin yaşam döngüsü ayarları kullanılacaktır.
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici günlükleri dağıtımınızı tasarlama | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'de bir çalışma alanı dağıtmaya hazırlama müşterilerine yönelik konular ve öneriler açıklanmaktadır.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/20/2019
+ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177602"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932361"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
 
@@ -43,7 +37,7 @@ Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve 
 İhtiyaç duyduğunuz çalışma alanı sayısını belirlemek aşağıdaki gereksinimlerinden biri veya daha fazlası tarafından etkilenir:
 
 * Küresel bir şirkettir ve veri egemenliği veya uyumluluk nedenleriyle belirli bölgelerde depolanan günlük verilerine ihtiyacınız vardır.
-* Azure kullanıyorsunuz ve yönettiği Azure kaynaklarıyla aynı bölgede bir çalışma alanı bulundurarak giden veri aktarımı ücretlerinden kaçınmak istiyorsunuz.
+* Azure kullanıyorsanız ve çalışma alanını, yönettiği Azure kaynaklarıyla aynı bölgede bulundurarak giden veri aktarımı ücretlerini ortadan kaldırmak istiyorsanız.
 * Birden çok Departmanı veya iş grubunu yönetebilir ve bunların her birinin kendi verilerini görmesini, ancak başkalarından verileri görmelerini istersiniz. Ayrıca, birleştirilmiş bir çapraz departman veya iş grubu görünümü için bir iş gereksinimi yoktur.
 
 Günümüzde BT kurumları, merkezi bir, merkezi olarak veya her iki yapının de içinden bir arada bir karma olarak modellenmiştir. Sonuç olarak, aşağıdaki çalışma alanı dağıtım modelleri yaygın olarak bu kuruluş yapılarından birine eşlemek için kullanılır:
@@ -69,7 +63,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| Çarpan | Description |
+| Çarpan | Açıklama |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |

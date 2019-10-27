@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 99f8c2b40445fe282800d096353bee1c7a934ebe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b644d293afd429bdc68fba66c119eb7146d0daf0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918119"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935456"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>HDInsight Hadoop kümelerinde Kurumsal Güvenlik Paketi ile Apache Oozie çalıştırma
 
@@ -41,7 +41,7 @@ Secure Shell (SSH) hakkında daha fazla bilgi için bkz. [SSH kullanarak HDInsig
    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
    ```
 
-2. Başarılı Kerberos kimlik doğrulamasını doğrulamak için `klist` komutunu kullanın. Aksi takdirde, Kerberos `kinit` kimlik doğrulamasını başlatmak için kullanın.
+2. Başarılı Kerberos kimlik doğrulamasını doğrulamak için `klist` komutunu kullanın. Aksi takdirde, Kerberos kimlik doğrulamasını başlatmak için `kinit` kullanın.
 
 3. Azure Data Lake Storage erişmek için gereken OAuth belirtecini kaydetmek için HDInsight ağ geçidinde oturum açın:   
      ```bash
@@ -61,9 +61,9 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
-   Etki `DomainUser` alanı kullanıcı adıyla değiştirin. 
-   Etki `DomainUserPath` alanı kullanıcısının ana dizin yoluyla değiştirin. 
-   Kümenizin `ClusterVersion` hortonçalışmalar veri platformu (HDP) sürümü ile değiştirin.
+   `DomainUser` etki alanı kullanıcı adıyla değiştirin.
+   `DomainUserPath`, etki alanı kullanıcısının ana dizin yoluyla değiştirin.
+   `ClusterVersion`, küme veri platformu sürümü ile değiştirin.
 
 2. Yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki ifadeyi kullanın:
    ```bash
@@ -167,7 +167,7 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
        <end name="end" />
     </workflow-app>
    ```
-4. Kümenin `clustername` adıyla değiştirin. 
+4. `clustername`, küme adıyla değiştirin. 
 
 5. Dosyayı kaydetmek için CTRL + X ' i seçin. `Y` yazın. Ardından **ENTER**' ı seçin.
 
@@ -184,14 +184,14 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
 
      - Hive Server 2 ve Hive Server 1 eylemleri, HDInsight ile birlikte sunulan bir örnek Hive tablosunda bir sorgu çalıştırır.
 
-     Hive eylemleri, işlem öğesindeki anahtar sözcüğünü `cred` kullanarak kimlik doğrulaması için kimlik bilgileri bölümünde tanımlanan kimlik bilgilerini kullanır.
+     Hive eylemleri, eylem öğesindeki `cred` anahtar sözcüğünü kullanarak kimlik doğrulaması için kimlik bilgileri bölümünde tanımlanan kimlik bilgilerini kullanır.
 
-6. `workflow.xml`Dosyayıkopyalamak için aşağıdaki komutu kullanın: `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`
+6. `workflow.xml` dosyasını `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`kopyalamak için aşağıdaki komutu kullanın:
      ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
      ```
 
-7. Etki `domainuser` alanı için Kullanıcı adınızla değiştirin.
+7. `domainuser` etki alanı için Kullanıcı adınızla değiştirin.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>Oozie işi için özellikler dosyasını tanımlayın
 
@@ -219,11 +219,11 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   * Birincil küme depolama alanı olarak `nameNode` Azure Data Lake Storage 1. sahipseniz, özelliği için URI'yikullanın.`adl://home` Azure Blob depolamayı kullanıyorsanız bunu olarak `wasb://home`değiştirin. Azure Data Lake Storage 2. kullanıyorsanız bunu olarak `abfs://home`değiştirin.
-   * Etki `domainuser` alanı için Kullanıcı adınızla değiştirin.  
-   * Kümenin `ClusterShortName` kısa adıyla değiştirin. Örneğin, küme adı https:// *[örnek bağlantı]* sechadoopcontoso.azurehdisnight.net `clustershortname` ise, kümenin ilk altı karakteri: **sechad**.  
-   * Hive `jdbcurlvalue` yapılandırmasındaki JDBC URL 'siyle değiştirin. Bir örnek: hive2://///      
-   * Dosyayı kaydetmek için CTRL + X ' `Y`i seçin ve ENTER ' u seçin.
+   * Birincil küme depolama alanı olarak Azure Data Lake Storage 1. sahipseniz, `nameNode` özelliği için `adl://home` URI 'sini kullanın. Azure Blob depolama 'yı kullanıyorsanız bunu `wasb://home`değiştirin. Azure Data Lake Storage 2. kullanıyorsanız, bunu `abfs://home`olarak değiştirin.
+   * `domainuser` etki alanı için Kullanıcı adınızla değiştirin.  
+   * `ClusterShortName`, kümenin kısa adıyla değiştirin. Örneğin, küme adı https:// *[örnek bağlantı]* sechadoopcontoso.azurehdisnight.net ise, `clustershortname` kümenin ilk altı karakterdir: **sechad**.  
+   * `jdbcurlvalue`, Hive yapılandırmasındaki JDBC URL 'siyle değiştirin. Bir örnek: hive2://///      
+   * Dosyayı kaydetmek için CTRL + X ' i seçin, `Y`girin ve ardından **ENTER**' u seçin.
 
    Oozie işleri çalıştırılırken bu özellikler dosyasının yerel olarak mevcut olması gerekir.
 
@@ -315,7 +315,7 @@ Hive sunucu 2 eylemleri için Ranger denetim günlükleri Kullanıcı için eyle
 
 ## <a name="configure-user-authorization-in-oozie"></a>Oozie 'de Kullanıcı yetkilendirmesini yapılandırma
 
-Tek başına Oozie, kullanıcıların diğer kullanıcıların işlerini durdurmasını veya silmelerini engelleyebilen bir kullanıcı yetkilendirme yapılandırmasına sahiptir. Bu yapılandırmayı etkinleştirmek için öğesini `oozie.service.AuthorizationService.security.enabled` olarak `true`ayarlayın. 
+Tek başına Oozie, kullanıcıların diğer kullanıcıların işlerini durdurmasını veya silmelerini engelleyebilen bir kullanıcı yetkilendirme yapılandırmasına sahiptir. Bu yapılandırmayı etkinleştirmek için `oozie.service.AuthorizationService.security.enabled` `true`olarak ayarlayın. 
 
 Daha fazla bilgi için bkz. [Apache Oozie yükleme ve yapılandırma](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

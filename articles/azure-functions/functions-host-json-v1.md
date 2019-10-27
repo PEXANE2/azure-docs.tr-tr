@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 3d6a28c8cdcf13dc805d70832ed65732911138cd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 89709edf085e1c424156fb68bd86fbc66b6ae8a7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263354"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934325"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için Host. JSON başvurusu
 
@@ -144,7 +144,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 |---------|---------|---------|
 |GatewayMode|Ağ Geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
 |Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
-|leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
+|leasePrefix|Yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -156,7 +156,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>işlevleri
+## <a name="functions"></a>işlevler
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -168,7 +168,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır. Bir App Service planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır.
+Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır. Bir App Service planında, genel bir sınır yoktur ve varsayılan değer, zaman aşımı olmadığını gösteren _null_olur.
 
 ```json
 {
@@ -194,9 +194,9 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|etkinletir|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|etkinletir|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|@No__t-0 ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
 |Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 
@@ -217,13 +217,13 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="id"></a>kimlik
+## <a name="id"></a>id
 
 *Yalnızca sürüm 1. x.*
 
-Bir iş konağının benzersiz KIMLIĞI. Kesik çizgileri kaldırılmış küçük bir harf olabilir. Yerel olarak çalıştırılırken gereklidir. Azure 'da çalışırken, bir KIMLIK değeri ayarlamanıza önerilir. @No__t-0 atlandığında Azure 'da bir KIMLIK otomatik olarak oluşturulur. 
+Bir iş konağının benzersiz KIMLIĞI. Kesik çizgileri kaldırılmış küçük bir harf olabilir. Yerel olarak çalıştırılırken gereklidir. Azure 'da çalışırken, bir KIMLIK değeri ayarlamanıza önerilir. `id` atlandığında Azure 'da otomatik olarak bir KIMLIK oluşturulur. 
 
-Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir işlev uygulamasının farklı bir @no__t olduğundan emin olun. @No__t-0 özelliğini atlayabilir veya her bir işlev uygulamasının `id` ' i farklı bir değere el ile ayarlayabilirsiniz. Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olacağını sağlamak için bir depolama kilidi kullanır. İki işlevli uygulama aynı @no__t paylaşıyorsa-0 ' dır ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
+Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir işlev uygulamasının farklı bir `id`sahip olduğundan emin olun. `id` özelliğini atlayabilir veya her bir işlev uygulamasının `id` farklı bir değere el ile ayarlayabilirsiniz. Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olacağını sağlamak için bir depolama kilidi kullanır. İki işlev uygulaması aynı `id` paylaşıyorsa ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
 
 ```json
 {
@@ -252,11 +252,11 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
-|defaultLevel|Bilgiler|@No__t-0 dizisinde belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıdaki Application Insights gönderin.| 
-|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde günlüğe kaydedilir.| 
+|categoryFilter|Yok|Kategoriye göre filtrelemeyi belirtir| 
+|defaultLevel|Bilgi|`categoryLevels` dizide belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıdaki Application Insights gönderin.| 
+|categoryLevels|Yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde günlüğe kaydedilir.| 
 
-## <a name="queues"></a>sıralar
+## <a name="queues"></a>klarında
 
 [Depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md)için yapılandırma ayarları.
 
@@ -280,7 +280,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 |maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.| 
 |newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.| 
 
-## <a name="sendgrid"></a>sendGrid
+## <a name="sendgrid"></a>SendGrid
 
 [Sendgrind çıkış bağlamasının](functions-bindings-sendgrid.md) yapılandırma ayarı
 
@@ -293,7 +293,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
+|Kaynak|Yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -312,7 +312,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` ' ı 1 ' e ayarlayın. | 
-|prefetchCount|yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
+|prefetchCount|Yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
 |autoRenewTimeout|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.| 
 
 ## <a name="singleton"></a>adet
@@ -337,13 +337,13 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
 |Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
+|Locktanışmalationpollingınterval|Yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="tracing"></a>izleme
+## <a name="tracing"></a>izleniyor
 
 *Sürüm 1. x*
 
-@No__t-0 nesnesi kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları. Bkz [ C# . Logging](functions-reference-csharp.md#logging) ve [Node. js günlüğü](functions-reference-node.md#writing-trace-output-to-the-console).
+`TraceWriter` nesnesi kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları. Bkz [ C# . Logging](functions-reference-csharp.md#logging) ve [Node. js günlüğü](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {

@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics çalışma alanını silme ve geri yükleme | Microsoft Docs
 description: Kişisel abonelikte bir tane oluşturduysanız veya çalışma alanı modelinizi yeniden yapılandırmak için Log Analytics çalışma alanınızı silmeyi öğrenin.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/11/2019
+ms.openlocfilehash: f15e9c2a5980c8fb6d98f7bf9187b030e6910523
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299273"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932364"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve geri yükleme
 
@@ -52,9 +46,9 @@ Bir çalışma alanını [PowerShell](https://docs.microsoft.com/powershell/modu
 1. Oturum açmak için [Azure Portal](https://portal.azure.com)gidin. 
 2. Azure portalda **Tüm hizmetler**’i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
 3. Log Analytics çalışma alanları listesinde bir çalışma alanı seçin ve orta bölmenin en üstündeki **Sil** ' e tıklayın.
-   ![Delete seçeneği çalışma alanı Özellikler bölmesi @ no__t-1
+   ![seçim alanı Özellikler bölmesinden](media/delete-workspace/log-analytics-delete-workspace.png)
 4. Çalışma alanını silme işlemini onaylamanızı isteyen onay iletisi penceresi göründüğünde **Evet**' e tıklayın.
-   ![ çalışma alanının Silinmesini Onayla @ no__t-1
+   ![çalışma alanının silinmesini onaylayın](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
 

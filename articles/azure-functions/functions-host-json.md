@@ -1,20 +1,18 @@
 ---
 title: Azure Işlevleri 2. x için Host. JSON başvurusu
 description: V2 çalışma zamanına sahip Azure Işlevleri Host. JSON dosyası için başvuru belgeleri.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596869"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72927443"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -150,9 +148,7 @@ Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functi
 ## <a name="functiontimeout"></a>functionTimeout
 
 Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır.  
-Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır: 
-+ Sürüm 1. x: varsayılan değer, zaman aşımı olmadığını gösteren *null*.   
-+ Sürüm 2. x: varsayılan değer 30 dakikadır. @No__t_0 değeri, sınırsız yürütmeyi gösterir.
+Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer 30 dakikadır. `-1` değeri, sınırsız yürütmeyi gösterir.
 
 ```json
 {
@@ -180,7 +176,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 |---------|---------|---------| 
 |etkinletir|doğru|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|@No__t_0 ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckWindow|2 dakika|`healthCheckThreshold` ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
 |Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 

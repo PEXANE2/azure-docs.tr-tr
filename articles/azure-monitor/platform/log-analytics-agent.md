@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics Agent ile günlük verilerini toplama | Microsoft Docs
 description: Bu konu, verileri nasıl toplayacağınızı ve Azure 'da, şirket içinde veya başka bir bulut ortamında barındırılan bilgisayarların Log Analytics nasıl izleneceğini anlamanıza yardımcı olur.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/07/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1eec8b79579a1c4d5c889b830706299ccc25e88b
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: 8070abad675acc69f5b1da232b60179078adbc57
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035639"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932236"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics aracısıyla günlük verilerini toplama
 

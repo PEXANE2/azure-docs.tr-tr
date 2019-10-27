@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176673"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934357"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -104,10 +104,10 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
     }
     ```
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 1. Sekmenin en altına kaydırın ve **Gelişmiş kenar çalışma zamanı ayarlarını yapılandır**' ı seçin. 
    
-1. **Edge hub 'ındaki** **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.9-RC2**olarak değiştirin.
+1. **Edge hub 'ındaki** **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3**olarak değiştirin.
 
 1. **Oluşturma seçeneklerini doğrulama seçeneği** şu şekilde ayarlanır: 
          
@@ -134,9 +134,9 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
        }
     }
     ```
-1. **Kaydet**'e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
    
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 #### <a name="step-2-specify-routes"></a>2\. Adım: yolları belirtme 
 
@@ -166,10 +166,10 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
    
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
    
-   | Ad | GÖRÜNTÜYLE |
+   | Adı | GÖRÜNTÜYLE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Gerekli en az kapsayıcı yoksa, IoT Edge dağıtım bildirimin önerilen ayarlarla hizalanıp Hizalanmadığını denetleyin. Daha fazla bilgi için bkz. [IoT Edge modülünü dağıtma](#deployment-using-azure-portal).

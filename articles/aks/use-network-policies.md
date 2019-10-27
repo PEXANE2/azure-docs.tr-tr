@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169746"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928488"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (aks) içindeki ağ ilkelerini kullanarak Pod arasındaki trafiği güvenli hale getirme
 
@@ -22,7 +22,7 @@ Bu makalede ağ ilkesi altyapısının nasıl yükleneceği ve Kubernetes ağ il
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 > [!TIP]
 > Önizleme sırasında ağ ilkesi özelliğini kullandıysanız, [Yeni bir küme oluşturmanızı](#create-an-aks-cluster-and-enable-network-policy)öneririz.
@@ -57,8 +57,8 @@ Her iki uygulama da belirtilen ilkeleri zorlamak için Linux *Iptables* kullanı
 | Desteklenen platformlar                      | Linux                      | Linux                       |
 | Desteklenen ağ seçenekleri             | Azure CNı                  | Azure CNı ve Kubernetes kullanan       |
 | Kubernetes belirtimiyle uyumluluk | Desteklenen tüm ilke türleri |  Desteklenen tüm ilke türleri |
-| Ek özellikler                      | Yok.                       | Küresel ağ Ilkesi, küresel ağ kümesi ve konak uç noktasından oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri yönetmek için `calicoctl` CLı kullanma hakkında daha fazla bilgi için bkz. [calicoctl User Reference][calicoctl]. |
-| Support                                  | Azure desteği ve mühendislik ekibi tarafından desteklenir | Calıco topluluk desteği. Ücretli ek destek hakkında daha fazla bilgi için bkz. [Proje Calıco destek seçenekleri][calico-support]. |
+| Ek özellikler                      | Hiçbiri                       | Küresel ağ Ilkesi, küresel ağ kümesi ve konak uç noktasından oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri yönetmek için `calicoctl` CLı kullanma hakkında daha fazla bilgi için bkz. [calicoctl User Reference][calicoctl]. |
+| Destek                                  | Azure desteği ve mühendislik ekibi tarafından desteklenir | Calıco topluluk desteği. Ücretli ek destek hakkında daha fazla bilgi için bkz. [Proje Calıco destek seçenekleri][calico-support]. |
 | Günlüğe kaydetme                                  | Iptables 'da eklenen/silinen kurallar, */var/log/Azure-NPM.log* altındaki her konakta günlüğe kaydedilir. | Daha fazla bilgi için bkz. [Calıco bileşen günlükleri][calico-logs] |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS kümesi oluşturma ve ağ ilkesini etkinleştirme
@@ -69,7 +69,11 @@ Ağ ilkelerini sürüyor olarak görmek için, trafik akışını tanımlayan bi
 * Pod etiketlerine göre trafiğe izin verin.
 * Ad alanına göre trafiğe izin ver.
 
-İlk olarak, ağ ilkesini destekleyen bir AKS kümesi oluşturalım. Ağ İlkesi özelliği yalnızca küme oluşturulduğunda etkinleştirilebilir. Mevcut bir AKS kümesinde ağ ilkesini etkinleştiremezsiniz.
+İlk olarak, ağ ilkesini destekleyen bir AKS kümesi oluşturalım. 
+
+> [!IMPORTANT]
+>
+> Ağ İlkesi özelliği yalnızca küme oluşturulduğunda etkinleştirilebilir. Mevcut bir AKS kümesinde ağ ilkesini etkinleştiremezsiniz.
 
 Azure ağ Ilkesini kullanmak için [Azure CNI eklentisini][azure-cni] kullanmanız ve kendi sanal ağınızı ve alt ağlarını tanımlamanız gerekir. Gerekli alt ağ aralıklarının nasıl planlanacağı hakkında daha ayrıntılı bilgi için bkz. [Gelişmiş ağı yapılandırma][use-advanced-networking]. Calıco ağ Ilkesi, aynı Azure CNı eklentisiyle ya da Kubenet CNı eklentisiyle birlikte kullanılabilir.
 
@@ -187,7 +191,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Ağ ilkesi oluşturma ve uygulama
 
-Artık, örnek arka uç pod üzerinde temel NGıNX Web sayfasını kullanabilirsiniz, tüm trafiği reddetmek için bir ağ ilkesi oluşturun. @No__t-0 adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu bildirim, ilkeyi örnek NGINX Pod 'unuz gibi *App: WebApp, role: arka uç* etiketi olan Pod 'ye eklemek için bir *Pod Seçicisi* kullanır. Giriş altında hiçbir kural tanımlanmadığı için *Pod 'a giden*tüm trafik reddedilir:
+Artık, örnek arka uç pod üzerinde temel NGıNX Web sayfasını kullanabilirsiniz, tüm trafiği reddetmek için bir ağ ilkesi oluşturun. `backend-policy.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu bildirim, ilkeyi örnek NGINX Pod 'unuz gibi *App: WebApp, role: arka uç* etiketi olan Pod 'ye eklemek için bir *Pod Seçicisi* kullanır. Giriş altında hiçbir kural tanımlanmadığı için *Pod 'a giden*tüm trafik reddedilir:
 
 ```yaml
 kind: NetworkPolicy

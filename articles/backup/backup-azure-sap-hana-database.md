@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273941"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931809"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
@@ -53,6 +53,9 @@ Yedeklemeleri yapılandırmadan önce aşağıdakileri yaptığınızdan emin ol
     sudo zypper update
     sudo zypper install unixODBC
     ```
+
+    > [!NOTE]
+    > Depoları güncelleştirmediğiniz için, unixODBC sürümünün min 2.3.4 olduğundan emin olun. UniXODBC sürümünü bildirmek için ```odbcinst -j``` kök olarak çalıştırın
 
 2. [Aşağıdaki](#set-up-network-connectivity)yordamda açıklandığı gibi, Azure 'a ULAŞABILMESI için VM 'den internet 'e bağlantıya izin verin.
 

@@ -9,24 +9,24 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169815"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924981"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Azure dağıtım yuvalarıyla altyapı sağlamak için Terraform'u kullanma
 
 [Azure dağıtım yuvalarını](/azure/app-service/deploy-staging-slots) kullanarak uygulamanızın farklı sürümleri arasında geçiş yapabilirsiniz. Bu özellik, bozuk dağıtımlarının etkisini en aza indirmenize yardımcı olur. 
 
-Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım adımları ile dağıtım yuvası kullanımı gösterilmektedir. Uygulamaların biri üretim yuvasında barındırılmaktadır. İkinci uygulama ise bir hazırlama yuvasında barındırılmaktadır. ("üretim" ve "hazırlama" adları rastgele verilmiştir ve senaryonuzu niteleyen faklı ifadeler de kullanılabilir.) Dağıtım yuvalarınızı yapılandırdıktan sonra Terraform'u kullanarak iki yuva arasında geçiş yapabilirsiniz.
+Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım adımları ile dağıtım yuvası kullanımı gösterilmektedir. Uygulamaların biri üretim yuvasında barındırılmaktadır. İkinci uygulama ise bir hazırlama yuvasında barındırılmaktadır. ("Üretim" ve "hazırlama" adları rasgele olur ve senaryonuzu temsil etmek istediğiniz herhangi bir şey olabilir.) Dağıtım yuvalarınızı yapılandırdıktan sonra, gerektiğinde iki yuva arasında geçiş yapmak için Terrayform kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **GitHub hesabı**: Test GitHub deposunun çatalını yapmak ve bunları kullanmak için bir [GitHub](https://www.github.com) hesabı gerekir.
+- **GitHub hesabı**: Test amaçlı GitHub deposundan çatal oluşturmak ve bunu kullanmak için bir [GitHub](https://www.github.com) hesabına ihtiyacınız vardır.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Terraform planını oluşturma ve uygulama
 
@@ -85,8 +85,8 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,17 +95,17 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 

@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop bileşenleri ve sürümleri-Azure HDInsight
-description: HDInsight 'ta Apache Hadoop bileşenleri ve sürümleri ve Hortonçalışmalar veri platformunun bu bulut dağıtımında kullanılabilen hizmet düzeylerini öğrenin.
+description: Azure HDInsight 'ta Apache Hadoop bileşenleri ve sürümleri hakkında bilgi edinin.
 keywords: Hadoop sürümleri, Hadoop ekosistemi bileşenleri, Hadoop bileşenleri, Hadoop sürümünü denetleme
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e6c9bd18a6ea5975269b96653e47eaf1da462676
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984464"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935442"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
 
@@ -42,10 +42,10 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 | Apache Oozie | 4.3.1 | 4.2.0 | 4.2.0 | 4.2.0 | 4.2.0 | 4.1.0 |
 | Apache Zookeeper | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 |
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
-| Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
+| Apache Mahout | - | 0.9.0 + | 0.9.0 + | 0.9.0 + | 0.9.0 + | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1, 2,4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2,0 | 1.6.0 | 1.5.2 | 1.3.1 (yalnızca Windows) |
-| Apache Livy | 0,5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0.2 | - |
+| Apache Spark | 2.3.1, 2,4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2,0 | 1.6.0 | 1.5.2 planlama | 1.3.1 (yalnızca Windows) |
+| Apache Livy | 0,5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0,2 | - |
 | Apache Kafka | 1.1.1, 2,1 | 1,1, 1,0 * (aşağıdaki nota bakın) | 0.10.0 | 0.9.0 | - | - |
 | Apache ambarı | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
 | Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
@@ -72,12 +72,12 @@ Aşağıdaki tabloda, Azure portal bulunan HDInsight sürümlerinin yanı sıra 
 
 | HDInsight sürümü | HDP sürümü | VM IŞLETIM SISTEMI | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3,0 |Ubuntu 16.0.4 LTS |24 Eylül 2018 | | |Evet |Evet |
-| HDInsight 3,6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 Nisan 2017 | 30 Haziran 2020 |31 Aralık 2020 |Evet |Evet |
+| HDInsight 4.0 |HDP 3,0 |Ubuntu 16.0.4 LTS |24 Eylül 2018 | | |Yes |Yes |
+| HDInsight 3,6 |HDP 2,6 |Ubuntu 16.0.4 LTS |4 Nisan 2017 | 30 Haziran 2020 |31 Aralık 2020 |Yes |Yes |
 
 
 > [!NOTE]  
-> Bir sürüm desteğinin süresi dolduktan sonra, Microsoft Azure portal aracılığıyla kullanılamayabilir. Ancak, Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) komutu ve .net `Version` SDK 'nın sürümü kullanımdan kaldırılması tarihine kadar bu parametre kullanılarak küme sürümleri kullanılabilir olmaya devam eder.
+> Bir sürüm desteğinin süresi dolduktan sonra, Microsoft Azure portal aracılığıyla kullanılamayabilir. Ancak, Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) komutu ve .NET SDK 'nın sürüm kullanımdan kaldırma tarihine kadar `Version` parametresi kullanılarak küme sürümleri kullanılabilir olmaya devam eder.
 >
 
 ### <a name="retired-versions"></a>Kullanımdan kaldırılan sürümler
@@ -86,15 +86,15 @@ Aşağıdaki tabloda, Azure portal mevcut **olmayan** HDInsight sürümleri list
 
 | HDInsight sürümü | HDP sürümü | VM IŞLETIM SISTEMI | Sürüm tarihi | Destek sona erme tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portal kullanılabilirliği | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Evet |Hayır |
-| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Evet |Hayır |
-| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Evet |Hayır |
-| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Evet |Hayır |
-| HDInsight 3,2 |HDP 2.2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Evet |Hayır |
-| HDInsight 3,1 |HDP 2.1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Evet |Hayır |
-| HDInsight 3,0 |HDP 2.0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Evet |Hayır |
-| HDInsight 2,1 |HDP 1.3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Evet |Hayır |
-| HDInsight 1,6 |HDP 1.1 | |28 Ekim 2013 |26 Nisan 2014 |31 Mayıs 2015 |Hayır |Hayır |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 Eylül 2016 |5 Eylül 2017 |28 Haziran 2018 |Yes |Hayır |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 Mart 2016 |29 Aralık 2016 |9 Ocak 2018 |Yes |Hayır |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2018 |Yes |Hayır |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 Aralık 2015 |27 Haziran 2016 |31 Temmuz 2017 |Yes |Hayır |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS veya Windows Server 2012 R2 |18 Şubat 2015 |1 Mart 2016 |1 Nisan 2017 |Yes |Hayır |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 Haziran 2014 |18 Mayıs 2015 |30 Haziran 2016 |Yes |Hayır |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 Şubat 2014 |17 Eylül 2014 |30 Haziran 2015 |Yes |Hayır |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 Ekim 2013 |12 Mayıs 2014 |31 Mayıs 2015 |Yes |Hayır |
+| HDInsight 1,6 |HDP 1,1 | |28 Ekim 2013 |26 Nisan 2014 |31 Mayıs 2015 |Hayır |Hayır |
 
 > [!NOTE]  
 > İki baş düğümü olan yüksek oranda kullanılabilir kümeler, HDInsight sürüm 2,1 ve üzeri için varsayılan olarak dağıtılır. Bunlar HDInsight sürüm 1,6 kümeleri için kullanılamaz.
@@ -131,7 +131,7 @@ Kurumsal Güvenlik, HDInsight kümenize küme iş akışı oluşturma işlemi ka
 
 - Hadoop (yalnızca HDInsight 3,6)
 - Spark
-- Interactive Query
+- Etkileşimli Sorgu
 
 ### <a name="support-for-azure-data-lake-storage"></a>Azure Data Lake Storage için destek
 
@@ -146,8 +146,8 @@ Kurumsal Güvenlik Paketi için fiyatlandırma ve SLA hakkında daha fazla bilgi
 
 Hizmet düzeyi sözleşmesi (SLA), _destek penceresi_bakımından tanımlanmıştır. Destek penceresi, bir HDInsight küme sürümünün Microsoft Müşteri Hizmetleri ve desteği tarafından desteklendiği süredir. Sürümün süresi geçen bir _destek sona erme tarihi_ varsa, HDInsight kümesi Destek penceresinin dışındadır. Belirtilen HDInsight sürüm X için destek sona erme tarihi (daha yeni bir X + 1 sürümü kullanılabilir olduktan sonra), daha sonra şu şekilde hesaplanır:  
 
-* Formül 1: HDInsight kümesi sürüm X 'in serbest bırakıldığı tarihe 180 gün ekleyin.
-* Formül 2: HDInsight kümesi sürümü X + 1 ' in Azure portal kullanılabilir hale getirilme tarihine 90 gün ekleyin.
+* Formül 1: HDInsight kümesi sürüm X 'in yayımlandığı tarihe 180 gün ekleyin.
+* Formül 2: HDInsight kümesi sürüm X + 1 ' de Azure portal tarihi ' nde kullanılabilir hale geldiğinde tarihe 90 gün ekleyin.
 
 _Emeklilik tarihi_ , HDInsight 'ta küme sürümünün oluşturuoluşturuoluşturulamadığından tarih olur. 31 Temmuz 2017 ' den itibaren, bir HDInsight kümesini kullanımdan kaldırma tarihinden sonra yeniden boyutlandıramazsınız. 
 
@@ -167,7 +167,7 @@ Bu bölümde, HDInsight ile kullanılan Hortonçalışmalar veri platformu dağ�
   * [Apache Hive sürüm notları](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) Apache Web sitesinde bulunabilir.
 * HDInsight küme sürümü 3,2, [Hortonçalışmalar veri platformu 2,2][hdp-2-2]' ni temel alan bir Hadoop dağıtımı kullanır.
 
-  * Belirli Apache bileşenleri için sürüm notları aşağıdaki gibi kullanılabilir: [Hive 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), RG [2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [Yarn 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [ortak](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [ambarı 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [fırtınası 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)ve [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Belirli Apache bileşenleri için sürüm notları şu şekilde kullanılabilir: [Hive 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180) [2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), TBU, [Yarn 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [ortak](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambarı 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [fırtınası 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)ve [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * HDInsight küme sürümü 3,1, [Hortonçalışmalar veri platformu 2.1.7][hdp-2-1-7]tabanlı bir Hadoop dağıtımı kullanır. Kasım 7, 2014 tarihinden önce oluşturulan HDInsight 3,1 kümeleri, [Hortonçalışmalar veri platformu 2.1.1][hdp-2-1-1]tabanlıdır.
 * HDInsight küme sürümü 3,0, [Hortonçalışmalar veri platformu 2,0][hdp-2-0-8]' ni temel alan bir Hadoop dağıtımı kullanır.
 * HDInsight küme sürümü 2,1, [Hortonçalışmalar veri platformu 1,3][hdp-1-3-0]' ni temel alan bir Hadoop dağıtımı kullanır.

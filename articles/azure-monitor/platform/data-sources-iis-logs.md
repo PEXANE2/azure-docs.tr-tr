@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici 'de IIS günlükleri | Microsoft Docs
 description: Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek günlük dosyalarındaki Kullanıcı etkinliklerini depolar.  Bu makalede, Azure Izleyici 'de oluşturdukları kayıtların IIS günlüklerinin ve ayrıntılarının nasıl yapılandırılacağı açıklanır.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 11/28/2018
+ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814228"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932497"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Izleyici 'de IIS günlükleri toplama
 Internet Information Services (IIS), Azure Izleyici tarafından toplanabilecek ve [günlük verileri](data-platform.md)olarak depolanan günlük dosyalarındaki Kullanıcı etkinliklerini depolar.
@@ -42,7 +36,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 
 | Özellik | Açıklama |
 |:--- |:--- |
-| Computer |Olayın toplandığı bilgisayarın adı. |
+| Bilgisayar |Olayın toplandığı bilgisayarın adı. |
 | CIP |İstemcinin IP adresi. |
 | csMethod |İsteğin GET veya POST gibi yöntemi. |
 | csReferer |Kullanıcının geçerli siteye bir bağlantıyı takip ettiği site. |
@@ -50,7 +44,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 | csUserName |Sunucuya erişen kimliği doğrulanmış kullanıcının adı. Anonim kullanıcılar bir tire ile belirtilir. |
 | csUriStem |İsteğin hedefi bir Web sayfası. |
 | csUriQuery |Varsa, istemcisinin gerçekleştirmeye çalıştığı sorgu. |
-| ManagementGroupName |Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için AOI - budur\<çalışma alanı kimliği\> |
+| ManagementGroupName |Operations Manager aracıları için yönetim grubunun adı.  Diğer aracılar için bu, AOI-\<çalışma alanı KIMLIĞIDIR\> |
 | RemoteIPCountry |İstemcinin IP adresinin ülkesi/bölgesi. |
 | RemoteIPLatitude |İstemci IP adresinin enlem. |
 | RemoteIPLongitude |İstemci IP adresinin boylam. |
@@ -62,7 +56,7 @@ IIS günlük kayıtları bir tür **W3CIISLog** ve aşağıdaki tabloda bulunan 
 | Spor |İstemcinin bağlandığı sunucudaki bağlantı noktası. |
 | sSiteName |IIS sitesinin adı. |
 | TimeGenerated |Girişin günlüğe kaydedildiği tarih ve saat. |
-| TimeTaken |İsteğin milisaniye cinsinden işlenmesi için geçen süre. |
+| timeTaken |İsteğin milisaniye cinsinden işlenmesi için geçen süre. |
 
 ## <a name="log-queries-with-iis-logs"></a>IIS günlükleri ile sorguları günlüğe kaydet
 Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
@@ -72,9 +66,9 @@ Aşağıdaki tabloda, IIS günlük kayıtlarını alan günlük sorgularının f
 | W3CIISLog |Tüm IIS günlük kayıtları. |
 | W3CIISLog &#124; burada scstatus = = 500 |Tüm IIS günlük kayıtları 500 dönüş durumuna sahiptir. |
 | W3CIISLog &#124; özetleme sayısı (), CIP |İstemci IP adresine göre IIS günlük girişi sayısı. |
-| W3CIISLog &#124; WHERE cshost = = "www\.contoso.com" &#124; Count () öğesini csUriStem ile özetleme |Host www\.contoso.com için URL 'ye göre IIS günlük girişi sayısı. |
+| W3CIISLog &#124; WHERE cshost = = "www\.contoso.com" &#124; özetleme sayısı () csUriStem |Ana Bilgisayar www\.contoso.com için URL 'ye göre IIS günlük girişi sayısı. |
 | W3CIISLog &#124; özetleme toplamı (csbytes) bilgisayar &#124; tarafından 500000 al |Her IIS bilgisayarı tarafından alınan toplam bayt sayısı. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Izleyici 'yi analize yönelik diğer [veri kaynaklarını](agent-data-sources.md) toplayacak şekilde yapılandırın.
-* Hakkında bilgi edinin [oturum sorguları](../log-query/log-query-overview.md) veri kaynakları ve çözümlerinden toplanan verileri analiz etmek için.
+* Veri kaynaklarından ve çözümlerinden toplanan verileri analiz etmek için [günlük sorguları](../log-query/log-query-overview.md) hakkında bilgi edinin.
