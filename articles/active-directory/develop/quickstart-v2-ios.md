@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: a96aab3fc5dfa62039732f7860f1e96e3f60e445
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264162"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964028"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -62,10 +62,10 @@ Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. B
 >      - **Ad** bölümünde, uygulamanızı oturum açtıklarında veya onaylamada uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
 >      - Bu sayfadaki diğer konfigürasyonları atlayın.
 >      - `Register` öğesini seçin.
-> 1. **Yönet** bölümünde `Authentication` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 ' i seçin.
+> 1. **Yönet** bölümünde, > `iOS``Add Platform``Authentication` > seçin.
 >      - Uygulamanız için ***paket kimliğini*** girin. Paket tanımlayıcısı, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir, örneğin `com.<yourname>.identitysample.MSALMacOS`. Kullandığınız değeri bir yere getirin.
 >      - İOS yapılandırmasının macOS uygulamaları için de geçerli olduğunu unutmayın.
-> 1. @No__t-0 ' ı seçin ve bu hızlı başlangıçta daha sonra için ***msal yapılandırma*** ayrıntılarını kaydedin.
+> 1. `Configure` ' yi seçin ve bu hızlı başlangıçta daha sonra için ***msal yapılandırma*** ayrıntılarını kaydedin.
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>1\. Adım: Uygulamanızı yapılandırma
@@ -92,7 +92,7 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
-> 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. @No__t-0 değerini, uygulamanızı hızlı başlangıçta portala kaydettiğinizde kaydettiğiniz istemci KIMLIĞIYLE güncelleştirmeyi unutmayın:
+> 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. `kClientID` değerini, uygulamayı hızlı başlangıçta portala kaydettiğinizde kaydettiğiniz istemci KIMLIĞI ile güncelleştirmeyi unutmayın:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -118,13 +118,13 @@ Bir Terminal penceresinde, indirilen kod örneğini içeren klasöre gidin ve en
 > [!div renderon="docs"]
 >
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
-> 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. @No__t-0 değerini, uygulamanızı bu hızlı başlangıçta daha önce portala kaydettiğinizde kaydettiğiniz ClientID ile güncelleştirmeyi unutmayın:
+> 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. Bu hızlı başlangıçta portala uygulamanızı kaydettiğinizde kaydettiğiniz ClientID ile `kClientID` değerini güncelleştirmeyi unutmayın:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
 > 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklayıp  > **kaynak kodu** **olarak aç**' ı seçin.
-> 1. Yalnızca iOS için, dict kök düğümünün altında, `Enter_the_bundle_Id_Here` ' ı portalda kullandığınız ***paket kimliğiyle*** değiştirin.
+> 1. Yalnızca iOS için, dict kök düğümünün altında `Enter_the_bundle_Id_Here`, portalda kullandığınız ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -266,7 +266,7 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 > |Nerede: ||
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani, Microsoft Graph için `[ "user.read" ]` veya özel Web API 'Leri için `[ "<Application ID URL>/scope" ]` (`api://<Application ID>/access_as_user`) |
-> | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, @no__t ile Belirteç istekleri için kullanılacak hesabı belirlemek üzere mantığı tanımlamanız gerekir |
+> | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, `applicationContext.account(forHomeAccountId: self.homeAccountId)` kullanarak belirteç isteklerinde kullanılacak hesabı belirlemek için mantığı tanımlamanız gerekir |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

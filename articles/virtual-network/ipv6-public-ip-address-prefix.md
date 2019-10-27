@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597949"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965166"
 ---
 # <a name="reserved-public-ipv6-address-prefix-preview"></a>Ayrılmış genel IPv6 adresi ön eki (Önizleme)
 
@@ -46,7 +46,7 @@ Aşağıdaki genel IP öneki boyutları kullanılabilir:
 Tek tek IP adresleri ve IP aralıkları olmak üzere Azure genel IP 'Leri kullanımıyla ilişkili maliyetler için bkz. [genel IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
 ## <a name="limitations"></a>Sınırlamalar
-IPv6, Azure 'daki uygulamanızı (VM 'ler veya yük dengeleyiciler) silip yeniden dağıtıyorsanız IPv6 adresinin değiştirileceği anlamına gelen temel genel IP 'lerde yalnızca "dinamik" ayırma ile desteklenir. Yalnızca standart IPv6 genel IP 'si hem dinamik hem de statik (ayrılmış) ayırmayı destekler.
+IPv6, Azure 'daki uygulamanızı (VM 'ler veya yük dengeleyiciler) silip yeniden dağıtıyorsanız IPv6 adresinin değiştirileceği anlamına gelen temel genel IP 'lerde yalnızca "dinamik" ayırma ile desteklenir. Standart IPv6 genel IP 'si yalnızca statik (ayrılmış) ayırmayı destekler, ancak standart Iç yük dengeleyiciler, atandıkları alt ağ içinden dinamik ayırmayı de destekleyebilir.  
 
 En iyi uygulama olarak, IPv6 uygulamalarınız için standart genel IP 'Leri ve standart yük dengeleyicileri kullanmanızı öneririz.
 

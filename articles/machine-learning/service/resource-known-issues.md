@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675640"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965589"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -79,13 +79,23 @@ Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, gö
 
 FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
+## <a name="automated-machine-learning"></a>Otomatik makine öğrenmesi
 
 Tensor Flow otomatik makine öğrenimi Şu anda Tensor Flow sürüm 1,13 ' i desteklememektedir. Bu sürümün yüklenmesi paket bağımlılıklarının çalışmayı durdurmasına neden olur. Bu sorunu gelecekte yayımlanacak bir sürümde gidermeye çalışıyoruz. 
 
 ### <a name="experiment-charts"></a>Deneme grafikleri
 
 Otomatik ML denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (duyarlık-hatırla, ROC, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde doğru işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
+
+## <a name="datasets-and-data-preparation"></a>Veri kümeleri ve veri hazırlama
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP veya ADLS Gen 2 ' den Parquet dosyası okunamadı
+
+AzureML, HTTP veya ADLS Gen 2 ' den Parquet dosyalarını okuyarak bir veri kümesi oluştururken hata oluşmasına neden olan, AzureML DataPrep SDK sürümü 1.1.25 'da bilinen bir sorun vardır. Bu sorunu onarmak için lütfen 1.1.26 sürümünden daha yüksek bir sürüme yükseltin veya 1.1.24 ' den daha düşük bir sürüme düşürme yapın.
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Databricks
 
@@ -140,7 +150,7 @@ Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası gör�
 * `azure-dataprep` Version 1.1.8 veya üstünü ekleyin.
 * `pyarrow` sürüm 0,11 veya üstünü ekleyin.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 Çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal genel bakış sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Portal](https://portal.azure.com) gitmek ve çalışma alanı adını aramak olacaktır.
 
@@ -183,7 +193,7 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes hizmeti hatalarında WebServices 
 
-Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, `kubectl`kullanılarak kümeye bağlanarak hata ayıklanabilir. Çalıştıran bir Azure Kubernetes hizmet kümesi için `kubeconfig.json` alabilirsiniz
+Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, `kubectl` kullanılarak kümeye bağlanarak hata ayıklanabilir. Şunu çalıştırarak bir Azure Kubernetes hizmet kümesi için `kubeconfig.json` alabilirsiniz
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -217,7 +227,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, `kubectl` kullanarak kümeye bağlanarak ve gizli dizi `azuremlfessl`alarak, bu dosyaları kümeyi kullanımdan çıkarmadan önce alabilirsiniz.
+Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, `kubectl` ' ı kullanarak kümeye bağlanarak ve gizli dizi `azuremlfessl` ' i alarak bu dosyaları alabilirsiniz.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml

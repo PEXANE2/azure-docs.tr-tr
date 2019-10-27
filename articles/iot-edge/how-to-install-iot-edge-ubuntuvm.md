@@ -9,18 +9,18 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: f4bab6ab837b746c6a569cc6de95a95023bf83f4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0e5bec7d3e1ecd63541a319cd5a9151560ef4139
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987000"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964639"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu sanal makinelerinde Azure IoT Edge çalıştırma
 
-Azure IOT Edge çalışma zamanı, ne bir cihaz ile IOT Edge cihazı kapatır ' dir. Çalışma zamanı, cihaz olarak endüstriyel sunucusu olarak büyük veya küçük bir Raspberry Pi üzerinde dağıtılabilir. Bir cihaz IOT Edge çalışma zamanı ile yapılandırıldıktan sonra iş mantığı buluttan dağıttıktan başlayabilirsiniz.
+Azure IoT Edge çalışma zamanı, bir cihazı IoT Edge cihazına dönüştürür. Çalışma zamanı, cihazlarda Raspberry Pi kadar küçük veya endüstriyel sunucu olarak büyük olarak dağıtılabilir. Bir cihaz IoT Edge çalışma zamanına göre yapılandırıldıktan sonra, buluta iş mantığı dağıtmaya başlayabilirsiniz.
 
-IOT Edge çalışma zamanı nasıl çalıştığını ve hangi bileşenler dahildir hakkında daha fazla bilgi için bkz: [Azure IOT Edge çalışma zamanı ve mimarisini anlama](iot-edge-runtime.md).
+IoT Edge çalışma zamanının nasıl çalıştığı ve hangi bileşenlerin dahil olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md).
 
 Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubuntuvm)önceden yapılandırılmış Azure IoT Edge kullanılarak ubuntu 16,04 sanal makinesinde Azure IoT Edge çalışma zamanını çalıştırma adımları listelenmektedir. 
 
@@ -33,10 +33,10 @@ Bu makalede, [Ubuntu Azure Marketi teklifinin](https://aka.ms/azure-iot-edge-ubu
     *   Bir VM 'yi ilk kez deniyorsanız, bir parola kullanmak ve genel gelen bağlantı noktası menüsünde SSH 'yi etkinleştirmek en kolay yoldur. 
     *   Yoğun kaynak iş yükünüz varsa, daha fazla CPU ve/veya bellek ekleyerek sanal makine boyutunu yükseltmeniz gerekir.
 4.  Sanal makine dağıtıldıktan sonra, IoT Hub bağlanacak şekilde yapılandırın:
-    1.  IoT Hub oluşturulan IoT Edge cihazınızdan cihaz Bağlantı dizenizi kopyalayın (Bu işleme alışkın değilseniz Azure portal nasıl yapılır [kılavuzlarından yeni bir Azure IoT Edge cihazı kaydet](how-to-register-device-portal.md) ' i izleyebilirsiniz)
+    1.  Cihaz Bağlantı dizenizi, IoT Hub oluşturulan IoT Edge cihazınızdan kopyalayın (Bu işlemi tanımıyorsanız [Azure Portal yordamda bağlantı dizesini alma '](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) yı takip edebilirsiniz)
     1.  Azure portal yeni oluşturduğunuz sanal makine kaynağını seçin ve **komutu Çalıştır** seçeneğini açın
     1.  **Runshellscrıpt** seçeneğini belirleyin
-    1.  Aşağıdaki betiği, cihaz bağlantı dizeniz ile komut penceresi aracılığıyla yürütün:`/etc/iotedge/configedge.sh “{device_connection_string}”`
+    1.  Aşağıdaki betiği, cihaz bağlantı dizeniz ile komut penceresi aracılığıyla yürütün: `/etc/iotedge/configedge.sh “{device_connection_string}”`
     1.  **Çalıştır** 'ı seçin
     1.  Birkaç dakika bekleyin ve ekranın bağlantı dizesinin başarıyla ayarlandığını belirten bir başarı iletisi sağlaması gerekir.
 
@@ -85,18 +85,18 @@ Azure portal, "Azure IoT Edge" araması yapın ve sanal makine oluşturma iş ak
    az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
-1. Cihaz bağlantı dizesini ayarlayın (Bu işleme alışkın değilseniz, [Azure CLI ile yeni bir Azure IoT Edge cihazı Kaydet ' i kullanarak Azure CLI](how-to-register-device-cli.md) nasıl yapılır Kılavuzu ' nu izleyebilirsiniz):
+1. Cihaz bağlantı dizesini ayarlayın (Bu işleme alışkın değilseniz, [bağlantı dizesini Azure CLI yordamıyla alma](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) işlemini izleyebilirsiniz):
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
-Kurulumdan sonra bu VM 'ye SSH eklemek istiyorsanız, Publicıpaddress komutunu şu komutla kullanın:`ssh azureuser@{publicIpAddress}`
+Kurulumdan sonra bu VM 'ye SSH eklemek istiyorsanız, Publicıpaddress komutunu şu komutla kullanın: `ssh azureuser@{publicIpAddress}`
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüklü olan çalışma zamanı ile sağlanan bir IOT Edge cihazına sahip olduğunuza göre şunları yapabilirsiniz [IOT Edge modüllerini dağıtmak](how-to-deploy-modules-portal.md).
+Çalışma zamanının yüklü olduğu bir IoT Edge cihazınıza sahip olduğunuza göre, [IoT Edge modülleri dağıtabilirsiniz](how-to-deploy-modules-portal.md).
 
 IoT Edge çalışma zamanının düzgün şekilde yüklenmesiyle ilgili sorun yaşıyorsanız, [sorun giderme](troubleshoot.md) sayfasına göz atın.
 

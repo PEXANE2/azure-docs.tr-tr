@@ -8,7 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 51ef62d84d2744b595cfb946b7720f8b2a5dcd77
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827123"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964045"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Hızlı başlangıç: Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamasından erişim belirteci alma
 
@@ -56,7 +56,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanız için bir ad girin.
 > 1. **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
-> 1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve ardından değeri `http://localhost:30662/` olarak ayarlayın.
+> 1. **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve ardından değeri `http://localhost:30662/`olarak ayarlayın.
 > 1. **Kaydol**’u seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
 > 1. **Gelişmiş ayarlar** bölümünde, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir, çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
@@ -64,7 +64,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişis
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1\. Adım: uygulamanızı Azure portal yapılandırma
-> Bu hızlı başlangıçta çalışması için kod örneği için, `http://localhost:30662/` olarak yeniden yönlendirme URI 'SI eklemeniz ve **örtük izni**etkinleştirmeniz gerekir.
+> Bu hızlı başlangıçta çalışması için kod örneği için `http://localhost:30662/` olarak bir yeniden yönlendirme URI 'SI eklemeniz ve **örtülü izni**etkinleştirmeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişiklikleri benim için yap]()
 >
@@ -82,10 +82,10 @@ Geliştirme ortamınız için uygun olan seçeneği seçin:
 #### <a name="step-3-configure-your-javascript-app"></a>3\. Adım: JavaScript uygulamanızı yapılandırma
 
 > [!div renderon="docs"]
-> *Javascriptspa* klasöründe, *index. html*' yi düzenleyin ve `clientID` ve `authority` değerlerini `msalConfig` altında ayarlayın.
+> *Javascriptspa* klasöründe, *index. html*dosyasını düzenleyin ve `msalConfig`altındaki `clientID` ve `authority` değerlerini ayarlayın.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> *Javascriptspa* klasöründe *index. html*dosyasını düzenleyin ve aşağıdaki kodla `msalConfig` ' yi değiştirin:
+> *Javascriptspa* klasöründe, *index. html*dosyasını düzenleyin ve `msalConfig` aşağıdaki kodla değiştirin:
 
 ```javascript
 var msalConfig = {
@@ -109,8 +109,8 @@ var msalConfig = {
 > [!div renderon="docs"]
 >
 > Nerede:
-> - *\<Enter_the_application_ıd_here >* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
-> - *\<Enter_the_tenant_ınfo_here >* aşağıdaki seçeneklerden birine ayarlanmıştır:
+> - *\<Enter_the_Application_Id_here >* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
+> - *\<Enter_the_Tenant_info_here >* aşağıdaki seçeneklerden birine ayarlanır:
 >    - Uygulamanız *bu kuruluş dizinindeki hesapları*destekliyorsa, bu DEĞERI **Kiracı kimliği** veya **kiracı adı** (örneğin, *contoso.Microsoft.com*) ile değiştirin.
 >    - Uygulamanız *herhangi bir kuruluş dizinindeki hesapları*destekliyorsa, bu değeri **kuruluşlar**ile değiştirin.
 >    - Uygulamanız *herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesapları*destekliyorsa, bu değeri **ortak**ile değiştirin. *Yalnızca kişisel Microsoft hesaplarına*yönelik desteği kısıtlamak için bu değeri **tüketicilerle**değiştirin.
@@ -130,7 +130,7 @@ var msalConfig = {
         node server.js
         ```
 
-    1. Bir Web tarayıcısı açın ve `http://localhost:30662/` ' a gidin.
+    1. Bir Web tarayıcısı açın ve `http://localhost:30662/`gidin.
     1. Oturum açmak için **oturum aç** ' ı seçin ve ardından Microsoft Graph API 'yi çağırın.
 
 
@@ -184,8 +184,8 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |Konum  |  |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
-> |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` ' dır. |
-> |`redirectURI`     | Uygulama kaydının yapılandırılmış yanıt/yeniden yönlendirme URI 'SI. Bu durumda, `http://localhost:30662/`. |
+> |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common`. |
+> |`redirectURI`     | Uygulama kaydının yapılandırılmış yanıt/yeniden yönlendirme URI 'SI. Bu durumda `http://localhost:30662/`. |
 > |`cacheLocation`  | Seçim Kimlik doğrulama durumu için tarayıcı depolamayı ayarlar. Varsayılan değer sessionStorage ' dır.   |
 > |`storeAuthStateInCookie`  | Seçim Tarayıcı tanımlama bilgilerinde kimlik doğrulama akışlarının doğrulanması için gerekli olan kimlik doğrulama isteği durumunu depolayan kitaplık. Bu tanımlama bilgisi, bazı [bilinen sorunları](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)azaltmak üzere IE ve Edge tarayıcıları için ayarlanır. |
 
@@ -209,18 +209,18 @@ myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
 
 > |Konum  |  |
 > |---------|---------|
-> | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, Microsoft Graph için `[ "user.read" ]` veya özel Web API 'Leri (yani, `api://<Application ID>/access_as_user`) için `[ "<Application ID URL>/scope" ]`. |
+> | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, özel Web API 'Leri için Microsoft Graph veya `[ "<Application ID URL>/scope" ]` için `[ "user.read" ]` (yani, `api://<Application ID>/access_as_user`). |
 
 > [!TIP]
 > Alternatif olarak, geçerli sayfayı bir açılan pencere yerine oturum açma sayfasına yönlendirmek için `loginRedirect` yöntemini kullanmak isteyebilirsiniz.
 
 ### <a name="request-tokens"></a>İstek belirteçleri
 
-MSAL belirteçleri elde etmek için üç yöntem kullanır: `acquireTokenRedirect`, `acquireTokenPopup` ve `acquireTokenSilent`
+MSAL belirteçleri elde etmek için üç yöntem kullanır: `acquireTokenRedirect`, `acquireTokenPopup`ve `acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-@No__t-0 yöntemi kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. @No__t-0 veya `loginPopup` yöntemi ilk kez yürütüldükten sonra, sonraki çağrılar için korunan kaynaklara erişmek üzere kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntem `acquireTokenSilent` ' dir. Belirteçleri istek veya yenileme çağrıları sessizce yapılır.
+`acquireTokenSilent` yöntemi, Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. `loginRedirect` veya `loginPopup` yöntemi ilk kez yürütüldükten sonra, `acquireTokenSilent`, sonraki çağrılar için korunan kaynaklara erişmek için kullanılan belirteçleri elde etmek için yaygın olarak kullanılan yöntemdir. Belirteçleri istek veya yenileme çağrıları sessizce yapılır.
 
 ```javascript
 var requestObj = {
@@ -237,7 +237,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 > |Konum  |  |
 > |---------|---------|
-> | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, Microsoft Graph için `[ "user.read" ]` veya özel Web API 'Leri (yani, `api://<Application ID>/access_as_user`) için `[ "<Application ID URL>/scope" ]`.|
+> | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, özel Web API 'Leri için Microsoft Graph veya `[ "<Application ID URL>/scope" ]` için `[ "user.read" ]` (yani, `api://<Application ID>/access_as_user`).|
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
@@ -246,9 +246,9 @@ Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunm
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.
 
-Çoğu uygulama için önerilen desenler öncelikle `acquireTokenSilent` ' ı çağırmalıdır, sonra özel durumu yakalar ve sonra etkileşimli bir istek başlatmak için `acquireTokenPopup` ' i (veya `acquireTokenRedirect`) çağırır.
+Çoğu uygulama için önerilen desenler öncelikle `acquireTokenSilent` çağırıla, sonra özel durumu yakalamalı ve sonra etkileşimli bir istek başlatmak için `acquireTokenPopup` (veya `acquireTokenRedirect`) çağırmalıdır.
 
-@No__t-0 ' ın çağrılması, oturum açmak için açılan pencerede sonuçlanır. (Veya `acquireTokenRedirect`, kullanıcıları Microsoft Identity platform uç noktasına yönlendirirken oluşur.) Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
+`acquireTokenPopup` çağırmak, oturum açmak için bir açılan pencerede sonuçlanır. (Veya `acquireTokenRedirect`, kullanıcıları Microsoft Identity platform uç noktasına yönlendirmeye neden olur.) Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
 
 ```javascript
 var requestObj = {

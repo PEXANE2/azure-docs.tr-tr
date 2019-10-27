@@ -1,6 +1,6 @@
 ---
-title: içerme dosyası
-description: içerme dosyası
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 979fa8bed99a8244e9ebae9de4b615bfac4bd773
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949722"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72966473"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -21,7 +21,7 @@ Yönetilen diskleri kullanarak kazanmanızın avantajlarından bazılarını inc
 
 ### <a name="highly-durable-and-available"></a>Yüksek oranda dayanıklı ve kullanılabilir
 
-Yönetilen diskler% 99,999 kullanılabilirlik için tasarlanmıştır. Yönetilen diskler, verilerinizin üç kopyasını sunarak, yüksek dayanıklılık elde etmenizi sağlar. Bir veya iki çoğaltma sorunu yaşalıyorsa, kalan çoğaltmalar verilerinizin kalıcılığını ve hatalara karşı yüksek tolerans sağlanmasına yardımcı olur. Bu mimari, sektördeki bir hizmet olarak altyapı (IaaS) diskleri için Azure 'un kurumsal düzeyde dayanıklılık kazandığını, sektör lideri% 0 yıllık hata oranı ile sürekli olarak sunmamıza yardımcı oldu.
+Yönetilen diskler% 99,999 kullanılabilirlik için tasarlanmıştır. Yönetilen diskler, verilerinizin üç kopyasını sunarak, yüksek dayanıklılık elde etmenizi sağlar. Çoğaltmaların birinde hatta ikisinde sorunlarla karşılaşılırsa, kalan çoğaltmalar verilerinizin kalıcı olmasını ve başarısızlıklara karşı yüksek tolerans gösterilmesini sağlar. Bu mimari, sektördeki bir hizmet olarak altyapı (IaaS) diskleri için Azure 'un kurumsal düzeyde dayanıklılık kazandığını, sektör lideri %0 yıllık hata oranı ile sürekli olarak sunmamıza yardımcı oldu.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Basit ve ölçeklenebilir VM dağıtımı
 
@@ -33,7 +33,7 @@ Yönetilen diskler, [bir kullanılabilirlik kümesindeki VM](../articles/virtual
 
 ### <a name="integration-with-availability-zones"></a>Kullanılabilirlik Alanları ile tümleştirme
 
-Yönetilen diskler, uygulamalarınızı veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir teklif olan [kullanılabilirlik alanları](../articles/availability-zones/az-overview.md)destekler. Kullanılabilirlik Alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır.
+Yönetilen diskler, uygulamalarınızı veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir teklif olan [kullanılabilirlik alanları](../articles/availability-zones/az-overview.md)destekler. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Azure, Kullanılabilirlik Alanları sayesinde sektörün en iyi% 99,99 VM çalışma süresi SLA 'sını sunmaktadır.
 
 ### <a name="azure-backup-support"></a>Azure Backup desteği
 
@@ -51,13 +51,13 @@ Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-
 
 ## <a name="encryption"></a>Şifreleme
 
-Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizmeti tarafından gerçekleştirilen Depolama Hizmeti Şifrelemesi (SSE). İkincisi, sanal makinelerinize yönelik işletim sistemi ve veri diskleri üzerinde etkinleştirebileceğiniz Azure disk şifrelemesi (ADE) ' dir.
+Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizmeti tarafından gerçekleştirilen sunucu tarafı şifrelemesi (SSE). İkincisi, sanal makinelerinize yönelik işletim sistemi ve veri diskleri üzerinde etkinleştirebileceğiniz Azure disk şifrelemesi (ADE) ' dir.
 
-### <a name="storage-service-encryption-sse"></a>Depolama Hizmeti Şifrelemesi (SSE)
+### <a name="server-side-encryption"></a>Sunucu tarafı şifrelemesi
 
-[Azure depolama hizmeti şifrelemesi](../articles/storage/common/storage-service-encryption.md) , Rest 'ten şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılayacak şekilde verilerinizi korur. SSE, yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için varsayılan olarak etkindir. Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
+[Azure sunucu tarafı şifrelemesi](../articles/storage/common/storage-service-encryption.md) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. Yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için sunucu tarafı şifreleme varsayılan olarak etkindir. Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
 
-### <a name="azure-disk-encryption"></a>Azure disk şifrelemesi
+### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
 Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işletim sistemini ve veri disklerini şifrelemenizi sağlar. Bu şifreleme yönetilen diskler içerir. Windows için Sürücüler, sektör standardı BitLocker şifreleme teknolojisi kullanılarak şifrelenir. Linux için diskler DM-Crypt teknolojisi kullanılarak şifrelenir. Şifreleme işlemi, disk şifreleme anahtarlarını denetlemenize ve yönetmenize olanak tanımak için Azure Key Vault ile tümleşiktir. Daha fazla bilgi için bkz. [IaaS VM 'leri Için Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md).
 
@@ -90,16 +90,16 @@ Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, s
 Yönetilen disklerle anlık görüntü oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 * [Windows 'da anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Linux 'ta anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Linux’ta anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Görüntüler
+### <a name="images"></a>Resimler
 
 Yönetilen diskler ayrıca yönetilen bir özel görüntü oluşturmayı destekler. Bir depolama hesabındaki özel VHD 'nizden veya doğrudan Genelleştirilmiş (Sysprep uygulanmış) bir VM 'den görüntü oluşturabilirsiniz. Bu işlem tek bir görüntüyü yakalar. Bu görüntü, hem işletim sistemi hem de veri diskleri dahil olmak üzere bir VM ile ilişkili tüm yönetilen diskleri içerir. Bu yönetilen özel görüntü, herhangi bir depolama hesabını kopyalamaya veya yönetmeye gerek olmadan özel görüntünüzü kullanarak yüzlerce VM oluşturulmasına olanak sağlar.
 
 Görüntü oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure 'da genelleştirilmiş bir VM 'nin yönetilen görüntüsünü yakalama](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Azure CLı kullanarak bir Linux sanal makinesini Genelleştirme ve yakalama](../articles/virtual-machines/linux/capture-image.md)
+* [Azure CLI'yi kullanarak Linux sanal makinelerini genelleştirme ve yakalama](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Anlık görüntülere karşı görüntüler
 

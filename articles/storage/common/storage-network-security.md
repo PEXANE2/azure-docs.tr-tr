@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 908e44ef17dcfcf7042eab32cfd6d1fc3a565ac7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927108"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965519"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -358,11 +358,11 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
 
 ## <a name="exceptions"></a>Özel Durumlar
 
-Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasında erişim için güvenli bir ortam oluşturmaya yardımcı olur. Ancak, bazı uygulamalar sanal ağ veya IP adresi kuralları aracılığıyla benzersiz bir şekilde yalıtıtılmamış Hizmetleri kullanır. Ancak, tam uygulama işlevselliğini etkinleştirmek için depolama hesabına bu tür hizmetler verilmelidir. Verileriniz, günlüklerinizi veya analizlerinize yönelik bazı erişim senaryolarını etkinleştirmek için ***güvenilir Microsoft hizmetlerine Izin ver...*** özel durumu ' nu kullanabilirsiniz.
+Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındaki bağlantılar için güvenli bir ortam oluşturmaya yardımcı olur. Ancak, bazı uygulamalar sanal ağ veya IP adresi kuralları aracılığıyla benzersiz bir şekilde yalıtıtılmamış Hizmetleri kullanır. Ancak, tam uygulama işlevselliğini etkinleştirmek için bu hizmetler depolama alanına verilmelidir. Bu gibi durumlarda, verilerinize, günlüklerinize veya analizlerinize erişimi etkinleştirmek için ***Güvenilen Microsoft hizmetlerine Izin ver...*** ayarını kullanabilirsiniz.
 
 ### <a name="trusted-microsoft-services"></a>Güvenilen Microsoft Hizmetleri
 
-Ağlardan çalışan bazı Microsoft hizmetlerine, mevcut ağ kuralları aracılığıyla erişim verilemez. Bu tür güvenilir Microsoft hizmetlerinin bir alt kümesinin depolama hesabına erişmesine izin verebilir, ancak diğer uygulamalar için ağ kurallarını koruyun. Bu hizmetler daha sonra, bir depolama hesabına bağlanmak için güçlü kimlik doğrulaması kullanabilir. Microsoft Hizmetleri için iki tür güvenilen erişimi etkinliyoruz.
+Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalışır. Bu tür güvenilir Microsoft hizmetlerinin bir alt kümesinin depolama hesabına erişmesine izin verebilir, ancak diğer uygulamalar için ağ kurallarını koruyun. Bu hizmetler daha sonra, depolama hesabınıza güvenli bir şekilde bağlanmak için güçlü kimlik doğrulaması kullanabilir. Microsoft Hizmetleri için iki tür güvenilen erişimi etkinliyoruz.
 
 - Bazı hizmetlerin kaynaklarına, günlükleri yazma veya yedekleme için yazma gibi belirli işlemler için erişim izni verilebilir.
 - Bazı hizmetlerin belirli bir örneğine, kaynak örneğine [RBAC rolü atanarak](storage-auth-aad.md#assign-rbac-roles-for-access-rights) erişim verilebilir.
@@ -396,7 +396,7 @@ Ağlardan çalışan bazı Microsoft hizmetlerine, mevcut ağ kuralları aracıl
 
 ### <a name="storage-analytics-data-access"></a>Depolama Analizi veri erişimi
 
-Bazı durumlarda, ağ sınırının dışından tanılama günlüklerini ve ölçümleri okumak için erişim gerekir. Depolama hesabına güvenilen hizmetler erişimi yapılandırılırken, günlük dosyaları, ölçüm tabloları veya her ikisi için okuma erişimine izin verebilirsiniz. [Depolama analizi ile çalışma hakkında daha fazla bilgi edinin.](/azure/storage/storage-analytics)
+Bazı durumlarda, ağ sınırının dışında tanılama günlüklerine ve ölçümlerine okuma erişimi de gereklidir. Depolama hesabına güvenilen hizmetler erişimi yapılandırılırken, günlük dosyaları, ölçüm tabloları veya her ikisi için okuma erişimine izin verebilirsiniz. [Depolama analizi ile çalışma hakkında daha fazla bilgi edinin.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Özel durumları yönetme
 

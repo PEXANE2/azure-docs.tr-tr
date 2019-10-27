@@ -6,18 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 20ed04efc1d10e419148cb4f6c75c3eab4ab40a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d5b132be2a3719f746af253439f1d1bdff1c3c40
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957919"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965041"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Öğretici: dijital bir dağıtım merkezi uygulama şablonunu dağıtma ve gözden geçir
 
 Bu öğreticide, bir IoT Central **Digital Distribution Center** uygulama şablonu dağıtmaya nasıl başlacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve daha sonra ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
-
-## <a name="details"></a>Ayrıntılar
 
 Bu öğreticide, 
 * Dijital dağıtım merkezi uygulaması oluştur 
@@ -47,16 +45,14 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
 > [!div class="mx-imgBorder"]
 > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
 
-## <a name="walk-through-the-application"></a>uygulamayı gözden geçir 
-
-## <a name="dashboard"></a>Pano 
+## <a name="walk-through-the-application-dashboard"></a>Uygulama panosu üzerinden ilerleme 
 
 Uygulama şablonunu başarıyla dağıttıktan sonra, varsayılan panonuz bir dağıtım merkezi işletmen odaklı portaldır. Northwind Trader, taşıyıcı sistemleri yöneten kurgusal bir dağıtım merkezi çözüm sağlayıcısıdır. 
 
-Bu panoda, bir sınır ağ geçidi ve IoT cihazı olarak davranan bir kamera görürsünüz. Ağ Geçidi, ilişkili cihaz ikizi özellikleriyle birlikte geçerli, geçersiz, tanımlanmamış ve boyut gibi paketlere yönelik telemetri sağlıyor. Tüm aşağı akış komutları, kamera gibi IoT cihazlarında yürütülür. Bu Pano, kritik dağıtım merkezi cihaz işlemleri etkinliğini göstermek için önceden yapılandırılmıştır.
+Bu panoda, bir ağ geçidi ve IoT cihazı olarak davranan bir kamera görürsünüz. Ağ Geçidi, ilişkili cihaz ikizi özellikleriyle birlikte geçerli, geçersiz, tanımlanmamış ve boyut gibi paketlere yönelik telemetri sağlıyor. Tüm aşağı akış komutları, kamera gibi IoT cihazlarında yürütülür. Bu Pano, kritik dağıtım merkezi cihaz işlemleri etkinliğini göstermek için önceden yapılandırılmıştır.
 
-Pano, Azure IoT Edge ağ geçidi ve IoT cihazının cihaz yönetimi yeteneklerini göstermek üzere mantıksal olarak düzenlenir.  
-   * Denetim görevlerini & Edge Gateway komutunu gerçekleştirebilirsiniz
+Pano, Azure IoT Ağ Geçidi ve IoT cihazının cihaz yönetimi yeteneklerini göstermek üzere mantıksal olarak düzenlenir.  
+   * Denetim görevlerini & ağ geçidi komutu yapabilirsiniz
    * Çözümün parçası olan tüm kameraları yönetin. 
 
 > [!div class="mx-imgBorder"]
@@ -64,36 +60,21 @@ Pano, Azure IoT Edge ağ geçidi ve IoT cihazının cihaz yönetimi yeteneklerin
 
 ## <a name="device-template"></a>Cihaz şablonu
 
-**Cihaz şablonları** sekmesine tıklayın ve Azure IoT Edge & kameranın farklı cihaz şablonlarını görürsünüz. 
-
-Azure IoT Edge ağ geçidi cihaz şablonu, bir sınır ağ geçidi cihazının özelliklerini ve davranışını tanımlayan bir şema öğesini temsil eder. Bir sınır cihazının bazı bileşenleri şunlardır
-   * Dağıtım bildirimi
-   * Aşağı akış cihazlarıyla ilişki
-   * Yazılım modülleri
-   * Modül özellikleri & komutları 
-
-Dağıtım bildiriminde, istenen özellikleriyle yapılandırılan Azure IoT Edge cihazda & modül TWINS 'de çalışacak yazılım modüllerinin listesi bulunur. Cihaz şablonunun parçası olan dağıtım bildirimini kullanarak, Azure IoT Edge çalışma süresi hangi modüllerin yükleneceğini ve birlikte çalışmak üzere nasıl yapılandırılacağını bilir.
+Cihaz şablonları sekmesine tıklayın ve ağ geçidi yetenek modelini görürsünüz. Yetenek modeli iki farklı arabirim etrafında yapılandırılır **Kamera** ve **dijital dağıtım ağ geçidi**
 
 > [!div class="mx-imgBorder"]
 > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
-Bu cihaz şablonunda, modül cihazı yetenek modellerinin dağıtım bildiriminden oluşturulduğunu görebilirsiniz. 
+**Kamera** -bu arabirim, kameraya özgü tüm komut yeteneklerini düzenler 
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate2.png)
+> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-camera.png)
 
-Burada, modül ve cihaz yeteneklerini özelleştirmek için aşağı akış cihaz ilişkileri, bulut özelliği ekleyebilirsiniz, görünümler oluşturabilirsiniz.
-
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-moduletemplate.png)
-
-**Cihaz** sekmesine tıklayın ve dijital dağıtım merkezi Azure IoT Edge ilişkili olan **ddcgateway** cihazını seçin. Burada, Bölüm cihaz ilişkisi olan bir aşağı akış Kamerası & özel kenar modüllerini görürsünüz. IoT Edge modüller en düşük hesaplama birimidir ve Azure Hizmetleri (örneğin, Azure Stream Analytics, AI modülleri) veya çözüme özgü kodunuzla bulunabilir.
+**Dijital dağıtım ağ geçidi** -bu arabirim, kameradan gelen tüm Telemetriyi, bulut tanımlı cihaz ikizi özellikleri ve ağ geçidi bilgilerini temsil eder.
 
 > [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-modules.png)
+> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-devicetemplate1.png)
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-downstream.png)
 
 ## <a name="gateway-commands"></a>Ağ Geçidi komutları
 Bu arabirim tüm ağ geçidi komut yeteneklerini düzenler
@@ -103,6 +84,7 @@ Bu arabirim tüm ağ geçidi komut yeteneklerini düzenler
 
 ## <a name="rules"></a>Kurallar
 Bu uygulama şablonunda bulunan iki farklı kuralı görmek için kurallar sekmesini seçin. Bu kurallar, daha fazla araştırma için işleçlere e-posta bildirimleri olarak yapılandırılmıştır.
+
  **Çok fazla geçersiz paket uyarısı** -bu kural, kamera taşıyıcı sistem aracılığıyla akış sayısını yüksek sayıda geçersiz paketler algıladığında tetiklenir.
  
 **Büyük paket** -bu kural, kameranın kalite için incelenemeyecek çok büyük bir paket algıladığında tetiklenecek. 

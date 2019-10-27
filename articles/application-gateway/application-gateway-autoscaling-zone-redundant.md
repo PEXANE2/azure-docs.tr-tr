@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177445"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965114"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -41,15 +41,15 @@ Standard_v2 ve WAF_v2 SKU 'SU şu bölgelerde kullanılabilir: Orta Kuzey ABD, O
 
 V2 SKU 'SU ile, fiyatlandırma modeli tüketim ile çalıştırılır ve artık örnek sayılarına veya boyutlara eklenmez. V2 SKU fiyatlandırması iki bileşene sahiptir:
 
-- **Sabit fiyat** -bu, bir Standard_v2 veya WAF_v2 ağ geçidi sağlamak için saatlik (veya kısmi saat) fiyatıdır.
-- **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyettir. Kapasite birimi ücretlendirmesi ayrıca saatlik olarak veya kısmen saatlik olarak hesaplanır. Kapasite biriminde üç boyut bulunur: işlem birimi, kalıcı bağlantılar ve aktarım hızı. İşlem birimi, kullanılan işlemci kapasitesini ölçer. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL yeniden yazma hesaplamaları ve WAF kural işleme. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.
+- **Sabit fiyat** -bu, bir Standard_v2 veya WAF_v2 ağ geçidi sağlamak için saatlik (veya kısmi saat) fiyatıdır. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun.
+- **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı bir maliyettir. Kapasite birimi ücretlendirmesi ayrıca saatlik olarak veya kısmen saatlik olarak hesaplanır. Kapasite biriminde üç boyut bulunur: işlem birimi, kalıcı bağlantılar ve aktarım hızı. İşlem birimi, kullanılan işlemci kapasitesini ölçer. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL yeniden yazma hesaplamaları ve WAF kural işleme. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.  Faturalandırma, ayrılmış örnek sayısının üzerinde her şey için bir kapasite birimi düzeyinde yapılır.
 
 Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
 
 İşlem birimi Kılavuzu:
 
 - **Standard_v2** -her işlem BIRIMI, RSA 2048 BIT anahtar TLS sertifikası ile saniyede yaklaşık 50 bağlantı kapasitesine sahiptir.
-- **WAF_v2** -her bir işlem birimi,% 70-30 oranında trafik karması için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir. 2 KB 'tan daha az% 70 WAF performansı şu anda yanıt boyutundan etkilenmez.
+- **WAF_v2** -her bir işlem birimi,% 70-30 oranında trafik karması için saniyede yaklaşık 10 eşzamanlı isteği destekleyebilir. 2 KB 'tan daha az %70 WAF performansı şu anda yanıt boyutundan etkilenmez.
 
 > [!NOTE]
 > Her örnek şu anda yaklaşık 10 kapasite birimini destekleyebilir.
@@ -77,7 +77,7 @@ Toplam Fiyat = $148,8 + $297,6 = $446,4
 
 **Örnek 2**
 
-Bir Application Gateway standard_v2 bir ay boyunca sağlanır ve bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır. Bağlantıların kısa süreli olduğu varsayıldığında, fiyatınızın şöyle olması gerekir:
+Bir Application Gateway standard_v2, 0 minimum örnek ve bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır. Bağlantıların kısa süreli olduğu varsayıldığında, fiyatınızın şöyle olması gerekir:
 
 Sabit fiyat = (saat) * $0,20 = $148,8
 
@@ -85,10 +85,37 @@ Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işl
 
 Toplam Fiyat = $148.8 + 23.81 = $172,61
 
+Gördüğünüz gibi, tüm örnek için değil yalnızca 4 Kapasite birimi için faturalandırılırsınız. 
+
 > [!NOTE]
 > Max işlevi, bir değer çiftindeki en büyük değeri döndürür.
 
+
 **Örnek 3**
+
+Bir Application Gateway standard_v2, en az 5 örnek içeren bir ayda sağlanır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
+
+Sabit fiyat = (saat) * $0,20 = $148,8
+
+Kapasite birim fiyatı = ünle (saatler) * en fazla (0/50 bağlantı için işlem birimi/sn, aktarım için 0/2.22 Kapasite birimi) * $0,008 = 744 * 50 * 0,008 = $297,60
+
+Toplam Fiyat = $148.80 + 297.60 = $446,4
+
+Bu durumda, hiçbir trafik olmasa dahi 5 örnek için faturalandırılırsınız.
+
+**Örnek 4**
+
+Bir Application Gateway standard_v2, en az 5 örnek içeren bir ayda sağlanır, ancak bu kez ortalama 125 Mbps veri aktarımı ve saniyede 25 SSL bağlantısı vardır. Hiçbir trafik ve bağlantının kısa süreli olduğunu varsayarsak, fiyatınızın şöyle olması gerekir:
+
+Sabit fiyat = (saat) * $0,20 = $148,8
+
+Kapasite birim fiyatı = ünle (saatler) * en fazla (25/50 bağlantı için işlem birimi/sn, üretilen iş için 125/2.22 Kapasite birimi) * $0,008 = 744 * 57 * 0,008 = $339,26
+
+Toplam Fiyat = $148.80 + 339.26 = $488,06
+
+Bu durumda, tam 5 örnek, artı 7 Kapasite birimi (örneğin 7/10) için faturalandırılırsınız.  
+
+**Örnek 5**
 
 Bir ay için Application Gateway WAF_v2 sağlandı. Bu süre boyunca 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır ve saniye başına 80 istek olur. Bağlantıların kısa süreli olduğu varsayıldığında ve uygulama için işlem birimi hesaplaması işlem birimi başına 10 RPS 'yi destekliyorsa, fiyatlarınız şöyle olacaktır:
 
@@ -105,7 +132,7 @@ Toplam Fiyat = $267,84 + $85,71 = $353,55
 
 Application Gateway ve WAF, iki modda ölçeklenebilen şekilde yapılandırılabilir:
 
-- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite birimi olarak sayılır. 0, ayrılmış kapasite olmadığını ve doğası içinde tamamen otomatik ölçeklendirmeyi belirtir. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Ağ Geçidi tarafından hizmet verilen trafik miktarı için faturalandırılmaya devam edeceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir. 
+- **Otomatik ölçeklendirme** -otomatik ölçeklendirme etkinken, Application Gateway ve WAF v2 SKU 'larının uygulama trafiği gereksinimlerine göre ölçeği artırma veya azaltma. Bu mod, uygulamanız için daha iyi esneklik sunar ve uygulama ağ geçidi boyutunu veya örnek sayısını tahmin etme gereksinimini ortadan kaldırır. Bu mod ayrıca, ağ geçidinin beklenen maksimum trafik yükü için en yüksek sağlanan kapasiteye çalışmasına gerek duymadan maliyeti kaydetmenizi sağlar. En az ve isteğe bağlı olarak en büyük örnek sayısını belirtmeniz gerekir. En düşük kapasite, Application Gateway ve WAF v2 'nin, trafik yokluğunda bile belirtilen minimum örnek sayısının altına düşmemesini sağlar. Her örnek 10 ek ayrılmış Kapasite birimi olarak sayılır. 0, ayrılmış kapasite olmadığını ve doğası içinde tamamen otomatik ölçeklendirmeyi belirtir. Lütfen 0 ek minimum örnek, her zaman sabit fiyata dahil edilen hizmetin yüksek kullanılabilirliğe sahip olduğundan emin olun. İsteğe bağlı olarak, Application Gateway belirtilen örnek sayısını aşmamasını sağlayan en büyük örnek sayısını belirtebilirsiniz. Ağ Geçidi tarafından hizmet verilen trafik miktarı için faturalandırılmaya devam edeceksiniz. Örnek sayıları 0 ile 125 arasında değişebilir. En fazla örnek sayısı için varsayılan değer, belirtilmemişse 20 ' dir.
 - **El ile** -ağ geçidinin otomatik ölçeklendirme Meyeceği el ile modunu seçebilirsiniz. Bu modda, Application Gateway veya WAF 'nin işleyebileceğinden daha fazla trafik varsa, bu durum trafik kaybına neden olabilir. El ile moduyla, örnek sayısını belirtmek zorunludur. Örnek sayısı 1 ile 125 arasında örnek farklılık gösterebilir.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>V1 SKU 'SU ve v2 SKU 'SU arasındaki Özellik Karşılaştırması

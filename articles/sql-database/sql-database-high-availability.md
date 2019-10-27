@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390710"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965969"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Yüksek kullanılabilirlik ve Azure SQL veritabanı
 
@@ -39,7 +39,7 @@ Bu hizmet katmanları standart kullanılabilirlik mimarisinden yararlanır. Aşa
 
 Standart kullanılabilirlik modeli iki katman içerir:
 
-- @No__t-0 işlemini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, ve önbellekteki önbellek, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz bir işlem katmanı. Bu durum bilgisiz düğüm, `sqlservr.exe` ' ı başlatan Azure Service Fabric tarafından çalıştırılır, düğümün sistem durumunu denetler ve gerekirse başka bir düğüme yük devretme işlemi gerçekleştirir.
+- `sqlservr.exe` sürecini çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler (örneğin, eklenen SSD üzerinde model veritabanları, bağlı SSD üzerinde model veritabanları, ve bellek olarak plan önbelleği, arabellek havuzu ve columnstore havuzu) içeren durum bilgisiz işlem katmanı. Bu durum bilgisiz düğüm, `sqlservr.exe` ' ı başlatan Azure Service Fabric tarafından çalıştırılır, düğümün sistem durumunu denetler ve gerekirse başka bir düğüme yük devretme işlemi gerçekleştirir.
 - Azure Blob depolamada depolanan veritabanı dosyaları (. mdf/. ldf) ile durum bilgisi olan bir veri katmanı. Azure Blob depolamada yerleşik veri kullanılabilirliği ve artıklık özelliği bulunur. SQL Server işlemi kilitlense bile, veri dosyasındaki günlük dosyasında veya sayfada bulunan her kaydın korunacağından emin olur.
 
 Veritabanı altyapısı veya işletim sistemi yükseltildiğinde veya bir hata algılandığında, Azure Service Fabric durum bilgisiz SQL Server işlemini yeterli boş kapasiteye sahip başka bir durum bilgisi olmayan işlem düğümüne taşıyacaktır. Azure Blob depolama alanındaki veriler taşımadan etkilenmez ve veri/günlük dosyaları yeni başlatılan SQL Server işlemine eklenir. Bu işlem% 99,99 kullanılabilirliği garanti eder, ancak yeni SQL Server örneği soğuk önbellek ile başladığından bu yana ağır bir iş yükü geçiş sırasında bazı performans düşüşüne neden olabilir.
@@ -62,7 +62,7 @@ Hiper ölçek hizmet katmanı mimarisi, [Dağıtılmış işlevler mimarisinde](
 
 Hiper ölçekte kullanılabilirlik modeli dört katman içerir:
 
-- @No__t-0 işlemleri çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler içeren, eklenen SSD 'de kapsayan ve önbellek, arabellek havuzu ve columnstore havuzu gibi durum bilgisi olmayan bir işlem katmanı. Bu durum bilgisiz katmanı, birincil işlem çoğaltmasını ve isteğe bağlı olarak, yük devretme hedefleri olarak kullanılabilecek bir dizi ikincil işlem çoğaltmasını içerir.
+- `sqlservr.exe` işlemleri çalıştıran ve yalnızca geçici ve önbelleğe alınmış veriler içeren, eklenen SSD 'de kapsayan ve önbellek, arabellek havuzu ve columnstore havuzu gibi durum bilgisi olmayan bir işlem katmanı. Bu durum bilgisiz katmanı, birincil işlem çoğaltmasını ve isteğe bağlı olarak, yük devretme hedefleri olarak kullanılabilecek bir dizi ikincil işlem çoğaltmasını içerir.
 - Sayfa sunucuları tarafından biçimlendirilen durum bilgisi olmayan bir depolama katmanı. Bu katman, işlem çoğaltmaları üzerinde çalışan `sqlservr.exe` işlemleri için dağıtılmış depolama altyapısıdır. Her sayfa sunucusu yalnızca geçici ve önbelleğe alınmış verileri içerir, örneğin takılı SSD üzerinde RBPEX önbelleği ve bellekte önbelleğe alınan veri sayfaları. Her sayfa sunucusunun, Yük Dengeleme, yedeklilik ve yüksek kullanılabilirlik sağlamak için etkin-etkin bir yapılandırmada eşleştirilmiş bir sayfa sunucusu vardır.
 - Günlük hizmeti işlemi, işlem günlüğü giriş bölgesi ve işlem günlüğü uzun vadeli depolama alanı çalıştıran işlem düğümü tarafından oluşturulan, durum bilgisi olan işlem günlüğü depolama katmanı. Giriş bölgesi ve uzun süreli depolama, işlem günlüğü için kullanılabilirlik ve [Artıklık](https://docs.microsoft.com/azure/storage/common/storage-redundancy) sağlayan ve kaydedilmiş işlemler için veri dayanıklılığı sağlayan Azure depolama 'yı kullanır.
 - Azure depolama 'da depolanan ve sayfa sunucuları tarafından güncelleştirilmiş veritabanı dosyaları (. mdf/. ndf) ile durum bilgisi olan bir veri depolama katmanı. Bu katman, Azure depolama 'nın veri kullanılabilirliği ve [Artıklık](https://docs.microsoft.com/azure/storage/common/storage-redundancy) özelliklerini kullanır. Bir veri dosyasındaki her sayfanın, hiper ölçekli mimarinin diğer katmanlarındaki işlemler çöktüğünde veya işlem düğümleri başarısız olsa bile korunacağından emin olur.
@@ -89,12 +89,14 @@ Yüksek kullanılabilirlik mimarisinin bölge yedekli sürümü aşağıdaki diy
 
 [Hızlandırılmış veritabanı kurtarma (ADR)](sql-database-accelerated-database-recovery.md) , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini büyük ölçüde geliştiren yenı bir SQL veritabanı altyapısı özelliğidir. ADR Şu anda tek veritabanları, elastik havuzlar ve Azure SQL veri ambarı için kullanılabilir.
 
-## <a name="testing-database-fault-resiliency"></a>Veritabanı hata esnekliğini test etme
+## <a name="testing-application-fault-resiliency"></a>Uygulama hatası dayanıklılığı sınanıyor
 
-Yüksek kullanılabilirlik, Azure SQL veritabanı platformunun temel bir parçasıdır ve veritabanı uygulamanız için saydam olarak çalışmaktadır. Ancak, planlı veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin, üretim için dağıtmadan önce uygulamayı ne şekilde etkilediğini test etmek isteyebilirsiniz. Veritabanını veya elastik havuzu yeniden başlatmak için özel bir API çağırabilirsiniz, bu da yük devretmeyi tetikleyecektir. Bölgesel olarak yedekli veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, istemci bağlantılarının yeni birinciyle farklı bir şekilde yeniden yönlendirilme oluşmasına neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, uçtan uca performansı etkileyip etkilemediğinizi da doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda, platformu yoğun bir şekilde zorabileceğinden, her veritabanı veya elastik havuz için her 30 dakikada bir yük devretme çağrısına izin verilir. Ayrıntılar için bkz. [veritabanı yük devretme](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) ve [elastik havuz yük devretme](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+Yüksek kullanılabilirlik, Azure SQL veritabanı platformunun, veritabanı uygulamanız için saydam bir şekilde çalışabilen temel bir parçasıdır. Ancak, planlı veya planlanmamış olaylar sırasında başlatılan otomatik yük devretme işlemlerinin, üretime dağıtmadan önce uygulamayı ne şekilde etkilediğini test etmek isteyebilirsiniz. Bir veritabanını veya elastik havuzu yeniden başlatmak için özel bir API çağırabilirsiniz, bu da bir yük devretmeyi tetikleyecektir. Bölgesel olarak yedekli bir veritabanı veya elastik havuz söz konusu olduğunda, API çağrısı, eski birincil bölge kullanılabilirlik bölgesinden farklı bir kullanılabilirlik bölgesindeki yeni birincil bağlantı ile istemci bağlantılarını yeniden yönlendirmeye neden olur. Bu nedenle, yük devretmenin var olan veritabanı oturumlarını nasıl etkilediğini test etmeye ek olarak, ağ gecikmede yapılan değişiklikler nedeniyle uçtan uca performansı değiştirdiğinizi de doğrulayabilirsiniz. Yeniden başlatma işlemi zorlandığından ve çok sayıda BT platformu stres yaptığından, her veritabanı veya elastik havuz için her 30 dakikada bir yük devretme çağrısına izin verilir. 
+
+Yük devretme, REST API veya PowerShell kullanılarak başlatılabilir. REST API için bkz. [veritabanı yük devretme](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) ve [elastik havuz yük devretme](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover). PowerShell için bkz. [Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) ve [Invoke-Azsqtalakpoolyük devretme](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover). REST API çağrısı, [az Rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) komutu KULLANıLARAK Azure CLI 'dan da yapılabilir.
 
 > [!IMPORTANT]
-> Yük devretme komutu şu anda Hypescale veritabanları ve yönetilen ınstancler için kullanılamaz.  
+> Yük devretme komutu şu anda hiper ölçek hizmeti katmanında ve yönetilen örnek için kullanılabilir değil.
 
 ## <a name="conclusion"></a>Sonuç
 
