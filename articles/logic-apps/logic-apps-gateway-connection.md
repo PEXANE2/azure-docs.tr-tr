@@ -11,7 +11,7 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.openlocfilehash: 4b333df740fbd4c2243ea3f166593ca0a6f4bbad
 ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/20/2019
 ms.locfileid: "72675670"

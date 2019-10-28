@@ -5,6 +5,7 @@
     - name: Media Services hakkında
       href: media-services-overview.md
     - name: Media Services yenilikleri
+      displayName: release notes
       href: release-notes.md
 - name: Öğreticiler
   expanded: true

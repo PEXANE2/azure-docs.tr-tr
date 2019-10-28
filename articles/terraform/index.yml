@@ -4,18 +4,17 @@ summary: Azure üzerinde güvenilir bir şekilde sanal makine ve diğer altyapı
 metadata:
   title: Azure üzerinde Terraform belgeleri - Öğreticiler, örnekler, başvuru ve kaynaklar
   description: Azure üzerinde güvenilir bir şekilde sanal makine ve diğer altyapıları sağlamak için Terraform’u kullanmayı öğrenin.
-  services: azure
   ms.service: terraform
-  ms.topic: landing-page
   author: TomArcherMsft
   ms.author: tarcher
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 35391f886d473b91ab99d27bff64d64903ba0545
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.topic: landing-page
+  ms.date: 10/26/2019
+  ms.openlocfilehash: dbc4ed58b32312023b3248662357777d8567fff9
+  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173525"
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72969512"
 landingContent:
 - title: Azure üzerinde Terraform hakkında
   linkLists:
@@ -34,7 +33,7 @@ landingContent:
     - text: Terraform’u yükleme ve yapılandırma
       url: /azure/virtual-machines/linux/terraform-install-configure?/azure/terraform/toc.json&bc=/azure/bread/toc.json
     - text: Azure için Terraform yapılandırması oluşturma
-      url: terrafom-quickstart.md
+      url: terraform-create-configuration.md
     - text: Terraform Visual Studio Code uzantısını yükleme
       url: terraform-vscode-extension.md
     - text: Yeoman kullanarak Terraform temelli şablon oluşturma
@@ -58,7 +57,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: MSI etkin bir Terraform VM’si oluşturma
-      url: terraform-vm-msi.md
+      url: terraform-vm-managed-identities-for-azure-resources.md
     - text: Terraform modülleri ile VM kümesi oluşturma
       url: terraform-create-vm-cluster-module.md
     - text: Terraform ve HCL ile VM kümesi oluşturma
