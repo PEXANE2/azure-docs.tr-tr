@@ -10,41 +10,51 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cef2bd16907de6e60db2678516f70346a20285
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803599"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933774"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
-Bu makalede, Office 365 gruplarının yaşam döngüsünü yönetme hakkında size bir süre sonu ilkesi ayarlayarak nasıl yönetileceği açıklanır. Azure Active Directory (Azure AD) içinde yalnızca Office 365 grupları için süre sonu ilkesi ayarlayabilirsiniz.
+Bu makalede, Office 365 gruplarının yaşam döngüsünü yönetme hakkında size bir süre sonu ilkesi ayarlayarak nasıl yönetileceği açıklanır. Yalnızca Azure Active Directory (Azure AD) içindeki Office 365 grupları için süre sonu ilkesi ayarlayabilirsiniz.
 
 Bir grubu sona ermek üzere ayarladıktan sonra:
 
-- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir
+- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir (Önizleme)
 - Grubun sahipleri, Grup otomatik yenilenmediğinde grubu yenilemek için bilgilendirilir
 - Yenilenmeyen tüm gruplar silinir
 - Silinen Office 365 Grubu, Grup sahipleri veya yönetici tarafından 30 gün içinde geri yüklenebilir
 
-Bu eylemler, bir grubun otomatik yenilenmesini sağlar:
-
-- SharePoint-dosyaları görüntüleme, düzenleme, Indirme, taşıma, paylaşma ve karşıya yükleme
-- Outlook-Grup, okuma/yazma grubu iletisi ve ileti gibi
-- Takımlar-bir takımlar kanalını ziyaret edin
-
-Şu anda bir kiracıdaki Office 365 grupları için yalnızca bir süre sonu ilkesi yapılandırılabilir.
+Bir Azure AD kuruluşunda tüm Office 365 grupları için şu anda yalnızca bir süre sonu ilkesi yapılandırılabilir.
 
 > [!NOTE]
 > Office 365 grupları için süre sonu ilkesini yapılandırmak ve kullanmak, zaman aşımı ilkesinin uygulandığı tüm grupların üyeleri için Azure AD Premium lisansları atamanız gerekir.
 
 Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilgi için bkz. [Graph 2.0.0.137 için Azure Active Directory PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+
+## <a name="activity-based-automatic-renewal-preview"></a>Etkinlik tabanlı otomatik yenileme (Önizleme)
+
+Azure AD Intelligence ile gruplar, son kullanılan zamanlarda olup olmadıklarında otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint, takımlar veya Yammer gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel alarak, Grup sahiplerine göre el ile gerçekleştirilen eyleme yönelik ihtiyacı ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
+
+### <a name="activities-that-automatically-renew-group-expiration"></a>Grup süre sonunu otomatik olarak yenileme etkinlikleri
+
+Aşağıdaki Kullanıcı eylemleri otomatik grup yenilemeye neden olur:
+
+- SharePoint: dosyaları görüntüleme, düzenleme, indirme, taşıma, paylaşma veya karşıya yükleme
+- Outlook: Grup alanından bir ileti (Outlook Web Erişimi) gibi grup alanından oku/yaz grup iletisini ekleyin
+- Takımlar: bir takımlar kanalını ziyaret edin
+
+### <a name="auditing-and-reporting"></a>Denetim ve raporlama
+
+Yöneticiler, Azure AD 'de etkinlik denetim günlüklerinden otomatik olarak yenilenen grupların listesini alabilir.
 
 ## <a name="roles-and-permissions"></a>Roller ve izinler
 
@@ -67,16 +77,16 @@ Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azur
 
 3. **Süre sonu** sayfasında şunları yapabilirsiniz:
 
-  - Grup ömrünü gün cinsinden ayarlayın. Önceden ayarlanmış değerlerden birini veya özel bir değeri seçebilirsiniz (31 gün veya daha fazla olmalıdır).
-  - Bir grubun sahibi olmadığında yenileme ve sona erme bildirimlerinin gönderilmesi gereken bir e-posta adresi belirtin.
-  - Hangi Office 365 gruplarının sona ereceğini seçin. Süre sonunu şu şekilde ayarlayabilirsiniz:
-    - **Tümü** Office 365 grupları
-    - **Seçili** Office 365 gruplarının listesi
-    - Tüm gruplar için süre sonunu kısıtlamak için **yok**
-  - **Kaydet**' i seçerek yaptığınız ayarları kaydedin.
+    - Grup ömrünü gün cinsinden ayarlayın. Önceden ayarlanmış değerlerden birini veya özel bir değeri seçebilirsiniz (31 gün veya daha fazla olmalıdır).
+    - Bir grubun sahibi olmadığında yenileme ve sona erme bildirimlerinin gönderilmesi gereken bir e-posta adresi belirtin.
+    - Hangi Office 365 gruplarının sona ereceğini seçin. Süre sonunu şu şekilde ayarlayabilirsiniz:
+      - **Tümü** Office 365 grupları
+      - **Seçili** Office 365 gruplarının listesi
+      - Tüm gruplar için süre sonunu kısıtlamak için **yok**
+    - **Kaydet**' i seçerek yaptığınız ayarları kaydedin.
 
 > [!NOTE]
-> Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, Grup otomatik yenilenmediği veya sahip onu yenilemediği sürece süre sonu 35 gün olarak ayarlanır. 
+> Son tarihi ayarladığınızda, süre sonu aralığından eski olan tüm gruplar, Grup otomatik olarak yenilenmediği veya sahip onu yenilemediği sürece süresi dolmadan 35 gün olarak ayarlanır.
 >
 > Dinamik bir grup silinip geri yüklendiğinde, yeni bir grup olarak görülür ve kurala göre yeniden doldurulur. Bu işlem, 24 saate kadar sürebilir.
 >
@@ -99,18 +109,22 @@ Grup, [Azure Active Directory silinen Office 365 grubunu geri yükleme](groups-r
 Geri yüklemekte olduğunuz grup belgeler, SharePoint siteleri veya diğer kalıcı nesneler içeriyorsa, grubu ve içeriğini tamamen geri yüklemek 24 saate kadar sürebilir.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Office 365 grubu sona erme tarihi nasıl alınır?
+
 Kullanıcıların, sona erme tarihi ve son yenilenme tarihi dahil olmak üzere Grup ayrıntılarını görüntüleyebilecekleri erişim paneline ek olarak, bir Office 365 grubunun sona erme tarihi Microsoft Graph REST API Beta 'dan alınabilir. bir grup özelliği olarak expirationDateTime, Microsoft Graph Beta 'da etkinleştirildi. Bu, bir GET isteğiyle alınabilir. Daha fazla ayrıntı için lütfen [Bu örneğe](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)bakın.
 
 > [!NOTE]
 > Erişim panelinde grup üyeliklerini yönetmek için, "erişim panelindeki gruplara erişimi kısıtla" ayarı, Azure Active Directory gruplar genel ayarında "Hayır" olarak ayarlanmalıdır.
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Office 365 Grubu süre sonu, yasal saklama durumunda bir posta kutusuyla nasıl kullanılır
-Bir grubun süresi dolmuşsa ve silindiğinde, grup verileri planlayıcısı, siteler veya takımlar gibi uygulamalardan silindikten sonraki 30 gün sonra kalıcı olarak silinir, ancak yasal saklama alanındaki grup posta kutusu korunur ve kalıcı olarak silinmez. Yönetici, verileri getirmek üzere posta kutusunu geri yüklemek için Exchange cmdlet 'lerini kullanabilir. 
+
+Bir grubun süresi dolmuşsa ve silindiğinde, grup verileri planlayıcısı, siteler veya takımlar gibi uygulamalardan silindikten sonraki 30 gün sonra kalıcı olarak silinir, ancak yasal saklama alanındaki grup posta kutusu korunur ve kalıcı olarak silinmez. Yönetici, verileri getirmek üzere posta kutusunu geri yüklemek için Exchange cmdlet 'lerini kullanabilir.
 
 ## <a name="how-office-365-group-expiration-works-with-retention-policy"></a>Office 365 Grubu süre sonu, bekletme ilkesiyle nasıl kullanılır?
+
 Bekletme ilkesi, güvenlik ve Uyumluluk Merkezi yoluyla yapılandırılır. Office 365 grupları için bir bekletme ilkesi ayarladıysanız, bir grubun süresi dolarsa ve silindiğinde, grup posta kutusundaki ve grup sitesindeki dosyalardaki grup konuşmaları, bekletme kapsayıcısında, bekletmede tanımlanan belirli gün sayısı için tutulur ilkesinin. Kullanıcılar, süresi dolduktan sonra grubu veya içeriğini görmez, ancak site ve posta kutusu verilerini e-bulma yoluyla kurtarabilir.
 
 ## <a name="powershell-examples"></a>PowerShell örnekleri
+
 Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapılandırmak üzere PowerShell cmdlet 'lerini nasıl kullanabileceğinizi gösteren örnekler aşağıda verilmiştir:
 
 1. PowerShell v 2.0 modülünü yükleyip PowerShell komut isteminde oturum açın:
@@ -152,7 +166,7 @@ Azure AD Kuruluşunuzda Office 365 grupları için süre sonu ayarlarını yapı
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. Var olan Ilkeyi kaldır Remove-AzureADMSGroupLifecyclePolicy: Bu cmdlet, Office 365 grup süre sonu ayarlarını siler, ancak ilke KIMLIĞINI gerektirir. Bu, Office 365 grupları için süre sonunu devre dışı bırakır.
+1. Var olan Ilkeyi kaldır Remove-AzureADMSGroupLifecyclePolicy: Bu cmdlet, Office 365 grup süre sonu ayarlarını siler, ancak ilke KIMLIĞINI gerektirir. Bu cmdlet, Office 365 grupları için süre sonunu devre dışı bırakır.
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"

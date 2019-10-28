@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: atsenthi
-ms.openlocfilehash: 123795730e8468591bb02fa7c756ad48222dff82
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ca050e19ed37e2895507507338ebf4b4217851b6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68600026"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934053"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure 'da Azure portal kullanarak Service Fabric kümesi oluşturma
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Bu amaçlarla kullanılmak üzere, sertifika aşağıdaki gereksinimlere uymalı
 
 * Sertifika bir özel anahtar içermelidir.
 * Sertifika, anahtar değişimi için, kişisel bilgi değişimi (. pfx) dosyasına verilebilir şekilde oluşturulmalıdır.
-* Sertifikanın konu adı, Service Fabric kümesine erişmek için kullanılan **etki alanı ile aynı olmalıdır** . Bu, kümenin HTTPS yönetim uç noktaları ve Service Fabric Explorer için SSL sağlamak üzere gereklidir. @No__t_0 etki alanı için bir sertifika yetkilisinden (CA) bir SSL sertifikası edinemezsiniz. Kümeniz için özel bir etki alanı adı alın. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı kümeniz için kullanılan özel etki alanı adıyla aynı olmalıdır.
+* Sertifikanın konu adı, Service Fabric kümesine erişmek için kullanılan **etki alanı ile aynı olmalıdır** . Bu, kümenin HTTPS yönetim uç noktaları ve Service Fabric Explorer için SSL sağlamak üzere gereklidir. `.cloudapp.azure.com` etki alanı için bir sertifika yetkilisinden (CA) bir SSL sertifikası edinemezsiniz. Kümeniz için özel bir etki alanı adı alın. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı kümeniz için kullanılan özel etki alanı adıyla aynı olmalıdır.
 
 #### <a name="client-authentication-certificates"></a>İstemci kimlik doğrulama sertifikaları
 Ek istemci sertifikaları, küme yönetim görevleri için yöneticilerin kimliğini doğrular. Service Fabric iki erişim düzeyine sahiptir: **yönetici** ve **salt okuma Kullanıcı**. En azından, yönetim erişimi için tek bir sertifika kullanılmalıdır. Ek Kullanıcı düzeyinde erişim için ayrı bir sertifika sağlanmalıdır. Erişim rolleri hakkında daha fazla bilgi için bkz. [Service Fabric istemcileri için rol tabanlı erişim denetimi][service-fabric-cluster-security-roles].
@@ -214,7 +214,6 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanarak güven
 
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
-[service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/key-vault-overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

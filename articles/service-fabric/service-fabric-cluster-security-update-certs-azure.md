@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599946"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934013"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure 'da bir Service Fabric kümesi için sertifika ekleme veya kaldırma
 Service Fabric X. 509.440 sertifikalarını nasıl kullandığını ve [küme güvenliği senaryolarını](service-fabric-cluster-security.md)nasıl öğrendiğini öğrenmeniz önerilir. Devam etmeden önce, bir küme sertifikasının ne olduğunu ve ne kullanıldığını anlamalısınız.
@@ -53,13 +53,13 @@ Amaç, birincil olarak işaretlenmiş sertifikayı kaldırmaktır, sonra otomati
 Bu adımlarda, Kaynak Yöneticisi nasıl çalıştığını ve bir Kaynak Yöneticisi şablonu kullanarak en az bir Service Fabric kümesini nasıl dağıttığınızı ve kümeyi kullanışlı bir şekilde ayarlamak için kullandığınız şablona sahip olduğunuz varsayılır. Ayrıca, JSON kullanmaya rahat bir şekilde yararlanacağınız varsayılır.
 
 > [!NOTE]
-> Bir başlangıç noktası olarak veya bir başlangıç noktası olarak izlemek için kullanabileceğiniz örnek bir şablon ve parametre arıyorsanız, bu [Git-deposu](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)' ndan indirin. 
+> Bir başlangıç noktası olarak veya bir başlangıç noktası olarak izlemek için kullanabileceğiniz örnek bir şablon ve parametre arıyorsanız, bu [Git-deposu](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)' ndan indirin. 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Kaynak Yöneticisi şablonunuzu düzenleme
 
-Bunun yanı sıra, örnek 5-VM-1-NodeTypes-Secure_Step2. JSON, yaptığımız tüm düzenlemeleri içerir. örnek, [Git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)deposu ' te kullanılabilir.
+Bunun yanı sıra, örnek 5-VM-1-NodeTypes-Secure_Step2. JSON, yaptığımız tüm düzenlemeleri içerir. örnek, [Git](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)deposu ' te kullanılabilir.
 
 **Tüm adımları izlediğinizden emin olun**
 
@@ -117,7 +117,7 @@ Bunun yanı sıra, örnek 5-VM-1-NodeTypes-Secure_Step2. JSON, yaptığımız t�
          }
     ``` 
 
-4. **Tüm** **Microsoft. COMPUTE/virtualMachineScaleSets** kaynak tanımlarında değişiklik yapın-Microsoft. COMPUTE/virtualMachineScaleSets kaynak tanımını bulun. "Yayımcı" ya gidin: "VirtualMachineProfile" altındaki "Microsoft. Azure. ServiceFabric".
+4. **Tüm** **Microsoft. COMPUTE/virtualMachineScaleSets** kaynak tanımlarında değişiklik yapın-Microsoft. COMPUTE/virtualMachineScaleSets kaynak tanımını bulun. "VirtualMachineProfile" altındaki "Publisher": "Microsoft. Azure. ServiceFabric" öğesine gidin.
 
     Service Fabric yayımcı ayarları ' nda şuna benzer bir şey görmeniz gerekir.
     
@@ -178,7 +178,7 @@ Bunun yanı sıra, örnek 5-VM-1-NodeTypes-Secure_Step2. JSON, yaptığımız t�
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Şablon dosyanızı, yukarıda eklediğiniz yeni parametreleri yansıtacak şekilde düzenleyin
-Daha sonra izlemek için [Git-](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) deposunun örneğini kullanıyorsanız, örnek 5-VM-1-Nodetypes-Secure. PARAMETERS_STEP2. json dosyasında değişiklik yapmaya başlayabilirsiniz 
+Daha sonra izlemek için [Git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) deposunun örneğini kullanıyorsanız, örnek 5-VM-1-Nodetypes-Secure. PARAMETERS_STEP2. json dosyasında değişiklik yapmaya başlayabilirsiniz 
 
 Kaynak Yöneticisi şablonu parametre dosyanızı düzenleyin, secCertificateThumbprint ve secCertificateUrlValue için iki yeni parametreyi ekleyin. 
 

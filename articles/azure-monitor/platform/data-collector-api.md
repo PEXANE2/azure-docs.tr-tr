@@ -1,24 +1,18 @@
 ---
 title: Azure Izleyici HTTP Veri Toplayıcı API 'SI | Microsoft Docs
 description: Azure Izleyici HTTP Veri Toplayıcı API 'sini, REST API çağırabileceğiniz herhangi bir istemciden bir Log Analytics çalışma alanına JSON verisi gönderme eklemek için kullanabilirsiniz. Bu makalede, API 'nin nasıl kullanılacağı açıklanır ve farklı programlama dilleri kullanılarak verilerin nasıl yayımlanacağı gösterilmektedir.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: ''
-ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/01/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 50f973de8d1ca983725bc9e9e64eefc9de5237fa
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 10/01/2019
+ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802121"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932585"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C#ve Python için örnek verilmiştir.
@@ -45,7 +39,7 @@ HTTP Veri Toplayıcı API 'sini kullanmak için, JavaScript Nesne Gösterimi (JS
 | Öznitelik | Özellik |
 |:--- |:--- |
 | Yöntem |Yayınla |
-| KULLANıLMAMıŞSA |https://@no__t -0CustomerId\>.ods.opinsights.azure.com/api/logs? api-Version = 2016-04-01 |
+| KULLANıLMAMıŞSA |https://\<CustomerID\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | İçerik türü |uygulama/json |
 
 ### <a name="request-uri-parameters"></a>İstek URI parametreleri
@@ -206,7 +200,7 @@ Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenm
 | 503 |Hizmet kullanılamıyor |ServiceUnavailable |Hizmet şu anda istekleri almak için kullanılamıyor. Lütfen isteğinizi yeniden deneyin. |
 
 ## <a name="query-data"></a>Verileri sorgulama
-Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**ile eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, `MyCustomLog_CL` ile tüm kayıtları döndürürük.
+Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**ile eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, `MyCustomLog_CL`tüm kayıtları döndürür.
 
 ## <a name="sample-requests"></a>Örnek istekler
 Sonraki bölümlerde, farklı programlama dilleri kullanarak Azure Izleyici HTTP Veri Toplayıcı API 'sine nasıl veri göndertireceğiz örnekleri bulacaksınız.

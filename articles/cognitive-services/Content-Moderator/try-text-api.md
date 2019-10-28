@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7a7085eccf05fb65bf7b9036c738a1d17e91a433
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754195"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935905"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API konsolundan orta metin
 
@@ -61,9 +61,6 @@ Metin ekranınızda kullanmak istediğiniz sorgu parametrelerini seçin. Bu örn
 ### <a name="sample-text-to-scan"></a>Taranacak örnek metin
 
 **İstek gövdesi** kutusuna bir metin girin. Aşağıdaki örnek, metinde isteyerek bir yazım hatası gösterir.
-
-> [!NOTE]
-> Aşağıdaki örnek metinde geçersiz sosyal güvenlik numarası bilerek yapılır. Amaç, örnek giriş ve çıkış biçimini iletsağlamaktır.
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

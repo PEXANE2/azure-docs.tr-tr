@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
-ms.date: 10/08/2019
+ms.date: 10/24/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: ab16fc959a332076cac1d615b86d37e8c66e2f67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286703"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933691"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -74,7 +74,7 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 $NodeDeallocationOption = taskcompletion;
 ```
 
-Bu otomatik ölçeklendirme formülüyle, havuz başlangıçta tek bir VM ile oluşturulur. @No__t-0 ölçümü, çalıştıran veya kuyruğa alınan görevlerin sayısını tanımlar. Formül, son 180 saniye içinde bekleyen görevlerin ortalama sayısını bulur ve `$TargetDedicatedNodes` değişkenini uygun şekilde ayarlar. Formül, ayrılmış düğümlerin hedef sayısının 25 VM 'yi hiçbir şekilde aşmamasını sağlar. Yeni görevler gönderildiğinde havuz otomatik olarak büyür. Görevler tamamlantıkça, VM 'Ler tek tek ve otomatik ölçeklendirme formülü havuzu küçültür.
+Bu otomatik ölçeklendirme formülüyle, havuz başlangıçta tek bir VM ile oluşturulur. `$PendingTasks` ölçümü, çalıştıran veya kuyruğa alınan görevlerin sayısını tanımlar. Formül, son 180 saniye içinde bekleyen görevlerin ortalama sayısını bulur ve `$TargetDedicatedNodes` değişkenini uygun şekilde ayarlar. Formül, ayrılmış düğümlerin hedef sayısının 25 VM 'yi hiçbir şekilde aşmamasını sağlar. Yeni görevler gönderildiğinde havuz otomatik olarak büyür. Görevler tamamlantıkça, VM 'Ler tek tek ve otomatik ölçeklendirme formülü havuzu küçültür.
 
 Bu formül, ayrılmış düğümleri ölçeklendirir, ancak düşük öncelikli düğümleri de ölçeklendirmek için uygulanabilir.
 
@@ -91,7 +91,7 @@ Bu örnek 25 düşük öncelikli düğümlerle başlayan bir havuz oluşturur. D
 
 ## <a name="variables"></a>Değişkenler
 
-Otomatik ölçeklendirme formüllerinizde hem **hizmet tanımlı** hem de **Kullanıcı tanımlı** değişkenleri kullanabilirsiniz. Hizmet tanımlı değişkenler Batch hizmetinde yerleşiktir. Bazı hizmet tanımlı değişkenler okuma-yazma ve bazıları salt okunurdur. Kullanıcı tanımlı değişkenler, tanımladığınız değişkenlerdir. Önceki bölümde gösterilen örnek formülde, `$TargetDedicatedNodes` ve `$PendingTasks`, hizmet tanımlı değişkenlerdir. @No__t-0 ve `maxNumberofVMs` değişkenleri Kullanıcı tanımlı değişkenlerdir.
+Otomatik ölçeklendirme formüllerinizde hem **hizmet tanımlı** hem de **Kullanıcı tanımlı** değişkenleri kullanabilirsiniz. Hizmet tanımlı değişkenler Batch hizmetinde yerleşiktir. Bazı hizmet tanımlı değişkenler okuma-yazma ve bazıları salt okunurdur. Kullanıcı tanımlı değişkenler, tanımladığınız değişkenlerdir. Önceki bölümde gösterilen örnek formülde, `$TargetDedicatedNodes` ve `$PendingTasks`, hizmet tanımlı değişkenlerdir. `startingNumberOfVMs` ve `maxNumberofVMs` değişkenleri Kullanıcı tanımlı değişkenlerdir.
 
 > [!NOTE]
 > Hizmet tanımlı değişkenlerin başına her zaman bir dolar işareti ($) gelir. Kullanıcı tanımlı değişkenler için dolar işareti isteğe bağlıdır.
@@ -105,11 +105,11 @@ Bir havuzdaki işlem düğümlerinin sayısını yönetmek için hizmet tanıml�
 | Okuma/yazma hizmeti tanımlı değişkenler | Açıklama |
 | --- | --- |
 | $TargetDedicatedNodes |Havuz için ayrılmış işlem düğümlerinin hedef sayısı. Ayrılmış düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, ayrılmış düğümlerin hedef sayısı, havuz ilk hedefe ulaşmadan önce bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. <br /><br /> Batch hizmeti yapılandırmasıyla oluşturulan bir hesaptaki havuz, hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa hedefini elde edebilir. Hedef, aboneliğin paylaşılan çekirdek kotasını aşarsa, kullanıcı aboneliği yapılandırmasıyla oluşturulan bir hesaptaki havuz hedefine ulaşamayabilir.|
-| $TargetLowPriorityNodes |Havuz için düşük öncelikli işlem düğümlerinin hedef sayısı. Düşük öncelikli düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, havuz ilk hedefe ulaşmadan önce düşük öncelikli düğümlerin hedef sayısı bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. Hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa, bir havuz hedefi de elde edebilir. <br /><br /> Düşük öncelikli işlem düğümleri hakkında daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM 'Ler kullanma (Önizleme)](batch-low-pri-vms.md). |
-| $NodeDeallocationOption |Bir havuzdan işlem düğümleri kaldırıldığında oluşan eylem. Olası değerler şunlardır:<ul><li>**yeniden kuyruğa alma**--varsayılan değer. Görevleri hemen sonlandırır ve yeniden zamanlanabilmeleri için iş kuyruğuna geri koyar. Bu eylem, hedef sayısının mümkün olduğunca hızlı bir şekilde ulaşmasını sağlar, ancak çalışan tüm görevler kesintiye uğradığında ve yeniden başlatılması gerektiği için daha az etkili olabilir. <li>**Sonlandır**--görevleri hemen sonlandırır ve iş kuyruğundan kaldırır.<li>**taskcompletion**--Şu anda çalışan görevlerin bitmesini bekler ve düğümü havuzdan kaldırır. Görevlerin kesintiye uğratılmasını ve yeniden kuyruğa karşı çalışmasını önlemek için bu seçeneği kullanın. <li>**retaineddata**--düğüm havuzdan kaldırılmadan önce, düğümdeki tüm yerel görev ile korunan verilerin temizlenmesi için bekler.</ul> |
+| $TargetLowPriorityNodes |Havuz için düşük öncelikli işlem düğümlerinin hedef sayısı. Düşük öncelikli düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, havuz ilk hedefe ulaşmadan önce düşük öncelikli düğümlerin hedef sayısı bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. Hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa, bir havuz hedefi de elde edebilir. <br /><br /> Düşük öncelikli işlem düğümleri hakkında daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM 'Ler kullanma](batch-low-pri-vms.md). |
+| $NodeDeallocationOption |Bir havuzdan işlem düğümleri kaldırıldığında oluşan eylem. Olası değerler şunlardır:<ul><li>**yeniden kuyruğa alma**--varsayılan değer. Görevleri hemen sonlandırır ve yeniden zamanlanabilmeleri için iş kuyruğuna geri koyar. Bu eylem, hedef sayısının mümkün olduğunca hızlı bir şekilde ulaşmasını sağlar, ancak çalışan tüm görevler kesintiye uğradığında ve yeniden başlatılması gerektiği için daha az etkili olabilir. <li>**Sonlandır**--görevleri hemen sonlandırır ve iş kuyruğundan kaldırır.<li>**taskcompletion**--Şu anda çalışan görevlerin bitmesini bekler ve düğümü havuzdan kaldırır. Görevlerin kesintiye uğratılmasını ve yeniden kuyruğa önlemek için bu seçeneği kullanın. <li>**retaineddata**--düğüm havuzdan kaldırılmadan önce, düğümdeki tüm yerel görev ile korunan verilerin temizlenmesi için bekler.</ul> |
 
 > [!NOTE]
-> @No__t-0 değişkeni, `$TargetDedicated` diğer adı kullanılarak da belirtilebilir. Benzer şekilde, `$TargetLowPriorityNodes` değişkeni, `$TargetLowPriority` diğer adı kullanılarak belirtilebilir. Hem tam olarak adlandırılmış değişken hem de diğer adı formül tarafından ayarlandıysa, tam olarak adlandırılmış değişkene atanan değer öncelikli olur.
+> `$TargetDedicatedNodes` değişkeni, `$TargetDedicated`diğer adı kullanılarak da belirtilebilir. Benzer şekilde, `$TargetLowPriorityNodes` değişkeni, `$TargetLowPriority` diğer adı kullanılarak belirtilebilir. Hem tam olarak adlandırılmış değişken hem de diğer adı formül tarafından ayarlandıysa, tam olarak adlandırılmış değişkene atanan değer öncelikli olur.
 >
 >
 
@@ -226,7 +226,7 @@ Bu önceden tanımlanmış **işlevler** , bir otomatik ölçeklendirme formül�
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-*Doubleveclist* değeri, değerlendirmeden önce tek bir *doubleVec* dönüştürülür. Örneğin, `v = [1,2,3]` ise, `avg(v)` ' i çağırmak `avg(1,2,3)` çağırma ile eşdeğerdir. @No__t-0 çağırmak, `avg(1,2,3,7)` çağırma ile eşdeğerdir.
+*Doubleveclist* değeri, değerlendirmeden önce tek bir *doubleVec* dönüştürülür. Örneğin, `v = [1,2,3]`, `avg(v)` çağrısı `avg(1,2,3)`çağırma ile eşdeğerdir. `avg(v, 7)` çağırmak, `avg(1,2,3,7)`çağırma ile eşdeğerdir.
 
 ## <a name="getsampledata"></a>Örnek verileri al
 
@@ -238,7 +238,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | Yöntem | Açıklama |
 | --- | --- |
-| GetSample () |@No__t-0 yöntemi, veri örneklerinin bir vektörünü döndürür.<br/><br/>Örnek, ölçüm verilerinin 30 saniye değerinde değeridir. Diğer bir deyişle, her 30 saniyede bir örnek elde edilir. Ancak aşağıda belirtildiği gibi, bir örneğin toplanması ve formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. Bu nedenle, belirli bir süre için tüm örnekler, bir formülün değerlendirmesi için kullanılabilir olabilir.<ul><li>`doubleVec GetSample(double count)`<br/>Toplanan en son örneklerden elde edilecek örneklerin sayısını belirtir.<br/><br/>`GetSample(1)`, kullanılabilir son örneği döndürür. Ancak, `$CPUPercent` gibi ölçümler için, örneğin *ne zaman* toplandığını öğrenmek imkansız olduğundan bu kullanılmamalıdır. Bu, son zamanlarda veya sistem sorunları nedeniyle daha eski olabilir. Bu tür durumlarda aşağıda gösterildiği gibi bir zaman aralığı kullanılması daha iyidir.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Örnek verilerin toplanması için bir zaman çerçevesi belirtir. İsteğe bağlı olarak, istenen zaman çerçevesinde kullanılabilir olması gereken örneklerin yüzdesini de belirtir.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`, son 10 dakikalık her örnek için CPUPercent geçmişine mevcutsa 20 örnek döndürür. Geçmişin son dakikası kullanılabilir değilse, ancak yalnızca 18 örnek döndürülür. Bu durumda:<br/><br/>örneklerin yalnızca yüzde 90 ' unun kullanılabilir olması nedeniyle `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` başarısız olur.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` başarılı olur.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Veri toplamaya yönelik bir zaman çerçevesini, hem başlangıç saati hem de bitiş saati ile belirtir.<br/><br/>Yukarıda belirtildiği gibi, bir örneğin toplanması ve bir formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. @No__t-0 yöntemini kullandığınızda bu gecikmeyi göz önünde bulundurun. Aşağıya `GetSamplePercent` ' a bakın. |
+| GetSample () |`GetSample()` yöntemi, veri örneklerinin bir vektörünü döndürür.<br/><br/>Örnek, ölçüm verilerinin 30 saniye değerinde değeridir. Diğer bir deyişle, her 30 saniyede bir örnek elde edilir. Ancak aşağıda belirtildiği gibi, bir örneğin toplanması ve formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. Bu nedenle, belirli bir süre için tüm örnekler, bir formülün değerlendirmesi için kullanılabilir olabilir.<ul><li>`doubleVec GetSample(double count)`<br/>Toplanan en son örneklerden elde edilecek örneklerin sayısını belirtir.<br/><br/>`GetSample(1)`, kullanılabilir son örneği döndürür. Ancak, `$CPUPercent` gibi ölçümler için, örneğin *ne zaman* toplandığını öğrenmek imkansız olduğundan bu kullanılmamalıdır. Bu, son zamanlarda veya sistem sorunları nedeniyle daha eski olabilir. Bu tür durumlarda aşağıda gösterildiği gibi bir zaman aralığı kullanılması daha iyidir.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Örnek verilerin toplanması için bir zaman çerçevesi belirtir. İsteğe bağlı olarak, istenen zaman çerçevesinde kullanılabilir olması gereken örneklerin yüzdesini de belirtir.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`, son 10 dakikalık tüm örneklerin CPUPercent geçmişine mevcutsa 20 örnek döndürür. Geçmişin son dakikası kullanılabilir değilse, ancak yalnızca 18 örnek döndürülür. Bu durumda:<br/><br/>örneklerin yalnızca yüzde 90 ' unun kullanılabilir olması nedeniyle `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` başarısız olur.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` başarılı olur.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Veri toplamaya yönelik bir zaman çerçevesini, hem başlangıç saati hem de bitiş saati ile belirtir.<br/><br/>Yukarıda belirtildiği gibi, bir örneğin toplanması ve bir formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. `GetSample` yöntemini kullandığınızda bu gecikmeyi göz önünde bulundurun. Aşağıya `GetSamplePercent` ' a bakın. |
 | GetSamplePeriod () |Bir geçmiş örnek veri kümesinde alınan örneklerin dönemini döndürür. |
 | Count () |Ölçüm geçmişindeki toplam örnek sayısını döndürür. |
 | Geçmiş BeginTime () |Ölçüm için kullanılabilir en eski veri örneğinin zaman damgasını döndürür. |
@@ -253,7 +253,7 @@ Batch hizmeti düzenli aralıklarla görev ve kaynak ölçümlerinin örneklerin
 
 **Örnek yüzdesi**
 
-@No__t-0 `GetSample()` yöntemine geçirildiğinde veya `GetSamplePercent()` yöntemi çağrıldığında _yüzde_ , Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve otomatik ölçeklendirme için kullanılabilir örnek sayısı arasında bir karşılaştırmaya başvurur formül.
+`samplePercent` `GetSample()` yöntemine geçirildiğinde veya `GetSamplePercent()` yöntemi çağrıldığında, _yüzde_ , Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve sizin için kullanılabilir örnek sayısı arasında bir karşılaştırmaya başvurur. Otomatik ölçeklendirme formülü.
 
 Örnek olarak 10 dakikalık bir TimeSpan bölümüne bakalım. Örnekler 10 dakikalık bir TimeSpan içinde her 30 saniyede bir kaydedildiğinden, Batch tarafından kaydedilen en fazla örnek sayısı 20 örnek (dakika başına 2) olacaktır. Ancak, raporlama mekanizmasından ve Azure 'daki diğer sorunların devralınan gecikmesi nedeniyle, okuma için otomatik ölçeklendirme formülünüzün kullanabildiği yalnızca 15 örnek olabilir. Bu nedenle, örneğin, bu 10 dakikalık dönem için, Formülünüzde kaydedilen toplam örnek sayısının yalnızca %75 ' u kullanılabilir olabilir.
 
@@ -281,10 +281,10 @@ Belirli bir süre için belirli bir örnek yüzdeden daha az kullanılabilir old
 $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);
 ```
 
-Örnek kullanılabilirliğinde bir gecikme olabileceğinden, bir dakikadan daha eski bir geri arama başlangıç zamanına sahip bir zaman aralığı belirlemek önemlidir. Örneklerin sistem aracılığıyla yayılması yaklaşık bir dakika sürer. bu nedenle `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` aralığında örnekler kullanılamayabilir. Yine, belirli bir örnek yüzdesi gereksinimini zorlamak için `GetSample()` ' ın yüzde parametresini kullanabilirsiniz.
+Örnek kullanılabilirliğinde bir gecikme olabileceğinden, bir dakikadan daha eski bir geri arama başlangıç zamanına sahip bir zaman aralığı belirlemek önemlidir. Örneklerin sistem aracılığıyla yayılması yaklaşık bir dakika sürer, bu nedenle aralıktaki örnekler `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` kullanılamıyor olabilir. Yine, belirli bir örnek yüzdesi gereksinimini zorlamak için `GetSample()` ' ın yüzde parametresini kullanabilirsiniz.
 
 > [!IMPORTANT]
-> **Otomatik ölçeklendirme formüllerinizde *yalnızca* `GetSample(1)` ' e bağlı kalmamak** **kesinlikle önerilir** . Bunun nedeni `GetSample(1)` ' ın, toplu Iş hizmetine ne kadar önce elde ettiğinize bakılmaksızın "sahip olduğunuz son örneği vermesini" sağlar. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. @No__t-0 ' ı kullanırsanız, formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
+> **Otomatik ölçeklendirme formüllerinizde *yalnızca* `GetSample(1)` ' e bağlı kalmamak** **kesinlikle önerilir** . Bunun nedeni `GetSample(1)` ' ın, toplu Iş hizmetine ne kadar önce elde ettiğinize bakılmaksızın "sahip olduğunuz son örneği vermesini" sağlar. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. `GetSample(1)`kullanıyorsanız, formülün bağımlı olduğu tek veri noktası değil, daha büyük bir deyimin parçası olduğundan emin olun.
 >
 >
 

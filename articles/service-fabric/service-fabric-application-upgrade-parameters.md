@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6276f347f0cc0ecc03acc95282e83c243679957a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802420"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934029"
 ---
 # <a name="application-upgrade-parameters"></a>Uygulama yükseltme parametreleri
 Bu makalede, bir Azure Service Fabric uygulamasının yükseltilmesi sırasında uygulanan çeşitli parametreler açıklanmaktadır. Uygulama yükseltme parametreleri, yükseltme sırasında uygulanan zaman aşımlarını ve sistem durumu denetimlerini denetler ve bir yükseltme başarısız olduğunda uygulanması gereken ilkeleri belirler. Uygulama parametreleri şu kullanılarak yükseltmeler için geçerlidir:
@@ -57,10 +57,6 @@ Monitortoredmanual | PS | Yükseltme modunun izlenmeyen el ile olduğunu göster
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
 Sistem durumu değerlendirme parametreleri isteğe bağlıdır. Bir yükseltme başladığında durum değerlendirme ölçütleri belirtilmemişse, Service Fabric uygulama örneğinin ApplicationManifest. xml dosyasında belirtilen uygulama sistem durumu ilkelerini kullanır.
-
-Tam açıklama alanını görüntülemek için tablonun alt kısmındaki yatay kaydırma çubuğunu kullanın.
-
-(PS = PowerShell, VS = Visual Studio)
 
 > [!div class="mx-tdBreakAll"]
 > | Parametre | Uygulama hedefi | Açıklama |

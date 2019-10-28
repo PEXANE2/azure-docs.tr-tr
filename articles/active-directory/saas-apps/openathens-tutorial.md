@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile OpenAthens | Microsoft Docs'
-description: Azure Active Directory ve OpenAthens arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Openatina ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Openatina arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,216 +15,216 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 544c74dc5bd336ab79593fc081b4e48ac0caf3ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81e37e78246a8c021cfdea015a9c4fe7695f5e44
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095540"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933977"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Öğretici: OpenAthens ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Öğretici: Openatina ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile OpenAthens tümleştirme konusunda bilgi edinin.
-Azure AD ile OpenAthens tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, Openatina 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Openatina ile Azure AD arasında tümleştirme aşağıdaki avantajları sağlar:
 
-* OpenAthens erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) OpenAthens için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Openatina erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Openatina (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD Tümleştirmesi ile OpenAthens yapılandırmak için aşağıdaki öğeler gerekir:
+Openatina ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* OpenAthens tek oturum açma etkin abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Openatina çoklu oturum açma etkin abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* OpenAthens destekler **IDP** tarafından başlatılan
+* Openatina, **IDP** tarafından başlatılan SSO 'yu destekler
 
-* OpenAthens destekler **zamanında** kullanıcı sağlama
+* Openatina **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-openathens-from-the-gallery"></a>Galeriden OpenAthens ekleme
+## <a name="adding-openathens-from-the-gallery"></a>Galeriden Openatina ekleme
 
-Azure AD'de OpenAthens tümleştirmesini yapılandırmak için OpenAthens Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Openatina 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden Openatina 'yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Galeriden OpenAthens eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Openatina eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **OpenAthens**seçin **OpenAthens** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusuna **openatina**yazın, sonuç panelinden **openatina** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde OpenAthens](common/search-new-app.png)
+     ![Sonuç listesinde Openatina](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma OpenAthens adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının OpenAthens ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre openatina ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Openatina 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma OpenAthens ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Openatina ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[OpenAthens çoklu oturum açmayı yapılandırma](#configure-openathens-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[OpenAthens test kullanıcısı oluşturma](#create-openathens-test-user)**  - kullanıcı Azure AD gösterimini bağlı OpenAthens Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. **[Openatina çoklu oturum açmayı yapılandırma](#configure-openathens-single-sign-on)** uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Openatina, kullanıcının Azure AD gösterimine bağlı olan Openatina 'da Britta Simon 'a sahip olmak için **[openatina test kullanıcısı oluşturun](#create-openathens-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açma ile OpenAthens yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Openatina ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **OpenAthens** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. [Azure Portal](https://portal.azure.com/), **openatina** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-5. Üzerinde **temel SAML yapılandırma** bölümünde, karşıya yükleme **hizmet sağlayıcısı meta veri dosyası**, hangi adımları Bu öğreticinin ilerleyen bölümlerinde açıklanan.
+5. **Temel SAML yapılandırması** bölümünde, bu öğreticide daha sonra bahsedilen adımlar Için **hizmet sağlayıcı meta veri dosyasını**karşıya yükleyin.
 
-    a. Tıklayın **meta veri dosyasını karşıya yükleme**.
+    a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-    ![openathens meta verilerini karşıya yükleme](common/upload-metadata.png)
+    ![openatina karşıya yükleme meta verileri](common/upload-metadata.png)
 
-    b. Tıklayarak **klasör logosu** meta veri dosyası seçin ve **karşıya**.
+    b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
 
-    ![Karşıya yükleme meta verileri Openathens Gözat](common/browse-upload-metadata.png)
+    ![Openatina tarayıcı karşıya yükleme meta verileri](common/browse-upload-metadata.png)
 
-    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra **tanımlayıcı** değeri get otomatik doldurulur **temel SAML yapılandırma** bölümünde metin:
+    c. Meta veri dosyası başarıyla karşıya yüklendikten sonra, **temel SAML yapılandırması** bölümünde otomatik olarak doldurulmuş **tanımlayıcı** değeri Al metin kutusu:
 
-    ![OpenAthens etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-identifier.png)
+    ![Openatina etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-identifier.png)
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **Federasyon meta veri XML**  bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-### <a name="configure-openathens-single-sign-on"></a>OpenAthens tek oturum açmayı yapılandırın
+### <a name="configure-openathens-single-sign-on"></a>Openatina çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcı penceresinde OpenAthens şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, Openatina şirket sitenizde yönetici olarak oturum açın.
 
-2. Seçin **bağlantıları** altındaki listeden **Yönetim** sekmesi. 
+2. **Yönetim** sekmesi altındaki listeden **Bağlantılar** ' ı seçin. 
 
     ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-3. Seçin **SAML 1.1/2.0**ve ardından **yapılandırma** düğmesi.
+3. **SAML 1.1/2.0**' ı seçin ve ardından **Yapılandır** düğmesini seçin.
 
     ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-4. Yapılandırmasını eklemek için seçin **Gözat** Azure portalından indirdiğiniz meta veri .xml dosyasını karşıya yükleme düğmesini ve ardından **Ekle**.
+4. Yapılandırmayı eklemek için, Azure portal indirdiğiniz Metadata. xml dosyasını karşıya yüklemek için, **Gözden** geçirme düğmesini seçin ve ardından **Ekle**' yi seçin.
 
     ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-5. Altında aşağıdaki adımları **ayrıntıları** sekmesi.
+5. **Ayrıntılar** sekmesi altında aşağıdaki adımları gerçekleştirin.
 
     ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. İçinde **görünen adı eşlemesi**seçin **kullanım özniteliği**.
+    a. **Görünen ad eşlemesi**' nde **özniteliği kullan**' ı seçin.
 
-    b. İçinde **Display name özniteliği** metin kutusunda, değeri girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. **Görünen ad özniteliği** metin kutusunda `http://schemas.microsoft.com/identity/claims/displayname`değeri girin.
     
-    c. İçinde **benzersiz kullanıcı eşleme**seçin **kullanım özniteliği**.
+    c. **Benzersiz kullanıcı eşlemesi**' nde **özniteliği kullan**' ı seçin.
 
-    d. İçinde **benzersiz kullanıcı özniteliği** metin kutusunda, değeri girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    d. **Benzersiz kullanıcı özniteliği** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`değeri girin.
 
-    e. İçinde **durumu**, üç onay kutusunu seçin.
+    e. **Durum**' da, tüm üç onay kutusunu seçin.
 
-    f. İçinde **yerel hesap**seçin **otomatik olarak**.
+    f. **Yerel hesap oluştur**' da **otomatik olarak**' ı seçin.
 
-    g. Seçin **değişiklikleri kaydetmek**.
+    g. **Değişiklikleri Kaydet**' i seçin.
 
-    h. Gelen **<> / bağlı olan taraf** sekmesinde, kopya **meta veri URL'si** ve bu indirmek için tarayıcıda açın **SP meta veri XML** dosya. Şirket bu SP meta veri dosyası karşıya **temel SAML yapılandırma** Azure AD'de bölümü.
+    h. **</> bağlı olan taraf** sekmesinden, **SP meta veri XML** dosyasını indirmek için **meta veri URL 'sini** kopyalayın ve bunu tarayıcıda açın. Bu SP meta veri dosyasını Azure AD 'deki **temel SAML yapılandırması** bölümüne yükleyin.
 
     ![Çoklu oturum açmayı yapılandırma](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon\@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için OpenAthens erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Openatina 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirirsiniz.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **OpenAthens**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve **openatina**' yı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde yazın ve **OpenAthens**.
+2. Uygulamalar listesinde, yazın ve **Openatina**' yı seçin.
 
-    ![Uygulamalar listesinde OpenAthens bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Openatina bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-openathens-test-user"></a>OpenAthens test kullanıcısı oluşturma
+### <a name="create-openathens-test-user"></a>Openatina test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon adlı bir kullanıcı OpenAthens oluşturulur. OpenAthens destekler **just-ın-time kullanıcı sağlamayı**, varsayılan olarak etkindir. Bu bölümde, hiçbir eylem öğesini yoktur. Bir kullanıcı OpenAthens içinde zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+Bu bölümde, Openatina 'da Britta Simon adlı bir Kullanıcı oluşturulur. Openatina, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Openatina 'da bir kullanıcı zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim paneli OpenAthens kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama OpenAthens için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Openatina kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Openatina 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

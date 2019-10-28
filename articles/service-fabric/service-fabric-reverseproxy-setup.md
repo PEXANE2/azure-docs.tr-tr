@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166589"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933907"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy ayarlama ve yapılandırma
 Ters proxy, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olan isteğe bağlı bir Azure Service Fabric hizmetidir. Daha fazla bilgi edinmek için bkz. [Azure Service Fabric 'de ters proxy](service-fabric-reverseproxy.md). Bu makalede, kümenizde ters proxy 'nin nasıl ayarlanacağı ve yapılandırılacağı gösterilir. 
@@ -44,7 +44,7 @@ Azure üzerindeki kümeler için, Service Fabric ' de ters proxy 'yi etkinleşti
 
 Yeni bir küme için [özel bir kaynak yöneticisi şablonu oluşturabilir](service-fabric-cluster-creation-via-arm.md) veya örnek bir şablon kullanabilirsiniz. 
 
-GitHub 'daki [güvenli ters proxy örnek şablonlarında](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) bir Azure kümesi için güvenli ters proxy 'yi yapılandırmanıza yardımcı olabilecek örnek kaynak yöneticisi şablonlar bulabilirsiniz. Güvenli ters proxy 'yi bir sertifikayla yapılandırmak ve sertifika rollover 'ı işlemek amacıyla kullanılacak yönergeler ve şablonlar için, BENIOKU dosyasındaki [güvenli bir kümede https ters proxy 'Yi yapılandırma](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) konusuna bakın.
+GitHub 'daki [güvenli ters proxy örnek şablonlarında](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) bir Azure kümesi için güvenli ters proxy 'yi yapılandırmanıza yardımcı olabilecek örnek kaynak yöneticisi şablonlar bulabilirsiniz. Güvenli ters proxy 'yi bir sertifikayla yapılandırmak ve sertifika rollover 'ı işlemek amacıyla kullanılacak yönergeler ve şablonlar için, BENIOKU dosyasındaki [güvenli bir kümede https ters proxy 'Yi yapılandırma](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) konusuna bakın.
 
 Mevcut bir küme için, [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [POWERSHELL](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli)kullanarak kümenin kaynak grubu için Kaynak Yöneticisi şablonunu dışarı aktarabilirsiniz.
 

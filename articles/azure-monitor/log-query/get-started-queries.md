@@ -3,26 +3,21 @@ title: Azure Izleyici 'de günlük sorgularını kullanmaya başlama | Microsoft
 description: Bu makalede, Azure Izleyici 'de günlük sorguları yazmaya başlama hakkında bir öğretici sunulmaktadır.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894295"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933033"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını kullanmaya başlama
 
-
-> [!NOTE]
-> Bu öğreticiyi tamamlamadan önce [Azure izleyici Log Analytics kullanmaya başlama](get-started-portal.md) işlemini tamamlamanız gerekir.
-
 > [!NOTE]
 > En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://portal.loganalytics.io/demo)kullanın.
-
 
 Bu öğreticide, Azure Izleyici 'de günlük sorgularını yazmayı öğreneceksiniz. Şu şekilde nasıl yapılacağını öğretir:
 
@@ -36,6 +31,10 @@ Bu öğreticide, Azure Izleyici 'de günlük sorgularını yazmayı öğreneceks
 
 Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](get-started-portal.md).<br>
 Azure Izleyici 'de günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query-overview.md).
+
+Aşağıdaki öğreticinin video sürümüyle birlikte izleyin:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Yeni sorgu yazma
 Sorgular, bir tablo adı veya *Search* komutuyla başlayabilir. Sorgu için açık bir kapsam tanımladığından ve hem sorgu performansını hem de sonuçların uygunluğunu geliştirdiğinden, bir tablo adıyla başlamanız gerekir.

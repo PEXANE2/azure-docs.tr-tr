@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 4eded22d5f7a8f19f286f9e90185d695b4c28fc6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755292"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935963"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Denetleme işlerini tanımlama ve kullanma (REST)
 
@@ -28,7 +28,7 @@ Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevler
 
 ## <a name="create-a-job"></a>Bir iş oluşturma
 
-Bir denetleme işi oluşturmak için, [iş-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API başvurusu Oluştur sayfasına gidin ve anahtar bölgeniz için düğmeyi seçin (bunu [Inceleme aracının](https://contentmoderator.cognitive.microsoft.com/) **KIMLIK bilgileri** sayfasında uç nokta URL 'sinde bulabilirsiniz). Bu, REST API çağrılarını kolayca oluşturabileceğiniz ve çalıştırabileceğiniz API konsolunu başlatır.
+Bir denetleme işi oluşturmak için, [iş-](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API başvurusu Oluştur sayfasına gidin ve abonelik bölgeniz için düğmeyi seçin ( [Gözden geçirme aracının](https://contentmoderator.cognitive.microsoft.com/) **kimlik BILGILERI** sayfasında bunu uç nokta URL 'sinde bulabilirsiniz). Bu, REST API çağrılarını kolayca oluşturabileceğiniz ve çalıştırabileceğiniz API konsolunu başlatır.
 
 ![İş-sayfa bölgesi seçimi oluştur](images/test-drive-job-1.png)
 

@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0948edec05b97dd604393218e3eeb3302548af82
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099006"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933567"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak kaynak sistem durumu uyarılarını yapılandırma
 
@@ -37,13 +37,13 @@ Bu sayfadaki yönergeleri izlemek için, önceden birkaç şey ayarlamanız gere
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > Erişiminiz olan abonelikleri `Get-AzSubscription` listelemek için ' i kullanabilirsiniz.
+    > Erişiminiz olan abonelikleri listelemek için `Get-AzSubscription` kullanabilirsiniz.
 
 2. Eylem grubunuz için tam Azure Resource Manager KIMLIĞINI bulun ve kaydedin
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Kaynak durumu uyarılar `resourcehealthalert.json` için Kaynak Yöneticisi şablonu oluşturun ve kaydedin ([aşağıdaki ayrıntılara bakın](#resource-manager-template-options-for-resource-health-alerts))
+3. Kaynak Durumu Uyarıları için `resourcehealthalert.json` olarak Kaynak Yöneticisi şablonu oluşturun ve kaydedin ([aşağıdaki ayrıntılara bakın](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Bu şablonu kullanarak yeni bir Azure Resource Manager dağıtımı oluşturun
 
@@ -147,7 +147,7 @@ Kaynak Durumu uyarılar, olayları üç farklı kapsam üzerinde izlemek için y
  * Kaynak grubu düzeyi
  * Kaynak düzeyi
 
-Uyarı şablonu, abonelik düzeyinde yapılandırılır, ancak uyarınızı yalnızca belirli kaynaklar veya belirli bir kaynak grubundaki kaynaklar hakkında bilgilendirecek şekilde yapılandırmak istiyorsanız, yukarıdaki `scopes` bölümünde yalnızca bölümü değiştirmeniz gerekir şablonlarını.
+Uyarı şablonu abonelik düzeyinde yapılandırılır, ancak uyarınızı yalnızca belirli kaynaklar veya belirli bir kaynak grubundaki kaynaklar hakkında bilgilendirecek şekilde yapılandırmak istiyorsanız Yukarıdaki şablonda `scopes` bölümünü değiştirmeniz yeterlidir.
 
 Kaynak grubu düzeyi kapsamı için kapsamlar bölümü şöyle görünmelidir:
 ```json
@@ -195,12 +195,12 @@ Abonelik veya kaynak grubu düzeyindeki uyarıların farklı türlerde kaynaklar
 },
 ```
 
-Burada, kaynak sistem `anyOf` durumu uyarısının belirlediğimiz koşullardan herhangi biriyle eşleşmesini sağlamak için sarmalayıcı kullanacağız, bu da belirli kaynak türlerini hedefleyen uyarılara izin verir.
+Burada, kaynak sistem durumu uyarısının belirlediğimiz koşullardan herhangi biriyle eşleşmesini sağlamak için `anyOf` sarmalayıcı kullanılır ve belirli kaynak türlerini hedefleyen uyarılara izin verilir.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Sizi uyaran Kaynak Durumu olaylarını ayarlama
-Kaynaklar bir sistem durumu olayına uyduklarında, sistem durumu olayının durumunu temsil eden bir dizi aşamadan geçebilir `Active`: `Updated`, `InProgress`, ve `Resolved`.
+Kaynaklar bir sistem durumu olayına sahip olduğunda, sistem durumu olayının durumunu temsil eden bir dizi aşamadan geçebilir: `Active`, `In Progress`, `Updated`ve `Resolved`.
 
-Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsiniz, bu durumda uyarınızı yalnızca `status` olduğu `Active`zaman bilgilendirmek üzere yapılandırmak isteyebilirsiniz. Bununla birlikte, diğer aşamalar üzerinde de bildirim almak istiyorsanız bu ayrıntıları şöyle ekleyebilirsiniz:
+Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsiniz, bu durumda uyarınızı yalnızca `status` `Active`olduğunda bilgilendirecek şekilde yapılandırmak isteyebilirsiniz. Bununla birlikte, diğer aşamalar üzerinde de bildirim almak istiyorsanız bu ayrıntıları şöyle ekleyebilirsiniz:
 
 ```json
 "condition": {
@@ -214,7 +214,7 @@ Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsin
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -230,11 +230,11 @@ Yalnızca bir kaynak sağlıksız hale geldiğinde bildirim almak isteyebilirsin
 }
 ```
 
-Tüm dört sistem durumu olayı aşaması için bildirim almak istiyorsanız, bu koşulu tüm birlikte kaldırabilirsiniz ve uyarı, `status` özelliği ne olursa olsun sizi bilgilendirir.
+Tüm dört sistem durumu olayı aşaması için bildirim almak istiyorsanız, bu koşulu tümü birlikte kaldırabilirsiniz ve uyarı `status` özelliğinden bağımsız olarak sizi uyarır.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>"Bilinmeyen" olayları önlemek için Kaynak Durumu uyarılarını ayarlama
 
-Azure Kaynak Durumu, test çalıştıranlar kullanarak onları sürekli izleyerek kaynaklarınızın en son durumunu rapor edebilir. Bildirilen ilgili sistem durumu durumları şunlardır: "Kullanılabilir", "kullanılamıyor" ve "düşürülmüş". Ancak, Çalıştırıcısı ve Azure kaynağının iletişim kurmadığı durumlarda, kaynak için "Bilinmeyen" bir sistem durumu bildirilir ve bu durum "etkin" bir sistem durumu olayı olarak kabul edilir.
+Azure Kaynak Durumu, test çalıştıranlar kullanarak onları sürekli izleyerek kaynaklarınızın en son durumunu rapor edebilir. Bildirilen ilgili sistem durumu durumları şunlardır: "kullanılabilir", "kullanılamıyor" ve "düşürülmüş". Ancak, Çalıştırıcısı ve Azure kaynağının iletişim kurmadığı durumlarda, kaynak için "Bilinmeyen" bir sistem durumu bildirilir ve bu durum "etkin" bir sistem durumu olayı olarak kabul edilir.
 
 Ancak, bir kaynak "bilinmiyor" olarak raporladığında, büyük olasılıkla sistem durumu en son doğru rapordan bu yana değişmemiştir. "Bilinmeyen" olaylarda uyarıları kaldırmak istiyorsanız, bu mantığı şablonda belirtebilirsiniz:
 
@@ -409,7 +409,7 @@ Nedeni alanının bazı olaylarda null olması mümkün olduğunu unutmayın. Di
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {

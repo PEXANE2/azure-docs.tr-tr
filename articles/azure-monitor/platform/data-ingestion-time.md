@@ -1,23 +1,18 @@
 ---
 title: Azure Izleyici 'de günlük verisi alma süresi | Microsoft Docs
 description: Azure Izleyici 'de günlük verilerini toplama gecikmesini etkileyen farklı faktörleri açıklar.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: tysonn
-ms.service: log-analytics
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/18/2019
+ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639496"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932574"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Izleyici 'de günlük verisi alma süresi
 Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Genellikle günlük verilerinin toplandıktan sonra kullanılabilir hale gelmesi için geçen süre hakkında sık sorulan sorular vardır. Bu makalede, bu gecikmeyi etkileyen farklı faktörler açıklanmaktadır.
@@ -81,7 +76,7 @@ Bu işlem şu anda düşük miktarda veri hacmi olduğunda yaklaşık 5 dakika s
 ## <a name="checking-ingestion-time"></a>Alma süresi denetleniyor
 Alım süresi farklı koşullarda farklı kaynaklar için farklılık gösterebilir. Ortamınızdaki belirli davranışları belirlemek için günlük sorgularını kullanabilirsiniz. Aşağıdaki tabloda, bir kaydın oluşturulduğu ve Azure Izleyici 'ye gönderildiği gibi farklı zamanları nasıl belirleyebilmeniz gerektiğini belirtir.
 
-| Adım | Özellik veya Işlev | Açıklamalar |
+| Adım | Özellik veya Işlev | Yorumlar |
 |:---|:---|:---|
 | Veri kaynağında oluşturulan kayıt | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Veri kaynağı bu değeri ayarlanmamışsa, _Timerectıı ile aynı saate ayarlanır. |
 | Azure Izleyici alma uç noktası tarafından alınan kayıt | [_Timerecelmiş](log-standard-properties.md#_timereceived) | |
@@ -101,7 +96,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-Önceki yüzdebirlik denetimleri, gecikme süresi içinde genel eğilimleri bulmak için iyi bir seçimdir. Gecikme süresi içinde kısa süreli bir ani artış belirlemek için maksimum (`max()`) kullanımı daha etkili olabilir.
+Önceki yüzdebirlik denetimleri, gecikme süresi içinde genel eğilimleri bulmak için iyi bir seçimdir. Gecikme süresi içinde kısa süreli bir ani artış belirlemek için, en fazla (`max()`) kullanılması daha etkili olabilir.
 
 Belirli bir bilgisayar için belirli bir süre içinde alım zamanında detaya gitmek isterseniz, bir grafikteki son günden verileri görselleştirerek aşağıdaki sorguyu kullanın: 
 
