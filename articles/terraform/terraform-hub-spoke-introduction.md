@@ -1,22 +1,19 @@
 ---
-title: Azure 'da Terrayform ile hub ve bağlı bileşen karma ağ topolojisi oluşturma
+title: Öğretici-Terrayform kullanarak Azure 'da merkez ve bağlı bileşen karma ağ topolojisi oluşturma
 description: Terkform kullanarak Azure 'da karma ağ başvuru mimarisinin tamamının nasıl oluşturulacağını gösteren öğretici
-services: terraform
-ms.service: azure
-keywords: terrayform, hub ve bağlı bileşen, ağlar, karma ağlar, DevOps, sanal makine, Azure, VNET eşlemesi, ağ sanal gereci
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173447"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969404"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Öğretici: Azure 'da Terrayform ile hub ve bağlı bileşen karma ağ topolojisi oluşturma
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da merkez ve bağlı bileşen karma ağ topolojisi oluşturma
 
 Bu öğretici serisinde, Azure 'da bir [hub ve bağlı ağ topolojisi](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)Için Terrayform 'un nasıl kullanılacağı gösterilmektedir. 
 
@@ -34,9 +31,9 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- **Azure aboneliği**: Henüz bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
+- **Azure aboneliği**: henüz bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terrayform 'U yükleyip yapılandırın**: Azure 'da VM 'Leri ve diğer altyapıyı sağlamak için [Terrayform 'u yükleyip yapılandırın](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terrayform 'U yükleyip yapılandırma**: Azure 'Da VM 'leri ve diğer altyapıyı sağlamak Için [terrayform 'u yükleyip yapılandırın](/azure/virtual-machines/linux/terraform-install-configure)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Hub ve bağlı bileşen topolojisi mimarisi
 
@@ -109,7 +106,7 @@ Tanıtım için Teraform yapılandırma dosyalarınızı tutan dizini oluşturun
 
 Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapılandırın.
 
-1. Cloud Shell ' de adlı `main.tf`yeni bir dosya açın.
+1. Cloud Shell ' de, `main.tf`adlı yeni bir dosya açın.
 
     ```bash
     code main.tf
@@ -129,7 +126,7 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
 
 Farklı betiklerde kullanılan ortak değişkenler için Terrayform yapılandırma dosyasını oluşturun.
 
-1. Cloud Shell ' de adlı `variables.tf`yeni bir dosya açın.
+1. Cloud Shell ' de, `variables.tf`adlı yeni bir dosya açın.
 
     ```bash
     code variables.tf
