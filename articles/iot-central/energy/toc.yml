@@ -17,7 +17,9 @@
     - name: Güneş paneli uygulaması mimarisi
       href: concept-iot-central-solar-panel-app.md
     - name: Bağlantı
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
+    - name: Uygulama şablonları nedir?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Cihazları bağlama
@@ -50,8 +52,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Özel kurallar oluşturma
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
-        - name: Databricks ile özel analizler oluşturma
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Databricks ile özel analizler oluşturma
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Yönetim

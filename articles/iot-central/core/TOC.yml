@@ -8,8 +8,6 @@
       href: overview-iot-options.md
     - name: Kullanıcı arabirimi turu
       href: overview-iot-central-tour.md
-    - name: Bağlı kalma
-      href: concepts-stay-connected.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

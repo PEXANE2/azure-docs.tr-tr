@@ -1,28 +1,27 @@
 ---
-title: Azure Storage 'ı Terrayform arka ucu olarak kullanma
+title: Öğretici-Azure Storage 'da Terrayform durumunu depolama
 description: Azure depolama 'da Terrayform durumunu depolamanın bir girişi.
-services: terraform
+ms.service: terraform
 author: tomarchermsft
-ms.service: azure
-ms.topic: article
-ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: e9b447f4f4dc9d0ee090da9729e483cc17ac7c15
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.topic: tutorial
+ms.date: 10/26/2019
+ms.openlocfilehash: 2e76da32e25451084d595b10698fe663c55b6a4b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169934"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969516"
 ---
-# <a name="store-terraform-state-in-azure-storage"></a>Azure depolama 'da Terrayform durumunu depolama
+# <a name="tutorial-store-terraform-state-in-azure-storage"></a>Öğretici: Azure Storage 'da Terrayform durumunu depolama
 
-Terrayform, dağıtılmış kaynakları Teraform yapılandırmalarına göre mutabık kılmak için kullanılır. Terrayform, durumu kullanarak ekleme, güncelleştirme veya silme için Azure kaynaklarını biliyor. Terrayform *Apply*, varsayılan olarak, terrayform durumu yerel olarak depolanır. Bu yapılandırma bazı nedenlerle ideal değildir:
+Terrayform, dağıtılmış kaynakları Teraform yapılandırmalarına göre mutabık kılmak için kullanılır. Durum, Terüform 'un hangi Azure kaynaklarını eklemek, güncelleştirmek veya silmek gerektiğini bilmesini sağlar. Varsayılan olarak, `terraform apply` komutu çalıştırılırken Terrayform durumu yerel olarak depolanır. Bu yapılandırma aşağıdaki nedenlerle ideal değildir:
 
 - Yerel durum, bir takımda veya işbirliği ortamında iyi çalışmıyor
 - Terrayform durumu hassas bilgiler içerebilir
 - Durumu yerel olarak depolama, yanlışlıkla silme olasılığını artırır
 
-Terrayform, Terrayform durumu için uzak depolama olan bir durum arka ucu kavramını içerir. Durum arka ucu kullanılırken, durum dosyası Azure depolama gibi bir veri deposunda depolanır. Bu belgede, Azure Storage 'ın bir Terraystate arka ucu olarak nasıl yapılandırılacağı ve kullanılacağı ayrıntılı olarak anlatılmaktadır.
+Terrayform, uzak depolamada durumu kalıcı hale getirmeyi destekler. Desteklenen bir arka uç, Azure Depolama ' dir. Bu belgede, Azure depolama 'nın bu amaçla nasıl yapılandırılacağı ve kullanılacağı gösterilmektedir.
 
 ## <a name="configure-storage-account"></a>Depolama hesabını yapılandırma
 
@@ -56,14 +55,14 @@ Depolama hesabı adı, kapsayıcı adı ve depolama erişim anahtarı ' nı bir 
 
 ## <a name="configure-state-backend"></a>Durum arka ucunu yapılandırma
 
-Terrayform *init*çalıştırılırken terrayform durumunun arka ucu yapılandırılır. Durum arka ucunu yapılandırmak için aşağıdaki veriler gereklidir.
+`terraform init` komutu çalıştırılırken Terrayform durumu arka ucu yapılandırılır. durum arka ucunu yapılandırmak için aşağıdaki veriler gereklidir:
 
 - storage_account_name-Azure Storage hesabının adı.
 - container_name-blob kapsayıcısının adı.
 - anahtar-oluşturulacak durum depolama dosyasının adı.
 - access_key-depolama erişim anahtarı.
 
-Bu değerlerin her biri Teraform yapılandırma dosyasında veya komut satırında belirtilebilir, ancak için `access_key`bir ortam değişkeni kullanılması önerilir. Bir ortam değişkeni kullanmak, anahtarın diske yazılmasını engeller.
+Bu değerlerin her biri Teraform yapılandırma dosyasında veya komut satırında belirtilebilir, ancak `access_key`için bir ortam değişkeni kullanılması önerilir. Bir ortam değişkeni kullanmak, anahtarın diske yazılmasını engeller.
 
 Azure depolama erişim anahtarı değeriyle `ARM_ACCESS_KEY` adlı bir ortam değişkeni oluşturun.
 
@@ -71,15 +70,19 @@ Azure depolama erişim anahtarı değeriyle `ARM_ACCESS_KEY` adlı bir ortam de�
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Azure depolama hesabı erişim anahtarını daha fazla korumak için Azure Key Vault ' de saklayın. Daha sonra, ortam değişkeni aşağıdakine benzer bir komut kullanılarak ayarlanabilir. Azure Key Vault hakkında daha fazla bilgi için [Azure Key Vault belgelerine][azure-key-vault]bakın.
+Azure depolama hesabı erişim anahtarını daha fazla korumak için Azure Key Vault ' de saklayın. Daha sonra, ortam değişkeni aşağıdakine benzer bir komut kullanılarak ayarlanabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault belgeleri] [.. /Key-Vault/Quick-Create-cli.exe].
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-Terupform 'u arka ucu kullanacak şekilde yapılandırmak için, Terrayform yapılandırmasında *azurerd* türüne sahip bir *arka uç* yapılandırması ekleyin. Yapılandırma bloğuna *storage_account_name*, *container_name*ve *anahtar* değerleri ekleyin.
+Terrayform 'u arka ucunu kullanacak şekilde yapılandırmak için aşağıdaki adımların gerçekleştirilmesi gerekir:
+- Bir tür `azurerm`olan `backend` bir yapılandırma bloğu ekleyin.
+- Yapılandırma bloğuna bir `storage_account_name` değeri ekleyin.
+- Yapılandırma bloğuna bir `container_name` değeri ekleyin.
+- Yapılandırma bloğuna bir `key` değeri ekleyin.
 
-Aşağıdaki örnek bir Terrayform arka ucunu yapılandırır ve bir Azure Kaynak grubu oluşturur. Değerleri ortamınızdaki değerlerle değiştirin.
+Aşağıdaki örnek bir Terrayform arka ucunu yapılandırır ve bir Azure Kaynak grubu oluşturur.
 
 ```hcl
 terraform {
@@ -96,11 +99,18 @@ resource "azurerm_resource_group" "state-demo-secure" {
 }
 ```
 
-Şimdi, bu yapılandırmayı *terarform init* ile başlatıp yapılandırmayı *terrayform Apply*ile çalıştırın. Tamamlandığında, Azure Depolama Blobu durum dosyasını bulabilirsiniz.
+Aşağıdaki adımları uygulayarak yapılandırmayı başlatın:
+
+1. `terraform init` komutunu çalıştırın.
+1. `terraform apply` komutunu çalıştırın.
+
+Artık Azure Depolama Blobu durum dosyasını bulabilirsiniz.
 
 ## <a name="state-locking"></a>Durum kilitleme
 
-Durum depolaması için bir Azure Depolama Blobu kullanırken, blob, durum yazan herhangi bir işlemden önce otomatik olarak kilitlenir. Bu yapılandırma birden çok eş zamanlı durum işlemini engeller, bu da bozulmaya neden olabilir. Daha fazla bilgi için bkz. Terrayform belgelerindeki [durum kilitleme][terraform-state-lock] .
+Azure depolama Blobları, durum yazan herhangi bir işlemden önce otomatik olarak kilitlenir. Bu model, eş zamanlı durum işlemlerini önler ve bu da bozulmaya neden olabilir. 
+
+Daha fazla bilgi için bkz. Terrayform belgelerindeki [durum kilitleme] [https://www.terraform.io/docs/state/locking.html ].
 
 Azure portal veya diğer Azure yönetim araçları aracılığıyla blob incelenirken kilit görülebilir.
 
@@ -108,19 +118,11 @@ Azure portal veya diğer Azure yönetim araçları aracılığıyla blob incelen
 
 ## <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
-Varsayılan olarak, bir Azure Blobuna depolanan veriler depolama altyapısına kalıcı olmadan önce şifrelenir. Terrampaform 'un durumu gerektiğinde, arka uçta alınır ve geliştirme sisteminizde bellekte depolanır. Bu yapılandırmada durum, Azure depolama 'da güvenli hale getirilir ve yerel diskinize yazılmaz.
+Bir Azure Blobuna depolanan veriler kalıcı olmadan önce şifrelenir. Gerekli olduğunda Terrayform, durumu arka uca alır ve yerel bellekte depolar. Bu düzenin kullanıldığı durum, yerel diskinize hiçbir şekilde yazılmaz.
 
-Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veri Için azure depolama hizmeti şifrelemesi][azure-storage-encryption].
+Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi] [.. /Storage/Common/Storage-Service-encryption.exe].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Terlarform][terraform-backend]arka uç belgelerinde Terrayform arka uç yapılandırması hakkında daha fazla bilgi edinin.
-
-<!-- LINKS - internal -->
-[azure-key-vault]: ../key-vault/quick-create-cli.md
-[azure-storage-encryption]: ../storage/common/storage-service-encryption.md
-
-<!-- LINKS - external -->
-[terraform-azurerm]: https://www.terraform.io/docs/backends/types/azurerm.html
-[terraform-backend]: https://www.terraform.io/docs/backends/
-[terraform-state-lock]: https://www.terraform.io/docs/state/locking.html
+> [!div class="nextstepaction"] 
+> [Azure 'da terrayform](/azure/ansible/)
