@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935011"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990233"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Öğretici: Azure Stream Analytics JavaScript kullanıcı tanımlı işlevleri
  
@@ -71,6 +71,9 @@ Mevcut bir Stream Analytics işi altında basit bir JavaScript Kullanıcı tanı
 6.  **Kaydet**’i seçin. İşleviniz işlevler listesinde görüntülenir.
 7.  Yeni **hex2Int** işlevini seçin ve işlev tanımını denetleyin. Tüm işlevlerde işlev diğer adına bir **UDF** ön eki getirilmelidir. İşlevi Stream Analytics sorgunuzda çağırdığınızda *ön eki getirmeniz* gerekir. Bu durumda **UDF.hex2Int** adını çağırırsınız.
 
+## <a name="testing-javascript-udfs"></a>JavaScript UDF 'Leri test etme 
+JavaScript UDF mantığınızı herhangi bir tarayıcıda test edebilir ve hatalarını ayıklayabilirsiniz. Kullanıcı tanımlı bu işlevlerin mantığını hata ayıklama ve test etme işlemi şu anda Stream Analytics portalında desteklenmiyor. İşlev beklenen şekilde çalışırsa, yukarıda bahsedilen Stream Analytics işe ekleyebilirsiniz ve ardından doğrudan Sorgunuzla çağırabilirsiniz.
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Bir sorguda JavaScript kullanıcı tanımlı işlevi çağırma
 
 1. Sorgu Düzenleyicisi 'nde, **iş topolojisi** başlığı altında **sorgu**' yı seçin.
@@ -125,7 +128,6 @@ JavaScript dili, büyük/küçük harfe duyarlıdır ve JavaScript kodundaki nes
 
 ## <a name="troubleshooting"></a>Sorun giderme
 JavaScript çalışma zamanı hataları önemli kabul edilir ve Etkinlik günlüğünde öne çıkarılır. Günlüğü almak için Azure portalında işinize gidin ve **Etkinlik günlüğü**’nü seçin.
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Diğer JavaScript kullanıcı tanımlı işlev desenleri
 

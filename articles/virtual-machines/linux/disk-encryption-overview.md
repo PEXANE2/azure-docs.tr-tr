@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a3d48d53c2d4d0c859b58a94b12ffa94590b18a5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174697"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989626"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi 
 
@@ -57,21 +57,21 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 | Ubuntu | 18,04| İşletim sistemi ve veri diski |
 | Ubuntu | 16,04| İşletim sistemi ve veri diski |
 | Ubuntu | 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](disk-encryption-troubleshooting.md) | İşletim sistemi ve veri diski |
-| RHEL for | 7,7 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL for | 7,6 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL for | 7,5 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL for | 7,4 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL for | 7,3 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL for | 7,2 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL for | 6,8 | Veri diski (aşağıdaki nota bakın) |
-| RHEL for | 6,7 | Veri diski (aşağıdaki nota bakın) |
+| RHEL | 7,7 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL | 7,6 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL | 7,5 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL | 7,4 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL | 7.3 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL | 7.2 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL | 6.8 | Veri diski (aşağıdaki nota bakın) |
+| RHEL | 6.7 | Veri diski (aşağıdaki nota bakın) |
 | CentOS | 7,7 | İşletim sistemi ve veri diski |
 | CentOS | 7,6 | İşletim sistemi ve veri diski |
 | CentOS | 7,5 | İşletim sistemi ve veri diski |
 | CentOS | 7,4 | İşletim sistemi ve veri diski |
-| CentOS | 7,3 | İşletim sistemi ve veri diski |
+| CentOS | 7.3 | İşletim sistemi ve veri diski |
 | CentOS | 7.2 n | İşletim sistemi ve veri diski |
-| CentOS | 6,8 | Veri diski |
+| CentOS | 6.8 | Veri diski |
 | openSUSE | 42,3 | Veri diski |
 | SLES | 12-SP4 | Veri diski |
 | SLES | 12-SP3 | Veri diski |
@@ -96,7 +96,7 @@ Veri disklerini bağlamak ve gerekli/etc/fstab girdilerini oluşturmak için kul
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
 Azure Disk Şifrelemesi özelliğini etkinleştirmek için Linux VM 'lerinin aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılaması gerekir:
-  - Anahtar kasanıza bağlanma belirteci almak için, Linux VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir @no__t -0login. microsoftonline. com @ no__t-1.
+  - Anahtar kasanıza bağlanma belirteci almak için, Linux VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir \[login.microsoftonline.com\].
   - Şifreleme anahtarlarını anahtar kasanıza yazmak için, Linux VM 'nin Anahtar Kasası uç noktasına bağlanabiliyor olması gerekir.
   - Linux VM, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
   -  Güvenlik ilkeniz, Azure VM 'lerinden Internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../../key-vault/key-vault-access-behind-firewall.md).  
@@ -110,13 +110,13 @@ Ayrıntılar için bkz. [Azure disk şifrelemesi için bir Anahtar Kasası oluş
 ## <a name="terminology"></a>Terminoloji
 Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yaygın terimler tanımlanmaktadır:
 
-| Terminoloji | Definition |
+| Terminoloji | Tanım |
 | --- | --- |
 | Azure Key Vault | Key Vault, Federal bilgi Işleme standartları (FIPS) tarafından doğrulanan donanım güvenlik modüllerini temel alan bir şifreleme, anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarınızı ve hassas gizli dizileri korumaya yardımcı olur. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
-| Azure CLı | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
+| Azure CLI | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|
 | DM-Crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) , Linux sanal makinelerinde disk şifrelemeyi etkinleştirmek Için kullanılan Linux tabanlı, saydam disk şifreleme alt sistemidir. |
 | Anahtar şifreleme anahtarı (KEK) | Gizli anahtarı korumak veya kaydırmak için kullanabileceğiniz asimetrik anahtar (RSA 2048). Donanım güvenlik modülü (HSM) korumalı bir anahtar veya yazılımla korunan anahtar sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
-| PowerShell cmdlet 'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/overview). |
+| PowerShell cmdlet'leri | Daha fazla bilgi için bkz. [Azure PowerShell cmdlet 'leri](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

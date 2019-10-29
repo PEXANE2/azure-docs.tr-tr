@@ -1,5 +1,5 @@
 ---
-title: 'Sorun giderme Azure Backup hatası: Konuk Aracısı durumu kullanılamıyor'
+title: 'Sorun giderme Azure Backup hatası: aracı ve uzantı sorunları'
 description: Belirtiler, nedenler ve Aracı, uzantısı ve disklerle ilgili Azure Backup hatalarının çözümleri.
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533728"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969077"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: aracıdaki veya uzantıdaki sorunlar
 
@@ -58,7 +58,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 Önerilen eylem:<br>
 Bu sorunu çözmek için VM 'nin kaynak grubundaki kilidi kaldırın ve temizleme işlemini tetiklemek için işlemi yeniden deneyin.
 > [!NOTE]
-> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_ `<Geo>`_ `<number>` örn.: AzureBackupRG_northeurope_1
+> Yedekleme hizmeti, geri yükleme noktası koleksiyonunu depolamak için VM 'nin kaynak grubundan farklı bir kaynak grubu oluşturur. Müşteriler, yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlemez. Yedekleme hizmeti tarafından oluşturulan kaynak grubunun adlandırma biçimi: AzureBackupRG_`<Geo>`_`<number>` örn: AzureBackupRG_northeurope_1
 
 **1. Adım: [kilidi geri yükleme noktası kaynak grubundan kaldırma](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. Adım: [geri yükleme noktası koleksiyonunu Temizleme](#clean_up_restore_point_collection)**<br>
@@ -225,7 +225,7 @@ Bu adımların tamamlanması, uzantının bir sonraki yedekleme sırasında yeni
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldır
 
 1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki AzureBackupRG_ `<Geo>`_ `<number>` geri yükleme noktası koleksiyonu kaynak grubunu seçin.
+2. **Tüm kaynaklar seçeneğine**gidin, aşağıdaki biçimdeki geri yükleme noktası koleksiyonu kaynak grubunu seçin AzureBackupRG_`<Geo>`_`<number>`.
 3. **Ayarlar** bölümünde, kilitleri göstermek için **kilitler** ' ı seçin.
 4. Kilidi kaldırmak için üç noktayı seçin ve **Sil**' e tıklayın.
 
@@ -254,12 +254,12 @@ Kilidi kaldırdıktan sonra, geçici/el ile yedekleme tetikleyin. Bu, geri yükl
 Kaynak grubundaki kilit nedeniyle temizlenmemiş geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
 1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. **Hub** menüsünde **tüm kaynaklar**' a tıklayın, sanal makinenizin bulunduğu `<number>` `<Geo>`_ Şu biçimdeki kaynak grubunu seçin.
+2. **Hub** menüsünde, **tüm kaynaklar**' a tıklayın, kaynak grubunu aşağıdaki biçimde seçin AzureBackupRG_`<Geo>`_`<number>` ve sanal makinenizin bulunduğu yer.
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kaynak grubu ' na tıklayın, **genel bakış** dikey penceresi görüntülenir.
-4. Tüm gizli kaynakları görüntülemek için **gizli türleri göster** seçeneğini belirleyin. Aşağıdaki biçime sahip geri yükleme noktası koleksiyonlarını seçin AzureBackupRG_ `<VMName>`_ `<number>`.
+4. Tüm gizli kaynakları görüntülemek için **gizli türleri göster** seçeneğini belirleyin. Aşağıdaki biçime sahip geri yükleme noktası koleksiyonlarını seçin AzureBackupRG_`<VMName>`_`<number>`.
 
     ![Kilidi Sil](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

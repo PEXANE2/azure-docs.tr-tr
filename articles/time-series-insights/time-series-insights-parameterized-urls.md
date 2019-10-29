@@ -3,20 +3,19 @@ title: Parametreli URL'lerle Azure Time Series Insights özel görünümlerini p
 description: Bu makalede, özelleştirilmiş görünümün kolayca paylaşılabilmesi için Azure Time Series Insights'ta parametreli URL'lerin nasıl geliştirileceği açıklanır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e862cd604263c5125259344baf2e990ad56a3291
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675851"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991106"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
 
@@ -66,7 +65,7 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
-@No__t_0 parametresi bir Time Series Insights görünümünün koşullarını belirtir:
+`timeSeriesDefinitions=<collection of term objects>` parametresi bir Time Series Insights görünümünün koşullarını belirtir:
 
 | Parametre | URL öğesi | Açıklama |
 | --- | --- | --- |
@@ -74,12 +73,12 @@ Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsün
 | **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
 | **measureName** | `\<string>` | *Ölçü* sütununun adı. |
 | **koşulunda** | `\<string>` | Sunucu tarafı filtrelemesi için *where* yan tümcesi. |
-| **useSum** | `true` | Ölçmenize yönelik Sum kullanımını belirten isteğe bağlı bir parametre. </br>  @No__t_0 seçili ölçü ise, varsayılan olarak sayı seçilidir.  </br>  @No__t_0 seçili değilse, varsayılan olarak ortalama seçilidir. |
+| **useSum** | `true` | Ölçmenize yönelik Sum kullanımını belirten isteğe bağlı bir parametre. </br>  `Events` seçili ölçü ise, varsayılan olarak sayı seçilidir.  </br>  `Events` seçili değilse, varsayılan olarak ortalama seçilidir. |
 
-* @No__t_0 anahtar-değer çifti grafikte yığınlama imkanı sunar.
-* @No__t_0 anahtar-değer çifti, isteğe bağlı bir parametre içindeki terimleri kapsayan aynı Y ekseni ölçeğini sunar.  
-* @No__t_0, grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
-* @No__t_0 parametresi, grafiğin saat dilimini UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
+* `multiChartStack=<true/false>` anahtar-değer çifti grafikte yığınlama imkanı sunar.
+* `multiChartSameScale=<true/false>` anahtar-değer çifti, isteğe bağlı bir parametre içindeki terimleri kapsayan aynı Y ekseni ölçeğini sunar.  
+* `timeBucketUnit=<Unit>&timeBucketSize=<integer>`, grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
+* `timezoneOffset=<integer>` parametresi, grafiğin saat dilimini UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
 
 | Çift (ler) | Açıklama |
 | --- | --- |
@@ -114,11 +113,11 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 Yukarıdaki URL Time Series Insights Gezgin görünümünü tanımlar ve oluşturur:
 
-[![Time Series Insights Gezgini koşulları](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[![Time Series Insights Explorer koşulları](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 Tam Görünüm (grafik dahil):
 
-[![Chart görünümü](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[![grafik görünümü](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488993"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990690"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme (Önizleme)
 
@@ -36,7 +36,7 @@ Azure AD yetkilendirme yönetimi sayesinde, ilkeleri erişim paketleri için ona
 
 Erişim isteklerini onaylamaya veya reddetmeye yönelik ilk adım, onay bekleyen erişim isteğini bulup açar. Erişim isteğini açmak için iki yol vardır.
 
-**Önkoşul rolü:** Onaylayan
+**Önkoşul rolü:** Kişi
 
 1. Bir isteği onaylamayı veya reddetmenizi isteyen Microsoft Azure bir e-posta bulun. Örnek bir e-posta aşağıda verilmiştir:
 
@@ -48,7 +48,7 @@ Erişim isteklerini onaylamaya veya reddetmeye yönelik ilk adım, onay bekleyen
 
 E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim isteklerini bulabilirsiniz.
 
-1. Konumundaki [https://myaccess.microsoft.com](https://myaccess.microsoft.com)erişim portalında oturum açın.
+1. [https://myaccess.microsoft.com](https://myaccess.microsoft.com)adresindeki erişim portalı 'nda oturum açın.
 
 1. Onay bekleyen erişim isteklerinin bir listesini görmek için sol taraftaki menüden **onaylar** ' a tıklayın.
 
@@ -58,7 +58,7 @@ E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim istekle
 
 Onay bekleyen bir erişim isteği açtıktan sonra, bir onaylama veya reddetme kararı vermenize yardımcı olacak ayrıntıları görebilirsiniz.
 
-**Önkoşul rolü:** Onaylayan
+**Önkoşul rolü:** Kişi
 
 1. Erişim isteği bölmesini açmak için **Görünüm** bağlantısına tıklayın.
 
@@ -70,7 +70,7 @@ Onay bekleyen bir erişim isteği açtıktan sonra, bir onaylama veya reddetme k
 
 1. Gerekirse bir neden girin.
 
-    ![Erişim Portalı-erişim isteği](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Erişim Portalı-erişim isteği](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Kararınızı göndermek için **Gönder** ' e tıklayın.
 

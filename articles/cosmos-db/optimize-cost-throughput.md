@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: fd385e820ea205c3acfc0ee3ccec4e07c62bb50e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753260"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989580"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş maliyetini iyileştirin
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 Yerel SDK 'lar (.NET/.NET Core, Java, Node. js ve Python), bu yanıtı dolaylı olarak yakalayıp sunucu tarafından belirtilen yeniden deneme üst bilgisine göre yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
 
-İstek hızının sürekli olarak birden fazla istemciniz varsa, şu anda 9 olarak ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Böyle bir durumda, istemci, uygulama 429 durum kodu ile bir `DocumentClientException` oluşturur. Varsayılan yeniden deneme sayısı, ConnectionPolicy örneğindeki `RetryOptions` ayarlanarak değiştirilebilir. Varsayılan olarak, istek hızının üzerinde çalışmaya devam ederse, 429 durum koduna sahip `DocumentClientException`, 30 saniyelik birikmeli bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
+İstek hızının sürekli olarak birden fazla istemciniz varsa, o anda 9 ' a ayarlanmış olan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu gibi durumlarda, istemci uygulamaya 429 durum kodu ile bir `DocumentClientException` oluşturur. Varsayılan yeniden deneme sayısı, ConnectionPolicy örneğindeki `RetryOptions` ayarlanarak değiştirilebilir. Varsayılan olarak, istek hızının üzerinde çalışmaya devam ederse, 429 durum koduna sahip `DocumentClientException`, 30 saniyelik birikmeli bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 3 olarak ayarlanır. bu nedenle, bir istek işlemi, kapsayıcının ayrılmış aktarım hızını aşarak sınırlı olursa istek işlemi, uygulamaya özel durumu oluşturmadan önce üç kez yeniden dener. [Maxretrywaittimeınseconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 60 olarak ayarlanır. bu nedenle, ilk istek 60 saniye değerini aştığından kümülatif yeniden deneme bekleme süresi saniye cinsinden, özel durum atılır.
 

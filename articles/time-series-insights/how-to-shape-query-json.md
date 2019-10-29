@@ -2,19 +2,19 @@
 title: Azure Time Series Insights sorgularında JSON şekillendirmeye yönelik en iyi uygulamalar | Microsoft Docs
 description: Azure Time Series Insights sorgu verimliliğinizi geliştirmeyi öğrenin.
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274410"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990276"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Sorgu performansını en üst düzeye çıkarmak için JSON şekli 
 
@@ -35,6 +35,9 @@ Time Series Insights için nasıl olay gönderileceğini düşünün. Yani, her 
 1. En fazla Time Series Insights Özellik sınırlarına ulaşamadığınızdan emin olun:
    - S1 ortamları için 600 özellikleri (sütun).
    - S2 ortamları için 800 Özellikleri (sütunlar).
+
+> [!TIP]
+> Azure Time Series Insights önizlemede [limitleri ve planlamayı](time-series-insights-update-plan.md) gözden geçirin.
 
 Aşağıdaki kılavuz mümkün olan en iyi sorgu performansını sağlamanıza yardımcı olur:
 
@@ -94,16 +97,16 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
    | deviceId | Ileti | deviceLocation |
    | --- | --- | --- |
-   | FXXX | SATıR @ no__t-0VERI | AV |
-   | FYYY | SATıR @ no__t-0VERI | US |
+   | FXXX | SATıR\_VERILERI | AV |
+   | FYYY | SATıR\_VERILERI | US |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
    | deviceId | Ileti | deviceLocation | timestamp | ilerindeki. Akış oranı ft3/sn | ilerindeki. Motor yağ basıncı psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | SATıR @ no__t-0VERI | AV | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | SATıR @ no__t-0VERI | AV | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | SATıR @ no__t-0VERI | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | SATıR\_VERILERI | AV | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | SATıR\_VERILERI | AV | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | SATıR\_VERILERI | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - **DeviceID** sütunu, bir Fleet içindeki çeşitli cihazlar için sütun üst bilgisi görevi görür. **DeviceID** değerinin kendi özellik adı, diğer beş sütunlu ile toplam cihazları 595 (S1 ortamları için) veya 795 (S2 ortamları için) olarak sınırlar.
@@ -164,21 +167,21 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
    | deviceId | Series. TagId | Ileti | deviceLocation | type | birim |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATıR @ no__t-0VERI | AV | Akış hızı | ft3/s |
-   | FXXX | Oilbasınç | SATıR @ no__t-0VERI | AV | Motor yağ basıncı | psi |
-   | FYYY | porate oranı | SATıR @ no__t-0VERI | US | Akış hızı | ft3/s |
-   | FYYY | Oilbasınç | SATıR @ no__t-0VERI | US | Motor yağ basıncı | psi |
+   | FXXX | porate oranı | SATıR\_VERILERI | AV | Akış hızı | ft3/s |
+   | FXXX | Oilbasınç | SATıR\_VERILERI | AV | Motor yağ basıncı | psi |
+   | FYYY | porate oranı | SATıR\_VERILERI | US | Akış hızı | ft3/s |
+   | FYYY | Oilbasınç | SATıR\_VERILERI | US | Motor yağ basıncı | psi |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
    | deviceId | Series. TagId | Ileti | deviceLocation | type | birim | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATıR @ no__t-0VERI | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | Oilbasınç | SATıR @ no__t-0VERI | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | porate oranı | SATıR @ no__t-0VERI | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | Oilbasınç | SATıR @ no__t-0VERI | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | porate oranı | SATıR @ no__t-0VERI | US | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | Oilbasınç | SATıR @ no__t-0VERI | US | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | porate oranı | SATıR\_VERILERI | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | Oilbasınç | SATıR\_VERILERI | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | porate oranı | SATıR\_VERILERI | AV | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | Oilbasınç | SATıR\_VERILERI | AV | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | porate oranı | SATıR\_VERILERI | US | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | Oilbasınç | SATıR\_VERILERI | US | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - **DeviceID** ve **Series. TagId** sütunları, bir Fleet içindeki çeşitli cihazlar ve Etiketler için sütun üst bilgileri olarak görev yapar. Her birinin kendi özniteliği olarak kullanılması, sorguyu 594 (S1 ortamları için) veya 794 (S2 ortamları için) ile diğer altı sütunlu toplam cihaz sayısını sınırlar.
@@ -195,7 +198,7 @@ Azure buluta gönderildiğinde JSON 'a serileştirilmiş bir [IoT cihaz iletisi 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [IoT Hub cihaz iletilerini buluta](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)gönderme hakkında daha fazla bilgi edinin.
+- [IoT Hub cihaz iletilerini buluta](../iot-hub/iot-hub-devguide-messages-construct.md)gönderme hakkında daha fazla bilgi edinin.
 
 - Time Series Insights veri erişimi REST API sorgu sözdizimi hakkında daha fazla bilgi edinmek için [Azure Time Series Insights sorgu söz dizimini](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) okuyun.
 

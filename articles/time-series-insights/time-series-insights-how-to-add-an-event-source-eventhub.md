@@ -3,7 +3,7 @@ title: Azure Time Series Insights için Event Hubs bir olay kaynağı ekleyin | 
 description: Bu makalede, Time Series Insights ortamınıza Azure Event Hubs bağlı bir olay kaynağının nasıl ekleneceği açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3adf8b71d264b01f13f5aac7002b7ec455a31d60
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274387"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990075"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
 
@@ -40,11 +40,11 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. [Azure Portal](https://portal.azure.com), Olay Hub 'ı ad alanından Olay Hub 'ınızı bulun ve açın.
 
-    [![Olay hub 'ı ad alanınızı açın](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
+    [![Olay Hub 'ı ad alanınızı açın](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
 1. **Varlıklar**altında **tüketici grupları**' nı seçin ve ardından **Tüketici grubu**' nu seçin.
 
-   [![Event hub 'ı-Tüketici grubu ekleme](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
+   [Olay Hub 'ı![-Tüketici grubu ekleme](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
 
 1. **Tüketici grupları** sayfasında, **ad**için yeni bir benzersiz değer girin.  Time Series Insights ortamında yeni bir olay kaynağı oluştururken aynı adı kullanın.
 
@@ -58,7 +58,7 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. **Ortam topolojisi**altında **olay kaynakları**' nı seçin ve ardından **Ekle**' yi seçin.
 
-   [![ olay kaynakları altında, Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+   [Olay kaynakları altında![Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
 1. Bu Time Series Insights ortamı için, **Event-Stream**gibi benzersiz bir **olay kaynağı adı** değeri girin.
 
@@ -68,11 +68,11 @@ Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
    * Aboneliklerinizden birinde mevcut bir olay hub 'ınız varsa, **kullanılabilir aboneliklerden Olay Hub 'ını kullan**' ı seçin. Bu seçenek en kolay yaklaşımdır.
 
-     [![Bir olay kaynağı içeri aktarma seçeneği seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
+     [![bir olay kaynağı içeri aktarma seçeneği seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
     *  Aşağıdaki tabloda, **kullanılabilir aboneliklerden Event hub 'ı kullan** seçeneği için gereken özellikler açıklanmaktadır:
 
-       [![Abonelik ve Olay Hub 'ı ayrıntıları](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
+       [![aboneliği ve Olay Hub 'ı ayrıntıları](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
        | Özellik | Açıklama |
        | --- | --- |

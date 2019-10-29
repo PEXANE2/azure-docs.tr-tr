@@ -1,6 +1,6 @@
 ---
 title: Sınırlar ve Yapılandırma-Azure Logic Apps
-description: Azure Logic Apps için hizmet limitleri ve yapılandırma değerleri
+description: Süre, verimlilik ve kapasite gibi hizmet limitleri ve izin verilecek IP adresleri gibi yapılandırma değerleri, Azure Logic Apps için
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799368"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968610"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -35,9 +35,9 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 | Kapsam durumlarının sınırlarını Değiştir | 25 | |
 | İş akışı başına değişkenler | 250 | |
 | İfade başına karakter | 8,192 | |
-| @No__t_0 için en büyük boyut | 16.000 karakter |
-| @No__t_0 veya `trigger` adı | 80 karakter | |
-| @No__t_0 uzunluğu | 256 karakter | |
+| `trackedProperties` için en büyük boyut | 16.000 karakter |
+| `action` veya `trigger` adı | 80 karakter | |
+| `description` uzunluğu | 256 karakter | |
 | Maksimum `parameters` | 50 | |
 | Maksimum `outputs` | 10 | |
 ||||
@@ -146,8 +146,8 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 | Adı | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | İleti boyutu | 100 MB | 200 MB | Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. |
-| Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p>Tümleştirme hizmeti ortamı için Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir, örneğin, bkz. [Azure Blob Storage Bağlayıcısı](/connectors/azureblob/). Daha fazla bilgi parçalama için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
-| İfade değerlendirme sınırı | 131.072 karakter | 131.072 karakter | @No__t_0, `@base64()`, `@string()` ifadeleri bu sınırdan daha uzun olamaz. |
+| Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p>Tümleştirme hizmeti ortamı için Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir, örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](https://docs.microsoft.com/connectors/azureblob/). Daha fazla bilgi parçalama için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
+| İfade değerlendirme sınırı | 131.072 karakter | 131.072 karakter | `@concat()`, `@base64()`, `@string()` ifadeleri bu sınırdan daha uzun olamaz. |
 |||||
 
 #### <a name="retry-policy"></a>Yeniden deneme ilkesi

@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 10/22/2019
-ms.openlocfilehash: e1bf6a55568671ddb8f6999356cc9be43ce6a728
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b953f9b5e5fd8c853746caad3047986786bd1317
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804015"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989616"
 ---
 # <a name="azure-resource-logs-overview"></a>Azure Kaynak günlüklerine genel bakış
 Azure Kaynak günlükleri, iç işlemlerini tanımlayan Azure kaynakları tarafından yayılan [Platform günlüklerdir](platform-logs-overview.md) . Tüm kaynak günlükleri, ortak bir üst düzey şemayı, her hizmet için her bir hizmetin esnekliğiyle paylaşarak, kendi olayları için benzersiz özellikler sunar.
@@ -25,8 +25,8 @@ Kaynak günlükleri desteklenen Azure kaynakları tarafından otomatik olarak ol
 
 | Hedef | Senaryo |
 |:---|:---|:---|
-| [Log Analytics çalışma alanı](resource-logs-collect-storage.md) | Günlükleri diğer izleme verileriyle çözümleyin ve günlük sorguları ve günlük uyarıları gibi Azure Izleyici özelliklerinden yararlanın. |
-| [Azure depolama alanı](archive-diagnostic-logs.md) | Denetim veya yedekleme için günlükleri arşivle. |
+| [Log Analytics çalışma alanı](resource-logs-collect-workspace.md) | Günlükleri diğer izleme verileriyle çözümleyin ve günlük sorguları ve günlük uyarıları gibi Azure Izleyici özelliklerinden yararlanın. |
+| [Azure depolama alanı](resource-logs-collect-storage.md) | Denetim veya yedekleme için günlükleri arşivle. |
 | [Olay Hub 'ı](resource-logs-stream-event-hubs.md) | Günlükleri üçüncü taraf günlüğe kaydetme ve telemetri sistemlerine akışa alma.  |
 
 ## <a name="compute-resources"></a>İşlem kaynakları

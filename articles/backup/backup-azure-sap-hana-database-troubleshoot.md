@@ -1,5 +1,5 @@
 ---
-title: Azure Backup kullanarak SAP HANA veritabanlarını yedeklerken hata giderme Microsoft Docs
+title: SAP HANA veritabanlarının yedekleme hatalarını giderme-Azure Backup
 description: SAP HANA veritabanlarını yedeklemek için Azure Backup kullandığınızda oluşabilecek yaygın hataların nasıl giderileceği açıklanmaktadır.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954464"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968445"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure 'da SAP HANA veritabanlarının yedeklenmesi sorunlarını giderme
 
@@ -32,13 +32,13 @@ Preregistration betiği şunları yapar:
     - Katalog okuma: yedekleme kataloğunu okumak için.
     - SAP_INTERNAL_HANA_SUPPORT: birkaç özel tabloya erişmek için.
 2. Tüm işlemleri işlemek için (veritabanı sorguları, geri yükleme işlemleri, yedek yapılandırma ve çalıştırma), HANA eklentisinin Hdbuserstore öğesine bir anahtar ekler.
-   
+
    Anahtar oluşturmayı onaylamak için, SIDADDM kimlik bilgileriyle HANA makinesinde HDBSQL komutunu çalıştırın:
 
     ``` hdbsql
     hdbuserstore list
     ```
-    
+
     Komut çıktısı {SID} {DBNAME} anahtarını, AZUREWLBACKUPHANAUSER olarak gösterilen kullanıcıyla görüntülemelidir.
 
 > [!NOTE]
@@ -67,7 +67,8 @@ HANA için tek bir kapsayıcı veritabanını (SDC) başka bir SDC makinesine ge
 
 ![SDC geri yükleme girişleri](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-Aşağıdakilere göz önünde
+Aşağıdaki noktalara dikkat edin:
+
 - Varsayılan olarak, geri yüklenen veritabanı adı, yedek öğe adı (örneğin, H21 (SDC) ile doldurulur
 - H11 olarak Target seçildiğinde geri yüklenen veritabanı adı otomatik olarak değişmez. **H11 (SDC) olarak düzenlenmelidir**. SDC söz konusu olduğunda, geri yüklenen veritabanı adı, büyük harfle birlikte hedef örnek KIMLIĞI ve köşeli ayraçlar içinde ' SDC ' olarak eklenir.
 - SDC 'nin yalnızca tek bir veritabanı olduğundan, var olan veritabanı verilerinin kurtarma noktası verileriyle geçersiz kılınmasına izin vermek için onay kutusuna tıklamanız gerekir.
@@ -81,7 +82,7 @@ HANA için birden çok kapsayıcı veritabanında standart yapılandırma SISTEM
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>Usererrorınopeninghanaodbcconnection
 
-data| Hata iletisi | Olası nedenler | Önerilen eylem |
+Verileri| Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
 | HANA sistemine bağlanılamadı. Sisteminizin çalışır ve çalışır olduğunu doğrulayın.| HANA veritabanı çalışmadığından Azure Backup hizmeti HANA 'ya bağlanamaz. Ya da HANA çalışıyor ancak Azure Backup hizmetinin bağlanmasına izin vermiyor. | HANA veritabanının veya hizmetinin çalışıp çalışmadığını denetleyin. HANA veritabanı veya hizmeti çalışır duruma ayarlanmışsa, [tüm izinlerin ayarlanmış](#setting-up-permissions)olup olmadığını kontrol edin. Anahtar eksikse, yeni bir anahtar oluşturmak için preregistration betiğini yeniden çalıştırın. |
 

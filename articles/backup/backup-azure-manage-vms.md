@@ -1,5 +1,5 @@
 ---
-title: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme ve izleme
+title: Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme ve izleme
 description: Azure Backup hizmetini kullanarak Azure VM yedeklemelerini yönetme ve izleme hakkında bilgi edinin.
 ms.reviewer: sogup
 author: dcurwin
@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029250"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969225"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
 Bu makalede, [Azure Backup hizmeti](backup-overview.md)kullanılarak yedeklenen Azure sanal makinelerinin (VM) nasıl yönetileceği açıklanmaktadır. Makale Ayrıca, kasa panosunda bulabileceğiniz yedekleme bilgilerini de özetler.
-
 
 Azure portal, kurtarma hizmetleri Kasası panosu, aşağıdakiler de dahil olmak üzere kasa bilgilerine erişim sağlar:
 
@@ -77,11 +76,12 @@ Bir yedekleme ilkesini yönetmek için:
      ![Bir yedekleme ilkesi seçin](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
 ## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
+
 Korumasını ayarladıktan sonra bir VM 'nin isteğe bağlı yedeklemesini çalıştırabilirsiniz. Bu ayrıntıları göz önünde bulundurun:
 
-- İlk yedekleme beklendiğinde, isteğe bağlı yedekleme, kurtarma hizmetleri kasasında sanal makinenin tam bir kopyasını oluşturur.
-- İlk yedekleme işlemi tamamlandıktan sonra, bir isteğe bağlı yedekleme, değişiklikleri yalnızca önceki anlık görüntüden kurtarma hizmetleri kasasına gönderir. Diğer bir deyişle, sonraki yedeklemeler her zaman artımlıdır.
-- İsteğe bağlı yedekleme için bekletme aralığı, yedeklemeyi tetiklemeniz durumunda belirttiğiniz saklama değeridir.
+* İlk yedekleme beklendiğinde, isteğe bağlı yedekleme, kurtarma hizmetleri kasasında sanal makinenin tam bir kopyasını oluşturur.
+* İlk yedekleme işlemi tamamlandıktan sonra, bir isteğe bağlı yedekleme, değişiklikleri yalnızca önceki anlık görüntüden kurtarma hizmetleri kasasına gönderir. Diğer bir deyişle, sonraki yedeklemeler her zaman artımlıdır.
+* İsteğe bağlı yedekleme için bekletme aralığı, yedeklemeyi tetiklemeniz durumunda belirttiğiniz saklama değeridir.
 
 İsteğe bağlı yedekleme tetiklemesi için:
 
@@ -147,32 +147,32 @@ Bir VM için korumayı sürdürmesini sağlamak için:
 
 Bir sanal makinenin yedekleme verilerini silmenin iki yolu vardır:
 
-- Kasa öğesi panosundan Yedeklemeyi Durdur ' u seçin ve [korumayı durdurma ve yedek verileri silme](#stop-protection-and-delete-backup-data) yönergelerini izleyin.
+* Kasa öğesi panosundan Yedeklemeyi Durdur ' u seçin ve [korumayı durdurma ve yedek verileri silme](#stop-protection-and-delete-backup-data) yönergelerini izleyin.
 
   ![Yedeklemeyi Durdur ' u seçin](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
-- Kasa öğesi panosunda, yedekleme verilerini Sil ' i seçin. VM korumasını durdurma sırasında [korumayı durdurmayı ve yedekleme verilerini tutmayı](#stop-protection-and-retain-backup-data) seçtiyseniz bu seçenek etkinleştirilir
+* Kasa öğesi panosunda, yedekleme verilerini Sil ' i seçin. VM korumasını durdurma sırasında [korumayı durdurmayı ve yedekleme verilerini tutmayı](#stop-protection-and-retain-backup-data) seçtiyseniz bu seçenek etkinleştirilir
 
   ![Yedeklemeyi Sil ' i seçin](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-  - [Kasa öğesi panosunda](#view-vms-on-the-dashboard), **yedekleme verilerini sil**' i seçin.
-  - Kurtarma noktalarını silmek istediğinizi onaylamak için yedekleme öğesinin adını yazın.
+  * [Kasa öğesi panosunda](#view-vms-on-the-dashboard), **yedekleme verilerini sil**' i seçin.
+  * Kurtarma noktalarını silmek istediğinizi onaylamak için yedekleme öğesinin adını yazın.
 
     ![Yedekleme verilerini silme](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-  - Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
+  * Öğe için yedekleme verilerini silmek için **Sil**' i seçin. Bir bildirim iletisi, yedekleme verilerinin silindiğini bilmenizi sağlar.
 
   > [!NOTE]
   > Yedekleme verilerini sildiğinizde, ilişkili tüm kurtarma noktalarını silersiniz. Silmek için belirli kurtarma noktaları seçemezsiniz.
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Birincil veri kaynağı artık mevcut olmayan yedekleme öğesi
 
-- Azure Backup için yapılandırılmış Azure VM 'Ler korumayı durdurmadan silinir veya taşınırsa, hem zamanlanmış yedekleme işleri hem de isteğe bağlı (geçici) yedekleme işleri UserErrorVmNotFoundV2 hatasıyla başarısız olur. Yedekleme ön denetimi yalnızca başarısız olan geçici yedekleme işleri için kritik olarak görünür (başarısız zamanlanan işler gösterilmez). 
-- Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi biten kurtarma noktaları (son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
-- Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı olarak ücretlendirildiği için, kullanıcıların birincil veri kaynağı artık mevcut olmayan yedekleme öğelerini silmesi önerilir. daha fazla maliyet olmaması için, silme kaynakları için yedekleme öğesi/verileri artık gerekmiyorsa kullanılabilir yedekleme fiyatlandırmasına göre.
-
+* Azure Backup için yapılandırılmış Azure VM 'Ler korumayı durdurmadan silinir veya taşınırsa, hem zamanlanmış yedekleme işleri hem de isteğe bağlı (geçici) yedekleme işleri UserErrorVmNotFoundV2 hatasıyla başarısız olur. Yedekleme ön denetimi yalnızca başarısız olan geçici yedekleme işleri için kritik olarak görünür (başarısız zamanlanan işler gösterilmez).
+* Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi biten kurtarma noktaları (son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
+* Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı olarak ücretlendirildiği için, kullanıcıların birincil veri kaynağı artık mevcut olmayan yedekleme öğelerini silmesi önerilir. daha fazla maliyet olmaması için, silme kaynakları için yedekleme öğesi/verileri artık gerekmiyorsa kullanılabilir yedekleme fiyatlandırmasına göre.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure VM 'lerini [VM ayarlarından nasıl yedekleyeceğinizi](backup-azure-vms-first-look-arm.md)öğrenin.
-- [VM 'leri geri yüklemeyi](backup-azure-arm-restore-vms.md)öğrenin.
-- [Azure VM yedeklemelerini izlemeyi](backup-azure-monitor-vms.md)öğrenin.
+
+* Azure VM 'lerini [VM ayarlarından nasıl yedekleyeceğinizi](backup-azure-vms-first-look-arm.md)öğrenin.
+* [VM 'leri geri yüklemeyi](backup-azure-arm-restore-vms.md)öğrenin.
+* [Azure VM yedeklemelerini izlemeyi](backup-azure-monitor-vms.md)öğrenin.

@@ -1,22 +1,19 @@
 ---
-title: Azure 'da Terrayform ile bir hub ve bağlı bileşen ağı doğrulama
+title: Öğretici-Terrayform kullanarak Azure 'da bir hub ve bağlı ağ ağını doğrulama
 description: Hub ve bağlı bileşen ağ topolojisini birbirine bağlı tüm sanal ağlarla doğrulama öğreticisi.
-services: terraform
-ms.service: azure
-keywords: terrayform, hub ve bağlı bileşen, ağlar, karma ağlar, DevOps, sanal makine, Azure, VNET eşlemesi,
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169731"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969331"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Öğretici: Azure 'da Terrayform ile bir hub ve bağlı bileşen ağı doğrulama
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Öğretici: Terrayform kullanarak Azure 'da bir hub ve bağlı ağ ağını doğrulama
 
 Bu makalede, bu serinin önceki makalesinde oluşturulan teraform dosyalarını yürütüteolursunuz. Sonuç, tanıtım sanal ağları arasındaki bağlantının doğrulanmasından kaynaklanır.
 
@@ -59,7 +56,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
     cd hub-spoke
     ```
 
-1. Önceki öğreticilerde oluşturulan `.tf` yapılandırma dosyalarının listelendiğini doğrulamak için komutunuçalıştırın:`ls`
+1. Önceki öğreticilerde oluşturulan `.tf` config dosyalarının listelendiğini doğrulamak için `ls` komutunu çalıştırın:
 
     ![Terrayform demo yapılandırma dosyaları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
@@ -73,7 +70,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
     
     !["Terrayform init" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-init.png)
     
-1. Yürütmeden önce dağıtımın etkisini görmek için komutunuçalıştırın:`terraform plan`
+1. Yürütmeden önce dağıtımın etkisini görmek için `terraform plan` komutunu çalıştırın:
 
     ```bash
     terraform plan
@@ -87,7 +84,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
     terraform apply
     ```
     
-    Dağıtımı `yes` onaylamanız istendiğinde girin.
+    Dağıtımı onaylamanız istendiğinde `yes` girin.
 
     !["Terrayform Apply" komutunun örnek sonuçları](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-terraform-apply.png)
     
@@ -103,22 +100,22 @@ Bu bölümde, sanal şirket içi ortamdan hub VNet 'e bağlantının nasıl test
 
 1. **VM yerel hesabını kullanarak metin oturum açma**seçeneğinin yanında, **SSH** komutunu panoya kopyalayın.
 
-1. Bir Linux istemiyle çalıştırılabilen `ssh` simülasyonu yapılmış şirket içi ortama bağlanmak için. `on-prem.tf` Parametre dosyasında belirtilen parolayı kullanın.
+1. Linux isteminde, sanal şirket içi ortama bağlanmak için `ssh` çalıştırın. `on-prem.tf` parametre dosyasında belirtilen parolayı kullanın.
 
-1. Hub VNET 'teki sıçrama kutusu VM 'sine bağlantıyı sınamak için komutunuçalıştırın:`ping`
+1. Hub VNet 'teki sıçrama kutusu VM 'sine bağlantıyı sınamak için `ping` komutunu çalıştırın:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Her bir bağlı bileşen içindeki sıçrama kutusu VM 'lerine bağlantıyı sınamak için komutunuçalıştırın:`ping`
+1. Her bir bağlı bileşen içindeki sıçrama kutusu VM 'lerine bağlantıyı sınamak için `ping` komutunu çalıştırın:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. **Onpree-VM** sanal makinesindeki `exit` SSH oturumundan çıkmak için girin ve ENTER 'a basın &lt;>.
+1. **Onpree-VM** sanal makinesindeki SSH oturumundan çıkmak için `exit` girin ve > Enter &lt;tuşuna basın.
 
 ## <a name="troubleshoot-vpn-issues"></a>VPN sorunlarını giderme
 
@@ -134,7 +131,7 @@ Artık gerekli değilse, öğretici serisinde oluşturulan kaynakları silin.
     terraform destroy
     ```
 
-    Kaynakların `yes` kaldırılmasını onaylamanız istendiğinde girin.
+    Kaynakların kaldırılmasını onaylamanız istendiğinde `yes` girin.
 
 1. Dizinleri üst dizinle değiştirin:
 
@@ -142,7 +139,7 @@ Artık gerekli değilse, öğretici serisinde oluşturulan kaynakları silin.
     cd ..
     ```
 
-1. `hub-scope` Dizini silin (tüm dosyaları dahil):
+1. `hub-scope` dizinini silin (tüm dosyaları dahil):
 
     ```bash
     rm -r hub-spoke

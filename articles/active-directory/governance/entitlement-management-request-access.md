@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389080"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990721"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketine erişim isteme
 
@@ -58,12 +58,13 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 
 1. Listede erişim paketini bulun.  Gerekirse, arama dizesi yazarak ve ardından **ad**, **Katalog**veya **kaynaklar** filtresini seçerek arama yapabilirsiniz.
 
-    ![Erişim Portalı-kaynak arama](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![Erişim Portalı-kaynak arama](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. Erişim paketini seçmek için onay işaretine tıklayın.
 
-    ![Erişim Portalı-erişim paketlerim](./media/entitlement-management-shared/my-access-access-packages.png)
-
 1. Istek erişimi bölmesini açmak için **erişim iste** ' ye tıklayın.
+
+    ![Erişim Portalı-erişim paketlerim](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. **İş gerekçe** kutusu görüntüleniyorsa, erişim gereksinimi için bir gerekçe yazın.
 
@@ -78,6 +79,12 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 1. İsteklerinizin ve durumun listesini görmek için **istek geçmişi** ' ne tıklayın.
 
     Erişim paketi onay gerektiriyorsa, istek artık bekleyen bir onay durumundadır.
+
+### <a name="select-a-policy"></a>İlke seçme
+
+Uygulanan birden çok ilkeye sahip bir erişim paketine erişim isteğinde karşılaşırsanız, bir ilke seçmeniz istenebilir. Örneğin, bir erişim paketi Yöneticisi iki dahili çalışan grubu için iki ilkeye sahip bir erişim paketi yapılandırabilir. İlk ilke 60 gün boyunca erişime izin verebilir ve onay gerektirebilir. İkinci ilke 2 gün boyunca erişime izin verebilir ve onay gerektirmez. Bu senaryoyla karşılaşırsanız, kullanmak istediğiniz ilkeyi seçmeniz gerekir.
+
+![Erişim Portalı-erişim ıste-birden çok ilke](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>İsteği iptal et
 
@@ -94,12 +101,6 @@ Bir erişim isteği gönderirseniz ve istek hala **Bekleyen onay** durumundaysa,
     ![Erişim Portalı-isteği Iptal et](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. İsteğin iptal edildiğini onaylamak için **istek geçmişi** ' ne tıklayın.
-
-## <a name="select-a-policy"></a>İlke seçme
-
-Uygulanan birden çok ilkeye sahip bir erişim paketine erişim isteğinde bulunduğunuzu seçerseniz, bir ilke seçmeniz istenebilir. Örneğin, bir erişim paketi Yöneticisi iki dahili çalışan grubu için iki ilkeye sahip bir erişim paketi yapılandırabilir. İlk ilke 60 gün boyunca erişime izin verebilir ve onay gerektirebilir. İkinci ilke 2 gün boyunca erişime izin verebilir ve onay gerektirmez. Bu senaryoyla karşılaşırsanız, kullanmak istediğiniz ilkeyi seçmeniz gerekir.
-
-**Önkoşul rolü:** Sahibinin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

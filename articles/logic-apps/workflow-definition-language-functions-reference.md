@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679033"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968929"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps ve Microsoft Flow için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -252,7 +252,7 @@ Her işlev hakkında tam başvuru için [alfabetik listeye](../logic-apps/workfl
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Bir eylemin birden çok parçaya sahip olan çıkışında belirli bir bölümün gövdesini döndürün. |
 | [çıkışı](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Çalışma zamanında bir eylemin çıktısını döndürün. |
 | [parametreler](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | İş akışı tanımınızda açıklanan parametre için değeri döndürün. |
-| [kaynaklanan](../logic-apps/workflow-definition-language-functions-reference.md#result) | @No__t_0, `Until` ve `Scope` gibi belirtilen kapsamlı eylem içindeki tüm eylemlerin giriş ve çıkışlarını geri döndürün. |
+| [kaynaklanan](../logic-apps/workflow-definition-language-functions-reference.md#result) | `For_each`, `Until`ve `Scope`gibi belirtilen kapsamlı eylem içindeki tüm eylemlerin giriş ve çıkışlarını geri döndürün. |
 | [Tetikleyicinin](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Çalışma zamanında bir tetikleyicinin çıkışını veya diğer JSON ad ve değer çiftlerinden döndürün. Ayrıca bkz. [Triggerçıktılar](#triggerOutputs) ve [triggerbody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Çalışma zamanında tetikleyicinin `body` çıkışını döndürün. Bkz. [tetikleyici](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *Form-Data* veya *form kodlu* tetikleyici çıktılarında anahtar adı ile eşleşen tek bir değer döndürür. |
@@ -310,7 +310,7 @@ Bu bölüm, tüm kullanılabilir işlevleri alfabetik sırayla listeler.
 Varsayılan olarak, bu işlev tüm eylem nesnesine başvurur, ancak isteğe bağlı olarak değerini istediğiniz bir özelliği belirtebilirsiniz.
 Ayrıca bkz. [Eylemler ()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
-@No__t_0 işlevini yalnızca şu konumlarda kullanabilirsiniz:
+`action()` işlevini yalnızca şu konumlarda kullanabilirsiniz:
 
 * Bir Web kancası eyleminin `unsubscribe` özelliği, sonucu özgün `subscribe` isteğinden erişebilirsiniz
 * Bir eylem için `trackedProperties` özelliği
@@ -336,7 +336,7 @@ action().outputs.body.<property>
 ### <a name="actionbody"></a>actionBody
 
 Çalışma zamanında bir eylemin `body` çıkışını döndürün.
-@No__t_0 için toplu değer.
+`actions('<actionName>').outputs.body`için toplu değer.
 Bkz. [body ()](#body) ve [Actions ()](#actions).
 
 ```
@@ -382,7 +382,7 @@ Ve şu sonucu döndürür:
 
 ### <a name="actionoutputs"></a>Actionçıktılar
 
-Çalışma zamanında bir eylemin çıktısını döndürün.  `actions('<actionName>').outputs` için de toplu olur. Bkz. [Eylemler ()](#actions). @No__t_0 işlevi, Logic App Designer 'daki `outputs()` çözümleniyor, bu nedenle `actionOutputs()` yerine [çıktılar ()](#outputs)kullanmayı düşünün. Her iki işlev de aynı şekilde çalışır, ancak `outputs()` tercih edilir.
+Çalışma zamanında bir eylemin çıktısını döndürün.  `actions('<actionName>').outputs` için de toplu olur. Bkz. [Eylemler ()](#actions). `actionOutputs()` işlevi, Logic App Designer 'daki `outputs()` çözümleniyor, bu nedenle `actionOutputs()`yerine [çıktılar ()](#outputs)kullanmayı düşünün. Her iki işlev de aynı şekilde çalışır, ancak `outputs()` tercih edilir.
 
 ```
 actionOutputs('<actionName>')
@@ -451,7 +451,7 @@ Geçerli eylem için bkz. [eylem ()](#action).
 
 > [!NOTE]
 > Daha önce, bir eylemin başka bir eylemden gelen çıktıya göre çalıştığını belirtirken `actions()` işlevini veya `conditions` öğesini kullanabilirsiniz. Ancak, eylemler arasında açık bağımlılıkları bildirmek için, artık bağımlı eylemin `runAfter` özelliğini kullanmanız gerekir.
-> @No__t_0 özelliği hakkında daha fazla bilgi edinmek için bkz. [runAfter özelliği ile sorunları yakalama ve işleme](../logic-apps/logic-apps-workflow-definition-language.md).
+> `runAfter` özelliği hakkında daha fazla bilgi edinmek için bkz. [runAfter özelliği ile sorunları yakalama ve işleme](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ```
 actions('<actionName>')
@@ -491,7 +491,7 @@ add(<summand_1>, <summand_2>)
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2* > | Yes | Integer, float veya Mixed | Eklenecek numaralar |
+| <*summand_1*>, <*summand_2*> | Yes | Integer, float veya Mixed | Eklenecek numaralar |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
@@ -1035,7 +1035,7 @@ Ve şu sonucu döndürür:
 ### <a name="body"></a>bölümü
 
 Çalışma zamanında bir eylemin `body` çıkışını döndürün.
-@No__t_0 için toplu değer.
+`actions('<actionName>').outputs.body`için toplu değer.
 Bkz. [Actionbody ()](#actionBody) ve [Actions ()](#actions).
 
 ```
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
 | <*zaman damgası* > | Yes | Dize | Zaman damgasını içeren dize |
-| <*destinationTimeZone* > | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları hakkında daha fazla bilgi için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*destinationTimeZone* > | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
 | <*biçim* > | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
 | <*zaman damgası* > | Yes | Dize | Zaman damgasını içeren dize |
-| <*sourceTimeZone* > | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları hakkında daha fazla bilgi için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
-| <*destinationTimeZone* > | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları hakkında daha fazla bilgi için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
+| <*destinationTimeZone* > | Yes | Dize | Hedef saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
 | <*biçim* > | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
 | <*zaman damgası* > | Yes | Dize | Zaman damgasını içeren dize |
-| <*sourceTimeZone* > | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları hakkında daha fazla bilgi için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). |
+| <*sourceTimeZone* > | Yes | Dize | Kaynak saat diliminin adı. Saat dilimi adları için bkz. [Microsoft saat dilimi Dizin değerleri](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ancak saat dilimi adından noktalama işaretlerini kaldırmanız gerekebilir. |
 | <*biçim* > | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||
 
@@ -1574,7 +1574,7 @@ Ve şu sonucu döndürür: `74`
 ### <a name="decodebase64"></a>decodeBase64
 
 Base64 ile kodlanmış bir dize için dize sürümünü döndürün ve Base64 dizesinin etkin bir şekilde kodunu çözerek.
-@No__t_1 yerine [base64ToString ()](#base64ToString) kullanmayı düşünün.
+`decodeBase64()`yerine [base64ToString ()](#base64ToString) kullanmayı düşünün.
 Her iki işlev de aynı şekilde çalışır, ancak `base64ToString()` tercih edilir.
 
 ```
@@ -1606,7 +1606,7 @@ Ve şu sonucu döndürür: `"hello"`
 ### <a name="decodedatauri"></a>decodeDataUri
 
 Bir veri Tekdüzen Kaynak tanımlayıcısı (URI) için ikili sürüm döndürün.
-@No__t_1 yerine [Datauritobinary ()](#dataUriToBinary)kullanmayı düşünün.
+`decodeDataUri()`yerine [Datauritobinary ()](#dataUriToBinary)kullanmayı düşünün.
 Her iki işlev de aynı şekilde çalışır, ancak `dataUriToBinary()` tercih edilir.
 
 ```
@@ -1706,7 +1706,7 @@ Ve şu sonucu döndürür: `2`
 ### <a name="encodeuricomponent"></a>encodeURIComponent
 
 URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek dize için Tekdüzen Kaynak tanımlayıcısı (URI) kodlu bir sürüm döndürün.
-@No__t_1 yerine [URIComponent ()](#uriComponent)kullanmayı düşünün.
+`encodeUriComponent()`yerine [URIComponent ()](#uriComponent)kullanmayı düşünün.
 Her iki işlev de aynı şekilde çalışır, ancak `uriComponent()` tercih edilir.
 
 ```
@@ -3318,7 +3318,7 @@ Güncelleştirilmiş JSON nesnesi şu şekildedir:
 
 ### <a name="result"></a>Kaynaklanan
 
-@No__t_0, `Until` veya `Scope` eylemi gibi, belirtilen kapsamlı eylem içindeki tüm eylemlerden gelen giriş ve çıkışları geri döndürün. Bu işlev, özel durumları tanılamanıza ve işleyebilmeniz için başarısız bir eylemden sonuçları döndürmektir. Daha fazla bilgi için bkz. [Içerik al ve hatalara yönelik sonuçlar](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+`For_each`, `Until`veya `Scope` eylemi gibi, belirtilen kapsamlı eylem içindeki tüm eylemlerden gelen giriş ve çıkışları geri döndürün. Bu işlev, özel durumları tanılamanıza ve işleyebilmeniz için başarısız bir eylemden sonuçları döndürmektir. Daha fazla bilgi için bkz. [Içerik al ve hatalara yönelik sonuçlar](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -4017,7 +4017,7 @@ trigger()
 ### <a name="triggerbody"></a>triggerBody
 
 Çalışma zamanında tetikleyicinin `body` çıkışını döndürün.
-@No__t_0 için toplu değer.
+`trigger().outputs.body`için toplu değer.
 Bkz. [Tetikleyici ()](#trigger).
 
 ```
@@ -4115,7 +4115,7 @@ triggerMultipartBody(<index>)
 ### <a name="triggeroutputs"></a>triggerOutputs
 
 Çalışma zamanında tetikleyicinin çıkışını veya diğer JSON ad ve-değer çiftleriyle değerleri döndürün.
-@No__t_0 için toplu değer.
+`trigger().outputs`için toplu değer.
 Bkz. [Tetikleyici ()](#trigger).
 
 ```
@@ -4298,7 +4298,7 @@ uriHost('<uri>')
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı* > | Yes | Dize | @No__t_0 değerini istediğiniz URI |
+| <*urı* > | Yes | Dize | `host` değerini istediğiniz URI |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
@@ -4328,12 +4328,12 @@ uriPath('<uri>')
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı* > | Yes | Dize | @No__t_0 değerini istediğiniz URI |
+| <*urı* > | Yes | Dize | `path` değerini istediğiniz URI |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Path-değer* > | Dize | Belirtilen URI için `path` değeri. @No__t_0 bir değere sahip değilse, "/" karakterini döndürün. |
+| <*Path-değer* > | Dize | Belirtilen URI için `path` değeri. `path` bir değere sahip değilse, "/" karakterini döndürün. |
 ||||
 
 *Örnek*
@@ -4358,12 +4358,12 @@ uriPathAndQuery('<uri>')
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı* > | Yes | Dize | @No__t_0 ve `query` değerlerini istediğiniz URI |
+| <*urı* > | Yes | Dize | `path` ve `query` değerlerini istediğiniz URI |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Path-Query-value* > | Dize | Belirtilen URI için `path` ve `query` değerleri. @No__t_0 bir değer belirtmezse, "/" karakterini döndürün. |
+| <*Path-Query-value* > | Dize | Belirtilen URI için `path` ve `query` değerleri. `path` bir değer belirtmezse, "/" karakterini döndürün. |
 ||||
 
 *Örnek*
@@ -4388,12 +4388,12 @@ uriPort('<uri>')
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı* > | Yes | Dize | @No__t_0 değerini istediğiniz URI |
+| <*urı* > | Yes | Dize | `port` değerini istediğiniz URI |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*bağlantı noktası-değer* > | Tamsayı | Belirtilen URI için `port` değeri. @No__t_0 bir değer belirtmezse, protokol için varsayılan bağlantı noktasını döndürün. |
+| <*bağlantı noktası-değer* > | Tamsayı | Belirtilen URI için `port` değeri. `port` bir değer belirtmezse, protokol için varsayılan bağlantı noktasını döndürün. |
 ||||
 
 *Örnek*
@@ -4418,7 +4418,7 @@ uriQuery('<uri>')
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı* > | Yes | Dize | @No__t_0 değerini istediğiniz URI |
+| <*urı* > | Yes | Dize | `query` değerini istediğiniz URI |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
@@ -4448,7 +4448,7 @@ uriScheme('<uri>')
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*urı* > | Yes | Dize | @No__t_0 değerini istediğiniz URI |
+| <*urı* > | Yes | Dize | `scheme` değerini istediğiniz URI |
 |||||
 
 | Dönüş değeri | Tür | Açıklama |
@@ -4664,7 +4664,7 @@ Bağımsız değişkenler şunlardır:
 
   `"/produce/item/name"`
 
-@No__t_0 eşleşen düğümleri içeren sonuç dizisi aşağıda verilmiştir:
+`<name></name`eşleşen düğümleri içeren sonuç dizisi aşağıda verilmiştir:
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
@@ -4702,7 +4702,7 @@ Bağımsız değişkenler şunlardır:
 
   * `/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]`
 
-@No__t_0 düğümle eşleşen sonuç düğümü aşağıda verilmiştir:
+`<location></location>` düğümle eşleşen sonuç düğümü aşağıda verilmiştir:
 
 ```xml
 <location xmlns="https://contoso.com">Paris</location>

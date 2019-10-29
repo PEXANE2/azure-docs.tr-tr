@@ -3,21 +3,20 @@ title: Azure Time Series Insights ortamınızı ölçeklendirme | Microsoft Docs
 description: Bu makalede Azure Time Series Insights ortamınızın nasıl ölçeklendiriyapılacağı açıklanır. Fiyatlandırma SKU 'sunda kapasite eklemek veya çıkarmak için Azure portal kullanın.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332869"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991148"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights ortamınızı ölçeklendirme
 
@@ -27,21 +26,9 @@ Belirli bir fiyatlandırma SKU 'SU içindeki kapasiteyi artırmak veya azaltmak 
 
 Ancak, fiyatlandırma katmanı SKU 'sunda değişiklik yapılmasına izin verilmez. Örneğin, S1 fiyatlandırma SKU 'SU olan bir ortam S2 'e dönüştürülemez veya tam tersi de geçerlidir.
 
-## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU giriş fiyatları ve kapasiteleri
+## <a name="ga-limits"></a>GA sınırları
 
-| S1 SKU kapasitesi | Giriş oranı | Maksimum depolama kapasitesi
-| --- | --- | --- |
-| 1 | 1 GB (1.000.000 olay) | ayda 30 GB (30.000.000 olay) |
-| 10 | 10 GB (10.000.000 olay) | ayda 300 GB (300.000.000 olay) |
-
-## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 SKU giriş fiyatları ve kapasiteleri
-
-| S2 SKU kapasitesi | Giriş oranı | Maksimum depolama kapasitesi
-| --- | --- | --- |
-| 1 | 10 GB (10.000.000 olay) | ayda 300 GB (300.000.000 olay) |
-| 10 | 100 GB (100.000.000 olay) | ayda 3 TB (3.000.000.000 olay) |
-
-Kapasitelerin ölçeği doğrusal olarak, kapasite 2 ' ye sahip bir S1 SKU 'SU her gün giriş oranı ve 60 GB (60.000.000 olay) için 2 GB (2.000.000) olay destekler.
+[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
 ## <a name="change-the-capacity-of-your-environment"></a>Ortamınızın kapasitesini değiştirme
 
@@ -49,11 +36,11 @@ Kapasitelerin ölçeği doğrusal olarak, kapasite 2 ' ye sahip bir S1 SKU 'SU h
 
 1. Time Series Insights ortamınızın menüsünde **Yapılandır**' ı seçin.
 
-   [@no__t -1. png 'yi Yapılandır](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![. png 'yi yapılandırma](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
 1. Giriş hızlarınız ve depolama kapasiteniz için gereksinimleri karşılayan kapasiteyi seçmek için **Kapasite** kaydırıcısını ayarlayın. Değişikliğin etkisini göstermek için, giriş **oranına**, **depolama kapasitesine**ve **Tahmini maliyet** güncelleştirmesine dinamik olarak dikkat edin.
 
-   [![Kaydırıcı](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![kaydırıcı](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    Alternatif olarak, kaydırıcının sağ tarafındaki metin kutusuna kapasite çarpanı sayısını yazabilirsiniz.
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/28/2019
+ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105462"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991343"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Apache ambarı Web Kullanıcı arabirimi, JobHistory, süs Yot, Apache Oozie ve diğer Uıto 'a erişmek için SSH tüneli kullanın
 
@@ -56,10 +56,10 @@ Kümenizi özelleştirmek için betik eylemleri kullanıyorsanız, yüklediğini
 
 ## <a name="usessh"></a>SSH komutunu kullanarak bir tünel oluşturma
 
-`ssh` Komutunu kullanarak bir SSH tüneli oluşturmak için aşağıdaki komutu kullanın. HDInsight kümeniz için bir SSH kullanıcısı `clustername` iledeğiştirinveöğesiniHDInsightkümenizinadıyladeğiştirin:`sshuser`
+`ssh` komutunu kullanarak bir SSH tüneli oluşturmak için aşağıdaki komutu kullanın. `sshuser` HDInsight kümeniz için bir SSH kullanıcısı ile değiştirin ve `CLUSTERNAME`, HDInsight kümenizin adıyla değiştirin:
 
 ```cmd
-ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 ```
 
 Bu komut, trafiği SSH üzerinden kümeye yerel bağlantı noktası 9876 ' e yönlendiren bir bağlantı oluşturur. Seçenekler şunlardır:
@@ -77,18 +77,21 @@ Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına g
 
 ## <a name="useputty"></a>PuTTY kullanarak bir tünel oluşturma
 
-[Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) , Windows için BIR grafik SSH istemcsahiptir. PuTTY 'yi tanımıyorsanız, [Putty belgelerine](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)bakın. PuTTY kullanarak bir SSH tüneli oluşturmak için aşağıdaki adımları kullanın:
+[Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) , Windows için BIR grafik SSH istemcsahiptir. PuTTY hakkında bilginiz yoksa, [Putty belgelerine](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)bakın. PuTTY kullanarak bir SSH tüneli oluşturmak için aşağıdaki adımları kullanın:
 
 ### <a name="create-or-load-a-session"></a>Oturum oluşturma veya yükleme
 
 1. PuTTY ' i açın ve sol menüde **oturum** ' nin seçili olduğundan emin olun. Zaten bir oturum kaydettiyseniz, **kaydedilen oturumlar** listesinden oturum adı ' nı seçin ve **Yükle**' yi seçin.
 
 1. Zaten kaydedilmiş bir oturumunuz yoksa, bağlantı bilgilerinizi girin:
-    * **Ana bilgisayar adı (veya IP adresi)** -HDInsight KÜMESI için SSH adresi. Örneğin, **MyCluster-SSH.azurehdinsight.net**
-    * **Bağlantı noktası** -22
-    * **Bağlantı türü** -SSH
 
-1. Seçin **Kaydet**
+    |Özellik |Değer |
+    |---|---|
+    |Ana bilgisayar adı (veya IP adresi)|HDInsight kümesi için SSH adresi. Örneğin, **mycluster-ssh.azurehdinsight.net**.|
+    |Bağlantı noktası|22|
+    |Bağlantı türü|SSH|
+
+1. **Kaydet**’i seçin
 
     ![HDInsight Putty oturumu oluştur](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
@@ -96,15 +99,15 @@ Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına g
 
 1. **SSH bağlantı noktası iletme formunu denetleyen seçenekler** hakkında aşağıdaki bilgileri sağlayın:
 
-   * **Kaynak bağlantı noktası** - İletmek istediğiniz istemci üzerindeki bağlantı noktası. Örneğin, **9876**.
+    |Özellik |Değer |
+    |---|---|
+    |Kaynak bağlantı noktası|İletmek istediğiniz istemcideki bağlantı noktası. Örneğin, **9876**.|
+    |Hedef|HDInsight kümesi için SSH adresi. Örneğin, **mycluster-ssh.azurehdinsight.net**.|
+    |Dinamik|Dinamik SOCKS proxy yönlendirmesi etkinleştirilir.|
 
-   * **Destination** -HDInsight KÜMESI için SSH adresi. Örneğin, **mycluster-ssh.azurehdinsight.net**.
+    ![PuTTY yapılandırma tünel oluşturma seçenekleri](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-   * **Dinamik** - Dinamik SOCKS proxy yönlendirmesini etkinleştirir.
-
-     ![PuTTY yapılandırma tünel oluşturma seçenekleri](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
-
-1. Ayarları eklemek için **Ekle** ' yi seçin ve ardından bir SSH bağlantısı açmak için **Aç** ' a tıklayın.
+1. Ayarları eklemek için **Ekle** ' yi seçin ve ardından bir SSH bağlantısı açmak için **Aç** ' ı seçin.
 
 1. İstendiğinde, sunucusunda oturum açın.
 
@@ -120,16 +123,16 @@ Komut bittikten sonra, yerel bilgisayarda 9876 numaralı bağlantı noktasına g
    > [!NOTE]  
    > **Uzak DNS** seçildiğinde, HDInsight kümesini kullanarak etki alanı adı SISTEMI (DNS) istekleri çözümlenir. Bu ayar, kümenin baş düğümünü kullanarak DNS 'i çözer.
 
-2. Tünelin, gibi bir siteyi [https://www.whatismyip.com/](https://www.whatismyip.com/)ziyaret ederek çalıştığını doğrulayın. Döndürülen IP Microsoft Azure veri merkezi tarafından kullanılan bir tane olmalıdır.
+2. [https://www.whatismyip.com/](https://www.whatismyip.com/)gibi bir siteyi ziyaret ederek tünelin çalıştığını doğrulayın. Döndürülen IP Microsoft Azure veri merkezi tarafından kullanılan bir tane olmalıdır.
 
 ## <a name="verify-with-ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi ile doğrulama
 
 Küme kurulduktan sonra, aşağıdaki adımları kullanarak hizmet Web Hizmetleri 'ni ambarı Web sitesinden erişebildiğinizi doğrulayın:
 
-1. Tarayıcınızda öğesine `http://headnodehost:8080`gidin. `headnodehost` Adres, kümeye tünel üzerinden gönderilir ve ambarı 'nın üzerinde çalıştığı baş düğüme çözümlenir. İstendiğinde, kümeniz için Yönetici Kullanıcı adı 'nı (yönetici) ve parolayı girin. Ambarı Web Kullanıcı arabirimi ile ikinci bir kez sorulabilir. Öyleyse, bilgileri yeniden girin.
+1. Tarayıcınızda `http://headnodehost:8080`' a gidin. `headnodehost` adresi kümeye tünel üzerinden gönderilir ve ambarı 'nın üzerinde çalıştığı baş düğüme çözümlenir. İstendiğinde, kümeniz için Yönetici Kullanıcı adı 'nı (yönetici) ve parolayı girin. Ambarı Web Kullanıcı arabirimi ile ikinci bir kez sorulabilir. Öyleyse, bilgileri yeniden girin.
 
    > [!NOTE]  
-   > Kümeye bağlanmak için `http://headnodehost:8080` adresi kullanırken tünelden bağlanıyorsunuz. İletişim, HTTPS yerine SSH tüneli kullanılarak güvenli hale getirilir. HTTPS kullanarak internet üzerinden bağlanmak için, ' ı `https://clustername.azurehdinsight.net`kullanın, `clustername` burada kümenin adıdır.
+   > Kümeye bağlanmak için `http://headnodehost:8080` adresini kullanırken tünelden bağlanıyorsunuz. İletişim, HTTPS yerine SSH tüneli kullanılarak güvenli hale getirilir. HTTPS kullanarak Internet üzerinden bağlanmak için `https://clustername.azurehdinsight.net`kullanın; burada `clustername` kümenin adıdır.
 
 2. Ambarı web kullanıcı arabiriminden, sayfanın solundaki listeden, "öğesini seçin.
 
@@ -149,10 +152,10 @@ Küme kurulduktan sonra, aşağıdaki adımları kullanarak hizmet Web Hizmetler
     ![Hadoop süs Code Kullanıcı arabiriminin görüntüsü](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
     > [!NOTE]  
-    > Bu sayfanın URL 'sine dikkat edin; Şuna benzer `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`olmalıdır. Bu URI, düğümün dahili tam etki alanı adını (FQDN) kullanıyor ve yalnızca bir SSH tüneli kullanılırken erişilebilir.
+    > Bu sayfanın URL 'sine dikkat edin; `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`benzer olmalıdır. Bu URI, düğümün dahili tam etki alanı adını (FQDN) kullanıyor ve yalnızca bir SSH tüneli kullanılırken erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SSH tüneli oluşturmayı ve kullanmayı öğrendiğinize göre, ambarı kullanmanın diğer yolları için aşağıdaki belgeye bakın:
+Bir SSH tüneli oluşturma ve kullanma hakkında bilgi edindiğinize göre, ambarı kullanmanın diğer yolları için aşağıdaki belgeye bakın:
 
 * [Apache ambarı kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md)

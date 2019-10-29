@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309385"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990547"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
 
@@ -33,7 +33,7 @@ Bu tablolar, kullanabileceğiniz veri işlemlerini özetler ve işlemlerin üzer
 
 Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 
-| Action | Açıklama |
+| Eylem | Açıklama |
 |--------|-------------|
 | [**CSV tablosu oluştur**](#create-csv-table-action) | Bir diziden bir virgülle ayrılmış değer (CSV) tablosu oluşturun. |
 | [**HTML tablosu oluştur**](#create-html-table-action) | Diziden bir HTML tablosu oluşturun. |
@@ -46,7 +46,7 @@ Bu eylemler, dizilerde verilerle çalışmanıza yardımcı olur.
 
 Bu eylemler JavaScript Nesne Gösterimi (JSON) biçimindeki verilerle çalışmanıza yardımcı olur.
 
-| Action | Açıklama |
+| Eylem | Açıklama |
 |--------|-------------|
 | [**İletinizi**](#compose-action) | Çeşitli veri türlerine sahip olan birden fazla girişe bir ileti veya dize oluşturun. Daha sonra bu dizeyi, aynı girdileri tekrar tekrar girmek yerine tek bir girdi olarak kullanabilirsiniz. Örneğin, çeşitli girdilerden tek bir JSON iletisi oluşturabilirsiniz. |
 | [**JSON Ayrıştır**](#parse-json-action) | Mantıksal uygulamalarınızda özellikleri daha kolay kullanabilmek için JSON içeriğindeki özellikler için Kullanıcı dostu veri belirteçleri oluşturun. |
@@ -60,7 +60,7 @@ Daha karmaşık JSON dönüştürmeleri oluşturmak için bkz. [sıvı şablonla
 
 * Verilerle çalışmaya yönelik işlemin gerekli olduğu mantıksal uygulama
 
-  Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md) gözden geçirin ve [hızlı başlangıç: İlk mantıksal uygulamanızı](../logic-apps/quickstart-create-first-logic-app-workflow.md)oluşturun.
+  Logic Apps 'e yeni başladıysanız, [Azure Logic Apps nedir?](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin.
 
 * Mantıksal uygulamanızda ilk adım olarak bir [tetikleyici](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
@@ -80,23 +80,23 @@ ve bu çıktıyı oluşturur:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu adımları izleyin. Ya da kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, bu makaledeki örnek **oluşturma** ve **değişken** eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına kopyalayabilirsiniz: [Veri işlemi kodu örnekleri-oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu adımları izleyin. Ya da kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, bu makaledeki örnek **oluşturma** ve **değişken** eylem tanımlarını, kendi mantıksal uygulamanızın temel alınan iş akışı tanımına kopyalayabilir ve kullanabilirsiniz: [veri işlemi kodu örnekleri- Oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek Azure portal ve bir mantıksal uygulamayı **yineleme** tetikleyicisi ve birkaç **değişken başlatma** eylemi ile kullanır. Bu eylemler iki dize değişkeni ve bir tamsayı değişkeni oluşturmak için ayarlanır. Mantıksal uygulamanızı daha sonra test ettiğinizde, tetikleyicinin tetiklenmesi gerekmeden uygulamanızı el ile çalıştırabilirsiniz.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   !["Oluşturma" eylemi için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
 1. Çıktıyı oluşturmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin: 
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     !["Oluştur" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `compose` . Eylemler listesinden, **oluşturma** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak `compose` girin. Eylemler listesinden, **oluşturma** eylemini seçin.
 
    !["Oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -104,11 +104,11 @@ Bir örnek denemek için, mantıksal uygulama Tasarımcısı ' nı kullanarak bu
 
    Bu örnekte, **girişler** kutusunun içine tıkladığınızda, daha önce oluşturulan değişkenleri seçebilmeniz için dinamik içerik listesi görüntülenir:
 
-   ![Oluşturmak için girdileri seçin](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   !["Oluştur" eylemi için kullanılacak girdileri seçin](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
    İşte tamamlanan örnek **oluşturma** eylemi: 
 
-   !["Oluştur" eylemi bitti](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   !["Oluşturma" eylemi için tamamlanmış örnek](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -124,7 +124,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Bu örnek **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde ve konusunun **Çıkış** alanlarını içerir:
 
-   !["E-posta gönder" eyleminde "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   !["Oluşturma" eylemi için "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
 1. Şimdi mantıksal uygulamanızı el ile çalıştırın. Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
@@ -138,23 +138,23 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 Bir dizideki JavaScript Nesne Gösterimi (JSON) nesnelerinden Özellikler ve değerler içeren bir virgülle ayrılmış değer (CSV) tablosu oluşturmak için **CSV tablosu oluşturma** eylemini kullanın. Daha sonra, sonuç tablosunu **CSV tablosu oluşturma** eylemini izleyen eylemlerde kullanabilirsiniz.
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **CSV tablosu oluştur** ' u kopyalayabilir ve **değişken** eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına atayabilirsiniz: [Veri işlemi kodu örnekleri-CSV tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **CSV tablosu oluştur** ' u kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri- CSV tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek Azure portal ve bir mantıksal uygulamayı **yineleme** tetikleyicisi ve bir **değişken Başlat** eylemiyle kullanır. Eylem, ilk değeri JSON biçiminde bazı özellikler ve değerler içeren bir dizi olan bir değişken oluşturmak için ayarlanır. Mantıksal uygulamanızı daha sonra test ettiğinizde, tetikleyicinin tetiklenmesi gerekmeden uygulamanızı el ile çalıştırabilirsiniz.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   !["CSV tablosu oluşturma" eylemi için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. CSV tablosunu oluşturmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin: 
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     !["CSV tablosu oluşturma" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `create csv table` . Eylemler listesinden **CSV tablosu oluştur** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak `create csv table` girin. Eylemler listesinden **CSV tablosu oluştur** eylemini seçin.
 
    !["CSV tablosu oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -169,7 +169,7 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
    İşte tamamlanan örnek **CSV tablosu oluşturma** eylemi: 
 
-   !["CSV tablosu oluşturma" eylemi bitti](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
+   !["CSV tablosu oluşturma" eylemi için tamamlanmış örnek](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -183,7 +183,7 @@ Varsayılan olarak, **Columns** özelliği, dizi öğelerine göre tablo sütunl
 
 1. **Değer** özelliğinde, bunun yerine kullanılacak özel değeri belirtin.
 
-Diziden değer döndürmek için, bu [ `item()` işlevi](../logic-apps/workflow-definition-language-functions-reference.md#item) **CSV tablosu oluşturma** eylemiyle birlikte kullanabilirsiniz. Bir `For_each` döngüde, [ `items()` işlevini](../logic-apps/workflow-definition-language-functions-reference.md#items)kullanabilirsiniz.
+Diziden değer döndürmek için, [`item()` IŞLEVINI](../logic-apps/workflow-definition-language-functions-reference.md#item) **CSV tablosu oluşturma** eylemiyle birlikte kullanabilirsiniz. `For_each` döngüsünde, [`items()` işlevi](../logic-apps/workflow-definition-language-functions-reference.md#items)kullanabilirsiniz.
 
 Örneğin, bir dizideki özellik adlarını değil, yalnızca özellik değerlerine sahip tablo sütunlarının istediğinizi varsayalım. Yalnızca bu değerleri döndürmek için, tasarımcı görünümünde veya kod görünümünde çalışmak üzere bu adımları izleyin. Bu örnekte döndürülen sonuç aşağıda verilmiştir:
 
@@ -204,30 +204,30 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
    `item()?['<array-property-name>']`
 
-   Örneğin:
+   Örnek:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![Başvuru özelliğinin ifadesi](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+   !["CSV tablosu oluşturma" için "Description" başvurusu](./media/logic-apps-perform-data-operations/csv-table-expression.png)
 
 1. İstediğiniz her dizi özelliği için önceki adımları tekrarlayın. İşiniz bittiğinde, eyleminiz Şu örneğe benzer şekilde görünür:
 
-   ![Tamamlanmış ifadeler](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+   !["CSV tablosu oluşturma" içindeki "item ()" işlevi](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
 
 1. İfadeleri daha açıklayıcı sürümlere dönüştürmek için, kod görünümüne geçin ve tasarımcı görünümüne dönün ve sonra daraltılan eylemi yeniden açın:
 
    **CSV tablosu oluştur** eylemi şu örnekte olduğu gibi görünür:
 
-   ![Çözümlenen ifadelerle "CSV tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["CSV tablosu oluşturma"-çözümlenen ifadeler, üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 #### <a name="work-in-code-view"></a>Kod görünümünde çalışma
 
-Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
+Eylemin JSON tanımında, `columns` dizisinin içinde, `header` özelliğini boş bir dize olarak ayarlayın. Her bir `value` özelliği için istediğiniz her bir dizi özelliğine başvuru yapın.
 
 1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin.
 
-1. Kod düzenleyicisinde, eylemin `columns` dizisinde, istediğiniz dizi değerlerinin her sütunu için boş `header` özelliği ve bu `value` ifadeyi ekleyin:
+1. Kod düzenleyicisinde, eylemin `columns` dizisindeki boş `header` özelliğini ve istediğiniz dizi değerlerinin her sütunu için bu `value` ifadesini ekleyin:
 
    ```json
    {
@@ -236,7 +236,7 @@ Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir d
    }
    ```
 
-   Örneğin:
+   Örnek:
 
    ```json
    "Create_CSV_table": {
@@ -261,7 +261,7 @@ Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir d
 
    **CSV tablosu oluştur** eylemi şimdi bu örnekte olduğu gibi görünür ve ifadeler daha açıklayıcı sürümlere çözümlenmektedir:
 
-   ![Çözümlenen ifadelerle "CSV tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["CSV tablosu oluşturma"-çözümlenmiş ifadeler ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi için, bkz. [tablo eylemi](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -275,7 +275,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **Çıkış** alanını içerir:
 
-   !["E-posta gönder" eyleminde "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+   !["CSV tablosu oluşturma" eylemi için "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
 1. Şimdi mantıksal uygulamanızı el ile çalıştırın. Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
@@ -289,23 +289,23 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 Bir dizideki JavaScript Nesne Gösterimi (JSON) nesnelerinden Özellikler ve değerler içeren bir HTML tablosu oluşturmak için **HTML tablosu oluştur** eylemini kullanın. Daha sonra, sonuç tablosunu **HTML tablosu oluştur** eylemini izleyen eylemlerde kullanabilirsiniz.
 
-Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **HTML tablosu oluştur** ' u kopyalayabilir ve bu makaledeki değişken eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına **başlatabilirsiniz** : [Veri işlemi kodu örnekleri-HTML tablosu oluşturma](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **HTML tablosu oluştur** ' u kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri- HTML tablosu oluştur](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek Azure portal ve bir mantıksal uygulamayı **yineleme** tetikleyicisi ve bir **değişken Başlat** eylemiyle kullanır. Eylem, ilk değeri JSON biçiminde bazı özellikler ve değerler içeren bir dizi olan bir değişken oluşturmak için ayarlanır. Mantıksal uygulamanızı daha sonra test ettiğinizde, tetikleyicinin tetiklenmesi gerekmeden uygulamanızı el ile çalıştırabilirsiniz.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   !["HTML tablosu oluşturma" için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. Bir HTML tablosu oluşturmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin:
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     !["HTML tablosu oluşturma" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak girin `create html table` . Eylemler listesinden **HTML tablosu oluştur** eylemini seçin.
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak `create html table` girin. Eylemler listesinden **HTML tablosu oluştur** eylemini seçin.
 
    !["HTML tablosu oluştur" eylemini seçin](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -320,7 +320,7 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **H
 
    Aşağıda, tamamlanmış örnek **HTML tablosu oluşturma** eylemi verilmiştir:
 
-   !["HTML tablosu oluşturma" eylemi bitti](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
+   !["HTML tablosu oluşturma" için tamamlanmış örnek](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -334,7 +334,7 @@ Varsayılan olarak, **Columns** özelliği, dizi öğelerine göre tablo sütunl
 
 1. **Değer** özelliğinde, bunun yerine kullanılacak özel değeri belirtin.
 
-Diziden değer döndürmek için, [ `item()` işlevi](../logic-apps/workflow-definition-language-functions-reference.md#item) **HTML tablosu oluştur** eylemiyle birlikte kullanabilirsiniz. Bir `For_each` döngüde, [ `items()` işlevini](../logic-apps/workflow-definition-language-functions-reference.md#items)kullanabilirsiniz.
+Diziden değer döndürmek için, [`item()` IŞLEVINI](../logic-apps/workflow-definition-language-functions-reference.md#item) **HTML tablosu oluştur** eylemiyle birlikte kullanabilirsiniz. `For_each` döngüsünde, [`items()` işlevi](../logic-apps/workflow-definition-language-functions-reference.md#items)kullanabilirsiniz.
 
 Örneğin, bir dizideki özellik adlarını değil, yalnızca özellik değerlerine sahip tablo sütunlarının istediğinizi varsayalım. Yalnızca bu değerleri döndürmek için, tasarımcı görünümünde veya kod görünümünde çalışmak üzere bu adımları izleyin. Bu örnekte döndürülen sonuç aşağıda verilmiştir:
 
@@ -355,30 +355,30 @@ Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda,
 
    `item()?['<array-property-name>']`
 
-   Örneğin:
+   Örnek:
 
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![Başvuru özelliğinin ifadesi](./media/logic-apps-perform-data-operations/html-table-expression.png)
+   !["HTML tablosu oluşturma" eyleminde başvuru özelliği](./media/logic-apps-perform-data-operations/html-table-expression.png)
 
 1. İstediğiniz her dizi özelliği için önceki adımları tekrarlayın. İşiniz bittiğinde, eyleminiz Şu örneğe benzer şekilde görünür:
 
-   ![Tamamlanmış ifadeler](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+   !["HTML tablosu oluşturma" içindeki "item ()" işlevi](./media/logic-apps-perform-data-operations/finished-html-expression.png)
 
 1. İfadeleri daha açıklayıcı sürümlere dönüştürmek için, kod görünümüne geçin ve tasarımcı görünümüne dönün ve sonra daraltılan eylemi yeniden açın:
 
    **HTML tablosu oluştur** eylemi şu örnekte olduğu gibi görünür:
 
-   ![Çözümlenen ifadelerle "HTML tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["HTML tablosu oluşturma"-çözümlenen ifadeler, üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 #### <a name="work-in-code-view"></a>Kod görünümünde çalışma
 
-Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
+Eylemin JSON tanımında, `columns` dizisinin içinde, `header` özelliğini boş bir dize olarak ayarlayın. Her bir `value` özelliği için istediğiniz her bir dizi özelliğine başvuru yapın.
 
 1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin.
 
-1. Kod düzenleyicisinde, eylemin `columns` dizisinde, istediğiniz dizi değerlerinin her sütunu için boş `header` özelliği ve bu `value` ifadeyi ekleyin:
+1. Kod düzenleyicisinde, eylemin `columns` dizisindeki boş `header` özelliğini ve istediğiniz dizi değerlerinin her sütunu için bu `value` ifadesini ekleyin:
 
    ```json
    {
@@ -387,7 +387,7 @@ Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir d
    }
    ```
 
-   Örneğin:
+   Örnek:
 
    ```json
    "Create_HTML_table": {
@@ -412,7 +412,7 @@ Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir d
 
    **HTML tablosu oluştur** eylemi artık bu örnekte olduğu gibi görünür ve ifadeler daha açıklayıcı sürümlere çözümlenmektedir:
 
-   ![Çözümlenen ifadelerle "HTML tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["HTML tablosu oluşturma"-çözümlenen ifadeler ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi için, bkz. [tablo eylemi](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -426,8 +426,8 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **Çıkış** alanını içerir:
 
-   !["E-posta gönder" eyleminde "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
-   
+   !["HTML tablosu oluşturma" için "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+
    > [!NOTE]
    > HTML tablosu çıkışını bir e-posta eylemine dahil ettiğinizde, e-posta eyleminin gelişmiş seçeneklerinde **, HTML** özelliğini **Evet** olarak ayarladığınızdan emin olun. Bu şekilde, e-posta eylemi HTML tablosunu doğru şekilde biçimlendirir.
 
@@ -435,7 +435,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Kullandığınız e-posta bağlayıcısını temel alarak Alacağınız sonuçlar şunlardır:
 
-   !["HTML tablosu oluşturma" eylem sonuçlarıyla e-posta](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   !["HTML tablosu oluşturma" sonuçları ile e-posta](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
@@ -448,7 +448,7 @@ Belirli ölçütlere uyan öğeleri olan daha küçük bir dizi oluşturmak içi
 > 
 > Dizi çıktısını **filtre dizisi** eyleminde kullanmak için, bu eylemler dizileri girdi olarak kabul etmelidir ya da çıktı dizisini başka bir uyumlu biçime dönüştürmeniz gerekebilir.
 
-Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **filtre dizisini** kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [Veri işlemi kodu örnekleri-filtre dizisi](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **filtre dizisini** kopyalayabilir ve bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına değişken eylem tanımlarını **başlatabilirsiniz** : [veri işlemi kodu örnekleri- Diziyi filtrele](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
@@ -457,17 +457,17 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **f
    > [!NOTE]
    > Bu örnekte basit bir tamsayı dizisi kullanılsa da, bu eylem özellikle nesneleri özelliklerine ve değerlerine göre filtreleyebileceğiniz JSON nesne dizileri için yararlıdır.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   !["Diziyi filtrele" eylemi için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
 1. Filtrelenmiş diziyi oluşturmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin: 
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     !["Diziyi filtrele" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `filter array` . Eylemler listesinden, **diziyi filtrele** eylemini seçin.
+1. Arama kutusuna filtreniz olarak `filter array` girin. Eylemler listesinden, **diziyi filtrele** eylemini seçin.
 
    !["Diziyi filtrele" eylemini seçin](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -479,9 +479,9 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **f
 
 1. Koşul için, Karşılaştırılacak dizi öğelerini belirtin, karşılaştırma işlecini seçin ve karşılaştırma değerini belirtin.
 
-   Bu örnek, `item()` **filtre dizisi** eylemi, değeri birden büyük olan dizi öğelerini ararken dizideki her öğeye erişmek için işlevini kullanır:
-   
-   !["Diziyi filtrele" eylemi bitti](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+   Bu örnek dizideki her öğeye erişmek için `item()` işlevini kullanır, çünkü **filtre dizisi** eylemi, değeri birden büyük olan dizi öğelerini arar:
+
+   !["Diziyi filtrele" eylemi için tamamlanmış örnek](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -499,7 +499,7 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **Actionbody (' Filter_array ')** ifadesinden çıkışları içerir:
 
-   !["E-posta gönder" eyleminde eylem çıkışları](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   !["Diziyi filtrele" eyleminden eylem çıkışları](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
 1. Şimdi mantıksal uygulamanızı el ile çalıştırın. Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
@@ -513,25 +513,25 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 Bir dizideki tüm öğeleri içeren ve bu öğeleri belirli bir sınırlayıcı karakterle ayıran bir dize oluşturmak için, **JOIN** eylemini kullanın. Daha sonra bu dizeyi, **JOIN** eyleminden sonra gelen eylemler ' de kullanabilirsiniz.
 
-Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **katılmayı** kopyalayabilir ve **değişken** eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına atayabilirsiniz: [Veri işlemi kodu örnekleri-Birleştir](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **birleşimi** kopyalayabilir ve **değişken** eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına atayabilirsiniz: [veri işlemi kodu örnekleri-Birleştir](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek Azure portal ve bir mantıksal uygulamayı **yineleme** tetikleyicisi ve bir **değişken Başlat** eylemiyle kullanır. Bu eylem, ilk değeri bazı örnek tamsayılar içeren bir dizi olan bir değişken oluşturmak için ayarlanır. Mantıksal uygulamanızı daha sonra test ettiğinizde, tetikleyicinin tetiklenmesi beklemeden uygulamanızı el ile çalıştırabilirsiniz.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   !["JOIN" eylemi için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
 1. Bir diziden dize oluşturmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin:
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-join-action.png)
+     !["Yeni adım" eylemini "Birleştir" eylemi için seçin](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `join` . Eylemler listesinden şu eylemi seçin: **Birleştir**
+1. Arama kutusuna filtreniz olarak `join` girin. Eylemler listesinden şu eylemi seçin: **Birleştir**
 
-   !["Birleştir" eylemini seçin](./media/logic-apps-perform-data-operations/select-join-action.png)
+   !["Birleştir" eylemini seçin](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
 1. **Kimden** kutusunda, bir dize olarak birleştirmek istediğiniz öğeleri içeren diziyi belirtin.
 
@@ -559,13 +559,13 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde **Çıkış** alanını içerir:
 
-   !["E-posta gönder" eyleminde "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   !["JOIN" eylemi için "çıkış" alanları](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
 1. Şimdi mantıksal uygulamanızı el ile çalıştırın. Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 
    Kullandığınız e-posta bağlayıcısını temel alarak Alacağınız sonuçlar şunlardır:
 
-   !["JOIN" eylem sonuçlarıyla e-posta](./media/logic-apps-perform-data-operations/join-email-results.png)
+   !["JOIN" eylem sonuçlarıyla e-posta](./media/logic-apps-perform-data-operations/join-send-email-results.png)
 
 <a name="parse-json-action"></a>
 
@@ -573,23 +573,23 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
 JavaScript Nesne Gösterimi (JSON) içeriğindeki özelliklere başvurmak veya erişmek için, **JSON 'U Ayrıştır** eylemini kullanarak bu özellikler için Kullanıcı dostu alanlar veya belirteçler oluşturabilirsiniz. Bu şekilde, mantıksal uygulamanız için giriş belirttiğinizde bu özellikleri dinamik içerik listesinden seçebilirsiniz. Bu eylem için, bir JSON şeması sağlayabilir veya örnek JSON içeriğinizi ya da yükünüzü bir JSON şeması oluşturabilirsiniz.
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **JSON ayrışını** kopyalayabilir ve değişken eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına **başlatabilirsiniz** : [Veri işlemi kodu örnekleri-JSON ayrıştırma](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek **JSON ayrışını** kopyalayabilir ve değişken eylem tanımlarını bu makaleden kendi mantıksal uygulamanızın temel alınan iş akışı tanımına **başlatabilirsiniz** : [veri işlemi kodu örnekleri-Parse JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek Azure portal ve bir mantıksal uygulamayı **yineleme** tetikleyicisi ve bir **değişken Başlat** eylemiyle kullanır. Eylem, ilk değeri özellikleri ve değerleri içeren bir JSON nesnesi olan bir değişken oluşturmak için ayarlanır. Mantıksal uygulamanızı daha sonra test ettiğinizde, tetikleyicinin tetiklenmesi gerekmeden uygulamanızı el ile çalıştırabilirsiniz.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   !["JSON ayrıştırma" eylemi için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
 1. JSON içeriğini ayrıştırmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin:
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     !["JSON ayrıştırma" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak yazın `parse json` . Eylemler listesinden **JSON 'U Ayrıştır** eylemini seçin.
+1. Arama kutusuna filtreniz olarak `parse json` girin. Eylemler listesinden **JSON 'U Ayrıştır** eylemini seçin.
 
    !["JSON ayrıştırma" eylemini seçin](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -631,13 +631,13 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    Tamamlanan e-posta eylemi aşağıda verilmiştir:
 
-   ![Tamamlanan e-posta eylemi](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![E-posta eylemi için tamamlanmış örnek](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
 1. Şimdi mantıksal uygulamanızı el ile çalıştırın. Tasarımcı araç çubuğunda **Çalıştır**' ı seçin. 
 
    Kullandığınız e-posta bağlayıcısını temel alarak Alacağınız sonuçlar şunlardır:
 
-   !["JOIN" eylem sonuçlarıyla e-posta](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   !["JSON ayrıştırma" eylem sonuçlarıyla e-posta](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
@@ -648,23 +648,23 @@ Varolan bir dizideki değerlerden oluşturulan JSON nesnelerine sahip bir dizi o
 > [!NOTE]
 > **Seçim** eyleminin dizi çıktısını kullanması için, bu eylemler dizileri girdi olarak kabul etmelidir ya da çıktı dizisini başka bir uyumlu biçime dönüştürmeniz gerekebilir. 
 
-Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örneği kopyalayabilir** ve bu makaledeki **değişken** eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına ekleyebilirsiniz: [Veri işlemi kodu örnekleri-Seç](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örneği kopyalayabilir** ve bu makaledeki **değişken** eylem tanımlarını kendi mantıksal uygulamanızın temel alınan iş akışı tanımına ekleyebilirsiniz: [veri işlemi kodu örnekleri-Seç ](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. [Azure Portal](https://portal.azure.com) veya Visual Studio 'Da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
    Bu örnek Azure portal ve bir mantıksal uygulamayı **yineleme** tetikleyicisi ve bir **değişken Başlat** eylemiyle kullanır. Eylem, ilk değeri bazı örnek tamsayılar içeren bir dizi olan bir değişken oluşturmak için ayarlanır. Mantıksal uygulamanızı daha sonra test ettiğinizde, tetikleyicinin tetiklenmesi gerekmeden uygulamanızı el ile çalıştırabilirsiniz.
 
-   ![Örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   !["Select" eylemi için örnek mantıksal uygulama başlatılıyor](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
 1. Diziyi oluşturmak istediğiniz mantıksal uygulamanızda şu adımlardan birini izleyin: 
 
    * Son adım altında bir eylem eklemek için **yeni adım**' ı seçin.
 
-     ![Eylem ekle](./media/logic-apps-perform-data-operations/add-select-action.png)
+     !["Seç" eylemi için "yeni adım" seçeneğini belirleyin](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
    * Adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyarak artı işareti ( **+** ) belirir. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak yazın `select` . Eylemler listesinden, **seçme** eylemini seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak `select` girin. Eylemler listesinden, **seçme** eylemini seçin.
 
    !["Seç" eylemini seçin](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -676,13 +676,13 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız **, örne
 
 1. **Harita** kutusunun sol sütununda, kaynak dizide her bir değere atamak istediğiniz özellik adını sağlayın. Sağ sütunda, özelliği atamak istediğiniz değeri temsil eden bir ifade belirtin.
 
-   Bu örnek, her bir dizi öğesine erişen bir ifadede `item()` işlevini kullanarak tamsayı dizisindeki her değeri atamak için özellik adı olarak "Product_ID" değerini belirtir. 
+   Bu örnek, her bir dizi öğesine erişen bir ifadede `item()` işlevini kullanarak tamsayı dizisindeki her bir değeri atamak için özellik adı olarak "Product_ID" değerini belirtir. 
 
-   ![Oluşturmak istediğiniz dizinin JSON nesnesi özelliğini ve değerlerini belirtin](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![Dizi oluşturmak için JSON nesnesi özelliğini ve değerlerini belirtin](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
    Tamamlanan eylem aşağıda verilmiştir:
 
-   ![Tamamlandı eylemi seçin](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   !["Select" eylemi için tamamlanmış örnek](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
 1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -698,9 +698,9 @@ Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi i�
 
    `@actionBody('Select')`
 
-   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde `@actionBody('Select')` ifadeden çıkışları içerir:
+   Bu örnek, Office 365 Outlook **e-posta gönder** eylemini kullanır ve e-postanın gövdesinde `@actionBody('Select')` ifadeden çıktıları içerir:
 
-   !["E-posta gönder" eyleminde eylem çıkışları](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   !["Select" eyleminden eylem çıkışları](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
 1. Şimdi mantıksal uygulamanızı el ile çalıştırın. Tasarımcı araç çubuğunda **Çalıştır**' ı seçin.
 

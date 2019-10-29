@@ -1,5 +1,5 @@
 ---
-title: Kurtarma Hizmetleri kasasını Azure abonelikleri veya kaynak grupları arasında taşıma
+title: Azure Backup kurtarma hizmetleri kasalarını taşıma
 description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma yönergeleri.
 ms.reviewer: sogup
 author: dcurwin
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6e95c012aed9fdcfda2b64c310458425df2b9f9e
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: fb98ba8c393d28e7cdfb0b53cdd9ba11c171726f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337883"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969147"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
 Bu makalede, Azure abonelikleri arasında Azure Backup için yapılandırılmış bir kurtarma hizmetleri kasasının veya aynı abonelikteki başka bir kaynak grubunda nasıl taşınacağı açıklanır. Kurtarma Hizmetleri kasasını taşımak için Azure portal veya PowerShell kullanabilirsiniz.
 
-## <a name="supported-region"></a>Desteklenen bölge
+## <a name="supported-regions"></a>Desteklenen bölgeler
 
 Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD2, Güney Orta ABD, Orta Batı ABD, Batı orta ABD2, Batı ABD, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Kuzey, Güney Afrika Batı, UK Güney ve UK Batı.
 
@@ -38,18 +38,17 @@ Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya G
 - Klasik model aracılığıyla dağıtılan kaynakları taşımaya yönelik seçenekler, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşıdığınıza bağlı olarak farklılık gösterir. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) bakın.
 - Kasa için tanımlanan yedekleme ilkeleri, kasalardan abonelikler arasında veya yeni bir kaynak grubuna taşındıktan sonra tutulur.
 - Azure dosyaları, Azure Dosya Eşitleme ya da SQL ve kaynak grupları arasında IaaS VM 'lerinde kasanın taşınması desteklenmez.
-- VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, sanal makinelerinizi aynı aboneliğe taşımanız ve yedeklemeleri sürdürmek için aynı hedef VM kaynak grubu adını (eski abonelikte olduğu gibi) kullanmanız gerekir.<br>
+- VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, sanal makinelerinizi aynı aboneliğe taşımanız ve yedeklemeleri sürdürmek için aynı hedef VM kaynak grubu adını (eski abonelikte olduğu gibi) kullanmanız gerekir.
 
 > [!NOTE]
 >
 > **Azure Site Recovery** ile kullanılmak üzere yapılandırılan kurtarma hizmetleri kasaları henüz taşınamaz. **Azure Site Recovery**kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makine yapılandırdıysanız taşıma işlemi engellenir. Site Recovery hizmeti için kaynak taşıma özelliği henüz kullanılamıyor.
 
-
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Kurtarma Hizmetleri kasasını farklı kaynak grubuna taşımak için Azure portal kullanın
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Kurtarma Hizmetleri kasalarının** listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
    ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -68,18 +67,17 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubun
 
 5. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğine tıklayın.
 
-   ![Kaynak Oluştur](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Kaynak oluştur](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Kaynak grubu eklendikten sonra, **taşınan kaynaklarla ilişkili araçların ve betiklerin yeni kaynak kimlikleri seçeneği kullanılarak güncelleştirene** ve ardından kasayı taşımayı tamamlaması için **Tamam** ' a tıkladığımda emin olun.
 
    ![Onay Iletisi](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
-
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Kurtarma Hizmetleri kasasını farklı bir aboneliğe taşımak için Azure portal kullanma
 
 Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğe taşıyabilirsiniz
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
     ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -110,7 +108,7 @@ Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğ
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>PowerShell kullanarak kurtarma hizmetleri kasasını taşıma
 
-Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource`Kaynak adı ve kaynak türü gerektirir. `Get-AzureRmRecoveryServicesVault` Cmdlet 'ten her ikisini de alabilirsiniz.
+Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource` kaynak adı ve kaynak türü gerektirir. `Get-AzureRmRecoveryServicesVault` cmdlet 'ini her ikisini de alabilirsiniz.
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"
@@ -134,14 +132,12 @@ Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için aşağ�
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Yeni bir aboneliğe taşımak için sağlamak `--destination-subscription-id` parametresi.
+Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini sağlayın.
 
 ## <a name="post-migration"></a>Geçiş sonrası
 
-1. Kaynak grupları için erişim denetimlerini ayarlamanız/doğrulamanız gerekir.  
+1. Kaynak grupları için erişim denetimlerini ayarlayın/doğrulayın.  
 2. Taşıma işlemi tamamlandığında, yedekleme raporlama ve izleme özelliğinin yeniden yapılandırılması gerekir. Taşıma işlemi sırasında önceki yapılandırma kaybedilir.
-
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

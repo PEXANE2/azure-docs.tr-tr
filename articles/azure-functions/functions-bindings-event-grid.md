@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: fbe41bdc5f253f1a605aa291a31191b7339b9850
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ff21a1325e341f119fc8615ca03b41b8068aca19
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030587"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991417"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Event Grid tetikleyicisi
 
@@ -125,7 +125,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 
 #### <a name="c-script-version-2x"></a>C#betik (sürüm 2. x)
 
-@No__t-1 ' e bağlanan C# 2. x betik kodu aşağıda verilmiştir:
+Aşağıda`EventGridEvent`bağlanan 2. x C# betik kodu verilmiştir:
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -142,7 +142,7 @@ Daha fazla bilgi için bkz. paketler, [öznitelikler](#attributes), [yapılandı
 
 #### <a name="c-script-version-1x"></a>C#betik (sürüm 1. x)
 
-@No__t-1 ' e bağlanan C# işlev 1. x betik kodu aşağıdadır:
+`JObject`'e bağlanan 1. x C# komut dosyası kodu aşağıda verilmiştir:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -252,7 +252,6 @@ Aşağıdaki örneklerde, önce olayı bir POJO olarak ```String``` ' ye ve ikin
     ) 
     String content, 
     final ExecutionContext context) {
-      // log 
       context.getLogger().info("Event content: " + content);      
   }
 ```
@@ -289,7 +288,6 @@ Varış sonrasında, olayın JSON yükü, işlev tarafından kullanılmak üzere
     ) 
     EventSchema event, 
     final ExecutionContext context) {
-      // log 
       context.getLogger().info("Event content: ");
       context.getLogger().info("Subject: " + event.subject);
       context.getLogger().info("Time: " + event.eventTime); // automatically converted to Date by the runtime
@@ -318,7 +316,7 @@ Tüm örnek için bkz C# . örnek.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. @No__t-0 özniteliğinde ayarlanacak bir oluşturucu parametresi veya özellik yok.
+Aşağıdaki tabloda, *function. JSON* dosyasında ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. `EventGridTrigger` özniteliğinde ayarlanacak bir oluşturucu parametresi veya özellik yok.
 
 |function. JSON özelliği |Açıklama|
 |---------|---------|
@@ -378,7 +376,7 @@ Olay JSON verilerinde en üst düzey özellikler tüm olay türleri arasında ay
 
 Ortak ve olaya özgü özelliklerin açıklamaları için Event Grid belgelerindeki [olay özellikleri](../event-grid/event-schema.md#event-properties) ' ne bakın.
 
-@No__t-0 türü yalnızca en üst düzey özellikleri tanımlar; `Data` özelliği bir `JObject` ' dir.
+`EventGridEvent` türü yalnızca en üst düzey özellikleri tanımlar; `Data` özelliği bir `JObject`.
 
 ## <a name="create-a-subscription"></a>Abonelik oluşturma
 
@@ -525,8 +523,8 @@ Event Grid işlevinizi yerel olarak çalıştırın.
 
 HTTP POST isteği oluşturmak için [Postman](https://www.getpostman.com/) veya [kıvrımlı](https://curl.haxx.se/docs/httpscripting.html) gibi bir araç kullanın:
 
-* @No__t-0 üst bilgisini ayarlayın.
-* @No__t-0 üst bilgisini ayarlayın.
+* `Content-Type: application/json` üst bilgisi ayarlayın.
+* `aeg-event-type: Notification` üst bilgisi ayarlayın.
 * RequestBin verilerini istek gövdesine yapıştırın.
 * Event Grid tetikleyici işlevinizin URL 'sine gönderin.
   * 2\. x için aşağıdaki kalıbı kullanın:
@@ -541,7 +539,7 @@ HTTP POST isteği oluşturmak için [Postman](https://www.getpostman.com/) veya 
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
     ```
 
-@No__t-0 parametresi, `FunctionName` özniteliğinde belirtilen ad olmalıdır.
+`functionName` parametresi `FunctionName` özniteliğinde belirtilen ad olmalıdır.
 
 Aşağıdaki ekran görüntülerinde, Postman 'daki üstbilgiler ve istek gövdesi gösterilmektedir:
 
@@ -610,7 +608,7 @@ Bu uç nokta modelini 1. x Işlevleri için kullanın:
 https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
 ```
 
-@No__t-0 parametresi, `FunctionName` özniteliğinde belirtilen ad olmalıdır.
+`{FUNCTION_NAME}` parametresi `FunctionName` özniteliğinde belirtilen ad olmalıdır.
 
 Azure CLı kullanarak bir örnek aşağıda verilmiştir:
 

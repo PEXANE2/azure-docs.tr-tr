@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900298"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968480"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -74,10 +74,9 @@ Kurtarma noktasından dosya veya klasörleri geri yüklemek için sanal makineye
     - giden bağlantı noktası 3260
 
 > [!Note]
-> 
-> * İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı, ContosoVM_wcus_12345678.... gibi \'VMname\'\_\'geoname\'_\'GUID\'ile başlar.<br><br>
-> * URL "https:\//pod01-rec2.wcus.backup.windowsazure.com" olur
-
+>
+> - İndirilen betik dosyası adı URL 'de doldurulacak **coğrafi ada** sahip olacaktır. Örneğin: indirilen betik adı, ContosoVM_wcus_12345678.... gibi \'VMname\'\_\'geoname\'_\'GUID\'ile başlar.<br><br>
+> - URL "https:\//pod01-rec2.wcus.backup.windowsazure.com" olur
 
    Linux için, betik ' Open-iSCSI ' ve ' lshw ' bileşenlerinin kurtarma noktasına bağlanmasını gerektirir. Bileşenler, betiğin çalıştırıldığı bilgisayarda yoksa, komut dosyası bileşenleri yüklemek için izin ister. Gerekli bileşenleri yüklemeye izin verin.
 
@@ -223,7 +222,7 @@ Betik Ayrıca, Python ve Bash bileşenlerinin kurtarma noktasına güvenli bir �
 
 Bu bölümde, disk sayısı 16 > ve her disk boyutu > 4 TB olan Azure sanal makine yedeklemelerinden nasıl dosya kurtarmasının gerçekleştirileceği açıklanmaktadır.
 
-Dosya kurtarma işlemi, çok sayıda disk (> 16) veya büyük diskler (> 4TB) olması durumunda tüm diskleri yedekten iliştirdiğinden, aşağıdaki eylem noktaları önerilir.
+Dosya kurtarma işlemi, çok sayıda disk (> 16) veya büyük diskler (> 4 TB) olması durumunda tüm diskleri yedekten iliştirdiğinden, aşağıdaki eylem noktaları önerilir.
 
 - Dosya kurtarma için ayrı bir geri yükleme sunucusunu (Azure VM D2v3 VM 'Ler) saklayın. Bu yalnızca dosya kurtarma 'yı kullanabilir ve gerekli olmadığında kapatılabilir. Özgün makineye geri yükleme, sanal makinenin kendisi üzerinde önemli bir etkiye sahip olacağı için önerilmez.
 - Sonra, dosya kurtarma işleminin başarılı olup olmadığını denetlemek için betiği bir kez çalıştırın.
@@ -276,7 +275,7 @@ Bu özellik, VM verilerine tüm VM veya VM disklerini geri yükleme ve en düş�
 
 #### <a name="select-recovery-point-who-can-generate-script"></a>Kurtarma noktası seçin (komut dosyası oluşturabilir)
 
-Betik, VM verilerine erişim sağlar. Bu, ilk yerde kimin oluşturabileceği bir şekilde düzenlemek önemlidir. Bir birinin Azure portal oturum açması gerekir ve betiği oluşturmak için [RBAC 'nin yetkilendirilmiş](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) olması gerekir.
+Betik, VM verilerine erişim sağlar. Bu, ilk yerde kimin oluşturabileceği bir şekilde düzenlemek önemlidir. Tek bir Azure portal oturum açması gerekir ve betiği oluşturmak için [RBAC 'nin yetkilendirilmiş](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) olması gerekir.
 
 Dosya kurtarma, VM geri yükleme ve diskleri geri yükleme için gereken yetkilendirme düzeyine ihtiyaç duyuyor. Diğer bir deyişle, yalnızca yetkili kullanıcılar betiği oluşturabileceği VM verilerini görüntüleyebilir.
 

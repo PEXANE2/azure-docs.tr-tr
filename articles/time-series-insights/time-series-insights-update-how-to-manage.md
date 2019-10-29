@@ -1,21 +1,21 @@
 ---
 title: Azure zaman serisi önizlemesi sağlama ve yönetme | Microsoft Docs
 description: Azure Time Series Insights önizlemesini sağlamayı ve yönetmeyi anlama.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: a84c587a2666982e862f0640b30d2d6bef3b9a42
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 47c96cb14f2e466d02d57f73fb2e66bc1f44a311
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744626"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989919"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemeyi sağlayın ve yönetin
 
@@ -25,27 +25,28 @@ Bu makalede, [Azure Portal](https://portal.azure.com/)kullanılarak Azure Time S
 
 Azure Time Series Insights Preview ortamları Kullandıkça Öde (PAYG) ortamlardır.
 
-Azure Time Series Insights bir önizleme ortamı sağladığınızda iki Azure kaynağı oluşturursunuz:
+Azure Time Series Insights bir önizleme ortamı sağladığınızda şu Azure kaynaklarını oluşturursunuz:
 
 * Azure Time Series Insights önizleme ortamı  
 * Azure depolama genel amaçlı v1 hesabı
+* Daha hızlı ve sınırsız sorgu için isteğe bağlı bir sıcak mağaza
   
 [Ortamınızı nasıl planlayacağınızı](./time-series-insights-update-plan.md)öğrenin.
 
->[!IMPORTANT]
-> Önizleme için bir Azure depolama genel amaçlı v1 (GPv1) hesabı kullandığınızdan emin olun.
+Her Azure Time Series Insights önizleme ortamını bir olay kaynağıyla ilişkilendirin. Daha fazla bilgi için, [Olay Hub 'ı kaynağı ekleme](./time-series-insights-how-to-add-an-event-source-eventhub.md) ve [IoT Hub kaynağı ekleme](./time-series-insights-how-to-add-an-event-source-iothub.md)makalesini okuyun. Bu adım sırasında zaman damgası KIMLIĞI özelliği ve benzersiz bir tüketici grubu sağlarsınız. Bunun yapılması, ortamın uygun olaylara erişmesini sağlar.
 
-İsteğe bağlı olarak, her bir Azure Time Series Insights önizleme ortamını bir olay kaynağıyla ilişkilendirebilirsiniz. Daha fazla bilgi için, [Olay Hub 'ı kaynağı ekleme](./time-series-insights-how-to-add-an-event-source-eventhub.md) ve [IoT Hub kaynağı ekleme](./time-series-insights-how-to-add-an-event-source-iothub.md)makalesini okuyun. Bu adım sırasında zaman damgası KIMLIĞI özelliği ve benzersiz bir tüketici grubu sağlarsınız. Bunun yapılması, ortamın uygun olaylara erişmesini sağlar.
+> [!NOTE]
+> Önceki adım, sağlama iş akışında, zaman serisi önizleme ortamını oluştururken isteğe bağlıdır. Bununla birlikte, verilerin o ortamda akışa başlaması için ortama bir olay kaynağı eklemeniz gerekir.
 
 Sağlama tamamlandıktan sonra, erişim ilkelerinizi ve diğer ortam özniteliklerini iş gereksinimlerinize uyacak şekilde değiştirebilirsiniz.
 
 ## <a name="create-the-environment"></a>Ortamı oluşturma
 
-Aşağıdaki adımlarda Azure Time Series Insights önizleme ortamının nasıl oluşturulacağı açıklanır:
+Azure Time Series Insights önizleme ortamı oluşturmak için:
 
-1. **SKU** menüsünün altındaki **PAYG** düğmesini seçin. Bir ortam adı sağlayın ve hangi abonelik grubunu ve hangi kaynak grubunun kullanılacağını seçin. Daha sonra, ortamında barındırılmak için desteklenen bir konum seçin.
+1. **SKU** menüsünde, **PAYG** düğmesini seçin. Bir ortam adı sağlayın ve kullanılacak abonelik grubunu ve kaynak grubunu seçin. Ardından, ortamı barındırmak için desteklenen bir konum seçin.
 
-   [![Azure Time Series Insights bir örnek oluşturun.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+   [![bir Azure Time Series Insights örneği oluşturun.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. Bir zaman serisi KIMLIĞI girin.
 
@@ -54,45 +55,47 @@ Aşağıdaki adımlarda Azure Time Series Insights önizleme ortamının nasıl 
     > * Zaman serisi kimlikleri en fazla üç anahtar olabilir.
     > * Zaman serisi KIMLIĞI seçme hakkında daha fazla bilgi için, okuma [zaman SERISI kimliği seçin](./time-series-insights-update-how-to-id.md).
 
-1. Bir depolama hesabı adı seçerek ve bir çoğaltma seçeneği belirleyerek bir Azure depolama hesabı oluşturun. Bunun yapılması, otomatik olarak bir Azure depolama genel amaçlı v1 hesabı oluşturur. Daha önce seçtiğiniz Azure Time Series Insights önizleme ortamıyla aynı bölgede oluşturulur.
+1. Bir depolama hesabı adı seçerek ve bir çoğaltma seçeneği belirleyerek bir Azure depolama hesabı oluşturun. Bunun yapılması, otomatik olarak bir Azure depolama genel amaçlı v1 hesabı oluşturur. Hesap, daha önce seçtiğiniz Azure Time Series Insights önizleme ortamıyla aynı bölgede oluşturulur.
 
-    [![Örneğiniz için bir Azure depolama hesabı oluşturun](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
+    [örneğiniz için bir Azure depolama hesabı oluşturun![](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
-1. İsteğe bağlı olarak, bir olay kaynağı ekleyebilirsiniz.
+1. **(Isteğe bağlı)** Ortamınızdaki en son veriler üzerinde daha hızlı ve sınırsız sorgu istiyorsanız ortamınız için ısınma mağazasını etkinleştirin. Ayrıca, bir Time Series Insights önizleme ortamı oluşturduktan sonra sol gezinti bölmesindeki **depolama yapılandırması** seçeneği aracılığıyla bir sıcak mağaza oluşturabilir veya silebilirsiniz.
 
-   * Time Series Insights, [azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) ve [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) seçeneklerini destekler. Ortam oluşturma zamanında yalnızca tek bir olay kaynağı ekleyebilseniz de daha sonra başka bir olay kaynağı ekleyebilirsiniz. Tüm olayların Azure Time Series Insights önizleme örneğiniz tarafından göründüğünden emin olmak için benzersiz bir tüketici grubu oluşturmak en iyisidir. Olay kaynağını eklerken mevcut bir tüketici grubunu seçebilir veya yeni bir tüketici grubu oluşturabilirsiniz.
+1. **(Isteğe bağlı)** Şimdi bir olay kaynağı ekleyebilirsiniz. Alternatif olarak, örnek sağlanana kadar bekleyebilirsiniz.
 
-   * Ayrıca uygun zaman damgası özelliğini de seçmeniz gerekir. Varsayılan olarak, Azure Time Series Insights her olay kaynağı için sıraya alınan iletiyi kullanır.
+   * Time Series Insights, [azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) ve [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) 'yi olay kaynağı seçenekleri olarak destekler. Ortamı oluştururken yalnızca tek bir olay kaynağı ekleyebilseniz de daha sonra başka bir olay kaynağı ekleyebilirsiniz. Olay kaynağını eklediğinizde, mevcut bir tüketici grubunu seçebilir veya yeni bir tüketici grubu oluşturabilirsiniz. Tüm olayların Azure Time Series Insights önizleme ortamınızda göründüğünden emin olmak için benzersiz bir tüketici grubu oluşturmak en iyisidir.
+
+   * Uygun zaman damgası özelliğini seçin. Varsayılan olarak, Azure Time Series Insights her olay kaynağı için ileti temelli sıraya alma süresini kullanır.
 
      > [!TIP]
-     > Sıraya alınan mesaj saati, toplu iş olayında veya geçmiş verileri karşıya yükleme senaryolarında kullanılacak en iyi yapılandırılmış ayar olmayabilir. Bu gibi durumlarda zaman damgası özelliği kullanma veya kullanma kararını doğruladığınızdan emin olun.
+     > İleti temelli sıraya alma saati, toplu olay senaryolarında veya geçmiş verileri karşıya yükleme senaryolarında kullanılacak en iyi yapılandırılmış ayar olmayabilir. Bu gibi durumlarda, bir zaman damgası özelliği kullanmayın veya kullanma kararını doğruladığınızdan emin olun.
 
-     [![Olay kaynağı sekmesi](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
+     [![olay kaynağı sekmesi](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
-1. Ortamınızın istenen ayarlarla sağlandığını doğrulayın.
+1. Ortamınızın istediğiniz ayarlarla sağlandığını doğrulayın.
 
-    [![Gözden geçir + Oluştur sekmesi](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+    [![gözden geçir + Oluştur sekmesi](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>Ortamı yönetme
 
-Azure Time Series Insights önizleme ortamınızı Azure portal kullanarak yönetebilirsiniz. Bu, Azure portal kullanarak bir bir bir, bir bir S1 veya S2 ortamının aksine, bir PAYG Azure Time Series Insights önizleme ortamının yönetilmesine ilişkin önemli farklardır:
+Azure Time Series Insights önizleme ortamınızı Azure portal kullanarak yönetebilirsiniz. Azure portal aracılığıyla yönetirken, Kullandıkça Öde Azure Time Series Insights önizleme ortamı ve genel olarak kullanılabilir S1 veya S2 ortamları arasında birkaç temel fark görürsünüz:
 
 * Azure portal **genel bakış** dikey penceresi, aşağıdaki yollarla Azure Time Series Insights değiştirilmez:
-  * Bu kavram, PAYG ortamlarına uygun olmadığından kapasite kaldırılır.
+  * Kapasite, Kullandıkça Öde ortamları için uygulanmadığından kaldırılır.
   * Zaman serisi KIMLIĞI özelliği eklendi. Verilerinizin bölümlenme şeklini belirler.
   * Başvuru veri kümeleri kaldırılır.
   * Görüntülenmiş URL sizi [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md)'a yönlendirir.
   * Azure depolama hesabınızın adı listelenir.
 
-* Azure portal **yapılandırma** dikey penceresi Azure Time Series Insights önizlemede KALDıRıLMıŞTıR çünkü PAYG ortamları yapılandırılamaz.
+* Azure portal **yapılandırma** dikey penceresi Azure Time Series Insights önizlemede KALDıRıLARAK, PAYG ortamları yapılandırılamaz. Ancak, Yeni tanıtılan yarı depoyu yapılandırmak için **depolama yapılandırması** 'nı kullanabilirsiniz.
 
-* Başvuru verileri PAYG ortamlarının bir bileşeni olmadığından, Azure portal **başvuru verileri** dikey penceresi Azure Time Series Insights önizlemede kaldırılmıştır.
+* Başvuru verileri Kullandıkça Öde ortamlarının parçası olmadığından, Azure portal **başvuru verileri** dikey penceresi Azure Time Series Insights önizlemede kaldırılır.
 
-[![Azure portal Time Series Insights önizleme ortamı](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
+[Azure portal![Time Series Insights önizleme ortamı](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ortamınızı planınızı](./time-series-insights-update-plan.md)okuyun.
+- [Ortamınızın planını](./time-series-insights-update-plan.md)okuyarak, genel olarak kullanılabilir ortamlar ve önizleme ortamları Time Series Insights hakkında daha fazla bilgi edinin.
 
 - [Bir olay hub 'ı kaynağı eklemeyi](./time-series-insights-how-to-add-an-event-source-eventhub.md)öğrenin.
 

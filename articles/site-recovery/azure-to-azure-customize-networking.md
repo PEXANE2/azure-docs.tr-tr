@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293454"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968900"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
 
@@ -31,15 +31,12 @@ Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel k
 - [Genel IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - Hem alt ağ hem de NIC için [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
 
- > [!IMPORTANT]
-  > Bu ayarlar, test yük devretmesi için değil, yalnızca yük devretme işleminde desteklenir.
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Kurtarma tarafı yapılandırmalarının önceden planlantığınızdan emin olun.
 - Ağ kaynaklarını önceden oluşturun. Azure Site Recovery hizmetin bu ayarları kabul edebilmesi ve yük devretme VM 'sinin bu ayarlara uyduğundan emin olması için bunu bir giriş olarak sağlayın.
 
-## <a name="customize-failover-networking-configurations"></a>Yük devretme ağ yapılandırmasını özelleştirme
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>Yük devretme ve test yük devretme ağ yapılandırmasını özelleştirme
 
 1. **Çoğaltılan öğelere**gidin. 
 2. İstediğiniz Azure VM 'yi seçin.
@@ -47,13 +44,16 @@ Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel k
 
      ![Yük devretme ağ yapılandırmasını özelleştirme](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Yapılandırmak istediğiniz NIC 'in yakınında **Düzenle** ' yi seçin. Açılan sonraki dikey pencerede, hedefte karşılık gelen önceden oluşturulmuş kaynakları seçin.
+4. Yük devretme testi sanal ağını seçin. Boş bırakmayı seçebilir ve test yük devretmesi sırasında bir tane seçebilirsiniz.
+5. Yük devretme ağı, yapılandırmak istediğiniz NIC 'in yakınında **Düzenle** ' yi seçin. Açılan sonraki dikey pencerede, yük devretme testi ve yük devretme konumunda ilgili önceden oluşturulmuş kaynakları seçin.
 
     ![NIC yapılandırmasını düzenleme](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. **Tamam**’ı seçin.
+6. **Tamam**’ı seçin.
 
 Site Recovery artık bu ayarları kabul eder ve yük devretmede VM 'nin ilgili NIC aracılığıyla seçili kaynağa bağlı olduğundan emin olur.
+
+Kurtarma planı aracılığıyla yük devretme testini tetikleytiğinizden, her zaman Azure sanal ağını soracaktır. Bu sanal ağ, önceden yapılandırılmış test yük devretme ayarlarına sahip olmayan makineler için test yük devretmesi için kullanılacaktır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
@@ -72,9 +72,8 @@ Bir ağ kaynağını seçip görüntüleyemez, aşağıdaki denetim ve koşullar
 - Hedef VM bir kullanılabilirlik alanına yerleştirilecek şekilde yapılandırıldıysa, yük dengeleyicinin bölge için erişilebilir olup olmadığını veya herhangi bir kullanılabilirlik bölgesinin bir parçasını kontrol edin. (Temel SKU yük dengeleyiciler bölgeleri desteklemez ve bu durumda açılan listede gösterilmez.)
 - İç yük dengeleyicinin önceden oluşturulmuş bir arka uç havuzuna ve ön uç yapılandırmasına sahip olduğundan emin olun.
 
-
 Genel IP adresi:
-    
+
 - Genel IP ve hedef VM 'nin aboneliği ve bölgesi aynı olmalıdır.
 - Hedef VM 'nin genel IP SKU 'SU ve iç yük dengeleyicinin SKU 'SU aynı olmalıdır.
 

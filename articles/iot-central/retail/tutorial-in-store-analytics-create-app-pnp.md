@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central perakende uygulaması oluşturma | Microsoft Docs
+title: Azure 'da bir mağaza Analytics uygulaması oluşturun IoT Central | Microsoft Docs
 description: Bu öğreticide, IoT Central ' de bir mağaza Analizi perakende uygulamasının nasıl oluşturulacağı gösterilmektedir. Bunu oluşturacak, özelleştirecek ve algılayıcı cihazları ekleyeceğiz.
 services: iot-central
 ms.service: iot-central
@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 528658b85542580df5eeb62f0c146aadef44f517
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 03a10fa74b87ca6ab28b11c5c4fb0cfb7ca6ddb1
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956414"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969607"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 

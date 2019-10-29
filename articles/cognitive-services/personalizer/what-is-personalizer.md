@@ -10,22 +10,21 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203792"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989607"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
-Azure Kişiselleştirme, kullanıcıların gerçek zamanlı davranışlarından öğrenerek onlara gösterilebilecek en iyi deneyimi seçmenizi sağlayan bulut tabanlı bir API’dir.
+Azure kişiselleştirici, kendi gerçek zamanlı davranışlarından öğrenerek kullanıcılarınıza göstermek için en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
 
 * Kullanıcılarınız ve içeriğiniz hakkında bilgi sağlayın ve kullanıcılarınızı göstermek için en iyi eylemi alın. 
 * Kişiselleştirici kullanılmadan önce verilerin temizlenmesi ve etiketlenmesi gerekmez.
 * Sizin için uygun olduğunda Kişiselleştiriciye geri bildirim sağlayın. 
 * Gerçek zamanlı analizi görüntüleyin. 
-* Mevcut denemeleri doğrulamak için daha büyük veri bilimi çabalarının bir parçası olarak kişiselleştirici kullanın.
 
 ## <a name="how-does-personalizer-work"></a>Kişiselleştirici nasıl çalışır?
 
@@ -37,9 +36,9 @@ Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptama
 
 1. Uygulamanızda kişiselleştirmek için bir deneyim seçin.
 1. Azure portal kişiselleştirme hizmeti örneğini oluşturun ve yapılandırın. Her örnek bir kişiselleştirici döngüdür.
-1. Kullanıcılarınız hakkında bilgiler (_Özellikler_) ve içerik (_Eylemler_) ile KIŞISELLEŞTIRICI çağırmak için SDK 'yı kullanın. Kişiselleştirici kullanılmadan önce temiz, etiketli veriler sağlamanız gerekmez. 
+1. Kullanıcı ve içerik (_Eylemler_) hakkında bilgiler (_Özellikler_) ile kişiselleştirici çağırmak için [Rank API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) 'yi kullanın. Kişiselleştirici kullanılmadan önce temiz, etiketli veriler sağlamanız gerekmez. API 'Ler doğrudan veya farklı programlama dilleri için kullanılabilir SDK 'Lar kullanılarak çağrılabilir.
 1. İstemci uygulamasında, kullanıcıya kişiselleştirici tarafından seçilen eylemi gösterin.
-1. Kullanıcının, kişiselleştirici eyleminin seçili olup olmadığını gösteren Kişiselleştiriciye geri bildirim sağlamak için SDK 'Yı kullanın. Bu bir _[ödül puanı](concept-rewards.md)_ .
+1. Kullanıcının kişiselleştirici eyleminin seçili olup olmadığını gösteren Kişiselleştiriciye geri bildirim sağlamak için [Reward API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) 'sini kullanın. Bu bir _[ödül puanı](concept-rewards.md)_ .
 1. Sistemin nasıl çalıştığını ve verilerinizin kişiselleştirmeye nasıl yardımcı olduğunu değerlendirmek için Azure portal analizlerini görüntüleyin.
 
 ## <a name="where-can-i-use-personalizer"></a>Kişiselleştiriciye nereden kullanabilirim?

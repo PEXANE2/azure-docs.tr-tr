@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
+ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: fc97f9d78e84882675c3dd011a64e1e50c4cc907
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736389"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968337"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure 'dan Azure 'a çoğaltma hakkında ağ iletişimi hakkında
 
@@ -48,7 +48,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 **URL** | **Ayrıntılar**  
 --- | ---
-*.blob.core.windows.net | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL 'Lerini (ex: cache1.blob.core.windows.net ve cache2.blob.core.windows.net) *. blob.core.windows.net yerine beyaz listeye ekleyebilirsiniz
+*.blob.core.windows.net | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, *. blob.core.windows.net yerine belirli depolama hesabı URL 'Lerine (örn: cache1.blob.core.windows.net ve cache2.blob.core.windows.net) erişime izin verebilirsiniz
 login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir.
 *.hypervrecoverymanager.windowsazure.com | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen ' Site Recovery IP ' kullanabilirsiniz.
 *.servicebus.windows.net | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir. Güvenlik duvarı proxy 'si, IP 'Leri destekliyorsa, karşılık gelen ' Site Recovery Izleme IP ' kullanabilirsiniz.
@@ -60,9 +60,9 @@ Giden bağlantıyı denetlemek için IP tabanlı bir güvenlik duvarı ara sunuc
 - Kaynak bölgedeki depolama hesaplarına karşılık gelen tüm IP adresi aralıkları
     - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
     - Bu adreslere, verilerin VM 'den önbellek depolama hesabına yazılabilmeleri için izin verin.
-- Oluşturma bir [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) erişimi için AAD karşılık gelen tüm IP adreslerine izin vermek için NSG kural tabanlı
-    - Azure Active Directory (AAD) gelecekte yeni adresler eklenir, yeni NSG kuralları oluşturmak gerekir.
-- Hizmet uç noktası IP adreslerini Site Recovery-bir [XML dosyasında](https://aka.ms/site-recovery-public-ips) kullanılabilir ve hedef konumunuza göre değişir.
+- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturma
+    - Gelecekte Azure Active Directory (AAD) yeni adresler eklenirse, yeni NSG kuralları oluşturmanız gerekir.
+- Hizmet uç noktası IP adreslerini Site Recovery-bir [XML dosyasında](https://aka.ms/site-recovery-public-ips) kullanılabilir ve hedef konumunuza göre değişir. Site Recovery hizmeti erişimi için **"Azuresterecovery"** etiketine erişime izin vermeniz önerilir.
 - Gerekli NSG kurallarını bir test NSG üzerinde oluşturmanızı ve bir üretim NSG 'de kuralları oluşturmadan önce hiçbir sorun olmadığını doğrulamanızı öneririz.
 
 
@@ -77,24 +77,24 @@ Site Recovery IP adresi aralıkları aşağıdaki gibidir:
    Orta Kuzey ABD | 23.96.195.247 | 168.62.249.226
    Kuzey Avrupa | 40.69.212.238 | 52.169.18.8
    Batı Avrupa | 52.166.13.64 | 40.68.93.145
-   East US | 13.82.88.226 | 104.45.147.24
+   Doğu ABD | 13.82.88.226 | 104.45.147.24
    Batı ABD | 40.83.179.48 | 104.40.26.199
-   Orta Güney ABD | 13.84.148.14 | 104.210.146.250
+   Güney Orta ABD | 13.84.148.14 | 104.210.146.250
    Orta ABD | 40.69.144.231 | 52.165.34.144
    Doğu ABD 2 | 52.184.158.163 | 40.79.44.59
-   Japonya Doğu | 52.185.150.140 | 138.91.1.105
-   Japonya Batı | 52.175.146.69 | 138.91.17.38
-   Güney Brezilya | 191.234.185.172 | 23.97.97.36
-   Avustralya Doğu | 104.210.113.114 | 191.239.64.144
-   Avustralya Güneydoğu | 13.70.159.158 | 191.239.160.45
-   Orta Kanada | 52.228.36.192 | 40.85.226.62
-   Doğu Kanada | 52.229.125.98 | 40.86.225.142
-   Batı Orta ABD | 52.161.20.168 | 13.78.149.209
+   Doğu Japonya | 52.185.150.140 | 138.91.1.105
+   Batı Japonya | 52.175.146.69 | 138.91.17.38
+   Brezilya Güney | 191.234.185.172 | 23.97.97.36
+   Doğu Avustralya | 104.210.113.114 | 191.239.64.144
+   Güneydoğu Avustralya | 13.70.159.158 | 191.239.160.45
+   Kanada Orta | 52.228.36.192 | 40.85.226.62
+   Kanada Doğu | 52.229.125.98 | 40.86.225.142
+   Orta Batı ABD | 52.161.20.168 | 13.78.149.209
    Batı ABD 2 | 52.183.45.166 | 13.66.228.204
-   Birleşik Krallık Batı | 51.141.3.203 | 51.141.14.113
-   Birleşik Krallık Güney | 51.140.43.158 | 51.140.189.52
-   BK Güney 2 | 13.87.37.4| 13.87.34.139
-   BK Kuzey | 51.142.209.167 | 13.87.102.68
+   Birleşik Krallık, Batı | 51.141.3.203 | 51.141.14.113
+   Birleşik Krallık, Güney | 51.140.43.158 | 51.140.189.52
+   UK Güney 2 | 13.87.37.4| 13.87.34.139
+   UK Kuzey | 51.142.209.167 | 13.87.102.68
    Kore Orta | 52.231.28.253 | 52.231.32.85
    Kore Güney | 52.231.198.185 | 52.231.200.144
    Fransa Orta | 52.143.138.106 | 52.143.136.55
@@ -103,20 +103,22 @@ Site Recovery IP adresi aralıkları aşağıdaki gibidir:
    Avustralya Orta 2| 20.36.69.62 | 20.36.74.130
    Güney Afrika Batı | 102.133.72.51 | 102.133.26.128
    Güney Afrika Kuzey | 102.133.160.44 | 102.133.154.128
-   ABD Devleti Virginia | 52.227.178.114 | 23.97.0.197
+   ABD Hükümeti Virginia | 52.227.178.114 | 23.97.0.197
    US Gov Iowa | 13.72.184.23 | 23.97.16.186
-   ABD Devleti Arizona | 52.244.205.45 | 52.244.48.85
-   ABD Devleti Texas | 52.238.119.218 | 52.238.116.60
-   US DoD Doğu | 52.181.164.103 | 52.181.162.129
+   US Gov Arizona | 52.244.205.45 | 52.244.48.85
+   US Gov Teksas | 52.238.119.218 | 52.238.116.60
+   ABD DoD Doğu | 52.181.164.103 | 52.181.162.129
    US DoD Orta | 52.182.95.237 | 52.182.90.133
    Çin Kuzey | 40.125.202.254 | 42.159.4.151
    Çin Kuzey 2 | 40.73.35.193 | 40.73.33.230
    Çin Doğu | 42.159.205.45 | 42.159.132.40
    Çin Doğu 2 | 40.73.118.52| 40.73.100.125
    Almanya Kuzey| 51.116.208.58| 51.116.58.128
-   Almanya Orta Batı | 51.116.156.176 | 51.116.154.192
+   Almanya Batı Orta | 51.116.156.176 | 51.116.154.192
    İsviçre Batı | 51.107.231.223| 51.107.154.128
    İsviçre Kuzey | 51.107.68.31| 51.107.58.128
+   Norveç Doğu | 51.120.100.64| 51.120.98.128
+   Norveç Batı | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması
 
@@ -124,6 +126,9 @@ Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandır�
 
 - Giden bağlantıyı denetlemek için NSG kuralları kullanıyorsanız, tüm gerekli IP adresi aralıkları için bağlantı noktası: 443 ' e Izin ver (HTTPS giden) kuralları ' nı kullanın.
 - Örnek, VM kaynak konumunun "Doğu ABD" ve hedef konumun "Orta ABD" olduğunu varsayar.
+
+> [!NOTE]
+> **Site Recovery hizmetine**erişime izin vermek için IP adresleri yerine **Azuresterecovery etiketinin** kullanılması önerilir.
 
 ### <a name="nsg-rules---east-us"></a>NSG kuralları-Doğu ABD
 
@@ -137,7 +142,7 @@ Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandır�
 
 3. Hedef konuma karşılık gelen Site Recovery IP 'Leri için giden HTTPS (443) kuralları oluşturun:
 
-   **Location** | **Site Recovery IP adresi** |  **Site Recovery izleme IP adresi**
+   **Konum** | **Site Recovery IP adresi** |  **Site Recovery izleme IP adresi**
     --- | --- | ---
    Orta ABD | 40.69.144.231 | 52.165.34.144
 
@@ -151,9 +156,10 @@ Bu kurallar, çoğaltmanın hedef bölgeden kaynak bölgeye yük devretme sonras
 
 3. Kaynak konuma karşılık gelen Site Recovery IP 'Leri için giden HTTPS (443) kuralları oluşturun:
 
-   **Location** | **Site Recovery IP adresi** |  **Site Recovery izleme IP adresi**
+   **Konum** | **Site Recovery IP adresi** |  **Site Recovery izleme IP adresi**
     --- | --- | ---
-   East US | 13.82.88.226 | 104.45.147.24
+   Doğu ABD | 13.82.88.226 | 104.45.147.24
+
 
 ## <a name="network-virtual-appliance-configuration"></a>Ağ sanal gereç yapılandırması
 
@@ -172,7 +178,7 @@ VM 'lerden giden ağ trafiğini denetlemek için ağ sanal gereçlerini (NVA 'la
 >[!NOTE]
 >ASR için kullanılan depolama hesaplarınıza sanal ağ erişimini kısıtlamayın. ' Tüm ağlar 'dan erişime izin vermeniz gerekir
 
-### <a name="forced-tunneling"></a>Zorlamalı tünel oluşturma
+### <a name="forced-tunneling"></a>Zorlamalı tünel
 
 [Özel bir rota](../virtual-network/virtual-networks-udr-overview.md#custom-routes) ile 0.0.0.0/0 adres ön eki için Azure 'un varsayılan sistem yolunu geçersiz KıLABILIR ve VM trafiğini şirket içi ağ sanal gerecine (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Recovery çoğaltma için önerilmez. Özel yollar kullanıyorsanız, çoğaltma trafiğinin Azure sınırından ayrılmaması için sanal ağınızda "depolama" için [bir sanal ağ hizmet uç noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
 

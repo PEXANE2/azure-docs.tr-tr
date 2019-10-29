@@ -1,22 +1,19 @@
 ---
-title: Terraytest kullanarak Azure 'da Teraform modüllerini test etme
+title: Azure 'da Terraytest kullanarak Terrayform modüllerini test etme
 description: Terraform modüllerinizi test etmek için Terratest’i kullanmayı öğrenin.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, depolama hesabı, azure, terratest, birim testi, tümleştirme testi
+ms.service: terraform
 author: tomarchermsft
-manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: e4965ba47a99e3cd189763d994bef6381badd9ba
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881786"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969211"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terraytest kullanarak Azure 'da Teraform modüllerini test etme
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Öğretici: Terraytest kullanarak Azure 'da Teraform modüllerini test etme
 
 > [!NOTE]
 > Bu makaledeki örnek kod sürüm 0,12 (ve üzeri) ile çalışmaz.
@@ -40,7 +37,7 @@ Başlamadan önce aşağıdaki yazılımları yükleyebilirsiniz:
 
 - **Go programlama dili**: terrayform test çalışmaları [Go](https://golang.org/dl/)olarak yazılmıştır.
 - **dep**: [dep](https://github.com/golang/dep#installation), Go’nun bağımlılık yönetimi aracıdır.
-- Azure **CLI**: Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , Azure kaynaklarını yönetmek için kullanabileceğiniz bir komut satırı aracıdır. (Terrayform, hizmet sorumlusu aracılığıyla veya [Azure CLI aracılığıyla](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)Azure 'da kimlik doğrulamasını destekler.)
+- Azure **CLI**: Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) , Azure kaynaklarını yönetmek için kullanabileceğiniz bir komut satırı aracıdır. (Terrayform, hizmet sorumlusu aracılığıyla veya [Azure CLI aracılığıyla](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html)Azure 'da kimlik doğrulamasını destekler.)
 - **Mage**: Terlartest çalışmalarını çalıştırmanın nasıl basitleştireceğinizi göstermek için [Mage yürütülebilirini](https://github.com/magefile/mage/releases) kullanıyoruz. 
 
 ## <a name="create-a-static-webpage-module"></a>Statik bir web sayfası modülü oluşturma
@@ -91,7 +88,7 @@ Makalede daha önce bahsedildiği gibi, bu modül ayrıca `./outputs.tf`bildiril
 
 ```hcl
 output "homepage_url" {
-  value = "${azurerm_storage_blob.homepage.url}"
+  value = azurerm_storage_blob.homepage.url
 }
 ```
 
@@ -106,30 +103,30 @@ Statik web sayfası modülünün mantığı `./main.tf` içinde uygulanır:
 ```hcl
 resource "azurerm_resource_group" "main" {
   name     = "${var.website_name}-staging-rg"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "main" {
   name                     = "${lower(replace(var.website_name, "/[[:^alnum:]]/", ""))}data001"
-  resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "${azurerm_resource_group.main.location}"
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "main" {
   name                  = "wwwroot"
-  resource_group_name   = "${azurerm_resource_group.main.name}"
-  storage_account_name  = "${azurerm_storage_account.main.name}"
+  resource_group_name   = azurerm_resource_group.main.name
+  storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "blob"
 }
 
 resource "azurerm_storage_blob" "homepage" {
   name                   = "index.html"
-  resource_group_name    = "${azurerm_resource_group.main.name}"
-  storage_account_name   = "${azurerm_storage_account.main.name}"
-  storage_container_name = "${azurerm_storage_container.main.name}"
-  source                 = "${var.html_path}"
+  resource_group_name    = azurerm_resource_group.main.name
+  storage_account_name   = azurerm_storage_account.main.name
+  storage_container_name = azurerm_storage_container.main.name
+  source                 = var.html_path
   type                   = "block"
   content_type           = "text/html"
 }
@@ -173,7 +170,7 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
   html_path    = "empty.html"
 }
 ```
@@ -317,11 +314,11 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
 }
 
 output "homepage" {
-  value = "${module.staticwebpage.homepage_url}"
+  value = module.staticwebpage.homepage_url
 }
 ```
 
@@ -521,5 +518,5 @@ Testlerin önüne `az login` yürütmek yerine, hizmet sorumlusu ortam değişke
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Terraytest hakkında daha fazla bilgi için bkz. [Terlartest GitHub sayfası](https://github.com/gruntwork-io/terratest).
-* Mage hakkında daha fazla bilgi için [Mage GitHub sayfasına](https://github.com/magefile/mage) ve [Mage Web sitesine](https://magefile.org/)bakın.
+> [!div class="nextstepaction"] 
+> [Terraytest GitHub sayfası](https://github.com/gruntwork-io/terratest).

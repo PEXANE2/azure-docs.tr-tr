@@ -3,20 +3,19 @@ title: Azure Time Series Insights ortamınızda saklama yapılandırma | Microso
 description: Bu makalede Azure Time Series Insights ortamınızda bekletmenin nasıl yapılandırılacağı açıklanır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330894"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990052"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights bekletme yapılandırma
 
@@ -41,7 +40,7 @@ Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Ins
 
 1. **Ayarlar** başlığı altında **Yapılandır**' ı seçin.
 
-    [![Ayarları seçin ve ardından yapılandırın](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![ayarları seçin ve ardından yapılandırın](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 1. Kaydırma çubuğunu kullanarak bekletme 'yi yapılandırmak için **veri saklama süresini (gün olarak)** seçin veya metin kutusuna bir sayı yazın.
 
@@ -49,7 +48,7 @@ Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Ins
 
 1. **Depolama sınırı aşıldı davranış** ayarını değiştirin. **Eski verileri temizle** veya giriş davranışını **Duraklat** ' ı seçin.
 
-    [![Veri bekletme-kabul edin ve kaydedin.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![veri bekletme-kabul edin ve kaydedin.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. Belgeleri gözden geçirdiğinizi ve veri kaybını karşılayan olası riskleri anladığınızı belirten onay kutusunu kabul edin. Değişiklikleri yapılandırmak için **Kaydet** ' i seçin.
 

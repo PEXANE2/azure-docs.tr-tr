@@ -3,7 +3,7 @@ title: Azure Resource Manager şablonları kullanarak Azure Time Series Insights
 description: Bu makalede, Azure Time Series Insights ortamınızı Azure Resource Manager kullanarak programlı bir şekilde nasıl yöneteceğiniz açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274790"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991209"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
 
@@ -64,8 +64,8 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
      | eventHubNamespaceName | Kaynak olay hub 'ının ad alanı. |
      | eventHubName | Kaynak olay hub 'ının adı. |
      | consumerGroupName | Time Series Insights hizmetinin Olay Hub 'ından verileri okumak için kullanacağı tüketici grubunun adı. **Note:** Kaynak çekişmesini önlemek için, bu tüketici grubu Time Series Insights hizmetine ayrılmalıdır ve diğer okuyucular ile paylaşılmaz. |
-     | EnvironmentName | Ortamın adı. Ad: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir.|
-     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir. |
+     | EnvironmentName | Ortamın adı. Ad: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir.|
+     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir. |
 
     <div id="optional-parameters"></div>
 
@@ -140,7 +140,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
       Get-AzSubscription
       ```
 
-    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. @No__t-0 değerini kullanmak istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
+    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. `<YourSubscriptionId>`, kullanmak istediğiniz Azure aboneliğinin GUID 'SI ile değiştirin:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -166,7 +166,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. Dağıtımı test edin.
 
-   * @No__t-0 cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
+   * `Test-AzResourceGroupDeployment` cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json

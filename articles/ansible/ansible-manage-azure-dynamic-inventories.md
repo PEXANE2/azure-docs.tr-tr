@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 38be15cf5771f7eb09bce1154baa3bc6e559d49b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881500"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990667"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Öğretici: Azure kaynaklarınızın dinamik envanterini, anormal kullanarak yapılandırma
 
@@ -155,7 +155,7 @@ Anormal 2,8 ile başlayarak, anormal bir [Azure dinamik envanter eklentisi](http
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
-    "Ana bilgisayar anahtarı doğrulama" hatası alırsanız, Anlabilen yapılandırma dosyasına aşağıdaki satırı ekleyin. Anerişilebilir yapılandırma dosyası `/etc/ansible/ansible.cfg` ' da bulunur.
+    "Ana bilgisayar anahtarı doğrulama" hatası alırsanız, Anlabilen yapılandırma dosyasına aşağıdaki satırı ekleyin. Anormal yapılandırma dosyası `/etc/ansible/ansible.cfg` veya `~/.ansible.cfg`konumunda bulunur.
 
     ```bash
     host_key_checking = False

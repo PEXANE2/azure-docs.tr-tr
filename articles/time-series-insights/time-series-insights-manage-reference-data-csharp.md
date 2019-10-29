@@ -3,44 +3,43 @@ title: '| Kullanarak C# Azure Time Series Insights ortamda başvuru verilerini y
 description: Bu makalede, C# (c-Sharp) .net dilinde yazılmış özel bir uygulama oluşturarak bir Azure Time Series Insights ortamı için başvuru verilerinin nasıl yönetileceği açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958037"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990037"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Kullanarak bir Azure Time Series Insights ortamı için GA başvuru verilerini yönetmeC#
 
 Bu makalede, bir Azure Time Series Insights C# ortamı için başvuru verilerini yönetmek üzere derleyebileceğiniz örnek bir proje açıklanmaktadır.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
 1. [Bir başvuru veri kümesi oluşturun](time-series-insights-add-reference-data-set.md).
 
-1. Uygulama için yetkilendirme erişim belirtecini yapılandırın. Belirtecin Azure Active Directory API aracılığıyla alındığından emin olun. Bu belirteci her sorgu API isteğinin `Authorization` üst bilgisinde geçirmeniz gerekir.
+1. Uygulama için yetkilendirme erişim belirtecini yapılandırın. Belirtecin Azure Active Directory API aracılığıyla alındığından emin olun. Bu belirteci her sorgu API isteğinin `Authorization` üstbilgisine geçirmeniz gerekir.
 
    Etkileşimli olmayan uygulamaları ayarlama hakkında daha fazla bilgi için bkz. [kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md).
 
 1. Örnek kodu, kodun başlangıcına yakın olan **#DUMMY #** ' da belirtilen örnek sabitlerini değiştirecek şekilde düzenleyin.
 
 > [!NOTE]
-> [@No__t-1](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)' de GA örnek kodunu görüntüleyin.
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)' de GA örnek kodunu görüntüleyin.
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 
-Bu örnek için @no__t NuGet paketleri ekleyin-0 ve `Newtonsoft.Json`.
+Bu örnek için NuGet paketleri `Microsoft.IdentityModel.Clients.ActiveDirectory` ve `Newtonsoft.Json` ekleyin.
 
 ## <a name="c-sample-code"></a>C#örnek kod
 

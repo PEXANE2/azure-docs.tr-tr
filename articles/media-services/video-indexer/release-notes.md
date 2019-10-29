@@ -10,23 +10,29 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672652"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968724"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
-İle en son gelişmeleri güncel kalmak için bu makalede, ile hakkında bilgi sağlar:
+En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
-* En son sürümleri
+* En son yayınlar
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlev
+
+## <a name="october-2019"></a>2019 Ekim
+ 
+* Galerideki animasyonlu karakterleri arama
+
+    Animasyonlu karakterleri dizinlerken, artık hesabın video Gale ' i içinde arama yapabilirsiniz. Daha fazla bilgi için bkz. [animasyonlu karakter tanıma](animated-characters-recognition.md).
 
 ## <a name="september-2019"></a>Eylül 2019
  
@@ -37,7 +43,7 @@ IBC 2019 ' de birden çok terfi duyurusu:
     Özel Vision ile tümleştirme yoluyla, animasyonlu içerikte grup ad tanıma karakterlerini algılama özelliği. Daha fazla bilgi için bkz. [animasyonlu karakter algılama](animated-characters-recognition.md).
 * Çoklu dil tanımlama (Genel Önizleme)
 
-    Ses kanalında birden çok dildeki segmentleri algılayın ve bunlara göre çok dilli bir döküm oluşturun. İlk destek: İngilizce, Ispanyolca, Almanca ve Fransızca. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
+    Ses kanalında birden çok dildeki segmentleri algılayın ve bunlara göre çok dilli bir döküm oluşturun. İlk destek: Ingilizce, Ispanyolca, Almanca ve Fransızca. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
 * Kişiler ve konum için adlandırılmış varlık ayıklama
 
     Marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
@@ -85,7 +91,7 @@ Video dizinleme sırasında 4096 (2048 yerine) URL sorgu dizesi desteği.
 
 Projeler artık farklı dillerde (yalnızca API) dizin oluşturulmuş videolar temel alınarak oluşturulabilir.
 
-## <a name="july-2019"></a>2019 Temmuz
+## <a name="july-2019"></a>Temmuz 2019
 
 ### <a name="editor-as-a-widget"></a>Pencere öğesi olarak düzenleyici
 
@@ -131,4 +137,4 @@ Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](video-indexer-overview.md)
+[Genel Bakış](video-indexer-overview.md)

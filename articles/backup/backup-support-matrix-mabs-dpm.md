@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Backup Server ve System Center DPM için destek matrisi
+title: Microsoft Azure Backup Server & System Center DPM destek matrisi
 description: Bu makalede, şirket içi ve Azure VM kaynaklarını yedeklemek için Microsoft Azure Backup sunucusu ya da System Center DPM kullandığınızda Azure Backup desteği özetlenmektedir.
 author: dcurwin
 ms.service: backup
@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: d14cd996fe0e5a67cc3b554fe1e12146cd6b8e1c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: cb3561030cfd86137d7d668ca14db605cc365e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981076"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969020"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server veya System Center DPM ile yedekleme için destek matrisi
 
@@ -156,7 +156,7 @@ Aşağıdaki tabloda, şirket içi makinelerden ve Azure VM 'lerinden MABS 'e ne
 
 **Backup** | **Ün** | **MABS** | **Ayrıntılar** |
 --- | --- | --- | --- |
-**Windows 10 @ no__t-1Windows 8.1 @ no__t-2Windows 8 @ no__t-3Windows 7**<br/><br/>(32/64 bit) | MABS v3, v2 | Şirket içi. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır. |
+**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bit) | MABS v3, v2 | Şirket içi. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır. |
 **Windows Server 2016 (Datacenter, Standard, nano değil)**<br/><br/> 64/32 bit | MABS v3, v2 | Şirket içi/Azure VM.| Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
 **Windows Server 2012 R2 (Datacenter ve Standard)**<br/><br/> 64/32 bit | MABS v3, v2 | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VMprotection**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
 **Windows Server 2012 SP1 (Datacenter ve Standard)**<br/><br/> 64/32 bit | MABS v3, v2 <br/><br/> [Windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855) yüklü olmalıdır. | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor. |
@@ -178,7 +178,7 @@ Aşağıdaki tabloda, şirket içi makineler ve Azure VM 'lerinden DPM 'ye ne ye
 
 **Backup** | **DPM** | **Ayrıntılar**
 --- | --- | ---
-**Windows 10 @ no__t-1Windows 8.1 @ no__t-2Windows 8 @ no__t-3Windows 7**<br/><br/>(32/64 bit) | Yalnızca şirket içi.<br/><br/> DPM 2012 R2 ile Windows 10 ' u yedeklemek için [güncelleştirme 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)' i yüklemenizi öneririz. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır.
+**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 bit) | Yalnızca şirket içi.<br/><br/> DPM 2012 R2 ile Windows 10 ' u yedeklemek için [güncelleştirme 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)' i yüklemenizi öneririz. | Birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.<br/><br/> Birimler en az 1 GB ve NTFS olmalıdır.
 **Windows Server 2016 (Datacenter, Standard, nano değil)**<br/><br/> 64/32 bit | Şirket içi/Azure VM.<br/><br/> Yalnızca DPM 2016.| Birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> Yinelenenleri kaldırılmış birimler destekleniyor.
 **Windows Server 2012 R2 (Datacenter ve Standard)**<br/><br/> 64/32 bit | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler DPM 2012 R2 ve üzeri sürümlerde desteklenir.
 **Windows Server 2012 SP1 (Datacenter ve Standard)**<br/><br/> 64/32 bit | Şirket içi/Azure VM. | **Şirket içi koruma**: birim/paylaşma/klasör/dosya; sistem durumu/çıplak.<br/><br/> **Azure VM koruması**: birim/paylaşma/klasör/dosya.<br/><br/> Yinelenenleri kaldırılmış birimler DPM 2012 R2 ve üzeri sürümlerde desteklenir.

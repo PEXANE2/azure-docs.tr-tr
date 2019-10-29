@@ -3,7 +3,7 @@ title: Azure Time Series Insights daraltma nasıl izlenir ve azaltıyor | Micros
 description: Bu makalede, Azure Time Series Insights gecikme süresi ve azaltmasına neden olan performans sorunlarını izleme, tanılama ve azaltma işlemlerinin nasıl yapılacağı açıklanır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332954"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990139"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights gecikme süresini azaltmak için azaltmayı izleyin ve azaltır
 
@@ -44,15 +44,15 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 1. Azure portal, **Uyarılar**' ı seçin.
 
-   [![Uyarıları](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![uyarılar](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. **Kural oluştur** paneli görüntülenir. **Koşul**altında **Ekle** ' yi seçin.
 
-   [![Uyarı Ekle](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [uyarı eklemek![](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Sonra, sinyal mantığı için tam koşulları yapılandırın.
 
-   [![ sinyal mantığını Yapılandır](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [sinyal mantığını yapılandırma![](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Buradan, aşağıdaki koşullardan bazılarını kullanarak uyarılar yapılandırabilirsiniz:
 
@@ -62,7 +62,7 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
    |**Giriş geçersiz Iletiler aldı**     | Tüm Azure Event Hubs veya Azure IoT Hub olay kaynaklarından okunan geçersiz iletilerin sayısı.      |
    |**Giriş alınan Iletiler**   | Tüm Event Hubs veya IoT Hub 'Ları olay kaynaklarından okunan ileti sayısı.        |
    |**Giriş depolanan baytlar**     | Sorgu için depolanan ve kullanılabilir olayların toplam boyutu. Boyut yalnızca özellik değeri üzerinde hesaplanır.        |
-   |@No__t giriş **saklı olayları** -1 |   Depolanan ve sorgu için kullanılabilir düzleştirilmiş olay sayısı.      |
+   |Giriş **saklı olayları**     |   Depolanan ve sorgu için kullanılabilir düzleştirilmiş olay sayısı.      |
    |**Alınan Ileti zaman gecikmesi**    |  İleti olay kaynağında sıraya alındığı zaman ve giriş sırasında işlendiği zaman arasındaki saniye cinsinden fark.      |
    |Giriş **alınan Ileti sayısı gecikme**    |  Olay kaynak bölümünde en son sıraya alınan iletinin sıra numarası ve giriş olarak işlenen iletinin sıra numarası arasındaki fark.      |
 
@@ -70,7 +70,7 @@ Uyarılar, ortamınızın neden olduğu gecikme sorunlarını tanılamanıza ve 
 
 1. İstenen sinyal mantığını yapılandırdıktan sonra, seçilen uyarı kuralını görsel olarak gözden geçirin.
 
-   [![Giriş](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![giriş](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Daraltma ve giriş yönetimi
 

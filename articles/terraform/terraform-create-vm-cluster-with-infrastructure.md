@@ -1,33 +1,32 @@
 ---
-title: Terraform ve HCL ile VM kümesi oluşturma
-description: Terraform ve HashiCorp Yapılandırma Dili (HCL) ile Azure'da yük dengeleyiciye sahip bir Linux sanal makine kümesi oluşturma
-services: terraform
-ms.service: azure
-keywords: terraform, devops, sanal makine, ağ, modüller
+title: Öğretici-Terrayform ve HCL ile Azure VM kümesi oluşturma
+description: Azure 'da yük dengeleyiciye sahip bir Linux sanal makine kümesi oluşturmak için Terrayform ve HCL kullanma
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7adf3afe993a01357abcae846f19f602a49862bc
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173472"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969464"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform ve HCL ile VM kümesi oluşturma
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Öğretici: Terrayform ve HCL ile Azure VM kümesi oluşturma
 
-Bu öğreticide [HashiCorp Yapılandırma Dili](https://www.terraform.io/docs/configuration/syntax.html) (HCL) ile küçük bir işlem kümesi oluşturma adımları gösterilmiştir. Yapılandırma yük dengeleyici, bir [kullanılabilirlik kümesinde](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) iki Linux VM ve gerekli tüm ağ kaynaklarını oluşturur.
+Bu öğreticide, [HCL](https://www.terraform.io/docs/configuration/syntax.html)kullanarak küçük bir işlem kümesi oluşturmayı göreceksiniz. 
 
-Bu öğreticide şunları yaptınız:
+Aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure kimlik doğrulamasını ayarlama
-> * Terraform yapılandırma dosyası oluşturma
-> * Terraform'u başlatma
-> * Terraform yürütme planı oluşturma
-> * Terraform yürütme planını uygulama
+> * Azure kimlik doğrulamasını ayarlayın.
+> * Bir Terrayform yapılandırma dosyası oluşturun.
+> * Bir yük dengeleyici oluşturmak için bir Terrayform yapılandırma dosyası kullanın.
+> * Bir kullanılabilirlik kümesinde iki Linux VM dağıtmak için bir Terrayform yapılandırma dosyası kullanın.
+> * Terraform'u başlatın.
+> * Terrayform yürütme planı oluşturun.
+> * Azure kaynaklarını oluşturmak için Terrayform yürütme planını uygulayın.
 
 ## <a name="1-set-up-azure-authentication"></a>1. Azure kimlik doğrulamasını ayarlama
 
@@ -53,16 +52,16 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
-6. Terraform değişkenlerinin değerlerini için yeni bir dosya oluşturun. Terraform değişken dosyaları genellikle `terraform.tfvars` olarak adlandırılır. Bunun nedeni Terraform'un geçerli dizinde bulunan `terraform.tfvars` adlı (veya `*.auto.tfvars` düzenine sahip) tüm dosyaları otomatik olarak yüklemesidir. 
+6. Terraform değişkenlerinin değerlerini için yeni bir dosya oluşturun. Terartform değişken dosyanızı, geçerli dizinde varsa, `terraform.tfvars` adlı herhangi bir dosyayı (veya `*.auto.tfvars`bir desen takip eden) otomatik olarak yüklediği `terraform.tfvars` adlandırma yaygındır. 
 
-7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları aşağıdaki gibi değiştirdiğinizden emin olun: İçin `subscription_id`, çalıştırırken `az account set`belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
+7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları şu şekilde değiştirdiğinizden emin olun: `subscription_id` için `az account set` komutunu çalıştırdığınızda belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -71,7 +70,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
    client_secret = "<password-returned-from-creating-a-service-principal>"
    ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Terraform yapılandırma dosyası oluşturma
+## <a name="2-create-a-terraform-configuration-file"></a>2. bir Terrayform yapılandırma dosyası oluşturma
 
 Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluşturacaksınız.
 
@@ -88,60 +87,60 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -218,9 +217,9 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
    }
    ```
 
-## <a name="3-initialize-terraform"></a>3. Terraform'u başlatma 
+## <a name="3-initialize-terraform"></a>3. Terrayform 'u başlatma 
 
-[terraform init komutu](https://www.terraform.io/docs/commands/init.html), önceki bölümlerde oluşturduğunuz Terraform yapılandırma dosyalarını içeren bir dizin başlatmak için kullanılır. Yeni bir Terraform yapılandırması yazdıktan sonra `terraform init` komutunu çalıştırmanız önerilir. 
+[terraform init komutu](https://www.terraform.io/docs/commands/init.html), önceki bölümlerde oluşturduğunuz Terraform yapılandırma dosyalarını içeren bir dizin başlatmak için kullanılır. Yeni bir tersform yapılandırması yazdıktan sonra her zaman `terraform init` komutunu çalıştırmak iyi bir uygulamadır. 
 
 > [!TIP]
 > `terraform init` komutu bir kere etkilidir ve tekrar tekrar çağrılarak aynı sonuç elde edilebilir. Bu nedenle bir işbirliğine dayalı bir ortamda çalışıyorsanız ve yapılandırma dosyalarınızın değiştirilmiş olabileceğini düşünüyorsanız planı yürütmeden veya uygulamadan önce `terraform init` komutunu çalıştırmanız yararlı olacaktır.
@@ -233,31 +232,48 @@ Terraform'u başlatmak için şu komutu çalıştırın:
 
   ![Terraform'u başlatma](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
 
-## <a name="4-create-a-terraform-execution-plan"></a>4. Terraform yürütme planı oluşturma
+## <a name="4-create-a-terraform-execution-plan"></a>4. bir Terrayform yürütme planı oluşturma
 
 [terraform plan komutu](https://www.terraform.io/docs/commands/plan.html), yürütme planı oluşturmak için kullanılır. Terraform, yürütme planı oluşturmak için geçerli dizindeki tüm `.tf` dosyalarını toplar. 
 
-İşbirliğine dayalı bir ortamda çalışıyorsanız ve yürütme planını oluşturduğunuz zamanla yürütme planını uyguladığınız zaman arasında yapılandırmanın değişmiş olma ihtimali varsa [terraform plan komutunun -out parametresini](https://www.terraform.io/docs/commands/plan.html#out-path) kullanarak yürütme planını dosyaya kaydetmeniz gerekir. Tek kişilik bir ortamda çalışıyorsanız `-out` parametresini kullanmanız gerekmez.
+[-Out parametresi](https://www.terraform.io/docs/commands/plan.html#out-path) , yürütme planını bir çıkış dosyasına kaydeder. Bu özellik, çok dev ortamlarında ortak olan eşzamanlılık sorunlarını giderir. Çıkış dosyası tarafından çözülen bir sorun aşağıdaki senaryodur:
 
-Terraform değişkenleri dosyanızın adı `terraform.tfvars` değilse ve `*.auto.tfvars` düzenini kullanmıyorsa `terraform plan` komutunu çalıştırırken [terraform plan komutunun -var-file parametresini](https://www.terraform.io/docs/commands/plan.html#var-file-foo) kullanarak dosya adını belirtmeniz gerekir.
+1. Geliştirme 1, yapılandırma dosyasını oluşturur.
+1. Geliştirme 2, yapılandırma dosyasını değiştirir.
+1. Geliştirici 1 yapılandırma dosyasını uygular (çalıştırır).
+1. Dev 1, Dev 2 ' nin yapılandırmayı değiştirmediğini bilmeyen beklenmedik sonuçlar alıyor.
 
-Terraform, `terraform plan` komutunu işlerken yenileme gerçekleştirir ve yapılandırma dosyalarınızda belirtilen istenen duruma ulaşmak için gerekli olan eylemleri belirler.
+Geliştirme 1 bir çıkış dosyası belirtildiğinde, Dev 2 ' nin dev 1 ' i etkilemesini önler. 
 
-Yürütme planınızı kaydetmenize gerek yoksa şu komutu çalıştırın:
+Yürütme planınızı kaydetmeniz gerekmiyorsa, aşağıdaki komutu çalıştırın:
 
   ```bash
   terraform plan
   ```
 
-Yürütme planınızı kaydetmeniz gerekiyorsa şu komutu çalıştırın (&lt;path> yer tutucusunun yerine istediğiniz çıkış yolunu yazın):
+Yürütme planınızı kaydetmeniz gerekiyorsa, aşağıdaki komutu çalıştırın. Yer tutucuları ortamınız için uygun değerlerle değiştirin.
 
   ```bash
   terraform plan -out=<path>
   ```
 
+Başka bir yararlı parametre [-var-dosyası](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+
+Varsayılan olarak, Terlım, değişkenleri dosyanızı şu şekilde bulmaya çalıştı:
+- `terraform.tfvars` adlı dosya
+- İle adlı dosya şu kalıbı kullanıyor: `*.auto.tfvars`
+
+Ancak, değişkenler dosyanız önceki iki kurallardan birini izlemelidir. Bu durumda, `-var-file` parametresiyle birlikte değişkenlerin dosya adını belirtin. Aşağıdaki örnekte bu nokta gösterilmektedir:
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+Terrayform, yapılandırma dosyasında belirtilen durumu elde etmek için gereken eylemleri belirler.
+
 ![Terraform yürütme planı oluşturma](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. Terraform yürütme planını uygulama
+## <a name="5-apply-the-terraform-execution-plan"></a>5. Terrayform yürütme planını uygulayın
 
 Bu öğreticinin son adımı [terraform apply komutunu](https://www.terraform.io/docs/commands/apply.html) kullanarak `terraform plan` komutuyla oluşturulan eylem kümesini uygulamaktır.
 
@@ -267,7 +283,7 @@ En güncel yürütme planını uygulamak istiyorsanız şu komutu çalıştırı
   terraform apply
   ```
 
-Önceden kaydedilen bir yürütme planını uygulamak istiyorsanız şu komutu çalıştırın (&lt;path> yer tutucusunun yerine kaydedilen yürütme planınızın bulunduğu yolu yazın):
+Daha önce kaydedilmiş bir yürütme planı uygulamak istiyorsanız aşağıdaki komutu çalıştırın. Yer tutucuları ortamınız için uygun değerlerle değiştirin:
 
   ```bash
   terraform apply <path>
@@ -277,5 +293,5 @@ En güncel yürütme planını uygulamak istiyorsanız şu komutu çalıştırı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Terraform modülleri](https://registry.terraform.io/modules/Azure) listesine göz atma
-- [Terraform ile sanal makine ölçek kümesi](terraform-create-vm-scaleset-network-disks-hcl.md) oluşturma
+> [!div class="nextstepaction"] 
+> [Terrayform kullanarak bir Azure sanal makine ölçek kümesi oluşturma](terraform-create-vm-scaleset-network-disks-hcl.md)

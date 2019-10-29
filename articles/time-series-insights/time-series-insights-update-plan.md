@@ -1,21 +1,21 @@
 ---
 title: Azure Time Series Insights Preview ortamınızı planlayın | Microsoft Docs
 description: Azure Time Series Insights Preview ortamınızı planlayın.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dc4336629a4c3b9da906daefca160c5a305603dc
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550184"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990879"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights Preview ortamınızı planlayın
 
@@ -26,7 +26,7 @@ Bu makalede Azure Time Series Insights önizlemeyi kullanarak hızlı bir şekil
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Planlama ve hazırlık için en iyi uygulamalar
 
-Time Series Insights kullanmaya başlamak için, şunları anladıysanız en iyi seçenektir:
+Ortamınızı planlamaya ve hazırlamaya yönelik en iyi uygulamalar aşağıdaki makalelerde daha ayrıntılı olarak açıklanmıştır:
 
 * [Time Series Insights önizleme ortamı sağladığınızda](#the-preview-environment)alacağınız Özellikler.
 * [Zaman serisi kimlikleriniz ve zaman damgası özellikleridir](#configure-time-series-ids-and-timestamp-properties).
@@ -43,11 +43,22 @@ Time Series Insights bir önizleme ortamı sağladığınızda iki Azure kaynağ
 * Azure Time Series Insights önizleme ortamı
 * Azure depolama genel amaçlı v1 hesabı
 
+Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek isteyip istemediğinizi belirlersiniz. Sıcak mağaza size katmanlı bir sorgu deneyimi sağlar. Etkinleştirildiğinde, 7 ila 30 gün arasında bir saklama süresi belirtmeniz gerekir. Sıcak mağaza Bekletme dönemi içinde yürütülen sorgular genellikle daha hızlı yanıt süreleri sağlar. Bir sorgu, yarı zamanlı saklama süresi üzerinden yayıldığında, soğuk depolama alanından sunulur.
+
+Isınma mağazasındaki sorgular ücretsizdir, ancak soğuk depodaki sorgular maliyetlendirilir. Sorgu desenlerinizi anlamanız ve ısınma Mağazası yapılandırmanızı buna göre planlamanız önemlidir. En son veriler üzerinde etkileşimli analizler 'in, ısınma mağazalarınızın yanı sıra, uzun süreli eğilimler soğuk bir şekilde bulunmasını öneririz.
+
+> [!NOTE]
+> Şu anda, yarı depolama ile en fazla 1.000 Özellik destekliyoruz.
+
 Başlamak için üç ek öğe gereklidir:
 
 * [Zaman serisi modeli](./time-series-insights-update-tsm.md)
 * [Time Series Insights bağlı bir olay kaynağı](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * Hem modele eşlenmiş hem de geçerli JSON biçiminde olan [olay kaynağına akan olaylar](./time-series-insights-send-events.md)
+
+## <a name="review-preview-limits"></a>Önizleme sınırlarını gözden geçirin
+
+[!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
 
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>Zaman serisi kimliklerini ve zaman damgası özelliklerini yapılandırma
 
@@ -58,7 +69,7 @@ Yeni bir Time Series Insights ortamı oluşturmak için bir zaman serisi KIMLIĞ
 
 Kaynaklarınızı benzersiz şekilde ayırt etmek için en fazla üç anahtar seçebilirsiniz. Daha fazla bilgi için, zaman serisi KIMLIĞI ve [depolama ve](./time-series-insights-update-storage-ingress.md)giriş [seçmek üzere en iyi uygulamaları](./time-series-insights-update-how-to-id.md) okuyun.
 
-Timestamp özelliği de önemlidir. Olay kaynaklarını eklediğinizde bu özelliği belirleyebilirsiniz. Her olay kaynağında, olay kaynaklarını zaman içinde izlemek için kullanılan isteğe bağlı bir zaman damgası özelliği vardır. Zaman damgası değerleri büyük/küçük harfe duyarlıdır ve her bir olay kaynağının tek bir belirtimine biçimlendirilmelidir.
+**Timestamp** özelliği de önemlidir. Olay kaynaklarını eklediğinizde bu özelliği belirleyebilirsiniz. Her olay kaynağında, olay kaynaklarını zaman içinde izlemek için kullanılan isteğe bağlı bir zaman damgası özelliği vardır. Zaman damgası değerleri büyük/küçük harfe duyarlıdır ve her bir olay kaynağının tek bir belirtimine biçimlendirilmelidir.
 
 > [!TIP]
 > Olay kaynaklarınız için biçimlendirme ve ayrıştırma gereksinimlerini doğrulayın.
@@ -80,7 +91,7 @@ Time Series Insights olayları gönderme yolunu doğrulayabilirsiniz. İdeal ola
 Parmak için iyi bir kural:
 
 * Meta verileri zaman serisi modelinize depolayın.
-* Zaman serisi modu, örnek alanları ve olaylar yalnızca bir zaman serisi KIMLIĞI veya zaman damgası gibi gerekli bilgileri içerir.
+* Zaman serisi modunun, örnek alanlarının ve olayların yalnızca gerekli bilgileri (örneğin, zaman serisi KIMLIĞI veya zaman damgası özelliği) içerdiğinden emin olun.
 
 Daha fazla bilgi için bkz. [Şekil olayları](./time-series-insights-send-events.md#supported-json-shapes).
 
@@ -89,7 +100,5 @@ Daha fazla bilgi için bkz. [Şekil olayları](./time-series-insights-send-event
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Advisor](../advisor/advisor-overview.md) 'ı inceleyerek iş kurtarma yapılandırması seçeneklerinizi planlayın.
-
 - Time Series Insights önizlemede [depolama ve](./time-series-insights-update-storage-ingress.md) giriş hakkında daha fazla bilgi edinin.
-
 - Time Series Insights önizlemede [veri modelleme](./time-series-insights-update-tsm.md) hakkında bilgi edinin.

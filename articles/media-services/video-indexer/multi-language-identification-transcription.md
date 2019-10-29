@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862050"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968734"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Çoklu dil içeriğini otomatik olarak tanımla ve yeniden tanımla (Önizleme)
 
@@ -39,7 +39,7 @@ Videonuzu karşıya yüklerken ve dizin oluştururken **Çoklu dil algılama** s
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>API ile dizin oluşturma sırasında çok dilli kimlik seçme
 
-API 'yi kullanarak bir videoyu dizinleme veya [yeniden dizinleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) yaparken, `multi-language detection` `sourceLanguage` parametresindeki seçeneği belirleyin.
+API kullanarak bir videoyu dizinleme veya [yeniden dizinleme](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) yaparken, `sourceLanguage` parametresindeki `multi-language detection` seçeneğini belirleyin.
 
 ### <a name="model-output"></a>Model çıkışı
 
@@ -75,7 +75,7 @@ Ayrıca, döküm bölümündeki her bir örnek, oluşturulduğu dili içerir
 
 ## <a name="guidelines-and-limitations"></a>Kılavuzlar ve sınırlamalar
 
-* Desteklenen dillerin kümesi: İngilizce, Fransızca, Almanca, Ispanyolca.
+* Desteklenen dillerin kümesi: Ingilizce, Fransızca, Almanca, Ispanyolca.
 * Desteklenen üç dile kadar çok dilli içerik desteği.
 * Ses yukarıda desteklenen listeden farklı diller içeriyorsa sonuç beklenmedik olur.
 * Her dil için 15 saniyelik en az kesim uzunluğu.
@@ -86,9 +86,8 @@ Ayrıca, döküm bölümündeki her bir örnek, oluşturulduğu dili içerir
 * Proje oluşturma ve düzenlemesi Şu anda çok dilli videolar için kullanılamaz.
 * Özel dil modelleri, çoklu dil algılama kullanılırken kullanılamaz.
 * Anahtar sözcük ekleme desteklenmiyor.
-* "güncelleştirme dökümü" API 'SI desteklenmiyor.
 * Kapalı açıklamalı altyazı dosyalarını dışa aktarırken dil göstergesi görünmez.
-
+* Güncelleştirme dökümü API 'SI birden çok dil dosyasını desteklemiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

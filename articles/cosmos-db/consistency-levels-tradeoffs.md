@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755177"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990614"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Tutarlılık, kullanılabilirlik ve performans dengeleri 
 
@@ -62,6 +62,10 @@ Aşağıdaki tabloda, bölge genelinde kesinti olması durumunda tutarlılık mo
 *K* = bir öğenin *"K"* sürümlerinin (yani Updates) sayısı.
 
 *T* = son güncelleştirmeden bu yana *"t"* zaman aralığı.
+
+## <a name="strong-consistency-and-multi-master"></a>Güçlü tutarlılık ve çoklu yönetici
+
+Birden çok yönetici için yapılandırılmış Cosmos hesapları, dağıtılmış bir sistem için sıfır ve 0 ' ın bir RPO sağlaması mümkün olmadığından, güçlü tutarlılık için yapılandırılamaz. Ayrıca, herhangi bir bölgedeki herhangi bir yazma çoğaltılması ve hesaptaki tüm yapılandırılmış bölgelere yürütülmesi için, çok yöneticili ile güçlü tutarlılık kullanılmasına yönelik yazma gecikme avantajları yoktur. Bu, tek bir ana hesapla aynı yazma gecikmesine neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

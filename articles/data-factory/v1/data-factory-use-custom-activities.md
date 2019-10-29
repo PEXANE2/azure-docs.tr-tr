@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 2174e359f739cfdf3791c8ec64d1a95be2873555
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930905"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990661"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -556,7 +556,7 @@ Bu adımda, girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturac
    | 4 |2016-11-16T03:00:00 |2016-11-16 -03. txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
 
-    Bir giriş klasöründeki tüm dosyaların yukarıda belirtilen başlangıç zamanlarını içeren bir dilimin parçası olduğunu unutmayın. Bu dilim işlendiğinde, özel etkinlik her bir dosya boyunca tarar ve çıkış dosyasında arama teriminin ("Microsoft") oluşum sayısıyla birlikte bir satır üretir. Inputfolder 'da üç dosya varsa, her saatlik dilimin çıkış dosyasında üç satır vardır: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt, vb.
+    Bir giriş klasöründeki tüm dosyaların yukarıda belirtilen başlangıç zamanlarını içeren bir dilimin parçası olduğunu unutmayın. Bu dilim işlendiğinde, özel etkinlik her bir dosya boyunca tarar ve çıkış dosyasında arama teriminin ("Microsoft") oluşum sayısıyla birlikte bir satır üretir. Giriş klasöründe üç dosya varsa, her saatlik dilimin çıkış dosyasında üç satır vardır: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt, vb.
 3. **Outputdataset**'i dağıtmak için komut çubuğunda **Dağıt** ' a tıklayın.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Özel etkinliği kullanan bir işlem hattı oluşturma ve çalıştırma

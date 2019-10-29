@@ -1,5 +1,5 @@
 ---
-title: PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme-Azure Backup
+title: Azure VM yedekleme 'de SQL DB Yedekleme & PowerShell aracılığıyla geri yükleme Azure Backup
 description: Azure Backup ve PowerShell kullanarak Azure VM 'lerinde SQL veritabanlarını yedekleyin ve geri yükleyin.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249065"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969103"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
 Bu makalede, [Azure Backup](backup-overview.md) kurtarma hizmetleri kasasını kullanarak BIR Azure VM 'de SQL DB 'yi yedeklemek ve kurtarmak için Azure PowerShell nasıl kullanılacağı açıklanır.
 
@@ -471,7 +471,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>Yedekleme öğeleri için ilkeyi değiştirme
 
-Kullanıcı var olan ilkeyi değiştirebilir veya Policy1 ' den Policy2 ' ye yedeklenmiş öğenin ilkesini değiştirebilir. Yedeklenmiş bir öğeye yönelik ilkeleri değiştirmek için, ilgili ilkeyi ve yedekleme öğesini getirip parametre olarak Backup öğesi olan [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
+Kullanıcı var olan ilkeyi değiştirebilir veya Policy1 ' den Policy2 ' ye yedeklenmiş öğenin ilkesini değiştirebilir. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) komutunu kullanın.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

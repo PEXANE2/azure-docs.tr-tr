@@ -1,5 +1,5 @@
 ---
-title: Azure Backup hizmeti ile VM ayarlarından bir Azure VM 'yi yedekleme
+title: Azure Backup ile sanal makine ayarlarından bir Azure VM 'yi yedekleme
 description: Azure Backup hizmeti ile bir Azure VM 'yi nasıl yedekleyeceğinizi öğrenin
 author: dcurwin
 manager: carmonm
@@ -7,21 +7,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639778"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969038"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM ayarlarından bir Azure VM 'yi yedekleme
 
 Bu makalede, Azure VM 'lerinin [Azure Backup](backup-overview.md) hizmetiyle nasıl yedekleneceği açıklanır. Azure VM 'Leri, birkaç yöntem kullanarak yedekleyebilirsiniz:
 
 - Tek Azure VM: Bu makaledeki yönergeler, bir Azure VM 'yi doğrudan VM ayarlarından nasıl yedekleyeceğiniz açıklanır.
-- Birden çok Azure VM: Bir kurtarma hizmetleri Kasası ayarlayabilir ve birden çok Azure VM için yedeklemeyi yapılandırabilirsiniz. Bu senaryo için [Bu makaledeki](backup-azure-arm-vms-prepare.md) yönergeleri izleyin.
-
-
+- Birden çok Azure VM: bir kurtarma hizmetleri Kasası ayarlayabilir ve birden çok Azure VM için yedeklemeyi yapılandırabilirsiniz. Bu senaryo için [Bu makaledeki](backup-azure-arm-vms-prepare.md) yönergeleri izleyin.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -37,8 +35,7 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM ayarlarından yedekleme
 
-
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Tüm hizmetler** ' e tıklayın ve filtreye, **sanal makineler**yazın ve ardından **sanal makineler**' e tıklayın.
 3. VM 'Ler listesinden yedeklemek istediğiniz VM 'yi seçin.
 4. VM menüsünde **Yedekle**' ye tıklayın.
@@ -69,15 +66,13 @@ Azure VM 'lerini yedeklemek için, Azure Backup makinede çalışan VM aracısı
     - İlk Yedekleme tamamlanana kadar, son yedekleme **durumu** **uyarı (ilk yedekleme beklemede)** olarak gösterilir.
     - Sonraki zamanlanmış yedeklemenin ne zaman çalışacağını görmek için yedekleme ilkesi adına tıklayın.
 
-
 > [!NOTE]
-> Azure Backup hizmeti, anlık görüntünün depolanması için (VM kaynak grubu dışında), adlandırma biçimi **AzureBackupRG_geography_number** (örnek: AzureBackupRG_northeurope_1). Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin "anlık kurtarma anlık görüntüsünü sakla" bölümünde belirtildiği gibi gün boyunca tutulur. Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
+> Azure Backup hizmeti, anlık görüntüyü depolamak için **AzureBackupRG_geography_number** (örnek: AzureBackupRG_northeurope_1) ile ayrı bir kaynak grubu (VM kaynak grubu dışında) oluşturur. Bu kaynak grubundaki veriler, Azure sanal makine yedekleme ilkesinin "anlık kurtarma anlık görüntüsünü sakla" bölümünde belirtildiği gibi gün boyunca tutulur. Bu kaynak grubuna bir kilit uygulandığında yedekleme hatalara neden olabilir.<br>
 Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamalarından dışlanmalıdır, çünkü bu durum, bir kısıtlama ilkesi üzerinde kaynak noktası koleksiyonlarının oluşturulmasını engeller.
-
 
 ## <a name="run-a-backup-immediately"></a>Yedeklemeyi hemen Çalıştır
 
-1. Bir yedeklemeyi hemen çalıştırmak için VM menüsünde Yedekleme**Şimdi** **Yedekle ' ye** > tıklayın.
+1. Bir yedeklemeyi hemen çalıştırmak için, VM menüsünde yedekleme > **Şimdi**yedekle **'** ye tıklayın.
 
     ![Yedeklemeyi çalıştır](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
@@ -86,9 +81,6 @@ Bu kaynak grubu, bir kısıtlama ilkesi herhangi bir ad/etiket kısıtlamaların
     ![Yedekleme bekletme günü](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. Portal bildirimleri, yedekleme işinin tetiklendiğini bilmenizi sağlar. Yedekleme ilerlemesini izlemek için **Tüm Işleri görüntüle**' ye tıklayın.
-
-
-
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Kurtarma Hizmetleri kasasından yedekleme
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/18/2018
-ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 10/25/2019
+ms.openlocfilehash: 1bcb433230af856e92c7e418fc81b35bea549ddf
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122661"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987969"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>HDInsight üzerinde Apache Kafka otomatik olarak konu başlıkları oluşturacak şekilde yapılandırma
 
@@ -23,35 +23,33 @@ Varsayılan olarak, HDInsight üzerinde [Apache Kafka](https://kafka.apache.org/
 
 Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik konu oluşturmayı etkinleştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com), Kafka kümesini seçin.
+1. [Azure Portal](https://portal.azure.com), Kafka kümenizi seçin.
 
-2. __Kümeye Genel Bakış__' da __küme panosu__' nu seçin.
+1. **Küme panolarında**, **ambarı giriş**' i seçin.
 
-    ![Küme panosu seçiliyken portalın görüntüsü](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![Küme panosu seçiliyken portalın görüntüsü](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-3. Ardından __HDInsight kümesi panosu__' nu seçin. İstendiğinde, küme için oturum açma (yönetici) kimlik bilgilerini kullanarak kimlik doğrulaması yapın.
+    İstendiğinde, küme için oturum açma (yönetici) kimlik bilgilerini kullanarak kimlik doğrulaması yapın. Alternatif olarak, Kafka Kümenizin adı olan `CLUSTERNAME` `https://CLUSTERNAME.azurehdinsight.net/` doğrudan ' den Amabrı 'e bağlanabilirsiniz.
 
-    ![HDInsight kümesi Pano girişinin görüntüsü](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
-
-3. Sayfanın solundaki listeden Kafka hizmetini seçin.
+1. Sayfanın solundaki listeden Kafka hizmetini seçin.
 
     ![Apache ambarı hizmet listesi sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
-4. Sayfanın ortasında configs ' ı seçin.
+1. Sayfanın ortasında configs ' ı seçin.
 
     ![Apache ambarı hizmet yapılandırması yapılandırma](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. Filtre alanına bir değeri `auto.create`girin.
+1. Filtre alanına bir `auto.create`değeri girin.
 
     ![Apache ambarı arama filtresi alanı](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Bu, Özellik listesini filtreler ve `auto.create.topics.enable` ayarı görüntüler.
+    Bu, Özellik listesini filtreler ve `auto.create.topics.enable` ayarını görüntüler.
 
-6. Değerini `auto.create.topics.enable` olarak`true`değiştirin ve ardından Kaydet ' i seçin. Bir Note ekleyin ve sonra yeniden Kaydet ' i seçin.
+1. `auto.create.topics.enable` değerini `true`olarak değiştirip **Kaydet**' i seçin. Bir Note ekleyin ve sonra yeniden **Kaydet** ' i seçin.
 
     ![Auto. Create. konular. Enable girişinin görüntüsü](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Kafka hizmetini seçin, __Yeniden Başlat__' ı seçin ve ardından __etkilenen tümünü yeniden Başlat__' ı seçin. İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
+1. Kafka hizmetini seçin, __Yeniden Başlat__' ı seçin ve ardından __etkilenen tümünü yeniden Başlat__' ı seçin. İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
 
     ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
@@ -60,7 +58,7 @@ Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik k
 
 ## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
-Bir Azure Resource Manager şablonu kullanarak bir Kafka kümesi oluştururken, doğrudan öğesine ekleyerek `auto.create.topics.enable` `kafka-broker`ayarlayabilirsiniz. Aşağıdaki JSON kod parçacığında bu değerin `true`nasıl ayarlanacağı gösterilmektedir:
+Bir Azure Resource Manager şablonu kullanarak bir Kafka kümesi oluştururken, `auto.create.topics.enable` bir `kafka-broker`ekleyerek doğrudan ayarlayabilirsiniz. Aşağıdaki JSON kod parçacığında bu değerin `true`olarak nasıl ayarlanacağı gösterilmektedir:
 
 ```json
 "clusterDefinition": {

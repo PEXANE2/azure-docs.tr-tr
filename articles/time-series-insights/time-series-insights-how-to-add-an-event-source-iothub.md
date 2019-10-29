@@ -3,7 +3,7 @@ title: Azure Time Series Insights bir IoT Hub olay kaynağı ekleme | Microsoft 
 description: Bu makalede, Time Series Insights ortamınıza IoT Hub 'ına bağlanan bir olay kaynağının nasıl ekleneceği açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaac2e3e2fc489b364729711da151c28cde86d6c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f9dd79bacf2d21e0c7e7681e5217d5e874b2b30e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274713"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991206"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights ortamınıza IoT Hub olay kaynağı ekleme
 
@@ -42,7 +42,7 @@ IoT Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. **Ayarlar**' ın altında, **yerleşik uç noktalar**' ı seçin ve ardından **Olaylar** uç noktasını seçin.
 
-   [![-derleme uç noktaları sayfasında, olaylar düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
+   [Derleme uç noktaları sayfasında![olaylar düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
 
 1. **Tüketici grupları**' nın altında, Tüketici grubu için benzersiz bir ad girin. Yeni bir olay kaynağı oluştururken Time Series Insights ortamınızda aynı adı kullanın.
 
@@ -56,7 +56,7 @@ IoT Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
 1. **Ortam topolojisi**altında **olay kaynakları**' nı seçin ve ardından **Ekle**' yi seçin.
 
-   [![ olay kaynaklarını seçin ve sonra Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
+   [Olay kaynaklarını seçin![ve ardından Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
 
 1. **Yeni olay kaynağı** bölmesinde, **olay kaynağı adı**için, bu Time Series Insights ortamına özgü bir ad girin. Örneğin, **olay akışını**girin.
 
@@ -66,11 +66,11 @@ IoT Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
    * Aboneliklerinizden birinde bir IoT Hub 'ınız zaten varsa, **kullanılabilir aboneliklerden IoT Hub kullan**' ı seçin. Bu seçenek en kolay yaklaşımdır.
    
-     [![ yeni olay kaynağı bölmesinde seçenekleri belirleyin](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
+     [Yeni olay kaynağı bölmesindeki seçenekleri seçin![](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
 
     * Aşağıdaki tabloda, **kullanılabilir abonelikler arasından IoT Hub kullan** seçeneği için gereken özellikler açıklanmaktadır:
 
-       [![ yeni olay kaynağı bölmesi-kullanılabilir aboneliklerden IoT Hub kullan seçeneği içinde ayarlanacak Özellikler](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
+       [Yeni olay kaynağı bölmesi![-kullanılabilir aboneliklerden IoT Hub kullan seçeneğinde ayarlanacak Özellikler](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
 
        | Özellik | Açıklama |
        | --- | --- |

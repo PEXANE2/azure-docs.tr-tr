@@ -3,21 +3,20 @@ title: Azure Time Series Insights ortamına olay gönderme | Microsoft Docs
 description: Bir olay hub 'ını yapılandırmayı ve Azure Time Series Insights görüntüleyebileceğiniz olayları göndermek için örnek bir uygulama çalıştırmayı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: accf3adea08e713a7a2f06bb175c759ae66a72c0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2878a77918fdd1c1cd298ae536bcdd3bec065e91
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274599"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991136"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Olayları bir olay hub 'ı kullanarak Time Series Insights ortamına gönderme
 
@@ -30,14 +29,14 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 1. Olay Hub 'ınızı seçin.
 1. Bir olay hub 'ı oluşturduğunuzda, bir olay hub 'ı ad alanı oluşturuyorsunuz. Ad alanı içinde henüz bir olay hub 'ı oluşturmadıysanız, menüde, **varlıklar**altında bir olay hub 'ı oluşturun.  
 
-    [![Olay hub 'ları listesi](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
+    [Olay Hub 'ları![listesi](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. Bir olay hub 'ı oluşturduktan sonra, Olay Hub 'ları listesinden bunu seçin.
 1. Menüsünde, **varlıklar**altında **Event Hubs**' yi seçin.
 1. Yapılandırılacak Olay Hub 'ının adını seçin.
 1. **Genel bakış**altında **tüketici grupları**' nı ve ardından **Tüketici grubu**' nu seçin.
 
-    [![Bir Tüketici grubu oluşturma](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
+    [![Tüketici grubu oluşturma](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. Yalnızca Time Series Insights olay kaynağınız tarafından kullanılan bir tüketici grubu oluşturduğunuzdan emin olun.
 
@@ -46,11 +45,11 @@ Bu makalede, Azure Event Hubs 'da bir olay hub 'ı oluşturma ve yapılandırma 
 
 1. Menüde, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin ve ardından **Ekle**' yi seçin.
 
-    [![ paylaşılan erişim ilkeleri ' ni seçin ve ardından Ekle düğmesini seçin](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
+    [![paylaşılan erişim ilkeleri ' ni seçin ve ardından Ekle düğmesini seçin.](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
 1. **Yeni paylaşılan erişim Ilkesi Ekle** bölmesinde, **mysendpolicy**adlı bir paylaşılan erişim oluşturun. Bu paylaşılan erişim ilkesini, C# Bu makalenin ilerleyen kısımlarında bulunan örneklere olay göndermek için kullanırsınız.
 
-    [![ Ilke adı kutusuna MySendPolicy yazın](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
+    [Ilke adı kutusuna![MySendPolicy yazın.](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
 1. **Talep**altında **Gönder** onay kutusunu seçin.
 
@@ -62,7 +61,7 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
 1. Bir olay kaynağı oluşturmadıysanız, [bir olay kaynağı oluşturma](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)adımlarını izleyin.
 
-1. @No__t-0 için bir değer ayarlayın. **Zaman SERISI kimliği**hakkında daha fazla bilgi için bkz. [zaman serisi modelleri](./time-series-insights-update-tsm.md).
+1. `timeSeriesId`için bir değer ayarlayın. **Zaman SERISI kimliği**hakkında daha fazla bilgi için bkz. [zaman serisi modelleri](./time-series-insights-update-tsm.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Olayları, wınte milfrels örneğine gönder
 
@@ -70,20 +69,20 @@ Time Series Insights güncelleştirme, gelen telemetri verilerine bağlamsal ver
 
 1. Olay Hub örneğinizi seçin.
 
-1. @No__t-1**Mysendpolicy** **paylaşılan erişim ilkelerine**gidin. **Bağlantı dizesi-birincil anahtar**değerini kopyalayın.
+1. **Mysendpolicy** > **paylaşılan erişim ilkelerine** gidin. **Bağlantı dizesi-birincil anahtar**değerini kopyalayın.
 
-    [![ birincil anahtar bağlantı dizesinin değerini kopyalayın](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
+    [![birincil anahtar bağlantı dizesinin değerini kopyalayın](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
 1. https://tsiclientsample.azurewebsites.net/windFarmGen.html kısmına gidin. URL, sanal wındmill cihazları çalıştırır.
 1. Web sayfasındaki **Olay Hub 'ı bağlantı dizesi** kutusunda, [wındmill giriş alanına](#push-events-to-windmills-sample)kopyaladığınız bağlantı dizesini yapıştırın.
   
-    [![ birincil anahtar bağlantı dizesini Olay Hub 'ı bağlantı dizesi kutusuna yapıştırın](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
+    [![birincil anahtar bağlantı dizesini Olay Hub 'ı bağlantı dizesi kutusuna yapıştırın](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. **Başlamak Için tıklayın ' ı**seçin. Simülatör, doğrudan kullanabileceğiniz JSON örneği oluşturur.
 
 1. Azure portal olay hub 'ınıza geri dönün. **Genel bakış** sayfasında, Olay Hub 'ı tarafından alınan yeni olayları görürsünüz.
 
-    [![Olay hub 'ına ilişkin ölçümleri gösteren bir olay hub 'ına genel bakış sayfası](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
+    [Olay Hub 'ı için ölçümleri gösteren bir olay hub 'ı genel bakış sayfası![](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
 ## <a name="supported-json-shapes"></a>Desteklenen JSON şekilleri
 

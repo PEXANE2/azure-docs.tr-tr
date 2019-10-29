@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219459"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969068"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -28,9 +28,9 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Kurtarma Hizmetleri kasaları hakkında [daha fazla bilgi edinin](backup-azure-recovery-services-vault-overview.md) .
-- Azure VM yedeklemesi mimarisini [gözden geçirin](backup-architecture.md#architecture-direct-backup-of-azure-vms) , yedekleme süreci [hakkında bilgi edinin](backup-azure-vms-introduction.md) ve destek, sınırlamalar ve önkoşulları [gözden geçirin](backup-support-matrix-iaas.md) .
-- Kurtarma Hizmetleri için PowerShell nesne hiyerarşisini gözden geçirin.
+* Kurtarma Hizmetleri kasaları hakkında [daha fazla bilgi edinin](backup-azure-recovery-services-vault-overview.md) .
+* Azure VM yedeklemesi mimarisini [gözden geçirin](backup-architecture.md#architecture-direct-backup-of-azure-vms) , yedekleme süreci [hakkında bilgi edinin](backup-azure-vms-introduction.md) ve destek, sınırlamalar ve önkoşulları [gözden geçirin](backup-support-matrix-iaas.md) .
+* Kurtarma Hizmetleri için PowerShell nesne hiyerarşisini gözden geçirin.
 
 ## <a name="recovery-services-object-hierarchy"></a>Kurtarma Hizmetleri nesne hiyerarşisi
 
@@ -83,7 +83,6 @@ Başlamak için:
 
     Komut çıkışında, **Registrationstate** **kayıtlı**olarak değiştirilmelidir. Aksi takdirde, **[register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** cmdlet 'ini tekrar çalıştırmanız yeterlidir.
 
-
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size yol açabilir. Kurtarma Hizmetleri Kasası, bir yedekleme kasasından farklı.
@@ -93,11 +92,13 @@ Aşağıdaki adımlar, bir kurtarma hizmetleri Kasası oluşturma konusunda size
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
+
 2. Kurtarma Hizmetleri kasasını oluşturmak için [New-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) cmdlet 'ini kullanın. Kaynak grubu için kullanılan kasa için aynı konumu belirttiğinizden emin olun.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
+
 3. Kullanılacak depolama yedekliliği türünü belirtin; [yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy-lrs.md) veya coğrafi olarak [yedekli depolama (GRS)](../storage/common/storage-redundancy-grs.md)kullanabilirsiniz. Aşağıdaki örnek, testkasası için-BackupStorageRedundancy seçeneğinin Geoyedekli olarak ayarlandığını gösterir.
 
     ```powershell
@@ -130,8 +131,7 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
-## <a name="back-up-azure-vms"></a>Azure VM'lerini yedekleme
+## <a name="back-up-azure-vms"></a>Azure Sanal Makinelerini yedekleme
 
 Sanal makinelerinizi korumak için bir kurtarma hizmetleri Kasası kullanın. Korumayı uygulamadan önce, kasa bağlamını ayarlayın (kasada korunan veri türü) ve koruma ilkesini doğrulayın. Koruma ilkesi, yedekleme işlerinin çalıştırıldığı zamanlamanın ve her bir yedek anlık görüntüsünün ne kadar süre korunduğu zamanlamadır.
 
@@ -151,7 +151,8 @@ Azure PowerShell yönergelerine uygun olarak kasa bağlamı ayarını kullanımd
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
 $targetVault.ID
 ```
-Or
+
+Veya
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -193,10 +194,10 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 
 Bir yedekleme koruma ilkesi en az bir bekletme ilkesiyle ilişkilidir. Bir bekletme ilkesi, bir kurtarma noktasının silinmeden önce ne kadar süreyle saklanacağını tanımlar.
 
-- Varsayılan saklama ilkesini görüntülemek için [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) kullanın.
-- Benzer şekilde, varsayılan zamanlama ilkesini almak için [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) komutunu kullanabilirsiniz.
-- [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) cmdlet 'i, yedekleme ilkesi bilgilerini tutan bir PowerShell nesnesi oluşturur.
-- Zamanlama ve bekletme ilkesi nesneleri, New-AzRecoveryServicesBackupProtectionPolicy cmdlet 'ine giriş olarak kullanılır.
+* Varsayılan saklama ilkesini görüntülemek için [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) kullanın.
+* Benzer şekilde, varsayılan zamanlama ilkesini almak için [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) komutunu kullanabilirsiniz.
+* [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) cmdlet 'i, yedekleme ilkesi bilgilerini tutan bir PowerShell nesnesi oluşturur.
+* Zamanlama ve bekletme ilkesi nesneleri, New-AzRecoveryServicesBackupProtectionPolicy cmdlet 'ine giriş olarak kullanılır.
 
 Varsayılan olarak, bir başlangıç saati zamanlama Ilkesi nesnesinde tanımlanmıştır. Başlangıç saatini istenen başlangıç saatine dönüştürmek için aşağıdaki örneği kullanın. İstenen başlangıç saati UTC biçiminde de olmalıdır. Aşağıdaki örnek, günlük yedeklemeler için istenen başlangıç zamanının 01:00. UTC olduğunu varsayar.
 
@@ -371,7 +372,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 ### <a name="stop-protection"></a>Korumayı Durdur
 
-#### <a name="retain-data"></a>Verileri tut
+#### <a name="retain-data"></a>Verileri tutma
 
 Kullanıcı korumayı durdurmayı istiyorsa, [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet 'ini kullanabilirler. Bu, zamanlanmış yedeklemeleri durdurur, ancak şu anda yedeklenene kadar yedeklenen veriler sürekli olarak korunur.
 
@@ -380,7 +381,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Yedekleme verilerini sil
+#### <a name="delete-backup-data"></a>Yedekleme verilerini silme
 
 Kasadaki depolanan yedekleme verilerini tamamen kaldırmak için '-RemoveRecoveryPoints ' bayrağını [' devre dışı bırak](#retain-data)' seçeneğini eklemeniz yeterlidir.
 
@@ -473,7 +474,6 @@ Hangi yönetilen disklerin geri yükleneceği RG 'yi belirtmek için **Targetres
 >
 >
 
-
 ```powershell
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
@@ -507,10 +507,9 @@ Diskleri geri yükledikten sonra, VM 'yi oluşturmak için sonraki bölüme gidi
 
 Diskleri ve yapılandırma bilgilerini değiştirmek için aşağıdaki adımları gerçekleştirin:
 
-- 1\. adım: [Diskleri geri yükleme](backup-azure-vms-automation.md#restore-the-disks)
-- 2\. adım: [PowerShell kullanarak veri diskini ayırma](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-- 3\. adım: [PowerShell ile Windows VM 'ye veri diski iliştirme](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
-
+* 1\. Adım: [diskleri geri yükleme](backup-azure-vms-automation.md#restore-the-disks)
+* 2\. Adım: [PowerShell kullanarak veri diskini ayırma](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* 3\. Adım: [PowerShell Ile WINDOWS VM 'ye veri diski iliştirme](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
 
 ## <a name="create-a-vm-from-restored-disks"></a>Geri yüklenen disklerden bir VM oluşturma
 
@@ -647,6 +646,7 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
       ```
+
    **Anahtar/gizli dizileri kullanılabilir** olduktan ve şifreleme ayrıntıları Işletim sistemi blobu üzerinde ayarlandıktan sonra, aşağıda verilen betiği kullanarak diskleri bağlayın.
 
     Kaynak Keykasası/anahtar/gizli dizileri varsa yukarıdaki betiğin yürütülmesi gerekmez.
@@ -747,9 +747,9 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 > [!NOTE]
 > Şifrelenmiş VM geri yükleme diski işleminin bir parçası olarak oluşturulan JASON dosyalarını el ile silmenin emin olun.
-
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Azure VM yedeğinden dosyaları geri yükleme
 

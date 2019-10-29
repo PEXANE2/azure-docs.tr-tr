@@ -3,7 +3,7 @@ title: Azure Time Series Insights ortamınızda veri bekletmesini anlayın | Mic
 description: Bu makalede, Azure Time Series Insights ortamınızda verilerin bekletilmesini denetleyen iki ayar açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330919"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990119"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights veri saklama süresini anlama
 
@@ -88,9 +88,9 @@ Giriş devam ettiğinde:
 
 Etkilenen Event Hubs, Time Series Insights ' de duraklatma girişi gerçekleştiğinde veri kaybını en aza indirmek için **Ileti bekletme** özelliğini ayarlamayı göz önünde bulundurun.
 
-[![Olay hub 'ı ileti bekletme.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[Olay Hub 'ı ileti bekletmesini![.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Olay kaynağında (`timeStampPropertyName`) hiçbir özellik yapılandırılmamışsa, Time Series Insights varsayılan olarak, X ekseni olarak olay hub 'ındaki gelişün zaman damgasına sahip olur. @No__t-0 başka bir şey olacak şekilde yapılandırıldıysa, bu ortam, olaylar ayrıştırıldığında veri paketinde yapılandırılan `timeStampPropertyName` ' i arar.
+Olay kaynağında (`timeStampPropertyName`) hiçbir özellik yapılandırılmamışsa, Time Series Insights varsayılan olarak, X ekseni olarak olay hub 'ındaki gelişün zaman damgasına sahip olur. `timeStampPropertyName` başka bir şey olacak şekilde yapılandırıldıysa, ortam, olaylar ayrıştırıldığında veri paketinde yapılandırılan `timeStampPropertyName` arar.
 
 Ortamınızı ek kapasiteye uyum sağlayacak şekilde ölçeklendirmek veya saklama süresini artırmak için [Time Series Insights ortamınızı nasıl ölçeklendirebileceğiniz hakkında](time-series-insights-how-to-scale-your-environment.md) bilgi edinin.
 

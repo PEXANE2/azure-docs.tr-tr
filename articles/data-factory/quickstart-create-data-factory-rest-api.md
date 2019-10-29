@@ -13,14 +13,14 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a2d67c38a6e61cb6610b861c03544fae42406b1
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 4668a9a012b2e379d532091deec832d5f99dd1fc
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910157"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990636"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Hızlı Başlangıç: REST API kullanarak Azure veri fabrikası ve işlem hattı oluşturma
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Hızlı başlangıç: REST API kullanarak bir Azure Data Factory ve işlem hattı oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -88,7 +88,7 @@ $authHeader = @{
 }
 ```
 
-## <a name="create-a-data-factory"></a>Data factory oluştur
+## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 Veri fabrikası oluşturmak için aşağıdaki komutları çalıştırın:
 
@@ -115,7 +115,7 @@ Aşağıdaki noktalara dikkat edin:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
-* Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, aşağıdaki sayfada ilgilendiğiniz bölgeleri seçin ve ardından **analiz** ' i genişleterek **Data Factory**bulun: [Bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/). Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
 Örnek yanıt aşağıdaki gibidir:
 
@@ -188,9 +188,9 @@ $response | ConvertTo-Json
     "etag":"07011a57-0000-0100-0000-5d6e14a20000"
 }
 ```
-## <a name="create-datasets"></a>Veri kümeleri oluşturma
+## <a name="create-datasets"></a>Veri kümeleri oluşturun
 
-Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, iki veri kümesi oluşturursunuz: Inputdataset ve OutputDataset. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, blob kapsayıcısını (adföğreticisi), klasörü (giriş) ve kaynak verileri içeren dosyayı (. txt) belirtirsiniz. Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıktı veri kümesi tanımında, blob kapsayıcısını (adföğreticisi), klasörü (çıktı) ve verilerin kopyalandığı dosyayı belirtirsiniz.
+Bir kaynaktan havuza kopyalanacak verileri temsil eden bir veri kümesi tanımlayın. Bu örnekte, iki veri kümesi oluşturursunuz: ınputdataset ve OutputDataset. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, blob kapsayıcısını (adföğreticisi), klasörü (giriş) ve kaynak verileri içeren dosyayı (. txt) belirtirsiniz. Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıktı veri kümesi tanımında, blob kapsayıcısını (adföğreticisi), klasörü (çıktı) ve verilerin kopyalandığı dosyayı belirtirsiniz.
 
 **Inputdataset oluşturma**
 
@@ -304,7 +304,7 @@ $response | ConvertTo-Json
 Bu örnekte, işlem hattı bir etkinlik içerir ve giriş blob yolu ve çıkış blob yolu şeklinde iki parametre alır. Bu parametrelerin değerleri, işlem hattı tetiklendiğinde/çalıştırıldığında ayarlanır. Kopyalama etkinliği, önceki adımda girdi ve çıktı olarak oluşturulmuş blob veri kümesini ifade eder. Veri kümesi bir girdi veri kümesi olarak kullanıldığında girdi yolu belirtilir. Ayrıca, veri kümesi bir çıktı veri kümesi olarak kullanıldığında çıktı yolu belirtilir.
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",

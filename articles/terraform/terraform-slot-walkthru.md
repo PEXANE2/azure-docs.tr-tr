@@ -1,26 +1,23 @@
 ---
-title: Terraform ile Azure sağlayıcısı dağıtım yuvaları
+title: Öğretici-Terrayform kullanarak Azure dağıtım yuvaları ile altyapı sağlama
 description: Terraform ile Azure sağlayıcısı dağıtım yuvalarını kullanma öğreticisi
-services: terraform
-ms.service: azure
-keywords: terraform, devops, sanal makine, Azure, dağıtım yuvaları
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924981"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969285"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Azure dağıtım yuvalarıyla altyapı sağlamak için Terraform'u kullanma
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Öğretici: Terrayform kullanarak Azure dağıtım yuvaları ile altyapı sağlama
 
 [Azure dağıtım yuvalarını](/azure/app-service/deploy-staging-slots) kullanarak uygulamanızın farklı sürümleri arasında geçiş yapabilirsiniz. Bu özellik, bozuk dağıtımlarının etkisini en aza indirmenize yardımcı olur. 
 
-Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım adımları ile dağıtım yuvası kullanımı gösterilmektedir. Uygulamaların biri üretim yuvasında barındırılmaktadır. İkinci uygulama ise bir hazırlama yuvasında barındırılmaktadır. ("Üretim" ve "hazırlama" adları rasgele olur ve senaryonuzu temsil etmek istediğiniz herhangi bir şey olabilir.) Dağıtım yuvalarınızı yapılandırdıktan sonra, gerektiğinde iki yuva arasında geçiş yapmak için Terrayform kullanabilirsiniz.
+Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım adımları ile dağıtım yuvası kullanımı gösterilmektedir. Uygulamaların biri üretim yuvasında barındırılmaktadır. İkinci uygulama ise bir hazırlama yuvasında barındırılmaktadır. ("Üretim" ve "hazırlama" adları rastgele. Senaryolarınız için uygun olan her şey olabilir.) Dağıtım yuvalarınızı yapılandırdıktan sonra, gerektiğinde iki yuva arasında geçiş yapmak için Terrayform kullanırsınız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -64,13 +61,11 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
     cd deploy
     ```
 
-1. [vi editor](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) uygulamasını kullanarak `deploy.tf` adlı bir dosya oluşturun. Bu dosya [Terraform yapılandırmasını](https://www.terraform.io/docs/configuration/index.html) barındıracaktır.
+1. Cloud Shell'de `deploy.tf` adlı bir dosya oluşturun.
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. I tuşunu seçerek ekleme moduna geçin.
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
@@ -109,13 +104,7 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
     }
     ```
 
-1. Ekleme modundan çıkmak için Esc tuşunu seçin.
-
-1. Dosyayı kaydedin ve aşağıdaki komutu girerek VI düzenleyicisini kapatın:
-
-    ```bash
-    :wq
-    ```
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
 
 1. Dosyayı oluşturduğunuza göre şimdi içeriğini doğrulayabilirsiniz.
 
@@ -207,7 +196,7 @@ Test projesi deposundan çatal oluşturduktan sonra aşağıdaki adımları izle
 
 1. **Dağıtım seçeneği** sekmesinde **Tamam**'ı seçin.
 
-Bu işlemlerle üretim yuvasını dağıtmış oldunuz. Hazırlama yuvasını dağıtmak için bu bölümdeki tüm adımları gerçekleştirin ancak aşağıdaki değişiklikleri yapın:
+Bu noktada, üretim yuvasını dağıttık. Hazırlama yuvasını dağıtmak için aşağıdaki değişikliklerle önceki adımları uygulayın:
 
 - 3\. adımda **slotAppServiceSlotOne** kaynağını seçin.
 
@@ -219,8 +208,6 @@ Bu işlemlerle üretim yuvasını dağıtmış oldunuz. Hazırlama yuvasını da
 
 Önceki bölümlerde GitHub'daki farklı dallardan dağıtım yapmak için **slotAppService** ve **slotAppServiceSlotOne** olmak üzere iki yuva ayarladınız. Şimdi web uygulamalarının önizlemesini yaparak başarıyla dağıtıldıklarını doğrulayalım.
 
-Aşağıdaki adımları 2 kez gerçekleştirin. 3\. adımda önce **slotAppService** öğesini ve ardından **slotAppServiceSlotOne** öğesini seçin.
-
 1. Azure portalın ana menüsünde **Kaynak grupları**’nı seçin.
 
 1. **slotDemoResourceGroup** öğesini seçin.
@@ -231,18 +218,15 @@ Aşağıdaki adımları 2 kez gerçekleştirin. 3\. adımda önce **slotAppServi
 
     ![Uygulamayı oluşturmak için genel bakış sayfasındaki URL'yi seçin](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Azure'ın siteyi GitHub'dan derlemesi ve dağıtması birkaç dakika sürebilir.
->
->
+1. Seçilen uygulamaya bağlı olarak, aşağıdaki sonuçları görürsünüz:
+    - **Slotappservice** Web uygulaması- **yuva tanıtım uygulaması 1**' ın sayfa başlığına sahip mavi sayfa. 
+    - **Slotappserviceslotone** Web uygulaması-yeşil sayfa, **yuva tanıtım uygulaması 2**sayfa başlığı.
 
-**slotAppService** web uygulaması için **Slot Demo App 1** başlığına sahip mavi bir sayfa görürsünüz. **slotAppServiceSlotOne** web uygulaması için **Slot Demo App 2** başlığına sahip mavi bir sayfa görürsünüz.
-
-![Uygulamaların önizlemesini yaparak doğru dağıtıldığından emin olun](./media/terraform-slot-walkthru/app-preview.png)
+    ![Uygulamaların önizlemesini yaparak doğru dağıtıldığından emin olun](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>İki dağıtım yuvasını değiştirme
 
-İki dağıtım yuvasını değiştirme testi için aşağıdaki adımları gerçekleştirin:
+İki dağıtım yuvası değiştirmeyi sınamak için aşağıdaki adımları uygulayın:
  
 1. **slotAppService** (mavi sayfalı uygulama) uygulamasını çalıştıran tarayıcı sekmesine geçin. 
 
@@ -256,13 +240,11 @@ Aşağıdaki adımları 2 kez gerçekleştirin. 3\. adımda önce **slotAppServi
     cd clouddrive/swap
     ```
 
-1. vi editor uygulamasını kullanarak `swap.tf` adlı bir dosya oluşturun.
+1. Cloud Shell'de `swap.tf` adlı bir dosya oluşturun.
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. I tuşunu seçerek ekleme moduna geçin.
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
@@ -278,13 +260,7 @@ Aşağıdaki adımları 2 kez gerçekleştirin. 3\. adımda önce **slotAppServi
     }
     ```
 
-1. Ekleme modundan çıkmak için Esc tuşunu seçin.
-
-1. Dosyayı kaydedin ve aşağıdaki komutu girerek VI düzenleyicisini kapatın:
-
-    ```bash
-    :wq
-    ```
+1. Dosyayı kaydedin ( **&lt;ctrl > S**) ve düzenleyiciden çıkın ( **&lt;Ctrl > Q**).
 
 1. Terraform'u başlatın.
 
@@ -304,7 +280,7 @@ Aşağıdaki adımları 2 kez gerçekleştirin. 3\. adımda önce **slotAppServi
     terraform apply
     ```
 
-1. Terraform yuva değiştirme işlemini tamamladıktan sonra **slotAppService** web uygulamasını çalıştıran tarayıcı sekmesine gidip sayfayı yenileyin. 
+1. Terrampaform yuvaları bulduktan sonra tarayıcıya geri dönün. Sayfayı yenileyin. 
 
 **slotAppServiceSlotOne** hazırlama yuvasındaki web uygulaması, üretim yuvasıyla değiştirilmiştir ve yeşil olarak görünür. 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 Uygulama değiştirildikten sonra özgün yapılandırmayı görürsünüz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"] 
+> [Azure 'da terrayform](/azure/ansible/)

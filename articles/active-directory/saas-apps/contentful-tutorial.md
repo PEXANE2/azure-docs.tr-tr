@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ffad0656169c49268eac6aa4a107f3445cba614
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600360"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Öğretici: çekişme ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -48,7 +48,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 * Çekişme **, tam zamanında** Kullanıcı sağlamayı destekler
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir. Tek bir kiracıda yalnızca bir örnek yapılandırılabilir.
 
 ## <a name="adding-contentful-from-the-gallery"></a>Galeriden çekişmeyi ekleme
 
@@ -57,9 +57,9 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **contenbir** yazın.
-1. Sonuçlar panelinden **çekişme** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Sonuçlarda **çekişme** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Azure AD çoklu oturum açmayı, çekişme için yapılandırma ve test etme
 
@@ -86,28 +86,28 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://be.contentful.com/sso/<organization_id>/consume`
+    - **Yanıt URL 'si** metin kutusunda, çakışma ' deki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür: `https://be.contentful.com/sso/<organization_id>/consume`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://be.contentful.com/sso/<organization_id>/login`
+    - **Oturum açma URL 'si** metin kutusunda, aynı ACS (onaylama tüketici hizmeti) URL 'sini kopyalayın. Şöyle görünür: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [çekişme istemci destek ekibine](mailto:support@contentful.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'si ve oturum açma URL 'si ile güncelleştirin ve bu URL 'YI, çakışma içindeki SSO kurulum sayfasından ACS (onaylama tüketici hizmeti) URL 'sini kopyalayarak açın.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **sertifika (ham)** bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificateraw.png)
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Çekişme ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Çekişme ayarla** bölümünde, CONTEN, SSO 'yu yapılandırmak için oturum açma URL 'sini kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](media/contentful-tutorial/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmede **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
@@ -129,13 +129,22 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak çekişme için 
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından sayfanın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından sayfanın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-contentful-sso"></a>Çekişme SSO 'yu yapılandırma
 
-**Çekişilmemiş** tarafta çoklu oturum açma 'yı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal ' den, uygun kopyalanmış URL 'leri [contente destek ekibine](mailto:support@contentful.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Çekişme** tarafında çoklu oturum açmayı yapılandırmak için bu adımları izleyin.
+
+1. [Çekişme](https://app.contentful.com)' de, **kuruluş ayarları**' nda SSO kurulum sayfasına gidin.
+1. **SSO ayarla**' ya tıklayın.
+1. Oturum açma URL 'sini Azure AD 'deki **contenced kurulum** bölümünden kopyalayıp yapıştırın.
+1. Azure AD 'den indirdiğiniz Base64 sertifika dosyasından sertifikayı kopyalayıp yapıştırın.
+1. SP tarafından başlatılan oturum açma için bir SSO adı ayarlayın.
+1. SSO 'yu **Etkinleştir**' e tıklayın.
+
+İşe yaramazsa, [çekişmeyen destek ekibine](mailto:support@contentful.com)ulaşın.
 
 ### <a name="create-contentful-test-user"></a>Çekişme test kullanıcısı oluştur
 
@@ -151,7 +160,7 @@ Erişim panelinde çekişme kutucuğuna tıkladığınızda, SSO 'yu ayarladığ
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
