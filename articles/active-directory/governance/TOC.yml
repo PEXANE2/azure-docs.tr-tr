@@ -42,6 +42,8 @@
           items:
             - name: Katalog oluşturucuları için temsilci seçme
               href: entitlement-management-delegate-catalog.md
+            - name: Bağlı kuruluş ekleme
+              href: entitlement-management-organization.md
             - name: Dış kullanıcılara yönelik idare erişimi
               href: entitlement-management-external-users.md
             - name: Raporları ve günlükleri görüntüleme

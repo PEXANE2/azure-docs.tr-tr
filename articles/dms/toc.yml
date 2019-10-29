@@ -53,8 +53,10 @@
       href: resource-scenario-status.md
     - name: Önkoşullara genel bakış
       href: pre-reqs.md
-    - name: Azure SQL DB yönetilen örneği geçişlerinin ağ topolojileri
+    - name: Azure SQL DB MI geçişlerinin ağ topolojileri
       href: resource-network-topologies.md
+    - name: SQL Server'dan Azure SQL DB MI'ye çevrimiçi geçişler için özel roller
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: Sorun çözümü ve bilinen sorunlar
       items:
         - name: Kaynak veritabanı bağlantı sorunlarını giderme

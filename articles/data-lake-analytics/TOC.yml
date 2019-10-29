@@ -40,8 +40,8 @@
               href: data-lake-analytics-manage-use-nodejs.md
         - name: Kullanıcı ekle
           href: data-lake-analytics-add-users.md
-        - name: İlkeler
-          href: data-lake-analytics-policies.md
+        - name: Hesap ilkeleri
+          href: data-lake-analytics-account-policies.md
         - name: İş klasörlerini koruma
           href: data-lake-analytics-secure.md
         - name: Tanılama günlüklerine erişim
@@ -118,6 +118,14 @@
           href: data-lake-analytics-cicd-test.md
         - name: U-SQL SDK’sı
           href: data-lake-analytics-u-sql-sdk.md
+    - name: U-SQL geliştiricileri için Apache Spark'ı anlama
+      items:
+        - name: U-SQL geliştiricileri için Apache Spark'ı anlama
+          href: data-lake-analytics-understand-spark-for-usql-developers.md
+        - name: Apache Spark veri biçimlerini anlama
+          href: data-lake-analytics-understand-spark-data-formats.md
+        - name: Apache Spark kod kavramlarını anlama
+          href: data-lake-analytics-understand-spark-code-concepts.md
 - name: Başvuru
   items:
     - name: Azure PowerShell

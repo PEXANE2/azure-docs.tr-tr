@@ -89,8 +89,8 @@
           href: 'cache-administration.md#schedule-updates'
         - name: redis-cli.exe erişimini yapılandırma
           href: cache-how-to-redis-cli-tool.md
-        - name: TLS 1.0 ve 1.1 kullanımını sonlandırma
-          href: cache-deprecate-tls-10-11.md
+        - name: TLS 1.0 ve 1.1'i kaldırma
+          href: cache-remove-tls-10-11.md
     - name: İzleme
       items:
         - name: Azure portalında izleme

@@ -1,36 +1,132 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Central Belgeleri
+### YamlMime:Hub
+title: IoT Central çözümlerinin belgeleri
+summary: Azure IoT Central hizmeti ve çözümlerinin belgelerini inceleyin.
+brand: azure
 metadata:
-  title: 'Azure IoT Central Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
-  description: 'Azure IoT Central, IoT varlıklarınızı uygun ölçekte bağlamanızı, izlemenizi ve yönetmenizi kolaylaştıran, tamamen yönetilen bir SaaS (hizmet olarak yazılım) çözümüdür. Azure IoT Central, IoT çözümünüzün ilk kurulumunu basitleştirir ve yönetim yüklerini, operasyonel maliyetleri ve normal bir IoT projesinin ek yüklerini ortadan kaldırır. Hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak Azure IoT Central uygulamasını oluşturmayı, özelleştirmeyi, yönetmeyi ve kullanmayı öğrenin.'
-  author: dominicbetts
-  ms.topic: landing-page
-  ms.date: 11/08/2017
-  ms.author: dobett
+  title: Azure IoT Central belge merkezi
+  description: Azure IoT Central hizmeti ve çözümlerinin belgelerini inceleyin.
   ms.service: iot-central
-  services: iot-central
-  manager: timlt
-abstract:
-  description: 'Azure IoT Central, IoT varlıklarınızı uygun ölçekte bağlamanızı, izlemenizi ve yönetmenizi kolaylaştıran, tamamen yönetilen bir SaaS (hizmet olarak yazılım) çözümüdür. Azure IoT Central, IoT çözümünüzün ilk kurulumunu basitleştirir ve yönetim yüklerini, operasyonel maliyetleri ve normal bir IoT projesinin ek yüklerini ortadan kaldırır. Hızlı başlangıç kılavuzlarımız ve öğreticilerimizden yararlanarak Azure IoT Central uygulamasını oluşturmayı, özelleştirmeyi, yönetmeyi ve kullanmayı öğrenin.'
-sections:
-  - title: Özellik Uyarısı
-    items:
-      - type: paragraph
-        text: 'Azure IoT Central tüm cihaz bağlantıları için Azure IoT Hub Cihazı Sağlama Hizmeti’ni (DPS) kullanmak üzere geçiş yaptı. Cihazları Azure IoT Central uygulamanıza kaydetmek ve bağlamak için DPS SDK''sını kullanmanız gerekecek. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Azure IoT Central''da Cihaz bağlantısı hakkında daha fazla bilgi edinin.</a> Sürekli veri aktarma özelliğini kullanan tüm uygulamaların ve/veya Power BI çözüm şablonunun hedef depolama kapsayıcısını değiştirmesi ve yeni bir çözüm şablonu oluşturması gerekecek.'
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: <a href="quick-deploy-iot-central">Yeni bir Azure IoT Central uygulaması oluşturmayı</a> öğrenin.
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: Azure IoT Central uygulamanızı özelleştirmeyi ve kullanmayı öğrenin.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-define-device-type">Yeni bir cihaz türü belirleme</a>
-          - html: <a href="tutorial-configure-rules">Kuralları yapılandırma</a>
-          - html: <a href="tutorial-customize-operator">İşlecin görünümünü özelleştirme</a>
-          - html: <a href="tutorial-monitor-devices">Cihazlarınızı izleme</a>
-          - html: <a href="tutorial-add-device">Gerçek cihaz ekleme</a>
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965882"
+highlightedContent:
+  items:
+  - title: IoT Central nedir?
+    itemType: overview
+    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Uygulama şablonları nedir?
+    itemType: concept
+    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Azure IoT Central Mimarisi
+    itemType: architecture
+    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Yeni uygulama oluşturma
+    itemType: quickstart
+    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Cihaz türü tanımlama ve cihaz ekleme
+    itemType: tutorial
+    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Cihazlarınızı izleme
+    itemType: tutorial
+    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+conceptualContent:
+  items:
+  - title: Bağlantı kurma (önizleme özellikleri)
+    links:
+    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Cihaz şablonu ayarlama
+    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: tutorial
+      text: IoT Tak Çalıştır cihazını bağlama
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Daha fazla göster
+  - title: Bağlantıyı sürdürme (önizleme özellikleri)
+    links:
+    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Cihaz gruplarını kullanma
+    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Cihazlarınızı yönetme
+    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: concept
+      text: İş çalıştırma
+    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Cihaz verilerinizi analiz etme
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Daha fazla göster
+  - title: Dönüştürme (önizleme özellikleri)
+    links:
+    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Telemetri kuralı oluşturma
+    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Verileri sürekli dışarı aktarmayı yapılandırma
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Daha fazla göster
+productDirectory:
+  title: Endüstri uygulama şablonlarıyla oluşturmaya başlama
+  summary: Oluşturmaya hazır mısınız? Çözüm oluşturucular için tasarlanmış endüstriye uygun uygulama şablonlarımızı gözden geçirin.
+  items:
+  - title: Perakende için oluşturma
+    imageSrc: ./retail/media/index/iot-central-retail.svg
+    links:
+    - text: Azure IoT Central ile perakende çözümleri oluşturma
+      url: ./retail/overview-iot-central-retail-pnp.md
+    - text: Perakende uygulaması oluşturma
+      url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
+    - text: Akıllı envanter yönetimi uygulaması oluşturma
+      url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: Bağlantılı lojistik uygulaması oluşturma
+      url: ./retail/tutorial-iot-central-connected-logistics-pnp.md
+    - text: Dijital dağıtım merkezi uygulaması oluşturma
+      url: ./retail/tutorial-iot-central-digital-distribution-center-pnp.md
+  - title: Sağlık hizmetleri için oluşturma
+    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
+    links:
+    - url: ./healthcare/overview-iot-central-healthcare.md
+      text: IoT Central ile sağlık çözümleri oluşturma
+    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
+      text: Sürekli hasta izleme uygulaması oluşturma
+  - title: Enerji sektörü için oluşturma
+    imageSrc: ./energy/media/index/iot-central-energy.svg
+    links:
+    - url: ./energy/overview-iot-central-energy.md
+      text: IoT Central ile enerji sektörü çözümleri oluşturma
+    - url: ./energy/tutorial-smart-meter-app.md
+      text: Akıllı sayaç izleme uygulaması oluşturma
+    - url: ./energy/tutorial-solar-panel-app.md
+      text: Güneş paneli izleme uygulaması oluşturma
+  - title: Kamu için oluşturma
+    imageSrc: ./government/media/index/iot-central-government.svg
+    links:
+    - url: ./government/overview-iot-central-government.md
+      text: IoT Central ile kamu çözümleri oluşturma
+    - url: ./government/tutorial-water-quality-monitoring.md
+      text: Su kalitesi izleme uygulaması oluşturma
+    - url: ./government/tutorial-water-consumption-monitoring.md
+      text: Su tüketimi izleme uygulaması oluşturma
+    - url: ./government/tutorial-connected-waste-management.md
+      text: Bağlantılı atık yönetimi uygulaması oluşturma
+additionalContent:
+  sections:
+  - items:
+    - title: IoT Central API'leri
+      summary: IoT Central API'lerini inceleyin.
+      url: https://docs.microsoft.com/rest/api/azure/
+    - title: Microsoft Learn'de IoT Central
+      summary: Ücretsiz bir korumalı alan ortamında IoT Central'ı inceleyin.
+      url: https://aka.ms/iotcentralapimslearnjourney

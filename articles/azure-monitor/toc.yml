@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: Günlük sorguları
           href: log-query/get-started-queries.md
-        - name: Günlük verilerini görselleştirme
+        - name: Günlük verilerini içeren pano
           href: learn/tutorial-logs-dashboards.md
         - name: Günlük verileriyle uyarı oluşturma
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: Uygulama kullanıcılarını anlama
           href: learn/tutorial-users.md
-        - name: Özel panolar oluşturma
+        - name: Uygulama verilerini içeren pano
           href: learn/tutorial-app-dashboards.md
     - name: Platform ölçüm ve günlük verilerini arşivleme
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: Çalışma Kitapları
           href: app/usage-workbooks.md
         - name: Panolar
-          href: app/app-insights-dashboards.md
+          items:
+            - name: Günlük verilerini kullanan pano
+              href: learn/tutorial-logs-dashboards.md
+            - name: Uygulama verilerini kullanan pano
+              href: learn/tutorial-app-dashboards.md
         - name: Grafana'ya veri gönderme
           href: platform/grafana-plugin.md
     - name: Uyarı
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: Yeni uyarılarda desteklenen ölçümler
           href: platform/alerts-metric-near-real-time.md
-    - name: Tanılama Günlükleri
-      items:
-        - name: 'Tanılama günlüklerine yönelik hizmetler, kategoriler ve şemalar'
-          href: platform/diagnostic-logs-schema.md
+    - name: 'Kaynak günlüğü hizmetleri, kategorileri ve şemaları'
+      href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (Önizleme)
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 'Uyarılar, Ölçümler, Etkinlik Günlüğü, Otomatik Ölçeklendirme'
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Günlükler
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST API
       items:

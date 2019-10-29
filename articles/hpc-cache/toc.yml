@@ -32,9 +32,13 @@
                   href: hpc-cache-ingest-manual.md
     - name: Önbelleğe bağlanma
       href: hpc-cache-mount.md
+    - name: Önbelleği yönetme
+      href: hpc-cache-manage.md
 - name: Kaynaklar
   items:
     - name: Destek bileti açma
       href: hpc-cache-support-ticket.md
     - name: Bölgesel kesintiden kurtulma
       href: hpc-region-recovery.md
+    - name: Azure HPC Önbelleği ile Azure NetApp Files'ı kullanma
+      href: hpc-cache-netapp.md

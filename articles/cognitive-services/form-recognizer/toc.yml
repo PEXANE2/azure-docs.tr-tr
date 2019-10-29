@@ -23,6 +23,10 @@
               href: quickstarts/python-receipts.md
     - name: .NET SDK’sini kullanma
       href: quickstarts/dotnet-sdk.md
+- name: Öğreticiler
+  items:
+    - name: Logic Apps ile Form Tanıma'yı kullanma
+      href: tutorial-form-recognizer-with-logic-apps.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Eğitim verileri kümesi oluşturma

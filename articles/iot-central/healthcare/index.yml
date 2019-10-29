@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Sağlık Hizmetleri için Azure IoT Central belgeleri
+summary: IoT Central uygulama şablonlarını kullanarak sağlık hizmetleri IoT çözümlerini oluşturmayı, özelleştirmeyi ve yönetmeyi öğrenin.
+metadata:
+  title: Sağlık Hizmetleri için Azure IoT Central belgeleri
+  description: IoT Central uygulama şablonlarını kullanarak sağlık hizmetleri IoT çözümlerini oluşturmayı, özelleştirmeyi ve yönetmeyi öğrenin.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: c2626e459411570ba54b322e5f1bbc22f69b6a62
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72937636"
+landingContent:
+- title: Sağlık çözümleri oluşturma
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sürekli hasta izlemeye genel bakış
+      url: overview-iot-central-healthcare.md
+  - linkListType: tutorial
+    links:
+    - text: Sürekli hasta izleme çözümü oluşturma
+      url: tutorial-continuous-patient-monitoring.md
+- title: Bağlanma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Cihaz şablonu ayarlama
+      url: ../core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: IoT Tak Çalıştır cihazını bağlama
+      url: ../core/tutorial-add-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: MX Chip IoT DevKit'i hazırlama ve bağlama
+      url: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Diğer IoT bulutlarına bağlanma
+      url: ../core/howto-build-iotc-device-bridge.md
+- title: Bağlı kalma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Cihaz gruplarını kullanma
+      url: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Cihazlarınızı yönetme
+      url: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: İş çalıştırma
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Cihaz verilerinizi analiz etme
+      url: ../core/howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Dönüşüm
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kural oluşturma
+      url: ../core/quick-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Telemetri kuralları oluşturma
+      url: ../core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Blob Depolama'ya aktarma
+      url: ../core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Özel kurallar oluşturma
+      url: ../core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Özel analiz oluşturma
+      url: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Yönetim
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uygulamanızı yönetme
+      url: ../core/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Kullanıcıları ve rolleri yönetme
+      url: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Faturanızı görüntüleme
+      url: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Uygulama kullanıcı arabirimini özelleştirme
+      url: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Kişisel panoları yapılandırma
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Pano kutucukları kullanma
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Uygulama şablonlarını kullanma
+      url: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json

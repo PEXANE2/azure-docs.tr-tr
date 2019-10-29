@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell kullanma
           href: virtual-machines-windows-ps-sql-create.md
-    - name: Kaynak sağlayıcısına kaydolma
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Lisanslama modelini değiştirme
-      href: virtual-machines-windows-sql-ahb.md
-    - name: Sürümü değiştirme
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: SQL VM RP ile kaydolma
+      displayName: 'resource provider, registration'
+      items:
+        - name: Tek VM
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: Birden fazla VM'yi toplu kaydetme
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: Yönetme
+      items:
+        - name: Lisanslama modeli
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: Sürüm
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: Yedekleme ve geri yükleme için Azure Depolama
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: Geçiş
       items:
-        - name: SQL Server veritabanını geçirme
+        - name: SQL Server veritabanından VM'ye
           href: virtual-machines-windows-migrate-sql.md
         - name: Yeni bir bölgeye yönelik VM
           href: virtual-machines-windows-sql-move-different-region.md
     - name: Yüksek Kullanılabilirliği Yapılandırma
       items:
-        - name: Yedekleme ve geri yükleme için Azure Depolama’yı Kullanma
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: AlwaysOn kullanılabilirlik grubu
           items:
             - name: Azure SQL VM CLI
