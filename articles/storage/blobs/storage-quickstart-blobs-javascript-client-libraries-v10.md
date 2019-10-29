@@ -9,16 +9,16 @@ ms.author: karler
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172826"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025360"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Hızlı Başlangıç: Tarayıcıda JavaScript/HTML için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, listeleme ve silme
+# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Hızlı başlangıç: tarayıcıda JavaScript/HTML için Azure Storage ile v10 arasındaki SDK 'sını kullanarak Blobları karşıya yükleme, listeleme ve silme
 
 Bu hızlı başlangıçta, tarayıcıdan tamamen tarayıcıda çalışan JavaScript kodundan blob 'ları yönetmek için [Azure Storage SDK ile v10 arasındaki for JavaScript-blob](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Kitaplığı ' nı kullanmayı öğreneceksiniz. Burada kullanılan yaklaşım, blob depolama hesabınıza korumalı erişimi güvence altına almak için gerekli güvenlik önlemlerinin nasıl kullanılacağını göstermektedir.
 
@@ -81,13 +81,13 @@ az storage account generate-sas \
 
 Her parametreden sonraki değer serisini biraz şifreli bulabilirsiniz. Bu parametre değerleri, kendi ilgili izninin ilk harfinden alınır. Aşağıdaki tabloda değerlerin nereden geldiği açıklanmıştır:
 
-| Parametre        | Value   | Açıklama  |
+| Parametre        | Değer   | Açıklama  |
 |------------------|---------|---------|
-| *izinleri*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
+| *permissions*    | racwdl  | Bu SAS *read*, *append*, *create*, *write*, *delete* ve *list* özelliklerine izin verir. |
 | *resource-types* | sco     | SAS’den etkilenen kaynaklar *service*, *container* ve *object* kaynaklarıdır. |
 | *services*       | b       | SAS’den etkilenen hizmet *blob* hizmetidir. |
 
-SAS oluşturuldığına göre, geri dönüş değerini kopyalayın ve yaklaşan bir adımda kullanmak üzere bir yere kaydedin. Azure CLI dışında bir yöntem kullanarak SAS oluşturduysanız, varsa ilk `?` öğeyi kaldırmanız gerekecektir. Bu karakter, daha sonra SAS kullanıldığı bu konunun URL şablonunda zaten sağlanmış olan bir URL ayırıcısıdır.
+SAS oluşturuldığına göre, geri dönüş değerini kopyalayın ve yaklaşan bir adımda kullanmak üzere bir yere kaydedin. Azure CLı dışında bir yöntem kullanarak SAS oluşturduysanız, varsa ilk `?` kaldırmanız gerekecektir. Bu karakter, daha sonra SAS kullanıldığı bu konunun URL şablonunda zaten sağlanmış olan bir URL ayırıcısıdır.
 
 > [!IMPORTANT]
 > Üretimde her zaman SSL kullanarak SAS belirteçlerini geçirin. Ayrıca, SAS belirteçleri sunucu üzerinde oluşturulmalı ve Azure Blob Depolama’ya geri geçirmek için HTML sayfasına gönderilmelidir. Düşünebileceğiniz bir yaklaşım, SAS belirteçleri oluşturmak için bir sunucusuz bir işlev kullanmaktır. Azure Portal, bir JavaScript işlevi ile SAS oluşturma özelliğine sahip işlev şablonları içerir.
@@ -126,7 +126,7 @@ Bu bölümde, temel bir Web sayfası oluşturacak ve sayfayı başlatıp hata ay
 
 VS Code hata ayıklayıcı uzantısını ayarlamak için, **hata ayıkla > yapılandırma Ekle...** ' yi seçin, ardından ön koşullar bölümüne yüklediğiniz uzantıya bağlı olarak **Chrome** veya **Edge**' i seçin. Bu eylem bir *Launch. JSON* dosyası oluşturur ve düzenleyicide açar.
 
-Ardından, *Launch. JSON* dosyasını `url` değeri `/index.html` gösterildiği gibi içerecek şekilde değiştirin:
+Sonra, `url` değeri gösterildiği gibi `/index.html` içermesi için *Launch. JSON* dosyasını değiştirin:
 
 ```json
 {
@@ -158,7 +158,7 @@ npx http-server
 
 Bu komut, *http-Server* paketini yükleyecek ve sunucuyu başlatarak, önceki adımda gösterilenler de dahil olmak üzere geçerli klasörü varsayılan URL 'ler aracılığıyla kullanılabilir hale getirir.
 
-### <a name="start-debugging"></a>Hata Ayıklamayı Başlat
+### <a name="start-debugging"></a>Hata ayıklamayı Başlat
 
 *İndex. html* dosyasını tarayıcıda vs Code hata ayıklayıcı ekli olarak başlatmak Için hata **Ayıkla > hata ayıklamayı Başlat** ' ı seçin veya vs Code ' de F5 tuşuna basın.
 
@@ -168,27 +168,27 @@ Görüntülenecek kullanıcı arabirimi henüz hiçbir şey yapmaz, ancak göste
 
 ### <a name="add-the-blob-storage-client-library"></a>BLOB depolama istemci kitaplığını ekleme
 
-Blob Storage API 'sine yapılan çağrıları etkinleştirmek için, önce [JavaScript-blob istemci kitaplığı Için Azure depolama SDK 'Sını indirin](https://aka.ms/downloadazurestoragejsblob), zip içeriğini ayıklayın ve *Azure-Storage. blob. js* dosyasını *Azure-Bloblar-JavaScript* klasörüne yerleştirin.
+Blob Storage API 'sine yapılan çağrıları etkinleştirmek için önce [JavaScript-blob istemci kitaplığı Için Azure depolama SDK 'Sını indirin](https://aka.ms/downloadazurestoragejsblob), zip içeriğini ayıklayın ve *Azure-Storage-blob. js* dosyasını *Azure-Blobları-JavaScript* klasörüne yerleştirin.
 
 Sonra, yer tutucu yorumunu değiştirerek, `</body>` kapanış etiketinden sonra aşağıdaki HTML 'yi *index. html* dosyasına yapıştırın.
 
 ```html
-<script src="azure-storage.blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 
 <script>
 // You'll add code here in the following sections.
 </script>
 ```
 
-Bu kod, betik dosyasına bir başvuru ekler ve kendi JavaScript kodunuz için bir yer sağlar. Bu hızlı başlangıç için, *Azure-Storage. blob. js* komut dosyasını kullanarak vs Code açabilir, içeriğini okuyabilir ve kesme noktaları ayarlayabilirsiniz. Üretimde, ZIP dosyasında da sağlanmış olan daha Compact *Azure-Storage. blob. min. js* dosyasını kullanmanız gerekir.
+Bu kod, betik dosyasına bir başvuru ekler ve kendi JavaScript kodunuz için bir yer sağlar. Bu hızlı başlangıç amacıyla, *Azure-Storage-blob. js* komut dosyasını kullanarak vs Code açabilir, içeriğini okuyabilir ve kesme noktaları ayarlayabilirsiniz. Üretimde, ZIP dosyasında da sağlanmış olan daha Compact *Azure-Storage. blob. min. js* dosyasını kullanmanız gerekir.
 
 [Başvuru belgelerindeki](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index)her bir BLOB depolama işlevi hakkında daha fazla bilgi edinebilirsiniz. SDK 'daki bazı işlevlerin yalnızca Node. js ' de kullanılabilir veya yalnızca tarayıcıda kullanılabilir olduğunu unutmayın.
 
-*Azure-Storage. blob. js* içindeki kod, BLOB depolama API 'lerine erişmek `azblob`için JavaScript kodunuzda kullanacağınız adlı bir genel değişkeni dışarı aktarır.
+*Azure-Storage-blob. js* içindeki kod, BLOB depolama API 'lerine erişmek için JavaScript kodunuzda kullanacağınız `azblob`adlı bir genel değişkeni dışa aktarır.
 
 ### <a name="add-the-initial-javascript-code"></a>İlk JavaScript kodunu ekleme
 
-Sonra, yer tutucu yorumunu değiştirerek, önceki `<script>` kod bloğunda gösterilen öğeye aşağıdaki kodu yapıştırın.
+Ardından, aşağıdaki kodu, yer tutucu yorumunu değiştirerek önceki kod bloğunda gösterilen `<script>` öğesine yapıştırın.
 
 ```javascript
 const createContainerButton = document.getElementById("create-container-button");
@@ -206,7 +206,7 @@ const reportStatus = message => {
 }
 ```
 
-Bu kod, aşağıdaki kodun kullanacağı her HTML öğesi için alanlar oluşturur ve çıktıyı göstermek için bir `reportStatus` işlev uygular.
+Bu kod, aşağıdaki kodun kullanacağı her HTML öğesi için alanlar oluşturur ve çıktıyı göstermek için bir `reportStatus` işlevi uygular.
 
 Aşağıdaki bölümlerde, bir önceki bloğundan sonra her bir JavaScript kodu bloğunu ekleyin.
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli `file-input` öğesine bağlar. Bu şekilde, düğme `click` olayı dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur `uploadFiles` ve işlev çağrılır. Bu işlev, seçtiğiniz her dosya için yalnızca Browser- [Uploadbrowserdatatoblockblob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) işlevini çağırır. Her çağrı, bir listeye eklenen bir Promise döndürür, böylece dosyalar paralel olarak karşıya yüklenmeye neden olur.
+Bu kod, **dosyaları seç ve karşıya yükle** düğmesini gizli `file-input` öğesine bağlar. Bu şekilde, düğme `click` olayı dosya girişi `click` olayını tetikler ve dosya seçiciyi görüntüler. Dosyaları seçtikten ve iletişim kutusunu kapattıktan sonra, `input` olay oluşur ve `uploadFiles` işlevi çağrılır. Bu işlev, seçtiğiniz her dosya için yalnızca Browser- [Uploadbrowserdatatoblockblob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) işlevini çağırır. Her çağrı, bir listeye eklenen bir Promise döndürür, böylece dosyalar paralel olarak karşıya yüklenmeye neden olur.
 
 ### <a name="delete-blobs"></a>Blob’ları silme
 
@@ -346,7 +346,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-Bu kod, listede seçilen her dosyayı kaldırmak için [Bloburl. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) işlevini çağırır. Daha sonra **Dosya** listesinin `listFiles` içeriğini yenilemek için daha önce gösterilen işlevi çağırır.
+Bu kod, listede seçilen her dosyayı kaldırmak için [Bloburl. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) işlevini çağırır. Daha sonra **Dosya** listesinin içeriğini yenilemek için daha önce gösterilen `listFiles` işlevini çağırır.
 
 ### <a name="run-and-test-the-web-application"></a>Web uygulamasını çalıştırma ve test etme
 

@@ -6,14 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 57c08bdcc0b97d411b1519954cb26374fcb57a23
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7c8b2379ccb7562a79077df026a7083831e5415b
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957296"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027258"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Öğretici: akıllı envanter yönetimi uygulama şablonunu dağıtma ve yönetme
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Bu öğreticide, bir IoT Central **Smart Inventory Management** uygulama şablonu dağıtarak nasıl başlatılacağınız gösterilmektedir. Şablonu dağıtmayı, kutudan hangilerinin ekleneceğini ve daha sonra ne yapmak isteyebileceğiniz hakkında bilgi edineceksiniz.
 

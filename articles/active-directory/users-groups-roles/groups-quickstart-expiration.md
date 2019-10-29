@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aabfe803a6ee40491dd95fe7def9a31838c80e65
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928986"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024621"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory'de Office 365 grupları için süre sonu ayarlama
 
@@ -27,13 +27,13 @@ Bu hızlı başlangıçta Office 365 gruplarınız için süre sonu ilkesini aya
 
 Süre sonu ilkesi oldukça basittir:
 
-- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir (Önizleme)
+- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir
 - Grup sahiplerine süresi dolan bir grupla ilgili yenileme bildirimi gönderilir
 - Yenilenmeyen gruplar silinir
 - Silinen Office 365 grupları, grup sahibi veya bir Azure AD yöneticisi tarafından 30 gün içinde geri yüklenebilir
 
 > [!NOTE]
-> Gruplar artık Azure AD zekasını, en son kullanımda olup olmadıklarından (Şu anda genel önizlemede, bu nedenle kaydolma gerekli değildir) göre otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint, takımlar, Yammer ve diğerleri gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel alır.
+> Gruplar artık, son kullanımda olup olmadığına göre otomatik olarak yenilenmekte olan Azure AD zekasını kullanır. Bu yenileme kararı Outlook, SharePoint, takımlar, Yammer ve diğerleri gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel alır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 

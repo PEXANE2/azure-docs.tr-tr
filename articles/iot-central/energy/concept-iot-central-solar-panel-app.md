@@ -8,19 +8,22 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 61a2b00bee7b16e3cc62a010ca454466cb0292a0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: bf109d91582bc08a3922d8c84e9ffab904dbb94c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965576"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026770"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central-Solar paneli uygulama mimarisi
 
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Bu makalede, güneş paneli izleme uygulama şablonu mimarisine genel bir bakış sunulmaktadır. Aşağıdaki diyagramda, Azure 'da IoT Central platformu kullanarak bir Solar Panel uygulaması için yaygın olarak kullanılan bir mimari gösterilmektedir.
 
-> [!div class="mx-imgBorder"]
-> ![akıllı ölçüm mimarisi](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
+[!div class="mx-imgBorder"]
+![akıllı ölçüm mimarisi](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
 
 Bu mimari aşağıdaki bileşenlerden oluşur. Bazı uygulamalara burada listelenen bileşenlerin tümü gerekmeyebilir.
 

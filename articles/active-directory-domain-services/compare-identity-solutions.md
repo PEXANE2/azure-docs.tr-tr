@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e3a8a537ae8c971119cfd08fbf80dc169df1d384
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619309"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042253"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 
@@ -50,7 +50,7 @@ Kendi kendine yönetilen bir AD DS ortamını dağıtıp çalıştırdığınız
 
 Aşağıdaki tabloda, kuruluşunuz için ihtiyacınız olabilecek özelliklerden bazıları ve yönetilen bir Azure AD DS etki alanı veya otomatik olarak yönetilen bir AD DS etki alanı arasındaki farklar özetlenmektedir:
 
-| **Özelliği** | **Azure AD DS** | **Kendi kendine yönetilen AD DS** |
+| **Özellik** | **Azure AD DS** | **Kendi kendine yönetilen AD DS** |
 | ----------- |:---------------:|:----------------------:|
 | **Yönetilen hizmet**                               | **&#x2713;** | **&#x2715;** |
 | **Güvenli dağıtımlar**                            | **&#x2713;** | Yönetici, dağıtımın güvenliğini sağlar |
@@ -94,9 +94,9 @@ Azure AD 'ye katılmış veya kayıtlı bir cihazda, Kullanıcı kimlik doğrula
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Cihazı denetleyen            | Azure AD                                            | Azure AD DS yönetilen etki alanı                                                |
 | Dizindeki temsili | Azure AD dizinindeki cihaz nesneleri            | Azure AD DS yönetilen etki alanındaki bilgisayar nesneleri                        |
-| Authentication                  | OAuth/OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
-| Yönetim                      | Intune gibi mobil cihaz yönetimi (MDM) yazılımı | Grup İlkesi                                                              |
-| Ağ                      | Internet üzerinden çalışarak                             | Makinelerin yönetilen etki alanı ile aynı sanal ağda olması gerekir |
+| Kimlik Doğrulaması                  | OAuth/OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
+| Yönetim                      | Intune gibi mobil cihaz yönetimi (MDM) yazılımı | grup ilkesi                                                              |
+| Networking (Ağ İletişimi)                      | Internet üzerinden çalışarak                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya eşlenmiş olmalıdır |
 | Harika...                    | Son Kullanıcı mobil veya masaüstü cihazları                  | Azure 'da dağıtılan sunucu VM 'Leri                                              |
 
 ## <a name="next-steps"></a>Sonraki adımlar

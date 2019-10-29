@@ -7,14 +7,16 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b9b40b46800242569c543c85941684d4332a4c13
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 02918df348414058d176246da5c2d0f14df7b405
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957569"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026655"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central kamu çözümleri oluşturma
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Azure IoT Central uygulama şablonlarından yararlanarak akıllı şehir çözümleri oluşturmaya başlayın. **Su kalitesinde izleme**, **su tüketimi izleme**ve **bağlı çöp yönetimiyle**hemen başlayın.
 

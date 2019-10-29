@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Bilişsel Arama belgeleri
+title: Azure Search belgeleri
 summary: İçeriğiniz yapılandırılmamışsa ve ham biçimiyle aranabilir değilse AI zenginleştirme seçenekleriyle özel heterojen içerik üzerinde bulut araması yapın.
 metadata:
-  title: Azure Bilişsel Arama belgeleri
+  title: Azure Search belgeleri
   description: İçeriğiniz yapılandırılmamışsa ve ham biçimiyle aranabilir değilse AI zenginleştirme seçenekleriyle özel heterojen içerik üzerinde bulut araması yapın.
   services: search
   ms.service: service
@@ -11,26 +11,26 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 5bf7ec2b629fc765ef5c6393b042b608a48ec804
-  ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
+  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/23/2019
+  ms.lasthandoff: 10/29/2019
   ms.locfileid: "72790052"
 landingContent:
-- title: Bilişsel Arama hakkında
+- title: Azure Search Hakkında
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Bilişsel Arama nedir?
+    - text: Azure Search nedir?
       url: search-what-is-azure-search.md
   - linkListType: architecture
     links:
-    - text: Bilişsel Arama’da tam metin araması nasıl çalışır?
+    - text: Azure Search'te tam metin araması nasıl çalışır?
       url: search-lucene-query-architecture.md
   - linkListType: video
     links:
-    - text: Bilişsel Arama nedir? (1 dakika 27 saniye)
+    - text: Azure Search nedir? (1 dk 27 sn)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
 - title: Başlarken
   linkLists:
@@ -42,13 +42,9 @@ landingContent:
       url: search-get-started-portal.md
     - text: Zenginleştirme işlem hattı oluşturma
       url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
-    - text: Uygulama oluşturma
-      url: tutorial-csharp-create-first-app.md
   - linkListType: learn
     links:
-    - text: Azure Bilişsel Arama’ya giriş
+    - text: Azure Search'e giriş
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
 - title: Blob depolama ile kullanma
   linkLists:
@@ -76,6 +72,10 @@ landingContent:
       url: search-indexer-overview.md
   - linkListType: how-to-guide
     links:
+    - text: Blob depolamadan dizin oluşturma
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: JSON bloblarını dizine ekleme
+      url: search-howto-index-json-blobs.md
     - text: Azure SQL Veritabanı'ndan dizin oluşturma
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Cosmos DB verilerinden dizin oluşturma
@@ -90,7 +90,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Yapay zeka zenginleştirme işlem hattı
+    - text: Bilişsel arama nedir?
       url: cognitive-search-concept-intro.md
     - text: Beceri kümeleri
       url: cognitive-search-defining-skillset.md
@@ -108,7 +108,7 @@ landingContent:
       url: knowledge-store-create-portal.md
   - linkListType: reference
     links:
-    - text: Yerleşik yetenekler
+    - text: Önceden tanımlanmış beceriler
       url: cognitive-search-predefined-skills.md
 - title: Verilerinizi sorgulayın
   linkLists:

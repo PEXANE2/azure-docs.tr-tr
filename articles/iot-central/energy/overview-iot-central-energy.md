@@ -8,14 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965553"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027648"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>IoT Central ile enerji çözümleri oluşturun 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Akıllı ölçümler ve Solar bölmeleri enerji sektörü dönüştürmesinin önemli bir rolünü yürütüyor. Akıllı ölçümler, enerji tüketimlerini hakkında daha fazla denetim ve gerçek zamanlı içgörüler sunar. Akıllı ölçer ve güneş paneli izleme uygulamaları, çeşitli özellikleri göstermek için örnek şablonlardır. İş ortakları, belirli ihtiyaçları için IoT Central enerji çözümleri oluşturmak üzere bu şablonlardan yararlanabilir. Yeni kodlama yoktur ve bu uygulamaları dağıtmak ve kullanmak için ek maliyet gerekmez. Enerji uygulama şablonları ve özellikleri hakkında daha fazla bilgi edinin.
 
 
@@ -36,8 +40,8 @@ Uygulamanın temel işlevleri:
 
 Uygulamayı dağıttıktan sonra, aşağıdaki şekilde gösterildiği gibi, Pano üzerinde sanal ölçer verilerini görürsünüz. Bu şablon, belirli kullanım durumlarınız için kolayca genişletebilen ve özelleştirebileceğiniz örnek bir uygulamadır.
 
-> [!div class="mx-imgBorder"]
-> Akıllı ölçüm uygulama panosu ![](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
+[!div class="mx-imgBorder"]
+Akıllı ölçüm uygulama panosu ![](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Solar paneli izleme uygulaması nedir?

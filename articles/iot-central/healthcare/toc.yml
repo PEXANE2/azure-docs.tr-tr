@@ -13,7 +13,9 @@
     - name: Sürekli hasta izleme mimarisi
       href: concept-continuous-patient-monitoring-architecture.md
     - name: Bağlantı
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+    - name: Uygulama şablonları nedir?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sağlık verileri önceliklendirme panosu oluşturma
@@ -48,8 +50,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Özel kurallar oluşturma
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Databricks ile özel analizler oluşturma
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: Databricks ile özel analizler oluşturma
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Yönetim
@@ -110,8 +110,6 @@
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Desteklenen tarayıcılar
       href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-    - name: API başvuru belgeleri
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: FHIR için Azure API'si
       href: 'https://docs.microsoft.com/azure/healthcare-apis/'
     - name: Güvenli sistem durumu çözümleri tasarlama

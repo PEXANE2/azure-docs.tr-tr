@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0f463291a0405178c5bdfbb890a6f954e13b204d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296497"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023938"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -75,7 +75,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
 
 1. Hizmete **genel bakış** sayfasına gidin ve **yapılandırma sunucusu**' nu seçin.
 
-1. **Varsayılan depo** bölümünde, **urı** 'yi "https://github.com/Azure-Samples/piggymetrics" olarak ayarlayın, **etiketi** "config" olarak ayarlayın ve değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
+1. **Varsayılan depo** bölümünde, **URI** 'yi "https\://GitHub.com/Azure-Samples/piggymetrics" olarak ayarlayın, **etiketi** "config" olarak ayarlayın ve değişikliklerinizi kaydetmek için **Uygula** ' yı seçin.
 
     ![ASC portalının ekran görüntüsü](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -114,7 +114,7 @@ Hizmetin dağıtılması yaklaşık 5 dakika sürer.  Hizmet örneği için **ge
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. @No__t-0 uygulaması oluşturun ve JAR dosyasını dağıtın.
+1. `gateway` uygulamasını oluşturun ve JAR dosyasını dağıtın.
 
     ```azurecli
     az spring-cloud app create -n gateway
