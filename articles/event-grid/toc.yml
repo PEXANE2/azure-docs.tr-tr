@@ -1,5 +1,7 @@
-- name: Event Grid Belgeleri
+- name: Azure Event Grid Belgeleri
   href: index.yml
+- name: IoT Edge üzerinde Event Grid’e geçiş belgeleri
+  href: edge/pub-sub-events-webhook-local.md
 - name: Genel Bakış
   items:
     - name: Event Grid nedir?

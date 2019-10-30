@@ -6,14 +6,12 @@
       href: overview-iot-central-government.md
 - name: Öğreticiler
   items:
-    - name: Mağaza içi analizi ödeme
-      items:
-        - name: Bağlantılı atık yönetimi uygulaması oluşturma
-          href: tutorial-connected-waste-management.md
-        - name: Su tüketimi izleme uygulaması oluşturma
-          href: tutorial-water-consumption-monitoring.md
-        - name: Su kalitesi izleme uygulaması oluşturma
-          href: tutorial-water-quality-monitoring.md
+    - name: Bağlantılı atık yönetimi uygulaması oluşturma
+      href: tutorial-connected-waste-management.md
+    - name: Su tüketimi izleme uygulaması oluşturma
+      href: tutorial-water-consumption-monitoring.md
+    - name: Su kalitesi izleme uygulaması oluşturma
+      href: tutorial-water-quality-monitoring.md
 - name: Kavramlar
   items:
     - name: Bağlı atık izleme referans mimarisi
@@ -22,10 +20,10 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: Su kalitesi izleme referans mimarisi
       href: concepts-waterqualitymonitoring-architecture.md
-    - name: Bağlantı
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Uygulamanızı Dynamics 365 Field Services’a bağlama
+      href: how-to-configure-connected-field-services.md
     - name: Cihazları bağlama
       items:
         - name: MXChip IoT DevKit’i hazırlama ve bağlama
@@ -56,8 +54,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Özel kurallar oluşturma
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-        - name: Databricks ile özel analizler oluşturma
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Databricks ile özel analizler oluşturma
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Yönetim

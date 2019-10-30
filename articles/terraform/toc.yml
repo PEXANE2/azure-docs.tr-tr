@@ -10,13 +10,19 @@
     - name: Terraform’u yükleme ve yapılandırma
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
-    - name: Çok hizmetli bir uygulama oluşturma
-      href: terrafom-quickstart.md
+    - name: Terraform yapılandırması oluşturma
+      href: terraform-create-configuration.md
     - name: Linux VM oluşturma
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
 - name: Öğreticiler
   items:
+    - name: Kurulum ve yapılandırma
+      items:
+        - name: Terraform durumunu Azure Depolama’da depolama
+          href: terraform-backend.md
+        - name: Terraform için Azure Cloud Shell’i yapılandırma
+          href: terraform-cloud-shell.md
     - name: App Service
       items:
         - name: Terraform ve Azure sağlayıcısı dağıtım yuvaları
@@ -29,8 +35,8 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Altyapı
       items:
-        - name: MSI etkin bir Terraform VM’si oluşturma
-          href: terraform-vm-msi.md
+        - name: Azure kaynakları için etkin yönetilen kimliklerle bir Terraform VM’si oluşturma
+          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Terraform modülleri ile VM kümesi oluşturma
           href: terraform-create-vm-cluster-module.md
         - name: Terraform ve HCL ile VM kümesi oluşturma
@@ -67,10 +73,6 @@
   items:
     - name: Yapılandırma şablonları
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: Azure Depolama’da depolama durumu
-      href: terraform-backend.md
 - name: Başvuru
   items:
     - name: Azure modülü kayıt defteri
