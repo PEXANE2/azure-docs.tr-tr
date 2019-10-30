@@ -1,5 +1,5 @@
 - name: Temel Öğeler Belgeleri
-  href: index.md
+  href: index.yml
 - name: Mimari ve tasarım
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: Bekleyen veri şifreleme
           href: encryption-atrest.md
-        - name: VM'ler ve VM ölçek kümeleri için Azure Disk Şifrelemesi
+        - name: Sanal makineler için Azure Disk Şifrelemesi
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: Depolama güvenliği kılavuzu
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'

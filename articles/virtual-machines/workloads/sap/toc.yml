@@ -188,6 +188,8 @@
               href: high-availability-guide-suse-pacemaker.md
             - name: RHEL üzerinde Pacemaker
               href: high-availability-guide-rhel-pacemaker.md
+            - name: SAP yüksek oranda kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan VM’ler için ortak uç nokta bağlantısı
+              href: high-availability-guide-standard-load-balancer-outbound-connections.md
         - name: SAP Yüklemesi
           items:
             - name: (A)SCS Örneği için Paylaşılan Diskle Windows

@@ -148,6 +148,8 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: Federasyondan PTA’ya geçirme
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Bulut kimlik doğrulaması - Aşamalı Kullanıma Sunma (Genel Önizleme)
+              href: how-to-connect-staged-rollout.md
         - name: Hibrit Kimlik Tasarım Kılavuzu
           items:
             - name: Hibrit Kimlik Tasarım Kılavuzuna Genel Bakış

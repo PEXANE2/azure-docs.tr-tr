@@ -54,6 +54,8 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: Anahtar değiştirme ve denetimi ayarlama
       href: key-vault-key-rotation-log-monitoring.md
+    - name: Event Grid ile Key Vault olaylarını izleme
+      href: event-grid-overview.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -74,6 +76,8 @@
           href: key-vault-security-controls.md
     - name: Geçici silme
       href: key-vault-ovw-soft-delete.md
+    - name: Key Vault olaylarını izleme
+      href: event-grid-overview.md
     - name: Azaltma
       href: key-vault-ovw-throttling.md
     - name: Sanal Ağ Hizmet Uç Noktaları
@@ -104,6 +108,8 @@
           href: managed-identity.md
         - name: Erişim denetimi ilkesi kullanma
           href: key-vault-group-permissions-for-apps.md
+    - name: Event Grid ile anahtar kasası bildirimlerini yönlendirme
+      href: event-grid-tutorial.md
     - name: Azure Key Vault günlüğü
       href: key-vault-logging.md
     - name: Güvenlik duvarı arkasına erişme
