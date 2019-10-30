@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: 7a9f726273dc3c5b336b22588d49704ffc2d8192
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053292"
+ms.locfileid: "73043368"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 
@@ -105,7 +105,7 @@ Bu hata, Azure Işlevleri projeniz (veya başvurulan herhangi bir proje), [Azure
 Bu durumun geçici çözümü için, eklenen el ile NuGet başvurusunu kaldırın ve Azure Cosmos DB SDK başvurusunun Azure Işlevleri Cosmos DB Uzantı paketi aracılığıyla çözümlendiğine izin verin.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Değişikliklerin algılanması için Azure Işlevinin yoklama aralığı değiştiriliyor
-Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
+Önceki adımda açıklandığı gibi, [# # # Değişikliklerimi çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-be-received)sırasında Azure işlevi, yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

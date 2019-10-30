@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 5b9011e2a95dc1bdb86311111123db3c994f3aee
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: HT
+ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044929"
+ms.locfileid: "73052505"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: sık sorulan sorular
 
@@ -387,3 +387,7 @@ Azure HDInsight 'ta akış işleme tümleştirme özellikleri hakkında daha faz
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Küme belirli bir dönemde boşta kaldığında kümenin baş düğümünü dinamik olarak sonlandırmak için bir yol var mı?
 
 Bunu HDInsight kümeleri ile yapamazsınız. Bu senaryolar için Azure Data Factory kullanabilirsiniz.
+
+### <a name="what-compliance-offerings-does-hdinsight-offer"></a>HDInsight hangi uyumluluk tekliflerini sunmaktadır?
+
+Uyumluluk bilgileri için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center) ve [Microsoft Azure uyumluluğuna genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
