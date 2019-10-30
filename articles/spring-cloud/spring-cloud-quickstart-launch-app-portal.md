@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 0f463291a0405178c5bdfbb890a6f954e13b204d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.openlocfilehash: e6a1dba603cbeea276dc6153f82ae599e3d29b3d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023938"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101350"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Spring Cloud uygulaması başlatın
 
@@ -44,7 +44,7 @@ Bu hızlı başlangıcı tamamlamak için:
 1. [Git'i yükleyin](https://git-scm.com/)
 2. [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
 3. [Maven 3,0 veya üstünü yükler](https://maven.apache.org/download.cgi)
-4. [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [Azure CLı sürüm 2.0.67 veya üstünü yükler](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLı uzantısını yükler

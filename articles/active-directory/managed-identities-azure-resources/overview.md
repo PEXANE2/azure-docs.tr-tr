@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310019"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063048"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikler nedir?
 
@@ -61,9 +61,9 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
 |  Özellik    | Sistem tarafından atanan yönetilen kimlik | Kullanıcı tarafından atanan yönetilen kimlik |
 |------|----------------------------------|--------------------------------|
 | Oluşturulurken |  Bir Azure kaynağının parçası olarak oluşturulur (örneğin, bir Azure sanal makinesi veya Azure App Service) | Tek başına Azure kaynağı olarak oluşturulur |
-| Yaşam döngüsü | Yönetilen kimliğin ile oluşturulduğu Azure kaynağıyla paylaşılan yaşam döngüsü. <br/> Üst kaynak silindiğinde, yönetilen kimlik de silinir. | Bağımsız yaşam döngüsü. <br/> Açıkça silinmelidir. |
+| Yaşam Döngüsü | Yönetilen kimliğin ile oluşturulduğu Azure kaynağıyla paylaşılan yaşam döngüsü. <br/> Üst kaynak silindiğinde, yönetilen kimlik de silinir. | Bağımsız yaşam döngüsü. <br/> Açıkça silinmelidir. |
 | Azure kaynakları arasında paylaşım | Paylaştırılamaz. <br/> Yalnızca tek bir Azure kaynağıyla ilişkilendirilebilir. | Paylaşılabilir <br/> Aynı kullanıcı tarafından atanan yönetilen kimlik birden fazla Azure kaynağıyla ilişkilendirilebilir. |
-| Genel kullanım örnekleri | Tek bir Azure kaynağı içinde yer alan iş yükleri <br/> Bağımsız kimliklere ihtiyacınız olan iş yükleri. <br/> Örneğin, tek bir sanal makinede çalışan bir uygulama | Birden çok kaynak üzerinde çalışan ve tek bir kimliği paylaşabilen iş yükleri. <br/> Sağlama akışının bir parçası olarak güvenli bir kaynağa ön kimlik doğrulaması gerektiren iş yükleri. <br/> Kaynakların sık geri dönüştürüleceği iş yükleri, ancak izinlerin tutarlı kalması gerekir. <br/> Örneğin, birden çok sanal makinenin aynı kaynağa erişmesi gereken bir iş yükü | 
+| Genel kullanım | Tek bir Azure kaynağı içinde yer alan iş yükleri <br/> Bağımsız kimliklere ihtiyacınız olan iş yükleri. <br/> Örneğin, tek bir sanal makinede çalışan bir uygulama | Birden çok kaynak üzerinde çalışan ve tek bir kimliği paylaşabilen iş yükleri. <br/> Sağlama akışının bir parçası olarak güvenli bir kaynağa ön kimlik doğrulaması gerektiren iş yükleri. <br/> Kaynakların sık geri dönüştürüleceği iş yükleri, ancak izinlerin tutarlı kalması gerekir. <br/> Örneğin, birden çok sanal makinenin aynı kaynağa erişmesi gereken bir iş yükü | 
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Sistem tarafından atanmış yönetilen kimliğin Azure VM ile çalışma şekli
 
@@ -75,7 +75,7 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
 
 4. VM bir kimliğe sahip olduktan sonra hizmet sorumlusunu kullanarak Azure kaynaklarına VM erişimi sağlayabilirsiniz. Azure Resource Manager'ı çağırmak için Azure AD'de rol tabanlı erişim denetimini (RBAC) kullanarak VM hizmet sorumlusuna uygun rolü atayabilirsiniz. Key Vault'u çağırmak için kodunuza Key Vault'ta belirli bir gizli diziye veya anahtara erişim verebilirsiniz.
 
-5. VM üzerinde çalışan kodunuz Azure örnek meta veri hizmeti uç noktasından yalnızca VM 'nin içinden erişilebilen bir belirteç isteyebilir:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. VM üzerinde çalışan kodunuz Azure örnek meta veri hizmeti uç noktasından yalnızca VM 'nin içinden erişilebilen bir belirteç isteyebilir: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Resource parametresi belirtecin gönderildiği hizmeti belirtir. Azure Resource Manager ile kimlik doğrulaması için `resource=https://management.azure.com/` kullanın.
     - API version parametresi IMDS sürümünü belirtir; api-version=2018-02-01 veya üstünü kullanın.
 
@@ -96,7 +96,7 @@ Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyl
    > [!Note]
    > Bu adımı 3. adımdan önce de gerçekleştirebilirsiniz.
 
-5. VM üzerinde çalışan kodunuz Azure Instance Metadata Service Identity uç noktasından yalnızca VM içinden erişilebilen bir belirteç isteyebilir:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. VM üzerinde çalışan kodunuz Azure Instance Metadata Service Identity uç noktasından yalnızca VM içinden erişilebilen bir belirteç isteyebilir: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Resource parametresi belirtecin gönderildiği hizmeti belirtir. Azure Resource Manager ile kimlik doğrulaması için `resource=https://management.azure.com/` kullanın.
     - Client ID parametresi belirtecin hangi kimlik için istendiğini belirtir. Tek bir sanal makinede birden çok kullanıcı tarafından atanan kimlik olduğunda, belirsizliği ortadan kaldırmak için bu değer gereklidir.
     - API version parametresi, Azure Instance Metadata Service sürümünü belirtir. `api-version=2018-02-01` veya daha yüksek bir değer kullanın.
@@ -122,23 +122,25 @@ Yönetilen kimlikleri Windows VM ile kullanmayı öğrenin:
 
 Yönetilen kimlikleri Linux VM ile kullanmayı öğrenin:
 
+* [Erişim Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 * [Azure Data Lake Store’a erişme](tutorial-linux-vm-access-datalake.md)
 * [Azure Resource Manager’a erişme](tutorial-linux-vm-access-arm.md)
 * [Erişim anahtarı kullanarak Azure Depolama’ya erişme](tutorial-linux-vm-access-storage.md)
 * [Paylaşılan erişim anahtarlarını kullanarak Azure Depolama’ya erişme](tutorial-linux-vm-access-storage-sas.md)
 * [Azure Key Vault ile Azure AD dışı bir kaynağa erişme](tutorial-linux-vm-access-nonaad.md)
-* [Erişim Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 
 Yönetilen kimlikleri diğer Azure hizmetleri ile kullanmayı öğrenin:
 
-* [Azure uygulama hizmeti](/azure/app-service/overview-managed-identity)
-* [Azure İşlevleri](/azure/app-service/overview-managed-identity)
-* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure App Service](/azure/app-service/overview-managed-identity)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry görevler](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure İşlevleri](/azure/app-service/overview-managed-identity)
+* [Azure Kubernetes Service](/azure/aks/use-managed-identity)
+* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+
 
 ## Bu özelliği hangi Azure hizmetleri destekliyor?<a name="which-azure-services-support-managed-identity"></a>
 

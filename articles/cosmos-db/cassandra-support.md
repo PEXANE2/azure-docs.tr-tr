@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.openlocfilehash: 7f2a8ead8195328552a138b71e304c5f5a0857e2
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043498"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064060"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 
@@ -157,7 +157,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Tutarlılık eşleme 
 
-Azure Cosmos DB Cassandra API'si okuma işlemleri için tutarlılık sunar.  Tutarlılık eşlemesi [burada](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping)ayrıntılı olarak verilmiştir.
+Azure Cosmos DB Cassandra API'si okuma işlemleri için tutarlılık sunar.  Tutarlılık eşlemesi [burada](consistency-levels-across-apis.md#cassandra-mapping)ayrıntılı olarak verilmiştir.
 
 ## <a name="permission-and-role-management"></a>İzin ve rol yönetimi
 
@@ -165,7 +165,7 @@ Azure Cosmos DB, sağlama, anahtar döndürme, ölçümleri görüntüleme ve [A
 
 ## <a name="keyspace-and-table-options"></a>Keyspace ve tablo seçenekleri
 
-"Keyspace oluşturma" komutunda bölge adı, sınıf, replication_factor ve veri merkezi seçenekleri şu anda yok sayılır. Sistem, bölgeleri eklemek için temel Azure Cosmos DB [genel dağıtım](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) çoğaltma yöntemini kullanır. Bölgeler arası veri varlığına ihtiyacınız varsa, daha fazla bilgi edinmek için PowerShell, CLı veya Portal ile hesap düzeyinde etkinleştirebilir, daha fazla bilgi edinmek için bkz. [bölge ekleme](how-to-manage-database-account.md#addremove-regions-from-your-database-account) makalesi. Azure Cosmos DB her yazmanın dayanıklı olmasını sağladığından, Durable_writes devre dışı bırakılamaz. Her bölgede, Azure Cosmos DB, verileri 4 yinelemeden oluşan çoğaltma kümesi genelinde çoğaltır ve bu çoğaltma kümesi [yapılandırması](global-dist-under-the-hood.md) değiştirilemez.
+"Keyspace oluşturma" komutunda bölge adı, sınıf, replication_factor ve veri merkezi seçenekleri şu anda yok sayılır. Sistem, bölgeleri eklemek için temel Azure Cosmos DB [genel dağıtım](global-dist-under-the-hood.md) çoğaltma yöntemini kullanır. Bölgeler arası veri varlığına ihtiyacınız varsa, daha fazla bilgi edinmek için PowerShell, CLı veya Portal ile hesap düzeyinde etkinleştirebilir, daha fazla bilgi edinmek için bkz. [bölge ekleme](how-to-manage-database-account.md#addremove-regions-from-your-database-account) makalesi. Azure Cosmos DB her yazmanın dayanıklı olmasını sağladığından, Durable_writes devre dışı bırakılamaz. Her bölgede, Azure Cosmos DB, verileri 4 yinelemeden oluşan çoğaltma kümesi genelinde çoğaltır ve bu çoğaltma kümesi [yapılandırması](global-dist-under-the-hood.md) değiştirilemez.
  
 Tablo oluşturulurken tüm seçenekler yok sayılır, gc_grace_seconds hariç, sıfır olarak ayarlanmalıdır.
 Anahtar alanı ve tablo, minimum 400 RU/sn değerine sahip "cosmosdb_provisioned_throughput" adlı ek bir seçeneğe sahiptir. Anahtar alanı verimlilik, birden çok tablo arasında üretilen iş aktarımına izin verir ve tüm tablolar sağlanan aktarım hızını kullanmadan senaryolar için yararlıdır. Alter table komutu bölgeler genelinde sağlanan aktarım hızını değiştirmeye izin verir. 
