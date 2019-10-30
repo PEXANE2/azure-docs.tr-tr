@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029738"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099535"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -114,7 +114,12 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. @No__t-0 yöntemini, `config.AddAzureAppConfiguration()` yöntemini çağırarak uygulama yapılandırmasını kullanacak şekilde güncelleştirin.
+1. `config.AddAzureAppConfiguration()` metodunu çağırarak uygulama yapılandırmasını kullanmak için `CreateWebHostBuilder` yöntemini güncelleştirin.
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder`, .NET Core 3,0 ' de `CreateWebHostBuilder` ' i değiştirir.  Ortamınıza göre doğru söz dizimini seçin.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2. x için güncelleştirme `CreateWebHostBuilder`
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -122,13 +127,25 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .UseFeatureFlags();
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
+
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3. x için güncelleştirme `CreateHostBuilder`
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 
 1. *Startup.cs*'i açın ve .NET Core Feature Manager 'a başvurular ekleyin:
 
@@ -136,7 +153,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     using Microsoft.FeatureManagement;
     ```
 
-1. @No__t-1 yöntemini çağırarak özellik bayrağı desteği eklemek için `ConfigureServices` yöntemini güncelleştirin. İsteğe bağlı olarak, `services.AddFeatureFilter<FilterType>()` ' ı çağırarak özellik bayraklarıyla birlikte kullanılacak herhangi bir filtre ekleyebilirsiniz:
+1. `services.AddFeatureManagement()` metodunu çağırarak özellik bayrağı desteği eklemek için `ConfigureServices` yöntemini güncelleştirin. İsteğe bağlı olarak, `services.AddFeatureFilter<FilterType>()` ' ı çağırarak özellik bayraklarıyla birlikte kullanılacak herhangi bir filtre ekleyebilirsiniz:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -200,7 +217,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. *Görünümler*\\*paylaşılan* dizininde *_Layout. cshtml* dosyasını açın ve `<body>` @ no__t-6 @ no__t-7 altındaki `<nav>` bar kodunu şu kodla değiştirin:
+1. *Görünümler*\\*paylaşılan* dizinde *_Layout. cshtml* dosyasını açın ve `<body>` > `<header>` altındaki `<nav>` bar kodu aşağıdaki kodla değiştirin:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -267,7 +284,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     |---|---|
     | Beta | Açık |
 
-1. Komut istemine geri dönüp `Ctrl-C` tuşlarına basarak çalışan `dotnet` işlemini iptal edip `dotnet run` ' yi yeniden çalıştırarak uygulamanızı yeniden başlatın.
+1. Komut isteminizde yeniden geçerek ve çalışan `dotnet` işlemini iptal etmek için `Ctrl-C` tuşuna bastıktan sonra `dotnet run`yeniden çalıştırarak uygulamanızı yeniden başlatın.
 
 1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 

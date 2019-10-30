@@ -10,12 +10,12 @@ ms.topic: overview
 description: Azure Dev Spaces giriş
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c96115f2eba6f8c8a028251d146ca3f766eba044
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e166cb9368a14590cbeaabda05d05696032dd94f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305462"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061317"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
@@ -43,7 +43,7 @@ Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [
 
 ## <a name="supported-regions-and-configurations"></a>Desteklenen bölgeler ve Konfigürasyonlar
 
-Azure Dev Spaces yalnızca **Doğu ABD**, **Doğu ABD 2**, **Orta ABD**, **Orta Güney ABD**, **Batı ABD 2**, **Kuzey Avrupa**, **Batı Avrupa**, **UK Güney**, **Güneydoğu Asya** **'daki aks kümeleri tarafından desteklenir Avustralya Doğu**, **Kanada Orta**ve **Kanada Doğu** bölgeleri. Azure Dev Spaces, AKS üzerinde uygulamalarınızı derleyip çalıştırmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Visual Studio Code](https://code.visualstudio.com/download) ile birlikte Linux, MacOS veya Windows 8 ya da sonraki sürümlerde yüklü [Azure Dev Spaces uzantısının](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) kullanılmasını gerektirir. Ayrıca, Windows 8 veya üzeri bir sürümü yüklü [Visual Studio 'yu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) kullanmayı da destekler. Visual Studio 2019 için Azure geliştirme iş yüküne ihtiyacınız olacak. Visual Studio 2017 için Web geliştirme iş yüküne ve [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools)ihtiyacınız olacaktır.
+Azure Dev Spaces yalnızca **Doğu ABD**, **Doğu ABD 2**, **Orta ABD**, **Orta Güney ABD**, **Batı ABD 2**, **Kuzey Avrupa**, **Batı Avrupa**, **UK Güney**, **Doğu Asya** **, için aks kümeleri tarafından desteklenir Güneydoğu Asya**, **Avustralya Doğu**, **Kanada Orta**ve **Kanada Doğu** bölgeleri. Azure Dev Spaces, AKS üzerinde uygulamalarınızı derleyip çalıştırmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Visual Studio Code](https://code.visualstudio.com/download) ile birlikte Linux, MacOS veya Windows 8 ya da sonraki sürümlerde yüklü [Azure Dev Spaces uzantısının](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) kullanılmasını gerektirir. Ayrıca, Windows 8 veya üzeri bir sürümü yüklü [Visual Studio 'yu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) kullanmayı da destekler. Visual Studio 2019 için Azure geliştirme iş yüküne ihtiyacınız olacak. Visual Studio 2017 için Web geliştirme iş yüküne ve [Kubernetes için Visual Studio Araçları](https://aka.ms/get-vsk8stools)ihtiyacınız olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
