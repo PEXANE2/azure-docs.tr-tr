@@ -2,18 +2,18 @@
 title: JDBC sürücüsü aracılığıyla sorgu Apache Hive-Azure HDInsight
 description: HDInsight 'ta Hadoop 'a Apache Hive sorguları göndermek için bir Java uygulamasındaki JDBC sürücüsünü kullanın. Program aracılığıyla ve SQUIRREL SQL istemcisinden bağlanın.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.author: hrasheed
-ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 10/24/2019
+ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058609"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053802"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 'ta JDBC sürücüsü aracılığıyla Apache Hive sorgulama
 
@@ -37,7 +37,7 @@ Azure 'da bir HDInsight kümesine JDBC bağlantıları 443 numaralı bağlantı 
 
 `CLUSTERNAME` değerini HDInsight kümenizin adıyla değiştirin.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Bağlantıyı kurarken, küme ağ geçidinde kimlik doğrulaması yapmak için HDInsight kümesi yönetici adını ve parolasını kullanmanız gerekir. SQUIRREL SQL gibi JDBC istemcilerinden bağlanırken, istemci ayarlarında yönetici adı ve parolasını girmeniz gerekir.
 
@@ -53,7 +53,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
 1. Kümeinizden kopyalanacak belirli dosyaları içerecek bir dizin oluşturun.
 
-2. Aşağıdaki betikte, ' ın `sshuser` küme için SSH kullanıcı hesabı adıyla değiştirin.  HDInsight `CLUSTERNAME` kümesi adıyla değiştirin.  Bir komut satırından, çalışma dizininizi önceki adımda oluşturulan bir şekilde değiştirin ve ardından bir HDInsight kümesinden dosya kopyalamak için aşağıdaki komutu girin:
+2. Aşağıdaki betikte, `sshuser`, küme için SSH kullanıcı hesabı adıyla değiştirin.  `CLUSTERNAME`, HDInsight küme adıyla değiştirin.  Bir komut satırından, çalışma dizininizi önceki adımda oluşturulan bir şekilde değiştirin ve ardından bir HDInsight kümesinden dosya kopyalamak için aşağıdaki komutu girin:
 
     ```cmd
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar,lib/curator-*.jar} .
@@ -65,49 +65,47 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
     ![Pencerenin sol tarafındaki sürücüler sekmesi](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. **Sürücüler** iletişim kutusunun üst kısmındaki simgelerden bir sürücü oluşturmak için **+** simgeyi seçin.
+4. **Sürücüler** iletişim kutusunun üst kısmındaki simgeler ' de bir sürücü oluşturmak için **+** simgesini seçin.
 
     ![SQUIRREL SQL uygulama sürücüleri simgesi](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. Sürücü Ekle iletişim kutusunda aşağıdaki bilgileri ekleyin:
 
-    * **Ad**: Kovan
-    * **Örnek URL**:`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Ek sınıf yolu**: Daha önce indirilen tüm jar dosyalarını eklemek için **Ekle** düğmesini kullanın
-    * **Sınıf adı**: org. Apache. Hive. JDBC. HiveDriver
+    |Özellik | Değer |
+    |---|---|
+    |Adı|Hive|
+    |Örnek URL|JDBC: hive2:/localhost: 443/varsayılan; transportMode = HTTP; SSL = true; httpPath =/hive2|
+    |Ek sınıf yolu|Daha önce indirilen tüm jar dosyalarını eklemek için **Ekle** düğmesini kullanın.|
+    |Sınıf adı|org. Apache. Hive. JDBC. HiveDriver|
 
    ![parametrelerle sürücü iletişim kutusu Ekle](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    Bu ayarları kaydetmek için **Tamam ' ı** seçin.
 
-6. SQuirreL SQL penceresinin sol tarafında **diğer adlar**' ı seçin. Ardından bir bağlantı **+** diğer adı oluşturmak için simgeyi seçin.
+6. SQuirreL SQL penceresinin sol tarafında **diğer adlar**' ı seçin. Sonra bağlantı diğer adı oluşturmak için **+** simgesini seçin.
 
     ![SQUIRREL SQL yeni diğer ad Ekle iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
-7. **Diğer ad Ekle** iletişim kutusu için aşağıdaki değerleri kullanın.
+7. **Diğer ad Ekle** iletişim kutusu için aşağıdaki değerleri kullanın:
 
-    * **Ad**: HDInsight üzerinde Hive
+    |Özellik |Değer |
+    |---|---|
+    |Adı|HDInsight üzerinde Hive|
+    |Sürücü|**Hive** sürücüsünü seçmek için açılan eklentiyi kullanın.|
+    |URL|JDBC: hive2://CLUSTERNAME.azurehdinsight.net: 443/default; transportMode = HTTP; SSL = true; httpPath =/hive2. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.|
+    |User Name|HDInsight kümeniz için küme oturum açma hesabı adı. **Yönetici**varsayılandır.|
+    |Parola|Küme oturum açma hesabının parolası.|
 
-    * **Sürücü**: **Hive** sürücüsünü seçmek için açılan eklentiyi kullanın
-
-    * **URL**:`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-
-        **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
-
-    * **Kullanıcı adı**: HDInsight kümeniz için küme oturum açma hesabı adı. Varsayılan, `admin` değeridir.
-
-    * **Parola**: Küme oturum açma hesabının parolası.
-
-   ![parametrelerle diğer ad iletişim kutusu Ekle](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    ![parametrelerle diğer ad iletişim kutusu Ekle](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
-    > Bağlantının çalıştığını doğrulamak için **Test** düğmesini kullanın. **Bağlanırken: HDInsight** 'ta Hive iletişim kutusu görüntülenirse, testi gerçekleştirmek için **Bağlan** ' ı seçin. Sınama başarılı olursa **başarılı bir bağlantı** iletişim kutusu görürsünüz. Bir hata oluşursa bkz. [sorun giderme](#troubleshooting).
+    > Bağlantının çalıştığını doğrulamak için **Test** düğmesini kullanın. **Bağlanılacak: HDInsight üzerinde Hive** iletişim kutusu görüntülenirse, testi gerçekleştirmek için **Bağlan** ' ı seçin. Sınama başarılı olursa **başarılı bir bağlantı** iletişim kutusu görürsünüz. Bir hata oluşursa bkz. [sorun giderme](#troubleshooting).
 
     Bağlantı diğer adını kaydetmek için **diğer ad Ekle** iletişim kutusunun altındaki **Tamam** düğmesini kullanın.
 
-8. SQuirreL SQL 'in en üstündeki açılan menüde bulunan **bağlantı** noktasından, **HDInsight 'ta Hive**' yi seçin. Sorulduğunda, **Connect**.
+8. SQuirreL SQL 'in en üstündeki açılan menüde bulunan **bağlantı** noktasından, **HDInsight 'ta Hive**' yi seçin. İstendiğinde, **Bağlan**' ı seçin.
 
-    ![parametrelerle bağlantı iletişim kutusu iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![parametrelerle bağlantı iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Bağlandıktan sonra, SQL sorgu iletişim kutusuna aşağıdaki sorguyu girin ve sonra **Çalıştır** simgesini (çalışan bir kişi) seçin. Sonuçlar alanında sorgunun sonuçları gösterilmelidir.
 
@@ -119,13 +117,13 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
 ## <a name="connect-from-an-example-java-application"></a>Örnek Java uygulamasından bağlanma
 
-HDInsight 'ta Hive sorgulamak için Java istemcisi kullanmanın bir örneği, adresinde [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)bulunabilir. Örneği derlemek ve çalıştırmak için depodaki yönergeleri izleyin.
+HDInsight 'ta Hive sorgulamak için Java istemcisi kullanmanın bir örneği [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)adresinden edinilebilir. Örneği derlemek ve çalıştırmak için depodaki yönergeleri izleyin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>SQL bağlantısı açılmaya çalışılırken beklenmeyen bir hata oluştu
 
-**Belirtiler**: Sürüm 3,3 veya daha büyük olan bir HDInsight kümesine bağlanırken beklenmeyen bir hata oluştuğunu belirten bir hata alabilirsiniz. Bu hata için yığın izlemesi aşağıdaki satırlarla başlar:
+**Belirtiler**: 3,3 veya üzeri bir HDInsight kümesine bağlanırken beklenmeyen bir hata oluştuğunu belirten bir hata alabilirsiniz. Bu hata için yığın izlemesi aşağıdaki satırlarla başlar:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -135,11 +133,11 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Neden**: Bu hata, SQUIRREL 'e dahil edilen eski bir Commons-codec. jar dosyası nedeniyle oluşur.
 
-**Çözüm**: Bu hatayı onarmak için aşağıdaki adımları kullanın:
+**Çözüm**: Bu hatayı çözmek için aşağıdaki adımları kullanın:
 
-1. SQUIRREL programından çıkın ve ardından sistem üzerinde SQUIRREL 'in yüklü olduğu dizine gidin. SQUIRREL dizininde, `lib` dizin altında, var olan Commons-codec. jar dosyasını HDInsight kümesinden indirilen ile değiştirin.
+1. SQUIRREL programından çıkın ve sonra da `C:\Program Files\squirrel-sql-4.0.0\lib`, bu durumda SQUIRREL 'in sisteminizde yüklü olduğu dizine gidin. SQUIRREL dizininde, `lib` dizini altında, var olan Commons-codec. jar dosyasını HDInsight kümesinden indirilen ile değiştirin.
 
-2. SQUIRREL 'i yeniden başlatın. HDInsight 'ta Hive 'e bağlanılırken hata artık gerçekleşmemelidir.
+1. SQUIRREL 'i yeniden başlatın. HDInsight 'ta Hive 'e bağlanılırken hata artık gerçekleşmemelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

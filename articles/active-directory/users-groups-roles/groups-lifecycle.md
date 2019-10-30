@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933774"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024780"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -28,7 +28,7 @@ Bu makalede, Office 365 gruplarının yaşam döngüsünü yönetme hakkında si
 
 Bir grubu sona ermek üzere ayarladıktan sonra:
 
-- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir (Önizleme)
+- Kullanıcı etkinlikleri olan gruplar, süre sonu yaklaştığında otomatik olarak yenilenir
 - Grubun sahipleri, Grup otomatik yenilenmediğinde grubu yenilemek için bilgilendirilir
 - Yenilenmeyen tüm gruplar silinir
 - Silinen Office 365 Grubu, Grup sahipleri veya yönetici tarafından 30 gün içinde geri yüklenebilir
@@ -40,7 +40,7 @@ Bir Azure AD kuruluşunda tüm Office 365 grupları için şu anda yalnızca bir
 
 Azure AD PowerShell cmdlet 'lerini indirme ve yükleme hakkında daha fazla bilgi için bkz. [Graph 2.0.0.137 için Azure Active Directory PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
-## <a name="activity-based-automatic-renewal-preview"></a>Etkinlik tabanlı otomatik yenileme (Önizleme)
+## <a name="activity-based-automatic-renewal"></a>Etkinlik tabanlı otomatik yenileme
 
 Azure AD Intelligence ile gruplar, son kullanılan zamanlarda olup olmadıklarında otomatik olarak yenilenir. Bu özellik, Outlook, SharePoint, takımlar veya Yammer gibi Office 365 Hizmetleri içindeki gruplardaki Kullanıcı etkinliklerini temel alarak, Grup sahiplerine göre el ile gerçekleştirilen eyleme yönelik ihtiyacı ortadan kaldırır. Örneğin, bir sahip veya grup üyesi SharePoint 'te belge yükleme gibi bir şey kullanıyorsa, bir ekip kanalını ziyaret edin veya Outlook 'ta gruba bir e-posta gönderin, Grup otomatik olarak yenilenir ve sahip herhangi bir yenileme bildirimi almaz.
 

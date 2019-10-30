@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376327"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053519"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLı kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç noktaya sahip bir SQL veritabanı sunucusu olan bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'ye erişebilir ve özel bağlantı kaynağına (Bu örnekteki özel bir Azure SQL veritabanı sunucusu) güvenli bir şekilde erişebilirsiniz. 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alt ağ özel uç nokta ilkelerini devre dışı bırak 
-Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+Azure, bir sanal ağ içindeki bir alt ağa kaynak dağıtır, bu nedenle özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağ oluşturmanız veya güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,7 +49,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Sanal makine oluşturma 
-Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur: 
+Az VM Create ile bir VM oluşturun. İstendiğinde, sanal makine için oturum açma kimlik bilgileri olarak kullanılacak bir parola girin. Bu örnek, *myvm*ADLı bir VM oluşturur: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-SQL Server KIMLIĞI @ no__t-0 ' a benzer ve sonraki adımda SQL Server KIMLIĞINI kullanacaksınız. 
+SQL Server KIMLIĞI ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` benzer bir sonraki adımda SQL Server KIMLIĞINI kullanacağınızı aklınızda bulabilirsiniz. 
 
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma 
 Sanal ağınızdaki SQL veritabanı sunucusu için özel bir uç nokta oluşturun: 
@@ -136,7 +136,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için,**farklı bir hesap kullanmak**@no__t **daha fazla seçenek**belirlemeniz gerekebilir.
+        > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullanmak** > **daha fazla seçenek** belirlemeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -148,8 +148,8 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı sunucusuna bağlanacaksınız.
 
- 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
- 2. Nslookup sunucum. Database. Windows. net @ no__t-0 girerek şuna benzer bir ileti alacaksınız: 
+ 1. *Myvm*uzak masaüstünde PowerShell ' i açın.
+ 2. Nslookup myserver.database.windows.net girin  şuna benzer bir ileti alacaksınız: 
 
 ```
       Server:  UnKnown 
@@ -165,7 +165,7 @@ Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı sunucusuna bağ
  Parola: oluşturma sırasında bir parola girin.
  Parolayı anımsa: Evet ' i seçin.
  
- 5.  **Bağlan**' ı seçin.
+ 5. **Bağlan**’ı seçin.
  6. Sol menüden **veritabanlarına** gözatamazsınız.
  7. I *MyDatabase* 'teki bilgileri oluşturma veya sorgulama
  8. *Myvm*ile uzak masaüstü bağlantısını kapatın.

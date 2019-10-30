@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675698"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042171"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
@@ -89,15 +89,15 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 1. Yükleyici açıldıktan sonra **İleri**' yi seçin.
 
-   ![Yükleyici girişi](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Ağ Geçidi yükleyicisi için giriş ekranı](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. Standart mod olan **Şirket içi veri ağ geçidini (önerilen)** seçin ve ardından **İleri**' yi seçin.
 
-   ![Ağ Geçidi modunu seçin](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![Veri ağ geçidi için çalıştırma modunu seçin](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. En düşük gereksinimleri gözden geçirin, varsayılan yükleme yolunu koruyun, kullanım koşullarını kabul edin ve ardından **yükleme**' yi seçin.
 
-   ![Gereksinimleri gözden geçirin ve kullanım koşullarını kabul edin](./media/logic-apps-gateway-install/accept-terms.png)
+   ![Gereksinimleri gözden geçirin ve kullanım koşullarını kabul edin](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. Ağ Geçidi başarıyla yüklendikten sonra, Azure hesabınızın e-posta adresini girin ve **oturum aç**' ı seçin, örneğin:
 
@@ -107,7 +107,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 1. **İleri** > **Bu bilgisayarda yeni bir ağ geçidi Kaydet '** i seçin. Bu adım ağ geçidi yükleme cihazınızı [ağ geçidi bulut hizmetine](#gateway-cloud-service)kaydeder.
 
-   ![Ağ geçidini Kaydet](./media/logic-apps-gateway-install/register-gateway.png)
+   ![Ağ geçidini yerel bilgisayara kaydet](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. Ağ Geçidi yüklemeniz için şu bilgileri sağlayın:
 
@@ -115,7 +115,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
    * Kullanmak istediğiniz en az sekiz karakter olması gereken kurtarma anahtarı
    * Kurtarma anahtarınız için onay
 
-   ![Ağ geçidini ayarlama](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![Ağ geçidi yüklemesi için bilgi sağlama](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > Kurtarma Anahtarınızı güvenli bir yerde kaydedin ve saklayın. Konumu değiştirmek, taşımak, kurtarmak veya bir ağ geçidi yüklemesini almak istiyorsanız bu anahtara ihtiyacınız vardır.
@@ -124,7 +124,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
 1. Ağ Geçidi Bulut hizmeti için bölgeyi ve ağ geçidi yüklemeniz tarafından kullanılan [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) denetleyin. Bu bölge, varsayılan olarak Azure hesabınız için Azure AD kiracısı ile aynı konumdadır.
 
-   ![Bölgeyi denetle](./media/logic-apps-gateway-install/check-region.png)
+   ![Ağ geçidi hizmeti ve hizmet veri yolu için bölgeyi Onayla](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. Varsayılan bölgeyi kabul etmek için **Yapılandır**' ı seçin. Bununla birlikte, varsayılan bölge size en yakın olan bölge değilse, bölgeyi değiştirebilirsiniz.
 
@@ -134,15 +134,15 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
 
    1. Geçerli bölgenin yanındaki **bölgeyi değiştir**' i seçin.
 
-      ![Bölge Değiştir](./media/logic-apps-gateway-install/change-region.png)
+      ![Geçerli ağ geçidi bölgesini değiştirme](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. Sonraki sayfada **Bölge seç** listesini açın, istediğiniz bölgeyi seçin ve **bitti**' yi seçin.
 
-      ![Başka bir bölge seçin](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Ağ geçidi hizmeti için başka bir bölge seçin](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
 1. Son onay penceresindeki bilgileri gözden geçirin. Bu örnek, Logic Apps, Power BI, PowerApps ve Microsoft Flow için aynı hesabı kullanır, bu nedenle ağ geçidi tüm bu hizmetler için kullanılabilir. Hazırsanız, **Kapat**' ı seçin.
 
-   ![Ağ Geçidi tamamlandı](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Veri ağ geçidi bilgilerini onaylama](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. Şimdi [ağ geçidi yüklemeniz Için Azure kaynağını oluşturun](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -185,7 +185,7 @@ Ağ geçidinizin konumunu değiştirmeniz gerekiyorsa, ağ geçidi yüklemenizi 
 
 1. Kullanılabilir kümeler ve ağ geçitleri arasından seçim yapın ve seçilen ağ geçidi için kurtarma anahtarını girin, örneğin:
 
-   ![Ağ geçidini seçin](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Ağ geçidi seçin ve kurtarma anahtarı sağlayın](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. Bölgeyi değiştirmek için **bölgeyi değiştir**' i seçin ve yeni bölgeyi seçin.
 
@@ -270,9 +270,9 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Şirket içi veri ağ geçidi hakkında SSS](/data-integration/gateway/service-gateway-onprem-faq)
-* [Şirket içi veri ağ geçidinde sorun giderme](/data-integration/gateway/service-gateway-tshoot)
-* [Ağ Geçidi performansını izleme ve iyileştirme](/data-integration/gateway/service-gateway-performance)
+* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Ağ Geçidi performansını izleme ve iyileştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

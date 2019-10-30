@@ -1,5 +1,5 @@
 ---
-title: Apache Kafka verileri Azure Cosmos DB 'a Apache Spark-Azure HDInsight
+title: Cosmos DB Apache Spark & Apache Kafka-Azure HDInsight
 description: Apache Kafka verileri okumak için Apache Spark yapısal akışı kullanmayı ve sonra Azure Cosmos DB nasıl depolayacağınızı öğrenin. Bu örnekte, HDInsight üzerinde Spark’tan bir Jupyter not defterini kullanarak verilerinizi akışla aktaracaksınız.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037284"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044903"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
 
@@ -47,7 +47,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    Azure Resource Manager şablonu bu proje ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) için GitHub deposunda bulunur.
+    Azure Resource Manager şablonu bu proje için GitHub deposunda ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)) bulunur.
 
     Bu şablon aşağıdaki kaynakları oluşturur:
 
@@ -71,9 +71,9 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
 
     * **Abonelik**: Azure aboneliğinizi seçin.
 
-    * **Kaynak grubu**: Bir grup oluşturun veya var olan bir grubu seçin. Bu grup HDInsight kümesini içerir.
+    * **Kaynak grubu**: bir grup oluşturun veya var olan bir grubu seçin. Bu grup HDInsight kümesini içerir.
 
-    * **Konum**: Coğrafi olarak size yakın bir konum seçin.
+    * **Konum**: coğrafi olarak size yakın bir konum seçin.
 
     * **Cosmos DB hesap adı**: Bu değer, Cosmos DB hesabının adı olarak kullanılır.
 
@@ -88,9 +88,9 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
 
     * **Küme oturum açma parolası**: Spark ve Kafka kümeleri için Yönetici Kullanıcı parolası.
 
-    * **SSH Kullanıcı adı**: Spark ve Kafka kümeleri için oluşturulacak SSH kullanıcısı.
+    * **SSH Kullanıcı adı**: Spark ve Kafka kümeleri IÇIN oluşturulacak SSH kullanıcısı.
 
-    * **SSH parolası**: Spark ve Kafka kümeleri için SSH kullanıcısının parolası.
+    * **SSH parolası**: Spark ve Kafka KÜMELERI için SSH kullanıcısının parolası.
 
 3. **Hüküm ve Koşullar**’ı okuyun ve ardından **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**’u seçin.
 
@@ -103,7 +103,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
 
 Bu belgede kullanılan proje verileri Cosmos DB depolar. Kodu çalıştırmadan önce, önce Cosmos DB Örneğinizde bir _veritabanı_ ve _koleksiyon_ oluşturmanız gerekir. Ayrıca, Cosmos DB yönelik isteklerin kimliğini doğrulamak için kullanılan belge uç noktasını ve _anahtarı_ da almalısınız. 
 
-Bunu yapmanın bir yolu, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanmaktır. Aşağıdaki betik adlı bir veritabanı `kafkadata` ve adlı `kafkacollection`bir koleksiyonu oluşturacaktır. Ardından birincil anahtarı döndürür.
+Bunu yapmanın bir yolu, [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'yi kullanmaktır. Aşağıdaki betik, `kafkadata` adlı bir veritabanı ve `kafkacollection`adlı bir koleksiyon oluşturur. Ardından birincil anahtarı döndürür.
 
 ```azurecli
 #!/bin/bash
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ```
 
 > [!NOTE]  
-> Bash örneği `$CLUSTERNAME` , Kafka kümesinin adını içermelidir.
+> Bash örneği, `$CLUSTERNAME` Kafka kümesinin adını içermesini bekler.
 >
 > Bu örnek, JSON belgesinden verileri ayrıştırmak için [JQ](https://stedolan.github.io/jq/) yardımcı programını kullanır.
 

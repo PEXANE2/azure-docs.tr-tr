@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında yük devretme | Microsoft Docs
+title: Azure Site Recovery ile olağanüstü durum kurtarma sırasında yük devretme
 description: Azure Site Recovery hizmeti ile olağanüstü durum kurtarma sırasında VM 'Ler ve fiziksel sunuculardan yük devretmek hakkında bilgi edinin.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/30/2019
+ms.date: 10/29/2019
 ms.author: raynew
-ms.openlocfilehash: da55d83665792f6ea2f4c78aa2a6c3ca26c39233
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1585c5dbdecf11bbc6ef3dad63bf4f982c70f73e
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383196"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053763"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Yük devretme VM 'Leri ve fiziksel sunucular 
 
@@ -27,24 +27,24 @@ Azure Site Recovery tarafından sunulan yük devretme seçenekleri hakkında bil
 
 | Senaryo | Uygulama kurtarma gereksinimi | Hyper-V için iş akışı | VMware için iş akışı
 |---|--|--|--|
-|Yaklaşan bir veri merkezi kapalı kalma süresi nedeniyle planlı yük devretme| Planlı bir etkinlik gerçekleştirildiğinde uygulama için sıfır veri kaybı| Hyper-V için ASR, verileri Kullanıcı tarafından belirtilen bir kopyalama sıklığında çoğaltır. Planlı Yük devretme, sıklığı geçersiz kılmak ve bir yük devretme başlatılmadan önce son değişiklikleri çoğaltmak için kullanılır. <br/> <br/> 1. İşletmenizin değişiklik yönetimi süreci uyarınca bir bakım penceresi planlayın. <br/><br/> 2. Yaklaşan kapalı kalma süresini kullanıcılara bildirin. <br/><br/> 3. Kullanıcıya yönelik uygulamayı çevrimdışına alın.<br/><br/>4. ASR portalını kullanarak planlı yük devretmeyi başlatın. Şirket içi sanal makine otomatik olarak kapatılır.<br/><br/>Etkin uygulama veri kaybı = 0 <br/><br/>Kurtarma noktalarının günlüğü, daha eski bir kurtarma noktası kullanmak isteyen bir kullanıcının bekletme penceresinde de sağlanır. (Hyper-V için 24 saat bekletme). Çoğaltma, bekletme penceresinin zaman çerçevesinin ötesinde durdurulmuşsa, müşteriler hala kullanılabilir olan en son kurtarma noktalarını kullanarak yük devredebiliyor olabilir. | VMware için ASR, CDP kullanarak verileri sürekli çoğaltır. Yük devretme, kullanıcıya en son verilere yük devretme seçeneği verir (uygulama sonrası kapatma dahil)<br/><br/> 1. Değişiklik yönetimi işlemine göre bir bakım penceresi planlayın <br/><br/>2. yaklaşan kapalı kalma süresini kullanıcılara bildirin <br/><br/>3. Kullanıcıya yönelik uygulamayı çevrimdışına alın.<br/><br/>4. Uygulama çevrimdışı olduktan sonra ASR portalını kullanarak planlanmış bir yük devretmeyi en son noktaya başlatın. Portalda "planlı yük devretme" seçeneğini kullanın ve yük devretme için en son noktayı seçin. Şirket içi sanal makine otomatik olarak kapatılır.<br/><br/>Etkin uygulama veri kaybı = 0 <br/><br/>Bir bekletme penceresindeki kurtarma noktalarının günlüğü, daha eski bir kurtarma noktası kullanmak isteyen bir müşteri için sağlanır. (VMware için 72 saat bekletme). Çoğaltma, bekletme penceresinin zaman çerçevesinin ötesinde durdurulmuşsa, müşteriler hala kullanılabilir olan en son kurtarma noktalarını kullanarak yük devredebiliyor olabilir.
-|Planlanmamış bir veri merkezi kapalı kalma süresi nedeniyle yük devretme (doğal veya BT olağanüstü durum) | Uygulama için en az veri kaybı | 1. Kuruluşun BCP planını başlatma <br/><br/>2. ASR portalını kullanarak planlanmamış yük devretme işlemini en son veya bekletme penceresinde (günlük) bir noktaya başlatın.| 1. Kuruluşun BCP planını başlatın. <br/><br/>2. ASR portalını kullanarak planlanmamış yük devretme işlemini en son veya bekletme penceresinde (günlük) bir noktaya başlatın.
+|Yaklaşan bir veri merkezi kapalı kalma süresi nedeniyle planlı yük devretme| Planlı bir etkinlik gerçekleştirildiğinde uygulama için sıfır veri kaybı| Hyper-V için ASR, verileri Kullanıcı tarafından belirtilen bir kopyalama sıklığında çoğaltır. Planlı Yük devretme, sıklığı geçersiz kılmak ve bir yük devretme başlatılmadan önce son değişiklikleri çoğaltmak için kullanılır. <br/> <br/> 1. işletmenizin değişiklik yönetimi süreci uyarınca bir bakım penceresi planlayın. <br/><br/> 2. yaklaşan kapalı kalma süresini kullanıcılara bildirin. <br/><br/> 3. kullanıcıya yönelik uygulamayı çevrimdışına alın.<br/><br/>4. ASR portalını kullanarak planlı yük devretmeyi başlatın. Şirket içi sanal makine otomatik olarak kapatılır.<br/><br/>Etkin uygulama veri kaybı = 0 <br/><br/>Kurtarma noktalarının günlüğü, daha eski bir kurtarma noktası kullanmak isteyen bir kullanıcının bekletme penceresinde de sağlanır. (Hyper-V için 24 saat bekletme). Çoğaltma, bekletme penceresinin zaman çerçevesinin ötesinde durdurulmuşsa, müşteriler hala kullanılabilir olan en son kurtarma noktalarını kullanarak yük devredebiliyor olabilir. | VMware için ASR, CDP kullanarak verileri sürekli çoğaltır. Yük devretme, kullanıcıya en son verilere yük devretme seçeneği verir (uygulama sonrası kapatma dahil)<br/><br/> 1. değişiklik yönetimi işlemine göre bir bakım penceresi planlayın <br/><br/>2. yaklaşan kapalı kalma süresini kullanıcılara bildirin <br/><br/>3. kullanıcıya yönelik uygulamayı çevrimdışına alın.<br/><br/>4. uygulama çevrimdışı olduktan sonra ASR portalını kullanarak planlanmış bir yük devretmeyi en son noktaya başlatın. Portalda "planlı yük devretme" seçeneğini kullanın ve yük devretme için en son noktayı seçin. Şirket içi sanal makine otomatik olarak kapatılır.<br/><br/>Etkin uygulama veri kaybı = 0 <br/><br/>Bir bekletme penceresindeki kurtarma noktalarının günlüğü, daha eski bir kurtarma noktası kullanmak isteyen bir müşteri için sağlanır. (VMware için 72 saat bekletme). Çoğaltma, bekletme penceresinin zaman çerçevesinin ötesinde durdurulmuşsa, müşteriler hala kullanılabilir olan en son kurtarma noktalarını kullanarak yük devredebiliyor olabilir.
+|Planlanmamış bir veri merkezi kapalı kalma süresi nedeniyle yük devretme (doğal veya BT olağanüstü durum) | Uygulama için en az veri kaybı | 1. kuruluşun BCP planını başlatın <br/><br/>2. ASR portalını kullanarak planlanmamış yük devretme işlemini en son veya bir noktaya bekletme penceresinde (günlük) başlatın.| 1. kuruluşun BCP planını başlatın. <br/><br/>2. ASR portalını kullanarak planlanmamış yük devretme işlemini en son veya bir noktaya bekletme penceresinde (günlük) başlatın.
 
 
 ## <a name="run-a-failover"></a>Yük devretme çalıştırma
 Bu yordam, bir [kurtarma planı](site-recovery-create-recovery-plans.md)için yük devretmeyi nasıl çalıştıracağınızı açıklar. Alternatif olarak, [burada](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure)açıklandığı gibi **çoğaltılan öğeler** sayfasından tek bir sanal makine veya fiziksel sunucu için yük devretmeyi çalıştırabilirsiniz.
 
 
-![Yük devret](./media/site-recovery-failover/Failover.png)
+![Yük Devretme](./media/site-recovery-failover/Failover.png)
 
-1. **Kurtarma planlarını** > *recoveryplan_name*seçin. **Yük devretme** ' ye tıklayın
-2. **Yük devretme** ekranında, yük devretme Için bir **Kurtarma noktası** seçin. Şu seçeneklerden birini kullanabilirsiniz:
+1. *Recoveryplan_name* > **Kurtarma planlarını** seçin. **Yük devretme** ' ye tıklayın
+2. **Yük devretme** ekranında, yük devretme Için bir **Kurtarma noktası** seçin. Aşağıdaki seçeneklerden birini kullanabilirsiniz:
    1. **En son**: Bu seçenek, ilk olarak Site Recovery hizmetine gönderilen tüm verileri işleyerek işi başlatır. Verilerin işlenmesi, her sanal makine için bir kurtarma noktası oluşturur. Bu kurtarma noktası, yük devretme sırasında sanal makine tarafından kullanılır. Yük devretmeden sonra oluşturulan sanal makine, yük devretme tetiklendiğinde Site Recovery hizmetine çoğaltılan tüm verilere sahip olduğundan, bu seçenek en düşük RPO (kurtarma noktası hedefi) sağlar.
    1. **En son işlenen**: Bu seçenek, kurtarma planının tüm sanal makinelerini Site Recovery hizmeti tarafından zaten işlenmiş olan en son kurtarma noktasına devreder. Bir sanal makinenin yük devretme testini yaparken, son işlenen kurtarma noktasının zaman damgası da gösterilir. Bir kurtarma planında yük devretme yapıyorsanız, bu bilgileri almak için tek tek sanal makineye gidebilir ve **en son kurtarma noktaları** kutucuğuna bakabilirsiniz. İşlenmemiş verileri işlemek için zaman harcanmadan Bu seçenek, düşük bir RTO (kurtarma süresi hedefi) yük devretme seçeneği sağlar.
    1. **En son uygulamayla tutarlı**: Bu seçenek, kurtarma planının tüm sanal makinelerini, Site Recovery hizmeti tarafından zaten işlenmiş olan en son uygulamayla tutarlı kurtarma noktasına devreder. Bir sanal makinenin yük devretme testini yaparken, uygulamayla tutarlı en son kurtarma noktasının zaman damgası da gösterilir. Bir kurtarma planında yük devretme yapıyorsanız, bu bilgileri almak için tek tek sanal makineye gidebilir ve **en son kurtarma noktaları** kutucuğuna bakabilirsiniz.
-   1. **Işlenen en son çoklu VM**: Bu seçenek yalnızca çoklu VM tutarlılığı olan en az bir sanal makineye sahip kurtarma planları için kullanılabilir. Çoğaltma grubunun bir parçası olan sanal makineler en son ortak çoklu VM tutarlı kurtarma noktasına yük devretmeye. Diğer sanal makineler, son işlenen kurtarma noktasına yük devreder.  
-   1. **En son çoklu VM uygulaması-tutarlı**: Bu seçenek yalnızca çoklu VM tutarlılığı olan en az bir sanal makineye sahip kurtarma planları için kullanılabilir. Çoğaltma grubunun bir parçası olan sanal makineler, en son ortak çoklu VM uygulama ile tutarlı kurtarma noktasına yük devretmeye olanak sağlar. Diğer sanal makineler, uygulamayla tutarlı en son kurtarma noktasına yük devreder.
-   1. **Özel**: Bir sanal makinenin yük devretme testini yapıyorsanız, belirli bir kurtarma noktasına yük devretmek için bu seçeneği kullanabilirsiniz.
+   1. **Işlenen en son çoklu VM**: Bu seçenek yalnızca çoklu VM tutarlılığı olan en az bir sanal makineye sahip kurtarma planlarında kullanılabilir. Çoğaltma grubunun bir parçası olan sanal makineler en son ortak çoklu VM tutarlı kurtarma noktasına yük devretmeye. Diğer sanal makineler, son işlenen kurtarma noktasına yük devreder.  
+   1. **En son çoklu VM ile uygulamayla tutarlı**: Bu seçenek yalnızca çoklu VM tutarlılığı olan en az bir sanal makineye sahip kurtarma planları için kullanılabilir. Çoğaltma grubunun bir parçası olan sanal makineler, en son ortak çoklu VM uygulama ile tutarlı kurtarma noktasına yük devretmeye olanak sağlar. Diğer sanal makineler, uygulamayla tutarlı en son kurtarma noktasına yük devreder.
+   1. **Özel**: bir sanal makinenin yük devretme testini yapıyorsanız, belirli bir kurtarma noktasına yük devretmek için bu seçeneği kullanabilirsiniz.
 
       > [!NOTE]
       > Kurtarma noktası seçme seçeneği yalnızca Azure 'a yük devrettikten sonra kullanılabilir.
@@ -61,11 +61,11 @@ Bu yordam, bir [kurtarma planı](site-recovery-create-recovery-plans.md)için y�
     >
     >
 
-1. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz. Planlanmamış bir yük devretme sırasında hatalar gerçekleşse bile, kurtarma planı tamamlanana kadar çalışır.
+1. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz. Planlanmamış bir yük devretme sırasında hatalar gerçekleşse bile, kurtarma planı tamamlanana kadar çalışır.
 1. Yük devretmeden sonra, sanal makineyi oturum açarak doğrulayın. Sanal makinenin başka bir kurtarma noktasına geçmek istiyorsanız, **kurtarma noktasını Değiştir** seçeneğini kullanabilirsiniz.
 1. Yük devredilmiş sanal makineden memnun kaldığınızda, yük devretmeyi **Yürütebilirsiniz**. **Yürüt hizmeti ile kullanılabilen tüm kurtarma noktalarını siler** ve **kurtarma noktasını Değiştir** seçeneği artık kullanılamaz.
 
-## <a name="planned-failover"></a>Planlı yük devretme
+## <a name="planned-failover"></a>Planlı Yük devretme
 Site Recovery kullanılarak korunan sanal makineler/fiziksel sunucular, **Planlı Yük devretmeyi**da destekler. Planlı Yük devretme, sıfır veri kaybı yük devretme seçeneğidir. Planlı bir yük devretme tetiklendiğinde, ilk olarak kaynak sanal makineler kapatılır, en son veriler eşitlenir ve ardından bir yük devretme tetiklenir.
 
 > [!NOTE]
@@ -74,16 +74,16 @@ Site Recovery kullanılarak korunan sanal makineler/fiziksel sunucular, **Planl�
  
 ## <a name="failover-job"></a>Yük devretme işi
 
-![Yük devret](./media/site-recovery-failover/FailoverJob.png)
+![Yük Devretme](./media/site-recovery-failover/FailoverJob.png)
 
 Yük devretme tetiklendiğinde, aşağıdaki adımları içerir:
 
 1. Önkoşul denetimi: Bu adım, yük devretme için gereken tüm koşulların karşılanmasını sağlar
-1. Yükünü Bu adım, verileri işler ve bir Azure sanal makinesinin oluşturulabilmesi için hazır hale getirir. **En son** kurtarma noktasını seçtiyseniz, bu adım hizmete gönderilen verilerden bir kurtarma noktası oluşturur.
-1. Başlat: Bu adım, önceki adımda işlenen verileri kullanarak bir Azure sanal makinesi oluşturur.
+1. Yük devretme: Bu adım, verileri işler ve bir Azure sanal makinesinin oluşturulabilmesi için hazır hale getirir. **En son** kurtarma noktasını seçtiyseniz, bu adım hizmete gönderilen verilerden bir kurtarma noktası oluşturur.
+1. Başlangıç: Bu adım, önceki adımda işlenen verileri kullanarak bir Azure sanal makinesi oluşturur.
 
 > [!WARNING]
-> **Sürmekte olan yük devretme Işlemini Iptal etmeyin**: Yük devretme başlatılmadan önce, sanal makine için çoğaltma durdurulur. Devam eden bir işi **iptal** ederseniz, yük devretme işlemi duraklar ancak sanal makine çoğaltılmak üzere başlamaz. Çoğaltma yeniden başlatılamaz.
+> **Devam eden yük devretme Işlemini Iptal etmeyin**: yük devretme başlatılmadan önce, sanal makine için çoğaltma durdurulur. Devam eden bir işi **iptal** ederseniz, yük devretme işlemi duraklar ancak sanal makine çoğaltılmak üzere başlamaz. Çoğaltma yeniden başlatılamaz.
 >
 >
 

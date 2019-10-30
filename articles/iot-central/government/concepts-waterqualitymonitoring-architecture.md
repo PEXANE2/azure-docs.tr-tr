@@ -7,14 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ac81854b5d4ad15f058693a972cf7b79acd01c96
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5927d27a23e5609079ac2380d8fed13e62d1c592
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956771"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027553"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Su kalitesi izleme başvuru mimarisi 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Su kalitesinde izleme çözümleri, **Azure IoT Central uygulama şablonuyla** birlikte bir başlangıç IoT uygulaması olarak oluşturulabilir. Bu makale uçtan uca çözüm oluşturma konusunda üst düzey bir başvuru mimarisi kılavuzu sağlar. 
 

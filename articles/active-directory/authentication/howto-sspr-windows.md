@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab46bd29aef2fab26c744e1e4c199f6c9a9fff1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304207"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042072"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştir
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
 Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekranında kullanıcıların parolalarını sıfırlamalarını sağlayabilirsiniz. Kullanıcıların artık [SSPR portalına](https://aka.ms/sspr)erişmek için bir Web tarayıcısına sahip bir cihaz bulması gerekmez.
 
@@ -30,15 +30,14 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 - **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
 - Ağ proxy 'si gereksinimleri
    - Windows 10 cihazları 
-       - 443 numaralı bağlantı `passwordreset.microsoftonline.com` noktası ve`ajax.aspnetcdn.com`
+       - `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com` bağlantı noktası 443
        - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
    - Windows 7, 8 ve 8,1 cihazları
-       - 443 numaralı bağlantı noktası`passwordreset.microsoftonline.com`
+       - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com`
 
 ## <a name="general-limitations"></a>Genel sınırlamalar
 
 - Parola sıfırlama, uzak bir masaüstünden veya Hyper-V gelişmiş oturumlarından Şu anda desteklenmiyor.
-- Hesap kilidi açma, mobil uygulama bildirimi ve mobil uygulama kodu desteklenmez.
 - Bu özellik, 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda ve "Kullanıcı oturum açmadan hemen önce gerçekleştir" seçeneği için çalışmaz. 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda, bu özelliği etkinleştirmek için makine kimlik doğrulamasının kullanılması önerilir.
 
 ## <a name="windows-10-password-reset"></a>Windows 10 parola sıfırlama
@@ -49,7 +48,7 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
     - Azure AD 'ye katılmış
     - Karma Azure AD 'ye katılmış
 - Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır.
-- Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)destek makalesinde performans düşüklede bulunabilir.
+- Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
 - Aşağıdaki ayarların Windows 10 cihazlarında parola kullanma ve sıfırlama yeteneğinin kesintiye uğratabileceği bilinmektedir
     - V1809 öncesi Windows 10 sürümlerindeki ilke için Ctrl + Alt + Del gerekliyse, **parola sıfırlama** işlemi çalışmaz.
     - Kilit ekranı bildirimleri kapalıysa, **parola sıfırlama** çalışmaz.
@@ -82,9 +81,9 @@ Oturum açma ekranından parola sıfırlama yapılmasını sağlayan yapılandı
       - **OMA-URI** olarak `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` ayarlayın
       - **Veri türü** olarak **Tamsayı** ayarlayın
       - **Değer** olarak **1** ayarlayın
-      -           **Tamam**’a tıklayın.
-   -           **Tamam**’a tıklayın.
-1. **Oluştur**'a tıklayın.
+      - **Tamam**’a tıklayın.
+   - **Tamam**’a tıklayın.
+1. **Oluştur**'a tıklayın
 1. Bu ilke belirli kullanıcılara, cihazlara veya gruplara atanabilir. [Microsoft Intune, Kullanıcı ve cihaz profilleri atama](https://docs.microsoft.com/intune/device-profile-assign)makalesinde daha fazla bilgi bulunabilir.
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Kayıt defterini kullanarak Windows 10 için etkinleştirme
@@ -102,7 +101,7 @@ Azure AD denetim günlüğü parola sıfırlamanın oluştuğu yerin IP adresi v
 
 ![Örnek Windows 7 parola sıfırlama Azure AD denetim günlüğünde](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Kullanıcılar bir Windows 10 cihazının oturum açma ekranından parolalarını sıfırlarında, adlı `defaultuser1` düşük ayrıcalıklı geçici bir hesap oluşturulur. Bu hesap, parola sıfırlama işleminin güvenli kalmasını sağlamak için kullanılır. Hesabın kendisi rastgele oluşturulmuş bir parolaya sahiptir, cihaz oturum açma için gösterilmez ve Kullanıcı parolasını sıfırladıktan sonra otomatik olarak kaldırılacaktır. Birden `defaultuser` çok profil var olabilir, ancak güvenle yoksayılabilir.
+Kullanıcılar, Windows 10 cihazının oturum açma ekranından parolalarını sıfırlarında `defaultuser1` adlı düşük ayrıcalıklı geçici bir hesap oluşturulur. Bu hesap, parola sıfırlama işleminin güvenli kalmasını sağlamak için kullanılır. Hesabın kendisi rastgele oluşturulmuş bir parolaya sahiptir, cihaz oturum açma için gösterilmez ve Kullanıcı parolasını sıfırladıktan sonra otomatik olarak kaldırılacaktır. Birden çok `defaultuser` profili var olabilir, ancak güvenle yoksayılabilir.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 ve 8,1 parola sıfırlama
 
@@ -118,7 +117,7 @@ Kullanıcılar bir Windows 10 cihazının oturum açma ekranından parolaların�
 ### <a name="install"></a>Yükleme
 
 1. Etkinleştirmek istediğiniz Windows sürümü için uygun yükleyiciyi indirin.
-   - Yazılım, Microsoft İndirme Merkezi 'nden şu adresten edinilebilir:[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+   - Yazılım, Microsoft İndirme Merkezi 'nde [https://aka.ms/sspraddin](https://aka.ms/sspraddin) adresinden edinilebilir
 1. Yüklemek istediğiniz makinede oturum açın ve yükleyiciyi çalıştırın.
 1. Yükleme sonrasında, bir yeniden başlatma önemle önerilir.
 1. Yeniden başlatmanın ardından, oturum açma ekranında bir kullanıcı seçin ve "parolayı unuttum mı?" düğmesine tıklayın. parola sıfırlama iş akışını başlatmak için.
@@ -141,8 +140,8 @@ Ek günlüğe kaydetme gerekliyse, ayrıntılı günlük kaydını etkinleştirm
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Ayrıntılı günlüğü etkinleştirmek için, oluşturun `REG_DWORD: “EnableLogging”`ve 1 olarak ayarlayın.
-- Ayrıntılı günlük kaydını devre dışı bırakmak için `REG_DWORD: “EnableLogging”` öğesini 0 olarak değiştirin.
+- Ayrıntılı günlüğü etkinleştirmek için bir `REG_DWORD: “EnableLogging”`oluşturun ve bunu 1 olarak ayarlayın.
+- Ayrıntılı günlük kaydını devre dışı bırakmak için `REG_DWORD: “EnableLogging”` 0 olarak değiştirin.
 
 ## <a name="what-do-users-see"></a>Kullanıcıların ne görecek
 

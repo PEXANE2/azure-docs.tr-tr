@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933926"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053524"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 'dan Azure 'a çoğaltma için Mobility hizmetini otomatik güncelleştirme
 
@@ -31,7 +31,7 @@ Güncelleştirmeleri yönetmek için Site Recovery kullandığınızda, kasa ile
 Varsayılan runbook zamanlaması, çoğaltılan VM 'nin coğrafi bölge saat diliminde 12:00 ' de günlük olarak yinelenir. Ayrıca, Otomasyon hesabı aracılığıyla runbook zamanlamasını değiştirebilirsiniz.
 
 > [!NOTE]
-> Güncelleştirme paketi 35 ' den başlayarak, güncelleştirmeler için kullanılacak mevcut bir Otomasyon hesabı seçebilirsiniz. Bu güncelleştirmeden önce, Site Recovery varsayılan olarak bu hesabı oluşturdunuz. Bu seçenek, bir sanal makine için çoğaltmayı etkinleştirdiğinizde kullanılabilir. Ayarı değiştirirseniz, aynı kasada korunan tüm Azure VM 'Leri için geçerlidir.
+> Güncelleştirme paketi 35 ' den başlayarak, güncelleştirmeler için kullanılacak mevcut bir Otomasyon hesabı seçebilirsiniz. Bu güncelleştirmeden önce, Site Recovery varsayılan olarak bu hesabı oluşturdunuz. Yalnızca bir sanal makine için çoğaltmayı etkinleştirdiğinizde bu seçeneği belirleyebilirsiniz. Bu, çoğaltılan bir VM için kullanılamaz. Seçtiğiniz ayar aynı kasada korunan tüm Azure VM 'Leri için geçerlidir.
  
 > Otomatik güncelleştirmeleri açmak, Azure sanal makinelerinizin yeniden başlatılmasını gerektirmez veya devam eden çoğaltmayı etkiler.
 

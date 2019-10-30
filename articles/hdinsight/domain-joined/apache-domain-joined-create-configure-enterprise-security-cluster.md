@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
+title: Kurumsal Güvenlik Paketi kümelerini oluşturma, Yapılandırma-Azure
 description: Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümelerini oluşturma ve yapılandırma hakkında bilgi edinin
 services: hdinsight
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: aed656c65fc70946f7d91cb4354e1c081954e68c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6247a6b2eeeb421773400cc60d05696f973a1dff
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030402"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044681"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
 
@@ -113,7 +113,7 @@ Kullanıcılar Azure AD ile eşitlenir.
 1. **Kaynak oluştur** ve *Dizin*yaz ' ı seçin. **Azure Active Directory** > **Oluştur**' u seçin.
 1. **Kuruluş adı**altında *hdıfabrikam*yazın.
 1. **İlk etki alanı adı**altında *HDIFabrikamoutlook*girin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
     ![Azure AD dizini oluşturma](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
@@ -134,7 +134,7 @@ Artık Azure AD kiracınızı, şirket içi Active Directory örneğindeki kulla
     1. Yeni Kullanıcı için aşağıdaki ayrıntıları girin:
         * **Ad**: fabrikamazureadmin
         * **Kullanıcı adı**: fabrikamazureadmin@hdifabrikam.com
-        * **Parola**: Tercih ettiğiniz güvenli bir parola
+        * **Parola**: tercih ettiğiniz güvenli bir parola
 
     1. **Gruplar** bölümünde **AAD DC yöneticileri** ' ni arayın ve **Seç**' e tıklayın.
 
@@ -146,7 +146,7 @@ Artık Azure AD kiracınızı, şirket içi Active Directory örneğindeki kulla
 
     1. Kullanıcı için bir parola girin. Ardından **Oluştur**’u seçin.
 
-1. Yeni oluşturulan kullanıcı \< @ no__t-1 > parolasını değiştirmek istiyorsanız, Azure portal oturum açmak için kimliği kullanın. Parolayı değiştirmeniz istenir.
+1. Yeni oluşturulan kullanıcı \<fabrikamazureadmin@hdifabrikam.com> parolasını değiştirmek istiyorsanız, kimliği kullanarak Azure portal oturum açın. Parolayı değiştirmeniz istenir.
 
 ## <a name="sync-on-premises-users-to-azure-ad"></a>Şirket içi kullanıcıları Azure AD ile eşitleme
 
@@ -156,7 +156,7 @@ Artık Azure AD kiracınızı, şirket içi Active Directory örneğindeki kulla
 
 1. Azure AD Connect etki alanı denetleyicisine yükler.
 
-    1. İndirdiğiniz yürütülebilir dosyayı açın ve lisans koşullarını kabul edin. Seçin **devam**.
+    1. İndirdiğiniz yürütülebilir dosyayı açın ve lisans koşullarını kabul edin. **Devam**'ı seçin.
 
         !["Azure AD Connect 'e hoş geldiniz" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0052.png)
 
@@ -174,14 +174,14 @@ Artık Azure AD kiracınızı, şirket içi Active Directory örneğindeki kulla
 
    !["Azure AD 'ye bağlanma" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. **Azure AD oturum açma yapılandırması** sayfasında **İleri**' yi seçin.
-   !["Azure AD oturum açma yapılandırması" sayfası @ no__t-1
+   "Azure AD oturum açma yapılandırması" sayfasını ![](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
 1. **Yapılandırmaya hazırlanma** sayfasında, **yüklensin**' i seçin.
 
    !["Yapılandırmaya hazırlanma" sayfası](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
 
 1. **Yapılandırma Tamam** sayfasında **Çıkış**' ı seçin.
-   ![ "Yapılandırma Tamam" sayfası @ no__t-1
+   "Yapılandırma Tamam" sayfasını ![](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. Eşitleme tamamlandıktan sonra, IaaS dizininde oluşturduğunuz kullanıcıların Azure AD ile eşitlendiğinden emin olun.
    1. Azure Portal’da oturum açın.
@@ -197,7 +197,7 @@ Azure AD Domain Services yapılandırmak için kullanabileceğiniz, Kullanıcı 
 1. Aboneliğinizi seçin.
 1. **Kaynak grubu**altında, **Yeni oluştur** ' u seçin ve *Hdifabrikam-merkezileştirmişus*girin.
 1. **Konum**altında **Orta ABD**' yi seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 ![Kullanıcı tarafından atanan yeni bir yönetilen kimlik oluşturma](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
@@ -219,7 +219,7 @@ Azure AD DS 'yi etkinleştirmek için bu adımları izleyin. Daha fazla bilgi i�
 1. Azure Portal’da oturum açın.
 1. **Kaynak oluştur**' u seçin, *etki alanı hizmetleri*girin ve **Azure AD Domain Services**' ı seçin.
 1. **Temel bilgiler** sayfasında:
-    1. **Dizin adı**altında, oluşturduğunuz Azure AD dizinini seçin: **Hdıfabrikam**.
+    1. **Dizin adı**altında, oluşturduğunuz Azure AD dizinini seçin: **hdıfabrikam**.
     1. **DNS etki alanı adı**için *HDIFabrikam.com*girin.
     1. Aboneliğinizi seçin.
     1. **Hdifabrikam-merkezde ABD**kaynak grubunu belirtin. **Konum**için **Orta ABD**' yi seçin.
@@ -318,16 +318,16 @@ Sertifikanın bilgisayarın **Kişisel** deposunda yüklü olduğunu doğrulayı
     1. **Ayarlar**altında, **gelen güvenlik kuralları** > **Ekle**' yi seçin.
     1. **Gelen güvenlik kuralı ekle** sayfasında, aşağıdaki özellikleri girin ve **Ekle**' yi seçin:
 
-        | Özellik | Value |
+        | Özellik | Değer |
         |---|---|
-        | Source | Any |
-        | Source port ranges | * |
-        | Destination | Any |
-        | Destination port range | 636 |
-        | Protocol | Any |
-        | Action | Allow |
-        | Priority | \< Istenen sayı > |
-        | Name | Port_LDAP_636 |
+        | Kaynak | Herhangi biri |
+        | Kaynak bağlantı noktası aralıkları | * |
+        | Hedef | Herhangi biri |
+        | Hedef bağlantı noktası aralığı | 636 |
+        | Protokol | Herhangi biri |
+        | Eylem | Allow |
+        | Öncelik | \< Istenen sayı > |
+        | Adı | Port_LDAP_636 |
 
     !["Gelen güvenlik kuralı ekle" iletişim kutusu](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -371,14 +371,14 @@ Bu adım aşağıdaki önkoşulları gerektirir:
 
     1. **Güvenlik + ağ** (Bölüm 2) için aşağıdaki ayrıntıları girin:
         * **Kurumsal güvenlik paketi**altında **etkin**' i seçin.
-        * **Küme Yönetici kullanıcısı** ' nı seçin ve şirket içi yönetici kullanıcı olarak oluşturduğunuz **hdıadmin** hesabını seçin. Tıklayın **seçin**.
-        * **HDIUserGroup** > **küme erişim** grubunuseçin. Gelecekte bu gruba eklediğiniz tüm kullanıcılar HDInsight kümelerine erişebilecektir.
+        * **Küme Yönetici kullanıcısı** ' nı seçin ve şirket içi yönetici kullanıcı olarak oluşturduğunuz **hdıadmin** hesabını seçin. **Seç**'e tıklayın.
+        * **HDIUserGroup** > **küme erişim grubunu** seçin. Gelecekte bu gruba eklediğiniz tüm kullanıcılar HDInsight kümelerine erişebilecektir.
 
             ![Küme erişim grubunu seçin HDIUserGroup](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. Küme yapılandırmasının diğer adımlarını tamamlayıp **küme özetinin**ayrıntılarını doğrulayın. **Oluştur**’u seçin.
+    1. Küme yapılandırmasının diğer adımlarını tamamlayıp **küme özetinin**ayrıntılarını doğrulayın. **Oluştur**'u seçin.
 
-1. @No__t-0 ' da yeni oluşturulan kümenin ambarı Kullanıcı arabiriminde oturum açın. Yönetici Kullanıcı adınızı `hdiadmin@hdifabrikam.com` ve parolasını kullanın.
+1. Yeni oluşturulan küme için `https://CLUSTERNAME.azurehdinsight.net`konumundaki ambarı Kullanıcı arabiriminde oturum açın. Yönetici Kullanıcı adınızı `hdiadmin@hdifabrikam.com` ve parolasını kullanın.
 
     ![Apache ambarı Kullanıcı arabirimi oturum açma penceresi](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 

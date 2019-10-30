@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 317a8ba48851ebf65fe52e79f6cf9d9c45786f6f
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147057"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053420"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Azure VM 'lerinin PowerShell çoğaltmasıyla diskleri dışlama
 
@@ -29,6 +29,7 @@ Başlamadan önce:
 - Tüm bileşenler için [destek gereksinimlerini](azure-to-azure-support-matrix.md) gözden geçirin.
 - Azurerd PowerShell "az" modülüne sahip olduğunuzdan emin olun. PowerShell 'i yüklemek veya güncelleştirmek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Bir kurtarma hizmetleri kasası ve korunan sanal makineleri en az bir kez oluşturmuş olduğunuzdan emin olun. Bu işlemleri yapmadıysanız, [Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama](azure-to-azure-powershell.md)sürecini izleyin.
+- Çoğaltma için etkin bir Azure VM 'ye disk ekleme hakkında bilgi arıyorsanız, [Bu makaleyi gözden geçirin](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Disklerin neden çoğaltmanın dışında tutulması
 Diskleri çoğaltmanın dışında bırakmanız gerekebilir çünkü:

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757288"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043996"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -75,5 +75,5 @@ Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevler
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Iş API konsolunun](try-review-api-job.md)sürücüsünü test edin ve REST API kod örneklerini kullanın. Visual Studio ve C#hakkında bilgi sahibiyseniz, [işler .net hızlı başlangıç](moderation-jobs-quickstart-dotnet.md)' i de gözden geçirin. 
-* İncelemeler için, [API konsolunu gözden geçir](try-review-api-review.md)' i kullanmaya başlayın ve REST API kod örneklerini kullanın. Ardından bkz. [.net hızlı başlangıç](moderation-reviews-quickstart-dotnet.md).
+* İncelemeler için, [API konsolunu gözden geçir](try-review-api-review.md)' i kullanmaya başlayın ve REST API kod örneklerini kullanın. Ardından [.net hızlı başlangıç](dotnet-sdk-quickstart.md)konusunun incelemeler bölümüne bakın.
 * Video incelemeleri için, [video incelemesi hızlı](video-reviews-quickstart-dotnet.md)başlangıcı ' nı kullanın ve [video incelemesine yorum ekleme](video-transcript-reviews-quickstart-dotnet.md)hakkında bilgi edinin.

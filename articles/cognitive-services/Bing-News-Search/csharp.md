@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: C# -Bing haber arama REST API bir haber araması gerçekleştirin'
+title: 'Hızlı başlangıç: C# -Bing haber arama REST API bir haber araması gerçekleştirme'
 titleSuffix: Azure Cognitive Services
 description: Kullanarak C#Bing haber arama REST API bir istek göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 10/28/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c6b050a9637046a8703dd7aaf1d5ac7f1ad1a5da
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 427cf87a8907482ae5346372c2997ce6e01084d0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423787"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027105"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Hızlı Başlangıç: Ve Bing Haber Arama kullanarak C# haber arayın REST API
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: ve Bing Haber Arama REST API C# kullanarak haber arayın
 
 Bing Haber Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit C# uygulama, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğe tam kod [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)'da bulunabilir.
 
@@ -32,7 +32,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Ayrıca bkz: [Bilişsel hizmetler fiyatlandırması - Bing arama API'si](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
@@ -85,25 +85,6 @@ API’ye çağrı yapmak için `BingNewsSearch` adlı bir yöntem oluşturun ve 
     request.Headers["Ocp-Apim-Subscription-Key"] = subscriptionKey;
     HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().Result;
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
-    ```
-
-3. Arama sonucu nesnesini oluşturun ve Bing HTTP üst bilgilerini ayıklayın. Ardından `searchResult` değerini döndürün.
-
-    ```csharp
-    // Create the result object for return
-    var searchResult = new SearchResult()
-    {
-        jsonResult = json,
-        relevantHeaders = new Dictionary<String, String>()
-    };
-
-    // Extract Bing HTTP headers
-    foreach (String header in response.Headers)
-    {
-        if (header.StartsWith("BingAPIs-") || header.StartsWith("X-MSEdge-"))
-            searchResult.relevantHeaders[header] = response.Headers[header];
-    }
-    return searchResult;
     ```
 
 3. Arama sonucu nesnesini oluşturun ve Bing HTTP üst bilgilerini ayıklayın. Ardından `searchResult` değerini döndürün.

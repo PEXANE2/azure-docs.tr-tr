@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: MT
+ms.openlocfilehash: 5b9011e2a95dc1bdb86311111123db3c994f3aee
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827617"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044929"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: sık sorulan sorular
 
@@ -84,7 +84,7 @@ Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek i
 
 - Oluşturma sırasında veya sonrasında betikler. Betikler, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK ' dan kullanabileceğiniz bir yapılandırma seçeneği olan [betik eylemi](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)aracılığıyla çağrılır. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir.
 
-- kümeyi sağlamadıktan sonra 0 veya diğer yöntemler @no__t.
+- kümeyi sağlamadıktan sonra `sudo` veya diğer yöntemler.
   
 - Ekosistem uygulamalarını yüklemek için [HDInsight uygulama platformu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) .
 
@@ -114,7 +114,7 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Nasıl yaparım?, ambarı 'nda saat dilimini değiştirmek mi istiyorsunuz?
 
-1. @No__t-0 ' da ambarı Web Kullanıcı arabirimini açın, burada CLUSTERNAME kümenizin adıdır.
+1. https://CLUSTERNAME.azurehdinsight.net konumundaki ambarı Web Kullanıcı arabirimini açın, burada CLUSTERNAME kümenizin adıdır.
 2. Sağ üst köşede Yönetici ' yi seçin | Ayarlar. 
 
    ![Ambarı ayarları](media/hdinsight-faq/ambari-settings.png)
@@ -179,7 +179,7 @@ Evet, bir HDInsight kümesiyle aynı alt ağ içinde ek bir sanal makine dağıt
 
 - Kenar düğümleri: [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md)bölümünde açıklandığı gibi, kümeye başka bir kenar düğümü ekleyebilirsiniz.
 
-- Tek başına düğümler: tek başına bir sanal makineyi aynı alt ağa ekleyebilir ve bu sanal makineden kümeye erişim `https://<CLUSTERNAME>-int.azurehdinsight.net` ' ı kullanın. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+- Tek başına düğümler: tek başına bir sanal makineyi aynı alt ağa ekleyebilir ve bu sanal makineden kümeye, Özel uç noktası `https://<CLUSTERNAME>-int.azurehdinsight.net`kullanarak erişebilirsiniz. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Var olan bir HDInsight kümesini başka bir sanal ağa ekleyebilir miyim?
 
@@ -238,6 +238,13 @@ Zamanlamayı kontrol etmeniz gereken senaryolarda aşağıdaki adımları kullan
    `/usr/local/bin/azsecd manual -s clamav`
 
 Bir cron işini ayarlama ve çalıştırma hakkında daha fazla bilgi için bkz. [nasıl yaparım? bir cron işi ayarlama](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job).
+
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Spark ESP kümelerinde neden LLAP var?
+ESP Spark kümelerinde, LLAP, güvenlik nedenleriyle (ör. Apache Ranger), performans için de etkindir. LLAP 'nin kaynak kullanımını karşılamak için daha büyük düğüm VM 'Leri kullanmanız gerekir (ör. minimum D13V2). 
+
+### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Bir ESP kümesi oluşturduktan sonra eklenebilir AAD grupları nasıl ekleyebilirim?
+Bunu başarmanın iki yolu vardır: 1-kümeyi yeniden oluşturabilir ve küme oluşturma sırasında ek grubu ekleyebilirsiniz. AAD-DS ' d a kapsamlı eşitleme kullanıyorsanız, lütfen Grup B 'nin kapsamlı eşitlemeye eklendiğinden emin olun.
+2-grubu, ESP kümesini oluşturmak için kullanılan önceki grubun iç içe geçmiş alt grubu olarak ekleyin. Örneğin, Grup `A`ile bir ESP kümesi oluşturduysanız, daha sonra grup ekleme `B` `A` iç içe geçmiş bir alt grubu olarak ve bir saatten sonra otomatik olarak eşitlenecek ve kullanılabilir. 
 
 ## <a name="storage"></a>Depolama
 
@@ -310,14 +317,14 @@ Kalıcı betikleri, ölçek işlemleri aracılığıyla kümeye eklenen yeni ça
 
 Gerekli bilgileri JSON biçiminde çekmek için aşağıdaki REST uç noktalarını kullanabilirsiniz. İstekleri yapmak için temel kimlik doğrulama üst bilgilerini kullanın.
 
-- Tez Sorgu Görünümü: *https: \/ @ no__t-2 @ no__t-3cluster adı >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
-- Tez dag görünümü: *https: \/ @ no__t-2 @ no__t-3cluster adı >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
+- Tez Sorgu Görünümü: *https:\//\<küme adı >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- Tez dag görünümü: *https:\//\<küme adı >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Nasıl yaparım? Azure Active Directory Kullanıcı kullanarak HDI kümesinden yapılandırma ayrıntılarını almak istiyor musunuz?
 
 AAD kullanıcılarınız ile uygun kimlik doğrulama belirteçlerini anlaşmak için aşağıdaki biçimi kullanarak ağ geçidine gidin:
 
-* https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>YARN performansını izlemek için Nasıl yaparım? ambarı yeniden oluşturma API 'sini kullanmak mı istiyorsunuz?
 

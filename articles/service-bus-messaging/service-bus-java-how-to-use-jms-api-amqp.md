@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f1a679deca8ee33bb4801eb1d1023684a37d0f59
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c0c7e8b6066626966e2a72d474306bae4ead14c2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793172"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027216"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus ve AMQP 1,0 ile Java Ileti hizmeti 'ni (JMS) kullanma
 Bu makalede, popüler Java Ileti hizmeti (JMS) API standardı kullanılarak Java uygulamalarından Azure Service Bus mesajlaşma özelliklerinin (kuyruklar ve yayımlama/abone olma konuları) nasıl kullanılacağı açıklanmaktadır. Azure Service Bus .NET API 'SI ile nasıl yapılacağını açıklayan bir [yardımcı makale](service-bus-amqp-dotnet.md) vardır. AMQP 1,0 kullanarak platformlar arası mesajlaşma hakkında bilgi edinmek için bu iki Kılavuzu birlikte kullanabilirsiniz.
@@ -344,7 +344,7 @@ MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ## <a name="jms-topics-vs-service-bus-topics"></a>JMS konuları ile Service Bus konuları
 Java Ileti hizmeti (JMS) API 'SI aracılığıyla Azure Service Bus konuları ve abonelikleri kullanmak, temel gönderme ve alma özellikleri sağlar. JMS uyumlu API 'Ler ile diğer ileti aracılarından uygulamalar taşırken kullanışlı bir seçenektir. Service Bus konular, JMS konularından farklı olsa da birkaç ayarlama gerektirir. 
 
-Azure Service Bus, iletileri Azure Kaynak yönetimi arabirimi, Azure komut satırı araçları veya Azure portal aracılığıyla yönetilen adlandırılmış, paylaşılan ve dayanıklı aboneliklere yönlendirir. Her abonelik, her biri bir filtre koşuluna sahip olabilecek ve SQL filtreleri için de bir meta veri dönüştürme eylemi olan 2000 adede kadar seçim kuralına izin verir. Her filtre koşulu eşleşmesi, tehj aboneliğine kopyalanacak giriş iletisini seçer.  
+Azure Service Bus, iletileri Azure Kaynak yönetimi arabirimi, Azure komut satırı araçları veya Azure portal aracılığıyla yönetilen adlandırılmış, paylaşılan ve dayanıklı aboneliklere yönlendirir. Her abonelik, her biri bir filtre koşuluna sahip olabilecek ve SQL filtreleri için de bir meta veri dönüştürme eylemi olan 2000 adede kadar seçim kuralına izin verir. Her filtre koşulu eşleşmesi, aboneliğe kopyalanacak giriş iletisini seçer.  
 
 Aboneliklerden ileti alma, kuyruklardan alınan iletileri aynı alıyor. Her aboneliğin ilişkili bir atılacak ileti sırası ve iletileri otomatik olarak başka bir kuyruğa veya konuya iletme yeteneği vardır. 
 

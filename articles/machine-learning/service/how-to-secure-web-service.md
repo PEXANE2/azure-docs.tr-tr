@@ -1,7 +1,7 @@
 ---
 title: SSL kullanarak Web hizmetlerini güvenli hale getirme
 titleSuffix: Azure Machine Learning
-description: HTTPS 'yi etkinleştirerek Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetini güvenli hale getirme hakkında bilgi edinin. HTTPS, güvenli yuva katmanları (SSL) için bir değiştirme olan Aktarım Katmanı Güvenliği (TLS) kullanarak istemcilerden gelen verilerin güvenliğini sağlar. İstemciler Web hizmetinin kimliğini doğrulamak için de HTTPS kullanır.
+description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin çok güvenli bir şekilde HTTPS 'yi nasıl etkinleştireceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 39b79e5729945a346e9cf022fb93e23da9fa7824
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034369"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053556"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek için SSL kullanma
 
@@ -36,29 +36,29 @@ TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijit
 
 Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
 
-1. Bir etki alanı adını alın.
+1. Bir etki alanı adı alın.
 
 2. Dijital bir sertifika alın.
 
 3. Web hizmetini SSL etkinken dağıtın veya güncelleştirin.
 
-4. Web hizmetine işaret edecek şekilde güncelleştirin.
+4. DNS 'nizi Web hizmetine işaret etmek üzere güncelleştirin.
 
 > [!IMPORTANT]
 > Azure Kubernetes Service 'e (AKS) dağıtım yapıyorsanız, kendi sertifikanızı satın alabilir veya Microsoft tarafından sağlanmış bir sertifikayı kullanabilirsiniz. Microsoft 'tan bir sertifika kullanıyorsanız, bir etki alanı adı veya SSL sertifikası almanız gerekmez. Daha fazla bilgi için bu makalenin [SSL ve dağıtımı etkinleştirme](#enable) bölümüne bakın.
 
 [Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde Web hizmetlerini güvenli hale getirmeye yönelik küçük farklılıklar vardır.
 
-## <a name="get-a-domain-name"></a>Bir etki alanı adı
+## <a name="get-a-domain-name"></a>Etki alanı adı Al
 
 Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com) Web hizmetinizi barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
-## <a name="get-an-ssl-certificate"></a>Bir SSL sertifikası alma
+## <a name="get-an-ssl-certificate"></a>SSL sertifikası al
 
 SSL sertifikası almanın pek çok yolu vardır (dijital sertifika). En yaygın olarak, bir *sertifika yetkilisinden* (CA) bir sertifika satın alımdır. Sertifikayı nereden alacağınız bağımsız olarak, aşağıdaki dosyalar gereklidir:
 
-* A **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
-* A **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
+* Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
+* Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
 Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
@@ -66,7 +66,7 @@ Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız ad
 > Sertifika yetkilisi sertifikayı ve anahtarı pek kodlu dosyalar olarak sağlayamıyorum, biçimi değiştirmek için [OpenSSL](https://www.openssl.org/) gibi bir yardımcı program kullanabilirsiniz.
 
 > [!WARNING]
-> *Otomatik olarak imzalanan* sertifikaları yalnızca geliştirme amacıyla kullanın. Bunları üretim ortamlarında kullanmayın. Otomatik olarak imzalanan sertifikaları, uygulamaları istemcinizde sorunlara neden olabilir. Daha fazla bilgi için, istemci uygulamanızın kullandığı ağ kitaplıklarının belgelerine bakın.
+> *Otomatik olarak imzalanan* sertifikaları yalnızca geliştirme amacıyla kullanın. Bunları üretim ortamlarında kullanmayın. Otomatik olarak imzalanan sertifikalar, istemci uygulamalarınızda sorunlara yol açabilir. Daha fazla bilgi için, istemci uygulamanızın kullandığı ağ kitaplıklarının belgelerine bakın.
 
 ## <a id="enable"></a>SSL 'yi etkinleştirme ve dağıtma
 
@@ -84,7 +84,7 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
 
 **Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
-  * Microsoft 'tan bir sertifika kullandığınızda, *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "hizmetim" değeri "hizmetim\<altı-rastgele-karakter > bir etki alanı adı oluşturur.\< azureregion >. cloudapp. Azure. com ", \<azureregion > hizmeti içeren bölgedir. İsteğe bağlı olarak, var olan *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
+  * Microsoft 'tan bir sertifika kullandığınızda, *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "hizmetim" değeri "hizmetim\<altı-Random-karakterlik > bir etki alanı adı oluşturur.\<azureregion >. cloudapp. Azure. com ", burada \<azureregion >, hizmeti içeren bölgedir. İsteğe bağlı olarak, var olan *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
     SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini, *sertifika* dosyasının değerine ayarlayın. *Ssl_key* değerini *anahtar* dosyasının değerine ayarlayın.
 
@@ -134,9 +134,9 @@ aci_config = AciWebservice.deploy_configuration(
 
 Daha fazla bilgi için bkz. [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
 
-## <a name="update-your-dns"></a>Güncelleştirin
+## <a name="update-your-dns"></a>DNS 'nizi güncelleştirme
 
-Ardından, DNS sunucunuzun web hizmetine işaret edecek şekilde güncelleştirmeniz gerekir.
+Sonra, DNS 'nizi Web hizmetine işaret etmek için güncelleştirmeniz gerekir.
 
 + **Container Instances için:**
 
@@ -230,7 +230,7 @@ Daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
 
 ## <a name="disable-ssl"></a>SSL 'yi devre dışı bırak
 
-Azure Kubernetes hizmetine dağıtılan bir modelin SSL 'yi devre dışı bırakmak için, bir `SslConfiguration` ile `status="Disabled"`oluşturun ve sonra bir güncelleştirme gerçekleştirin:
+Azure Kubernetes hizmetine dağıtılan bir modelin SSL 'yi devre dışı bırakmak için, `status="Disabled"`bir `SslConfiguration` oluşturun ve sonra bir güncelleştirme gerçekleştirin:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -247,6 +247,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şunları nasıl yapacağınızı öğrenin:
+Aşağıdakileri nasıl yapacağınızı öğrenin:
 + [Bir Web hizmeti olarak dağıtılan makine öğrenimi modelini kullanma](how-to-consume-web-service.md)
 + [Bir Azure sanal ağı içinde denemeleri ve çıkarımı güvenle çalıştırın](how-to-enable-virtual-network.md)

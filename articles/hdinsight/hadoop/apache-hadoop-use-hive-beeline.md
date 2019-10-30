@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d6063daa649b507057fd2a4468c32dad1cd35eec
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030436"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027719"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive ile Apache Beeline istemcisini kullanma
 
@@ -40,7 +40,7 @@ Bir istemciden HDInsight 'a bir Azure sanal ağı üzerinden bağlanılırken, b
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-@No__t-0 ' i bir küme headnode 'ın tam etki alanı adıyla değiştirin. Bir headnode 'un tam etki alanı adını bulmak için [Apache ambarı REST API belgesini kullanarak HDInsight 'ı yönetme](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) bölümündeki bilgileri kullanın.
+`<headnode-FQDN>`, küme headnode 'un tam etki alanı adıyla değiştirin. Bir headnode 'un tam etki alanı adını bulmak için [Apache ambarı REST API belgesini kullanarak HDInsight 'ı yönetme](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) bölümündeki bilgileri kullanın.
 
 ---
 
@@ -53,7 +53,7 @@ kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-@No__t-0 ' yı, kümeye erişim izinleri olan etki alanındaki bir hesabın adıyla değiştirin. @No__t-0 ' yı kümenin katıldığı Azure Active Directory (AAD) adıyla değiştirin. @No__t-0 değeri için bir büyük dize kullanın, aksi takdirde kimlik bilgisi bulunamadı. Gerekirse bölge adları için `/etc/krb5.conf` ' yı işaretleyin.
+`<username>`, kümeye erişim izinleri olan etki alanındaki bir hesabın adıyla değiştirin. `<AAD-DOMAIN>`, kümenin katıldığı Azure Active Directory (AAD) adıyla değiştirin. `<AAD-DOMAIN>` değeri için bir büyük harfli dize kullanın, aksi takdirde kimlik bilgisi bulunamadı. Gerekirse bölge adları için `/etc/krb5.conf` ' yı işaretleyin.
 
 ---
 
@@ -62,16 +62,18 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı `443` bağlantı noktası üzerinden yapılır ve SSL kullanılarak şifrelenir:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
 veya özel uç nokta için:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. @No__t-0 değerini kümenizin küme oturum açma hesabı ile değiştirin. @No__t-0 ' yı küme oturum açma hesabı parolasıyla değiştirin.
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. `<username>`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için, tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
+
+Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla [bilgi için bkz](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
 ---
 
@@ -81,19 +83,21 @@ Apache Spark, bazı durumlarda Spark Thrift sunucusu olarak da adlandırılan ke
 
 #### <a name="through-public-or-private-endpoints"></a>Ortak veya özel uç noktalar aracılığıyla
 
-Kullanılan bağlantı dizesi biraz farklı. @No__t-0 olan `httpPath/sparkhive2` ' i içerir:
+Kullanılan bağlantı dizesi biraz farklı. `httpPath=/hive2` yerine `httpPath/sparkhive2`:
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
 veya özel uç nokta için:
 
 ```bash 
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. @No__t-0 değerini kümenizin küme oturum açma hesabı ile değiştirin. @No__t-0 ' yı küme oturum açma hesabı parolasıyla değiştirin.
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. `<username>`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için, tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
+
+Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla [bilgi için bkz](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
 ---
 
@@ -199,9 +203,9 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
 
     * `STORED AS TEXTFILE LOCATION`-verilerin depolandığı yer ve dosya biçimi.
 
-    * `SELECT`- **T4** sütununun **[Error]** değerini Içerdiği tüm satırların sayısını seçer. Bu sorgu, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
+    * `SELECT`, **T4** sütununun **[Error]** değerini Içerdiği tüm satırların sayısını seçer. Bu sorgu, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
 
-    * `INPUT__FILE__NAME LIKE '%.log'`-Hive dizindeki tüm dosyalara şemayı uygulamaya çalışır. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardaki verileri döndürmeyeceğini söyler.
+    * `INPUT__FILE__NAME LIKE '%.log'`-Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardaki verileri döndürmeyeceğini söyler.
 
    > [!NOTE]  
    > Dış tablolar, temel alınan verilerin bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır. Örneğin, otomatik bir veri yükleme işlemi veya MapReduce işlemi.
@@ -269,7 +273,7 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
     ```
 
     > [!NOTE]  
-    > @No__t-0 parametresi, Beeline başlar ve `query.hql` dosyasında deyimleri çalıştırır. Sorgu tamamlandıktan sonra, `jdbc:hive2://headnodehost:10001/>` istemine ulaşrsınız. Sorgu tamamlandıktan sonra Beeline çıkar `-f` parametresini kullanarak da bir dosya çalıştırabilirsiniz.
+    > `-i` parametresi, Beeline başlar ve `query.hql` dosyasındaki deyimleri çalıştırır. Sorgu tamamlandıktan sonra, `jdbc:hive2://headnodehost:10001/>` istemine ulaşrsınız. Sorgu tamamlandıktan sonra Beeline çıkar `-f` parametresini kullanarak da bir dosya çalıştırabilirsiniz.
 
 5. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden**tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
 

@@ -1,5 +1,5 @@
 ---
-title: HDInsight 'ta Kurumsal Güvenlik Paketi-Azure ile Hive ilkelerini yapılandırma
+title: Apache Ranger 'da ilke Apache Hive-Azure HDInsight
 description: Azure HDInsight hizmetinde Hive için Kurumsal Güvenlik Paketi Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0213fc1a96b38b615cbd8b7b6374a6716b9f840
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e49e2d103fd9c91824c8e8a1603cddddf16366e1
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918194"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044867"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile HDInsight içinde Apache Hive ilkelerini yapılandırma
 Apache Hive için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin. Bu makalede hivesampletable erişimini kısıtlamak için iki Ranger ilkesi oluşturacaksınız. hivesampletable, HDInsight kümelerine sahiptir. İlkeleri yapılandırdıktan sonra Excel ve ODBC sürücüsünü kullanarak HDInsight’taki Hive tablolarına bağlanabilirsiniz.
@@ -45,7 +45,7 @@ Bu bölümde, hivesampletable 'a erişmek için iki Ranger ilkesi oluşturacaks�
 **Ranger ilkeleri oluşturmak için**
 
 1. Ranger Yönetici Arabirimini açın. Bkz. Apache Ranger yönetici ARABIRIMINE bağlanma.
-2. **Hive**’ın altındaki **&lt;KümeAdı>_hive** öğesine tıklayın. Önceden yapılandırılmış iki ilke göreceksiniz.
+2. ****Hive**’ın altındaki &lt;KümeAdı>_hive** öğesine tıklayın. Önceden yapılandırılmış iki ilke göreceksiniz.
 3. **Add New Policy**’ye tıklayıp aşağıdaki değerleri girin:
 
    * Policy name: read-hivesampletable-all
@@ -77,14 +77,14 @@ Talimatlara [Hive ODBC veri kaynağı oluşturma](../hadoop/apache-hadoop-connec
  | Özellik  |Açıklama |
  | --- | --- |
  | Data Source Name | Veri kaynağınız için bir ad verin |
- | Host | &lt;HDInsightKümesiAdı>.azurehdinsight.net yazın. Örnek: HDIKumesi.azurehdinsight.net |
- | Port | **443** yazın. (Önceden 563 olan bu bağlantı noktası 443 olarak değiştirilmiştir.) |
+ | Ana bilgisayar | &lt;HDInsightKümesiAdı>.azurehdinsight.net yazın. Örnek: HDIKumesi.azurehdinsight.net |
+ | Bağlantı noktası | **443** yazın. (Önceden 563 olan bu bağlantı noktası 443 olarak değiştirilmiştir.) |
  | Database | **Default**’u kullanın. |
  | Hive Server Type | **Hive Server 2**’yi seçin |
  | Mechanism | **Azure HDInsight Service**’i seçin |
  | HTTP Path | Boş bırakın. |
- | Kullanıcı adı | hiveuser1@contoso158.onmicrosoft.com yazın. Farklı olduğunda, etki alanı adını güncelleştirin. |
- | istemcisiyle yönetilen bir cihaz için) | hiveuser1 kullanıcısının parolasını girin. |
+ | User Name | hiveuser1@contoso158.onmicrosoft.com yazın. Farklı olduğunda, etki alanı adını güncelleştirin. |
+ | Parola | hiveuser1 kullanıcısının parolasını girin. |
 
 Veri kaynağını kaydetmeden önce **Test**’e tıklayın.
 
@@ -101,7 +101,7 @@ Son bölümünde iki ilke yapılandırdınız.  hiveuser1 tüm sütunlarda selec
 6. **hivesampletable**’ı seçip **İleri**’ye tıklayın.
 7. **Son**'a tıklayın.
 8. **Verileri İçeri Aktar** iletişim kutusunda sorguyu değiştirebilir veya belirtebilirsiniz. Bunun için **Özellikler**’e tıklayın. Bu işlem birkaç saniye sürebilir.
-9. **Tanım** sekmesine tıklayın. Komut metni şu şekildedir:
+9. **Tanım** sekmesine tıklayın. Komut metni:
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 

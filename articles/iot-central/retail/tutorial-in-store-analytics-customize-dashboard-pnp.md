@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 02d9a33018f87e6dbb9c7a797c16e5484c523b11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 81a31c0a03ef836d95a5a4f3cd4f4cd7b7e113e2
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955105"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027355"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Öğretici: işletmen panosunu özelleştirme ve Azure IoT Central cihazları yönetme
 
@@ -36,14 +36,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiye başlamadan önce, Oluşturucu Azure IoT Central mağaza 'da analiz uygulaması oluşturmak ve cihaz eklemek için ilk öğreticiyi tamamlaması gerekir:
 
-* [Azure IoT Central 'da bir mağaza Analytics uygulaması oluşturma](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) (gerekli)
+* [Azure IoT Central 'da bir mağaza Analytics uygulaması oluşturma](./tutorial-in-store-analytics-create-app-pnp.md) (gerekli)
 
 ## <a name="change-the-dashboard-name"></a>Pano adını değiştirme
 Operatör panosunu özelleştirmek için, uygulamanızda Varsayılan panoyu düzenlersiniz. İsteğe bağlı olarak, ek yeni panolar oluşturabilirsiniz. Uygulamanızda panoyu özelleştirmenin ilk adımı, adı değiştirbir addır.
 
 1. [Azure IoT Central uygulama Yöneticisi](https://aka.ms/iotcentral) Web sitesine gidin.
 
-1. [Azure 'da bir mağaza içi analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) öğreticide oluşturduğunuz durum izleme uygulamasını açın.
+1. [Azure 'da bir mağaza içi analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) öğreticide oluşturduğunuz durum izleme uygulamasını açın.
 
 1. Pano araç çubuğunda **Düzenle** ' yi seçin. Düzenleme modunda, panonun görünüm, düzen ve içeriğini özelleştirebilirsiniz.
 
@@ -142,7 +142,7 @@ Kalan kutucukları yeniden düzenlemek için:
 ## <a name="add-telemetry-tiles-to-display-conditions"></a>Görüntüleme koşullarına telemetri kutucukları ekleme
 Pano mizanpajını özelleştirdikten sonra, telemetrisini göstermek için kutucuk eklemeye hazırız. Bir telemetri kutucuğu oluşturmak için bir cihaz şablonu ve cihaz örneği seçin, sonra kutucukta görüntülenecek cihaza özgü telemetri ' i seçin. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, panoda çeşitli telemetri kutucukları içerir. İki kullanıma alma bölgesindeki dört kutucuk, sanal doluluk sensörlerine ait Telemetriyi görüntüler. **Kişiler trafik** kutucuğu, iki kullanıma alma bölgesindeki sayıları gösterir. 
 
-Bu bölümde, [IoT Central Azure 'da yerleşik bir Analytics uygulaması oluşturma](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) öğreticisinde eklediğiniz RuuviTag sensörlerinden çevresel telemetri göstermek için iki daha fazla telemetri kutucuğu eklersiniz. 
+Bu bölümde, [IoT Central Azure 'da yerleşik bir Analytics uygulaması oluşturma](./tutorial-in-store-analytics-create-app-pnp.md) öğreticisinde eklediğiniz RuuviTag sensörlerinden çevresel telemetri göstermek için iki daha fazla telemetri kutucuğu eklersiniz. 
 
 RuuviTag sensörlerinden çevresel verileri görüntüleyen kutucuklar eklemek için:
 
@@ -259,4 +259,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Artık panoyu Azure IoT Central Store 'da analiz uygulamanızda özelleştirdiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [Verileri dışa aktarın ve öngörüleri görselleştirin](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Verileri dışa aktarın ve öngörüleri görselleştirin](./tutorial-in-store-analytics-export-data-visualize-insights-pnp.md)

@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 03a10fa74b87ca6ab28b11c5c4fb0cfb7ca6ddb1
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
-ms.translationtype: HT
+ms.openlocfilehash: 571c172054e52960c3dba8d41469ba304f3493eb
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969607"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026428"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -284,4 +284,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Artık bir Azure IoT Central Condition izleme uygulaması oluşturduğunuza göre, önerilen sonraki adım aşağıda verilmiştir:
 
 > [!div class="nextstepaction"]
-> [Operatör panosunu özelleştirme](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Operatör panosunu özelleştirme](./tutorial-in-store-analytics-customize-dashboard-pnp.md)

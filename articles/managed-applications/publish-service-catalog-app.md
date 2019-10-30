@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f248fe125873b4ed1e930e56865e4e403bcceea6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529007"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053835"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Yönetilen uygulama tanımı oluşturma ve yayımlama
 
@@ -87,7 +87,7 @@ mainTemplate.json dosyasını kaydedin.
 
 ## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Createuıdefinition. JSON kullanarak oluşturma deneyiminizi tanımlama
 
-Yayımcı olarak, yönetilen uygulamalar oluşturan kullanıcılar için arabirim üreten **Createuıdefinition. JSON** dosyasını kullanarak oluşturma deneyiminizi tanımlarsınız. Kullanıcıların, açılan listeler, metin kutuları ve parola kutuları dahil olmak üzere [Denetim öğeleri] (create-uidefinition-elements.md) kullanarak her bir parametre için nasıl giriş sağlayacağınızı tanımlarsınız.
+Yayımcı olarak, yönetilen uygulamalar oluşturan kullanıcılar için arabirim üreten **Createuıdefinition. JSON** dosyasını kullanarak oluşturma deneyiminizi tanımlarsınız. Kullanıcıların, açılan liste, metin kutuları ve parola kutuları dahil olmak üzere [Denetim öğelerini](create-uidefinition-elements.md) kullanarak her bir parametre için giriş nasıl sağlayacağınızı tanımlarsınız.
 
 **Createuıdefinition. JSON** adlı bir dosya oluşturun (Bu ad büyük/küçük harfe duyarlıdır)
 

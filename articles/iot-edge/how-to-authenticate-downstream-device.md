@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1e184691ebbd34de0f69e93419d9c34ab18edbe6
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266136"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025945"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -24,7 +24,7 @@ Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım v
 
 1. Ağ Geçidi cihazının aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi, aşağı akış cihazlarından iletişim alabilmesi ve iletileri uygun hedefe yönlendirmesi gerekir. Daha fazla bilgi için bkz. bir [IoT Edge cihazını saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md).
 2. **Aşağı akış cihazının IoT Hub kimlik doğrulaması yapabilmesi ve ağ geçidi cihazından iletişim kurmayı bilmesi için bir cihaz kimliği olması gerekir.**
-3. Aşağı akış cihazının ağ geçidi cihazına güvenli bir şekilde bağlanabiliyor olması gerekir. Daha fazla bilgi için [bir Azure IOT Edge ağ geçidi için aşağı akış cihaz Bağlayamama](how-to-connect-downstream-device.md).
+3. Aşağı akış cihazının ağ geçidi cihazına güvenli bir şekilde bağlanabiliyor olması gerekir. Daha fazla bilgi için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md).
 
 Aşağı akış cihazları şu üç yöntemden birini kullanarak IoT Hub kimlik doğrulaması yapabilir: simetrik anahtarlar (bazen paylaşılan erişim anahtarları olarak adlandırılır), X. 509.440 otomatik olarak imzalanan sertifikalar veya X. 509.440 sertifika yetkilisi (CA) imzalı sertifikalar. Kimlik doğrulama adımları, ağ geçidi ilişkisini bildirmek için küçük farklılıklar ile, IoT Edge olmayan bir cihazı IoT Hub kurmak için kullanılan adımlara benzerdir.
 
@@ -72,10 +72,10 @@ Portalda IoT cihaz kimliği oluşturduktan sonra, birincil veya ikincil anahtarl
 
 Aşağı akış cihazları için simetrik anahtar bağlantı dizeleri aşağıdaki bileşenlere ihtiyaç duyar: 
 
-* Cihazın bağlandığı IoT Hub 'ı:`Hostname={iothub name}.azure-devices.net`
-* Hub 'a kayıtlı cihaz KIMLIĞI:`DeviceID={device ID}`
-* Birincil ya da ikincil anahtar:`SharedAccessKey={key}`
-* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının config. YAML dosyasından **ana bilgisayar adı** değerini girin:`GatewayHostName={gateway hostname}`
+* Cihazın bağlandığı IoT Hub 'ı: `Hostname={iothub name}.azure-devices.net`
+* Hub 'a kayıtlı cihaz KIMLIĞI: `DeviceID={device ID}`
+* Birincil veya ikincil anahtar: `SharedAccessKey={key}`
+* Cihazın bağlandığı ağ geçidi cihazı. IoT Edge ağ geçidi cihazının config. YAML dosyasından **konak adı** değerini sağlayın: `GatewayHostName={gateway hostname}`
 
 Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
 
@@ -83,7 +83,7 @@ Hepsi birlikte, bir bağlantı dizesinin tamamı şöyle görünür:
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örneğin: 
+Bu aşağı akış cihazı için bir üst/alt ilişki kurduysanız, ağ geçidini doğrudan bağlantı ana bilgisayarı olarak çağırarak bağlantı dizesini basitleştirebilirsiniz. Örnek: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
@@ -101,7 +101,7 @@ IoT Hub X. 509.440 kimlik doğrulamasını kullanma hakkında daha fazla bilgi i
 
 X. 509.440 otomatik imzalı kimlik doğrulaması için bazen parmak izi kimlik doğrulaması olarak da adlandırılan, IoT cihazınıza yerleştirilecek yeni sertifikalar oluşturmanız gerekir. Bu sertifikaların kimlik doğrulaması için IoT Hub paylaştığınız bir parmak izi vardır. 
 
-Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını bir saydam ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)bölümünde sertifika oluşturmak için kullandığınız makinenin aynısını kullanmaktır. Bu makine, IoT cihaz sertifikalarını oluşturmak için doğru araç, kök CA sertifikası ve ara CA sertifikası ile önceden ayarlanmalıdır. Son sertifikaları ve bunların özel anahtarlarını, daha sonra aşağı akış cihazınıza kopyalayabilirsiniz. Ağ Geçidi makalesindeki adımları izleyerek, makinenizde OpenSSL 'yi ayarlar ve sonra sertifika oluşturma betiklerine erişmek için IoT Edge depoyu klonlanır. Daha sonra, sertifikaları tutmak için  **\<WRKDIR >** çağırdığımız bir çalışma dizini yaptınız. Varsayılan sertifikalar geliştirme ve test için, bu nedenle yalnızca son 30 gün için tasarlanmıştır. Bir kök CA sertifikası ve ara sertifika oluşturmuş olmanız gerekir. 
+Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)bölümünde sertifika oluşturmak için kullandığınız makinenin aynısını kullanmaktır. Bu makine, IoT cihaz sertifikalarını oluşturmak için doğru araç, kök CA sertifikası ve ara CA sertifikası ile önceden ayarlanmalıdır. Son sertifikaları ve bunların özel anahtarlarını, daha sonra aşağı akış cihazınıza kopyalayabilirsiniz. Ağ Geçidi makalesindeki adımları izleyerek, makinenizde OpenSSL 'yi ayarlar ve sonra sertifika oluşturma betiklerine erişmek için IoT Edge depoyu klonlanır. Daha sonra, sertifikaları tutmak için **\<WRKDIR >** çağırdığımız bir çalışma dizini yaptınız. Varsayılan sertifikalar geliştirme ve test için, bu nedenle yalnızca son 30 gün için tasarlanmıştır. Bir kök CA sertifikası ve ara sertifika oluşturmuş olmanız gerekir. 
 
 1. Çalışma dizininize bir bash veya PowerShell penceresinde gidin. 
 
@@ -155,12 +155,12 @@ X. 509.440 sertifika yetkilisi (CA) imzalı kimlik doğrulaması için, IoT ciha
 
 Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-hub/iot-hub-security-x509-get-started.md)IoT Hub makalesinde açıklanan yönergeleri temel alır. Bir ağ geçidi üzerinden bağlanan bir aşağı akış cihazını ayarlamak için hangi değerlerin kullanılacağını bilmek için bu bölümdeki adımları izleyin. 
 
-Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)bölümünde sertifika oluşturmak için kullandığınız makinenin aynısını kullanmaktır. Bu makine, IoT cihaz sertifikalarını oluşturmak için doğru araç, kök CA sertifikası ve ara CA sertifikası ile önceden ayarlanmalıdır. Son sertifikaları ve bunların özel anahtarlarını, daha sonra aşağı akış cihazınıza kopyalayabilirsiniz. Ağ Geçidi makalesindeki adımları izleyerek, makinenizde OpenSSL 'yi ayarlar ve sonra sertifika oluşturma betiklerine erişmek için IoT Edge depoyu klonlanır. Daha sonra, sertifikaları tutmak için  **\<WRKDIR >** çağırdığımız bir çalışma dizini yaptınız. Varsayılan sertifikalar geliştirme ve test için, bu nedenle yalnızca son 30 gün için tasarlanmıştır. Bir kök CA sertifikası ve ara sertifika oluşturmuş olmanız gerekir. 
+Bu senaryoyu test etmenin en kolay yolu, bir [IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)bölümünde sertifika oluşturmak için kullandığınız makinenin aynısını kullanmaktır. Bu makine, IoT cihaz sertifikalarını oluşturmak için doğru araç, kök CA sertifikası ve ara CA sertifikası ile önceden ayarlanmalıdır. Son sertifikaları ve bunların özel anahtarlarını, daha sonra aşağı akış cihazınıza kopyalayabilirsiniz. Ağ Geçidi makalesindeki adımları izleyerek, makinenizde OpenSSL 'yi ayarlar ve sonra sertifika oluşturma betiklerine erişmek için IoT Edge depoyu klonlanır. Daha sonra, sertifikaları tutmak için **\<WRKDIR >** çağırdığımız bir çalışma dizini yaptınız. Varsayılan sertifikalar geliştirme ve test için, bu nedenle yalnızca son 30 gün için tasarlanmıştır. Bir kök CA sertifikası ve ara sertifika oluşturmuş olmanız gerekir. 
 
 1. *Azure IoT Hub 'ınızda x. 509.952 güvenliğini ayarlama*konusunun [IoT Hub 'ınıza x. 509.952 CA sertifikalarını kaydetme](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz: 
 
-   1. Kök CA sertifikasını karşıya yükleyin. Saydam ağ geçidi makalesinde oluşturduğunuz sertifikaları kullanıyorsanız, kök sertifika dosyası olarak  **\<WRKDIR >/certs/Azure-iot-test-only.root.ca.cert.pem** yükleyin. 
-   2. Bu kök CA sertifikasına sahip olduğunuzu doğrulayın. WRKDIR > içindeki \<sertifika araçlarıyla birlikte bulunan ile emin olabilirsiniz. 
+   1. Kök CA sertifikasını karşıya yükleyin. Saydam ağ geçidi makalesinde oluşturduğunuz sertifikaları kullanıyorsanız, kök sertifika dosyası olarak **\<WRKDIR >/certs/Azure-iot-test-only.root.ca.cert.pem** yükleyin. 
+   2. Bu kök CA sertifikasına sahip olduğunuzu doğrulayın. \<WRKDIR > sertifika araçlarıyla birlikte bulunan ' i doğrulayabilirsiniz. 
 
       ```powershell
       New-CACertsVerificationCert "<verification code from Azure portal>"
@@ -388,4 +388,4 @@ DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCert
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makaleyi tamamlayarak, saydam bir ağ geçidi olarak çalışan bir IoT Edge cihazının ve IoT Hub ile kaydedilmiş bir aşağı akış cihazının olması gerekir. Sonra, ağ geçidi cihazına güvenmek ve ona ileti göndermek için aşağı akış cihazlarınızı yapılandırmanız gerekir. Daha fazla bilgi için [bir Azure IOT Edge ağ geçidi için aşağı akış cihaz Bağlayamama](how-to-connect-downstream-device.md).
+Bu makaleyi tamamlayarak, saydam bir ağ geçidi olarak çalışan bir IoT Edge cihazının ve IoT Hub ile kaydedilmiş bir aşağı akış cihazının olması gerekir. Sonra, ağ geçidi cihazına güvenmek ve ona ileti göndermek için aşağı akış cihazlarınızı yapılandırmanız gerekir. Daha fazla bilgi için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md).

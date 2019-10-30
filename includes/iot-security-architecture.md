@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789088"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034555"
 ---
 Bir sistem tasarlarken, bu sisteme yönelik olası tehditleri anlamak ve sistem tasarlandıkça ve uygun hale getirebileceği için uygun savunma savunmaları eklemek önemlidir. Bir saldırganın bir sistemin güvenliğinin nasıl tehlikeye alamadığını anlamak için, ürünü güvenlikle birlikte Başlat ' dan tasarlamak önemlidir.
 
@@ -116,7 +116,7 @@ Bir alan ağ geçidi, erişim ve bilgi akışını yönetirken etkin bir rolü o
 
 ### <a name="the-cloud-gateway-zone"></a>Bulut ağ geçidi bölgesi
 
-Bulut ağ geçidi, genellikle bu tür sistemlerin bir Federasyonu olan bulut tabanlı bir denetim ve veri analizi sistemine bağlı olarak, ortak ağ alanı genelinde birçok farklı siteden cihazlar veya alan ağ geçitleri arasında uzaktan iletişim sağlayan bir sistemdir. Bazı durumlarda, bir bulut ağ geçidi, tablet veya telefon gibi terminallerdeki özel amaçlı cihazlara erişimi hemen kolaylaştırabilir. Burada açıklanan bağlamda, "Cloud", ekli cihazlar veya alan ağ geçitleri ile aynı siteye bağlı olmayan ayrılmış bir veri işleme sistemine başvurmaktır. Ayrıca, bir bulut bölgesinde, işlemsel ölçüler hedeflenen fiziksel erişimi engeller ve "genel bulut" altyapısına açık değildir.  
+Bulut ağ geçidi, genellikle bu tür sistemlerin bir Federasyonu olan bulut tabanlı bir denetim ve veri analizi sistemine bağlı olarak, ortak ağ alanı genelinde birden çok farklı siteden cihazlar veya alan ağ geçitleri arasında uzaktan iletişim sağlayan bir sistemdir. Bazı durumlarda, bir bulut ağ geçidi, tablet veya telefon gibi terminallerdeki özel amaçlı cihazlara erişimi hemen kolaylaştırabilir. Burada açıklanan bağlamda, "Cloud", ekli cihazlar veya alan ağ geçitleri ile aynı siteye bağlı olmayan ayrılmış bir veri işleme sistemine başvurmaktır. Ayrıca, bir bulut bölgesinde, işlemsel ölçüler hedeflenen fiziksel erişimi engeller ve "genel bulut" altyapısına açık değildir.  
 
 Bir bulut ağ geçidi, bulut ağ geçidini ve tüm bağlı cihazlarını veya alan ağ geçitlerini diğer ağ trafiğinden yalıtılmış olarak bir ağ sanallaştırma kaplamasına eşlenebilir. Bulut ağ geçidi, cihaz verileri için bir cihaz denetim sistemi veya işlem veya depolama olanağı değildir; bulut ağ geçidine sahip bu tesisler arabirimi. Bulut ağ geçidi bölgesi, tüm alan ağ geçitleri ve cihazlarıyla birlikte doğrudan veya dolaylı olarak bağlı olan bulut ağ geçidinin kendisini içerir. Bölgenin kenarı, tüm dış tarafların iletişim kurduğu ayrı bir yüzey alanıdır.
 

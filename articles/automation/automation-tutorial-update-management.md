@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: a2d13833b60076caa371a7fa8a696ab5964a28e3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376074"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044411"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -97,7 +97,7 @@ Güncelleştirme dağıtımınız için uygun olan sinyali seçmek için **Koşu
 |**Toplam güncelleştirme dağıtımı çalıştırmaları**|-Güncelleştirme dağıtım adı</br>-Durum|Bu sinyal, bir güncelleştirme dağıtımının genel durumuyla ilgili uyarı almak için kullanılır.|
 |**Toplam güncelleştirme dağıtım makinesi çalıştırması**|-Güncelleştirme dağıtım adı</br>-Durum</br>-Hedef bilgisayar</br>-Güncelleştirme dağıtımı çalıştırma KIMLIĞI|Bu sinyal, belirli makinelere hedeflenmiş bir güncelleştirme dağıtımının durumuyla ilgili uyarı almak için kullanılır|
 
-Boyut değerleri için listeden geçerli bir değer seçin. Aradığınız değer listede yoksa, boyutun yanındaki **\+** işaretine tıklayın ve özel adı yazın. Daha sonra aramak istediğiniz değeri seçebilirsiniz. Bir boyutun tüm değerlerini seçmek istiyorsanız, **@no__t Seç-1** düğmesine tıklayın. Boyut için bir değer belirtmezseniz, bu boyut değerlendirme sırasında yok sayılır.
+Boyut değerleri için listeden geçerli bir değer seçin. Aradığınız değer listede yoksa, boyutun yanındaki **\+** işaretine tıklayın ve özel adı yazın. Daha sonra aramak istediğiniz değeri seçebilirsiniz. Bir boyutun tüm değerlerini seçmek istiyorsanız, **\*Seç** düğmesine tıklayın. Boyut için bir değer belirtmezseniz, bu boyut değerlendirme sırasında yok sayılır.
 
 ![Sinyal mantığını yapılandırma](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -169,7 +169,7 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
   * Bakım penceresi Windows üzerinde aşılırsa, çoğu zaman bir hizmet paketi güncelleştirmesinin yüklenmesi uzun sürmesi nedeniyle oluşur.
 
   > [!NOTE]
-  > "Sizin için önemli olmayan" bilgiler, güncelleştirmelerin Ubuntu 'daki bakım penceresinin dışında uygulanmasını önlemek Için, katılımsız yükseltme paketini otomatik güncelleştirmeleri devre dışı bırakacak şekilde yeniden yapılandırın. Paketin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Ubuntu sunucu kılavuzunda otomatik güncelleştirmeler konusuna](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)bakın.
+  > Güncelleştirmelerin Ubuntu 'da bakım penceresi dışında uygulanmasını önlemek için, katılımsız yükseltme paketini otomatik güncelleştirmeleri devre dışı bırakacak şekilde yeniden yapılandırın. Paketin nasıl yapılandırılacağı hakkında daha fazla bilgi için [Ubuntu sunucu kılavuzunda otomatik güncelleştirmeler konusuna](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)bakın.
 
 * **Yeniden başlatma seçenekleri**: Bu ayar, yeniden başlatma işlemlerinin nasıl gerçekleştirileceğini belirler. Kullanılabilen seçenekler:
   * Gerekirse yeniden başlat (Varsayılan)

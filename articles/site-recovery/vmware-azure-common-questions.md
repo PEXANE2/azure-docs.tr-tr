@@ -1,19 +1,19 @@
 ---
-title: VMware ile Azure olağanüstü durum kurtarma ile ilgili sık sorulan sorular Azure Site Recovery | Microsoft Docs
+title: VMware ile Azure olağanüstü durum kurtarma ile ilgili sık sorulan sorular Azure Site Recovery
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 06/27/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002286"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053692"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 'den Azure 'a çoğaltma hakkında sık sorulan sorular
 
@@ -104,7 +104,7 @@ Yükleyiciler yapılandırma sunucusundaki%ProgramData%\asr\home\svsystems\push�
 - Kullanıcı arabiriminden veya PowerShell 'ten [el ile yükleme](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui)
 - [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) gibi bir dağıtım aracı kullanarak dağıtım
 
-## <a name="managed-disks"></a>Yönetilen diskler
+## <a name="managed-disks"></a>Yönetilen Diskler
 
 ### <a name="where-does-site-recovery-replicate-data-to"></a>Site Recovery verileri nerede çoğaltır?
 
@@ -205,7 +205,7 @@ Site Recovery, N-4 destek modelini izler. Çok eski sürümlerden yükseltme hak
 
 Yeniden başlatma önerilir, ancak her yükseltme için zorunlu değildir. [Daha fazla bilgi edinin](https://aka.ms/asr_vmware_upgrades).
 
-## <a name="configuration-server"></a>Yapılandırma sunucusu
+## <a name="configuration-server"></a>Yapılandırma Sunucusu
 
 ### <a name="what-does-the-configuration-server-do"></a>Yapılandırma sunucusu ne yapar?
 
@@ -287,7 +287,7 @@ Parolayı indirmeyi [öğrenin](vmware-azure-manage-configuration-server.md#gene
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kasa kayıt anahtarlarını nereden indirebilirim?
 
-Kurtarma Hizmetleri kasasında **Site Recovery altyapı** > **yönetimi**' nde **yapılandırma sunucuları** ' nı seçin. Ardından, **sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
+Kurtarma Hizmetleri kasasında, **Site Recovery altyapı** > **Yönet**' de **yapılandırma sunucuları** ' nı seçin. Ardından, **sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Birden çok vCenter örneğini korumak için tek bir yapılandırma sunucusu kullanılabilir mi?
 

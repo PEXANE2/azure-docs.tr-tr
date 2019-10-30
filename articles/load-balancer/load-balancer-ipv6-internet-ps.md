@@ -5,7 +5,7 @@ description: Kaynak Yöneticisi için PowerShell kullanarak Internet 'e yönelik
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, azure yük dengeleyici, ikili yığın, genel IP, yerel IPv6, mobil veya IOT
+keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mobil, IoT
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274981"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025800"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Kaynak Yöneticisi için PowerShell kullanarak Internet 'e yönelik yük dengeleyici oluşturmaya başlama
 
@@ -28,6 +28,8 @@ ms.locfileid: "68274981"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Şablon](load-balancer-ipv6-internet-template.md)
 
+>[! NOTE: IPv6 için En Iyi uygulamada değişiklik yapın] Bu makalede temel yük dengeleyiciler hem IPv4 hem de IPv6 bağlantısı sağlamasına izin veren bir giriş IPv6 özelliği açıklanır.  Daha kapsamlı IPv6 bağlantısı, sanal ağlarınızla [IPv6 bağlantısını](../virtual-network/ipv6-overview.md) tümleştiren ve IPv6 ağ güvenlik grubu kuralları, IPv6 Kullanıcı tanımlı yönlendirme, IPv6 temel ve Standart yük dengeleme ve daha fazlası.  Azure sanal ağları için IPv6, Azure 'daki IPv6 uygulamaları için önerilen en iyi uygulamadır. 
+>Lütfen bkz. [Azure VNET PowerShell dağıtımı Için IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure Load Balancer bir Katman 4 (TCP, UDP) yük dengeleyicidir. Yük dengeleyici, gelen trafiği bulut hizmetlerindeki sağlıklı hizmet örnekleri veya bir yük dengeleyici kümesindeki sanal makineler arasında dağıtarak yüksek kullanılabilirlik sağlar. Ayrıca, Azure Load Balancer bu hizmetleri birden çok bağlantı noktasında, birden çok IP adresinde ya da her ikisinde birden sağlayabilir.
 
@@ -100,7 +102,7 @@ PowerShell için Azure Resource Manager modülünün en son üretim sürümüne 
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Ön uç IP adresi havuzu için Azure genel IP adresi (PıP) kaynaklarını oluşturun. Aşağıdaki komutları çalıştırmadan `-DomainNameLabel` önce değerini değiştirdiğinizden emin olun. Değer, Azure bölgesi içinde benzersiz olmalıdır.
+2. Ön uç IP adresi havuzu için Azure genel IP adresi (PıP) kaynaklarını oluşturun. Aşağıdaki komutları çalıştırmadan önce `-DomainNameLabel` değerini değiştirdiğinizden emin olun. Değer, Azure bölgesi içinde benzersiz olmalıdır.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
@@ -230,10 +232,4 @@ VM oluşturma hakkında daha fazla bilgi için, bkz. [Kaynak Yöneticisi ve Azur
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Sonraki adımlar
 
-[Bir iç yük dengeleyici yapılandırmaya başlayın](load-balancer-get-started-ilb-arm-ps.md)
-
-[Yük dengeleyici dağıtım modu yapılandırma](load-balancer-distribution-mode.md)
-
-[Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)

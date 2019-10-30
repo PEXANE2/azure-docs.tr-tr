@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight’ta güvenli aktarım depolama hesapları ile Hadoop kümesi oluşturma
+title: Apache Hadoop & güvenli transme depolaması-Azure HDInsight
 description: Güvenli aktarım özellikli Azure depolama hesapları ile HDInsight kümeleri oluşturma hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: d182ca9f74f86922a4d8c94c9b3557f6111b7d53
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b8a5d48e977009cf592f271760232a3b0138c8c5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098753"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044956"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight 'ta güvenli aktarım depolama hesapları ile Apache Hadoop kümesi oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "71098753"
 
 Bu makaleye başlamadan önce, şunları yapmanız gerekir:
 
-* **Azure aboneliği**: Ücretsiz bir aylık deneme hesabı oluşturmak için [Azure.Microsoft.com/Free](https://azure.microsoft.com/free)konumuna gidin.
+* **Azure aboneliği** gereklidir. Bir aylık ücretsiz deneme hesabı oluşturmak için [azure.microsoft.com/free](https://azure.microsoft.com/free) adresine gidin.
 * **Güvenli aktarım özellikli bir Azure depolama hesabı**. Yönergeler için bkz. [Depolama hesabı oluşturma](../storage/common/storage-quickstart-create-account.md) ve [Güvenli aktarım isteme](../storage/common/storage-require-secure-transfer.md).
 * **Depolama hesabındaki bir Blob kapsayıcı**.
 

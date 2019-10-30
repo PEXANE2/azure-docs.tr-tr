@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858535"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025011"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -186,7 +187,7 @@ Bkz. [işleme kuralları sırası](https://docs.microsoft.com/azure/application-
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Özel yoklamalar için, ana bilgisayar alanı ne işaret eder?
 
-Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız zaman, araştırmanın gönderileceği adı belirtir. Aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, sanal makine ana bilgisayar adından farklıdır. \<Biçimi protokol://\>ana bilgisayar\>:bağlantı\<noktası\<yoludur.\>\>\<
+Konak alanı, Application Gateway üzerinde çok siteli yapılandırdığınız zaman, araştırmanın gönderileceği adı belirtir. Aksi takdirde ' 127.0.0.1 ' kullanın. Bu değer, sanal makine ana bilgisayar adından farklıdır. Biçimi \<protokol\>://\<konak\>:\<bağlantı noktası\>\<yol\>.
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Yalnızca birkaç kaynak IP adresine Application Gateway erişimine izin verebilir miyim?
 
@@ -269,7 +270,7 @@ Application Gateway en fazla 100 SSL sertifikası destekler.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Arka uç yeniden şifreleme için kaç kimlik doğrulama sertifikası Application Gateway destekler?
 
-Application Gateway en fazla 10 kimlik doğrulama sertifikasını destekler. Varsayılan değer 5 ' tir.
+Application Gateway en fazla 100 kimlik doğrulama sertifikasını destekler.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway yerel olarak Azure Key Vault tümleştirsin mi?
 
@@ -333,15 +334,15 @@ Evet. Ayrıntılar için bkz: [Azure Application Gateway ve Web uygulaması güv
 
 Application Gateway üç günlük sağlar: 
 
-* **Applicationgatewayaccesslog**: Erişim günlüğü, Application Gateway ön ucunda gönderilen her isteği içerir. Veriler çağıranın IP 'sini, istenen URL 'yi, yanıt gecikmesini, dönüş kodunu ve gelen ve giden baytları içerir. Erişim günlüğü her 300 saniyede toplanır. Her uygulama ağ geçidi için bir kayıt içerir.
-* **ApplicationGatewayPerformanceLog**: Performans günlüğü, her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler bayt cinsinden aktarım hızını, sunulan toplam istek sayısını, başarısız istek sayısını, sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
+* **Applicationgatewayaccesslog**: erişim günlüğü, Application Gateway ön ucunda gönderilen her isteği içerir. Veriler çağıranın IP 'sini, istenen URL 'yi, yanıt gecikmesini, dönüş kodunu ve gelen ve giden baytları içerir. Erişim günlüğü her 300 saniyede toplanır. Her uygulama ağ geçidi için bir kayıt içerir.
+* **ApplicationGatewayPerformanceLog**: performans günlüğü her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler bayt cinsinden aktarım hızını, sunulan toplam istek sayısını, başarısız istek sayısını, sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
 * **Applicationgatewayfirewalllog**: WAF ile yapılandırdığınız uygulama ağ geçitleri için, güvenlik duvarı günlüğü, algılama modu ya da önleme modu aracılığıyla günlüğe kaydedilen istekleri içerir.
 
 Daha fazla bilgi için bkz. [Application Gateway Için arka uç sistem durumu, tanılama günlükleri ve ölçümler](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Nasıl yaparım?, arka uç havuzu Üyelerimin sağlıklı olup olmadığını bilmelidir mi?
 
-PowerShell cmdlet 'ini `Get-AzApplicationGatewayBackendHealth` veya portalını kullanarak sistem durumunu doğrulayın. Daha fazla bilgi için bkz. [tanılama Application Gateway](application-gateway-diagnostics.md).
+PowerShell cmdlet `Get-AzApplicationGatewayBackendHealth` veya portalını kullanarak sistem durumunu doğrulayın. Daha fazla bilgi için bkz. [tanılama Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Tanılama günlükleri için bekletme ilkesi nedir?
 

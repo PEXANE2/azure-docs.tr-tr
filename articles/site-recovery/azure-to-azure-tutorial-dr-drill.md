@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f85dd3abae8f6e4b3ccc10654e6da8363e80b3d3
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968288"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053374"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Azure VM’leri için ikincil bir Azure bölgesine olağanüstü durum kurtarma tatbikatı çalıştırma
 
@@ -27,7 +27,7 @@ Bu öğretici, bir Azure VM için yük devretme testiyle bir Azure bölgesinden 
 > * Tek bir VM için yük devretme testi çalıştırma
 
 > [!NOTE]
-> Bu öğretici, kullanıcıya bir DR tatbikatını en az adımla gerçekleştirmeyi sağlayan adımlarda rehberlik etmeyi amaçlar. Ağ ile ilgili önemli noktalar, otomasyon veya sorun giderme gibi DR tatbikatı gerçekleştirmenin çeşitli yönleri hakkında daha fazla bilgi edinmek istiyorsanız, Azure VM’lerine yönelik ‘Nasıl Yapılır’ başlığı altındaki belgelere başvurun.
+> Bu öğretici, en az adımla bir DR ayrıntısı gerçekleştirmenize yardımcı olur; Ağ değerlendirmeleri, Otomasyon veya sorun giderme dahil olmak üzere bir DR detayını gerçekleştirmeye ilişkin çeşitli yönler hakkında daha fazla bilgi edinmek istiyorsanız, Azure VM 'Leri için ' nasıl yapılır ' altındaki belgelere bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,9 +42,10 @@ Bu öğretici, bir Azure VM için yük devretme testiyle bir Azure bölgesinden 
 
 2. **Yük Devretme Testi** bölümünde, yük devretmede kullanılması için bir kurtarma noktası seçin:
 
-   - **En son işlenen**: VM’nin yükünü, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük RTO sağlanılır (Kurtarma Süresi Hedefi)
+    - **En son**: Site Recovery tüm verileri işler ve en düşük RTO (kurtarma süresi hedefi) sağlar.
+    - **En son işlenen**: VM yükü, Site Recovery tarafından işlenen en son kurtarma noktasına devredilir. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük RTO sağlanılır (Kurtarma Süresi Hedefi)
    - **Uygulamayla tutarlı olan son**: Bu seçenek, tüm VM’lerin yükünü uygulamayla tutarlı olan en son kurtarma noktasına devreder. Zaman damgası gösterilir.
-   - **Özel**: Herhangi bir kurtarma noktası seçin.
+   - **Özel**: yük devretme, belirli bir kurtarma noktasına devredildi. Özel yalnızca tek bir VM 'nin yükünü devretmek ve kurtarma planıyla yük devretme için değil, kullanılabilir.
 
 3. Yük devretme gerçekleştikten sonra ikincil bölgedeki Azure VM’lerin bağlanacağı hedef Azure sanal makinelerini seçin.
 

@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c2e68e83999ace4094d060a21e91b87347b03e9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955112"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026537"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Öğretici: IoT Central bir su kalite izleme uygulaması oluşturma
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Bu öğretici, IoT Central su kalitesi Izleme uygulaması şablonundan bir Azure IoT Central su kalitesi izleme uygulaması oluşturmanıza kılavuzluk eder. 
 
@@ -50,7 +52,7 @@ Yeni bir Azure IoT Central su kalite izleme uygulaması oluşturmak için:
 
     ![Kuruluş hesabınızı girin](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-2. Sol gezinti menüsünde **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
+2. Sol bölmeden **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
 
     ![Kamu uygulaması şablonları oluşturun](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
@@ -254,8 +256,8 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla uygulamanızı silin:
 
-1. IoT Central uygulamanızın sol gezinti menüsünden yönetim sekmesini açın. 
-2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
+1. IoT Central uygulamanızın sol bölmesindeki Yönetim sekmesini açın.
+2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın.
 
     ![Uygulamayı silme](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
 

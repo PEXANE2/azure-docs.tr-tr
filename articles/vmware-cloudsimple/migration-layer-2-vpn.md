@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 37f337f158c3ca53170d963f1304801a12b732da
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72376299"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053881"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
@@ -137,7 +137,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
 
 1. [NSX-T Manager](https://nsx-t-manager-ip-address)'da oturum açın.
-2. **Ağ** ** >   > ** **anahtarlar** > * * < \Mantıksal anahtar \> * * > **Genel Bakış ' ı**seçin.
+2. **Ağ** > **anahtarlama** > **anahtarlar** >  **< \Mantıksal anahtar\>** **Genel Bakış ' ı**seçin.
 3. L2VPN yapılandırılırken gerekli olan Esnetme mantıksal anahtarının UUID 'sini bir yere unutmayın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch-switch01.png)
@@ -163,9 +163,9 @@ NSX-T Tier0 yönlendiricisi ve tek başına NSX Edge istemcisi arasında IPSec r
 
     ![IP ön eki listesi oluştur](media/l2vpn-routing-security02.png)
 
-4. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **BGP**1**komşuları**' nı seçin. İlk komşuyu seçin. @No__t_1**adresi ailelerini** **Düzenle** ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet** düğmesine tıklayın. İkinci komşu için bu adımı tekrarlayın.
+4. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** > **BGP**1**komşuları**' nı seçin. İlk komşuyu seçin.  > **adresi ailelerini** **Düzenle** ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet** düğmesine tıklayın. İkinci komşu için bu adımı tekrarlayın.
 
-    ![Attach IP ön eki listesi 1 ](media/l2vpn-routing-security03.png) ![Attach IP ön eki listesi 2 ](media/l2vpn-routing-security04.png)
+    ![IP ön eki listesi 1](media/l2vpn-routing-security03.png) Ekle ![IP ön eki listesi 2](media/l2vpn-routing-security04.png)
 
 5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ** > **yönlendirme** > **yönlendirici** > **sağlayıcı-LR** > **yönlendirme** >  yönlendirme yeniden**dağıtımı**1**komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** ' ı seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
 
@@ -430,7 +430,7 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
 
 2. Tüm ayıklanan dosyaların bulunduğu klasöre gidin. Büyük gereç boyutu veya NSX-l2t-Client-xlarge. MF ve NSX-l2t-client-Xlarge. ovf için tüm VMDK (NSX-l2t-Client-Large. MF ve NSX-l2t-client-large. ovf 'yi seçerek daha büyük boyutlu gereç boyutu için. **İleri**’ye tıklayın.
 
-    Şablon ](media/l2vpn-deploy-client02.png) ![Select şablon ![Select ](media/l2vpn-deploy-client03.png)
+    Şablon](media/l2vpn-deploy-client02.png) ![seçin ![şablon seçin](media/l2vpn-deploy-client03.png)
 
 3. NSX-T bağımsız istemcisi için bir ad girin ve **İleri**' ye tıklayın.
 
@@ -460,8 +460,8 @@ Dağıtım öncesinde, şirket içi güvenlik duvarı kurallarınızın gelen ve
     * **Ön ek uzunluğu**. Yukarı bağlantı VLAN/alt ağının ön ek uzunluğunu girin.
     * **CLI Yöneticisi/etkinleştir/kök kullanıcı parolası**. Admin/Enable/root hesabının parolasını ayarlayın.
 
-      ![Customize şablon ](media/l2vpn-deploy-client08.png)
-       ![Customize şablonu-daha fazla ](media/l2vpn-deploy-client09.png)
+      Şablon](media/l2vpn-deploy-client08.png)
+      ![özelleştirme![şablonu özelleştirme-daha fazla](media/l2vpn-deploy-client09.png)
 
 7. Ayarları gözden geçirin ve **son**' a tıklayın.
 

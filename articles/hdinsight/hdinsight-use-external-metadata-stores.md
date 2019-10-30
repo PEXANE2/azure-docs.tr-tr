@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: a495935216cb91a282cc3dbabafbc96a531dde91
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800105"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027696"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight 'ta dış meta veri depoları kullanma
 
@@ -83,7 +83,7 @@ Aşağıda, bazı genel HDInsight Hive meta veri deposu en iyi yöntemler verilm
 
 * Mevcut bir özel meta veri deposu veritabanına yönelik yeni, daha yüksek bir Azure HDInsight sürümü oluşturulduğunda, sistem, veritabanını yedekten geri yüklemeden geri alınamaz olan meta veri deposu şemasını yükseltir.
 
-* Birden çok küme arasında bir meta veri deposu paylaşırsanız, tüm kümelerin aynı HDInsight sürümü olduğundan emin olun. Farklı Hive sürümleri farklı meta veri deposu veritabanı şemaları kullanır. Örneğin, Hive 1,2 ve Hive 2,1 sürümlü kümeler arasında bir meta veri deposu paylaşamazsınız.
+* Birden çok küme arasında bir meta veri deposu paylaşırsanız, tüm kümelerin aynı HDInsight sürümü olduğundan emin olun. Farklı Hive sürümleri farklı meta veri deposu veritabanı şemaları kullanır. Örneğin, Hive 2,1 ve Hive 3,1 sürümlü kümeler arasında bir meta veri deposu paylaşamazsınız.
 
 * HDInsight 4,0 ' de Spark ve Hive, Mini SQL veya Hive tablolarına erişmek için bağımsız kataloglar kullanır. Spark tarafından oluşturulan bir tablo Spark kataloğunda bulunur. Hive tarafından oluşturulan bir tablo Hive kataloğunda bulunur. Bu, Hive ve Spark paylaşılan ortak kataloğunun HDInsight 3,6 sürümünden farklıdır. HDInsight 4,0 ' de Hive ve Spark tümleştirmesi Hive ambar Bağlayıcısı 'nı (HWC) kullanır. HWC, Spark ve Hive arasında bir köprü olarak çalışmaktadır. [Hive ambar Bağlayıcısı hakkında bilgi edinin](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
 

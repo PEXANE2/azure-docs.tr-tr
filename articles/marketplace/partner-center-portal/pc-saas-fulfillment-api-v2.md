@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821148"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025282"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS karşılama API 'Leri, sürüm 2 
 
@@ -87,7 +87,7 @@ Aşağıdaki tabloda, API 'Leri karşılama tarafından kullanılan ortak parame
 | `offerId`                | Her teklif için benzersiz bir dize tanımlayıcı (örneğin: "offer1").  |
 | `planId`                 | Her plan/SKU için benzersiz bir dize tanımlayıcısı (örneğin: "Gümüş"). |
 | `operationId`            | Belirli bir işlemin GUID tanımlayıcısı.  |
-|  `action`                | `unsubscribe`, `suspend`, `reinstate`veya `changePlan`, `changeQuantity`, `transfer`bir kaynakta gerçekleştirilen eylem.  |
+|  `action`                | `Unsubscribe`, `Suspend`, `Reinstate`veya `ChangePlan`, `ChangeQuantity`, `Transfer`bir kaynakta gerçekleştirilen eylem. |
 |   |   |
 
 Genel olarak benzersiz tanımlayıcılar ([GUID 'ler](https://en.wikipedia.org/wiki/Universally_unique_identifier)) genellikle otomatik olarak oluşturulan 128 bitlik (32-onaltılı) sayılardır. 
@@ -707,7 +707,7 @@ Kod: 500<br>
 
 #### <a name="get-operation-status"></a>İşlem durumunu al
 
-Yayımcının belirtilen tetiklenen zaman uyumsuz işlemin durumunu izlemesini sağlar (örneğin, `subscribe`, `unsubscribe`, `changePlan` veya `changeQuantity`).
+Yayımcının belirtilen tetiklenen zaman uyumsuz işlemin durumunu izlemesini sağlar (örneğin, `Subscribe`, `Unsubscribe`, `ChangePlan`veya `ChangeQuantity`).
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Alın<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,11 +850,11 @@ Yayımcının, kullanıcılarına hizmetinde değişiklik yapmak için bu SaaS h
 }
 ```
 Eylemin aşağıdakilerden biri olabilir: 
-- `unsubscribe` (kaynak silindiğinde)
-- `changePlan` (değişiklik planı işlemi tamamlandığında)
-- `changeQuantity` (miktar değiştirme işlemi tamamlandığında)
-- `suspend` (kaynak askıya alındığında)
-- `reinstate` (kaynak askıya alındıktan sonra tekrar ifade edildiğinde)
+- `Unsubscribe` (kaynak silindiğinde)
+- `ChangePlan` (değişiklik planı işlemi tamamlandığında)
+- `ChangeQuantity` (miktar değiştirme işlemi tamamlandığında)
+- `Suspend` (kaynak askıya alındığında)
+- `Reinstate` (kaynak askıya alındıktan sonra tekrar ifade edildiğinde)
 
 Durum aşağıdakilerden biri olabilir: 
 - **NotStarted** <br>

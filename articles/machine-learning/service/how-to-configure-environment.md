@@ -1,7 +1,7 @@
 ---
 title: Python geliştirme ortamı ayarlama
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
+description: Azure Machine Learning için geliştirme ortamınızı yapılandırmayı öğrenin. Conda ortamlarını kullanın, yapılandırma dosyaları oluşturun ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırın.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66073052b290a1345dc0bb63ed6df0934fd81c64
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7ad9d721b102ab48f2ebb9c0361153bc3974492a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804181"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053565"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
@@ -185,7 +185,7 @@ Yerel bir bilgisayar (Ayrıca, uzak bir sanal makine de olabilir) kullandığın
 
 1. Paketleri yüklemek için aşağıdaki komutları kullanın:
 
-    Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve `automl` ek özellikler ile birlikte kurar. @No__t_0 ekstra büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. @No__t_0 ekstra, varsayılan olarak bir bağımlılık olarak Azure Machine Learning Data Prep SDK 'sını içerir.
+    Bu komut, temel Azure Machine Learning SDK 'sını Not defteri ve `automl` ek özellikler ile birlikte kurar. `automl` ekstra büyük bir yüklemedir ve otomatik makine öğrenimi denemeleri çalıştırmayı düşünmüyorsanız ayraçlardan kaldırılabilir. `automl` ekstra, varsayılan olarak bir bağımlılık olarak Azure Machine Learning Data Prep SDK 'sını içerir.
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -316,7 +316,7 @@ Devam etmeden önce küme çalışmaya kadar bekleyin.
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Databricks kitaplığına doğru SDK 'Yı yükler
 Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini kümenize eklemek için [bir kitaplık oluşturun](https://docs.databricks.com/user-guide/libraries.html#create-a-library) .
 
-1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. @No__t_1**kitaplığı** **Oluştur** ' u seçin.
+1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın.  > **kitaplığı** **Oluştur** ' u seçin.
 
 1. **Yalnızca bir** seçenek belirleyin (diğer SDK yüklemesi desteklenmez)
 

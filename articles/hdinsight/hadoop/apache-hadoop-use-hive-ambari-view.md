@@ -1,5 +1,5 @@
 ---
-title: HDInsight 'ta Hive ile çalışmak için Apache ambarı Görünümlerini kullanma (Apache Hadoop)-Azure
+title: Azure HDInsight 'ta Apache Hadoop Apache ambarı Hive görünümünü kullanma
 description: Hive sorguları göndermek için Web tarayıcınızdan Hive görünümünü nasıl kullanacağınızı öğrenin. Hive görünümü, Linux tabanlı HDInsight kümemenizle birlikte sunulan ambarı Web Kullanıcı arabiriminin bir parçasıdır.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077006"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044819"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop Apache ambarı Hive görünümünü kullanma
 
@@ -30,7 +30,7 @@ Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırma
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Yönergeler için bkz. [liste ve kümeleri gösterme](../hdinsight-administer-use-portal-linux.md#showClusters) . Küme, yeni bir portal dikey penceresinde açılır.
 
-2. **Küme panolarında**, **ambarı görünümleri**' ni seçin. Kimlik doğrulaması istendiğinde, kümeyi oluştururken belirttiğiniz küme oturum açma ( `admin`varsayılan) hesap adını ve parolasını kullanın.
+2. **Küme panolarında**, **ambarı görünümleri**' ni seçin. Kimlik doğrulaması sorulduğunda, kümeyi oluştururken belirttiğiniz küme oturum açma (varsayılan `admin`) hesap adını ve parolasını kullanın.
 
 3. Görünümler listesinden __Hive görünümü__' nü seçin.
 
@@ -61,14 +61,14 @@ Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırma
 
     Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-   * `DROP TABLE`: Tablonun zaten mevcut olması durumunda tabloyu ve veri dosyasını siler.
+   * `DROP TABLE`: tablonun zaten mevcut olması durumunda tabloyu ve veri dosyasını siler.
 
    * `CREATE EXTERNAL TABLE`: Hive içinde yeni bir "External" tablosu oluşturur.
      Dış tablolar yalnızca Hive içindeki tablo tanımını depolar. Veriler özgün konumda bırakılır.
 
-   * `ROW FORMAT`: Verilerin nasıl biçimlendirileceğini gösterir. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
+   * `ROW FORMAT`: verilerin nasıl biçimlendirileceğini gösterir. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
 
-   * `STORED AS TEXTFILE LOCATION`: Verilerin nerede depolandığını ve metin olarak depolandığını gösterir.
+   * `STORED AS TEXTFILE LOCATION`: verilerin nerede depolandığını ve metin olarak depolandığını gösterir.
 
    * `SELECT`: T4 sütununun [ERROR] değerini içerdiği tüm satırların sayısını seçer.
 
@@ -112,14 +112,14 @@ Hive veritabanı içindeki tablolarla çalışmak için __Tablolar__ sekmesini k
 
 ![Apache Hive tabloları sekmesinin görüntüsü](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
-## <a name="saved-queries"></a>Kaydedilmiş sorgular
+## <a name="saved-queries"></a>Kaydedilen sorgular
 
 **Sorgu** sekmesinden, isteğe bağlı olarak sorguları kaydedebilirsiniz. Bir sorguyu kaydettikten sonra, __kaydedilmiş sorgular__ sekmesinden onu yeniden kullanabilirsiniz.
 
 ![Apache Hive kaydedilmiş sorgular sekmesini görüntüleme](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Kayıtlı sorgular varsayılan küme depolama alanında depolanır. Kaydedilen sorguları yolun `/user/<username>/hive/scripts`altında bulabilirsiniz. Bunlar düz metin `.hql` dosyaları olarak depolanır.
+> Kayıtlı sorgular varsayılan küme depolama alanında depolanır. Kaydedilen sorguları `/user/<username>/hive/scripts`yolu altında bulabilirsiniz. Bunlar düz metin `.hql` dosyaları olarak depolanır.
 >
 > Kümeyi siler, ancak depolamayı tutarsanız, sorguları almak için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) veya Data Lake Storage Explorer ( [Azure portalından](https://portal.azure.com)) gibi bir yardımcı programı kullanabilirsiniz.
 
@@ -150,7 +150,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-Daha sonra sorginizdeki UDF 'i kullanabilirsiniz. Örneğin: `SELECT myawesomeudf(name) FROM people;`.
+Daha sonra sorginizdeki UDF 'i kullanabilirsiniz. Örneğin, `SELECT myawesomeudf(name) FROM people;`.
 
 HDInsight 'ta Hive ile UDF 'Leri kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 

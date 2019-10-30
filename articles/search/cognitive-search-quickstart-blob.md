@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 28d813e2f137ecf721165e9ea5af2e36efee872a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809661"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053476"
 ---
 # <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Hızlı başlangıç: Azure Search bilişsel becerileri kullanarak bir AI zenginleştirme işlem hattı oluşturma
 
-Azure Search bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/)ile tümleşir, içerik ayıklama, doğal dil işleme (NLP) ve görüntü işleme yeteneklerini bir Azure Search dizin oluşturma işlem hattına ekleyerek aranabilir veya yapılandırılmamış içeriğin daha fazla aranabilir olmasını sağlar. 
+Azure Search bilişsel [Hizmetler](https://azure.microsoft.com/services/cognitive-services/)ile tümleşir, içerik ayıklama, doğal dil işleme (NLP) ve görüntü işleme (görüntü etiketleme, nesne ALGıLAMA, OCR) becerileri, bir Azure Search dizin oluşturma işlem hattına, aranabilir veya yapılandırılmamış içerik daha aranabilir. 
 
-[OCR](cognitive-search-skill-ocr.md), [dil algılama](cognitive-search-skill-language-detection.md), ad adlandırma için [varlık tanıma](cognitive-search-skill-entity-recognition.md) gibi birçok bilişsel hizmet kaynağı bir dizin oluşturma işlemine eklenebilir. Bilişsel hizmetler 'in AI algoritmaları, kaynak verilerde desenler, Özellikler ve özellikler bulmak için kullanılır ve Azure Search göre tam metin arama çözümlerinde kullanılabilecek yapıları ve metin içeriğini döndürür.
+ [Görüntü etiketleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images), [nesne algılama](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-object-detection), [OCR](cognitive-search-skill-ocr.md), [dil algılama](cognitive-search-skill-language-detection.md), ad Ile [varlık tanıma](cognitive-search-skill-entity-recognition.md) gibi birçok bilişsel hizmet kaynağı bir dizin oluşturma işlemine eklenebilir. Bilişsel hizmetler 'in AI algoritmaları, kaynak verilerde desenler, Özellikler ve özellikler bulmak için kullanılır ve Azure Search göre tam metin arama çözümlerinde kullanılabilecek yapıları ve metin içeriğini döndürür.
 
 Bu hızlı başlangıçta, tek bir kod satırı yazmadan önce [Azure Portal](https://portal.azure.com) ilk zenginleştirme ardışık düzenini oluşturun:
 

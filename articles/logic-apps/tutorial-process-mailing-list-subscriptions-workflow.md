@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034589"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025574"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik onay tabanlı iş akışları oluşturma
 
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 * Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/) .
 
-* Mantıksal uygulamanızın onaylanan Üyeler için e-posta adresi ekleyebileceği, içeren bir MailChimp hesabı ve "test-Members-ML" adlı bir liste. Hesabınız yoksa, [ücretsiz hesap için kaydolun](https://login.mailchimp.com/signup/)ve ardından [bir MailChimp listesi oluşturmayı](https://us17.admin.mailchimp.com/lists/#)öğrenin.
+* Mantıksal uygulamanızın onaylanan Üyeler için e-posta adresi ekleyebildiği "test-Members-ML" adlı bir liste içeren bir MailChimp hesabı. Hesabınız yoksa, [ücretsiz hesap için kaydolun](https://login.mailchimp.com/signup/)ve ardından [bir MailChimp listesi oluşturmayı](https://us17.admin.mailchimp.com/lists/#)öğrenin.
 
 * Office 365 Outlook veya Outlook.com 'de onay iş akışlarını destekleyen bir e-posta hesabı. Bu makalede Office 365 Outlook kullanılır. Farklı bir e-posta hesabı kullanırsanız genel adımlar aynı kalır, ancak kullanıcı arabiriminiz biraz farklı görünebilir.
 
@@ -61,7 +61,7 @@ Azure hesabınızın kimlik bilgileriyle [Azure portalında](https://portal.azur
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Adı** | LA-MailingList | Mantıksal uygulamanızın adı; yalnızca harfler, rakamlar, tireler (`-`), alt çizgiler (`_`), parantezler (`(`, `)`) ve noktalar (`.`) içerebilir. Bu örnekte "LA-MailingList" kullanılmaktadır. |
+   | **Adı** | LA-MailingList | Mantıksal uygulamanızın adı, yalnızca harf, sayı, kısa çizgi (`-`), alt çizgi (`_`), parantezler (`(`, `)`) ve nokta (`.`) içerebilir. Bu örnekte "LA-MailingList" kullanılmaktadır. |
    | **Abonelik** | <*your-Azure-subscription-name*> | Azure abonelik adınız |
    | **Kaynak grubu** | LA-MailingList-RG | İlgili kaynakları düzenlemek için kullanılan [Azure Kaynak grubunun](../azure-resource-manager/resource-group-overview.md)adı. Bu örnek, "LA-MailingList-RG" kullanır. |
    | **Konum** | Batı ABD | Mantıksal uygulama bilgilerinizin depolanacağı bölge. Bu örnek, "Batı ABD" kullanır. |

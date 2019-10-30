@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757348"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044110"
 ---
 # <a name="learn-image-moderation-concepts"></a>Görüntü denetleme kavramlarını öğrenin
 
@@ -147,4 +147,4 @@ Daha fazla bilgi sahibi olmak için Content Moderator [Gözden geçirme aracın�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görüntü denetleme API konsolunun](try-image-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, Visual Studio ve hakkında bilgi sahibiyseniz, [görüntü denetleme .net hızlı](image-moderation-quickstart-dotnet.md) başlangıcı ' C#na göz atın.
+[Görüntü denetleme API konsolunun](try-image-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, Visual Studio ve hakkında bilginiz varsa [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcı ' C#nın görüntü düzenlemesi bölümüne göz atın.

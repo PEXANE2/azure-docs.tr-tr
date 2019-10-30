@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 523f4a302eb1f4679eb34bc959efc895fa5408ec
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4fee7c84b394e84369b28d2a4191d0e581f3beba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821048"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044357"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-data-loss"></a>Redsıs veri kaybı için Azure önbelleğinde sorun giderme
 
@@ -101,7 +101,7 @@ Bir veya daha fazla anahtarın önbelleğinizi kaybolduğunu fark ederseniz, sor
 |---|---|
 | [Anahtar Temizleme](#key-flushing) | Anahtarlar el ile temizlendi |
 | [Yanlış veritabanı seçimi](#incorrect-database-selection) | Reddir varsayılan olmayan bir veritabanı kullanacak şekilde ayarlandı |
-| [Redsıs örneği hatası](#redis-instance-failure) | Anahtarlar açık silme komutlarıyla kaldırılır |
+| [Redsıs örneği hatası](#redis-instance-failure) | Redsıs sunucusu kullanılamıyor |
 
 ### <a name="key-flushing"></a>Anahtar Temizleme
 

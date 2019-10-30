@@ -10,24 +10,24 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429045"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043899"
 ---
 # <a name="active-and-inactive-events"></a>Etkin ve etkin olmayan olaylar
 
 Uygulamanız, derecelendirme API 'sini çağırdığında, uygulamanın Rewarterctionıd alanında hangi eylemde gösterilmesi gerektiğini alırsınız.  Bu andan itibaren, kişiselleştirici aynı EventID ile bir Reward çağrısı bekliyordu. Daha sonraki derecelendirme çağrılarında kullanılacak modeli eğitebilmek için ödül puanı kullanılacaktır. EventID için bir ödül çağrısı alınmıyorsa, bir en da daha sonra uygulanacak bir ödül olur. Varsayılan yeniden ödüller Azure portalında oluşturulur.
 
-Bazı durumlarda, uygulamanın kullanıcı için ne olduğunu veya displayedn olduğunu bilse bile, uygulamanın derecelendirme deliği çağrısı yapması gerekebilir. Bu durum, örneğin, yükseltilen içeriğin sayfa işleme bir pazarlama kampanyası ile üzerine yazılmasından kaynaklanıyor olabilir. Derece çağrısının sonucu hiç kullanılmadıysa ve Kullanıcı onu görmüyorsa, her türlü, sıfır veya başka türlü herhangi bir şey ile eğitebilmek hatalı olur.
+Bazı durumlarda, uygulamanın, sonucun ne zaman kullanılacağını veya kullanıcıya görüntülendiğini bilse bile, uygulamanın sırasıyla derecelendirme çağrısı yapması gerekebilir. Bu durum, örneğin, yükseltilen içeriğin sayfa işleme bir pazarlama kampanyası ile üzerine yazılmasından kaynaklanıyor olabilir. Derece çağrısının sonucu hiç kullanılmadıysa ve Kullanıcı onu görmüyorsa, her türlü, sıfır veya başka türlü herhangi bir şey ile eğitebilmek hatalı olur.
 Genellikle bu durum oluşur:
 
 * Kullanıcının görebiliyorsa veya görmeyebilir bir kullanıcı ARABIRIMI önceden oluşturuluyor olabilir. 
 * Uygulamanız, daha az gerçek zamanlı bağlamla derecelendirme çağrılarının yapıldığı ve bunların çıktıları uygulama tarafından kullanılabilecek tahmine dayalı kişiselleştirmeye başlayabilir. 
 
-Bu gibi durumlarda, kişiselleştirici kullanmanın doğru yolu, olayın _devre dışı_olmasını ısteyen bir sıra çağırarak. Kişiselleştiriciye bu olay için bir ödül beklenmez ve varsayılan olarak bir ödül uygulanmaz. İş mantığınızdaki Lette, uygulama sıralama çağrısından bilgileri kullanıyorsa, tüm yapmanız gereken olayı _etkinleştirir_ . Olayın etkin olduğu andan itibaren, yeniden oluşturma API 'sine açık bir çağrı yapılcaksa, kişiselleştirici olay için bir tepki bekler veya varsayılan bir ödül uygular.
+Bu gibi durumlarda, kişiselleştirici kullanmanın doğru yolu, olayın _devre dışı_olmasını ısteyen bir sıra çağırarak. Kişiselleştiriciye bu olay için bir ödül beklenmez ve varsayılan olarak bir ödül uygulanmaz. İş mantığınızdaki daha sonra uygulama, sıralama çağrısından bilgileri kullanıyorsa, tüm yapmanız gereken olayı _etkinleştirir_ . Olayın etkin olduğu andan itibaren, yeniden oluşturma API 'sine açık bir çağrı yapılcaksa, kişiselleştirici olay için bir tepki bekler veya varsayılan bir ödül uygular.
 
 ## <a name="get-inactive-events"></a>Etkin olmayan olayları al
 

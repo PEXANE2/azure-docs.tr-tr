@@ -10,12 +10,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: b982956af276eaba31be52ba426562f9fc5137dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956498"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026385"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-* Önceki iki öğreticiden herhangi bir işlem yapmak için [azure IoT Central 'te bir mağaza analizi uygulaması oluşturun](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) ve [İşletmen panosunu özelleştirin ve Azure IoT Central cihazları yönetin](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+* Önceki iki öğreticiden herhangi bir işlem yapmak için [azure IoT Central 'te bir mağaza analizi uygulaması oluşturun](./tutorial-in-store-analytics-create-app-pnp.md) ve [İşletmen panosunu özelleştirin ve Azure IoT Central cihazları yönetin](./tutorial-in-store-analytics-customize-dashboard-pnp.md).
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 * Power BI hesabı. Power BI hesabınız yoksa, başlamadan önce [ücretsiz bir Power BI Pro denemeye](https://app.powerbi.com/signupredirect?pbi_source=web) kaydolun.
 
@@ -149,7 +149,7 @@ Artık, sanal doluluk sensörindeki değerleri depolayan bir üçüncü akış v
 
 Bu çözümde, Logic App Olay Hub 'ından Telemetriyi okur, verileri ayrıştırır ve sonra oluşturduğunuz Power BI akış veri kümelerine gönderir.
 
-Mantıksal uygulamayı oluşturmadan önce [Azure 'da bir yerleşik analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) öğreticisindeki IoT Central uygulamanıza bağladığınız Iki RuuviTag sensörlerinin cihaz kimliklerine sahip olmanız gerekir:
+Mantıksal uygulamayı oluşturmadan önce [Azure 'da bir yerleşik analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) öğreticisindeki IoT Central uygulamanıza bağladığınız Iki RuuviTag sensörlerinin cihaz kimliklerine sahip olmanız gerekir:
 
 1. **Mağaza içi analiz-kullanıma alma** IoT Central uygulamanızda oturum açın.
 1. Sol bölmedeki **cihazlar** ' ı seçin. Sonra **Ruuvitag**öğesini seçin.

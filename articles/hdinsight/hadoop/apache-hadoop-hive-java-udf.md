@@ -1,5 +1,5 @@
 ---
-title: HDInsight 'ta Apache Hive ile Java Kullanıcı tanımlı işlev (UDF)-Azure
+title: Apache Hive Azure HDInsight ile Java Kullanıcı tanımlı işlev (UDF)
 description: Apache Hive ile birlikte çalışarak Java tabanlı kullanıcı tanımlı bir işlev (UDF) oluşturmayı öğrenin. Bu örnek UDF bir metin dizesi tablosunu küçük harfe dönüştürür.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181172"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044789"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 'ta Apache Hive Java UDF kullanma
 
@@ -24,7 +24,7 @@ Apache Hive ile birlikte çalışarak Java tabanlı kullanıcı tanımlı bir i�
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 * [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
 * Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
-* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Storage için wasb://, Azure Data Lake Storage 2. için abfs://veya adl://için Azure Data Lake Storage 1. olacaktır. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://`.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Storage için wasb://, Azure Data Lake Storage 2. için abfs://veya adl://için Azure Data Lake Storage 1. olacaktır. Azure depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`olur.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
 * Bir metin Düzenleyicisi veya Java IDE
 
@@ -49,22 +49,22 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Bu komut, Maven projesini `exampleudf`içeren adlı bir dizin oluşturur.
+    Bu komut, Maven projesini içeren `exampleudf`adlı bir dizin oluşturur.
 
-2. Proje oluşturulduktan sonra, aşağıdaki komutu girerek projenin bir `exampleudf/src/test` parçası olarak oluşturulan dizini silin:
+2. Proje oluşturulduktan sonra, aşağıdaki komutu girerek projenin bir parçası olarak oluşturulan `exampleudf/src/test` dizinini silin:
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. Aşağıdaki `pom.xml` komutu girerek açın:
+3. Aşağıdaki komutu girerek `pom.xml` ' yı açın:
 
     ```cmd
     notepad pom.xml
     ```
 
-    Ardından varolan `<dependencies>` girişi aşağıdaki XML ile değiştirin:
+    Ardından mevcut `<dependencies>` girişini aşağıdaki XML ile değiştirin:
 
     ```xml
     <dependencies>
@@ -85,7 +85,7 @@ cd C:\HDI
 
     Bu girişler, HDInsight 3,6 ' de bulunan Hadoop ve Hive sürümünü belirtir. HDInsight [Bileşen sürümü oluşturma](../hdinsight-component-versioning.md) belgesinden HDInsight Ile sunulan Hadoop ve Hive sürümleri hakkında bilgi edinebilirsiniz.
 
-    Dosyanın sonundaki `<build>` `</project>` satırdan önce bir bölüm ekleyin. Bu bölüm aşağıdaki XML 'i içermelidir:
+    Dosyanın sonundaki `</project>` satırından önce bir `<build>` bölümü ekleyin. Bu bölüm aşağıdaki XML 'i içermelidir:
 
     ```xml
     <build>
@@ -143,7 +143,7 @@ cd C:\HDI
 
     Değişiklikler yapıldıktan sonra dosyayı kaydedin.
 
-4. Yeni bir dosya `ExampleUDF.java`oluşturmak ve açmak için aşağıdaki komutu girin:
+4. `ExampleUDF.java`yeni bir dosya oluşturmak ve açmak için aşağıdaki komutu girin:
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -180,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>UDF derleme ve yüklemesi
 
-Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla değiştirin. Gerçek `mycluster` küme adıyla değiştirin.
+Aşağıdaki komutlarda, farklı olursa `sshuser` gerçek kullanıcı adıyla değiştirin. `mycluster` gerçek küme adıyla değiştirin.
 
 1. Aşağıdaki komutu girerek UDF 'yi derleyin ve paketleyin:
 
@@ -188,9 +188,9 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
     mvn compile package
     ```
 
-    Bu komut, UDF 'yi `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` dosya içinde oluşturur ve paketler.
+    Bu komut UDF 'i `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` dosyasına oluşturur ve paketler.
 
-2. Aşağıdaki komutu girerek dosyayı HDInsight kümesine kopyalamak için komutunukullanın:`scp`
+2. Aşağıdaki komutu girerek dosyayı HDInsight kümesine kopyalamak için `scp` komutunu kullanın:
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
@@ -218,7 +218,7 @@ Aşağıdaki komutlarda, farklı ise gerçek `sshuser` Kullanıcı adıyla deği
 
     Bu komut, kümeniz için oturum açma hesabı için **yönetici** varsayılanını kullandığınızı varsayar.
 
-2. `jdbc:hive2://localhost:10001/>` Komut istemine ulaştıktan sonra, UDF 'yi Hive 'ye eklemek ve işlev olarak göstermek için aşağıdakileri girin.
+2. `jdbc:hive2://localhost:10001/>` istemine ulaştıktan sonra, UDF 'yi Hive 'ye eklemek ve işlevi bir işlev olarak göstermek için aşağıdakileri girin.
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;

@@ -5,7 +5,7 @@ description: Azure Load Balancer ve yük dengeli VM 'Ler için IPv6 desteği da�
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, azure yük dengeleyici, ikili yığın, genel IP, yerel IPv6, mobil veya IOT
+keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mobil, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275006"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025598"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bir şablon kullanarak IPv6 ile Internet 'e yönelik yük dengeleyici çözümü dağıtma
 
@@ -29,6 +29,8 @@ ms.locfileid: "68275006"
 > * [Şablon](load-balancer-ipv6-internet-template.md)
 
 
+>[! NOTE: IPv6 için En Iyi uygulamada değişiklik yapın] Bu makalede temel yük dengeleyiciler hem IPv4 hem de IPv6 bağlantısı sağlamasına izin veren bir giriş IPv6 özelliği açıklanır.  Daha kapsamlı IPv6 bağlantısı, sanal ağlarınızla [IPv6 bağlantısını](../virtual-network/ipv6-overview.md) tümleştiren ve IPv6 ağ güvenlik grubu kuralları, IPv6 Kullanıcı tanımlı yönlendirme, IPv6 temel ve Standart yük dengeleme ve daha fazlası.  Azure sanal ağları için IPv6, Azure 'daki IPv6 uygulamaları için önerilen en iyi uygulamadır. 
+>Lütfen bkz. [Azure VNET şablon dağıtımı Için IPv6](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)
 
 Azure Load Balancer bir Katman 4 (TCP, UDP) yük dengeleyicidir. Yük dengeleyici, gelen trafiği bulut hizmetlerindeki sağlıklı hizmet örnekleri veya bir yük dengeleyici kümesindeki sanal makineler arasında dağıtarak yüksek kullanılabilirlik sağlar. Ayrıca, Azure Load Balancer bu hizmetleri birden çok bağlantı noktasında, birden çok IP adresinde ya da her ikisinde birden sağlayabilir.
 
@@ -53,43 +55,43 @@ Bu makale, [Azure hızlı başlangıç şablonları](https://azure.microsoft.com
 1. Azure portal açın ve bir Azure aboneliği içinde VM 'Ler ve ağ kaynakları oluşturma izinlerine sahip bir hesapla oturum açın. Ayrıca, mevcut kaynakları kullanmıyorsanız, hesap için bir kaynak grubu ve depolama hesabı oluşturma izni gerekir.
 2. Menüden "+ yeni" ye tıklayın, sonra arama kutusuna "şablon" yazın. Arama sonuçlarından "Şablon dağıtımı" seçeneğini belirleyin.
 
-    ![lb-ipv6-portal-step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
+    ![lb-IPv6-Portal-Step2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
 3. Her şey dikey penceresinde "Şablon dağıtımı" a tıklayın.
 
-    ![lb-ipv6-portal-step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
+    ![lb-IPv6-Portal-Step3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
 4. "Oluştur" a tıklayın.
 
-    ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
+    ![lb-IPv6-Portal-Step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
 5. "Şablonu Düzenle" ye tıklayın. Mevcut içeriği silin ve şablon dosyasının tüm içeriğini Kopyala/Yapıştır (başlangıç ve bitiş {} dahil etmek için), ardından "Kaydet" e tıklayın.
 
     > [!NOTE]
     > Microsoft Internet Explorer kullanıyorsanız, yapıştırdığınızda Windows panosuna erişime izin vermenizi isteyen bir iletişim kutusu alırsınız. "Erişime Izin ver" e tıklayın.
 
-    ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
+    ![lb-IPv6-Portal-Step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
 6. "Parametreleri Düzenle" seçeneğine tıklayın. Parametreler dikey penceresinde, şablon parametreleri bölümünde rehberlik başına değerleri belirtin ve sonra parametreler dikey penceresini kapatmak için "Kaydet" e tıklayın. Özel dağıtım dikey penceresinde, aboneliğinizi, var olan bir kaynak grubunu seçin ya da bir tane oluşturun. Bir kaynak grubu oluşturuyorsanız, kaynak grubu için bir konum seçin. Ardından **yasal koşullar**' a ve ardından yasal koşullar Için **satın al** ' a tıklayın. Azure, kaynakları dağıtmaya başlar. Tüm kaynakların dağıtılması birkaç dakika sürer.
 
-    ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
+    ![lb-IPv6-Portal-Step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
     Bu parametreler hakkında daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak [şablon parametreleri ve değişkenleri](#template-parameters-and-variables) bölümüne bakın.
 
 7. Şablon tarafından oluşturulan kaynakları görmek için, Araştır ' a tıklayın, "kaynak grupları" görene kadar listeyi aşağı kaydırın ve ardından tıklatın.
 
-    ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
+    ![lb-IPv6-Portal-Step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
 8. Kaynak grupları dikey penceresinde, adım 6 ' da belirttiğiniz kaynak grubunun adına tıklayın. Dağıtılan tüm kaynakların bir listesini görürsünüz. Her şey iyi olursa, "son dağıtım" altında "başarılı" deyin. Aksi takdirde, kullanmakta olduğunuz hesabın gerekli kaynakları oluşturmak için izinlere sahip olduğundan emin olun.
 
-    ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
+    ![lb-IPv6-Portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
     > Adım 6 ' yı tamamladıktan hemen sonra kaynak gruplarınıza gözatıyorsanız, "son dağıtım", kaynaklar dağıtılırken "dağıtım" durumunu görüntüler.
 
 9. Kaynak listesinde "myIPv6PublicIP" düğmesine tıklayın. IP adresi altında bir IPv6 adresine sahip olduğunu ve bu sunucunun DNS adının 6. adımdaki dnsNameforIPv6LbIP parametresi için belirttiğiniz değer olduğunu görürsünüz. Bu kaynak, Internet istemcileri tarafından erişilebilen genel IPv6 adresi ve ana bilgisayar adıdır.
 
-    ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
+    ![lb-IPv6-Portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 

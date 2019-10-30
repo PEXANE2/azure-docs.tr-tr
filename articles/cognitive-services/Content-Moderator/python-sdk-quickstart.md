@@ -1,5 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Python için Content Moderator istemci kitaplığı | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Python için Content Moderator istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755247"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044042"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Hızlı başlangıç: Python için Content Moderator istemci kitaplığı
 
@@ -44,7 +45,7 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 * Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, sırasıyla `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ve `CONTENT_MODERATOR_ENDPOINT` adlı anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, sırasıyla `CONTENT_MODERATOR_SUBSCRIPTION_KEY` ve `CONTENT_MODERATOR_ENDPOINT`adlı anahtar ve uç nokta URL 'SI için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
  
 ### <a name="create-a-python-script"></a>Python betiği oluşturma
 
@@ -295,7 +296,7 @@ Belirli bir görüntü listesini silmek için aşağıdaki kodu kullanın.
 
 ## <a name="create-a-review"></a>İnceleme oluştur
 
-İnsanların gözden geçirebilmesi için Content Moderator Python SDK 'sını kullanarak içerik akışını [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com) bulabilirsiniz. Inceleme aracı hakkında daha fazla bilgi için bkz. [kavramsal kılavuz](./review-tool-user-guide/human-in-the-loop.md).
+İnsanların gözden geçirebilmesi için Content Moderator Python SDK 'sını kullanarak içerik akışını [Gözden geçirme aracında](https://contentmoderator.cognitive.microsoft.com) bulabilirsiniz. Inceleme aracı hakkında daha fazla bilgi edinmek için bkz. [İnceleme aracı kavramsal Kılavuzu](./review-tool-user-guide/human-in-the-loop.md).
 
 Aşağıdaki kod, gözden geçirme oluşturmak, KIMLIĞINI almak ve gözden geçirme aracının Web portalı aracılığıyla insan girişini aldıktan sonra ayrıntılarını denetlemek için [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) sınıfını kullanır.
 
@@ -312,7 +313,7 @@ Verilen görüntü URL 'SI için bir inceleme oluşturmak ve göndermek üzere a
 
 ### <a name="get-review-details"></a>İnceleme ayrıntılarını al
 
-Belirli bir incelemenin ayrıntılarını denetlemek için aşağıdaki kodu kullanın. İncelemeyi oluşturduktan sonra, gözden geçirme aracına kendiniz gidebilir ve içerikle etkileşime geçebilirsiniz. İşiniz bittiğinde, bu kodu tekrar çalıştırabilirsiniz ve gözden geçirme işleminin sonuçları alınır.
+Belirli bir incelemenin ayrıntılarını denetlemek için aşağıdaki kodu kullanın. İncelemeyi oluşturduktan sonra, gözden geçirme aracına kendiniz gidebilir ve içerikle etkileşime geçebilirsiniz. Bunun nasıl yapılacağı hakkında bilgi için bkz. [İnceleme nasıl yapılır Kılavuzu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). İşiniz bittiğinde, bu kodu tekrar çalıştırabilirsiniz ve gözden geçirme işleminin sonuçları alınır.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

@@ -1,20 +1,20 @@
 ---
-title: Ambarı ve Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
+title: 'İzleme: Apache ambarı & Azure Izleyici günlükleri-Azure HDInsight'
 description: Küme durumunu ve kullanılabilirliğini izlemek için ambarı ve Azure Izleyici günlüklerini nasıl kullanacağınızı öğrenin.
 keywords: izleme, ambarı, izleyici, Log Analytics, uyarı, kullanılabilirlik, sistem durumu
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: tyfox
-ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: eeaef8851035bbb8d2f39bcf9f366118545fcf0f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076543"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044473"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Ambarı ve Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 
@@ -26,7 +26,7 @@ Bu belge, kümenizi izlemek ve bir veya daha fazla düğümden bir sinyal alınm
 
 ### <a name="dashboard"></a>Pano
 
-**Ambarı panosuna** , aşağıda gösterildiği gibi, HDInsight genel bakış dikey penceresinin **küme panoları** bölümünde yer alarak, aşağıdaki gibi Azure Portal. Alternatif olarak, [https://\<clustername\>. azurehdinsight.net](https://clustername.azurehdinsight.net/) tarayıcısına aşağıdaki URL girilerek erişilebilir.
+**Ambarı panosuna** , aşağıda gösterildiği gibi, HDInsight genel bakış dikey penceresinin **küme panoları** bölümünde yer alarak, aşağıdaki gibi Azure Portal. Alternatif olarak, aşağıdaki URL bir Browser [https://\<clustername\>girerek erişilebilir. azurehdinsight.net](https://clustername.azurehdinsight.net/)
 
 ![HDInsight kaynak portalı görünümü](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
@@ -58,7 +58,7 @@ Uyarı tanımlarının ve durumlarının listesini görüntülemek için, aşağ
 
 Ambarı aşağıdakiler dahil olmak üzere kullanılabilirliğiyle ilgili çok sayıda önceden tanımlı uyarı sunar:
 
-| Uyarı Adı                        | Açıklama                                                                                                                                                                           |
+| Uyarı adı                        | Açıklama                                                                                                                                                                           |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Dadtanode sistem durumu Özeti           | Sağlıksız bir kades varsa, bu hizmet düzeyi uyarı tetiklenir                                                                                                                |
 | Süs Yot yüksek kullanılabilirlik durumu | Bu hizmet düzeyi uyarı, etkin bir süs Code veya standby süs ODE çalışmıyorsa tetiklenir.                                                                              |
@@ -83,7 +83,7 @@ Ayrıca, isteğe bağlı olarak, ambarı uyarıları için e-posta bildirimleri 
 
 ![Ambarı yönetimi bildirimleri eylemi](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. **+** İletişim kutusunun alt kısmındaki öğesine tıklayın ve e-postaların gönderileceği e-posta sunucusu ayrıntılarını kullanarak ambarı sağlamak için gerekli alanları doldurun.
+Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. İletişim kutusunun alt kısmındaki **+** tıklayın ve e-postaların gönderileceği e-posta sunucusu ayrıntılarını kullanarak ambarı sağlamak için gerekli alanları doldurun.
 
 > [!TIP]
 > Ambarı e-posta bildirimlerinin kurulması, birçok HDInsight kümesini yönetirken tek bir yerde uyarı almanın iyi bir yoludur.
@@ -92,7 +92,7 @@ Uyarı bildirimlerini yönetmek için bir iletişim kutusu açılır. **+** İle
 
 Azure Izleyici günlükleri, HDInsight kümeleri gibi birden çok kaynak tarafından oluşturulan verilerin, birleştirilmiş bir izleme deneyimi elde etmek için tek bir yerde toplanmasını ve toplanmasını sağlar.
 
-Bir önkoşul olarak, toplanan verileri depolamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Henüz bir tane oluşturmadıysanız, buradaki talimatları izleyebilirsiniz: [Log Analytics çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Bir önkoşul olarak, toplanan verileri depolamak için bir Log Analytics çalışma alanına ihtiyacınız olacaktır. Henüz bir tane oluşturmadıysanız, buradaki yönergeleri izleyebilirsiniz: [Log Analytics çalışma alanı oluşturun](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Izleyici günlükleri tümleştirmesini etkinleştirme
 
@@ -123,7 +123,7 @@ Azure Izleyici günlük tümleştirmesi etkinleştirildikten sonra (Bu işlem bi
 > [!NOTE] 
 > Kullanılabilirlik oranı, 24 saatlik bir dönemde ölçülür, bu sayede doğru kullanılabilirlik ücretleri görüntülenmeden önce kümenizin en az 24 saat boyunca çalışması gerekir.
 
-Sağ üst köşedeki **sabitle** ' ye tıklayarak bu tabloyu paylaşılan bir panoya sabitleyebilirsiniz. Yazılabilir bir paylaşılan panonuz yoksa, nasıl oluşturulacağını buradan öğrenebilirsiniz: [Azure Portal panoları oluşturup paylaşabilirsiniz](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+Sağ üst köşedeki **sabitle** ' ye tıklayarak bu tabloyu paylaşılan bir panoya sabitleyebilirsiniz. Yazılabilir bir paylaşılan panonuz yoksa, nasıl bir tane oluşturabileceğiniz hakkında bilgi edinebilirsiniz: [Azure Portal panoları oluşturma ve paylaşma](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Azure Izleyici uyarıları
 
@@ -147,7 +147,7 @@ Bu işlem, **sinyal mantığını Yapılandır** dikey penceresini açar.
 
 **Uyarı mantığı** bölümünü aşağıdaki şekilde ayarlayın:
 
-*Temel: Sonuç sayısı, koşul: Büyüktür, eşik: 0.*
+*Temel alan: sonuç sayısı, koşul: büyüktür, eşik: 0.*
 
 Bu sorgu yalnızca sonuç olarak kullanılamayan düğümleri döndürdüğünden, sonuç sayısı 0 ' dan büyük olursa uyarının tetiklenmesi gerekir.
 

@@ -1,7 +1,7 @@
 ---
 title: Python makine öğrenimi betikleri yürütün
 titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio 'de Python kullanmayı öğrenin.
+description: Machine Learning Studio (klasik) denemeleri ve Web hizmetlerinde Python kodu kullanmak için Python betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308873"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053782"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio’da Python machine learning betikleri yürütme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Machine Learning Studio denemeleri ve Web hizmetinizdeki Pyth
 
 ## <a name="using-the-execute-python-script-module"></a>Python betiği yürütme modülünü kullanma
 
-Studio 'da Python 'a yönelik birincil arabirim, [Python betik modülünü Çalıştır][execute-python-script] ' dır. En fazla üç giriş kabul eder ve [R betiği Yürüt][execute-r-script] modülüne benzer şekilde en fazla iki çıkış üretir. Python kodu, adlı `azureml_main`özel olarak adlandırılmış bir giriş noktası işlevi aracılığıyla parametre kutusuna girilir.
+Studio 'da Python 'a yönelik birincil arabirim, [Python betik modülünü Çalıştır][execute-python-script] ' dır. En fazla üç giriş kabul eder ve [R betiği Yürüt][execute-r-script] modülüne benzer şekilde en fazla iki çıkış üretir. Python kodu, `azureml_main`adlı özel olarak adlandırılmış bir giriş noktası işlevi aracılığıyla parametre kutusuna girilir.
 
 ![Python betik modülünü Yürüt](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -33,7 +33,7 @@ Studio 'da Python 'a yönelik birincil arabirim, [Python betik modülünü Çal�
 
 ### <a name="input-parameters"></a>Giriş parametreleri
 
-Python modülüne yönelik girişler Pandas veri çerçeveleri olarak sunulur. İşlevi `azureml_main` , parametre olarak en fazla iki isteğe bağlı Pandas veri çerçevesini kabul eder.
+Python modülüne yönelik girişler Pandas veri çerçeveleri olarak sunulur. `azureml_main` işlevi, parametre olarak en fazla iki isteğe bağlı Pandas veri çerçevesini kabul eder.
 
 Giriş bağlantı noktaları ve işlev parametreleri arasındaki eşleme konumsal:
 
@@ -41,13 +41,13 @@ Giriş bağlantı noktaları ve işlev parametreleri arasındaki eşleme konumsa
 - İkinci giriş (bağlıysa) işlevin ikinci parametresine eşlenir.
 - Üçüncü giriş, [ek Python modüllerini içeri aktarmak](#import-modules)için kullanılır.
 
-Giriş bağlantı noktalarının `azureml_main` işlevin parametreleriyle nasıl eşlendiğine ilişkin daha ayrıntılı bir semantik anlamı aşağıda verilmiştir.
+Giriş bağlantı noktalarının `azureml_main` işlevinin parametreleriyle nasıl eşlendiğine ilişkin daha ayrıntılı semantik bir sözdizimi aşağıda gösterilmiştir.
 
 ![Giriş bağlantı noktası yapılandırmalarının ve sonuç Python imzasının tablosu](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>Çıkış dönüş değerleri
 
-İşlevin demet, liste veya sayısal tuş takımı dizisi gibi bir Python dizisinde paketlenmiş tek bir Pandas dataframe döndürmesi gerekir. [](https://docs.python.org/2/c-api/sequence.html) `azureml_main` Bu dizinin ilk öğesi, modülün ilk çıkış bağlantı noktasına döndürülür. Modülün ikinci çıkış bağlantı noktası [görselleştirmeler](#visualizations) için kullanılır ve bir dönüş değeri gerektirmez. Bu düzen aşağıda gösterilmiştir.
+`azureml_main` işlevi demet, liste veya sayısal tuş takımı dizisi gibi bir Python [dizisinde](https://docs.python.org/2/c-api/sequence.html) paketlenmiş tek bir Pandas dataframe döndürmelidir. Bu dizinin ilk öğesi, modülün ilk çıkış bağlantı noktasına döndürülür. Modülün ikinci çıkış bağlantı noktası [görselleştirmeler](#visualizations) için kullanılır ve bir dönüş değeri gerektirmez. Bu düzen aşağıda gösterilmiştir.
 
 ![Giriş bağlantı noktalarını parametrelere eşleme ve değeri çıkış bağlantı noktasına döndürme](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -60,16 +60,16 @@ Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, Studi
 | Dizeler ve sayı değerleri| Şöyle çevrilmiş |
 | Pandas ' NA ' | ' Eksik değer ' olarak çevrilmiş |
 | Dizin vektörleri | Desteklenen |
-| Dize olmayan sütun adları | Sütun `str` adlarında çağır |
+| Dize olmayan sütun adları | Sütun adlarında `str` çağrısı yapın |
 | Yinelenen sütun adları | Sayısal sonek ekle: (1), (2), (3), vb.
 
-**Python işlevindeki tüm giriş verisi çerçeveleri her zaman 0 ' dan fazla satır sayısına 1 64 bitlik bir sayısal dizine sahiptir*
+*Python Işlevindeki tüm giriş verisi çerçevelerinin *, her zaman 0 ' dan fazla satır sayısına 64 bitlik bir sayısal dizin içermelidir 1*
 
 ## <a id="import-modules"></a>Mevcut Python betik modüllerini içeri aktarma
 
 Python 'u yürütmek için kullanılan arka uç, yaygın [olarak kullanılan](https://www.anaconda.com/distribution/)bir bilimsel Python dağıtımına dayanır. Bu, veri merkezli iş yüklerinde kullanılan en yaygın Python paketlerinin 200 ' e yakın bir sürümüne sahiptir. Studio şu anda, dış kitaplıkları yüklemek ve yönetmek için PIP veya Conda gibi paket yönetim sistemlerinin kullanımını desteklememektedir.  Ek kitaplıklar ekleme gereksinimini fark ederseniz, kılavuz olarak aşağıdaki senaryoyu kullanın.
 
-Yaygın kullanım örneği, mevcut Python betikleri Studio denemeleri ' e dahil değildir. [Execute Python betik][execute-python-script] modülü, üçüncü giriş bağlantı noktasında Python modüllerini içeren bir ZIP dosyasını kabul eder. Dosya, çalışma zamanında yürütme çerçevesi tarafından sıkıştırıldı ve içerik Python yorumlayıcı kitaplık yoluna eklenir. `azureml_main` Giriş noktası işlevi daha sonra bu modülleri doğrudan içeri aktarabilir. 
+Yaygın kullanım örneği, mevcut Python betikleri Studio denemeleri ' e dahil değildir. [Execute Python betik][execute-python-script] modülü, üçüncü giriş bağlantı noktasında Python modüllerini içeren bir ZIP dosyasını kabul eder. Dosya, çalışma zamanında yürütme çerçevesi tarafından sıkıştırıldı ve içerik Python yorumlayıcı kitaplık yoluna eklenir. `azureml_main` giriş noktası işlevi daha sonra bu modülleri doğrudan içeri aktarabilir. 
 
 Örnek olarak, basit bir "Hello, World" işlevi içeren Hello.py dosyasını göz önünde bulundurun.
 
@@ -85,7 +85,7 @@ Zip dosyasını bir veri kümesi olarak Studio 'ya yükleyin. Ardından, aşağ�
 
 ![Zip dosyası olarak karşıya yüklenen Kullanıcı tanımlı Python kodu](./media/execute-python-scripts/figure6b.png)
 
-Modül çıktısı, ZIP dosyasının paketlenmemiş olduğunu ve işlevin `print_hello` çalıştırılmış olduğunu gösterir.
+Modül çıktısı, ZIP dosyasının paketlenmemiş olduğunu ve işlevin `print_hello` çalıştırıldığını gösterir.
 
 ![Kullanıcı tanımlı işlevi gösteren modül çıkışı](./media/execute-python-scripts/figure7.png)
 
@@ -95,7 +95,7 @@ Aşağıdaki adımları kullanarak, bir Azure Blob depolama hesabında depolanan
 
 1. [Python Için Azure Blob depolama paketini](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) yerel olarak indirin.
 1. ZIP dosyasını bir veri kümesi olarak Studio çalışma alanınıza yükleyin.
-1. BlobService nesneniz ile oluşturma`protocol='http'`
+1. `protocol='http'` blob hizmeti nesneniz oluşturma
 
 ```
 from azure.storage.blob import BlockBlobService

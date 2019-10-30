@@ -12,12 +12,12 @@ ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.openlocfilehash: 6e5a8eda3891b3b356e0cbd7b6d2e22e4a70c278
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4fc20c4b1314d953ea979192c81b2c264292d3af
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799714"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73041909"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps 'de HTTP uç noktalarını kullanarak çağrı, tetikleyici veya iç içe mantıksal uygulamalar
 
@@ -62,7 +62,7 @@ Bir HTTP uç noktası oluşturmak için gelen istekleri alabilen bir tetikleyici
     }
     ```
 
-   ![Istek eylemini ekleyin](./media/logic-apps-http-endpoint/manualtrigger.png)
+   ![Istek eylemi için JSON şeması sağla](./media/logic-apps-http-endpoint/manual-request-trigger-schema.png)
 
    > [!TIP]
    >
@@ -95,7 +95,7 @@ Bir HTTP uç noktası oluşturmak için gelen istekleri alabilen bir tetikleyici
 
    Bu URL, kimlik doğrulaması için kullanılan sorgu parametrelerinde bir paylaşılan erişim Imzası (SAS) anahtarı içerir. Ayrıca, Azure portal mantıksal uygulamanıza genel bakış üzerinden HTTP uç noktası URL 'sini de alabilirsiniz. **Tetikleyici geçmişi**altında tetikleyiciyi seçin:
 
-   ![Azure portal HTTP uç noktası URL 'SI al](./media/logic-apps-http-endpoint/manualtriggerurl.png)
+   ![Azure portal HTTP uç noktası URL 'SI al](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
    Ya da bu çağrıyı yaparak URL 'YI edinebilirsiniz:
 
@@ -117,7 +117,7 @@ Varsayılan olarak, **istek** TETIKLEYICISI BIR http post isteği bekler, ancak 
    > [!NOTE]
    > Başka herhangi bir HTTP yöntemini seçebilir veya kendi mantıksal uygulamanız için özel bir yöntem belirtebilirsiniz.
 
-   ![HTTP yöntemini değiştir](./media/logic-apps-http-endpoint/change-method.png)
+   ![Istek için kullanılacak HTTP yöntemini seçin](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
 ## <a name="accept-parameters-through-your-http-endpoint-url"></a>HTTP uç noktası URL 'niz aracılığıyla parametreleri kabul etme
 
@@ -132,7 +132,7 @@ HTTP uç noktası URL 'nizin parametreleri kabul etmesini istediğinizde, tetikl
 
 3. **Göreli yol**altında URL 'nizin kabul edileceği parametrenin göreli yolunu belirtin, örneğin `customers/{customerID}`.
 
-   ![Parametre için HTTP yöntemini ve göreli yolu belirtin](./media/logic-apps-http-endpoint/relativeurl.png)
+   ![Parametre için HTTP yöntemini ve göreli yolu belirtin](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 4. Parametresini kullanmak için, mantıksal uygulamanıza bir **Yanıt** eylemi ekleyin. (Tetikleyiciniz altında **yeni adım**  > **bir eylem**  > **yanıtı**Ekle ' yi seçin) 
 
@@ -140,11 +140,11 @@ HTTP uç noktası URL 'nizin parametreleri kabul etmesini istediğinizde, tetikl
 
    Örneğin, `Hello {customerID}` döndürmek için, `Hello {customerID token}` ile yanıt **gövdesini** güncelleştirin. Dinamik içerik listesi görünmelidir ve seçtiğiniz `customerID` belirtecini gösterir.
 
-   ![Yanıt gövdesine parametre Ekle](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+   ![Yanıt gövdesine parametre Ekle](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
 
    **Gövde'niz** şu örnekteki gibi görünmelidir:
 
-   ![Parametreli yanıt gövdesi](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+   ![Parametreli örnek yanıt gövdesi](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. Mantıksal uygulamanızı kaydedin. 
 
@@ -194,7 +194,7 @@ Tüm JSON şeması aşağıda verilmiştir:
 
 İstekleri alabilen diğer mantıksal uygulamaları ekleyerek mantıksal uygulamanıza iş akışlarını iç içe yerleştirebilirsiniz. Bu mantıksal uygulamaları eklemek için, tetikleyicinizin **Azure Logic Apps bir Logic Apps iş akışı eylemi seçin** . Daha sonra uygun Logic Apps arasından seçim yapabilirsiniz.
 
-![Başka bir mantıksal uygulama ekleyin](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+![Geçerli mantıksal uygulamanın içinde iç içe mantıksal uygulama](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
 ## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>HTTP uç noktaları aracılığıyla mantıksal uygulamaları çağırma veya tetikleme
 
@@ -220,7 +220,7 @@ Gelen bir istekten gelen çıktıyı almak için `@triggerOutputs()` işlevini k
 }
 ```
 
-@No__t_0 özelliğine özel olarak erişmek için `@triggerBody()` kısayolunu kullanabilirsiniz.
+`body` özelliğine özel olarak erişmek için `@triggerBody()` kısayolunu kullanabilirsiniz.
 
 ## <a name="respond-to-requests"></a>İsteklere yanıt verme
 
@@ -233,7 +233,7 @@ Gelen bir istekten gelen çıktıyı almak için `@triggerOutputs()` işlevini k
 
 Yanıt gövdesine birden fazla üstbilgi ve herhangi bir içerik türü dahil edebilirsiniz. Örnek yanıtta, üst bilgi yanıtın `application/json` içerik türüne sahip olduğunu belirtir. gövde, daha önce **istek** tetikleyicisi IÇIN güncelleştirilmiş JSON şemasına göre `title` ve `name` içerir.
 
-![HTTP yanıt eylemi](./media/logic-apps-http-endpoint/response.png)
+![HTTP yanıtı eylemi için yanıt içeriği sağlama](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 Yanıtlar şu özelliklere sahiptir:
 
@@ -297,7 +297,7 @@ Y: Bu değişiklikler hakkında bir özet aşağıda verilmiştir:
 | Temel veya OAuth kimlik doğrulamasını yapılandırma |API Management aracılığıyla |
 | HTTP yöntemini yapılandırma |**Gelişmiş seçenekleri göster**altında bir http yöntemi seçin |
 | Göreli yolu Yapılandır |**Gelişmiş seçenekleri göster**altında göreli bir yol ekleyin |
-| @No__t_0 üzerinden gelen gövdeye başvur |@No__t_0 ile başvuru |
+| `@triggerOutputs().body.Content` üzerinden gelen gövdeye başvur |`@triggerOutputs().body` ile başvuru |
 | Http dinleyicisinde **http yanıtı gönderme** eylemi |**Http Isteğine Yanıtla** ' ya tıklayın (API uygulaması gerekmez) |
 
 ## <a name="next-steps"></a>Sonraki adımlar

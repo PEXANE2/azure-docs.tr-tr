@@ -7,19 +7,19 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/29/2019
-ms.openlocfilehash: b01b83ab0e673254da19888210d9678e313acca2
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/27/2019
+ms.openlocfilehash: 03554ed6cbfc2edf9d08f0928484a805acb4607e
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949851"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044430"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital TWINS yönetim API 'Lerini kullanma
 
 Azure Digital TWINS yönetim API 'Leri, IoT uygulamalarınız için güçlü işlevler sağlar. Bu makalede, API yapısına nasıl gidebileceğiniz gösterilmektedir.  
 
-## <a name="api-summary"></a>API Özeti
+## <a name="api-summary"></a>API özeti
 
 Aşağıdaki listede, dijital TWINS API 'Lerinin bileşenleri gösterilmektedir.
 
@@ -74,16 +74,16 @@ Dijital TWINS API 'Leri, aşağıdaki parametreleri kullanarak uzamsal grafikler
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki listede [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API 'leri aracılığıyla bazı gezintinin örnekleri gösterilmektedir. @No__t-0 ' yer tutucusunun, `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/` biçimindeki dijital TWINS API 'Lerinin URI 'sine başvurduğunu unutmayın; burada `YOUR_INSTANCE_NAME` Azure dijital TWINS örneğinizin adıdır ve `YOUR_LOCATION`, örneğinizin barındırıldığı bölgedir.
+Aşağıdaki listede [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API 'leri aracılığıyla bazı gezintinin örnekleri gösterilmektedir. Yer tutucunun `YOUR_MANAGEMENT_API_URL`, `YOUR_INSTANCE_NAME` Azure dijital TWINS örneğinizin adı olduğu ve `YOUR_LOCATION` örneğinizin barındırıldığı bölge olan `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`biçimindeki dijital TWINS API 'Lerinin URI 'sine başvurduğunu unutmayın.
 
-- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`, kök alanlara ekli tüm cihazları döndürür.
+- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`, kök alanlara bağlı tüm cihazları döndürür.
 - `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4`, 2, 3 veya 4. düzey alanlara eklenmiş tüm cihazları döndürür.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId`, Myspaceıd 'ye doğrudan bağlı tüm cihazları döndürür.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down`, Myspaceıd veya alt öğelerinden birine bağlı tüm cihazları döndürür.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true`, myspaceıd hariç olmak üzere Myspaceıd 'nin alt öğelerinin ekli tüm cihazları döndürür.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true`, Myspaceıd 'nin hemen alt öğelerine ekli tüm cihazları döndürür.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` Myspaceıd veya alt öğelerinden birine bağlı tüm cihazları döndürür.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` myspaceıd hariç, Myspaceıd 'nin alt öğelerinin ekli tüm cihazları döndürür.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` Myspaceıd 'nin hemen alt öğelerine ekli tüm cihazları döndürür.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true`, Myspaceıd 'nin üst öğelerinden birine bağlı tüm cihazları döndürür.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`, 5 ' ten küçük veya buna eşit olan Myspaceıd 'nin alt öğelerinin ekli tüm cihazları döndürür.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`, en az 5 ' e eşit veya daha küçük olan Myspaceıd 'nin alt öğeleri eklenmiş tüm cihazları döndürür.
 - `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true`, Myspaceıd ile aynı düzeydeki boşluklara ekli tüm cihazları döndürür.
 
 
@@ -104,11 +104,11 @@ Aşağıdaki listede [/Devices](https://docs.westcentralus.azuresmartspaces.net/
 Aşağıdaki listede geçerli OData sözdizimi olan birkaç sorgu gösterilmektedir:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
-- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
-- `YOUR_MANAGEMENT_API_URL/propertykeys?$filter=Scope ne ‘Spaces’`
-- `YOUR_MANAGEMENT_API_URL/resources?$filter=Size gt ‘M’`
-- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
-- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
+- `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,'space')`
+- `YOUR_MANAGEMENT_API_URL/devices?$filter=TypeId eq 2`
+- `YOUR_MANAGEMENT_API_URL/resources?$filter=StatusId eq 2`
+- `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
+- `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

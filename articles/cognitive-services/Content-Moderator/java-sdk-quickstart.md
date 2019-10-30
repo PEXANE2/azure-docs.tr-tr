@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 61149392368fc34fe388709dd5867250f3542fbc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935998"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044086"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Hızlı başlangıç: Java için Content Moderator istemci kitaplığı
 
@@ -125,14 +125,14 @@ Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik ana
 
 ### <a name="get-images"></a>Görüntüleri al
 
-Projenizin **src/Main/** klasöründe bir **kaynak** klasörü oluşturun ve bu klasöre gidin. Ardından, *ımagefiles. txt*yeni bir metin dosyası oluşturun. Bu dosyada, her satırda bir URL&mdash;analiz edilecek görüntülerin URL 'Lerini eklersiniz. Aşağıdaki örnek içeriği kullanabilirsiniz:
+Projenizin **src/Main/** klasöründe bir **kaynak** klasörü oluşturun ve bu klasöre gidin. Ardından, *ımagefiles. txt*yeni bir metin dosyası oluşturun. Bu dosyada, her satırda bir URL&mdash;analiz edilecek görüntülerin URL 'Lerini eklersiniz. Aşağıdaki örnek görüntüleri kullanabilirsiniz:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="use-helper-class"></a>Yardımcı sınıfı kullan
+### <a name="define-helper-class"></a>Yardımcı sınıfı tanımla
 
 Ardından, *contentmoderatorquickstart. Java* dosyanızda, aşağıdaki sınıf tanımını **contentmoderatorquickstart** sınıfına ekleyin. Bu iç sınıf daha sonra görüntü denetleme sürecinde kullanılacaktır.
 

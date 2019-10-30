@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757357"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044047"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
@@ -68,6 +68,6 @@ Veya kodunuzda denetleme API 'Lerini kullanmaya başlamak için sonraki adımlar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kendi uygulamanızda denetleme API 'Lerinin nasıl kullanılacağını öğrenin.
-- Görüntü denetlemeyi uygulayın. Resimleri taramak ve Etiketler, güvenirlik puanları ve diğer ayıklanan bilgileri kullanarak olası yetişkinlere yönelik içeriği algılamak için [API konsolunu](try-image-api.md) veya [ C# hızlı](image-moderation-quickstart-dotnet.md) başlangıcı kullanın.
-- Metin denetlemeyi uygulayın. [API konsolunu](try-text-api.md) kullanın veya olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [ C# hızlı](text-moderation-quickstart-dotnet.md) başlangıcı kullanın.
+- Görüntü denetlemeyi uygulayın. Resimleri taramak ve Etiketler, güven puanlarını ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkinlere yönelik içeriği algılamak için [API konsolunu](try-image-api.md) kullanın veya [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını izleyin.
+- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını kullanın.
 - Video denetlemeyi uygulayın. Videoları taramak ve olası yetişkinlere ve kcy içeriğini algılamak için [video denetleme nasıl yapılır Kılavuzu ' nu C# ](video-moderation-api.md) izleyin. 

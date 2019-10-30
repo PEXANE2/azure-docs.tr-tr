@@ -1,6 +1,6 @@
 ---
-title: Fiyatlandırma & faturalandırma-Azure Logic Apps | Microsoft Docs
-description: Fiyatlandırma ve faturalandırma Azure Logic Apps için nasıl çalıştığını öğrenin
+title: Fiyatlandırma & faturalandırma modeli-Azure Logic Apps
+description: Fiyatlandırma ve faturalandırma modelinin Azure Logic Apps için nasıl çalıştığı hakkında genel bakış
 services: logic-apps
 ms.service: logic-apps
 ms.suite: logic-apps
@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f4651e40a0f4269dc5c8a2fcd4c0e25c1e9bbb3c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099402"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045101"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -51,13 +51,13 @@ Bir [ *tümleştirme hizmeti ortamı* (ISE)](../logic-apps/connect-virtual-netwo
 
 * [Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'nuzu temel alarak, ek ücret ödemeden [tümleştirme hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı:
 
-  * **PREMIUM SKU**: Tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
+  * **PREMIUM SKU**: tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
 
-  * **Geliştirici SKU 'su**: Tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
+  * **Geliştirici SKU 'su**: tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
 
   Her ıSE SKU 'SU 5 Toplam tümleştirme hesabıyla sınırlıdır. Ek bir maliyet için, ıSE SKU 'nuzu temel alan daha fazla tümleştirme hesabına sahip olabilirsiniz:
 
-  * **PREMIUM SKU**: En fazla dört standart hesap. Ücretsiz veya temel hesap yok.
+  * **PREMIUM SKU**: en fazla dört standart hesap. Ücretsiz veya temel hesap yok.
 
   * **Geliştirici SKU 'su**: 4 ' e kadar standart hesap veya toplam 5 Standart hesap. Temel hesap yok.
 
@@ -119,11 +119,11 @@ Azure Logic Apps, ücretsiz, temel ve standart tümleştirme hesapları sunmakta
 
 Ücretsiz, temel veya standart tümleştirme hesabı arasından seçim yapmak için bu kullanım örneği açıklamalarını gözden geçirin:
 
-* **Ücretsiz**: Araştırmacı senaryolar denemek istediğinizde, üretim senaryolarını değil
+* **Ücretsiz**: bir üretim senaryosu değil keşif senaryoları denemek istediğinizde
 
-* **Temel**: Yalnızca ileti işlemenin veya daha büyük bir iş varlığıyla ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmesini istiyorsanız
+* **Temel**: yalnızca ileti işleme yapmak veya daha büyük bir iş varlığıyla bir ticari iş ortağı ilişkisine sahip küçük bir iş ortağı olarak hareket etmek istediğinizde
 
-* **Standart**: Daha karmaşık B2B ilişkilerine sahip olduğunuzda ve yönetmeniz gereken varlıkların sayısı arttıkça
+* **Standart**: daha karmaşık B2B ilişkilerine sahip olduğunuzda ve yönetmeniz gereken varlıkların sayısı arttıkça
 
 <a name="data-retention"></a>
 
@@ -162,7 +162,7 @@ Mantıksal uygulamanızın depolama tüketimini izlemenize yardımcı olması i�
 
 1. **Mantıksal uygulama çalıştırma ayrıntıları** bölmesinde, eylemler tablosunda, her eylemin durumunu ve süresini listeleyen, görüntülemek istediğiniz eylemi seçin.
 
-1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve **çıkış bağlantısı**altında sırasıyla görüntülenecek olan giriş ve çıkış boyutlarını bulun .
+1. **Mantıksal uygulama eylemi** bölmesinde, bu eylemin giriş ve **çıkış bağlantısı**altında sırasıyla görüntülenecek olan **giriş ve çıkış** boyutlarını bulun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

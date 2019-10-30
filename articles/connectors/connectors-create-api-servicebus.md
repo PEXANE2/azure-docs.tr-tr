@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679194"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024301"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -79,7 +79,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
    Tüm Service Bus Tetikleyicileri *uzun yoklama* tetikleyicilerinde bulunur. Bu açıklama, tetikleyicinin tetiklendiği anlamına gelir, tetikleyici tüm iletileri işler ve sonra sıra veya konu aboneliğinde daha fazla ileti görünmesi için 30 saniye bekler. 30 saniye içinde herhangi bir ileti görünmezse, tetikleyici çalıştırması atlanır. Aksi takdirde tetikleyici, kuyruk veya konu aboneliği boş olana kadar iletileri okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirtilen yinelenme aralığına göre belirlenir.
 
-   Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
+   Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya daha fazla ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
 
 1. Tetikleyiciniz ilk kez Service Bus ad alanına bağlanıyorsa, mantıksal uygulama Tasarımcısı sizden bağlantı bilgilerini isterse, bu adımları izleyin.
 

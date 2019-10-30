@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428047"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053909"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -38,7 +38,7 @@ Azure SQL veritabanı 'ndaki hiper ölçek hizmeti katmanı aşağıdaki ek öze
 
 - 100 TB 'a kadar veritabanı boyutu desteği
 - İşlem kaynaklarında GÇ etkisi olmayan, neredeyse anlık veritabanı yedeklemeleri (Azure Blob depolamada depolanan dosya anlık görüntülerine göre)  
-- Kısa veritabanı geri yüklemeleri (dosya anlık görüntülerini temel alarak) saatler veya günler yerine dakikalar içinde (veri işlemi boyutu değil)
+- Kısa bir süre içinde (dosya anlık görüntülerine göre), saat veya gün yerine dakikalar içinde hızlı veritabanı geri yüklemeleri (veri işleme boyutu değil)
 - Veri birimlerinden bağımsız olarak daha yüksek günlük verimlilik ve daha hızlı işlem işleme sürelerinden dolayı daha yüksek genel performans
 - Hızlı genişleme-okuma iş yükünüzü boşaltma ve sık erişimli olarak kullanım için bir veya daha fazla salt okuma düğümü sağlayabilirsiniz
 - Hızlı ölçek artırma-sabit zamanlı olarak, yoğun iş yüklerinizi uygun olduğunda ve gerektiğinde işlem kaynaklarını geriye doğru ölçeklendirerek, işlem kaynaklarını ölçeklendirebilmeniz gerekir.
@@ -114,7 +114,7 @@ Ek salt okuma işlem düğümlerini hızlı bir şekilde artırma/azaltma özell
 
 [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) veya [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)kullanılarak bir hiper ölçek veritabanı oluşturulabilir. Hiper ölçekli veritabanları yalnızca [sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md)kullanılarak kullanılabilir.
 
-Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. @No__t-0 ifadesinde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) bakın.
+Aşağıdaki T-SQL komutu, hiper ölçekli bir veritabanı oluşturur. `CREATE DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir. Geçerli hizmet amaçları listesinin [kaynak sınırlarına](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) bakın.
 
 ```sql
 -- Create a HyperScale Database
@@ -127,7 +127,7 @@ Bu, 4 çekirdek içeren 5. nesil donanımında bir hiper ölçek veritabanı olu
 
 Mevcut Azure SQL veritabanlarınızı [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) veya [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)kullanarak hiper ölçeğe taşıyabilirsiniz. Bu sırada, tek yönlü geçişdir. Verileri dışa ve içe aktararak farklı bir hizmet katmanına Hyperscale 'den başka bir hizmet katmanına taşıyamazsınız. Kavram provaları (POCs) için üretim veritabanlarınızın bir kopyasını oluşturmanızı ve kopyayı hiper ölçeğe geçirmeyi öneririz. Mevcut bir Azure SQL veritabanının hiper ölçek katmanına geçirilmesi veri işleme boyutudur.
 
-Aşağıdaki T-SQL komutu bir veritabanını hiper ölçek hizmeti katmanına taşıdır. @No__t-0 ifadesinde hem sürüm hem de hizmet hedefini belirtmeniz gerekir.
+Aşağıdaki T-SQL komutu bir veritabanını hiper ölçek hizmeti katmanına taşıdır. `ALTER DATABASE` bildiriminde hem sürüm hem de hizmet hedefini belirtmeniz gerekir.
 
 ```sql
 -- Alter a database to make it a HyperScale Database
@@ -137,7 +137,7 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Hiper ölçekli bir veritabanının okuma ölçeğinde bir çoğaltmasını bağlama
 
-Hiper ölçekli veritabanlarında, istemci tarafından belirtilen bağlantı dizesindeki `ApplicationIntent` bağımsız değişkeni bağlantının yazma çoğaltmasına mı yoksa salt bir ikincil çoğaltmayla mi yönlendirildiğini belirler. @No__t-0 ' ı `READONLY` olarak ve veritabanının ikincil bir çoğaltması yoksa, bağlantı birincil çoğaltmaya yönlendirilir ve varsayılan olarak `ReadWrite` davranışına ayarlanır.
+Hiper ölçekli veritabanlarında, istemci tarafından belirtilen bağlantı dizesindeki `ApplicationIntent` bağımsız değişkeni bağlantının yazma çoğaltmasına mı yoksa salt bir ikincil çoğaltmayla mi yönlendirildiğini belirler. `ApplicationIntent` `READONLY` ve veritabanının ikincil bir çoğaltması yoksa, bağlantı birincil çoğaltmaya yönlendirilir ve varsayılan olarak `ReadWrite` davranışa ayarlanır.
 
 ```cmd
 -- Connection string with application intent

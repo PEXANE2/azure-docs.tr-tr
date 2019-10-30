@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta küme oluşturulduktan sonra ınvalidnetworkconfigurationerrorcode
+title: Invalidnetworkconfigurationerrorcode hatası-Azure HDInsight
 description: Azure HDInsight 'ta ınvalidnetworkconfigurationerrorcode ile başarısız küme oluşturmaları için çeşitli nedenler
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: a6b207086325018deb63383a0775af8dfe195ac4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5b8d031af9dbe6019d71e2a1caa3d3f25d4024ea
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091715"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044461"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight 'ta küme oluşturma işlemi ınvalidnetworkconfigurationerrorcode ile başarısız oluyor
 
 Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
-"Sanal ağ yapılandırması HDInsight `InvalidNetworkConfigurationErrorCode` gereksinimi ile uyumlu değil" açıklamasıyla hata kodu görürseniz, genellikle kümenizin [sanal ağ yapılandırmasıyla](../hdinsight-plan-virtual-network-deployment.md) ilgili bir sorun olduğunu gösterir. Hata açıklamasının geri kalanı temel alınarak, sorununuzu çözmek için aşağıdaki bölümleri izleyin.
+"Sanal ağ yapılandırması HDInsight gereksinimi ile uyumlu değil" açıklamasıyla hata kodu `InvalidNetworkConfigurationErrorCode` görürseniz, genellikle kümenizin [sanal ağ yapılandırmasıyla](../hdinsight-plan-virtual-network-deployment.md) ilgili bir sorun olduğunu gösterir. Hata açıklamasının geri kalanı temel alınarak, sorununuzu çözmek için aşağıdaki bölümleri izleyin.
 
 ## <a name="hostname-resolution-failed"></a>"Konak adı çözümlemesi başarısız oldu"
 
@@ -30,13 +30,13 @@ Hata açıklaması "konak adı çözümlemesi başarısız oldu" öğesini içer
 
 Bu hata, özel DNS yapılandırmasıyla ilgili bir sorunu işaret eder. Bir sanal ağ içindeki DNS sunucuları DNS sorgularını, bu sanal ağdaki konak adlarını çözümlemek için Azure 'un özyinelemeli çözümleyicilerine iletebilir (Ayrıntılar için bkz. [sanal ağlardaki ad çözümlemesi](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ). Azure 'un özyinelemeli çözümleyicilerine erişimi, sanal IP 168.63.129.16 aracılığıyla sağlanır. Bu IP 'ye yalnızca Azure VM 'lerinden erişilebilir. Bu nedenle, bir Onpred DNS sunucusu kullanıyorsanız veya DNS sunucunuz, kümenin vNet 'in parçası olmayan bir Azure VM 'se çalışmaz.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
-1. Kümenin parçası olan VM 'ye SSH ekleyin ve komutunu `hostname -f`çalıştırın. Bu, konağın tam etki alanı adını (aşağıdaki yönergelerde olduğu `<host_fqdn>` şekilde adlandırılır) döndürür.
+1. Kümenin parçası olan VM 'ye SSH ve `hostname -f`komutunu çalıştırın. Bu, konağın tam etki alanı adını (aşağıdaki yönergelerde `<host_fqdn>` olarak adlandırılır) döndürür.
 
-1. Sonra, komutunu `nslookup <host_fqdn>` çalıştırın (örneğin, `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Bu komut, adı bir IP adresi olarak çözümlerse, DNS sunucunuzun doğru şekilde çalıştığı anlamına gelir. Bu durumda, HDInsight ile bir destek talebi oluşturup sorununuzu araştıracağız. Destek durumda, yürüttüğünüz sorun giderme adımlarını ekleyin. Bu, sorunu daha hızlı çözmemize yardımcı olur.
+1. Sonra, komut `nslookup <host_fqdn>` çalıştırın (örneğin, `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Bu komut, adı bir IP adresi olarak çözümlerse, DNS sunucunuzun doğru şekilde çalıştığı anlamına gelir. Bu durumda, HDInsight ile bir destek talebi oluşturup sorununuzu araştıracağız. Destek durumda, yürüttüğünüz sorun giderme adımlarını ekleyin. Bu, sorunu daha hızlı çözmemize yardımcı olur.
 
-1. Yukarıdaki komut bir IP adresi döndürmezse (örneğin, `nslookup <host_fqdn> 168.63.129.16` `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`) öğesini çalıştırın. Bu komut IP 'yi çözümleyebilse, DNS sunucunuz sorguyu Azure 'un DNS 'sine iletmediği ya da kümeyle aynı vNet 'in parçası olan bir VM olmadığı anlamına gelir.
+1. Yukarıdaki komut bir IP adresi döndürmezse `nslookup <host_fqdn> 168.63.129.16` çalıştırın (örneğin, `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Bu komut IP 'yi çözümleyebilse, DNS sunucunuz sorguyu Azure 'un DNS 'sine iletmediği ya da kümeyle aynı vNet 'in parçası olan bir VM olmadığı anlamına gelir.
 
 1. Kümenin vNet 'inde özel bir DNS sunucusu işlevi görecek bir Azure VM 'iniz yoksa, önce bunu eklemeniz gerekir. VNet 'te, DNS ileticisi olarak yapılandırılacak bir VM oluşturun.
 
@@ -56,7 +56,7 @@ Hata açıklaması "Azure depolama hesabına bağlanılamadı" veya "Azure SQL '
 
 Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişime izin vermek için tüm IP 'Lere giden bağlantılara izin vermemiz gerekiyor. Tam çözümleme adımları, bir ağ güvenlik grubu (NSG) veya Kullanıcı tanımlı kurallar (UDR) ayarlamanıza bağlı olarak değişir. Bu yapılandırmalara ilişkin ayrıntılar için [ağ güvenlik grupları ve Kullanıcı tanımlı rotalar Ile HDInsight ile ağ trafiğini denetleme](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) bölümüne bakın.
 
-### <a name="resolution"></a>Çözüm
+### <a name="resolution"></a>Çözünürlük
 
 * Kümeniz bir [ağ güvenlik grubu (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)kullanıyorsa.
 
@@ -76,6 +76,6 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 * Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı: yanıtlar, destek ve uzmanlar.
 
 * Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

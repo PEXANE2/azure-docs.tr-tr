@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 2ed488f5f4380c44772d63d208e2c7a68934aca8
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5b6543326fe7f44bc75545894a1d2a1d324be0e8
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757913"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023985"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Öğretici: Gelişmiş yapılandırma seçenekleriyle bir Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -88,7 +88,11 @@ Aşağıdaki DNS adı kısıtlamaları da geçerlidir:
 Azure AD DS örneği oluşturmak için Azure portal *temel bilgiler* penceresindeki alanları doldurun:
 
 1. Yönetilen etki alanınız için bir **DNS etki alanı adı** girin, önceki noktaları dikkate alarak.
-1. Yönetilen etki alanının oluşturulması gereken Azure **konumunu** seçin.
+1. Yönetilen etki alanının oluşturulması gereken Azure **konumunu** seçin. Kullanılabilirlik Alanları destekleyen bir bölge seçerseniz, Azure AD DS kaynakları daha fazla artıklık için bölgelere dağıtılır.
+
+    Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır.
+
+    Azure AD DS bölgeler arasında dağıtılacak şekilde yapılandırmanız için bir şey yoktur. Azure platformu, kaynakların bölge dağılımını otomatik olarak işler. Daha fazla bilgi edinmek ve bölge kullanılabilirliğini görmek için bkz. [Azure 'da kullanılabilirlik alanları nedir?][availability-zones]
 
     ![Azure AD Domain Services örneği için temel ayarları yapılandırma](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -167,7 +171,7 @@ Sihirbazın **Özet** sayfasında, yönetilen etki alanının yapılandırma aya
 
     ![Başarılı bir şekilde sağlandıktan sonra etki alanı Hizmetleri durumu](./media/tutorial-create-instance-advanced/successfully-provisioned.png)
 
-Azure AD DS, sağlama işlemi sırasında, dizininizde *etki alanı denetleyicisi Hizmetleri* ve *AzureActiveDirectoryDomainControllerServices* adlı iki kurumsal uygulama oluşturur. Bu kurumsal uygulamaların, yönetilen etki alanınızı hizmetine yönelik olması gerekir. Bu uygulamaların herhangi bir zamanda silinmediği zorunludur.
+Yönetilen etki alanı, Azure AD kiracınızla ilişkilendirilir. Azure AD DS, sağlama işlemi sırasında, Azure AD kiracısında *etki alanı denetleyicisi Hizmetleri* ve *AzureActiveDirectoryDomainControllerServices* adlı iki kurumsal uygulama oluşturur. Bu kurumsal uygulamaların, yönetilen etki alanınızı hizmetine yönelik olması gerekir. Bu uygulamaları silmeyin.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Azure sanal ağı için DNS ayarlarını güncelleştirme
 
@@ -202,7 +206,7 @@ Kullanıcının parolasını sıfırlayabilmesi için Azure AD kiracısı 'nin [
 
 Yalnızca bulutta bulunan bir kullanıcının parolasını değiştirmek için, kullanıcının aşağıdaki adımları tamamlaması gerekir:
 
-1. [@No__t_1](https://myapps.microsoft.com)ADRESINDEKI Azure AD erişim paneli sayfasına gidin.
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com)ADRESINDEKI Azure AD erişim paneli sayfasına gidin.
 1. Sağ üst köşede adınızı seçin, sonra açılır menüden **profil** ' i seçin.
 
     ![Profil seçme](./media/tutorial-create-instance-advanced/select-profile.png)
@@ -238,6 +242,7 @@ Bu yönetilen etki alanını işlem içinde görmek için bir sanal makineyi olu
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

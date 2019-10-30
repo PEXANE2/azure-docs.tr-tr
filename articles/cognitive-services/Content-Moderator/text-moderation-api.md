@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757247"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043958"
 ---
 # <a name="learn-text-moderation-concepts"></a>Metin denetleme kavramlarını öğrenin
 
@@ -184,4 +184,4 @@ Content Moderator, özel terim listelerini yönetmeye yönelik işlemler içeren
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Metin denetleme API konsolunun](try-text-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, Visual Studio ve hakkında bilgi sahibiyseniz, [metin denetimi .net hızlı](text-moderation-quickstart-dotnet.md) başlangıcı ' C#na göz atın.
+[Metin denetleme API konsolunun](try-text-api.md) sürücüsünü test edin ve REST API kod örneklerini kullanın. Ayrıca, Visual Studio ve C#hakkında bilgi sahibiyseniz, [.NET SDK hızlı başlangıç](dotnet-sdk-quickstart.md) 'nin metin denetleme bölümüne göz atın.

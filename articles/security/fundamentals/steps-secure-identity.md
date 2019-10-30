@@ -8,16 +8,16 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129309"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053079"
 ---
-# <a name="five-steps-to-securing-your-identity-infrastructure"></a>Beş adımda kimlik altyapınızın güvenliğini sağlama
+# <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
 Bu belgeyi okuyorsanız güvenliğin önemini farkındayız. Büyük olasılıkla kuruluşunuzun güvenliğini sağlama sorumluluğunu zaten taşıyor olabilirsiniz. Diğerlerinin güvenliğin önemini ikna etmeniz gerekiyorsa, en son [Microsoft Güvenlik Zekası raporunu](https://go.microsoft.com/fwlink/p/?linkid=2073747)okumak için bunları gönderin.
 
@@ -31,18 +31,23 @@ Bu denetim listesi, aşağıdaki adımları izleyerek kuruluşunuzu hemen koruma
 * Denetim ve izleme hakkında farkınızı artırın.
 * Kendi kendine yardım ile daha öngörülebilir ve son kullanıcı güvenliğini sağlayın.
 
+Bu denetim listesini okurken hangi özellik ve adımların tamamlandığını izlemediğinizden emin olun.
+
 > [!NOTE]
 > Bu belgedeki önerilerin birçoğu yalnızca kimlik sağlayıcısı olarak Azure Active Directory kullanmak üzere yapılandırılan uygulamalar için geçerlidir. Uygulamaları çoklu oturum açma için yapılandırmak, kimlik bilgileri ilkelerinin, tehdit algılama, denetim, günlük kaydı ve diğer özelliklerin bu uygulamalara eklenmesi için faydaların avantajlarından yararlanmanızı sağlar. [Azure Active Directory üzerinden çoklu oturum açma](../../active-directory/manage-apps/configure-single-sign-on-portal.md) , tüm bu önerilerin temel aldığı temelidir.
 
-Bu belgedeki öneriler, Azure AD kiracının kimlik güvenlik yapılandırmasının otomatik değerlendirmesi olan [kimlik güvenli puanı](../../active-directory/fundamentals/identity-secure-score.md)ile hizalanır. Kuruluşlar, Azure AD portalındaki kimlik güvenli puanı sayfasını kullanarak, güvenlik için geçerli Microsoft en iyi yöntemlerini izlediklerinden emin olmak üzere geçerli güvenlik yapılandırmasındaki boşlukları bulabilir. Her öneriyi güvenli skor sayfasında uygulamak puanınızı artırır ve ilerleme durumunu izlemenize olanak tanır ve uygulamanızı diğer benzer büyüklükte kuruluşlara veya sektöre karşı karşılaştırmanıza yardımcı olur.
+Bu belgedeki öneriler, Azure AD kiracının kimlik güvenlik yapılandırmasının otomatik değerlendirmesi olan [kimlik güvenli puanı](../../active-directory/fundamentals/identity-secure-score.md)ile hizalanır. Kuruluşlar, Azure AD portalındaki kimlik güvenli puanı sayfasını kullanarak, güvenlik için geçerli Microsoft [en iyi yöntemlerini](identity-management-best-practices.md) izlediklerinden emin olmak üzere geçerli güvenlik yapılandırmasındaki boşlukları bulabilir. Her öneriyi güvenli skor sayfasında uygulamak puanınızı artırır ve ilerleme durumunu izlemenize olanak tanır ve uygulamanızı diğer benzer büyüklükte kuruluşlara veya sektöre karşı karşılaştırmanıza yardımcı olur.
 
-![Kimlik Güvenliği Puanı](./media/steps-secure-identity/azure-ad-sec-steps0.png)
+![Kimlik güvenli puanı](./media/steps-secure-identity/azure-ad-sec-steps0.png)
+
+> [!NOTE]
+> Burada açıklanan özelliklerin birçoğu Azure AD Premium bir abonelik gerektirir, bazıları ücretsizdir. Daha fazla bilgi için lütfen [Azure Active Directory fiyatlandırımızı](https://azure.microsoft.com/pricing/details/active-directory/) ve [Azure AD Dağıtım denetim listesini](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2) gözden geçirin.
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Başlamadan önce: MFA ile ayrıcalıklı hesapları koruma
 
 Bu denetim listesine başlamadan önce, bu denetim listesini okurken güvenliği ihlal ettiğinizden emin olun. Önce ayrıcalıklı hesaplarınızı korumanız gerekir.
 
-Ayrıcalıklı hesapların denetimini alan saldırganlar çok fazla zarar verebilir, bu yüzden öncelikle bu hesapların korunması önemlidir. Ana [hat korumasını](../../active-directory/conditional-access/baseline-protection.md)kullanarak kuruluşunuzdaki tüm yöneticiler için [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) etkinleştirin ve gerekli kılın. MFA uygulamadıysanız şimdi yapın! Bu önemlidir.
+Ayrıcalıklı hesapların denetimini alan saldırganlar çok fazla zarar verebilir, bu yüzden öncelikle bu hesapların korunması önemlidir. [Azure AD güvenlik varsayılanlarını](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) veya [koşullu erişim](../../active-directory/conditional-access/plan-conditional-access.md)'i kullanarak kuruluşunuzdaki tüm yöneticiler için [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) özelliğini etkinleştirin ve gerekli kılın. MFA uygulamadıysanız şimdi yapın! Bu önemlidir.
 
 Tüm ayarlar mı? Denetim listesini kullanmaya başlayalım.
 
@@ -51,9 +56,11 @@ Tüm ayarlar mı? Denetim listesini kullanmaya başlayalım.
 Çoğu kurumsal güvenlik ihlali, parola spreyi, ihlal yürütme veya kimlik avı gibi birçok yöntemden biriyle güvenliği aşılmış bir hesapla yapılır. Bu videoda bu saldırılar hakkında daha fazla bilgi edinin (45 dk):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-### <a name="make-sure-your-organization-use-strong-authentication"></a>Kuruluşunuzun güçlü kimlik doğrulaması kullanmasını sağlayın
+### <a name="make-sure-your-organization-uses-strong-authentication"></a>Kuruluşunuzun güçlü kimlik doğrulaması kullandığından emin olun
 
 Tahmin edilen parola sıklığı, çok kötü amaçlı yazılımlara karşı koruma veya yeniden kullanım için, parolayı bir güçlü kimlik bilgisi biçimiyle yedeklemeniz kritik öneme sahiptir. [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md)hakkında daha fazla bilgi edinin.
+
+Temel düzeyde kimlik güvenliğini kolayca etkinleştirmek için [Azure AD güvenlik Varsayılanları](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)ile tek tıklamayla etkinleştirme ' yi kullanabilirsiniz. Güvenlik Varsayılanları, bir Kiracıdaki tüm kullanıcılar için Azure MFA 'yı uygular ve eski protokollerdeki oturum açma işlemlerini kiracı genelinde engeller.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Yaygın olarak saldırıya uğratan parolaları başlatın ve geleneksel karmaşıklığı ve süre sonu kurallarını devre dışı bırakın.
 
@@ -74,7 +81,7 @@ Azure AD 'de doğrudan kimlik oluşturursanız, kullanıcıların kullanıcılar
 Kuruluşunuz doğrudan kimlik doğrulama veya Federasyon ile karma kimlik çözümü kullanıyorsa, aşağıdaki iki nedenden dolayı Parola karması eşitlemesini etkinleştirmelisiniz:
 
 * Azure AD yönetiminde [sızdırılan kimlik bilgilerine sahip kullanıcılar](../../active-directory/reports-monitoring/concept-risk-events.md) , "koyu Web" üzerinde sunulan Kullanıcı adı ve parola çiftleri hakkında sizi uyarır. Daha sonra ihlal edilen üçüncü taraf sitelerde kimlik avı, kötü amaçlı yazılım ve parola yeniden kullanımı aracılığıyla inanılmaz bir parola miktarı sızdırıldı. Microsoft bu sızdırılan kimlik bilgilerinin birçoğunu bulur ve bu raporda, kuruluşunuzda kimlik bilgileriyle eşleşiyorsa, ancak yalnızca [parola karma eşitlemesini etkinleştirdiğinizde](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)size bildirir!
-* Şirket içi kesinti durumunda (örneğin, fidye yazılımı saldırısında), [Parola karması eşitlemesini kullanarak bulut kimlik doğrulamasını](choose-ad-authn.md)kullanmaya geçebilirsiniz. Bu yedekleme kimlik doğrulama yöntemi, Office 365 dahil Azure Active Directory kimlik doğrulaması için yapılandırılan uygulamalara erişmeye devam etmeyi sağlar. Bu durumda BT çalışanları şirket içi kesinti çözümlenene kadar verileri paylaşmak için kişisel e-posta hesapları için gerekli olmayacaktır.
+* Şirket içi kesinti durumunda (örneğin, fidye yazılımı saldırısında), [Parola karması eşitlemesini kullanarak bulut kimlik doğrulamasını](choose-ad-authn.md)kullanmaya geçebilirsiniz. Bu yedekleme kimlik doğrulama yöntemi, Office 365 dahil Azure Active Directory kimlik doğrulaması için yapılandırılan uygulamalara erişmeye devam etmeyi sağlar. Bu durumda, şirket içi kesinti çözümlenene kadar BT personelinin, verileri paylaşmak için kişisel e-posta hesapları çare olması gerekmez.
 
 [Parola karması eşitleme](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) 'nin nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
@@ -99,7 +106,7 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 1. [AD FS kullanıyorsanız, eski kimlik doğrulamasını](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)engelleyin.
 2. [SharePoint Online ve Exchange Online 'ı modern kimlik doğrulaması kullanacak şekilde](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md)ayarlayın.
-3. [Eski kimlik doğrulamasını engellemek Için koşullu erişim ilkelerini](../../active-directory/conditional-access/conditions.md)kullanın.
+3. Azure AD Premium sahipseniz, eski kimlik doğrulamasını engellemek için [koşullu erişim ilkelerini](../../active-directory/conditional-access/conditions.md) kullanın, aksi takdırde [Azure AD güvenlik varsayılanlarını](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)kullanın.
 
 ### <a name="block-invalid-authentication-entry-points"></a>Geçersiz kimlik doğrulama giriş noktalarını engelle
 
@@ -107,7 +114,7 @@ Azure AD ile kimlik doğrulaması yapmak ve şirket verilerine erişmek için ke
 
 ### <a name="block-end-user-consent"></a>Son Kullanıcı onayını engelle
 
-Varsayılan olarak, Azure AD 'deki tüm kullanıcılara, OAuth 2,0 'den yararlanan uygulamalar ve şirket verilerine erişmek için Microsoft Identity Grant [Framework](../../active-directory/develop/consent-framework.md) izinleri verilebilir. Tebrikler, kullanıcıların Microsoft 365 ve Azure ile tümleştirilen faydalı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir. [Tüm gelecek Kullanıcı onay Işlemlerini devre dışı bırakmak](../../active-directory/manage-apps/methods-for-removing-user-access.md) , yüzey alanınızı azaltmanıza ve bu riski azaltmanıza yardımcı olabilir. Son Kullanıcı onayı devre dışı bırakılmışsa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Bu işlevi devre dışı bırakmadan önce, kullanıcıların yeni uygulamalar için yönetici onayını nasıl isteyeceğini anlayabilmesi önerilir; Bunun yapılması, Kullanıcı uyumsuzlukmasını azaltmaya, destek birimini en aza indirmenize ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmadığından emin olmanıza yardımcı olur.
+Varsayılan olarak, Azure AD 'deki tüm kullanıcılara, OAuth 2,0 'den yararlanan uygulamalar ve şirket verilerine erişmek için Microsoft Identity Grant [Framework](../../active-directory/develop/consent-framework.md) izinleri verilebilir. Tebrikler, kullanıcıların Microsoft 365 ve Azure ile tümleştirilen faydalı uygulamaları kolayca almasına izin verirken, bu, kullanılmıyorsa ve izlenmezse bir riski temsil edebilir. [Tüm gelecek Kullanıcı onay Işlemlerini devre dışı bırakmak](../../active-directory/manage-apps/methods-for-removing-user-access.md) , yüzey alanınızı azaltmanıza ve bu riski azaltmanıza yardımcı olabilir. Son Kullanıcı onayı devre dışı bırakılmışsa, önceki onay onayları yine de kabul edilir, ancak gelecekteki tüm onay işlemleri bir yönetici tarafından gerçekleştirilmelidir. Bu işlevi devre dışı bırakmadan önce, kullanıcıların yeni uygulamalar için yönetici onayını nasıl isteyeceğini anlayabilmesi önerilir; Bunun yapılması, Kullanıcı uyumsuzlukmasını azaltmaya, destek birimini en aza indirmenize ve kullanıcıların Azure dışı AD kimlik bilgilerini kullanarak uygulamalara kaydolmayın olmasını sağlamalıdır.
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management Uygula
 
@@ -142,7 +149,7 @@ Oturum açma riski, hesap sahibi dışında birisinin kimliği kullanarak oturum
 
 ## <a name="step-4---increase-your-awareness"></a>4\. adım-tanımayı artırma
 
-Güvenlikle ilgili olayları ve ilgili uyarıları denetleme ve günlüğe kaydetme, etkili bir koruma stratejisinin önemli bileşenleridir. Güvenlik günlükleri ve raporları, size bir elektronik şüpheli etkinlik kaydı sağlar ve ağın denendiği veya başarılı bir şekilde dışarıdan sızma ve iç saldırılar olduğunu gösterebilen desenleri tespit etmenize yardımcı olur. Kullanıcı etkinliğini izlemek, mevzuat uyumluluğunu belgelemek, adli analiz yapmak ve daha fazlasını yapmak için denetimi kullanabilirsiniz. Uyarılar güvenlik olaylarının bildirimleri sağlar.
+Güvenlikle ilgili olayları ve ilgili uyarıları denetleme ve günlüğe kaydetme, etkili bir koruma stratejisinin önemli bileşenleridir. Güvenlik günlükleri ve raporları, size bir elektronik şüpheli etkinlik kaydı sağlar ve ağın denendiği veya başarılı bir şekilde dışarıdan sızma ve iç saldırılar olduğunu gösterebilen desenleri tespit etmenize yardımcı olur. Kullanıcı etkinliğini izlemek, mevzuat uyumluluğu, analiz yapmak ve daha fazlasını yapmak için denetimi kullanabilirsiniz. Uyarılar güvenlik olaylarının bildirimleri sağlar.
 
 ### <a name="monitor-azure-ad"></a>Azure AD 'yi izleme
 
@@ -166,7 +173,7 @@ Azure AD Kimlik Koruması, günlük izlemeniz gereken iki önemli rapor sağlar:
 
 ### <a name="audit-apps-and-consented-permissions"></a>Uygulamaları denetleme ve onaylanan izinler
 
-Kullanıcılar, kendi e-postaları gibi profil bilgilerine ve kullanıcı verilerine erişim elde edilecek, güvenliği aşılmış bir Web sitesine veya uygulamalarına gidiliyor. Kötü amaçlı bir aktör, posta kutusu içeriğini şifrelemek için aldığı onaylı izinleri kullanabilir ve posta kutusu verilerinizi yeniden kazanmak için bir ransoh talep edebilir. Yöneticiler, kullanıcılar tarafından verilen izinleri [gözden geçirmeli ve denetlemelidir](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) .
+Kullanıcılar, e-postaları gibi profil bilgilerine ve kullanıcı verilerine erişim kazanabilmek için güvenliği aşılmış bir Web sitesine veya uygulamalarına gidiliyor olabilir. Kötü amaçlı bir aktör, posta kutusu içeriğini şifrelemek için aldığı onaylı izinleri kullanabilir ve posta kutusu verilerinizi yeniden kazanmak için bir ransoh talep edebilir. Yöneticiler, kullanıcılar tarafından verilen izinleri [gözden geçirmeli ve denetlemelidir](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) .
 
 ## <a name="step-5---enable-end-user-self-help"></a>5\. adım-Son Kullanıcı kendi kendine yardım 'ı etkinleştirme
 
@@ -178,11 +185,11 @@ Azure [self servis parola sıfırlama (SSPR)](../../active-directory/authenticat
 
 ### <a name="implement-self-service-group-management"></a>Self Servis Grup yönetimini uygulama
 
-Azure AD, güvenlik gruplarını ve Office 365 gruplarını kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, BT yöneticileri yerine Grup sahipleri tarafından yönetilebilir. [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md)olarak bilindiğinde, bu özellik, yönetici rolü atanmamış Grup sahiplerinin, isteklerini işlemek üzere yöneticilere bağlı kalmadan grupları oluşturup yönetmesine olanak tanır.
+Azure AD, güvenlik gruplarını ve Office 365 gruplarını kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, BT yöneticileri yerine Grup sahipleri tarafından yönetilebilir. [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md)olarak bilinen bu özellik, yönetim rolü atanmamış Grup sahiplerinin, yöneticilerin isteklerini işlemesini sağlamak için Yöneticiler üzerinde güvenmek zorunda kalmadan grupları oluşturup yönetmesine olanak tanır.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri uygulama
 
-[Azure AD erişim gözden geçirmeleri](../../active-directory/governance/access-reviews-overview.md)sayesinde grup üyeliklerini yönetebilir, kurumsal uygulamalara erişimi ve ayrıcalıklı rol atamalarına, kullanıcılara hiçbir zaman uzun süre erişimi vermediği bir güvenlik standardı bulundurduğunuzdan emin olmak için Bunu yapmanız gerekir.
+[Azure AD erişim gözden geçirmeleri](../../active-directory/governance/access-reviews-overview.md)sayesinde grup üyeliklerini yönetebilir, kurumsal uygulamalara erişimi ve ayrıcalıklı rol atamalarına, kullanıcılara, hiçbir zaman uzun süre erişimi vermediği bir güvenlik standardı bulundurduğunuzdan emin olmak için Bunu yapmanız gerekir.
 
 ## <a name="summary"></a>Özet
 
@@ -197,4 +204,7 @@ Güvenli bir kimlik altyapısının birçok yönü vardır, ancak bu beş adıml
 Kimlik güvenliğini ne kadar ciddi hale getirmek istediğinizi biliyoruz ve bu belgede kuruluşunuz için daha güvenli bir zaman Kılavuzu olması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Önerileri planlamak ve dağıtmak için yardıma ihtiyacınız varsa yardım için [Azure AD proje dağıtım planlarına](https://aka.ms/deploymentplans) bakın.
+
+Tüm bu adımlar tamamlandıysa, Microsoft 'un [kimlik güvenli puanı](../../active-directory/fundamentals/identity-secure-score.md)'nı kullanın. Bu, [en son en iyi uygulamalar](identity-management-best-practices.md) ve güvenlik tehditleri ile güncel tutmaya devam edecektir.

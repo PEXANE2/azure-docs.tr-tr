@@ -7,14 +7,17 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9af8a94953d7893c71cfc413f9259ec8582a8899
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a0bf3b555334b67659975c150711eab02b957c6e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955154"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026608"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azure IoT Central bağlı bir çöp yönetimi uygulaması oluşturmanıza kılavuzluk eder. 
 
 Öğretici şunları yapmayı öğrenirsiniz: 
@@ -45,7 +48,7 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
 
     ![Kuruluş hesabınızı girin](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. Sol gezinti menüsünde **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
+2. Sol bölmeden **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
 
     ![Kamu uygulaması şablonları oluşturun](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
@@ -255,8 +258,8 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla uygulamanızı silin:
 
-1. IoT Central uygulamanızın sol gezinti menüsünden yönetim sekmesini açın. 
-2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
+1. IoT Central uygulamanızın sol bölmesindeki Yönetim sekmesini açın.
+2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın.
 
   
 

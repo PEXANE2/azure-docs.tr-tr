@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process grup yöneticisi görevleri
-description: Bir veri bilimi takım projesindeki bir Grup Yöneticisi için görevlere ilişkin ayrıntılı bir anlatım.
+title: Team Data Science Işlem Grubu Yöneticisi görevleri
+description: Bir grup yöneticisi 'nin bir veri bilimi takım projesinde tamamladığı görevlere ilişkin ayrıntılı izlenecek yolu izleyin.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326805"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053318"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process grup yöneticisi görevleri
+# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Işlem Grubu Yöneticisi görevleri
 
 Bu makalede bir veri bilimi organizasyonu için bir *grup yöneticisinin* tamamladığı görevler açıklanmaktadır. Grup Yöneticisi, bir kuruluştaki tüm veri bilimi birimini yönetir. Bir veri bilimi birimi, her biri ayrı iş verticinde birçok veri bilimi projesi üzerinde çalışan çeşitli takımlara sahip olabilir. Grup yöneticisinin hedefi, [ekip veri bilimi işlemini](overview.md) (TDSP) standartlaştırın bir işbirliğine dayalı grup ortamı kurmak. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen tüm personel rollerinin ve ilişkili görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
@@ -57,7 +57,7 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
    
    ![Proje oluşturma](./media/group-manager-tasks/create-project.png)
 
-**Groupcommon** Project **Özet** sayfası açılır. Sayfa URL 'SI *https: \/ @ no__t-2 @ no__t-3servername >/\<kuruluş-adı >/GroupCommon*.
+**Groupcommon** Project **Özet** sayfası açılır. Sayfa URL 'SI *https:\//\<servername >/\<kuruluş-adı >/GroupCommon*.
 
 ![Proje özet sayfası](./media/group-manager-tasks/project-summary.png)
 
@@ -65,9 +65,9 @@ Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir
 
 Azure Repos grubunuz için aşağıdaki depo türlerini barındırır:
 
-- **Grup ortak depoları**: Genel amaçlı depolar bir veri bilimi birimi içindeki birden çok ekibin birçok veri bilimi projesi için benimseyebileceği depolardır. 
-- **Takım depoları**:  Bir veri bilimi birimi içindeki belirli takımlar için depolar. Bu depolar bir ekibin ihtiyaçlarına özgüdür ve bu takım dahilinde birden fazla proje için kullanılabilir, ancak bir veri bilimi birimi içindeki birden çok takım genelinde kullanılmak üzere yeterince genel değildir.
-- **Proje depoları**: Belirli projeler için depolar. Bu depolar, bir takım içindeki birden fazla proje için veya bir veri bilimi birimindeki diğer takımlar için yeterince genel olmayabilir.
+- **Ortak depoları gruplandırma**: genel amaçlı depolar, bir veri bilimi birimi içindeki birden çok ekibin birçok veri bilimi projesi için benimseyebileceği depolardır. 
+- **Ekip depoları**: bir veri bilimi birimi içindeki belirli takımlar için depolar. Bu depolar bir ekibin ihtiyaçlarına özgüdür ve bu takım dahilinde birden fazla proje için kullanılabilir, ancak bir veri bilimi birimi içindeki birden çok takım genelinde kullanılmak üzere yeterince genel değildir.
+- **Proje depoları**: belirli projeler için depolar. Bu depolar, bir takım içindeki birden fazla proje için veya bir veri bilimi birimindeki diğer takımlar için yeterince genel olmayabilir.
 
 Projenizde grup ortak depoları ayarlamak için şunları yapın: 
 - Varsayılan **Groupcommon** deposunu **groupprojecttemplate** olarak yeniden adlandırın
@@ -105,7 +105,7 @@ Varsayılan **Groupcommon** proje deposunu **groupprojecttemplate**olarak yenide
    
    ![GroupUtilities deposu oluşturma](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. **Proje ayarları** sayfasında sol gezinmede yer alan depolar **' ı** seçerek iki grup deposunu görüntüleyin: **Groupprojecttemplate** ve **grouputilities**.
+1. **Proje ayarları** sayfasında sol gezinmede yer alan depolar **' ı** seçerek Iki grup deposunu görüntüleyin: **groupprojecttemplate** ve **grouputilities**.
    
    ![İki grup deposu](./media/group-manager-tasks/two-repositories.png)
 
@@ -121,13 +121,13 @@ TDSP ekip depolarını içeri aktarmak için:
    
    ![Içeri aktar 'ı seçin](./media/group-manager-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL 'si**için *https: \//GitHub. com/Azure/Azure-TDSP-ProjectTemplate. git* ' i girin. Ardından **Içeri aktar**' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL 'si**için *https:\//GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. Ardından **Içeri aktar**' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
    
    ![Microsoft TDSP ekip deposunu içeri aktar](./media/group-manager-tasks/import-repo-2.png)
    
 1. **Depo** sayfasının en üstünde aşağı açılır ve **grouputilities** deposunu seçin.
    
-1. Microsoft TDSP Team **Utilities** deposunun içeriğini, *https: \//GitHub. com/Azure/Azure-TDSP-Utilities. git*' i **grouputilities** deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
+1. Microsoft TDSP Team **Utilities** deposunun ( *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.git*) içeriğini **grouputilities** deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
    
 Her iki grup deponuz artık, Microsoft TDSP ekibinin karşılık gelen deposundan *. git* diziniyle hariç tüm dosyaları içerir. 
 
@@ -166,7 +166,7 @@ Depo içeriğini özelleştirmek için:
 Yerel makinenizi veya DSVM 'yi kullanarak değişiklik yapmak ve değişiklikleri grup depolarına iletmek istiyorsanız git ve DSVMs ile çalışmaya yönelik önkoşullara sahip olduğunuzdan emin olun:
 
 - DSVM oluşturmak istiyorsanız, bir Azure aboneliği.
-- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde bkz [platformları ve araçlarıyla ek](platforms-and-tools.md#appendix).
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
 - DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
 - Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
 - Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
@@ -188,7 +188,7 @@ Yerel makinenizi veya DSVM 'yi kullanarak değişiklik yapmak ve değişiklikler
    
 1. Oluşturduğunuz dizine geçin.
    
-1. Git Bash 'de komutu çalıştırın `git clone <clone URL>.`
+1. Git Bash 'de komutunu çalıştırın `git clone <clone URL>.`
    
    Örneğin, aşağıdaki komutlardan biri **Grouputilities** deposunu yerel makinenizde *groupcommon* dizinine kopyalar. 
    
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> Git deposuna ilk kez çalışıyorsanız, `git commit` komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, `git commit` komutunu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -239,7 +239,7 @@ Gruba üye eklemek için:
    
 1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet**' i seçin. 
    
-   ![Kullanıcı ve grup ekle](./media/group-manager-tasks/add-users.png)
+   ![Kullanıcı ve Grup Ekle](./media/group-manager-tasks/add-users.png)
    
 
 Üyeler için izinleri yapılandırmak için:
@@ -258,6 +258,6 @@ Gruba üye eklemek için:
 
 Team Data Science Işlemindeki diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Bir veri bilimi takım için takım sağlama görevleri](team-lead-tasks.md)
-- [Proje için bir veri bilimi ekibi müşteri adayı görevleri](project-lead-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
 - [Bir veri bilimi ekibi için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md)

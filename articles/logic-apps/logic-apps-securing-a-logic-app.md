@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: f9b23e00c954e8babb1fe920bca1aa2ea5f9298e
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799481"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045065"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -266,11 +266,11 @@ Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de ma
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-   ![Örnek mantıksal uygulamayı aç](./media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+   ![Mantıksal uygulama Tasarımcısı 'nda mantıksal uygulama açma](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
 1. Verilerin güvenliğini sağlamak istediğiniz tetikleyici veya eylemde, üç nokta ( **...** ) düğmesini ve ardından **Ayarlar**' ı seçin.
 
-   !["Ayarlar" öğesini aç](./media/logic-apps-securing-a-logic-app/open-settings.png)
+   ![Tetikleyici veya eylem ayarlarını aç](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. **Güvenli girişleri**, **güvenli çıktıları**veya her ikisini açın. İşiniz bittiğinde **Bitti**'yi seçin.
 
@@ -278,11 +278,11 @@ Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de ma
 
    Eylem veya tetikleyici artık başlık çubuğunda bir kilit simgesi gösterir.
 
-   ![Başlık çubuğunda kilit simgesi](./media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+   ![Eylem veya tetikleyici başlık çubuğu kilit simgesini gösterir](./media/logic-apps-securing-a-logic-app/lock-icon-action-trigger-title-bar.png)
 
    Önceki eylemlerden gelen güvenli çıkışları temsil eden belirteçler de kilit simgeleri gösterir. Örneğin, bir eylemde kullanmak üzere dinamik içerik listesinden böyle bir çıktı seçtiğinizde, bu belirteç bir kilit simgesi gösterir.
 
-   ![Çıkış seçin](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
+   ![Güvenli çıkış için belirteç seçin](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
 
 1. Mantıksal uygulama çalıştıktan sonra, o çalıştırmanın geçmişini görüntüleyebilirsiniz.
 
@@ -292,7 +292,7 @@ Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de ma
 
       Hem giriş hem de çıkışları güvenli hale getirmeyi seçerseniz, bu değerler artık gizli olarak görünür.
 
-      ![Çalışma geçmişinde gizli veriler](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+      ![Çalışma geçmişinde gizli girişler ve çıkışlar](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
@@ -349,7 +349,7 @@ Bu verileri güvenli hale getirmek için bu ayarları kullandığınızda [göz 
 
   Bir tetikleyici veya eylemde **güvenli girişleri** el ile açtığınızda Logic Apps, bu girişlerin çalıştırma geçmişinde güvenliğini sağlar. Bir aşağı akış eylemi, giriş olarak bu tetikleyici veya eylemden görünür çıkışları açıkça kullanıyorsa, Logic Apps bu aşağı akış eyleminin çalıştırma geçmişinde girişlerini gizler, ancak bu eylemde güvenli girişleri etkinleştirmez ve bu eylemin **gizlenmemesini** *sağlar* çıkışı.
 
-  ![Birçok eylemin güvenli girişler ve aşağı akış etkileri](./media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+  ![Birçok eylemin güvenli girişler ve aşağı akış etkileri](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
   Oluşturma, ayrıştırma JSON ve yanıt eylemleri, tetikleyici veya eylemden güvenli girişler içeren görünür çıktıları açıkça kullanıyorsa, Logic Apps bu eylemlerin girişlerini ve çıkışlarını gizler, ancak bu eylemin **güvenli girişlerini** *etkinleştirmez* ayarlanmasını. Bir aşağı akış eylemi, giriş olarak oluşturma, ayrıştırma JSON veya Yanıt eylemlerdeki gizli çıkışları açıkça kullanıyorsa, Logic Apps *Bu aşağı akış eyleminin giriş veya çıkışlarını gizlemez*.
 

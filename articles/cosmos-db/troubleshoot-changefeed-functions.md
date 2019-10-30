@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2f9d2cea7adaf2e46feb0417ea9631ce02478f80
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934130"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053292"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 
@@ -103,6 +103,9 @@ Bir kapsayıcıdaki tüm öğeleri baştan sonra yeniden işlemek için:
 Bu hata, Azure Işlevleri projeniz (veya başvurulan herhangi bir proje), [Azure işlevleri Cosmos DB uzantısı](./troubleshoot-changefeed-functions.md#dependencies)tarafından sağlanenden farklı bir SÜRÜMLE Azure Cosmos DB SDK 'ya el ile NuGet başvurusu içeriyorsa meydana gelir.
 
 Bu durumun geçici çözümü için, eklenen el ile NuGet başvurusunu kaldırın ve Azure Cosmos DB SDK başvurusunun Azure Işlevleri Cosmos DB Uzantı paketi aracılığıyla çözümlendiğine izin verin.
+
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Değişikliklerin algılanması için Azure Işlevinin yoklama aralığı değiştiriliyor
+Daha önce [değişikliklerinizin alınması çok uzun sürme](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)için, Azure işlevi yeni değişiklikler denetlenmeden önce yapılandırılabilir bir süre (varsayılan olarak 5 saniye) için uykuya geçecek (yüksek ru tüketimine engel olmak için). Bu uyku süresini tetikleyicinizin [yapılandırmasındaki](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) `FeedPollDelay/feedPollDelay` ayarıyla yapılandırabilirsiniz (değerin milisaniye cinsinden olması beklenir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

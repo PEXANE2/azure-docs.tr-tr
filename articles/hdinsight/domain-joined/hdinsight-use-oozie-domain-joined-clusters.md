@@ -1,5 +1,5 @@
 ---
-title: Kurumsal Güvenlik Paketi-Azure HDInsight ile Apache Oozie iş akışları
+title: Apache Oozie iş akışları & Kurumsal Güvenlik-Azure HDInsight
 description: Azure HDInsight Kurumsal Güvenlik Paketi kullanan Apache Oozie iş akışlarını güvenli hale getirin. Oozie iş akışını tanımlama ve Oozie işi gönderme hakkında bilgi edinin.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: b644d293afd429bdc68fba66c119eb7146d0daf0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 03826d1005253c408374ea4c78266eef97aab2aa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935456"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044829"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>HDInsight Hadoop kümelerinde Kurumsal Güvenlik Paketi ile Apache Oozie çalıştırma
 

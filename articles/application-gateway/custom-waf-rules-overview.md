@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8ae5c9b6b52ea13e3d0981664e8c920cc5b47a01
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2e96a2a2dd5504c906b5fb84b643467a83518f21
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263551"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027575"
 ---
 # <a name="overview-custom-rules-for-web-application-firewall-v2"></a>Genel Bakış: Web uygulaması güvenlik duvarı v2 için özel kurallar
 
@@ -32,6 +32,9 @@ Aynı kural içindeki farklı eşleşen koşullar, *ve*kullanarak her zaman bile
 > WAF özel kural sayısı üst sınırı 100 ' dir. Application Gateway limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-subscription-service-limits.md#application-gateway-limits).
 
 Normal ifadeler, çekirdek kural kümelerinde olduğu gibi özel kurallarda de desteklenir. Bu kuralların örnekleri için [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md)bölümünde "örnek 3" ve "örnek 5" başlığına bakın.
+
+> [!NOTE]
+> Özel kurallar v1 SKU 'SU WAF ' de kullanılamaz.
 
 ## <a name="allowing-or-blocking-traffic"></a>Trafiğe izin verme veya trafiği engelleme
 
@@ -126,14 +129,14 @@ Seçici, matchVariable koleksiyonunun alanını açıklar. Örneğin, matchVaria
 
 - IPMatch: Bu işleç yalnızca Match değişkeni *Remoteaddr*olduğunda kullanılır.
 - Eşittir: giriş, MatchValue ile aynıdır.
-- İçerir
+- Contains
 - LessThan
 - GreaterThan
-- Yetersiz Otalep al
+- LessThanOrEqual
 - GreaterThanOrEqual
 - Ile başlıyor
 - EndsWith
-- Düzenli ifadesi
+- Regex
 
 ### <a name="negate-condition-optional"></a>Negate koşulu (isteğe bağlı)
 
@@ -143,7 +146,7 @@ Geçerli koşulu geçersiz kılar.
 
 Eşleşme denendiğinde önce tamamlanacak dönüştürmelerin adlarına sahip dizelerin listesi. Dönüşümler şunları içerir:
 
-- Küçük
+- Küçük harf
 - Kırpma
 - URL kod çözme
 - UrlEncode 

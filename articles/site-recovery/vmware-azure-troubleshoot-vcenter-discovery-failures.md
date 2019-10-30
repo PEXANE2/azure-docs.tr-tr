@@ -1,26 +1,26 @@
 ---
-title: Azure Site Recovery ile Azure 'a VMware VM olağanüstü durum kurtarma sırasında şirket içi yeniden çalışma sorunlarını giderme | Microsoft Docs
+title: Azure Site Recovery ile Azure 'a VMware VM olağanüstü durum kurtarma sırasında şirket içi yeniden çalışma sorunlarını giderme
 description: Bu makalede, Azure Site Recovery ile Azure 'a VMware VM olağanüstü durum kurtarma sırasında yeniden çalışma ve yeniden koruma sorunlarını gidermeye yönelik yollar açıklanmaktadır.
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970847"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053862"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>VCenter Discovery hatalarıyla ilgili sorunları giderme
+# <a name="troubleshoot-vcenter-discovery-failures"></a>VCenter bulma sorunlarını giderme
 
 Bu makale, VMware vCenter bulma hataları nedeniyle oluşan sorunları gidermenize yardımcı olur.
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots özelliğindeki sayısal olmayan değerler
 
-9,20 ' den önceki sürümlerde vCenter, bir VM 'deki `snapshot.maxSnapShots` özelliği için sayısal olmayan bir değer aldığında, vCenter bağlantısını keser.
+9,20 ' den önceki sürümlerde vCenter, bir VM 'deki Özellik `snapshot.maxSnapShots` özelliği için sayısal olmayan bir değer aldığında bağlantı kesilir.
 
 Bu sorun 95126 hata KIMLIĞIYLE tanımlanır.
 
@@ -46,8 +46,8 @@ Genel olarak, ara sunucu ortak ağlarla iletişim kurmak için kullanılır; Azu
 
 Bu sorunla karşılaşıldığında aşağıdaki durumlar oluşur:
 
-- @No__t-0vCenter > vCenter Server şu hata nedeniyle erişilebilir değil: uzak sunucu bir hata döndürdü: (503) sunucu kullanılamıyor
-- Şu hata nedeniyle vCenter Server \<vCenter > erişilebilir değil: uzak sunucu bir hata döndürdü: uzak sunucuya bağlanılamıyor.
+- VCenter Server \<vCenter > Şu hata nedeniyle erişilebilir değil: uzak sunucu bir hata döndürdü: (503) sunucu kullanılamıyor
+- VCenter Server \<vCenter > Şu hata nedeniyle erişilebilir değil: uzak sunucu bir hata döndürdü: uzak sunucuya bağlanılamıyor.
 - VCenter/ESXi sunucusuyla bağlantı kurulamıyor.
 
 Sorunu çözmek için:

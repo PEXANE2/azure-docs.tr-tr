@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ceff25b022866e47e6fdd488b01dd647cf550f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808212"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042105"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -114,6 +114,8 @@ Sahtekarlık uyarı e-postaları alacak kullanıcılar için buradaki e-posta ad
 
 >[!NOTE]
 >Multi-Factor Authentication çağrıları genel telefon ağı üzerinden yerleştirildiğinde, bazen arayan KIMLIĞINI desteklemeyen bir taşıyıcı aracılığıyla yönlendirilir. Bu nedenle, Multi-Factor Authentication sistemi her zaman tarafından gönderilse de arayan KIMLIĞI garanti edilmez.
+
+Birleşik Devletler, MFA arayanın KIMLIĞINI yapılandırmadıysanız, Microsoft 'tan sesli aramalar şu numaralardan gelir: + 1 (866) 539 4191, + 1 (855) 330 8653 ve + 1 (877) 668 6536. İstenmeyen posta filtreleri kullanıyorsanız, bu sayıları dışlediğinizden emin olun.
 
 ### <a name="custom-voice-messages"></a>Özel ses iletileri
 
@@ -387,7 +389,7 @@ Kimlik doğrulama yöntemlerinin kullanımıyla ilgili ek ayrıntılar makalesin
 Kullanıcı tarafından güvenilen cihazlar ve tarayıcılar için _Multi-Factor Authentication hatırla_ özelliği, tüm Multi-Factor Authentication kullanıcılar için ücretsiz bir özelliktir. Kullanıcılar, Multi-Factor Authentication kullanarak bir cihaza başarıyla oturum açtıktan sonra, belirtilen gün sayısı için sonraki doğrulamaları atlayabilir. Özelliği, bir kullanıcının aynı cihazda iki aşamalı doğrulamayı kaç kez gerçekleştirmesi gerektiğini en aza indirerek kullanılabilirliği geliştirir.
 
 >[!IMPORTANT]
->Bir hesap veya cihazın güvenliği tehlikeye girerse, güvenilir cihazlar için Multi-Factor Authentication hatırlama güvenliği etkileyebilir. Bir şirket hesabının güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybedilirse veya çalınırsa, [tüm cihazlarda Multi-Factor Authentication geri yüklemeniz](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)gerekir.
+>Bir hesap veya cihazın güvenliği tehlikeye girerse, güvenilir cihazlar için Multi-Factor Authentication hatırlama güvenliği etkileyebilir. Bir şirket hesabının güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybedilirse veya çalınırsa, [MFA oturumlarını iptal](howto-mfa-userdevicesettings.md)etmeniz gerekir.
 >
 >Geri yükleme eylemi tüm cihazlardan gelen güvenilen durumu iptal eder ve kullanıcının iki aşamalı doğrulamayı yeniden gerçekleştirmesi gerekir. Ayrıca, kullanıcılarınızın kendi cihazlarındaki Multi-Factor Authentication geri yüklemesini, [ayarlarınızı iki adımlı doğrulama Için yönetme](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)konusundaki yönergelerle de söyleyebilirsiniz.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: a5daac9fb34f36620176111e866f493d47f63bba
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513937"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044971"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 
@@ -46,9 +46,9 @@ Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığ
 | **İşlem boyutu**|Tek veritabanı/elastik havuz * | 1-80 sanal çekirdek | 1-80 sanal çekirdek * | 1-80 sanal çekirdek |
 | |Yönetilen örnek | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler | Yok | 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | **Depolama türü** | Tümü |Premium uzak depolama (örnek başına) | Yerel SSD Önbelleği (örnek başına) ile birlikte bağlanmış depolama | Süper hızlı yerel SSD depolaması (örnek başına) |
-| **Depolama boyutu** | Tek veritabanı/elastik havuz | 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
+| **Depolama boyutu** | Tek veritabanı/elastik havuz *| 5 GB – 4 TB | 100 TB 'a kadar | 5 GB – 4 TB |
 | | Yönetilen örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
-| **'Ye** | Tek veritabanı * * | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
+| **'Ye** | Tek veritabanı | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
 | | Yönetilen örnek | Dosya boyutuna bağlıdır | Yok | 1375 ıOPS/sanal çekirdek |
 |**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 4 okuma ölçeği genişletme, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği genişletme, bölge yedekli HA, tam yerel depolama |
 |**Lerine**|Tümü|RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün)| RA-GRS, 7 günlük bekletme, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün bekletme (varsayılan olarak 7 gün) |
@@ -89,7 +89,7 @@ Hiper ölçek, iş yükü talebe göre hızlı ölçeklenebilirlik sağlar.
 
   Hiperscale ile, okuma isteklerinizi karşılamak için kullanabileceğiniz bir veya daha fazla ek işlem çoğaltması sağlama olanağı da alırsınız. Yani, bu ek bilgi işlem çoğaltmalarını, birincil işlem üzerinden okuma iş yükünüzü boşaltmak için salt okuma çoğaltmaları olarak kullanabilirsiniz. Salt okuma özelliklerine ek olarak, bu çoğaltmalar Ayrıca birincil sunucudan yük devretme durumunda sık erişimli olarak da çalışır.
 
-  Bu ek bilgi işlem çoğaltmalarının sağlanması, sabit zamanlı olarak yapılabilir ve çevrimiçi bir işlemdir. Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. @No__t_0 uygulama amacına sahip tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.
+  Bu ek bilgi işlem çoğaltmalarının sağlanması, sabit zamanlı olarak yapılabilir ve çevrimiçi bir işlemdir. Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. `ReadOnly` uygulama amacına sahip tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.
 
 ## <a name="deep-dive-questions"></a>Derinlemesine bakış soruları
 
@@ -157,7 +157,7 @@ Hiperscale ile işlem günlüğü, pratik olarak sonsuzdur. Yüksek günlük ür
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Veritabanım büyüdükçe `tempdb` ölçeklendirmi
 
-@No__t_0 veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna göre yapılandırılır. @No__t_0 en yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb` boyutu yapılandırılamaz ve sizin için yönetilir.
+`tempdb` veritabanınız yerel SSD depolamada bulunur ve sağladığınız işlem boyutuna göre yapılandırılır. `tempdb` en yüksek performans avantajları sağlamak için en iyi duruma getirilmiştir. `tempdb` boyutu yapılandırılamaz ve sizin için yönetilir.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Veritabanı boyutumun otomatik olarak büyümesi veya veri dosyalarının boyutunu yönetmesi gerekir
 
@@ -354,7 +354,7 @@ Hiper ölçek veritabanları için varsayılan olarak bir ikincil çoğaltma olu
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Nasıl yaparım? bu ikincil işlem çoğaltmalarına bağlanın
 
-Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. @No__t_0 ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.  
+Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. `ReadOnly` ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.  
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>SSMS veya diğer istemci araçlarını kullanarak ikincil işlem çoğaltmasına başarıyla bağlanıp bağlanmadım Nasıl yaparım? doğrulayın.
 
@@ -375,7 +375,7 @@ Hayır. İkincil işlem çoğaltması aynı zamanda yüksek kullanılabilirlik y
 
 ### <a name="do-i-get-different-tempdb-sizing-for-my-primary-compute-and-my-additional-secondary-compute-replicas"></a>Birincil işlem ve ek ikincil işlem çoğaltmalarım için farklı `tempdb` Boyutlandırımı alıyorum
 
-Hayır. @No__t_0 veritabanınız, işlem boyutu sağlama temel alınarak yapılandırılır, ikincil işlem çoğaltmalarınız birincil işlem ile aynı boyutlardır.
+Hayır. `tempdb` veritabanınız, işlem boyutu sağlama temel alınarak yapılandırılır, ikincil işlem çoğaltmalarınız birincil işlem ile aynı boyutlardır.
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-replicas"></a>İkincil işlem çoğaltmalarıma dizinler ve görünümler ekleyebilir miyim?
 

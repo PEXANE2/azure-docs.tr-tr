@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6c7d94761e4c5d5087dc8ac4e10854989a18f0fc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992112"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024932"
 ---
 # <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için .NET deserileştiricileri kullanma
 
@@ -40,7 +40,7 @@ Aşağıdaki kod parçacığı, akış verilerinin serisini kaldırma işlemi ol
 
 1. T, bir sınıf veya struct.
 1. T 'deki tüm ortak alanlar
-    1. [Long, DateTime, String, Double] ya da Nullable eşdeğerleriyle biridir.
+    1. [SByte, Byte, Short, ushort, int, uint, Long, DateTime, String, float, Double] ya da Nullable eşdeğerlerine biridir.
     1. Aynı kuralları takip eden başka bir struct veya Class.
     1. Aynı kurallara göre `T2` türü dizi.
     1. IList, T2 'nin aynı kurallara göre izlediği`T2`.
@@ -226,12 +226,12 @@ Aşağıdaki JavaScript kodu, REST API kullanılırken .NET seri hale getirici s
 
 Bu özellik aşağıdaki bölgelerde kullanılabilir:
 
-* Batı Avrupa
-* Doğu ABD
-* Kuzey Avrupa
-* Batı ABD
-* Doğu ABD 2
-* Orta Batı ABD
+* Orta Batı ABD (kullanılabilir)
+* Kuzey Avrupa (kullanılabilir)
+* Doğu ABD (kullanılabilir)
+* Batı ABD (yakında kullanıma alınıyor)
+* Doğu ABD 2 (yakında kullanıma alınıyor)
+* Batı Avrupa (yakında kullanıma alınıyor)
 
 Ek bölgeler için [destek isteyebilirsiniz](https://aka.ms/ccodereqregion) .
 
@@ -244,10 +244,6 @@ Bu özellik 6 bölgede (#region destek) kullanılabilir. Bu işlevi başka bir b
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>GetMetadataPropertyValue işlevine benzer girişlerimin MetadataPropertyValue öğesine erişebilir miyim?
 
 Bu işlev desteklenmiyor. Bu özelliğe ihtiyaç duyuyorsanız, bu istek için [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese)üzerinden oy verebilirsiniz.
-
-### <a name="streamdeserializer-deserializes-a-stream-into-object-of-type-t-can-the-public-fields-in-t-be-any-supported-type-in-net"></a>StreamDeserializer, bir akışı T türünde bir nesneye seri hale getirir. T 'deki ortak alanlar .NET 'te desteklenen herhangi bir tür olabilir mi?
-
-.NET 'teki tüm desteklenen türler için destek, yol haritasında bulunur.
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Seri hale getirici uygulamamı, diğerlerinin avantajlarından faydalanabilmesi için topluluk ile paylaşabilir miyim?
 

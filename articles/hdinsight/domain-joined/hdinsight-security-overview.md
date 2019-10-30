@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240414"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053731"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -32,13 +32,13 @@ HDInsight 'ta çevre güvenliği [sanal ağlar](../hdinsight-plan-virtual-networ
 
 VNET 'te dağıtılan tüm kümelerin, küme ağ geçitlerine özel HTTP erişimi için sanal ağın içindeki özel bir IP 'ye çözümlenen özel bir uç noktası da olur.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 HDInsight 'tan [Kurumsal güvenlik paketi](apache-domain-joined-architecture.md) , Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi sağlar. Active Directory tümleştirme [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)kullanılarak elde edilir. Bu yetenekler sayesinde, yönetilen bir Active Directory etki alanına katılmış bir HDInsight kümesi oluşturabilirsiniz. Bundan sonra, kümeden kimlik doğrulaması yapan ve üzerinde oturum açabilen çalışanların bir listesini yapılandırabilirsiniz.
 
 Bu kurulumla, kurumsal çalışanlar, kendi etki alanı kimlik bilgilerini kullanarak küme düğümlerinde oturum açabilir. Ayrıca, küme ile etkileşimde bulunmak için Apache ambarı görünümleri, ODBC, JDBC, PowerShell ve REST API 'Ler gibi diğer onaylanan uç noktalarla kimlik doğrulaması yapmak için etki alanı kimlik bilgilerini de kullanabilirler. 
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Yetkilendirme
 
 Çoğu kuruluşun takip eden en iyi uygulama, her çalışanın kurumsal kaynaklara erişiminin olmadığından emin olmanızı sağlar. Benzer şekilde, yönetici, küme kaynakları için rol tabanlı erişim denetimi ilkeleri tanımlayabilir. Bu yalnızca ESP kümelerinde kullanılabilir.
 
@@ -59,6 +59,10 @@ Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine er
 Verilerin korunması, kurumsal güvenlik ve uyumluluk gereksinimlerini karşılamak için önemlidir. Yetkisiz çalışanların verilerine erişimi sınırlandırma ile birlikte şifrelemeniz gerekir.
 
 HDInsight kümeleri için veri depoları, Azure Blob depolama ve Azure Data Lake Storage 1./Gen2, bekleyen verilerin şeffaf sunucu tarafı [şifrelemesini](../../storage/common/storage-service-encryption.md) destekler. Güvenli HDInsight kümeleri, bekleyen verilerin sunucu tarafı şifrelemesi özelliği ile sorunsuz bir şekilde çalışır.
+
+### <a name="compliance"></a>Uyumluluk
+
+Azure uyumluluk teklifleri, bağımsız üçüncü taraf denetim firmaları tarafından oluşturulan resmi sertifikalar, belirlediğimizi karşıladığımızı, doğrulamalar, yetkilendirmeler ve değerlendirmelerin yanı sıra, sözleşmeli değişiklik DTU 'ları gibi çeşitli türlerde güvenlerin temel alınarak yapılır. Microsoft tarafından üretilen kendi kendine değerlendirmeler ve müşteri Kılavuzu belgeleri. HDInsight uyumluluk bilgileri için bkz. [Microsoft Güven Merkezi](https://www.microsoft.com/trust-center) ve [Microsoft Azure uyumluluğuna genel bakış](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
 
 ## <a name="shared-responsibility-model"></a>Paylaşılan sorumluluk modeli
 

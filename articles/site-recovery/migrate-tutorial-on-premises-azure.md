@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery ile şirket içi makineleri Azure’a geçirme | Microsoft Docs
+title: Azure Site Recovery ile şirket içi makineleri Azure 'a geçirme
 description: Bu makalede, Azure Site Recovery kullanarak şirket içi makineleri Azure’a geçirme işlemi açıklanmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 10/29/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873353"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053059"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Şirket içi makineleri Azure’a geçirme
 
@@ -32,8 +32,7 @@ Bu öğreticide, şirket içi VM’ler ve fiziksel sunucuları Azure’a geçirm
 
 
 > [!TIP]
-> Azure geçişi hizmeti artık, VMware VM 'lerini Azure 'a geçirmek için yeni ve aracısız bir deneyim için Önizleme sunmaktadır. [Daha fazla bilgi edinin](https://aka.ms/migrateVMs-signup).
-
+> Azure geçişi hizmetini kullanarak, artık şirket içi sunucuları Azure 'a geçirebilirsiniz. [Daha fazla bilgi](../migrate/migrate-services-overview.md)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -52,9 +51,9 @@ Neleri çoğaltmak istediğinizi ve bunları nereye çoğaltacağınızı seçin
 1. **Kurtarma Hizmetleri kasaları** > kasa öğesine tıklayın.
 2. Kaynak Menüsünde, **Site Recovery** > **Altyapıyı Hazırlama** > **Koruma hedefi** seçeneklerine tıklayın.
 3. **Koruma hedefi**’nde, geçişini yapmak istediğiniz öğeyi seçin.
-    - **VMware**: > **VMware vSphere Hiper Yöneticisi ile Azure Evet ' i**seçin.
-    - **Fiziksel makine**: **Azure** > için**sanallaştırılmamış/diğer**' i seçin.
-    - **Hyper-V**: **Hyper-V '** d **e Azure** > Evet ' i seçin. Hyper-V VM’leri VMM tarafından yönetiliyorsa, **Evet**’i seçin.
+    - **VMware**: **Azure’a** > **Evet, VMWare vSphere Hiper Yöneticisi ile** öğelerini seçin.
+    - **Fiziksel makine**: **Azure’a** > **Sanallaştırılmamış/Diğer** öğelerini seçin.
+    - **Hyper-V**: **Azure’a** > **Evet, Hyper-V ile** öğelerini seçin. Hyper-V VM’leri VMM tarafından yönetiliyorsa, **Evet**’i seçin.
 
 
 ## <a name="set-up-the-source-environment"></a>Kaynak ortamı ayarlama
@@ -98,27 +97,27 @@ Hyper-V | [Çoğaltmayı etkinleştirme](hyper-v-azure-tutorial.md#enable-replic
 Her şeyin beklendiği gibi çalıştığından emin olmak için bir Azure’a [yük devretme testi](tutorial-dr-drill-azure.md) çalıştırın.
 
 
-## <a name="migrate-to-azure"></a>Azure'a geçirme
+## <a name="migrate-to-azure"></a>Azure'a geçiş yapma
 
 Geçirmek istediğiniz makineler için yük devretmeyi çalıştırın.
 
 1. **Ayarlar** > **Çoğaltılan öğeler** bölümünde makine > **Yük devretme**’ye tıklayın.
 2. **Yük devretme**’de yük devretmenin yapılacağı bir **Kurtarma Noktası** seçin. En son kurtarma noktasını seçin.
 3. Şifreleme anahtarı ayarı, bu senaryo için geçerli değildir.
-4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery yük devretmeyi tetiklemeden önce sanal makineleri kapatmayı dener. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
+4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Site Recovery yük devretmeyi tetiklemeden önce sanal makineleri kapatmayı dener. Kapatma işlemi başarısız olsa bile yük devretme devam eder. Yük devretme işlemini **İşler** sayfasında takip edebilirsiniz.
 5. Azure VM’nin Azure’da beklendiği gibi görüntülenip görüntülenmediğini kontrol edin.
 6. **Çoğaltılan öğeler** bölümünde VM’ye sağ tıklayıp **Geçişi Tamamla**’ya tıklayın. Bu, şunları yapar:
 
    - Geçiş işlemini sonlandırır, şirket içi VM için çoğaltmayı durduruyor ve VM için Site Recovery faturalandırmayı durduruyor.
    - Bu adım, çoğaltma verilerini temizler. Geçirilen VM 'Leri silmez.
 
-     ![Tam geçiş](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![Geçişi tamamlama](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]
-> **Devam eden bir yük devretme işlemini Iptal etmeyin**: Yük devretme başlatılmadan önce VM çoğaltma durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz yük devretme durdurulur, ancak VM yeniden çoğaltılmaz.
+> **Devam eden yük devretme işlemini iptal etmeyin**: Yük devretme başlatılmadan önce VM çoğaltma durdurulur. Devam eden bir yük devretme işlemini iptal ederseniz yük devretme durdurulur, ancak VM yeniden çoğaltılamaz.
 
-Bazı senaryolarda yük devretme için sekiz ila on dakikada tamamlanan ek işlem gerekir. Fiziksel sunucular, VMware Linux makineleri, DHCP hizmeti etkinleştirilmemiş VMware VM 'Leri ve şu önyükleme sürücülerine sahip olmayan VMware VM 'Leri için daha uzun test yük devretme süreleri görebilirsiniz: storvsc, VMBus, storflt, intelide, Atapi.
+Bazı senaryolarda yük devretme için sekiz ila on dakikada tamamlanan ek işlem gerekebilir. Fiziksel sunucular, VMware Linux makineleri, DHCP hizmeti etkinleştirilmemiş VMware VM 'Leri ve şu önyükleme sürücülerine sahip olmayan VMware VM 'Leri için daha uzun test yük devretme süreleri görebilirsiniz: storvsc, VMBus, storflt, intelide, Atapi.
 
 ## <a name="after-migration"></a>Geçişten sonra
 
@@ -159,7 +158,7 @@ Bazı adımlar, [kurtarma planlarındaki](site-recovery-runbook-automation.md) y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şirket içi VM’leri Azure VM’lerine taşıdınız. Şimdi
+Bu öğreticide şirket içi VM’leri Azure VM’lerine taşıdınız. sunuldu
 
 > [!div class="nextstepaction"]
 > Azure VM 'Leri için ikincil bir Azure bölgesine [olağanüstü durum kurtarmayı ayarlayın](azure-to-azure-replicate-after-migration.md) .
