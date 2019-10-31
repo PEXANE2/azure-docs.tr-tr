@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980490"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175771"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 'de koşullu erişim için en iyi yöntemler
 
@@ -53,13 +53,13 @@ Tüm ilkeler iki aşamada zorlanır:
 
 - **İkinci** aşamada, karşılamadığınız gereksinimleri karşılamanız istenir. İlkelerden herhangi biri erişimi engellediyse, engellenir ve diğer ilke denetimlerini karşılamanız istenmez. İlkelerden hiçbiri sizi engelliyorsa, diğer ilke denetimlerini aşağıdaki sırayla karşılamanız istenir:
 
-   ![Sipariş verme](./media/best-practices/06.png)
+   ![Sipariş](./media/best-practices/06.png)
     
    Dış MFA sağlayıcıları ve kullanım koşulları bundan sonra gelir.
 
 ### <a name="how-are-assignments-evaluated"></a>Atamalar nasıl değerlendirilir?
 
-Tüm atamalar mantıksal olarakda kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.  
+Tüm **atamalar mantıksal olarak**da kullanılır. Birden çok atama yapılandırdıysanız, bir ilkenin tetiklenmesi için tüm atamaların karşılanması gerekir.  
 
 Kuruluşunuzun ağı dışından yapılan tüm bağlantılara uygulanan bir konum koşulu yapılandırmanız gerekirse:
 

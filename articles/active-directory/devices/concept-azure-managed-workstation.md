@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562175"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175169"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Güvenli, Azure tarafından yönetilen iş istasyonlarını anlayın
 
@@ -85,7 +85,7 @@ Güvenli bir iş istasyonu için temel, ' güven kökü ' adlı güvenilir bir i
 ## <a name="device-roles-and-profiles"></a>Cihaz rolleri ve profilleri
 
 Bu kılavuzda, kullanıcılar, geliştiriciler ve BT personeli için daha güvenli çözümler oluşturmanıza yardımcı olabilecek birkaç güvenlik profili ve rolü başvuruyordur. Bu profiller, gelişmiş veya güvenli bir iş istasyonundan faydalanabilecek ortak kullanıcılara yönelik kullanılabilirliği ve riskleri dengeleyebilir. Burada sunulan ayarların yapılandırması, sektörde kabul edilen standartları temel alır. Bu kılavuzda, Windows 10 ' un nasıl zor yapılacağı ve cihaz ya da Kullanıcı güvenliğinin aşılmasına ilişkin riskleri azaltma gösterilmektedir. Bu, güvenlik özelliklerinin ve risklerinin yönetilmesine yardımcı olmak üzere ilke ve teknolojiyi kullanarak bunu yapar.
-![Güvenli iş istasyonu düzeyleri](./media/concept-azure-managed-workstation/seccon-levels.png)
+Güvenli iş istasyonu seviyelerini ![](./media/concept-azure-managed-workstation/seccon-levels.png)
 
 * **Düşük güvenlik** – yönetilen, standart bir iş istasyonu çoğu ev ve küçük işletme kullanımı için iyi bir başlangıç noktası sağlar. Bu cihazlar Azure AD 'ye kaydedilir ve Intune ile yönetilir. Bu profil kullanıcıların herhangi bir uygulamayı çalıştırmasına ve herhangi bir Web sitesine gözatmasına izin verir. [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) gibi kötü amaçlı yazılımdan koruma çözümü etkinleştirilmelidir.
 

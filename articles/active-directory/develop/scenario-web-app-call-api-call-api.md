@@ -1,6 +1,6 @@
 ---
-title: Web uygulaması çağrıları API'leri (bir web API'sini çağırma) - web Microsoft kimlik platformu
-description: Web API (web API'si çağırma) çağıran bir Web uygulaması oluşturmayı öğrenin
+title: Web API 'Lerini çağıran Web uygulaması (bir Web API 'SI çağırma)-Microsoft Identity platform
+description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (Web API 'SI çağırma)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3624f4e859081e53ee27b6f8415eb3f9b5a2a5fa
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785469"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175292"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web API - çağıran bir web uygulaması web API'si çağırma
+# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web API 'Lerini çağıran Web uygulaması-bir Web API 'SI çağırma
 
-Bir belirteç olduğuna göre korumalı web API'si çağırabilirsiniz.
+Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Basitleştirilmiş bir kod eylemini işte `HomeController`. Bu kod Microsoft Graph'i çağırmaya yönelik bir belirteç alır. REST API olarak Microsoft Graph'i çağırmaya yönelik gösteren bu zaman kod eklendi. Graph API için URL'yi sağlanan `appsettings.json` dosya ve adlı bir değişkende okuma `webOptions`:
+`HomeController`eyleminin basitleştirilmiş bir kodu aşağıda verilmiştir. Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Bu zaman kodu, Microsoft Graph REST API olarak nasıl çağrılacağını gösterir. Graph API URL 'SI `appsettings.json` dosyasında sağlanır ve `webOptions`adlı bir değişkende okur:
 
 ```JSon
 {
@@ -83,11 +83,54 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Herhangi bir web API'sini çağırmak için de aynı ilke kullanabilirsiniz.
+> Herhangi bir Web API 'sini çağırmak için aynı prensibi kullanabilirsiniz.
 >
-> Çoğu Azure web API'leri, bunu çağırma basitleştiren bir SDK'sı sağlar. Bu ayrıca Microsoft Graph'i durumudur. Sonraki makalede bu görünüşler gösteren bir öğretici nerede bulacağını öğreneceksiniz.
+> Azure Web API 'Lerinin çoğu, çağrıyı kolaylaştıran bir SDK sağlar. Bu da Microsoft Graph durumdur. Sonraki makalede, bu özellikleri gösteren bir öğreticiyi bulacağınız hakkında bilgi edineceksiniz.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+private String getUserInfoFromGraph(String accessToken) throws Exception {
+    // Microsoft Graph user endpoint
+    URL url = new URL("https://graph.microsoft.com/v1.0/me");
+
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+    // Set the appropriate header fields in the request header.
+    conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+    conn.setRequestProperty("Accept", "application/json");
+
+    String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+    int responseCode = conn.getResponseCode();
+    if(responseCode != HttpURLConnection.HTTP_OK) {
+        throw new IOException(response);
+    }
+
+    JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+    return responseObject.toString();
+}
+
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Üretim aşamasına geçme](scenario-web-app-call-api-production.md)
+> [Üretime taşı](scenario-web-app-call-api-production.md)

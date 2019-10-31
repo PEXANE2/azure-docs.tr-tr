@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385020"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177733"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Öğretici: Service Fabric kümesi barındırmak için Azure VM altyapısı oluşturma
 
@@ -62,15 +62,15 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
 
    ![SF-gelen][sf-inbound]
 
-   * RDP `3389`ve ICMP için bağlantı noktası (temel bağlantı).
-   * Service Fabric `19000-19003`için bağlantı noktaları.
-   * Service Fabric `19080-19081`için bağlantı noktaları.
-   * Web `8080`tarayıcısı istekleri için bağlantı noktası.
+   * RDP ve ıCMP için bağlantı noktası `3389`(temel bağlantı).
+   * Service Fabric için bağlantı noktaları `19000-19003`.
+   * Service Fabric için bağlantı noktaları `19080-19081`.
+   * Web tarayıcısı istekleri için bağlantı noktası `8080`.
 
    > [!TIP]
    > Service Fabric’te sanal makinelerinizi birbirine bağlamak için, altyapınızı barındıran VM’lerin aynı kimlik bilgilerine sahip olması gerekir.  Tutarlı kimlik bilgileri elde etmenin iki yaygın yolu vardır: tümünü aynı etki alanına eklemek veya her sanal makinede aynı yönetici parolasını ayarlamak. Neyse ki, Azure aynı **sanal ağ** üzerindeki tüm sanal makinelerin kolayca bağlanmasına izin verir. bu nedenle, tüm örneklerimizi aynı ağ üzerinde sunduğunuzdan emin olun.
 
-9. Başka bir kural ekleyin. Kaynağı **hizmet etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork**olarak ayarlayın. Service Fabric, küme içindeki iletişim için aşağıdaki bağlantı noktalarının açılmasını gerektirir: 135137-139, 445, 20.001-20031, 20606-20861.
+9. Başka bir kural ekleyin. Kaynağı **hizmet etiketi** olarak ayarlayın ve kaynak hizmet etiketini **VirtualNetwork**olarak ayarlayın. Service Fabric, şu bağlantı noktalarının küme içindeki iletişim için açılmasını gerektiriyor: 135137-139, 445, 20.001-20031, 20606-20861.
 
    ![VNET-gelen][vnet-inbound]
 
@@ -90,18 +90,12 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
  
 4. RDP dosyasını açın ve istendiğinde VM kurulumunda verdiğiniz kullanıcı adını ve parolayı girin.
 
-5. Bir örneğe bağlandıktan sonra, uzak kayıt defterinin çalıştığını doğrulamanız, SMB 'yi etkinleştirmeniz ve SMB ve uzak kayıt defteri için gereken bağlantı noktalarını açmanız gerekir.
-
-   SMB 'yi etkinleştirmek için bu PowerShell komutunuz:
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. Bir örneğe bağlandıktan sonra, uzak kayıt defterinin çalıştığını doğrulamanız ve önkoşul bağlantı noktalarını açmanız gerekir.
 
 6. Buradaki güvenlik duvarında bağlantı noktalarını açmak için şu PowerShell komutunu kullanın:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. Diğer örnekleriniz için bu işlemi tekrarlayın, özel IP adreslerini yeniden de not edin.
@@ -117,15 +111,6 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir.  Hen
    ```
 
    Çıktınız dört kez tekrar eden `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` gibi görünüyorsa, örnekler arasındaki bağlantınız çalışıyordur.
-
-3. Şimdi aşağıdaki komutla SMB paylaşımınızın çalıştığını doğrulayın:
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   Çıktı olarak `Drive Z: is now connected to \\172.31.20.163\c$.` döndürülmelidir.
-
 
    Artık örneklerinizin Service Fabric için uygun şekilde hazırlandığından emin olun.
 

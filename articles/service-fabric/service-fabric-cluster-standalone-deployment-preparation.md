@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric tek başına küme dağıtımını hazırlama | Microsoft Docs
-description: Ortamı hazırlama ve üretim iş yükü işlemek için hedeflenen küme dağıtmadan önce göz önünde bulundurulması için küme yapılandırması oluşturma ile ilgili belgeler.
+title: Azure Service Fabric tek başına küme dağıtımı hazırlığı | Microsoft Docs
+description: Ortamı hazırlamaya ve küme yapılandırması oluşturmaya ilişkin belgeler, bir üretim iş yükünü işlemeye yönelik bir kümeyi dağıtmadan önce göz önünde bulundurulmalıdır.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -13,133 +13,132 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 96956e1ad935933572b1f2d31b70ef64f8b92501
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130322"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175864"
 ---
-# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plan ve hazırlık, Service Fabric tek başına Küme dağıtımı
+# <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric tek başına küme dağıtımınızı planlayın ve hazırlayın
 
 <a id="preparemachines"></a>Kümenizi oluşturmadan önce aşağıdaki adımları gerçekleştirin.
 
-## <a name="plan-your-cluster-infrastructure"></a>Küme altyapınızı planlama
-Hangi tür hatalardan istediğiniz kümenin hayatta kalmak için karar verebilmek için "sahibi", makineler üzerinde bir Service Fabric kümesi oluşturmak üzere olduğunuz. Örneğin, güç satırları veya Internet bağlantıları bu makineler için sağlanan ayrı? Ayrıca, bu makineler, fiziksel güvenlik göz önünde bulundurun. Makineleri nerede bulunuyor ve onlara yönelik erişimi gerek duyan? Bu kararlar yaptıktan sonra makineleri mantıksal olarak (bir sonraki adıma bakın) çeşitli hata etki alanlarına eşleyebilirsiniz. Altyapı planlama üretim kümeleri için test kümeleri için daha daha karmaşıktır.
+## <a name="plan-your-cluster-infrastructure"></a>Küme altyapınızı planlayın
+"Sahip olduğunuz" makinelerde bir Service Fabric kümesi oluşturmak üzeresiniz, bu sayede kümenin ne tür hatalara karşı olmasını istediğinize karar verebilirsiniz. Örneğin, bu makinelere ayrı güç çizgilere veya Internet bağlantılarına gerek var mı? Ayrıca, bu makinelerin fiziksel güvenliğini göz önünde bulundurun. Makineler nerede bulunur ve bunlara erişmesi gerekiyor? Bu kararları verdikten sonra, makineleri çeşitli hata etki alanlarına mantıksal olarak eşleyebilirsiniz (bkz. sonraki adım). Üretim kümeleri için altyapı planlaması, test kümelerine göre daha karmaşıktır.
 
-## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Hata etki alanları sayısını belirlemek ve yükseltme etki alanları
-A [ *hata etki alanı* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) hatası fiziksel birimidir ve Veri merkezlerindeki fiziksel altyapı doğrudan ilgilidir. Hata etki alanı, bir tek hata noktası paylaşan donanım bileşenlerinin (bilgisayarlar, anahtarlar, ağ ve daha fazla) oluşur. Hata etki alanları ve raflar arasında 1:1 eşleme yok olsa da, gevşek açıklamak gerekirse, her bir rafa hata etki alanı kabul edilebilir.
+## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Hata etki alanları ve yükseltme etki alanı sayısını belirleme
+Bir [ *hata etki alanı* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) , fiziksel bir hata birimidir ve veri merkezlerindeki fiziksel altyapıyla doğrudan ilgilidir. Hata etki alanı, tek bir başarısızlık noktasını paylaşan donanım bileşenlerinden (bilgisayarlar, anahtarlar, ağlar ve daha fazlası) oluşur. Hata etki alanları ve dolaplar arasında 1:1 eşleme olmamasına karşın, gevşekçe, her raf bir hata etki alanı olarak kabul edilebilir.
 
-İçinde ClusterConfig.json FD belirttiğinizde, her FD için ad seçebilirsiniz. Service Fabric hiyerarşik FD desteklediğinden, altyapı topolojinizde bunları yansıtabilir.  Örneğin, aşağıdaki FD geçerlidir:
+Kümeconfig. JSON içinde FDs belirttiğinizde, her bir FD için adı seçebilirsiniz. Service Fabric hiyerarşik FDs 'yi desteklediğinden, bu sayede altyapı topolojinizi yansıtabilmenizi sağlayabilirsiniz.  Örneğin, aşağıdaki FDs geçerlidir:
 
-* "faultDomain": "fd: / raf1/Room1/Machine1"
-* "faultDomain": "fd: / FD1"
-* "faultDomain": "fd: / Room1/raf1/PDU1/M1"
+* "faultDomain": "FD:/room1/raf1/Machine1"
+* "faultDomain": "FD:/FD1"
+* "faultDomain": "FD:/room1/raf1/PDU1/M1"
 
-Bir *yükseltme etki alanı* (UD) olan bir mantıksal birim düğümleri. Service Fabric düzenlenen yükseltmeleri sırasında (Uygulama yükseltme veya bir küme yükseltmesi), tüm düğümlerin bir UD diğer UD düğümler isteklere hizmet kullanılabilir olmaya yükseltmeyi gerçekleştirmek için alınır. Bunları aşağıdakilerden yapmalısınız şekilde makinelerinizde gerçekleştirdiğiniz üretici yazılımını yükseltme UD, uygulamayan bir zaman makine.
+*Yükseltme etki alanı* (UD), mantıksal bir düğüm birimidir. Service Fabric düzenlenmiş yükseltmeler (bir uygulama yükseltmesi veya bir küme yükseltmesi) sırasında, bir UD 'deki tüm düğümler, başka bir düğüm içindeki düğümler istek görmesi için kullanılabilir olmaya devam ederken yükseltmeyi gerçekleştirmek için alınır. Makinelerinizde gerçekleştirdiğiniz üretici yazılımı yükseltmeleri UDs 'yi kabul etmez, bu nedenle bunları aynı anda bir makine yapmanız gerekir.
 
-Bu kavramlar hakkında düşünün en basit yolu, UD ve planlanmamış hatası birimi olarak planlı bakım birimi olarak FD göz önünde bulundurun sağlamaktır.
+Bu kavramları düşünmek için en basit yol, planlı bakım birimi olarak bir plansız hata ve UDs birimi olarak FDs 'yi göz önünde bulundurmaktır.
 
-UD içinde ClusterConfig.json belirttiğinizde, her UD için ad seçebilirsiniz. Örneğin, aşağıdaki adları geçerlidir:
+Kümeconfig. JSON içinde UDs belirttiğinizde, her bir UD için adı seçebilirsiniz. Örneğin, aşağıdaki adlar geçerlidir:
 
 * "upgradeDomain": "UD0"
 * "upgradeDomain": "UD1A"
 * "upgradeDomain": "DomainRed"
-* "upgradeDomain": Ma
+* "upgradeDomain": "mavi"
 
-FD ve Ud'ler hakkında daha ayrıntılı bilgi için bkz: [açıklayan bir Service Fabric kümesi](service-fabric-cluster-resource-manager-cluster-description.md).
+FDs ve UDs hakkında daha ayrıntılı bilgi için bkz. [Service Fabric kümesini açıklama](service-fabric-cluster-resource-manager-cluster-description.md).
 
-Bir üretim ortamında desteklenmesi için üretim bir kümede en az üç FD yayılacağı düğümlerin yönetim ve Bakım üzerinde tam denetime sahip başka bir deyişle, güncelleştirme ve makineleri değiştirme sorumlu vardır. (Diğer bir deyişle, Amazon Web Services sanal makine örnekleri) ortamlarında, makine üzerinde tam denetime sahip olduğu değil çalıştıran kümeler için en az beş FD kümenizde sahip olmalıdır. Her FD bir veya daha fazla düğüme sahip olabilir. Bu makine yükseltmeleri ve güncelleştirmeleri, hangi kullanıcıların zamanlama çalışan uygulamaların ve hizmetlerin kümelerinde engelleyebilir kaynaklanan sorunları önlemek içindir.
+Üretimde bir küme, bir üretim ortamında desteklenmek üzere en az üç FI kapsamalıdır. düğümlerin bakımı ve yönetimi üzerinde tam denetime sahipseniz, diğer bir deyişle, makineleri güncelleştirmek ve değiştirmek sizin sorumluluğunuzdadır. Makinelerde çalışan kümeler için (yani, sanal makine örnekleri Amazon Web Services), makinenizde tam denetime sahip değilsiniz, kümenizde en az beş tane olmalıdır. Her FD bir veya daha fazla düğüme sahip olabilir. Bu, zaman zamanlamalarına bağlı olarak makine yükseltmelerinden ve güncelleştirmelerden kaynaklanan sorunları önlemektir. bu sayede, zamanlamaya göre uygulamaların ve hizmetlerin çalıştırılmasına engel olabilir.
 
-## <a name="determine-the-initial-cluster-size"></a>İlk küme boyutunu belirler
+## <a name="determine-the-initial-cluster-size"></a>İlk küme boyutunu belirleme
 
-Genellikle, kümenizdeki düğüm sayısını, iş gereksinimlerinize, kaç Hizmetleri ve kapsayıcıları kümede üzerinde çalışacağı bağlı olarak belirlenir ve iş yüklerinizi desteklemek gereken kaç kaynak. Üretim kümeleri için kümenizin en az beş düğüme sahip kapsayıcı 5 FD öneririz. Ancak, düğümlerinizi üzerinde tam denetime sahip ve üç FD yayılabilir, yukarıda açıklandığı gibi sonra üç düğüm ayrıca iş yapmanız gerekir.
+Genellikle, kümenizdeki düğümlerin sayısı, iş gereksinimlerinize göre belirlenir, diğer bir deyişle, kümede kaç tane hizmet ve kapsayıcı çalışır ve iş yüklerinize karşı çok sayıda kaynak gereklidir. Üretim kümeleri için, kümenizde 5 düğüm arasında en az beş düğüm olmasını öneririz. Ancak, yukarıda açıklandığı gibi, düğümleriniz üzerinde tam denetime sahipseniz ve üç düğüm yayılabilirse, üç düğüm de işi de yapabilmelidir.
 
-Bir düğüm yalnızca yalnızca durum bilgisiz iş yükleri çalıştıran test kümeleri gerekiyor ancak test kümeleri durum bilgisi olan iş yükleri çalıştıran üç düğüm olmalıdır. Bu, geliştirme amacıyla birden fazla düğüm bir makinede sağlayabilirsiniz de unutulmamalıdır. Bir üretim ortamında, ancak yalnızca bir düğümün fiziksel veya sanal makine başına Service Fabric destekler.
+Durum bilgisiz iş yükleri çalıştıran test kümelerinde üç düğüm olmalıdır; Oysa yalnızca durum bilgisi olmayan iş yükleri çalıştırılan test kümelerinde yalnızca bir düğüm gerekir Ayrıca, geliştirme amaçlarıyla, belirli bir makinede birden fazla düğüme sahip olabilirsiniz. Ancak bir üretim ortamında, Service Fabric fiziksel veya sanal makine başına yalnızca bir düğüm destekler.
 
-## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Düğümleri olarak hizmet verecek makineleri hazırlama
+## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>Düğüm olarak kullanılacak makineleri hazırlama
 
-Kümeye eklemek istediğiniz her makine için önerilen bazı özellikleri şunlardır:
+Kümeye eklemek istediğiniz her makine için önerilen bazı özellikler şunlardır:
 
 * En az 16 GB RAM
-* 40 GB kullanılabilir disk alanı en az
-* Bir 4 çekirdekli veya daha fazla CPU
-* Güvenli bir ağ veya tüm makineler için ağ bağlantısı
+* En az 40 GB kullanılabilir disk alanı
+* 4 çekirdek veya daha büyük CPU
+* Tüm makineler için güvenli ağ veya ağlarla bağlantı
 * Windows Server işletim sistemi yüklü (geçerli sürümler: 2012 R2, 2016, 1709 veya 1803). Service Fabric Version 6.4.654.9590 ve üzeri, Server 2019 ve 1809 sürümlerini de destekler.
-* [.NET framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yükleme
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
-* [RemoteRegistry hizmeti](https://technet.microsoft.com/library/cc754820) tüm makinelerde çalıştırılması
+* [.NET Framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yüklemesi
+* [Windows PowerShell 3,0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
+* [RemoteRegistry hizmetinin](https://technet.microsoft.com/library/cc754820) tüm makinelerde çalışıyor olması gerekir
 * Service Fabric yükleme sürücüsü NTFS dosya sistemi olmalıdır
 
-Dağıtma ve yapılandırma kümenin Küme Yöneticisi olmalıdır [yönetici ayrıcalıkları](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) her makine. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
+Kümeyi dağıtan ve yapılandıran küme yöneticisinin her makinede [yönetici ayrıcalıklarına](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) sahip olması gerekir. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
 
-## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server için Service Fabric tek başına paketin indirin
-[Bağlantı - Service Fabric tek başına paketin - Windows Server'ı indirin](https://go.microsoft.com/fwlink/?LinkId=730690) ve kümenin parçası olmayan bir dağıtım makinesine veya kümenizin parçası olan makinelerden biri için paketin sıkıştırmasını açın.
+## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server için Service Fabric tek başına paketini indirin
+[Bağlantı Service Fabric tek başına paketini indirin-Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) ve paketin bir parçası olmayan bir dağıtım makinesine ya da kümenizin bir parçası olacak makinelerden birine ayıklayın.
 
-## <a name="modify-cluster-configuration"></a>Küme yapılandırmasını Değiştir
-Tek başına küme oluşturma için küme belirtimi açıklayan bir tek başına küme yapılandırma ClusterConfig.json dosyası oluşturmanız gerekir. Bulunan şablonlar yapılandırma dosyası dayandırabilirsiniz aşağıdaki bağlantıda verilmiştir. <br>
-[Tek başına küme yapılandırmaları](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+## <a name="modify-cluster-configuration"></a>Küme yapılandırmasını değiştirme
+Tek başına küme oluşturmak için, kümenin belirtimini açıklayan bir tek başına küme yapılandırması ClusterConfig. JSON dosyası oluşturmanız gerekir. Yapılandırma dosyasını aşağıdaki bağlantıda bulunan şablonlarda temel alabilirsiniz. <br>
+[Tek başına küme yapılandırması](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-Bu dosyadaki bölümleri hakkında daha fazla bilgi için bkz: [tek başına Windows Küme için yapılandırma ayarlarını](service-fabric-cluster-manifest.md).
+Bu dosyadaki bölümlerle ilgili ayrıntılar için bkz. [tek başına Windows kümesi Için yapılandırma ayarları](service-fabric-cluster-manifest.md).
 
-İndirdiğiniz paketinden ClusterConfig.json dosyalarından birini açın ve aşağıdaki ayarları değiştirin:
+İndirdiğiniz paketten Kümeconfig. JSON dosyalarından birini açın ve aşağıdaki ayarları değiştirin:
 
 | **Yapılandırma ayarı** | **Açıklama** |
 | --- | --- |
-| **NodeType** |Düğüm türleri, Küme düğümlerinizi çeşitli gruplar halinde ayırmanıza olanak sağlar. Bir küme en az bir NodeType olması gerekir. Bir gruptaki tüm düğümleri aşağıdaki ortak özelliklere sahiptir: <br> **Ad** -düğüm türü adı budur. <br>**Uç nokta bağlantı noktası** - bu çeşitli uç bu düğüm türü ile ilişkili olan noktaları (bağlantı noktaları) olarak adlandırılır. Bu bildirimde başka bir şey ile çakışmadığından sürece istediğiniz ve zaten olmayan makine/VM'de çalışan herhangi bir uygulama tarafından kullanılmakta olan bağlantı noktası numarasını kullanabilirsiniz. <br> **Yerleştirme özelliklerini** -bunlar sistem hizmetleri veya hizmetleriniz için yerleştirme kısıtlamaları kullanan bu düğüm türü için özellikleri açıklar. Bu özellikler belirli bir düğümde ek meta veriler sağlayan kullanıcı tanımlı anahtar/değer çiftleridir. Düğüm özellikleri örnekleri, bir sabit sürücü veya grafik kartı, sabit sürücüsünü, çekirdek ve diğer fiziksel özellikler iğnelerinin sayısı düğüm olup olacaktır. <br> **Kapasiteleri** -düğüm kapasiteleri, belirli bir kaynak miktarını ve adını tanımlayın belirli bir düğüm tüketim için kullanılabilir olduğunu. Örneğin, bir düğüm "MemoryInMb" adlı bir ölçüm için kapasiteye sahip olduğundan ve varsayılan olarak 2048 MB kullanılabilir olduğunu tanımlayabilir. Bu kapasite, çalışma zamanında belirli miktarda kaynağı gerektiren hizmetler kaynaklarla gerekli tutarları kullanılabilir olan düğümleri yerleştirildiğinden emin olmak için kullanılır.<br>**Isprimary** - yalnızca bir değerle için birincil ayarlandığından emin olun birden fazla NodeType tanımlı varsa *true*, burada Çalıştır Sistem Hizmetleri olduğu. Diğer tüm düğüm türleri değerine ayarlanmalıdır *false* |
-| **Düğümleri** |Bu, küme (düğüm türü, düğüm adı, IP adresi, hata etki alanı ve yükseltme etki alanı düğümünün) parçası olan düğümler için ayrıntılar bulunur. Küme IP adreslerini burada listelenebileceğinizi gerek oluşturulacak istediğiniz makineleri. <br> Tüm düğümleri aynı IP adresini kullanın, ardından hazır bir küme, test amacıyla kullanabileceğiniz oluşturulur. One-box kümelerini üretim iş yükleri dağıtmak için kullanmayın. |
+| **NodeTypes** |Düğüm türleri, küme düğümlerinizi çeşitli gruplar halinde ayırmanızı sağlar. Bir kümenin en az bir NodeType olması gerekir. Bir gruptaki tüm düğümler aşağıdaki ortak özelliklere sahiptir: <br> **Ad** -bu düğüm türü adıdır. <br>**Uç nokta bağlantı noktaları** -bu düğüm türüyle ilişkili çeşitli adlandırılmış uç noktaları (bağlantı noktaları) vardır. İstediğiniz herhangi bir bağlantı noktası numarasını, bu bildirimde başka hiçbir şeyle çakışmadığı ve makine/VM üzerinde çalışan başka bir uygulama tarafından kullanımda olmadığı sürece kullanabilirsiniz. <br> **Yerleştirme özellikleri** -bu düğüm türü için, sistem hizmetleri veya hizmetleriniz için yerleştirme kısıtlamaları olarak kullandığınız özellikler açıklanır. Bu özellikler, belirli bir düğüm için ek meta veri sağlayan Kullanıcı tanımlı anahtar/değer çiftleridir. Düğüm özelliklerinin örnekleri, düğümün sabit sürücü veya grafik kartına sahip olup olmadığı, sabit sürücü, çekirdek sayısı ve diğer fiziksel özelliklerle ilgili olarak bulunduğu sayıdır. <br> **Kapasiteler** -düğüm kapasiteleri, belirli bir düğümün tüketim için kullanabileceği belirli bir kaynağın adını ve miktarını tanımlar. Örneğin, bir düğüm, "MemoryMB" adlı bir ölçüm için kapasiteye sahip olduğunu ve varsayılan olarak 2048 MB olduğunu tanımlayabilir. Bu kapasiteler, belirli miktarlarda kaynak gerektiren hizmetlerin gerekli miktarlarda kullanılabilir kaynakları bulunan düğümlere yerleştirildiğinden emin olmak için çalışma zamanında kullanılır.<br>**IsPrimary** -birden fazla NodeType tanımlı ise, sistem hizmetlerinin çalıştığı, *doğru*değeri olan yalnızca bir tane birincil olarak ayarlandığından emin olun. Diğer tüm düğüm türleri *false* değerine ayarlanmalıdır |
+| **Düğümlerini** |Bunlar kümenin parçası olan düğümlerin (düğüm türü, düğüm adı, IP adresi, hata etki alanı ve yükseltme etki alanı) her biri için ayrıntılardır. Kümenin oluşturulmasını istediğiniz makinelerin, IP adresleriyle birlikte burada listelenmesi gerekir. <br> Tüm düğümler için aynı IP adresini kullanırsanız, test amacıyla kullanabileceğiniz bir tek Box kümesi oluşturulur. Üretim iş yüklerini dağıtmak için tek Box kümeleri kullanmayın. |
 
-Küme yapılandırmasını ortama yapılandırılan tüm ayarları aldıktan sonra (adım 7) küme ortamında test edilebilir.
+Küme yapılandırmasının tüm ayarları ortama yapılandırıldıktan sonra, küme ortamına karşı test edilebilir (adım 7).
 
 <a id="environmentsetup"></a>
 
 ## <a name="environment-setup"></a>Ortam kurulumu
 
-Bir Küme Yöneticisi, Service Fabric tek başına küme yapılandırdığında, ortamın aşağıdaki ölçütleri ile ayarlanmış olması gerekir: <br>
-1. Kümeyi oluşturan kullanıcının küme yapılandırma dosyasında düğümleri olarak listelenen tüm makineler için yönetici düzeyinde güvenlik ayrıcalıkları olmalıdır.
-2. Her küme düğümünde makine yanı sıra küme oluşturulduğu makine gerekir:
-   * Service Fabric SDK'sı kaldırmış
-   * Service Fabric çalışma zamanı kaldırıldı 
-   * Windows Güvenlik Duvarı (mpssvc) hizmet etkinleştirdiniz mi
-   * Uzak Kayıt Defteri hizmeti (uzak kayıt defteri) etkinleştirdiniz mi
-   * Dosya Paylaşımı (SMB) etkin
-   * Gerekli bağlantı noktaları açıldı, küme yapılandırması bağlantı noktalarına bağlı olan
-   * Windows SMB ve uzak kayıt defteri hizmeti için gerekli bağlantı noktaları açıldı: 135, 137, 138, 139 ve 445
-   * Başka bir ağ bağlantısına sahip
-3. Küme düğümü makinelerin hiçbirinin bir etki alanı denetleyicisi olmalıdır.
-4. Kümenin dağıtılması için güvenli bir küme ise, Önkoşullar içinde yerleştirin ve yapılandırmanın karşı doğru yapılandırıldığından gerekli güvenlik doğrulayın.
-5. Küme makinelerin İnternet'ten erişilebilen emin değilseniz, aşağıdaki küme yapılandırmasında ayarlayın:
-   * Telemetrisi devre dışı bırak: *"Enabletelemetri"* ayar *özellikleri* : false
-   * Geçerli küme sürümünün destek sonuna yaklaştığı otomatik doku sürümü indirmeyi & bildirimleri devre dışı bırakın: *"Fabricclusteroto Upgradeenabled"* *Özellikler* kümesi altında: false
-   * Alternatif olarak, ağ internet erişimi beyaz listelenen etki alanları için sınırlı ise, aşağıdaki etki alanlarına otomatik yükseltme için gereken: go.microsoft.com download.microsoft.com
+Bir Küme Yöneticisi Service Fabric tek başına kümesi yapılandırdığında, ortamın aşağıdaki ölçütlere göre ayarlanması gerekir: <br>
+1. Kümeyi oluşturan kullanıcı, küme yapılandırma dosyasında düğüm olarak listelenen tüm makinelere yönetici düzeyinde güvenlik ayrıcalıklarına sahip olmalıdır.
+2. Kümenin oluşturulduğu makine ve her küme düğümü makinesi şunları içermelidir:
+   * Service Fabric SDK 'Sı kaldırıldı
+   * Service Fabric çalışma zamanının kaldırılması 
+   * Windows Güvenlik Duvarı hizmeti (MpsSvc) etkin
+   * Uzak kayıt defteri hizmeti (uzak kayıt defteri) etkin
+   * Küme yapılandırma bağlantı noktalarına bağlı olarak, gerekli bağlantı noktaları açık olmalıdır
+   * Uzak kayıt defteri hizmeti için gerekli bağlantı noktaları açıldı: 135, 137, 138 ve 139
+   * Birbiriyle ağ bağlantısı var
+3. Küme düğümü makinelerinin hiçbiri bir etki alanı denetleyicisi olmamalıdır.
+4. Dağıtılacak küme güvenli bir kümesa, gerekli güvenlik önkoşullarının yerinde olduğunu ve yapılandırmaya göre doğru şekilde yapılandırıldığını doğrulayın.
+5. Küme makineleri internet 'e erişemezse, küme yapılandırmasında aşağıdakileri ayarlayın:
+   * Telemetriyi devre dışı bırak: *Özellikler* altında *"enabletelemetri" kümesi: false*
+   * Otomatik doku sürümü indirmeyi devre dışı bırak & geçerli küme sürümünün destek sonuna yaklaştığı bildirimler: *"Fabricclusterotomatik Upgradeenabled"* olarak ayarlanmış *Özellikler* altında: false
+   * Alternatif olarak, ağ internet erişimi, beyaz listeye eklenen etki alanlarıyla sınırlı ise, otomatik yükseltme için aşağıdaki etki alanları gerekir: go.microsoft.com download.microsoft.com
 
-6. Service Fabric uygun virüsten koruma dışlamaları ayarlayın:
+6. Virüsten koruma dışlamalarını uygun Service Fabric ayarlayın:
 
-| **Virüsten koruma hariç tutulan dizinler** |
+| **Virüsten koruma için dışlanan dizinler** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (küme yapılandırmasından) |
 | FabricLogRoot (küme yapılandırmasından) |
 
-| **Virüsten koruma dışlanan işlemler** |
+| **Virüsten koruma hariç tutulan süreçler** |
 | --- |
-| Fabric.exe |
-| FabricHost.exe |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe |
-| FabricDCA.exe |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe |
-| FileStoreService.exe |
+| Fabric. exe |
+| FabricHost. exe |
+| Fabricınstallerservice. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| Imagebuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| FileStoreService. exe |
 
-## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration betik kullanarak ortamı doğrulama
-Tek başına paketteki TestConfiguration.ps1 betiği bulunamadı. Yukarıdaki ölçütlere bazıları doğrulamak için bir en iyi yöntemler Çözümleyicisi kullanılır ve sağlamlık denetim olarak bir küme belirli bir ortamda dağıtılıp dağıtılamayacağını doğrulamak için kullanılmalıdır. Herhangi bir hata varsa, listenin altında başvurmak [ortam Kurulumu](service-fabric-cluster-standalone-deployment-preparation.md) sorun giderme. 
+## <a name="validate-environment-using-testconfiguration-script"></a>TestConfiguration betiği kullanarak ortamı doğrulama
+TestConfiguration. ps1 betiği tek başına pakette bulunabilir. Yukarıdaki ölçütlerden bazılarını doğrulamak için bir en iyi yöntemler Çözümleyicisi olarak kullanılır ve bir kümenin belirli bir ortamda dağıtılıp dağıtılamayacağını doğrulamak için bir sağlamlık denetimi olarak kullanılmalıdır. Herhangi bir hata varsa, sorun giderme için [ortam kurulumu](service-fabric-cluster-standalone-deployment-preparation.md) altındaki listeye bakın. 
 
-Bu betik, küme yapılandırma dosyasında düğümleri olarak listelenen tüm makineler için yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makine kümesinin parçası olacak gerekmez.
+Bu betik, küme yapılandırma dosyasında düğüm olarak listelenen tüm makinelere yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makinenin kümenin bir parçası olması gerekmez.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
@@ -160,12 +159,12 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-Şu anda bu bağımsız olarak yapılması gerekir, böylece bu yapılandırmayı test modül güvenlik yapılandırması doğrulamaz.  
+Şu anda bu yapılandırma testi modülü güvenlik yapılandırmasını doğrulamaz çünkü bunun bağımsız olarak gerçekleştirilmesi gerekmez.  
 
 > [!NOTE]
-> Hatalı veya eksik bir durumda ise düşünüyorsanız, bu nedenle sürekli olarak iyileştirmeler Bu modülün daha sağlam hale getirmek için şu anda TestConfiguration tarafından yakalanan yapıyoruz, aracılığıyla bize bildirin bizim [destek kanalları](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).   
+> Bu modülü daha sağlam hale getirmek için sürekli geliştirmeler yapıyoruz. bu nedenle, TestConfiguration tarafından şu anda yakalanmadığınız bir hatalı veya eksik durum varsa lütfen [destek kanallarımızla](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)bize bildirin.   
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Windows Server üzerinde çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)
+* [Windows Server 'da çalışan tek başına küme oluşturma](service-fabric-cluster-creation-for-windows-server.md)

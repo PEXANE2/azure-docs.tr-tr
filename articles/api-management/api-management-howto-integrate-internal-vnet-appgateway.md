@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193963"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176749"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Application Gateway ile iç VNET 'te API Management tümleştirme
 
@@ -61,10 +61,10 @@ Bu makalede hem iç hem de dış tüketiciler için tek bir API Management hizme
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>API Management ve Application Gateway arasında bir tümleştirme oluşturmak için ne gerekir?
 
 * **Arka uç sunucu havuzu:** Bu, API Management hizmetinin iç sanal IP adresidir.
-* **Arka uç sunucu havuzu ayarları:** Her havuzun bağlantı noktası, protokol ve tanımlama bilgisi tabanlı benzeşim gibi ayarları vardır. Bu ayarlar, havuzdaki tüm sunuculara uygulanır.
+* **Arka uç sunucu havuzu ayarları**: Her havuzun bağlantı noktası, protokol ve tanımlama bilgisi temelli benzeşim gibi ayarları vardır. Bu ayarlar, havuzdaki tüm sunuculara uygulanır.
 * **Ön uç bağlantı noktası:** Bu, uygulama ağ geçidinde açılan genel bağlantı noktasıdır. Giden trafik, arka uç sunucularından birine yönlendirilir.
-* **Oluşturulurken** Dinleyicinin bir ön uç bağlantı noktası, bir protokol (http veya https, bu değerler büyük/küçük harfe duyarlıdır) ve SSL sertifika adı (SSL boşaltması yapılandırıyorsanız) vardır.
-* **Kurallar** Kural bir dinleyiciyi arka uç sunucu havuzuna bağlar.
+* **Dinleyici:** Dinleyicide bir ön uç bağlantı noktası, bir protokol (Http veya Https, bu değerler büyük/küçük harfe duyarlıdır) ve SSL sertifika adı (SSL yük boşaltımı yapılandırılıyorsa) vardır.
+* **Kural:** Kural bir dinleyiciyi arka uç sunucu havuzuna bağlar.
 * **Özel durum araştırması:** Application Gateway, varsayılan olarak, BackendAddressPool içindeki hangi sunucuların etkin olduğunu anlamak için IP adresi tabanlı araştırmaları kullanır. API Management hizmeti yalnızca doğru ana bilgisayar üst bilgisine sahip isteklere yanıt verir, bu nedenle varsayılan yoklamalar başarısız olur. Application Gateway 'in hizmetin etkin olduğunu ve istekleri iletmeli olduğunu belirlemesine yardımcı olmak için özel bir sistem durumu araştırması tanımlanmalıdır.
 * **Özel etki alanı sertifikaları:** API Management internet 'ten erişmek için, ana bilgisayar adının bir CNAME eşlemesini Application Gateway ön uç DNS adına oluşturmanız gerekir. Bu, API Management iletilen Application Gateway ana bilgisayar başlığı ve sertifikasının bir APıM 'in geçerli olarak tanıyabilmesini sağlar. Bu örnekte, arka uç ve geliştirici portalı için iki sertifika kullanacağız.  
 
@@ -86,11 +86,11 @@ Bu kılavuzda, Application Gateway aracılığıyla **Geliştirici Portalını**
 > Azure AD veya üçüncü taraf kimlik doğrulaması kullanıyorsanız, lütfen Application Gateway için [tanımlama bilgisi tabanlı oturum benzeşimi](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) özelliğini etkinleştirin.
 
 > [!WARNING]
-> Application Gateway WAF 'nin Geliştirici Portalında Openapı belirtiminin indirilmesini bozmasını engellemek için güvenlik duvarı kuralını `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`devre dışı bırakmanız gerekir.
+> Application Gateway WAF 'nin Geliştirici Portalında Openapı belirtiminin indirilmesini bozmasını engellemek için, `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`güvenlik duvarı kuralını devre dışı bırakmanız gerekir.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Resource Manager için kaynak grubu oluşturun
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 Azure'da oturum açma
 
@@ -100,7 +100,7 @@ Connect-AzAccount
 
 Kimlik bilgilerinizle kimlik doğrulaması yapın.
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 İstediğiniz aboneliği seçin.
 
@@ -109,7 +109,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000" # GUID of your Azure su
 Get-AzSubscription -Subscriptionid $subscriptionId | Select-AzSubscription
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Bir kaynak grubu oluşturun (mevcut bir kaynak grubu kullanıyorsanız bu adımı atlayın).
 
@@ -123,9 +123,9 @@ Azure Resource Manager, tüm kaynak gruplarının bir konum belirtmesini gerekti
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Uygulama ağ geçidi için bir sanal ağ ve alt ağ oluşturma
 
-Aşağıdaki örnek, Resource Manager kullanarak nasıl sanal ağ oluşturulacağını gösterir.
+Aşağıdaki örnek, Kaynak Yöneticisi kullanarak nasıl sanal ağ oluşturulacağını gösterir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 Bir sanal ağ oluştururken Application Gateway için kullanılacak alt ağ değişkenine 10.0.0.0/24 adres aralığını atayın.
 
@@ -133,7 +133,7 @@ Bir sanal ağ oluştururken Application Gateway için kullanılacak alt ağ değ
 $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Bir sanal ağ oluştururken API Management için kullanılacak alt ağ değişkenine 10.0.1.0/24 adres aralığını atayın.
 
@@ -141,7 +141,7 @@ Bir sanal ağ oluştururken API Management için kullanılacak alt ağ değişke
 $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Batı ABD bölgesi için **APIM-appGw-RG** kaynak grubunda **appgwvnet** adlı bir sanal ağ oluşturun. 10.0.0.0/24 ve 10.0.1.0/24 alt ağları ile 10.0.0.0/16 önekini kullanın.
 
@@ -162,7 +162,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Aşağıdaki örnek, yalnızca iç erişim için yapılandırılmış bir sanal ağda API Management bir hizmetin nasıl oluşturulacağını gösterir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 Yukarıda oluşturulan alt ağ $apimsubnetdata kullanarak API Management bir sanal ağ nesnesi oluşturun.
 
@@ -170,7 +170,7 @@ Yukarıda oluşturulan alt ağ $apimsubnetdata kullanarak API Management bir san
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Sanal ağ içinde bir API Management hizmeti oluşturun.
 
@@ -185,9 +185,9 @@ Yukarıdaki komut başarılı olduktan sonra, bu [hizmete erişmek için Iç VNE
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>API Management bir özel etki alanı adı ayarlama
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
-Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte, ve `api.contoso.net` `portal.contoso.net`kullanacağız.  
+Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte `api.contoso.net` ve `portal.contoso.net`kullanacağız.  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -202,18 +202,21 @@ $certPwd = ConvertTo-SecureString -String $gatewayCertPfxPassword -AsPlainText -
 $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainText -Force
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Proxy ve Portal için ana bilgisayar adı yapılandırma nesneleri oluşturun ve ayarlayın.  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> Eski geliştirici portalı bağlantısını yapılandırmak için `-HostnameType DeveloperPortal` `-HostnameType Portal`ile değiştirmeniz gerekir.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Ön uç yapılandırma için genel bir IP adresi oluşturun
 
@@ -229,7 +232,7 @@ Hizmet başlatıldığında uygulama ağ geçidine bir IP adresi atanır.
 
 Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarlanmalıdır. Aşağıdaki adımlar uygulama ağ geçidi kaynağı için gerekli yapılandırma öğelerini oluşturur.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>Adım 1
 
 **gatewayIP01** adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
 
@@ -237,7 +240,7 @@ Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarla
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>Adım 2
 
 Genel IP uç noktası için ön uç IP bağlantı noktasını yapılandırın. Bu bağlantı noktası, son kullanıcıların bağlanacağı bağlantı noktasıdır.
 
@@ -245,7 +248,7 @@ Genel IP uç noktası için ön uç IP bağlantı noktasını yapılandırın. B
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>Adım 3
 
 Ön uç IP’sini genel IP uç noktası ile yapılandırın.
 
@@ -273,10 +276,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>6\. Adım
 
-API Management hizmeti `ContosoApi` proxy etki alanı uç noktası için özel yoklamalar oluşturun. Yol `/status-0123456789abcdef` , tüm API Management hizmetlerinde barındırılan varsayılan bir sistem durumu uç noktasıdır. SSL `api.contoso.net` sertifikasıyla güvenli hale getirmek için özel bir araştırma ana bilgisayar adı olarak ayarlayın.
+API Management hizmeti `ContosoApi` proxy etki alanı uç noktası için özel yoklamalar oluşturun. Yol `/status-0123456789abcdef`, tüm API Management hizmetlerinde barındırılan varsayılan bir sistem durumu uç noktasıdır. SSL sertifikasıyla güvenli hale getirmek için `api.contoso.net` özel bir araştırma ana bilgisayar adı olarak ayarlayın.
 
 > [!NOTE]
-> Ana bilgisayar `contosoapi.azure-api.net` adı, genel Azure 'da adlı `contosoapi` bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır.
+> Ana bilgisayar adı `contosoapi.azure-api.net`, genel Azure 'da `contosoapi` adlı bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır.
 >
 
 ```powershell
@@ -350,7 +353,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Ağ geçidi oluşturulduktan sonraki adım, iletişim için ön uç yapılandırması yapmaktır. Genel IP kullanırken Application Gateway dinamik olarak atanan bir DNS adı gerektirir ve bu, kullanılması kolay olmayabilir.
 
-Application Gateway DNS adı, APIM proxy ana bilgisayar adını (örneğin `api.contoso.net` , Yukarıdaki örneklerde) bu DNS adına işaret eden bir CNAME kaydı oluşturmak için kullanılmalıdır. Ön uç IP CNAME kaydını yapılandırmak için, Application Gateway ayrıntılarını ve ilgili IP/DNS adını Publicıpaddress öğesini kullanarak alın. Ağ geçidinin yeniden başlatılması sırasında VIP değişebileceğinizden, A kayıtlarının kullanılması önerilmez.
+Application Gateway DNS adı, APıM proxy ana bilgisayar adını (örneğin, Yukarıdaki örneklerde `api.contoso.net`) bu DNS adına işaret eden bir CNAME kaydı oluşturmak için kullanılmalıdır. Ön uç IP CNAME kaydını yapılandırmak için, Application Gateway ayrıntılarını ve ilgili IP/DNS adını Publicıpaddress öğesini kullanarak alın. Ağ geçidinin yeniden başlatılması sırasında VIP değişebileceğinizden, A kayıtlarının kullanılması önerilmez.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

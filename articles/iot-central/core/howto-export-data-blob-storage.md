@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: efa44df378e88b870654111295c10bec06539adb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950528"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176241"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Verilerinizi Azure Blob depolama alanına aktarma
 
@@ -85,7 +85,7 @@ Verilerin dışarı aktarılacağı bir depolama hedefine sahip olduğunuza gör
 
 9. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarma** geçişi 'nin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
 
-   ![Sürekli veri vermeyi yapılandırma](media/howto-export-data/export-list-blob2.png)
+   ![Verileri sürekli dışarı aktarmayı yapılandırma](media/howto-export-data/export-list-blob2.png)
 
 10. Birkaç dakika sonra verileriniz depolama hesabınızda görüntülenir.
 
@@ -132,7 +132,7 @@ Aşağıdaki örnek, kodu çözülmüş bir avro dosyasındaki kaydı gösterir:
 Sürekli veri dışa aktarma ilk açıldığında, tüm cihazları içeren tek bir anlık görüntü dışa aktarılabilir. Her cihaz şunları içerir:
 - IoT Central cihaz `id`
 - Cihazın `name`
-- [cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden `deviceId`
+- [cihaz sağlama hizmeti](/azure/iot-central/core/howto-connect-nodejs) 'nden `deviceId`
 - Cihaz şablonu bilgileri
 - Özellik değerleri
 - Ayar değerleri

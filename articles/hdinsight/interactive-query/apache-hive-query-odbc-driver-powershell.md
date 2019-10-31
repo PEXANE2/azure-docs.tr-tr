@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4ec580c3d4c30fa4d86c24defb7eaded464dea3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122168"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177323"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive sorgulama
 
@@ -36,15 +36,15 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsünü yükler
 
-[Microsoft Hive ODBC sürücüsü](https://go.microsoft.com/fwlink/?LinkID=286698)indirin ve yükleyin.
+[Microsoft Hive ODBC sürücüsü](https://www.microsoft.com/download/details.aspx?id=40886)indirin ve yükleyin.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC veri kaynağı oluşturma
 
 Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları gösterilmektedir.
 
-1. Windows 'da,**Windows Yönetim Araçları** > **ODBC veri kaynakları (32 bit)/(64 bit)** **Başlat** > ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
+1. Windows 'da, Windows **Yönetim araçları** > **ODBC veri kaynakları (32 bit)/(64 bit)**  > **Başlat** ' a gidin.  **ODBC veri kaynağı Yöneticisi** penceresi açılır.
 
-    ![OBDC veri kaynağı Yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak BIR DSN yapılandırma")
+    ![OBDC veri kaynağı Yöneticisi](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak bir DSN yapılandırma")
 
 1. **Yeni veri kaynağı oluştur** penceresini açmak IÇIN **Kullanıcı DSN** sekmesinden **Ekle** ' yi seçin.
 
@@ -56,21 +56,21 @@ Aşağıdaki adımlarda Apache Hive ODBC veri kaynağı oluşturma adımları g�
    | --- | --- |
    |  Data Source Name |Veri kaynağınız için bir ad verin |
    |  Ana bilgisayar (ler) |`CLUSTERNAME.azurehdinsight.net` yazın. Örneğin, `myHDICluster.azurehdinsight.net` |
-   |  Port |**443** yazın.|
+   |  Bağlantı noktası |**443** yazın.|
    |  Database |**Varsayılanı**kullanın. |
-   |  Mekanizma |**Windows Azure HDInsight hizmetini** seçin |
-   |  Kullanıcı adı |HDInsight kümesi HTTP Kullanıcı Kullanıcı adı girin. Varsayılan kullanıcı adı **admin** şeklindedir. |
-   |  istemcisiyle yönetilen bir cihaz için) |HDInsight kümesi Kullanıcı parolasını girin. **Parolayı Kaydet (şifreli)** onay kutusunu seçin.|
+   |  Mechanism |**Windows Azure HDInsight hizmetini** seçin |
+   |  User Name |HDInsight kümesi HTTP Kullanıcı Kullanıcı adı girin. Varsayılan kullanıcı adı **admin** şeklindedir. |
+   |  Parola |HDInsight kümesi Kullanıcı parolasını girin. **Parolayı Kaydet (şifreli)** onay kutusunu seçin.|
 
-1. İsteğe bağlı: **Gelişmiş seçenekleri**belirleyin.  
+1. İsteğe bağlı: **Gelişmiş Seçenekler**' i seçin.  
 
    | Parametre | Açıklama |
    | --- | --- |
-   |  Yerel sorgu kullan |Seçildiğinde, ODBC sürücüsü TSQL HiveQL 'e dönüştürmeyi denemez. Bu seçeneği yalnızca% 100, saf HiveQL deyimlerini gönderdikten emin olduğunuzda kullanın. SQL Server veya Azure SQL veritabanı 'na bağlanırken, işareti kaldırılmış olarak bırakmalısınız. |
+   |  Yerel sorgu kullan |Seçildiğinde, ODBC sürücüsü TSQL HiveQL 'e dönüştürmeyi denemez. Bu seçeneği yalnızca %100, saf HiveQL deyimlerini gönderdikten emin olduğunuzda kullanın. SQL Server veya Azure SQL veritabanı 'na bağlanırken, işareti kaldırılmış olarak bırakmalısınız. |
    |  Blok başına getirilen satırlar |Çok sayıda kayıt getirilirken, en iyi performansı sağlamak için bu parametreyi ayarlama gerekebilir. |
    |  Varsayılan dize sütunu uzunluğu, Ikili sütun uzunluğu, ondalık sütun ölçeği |Veri türü uzunlukları ve ön ekleri verilerin nasıl döndürüldüğünü etkileyebilir. Duyarlık ve kesilme kaybı nedeniyle yanlış bilgilerin döndürülmesine neden olur. |
 
-    ![GELIŞMIŞ DSN yapılandırma seçenekleri](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "GELIŞMIŞ DSN yapılandırma seçenekleri")
+    ![Gelişmiş DSN yapılandırma seçenekleri](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Gelişmiş DSN yapılandırma seçenekleri")
 
 1. Veri kaynağını test etmek için **Test** ' i seçin. Veri kaynağı doğru şekilde yapılandırıldığında, test sonucu **başarıyı**gösterir.  
 
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-Aşağıdaki kod parçacığı, öğreticinin başlangıcında oluşturduğunuz etkileşimli sorgu kümesinde bir sorgu yürütmek için yukarıdaki işlevi kullanır. `DATASOURCENAME` **Microsoft Hive ODBC sürücüsü DSN kurulum** ekranında belirttiğiniz **veri kaynağı adıyla** değiştirin. Kimlik bilgileri istendiğinde, kümeyi oluştururken **küme oturum açma Kullanıcı adı** ve **küme oturum açma parolası** altında girdiğiniz kullanıcı adını ve parolayı girin.
+Aşağıdaki kod parçacığı, öğreticinin başlangıcında oluşturduğunuz etkileşimli sorgu kümesinde bir sorgu yürütmek için yukarıdaki işlevi kullanır. `DATASOURCENAME`, **MICROSOFT HIVE ODBC sürücüsü DSN kurulum** ekranında belirttiğiniz **veri kaynağı adıyla** değiştirin. Kimlik bilgileri istendiğinde, kümeyi oluştururken **küme oturum açma Kullanıcı adı** ve **küme oturum açma parolası** altında girdiğiniz kullanıcı adını ve parolayı girin.
 
 ```powershell
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: fdf4b68bfb10ff02ae4f90ee4c1668274ed30e79
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f4bb7bd3b1cd024c71d5c1ab7329437716755f88
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957037"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177205"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Öğretici: IoT Tak ve Kullan cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
 
@@ -191,4 +191,4 @@ Bu öğreticide, genel model deposundaki bir DCM 'den oluşturulan IoT Tak ve Ku
 DCMs hakkında daha fazla bilgi edinmek ve kendi modellerinizi oluşturmak için nasıl yapılır kılavuzuna ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Bir cihaz şablonu ayarlama ve yönetme](./howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Bir cihaz grubu oluşturma](./tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
