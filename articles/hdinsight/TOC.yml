@@ -137,6 +137,8 @@
               href: ./hdinsight-autoscale-clusters.md
             - name: Dış meta veri depolarını kullanma
               href: ./hdinsight-use-external-metadata-stores.md
+            - name: Özel Ambari DB
+              href: ./hdinsight-custom-ambari-db.md
             - name: HDInsight kümesi için günlükleri yönetme
               href: ./hdinsight-log-management.md
             - name: Depolama hesapları ekleme

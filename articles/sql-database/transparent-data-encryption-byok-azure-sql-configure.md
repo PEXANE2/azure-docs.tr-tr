@@ -11,14 +11,14 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596731"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163861"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLı: Azure Key Vault müşteri tarafından yönetilen anahtarla Saydam Veri Şifrelemesi etkinleştir
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 
 Bu makalede, bir SQL veritabanı veya veri ambarı üzerindeki Saydam Veri Şifrelemesi (TDE) için Azure Key Vault bir anahtarın nasıl kullanılacağı açıklanmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-azure-sql.md)sayfasını ziyaret edin. 
 
@@ -42,7 +42,7 @@ Bu makalede, bir SQL veritabanı veya veri ambarı üzerindeki Saydam Veri Şifr
    - Devre dışı değil
    - Al, *sarmalama tuşu*, *anahtar sarmalama işlemini geri* *alabilir*
 
-## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>1\.Adım Sunucunuza bir Azure AD kimliği atama 
+## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>1\. Adım Sunucunuza bir Azure AD kimliği atama 
 
 Var olan bir sunucunuz varsa, sunucunuza bir Azure AD kimliği eklemek için aşağıdakileri kullanın:
 
@@ -65,7 +65,7 @@ Sunucu oluşturuyorsanız, sunucu oluşturma sırasında bir Azure AD kimliği e
    -AssignIdentity 
    ```
 
-## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>2\.Adım Sunucunuza Key Vault izinleri verin
+## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>2\. Adım Sunucunuza Key Vault izinleri verin
 
 TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izni vermek üzere [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'ini kullanın.
 
@@ -76,7 +76,7 @@ TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izn
    -PermissionsToKeys get, wrapKey, unwrapKey
    ```
 
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Adım 3. Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
+## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. Adım Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
 
 
 - Anahtar kasasından anahtar KIMLIĞI almak için [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 'ini kullanın
@@ -112,7 +112,7 @@ TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izn
    -ServerName <LogicalServerName> 
    ```
 
-## <a name="step-4-turn-on-tde"></a>4\. adımı. TDE açma 
+## <a name="step-4-turn-on-tde"></a>4\. Adım. TDE açma 
 
 TDE ' i açmak için [set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet 'ini kullanın.
 
@@ -126,7 +126,7 @@ TDE ' i açmak için [set-AzSqlDatabaseTransparentDataEncryption](/powershell/mo
 
 Artık veritabanı veya veri ambarı Key Vault içindeki bir şifreleme anahtarıyla TDE etkinleştirilmiştir.
 
-## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>5\. adımı. Şifreleme durumunu ve şifreleme etkinliğini denetleme
+## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>5\. Adım. Şifreleme durumunu ve şifreleme etkinliğini denetleme
 
 Bir veritabanı veya veri ambarı için şifreleme ilerleme durumunu denetlemek için, Get [-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) ve [Get-AzSqlDatabaseTransparentDataEncryptionActivity](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryptionactivity) ' y i kullanın.
 
@@ -153,7 +153,7 @@ Bir veritabanı veya veri ambarı için şifreleme ilerleme durumunu denetlemek 
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -DatabaseName <DatabaseName> `
-   -State "Disabled”
+   -State "Disabled"
    ```
  
 - Sunucuya eklenen Key Vault anahtarlarının listesini döndürmek için [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 'ini kullanın.
@@ -192,7 +192,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Güvenlik gereksinimleriyle uyum sağlamak için bir sunucunun TDE koruyucusunu döndürme hakkında bilgi edinin: [PowerShell kullanarak saydam veri şifrelemesi koruyucusunu döndürün](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- Güvenlik riskine karşı, riskli olabilecek bir TDE koruyucuyu kaldırma hakkında bilgi edinin: [Güvenliği ihlal edilmiş bir anahtarı kaldırın](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+- Güvenlik riskine karşı, riskli olabilecek bir TDE koruyucuyu kaldırmayı öğrenin: [riskli olabilecek bir anahtarı kaldırın](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
 ## <a name="prerequisites-for-cli"></a>CLı önkoşulları
 
@@ -210,7 +210,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
    - Devre dışı değil
    - Al, *sarmalama tuşu*, *anahtar sarmalama işlemini geri* *alabilir*
    
-## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>1\.Adım Azure AD kimliğiyle sunucu oluşturma
+## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>1\. Adım Azure AD kimliğiyle sunucu oluşturma
       cli
       # create server (with identity) and database
       az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
@@ -221,7 +221,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 >"PrincipalId" sunucusunu sunucu oluşturmaktan tutun, bir sonraki adımda Anahtar Kasası izinleri atamak için kullanılan nesne kimliğidir
 >
  
-## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>2\.Adım Mantıksal SQL Server 'a Key Vault izinleri verme
+## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>2\. Adım Mantıksal SQL Server 'a Key Vault izinleri verme
       cli
       # create key vault, key and grant permission
        az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
@@ -234,7 +234,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 >
  
        
-## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Adım 3. Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
+## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>3\. Adım Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
   
      cli
      # add server key and update encryption protector
@@ -247,7 +247,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 > 
 
   
-## <a name="step-4-turn-on-tde"></a>4\. adımı. TDE açma 
+## <a name="step-4-turn-on-tde"></a>4\. Adım. TDE açma 
       cli
       # enable encryption
       az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled 
@@ -255,7 +255,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 
 Artık veritabanı veya veri ambarı Azure Key Vault içinde müşteri tarafından yönetilen bir şifreleme anahtarıyla TDE etkinleştirilmiştir.
 
-## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>5\. adımı. Şifreleme durumunu ve şifreleme etkinliğini denetleme
+## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>5\. Adım. Şifreleme durumunu ve şifreleme etkinliğini denetleme
 
      cli
       # get encryption scan progress

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35a6ac955ade3eab77f01c4e234b35744f0a7be3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170084"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151180"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu erişim: Yöneticiler için MFA gerektir
 
@@ -25,12 +25,12 @@ Yönetici hakları atanmış hesaplar saldırganlar tarafından hedeflenir. Bu h
 Microsoft, en azından aşağıdaki rollerde MFA gerektirmenizi önerir:
 
 * Genel yönetici
-* SharePoint Yöneticisi
+* SharePoint yöneticisi
 * Exchange Yöneticisi
 * Koşullu Erişim Yöneticisi
-* Güvenlik Yöneticisi
+* Güvenlik yöneticisi
 * Yardım Masası (parola) Yöneticisi
-* Parola yöneticisi
+* Parola Yöneticisi
 * Faturalama yöneticisi
 * Kullanıcı Yöneticisi
 
@@ -56,17 +56,17 @@ Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication ge
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Dahil et**altında **Dizin rolleri (Önizleme)** öğesini seçin ve en azından aşağıdaki rolleri seçin:
       * Genel yönetici
-      * SharePoint Yöneticisi
+      * SharePoint yöneticisi
       * Exchange Yöneticisi
       * Koşullu Erişim Yöneticisi
-      * Güvenlik Yöneticisi
+      * Güvenlik yöneticisi
       * Yardım Masası Yöneticisi
-      * Parola yöneticisi
+      * Parola Yöneticisi
       * Faturalama yöneticisi
       * Kullanıcı Yöneticisi
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Bitti**’yi seçin.
-1. **Bulut uygulamaları veya eylemler**altında-1**dahil**@no__t, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
+   1. **Done** (Bitti) öğesini seçin.
+1. **Bulut uygulamaları veya eylemler** altında **dahil** > , **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
 1. **Erişim denetimleri** > **izin**' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**

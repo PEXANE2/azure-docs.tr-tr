@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301173"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146450"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -128,7 +128,7 @@ Eşitleme çalıştırmak için [Sync-Azanalysisservicesınstance](https://docs.
 
 Sorgu çoğaltmalarının sayısını ayarlamak için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)kullanın. İsteğe bağlı `-ReadonlyReplicaCount` parametresini belirtin.
 
-İşlem sunucusunu sorgu havuzundan ayırmak için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)kullanın. @No__t-1 ' i kullanmak için isteğe bağlı `-DefaultConnectionMode` parametresini belirtin.
+İşlem sunucusunu sorgu havuzundan ayırmak için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)kullanın. `Readonly`kullanmak için isteğe bağlı `-DefaultConnectionMode` parametresini belirtin.
 
 Daha fazla bilgi için bkz. [az. AnalysisServices modülüyle hizmet sorumlusu kullanma](analysis-services-service-principal.md#azmodule).
 
@@ -138,7 +138,7 @@ Sunucunuzun genel bakış sayfasında iki sunucu adı vardır. Henüz bir sunucu
 
 Power BI Desktop, Excel ve özel uygulamalar gibi son kullanıcı istemci bağlantıları için **sunucu adı**' nı kullanın. 
 
-PowerShell, Azure Işlev uygulamaları ve AMO 'daki SSMS, SSDT ve bağlantı dizeleri için **Yönetim sunucusu adı**' nı kullanın. Yönetim sunucusu adı, özel bir `:rw` (okuma-yazma) niteleyicisi içerir. Tüm işleme işlemleri (birincil) yönetim sunucusunda oluşur.
+PowerShell, Azure Işlev uygulamaları ve AMO 'daki SSMS, Visual Studio ve bağlantı dizeleri için **Yönetim sunucusu adı**' nı kullanın. Yönetim sunucusu adı, özel bir `:rw` (okuma-yazma) niteleyicisi içerir. Tüm işleme işlemleri (birincil) yönetim sunucusunda oluşur.
 
 ![Sunucu adları](media/analysis-services-scale-out/aas-scale-out-name.png)
 

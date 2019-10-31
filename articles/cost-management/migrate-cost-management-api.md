@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 53c171df47dde58b264b354eea5ff1ccca9f5256
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee4b2196240ceff1351b7ea310d9660ed613d075
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374721"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152070"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Kurumsal Anlaşma 'den Microsoft Müşteri Sözleşmesi API 'Lerine geçiş
 
@@ -209,7 +209,7 @@ Kullanım kayıtları dizisinin bulunduğu özellik adı, verilerden _değerlere
 | ResourceRate | effectivePrice | &nbsp;  |
 | HizmetYöneticisiKimliği | Yok | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
-| HizmetBilgisi2 | serviceInfo2 | &nbsp;  |
+| ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | HizmetAdı | meterCategory | Tam dize değerleri farklı şekilde değişebilir. |
 | ServiceTier | meterSubCategory | Tam dize değerleri farklı şekilde değişebilir. |
 | StoreServiceIdentifier | Yok | &nbsp;  |
@@ -352,15 +352,15 @@ Konuma başka bir GET çağrısı yapın. GET çağrısına olan yanıt, işlem 
 ```
 HTTP Status 200
 
-                                    {
-                            “id”: “providers/Microsoft.Consumption/operationresults/{operationId}”,
-                            “name”: {operationId},
-                           “type”: “Microsoft.Consumption/operationResults”,
-                           “properties” : {
-                                  “downloadUrl”: {urltoblob},
-                                  “vaildTill”: “Date”
+{
+  "id": "providers/Microsoft.Consumption/operationresults/{operationId}",
+  "name": {operationId},
+  "type": “Microsoft.Consumption/operationResults",
+  "properties" : {
+    "downloadUrl": {urltoblob},
+    "validTill": "Date"
+  }
 }
-                     }
 ```
 
 İstemci Ayrıca `Azure-AsyncOperation` için bir GET çağrısı yapabilir. Uç nokta işlemin durumunu döndürür.

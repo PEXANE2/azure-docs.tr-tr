@@ -1,5 +1,5 @@
 ---
-title: Microsoft Identity platformunda (v1) kimlik doğrulaması | Mavisi
+title: Microsoft Identity platformunda (v 1.0) kimlik doğrulaması | Mavisi
 description: Microsoft Identity platform 'da kimlik doğrulamaya ilişkin temel bilgileri öğrenin. uygulama modeli, API, sağlama ve Microsoft Identity platformunun desteklediği en yaygın kimlik doğrulama senaryoları.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f64b16bde149c4dddd77ccec227781f45176a27d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377466"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149185"
 ---
 # <a name="what-is-authentication"></a>Kimlik doğrulaması nedir?
 
@@ -73,7 +73,7 @@ Yukarıdaki örnek senaryoda uygulamaları bu iki role göre sınıflandırabili
 |[On-behalf-of akışı](v1-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
 |[İstemci kimlik bilgileri](v1-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
 
-Örtülü mod aracılığıyla yayınlanan belirteçlerin, URL aracılığıyla tarayıcıya geri geçirilmesi nedeniyle bir uzunluk sınırlaması vardır (`response_mode` `query` veya `fragment` ' dir).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur. 
+Örtülü mod aracılığıyla yayınlanan belirteçlerin, URL aracılığıyla tarayıcıya geri geçirilmesi nedeniyle bir uzunluk sınırlaması vardır (`response_mode` `query` veya `fragment`).  Bazı tarayıcıların, tarayıcı çubuğuna koyabileceğiniz ve çok uzun olduğunda başarısız olan URL 'nin boyutunda bir sınırı vardır.  Bu nedenle, bu belirteçlerin `groups` veya `wids` talepleri yoktur. 
 
 Temel bilgilere genel bir bakış edindiğinize göre, kimlik uygulama modeli ve API 'sini, sağlama işlemini Microsoft Identity platformunda nasıl çalıştığını ve Microsoft Identity platformunun desteklediği yaygın senaryolar hakkında ayrıntılı bilgi bağlantılarını öğrenmek için okumaya devam edin.
 

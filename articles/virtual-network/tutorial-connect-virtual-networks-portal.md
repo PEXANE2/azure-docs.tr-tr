@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515722"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164059"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
@@ -54,7 +54,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |Kaynak grubu| **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
     |Bölge| **Doğu ABD**’yi seçin.|
     |Adı|myVirtualNetwork1|
-    ! [Temel sanal ağ ayarlarını yapılandırma] (
+   
 4. **IP adresleri** sayfasında **Adres alanı** alanı için 10.0.0.0/16 girin. Aşağıdaki **alt ağ ekle** düğmesine tıklayın ve alt ağ **adı** Için Subnet1 ve IP **adresi aralığı**için 10.0.0.0/24 girin.
    
 5. Aşağıdaki değişikliklerle birlikte 1.-3. adımları tekrar tamamlayın:
@@ -147,7 +147,7 @@ Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makin
 6. Sonraki bir adımda, *myVm1* sanal makinesinden *myVm2* sanal makinesiyle iletişim kurmak için ping kullanılır. Ping, varsayılan olarak Windows Güvenlik Duvarı üzerinden reddedilen İnternet Denetim İletisi Protokolü’nü (ICMP) kullanır. *myVm1* sanal makinesinde, Windows güvenlik duvarı üzerinden ICMP’yi etkinleştirin; böylece sonraki bir adımda PowerShell kullanarak *myVm2* sanal makinesinden bu sanal makineye ping komutu gönderebilirsiniz:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     Bu öğreticide sanal makineler arasında iletişim kurmak için ping kullanılsa da, üretim dağıtımları için Windows Güvenlik Duvarı üzerinden ICMP’ye izin verilmesi önerilmez.

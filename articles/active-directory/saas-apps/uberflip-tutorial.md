@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8760606c981f494b38d4eb8ac1b2cd50ceb8582c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6710344e73e3c0ea6f9b3491209689871cc14a4f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852102"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160947"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Öğretici: Uberflip ile tümleştirme Azure Active Directory
 
@@ -37,7 +38,7 @@ Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında d
 
 Uberflip ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Bir Azure AD aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Çoklu oturum açma özelliği etkinken bir Uberflip aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
@@ -53,7 +54,7 @@ Uberflip aşağıdaki özellikleri destekler:
 
 Uberflip 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Marketi 'nden yönetilen SaaS uygulamaları listenize Uberflip eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 
    ![Azure Active Directory seçeneği](common/select-azuread.png)
@@ -70,7 +71,7 @@ Uberflip 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Azure Market
 
    ![Sonuçlar listesinde uberflip](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 Bu bölümde, **B Simon**adlı bir test kullanıcısına göre Uberflip Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz. Çoklu oturum açma için, Uberflip içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
 
@@ -83,7 +84,7 @@ Uberflip ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için
 1. B. Simon adlı Azure AD kullanıcısına bağlı olan Uberflip 'da B. Simon adlı bir Kullanıcı **[oluşturmak için bir uberflip test kullanıcısı oluşturun](#create-an-uberflip-test-user)** .
 1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı test](#test-single-sign-on)** edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
 Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
@@ -134,11 +135,11 @@ Azure AD çoklu oturum açmayı Uberflip ile yapılandırmak için aşağıdaki 
 
 Uberflip tarafında çoklu oturum açmayı yapılandırmak için, indirilen Federasyon meta veri XML 'sini ve ilgili kopyalanmış URL 'Leri Azure portal [Uberflip destek ekibine](mailto:support@uberflip.com)göndermeniz gerekir. Uberflip ekibi, SAML SSO bağlantısının her iki tarafta da düzgün şekilde ayarlanmış olmasını sağlayacaktır.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmedeki **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. Azure portal sol bölmedeki  > **kullanıcılar**  > **tüm kullanıcılar**' ı **Azure Active Directory** seçin.
 
     ![Kullanıcılar ve "tüm kullanıcılar" seçenekleri](common/users.png)
 
@@ -152,17 +153,17 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 
     1. **Ad** kutusuna **bsıon**yazın.
   
-    1. **Kullanıcı adı** kutusuna **\@\<bsıon yourcompanydomain > yazın.\< Uzantı >** . Örneğin, **bsıon\@contoso.com**.
+    1. **Kullanıcı adı** kutusuna **bsıon\@\<yourcompanydomain >.\<uzantısı >** girin. Örneğin, **Bsıon\@contoso.com**.
 
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
 
-    1. **Oluştur**’u seçin.
+    1. **Oluştur**'u seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Uberflip erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirin.
 
-1. Azure Portal **Kurumsal uygulamalar** > **tüm uygulamalar** > **uberflip**' ı seçin.
+1. Azure portal, **tüm uygulamalar** > **uberflip** > **Kurumsal uygulamalar** ' ı seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 

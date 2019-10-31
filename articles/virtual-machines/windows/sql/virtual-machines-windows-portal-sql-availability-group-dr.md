@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100661"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159733"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Farklı bölgelerde Azure sanal makinelerinde her zaman açık kullanılabilirlik grubu yapılandırma
 
@@ -130,7 +130,7 @@ PowerShell betiğini, yeni bölgedeki yük dengeleyicide yapılandırdığınız
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
-   $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
+   $ILBIP = "<n.n.n.n>" # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
    [int]$ProbePort = <nnnnn> # The probe port you set on the ILB.
 
    Import-Module FailoverClusters
@@ -142,7 +142,7 @@ PowerShell betiğini, yeni bölgedeki yük dengeleyicide yapılandırdığınız
 
 Uzak veri merkezindeki çoğaltma, kullanılabilirlik grubunun bir parçasıdır ancak farklı bir alt ağda yer alabilir. Bu çoğaltma birincil çoğaltma olursa, uygulama bağlantısı zaman aşımları meydana gelebilir. Bu davranış, çok alt ağ dağıtımında şirket içi kullanılabilirlik grubuyla aynıdır. İstemci uygulamalarından gelen bağlantılara izin vermek için, istemci bağlantısını güncelleştirin ya da küme ağ adı kaynağında ad çözümlemesi önbelleğe alma 'yı yapılandırın.
 
-Tercihen, ayarlanacak `MultiSubnetFailover=Yes`istemci bağlantı dizelerini güncelleştirin. Bkz. [MultiSubnetFailover Ile bağlanma](https://msdn.microsoft.com/library/gg471494#Anchor_0).
+Tercihen, `MultiSubnetFailover=Yes`ayarlamak için istemci bağlantı dizelerini güncelleştirin. Bkz. [MultiSubnetFailover Ile bağlanma](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
 Bağlantı dizelerini değiştiremeyeceğiniz takdirde ad çözümlemesi önbelleği yapılandırabilirsiniz. Bkz. [zaman aşımı hatası ve çok alt ağ ortamında SQL Server 2012 AlwaysOn kullanılabilirlik grubu dinleyicisine bağlanamazsınız](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
@@ -164,23 +164,23 @@ Uzak bölgeye dinleyici bağlantısını test etmek için çoğaltmayı uzak bö
 
 Bağlantıyı test ettikten sonra birincil çoğaltmayı birincil veri merkezinize geri taşıyın ve kullanılabilirlik modunu normal işletim ayarlarına geri doğru ayarlayın. Aşağıdaki tabloda, bu belgede açıklanan mimarinin normal işletimsel ayarları gösterilmektedir:
 
-| Location | Sunucu örneği | Role | Kullanılabilirlik modu | Yük devretme modu
+| Konum | Sunucu örneği | Rol | Kullanılabilirlik modu | Yük devretme modu
 | ----- | ----- | ----- | ----- | -----
-| Birincil veri merkezi | SQL-1 | Birincil | K | Otomatik
-| Birincil veri merkezi | SQL-2 | İkincil | K | Otomatik
-| İkincil veya uzak veri merkezi | SQL-3 | İkincil | En | El ile
+| Birincil veri merkezi | SQL-1 | Birincil | K | Automatic
+| Birincil veri merkezi | SQL-2 | İkincil | K | Automatic
+| İkincil veya uzak veri merkezi | SQL-3 | İkincil | En | Manual
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Planlı ve zorlamalı el ile yük devretme hakkında daha fazla bilgi
 
-Daha fazla bilgi için aşağıdaki konulara bakın:
+Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
 - [Kullanılabilirlik grubunun planlı bir el Ile yük devretmesini gerçekleştirme (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Kullanılabilirlik grubunun zorla el Ile yük devretmesini gerçekleştirme (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>Ek Bağlantılar
+## <a name="additional-links"></a>Ek bağlantılar
 
 * [Always on kullanılabilirlik grupları](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Azure Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure yük dengeleyiciler](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure kullanılabilirlik kümeleri](../manage-availability.md)

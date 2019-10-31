@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: eaf4ba303caa405a170322828add944487908365
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 6b64eb955476a8ab5307b7d508484c290fd7660a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968588"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162164"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](resource-group-using-tags.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir.
@@ -749,7 +749,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | bölümlerinin | Hayır | Hayır |
 > | Boyutlar | Hayır | Hayır |
 > | kayıt sayısı | Hayır | Hayır |
-> | Aktarımları | Hayır | Hayır |
+> | Dışarı aktarmalar | Hayır | Hayır |
 > | ExternalBillingAccounts | Hayır | Hayır |
 > | ExternalBillingAccounts/uyarılar | Hayır | Hayır |
 > | ExternalBillingAccounts/Boyutlar | Hayır | Hayır |
@@ -1445,7 +1445,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Publicıpöneklerini | Yes | Yes |
 > | routeFilters | Yes | Yes |
 > | routeTables | Yes | Yes |
-> | Securegateyöntemlere | Yes | Yes |
 > | serviceEndpointPolicies | Yes | Yes |
 > | trafficManagerGeographicHierarchies | Hayır | Hayır |
 > | trafficmanagerprofiles | Yes | Yes |

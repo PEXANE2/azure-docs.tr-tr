@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/30/2019
+ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795283"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163978"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak şirket içi Windows kullanıcılarını ve gruplarını Azure SQL veritabanı yönetilen örneği 'ne SQL Server geçirme
 
@@ -41,6 +41,8 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullar geçerlidir:
 - Kullanıcı/Grup oluşturmak için Active Directory erişim.
 - Şirket içi ortamınızda mevcut bir SQL Server.
 - Mevcut bir yönetilen örnek. Bkz. [hızlı başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma](sql-database-managed-instance-get-started.md).
+  - Yönetilen örnekteki bir `sysadmin` Azure AD oturum açmaları oluşturmak için kullanılmalıdır.
+- [Yönetilen örnek için bir Azure AD yöneticisi oluşturun](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 - Ağınız içindeki yönetilen örneğinize bağlanabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın: 
     - [Uygulamanızı Azure SQL veritabanı yönetilen örneğine bağlama](sql-database-managed-instance-connect-app.md)
     - [Hızlı başlangıç: şirket içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md)
@@ -214,7 +216,7 @@ go
 
 Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komutunu yürütün.
 
-1. Yönetilen örnek için SQL yönetici hesabını kullanarak yönetilen Örneğinizde oturum açın. Ardından, aşağıdaki sözdizimini kullanarak yönetilen örnekte Azure AD oturum açma bilgilerinizi oluşturun:
+1. Yönetilen örnek için SQL yönetici hesabını kullanarak yönetilen Örneğinizde oturum açın. Ardından, aşağıdaki sözdizimini kullanarak yönetilen örnekte Azure AD oturum açma bilgilerinizi oluşturun. Daha fazla bilgi için bkz. [öğretici: Azure ad sunucu sorumlularını (oturumlar) kullanarak Azure SQL veritabanı 'Nda yönetilen örnek güvenliği](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

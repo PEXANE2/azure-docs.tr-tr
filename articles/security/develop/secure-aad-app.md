@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: v-fehase
-ms.openlocfilehash: 87df7824a182e68d849fdf967f96b2974b7e0c16
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148178"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159842"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD uygulaması için güvenli uygulama geliştirme
 ## <a name="overview"></a>Genel Bakış
@@ -235,7 +235,7 @@ $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1
 
 #Configure the HTTP settings for the application gateway back end
 
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting01" -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
 
 #Create a load-balancer routing rule that configures the load balancer
 
@@ -265,7 +265,7 @@ Azure App Service, Python, Ruby, C#ve Java gibi dilleri kullanarak Web uygulamal
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Devam etmeden önce, özel etki alanınız için Azure etki alanı adı sistem yapılandırma kullanıcı arabirimine gidin ve "www" https://aka.ms/appservicecustomdns ana bilgisayar adı için bir CNAME kaydı yapılandırmak ve Web uygulamanızın varsayılan etki alanı adını göstermek için konusundaki yönergeleri izleyin
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Devam etmeden önce, özel etki alanınız için Azure etki alanı adı sistem yapılandırma kullanıcı arabirimine gidin ve "www" ana bilgisayar adı için bir CNAME kaydı yapılandırmak ve Web uygulamanızın varsayılan etki alanı adını göstermek için https://aka.ms/appservicecustomdns adresindeki yönergeleri izleyin
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>App Service planını paylaşılan katmana yükselt (özel etki alanları için gereken en düşük)
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -293,7 +293,7 @@ App Service örnekleri, sanal ağlarla tümleştirilebilir. Bu tümleştirme, uy
     *App Service için yeni sanal ağ tümleştirmesi*
 1. Sonraki sayfada **VNET Ekle (Önizleme)** öğesini seçin.
 
-1. Sonraki menüde, dağıtımda `aad-vnet`oluşturulan sanal ağı seçin. Yeni bir alt ağ oluşturabilir veya var olan bir alt ağı seçebilirsiniz.
+1. Sonraki menüde, dağıtımda oluşturulan `aad-vnet`ile başlayan sanal ağı seçin. Yeni bir alt ağ oluşturabilir veya var olan bir alt ağı seçebilirsiniz.
    Bu durumda yeni bir alt ağ oluşturun. **Adres aralığını** **10.0.3.0/24** olarak ayarlayın ve alt ağ **App-subnet**olarak adlandırın.
 
    ![App Service sanal ağ yapılandırması](./media/secure-web-app/app-vnet-config.png)
@@ -320,7 +320,7 @@ Sanal ağ tümleştirmesini etkinleştirmiş olduğunuza göre, uygulamamıza a�
 
    *NSG 'yi yapılandırma*
 
-4. Ağ Geçidi NSG için giden kurallarında, hizmet etiketini hedefleyen bir kural oluşturarak App Service örneğine giden bağlantılara izin veren bir kural ekleyin`AppService`
+4. Ağ Geçidi NSG için giden kurallarında, hizmet etiketini hedefleyen bir kural oluşturarak App Service örneğine giden bağlantılara izin veren bir kural ekleyin `AppService`
 
    ![NSG için giden kuralları ekleme](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -350,7 +350,7 @@ Ayarları uygulamak için, App Service ağ sekmesi ' ne gidin, **IP kısıtlamal
 *Yalnızca ağ geçidi IP 'nin App Service erişmesine izin ver*
 
 ### <a name="azure-domain-name-system"></a>Azure etki alanı adı sistemi 
-Azure etki alanı adı sistemi veya Azure etki alanı adı sistemi, IP adresine bir Web sitesi veya hizmet adı çevirmekten (veya çözümlemeden) sorumludur. Azure etki alanı adı sistemi https://docs.microsoft.com/azure/dns/dns-overview) (Azure altyapısı kullanılarak ad çözümlemesi sağlayan etki alanı adı sistemi etki alanları için bir barındırma hizmetidir. Kullanıcılar, Azure 'da etki alanlarını barındırarak, diğer Azure hizmetleriyle aynı kimlik bilgilerini, API 'Leri, araçları ve faturalandırmayı kullanarak etki alanı adı sistem kayıtlarını yönetebilir. Azure etki alanı adı sistemi, özel etki alanı adı sistemi etki alanlarını da destekler.
+Azure etki alanı adı sistemi veya Azure etki alanı adı sistemi, IP adresine bir Web sitesi veya hizmet adı çevirmekten (veya çözümlemeden) sorumludur. Azure etki alanı adı sistemi (https://docs.microsoft.com/azure/dns/dns-overview), Azure altyapısı kullanılarak ad çözümlemesi sağlayan etki alanı adı sistemi etki alanları için bir barındırma hizmetidir. Kullanıcılar, Azure 'da etki alanlarını barındırarak, diğer Azure hizmetleriyle aynı kimlik bilgilerini, API 'Leri, araçları ve faturalandırmayı kullanarak etki alanı adı sistem kayıtlarını yönetebilir. Azure etki alanı adı sistemi, özel etki alanı adı sistemi etki alanlarını da destekler.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 Azure disk şifrelemesi, veri diskleri için birim şifrelemesi sağlamak üzere Windows 'un BitLocker özelliğinden yararlanır. Çözüm, disk şifreleme anahtarlarının denetlenmesi ve yönetilmesine yardımcı olmak için Azure Key Vault ile tümleşir.
@@ -389,16 +389,16 @@ Azure Güvenlik Merkezi ile, müşteriler iş yükleri genelinde güvenlik ilkel
    - Azure Güvenlik Merkezi ve Azure Danışmanı, ek koruma ve bildirim sağlar. Azure Güvenlik Merkezi ayrıca bir saygınlık sistem sağlar.
 ### <a name="logging-and-auditing"></a>Günlük kaydı ve denetim
 Azure Hizmetleri, sistem durumunun yanı sıra sistem durumu ve Kullanıcı etkinliklerini de yoğun olarak günlüğe kaydeder:
-   - Etkinlik günlükleri: [Etkinlik günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) , bir abonelikteki kaynaklarda gerçekleştirilen işlemlerle ilgili öngörüler sağlar. Etkinlik günlükleri, bir işlemin başlatıcısının, oluşma süresinin ve durumunun belirlenmesine yardımcı olabilir.
-   - Tanılama günlükleri: [Tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) her kaynak tarafından yayılan tüm günlükleri içerir. Bu Günlükler Windows olay sistemi günlükleri, Azure depolama günlükleri, Key Vault denetim günlükleri ve Application Gateway erişim ve güvenlik duvarı günlükleri içerir. Tüm tanılama günlükleri, arşivleme için merkezi ve şifrelenmiş bir Azure depolama hesabına yazar. Bekletme, kuruluşa özgü saklama gereksinimlerini karşılamak için Kullanıcı tarafından yapılandırılabilir ve 730 güne kadar.
+   - Etkinlik günlükleri: [etkinlik günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) , bir abonelikteki kaynaklarda gerçekleştirilen işlemlerle ilgili öngörüler sağlar. Etkinlik günlükleri, bir işlemin başlatıcısının, oluşma süresinin ve durumunun belirlenmesine yardımcı olabilir.
+   - Tanılama günlükleri: [tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) her kaynak tarafından yayılan tüm günlükleri içerir. Bu Günlükler Windows olay sistemi günlükleri, Azure depolama günlükleri, Key Vault denetim günlükleri ve Application Gateway erişim ve güvenlik duvarı günlükleri içerir. Tüm tanılama günlükleri, arşivleme için merkezi ve şifrelenmiş bir Azure depolama hesabına yazar. Bekletme, kuruluşa özgü saklama gereksinimlerini karşılamak için Kullanıcı tarafından yapılandırılabilir ve 730 güne kadar.
 ### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
    Bu Günlükler, işleme, depolama ve Pano raporlama için [Azure izleyici günlüklerinde](https://azure.microsoft.com/services/log-analytics/) birleştirilir. Toplandıktan sonra veriler, özgün kaynağından bağımsız olarak tüm verilerin birlikte çözümlenme olanağı sağlayan Log Analytics çalışma alanları içindeki her bir veri türü için ayrı tablolar halinde düzenlenir. Ayrıca, Azure Güvenlik Merkezi, müşterilerin güvenlik olay verilerine erişmek ve diğer hizmetlerdeki verilerle birleştirmek için kusto sorguları kullanmasına izin veren Azure Izleyici günlükleri ile tümleşir.
 
    Aşağıdaki Azure [izleme çözümleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) bu mimarinin bir parçası olarak dahil edilmiştir
 
-   - [Active Directory değerlendirmesi](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory sistem durumu denetimi çözümü, düzenli bir aralıkta sunucu ortamlarının riskini ve sistem durumunu değerlendirir ve dağıtılan Sunucu altyapısına özgü önerilerin öncelikli bir listesini sağlar.
-   - [Aracı durumu](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Aracı Durumu çözümü, kaç aracının dağıtıldığını ve coğrafi dağıtımını, yanıt vermeyen aracı sayısını ve işletimsel verileri gönderen aracıların sayısını bildirir.
-   - [Etkinlik günlüğü Analizi](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Etkinlik Günlüğü Analizi çözümü, bir müşterinin tüm Azure aboneliklerinde Azure etkinlik günlüklerinin analizine yardımcı olur.
+   - [Active Directory değerlendirmesi](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory durum denetimi çözümü, düzenli aralıklarla sunucu ortamlarının riskini ve sistem durumunu değerlendirir ve dağıtılan Sunucu altyapısına özgü önerilerin öncelikli bir listesini sağlar.
+   - [Aracı durumu](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Aracı durumu çözümü, kaç aracının dağıtıldığını ve coğrafi dağıtımını, yanıt vermeyen aracı sayısını ve işletimsel verileri gönderen aracıların sayısını bildirir.
+   - [Etkinlik günlüğü Analizi](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): etkinlik günlüğü analizi çözümü, bir müşterinin tüm Azure aboneliklerinde Azure etkinlik günlüklerinin analizine yardımcı olur.
 ### <a name="azure-monitor"></a>Azure İzleyici
    [Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/), kuruluşların Azure kaynaklarında API çağrılarını izleme de dahil olmak üzere performansı izlemelerine, uyarıları oluşturmalarına ve verileri arşivlemesini sağlayarak eğilimleri belirlemesine yardımcı olur.
 ### <a name="application-insights"></a>Application Insights 
@@ -412,7 +412,7 @@ Azure Hizmetleri, sistem durumunun yanı sıra sistem durumu ve Kullanıcı etki
    - Veri depolama erişim anahtarı
    - Bağlantı dizesi
    - Veri tablosu adı
-   - Kullanıcı Kimlik Bilgileri
+   - Kullanıcı kimlik bilgileri
    - Gelişmiş erişim ilkeleri bir gereksinim temelinde yapılandırılır
    - Key Vault erişim ilkeleri anahtarlar ve gizlilikler için gereken en düşük izinlerle tanımlanır
    - Key Vault tüm anahtarlar ve gizli dizileri sona erme tarihlerine sahiptir
@@ -443,14 +443,14 @@ Azure Hizmetleri, sistem durumunun yanı sıra sistem durumu ve Kullanıcı etki
 1.  Azure portal geri gidin. Sol taraftaki Gezinti bölmesinde Azure Active Directory hizmetini seçin ve Uygulama kayıtları ' ı seçin.
 2.  Sonuç ekranında WebApp-Openıdconnect-DotNet-Code-v2 uygulamasını seçin.
 3.  Yeniden yönlendirme URI 'Leri bölümündeki o kimlik doğrulama sekmesinde, açılan kutudan Web ' i seçin ve aşağıdaki yeniden yönlendirme URI 'Lerini ekleyin.
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.nethttps://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o Gelişmiş ayarlar bölümünde oturum kapatma URL 'sini olarak ayarlayın https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
-4.  Marka sekmesinde o giriş sayfası URL 'sini App Service 'nizin adresine güncelleştirin (örneğin https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net,).
+    Gelişmiş ayarlar bölümünde https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc için Logout URL 'sini ayarlayın
+4.  Marka sekmesinde o ana sayfa URL 'sini App Service 'nizin adresine güncelleştirin, örneğin https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net.
         o yapılandırmayı kaydedin.
 5.  Uygulamanız bir Web API 'si çağırırsa, gerekli değişiklikleri bu proje appSettings. json ' da uyguladığınızdan emin olun, bu nedenle localhost yerine yayımlanmış API URL 'sini çağırır.
 Örnek yayımlanıyor
     1.  App Service genel bakış sekmesinden yayımlama profilini al bağlantısına tıklayarak yayımlama profilini indirin ve kaydedin. Kaynak denetimindeki gibi diğer dağıtım mekanizmaları de kullanılabilir.
     2.  Visual Studio 'ya geçin ve WebApp-Openıdconnect-DotNet-Code-v2 projesine gidin. Çözüm Gezgini projeye sağ tıklayın ve Yayımla ' yı seçin. Alt çubukta profili Içeri Aktar ' a tıklayın ve daha önce indirdiğiniz yayımlama profilini içeri aktarın.
-    3.  Yapılandır ' a tıklayın ve bağlantı sekmesinde, hedef URL 'yi giriş sayfası URL 'sinde https olacak şekilde güncelleştirin (örneğin https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net,). İleri'ye tıklayın.
+    3.  Yapılandır ' a tıklayın ve bağlantı sekmesinde hedef URL 'yi giriş sayfası URL 'sinde https olacak şekilde güncelleştirin, örneğin https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net. İleri'ye tıklayın.
     4.  Ayarlar sekmesinde, kurumsal kimlik doğrulamasının etkinleştir ' in seçili olmadığından emin olun. Kaydet’e tıklayın. Ana ekranda Yayımla ' ya tıklayın.
     5.  Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir tarayıcı açacak. Projenin varsayılan Web sayfasını görürseniz, yayın başarılı olmuştur.
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Azure Active Directory için Multi-Factor Authentication uygulama
@@ -512,7 +512,7 @@ Bu çalışma alanını oluşturmak için
    *Log Analytics çalışma alanlarını ara*
 
    2. Sonraki sayfada **Ekle** ' yi seçin ve ardından çalışma alanı için bir ad, kaynak grubu ve konum sağlayın.
-   ![Log Analytics çalışma alanı oluşturma](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![bir Log Analytics çalışma alanı oluşturun](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
    *Log Analytics çalışma alanı oluşturma*
 
@@ -537,7 +537,7 @@ Bu çalışma alanını oluşturmak için
    Örneğin, uygulama ağ geçidini bağlamak için şu adımları uygulayın:
 
    1. Azure Application Gateway örneği dikey penceresini açın.
-   2. Altında **izleme**seçin **tanılama ayarları**.
+   2. **İzleme**altında **Tanılama ayarları**' nı seçin.
    3. **Tanılama ayarı Ekle**' yi seçin.
 
    ![Application Gateway tanılamayı Ekle](./media/secure-aad-app/sentinel-gateway-connector.png)
@@ -560,4 +560,4 @@ Bu çalışma alanını oluşturmak için
 
 - [Tasarıma](secure-design.md)
 - [Geliştirme](secure-develop.md)
-- [Dağıt](secure-deploy.md)
+- [Dağıtma](secure-deploy.md)

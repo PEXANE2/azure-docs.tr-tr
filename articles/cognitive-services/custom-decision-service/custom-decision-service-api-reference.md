@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f263e3b57103174f0084ab3d25430d8c47359fd
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 569a1c83562a995f15e12013c864ef4c0447d963
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707305"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161702"
 ---
-# <a name="api"></a>API
+# <a name="api"></a>eklentisi
 
 Azure Özel Karar Alma Hizmeti her karar için çağrılan iki API sağlar: işlemlerin derecelendirmesini ve yeniden bir [API](#reward-api) 'nin çıktısını almak için [Derecelendirme API 'si](#ranking-api) . Ayrıca, Azure Özel Karar Alma Hizmeti yönelik eylemleri belirtmek için bir [eylem kümesi API 'si](#action-set-api-customer-provided) sağlarsınız. Bu makalede bu üç API yer almaktadır. Özel Karar Alma Hizmeti, makalelerin derecelendirmesinin ne zaman iyileştiri, göstermek için aşağıda tipik bir senaryo kullanılır.
 
@@ -45,7 +45,7 @@ Bu kod parçacığını ön sayfanızın HTML kafasını (kişiselleştirilmiş 
 > Geri çağırma işlevinin, derecelendirme API çağrısından önce tanımlanması gerekir.
 
 > [!TIP]
-> Gecikme süresini artırmak için, derecelendirme API 'SI, içinde `https://ds.microsoft.com/api/v2/<appId>/rank/*`olduğu gıbı https yerine http üzerinden kullanıma sunulur.
+> Gecikme süresini artırmak için, derecelendirme API 'SI, `https://ds.microsoft.com/api/v2/<appId>/rank/*`olduğu gibi HTTPS yerine HTTP üzerinden kullanıma sunulur.
 > Ancak, ön sayfa HTTPS üzerinden sunulduysa bir HTTPS uç noktasının kullanılması gerekir.
 
 Parametreler kullanılmazsa, derecelendirme API 'sindeki HTTP yanıtı, JSONP biçimli bir dizedir:
@@ -63,32 +63,32 @@ Daha sonra tarayıcı `callback()` işlevine bir çağrı olarak bu dizeyi yür�
 
 Önceki örnekteki geri çağırma işlevinin parametresi aşağıdaki şemaya sahiptir:
 
-- `ranking`görüntülenecek URL 'lerin sıralamasını sağlar.
+- `ranking`, görüntülenecek URL 'Lerin sıralamasını sağlar.
 - `eventId`, bu sıralamaya karşılık gelen tıklama ile eşleştirmek için Özel Karar Alma Hizmeti tarafından dahili olarak kullanılır.
-- `appId`geri çağırma işlevinin aynı Web sayfasında çalışan Özel Karar Alma Hizmeti birden çok uygulama arasında ayrım yapmasına izin verir.
-- `actionSets`Son başarılı yenilemenin UTC zaman damgasıyla birlikte, derecelendirme API çağrısında kullanılan her bir eylem kümesini listeler. Özel Karar Alma Hizmeti, eylem kümesi akışlarını düzenli aralıklarla yeniler. Örneğin, bazı eylem kümeleri güncel değilse, geri çağırma işlevinin varsayılan derecelendirmesini geri dönebilmeleri gerekebilir.
+- `appId`, geri çağırma işlevinin aynı Web sayfasında çalışan Özel Karar Alma Hizmeti birden çok uygulama arasında ayrım yapmasına izin verir.
+- `actionSets`, son başarılı yenilemenin UTC zaman damgasıyla birlikte, derecelendirme API çağrısında kullanılan her bir eylem kümesini listeler. Özel Karar Alma Hizmeti, eylem kümesi akışlarını düzenli aralıklarla yeniler. Örneğin, bazı eylem kümeleri güncel değilse, geri çağırma işlevinin varsayılan derecelendirmesini geri dönebilmeleri gerekebilir.
 
 > [!IMPORTANT]
 > Belirtilen eylem kümeleri işlenir ve muhtemelen varsayılan makalelerin sıralamasını oluşturacak şekilde ayıklanır. Varsayılan derecelendirme daha sonra yeniden sıralanabilir ve HTTP yanıtında döndürülür. Varsayılan derecelendirme burada tanımlanmıştır:
 >
 > - Her bir eylem kümesi içinde makaleler, en son 15 makaleye (15 ' ten fazla olursa) ayıklanır.
 > - Birden çok eylem kümesi belirtildiğinde, API çağrısındaki ile aynı sırada birleştirilir. Makalelerin özgün sıralaması her bir eylem kümesi içinde korunur. Yinelemeler, önceki kopyaların yararına kaldırılır.
-> - İlk `n` makaleler, varsayılan `n=20` olarak, Birleşik makale listesinden tutulur.
+> - İlk `n` makaleler, varsayılan olarak `n=20`, makale birleştirilmiş makaleler listesinden tutulur.
 
 ### <a name="ranking-api-with-parameters"></a>Parametrelerle API ile derecelendirme
 
 Derecelendirme API 'SI şu parametrelere izin veriyor:
 
-- `details=1`ve `details=2` ' de `ranking`listelenen her makale hakkında ek ayrıntılar ekler.
-- `limit=<n>`Varsayılan derecelendirmeden makalelerin sayısını belirtir. `n`ve `2` `2` (ya da sırasıyla kesilmiş`30`) arasında olmalıdır. `30`
-- `dnt=1`Kullanıcı tanımlama bilgilerini devre dışı bırakır.
+- `details=1` ve `details=2`, `ranking`listelenen her makale hakkında ek ayrıntılar ekler.
+- `limit=<n>`, varsayılan derecelendirmeden makalelerin sayısını belirtir. `n`, `2` ve `30` arasında olmalıdır (Aksi takdirde, sırasıyla `2` veya `30`kesilir).
+- `dnt=1` Kullanıcı tanımlama bilgilerini devre dışı bırakır.
 
-Parametreler, standart, sorgu dizesi sözdiziminde birleştirilebilir, örneğin `details=2&dnt=1`.
+Parametreler standart, sorgu dizesi sözdiziminde birleştirilebilir, örneğin `details=2&dnt=1`.
 
 > [!IMPORTANT]
-> Avrupa 'daki varsayılan ayar, müşteri tanımlama `dnt=1` bilgisi başlığını kabul edene kadar olmalıdır. Ayrıca, minors 'ı hedefleyen web siteleri için varsayılan ayar olmalıdır. Daha fazla bilgi için bkz. [kullanım koşulları](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
+> Avrupa 'daki varsayılan ayar, müşteri tanımlama bilgisi başlığını kabul edene kadar `dnt=1` olmalıdır. Ayrıca, minors 'ı hedefleyen web siteleri için varsayılan ayar olmalıdır. Daha fazla bilgi için bkz. [kullanım koşulları](https://www.microsoft.com/cognitive-services/en-us/legal/CognitiveServicesTerms20160804).
 
-Öğesi, eylem kümesi API 'si `guid`tarafından sunulduysa her bir makalenin öğesini ekler. `details=1` HTTP yanıtı:
+`details=1` öğesi, eylem kümesi API 'SI tarafından sunulduysa her bir makalenin `guid`ekler. HTTP yanıtı:
 
 ```json
 callback({
@@ -101,12 +101,12 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-Öğesi `details=2` , özel karar alma hizmeti makalelerin SEO Metatags özelliği tarafından ayıklanabilme [kodundan](https://github.com/Microsoft/mwt-ds/tree/master/Crawl)daha fazla ayrıntı ekler:
+`details=2` öğesi, Özel Karar Alma Hizmeti makalelerin SEO Metatags özelliği tarafından ayıklanabilme [kodundan](https://github.com/Microsoft/mwt-ds/tree/master/Crawl)daha fazla ayrıntı ekler:
 
-- `title``<meta property="og:title" content="..." />` veya`<meta property="twitter:title" content="..." />` veya veya`<title>...</title>`
-- `description``<meta property="og:description" ... />` veya`<meta property="twitter:description" content="..." />` veya veya`<meta property="description" content="..." />`
-- `image`Kaynak`<meta property="og:image" content="..." />`
-- `ds_id`Kaynak`<meta name=”microsoft:ds_id” content="..." />`
+- `<meta property="og:title" content="..." />` veya `<meta property="twitter:title" content="..." />` ya da `<title>...</title>` `title`
+- `<meta property="og:description" ... />` veya `<meta property="twitter:description" content="..." />` ya da `<meta property="description" content="..." />` `description`
+- `<meta property="og:image" content="..." />` `image`
+- `<meta name="microsoft:ds_id" content="..." />` `ds_id`
 
 HTTP yanıtı:
 
@@ -121,7 +121,7 @@ callback({
                  {"id":"<A2>","lastRefresh":"timeStamp2"}]});
 ```
 
-`<details>` Öğesi:
+`<details>` öğesi:
 
 ```json
 [{"guid":"123"}, {"description":"some text", "ds_id":"234", "image":"ImageUrl1", "title":"some text"}]
@@ -140,7 +140,7 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-Daha `data` önce açıklandığı gibi `callback()` işlevin bağımsız değişkeni aşağıda verilmiştir. Tıklama `data` işleme kodunda kullanılması için bazı dikkatli olunması gerekir. Bu [öğreticide](custom-decision-service-tutorial-news.md#use-the-apis)bir örnek gösterilmektedir.
+Burada `data`, daha önce açıklandığı gibi `callback()` işlevinin bağımsız değişkenidir. Tıklama işleme kodundaki `data` kullanmak için biraz dikkatli olmanız gerekir. Bu [öğreticide](custom-decision-service-tutorial-news.md#use-the-apis)bir örnek gösterilmektedir.
 
 Yalnızca test için, Reward API 'SI [kıvrımlı](https://en.wikipedia.org/wiki/CURL)aracılığıyla çağrılabilir:
 
@@ -172,20 +172,20 @@ Her eylem kümesi API 'SI iki şekilde uygulanabilir: RSS akışı veya Atom ak�
 </rss>
 ```
 
-Her üst düzey `<item>` öğe bir eylemi açıklar:
+Her üst düzey `<item>` öğesi bir eylemi açıklar:
 
-- `<link>`zorunludur ve bir eylem KIMLIĞI olarak kullanılır.
+- `<link>` zorunludur ve bir eylem KIMLIĞI olarak kullanılır.
 - `<date>`, 15 öğeden küçük veya buna eşitse yok sayılır; Aksi takdirde, bu zorunludur.
   - 15 ' ten fazla öğe varsa, en son 15 tane kullanılır.
   - Bu, sırasıyla RSS veya Atom için standart biçimde olmalıdır:
-    - RSS için [RFC 822](https://tools.ietf.org/html/rfc822) : Örneğin,`"Fri, 28 Apr 2017 18:02:06 GMT"`
-    - Atom için [RFC 3339](https://tools.ietf.org/html/rfc3339) : Örneğin,`"2016-12-19T16:39:57-08:00"`
-- `<title>`isteğe bağlıdır ve makaleyi tanımlayan özellikler oluşturmak için kullanılır.
-- `<guid>`isteğe bağlıdır ve sistemden geri çağırma işlevine geçirilir ( `?details` parametre derecelendirme API çağrısında belirtilmişse).
+    - RSS için [RFC 822](https://tools.ietf.org/html/rfc822) : örneğin, `"Fri, 28 Apr 2017 18:02:06 GMT"`
+    - Atom için [RFC 3339](https://tools.ietf.org/html/rfc3339) : örneğin, `"2016-12-19T16:39:57-08:00"`
+- `<title>`, isteğe bağlıdır ve makaleyi tanımlayan özellikler oluşturmak için kullanılır.
+- `<guid>`, isteğe bağlıdır ve sistemden geri çağırma işlevine geçirilir (`?details` parametresi derecelendirme API çağrısında belirtilmişse).
 
-İçindeki `<item>` diğer öğeler yok sayılır.
+Bir `<item>` içindeki diğer öğeler yok sayılır.
 
 Atom akışı sürümü aynı XML söz dizimini ve kurallarını kullanır.
 
 > [!TIP]
-> Sisteminiz kendi makale kimliklerini kullanıyorsa, kullanarak `<guid>`geri çağırma işlevine geçirilebilir.
+> Sisteminiz kendi makale kimliklerini kullanıyorsa, `<guid>`kullanarak geri çağırma işlevine geçirilebilir.

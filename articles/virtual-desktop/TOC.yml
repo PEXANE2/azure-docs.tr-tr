@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: Uzak oturumlar için bant genişliği önerileri
       href: bandwidth-recommendations.md
+    - name: Kullanıcı bağlantı gecikmesini belirleme
+      href: connection-latency.md
     - name: Windows Sanal Masaüstü'ne temsilci erişimi
       href: delegated-access-virtual-desktop.md
     - name: Ana bilgisayar havuzu yük dengeleme yöntemleri

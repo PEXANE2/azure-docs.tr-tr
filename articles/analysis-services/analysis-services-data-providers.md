@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512776"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147082"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services bağlantı için istemci kitaplıkları
 
-İstemci kitaplıkları, Analysis Services sunucularına bağlanmak için istemci uygulamalar ve araçlar için gereklidir. Power BI Desktop, Excel, SQL Server Management Studio (SSMS) ve SQL Server Veri Araçları (SSDT) gibi Microsoft istemci uygulamaları, üç istemci kitaplığı da yükler ve düzenli uygulama güncelleştirmeleriyle birlikte günceller. Bazı durumlarda, istemci kitaplıklarının daha yeni sürümlerini yüklemeniz gerekebilir. Özel istemci uygulamaları da istemci kitaplıklarının yüklü olmasını gerektirir.
+İstemci kitaplıkları, Analysis Services sunucularına bağlanmak için istemci uygulamalar ve araçlar için gereklidir. Visual Studio için Power BI Desktop, Excel, SQL Server Management Studio (SSMS) ve Analysis Services projeleri uzantısı gibi Microsoft istemci uygulamaları, her üç istemci kitaplığı da yükler ve düzenli uygulama güncelleştirmeleriyle birlikte günceller. Bazı durumlarda, istemci kitaplıklarının daha yeni sürümlerini yüklemeniz gerekebilir. Özel istemci uygulamaları da istemci kitaplıklarının yüklü olmasını gerektirir.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>En son istemci kitaplıklarını indir (Windows Installer)  
 
@@ -58,7 +58,7 @@ Power BI Desktop ve Excel gibi Microsoft istemci uygulamaları, her üç istemci
 
 ### <a name="amo"></a>AMO  
 
- AMO, sunucu yönetimi ve veri tanımı için kullanılan bir yönetilen istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. Örneğin, SQL Server Management Studio (SSMS) Analysis Services bağlanmak için AMO kullanır. AMO kullanan bir bağlantı genellikle en az `"data source=\<servername>"` ' dan oluşur. Bir bağlantı kurulduktan sonra, veritabanı koleksiyonları ve ana nesnelerle çalışmak için API 'yi kullanırsınız. Hem SSDT hem de SSMS, bir Analysis Services örneğine bağlanmak için AMO kullanır.  
+ AMO, sunucu yönetimi ve veri tanımı için kullanılan bir yönetilen istemci kitaplığıdır. Bu, Araçlar ve istemci uygulamaları tarafından yüklenir ve kullanılır. Örneğin, SQL Server Management Studio (SSMS) Analysis Services bağlanmak için AMO kullanır. AMO kullanan bir bağlantı genellikle en az `"data source=\<servername>"` ' dan oluşur. Bir bağlantı kurulduktan sonra, veritabanı koleksiyonları ve ana nesnelerle çalışmak için API 'yi kullanırsınız. Hem Visual Studio hem de SSMS, bir Analysis Services örneğine bağlanmak için AMO kullanır.  
 
   
 ### <a name="adomd"></a>ADOMD

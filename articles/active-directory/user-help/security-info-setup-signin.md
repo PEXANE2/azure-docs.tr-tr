@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e05515c2fd118c21f891be86fae6423affab0324
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985976"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160898"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Oturum açma sayfası isteminden güvenlik bilgilerinizi (Önizleme) ayarlama
 
@@ -124,7 +124,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 1. Sihirbazın önceki bölümlerini tamamladıktan sonra, **İleri** ' yi seçin ve **uygulama parolası** bölümünü doldurun.
 
-2. Parola gerektiren uygulamanın adını yazın (örneğin `Outlook 2010`,) ve ardından **İleri**' yi seçin.
+2. Parola gerektiren uygulamanın adını yazın, örneğin `Outlook 2010`ve ardından **İleri**' yi seçin.
 
     ![Sihirbazda uygulama parolası adını ekleme](media/security-info/app-password-app-password.png)
 
@@ -152,6 +152,6 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 - Belirtilen yöntemi kullanarak oturum açma hakkında daha fazla bilgi için bkz. [oturum açma](user-help-sign-in.md).
 
-- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](user-help-reset-password.md) makalesindeki adımları izleyin.
+- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) makalesindeki adımları izleyin.
 
 - [Microsoft hesabı makalesinde oturum açma](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorunları için sorun giderme ipuçları ve yardım alın.

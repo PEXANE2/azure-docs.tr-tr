@@ -4,15 +4,15 @@ description: Azure 'da bir Analysis Services sunucusu için sunucu yöneticileri
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301101"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146283"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
@@ -23,7 +23,7 @@ Sunucu yöneticileri, sunucunun bulunduğu kiracı için Azure Active Directory 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure portal kullanarak sunucu yöneticileri eklemek için
 
 1. Portalda, sunucunuz için **Analysis Services Yöneticiler**' e tıklayın.
-2. **@No__t-1servername >-Analysis Services yöneticileri**' nde **Ekle**' ye tıklayın.
+2. **\<servername >-Analysis Services yöneticileri**' nde **Ekle**' ye tıklayın.
 3. **Sunucu yöneticileri Ekle**' de Azure AD 'nizden Kullanıcı hesapları ' nı seçin veya dış kullanıcıları e-posta adresine davet edin.
 
     ![Azure portal 'de sunucu yöneticileri](./media/analysis-services-server-admins/aas-manage-users-admins.png)

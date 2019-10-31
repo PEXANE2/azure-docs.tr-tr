@@ -9,34 +9,50 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8c57698471d1363438c10e5806f9ed6f1da5333f
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039094"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163681"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Azure yay bulutu 'nda kalıcı depolamayı kullanma
 
-Azure yay bulutu, uygulamanız için iki tür depolama alanı sağlar: kalıcı ve geçici.  Azure yay bulutu, her uygulama örneği için varsayılan olarak geçici depolama alanı sunar. Geçici depolama, 5 GB ile sınırlıdır ve varsayılan bağlama yolu `/tmp` ' dır.
+Azure yay bulutu, uygulamanız için iki tür depolama alanı sağlar: kalıcı ve geçici.  Azure yay bulutu, her uygulama örneği için varsayılan olarak geçici depolama alanı sunar. Geçici depolama, varsayılan bağlama yoluyla 5 GB ile sınırlıdır: `/tmp`.
 
 > [!WARNING]
 > Bir uygulama örneğini yeniden başlatmak, ilişkili geçici depolamayı kalıcı olarak siler.
 
-Kalıcı depolama, Azure tarafından yönetilen ve uygulama kapsamı başına ayrılan bir dosya paylaşma kapsayıcısıdır. Kalıcı depolamada depolanan veriler tüm uygulamanın örnekleri arasında paylaşılır. Azure yay bulut hizmeti örneği, kalıcı disk etkin olan en fazla 10 uygulama içerebilir ve her uygulamaya 50 GB kalıcı depolama alanı verilir. Kalıcı depolama için varsayılan bağlama yolu `/persistent` ' dır.
-
-## <a name="enable-persistent-storage-using-the-azure-portal"></a>Azure portal kullanarak kalıcı depolamayı etkinleştirme
-
-1. Azure yay bulut hizmeti sayfasında, **uygulama panosu**' nu seçin ve ardından kalıcı depolama gerektiren uygulamayı seçin.
-1. **Genel bakış** sekmesinde **kalıcı depolama** özniteliğini bulun ve **devre dışı**' yı seçin.
-1. Kalıcı depolamayı etkinleştirmek için **Etkinleştir** ' e tıklayın ve değişikliği uygulamak için **Tamam** düğmesini seçin.
-
-Kalıcı depolama etkinleştirildiğinde, **genel bakış** sayfasının **kalıcı depolama** özniteliğinde boyut ve yol gösterilir.
+Kalıcı depolama, uygulama başına ayrılan Azure tarafından yönetilen bir dosya paylaşma kapsayıcısıdır. Kalıcı depolamada depolanan veriler tüm uygulamanın örnekleri arasında paylaşılır. Azure yay bulut hizmeti örneği, kalıcı disk etkin olan en fazla 10 uygulama içerebilir. Her uygulama 50 GB kalıcı depolama alanı alır. Kalıcı depolama için varsayılan bağlama yolu `/persistent` ' dır.
 
 > [!WARNING]
 > Kalıcı depolamayı *devre dışı bırakmak* , bu uygulama için depolamayı serbest bırakır.  Bu depolama hesabındaki tüm veriler kaybedilecek. 
 
-## <a name="enable-persistent-storage-using-the-azure-cli"></a>Azure CLı kullanarak kalıcı depolamayı etkinleştirme
+## <a name="enable-persistent-storage-using-the-azure-portal"></a>Azure portal kullanarak kalıcı depolamayı etkinleştirme
+
+1. Azure portal ana ekranından **tüm kaynaklar**' ı seçin.
+
+     >![Tüm kaynaklar simgesini bulma](media/portal-all-resources.jpg)
+
+1. Kalıcı depolama gerektiren Azure Spring Cloud kaynağını bulup seçin.  Bu örnekte, uygulama *jpspring*olarak adlandırılır.
+
+    > ![Applicationb 'nizi bulun](media/select-service.jpg)
+
+1. **Ayarlar** başlığı altında **uygulamalar**' ı seçin.
+
+1. Spring Cloud Services, tablosunda görünür.  Kalıcı depolama eklemek istediğiniz hizmeti seçin.  Bu örnekte, **ağ geçidi** hizmetimizi seçeceğiz.
+
+    > ![Hizmetinizi seçin](media/select-gateway.jpg)
+
+1. Hizmetin yapılandırma dikey penceresinde **yapılandırma** ' yı seçin.
+
+1. **Kalıcı depolama** sekmesini seçin ve kalıcı depolamayı etkinleştirin.
+
+    > ![Kalıcı depolamayı etkinleştir](media/enable-persistent-storage.jpg)
+
+Kalıcı depolama etkinleştirildiğinde, boyutu ve yolu bu sayfada her ikisi de gösterilir.
+
+## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Kalıcı depolamayı değiştirmek için Azure CLı 'yi kullanma
 
 Kalıcı disk etkin olan bir uygulama oluşturun:
  
@@ -48,7 +64,7 @@ Mevcut bir uygulamada kalıcı depolamayı etkinleştir:
 
 ```azurecli
 az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-```
+``` 
 
 Mevcut bir uygulamada kalıcı depolamayı devre dışı bırak:
 

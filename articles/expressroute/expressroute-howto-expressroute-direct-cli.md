@@ -1,6 +1,6 @@
 ---
-title: ExpressRoute doğrudan - Azure CLI yapılandırma | Microsoft Docs
-description: Bu makale Azure CLI kullanarak ExpressRoute doğrudan yapılandırmanıza yardımcı olur
+title: ExpressRoute Direct-Azure CLı 'yı yapılandırma | Microsoft Docs
+description: Bu makale, Azure CLı kullanarak ExpressRoute Direct 'i yapılandırmanıza yardımcı olur
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,44 +8,44 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879344fddd6d12ae8a50e109dcaf4a4bb2c1b68
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965911"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161558"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI kullanarak ExpressRoute doğrudan yapılandırın
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Direct 'i yapılandırma
 
-Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme konumlarda doğrudan bağlanmak için Azure ExpressRoute doğrudan kullanabilirsiniz. Daha fazla bilgi için [hakkında ExpressRoute doğrudan bağlanma](expressroute-erdirect-about.md).
+Azure ExpressRoute Direct ' i kullanarak doğrudan Dünya genelinde dağıtılmış olan eşleme konumlarında doğrudan Microsoft küresel ağına bağlanabilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute Direct Connect hakkında](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Kaynak Oluştur
+## <a name="resources"></a>Kaynağı oluşturma
 
-1. Azure'da oturum açın ve ExpressRoute içeren aboneliği seçin. ExpressRoute doğrudan kaynak ve, ExpressRoute devreleri aynı abonelikte olması gerekir. Azure CLI, aşağıdaki komutları çalıştırın:
+1. Azure 'da oturum açın ve ExpressRoute içeren aboneliği seçin. ExpressRoute doğrudan kaynağı ve ExpressRoute Devreleriniz aynı abonelikte olmalıdır. Azure CLı 'da aşağıdaki komutları çalıştırın:
 
    ```azurecli
    az login
    ```
 
-   Hesabın aboneliklerini denetleyin: 
+   Hesap için abonelikleri kontrol edin: 
 
    ```azurecli
    az account list 
    ```
 
-   Bir ExpressRoute bağlantı hattı oluşturmak istediğiniz aboneliği seçin:
+   ExpressRoute bağlantı hattı oluşturmak istediğiniz aboneliği seçin:
 
    ```azurecli
    az account set --subscription "<subscription ID>"
    ```
 
-2. ExpressRoute doğrudan'ın desteklendiği tüm konumların listesi:
+2. ExpressRoute Direct 'in desteklendiği tüm konumları listeleyin:
     
    ```azurecli
    az network express-route port location list
    ```
 
-   **Örnek çıktı**
+   **Örnek çıkış**
   
    ```azurecli
    [
@@ -106,13 +106,13 @@ Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme
    }
    ]
    ```
-3. Kullanılabilir bant genişliğini önceki adımda listelenen konumlardan birine sahip olup olmadığını belirleyin:
+3. Önceki adımda listelenen konumlardan birinin kullanılabilir bant genişliğine sahip olup olmadığını belirleme:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
    ```
 
-   **Örnek çıktı**
+   **Örnek çıkış**
 
    ```azurecli
    {
@@ -132,14 +132,14 @@ Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. Önceki adımda seçtiğiniz konum temel alan bir ExpressRoute doğrudan kaynağı oluşturun.
+4. Önceki adımlarda seçtiğiniz konumu temel alan bir ExpressRoute doğrudan kaynağı oluşturun.
 
-   ExpressRoute doğrudan QinQ hem Dot1Q kapsülleme destekler. QinQ seçerseniz, her bir ExpressRoute bağlantı hattında S etiketi dinamik olarak atanır ve ExpressRoute doğrudan kaynak benzersizdir. Her C-Tag devredeki benzersiz olmalıdır. bağlantı hattını ancak ExpressRoute doğrudan kaynak arasında değil.  
+   ExpressRoute Direct, QinQ ve Dot1Q kapsüllemeyi destekler. QinQ ' ı seçerseniz, her bir ExpressRoute bağlantı hattı dinamik olarak bir S-Tag atanır ve ExpressRoute doğrudan kaynağı genelinde benzersizdir. Devre üzerindeki her C etiketi, Devroute doğrudan kaynağında değil, devre üzerinde benzersiz olmalıdır.  
 
-   Dot1Q sarması'nı seçerseniz, tüm ExpressRoute doğrudan kaynak arasında benzersizlik, C etiketleme (VLAN) yönetmeniz gerekir.  
+   Dot1Q Kapsüllemesi ' ı seçerseniz, tüm ExpressRoute doğrudan kaynağı genelinde C-Tag (VLAN) öğesinin benzersizliğini yönetmeniz gerekir.  
 
    > [!IMPORTANT]
-   > ExpressRoute doğrudan yalnızca bir saklama türü olabilir. ExpressRoute doğrudan kaynak oluşturduktan sonra kapsülleme türünü değiştiremezsiniz.
+   > ExpressRoute Direct yalnızca bir kapsülleme türü olabilir. ExpressRoute Direct kaynağını oluşturduktan sonra kapsülleme türünü değiştiremezsiniz.
    > 
  
    ```azurecli
@@ -147,10 +147,10 @@ Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme
    ```
 
    > [!NOTE]
-   > Ayrıca **kapsülleme** özniteliğini **Dot1Q**. 
+   > Ayrıca, **kapsülleme** özniteliğini **Dot1Q**olarak da ayarlayabilirsiniz. 
    >
 
-   **Örnek çıktı**
+   **Örnek çıkış**
 
    ```azurecli
    {
@@ -204,13 +204,13 @@ Microsoft'un küresel ağı dünya genelindeki stratejik dağıtılmış eşleme
    }  
    ```
 
-## <a name="state"></a>Değişiklik AdminState bağlantıları
+## <a name="state"></a>Bağlantıların AdminState 'i Değiştir
 
-Bu işlem, bir katman 1 test gerçekleştirmek için kullanın. Her bir çapraz bağlantı her birincil ve ikincil bağlantı yönlendiricisi içine düzgün yüklendiğinden emin olun.
+Katman 1 testi yürütmek için bu işlemi kullanın. Her bir çapraz bağlantının, birincil ve ikincil bağlantı noktalarında her bir yönlendiricide düzgün bir şekilde düzeltme içinde olduğundan emin olun.
 
-1. Kümesine bağlantılar **etkin**. Her bağlantı ayarlamak için bu adımı yineleyin **etkin**.
+1. Bağlantıları **etkin**olarak ayarlayın. Her bağlantıyı **etkin**olarak ayarlamak için bu adımı tekrarlayın.
 
-   Bağlantılar [0] birincil bağlantı ve bağlantılar [1] ikincil bağlantı noktası.
+   [0] bağlantıları birincil bağlantı noktasıdır ve [1] bağlantıları ikincil bağlantı noktasıdır.
 
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
@@ -218,7 +218,7 @@ Bu işlem, bir katman 1 test gerçekleştirmek için kullanın. Her bir çapraz 
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
    ```
-   **Örnek çıktı**
+   **Örnek çıkış**
 
    ```azurecli
    {
@@ -272,26 +272,26 @@ Bu işlem, bir katman 1 test gerçekleştirmek için kullanın. Her bir çapraz 
    }
    ```
 
-   Bağlantı noktalarını kullanarak aşağı için aynı yordamı kullanın `AdminState = “Disabled”`.
+   `AdminState = "Disabled"`kullanarak bağlantı noktalarını kapatmak için aynı yordamı kullanın.
 
-## <a name="circuit"></a>Bir bağlantı hattı oluşturma
+## <a name="circuit"></a>Devre oluşturma
 
-Varsayılan olarak, ExpressRoute doğrudan kaynağı içeren abonelik 10 bağlantı hatları oluşturabilirsiniz. Microsoft Support varsayılan sınırı artırabilirsiniz. Sağlanan ve kullanılan bant genişliğini izlemek için sorumlu olursunuz. Sağlanan bant genişliği, bant genişliğinin ExpressRoute doğrudan kaynaktaki tüm devreler toplamıdır. Kullanılan bant genişliği, temel alınan fiziksel arabirimlerin fiziksel kullanımdır.
+Varsayılan olarak, ExpressRoute doğrudan kaynağını içeren abonelikte 10 devre oluşturabilirsiniz. Microsoft Desteği, varsayılan sınırı artırabilir. Sağlanan ve kullanılan bant genişliğini izlemenin sorumluluğundadır. Sağlanan bant genişliği, ExpressRoute doğrudan kaynağındaki tüm devrelerin bant genişliğinin toplamıdır. Kullanılan bant genişliği, temeldeki fiziksel arabirimlerin fiziksel kullanımdır.
 
-Yalnızca Burada özetlenen senaryoları desteklemek için ExpressRoute doğrudan üzerinde ek bağlantı hattı bant genişlikleri kullanabilirsiniz. 40 GB/sn ve 100 GB/sn bant genişlikleri var.
+Yalnızca burada özetlenen senaryoları desteklemek için ExpressRoute Direct üzerinde ek devre bant genişlikleri kullanabilirsiniz. Bant genişlikleri 40 Gbps ve 100 Gbps.
 
-**SkuTier** yerel, standart veya Premium olabilir.
+**Skutier** yerel, standart veya Premium olabilir.
 
-**SkuFamily** MeteredData yalnızca sınırsız olarak olmalıdır ExpressRoute doğrudan üzerinde desteklenmiyor.
-ExpressRoute doğrudan kaynak üzerinde bir bağlantı hattı oluşturun:
+**Skufamily** , doğrudan ExpressRoute Direct üzerinde desteklenmediği için MeteredData olmalıdır.
+ExpressRoute doğrudan kaynağında bir devre oluşturun:
 
   ```azurecli
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Diğer bant genişlikleri, 5 GB/sn, 10 GB/sn ve 40 GB/sn içerir.
+  Diğer bant genişlikleri 5 Gbps, 10 Gbps ve 40 GB/sn içerir.
 
-  **Örnek çıktı**
+  **Örnek çıkış**
 
   ```azurecli
   {
@@ -329,4 +329,4 @@ ExpressRoute doğrudan kaynak üzerinde bir bağlantı hattı oluşturun:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ExpressRoute doğrudan hakkında daha fazla bilgi için bkz: [genel bakış](expressroute-erdirect-about.md).
+ExpressRoute Direct hakkında daha fazla bilgi için bkz. [genel bakış](expressroute-erdirect-about.md).

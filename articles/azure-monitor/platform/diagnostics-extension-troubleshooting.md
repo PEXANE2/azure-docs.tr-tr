@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555508"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161961"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Tanılama sorunlarını giderme
 Bu makalede Azure Tanılama kullanımı ile ilgili sorun giderme bilgileri açıklanmaktadır. Azure Tanılama hakkında daha fazla bilgi için bkz. [Azure tanılama genel bakış](diagnostics-extension-overview.md).
@@ -30,13 +30,13 @@ Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Be
 ### <a name="azure-cloud-services"></a>Azure Bulut Hizmetleri
 | Yapıt | Yol |
 | --- | --- |
-| **Azure Tanılama yapılandırma dosyası** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \Config.txt |
+| **Azure Tanılama yapılandırma dosyası** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü > \Config.txt |
 | **Günlük dosyaları** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
 | **Tanılama verileri için yerel depo** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
 | **İzleme Aracısı yapılandırma dosyası** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Tanılama uzantısı paketi** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > |
+| **Azure Tanılama uzantısı paketi** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<sürümü > |
 | **Günlük toplama yardımcı programı yolu** | %SystemDrive%\Packages\GuestAgent\ |
-| **Monme Thost günlük dosyası** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. Diagnosticstore\wad0107\configuration\monbir Thost. < seq_num >. log |
+| **Monme Thost günlük dosyası** | C:\Resources\Directory\<Cloudservicedeploymentıd >.\<RoleName >. Diagnosticstore\wad0107\configuration\monbir Thost. < seq_num >. log |
 
 ### <a name="virtual-machines"></a>Sanal makineler
 | Yapıt | Yol |
@@ -48,7 +48,7 @@ Bazı önemli günlüklerin ve yapıtların yolları aşağıda verilmiştir. Be
 | **Durum dosyası** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \ durum |
 | **Azure Tanılama uzantısı paketi** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
 | **Günlük toplama yardımcı programı yolu** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \Wad0107\configuration\monbir Thost. < seq_num >. log |
+| **Monme Thost günlük dosyası** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \Wad0107\configuration\monk\thost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Ölçüm verileri Azure portal görünmüyor
 Azure Tanılama, Azure portal görüntülenebilecek ölçüm verileri sağlar. Portalda verileri görmekte sorun yaşıyorsanız, ilgili ölçüm kayıtlarının orada olup olmadığını görmek için Azure Tanılama depolama hesabındaki Wadölçümlerini \* tablosunu kontrol edin.
@@ -64,14 +64,14 @@ Belirli bir ölçüm için veri yoksa, metriğin (performans sayacı) dahil edil
 - \ ASP.NET uygulamaları (__Toplam__)/toplam hata/sn
 - \ASP.NET\Requests kuyruğa alındı
 - \ASP.NET\Requests reddedildi
-- \Processor (W3wp) \% Işlemci zamanı
+- \Processor (W3wp)\% Işlemci zamanı
 - \Process (W3wp) \ özel baytlar
-- \Process (WaIISHost) \% Işlemci zamanı
+- \Process (WaIISHost)\% Işlemci zamanı
 - \Process (WaIISHost) \Özel baytlar
-- \Process (WaWorkerHost) \% Işlemci zamanı
+- \Process (WaWorkerHost)\% Işlemci zamanı
 - \Process (WaWorkerHost) \Özel baytlar
 - \Bellek\sayfa hatası/sn
-- GC 'de \.NET CLR belleği (_Global_) \% zaman
+- GC 'de \.NET CLR belleği (_Global_)\% zaman
 - \Mantıksaldisk (C:) \Disk yazma bayt/sn
 - \Mantıksaldisk (C:) \Disk okuma bayt/sn
 - \Mantıksaldisk (D:) \Disk yazma bayt/sn
@@ -123,12 +123,12 @@ Tanılama yapılandırması, toplanacak belirli bir veri türü için yönergele
 #### <a name="is-the-host-generating-data"></a>Ana bilgisayar veri oluşturuyor mu?
 - **Performans sayaçları**: Perfmon ' yı açın ve sayacı denetleyin.
 
-- **İzleme günlükleri**: VM 'ye uzaktan erişim ve uygulamanın yapılandırma dosyasına bir TextWriterTraceListener ekleme.  Metin dinleyicisini ayarlamak için https://msdn.microsoft.com/library/sk36c28t.aspx bakın.  @No__t_0 öğesinin `<trace autoflush="true">` sahip olduğundan emin olun.<br />
+- **İzleme günlükleri**: VM 'ye uzaktan erişim ve uygulamanın yapılandırma dosyasına bir TextWriterTraceListener ekleme.  Metin dinleyicisini ayarlamak için https://msdn.microsoft.com/library/sk36c28t.aspx bakın.  `<trace>` öğesinin `<trace autoflush="true">`sahip olduğundan emin olun.<br />
 İzleme günlüklerinin oluşturulmayı görmüyorsanız izleme günlükleri eksik hakkında daha fazla bilgi için bkz.
 
 - **ETW izlemeleri**: VM 'ye uzaktan erişim ve PerfView 'ı yükler.  PerfView ' de, **dosya**  > **Kullanıcı komutunu**  > **dinleyin etwprovder1**  > **etwprovider2**gibi çalıştırın. **Listen** komutu büyük/küçük harfe DUYARLıDıR ve ETW sağlayıcılarının virgülle ayrılmış listesi arasında boşluk olamaz. Komut çalışamazsa, nelerin çalıştırılacağını ve sonucun ne olduğunu görmek için PerfView aracının sağ alt kısmındaki **günlük** düğmesini seçebilirsiniz.  Girişin doğru olduğu varsayıldığında, yeni bir pencere açılır. Birkaç saniye içinde ETW izlemelerini görmeye başlayabilirsiniz.
 
-- **Olay günlükleri**: VM 'ye uzaktan erişim. @No__t_0 açın ve olayların mevcut olduğundan emin olun.
+- **Olay günlükleri**: VM 'ye uzaktan erişim. `Event Viewer`açın ve olayların mevcut olduğundan emin olun.
 
 #### <a name="is-data-getting-captured-locally"></a>Veriler yerel olarak yakalanarak mı?
 Sonra, verilerin yerel olarak yakalandığından emin olun.
@@ -208,8 +208,8 @@ Bu kod dört tablo üretir:
 
 | Olay | Tablo adı |
 | --- | --- |
-| Provider = "prov1" &lt;Event ID = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
-| Provider = "prov1" &lt;Event ID = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| Provider = "prov1" &lt;olay kimliği = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
+| Provider = "prov1" &lt;olay kimliği = "2" eventDestination = "dest1"/&gt; |WADdest1 |
 | Provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
@@ -252,15 +252,15 @@ Eklenti aşağıdaki çıkış kodlarını döndürür:
 | -112 |Genel hata |
 
 ### <a name="local-log-extraction"></a>Yerel günlük ayıklama
-İzleme Aracısı, günlükleri ve yapıtları `.tsf` dosya olarak toplar. @No__t_0 dosyası okunabilir değildir ancak aşağıdaki gibi bir `.csv` dönüştürebilirsiniz:
+İzleme Aracısı, günlükleri ve yapıtları `.tsf` dosya olarak toplar. `.tsf` dosyası okunabilir değildir ancak aşağıdaki gibi bir `.csv` dönüştürebilirsiniz:
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
-@No__t_0 adlı yeni bir dosya, karşılık gelen `.tsf` dosyası ile aynı yolda oluşturulur.
+`<relevantLogFile>.csv` adlı yeni bir dosya, karşılık gelen `.tsf` dosyası ile aynı yolda oluşturulur.
 
 >[!NOTE]
-> Bu yardımcı programı yalnızca Main. TSF dosyasına (örneğin, PerformanceCountersTable. TSF) karşı çalıştırmanız gerekir. Eşlik eden dosyalar (örneğin, PerformanceCountersTables_ \* \*001. TSF, PerformanceCountersTables_ \* \*002. TSF, vb.) otomatik olarak işlenir.
+> Bu yardımcı programı yalnızca Main. TSF dosyasına (örneğin, PerformanceCountersTable. TSF) karşı çalıştırmanız gerekir. Eşlik eden dosyalar (örneğin, PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF, vb.) otomatik olarak işlenir.
 
 ### <a name="more-about-missing-trace-logs"></a>Eksik izleme günlükleri hakkında daha fazla bilgi
 

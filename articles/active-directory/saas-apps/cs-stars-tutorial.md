@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 635d04e049b66452fa000048082aced9aa62c20a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e0c4cb553ee7edc92b5cb3d319631a985de476b8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241372"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Öğretici: CS yıldızlarla Azure Active Directory tümleştirme
 
@@ -32,9 +33,9 @@ CS yıldızlarını Azure AD ile tümleştirmek aşağıdaki avantajları sağla
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini CS yıldıza göre yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -124,7 +125,7 @@ Azure AD çoklu oturum açmayı CS yıldıza göre yapılandırmak için aşağ�
 
     b. Azure AD tanımlayıcısı
 
-    ,. Oturum kapatma URL 'SI
+    c. Oturum kapatma URL 'SI
 
 ### <a name="configure-cs-stars-single-sign-on"></a>CS yıldızlı çoklu oturum açmayı yapılandırma
 
@@ -148,12 +149,12 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     a. **Ad** alanına **Brittasıon**girin.
   
-    b. **Kullanıcı adı** alanına **brittasıon @ no__t-2yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    ,. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    TID. **Oluştur**'u tıklatın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -185,7 +186,7 @@ Bu bölümde, CS yıldıza erişim izni vererek Azure çoklu oturum açma özell
 
 Bu bölümde, CS yıldızları 'nda Britta Simon adlı bir Kullanıcı oluşturacaksınız. CS yıldızlarla çalışma, CS yıldızlı platformda kullanıcıları eklemek için [destek ekibi](http://www.riskonnectclearsight.com/support/) . Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açmayı sına 
+### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
@@ -195,7 +196,7 @@ Erişim panelinde CS yıldızları kutucuğuna tıkladığınızda, SSO 'yu ayar
 
 - [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

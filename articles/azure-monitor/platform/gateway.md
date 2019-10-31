@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/24/2019
-ms.openlocfilehash: ba0ee29b48be259bddd898c3d1119b77f6ee5228
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/30/2019
+ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932297"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162022"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932297"
 
 Bu makalede, doğrudan bağlı olan veya Operations Manager tarafından izlenen bilgisayarların internet erişimi olmadığında Log Analytics ağ geçidini kullanarak Azure Otomasyonu ve Azure Izleyici ile iletişimin nasıl yapılandırılacağı açıklanır. 
 
-Log Analytics ağ geçidi, HTTP CONNECT komutunu kullanarak HTTP tünelini destekleyen bir HTTP iletme ara sunucusu olur. Bu ağ geçidi, verileri Azure Otomasyonu 'na ve Azure Izleyici 'de internet 'e doğrudan bağlanamayabilecekleri bilgisayarlar adına bir Log Analytics çalışma alanına gönderir. Aracılardan verileri önbelleğe almaz; Aracı, iletişim geri yüklenene kadar bu durumda önbelleğe alma verilerini işler.
+Log Analytics ağ geçidi, HTTP CONNECT komutunu kullanarak HTTP tünelini destekleyen bir HTTP iletme ara sunucusu olur. Bu ağ geçidi, verileri Azure Otomasyonu 'na ve Azure Izleyici 'de internet 'e doğrudan bağlanamayabilecekleri bilgisayarlar adına bir Log Analytics çalışma alanına gönderir. 
 
 Log Analytics ağ geçidi şunları destekler:
 
@@ -33,7 +33,7 @@ Log Analytics ağ geçidi şunları destekler:
 
 Bazı BT güvenlik ilkeleri, ağ bilgisayarları için internet bağlantısına izin vermez. Bu bağlanmayan bilgisayarlar, örneğin, satış noktası (POS) cihazları veya BT hizmetlerini destekleyen sunucular olabilir. Bu cihazları Azure Otomasyonu 'na veya bir Log Analytics çalışma alanına bağlamak için bunları yönetebilir ve izleyebilirsiniz, bunları doğrudan Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırın. Log Analytics ağ geçidi, yapılandırma bilgilerini alabilir ve verileri adına iletebilir. Bilgisayarlar, bir Log Analytics çalışma alanına doğrudan bağlanmak için Log Analytics aracısıyla yapılandırılmışsa, bu bilgisayarlar Log Analytics ağ geçidiyle iletişim kurar.  
 
-Log Analytics ağ geçidi, aracılardan hizmete doğrudan veri aktarır. Bu, yoldaki verileri analiz etmez.
+Log Analytics ağ geçidi, aracılardan hizmete doğrudan veri aktarır. Bu, aktarımda verilerin hiçbirini çözümlemez ve ağ geçidi, hizmetle bağlantı kesildiğinde verileri önbelleğe almaz. Ağ Geçidi hizmet ile iletişim kuramadığından, aracı çalışmaya devam eder ve toplanan verileri izlenen bilgisayarın diskinde sıralar. Bağlantı geri yüklendiğinde, aracı Azure Izleyici 'ye toplanan önbelleğe alınmış verileri gönderir.
 
 Bir Operations Manager yönetim grubu Log Analytics tümleştirildiğinde, yönetim sunucuları, etkinleştirdiğiniz çözüme bağlı olarak, yapılandırma bilgilerini almak ve toplanan verileri göndermek için Log Analytics ağ geçidine bağlanacak şekilde yapılandırılabilir .  Operations Manager aracılar yönetim sunucusuna bazı veriler gönderir. Örneğin, aracılar Operations Manager uyarılar, yapılandırma değerlendirmesi verileri, örnek alanı verileri ve kapasite verileri gönderebilir. Internet Information Services (IIS) günlükleri, performans verileri ve güvenlik olayları gibi diğer yüksek hacimli veriler doğrudan Log Analytics ağ geçidine gönderilir. 
 
@@ -167,7 +167,7 @@ Aşağıdaki tabloda, kurulum tarafından desteklenen parametrelerin vurgulanmı
 Ağ geçidini sessizce yüklemek ve belirli bir ara sunucu adresiyle, bağlantı noktası numarasıyla yapılandırmak için, aşağıdakileri yazın:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 /Qn komut satırı seçeneğinin kullanılması kurulumu gizler,/QB, sessiz yükleme sırasında kurulumu gösterir.  
@@ -175,7 +175,7 @@ Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200”
 Proxy ile kimlik doğrulaması yapmak için kimlik bilgileri sağlamanız gerekiyorsa, şunu yazın:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 Yükleme işleminden sonra, aşağıdaki PowerShell cmdlet 'lerini kullanarak ayarların kabul edildiğini (Kullanıcı adı ve parolayı doğrulayın) doğrulayabilirsiniz:

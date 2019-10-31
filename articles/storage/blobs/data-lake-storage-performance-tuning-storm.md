@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855417"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159867"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight ve Azure Data Lake Storage 2. için performans ayarlama Kılavuzu
 
@@ -21,8 +21,8 @@ Azure fırtınası topolojisinin performansını ayarladığınızda göz önün
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz [. hızlı başlangıç: Analitik](data-lake-storage-quickstart-create-account.md)için bir depolama hesabı oluşturun.
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: analitik için depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
 * Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
 * **Data Lake Storage 2. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md)' na bakın.   
@@ -110,8 +110,8 @@ Data Lake Storage 2. tarafından belirtilen bant genişliği sınırlarına ula�
 
 Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
 
-1. **Ambarı** **&lt;&gt;** fırtınası yapılandırması Gelişmiş fırtınası-çalışan-Log4J, kök düzeyi = "info" öğesini kök düzeyi = olarak değiştirin = >  >  >   **&lt; "hata ayıkla&gt;"** . Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
-2. Data Lake Storage 2. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (/var/log/Storm/Worker-Artifacts/&lt;topologyıname&gt;&gt;/&lt;Port/Worker.log altında) izleyin.
+1. **Ambarı** > **fırtınası** > **config** > **gelişmiş fırtınası-çalışan-Log4J**, **&lt;kök düzeyi = "Info"** &gt;&lt;**kök düzeyi = "Debug"** &gt;olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
+2. &gt;azaltma özel durumları için çalışan düğümlerinde (/var/log/Storm/Worker-Artifacts/&lt;Topologyıname&gt;/&lt;bağlantı noktası Data Lake Storage 2./Worker.log) yer alan fırtınası topolojisi günlüklerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/), fırtınası için ek performans ayarlamaya başvurulabilir.

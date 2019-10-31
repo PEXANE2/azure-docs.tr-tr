@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494944"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159685"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ağ ilkelerine genel bakış
 
@@ -51,7 +51,7 @@ Aşağıdaki JSON örnek yapılandırması yeni bir sanal ağ ve alt ağ oluştu
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },
@@ -89,7 +89,7 @@ Aşağıdaki JSON örnek yapılandırması yeni bir sanal ağ ve alt ağ oluştu
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Azure 'da kendi Kubernetes kümenizi oluşturma
 Uygulama, ACS motoru gibi araçlara bağlı kalmadan, kendi dağıttığınız Kubernetes kümelerinde pods 'Ler için ağ Ilkeleri sağlamak üzere kullanılabilir. Bu durumda, ilk olarak CNı eklentisini yüklersiniz ve bir kümedeki her sanal makinede etkinleştirebilirsiniz. Ayrıntılı yönergeler için bkz. [Eklentiyi kendi dağıttığınız Kubernetes kümesi için dağıtma](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
-Küme dağıtıldıktan sonra, *daemonset* Azure ağ ilkesi `kubectl` 'ni indirmek ve kümeye uygulamak için aşağıdaki komutu çalıştırın.
+Küme dağıtıldıktan sonra, *Daemonset* Azure ağ ilkesi 'ni indirmek ve kümeye uygulamak için aşağıdaki `kubectl` komutunu çalıştırın.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml

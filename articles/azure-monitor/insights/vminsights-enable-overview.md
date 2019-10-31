@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 10/29/2019
+ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809465"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162250"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>VM'ler için Azure İzleyici etkinleştir (Önizleme) genel bakış
 
@@ -37,14 +37,20 @@ Başlamadan önce, aşağıdaki bölümlerde yer alan bilgileri anladığınızd
 VM'ler için Azure İzleyici, aşağıdaki bölgelerde bir Log Analytics çalışma alanını destekler:
 
 - Orta Batı ABD
+- Batı ABD<sup>1</sup>
 - Batı ABD 2<sup>1</sup>
+- Orta Güney ABD<sup>1</sup>
 - Doğu ABD
 - Doğu ABD2<sup>1</sup>
+- Orta ABD<sup>1</sup>
+- Orta Kuzey ABD<sup>1</sup>
 - Kanada Orta
 - Birleşik Krallık, Güney
 - Kuzey Avrupa<sup>1</sup>
 - Batı Avrupa
+- Doğu Asya<sup>1</sup>
 - Güneydoğu Asya
+- Orta Hindistan<sup>1</sup>
 - Japonya Doğu<sup>1</sup>
 - Avustralya Doğu<sup>1</sup>
 - Avustralya Güneydoğu<sup>1</sup>
@@ -199,6 +205,9 @@ Bu tabloda açıklanan yöntemlerden birini kullanarak VM'ler için Azure İzley
 ## <a name="performance-counters-enabled"></a>Performans sayaçları etkin 
 
 VM'ler için Azure İzleyici, kullandığı performans sayaçlarını toplamak için bir Log Analytics çalışma alanı yapılandırır. Aşağıdaki tablolarda, her 60 saniyede toplanan nesneler ve sayaçlar listelenmektedir.
+
+>[!NOTE]
+>VM'ler için Azure İzleyici tarafından etkinleştirilen performans sayaçlarından oluşan aşağıdaki liste, çalışma alanına raporlama VM 'lerinden toplamanız gereken ek sayaçları etkinleştirmekle sınırlandırmaz. Ayrıca, bu sayaçları devre dışı bırakırsanız, performans özelliği 'nin sanal makinelerinizden kaynak kullanımını göstermesini sağlayacak performans grafikleri kümesini engeller.
 
 ### <a name="windows-performance-counters"></a>Windows performans sayaçları
 

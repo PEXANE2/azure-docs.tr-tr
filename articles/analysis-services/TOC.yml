@@ -68,7 +68,7 @@
       items:
         - name: Tablosal modelleme
           href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
-        - name: Visual Studio'dan dağıtma (SSDT)
+        - name: Visual Studio'dan dağıtma
           href: analysis-services-deploy.md
         - name: REST API ile yenileme
           href: analysis-services-async-refresh.md

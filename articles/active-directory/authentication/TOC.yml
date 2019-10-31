@@ -43,6 +43,8 @@
       items:
         - name: MFA nasıl çalışır?
           href: concept-mfa-howitworks.md
+        - name: MFA’yı etkinleştirme
+          href: concept-mfa-get-started.md
         - name: Kullanıcılarınıza lisans verme
           href: concept-mfa-licensing.md
         - name: Kimlik Doğrulama Sağlayıcısı yönetme
@@ -135,6 +137,10 @@
           href: howto-authentication-passwordless-deployment.md
         - name: Parolasız güvenlik anahtarları
           href: howto-authentication-passwordless-security-key.md
+        - name: Parolasız Windows 10
+          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Parolasız şirket içi
+          href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Parolasız telefonla oturum açma
           href: howto-authentication-passwordless-phone.md
         - name: İş İçin Windows Hello

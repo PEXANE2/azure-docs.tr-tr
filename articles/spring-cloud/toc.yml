@@ -38,6 +38,8 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud'daki ölçümleri anlama
       href: spring-cloud-concept-metrics.md
+    - name: Olağanüstü durum kurtarma için planlama
+      href: disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: 'Azure Spring Cloud uygulamasını başlatma, durdurma ve silme'

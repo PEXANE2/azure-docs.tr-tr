@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: conceptual
 tags: connectors
 ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311987"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161654"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server veya Azure SQL veritabanı için iş akışlarını Azure Logic Apps kullanarak otomatikleştirin
 
@@ -68,7 +68,7 @@ Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde 
 
 1. Mantıksal uygulamanızın tabloyu ne sıklıkta denetleyeceğini belirten **Aralık** ve **Sıklık** özelliklerini ayarlayın.
 
-   Bu tetikleyici seçili tablodan yalnızca bir satır döndürür, başka hiçbir şey yapmaz. Diğer görevleri gerçekleştirmek için, istediğiniz görevleri gerçekleştiren diğer eylemleri ekleyin. Örneğin, bu satırdaki verileri görüntülemek için döndürülen satırdaki alanları içeren bir dosya oluşturan başka eylemler ekleyebilir ve ardından e-posta uyarıları gönderebilirsiniz. Bu bağlayıcıya yönelik diğer mevcut eylemler hakkında bilgi edinmek için [bağlayıcının başvuru sayfasına](/connectors/sql/)bakın.
+   Bu tetikleyici seçili tablodan yalnızca bir satır döndürür, başka hiçbir şey yapmaz. Diğer görevleri gerçekleştirmek için, istediğiniz görevleri gerçekleştiren diğer eylemleri ekleyin. Örneğin, bu satırdaki verileri görüntülemek için döndürülen satırdaki alanları içeren bir dosya oluşturan başka eylemler ekleyebilir ve ardından e-posta uyarıları gönderebilirsiniz. Bu bağlayıcıya yönelik diğer mevcut eylemler hakkında bilgi edinmek için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/sql/)bakın.
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -84,7 +84,7 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. SQL eylemini eklemek istediğiniz tetikleyici veya eylem altında **yeni adım**' ı seçin.
 
-   !["Yeni adım" i seçin](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![Mantıksal uygulamanıza yeni adım ekleme](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
@@ -92,13 +92,13 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    Bu örnek, tek bir kayıt alan **satırı al** eylemini kullanır.
 
-   ![SQL "satırı al" eylemini bul ve Seç](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![SQL "satırı al" eylemini bul ve Seç](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Bu eylem, seçili tablodan yalnızca bir satır döndürür, başka hiçbir şey yapmaz. Bu satırdaki verileri görüntülemek için döndürülen satırdaki alanları içeren bir dosya oluşturan ve bu dosyayı bir bulut depolama hesabında depolayabilen başka eylemler ekleyebilirsiniz. Bu bağlayıcıya yönelik diğer mevcut eylemler hakkında bilgi edinmek için [bağlayıcının başvuru sayfasına](/connectors/sql/)bakın.
+   Bu eylem, seçili tablodan yalnızca bir satır döndürür, başka hiçbir şey yapmaz. Bu satırdaki verileri görüntülemek için döndürülen satırdaki alanları içeren bir dosya oluşturan ve bu dosyayı bir bulut depolama hesabında depolayabilen başka eylemler ekleyebilirsiniz. Bu bağlayıcıya yönelik diğer mevcut eylemler hakkında bilgi edinmek için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/sql/)bakın.
 
 1. Bir bağlantı oluşturmanız istenirse, [SQL bağlantınızı şimdi oluşturun](#create-connection). Bağlantınız varsa, bir **tablo adı**seçin ve Istediğiniz KAYDıN **satır kimliğini** girin.
 
-   ![Tablo adını ve satır KIMLIĞINI girin](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![Tablo adını ve satır KIMLIĞINI girin](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -132,7 +132,7 @@ Bazen, bağlayıcının tüm sonuçları aynı anda döndürmemesi veya sonuç k
 
 ## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 
-Bu bağlayıcının Tetikleyicileri, eylemleri ve limitleri hakkında teknik bilgi için [bağlayıcının başvuru sayfasına](/connectors/sql/)bakın.
+Bu bağlayıcının Tetikleyicileri, eylemleri ve limitleri hakkında teknik bilgi için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/sql/)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

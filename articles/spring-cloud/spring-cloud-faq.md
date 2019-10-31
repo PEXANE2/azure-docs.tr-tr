@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592303"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163763"
 ---
 # <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
@@ -66,13 +66,13 @@ Hizmet önizlemedeyken Azure Spring Cloud 'ın bilinen sınırlamaları aşağı
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Nasıl geri bildirimde bulunabilirim ve rapor sorunları verebilir?
 
-Spring Service örneklerinizi Azure Spring Cloud 'da oluşturduysanız, bir [Azure destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)oluşturabilirsiniz. Henüz Azure Spring buluta eklendi, özellik istemek veya geri bildirim sağlamak için [Azure geri bildirimlerine](https://feedback.azure.com/) gidebilirsiniz.
+Azure Spring Cloud ile ilgili herhangi bir sorunla karşılaşırsanız lütfen bir [Azure destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)oluşturun. Özellik istekleri için lütfen Özellikler istemek veya geri bildirim sağlamak için [Azure geri bildirim](https://feedback.azure.com/forums/34192--general-feedback) sayfasına gidin.
 
 ## <a name="development"></a>Geliştirme
 
 ### <a name="i-am-a-spring-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-aazure-spring-cloud-application"></a>Bir yay geliştiriciyim, Azure 'da yeni bir uygulama, aAzure Spring Cloud uygulaması geliştirmeyi öğrenmem için en hızlı yol nedir?
 
-Azure yay bulutu 'nı kullanmaya başlamanın en hızlı yolu, [Bu hızlı başlangıcı](spring-cloud-quickstart-launch-app-portal.md)takip etmek için kullanılır.
+Azure yay bulutu 'nı kullanmaya başlamanın en hızlı yolu, [Bu hızlı](spring-cloud-quickstart-launch-app-portal.md)başlangıcı takip etmek için kullanılır.
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure yay bulutu hangi Java çalışma zamanına destekler?
 

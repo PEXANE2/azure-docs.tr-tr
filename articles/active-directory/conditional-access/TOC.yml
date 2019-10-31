@@ -50,6 +50,8 @@
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Azure yönetimi için MFA gerektirme
           href: howto-conditional-access-policy-azure-management.md
+        - name: Tüm kullanıcılar için MFA gerektirme
+          href: howto-conditional-access-policy-all-users-mfa.md
         - name: Eski kimlik doğrulamasını engelleme
           href: howto-conditional-access-policy-block-legacy.md
         - name: Risk tabanlı Koşullu Erişim

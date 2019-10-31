@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: baefc16c821c0e335707430763b5025abf4c001b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a7daf460e65c294b464f9a5deb5d9676b762c5f7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298051"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163580"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft bulut benimseme çerçevesini dağıtma
 
@@ -110,7 +110,7 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Policy_Allowed-VM-SKU 'Lar|İzin verilen sanal makine SKU 'Ları|
 |Kaynak gruplarına CostCenter etıketı Ekle|İlke ataması|Policy_CostCenter_Tag|Maliyetmerkezi etıketını ve değerini kaynak grubundan ekleyin|
 |Ortamınızda izin vermek istemediğiniz kaynak türleri|İlke ataması|İlke _Izin verilen-kaynak türleri|Ortamınızda izin vermek istediğiniz Azure kaynakları|
-|Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|**Kilitli** -Azure AD grubu veya kullanıcı @no__t Key Vault ' de izin vermek için-1|
+|Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|**Kilitli** -Azure AD grubu veya kullanıcı <Object ID> Key Vault içindeki izinleri vermek için|
 |Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
 |Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_Location|Çalışma alanı oluşturulurken kullanılan **kilitli** bölge|
 
@@ -121,7 +121,7 @@ CAF Foundation şema örneğini dağıtma adımlarını gözden geçirdiğinize 
 > [!div class="nextstepaction"]
 > [CAF Foundation şema-genel bakış](./index.md)
 
-Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
+Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

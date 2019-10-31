@@ -4,15 +4,15 @@ description: Azure 'daki Analysis Services sunucunuz şirket içi veri kaynaklar
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294943"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146858"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -50,7 +50,7 @@ Azure Analysis Services ortamı için yükleme yaparken, [Azure Analysis Service
 
 Ağ Geçidi Azure Service Bus için bir giden bağlantı oluşturur. Giden bağlantı noktalarında iletişim kurar: TCP 443 (varsayılan), 5671, 5672, 9350 ile 9354.  Ağ Geçidi için gelen bağlantı noktaları gerekmez.
 
-Güvenlik duvarınızdaki veri bölgenizin IP adreslerini beyaz listeye almanız gerekebilir. [Microsoft Azure veri MERKEZI IP listesini](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu liste haftalık olarak güncelleştirilir. Azure veri merkezi IP listesinde listelenen IP adresleri CıDR simgedir. Daha fazla bilgi için bkz. [sınıfsız etki alanları arası yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir. [Microsoft Azure veri MERKEZI IP listesini](https://www.microsoft.com/download/details.aspx?id=41653)indirebilirsiniz. Bu liste haftalık olarak güncelleştirilir. Azure veri merkezi IP listesinde listelenen IP adresleri CıDR simgedir. Daha fazla bilgi için bkz. [sınıfsız etki alanları arası yönlendirme](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiştir.
 

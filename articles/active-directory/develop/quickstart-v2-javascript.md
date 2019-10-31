@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity platform JavaScript hızlı başlangıç-Azure
+title: Kullanıcı oturum açma ve JavaScript SPA 'da erişim belirteci edinme | Mavisi
+titleSuffix: Microsoft identity platform
 description: JavaScript uygulamalarının Microsoft Identity platform kullanarak erişim belirteçleri gerektiren bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +17,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51ef62d84d2744b595cfb946b7720f8b2a5dcd77
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ad79ee0fd1d421c7e869424ccb8daa595e51a970
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964045"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149415"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Hızlı başlangıç: Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamasından erişim belirteci alma
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
 Bu hızlı başlangıçta, bir JavaScript tek sayfalı uygulamanın (SPA) kişisel hesap, iş hesabı ve okul hesapları kullanıcılarına nasıl oturum açabileceğinizi öğrenmek için bir kod örneği kullanırsınız. JavaScript SPA, Microsoft Graph API 'sini veya herhangi bir Web API 'sini çağırmak için bir erişim belirteci de alabilir. (Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.)
 

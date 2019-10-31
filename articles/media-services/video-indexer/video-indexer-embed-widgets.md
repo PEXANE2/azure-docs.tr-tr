@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036619"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162619"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer pencere öğelerini uygulamalarınıza ekleyin
 
@@ -31,7 +31,7 @@ Bilişsel Öngörüler pencere öğesi, video dizin oluşturma sürecinizden ay�
 
 |Adı|Tanım|Açıklama|
 |---|---|---|
-|`widgets`|Virgülle ayrılmış dizeler|, İşlemek istediğiniz öngörüleri denetlemenize olanak tanır. <br/> Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` yalnızca kişiler ve marka Kullanıcı arabirimi öngörülerini işler.<br/>Mevcut seçenekler: people (kişiler), keywords (anahtar sözcükler), annotations (ek açıklamalar), brands (markalar), sentiments (yaklaşımlar), transcript (transkript), search (arama).<br/>@No__t_0 URL parametresinin sürüm 2 ' de desteklenmediğini unutmayın.<br/>|
+|`widgets`|Virgülle ayrılmış dizeler|, İşlemek istediğiniz öngörüleri denetlemenize olanak tanır. <br/> Örnek: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` yalnızca kişiler ve marka Kullanıcı arabirimi öngörülerini işler.<br/>Mevcut seçenekler: people (kişiler), keywords (anahtar sözcükler), annotations (ek açıklamalar), brands (markalar), sentiments (yaklaşımlar), transcript (transkript), search (arama).<br/>`widgets` URL parametresinin sürüm 2 ' de desteklenmediğini unutmayın.<br/>|
 |`locale`|Kısa bir dil kodu|Öngörüler dilini denetler. Varsayılan değer `en`. <br/> Örnek: `locale=de`.|
 |`tab`|Varsayılan seçili sekme|Varsayılan olarak işlenen **Öngörüler** sekmesini denetler. <br/> Örnek: `tab=timeline`, öngörüleri **zaman çizelgesi** sekmesi seçili olarak işler.|
 
@@ -253,7 +253,7 @@ Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütü
 
 Varsayılan olarak, Video Indexer oynatıcı videonun dökümünü temel alan, otomatik olarak oluşturulan kapalı açıklamalı alt yazılar içerir. Döküm, video karşıya yüklendiğinde seçilen kaynak dili ile videodan ayıklanır.
 
-Farklı bir dille gömmek istiyorsanız, ekleme oynatıcı URL 'sine `&captions=< Language | ”all” | “false” >` ekleyebilirsiniz. Tüm kullanılabilir dillerin resim yazılarında açıklamalı alt yazıların olmasını istiyorsanız `all` değerini kullanın. Başlıkların varsayılan olarak görüntülenmesini istiyorsanız `&showCaptions=true` geçirebilirsiniz.
+Farklı bir dille gömmek istiyorsanız, ekleme oynatıcı URL 'sine `&captions=< Language | "all" | "false" >` ekleyebilirsiniz. Tüm kullanılabilir dillerin resim yazılarında açıklamalı alt yazıların olmasını istiyorsanız `all` değerini kullanın. Başlıkların varsayılan olarak görüntülenmesini istiyorsanız `&showCaptions=true` geçirebilirsiniz.
 
 Ekleme URL 'SI şu şekilde görünür: 
 

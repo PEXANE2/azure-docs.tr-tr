@@ -4,15 +4,15 @@ description: REST API kullanarak zaman uyumsuz yenilemeyi nasıl kodleyeceğiniz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301168"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147356"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
@@ -183,7 +183,7 @@ Bir eşitleme işleminin durumunu denetlemek için, işlem KIMLIĞINI parametre 
 }
 ```
 
-@No__t değerleri-0:
+`syncstate`değerleri:
 
 - 0: çoğaltılıyor. Veritabanı dosyaları bir hedef klasöre çoğaltılıyor.
 - 1: yeniden doldurma. Veritabanı, salt okunurdur ve sunucu örnekleri üzerinde yeniden doldurma işlemi uygulanıyor.
@@ -207,7 +207,7 @@ Kod örneği [hizmet sorumlusu](#service-principal) kimlik doğrulamasını kull
 Hizmet sorumlusunu ayarlama hakkında daha fazla bilgi için bkz. [hizmet sorumlusu oluşturma-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) ve [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md) ve Azure 'da gerekli izinleri atama hakkında daha fazla bilgi için. Adımları tamamladıktan sonra aşağıdaki ek adımları uygulayın:
 
 1.  Kod örneğinde, **dize yetkilisini bulun =...** , KURULUŞUNUZUN kiracı kimliğiyle **ortak** olarak değiştirin.
-2.  Kimlik bilgileri nesnesinin örneğini oluşturmak için ClientCredential sınıfının kullanılması için açıklama/açıklama açıklama ekleyin. @No__t-0App ID > ve \<Uygulama anahtarı > değerlerine güvenli bir şekilde erişildiğinden veya hizmet sorumluları için sertifika tabanlı kimlik doğrulaması kullandığınızdan emin olun.
+2.  Kimlik bilgileri nesnesinin örneğini oluşturmak için ClientCredential sınıfının kullanılması için açıklama/açıklama açıklama ekleyin. \<uygulama KIMLIĞI > ve \<uygulama anahtarı > değerlerine güvenli bir şekilde erişildiği veya hizmet sorumluları için sertifika tabanlı kimlik doğrulaması kullandığından emin olun.
 3.  Örnek uygulamayı çalıştırın.
 
 

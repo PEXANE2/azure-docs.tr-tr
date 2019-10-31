@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999057"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159881"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -34,28 +34,14 @@ Bu makalede size yardımcı olacak bilgiler sunulmaktadır:
 [Azure 'da güvenli uygulamalar geliştirmek](abstract-develop-secure-apps.md) , bulut için uygulama geliştirirken yazılım geliştirme yaşam döngüsünün her aşamasında göz önünde bulundurmanız gereken güvenlik soruları ve denetimleri için genel bir kılavuzdur.
 
 ## <a name="cloud-security-advantages"></a>Bulut güvenliği avantajları
-Bulutta olmasının güvenlik avantajları vardır. Şirket içi bir ortamda kuruluşlar, saldırganların tüm katmanlarda güvenlik açıklarından yararlanabileceği bir ortam oluşturan sorumlulukların ve sınırlı kaynakların güvenlik altına yatırmasını sağlar.
+Siz ve Microsoft arasındaki [sorumluluk](shared-responsibility.md) bölümünü anlamak önemlidir. Şirket içinde tüm yığınınızı sahiplerseniz, buluta geçtiğinizde Microsoft 'a bazı sorumluluklar aktarabilirsiniz.
 
-![Bulut çağının güvenlik avantajları](./media/paas-deployments/advantages-of-cloud.png)
+[Bulutta olmasının güvenlik avantajları](shared-responsibility.md#cloud security advantages)vardır. Şirket içi bir ortamda kuruluşlar, saldırganların tüm katmanlarda güvenlik açıklarından yararlanabileceği bir ortam oluşturan sorumlulukların ve sınırlı kaynakların güvenlik altına yatırmasını sağlar.
 
 Kuruluşlar, bir sağlayıcının bulut tabanlı güvenlik yeteneklerini ve bulut zekasını kullanarak tehdit algılamasını ve yanıt sürelerini iyileştirebilir.  Kuruluşlar bulut sağlayıcısına kaydırarak, güvenlik kaynaklarını ve bütçesini diğer iş öncelikleriyle yeniden ayırmaya olanak sağlayan daha fazla güvenlik kapsamı alabilir.
 
-## <a name="division-of-responsibility"></a>Sorumluluk bölümü
-Siz ve Microsoft arasındaki sorumluluk bölümünü anlamak önemlidir. Şirket içinde tüm yığınınızı sahiplerseniz, buluta geçtiğinizde Microsoft 'a bazı sorumluluklar aktarabilirsiniz. Aşağıdaki sorumluluk matrisi, bir SaaS, PaaS ve IaaS dağıtımında, Microsoft 'tan sorumlu olduğunuz ve Microsoft 'un sorumlu olduğu yığının bölgelerini gösterir.
-
-![Sorumluluk alanları](./media/paas-deployments/responsibility-zones.png)
-
-Tüm bulut dağıtım türleri için verileriniz ve kimlikleriniz size aittir. Verilerinizin ve kimliklerinizin güvenliğini, şirket içi kaynaklarınızı ve denetlediğiniz bulut bileşenlerini (hizmet türüne göre farklılık gösterir) korumaktan siz sorumlusunuz.
-
-Dağıtım türünden bağımsız olarak her zaman sizin tarafınızdan korunan sorumluluklar şunlardır:
-
-- Data
-- Uç Noktalar
-- Hesap
-- Erişim yönetimi
-
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>PaaS bulut hizmeti modelinin güvenlik avantajları
-Aynı sorumluluk matrisini kullanarak, şirket içi Azure PaaS dağıtımının güvenlik avantajlarına göz atalım.
+Ayrıca, şirket içi Azure PaaS dağıtımının güvenlik avantajlarına göz atalım.
 
 ![PaaS 'nin güvenlik avantajları](./media/paas-deployments/advantages-of-paas.png)
 
@@ -87,18 +73,18 @@ Ağ çevre ilkeleri ve desenleri, Decades için kullanılabilir. Buna karşılı
 
 Kimlik kuşağını yönetmeye yönelik en iyi yöntemler aşağıda verilmiştir.
 
-**En iyi uygulama**: PaaS dağıtımınızın güvenliğini sağlamak için anahtarlarınızın ve kimlik bilgilerinizin güvenliğini sağlayın.   
-**Ayrıntı**: Anahtar ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolanabileceği merkezi bir çözüm kullanabilirsiniz. [Azure Key Vault](../../key-vault/key-vault-overview.md) , kimlik doğrulama anahtarlarını, depolama hesabı anahtarlarını, veri şifreleme anahtarlarını,. pfx dosyalarını ve parolaları HSM 'ler tarafından korunan anahtarları kullanarak şifreleyerek, anahtarlarınızı ve gizli dizileri korur.
+**En iyi yöntem**: PaaS dağıtımınızın güvenliğini sağlamak için Anahtarlarınızı ve kimlik bilgilerinizi güvenli hale getirin.   
+**Ayrıntı**: anahtarların ve kimlik bilgilerinin kaybolması yaygın bir sorundur. Anahtar ve parolaların donanım güvenlik modüllerinde (HSM 'ler) depolanabileceği merkezi bir çözüm kullanabilirsiniz. [Azure Key Vault](../../key-vault/key-vault-overview.md) , kimlik doğrulama anahtarlarını, depolama hesabı anahtarlarını, veri şifreleme anahtarlarını,. pfx dosyalarını ve parolaları HSM 'ler tarafından korunan anahtarları kullanarak şifreleyerek, anahtarlarınızı ve gizli dizileri korur.
 
-**En iyi uygulama**: Kaynak kodunda veya GitHub 'da kimlik bilgilerini ve diğer gizli dizileri yerleştirmeyin.   
-**Ayrıntı**: Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü bir şey, yetkisiz bir tarafın bunlara erişmesini sağlayabilir. Saldırganlar, GitHub gibi kod depolarında depolanan anahtar ve gizli dizileri bulmak için bot teknolojisinden yararlanabilir. Bu genel kod depolarında anahtar ve gizli dizileri yerleştirmeyin.
+**En iyi yöntem**: kimlik bilgilerini ve diğer gizli dizileri kaynak kodunda veya GitHub 'da yerleştirmeyin.   
+**Ayrıntı**: Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü olan tek şey, yetkisiz bir tarafın bunlara erişmesini sağlayabilir. Saldırganlar, GitHub gibi kod depolarında depolanan anahtar ve gizli dizileri bulmak için bot teknolojisinden yararlanabilir. Bu genel kod depolarında anahtar ve gizli dizileri yerleştirmeyin.
 
-**En iyi uygulama**: Bu VM 'Leri doğrudan uzaktan yönetmenizi sağlayan bir yönetim arabirimi kullanarak, karma PaaS ve IaaS hizmetlerindeki VM yönetimi arabirimlerinizi koruyun.   
+**En iyi yöntem**: Bu VM 'leri doğrudan uzaktan yönetmenizi sağlayan bir yönetim arabirimi kullanarak, karma PaaS ve IaaS hizmetlerindeki VM yönetimi arabirimlerinizi koruyun.   
 **Ayrıntı**: [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)ve [PowerShell uzaktan iletişim](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) gibi uzak yönetim protokolleri kullanılabilir. Genel olarak, internet 'ten VM 'lere doğrudan uzaktan erişimi etkinleştirmenizi öneririz.
 
 Mümkünse, bir Azure sanal ağındaki sanal özel ağları kullanma gibi diğer yaklaşımları kullanın. Alternatif yaklaşımlar yoksa, karmaşık parola ve iki öğeli kimlik doğrulaması ( [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)gibi) kullandığınızdan emin olun.
 
-**En iyi uygulama**: Güçlü kimlik doğrulama ve yetkilendirme platformları kullanın.   
+**En iyi yöntem**: güçlü kimlik doğrulama ve yetkilendirme platformları kullanın.   
 **Ayrıntı**: Azure AD 'de özel Kullanıcı depoları yerine federe kimlikler kullanın. Federal kimlikler kullandığınızda, platform tabanlı bir yaklaşımdan yararlanabilir ve yetkili kimliklerin yönetim yetkisini iş ortaklarınıza devredebilirsiniz. Çalışanlar sonlandırıldığı ve bilgilerin birden çok kimlik ve yetkilendirme sistemine yansıtılması gerektiğinde, bir federal kimlik yaklaşımı özellikle önemlidir.
 
 Özel kod yerine platform tarafından sağlanan kimlik doğrulama ve yetkilendirme mekanizmalarını kullanın. Bunun nedeni, özel kimlik doğrulama kodu geliştirmenin hata olabilir. Geliştiricilerinizin çoğu güvenlik uzmanı değildir ve kimlik doğrulama ve yetkilendirme konusunda en son gelişmeleri göz önünde bulundurulmamalıdır. Ticari kod (örneğin, Microsoft 'tan) genellikle yaygın olarak güvenlik gözden geçirilir.
@@ -114,32 +100,32 @@ Aşağıdaki tabloda, Ilerleme tehditleri listelenmekte ve Azure özelliklerini 
 
 | Tehdit | Güvenlik özelliği | Olası Azure platformu azaltmaları |
 | --- | --- | --- |
-| Sızdır | Authentication | HTTPS bağlantıları gerektir. |
+| Sızdır | Kimlik Doğrulaması | HTTPS bağlantıları gerektir. |
 | Kurcalama | Bütünlük | SSL sertifikalarını doğrulayın. |
 | Kar | Red olmayan | Azure [izleme ve tanılama 'yı](/azure/architecture/best-practices/monitoring)etkinleştirin. |
 | Bilgilerin açığa çıkması | Gizlilik | Bekleyen hassas verileri [hizmet sertifikaları](/rest/api/appservice/certificates)kullanarak şifreleyin. |
-| Hizmet reddi | Kullanılabilirlik | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. |
-| Ayrıcalık yükseltme | Authorization | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)kullanın. |
+| Hizmet reddi | Erişilebilirlik | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. |
+| Ayrıcalık yükselmesi | Yetkilendirme | [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements)kullanın. |
 
 ## <a name="develop-on-azure-app-service"></a>Azure App Service geliştirin
 [Azure App Service](/azure/app-service/overview) , herhangi bir platform veya cihaz için Web ve mobil uygulamalar oluşturmanıza ve bulutta veya şirket içinde her yerden verilere bağlanmanıza olanak tanıyan bir PaaS sunumudur. App Service, daha önce Azure Web siteleri ve Azure Mobile Services olarak ayrı olarak sunulan Web ve mobil özellikleri içerir. Ayrıca iş süreçlerini otomatikleştirmek ve bulut API'leri barındırmak için yeni özellikler içerir. Tek bir tümleşik hizmet olarak, App Service Web, mobil ve tümleştirme senaryolarına zengin bir özellik kümesi sunar.
 
 App Service kullanmak için en iyi yöntemler aşağıda verilmiştir.
 
-**En iyi uygulama**: [Azure Active Directory aracılığıyla kimlik doğrulaması](/azure/app-service/overview-authentication-authorization)yapın.   
-**Ayrıntı**: App Service, kimlik sağlayıcınız için bir OAuth 2,0 hizmeti sağlar. OAuth 2,0, Web uygulamaları, masaüstü uygulamaları ve cep telefonları için belirli yetkilendirme akışları sağlarken istemci geliştiricisi basitliği üzerine odaklanır. Azure AD, mobil uygulamalar ve Web uygulamalarına erişim yetkisi vermek için OAuth 2,0 kullanır.
+**En iyi yöntem**: [Azure Active Directory aracılığıyla kimlik doğrulaması](/azure/app-service/overview-authentication-authorization).   
+**Ayrıntı**: App Service kimlik sağlayıcınız Için bir OAuth 2,0 hizmeti sağlar. OAuth 2,0, Web uygulamaları, masaüstü uygulamaları ve cep telefonları için belirli yetkilendirme akışları sağlarken istemci geliştiricisi basitliği üzerine odaklanır. Azure AD, mobil uygulamalar ve Web uygulamalarına erişim yetkisi vermek için OAuth 2,0 kullanır.
 
-**En iyi uygulama**: Erişim gereksinimi ve en az ayrıcalık güvenlik ilkelerine göre erişimi kısıtlayın.   
-**Ayrıntı**: Erişim kısıtlama, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur. Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak için RBAC kullanabilirsiniz. Kullanıcılara uygulamalara erişim verme hakkında daha fazla bilgi edinmek için bkz. [erişim yönetimi ile çalışmaya başlama](/azure/role-based-access-control/overview).
+**En iyi yöntem**: erişim gereksinimi ve en az ayrıcalık güvenlik ilkelerine göre erişimi kısıtlayın.   
+**Ayrıntı**: erişim kısıtlama, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için zorunludur. Belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara izinler atamak için RBAC kullanabilirsiniz. Kullanıcılara uygulamalara erişim verme hakkında daha fazla bilgi edinmek için bkz. [erişim yönetimi ile çalışmaya başlama](/azure/role-based-access-control/overview).
 
-**En iyi uygulama**: Anahtarlarınızı koruyun.   
-**Ayrıntı**: Azure Key Vault, bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault, anahtarları ve gizli dizileri (kimlik doğrulaması anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilirsiniz. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Ek güvenlik için HSM'lerde anahtarları içeri aktarabilir veya oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](/azure/key-vault/key-vault-overview) . Otomatik yenilemeyle TLS sertifikalarınızı yönetmek için Key Vault de kullanabilirsiniz.
+**En iyi yöntem**: anahtarlarınızı koruyun.   
+**Ayrıntı**: Azure Key Vault, bulut uygulamalarının ve hizmetlerinin kullandığı şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault, anahtarları ve gizli dizileri (kimlik doğrulaması anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları,) şifreleyebilirsiniz. PFX dosyaları ve parolalar), donanım güvenlik modülleri (HSM 'ler) tarafından korunan anahtarları kullanarak. Ek güvence için anahtarları HSM’lere aktarabilir veya burada oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure Key Vault](/azure/key-vault/key-vault-overview) . Otomatik yenilemeyle TLS sertifikalarınızı yönetmek için Key Vault de kullanabilirsiniz.
 
-**En iyi uygulama**: Gelen kaynak IP adreslerini kısıtla.   
-**Ayrıntı**: [App Service ortamı](/azure/app-service/environment/intro) , gelen kaynak IP adreslerini ağ güvenlik grupları aracılığıyla kısıtlamanıza yardımcı olan bir sanal ağ tümleştirme özelliğine sahiptir. Sanal ağlar, erişimi denetlediğiniz internet olmayan, yönlendirilebilir bir ağa Azure kaynakları yerleştiretkinleştirmenizi sağlar. Daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](/azure/app-service/web-sites-integrate-with-vnet).
+**En iyi yöntem**: gelen kaynak IP adreslerini kısıtla.   
+**Ayrıntı**: [App Service ortamı](/azure/app-service/environment/intro) , ağ güvenlik GRUPLARı aracılığıyla gelen kaynak IP adreslerini kısıtlamanıza yardımcı olan bir sanal ağ tümleştirme özelliğine sahiptir. Sanal ağlar, erişimi denetlediğiniz internet olmayan, yönlendirilebilir bir ağa Azure kaynakları yerleştiretkinleştirmenizi sağlar. Daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](/azure/app-service/web-sites-integrate-with-vnet).
 
-**En iyi uygulama**: App Service ortamlarınızın güvenlik durumunu izleyin.   
-**Ayrıntı**: App Service ortamlarınızı izlemek için Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden [öneriler](../../security-center/security-center-virtual-machine-protection.md) oluşturur.
+**En iyi yöntem**: App Service ortamlarınızın güvenlik durumunu izleyin.   
+**Ayrıntı**: App Service ortamlarınızı Izlemek Için Azure Güvenlik Merkezi 'ni kullanın. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden [öneriler](../../security-center/security-center-virtual-machine-protection.md) oluşturur.
 
 > [!NOTE]
 > İzleme App Service önizleme aşamasındadır ve yalnızca güvenlik merkezi 'nin [Standart katmanında](/azure/security-center/security-center-pricing) kullanılabilir.
@@ -167,10 +153,10 @@ Belirsizlik testi, bu verileri ayrıştırmak ve tüketmek üzere program arabir
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Azure PaaS dağıtımının güvenlik avantajlarına ve bulut uygulamalarına yönelik en iyi güvenlik uygulamalarına odaklandık. Ardından, belirli Azure hizmetlerini kullanarak PaaS Web ve mobil çözümlerinizi güvenli hale getirmek için önerilen uygulamaları öğrenin. Azure App Service, Azure SQL veritabanı ve Azure SQL veri ambarı ve Azure Storage ile başlayacağız. Diğer Azure hizmetleri için Önerilen uygulamalarla ilgili makaleler kullanılabilir hale geldiğinde, bağlantılar aşağıdaki listede verilmiştir:
 
-- [Azure uygulama hizmeti](paas-applications-using-app-services.md)
+- [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL veritabanı ve Azure SQL veri ambarı](paas-applications-using-sql.md)
 - [Azure Depolama](paas-applications-using-storage.md)
-- Redis için Azure Önbelleği
+- Redis için Azure Cache
 - Azure Service Bus
 - Web uygulaması güvenlik duvarları
 
@@ -180,6 +166,4 @@ Azure 'u kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve 
 
 Aşağıdaki kaynaklar, Azure güvenliği ve ilgili Microsoft hizmetleri hakkında daha genel bilgiler sağlamak için kullanılabilir:
 * Azure [güvenlik ekibi blogu](https://blogs.msdn.microsoft.com/azuresecurity/) -Azure güvenliği ile ilgili en son bilgiler için
-* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına göre bildirilebilir veya e-posta ilesecure@microsoft.com
-
-
+* [Microsoft Güvenlik](https://technet.microsoft.com/library/dn440717.aspx) açıkları, Azure ile ilgili sorunlar da dahil olmak üzere Microsoft güvenlik açıklarına secure@microsoft.com bildirilebilir veya e-posta ile gönderebilirsiniz.

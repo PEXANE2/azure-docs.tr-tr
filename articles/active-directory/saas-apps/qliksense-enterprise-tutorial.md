@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8c27e340-2b25-47b6-bf1f-438be4c14f93
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9265a5951ceb7b0cb757e392c2e26aa19bfefd06
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7886c863dd50fd3f09d782f892bdebabceb73546
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678506"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160105"
 ---
-# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Öğretici: Qlik Sense Enterprise 'ı Azure Active Directory ile tümleştirin
+# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Öğretici: Qlik Sense Enterprise 'ı Azure Active Directory tümleştirme
 
 Bu öğreticide, Qlik Sense Enterprise 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Qlik Sense Enterprise 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -54,7 +55,7 @@ Qlik Sense Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak içi
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Qlik Sense Enterprise** yazın.
 1. Sonuçlar panelinden **Qlik Sense Enterprise** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 **Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Qlik Sense Enterprise ile yapılandırın ve test edin. SSO 'nun çalışması için, Qlik Sense kuruluşunda bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
@@ -62,8 +63,8 @@ Azure AD SSO 'yu Qlik Sense Enterprise ile yapılandırmak ve test etmek için a
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
 2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Qlik Sense ENTERPRISE SSO 'Yu yapılandırın](#configure-qlik-sense-enterprise-sso)** .
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 5. **[Qlik Sense kurumsal test kullanıcısı oluşturun](#create-qlik-sense-enterprise-test-user)** -kullanıcının Azure AD gösterimine bağlı olan Qlik Sense kuruluşunda Britta Simon 'ın bir karşılığı olacak şekilde.
 6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
@@ -79,9 +80,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    a. İçinde **oturum açma URL'si** metin kutusuna bir URL şu biçimi kullanarak: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
-    b. İçinde **tanımlayıcı** metin kutusuna bir URL şu biçimi kullanarak:
+    b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |--|
@@ -157,7 +158,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     e. **SAML IDP meta verileri** , daha önce **Azure AD yapılandırması 'Ndan Federasyon meta verilerini düzenleme** bölümünde düzenlenen dosyadır.  **IDP meta verilerini karşıya yüklemeden önce,** Azure AD Ile Qlik Sense sunucusu arasında düzgün işlem yapıldığından emin olmak için dosyanın düzenlenmesi gerekir.  **Lütfen dosya düzenlenmediyse yukarıdaki yönergelere bakın.**  Dosya düzenlendiyse, gözden geçirme düğmesine tıklayın ve sanal proxy yapılandırmasına yüklemek için düzenlenmiş meta veri dosyasını seçin.
 
-    f. Azure AD 'nin Qlik Sense sunucusuna gönderdiği **Kullanıcı** kimliğini temsıl eden SAML özniteliği için öznitelik adı veya şema başvurusu girin.  Şema başvuru bilgileri, Azure Uygulama ekranları yapılandırması ' nda bulunabilir.  Name özniteliğini kullanmak için, girin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Azure AD 'nin Qlik Sense sunucusuna gönderdiği **Kullanıcı** kimliğini temsıl eden SAML özniteliği için öznitelik adı veya şema başvurusu girin.  Şema başvuru bilgileri, Azure Uygulama ekranları yapılandırması ' nda bulunabilir.  Ad özniteliğini kullanmak için `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`girin.
 
     g. Azure AD aracılığıyla Qlik Sense sunucusunda kimlik doğrulaması yaparken kullanıcılara eklenecek **Kullanıcı dizini** için değeri girin.  Sabit kodlanmış değerler **köşeli ayraç []** ile çevrelenmelidir.  Azure AD SAML onaylama 'da gönderilen bir özniteliği kullanmak için, bu metin kutusuna köşeli ayraçlar **olmadan** özniteliğin adını girin.
 
@@ -217,19 +218,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![QlikSense][qs53]
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `Britta Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `BrittaSimon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştireceksiniz.
 
@@ -237,7 +238,7 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 1. Uygulamalar listesinde **Qlik Sense Enterprise**' u seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -249,7 +250,7 @@ Bu bölümde, Qlik Sense kurumsal erişimine izin vererek Azure çoklu oturum a�
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Qlik Sense kurumsal test kullanıcısı oluşturma
 
-Bu bölümde, Qlik Sense Enterprise 'ta Britta Simon adlı bir Kullanıcı oluşturacaksınız. Qlik Sense Enterprise platformunda kullanıcıları eklemek için [Qlik Sense kurumsal destek ekibi](https://www.qlik.com/us/services/support) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Qlik Sense Enterprise 'ta Britta Simon adlı bir Kullanıcı oluşturacaksınız. Qlik Sense Enterprise platformunda kullanıcıları eklemek için [Qlik Sense kurumsal destek ekibi](https://www.qlik.com/us/services/support) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
@@ -257,7 +258,7 @@ Erişim panelinde Qlik Sense kurumsal kutucuğunu seçtiğinizde, SSO 'yu ayarla
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

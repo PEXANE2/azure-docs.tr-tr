@@ -4,15 +4,15 @@ description: Azure portal ' de Analysis Services Server ölçümlerini nasıl iz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294877"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146806"
 ---
 # <a name="monitor-server-metrics"></a>Sunucu ölçümlerini izleme
 
@@ -27,7 +27,7 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 
     ![Azure portalında izleme](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. **Kullanılabilir ölçümler**' de, grafiğinizde içerilecek ölçümleri seçin. 
+2. **Ölçüm**bölümünde, grafiğinizde içerilecek ölçümleri seçin. 
 
     ![Grafiği izle](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -89,5 +89,5 @@ Daha ayrıntılı tanılama gerçekleştirmek, performansı izlemek ve bir kayna
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure izleyici 'ye genel bakış](../azure-monitor/overview.md)      
-[Azure Ölçüm Gezgini @no__t ile çalışmaya](../azure-monitor/platform/metrics-getting-started.md)başlama-1  
+[Azure Ölçüm Gezgini ile çalışmaya](../azure-monitor/platform/metrics-getting-started.md) başlama      
 [Azure Izleyici 'de ölçümler REST API](/rest/api/monitor/metrics)

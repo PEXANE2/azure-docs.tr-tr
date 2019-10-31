@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154713"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161756"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services yapılandırma ve yönetim sorunları: Sık sorulan sorular (SSS)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
 
 Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)yapılandırma ve yönetim sorunları hakkında sık sorulan sorular yer almaktadır. Boyut bilgileri için [Cloud SERVICES VM boyutu sayfasına](cloud-services-sizes-specs.md) de başvurabilirsiniz.
 
@@ -52,7 +52,7 @@ Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/service
 **İzinler**
 
 - [Microsoft tarafından bulut hizmeti örneklerine izin verilmeden Microsoft iç mühendisleri uzak masaüstü olabilir mi?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [RDP dosyasını kullanarak bulut hizmeti sanal makinesine uzak masaüstü oluşturamıyorum. Şu hatayı alıyorum: Bir kimlik doğrulama hatası oluştu (kod: 0x80004005](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [RDP dosyasını kullanarak bulut hizmeti sanal makinesine uzak masaüstü oluşturamıyorum. Şu hatayı alıyorum: bir kimlik doğrulama hatası oluştu (kod: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Ölçeklendirme**
 
@@ -100,7 +100,7 @@ Yönetim sertifikalarınızı yenilemek için aşağıdaki PowerShell komutları
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Get-azuikinci dosya SettingsFile** , Azure Portal **abonelik** > **Yönetim sertifikalarında** yeni bir yönetim sertifikası oluşturacaktır. Yeni sertifikanın adı "YourSubscriptionNam]-[CurrentDate]-Credentials" şeklinde görünür.
+**Get-Azuikinci dosya SettingsFile** , **Azure Portal > ** **Yönetim sertifikalarında** yeni bir yönetim sertifikası oluşturacaktır. Yeni sertifikanın adı "YourSubscriptionNam]-[CurrentDate]-Credentials" şeklinde görünür.
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Ana SSL sertifikası (. pfx) ve ara sertifika (. p7b) yüklemesini otomatikleştirme
 
@@ -169,7 +169,7 @@ Hizmet tanımınızda (csdef) zaman aşımını şu şekilde belirtebilirsiniz:
     </Endpoints>
   </WorkerRole>
 ```
-Bkz [. yeni: Daha fazla bilgi için Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) için yapılandırılabilir boşta zaman aşımı.
+Daha fazla bilgi için bkz. [Yeni: yapılandırılabilir boşta zaman aşımı Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) .
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Nasıl yaparım? statik bir IP adresini bulut hizmetim ile ilişkilendirsin mi?
 Statik bir IP adresi ayarlamak için ayrılmış bir IP oluşturmanız gerekir. Bu ayrılmış IP, yeni bir bulut hizmeti veya var olan bir dağıtım ile ilişkilendirilebilir. Ayrıntılar için aşağıdaki belgelere bakın:
@@ -197,8 +197,8 @@ Windows 10 ve Windows Server 2016 hem istemci hem de sunucu tarafında HTTP/2 de
 
 Daha fazla bilgi için bkz.
 
-- [IIS HTTP/2](https://blogs.iis.net/davidso/http2)
-- [Video: Windows 10 ' da HTTP/2: Tarayıcı, uygulamalar ve Web sunucusu](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [IIS üzerinde HTTP/2](https://blogs.iis.net/davidso/http2)
+- [Video: Windows 10 ' da HTTP/2: tarayıcı, uygulamalar ve Web sunucusu](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Bu adımlar bir başlangıç göreviyle otomatikleştirilebilir, böylece her yeni PaaS örneği oluşturulduğunda bu değişiklikler sistem kayıt defterinde yukarıdaki değişiklikleri gerçekleştirebilir. Daha fazla bilgi için bkz. [bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma](cloud-services-startup-tasks.md).
@@ -218,12 +218,12 @@ Cloud Services, Azure Resource Manager tabanlı bir hizmet olmadığı için rol
 
 Bkz. [Azure 'daki farklı rolleri anlayın](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Uzak masaüstü
+## <a name="remote-desktop"></a>Uzak Masaüstü
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Microsoft tarafından bulut hizmeti örneklerine izin verilmeden Microsoft iç mühendisleri uzak masaüstü olabilir mi?
 Microsoft, sahip veya kendi designee 'den, yazılı izin (e-posta veya başka yazılı iletişim) olmadan bulut hizmetinize iç mühendislere izin vermeyecek katı bir işlem izler.
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>RDP dosyasını kullanarak bulut hizmeti sanal makinesine uzak masaüstü oluşturamıyorum. Şu hatayı alıyorum: Bir kimlik doğrulama hatası oluştu (kod: 0x80004005
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>RDP dosyasını kullanarak bulut hizmeti sanal makinesine uzak masaüstü oluşturamıyorum. Şu hatayı alıyorum: bir kimlik doğrulama hatası oluştu (kod: 0x80004005)
 
 Bu hata, Azure Active Directory katılmış bir makineden RDP dosyasını kullanıyorsanız ortaya çıkabilir. Bu sorunu çözmek için şu adımları izleyin:
 
@@ -249,7 +249,7 @@ Cloud Services için Application Insights etkinleştirme hakkında daha fazla bi
 
 Cloud Services için Azure Tanılama günlüğe kaydetmenin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure Cloud Services ve sanal makineler için tanılamayı ayarlama](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Genel
+## <a name="generic"></a>Yorlar
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>"Noalgılamasına f" i web siteme Nasıl yaparım? eklensin mi?
 İstemcilerin MIME türlerini algılaması için, *Web. config* dosyanıza bir ayar ekleyin.
@@ -281,7 +281,7 @@ Bkz. [hizmete özgü sınırlar](../azure-subscription-service-limits.md#subscri
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Bulut hizmeti sanal makinemdeki sürücü neden çok az boş disk alanı gösteriyor?
 Bu beklenen davranıştır ve uygulamanızda herhangi bir soruna neden olmaz. Azure PaaS VM 'lerinde% AppRoot% sürücüsü için günlük kaydı etkinleştirilir ve bu, temelde dosyaların normalde kapladığı alan miktarını iki katına tüketir. Bununla birlikte, dikkat etmeniz gereken birkaç nokta vardır.
 
-% AppRoot% sürücü boyutu,. cspkg + Max günlük boyutu + boş alan boşluğu > veya 1,5 GB, hangisi daha büyükse hesaplanır \<. SANAL makinenizin boyutunun bu hesaplama için bir pul yok. (VM boyutu yalnızca geçici C: sürücüsünün boyutunu etkiler.) 
+% AppRoot% sürücü boyutu, \<boyutu. cspkg + Max günlük boyutu + boş alan > veya 1,5 GB, hangisi daha büyük bir kenar boşluğu olarak hesaplanır. SANAL makinenizin boyutunun bu hesaplama için bir pul yok. (VM boyutu yalnızca geçici C: sürücüsünün boyutunu etkiler.) 
 
 % AppRoot% sürücüsüne yazmak desteklenmez. Azure VM 'ye yazıyorsanız, bunu geçici bir LocalStorage kaynağında (veya blob depolama, Azure dosyaları vb. gibi diğer bir seçeneğe) yapmanız gerekir. Bu nedenle% AppRoot% klasöründeki boş alan miktarı anlamlı değildir. Uygulamanızın% AppRoot% sürücüsüne yazıyor olduğundan emin değilseniz, hizmetinizin birkaç gün boyunca her zaman çalışmasına izin verebilir ve "önce" ve "sonra" boyutlarını karşılaştırabilirsiniz. 
 
@@ -302,7 +302,7 @@ Kötü amaçlı yazılımdan koruma senaryoları ve portaldan nasıl etkinleşti
 
 Aşağıdaki yöntemlerden birini kullanarak Cloud Services SNı 'yi etkinleştirebilirsiniz:
 
-**Yöntem 1: PowerShell 'i kullanma**
+**Yöntem 1: PowerShell kullanma**
 
 SNı bağlama, aşağıdaki gibi bir bulut hizmeti rolü örneği için başlangıç görevinde **New-Webbinding** PowerShell cmdlet 'i kullanılarak yapılandırılabilir:
     
@@ -310,14 +310,14 @@ SNı bağlama, aşağıdaki gibi bir bulut hizmeti rolü örneği için başlang
     
 [Burada](https://technet.microsoft.com/library/ee790567.aspx)açıklandığı gibi, $sslFlags aşağıdaki gibi değerlerden biri olabilir:
 
-|Value|Anlamı|
+|Değer|Anlamı|
 ------|------
 |0|SNı yok|
-|1\.|SNı etkin |
-|2 |Merkezi sertifika deposu kullanan SNı bağlama|
-|3|Merkezi sertifika deposu kullanan SNı bağlaması |
+|1|SNı etkin|
+|2|Merkezi sertifika deposu kullanan SNı bağlama|
+|3|Merkezi sertifika deposu kullanan SNı bağlaması|
  
-**Yöntem 2: Kodu kullan**
+**Yöntem 2: kodu kullanma**
 
 SNı bağlama, bu [blog gönderisine](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)göre rol başlangıcında kod aracılığıyla da yapılandırılabilir:
 
@@ -325,8 +325,8 @@ SNı bağlama, bu [blog gönderisine](https://blogs.msdn.microsoft.com/jianwu/20
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     

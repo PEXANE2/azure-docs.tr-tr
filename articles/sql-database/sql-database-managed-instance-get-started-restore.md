@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514014"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146399"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı başlangıç: bir veritabanını yönetilen örneğe geri yükleme
 
@@ -35,12 +35,12 @@ Bu hızlı başlangıç:
 - [Yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıcı ' ndan kaynakları kullanır.
 - Bilgisayarınızda en son [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) yüklü olmasını gerektirir.
 - Yönetilen örneğinize bağlanmak için SSMS kullanılması gerekir. Nasıl bağlanadığına ilişkin şu hızlı başlangıçlara bakın:
+  - Yönetilen örnekte [ortak uç noktayı etkinleştir](sql-database-managed-instance-public-endpoint-configure.md) -Bu öğretici için önerilen yaklaşımdır.
   - [Bir Azure VM'den bir Azure SQL Veritabanı Yönetilen Örneğine bağlanma](sql-database-managed-instance-configure-vm.md)
   - [Şirket Içinden Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırın](sql-database-managed-instance-configure-p2s.md).
-- @No__t_2 izni olan **SAS kimlik bilgisiyle** korunan **genel IP** 'de Azure Blob depolama hesabı (örneğin, Standard_LRS v2) gerektirir. Güvenlik Duvarı ve Azure Blob depolama hizmeti uç noktaları [tarafından korunan BLOB depolama Için özel IP 'ler](https://docs.microsoft.com/azure/storage/common/storage-network-security) Şu anda desteklenmiyor.
 
 > [!NOTE]
-> Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
+> Azure Blob depolama ve [paylaşılan erişim imzası (SAS) anahtarı](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)kullanarak bir SQL Server veritabanını yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [SQL Server yedekleme URL 'si](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Veritabanını bir yedekleme dosyasından geri yükleme
 
@@ -86,7 +86,11 @@ SSMS 'de Wide World Importers veritabanını yönetilen örneğinize geri yükle
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Geri yükleme tamamlandığında Nesne Gezgini içinde görüntüleyin.
+7. Geri yükleme tamamlandığında, veritabanını Nesne Gezgini görüntüleyin. Veritabanı geri yükleme işlemi için [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) görünümünü kullanarak emin olabilirsiniz.
+
+> [!NOTE]
+> Veritabanı geri yükleme işlemi zaman uyumsuzdur ve yeniden alınamıyor. Bağlantı kesildiyse veya bir zaman aşımı süresi dolarsa SQL Server Management Studio bir hata alabilirsiniz. Azure SQL veritabanı, arka planda veritabanını geri yüklemeye çalışmaya devam eder ve [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) görünümlerini kullanarak geri yüklemenin ilerlemesini izleyebilirsiniz.
+> Geri yükleme işleminin bazı aşamalarında, sistem görünümlerinde gerçek veritabanı adı yerine benzersiz tanımlayıcı görürsünüz. [Burada](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)`RESTORE` ifade davranışı farklılıkları hakkında bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

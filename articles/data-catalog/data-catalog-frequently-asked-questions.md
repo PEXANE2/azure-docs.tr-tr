@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898726"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152049"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Veri Kataloğu hakkında sık sorulan sorular
 Bu makale, Azure Veri Kataloğu hizmetiyle ilgili sık sorulan soruların yanıtlarını sağlar.
@@ -25,19 +25,19 @@ Veri Kataloğu, kullanıcıların kurumsal veri kaynaklarını bulabilmesi ve an
 ## <a name="what-are-its-target-audiences"></a>Hedef kitleleri nelerdir?
 Veri Kataloğu, aşağıdakiler dahil olmak üzere teknik ve teknik olmayan kullanıcılar için tasarlanmıştır:
 
-* Veri geliştiricileri ve bı ve analiz uzmanları: Başkalarının kullanması için veri ve analiz içeriği üretmekten sorumlu kişiler.
-* Veri verileri: Veriler hakkında bilgi sahibi olan kişiler, ne anlama gelir ve nasıl kullanılması amaçlanan.
-* Veri tüketicileri: Kendi tercih ettiği aracı kullanarak işlerini yapmak için ihtiyaç duydukları verileri kolayca bulabilmeleri, anlaması ve bunlara bağlanabilmesi gereken kişiler.
-* Merkezi BT: İş kullanıcıları tarafından yüzlerce veri kaynağı keşfetmek isteyen kişiler ve verilerin kullanılma ve kim tarafından kullanıldığı hakkında daha fazla bakış sahibi olması gereken kişiler.
+* Veri geliştiricileri ve bı ve Analytics uzmanları: başkalarının tüketmesi için veri ve analiz içeriği üretmekten sorumlu kişiler.
+* Veri özellikleri: veriler hakkında bilgi sahibi olan kişiler, ne anlama gelir ve nasıl kullanılması amaçlanan.
+* Veri tüketicileri: kendi tercih ettiği aracı kullanarak işlerini yapmak için ihtiyaç duydukları verileri kolayca bulabilmeleri, anlaması ve bunlara bağlanabilmesi gereken kişiler.
+* Orta BT: iş kullanıcıları tarafından yüzlerce veri kaynağı keşfetmek isteyen kişiler ve verilerin kullanılma ve kim tarafından nasıl kullanıldığı hakkında daha fazla bakış sahibi olması gerekir.
 
 ## <a name="what-is-its-availability-by-region"></a>Bölgeye göre kullanılabilirliği nedir?
 Veri Kataloğu Hizmetleri şu anda aşağıdaki veri merkezlerinde kullanılabilir:
 
 * Batı ABD
-* East US
+* Doğu ABD
 * Batı Avrupa
 * Kuzey Avrupa
-* Avustralya Doğu
+* Doğu Avustralya
 * Güneydoğu Asya
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>Veri varlıklarının sayısı sınırları nelerdir?
@@ -75,7 +75,7 @@ Verilerinizi veri kataloğuna kaydetmek için:
 Belirli özellikler veri kaynağından veri kaynağına farklılık gösterir, ancak genel olarak, veri kataloğu yayımlama hizmeti aşağıdaki bilgileri ayıklar:
 
 * Varlık adı
-* Varlık Türü
+* Varlık türü
 * Varlık açıklaması
 * Öznitelik/sütun adları
 * Öznitelik/sütun veri türleri
@@ -87,7 +87,7 @@ Belirli özellikler veri kaynağından veri kaynağına farklılık gösterir, a
 >
 
 > [!NOTE]
-> Birinci sınıf **Açıklama** özelliğine sahip SQL Server Analysis Services gibi veri kaynakları Için, Veri Kataloğu veri kaynağı kayıt aracı bu özellik değerini ayıklar. Birinci sınıf **Açıklama** özelliği olmayan SQL Server ilişkisel veritabanları Için, Veri Kataloğu veri kaynağı kayıt aracı, **MS_Description** genişletilmiş özelliğinden değeri nesneler ve sütunlar için ayıklar. Daha fazla bilgi için bkz. [veritabanı nesnelerinde genişletilmiş özellikleri kullanma](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Birinci sınıf **Açıklama** özelliğine sahip SQL Server Analysis Services gibi veri kaynakları Için, Veri Kataloğu veri kaynağı kayıt aracı bu özellik değerini ayıklar. Birinci sınıf **Açıklama** özelliği olmayan *Şirket içi* SQL Server Ilişkisel veritabanları için, Veri Kataloğu veri kaynağı kayıt aracı, **MS_Description** genişletilmiş özelliğinden değeri nesneler ve sütunlar için ayıklar. Daha fazla bilgi için bkz. [veritabanı nesnelerinde genişletilmiş özellikleri kullanma](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 

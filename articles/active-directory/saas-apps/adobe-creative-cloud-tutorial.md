@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Adobe Creative Cloud ile Azure Active Directory Tümleştirme | Microsoft Docs'
-description: Azure Active Directory ve Adobe Creative Cloud arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Adobe Creative Cloud ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Adobe Creative Cloud arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,258 +16,258 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f3fdd1aa4fa655cfffb9e9a2f29d551133613a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107346"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154002"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Öğretici: Adobe Creative Cloud ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Öğretici: Adobe Creative Cloud ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Adobe Creative Cloud, Azure Active Directory (Azure AD) ile tümleştirme konusunda bilgi edinin.
-Adobe Creative Cloud, Azure AD ile tümleştirme ile aşağıdaki avantajları sağlar:
+Bu öğreticide, Adobe Creative Cloud Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Adobe Creative Cloud Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Adobe Creative Cloud erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) Adobe Creative Cloud için oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Adobe Creative Cloud erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Adobe Creative Cloud (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Adobe Creative Cloud ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Adobe Creative Cloud ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa, bir aylık deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/)
-* Adobe Creative Cloud'a çoklu oturum açmayı abonelik etkin.
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Çoklu oturum açma özellikli abonelik Adobe Creative Cloud
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Adobe Creative Cloud'a destekler **SP** tarafından başlatılan
+* Adobe Creative Cloud **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Adobe Creative Cloud galeri ekleme
+## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Galeriden Adobe Creative Cloud ekleme
 
-Azure AD'de Adobe Creative Cloud tümleştirmesini yapılandırmak için Adobe Creative Cloud Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Adobe Creative Cloud tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Adobe Creative Cloud yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Adobe Creative Cloud galerideki eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Adobe Creative Cloud eklemek için aşağıdaki adımları uygulayın:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Adobe Creative Cloud**seçin **Adobe Creative Cloud** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusuna **Adobe Creative Cloud**yazın, sonuç panelinden **Adobe Creative Cloud** ' i seçin, sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-    ![Sonuç listesinde Adobe Creative Cloud](common/search-new-app.png)
+    ![Sonuçlar listesinde Adobe Creative Cloud](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma adlı bir test kullanıcı tabanlı Adobe Creative Cloud ile test etme **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve Adobe Creative Cloud ilgili kullanıcı arasında bir bağlantı ilişki kurulması gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Adobe Creative Cloud ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve Adobe Creative Cloud ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Adobe Creative Cloud ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD çoklu oturum açmayı Adobe Creative Cloud ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Adobe Creative Cloud çoklu oturum açmayı yapılandırma](#configure-adobe-creative-cloud-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Adobe Creative Cloud test kullanıcısı oluşturma](#create-adobe-creative-cloud-test-user)**  - kullanıcı Azure AD gösterimini bağlı Adobe Creative cloud'da Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Adobe Creative Cloud çoklu oturum açmayı yapılandırın](#configure-adobe-creative-cloud-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı Adobe Creative Cloud ' de Britta Simon 'un bir karşılığı olacak **[Adobe Creative Cloud test kullanıcısı oluşturun](#create-adobe-creative-cloud-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD çoklu oturum açma Adobe Creative Cloud ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı Adobe Creative Cloud ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Adobe Creative Cloud** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. [Azure Portal](https://portal.azure.com/), **Adobe Creative Cloud** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Adobe Creative Cloud etki alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
+    ![Etki alanı ve URL 'Ler Adobe Creative Cloud çoklu oturum açma bilgileri](common/sp-identifier.png)
 
-    a. İçinde **oturum açma URL'si** metin kutusunda, değer olarak girin: `https://adobe.com`.
+    a. **Oturum açma URL 'si** metin kutusuna değeri şöyle yazın: `https://adobe.com`.
 
-    b. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://www.okta.com/saml2/service-provider/<token>`
+    b. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
-    > Tanımlayıcı değerini gerçek değil. Bu değer, gerçek tanımlayıcısıyla güncelleştirin. İlgili kişi [Adobe Creative Cloud istemci Destek ekibine](https://www.adobe.com/au/creativecloud/business/teams/plans.html) bu değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Tanımlayıcı değeri gerçek değil. Bu değeri gerçek tanımlayıcıyla güncelleştirin. Bu değeri almak için [Adobe Creative Cloud istemci destek ekibine](https://www.adobe.com/au/creativecloud/business/teams/plans.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Adobe Creative Cloud'a uygulama belirli bir biçimde SAML onaylamalarını bekler. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu öznitelikleri değerlerini yönetebilirsiniz **kullanıcı öznitelikleri** uygulama tümleştirme sayfasında bölümü. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için düğmeyi **kullanıcı öznitelikleri** iletişim.
+5. Adobe Creative Cloud uygulama, SAML onaylamalarını belirli bir biçimde bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı öznitelikleri** bölümünden yönetebilirsiniz. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **Kullanıcı öznitelikleri** Iletişim kutusunu açmak için **Düzenle** düğmesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
-6. İçinde **kullanıcı taleplerini** bölümünde **kullanıcı öznitelikleri** iletişim kutusunda, SAML belirteci özniteliği yukarıdaki görüntüde gösterilen şekilde yapılandırın ve aşağıdaki adımları gerçekleştirin:
+6. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, YUKARıDAKI görüntüde gösterildiği gibi SAML belirteci özniteliğini yapılandırın ve aşağıdaki adımları gerçekleştirin:
 
-    | Ad | Kaynak özniteliği|
+    | Adı | Kaynak özniteliği|
     |----- | --------- |
-    | FirstName | User.givenName |
-    | LastName | User.surname |
-    | Email | User.Mail
+    | firstName | Kullanıcı. |
+    | Soyadı | User. soyadı |
+    | E-posta | Kullanıcı. Mail
 
-    a. Tıklayın **Ekle yeni talep** açmak için **yönetmek, kullanıcı talepleri** iletişim.
+    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. İçinde **adı** metin kutusuna, bu satır için gösterilen öznitelik adı yazın.
+    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    c. Bırakın **Namespace** boş.
+    c. **Ad alanını** boş bırakın.
 
-    d. Kaynağı olarak **özniteliği**.
+    d. **Öznitelik**olarak kaynak seçin.
 
-    e. Gelen **kaynak özniteliği** listesinde, ilgili satır için gösterilen öznitelik değeri yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
-    f. Tıklayın **Tamam**
+    f. **Tamam 'a** tıklayın
 
-    g. **Kaydet**’e tıklayın.
+    g. **Kaydet** düğmesine tıklayın.
 
     > [!NOTE]
-    > Kullanıcıların talep SAML yanıtta doldurulacak değeri geçerli bir Office 365 ExO lisans için e-posta olması gerekir.
+    > Kullanıcı, SAML yanıtında doldurulacak e-posta talebi değeri için geçerli bir Office 365 ExO lisansına sahip olmalıdır.
 
-7. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+7. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-8. Üzerinde **Adobe Creative Cloud ayarlamak** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+8. **Adobe Creative Cloud ayarla** bölümünde, uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum açma URL 'SI
 
-    b. Azure Ad tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-adobe-creative-cloud-single-sign-on"></a>Adobe Creative Cloud'a çoklu oturum açmayı yapılandırın
+### <a name="configure-adobe-creative-cloud-single-sign-on"></a>Adobe Creative Cloud çoklu oturum açmayı yapılandırma
 
-1. Farklı bir web tarayıcı penceresinde için oturum [Adobe Yönetici Konsolu](https://adminconsole.adobe.com) yönetici olarak.
+1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak [Adobe Yönetici Konsolu](https://adminconsole.adobe.com) 'nda oturum açın.
 
-2. Git **ayarları** üst gezinti çubuğunda ve ardından **kimlik**. Etki alanlarının listesi açılır. Tıklayın **yapılandırma** etki alanınıza yönelik bağlantı. Ardından üzerinde aşağıdaki adımları gerçekleştirin **tek oturum yapılandırması gerekli** bölümü. Daha fazla bilgi için [bir etki alanı Kurulumu](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+2. Üst gezinti çubuğundaki **Ayarlar** ' a gidin ve ardından **kimlik**' i seçin. Etki alanlarının listesi açılır. Etki alanınız için bağlantıyı **Yapılandır** seçeneğine tıklayın. Ardından, **Çoklu oturum açma yapılandırması gerekli** bölümünde aşağıdaki adımları gerçekleştirin. Daha fazla bilgi için bkz. [etki alanı kurma](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 
-    ![Ayarları](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "ayarları")
+    ![Ayarlar](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Ayarlar")
 
-    a. Tıklayın **Gözat** için Azure AD'den yüklenen sertifikayı karşıya yüklemek için **IDP sertifika**.
+    a. Azure AD 'den **IDP sertifikasına**indirilen sertifikayı yüklemek Için, **Araştır** ' a tıklayın.
 
-    b. İçinde **IDP veren** metin değerini put **SAML varlık kimliği** bölümünden kopyaladığınız **yapılandırma oturum açma** bölümü Azure Portalı'nda.
+    b. **IDP veren** metin kutusunda, Azure Portal içinde **oturum açma yapılandırma** bölümünden kopyaladığınız **SAML varlık kimliğinin** değerini yerleştirin.
 
-    c. İçinde **IDP'nin oturum açma URL'si** metin değerini put **SAML SSO hizmet URL'si** bölümünden kopyaladığınız **yapılandırma oturum açma** bölümü Azure Portalı'nda.
+    c. **IDP oturum açma URL** 'si metin kutusunda, Azure Portal içinde **oturum açma yapılandırma** bölümünden kopyaladığınız **SAML SSO hizmeti URL 'si** değerini yerleştirin.
 
-    d. Seçin **HTTP - Redirect** olarak **IDP bağlama**.
+    d. **IDP bağlama**olarak **http-Redirect** ' i seçin.
 
-    e. Seçin **e-posta adresi** olarak **kullanıcı oturum açma ayarı**.
+    e. **Kullanıcı oturum açma ayarı**olarak **e-posta adresini** seçin.
 
-    f. Tıklayın **Kaydet** düğmesi.
+    f. **Kaydet** düğmesine tıklayın.
 
-3. Pano artık XML sunacaktır **"Meta verileri indirme"** dosya. Bu, Adobe EntityDescriptor URL ve AssertionConsumerService URL'sini içerir. Lütfen dosyayı açın ve bunları Azure AD'ye yapılandırın.
+3. Pano artık XML **"Indirme meta verileri"** dosyasını sunacak. Adobe 'un EntityDescriptor URL 'sini ve AssertionConsumerService URL 'sini içerir. Lütfen dosyayı açın ve Azure AD uygulamasında yapılandırın.
 
-    ![Çoklu oturum açma uygulama tarafında yapılandırma](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
+    ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. Adobe için sağlanan EntityDescriptor değeri kullanın **tanımlayıcı** üzerinde **uygulama ayarlarını yapılandırma** iletişim.
+    a. **Uygulama ayarlarını yapılandır** Iletişim kutusunda **tanımlayıcı** Için size sunulan EntityDescriptor değerini kullanın.
 
-    b. Adobe için sağlanan AssertionConsumerService değeri kullanın **yanıt URL'si** üzerinde **uygulama ayarlarını yapılandırma** iletişim.
+    b. **Uygulama ayarlarını yapılandır** Iletişim kutusunda **yanıt URL 'si** Için size sunulan assertionconsumerservice değerini kullanın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü **brittasimon\@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanında **brittasıon\@yourşirketnotlarıetki alanı. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
     d. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Adobe Creative Cloud erişim vererek, Azure çoklu oturum açma kullanılacak Britta Simon etkinleştirin.
+Bu bölümde, Adobe Creative Cloud erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Adobe Creative Cloud**.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve **Adobe Creative Cloud**' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Adobe Creative Cloud**.
+2. Uygulamalar listesinde **Adobe Creative Cloud**' yi seçin.
 
-    ![Uygulamalar listesini Adobe Creative Cloud bağlantıdaki](common/all-applications.png)
+    ![Uygulamalar listesindeki Adobe Creative Cloud bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-adobe-creative-cloud-test-user"></a>Adobe Creative Cloud test kullanıcısı oluşturma
+### <a name="create-adobe-creative-cloud-test-user"></a>Adobe Creative Cloud test kullanıcısı oluştur
 
-Azure AD kullanıcılarının Adobe Creative Cloud oturum etkinleştirmek için Adobe Creative Cloud sağlanması gerekir. Adobe Creative Cloud söz konusu olduğunda, sağlama bir el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Adobe Creative Cloud oturum açmasını sağlamak için, Adobe Creative Cloud sağlanması gerekir. Adobe Creative Cloud durumda, sağlama işlemi el ile gerçekleştirilen bir görevdir.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Bir kullanıcı hesapları sağlamak için aşağıdaki adımları gerçekleştirin:
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:
 
-1. Oturum [Adobe Yönetici Konsolu](https://adminconsole.adobe.com) yönetici olarak site.
+1. Yönetici olarak [Adobe Yönetici Konsolu](https://adminconsole.adobe.com) sitesinde oturum açın.
 
-2. Adobe Konsolu içinden kullanıcı Federasyon kimliği ekleyin ve bunları bir ürün profiline atayın. Kullanıcı ekleme ile ilgili ayrıntılı bilgi için bkz [Adobe Yönetici konsolunda kullanıcı ekleme](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
+2. Kullanıcıları, Adobe konsolunun içinde Federasyon KIMLIĞI olarak ekleyin ve bir ürün profiline atayın. Kullanıcı ekleme hakkında ayrıntılı bilgi için bkz. [Adobe Yönetici Konsolu 'nda Kullanıcı ekleme](https://helpx.adobe.com/enterprise/using/users.html#Addusers) 
 
-3. Bu noktada, e-posta adresi/upn Adobe signın forma SEKME tuşuna basın, yazın ve Azure AD ile federasyona eklenmesi:
+3. Bu noktada, e-posta adresinizi/UPN 'nizi Adobe SignIn formuna yazın, sekme tuşuna basın ve Azure AD 'ye geri Federasyon oluşturmanız gerekir:
    * Web erişimi: www\.adobe.com > oturum açma
-   * Masaüstü uygulaması yardımcı program içinde > oturum açma
+   * Masaüstü uygulaması yardımcı programı içinde > oturum açma
    * Uygulama içinde > Yardım > oturum açma
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Adobe Creative Cloud kutucuğa tıkladığınızda, otomatik olarak Adobe Creative Cloud'ı SSO'yu ayarlamak için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim panelinde Adobe Creative Cloud kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Adobe Creative Cloud otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
   
-- [(Adobe.com) etki alanını ayarlama](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [Etki alanı ayarlama (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
   
-- [Azure, Adobe SSO (adobe.com) ile kullanım için yapılandırın](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
+- [Azure 'ı Adobe SSO ile kullanım için yapılandırma (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)

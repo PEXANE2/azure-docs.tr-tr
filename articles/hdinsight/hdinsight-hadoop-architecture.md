@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091477"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162884"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight’ta Apache Hadoop mimarisi
 
@@ -24,20 +24,20 @@ ms.locfileid: "71091477"
 
 Bu makalede YARN ve HDInsight 'ta uygulamaların yürütülmesini nasıl koordine eden açıklanır.
 
-## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN temelleri 
+## <a name="apache-hadoop-yarn-basics"></a>Apache Hadoop YARN temelleri
 
-YARN, Hadoop 'ta veri işlemeyi yönetir ve düzenler. YARN, kümedeki düğümlerde işlem olarak çalışan iki çekirdek hizmete sahiptir: 
+YARN, Hadoop 'ta veri işlemeyi yönetir ve düzenler. YARN, kümedeki düğümlerde işlem olarak çalışan iki çekirdek hizmete sahiptir:
 
-* ResourceManager 
+* ResourceManager
 * NodeManager
 
-ResourceManager, MapReduce işleri gibi uygulamalara küme işlem kaynakları verir. ResourceManager, bu kaynakları her kapsayıcının CPU çekirdekleri ve RAM belleği ayırmadan oluşan kapsayıcılar olarak verir. Bir kümede bulunan tüm kaynakları birleştirilemez ve sonra çekirdekleri ve belleği dağıtırsanız, her kaynak bloğu bir kapsayıcıdır. Kümedeki her düğüm belirli sayıda kapsayıcı için kapasiteye sahiptir, bu nedenle kümenin kullanılabilir kapsayıcı sayısı üzerinde sabit bir sınırı vardır. Bir kapsayıcıdaki kaynak servis birimi yapılandırılabilir. 
+ResourceManager, MapReduce işleri gibi uygulamalara küme işlem kaynakları verir. ResourceManager, bu kaynakları her kapsayıcının CPU çekirdekleri ve RAM belleği ayırmadan oluşan kapsayıcılar olarak verir. Bir kümede bulunan tüm kaynakları birleştirilemez ve sonra çekirdekleri ve belleği dağıtırsanız, her kaynak bloğu bir kapsayıcıdır. Kümedeki her düğüm belirli sayıda kapsayıcı için kapasiteye sahiptir, bu nedenle kümenin kullanılabilir kapsayıcı sayısı üzerinde sabit bir sınırı vardır. Bir kapsayıcıdaki kaynak servis birimi yapılandırılabilir.
 
-Bir MapReduce uygulaması bir kümede çalıştığında, ResourceManager uygulamayı yürütülecek kapsayıcıları sağlar. ResourceManager, çalışan uygulamaların durumunu, kullanılabilir küme kapasitesini izler ve kaynakları tamamlayıp serbest bıraktıkları şekilde izler. 
+Bir MapReduce uygulaması bir kümede çalıştığında, ResourceManager uygulamayı yürütülecek kapsayıcıları sağlar. ResourceManager, çalışan uygulamaların durumunu, kullanılabilir küme kapasitesini izler ve kaynakları tamamlayıp serbest bıraktıkları şekilde izler.
 
 ResourceManager Ayrıca uygulamaların durumunu izlemek için bir Web Kullanıcı arabirimi sağlayan bir Web sunucusu işlemi çalıştırır.
 
-Bir kullanıcı küme üzerinde çalışacak bir MapReduce uygulaması gönderdiğinde, uygulama ResourceManager 'ya gönderilir. Sırasıyla, ResourceManager, kullanılabilir NodeManager düğümlerinde bir kapsayıcı ayırır. NodeManager düğümleri uygulamanın aslında çalıştırıldığı yerdir. Ayrılan ilk kapsayıcı, ApplicationMaster adlı özel bir uygulama çalıştırır. Bu ApplicationMaster, gönderilen uygulamayı çalıştırmak için gereken sonraki kapsayıcılar biçiminde kaynakları edinmekten sorumludur. ApplicationMaster, eşleme aşaması ve aşamayı azaltma gibi uygulama aşamalarını ve ne kadar veri işlenmesi gerektiğine ilişkin faktörleri inceler. Daha sonra ApplicationMaster, uygulama adına kaynak üzerinde bulunan kaynakları (*anlaşma*) ister. Ayrıca ResourceManager, kümedeki NodeManager 'dan uygulamayı yürütürken kullanması için kaynak yöneticilerden kaynak sağlar. 
+Bir kullanıcı küme üzerinde çalışacak bir MapReduce uygulaması gönderdiğinde, uygulama ResourceManager 'ya gönderilir. Sırasıyla, ResourceManager, kullanılabilir NodeManager düğümlerinde bir kapsayıcı ayırır. NodeManager düğümleri uygulamanın aslında çalıştırıldığı yerdir. Ayrılan ilk kapsayıcı, ApplicationMaster adlı özel bir uygulama çalıştırır. Bu ApplicationMaster, gönderilen uygulamayı çalıştırmak için gereken sonraki kapsayıcılar biçiminde kaynakları edinmekten sorumludur. ApplicationMaster, eşleme aşaması ve aşamayı azaltma gibi uygulama aşamalarını ve ne kadar veri işlenmesi gerektiğine ilişkin faktörleri inceler. Daha sonra ApplicationMaster, uygulama adına kaynak üzerinde bulunan kaynakları (*anlaşma*) ister. Ayrıca ResourceManager, kümedeki NodeManager 'dan uygulamayı yürütürken kullanması için kaynak yöneticilerden kaynak sağlar.
 
 Nodeyöneticileri, uygulamayı oluşturan görevleri çalıştırır ve sonra ilerleme durumunu ve durumlarını ApplicationMaster 'a bildirir. İçindeki ApplicationMaster, uygulamanın durumunu ResourceManager 'ya geri bildirir. ResourceManager, istemciye herhangi bir sonuç döndürür.
 

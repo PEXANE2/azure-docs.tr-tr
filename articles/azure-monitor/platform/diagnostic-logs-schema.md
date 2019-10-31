@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 22521a3619482361c8f556b05436bb3b78c7dc9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0031a0c96ecadbb3c7d3a479384bee92ba4d102c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932334"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161978"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen hizmetler, şemalar ve Kategoriler
 
@@ -222,8 +222,6 @@ Kaynak tanılama günlükleri şeması, kaynak ve günlük kategorisine göre de
 |Microsoft. Network/Applicationgateway 'ler|ApplicationGatewayAccessLog|Application Gateway erişim günlüğü|
 |Microsoft. Network/Applicationgateway 'ler|ApplicationGatewayPerformanceLog|Application Gateway performans günlüğü|
 |Microsoft. Network/Applicationgateway 'ler|ApplicationGatewayFirewallLog|Application Gateway Güvenlik duvarı günlüğü|
-|Microsoft. Network/securegateyollar|AzureFirewallApplicationRule|Azure Güvenlik Duvarı uygulama kuralı|
-|Microsoft. Network/securegateyollar|AzureFirewallNetworkRule|Azure Güvenlik Duvarı ağ kuralı|
 |Microsoft. Network/azurefirewalls|AzureFirewallApplicationRule|Azure Güvenlik Duvarı uygulama kuralı|
 |Microsoft. Network/azurefirewalls|AzureFirewallNetworkRule|Azure Güvenlik Duvarı ağ kuralı|
 |Microsoft. Network/Virtualnetworkgateway 'ler|GatewayDiagnosticLog|Ağ geçidi tanılama günlükleri|

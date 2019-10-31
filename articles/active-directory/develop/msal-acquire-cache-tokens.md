@@ -1,5 +1,5 @@
 ---
-title: Belirteçleri yönetme (Microsoft kimlik doğrulama kitaplığı)
+title: MSAL kullanarak belirteçleri alma ve önbelleğe alma
 titleSuffix: Microsoft identity platform
 description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak belirteçleri edinme ve önbelleğe alma hakkında bilgi edinin.
 services: active-directory
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0d47fa92de8365ed3a5e0349b78899ff7fde1375
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803290"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150652"
 ---
-# <a name="acquiring-and-caching-tokens-using-msal"></a>MSAL kullanarak belirteçleri edinme ve önbelleğe alma
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak belirteçleri alma ve önbelleğe alma
+
 [Erişim belirteçleri](access-tokens.md) , istemcilerin Azure tarafından korunan Web API 'lerini güvenli bir şekilde çağırmasını sağlar. Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollarla bir Web tarayıcısı aracılığıyla Kullanıcı etkileşimi gerekir. Bazıları hiçbir Kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç alma yöntemi, uygulamanın ortak bir istemci uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (bir Windows hizmeti gibi Web uygulaması, Web API 'SI veya Daemon uygulaması) olması halinde değişir.
 
 MSAL bir belirteci aldıktan sonra önbelleğe alır.  Uygulama kodu, belirteci başka yollarla almadan önce sessizce (önbellekten) bir belirteç almayı denemelidir.

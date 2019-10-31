@@ -1,10 +1,10 @@
 ---
 title: Azure genel bulutu 'nda yalıtım | Microsoft Docs
-description: Uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılamak üzere otomatik olarak ölçeklenebilen ve azaltılabilen hizmet & çeşitli bilgi işlem örnekleri içeren bulut tabanlı bilgi işlem hizmetleri hakkında bilgi edinin.
+description: Azure 'un hem kötü amaçlı hem de kötü amaçlı olmayan kullanıcılara yönelik yalıtımı nasıl sağladığını öğrenin ve Mimarlar için çeşitli yalıtım seçenekleri sunar.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123069"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159763"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
-##  <a name="introduction"></a>Giriş
-### <a name="overview"></a>Genel Bakış
-Güncel ve olası Azure müşterilerinin Azure platformunda sunulan ve bu özellikleri çevreleyen güvenlikle ilgili çeşitli özellikleri anlamasına ve kullanmasına yardımcı olmak için Microsoft, bir dizi teknik Inceleme, güvenlik genel bakış, En Iyi uygulamalar ve Listelerinin.
-Konular ve derinlik açısından, düzenli aralıklarla güncelleştirilir. Bu belge, aşağıdaki soyut bölümde özetlenen şekilde bu serinin bir parçasıdır.
+Azure, paylaşılan fiziksel altyapıda uygulama ve sanal makine (VM) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
 
-### <a name="azure-platform"></a>Azure platformu
-Azure, en geniş işletim sistemi, programlama dili, çerçeve, araç, veritabanı ve cihaz seçimini destekleyen açık ve esnek bir bulut hizmeti platformudur. Örneğin, şunları yapabilirsiniz:
-- Linux kapsayıcılarını Docker tümleştirmesiyle çalıştırın;
-- JavaScript, Python, .NET, PHP, Java ve Node. js ile uygulamalar oluşturun; '
-- İOS, Android ve Windows cihazlar için arka uçlar oluşturun.
-
-Microsoft Azure, milyonlarca geliştirici ve BT uzmanlarının zaten kullandığı ve güvendiği teknolojilerin aynısını destekler.
-
-Ortak bir bulut hizmeti sağlayıcısı üzerinde derleme veya BT varlıkları geçirme yaptığınızda, bu kuruluşun, uygulama ve verilerinizi hizmetler ve bulut tabanlı varlıklarınızın güvenliğini yönetmek için sağladıkları denetimlerle koruma yeteneklerine bağlı olursunuz.
-
-Azure altyapısı tesisten uygulamalara kadar milyonlarca müşteriye aynı anda hizmet verecek şekilde tasarlanmıştır ve işletmelerin güvenlik ihtiyaçlarını karşılayabilecek güvenilir bir temel sunar. Buna ek olarak, Azure’da çok çeşitli ve yapılandırılabilir güvenlik seçenekleri ile bunlar üzerinde denetim imkanı sunulmaktadır. Böylece, dağıtımlarınıza özel gereksinimleri karşılamak için güvenlik özelliklerini uyarlayabilirsiniz. Bu belge, bu gereksinimleri karşılamanıza yardımcı olur.
-
-### <a name="abstract"></a>Özet
-
-Microsoft Azure, paylaşılan fiziksel altyapıda uygulamaları ve sanal makineleri (VM 'Ler) çalıştırmanızı sağlar. Uygulamaları bir bulut ortamında çalıştırmaya yönelik başlıca ekonobilirlerden biri, paylaşılan kaynakların maliyetini birden çok müşteri arasında dağıtabilme yeteneğidir. Çok kiracılı bu uygulama, düşük maliyetlerde farklı müşteriler arasında kaynakları çoğullama açısından verimliliği artırır. Ne yazık ki, önemli uygulamalarınızı ve diğer altyapı kaynaklarını, rastgele ve potansiyel olarak kötü amaçlı bir kullanıcıya ait olabilecek duyarlı uygulamalarınızı ve VM 'Leri çalıştırmak üzere paylaşma riskini de beraberinde getirir.
-
-Bu makalede Microsoft Azure, hem kötü amaçlı hem de kötü amaçlı olmayan kullanıcılara yönelik yalıtım sağlar ve mimarlara çeşitli yalıtım seçimleri sunarak bulut çözümlerini mimari olarak sunar. Bu Teknik İnceleme, Azure platformu ve müşteriye yönelik güvenlik denetimlerinin teknolojisine odaklanmaktadır ve SLA 'Ları, fiyatlandırma modellerini ve DevOps uygulama konularını ele almaz.
+Bu makalede, Azure 'un hem kötü amaçlı hem de kötü amaçlı olmayan kullanıcılara karşı yalıtım sağladığı ve mimarlara çeşitli yalıtım seçenekleri sunarak bulut çözümlerini mimari olarak sunan bir kılavuz olarak hizmet verdiği özetlenmektedir.
 
 ## <a name="tenant-level-isolation"></a>Kiracı düzeyi yalıtımı
 Bulut bilgi işlemin başlıca avantajlarından biri, aynı anda çok sayıda müşteriyle paylaşılan, ortak bir altyapının kavramıdır ve bu da ölçek ekonomisine göre önde olur. Bu kavram çok kiracılı olarak adlandırılır. Microsoft, Microsoft Bulut Azure 'un çok kiracılı mimarisinin güvenlik, gizlilik, gizlilik, bütünlük ve kullanılabilirlik standartlarını desteklediğinden emin olmak için sürekli olarak çalışmaktadır.
@@ -245,7 +226,7 @@ Windows için disk şifreleme çözümü, [Microsoft BitLocker Sürücü Şifrel
 Çözüm, Microsoft Azure ' de etkinleştirildiklerinde IaaS VM 'Leri için aşağıdaki senaryoları destekler:
 -   Azure Key Vault ile tümleştirme
 
--   Standart katman VM 'Leri: A, D, DS, G, GS, vb. seri IaaS VM 'Leri
+-   Standart katman VM 'Leri: A, D, DS, G, GS, vb., Series IaaS VM 'Leri
 
 -   Windows ve Linux IaaS VM 'lerinde şifrelemeyi etkinleştirme
 
@@ -284,7 +265,7 @@ SQL Veritabanı, piyasa lideri Microsoft SQL Server altyapısını temel alan ve
 
 [Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Veritabanı, SQL Server teknolojileri üzerinde oluşturulmuş bulut tabanlı bir ilişkisel veritabanı hizmetidir. Microsoft tarafından bulutta barındırılan, yüksek oranda kullanılabilir, ölçeklenebilir, çok kiracılı bir veritabanı hizmeti sağlar.
 
-Bir uygulama perspektifinden SQL Azure aşağıdaki hiyerarşiyi sağlar: Her düzey aşağıda bir-çok düzeyi kapsama sahiptir.
+Bir uygulama perspektifinden SQL Azure aşağıdaki hiyerarşiyi sağlar: her düzey, aşağıdaki düzeylerin bir-çok kapsamayı içerir.
 
 ![SQL Azure uygulama modeli](./media/isolation-choices/azure-isolation-fig10.png)
 
@@ -350,4 +331,3 @@ Microsoft Azure, uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılay
 - [Depolama yalıtımı](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure, müşteri VM tabanlı hesaplamayı depolamadan ayırır. Bu ayrım, hesaplamanın ve depolamanın bağımsız olarak ölçeklendirilmesine olanak sağlayarak çok kiracılı ve yalıtımın sağlanması kolaylaşır. Bu nedenle, Azure Storage mantıksal dışında Azure Işlem ile ağ bağlantısı olmayan ayrı donanımlar üzerinde çalışır. Tüm istekler, müşterinin seçimine bağlı olarak HTTP veya HTTPS üzerinden çalışır.
-

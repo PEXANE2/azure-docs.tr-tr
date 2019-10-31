@@ -232,6 +232,8 @@
           href: backup-azure-restore-windows-server.md
         - name: Windows Server Sistem Durumunu geri yükleme
           href: backup-azure-restore-system-state.md
+        - name: Windows Server dosya ve klasörleri yedeklemesini yönetme
+          href: backup-azure-manage-mars.md
     - name: Kurtarma Hizmetleri kasası
       items:
         - name: Kurtarma Hizmetleri kasalarına genel bakış

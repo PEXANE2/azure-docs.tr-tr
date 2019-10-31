@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 101d478d37055a08a5ced9113e070bf826613bd3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616126"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160780"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Kimlik doğrulayıcı uygulaması kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
 
@@ -148,6 +148,6 @@ Kuruluşunuzun, kimliğinizi doğrulamak için size ne olduğuna bağlı olarak 
 
 - [İki adımlı doğrulama veya güvenlik bilgilerini kullanarak oturum açma](security-info-setup-signin.md) makalesindeki adımları izleyerek Microsoft Authenticator uygulamasını kullanarak oturum açın.
 
-- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](user-help-reset-password.md) makalesindeki adımları izleyin.
+- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) makalesindeki adımları izleyin.
 
 - [Microsoft hesabı makalesinde oturum açma](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorunları için sorun giderme ipuçları ve yardım alın.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717396"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160714"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Güvenlik anahtarı kullanmak için güvenlik bilgilerini ayarlama (Önizleme)
 
@@ -47,11 +47,11 @@ Güvenlik anahtarınızı kaydedebilmek için aşağıdaki koşulların doğru o
 
 - Yöneticiniz veya kuruluşunuz tarafından onaylanan bir fiziksel güvenlik anahtarınız vardır. Güvenlik anahtarınız hem FIDO2 hem de Microsoft uyumlu olmalıdır. Güvenlik anahtarınız ve uyumlu olup olmadığı hakkında sorularınız varsa kuruluşunuzun yardım masasına başvurun.
 
-## <a name="register-your-security-key"></a>Güvenlik anahtarınızı kaydedin
+## <a name="register-your-security-key"></a>Güvenlik anahtarınızı kaydetme
 
 Anahtar kullanarak iş veya okul hesabınızda oturum açabilmeniz için güvenlik anahtarınızı oluşturmanız ve bu anahtara benzersiz bir PIN sağlamanız gerekir. Hesabınıza kayıtlı en fazla 10 anahtarınız olabilir. 
 
-1. https://myprofile.microsoft.com ' De **Profilim** sayfasına gidin ve henüz yapmadıysanız oturum açın.
+1. https://myprofile.microsoft.com konumundaki **Profilim** sayfasına gidin ve henüz yapmadıysanız oturum açın.
 
 2. **Güvenlik bilgileri**' ni seçin **, Yöntem Ekle**' yi seçin ve ardından **Yöntem Ekle** açılır listesinden **güvenlik anahtarı** ' nı seçin.
 
@@ -154,6 +154,6 @@ Bir güvenlik anahtarını kaydetmek için, en az bir ek güvenlik doğrulama y�
 
 - [Microsoft uyumlu güvenlik anahtarları](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)hakkında daha ayrıntılı bilgi için.
 
-- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](user-help-reset-password.md) makalesindeki adımları izleyin.
+- Parola [sıfırlama portalından](https://passwordreset.microsoftonline.com/) kayıp veya unuttuysanız parolanızı sıfırlayın veya [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md) makalesindeki adımları izleyin.
 
 - [Microsoft hesabı makalesinde oturum açma](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) sorunları için sorun giderme ipuçları ve yardım alın.

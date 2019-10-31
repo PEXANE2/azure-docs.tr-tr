@@ -4,15 +4,15 @@ description: Azure 'daki bir Analysis Services sunucusundaki veritabanı rolleri
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301141"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147000"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
 
@@ -25,14 +25,14 @@ Rol izinleri şunları içerir:
 *  **İşlem** -kullanıcılar, veritabanında işlem işlemlerine bağlanabilir ve bu işlemleri gerçekleştirebilir ve model veritabanı verilerini analiz edebilir.
 *  **Okuma** -kullanıcılar, model veritabanı verilerine bağlanmak ve analiz etmek için bir istemci uygulaması kullanabilir.
 
-Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araçları (SSDT) içindeki Rol Yöneticisi 'ni kullanarak bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanırsınız.
+Tablosal model projesi oluştururken, Visual Studio 'da Analysis Services projelerle rol Yöneticisi kullanarak roller oluşturur ve bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanırsınız.
 
 **Güvenlik grupları** , `MailEnabled` özelliği `True` olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. Bir grup e-posta adresi belirtirken `obj:groupid@tenantid` kullanın.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>SSDT 'de rol ve Kullanıcı ekleme veya yönetme  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio 'da rol ve Kullanıcı ekleme veya yönetme  
   
-1.  SSDT > **tablosal Model Gezgini**' nde, **Roller**' e sağ tıklayın.  
+1.  **Tablosal Model Gezgini**' nde **Roller**' e sağ tıklayın.  
   
 2.  **Rol Yöneticisi**'nde **Yeni**'ye tıklayın.  
   
@@ -149,7 +149,7 @@ Satır filtreleri belirtilen satırlar ve ilgili satırlar için geçerlidir. Bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-  [Sunucu yöneticileri @no__t Yönet](analysis-services-server-admins.md)-1  
+  [Sunucu yöneticileri  yönetme](analysis-services-server-admins.md)  
   [PowerShell ile Azure Analysis Services yönetme](analysis-services-powershell.md)  
   [Tablosal model betik dili (TMSL) başvurusu](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

@@ -81,6 +81,8 @@
           href: how-to/upgrade-tools.md
         - name: Azure Dev Spaces ile CI/CD kullanma
           href: how-to/setup-cicd.md
+        - name: Azure Dev Spaces ile GitHub Eylemlerini Kullanma (önizleme)
+          href: how-to/github-actions.md
         - name: Jenkins için Azure Dev Spaces eklentisini kullanma
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Azure Dev Spaces için iş sürekliliği ve olağanüstü durum kurtarma
@@ -89,6 +91,8 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Özel giriş ve HTTPS için traefik kullanma
           href: how-to/ingress-https-traefik.md
+        - name: Azure Dev Spaces Connect’i kullanma (önizleme)
+          href: how-to/connect.md
     - name: Sorun giderme
       href: troubleshooting.md
     - name: SSS

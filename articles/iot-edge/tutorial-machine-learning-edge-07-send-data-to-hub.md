@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe05131268b8a6a6c61323289d3017231e49706
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299814"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163098"
 ---
-# <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: Saydam ağ geçidi aracılığıyla veri Gönder
+# <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 
 > [!NOTE]
 > Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Bu makaleye doğrudan ulaşdıysanız, en iyi sonuçlar için serideki [ilk makaleyle](tutorial-machine-learning-edge-01-intro.md) başlamanızı öneririz.
@@ -37,7 +37,7 @@ Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 1. Geliştirme makinenizde Visual Studio Code açın.
 
-2. C > :\\kaynak\\ ıotedgeandmlsampleDevice,dosyasınıaçmakiçindosyaklasörüaç...öğesini\\kullanın.
+2. **Dosya** > **klasörü aç...** ' ı açmak için,\\kaynak\\ıotedgeandmlsample\\devicecontrol kullanın.
 
 3. Program.cs ' de InstallCertificate () yöntemine bakın.
 
@@ -53,11 +53,11 @@ Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 ## <a name="build-and-run-leaf-device"></a>Yaprak cihaz oluşturma ve çalıştırma
 
-1. Devicebandı projesi Visual Studio Code hala açıkken, projeyi derleyin (Ctrl + Shift + B veya **Terminal** > **çalıştırma oluşturma görevi...** ) ve iletişim kutusundan **Oluştur** ' u seçin.
+1. Devicebir Project Visual Studio Code hala açıkken, projeyi derleyin (Ctrl + Shift + B veya **Terminal** > **Derleme görevi çalıştır...** ) ve iletişim kutusundan **Oluştur** ' u seçin.
 
 2. Portalda IoT Edge cihaz sanal makinenize giderek ve **DNS adı** değerini genel bakış ' dan kopyalayarak kenar ağ geçidinizin için tam etki alanı adını (FQDN) bulun.
 
-3. Visual Studio Code terminali (**Terminal** > **yeni Terminal**) açın ve aşağıdaki komutu çalıştırarak sanal makineden kopyaladığınız DNS `<edge_device_fqdn>` adıyla değiştirin:
+3. Visual Studio Code terminali (**terminal** > **yeni Terminal**) açın ve aşağıdaki komutu çalıştırarak `<edge_device_fqdn>`, sanal makineden kopyaladığınız DNS adıyla değiştirin:
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
@@ -103,7 +103,7 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
    Çalıştırmanın zamanlamasına bağlı olarak birden fazla tek dosyanız olabilir.
 
-4. Zaman damgalarına dikkat edin. Avrofilewriter modülü, son değiştirilme zamanı 10 dakikadan uzun olduğunda dosyaları buluta yükler (bkz. avrofilewriter modülünde Uploader.py içinde değiştirilen\_dosya\_zaman aşımı).
+4. Zaman damgalarına dikkat edin. AvroFileWriter modülü, son değiştirilme zamanı 10 dakikadan daha uzun bir süre (bkz. DEĞIŞTIRILEN\_dosyası\_zaman AŞıMı), avroFileWriter modülünde, dosyaları buluta yükler.
 
 5. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
 
@@ -119,7 +119,7 @@ Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak 
 
 4. Öğreticinin önceki bölümünde yaptığımız iş sayesinde, **ruldata** kapsayıcısının rul ile ileti içermesi gerektiğini umuz. **Ruldata** düğümünü genişletin.
 
-5. Şöyle adlı bir veya daha fazla BLOB dosyası görürsünüz: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
+5. Şu şekilde adlandırılan bir veya daha fazla BLOB dosyası görürsünüz: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
 
 6. Dosyalardan birine sağ tıklayın ve dosyayı geliştirme makinenize kaydetmek için **blobu indir** ' i seçin.
 
@@ -131,7 +131,7 @@ Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak 
 
 Avro dosyasını okumak ve dosyadaki iletilerin JSON dizesini döndürmek için basit bir komut satırı yardımcı programı ekledik. Bu bölümde, yükleyeceğiz ve çalıştıracağız.
 
-1. Visual Studio Code (**terminalden** > **yeni Terminal**) ' de bir Terminal açın.
+1. Visual Studio Code bir Terminal açın (**terminal** > **yeni Terminal**).
 
 2. Kubavroreader 'ı Install:
 
@@ -213,7 +213,7 @@ Avro dosyasını okumak ve dosyadaki iletilerin JSON dizesini döndürmek için 
            "ConnectionDeviceId": "Client_001",
            "CorrelationId": "70df0c98-0958-4c8f-a422-77c2a599594f",
            "CreationTimeUtc": "0001-01-01T00:00:00+00:00",
-           "EnqueuedTimeUtc": “<time>”
+           "EnqueuedTimeUtc": "<time>"
    }
    ```
 
@@ -227,7 +227,7 @@ Bu uçtan uca öğretici tarafından kullanılan kaynakları keşfetmeye çalı�
 
 3. Depoyu yerel olarak klondıysanız, yerel depoya başvuran tüm PowerShell veya VS Code pencerelerini kapatın ve sonra depo dizinini silin.
 
-4. Sertifikaları yerel olarak oluşturduysanız c:\\edgecercertificate klasörünü silin.
+4. Sertifikaları yerel olarak oluşturduysanız, c:\\Edgecercertificate klasörünü silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

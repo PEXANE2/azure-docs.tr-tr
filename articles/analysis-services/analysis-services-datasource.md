@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512448"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146932"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -97,12 +97,12 @@ Azure Analysis Services veri modelleri, belirli veri kaynaklarına bağlanırken
 
 **Sağlayıcı belirtmek için**
 
-1. SSDT > **tablosal model gezgini** > **veri kaynakları**' nda, bir veri kaynağı bağlantısına sağ tıklayın ve ardından **veri kaynağını Düzenle**' ye tıklayın.
+1. Visual Studio > **tablosal model gezgini** > **veri kaynakları**' nda, bir veri kaynağı bağlantısına sağ tıklayın ve ardından **veri kaynağını Düzenle**' ye tıklayın.
 2. **Bağlantıyı Düzenle**' de Gelişmiş ' e tıklayarak **İleri** Özellikler penceresini açın.
 3. **Gelişmiş özellikleri ayarla** > **sağlayıcılar**' da, uygun sağlayıcıyı seçin.
 
 ## <a name="impersonation"></a>Ation
-Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio 'da (SSDT) veya SSMS 'de belirtilebilir.
+Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio veya SSMS 'de belirtilebilir.
 
 Şirket içi veri kaynakları için:
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c7cd377929d1dd6d2e6ed8831597695ae02d21c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512600"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146235"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -200,9 +200,9 @@ Azure Güvenliği hakkında daha fazla bilgi edinmek için bkz. [Microsoft Güve
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Ücretsiz [Visual Studio için SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) ile modeller geliştirin ve dağıtın. SSDT'de, hızla başlangıç yapıp ilerlemeniz için Analysis Services proje şablonları vardır. SSDT artık tablo 1400 modelleri için modern veri Al veri kaynağı sorgusu ve mashup işlevlerini içerir. Power BI Masaüstü ve Excel 2016'daki Veri Al işlevini biliyorsanız, üst düzeyde özelleştirilmiş veri kaynağı sorguları oluşturmanın ne kadar kolay olduğunu zaten biliyor olmalısınız. 
+Analysis Services projeleriyle Visual Studio ile modeller geliştirin ve dağıtın. Analysis Services projeleri uzantısı, sizi hızla ve hızlı bir şekilde kullanmaya başlamanızı sağlayan şablonları ve sihirbazları içerir. Visual Studio 'da model yazma ortamı artık tablo 1400 ve daha yüksek modeller için modern veri kaynağı veri kaynağı sorgusu ve karma işlevselliği içerir. Power BI Masaüstü ve Excel 2016'daki Veri Al işlevini biliyorsanız, üst düzeyde özelleştirilmiş veri kaynağı sorguları oluşturmanın ne kadar kolay olduğunu zaten biliyor olmalısınız. 
 
-Visual Studio 2017 veya sonraki bir sürümü kullanıyorsanız, Microsoft Analysis Services projeleri ücretsiz bir yüklenebilir VSıX paketi olarak kullanılabilir. [Market'ten indirin](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Microsoft Analysis Services projeleri ücretsiz bir yüklenebilir VSıX paketi olarak sunulmaktadır. [Market'ten indirin](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Uzantı, ücretsiz topluluk sürümü de dahil olmak üzere herhangi bir Visual Studio 2017 ve üzeri sürümüyle birlikte çalışmaktadır.
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 

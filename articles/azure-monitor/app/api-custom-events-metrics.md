@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: ca77cf6b838d2e10eab422f37ff55fbb43a2dba0
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677838"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161583"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API 'SI
 
@@ -58,7 +58,7 @@ Application Insights SDK 'da henüz bir başvurunuz yoksa:
 
 ## <a name="get-a-telemetryclient-instance"></a>Bir TelemetryClient örneği alın
 
-@No__t_0 örneğini al (Web sayfalarındaki JavaScript hariç):
+`TelemetryClient` örneğini al (Web sayfalarındaki JavaScript hariç):
 
 [.Net/.NET Core uygulamaları için ASP.NET Core uygulamalar ve http olmayan/çalışan](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) için, ilgili belgelerde açıklandığı gibi bağımlılık ekleme kapsayıcısından `TelemetryClient` bir örnek almanız önerilir. [](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)
 
@@ -337,7 +337,7 @@ Varsayılan olarak, **sayfa görünümü yükleme süresi** olarak bildirilen s�
 Bunun yerine şunlardan birini yapabilirsiniz:
 
 * [TrackPageview](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) çağrısında açık bir süre ayarlayın: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
-* @No__t_0 ve `stopTrackPage` sayfa görüntüleme zamanlaması çağrılarını kullanın.
+* `startTrackPage` ve `stopTrackPage`sayfa görüntüleme zamanlaması çağrılarını kullanın.
 
 *JavaScript*
 
@@ -359,8 +359,8 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 [Analiz](analytics.md) ' de iki tabloda, tarayıcı işlemlerinden verileri göster:
 
-* @No__t_0 tablosu URL ve sayfa başlığıyla ilgili verileri içerir
-* @No__t_0 tablosu, gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki verileri içerir
+* `pageViews` tablosu URL ve sayfa başlığıyla ilgili verileri içerir
+* `browserTimings` tablosu, gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki verileri içerir
 
 Tarayıcının farklı sayfaları işlemeye ne kadar süreceği hakkında bilgi edinmek için:
 
@@ -419,7 +419,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 } // When operation is disposed, telemetry item is sent.
 ```
 
-@No__t_0 bir işlem bağlamı ayarlamaya birlikte, belirttiğiniz türün bir telemetri öğesini oluşturur. İşlemi çıkardığınızda telemetri öğesini gönderir veya açıkça `StopOperation` çağırdıysanız. Telemetri türü olarak `RequestTelemetry` kullanıyorsanız, süresi başlangıç ve durdurma arasındaki zaman aralığı olarak ayarlanır.
+`StartOperation` bir işlem bağlamı ayarlamaya birlikte, belirttiğiniz türün bir telemetri öğesini oluşturur. İşlemi çıkardığınızda telemetri öğesini gönderir veya açıkça `StopOperation` çağırdıysanız. Telemetri türü olarak `RequestTelemetry` kullanıyorsanız, süresi başlangıç ve durdurma arasındaki zaman aralığı olarak ayarlanır.
 
 İşlem kapsamı içinde bildirilen telemetri öğeleri, bu işlemin ' alt öğeleri ' olur. İşlem bağlamları iç içe olabilir.
 
@@ -582,7 +582,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 
 İleti içeriğinde arama yapabilirsiniz, ancak (Özellik değerlerinden farklı olarak) üzerinde filtreleme yapamazsınız.
 
-@No__t_0 boyut sınırı, özellikler üzerindeki sınırdan çok daha yüksektir.
+`message` boyut sınırı, özellikler üzerindeki sınırdan çok daha yüksektir.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
 Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
@@ -614,7 +614,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ## <a name="trackdependency"></a>TrackDependency
 
-Bir dış kod parçasına yapılan çağrıların yanıt sürelerini ve başarı oranlarını izlemek için TrackDependency çağrısını kullanın. Sonuçlar, portaldaki bağımlılık grafiklerinde görüntülenir.
+Bir dış kod parçasına yapılan çağrıların yanıt sürelerini ve başarı oranlarını izlemek için TrackDependency çağrısını kullanın. Sonuçlar, portaldaki bağımlılık grafiklerinde görüntülenir. Aşağıdaki kod parçacığının bir bağımlılık çağrısının yapıldığı her yerde eklenmesi gerekir.
 
 *C#*
 
@@ -1011,7 +1011,7 @@ Standart koleksiyon modüllerindeki veriler de dahil olmak üzere *Tüm telemetr
 
 SDK 'dan gönderilmeden önce Telemetriyi işlemek için kod yazabilirsiniz. İşleme, HTTP istek koleksiyonu ve bağımlılık koleksiyonu gibi standart telemetri modüllerden gönderilen verileri içerir.
 
-@No__t_1 uygulayarak telemetrisine [Özellikler ekleyin](../../azure-monitor/app/api-filtering-sampling.md#add-properties) . Örneğin, diğer özelliklerden hesaplanan sürüm numaralarını veya değerleri ekleyebilirsiniz.
+`ITelemetryInitializer`uygulayarak telemetrisine [Özellikler ekleyin](../../azure-monitor/app/api-filtering-sampling.md#add-properties) . Örneğin, diğer özelliklerden hesaplanan sürüm numaralarını veya değerleri ekleyebilirsiniz.
 
 [Filtreleme](../../azure-monitor/app/api-filtering-sampling.md#filtering) , `ITelemetryProcessor` uygulayarak SDK 'dan gönderilmeden önce Telemetriyi değiştirebilir veya atabilir. Ne gönderildiğini ve atılacağını denetlersiniz, ancak ölçümleriniz üzerindeki etkiyi hesaba eklemek zorunda olursunuz. Öğeleri nasıl atdığınıza bağlı olarak, ilgili öğeler arasında gezinme özelliğini kaybedebilirsiniz.
 

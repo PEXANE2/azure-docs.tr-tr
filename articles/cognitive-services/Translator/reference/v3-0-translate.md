@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515251"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161709"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: çevir
 
@@ -23,7 +23,7 @@ Metni çevirir.
 
 ## <a name="request-url"></a>İstek URL'si
 
-@No__t_0 isteği gönder:
+`POST` isteği gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
@@ -42,7 +42,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>Kaynak</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. @No__t_1 kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. @No__t_0 parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. <code>translation</code> kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. <code>from</code> parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
   </tr>
   <tr>
     <td>-</td>
@@ -110,7 +110,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>X-Clienttraceıd</td>
-    <td><em>İsteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. @No__t_0 adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
+    <td><em>İsteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. <code>ClientTraceId</code>adlı bir sorgu parametresi kullanarak, sorgu dizesinde izleme KIMLIĞINI eklerseniz bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
@@ -139,7 +139,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
       * `score`: sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
 
-    @No__t_0 özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
+    `detectedLanguage` özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
 
   * `translations`: bir çeviri sonuçları dizisi. Dizinin boyutu, `to` sorgu parametresi ile belirtilen hedef dillerin sayısıyla eşleşir. Dizideki her öğe şunları içerir:
 
@@ -153,7 +153,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 
       * `text`: hedef betikte çevrilmiş metni sağlayan bir dize.
 
-    @No__t_0 nesnesi, bir alfabeye çevirme gerçekleşmezse dahil edilmez.
+    `transliteration` nesnesi, bir alfabeye çevirme gerçekleşmezse dahil edilmez.
 
     * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj` adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca `includeAlignment` olan istek parametresi `true` olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
 
@@ -249,7 +249,7 @@ Yanıt gövdesi:
 ]
 ```
 
-@No__t_0 dizi, girişte tek metin parçasının çevirisini sağlayan bir öğesi içerir.
+`translations` dizi, girişte tek metin parçasının çevirisini sağlayan bir öğesi içerir.
 
 ### <a name="translate-a-single-input-with-language-auto-detection"></a>Tek bir girişi dil otomatik algılama ile çevir
 
@@ -372,10 +372,10 @@ Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almay
   <tr>
     <td><code>Marked</code></td>
     <td>Küfürlü sözcükleri çıktıda bir işaret ile değiştirilmiştir. İşaretleyici <code>ProfanityMarker</code> parametresine bağlıdır.<br/><br/>
-@No__t_0 için, küfürlü kelimeleri <code>***</code> ile değiştirilmiştir:<br/>
+<code>ProfanityMarker=Asterisk</code>için, küfürlü kelimeleri <code>***</code>ile değiştirilmiştir:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
     <strong>Örnek çeviri (İngilizce)</strong>: \* bir \* \*.<br/><br/>
-@No__t_0 için, küfürlü kelimeleri &gt; ve &lt;/küfür &gt; &lt;profanity XML etiketleri ile çevrelenmiş:<br/>
+<code>ProfanityMarker=Tag</code>için, küfürlü kelimeleri &lt;küfür&gt; ve &lt;/küfür&gt;XML etiketleri ile çevrelenmiş:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
     <strong>Örnek çeviri (İngilizce)</strong>: &lt;profanity &gt;jackass &lt;/küfür &gt;.
   </tr>
@@ -510,7 +510,7 @@ Bir sözcüğe veya ifadeye uygulamak istediğiniz çeviriyi zaten biliyorsanız
 Sağlayacak biçimlendirme aşağıdaki sözdizimini kullanır.
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 Örneğin, "sözcük çalışma sözcüğü bir sözlük girişi" Ingilizce cümlesini göz önünde bulundurun. Çeviride bir sözcük _dünyayı_ korumak için isteği gönderin:
@@ -525,7 +525,7 @@ Sonuç:
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]

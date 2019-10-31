@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383089"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160757"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Uygulamalarım portalından profilinizi ve hesap bilgilerinizi güncelleştirme
 
-İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsiniz Uygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
+İş veya okul hesabınızı Web tabanlı **My Apps** portalından kullanarak kuruluşunuzun bulut tabanlı uygulamalarının çoğunu görüntüleyip başlatabilir, profil ve hesap bilgilerinizin bazılarını güncelleştirebilir, **gruplarınızın** bilgilerini görebilir ve şunları yapabilirsinizUygulamalarınız ve gruplarınız için erişim gözden geçirmeleri. **Uygulamalarım** portalına erişiminiz yoksa, Izin Için yardım masasına başvurmanız gerekir.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -65,7 +65,7 @@ Kuruluşunuzun, **uygulamalarım** portalınızın **profil** sayfasına dahil e
 
 - Her yerde oturumunuzu kapatın.
 
-## <a name="change-your-password"></a>Parolanızı değiştirin
+## <a name="change-your-password"></a>Parolanızı değiştirme
 
 İş veya okul hesabınızın parolasını değiştirmek istiyorsanız, **profil** sayfasının **hesap yönetme** alanından **Parolayı Değiştir** ' i seçebilirsiniz.
 
@@ -77,7 +77,7 @@ Kuruluşunuzun, **uygulamalarım** portalınızın **profil** sayfasına dahil e
 
     ![Parola değiştirme sayfası](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Seçin **gönderme**.
+3. **Gönder**' i seçin.
 
     Parolanız değiştirildi. İş veya okul hesabınızı kullanarak daha önce oturum açmış olduğunuz tüm uygulamalarda oturum açmanız gerekir.
 
@@ -86,7 +86,7 @@ Kuruluşunuzun, **uygulamalarım** portalınızın **profil** sayfasına dahil e
 Parolanızı unuttuysanız, şirketinizin destek 'ten hiç kimse yok veya hesabınızı kilitlediyseniz, kendi parolanızı sıfırlayabilirsiniz.
 
 >[!Important]
->Yöneticinizin bu özelliği açmış olması gerekir ve katılmak için kaydolmanız gerekir. Kaydolmak ve parolanızı sıfırlamak hakkında ayrıntılar için bkz. [self servis parola sıfırlama Için kaydolma](active-directory-passwords-reset-register.md) ve [iş veya okul parolanızı sıfırlama](user-help-reset-password.md).
+>Yöneticinizin bu özelliği açmış olması gerekir ve katılmak için kaydolmanız gerekir. Kaydolmak ve parolanızı sıfırlamak hakkında ayrıntılar için bkz. [self servis parola sıfırlama Için kaydolma](active-directory-passwords-reset-register.md) ve [iş veya okul parolanızı sıfırlama](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="change-your-security-verification-information"></a>Güvenlik doğrulama bilgilerinizi değiştirin
 
@@ -108,7 +108,7 @@ Kuruluşunuz iki öğeli doğrulama kullanmanızı gerektiriyorsa, **ek güvenli
 
     - **Microsoft Authenticator uygulamasını ayarlayın.** Microsoft Authenticator uygulamasını doğrulama yönteminiz olarak çalışacak şekilde ayarlamayı tercih edebilirsiniz. Microsoft Authenticator uygulaması hakkında daha fazla bilgi için bkz. [Microsoft Authenticator uygulama nedir?](user-help-auth-app-overview.md)
 
-3. Seçin **Kaydet** yaptığınız değişiklikleri kaydedin.
+3. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Kuruluşunuzun kullanım koşulları ifadesini gözden geçirin
 

@@ -11,18 +11,18 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 49877994e7eef89f099e19d92e26de48bd9d41f4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: efa31e72811b83c00c1b2ee4a5d1a42fc7089630
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566464"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163174"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL veritabanı ve SQL Server için Spark Connector ile gerçek zamanlı büyük veri analizlerini hızlandırma
 
 Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı, Azure SQL veritabanı ve SQL Server dahil olmak üzere SQL veritabanlarının, Spark işleri için giriş veri kaynağı veya çıkış veri havuzu olarak çalışmasını sağlar. Büyük veri analizindeki gerçek zamanlı işlem verilerini kullanmanızı ve geçici sorgular veya raporlama sonuçlarını kalıcı hale getirme olanağı sağlar. Yerleşik JDBC Bağlayıcısı ile karşılaştırıldığında, bu bağlayıcı, verileri SQL veritabanlarına toplu olarak ekleme olanağı sunar. Satır ekleyerek 10 kat daha hızlı performans ile 20 kat daha hızlı performans sağlayabilir. Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı AAD kimlik doğrulamasını da destekler. AAD hesabınızı kullanarak Azure Databricks Azure SQL veritabanınıza güvenli bir şekilde bağlanmanızı sağlar. Yerleşik JDBC Bağlayıcısı ile benzer arabirimler sağlar. Mevcut Spark işlerinizin bu yeni bağlayıcıyı kullanmak için geçirilmesi kolaydır.
 
-## <a name="download"></a>İndirme
+## <a name="download"></a>İndirin
 Başlamak için, GitHub 'daki [Azure-SQLDB-Spark deposundan](https://github.com/Azure/azure-sqldb-spark) Spark ' ı SQL DB bağlayıcısına indirin.
 
 ## <a name="official-supported-versions"></a>Resmi desteklenen sürümler
@@ -33,7 +33,7 @@ Başlamak için, GitHub 'daki [Azure-SQLDB-Spark deposundan](https://github.com/
 | Scala                                |2,10 veya üzeri            |
 | SQL Server için Microsoft JDBC Sürücüsü |6,2 veya üzeri             |
 | Microsoft SQL Server                 |SQL Server 2008 veya üzeri |
-| Azure SQL Database                   |Desteklenen                |
+| Azure SQL Veritabanı                   |Desteklenen                |
 
 Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı, verileri Spark çalışan düğümleri ve SQL veritabanları arasında taşımak için SQL Server Microsoft JDBC sürücüsü kullanır:
  
@@ -65,7 +65,7 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"            -> "mysqlserver.database.windows.net",
   "databaseName"   -> "MyDatabase",
-  "dbTable"        -> "dbo.Clients"
+  "dbTable"        -> "dbo.Clients",
   "user"           -> "username",
   "password"       -> "*********",
   "connectTimeout" -> "5", //seconds
@@ -103,7 +103,7 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"          -> "mysqlserver.database.windows.net",
   "databaseName" -> "MyDatabase",
-  "dbTable"      -> "dbo.Clients"
+  "dbTable"      -> "dbo.Clients",
   "user"         -> "username",
   "password"     -> "*********"
 ))

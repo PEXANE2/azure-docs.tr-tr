@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac59dbed0ba2766f3367e19c5fddeed52e250a5b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880150"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151856"
 ---
 # <a name="passwordless-authentication-options"></a>Passwordless kimlik doğrulama seçenekleri
 
@@ -28,13 +28,13 @@ Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika
 
 Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft üç adet parolasız kimlik doğrulama seçeneği sunar:
 
-- İş İçin Windows Hello 
-- Microsoft Authenticator uygulaması 
+- İş İçin Windows Hello
+- Microsoft Authenticator uygulaması
 - FIDO2 güvenlik anahtarları
 
 ![Kimlik doğrulama: güvenlik ve kolaylık](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>İş İçin Windows Hello 
+## <a name="windows-hello-for-business"></a>İş İçin Windows Hello
 
 Iş için Windows Hello, kendilerine ait Windows bılgısayar olan bilgi çalışanları için idealdir. Biyometrik ve PIN, kullanıcının BILGISAYARıNA doğrudan bağlanır, bu da sahip dışında bir kişiye erişimi engeller. PKI tümleştirmesi ve çoklu oturum açma (SSO) için yerleşik destek sayesinde Iş için Windows Hello, şirket içi ve buluttaki kurumsal kaynaklara sorunsuz bir şekilde erişmek için basit ve kullanışlı bir yöntem sağlar.
 
@@ -52,7 +52,7 @@ Tüm iOS veya Android telefonlarını, kullanıcıların telefonda bir bildirim 
 
 FIDO2 güvenlik anahtarları, herhangi bir form faktöründe yer alan unphishable standartlara dayalı, passwordless kimlik doğrulama yöntemidir. Hızlı kimlik çevrimiçi (FIDO), passwordless kimlik doğrulaması için açık bir standarttır. Kullanıcıların ve kuruluşların, bir dış güvenlik anahtarı veya bir cihaza yerleşik bir platform anahtarı kullanarak bir Kullanıcı adı veya parola olmadan kendi kaynaklarında oturum açmasını sağlamak için standart kullanmasına olanak sağlar.
 
-Çalışanlar, Azure Active Directory katılmış Windows 10 makinelerinde (sürüm 1809 veya üzeri) oturum açmak için dış güvenlik anahtarlarını kullanabilir ve bulut kaynaklarında çoklu oturum açma imkanı alabilir. Ayrıca, desteklenen tarayıcılarda oturum açabilir.
+Çalışanlar, genel önizleme için güvenlik anahtarlarını kullanarak Azure AD 'ye veya karma Azure AD 'ye katılmış Windows 10 cihazlarında oturum açabilir ve bulutta ve şirket içi kaynaklarda çoklu oturum açma imkanı alabilir. Ayrıca, desteklenen tarayıcılarda oturum açabilir.
 
 ![Bir güvenlik anahtarıyla Microsoft Edge 'de oturum açın](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -78,6 +78,9 @@ Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 
+> [!NOTE]
+> Satınalma ve NFC tabanlı güvenlik anahtarları kullanmayı planlıyorsanız, desteklenen bir NFC okuyucusuna ihtiyacınız olacaktır.
+
 Bir satıcısıysanız ve cihazınızı bu listede almak istiyorsanız [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)' e başvurun.
 
 FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
@@ -89,7 +92,7 @@ FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numara
 - Son kullanıcılar, bu passwordless kimlik doğrulama yöntemlerini hesap portalında kaydedebilir ve yönetebilir
 - Son kullanıcılar bu passwordless kimlik doğrulama yöntemleriyle oturum açabilirler
    - Microsoft Authenticator uygulama: tüm tarayıcılarda, Windows 10 kutudan çıkar (OOBE) kurulumu sırasında ve herhangi bir işletim sisteminde tümleşik mobil uygulamalarla birlikte Azure AD kimlik doğrulamasının kullanıldığı senaryolarda çalışacaktır.
-   - Güvenlik anahtarları: Windows 10 sürüm 1809 veya üzeri için kilit ekranında ve Microsoft Edge gibi desteklenen tarayıcılarda web üzerinde çalışır.
+   - Güvenlik anahtarları: Microsoft Edge gibi desteklenen tarayıcılarda Windows 10 ve Web için kilit ekranında çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

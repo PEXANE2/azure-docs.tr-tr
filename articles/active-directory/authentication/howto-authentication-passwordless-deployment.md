@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933111"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151636"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Parolasız kimlik doğrulama dağıtımını tamamlandırma
 
@@ -104,18 +104,27 @@ Güvenlik anahtarları kaynaklarınıza erişimi etkinleştirir ve bu fiziksel c
 
 FIDO2 güvenlik anahtarlarını kullanarak Windows 10 oturum açma özelliğinin etkinleştirilmesi, Windows 10 ' da kimlik bilgisi sağlayıcısı işlevinin etkinleştirilmesini gerektirir. İki yönden birini etkinleştirin:
 
-- [Hedeflenen Intune dağıtımı aracılığıyla kimlik bilgisi sağlayıcısını etkinleştir](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - Intune dağıtımı Azure Active Directory katılmış makineler için önerilen seçenektir.
-- [Sağlama paketi aracılığıyla kimlik bilgisi sağlayıcısını etkinleştir](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Intune ile kimlik bilgisi sağlayıcısını etkinleştirme](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - Intune dağıtımı önerilen seçenektir.
+- [Sağlama paketiyle kimlik bilgisi sağlayıcısını etkinleştirin](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Intune dağıtımı mümkün değilse, yöneticilerin kimlik bilgisi sağlayıcısı işlevini etkinleştirmek için her makinede bir paket dağıtmaları gerekir. Paket yüklemesi aşağıdaki seçeneklerden biriyle gerçekleştirilebilir:
       - Grup ilkesi veya System Center Configuration Manager (SCCM)
       - Windows 10 makinesinde yerel yükleme
+- [grup ilkesi ile kimlik bilgisi sağlayıcısını etkinleştir](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Yalnızca karma Azure AD 'ye katılmış cihazlar için desteklenir.
+
+#### <a name="enable-on-premises-integration"></a>Şirket içi tümleştirmeyi etkinleştir
+
+Şirket içi kaynaklara erişimi etkinleştirmek için, Şirket [içi kaynaklarda (Önizleme), passwordless güvenlik anahtarı 'Nı etkinleştirme](howto-authentication-passwordless-security-key-on-premises.md) makalesindeki adımları izleyin.
+
+> [!IMPORTANT]
+> Bu adımların, karma Azure AD 'ye katılmış cihazların Windows 10 oturum açma için FIDO2 güvenlik anahtarlarını kullanmasını sağlamak için de tamamlanması gerekir.
 
 ### <a name="register-security-keys"></a>Güvenlik anahtarlarını Kaydet
 
 Kullanıcıların, Azure Active Directory katılmış Windows 10 makinelerinde her birine güvenlik anahtarını kaydetmesi gerekir.
 
-Daha fazla bilgi için bkz. [FIDO2 güvenlik anahtarlarının Kullanıcı kaydı ve yönetimi](howto-authentication-passwordless-security-key.md).
+Daha fazla bilgi için bkz. [FIDO2 güvenlik anahtarlarının Kullanıcı kaydı ve yönetimi](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys).
 
 ### <a name="licensing-for-passwordless-authentication"></a>Passwordless kimlik doğrulaması için lisanslama
 
@@ -257,7 +266,7 @@ Microsoft Authenticator uygulamayı kuruluşunuzda bir passwordless kimlik doğr
 ### <a name="deploy-fido2-security-key-sign-in"></a>FIDO2 güvenlik anahtarını dağıtma oturum açma
 
 Bu makaledeki adımları izleyerek, FIDO2 güvenlik anahtarlarını kuruluşunuzda passwordless kimlik doğrulama yöntemleri olarak etkinleştirmek için [Azure AD 'de passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin](howto-authentication-passwordless-security-key.md) .
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>Telefonla oturum açma sorunlarını giderme
 
 | Senaryo | Çözüm |

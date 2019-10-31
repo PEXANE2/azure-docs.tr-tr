@@ -4,25 +4,25 @@ description: Azure 'da bir Analysis Services sunucusuna bağlanmayı ve bu sunuc
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295176"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147304"
 ---
 # <a name="connecting-to-servers"></a>Sunuculara bağlanma
 
-Bu makalede, SQL Server Management Studio (SSMS) veya SQL Server Veri Araçları (SSDT) gibi veri modelleme ve yönetim uygulamalarını kullanarak bir sunucuya bağlanma açıklanır. Ya da Microsoft Excel, Power BI Desktop veya özel uygulamalar gibi istemci raporlama uygulamalarıyla birlikte. Azure Analysis Services bağlantıları HTTPS kullanır.
+Bu makalede, SQL Server Management Studio (SSMS) veya Visual Studio gibi Analysis Services projelerine ya da Microsoft Excel gibi istemci raporlama uygulamalarıyla veri modelleme ve yönetim uygulamalarını kullanarak bir sunucuya bağlanma açıklanmaktadır Power BI Masaüstü veya özel uygulamalar. Azure Analysis Services bağlantıları HTTPS kullanır.
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
 [En son Istemci kitaplıklarını al](analysis-services-data-providers.md)
 
-Türüne bakılmaksızın sunucuya yapılan tüm bağlantılar, bir Analysis Services sunucusuyla bağlantı kurmak için güncelleştirilmiş AMO, ADOMD.NET ve OLEDB istemci kitaplıklarını gerektirir. SSMS, SSDT, Excel 2016 ve üzeri ve Power BI için en son istemci kitaplıkları, aylık yayınlar yüklenir veya güncelleştirilir. Ancak bazı durumlarda, bir uygulamanın en son sürümü bulunmayabilir. Örneğin, ilkelerin güncelleştirmeleri ertelenmesi veya Office 365 güncelleştirmeleri ertelenmiş kanaldır.
+Türüne bakılmaksızın sunucuya yapılan tüm bağlantılar, bir Analysis Services sunucusuyla bağlantı kurmak için güncelleştirilmiş AMO, ADOMD.NET ve OLEDB istemci kitaplıklarını gerektirir. SSMS, Visual Studio, Excel 2016 ve üzeri ve Power BI için en son istemci kitaplıkları, aylık yayınlar yüklenir veya güncelleştirilir. Ancak bazı durumlarda, bir uygulamanın en son sürümü bulunmayabilir. Örneğin, ilkelerin güncelleştirmeleri ertelenmesi veya Office 365 güncelleştirmeleri ertelenmiş kanaldır.
 
 ## <a name="server-name"></a>Sunucu adı
 
@@ -76,7 +76,7 @@ Excel 'in daha eski sürümleriyle, kullanıcılar bir Office veri bağlantısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Excel @no__t bağlanma](analysis-services-connect-excel.md)-1  
-[Power BI @no__t bağlanma](analysis-services-connect-pbi.md)-1  
+[Excel    bağlanma](analysis-services-connect-excel.md)  
+[Power BI  bağlama](analysis-services-connect-pbi.md)  
 [Sunucunuzu Yönetin](analysis-services-manage.md)   
 
