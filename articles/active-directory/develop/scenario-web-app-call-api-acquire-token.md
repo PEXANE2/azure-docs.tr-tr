@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/30/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274479"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175336"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran Web uygulaması-uygulama için bir belirteç alın
 
@@ -49,7 +49,7 @@ public class HomeController : Controller
 }
 ```
 
-@No__t-0 hizmeti, bağımlılık ekleme yoluyla ASP.NET tarafından eklenir.
+`ITokenAcquisition` hizmeti bağımlılık ekleme yoluyla ASP.NET tarafından eklenir.
 
 
 Aşağıda, Microsoft Graph çağırmak için bir belirteç alan HomeController eyleminin basit bir kodu verilmiştir.
@@ -82,7 +82,7 @@ Bu gelişmiş adımlar, [3. WebApp-WebApp-çoklu API](https://github.com/Azure-S
 ASP.NET ' de benzer şeyler:
 
 - Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar. (ASP.NET `HttpContext.User` kullanır.)
-- Buradan, bir MSAL.NET @no__t oluşturur-0.
+- Buradan, bir MSAL.NET `IConfidentialClientApplication`oluşturur.
 - Son olarak, gizli istemci uygulamasının `AcquireTokenSilent` yöntemini çağırır.
 
 Kod, ASP.NET Core gösterilen koda benzerdir.
@@ -91,43 +91,62 @@ Kod, ASP.NET Core gösterilen koda benzerdir.
 
 Java örneğinde, bir API çağıran kod, getUsersFromGraph yönteminde [Authpagecontroller. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
-@No__t-0 ' i çağırmaya çalışır. Kullanıcının daha fazla kapsam onaylaması gerekiyorsa, kod, kullanıcıyı zorluk `MsalInteractionRequiredException` ' ı işler.
+`getAuthResultBySilentFlow`çağırmaya çalışır. Kullanıcının daha fazla kapsam onaylaması gerekiyorsa, kod, kullanıcıyı zorluk `MsalInteractionRequiredException` ' ı işler.
 
 ```java
-@RequestMapping("/msal4jsample/graph/users")
-    public ModelAndView getUsersFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
-            throws Throwable {
+@RequestMapping("/msal4jsample/graph/me")
+public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+        throws Throwable {
 
-        IAuthenticationResult result;
-        ModelAndView mav;
-        try {
-            result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
-        } catch (ExecutionException e) {
-            if (e.getCause() instanceof MsalInteractionRequiredException) {
+    IAuthenticationResult result;
+    ModelAndView mav;
+    try {
+        result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+    } catch (ExecutionException e) {
+        if (e.getCause() instanceof MsalInteractionRequiredException) {
 
-                // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
-                // so user can consent to new scopes
-                String state = UUID.randomUUID().toString();
-                String nonce = UUID.randomUUID().toString();
+            // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
+            // so user can consent to new scopes
+            String state = UUID.randomUUID().toString();
+            String nonce = UUID.randomUUID().toString();
 
-                SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+            SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
 
-                String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
-                        httpRequest.getParameter("claims"),
-                        "User.ReadBasic.all",
-                        authHelper.getRedirectUriGraphUsers(),
-                        state,
-                        nonce);
+            String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                    httpRequest.getParameter("claims"),
+                    "User.Read",
+                    authHelper.getRedirectUriGraph(),
+                    state,
+                    nonce);
 
-                return new ModelAndView("redirect:" + authorizationCodeUrl);
-            } else {
+            return new ModelAndView("redirect:" + authorizationCodeUrl);
+        } else {
 
-                mav = new ModelAndView("error");
-                mav.addObject("error", e);
-                return mav;
-            }
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+            return mav;
         }
-    // Code omitted here.
+    }
+
+    if (result == null) {
+        mav = new ModelAndView("error");
+        mav.addObject("error", new Exception("AuthenticationResult not found in session."));
+    } else {
+        mav = new ModelAndView("auth_page");
+        setAccountInfo(mav, httpRequest);
+
+        try {
+            mav.addObject("userInfo", getUserInfoFromGraph(result.accessToken()));
+
+            return mav;
+        } catch (Exception e) {
+            mav = new ModelAndView("error");
+            mav.addObject("error", e);
+        }
+    }
+    return mav;
+}
+// Code omitted here.
 ```
 
 # <a name="pythontabpython"></a>[Python](#tab/python)

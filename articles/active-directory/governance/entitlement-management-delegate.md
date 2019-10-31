@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) yetkilendirme ve roller-Azure Active Directory
+title: Azure AD Yetkilendirme Yönetimi 'nde yetkilendirme ve roller-Azure Active Directory
 description: Erişim yönetimini, BT yöneticilerinden departman yöneticilerine ve proje yöneticilerine, erişimi yönetebilmeleri için nasıl atayacağınızı öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eb97b88be3ed68398cf7844b03e6a1fc9cd1b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934448"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174265"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) temsilciliğini ve rolleri
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
 Varsayılan olarak, genel Yöneticiler ve Kullanıcı yöneticileri Azure AD yetkilendirme yönetiminin tüm yönlerini oluşturabilir ve yönetebilir. Ancak, bu rollerdeki kullanıcılar erişim paketlerinin gerekli olduğu tüm durumları bilmiyor olabilir. Genellikle, ilgili departmanlar, takımlar ya da kim ile birlikte çalıştıkları, hangi kaynakların ve ne kadar süreyle işbirliği yaptığını bilen kullanıcılardır. Yönetici olmayanlar için kısıtlanmamış izinler vermek yerine kullanıcılara, işlerini gerçekleştirmek için ihtiyaç duydukları en düşük izinleri verebilir ve çakışan veya uygunsuz erişim hakları oluşturmaktan kaçınabilirsiniz.
 
@@ -113,8 +108,9 @@ Aşağıdaki tabloda, Yetkilendirme Yönetimi rollerinin gerçekleştirebileceğ
 | [Bir kullanıcıyı doğrudan bir erişim paketine atama](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Erişim paketine kimin atanmasına sahip olduğunu görüntüleme](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Bir erişim paketinin isteklerini görüntüleme](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Bir isteğin teslim hatalarını görüntüleme](entitlement-management-access-package-requests.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Bekleyen bir isteği iptal etme](entitlement-management-access-package-requests.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Bir isteğin teslim hatalarını görüntüleme](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [İsteği yeniden işleme](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Bekleyen bir isteği iptal etme](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Erişim paketini gizle](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Erişim paketini silme](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 

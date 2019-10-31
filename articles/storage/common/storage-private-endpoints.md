@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b94d376ee107f9acd45dff5b96fc43722f2fe208
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965453"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176158"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Azure depolama için özel uç noktaları kullanma (Önizleme)
 
@@ -48,7 +48,7 @@ Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden eri�
 > [!TIP]
 > RA-GRS hesaplarında daha iyi okuma performansı için depolama hizmetinin ikincil örneği için ayrı bir özel uç nokta oluşturun.
 
-[Okuma Erişimli Coğrafi olarak yedekli depolama hesabında](storage-redundancy-grs.md#read-access-geo-redundant-storage)okuma kullanılabilirliği için, hizmetin birincil ve ikincil örneklerinde ayrı özel uç noktalara ihtiyacınız vardır. Yük devretme için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretmeden sonra otomatik olarak yeni birincil örneğe bağlanır.
+[Okuma Erişimli Coğrafi olarak yedekli depolama hesabında](storage-redundancy-grs.md#read-access-geo-redundant-storage)okuma kullanılabilirliği için, hizmetin birincil ve ikincil örneklerinde ayrı özel uç noktalara ihtiyacınız vardır. **Yük devretme**için ikincil örnek için özel bir uç nokta oluşturmanız gerekmez. Özel uç nokta, yük devretme işleminden sonra otomatik olarak yeni birincil örneğe bağlanır. git 
 
 #### <a name="resources"></a>Kaynaklar
 
@@ -91,14 +91,14 @@ Bu yaklaşım, Özel uç noktaları barındıran VNet 'ten aynı bağlantı dize
 
 Depolama Hizmetleri için özel uç noktalar için önerilen DNS bölge adları şunlardır:
 
-| Depolama hizmeti       | Bölge adı                          |
-| :-------------------- | :--------------------------------- |
-| Blob Hizmeti          | privatelink.blob.core.windows.net  |
-| Data Lake dosya sistemi | privatelink.dfe.core.windows.net   |
-| Dosya hizmeti          | privatelink.file.core.windows.net  |
-| Kuyruk hizmeti         | privatelink.queue.core.windows.net |
-| Tablo hizmeti         | privatelink.table.core.windows.net |
-| Statik Web siteleri       | privatelink.web.core.windows.net   |
+| Depolama hizmeti        | Bölge adı                            |
+| :--------------------- | :----------------------------------- |
+| Blob Hizmeti           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Dosya hizmeti           | `privatelink.file.core.windows.net`  |
+| Kuyruk hizmeti          | `privatelink.queue.core.windows.net` |
+| Tablo hizmeti          | `privatelink.table.core.windows.net` |
+| Statik Web siteleri        | `privatelink.web.core.windows.net`   |
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -119,6 +119,6 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 Bu kısıtlama, a2 hesabı özel bir uç nokta oluşturduğunda yapılan DNS değişikliklerinin bir sonucudur.
 
-### <a name="network-security-group-rules-on-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlardaki ağ güvenlik grubu kuralları
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Özel uç noktaları olan alt ağlar için ağ güvenlik grubu kuralları
 
-[Ağ güvenlik grubu](../../virtual-network/security-overview.md) (NSG) kuralları, şu anda özel uç noktaları olan alt ağlar için yapılandırılamaz. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.
+Şu anda, Özel uç noktaları olan alt ağlar için [ağ güvenlik grubu](../../virtual-network/security-overview.md) (NSG) kurallarını yapılandıramazsınız. Bu sorun için sınırlı bir geçici çözüm, kaynak alt ağlardaki özel uç noktalar için erişim kurallarınızı uygulamaktır, ancak bu yaklaşım daha yüksek bir yönetim yükü gerektirebilir.

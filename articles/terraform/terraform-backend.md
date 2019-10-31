@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 2e76da32e25451084d595b10698fe663c55b6a4b
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969516"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177818"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Öğretici: Azure Storage 'da Terrayform durumunu depolama
 
@@ -70,7 +70,7 @@ Azure depolama erişim anahtarı değeriyle `ARM_ACCESS_KEY` adlı bir ortam de�
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Azure depolama hesabı erişim anahtarını daha fazla korumak için Azure Key Vault ' de saklayın. Daha sonra, ortam değişkeni aşağıdakine benzer bir komut kullanılarak ayarlanabilir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault belgeleri] [.. /Key-Vault/Quick-Create-cli.exe].
+Azure depolama hesabı erişim anahtarını daha fazla korumak için Azure Key Vault ' de saklayın. Daha sonra, ortam değişkeni aşağıdakine benzer bir komut kullanılarak ayarlanabilir. Azure Key Vault hakkında daha fazla bilgi için [Azure Key Vault belgelerine](../key-vault/quick-create-cli.md)bakın.
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
@@ -110,7 +110,7 @@ Artık Azure Depolama Blobu durum dosyasını bulabilirsiniz.
 
 Azure depolama Blobları, durum yazan herhangi bir işlemden önce otomatik olarak kilitlenir. Bu model, eş zamanlı durum işlemlerini önler ve bu da bozulmaya neden olabilir. 
 
-Daha fazla bilgi için bkz. Terrayform belgelerindeki [durum kilitleme] [https://www.terraform.io/docs/state/locking.html ].
+Daha fazla bilgi için bkz. Terrayform belgelerindeki [durum kilitleme](https://www.terraform.io/docs/state/locking.html) .
 
 Azure portal veya diğer Azure yönetim araçları aracılığıyla blob incelenirken kilit görülebilir.
 
@@ -120,7 +120,7 @@ Azure portal veya diğer Azure yönetim araçları aracılığıyla blob incelen
 
 Bir Azure Blobuna depolanan veriler kalıcı olmadan önce şifrelenir. Gerekli olduğunda Terrayform, durumu arka uca alır ve yerel bellekte depolar. Bu düzenin kullanıldığı durum, yerel diskinize hiçbir şekilde yazılmaz.
 
-Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veriler için Azure Depolama Hizmeti Şifrelemesi] [.. /Storage/Common/Storage-Service-encryption.exe].
+Azure depolama şifrelemesi hakkında daha fazla bilgi için bkz. [bekleyen veri Için azure depolama hizmeti şifrelemesi](../storage/common/storage-service-encryption.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

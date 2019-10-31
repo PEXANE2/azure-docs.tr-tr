@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 34ff075a604afdcbef67c7b10ce1ef8cbe2924e7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137028"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177684"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmetinin sürümünü seçin:"]
@@ -80,7 +80,7 @@ Aşağıdaki yöntemlerden birini kullanarak işlem hattınızı el ile çalış
 - .NET SDK
 - Azure PowerShell modülü
 - REST API
-- Python SDK'sı
+- Python SDK
 
 ### <a name="rest-api"></a>REST API
 Aşağıdaki örnek komutta REST API kullanarak işlem hattınızı nasıl el ile çalıştırabileceğiniz gösterilmiştir:
@@ -90,7 +90,7 @@ POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-Tüm bir örnek için bkz [. hızlı başlangıç: REST API](quickstart-create-data-factory-rest-api.md)kullanarak bir veri fabrikası oluşturun.
+Eksiksiz bir örnek için bkz. [Hızlı başlangıç: REST API kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-rest-api.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -119,7 +119,7 @@ Yanıt yükü, işlem hattı çalıştırmasının benzersiz kimliği olur:
 }
 ```
 
-Tüm bir örnek için bkz [. hızlı başlangıç: Azure PowerShell](quickstart-create-data-factory-powershell.md)kullanarak bir veri fabrikası oluşturun.
+Eksiksiz bir örnek için bkz. [Hızlı başlangıç: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
 ### <a name="net-sdk"></a>.NET SDK
 Aşağıdaki örnek çağrıda .NET SDK kullanarak işlem hattınızı nasıl el ile çalıştırabileceğiniz gösterilmiştir:
@@ -128,7 +128,7 @@ Aşağıdaki örnek çağrıda .NET SDK kullanarak işlem hattınızı nasıl el
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-Tüm bir örnek için bkz [. hızlı başlangıç: .NET SDK](quickstart-create-data-factory-dot-net.md)kullanarak bir veri fabrikası oluşturun.
+Eksiksiz bir örnek için bkz. [Hızlı başlangıç: .NET SDK kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
 > .NET SDK kullanarak Azure İşlevleri'nden, kendi web hizmetlerinizden Data Factory işlem hatları çağırma gibi işlemler yapabilirsiniz.
@@ -136,13 +136,13 @@ Tüm bir örnek için bkz [. hızlı başlangıç: .NET SDK](quickstart-create-d
 <h2 id="triggers">Yürütme tetikleme</h2>
 Tetikleyiciler, işlem hattı çalıştırmasını yürütmenin bir diğer yoludur. Tetikleyiciler, bir işlem hattı çalıştırmasının başlatılması gereken zamanı belirleyen işlem birimini temsil eder. Data Factory şu anda üç tetikleyici türünü desteklemektedir:
 
-- Zamanlama tetikleyicisi: Bir duvar saati zamanlaması üzerinde işlem hattı çağıran bir tetikleyici.
+- Zamanlama tetikleyicisi: Bir işlem hattını duvar saati zamanlamasıyla çağıran bir tetikleyici.
 
-- Atlayan pencere tetikleyicisi: Düzenli aralıklarla çalışan ve ayrıca durumu korurken bir tetikleyici.
+- Atlayan pencere tetikleyicisi: Durumunu koruyarak düzenli bir aralıkta çalışan bir tetikleyici.
 
-- Olay tabanlı tetikleyici: Bir olaya yanıt veren bir tetikleyici.
+- Olay tabanlı tetikleyici: Bir olaya yanıt veren tetikleyicidir.
 
-İşlem hatları ve tetikleyiciler çoka çok ilişkisine sahiptir. Birden çok tetikleyici tek bir işlem hattını başlatabilirken, bir tetikleyici birden fazla işlem hattını başlatabilir. Aşağıdaki tetikleyici tanımında, **pipelines** özelliği belirli bir tetikleyici tarafından tetiklenen işlem hattı listesini ifade eder. Özellik tanımı, işlem hattı parametrelerinin değerlerini içerir.
+İşlem hatları ve Tetikleyiciler çoktan çoğa ilişkiye sahiptir (atlayan pencere tetikleyicisi hariç). Birden çok tetikleyici tek bir işlem hattını başlatabilir veya tek bir tetikleyici birden çok işlem hattı başlatabilir. Aşağıdaki tetikleyici tanımında, **pipelines** özelliği belirli bir tetikleyici tarafından tetiklenen işlem hattı listesini ifade eder. Özellik tanımı, işlem hattı parametrelerinin değerlerini içerir.
 
 ### <a name="basic-trigger-definition"></a>Temel tetikleyici tanımı
 
@@ -276,13 +276,13 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 ### <a name="schema-defaults-limits-and-examples"></a>Şema varsayılanları, sınırlar ve örnekler
 
-| JSON özelliği | Type | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
+| JSON özelliği | Tür | Gereklidir | Varsayılan değer | Geçerli değerler | Örnek |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | dize | Evet | Yok. | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Evet | Yok. | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | numarası | Hayır | 1\. | 1-1000 arası | `"interval":10` |
-| **endTime** | dize | Evet | Yok. | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Hayır | Yok. | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | string | Yes | Hiçbiri | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | object | Yes | Hiçbiri | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | number | Hayır | 1 | 1-1000 arası | `"interval":10` |
+| **endTime** | string | Yes | Hiçbiri | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | object | Hayır | Hiçbiri | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:
@@ -292,7 +292,7 @@ Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmas
 | **Geçmişe ait bir başlangıç zamanı** | Başlangıç zamanından sonraki ilk gelecek yürütme zamanını hesaplar ve bu zamanda çalıştırır.<br /><br />Son yürütme zamanına göre hesaplanan sonraki yürütmeleri çalıştırır.<br /><br />Bu tablonun altındaki örneğe bakın. | Tetikleyici belirtilen başlangıç zamanından _önce_ başlamaz. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir.<br /><br />Sonraki yürütmeleri yinelenme zamanlamasına göre çalıştırır. |
 | **Geleceğe ait veya şimdiki zamana denk gelen başlangıç zamanı** | Belirtilen başlangıç zamanında bir kez çalışır.<br /><br />Son yürütme zamanına göre hesaplanan sonraki yürütmeleri çalıştırır. | Tetikleyici belirtilen başlangıç zamanından _önce_ başlamaz. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir.<br /><br />Sonraki yürütmeleri yinelenme zamanlamasına göre çalıştırır. |
 
-Başlangıç zamanı geçmişte olduğunda ve bir yinelenme olmasına rağmen zamanlama olmadığında neler olacağını gösteren bir örneğe bakalım. Geçerli zamanın 2017-04-08 13:00, başlangıç zamanının 2017-04-07 14:00 ve yinelemenin iki günde bir olduğunu varsayalım. (**recurrence** değeri, **frequency** özelliği “day” olarak, **interval** özelliği 2 olarak ayarlanarak tanımlanır.) **startTime** değerinin geçmişte olduğuna ve geçerli zamanın öncesinde gerçekleştiğine dikkat edin.
+Başlangıç zamanı geçmişte olduğunda ve bir yinelenme olmasına rağmen zamanlama olmadığında neler olacağını gösteren bir örneğe bakalım. Geçerli zamanın 2017-04-08 13:00, başlangıç zamanının 2017-04-07 14:00 ve yinelemenin iki günde bir olduğunu varsayalım. ( **Yinelenme** değeri, **Sıklık** özelliği "Day" ve **Interval** özelliği 2 olarak ayarlanarak tanımlanır.) **StartTime** değerinin geçmişte olduğuna ve geçerli zamandan önce gerçekleşdiğine dikkat edin.
 
 Bu koşullar altında ilk yürütme 14:00 2017-04-09 ' dir. Zamanlayıcı altyapısı çalıştırma yinelenmelerini başlangıç zamanından itibaren hesaplar. Geçmişteki örnekler dikkate alınmaz. Altyapı gelecekte gerçekleşen bir sonraki örneği kullanır. Bu senaryoda başlangıç zamanı 07-04-2017, saat 14:00 olur. Sonraki örnek bu zamandan iki gün sonrası olan 09-04-2017 saat 14:00'a denk gelir.
 
@@ -314,7 +314,7 @@ Aşağıdaki tabloda **schedule** öğeleri ayrıntılı bir şekilde açıklanm
 | **minutes** | Tetikleyicinin çalıştığı dakika değeri. |- Tamsayı<br />- Tamsayı dizisi|
 | **hours** | Tetikleyicinin çalıştığı saat değeri. |- Tamsayı<br />- Tamsayı dizisi|
 | **weekDays** | Tetikleyicinin çalıştığı hafta günleri. Bu değer yalnızca haftalık bir sıklıkta belirtilebilir.|<br />- Pazartesi<br />- Salı<br />- Çarşamba<br />- Perşembe<br />- Cuma<br />- Cumartesi<br />- Pazar<br />- Gün değerleri dizisi (en fazla dizi boyutu 7’dir)<br /><br />Gün değerleri büyük/küçük harfe duyarlı değildir|
-| **monthlyOccurrences** | Tetikleyicinin çalıştığı ay günleri. Bu değer yalnızca aylık bir sıklık ile belirtilebilir. |- **Monthlyoccurrence** nesnelerinin dizisi:`{ "day": day, "occurrence": occurrence }`<br />- **day** özniteliği, tetikleyicinin çalıştığı gündür. Örneğin, **day** değeri `{Sunday}` olan bir **monthlyOccurrences** özelliği, ayın her Pazar günü anlamına gelir. **day** özniteliği gereklidir.<br />- **occurrence** özniteliği, ay içinde belirtilen **day** değerinin gerçekleşmesidir. Örneğin, **day** ve **occurrence** değerleri `{Sunday, -1}` olan bir **monthlyOccurrences** özelliği, ayın son Pazar günü anlamına gelir. **occurrence** özniteliği isteğe bağlıdır.|
+| **monthlyOccurrences** | Tetikleyicinin çalıştığı ay günleri. Bu değer yalnızca aylık bir sıklık ile belirtilebilir. |- **Monthlyoccurrence** nesnelerinin dizisi: `{ "day": day, "occurrence": occurrence }`<br />- **day** özniteliği, tetikleyicinin çalıştığı gündür. Örneğin, **day** değeri `{Sunday}` olan bir **monthlyOccurrences** özelliği, ayın her Pazar günü anlamına gelir. **day** özniteliği gereklidir.<br />- **occurrence** özniteliği, ay içinde belirtilen **day** değerinin gerçekleşmesidir. Örneğin, **day** ve **occurrence** değerleri `{Sunday, -1}` olan bir **monthlyOccurrences** özelliği, ayın son Pazar günü anlamına gelir. **occurrence** özniteliği isteğe bağlıdır.|
 | **monthDays** | Tetikleyicinin çalıştığı ay günü. Bu değer yalnızca aylık bir sıklık ile belirtilebilir. |- <= -1 ve >= -31 koşullarına uyan herhangi bir değer<br />- >= 1 ve <= 31 koşullarına uyan herhangi bir değer<br />- Değer dizisi|
 
 ## <a name="tumbling-window-trigger"></a>Atlayan pencere tetikleyicisi
@@ -371,7 +371,7 @@ Aşağıdaki tabloda atlayan pencere tetikleyicisi ile zamanlama tetikleyicisini
 |:--- |:--- |:--- |
 | **Doldurma senaryoları** | Destekleniyor. Geçmişteki aralıklar için işlem hattı çalıştırmaları zamanlanabilir. | Desteklenmiyor. İşlem hattı çalıştırmaları yalnızca geçerli zamandan sonraki ve gelecekteki zaman dönemlerinde yürütülebilir. |
 | **Güvenilirlik** | %100 güvenilirlik. Belirtilen bir başlangıç tarihinden itibaren boşluk olmayacak şekilde tüm aralıklar için işlem hattı çalıştırması zamanlanabilir. | Daha az güvenilir. |
-| **Yeniden deneme özelliği** | Destekleniyor. Başarısız işlem hattı çalıştırmaları varsayılan olarak 0 yeniden deneme ilkesine veya kullanıcı tarafından tetikleyici tanımında belirtilen bir ilkeye sahiptir. Eşzamanlılık/sunucu/azaltma sınırları nedeniyle işlem hattı çalışırken otomatik olarak yeniden denemeler yapar (yani, durum kodları 400: Kullanıcı hatası, 429: Çok fazla istek ve 500: İç sunucu hatası). | Desteklenmiyor. |
+| **Yeniden deneme özelliği** | Destekleniyor. Başarısız işlem hattı çalıştırmaları varsayılan olarak 0 yeniden deneme ilkesine veya kullanıcı tarafından tetikleyici tanımında belirtilen bir ilkeye sahiptir. İşlem hattı çalıştırmaları eş zamanlılık/sunucu/azaltma sınırları (yani 400: Kullanıcı Hatası, 429: Çok fazla istek var ve 500: İç Sunucu hatası durum kodları) nedeniyle başarısız olursa otomatik olarak yeniden denenir. | Desteklenmiyor. |
 | **Eşzamanlılık** | Destekleniyor. Kullanıcılar tetikleyicinin eş zamanlılık sınırlarını açıkça ayarlayabilir. 1 ile 50 arasında eş zamanlı tetikleyici işlem hattı çalıştırmasına izin verir. | Desteklenmiyor. |
 | **Sistem değişkenleri** | **WindowStart** ve **WindowEnd** sistem değişkenlerinin kullanımını destekler. Kullanıcılar, tetikleyici tanımında tetikleyici sistem değişkenleri olarak `triggerOutputs().windowStartTime` ve `triggerOutputs().windowEndTime` değişkenine erişebilir. Değerler sırasıyla aralık başlangıç zamanı ve aralık bitiş zamanı olarak kullanılır. Örneğin, saat başı çalışan bir atlayan pencere tetikleyicisi için 01.00 ile 02.00 arası aralığın tanımı `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` ve `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` şeklinde olur. | Desteklenmiyor. |
 | **İşlem hattı-tetikleyici ilişkisi** | Bire bir ilişkileri destekler. Yalnızca bir işlem hattı tetiklenebilir. | Çoka çok ilişkileri destekler. Birden çok tetikleyici tek bir işlem hattını başlatabilir. Tek bir tetikleyici birden fazla işlem hattını başlatabilir. |
@@ -379,6 +379,6 @@ Aşağıdaki tabloda atlayan pencere tetikleyicisi ile zamanlama tetikleyicisini
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki öğreticilere bakın:
 
-- [Hızlı Başlangıç: .NET SDK kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md)
+- [Hızlı başlangıç: .NET SDK kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md)
 - [Zamanlama tetikleyicisi oluşturma](how-to-create-schedule-trigger.md)
 - [Atlayan pencere tetikleyicisi oluşturma](how-to-create-tumbling-window-trigger.md)

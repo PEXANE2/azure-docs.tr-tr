@@ -1,5 +1,5 @@
 ---
-title: Excel 'i Hive ODBC sürücüsü ile Apache Hadoop bağlama-Azure HDInsight
+title: ODBC sürücüsü ile Excel & Apache Hadoop-Azure HDInsight
 description: Microsoft Excel 'de HDInsight kümelerindeki verileri sorgulamak için Excel için Microsoft Hive ODBC sürücüsünü ayarlamayı ve kullanmayı öğrenin.
 keywords: Hadoop Excel, Hive Excel, Hive ODBC
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 7451eaf56a2466bbb02fa879008b4a9787f6c2f5
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264625"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177334"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsü ile Azure HDInsight 'ta Apache Hadoop Excel 'e bağlanma
 
@@ -33,7 +33,7 @@ Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC sürücüsünü yükler
 
-ODBC sürücüsünü kullanacağınız uygulamanın sürümüyle eşleşen [Microsoft Hive ODBC sürücüsü](https://go.microsoft.com/fwlink/?LinkID=286698) sürümünü indirip yükleyin.  Bu makalede, sürücü Office Excel için kullanılır.
+ODBC sürücüsünü kullanacağınız uygulamanın sürümüyle eşleşen [Microsoft Hive ODBC sürücüsü](https://www.microsoft.com/download/details.aspx?id=40886) sürümünü indirip yükleyin.  Bu makalede, sürücü Office Excel için kullanılır.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC veri kaynağı oluşturma
 
@@ -41,7 +41,7 @@ Aşağıdaki adımlarda, Hive ODBC veri kaynağı oluşturma yöntemi gösterilm
 
 1. Windows 'da, Windows Yönetim Araçları > ODBC veri kaynakları (32 bit)/(64 bit) > Başlat ' a gidin.  Bu, **ODBC veri kaynağı Yöneticisi** penceresini açar.
 
-    ![OBDC veri kaynağı YÖNETICISI](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ODBC veri kaynağı Yöneticisi 'NI kullanarak bir DSN yapılandırma")
+    ![OBDC veri kaynağı Yöneticisi](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ODBC veri kaynağı Yöneticisi 'ni kullanarak bir DSN yapılandırma")
 
 1. **Yeni veri kaynağı oluştur** penceresini açmak IÇIN **Kullanıcı DSN** sekmesinden **Ekle** ' yi seçin.
 
@@ -67,7 +67,7 @@ Aşağıdaki adımlarda, Hive ODBC veri kaynağı oluşturma yöntemi gösterilm
    |  Blok başına getirilen satırlar |Çok sayıda kayıt getirilirken, en iyi performansı sağlamak için bu parametreyi ayarlama gerekebilir. |
    |  Varsayılan dize sütunu uzunluğu, Ikili sütun uzunluğu, ondalık sütun ölçeği |Veri türü uzunlukları ve ön ekleri verilerin nasıl döndürüldüğünü etkileyebilir. Duyarlık ve/veya kesme kaybı nedeniyle yanlış bilgilerin döndürülmesine neden olur. |
 
-    ![GELIŞMIŞ DSN yapılandırma seçenekleri](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Gelişmiş DSN yapılandırma seçenekleri")
+    ![Gelişmiş DSN yapılandırma seçenekleri](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "Gelişmiş DSN yapılandırma seçenekleri")
 
 1. Veri kaynağını test etmek için **Test** ' i seçin. Veri kaynağı doğru şekilde yapılandırıldığında, test sonucu **başarılı oldu!** öğesini gösterir.  
 
@@ -83,9 +83,9 @@ Aşağıdaki adımlarda, bir Hive tablosundan bir Excel çalışma kitabına ver
 
 1. Excel’de yeni veya mevcut bir çalışma kitabını açın.
 
-2. **Veri** **sekmesinde,** **ODBC 'den @no__t** **verileri al**' ı @no__t**diğer kaynaklardan**-2 ' ye gidin.
+2. **Veri** **sekmesinden ODBC** **'den** > **diğer kaynaklardan** **veri > al** ' a gidin.
 
-    ![Excel veri bağlantısı Sihirbazı 'Nı açma](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Excel veri bağlantısı Sihirbazı")
+    ![Excel veri bağlantısı Sihirbazı 'nı açma](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Excel veri bağlantısı Sihirbazı 'nı açma")
 
 3. Aşağı açılan listeden, son bölümde oluşturduğunuz veri kaynağı adını seçin ve ardından **Tamam**' ı seçin.
 
@@ -93,7 +93,7 @@ Aşağıdaki adımlarda, bir Hive tablosundan bir Excel çalışma kitabına ver
 
 5. **Gezgin**'de **HIVE** > **varsayılan** > **Hivesampletable**' a gidin ve ardından **Yükle**' yi seçin. Verilerin Excel 'e aktarılması birkaç dakika sürer.
 
-    ![HDInsight Excel HIVE ODBC gezgin](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDıNSIGHT Excel Hive ODBC Gezgini")
+    ![HDInsight Excel Hive ODBC Gezgini](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC Gezgini")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

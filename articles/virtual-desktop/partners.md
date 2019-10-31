@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300185"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171622"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -71,6 +71,16 @@ deviceTRUST, şirket kurumlarını oluşturan Windows sanal masaüstü katma bir
 deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik teknolojisi ile genişletir. deviceTRUST, güvenli bir Windows sanal masaüstü erişimi, Windows sanal masaüstü 'nde koşullu uygulama erişimi ve ek bir altyapı olmadan koşullu Windows sanal masaüstü ilkeleri uygulamak için koşullu erişim sağlar. DeviceTRUST kullanmak, tüm güvenlik, uyumluluk ve mevzuat gereksinimlerini karşılayan bir mobil, esnek çalışma alanı sunar. 
 
 - [İş ortağı Web sitesine gidin](https://devicetrust.com/wvd).
+
+## <a name="ivanti"></a>Ivanti
+
+![Ivanti logosu](./media/partners/ivanti.png)
+
+Ivantı Kullanıcı çalışma alanı yöneticisi, sorunsuz taşınabilirlik için Kullanıcı verilerini masaüstünden ayırarak masaüstü dağıtımı ve yönetimini kolaylaştırır. Ivanti sayesinde, kullanıcılar Windows 10 ' a geçiş, Office 365 ' i benimseme veya hizmetleri buluta daha hızlı taşıma gibi karmaşık projeler sunabiliyor. 
+
+Ivantı Kullanıcı çalışma alanı yöneticisi, Windows sanal masaüstü ile kullanıldığında, Kullanıcı masaüstü deneyiminin basit bağlamsal yönetimini sağlar, uzun oturum açma sürelerini ortadan kaldırır ve Grup İlkesi nieli Mares 'yi kaldırır. Ivantı Kullanıcı çalışma alanı yöneticisi kullanıma hazır şablonlar, aracılar ve var olan konsol aracılığıyla kullanıcılara yönelik yüklemeyi basitleştirir. Ivantı Kullanıcı çalışma alanı yöneticisi, kullanıcıların sevdiği, sunuculara para tasarrufu, kullanıcıları daha verimli bir şekilde yönetme ve uç nokta güvenlik riskini azaltma konusunda yanıt veren, güvenli masaüstleri sunar. 
+
+- [İş ortağı Web sitesine gidin](https://www.ivanti.com/products/user-workspace-manager).
 
 ## <a name="lakeside-software"></a>Lakeside yazılımı
 
@@ -133,6 +143,26 @@ Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, Pri
 
 - [İş ortağı Web sitesine gidin](https://www.printerlogic.com).
 
+## <a name="numecent"></a>Numesan
+
+![Numesent logosu](./media/partners/numecent.png)
+
+Numesent, Windows sanal masaüstü ortamlarında karmaşık veya uyumsuz Windows uygulamalarının hızlı bir şekilde eklenmesi ve geçirilmesi ile toplam işletim maliyetlerini önemli ölçüde azaltan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. Numesent, kullanıcıların yapması gereken yapılandırma miktarını da en aza indirir, uygulama güncelleştirmelerini azaltır ve karmaşık işlemleri basitleştirir. Numesent Cloudsayfalama, diğer uygulama teslim araçlarından daha sorunsuz uygulamalar desteklediğinden, farklı uygulamalar kümesine sahip ortamlarda zaman ve BT iş yüklerini azaltır. 
+
+Windows sanal masaüstü ile kullanıldığında Cloudpaging, dağıtım, ölçüm ve uygulamaları kaldırma için dağıtımdan yazılım varlık yaşam döngüsünü tamamlayarak maliyetleri azaltır. Cloudpaging, Windows sanal masaüstü dağıtımlarına gerçek zamanlı olarak uygulamaları gerektiği şekilde dinamik olarak sağlayarak görüntü yönetimini basitleştirir. Cloudsayfalama, uygulamaların düzenli Windows 10 güncelleştirmeleri aracılığıyla yönetimi veya müdahalesi olmadan çalışmasına yardımcı olur. Cloudsayfalama Ayrıca, bu uygulamaların daha verimli bir şekilde dağıtılmasını ve kullanımını etkinleştirerek pahalı uygulamaların lisanslama maliyetini azaltır. 
+
+- [İş ortağı Web sitesine gidin](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
+## <a name="rdpsoft"></a>RDPSoft
+
+![RDPSoft logosu](./media/partners/rdpsoft.png)
+
+RDPSoft, güçlü ve pahalı izleme, yönetim ve raporlama çözümleri sağlayan bir Windows sanal masaüstü iş ortağıdır. Kendi uzak masaüstü Commander teklifleri, BT uzmanlarının Windows sanal masaüstü dağıtımlarının sistem durumu, performans, Kullanıcı etkinliği, lisanslama ve güvenlikle ilgili Öngörüler sağlamasına imkan tanır. 
+ 
+RDPSoft 'in uzak masaüstü Commander Çözümleri Windows sanal masaüstü yönetimi 'ni geliştirir. Premium yönetim özellikleri, uzaktan yardım, Kullanıcı oturumu ve işlem yönetimi sağlayarak masaüstü personelini desteklemek için Windows sanal masaüstü yönetim görevlerinin temsilciliğini basitleştirir. Aynı zamanda, uzak masaüstü Commander Suite, Kullanıcı başına performans ve yükleme, Kullanıcı etkinlikleri ve denetim, Windows sanal masaüstü bağlantısı kalitesi (gecikme süresi ve bant genişliği), lisanslama ve güvenlik ile merkezi bir Azure SQL arasında zengin ölçümler toplar İnceleme için veritabanı örneği. RDPSoft ile, zengin geçmişe yönelik raporlama ve kapsamlı panolar yalnızca bir tıklama.
+
+- [İş ortağı Web sitesine gidin](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
 ## <a name="thinprint"></a>Ölçülü yazdırma
 
 ![Ölçülü yazdırma logosu](./media/partners/thinprint.png)
@@ -143,6 +173,16 @@ Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, Pri
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [İş ortağı Web sitesine gidin](https://www.ezeep.com/wvd-printing).
+
+## <a name="tricerat"></a>İnceerat
+
+![Karmaşık bir logo](./media/partners/tricerat.png)
+
+Karmaşık bir şekilde, Windows sanal masaüstü ve diğer masaüstü platformları için üstün bir yazdırma yönetimi çözümü sunar. Karmaşık işlevselliğe sahip yazılım, güçlü işlevlere sahiptir ve hem kullanıcılar hem de Yöneticiler için daha iyi bir deneyim sunar. Yöneticiler, tüm sürücü yönetimi, yazdırma sıralarının Basitleştirilmiş dağıtımı ve hibrit platformlar arasında tutarlı yönetim aracılığıyla verimlilik elde edebilir. Kullanıcı deneyimi, kısa oturum açma zamanları, Kullanıcı, cihaz ve ağ konumuna dayalı akıllı yazdırma kuyrukları ve hızlı yazıcı seçimine yönelik self servis seçeneklerini geliştirir. 
+
+Karmaşık bir şekilde, Windows sanal masaüstü ve ötesinde yazdırma sorunsuz bir şekilde gerçekleştirilir. Karmaşık yazılım yazılımları, yöneticilerin şirket içi yazıcılara kolayca buluta bağlanmasını sağlar ve bu sayede geleneksel ortamlardan yeni, modern çalışma alanlarına kurumsal yazdırma yönetimini genişleterek.
+
+- [İş ortağı Web sitesine gidin](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 

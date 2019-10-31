@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a353b4577f8cfa9ba279ad2793e1a7ab8b27e55
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268330"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175557"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması-üretime taşı
 
@@ -41,10 +41,10 @@ Microsoft Identity platform (v 2.0) uç noktası aynı anda birkaç kaynak için
 
 Örneğin, iki kaynağınız varsa, her biri iki kapsamı vardır:
 
-- `https://mytenant.onmicrosoft.com/customerapi`-2 kapsam `customer.read` ve`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`-2 kapsam `vendor.read` ve`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`-2 kapsam `customer.read` ve `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`-2 kapsam `vendor.read` ve `vendor.write`
 
-Parametresine sahip olan `.WithAdditionalPromptToConsent` değiştiriciyi kullanmanız gerekir. `extraScopesToConsent`
+`extraScopesToConsent` parametresine sahip `.WithAdditionalPromptToConsent` değiştiricisini kullanmanız gerekir.
 
 Örneğin:
 
@@ -76,10 +76,10 @@ Amaç-C:
 ```objc
 NSArray *scopesForCustomerApi = @[@"https://mytenant.onmicrosoft.com/customerapi/customer.read",
                                 @"https://mytenant.onmicrosoft.com/customerapi/customer.write"];
-    
+
 NSArray *scopesForVendorApi = @[@"https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                               @"https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-    
+
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopesForCustomerApi webviewParameters:[MSALWebviewParameters new]];
 interactiveParams.extraScopesToConsent = scopesForVendorApi;
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) { /* handle result */ }];
@@ -90,10 +90,10 @@ SWIFT
 ```swift
 let scopesForCustomerApi = ["https://mytenant.onmicrosoft.com/customerapi/customer.read",
                             "https://mytenant.onmicrosoft.com/customerapi/customer.write"]
-        
+
 let scopesForVendorApi = ["https://mytenant.onmicrosoft.com/vendorapi/vendor.read",
                           "https://mytenant.onmicrosoft.com/vendorapi/vendor.write"]
-        
+
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopesForCustomerApi, webviewParameters: MSALWebviewParameters())
 interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
@@ -101,7 +101,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Bu çağrı size ilk Web API 'SI için bir erişim belirteci alacak.
 
-İkinci Web API 'sini çağırmanız gerektiğinde API 'yi çağırabilirsiniz `AcquireTokenSilent` :
+İkinci Web API 'sini çağırmanız gerektiğinde `AcquireTokenSilent` API 'sini çağırabilirsiniz:
 
 ```CSharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

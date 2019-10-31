@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2f9b7b148900e827f4bfb17de1ef3cf05d8bbf10
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8d40ed83d7f8234092ca6354642a76aaa83bc12
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169148"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173075"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma
 Bu makalede, Azure 'da Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma gösterilmektedir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makalede en son Azure PowerShell modülü sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` ' i çalıştırın. Yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için `Connect-AzAccount` ' ı da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makalede en son Azure PowerShell modülü sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -32,7 +32,7 @@ New-AzResourceGroup `
   -ResourceGroupName $rgName `
   -Location $location
 ```
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel bağlantınız için bir sanal ağ oluşturun. Aşağıdaki örnek, ön uç (*Frontendsubnet*), arka uç (*backendsubnet*), özel bağlantı (*othersubnet*) için alt ağ ile *myvnet* adlı bir sanal ağ oluşturur:
 
 ```azurepowershell
@@ -113,8 +113,8 @@ Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik alma
 
 Ardından, PowerShell kullanarak bu hizmeti farklı VNet 'teki özel bir uç noktaya nasıl eşleneceğini göstereceğiz. Bu örnek, Özel uç nokta oluşturma ve yukarıda oluşturulan özel bağlantı hizmetine bağlanma ile sınırlıdır. Senaryonuzu oluşturmak için özel uç noktaya trafik göndermek/almak için sanal ağda sanal makineler oluşturabilirsiniz. 
 
-## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
-### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *vnetpe* adlı bir sanal ağ oluşturur:
  
 ```azurepowershell
@@ -128,7 +128,7 @@ $peSubnet = New-AzVirtualNetworkSubnetConfig `
 
 $vnetPE = New-AzVirtualNetwork `
 -Name $virtualNetworkNamePE `
--ResourceGroupName myResourceGroup `
+-ResourceGroupName $rgName `
 -Location $location `
 -AddressPrefix "11.0.0.0/16" `
 -Subnet $peSubnet 
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Özel uç nokta al
-@No__t-0 ile özel uç noktanın IP adresini aşağıdaki gibi alın:
+`Get-AzPrivateEndpoint` aşağıdaki gibi özel uç noktanın IP adresini alın:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

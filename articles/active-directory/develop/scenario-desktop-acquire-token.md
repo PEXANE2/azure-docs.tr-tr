@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0eaeaf915ad480306c114d7ab79e88e95c336eb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ce79a2dcbb0d79d84019c350eb4693160c8f7d50
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893916"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175472"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması-belirteç alma
 
-`IPublicClientApplication`oluşturduktan sonra, bunu kullanarak bir Web API 'SI çağırmak için kullanacağınız bir belirteç elde edersiniz.
+Ortak Istemci uygulamasının bir örneğini oluşturduktan sonra, bunu kullanarak bir Web API 'SI çağırmak için kullanacağınız bir belirteç elde edersiniz.
 
 ## <a name="recommended-pattern"></a>Önerilen model
 
@@ -32,6 +32,8 @@ Web API 'SI `scopes`tarafından tanımlanır. Uygulamanızda sağladığınız d
 
 - `AcquireTokenSilent` çağırarak belirteç önbelleğinden belirteç almaya çalışıyor
 - Bu çağrı başarısız olursa, kullanmak istediğiniz `AcquireToken` akışını kullanın (burada `AcquireTokenXX`ile temsil edilir)
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="in-msalnet"></a>MSAL.NET içinde
 
@@ -52,16 +54,67 @@ catch(MsalUiRequiredException ex)
                     .ExecuteAsync();
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```java
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+        return "Unknown!";
+    }
+
+    Collection<IAccount> accounts = app.getAccounts().join();
+
+    CompletableFuture<IAuthenticationResult> future1;
+    try {
+        future1 = app.acquireTokenSilently
+                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                        accounts.iterator().next())
+                        .forceRefresh(true)
+                        .build());
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+        throw new RuntimeException();
+    }
+
+    future1.join();
+    IAccount account = app.getAccounts().join().iterator().next();
+    app.removeAccount(account).join();
+
+    return res;
+}).join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_xxx(scopes=config["scope"])
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
 ### <a name="in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde
 
 Amaç-C:
 
 ```objc
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-    
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -75,14 +128,14 @@ SWIFT
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
         if (nsError.domain == MSALErrorDomain &&
             nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
         }
@@ -90,6 +143,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
     }
 }
 ```
+---
 
 Artık, bir masaüstü uygulamasında belirteçleri edinmenin çeşitli yollarının ayrıntıları aşağıda verilmiştir
 
@@ -97,6 +151,7 @@ Artık, bir masaüstü uygulamasında belirteçleri edinmenin çeşitli yolları
 
 Aşağıdaki örnek, Microsoft Graph ile kullanıcının profilini okumak üzere bir belirteci etkileşimli olarak almak için minimum kodu gösterir.
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 ### <a name="in-msalnet"></a>MSAL.NET içinde
 
 ```CSharp
@@ -114,40 +169,6 @@ catch(MsalUiRequiredException)
  result = await app.AcquireTokenInteractive(scopes)
              .ExecuteAsync();
 }
-```
-
-### <a name="in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde
-
-Amaç-C:
-
-```objc
-MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
-[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
-    {
-        // You'll want to get the account identifier to retrieve and reuse the account
-        // for later acquireToken calls
-        NSString *accountIdentifier = result.account.identifier;
-            
-        NSString *accessToken = result.accessToken;
-    }
-}];
-```
-
-SWIFT
-
-```swift
-let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
-application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
-    guard let authResult = result, error == nil else {
-        print(error!.localizedDescription)
-        return
-    }
-                
-    // Get access token from result
-    let accessToken = authResult.accessToken
-})
 ```
 
 ### <a name="mandatory-parameters"></a>Zorunlu parametreler
@@ -179,7 +200,7 @@ Açıklamalarının
 - .NET Standard, beklenen `object` Android 'de bir `Activity`, iOS üzerinde bir `UIViewController`, MAC üzerinde bir `NSWindow` ve Windows üzerinde `IWin32Window` veya `IntPr`.
 - Windows 'da, katıştırılmış tarayıcının uygun UI Eşitleme bağlamını alması için Kullanıcı arabirimi iş parçacığından `AcquireTokenInteractive` çağırmanız gerekir.  UI iş parçacığından çağrılmayan iletiler, kullanıcı arabiriminden doğru şekilde ve/veya kilitlenme senaryolarında karşılıklı olarak alınmamasına neden olabilir. UI iş parçacığında MSAL çağırmanın bir yolu, zaten WPF üzerinde `Dispatcher` kullanmaktır.
 - WPF kullanıyorsanız, WPF denetiminden bir pencere almak için `WindowInteropHelper.Handle` sınıfını kullanabilirsiniz. Daha sonra, bir WPF denetiminden (`this`) çağrı yapılır:
-  
+
   ```CSharp
   result = await app.AcquireTokenInteractive(scopes)
                     .WithParentActivityOrWindow(new WindowInteropHelper(this).Handle)
@@ -213,16 +234,16 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 #### <a name="withcustomwebui"></a>WithCustomWebUi
 
 Web Kullanıcı arabirimi, tarayıcıyı çağırmak için bir mekanizmadır. Bu mekanizma, adanmış bir UI WebBrowser denetimi veya tarayıcıyı açmayı devretmek için bir yol olabilir.
-MSAL çoğu platform için Web ARABIRIMI uygulamaları sağlar, ancak tarayıcıyı kendiniz barındırmak isteyebileceğiniz durumlar da vardır: 
+MSAL çoğu platform için Web ARABIRIMI uygulamaları sağlar, ancak tarayıcıyı kendiniz barındırmak isteyebileceğiniz durumlar da vardır:
 
 - MSAL tarafından açıkça kapsanmayan platformlar, örneğin, Blazor, Unity, mono on Desktop
-- uygulamanızı test etmek ve Selenium ile kullanılabilecek otomatik bir tarayıcı kullanmak istiyor musunuz? 
+- uygulamanızı test etmek ve Selenium ile kullanılabilecek otomatik bir tarayıcı kullanmak istiyor musunuz?
 - tarayıcı ve MSAL çalıştıran uygulama ayrı işlemlerdir
 
 ##### <a name="at-a-glance"></a>Bir bakışta
 
 Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için bir tarayıcıda gösterilmesi gereken bir `start Url`MSAL size sahip olursunuz. Kimlik doğrulaması tamamlandıktan sonra, uygulamanızın Azure AD tarafından sunulan bir kodu içeren `end Url`MSAL 'e geri geçirmesi gerekir.
-`end Url` ana bilgisayarı her zaman `redirectUri`. `end Url` için kesme yapmak üzere şunları yapabilirsiniz: 
+`end Url` ana bilgisayarı her zaman `redirectUri`. `end Url` için kesme yapmak üzere şunları yapabilirsiniz:
 
 - `redirect Url` ziyaret edilene kadar tarayıcı yeniden yönlendirmelerini izleyin veya
 - tarayıcınızın bir URL 'ye yönlendirilmesini sağlamak için
@@ -238,7 +259,7 @@ Bunu başarmak için, son kullanıcının Kullanıcı adını girebilmesi için 
 ##### <a name="how-to-use-withcustomwebui"></a>WithCustomWebUi kullanma
 
 `.WithCustomWebUI`kullanmak için şunları yapmanız gerekir:
-  
+
   1. `ICustomWebUi` arabirimini uygulayın ( [buraya](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70)bakın. Genellikle yetkilendirme kodu URL 'sini kabul `AcquireAuthorizationCodeAsync` bir yöntem uygulamanız gerekir (MSAL.NET tarafından hesaplanan), kullanıcının kimlik sağlayıcısıyla etkileşime geçmesine izin vermek ve ardından kimlik sağlayıcısının sahip olacağı URL 'YI geri döndürmektir. Uygulamanızın geri çağrılması (yetkilendirme kodu dahil). Sorunlarınız varsa, uygulamanızın MSAL ile sorunsuz bir şekilde çalışması için `MsalExtensionException` özel durumu oluşturması gerekir.
   2. `AcquireTokenInteractive` çağrın, özel Web UI 'nizin örneğini geçirerek `.WithCustomUI()` değiştiricisini kullanabilirsiniz
 
@@ -282,17 +303,108 @@ var result = app.AcquireTokenInteractive(scopes)
 
 [Acquiretokenınteractiveparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) başvuru belgelerindeki `AcquireTokenInteractive` için diğer isteğe bağlı parametreler hakkında daha fazla bilgi edinin
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+MSAL Java doğrudan bir etkileşimli alma belirteci yöntemi sağlamaz. Bunun yerine, uygulamanın, belirteci almak için `acquireToken` metoduna geçirilebilen bir yetkilendirme kodu elde etmek üzere Kullanıcı etkileşimi akışı uygulamasına bir yetkilendirme isteği göndermesini gerektirir.
+
+```java
+AuthorizationCodeParameters parameters =  AuthorizationCodeParameters.builder(
+                authorizationCode, redirectUri)
+                .build();
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+        return "Unknown!";
+    }
+
+    Collection<IAccount> accounts = app.getAccounts().join();
+
+    CompletableFuture<IAuthenticationResult> future1;
+    try {
+        future1 = app.acquireTokenSilently
+                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                        accounts.iterator().next())
+                        .forceRefresh(true)
+                        .build());
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+        throw new RuntimeException();
+    }
+
+    future1.join();
+    IAccount account = app.getAccounts().join().iterator().next();
+    app.removeAccount(account).join();
+
+    return res;
+}).join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+MSAL Python doğrudan bir etkileşimli alma belirteci yöntemi sağlamaz. Bunun yerine, uygulamanın, belirteci almak için `acquire_token_by_authorization_code` metoduna geçirilebilen bir yetkilendirme kodu elde etmek üzere Kullanıcı etkileşimi akışı uygulamasına bir yetkilendirme isteği göndermesini gerektirir.
+
+```Python
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    result = app.acquire_token_by_authorization_code(
+         request.args['code'],
+         scopes=config["scope"])    
+
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+### <a name="in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde
+
+Amaç-C:
+
+```objc
+MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:[MSALWebviewParameters new]];
+[application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
+    if (!error)
+    {
+        // You'll want to get the account identifier to retrieve and reuse the account
+        // for later acquireToken calls
+        NSString *accountIdentifier = result.account.identifier;
+
+        NSString *accessToken = result.accessToken;
+    }
+}];
+```
+
+SWIFT
+
+```swift
+let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: MSALWebviewParameters())
+application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+
+    guard let authResult = result, error == nil else {
+        print(error!.localizedDescription)
+        return
+    }
+
+    // Get access token from result
+    let accessToken = authResult.accessToken
+})
+```
+---
+
 ## <a name="integrated-windows-authentication"></a>Tümleşik Windows kimlik doğrulaması
 
-Bir etki alanı veya Azure AD 'ye katılmış makinede bir etki alanı kullanıcısı oturumu açmak istiyorsanız şunu kullanmanız gerekir:
-
-```csharp
-AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
-```
+Bir etki alanı veya Azure AD 'ye katılmış makinede bir etki alanı kullanıcısı oturumu açmak istiyorsanız, tümleşik Windows kimlik doğrulaması kullanmanız gerekir.
 
 ### <a name="constraints"></a>Kısıtlamalar
 
-- Acquiretokenbyıntegratedwindowsauth (ıWA) yalnızca yalnızca **Federal** kullanıcılar için kullanılabilir, diğer bir deyişle, bir Active Directory ve Azure Active Directory tarafından desteklenir. AD ile **yönetilen** kullanıcılar olmadan doğrudan AAD 'de oluşturulan kullanıcılar-bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, Kullanıcı adı/parola akışını etkilemez.
+- Tümleşik Windows kimlik doğrulaması (ıWA) yalnızca yalnızca **Federasyon** kullanıcıları, diğer bir deyişle, bir Active Directory oluşturulan ve Azure Active Directory tarafından desteklenen kullanıcılar için kullanılabilir. AD ile **yönetilen** kullanıcılar olmadan doğrudan AAD 'de oluşturulan kullanıcılar-bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, Kullanıcı adı/parola akışını etkilemez.
 - IWA .NET Framework, .NET Core ve UWP platformları için yazılan uygulamalar içindir
 - IWA MFA 'yı atlamaz (Multi Factor Authentication). MFA yapılandırıldıysa, MFA Kullanıcı etkileşimi gerektirdiğinden, bir MFA sınaması gerekliyse ıWA başarısız olabilir.
   > [!NOTE]
@@ -312,13 +424,21 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
     - ya da kullanıcıların uygulamayı onaylaması için bir yol sağladınız (bkz. [bireysel kullanıcı Izni isteme](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent))
     - ya da kiracı yöneticisinin uygulamayı onaylaması için bir yol sağladınız (bkz. [yönetici onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant))
 
-- Bu akış .net Masaüstü, .NET Core ve Windows Universal (UWP) uygulamaları için etkinleştirilmiştir. .NET Core 'da, .NET Core platformu kullanıcı adını işletim sistemine sormamakta olduğundan, yalnızca Kullanıcı adını alan aşırı yükleme kullanılabilir.
-  
+- Bu akış .net Masaüstü, .NET Core ve Windows Universal (UWP) uygulamaları için etkinleştirilmiştir.
+
 Onay hakkında daha fazla bilgi için bkz. [Microsoft Identity platform izinleri ve onayı](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
 
 ### <a name="how-to-use-it"></a>Nasıl kullanılır
 
-Normalde yalnızca bir parametreye ihtiyacınız vardır (`scopes`). Ancak, Windows yöneticinizin ilkeleri kurma şekline bağlı olarak, Windows makinenizde uygulamaların oturum açan kullanıcıyı arama izni yoktur. Bu durumda, `.WithUsername()` ikinci bir yöntem kullanın ve oturum açmış kullanıcının Kullanıcı adını UPN biçimi `joe@contoso.com`olarak geçirin.
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+MSAL.NET ' de şunu kullanmanız gerekir
+
+```csharp
+AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
+```
+
+Normalde yalnızca bir parametreye ihtiyacınız vardır (`scopes`). Ancak, Windows yöneticinizin ilkeleri kurma şekline bağlı olarak, Windows makinenizde uygulamaların oturum açan kullanıcıyı arama izni yoktur. Bu durumda, `.WithUsername()` ikinci bir yöntem kullanın ve oturum açmış kullanıcının Kullanıcı adını UPN biçimi `joe@contoso.com`olarak geçirin. .NET Core 'da, .NET Core platformu kullanıcı adını işletim sistemine sormamakta olduğundan, yalnızca Kullanıcı adını alan aşırı yükleme kullanılabilir.
 
 Aşağıdaki örnek, alacağınız özel durumların türüyle ilgili açıklamalar ve bunların azaltmaları ile en güncel durumu gösterir
 
@@ -401,6 +521,38 @@ static async Task GetATokenForGraph()
 
 AcquireTokenByIntegratedWindowsAuthentication üzerindeki olası değiştiricilerin listesi için bkz. [Acquiretokenbyıntegratedwindowsauthparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Bu, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)bir ayıklandır. Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+         .authority(TestData.AUTHORITY_ORGANIZATION)
+         .telemetryConsumer(new Telemetry.MyTelemetryConsumer().telemetryConsumer)
+         .build();
+
+ IntegratedWindowsAuthenticationParameters parameters =
+         IntegratedWindowsAuthenticationParameters.builder(
+                 Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE), TestData.USER_NAME)
+                 .build();
+
+ Future<IAuthenticationResult> future = app.acquireToken(parameters);
+
+ IAuthenticationResult result = future.get();
+
+ return result;
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Bu akış henüz MSAL Python 'da desteklenmiyor.
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+Bu akış MacOS için geçerlidir.
+
+---
+
 ## <a name="username--password"></a>Kullanıcı adı/parola
 
 Ayrıca, Kullanıcı adı ve parola sağlayarak bir belirteç elde edebilirsiniz. Bu akış sınırlı ve önerilmez, ancak gerekli olduğu durumlarda hala kullanım durumları vardır.
@@ -409,10 +561,10 @@ Ayrıca, Kullanıcı adı ve parola sağlayarak bir belirteç elde edebilirsiniz
 
 Bu akış **önerilmez** çünkü uygulamanız için bir kullanıcıdan parola isteyen güvenli değildir. Bu sorun hakkında daha fazla bilgi için [Bu makaleye](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)bakın. Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Aksi takdirde, [cihaz kod akışını](https://aka.ms/msal-net-device-code-flow) da kullanabilirsiniz
 
-> [!NOTE] 
+> [!NOTE]
 > Bu, bazı durumlarda (DevOps senaryolarında) yararlı olsa da, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adı/parola kullanmak istiyorsanız, bundan uzaklaşmaya gerçekten göz önünde bulundurun. Kullanıcı adı/parola kullanarak, bir dizi şey verirsiniz:
 >
-> - Modern kimlik için temel kiracılar: parola, yeniden yürütülür ve yeniden yürütülür. Bu, ele geçirilebilecek bir paylaşılan gizlilik kavramımız için.
+> - Modern kimlik 'in temel anları: parola, daha fazla, yeniden yürütülür. Bu, ele geçirilebilecek bir paylaşılan gizlilik kavramımız için.
 > Bu, passwordless ile uyumsuzdur.
 > - MFA yapması gereken kullanıcılar oturum açamaz (hiçbir etkileşim yoktur)
 > - Kullanıcılar çoklu oturum açma yapamaz
@@ -423,13 +575,15 @@ Aşağıdaki kısıtlamalar da geçerlidir:
 
 - Kullanıcı adı/parola akışı, koşullu erişim ve Multi-Factor Authentication ile uyumlu değil: bir sonuç olarak, uygulamanız kiracı yöneticisinin çok faktörlü kimlik doğrulaması gerektirdiği bir Azure AD kiracısında çalışıyorsa, bu akışı kullanamazsınız. Birçok kuruluş bu şekilde yapılır.
 - Yalnızca Iş ve okul hesapları için çalışır (MSA değil)
-- Flow, .net masaüstü ve .NET Core 'ta mevcuttur, ancak UWP 'de değildir
+- Flow, .net masaüstü ve .NET Core 'ta mevcuttur, UWP 'de değildir.
 
 ### <a name="b2c-specifics"></a>B2C özellikleri
 
 [B2C Ile ROPC kullanma hakkında daha fazla bilgi](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics#resource-owner-password-credentials-ropc-with-b2c).
 
 ### <a name="how-to-use-it"></a>Nasıl kullanılır?
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 `IPublicClientApplication`yöntemi içerir `AcquireTokenByUsernamePassword`
 
@@ -638,11 +792,94 @@ static async Task GetATokenForGraph()
 
 `AcquireTokenByUsernamePassword`uygulanabilecek tüm değiştiriciler hakkında daha fazla bilgi için bkz. [Acquiretokenbyusernamepasswordparameterbuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
 
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Bu, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)bir ayıklandır. Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_ORGANIZATION)
+        .build();
+
+UserNamePasswordParameters parameters = UserNamePasswordParameters.builder(
+        Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+        TestData.USER_NAME,
+        TestData.USER_PASSWORD.toCharArray())
+        .build();
+
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(parameters);
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+        return "Unknown!";
+    }
+
+    Collection<IAccount> accounts = app.getAccounts().join();
+
+    CompletableFuture<IAuthenticationResult> future1;
+    try {
+        future1 = app.acquireTokenSilently
+                (SilentParameters.builder(Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                        accounts.iterator().next())
+                        .forceRefresh(true)
+                        .build());
+
+    } catch (MalformedURLException e) {
+        e.printStackTrace();
+        throw new RuntimeException();
+    }
+
+    future1.join();
+
+    IAccount account = app.getAccounts().join().iterator().next();
+    app.removeAccount(account).join();
+
+    return res;
+}).join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Bu, [msal Python dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)bir ayıklandır.
+
+```Python
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# The pattern to acquire a token looks like this.
+result = None
+
+# Firstly, check the cache to see if this end user has signed in before
+accounts = app.get_accounts(username=config["username"])
+if accounts:
+    logging.info("Account(s) exists in cache, probably with token too. Let's try.")
+    result = app.acquire_token_silent(config["scope"], account=accounts[0])
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+    # See this page for constraints of Username Password Flow.
+    # https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Username-Password-Authentication
+    result = app.acquire_token_by_username_password(
+        config["username"], config["password"], scopes=config["scope"])
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+Bu akış, macOS için MSAL üzerinde desteklenmez.
+
+---
+
 ## <a name="command-line-tool-without-web-browser"></a>Komut satırı aracı (Web tarayıcısı olmadan)
 
-### <a name="device-code-flow-why-and-how"></a>Cihaz kodu Flow neden? ve nasıl?
+### <a name="device-code-flow"></a>Cihaz kod akışı
 
-Bir komut satırı aracı (Web denetimlerine sahip olmayan) yazıyorsanız ve önceki akışları kullanmak istemiyorsanız, `AcquireTokenWithDeviceCode`kullanmanız gerekir.
+Bir komut satırı aracı (Web denetimlerine sahip olmayan) yazıyorsanız ve önceki akışları kullanmak istemiyorsanız, cihaz kodu akışını kullanmanız gerekir.
 
 Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerekir (Ayrıntılar için bkz. [Web tarayıcıları kullanımı](https://aka.ms/msal-net-uses-web-browser)). Ancak, bir Web tarayıcısı sağlamayan cihazlarda veya işletim sistemlerinde kullanıcıların kimliğini doğrulamak için, cihaz kodu akışı kullanıcının etkileşimli olarak oturum açmasını sağlamak için başka bir cihaz (örneğin, başka bir bilgisayar veya cep telefonu) kullanmasına izin verir. Uygulama, cihaz kod akışını kullanarak belirteçleri, özellikle bu cihazlar/OSE için tasarlanan iki adımlı bir işlemle alır. Bu uygulamaların örnekleri, IoT üzerinde çalışan uygulamalar veya komut satırı araçları (CLı). Fikir şu şekilde olur:
 
@@ -650,7 +887,9 @@ Azure AD ile etkileşimli kimlik doğrulaması için bir Web tarayıcısı gerek
 
 2. Kimlik doğrulaması başarılı olduğunda, komut satırı uygulaması gerekli belirteçleri bir arka kanal üzerinden alır ve bunu, gereken Web API çağrılarını gerçekleştirmek için kullanır.
 
-### <a name="code"></a>Kodlayın
+### <a name="how-to-use"></a>Nasıl kullanılır?
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 `IPublicClientApplication`, `AcquireTokenWithDeviceCode` adlı bir yöntemi içerir
 
@@ -680,7 +919,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
             .WithAuthority(Authority)
             .WithDefaultRedirectUri()
             .Build();
-           
+
     var accounts = await pca.GetAccountsAsync();
 
     // All AcquireToken* methods store the tokens in the cache, so check the cache first
@@ -692,7 +931,7 @@ static async Task<AuthenticationResult> GetATokenForGraph()
     catch (MsalUiRequiredException ex)
     {
         // No token found in the cache or AAD insists that a form interactive auth is required (e.g. the tenant admin turned on MFA)
-        // If you want to provide a more complex user experience, check out ex.Classification 
+        // If you want to provide a more complex user experience, check out ex.Classification
 
         return await AcquireByDeviceCodeAsync(pca);
     }         
@@ -705,11 +944,11 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
         var result = await pca.AcquireTokenWithDeviceCode(scopes,
             deviceCodeResult =>
             {
-                    // This will print the message on the console which tells the user where to go sign-in using 
+                    // This will print the message on the console which tells the user where to go sign-in using
                     // a separate browser and the code to enter once they sign in.
                     // The AcquireTokenWithDeviceCode() method will poll the server after firing this
                     // device code callback to look for the successful login of the user via that browser.
-                    // This background polling (whose interval and timeout data is also provided as fields in the 
+                    // This background polling (whose interval and timeout data is also provided as fields in the
                     // deviceCodeCallback class) will occur until:
                     // * The user has successfully logged in via browser and entered the proper code
                     // * The timeout specified by the server for the lifetime of this code (typically ~15 minutes) has been reached
@@ -735,16 +974,16 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
         // AADSTS90133: Device Code flow is not supported under /common or /consumers endpoint.
         // Mitigation: as explained in the message from Azure AD, the authority needs to be tenanted
 
-        // AADSTS90002: Tenant <tenantId or domain you used in the authority> not found. This may happen if there are 
+        // AADSTS90002: Tenant <tenantId or domain you used in the authority> not found. This may happen if there are
         // no active subscriptions for the tenant. Check with your subscription administrator.
-        // Mitigation: if you have an active subscription for the tenant this might be that you have a typo in the 
+        // Mitigation: if you have an active subscription for the tenant this might be that you have a typo in the
         // tenantId (GUID) or tenant domain name.
     }
     catch (OperationCanceledException ex)
     {
         // If you use a CancellationToken, and call the Cancel() method on it, then this *may* be triggered
-        // to indicate that the operation was cancelled. 
-        // See https://docs.microsoft.com/dotnet/standard/threading/cancellation-in-managed-threads 
+        // to indicate that the operation was cancelled.
+        // See https://docs.microsoft.com/dotnet/standard/threading/cancellation-in-managed-threads
         // for more detailed information on how C# supports cancellation in managed threads.
     }
     catch (MsalClientException ex)
@@ -755,6 +994,95 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
     }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Bu, [msal Java dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)bir ayıklandır. Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_COMMON)
+        .build();
+
+Consumer<DeviceCode> deviceCodeConsumer = (DeviceCode deviceCode) -> {
+    System.out.println(deviceCode.message());
+};
+
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(
+        DeviceCodeFlowParameters.builder(
+                Collections.singleton(TestData.GRAPH_DEFAULT_SCOPE),
+                deviceCodeConsumer)
+                .build());
+
+future.handle((res, ex) -> {
+    if(ex != null) {
+        System.out.println("Oops! We have an exception of type - " + ex.getClass());
+        System.out.println("message - " + ex.getMessage());
+        return "Unknown!";
+    }
+    System.out.println("Returned ok - " + res);
+
+    return res;
+});
+
+future.join();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Bu, [msal Python dev örneklerinden](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)bir ayıklandır.
+
+```Python
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+
+# The pattern to acquire a token looks like this.
+result = None
+
+# Note: If your device-flow app does not have any interactive ability, you can
+#   completely skip the following cache part. But here we demonstrate it anyway.
+# We now check the cache to see if we have some end users signed in before.
+accounts = app.get_accounts()
+if accounts:
+    logging.info("Account(s) exists in cache, probably with token too. Let's try.")
+    print("Pick the account you want to use to proceed:")
+    for a in accounts:
+        print(a["username"])
+    # Assuming the end user chose this one
+    chosen = accounts[0]
+    # Now let's try to find a token in cache for this account
+    result = app.acquire_token_silent(config["scope"], account=chosen)
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+
+    flow = app.initiate_device_flow(scopes=config["scope"])
+    if "user_code" not in flow:
+        raise ValueError(
+            "Fail to create device flow. Err: %s" % json.dumps(flow, indent=4))
+
+    print(flow["message"])
+    sys.stdout.flush()  # Some terminal needs this to ensure the message is shown
+
+    # Ideally you should wait here, in order to save some unnecessary polling
+    # input("Press Enter after signing in from another device to proceed, CTRL+C to abort.")
+
+    result = app.acquire_token_by_device_flow(flow)  # By default it will block
+        # You can follow this instruction to shorten the block time
+        #    https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow
+        # or you may even turn off the blocking behavior,
+        # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+
+Bu akış MacOS için geçerlidir.
+
+---
 
 ## <a name="file-based-token-cache"></a>Dosya tabanlı belirteç önbelleği
 

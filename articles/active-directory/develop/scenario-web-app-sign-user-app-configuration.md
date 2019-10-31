@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f52fc70b54c27362575bef00c39a93d13e77cc2e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596723"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175340"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Kullanıcıları oturum açan Web uygulaması-kod yapılandırması
 
@@ -34,7 +34,7 @@ Bir Web uygulamasını (ve bir Web API 'sini) korumak için kullanılan kitaplı
 | Platform | Kitaplık | Açıklama |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [.NET için kimlik modeli uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Doğrudan ASP.NET ve ASP.NET Core tarafından kullanılan .NET için Microsoft Identity Extensions, hem .NET Framework hem de .NET Core üzerinde çalışan bir dll kümesini önerir. Bir ASP.NET/ASP.NET Core Web uygulamasından **Tokenvalidationparameters** sınıfını kullanarak belirteç doğrulamayı denetleyebilirsiniz (bazı ISV senaryolarında özellikle) |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java için MSAL-Şu anda genel önizlemede |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java için MSAL-Şu anda genel önizlemede |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python için MSAL-Şu anda genel önizlemede |
 
 İlgilendiğiniz platforma karşılık gelen sekmeyi seçin:
@@ -53,7 +53,7 @@ Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Bu makaledeki kod parçacıkları ve aşağıdakiler, Microsoft Graph msal4j Web uygulaması örneğini [çağıran Java Web uygulamasından](https://github.com/Azure-Samples/ms-identity-java-webapp) ayıklanır.
+Bu makaledeki kod parçacıkları ve aşağıdakiler, Microsoft Graph msal Java Web uygulaması örneğini [çağıran Java Web uygulamasından](https://github.com/Azure-Samples/ms-identity-java-webapp) ayıklanır.
 
 Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
@@ -137,7 +137,7 @@ ASP.NET Core, uygulamanız ve çeşitli profilleriniz için URL (`applicationUrl
 ```
 
 Azure portal, uygulamanız için **kimlik doğrulama** sayfasına kaydolmanız gereken yanıt URI 'Lerinin bu URL 'lerle eşleşmesi gerekir; diğer bir deyişle, yukarıdaki iki yapılandırma dosyası için, applicationUrl `http://localhost:3110`, ancak `sslPort` belirtildiğinde (44321) `https://localhost:44321/signin-oidc` ve `CallbackPath` `/signin-oidc` tanımlandığı gibi `appsettings.json`.
-  
+
 Aynı şekilde, oturum açma URI 'SI `https://localhost:44321/signout-callback-oidc` olarak ayarlanır.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
@@ -175,10 +175,10 @@ aad.clientId=Enter_the_Application_Id_here
 aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 aad.secretKey=Enter_the_Client_Secret_Here
 aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
+aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Azure portal, uygulamanız için **kimlik doğrulama** sayfasına kaydolmanız gereken yanıt URI 'lerinin, uygulama tarafından, `http://localhost:8080/msal4jsample/secure/aad` ve `http://localhost:8080/msal4jsample/graph/users` tarafından tanımlanan yeniden yönlendirilebilir.
+Azure portal, uygulamanız için **kimlik doğrulama** sayfasına kaydolmanız gereken yanıt URI 'lerinin, uygulama tarafından, `http://localhost:8080/msal4jsample/secure/aad` ve `http://localhost:8080/msal4jsample/graph/me` tarafından tanımlanan yeniden yönlendirilebilir.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,8 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> Bu hızlı başlangıç, istemci gizliliğini basitlik için yapılandırma dosyasında depolamayı önerir. Üretim uygulamanızda, anahtar kasası gibi gizli dizinizi veya bir ortam değişkenini Flask belgelerinde açıklandığı şekilde depolamak için başka yollar kullanmak isteyeceksiniz: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+> Bu hızlı başlangıç, istemci gizliliğini basitlik için yapılandırma dosyasında depolamayı önerir.
+> Üretim uygulamanızda, anahtar kasası gibi gizli dizinizi veya bir ortam değişkenini Flask belgelerinde açıklandığı şekilde depolamak için başka yollar kullanmak isteyeceksiniz: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -215,7 +216,7 @@ ASP.NET Core Web Apps (ve Web API 'Lerinde), denetleyicilerde veya denetleyici e
   > [!NOTE]
   > Projenizi Visual Studio içinde varsayılan ASP.NET Core Web projesi veya `dotnet new mvc` kullanarak başlatırsanız, ilgili paketler otomatik olarak yüklendiğinden varsayılan olarak `AddAzureAD` kullanılabilir.
   > Ancak, sıfırdan bir proje oluşturup aşağıdaki kodu kullanmaya çalışıyorsanız, `AddAzureAD` yöntemini kullanılabilir hale getirmek için projenize **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** NuGet paketini eklemenizi öneririz.
-  
+
 Aşağıdaki kod [Başlangıçta kullanılabilir. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)
 
 ```CSharp
@@ -229,7 +230,7 @@ public class Startup
     ...
       // Sign-in users with the Microsoft identity platform
       services.AddMicrosoftIdentityPlatformAuthentication(Configuration);
-  
+
       services.AddMvc(options =>
       {
           var policy = new AuthorizationPolicyBuilder()
@@ -241,13 +242,13 @@ public class Startup
     }
 ```
 
-@No__t_0, [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)içinde tanımlanan bir genişletme yöntemidir. İçerdiği
+`AddMicrosoftIdentityPlatformAuthentication`, [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)içinde tanımlanan bir genişletme yöntemidir. İçerdiği
 
 - kimlik doğrulama hizmetini ekler
 - yapılandırma dosyasını okumak için seçenekleri yapılandırın
 - OpenID Connect seçeneklerini, kullanılan yetkilinin Microsoft Identity platform (eski adıyla Azure AD v 2.0) uç noktası olması için yapılandırır
 - belirtecin vereni onaylanır
-- ada karşılık gelen talepler, KIMLIK belirtecindeki "preferred_username" talebi ile eşleştirilir 
+- ada karşılık gelen talepler, KIMLIK belirtecindeki "preferred_username" talebi ile eşleştirilir
 
 Yapılandırmaya ek olarak, `AddMicrosoftIdentityPlatformAuthentication` çağırırken şunları belirtebilirsiniz:
 
@@ -313,7 +314,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
   ...
 ```
 
-@No__t_0 sınıfı, kullanıcıların kendi kişisel Microsoft hesaplarıyla, Azure genel bulutunda veya ulusal olarak oturum açtığı birçok durumda (v 1.0 veya v 2.0 belirteci, tek kiracılı veya çok kiracılı uygulama ya da uygulama veya şirket içinde) doğrulanması için izin veren bulutlar). [Microsoft. Identity. Web/Resource/Aadıssuervalidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) tarafından kullanılabilir
+`AadIssuerValidator` sınıfı, kullanıcıların kendi kişisel Microsoft hesaplarıyla, Azure genel bulutunda veya ulusal olarak oturum açtığı birçok durumda (v 1.0 veya v 2.0 belirteci, tek kiracılı veya çok kiracılı uygulama ya da uygulama veya şirket içinde) doğrulanması için izin veren bulutlar). [Microsoft. Identity. Web/Resource/Aadıssuervalidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) tarafından kullanılabilir
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -347,13 +348,13 @@ Java örneği yay çerçevesini kullanır. Uygulama korunur çünkü her HTTP ya
 
 - kullanıcının kimlik doğrulamasının yapılıp yapılmadığını doğrular (`isAuthenticated()` yöntemi)
 - kullanıcının kimliği doğrulanmadıysa, Azure AD yetkilendirme uç noktalarının URL 'sini hesaplar ve tarayıcıyı bu URI 'ye yönlendirir
-- Yanıt geldiğinde, kimlik doğrulama kod akışını içeren msal4j Token alma olanağı sağlar.
+- Yanıt geldiğinde, MSAL Java kullanarak belirteci elde eden auth kodunu içeren kimlik doğrulama kodunu içerir.
 - son olarak belirteç uç noktasından (yeniden yönlendirme URI 'sindeki) belirteci aldığında Kullanıcı oturum açmış olur.
 
 Ayrıntılar için bkz [. AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) 'daki `doFilter()` yöntemi
 
 > [!NOTE]
-> @No__t_0 kodu biraz farklı bir düzende yazılır, ancak akış tanımlanan bir sıradır.
+> `doFilter()` kodu biraz farklı bir düzende yazılır, ancak akış tanımlanan bir sıradır.
 
 Bu yöntem tarafından tetiklenen yetkilendirme kodu akışı hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md)
 

@@ -17,16 +17,16 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1ed81c03e7c5ba30b813897dac5796c550ed23
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679834"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175649"
 ---
 # <a name="brokered-auth-in-android"></a>Android 'de aracılı kimlik doğrulaması
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Cihaz genelinde çoklu oturum açma 'ya (SSO) katılmak ve kuruluş koşullu erişim ilkelerini karşılamak için Microsoft 'un kimlik doğrulama aracılarından birini kullanmanız gerekir. Bir aracı ile tümleştirme aşağıdaki avantajları sağlar:
 
@@ -34,7 +34,7 @@ Cihaz genelinde çoklu oturum açma 'ya (SSO) katılmak ve kuruluş koşullu eri
 - İçin koşullu erişim:
   - Intune Uygulama Koruması
   - Cihaz kaydı (Workplace Join)
-  - Mobil cihaz yönetimi
+  - Mobil Cihaz Yönetimi
 - Cihaz genelinde hesap yönetimi
   -  Android AccountManager & hesap ayarlarını kullanarak
   - "İş hesabı"-özel hesap türü
@@ -62,9 +62,9 @@ Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir b
 
 ### <a name="when-a-broker-is-installed"></a>Bir aracı yüklendiğinde
 
-Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (`acquireToken()` ' a çağrılar), MSAL tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
+Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (`acquireToken()`çağrıları), MSAL tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
-Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir @no__t çözümlemesi gerektiğinde-0 bir sonraki istek aracıya gider. `MsalUiRequiredException`, birkaç nedenden dolayı oluşturulur ve etkileşimli olarak çözülmesi gerekir. Bunlar bazı yaygın nedenlerdir:
+Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir `MsalUiRequiredException` çözümlemesi gerektiğinde, bir sonraki istek aracıya gider. `MsalUiRequiredException` birkaç nedenden dolayı oluşturulur ve etkileşimli olarak çözülmesi gerekir. Bunlar bazı yaygın nedenlerdir:
 
 - Kullanıcı, hesabıyla ilişkili parolayı değiştirdi.
 - Kullanıcının hesabı artık bir koşullu erişim ilkesini karşılamamaktadır.
@@ -122,9 +122,9 @@ MSAL, aracı ile iki şekilde iletişim kurar:
 - Aracı ile bağlantılı hizmet
 - Android AccountManager
 
-MSAL önce bu hizmeti çağırmak herhangi bir Android izni gerektirmediğinden, önce aracı ile ilişkili hizmeti kullanır. Bağlama hizmetine bağlama başarısız olursa, MSAL Android AccountManager API 'sini kullanır. MSAL yalnızca uygulamanız zaten `"READ_CONTACTS"` izni verildiyse bunu yapar.
+MSAL önce bu hizmeti çağırmak herhangi bir Android izni gerektirmediğinden, önce aracı ile ilişkili hizmeti kullanır. Bağlama hizmetine bağlama başarısız olursa, MSAL Android AccountManager API 'sini kullanır. MSAL yalnızca uygulamanız `"READ_CONTACTS"` izin verildiyse bunu yapar.
 
-@No__t-0 ' ı `"BROKER_BIND_FAILURE"` hata kodu ile alırsanız iki seçenek vardır:
+Hata kodu `"BROKER_BIND_FAILURE"``MsalClientException` alırsanız iki seçenek vardır:
 
 - Kullanıcıdan Microsoft Authenticator uygulaması ve Intune Şirket Portalı için güç iyileştirmesini devre dışı vermesini isteyin.
 - Kullanıcıdan `"READ_CONTACTS"` iznini vermesini isteyin

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1131cba204b7b7af33cc0441ee455b6e333aba20
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310088"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175307"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran Web uygulaması-kod yapılandırması
 
@@ -38,8 +38,8 @@ Web uygulamaları için yetkilendirme kodu akışını destekleyen kitaplıklar 
 | MSAL kitaplığı | Açıklama |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Desteklenen platformlar .NET Framework ve .NET Core platformları (UWP, Xamarin. iOS ve Xamarin. Android değil, bu platformlar ortak istemci uygulamaları oluşturmak için kullanılır) |
-| ![MSAL. Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Geliştirme devam ediyor-genel önizlemede |
-| ![MSAL. Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Java | Geliştirme devam ediyor-genel önizlemede |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Geliştirme devam ediyor-genel önizlemede |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Geliştirme devam ediyor-genel önizlemede |
 
 İlgilendiğiniz platforma karşılık gelen sekmeyi seçin:
 
@@ -70,8 +70,8 @@ Bu makaledeki kod parçacıkları ve aşağıdakiler [ASP.NET Web uygulaması ö
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Bu makaledeki kod parçacıkları ve aşağıdakiler, Microsoft Graph msal4j Web uygulaması örneğini [çağıran Java Web uygulamasından](https://github.com/Azure-Samples/ms-identity-java-webapp) ayıklanır.
-Örnek şu anda msal4j yetkilendirme kodu URL 'sini üretmesine olanak tanır ve Microsoft Identity platform yetkilendirme uç noktası 'na gezinmeyi işler. Kullanıcı oturumu açmak için Sprint güvenliği kullanmak da mümkündür. Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
+Bu makaledeki kod parçacıkları ve aşağıdakiler, Microsoft Graph msal Java Web uygulaması örneğini [çağıran Java Web uygulamasından](https://github.com/Azure-Samples/ms-identity-java-webapp) ayıklanır.
+Örnek şu anda MSAL Java 'nın yetkilendirme kodu URL 'sini oluşturmasını sağlar ve Microsoft Identity platform yetkilendirme uç noktası 'na gezinmeyi işler. Kullanıcı oturumu açmak için Sprint güvenliği kullanmak da mümkündür. Tam uygulama ayrıntıları için bu örneğe başvurmak isteyebilirsiniz.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -86,11 +86,11 @@ Bu makaledeki kod parçacıkları ve aşağıdakiler, [Microsoft Graph msal ça�
 
 ### <a name="startupcs"></a>Startup.cs
 
-ASP.NET Core, ilke `Startup.cs` dosyasında. `OnAuthorizationCodeReceived` Açık kimlik Connect olayına abone olmak ve bu olaydan msal çağrısı yapmak isteyeceksiniz. Belirteç önbelleğinde depolamanın `AcquireTokenFromAuthorizationCode`etkisi, istenen `scopes`için erişim belirteci ve zaman aşımı süresi sona ermeden veya aynı kullanıcı adına bir belirteç almak için kullanılacak bir yenileme belirteci olan net ' in yöntemi , ancak farklı bir kaynak için.
+ASP.NET Core, ilke `Startup.cs` dosyasında olur. `OnAuthorizationCodeReceived` açma KIMLIĞI Connect olayına abone olmak ve bu olaydan MSAL çağrısı yapmak isteyeceksiniz. NET 'in, belirteç önbelleğinde depolamanın etkisi, istenen `scopes`erişim belirteci ve süresi dolma yakın olduğunda erişim belirtecini yenilemek veya aynı kullanıcı adına bir belirteç almak için kullanılacak yenileme belirteci olan `AcquireTokenFromAuthorizationCode`. , ancak farklı bir kaynak için.
 
 Uygulama [ASP.NET Core Web uygulaması öğreticisi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) , Web uygulamalarınız için yeniden kullanılabilir kod sağlamaya çalışır.
 
-Burada, Web uygulamasına kimlik doğrulaması ekleyen ve `AddMsal` Web API 'lerini çağırma özelliğini ekleyen `AddMicrosoftIdentityPlatformAuthentication` yöntemine yapılan çağrıya sahip olan [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) kodu verilmiştir. ' A yapılan `AddInMemoryTokenCaches` çağrı, olası olanlar arasında bir belirteç önbelleği uygulamasını seçme ile ilgilidir:
+İşte, Web uygulamasına kimlik doğrulaması ekleyen `AddMicrosoftIdentityPlatformAuthentication` yöntemine yapılan çağrıyı sunan ve Web API 'Lerini çağırma özelliğini ekleyen `AddMsal`, [Startup. cs # L40-L42](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Startup.cs#L40-L42) kodudur. `AddInMemoryTokenCaches` çağrısı, olası olanlar arasında bir belirteç önbelleği uygulamasını seçme ile ilgilidir:
 
 ```CSharp
 public class Startup
@@ -110,7 +110,7 @@ public class Startup
 }
 ```
 
-`Constants.ScopeUserRead`Sabitler olarak tanımlanır [. cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
+`Constants.ScopeUserRead` sabitler olarak tanımlanır [. cs # L5](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/2-WebApp-graph-user/2-1-Call-MSGraph/Infrastructure/Constants.cs#L5)
 
 ```CSharp
 public static class Constants
@@ -119,11 +119,11 @@ public static class Constants
 }
 ```
 
-`AddMicrosoftIdentityPlatformAuthentication` [Kullanıcılar-kod yapılandırması 'nda oturum açan Web](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code) uygulamasındaki içeriği zaten araştırdık
+Web uygulamasındaki `AddMicrosoftIdentityPlatformAuthentication` içeriğini, [Kullanıcılar-kod yapılandırması 'nda oturum açan Web](scenario-web-app-sign-user-app-configuration.md?tabs=aspnetcore#initialization-code) uygulamasında zaten araştırdık
 
 ### <a name="the-addmsal-method"></a>AddMsal yöntemi
 
-Kodu `AddMsal` , [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)içinde bulunur.
+`AddMsal` kodu, [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L108-L159](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L108-L159)içinde bulunur.
 
 ```CSharp
 
@@ -182,21 +182,21 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-`AddMsal` Yöntemi şunları sağlar:
+`AddMsal` yöntemi şunları sağlar:
 
 - ASP.NET Core Web uygulaması, Kullanıcı için hem ıdtoken hem de bir kimlik doğrulama kodu (`options.ResponseType = OpenIdConnectResponseType.CodeIdToken`) ister
-- `offline_access` kapsam eklenir. Kullanıcının uygulamanın bir yenileme belirteci almasına izin vermek için bu gereklidir.
-- Uygulama OIDC `OnAuthorizationCodeReceived` olayına abone olur ve bu çağrıyı, msal.NET kullanarak çağırır ve bu, uygulama `ITokenAcquisition`yeniden kullanılabilir bir bileşen ile kapsüllenir.
+- `offline_access` kapsamı eklenir. Kullanıcının uygulamanın bir yenileme belirteci almasına izin vermek için bu gereklidir.
+- Uygulama OıDC `OnAuthorizationCodeReceived` olayına abone olur ve bu çağrıyı, burada `ITokenAcquisition`uygulayan yeniden kullanılabilir bir bileşene Kapsüllenen olan MSAL.NET kullanarak çağırır.
 
 ### <a name="the-tokenacquisitionaddaccounttocachefromauthorizationcodeasync-method"></a>Tokenalımı. AddAccountToCacheFromAuthorizationCodeAsync yöntemi
 
-Yöntemi Microsoft [. Identity. Web/tokenalımı. cs # L101-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145)konumunda bulunur. `TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` Şunları sağlar:
+`TokenAcquisition.AddAccountToCacheFromAuthorizationCodeAsync` yöntemi [Microsoft. Identity. Web/Tokenalımı. cs # L101-L145](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L101-L145)' de bulunur. Şunları sağlar:
 
-- ASP.NET, MSAL.NET (`context.HandleCodeRedemption();`) ile paralel olarak kimlik doğrulama kodunu kullanmaya çalışmaz
+- ASP.NET, MSAL.NET 'e paralel olarak kimlik doğrulama kodunu kullanmaya çalışmaz (`context.HandleCodeRedemption();`)
 - Idtoken 'daki talepler, MSAL 'in Kullanıcı hesabı için bir belirteç önbelleği anahtarını hesaplaması için kullanılabilir
 - MSAL.NET uygulaması gerekirse örneği oluşturulur
 - kod MSAL.NET uygulaması tarafından kullanıldı
-- Yeni KIMLIK belirteci ASP.NET Core paylaşılır (çağrısı `context.HandleCodeRedemption(null, result.IdToken);`sırasında). Erişim belirteci, ASP.NET Core paylaşılmaz. Bu, kullanıcıyla ilişkili MSAL.NET belirteç önbelleğinde kalır ve bu, ASP.NET Core denetleyicilerde kullanılmak üzere hazırlanmaktadır.
+- Yeni KIMLIK belirteci ASP.NET Core paylaşılır (`context.HandleCodeRedemption(null, result.IdToken);`çağrısı sırasında). Erişim belirteci, ASP.NET Core paylaşılmaz. Bu, kullanıcıyla ilişkili MSAL.NET belirteç önbelleğinde kalır ve bu, ASP.NET Core denetleyicilerde kullanılmak üzere hazırlanmaktadır.
 
 ```csharp
 public class TokenAcquisition : ITokenAcquisition
@@ -246,12 +246,12 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>Tokenedinme. BuildConfidentialClientApplication yöntemi
 
-ASP.NET Core, gizli istemci uygulaması oluşturmak HttpContext 'teki bilgileri kullanır. `CurrentHttpContext` Özelliği aracılığıyla erişilen, istekle ilişkili HttpContext, Web uygulaması URL 'si ve oturum açmış kullanıcı (bir `ClaimsPrincipal`) hakkında bilgi sahibi. `BuildConfidentialClientApplication` Ayrıca, bir "azuread" bölümüne sahip olan ve ' yi ile bağlantılı ASP.NET Core yapılandırmayı kullanır:
+ASP.NET Core, gizli istemci uygulaması oluşturmak HttpContext 'teki bilgileri kullanır. `CurrentHttpContext` özelliğinden erişilen, istekle ilişkili HttpContext, Web uygulaması URL 'sini ve oturum açmış kullanıcıyı (bir `ClaimsPrincipal`) bilir. `BuildConfidentialClientApplication` Ayrıca, "AzureAD" bölümüne sahip olan ve ' yi ile bağlantılı ASP.NET Core yapılandırmayı kullanır:
 
-- `_applicationOptions` [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) türünün veri yapısı
-- `azureAdOptions` ASP.NETCore`Authentication.AzureAD.UI`' de tanımlanan [azureadoseçenekler](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) türü örneği. Son olarak, uygulamanın belirteç önbelleklerini koruması gerekir. Sonraki bölümde bunun hakkında daha fazla bilgi edineceksiniz.
+- [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) türünün veri yapısı `_applicationOptions`
+- ASP.NET Core `Authentication.AzureAD.UI`tanımlanan [Azureadoseçenekler](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) türü `azureAdOptions` örneği. Son olarak, uygulamanın belirteç önbelleklerini koruması gerekir. Sonraki bölümde bunun hakkında daha fazla bilgi edineceksiniz.
 
-`GetOrBuildConfidentialClientApplication()` Yöntemi için kod [Microsoft. Identity. Web/tokenalımı. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333)' dir. Bağımlılık ekleme tarafından eklenen üyeleri kullanır ( [Microsoft. Identity. Web/tokenalımı. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59))
+`GetOrBuildConfidentialClientApplication()` yöntemi için kod [Microsoft. Identity. Web/Tokenalımı. cs # L290-L333](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L290-L333)' dir. Bağımlılık ekleme tarafından eklenen üyeleri kullanır ( [Microsoft. Identity. Web/tokenalımı. cs # L47-L59](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/4b12ba02e73f62e3e3137f5f4b9ef43cec7c14fd/Microsoft.Identity.Web/TokenAcquisition.cs#L47-L59))
 
 ```CSharp
 public class TokenAcquisition : ITokenAcquisition
@@ -316,11 +316,11 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="summary"></a>Özet
 
-Toplamak için ASP.NET tarafından istenen `AcquireTokenByAuthorizationCode` yetkilendirme kodunu gerçekten yapın ve msal.NET Kullanıcı belirteci önbelleğine eklenen belirteçleri alır. Buradan, ASP.NET Core denetleyicilerinde kullanılır.
+Toplama için, ASP.NET tarafından istenen yetkilendirme kodunu gerçekten `AcquireTokenByAuthorizationCode` ve MSAL.NET Kullanıcı belirteci önbelleğine eklenen belirteçleri alır. Buradan, ASP.NET Core denetleyicilerinde kullanılır.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET yöntemi ASP.NET Core benzer şekilde, openıdconnect yapılandırması ve `OnAuthorizationCodeReceived` olay aboneliği [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) dosyasında gerçekleşeceğinden. ASP.NET ' de olduğu ASP.NET Core gibi benzer kavramları, [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)Içinde RedirectUri belirtmeniz gerekir. Bu yapılandırma, uygulamanızı dağıtırken değiştirmeniz gereken ASP.NET Core, bu yapılandırmanın çok daha az bir sağlamdır.
+ASP.NET yöntemi ASP.NET Core benzer şekilde, Openıdconnect yapılandırması ve `OnAuthorizationCodeReceived` olayına olan aboneliğin [App_Start\Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) dosyasında gerçekleşmesidir. ASP.NET ' de olduğu ASP.NET Core gibi benzer kavramları, [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)Içinde RedirectUri belirtmeniz gerekir. Bu yapılandırma, uygulamanızı dağıtırken değiştirmeniz gereken ASP.NET Core, bu yapılandırmanın çok daha az bir sağlamdır.
 
 ```CSharp
 public partial class Startup
@@ -370,14 +370,14 @@ public partial class Startup
         }
       });
   }
-  
+
   private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification context)
   {
       // Upon successful sign in, get the access token & cache it using MSAL
       IConfidentialClientApplication clientApp = MsalAppBuilder.BuildConfidentialClientApplication(new ClaimsPrincipal(context.AuthenticationTicket.Identity));
       AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "Mail.Read" }, context.Code).ExecuteAsync();
   }
-  
+
   private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
   {
       notification.HandleResponse();
@@ -389,7 +389,7 @@ public partial class Startup
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Java örneğinin yetkilendirme kodunu nasıl kullandığını anlamak için, bkz. [Kullanıcılar-kod yapılandırması ' nı oturum açan Web uygulaması](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) . Uygulama tarafından alındıktan sonra [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) , `AuthHelper.processAuthenticationCodeRedirect` [authhelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97)içindeki yöntemi devreder ve ardından şunu çağırır `getAuthResultByAuthCode`:
+Java örneğinin yetkilendirme kodunu nasıl kullandığını anlamak için, bkz. [Kullanıcılar-kod yapılandırması ' nı oturum açan Web uygulaması](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) . Uygulama tarafından alındıktan sonra [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) , [authhelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97)içindeki `AuthHelper.processAuthenticationCodeRedirect` yöntemine temsilciler ve sonra `getAuthResultByAuthCode`çağırır:
 
 ```Java
 class AuthHelper {
@@ -411,7 +411,7 @@ class AuthHelper {
 }
 ```
 
-Yöntemi authhelper [. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176)içinde tanımlanır. `getAuthResultByAuthCode` Yetkilendirme kodundan `AuthorizationCodeParameters` oluşturulmuş bir `ConfidentialClientApplication` msal ve `acquireToken()` çağrılar oluşturur.
+`getAuthResultByAuthCode` yöntemi [Authhelper. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176)içinde tanımlanmıştır. Bir MSAL `ConfidentialClientApplication` oluşturur ve yetkilendirme kodundan oluşturulan `AuthorizationCodeParameters` ile `acquireToken()` çağırır.
 
 ```Java
    private IAuthenticationResult getAuthResultByAuthCode(
@@ -455,7 +455,7 @@ Yöntemi authhelper [. Java # L176](https://github.com/Azure-Samples/ms-identity
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Yetkilendirme kodu akışı, [Kullanıcı kodu yapılandırması ' nda oturum açan Web](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)uygulamasında görüldüğü gibi istendiğinde, yetkilendirme kodu/getatoken URL 'sinden Flask yönlendiren `authorized` işlev üzerinden alınır. Bkz [. app. Sip # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
+Yetkilendirme kodu akışı, [Kullanıcılar-kod yapılandırması ' nda oturum açan Web](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code)uygulamasında görüldüğü gibi istendiğinde, kimlik doğrulama kodu,/getAToken URL 'sinden yönlendiren `authorized` işlevinde alınır. Bkz [. app. Sip # L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44)
 
 ```python
  @app.route("/getAToken")  # Its absolute URL must match your app's redirect_uri set in AAD
@@ -534,17 +534,17 @@ public static class MsalAppBuilder
             .WithRedirectUri(AuthenticationConfig.RedirectUri)
             .WithAuthority(new Uri(AuthenticationConfig.Authority))
             .Build();
-  
+
       // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache with our implementation
       MSALPerUserMemoryTokenCache userTokenCache = new MSALPerUserMemoryTokenCache(clientapp.UserTokenCache, currentUser ?? ClaimsPrincipal.Current);
-  
+
       return clientapp;
   }
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j, belirteç önbelleğini seri hale getirmek ve seri durumdan çıkarmak için yöntemler sağlar. Java örneği, `getAuthResultBySilentFlow` [authhelper. Java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122) içinde gösterildiği gibi, oturumdan serileştirme işler.
+MSAL Java, belirteç önbelleğini serileştirmek ve serisini kaldırmak için yöntemler sağlar. Java örneği, Authhelper içindeki `getAuthResultBySilentFlow` yönteminde gösterildiği gibi, oturumdan serileştirme işler [. Java # L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122)
 
 ```Java
 IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
@@ -560,7 +560,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
   }
 
   SilentParameters parameters = SilentParameters.builder(
-          Collections.singleton("User.ReadBasic.All"),
+          Collections.singleton("User.Read"),
           result.account()).build();
 
   CompletableFuture<IAuthenticationResult> future = app.acquireTokenSilently(parameters);
@@ -573,7 +573,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 }
 ```
 
-`SessionManagementHelper` Sınıfının ayrıntıları içinde verilmiştir[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)
+`SessionManagementHelper` sınıfının ayrıntıları içinde verilmiştir[](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 

@@ -1,6 +1,6 @@
 ---
-title: Yeni geliştirici portalına erişme ve bunları özelleştirme-Azure API Management | Microsoft Docs
-description: Yeni geliştirici portalını API Management nasıl kullanacağınızı öğrenin.
+title: Azure API Management geliştirici portalına genel bakış-Azure API Management | Microsoft Docs
+description: API Management 'de geliştirici portalı hakkında bilgi edinin.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -10,105 +10,122 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672801"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176663"
 ---
-# <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management yeni geliştirici portalına erişin ve özelleştirin
+# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
-Bu makalede, yeni Azure API Management geliştirici portalına nasıl erişebileceğiniz gösterilmektedir. Görsel düzenleyici deneyiminde içerik ekleme ve düzenleme ile Web sitesinin görünümünü özelleştirme konusunda size kılavuzluk eder.
+Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan ve tamamen özelleştirilebilir bir Web sitesidir. API tüketicilerinin API 'lerinizi bulabileceği, bunları nasıl kullanacağınızı, erişim isteyeceğini ve bunları nasıl deneyebileceği de vardır.
 
-![Yeni API Management geliştirici portalı](media/api-management-howto-developer-portal/cover.png)
+Bu makalede, API Management 'de geliştirici portalının şirket içinde barındırılan ve yönetilen sürümleri arasındaki farklar açıklanmaktadır. Ayrıca, mimarisini açıklar ve sık sorulan soruların yanıtlarını sağlar.
 
-## <a name="prerequisites"></a> Önkoşullar
+> [!IMPORTANT]
+> [Önizleme sürümünden geliştirici portalının genel kullanıma sunulan sürümüne geçiş yapmayı öğrenin](#preview-to-ga) .
 
-- Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
-- Azure API Management örneğini içeri aktarın ve yayımlayın. Daha fazla bilgi için bkz. [Içeri aktarma ve yayımlama](import-and-publish.md).
+![API Management geliştirici portalı](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
-
-> [!NOTE]
-> Yeni geliştirici portalı şu anda önizleme aşamasındadır.
 
 ## <a name="managed-vs-self-hosted"></a>Yönetilen ve şirket içinde barındırılan sürümler
 
 Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
 
-- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve `<your-api-management-instance-name>.developer.azure-api.net` URL 'si aracılığıyla erişilebilen portalı düzenleyerek ve özelleştirerek.
-- **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan çekirdek işlevselliği genişletmenizi sağlar. Ayrıntılar ve yönergeler için, [portalın kaynak kodu Ile GitHub deposuna][1]bakın.
+- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL `<your-api-management-instance-name>.developer.azure-api.net`üzerinden erişilebilen portalı düzenleyerek ve özelleştirerek. Yönetilen portala erişme ve bunları özelleştirme hakkında bilgi edinmek için [Bu belge makalesine](api-management-howto-developer-portal-customize.md) başvurun.
+- **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan çekirdek işlevselliği genişletmenizi sağlar. Ayrıca, portalı en son sürüme yükseltmeniz gerekir. Ayrıntılar ve yönergeler için, [portalın kaynak kodu Ile GitHub deposuna][1]bakın. [Yönetilen sürüm için öğretici](api-management-howto-developer-portal-customize.md) , portalın Yönetim panelinden, ayrıca şirket içinde barındırılan sürümde de tanıtılan bir adım adım yol gösterir.
 
-## <a name="managed-access"></a>Portalın yönetilen sürümüne erişin
+## <a name="portal-architectural-concepts"></a>Portal mimari kavramları
 
-Portalın yönetilen sürümüne erişmek için aşağıdaki adımları izleyin.
+Portal bileşenleri, mantıksal olarak iki kategoriye ayrılabilir: *kod* ve *içerik*.
 
-1. Azure portal API Management hizmet örneğinize gidin.
-1. Üst gezinti çubuğundaki **Yeni geliştirici portalı (Önizleme)** düğmesine tıklayın. Portalın yönetici sürümüne sahip yeni bir tarayıcı sekmesi açılır. Portala ilk kez erişiyorsanız, varsayılan içerik otomatik olarak sağlanır.
+*Kod* [GitHub deposunda][1] tutulur ve şunları içerir:
 
-## <a name="managed-tutorial"></a>Portalın yönetilen sürümünü düzenleyin ve özelleştirin
+- Pencere öğeleri-görsel öğeleri temsil eder ve HTML, JavaScript, stil oluşturma özelliği, ayarlar ve içerik eşlemeyi birleştirir. Örnekler, bir resim, metin paragrafı, form, API 'lerin listesi vb.
+- Pencere öğelerinin nasıl Stillenebilir olduğunu belirten stil tanımları
+- Altyapı-Portal içeriğinden statik Web sayfaları oluşturur ve JavaScript 'te yazılmıştır
+- Tarayıcı içi özelleştirme ve yazma deneyimine izin veren görsel düzenleyici
 
-Aşağıdaki videoda portalın içeriğini düzenlemeyi, Web sitesinin görünümünü özelleştirmeyi ve değişiklikleri yayımlamayı göstereceğiz.
+*İçerik* iki alt kategorilere ayrılmıştır: *portal içeriği* ve *API Management içeriği*.
 
-> [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
+*Portal içeriği* portala özeldir ve şunları içerir:
+
+- Sayfalar-örneğin, giriş sayfası, API öğreticileri, blog gönderileri
+- Medya-görüntüler, animasyonlar ve diğer dosya tabanlı içerikler
+- Düzenler-bir URL ile eşleşen ve sayfaların nasıl görüntülendiğini tanımlayan şablonlar
+- Stiller-stil tanımlarının değerleri, örn. yazı tipleri, renkler, kenarlıklar
+- Ayarlar-yapılandırma, örneğin, ayrıcalıklı simge, Web sitesi meta verileri
+
+Medya dışında *Portal içeriği*, JSON belgeleri olarak ifade edilir.
+
+*API Management içerik* , API 'Ler, Işlemler, ürünler, abonelikler gibi varlıkları içerir.
+
+Portal, [Paperbits çerçevesinin](https://paperbits.io/)uyarbir çatalını temel alır. Özgün Paperbits işlevselliği, API Management özgü pencere öğeleri (örneğin, API 'lerin listesi, ürünlerin listesi) ve içeriği kaydetmek ve almak için bir bağlayıcıya API Management bir bağlayıcı sağlamak üzere genişletilmiştir.
 
 ## <a name="faq"></a>Sık sorulan sorular
 
-Bu bölümde, genel doğası olan yeni geliştirici portalı hakkında sık sorulan sorulara yanıt veriyoruz. Şirket içinde barındırılan sürüme özgü sorular için [GitHub deposunun wiki bölümüne](https://github.com/Azure/api-management-developer-portal/wiki)bakın.
+Bu bölümde, genel doğası olan yeni geliştirici portalı hakkında sık sorulan soruları yanıtlarız. Şirket içinde barındırılan sürüme özgü sorular için [GitHub deposunun wiki bölümüne](https://github.com/Azure/api-management-developer-portal/wiki)bakın.
 
-### <a name="how-can-i-migrate-content-from-the-old-developer-portal-to-the-new-one"></a>İçeriği eski geliştirici portalından yenisine nasıl geçirebilirim?
+### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a>Portalın önizleme sürümünden nasıl geçiş yapabilirim <a id="preview-to-ga"/>?
 
-Yapamazsınız. Portallar uyumsuzdur.
+Geliştirici portalının önizleme sürümünü kullanarak, API Management hizmetinizde önizleme içeriğini sağlamış olursunuz. Varsayılan içerik, daha iyi kullanıcı deneyimi için genel kullanıma sunulan sürümde önemli ölçüde değiştirilmiştir. Ayrıca yeni pencere öğeleri içerir.
 
-### <a name="when-will-the-portal-become-generally-available"></a>Portal ne zaman genel olarak kullanılabilir olacaktır?
+Yönetilen sürümü kullanıyorsanız, **işlemler** menüsü bölümünde **içeriği Sıfırla** ' ya tıklayarak portalın içeriğini sıfırlayın. Bu işlemin onaylanmasının, portalın tüm içeriğini kaldıracaksa ve yeni varsayılan içeriği sağlaması istenir. Portalın altyapısı, API Management hizmetinizde otomatik olarak güncelleştirilmiştir.
 
-Portal Şu anda önizleme aşamasındadır ve takvim yılının (2019) sonunda genel kullanıma sunulacaktır. Önizleme sürümü üretim amaçları için kullanılmamalıdır.
+![Portal içeriğini sıfırlama](media/api-management-howto-developer-portal/reset-content.png)
 
-### <a name="will-the-old-portal-be-deprecated"></a>Eski portalın kullanım dışı olması gerekir mi?
+Şirket içinde barındırılan sürümü kullanıyorsanız, mevcut içeriği kaldırmak ve yeni içerik sağlamak için GitHub deposundan `scripts/cleanup.bat` ve `scripts/generate.bat` kullanın. Portalınızın kodunu önceden GitHub deposundan en son sürüme yükseltdiğinizden emin olun.
 
-Evet, yeni bir tane genel kullanıma sunulduğunda kullanım dışı olacaktır. Endişeleriniz varsa, bunları [özel bir GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/121)yükseltin.
+Portalın içeriğini sıfırlamak istemiyorsanız, sayfalarınızın tamamında yeni kullanılabilir pencere öğelerini kullanmayı düşünebilirsiniz. Mevcut pencere öğeleri, en son sürümlere otomatik olarak güncelleştirildi.
+
+Portalınız genel kullanılabilirlik duyurusu sonrasında sağlandıysa, yeni varsayılan içeriği zaten kullanıma hazır olmalıdır. Sizin tarafınızdan bir işlem yapılması gerekmez.
+
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Eski geliştirici portalından yeni geliştirici portalına nasıl geçiş yapabilirim?
+
+Portallar uyumsuzdur ve içeriği el ile geçirmeniz gerekir.
 
 ### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Yeni Portal eski portalın tüm özelliklerine sahip mi?
 
-Genel kullanım amacı, eski portalla senaryo tabanlı bir özellik eşliği sağlamaktır. Bu durumda, önizleme sürümünde uygulanan özellikler uygulanmamış olabilir.
+Yeni geliştirici portalı *uygulamaları* ve *sorunları*desteklemez. Eski portalda *sorunlar* kullandıysanız ve bunların yeni bir tane olması gerekiyorsa, [özel bir GitHub sorununa](https://github.com/Azure/api-management-developer-portal/issues/122)yorum gönderin.
 
-Özel durumlar, eski portaldan yeni portalda kullanılamayacak *uygulamalar* ve *sorunlardır* . Eski portalda *sorunlar* ve yeni bir tane varsa, [özel bir GitHub sorununa](https://github.com/Azure/api-management-developer-portal/issues/122)yorum gönderin.
+### <a name="has-the-old-portal-been-deprecated"></a>Eski Portal kullanımdan kaldırılmıştır mı?
 
-### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Hata buldum ve/veya bir özellik istemek istiyorum.
+Eski geliştirici ve yayımcı portalları artık *eski* özelliklerdir; yalnızca güvenlik güncelleştirmelerini alacak. Yeni özellikler yalnızca yeni geliştirici portalında uygulanır.
 
-Harika! [GitHub deposunun sorunlar bölümünde](https://github.com/Azure/api-management-developer-portal/issues)bize geri bildirim verebilir, bir özellik isteği gönderebilir veya hata raporu dosyalayabilir. Bu sırada, `community` etiketiyle işaretlenmiş sorunlar hakkında geri bildirimlerinizi de beğeniriz.
+Eski portalların kullanımdan kaldırılması, ayrı olarak duyurulacak. Sorularınız, endişeleriniz veya açıklamalarınız varsa, bunları [özel bir GitHub sorunuyla](https://github.com/Azure/api-management-developer-portal/issues/121)yükseltin.
 
-### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Yeni portalın içeriğini ortamlar arasında taşımak istiyorum. Bunu nasıl yapabilirim ve şirket içinde barındırılan sürüme gitmem gerekir mi?
+### <a name="how-can-i-automate-portal-deployments"></a>Portal dağıtımlarını nasıl otomatikleştirebilirim?
 
-Bunu hem Portal sürümlerinde hem de şirket içinde barındırılan bir şekilde yapabilirsiniz. Yeni geliştirici portalı, API Management hizmetinizin yönetim API 'SI aracılığıyla içerik ayıklamayı destekler. API 'Ler [GitHub deposunun wiki bölümünde](https://github.com/Azure/api-management-developer-portal/wiki/)belgelenmiştir. Ayrıca, başlamanıza yardımcı olabilecek [bir komut dosyası](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat)da yazdık.
+Yönetilen veya şirket içinde barındırılan bir sürümü kullanıyor olmanız fark etmeksizin, geliştirici portalının içeriğine REST API aracılığıyla programlı bir şekilde erişebilir ve yönetebilirsiniz.
 
-Bu işlemi hala API Management DevOps kaynak seti ile hizalamak için çalışıyoruz.
+API, [GitHub deposunun wiki bölümünde][2]belgelenmiştir. Ayrıca, ortamlar arasında portal içeriğinin geçişini otomatik hale getirmek için kullanılabilir (örneğin, bir test ortamından üretim ortamına). Bu işlem hakkında daha fazla bilgi için GitHub 'daki [Bu belge makalesine](https://aka.ms/apimdocs/migrateportal) daha fazla bilgi edinebilirsiniz.
 
-### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Yeni portalın VNET 'teki API Management hizmetimde çalışması için ne yapmam gerekir?
+### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Portal Azure Resource Manager şablonları destekliyor mu ve/veya API Management DevOps kaynak seti ile uyumlu mı?
 
-Yeni geliştirici portalı önizlemedeyken, yönetilen portalın VNET 'teki bir API Management hizmetinde çalışmasını sağlamak için Batı ABD bölgesindeki Azure Storage Services bağlantısına izin vermeniz gerekir. [Depolama belgelerinde](../storage/common/storage-network-security.md#available-virtual-network-regions)daha fazla bilgi verilmiştir.
+Hayır.
 
-Yeni portal genel kullanıma sunulduğunda yukarıdaki Kurulum artık gerekli olmayacaktır.
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Yönetilen Portal bağımlılıkları için ek VNET bağlantısını etkinleştirmem gerekir mi?
 
-Portalın şirket içinde barındırılan sürümü, kuruluma bağlı olarak ek bağlantı yapılandırması gerektirebilir.
+Hayır.
 
-### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Yeni bir *sayfa*oluştururken nasıl *Düzen* seçirim?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Etkileşimli konsolu kullanırken CORS hatası alıyorum. Ne yapmam gerekir?
 
-Bir *Düzen* , URL şablonuyla *sayfanın* URL 'siyle eşleştirerek bir sayfaya uygulanır. Örneğin, `/wiki/*` URL şablonuna sahip olan *düzen* `/wiki/` segmentine sahip her *sayfaya* uygulanır: `/wiki/getting-started`, `/wiki/styles` vb.
-
-### <a name="why-doesnt-the-interactive-developer-console-work"></a>Etkileşimli Geliştirici Konsolu neden çalışmıyor?
-
-Bu, büyük olasılıkla CORS ile ilgilidir. Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilirsiniz (örneğin, Origin as https://contoso.com) ya da bir joker `*` değeri kullanabilirsiniz.
+Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilirsiniz (örneğin, Origin as https://contoso.com) veya bir joker karakter `*` değeri kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yeni geliştirici portalı hakkında daha fazla bilgi edinin:
 
+- [Yönetilen geliştirici portalına erişme ve bunları özelleştirme](api-management-howto-developer-portal-customize.md)
+- [Portalın şirket içinde barındırılan sürümünü ayarlama][2]
+
+Diğer kaynaklara gözatamazsınız:
+
 - [Kaynak kodlu GitHub deposu][1]
-- [Portalı kendi kendine barındırma hakkındaki yönergeler][2]
 - [Projenin ortak yol haritası][3]
 
 [1]: https://aka.ms/apimdevportal

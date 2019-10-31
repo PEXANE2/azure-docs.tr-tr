@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketi için değişiklik isteği ve onay ayarları-Azure Active Directory
-description: Azure Active Directory yetkilendirme yönetimi 'nde (Önizleme) bir erişim paketi için istek ve onay ayarlarını değiştirmeyi öğrenin.
+title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi için değişiklik isteği ve onay ayarları-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimi 'nde erişim paketi için istek ve onay ayarlarını değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b060a17d9e7f795b6aad7df0e3e6349bbbd81b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392507"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174665"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketi için değişiklik isteği ve onay ayarları
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ve onay ayarları
 
 Erişim paketi Yöneticisi olarak, ilkeyi düzenleyerek veya yeni bir ilke ekleyerek herhangi bir zamanda erişim paketi talep edebilen kullanıcıları değiştirebilirsiniz. Ayrıca onay ayarlarını da değiştirebilirsiniz.
 

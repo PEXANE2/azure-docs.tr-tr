@@ -11,20 +11,22 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb06c1c5db20f3216c5c8e81580e445f9c0ba804
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072594"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176796"
 ---
 # <a name="developer-portal-templates"></a>Geliştirici portalı şablonları
 
-Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Dotsıvı Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar Için Dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır [](http://dotliquidmarkup.org/) Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. [Dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
   
 Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](api-management-developer-portal-templates.md).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -47,7 +49,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
     -   [Ürünüyle](api-management-product-templates.md#Product)  
 -   [Uygulamalar](api-management-application-templates.md)  
     -   [Uygulama listesi](api-management-application-templates.md#ProductList)  
-    -   [Uygulama](api-management-application-templates.md#Application)  
+    -   [Uygulamanızı](api-management-application-templates.md#Application)  
 -   [Sorunlar](api-management-issue-templates.md)  
     -   [Sorun listesi](api-management-issue-templates.md#IssueList)  
 -   [Kullanıcı profili](api-management-user-profile-templates.md)  

@@ -10,18 +10,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: e6b5c8c2f734a12fe246a82ce1aa1dc53893ab64
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072386"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176620"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management 'de OAuth 2,0 kullanarak Geliştirici hesaplarını yetkilendirme
 
 Birçok API, API 'YI güvenli hale getirmek ve yalnızca geçerli kullanıcıların erişimi olduğundan emin olmak için [OAuth 2,0](https://oauth.net/2/) ' i destekler ve yalnızca hak kazanabilecekleri kaynaklara erişebilir. Azure API Management 'in etkileşimli geliştirici konsolunu bu tür API 'lerle kullanabilmek için, hizmet örneğinizi OAuth 2,0 özellikli API 'niz ile çalışacak şekilde yapılandırmanıza olanak tanır.
+
+> [!IMPORTANT]
+> OAuth 2,0 yetkilendirmesi, yeni geliştirici portalının etkileşimli konsolunda henüz kullanılamamaktadır.
 
 ## <a name="prerequisites"> </a>Önkoşullar
 
@@ -46,7 +49,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
     > [!NOTE]
     > Bu alanlar, OAuth 2,0 yetkilendirme sunucusunu geçerli API Management hizmet örneği içinde tanımlamak için kullanılır ve bunların değerleri OAuth 2,0 sunucusundan gelmiyor.
 
-3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların, hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder. Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI gibi bir yer tutucu URL veya gibi bir URL `https://placeholder.contoso.com`girin.
+3. **İstemci kayıt sayfası URL 'sini**girin. Bu sayfa, kullanıcıların hesaplarını oluşturup yönetebilecekleri ve kullanılan OAuth 2,0 sağlayıcısına bağlı olarak farklılık gösterdiği yerdir. **İstemci kayıt sayfası URL 'si** , kullanıcıların, hesapların Kullanıcı yönetimini destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği sayfayı işaret eder. Bazı kuruluşlar, OAuth 2,0 sağlayıcısı tarafından desteklendiği halde bu işlevselliği yapılandırmaz veya kullanmaz. OAuth 2,0 sağlayıcınızda yapılandırılmış hesapların Kullanıcı yönetimi yoksa, şirketinizin URL 'SI veya `https://placeholder.contoso.com`gibi bir URL gibi bir yer tutucu URL 'si girin.
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -54,7 +57,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     İstenen türleri denetleyerek **Yetkilendirme verme türlerini** belirtin. **Yetkilendirme kodu** varsayılan olarak belirtilir.
 
-    **Yetkilendirme uç noktası URL 'sini**girin. Azure Active Directory için, bu URL aşağıdaki URL 'ye benzer ve burada `<tenant_id>` Azure AD kiracınızın kimliğiyle birlikte değişir.
+    **Yetkilendirme uç noktası URL 'sini**girin. Azure Active Directory için bu URL aşağıdaki URL 'ye benzer, burada `<tenant_id>` Azure AD kiracınızın KIMLIĞIYLE birlikte değişir.
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
@@ -64,7 +67,7 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 yeni sunucu](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>` biçimi `yourapp.onmicrosoft.com`vardır.
+    Azure Active Directory OAuth 2,0 sunucusu için, **belirteç uç noktası URL 'si** aşağıdaki biçimde olacaktır, burada `<TenantID>` `yourapp.onmicrosoft.com`biçimindedir.
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
@@ -92,11 +95,11 @@ Bu kılavuzda, API Management hizmeti örneğinizi geliştirici hesapları için
 
     ![OAuth 2,0 ayarları](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>Geliştirici portalında OAuth 2,0 Kullanıcı yetkilendirmesini test etme
+## <a name="step3"> </a>Eski geliştirici portalı-OAuth 2,0 Kullanıcı yetkilendirmesini test etme
 
-OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu kullanacak şekilde yapılandırdıktan sonra, geliştirici Portalına gidip bir API 'yi çağırarak test edebilirsiniz.  Azure API Management örneğine **genel bakış** sayfasından en üstteki menüde **Geliştirici Portalı** ' na tıklayın.
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-![Geliştirici portalı][api-management-developer-portal-menu]
+OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu kullanacak şekilde yapılandırdıktan sonra, geliştirici Portalına gidip bir API 'yi çağırarak test edebilirsiniz. Azure API Management örneğine **genel bakış** sayfasından üstteki menüden **Geliştirici Portalı (eski)** seçeneğine tıklayın.
 
 Üstteki menüde **API 'ler** ' e tıklayın ve **echo API**' yi seçin.
 
@@ -116,7 +119,7 @@ OAuth 2,0 yetkilendirme sunucunuzu yapılandırdıktan ve API 'nizi bu sunucuyu 
 
 ![Oturum aç][api-management-oauth2-signin]
 
-Oturum açtıktan sonra, **istek üstbilgileri** isteği yetkilendiren bir `Authorization : Bearer` üstbilgiyle doldurulur.
+Oturum açtıktan sonra, **istek üstbilgileri** isteği yetkilendiren bir `Authorization : Bearer` üstbilgisiyle doldurulur.
 
 ![İstek üst bilgisi belirteci][api-management-request-header-token]
 
@@ -128,7 +131,6 @@ OAuth 2,0 ve API Management kullanma hakkında daha fazla bilgi için aşağıda
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png
-[api-management-developer-portal-menu]: ./media/api-management-howto-oauth2/api-management-developer-portal-menu.png
 [api-management-open-console]: ./media/api-management-howto-oauth2/api-management-open-console.png
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 

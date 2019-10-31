@@ -4,24 +4,34 @@ description: Azure Spring Cloud uygulamanızı doğrudan kaynak kodınızdan nas
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170525"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177964"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Kaynak kodundan Spring Cloud uygulamanızı başlatın
 
+Azure Spring Cloud, Azure 'da Spring Cloud tabanlı mikro hizmet uygulamalarını kolayca çalıştırmanıza olanak sağlar.
+
 Azure yay bulutu, uygulamanızı doğrudan Java kaynak kodunuzla veya önceden oluşturulmuş bir JAR üzerinden başlatmanıza olanak tanır. Bu makale, gerekli adımlarda size yol gösterir.
+
+Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Hizmet örneği sağlama
+> * Bir örnek için yapılandırma sunucusu ayarlama
+> * Yerel olarak bir mikro Hizmetler uygulaması oluşturma
+> * Her mikro hizmeti dağıtma
+> * Uygulamanız için genel uç nokta atama
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 >[!Note]
-> Bu hızlı başlangıca başlamadan önce Azure aboneliğinizin Azure Spring Cloud 'a erişimi olduğundan emin olun.  Bir önizleme hizmeti olarak, aboneliğinizi izin verilenler-listemize ekleyebilmemiz için bize ulaşmamızı isteyeceğiz.  Azure Spring Cloud 'ın yeteneklerini araştırmak istiyorsanız lütfen [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+> Bu hızlı başlangıca başlamadan önce Azure aboneliğinizin Azure Spring Cloud 'a erişimi olduğundan emin olun.  Bir önizleme hizmeti olarak, aboneliğinizi izin verilenler-listemize ekleyebilmemiz için bize ulaşmamızı isteyeceğiz.  Azure Spring Cloud 'ın yeteneklerini araştırmak istiyorsanız lütfen [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  Azure yay bulutu önizlemedeyken Microsoft, SLA olmadan sınırlı destek sunuyor.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen bu [destek hakkında SSS](https://azure.microsoft.com/support/faq/)bölümüne bakın.
 
 Başlamadan önce, Azure aboneliğinizin gerekli bağımlılıklara sahip olduğundan emin olun:
 
@@ -100,7 +110,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Azure Spring Cloud, projeyi derlemek için [kpack](https://github.com/pivotal/kpack) kullanır.  Azure CLı kullanarak kaynak kodunuzu karşıya yükleyebilir, kpack kullanarak projenizi oluşturabilir ve hedef uygulamaya dağıtabilirsiniz.
 
 > [!WARNING]
-> Proje, `target` ' de (Maven dağıtımları veya `build/libs` (Gradle dağıtımları için) `MANIFEST.MF` içinde `main-class` girişi ile yalnızca bir JAR dosyası üretmelidir.  @No__t-0 girdileri olan birden çok JAR dosyası dağıtımın başarısız olmasına neden olur.
+> Proje, `target` ' de (Maven dağıtımları veya `build/libs` (Gradle dağıtımları için) `MANIFEST.MF` içinde `main-class` girişi ile yalnızca bir JAR dosyası üretmelidir.  `main-class` girdileri olan birden çok JAR dosyası dağıtımın başarısız olmasına neden olur.
 
 Tek modüllü Maven/Gradle projeleri için:
 

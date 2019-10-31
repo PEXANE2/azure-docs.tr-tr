@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.reviewer: jeconnoc
 ms.author: v-vasuke
 author: v-vasuke
-ms.date: 08/08/2019
-ms.openlocfilehash: 31ef82976a1c6938ae0bf591b2f8c8b1a0040466
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/18/2019
+ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928936"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177940"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Öğretici: hizmetiniz için bir yay bulutu yapılandırma sunucusu ayarlama
 
@@ -52,7 +52,7 @@ Ortak bir depo kullanılırken, yapılandırılabilir özelliklerdir.
 Ortak `Git` deposunu kurmak için kullanılan tüm yapılandırılabilir özellikler aşağıda listelenmiştir.
 
 > [!NOTE]
-> Sözcükleri ayırmak için tire ("-") kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, `default-label` `defaultLabel`değil ' i kullanın.
+> Sözcükleri ayırmak için tire ("-") kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, `defaultLabel``default-label`kullanabilirsiniz, ancak kullanamazsınız.
 
 | Özellik        | Gereklidir | Özellik                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
@@ -67,7 +67,7 @@ Ortak `Git` deposunu kurmak için kullanılan tüm yapılandırılabilir özelli
 `Ssh` ile özel `Git` deposunu kurmak için kullanılan tüm yapılandırılabilir özellikler aşağıda listelenmiştir.
 
 > [!NOTE]
-> Sözcükleri ayırmak için tire ("-") kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, `default-label` `defaultLabel`değil ' i kullanın.
+> Sözcükleri ayırmak için tire ("-") kullanmak, şu anda desteklenen tek adlandırma kuralıdır. Örneğin, `defaultLabel``default-label`kullanabilirsiniz, ancak kullanamazsınız.
 
 | Özellik                   | Gereklidir | Özellik                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
@@ -121,10 +121,6 @@ Aşağıdaki şekilde Git depoları ayarlamak için kullanılan yapılandırıla
 | `repos."host-key-algorithm"`       | `no`             | Konak anahtar algoritması `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`veya `ecdsa-sha2-nistp521`olmalıdır. Yalnızca `host-key` varsa __gereklidir__ . |
 | `repos."strict-host-key-checking"` | `no`             | Yapılandırma sunucusunun özel `host-key`kullanılırken başlatılıp başlatılmayacağını belirtir. `true` (varsayılan değer) veya `false`olmalıdır. |
 
-### <a name="import-applicationyml-file-from-spring-cloud-config"></a>Yay bulutu yapılandırmadan `application.yml` dosyasını içeri aktar
-
-Varsayılan yapılandırma sunucusu ayarlarını doğrudan [Spring Cloud config](https://spring.io/projects/spring-cloud-config) Web sitesinden içeri aktarabilirsiniz. Bunu doğrudan Azure portal yapabilirsiniz, bu nedenle yapılandırma sunucusu dosyalarınızı veya deponuzu hazırlamak için hemen herhangi bir adım uygulamanız gerekmez.
-
 ## <a name="attaching-your-config-server-repository-to-azure-spring-cloud"></a>Yapılandırma sunucusu deponuzu Azure Spring buluta iliştirme
 
 Yapılandırma dosyalarınız bir depoda kayıtlı olduğuna göre, Azure Spring Cloud 'ı buna bağlamanız gerekir.
@@ -135,19 +131,60 @@ Yapılandırma dosyalarınız bir depoda kayıtlı olduğuna göre, Azure Spring
 
 1. Sol taraftaki menüdeki **Ayarlar** başlığı altındaki **yapılandırma sunucusu** sekmesine gidin.
 
-### <a name="public-repository"></a>Ortak depo
+![pencere ekran görüntüsü](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
-Deponuz ortak ise, **genel** düğmesine tıklayıp URL 'yi yapıştırmanız yeterlidir.
+### <a name="input-repository-information-directly-to-the-azure-portal"></a>Depo bilgilerini doğrudan Azure portal giriş
 
-### <a name="private-repository"></a>Özel depo
+#### <a name="default-repository"></a>Varsayılan depo
 
-Azure Spring Cloud, SSH kimlik doğrulamasını destekler. Deponuza ortak anahtar eklemek için Azure portal yönergeleri izleyin. Daha sonra, özel anahtarınızı yapılandırma dosyasına eklediğinizden emin olun.
+* Ortak depo: **varsayılan depo** bölümünde, **URI** bölümüne depo URI 'Sini yapıştırın ve **kimlik doğrulama** ayarının **genel**olduğundan emin olun. Ardından, **son ' a** tıklayın. 
 
-Yapılandırma sunucunuzu ayarlamayı son vermek için **Uygula** ' ya tıklayın.
+* Özel depo: Azure yay bulutu, temel parola/belirteç tabanlı kimlik doğrulama ve SSH 'yi destekler.
+
+    * Temel kimlik doğrulaması: **varsayılan depo** bölümünde, **URI** bölümüne deponun URI 'Sini yapıştırın ve ardından **kimlik doğrulamaya**tıklayın. **Kimlik doğrulama türü** olarak **temel** ' yı seçin ve Azure yay bulutuna erişim sağlamak için Kullanıcı adınızı ve parolanızı/belirtecinizi girin. Yapılandırma sunucunuzu ayarlamayı bitirmeden **Tamam** ' a ve **Uygula** ' ya tıklayın.
+
+    ![pencere ekran görüntüsü](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    
+    > [!CAUTION]
+    > GitHub gibi bazı git deposu sunucuları, **temel kimlik doğrulaması**için bir parola gibi bir `personal-token` veya `access-token` kullanır. Bu tür bir belirteci Azure yay bulutunda hiçbir zaman dolmayacağı için parola olarak kullanabilirsiniz. Ancak BitBucket ve Azure DevOps gibi diğer git deposu sunucuları için `access-token` süresi bir veya iki saat içinde dolacak. Bu seçenek, Azure Spring Cloud ile bu depo sunucuları kullanılırken önemli değildir.]
+
+    * SSH: **varsayılan depo** bölümünde, deponun URI 'sini **Uri** bölümüne yapıştırın ve **kimlik doğrulaması**' na tıklayın. **Kimlik doğrulama türü** olarak **SSH** ' ı seçin ve **özel anahtarınızı**girin. İsteğe bağlı olarak, **ana bilgisayar anahtarınızı** ve **ana bilgisayar anahtar algoritmanızı**belirtebilirsiniz. Yapılandırma sunucusu deponuza ortak anahtarınızı eklediğinizden emin olun. Yapılandırma sunucunuzu ayarlamayı bitirmeden **Tamam** ' a ve **Uygula** ' ya tıklayın.
+
+    ![pencere ekran görüntüsü](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+
+#### <a name="pattern-repository"></a>Model deposu
+
+Hizmetinizi yapılandırmak için isteğe bağlı bir **model deposu** kullanmak Istiyorsanız, **URI** 'Yi ve **kimlik doğrulamasını** **varsayılan depoyla**aynı şekilde belirtin. Hiyerarşiniz için bir **ad** eklediğinizden emin olun ve ardından örneğine eklemek için **Uygula** ' ya tıklayın. 
+
+### <a name="enter-repository-information-into-a-yaml-file"></a>Bir YAML dosyasına depo bilgilerini girin
+
+Depo ayarlarınızla bir YAML dosyası yazdıysanız, YAML Dosyanızı doğrudan yerel makinenizden Azure Spring Cloud 'a aktarabilirsiniz. Temel kimlik doğrulaması ile özel bir depo için basit bir YAML dosyası şuna benzer:
+
+```yml
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/azure-spring-cloud-samples/config-server-repository.git
+                    username: <username>
+                    password: <password/token>
+
+```
+
+**Ayarları Içeri aktar** düğmesine tıklayın ve ardından proje dizininizdeki `.yml` dosyasını seçin. **Içeri aktar**' a tıklayın, sonra **bildirimlerinizin** bir `async` işlemi açılır. 1-2 dakika sonra, başarıyı bildirmeli.
+
+![pencere ekran görüntüsü](media/spring-cloud-tutorial-config-server/local-yml-success.png)
+
+
+Azure portal görünen YAML dosyanızdaki bilgileri görmeniz gerekir. Son için **Uygula** ' ya tıklayın. 
+
 
 ## <a name="delete-your-app-configuration"></a>Uygulama yapılandırmanızı silme
 
 Bir yapılandırma dosyasını kaydettikten sonra **yapılandırma** sekmesinde **uygulama yapılandırmasını sil** düğmesi görünür. Bu işlem, mevcut ayarlarınızı tamamen siler. Yapılandırma sunucunuzu GitHub 'dan Azure DevOps 'a geçme gibi başka bir kaynağa bağlamak istiyorsanız bunu yapmanız gerekir.
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

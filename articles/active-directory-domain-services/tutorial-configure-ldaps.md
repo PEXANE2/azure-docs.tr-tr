@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193336"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172752"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma
 
@@ -68,7 +68,7 @@ Güvenli LDAP kullanmak için, iletişimi şifrelemek için dijital bir sertifik
 * **Anahtar kullanımı** -sertifika, *dijital imzalar* ve *anahtar şifrelemesi*için yapılandırılmış olmalıdır.
 * **Sertifika amacı** -SERTIFIKA, SSL sunucusu kimlik doğrulaması için geçerli olmalıdır.
 
-Bu öğreticide PowerShell kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *contoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
+Bu öğreticide, [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 'ini kullanarak Güvenli LDAP için otomatik olarak imzalanan bir sertifika oluşturalım. **Yönetici** olarak bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın. *$DnsName* değişkenini, *contoso.com*gibi kendi yönetilen etkı alanınız tarafından kullanılan DNS adıyla değiştirin:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -176,7 +176,7 @@ Bu iki anahtar, *özel* ve *genel* anahtarlar, yalnızca ilgili bilgisayarların
 
 Özel anahtarı içeren ve istemci bilgisayar bağlantıya güvenmek üzere ayarlanmış olan dijital bir sertifika oluşturulup verildiğinde, Azure AD DS yönetilen etki alanında güvenli LDAP 'yi etkinleştirin. Azure AD DS yönetilen bir etki alanında güvenli LDAP özelliğini etkinleştirmek için aşağıdaki yapılandırma adımlarını gerçekleştirin:
 
-1. [Azure Portal](https://portal.azure.com), **kaynakları ara** kutusunda *etki alanı Hizmetleri* ' ni arayın. Arama sonuçlarından **Azure AD Domain Services** seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynakları ara** kutusuna *etki alanı Hizmetleri* ' ni girin. Arama sonuçlarından **Azure AD Domain Services** seçin.
 
     ![Azure portal Azure AD DS yönetilen etki alanınızı arayın ve seçin](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
@@ -207,21 +207,21 @@ Azure AD DS yönetilen etki alanınızı Internet üzerinden güvenli LDAP eriş
 Belirli bir IP adresi kümesinden TCP bağlantı noktası 636 üzerinden gelen güvenli LDAP erişimine izin vermek için bir kural oluşturalım. Varsayılan bir *denyall* kuralı, internet 'ten gelen diğer tüm trafik için geçerlidir. böylece, yalnızca belirtilen adresler Azure AD DS yönetilen etki ALANıNıZı Güvenli LDAP kullanarak alabilir.
 
 1. Azure portal sol taraftaki gezinmede *kaynak grupları* ' nı seçin.
-1. Kaynak grubu ' nu ( *Myresourcegroup*gibi) seçin ve ardından *aeklemeleri-contoso.com-NSG*gibi ağ güvenlik grubunuzu seçin.
+1. Kaynak grubunu, *Myresourcegroup*gibi seçin ve ardından *aaads-NSG*gibi ağ güvenlik grubunuzu seçin.
 1. Mevcut gelen ve giden güvenlik kurallarının listesi görüntülenir. Ağ güvenlik grubu pencerelerinin sol tarafında **güvenlik > gelen güvenlik kuralları**' nı seçin.
 1. **Ekle**' yi seçin ve *TCP* bağlantı noktası *636*' e izin vermek için bir kural oluşturun Gelişmiş güvenlik için, kaynağı *IP adresleri* olarak seçin ve ardından KURULUŞUNUZUN geçerli IP adresini veya aralığını belirtin.
 
-    | Ayar                           | Value        |
+    | Ayar                           | Değer        |
     |-----------------------------------|--------------|
-    | Source                            | IP Adresleri |
+    | Kaynak                            | IP Adresleri |
     | Kaynak IP adresleri/CıDR aralıkları | Ortamınız için geçerli bir IP adresi veya aralığı |
-    | Source port ranges                | *            |
-    | Hedef                       | Any          |
+    | Kaynak bağlantı noktası aralıkları                | *            |
+    | Hedef                       | Herhangi biri          |
     | Hedef bağlantı noktası aralıkları           | 636          |
-    | Protocol                          | TCP          |
-    | Action                            | Allow        |
-    | Priority                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Protokol                          | TCP          |
+    | Eylem                            | Allow        |
+    | Öncelik                          | 401          |
+    | Adı                              | AllowLDAPS   |
 
 1. Hazırsanız, kuralı kaydetmek ve uygulamak için **Ekle** ' yi seçin.
 
@@ -273,7 +273,7 @@ Bu öğreticinin bağlantısını test etmek için bilgisayarınızın yerel Hos
 
 1. Yerel makinenizde, yönetici olarak *Not defteri* 'ni açın
 1. *C:\Windows\System32\drivers\etc* dosyasına gidin ve dosyayı açın
-1. Eklediğiniz kaydın satırını silin, örneğin`40.121.19.239    ldaps.contoso.com`
+1. Eklediğiniz kaydın satırını silin, örneğin `40.121.19.239    ldaps.contoso.com`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -297,3 +297,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) paket yöneticilerine erişim İdaresi verme-Azure Active Directory
+title: Azure AD Yetkilendirme Yönetimi 'nde paket yöneticilerine erişim yönetimi temsilcisi-Azure Active Directory
 description: BT yöneticilerinde erişim yönetimi yetkisini, erişimi yönetebilmeleri için paket yöneticilerine ve proje yöneticilerine erişme hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170743"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174362"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) paket yöneticilerine erişim yönetimine temsilci atama
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde paket yöneticilerine erişim yönetimine temsilci seçme
 
 Bir katalogdaki erişim paketlerinin oluşturulmasını ve yönetimini devretmek için, erişim paketi Yöneticisi rolüne kullanıcılar eklersiniz. Erişim paketi yöneticileri, kullanıcıların bir katalogdaki kaynaklara erişim istemesi gereksinimini öğrenmelidir. Örneğin, bir proje için bir katalog kullanılıyorsa, proje lideri bu katalog için bir erişim paketi yöneticisi olabilir.  Erişim paketi yöneticileri bir kataloğa kaynak ekleyemez, ancak erişim paketlerini ve ilkelerini bir katalogda yönetebilir.  Bir erişim paketi yöneticisine temsilci seçerken, bu kişi bundan sonra sorumlu olabilir:
 

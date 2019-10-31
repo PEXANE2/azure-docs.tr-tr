@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi (Önizleme) içindeki Katalog oluşturucuları için erişim yönetimini devretmek-Azure Active Directory
+title: Azure AD Yetkilendirme Yönetimi 'nde Katalog oluşturucuları için erişim yönetimine temsilci seçme-Azure Active Directory
 description: BT yöneticilerinde erişim yönetimini, erişimi yönetebilmeleri için Katalog oluşturucuları ve proje yöneticilerine nasıl atayacağınızı öğrenin.
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/07/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da6183599f2dacd1a98d8fe359edda741b903b50
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170769"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174386"
 ---
-# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi (Önizleme) içindeki Katalog oluşturucuları için erişim yönetimine temsilci seçme
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde Katalog oluşturucuları için erişim yönetimine temsilci seçme
 
 Yönetici olmayan kullanıcılara temsilci seçmek için, bu kullanıcıları kendi kataloglarını oluşturabilmeleri için Azure AD Yetkilendirme Yönetimi tanımlı Katalog Oluşturucu rolüne ekleyebilirsiniz. Bireysel kullanıcılar ekleyebilir veya üyeleri, daha sonra kataloglar oluşturabilebilen bir grup ekleyebilirsiniz.
 
@@ -42,15 +37,29 @@ Bir kullanıcıyı Katalog Oluşturucu rolüne atamak için aşağıdaki adımla
 
 1. Sol taraftaki menüde, **Yetkilendirme Yönetimi** bölümünde, **Ayarlar**' a tıklayın.
 
-1. **Düzenle**' ye tıklayın.
+1. **Düzenle**’ye tıklayın.
 
-    ![Katalog oluşturucuları ekleme ayarları](./media/entitlement-management-delegate/settings-delegate.png)
+    ![Katalog oluşturucuları ekleme ayarları](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
 1. **Temsilci yetkilendirme yönetimi** bölümünde, bu yetkilendirme yönetimi rolünü atamak istediğiniz kullanıcıları veya grupları seçmek için **Katalog oluşturucuları Ekle** ' ye tıklayın.
 
-1. **Seçin**’e tıklayın.
+1. **Seç**'e tıklayın.
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
+
+## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Temsilci rollerinin Azure portal erişmesine izin ver
+
+Katalog oluşturucuları ve erişim paket yöneticileri gibi temsilci rollere izin vermek için, erişim paketlerini yönetmek üzere Azure portal erişim sağlamak için yönetim portalı ayarını denetlemeniz gerekir.
+
+**Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
+
+1. Azure portal, **Azure Active Directory** ' a ve ardından **Kullanıcılar**' a tıklayın.
+
+1. Sol taraftaki menüden **Kullanıcı ayarları**' na tıklayın.
+
+1. **Azure AD Yönetim Portalı 'na erişimi kısıtla** ' nın **Hayır**olarak ayarlandığından emin olun.
+
+    ![Azure AD Kullanıcı ayarları-yönetim portalı](./media/entitlement-management-delegate-catalog/user-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

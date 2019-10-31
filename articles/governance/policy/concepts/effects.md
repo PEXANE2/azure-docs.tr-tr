@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592809"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176328"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -67,7 +67,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 
 ### <a name="append-examples"></a>Ekleme örnekleri
 
-Örnek 1: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** olan **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[@No__t_1]** olmayan diğer ad bir dizi olduğunda, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
+Örnek 1: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** olan **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** olmayan diğer ad bir dizi olduğunda, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
 ```json
 "then": {
@@ -82,7 +82,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 }
 ```
 
-Örnek 2: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[\*]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[@No__t_1]** diğer adını kullanarak, efekt **değeri** önceden mevcut olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
+Örnek 2: bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[\*]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** diğer adını kullanarak, efekt **değeri** önceden mevcut olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
 
 ```json
 "then": {
@@ -133,8 +133,8 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 **Operations** özelliği dizisi, birkaç etiketi tek bir ilke tanımından farklı şekillerde değiştirmeyi mümkün kılar. Her işlem, **işlem**, **alan**ve **değer** özelliklerinden oluşur. İşlem düzeltme görevinin etiketlere ne yaptığını belirler, alan hangi etiketin değiştirilmekte olduğunu belirler ve değer bu etiketin yeni ayarını tanımlar. Aşağıdaki örnekte aşağıdaki etiket değişiklikleri yapılır:
 
 - Farklı bir değerle zaten mevcut olsa bile, `environment` etiketini "test" olarak ayarlar.
-- @No__t_0 etiketini kaldırır.
-- @No__t_0 etiketini ilke atamasında yapılandırılan _Deptname_ ilke parametresi olarak ayarlar.
+- `TempResource`etiketini kaldırır.
+- `Dept` etiketini ilke atamasında yapılandırılan _Deptname_ ilke parametresi olarak ayarlar.
 
 ```json
 "details": {
@@ -275,7 +275,7 @@ Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kay
   - **Ayrıntılar. Type** , **IF** koşulu kaynağı altında bir kaynak türü ise, ilke değerlendirilen kaynağın kapsamındaki bu **türden** kaynakları sorgular. Aksi takdirde, ilke, değerlendirilen kaynakla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]` olmalıdır. Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
+  - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]`olmalıdır. Ancak, bunun yerine bir [Denetim](#audit) etkisi göz önünde bulundurulmalıdır.
 - **Resourcegroupname** (isteğe bağlı)
   - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
@@ -346,7 +346,7 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
   - , **IF** koşulu kaynağı altında bir kaynağı getirmeye çalışırken başlar ve sonra, **IF** koşulu kaynağıyla aynı kaynak grubu içinde sorgular.
 - **Ad** (isteğe bağlı)
   - Eşleştirilecek kaynağın tam adını belirtir ve ilkenin belirtilen türdeki tüm kaynaklar yerine belirli bir kaynağı almasına neden olur.
-  - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]` olmalıdır.
+  - **IF. Field. Type** ve **then. details. Type** ile ilgili koşul değerleri ne zaman eşleşiyorsa, **ad** _gerekli_ olur ve `[field('name')]`olmalıdır.
 - **Resourcegroupname** (isteğe bağlı)
   - İlgili kaynağın eşleştirmesinin farklı bir kaynak grubundan gelmesini sağlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
@@ -433,7 +433,7 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Bu efekt `Microsoft.ContainerService.Data` ' in bir ilke tanımı *moduyla* kullanılır. [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak üzere [rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) ile tanımlanan giriş denetimi kurallarını geçirmek için kullanılır.
+Bu efekt `Microsoft.ContainerService.Data` ' in bir ilke tanımı *moduyla* kullanılır. [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak üzere [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan giriş denetimi kurallarını geçirmek için kullanılır.
 
 > [!NOTE]
 > [Kubernetes Için Azure Ilkesi](rego-for-aks.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.

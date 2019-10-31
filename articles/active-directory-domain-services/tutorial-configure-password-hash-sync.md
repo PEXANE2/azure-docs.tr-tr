@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f2edd99c50de332890fe862e7fb5e2405e2d369
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 41e61376d12d447dd480a39ef7200db6af7cca89
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014037"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172856"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: Karma ortamlarda Azure Active Directory Domain Services parola eşitlemesini etkinleştirme
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: karma ortamlarda Azure Active Directory Domain Services parola eşitlemeyi etkinleştirme
 
 Karma ortamlarda, bir Azure Active Directory (Azure AD) kiracısı, Azure AD Connect kullanılarak şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenmek üzere yapılandırılabilir. Varsayılan olarak Azure AD Connect, eski NT LAN Manager (NTLM) ve Azure Active Directory Domain Services için gereken Kerberos parola karmalarını (Azure AD DS) eşitlemez.
 
@@ -68,7 +68,7 @@ Azure AD Connect yüklendi ve Azure AD ile eşitlenecek şekilde yapılandırıl
     * Azure AD Bağlayıcısı adı *contoso.onmicrosoft.com-AAD*
     * Şirket içi AD DS Bağlayıcısı *OnPrem.contoso.com* olarak adlandırılmıştır
 
-1. Aşağıdaki PowerShell betiğini kopyalayıp Azure AD Connect yüklü bilgisayara yapıştırın. Betik, eski parola karmalarını içeren tam bir parola eşitlemesini tetikler. `$azureadConnector` Ve`$adConnector` değişkenlerini önceki adımdaki bağlayıcı adlarıyla güncelleştirin.
+1. Aşağıdaki PowerShell betiğini kopyalayıp Azure AD Connect yüklü bilgisayara yapıştırın. Betik, eski parola karmalarını içeren tam bir parola eşitlemesini tetikler. `$azureadConnector` ve `$adConnector` değişkenlerini önceki adımdaki bağlayıcı adlarıyla güncelleştirin.
 
     Şirket içi hesap NTLM ve Kerberos parola karmalarını Azure AD ile eşleştirmek için bu betiği her bir AD ormanında çalıştırın.
 

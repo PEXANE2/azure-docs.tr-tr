@@ -1,5 +1,5 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) dış kullanıcılar için erişimi yönetir-Azure Active Directory
+title: Azure AD Yetkilendirme Yönetimi 'nde dış kullanıcılara erişimi yönetir-Azure Active Directory
 description: Azure Active Directory yetkilendirme yönetiminde dış kullanıcılara erişimi yönetmek için belirtebileceğiniz ayarlar hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934406"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174167"
 ---
-# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde dış kullanıcılar için erişimi yönetme (Önizleme)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde dış kullanıcılara erişimi yönetir
 
 Azure AD Yetkilendirme Yönetimi, kuruluşunuzun dışındaki kişilerle işbirliği yapmak için [Azure AD işletmeden işletmeye (B2B)](../b2b/what-is-b2b.md) kullanır. Azure AD B2B ile dış kullanıcılar kendi giriş dizinlerinde kimlik doğrular, ancak dizininizde bir temsili vardır. Dizininizdeki Gösterim, kullanıcıya kaynaklarınıza erişim atanmasına olanak sağlar.
 
@@ -74,6 +69,52 @@ Aşağıdaki diyagram ve adımlar, dış kullanıcılara bir erişim paketine er
 
 1. Dış Kullanıcı ayarlarının yaşam döngüsüne bağlı olarak, dış kullanıcının artık herhangi bir erişim paketi ataması yoksa, dış kullanıcının oturum açması engellenir ve Konuk Kullanıcı hesabı dizininizden kaldırılır.
 
+## <a name="settings-for-external-users"></a>Dış kullanıcılar için ayarlar
+
+Kuruluşunuzun dışındaki kişilerin erişim paketleri isteyebildiğini ve bu erişim paketlerindeki kaynaklara erişim izni almasını sağlamak için doğrulamanız gereken bazı ayarlar düzgün bir şekilde yapılandırılmıştır.
+
+### <a name="enable-catalog-for-external-users"></a>Dış kullanıcılar için kataloğu etkinleştir
+
+- Varsayılan olarak, [Yeni bir katalog](entitlement-management-catalog-create.md)oluşturduğunuzda, dış kullanıcıların katalogda erişim paketleri istemesine izin vermek için etkinleştirilir. **Dış kullanıcılar Için etkinleştirildiğinden** emin olun, **Evet**olarak ayarlayın.
+
+    ![Katalog ayarlarını Düzenle](./media/entitlement-management-shared/catalog-edit.png)
+
+### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>Azure AD B2B dış işbirliği ayarlarınızı yapılandırın
+
+- Konuklarınızın dizininize diğer konukları davet etmesini sağlamak, Konuk davetlerini yetkilendirme yönetiminin dışında gerçekleşebileceği anlamına gelir. Konukların yalnızca doğru şekilde yönetilen davetlere izin vermek için **Hayır** 'a **davet edebilmeleri** önerilir.
+- B2B izin verilenler listesini kullanıyorsanız, Yetkilendirme Yönetimi 'ni kullanarak ortak hale getirmek istediğiniz etki alanının listeye eklendiğinden emin olmanız gerekir. Alternatif olarak, B2B reddetme listesini kullanıyorsanız, ortak hale getirmek istediğiniz herhangi bir etki alanının listeye eklenmemiş olduğundan emin olmanız gerekir.
+- **Tüm kullanıcılar** için bir yetkilendirme yönetimi ilkesi oluşturursanız (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar), sahip olduğunuz tüm B2B izin verme veya reddetme listesi ayarları öncelikli olur. Bu nedenle, bir tane kullanıyorsanız, bu ilkeye dahil etmek istediğiniz etki alanlarını izin verilenler listenize dahil ettiğinizden emin olun ve reddetme listesi kullanıyorsanız bunları reddetme listenizden dışlayabilirsiniz.
+- **Tüm kullanıcıları** (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar) içeren bir yetkilendirme yönetimi ilkesi oluşturmak istiyorsanız, öncelikle dizininiz için bir kerelik geçiş kodu kimlik doğrulamasını etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
+- Azure AD B2B dış işbirliği ayarları hakkında daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../b2b/delegate-invitations.md).
+
+    ![Azure AD dış işbirliği ayarları](./media/entitlement-management-external-users/collaboration-settings.png)
+
+### <a name="review-your-conditional-access-policies"></a>Koşullu erişim ilkelerinizi gözden geçirin
+
+- Yeni konuk kullanıcıların, dizininizde oturum açabilmelerini engelleyecek şekilde, yeni konuk kullanıcıların karşılayamayacak tüm koşullu erişim ilkelerinden konukları hariç tutdığınızdan emin olun. Örneğin, konukların kayıtlı bir cihazı yoktur, bilinen bir konumda değildir ve Multi-Factor Authentication (MFA) için yeniden kaydolmak istemezsiniz. bu nedenle, bu gereksinimlerin bir koşullu erişim ilkesinde eklenmesi, konukların yetkilendirme kullanmasını engeller yönetme. Daha fazla bilgi için bkz. [koşullu erişim Azure Active Directory koşullar nelerdir?](../conditional-access/conditions.md).
+
+    ![Azure AD koşullu erişim ilkesi dışlama ayarları](./media/entitlement-management-external-users/conditional-access-exclude.png)
+
+### <a name="review-your-sharepoint-online-external-sharing-settings"></a>SharePoint Online dış paylaşım ayarlarınızı gözden geçirin
+
+- Dış kullanıcılara yönelik erişim paketlerinize SharePoint Online siteleri eklemek istiyorsanız, kuruluş düzeyinde dış paylaşım ayarınızdaki **herkesin** (oturum açma gerektirmez) veya **yeni ve mevcut konuklarınızın** (konukların oturum açması gerekir) ayarlandığından emin olun. veya bir doğrulama kodu sağlayın). Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Yetkilendirme Yönetimi dışında herhangi bir dış paylaşımı kısıtlamak istiyorsanız, dış paylaşım ayarını **var olan konuklara**ayarlayabilirsiniz. Daha sonra, yalnızca Yetkilendirme Yönetimi üzerinden davet edilen yeni kullanıcılar bu sitelere erişim kazanabilecektir. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Site düzeyi ayarlarının konuk erişimi (daha önce listelenen seçenek seçimlerini de) etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [site için dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+
+### <a name="review-your-office-365-group-sharing-settings"></a>Office 365 grup Paylaşım ayarlarınızı gözden geçirin
+
+- Dış kullanıcılara yönelik erişim paketlerinize Office 365 grupları eklemek istiyorsanız, Konuk erişimine izin vermek için **kullanıcıların kuruluşa yeni konuklar eklemesine izin** ver ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Office 365 gruplarına konuk erişimini yönetme](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups).
+
+- Dış kullanıcıların Office 365 grubuyla ilişkili SharePoint Online sitesine ve kaynaklarına erişmesini istiyorsanız SharePoint Online dış paylaşımını etkinleştirdiğinizden emin olun. Daha fazla bilgi için bkz. [dış Paylaşımı açma veya kapatma](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- PowerShell 'in dizin düzeyinde Office 365 grupları için konuk ilkesinin nasıl ayarlanacağı hakkında bilgi için bkz. [örnek: gruplar Için Konuk ilkesini dizin düzeyinde yapılandırma](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+
+### <a name="review-your-teams-sharing-settings"></a>Takımlarınızın paylaşım ayarlarını gözden geçirin
+
+- Dış kullanıcılara yönelik erişim paketlerinize takımlar eklemek istiyorsanız, Konuk erişimine izin vermek için **Microsoft ekiplerinde Konuk erişimine Izin ver** ' in **Açık** olarak ayarlandığından emin olun. Daha fazla bilgi için bkz. [Microsoft ekipleri Yönetim merkezinde konuk erişimini yapılandırma](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+
 ## <a name="manage-the-lifecycle-of-external-users"></a>Dış kullanıcıların yaşam döngüsünü yönetme
 
 Bir dış Kullanıcı, bir erişim paketi isteği ile dizininizden ne olacağını, artık herhangi bir erişim paketi ataması olmadığını seçebilirsiniz. Bu durum, Kullanıcı tüm erişim paketi atamalarını yeniden alıyorsa veya son erişim paketi atamasının süresi dolarsa meydana gelir. Varsayılan olarak, bir dış kullanıcının artık herhangi bir erişim paketi ataması yoksa, dizininizde oturum açması engellenir. 30 gün sonra, Konuk Kullanıcı hesabı dizininizden kaldırılır.
@@ -104,20 +145,8 @@ Bir dış Kullanıcı, bir erişim paketi isteği ile dizininizden ne olacağın
 
 1. **Kaydet** düğmesine tıklayın.
 
-## <a name="enable-a-catalog-for-external-users"></a>Dış kullanıcılar için Katalog etkinleştirme
-
-[Yeni bir katalog](entitlement-management-catalog-create.md)oluşturduğunuzda, kullanıcıların katalogda erişim paketleri istemesi için dış dizinlerden gelen kullanıcılara izin vermek üzere bir ayar vardır. Dış kullanıcıların katalogda erişim paketleri istemek için izinleri olmasını istemiyorsanız, **dış kullanıcılar Için etkin** ' i **Hayır**olarak ayarlayın.
-
-**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
-
-![Yeni Katalog bölmesi](./media/entitlement-management-shared/new-catalog.png)
-
-Ayrıca, kataloğu oluşturduktan sonra bu ayarı değiştirebilirsiniz.
-
-![Katalog ayarlarını Düzenle](./media/entitlement-management-shared/catalog-edit.png)
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bağlı kuruluş ekleme](entitlement-management-organization.md)
 - [Dizininizde bulunmayan kullanıcılar için](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
-- [Kaynak kataloğu oluşturma ve yönetme](entitlement-management-catalog-create.md)
+- [Sorun giderme](entitlement-management-troubleshoot.md)

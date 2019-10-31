@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676910"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177427"
 ---
 # <a name="virtual-network-tap"></a>Sanal ağ TAP
 
 Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi bir ağ paketi toplayıcısına veya analiz aracına sürekli olarak akışla kullanmanıza olanak sağlar. Toplayıcı veya Analiz Aracı bir [ağ sanal gereç](https://azure.microsoft.com/solutions/network-appliances/) ortağı tarafından sağlanır. Sanal ağ dokunarak çalışmak üzere doğrulanan iş ortağı çözümlerinin listesi için bkz. [iş ortağı çözümleri](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Sanal ağ dokunma Şu anda tüm Azure bölgelerinde önizleme aşamasındadır. Sanal ağ TAP 'ı kullanmak için, abonelik KIMLIĞINIZLE @ no__t-0 adresine bir e-posta göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)' nı   ' i inceleyin.
+> Sanal ağ dokunma Şu anda tüm Azure bölgelerinde önizleme aşamasındadır. Sanal ağ TAP 'ı kullanmak için, abonelik KIMLIĞINIZLE <azurevnettap@microsoft.com> bir e-posta göndererek önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) ' na bakın.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Sanal ağ TAP iş ortağı çözümleri
 
@@ -43,7 +43,7 @@ Azure sanal ağ TAP (Terminal erişim noktası), sanal makine ağ trafiğinizi b
 - [Uyanık güvenlik](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch bulutu](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
 - [Koyu izleme](https://www.darktrace.com/en/azure/)
-- [ExtraHop açığa çıkar (x)](https://www.extrahop.com/company/tech-partners/microsoft/)
+- [ExtraHop açığa çıkar (x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis siber güvenliği](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)

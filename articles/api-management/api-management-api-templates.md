@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073832"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176877"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management API şablonları
 
-Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Dotsıvı Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar Için Dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır [](http://dotliquidmarkup.org/) Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
-  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. [Dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
+
 Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeriğini özelleştirmenizi sağlar.  
   
 -   [API listesi](#APIList)  
@@ -41,12 +41,14 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 > [!NOTE]
 >  Örnek varsayılan şablonlar aşağıdaki belgelere dahil edilmiştir, ancak sürekli iyileştirmeler nedeniyle değişikliğe tabidir. Canlı varsayılan şablonları, istenen ayrı şablonlara giderek Geliştirici Portalında görüntüleyebilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="APIList"></a>API listesi  
  **API listesi** şablonu, GELIŞTIRICI portalındaki API listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
- ![Geliştirici PORTALı API listesi](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM geliştirici portalı ŞABLONLARı API listesi")  
+ ![Geliştirici portalı API listesi](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APıM geliştirici portalı şablonları API listesi")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -79,7 +81,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 ```  
   
 ### <a name="controls"></a>Denetimler  
- Şablon aşağıdaki sayfa denetimlerini kullanabilir. [](api-management-page-controls.md) `API list`  
+ `API list` şablonunda aşağıdaki [sayfa denetimleri](api-management-page-controls.md)kullanılabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   
@@ -114,7 +116,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 ## <a name="Product"></a>Çalışmasını  
  **İşlem** şablonu, geliştirici portalındaki işlem sayfasının gövdesini özelleştirmenizi sağlar.  
   
- ![Geliştirici Portalı işlem sayfası](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Geliştirici Portalı şablon işlemi sayfası")  
+ ![Geliştirici portalı Işlem sayfası](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APıM Geliştirici Portalı şablon Işlemi sayfası")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -338,20 +340,20 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 ```  
   
 ### <a name="controls"></a>Denetimler  
- Şablon herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez. `Operation`  
+ `Operation` şablonu herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez.  
   
 ### <a name="data-model"></a>Veri modeli  
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
-|`apiId`|dize|Geçerli API 'nin KIMLIĞI.|  
-|`apiName`|dize|API 'nin adı.|  
-|`apiDescription`|dize|API 'nin açıklaması.|  
+|`apiId`|string|Geçerli API 'nin KIMLIĞI.|  
+|`apiName`|string|API 'nin adı.|  
+|`apiDescription`|string|API 'nin açıklaması.|  
 |`api`|[API Özet](api-management-template-data-model-reference.md#APISummary) varlığı.|Geçerli API.|  
 |`operation`|[İşlem](api-management-template-data-model-reference.md#Operation)|Görüntülenmekte olan işlem.|  
-|`sampleUrl`|dize|Geçerli işlemin URL 'SI.|  
+|`sampleUrl`|string|Geçerli işlemin URL 'SI.|  
 |`operationMenu`|[İşlem menüsü](api-management-template-data-model-reference.md#Menu)|Bu API için bir işlem menüsü.|  
-|`consoleUrl`|URI|**TRY It** düğmesinin URI 'si.|  
+|`consoleUrl`|KULLANıLMAMıŞSA|**TRY It** düğmesinin URI 'si.|  
 |`samples`|[Kod örneği](api-management-template-data-model-reference.md#Sample) varlıklarının koleksiyonu.|Geçerli işlem için kod örnekleri..|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
@@ -644,7 +646,7 @@ Bu bölümdeki şablonlar, geliştirici portalındaki API sayfalarının içeri�
 ## <a name="CodeSamples"></a>Kod örnekleri  
  Aşağıdaki şablonlar, işlem sayfasında bireysel kod örneklerinin gövdesini özelleştirmenizi sağlar.  
   
- ![Geliştirici Portalı şablon kodu örnekleri](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Geliştirici Portalı şablon kodu örnekleri")  
+ ![Geliştirici Portalı şablon kodu örnekleri](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APıM Geliştirici Portalı şablon kodu örnekleri")  
   
 -   [Kıvr](#Curl)  
   

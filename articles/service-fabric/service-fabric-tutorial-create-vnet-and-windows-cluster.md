@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598885"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177977"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Service Fabric kümesini Azure sanal ağına dağıtma
 
@@ -80,7 +80,7 @@ Bu şablon, bir sanal ağa ve bir ağ güvenlik grubuna yedi sanal makine ve ü�
 
 * Üç düğüm türü.
 * Birincil düğüm türünde (şablon parametrelerinde yapılandırılabilir) beş düğüm ve diğer iki düğüm türünün her birindeki bir düğüm.
-* İşletim Sistemi: Kapsayıcılar içeren Windows Server 2016 Datacenter (şablon parametrelerinde yapılandırılabilir).
+* İşletim sistemi: kapsayıcılar içeren Windows Server 2016 Datacenter (şablon parametrelerinde yapılandırılabilir).
 * Sertifika güvenli (şablon parametrelerinde yapılandırılabilir).
 * [Ters ara sunucu](service-fabric-reverseproxy.md) etkin.
 * [DNS hizmeti](service-fabric-dnsservice.md) etkinleştirildi.
@@ -97,7 +97,7 @@ Bu şablon, bir sanal ağa ve bir ağ güvenlik grubuna yedi sanal makine ve ü�
 * HTTP ağ geçidi uç noktası: 19080
 * Uygulama bağlantı noktası: 80
 * Uygulama bağlantı noktası: 443
-* Ters proxy Service Fabric: 19081
+* Service Fabric ters proxy’si: 19081
 
 Diğer uygulama bağlantı noktaları gerekliyse, içindeki trafiğe izin vermek için **Microsoft. Network/loadBalancers** kaynağını ve **Microsoft. Network/networksecuritygroups** kaynağını ayarlamanız gerekir.
 
@@ -112,10 +112,9 @@ Sanal ağ, alt ağ ve ağ güvenlik grubunun adları şablon parametrelerinde bi
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB 445
 * Internodecommunication: 1025, 1026, 1027
-* Kısa ömürlü bağlantı noktası aralığı: 49152 65534 (en az 256 bağlantı noktası gerekir).
-* Uygulama kullanımı için bağlantı noktaları: 80 ve 443
+* Kısa ömürlü bağlantı noktası aralığı: 49152-65534 (en az 256 bağlantı noktası gerekir).
+* Uygulamanın kullanımına yönelik bağlantı noktaları: 80 ve 443
 * Uygulama bağlantı noktası aralığı: 49152-65534 (hizmetten hizmete iletişim için kullanılır. Diğer bağlantı noktaları yük dengeleyicide açılmaz).
 * Diğer tüm bağlantı noktalarını engelleyin
 
@@ -154,14 +153,14 @@ Varsayılan olarak, [Windows Defender virüsten koruma programı](/windows/secur
 
 [Azuredeploy. Parameters. JSON][parameters] parametre dosyası, kümeyi ve ilişkili kaynakları dağıtmak için kullanılan birçok değeri bildirir. Dağıtımınız için değiştirme parametreleri aşağıda verilmiştir:
 
-**Parametre** | **Örnek değer** | **Notlar** 
+**Parametresinin** | **Örnek değer** | **Notlar** 
 |---|---|---|
 |adminUserName|vmadmin| Küme VM’leri için yönetici kullanıcı adı. [VM Için Kullanıcı adı gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Küme VM’leri için yönetici parolası. [VM Için parola gereksinimleri](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Kümenin adı. Yalnızca harf ve sayı içerebilir. Uzunluğu 3 ile 23 karakter arasında olmalıdır.|
 |location|southcentralus| Kümenin konumu. |
 |certificateThumbprint|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika SHA1 parmak izi değerini girin. Örneğin: "6190390162C988701DB5676EB81083EA608DCCF3".</p> |
-|certificateUrlValue|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır. </p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika URL’sini girin. Örneğin, "https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır. </p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için sertifika URL’sini girin. Örneğin, "https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Otomatik olarak imzalanan bir sertifika oluşturuluyor veya sertifika dosyası sağlanıyorsa değer boş olmalıdır.</p><p>Daha önce bir anahtar kasasına yüklenmiş mevcut bir sertifikayı kullanmak için kaynak kasa değerini girin. Örneğin: "/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT".</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory istemci kimlik doğrulamasını ayarlama
@@ -183,7 +182,7 @@ Azure AD 'yi Service Fabric bir kümeyle yapılandırma ile ilgili adımları ba
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD uygulamaları oluşturma ve rollere kullanıcı atama
 Kümeye erişimi denetlemek için iki Azure AD uygulaması oluşturun: bir Web uygulaması ve bir yerel uygulama. Kümenizi temsil etmek üzere uygulamalar oluşturduktan sonra, kullanıcılarınızı [Service Fabric tarafından desteklenen rollere](service-fabric-cluster-security-roles.md)atayın: salt okunurdur ve yönetici.
 
-Öğesini `SetupApplications.ps1`çalıştırın ve Kiracı kimliği, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın. Kullanıcılar için Kullanıcı adlarını ve parolaları belirtin. Örneğin:
+`SetupApplications.ps1`çalıştırın ve kiracı KIMLIĞI, küme adı ve Web uygulaması yanıt URL 'sini parametre olarak sağlayın. Kullanıcılar için Kullanıcı adlarını ve parolaları belirtin. Örnek:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -192,9 +191,9 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Ulusal bulutlar için (örneğin, Azure Kamu, Azure Çin, Azure Almanya), `-Location` parametresini belirtin.
+> Ulusal bulutlar için (örneğin, Azure Kamu, Azure Çin, Azure Almanya) `-Location` parametresini belirtin.
 
-[Azure Portal](https://portal.azure.com) *tenantıd*veya dizin kimliğinizi bulabilirsiniz. **Azure Active Directory** > **Özellikler** ' i seçin ve **dizin kimliği** değerini kopyalayın.
+[Azure Portal](https://portal.azure.com) *tenantıd*veya dizin kimliğinizi bulabilirsiniz. **Azure Active Directory** > **özellikleri** ' nı seçin ve **dizin kimliği** değerini kopyalayın.
 
 *Clustername* , komut dosyası tarafından oluşturulan Azure AD uygulamalarının ön ekini almak için kullanılır. Gerçek küme adıyla tam olarak eşleşmesi gerekmez. Yalnızca Azure AD yapıtları kullanımda olan Service Fabric kümesine eşlemeyi kolaylaştırır.
 
@@ -205,7 +204,7 @@ https://&lt;cluster_domain&gt;: 19080/Explorer
 Azure AD kiracısı için yönetici ayrıcalıklarına sahip bir hesapta oturum açmanız istenir. Oturum açtıktan sonra betik, Service Fabric kümenizi temsil etmek üzere Web ve yerel uygulamalar oluşturur. [Azure Portal](https://portal.azure.com)Kiracıdaki uygulamalarda, iki yeni giriş görmeniz gerekir:
 
    * *ClusterName*\_kümesi
-   * *ClusterName*\_Client
+   * *ClusterName*\_istemcisi
 
 Betik, kümeyi oluştururken Kaynak Yöneticisi şablonu için gereken JSON 'ı yazdırır, bu nedenle PowerShell penceresini açık tutmak iyi bir fikirdir.
 
@@ -260,7 +259,7 @@ Betik, kümeyi oluştururken Kaynak Yöneticisi şablonu için gereken JSON 'ı 
 }
 ```
 
-Parametre değerlerini [azuredeploy. Parameters. JSON][parameters] parametreleri dosyasına ekleyin. Örneğin:
+Parametre değerlerini [azuredeploy. Parameters. JSON][parameters] parametreleri dosyasına ekleyin. Örnek:
 
 ```json
 "aadTenantId": {
@@ -444,7 +443,7 @@ Kümenizde EventStore hizmetini etkinleştirmek için **Microsoft. ServiceFabric
 
 Azure Izleyici günlükleri, küme düzeyindeki olayları izlemek için önerimiz. Kümenizi izlemek üzere Azure Izleyici günlüklerini ayarlamak için, [Küme düzeyindeki olayları görüntülemek için tanılamayı etkinleştirmeniz](#configure-diagnostics-collection-on-the-cluster)gerekir.  
 
-Çalışma alanı kümenizden gelen Tanılama verileri bağlanması gerekir.  Bu günlük verileri, WADServiceFabric * EventTable, WADWindowsEventLogsTable ve Wadeviltable tablolarında *Applicationdiagnosticsstorageaccountname* depolama hesabında depolanır.
+Çalışma alanının, kümeinizden gelen tanılama verilerine bağlanması gerekir.  Bu günlük verileri, WADServiceFabric * EventTable, WADWindowsEventLogsTable ve Wadeviltable tablolarında *Applicationdiagnosticsstorageaccountname* depolama hesabında depolanır.
 
 Azure Log Analytics çalışma alanını ekleyin ve çalışma alanına çözümü ekleyin:
 
@@ -714,7 +713,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici serisindeki diğer makaleler, oluşturduğunuz kümeyi kullanır. Hemen bir sonraki makaleye geçmeyecekseniz ücret alınmaması için [kümeyi silmeniz](service-fabric-cluster-delete.md) iyi olur.
+Bu öğretici serisindeki diğer makaleler, oluşturduğunuz kümeyi kullanır. Hemen bir sonraki makaleye geçmeyecekseniz ücretlendirmeden kaçınmak için [kümeyi silmeniz](service-fabric-cluster-delete.md) iyi olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

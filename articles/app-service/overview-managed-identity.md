@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260153"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176513"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -43,17 +43,17 @@ Portalda yönetilen bir kimlik ayarlamak için öncelikle normal olarak bir uygu
 
 3. **Yönetilen kimlik**' i seçin.
 
-4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’e tıklayın.
+4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet** düğmesine tıklayın.
 
-![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLI kullanarak yönetilen bir kimlik ayarlamak için, mevcut bir uygulamada `az webapp identity assign` komutunu kullanmanız gerekir. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
+Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, mevcut bir uygulamada `az webapp identity assign` komutunu kullanmanız gerekir. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
 - Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
 - Aşağıdaki her bir kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
-- [Azure CLI 'nın en son sürümünü yükler](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yerel bir CLı konsolu kullanmayı tercih ediyorsanız. 
+- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yükleyebilirsiniz. 
 
 Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kimlik atama işleminde size kılavuzluk eder:
 
@@ -70,7 +70,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve CLı kullanarak bir kim
     az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. Bu uygulamanın kimliğini oluşturmak için komutunuçalıştırın:`identity assign`
+3. Bu uygulamanın kimliğini oluşturmak için `identity assign` komutunu çalıştırın:
 
     ```azurecli-interactive
     az webapp identity assign --name myApp --resource-group myResourceGroup
@@ -97,7 +97,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullan
     New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Bu uygulamanın kimliğini oluşturmak için komutunuçalıştırın:`Set-AzWebApp -AssignIdentity`
+3. Bu uygulamanın kimliğini oluşturmak için `Set-AzWebApp -AssignIdentity` komutunu çalıştırın:
 
     ```azurepowershell-interactive
     Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -107,7 +107,7 @@ Aşağıdaki adımlar, bir Web uygulaması oluşturma ve Azure PowerShell kullan
 
 Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomatikleştirmek için kullanılabilir. App Service ve Işlevlerine dağıtma hakkında daha fazla bilgi edinmek için bkz. [App Service kaynak dağıtımını otomatikleştirme](../app-service/deploy-complex-application-predictably.md) ve [Azure Işlevlerinde kaynak dağıtımını otomatikleştirme](../azure-functions/functions-infrastructure-as-code.md).
 
-Kaynak tanımına aşağıdaki özelliği `Microsoft.Web/sites` ekleyerek, herhangi bir kaynak türü bir kimlikle oluşturulabilir:
+`Microsoft.Web/sites` türündeki herhangi bir kaynak, kaynak tanımına aşağıdaki özelliği ekleyerek bir kimlikle oluşturulabilir:
 ```json
 "identity": {
     "type": "SystemAssigned"
@@ -115,7 +115,7 @@ Kaynak tanımına aşağıdaki özelliği `Microsoft.Web/sites` ekleyerek, herha
 ```
 
 > [!NOTE] 
-> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği`SystemAssigned,UserAssigned`
+> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda `type` özelliği `SystemAssigned,UserAssigned`
 
 Sistem tarafından atanan tür eklendiğinde Azure, uygulamanız için kimlik oluşturma ve yönetme konusunda sizi söyler.
 
@@ -151,7 +151,7 @@ Site oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 }
 ```
 
-Burada `<TENANTID>` ve`<PRINCIPALID>` , GUID 'ler ile değiştirilmiştir. Tenantıd özelliği, kimliğin ait olduğu AAD kiracısının ne olduğunu tanımlar. PrincipalId, uygulamanın yeni kimliği için benzersiz bir tanımlayıcıdır. AAD 'de, hizmet sorumlusu App Service veya Azure Işlevleri Örneğinizde verdiğiniz aynı ada sahiptir.
+`<TENANTID>` ve `<PRINCIPALID>`, GUID 'Ler ile değiştirilmiştir. Tenantıd özelliği, kimliğin ait olduğu AAD kiracısının ne olduğunu tanımlar. PrincipalId, uygulamanın yeni kimliği için benzersiz bir tanımlayıcıdır. AAD 'de, hizmet sorumlusu App Service veya Azure Işlevleri Örneğinizde verdiğiniz aynı ada sahiptir.
 
 
 ## <a name="adding-a-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik ekleme
@@ -172,15 +172,15 @@ Kullanıcı tarafından atanan kimlik ile uygulama oluşturmak için kimlik olu�
 
 5. **Kullanıcı atandı** sekmesinde **Ekle**' ye tıklayın.
 
-6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'yi tıklatın.
+6. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**'ye tıklayın.
 
-![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![App Service yönetilen kimliği](media/app-service-managed-service-identity/msi-blade-user.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 
 Azure Resource Manager şablonu, Azure kaynaklarınızın dağıtımını otomatikleştirmek için kullanılabilir. App Service ve Işlevlerine dağıtma hakkında daha fazla bilgi edinmek için bkz. [App Service kaynak dağıtımını otomatikleştirme](../app-service/deploy-complex-application-predictably.md) ve [Azure Işlevlerinde kaynak dağıtımını otomatikleştirme](../azure-functions/functions-infrastructure-as-code.md).
 
-Kaynak tanımına aşağıdaki blok `Microsoft.Web/sites` eklenerek, istenen kimliğin kaynak kimliği ile değiştirilerek `<RESOURCEID>` bir kimlik ile herhangi bir kaynak oluşturulabilir:
+`Microsoft.Web/sites` türünde herhangi bir kaynak, kaynak tanımına aşağıdaki blok dahil ederek bir kimlikle oluşturulabilir ve `<RESOURCEID>` istenen kimliğin kaynak KIMLIĞI ile değiştiriliyor:
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -191,7 +191,7 @@ Kaynak tanımına aşağıdaki blok `Microsoft.Web/sites` eklenerek, istenen kim
 ```
 
 > [!NOTE] 
-> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği`SystemAssigned,UserAssigned`
+> Bir uygulama aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda `type` özelliği `SystemAssigned,UserAssigned`
 
 Kullanıcı tarafından atanan tür ve bir Code eklemek, Azure 'un uygulamanız için kimlik oluşturup yönetmesine yardımcı olduğunu bildirir.
 
@@ -235,7 +235,7 @@ Site oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 }
 ```
 
-Burada `<PRINCIPALID>` ve`<CLIENTID>` , GUID 'ler ile değiştirilmiştir. PrincipalId, AAD yönetimi için kullanılan kimlik için benzersiz bir tanımlayıcıdır. ClientID, uygulamanın çalışma zamanı çağrıları sırasında hangi kimliğin kullanılacağını belirtmek için kullanılan yeni kimliği için benzersiz bir tanımlayıcıdır.
+`<PRINCIPALID>` ve `<CLIENTID>`, GUID 'Ler ile değiştirilmiştir. PrincipalId, AAD yönetimi için kullanılan kimlik için benzersiz bir tanımlayıcıdır. ClientID, uygulamanın çalışma zamanı çağrıları sırasında hangi kimliğin kullanılacağını belirtmek için kullanılan yeni kimliği için benzersiz bir tanımlayıcıdır.
 
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Azure kaynakları için belirteçleri alma
@@ -245,55 +245,7 @@ Bir uygulama, Azure Key Vault gibi AAD tarafından korunan diğer kaynaklara bel
 > [!IMPORTANT]
 > Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız gerekebilir. Örneğin, Key Vault için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olmanız gerekir. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokolü vardır. .NET uygulamaları için Microsoft. Azure. Services. AppAuthentication kitaplığı, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini destekler.
-
-### <a name="asal"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma
-
-.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusu]bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
-
-1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve diğer gerekli NuGet paketlerine başvurular ekleyin. Aşağıdaki örnek [Microsoft. Azure. Keykasasını](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)de kullanır.
-
-2. Aşağıdaki kodu uygulamanıza ekleyerek doğru kaynağı hedefleyin. Bu örnekte Azure Key Vault çalışmak için iki yol gösterilmektedir:
-
-```csharp
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Azure.KeyVault;
-// ...
-var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
-// OR
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
-```
-
-Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için, [MSI .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu] ve App Service ve keykasası ' na bakın.
-
-
-### <a name="using-the-azure-sdk-for-java"></a>Java için Azure SDK 'sını kullanma
-
-Java uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, [Java Için Azure SDK](https://github.com/Azure/azure-sdk-for-java)'ıdır. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
-
-1. [Azure SDK kitaplığına](https://mvnrepository.com/artifact/com.microsoft.azure/azure)bir başvuru ekleyin. Maven projeleri için, bu kod parçacığını `dependencies` projenin Pod dosyasının bölümüne ekleyebilirsiniz:
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>azure</artifactId>
-    <version>1.23.0</version>
-</dependency>
-```
-
-2. Kimlik doğrulaması için nesnesini kullanın. `AppServiceMSICredentials` Bu örnek, bu mekanizmanın Azure Key Vault çalışmak için nasıl kullanılabileceğini gösterir:
-
-```java
-import com.microsoft.azure.AzureEnvironment;
-import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.keyvault.Vault
-//...
-Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
-        .withSubscription(subscriptionId);
-Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
-
-```
+App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokolü vardır. Bu, tüm uygulamalar ve diller için kullanılabilir. Bazı .NET ve Java için Azure SDK, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini kolaylaştırır.
 
 ### <a name="using-the-rest-protocol"></a>REST protokolünü kullanma
 
@@ -304,15 +256,15 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **MSI_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> |Parametre adı|İçinde|Açıklama|
+> |Parametre adı|'Ndaki|Açıklama|
 > |-----|-----|-----|
-> |resource|Sorgu|Belirtecin alınması gereken kaynağın AAD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.|
-> |api-version|Sorgu|Kullanılacak belirteç API 'sinin sürümü. "2017-09-01" Şu anda desteklenen tek sürümdür.|
-> |secret|Üstbilgi|MSI_SECRET ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.|
+> |Kaynak|Sorgu|Belirtecin alınması gereken kaynağın AAD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.|
+> |api sürümü|Sorgu|Kullanılacak belirteç API 'sinin sürümü. "2017-09-01" Şu anda desteklenen tek sürümdür.|
+> |gizli dizi|Üst bilgi|MSI_SECRET ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.|
 > |ClientID|Sorgu|(Kullanıcı atanmadığı için isteğe bağlı) Kullanılacak kullanıcı tarafından atanan kimliğin KIMLIĞI. Atlanırsa, sistem tarafından atanan kimlik kullanılır.|
 
 > [!IMPORTANT]
-> Kullanıcı tarafından atanan kimlikler için belirteçleri almaya çalışıyorsanız, `clientid` özelliği dahil etmeniz gerekir. Aksi takdirde, belirteç hizmeti sistem tarafından atanan bir kimlik için belirteç edinmeye çalışır, bu da mevcut olabilir.
+> Kullanıcı tarafından atanan kimlikler için belirteçleri almaya çalışıyorsanız, `clientid` özelliğini eklemeniz gerekir. Aksi takdirde, belirteç hizmeti sistem tarafından atanan bir kimlik için belirteç edinmeye çalışır, bu da mevcut olabilir.
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 
@@ -320,13 +272,13 @@ Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gö
 > |-------------|----------|
 > |access_token|İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.|
 > |expires_on|Erişim belirtecinin süre sonu. Tarih, 1970-01-01T0:0: 0Z UTC 'den sona erme zamanına kadar saniye sayısı olarak gösterilir. Bu değer, önbelleğe alınmış belirteçlerin ömrünü belirlemede kullanılır.|
-> |resource|Alıcı Web hizmetinin uygulama KIMLIĞI URI 'SI.|
-> |token_type|Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz [. OAuth 2,0 yetkilendirme çerçevesi: Taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |Kaynak|Alıcı Web hizmetinin uygulama KIMLIĞI URI 'SI.|
+> |token_type|Belirteç türü değerini gösterir. Azure AD 'nin desteklediği tek tür taşıyıcı. Taşıyıcı belirteçleri hakkında daha fazla bilgi için bkz. [OAuth 2,0 yetkilendirme çerçevesi: taşıyıcı belirteç kullanımı (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Bu yanıt, [AAD hizmetten hizmete erişim belirteci isteğine yönelik yanıt](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)ile aynıdır.
 
 > [!NOTE]
-> Ortam değişkenleri, işlem ilk kez başladığında ayarlanır, bu nedenle uygulamanız için yönetilen bir kimlik etkinleştirildikten sonra, uygulamanızı yeniden başlatmanız veya kodunuzun kullanılabilmesi için önce `MSI_ENDPOINT` ve `MSI_SECRET` kodunu yeniden dağıtmanız gerekebilir.
+> Ortam değişkenleri, işlem ilk kez başladığında ayarlanır, bu nedenle uygulamanız için yönetilen bir kimlik etkinleştirildikten sonra, `MSI_ENDPOINT` ve `MSI_SECRET` kodunuzda kullanabilmeniz için uygulamanızı yeniden başlatmanız veya kodunu yeniden dağıtmanız gerekebilir.
 
 ### <a name="rest-protocol-examples"></a>REST protokol örnekleri
 
@@ -354,26 +306,29 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Kod örnekleri
 
-<a name="token-csharp"></a>Bu isteği yapmak için C#:
-
-```csharp
-public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
-    HttpClient client = new HttpClient();
-    client.DefaultRequestHeaders.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
-    return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
-}
-```
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > .NET dilleri için, bu isteği kendiniz taslağı yapmak yerine [Microsoft. Azure. Services. AppAuthentication](#asal) ' yi de kullanabilirsiniz.
 
-<a name="token-js"></a>Node. JS ' de:
+```csharp
+private readonly HttpClient _client;
+// ...
+public async Task<HttpResponseMessage> GetToken(string resource)  {
+    var request = new HttpRequestMessage(HttpMethod.Get, 
+        String.Format("{0}/?resource={1}&api-version=2017-09-01", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource));
+    request.Headers.Add("Secret", Environment.GetEnvironmentVariable("MSI_SECRET"));
+    return await _client.SendAsync(request);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
-const getToken = function(resource, apiver, cb) {
+const getToken = function(resource, cb) {
     let options = {
-        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
+        uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=2017-09-01`,
         headers: {
             'Secret': process.env["MSI_SECRET"]
         }
@@ -383,7 +338,7 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-<a name="token-python"></a>Python 'da:
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -392,8 +347,8 @@ import requests
 msi_endpoint = os.environ["MSI_ENDPOINT"]
 msi_secret = os.environ["MSI_SECRET"]
 
-def get_bearer_token(resource_uri, token_api_version):
-    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+def get_bearer_token(resource_uri):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version=2017-09-01"
     head_msi = {'Secret':msi_secret}
 
     resp = requests.get(token_auth_uri, headers=head_msi)
@@ -402,15 +357,64 @@ def get_bearer_token(resource_uri, token_api_version):
     return access_token
 ```
 
-<a name="token-powershell"></a>PowerShell 'de:
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-$apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
-$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVersion"
+$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=2017-09-01"
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
+
+---
+
+### <a name="asal"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma
+
+.NET uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketi aracılığıyla yapılır. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusu]bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
+
+1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve diğer gerekli NuGet paketlerine başvurular ekleyin. Aşağıdaki örnek [Microsoft. Azure. Keykasasını](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)de kullanır.
+
+2. Aşağıdaki kodu uygulamanıza ekleyerek doğru kaynağı hedefleyin. Bu örnekte Azure Key Vault çalışmak için iki yol gösterilmektedir:
+
+    ```csharp
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Azure.KeyVault;
+    // ...
+    var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
+    // OR
+    var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+    ```
+
+Microsoft. Azure. Services. AppAuthentication ve sunduğu işlemler hakkında daha fazla bilgi edinmek için, [MSI .net örneği Ile](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet) [Microsoft. Azure. Services. appauthentication başvurusu] ve App Service ve keykasası ' na bakın.
+
+### <a name="using-the-azure-sdk-for-java"></a>Java için Azure SDK 'sını kullanma
+
+Java uygulamaları ve işlevleri için, yönetilen bir kimlikle çalışmanın en kolay yolu, [Java Için Azure SDK](https://github.com/Azure/azure-sdk-for-java)'ıdır. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
+
+1. [Azure SDK kitaplığına](https://mvnrepository.com/artifact/com.microsoft.azure/azure)bir başvuru ekleyin. Maven projeleri için, bu kod parçacığını projenin Pod dosyasının `dependencies` bölümüne ekleyebilirsiniz:
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure</artifactId>
+        <version>1.23.0</version>
+    </dependency>
+    ```
+
+2. Kimlik doğrulaması için `AppServiceMSICredentials` nesnesini kullanın. Bu örnek, bu mekanizmanın Azure Key Vault çalışmak için nasıl kullanılabileceğini gösterir:
+
+    ```java
+    import com.microsoft.azure.AzureEnvironment;
+    import com.microsoft.azure.management.Azure;
+    import com.microsoft.azure.management.keyvault.Vault
+    //...
+    Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+            .withSubscription(subscriptionId);
+    Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+    ```
+
 
 ## <a name="remove"></a>Kimlik kaldırma
 

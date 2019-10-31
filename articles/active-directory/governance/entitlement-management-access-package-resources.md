@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketi için kaynak rollerini değiştirme-Azure Active Directory
-description: Azure Active Directory yetkilendirme yönetimi 'nde (Önizleme) var olan bir erişim paketinin kaynak rollerini değiştirmeyi öğrenin.
+title: Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketinin kaynak rollerini değiştirme-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimi 'nde var olan bir erişim paketinin kaynak rollerini değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429817"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174651"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketi için kaynak rollerini değiştirme
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kaynak rollerini değiştirme
 
 Bir erişim paketi Yöneticisi olarak, bir erişim paketindeki kaynakları, kullanıcının yeni kaynaklara erişimini sağlama veya önceki kaynaklardan erişimleri kaldırma konusunda endişelenmeden dilediğiniz zaman değiştirebilirsiniz. Bu makalede, var olan bir erişim paketinin kaynak rollerinin nasıl değiştirileceği açıklanır.
 

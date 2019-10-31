@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258514"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176068"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory Access panel dağıtımı planlayın
 
@@ -36,30 +36,30 @@ Azure AD erişim panelini kullanarak şunları yapabilirsiniz:
 
 Ayrıca yöneticilerin yönetmesine izin verir:
 
-* Hizmet şartları
-* Kuruluşlar
-* Erişim gözden geçirmeleri
+* Hizmet koşulları
+* Ları
+* Erişim incelemeleri
 
 
 ## <a name="benefits-of-azure-ad-access-panel-integration"></a>Azure AD erişim paneli tümleştirmesinin avantajları
 
 Azure AD erişim paneli, işletmelerden aşağıdaki yollarla faydalanır:
 
-**Sezgisel kullanıcı deneyimi sağlar**: Erişim paneli size Azure çoklu oturum açma (SSO) ile bağlantılı tüm uygulamalarınız için tek bir platform sağlar. Var olan ayarları ve Grup Yönetimi ve self servis parola sıfırlama gibi yeni özellikleri, bunlar eklendikçe bulmak için birleştirilmiş bir portala sahipsiniz. Sezgisel deneyim, kullanıcıların daha hızlı çalışmasına ve daha üretken olmasına karşın daha üretken olmasına olanak sağlar.
+**Sezgisel kullanıcı deneyimi sağlar**: erişim paneli size Azure çoklu oturum açma (SSO) ile bağlantılı tüm uygulamalarınız için tek bir platform sağlar. Var olan ayarları ve Grup Yönetimi ve self servis parola sıfırlama gibi yeni özellikleri, bunlar eklendikçe bulmak için birleştirilmiş bir portala sahipsiniz. Sezgisel deneyim, kullanıcıların daha hızlı çalışmasına ve daha üretken olmasına karşın daha üretken olmasına olanak sağlar.
 
-**Üretkenliği artırır**: Erişim panelindeki tüm kullanıcı uygulamalarının SSO 'SU etkinleştirilmiştir. Kurumsal uygulamalar ve Office 365 arasında SSO 'yu etkinleştirmek, ek oturum açma istemlerini azaltarak veya ortadan kaldırarak üstün bir oturum açma deneyimi oluşturur. Erişim paneli self servis ve dinamik üyelik kullanır ve kimlik sisteminizin genel güvenliğini geliştirir. Bu, doğru kişilerin uygulamalara erişimi yönetmesini sağlayarak bunu yapar. Erişim paneli, kaynakları hızlı bir şekilde bulmanıza ve iş görevlerine devam etmeniz için tutarlı bir giriş sayfası görevi görür.
+**Üretkenliği artırır**: erişim panelindeki tüm kullanıcı uygulamalarının SSO 'su etkinleştirilmiştir. Kurumsal uygulamalar ve Office 365 arasında SSO 'yu etkinleştirmek, ek oturum açma istemlerini azaltarak veya ortadan kaldırarak üstün bir oturum açma deneyimi oluşturur. Erişim paneli self servis ve dinamik üyelik kullanır ve kimlik sisteminizin genel güvenliğini geliştirir. Bu, doğru kişilerin uygulamalara erişimi yönetmesini sağlayarak bunu yapar. Erişim paneli, kaynakları hızlı bir şekilde bulmanıza ve iş görevlerine devam etmeniz için tutarlı bir giriş sayfası görevi görür.
 
-**Maliyeti yönetir**: Azure AD ile erişim paneli 'nin etkinleştirilmesi, şirket içi altyapılarının derinlemesine sağlanmasına yardımcı olabilir. Uygulamalarınızın tümünü bulmak, kaynaklara erişim istemek ve hesapları yönetmek için tutarlı bir portal sunarak destek maliyetlerini azaltır.
+**Maliyeti yönetir**: Azure AD Ile erişim paneli 'nin etkinleştirilmesi, şirket içi altyapılarının derinlemesine sağlanmasına yardımcı olabilir. Uygulamalarınızın tümünü bulmak, kaynaklara erişim istemek ve hesapları yönetmek için tutarlı bir portal sunarak destek maliyetlerini azaltır.
 
-**Esneklik ve güvenliği artırır**: Erişim paneli, bir bulut platformunun sağladığı güvenlik ve esnekliğe erişmenizi sağlar. Yöneticiler ayarları kolayca uygulamalar ve kaynaklarla değiştirebilir ve kullanıcıları etkilemeden yeni güvenlik gereksinimlerine uyum sağlayabilir.
+**Esneklik ve güvenliği artırır**: erişim paneli, bir bulut platformunun sağladığı güvenlik ve esnekliğe erişmenizi sağlar. Yöneticiler ayarları kolayca uygulamalar ve kaynaklarla değiştirebilir ve kullanıcıları etkilemeden yeni güvenlik gereksinimlerine uyum sağlayabilir.
 
-**Sağlam denetim ve kullanım Izlemeyi mümkün**bir şekilde sunar: Tüm Kullanıcı özellikleri için denetim ve kullanım izleme, kullanıcıların kaynaklarını ne zaman kullandığını bilmenize ve güvenliği değerlendirebilmenizi sağlar.
+**Sağlam denetim ve kullanım Izlemeyi sağlar**: tüm Kullanıcı özellikleri için denetim ve kullanım izleme, kullanıcıların kaynaklarını ne zaman kullandığını bilmenize ve güvenliği değerlendirebilmenizi sağlamanıza olanak tanır.
 
 ### <a name="licensing-considerations"></a>Lisanslama konuları
 
 Erişim paneli ücretsizdir ve temel düzeyde kullanılmak üzere hiçbir lisans gerektirmez. Ancak, dizininizdeki nesne sayısı ve dağıtmak istediğiniz ek özellikler ek lisanslar gerektirebilir. Lisanslama gereksinimlerine sahip bazı yaygın Azure AD senaryoları aşağıdaki güvenlik özelliklerini içerir:
 
-* [Azure çok faktörlü kimlik doğrulaması](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
+* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
 * [Grup tabanlı üyelik](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
@@ -99,7 +99,7 @@ Aşağıdaki tabloda, bir erişim paneli dağıtımı için anahtar kullanım du
 
 Erişim panelinin işlevselliği, yavaş şekilde etkinleştirilebilir. Aşağıdaki dağıtım sırasını öneriyoruz:
 
-1. Uygulamaların
+1. Uygulamalarım
    * Uygulama başlatıcısı
    * Self Servis uygulama yönetimi
    * Microsoft Office 365 tümleştirmesi
@@ -113,7 +113,7 @@ Erişim panelinin işlevselliği, yavaş şekilde etkinleştirilebilir. Aşağı
 
 1. Gruplarım
    * Self servis grup yönetimi
-1. Erişim gözden geçirmeleri
+1. Erişim incelemeleri
    * Erişim gözden geçirmesi yönetimi
 
 Uygulamalarım ' dan itibaren, kullanıcılara kaynaklara erişmek için ortak bir yer olarak kullanıcıları portala tanıtır. Self Servis uygulama bulmanın eklenmesi uygulamalarım deneyimiyle oluşturulur. Gruplarım ve erişim İncelemeleri self servis yeteneklerini oluşturur.
@@ -127,11 +127,11 @@ Aşağıdaki tabloda birçok önemli erişim paneli yapılandırması ve kullana
 | Pilot gruplarını belirleme| Kullanılacak Azure AD güvenlik grubunu ve tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Üretime etkinleştirilecek grup veya grupları belirleme.| Kullanılacak Azure AD güvenlik gruplarını veya Azure AD ile eşitlenen Active Directory gruplarını belirler. Tüm pilot üyelerinin grubun bir parçası olduğundan emin olun. |
 | Kullanıcıların SSO 'yu belirli türlerde uygulamalara kullanmasına izin ver| Federasyon SSO, OAuth, parola SSO, uygulama proxy 'Si |
-| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Evet |
-| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Evet |
+| Kullanıcıların Self servis parola sıfırlama kullanmasına izin ver | Yes |
+| Kullanıcıların Multi-Factor Authentication kullanmasına izin ver| Yes |
 | Kullanıcıların belirli Grup türleri için Self Servis Grup yönetimini kullanmasına izin ver| Güvenlik grupları, Office 365 grupları |
-| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Evet |
-| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Evet |
+| Kullanıcıların Self Servis uygulama yönetimini kullanmasına izin ver| Yes |
+| Kullanıcıların erişim gözden geçirmeleri kullanmasına izin ver| Yes |
 
 ### <a name="plan-consent-strategy"></a>Onay stratejisini planlayın
 
@@ -193,7 +193,7 @@ SaaS uygulamalarınızı dağıtma ve yapılandırma hakkında daha fazla bilgi 
 
 Kullanıcılar parola tabanlı SSO uygulamalarında oturum açtıklarında, uygulamaların güvenli oturum açma uzantısını yükleyip kullanmaları gerekir. Uzantı, parolayı uygulamanın oturum açma formuna ileten bir betiği yürütür. Kullanıcılardan, parola tabanlı SSO uygulamasını ilk kez başlattığında uzantıyı yüklemeleri istenir. Uzantı hakkında daha fazla bilgi için bu belgede [erişim paneli tarayıcı uzantısını yükleme](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)konusu bulunabilir.
 
-Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Şu seçenekler mevcuttur:
+Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Seçeneklere şunlar dahildir:
 
 * [Internet Explorer için grup ilkesi](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
@@ -201,7 +201,7 @@ Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [d
 
 * [Chrome, Firefox, Microsoft Edge veya IE için Kullanıcı odaklı indirme ve yapılandırma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-Daha fazla bilgi edinin: [Parola çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
+Daha fazla bilgi: [parola çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
 
 Parola tabanlı SSO uygulamaları kullanmayan kullanıcılar da uzantısından faydalanır. Bu avantajlar, arama çubuğundan herhangi bir uygulamayı başlatma, son kullanılan uygulamalara erişimi bulma ve uygulamalarım sayfasına bir bağlantı olma imkanını içerir.
 
@@ -211,11 +211,11 @@ Kullanıcının bir parola tabanlı SSO uygulamasını ilk kez başlatırken gö
 
 #### <a name="plan-for-mobile-access"></a>Mobil erişim planlaması
 
-Intune ilkesi (Microsoft Edge veya Intune Managed Browser) ile korunan bir tarayıcı, parola tabanlı SSO uygulamaları başlatan mobil kullanıcılar için gereklidir. İlke korumalı bir tarayıcı, uygulama için kaydedilen parolanın aktarılmasına izin vermez. Microsoft Edge veya Managed Browser, bir dizi Web veri koruma özelliği sağlar. İOS ve Android cihazlarda kurumsal senaryolar için Microsoft Edge 'i de kullanabilirsiniz. Microsoft Edge, Intune Managed Browser ile aynı yönetim senaryolarını destekler ve Kullanıcı deneyimini geliştirir. Daha fazla bilgi edinin: [Microsoft Intune İlkeyle korunan bir tarayıcı kullanarak Web erişimini yönetin](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Intune ilkesi (Microsoft Edge veya Intune Managed Browser) ile korunan bir tarayıcı, parola tabanlı SSO uygulamaları başlatan mobil kullanıcılar için gereklidir. İlke korumalı bir tarayıcı, uygulama için kaydedilen parolanın aktarılmasına izin vermez. Microsoft Edge veya Managed Browser, bir dizi Web veri koruma özelliği sağlar. İOS ve Android cihazlarda kurumsal senaryolar için Microsoft Edge 'i de kullanabilirsiniz. Microsoft Edge, Intune Managed Browser ile aynı yönetim senaryolarını destekler ve Kullanıcı deneyimini geliştirir. Daha fazla bilgi: [Microsoft Intune İlkeyle korunan bir tarayıcı kullanarak Web erişimini yönetme](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
 ## <a name="plan-your-my-apps-deployment"></a>Uygulamalarım dağıtımınızı planlayın
 
-Erişim panelinin temeli, uygulama başlatıcısı Uygulamalarım, kullanıcıların erişim [https://myapps.microsoft.com](https://myapps.microsoft.com/)' i. Uygulamalarım sayfaları, kullanıcılara işlerini başlatmak ve gerekli uygulamalarına ulaşmak için tek bir yer sunar. Burada, kullanıcılar çoklu oturum açma erişimine sahip oldukları tüm uygulamaların bir listesini bulur. 
+Erişim bölmesinin temeli, kullanıcıların [https://myapps.microsoft.com](https://myapps.microsoft.com/)' de erişebileceği uygulama başlatıcısı uygulamalarım. Uygulamalarım sayfaları, kullanıcılara işlerini başlatmak ve gerekli uygulamalarına ulaşmak için tek bir yer sunar. Burada, kullanıcılar çoklu oturum açma erişimine sahip oldukları tüm uygulamaların bir listesini bulur. 
 
 ![Uygulamalar panelinin ekran görüntüsü](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -226,6 +226,10 @@ Uygulamalarım başlatıcısı için uygulama ekleyeceğinize ilişkin sırayı 
 #### <a name="add-applications-to-the-my-apps-panel"></a>Uygulamalarım paneline uygulama ekleme
 
 Tüm Azure AD SSO özellikli uygulamaları My Apps Launcher öğesine eklenebilir. Diğer uygulamalar, bağlantılı SSO seçeneği kullanılarak eklenir. Mevcut Web uygulamanızın URL 'sine bağlanan bir uygulama kutucuğu yapılandırabilirsiniz. Bağlantılı SSO, tüm uygulamaları Azure AD SSO 'ya geçirmeden kullanıcıları uygulama portalına yönlendirmeye başlayabilmeniz için izin verir. Kullanıcıların deneyimini kesintiye uğratmadan, Azure AD SSO ile yapılandırılmış uygulamalara giderek geçebilirsiniz.
+
+#### <a name="use-my-apps-workspaces-preview"></a>Uygulamalarım çalışma alanlarını kullanın (Önizleme)
+
+Varsayılan olarak, tüm uygulamalar tek bir sayfada birlikte listelenir. Ancak, ilgili uygulamaları gruplamak ve bunları ayrı bir sekmede sunmak, daha kolay bulunmalarını sağlamak için çalışma alanlarını kullanabilirsiniz. Örneğin, belirli iş rolleri, görevler, projeler vb. için mantıksal uygulama gruplandırmaları oluşturmak üzere çalışma alanlarını kullanabilirsiniz. Bilgi için bkz. [Kullanıcı erişimi panellerini (Önizleme) özelleştirmek Için uygulamalarımı kullanma çalışma alanları](access-panel-workspaces.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Uygulamalarımı mı yoksa mevcut bir portalı mı kullanacağınızı planlayın
 
@@ -282,7 +286,7 @@ Testi veya dağıtımı sırasında, grupları eklemek istiyorsanız ancak uygul
 
 Office 365 uygulamaları için, kullanıcılar, bu kullanıcılara atanmış lisansları temel alarak Office 'in bir kopyasını alırlar. Office uygulamalarına erişim için bir önkoşul, kullanıcılara Office uygulamalarına bağlı doğru lisansları atamalıdır. Bir kullanıcıya lisans atadığınızda, bu kullanıcılar kendi uygulamalarım sayfasında ve Office 365 uygulama başlatıcısı 'nda lisansla ilişkili uygulamaları otomatik olarak görürler.
 
-Kullanıcılardan bir dizi Office uygulamasını gizlemek istiyorsanız, uygulamaları uygulama portalından gizleme seçeneği vardır ve Office 365 portalından erişime izin vermeye devam edebilirsiniz. Uygulamanın kullanıcı ayarları bölümünde bu ayarları bulun. Daha fazla bilgi edinin: [Bir uygulamayı kullanıcının Azure Active Directory deneyiminden gizleyin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+Kullanıcılardan bir dizi Office uygulamasını gizlemek istiyorsanız, uygulamaları uygulama portalından gizleme seçeneği vardır ve Office 365 portalından erişime izin vermeye devam edebilirsiniz. Uygulamanın kullanıcı ayarları bölümünde bu ayarları bulun. Daha fazla bilgi: [bir uygulamayı kullanıcının Azure Active Directory deneyiminden gizleyin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
 ![Uygulamaların nasıl gizlenmeyeceğini yapılandırma ekran görüntüsü](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
 
@@ -292,7 +296,7 @@ Self Servis uygulama erişimi, kullanıcıların uygulamalara erişimi kendi ken
 
 Uygulama erişim isteklerinin onayını iş onaylayanlara atayabilirsiniz. İş onaylayan, uygulama erişim parolalarını iş onaylayanın uygulamalar sayfasından ayarlayabilir.
 
-Daha fazla bilgi edinin: [Self servis uygulama erişimini kullanma](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
+Daha fazla bilgi: [self servis uygulama erişimini kullanma](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
 
 ![Self Servis uygulama yönetimini yapılandırma ekran görüntüsü](media/access-panel-deployment-plan/ap-dp-salesforce.png)
 
@@ -334,11 +338,11 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|
-| Yardım Masası Yöneticisi| Katman 1 desteği| Yok. |
+| Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok. |
+| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
-| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok. |
+| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) kullanabilirsiniz.
 

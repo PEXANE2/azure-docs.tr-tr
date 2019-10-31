@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268395"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175425"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API 'Leri çağıran masaüstü uygulaması-kod yapılandırması
 
@@ -28,13 +28,22 @@ Uygulamanızı oluşturduğunuza göre, kodun uygulamanın koordinatlarıyla nas
 
 ## <a name="msal-libraries"></a>MSAL kitaplıkları
 
-Şu anda birden çok platformda masaüstü uygulamalarını destekleyen tek MSAL kitaplığı MSAL.NET.
+Masaüstü uygulamalarını destekleyen Microsoft kitaplıkları şunlardır:
 
-İOS ve macOS için MSAL, yalnızca macOS 'ta çalışan masaüstü uygulamalarını destekler. 
+  MSAL kitaplığı | Açıklama
+  ------------ | ----------
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Birden çok platformda masaüstü uygulaması oluşturmayı destekler-Linux, Windows ve MacOS
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler. Geliştirme devam ediyor-genel önizlemede
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | , Bir masaüstü uygulamasının birden çok platformda oluşturulmasını destekler. Geliştirme devam ediyor-genel önizlemede
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Yalnızca macOS 'ta çalışan masaüstü uygulamalarını destekler
 
-## <a name="public-client-application-with-msalnet"></a>MSAL.NET ile ortak istemci uygulaması
+## <a name="public-client-application"></a>Ortak istemci uygulaması
 
-Bir görünüm noktasından, masaüstü uygulamaları ortak istemci uygulamalardır ve bu nedenle MSAL.NET `IPublicClientApplication`derlemenize ve işleyebileceksiniz. Etkileşimli kimlik doğrulaması kullanmanıza bakılmaksızın bir adım daha farklı olacaktır.
+Bir görünüm noktasından, masaüstü uygulamaları ortak istemci uygulamalardır. Yapılandırma etkileşimli kimlik doğrulaması kullanmanıza bakılmaksızın bir bit farklı olacaktır.
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+MSAL.NET `IPublicClientApplication`oluşturmanız ve güncelleştirmeniz gerekir.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -47,7 +56,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Yukarıda görüldüğü gibi etkileşimli kimlik doğrulama veya cihaz kod akışı kullanmayı düşünüyorsanız, `.WithRedirectUri` değiştiriciyi kullanmak istersiniz:
+Yukarıda görüldüğü gibi etkileşimli kimlik doğrulama veya cihaz kod akışı kullanmayı planlıyorsanız `.WithRedirectUri` değiştiricisini kullanmak istersiniz:
 
 ```CSharp
 IPublicClientApplication app;
@@ -98,14 +107,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Daha fazla bilgi edinin
+### <a name="learn-more"></a>Daha fazla bilgi
 
 MSAL.NET masaüstü uygulamasını yapılandırma hakkında daha fazla bilgi edinmek için:
 
-- Üzerinde `PublicClientApplicationBuilder`kullanılabilen tüm değiştiricilerin listesi için bkz. Reference documentation [publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- Bkz. `PublicClientApplicationOptions` [publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)içinde gösterilen tüm seçeneklerin açıklaması için başvuru belgeleri
+- `PublicClientApplicationBuilder`kullanılabilen tüm değiştiricilerin listesi için bkz. Reference documentation [Publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
+- `PublicClientApplicationOptions` gösterilen tüm seçeneklerin açıklaması için, başvuru belgelerindeki [Publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)bölümüne bakın
 
-## <a name="complete-example-with-configuration-options"></a>Yapılandırma seçenekleriyle birlikte tüm örnek
+### <a name="complete-example-with-configuration-options"></a>Yapılandırma seçenekleriyle birlikte tüm örnek
 
 Aşağıdaki `appsettings.json` yapılandırma dosyasına sahip bir .NET Core konsol uygulaması düşünün:
 
@@ -175,9 +184,32 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-ve `.Build()` yöntemine çağrıdan önce, daha önce görüldüğü gibi `.WithXXX` yöntemlere çağrılar ile yapılandırmanızı geçersiz kılabilirsiniz.
+`.Build()` yöntemine yapılan çağrıdan önce, daha önce görüldüğü gibi `.WithXXX` yöntemlerine yapılan çağrılarla yapılandırmanızı geçersiz kılabilirsiniz.
 
-## <a name="public-client-application-with-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL ile ortak istemci uygulaması
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Örnekleri yapılandırmak için MSAL Java dev örneklerinde kullanılan sınıf şunlardır: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_COMMON)
+        .build();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
 Aşağıdaki kod, bir iş ve okul hesabı ya da kişisel Microsoft hesabı Microsoft Azure genel bulutta oturum açan kullanıcıları ortak bir istemci uygulaması için başlatır.
 
@@ -187,7 +219,7 @@ Amaç-C:
 
 ```objc
 NSError *msalError = nil;
-    
+
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
@@ -210,12 +242,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -225,10 +257,11 @@ SWIFT
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

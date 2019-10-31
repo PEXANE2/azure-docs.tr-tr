@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592372"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172984"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -66,7 +66,7 @@ Desteklenen bir Azure hizmetine bağlanmak için iş yüklerinizin genel uç nok
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Onay iş akışı kullanarak bir özel bağlantı kaynağına erişim 
 Aşağıdaki bağlantı onay yöntemlerini kullanarak bir özel bağlantı kaynağına bağlanabilirsiniz:
-- Belirli özel bağlantı kaynağına sahip olduğunuzda veya izniniz olduğunda **otomatik olarak** onaylandı. Gerekli olan izin, özel bağlantı kaynak türüne aşağıdaki biçimde dayalıdır: Microsoft. \<Provider >/< resource_type >/privateEndpointConnectionApproval/action
+- Belirli özel bağlantı kaynağına sahip olduğunuzda veya izniniz olduğunda **otomatik olarak** onaylandı. Gerekli olan izin, özel bağlantı kaynak türüne aşağıdaki biçimde dayalıdır: Microsoft.\<sağlayıcısı >/< resource_type >/privateEndpointConnectionApproval/action
 - Gerekli izinlere sahip olmadığınız ve erişim istemek istediğiniz zaman **el ile** istek. Bir onay iş akışı başlatılacak. Özel uç nokta ve sonraki özel uç nokta bağlantısı "beklemede" durumunda oluşturulur. Özel bağlantı kaynağı sahibi bağlantıyı onaylamaya sorumludur. Onaylandıktan sonra, aşağıdaki onay iş akışı diyagramında gösterildiği gibi özel uç nokta trafiği normal şekilde göndermek üzere etkinleştirilir.  
 
 ![iş akışı onayı](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -81,7 +81,7 @@ Aşağıdaki bağlantı onay yöntemlerini kullanarak bir özel bağlantı kayna
 > Yalnızca onaylanan bir durumdaki özel uç nokta, belirli bir özel bağlantı kaynağına trafik gönderebilir. 
 
 ### <a name="connecting-using-alias"></a>Takma ad kullanarak bağlanma
-Diğer ad, hizmet sahibi bir standart yük dengeleyicinin arkasında özel bağlantı hizmeti oluşturduğunda oluşturulan benzersiz bir addır. Hizmet sahibi, bu diğer adı tüketicileriyle çevrimdışı olarak paylaşabilir. Tüketiciler, kaynak URI 'sini veya diğer adı kullanarak özel bağlantı hizmetine bağlantı isteğinde bulunabilir. Diğer adı kullanarak bağlanmak istiyorsanız, el ile bağlantı onay yöntemi kullanarak özel uç nokta oluşturmanız gerekir. El ile bağlantı onay yöntemi kullanmak için, Özel uç nokta oluşturma akışı sırasında el ile istek parametresini true olarak ayarlayın. Ayrıntılar için [New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) ve [az Network Private-Endpoint Create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) bölümüne bakın. 
+Diğer ad, hizmet sahibi bir standart yük dengeleyicinin arkasında özel bağlantı hizmeti oluşturduğunda oluşturulan benzersiz bir addır. Hizmet sahibi, bu diğer adı tüketicileriyle çevrimdışı olarak paylaşabilir. Tüketiciler, kaynak URI 'sini veya diğer adı kullanarak özel bağlantı hizmetine bağlantı isteğinde bulunabilir. Diğer adı kullanarak bağlanmak istiyorsanız, el ile bağlantı onay yöntemi kullanarak özel uç nokta oluşturmanız gerekir. El ile bağlantı onay yöntemi kullanmak için, Özel uç nokta oluşturma akışı sırasında el ile istek parametresini true olarak ayarlayın. Ayrıntılar için [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) ve [az Network Private-Endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) bölümüne bakın. 
 
 ## <a name="dns-configuration"></a>DNS yapılandırması 
 Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. Özel uç noktanız kullanılarak bağlanmak için bunun geçersiz kılınması gerekir. 
@@ -91,7 +91,7 @@ Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak
 Özel uç noktalar için DNS ayarlarınızı yapılandırmak üzere aşağıdaki seçenekleri kullanabilirsiniz: 
 - **Ana bilgisayar dosyasını kullanın (yalnızca test için önerilir)** . DNS 'yi geçersiz kılmak için bir sanal makinede ana bilgisayar dosyasını kullanabilirsiniz.  
 - **Özel BIR DNS bölgesi kullanın**. Belirli bir özel uç nokta için DNS çözümlemesini geçersiz kılmak üzere özel DNS bölgelerini kullanabilirsiniz. Özel bir DNS bölgesi, belirli etki alanlarını çözümlemek için sanal ağınıza bağlanabilir.
-- **Özel DNS sunucunuzu kullanın**. Belirli bir özel bağlantı kaynağı için DNS çözümlemesini geçersiz kılmak üzere kendi DNS sunucunuzu kullanabilirsiniz. DNS sunucunuz bir sanal ağ üzerinde barındırılıyorsa, tüm özel bağlantı kaynakları için yapılandırmayı basitleştirmek üzere özel bir DNS bölgesi kullanmak üzere bir DNS iletme kuralı oluşturabilirsiniz.
+- **Özel DNS sunucunuzu kullanın**. Belirli bir özel bağlantı kaynağı için DNS çözümlemesini geçersiz kılmak üzere kendi DNS sunucunuzu kullanabilirsiniz. [DNS sunucunuz](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bir sanal ağ üzerinde barındırılıyorsa, tüm özel bağlantı kaynakları için yapılandırmayı basitleştirmek üzere özel bir DNS bölgesi kullanmak üzere bir DNS iletme kuralı oluşturabilirsiniz.
  
 > [!IMPORTANT]
 > Ortak uç noktaları çözümlemek için etkin olarak kullanılan bir bölgenin geçersiz kılınması önerilmez. Kaynaklara bağlantılar, DNS iletimi olmadan genel DNS 'e iletilmeksizin doğru şekilde çözümlenemez. Sorunları önlemek için, farklı bir etki alanı adı oluşturun veya aşağıdaki her hizmet için önerilen adı izleyin. 
@@ -122,8 +122,6 @@ Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaları
 |Sınırlama |Açıklama |Risk azaltma  |
 |---------|---------|---------|
 |Ağ güvenlik grubu (NSG) kuralları ve Kullanıcı tanımlı yollar özel uç nokta için uygulanmıyor    |NSG özel uç noktalar üzerinde desteklenmez. Özel uç noktayı içeren alt ağlarda NSG ile ilişkili olabilir, kurallar özel uç nokta tarafından işlenen trafikte geçerli olmayacaktır. Bir alt ağda özel uç noktalar dağıtmak için [ağ ilkeleri zorlamasının devre dışı](disable-private-endpoint-network-policy.md) olması gerekir. NSG aynı alt ağda barındırılan diğer iş yükleri üzerinde de zorlanır. Herhangi bir istemci alt ağındaki rotalar bir/32 öneki kullanacaktır, varsayılan yönlendirme davranışının değiştirilmesi benzer bir UDR gerektirir  | Kaynak istemcilerde giden trafik için NSG kurallarını kullanarak trafiği denetleyin. Özel uç nokta yollarını geçersiz kılmak için/32 ön ekiyle tek tek yolları dağıtın        |
-|Hizmet uç noktası veya özel iş yükleri için etkinleştirilen alt ağlarda özel uç noktalar oluşturulamaz    |Özel uç noktalar, hizmet uç noktaları veya özel iş yükleri için temsilci atanmış alt ağlarda etkinleştirilmiş alt ağlarda dağıtılamaz|  Özel uç noktaları dağıtmak için ayrı bir alt ağ oluşturun.        |
-|Özel uç nokta yalnızca aynı bölgedeki özel bağlantı hizmetine (müşteriye ait) eşlenebilir    |   Farklı bir bölgeden özel bir bağlantı hizmetine (kendinizinkini) bağlanma desteklenmez       |  Önizleme süresince özel bağlantı hizmetinizi aynı bölgede dağıtmanız gerekir.        |
 |  Yalnızca özel uç noktalar içeren eşlenmiş sanal ağ desteklenmiyor   |   Başka iş yükü olmadan eşlenmiş bir sanal ağdaki özel uç noktalara bağlanırken bu desteklenmez       | Bağlantıyı etkinleştirmek için eşlenen sanal ağda tek bir VM dağıtın |
 |Özelleştirilmiş iş yükleri özel uç noktalara erişemez    |   Sanal ağınıza dağıtılan aşağıdaki hizmetler özel uç noktaları kullanarak herhangi bir özel bağlantı kaynağına erişemez:<br>App Service Planı</br>Azure Container Örneği</br>Azure NetApp Files</br>Azure Ayrılmış HSM<br>       |   Önizleme süresince risk azaltma.       |
 

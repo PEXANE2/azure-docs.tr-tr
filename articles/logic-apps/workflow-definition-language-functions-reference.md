@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1d5197f585fde5388fdafac887d6a1454d6131e9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968929"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177084"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps ve Microsoft Flow için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -2019,7 +2019,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parametre | Gereklidir | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*aralık* > | Yes | Tamsayı | Çıkarılacak belirtilen zaman birimi sayısı |
+| <*aralık* > | Yes | Tamsayı | Eklenecek belirtilen zaman birimi sayısı |
 | <*Timeunit* > | Yes | Dize | *Aralık*ile kullanılacak zaman birimi: "saniye", "dakika", "saat", "gün", "hafta", "ay", "yıl" |
 | <*biçim* > | Hayır | Dize | Tek bir [biçim belirticisi](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya bir [özel biçim deseninin](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)olması. Zaman damgası için varsayılan biçim, [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) ile uyumlu olan ve saat dilimi bilgilerini koruyan ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-mm-ddTHH: mm: ss: gönderildiğinde fffffffK biçiminde) şeklindedir. |
 |||||

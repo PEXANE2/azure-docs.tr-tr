@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 2bb66c52e48e2e872d7f67bfdea88602ba12e5de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e493ac10858aa374362d25f1467ded237b30ca44
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518596"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177411"
 ---
-# <a name="azure-notification-hubs-updates-for-ios-13"></a>İOS 13 için Azure Notification Hubs güncelleştirmeleri
+# <a name="azure-notification-hubs-updates-for-ios-13"></a>iOS 13 için Azure Notification Hubs güncelleştirmeleri
 
 Apple yakın zamanda genel gönderim hizmetinde bazı değişiklikler yaptı; değişiklikler genellikle iOS 13 ve Xcode sürümleriyle hizalanır. Bu makalede, bu değişikliklerin Azure Notification Hubs üzerindeki etkileri açıklanmaktadır.
 
@@ -23,7 +23,7 @@ Apple yakın zamanda genel gönderim hizmetinde bazı değişiklikler yaptı; de
 
 ### <a name="apns-push-type"></a>APNS gönderim türü
 
-Apple artık geliştiricilerin, APNS API 'sindeki yeni `apns-push-type` üst bilgisi aracılığıyla bildirimleri bir uyarı veya arka plan bildirimleri olarak belirlemesini gerektirir. [Apple belgelerine](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)göre: "bu üstbilginin değeri, bildirimin yükünün içeriğini doğru şekilde yansıtmalıdır. Bir uyuşmazlık varsa veya gerekli sistemlerde üst bilgi eksikse, APNs bir hata döndürebilir, bildirimin teslimini erteleyebilir veya onu tamamen bırakabilir. "
+Apple artık geliştiricilerin, APNS API 'sindeki yeni `apns-push-type` üst bilgisi aracılığıyla bildirimleri bir uyarı veya arka plan bildirimleri olarak belirlemesini gerektirir. [Apple belgelerine](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)göre: "bu üstbilginin değeri, bildirimin yükünün içeriğini doğru şekilde yansıtmalıdır. Bir uyumsuzluk varsa ya da gerekli sistemlerde üst bilgi yoksa APN’ler hata döndürebilir, bildirimi geç teslim edebilir veya tamamen bırakabilir."
 
 Geliştiricilerin artık bu üstbilgiyi Azure Notification Hubs aracılığıyla bildirim gönderen uygulamalarda ayarlaması gerekir. Teknik bir sınırlama nedeniyle, müşteriler bu özniteliği içeren isteklerle APNS kimlik bilgileri için belirteç tabanlı kimlik doğrulaması kullanmalıdır. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulaması ile geçiş yapmanız gerekir.
 
@@ -46,7 +46,7 @@ await hub.SendNotificationAsync(notification);
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
 var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
-var notification = new ApnsNotification("notification text", headers);
+var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
@@ -70,7 +70,7 @@ Arka plan bildirimleri için bu değerin 10 olarak ayarlanmasına artık izin ve
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
 var headers = new Dictionary<string, string> {{"apns-push-type", "background"}, { "apns-priority", "5" }};
-var notification = new ApnsNotification("notification text", headers);
+var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 

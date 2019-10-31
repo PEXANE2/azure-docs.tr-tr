@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 147d3dba2e2dc271d5b7422d7ba2b28c04f583af
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330634"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177122"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
 Bu makalede, Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarın nasıl ayarlanacağı gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevleri önlemeyi sağlayan, sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıfı geleneksel Bash betiklerini ve gelişmiş betikleri içerir. Gelişmiş betikler, Bash komutlarını ve Ruby 'yi birleştiren betiklerdir. Bu yaklaşım, Ruby 'nin kabuğa ve Bash komutlarına karşı etkileşimde bulunmak için veri geçmesini sağlar. 
@@ -32,19 +32,19 @@ Laboratuvar hesabını oluşturduktan sonra laboratuvar hesabında aşağıdaki 
 
 | Laboratuvar hesabı ayarı | Yönergeler |
 | ----------- | ------------ |  
-| Market görüntüleri | Laboratuar hesabınızda kullanmak için [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) | 
+| Market görüntüleri | Laboratuar hesabınızda kullanmak için [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünü etkinleştirin. Daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) | 
 
 Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu öğreticiyi](tutorial-setup-classroom-lab.md) izleyin:
 
 | Laboratuvar ayarları | Değer/yönergeler | 
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük  |
-| VM görüntüsü | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) |
+| VM görüntüsü | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
 | Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin, Uzak Masaüstü (RDP) kullanarak VM 'lerine bağlanmasına imkan tanır. Daha fazla bilgi için bkz. [Azure Lab Services bir laboratuvarda Linux sanal makineleri için Uzak Masaüstü 'Nü etkinleştirme](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Masaüstü ve xrdp 'yi yükler
-[Ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) görüntüsünde varsayılan olarak uzak masaüstü sunucusu yüklü değil. Uzak Masaüstü Protokolü aracılığıyla bağlanmak üzere şablon makinesinde gerekli olan paketleri yüklemek için, [Uzak Masaüstü 'Nü yüklemek ve yapılandırmak Için Azure 'da bir LINUX VM 'ye bağlanma](../../virtual-machines/linux/use-remote-desktop.md) makalesindeki yönergeleri izleyin.
+[Ubuntu server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) görüntüsünde varsayılan olarak uzak masaüstü sunucusu yüklü değil. Uzak Masaüstü Protokolü aracılığıyla bağlanmak üzere şablon makinesinde gerekli olan paketleri yüklemek için, [Uzak Masaüstü 'Nü yüklemek ve yapılandırmak Için Azure 'da bir LINUX VM 'ye bağlanma](../../virtual-machines/linux/use-remote-desktop.md) makalesindeki yönergeleri izleyin.
 
 ## <a name="install-ruby"></a>Ruby’yi yükleme
 Ruby, Bash betiklerle birleştirilebilecek açık kaynaklı bir dinamik dildir. Bu bölümde, [Ruby](https://www.ruby-lang.org/)'nin en son sürümünü yüklemek için `apt-get` ' ın nasıl kullanılacağı gösterilmektedir.

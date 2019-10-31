@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693259"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176458"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -216,7 +216,7 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 |timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |sslCipher| SSL iletişimi için kullanılan şifre paketi (SSL etkinse).|
-|sslProtocol| Kullanılmakta olan SSL protokolü (SSL etkinse).|
+|sslProtocol| Kullanılan SSL/TLS Protokolü (SSL etkinse).|
 |Sunucu yönlendirmeli| Application Gateway 'in isteği yönlendiren arka uç sunucusu.|
 |serverStatus| Arka uç sunucusunun HTTP durum kodu.|
 |serverResponseLatency| Arka uç sunucusundan gelen yanıtın gecikmesi.|

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073781"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176804"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Şablonları kullanarak Azure API Management Geliştirici Portalını Özelleştirme
 
@@ -30,11 +30,13 @@ Azure API Management'ta geliştirici portalını özelleştirmek için kullanıl
 
 Şablonlar, sistem tarafından oluşturulan geliştirici portalı sayfalarının (örneğin, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.) içeriğini özelleştirmek için kullanılır. [Dotlikit](http://dotliquidmarkup.org/) sözdizimi ve sağlanan yerelleştirilmiş dize kaynakları, simgeler ve sayfa denetimleri kullanılarak sayfaların içeriğini uygun gördüğünüz şekilde yapılandırmak için harika bir esneklik vardır.
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>Geliştirici portalı şablonlarına genel bakış
 
-Şablonları düzenleyici, yönetici olarak oturum açarken **Geliştirici portalından** yapılır. Önce Azure portalını açın ve API Management örneğinizin hizmet araç çubuğundan **Geliştirici Portalı** ' na tıklayın.
+Şablonları düzenleyici, yönetici olarak oturum açarken **Geliştirici portalından** yapılır. Önce Azure portal açın ve API Management örneğinizin hizmet araç çubuğundan **Geliştirici Portalı** ' na tıklayın.
 
 Geliştirici portalı şablonlarına erişmek için sol taraftaki Özelleştir simgesine tıklayarak özelleştirme menüsünü görüntüleyin ve **Şablonlar**' a tıklayın.
 
@@ -100,7 +102,7 @@ Her geliştirici portalı şablonunun Düzenleyicisi, sayfanın alt kısmında i
 }
 ```
 
-**Ürün listesi** şablonundaki biçimlendirme, bilgileri ve her bir ürüne yönelik bir bağlantıyı göstermek üzere ürünlerin toplanması yoluyla istenen çıktıyı sağlamak üzere verileri işler. İşaretlemede `<page-control>` ve öğelerini aklınızda yapın. `<search-control>` Bu denetim sayfada arama ve sayfalama denetimleri görüntülenir. `ProductsStrings|PageTitleProducts`, sayfanın `h2` üst bilgi metnini içeren yerelleştirilmiş bir dize başvurusudur. Geliştirici portalı şablonlarında kullanılabilecek dize kaynakları, sayfa denetimleri ve simgelerin bir listesi için, bkz. [API Management geliştirici portalı şablonları başvurusu](api-management-developer-portal-templates-reference.md).
+**Ürün listesi** şablonundaki biçimlendirme, bilgileri ve her bir ürüne yönelik bir bağlantıyı göstermek üzere ürünlerin toplanması yoluyla istenen çıktıyı sağlamak üzere verileri işler. İşaretlemede `<search-control>` ve `<page-control>` öğelerine göz önünde edin. Bu denetim sayfada arama ve sayfalama denetimleri görüntülenir. `ProductsStrings|PageTitleProducts`, sayfanın `h2` üst bilgi metnini içeren yerelleştirilmiş bir dize başvurusudur. Geliştirici portalı şablonlarında kullanılabilecek dize kaynakları, sayfa denetimleri ve simgelerin bir listesi için, bkz. [API Management geliştirici portalı şablonları başvurusu](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>

@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fddd95564e3683aaee067f0442573c41e93376dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 8d0d88f72cca45280bd76ac7bb9d7a6e0a1d37fb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264386"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175454"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulama kaydı
 
@@ -36,7 +36,7 @@ Bu arka plan programı uygulamalarının yalnızca Azure AD kiracılarında anla
 
 ## <a name="authentication---no-reply-uri-needed"></a>Kimlik doğrulama-yanıt URI 'SI gerekli değil
 
-Gizli istemci uygulamanızın **yalnızca** istemci kimlik bilgileri akışını kullanması durumunda, yanıt URL 'sinin kayıtlı olması gerekmez. Uygulama yapılandırması/oluşturma için gerekli değildir. İstemci kimlik bilgileri akışı bunu kullanmaz.
+Gizli istemci uygulamanızın **yalnızca** istemci kimlik bilgileri akışını kullanması durumunda, yanıt URI 'sinin kayıtlı olması gerekmez. Uygulama yapılandırması/oluşturma için gerekli değildir. İstemci kimlik bilgileri akışı bunu kullanmaz.
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API Izinleri-uygulama izinleri ve yönetici onayı
 
@@ -45,7 +45,7 @@ Daemon uygulaması, API 'lere yalnızca uygulama izinleri isteyebilir (temsilci 
 ![Uygulama izinleri ve yönetici onayı](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> Çağırmak istediğiniz Web API 'sinin, temsilci izinleri değil **Uygulama izinleri (uygulama rolleri)** tanımlamasına ihtiyacı vardır. Böyle bir API 'yi kullanıma sunma hakkında daha fazla bilgi için [bkz. korumalı Web API 'si: Uygulama kaydı-Web API 'niz bir Daemon uygulaması tarafından çağrıldığında](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)
+> Çağırmak istediğiniz Web API 'sinin, temsilci izinleri değil **Uygulama izinleri (uygulama rolleri)** tanımlamasına ihtiyacı vardır. Böyle bir API 'yi kullanıma sunma hakkında daha fazla bilgi için bkz [. Protected Web API: uygulama kaydı-Web API 'niz bir Daemon uygulaması tarafından çağrıldığında](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
 
 Daemon uygulamalarının, Web API 'sini çağıran uygulama için bir kiracı yöneticisi ön onayını olması gerekir. Bu izin, kiracı yöneticisinin  ***kuruluşa* yönetici izni ver** ' i seçen aynı **API izin** sayfasında sağlanır
 

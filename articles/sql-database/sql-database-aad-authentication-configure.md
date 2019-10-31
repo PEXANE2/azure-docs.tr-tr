@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 10/16/2019
-ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550711"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177643"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
@@ -208,7 +208,7 @@ Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kul
 
 ### <a name="azure-portal"></a>Azure portalı
 
-1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.)  ![choose-ad ][8]
+1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.) ![seçin-ad][8]
 
 2. Sol başlıkta **tüm hizmetler**' i ve **SQL Server**'daki filtre türü ' nü seçin. **SQL sunucuları**' nı seçin.
 
@@ -218,13 +218,13 @@ Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kul
     > Bu sayfada, **SQL Server**'ı seçmeden önce, kategorinin en *sevdiğiniz* adı yanındaki **yıldızı** seçip sol gezinti çubuğuna **SQL sunucuları** ekleyebilirsiniz.
 
 3. **SQL Server** sayfasında, **Active Directory yönetici**' yi seçin.
-4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla**' yı seçin.   Active Directory ](./media/sql-database-aad-authentication/select-active-directory.png) ![select  
+4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla**' yı seçin.  Active Directory](./media/sql-database-aad-authentication/select-active-directory.png) ![seçin  
 
 5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya SQL veri ambarı ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](sql-database-aad-authentication.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz.
-    Yönetici ](./media/sql-database-aad-authentication/select-admin.png) ![select  
+    Yönetici](./media/sql-database-aad-authentication/select-admin.png) ![seçin  
 
 6. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet**' i seçin.
-    Yönetici ](./media/sql-database-aad-authentication/save-admin.png) ![save
+    Yönetici](./media/sql-database-aad-authentication/save-admin.png) ![Kaydet
 
 Yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Ardından yeni yönetici **Active Directory yönetici** kutusunda görünür.
 
@@ -306,7 +306,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [az SQL Server](https://do
 
 Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanarak Azure SQL veritabanı veya Azure SQL veri ambarı 'na bağlandığı tüm istemci makinelerde aşağıdaki yazılımları yüklemelisiniz:
 
-- [@No__t_1](https://msdn.microsoft.com/library/5a4x27ek.aspx).NET Framework 4,6 veya üzeri.
+- [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).NET Framework 4,6 veya üzeri.
 - SQL Server için Azure Active Directory kimlik doğrulama kitaplığı (**Adalsql. DLL**), [Microsoft SQL Server için Microsoft Active Directory Authentication Library](https://www.microsoft.com/download/details.aspx?id=48742)'de bulunan İndirme Merkezi 'nden birden çok dilde (x86 ve AMD64) kullanılabilir.
 
 Bu gereksinimleri şu şekilde karşılayabilirsiniz:
@@ -465,7 +465,7 @@ Daha fazla bilgi için bkz. [güvenlik blogu SQL Server](https://blogs.msdn.micr
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Aşağıdaki deyimler, [Indirme merkezinden](https://go.microsoft.com/fwlink/?LinkID=825643)erişilebilen sqlcmd sürüm 13,1 ' i kullanarak bağlanır.
+Aşağıdaki deyimler, [Indirme merkezinden](https://www.microsoft.com/download/details.aspx?id=53591)erişilebilen sqlcmd sürüm 13,1 ' i kullanarak bağlanır.
 
 > [!NOTE]
 > `-G` komutuyla `sqlcmd` sistem kimlikleriyle çalışmaz ve Kullanıcı sorumlusu oturumu gerektirir.

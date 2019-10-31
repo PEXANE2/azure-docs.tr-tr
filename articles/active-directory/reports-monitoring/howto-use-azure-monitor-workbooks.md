@@ -11,17 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 10/29/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5e498dcb39f62fc870bc7efa989b91caeac0dedc
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819724"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175903"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
+
+> [!IMPORTANT]
+> Bu çalışma kitabındaki temeldeki sorguları iyileştirmek için lütfen "Düzenle" ye tıklayın, ayarlar simgesine tıklayın ve bu sorguları çalıştırmak istediğiniz çalışma alanını seçin. Çalışma kitapları varsayılan olarak, Azure AD günlüklerinizi yönlendirçalıştığınız tüm çalışma alanlarını seçer. 
 
 Şunları yapmak istiyor musunuz:
 
@@ -31,7 +34,17 @@ ms.locfileid: "72819724"
 
 - Ortamınızda oturum açmak için kimin eski kimlik doğrulamaları kullandığını öğrenin. ( [Eski kimlik doğrulamasını engelleyerek](../conditional-access/block-legacy-authentication.md)kiracınızın korumasını geliştirebilirsiniz.)
 
-Bu soruları ele almanıza yardımcı olmak Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir. 
+- Kiracınızdaki koşullu erişim ilkelerinin etkisini anlamanız gerekiyor mu?
+
+- ' Nin gözden geçirilmesini sağlamak istiyor musunuz: oturum açma günlüğü sorguları, çalışma kitabı, erişim izni verilen veya reddedilen kullanıcı sayısı ve kaynaklara erişirken kaç kullanıcının koşullu erişim ilkelerini atladığını bildiriyor mu?
+
+- Daha ayrıntılı bir şekilde anlaşılmakla ilgileniyor: bir ilkenin etkisinin cihaz platformu, cihaz durumu, istemci uygulaması, oturum açma riski, konum ve uygulama dahil olmak üzere koşula göre ayarlanabilir olması için her koşulda çalışma kitabı ayrıntıları.
+
+- Oturum açma günlüğü sorguları hakkında daha derin Öngörüler elde edin. çalışma kitabı, kaç kullanıcının erişim izni verildiğini veya reddedildiğini, Ayrıca kaynaklara erişirken kaç kullanıcının koşullu erişim ilkelerini atladığını bildirir.
+
+- Bu soruları ele almanıza yardımcı olmak Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir.
+
+
 
 Bu makalede:
 
@@ -57,7 +70,7 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
     - Genel yönetici
 
 ## <a name="roles"></a>Roller
-Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
+Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
 -   Genel yönetici
 -   Güvenlik Yöneticisi
 -   Güvenlik okuyucusu
@@ -170,7 +183,43 @@ Devre dışı bırakılan oturum açma işlemleri için, koşullu erişim durumu
 ![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>Koşullu Erişim İçgörüleri
 
+### <a name="overview"></a>Genel Bakış
+
+Çalışma kitapları, BT yöneticilerinin kiracılarındaki koşullu erişim ilkelerinin etkilerini izlemelerine yardımcı olabilecek oturum açma günlüğü sorgularını içerir. Erişim izni verilen veya reddedilen kullanıcı sayısını rapor etme olanağınız vardır. Çalışma kitabı, oturum açma sırasında bu kullanıcıların özniteliklerine göre koşullu erişim ilkelerinin kaç Kullanıcı tarafından atlandığını açıklamaktadır. İlke, cihaz platformu, cihaz durumu, istemci uygulaması, oturum açma riski, konum ve uygulama dahil olmak üzere her koşulda ayarlanabilir hale gelecek şekilde durum ayrıntılarını içerir.
+
+### <a name="instructions"></a>Yönergeler 
+Koşullu erişim öngörüleri için çalışma kitabına erişmek üzere koşullu erişim bölümünde **koşullu erişim öngörüleri** çalışma kitabını seçin. Bu çalışma kitabı, kiracınızdaki her bir koşullu erişim ilkesinin beklenen etkisini gösterir. Aşağıdaki filtreleri uygulayarak, açılan listeden bir veya daha fazla koşullu erişim ilkesi seçin ve çalışma kitabının kapsamını daraltın: 
+
+- **Zaman aralığı**
+
+- **Kullanıcısını**
+
+- **Gör**
+
+- **Veri görünümü**
+
+![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+
+
+Etki Özeti, seçilen ilkelerin belirli bir sonuç aldığı Kullanıcı veya oturum açma sayısını gösterir. Toplam, seçilen ilkelerin seçili zaman aralığında değerlendirildiği Kullanıcı veya oturum açma işlemlerinin sayısıdır. Çalışma kitabındaki verileri ilgili sonuç türü ile filtrelemek için bir kutucuğa tıklayın. 
+
+![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+
+Bu çalışma kitabı, seçilen ilkelerin altı koşuldan her biri tarafından ayrılmış etkisini de gösterir: 
+- **Cihaz durumu**
+- **Cihaz platformu**
+- **İstemci uygulamaları**
+- **Oturum açma riski**
+- **Konum**
+- **Uygulamalar**
+
+![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+Ayrıca, çalışma kitabında seçilen parametrelere göre filtreleyerek tek tek oturum açma işlemlerini de inceleyebilirsiniz. Bireysel kullanıcıları arayın, oturum açma sıklığına göre sıralanmış ve ilgili oturum açma olaylarını görüntüleyin. 
+
+![Koşullu erişim durumu](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 
@@ -211,7 +260,7 @@ Her eğilim için, uygulama ve protokole göre bir döküm alırsınız.
 
 ## <a name="sign-ins-failure-analysis"></a>Oturum açma hatası Analizi
 
-Hata gidermek için **oturum açma hatası çözümleme** çalışma kitabını aşağıdaki gibi kullanın:
+Hataları gidermek için **oturum açma hatası analiz** çalışma kitabını kullanın:
 
 - Oturum açma işlemleri
 - Koşullu erişim ilkeleri

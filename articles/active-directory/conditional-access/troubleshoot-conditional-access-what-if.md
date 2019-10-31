@@ -11,20 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278506"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175829"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If aracını kullanarak koşullu erişim sorunlarını giderme
 
 Koşullu erişim 'teki [What If aracı](what-if-tool.md) , bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda uygulanabileceğini anlamaya çalışırken etkili olur.
 
-What If Aracı, **Azure Portal** > **Azure Active Directory** > **koşullu erişim** > **What If**bulunur.
+What If Aracı, > **koşullu erişim** > **What If** **Azure Portal** > **Azure Active Directory** bulunur.
 
 ![Koşullu erişim What If aracı varsayılan durumda](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> What If aracı şu anda ilkeleri yalnızca rapor modunda değerlendirmez.
 
 ## <a name="gathering-information"></a>Bilgi toplanıyor
 
@@ -34,7 +37,7 @@ Aşağıdaki ek bilgiler isteğe bağlıdır, ancak belirli durumlar için kapsa
 
 * Bulut uygulamaları veya eylemleri
 * IP adresi 
-* Country
+* Ülke
 * Cihaz platformu
 * İstemci uygulamaları (Önizleme)
 * Cihaz durumu (Önizleme) 
@@ -75,4 +78,4 @@ Bu test, kapsamı daraltmak için diğer veri noktalarını içerecek şekilde g
 * [Koşullu erişim nedir?](overview.md)
 * [Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview-v2.md)
 * [Cihaz kimliği nedir?](../devices/overview.md)
-* [Nasıl çalışır? Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Nasıl çalışır: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

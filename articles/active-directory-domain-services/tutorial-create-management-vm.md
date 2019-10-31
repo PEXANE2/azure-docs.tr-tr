@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619099"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172346"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -101,7 +101,7 @@ Azure AD DS yönetilen etki alanları, Active Directory Yönetim Merkezi (ADAC) 
 
 Etki alanına katılmış bir VM 'ye Active Directory Yönetim Araçları 'nı yüklemek için aşağıdaki adımları izleyin:
 
-1. **Sunucu Yöneticisi** , VM 'de oturum açtığınızda varsayılan olarak açılmalıdır. Aksi takdirde, **Başlat** menüsünde **Sunucu Yöneticisi**' yi seçin.
+1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi**öğesini seçin.
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
 1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
@@ -131,13 +131,15 @@ Yönetim Araçları yüklüyken Azure AD DS yönetilen etki alanını yönetmek 
 
 1. Azure AD DS yönetilen etki alanına ait olan kullanıcıları ve grupları görmek için **Aaddc kullanıcıları** kapsayıcısını seçin. Azure AD kiracınızdaki Kullanıcı hesapları ve grupları bu kapsayıcıda listelenmiştir.
 
-    Aşağıdaki örnek çıktıda, *contosoadmin* adlı bir kullanıcı hesabı ve *AAD DC yöneticileri* için bir grup bu kapsayıcıda gösterilmektedir.
+    Aşağıdaki örnek çıktıda, *contoso Yöneticisi* adlı bir kullanıcı hesabı ve *AAD DC yöneticileri* için bir grup bu kapsayıcıda gösterilmiştir.
 
     ![Active Directory Yönetim Merkezi Azure AD DS etki alanı kullanıcılarının listesini görüntüleyin](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. Azure AD DS yönetilen etki alanına katılmış bilgisayarları görmek için **Aaddc bilgisayarları** kapsayıcısını seçin. Geçerli sanal makine için *Myvm*gibi bir giriş listelenir. Azure AD DS tarafından yönetilen etki alanına katılmış tüm bilgisayarlar için bilgisayar hesapları, bu *Aaddc bilgisayarları* kapsayıcısında depolanır.
 
-Kullanıcı hesabı parolasını sıfırlama veya grup üyeliğini yönetme gibi genel Active Directory Yönetim Merkezi eylemler kullanılabilir. Ayrıca, yönetim araçlarının bir parçası olarak yüklenen *Windows PowerShell için Active Directory modülünü*, Azure AD DS yönetilen etki alanında sık kullanılan eylemleri yönetmek için de kullanabilirsiniz.
+Kullanıcı hesabı parolasını sıfırlama veya grup üyeliğini yönetme gibi genel Active Directory Yönetim Merkezi eylemler kullanılabilir. Bu eylemler yalnızca Azure AD DS yönetilen etki alanında doğrudan oluşturulan kullanıcılar ve gruplar için çalışır. Kimlik bilgileri yalnızca Azure AD *'Den* Azure AD DS eşitlenir. Azure AD DS 'den Azure AD 'ye geri yazma yok. Azure AD 'den eşitlenen kullanıcılar için parolaları veya yönetilen grup üyeliklerini değiştiremezsiniz ve bu değişiklikleri geri eşitlenmiş olacak şekilde değiştirebilirsiniz.
+
+Ayrıca, yönetim araçlarının bir parçası olarak yüklenen *Windows PowerShell için Active Directory modülünü*, Azure AD DS yönetilen etki alanında sık kullanılan eylemleri yönetmek için de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -125,6 +125,8 @@
     - name: Bakım ve güncelleştirmeler
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: Düzenleme modları
+      href: orchestration-modes.md
     - name: Disk depolama
       items:
         - name: Yönetilen Diskler

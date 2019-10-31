@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketini gizleme veya silme-Azure Active Directory
-description: Azure Active Directory yetkilendirme yönetimi 'nde (Önizleme) bir erişim paketini gizlemeyi veya silmeyi öğrenin.
+title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketini gizleme veya silme-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketini gizlemeyi veya silmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6f3a86d8e88ee2d7465fd32bde7b7555f1f326
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4391cd20f3919e8def28fa3c1d5007f91b2d9f0b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389180"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174755"
 ---
-# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketini gizleme veya silme
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketini gizleme veya silme
 
 Erişim paketleri varsayılan olarak bulunabilir. Bu, bir ilke bir kullanıcının erişim paketini istemesine izin veriyorsa, erişim paketini otomatik olarak erişim portalı 'nda listelenmiş olarak görebilecekleri anlamına gelir. Ancak, **gizli** ayarı, erişim paketinin Kullanıcı erişim portalı 'nda listelenmemesi için değiştirebilirsiniz.
 

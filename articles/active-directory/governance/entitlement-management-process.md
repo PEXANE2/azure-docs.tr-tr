@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) işlem ve e-posta bildirimleri isteme-Azure Active Directory
-description: Erişim paketi için istek süreci ve Azure Active Directory yetkilendirme yönetimi 'nde (Önizleme) e-posta bildirimlerinin gönderilme hakkında bilgi edinin.
+title: Azure AD Yetkilendirme Yönetimi 'nde işlem ve e-posta bildirimleri isteme-Azure Active Directory
+description: Erişim paketi için istek süreci ve Azure Active Directory yetkilendirme yönetimi 'nde e-posta bildirimleri gönderildiğinde öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.openlocfilehash: 6a1ce3b2cb72a7b57e556e09264cb5bd421eda0f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678140"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173748"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) işlem ve e-posta bildirimleri iste
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde işlem ve e-posta bildirimleri iste
 
 Bir Kullanıcı bir erişim paketine istek gönderdiğinde, bu isteği sunmaya yönelik bir işlem başlatılır. Azure AD Yetkilendirme Yönetimi, işlem sırasında önemli olaylar gerçekleştiğinde onaylayanlara ve istek Lara e-posta bildirimleri de gönderir.
 
@@ -40,14 +35,14 @@ Erişim paketine erişmesi gereken bir Kullanıcı, erişim isteği gönderebili
 
 ![Onay işlemi diyagramı](./media/entitlement-management-process/request-process.png)
 
-| Durum | Açıklama |
+| Eyalet | Açıklama |
 | --- | --- |
-| Gönderildi | Kullanıcı bir istek gönderir. |
+| Gönderme | Kullanıcı bir istek gönderir. |
 | Onay bekleniyor | Bir erişim paketinin ilkesi onay gerektiriyorsa, bir istek bekleyen onaya gider. |
-| Süresi dolmuş | Onay isteği zaman aşımı içinde bir onaylayan isteği onaylamadıysanız, isteğin süresi dolar. Yeniden denemek için, kullanıcının isteklerini yeniden göndermek zorunda kalır. |
-| Engellendi | Onaylayan bir isteği reddeder. |
+| Süresi doldu | Onay isteği zaman aşımı içinde bir onaylayan isteği onaylamadıysanız, isteğin süresi dolar. Yeniden denemek için, kullanıcının isteklerini yeniden göndermek zorunda kalır. |
+| Reddedildiğinde | Onaylayan bir isteği reddeder. |
 | Onaylandı | Onaylayan bir isteği onaylar. |
-| Teslim ediliyor | Kullanıcıya erişim paketindeki tüm kaynaklara erişim atanmamış. Bu bir dış Kullanıcı ise, Kullanıcı henüz kaynak dizinine erişmemiş ve onay isteğini kabul etmiş olabilir. |
+| Sunma | Kullanıcıya erişim paketindeki tüm kaynaklara **erişim atanmamış.** Bu bir dış Kullanıcı ise, Kullanıcı henüz kaynak dizinine erişmemiş ve onay isteğini kabul etmiş olabilir. |
 | Teslim Edildi | Kullanıcıya erişim paketindeki tüm kaynaklara erişim atandı. |
 | Genişletilmiş erişim | İlkede uzantılara izin veriliyorsa Kullanıcı atamayı genişletti. |
 | Erişim zaman aşımına uğradı | Kullanıcının erişim paketine erişiminin süresi doldu. Yeniden erişim sağlamak için kullanıcının bir istek göndermesi gerekir. |
@@ -62,14 +57,14 @@ Aşağıdaki tabloda, bu e-posta bildirimlerinin her biri hakkında daha ayrınt
 
 | # | E-posta konusu | Gönderildiğinde | Gönderildiği yer |
 | --- | --- | --- | --- |
-| 1\. | Eylem gerekiyor: [ *İstek sahibi]* kaynağından [ *Date] tarihine* kadar [ *erişim paketine]* erişim isteğini gözden geçirin | İstek sahibi bir erişim paketi isteği gönderdiğinde | Tüm onaylayanlar |
-| 2 | Eylem gerekiyor: [ *İstek sahibi]* kaynağından [ *Date] tarihine* kadar [ *erişim paketine]* erişim isteğini gözden geçirin | Onay isteği zaman aşımından önceki X gün | Tüm onaylayanlar |
-| 3 | Durum bildirimi: [ *istek sahibi]* için *[erişim paketi]* erişim isteğinin süresi doldu | Onaylayanlar istek süresi içinde bir erişim isteğini onaylamaz veya reddetmez | İstek sahibi |
+| 1 | Eylem gerekli: [ *Date] tarihine* kadar [ *istek sahibi]* kaynağından *[erişim paketine]* erişim isteğini gözden geçirin | İstek sahibi bir erişim paketi isteği gönderdiğinde | Tüm onaylayanlar |
+| 2 | Eylem gerekli: [ *Date] tarihine* kadar [ *istek sahibi]* kaynağından *[erişim paketine]* erişim isteğini gözden geçirin | Onay isteği zaman aşımından önceki X gün | Tüm onaylayanlar |
+| 3 | Durum bildirimi: [ *istek sahibi]* için *[erişim paketi]* erişim isteğinin süresi doldu | Onaylayanlar istek süresi içinde bir erişim isteğini onaylamaz veya reddetmez | Sahibinin |
 | 4 | Durum bildirimi: [ *istek sahibi]* *[erişim paketi]* için erişim isteği tamamlandı | İlk onaylayan bir erişim isteğini onayladığında veya reddettiğinde | Tüm onaylayanlar |
-| 5 | *[Erişim paketi]* erişimi reddedildi | Bir istek sahibinin erişim paketine erişimi reddedildiğinde | İstek sahibi |
-| 6 | Artık *[erişim paketi]* erişiminiz var  | İstek sahibine erişim paketindeki her kaynağa erişim verildiğinde | İstek sahibi |
-| 7 | *[Erişim paketi]* erişiminizin süresi X gün içinde doluyor | İstek sahibinin erişim paketine erişiminin süresi dolmadan X gün önce | İstek sahibi |
-| 8 | *[Erişim paketi]* erişiminizin süresi doldu | İstek sahibinin bir erişim paketine erişimi sona erdiğinde | İstek sahibi |
+| 5 | *[Erişim paketi]* erişimi reddedildi | Bir istek sahibinin erişim paketine erişimi reddedildiğinde | Sahibinin |
+| 6 | Artık *[erişim paketi]* erişiminiz var  | İstek sahibine erişim paketindeki her kaynağa erişim verildiğinde | Sahibinin |
+| 7 | *[Erişim paketi]* erişiminizin süresi X gün içinde doluyor | İstek sahibinin erişim paketine erişiminin süresi dolmadan X gün önce | Sahibinin |
+| 8 | *[Erişim paketi]* erişiminizin süresi doldu | İstek sahibinin bir erişim paketine erişimi sona erdiğinde | Sahibinin |
 
 ### <a name="access-request-emails"></a>Erişim isteği e-postaları
 

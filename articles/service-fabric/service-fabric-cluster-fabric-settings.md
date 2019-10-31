@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882011"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177800"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, *Kümeconfig. JSON* dosyasını güncelleştirerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -131,14 +131,14 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 |Appetwtracedeletionageındays |Int, varsayılan 3 ' dir | Dinamik |Uygulama ETW izlemeleri içeren eski ETL dosyalarını silediğimiz gün sayısı. |
 |ApplicationLogsFormatVersion |int, varsayılan değer 0 ' dır | Dinamik |Uygulama günlüklerinin biçimi için sürüm. Desteklenen değerler 0 ve 1 ' dir. Sürüm 1, ETW olay kaydından sürüm 0 ' dan daha fazla alan içerir. |
 |AuditHttpRequests |Bool, varsayılan değer false | Dinamik | HTTP denetimini açın veya kapatın. Denetimin amacı, kümede gerçekleştirilen etkinlikleri görsağlamaktır; isteği kimin başlattığını de kapsayan. Bunun en iyi deneme günlüğü olduğunu unutmayın; ve izleme kaybı oluşabilir. "Kullanıcı" kimlik doğrulaması ile HTTP istekleri kaydedilmez. |
-|Capturehttptelemetri|Bool, varsayılan değer false | Dinamik | HTTP telemetrisini açın veya kapatın. Telemetri amacı, gelecekteki işleri planlamak ve sorun bölgelerini belirlemek için telemetri verilerini yakalamaya Service Fabric içindir. Telemetri, kişisel verileri veya istek gövdesini kaydetmez. Telemetri, aksi yapılandırılmadığı takdirde tüm HTTP isteklerini yakalar. |
+|Capturehttptelemetri|Bool, varsayılan değer doğru | Dinamik | HTTP telemetrisini açın veya kapatın. Telemetri amacı, gelecekteki işleri planlamak ve sorun bölgelerini belirlemek için telemetri verilerini yakalamaya Service Fabric içindir. Telemetri, kişisel verileri veya istek gövdesini kaydetmez. Telemetri, aksi yapılandırılmadığı takdirde tüm HTTP isteklerini yakalar. |
 |Lclusterıd |Dize | Dinamik |Kümenin benzersiz kimliği. Bu, küme oluşturulduğunda üretilir. |
 |Consumerınstances |Dize | Dinamik |DCA tüketici örneklerinin listesi. |
 |Diskfullsafetyspaceınmb |Int, varsayılan değer 1024 ' dir | Dinamik |DCA tarafından kullanımı korumak için MB cinsinden kalan disk alanı. |
 |Enablebir Ratracesession |Bool, varsayılan değer false | Statik |Bayrak, dairesel izleme oturumlarının kullanılması gerekip gerekmediğini belirtir. |
 |EnablePlatformEventsFileSink |Bool, varsayılan değer false | Statik |Diske yazılan platform olaylarını etkinleştir/devre dışı bırak |
 |EnableTelemetry |Bool, varsayılan değer doğru | Dinamik |Bu, Telemetriyi etkinleştirir veya devre dışı bırakır. |
-|Failuıresonlyhttptelemetri | Bool, varsayılan değer doğru | Dinamik | HTTP telemetri yakalaması etkinse; yalnızca başarısız istekleri yakala. Bu, telemetri için oluşturulan olayların sayısını kesmeye yardımcı olur. |
+|Failuıresonlyhttptelemetri | Bool, varsayılan değer false | Dinamik | HTTP telemetri yakalaması etkinse; yalnızca başarısız istekleri yakala. Bu, telemetri için oluşturulan olayların sayısını kesmeye yardımcı olur. |
 |HttpTelemetryCapturePercentage | int, varsayılan değer 50 ' dir | Dinamik | HTTP telemetri yakalaması etkinse; isteklerin yalnızca rastgele yüzdesini yakala. Bu, telemetri için oluşturulan olayların sayısını kesmeye yardımcı olur. |
 |Maxdiskquocontainer MB |Int, varsayılan değer 65536 ' dir | Dinamik |Windows Fabric günlük dosyaları için disk kotası (MB). |
 |ProducerInstances |Dize | Dinamik |DCA üreticisi örneklerinin listesi. |

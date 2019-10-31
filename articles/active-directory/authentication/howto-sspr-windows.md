@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042072"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171856"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
@@ -24,29 +24,10 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 
 ![Örnek Windows 7 ve SSPR bağlantısı ile 10 oturum açma ekranı gösteriliyor](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>Genel önkoşullar
-
-- Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
-- **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
-- Ağ proxy 'si gereksinimleri
-   - Windows 10 cihazları 
-       - `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com` bağlantı noktası 443
-       - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
-   - Windows 7, 8 ve 8,1 cihazları
-       - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com`
-
 ## <a name="general-limitations"></a>Genel sınırlamalar
 
 - Parola sıfırlama, uzak bir masaüstünden veya Hyper-V gelişmiş oturumlarından Şu anda desteklenmiyor.
 - Bu özellik, 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda ve "Kullanıcı oturum açmadan hemen önce gerçekleştir" seçeneği için çalışmaz. 802.1 x ağ kimlik doğrulaması dağıtılan ağlarda, bu özelliği etkinleştirmek için makine kimlik doğrulamasının kullanılması önerilir.
-
-## <a name="windows-10-password-reset"></a>Windows 10 parola sıfırlama
-
-### <a name="windows-10-specific-prerequisites"></a>Windows 10 belirli Önkoşullar
-
-- En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:
-    - Azure AD 'ye katılmış
-    - Karma Azure AD 'ye katılmış
 - Hibrit Azure AD 'ye katılmış makineler, yeni parolayı kullanmak ve önbelleğe alınmış kimlik bilgilerini güncelleştirmek için bir etki alanı denetleyicisine görüşün ağ bağlantısı hattına sahip olmalıdır.
 - Bir görüntü kullanıyorsanız, Sysprep 'i çalıştırmadan önce, CopyProfile adımını gerçekleştirmeden önce yerleşik yönetici için Web önbelleğinin temizlendiğinden emin olun. Bu adım hakkında daha fazla bilgi, [özel varsayılan kullanıcı profili kullanılırken destek makalesinde performans düşüklede](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)bulunabilir.
 - Aşağıdaki ayarların Windows 10 cihazlarında parola kullanma ve sıfırlama yeteneğinin kesintiye uğratabileceği bilinmektedir
@@ -60,7 +41,21 @@ Windows 7, 8, 8,1 ve 10 çalıştıran makineler için, Windows oturum açma ekr
 - Aşağıdaki belirli üç ayarların birleşimi bu özelliğin çalışmamasına neden olabilir.
     - Etkileşimli oturum açma: CTRL + ALT + DEL = devre dışı isteme
     - DisableLockScreenAppNotifications = 1 veya etkin
-    - Icontentdeliverypolicyenzorlanmış = 1 veya doğru 
+    - Icontentdeliverypolicyenzorlanmış = 1 veya doğru
+
+## <a name="windows-10-password-reset"></a>Windows 10 parola sıfırlama
+
+### <a name="windows-10-prerequisites"></a>Windows 10 önkoşulları
+
+- Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
+- **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
+- Ağ proxy 'si gereksinimleri
+   - Windows 10 cihazları 
+       - `passwordreset.microsoftonline.com` ve `ajax.aspnetcdn.com` bağlantı noktası 443
+       - Windows 10 cihazları yalnızca makine düzeyinde ara sunucu yapılandırmasını destekler
+- En az Windows 10, sürüm 2018 Güncelleştirmesi (v1803) çalıştırın ve cihazların şunlardan biri olması gerekir:
+    - Azure AD 'ye katılmış
+    - Karma Azure AD 'ye katılmış
 
 ### <a name="enable-for-windows-10-using-intune"></a>Intune kullanarak Windows 10 için etkinleştirme
 
@@ -94,7 +89,6 @@ Oturum açma ekranından parola sıfırlama yapılmasını sağlayan yapılandı
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Windows 10 parola sıfırlama sorunlarını giderme
 
 Azure AD denetim günlüğü parola sıfırlamanın oluştuğu yerin IP adresi ve ClientType'ı hakkında bilgi içerir.
@@ -105,8 +99,13 @@ Kullanıcılar, Windows 10 cihazının oturum açma ekranından parolalarını s
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 ve 8,1 parola sıfırlama
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Windows 7, 8 ve 8,1 özgü Önkoşullar
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 ve 8,1 önkoşulları
 
+- Bir yöneticinin Azure portal Azure AD self servis parola sıfırlaması etkinleştirmesi gerekir.
+- **Bu özelliği kullanmadan önce kullanıcıların SSPR 'ye kaydolması gerekir**
+- Ağ proxy 'si gereksinimleri
+   - Windows 7, 8 ve 8,1 cihazları
+       - 443 numaralı bağlantı noktası `passwordreset.microsoftonline.com`
 - Düzeltme eki uygulanan Windows 7 veya Windows 8.1 Işletim sistemi.
 - TLS 1,2, [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)'nda bulunan kılavuzluk kullanılarak etkinleştirildi.
 - Makinenizde birden fazla 3. taraf kimlik bilgisi sağlayıcısı etkinse, kullanıcılar oturum açma ekranında birden fazla Kullanıcı profili görür.
@@ -151,7 +150,7 @@ Windows cihazlarınız için parola sıfırlamayı yapılandırdığınıza gör
 
 Kullanıcılar oturum açmaya çalıştığında, oturum açma ekranında self servis parola sıfırlama deneyimini açan parolayı **Sıfırla** veya **parolayı unutma** bağlantısını görür. Bu işlev kullanıcıların web tarayıcısına erişmek için başka bir cihaz kullanmalarına gerek kalmadan parolalarını sıfırlamalarına olanak tanır.
 
-Kullanıcılarınız bu özelliği kullanma yönergelerini [İş veya okul parolanızı sıfırlama](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) konusunda bulabilirler
+Kullanıcılarınız bu özelliği kullanma yönergelerini [İş veya okul parolanızı sıfırlama](../user-help/active-directory-passwords-update-your-own-password.md) konusunda bulabilirler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

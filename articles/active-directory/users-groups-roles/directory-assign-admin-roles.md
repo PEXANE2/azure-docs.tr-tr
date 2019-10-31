@@ -8,18 +8,18 @@ search.appverid: MET150
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: reference
+ms.date: 10/28/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f769aafa3e2976d63e99cf58a6b67e1b4cf81b64
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72963973"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177037"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -137,7 +137,7 @@ Bu role sahip olan kullanıcılar, Uyumluluk Merkezi 'nde, Microsoft 365 Yöneti
 ----- | ----------
 [Uyumluluk Merkezi Microsoft 365](https://protection.office.com) | Kuruluşunuzun verilerini Microsoft 365 hizmetleri arasında koruyun ve yönetin<br>Uyumluluk uyarılarını yönetme
 [Uyumluluk Yöneticisi](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Kuruluşunuzun yasal uyumluluk etkinliklerini izleyin, atayın ve doğrulayın
-[Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Veri idare yönetimi<br>Yasal ve veri araştırmasını gerçekleştirme<br>Veri konu Isteğini yönetme
+[Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Veri idare yönetimi<br>Yasal ve veri araştırmasını gerçekleştirme<br>Veri konu Isteğini yönetme<br><br>Bu rol, Office 365 ' deki [Uyumluluk Yöneticisi RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) ile aynı izinlere sahiptir güvenlik ve Uyumluluk Merkezi rol tabanlı erişim denetimi.
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Tüm Intune denetim verilerini görüntüleyin
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir<br>Dosya ilkeleri oluşturabilir ve değiştirebilir ve dosya idare eylemlerine izin verebilir<br> Tüm yerleşik raporları Veri Yönetimi altına görüntüleyebilir
 
@@ -149,7 +149,7 @@ Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 36
 ----- | ----------
 [Uyumluluk Merkezi Microsoft 365](https://protection.office.com) | Microsoft 365 hizmetleri genelinde uyumlulukla ilgili ilkeleri izleme<br>Uyumluluk uyarılarını yönetme
 [Uyumluluk Yöneticisi](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Kuruluşunuzun yasal uyumluluk etkinliklerini izleyin, atayın ve doğrulayın
-[Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Veri idare yönetimi<br>Yasal ve veri araştırmasını gerçekleştirme<br>Veri konu Isteğini yönetme<br><br>Bu rol, Office 365 güvenlik ve Uyumluluk Merkezi rol tabanlı erişim denetimindeki [Uyumluluk verileri Yöneticisi RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) ile aynı izinlere sahiptir.
+[Office 365 Güvenlik ve Uyumluluk Merkezi](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Veri idare yönetimi<br>Yasal ve veri araştırmasını gerçekleştirme<br>Veri konu Isteğini yönetme<br><br>Bu rol, Office 365 ' deki [Uyumluluk verileri Yöneticisi RoleGroup](https://docs.microsoft.com/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) ile aynı izinlere sahiptir güvenlik ve Uyumluluk Merkezi rol tabanlı erişim denetimi.
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Tüm Intune denetim verilerini görüntüleyin
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Salt okuma izinlerine sahiptir ve uyarıları yönetebilir<br>Dosya ilkeleri oluşturabilir ve değiştirebilir ve dosya idare eylemlerine izin verebilir<br> Tüm yerleşik raporları Veri Yönetimi altına görüntüleyebilir
 
@@ -230,11 +230,15 @@ Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönet
 >* [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
 >* [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
 >* [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
->* [Privileged Access Management (Pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
+>* [Privileged Access Management (Pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
 >* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -genel okuyucu, yalnızca [merkezi raporlama](https://docs.microsoft.com/azure/information-protection/reports-aip) için ve kiracınız [Birleşik etiketleme platformunda](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)olmadığında desteklenir.
 >
 > Bu özellikler Şu anda geliştirme aşamasındadır.
 >
+
+### <a name="group-administratorgroup-administrator"></a>[Grup Yöneticisi](#group-administrator)
+
+Bu roldeki kullanıcılar, adlandırma ve süre sonu ilkeleri gibi grupları ve ayarlarını oluşturabilir/yönetebilir. Bu role bir Kullanıcı atamanın, bu kullanıcılara Kiracıdaki tüm grupları ekipler, SharePoint, Yammer gibi çeşitli iş yükleri arasında Outlook 'a ek olarak yönetme olanağı sağladığını anlamak önemlidir. Ayrıca, Kullanıcı Microsoft Yönetim Merkezi, Azure Portal gibi çeşitli yönetim portallarında ve takımlar ve SharePoint yönetim merkezleri gibi iş yüklerinin yanı sıra çeşitli gruplar ayarlarını yönetebilecektir.
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Konuk davetci](#guest-inviter-permissions)
 
@@ -286,6 +290,10 @@ Bu roldeki kullanıcılar, veri gizlilik iletileri dahil olmak üzere Ileti merk
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[İleti Merkezi okuyucusu](#message-center-reader-permissions)
 
 Bu roldeki kullanıcılar, Exchange, Intune ve Microsoft ekipleri gibi yapılandırılmış hizmetlerde kuruluşları için [Office 365 İleti merkezindeki](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) bildirimleri ve danışmanlık sistem durumu güncelleştirmelerini izleyebilir. İleti Merkezi okuyucuları, Office 365 ' de ileti merkezi gönderilerini bir haftalık e-posta ile alırlar. Azure AD 'de, bu role atanan kullanıcılar yalnızca kullanıcılar ve gruplar gibi Azure AD hizmetlerinde salt okuma erişimine sahip olur. Bu rolün destek biletlerini görüntüleme, oluşturma veya yönetme erişimi yok.
+
+### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Office uygulamaları Yöneticisi](#office-apps-administrator-permissions)
+
+Bu roldeki kullanıcılar, Office 365 uygulamalarının bulut ayarlarını yönetebilir. Bu, bulut ilkelerinin yönetimi, self servis indirme yönetimi ve Office uygulamalarıyla ilgili raporu görüntüleme imkanını içerir. Bu rol Ayrıca, destek biletlerini yönetme ve ana yönetim merkezinde hizmet durumunu izleme özelliğini sağlar. Bu role atanan kullanıcılar, Office uygulamalarındaki yeni özelliklerin iletişimini de yönetebilir. 
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[Partner Katman1 desteği](#partner-tier1-support-permissions)
 
@@ -1060,6 +1068,28 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
 | Microsoft. office365. webPortal/allEntities/standart/okuma   | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
 
+### <a name="group-administrator"></a>Grup Yöneticisi
+, Adlandırma ve süre sonu ilkeleri gibi grupların ve Grup ayarlarının tüm yönlerini yönetebilir
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. Directory/Groups/Basic/Read | Azure Active Directory gruplardaki gruplar üzerinde standart özellikleri okuyun.  |
+| Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin. |
+| Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |
+| Microsoft. Directory/Groups/createAsOwner | Azure Active Directory grupları oluşturun. Oluşturucu ilk sahip olarak eklenir ve oluşturulan nesne, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılır. |
+| Microsoft. Directory/gruplar/Sil | Azure Active Directory grupları silin. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
+| Microsoft. Directory/gruplar/Üyeler/güncelleştirme | Azure Active Directory groups. Members özelliğini güncelleştirin. |
+| Microsoft. Directory/gruplar/Owners/Update | Azure Active Directory groups. Owners özelliğini güncelleştirin. |
+| Microsoft. Directory/Groups/restore | Azure Active Directory grupları geri yükleyin. |
+| Microsoft. Directory/Groups/Settings/Update | Azure Active Directory groups. Settings özelliğini güncelleştirin. |
+| Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
+
 ### <a name="guest-inviter-permissions"></a>Konuk Davetleyici izinleri
 ' Üyeler konukları davet edebilir ' ayarından bağımsız olarak Konuk kullanıcıları davet edebilir.
 
@@ -1201,6 +1231,25 @@ Ileti merkezi gönderilerini, veri gizliliği iletilerini, grupları, etki alanl
 | --- | --- |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
+
+### <a name="office-apps-administrator-permissions"></a>Office uygulamaları yönetici izinleri
+, İlke ve ayarlar yönetimi dahil olmak üzere Office uygulamalarının bulut hizmetlerini yönetebilir ve son kullanıcının cihazlarına "yenilikler" özellik içeriğini seçme, seçme ve yayımlama yeteneğini yönetme olanağı sağlar.
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki rol açıklaması konusuna bakın.
+>
+>
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. messageCenter/messages/okundu | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
+| Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
+| Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
+| Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
+| Microsoft. office365. userCommunication/allEntities/allTasks | Yeni iletilerin görünürlüğünü okuyun ve güncelleştirin. |
+| Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 
 ### <a name="partner-tier1-support-permissions"></a>İş ortağı Katman1 destek izinleri
 
@@ -1636,6 +1685,7 @@ Dizin yazarları | Dizin yazarları | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange hizmeti Yöneticisi | Exchange Yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Dış kimlik sağlayıcısı Yöneticisi | Dış kimlik sağlayıcısı Yöneticisi | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Genel okuyucu | Genel okuyucu | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+Grup Yöneticisi | Grup Yöneticisi | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Konuk davetci | Konuk davetci | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Yardım Masası Yöneticisi | Parola Yöneticisi | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune Hizmet Yöneticisi | Intune Yöneticisi | 3a2c62db-5318-420d-8d74-23afee5d9d5
@@ -1644,6 +1694,7 @@ Lisans Yöneticisi | Lisans Yöneticisi | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync Hizmet Yöneticisi | Skype Kurumsal Yöneticisi | 75941009-915a-4869-ABE7-691bff18279e
 İleti Merkezi Gizlilik okuyucusu | İleti Merkezi Gizlilik okuyucusu | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 İleti Merkezi okuyucusu | İleti Merkezi okuyucusu | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Office uygulamaları Yöneticisi | Office uygulamaları Yöneticisi | 2b745bdf-0803-4d80-aa65-822c4493dadac
 Partner Katman1 desteği | Partner Katman1 desteği | 4ba39ca4-527c-499a-B93D-d9b492c50246
 Partner Katman2 desteği | Partner Katman2 desteği | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Parola Yöneticisi | Parola Yöneticisi | 966707d0-3269-4727-9be2-8c3a10f19b9d

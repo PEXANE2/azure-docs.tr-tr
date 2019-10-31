@@ -11,33 +11,35 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: efb668971bc4a8c5a0968836aab71107aa6b88d5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072649"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176917"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API Management uygulama şablonları
-Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Dotsıvı Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar Için Dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır [](http://dotliquidmarkup.org/) Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. [Dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)kümesini kullanarak, yapılandırmak için harika bir esneklik vardır Gördüğünüz sayfaların içeriği bu şablonları kullanarak sığdırar.  
   
  Bu bölümdeki şablonlar, geliştirici portalındaki uygulama sayfalarının içeriğini özelleştirmenizi sağlar.  
   
 -   [Uygulama listesi](#ProductList)  
   
--   [Uygulama](#Application)  
+-   [Uygulamanızı](#Application)  
   
 > [!NOTE]
 >  Örnek varsayılan şablonlar aşağıdaki belgelere dahil edilmiştir, ancak sürekli iyileştirmeler nedeniyle değişikliğe tabidir. Canlı varsayılan şablonları, istenen ayrı şablonlara giderek Geliştirici Portalında görüntüleyebilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="ProductList"></a>Uygulama listesi  
  **Uygulama listesi** şablonu, geliştirici portalındaki uygulama listesi sayfasının gövdesini özelleştirmenizi sağlar.  
   
- ![Uygulama listesi sayfası geliştirici portalı şablonları](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM uygulama listesi sayfası geliştirici portalı şablonları")  
+ ![Uygulama listesi sayfası geliştirici portalı şablonları](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APıM uygulama listesi sayfası geliştirici portalı şablonları")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -72,7 +74,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```  
   
 ### <a name="controls"></a>Denetimler  
- Şablon aşağıdaki sayfa denetimlerini kullanabilir. [](api-management-page-controls.md) `Product list`  
+ `Product list` şablonunda aşağıdaki [sayfa denetimleri](api-management-page-controls.md)kullanılabilir.  
   
 -   [sayfalama denetimi](api-management-page-controls.md#paging-control)  
   
@@ -82,7 +84,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 |--------------|----------|-----------------|  
 |`Paging`|[Sayfalama](api-management-template-data-model-reference.md#Paging) varlığı.|Uygulamalar koleksiyonu için sayfalama bilgileri.|  
 |`Applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının koleksiyonu.|Geçerli Kullanıcı tarafından görülebilen uygulamalar.|  
-|`CategoryName`|dize|Uygulama kategorisi.|  
+|`CategoryName`|string|Uygulama kategorisi.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
   
@@ -138,7 +140,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ##  <a name="Application"></a>Uygulamanızı  
  **Uygulama** şablonu, geliştirici portalındaki uygulama sayfasının gövdesini özelleştirmenizi sağlar.  
   
- ![Uygulama sayfası geliştirici portalı şablonları](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM uygulama sayfası geliştirici portalı şablonları")  
+ ![Uygulama sayfası geliştirici portalı şablonları](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APıM uygulama sayfası geliştirici portalı şablonları")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -179,7 +181,7 @@ Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak gel
 ```  
   
 ### <a name="controls"></a>Denetimler  
- Şablon herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez. `Application`  
+ `Application` şablonu herhangi bir [sayfa denetiminin](api-management-page-controls.md)kullanılmasına izin vermez.  
   
 ### <a name="data-model"></a>Veri modeli  
  [Uygulama](api-management-template-data-model-reference.md#Application) varlığı.  

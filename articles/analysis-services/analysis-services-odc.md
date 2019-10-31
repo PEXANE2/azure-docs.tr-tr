@@ -4,15 +4,15 @@ description: Azure 'da bir Analysis Services sunucusuna bağlanmak ve veri almak
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e12717b37171df55c7559bb1b05c467f332236bc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294846"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146690"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office veri bağlantısı dosyası oluşturma
 
@@ -21,15 +21,15 @@ Bu makaledeki bilgiler, Excel 2016 sürüm numarası 16.0.7369.2117 veya daha ö
 
 1. Aşağıdaki örnek bağlantı dosyasını kopyalayın ve bir metin düzenleyicisine yapıştırın. 
 
-2. @No__t-0 ' da, aşağıdaki özellikleri değiştirin:
+2. `odc:ConnectionString`, aşağıdaki özellikleri değiştirin:
 
-    *   @No__t-0 ' da `<region>` ' i Analysis Services sunucunuzun bölgesine ve `<servername>` ' i sunucunuzun adına değiştirin.
+    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` Analysis Services sunucunuzun bölgesine ve sunucunuzun adına `<servername>`.
 
-    *   @No__t-0 ' da `<database>` ' i veritabanınızın adı ile değiştirin.
+    *   `Initial Catalog=<database>;` `<database>` veritabanınızın adına değiştirin.
 
-3. @No__t-0 ' da `Model` ' i modelinizin veya bakış adı ile değiştirin. 
+3. `<odc:CommandText>Model</odc:CommandText>`, `Model` modelinizin veya perspektifin adına değiştirin. 
 
-4. Dosyayı `.odc` uzantısı ile C:\Users @ no__t-1*kullanıcıadı*\ Belgelerim\veri kaynakları klasörüne kaydedin.
+4. Dosyayı `.odc` Uzantısı ile C:\Users\\*kullanıcıadı*\ Belgelerim\veri kaynakları klasörüne kaydedin.
 
 5. Dosyaya sağ tıklayın ve ardından **Excel 'de aç**' a tıklayın. Ya da Excel 'de, **veri** şeridinde, **mevcut bağlantılar**' a tıklayın, dosyanızı seçin ve ardından **Aç**' a tıklayın.
 

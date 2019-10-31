@@ -10,20 +10,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4260f4640f488e67d6bb3101ff2cf7d269e2bf3e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 62657134775d21ad6aabdf8f02a1e001de0a6094
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073650"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176837"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>API Management Azure 'da Azure Active Directory B2C kullanarak Geliştirici hesaplarını yetkilendirme
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Active Directory B2C, tüketicilere yönelik web ve mobil uygulamalar için bir bulut kimlik yönetimi çözümü ' dir. Bunu, geliştirici portalınıza erişimi yönetmek için kullanabilirsiniz. Bu kılavuzda, Azure Active Directory B2C tümleştirilecek API Management hizmetinizde gereken yapılandırma gösterilmektedir. Klasik Azure Active Directory kullanarak Geliştirici portalına erişimi etkinleştirme hakkında daha fazla bilgi için, bkz. [Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme].
+Azure Active Directory B2C, tüketiciye yönelik Web ve mobil uygulamalar için bir bulut kimlik yönetimi çözümüdür. Bunu, geliştirici portalınıza erişimi yönetmek için kullanabilirsiniz. Bu kılavuzda, Azure Active Directory B2C tümleştirilecek API Management hizmetinizde gereken yapılandırma gösterilmektedir. Klasik Azure Active Directory kullanarak Geliştirici portalına erişimi etkinleştirme hakkında daha fazla bilgi için, bkz. [Azure Active Directory kullanarak Geliştirici hesaplarını yetkilendirme].
 
 > [!NOTE]
 > Bu kılavuzdaki adımları tamamlayabilmeniz için öncelikle ' de bir uygulama oluşturmak üzere bir Azure Active Directory B2C kiracısına sahip olmanız gerekir. Ayrıca kaydolma ve oturum açma ilkelerinizi hazırlayın. Daha fazla bilgi için bkz. [Azure Active Directory B2C genel bakış].
@@ -85,7 +85,17 @@ Azure Active Directory B2C, tüketicilere yönelik web ve mobil uygulamalar içi
 
     Değişiklikler kaydedildikten sonra, geliştiriciler yeni hesaplar oluşturup Azure Active Directory B2C kullanarak Geliştirici Portalında oturum açabilir.
 
-## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Geliştirici hesabına kaydolma
+## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Geliştirici portalı-Azure AD B2C hesabı kimlik doğrulaması ekleme
+
+Geliştirici Portalında AAD B2C oturum açmayı etkinleştirmek için, oturum açma formuna **OAuth düğmeleri** pencere öğesini eklemeniz gerekir.
+
+![AAD düğmeleri pencere öğesi](./media/api-management-howto-aad/portal-oauth-widget.png)
+
+Yeni bir Kullanıcı AAD B2C her oturum açtığında yeni bir hesap otomatik olarak oluşturulabilse de, kaydolma formuna aynı pencere öğesini eklemeyi göz önünde bulundurmanız gerekebilir.
+
+## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>Eski geliştirici portalı-Azure AD B2C ile kaydolma
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 1. Azure Active Directory B2C kullanarak bir Geliştirici hesabına kaydolmak için, yeni bir tarayıcı penceresi açın ve geliştirici portalına gidin. **Kaydolun** düğmesine tıklayın.
 
@@ -136,7 +146,6 @@ Azure Active Directory B2C, tüketicilere yönelik web ve mobil uygulamalar içi
 [api-management-complete-registration]: ./media/api-management-howto-aad/api-management-complete-registration.PNG
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 
-[api-management-management-console]: ./media/api-management-howto-aad/api-management-management-console.png
 [api-management-security-external-identities]: ./media/api-management-howto-aad/api-management-b2c-security-tab.png
 [api-management-security-aad-new]: ./media/api-management-howto-aad/api-management-security-aad-new.png
 [api-management-new-aad-application-menu]: ./media/api-management-howto-aad/api-management-new-aad-application-menu.png

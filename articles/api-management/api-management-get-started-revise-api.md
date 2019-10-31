@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 811591a3340f07b08b3a954ccd475e926b73a9cf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072558"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176781"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Hataya neden olmayan değişiklikleri güvenli bir şekilde yapmak için düzeltmeleri kullanma
 API’niz kullanıma hazır olduğunda ve geliştiriciler tarafından kullanılmaya başladığında genellikle bu API’de değişiklikler yapmak ve aynı zamanda API’nizi çağıranları kesintiye uğratmamak istersiniz. Yaptığınız değişiklikleri geliştiricilere bildirmeniz de yararlıdır. Azure API Management’da **düzeltmeleri** kullanarak bunu yapabilirsiniz. Daha fazla bilgi için bkz. [Sürümler ve revizyonlar](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) ve [Azure API Management ile API Sürümü Oluşturma](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -36,8 +36,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
-+ Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
-+ Ayrıca, aşağıdaki öğreticiyi de tamamlayabilirsiniz: [Ilk API 'Nizi Içeri aktarın ve yayımlayın](import-and-publish.md).
++ Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
++ Ayrıca, şu öğreticiyi tamamlayın: [İlk API'nizi içeri aktarma ve yayımlama](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Yeni düzeltme ekleme
 
@@ -83,7 +83,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 2. **Düzeltme 2**’nin açılır menüsünü ( **...** ) açın.
 3. **Geçerli Hale Getir**’i seçin.
-4. Bu değişiklik hakkında notlar yayınlamak istiyorsanız **Bu API için Genel Değişiklik Günlüğüne Gönder**’i işaretleyin. Kullanıcılarınızın göreceği değişiklik için bir açıklama girin, örneğin: **Düzeltmeler test ediliyor. Yeni "test" işlemi eklendi.**
+4. Bu değişiklik hakkında notlar yayınlamak istiyorsanız **Bu API için Genel Değişiklik Günlüğüne Gönder**’i işaretleyin. Değişiklik yapmak için geliştiricilerin göreceği bir açıklama girin, örneğin: **düzeltmeleri test etme. Yeni "test" işlemi eklendi.**
 5. **Düzeltme 2** artık geçerlidir.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Değişiklikleri ve değişiklik günlüğünü görmek için geliştirici portalına göz atma
@@ -92,10 +92,8 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 2. Üstteki menüden **Geliştirici Portalı**’nı seçin.
 3. **API'ler** ve ardından **Tanıtım Konferans API’si** öğesini seçin.
 4. Yeni **test** işleminizin artık kullanılabilir olduğuna dikkat edin.
-5. API adının altından **API Değişiklik Geçmişi**’ni seçin.
+5. API adının yakınında **changelog** öğesine tıklayın.
 6. Değişiklik günlüğü girdinizin bu listede göründüğüne dikkat edin.
-
-    ![Geliştirici portalı](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
