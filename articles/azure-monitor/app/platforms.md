@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 35d1cf37e1df0b2714505833d40163775e3d090c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 01cebc3a86808d549f1a7dc3adfd2883bc289076
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819044"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061442"
 ---
 # <a name="supported-languages"></a>Desteklenen diller
 
@@ -21,6 +21,7 @@ ms.locfileid: "72819044"
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
+* [Python (Önizleme)](../../azure-monitor/app/opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>Desteklenen platformlar ve çerçeveler
 
@@ -37,6 +38,7 @@ ms.locfileid: "72819044"
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
+* [Python (Önizleme)](../../azure-monitor/app/opencensus-python.md)
 * [Evrensel Windows uygulaması](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows masaüstü uygulamaları, hizmetleri ve çalışan rolleri](../../azure-monitor/app/windows-desktop.md)
 

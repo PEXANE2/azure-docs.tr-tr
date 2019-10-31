@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391814"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083755"
 ---
 Aşağıdaki tabloda, S1, S2, S3 ve F1 farklı hizmet katmanları ile ilişkili sınırlar listelenmektedir. Her katmandaki her bir *birimin* maliyeti hakkında daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -27,7 +27,7 @@ Aşağıdaki tabloda IoT Hub kaynakları için uygulanan sınırlar listelenmekt
 
 | Kaynak | Sınır |
 | --- | --- |
-| Azure aboneliği başına en fazla ücretli IoT hub’ı sayısı |50 |
+| Azure aboneliği başına en fazla ücretli IoT hub’ı sayısı |100 |
 | Azure aboneliği başına en fazla ücretsiz IoT hub’ı sayısı |1 |
 | Bir cihaz KIMLIĞINDEKI en fazla karakter sayısı | 128 |
 | En fazla cihaz kimliği sayısı<br/> (tek bir çağrıda döndürülen) |1000 |
@@ -53,7 +53,7 @@ Aşağıdaki tabloda IoT Hub kaynakları için uygulanan sınırlar listelenmekt
 | Maksimum cihaz akışı veri aktarımı | 300 MB/gün (yalnızca S1, S2, S3 ve F1 için) |
 
 > [!NOTE]
-> Bir Azure aboneliğinde 50 ' den fazla ücretli IoT Hub 'ı gerekiyorsa Microsoft Desteği başvurun.
+> Bir Azure aboneliğinde 100 ' den fazla ücretli IoT Hub 'ı gerekiyorsa Microsoft Desteği başvurun.
 
 > [!NOTE]
 > Şu anda, tek bir IoT Hub 'ına kaydedilenebilir cihazların toplam sayısı ve modülleri 1.000.000 adresinden alınabilir. Bu sınırı artırmak istiyorsanız [Microsoft desteği](https://azure.microsoft.com/support/options/)başvurun.

@@ -8,34 +8,34 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755370"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063974"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights telemetri bağıntısı
 
-Mikro hizmetler dünyasında, her mantıksal işlem, hizmetin çeşitli bileşenlerinde iş yapılmasını gerektirir. Bu bileşenlerin her biri, [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından ayrı olarak izlenebilir. Web uygulaması bileşeni, Kullanıcı kimlik bilgilerini doğrulamak için kimlik doğrulama sağlayıcısı bileşeniyle ve görselleştirme için veri almak üzere API bileşeniyle iletişim kurar. API bileşeni, diğer hizmetlerden gelen verileri sorgulayabilir ve bu çağrı hakkında faturalandırma bileşenine bildirimde bulunan Cache-Provider bileşenlerini kullanabilir. Application Insights, hangi bileşenin hatalardan veya performans düşüşüne karşı sorumlu olduğunu saptamak için kullandığınız dağıtılmış telemetri bağıntısını destekler.
+Mikro hizmetler dünyasında, her mantıksal işlem, hizmetin çeşitli bileşenlerinde iş yapılmasını gerektirir. Bu bileşenlerin her biri, [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından ayrı olarak izlenebilir. Application Insights, hangi bileşenin hatalardan veya performans düşüşüne karşı sorumlu olduğunu saptamak için kullandığınız dağıtılmış telemetri bağıntısını destekler.
 
 Bu makalede, birden çok bileşen tarafından gönderilen telemetrinin ilişkilendirilmesi için Application Insights tarafından kullanılan veri modeli açıklanmaktadır. Bağlam yayma tekniklerini ve protokollerini içerir. Ayrıca farklı diller ve platformlarda bağıntı kavramlarının uygulanmasını da içerir.
 
 ## <a name="data-model-for-telemetry-correlation"></a>Telemetri bağıntısı için veri modeli
 
-Application Insights, dağıtılmış telemetri bağıntısı için bir [veri modeli](../../azure-monitor/app/data-model.md) tanımlar. Telemetrinin mantıksal işlemle ilişkilendirilmesi için, her telemetri öğesinin `operation_Id` adlı bir bağlam alanı vardır. Bu tanımlayıcı, dağıtılmış izlemede her telemetri öğesi tarafından paylaşılır. Bu nedenle, tek bir katmanda telemetri kaybı ile birlikte, diğer bileşenler tarafından raporlanan Telemetriyi yine de ilişkilendirebilirsiniz.
+Application Insights, dağıtılmış telemetri bağıntısı için bir [veri modeli](../../azure-monitor/app/data-model.md) tanımlar. Telemetrinin mantıksal işlemle ilişkilendirilmesi için, her telemetri öğesinin `operation_Id`adlı bir bağlam alanı vardır. Bu tanımlayıcı, dağıtılmış izlemede her telemetri öğesi tarafından paylaşılır. Bu nedenle, tek bir katmanda telemetri kaybı ile birlikte, diğer bileşenler tarafından raporlanan Telemetriyi yine de ilişkilendirebilirsiniz.
 
-Dağıtılmış bir mantıksal işlem genellikle bileşenlerden biri tarafından işlenen istekler olan daha küçük işlemler kümesinden oluşur. Bu işlemler [istek telemetrisi](../../azure-monitor/app/data-model-request-telemetry.md)tarafından tanımlanır. Her istek telemetrisi, kendisini benzersiz ve küresel olarak tanımlayan kendi `id` sahiptir. Ve bu istekle ilişkili tüm telemetri öğeleri (izlemeler ve özel durumlar gibi), `operation_parentId` istek `id` değerine ayarlanmalıdır.
+Dağıtılmış bir mantıksal işlem genellikle bileşenlerden biri tarafından işlenen istekler olan daha küçük işlemler kümesinden oluşur. Bu işlemler [istek telemetrisi](../../azure-monitor/app/data-model-request-telemetry.md)tarafından tanımlanır. Her istek telemetrisi, kendisini benzersiz ve küresel olarak tanımlayan kendi `id` sahiptir. Ve bu istekle ilişkili tüm telemetri öğeleri (izlemeler ve özel durumlar gibi), `operation_parentId` istek `id`değerine ayarlanmalıdır.
 
-Başka bir bileşene yönelik HTTP çağrısı gibi her giden işlem, [bağımlılık telemetrisi](../../azure-monitor/app/data-model-dependency-telemetry.md)tarafından temsil edilir. Bağımlılık telemetrisi, genel olarak benzersiz olan kendi `id` de tanımlar. Bu bağımlılık çağrısıyla başlatılan istek telemetrisi, `operation_parentId` olarak bu `id` kullanır.
+Başka bir bileşene yönelik HTTP çağrısı gibi her giden işlem, [bağımlılık telemetrisi](../../azure-monitor/app/data-model-dependency-telemetry.md)tarafından temsil edilir. Bağımlılık telemetrisi, genel olarak benzersiz olan kendi `id` de tanımlar. Bu bağımlılık çağrısıyla başlatılan istek telemetrisi, `operation_parentId`olarak bu `id` kullanır.
 
-@No__t_3 ile `operation_Id`, `operation_parentId` ve `request.id` kullanarak dağıtılmış mantıksal işlemin bir görünümünü oluşturabilirsiniz. Bu alanlar telemetri çağrılarının önem derecesine göre de tanımlar.
+`dependency.id`ile `operation_Id`, `operation_parentId`ve `request.id` kullanarak dağıtılmış mantıksal işlemin bir görünümünü oluşturabilirsiniz. Bu alanlar telemetri çağrılarının önem derecesine göre de tanımlar.
 
 Mikro hizmetler ortamında, bileşenlerden izlemeler farklı depolama öğelerine gidebilir. Her bileşen Application Insights kendi izleme anahtarına sahip olabilir. Mantıksal işlem için telemetri almak için Application Insights UX her depolama öğesinden verileri sorgular. Depolama öğelerinin sayısı çok büyük olduğunda, ileri bakabileceğiniz bir ipucu gerekir. Application Insights veri modeli, bu sorunu çözmek için iki alanı tanımlar: `request.source` ve `dependency.target`. İlk alan, bağımlılık isteğini Başlatan bileşeni tanımlar ve ikincisi, bağımlılık çağrısının yanıtını döndüren bileşeni tanımlar.
 
 ## <a name="example"></a>Örnek
 
-@No__t_0 adlı bir dış API kullanarak bir hisse senedinin geçerli pazar fiyatını gösteren Stok fiyatları adlı bir uygulamaya örnek atalım. Hisse senedi fiyatları uygulamasının, `GET /Home/Stock` kullanarak istemci Web tarayıcısının açtığı `Stock page` adlı bir sayfası vardır. Uygulama, HTTP çağrısı `GET /api/stock/value` kullanarak `Stock` API 'sini sorgular.
+`Stock`adlı bir dış API kullanarak bir hisse senedinin geçerli pazar fiyatını gösteren Stok fiyatları adlı bir uygulamaya örnek atalım. Hisse senedi fiyatları uygulamasının, `GET /Home/Stock` kullanarak istemci Web tarayıcısının açtığı `Stock page` adlı bir sayfası vardır. Uygulama, HTTP çağrısı `GET /api/stock/value` kullanarak `Stock` API 'sini sorgular.
 
 Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 
@@ -45,7 +45,7 @@ Bir sorgu çalıştırarak elde edilen telemetrisini çözümleyebilirsiniz:
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-Sonuçlarda, tüm telemetri öğelerinin kök `operation_Id` paylaştığından emin olduğunu unutmayın. Sayfadan bir AJAX çağrısı yapıldığında, bağımlılık telemetrisine yeni bir benzersiz KIMLIK (`qJSXU`) atanır ve pageView KIMLIĞI `operation_ParentId` olarak kullanılır. Sunucu isteği daha sonra `operation_ParentId` olarak Ajax KIMLIĞINI kullanır.
+Sonuçlarda, tüm telemetri öğelerinin kök `operation_Id`paylaştığından emin olduğunu unutmayın. Sayfadan bir AJAX çağrısı yapıldığında, bağımlılık telemetrisine yeni bir benzersiz KIMLIK (`qJSXU`) atanır ve pageView KIMLIĞI `operation_ParentId`olarak kullanılır. Sunucu isteği daha sonra `operation_ParentId`olarak Ajax KIMLIĞINI kullanır.
 
 | ItemType   | ad                      | Kimlik           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
@@ -75,7 +75,7 @@ Application Insights ayrıca bağıntı HTTP protokolünün [uzantısını](http
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Klasik ASP.NET uygulamaları için W3C dağıtılmış izleme desteğini etkinleştir
  
   > [!NOTE]
-  > @No__t_0 ve `Microsoft.ApplicationInsights.DependencyCollector` başlayarak yapılandırma gerekmiyor 
+  > `Microsoft.ApplicationInsights.Web` ve `Microsoft.ApplicationInsights.DependencyCollector` başlayarak yapılandırma gerekmiyor 
 
 W3C Trace-Context support, geriye dönük olarak uyumlu şekilde yapılır ve bağıntı, önceki SDK sürümleriyle (W3C desteği olmadan) işaretlenmiş uygulamalarla birlikte çalışmak üzere beklenmektedir. 
 
@@ -90,8 +90,8 @@ SDK 'nın eski bir sürümünü çalıştırırsanız, bunu güncelleştirmenizi
 Bu özellik, 2.8.0-Beta1 sürümü ile başlayan `Microsoft.ApplicationInsights.Web` ve `Microsoft.ApplicationInsights.DependencyCollector` paketlerinde kullanılabilir.
 Varsayılan olarak devre dışıdır. Etkinleştirmek için `ApplicationInsights.config` değiştirin:
 
-- @No__t_0 altında, değeri `true` olarak ayarlanan `EnableW3CHeadersExtraction` öğesini ekleyin.
-- @No__t_0 altında, değeri `true` olarak ayarlanan `EnableW3CHeadersInjection` öğesini ekleyin.
+- `RequestTrackingTelemetryModule`altında, değeri `true`olarak ayarlanan `EnableW3CHeadersExtraction` öğesini ekleyin.
+- `DependencyTrackingTelemetryModule`altında, değeri `true`olarak ayarlanan `EnableW3CHeadersInjection` öğesini ekleyin.
 - Şuna benzer `TelemetryInitializers` `W3COperationCorrelationTelemetryInitializer` ekleyin 
 
 ```xml
@@ -104,7 +104,7 @@ Varsayılan olarak devre dışıdır. Etkinleştirmek için `ApplicationInsights
 ### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core uygulamalar için W3C dağıtılmış izleme desteğini etkinleştir
 
  > [!NOTE]
-  > @No__t_0 Version 2.8.0 ile başlayan yapılandırma gerekmiyor.
+  > `Microsoft.ApplicationInsights.AspNetCore` Version 2.8.0 ile başlayan yapılandırma gerekmiyor.
  
 W3C Trace-Context support, geriye dönük olarak uyumlu şekilde yapılır ve bağıntı, önceki SDK sürümleriyle (W3C desteği olmadan) işaretlenmiş uygulamalarla birlikte çalışmak üzere beklenmektedir. 
 
@@ -221,7 +221,7 @@ OpenCensus Python, yukarıda özetlenen `OpenTracing` veri modeli belirtimlerini
 
 ### <a name="incoming-request-correlation"></a>Gelen istek bağıntısı
 
-OpenCensus Python, W3C Izleme bağlamı üst bilgilerini gelen isteklerden, isteklerden oluşturulan yayılmaya ilişkilendirir. OpenCensus, `flask`, `django` ve `pyramid` gibi popüler web uygulaması çerçevelerinin tümleştirmelerle otomatik olarak yapılır. W3C Izleme bağlamı üst bilgilerinin [doğru biçimde](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)doldurulması ve istekle birlikte gönderilmesi gerekir. Aşağıda bunu gösteren bir örnek `flask` verilmiştir.
+OpenCensus Python, W3C Izleme bağlamı üst bilgilerini gelen isteklerden, isteklerden oluşturulan yayılmaya ilişkilendirir. OpenCensus bunu, aşağıdaki popüler web uygulaması çerçeveleri için tümleştirmelerle otomatik olarak yapılır: `flask`, `django` ve `pyramid`. W3C Izleme bağlamı üst bilgilerinin [doğru biçimde](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) doldurulması ve istekle birlikte gönderilmesi gerekir. Aşağıda bunu gösteren bir örnek `flask` verilmiştir.
 
 ```python
 from flask import Flask
@@ -253,13 +253,13 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
  `parent-id/span-id`: `00f067aa0ba902b7` 
  0: 1
 
-Azure Izleyici 'ye gönderilen istek girişine göz atalım, izleme üst bilgisi bilgileriyle doldurulmuş alanları görebiliriz.
+Azure Izleyici 'ye gönderilen istek girişine göz atalım, izleme üst bilgisi bilgileriyle doldurulmuş alanları görebiliriz. Bu verileri Azure Izleyici Application Insights kaynak bölümünde Günlükler (Analiz) altında bulabilirsiniz.
 
 ![Kırmızı kutuda vurgulanan izleme üst bilgi alanları ile günlüklerde (Analiz) istek telemetriinin ekran görüntüsü](./media/opencensus-python/0011-correlation.png)
 
-@No__t_0 alanı, `trace-id` istekte geçirilen izleme başlığından alındığı ve `span-id` Bu yayılma için oluşturulmuş bir 8 baytlık dizi olduğu biçimde `<trace-id>.<span-id>` biçimindedir. 
+`id` alanı, `trace-id` istekte geçirilen izleme başlığından alındığı ve `span-id` Bu yayılma için oluşturulmuş bir 8 baytlık dizi olduğu biçimde `<trace-id>.<span-id>`biçimindedir. 
 
-@No__t_0 alanı, istekte iletilen izleme başlığından hem `trace-id` hem de `parent-id` alındığı biçimde `<trace-id>.<parent-id>` biçimindedir.
+`operation_ParentId` alanı, istekte iletilen izleme başlığından hem `trace-id` hem de `parent-id` alındığı biçimde `<trace-id>.<parent-id>`biçimindedir.
 
 ### <a name="logs-correlation"></a>Günlük bağıntısı
 
@@ -289,7 +289,9 @@ Bu kod çalıştırıldığında, konsolunda aşağıdakileri sunuyoruz:
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-@No__t_0 adlı yayılmasına ait aynı Spanıd olan, yayılma dahilinde olan günlük iletisi için bir Spanıd 'nin nasıl bulunduğunu gözlemleyin.
+`hello`adlı yayılmasına ait aynı Spanıd olan, yayılma dahilinde olan günlük iletisi için bir Spanıd 'nin nasıl bulunduğunu gözlemleyin.
+
+`AzureLogHandler`kullanarak günlük verilerini dışa aktarabilirsiniz. [Burada](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs) daha fazla bilgi bulabilirsiniz
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 'te telemetri bağıntısı
 
@@ -302,7 +304,7 @@ Zaman içinde, .NET telemetri ve tanılama günlüklerini ilişkilendirmek için
 
 Ancak, bu yöntemler otomatik dağıtılmış izleme desteğini etkinleştirmiyordu. `DiagnosticSource`, otomatik makine çapraz bağıntısını desteklemeye yönelik bir yoldur. .NET kitaplıkları ' DiagnosticSource ' öğesini destekler ve HTTP gibi bir aktarım aracılığıyla bağıntı bağlamının otomatik makine çapraz yayılmasını sağlar.
 
-@No__t_1 [etkinliklere yönelik kılavuz](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , etkinliklerin izlenmesi hakkında temel bilgileri açıklar.
+`DiagnosticSource` [etkinliklere yönelik kılavuz](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , etkinliklerin izlenmesi hakkında temel bilgileri açıklar.
 
 ASP.NET Core 2,0, HTTP üstbilgilerinin ayıklanmasını ve yeni bir etkinliğin başlatılmasını destekler.
 
@@ -338,7 +340,7 @@ Her zaman, bileşen adlarının [uygulama eşlemesinde](../../azure-monitor/app/
 
   Spring Boot Starter, `spring.application.name` özelliği için girdiğiniz değere `cloudRoleName` otomatik olarak atar.
 
-- @No__t_0 kullanıyorsanız, `WebAppNameContextInitializer` uygulama adı otomatik olarak ayarlanır. Yapılandırma dosyanıza (ApplicationInsights. xml) aşağıdakini ekleyin:
+- `WebRequestTrackingFilter`kullanıyorsanız, `WebAppNameContextInitializer` uygulama adı otomatik olarak ayarlanır. Yapılandırma dosyanıza (ApplicationInsights. xml) aşağıdakini ekleyin:
 
   ```XML
   <ContextInitializers>

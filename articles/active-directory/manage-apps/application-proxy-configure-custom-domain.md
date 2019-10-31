@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756480"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062515"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
 
@@ -77,38 +77,40 @@ Daha ayrıntılı yönergeler için [Azure Active Directory portalını kullanar
 
 Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yayımlamak için:
 
-1. Yeni bir uygulama için, Azure Active Directory, sol gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin, **Yeni uygulama**' yı seçin ve ardından Şirket **içi uygulama**' yı seçin. 
+1. Yeni bir uygulama için, Azure Active Directory, sol gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin. **Yeni uygulama**’yı seçin. Şirket **içi uygulamalar** bölümünde Şirket **içi uygulama ekle**' yi seçin. 
    
    Zaten **Kurumsal uygulamalarda**bulunan bir uygulama için listeden seçin ve sol gezinti bölmesinde **uygulama proxy 'si** ' ni seçin. 
 
-1. **Uygulama proxy** 'si sayfasında, **İç URL** alanına uygulamanızın iç URL 'sini girin. 
+2. Uygulama proxy 'Si ayarları sayfasında, kendi şirket içi uygulamanızı ekliyorsanız bir **ad** girin.
+
+3.  **Iç URL** alanına UYGULAMANıZıN iç URL 'sini girin.
    
-1. **Dış URL** alanında, listeyi aşağı açılır ve kullanmak istediğiniz özel etki alanını seçin.
+4. **Dış URL** alanında, listeyi aşağı açılır ve kullanmak istediğiniz özel etki alanını seçin.
    
-1. **Kaydet**’i seçin.
+5. **Add (Ekle)** seçeneğini belirleyin.
    
    ![Özel etki alanı seç](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. Etki alanının zaten bir sertifikası varsa, **sertifika** alanı sertifika bilgilerini görüntüler. Aksi takdirde, **sertifika** alanını seçin. 
+6. Etki alanının zaten bir sertifikası varsa, **sertifika** alanı sertifika bilgilerini görüntüler. Aksi takdirde, **sertifika** alanını seçin. 
    
    ![Sertifikayı karşıya yüklemek için tıklayın](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. **SSL sertifikası** SAYFASıNDA, PFX Sertifika dosyanıza gidin ve seçin. Sertifika için parola girin ve **sertifikayı karşıya yükle**' yi seçin. Sertifikalar hakkında daha fazla bilgi için bkz. [özel etki alanları Için sertifikalar](#certificates-for-custom-domains) bölümü.
+7. **SSL sertifikası** SAYFASıNDA, PFX Sertifika dosyanıza gidin ve seçin. Sertifika için parola girin ve **sertifikayı karşıya yükle**' yi seçin. Sertifikalar hakkında daha fazla bilgi için bkz. [özel etki alanları Için sertifikalar](#certificates-for-custom-domains) bölümü.
    
    ![Sertifikayı karşıya yükle](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Özel bir etki alanı yalnızca sertifikasını bir kez karşıya yüklenmesini gerektirir. Bundan sonra, diğer uygulamalar için özel etki alanını kullandığınızda karşıya yüklenen sertifika otomatik olarak uygulanır.
    
-1. Bir sertifika eklediyseniz, **uygulama proxy 'si** sayfasında **Kaydet**' i seçin. 
+8. Bir sertifika eklediyseniz, **uygulama proxy 'si** sayfasında **Kaydet**' i seçin. 
    
-1. **Uygulama proxy 'si** sayfasındaki bilgi çubuğunda, DNS bölgenize eklemenız gereken CNAME girişini aklınızda edin. 
+9. **Uygulama proxy 'si** sayfasındaki bilgi çubuğunda, DNS bölgenize eklemenız gereken CNAME girişini aklınızda edin. 
    
    ![CNAME DNS girdisi Ekle](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. Yeni dış URL 'YI *msappproxy.net* etki alanına YÖNLENDIREN bir DNS kaydı eklemek için [Azure Portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme](../../dns/dns-operations-recordsets-portal.md) konusundaki yönergeleri izleyin.
+10. Yeni dış URL 'YI *msappproxy.net* etki alanına YÖNLENDIREN bir DNS kaydı eklemek için [Azure Portal kullanarak DNS kayıtlarını ve kayıt kümelerini yönetme](../../dns/dns-operations-recordsets-portal.md) konusundaki yönergeleri izleyin.
    
-1. DNS kaydının doğru şekilde yapılandırıldığından emin olmak için, dış URL 'nizin erişilebilir olduğunu ve *msapproxy.net* etki alanının bir diğer ad olarak göründüğünü onaylamak için [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) komutunu kullanın.
+11. DNS kaydının doğru şekilde yapılandırıldığından emin olmak için, dış URL 'nizin erişilebilir olduğunu ve *msapproxy.net* etki alanının bir diğer ad olarak göründüğünü onaylamak için [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) komutunu kullanın.
 
 Uygulamanız artık özel etki alanını kullanacak şekilde ayarlanmıştır. Test etmeden veya bırakmadan önce kullanıcıları uygulamanıza atadığınızdan emin olun. 
 

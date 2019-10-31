@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e03c68854d9150c25019fe198fe855a011750844
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566553"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063086"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme
 
-Bu makalede, sağlanan işlem katmanındaki tek bir veritabanı için kullanılabilir işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır. Alternatif olarak, [sunucusuz (Önizleme) işlem katmanı](sql-database-serverless.md) , kullanılan işlem için saniye başına işlem otomatik ölçeklendirme ve fatura sağlar.
+Bu makalede, sağlanan işlem katmanında bir Azure SQL veritabanı için kullanılabilir işlem ve depolama kaynaklarının nasıl ölçeklendiriyapılacağı açıklanır. Alternatif olarak, [sunucusuz (Önizleme) işlem katmanı](sql-database-serverless.md) , kullanılan işlem için saniye başına işlem otomatik ölçeklendirme ve fatura sağlar.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -36,22 +36,22 @@ Aşağıdaki videoda, tek bir veritabanı için kullanılabilir DTU 'ları artı
 >
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirmenin veya işlem boyutunun yeniden boyutlandırmasından etkileri
 
-Tek bir veritabanının hizmet katmanını veya işlem boyutunu değiştirmek, genellikle aşağıdaki adımları gerçekleştiren hizmetten oluşur:
+Genellikle hizmet katmanını veya işlem boyutunu değiştirmek hizmeti aşağıdaki adımları gerçekleştirmeyle ilgilidir:
 
 1. Veritabanı için yeni işlem örneği oluştur  
 
-    İstenen hizmet katmanı ve işlem boyutu ile veritabanı için yeni bir işlem örneği oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanının bir kopyasının oluşturulması ve toplam gecikme süresinin kesin bir şekilde etkilenmesinin yanı sıra yeni işlem örneğinde oluşturulması gerekir. Ne olursa olsun, bu adım sırasında veritabanı çevrimiçi kalır ve bağlantılar özgün işlem örneğindeki veritabanına yönlendirilmeye devam eder.
+    İstenen hizmet katmanı ve işlem boyutu ile yeni bir işlem örneği oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanının bir kopyasının oluşturulması ve toplam gecikme süresinin kesin bir şekilde etkilenmesinin yanı sıra yeni işlem örneğinde oluşturulması gerekir. Ne olursa olsun, bu adım sırasında veritabanı çevrimiçi kalır ve bağlantılar özgün işlem örneğindeki veritabanına yönlendirilmeye devam eder.
 
 2. Bağlantıların yeni işlem örneğine yönlendirilmesini Değiştir
 
     Özgün işlem örneğindeki veritabanına yönelik var olan bağlantılar bırakılmıştı. Yeni işlem örneğindeki veritabanına yeni bağlantılar oluşturulur. Hizmet katmanı ve işlem boyutu değişikliklerinin bazı birleşimleri için, veritabanı dosyaları, anahtar sırasında ayrılır ve yeniden eklenir.  Ne olursa olsun, veritabanı genellikle 30 saniyeden kısa bir süre boyunca ve genellikle birkaç saniye boyunca kullanılamadığında kısa bir hizmet kesintisine neden olabilir. Bağlantılar bırakıldığında çalışan uzun süre çalışan işlemler varsa, bu adımın süresi durdurulan işlemleri kurtarmak için daha uzun sürebilir. [Hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md) , uzun süre çalışan işlemleri iptal etme etkisini azaltabilir.
 
 > [!IMPORTANT]
-> İş akışındaki herhangi bir adım sırasında hiçbir veri kaybolmaz.
+> İş akışındaki herhangi bir adım sırasında hiçbir veri kaybolmaz. Hizmet katmanı değiştirildiğinde Azure SQL veritabanı 'nı kullanan uygulamalar ve bileşenlerde bazı [yeniden deneme mantığı](sql-database-connectivity-issues.md) uyguladığınızdan emin olun.
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Hizmet katmanını değiştirme veya işlem boyutunu boyutlandırma gecikmesi
 
@@ -59,18 +59,18 @@ Hizmet katmanını değiştirme veya tek bir veritabanının veya elastik havuzu
 
 |Hizmet katmanı|Temel tek veritabanı,</br>Standart (S0-S1)|Temel elastik havuz,</br>Standart (S2-S12), </br>Hiper ölçekli </br>Tek veritabanı veya elastik havuz Genel Amaçlı|Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz|
 |:---|:---|:---|:---|
-|**Temel tek veritabanı,</br> standart (S0-S1)**|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
-|**Temel elastik havuz </br>, standart (S2-S12) </br>, hiper ölçek </br>genel amaçlı tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Kullanılan alandan bağımsız sabit zaman gecikmesi</br>&bull;&nbsp;Genellikle, 5 dakikadan az|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
-|**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|&bull;&nbsp;Veri kopyalama nedeniyle kullanılan veritabanı alanıyla gecikme süresi</br>&bull;&nbsp;Genellikle, 1 dakikadan az boş alan kullanılır|
+|**Temel tek veritabanı,</br> standart (S0-S1)**|&bull; &nbsp;sabit zaman gecikmesi kullanılan alandan bağımsız</br>&bull; &nbsp;genellikle 5 dakikadan az|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
+|**Temel elastik havuz, </br>standart (S2-S12), </br>Hyperscale, </br>Genel Amaçlı tek veritabanı veya elastik havuz**|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|&bull; &nbsp;sabit zaman gecikmesi kullanılan alandan bağımsız</br>&bull; &nbsp;genellikle 5 dakikadan az|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
+|**Premium veya İş Açısından Kritik tek veritabanı veya elastik havuz**|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|veri kopyalama nedeniyle kullanılan veritabanı alanıyla orantılı &bull; &nbsp;gecikme süresi</br>&bull; &nbsp;genellikle 1 dakikadan az kullanılan alan kullanılır|
 
 > [!TIP]
-> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetin](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetin](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) izleyin ve bu iki PowerShell komutunu kullanın: [Get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [stop-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Sürmekte olan işlemleri izlemek için bkz.: [SQL REST API kullanarak Işlemleri yönetme](https://docs.microsoft.com/rest/api/sql/operations/list), [CLI kullanarak Işlemleri yönetme](/cli/azure/sql/db/op), [T-SQL kullanarak Işlemleri izleme](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) ve bu Iki PowerShell komutu: [Get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity) ve [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Hizmet katmanı değişiklikleri veya işlem temizleme işlemleri iptal ediliyor
 
 Bir hizmet katmanı değişikliği veya işlem yeniden oluşturma işlemi iptal edilebilir.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Veritabanına genel bakış dikey penceresinde **Bildirimler** ' e gidin ve devam eden bir işlem olduğunu belirten kutucuğa tıklayın:
 
@@ -82,7 +82,7 @@ Sonra, **Bu Işlemi Iptal et**etiketli düğmeye tıklayın.
 
 #### <a name="powershell"></a>PowerShell
 
-PowerShell komut isteminden `$ResourceGroupName`, `$ServerName`, ve `$DatabaseName`öğesini ayarlayın ve ardından aşağıdaki komutu çalıştırın:
+PowerShell komut isteminden `$ResourceGroupName`, `$ServerName`ve `$DatabaseName`ayarlayın ve ardından aşağıdaki komutu çalıştırın:
 
 ```PowerShell
 $OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
@@ -117,29 +117,29 @@ Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından b
 
 - Depolama birimi, 1 GB Artımlar kullanılarak en fazla boyut sınırına sağlanabilir. Yapılandırılabilir veri depolaması en az 5 GB 'dir
 - Tek bir veritabanı için depolama, [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak veya azaltılarak sağlanabilir.
-- SQL veritabanı, günlük dosyaları için ek depolama alanının% 30 ' u ve TempDB için vCore başına 32 ' i ayırır, ancak 384GB ' ı aşamaz. TempDB, tüm hizmet katmanlarında eklenmiş bir SSD üzerinde bulunur.
+- SQL veritabanı, günlük dosyaları için ek depolama alanının %30 ' u ve TempDB için vCore başına 32 ' i ayırır, ancak 384GB ' ı aşamaz. TempDB, tüm hizmet katmanlarında eklenmiş bir SSD üzerinde bulunur.
 - Tek bir veritabanı için depolama fiyatı, veri depolama ve günlük depolama tutarlarının toplamı hizmet katmanının depolama birimi fiyatıyla çarpılır. TempDB 'nin maliyeti, sanal çekirdek fiyatına dahildir. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU tabanlı satın alma modeli
 
-- Tek bir veritabanı için DTU fiyatı, ek ücret ödemeden belirli miktarda depolama alanı içerir. Dahil edilen miktarın ötesinde daha fazla depolama alanı, 250 GB ile 1 TB arasında artan maksimum boyut sınırına kadar ek bir maliyet ve sonra da 1 TB 'ın üzerinde 256 GB 'lık artışlarla sağlanabilir. Dahil edilen depolama miktarları ve maksimum boyut sınırları için bkz [. tek veritabanı: Depolama boyutları ve işlem boyutları](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Tek bir veritabanı için DTU fiyatı, ek ücret ödemeden belirli miktarda depolama alanı içerir. Dahil edilen miktarın ötesinde daha fazla depolama alanı, 250 GB ile 1 TB arasında artan maksimum boyut sınırına kadar ek bir maliyet ve sonra da 1 TB 'ın üzerinde 256 GB 'lık artışlarla sağlanabilir. Dahil edilen depolama miktarları ve maksimum boyut sınırları için bkz. [tek veritabanı: depolama boyutları ve işlem boyutları](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
 - Tek bir veritabanı için ek depolama, Azure portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [POWERSHELL](/powershell/module/az.sql/set-azsqldatabase), [Azure CLI](/cli/azure/sql/db#az-sql-db-update)veya [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)kullanılarak en büyük boyutu arttırılarak sağlanabilir.
 - Tek bir veritabanı için ek depolama alanı fiyatı, hizmet katmanının ek depolama birimi fiyatı ile çarpılmış olan ek depolama miktarıdır. Ek depolama alanı fiyatına ilişkin ayrıntılar için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanı daraltma gerekebilir. Daha fazla bilgi için [Azure SQL veritabanı'nda dosya alanı yönetmek](sql-database-file-space-management.md).
+> Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md).
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>En büyük boyut 1 TB 'den büyük olduğunda P11 ve P15 kısıtlamaları
 
-Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeler ve ABD devlet Orta. Bu bölgelerde Premium katmanda depolama için 1 TB üst sınırı uygulanır. En büyük boyut olan 1 TB 'den büyük olan P11 ve P15 veritabanları için aşağıdaki önemli noktalar ve sınırlamalar geçerlidir:
+Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde Premium katmanda depolama için 1 TB üst sınırı uygulanır. En büyük boyut olan 1 TB 'den büyük olan P11 ve P15 veritabanları için aşağıdaki önemli noktalar ve sınırlamalar geçerlidir:
 
 - Bir P11 veya P15 veritabanının en büyük boyutu 1 TB 'den büyük bir değere ayarlandıysa, bu, yalnızca bir P11 veya P15 veritabanına geri yüklenebilir veya kopyalanabilir.  Daha sonra, veritabanı farklı bir işlem boyutuna ölçeklendirildi olabilir, ancak bu işlem sırasında ayrılan alan miktarı yeni işlem boyutunun en büyük boyut sınırlarını aşmaz.
 - Etkin coğrafi çoğaltma senaryoları için:
-  - Coğrafi çoğaltma ilişkisi ayarlama: Birincil veritabanı P11 veya P15 ise, ikincil (ies) da P11 veya P15 olmalıdır; daha düşük işlem boyutu 1 TB 'den fazla destekleme yeteneğine sahip olmadıkları için ikincil olarak reddedilir.
-  - Coğrafi çoğaltma ilişkisinde birincil veritabanını yükseltme: Birincil veritabanında en büyük boyutu 1 TB 'den fazlasına değiştirmek, ikincil veritabanında aynı değişikliği tetikler. Birincil değişikliğin etkili olabilmesi için her iki yükseltme de başarılı olmalıdır. 1 TB 'den fazla seçeneği için bölge sınırlamaları geçerlidir. İkincil, 1 TB 'ın üzerinde bir değer desteklemeyen bir bölgedeyse, birincil yükseltilmemiştir.
+  - Coğrafi çoğaltma ilişkisi ayarlama: birincil veritabanı P11 veya P15 ise, ikincil (ies) da P11 veya P15 olmalıdır; daha düşük işlem boyutu 1 TB 'den fazla destekleme yeteneğine sahip olmadıkları için ikincil olarak reddedilir.
+  - Coğrafi çoğaltma ilişkisinde birincil veritabanını yükseltme: birincil veritabanında en büyük boyutu 1 TB 'den fazlasına değiştirmek ikincil veritabanında aynı değişikliği tetikler. Birincil değişikliğin etkili olabilmesi için her iki yükseltme de başarılı olmalıdır. 1 TB 'den fazla seçeneği için bölge sınırlamaları geçerlidir. İkincil, 1 TB 'ın üzerinde bir değer desteklemeyen bir bölgedeyse, birincil yükseltilmemiştir.
 - 1 TB 'den fazla P11/P15 veritabanlarını yüklemek için Içeri/dışarı aktarma hizmeti kullanımı desteklenmez. Verileri [içeri](sql-database-import.md) ve [dışarı](sql-database-export.md) aktarmak için SqlPackage. exe ' yi kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

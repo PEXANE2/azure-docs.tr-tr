@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053079"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101417"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Kimlik altyapınızı güvenli hale getirmenin beş adımı
 
@@ -175,21 +175,21 @@ Azure AD Kimlik Koruması, günlük izlemeniz gereken iki önemli rapor sağlar:
 
 Kullanıcılar, e-postaları gibi profil bilgilerine ve kullanıcı verilerine erişim kazanabilmek için güvenliği aşılmış bir Web sitesine veya uygulamalarına gidiliyor olabilir. Kötü amaçlı bir aktör, posta kutusu içeriğini şifrelemek için aldığı onaylı izinleri kullanabilir ve posta kutusu verilerinizi yeniden kazanmak için bir ransoh talep edebilir. Yöneticiler, kullanıcılar tarafından verilen izinleri [gözden geçirmeli ve denetlemelidir](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) .
 
-## <a name="step-5---enable-end-user-self-help"></a>5\. adım-Son Kullanıcı kendi kendine yardım 'ı etkinleştirme
+## <a name="step-5---enable-end-user-self-service"></a>5\. adım-Son Kullanıcı self servis hizmetini etkinleştirme
 
-Mümkün olduğunca verimlilik ile güvenliği dengelemek isteyeceksiniz. Uzun çalıştırmada güvenlik için bir temel ayarlamanıza olanak tanıyan anlayış ile yolculuğuna yaklaşmayı sağlayan aynı satırlarda, kalan dikkatli sırasında kullanıcılarınızı güçlendirin. 
+Mümkün olduğunca verimlilik ile güvenliği dengelemek isteyeceksiniz. Uzun çalıştırmada güvenlik için bir temel ayarlamanıza olanak tanıyan anlayış ile yolculuğuna yaklaşmayı sağlayan aynı satırlarda, kalan dikkatli sırasında kullanıcılarınızı güçlendirin.
 
 ### <a name="implement-self-service-password-reset"></a>Self servis parola sıfırlama uygulama
 
-Azure [self servis parola sıfırlama (SSPR)](../../active-directory/authentication/quickstart-sspr.md) , BT yöneticilerinin kullanıcıların yönetici müdahalesi olmadan parolalarını veya hesaplarını sıfırlamasına veya bunların kilidini açmalarına izin veren basit bir yol sunar. Sistem, kullanıcıların sisteme erişimini izleyen ayrıntılı raporlama içerir, ayrıca kötüye kullanım veya uygunsuz kullanım konusunda uyaran bildirimler sağlar. 
+Azure AD 'nin [self servis parola sıfırlama (SSPR)](../../active-directory/authentication/quickstart-sspr.md) , BT yöneticilerinin, yardım masası veya yönetici müdahalesi olmadan parolalarını veya hesaplarını sıfırlamasına veya bunların kilidini açmalarına izin veren basit bir yol sunar. Sistem, kullanıcılar parolalarını sıfırlarken ve kötüye kullanma veya kötüye kullanma hakkında uyarı veren bildirimlerle birlikte, izleyen ayrıntılı raporlama içerir.
 
-### <a name="implement-self-service-group-management"></a>Self Servis Grup yönetimini uygulama
+### <a name="implement-self-service-group-and-application-access"></a>Self Servis grubunu ve uygulama erişimini Uygula
 
-Azure AD, güvenlik gruplarını ve Office 365 gruplarını kullanarak kaynaklara erişimi yönetme olanağı sağlar. Bu gruplar, BT yöneticileri yerine Grup sahipleri tarafından yönetilebilir. [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md)olarak bilinen bu özellik, yönetim rolü atanmamış Grup sahiplerinin, yöneticilerin isteklerini işlemesini sağlamak için Yöneticiler üzerinde güvenmek zorunda kalmadan grupları oluşturup yönetmesine olanak tanır.
+Azure AD, yönetici olmayan güvenlik gruplarını, Office 365 gruplarını, uygulama rollerini ve erişim paketi kataloglarını kullanarak kaynaklara erişimi yönetme yeteneği sağlar.  [Self servis grup yönetimi](../../active-directory/users-groups-roles/groups-self-service-management.md) , Grup sahiplerinin bir yönetim rolü atanmasına gerek kalmadan kendi gruplarını yönetmesine olanak sağlar. Kullanıcılar, isteklerini işlemek için yöneticilere güvenmek zorunda kalmadan Office 365 grupları oluşturup yönetebilir ve kullanılmayan gruplar otomatik olarak sona erer.  [Azure AD Yetkilendirme Yönetimi](../../active-directory/governance/entitlement-management-overview.md) , kapsamlı erişim isteği iş akışlarıyla ve otomatik süre dolduktan sonra temsilciyi ve görünürlüğü daha da sunar.  Yönetici olmayan kullanıcılara, kendilerine ait oldukları gruplar, takımlar, uygulamalar ve SharePoint Online siteleri için kendi erişim paketlerini yapılandırma olanağı, örneğin, çalışanın, erişimi onaylaması gereken özel ilkelerle onaylayan olarak Yöneticiler ve iş ortağı sponsorları.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri uygulama
 
-[Azure AD erişim gözden geçirmeleri](../../active-directory/governance/access-reviews-overview.md)sayesinde grup üyeliklerini yönetebilir, kurumsal uygulamalara erişimi ve ayrıcalıklı rol atamalarına, kullanıcılara, hiçbir zaman uzun süre erişimi vermediği bir güvenlik standardı bulundurduğunuzdan emin olmak için Bunu yapmanız gerekir.
+[Azure AD erişim gözden geçirmeleriyle](../../active-directory/governance/access-reviews-overview.md), bir güvenlik standardı bulundurduğunuzdan emin olmak için erişim paketi ve grup üyeliklerini yönetebilir, kurumsal uygulamalara ve ayrıcalıklı rol atamalarına erişebilirsiniz.  Kullanıcıların kendileri tarafından düzenli olarak ortaya çıkarması, kaynak sahipleri ve diğer gözden geçirenler, kullanıcıların artık ihtiyaç duymuyorsa uzun süre boyunca erişimi korumalarına de dikkat edin.
 
 ## <a name="summary"></a>Özet
 

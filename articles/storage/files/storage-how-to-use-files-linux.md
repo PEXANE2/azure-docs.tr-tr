@@ -4,68 +4,59 @@ description: Linux üzerinde bir Azure dosya paylaşımının SMB üzerinden nas
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/29/2018
+ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9674df346ff0b5c046df26fe85bf7ba0bbb802e6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900318"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097803"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
+[Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: `/etc/fstab`bir giriş oluşturarak `mount` komutuyla isteğe bağlı ve önyükleme.
 
-[Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, [SMB çekirdek istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımları ile bağlanabilir. Bu makalede bir Azure dosya paylaşımının bağlanması için iki yol gösterilmektedir: ' de `mount` `/etc/fstab`bir giriş oluşturarak, komut ve önyükleme ile isteğe bağlı.
+Linux 'ta bir Azure dosya paylaşımının bağlanması için önerilen yol, SMB 3,0 ' i kullanmaktır. Azure dosyaları varsayılan olarak, yalnızca SMB 3,0 tarafından desteklenen aktarım için şifreleme gerektirir. Azure dosyaları, geçiş sırasında şifrelemeyi desteklemeyen SMB 2,1 ' ı da destekler, ancak Azure dosya paylaşımlarını başka bir Azure bölgesinden veya şirket içi güvenlik nedenleriyle SMB 2,1 ile birlikte bağlayamayabilir. Uygulamanız özellikle SMB 2,1 ' i gerektirmediği için, en popüler, son yayınlanan Linux dağıtımları SMB 3,0 ' yi destekleyen en popüler, bunu kullanmanın küçük bir nedeni vardır:  
 
-> [!NOTE]  
-> Azure dosya paylaşımının, şirket içinde veya farklı bir Azure bölgesinde barındırıldığı Azure bölgesinin dışında bağlanması için, işletim sisteminin SMB 3,0 şifreleme işlevini desteklemesi gerekir.
-
-## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Linux ve CIFS-utils paketi ile bir Azure dosya paylaşımının bağlanması için Önkoşullar
-<a id="smb-client-reqs"></a>
-
-* **Mevcut bir Azure depolama hesabı ve dosya paylaşma**: Bu makaleyi tamamlayabilmeniz için bir depolama hesabı ve dosya paylaşımınız olması gerekir. Henüz bir tane oluşturmadıysanız, konu üzerinde hızlı başlangıçlardan birine bakın: [Dosya paylaşımları oluşturma-CLI](storage-how-to-use-files-cli.md).
-
-* **Depolama hesabınızın adı ve anahtarınız** Bu makaleyi tamamlayabilmeniz için depolama hesabı adı ve anahtarına ihtiyacınız olacak. CLı hızlı başlangıcını kullanarak bir tane oluşturduysanız, depolama hesabı anahtarınızı nasıl alacağınızı öğrenmek için, daha önce bağlı olan CLı hızlı başlangıç kılavuzuna başvurun.
-
-* **Bağlama gereksinimlerinize uyacak bir Linux dağıtımı seçin.**  
-      Azure dosyaları, SMB 2,1 ve SMB 3,0 aracılığıyla bağlanabilir. Şirket içi veya diğer Azure bölgelerindeki istemcilerden gelen bağlantılarda SMB 3,0 ' i kullanmanız gerekir. Azure dosyaları, SMB 2,1 ' i (veya şifreleme olmadan SMB 3,0) reddeder. Azure dosya paylaşımında aynı Azure bölgesindeki bir VM 'den erişiyorsanız, SMB 2,1 kullanarak dosya paylaşımınıza erişebilirsiniz, ancak yalnızca, Azure dosya paylaşımının barındırıldığı depolama hesabı için *Güvenli aktarım gerekli* değildir. Her zaman güvenli aktarım gerektirmenizi ve yalnızca şifreleme ile SMB 3,0 ' i kullanmanızı öneririz.
-
-    SMB 3,0 şifreleme desteği, Linux çekirdek sürümü 4,11 ' de kullanıma sunulmuştur ve popüler Linux dağıtımları için eski çekirdek sürümlerine geri alındı. Bu belgenin yayımında, Azure Galerisi 'nden alınan aşağıdaki dağıtımlar tablo üst bilgilerinde belirtilen bağlama seçeneğini destekler. 
-
-### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>Karşılık gelen bağlama özelliklerine sahip önerilen en düşük sürümler (SMB sürüm 2,1 vs SMB sürüm 3,0)
-
-|   | SMB 2.1 <br>(Aynı Azure bölgesindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölge 'den takar) |
+| | SMB 2.1 <br>(Aynı Azure bölgesindeki VM 'lerde takar) | SMB 3.0 <br>(Şirket içi ve çapraz bölge 'den takar) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5+ |
-| CentOS | 7 + |  7.5+ |
-| Debian | 8+ | 9 +<sup>*</sup> |
+| Ubuntu | 14.04 + | 16.04 + |
+| Red Hat Enterprise Linux (RHEL) | 7 + | 7,5 + |
+| CentOS | 7 + |  7,5 + |
+| Debian | 8 + | 10 + |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
 
-<sup>*</sup>Geri alınamaz bir çekirdeğin kullanımı gerekebilir. `sudo apt-get install linux-image-cloud-amd64` ile yükleyebilirsiniz.
-
-Linux dağıtımlarınız burada listelenmiyorsa aşağıdaki komutla Linux çekirdek sürümünü görmek için kontrol edebilirsiniz:
+Yukarıdaki tabloda listelenmeyen bir Linux dağıtımını kullanıyorsanız Linux dağıtımının Linux çekirdek sürümünü denetleyerek şifreleme ile SMB 3,0 ' i destekleyip desteklemediğini kontrol edebilirsiniz. Şifreleme ile SMB 3,0, Linux çekirdek sürümü 4,11 ' e eklenmiştir. `uname` komutu kullanımdaki Linux çekirdeğinin sürümünü döndürür:
 
 ```bash
 uname -r
 ```
 
-* <a id="install-cifs-utils"></a>**CIFS-utils paketi yüklendi.**  
+## <a name="prerequisites"></a>Önkoşullar
+<a id="smb-client-reqs"></a>
+
+* <a id="install-cifs-utils"></a>**CIFS-utils paketinin yüklü olduğundan emin olun.**  
     CIFS-utils paketi, seçtiğiniz Linux dağıtımında Paket Yöneticisi kullanılarak yüklenebilir. 
 
-    **Ubuntu** ve **detem tabanlı** dağıtımlar üzerinde `apt-get` , paket yöneticisini kullanın:
+    **Ubuntu** ve **detem tabanlı** dağıtımlar üzerinde `apt` Paket Yöneticisi ' ni kullanın:
 
     ```bash
-    sudo apt-get update
-    sudo apt-get install cifs-utils
+    sudo apt update
+    sudo apt install cifs-utils
     ```
 
-    **RHEL** ve **CentOS**'da `yum` paket yöneticisini kullanın:
+    **Fedora**, **Red Hat Enterprise Linux 8 +** ve **centos 8 +** ' da `dnf` paket yöneticisini kullanın:
 
     ```bash
-    sudo yum install cifs-utils
+    sudo dnf install cifs-utils
+    ```
+
+    **Red Hat Enterprise Linux** ve **CentOS**'ın eski sürümlerinde, `dnf` paket yöneticisini kullanın:
+
+    ```bash
+    sudo yum install cifs-utils 
     ```
 
     **OpenSUSE**'de `zypper` paket yöneticisini kullanın:
@@ -76,79 +67,218 @@ uname -r
 
     Diğer dağıtımlarda, uygun paket yöneticisini veya [kaynaktan derlemeyi](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download) kullanın
 
-* **Bağlı paylaşımın dizin/dosya Izinlerine karar verin**: Aşağıdaki örneklerde, izin `0777` tüm kullanıcılara okuma, yazma ve yürütme izinleri vermek için kullanılır. Bunu istediğiniz gibi diğer [chmod izinleriyle](https://en.wikipedia.org/wiki/Chmod) değiştirebilirsiniz, ancak bu, erişimi kısıtlamış olabilir. Diğer izinleri kullanırsanız, istediğiniz yerel kullanıcı ve gruplar için erişimi sürdürmek üzere uid ve GID de kullanmayı göz önünde bulundurmanız gerekir.
+* **Azure komut satırı arabirimi 'nin (CLı) en son sürümü.** Azure CLı 'nın nasıl yükleneceği hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve işletim sisteminizi seçmek. PowerShell 6 + ' da Azure PowerShell modülünü kullanmayı tercih ederseniz, Azure CLı için aşağıdaki yönergeler sunulmaktadır.
 
-> [!NOTE]
-> Dir_mode ve file_mode ile Açık Dizin ve dosya izni atamadıysanız, bunlar varsayılan olarak 0755 ' dir.
-
-* **Bağlantı noktası 445 ' ün açık olduğundan emin olun**: SMB, TCP bağlantı noktası 445 üstünden iletişim kurar. İstemci makinenizde güvenlik duvarının TCP bağlantı noktaları 445’i engellemediğinden emin olun.
-
-## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure dosya paylaşımından isteğe bağlı olarak bağlama`mount`
-
-1. **[Linux dağıtıma yönelik CIFS-utils paketini yükler](#install-cifs-utils)** .
-
-1. **Bağlama noktası için bir klasör oluşturun**: Bağlama noktası için bir klasör dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu yeni bir klasör altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur **< storage_account_name >** ve **< file_share_name >** , ortamınız için uygun bilgilerle değiştirin:
-
+* **Bağlantı noktası 445 ' ün açık olduğundan emin olun**: SMB, TCP bağlantı noktası 445 üzerinden iletişim kurar. güvenlik duvarınızın istemci MAKINESINDEN gelen TCP 445 bağlantı noktalarını engelleyip engellemediğini denetleyin.  **-Resource-group > <** değiştirin ve **depolama hesabınızı < >**
     ```bash
-    mkdir -p <storage_account_name>/<file_share_name>
+    resourceGroupName="<your-resource-group>"
+    storageAccountName="<your-storage-account>"
+    
+    # This command assumes you have logged in with az login
+    httpEndpoint=$(az storage account show \
+        --resource-group $resourceGroupName \
+        --name $storageAccountName \
+        --query "primaryEndpoints.file" | tr -d '"')
+    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))
+    fileHost=$(echo $fileHost | tr -d "/")
+
+    nc -zvw3 $fileHost 445
     ```
 
-1. **Azure dosya paylaşımından bağlama için Mount komutunu kullanın**: **< Storage_account_name >** , **< paylaşım_adı >** , **< smb_version >** , **< storage_account_key >** ve **< mount_point >** , sizin için uygun bilgilerle değiştirmeyi unutmayın. ortamınızın. Linux dağıtımı şifreleme ile SMB 3,0 ' i destekliyorsa (daha fazla bilgi için bkz. [SMB istemci gereksinimlerini anlayın](#smb-client-reqs) ) **< smb_version >** için **3,0** kullanın. Şifreleme ile SMB 3,0 ' ı desteklemeyen Linux dağıtımları için **< smb_version >** için **2,1** kullanın. Azure dosya paylaşımınız, SMB 3,0 ile yalnızca bir Azure bölgesinin (Şirket içi veya farklı bir Azure bölgesinde dahil) dışında bağlanabilir. İsterseniz, bağlanan paylaşımınızın dizin ve dosya izinlerini değiştirebilir ancak bu, erişimi kısıtlamalıdır.
+    Bağlantı başarılı olduysa aşağıdaki çıktıya benzer bir şey görmeniz gerekir:
 
-    ```bash
-    sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
+    ```
+    Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
-> [!Note]  
-> Azure dosya paylaşımını kullanarak işiniz bittiğinde, paylaşımını çıkarmak için kullanabilirsiniz `sudo umount <mount_point>` .
+    Şirket ağınızda 445 numaralı bağlantı noktasını açabilmeniz veya bir ISS tarafından bu işlemi gerçekleştirmek engelleniyorsa, bağlantı noktası 445 ' yi çözmek için bir VPN bağlantısı veya ExpressRoute kullanabilirsiniz. Daha fazla bilgi için bkz. [doğrudan Azure dosya paylaşma erişimi Için ağ değerlendirmeleri](storage-files-networking-overview.md).
 
-## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>İle Azure dosya paylaşımının kalıcı bir bağlama noktası oluşturun`/etc/fstab`
+## <a name="mounting-azure-file-share"></a>Azure dosya paylaşımından bağlama
+Linux dağıtımına sahip bir Azure dosya paylaşımının kullanılması için Azure dosya paylaşımının bağlama noktası olarak kullanılacak bir dizin oluşturmanız gerekir. Bir bağlama noktası, Linux sisteminizde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Bağlama noktası oluşturulduktan sonra, Azure dosya paylaşımında erişim için `mount` komutunu kullanın.
 
-1. **[Linux dağıtıma yönelik CIFS-utils paketini yükler](#install-cifs-utils)** .
+İsterseniz aynı Azure dosya paylaşımının birden çok bağlama noktasına bağlayabilirsiniz.
 
-1. **Bağlama noktası için bir klasör oluşturun**: Bağlama noktası için bir klasör dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu yeni bir klasör altında oluşturmak yaygın bir kuraldır. Bunu oluşturduğunuz her yerde klasörün mutlak yolunu aklınızda bulabilirsiniz. Örneğin, aşağıdaki komut yeni bir dizin oluşturur **< storage_account_name >** ve **< file_share_name >** , ortamınız için uygun bilgilerle değiştirin.
+### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure dosya paylaşımından isteğe bağlı olarak `mount` bağlama
+1. **Bağlama noktası için bir klasör oluşturun**: `<your-resource-group>`, `<your-storage-account>`ve `<your-file-share>`, ortamınız için uygun bilgilerle değiştirin:
 
     ```bash
-    sudo mkdir -p <storage_account_name>/<file_share_name>
+    resourceGroupName="<your-resource-group>"
+    storageAccountName="<your-storage-account>"
+    fileShareName="<your-file-share>"
+
+    mntPath="/mnt/$storageAccountName/$fileShareName"
+
+    sudo mkdir -p $mntPath
     ```
 
-1. **Dosya paylaşımının Kullanıcı adını (depolama hesabı adı) ve parolasını (depolama hesabı anahtarı) depolamak için bir kimlik bilgisi dosyası oluşturun.** **< Storage_account_name >** ve **< storage_account_key >** , ortamınız için uygun bilgilerle değiştirin.
+1. **Azure dosya paylaşımından bağlama için Mount komutunu kullanın**. Aşağıdaki örnekte, yerel Linux dosyası ve klasörü izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), sahip grubundaki kullanıcılar için okuma ve yürütme ve sistemdeki diğerleri için okuma ve yürütme anlamına gelir. Bağlama için kullanıcı KIMLIĞINI ve grup KIMLIĞINI ayarlamak üzere `uid` ve `gid` bağlama seçeneklerini kullanabilirsiniz. Ayrıca, istediğiniz gibi özel izinleri ayarlamak için `dir_mode` ve `file_mode` kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) . 
+
+    ```bash
+    httpEndpoint=$(az storage account show \
+        --resource-group $resourceGroupName \
+        --name $storageAccountName \
+        --query "primaryEndpoints.file" | tr -d '"')
+    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShare
+
+    storageAccountKey=$(az storage account keys list \
+        --resource-group $resourceGroupName \
+        --account-name $storageAccountName \
+        --query "[0].value" | tr -d '"')
+
+    sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+    ```
+
+    > [!Note]  
+    > Yukarıdaki mount komutu SMB 3,0 ile takar. Linux dağıtım, şifreleme ile SMB 3,0 ' i desteklemiyorsa veya yalnızca SMB 2,1 ' i destekliyorsa, yalnızca depolama hesabıyla aynı bölgedeki bir Azure VM 'sinden bağlayabilirsiniz. Azure dosya paylaşımınızı şifreleme ile SMB 3,0 desteği olmayan bir Linux dağıtımına bağlamak için, [depolama hesabı için iletim sırasında şifrelemeyi devre dışı bırakmanız](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)gerekir.
+
+Azure dosya paylaşımını tamamladığınızda, paylaşımını çıkarmak için `sudo umount $mntPath` kullanabilirsiniz.
+
+### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>`/etc/fstab` ile Azure dosya paylaşımında kalıcı bir bağlama noktası oluşturma
+1. **Bağlama noktası için bir klasör oluşturun**: bir bağlama noktası klasörü dosya sisteminde herhangi bir yerde oluşturulabilir, ancak bunu/mntın altında oluşturmak yaygın bir kuraldır. Örneğin, aşağıdaki komut yeni bir dizin oluşturur `<your-resource-group>`, `<your-storage-account>`ve `<your-file-share>` ortamınız için uygun bilgilerle değiştirin:
+
+    ```bash
+    resourceGroupName="<your-resource-group>"
+    storageAccountName="<your-storage-account>"
+    fileShareName="<your-file-share>"
+
+    mntPath="/mnt/$storageAccountName/$fileShareName"
+
+    sudo mkdir -p $mntPath
+    ```
+
+1. **Dosya paylaşımının Kullanıcı adını (depolama hesabı adı) ve parolasını (depolama hesabı anahtarı) depolamak için bir kimlik bilgisi dosyası oluşturun.** 
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
-    sudo mkdir /etc/smbcredentials
+        sudo mkdir "/etc/smbcredentials"
     fi
-    if [ ! -f "/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred" ]; then
-    sudo bash -c 'echo "username=<STORAGE ACCOUNT NAME>" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
-    sudo bash -c 'echo "password=7wRbLU5ea4mgc<DRIVE LETTER>PIpUCNcuG9gk2W4S2tv7p0cTm62wXTK<DRIVE LETTER>CgJlBJPKYc4VMnwhyQd<DRIVE LETTER>UT<DRIVE LETTER>yR5/RtEHyT/EHtg2Q==" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
+
+    storageAccountKey=$(az storage account keys list \
+        --resource-group $resourceGroupName \
+        --account-name $storageAccountName \
+        --query "[0].value" | tr -d '"')
+    
+    smbCredentialFile="/etc/smbcredentials/$storageAccountName.cred"
+    if [ ! -f $smbCredentialFile ]; then
+        echo "username=$storageAccountName" | sudo tee $smbCredentialFile > /dev/null
+        echo "password=$storageAccountKey" | sudo tee -a $smbCredentialFile > /dev/null
+    else 
+        echo "The credential file $smbCredentialFile already exists, and was not modified."
     fi
     ```
 
 1. **Kimlik bilgisi dosyasındaki izinleri değiştirerek yalnızca kök parola dosyasını okuyabilir veya değiştirebilir.** Depolama hesabı anahtarı temel olarak depolama hesabı için bir süper yönetici parolası olduğundan, dosya üzerindeki izinleri yalnızca kök erişim gibi ayarlayarak, daha düşük ayrıcalıklı kullanıcıların depolama hesabı anahtarını alamamasını sağlayabilirsiniz.   
 
     ```bash
-    sudo chmod 600 /etc/smbcredentials/<storage_account_name>.cred
+    sudo chmod 600 $smbCredentialFile
     ```
 
-1. Aşağıdaki **satırı ' ye `/etc/fstab`eklemek için aşağıdaki komutu kullanın** : **< Storage_account_name >** , **< paylaşım_adı >** , **< smb_version >** ve **< mount_point >** , ortamınız için uygun bilgilerle değiştirmeyi unutmayın. Linux dağıtımı şifreleme ile SMB 3,0 ' i destekliyorsa (daha fazla bilgi için bkz. [SMB istemci gereksinimlerini anlayın](#smb-client-reqs) ) **< smb_version >** için **3,0** kullanın. Şifreleme ile SMB 3,0 ' ı desteklemeyen Linux dağıtımları için **< smb_version >** için **2,1** kullanın. Azure dosya paylaşımınız, SMB 3,0 ile yalnızca bir Azure bölgesinin (Şirket içi veya farklı bir Azure bölgesinde dahil) dışında bağlanabilir.
+1. Aşağıdaki **satırı `/etc/fstab`sonuna eklemek için aşağıdaki komutu kullanın** : aşağıdaki örnekte, yerel Linux dosya ve klasör izinleri varsayılan 0755 olur. Bu, sahip için okuma, yazma ve yürütme (dosya/dizin Linux sahibine göre), okuma ve sahip grubundaki kullanıcılar için yürütün ve sistemdeki diğerleri için okuma ve yürütme. Bağlama için kullanıcı KIMLIĞINI ve grup KIMLIĞINI ayarlamak üzere `uid` ve `gid` bağlama seçeneklerini kullanabilirsiniz. Ayrıca, istediğiniz gibi özel izinleri ayarlamak için `dir_mode` ve `file_mode` kullanabilirsiniz. İzinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. Vikipde [UNIX sayısal gösterimi](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) .
 
     ```bash
-    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs _netdev,nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    httpEndpoint=$(az storage account show \
+        --resource-group $resourceGroupName \
+        --name $storageAccountName \
+        --query "primaryEndpoints.file" | tr -d '"')
+    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-    sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
+    if [ -z "$(grep $smbPath\ $mntPath /etc/fstab)" ]; then
+        echo "$smbPath $mntPath cifs nofail,vers=3.0,credentials=$smbCredentialFile,serverino" | sudo tee -a /etc/fstab > /dev/null
+    else
+        echo "/etc/fstab was not modified to avoid conflicting entries as this Azure file share was already present. You may want to double check /etc/fstab to ensure the configuration is as desired."
+    fi
+
+    sudo mount -a
     ```
+    
+    > [!Note]  
+    > Yukarıdaki mount komutu SMB 3,0 ile takar. Linux dağıtım, şifreleme ile SMB 3,0 ' i desteklemiyorsa veya yalnızca SMB 2,1 ' i destekliyorsa, yalnızca depolama hesabıyla aynı bölgedeki bir Azure VM 'sinden bağlayabilirsiniz. Azure dosya paylaşımınızı şifreleme ile SMB 3,0 desteği olmayan bir Linux dağıtımına bağlamak için, [depolama hesabı için iletim sırasında şifrelemeyi devre dışı bırakmanız](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)gerekir.
 
-> [!Note]  
-> ' İ yeniden `sudo mount -a` başlatmak yerine düzenlemeden `/etc/fstab` sonra Azure dosya paylaşımından bağlamak için ' i kullanabilirsiniz.
+## <a name="securing-linux"></a>Linux güvenliğini sağlama
+Linux üzerinde bir Azure dosya paylaşımının bağlanması için bağlantı noktası 445 ' e erişilebilir olmalıdır. Çoğu kuruluş SMB 1 kaynaklı güvenlik riskleri nedeniyle 445 numaralı bağlantı noktasını engeller. CIFS (ortak Internet dosya sistemi) olarak da bilinen SMB 1, birçok Linux dağılımlarına dahil edilmiş eski bir dosya sistemi protokolüdür. SMB 1 eski, verimsiz ve hepsinden önemlisi güvenli olmayan bir protokoldür. Azure dosyalarının SMB 1 ' i desteklememesi ve Linux çekirdek sürüm 4,18 ' den itibaren, Linux, SMB 1 ' i devre dışı bırakmayı olanaklı kılan bir habertir. Üretimde SMB dosya paylaşımlarını kullanmadan önce Linux istemcilerinizdeki SMB 1 ' i devre dışı bırakmayı [kesinlikle öneririz](https://aka.ms/stopusingsmb1) .
+
+Linux Kernel 4,18 ' den başlayarak, eski nedenlerle `cifs` adlı SMB çekirdek modülü, `disable_legacy_dialects`olarak adlandırılan yeni bir modül parametresi (genellikle çeşitli dış belgeler tarafından *PARI* olarak adlandırılır) sunar. Linux Kernel 4,18 ' de tanıtılan halde, bazı satıcılar destekledikleri eski çekirdekler için bu değişikliği geri almaktadır. Kolaylık olması için aşağıdaki tabloda, bu modül parametresinin ortak Linux dağıtımları üzerinde kullanılabilirliği ayrıntılı olarak verilmiştir.
+
+| Dağıtım | SMB 1 devre dışı bırakabilir |
+|--------------|-------------------|
+| Ubuntu 14.04-16.04 | Hayır |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| De, 8-9 | Hayır |
+| De, 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | Hayır | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | Hayır |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE artık 15,0 | Hayır |
+| openSUSE artık 15.1 + | Yes |
+| openSUSE Tpoed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | Hayır |
+| SUSE Linux Enterprise 15 | Hayır |
+| SUSE Linux Enterprise 15,1 | Hayır |
+
+Aşağıdaki komutu kullanarak Linux dağılımının `disable_legacy_dialects` modülü parametresini destekleyip desteklemediğini kontrol edebilirsiniz.
+
+```bash
+sudo modinfo -p cifs | grep disable_legacy_dialects
+```
+
+Bu komut aşağıdaki iletiyi içermelidir:
+
+```Output
+disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
+```
+
+SMB 1 ' i devre dışı bırakmadan önce, SMB modülünün sisteminizde yüklü olmadığından emin olmak için ' i denetlemeniz gerekir (bir SMB paylaşımından bağlandıysanız bu otomatik olarak gerçekleşir). Bu işlemi, SMB yüklenmediği takdirde hiçbir şey çıkışı gereken aşağıdaki komutla yapabilirsiniz:
+
+```bash
+lsmod | grep cifs
+```
+
+Modülü kaldırmak için ilk olarak tüm SMB paylaşımlarını çıkarın (yukarıda açıklanan `umount` komutunu kullanarak). Aşağıdaki komutla sisteminizdeki tüm bağlı SMB paylaşımlarını tanımlayabilirsiniz:
+
+```bash
+mount | grep cifs
+```
+
+Tüm SMB dosya paylaşımlarını kaldırdığınızda modülün kaldırılması güvenlidir. Bunu `modprobe` komutuyla yapabilirsiniz.
+
+```bash
+sudo modprobe -r cifs
+```
+
+`modprobe` komutu kullanılarak, SMB 1 ' i yüklenmeyen şekilde modülü el ile yükleyebilirsiniz:
+
+```bash
+sudo modprobe cifs disable_legacy_dialects=Y
+```
+
+Son olarak, `/sys/module/cifs/parameters`yüklenen parametrelere bakarak, SMB modülünün parametresiyle birlikte yüklendiğini kontrol edebilirsiniz:
+
+```bash
+cat /sys/module/cifs/parameters/disable_legacy_dialects
+```
+
+Ubuntu ve detem tabanlı dağıtımlarda SMB 1 ' i kalıcı olarak devre dışı bırakmak için, ayarı ile `/etc/modprobe.d/local.conf` adlı yeni bir dosya oluşturmanız (diğer modüller için özel seçenekleriniz yoksa) oluşturmanız gerekir. Bunu aşağıdaki komutla yapabilirsiniz:
+
+```bash
+echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null
+```
+
+SMB modülünü yükleyerek bunun çalıştığını doğrulayabilirsiniz:
+
+```bash
+sudo modprobe cifs
+cat /sys/module/cifs/parameters/disable_legacy_dialects
+```
 
 ## <a name="feedback"></a>Geri Bildirim
-
 Linux kullanıcıları, sizi dinlemek istiyoruz!
 
 Linux kullanıcıları için Azure dosyaları ' grubu, Linux üzerinde dosya depolamayı değerlendirirken ve benimsediğiniz için geri bildirimde bulunacağınız bir forum sağlar. [Azure dosyaları Linux kullanıcılarına](mailto:azurefileslinuxusers@microsoft.com) kullanıcıların grubuna katılması için e-posta gönderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
 Azure Dosyaları hakkında daha fazla bilgi edinmek için şu bağlantılara göz atın:
 
 * [Azure Dosyaları dağıtımını planlama](storage-files-planning.md)

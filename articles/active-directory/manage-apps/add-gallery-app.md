@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bdf275bbafa9c46cfc4577ac2843da0be74c7ef
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477278"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062634"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza Galeri uygulaması ekleme
 
@@ -34,27 +34,30 @@ Azure Active Directory (Azure AD), Kurumsal Çoklu oturum açma ile etkinleştir
 
 1. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamaları açın](media/add-application-portal/open-enterprise-apps.png)
+    ![Kurumsal uygulamaları açın](media/add-gallery-app/open-enterprise-apps.png)
 
-1. **Yeni uygulama**’yı seçin.
 
-    ![Yeni uygulama](media/add-application-portal/new-application.png)
+3. Kiracınıza bir galeri uygulaması eklemek için **Yeni uygulama**' yı seçin.
 
-1. **Galeriden Ekle**' nin altında, ara kutusuna eklemek istediğiniz uygulamanın adını girin. 
+    ![Kiracınıza Galeri uygulaması eklemek için yeni uygulama ' yı seçin](media/add-gallery-app/new-application.png)
 
-    ![Ada veya kategoriye göre arama](media/add-application-portal/categories.png)
+ 4. Yeni Galeri önizleme deneyimine geç: **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**bağlantısını seçin.
 
-1. Sonuçlardan uygulamayı seçin.
+5. **Azure AD galerisine gözatamıyorum** bölmesi açılır ve bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları görüntüler. **Öne çıkan uygulamalar** bölümünde listelenen uygulamaların, federe çoklu oturum açma (SSO) ve sağlamayı destekleyip desteklemediğini gösteren simgeler olduğunu unutmayın.
 
-1. Seçim Uygulamaya özgü formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz.
+    ![Bir uygulamayı ada veya kategoriye göre ara](media/add-gallery-app/browse-gallery.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin. Uygulamaya **genel bakış** sayfası açılır.
+6. Eklemek istediğiniz uygulamanın galerisine gidin veya arama kutusuna adını girerek uygulamayı arayın. Sonra sonuçlardan uygulamayı seçin. Seçim Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulama adını düzenleyebilirsiniz.
+
+    ![Galeriden bir uygulamanın nasıl ekleneceğini gösterir](media/add-gallery-app/create-application.png)
+
+7. **Oluştur**'u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır.
 
 ## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
 
 1. Özellikler bölmesini düzenlenmek üzere açmak için **Özellikler** ' i seçin.
 
-    ![Özellikler bölmesini Düzenle](media/add-application-portal/edit-properties.png)
+    ![Özellikler bölmesini Düzenle](media/add-gallery-app/edit-properties.png)
 
 1. Uygulamanın atandığı veya atanmamış olduğu kullanıcıların uygulamada oturum açıp görebilmesine ve bir kullanıcının erişim panelinde uygulamayı görebilmesi için aşağıdaki seçenekleri ayarlayın.
 
@@ -94,7 +97,7 @@ Azure Active Directory (Azure AD), Kurumsal Çoklu oturum açma ile etkinleştir
 
 1. Özel bir logo kullanmak için 215 piksel 215 ile arasında bir logo oluşturun ve bunu PNG biçiminde kaydedin. Ardından logonuzu inceleyin ve karşıya yükleyin.
 
-    ![Logoyu değiştirme](media/add-application-portal/change-logo.png)
+    ![Logoyu değiştirme](media/add-gallery-app/change-logo.png)
 
 1. İşiniz bittiğinde **Kaydet**' i seçin.
 

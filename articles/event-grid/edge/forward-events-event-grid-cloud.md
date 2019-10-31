@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d73f64463d3e56d7bd2e59fcb719c6320cbc6321
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992359"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100647"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Öğretici: olayları Event Grid buluta Iletme
 
@@ -102,7 +102,7 @@ Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
    ```
 
    >[!NOTE]
-   > **EndpointUrl** , bulutta Event Grid konusunun URL 'sini belirtir. **Saskey** Event Grid bulut konusunun anahtarına başvurur. **TopicName** içindeki değer tüm giden olayları Event Grid için damgalamak üzere kullanılacaktır. Bu, bir Event Grid etki alanı konusuna naklederken yararlı olabilir. Event Grid etki alanı konusu hakkında daha fazla bilgi için bkz. [olay etki alanları]] (.. /event-domains.md)
+   > **EndpointUrl** , bulutta Event Grid konusunun URL 'sini belirtir. **Saskey** Event Grid bulut konusunun anahtarına başvurur. **TopicName** içindeki değer tüm giden olayları Event Grid için damgalamak üzere kullanılacaktır. Bu, bir Event Grid etki alanı konusuna naklederken yararlı olabilir. Event Grid etki alanı konusu hakkında daha fazla bilgi için bkz. [olay etki alanları](../event-domains.md)
 
     Örneğin,
   
@@ -198,5 +198,6 @@ Bulut konusu tarafından sunulan olayları görüntüleme hakkında daha fazla b
 
 Bu öğreticide, kenarda bir olay yayımladınız ve Azure bulutu 'nda Event Grid iletilir. Artık, bulutta Event Grid iletmek için temel adımları öğrenmiş olduğunuza göre:
 
+* IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
 * Bu [öğreticiyi](forward-events-iothub.md) Izleyerek olayları ıothub 'e iletin
 * Bu [öğreticiyi](pub-sub-events-webhook-cloud.md) izleyerek etkinlikleri bulutta Web kancasına iletin

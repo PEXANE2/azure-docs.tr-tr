@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a77cdcf332d450b2d3d9219ebfbaed2f799e7e6d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991181"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063992"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri modelleme
 
@@ -34,7 +34,7 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 1. **+ Ekle** öğesini seçin.
 1. Türlerle ilgili tüm ayrıntıları girin ve **Oluştur**' u seçin. Bu eylem, ortamda türler oluşturur.
 
-    [tür eklemek için![seçimleri](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
+    [tür eklemek için ![seçimleri](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>Bir veya daha fazla türü toplu karşıya yükleme
 
@@ -49,14 +49,14 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 1. Türü seçin ve **Düzenle**' yi seçin. 
 1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
 
-    [bir tür düzenlemede![seçimleri](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
+    [bir tür düzenlemede ![seçimleri](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
 
 ### <a name="delete-a-type"></a>Bir tür silme
 
 1. Türü seçin ve **Sil**' i seçin.
 1. Türlerle ilişkili bir örnek yoksa, silinir.
 
-    ["Sil" düğmesini![](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
+    ["Sil" düğmesini ![](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
 
 ## <a name="hierarchies"></a>Hiyerarşileri
 
@@ -68,11 +68,11 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 
 1. **+ Ekle** öğesini seçin.
 
-    ["Ekle" düğmesini![](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
+    ["Ekle" düğmesini ![](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
 1. Sağ bölmede **+ Ekle düzeyi** ' ni seçin.
 
-    ["düzey Ekle" düğmesi![](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
+    ["düzey Ekle" düğmesi ![](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
 
 1. Hiyerarşi ayrıntılarını girip **Oluştur**' u seçin.
 
@@ -84,21 +84,21 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 1. Hiyerarşi yükünü içeren dosyayı seçin.
 1. **Karşıya Yükle**’yi seçin.
 
-    [hiyerarşileri toplu karşıya yükleme için![seçimleri](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
+    [hiyerarşileri toplu karşıya yükleme için ![seçimleri](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>Tek bir hiyerarşiyi düzenleme
 
 1. Hiyerarşiyi seçin ve **Düzenle**' yi seçin.
 1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
 
-    [tek bir hiyerarşiyi düzenlemeyle ilgili![seçimleri](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
+    [tek bir hiyerarşiyi düzenlemeyle ilgili ![seçimleri](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>Hiyerarşiyi silme
 
 1. Hiyerarşiyi seçin ve **Sil**' i seçin. 
 1. Hiyerarşiyle ilişkili örnek yoksa, silinir.
 
-    ["Sil" düğmesini![](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
+    ["Sil" düğmesini ![](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
 ## <a name="instances"></a>Örnekler
 
@@ -106,11 +106,11 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 
 1. Zaman serisi model Seçicisi paneline gidin ve menüden **örnekler** ' i seçin. Zaman serisi model örneklerine odaklanmak için paneli daraltın.
 
-    ["örnekler" bölmesi![](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
+    ["örnekler" bölmesi ![](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
 
 1. **Add (Ekle)** seçeneğini belirleyin.
 
-    [örnek eklemek için![seçimleri](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
+    [örnek eklemek için ![seçimleri](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
 
 1. Örnek ayrıntılarını girin, tür ve hiyerarşi ilişkilendirmesini seçin ve **Oluştur**' u seçin.
 
@@ -119,7 +119,7 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 1. **JSON karşıya yükle**' yi seçin.
 1. Örnekler yükünü içeren dosyayı seçin.
 
-    [bir veya daha fazla örnek toplu karşıya yükleme için![seçimleri](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
+    [bir veya daha fazla örnek toplu karşıya yükleme için ![seçimleri](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
 
 1. **Karşıya Yükle**’yi seçin.
 
@@ -128,7 +128,7 @@ Güncelleştirmeyi kullanma hakkında daha fazla bilgi edinmek için [Azure Time
 1. Örneği seçin ve **Düzenle**' yi seçin. 
 1. Gerekli değişiklikleri yapın ve **Kaydet**' i seçin.
 
-    [tek bir örneği düzenlemeyle ilgili![seçimleri](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
+    [tek bir örneği düzenlemeyle ilgili ![seçimleri](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

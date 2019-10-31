@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052318"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099745"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -27,8 +27,9 @@ Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-
 Temel adımlar aşağıdaki gibidir:
 
 1. Aşağıdaki şablonlardan birini, uyarının nasıl oluşturulacağını açıklayan bir JSON dosyası olarak kullanın.
-2. Uyarıyı özelleştirmek için ilgili parametreler dosyasını JSON olarak düzenleyin ve kullanın
-3. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/resource-group-template-deploy.md)kullanarak şablonu dağıtın.
+2. Uyarıyı özelleştirmek için ilgili parametreler dosyasını bir JSON olarak düzenleyin ve kullanın.
+3. `metricName` parametresi için, [Azure izleyici desteklenen ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)' de kullanılabilir ölçümler bölümüne bakın.
+4. [Herhangi bir dağıtım yöntemini](../../azure-resource-manager/resource-group-template-deploy.md)kullanarak şablonu dağıtın.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit bir statik eşik ölçümü için şablon uyarısı
 

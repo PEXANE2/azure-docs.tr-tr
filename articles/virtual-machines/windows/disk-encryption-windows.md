@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244999"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063998"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 'lerinde Azure disk şifrelemesi senaryoları
 
@@ -26,15 +26,12 @@ Yalnızca [desteklenen VM boyutlarının ve işletim sistemlerinin](disk-encrypt
 - [grup ilkesi gereksinimleri](disk-encryption-overview.md#group-policy-requirements)
 - [Şifreleme anahtarı depolama gereksinimleri](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - Bir VM 'yi şifrelemek için Azure AD ile Azure disk şifrelemesi 'ni daha önce kullandıysanız, VM 'nizi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Ayrıntılar için bkz. [Azure AD ile Azure disk şifrelemesi (önceki sürüm)](disk-encryption-overview-aad.md) . 
 >
 > - Diskler şifrelenmeden önce [bir anlık görüntü alıp](snapshot-copy-managed-disk.md) /veya bir yedek oluşturmalısınız. Yedeklemeler, şifreleme sırasında beklenmeyen bir hata oluşursa, kurtarma seçeneğinin mümkün olmasını güvence altına almanıza olanak tanır. Yönetilen disklere sahip VM 'Ler şifreleme gerçekleşmeden önce bir yedekleme gerektirir. Bir yedekleme yapıldıktan sonra,-skipVmBackup parametresini belirterek yönetilen diskleri şifrelemek için [set-AzVMDiskEncryptionExtension cmdlet 'ini](/powershell/module/az.compute/set-azvmdiskencryptionextension) kullanabilirsiniz. Şifrelenmiş VM 'Leri yedekleme ve geri yükleme hakkında daha fazla bilgi için bkz. [şifrelenmiş Azure VM 'Yi yedekleme ve geri yükleme](../../backup/backup-azure-vms-encryption.md). 
 >
 > - Şifrelemeyi şifrelemek veya devre dışı bırakmak bir sanal makinenin yeniden başlatılmasına neden olabilir.
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>Araçları yükleyip Azure 'a bağlanın
 
@@ -139,11 +136,11 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | vmName | Şifreleme işleminin çalıştırılacağı sanal makinenin adı. |
 | keyVaultName | BitLocker anahtarının yüklenmesi gereken anahtar kasasının adı. Bunu, `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` veya Azure CLı komutu olan `az keyvault list --resource-group "MyKeyVaultResourceGroup"` ' i kullanarak alabilirsiniz.|
 | keyVaultResourceGroup | Anahtar kasasını içeren kaynak grubunun adı|
-|  keyEncryptionKeyURL 'Si | Anahtar şifreleme anahtarının URL 'SI, https://@no__t -0keyvault-name&gt;.vault.azure.net/Key/&lt;key-Name @ no__t-3 biçimindedir. Bir KEK kullanmak istemiyorsanız, bu alanı boş bırakın. |
+|  keyEncryptionKeyURL 'Si | Anahtar şifreleme anahtarının https://biçimindeki URL 'SI&lt;keykasaadı&gt;. vault.azure.net/key/&lt;anahtar adı&gt;. Bir KEK kullanmak istemiyorsanız, bu alanı boş bırakın. |
 | Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ve _hepsi_. 
 | forceUpdateTag | İşlemin zorla çalışması gereken her seferinde GUID gibi benzersiz bir değer geçirin. |
 | resizeOSDisk | Sistem birimini bölmeden önce IŞLETIM sistemi bölümünün tam işletim sistemi VHD 'SI kaplamaya yeniden boyutlandırılması gerekir. |
-| konum | Tüm kaynakların konumu. |
+| location | Tüm kaynakların konumu. |
 
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Müşteri tarafından şifrelenen VHD ve şifreleme anahtarlarından oluşturulan yeni IaaS VM 'Leri
@@ -244,7 +241,8 @@ Azure PowerShell, Azure CLı veya Kaynak Yöneticisi şablonuyla şifrelemeyi de
 Azure disk şifrelemesi, aşağıdaki senaryolar, Özellikler ve teknolojiler için çalışmaz:
 
 - Klasik VM oluşturma yöntemiyle oluşturulan temel katman VM veya VM 'Leri şifreleme.
-- Yazılım tabanlı RAID sistemleriyle yapılandırılmış Windows VM 'Leri şifreleme.
+- Yazılım tabanlı RAID sistemleriyle yapılandırılmış VM 'Leri şifreleme.
+- Depolama Alanları Doğrudan (S2D) veya Windows Server sürümleri ile yapılandırılmış VM 'Leri Windows depolama alanları ile yapılandırılmış 2016 öncesi şifreleme.
 - Şirket içi anahtar yönetim sistemiyle tümleştirme.
 - Azure dosyaları (paylaşılan dosya sistemi).
 - Ağ dosya sistemi (NFS).

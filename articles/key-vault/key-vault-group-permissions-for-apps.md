@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718999"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102359"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -65,7 +65,7 @@ Bir uygulama için ObjectID almanın iki yolu vardır.  Birincisi Azure Active D
 az ad sp create-for-rbac -n "http://mySP"
 ```
 
-ObjectID, çıkışta `clientID` olarak listelenecektir.
+ObjectID, çıkışta `clientID`olarak listelenecektir.
 
 Azure PowerShell, [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal?view=azps-2.7.0) cmdlet 'ini kullanın.
 
@@ -74,7 +74,7 @@ Azure PowerShell, [New-AzADServicePrincipal](/powershell/module/Az.Resources/New
 New-AzADServicePrincipal -DisplayName mySP
 ```
 
-ObjectID, çıkışta `Id` (`ApplicationId` değil) olarak listelenecektir.
+ObjectID, çıkışta `Id` (`ApplicationId`değil) olarak listelenecektir.
 
 #### <a name="azure-ad-groups"></a>Azure AD grupları
 
@@ -83,7 +83,7 @@ Bir Azure AD grubuna birden çok uygulama ve kullanıcı ekleyebilir ve sonra gr
 Azure CLı ile bir Azure AD grubunun ObjectID 'sini bulmak için [az Ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) komutunu kullanın. Kuruluşunuzda olabilecek çok sayıda grup olduğundan, `--display-name` parametresine bir arama dizesi de sağlamanız gerekir.
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 ObjectID, JSON içinde döndürülecek:
 
@@ -99,7 +99,7 @@ Azure PowerShell olan bir Azure AD grubunun ObjectID 'sini bulmak için [Get-AzA
 Get-AzADGroup -SearchString <search-string>
 ```
 
-Çıkışta ObjectID `Id` olarak listelenir:
+Çıkışta ObjectID `Id`olarak listelenir:
 
 ```console
 ...
@@ -133,7 +133,7 @@ Azure PowerShell olan bir kullanıcıyı bulmak için [Get-AzADUser](/powershell
  Get-AzAdUser -UserPrincipalName <email-address-of-user>
 ```
 
-Kullanıcının objectID, çıkışta `Id` olarak döndürülür.
+Kullanıcının objectID, çıkışta `Id`olarak döndürülür.
 
 ```console
 ...
@@ -191,7 +191,7 @@ Azure CLı kullanarak uygulamalarınızın ObjectID 'leri, `--show-mine` paramet
 az ad sp list --show-mine
 ```
 
-[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) cmdlet 'ini kullanarak Azure PowerShell ve `-SearchString` parametresine bir arama dizesi geçirerek uygulamalarınızın ObjectIDs 'sini bulun.
+[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) cmdlet 'ini kullanarak uygulamalarınızın nesneslarını bulun ve `-SearchString` parametresine bir arama dizesi geçirerek Azure PowerShell.
 
 ```azurepowershell-interactive
 Get-AzADServicePrincipal -SearchString <search-string>
@@ -210,7 +210,7 @@ Azure CLı ile, [az Ad Group member Add](/cli/azure/ad/group/member?view=azure-c
 az ad group member add -g <groupId> --member-id <objectId>
 ```
 
-Azure PowerShell, [Add-AzADGroupMember](/powershell/module/az.resources/add-azadgroupmember?view=azps-2.7.0) cmdlet 'Ini kullanarak objectıd 'yi `-MemberObjectId` parametresine geçirerek.
+Azure PowerShell, [Add-AzADGroupMember](/powershell/module/az.resources/add-azadgroupmember?view=azps-2.7.0) cmdlet 'ini kullanın ve objectıd öğesini `-MemberObjectId` parametresine geçirerek.
 
 ```azurepowershell-interactive
 Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId> 

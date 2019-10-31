@@ -7,15 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.date: 10/29/2019
+ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027696"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063281"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight 'ta dış meta veri depoları kullanma
+
+HDInsight, anahtar meta veri çözümlerini ve yönetim veritabanlarını dış veri depolarına dağıtarak veri ve meta verileri denetlemenize olanak tanır. Bu özellik şu anda [Apache Hive meta veri deposu](#custom-metastore), [Apache Oozie meta veri deposu](#apache-oozie-metastore) ve [Apache ambarı veritabanı](#custom-ambari-db)için kullanılabilir.
 
 HDInsight 'ta Apache Hive meta veri, Apache Hadoop mimarisinin önemli bir parçasıdır. Meta veri deposu, Apache Spark, etkileşimli sorgu (LLAP), Presto veya Apache Pig gibi diğer büyük veri erişim araçları tarafından kullanılabilen merkezi şema deposudur. HDInsight, Hive meta veri deposu olarak bir Azure SQL veritabanı kullanır.
 
@@ -92,6 +94,10 @@ Aşağıda, bazı genel HDInsight Hive meta veri deposu en iyi yöntemler verilm
 Apache Oozie, Hadoop işlerini yöneten bir iş akışı koordinasyon sistemidir.  Oozie, Apache MapReduce, Pig, Hive ve diğerleri için Hadoop işlerini destekler.  Oozie, geçerli ve tamamlanan iş akışlarıyla ilgili ayrıntıları depolamak için bir meta veri deposu kullanır. Oozie kullanırken performansı artırmak için Azure SQL veritabanını özel bir meta veri deposu olarak kullanabilirsiniz. Meta veri deposu, kümenizi sildikten sonra Oozie iş verilerine erişim de verebilir.
 
 Azure SQL veritabanı ile bir Oozie meta oluşturma hakkında yönergeler için bkz. [iş akışları Için Apache Oozie kullanma](hdinsight-use-oozie-linux-mac.md).
+
+## <a name="custom-ambari-db"></a>Özel ambarı DB
+
+HDInsight 'ta Apache ambarı ile kendi dış veritabanınızı kullanmak için bkz. [özel Apache ambarı veritabanı](hdinsight-custom-ambari-db.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

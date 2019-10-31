@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043178"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100229"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)
 Bu makalede, Azure Blob depolama 'yı IoT modülü 'nde dağıtma işlemi gösterilmektedir. Bu, blob oluşturma ve BLOB silme hakkında olay göndermek için Event Grid yayımcı görevi gören Event Grid.  
@@ -167,7 +167,10 @@ Bu bölümde, Event Grid yayımcı yayımlama blobu oluşturma ve silinen olayla
 5. **Kaydet**’e tıklayın
 6. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
 
- ### <a name="setup-routes"></a>Kurulum yolları
+    > [!NOTE]
+    > Sınır aygıtı olarak bir Azure VM kullanıyorsanız, bu öğreticide kullanılan ana bilgisayar bağlantı noktalarında gelen trafiğe izin vermek için bir gelen bağlantı noktası kuralı ekleyin: 4438, 5888, 8080 ve 11002. Kuralı ekleme hakkında yönergeler için bkz. [BIR VM 'ye bağlantı noktalarını açma](../../virtual-machines/windows/nsg-quickstart-portal.md).
+
+### <a name="setup-routes"></a>Kurulum yolları
 
 Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için **İleri** ' yi seçin.
 
@@ -184,7 +187,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
 
    Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
 
-## <a name="publish-created-and-deleted-events"></a>Oluşturulan ve silinen olayları Yayımla
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>BlobCreated ve BlobDeleted olaylarını Yayımla
 
 1. Bu modül, **Microsoftstorage**konusunu otomatik olarak oluşturur. Var olduğunu doğrulayın
     ```sh

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231178"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099502"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services V2 'den v3 'e geçmek için geçiş kılavuzu
 
@@ -41,7 +41,7 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
 * [.Net](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node. js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref)ve Ruby için kullanılabilir SDK 'lar.
 * Basit betik desteği için [Azure CLI](https://aka.ms/ams-v3-cli-ref) tümleştirmesi.
 
-### <a name="new-features"></a>Yeni Özellikler
+### <a name="new-features"></a>Yeni özellikler
 
 * Dosya tabanlı Iş işleme için, giriş olarak bir HTTP (S) URL 'SI kullanabilirsiniz.<br/>Azure 'da zaten depolanmış içeriklere sahip olmanız veya varlık oluşturmanız gerekmez.
 * Dosya tabanlı Iş işleme için [dönüşüm](transforms-jobs-concept.md) kavramını tanıtır. Bir dönüşüm yeniden kullanılabilir yapılandırma oluşturmak, Azure Resource Manager şablonları oluşturmak ve birden çok müşteri veya kiracı arasında işlem ayarlarını yalıtmak için kullanılabilir.
@@ -73,7 +73,8 @@ Bugün [eski Media Services V2 API 'lerinde](../previous/media-services-overview
     * Canlı olay kanal yerini alır.<br/>Canlı olaylar, canlı kanal ölçümlerine göre faturalandırılır. Daha fazla bilgi için bkz. [faturalandırma](live-event-states-billing.md) ve [fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/).
     * Canlı çıkış programın yerini alır.
 * Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Programlar v2 API 'Lerinde farklı çalıştık, oluşturulduktan sonra başlatılmaları gerekiyordu.
-*  Bir iş hakkında bilgi almak için işin altında oluşturulduğu dönüştürme adını bilmeniz gerekir. 
+* Bir iş hakkında bilgi almak için işin altında oluşturulduğu dönüştürme adını bilmeniz gerekir. 
+* V2 'de XML [giriş](../previous/media-services-input-metadata-schema.md) ve [Çıkış](../previous/media-services-output-metadata-schema.md) meta verileri dosyaları, bir kodlama işinin sonucu olarak üretilir. V3 'de meta veri biçimi XML olarak JSON olarak değiştirilmiştir. 
 
 > [!NOTE]
 > [Media Services v3 kaynaklarına](media-services-apis-overview.md#naming-conventions)uygulanan adlandırma kurallarını gözden geçirin. Ayrıca [adlandırma bloblarını](assets-concept.md#naming-blobs)gözden geçirin.
@@ -86,7 +87,7 @@ V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Bo
 * V2 API 'lerinde [Media Encoder Standard gelişmiş özelliklerin](../previous/media-services-advanced-encoding-with-mes.md) birçoğu şu anda v3 'de bulunmamaktadır:
   
     * Kıymetlerin dikiş
-    * Yer paylaşımları
+    * Kaplayan
     * Manın
     * Küçük resim Sprites
     * Girişte ses olmadığında sessiz ses izi ekleme
@@ -100,11 +101,11 @@ V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Bo
 
 Aşağıdaki tabloda yaygın senaryolar için v2 ve v3 arasındaki kod farklılıkları gösterilmektedir.
 
-|Senaryo|V2 API 'SI|V3 API 'SI|
+|Senaryo|V2 APı 'SI|V3 APı 'SI|
 |---|---|---|
 |Bir varlık oluşturun ve bir dosyayı karşıya yükleyin |[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |İş gönder|[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>İlk olarak bir dönüştürme oluşturmayı ve sonra bir Işi göndermeyi gösterir.|
-|AES şifrelemesi ile varlık yayımlama |1. ContentKeyAuthorizationPolicyOption oluştur<br/>2. ContentKeyAuthorizationPolicy oluştur<br/>3. AssetDeliveryPolicy oluşturma<br/>4. Varlık oluşturma ve içerik yükleme veya işi gönderme ve çıkış varlığını kullanma<br/>5. AssetDeliveryPolicy 'yi varlıkla ilişkilendir<br/>6. ContentKey oluştur<br/>7. Varlığa ContentKey iliştirme<br/>8. AccessPolicy oluştur<br/>9. Bulucu oluştur<br/><br/>[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Içerik anahtar Ilkesi oluştur<br/>2. Varlık oluştur<br/>3. İçeriği karşıya yükleyin veya varlığı Joi put olarak kullanın<br/>4. Akış Bulucu oluşturma<br/><br/>[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|AES şifrelemesi ile varlık yayımlama |1. ContentKeyAuthorizationPolicyOption oluşturun<br/>2. ContentKeyAuthorizationPolicy oluşturma<br/>3. AssetDeliveryPolicy oluşturma<br/>4. varlık oluşturma ve içerik yükleme veya işi gönderme ve çıkış varlığını kullanma<br/>5. AssetDeliveryPolicy 'i varlıkla ilişkilendir<br/>6. ContentKey oluştur<br/>7. varlığa ContentKey iliştirme<br/>8. AccessPolicy oluşturma<br/>9. Bulucu oluştur<br/><br/>[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Içerik anahtar Ilkesi oluştur<br/>2. varlık oluştur<br/>3. içeriği karşıya yükleyin veya varlığı Joi put olarak kullanın<br/>4. akış Bulucu oluşturma<br/><br/>[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |İş ayrıntılarını alma ve işleri yönetme |[V2 ile işleri yönetme](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[V3 ile işleri yönetme](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Bilinen sorunlar

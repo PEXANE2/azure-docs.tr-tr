@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b2003b9c7520cfa3e82576fd3430063c20d452ff
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104570"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101544"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Özel bağlantı hizmeti kaynak IP 'si için ağ ilkelerini devre dışı bırak
 
-Özel bağlantı hizmetiniz için bir kaynak IP adresi seçmek üzere alt ağda bir açık devre dışı bırakma ayarı `privateLinkServiceNetworkPolicies` gereklidir. Bu ayar yalnızca özel bağlantı hizmetinin kaynak IP 'si olarak seçtiğiniz özel IP adresi için geçerlidir. Alt ağdaki diğer kaynaklar için, erişim ağ güvenlik grupları (NSG) güvenlik kuralları tanımına göre denetlenir. 
+Özel bağlantı hizmetiniz için bir kaynak IP adresi seçmek üzere alt ağda `privateLinkServiceNetworkPolicies` bir açık devre dışı bırakma ayarı gereklidir. Bu ayar yalnızca özel bağlantı hizmetinin kaynak IP 'si olarak seçtiğiniz özel IP adresi için geçerlidir. Alt ağdaki diğer kaynaklar için, erişim ağ güvenlik grupları (NSG) güvenlik kuralları tanımına göre denetlenir. 
  
 Herhangi bir Azure istemcisi (PowerShell, CLı veya şablon) kullanırken, bu özelliği değiştirmek için ek bir adım gerekir. Azure portal, Cloud Shell 'i kullanarak veya Azure PowerShell, Azure CLı 'nin yerel yüklemelerinden veya Azure Resource Manager şablonları kullanarak ilkeyi devre dışı bırakabilirsiniz.  
  
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).privateLinkServiceNetworkPolicies = "Disabled"  
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

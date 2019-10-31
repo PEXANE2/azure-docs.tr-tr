@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 86c0fe8b0846350f74c90dfbd229510d28ce9499
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992229"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100318"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Öğretici: bulutta olaylara abone olma
 
@@ -198,6 +198,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 
 Bu öğreticide, bir olay Kılavuzu konusu, abonelik ve yayımlanan olaylar oluşturdunuz. Artık temel adımları bildiğinize göre aşağıdaki makalelere bakın:
 
+* IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
 * [Filtrelerle](advanced-filtering.md)abonelik oluşturun/güncelleştirin.
 * [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını ayarlama
 * İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin

@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b484306504af8f83a393feb0469fff5b524948ab
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992216"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098632"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Öğretici: yayımlama, olaylara yerel olarak abone olma
 
@@ -81,6 +81,8 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
 
     >[!IMPORTANT]
     > Bu öğreticide, istemci kimlik doğrulaması devre dışı ve HTTP abonelerine izin ver Event Grid modülünü dağıtacaksınız. Üretim iş yükleri için, istemci kimlik doğrulamasını etkinleştirmenizi ve yalnızca HTTPs abonelerine izin vermeyi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](security-authentication.md).
+    > 
+    > Bir Azure VM 'yi uç cihaz olarak kullanıyorsanız, 4438 numaralı bağlantı noktasında gelen trafiğe izin vermek için bir gelen bağlantı noktası kuralı ekleyin. Kuralı ekleme hakkında yönergeler için bkz. [BIR VM 'ye bağlantı noktalarını açma](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Azure Işlevi IoT Edge modülünü dağıtma
@@ -257,7 +259,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
     Windows 'ta aşağıdaki komutu çalıştırın:
 
     ```sh
-    iotedge logs subscriber -f
+    docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
    Linux 'ta aşağıdaki komutu çalıştırın:
@@ -299,6 +301,7 @@ Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay alm
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, bir olay Kılavuzu konusu, abonelik ve yayımlanan olaylar oluşturdunuz. Artık temel adımları bildiğinize göre aşağıdaki makalelere bakın: 
 
+- IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
 - [Filtrelerle](advanced-filtering.md)abonelik oluşturun/güncelleştirin.
 - [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını etkinleştirme
 - İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin

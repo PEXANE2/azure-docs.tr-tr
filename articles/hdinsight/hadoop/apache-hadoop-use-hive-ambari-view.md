@@ -2,18 +2,18 @@
 title: Azure HDInsight 'ta Apache Hadoop Apache ambarı Hive görünümünü kullanma
 description: Hive sorguları göndermek için Web tarayıcınızdan Hive görünümünü nasıl kullanacağınızı öğrenin. Hive görünümü, Linux tabanlı HDInsight kümemenizle birlikte sunulan ambarı Web Kullanıcı arabiriminin bir parçasıdır.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044819"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097113"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 'ta Apache Hadoop Apache ambarı Hive görünümünü kullanma
 
@@ -30,9 +30,9 @@ Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırma
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Yönergeler için bkz. [liste ve kümeleri gösterme](../hdinsight-administer-use-portal-linux.md#showClusters) . Küme, yeni bir portal dikey penceresinde açılır.
 
-2. **Küme panolarında**, **ambarı görünümleri**' ni seçin. Kimlik doğrulaması sorulduğunda, kümeyi oluştururken belirttiğiniz küme oturum açma (varsayılan `admin`) hesap adını ve parolasını kullanın.
+1. **Küme panolarında**, **ambarı görünümleri**' ni seçin. Kimlik doğrulaması sorulduğunda, kümeyi oluştururken belirttiğiniz küme oturum açma (varsayılan `admin`) hesap adını ve parolasını kullanın. Alternatif olarak, `CLUSTERNAME` Kümenizin adı olan tarayıcınızda `https://CLUSTERNAME.azurehdinsight.net/#/main/views` gidin.
 
-3. Görünümler listesinden __Hive görünümü__' nü seçin.
+1. Görünümler listesinden __Hive görünümü__' nü seçin.
 
     ![Apache ambarı Apache Hive görünüm seç](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırma
 
     ![Hive görünümü için sorgu çalışma sayfasının görüntüsü](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. __Sorgu__ sekmesinden aşağıdaki HiveQL deyimlerini çalışma sayfasına yapıştırın:
+1. __Sorgu__ sekmesinden aşağıdaki HiveQL deyimlerini çalışma sayfasına yapıştırın:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırma
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ Apache ambarı Hive görünümünü kullanarak Hive sorgularını çalıştırma
    > [!IMPORTANT]  
    > __Veritabanı__ seçimini __varsayılan__olarak bırakın. Bu belgedeki örnekler, HDInsight 'ta bulunan varsayılan veritabanını kullanır.
 
-5. Sorguyu başlatmak için çalışma sayfasının altında **Yürüt** ' ü seçin. Düğme turuncu döner ve metin **durur**.
+1. Sorguyu başlatmak için çalışma sayfasının altında **Yürüt** ' ü seçin. Düğme turuncu döner ve metin **durur**.
 
-6. Sorgu bittikten sonra **sonuçlar** sekmesi işlemin sonuçlarını görüntüler. Aşağıdaki metin sorgunun sonucudur:
+1. Sorgu bittikten sonra **sonuçlar** sekmesi işlemin sonuçlarını görüntüler. Aşağıdaki metin sorgunun sonucudur:
 
         loglevel       count
         [ERROR]        3
@@ -143,7 +143,7 @@ Hive görünümüne bir UDF ekledikten sonra **sorgu Düzenleyicisi**'nin altın
 
 * UDF sınıf adı: com. myudfs. başar
 
-**Udf 'Leri Ekle** düğmesinin kullanılması, söz konusu kaynak için tanımlanan her UDF için başka bir açılan liste ile **myudfs**adlı bir giriş görüntüler. Bu durumda, **myawesomeudf**'dir. Bu girdiyi seçtiğinizde sorgunun başına aşağıdakiler eklenir:
+**Udf 'Leri Ekle** düğmesinin kullanılması, söz konusu kaynak için tanımlanan her UDF için başka bir açılan liste ile **myudfs**adlı bir giriş görüntüler. Bu durumda, **myawesomeudf**. Bu girdiyi seçtiğinizde sorgunun başına aşağıdakiler eklenir:
 
 ```hiveql
 add jar /myudfs.jar;

@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 6639b8f4d947720db38a6b366c47700a56154af3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992281"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100328"
 ---
 # <a name="persist-state-in-linux"></a>Linux 'ta durumu kalıcı yap
 
@@ -40,7 +40,7 @@ Bu makalede, Event Grid modülünü Linux dağıtımlarında kalıcı hale getir
 ```
 
 >[!IMPORTANT]
->Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/Metadata**olmalıdır.
+>Bağlama değerinin ikinci kısmını değiştirmeyin. Modül içindeki belirli bir konuma işaret eder. Linux üzerinde Event Grid modülü için, **/App/metadatadb**olmalıdır.
 
 Örneğin, aşağıdaki yapılandırma, meta verilerin kalıcı olacağı, **Yumurmetadatadbvol** birimi oluşturulmasına neden olur.
 

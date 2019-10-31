@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477253"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062795"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza listelenmemiş (Galeri olmayan) bir uygulama ekleme
 
@@ -33,21 +33,36 @@ Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsa
 ## <a name="add-a-non-gallery-application"></a>Galeri dışı bir uygulama ekleme
 
 1. Microsoft Identity Platform yönetici hesabınızı kullanarak [Azure Active Directory portalında](https://aad.portal.azure.com/) oturum açın.
-1. **Kurumsal uygulamalar** > **Yeni uygulama**' yı seçin.
-2. (İsteğe bağlı ancak önerilir) **Galeriye Ekle** arama kutusuna uygulamanın görünen adını girin. Uygulama arama sonuçlarında görünürse, bunu seçin ve bu yordamın geri kalanını atlayın.
-3. **Galeri dışı uygulama**' yı seçin. **Kendi uygulamanızı ekleyin** sayfası görüntülenir.
 
-   ![Uygulama ekleme](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Yeni uygulamanızın görünen adını girin.
-6. **Add (Ekle)** seçeneğini belirleyin. Uygulamaya **genel bakış** sayfası açılır.
+2. **Yeni uygulama** > **Kurumsal uygulamalar** ' ı seçin.
+
+3. (İsteğe bağlı ancak önerilir) **Azure AD galerisine gözatıp** arama kutusuna uygulamanın görünen adını girin. 
+
+4. **Kendi uygulamanızı oluştur ' u**seçin. **Kendi uygulamanızı oluşturma** sayfası görüntülenir.
+
+   ![Uygulama ekleme](media/add-non-gallery-app/create-your-own-application.png)
+
+5. Yeni uygulamanızın görünen adını yazmaya başlayın. Benzer adlara sahip Galeri uygulamaları varsa, bunlar arama sonuçları listesinde görünür.
+
+   > [!NOTE]
+   > Mümkün olduğunda uygulamanızın Galeri sürümünü kullanmanızı öneririz. Eklemek istediğiniz uygulama arama sonuçlarında görünürse, uygulamayı seçin ve bu yordamın geri kalanını atlayın.
+
+6. **Uygulamanızla ne yapmak istiyorsunuz? bölümünde,** **galeride bulamadıysanız herhangi bir uygulamayı tümleştirin '** ı seçin. Bu seçenek genellikle SAML ve WS-beslik uygulamalar için kullanılır.
+
+   > [!NOTE]
+   > Diğer iki seçenek aşağıdaki senaryolarda kullanılır:
+   >* **Uygulama ara sunucusunu şirket içi bir uygulamaya güvenli uzaktan erişim için** yapılandırma, Azure AD uygulama ara sunucusu ve bağlayıcıları için yapılandırma sayfasını açar.
+   >* **Azure AD ile tümleştirmek üzere çalıştığınız bir uygulamayı kaydedin** **uygulama kayıtları** sayfasını açar. Bu seçenek genellikle OpenID Connect uygulamaları için kullanılır.
+
+7. **Oluştur**'u seçin. Uygulamaya **genel bakış** sayfası açılır.
 
 ## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
 
 1. Özellikler bölmesini düzenlenmek üzere açmak için **Özellikler** ' i seçin.
 
-    ![Özellikler bölmesini Düzenle](media/add-application-portal/edit-properties.png)
+    ![Özellikler bölmesini Düzenle](media/add-non-gallery-app/edit-properties.png)
 
-1. Uygulamanın atandığı veya atanmamış olduğu kullanıcıların uygulamada oturum açıp görebilmesine ve bir kullanıcının erişim panelinde uygulamayı görebilmesi için aşağıdaki seçenekleri ayarlayın.
+2. Uygulamanın atandığı veya atanmamış olduğu kullanıcıların uygulamada oturum açıp görebilmesine ve bir kullanıcının erişim panelinde uygulamayı görebilmesi için aşağıdaki seçenekleri ayarlayın.
 
     - **Kullanıcıların oturum açması için etkinleştirildi**, uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
     - **Gerekli Kullanıcı Ataması** , uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
@@ -83,11 +98,11 @@ Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsa
 
      *Kullanıcı uygulamayı erişim panelinde ve Office 365 uygulama başlatıcıda görebilir mi?
 
-1. Özel bir logo kullanmak için 215 piksel 215 ile arasında bir logo oluşturun ve bunu PNG biçiminde kaydedin. Ardından logonuzu inceleyin ve karşıya yükleyin.
+3. Özel bir logo kullanmak için 215 piksel 215 ile arasında bir logo oluşturun ve bunu PNG biçiminde kaydedin. Ardından logonuzu inceleyin ve karşıya yükleyin.
 
-    ![Logoyu değiştirme](media/add-application-portal/change-logo.png)
+    ![Logoyu değiştirme](media/add-non-gallery-app/change-logo.png)
 
-1. İşiniz bittiğinde **Kaydet**' i seçin.
+4. İşiniz bittiğinde **Kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: b510b697fbf8b53e9e55e96f60b27967f90893f1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 3eec2d208e97cc33c318e4a45ae85074fbc2583c
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104615"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101607"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Özel uç noktalar için ağ ilkelerini devre dışı bırak
 
@@ -20,7 +20,7 @@ Ağ güvenlik grupları (NSG) gibi ağ ilkeleri özel uç noktalar için destekl
  
 Özel bir uç nokta oluşturmak için Portal kullanıldığında, bu ayar oluşturma sürecinin bir parçası olarak otomatik olarak devre dışıdır. Diğer istemcileri kullanarak dağıtım, bu ayarı değiştirmek için ek bir adım gerektirir. Cloud Shell 'i Azure portal veya Azure PowerShell, Azure CLı 'nin yerel yüklemelerinden veya Azure Resource Manager şablonları kullanarak ayarı devre dışı bırakabilirsiniz.  
  
-Aşağıdaki örneklerde, *myresourcegroup*adlı bir `PrivateEndpointNetworkPolicies` kaynak grubunda barındırılan bir *varsayılan* alt ağ ile *myVirtualNetwork* adlı bir sanal ağ için nasıl devre dışı bırakılacağı açıklanır.
+Aşağıdaki örneklerde, *myVirtualNetwork* adlı bir sanal ağ için `PrivateEndpointNetworkPolicies`, *myresourcegroup*adlı bir kaynak grubunda barındırılan bir *varsayılan* alt ağ ile nasıl devre dışı bırakılacağı açıklanır.
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 Bu bölüm, Azure PowerShell kullanarak alt ağ özel uç nokta ilkelerinin nasıl devre dışı bırakılacağını açıklar.
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

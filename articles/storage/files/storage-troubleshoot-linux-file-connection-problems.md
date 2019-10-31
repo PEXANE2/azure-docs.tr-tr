@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926528"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097356"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux 'ta Azure dosyaları sorunlarını giderme
 
@@ -126,7 +126,7 @@ Bazı Linux dağıtımları henüz SMB 3.0'daki şifreleme özelliklerini destek
 
 ### <a name="solution"></a>Çözüm
 
-Linux için SMB 3.0'ın şifreleme özelliği 4.11 çekirdeğinde kullanıma sunuldu. Bu özellik Azure dosya paylaşımını şirket içinden veya farklı bir Azure bölgesinden bağlamaya olanak tanır. Bu işlevsellik [Önerilen en düşük sürümler ve bunlara karşılık gelen bağlama özellikleri (SMB sürüm 2.1 - SMB sürüm 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) bölümünde listelenen Linux dağıtımlarına eklemiştir. Diğer dağıtımlar için çekirdek 4.11 ve üstü sürümler gerekir.
+Linux için SMB 3.0'ın şifreleme özelliği 4.11 çekirdeğinde kullanıma sunuldu. Bu özellik Azure dosya paylaşımını şirket içinden veya farklı bir Azure bölgesinden bağlamaya olanak tanır. Bazı Linux dağıtımları, 4,11 çekirdekten, korudukları Linux çekirdeğinin eski sürümlerine yönelik geri alınan değişikliklere sahip olabilir. Linux sürümünüzün şifreleme ile SMB 3,0 ' i destekleyip desteklemediğini belirlemeye yardımcı olmak için, [Linux Ile Azure dosyaları kullanma](storage-how-to-use-files-linux.md)bölümüne başvurun. 
 
 Linux SMB istemciniz şifrelemeyi desteklemiyorsa, Azure Dosyalar'ı bağlamak için dosya paylaşımıyla aynı veri merkezinde bulunan bir Azure Linux VM'sinden SMB 2.1'i kullanın. Depolama hesabında [Güvenli aktarım gerekli]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) ayarının devre dışı bırakıldığını doğrulayın. 
 
@@ -281,7 +281,7 @@ Linux çekirdeğindeki bu yeniden bağlantı sorunu artık aşağıdaki değişi
 - [CIFS: yeniden bağlanma sırasında olası bir bellek bozulmasını düzeltir](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: yeniden bağlantı sırasında karşılıklı mutex 'in olası bir çift kilitlemeyi düzeltir (çekirdek v 4.9 ve üzeri için)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Bu düzeltme ve diğer yeniden bağlantı düzeltmelerini [Azure Dosyalar'ı Linux ile kullanma](storage-how-to-use-files-linux.md) makalesinin [Önerilen en düşük sürümler ve bunlara karşılık gelen bağlama özellikleri (SMB sürüm 2.1 - SMB sürüm 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) bölümünde bulabilirsiniz. Önerilen çekirdek sürümlerinden birine yükselterek bu düzeltmeyi alabilirsiniz.
+Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Popüler bir Linux dağıtımı kullanıyorsanız, hangi dağıtımlarınızın hangi sürümünün gerekli çekirdek değişikliklerine sahip olduğunu görmek için [Azure dosyalarını Linux Ile kullanma](storage-how-to-use-files-linux.md) bölümüne bakabilirsiniz.
 
 ### <a name="workaround"></a>Geçici çözüm
 

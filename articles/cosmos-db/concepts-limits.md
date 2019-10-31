@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803395"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064040"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -38,13 +38,13 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 
 Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 ru işleme sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
 
-* Bir kapsayıcıda ayarlayabileceğiniz en düşük aktarım hızı, kapsayıcıda sağlanan en yüksek aktarım hızına bağlıdır. Hizmet, bir kapsayıcının üretilen en fazla% 10 ' a kadar olan aktarım hızını düşürmeyi destekler. Örneğin, üretilen iş hacmi 10000 ru olarak yükseldiğinde, olası en düşük sağlanan aktarım hızı 1000 RUs olur.
+* Bir kapsayıcıda ayarlayabileceğiniz en düşük aktarım hızı, kapsayıcıda sağlanan en yüksek aktarım hızına bağlıdır. Örneğin, üretilen iş hacmi 10000 ru olarak yükseldiğinde, olası en düşük sağlanan aktarım hızı 1000 RUs olur.
 * Paylaşılan bir üretilen iş veritabanında en düşük aktarım hızı, her zaman bir paylaşılan verimlilik veritabanında oluşturduğunuz ve kapsayıcı başına 100 ru ile ölçülen toplam kapsayıcı sayısına bağlıdır. Örneğin, paylaşılan bir üretilen iş veritabanı içinde beş kapsayıcı oluşturduysanız verimlilik en az 500 RUs olmalıdır
 
 Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı Azure portal veya SDK 'lardan alınabilir. Daha fazla bilgi için bkz. [kapsayıcılar ve veritabanları üzerinde üretilen Iş sağlama](set-throughput.md). 
 
 > [!NOTE]
-> Bazı durumlarda, aktarım hızını% 10 ' dan küçük bir süre düşürübiliyor olabilirsiniz. Kapsayıcı başına en az ru 'yı tam olarak almak için API 'YI kullanın.
+> Bazı durumlarda, aktarım hızını %10 ' dan küçük bir süre düşürübiliyor olabilirsiniz. Kapsayıcı başına en az ru 'yı tam olarak almak için API 'YI kullanın.
 >
 
 Özet bölümünde, sağlanan en düşük RU sınırları aşağıda verilmiştir. 

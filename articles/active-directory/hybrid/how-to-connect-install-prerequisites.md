@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596319"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062668"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect önkoşulları
 Bu konu, Azure AD Connect için önkoşulları ve donanım gereksinimlerini açıklamaktadır.
@@ -85,7 +85,7 @@ Daha fazla bilgi için bkz:
 * Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Varsayılan olarak bir SQL Server 2012 Express LocalDB (SQL Server Express bir açık sürümü) yüklenir. SQL Server Express, yaklaşık 100.000 nesneyi yönetmenizi sağlayan 10 GB boyut sınırına sahiptir. Dizin nesnelerinin daha yüksek bir birimini yönetmeniz gerekiyorsa, Yükleme Sihirbazı 'nı farklı bir SQL Server yüklemesine işaret etmeniz gerekir. SQL Server yüklemesinin türü [Azure AD Connect performansını](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors)etkileyebilir.
 * Farklı bir SQL Server yüklemesi kullanıyorsanız, bu gereksinimler geçerlidir:
   * Azure AD Connect, 2008 R2 'den (en son hizmet paketiyle) Microsoft SQL Server tüm sürümlerini SQL Server 2019 ' e destekler. Microsoft Azure SQL Veritabanı veritabanı olarak **desteklenmez** .
-  * Büyük/küçük harfe duyarsız bir SQL harmanlaması kullanmanız gerekir. Bu harmanlamalar, adında bir \_CI_ tanımlanır. @No__t_1CS_ tarafından tanımlanan, büyük/küçük harfe duyarlı harmanlama kullanılması **desteklenmez** .
+  * Büyük/küçük harfe duyarsız bir SQL harmanlaması kullanmanız gerekir. Bu harmanlamalar, adında bir \_CI_ ile tanımlanır. \_CS_ tarafından tanımlanan, büyük/küçük harfe duyarlı harmanlama kullanılması **desteklenmez** .
   * SQL örneği başına yalnızca bir eşitleme motoruna sahip olabilirsiniz. Bir SQL örneğinin FIM/MıM Sync, DirSync veya Azure AD Eşitleme paylaşılması **desteklenmez** .
 
 ### <a name="accounts"></a>Hesaplar
@@ -221,7 +221,7 @@ Aşağıdaki tabloda Azure AD Connect eşitleme bilgisayarı için en düşük g
 | 300000 – 600000 |1,6 GHz |32 GB |450 GB |
 | 600.000 'den fazla |1,6 GHz |32 GB |500 GB |
 
-AD FS veya Web uygulaması sunucularını çalıştıran bilgisayarlar için en düşük gereksinimler şunlardır:
+AD FS veya Web uygulaması proxy sunucuları çalıştıran bilgisayarlar için en düşük gereksinimler şunlardır:
 
 * CPU: çift çekirdekli 1,6 GHz veya üzeri
 * BELLEK: 2 GB veya üzeri

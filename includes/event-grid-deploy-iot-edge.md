@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fab9a8a8c28f2f75e7e5af69b70229c1de74c684
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992294"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098660"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modülünü dağıt
 
@@ -24,7 +24,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 >[!IMPORTANT]
 > Bu öğreticide, Event Grid modülü istemci kimlik doğrulaması kapalı ile dağıtılacak ve HTTP abonelerine izin vermeyecektir. Üretim iş yükleri için, istemci kimlik doğrulaması etkinleştirilmiş olarak yalnızca HTTPS isteklerini ve aboneleri etkinleştirmenizi öneririz. Event Grid modülünü güvenli şekilde yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması](../articles/event-grid/edge/security-authentication.md).
-
+ 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge cihazınızı seçin
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
@@ -67,6 +67,10 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
 
  1. **Kaydet**’e tıklayın
  1. Yönlendirmeler bölümüne devam etmek için **İleri** 'ye tıklayın
+
+    > [!NOTE]
+    > Bir Azure VM 'yi uç cihaz olarak kullanıyorsanız, 4438 numaralı bağlantı noktasında gelen trafiğe izin vermek için bir gelen bağlantı noktası kuralı ekleyin. Kuralı ekleme hakkında yönergeler için bkz. [BIR VM 'ye bağlantı noktalarını açma](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
+
 
 ### <a name="setup-routes"></a>Kurulum yolları
 

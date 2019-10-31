@@ -1,7 +1,7 @@
 ---
 title: Derin öğrenme ve makine öğrenimi karşılaştırması
 titleSuffix: Azure Machine Learning
-description: Derin öğrenme ve makine öğrenimi hakkında bilgi edinin ve her iki kavramın yapay zeka ile ilişkisi vardır. Derin öğrenme, sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi senaryolarda uygulanabilir.
+description: Derin öğrenme ile makine öğrenimi ve yapay zeka ilişkisini öğrenin. Derin öğrenme, sahtekarlık algılama, ses & yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi senaryolarda kullanılır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123134"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063132"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
 
@@ -22,9 +22,9 @@ Bu makale, derin öğrenme ile makine öğrenimini karşılaştırmanıza yardı
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Derin öğrenme, makine öğrenimi ve AI
 
-![İlişki diyagramı: AI ile makine öğrenimi ve derin öğrenme](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
+![İlişki diyagramı: AI ve makine öğrenimi ile derin öğrenme karşılaştırması](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-Derin öğrenme ve makine öğrenimi hakkında bilgi edinmek için aşağıdaki tanımları göz önünde bulundurun. AI
+Derin öğrenme ve makine öğrenimi vs. AI ' i anlamak için aşağıdaki tanımları göz önünde bulundurun:
 
 - **Derin öğrenme** , yapay sinir ağlarını temel alan makine öğrenmesinin bir alt kümesidir. Yapay sinir ağların yapısı birden çok giriş, çıkış ve gizli katmanlardan oluşuyorsa _öğrenme süreci_ _çok önemlidir._ Her katman, giriş verilerini bir sonraki katmanın belirli bir tahmine dayalı görev için kullanabileceği bilgilere dönüştüren birimleri içerir. Bu yapı sayesinde bir makine, kendi veri işleme aracılığıyla bilgi alabilir.
 

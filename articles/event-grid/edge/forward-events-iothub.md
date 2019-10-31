@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 772fccc96f757c6165238e4041ce98c17c647880
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992307"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098670"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Öğretici: olayları ıothub 'e Ilet
 
@@ -160,7 +160,9 @@ Aşağıdaki gibi, ıothub 'e iletilmek üzere olay aboneliğinin olaylarını i
 
 ## <a name="setup-iot-hub-route"></a>IoT Hub yolunu ayarla
 
-Event Grid modülünden iletilen olayları görüntüleyebilmeniz için IoT Hub 'ından bir yol ayarlamak üzere IoT Hub [yönlendirme öğreticisi](../../iot-hub/tutorial-routing.md) ' ne bakın.
+Event Grid modülünden iletilen olayları görüntüleyebilmeniz için IoT Hub 'ından bir yol ayarlamak üzere [IoT Hub yönlendirme öğreticisine](../../iot-hub/tutorial-routing.md) bakın. Öğreticiyi devam etmek için sorgu için `true` kullanın.  
+
+
 
 ## <a name="publish-an-event"></a>Olay yayımlama
 
@@ -205,6 +207,7 @@ Olayları görüntüleme adımları için bkz. IoT Hub [yönlendirme öğreticis
 
 Bu öğreticide, bir olay Kılavuzu konusu, Edge hub aboneliği ve yayımlanan olaylar oluşturdunuz. Artık bir Edge hub 'ına iletmek için temel adımları öğrenmiş olduğunuza göre, aşağıdaki makalelere bakın:
 
+* IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
 * Olayları bölümlemek için [Edge hub](../../iot-edge/module-composition.md) yol filtrelerini kullanma
 * [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını ayarlama
 * İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin

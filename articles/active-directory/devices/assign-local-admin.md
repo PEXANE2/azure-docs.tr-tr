@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802435"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062269"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -59,10 +59,10 @@ Cihaz Yöneticisi rolünü değiştirmek için, **Azure AD 'ye katılmış cihaz
 >[!NOTE]
 > Bu seçenek Azure AD Premium kiracı gerektirir. 
 
-Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöneticilerini belirli bir cihaz kümesiyle kapsamyükleyemezsiniz. Cihaz Yöneticisi rolünü güncelleştirme, etkilenen kullanıcılar üzerinde bir etkisi olması gerekmez. Bir kullanıcı zaten oturum açmış olan cihazlar için ayrıcalık güncelleştirmesi şu şekilde gerçekleştirilir:
+Cihaz yöneticileri tüm Azure AD 'ye katılmış cihazlara atanır. Cihaz yöneticilerini belirli bir cihaz kümesiyle kapsamyükleyemezsiniz. Cihaz Yöneticisi rolünü güncelleştirme, etkilenen kullanıcılar üzerinde bir etkisi olması gerekmez. Bir kullanıcının zaten oturum açmış olduğu cihazlarda, aşağıdaki *iki* eylem gerçekleştiğinde ayrıcalık güncelleştirmesi gerçekleşir:
 
-- Bir Kullanıcı oturumu kapattığında.
-- 4 saat sonra, yeni bir birincil yenileme belirteci verildiğinde. 
+- Azure AD 'nin uygun ayrıcalıklara sahip yeni bir birincil yenileme belirteci vermesi için 4 saat geçti. 
+- Kullanıcı oturumu kapatır ve kendi profilini yenilemek için kilitleme/kilit açma değil, oturum kapatır.
 
 ## <a name="manage-regular-users"></a>Normal kullanıcıları yönetme
 

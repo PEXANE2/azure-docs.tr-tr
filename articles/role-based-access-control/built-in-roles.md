@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/22/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 31e19034f6a2c6f5ab52cbc34d8b3f6e0a1051bc
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803579"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101288"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -114,6 +114,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 | [Yönetilen uygulamalar okuyucusu](#managed-applications-reader) | Yönetilen bir uygulamadaki kaynakları okumanızı ve JıT erişimi isteğinizi yapmanızı sağlar. |
 | [Yönetilen kimlik Katılımcısı](#managed-identity-contributor) | Kullanıcı tarafından atanan kimlik oluşturma, okuma, güncelleştirme ve silme |
 | [Yönetilen kimlik Işleci](#managed-identity-operator) | Kullanıcı tarafından atanan kimliği okuma ve atama |
+| [Yönetilen hizmetler kayıt ataması rol silme](#managed-services-registration-assignment-delete-role) | Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının kiracıya atanan kayıt atamasını silmesine izin verir. |
 | [Yönetim grubu Katılımcısı](#management-group-contributor) | Yönetim grubu katılımcısı rolü |
 | [Yönetim grubu okuyucusu](#management-group-reader) | Yönetim grubu okuyucusu rolü |
 | [Katkıda bulunan izleniyor](#monitoring-contributor) | Tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. Ayrıca bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
@@ -1963,6 +1964,23 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. resources/dağıtımlar/* | Kaynak grubu dağıtımlarını oluşturma ve yönetme |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
+> | **NotActions** |  |
+> | *seçim* |  |
+> | **Veri eylemleri** |  |
+> | *seçim* |  |
+> | **NotDataActions** |  |
+> | *seçim* |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>Yönetilen hizmetler kayıt ataması rol silme
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Açıklama** | Yönetilen hizmetler kayıt ataması silme rolü, kiracı kullanıcılarının kiracıya atanan kayıt atamasını silmesine izin verir. |
+> | **Kimlik** | 91c1777a-f3dc-4fae-B103-61d183457e46 |
+> | **Eylemler** |  |
+> | Microsoft. ManagedServices/Registrationatamaları/okuma | Yönetilen hizmetler kayıt atamalarının bir listesini alır. |
+> | Microsoft. ManagedServices/Registrationatamaları/silme | Yönetilen hizmetler kayıt atamasını kaldırır. |
+> | Microsoft. ManagedServices/Operationdurumlar/okuma | Kaynak için işlem durumunu okur. |
 > | **NotActions** |  |
 > | *seçim* |  |
 > | **Veri eylemleri** |  |
