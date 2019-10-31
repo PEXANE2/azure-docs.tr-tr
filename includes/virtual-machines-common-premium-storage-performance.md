@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391816"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182301"
 ---
 ## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
@@ -140,7 +140,7 @@ GÇ isteği, uygulamanızın gerçekleştirmesi için bir giriş/çıkış işle
 GÇ boyutu, daha önemli faktörlerden biridir. GÇ boyutu, uygulamanız tarafından oluşturulan giriş/çıkış işlemi isteğinin boyutudur. GÇ boyutunun, özellikle de uygulamanın elde edebildii ıOPS ve bant genişliği üzerinde performans üzerinde önemli bir etkisi vardır. Aşağıdaki formül ıOPS, GÇ boyutu ve bant genişliği/aktarım hızı arasındaki ilişkiyi gösterir.  
     ![](media/premium-storage-performance/image1.png)
 
-Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer taraftan, Oracle, veritabanının g/ç istek boyutunu yapılandırabileceğiniz [DB @ no__t-1BLOCK @ no__t-2size](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar.
+Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer taraftan, Oracle, veritabanının g/ç istek boyutunu yapılandırabileceğiniz [DB\_BLOCK\_boyutu](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar.
 
 GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin,
 
@@ -189,15 +189,15 @@ VM başına en fazla ıOPS sınırı ve disk başına her ikisi birbirinden fark
 *Işlem maliyeti*  
 Çoğu durumda, Premium depolama kullanan genel işlem maliyetiniz standart depolamayı kullanmaktan daha düşüktür.
 
-Örneğin, 16.000 ıOPS gerektiren bir uygulamayı düşünün. Bu performansı elde etmek için standart bir @ no__t-0D14 Azure IaaS sanal makinesi gerekir ve bu, 32 standart depolama 1 TB disklerini kullanarak en fazla 16.000 ıOPS sağlayabilir. Her 1 TB standart depolama diski en fazla 500 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.570 olacaktır. 32 standart depolama disklerinin aylık maliyeti $1.638 olacaktır. Tahmini toplam aylık maliyet $3.208 olacaktır.
+Örneğin, 16.000 ıOPS gerektiren bir uygulamayı düşünün. Bu performansı elde etmek için standart bir\_D14 Azure IaaS VM gerekir. Bu, 32 standart depolama 1 TB disklerini kullanarak en fazla 16.000 ıOPS sağlayabilir. Her 1 TB standart depolama diski en fazla 500 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.570 olacaktır. 32 standart depolama disklerinin aylık maliyeti $1.638 olacaktır. Tahmini toplam aylık maliyet $3.208 olacaktır.
 
-Ancak, Premium depolamada aynı uygulamayı barındırdıysanız, daha küçük bir VM boyutu ve daha az Premium Depolama diski gerekir ve bu sayede genel maliyeti azaltabilirsiniz. Standart bir @ no__t-0DS13 VM, dört P30 diski kullanarak 16.000 ıOPS gereksinimini karşılayabilir. DS13 VM en fazla 25.600 ıOPS 'ye sahiptir ve her P30 diskte en fazla 5.000 ıOPS vardır. Genel olarak, bu yapılandırma 5.000 x 4 = 20.000 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.003 olacaktır. Dört P30 Premium Depolama diskinin aylık maliyeti $544,34 olacaktır. Tahmini toplam aylık maliyet $1.544 olacaktır.
+Ancak, Premium depolamada aynı uygulamayı barındırdıysanız, daha küçük bir VM boyutu ve daha az Premium Depolama diski gerekir ve bu sayede genel maliyeti azaltabilirsiniz. Standart bir\_DS13 VM, dört P30 diski kullanarak 16.000 ıOPS gereksinimini karşılayabilir. DS13 VM en fazla 25.600 ıOPS 'ye sahiptir ve her P30 diskte en fazla 5.000 ıOPS vardır. Genel olarak, bu yapılandırma 5.000 x 4 = 20.000 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.003 olacaktır. Dört P30 Premium Depolama diskinin aylık maliyeti $544,34 olacaktır. Tahmini toplam aylık maliyet $1.544 olacaktır.
 
 Aşağıdaki tablo, standart ve Premium Depolama için bu senaryonun maliyet dökümünü özetler.
 
 | &nbsp; | **Standart** | **Premium** |
 | --- | --- | --- |
-| **Aylık VM maliyeti** |$1.570,58 (Standart @ no__t-0D14) |$1.003,66 (Standart @ no__t-0DS13) |
+| **Aylık VM maliyeti** |$1.570,58 (Standart\_D14) |$1.003,66 (Standart\_DS13) |
 | **Aylık disk maliyeti** |$1.638,40 (32 x 1-TB disk) |$544,34 (4 x P30 disk) |
 | **Aylık genel maliyet** |$3.208,98 |$1.544,34 |
 
@@ -298,12 +298,12 @@ Sürümlerden bazıları Azure için en son Linux Integration Services (LIS), v 
 | SUSE | SLES 12 veya üzeri| 3.12.36-38.1 + | SUSE-SLES-12-Priority-v20150213 <br> SUSE-SLES-12-v20150213 |
 | SUSE | SLES 11 SP4 veya daha yeni| 3.0.101-0.63.1 + | &nbsp; |
 | CoreOS | 584.0.0 + veya üzeri| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Sonraki bölümde nota bakın* |
-| CentOS | 7.1 + veya üzeri| 3.10.0-229.1.2. EL7 + | [LIS4 önerilir](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Sonraki bölümde nota bakın* |
+| CentOS | 6,5, 6,6, 6,7, 7,0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Sonraki bölümde nota bakın* |
+| CentOS | 7.1 + veya üzeri| 3.10.0-229.1.2. EL7 + | [LIS4 önerilir](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Sonraki bölümde nota bakın* |
 | Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + ya da daha yeni | &nbsp; | &nbsp; |
 | Oracle | 6.0 +, 7.2 + veya daha yeni | &nbsp; | UEK4 veya RHCK |
-| Oracle | 7.0-7.1 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 6.4-6.7 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS için LIS sürücüleri
 

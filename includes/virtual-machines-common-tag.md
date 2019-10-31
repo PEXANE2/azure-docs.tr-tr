@@ -4,29 +4,29 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f6bd574c83d309ce6d6f54fdb1c7d23cb713420d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67188311"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182297"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Bir sanal makineyi şablonlar aracılığıyla etiketleme
-İlk olarak, şablonlar aracılığıyla etiketleme konusuna bakalım. [Bu şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) , etiketleri aşağıdaki kaynaklara koyar: İşlem (sanal makine), depolama (depolama hesabı) ve ağ (genel IP adresi, sanal ağ ve ağ arabirimi). Bu şablon bir Windows sanal makinesi içindir, ancak Linux VM 'Ler için uyarlanmıştır.
+İlk olarak, şablonlar aracılığıyla etiketleme konusuna bakalım. [Bu şablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) şu kaynaklara Etiketler koyar: Işlem (sanal makine), depolama (depolama hesabı) ve ağ (genel IP adresi, sanal ağ ve ağ arabirimi). Bu şablon bir Windows sanal makinesi içindir, ancak Linux VM 'Ler için uyarlanmıştır.
 
 [Şablon bağlantısından](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) **Azure 'a dağıt** düğmesine tıklayın. Bu, bu şablonu dağıtabileceğiniz [Azure Portal](https://portal.azure.com/) gezirsiniz.
 
 ![Etiketlerle basit dağıtım](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-Bu şablon aşağıdaki etiketleri içerir: *Departman*, *uygulama*ve *tarafından oluşturulan*. Farklı etiket adları istiyorsanız bu etiketleri doğrudan şablonda ekleyebilir/düzenleyebilirsiniz.
+Bu şablon şu etiketleri içerir: *Departman*, *uygulama*ve *tarafından oluşturulan*. Farklı etiket adları istiyorsanız bu etiketleri doğrudan şablonda ekleyebilir/düzenleyebilirsiniz.
 
 ![Bir şablonda Azure etiketleri](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
 Görebileceğiniz gibi, Etiketler bir iki nokta (:) ile ayrılmış olarak anahtar/değer çiftleri olarak tanımlanır. Etiketlerin bu biçimde tanımlanması gerekir:
 
-        “tags”: {
-            “Key1” : ”Value1”,
-            “Key2” : “Value2”
+        "tags": {
+            "Key1" : "Value1",
+            "Key2" : "Value2"
         }
 
 Şablon dosyasını, istediğiniz etiketlerle düzenledikten sonra kaydedin.

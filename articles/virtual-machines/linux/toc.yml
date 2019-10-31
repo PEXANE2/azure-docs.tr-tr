@@ -379,7 +379,11 @@
         - name: Yüksek kullanılabilirlik
           href: manage-availability.md
         - name: Yakınlık yerleştirme grubu oluşturma
-          href: proximity-placement-groups.md
+          items:
+            - name: CLI
+              href: proximity-placement-groups.md
+            - name: Portal
+              href: ../windows/proximity-placement-groups-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Kullanılabilirlik alanında VM oluşturma
           href: create-cli-availability-zone.md
     - name: Otomasyon araçları kullanma

@@ -5,7 +5,7 @@
   items:
     - name: Identity Governance nedir?
       href: identity-governance-overview.md
-    - name: Yetkilendirme yönetimi nedir? (Önizleme)
+    - name: Yetkilendirme yönetimi nedir?
       href: entitlement-management-overview.md
     - name: Erişim gözden geçirmeleri nedir?
       href: access-reviews-overview.md
