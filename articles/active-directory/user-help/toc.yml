@@ -29,7 +29,7 @@
     - name: Parola sıfırlama için kaydolma
       href: active-directory-passwords-reset-register.md
     - name: Parolanızı sıfırlama
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Microsoft Authenticator uygulaması yardımı
   items:
     - name: Genel Bakış
