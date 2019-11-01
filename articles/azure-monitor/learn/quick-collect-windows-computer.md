@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici ile karma Windows bilgisayarından veri toplama | Microsoft Docs
+title: Azure Izleyici ile karma Windows bilgisayarından veri toplama
 description: Bu hızlı başlangıçta, Azure dışında çalışan Windows bilgisayarları için Log Analytics aracısını dağıtmayı ve Azure Izleyici günlükleri ile veri toplamayı etkinleştirmenizi öğreneceksiniz.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677249"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199035"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -99,7 +99,7 @@ Aşağıdaki adımlar, Azure ve Azure Kamu 'daki Log Analytics için aracıyı y
 
 10. **Yapılandırma başarıyla tamamlandı** sayfasında **son**' u seçin.
 
-Yükleme ve Kurulum bittiğinde, Denetim Masası 'nda Microsoft Monitoring Agent görüntülenir. Yapılandırmanızı gözden geçirebilir ve aracının Log Analytics çalışma alanına bağlı olduğunu doğrulayabilirsiniz. Bağlandığınızda, **Azure Log Analytics** sekmesinde aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Microsoft Log Analytics hizmetine başarıyla bağlandı.**<br><br> ![MMA bağlantı durumu ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Yükleme ve Kurulum bittiğinde, Denetim Masası 'nda Microsoft Monitoring Agent görüntülenir. Yapılandırmanızı gözden geçirebilir ve aracının Log Analytics çalışma alanına bağlı olduğunu doğrulayabilirsiniz. Bağlandığınızda, **Azure Log Analytics** sekmesinde aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Microsoft Log Analytics hizmetine başarıyla bağlandı.**<br><br> ![MMA bağlantı durumu](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Olay ve performans verilerini toplama
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ff7563a9ebbbc996af56f94b8e23d349752ef9f4
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964113"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200261"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -58,14 +58,15 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 > 
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/linkid=2083908) sayfasına gidin.
+> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](/azure/active-directory/develop/) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
 > 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 >    - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `java-webapp`.
 >    - **Yeniden yönlendirme URI 'sini** Şu anda boş bırakın ve **Kaydet**' i seçin.
 > 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
 > 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsamples/secure/aad` ve `https://localhost:8080/msal4jsamples/graph/me`ekleyin.
+>    - **Yeniden yönlendirme URI 'lerinde**`http://localhost:8080/msal4jsamples/secure/aad` ve `http://localhost:8080/msal4jsamples/graph/me`ekleyin.
+>    - **Gelişmiş ayarlar**' da, **oturum kapatma URL**'sine `https://localhost:8080/msal4jsample/sign-out` ekleyin.
 >    - **Kaydet**’i seçin.
 > 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' na tıklayın:
 > 
@@ -79,10 +80,10 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > 
 > Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
 > 
-> 1. `http://localhost:8080/msal4jsamples/secure/aad` ve `https://localhost:8080/msal4jsamples/graph/me`olarak yanıt URL 'Leri ekleyin.
+> 1. `http://localhost:8080/msal4jsamples/secure/aad` ve `http://localhost:8080/msal4jsamples/graph/me`olarak yanıt URL 'Leri ekleyin.
 > 1. Bir Istemci gizli dizisi oluşturun.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Bu değişikliği benim için yap]()
+> > [Bu değişiklikleri benim için yap]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
@@ -100,7 +101,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Name_Here/
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
@@ -111,7 +112,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here`, **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .
-> - `Enter_the_Tenant_Name_Here`-kaydettiğiniz uygulamanın **Dizin (kiracı) kimlik** değeridir.
+> - `Enter_the_Tenant_Info_Here`-kaydettiğiniz uygulamanın **Dizin (kiracı) kimlik** değeridir.
 
 #### <a name="step-4-run-the-code-sample"></a>4\. Adım: kod örneğini çalıştırma
 
@@ -149,7 +150,7 @@ Uygulamanın Pod. xml (Maven) veya Build. Gradle (Gradle) dosyasında aşağıda
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
 ```
 
 ### <a name="msal-initialization"></a>MSAL başlatma
