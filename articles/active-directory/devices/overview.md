@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851761"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175048"
 ---
 # <a name="what-is-a-device-identity"></a>Cihaz kimliği nedir?
 
@@ -41,7 +41,7 @@ Azure AD 'de bir cihaz almak için, birden çok seçeneğiniz vardır:
       - Windows 10
       - iOS
       - Android
-      - macOS
+      - MacOS
 - **Azure AD 'ye katılmış**
    - Azure AD 'ye katılmış cihazlar bir kuruluşa aittir ve bu kuruluşa ait bir Azure AD hesabıyla oturum açtı. Bunlar yalnızca bulutta bulunur.
       - Windows 10 
@@ -65,12 +65,12 @@ Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış cihazlar, SSO 'dan 
 ## <a name="device-security"></a>Cihaz güvenliği
 
 - **Azure AD kayıtlı cihazlar** Son Kullanıcı tarafından yönetilen bir hesabı kullanır, bu hesap bir veya bir veya daha fazla ile korunan bir Microsoft hesabı ya da yerel olarak yönetilen bir kimlik bilgisi olur.
-   - istemcisiyle yönetilen bir cihaz için)
-   - PIN kodu
+   - Parola
+   - IĞNES
    - Desen
    - Windows Hello
 - **Azure AD 'ye katılmış veya hibrit Azure AD 'ye katılmış cihazlar** , aşağıdakilerden biri veya birkaçı ile güvenli bir şekılde Azure AD 'de kurumsal hesap kullanır.
-   - istemcisiyle yönetilen bir cihaz için)
+   - Parola
    - İş İçin Windows Hello
 
 ## <a name="provisioning"></a>Sağlama
