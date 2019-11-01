@@ -12,127 +12,148 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c45c3f90fd1c9bf457f5c4024d029bf3819813
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7a1a86965eb6a50fa87c63f5713f21d6a467dedb
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149484"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242252"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
 Bu hızlı başlangıç, bir Android uygulamasının Microsoft Identity platformunu kullanarak kişisel, iş veya okul hesaplarında nasıl oturum açıp bir erişim belirteci edindiğini ve Microsoft Graph API 'sini çağırabileceğini göstermek için bir kod örneği kullanır.
 
-![Örnek uygulamanın screenshoft](media/quickstart-v2-android/android-intro.svg)
+Microsoft Identity platform 'un uygulamanızla belirteçleri paylaşabilmesi için uygulamalar Azure Active Directory bir uygulama nesnesi ile temsil etmelidir.
+
+> [!div renderon="docs"]
+> Bir kolaylık olması halinde, kod örneği `AndroidManifest.xml` dosyasında önceden yapılandırılmış varsayılan `redirect_uri` gelir, böylece öncelikle kendi uygulama nesneniz kaydetmeniz gerekmez. `redirect_uri`, kısmen uygulamanızın imzalama anahtarına dayanır. Örnek proje, girilen `redirect_uri` çalışması için bir imzalama anahtarıyla önceden yapılandırılmıştır. Uygulama nesnesini kaydetme ve uygulamanızla tümleştirme hakkında daha fazla bilgi edinmek için, [oturum açma kullanıcılarına bakın ve Android uygulama öğreticisindeki Microsoft Graph çağırın](tutorial-v2-android.md) .
+
+![Örnek uygulamanın ekran görüntüsü](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Önkoşullar**
 > * Android Studio 
-> * Android 16 + gereklidir
+> * Android 16 +
 
-## <a name="step-1-get-the-sample-app"></a>1\. Adım: örnek uygulamayı edinme
+> [!div class="sxs-lookup" renderon="portal"]
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1\. Adım: uygulamanızı Azure portal yapılandırma 
+>  Bu hızlı başlangıçta çalışması için kod örneği için, auth broker ile uyumlu bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Bu değişiklikleri benim için yap]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Zaten yapılandırılmış](media/quickstart-v2-android/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış
+>
+> ### <a name="step-2-download-the-project"></a>2\. Adım: Projeyi indirme 
+> * [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-android-java)
+>
+> ### <a name="step-3-configure-your-project"></a>3\. Adım:Projenizi yapılandırma
+> 1. Projeyi ayıklayın ve Android Studio’da açın.
+> 2. > Src > Main > Res > RAW ' ın içinde, auth_config_multiple_account. json ' ı açın ve aşağıdaki kodla değiştirin:
+> ```javascript 
+> {
+>   "client_id" : "Enter_the_Application_Id_Here",
+>   "authorization_user_agent" : "DEFAULT",
+>   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
+>   "account_mode" : "MULTIPLE",
+>   "broker_redirect_uri_registered": true,
+>   "authorities" : [
+>     {
+>       "type": "AAD",
+>       "audience": {
+>         "type": "Enter_the_Audience_Info_Here",
+>         "tenant_id": "Enter_the_Tenant_Info_Here"
+>       }
+>     }
+>   ]
+> }
+> ```
 
-[Kodu kopyalayın](https://github.com/Azure-Samples/ms-identity-android-java.git).
+> [!div class="sxs-lookup" renderon="portal"]
+> 3. > Src > Main > Res > RAW ' ın içinde, auth_config_single_account. json ' ı açın ve aşağıdaki kodla değiştirin:
+> ```javascript 
+> {
+>   "client_id" : "Enter_the_Application_Id_Here",
+>   "authorization_user_agent" : "DEFAULT",
+>   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
+>   "account_mode" : "SINGLE",
+>   "broker_redirect_uri_registered": true,
+>   "authorities" : [
+>     {
+>       "type": "AAD",
+>       "audience": {
+>         "type": "Enter_the_Audience_Info_Here",
+>         "tenant_id": "Enter_the_Tenant_Info_Here"
+>       }
+>     }
+>   ]
+> }
+> ```
 
-## <a name="step-2-register-your-application"></a>2\. Adım: Uygulamanızı kaydetme
+> [!div class="sxs-lookup" renderon="portal"]
+> 4.  > **src** > **Main** **uygulamasının** içinde, **AndroidManifest. xml**' yi açın.
+> 5. **Manifest\application** node 'da **<activity android:name="com.microsoft.identity.client.BrowserTabActivity">** düğümünü aşağıdaki ile değiştirin:  
+> ```xml
+> <!--Intent filter to catch Microsoft's callback after Sign In-->
+> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
+>     <intent-filter>
+>     <action android:name="android.intent.action.VIEW" />
+>     <category android:name="android.intent.category.DEFAULT" />
+>     <category android:name="android.intent.category.BROWSABLE" />
+>         <!--
+>             Add in your scheme/host from registered redirect URI 
+>             note that the leading "/" is required for android:path
+>         -->
+>         <data android:scheme="msauth"
+>             android:host="Enter_the_Package_Name_here"
+>             android:path="Enter_the_Signature_Hash_here"
+>             android:scheme = "msauth" />
+>     </intent-filter>
+> </activity>
+> ```
+> 6. Uygulamayı çalıştırın!
+> Örnek uygulama, **tek hesap modu** ekranında başlar. Varsayılan olarak, **Kullanıcı. Read**, Microsoft Graph API çağrısı sırasında kendi profil verilerinizi okurken kullanılan varsayılan bir kapsam sağlanır. Microsoft Graph API çağrısı URL 'SI varsayılan olarak sağlanır. İsterseniz bunların her ikisini de değiştirebilirsiniz.
+>
+> ![Tek ve birden çok hesap kullanımını gösteren örnek uygulama MSAL](./media/quickstart-v2-android/quickstart-sample-app.png)
+>
+> Tek ve birden çok hesap modlarını değiştirmek için uygulama menüsünü kullanın.
+>
+> Tek hesap modunda bir iş veya giriş hesabı kullanarak oturum açın:
+>
+> 1. Kullanıcıdan kimlik bilgilerini girmesini istemek için **grafik verilerini etkileşimli olarak al** ' ı seçin. Ekranın alt kısmındaki Microsoft Graph API 'sine yapılan çağrıdan gelen çıktıyı görürsünüz.
+> 2. Oturum açtıktan sonra, kullanıcıdan kimlik bilgilerini yeniden sormadan Microsoft Graph API 'sine çağrı yapmak için **grafik verilerini sessizce al** ' ı seçin. Ekranın alt kısmındaki Microsoft Graph API 'sine yapılan çağrıdan gelen çıktıyı görürsünüz.
+>
+> Birden çok hesap modunda aynı adımları tekrarlayabilirsiniz.  Ayrıca, bu hesaba ait önbelleğe alınmış belirteçleri de kaldıran oturum açmış olan hesabı kaldırabilirsiniz.
 
-Uygulama nesnesini kaydetmek ve bu uygulama nesnesinin kayıt bilgilerini örnek projeye el ile eklemek için aşağıdaki adımları izleyin:
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Bu hızlı başlangıç, Enter_the_Supported_Account_Info_Here destekler.
 
-1. [Azure Portal](https://aka.ms/MobileAppReg) gidin.
-1. [Uygulama kayıtları dikey penceresini](https://portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) açın ve **+ Yeni kayıt**' ye tıklayın.
-1. Uygulama kaydınız için bir **ad** girin ve yeniden yönlendirme URI 'Sini ayarlamadan **Kaydet**' e tıklayın.
-1. **Yönet** bölümünde **kimlik doğrulama** > + **Android** > **Platform ekleme** ' yi seçin. (Bu ekranı görmek için dikey pencerenin üst kısmındaki **Yeni deneyimi dene** ' yi seçmeniz gerekebilir)
-1. Projenizin **paket adını**girin, `com.azuresamples.msalandroidapp`.
-1. **Android uygulamanızı yapılandırma** sayfasında bulunan **imza karması** bölümünde, **bir geliştirme imza karması oluşturma**' ya tıklayın ve anahtar aracı komutunu, Android uygulamanızı geliştirirken kullandığınız platformda kullanmak üzere kopyalayın.
-
-   > [!Note]
-   > KeyTool. exe, Java Development Kit 'in (JDK) bir parçası olarak yüklenir. Ayrıca, KeyTool komutunu yürütmek için OpenSSL aracını da yüklemelisiniz.  Yolunuzda Keytool ve OpenSSL\bin dizinine ihtiyacınız vardır.
-
-1. Portaldan kopyaladığınız Keytool komutunu bir Terminal penceresinde çalıştırın.
-1. **İmza karması**altında portala oluşturulan imza karmasını girin.
-1. `Configure` ' a tıklayın ve **msal yapılandırmasının**bir kopyasını oluşturun. Bunu bir sonraki adımda bir yapılandırma dosyasına kopyalayıp yapıştırabilirsiniz. **Bitti**’ye tıklayın.
-
-## <a name="step-3-add-your-app-registration"></a>3\. Adım: uygulama kaydınızı ekleme
-
-1. Örnek projeyi Android Studio açın.
-1. **Uygulamanın** içinde > **res** > **RAW**, Open **auth_config_multiple_account. JSON**' ı açın.  MSAL yapılandırmasının içeriğini yapıştırın. Bu, portaldan istemci KIMLIĞI, kiracı KIMLIĞI ve redirect_uri öğesini ekler. Bu, aşağıdakine benzer şekilde görünür, ancak istemci KIMLIĞI, kiracı KIMLIĞI ve redirect_uri için doldurulmuş değerler:
-
-    ```json
-    {
-      "client_id" : "<your_client_id_here>",
-      "authorization_user_agent" : "DEFAULT",
-      "redirect_uri" : "<your_redirect_uri_here>",
-      "account_mode" : "MULTIPLE",
-      "broker_redirect_uri_registered": true,
-      "authorities" : [
-        {
-          "type": "AAD",
-          "audience": {
-            "type": "AzureADandPersonalMicrosoftAccount",
-            "tenant_id": "common"
-          }
-        }
-      ]
-    }
-    ```
-
-1. **App** > **res** > **RAW**' ı açın, **AUTH_CONFIG_SINGLE_ACCOUNT. JSON**' ı açın ve msal yapılandırmasının içeriğini yapıştırın. Yukarıdaki **auth_config_multiple_account. JSON** dosyası gibi görünür.
-1. **Uygulama** > **bildirimleri** > **AndroidManifest. xml**' de `BrowserTabActivity` etkinliğini bulun. Bu giriş, Microsoft 'un, kimlik doğrulamasını tamamladıktan sonra uygulamanıza geri çağırmasını sağlar:
-
-    ```xml
-    ...
-    <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
-                <intent-filter>
-                    <action android:name="android.intent.action.VIEW" />
-    
-                    <category android:name="android.intent.category.DEFAULT" />
-                    <category android:name="android.intent.category.BROWSABLE" />
-    
-                    <!--
-                        Add in your scheme/host from registered redirect URI
-                        note that the leading "/" is required for android:path
-                        For Example:
-                        <data
-                            android:host="com.azuresamples.msalandroidapp"
-                            android:path="/1wIqXSqBj7w+h11ZifsnqwgyKrY="
-                            android:scheme="msauth" />
-                    -->
-    
-                    <data
-                        android:host="YOUR_PACKAGE_NAME - must be registered at https://aka.ms/MobileAppReg"
-                        android:path="/YOUR_DECODED_SIGNATURE_HASH - must be registered at https://aka.ms/MobileAppReg"
-                        android:scheme="msauth" />
-                </intent-filter>
-            </activity>
-    ```
-    
-1. Paket adını, `android:host=` değeri için Azure portal kaydettiğiniz şekilde değiştirin.  Bu durumda, şu şekilde olacaktır: `com.azuresamples.msalandroidapp`.
-
-    > [!IMPORTANT]
-    > **Android: Path** değeri önünde bir "/" karakteri **olmalıdır** veya değerin altında kırmızı bir çizgi alırsınız ve örnek uygulama çalışmaz.
-     
-1. Daha önce Keytool 'u çalıştırarak aldığınız anahtar karmasını değiştirin ve `android:path=` değeri için Azure portal yazın. Imza karması URL kodlamalı olmamalıdır.
-
-## <a name="step-4-run-the-sample-app"></a>4\. Adım: örnek uygulamayı çalıştırma
-
-Android Studio **kullanılabilir cihazlar** açılan menüsünden öykünücü veya cihazınızı seçin ve uygulamayı çalıştırın.
-
-Örnek uygulama, **tek hesap modu** ekranında başlar. Varsayılan olarak, **Kullanıcı. Read**, Microsoft Graph API çağrısı sırasında kendi profil verilerinizi okurken kullanılan varsayılan bir kapsam sağlanır. Microsoft Graph API çağrısı URL 'SI varsayılan olarak sağlanır. İsterseniz bunların her ikisini de değiştirebilirsiniz.
-
-![Tek ve birden çok hesap kullanımını gösteren örnek uygulama MSAL](./media/quickstart-v2-android/quickstart-sample-app.png)
-
-Tek ve birden çok hesap modlarını değiştirmek için uygulama menüsünü kullanın.
-
-Tek hesap modunda bir iş veya giriş hesabı kullanarak oturum açın:
-
-1. Kullanıcıdan kimlik bilgilerini girmesini istemek için **grafik verilerini etkileşimli olarak al** ' ı seçin. Ekranın alt kısmındaki Microsoft Graph API 'sine yapılan çağrıdan gelen çıktıyı görürsünüz.
-2. Oturum açtıktan sonra, kullanıcıdan kimlik bilgilerini yeniden sormadan Microsoft Graph API 'sine çağrı yapmak için **grafik verilerini sessizce al** ' ı seçin. Ekranın alt kısmındaki Microsoft Graph API 'sine yapılan çağrıdan gelen çıktıyı görürsünüz.
-
-Birden çok hesap modunda aynı adımları tekrarlayabilirsiniz.  Ayrıca, bu hesaba ait önbelleğe alınmış belirteçleri de kaldıran oturum açmış olan hesabı kaldırabilirsiniz.
+> [!div renderon="docs"]
+> ## <a name="step-1-get-the-sample-app"></a>1\. Adım: örnek uygulamayı edinme
+>
+> [Kodu kopyalayın](https://github.com/Azure-Samples/ms-identity-android-java.git).
+>
+> ## <a name="step-2-run-the-sample-app"></a>2\. Adım: örnek uygulamayı çalıştırma
+>
+> Android Studio **kullanılabilir cihazlar** açılan menüsünden öykünücü veya fiziksel cihazınızı seçin ve uygulamayı çalıştırın.
+>
+> Örnek uygulama, **tek hesap modu** ekranında başlar. Varsayılan olarak, **Kullanıcı. Read**, Microsoft Graph API çağrısı sırasında kendi profil verilerinizi okurken kullanılan varsayılan bir kapsam sağlanır. Microsoft Graph API çağrısı URL 'SI varsayılan olarak sağlanır. İsterseniz bunların her ikisini de değiştirebilirsiniz.
+>
+> ![Tek ve birden çok hesap kullanımını gösteren örnek uygulama MSAL](./media/quickstart-v2-android/quickstart-sample-app.png)
+>
+> Tek ve birden çok hesap modlarını değiştirmek için uygulama menüsünü kullanın.
+>
+> Tek hesap modunda bir iş veya giriş hesabı kullanarak oturum açın:
+>
+> 1. Kullanıcıdan kimlik bilgilerini girmesini istemek için **grafik verilerini etkileşimli olarak al** ' ı seçin. Ekranın alt kısmındaki Microsoft Graph API 'sine yapılan çağrıdan gelen çıktıyı görürsünüz.
+> 2. Oturum açtıktan sonra, kullanıcıdan kimlik bilgilerini yeniden sormadan Microsoft Graph API 'sine çağrı yapmak için **grafik verilerini sessizce al** ' ı seçin. Ekranın alt kısmındaki Microsoft Graph API 'sine yapılan çağrıdan gelen çıktıyı görürsünüz.
+>
+> Birden çok hesap modunda aynı adımları tekrarlayabilirsiniz.  Ayrıca, bu hesaba ait önbelleğe alınmış belirteçleri de kaldıran oturum açmış olan hesabı kaldırabilirsiniz.
 
 ## <a name="how-the-sample-works"></a>Örneğin nasıl çalıştığı
 
@@ -150,7 +171,7 @@ Kod, tek ve birden çok hesap MSAL uygulamasının nasıl yazılacağını göst
 
 Şimdi bu dosyalara daha ayrıntılı olarak bakacağız ve MSAL 'e özgü kodu her birinde çağıracağız.
 
-### <a name="add-msal-to-the-app"></a>Uygulamaya MSAL ekleme
+### <a name="adding-msal-to-the-app"></a>Uygulamaya MSAL ekleme
 
 MSAL ([com. Microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)), kullanıcıların oturum açmasını ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Gradle 3.0 + **Bağımlılıklar**altında **Build. Gradle (Module: App)**  > **Gradle betiklerine** aşağıdakileri eklediğinizde kitaplığı yükleme:
 
@@ -163,7 +184,7 @@ Bunu, Build. Gradle (Module: App) içinde örnek projede görebilirsiniz:
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.0-RC7'
+    implementation 'com.microsoft.identity.client:msal:1.0.+'
     ...
 }
 ```
@@ -182,7 +203,7 @@ Tek hesap uygulamaları yalnızca tek bir kullanıcı tarafından kullanılır. 
 
 #### <a name="single-account-msal-initialization"></a>Tek hesap MSAL başlatması
 
-`onCreateView()`, `auth_config_single_account.json` dosyasında depolanan yapılandırma bilgileri kullanılarak tek bir hesap `PublicClientApplication` oluşturulur.  Bu, MSAL kitaplığını tek-Account MSAL uygulamasında kullanılmak üzere nasıl başlataöğreneceksiniz:
+`auth_config_single_account.json`, `onCreateView()`' de, `auth_config_single_account.json` dosyasında depolanan yapılandırma bilgileri kullanılarak tek bir hesap `PublicClientApplication` oluşturulur.  Bu, MSAL kitaplığını tek-Account MSAL uygulamasında kullanılmak üzere nasıl başlataöğreneceksiniz:
 
 ```java
 ...
@@ -209,7 +230,7 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 #### <a name="sign-in-a-user"></a>Kullanıcı oturumu açma
 
-Bir kullanıcının oturum açma kodu `initializeUI()`, `signInButton` tıklama işleyicisi ' nde.
+`SingleAccountModeFragment.java`, bir kullanıcının oturum açması için kullanılacak kod `initializeUI()``signInButton` işleyici ' ne tıklayın.
 
 Belirteçleri edinmeyi denemeden önce `signIn()` çağırın. `signIn()`, `acquireToken()` çağrılsa da, kullanıcının oturum açması için etkileşimli bir istem oluşmasına neden olur.
 
@@ -221,7 +242,7 @@ mSingleAccountApp.signIn(getActivity(), null, getScopes(), getAuthInteractiveCal
 
 #### <a name="sign-out-a-user"></a>Kullanıcı oturumunu kapatma
 
-Bir kullanıcının oturumunu kapatmak için kod `initializeUI()`, `signOutButton` tıklama işleyicisine tıklayın.  Bir kullanıcının imzalanmasının zaman uyumsuz bir işlemdir. Kullanıcının imzalanması, bu hesabın belirteç önbelleğini de temizler. Kullanıcı hesabı oturumu açıldıktan sonra Kullanıcı ARABIRIMINI güncelleştirmek için bir geri çağırma oluşturulur:
+`SingleAccountModeFragment.java`, bir kullanıcının oturumunu kapatmak için kullanılacak kod `initializeUI()``signOutButton` işleyici ' ne tıklayın.  Bir kullanıcının imzalanmasının zaman uyumsuz bir işlemdir. Kullanıcının imzalanması, bu hesabın belirteç önbelleğini de temizler. Kullanıcı hesabı oturumu açıldıktan sonra Kullanıcı ARABIRIMINI güncelleştirmek için bir geri çağırma oluşturulur:
 
 ```java
 mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
@@ -251,7 +272,7 @@ Kullanıcıdan kendi hesabını seçmesi, kimlik bilgilerini girmesi veya uygula
 * Uygulamanız bir kaynağa ilk kez erişim isteğinde bulunduğunda
 * MFA veya diğer koşullu erişim ilkeleri gerektiğinde
 
-Kullanıcıyı içerecek olan UI ile etkileşimli olarak bir belirteci almak için kod, `callGraphApiInteractiveButton` tıklama işleyicisine `initializeUI()`.
+Kullanıcıyı içerecek olan UI ile etkileşimli olarak bir belirteci almak için kod, `initializeUI()``SingleAccountModeFragment.java`, `callGraphApiInteractiveButton` işleyici tıklama:
 
 ```java
 /**
@@ -278,7 +299,7 @@ Kullanıcı zaten oturum açmışsa, `acquireTokenSilentAsync()` `initializeUI()
 
 #### <a name="load-an-account"></a>Hesap yükleme
 
-Bir hesabı yüklemek için kod `loadAccount()`.  Kullanıcı hesabının yüklenmesi zaman uyumsuz bir işlemdir. bu nedenle, hesap yüklendiğinde, değiştiğinde veya hata oluştuğunda işlenecek geri çağrılar MSAL 'e geçirilir.  Aşağıdaki kod ayrıca, bir hesap kaldırıldığında, Kullanıcı başka bir hesaba değiştiğinde ve bu şekilde gerçekleşen `onAccountChanged()`işler.
+Hesap yükleme kodu `loadAccount()``SingleAccountModeFragment.java`.  Kullanıcı hesabının yüklenmesi zaman uyumsuz bir işlemdir. bu nedenle, hesap yüklendiğinde, değiştiğinde veya hata oluştuğunda işlenecek geri çağrılar MSAL 'e geçirilir.  Aşağıdaki kod ayrıca, bir hesap kaldırıldığında, Kullanıcı başka bir hesaba değiştiğinde ve bu şekilde gerçekleşen `onAccountChanged()`işler.
 
 ```java
 private void loadAccount() {
@@ -308,7 +329,7 @@ private void loadAccount() {
 
 #### <a name="call-microsoft-graph"></a>Microsoft Graph çağrısı
 
-Bir Kullanıcı oturum açmışsa, Microsoft Graph çağrısı bir HTTP isteği aracılığıyla `callGraphAPI()`tarafından yapılır. Bu işlev, `authenticationResult` erişim belirtecini alma ve MSGraphRequestWrapper çağrısını paketleme ve çağrının sonuçlarını görüntüleme gibi bazı görevleri gerçekleştirerek örneği basitleştiren bir sarmalayıcıdır.
+Bir Kullanıcı oturum açmışsa, Microsoft Graph çağrısı `SingleAccountModeFragment.java`tanımlanmış bir HTTP isteği aracılığıyla yapılır `callGraphAPI()`. Bu işlev, `authenticationResult` erişim belirtecini alma ve MSGraphRequestWrapper çağrısını paketleme ve çağrının sonuçlarını görüntüleme gibi bazı görevleri gerçekleştirerek örneği basitleştiren bir sarmalayıcıdır.
 
 ```java
 private void callGraphAPI(final IAuthenticationResult authenticationResult) {
@@ -340,11 +361,14 @@ Bu alanların bir açıklaması için bkz. [ANDROID msal yapılandırma dosyası
 
 Bu uygulamayı tek bir hesap kullanacak şekilde yapılandıran `"account_mode" : "SINGLE"`varlığını aklınızda edin.
 
+`"client_id"`, Microsoft 'un koruduğu bir uygulama nesnesi kaydını kullanacak şekilde önceden yapılandırılmıştır.
+`"redirect_uri"`, kod örneğiyle birlikte sunulan imzalama anahtarını kullanacak şekilde önceden yapılandırılmıştır.
+
 ```json
 {
-  "client_id" : "<your_client_id_here>",
+  "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
   "authorization_user_agent" : "DEFAULT",
-  "redirect_uri" : "<your_redirect_uri_here>",
+  "redirect_uri" : "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D",
   "account_mode" : "SINGLE",
   "broker_redirect_uri_registered": true,
   "authorities" : [
@@ -361,13 +385,13 @@ Bu uygulamayı tek bir hesap kullanacak şekilde yapılandıran `"account_mode" 
 
 ### <a name="multipleaccountmodefragmentjava"></a>Multipleaccountmobirleştirmesi. Java
 
-Bu dosya, birden çok hesap MSAL uygulamasının nasıl oluşturulacağını ve bir Microsoft Graph API 'sinin nasıl çağrılacağını gösterir. 
+Bu dosya, birden çok hesap MSAL uygulamasının nasıl oluşturulacağını ve bir Microsoft Graph API 'sinin nasıl çağrılacağını gösterir.
 
 Birden çok hesap uygulamasına bir örnek, bir iş hesabı ve kişisel hesap gibi birden çok kullanıcı hesabıyla çalışmanıza olanak tanıyan bir posta uygulamasıdır.
 
 #### <a name="multiple-account-msal-initialization"></a>Birden çok hesap MSAL başlatması
 
-`onCreateView()`, `auth_config_multiple_account.json file`depolanan yapılandırma bilgileri kullanılarak birden çok hesap uygulama nesnesi (`IMultipleAccountPublicClientApplication`) oluşturulur:
+`MultipleAccountModeFragment.java` dosyasında, `onCreateView()`, `auth_config_multiple_account.json file`depolanan yapılandırma bilgileri kullanılarak bir çoklu hesap uygulama nesnesi (`IMultipleAccountPublicClientApplication`) oluşturulur:
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
@@ -377,7 +401,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
             @Override
             public void onCreated(IMultipleAccountPublicClientApplication application) {
                 mMultipleAccountApp = application;
-                loadAccount();
+                loadAccounts();
             }
 
             @Override
@@ -391,15 +415,17 @@ Oluşturulan `MultipleAccountPublicClientApplication` nesnesi, belirteçleri alm
 
 #### <a name="load-an-account"></a>Hesap yükleme
 
-Birden çok hesap uygulaması genellikle MSAL işlemleri için kullanılacak hesabı seçmek üzere `GetAccounts()` çağırır. Bir hesabı yüklemek için kod `loadAccount()`.  Kullanıcı hesabının yüklenmesi zaman uyumsuz bir işlemdir. Bu nedenle, bir geri arama, hesap yüklendiğinde, değiştiğinde veya bir hata oluştuğunda durumları işler.
+Birden çok hesap uygulaması genellikle MSAL işlemleri için kullanılacak hesabı seçmek üzere `getAccounts()` çağırır. Bir hesabın yükleneceği kod, `loadAccounts()``MultipleAccountModeFragment.java` dosyasıdır.  Kullanıcı hesabının yüklenmesi zaman uyumsuz bir işlemdir. Bu nedenle, bir geri arama, hesap yüklendiğinde, değiştiğinde veya bir hata oluştuğunda durumları işler.
 
 ```java
 /**
-    * Load the currently signed-in account, if there's any.
-    * In the shared device mode, if the user is signed out from the device, the app can also perform the clean-up work in onAccountChanged().
+     * Load currently signed-in accounts, if there's any.
     */
-private void loadAccount() {
-    ...
+private void loadAccounts() {
+    if (mMultipleAccountApp == null) {
+        return;
+    }
+
     mMultipleAccountApp.getAccounts(new IPublicClientApplication.LoadAccountsCallback() {
         @Override
         public void onTaskCompleted(final List<IAccount> result) {
@@ -427,7 +453,7 @@ Kullanıcıdan kendi hesabını seçmesi, kimlik bilgilerini girmesi veya uygula
 * Uygulamanız bir kaynağa ilk kez erişim isteğinde bulunduğunda
 * MFA veya diğer koşullu erişim ilkeleri gerektiğinde
 
-Birden çok hesap uygulaması genellikle belirteçleri, kullanıcıyı içeren kullanıcı ARABIRIMI olan bir `acquireToken()`çağrısıyla etkileşimli şekilde almalıdır.  Bir belirteci etkileşimli olarak almaya yönelik kod, `callGraphApiInteractiveButton` tıklama işleyicisine `initializeUI()`.
+Birden çok hesap uygulaması genellikle belirteçleri, kullanıcıyı içeren kullanıcı ARABIRIMI olan bir `acquireToken()`çağrısıyla etkileşimli şekilde almalıdır.  Bir belirteci etkileşimli olarak almaya yönelik kod, `initializeUI()`içindeki `MultipleAccountModeFragment.java` dosyasında bulunur `callGraphApiInteractiveButton` işleyici ' nde:
 
 ```java
 /**
@@ -444,7 +470,7 @@ Birden çok hesap uygulaması genellikle belirteçleri, kullanıcıyı içeren k
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Uygulamalar, kullanıcının bir belirteç istediklerinde oturum açmasını gerektirmemelidir. Kullanıcı zaten oturum açmışsa, `acquireTokenSilentAsync()` `callGraphApiSilentButton` tıklama işleyicisine `initializeUI()` gösterildiği gibi uygulamaların kullanıcıya sormadan belirteç istemesine izin verir:
+Uygulamalar, kullanıcının bir belirteç istediklerinde oturum açmasını gerektirmemelidir. Kullanıcı zaten oturum açmışsa `acquireTokenSilentAsync()`, `MultipleAccountModeFragment.java` dosyasında gösterildiği gibi uygulamaların kullanıcıya sormadan belirteç istemesine izin verir `callGraphApiSilentButton``initializeUI()` işleyici:
 
 ```java
 /**
@@ -454,14 +480,14 @@ Uygulamalar, kullanıcının bir belirteç istediklerinde oturum açmasını ger
  * (can be obtained via getAccount()).
  */
 mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
-accountList.get(accountListSpinner.getSelectedItemPosition()),
-AUTHORITY,
-getAuthSilentCallback());
+    accountList.get(accountListSpinner.getSelectedItemPosition()),
+    AUTHORITY,
+    getAuthSilentCallback());
 ```
 
 #### <a name="remove-an-account"></a>Hesap kaldırma
 
-Hesabı kaldırma kodu ve hesabın önbelleğe alınmış belirteçleri, hesabı Kaldır düğmesinin işleyicisinde `initializeUI()`. Bir hesabı kaldırabilmeniz için önce `getAccounts()` ve `acquireToken()`gibi MSAL işlevlerden elde ettiğiniz bir hesap nesnesi gerekir. Bir hesabı kaldırmak zaman uyumsuz bir işlem olduğundan, Kullanıcı arabirimini güncelleştirmek için `onRemoved` geri çağırma sağlanır.
+Hesabı kaldırma kodu ve hesabın önbelleğe alınmış belirteçleri, hesabı Kaldır düğmesinin işleyicisinde `initializeUI()` `MultipleAccountModeFragment.java` dosyasıdır. Bir hesabı kaldırabilmeniz için önce `getAccounts()` ve `acquireToken()`gibi MSAL işlevlerden elde ettiğiniz bir hesap nesnesi gerekir. Bir hesabı kaldırmak zaman uyumsuz bir işlem olduğundan, Kullanıcı arabirimini güncelleştirmek için `onRemoved` geri çağırma sağlanır.
 
 ```java
 /**
@@ -473,7 +499,7 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
             public void onRemoved() {
                 ...
                 /* Reload account asynchronously to get the up-to-date list. */
-                loadAccount();
+                loadAccounts();
             }
 
             @Override
@@ -487,15 +513,18 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 
 Bu, birden çok hesap kullanan bir MSAL uygulamasının yapılandırma dosyasıdır.
 
-Bu alanların bir açıklaması için bkz. [ANDROID msal yapılandırma dosyasını anlayın](msal-configuration.md) .
+Çeşitli alanların bir açıklaması için bkz. [ANDROID msal yapılandırma dosyasını anlayın](msal-configuration.md) .
 
 [Auth_config_single_account. JSON](#auth_config_single_accountjson) yapılandırma dosyasının aksine, bu yapılandırma dosyası birden çok hesap uygulaması olduğu için `"account_mode" : "SINGLE"` yerine `"account_mode" : "MULTIPLE"` sahiptir.
 
+`"client_id"`, Microsoft 'un koruduğu bir uygulama nesnesi kaydını kullanacak şekilde önceden yapılandırılmıştır.
+`"redirect_uri"`, kod örneğiyle birlikte sunulan imzalama anahtarını kullanacak şekilde önceden yapılandırılmıştır.
+
 ```json
 {
-  "client_id" : "<your_client_id_here>",
+  "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
   "authorization_user_agent" : "DEFAULT",
-  "redirect_uri" : "<your_redirect_uri_here>",
+  "redirect_uri" : "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D",
   "account_mode" : "MULTIPLE",
   "broker_redirect_uri_registered": true,
   "authorities" : [
@@ -514,7 +543,7 @@ Bu alanların bir açıklaması için bkz. [ANDROID msal yapılandırma dosyası
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Bu hızlı başlangıçta kullanılan uygulamayı oluşturmaya yönelik adımları öğrenin
 
-Uygulama oluşturma işlemiyle ve yeni özelliklerle ilgili eksiksiz adım adım yönergeleri almak için Android öğreticisini deneyin. Orada, bu hızlı başlangıcın tam açıklaması da yer alır.
+[Oturum açma kullanıcılarını deneyin ve bir Android uygulaması öğreticiden Microsoft Graph çağırarak,](tutorial-v2-android.md) bir erişim belirteci alan ve Microsoft Graph API 'sini çağırmak için onu kullanan bir Android uygulaması oluşturmaya yönelik adım adım kılavuz.
 
 > [!div class="nextstepaction"]
 > [Çağrı Grafı API'si Android öğreticisi](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)

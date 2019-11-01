@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme"
+title: 'Hızlı başlangıç: Apache Storm topolojisi oluşturma/yönetme-Azure HDInsight'
 description: Hızlı başlangıçta Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme hakkında bilgi edinin.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018561"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241232"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Hızlı Başlangıç: Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Hızlı başlangıç: Azure HDInsight 'ta Apache Storm topolojisi oluşturma ve izleme
 
 Apache Storm, veri akışlarını işlemeye yönelik ölçeklenebilir, hataya dayanıklı, dağıtılmış ve gerçek zamanlı bir işlem sistemidir. Azure HDInsight’ta Storm ile büyük veri analizini gerçek zamanlı olarak gerçekleştiren bulut tabanlı bir Storm kümesi oluşturabilirsiniz.
 
@@ -29,13 +29,13 @@ Bu hızlı başlangıçta, var olan bir Apache Storm kümesine Apache Storm topo
 
 ## <a name="create-the-topology"></a>Topolojiyi oluşturma
 
-1. Fırtınası kümenize bağlanın. Aşağıdaki komutu, fırtınası kümenizin adıyla `CLUSTERNAME` değiştirerek düzenleyin ve ardından şu komutu girin:
+1. Fırtınası kümenize bağlanın. `CLUSTERNAME`, fırtınası kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. **WORDCOUNT** örneği, HDInsight kümenize `/usr/hdp/current/storm-client/contrib/storm-starter/`' de eklenmiştir. Topoloji rastgele cümleler oluşturur ve sözcüklerin kaç kez meydana geçtiğini sayar. Kümede **WORDCOUNT** topolojisini başlatmak için aşağıdaki komutu kullanın:
+2. **WORDCOUNT** örneği `/usr/hdp/current/storm-client/contrib/storm-starter/`HDInsight kümenize eklenmiştir. Topoloji rastgele cümleler oluşturur ve sözcüklerin kaç kez meydana geçtiğini sayar. Kümede **WORDCOUNT** topolojisini başlatmak için aşağıdaki komutu kullanın:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -58,13 +58,13 @@ Storm Kullanıcı Arabirimini kullanarak topolojiyi izlemek için aşağıdaki a
     |Özellik | Açıklama |
     |---|---|
     |Topoloji istatistikleri|Topoloji performansı hakkında zaman pencereleri halinde düzenlenmiş temel bilgiler. Belirli bir zaman penceresinin seçilmesi sayfanın diğer bölümlerinde gösterilen bilgiler için zaman penceresini değiştirir.|
-    |Spout'lar|Her Spout tarafından döndürülen son hata dahil olmak üzere spomalar hakkındaki temel bilgiler.|
-    |Bolt'lar|Cıvatları hakkında temel bilgiler.|
+    |Spout|Her Spout tarafından döndürülen son hata dahil olmak üzere spomalar hakkındaki temel bilgiler.|
+    |Cıvatalar|Cıvatları hakkında temel bilgiler.|
     |Topoloji yapılandırması|Topoloji yapılandırması hakkında ayrıntılı bilgi.|
     |Etkinleştir|Devre dışı bırakılan bir topoloji işlemeyi sürdürür.|
-    |Devre dışı bırak|Çalışan bir topolojiyi duraklatır.|
-    |Yeniden Dengele|Topolojinin paralelliğini ayarlar. Kümedeki düğüm sayısını değiştirdikten sonra çalışan topolojileri yeniden dengelemeniz gerekir. Yeniden dengeleme, kümede artan/azalan düğüm sayısını dengelemek üzere paralelliği ayarlamaya imkan tanır. Daha fazla bilgi için bkz. [Apache Storm topolojisinin paralelliğini anlama](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
-    |Sonlandır|Belirtilen zaman aşımından sonra bir fırtınası topolojisini sonlandırır.|
+    |Çıkarma|Çalışan bir topolojiyi duraklatır.|
+    |Dengeleme|Topolojinin paralelliğini ayarlar. Kümedeki düğüm sayısını değiştirdikten sonra çalışan topolojileri yeniden dengelemeniz gerekir. Yeniden dengeleme, kümede artan/azalan düğüm sayısını dengelemek üzere paralelliği ayarlamaya imkan tanır. Daha fazla bilgi için bkz. [Apache Storm topolojisinin paralelliğini anlama](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).|
+    |Kapatmayın|Belirtilen zaman aşımından sonra bir fırtınası topolojisini sonlandırır.|
 
 3. Bu sayfada **Spout’lar** veya **Cıvatalar** bölümünden bir giriş seçin. Seçilen bileşen hakkında bilgiler görüntülenir.
 

@@ -1,5 +1,5 @@
 ---
-title: Betik eylemi-Azure HDInsight 'ta Jupyıter ile Python paketlerini yükler
+title: Azure HDInsight üzerinde jupi ile Python paketleri için betik eylemi
 description: Betik eyleminin nasıl kullanılacağına ilişkin adım adım yönergeler, HDInsight Spark kümeleri ile birlikte sunulan jupi not defterlerini dış Python paketleri kullanacak şekilde yapılandırma.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f80486758152c002762bbddd6ae97a2ce9468ccf
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900716"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241519"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark jupi Not defterleri için dış Python paketleri yüklemeye yönelik betik eylemi
 
@@ -23,7 +23,7 @@ ms.locfileid: "70900716"
 HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesini, kümedeki kullanıma hazır olmayan, topluluk tarafından katkıda bulunulan **Python** paketlerini kullanacak şekilde yapılandırmak için betik eylemlerinin nasıl kullanılacağını öğrenin.
 
 > [!NOTE]  
-> Ayrıca, bir Jupyter Not defteri 'ni, dış `%%configure` paketleri kullanmak için Magic kullanarak da yapılandırabilirsiniz. Yönergeler için bkz. [HDInsight 'ta Apache Spark kümelerinde Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md).
+> Ayrıca, dış paketleri kullanmak için `%%configure` Magic kullanarak bir Jupyter Not defteri yapılandırabilirsiniz. Yönergeler için bkz. [HDInsight 'ta Apache Spark kümelerinde Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md).
 
 Kullanılabilir paketlerin tüm listesi için [paket dizininde](https://pypi.python.org/pypi) arama yapabilirsiniz. Ayrıca, diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, [Conda-Forge](https://conda-forge.org/feedstocks/)aracılığıyla kullanıma sunulan paketleri yükleyebilirsiniz.
 
@@ -32,7 +32,7 @@ Bu makalede, kümenizin betik eylemini kullanarak [TensorFlow](https://www.tenso
 ## <a name="prerequisites"></a>Önkoşullar
 Aşağıdakilere sahip olmanız gerekir:
 
-* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]  
@@ -50,7 +50,7 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 > [!IMPORTANT]   
 > HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenmektedir. Microsoft Desteği, bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin üzerinde [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter not defterleri ile dış paketleri kullanma
@@ -64,29 +64,29 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 4. **Betiği gönder eylem** penceresi için aşağıdaki değerleri girin:  
 
 
-    |Parametre | Value |
+    |Parametre | Değer |
     |---|---|
     |Betik türü | Açılan listeden **özel** ' i seçin.|
-    |Name |Metin `tensorflow` kutusuna girin.|
-    |Bash betiği URI'si |Metin `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` kutusuna girin. |
+    |Adı |Metin kutusuna `tensorflow` girin.|
+    |Bash betiği URI 'SI |Metin kutusuna `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` girin. |
     |Düğüm türleri | **Baş**ve **çalışan** onay kutularını seçin. |
 
-    `tensorflowinstall.sh`Aşağıdaki komutları içerir:
+    `tensorflowinstall.sh` aşağıdaki komutları içerir:
 
     ```bash
     #!/usr/bin/env bash
     /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. **Oluştur**’u seçin.  [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
+5. **Oluştur**'u seçin.  [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
 
 6. Betiğin tamamlanmasını bekleyin.  Komut dosyası **eylemleri** bölmesi, komut dosyası yürütülürken **geçerli küme Işlemi bittikten sonra yeni betik eylemleri gönderilebilir** .  Bir ilerleme çubuğu, ambarı Kullanıcı arabirimi **arka plan işlemleri** penceresinden görüntülenebilir.
 
 7. PySpark Jupyter Not defterini açın.  Adımlar için bkz. [Spark HDInsight 'Ta Jupyter Not defteri oluşturma](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight) .
 
-    ![Yeni bir Jupyter not defteri oluşturma](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Yeni bir Jupyter not defteri oluşturma")
+    ![Yeni Jupyter Not defteri oluşturma](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Yeni bir Jupyter not defteri oluşturma")
 
-8. Şimdi `import tensorflow` de bir Merhaba Dünya örneği çalıştırırsınız. Aşağıdaki kodu girin:
+8. Şimdi bir Merhaba Dünya örneğini `import tensorflow` ve çalıştıracaksınız. Aşağıdaki kodu girin:
 
     ```
     import tensorflow as tf
@@ -100,15 +100,15 @@ HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
     ![TensorFlow kod yürütme](./media/apache-spark-python-package-installation/tensorflow-execution.png "TensorFlow kodunu yürütme")
 
 > [!NOTE]  
-> Kümede iki Python yüklemesi vardır. Spark, konumunda `/usr/bin/anaconda/bin` bulunan Anaconda Python yüklemesini kullanır ve Python 2,7 ortamında varsayılan olarak kullanılır. Python 3. x kullanmak ve PySpark3 çekirdeğine paket yüklemek için, bu ortam için `conda` yürütülebilir dosyanın yolunu kullanın ve ortamı belirtmek için `-n` parametresini kullanın. Örneğin, komutu `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, `ggplot` paketini `conda-forge` kanal kullanarak Python 3,5 ortamına yüklerse.
+> Kümede iki Python yüklemesi vardır. Spark, `/usr/bin/anaconda/bin` konumunda bulunan Anaconda Python yüklemesini kullanır ve Python 2,7 ortamında varsayılan olarak kullanılır. Python 3. x kullanmak ve PySpark3 çekirdeğine paket yüklemek için, bu ortam için `conda` yürütülebilir dosyasının yolunu kullanın ve ortamı belirtmek için `-n` parametresini kullanın. Örneğin, komut `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, `conda-forge` kanalını kullanarak Python 3,5 ortamına `ggplot` paketini yüklerse.
 
 ## <a name="seealso"></a>Ayrıca bkz.
-* [Bakýþ Azure HDInsight üzerinde Apache Spark](apache-spark-overview.md)
+* [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Senaryolar
-* [BI ile Apache Spark: Bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: Yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma

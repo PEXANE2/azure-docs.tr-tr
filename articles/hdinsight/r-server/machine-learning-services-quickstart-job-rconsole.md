@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: R konsolunu kullanarak ML hizmetlerinde R betiği yürütme-Azure HDInsight'
+title: 'Hızlı başlangıç: ML hizmetlerinde R betiği & R konsolu-Azure HDInsight'
 description: Hızlı başlangıçta, R konsolu 'nu kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde bir R betiği yürütülecektir.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 44bc90a4c556108b4b6874a2d1297a6467413824
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736356"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241606"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Hızlı Başlangıç: R konsolunu kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Hızlı başlangıç: R konsolunu kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
 
 Azure HDInsight üzerinde ML Hizmetleri, R betiklerinin Apache Spark kullanmasına ve MapReduce Apache Hadoop Dağıtılmış hesaplamalar çalıştırmasına olanak tanır. ML Hizmetleri, işlem bağlamını ayarlayarak çağrıların nasıl yürütüleceğini denetler. Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü ile, uç düğüm sunucusunun çekirdekleri arasında geri alınamaz şekilde dağıtılmış işlevleri çalıştırma seçeneğiniz vardır. Ayrıca, Iptal edilebilir ' in Hadoop haritasını azaltma veya Apache Spark işlem bağlamlarını kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz.
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, r konsolu ile, dağıtılmış R hesaplamaları için
 
 ## <a name="connect-to-r-console"></a>R konsoluna bağlanma
 
-1. SSH kullanarak ML Hizmetleri HDInsight kümesinin kenar düğümüne bağlanın. Aşağıdaki komutu, kümenizin adıyla değiştirerek `CLUSTERNAME` düzenleyin ve ardından şu komutu girin:
+1. SSH kullanarak ML Hizmetleri HDInsight kümesinin kenar düğümüne bağlanın. `CLUSTERNAME` kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net

@@ -1,5 +1,5 @@
 ---
-title: YARN-Azure HDInsight 'ta yüksek oranda kullanılabilir Spark akış işleri oluşturma
+title: YARN 'de yüksek oranda kullanılabilir Spark akış işleri-Azure HDInsight
 description: Azure HDInsight 'ta yüksek kullanılabilirliğe sahip bir senaryo için Apache Spark akışı ayarlama
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3e48f220035c56d34d6ca5a7347e9a4ee100e1f1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002965"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241251"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN ile yüksek kullanılabilirliğe sahip Apache Spark akışı işleri oluşturma
 
@@ -71,8 +71,8 @@ Ancak, bir **sürücü** başarısız olursa, tüm ilişkili yürüticileri baş
 
 DStream checkişaret ile sürücüleri kurtarmak için:
 
-* Bu yapılandırma ayarıyla `yarn.resourcemanager.am.max-attempts`Yarn 'de otomatik sürücü yeniden başlatmayı yapılandırın.
-* İle `streamingContext.checkpoint(hdfsDirectory)`uyumlu bir dosya sisteminde denetim noktası dizini ayarlayın.
+* `yarn.resourcemanager.am.max-attempts`yapılandırma ayarı ile YARN 'de otomatik sürücü yeniden başlatmayı yapılandırın.
+* `streamingContext.checkpoint(hdfsDirectory)`ile uyumlu bir dosya sisteminde bir denetim noktası dizini ayarlayın.
 * Kurtarma için denetim noktaları kullanmak üzere kaynak kodunu yeniden yapılandır, örneğin:
 
     ```scala
@@ -88,7 +88,7 @@ DStream checkişaret ile sürücüleri kurtarmak için:
         context.start()
     ```
 
-* Üzerine yazma öncesi günlüğü (Wal) `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`etkinleştirerek kayıp veri kurtarmayı yapılandırın ve ile `StorageLevel.MEMORY_AND_DISK_SER`giriş DStreams için bellek içi çoğaltmayı devre dışı bırakın.
+* `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`ile yazma öncesi günlüğü (WAL) etkinleştirerek kayıp veri kurtarmayı yapılandırın ve `StorageLevel.MEMORY_AND_DISK_SER`giriş DStreams için bellek içi çoğaltmayı devre dışı bırakın.
 
 Denetim noktası + WAL + güvenilir alıcıları kullanarak özetlemek için, "en az bir kez" veri kurtarma sağlayabilirsiniz:
 
@@ -106,7 +106,7 @@ Denetim noktası + WAL + güvenilir alıcıları kullanarak özetlemek için, "e
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Spark ve Spark akış Kullanıcı arabirimi, yapılandırılabilir bir ölçüm sistemine sahiptir. Ayrıca, Graphite/Grafana gibi ek kitaplıkları da kullanabilirsiniz; örneğin ' sayı kaydı işlendi ', ' sürücü & yürüticilerine bellek/GC kullanımı ', ' Toplam gecikme ', ' küme kullanımı ' vb. Yapılandırılmış akış sürümü 2,1 veya üzeri bir sürümde ek ölçümler toplamak `StreamingQueryListener` için kullanabilirsiniz.
+* Spark ve Spark akış Kullanıcı arabirimi, yapılandırılabilir bir ölçüm sistemine sahiptir. Ayrıca, Graphite/Grafana gibi ek kitaplıkları da kullanabilirsiniz; örneğin ' sayı kaydı işlendi ', ' sürücü & yürüticilerine bellek/GC kullanımı ', ' Toplam gecikme ', ' küme kullanımı ' vb. Yapılandırılmış akış sürümü 2,1 veya üzeri bir sürümde ek ölçümler toplamak için `StreamingQueryListener` kullanabilirsiniz.
 
 * Uzun süre çalışan işleri segmentleyebilirsiniz.  Kümeye bir Spark akış uygulaması gönderildiğinde, işin çalıştırıldığı YARN kuyruğu tanımlanmalıdır. Yarı çalışan işleri ayrı sıralara göndermek için [Yarn kapasite zamanlayıcısını](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) kullanabilirsiniz.
 
@@ -122,5 +122,5 @@ Denetim noktası + WAL + güvenilir alıcıları kullanarak özetlemek için, "e
 * [Apache Spark akışa genel bakış](apache-spark-streaming-overview.md)
 * [Tam bir kez olay işleme ile Apache Spark akış işleri oluşturma](apache-spark-streaming-exactly-once.md)
 * [YARN 'de uzun süre çalışan Apache Spark akışı Işleri](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Yapılandırılmış akış: Hataya dayanıklı anlambilim](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Ayrık akışlar: Ölçeklenebilir akış Işleme için hataya dayanıklı bir model](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Yapılandırılmış akış: hataya dayanıklı anlambilim](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [Ayrık akışlar: ölçeklenebilir akış Işleme için hataya dayanıklı bir model](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

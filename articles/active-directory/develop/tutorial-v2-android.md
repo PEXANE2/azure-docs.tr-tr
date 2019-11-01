@@ -11,26 +11,34 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b29e5815ec39e850bee0707a9c92c12201c7f21e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934521"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242208"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Kullanıcıları oturum açın ve Android uygulamasından Microsoft Graph çağırın
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph çağırın
 
 > [!NOTE]
 > Bu öğretici henüz MSAL for Android sürüm 1,0 kitaplığı ile çalışacak şekilde güncelleştirilmedi. Bu öğreticide yapılandırıldığı gibi önceki bir sürümle birlikte çalışmaktadır.
 
 Bu öğreticide, bir Android uygulamasını Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Uygulamanız bir kullanıcıya oturum açacaktır, Microsoft Graph API 'sini çağırmak için bir erişim belirteci alır ve Microsoft Graph API 'sine bir istek yapar.  
 
-Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) ve Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesapları için oturum açma işlemlerini kabul eder.
+> [!div class="checklist"]
+> * Android uygulamasını Microsoft Identity platformu ile tümleştirme
+> * Kullanıcı oturumu açma
+> * Microsoft Graph API 'sini çağırmak için bir erişim belirteci alın
+> * Microsoft Graph API 'sini çağırın.  
+
+Bu öğreticiyi tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerinin yanı sıra Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesabı kabul eder.
+
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="how-this-tutorial-works"></a>Bu öğreticinin nasıl çalıştığı
 
@@ -56,7 +64,7 @@ Bu örnek, kimlik doğrulamasını uygulamak için Android için Microsoft kimli
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
-Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi indirmek isterseniz [kodu indirin](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip).
+Bu öğretici, yeni bir proje oluşturur. Bunun yerine tamamlanan öğreticiyi indirmek isterseniz [kodu indirin](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 
 1. Android Studio açın ve **Yeni bir Android Studio projesi Başlat**' ı seçin.
 2. **Temel etkinlik** ' i seçin ve **İleri ' yi**seçin.
@@ -538,6 +546,10 @@ Oturum açtıktan sonra, uygulama Microsoft Graph `/me` uç noktasından döndü
 ### <a name="consent"></a>İzniniz
 
 Herhangi bir Kullanıcı uygulamanızda ilk kez oturum açtığında, bu kullanıcılara istenen izinleri onaylaması için Microsoft kimliği sorulur.  Birçok kullanıcı kabul etme yeteneğine sahip olsa da, bazı Azure AD kiracılar, yöneticilerin tüm kullanıcılar adına onay vermesini gerektiren Kullanıcı onayını devre dışı bırakmış olur. Bu senaryoyu desteklemek için, uygulamanızın kapsamlarını Azure portal kaydedin.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Artık gerekli değilse, [Uygulamanızı kaydetme](#register-your-application) adımındaki oluşturduğunuz uygulama nesnesini silin.
 
 ## <a name="get-help"></a>Yardım alın
 

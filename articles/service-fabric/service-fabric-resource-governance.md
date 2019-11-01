@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: atsenthi
-ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166545"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242901"
 ---
-# <a name="resource-governance"></a>Kaynak İdaresi
+# <a name="resource-governance"></a>Kaynak idaresi
 
 Aynı düğüm veya küme üzerinde birden fazla hizmet çalıştırırken, bir hizmetin daha fazla kaynak tüketmesi ve bu da işlemdeki diğer hizmetlerden kaynaklanabilir. Bu sorun, "gürültülü komşu" sorunu olarak adlandırılır. Azure Service Fabric, geliştiricilerin kaynakları garanti etmek ve kaynak kullanımını sınırlamak için hizmet başına ayırmaları ve sınırları belirtmesini sağlar.
 
@@ -56,7 +56,7 @@ Bu noktada, limitlerin toplamı, düğümün kapasitesine eşittir. Bir işlem v
 
 Ancak, diğer işlemlerin CPU için çekişme olabileceği iki durum vardır. Bu durumlarda, örneğimizde bir işlem ve bir kapsayıcı, gürültülü komşu sorunu yaşayabilirler:
 
-* *Yönetilen ve yönetilmeyen Hizmetleri ve kapsayıcıları karıştırma*: bir Kullanıcı hiçbir kaynak İdaresi olmadan bir hizmet oluşturursa, çalışma zamanı bu dosyayı kaynak olmadan görür ve örneğimizdeki düğüme yerleştirebilir. Bu durumda, bu yeni işlem düğümde zaten çalışmakta olan hizmetlerin ücretine göre bazı CPU kullanımını etkili bir şekilde tüketir. Bu soruna yönelik iki çözüm vardır. Aynı kümede yönetilen ve yönetilmeyen Hizmetleri karışmayın ya da bu iki hizmet türünün aynı düğüm kümesine bitmesi için [yerleştirme kısıtlamalarını](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) kullanın.
+* *Yönetilen ve yönetilmeyen Hizmetleri ve kapsayıcıları karıştırma*: bir Kullanıcı hiçbir kaynak İdaresi olmadan bir hizmet oluşturursa, çalışma zamanı bu dosyayı kaynak olmadan görür ve örneğimizdeki düğüme yerleştirebilir. Bu durumda, bu yeni işlem düğümde zaten çalışmakta olan hizmetlerin ücretine göre bazı CPU kullanımını etkili bir şekilde tüketir. Bu sorunun iki çözümü vardır. Aynı kümede yönetilen ve yönetilmeyen Hizmetleri karışmayın ya da bu iki hizmet türünün aynı düğüm kümesine bitmesi için [yerleştirme kısıtlamalarını](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) kullanın.
 
 * *Düğüm üzerinde başka bir işlem başlatıldığında Service Fabric dışında (örneğin, bir işletim sistemi hizmeti)* : Bu durumda, Service Fabric dışındaki işlem, var olan hizmetlerle CPU için de devam ediyor. Bu sorunun çözümü, sonraki bölümde gösterildiği gibi, işletim sistemi ek yükünü hesaba eklemek için düğüm kapasitelerinin doğru şekilde ayarlanmadır.
 
@@ -64,9 +64,9 @@ Ancak, diğer işlemlerin CPU için çekişme olabileceği iki durum vardır. Bu
 
 Bir düğüm başlatıldığında ve kümeye katıldığında, Service Fabric kullanılabilir bellek miktarını ve kullanılabilir çekirdek sayısını algılar ve bu iki kaynak için düğüm kapagruplarını ayarlar.
 
-İşletim sistemi için arabellek alanını bırakmak ve diğer işlemlerin düğümde çalışıyor olması için, Service Fabric düğümde kullanılabilir kaynakların yalnızca% 80 ' unu kullanır. Bu yüzde yapılandırılabilir ve küme bildiriminde değiştirilebilir.
+İşletim sistemi için arabellek alanını bırakmak ve diğer işlemlerin düğümde çalışıyor olması için, Service Fabric düğümde kullanılabilir kaynakların yalnızca %80 ' unu kullanır. Bu yüzde yapılandırılabilir ve küme bildiriminde değiştirilebilir.
 
-Aşağıda, kullanılabilir CPU 'nun% 50 ' i ve kullanılabilir belleğin% 70 ' i kullanmak için Service Fabric nasıl talimat alınacağını gösteren bir örnek verilmiştir:
+Aşağıda, kullanılabilir CPU 'nun %50 ' i ve kullanılabilir belleğin %70 ' i kullanmak için Service Fabric nasıl talimat alınacağını gösteren bir örnek verilmiştir:
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -110,6 +110,18 @@ En iyi performans için, küme bildiriminde aşağıdaki ayar de açılmalıdır
 </Section>
 ```
 
+> [!IMPORTANT]
+> Service Fabric sürüm 7,0 ' den başlayarak, düğüm kaynak kapasitelerinin Kullanıcı tarafından el ile değer sağladığı durumlarda düğüm kaynak kapasitelerinin nasıl hesaplandığını gösteren kuralı güncelleştirdik. Aşağıdaki senaryoyu ele alalım:
+>
+> * Düğümde 10 CPU çekirdeği toplamı vardır
+> * SF, düğüm üzerinde çalışan diğer hizmetler için %20 ' nin (System Services Service Fabric dahil) bir arabelleğini atan Kullanıcı Hizmetleri (varsayılan ayar) için toplam kaynakların %80 ' sini kullanacak şekilde yapılandırılmıştır.
+> * Kullanıcı, CPU çekirdeği ölçümü için düğüm kaynak kapasitesini el ile geçersiz kılmayı ve 5 çekirdeğe ayarlıyor
+>
+> Service Fabric Kullanıcı Hizmetleri için kullanılabilir kapasitenin aşağıdaki şekilde nasıl hesaplanacağını gösteren kuralı değiştirdik:
+>
+> * 7,0 Service Fabric önce, Kullanıcı Hizmetleri için kullanılabilir kapasite **5 çekirdeğe** hesaplanacak (kapasite arabelleği %20 ' si yoksayılır)
+> * Service Fabric 7,0 ' den başlayarak, Kullanıcı Hizmetleri için kullanılabilir kapasite **4 çekirdeğe** hesaplanacak (kapasite arabelleği %20 ' si yok sayılır)
+
 ## <a name="specify-resource-governance"></a>Kaynak yönetimini belirtin
 
 Kaynak idare limitleri, aşağıdaki örnekte gösterildiği gibi uygulama bildiriminde (Servicemanifestımport bölümünde) belirtilir:
@@ -137,11 +149,11 @@ Bu örnekte, **Servicepackagea** adlı hizmet paketi, yerleştirildiği düğüm
 
 Bu nedenle, bu örnekte, CodeA1 'in iki katı DS 'yi alır ve CodeA2 bir çekirdekli (ve aynı şekilde bir yazılım garantisi rezervasyonu) alır. Kod paketleri için CpuShares belirtilmemişse, Service Fabric çekirdekleri aralarında eşit olarak böler.
 
-Bellek sınırları mutlak olduğundan, her iki kod paketi de 1024 MB bellekle (ve aynı şekilde bir yazılım garantisi rezervasyonu) sınırlıdır. Kod paketleri (kapsayıcılar veya süreçler) Bu sınırdan daha fazla bellek ayıramıyor ve bu işlemi gerçekleştirmeye çalışırken bellek yetersiz özel durumu oluşur. Kaynak sınırı zorlamasının çalışması için, bir hizmet paketi içindeki tüm kod paketlerinde bellek sınırları belirtilmelidir.
+Bellek sınırları mutlak olduğundan, her iki kod paketi de 1024 MB bellekle (ve aynı şekilde bir yazılım garantisi rezervasyonu) sınırlıdır. Kod paketleri (kapsayıcılar veya süreçler) Bu sınırdan daha fazla bellek ayıramıyor ve bu işlemi gerçekleştirmeye çalışırken bellek yetersiz özel durumu oluşur. Kaynak sınırı zorlamasının çalışması için, hizmet paketi içindeki tüm kod paketlerinin bellek sınırlarının belirtilmiş olması gerekir.
 
 ### <a name="using-application-parameters"></a>Uygulama parametrelerini kullanma
 
-Kaynak yönetimini belirtirken, birden çok uygulama yapılandırmasını yönetmek için [Uygulama parametrelerini](service-fabric-manage-multiple-environment-app-configuration.md) kullanmak mümkündür. Aşağıdaki örnek, uygulama parametrelerinin kullanımını gösterir:
+Kaynak idare ayarlarını belirtirken, birden çok uygulama yapılandırmasını yönetmek için [Uygulama parametrelerini](service-fabric-manage-multiple-environment-app-configuration.md) kullanmak mümkündür. Aşağıdaki örnek, uygulama parametrelerinin kullanımını gösterir:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -185,6 +197,27 @@ Bu örnekte, her bir hizmet paketinin 4 çekirdek ve 2 GB bellek aldığı, üre
 > Uygulama parametreleriyle kaynak yönetimini belirtmek, Service Fabric sürüm 6,1 ' den başlayarak kullanılabilir.<br>
 >
 > Kaynak yönetimini belirtmek için uygulama parametreleri kullanıldığında, Service Fabric sürüm 6,1 ' den önceki bir sürüme düşürülemez.
+
+## <a name="enforcing-the-resource-limits-for-user-services"></a>Kullanıcı Hizmetleri için kaynak sınırlarını zorlama
+
+Kaynak İdaresi Service Fabric hizmetlerinize uygulanırken kaynak tarafından yönetilen hizmetlerin kaynak kotasını aşmayacağından emin olmaya devam ederken, pek çok kullanıcının bazı Service Fabric hizmetlerini yönetilmeyen modda çalıştırması gerekir. Yönetilmeyen Service Fabric Hizmetleri kullanılırken, "ard arda" yönetilmeyen hizmetlerin, Service Fabric düğümlerinde kullanılabilir tüm kaynakları tükettiği durumlarda, örneğin:
+
+* Düğümlerde çalışan diğer hizmetlerin kaynakları (Service Fabric sistem hizmetleri dahil)
+* Uygun olmayan bir durumda biten düğümler
+* Service Fabric küme yönetimi API 'Leri yanıt vermiyor
+
+Bu durumların oluşmasını önlemek için Service Fabric, *düğüm üzerinde çalışan tüm Service Fabric Kullanıcı Hizmetleri* (hem yönetilen hem de yönetilmeyen) için kaynak sınırlarını zorunlu kılabilir ve bu sayede Kullanıcı hizmetlerinin Belirtilen kaynak miktarı. Bu, ClusterManifest 'in Placementandloaddengeleme bölümündeki Enforceuserservicemetrickapasiteler yapılandırmasının değeri true olarak ayarlanarak elde edilir. Bu ayar varsayılan olarak kapalıdır.
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+Ek açıklamalar:
+
+* Kaynak sınırı zorlaması yalnızca `servicefabric:/_CpuCores` ve `servicefabric:/_MemoryInMB` kaynak ölçümleri için geçerlidir
+* Kaynak sınırı zorlaması yalnızca, kaynak ölçümlerine ait düğüm kapasiteleri otomatik algılama mekanizmasıyla veya Kullanıcı aracılığıyla düğüm kapasitelerinin el ile belirtilerek ( [etkinleştirme Için küme kurulumunda açıklandığı gibi) Service Fabric kullanılabilir olduğunda geçerlidir. Kaynak idare](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) bölümü). Düğüm kapasiteleri yapılandırılmamışsa, Kullanıcı Hizmetleri için ne kadar kaynak ayrılacağını bilemediğinden Service Fabric kaynak sınırı zorlama özelliği kullanılamaz. Service Fabric, "Enforceuserservicemetrickapasiteler" true ise ancak düğüm kapasiteleri yapılandırılmamışsa bir sistem durumu uyarısı verir.
 
 ## <a name="other-resources-for-containers"></a>Kapsayıcılar için diğer kaynaklar
 

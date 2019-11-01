@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053812"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242958"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure bölgeleri arasında Azure VM geri dönme
 
@@ -58,7 +58,7 @@ VM 'Ler yeniden korunduktan sonra, gerekirse birincil bölgeye yeniden yük devr
     ![Birincil ve ikincil bölgelerde VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Site Recovery uzantısı sürümü 9.28. x. x onler [güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery çalıştıran makineler için ikincil olağanüstü durum kurtarma bölgesindeki makineleri temizler, NAfter yeniden çalışma tamamlanmıştır ve VM 'ler yeniden korunur. VM 'Leri ve NIC 'leri el ile silmeniz gerekmez.
+> Site Recovery uzantısı sürümü 9.28. x. x onler [güncelleştirme paketi 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery çalıştıran makinelerde, yeniden çalışma tamamlandıktan ve VM 'ler yeniden korunduktan sonra ikincil olağanüstü durum kurtarma bölgesindeki makineleri temizler. İkincil bölgedeki VM 'Leri ve NIC 'leri el ile silmeniz gerekmez. Çoğaltmayı geri aldıktan sonra tamamen devre dışı bırakırsanız, Site Recovery VM 'Ler ve NIC 'Lerin yanı sıra olağanüstü durum kurtarma bölgesindeki diskleri temizler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

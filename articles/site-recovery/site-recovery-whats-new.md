@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 144050bd29e8d2ec56c1347d60fd7452ea60b9cf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053631"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242946"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -41,14 +41,45 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 
 **Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
 --- | --- | --- | --- | --- | ---
+[Toplu 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
 [Toplu 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Toplu 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [Toplu 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
 [Toplu 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
-[Toplu 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
         
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
+
+
+## <a name="updates-october-2019"></a>Güncelleştirmeler (Ekim 2019)
+
+### <a name="update-rollup-41"></a>Güncelleştirme paketi 41
+
+[Güncelleştirme paketi 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar.
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları güncelleştirme (toplamada ayrıntılı olarak)
+**Sorun düzeltmeleri/geliştirmeler** | Bir dizi düzeltme ve geliştirmeler (toplamada ayrıntılı olarak)
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma
+
+Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
+
+**Özellik** | **Ayrıntılar**
+--- | ---
+**Yük devretme testi ayarları** | Yük devretme testi kurarken, artık IP adresi, NSG, iç yük dengelemesi ve her makine NIC 'i için genel IP adresi dahil olmak üzere test yük devretmesi VM 'si ve ağ için ayarları yapılandırabilirsiniz. Bu ayarlar isteğe bağlıdır ve geçerli davranışı değiştirmez. Bu ayarları yapılandırmazsanız, yük devretme testi sırasında bir Azure VNet seçebilirsiniz. [Daha fazla bilgi edinin](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
+**Kurtarma planları** | Yük devretme güvenilirliğini sağlamak için kurtarma planları artık 100 VM 'Lerle sınırlıdır.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware'den Azure'a olağanüstü durum kurtarma
+
+VMware 'den Azure 'a olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmiştir.
+
+**Özellik** | **Ayrıntılar**
+--- | ---
+**Kurtarma planları** | Yük devretme güvenilirliğini sağlamak için kurtarma planları artık 100 VM 'Lerle sınırlıdır.
 
 
 ## <a name="updates-september-2019"></a>Güncelleştirmeler (Eylül 2019)

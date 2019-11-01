@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fd43e9c71db9ae553b24e6cd774495ee8cc5b621
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790243"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242351"
 ---
 # <a name="load-balancer-outbound-rules"></a>Giden kuralları Load Balancer
 
@@ -86,7 +86,7 @@ VM başına 10.000 SNAT bağlantı noktası (NIC IP yapılandırması) ayırmak 
 
 Giden bir kuralın tüm ön uçlarından gelen her genel IP adresi, SNAT bağlantı noktaları olarak kullanılmak üzere 64.000 kısa ömürlü bağlantı noktasına kadar katkıda bulunur.  Load Balancer SNAT bağlantı noktalarını 8 ' in katları halinde ayırır. 8 ' den bölünemez bir değer sağlarsanız, yapılandırma işlemi reddedilir.  Genel IP adresi sayısına göre kullanılabilir olandan daha fazla SNAT bağlantı noktası ayırmaya çalışırsanız, yapılandırma işlemi reddedilir.  Örneğin, VM başına 10.000 bağlantı noktası ve arka uç havuzunda 7 VM 'Ler ayırırsanız tek bir genel IP adresi paylaşabilir, yapılandırma reddedilir (7 x 10.000 SNAT bağlantı noktaları > 64.000 SNAT bağlantı noktaları).  Senaryoyu etkinleştirmek için giden kuralının ön ucunda daha fazla genel IP adresi ekleyebilirsiniz.
 
-Bağlantı noktası sayısı için 0 belirterek, [arka uç havuzu boyutuna bağlı olarak OTOMATIK SNAT bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) geri dönebilirsiniz.
+Bağlantı noktası sayısı için 0 belirterek, [arka uç havuzu boyutuna bağlı olarak OTOMATIK SNAT bağlantı noktası ayırmaya](load-balancer-outbound-connections.md#preallocatedports) geri dönebilirsiniz. Bu durumda, ilk 50 sanal makine örnekleri 1024 bağlantı noktalarını alacak şekilde, 51-100 sanal makine örnekleri tabloya göre 512 ve bu şekilde devam eder. Giden kuralla ilişkili bir genel IP ile birden fazla ön uç olması, her bir sanal makine örneğine ayrılan bağlantı noktası sayısını artırmaz.
 
 ### <a name="idletimeout"></a>Denetim giden akış boşta kalma zaman aşımı
 

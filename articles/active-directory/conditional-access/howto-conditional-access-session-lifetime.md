@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389659"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241702"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma
 
@@ -53,7 +53,7 @@ Tarayıcı oturumu kalıcılığı için Azure AD varsayılan değeri, kişisel 
 Koşullu erişim Azure AD Premium bir yetenektir ve Premium lisans gerektirir. Koşullu erişim hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Active Directory Koşullu erişim nedir?](overview.md#license-requirements)
 
 > [!WARNING]
-> Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç ömrü](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirtece sahip başka bir uygulamayla ömür özelliği. Microsoft, yapılandırılabilir belirteç ömrü özelliğinin 1 Kasım 'da devre dışı bırakılması ve bunu koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirmesini planlamaktadır.  
+> Şu anda genel önizleme aşamasında olan [yapılandırılabilir belirteç ömrü](../develop/active-directory-configurable-token-lifetimes.md) özelliğini kullanıyorsanız, lütfen aynı kullanıcı veya uygulama birleşimi için iki farklı ilke oluşturulmasını desteklemediğimiz, bu özelliğe ve diğeri yapılandırılabilir belirtece sahip başka bir uygulamayla ömür özelliği. Microsoft, yapılandırılabilir belirteç yaşam süresi özelliğini 1 Mayıs 2020 ' de devre dışı bırakmayı planlıyor ve koşullu erişim kimlik doğrulama oturumu Yönetimi özelliğiyle değiştirebilir.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>İlke 1: oturum açma sıklığı denetimi
 

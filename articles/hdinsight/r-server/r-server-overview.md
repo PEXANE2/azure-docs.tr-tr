@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941689"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241877"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
@@ -23,7 +23,7 @@ HDInsight üzerinde ML Hizmetleri, Azure Blob veya Data Lake depolama alanına y
 
 Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü ile, kenar düğüm sunucusunun çekirdekleri arasında Koraler 'ın paralelleştirilmiş dağıtılmış işlevlerini çalıştırma seçeneğiniz vardır. Ayrıca, ScaleR 'ın Hadoop haritasını azaltma veya Apache Spark işlem bağlamlarını kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz.
 
-Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. Ayrıca, Azure 'da [Azure Machine Learning Studio](https://studio.azureml.net) [Web hizmeti](../../machine-learning/studio/publish-a-machine-learning-web-service.md)aracılığıyla başka bir yerde de gerçekleştirilebilir.
+Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. Ayrıca, Azure 'da [Azure Machine Learning Studio (klasik)](https://studio.azureml.net) [Web hizmeti](../../machine-learning/studio/publish-a-machine-learning-web-service.md)aracılığıyla başka bir yerde de gerçekleştirilebilir.
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML hizmetlerini kullanmaya başlama
 
@@ -35,7 +35,7 @@ HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft ve açık kaynaklı AI yeniliği
 
-  ML Hizmetleri, fiziksel belleğin boyutundan daha büyük olan veri boyutları üzerinde çalışabilen ve ' deki çok çeşitli platformlar üzerinde çalışabilen, [](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) geri [alınamaz](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), geri alınamaz, [iptal](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)edilebilir ve bir dağıtılmış şekilde. Microsoft 'un özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
+  ML Hizmetleri, fiziksel belleğin boyutundan daha [büyük olan veri](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) boyutları üzerinde çalışabilen ve ' deki çok çeşitli platformlar üzerinde çalışabilen, geri [alınamaz](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), geri alınamaz, [iptal](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)edilebilir ve bir dağıtılmış şekilde. Microsoft 'un özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
   
   ML Hizmetleri, bu Microsoft yeniliklerini ve katkılarını açık kaynaklı topluluktan (R, Python ve AI araç takımları), hepsi de tek bir kurumsal sınıf platformun üzerine köprüler. Tüm R veya Python açık kaynaklı makine öğrenimi paketleri, Microsoft 'un herhangi bir özel yeniliği ile yan yana çalışabilir.
 
@@ -92,7 +92,7 @@ HDInsight 'ta puan vermek için, depolama hesabınıza yüklediğiniz yeni bir v
 
 Azure Machine Learning kullanarak puan almak için, modelinizi bir Azure Web hizmeti olarak yayımlamak üzere [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) olarak bilinen açık kaynaklı Azure Machine Learning R paketini kullanın. Kolaylık olması için, bu paket kenar düğümüne önceden yüklenmiştir. Daha sonra, Web hizmeti için bir kullanıcı arabirimi oluşturmak üzere Azure Machine Learning ' deki olanakları kullanın ve ardından Web hizmetini Puanlama için gereken şekilde çağırın.
 
-Bu seçeneği belirlerseniz, herhangi bir ScaleR model nesnesini Web hizmeti ile kullanmak üzere eşdeğer açık kaynaklı Model nesnelerine dönüştürmeniz gerekir. Bu dönüştürme için ensesıya tabanlı modeller `as.randomForest()` gibi Scaler zorlama işlevlerini kullanın.
+Bu seçeneği belirlerseniz, herhangi bir ScaleR model nesnesini Web hizmeti ile kullanmak üzere eşdeğer açık kaynaklı Model nesnelerine dönüştürmeniz gerekir. Bu dönüştürme için, ensere tabanlı modeller için `as.randomForest()` gibi ScaleR zorlama işlevlerini kullanın.
 
 ### <a name="score-on-premises"></a>Şirket içi puan
 
@@ -102,7 +102,7 @@ Modelinizi oluşturduktan sonra şirket içinde puan almak için modeli R 'de se
 
 ### <a name="install-and-maintain-r-packages"></a>R paketlerini yükleyip bakımını yapma
 
-R betiklerinizin birçok adımı üzerinde çalıştığı için, kullandığınız R paketlerinin çoğu Edge düğümünde gereklidir. Edge düğümüne ek r paketleri yüklemek için, bu `install.packages()` yöntemi R 'de kullanabilirsiniz.
+R betiklerinizin birçok adımı üzerinde çalıştığı için, kullandığınız R paketlerinin çoğu Edge düğümünde gereklidir. Kenar düğümüne ek R paketleri yüklemek için R 'de `install.packages()` yöntemini kullanabilirsiniz.
 
 Yalnızca küme genelinde ScaleR kitaplığından yordamlar kullanıyorsanız, genellikle veri düğümlerine ek R paketleri yüklemeniz gerekmez. Ancak, veri düğümlerinde **Rxexec** veya **Rxdatastep** yürütmesinin kullanımını desteklemek için ek paketlere ihtiyaç duyabilirsiniz.
 

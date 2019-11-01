@@ -1,5 +1,5 @@
 ---
-title: Azure portal kullanarak HDInsight 'ta Apache Kafka ayarlama-hızlı başlangıç
+title: "Hızlı başlangıç: Azure portal kullanarak HDInsight 'ta Apache Kafka ayarlama"
 description: Bu hızlı başlangıçta, Azure portalını kullanarak Azure HDInsight’ta bir Apache Kafka kümesi oluşturmayı öğrenirsiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: 686f4620280318fb0e642b30624a91c54280c360
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817949"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242043"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 

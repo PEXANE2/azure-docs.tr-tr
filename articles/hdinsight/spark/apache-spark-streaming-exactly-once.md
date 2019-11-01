@@ -1,5 +1,5 @@
 ---
-title: Tek bir kez olay işleme ile Spark akış işleri-Azure HDInsight
+title: Spark akış & tam bir kez olay işleme-Azure HDInsight
 description: Bir olayı bir kez ve yalnızca bir kez işlemek için Apache Spark akışı ayarlama.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 34cb3f4cdcc5bfc11bba300ff1aa04422e0fcc57
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091015"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241139"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Tam bir kez olay işleme ile Apache Spark akış işleri oluşturma
 
 Akış işleme uygulamaları, sistemdeki bazı arızalardan sonra iletileri yeniden işlemeyi nasıl işleydikleri konusunda farklı yaklaşımlar alır:
 
-* En az bir kez: Her ileti işlenmek üzere garanti edilir, ancak birden çok kez işlenebilir.
-* En fazla bir kez: Her ileti işlenmeyebilir veya işlenmeyebilir. Bir ileti işlenirse, yalnızca bir kez işlenir.
-* Tam olarak bir kez: Her iletinin bir kez ve yalnızca bir kez işlenmesi garanti edilir.
+* En az bir kez: her ileti işlenmek üzere garanti edilir, ancak birden çok kez işlenebilir.
+* En fazla bir kez: her ileti işlenmeyebilir veya işlenmeyebilir. Bir ileti işlenirse, yalnızca bir kez işlenir.
+* Tam olarak bir kez: her iletinin bir kez ve yalnızca bir kez işlenmesi garanti edilir.
 
 Bu makalede, Spark akışının tam bir kez işleme sağlamak için nasıl yapılandırılacağı gösterilir.
 
@@ -49,7 +49,7 @@ Spark akışında, Event Hubs ve Kafka gibi kaynaklarda *güvenilir alıcılar*v
 
 ### <a name="use-the-write-ahead-log"></a>Sonradan yazma günlüğünü kullanın
 
-Spark akışı, her alınan olayın hata toleranslı depolamada ilk olarak Spark 'ın denetim noktası dizinine yazıldığı ve dayanıklı bir dağıtılmış veri kümesinde (RDD) depolandığı bir yazma öncesi günlüğü kullanımını destekler. Azure 'da, hataya dayanıklı depolama, Azure Storage veya Azure Data Lake Storage tarafından desteklenir. Spark akış uygulamanızda, `spark.streaming.receiver.writeAheadLog.enable` yapılandırma ayarı olarak `true`ayarlanarak tüm alıcılar için yazma günlüğü etkinleştirilir. Sonradan yazma günlüğü, sürücü ve yürütmelerinden oluşan hatalara karşı hata toleransı sağlar.
+Spark akışı, her alınan olayın hata toleranslı depolamada ilk olarak Spark 'ın denetim noktası dizinine yazıldığı ve dayanıklı bir dağıtılmış veri kümesinde (RDD) depolandığı bir yazma öncesi günlüğü kullanımını destekler. Azure 'da, hataya dayanıklı depolama, Azure Storage veya Azure Data Lake Storage tarafından desteklenir. Spark akış uygulamanızda, `spark.streaming.receiver.writeAheadLog.enable` yapılandırma ayarı `true`olarak ayarlanarak tüm alıcılar için yazma günlüğü etkinleştirilir. Sonradan yazma günlüğü, sürücü ve yürütmelerinden oluşan hatalara karşı hata toleransı sağlar.
 
 Olay verilerine karşı görevleri çalıştıran çalışanlar için her bir RDD, her ikisi de birden fazla çalışan arasında çoğaltılır ve dağıtılır. Bir görev çöktüğü çalıştığı için başarısız olursa, görev olay verilerinin bir çoğaltmasını içeren başka bir çalışan üzerinde yeniden başlatılır, bu nedenle olay kaybedilmez.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: ML hizmetlerine karşı R yürütmek için RStudio sunucusu-Azure HDInsight'
+title: 'Hızlı başlangıç: RStudio Server & R-Azure HDInsight için ML Hizmetleri'
 description: Hızlı başlangıçta, Azure HDInsight 'taki bir ML Hizmetleri kümesinde RStudio sunucusu kullanarak bir R betiği yürütüyoruz.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e2fcdeb91517b048766d59a9714346f76091a8c8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123120"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241892"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Hızlı Başlangıç: RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Hızlı başlangıç: RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme
 
 Azure HDInsight üzerinde ML Hizmetleri, R betiklerinin Apache Spark kullanmasına ve MapReduce Apache Hadoop Dağıtılmış hesaplamalar çalıştırmasına olanak tanır. ML Hizmetleri, işlem bağlamını ayarlayarak çağrıların nasıl yürütüleceğini denetler. Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü ile, uç düğüm sunucusunun çekirdekleri arasında geri alınamaz şekilde dağıtılmış işlevleri çalıştırma seçeneğiniz vardır. Ayrıca, Iptal edilebilir ' in Hadoop haritasını azaltma veya Apache Spark işlem bağlamlarını kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz.
 
@@ -27,13 +27,13 @@ HDInsight üzerinde bir ML Hizmetleri kümesi. Bkz. [Azure Portal kullanarak Apa
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server’a bağlanma
 
-RStudio sunucusu kümenin Edge düğümünde çalışır. Oluşturduğunuz ml Hizmetleri kümesinin adı olan `CLUSTERNAME` aşağıdaki URL 'ye gidin:
+RStudio sunucusu kümenin Edge düğümünde çalışır. `CLUSTERNAME` oluşturduğunuz ML Hizmetleri kümesinin adı olduğu aşağıdaki URL 'ye gidin:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulama istemi için, Küme Yöneticisi oturum açma bilgilerini ve parolayı belirtin, varsayılan `admin`' dır. İkinci kimlik doğrulama isteminde, SSH oturum açma ve parolasını sağlayın, varsayılan `sshuser`olarak. Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
+İlk kez oturum açtığınızda iki kez kimlik doğrulaması yapmanız gerekir. İlk kimlik doğrulama istemi için, Küme Yöneticisi oturum açma bilgilerini ve parolayı belirtin, varsayılan olarak `admin`. İkinci kimlik doğrulama isteminde SSH oturum açma ve parolasını sağlayın, varsayılan `sshuser`. Sonraki oturum açma işlemleri yalnızca SSH kimlik bilgilerini gerektirir.
 
 Bağlandıktan sonra ekranınız aşağıdaki ekran görüntüsüne benzemelidir:
 

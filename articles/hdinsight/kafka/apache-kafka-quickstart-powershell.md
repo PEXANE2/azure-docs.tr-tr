@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell kullanarak HDInsight 'ta Apache Kafka ayarlama-hızlı başlangıç
+title: 'Hızlı başlangıç: Azure PowerShell-HDInsight ile Apache Kafka oluşturma'
 description: Bu hızlı başlangıçta, Azure PowerShell kullanarak Azure HDInsight üzerinde bir Apache Kafka kümesi oluşturmayı öğrenirsiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 082be3630474ec5f97ab7d80a3ee1b92cdc28fd7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123161"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242335"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı Başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
 [Apache Kafka](https://kafka.apache.org/) , açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır. 
 
@@ -33,9 +33,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-`Connect-AzAccount` Cmdlet 'i ile Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+`Connect-AzAccount` cmdlet 'i ile Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 HDInsight üzerinde Kafka, Kafka verilerini depolamak için Azure Yönetilen Diskler’i kullanırken, küme de günlükler gibi bilgileri depolamak için Azure Depolama’yı kullanır. Yeni bir depolama hesabı oluşturmak için [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) komutunu kullanın.
 
 > [!IMPORTANT]  
-> Depolama hesabı türü `BlobStorage` yalnızca HDInsight kümeleri için ikincil depolama alanı olarak kullanılabilir.
+> Depolama hesabı türü `BlobStorage`, yalnızca HDInsight kümeleri için ikincil depolama alanı olarak kullanılabilir.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"

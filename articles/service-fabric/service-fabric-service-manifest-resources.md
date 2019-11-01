@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170448"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242921"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Bir hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
@@ -30,6 +30,8 @@ Hizmet bildiriminde bir uç nokta kaynağı tanımlandığında Service Fabric, 
 
 > [!WARNING] 
 > Tasarım statik bağlantı noktaları, kümele bildiriminde belirtilen uygulama bağlantı noktası aralığıyla çakışmamalıdır. Statik bir bağlantı noktası belirtirseniz, uygulamayı uygulama bağlantı noktası aralığı dışında atarsanız, bağlantı noktası çakışmalarına neden olur. Sürüm 6.5 CU2 UYGULAMAZSANıZ, bu tür bir çakışmayı tespit ettiğimiz ancak dağıtımın sevk edilen 6,5 davranışı ile eşitlenmiş halde devam etmesine izin veren bir **sistem durumu uyarısı** vereceğiz. Ancak, uygulama dağıtımını bir sonraki Ana sürümlerden önleyebiliriz.
+>
+> Sürüm 7,0 ile, uygulama bağlantı noktası aralığı kullanımı, HostingConfig:: ApplicationPortExhaustThresholdPercentage (varsayılan 80%) ötesine geçtiğinde bir **sistem durumu uyarısı** yayınlarız.
 >
 
 ```xml
@@ -56,7 +58,7 @@ Tek bir hizmet paketinde birden çok kod paketi varsa, kod paketinin **uç nokta
 Yapılandırma paketi ayarları dosyasından (Settings. xml) bulunan uç noktalar hakkında daha fazla bilgi edinmek için [durum bilgisi olan Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) konusuna bakın.
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTP uç noktası belirtme
-Aşağıdaki hizmet bildirimi &lt;Resources @ no__t-1 öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
+Aşağıdaki hizmet bildirimi &lt;Resources&gt; öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
 
 HTTP uç noktaları, Service Fabric tarafından otomatik olarak ACL ' dir.
 

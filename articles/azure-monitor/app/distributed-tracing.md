@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677129"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242448"
 ---
 # <a name="what-is-distributed-tracing"></a>Dağıtılmış Izleme nedir?
 
@@ -40,6 +40,7 @@ Bir uygulamadaki hizmetler genelinde dağıtılmış izlemeyi etkinleştirmek, h
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (Önizleme)](opencensus-python.md)
 
 Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler çerçeveler, kitaplıklar ve teknolojiler için izleme bilgileri SDK bağımlılığı otomatik toplayıcılarına göre otomatik olarak toplanır. Desteklenen teknolojilerin tam listesi [bağımlılık otomatik toplama belgelerinde](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)bulunabilir.
 
@@ -49,7 +50,7 @@ Uygun Application Insights SDK yüklü ve yapılandırılmış olarak, popüler 
 
 Application Insights SDK 'lara ek olarak, Application Insights [Opencensus](https://opencensus.io/)aracılığıyla dağıtılmış izlemeyi da destekler. OpenCensus, hizmetler için ölçüm koleksiyonu ve dağıtılmış izleme sağlamak üzere açık kaynaklı, satıcının bağımsız, tek kitaplıkların tek bir dağıtımı olur. Ayrıca, açık kaynak topluluğunun redin, Memcache veya MongoDB gibi popüler teknolojilerle dağıtılmış izlemeyi etkinleştirmesini sağlar. [Microsoft, diğer birçok izleme ve bulut iş ortaklarıyla OpenCensus üzerinde işbirliği](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)yapıyor.
 
-OpenCensus ile bir uygulamaya dağıtılmış izleme özellikleri eklemek için, önce [Application Insights yerel Ileticisini yükleyip yapılandırın](./../../azure-monitor/app/opencensus-local-forwarder.md). Buradan, yerel Iletici aracılığıyla dağıtılmış izleme verilerini yönlendirmek için OpenCensus 'i yapılandırın. [Python](./../../azure-monitor/app/opencensus-python.md) ve [Go](./../../azure-monitor/app/opencensus-go.md) desteklenir.
+[Python (Önizleme)](opencensus-python.md) 
 
 OpenCensus Web sitesi, [Python](https://opencensus.io/api/python/trace/usage.html) ve [Go](https://godoc.org/go.opencensus.io)için API başvuru belgelerini ve ayrıca opencensus kullanmaya yönelik çeşitli farklı kılavuzların bakımını yapar. 
 

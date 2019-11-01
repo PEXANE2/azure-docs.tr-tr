@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Apache Kafka için SSL şifrelemesini ve kimlik doğrulamasını ayarlama
+title: Apache Kafka SSL şifreleme & kimlik doğrulama-Azure HDInsight
 description: Kafka istemcileri ile Kafka aracıları ve Kafka aracıları arasında iletişim için SSL şifrelemesi ayarlayın. İstemcilerin SSL kimlik doğrulamasını ayarlayın.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: d555c51838f3595367e931341a3cf6161857faef
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554620"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241988"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için Güvenli Yuva Katmanı (SSL) şifrelemesini ve kimlik doğrulamasını ayarlama
 
@@ -49,7 +49,7 @@ Aracı Kurulum işleminin Özeti aşağıdaki gibidir:
 Aracı kurulumunu gerçekleştirmek için aşağıdaki ayrıntılı yönergeleri kullanın:
 
 > [!Important]
-> Aşağıdaki kod parçacıkları wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve uygun şekilde `wn0`, `wn1` veya `wn2` ile değiştirilmelidir. `WorkerNode0_Name` ve `HeadNode0_Name`, `wn0-abcxyz` veya `hn0-abcxyz` gibi ilgili makinelerin adlarıyla değiştirilmelidir.
+> Aşağıdaki kod parçacıkları wnX, üç çalışan düğümünden birine yönelik bir kısaltmadır ve uygun şekilde `wn0`, `wn1` veya `wn2` ile değiştirilmelidir. `WorkerNode0_Name` ve `HeadNode0_Name`, `wn0-abcxyz` veya `hn0-abcxyz`gibi ilgili makinelerin adlarıyla değiştirilmelidir.
 
 1. HDInsight için, sertifika yetkilisinin (CA) rolünü dolduracağı baş düğüm 0 ' da ilk kurulumu gerçekleştirin.
 

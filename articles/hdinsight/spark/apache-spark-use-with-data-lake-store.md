@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage 1. verileri çözümlemek için Apache Spark kullanma
+title: HDInsight ile Azure Data Lake Storage 1. analiz Apache Spark
 description: Azure Data Lake Storage 1. depolanan verileri analiz etmek için Apache Spark işleri çalıştırın
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002485"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241724"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri çözümlemek için HDInsight Spark kümesini kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, bir Data Lake Storage hesabındaki verileri okuyan bir işi çalı�
 
 * Azure Data Lake Storage 1. hesabı. [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md)yönergelerini izleyin.
 
-* Depolama alanı olarak Data Lake Storage 1. Azure HDInsight Spark küme. [Hızlı Başlangıç bölümündeki yönergeleri izleyin: HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)'ta kümeleri ayarlama.
+* Depolama alanı olarak Data Lake Storage 1. Azure HDInsight Spark küme. [Hızlı başlangıç: HDInsight 'ta kümeleri ayarlama bölümündeki](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)yönergeleri izleyin.
 
 ## <a name="prepare-the-data"></a>Verileri hazırlama
 
@@ -32,7 +32,7 @@ Bu makalede, bir Data Lake Storage hesabındaki verileri okuyan bir işi çalı�
 
 Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olarak Azure Depolama Blobu bir HDInsight kümesi oluşturduysanız, önce bazı örnek verileri Data Lake Storage hesabına kopyalamanız gerekir. HDInsight kümesiyle ilişkili Azure Depolama Blobu örnek verileri kullanabilirsiniz. Bunu yapmak için [AdlCopy aracını](https://aka.ms/downloadadlcopy) kullanabilirsiniz. Aracı bağlantıdan indirin ve yükleyin.
 
-1. Bir komut istemi açın ve genellikle `%HOMEPATH%\Documents\adlcopy`AdlCopy 'in yüklü olduğu dizine gidin.
+1. Bir komut istemi açın ve AdlCopy 'in yüklü olduğu dizine gidin, genellikle `%HOMEPATH%\Documents\adlcopy`.
 
 2. Belirli bir blobu kaynak kapsayıcısından Data Lake Storage kopyalamak için aşağıdaki komutu çalıştırın:
 
@@ -56,7 +56,7 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage 1. ile HDInsight Spark kümesi kullanma
 
-1. [Azure Portal](https://portal.azure.com/), başlangıç panosundan, Apache Spark kümenizin kutucuğuna tıklayın (başlangıç panosuna sabitlediğiniz takdirde). Ayrıca **Browse All (Tümüne Gözat)**  > **HDInsight Clusters (HDInsight Kümeleri)** altından kümenize gidebilirsiniz.
+1. [Azure Portal](https://portal.azure.com/), başlangıç panosundan, Apache Spark kümenizin kutucuğuna tıklayın (başlangıç panosuna sabitlediğiniz takdirde). Ayrıca **Tüm** > **HDInsight Kümelerine Gözat** altından kümenize gidebilirsiniz.
 
 2. Spark kümesi dikey penceresinden **Hızlı Bağlantılar**’a ve sonra **Küme Panosu** dikey penceresinden **Jupyter Not Defteri**’ne tıklayın. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
@@ -67,7 +67,7 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
 
 3. Yeni bir not defteri oluşturun. **Yeni** ve ardından **PySpark** seçeneğine tıklayın.
 
-    ![Yeni bir Jupyter not defteri oluşturma](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Yeni bir Jupyter not defteri oluşturma")
+    ![Yeni Jupyter Not defteri oluşturma](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Yeni bir Jupyter not defteri oluşturma")
 
 4. PySpark çekirdeği kullanarak bir not defteri oluşturduğunuz için açıkça bir bağlam oluşturmanız gerekmez. Birinci kod hücresini çalıştırdığınızda Spark ve Hive bağlamları sizin için otomatik olarak oluşturulur. Bu senaryo için gereken türleri içeri aktararak işleme başlayabilirsiniz. Bunu yapmak için aşağıdaki kod parçacığını bir hücreye yapıştırın ve **SHIFT + ENTER** tuşuna basın.
 
@@ -75,7 +75,7 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
 
     Jupyter’de bir işi her çalıştırdığınızda web tarayıcınızın pencere başlığında not defteri başlığı ile birlikte **(Meşgul)** durumu gösterilir. Ayrıca sağ üst köşedeki **PySpark** metninin yanında içi dolu bir daire görürsünüz. İş tamamlandıktan sonra bu simge boş bir daireye dönüşür.
 
-     ![Jupyter not defteri işinin durumu](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter not defteri işinin durumu")
+     ![Jupyter Not defteri işinin durumu](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter not defteri işinin durumu")
 
 5. Örnek verileri, Data Lake Storage 1. hesabına kopyaladığınız **HVAC. csv** dosyasını kullanarak geçici bir tabloya yükleyin. Data Lake Storage hesabındaki verilere aşağıdaki URL modelini kullanarak erişebilirsiniz.
 
@@ -108,7 +108,7 @@ Ek depolama alanı olarak Data Lake Storage ve varsayılan depolama alanı olara
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. Bir PySpark çekirdeği kullandığınız için `%%sql` sihrini kullanarak yeni oluşturduğunuz **hvac** geçici tablosunda bundan böyle bir SQL sorgusunu doğrudan çalıştırabilirsiniz. `%%sql` Siçinin yanı sıra pyspark çekirdeği ile kullanılabilen diğer mıknatık 'lar hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
+6. Bir PySpark çekirdeği kullandığınız için `%%sql` sihrini kullanarak yeni oluşturduğunuz **hvac** geçici tablosunda bundan böyle bir SQL sorgusunu doğrudan çalıştırabilirsiniz. `%%sql` Magic hakkında daha fazla bilgi edinmek ve PySpark çekirdeğiyle kullanılabilen diğer mıknatıler hakkında daha fazla bilgi için, bkz. [Apache Spark HDInsight kümeleri Ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"

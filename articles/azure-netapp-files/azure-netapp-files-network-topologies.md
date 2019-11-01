@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984132"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242486"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
 
@@ -50,15 +50,15 @@ Aşağıdaki ağ kısıtlamaları Azure NetApp Files için geçerlidir:
 
 Aşağıdaki tabloda Azure NetApp Files tarafından desteklenen ağ topolojileri açıklanmaktadır.  Ayrıca, desteklenmeyen topolojilerle ilgili geçici çözümleri açıklar. 
 
-|    Topolojiler    |    Desteklenir    |     Geçici Çözüm    |
+|    Topolojiler    |    Desteklenir    |     Geçici çözüm    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Yerel VNet 'teki birime bağlantı    |    Evet    |         |
-|    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Evet    |         |
-|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Yok.    |
-|    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Evet    |         |
-|    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Evet    |        |
-|    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
-|    Şirket içinden VPN Gateway ve VNet eşlemesi ile ağ geçidi geçişi üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
+|    Yerel VNet 'teki birime bağlantı    |    Yes    |         |
+|    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Yes    |         |
+|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Hiçbiri    |
+|    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Yes    |         |
+|    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Yes    |        |
+|    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Yes    |         |
+|    Şirket içinden VPN Gateway ve VNet eşlemesi ile ağ geçidi geçişi üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Yes    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Azure NetApp Files birimleri için sanal ağ
@@ -95,11 +95,11 @@ Aşağıdaki diyagramda Azure yerel bir ortam gösterilmektedir:
 
 Temel senaryo, aynı VNet 'teki bir sanal makineden (VM) Azure NetApp Files bir birim oluşturmak veya bu birime bağlanmak. Yukarıdaki diyagramda VNet 2 için, 1. birim, temsilci bir alt ağda oluşturulur ve varsayılan alt ağda VM 1 ' de bağlanabilir.
 
-### <a name="vnet-peering"></a>VNet eşlemesi
+### <a name="vnet-peering"></a>Sanal ağ eşleme
 
 Aynı bölgede diğer her kaynağa erişmesi gereken ek VNET varsa, sanal ağlar Azure altyapısı aracılığıyla güvenli bağlantı sağlamak için [VNET eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kullanılarak bağlanabilir. 
 
-Yukarıdaki diyagramda VNet 2 ve VNet 3 ' ü göz önünde bulundurun. VM 2 ' nin VM 3 ' e veya 2. birime bağlanması gerekiyorsa veya VM 3 ' ün VM 2 ' ye veya birim 1 ' e bağlanması gerekiyorsa, VNET 2 ile VNet 3 arasında VNet eşlemesini etkinleştirmeniz gerekir. 
+Yukarıdaki diyagramda VNet 2 ve VNet 3 ' ü göz önünde bulundurun. VM 1 ' in VM 2 veya Volume 2 ' ye bağlanması gerekiyorsa veya VM 2 ' nin VM 1 veya birim 1 ' e bağlanması gerekiyorsa, VNET 2 ile VNet 3 arasında VNet eşlemesini etkinleştirmeniz gerekir. 
 
 Ayrıca, VNET 1 ' in VNet 2 ' ye eşlenme ve VNET 2 ' nin aynı bölgedeki VNet 3 ile eşlenme senaryosu da göz önünde bulundurun. VNET 1 ' deki kaynaklar VNet 2 ' deki kaynaklara bağlanabilir ancak VNET 1 ve VNet 3 eşlenmediği müddetçe VNet 3 ' teki kaynaklara bağlanamaz. 
 

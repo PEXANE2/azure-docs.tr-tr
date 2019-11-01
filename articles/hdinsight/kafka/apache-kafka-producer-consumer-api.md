@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma - Azure HDInsight '
+title: "Öğretici: Apache Kafka üreticisi & tüketici API 'Leri-Azure HDInsight"
 description: HDInsight’ta Apache Kafka Üretici ve Tüketici API’lerini kullanmayı öğrenin. Bu öğreticide, bu API’leri HDInsight üzerinde Kafka ile kullanmayı öğreneceksiniz.
 author: dhgoelmsft
 ms.author: dhgoel
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 3ac68732042016c747b693e97bf8da15e1843b1e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817802"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242000"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Öğretici: Apache Kafka Üretici ve Tüketici API’lerini kullanma
 

@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Apache Spark Azure Machine Learning iş yüklerini çalıştırma
+title: HDInsight 'ta Apache Spark Azure Machine Learning iş yüklerini çalıştırma
 description: Azure HDInsight 'ta Apache Spark otomatik makine öğrenimi (otomatik ml) ile Azure Machine Learning iş yüklerini çalıştırmayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814047"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241472"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
 
@@ -21,7 +21,7 @@ Azure Machine Learning, makine öğrenimi modellerinin oluşturulmasını, eğit
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>HDInsight kümesine Azure Machine Learning yüklemesi
 
-Otomatik makine öğrenimi hakkında genel öğreticiler için bkz [. Öğretici: Gerileme modelinizi](../../machine-learning/service/tutorial-auto-train-models.md)derlemek için otomatik makine öğrenimi kullanın.
+Otomatik makine öğrenimi hakkında genel öğreticiler için bkz. [öğretici: gerileme modelinizi derlemek için otomatik makine öğrenimi kullanma](../../machine-learning/service/tutorial-auto-train-models.md).
 Tüm yeni HDInsight-Spark kümeleri, AzureML-otomatik ml SDK 'Sı ile önceden yüklenmiş olarak gelir. Bu [örnek Jupyter Not defteri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi)ile HDInsight üzerinde, oto ml ile çalışmaya başlayın. Bu Jupyter Notebook, basit bir sınıflandırma sorunu için otomatik makine öğrenimi sınıflandırmasının nasıl kullanılacağını gösterir.
 
 > [!Note]
@@ -71,10 +71,10 @@ Ayrıca, bir kerelik kayıt kullanarak, veri deposunu çalışma alanıyla de ka
 
 ## <a name="experiment-submission"></a>Deneme gönderimi
 
-[Otomatik makine öğrenimi yapılandırmasında](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig), paketin dağıtılmış modda `spark_context` çalışması için özelliği ayarlanmalıdır. Paralel olarak `concurrent_iterations`yürütülen maksimum yineleme sayısı olan özelliği Spark uygulamasının yürütücü çekirdekinden daha düşük bir sayı olarak ayarlanmalıdır.
+[Otomatik makine öğrenme yapılandırmasında](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig), paketin dağıtılmış modda çalışması için `spark_context` özelliği ayarlanmalıdır. Paralel olarak yürütülen en fazla yineleme sayısı olan `concurrent_iterations`özellik, Spark uygulamasının yürütücü çekirdekinden daha düşük bir sayı olarak ayarlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Otomatik makine öğrenimi 'nin arkasındaki eğitim hakkında daha fazla bilgi için bkz. [Microsoft 'un otomatik makine öğrenimini kullanarak yayın modelleri](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/) .
-* Azure ML otomatikleştirilmiş ML yeteneklerini kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning hizmetinde yeni otomatik makine öğrenimi özellikleri](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
+* Azure ML otomatikleştirilmiş ML yeteneklerini kullanma hakkında daha fazla bilgi için, bkz. [Azure Machine Learning yeni otomatik makine öğrenimi özellikleri](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Microsoft Research 'ten bir oto ml projesi](https://www.microsoft.com/research/project/automl/)

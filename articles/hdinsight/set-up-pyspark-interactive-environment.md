@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight araçları-Visual Studio Code için PySpark etkileşimli ortamı
+title: Azure HDInsight araçları ile PySpark etkileşimli ortamı
 description: Sorgular ve betikler oluşturmak ve göndermek için Visual Studio Code için Azure HDInsight araçlarını kullanmayı öğrenin.
 keywords: VScode, Azure HDInsight araçları, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, etkileşimli sorgu
 author: jejiang
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f62f7994818e487202e35e4931472355fb6ac3d2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130184"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241546"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamını ayarlama
 
@@ -23,8 +23,8 @@ Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoru
 
 1. [Python](https://www.python.org/downloads/) ve [PIP](https://pip.pypa.io/en/stable/installing/)'yi yükler.
 
-   + Python uygulamasını şuradan [https://www.python.org/downloads/](https://www.python.org/downloads/)
-   + PIP 'yi [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) yükleme (Python yüklemesinden yüklenmemişse).
+   + [https://www.python.org/downloads/](https://www.python.org/downloads/)'tan Python 'ı yükler.
+   + [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) (Python yüklemesinden yüklenmediyse) PIP 'yi yükleme.
    + Aşağıdaki komutları kullanarak Python ve PIP 'nin başarıyla yüklendiğini doğrulayın. Seçim
 
         ![Python pversıon sürümü komutunu denetle](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
@@ -52,12 +52,12 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-VS Code yeniden başlatın ve ardından HDInsight çalıştıran **betik düzenleyicisine geri dönün: PySpark etkileşimli**.
+VS Code yeniden başlatın ve ardından HDInsight çalıştıran betik düzenleyicisine geri dönün **: PySpark Interactive**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 ### <a name="demo"></a>Tanıtım
-* VS Code için HDInsight: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* VS Code için HDInsight: [video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
 * [Visual Studio Code için Azure HDInsight aracını kullanma](hdinsight-for-vscode.md)

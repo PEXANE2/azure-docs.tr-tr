@@ -1,23 +1,24 @@
 ---
-title: Sık karşılaşılan hatalar ve uyarılar
-titleSuffix: Azure Cognitive Search
-description: Bu makalede, Azure Bilişsel Arama 'de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
-manager: nitinme
+title: Sık karşılaşılan hatalar ve uyarılar-Azure Search
+description: Bu makalede, Azure Search ' de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
+services: search
+manager: heidist
 author: amotley
-ms.author: abmotley
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 09/18/2019
+ms.author: abmotley
+ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787987"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243045"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme işlem hattının genel hataları ve uyarıları
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure Search içindeki AI zenginleştirme işlem hattının ortak hataları ve uyarıları
 
-Bu makalede, Azure Bilişsel Arama 'de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
+Bu makalede, Azure Search ' de AI zenginleştirme sırasında karşılaşabileceğiniz yaygın hatalara ve uyarılara yönelik bilgi ve çözümler sağlanmaktadır.
 
 ## <a name="errors"></a>Hatalar
 Hata sayısı [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)aştığında dizin oluşturma durduruluyor. 
@@ -34,7 +35,7 @@ Dizin Oluşturucu, veri kaynağından belgeyi okuyamadı. Bunun nedeni aşağıd
 
 | Neden | Örnek | Eylem |
 | --- | --- | --- |
-| farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. @No__t_0 yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih saat ise ve ikinci belgede bir dize ise, bu hata olur. |
+| farklı belgeler genelinde tutarsız alan türleri | Değerin türü sütun türüyle eşleşmiyor. `'{47.6,-122.1}'` yazarlar sütununda depolanamadı.  Beklenen tür JArray. | Her alanın türünün farklı belgeler arasında aynı olduğundan emin olun. Örneğin, ilk belge `'startTime'` alanı bir tarih saat ise ve ikinci belgede bir dize ise, bu hata olur. |
 | veri kaynağının temelindeki hizmetten alınan hatalar | (Cosmos DB) `{"Errors":["Request rate is large"]}` | Sağlıklı olduğundan emin olmak için depolama örneğinizi denetleyin. Ölçeklendirmeyi/bölümlemeyi ayarlamanız gerekebilir. |
 | geçici sorunlar | Sunucudan sonuçlar alınırken aktarım düzeyi hatası oluştu. (sağlayıcı: TCP sağlayıcısı, hata: 0-var olan bir bağlantı uzak ana bilgisayar tarafından zorla kapatıldı | Bazen beklenmedik bağlantı sorunları var. Belgeyi Dizin oluşturucudan daha sonra tekrar çalıştırmayı deneyin. |
 
@@ -104,9 +105,9 @@ Oluşturduğunuz özel bir yeteneğe sahip bir zaman aşımı hatasıyla karşı
       }
 ```
 
-@No__t_0 parametresi için ayarlayabileceğiniz maksimum değer 230 saniyedir.  Özel becerinizde sürekli olarak 230 saniye içinde yürütülemediğinde, tek bir yürütmede işlemek üzere daha az belge olması için özel becerinizdeki `batchSize` ' ı azaltmayı düşünebilirsiniz.  @No__t_0 zaten 1 olarak ayarladıysanız, yeteneği 230 saniye altında yürütebilmek için yeniden yazmanız gerekir veya herhangi bir özel beceri için yürütme süresi en fazla 230 saniyelik olacak şekilde birden çok özel beceriye bölebilirsiniz. Daha fazla bilgi için [özel beceri belgelerini](cognitive-search-custom-skill-web-api.md) gözden geçirin.
+`timeout` parametresi için ayarlayabileceğiniz maksimum değer 230 saniyedir.  Özel becerinizde sürekli olarak 230 saniye içinde yürütülemediğinde, tek bir yürütmede işlemek üzere daha az belge olması için özel becerinizdeki `batchSize` ' ı azaltmayı düşünebilirsiniz.  `batchSize` zaten 1 olarak ayarladıysanız, yeteneği 230 saniye altında yürütebilmek için yeniden yazmanız gerekir veya herhangi bir özel beceri için yürütme süresi en fazla 230 saniyelik olacak şekilde birden çok özel beceriye bölebilirsiniz. Daha fazla bilgi için [özel beceri belgelerini](cognitive-search-custom-skill-web-api.md) gözden geçirin.
 
-### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>' @No__t_0 ' | arama dizinine ' `Delete` ' belgesi
+### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>'`MergeOrUpload`' | arama dizinine '`Delete`' belgesi
 
 Belge okundu ve işlendi, ancak Dizin Oluşturucu onu arama dizinine ekleyemedi. Bunun nedeni aşağıdakiler olabilir:
 
@@ -131,6 +132,10 @@ Belge okundu ve işlendi, ancak dizin alanlarının yapılandırmasındaki bir u
 | Kaynak belgede Coğrafya noktaları için uyumsuz bir gösterim kullanıldı. | WKT noktası dize sabit değerleri desteklenmiyor. Lütfen bunun yerine GeoJson nokta sabit değerlerini kullanın |
 
 Tüm bu durumlarda, Dizin şemasını doğru bir şekilde oluşturup uygun [Dizin Oluşturucu alan eşlemelerini](search-indexer-field-mappings.md)ayarlamış olduğunuzdan emin olmak Için [desteklenen veri türleri (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) ve [Azure Search Dizinleyicileri için veri türü eşlemesi](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) ' ne bakın. Hata iletisi, uyuşmazlığın kaynağını izlemeye yardımcı olabilecek ayrıntıları içerir.
+
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>Dizin Oluşturucu en fazla çalışma süresi içindeki belge işlenemedi
+
+Dizin Oluşturucu, izin verilen yürütme süresi içinde veri kaynağından tek bir belgeyi işlemeyi tamamlayamediğinde bu hata oluşur. Becerileri kullanıldığında [en fazla çalışma süresi](search-limits-quotas-capacity.md#indexer-limits) daha kısadır. Bu hata oluştuğunda, maxFailedItems 0 dışında bir değere ayarladıysanız Dizin Oluşturucu, dizin oluşturmanın ilerlemesinin devam edebilmesi için gelecekteki çalışmadaki belgeyi atlar. Herhangi bir belgeyi atlamak için kabul ediyorsanız veya bu hatayı sürekli olarak görüyorsanız, tek bir Dizin Oluşturucu yürütmesi içinde kısmi ilerleme yapılabilmesi için belgeleri daha küçük belgelere bozmayı düşünün.
 
 ##  <a name="warnings"></a>Uyarılarına
 Uyarılar Dizin oluşturmayı durdurmaz, ancak beklenmedik sonuçlar oluşmasına neden olabilecek koşullar olduğunu gösterir. Eyleme ve senaryonuza bağlı olup olmadığına bakılmaksızın.

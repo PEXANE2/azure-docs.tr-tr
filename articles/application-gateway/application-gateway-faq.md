@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025011"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242231"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -73,7 +73,7 @@ Uç nokta olarak genel bir IP adresi kullanıyorsanız, IP ve DNS bilgilerini ge
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Uygulama ağ geçidinin ömrü boyunca IP veya DNS adı değişsin mi?
 
-Uygulama ağ geçidini durdurup başlatırsanız VIP değişebilir. Ancak uygulama ağ geçidiyle ilişkilendirilen DNS adı ağ geçidinin kullanım ömrü boyunca değişmez. DNS adı değişmediği için bir CNAME diğer adı kullanmalı ve uygulama ağ geçidinin DNS adresine işaret etmelisiniz.
+Application Gateway v1 SKU 'sunda, uygulama ağ geçidini durdurup başlatırsanız VIP değişebilir. Ancak uygulama ağ geçidiyle ilişkilendirilen DNS adı ağ geçidinin kullanım ömrü boyunca değişmez. DNS adı değişmediği için bir CNAME diğer adı kullanmalı ve uygulama ağ geçidinin DNS adresine işaret etmelisiniz. Application Gateway v2 SKU 'sunda IP adresini statik olarak ayarlayabilirsiniz, bu nedenle IP ve DNS adı, uygulama ağ geçidinin kullanım ömrü boyunca değişmeyecektir. 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Application Gateway statik IP 'yi destekliyor mu?
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066992"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241661"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Derin ve gelişmiş analiz
 
@@ -43,10 +43,10 @@ En iyi sığdırma algoritmasını seçerken birlikte, eğitim için veri sağla
 * Pekiştirmeye dayalı algoritması, belirli bir bağlam içinde ideal davranışları (genellikle Robotics 'de kullanılır) belirlemede yazılım aracılarını kullanır
 
 
-| Algoritma kategorisi| Bir yönetim grubuna bağlanmak veya bağlı bir yönetim grubunun özelliklerini düzenlemek için Yönetim çalışma alanında | Öğrenme türü | Algoritmalar |
+| Algoritma kategorisi| Kullanım | Öğrenme türü | Algoritmalar |
 | --- | --- | --- | -- |
 | Sınıflandırma | Kişileri veya şeyleri gruplar halinde sınıflandırın | Denetimli | Karar ağaçları, lojistik regresyon, sinir ağları |
-| Kümeleme | Örnek kümesini hogenou gruplarına bölme | Denetimsiz | K-kümelemenin anlamı |
+| Lenmesi | Örnek kümesini hogenou gruplarına bölme | Denetimsiz | K-kümelemenin anlamı |
 | Model algılama | Verilerdeki sık kullanılan ilişkilendirmeleri tanımla | Denetimsiz | İlişkilendirme kuralları |
 | Regresyon | Sayısal sonuçları tahmin etme | Denetimli | Doğrusal regresyon, sinir Networks |
 | Pekiştirmeye dayalı | Robots için en iyi davranışı belirleme | Pekiştirmeye dayalı | Monte Carlo benzetimleri, ayrıntılı fikir |
@@ -63,7 +63,7 @@ HDInsight, gelişmiş analiz iş akışı için çeşitli makine öğrenimi seç
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning ve Apache Spark
 
 
-[HDInsight Spark](../spark/apache-spark-overview.md) , büyük veri analizlerini artırmak için bellek içi işleme kullanan Birleşik, açık kaynaklı ve paralel veri Işleme çerçevesinin Azure tarafından barındırılan [Apache Spark](https://spark.apache.org/)bir sunumudur. Spark işleme altyapısı hız, kullanım kolaylığı ve Gelişmiş analiz için oluşturulmuştur. Spark'ın dağıtılmış bellek içi hesaplama özellikleri onu kullanılan makine öğrenimi ve grafik hesaplamalarında yinelemeli algoritmalar için iyi bir seçim haline getirir. 
+[HDInsight Spark](../spark/apache-spark-overview.md) , büyük veri analizlerini artırmak için bellek içi işleme kullanan Birleşik, açık kaynaklı ve paralel veri Işleme çerçevesinin Azure tarafından barındırılan [Apache Spark](https://spark.apache.org/)bir sunumudur. Spark işleme altyapısı hız, kullanım kolaylığı ve gelişmiş analiz için oluşturulmuştur. Spark 'ın bellek içi dağıtılmış hesaplama özellikleri, makine öğrenimi ve grafik hesaplamaları 'nda kullanılan yinelemeli algoritmalar için iyi bir seçenek yapar. 
 
 
 Bu dağıtılmış ortama algoritmik modelleme özellikleri getiren üç ölçeklenebilir makine öğrenimi kitaplığı vardır:
@@ -78,7 +78,7 @@ HDInsight 'ın bir parçası olarak, [ml Hizmetleri](../r-server/r-server-overvi
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning ve Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) , tahmine dayalı analiz modellerini modelleyen araçlar sağlar ve tahmine dayalı modellerinizi kullanıma hazırlama Web Hizmetleri olarak dağıtmak için kullanabileceğiniz tam olarak yönetilen bir hizmettir. Azure Machine Learning, tahmine dayalı modelleri hızlı bir şekilde oluşturmak, test etmek, tekrarlaştır ve yönetmek için bulutta tüm tahmine dayalı analiz çözümleri oluşturmaya yönelik araçlar sağlar. Büyük bir algoritma kitaplığından seçim yapın, model oluşturmak için Web tabanlı bir Studio kullanın ve modelinizi bir Web hizmeti olarak kolayca dağıtın.
+[Azure Machine Learning Studio (klasik)](https://studio.azureml.net/) , tahmine dayalı analiz modellerini modelleyen araçlar sağlar ve tahmine dayalı modellerinizi kullanıma hazırlama Web Hizmetleri olarak dağıtmak için kullanabileceğiniz tam olarak yönetilen bir hizmettir. Azure Machine Learning, tahmine dayalı modelleri hızlı bir şekilde oluşturmak, test etmek, tekrarlaştır ve yönetmek için bulutta tüm tahmine dayalı analiz çözümleri oluşturmaya yönelik araçlar sağlar. Büyük bir algoritma kitaplığından seçim yapın, model oluşturmak için Web tabanlı bir Studio kullanın ve modelinizi bir Web hizmeti olarak kolayca dağıtın.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark ve derin öğrenme
 
@@ -109,7 +109,7 @@ Veri kümesi, 50.000 görüntü eğitimi kümesine ve bir 10.000 görüntü test
 * Modeli yüklemek için Cognitive Toolkit ve her düğümdeki önceden işlenmiş görüntüleri puan edin.
 * Jupyıter Not defterleri, PySpark betiğini çalıştırmak, sonuçları toplamak ve model performansını görselleştirmek için [Matplotlib](https://matplotlib.org/) kullanın.
 
-10.000 görüntünün tüm ön işleme/Puanlama, 4 çalışan düğümü olan bir kümede bir dakikadan kısa sürer. Model ~ 9.100 etiketlerini doğru bir şekilde tahmin eder (% 91) yansımasını. Bir karışıklık matrisi en yaygın sınıflandırma hatalarını gösterir. Örneğin, matris yanlış etiketleme ve diğer etiket çiftlerine göre çok daha sık gerçekleşmektedir.
+10.000 görüntünün tüm ön işleme/Puanlama, 4 çalışan düğümü olan bir kümede bir dakikadan kısa sürer. Model ~ 9.100 etiketlerini doğru bir şekilde tahmin eder (%91) yansımasını. Bir karışıklık matrisi en yaygın sınıflandırma hatalarını gösterir. Örneğin, matris yanlış etiketleme ve diğer etiket çiftlerine göre çok daha sık gerçekleşmektedir.
 
 ![Machine Learning sonuçları grafiği](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
@@ -127,8 +127,8 @@ Apache Hive ve Azure Machine Learning
 Apache Spark ve MLLib
 
 * [HDInsight üzerinde Apache Spark makine öğrenimi](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Apache Spark kullanın](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: Yiyecek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Apache Spark kullanma](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Apache Spark kullanın](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning ile Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Apache Spark kullanın](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 Derin öğrenme, Cognitive Toolkit ve diğerleri
 
