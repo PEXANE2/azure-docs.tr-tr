@@ -4,14 +4,14 @@ description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenleme
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146831"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199164"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure kaynaklarınızı düzenlemek için etiketleri kullanma
 
@@ -180,13 +180,13 @@ Bir kaynak koleksiyonu aracılığıyla döngü oluştururken kaynağı kaynak K
 az resource show --id <resource-id> --query tags
 ```
 
-Belirli bir etikete sahip kaynak gruplarını almak için şunu kullanın `az group list`:
+Belirli bir etikete sahip kaynak gruplarını almak için `az group list`kullanın:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Belirli bir etiketi ve değeri olan tüm kaynakları almak için şunu kullanın `az resource list`:
+Belirli bir etiketi ve değeri olan tüm kaynakları almak için `az resource list`kullanın:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -250,7 +250,7 @@ done
 
 ## <a name="templates"></a>Şablonlar
 
-Dağıtım sırasında bir kaynağı etiketlemek için, dağıttığınız kaynağa `tags` öğeyi ekleyin. Etiket adını ve değerini belirtin.
+Dağıtım sırasında bir kaynağı etiketlemek için, dağıtmakta olduğunuz kaynağa `tags` öğesini ekleyin. Etiket adını ve değerini belirtin.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Etiket adına değişmez değer uygulama
 
@@ -361,7 +361,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ### <a name="apply-tags-from-resource-group"></a>Kaynak grubundan Etiketler uygulama
 
-Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken `tags.[tag-name]` `tags.tag-name` sözdizimi yerine sözdizimini kullanın, çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
+Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) işlevini kullanın. Etiket değerini alırken, `tags.tag-name` sözdizimi yerine `tags.[tag-name]` sözdizimini kullanın, çünkü bazı karakterler nokta gösteriminde doğru ayrıştırılmaz.
 
 ```json
 {
@@ -405,7 +405,7 @@ Azure portal ve PowerShell, arka planda [Kaynak Yöneticisi REST API](https://do
 
 Fatura verilerinizi gruplandırmak için Etiketler kullanabilirsiniz. Örneğin, farklı kuruluşlar için birden çok VM çalıştırıyorsanız, kullanımı maliyet merkezine göre gruplamak için etiketleri kullanın. Ayrıca, üretim ortamında çalışan VM 'Ler için faturalandırma kullanımı gibi çalışma zamanı ortamına göre maliyetleri sınıflandırmak için Etiketler de kullanabilirsiniz.
 
-[Azure Kaynak kullanımı ve RateCard API 'leri](../billing/billing-usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../billing/billing-download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler için Etiketler, **Etiketler sütununda görüntülenir** .
+[Azure Kaynak kullanımı ve RateCard API 'leri](../billing/billing-usage-rate-card-overview.md) veya kullanım virgülle ayrılmış değerler (CSV) dosyası aracılığıyla Etiketler hakkında bilgi alabilirsiniz. Kullanım dosyasını [Azure Hesap Merkezi](https://account.azure.com/Subscriptions) veya Azure Portal indirin. Daha fazla bilgi için bkz. [Azure Faturalandırma faturanızı ve günlük kullanım verilerinizi indirme veya görüntüleme](../billing/billing-download-azure-invoice-daily-usage-date.md). Kullanım dosyasını Azure Hesap Merkezi indirirken **sürüm 2**' yi seçin. İle etiketleri destekleyen hizmetler **için Etiketler, Etiketler sütununda görüntülenir** .
 
 REST API işlemler için bkz. [Azure faturalandırma REST API başvurusu](/rest/api/billing/).
 

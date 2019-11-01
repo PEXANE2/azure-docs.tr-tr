@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529160"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200594"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight kümeleri için kapasite planlaması
 
@@ -68,13 +68,7 @@ Her küme türü bir dizi düğüm türüne sahiptir ve her düğüm türü, VM 
 
 Uygulamanız için en uygun küme boyutunu belirleyebilmek için, küme kapasitesini kıyaslama ve boyutu belirtilen şekilde artırabilirsiniz. Örneğin, sanal bir iş yükü veya *kanarya sorgusu*kullanabilirsiniz. Sanal bir iş yüküyle, beklenen iş yüklerinizi farklı boyut kümelerinde çalıştırırsanız, istenen performansa ulaşılıncaya kadar boyutu kademeli olarak artırabilirsiniz. Kümenin yeterli kaynağa sahip olup olmadığını göstermek için, diğer üretim sorguları arasında düzenli aralıklarla bir sorgu eklenebilir.
 
-VM boyutu ve türü, CPU işleme gücü, RAM boyutu ve ağ gecikmesi tarafından belirlenir:
-
-* CPU: VM boyutu çekirdek sayısını belirler. Daha fazla çekirdek, her bir düğümün elde edilebileceği paralel hesaplamanın derecesi artar. Ayrıca, bazı VM türlerinde daha hızlı çekirdek vardır.
-
-* RAM: VM boyutu VM 'deki kullanılabilir RAM miktarını da belirler. Diskten okumak yerine verileri işlenmek üzere bellekte depolayan iş yükleri için, çalışan düğümlerinizin verilere sığacak kadar yeterli belleğe sahip olduğundan emin olun.
-
-* Ağ: çoğu küme türü Için, küme tarafından işlenen veriler yerel diskte değildir, bunun yerine Data Lake Storage veya Azure depolama gibi bir harici depolama hizmetidir. Düğüm VM ve depolama hizmeti arasındaki ağ bant genişliğini ve aktarım hızını göz önünde bulundurun. Bir VM için kullanılabilen ağ bant genişliği genellikle daha büyük boyutlarda artar. Ayrıntılar için bkz. [VM boyutlarına genel bakış](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+İş yükünüz için doğru VM ailesini seçme hakkında daha fazla bilgi için, bkz. [kümeniz için doğru VM boyutunu seçme](hdinsight-selecting-vm-size.md).
 
 ## <a name="choose-the-cluster-scale"></a>Küme ölçeğini seçin
 
@@ -104,10 +98,11 @@ Hedef küme VM 'nizin boyutunu, ölçeğini ve türünü belirledikten sonra, ab
 1. Sayfanın sol alt tarafında **Yardım + Destek** ' i seçin.
 1. **Yeni destek isteği**’ni seçin.
 1. **Yeni destek isteği** sayfasında, **temel bilgiler** sekmesinde aşağıdaki seçenekleri belirleyin:
+
    - **Sorun türü**: **hizmet ve abonelik limitleri (kotalar)**
    - **Abonelik**: değiştirmek istediğiniz abonelik
    - **Kota türü**: **HDInsight**
-    
+
      ![HDInsight çekirdek kotasını artırmak için bir destek isteği oluşturma](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. **İleri ' yi seçin: çözümler > >** .

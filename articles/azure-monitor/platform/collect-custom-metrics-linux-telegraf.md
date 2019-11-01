@@ -1,5 +1,5 @@
 ---
-title: Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
+title: Etkileyen Linux VM için özel ölçümler toplayın telegraf Agent
 description: Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883238"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200531"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -29,7 +29,7 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 Yeni bir Linux sanal makinesi oluşturun: 
 
@@ -47,13 +47,13 @@ Yeni bir Linux sanal makinesi oluşturun:
 
     ![Sanal makine boyutu telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. **Ağ** **ağ güvenlik grubundaki** **Ayarlar sayfasında** **ortak gelen bağlantı noktaları**' nı seçin, http ve **SSH (22)** öğesini seçin. >  >  Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin. 
+1. **Ağ > ağ** **güvenlik grubu** 'ndaki **Ayarlar** sayfasında, **ortak gelen bağlantı noktalarını seçin** > **http** ve **SSH (22)** öğesini seçin. Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin. 
 
 1. Özet sayfasında **Oluştur**’u seçerek sanal makine dağıtımını başlatın. 
 
 1. VM, Azure portalı panosuna sabitlenir. Dağıtım tamamlandıktan sonra VM Özeti otomatik olarak açılır. 
 
-1. VM bölmesinde **kimlik** sekmesine gidin. VM 'nize sistem tarafından atanan bir kimliğin **Açık**olarak ayarlanmış olduğundan emin olun. 
+1. VM bölmesinde **kimlik** sekmesine **gidin. sanal**makinenizde sistem tarafından atanan bir kimlik ayarlanmış olduğundan emin olun. 
  
     ![Telegraf VM kimlik önizlemesi](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  

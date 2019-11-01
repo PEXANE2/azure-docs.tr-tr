@@ -1,5 +1,5 @@
 ---
-title: VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme (Önizleme) | Microsoft Docs
+title: VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme (Önizleme)
 description: Map bir VM'ler için Azure İzleyici özelliğidir. Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Bu makalede, farklı senaryolarda harita özelliğinin nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f886ce4ed1b9396cf90bf98626e0cfd2424b2eac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553787"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199084"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici (Önizleme) eşleme özelliğini kullanın
 VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 

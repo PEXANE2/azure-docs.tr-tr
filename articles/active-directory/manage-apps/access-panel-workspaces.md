@@ -16,19 +16,19 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9efe76f15e2f07495a9d95f69b0c21d2bca4ea8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180556"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199833"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Uygulamalarım (Önizleme) portalında çalışma alanları oluşturma
 
 Kullanıcılarınız, erişimi olan bulut tabanlı uygulamaları görüntülemek ve başlatmak için My Apps (Önizleme) portalını kullanabilir. Varsayılan olarak, bir kullanıcının erişebileceği tüm uygulamalar tek bir sayfada birlikte listelenir. Kullanıcılarınıza yönelik bu sayfayı daha iyi düzenlemek için, Azure AD Premium P1 veya P2 lisansınız varsa, çalışma alanlarını ayarlayabilirsiniz. Bir çalışma alanı ile ilişkili uygulamaları (örneğin, iş rolü, görev veya proje) gruplandırabilirsiniz ve bunları ayrı bir sekmede görüntüleyebilirsiniz. Bir çalışma alanı temelde, kullanıcının zaten erişebileceği uygulamalara bir filtre uygular, böylece Kullanıcı yalnızca çalışma alanında kendisine atanmış olan uygulamaları görür.
 
 > [!NOTE]
-> Bu makalede, bir yöneticinin çalışma alanlarını nasıl etkinleştirip oluşturabileceğiniz ele alınmaktadır. Son kullanıcıya ait My Apps Portal ve çalışma alanlarını kullanma hakkında bilgi için bkz. [erişim ve çalışma alanları kullanma](https://docs.microsoft.com/azure/active-directory/user-help/).
+> Bu makalede, bir yöneticinin çalışma alanlarını nasıl etkinleştirip oluşturabileceğiniz ele alınmaktadır. Son kullanıcıya ait My Apps Portal ve çalışma alanlarını kullanma hakkında bilgi için bkz. [erişim ve çalışma alanları kullanma](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
 ## <a name="enable-my-apps-preview-features"></a>Uygulamalarımın Önizleme özelliklerini etkinleştir
 

@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173466"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199784"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme
 
@@ -35,7 +35,7 @@ Erişim isteklerini onaylamaya veya reddetmeye yönelik ilk adım, onay bekleyen
 
 1. Bir isteği onaylamayı veya reddetmenizi isteyen Microsoft Azure bir e-posta bulun. Örnek bir e-posta aşağıda verilmiştir:
 
-    ![Paket e-postasına erişim isteğini onayla](./media/entitlement-management-shared/email-approve-request.png)
+    ![Paket e-postasına erişim isteğini onayla](./media/entitlement-management-shared/approver-request-email.png)
 
 1. Erişim isteğini açmak için **Onayla veya reddetme isteği** bağlantısına tıklayın.
 

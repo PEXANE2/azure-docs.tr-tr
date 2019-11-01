@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.custom: ''
-ms.openlocfilehash: d1b6444b8512b1b55ac46370e805f8f662f5f555
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070693"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199481"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
 
@@ -28,11 +28,11 @@ Her geliştirme ekibinin, her türlü bulut hizmetinde verimli bir dağıtım i�
 
 ## <a name="deployment-components"></a>Dağıtım bileşenleri
 
-### <a name="deployment-source"></a>Dağıtım Kaynağı
+### <a name="deployment-source"></a>Dağıtım kaynağı
 
 Dağıtım kaynağı, uygulama kodunuzun konumudur. Üretim uygulamaları için dağıtım kaynağı genellikle [GitHub, BitBucket veya Azure Repos](deploy-continuous-deployment.md)gibi sürüm denetimi yazılımıyla barındırılan bir depodur. Geliştirme ve test senaryolarında, dağıtım kaynağı [Yerel makinenizde bir proje](deploy-local-git.md)olabilir. App Service [, OneDrive ve Dropbox klasörlerini](deploy-content-sync.md) de dağıtım kaynakları olarak destekler. Bulut klasörleri App Service kullanmaya başlamanızı kolaylaştırırken, genellikle bu kaynak kurumsal düzeyde üretim uygulamaları için kullanılması önerilmez. 
 
-### <a name="build-pipeline"></a>Derleme İşlem Hattı
+### <a name="build-pipeline"></a>Derleme işlem hattı
 
 Bir dağıtım kaynağına karar verdikten sonra bir sonraki adımınız bir yapı işlem hattı seçmek olur. Derleme işlem hattı kaynak kodunuzu dağıtım kaynağından okur ve uygulamayı bir çalıştırılabilir durumda almak için bir dizi adımı (kodu derleme, HTML ve JavaScript 'i çalıştırma, testleri çalıştırma ve paketleme bileşenleri) yürütür. Yapı işlem hattı tarafından yürütülen belirli komutlar, dil yığınınıza bağlıdır. Bu işlemler Azure Pipelines gibi bir yapı sunucusunda yürütülebilir veya yerel olarak yürütülür.
 
@@ -40,8 +40,8 @@ Bir dağıtım kaynağına karar verdikten sonra bir sonraki adımınız bir yap
 
 Dağıtım mekanizması, oluşturulan uygulamanızı Web uygulamanızın */Home/site/Wwwroot* dizinine koymak için kullanılan eylemdir. */Wwwroot* dizini, Web uygulamanızın tüm örnekleri tarafından paylaşılan bağlı bir depolama konumudur. Dağıtım mekanizması uygulamanızı bu dizine yerleştiriyorsa, örneklerinizin yeni dosyaları eşitlemek için bir bildirim alır. App Service aşağıdaki dağıtım mekanizmalarını destekler:
 
-- Kudu uç noktaları: [Kudu](https://github.com/projectkudu/kudu/wiki) , Windows App Service 'de ayrı bir işlem olarak ve Linux App Service ikinci bir kapsayıcı olarak çalışan açık kaynaklı geliştirici üretkenlik aracıdır. Kudu sürekli dağıtımları işler ve dağıtım için zipdeploy gibi HTTP uç noktaları sağlar.
-- FTP ve WebDeploy: [Sitenizi veya Kullanıcı kimlik bilgilerinizi](deploy-configure-credentials.md)kullanarak, FTP veya WebDeploy [aracılığıyla](deploy-ftp.md) dosya yükleyebilirsiniz. Bu mekanizmalar kudu 'ye gitmez.  
+- Kudu uç noktaları: [kudu](https://github.com/projectkudu/kudu/wiki) , Windows App Service 'de ayrı bir işlem olarak ve Linux App Service ikinci bir kapsayıcı olarak çalışan açık kaynaklı geliştirici üretkenlik aracıdır. Kudu sürekli dağıtımları işler ve dağıtım için zipdeploy gibi HTTP uç noktaları sağlar.
+- FTP ve WebDeploy: [sitenizi veya Kullanıcı kimlik bilgilerinizi](deploy-configure-credentials.md)kullanarak FTP veya WebDeploy [aracılığıyla](deploy-ftp.md) dosya yükleyebilirsiniz. Bu mekanizmalar kudu 'ye gitmez.  
 
 Azure Pipelines, Jenkins ve düzenleyici eklentileri gibi dağıtım araçları bu dağıtım mekanizmalarından birini kullanır.
 
@@ -53,11 +53,11 @@ JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve Wa
 
 ### <a name="node"></a>Düğüm
 
-Varsayılan olarak kudu, düğüm uygulamanız (`npm install`) için derleme adımlarını yürütür. Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için `SCM_DO_BUILD_DURING_DEPLOYMENT` `false`değeri olan bir uygulama ayarı oluşturun.
+Varsayılan olarak kudu, düğüm uygulamanız (`npm install`) için derleme adımlarını yürütür. Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için, `SCM_DO_BUILD_DURING_DEPLOYMENT`bir uygulama ayarı oluşturun, `false`değeri.
 
 ### <a name="net"></a>.NET 
 
-Varsayılan olarak, kudu .NET uygulamanız (`dotnet build`) için derleme adımlarını yürütür. Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için `SCM_DO_BUILD_DURING_DEPLOYMENT` `false`değeri olan bir uygulama ayarı oluşturun.
+Varsayılan olarak, kudu .NET uygulamanız için derleme adımlarını yürütür (`dotnet build`). Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için, `SCM_DO_BUILD_DURING_DEPLOYMENT`bir uygulama ayarı oluşturun, `false`değeri.
 
 ## <a name="other-deployment-considerations"></a>Diğer dağıtım konuları
 
@@ -69,8 +69,8 @@ Mümkün olduğunda, yeni bir üretim derlemesi dağıttığınızda [dağıtım
 
 Azure App Service içerik Azure Storage 'da depolanır ve bir içerik paylaşımında dayanıklı bir biçimde ortaya çıkmış olur. Ancak, bazı uygulamaların yüksek kullanılabilirliğe sahip yalnızca yüksek performanslı, salt okunurdur bir içerik deposu olması yeterlidir. Bu uygulamalar, [Yerel önbellek](overview-local-cache.md)kullanmanın avantajlarından yararlanabilir. WordPress gibi içerik yönetimi siteleri için yerel önbellek önerilmez.
 
-Kapalı kalma süresini engellemek için her zaman yerel önbelleği [dağıtım Yuvaları] (dağıtma-hazırlama-yuvalar MD) ile birlikte kullanın. Bu özellikleri birlikte kullanma hakkında bilgi için [Bu bölüme](overview-local-cache.md#best-practices-for-using-app-service-local-cache) bakın.
+Kapalı kalma süresini engellemek için her zaman yerel önbelleği [dağıtım yuvalarıyla](deploy-staging-slots.md) birlikte kullanın. Bu özellikleri birlikte kullanma hakkında bilgi için [Bu bölüme](overview-local-cache.md#best-practices-for-using-app-service-local-cache) bakın.
 
 ### <a name="high-cpu-or-memory"></a>Yüksek CPU veya bellek
 
-App Service planınız kullanılabilir CPU veya belleğin% 90 ' den fazla kullanılıyorsa, temeldeki sanal makinede dağıtımınızı işleme sorunu olabilir. Bu durumda, dağıtımı gerçekleştirmek için örnek sayınız geçici olarak ölçeklendirin. Dağıtım tamamlandıktan sonra, örnek sayısını önceki değerine döndürebilirsiniz.
+App Service planınız kullanılabilir CPU veya belleğin %90 ' den fazla kullanılıyorsa, temeldeki sanal makinede dağıtımınızı işleme sorunu olabilir. Bu durumda, dağıtımı gerçekleştirmek için örnek sayınız geçici olarak ölçeklendirin. Dağıtım tamamlandıktan sonra, örnek sayısını önceki değerine döndürebilirsiniz.

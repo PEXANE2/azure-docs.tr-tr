@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175169"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200224"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Güvenli, Azure tarafından yönetilen iş istasyonlarını anlayın
 
@@ -91,7 +91,7 @@ Güvenli iş istasyonu seviyelerini ![](./media/concept-azure-managed-workstatio
 
 * **Gelişmiş güvenlik** – bu giriş düzeyi, korunan çözüm ev kullanıcıları, küçük işletme kullanıcıları ve genel geliştiriciler için uygundur.
 
-   Gelişmiş iş istasyonu, düşük Güvenlik profilinin güvenliğini artırmanın ilke tabanlı bir yoludur. Ayrıca, e-posta ve Web 'e göz atma gibi üretkenlik araçlarını kullanırken müşteri verileriyle çalışmak için güvenli bir yol sunar. Kullanıcı davranışı ve profil kullanımı için gelişmiş bir iş istasyonunu izlemek üzere denetim ilkelerini ve Intune 'U kullanabilirsiniz. Geliştirilmiş iş istasyonu profilini Windows10 (1809) betiğine dağıtırsınız ve gelişmiş [tehdit koruması (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp)kullanan gelişmiş kötü amaçlı yazılımdan koruma özelliğinden yararlanır.
+   Gelişmiş iş istasyonu, düşük Güvenlik profilinin güvenliğini artırmanın ilke tabanlı bir yoludur. Ayrıca, e-posta ve Web 'e göz atma gibi üretkenlik araçlarını kullanırken müşteri verileriyle çalışmak için güvenli bir yol sunar. Kullanıcı davranışı ve profil kullanımı için gelişmiş bir iş istasyonunu izlemek üzere denetim ilkelerini ve Intune 'U kullanabilirsiniz. Geliştirilmiş iş istasyonu profilini Windows10 (1809) betiğine dağıtırsınız ve gelişmiş [tehdit koruması (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)kullanan gelişmiş kötü amaçlı yazılımdan koruma özelliğinden yararlanır.
 
 * **Yüksek güvenlik** : bir iş istasyonunun saldırı yüzeyini azaltmanın en etkili yolu, iş istasyonunun kendini yönetme özelliğini kaldırmaktır. Yerel yönetim haklarının kaldırılması güvenliği artıran bir adımdır, ancak yanlış uygulanırsa üretkenliği etkileyebilir. Yüksek güvenlik profili, gelişmiş güvenlik profilinde önemli bir değişiklik ile oluşturulur: yerel yöneticinin kaldırılması. Bu profil, yüksek profilli kullanıcılar için tasarlanmıştır: Yöneticiler, bordro ve hassas veri kullanıcıları, hizmet ve süreçlerle ilgili onaylayanlar.
 

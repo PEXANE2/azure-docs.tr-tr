@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175903"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200122"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
 
@@ -64,7 +64,7 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 - Log Analytics çalışma alanına [erişim](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
 - Azure Active Directory ' de aşağıdaki roller (Azure Active Directory Portal üzerinden Log Analytics erişiyorsanız)
-    - Güvenlik Yöneticisi
+    - Güvenlik yöneticisi
     - Güvenlik okuyucusu
     - Rapor okuyucu
     - Genel yönetici
@@ -72,11 +72,10 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 ## <a name="roles"></a>Roller
 Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
 -   Genel yönetici
--   Güvenlik Yöneticisi
+-   Güvenlik yöneticisi
 -   Güvenlik okuyucusu
 -   Rapor okuyucu
 -   Uygulama Yöneticisi
-
 
 ## <a name="workbook-access"></a>Çalışma kitabı erişimi 
 
@@ -84,16 +83,11 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-2. Sol gezinti bölmesinde **Azure Active Directory**' yi seçin.
+1. **Azure Active Directory** > **Izleme** > **çalışma kitaplarına**gidin. 
 
-3. **İzleme** bölümünde **çalışma kitapları**' nı seçin. 
+1. Bir rapor veya şablon seçin ya da araç çubuğunda **Aç**' ı seçin. 
 
-    ![Öngörüler seçin](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Bir rapor veya şablon seçin ya da araç çubuğunda **Aç**' ı seçin. 
-
-    ![Açık Seç](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![Azure AD 'de Azure Izleyici çalışma kitaplarını bulma](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Oturum açma Analizi
 

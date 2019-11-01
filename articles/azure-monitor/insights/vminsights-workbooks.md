@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma | Microsoft Docs
+title: Çalışma kitapları ile VM'ler için Azure İzleyici etkileşimli raporlar oluşturma | Microsoft Docs
 description: VM'ler için Azure İzleyici için önceden tanımlı ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553737"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200537"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Çalışma kitaplarında etkileşimli raporlar VM'ler için Azure İzleyici oluşturma
 
 Çalışma kitapları metin, [günlük sorgularını](../log-query/query-language.md), ölçümleri ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
 
@@ -105,7 +105,7 @@ Diğer Log Analytics çalışma alanlarından veya **çalışma alanı** tanıml
 
 ### <a name="advanced-analytic-query-settings"></a>Gelişmiş analitik sorgu ayarları
 
-Her bölümde kendi gelişmiş ayarları bulunur ve bu ayarlar ![Workbooks Bölüm Düzenle ](media/vminsights-workbooks/006-settings.png) simgesi, **Parametreler Ekle** düğmesinin sağında bulunur.
+Her bölümde kendi gelişmiş ayarları bulunur ve bu ayarlar ![çalışma kitapları bölüm bölümü Düzenle](media/vminsights-workbooks/006-settings.png) simgesi **parametre Ekle** düğmesinin sağında bulunur.
 
 ![VM'ler için Azure İzleyici çalışma kitapları bölümü Düzenle denetimleri](media/vminsights-workbooks/007-settings-expanded.png)
 

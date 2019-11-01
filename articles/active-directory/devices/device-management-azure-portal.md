@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860896"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200232"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal kullanarak cihaz kimliklerini yönetme
 
@@ -136,6 +136,7 @@ Bir cihazı etkinleştirmek/devre dışı bırakmak için iki seçeneğiniz vard
 
 - Bir cihazı etkinleştirmek/devre dışı bırakmak için Azure AD 'de Genel yönetici veya bulut cihaz yöneticisi olmanız gerekir. 
 - Bir cihazın devre dışı bırakılması, cihazın Azure AD ile başarılı bir şekilde kimlik doğrulamasına engel olur, böylece cihazın cihaz CA 'sı tarafından korunan Azure AD kaynaklarınıza veya WH4B kimlik bilgilerinizi kullanarak erişmesini önler.
+- Cihazın devre dışı bırakılması hem birincil yenileme belirtecini (PRT) hem de cihazdaki yenileme belirteçlerini (RT) iptal eder.
 
 ### <a name="delete-an-azure-ad-device"></a>Azure AD cihazını silme
 
@@ -173,12 +174,12 @@ Kullanıcıların şifreli sürücüsünü kurtarmalarına yardımcı olmak içi
 
 BitLocker anahtarlarını görüntülemek veya kopyalamak için, cihazın sahibi ya da aşağıdaki rollerden en az birine sahip olan bir kullanıcı olmanız gerekir:
 
-- Bulut Cihazı Yöneticisi
+- Bulut Cihaz Yöneticisi
 - Genel Yönetici
 - Yardım Masası Yöneticisi
 - Intune Hizmet Yöneticisi
 - Güvenlik Yöneticisi
-- Güvenlik Okuyucusu
+- Güvenlik okuyucusu
 
 > [!NOTE]
 > Karma Azure AD 'ye katılmış Windows 10 cihazlarının sahibi yok. Bu nedenle, bir cihazı sahibine göre arıyorsanız ve bulamıyorsanız, cihaz KIMLIĞINE göre arama yapın.
@@ -210,11 +211,11 @@ Araç çubuğunda **Sütunlar**’a tıklayarak liste görünümünü özelleşt
 
 Raporlanan verileri istediğiniz düzeye gelecek şekilde daraltmak için, aşağıdaki alanları kullanarak denetim verilerini filtreleyebilirsiniz:
 
-- Category
+- Kategori
 - Etkinlik kaynak türü
 - Etkinlik
 - Tarih aralığı
-- Hedef
+- Hedefleyin
 - Başlatan (aktör)
 
 Filtrelerin yanı sıra belirli girdileri de arayabilirsiniz.

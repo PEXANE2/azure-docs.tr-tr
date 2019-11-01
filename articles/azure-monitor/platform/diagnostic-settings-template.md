@@ -1,5 +1,5 @@
 ---
-title: Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma | Microsoft Docs
+title: Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
 description: Azure platformu günlüklerini Azure Izleyici günlüklerine, Azure depolama 'ya veya Azure Event Hubs iletmek için bir Kaynak Yöneticisi şablonu kullanarak tanılama ayarları oluşturun.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597296"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200498"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure 'da tanılama ayarı oluşturma
 Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, farklı hedeflere platform günlüklerini toplamak üzere tanılama ayarlarını yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) kullanma hakkında ayrıntılı bilgi verilmektedir. Bu, bir kaynak oluşturulduğunda platform günlüklerini toplamaya otomatik olarak başlayabilmenizi sağlar.
@@ -59,7 +59,7 @@ Tanılama ayarının [hedeflerine](diagnostic-settings.md#destinations) bağlı 
 ```
 
 ### <a name="resources"></a>Kaynaklar
-Tanılama ayarını oluşturmak istediğiniz kaynağın kaynaklar dizisinde `[resource namespace]/providers/diagnosticSettings` türünde bir kaynak ekleyin. Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. [Kaynak ölçümlerini destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplamak için `metrics` özelliğini ekleyin.
+Tanılama ayarını oluşturmak istediğiniz kaynağın kaynaklar dizisinde `[resource namespace]/providers/diagnosticSettings`türünde bir kaynak ekleyin. Özellikler bölümü, [Tanılama ayarları-oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)bölümünde açıklanan biçimi izler. [Kaynak ölçümlerini destekliyorsa](metrics-supported.md), kaynak ölçümlerini aynı hedeflere toplamak için `metrics` özelliğini ekleyin.
    
 ```json
 "resources": [
