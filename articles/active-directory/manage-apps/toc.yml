@@ -131,10 +131,14 @@
           items:
             - name: Kullanıcı onayını yapılandırma
               href: configure-user-consent.md
+            - name: Yönetici onayı iş akışını yapılandırma (önizleme)
+              href: configure-admin-consent-workflow.md
             - name: Kullanıcıları ve grupları bir uygulamaya atama yöntemleri
               href: methods-for-assigning-users-and-groups.md
             - name: Kullanıcıyı uygulamaya atama
               href: assign-user-or-group-access-portal.md
+            - name: Uygulamalarım üzerinde çalışma alanları oluşturma (önizleme)
+              href: access-panel-workspaces.md
             - name: Self servis uygulama erişimini kullanma
               href: access-panel-manage-self-service-access.md
             - name: Bir kullanıcının uygulamaya erişimini kaldırma yöntemleri
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: ADFS uygulamasını Azure’a geçirme
               href: migrate-adfs-apps-to-azure.md
+            - name: AD FS uygulaması etkinlik raporunu kullanma (önizleme)
+              href: migrate-adfs-application-activity.md
         - name: Sorun giderme
           items:
             - name: Uygulama ekleme sorunlarını giderme

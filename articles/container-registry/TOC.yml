@@ -129,10 +129,16 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
         - name: Service Fabric
           href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: İzleme
+      items:
+        - name: Tanılama ve denetim günlükleri (önizleme)
+          href: container-registry-diagnostics-audit-logs.md
     - name: Sorun giderme
       items:
-        - name: Genel sorunları tanılama
+        - name: Yaygın sorunları algılama
           href: container-registry-check-health.md
+        - name: SSS
+          href: container-registry-faq.md
 - name: Başvuru
   items:
     - name: Azure CLI
@@ -176,5 +182,3 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: Videolar
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
-    - name: SSS
-      href: container-registry-faq.md

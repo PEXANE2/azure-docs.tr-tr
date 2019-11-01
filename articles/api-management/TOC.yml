@@ -32,7 +32,7 @@
     - name: 8 - Birden fazla sürüm ekleme
       href: api-management-get-started-publish-versions.md
     - name: 9 - Geliştirici portalını özelleştirme
-      href: api-management-customize-styles.md
+      href: api-management-howto-developer-portal-customize.md
 - name: Örnekler
   items:
     - name: İlkeler
@@ -123,12 +123,8 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Geliştirici deneyimini özelleştirme
       items:
-        - name: Yeni geliştirici portalına erişme ve bu portalı özelleştirme
+        - name: Geliştirici portalını anlama
           href: api-management-howto-developer-portal.md
-        - name: Sayfa içeriği ve düzenini değiştirme
-          href: api-management-modify-content-layout.md
-        - name: Şablonları kullanarak sistem sayfalarını özelleştirme
-          href: api-management-developer-portal-templates.md
         - name: Azure AD ile kimlik doğrulaması
           href: api-management-howto-aad.md
         - name: Azure AD B2C ile kimlik doğrulaması
@@ -139,6 +135,34 @@
           href: api-management-howto-configure-notifications.md
         - name: Konsolda OAuth desteğini etkinleştirme
           href: api-management-howto-oauth2.md
+        - name: Eski portal - portalı özelleştirme
+          href: api-management-customize-styles.md
+        - name: Eski portalı - sayfaları ve düzenleri değiştirme
+          href: api-management-modify-content-layout.md
+        - name: Eski portal - şablonları özelleştirme
+          href: api-management-developer-portal-templates.md
+    - name: Eski portal şablonları
+      items:
+        - name: Veri modeli başvurusu
+          href: api-management-template-data-model-reference.md
+        - name: Sayfa denetimleri
+          href: api-management-page-controls.md
+        - name: Şablonlar
+          href: api-management-developer-portal-templates-reference.md
+        - name: API'ler
+          href: api-management-api-templates.md
+        - name: Ürünler
+          href: api-management-product-templates.md
+        - name: Uygulamalar
+          href: api-management-application-templates.md
+        - name: Sorunlar
+          href: api-management-issue-templates.md
+        - name: Kullanıcı profili
+          href: api-management-user-profile-templates.md
+        - name: Sayfalar
+          href: api-management-page-templates.md
+        - name: Şablon kaynakları
+          href: api-management-template-resources.md
     - name: İlkeleri tanımlama
       items:
         - name: İlkeleri ayarlama veya düzenleme
@@ -167,28 +191,6 @@
           href: api-management-cross-domain-policies.md
         - name: Dönüştürme ilkeleri
           href: api-management-transformation-policies.md
-    - name: Şablon başvurusu
-      items:
-        - name: Şablonlar
-          href: api-management-developer-portal-templates-reference.md
-        - name: API'ler
-          href: api-management-api-templates.md
-        - name: Ürünler
-          href: api-management-product-templates.md
-        - name: Uygulamalar
-          href: api-management-application-templates.md
-        - name: Sorunlar
-          href: api-management-issue-templates.md
-        - name: Kullanıcı profili
-          href: api-management-user-profile-templates.md
-        - name: Sayfalar
-          href: api-management-page-templates.md
-        - name: Şablon kaynakları
-          href: api-management-template-resources.md
-    - name: Veri modeli başvurusu
-      href: api-management-template-data-model-reference.md
-    - name: Sayfa denetimleri
-      href: api-management-page-controls.md
     - name: Üretimi yönetin
       items:
         - name: Grupları yönetme

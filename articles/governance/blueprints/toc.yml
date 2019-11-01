@@ -47,6 +47,17 @@
           href: ./samples/cis-azure-1.1.0/index.md
         - name: Öneri eşlemesi
           href: ./samples/cis-azure-1.1.0/control-mapping.md
+    - name: FedRAMP Moderate
+      items:
+        - name: Genel Bakış
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/index.md
+        - name: Denetim eşlemesi
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/control-mapping.md
+        - name: Dağıtım adımları
+          displayName: 'standards, fedramp, moderate'
+          href: ./samples/fedramp-m/deploy.md
     - name: IRS 1075
       items:
         - name: Genel Bakış
