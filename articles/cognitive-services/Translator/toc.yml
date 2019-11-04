@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: Dinamik sözlük özelliğini kullanma
           href: dynamic-dictionary.md
+        - name: Kapsayıcıları kullanma
+          items:
+            - name: Kapsayıcıları yükleme ve çalıştırma
+              href: how-to-install-containers.md
+            - name: Kapsayıcıları yapılandırma
+              href: translator-text-container-config.md
         - name: Güvenlik duvarı arkasında çeviri yapma
           href: firewalls.md
     - name: Örnekler
