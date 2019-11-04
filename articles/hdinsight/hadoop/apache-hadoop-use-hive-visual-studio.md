@@ -1,5 +1,5 @@
 ---
-title: Visual Studio için Data Lake araçları ile Apache Hive-Azure HDInsight
+title: Visual Studio için Apache Hive & Data Lake araçları-Azure HDInsight
 description: Azure HDInsight üzerinde Apache Hadoop ile Apache Hive sorguları çalıştırmak üzere Visual Studio için Data Lake araçları 'nı nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 37652a8ca9750e6b33bd2744bda386eaba92b025
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076276"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044524"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio Data Lake araçlarını kullanarak Apache Hive sorguları çalıştırma
 
@@ -61,25 +61,25 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
     ![Hive sorgusu gönderme ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
-    Hive düzenleyicisi IntelliSense’i destekler. Visual Studio için Data Lake Araçları, Hive betiğinizi düzenlerken uzak meta verilerin yüklenmesini destekler. Örneğin, yazarsanız `SELECT * FROM`, IntelliSense önerilen tüm tablo adlarını listeler. Bir tablo adı belirtildiğinde, IntelliSense sütun adlarını listeler. Araçlar çoğu Hive DML deyimlerini, alt sorguları ve yerleşik UDF'leri destekler. IntelliSense yalnızca HDInsight araç çubuğunda seçilen kümelerin meta verilerini önerir.
+    Hive düzenleyicisi IntelliSense’i destekler. Visual Studio için Data Lake Araçları, Hive betiğinizi düzenlerken uzak meta verilerin yüklenmesini destekler. Örneğin, `SELECT * FROM`yazarsanız, IntelliSense önerilen tüm tablo adlarını listeler. Bir tablo adı belirtildiğinde, IntelliSense sütun adlarını listeler. Araçlar çoğu Hive DML deyimlerini, alt sorguları ve yerleşik UDF'leri destekler. IntelliSense yalnızca HDInsight araç çubuğunda seçilen kümelerin meta verilerini önerir.
 
-    ![HDInsight Visual Studio Araçları IntelliSense örnek 1’in ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+    ![HDInsight Visual Studio Araçları IntelliSense örnek 1 ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
    
-    ![HDInsight Visual Studio Araçları IntelliSense örnek 2’nin ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+    ![HDInsight Visual Studio Araçları IntelliSense örnek 2 ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
 
 7. **Gönder** veya **Gönder (Gelişmiş)** öğesini seçin.
 
    Gelişmiş gönderme seçeneğini belirlerseniz, betik için **İş Adı**, **Bağımsız Değişkenler**, **Ek Yapılandırmalar** ve **Durum Dizini**’ni yapılandırın:
 
-    ![HDInsight Hadoop Hive sorgusunun ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Sorgu gönderme")
+    ![HDInsight Hadoop Hive sorgusunun ekran görüntüsü](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "Sorguları gönder")
 
 ### <a name="hive-application"></a>Hive uygulaması
 
 1. **Visual Studio 'yu**açın.
 
-2. Menü çubuğundan **Dosya** > **Yeni** > **Proje**' ye gidin.
+2. Menü çubuğundan **dosya** > **Yeni** > **projesi**' ne gidin.
 
-3. **Yeni proje** penceresinde **Şablonlar** >  > **Azure Data Lake** > **Hive (HDInsight)** **Hive uygulaması**' na gidin. 
+3. **Yeni proje** penceresinde **şablonlar** > **Azure Data Lake** > **Hive (HDInsight)**  > **Hive uygulaması**' na gidin. 
 
 4. Bu proje için bir ad girip **Tamam**' ı seçin.
 
@@ -96,7 +96,7 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
     Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-   * `DROP TABLE`: Tablo varsa, bu ifade onu siler.
+   * `DROP TABLE`: tablo varsa, bu ifade onu siler.
 
    * `CREATE EXTERNAL TABLE`: Hive içinde yeni bir ' External ' tablosu oluşturur. Dış tablolar yalnızca Hive içindeki tablo tanımını depolar (veriler özgün konumda bırakılır).
 
@@ -105,13 +105,13 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
      >
      > Dış tablonun atılması, yalnızca tablo tanımı olan **verileri silmez.**
 
-   * `ROW FORMAT`: Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
+   * `ROW FORMAT`: kovanın verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
 
-   * `STORED AS TEXTFILE LOCATION`: Hive 'ın verilerin örnek/veri dizininde depolandığını ve metin olarak depolandığını söyler.
+   * `STORED AS TEXTFILE LOCATION`: Hive, verilerin örnek/veri dizininde depolandığını ve metin olarak depolandığını söyler.
 
-   * `SELECT`: Sütunun `t4` değeri`[ERROR]`içerdiği tüm satırların sayımını seçin. Bu değer, bu değeri içeren `3` üç satır olduğundan, bir değeri döndürür.
+   * `SELECT`: sütun `t4` `[ERROR]`değeri içeren tüm satırların sayısını seçin. Bu değeri içeren üç satır olduğundan, bu ifade `3` değerini döndürür.
 
-   * `INPUT__FILE__NAME LIKE '%.log'`-Hive 'a yalnızca. log ile biten dosyalardaki verileri döndürmemiz gerektiğini söyler. Bu yan tümce, aramayı verileri içeren Sample. log dosyası ile sınırlandırır.
+   * `INPUT__FILE__NAME LIKE '%.log'`-Hive yalnızca. log ile biten dosyalardaki verileri döndürmemiz gerektiğini belirtir. Bu yan tümce, aramayı verileri içeren Sample. log dosyası ile sınırlandırır.
 
 6. Araç çubuğundan, bu sorgu için kullanmak istediğiniz **HDInsight kümesini** seçin. Deyimlerini Hive işi olarak çalıştırmak için **Gönder** ' i seçin.
 
@@ -121,11 +121,11 @@ Geçici sorgular **toplu** veya **etkileşimli** modda çalıştırılabilir.
 
    ![tamamlanmış bir işi görüntüleyen iş Özeti](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-8. Bu işin çıkışını görüntülemek için **Iş çıkışı** bağlantısını kullanın. Bu sorgu `[ERROR] 3`tarafından döndürülen değer olan öğesini görüntüler.
+8. Bu işin çıkışını görüntülemek için **Iş çıkışı** bağlantısını kullanın. Bu sorgu tarafından döndürülen değer olan `[ERROR] 3`görüntüler.
 
 ### <a name="additional-example"></a>Ek örnek
 
-Bu örnek, önceki adımda `log4jLogs` oluşturulan tabloya bağımlıdır.
+Bu örnek, önceki adımda oluşturulan `log4jLogs` tablosuna bağımlıdır.
 
 1. **Sunucu Gezgini**, kümenize sağ tıklayın ve **Hive sorgusu yaz**' ı seçin.
 
@@ -139,18 +139,18 @@ Bu örnek, önceki adımda `log4jLogs` oluşturulan tabloya bağımlıdır.
 
     Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-    * `CREATE TABLE IF NOT EXISTS`: Henüz yoksa tablo oluşturur. `EXTERNAL` Anahtar sözcüğü kullanılmadığından, bu ifade bir iç tablo oluşturur. İç tablolar Hive veri ambarında depolanır ve Hive tarafından yönetilir.
+    * `CREATE TABLE IF NOT EXISTS`: zaten yoksa tablo oluşturur. `EXTERNAL` anahtar sözcüğü kullanılmadığından, bu ifade bir iç tablo oluşturur. İç tablolar Hive veri ambarında depolanır ve Hive tarafından yönetilir.
     
     > [!NOTE]  
-    > Tabloların `EXTERNAL` aksine, iç tablo bırakılırken temel alınan veriler de silinir.
+    > `EXTERNAL` tablolarının aksine, iç tablo bırakılırken temel alınan veriler de silinir.
 
-    * `STORED AS ORC`: Verileri iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.
+    * `STORED AS ORC`: verileri en iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve etkili bir biçimdir.
     
-    * `INSERT OVERWRITE ... SELECT`: İçeren `log4jLogs` tablodan `errorLogs` satırları seçer, ardından verileri tabloya ekler. `[ERROR]`
+    * `INSERT OVERWRITE ... SELECT`: `[ERROR]`içeren `log4jLogs` tablosundan satırları seçer ve ardından verileri `errorLogs` tablosuna ekler.
 
 3. Sorguyu **Batch** modunda yürütün.
 
-4. İşin tabloyu oluşturduğunu doğrulamak için **Sunucu Gezgini** kullanın ve **Azure** > **HDInsight** 'ı > HDInsight kümeniz > **Hive veritabanlarının** > **varsayılan**genişletin. **Errorlogs** tablosu ve **log4jLogs** tablosu listelenir.
+4. İşin tabloyu oluşturduğunu doğrulamak için **Sunucu Gezgini** kullanın ve **Azure** > **HDInsight** ' ı > HDInsight kümeniz > **Hive veritabanları** ' nı > **varsayılan**olarak genişletin. **Errorlogs** tablosu ve **log4jLogs** tablosu listelenir.
 
 ## <a id="nextsteps"></a>Sonraki adımlar
 

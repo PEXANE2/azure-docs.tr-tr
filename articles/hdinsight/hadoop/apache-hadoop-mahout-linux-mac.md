@@ -1,5 +1,5 @@
 ---
-title: Apache Mahout ve HDInsight (SSH) kullanarak öneriler oluşturma-Azure
+title: Azure HDInsight 'ta Apache Mahout kullanarak öneriler oluşturma
 description: HDInsight (Hadoop) ile film önerileri oluşturmak için Apache Mahout Machine Learning kitaplığını nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881985"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044558"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>HDInsight 'ta Apache Hadoop ile Apache Mahout kullanarak film önerileri oluşturma (SSH)
 
@@ -35,23 +35,23 @@ HDInsight 'ta Mahout sürümü hakkında daha fazla bilgi için bkz. [HDInsight 
 
 ## <a name="recommendations"></a>Önerileri anlama
 
-Mahout tarafından sunulan işlevlerden biri bir öneri altyapısıdır. Bu altyapı verileri `userID`, `itemId`, ve `prefValue` biçiminde (öğe için tercih) kabul eder. Mahout daha sonra şunları tespit etmek için ortak yineleme Analizi gerçekleştirebilir: *bir öğe için bir tercihi olan kullanıcılar aynı zamanda bu diğer öğeler için bir tercihe sahiptir*. Mahout daha sonra, tercih etmek için kullanılabilecek, LIKE öğesi tercihleri olan kullanıcıları belirler.
+Mahout tarafından sunulan işlevlerden biri bir öneri altyapısıdır. Bu altyapı, `userID`, `itemId`ve `prefValue` (öğe için tercih) biçimindeki verileri kabul eder. Mahout daha sonra şunları tespit etmek için ortak yineleme Analizi gerçekleştirebilir: *bir öğe için bir tercihi olan kullanıcılar aynı zamanda bu diğer öğeler için bir tercihe sahiptir*. Mahout daha sonra, tercih etmek için kullanılabilecek, LIKE öğesi tercihleri olan kullanıcıları belirler.
 
 Aşağıdaki iş akışı, film verileri kullanan Basitleştirilmiş bir örnektir:
 
-* **Ortak oluşum**: Ali, Çiğdem ve Bob tüm beğenilen *yıldız çatışmaları*, *Empire geri* *dönerek JEDI 'nın geri dönmesi*. Mahout, bu filmlerde herhangi birini beğenen, diğer iki de gibi kullanıcıları belirler.
+* **Ortak yinelenme**: ali, Gamze ve Bob tüm beğenilen *yıldız çatışmaları*, *Empire geri* *dönerek JEDI 'nın geri dönmesi*. Mahout, bu filmlerde herhangi birini beğenen, diğer iki de gibi kullanıcıları belirler.
 
-* **Ortak oluşum**: Bob ve Gamze, *hayalet Menace*, *klonların saldırıları*ve *SITH 'ın Revenge*de beğenildi. Mahout, önceki üç film de bu üç film gibi beğenilen kullanıcıları belirler.
+* **Ortak olay**: Bob ve Gamze, *hayalet Menace*, *klonların saldırıları*ve *Revenge 'in*de beğenilmiş. Mahout, önceki üç film de bu üç film gibi beğenilen kullanıcıları belirler.
 
-* **Benzerlik önerisi**: Ali, ilk üç film beğentiğinden, Mahout, benzer tercihlere sahip başkalarının beğenmediği, ancak ali 'nin (beğenilmiş/derecelendirmediği) filmlerine bakar. Bu durumda Mahout, *hayali Menace*, *klonların saldırıları*ve *SITH Revenge*için önerilir.
+* **Benzerlik önerisi**: ali, ilk üç film Beğentiğinden, Mahout, benzer tercihleri beğenen, ancak ali 'nin (beğenilmiş/derecelendirmediği) diğer filmlere bakar. Bu durumda Mahout, *hayali Menace*, *klonların saldırıları*ve *SITH Revenge*için önerilir.
 
 ### <a name="understanding-the-data"></a>Verileri anlama
 
-Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/movielens/) , filmler Için Mahout ile uyumlu bir biçimde derecelendirme verileri sağlar. Bu veriler, kümenizin varsayılan depolama alanı `/HdiSamples/HdiSamples/MahoutMovieData`üzerinde bulunur.
+Kolay bir şekilde [Grouplens araştırması](https://grouplens.org/datasets/movielens/) , filmler Için Mahout ile uyumlu bir biçimde derecelendirme verileri sağlar. Bu veriler, kümenizin varsayılan depolama alanı `/HdiSamples/HdiSamples/MahoutMovieData`' de bulunur.
 
-İki dosya `moviedb.txt` `user-ratings.txt`vardır. `user-ratings.txt` Dosya analiz sırasında kullanılır. , `moviedb.txt` Sonuçları görüntülerken Kullanıcı dostu metin bilgileri sağlamak için kullanılır.
+`moviedb.txt` ve `user-ratings.txt`iki dosya vardır. `user-ratings.txt` dosyası analiz sırasında kullanılır. `moviedb.txt`, sonuçları görüntülerken Kullanıcı dostu metin bilgilerini sağlamak için kullanılır.
 
-User-Ratings. txt ' de `userID`bulunan veriler `userRating`, her kullanıcının bir filmi `movieID`derecelendirdiğini belirten `timestamp`,, ve yapısına sahiptir. Verilerin bir örneği aşağıda verilmiştir:
+User-Ratings. txt ' de yer alan veriler `userID`, `movieID`, `userRating`ve `timestamp`bir yapısına sahiptir ve her kullanıcının bir filmi derecelendirdiğini gösterir. Verilerin bir örneği aşağıda verilmiştir:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -85,7 +85,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
         3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    İlk sütun `userID`. ' [' Ve '] ' `movieId`içinde yer alan değerler:.`recommendationScore`
+    İlk sütun `userID`. ' [' Ve '] ' içinde yer alan değerler `movieId`:`recommendationScore`.
 
 2. Öneriler hakkında daha fazla bilgi sağlamak için, çıktıyı moviedb. txt ile birlikte kullanabilirsiniz. İlk olarak, aşağıdaki komutları kullanarak dosyaları yerel olarak kopyalayın:
 
@@ -178,7 +178,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
 ## <a name="delete-temporary-data"></a>Geçici verileri Sil
 
-Mahout işleri, iş işlenirken oluşturulan geçici verileri kaldırmaz. Bu `--tempDir` parametre, geçici dosyaları kolay bir şekilde silinmek üzere belirli bir yola yalıtmak için örnek işte belirtilir. Geçici dosyaları kaldırmak için aşağıdaki komutu kullanın:
+Mahout işleri, iş işlenirken oluşturulan geçici verileri kaldırmaz. `--tempDir` parametresi, geçici dosyaları kolay bir şekilde silinmek üzere belirli bir yola yalıtmak için örnek işte belirtilir. Geçici dosyaları kaldırmak için aşağıdaki komutu kullanın:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp

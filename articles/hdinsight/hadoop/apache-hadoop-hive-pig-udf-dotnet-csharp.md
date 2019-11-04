@@ -1,5 +1,5 @@
 ---
-title: HDInsight C# 'ta Apache Hadoop Apache Hive ve Apache Pig ile kullanma-Azure
+title: C#Apache Hive & Apache Pig on Apache Hadoop-Azure HDInsight
 description: Azure HDInsight 'ta Apache Hive C# ve Apache Pig akışıyla Kullanıcı tanımlı IŞLEVLERI (UDF) nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066912"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044605"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight C# 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile Kullanıcı tanımlı işlevler kullanma
 
@@ -22,7 +22,7 @@ HDInsight üzerinde Apache Hive ve C# Apache Pig ile Kullanıcı tanımlı IŞLE
 > [!IMPORTANT]
 > Bu belgedeki adımlar hem Linux tabanlı hem de Windows tabanlı HDInsight kümeleriyle çalışır. Linux, HDInsight sürüm 3.4 ve üzerinde kullanılan tek işletim sistemidir. Daha fazla bilgi için bkz. [HDInsight bileşen sürümü oluşturma](../hdinsight-component-versioning.md).
 
-Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu işlem _akış_olarak bilinir. .NET uygulaması kullanılırken, veriler STDIN üzerindeki uygulamaya geçirilir ve uygulama STDOUT üzerinde sonuçları döndürür. STDIN ve STDOUT 'tan okumak ve yazmak için bir konsol uygulaması kullanabilirsiniz `Console.ReadLine()`. `Console.WriteLine()`
+Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu işlem _akış_olarak bilinir. .NET uygulaması kullanılırken, veriler STDIN üzerindeki uygulamaya geçirilir ve uygulama STDOUT üzerinde sonuçları döndürür. STDıN ve STDOUT 'tan okumak ve yazmak için, bir konsol uygulamasından `Console.ReadLine()` ve `Console.WriteLine()` kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,7 +42,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
 
 ## <a name="net-on-hdinsight"></a>HDInsight üzerinde .NET
 
-* Mono kullanan __Linux tabanlı HDInsight__ kümeleri [(https://mono-project.com) ](https://mono-project.com) .NET uygulamalarını çalıştırmak için). Tek bir sürüm 4.2.1, HDInsight sürüm 3,6 ' ye dahildir.
+* .NET uygulamalarını çalıştırmak için [Mono (https://mono-project.com)](https://mono-project.com) kullanan __Linux tabanlı HDInsight__ kümeleri. Tek bir sürüm 4.2.1, HDInsight sürüm 3,6 ' ye dahildir.
 
     .NET Framework sürümleriyle mono uyumluluğu hakkında daha fazla bilgi için bkz. [mono uyumluluk](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -110,7 +110,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
     }
     ```
 
-3. Projeyi oluşturun.
+3. Projeyi derleyin.
 
 ### <a name="apache-pig-udf"></a>Apache Pig UDF
 
@@ -147,7 +147,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
     }
     ```
 
-    Bu kod, Pig adresinden gönderilen satırları ayrıştırır ve ile `java.lang.Exception`başlayan satırları yeniden biçimlendirir.
+    Bu kod, Pig 'den gönderilen satırları ayrıştırır ve `java.lang.Exception`ile başlayan satırları yeniden biçimlendirir.
 
 3. **Program.cs**kaydedin ve projeyi derleyin.
 
@@ -203,9 +203,9 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
     ```
 
     > [!IMPORTANT]
-    > Kümeniz için kullanılan varsayılan depolama türüyle eşleşen deyiminaçıklamasınıkaldırın.`add file`
+    > Kümeniz için kullanılan varsayılan depolama türüyle eşleşen `add file` deyimin açıklamasını kaldırın.
 
-    Bu sorgu,, `clientid`ve `devicemake` `devicemodel` alanlarını`hivesampletable`seçer ve alanları hivecsharp. exe uygulamasına geçirir. Sorgu, `clientid` `phoneLabel`uygulamanın, ve `phoneHash`olarak depolanan üç alanı döndürmesini bekler. Sorgu ayrıca varsayılan depolama kapsayıcısının kökünde HiveCSharp. exe ' yi bulmayı bekler.
+    Bu sorgu, `hivesampletable``clientid`, `devicemake`ve `devicemodel` alanlarını seçer ve alanları HiveCSharp. exe uygulamasına geçirir. Sorgu, uygulamanın `clientid`, `phoneLabel`ve `phoneHash`olarak depolanan üç alanı döndürmesini bekler. Sorgu ayrıca varsayılan depolama kapsayıcısının kökünde HiveCSharp. exe ' yi bulmayı bekler.
 
 5. İşi HDInsight kümesine göndermek için **Gönder** ' e tıklayın. **Hive Iş Özeti** penceresi açılır.
 
@@ -213,7 +213,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
 
 ## <a name="run-an-apache-pig-job"></a>Apache Pig işini çalıştırma
 
-1. HDInsight kümenize bağlanmak için SSH kullanın. Örneğin: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Daha fazla bilgi için bkz. [SSH Withhdınsight kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. HDInsight kümenize bağlanmak için SSH kullanın. Örneğin, `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Daha fazla bilgi için bkz. [SSH Withhdınsight kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
 2. Pig komut satırını başlatmak için aşağıdaki komutu kullanın:
 
@@ -226,7 +226,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
     > bin\pig
     > ```
 
-    Bir `grunt>` istem görüntülenir.
+    Bir `grunt>` istemi görüntülenir.
 
 3. .NET Framework uygulamasını kullanan bir Pig işini çalıştırmak için aşağıdakileri girin:
 
@@ -236,10 +236,10 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    İfade, pigudf. `streamer` exe uygulamaları için bir diğer ad oluşturur ve `CACHE` küme için varsayılan depolama alanından yükler. `DEFINE` Daha sonra `streamer` , günlükte bulunan tek `STREAM` satırları işlemek ve verileri bir dizi sütun olarak döndürmek için işleciyle birlikte kullanılır.
+    `DEFINE` deyimin adı, pigudf. exe uygulamaları için bir diğer `streamer` ad oluşturur ve `CACHE` bunu küme için varsayılan depolama alanından yükler. Daha sonra `streamer`, günlükte bulunan tek satırları işlemek ve verileri bir dizi sütun olarak döndürmek için `STREAM` işleciyle birlikte kullanılır.
 
     > [!NOTE]
-    > Akış \` için kullanılan uygulama adı, diğer ad olduğunda (backtick) karakteri ile birlikte `SHIP`kullanıldığında ' (tek tırnak) arasına alınmalıdır.
+    > Akış için kullanılan uygulama adı, diğer ad olduğunda \` (geri alma) karakteriyle ve `SHIP`birlikte kullanıldığında ' (tek tırnak) arasına alınmalıdır.
 
 4. Son satırı girdikten sonra iş başlamalıdır. Aşağıdaki metne benzer bir çıktı döndürür:
 

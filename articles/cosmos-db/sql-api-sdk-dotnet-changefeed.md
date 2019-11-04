@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637742"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023899"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Notları indir ve serbest bırak
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET değişiklik akışı Işlemcisi SDK 'Sı: Indirme ve sürüm notları
 
 > [!div class="op_single_selector"]
 >
@@ -34,14 +34,23 @@ ms.locfileid: "68637742"
 
 |   |   |
 |---|---|
-|**SDK'sını indirme**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API belgeleri**|[Akış Işlemcisi kitaplık API 'SI başvuru belgelerini değiştirme](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Kullanmaya başlama**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
-|**Geçerli desteklenen çerçevesi**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
+|**Başlarken**|[Değişiklik akışı Işlemcisi .NET SDK 'sını kullanmaya başlama](change-feed.md)|
+|**Desteklenen geçerli çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET çekirdek](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Sürüm notları
 
 ### <a name="v2-builds"></a>v2 derlemeleri
+
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+* Kararlılık ve tanılama geliştirmeleri:
+  * Okuma değişikliği akışını algılamaya kadar uzun süren destek eklendi. `ChangeFeedProcessorOptions.ChangeFeedTimeout` özelliği tarafından belirtilen değerden daha uzun sürerse aşağıdaki adımlar alınır:
+    * Sorunlu bölümdeki değişiklik akışını okuma işlemi iptal edildi.
+    * Değişiklik akışı işlemcisi örneği, sorunlu kiralamanın sahipliğini bırakır. Bırakılan kira, aynı veya farklı değişiklik akışı işlemcisi örneği tarafından yapılacak bir sonraki kira alma adımı sırasında alınacaktır. Bu şekilde, değişiklik akışını okuma baştan başlayacaktır.
+    * Durum izleyicisine bir sorun bildirilir. Varsayılan Hemi izleyici, bildirilen tüm sorunları izleme günlüğüne gönderir.
+  * Yeni bir ortak özellik eklendi: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Bu özelliğin varsayılan değeri 10 dakikadır.
+  * Yeni bir genel Enum değeri eklendi: `Monitoring.MonitoredOperation.ReadChangeFeed`. `HealthMonitoringRecord.Operation` değeri `Monitoring.MonitoredOperation.ReadChangeFeed`olarak ayarlandığında, sistem durumu sorununun değişiklik akışını okumayla ilgili olduğunu gösterir.
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * Tüm kiralamalar alınırken senaryo için Yük Dengeleme stratejisi, örneğin ağ sorunlarından dolayı kira süresi sonu aralığından daha uzun sürer:
@@ -80,7 +89,7 @@ ms.locfileid: "68637742"
 * Küçük tanılama geliştirmeleri.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Yeni API eklendi, görev&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Bu, her bölüm için tahmini çalışma almak üzere kullanılabilir.
+* Yeni API, görev&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync () eklendi. Bu, her bölüm için tahmini çalışma almak üzere kullanılabilir.
 * Microsoft. Azure. DocumentDB SDK 2,0 'yi destekler. Microsoft. Azure. DocumentDB 2,0 veya üstünü gerektirir.
 
 ### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
@@ -90,7 +99,7 @@ ms.locfileid: "68637742"
 * Bölüm ayırma sırasında oluşan bir yarış durumu düzeltildi. Yarış durumu kira elde edebilir ve bölüm bölme sırasında hemen kaybı ve çekişmeye neden olabilir. Yarış durumu sorunu bu sürümle düzeltilmiştir.
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
-* GA SDK'SI
+* GA SDK
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-ön sürüm
 * Aşağıdaki sorunlar çözülmüştür:
@@ -122,7 +131,7 @@ ms.locfileid: "68637742"
     * Ileao, ILeaseManager-Özel Kiralama Yönetimi için.
     * Ipartitionprocessor-bir bölümdeki özel işleme değişiklikleri için.
 * Günlüğe kaydetme- [Liblog](https://github.com/damianh/LibLog) kitaplığını kullanır.
-* % 100 v1 API 'siyle geriye dönük olarak uyumludur.
+* %100 v1 API 'siyle geriye dönük olarak uyumludur.
 * Yeni kod tabanı.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21.1 ve üzeri sürümleriyle uyumludur.
 
@@ -142,7 +151,7 @@ ms.locfileid: "68637742"
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1,21 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* 2,0 .NET Standard için destek ekler. Paket artık ve `net451` Framework `netstandard2.0` takma adlarını destekler.
+* 2,0 .NET Standard için destek ekler. Paket artık `netstandard2.0` ve `net451` Framework takma adlarını desteklemektedir.
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.17.0 ve üzeri sürümleriyle uyumludur.
 * 1\.5.1 ve üzeri [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) sürümleriyle uyumludur.
 
@@ -155,21 +164,22 @@ ms.locfileid: "68637742"
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.13.2 ve üzeri sürümleriyle uyumludur.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA SDK'SI
+* GA SDK
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.14.1 ve altı sürümleriyle uyumludur.
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
 
-Sağlar; Microsoft bildirim en az **12 ay** yeni/desteklenen bir sürüme geçiş hafifletmek için bir SDK'yı devre dışı bırakmadan önce.
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
 
 Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
 
-Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm istekleri hizmet tarafından reddedilir.
+Kullanımdan kaldırılan bir SDK 'Yı kullanarak Cosmos DB istek, hizmet tarafından reddedilir.
 
 <br/>
 
-| Sürüm | Yayınlanma Tarihi | Sona erme tarihi |
+| Sürüm | Yayın tarihi | Emeklilik tarihi |
 | --- | --- | --- |
+| [2.2.8](#2.2.8) |28 Ekim 2019 |--- |
 | [2.2.7](#2.2.7) |14 Mayıs 2019 |--- |
 | [2.2.6](#2.2.6) |29 Ocak 2019 |--- |
 | [2.2.5](#2.2.5) |13 Aralık 2018 |--- |
@@ -191,4 +201,4 @@ Cosmos DB devre dışı bırakılan bir SDK'sını kullanarak yapılan tüm iste
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-Cosmos DB hakkında daha fazla bilgi için bkz: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfası.
+Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası.

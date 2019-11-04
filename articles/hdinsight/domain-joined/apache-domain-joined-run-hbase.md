@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Kurumsal Güvenlik Paketi-Azure ile Apache HBase yapılandırma
+title: Apache HBase & Kurumsal Güvenlik Paketi-Azure HDInsight
 description: Öğretici-Kurumsal Güvenlik Paketi ile Azure HDInsight 'ta HBase için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597930"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044654"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
 
-1. Bir tarayıcıdan, `https://<ClusterName>.azurehdinsight.net/Ranger/` URL’sini kullanarak Ranger Yönetici kullanıcı arabirimine bağlanın. @No__t_0 değerini HBase kümenizin adıyla değiştirmeyi unutmayın.
+1. Bir tarayıcıdan, `https://<ClusterName>.azurehdinsight.net/Ranger/` URL’sini kullanarak Ranger Yönetici kullanıcı arabirimine bağlanın. `<ClusterName>` değerini HBase kümenizin adıyla değiştirmeyi unutmayın.
 
     > [!NOTE]  
     > Ranger kimlik bilgileri Hadoop kümesi kimlik bilgileriyle aynı değildir. Tarayıcıların ön belleğe alınmış Hadoop kimlik bilgilerini kullanmasını önlemek için Ranger Yönetici Arabirimine yeni bir InPrivate tarayıcı penceresinden bağlanın.
@@ -95,7 +95,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 **Sales_user1** ve **Marketing_user1**için bir Ranger ilkesi oluşturun.
 
-1. **Ranger Yönetici Arabirimini** açın. **HBase**altında **\<ClusterName > _hbase** ' e tıklayın.
+1. **Ranger Yönetici Arabirimini** açın. **HBase**altında **\<clustername > _hbase** öğesine tıklayın.
 
    ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

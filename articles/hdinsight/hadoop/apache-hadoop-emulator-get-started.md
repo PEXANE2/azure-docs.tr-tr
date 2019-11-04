@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop korumalı alan kullanmayı öğrenin-öykünücü-Azure HDInsight
+title: Apache Hadoop korumalı alan kullanmayı öğrenin-Azure HDInsight
 description: 'Apache Hadoop ekosistemini kullanma hakkında bilgi edinmeye başlamak için bir Azure sanal makinesinde Hortonçalışmalardan bir Hadoop korumalı alanı ayarlayabilirsiniz. '
 keywords: Hadoop öykünücüsü, Hadoop korumalı alanı
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066687"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044762"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
@@ -51,7 +51,7 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 1. Hortonçalışmalar korumalı alanı sayfasının **Başlarken** adımından **Gelişmiş seçenekleri görüntüle**' yi seçin. SSH kullanarak korumalı alanda oturum açmak için bu sayfadaki bilgileri kullanın. Belirtilen adı ve parolayı kullanın.
 
    > [!NOTE]
-   > Yüklü bir SSH istemciniz yoksa, üzerinde **http://localhost:4200/** sanal makine tarafından BELIRTILEN Web tabanlı SSH 'yi kullanabilirsiniz.
+   > Yüklü bir SSH istemciniz yoksa, **http://localhost:4200/** ' de sanal makine tarafından belirtilen Web tabanlı SSH 'yi kullanabilirsiniz.
 
     SSH kullanarak ilk kez bağlandığınızda, kök hesabın parolasını değiştirmeniz istenir. SSH kullanarak oturum açtığınızda kullanabileceğiniz yeni bir parola girin.
 
@@ -69,7 +69,7 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 2. Kabuk başladıktan sonra, korumalı alan ile birlikte sunulan tabloları görüntülemek için aşağıdakileri kullanın:
 
         show tables;
-3. `sample_07` Tablodan 10 satır almak için aşağıdakileri kullanın:
+3. `sample_07` tablosundan 10 satır almak için aşağıdakileri kullanın:
 
         select * from sample_07 limit 10;
 
