@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390152"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499249"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -125,7 +125,7 @@ Rezervasyon indirimi yalnızca, Kurumsal, Microsoft Müşteri Sözleşmesi, CSP 
 
 ## <a name="when-the-reservation-term-expires"></a>Rezervasyon dönemi sona erdiğinde
 
-Rezervasyon döneminin sonunda fatura indiriminin süresi dolar. Sanal makine, SQL veritabanı, Azure Cosmos DB veya başka bir kaynak, kullandıkça öde fiyatı üzerinden faturalandırılır. Azure Ayrılmış Sanal Makine Örnekleri otomatik olarak yenilenmez. Fatura indirimini almaya devam etmek için uygun hizmetler ve yazılımlar için yeni bir rezervasyon satın almanız gerekir.
+Rezervasyon döneminin sonunda fatura indiriminin süresi dolar ve kaynaklar kullandıkça öde fiyatıyla faturalanır. Varsayılan olarak rezervasyonlar otomatik olarak yenilenecek şekilde ayarlanmaz. Yenileme ayarlarında ilgili seçeneği belirterek rezervasyonda otomatik yenilemeyi etkinleştirmeyi seçebilirsiniz. Otomatik yenilemeyle, mevcut rezervasyonun süresi dolduğunda onun yerine bir rezervasyon satın alınır. Varsayılan olarak yeni satın alınan rezervasyonun öznitelikleri süresi dolan rezervasyonla aynı olur; isterseniz yenileme ayarlarında faturalama sıklığını, süreyi veya miktarı değiştirebilirsiniz. Rezervasyon üzerinde ve faturalama için kullanılan abonelik üzerinde sahip erişimi olan tüm kullanıcılar yenilemeyi ayarlayabilir.  
 
 ## <a name="discount-applies-to-different-sizes"></a>Farklı boyutlar için indirim uygulanır
 

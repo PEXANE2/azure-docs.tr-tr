@@ -80,8 +80,12 @@
           items:
             - name: Veri Kopyalama aracı
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Veri akışlarını eşlemeyi kullanarak verileri dönüştürme
-      href: tutorial-data-flow.md
+    - name: Veri akışlarıyla verileri dönüştürme ve hazırlama
+      items:
+        - name: Eşleme veri akışıyla verileri dönüştürme
+          href: tutorial-data-flow.md
+        - name: Hazırlama veri akışıyla verileri hazırlama
+          href: wrangling-data-flow-tutorial.md
     - name: Dış dönüşümler
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Tümleştirme çalışma zamanı
       href: concepts-integration-runtime.md
-    - name: Veri akışlarını eşleme
+    - name: Veri akışları
       items:
-        - name: Veri akışını eşlemeye genel bakış
-          href: concepts-data-flow-overview.md
-        - name: Hata ayıklama modu
-          href: concepts-data-flow-debug-mode.md
-        - name: JSON işleme
-          href: concepts-data-flow-json.md
-        - name: Schema Drift
-          href: concepts-data-flow-schema-drift.md
-        - name: Sütun desenleri
-          href: concepts-data-flow-column-pattern.md
-        - name: Veri akışını izleme
-          href: concepts-data-flow-monitoring.md
-        - name: Veri akışı performansı
-          href: concepts-data-flow-performance.md
-        - name: Düğümleri taşıma
-          href: concepts-data-flow-move-nodes.md
-        - name: İfade oluşturucusu
-          href: concepts-data-flow-expression-builder.md
-        - name: İfade dili
-          href: data-flow-expression-functions.md
+        - name: Eşleme veri akışlarıyla verileri dönüştürme
+          items:
+            - name: Veri akışını eşlemeye genel bakış
+              href: concepts-data-flow-overview.md
+            - name: Hata ayıklama modu
+              href: concepts-data-flow-debug-mode.md
+            - name: JSON işleme
+              href: concepts-data-flow-json.md
+            - name: Schema Drift
+              href: concepts-data-flow-schema-drift.md
+            - name: Sütun desenleri
+              href: concepts-data-flow-column-pattern.md
+            - name: Veri akışını izleme
+              href: concepts-data-flow-monitoring.md
+            - name: Veri akışı performansı
+              href: concepts-data-flow-performance.md
+            - name: Düğümleri taşıma
+              href: concepts-data-flow-move-nodes.md
+            - name: İfade oluşturucusu
+              href: concepts-data-flow-expression-builder.md
+            - name: İfade dili
+              href: data-flow-expression-functions.md
+        - name: Hazırlama veri akışlarıyla verileri hazırlama
+          items:
+            - name: Hazırlama veri akışına genel bakış
+              href: wrangling-data-flow-overview.md
+            - name: Desteklenen işlevler
+              href: wrangling-data-flow-functions.md
     - name: Roller ve izinler
       href: concepts-roles-permissions.md
     - name: Fiyatlandırmayı anlama

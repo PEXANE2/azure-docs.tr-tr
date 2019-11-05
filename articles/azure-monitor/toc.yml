@@ -781,20 +781,32 @@
                   href: insights/container-insights-enable-new-cluster.md
                 - name: Mevcut küme için etkinleştirme
                   href: insights/container-insights-enable-existing-clusters.md
+                - name: Karma küme için etkinleştirme
+                  href: insights/container-insights-hybrid-setup.md
                 - name: Bölge eşlemeleri
                   href: insights/container-insights-region-mapping.md
             - name: Çözümleme
               href: insights/container-insights-analyze.md
             - name: İzlemeyi devre dışı bırakma
               href: insights/container-insights-optout.md
-            - name: Canlı günlükleri görüntüleme
-              href: insights/container-insights-live-logs.md
+            - name: Canlı verileri görüntüleme
+              items:
+                - name: Canlı Verilere (önizleme) genel bakış
+                  href: insights/container-insights-livedata-overview.md
+                - name: Kurulum
+                  href: insights/container-insights-livedata-setup.md
+                - name: Küme ölçümlerini görüntüleme
+                  href: insights/container-insights-livedata-metrics.md
+                - name: Dağıtımları görüntüleme
+                  href: insights/container-insights-livedata-deployments.md
             - name: Günlük sorgularıyla verileri çözümleme
               href: insights/container-insights-log-search.md
             - name: Uyarı
               href: insights/container-insights-alerts.md
             - name: Aracı yönetimi
               href: insights/container-insights-manage-agent.md
+            - name: Prometheus ölçüm veri dönüştürmeyi yapılandırma
+              href: insights/container-insights-prometheus-integration.md
             - name: Aracı koleksiyonu ayarlarını yapılandırma
               href: insights/container-insights-agent-config.md
             - name: Ölçümleri etkinleştirmek için güncelleştirme

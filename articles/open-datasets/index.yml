@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Açık Veri Kümeleri Önizleme Belgeleri
-summary: Azure Açık Veri Kümeleri, Machine Learning modellerini zenginleştirmek için hava durumu, nüfus sayımı ve tatiller dahil olmak üzere en az hazırlık ile kullanabileceğiniz, seçkin ve temizlenmiş veriler sunar.
+title: Azure Açık Veri Kümeleri Belgeleri
+summary: Azure Açık Veri Kümeleri, ML modellerini zenginleştirmek için hava durumu, nüfus sayımı ve tatiller gibi alanlarda çok az hazırlık ile kullanabileceğiniz, seçkin ve temizlenmiş veriler sunar.
 metadata:
-  title: Açık Veri Kümeleri Önizleme Belgeleri - Azure
-  description: Azure Açık Veri Kümeleri, Machine Learning modellerini zenginleştirmek için hava durumu, nüfus sayımı ve tatiller dahil olmak üzere en az hazırlık ile kullanabileceğiniz, seçkin ve temizlenmiş veriler sunar.
+  title: Açık Veri Kümeleri Belgeleri - Azure
+  description: Azure Açık Veri Kümeleri, ML modellerini zenginleştirmek için hava durumu, nüfus sayımı ve tatiller gibi alanlarda çok az hazırlık ile kullanabileceğiniz, seçkin ve temizlenmiş veriler sunar.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 44dea30e44e204664a5266a37c740b2eb23a49f7
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.date: 11/04/2019
+  ms.openlocfilehash: b6813c3fd521b12ec91eddb0176efedb8c5c120a
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309358"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73496624"
 landingContent:
 - title: Açık Veri Kümeleri hakkında
   linkLists:
@@ -32,7 +32,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Otomatik makine öğrenimi ile bir regresyon modeli oluşturma
-      url: tutorial-opendatasets-automl.md
+      url: /azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+    - text: Azure Machine Learning'de resim sınıflandırma modelini eğitme
+      url: /azure/machine-learning/service/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
 - title: Başvuru içeriğini keşfetme
   linkLists:
   - linkListType: reference

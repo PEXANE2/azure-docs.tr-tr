@@ -37,6 +37,14 @@
       href: security-center-using-recommendations.md
     - name: Kiracılar arası yönetim
       href: security-center-cross-tenant-management.md
+    - name: Kapsayıcı güvenliği
+      items:
+        - name: Kapsayıcı güvenliğine genel bakış
+          href: container-security.md
+        - name: Azure Container Registry ile tümleştirme
+          href: azure-container-registry-integration.md
+        - name: Azure Kubernetes Service ile tümleştirme
+          href: azure-kubernetes-service-integration.md
     - name: Tehdit algılama uyarıları ve olayları
       items:
         - name: Güvenlik uyarılarına genel bakış
@@ -51,7 +59,7 @@
           href: security-center-alerts-compute.md
         - name: Veri hizmetleri için tehdit algılama
           href: security-center-alerts-data-services.md
-        - name: Azure hizmet katmanı için tehdit algılama
+        - name: Azure hizmet katmanları için tehdit algılama
           href: security-center-alerts-service-layer.md
         - name: Azure Güvenlik Ürünleriyle tümleştirme
           href: security-center-alerts-integration.md
@@ -67,33 +75,47 @@
       href: security-center-secure-score.md
     - name: Gelişmiş güvenliğe yükseltme
       href: security-center-onboarding.md
-    - name: Microsoft Defender ATP ile sunucu koruması
+    - name: Microsoft Defender ATP ile sunucularınızı koruma
       href: security-center-wdatp.md
-    - name: Azure VM’lerinde SQL için gelişmiş veri güvenliği (Genel Önizleme)
+    - name: Azure VM’lerinde SQL için gelişmiş veri güvenliğini kullanma
       href: security-center-iaas-advanced-data.md
     - name: Uygulamalarınızı korumak için App Service kullanma
       href: security-center-app-services.md
-    - name: Güvenlik ilkeleriyle çalışma
-      href: tutorial-security-policy.md
+    - name: Güvenlik ilkelerini kullanma
+      items:
+        - name: Güvenlik ilkelerine genel bakış
+          href: tutorial-security-policy.md
+        - name: Yerleşik güvenlik ilkelerini kullanma
+          href: security-center-policy-definitions.md
+        - name: Özel güvenlik ilkeleri oluşturma
+          href: custom-security-policies.md
+        - name: Azure İlkesi REST API'siyle ilkeleri yönetme
+          href: configure-security-policy-azure-policy.md
+    - name: Dinamik uyumluluk paketleri ekleme
+      href: update-regulatory-compliance-packages.md
     - name: Bilgi koruma ilkesini özelleştirme
       href: security-center-info-protection-policy.md
     - name: Güvenlik çözümlerini yönetme
       href: security-center-partner-integration.md
     - name: PowerShell kullanarak eklemeyi otomatikleştirme
       href: security-center-powershell-onboarding.md
-    - name: Güvenlik Merkezi ayarları
-      href: security-center-policies-overview.md
+    - name: Windows Admin Center ile tümleştirme
+      href: windows-admin-center-integration.md
     - name: Dosya Bütünlüğünü İzleme kullanarak ana hatları karşılaştırma
       href: security-center-file-integrity-monitoring-baselines.md
-    - name: Veri toplama
+    - name: Uyarılara ve önerilere yanıtları otomatikleştirme
+      href: workflow-automation.md
+    - name: Uyarıları ve önerileri dışarı aktarma
+      href: continuous-export.md
+    - name: Veri koleksiyonunuzu yapılandırma
       href: security-center-enable-data-collection.md
-    - name: Yerleşik güvenlik ilkeleri
-      href: security-center-policy-definitions.md
-    - name: E-posta bildirimleri
+    - name: Azure Key Vault için gelişmiş tehdit koruması ayarlama
+      href: advanced-threat-protection-key-vault.md
+    - name: E-posta bildirimlerini ayarlama
       href: security-center-provide-security-contact-details.md
     - name: Fiyatlandırma
       href: security-center-pricing.md
-    - name: Kiracı çapında görünürlük
+    - name: Kiracı genelinde görünürlük elde etme
       href: security-center-management-groups.md
     - name: Güvenlik önerileri uygulama
       items:
@@ -160,7 +182,7 @@
     - name: Kullanıcı verilerini yönetme
       href: security-center-privacy.md
     - name: IoT için Azure Güvenlik Merkezi belgeleri
-      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
+      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: SSS
       href: security-center-faq.md
     - name: Azure güvenlik belgeleri

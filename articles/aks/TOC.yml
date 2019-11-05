@@ -102,6 +102,8 @@
       href: supported-kubernetes-versions.md
     - name: Konak işletim sisteminde Güvenliği Sağlamlaştırma
       href: security-hardened-vm-host-image.md
+    - name: Azure Kubernetes Service Tanılamasına Genel Bakış
+      href: concepts-diagnostics.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Küm işlemleri
@@ -128,11 +130,11 @@
               href: virtual-nodes-portal.md
         - name: Sanal Kubelet kullanma
           href: virtual-kubelet.md
-        - name: Küme Otomatik Ölçeklendiricisi kullanma (önizleme)
+        - name: Küme Otomatik Ölçeklendiricisi kullanma
           href: cluster-autoscaler.md
-        - name: Kullanılabilirlik Alanlarını kullanma (önizleme)
+        - name: Kullanılabilirlik Alanlarını kullanma
           href: availability-zones.md
-        - name: Birden çok düğüm havuzu kullanma (önizleme)
+        - name: Birden fazla düğüm havuzu kullanma
           href: use-multiple-node-pools.md
         - name: Terraform ile AKS’yi dağıtma
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -199,7 +201,7 @@
           href: use-network-policies.md
         - name: Pod güvenlik ilkelerini kullanma (önizleme)
           href: use-pod-security-policies.md
-        - name: API sunucusu tarafından yetkilendirilen IP aralıklarını tanımlama (önizleme)
+        - name: API sunucusu tarafından yetkilendirilen IP aralıklarını tanımlama
           href: api-server-authorized-ip-ranges.md
         - name: Azure İlkesi ile dağıtımları denetleme (önizleme)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
@@ -225,8 +227,8 @@
           href: view-master-logs.md
         - name: Kubelet günlüklerini görüntüleme
           href: kubelet-logs.md
-        - name: Gerçek zamanlı kapsayıcı günlüklerini görüntüleme (önizleme)
-          href: ../azure-monitor/insights/container-insights-live-logs.md
+        - name: Kapsayıcı verilerini gerçek zamanlı olarak görüntüleme
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
     - name: Windows Server kapsayıcılarını kullanma (önizleme)
       items:

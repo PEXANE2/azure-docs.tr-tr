@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: API içeri aktarma kısıtlamaları
       href: api-management-api-import-restrictions.md
+    - name: Şirket içinde barındırılan ağ geçidine genel bakış
+      href: self-hosted-gateway-overview.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: API’leri tanımlama
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: Özel etki alanı yapılandırma
           href: configure-custom-domain.md
+        - name: Birden çok Azure bölgesine dağıtma
+          href: api-management-howto-deploy-multi-region.md
+        - name: Şirket içinde barındırılan ağ geçidini sağlama
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Şirket içinde barındırılan ağ geçidini Kubernetes'e dağıtma
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: Şirket içinde barındırılan ağ geçidini Docker'a dağıtma
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: Şirket içinde barındırılan ağ geçidi için özel etki alanı yapılandırma
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: Önbellek
       items:
         - name: Performansı iyileştirmek için önbelleğe alma özelliği ekleme
@@ -195,8 +207,6 @@
       items:
         - name: Grupları yönetme
           href: api-management-howto-create-groups.md
-        - name: Birden çok Azure bölgesine dağıtma
-          href: api-management-howto-deploy-multi-region.md
         - name: IP adreslerini alma
           href: api-management-howto-ip-addresses.md
         - name: Olayları Azure Event Hubs’a kaydetme

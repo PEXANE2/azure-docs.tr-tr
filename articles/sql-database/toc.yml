@@ -20,29 +20,34 @@
           items:
             - name: Genel Bakış
               href: sql-database-purchase-models.md
-            - name: vCore tabanlı model
-              href: sql-database-service-tiers-vcore.md
+            - name: Sanal çekirdek modeli
               items:
-                - name: Sunucusuz işlem katmanı
+                - name: Sanal çekirdek modeline genel bakış
+                  href: sql-database-service-tiers-vcore.md
+                - name: Sunucusuz
                   href: sql-database-serverless.md
-                - name: Ayrılmış kapasite için ön ödeme yapma
+                - name: Azure Hibrit Avantajı
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: Ayrılmış kapasite
                   href: sql-database-reserved-capacity.md
-            - name: DTU hizmet katmanları
+            - name: DTU modeline genel bakış
               href: sql-database-service-tiers-dtu.md
+            - name: DTU'dan Sanal Çekirdeğe geçiş
+              href: sql-database-dtu-to-vcore.md
         - name: İşlem ve depolama
           items:
             - name: Genel Bakış
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: Genel amaçlı / Standart hizmet katmanları
+            - name: Genel amaçlı / Standart
               href: sql-database-service-tier-general-purpose.md
-            - name: İş açısından kritik / Premium hizmet katmanları
+            - name: İş açısından kritik / Premium
               href: sql-database-service-tier-business-critical.md
-            - name: Hiper ölçekli hizmet katmanı
+            - name: Hiper Ölçek
               href: sql-database-service-tier-hyperscale.md
             - name: Hiper Ölçek hakkında SSS
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Premium RS hizmet katmanından geçirme
+            - name: Premium RS'den geçiş
               href: sql-database-service-tiers-prs.md
 - name: Hızlı Başlangıçlar
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: Tek veritabanı kaynakları
           items:
-            - name: Sanal çekirdek tabanlı kaynak sınırları
+            - name: Sanal çekirdek kaynak sınırları
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: DTU tabanlı kaynak sınırları
+            - name: DTU kaynak sınırları
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: Kaynakları ölçeklendirme
               href: sql-database-single-database-scale.md
         - name: Elastik havuz kaynakları
           items:
-            - name: Sanal çekirdek tabanlı kaynak sınırları
+            - name: Sanal çekirdek kaynak sınırları
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU tabanlı kaynak sınırları
+            - name: DTU kaynak sınırları
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: Kaynakları ölçeklendirme
               href: sql-database-elastic-pool-scale.md

@@ -49,6 +49,14 @@
       href: manage-consortium-powershell.md
     - name: Logic Apps kullanma
       href: ethereum-logic-app.md
+- name: Blok Zinciri Veri Yöneticisi
+  items:
+    - name: Veri yöneticisine genel bakış
+      href: data-manager.md
+    - name: Veri Yöneticisi'ni Yapılandırma - Portal
+      href: data-manager-portal.md
+    - name: Veri Yöneticisi'ni Yapılandırma - CLI
+      href: data-manager-cli.md
 - name: Kaynaklar
   items:
     - name: Blok Zinciri REST API

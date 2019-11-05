@@ -77,6 +77,8 @@
           href: application-gateway-waf-configuration.md
         - name: Özel kurallar
           href: custom-waf-rules-overview.md
+    - name: AKS için giriş
+      href: ingress-controller-overview.md
     - name: Sistem durumunu izleme
       items:
         - name: Durum yoklaması
@@ -153,6 +155,28 @@
           href: create-custom-waf-rules.md
         - name: Özel kurallar ile WAF’yi yapılandırma
           href: configure-waf-custom-rules.md
+    - name: AKS için giriş
+      items:
+        - name: Mevcut Application Gateway ile ayarlama
+          href: ingress-controller-install-existing.md
+        - name: Yeni Application Gateway ile ayarlama
+          href: ingress-controller-install-new.md
+        - name: Tanımlama bilgisi benzeşimini etkinleştirme
+          href: ingress-controller-cookie-affinity.md
+        - name: Birden çok ad alanı desteğini etkinleştirme
+          href: ingress-controller-multiple-namespace-support.md
+        - name: İç yönlendirme için özel IP kullanma
+          href: ingress-controller-private-ip.md
+        - name: AKS podlarına durum araştırmaları ekleme
+          href: ingress-controller-add-health-probes.md
+        - name: Application Gateway kullanarak HTTP/HTTPS üzerinden AKS hizmetini kullanıma sunma
+          href: ingress-controller-expose-service-over-http-https.md
+        - name: Helm kullanarak giriş denetleyicisini yükseltme
+          href: ingress-controller-update-ingress-controller.md
+        - name: Application Gateway ile LetsEncrypt.org'u kullanma
+          href: ingress-controller-letsencrypt-certificate-application-gateway.md
+        - name: WebSocket'i Application Gateway'in kullanımına sunma
+          href: ingress-controller-expose-websocket-server.md
     - name: URL’ye göre yönlendirme
       items:
         - name: Azure PowerShell
@@ -223,6 +247,8 @@
           href: application-gateway-troubleshooting-502.md
         - name: Web Uygulaması Güvenlik Duvarı (WAF)
           href: web-application-firewall-troubleshoot.md
+        - name: AKS için giriş
+          href: ingress-controller-troubleshoot.md
         - name: Kaynak Durumu
           href: resource-health-overview.md
         - name: Log Analytics kullanma
@@ -235,6 +261,8 @@
   items:
     - name: CRS kuralları
       href: application-gateway-crs-rulegroups-rules.md
+    - name: AKS için giriş ek açıklamaları
+      href: ingress-controller-annotations.md
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

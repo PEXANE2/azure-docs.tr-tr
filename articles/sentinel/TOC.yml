@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: F5’i bağlama
               href: connect-f5.md
+            - name: F5 BIG-IP'yi bağlama
+              href: connect-f5-big-ip.md
             - name: Syslog’u bağlama
               href: connect-syslog.md
             - name: Symantec ICDX’i bağlama
               href: connect-symantec.md
             - name: Cisco’yu bağlama
               href: connect-cisco.md
+            - name: Barracuda CloudGen Firewall'u bağlama
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Citrix Analytics'i bağlama (Güvenlik)
+              href: connect-citrix-analytics.md
+            - name: ExtraHop Reveal(x)'i bağlama
+              href: connect-extrahop.md
+            - name: One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Trend Micro Deep Security
+              href: connect-trend-micro.md
+            - name: Zscaler'i bağlama
+              href: connect-zscaler.md
         - name: Tehdit zekasını bağlama
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: Avlanmak için yer işaretlerini kullanma
           href: bookmarks.md
+        - name: Avlanmak için Livestream kullanma
+          href: livestream.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md
 - name: Kaynaklar
