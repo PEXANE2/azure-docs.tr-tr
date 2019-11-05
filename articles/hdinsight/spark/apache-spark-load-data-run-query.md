@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure HDInsight 'ta Apache Spark kümesinde verileri yükleme ve sorguları çalıştırma"
+title: 'Öğretici: verileri yükleme & sorguları Apache Spark ile çalıştırma-Azure HDInsight'
 description: Öğretici-Azure HDInsight 'ta verileri yükleme ve Spark kümelerinde etkileşimli sorgular çalıştırma hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: 3d6b7cf67faa94d0947d16cc79d0d5b839de7acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027797"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494496"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgular çalıştırma
 
@@ -32,11 +32,11 @@ HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluştu
 
 Jupyter Notebook, çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri, verilerle etkileşim kurmanıza, kodu markdown metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak sağlar.
 
-1. @No__t-1 ' i Spark kümenizin adıyla değiştirerek @no__t URL 'YI düzenleyin. Ardından, düzenlenen URL 'YI bir Web tarayıcısına girin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
+1. `SPARKCLUSTER` Spark kümenizin adıyla değiştirerek URL 'YI düzenleyin `https://SPARKCLUSTER.azurehdinsight.net/jupyter`. Ardından, düzenlenen URL 'YI bir Web tarayıcısına girin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
 
 2. Jupyter Web sayfasından **yeni** > **pyspark** ' ı seçerek bir not defteri oluşturun.
 
-   ![Jupyter Not Defteri’ni oluşturarak etkileşimli Spark SQL sorgusu çalıştırma](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Not Defteri’ni oluşturarak etkileşimli Spark SQL sorgusu çalıştırma")
+   ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
 
    Yeni bir not defteri oluşturulur ve adsız (`Untitled.ipynb`) adıyla açılır.
 
@@ -47,7 +47,7 @@ Jupyter Notebook, çeşitli programlama dillerini destekleyen etkileşimli bir n
 
 Uygulamalar, Azure depolama veya Azure Data Lake Storage gibi uzak depolamada bulunan dosyalardan veya klasörlerden doğrudan veri çerçeveleri oluşturabilir. Hive tablosundan; ya da Spark tarafından desteklenen Cosmos DB, Azure SQL DB, DW gibi diğer veri kaynaklarından. Aşağıdaki ekran görüntüsünde, bu öğreticide kullanılan HVAC.csv dosyasının bir anlık görüntü gösterilmektedir. Csv dosyası, tüm HDInsight Spark kümeleriyle birlikte gelir. Veriler, bazı binaların sıcaklık varyasyonlarını yakalar.
 
-![Etkileşimli Spark SQL sorgusu için verilerin anlık görüntüsü](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu için verilerin anlık görüntüsü")
+![Etkileşimli Spark SQL sorgusu için veri anlık görüntüsü](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu için veri anlık görüntüsü")
 
 1. Aşağıdaki kodu Jupyter Not defterinin boş bir hücresine yapıştırın ve ardından kodu çalıştırmak için **SHIFT + enter** tuşlarına basın. Kod, bu senaryo için gerekli olan türleri içeri aktarır:
 
@@ -58,7 +58,7 @@ Uygulamalar, Azure depolama veya Azure Data Lake Storage gibi uzak depolamada bu
 
     Jupyter’de etkileşimli bir sorgu çalıştırılırken web tarayıcısı penceresinde veya sekme açıklamalı alt yazısında not defteri başlığıyla birlikte **(Meşgul)** durumu gösterilir. Ayrıca sağ üst köşedeki **PySpark** metninin yanında içi dolu bir daire görürsünüz. İş tamamlandıktan sonra bu simge boş bir daireye dönüşür.
 
-    ![Etkileşimli Spark SQL sorgusunun durumu](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Status of interactive Spark SQL query")
+    ![Etkileşimli Spark SQL sorgusunun durumu](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Etkileşimli Spark SQL sorgusunun durumu")
 
 2. Aşağıdaki kodu çalıştırarak bir dataframe ve geçici bir tablo (**hvac**) oluşturun.
 
@@ -81,11 +81,11 @@ Tablo oluşturulduktan sonra veriler üzerinde etkileşimli bir sorgu çalışt�
 
    Aşağıdaki tablo çıktısı görüntülenir.
 
-     ![Etkileşimli Spark sorgu sonucunun tablo çıktısı](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Table output of interactive Spark query result")
+     ![Etkileşimli Spark Sorgu sonucunun tablo çıktısı](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Etkileşimli Spark Sorgu sonucunun tablo çıktısı")
 
 2. Sonuçları diğer görselleştirmelerde de görebilirsiniz. Aynı çıktı için bir alan grafiği görmek için **Alan**’ı seçin ve sonra gösterildiği gibi diğer değerleri ayarlayın.
 
-    ![Etkileşimli Spark sorgu sonucunun alan grafiği](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Area graph of interactive Spark query result")
+    ![Etkileşimli Spark Sorgu sonucunun alan grafiği](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Etkileşimli Spark Sorgu sonucunun alan grafiği")
 
 3. Not defteri menü çubuğundan **dosya** > **Kaydet ve denetim noktası**' na gidin.
 
@@ -97,7 +97,7 @@ HDInsight ile, veri ve jupi Not defterleriniz Azure Storage 'da veya Azure Data 
 
 Azure portalında kümeyi açıp **Sil**’i seçin.
 
-![HDInsight kümesini silme](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini silme")
+![HDInsight kümesini Sil](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
 Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil**’i seçebilirsiniz. Kaynak grubunu silerek hem HDInsight Spark kümesini hem de varsayılan depolama hesabını silersiniz.
 

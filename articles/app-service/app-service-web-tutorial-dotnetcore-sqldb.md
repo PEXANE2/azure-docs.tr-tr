@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9a4d4f84626eafdfbc5cc21eef1968a9ed64fcad
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a52a842bbd8ba9d8b22cdcf6792ec7e45a06e964
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "71055623"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471125"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma
 
@@ -128,7 +128,7 @@ SQL Veritabanı mantıksal sunucusu oluşturulduğunda Azure CLI, aşağıdaki �
 
 ### <a name="configure-a-server-firewall-rule"></a>Sunucu güvenlik duvarı kurallarını yapılandırma
 
-[`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) komutunu kullanarak [Azure SQL Veritabanı sunucusu düzeyinde güvenlik duvarı kuralı](../sql-database/sql-database-firewall-configure.md) oluşturun. Hem başlangıç hem bitiş IP’si 0.0.0.0 olarak ayarlandığında, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. 
+[](../sql-database/sql-database-firewall-configure.md)[ komutunu kullanarak `az sql server firewall create`Azure SQL Veritabanı sunucusu düzeyinde güvenlik duvarı kuralı](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) oluşturun. Hem başlangıç hem bitiş IP’si 0.0.0.0 olarak ayarlandığında, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -140,7 +140,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 
 ### <a name="create-a-database"></a>Veritabanı oluşturma
 
-[`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) komutunu kullanarak sunucuda [S0 performans düzeyine](../sql-database/sql-database-service-tiers-dtu.md) sahip bir veritabanı oluşturun.
+[](../sql-database/sql-database-service-tiers-dtu.md)[ komutunu kullanarak sunucuda `az sql db create`S0 performans düzeyine](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) sahip bir veritabanı oluşturun.
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
@@ -180,7 +180,7 @@ Azure uygulamanıza yönelik bağlantı dizeleri ayarlamak için, Cloud Shell’
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
 ```
 
-ASP.NET Core, bu adlandırılmış bağlantı dizesini (`MyDbConnection`), *appSettings. JSON*içinde belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` *appSettings. JSON*' da de tanımlanmıştır. App Service çalışırken, App Service tanımlanan bağlantı dizesi *appSettings. JSON*' da tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında *appSettings. JSON* değerini kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.
+ASP.NET Core, bu adlandırılmış bağlantı dizesini (`MyDbConnection`) *appSettings. JSON*içinde belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` *appSettings. JSON*' da tanımlanır. App Service çalışırken, App Service tanımlanan bağlantı dizesi *appSettings. JSON*' da tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında *appSettings. JSON* değerini kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.
 
 Kodunuzda bağlantı dizesinin nasıl başvurulduğunu görmek için bkz. [ÜRETIMDE SQL veritabanına bağlanma](#connect-to-sql-database-in-production).
 
@@ -188,7 +188,7 @@ Kodunuzda bağlantı dizesinin nasıl başvurulduğunu görmek için bkz. [ÜRET
 
 Sonra, `ASPNETCORE_ENVIRONMENT` uygulama ayarını _Üretim_ olarak belirleyin. Bu ayar, Azure ortamınızda yerel geliştirme ortamınız ve SQL veritabanı için SQLite 'u kullandığınız için Azure 'da çalışıp çalışmadığını bilmenizi sağlar.
 
-Aşağıdaki örnek, Azure uygulamanızda `ASPNETCORE_ENVIRONMENT` bir uygulama ayarı yapılandırır. *\<app_name>* yer tutucusunu değiştirin.
+Aşağıdaki örnek, Azure uygulamanızda bir `ASPNETCORE_ENVIRONMENT` uygulama ayarı yapılandırır. *\<app_name>* yer tutucusunu değiştirin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -222,7 +222,7 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 
 Bu kod, üretimde (Azure ortamını gösterir) çalıştığını algılarsa, SQL veritabanına bağlanmak için yapılandırdığınız bağlantı dizesini kullanır.
 
-`Database.Migrate()` Arama, .NET Core uygulamanızın ihtiyaç duyacağı veritabanlarını geçiş yapılandırmasına göre otomatik olarak oluşturduğundan, bu çağrı Azure 'da çalıştırıldığında size yardımcı olur. 
+`Database.Migrate()` çağrısı, Azure 'da çalıştırıldığında, geçiş yapılandırmasına bağlı olarak .NET Core uygulamanızın ihtiyaç duyacağı veritabanlarını otomatik olarak oluşturduğundan size yardımcı olur. 
 
 > [!IMPORTANT]
 > Ölçeği ölçeklendirilmesi gereken üretim uygulamaları için [üretimde geçişleri uygulama](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)konusunda en iyi uygulamaları izleyin.
@@ -273,7 +273,7 @@ Web tarayıcınızı kullanarak dağıtılan uygulamaya gidin.
 http://<app_name>.azurewebsites.net
 ```
 
-Yapılacak birkaç iş ekleyin.
+Yapılacak birkaç işlem ekleyin.
 
 ![App Service’te çalışan uygulama](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
@@ -319,7 +319,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 _Views\Todos\Create.cshtml_ dosyasını açın.
 
-Razor kodunda, `Description` için `<div class="form-group">` öğesi ve `CreatedDate` için başka bir `<div class="form-group">` öğesi görürsünüz. Aşağıdaki iki öğeyi takip eden `Done` için başka bir `<div class="form-group">` öğesi ekleyin:
+Razor kodunda, `<div class="form-group">` için `Description` öğesi ve `<div class="form-group">` için başka bir `CreatedDate` öğesi görürsünüz. Aşağıdaki iki öğeyi takip eden `<div class="form-group">` için başka bir `Done` öğesi ekleyin:
 
 ```csharp
 <div class="form-group">
@@ -359,7 +359,7 @@ Uygulamayı yerel olarak çalıştırın.
 dotnet run
 ```
 
-Tarayıcınızda `http://localhost:5000/` adresine gidin. Artık yapılacak bir öğe ekleyip öğeyi **Bitti** olarak işaretleyebilirsiniz. Daha sonra öğe, ana sayfanızda tamamlanmış bir öğe olarak görünmelidir. `Edit` görünümünü değiştirmediğinizden, `Edit` görünümünün `Done` alanında görünmediğini göz önünde bulundurun.
+Tarayıcınızda `http://localhost:5000/` adresine gidin. Artık yapılacak bir öğe ekleyip öğeyi **Bitti** olarak işaretleyebilirsiniz. Daha sonra öğe, ana sayfanızda tamamlanmış bir öğe olarak görünmelidir. `Edit` görünümünü değiştirmediğinizden, `Done` görünümünün `Edit` alanında görünmediğini göz önünde bulundurun.
 
 ### <a name="publish-changes-to-azure"></a>Değişiklikleri Azure’da yayımlama
 
@@ -369,7 +369,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Tamamlandıktan sonra App Service uygulamanıza gidin ve Yapılacaklar öğesi eklemeyi deneyin ve Tamam ' ı işaretleyin. `git push`
+`git push` tamamlandıktan sonra, App Service uygulamanıza gidin ve Yapılacaklar öğesi eklemeyi deneyin ve **Tamam**' ı işaretleyin.
 
 ![Code First geçişten sonra Azure uygulaması](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
@@ -381,17 +381,17 @@ ASP.NET Core uygulama Azure App Service çalışırken konsol günlüklerini Clo
 
 Örnek proje, iki yapılandırma değişikliğiyle [Azure 'da ASP.NET Core oturum açma](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) kılavuzundaki kılavuza zaten uyar:
 
-- `Microsoft.Extensions.Logging.AzureAppServices` *Dotnetcoressqldb. csproj*içinde öğesine bir başvuru içerir.
-- Program.cs `loggerFactory.AddAzureWebAppDiagnostics()` içindekiçağrılar.
+- *Dotnetcoressqldb. csproj*içindeki `Microsoft.Extensions.Logging.AzureAppServices` bir başvuru içerir.
+- *Program.cs*içinde `loggerFactory.AddAzureWebAppDiagnostics()` çağırır.
 
-App Service ASP.NET Core [günlük düzeyini](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) varsayılan `Information` `Error`düzeyden olarak ayarlamak için, Cloud Shell [komutunukullanın.`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config)
+App Service ASP.NET Core [günlük düzeyini](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) varsayılan düzey `Error``Information` olarak ayarlamak [için`az webapp log config`Cloud Shell komutunu kullanın](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) .
 
 ```azurecli-interactive
 az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
 ```
 
 > [!NOTE]
-> Projenin günlük düzeyi zaten *appSettings. JSON*içinde olarak `Information` ayarlanmıştır.
+> Projenin günlük düzeyi zaten *appSettings. JSON*içinde `Information` olarak ayarlanmıştır.
 > 
 
 Günlük akışını başlatmak için Cloud Shell’de [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) komutunu kullanın.
@@ -402,19 +402,21 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 Günlük akışı başladıktan sonra bazı web trafiği almak için tarayıcıda Azure uygulamasını yenileyin. Artık konsol günlüklerinin terminale yöneltildiğini görebilirsiniz. Konsol günlüklerini hemen görmüyorsanız, 30 saniye içinde yeniden kontrol edin.
 
-Günlük akışını istediğiniz zaman durdurmak için, yazın `Ctrl`. + `C`
+Günlük akışını istediğiniz zaman durdurmak için `Ctrl`+`C`yazın.
 
 ASP.NET Core günlüklerini özelleştirme hakkında daha fazla bilgi için bkz. [ASP.NET Core oturum açma](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
 ## <a name="manage-your-azure-app"></a>Azure uygulamanızı yönetme
 
-Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com) gidin.
+Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin.
 
-Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
+![Azure portal 'de uygulama hizmetleri 'ni seçin](./media/app-service-web-tutorial-dotnetcore-sqldb/app-services.png)
+
+**Uygulama hizmetleri** sayfasında, Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-Varsayılan olarak, Portal uygulamanızın **genel bakış** sayfasını gösterir. Bu sayfa, uygulamanızın nasıl çalıştığını gösterir. Buradan ayrıca göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. Sayfanın sol tarafındaki sekmeler, açabileceğiniz farklı yapılandırma sayfalarını gösterir.
+Varsayılan olarak, Portal uygulamanızın **genel bakış** sayfasını gösterir. Bu sayfa, uygulamanızın nasıl çalıştığını gösterir. Buradan ayrıca göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. Sayfanın sol tarafı, açabileceğiniz farklı yapılandırma sayfalarını gösterir.
 
 ![Azure portalında App Service sayfası](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 

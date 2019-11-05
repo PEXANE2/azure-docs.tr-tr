@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567002"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492491"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>VCore ve DTU satın alma modelleri arasında seçim yapın
 
 Azure SQL veritabanı, tam olarak yönetilen bir hizmet olarak SDK (PaaS) veritabanı altyapısını, performans ve maliyet gereksinimlerinize uyacak şekilde kolayca satın almanıza olanak tanır. Azure SQL veritabanı için seçtiğiniz dağıtım modeline bağlı olarak, sizin için uygun olan satın alma modelini seçebilirsiniz:
 
-- [Sanal çekirdek (vCore) tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) (önerilir). Bu satın alma modeli, sağlanan bir işlem katmanı ve sunucusuz (Önizleme) işlem katmanı arasında bir seçenek sağlar. Sağlanan işlem katmanıyla birlikte, iş yükünüz için her zaman sağlanan işlem kaynaklarının tam miktarını seçin. Sunucusuz bilgi işlem katmanı ile, işlem kaynaklarını yapılandırılabilir bir işlem aralığı üzerinden otomatik ölçeklendirmeyi belirtirsiniz. Bu işlem katmanıyla birlikte, iş yükü etkinliğine göre veritabanını otomatik olarak duraklatabilir ve devam ettirebilirsiniz. Birim başına sanal çekirdek birim fiyatı, sağlanan işlem katmanında sunucusuz işlem katmanında olduğundan daha düşüktür.
+- [Sanal çekirdek (vCore) tabanlı satın alma modeli](sql-database-service-tiers-vcore.md) (önerilir). Bu satın alma modeli, sağlanan bir işlem katmanı ve sunucusuz bir işlem katmanı arasında seçim sağlar. Sağlanan işlem katmanıyla birlikte, iş yükünüz için her zaman sağlanan işlem kaynaklarının tam miktarını seçin. Sunucusuz bilgi işlem katmanı ile, işlem kaynaklarını yapılandırılabilir bir işlem aralığı üzerinden otomatik ölçeklendirmeyi belirtirsiniz. Bu işlem katmanıyla birlikte, iş yükü etkinliğine göre veritabanını otomatik olarak duraklatabilir ve devam ettirebilirsiniz. Birim başına sanal çekirdek birim fiyatı, sağlanan işlem katmanında sunucusuz işlem katmanında olduğundan daha düşüktür.
 - [Veritabanı işlem birimi (DTU) tabanlı satın alma modeli](sql-database-service-tiers-dtu.md). Bu satın alma modeli, ortak iş yükleri için dengeli işlem ve depolama paketleri sağlar.
 
 Farklı Azure SQL veritabanı dağıtım modelleri için farklı satın alma modelleri mevcuttur:
@@ -53,7 +53,7 @@ Her iki katman da standart depolama kullandığından, yedekleme depolama alanı
 
 ### <a name="serverless-compute-costs"></a>Sunucusuz işlem maliyetleri
 
-İşlem kapasitesinin nasıl tanımlandığı ve maliyetlerin sunucusuz bilgi işlem katmanı için nasıl hesaplandığı hakkında bir açıklama için bkz. [SQL veritabanı sunucusuz (Önizleme)](sql-database-serverless.md).
+İşlem kapasitesinin nasıl tanımlandığı ve maliyetlerin sunucusuz bilgi işlem katmanı için nasıl hesaplandığı hakkında bir açıklama için bkz. [SQL veritabanı sunucusuz](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
 

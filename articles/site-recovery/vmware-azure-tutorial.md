@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813392"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488453"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Şirket içi VMware VM’leri için Azure’da olağanüstü durum kurtarmayı ayarlama
 
@@ -49,7 +49,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="select-a-protection-goal"></a>Koruma hedefi seçme
 
 1. **Kurtarma Hizmetleri kasaları** bölümünde kasa adını seçin. Bu senaryo için**ContosoVMVault**’u kullanıyoruz.
-2. **Başlarken** bölümünde Site Recovery’yi seçin. Ardından **Altyapıyı Hazırla** seçeneğini belirleyin.
+2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
 3. **Koruma hedefi** > **Makineleriniz nerede** bölümünde **Şirket içi** seçeneğini belirleyin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
 5. **Makineleriniz sanallaştırıldı mı** bölümünde **Evet, VMware vSphere Hypervisor ile** seçeneğini belirleyin. Sonra **Tamam**’ı seçin.
@@ -60,9 +60,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Kaynak ortamınızda, bu şirket içi Site Recovery bileşenlerini barındırmak için tek, yüksek oranda kullanılabilir ve şirket içi bir makineniz olması gerekir:
 
-- **Yapılandırma sunucusu**: Yapılandırma sunucusu yerinde bileşenler ile Azure arasındaki iletişimi düzenler ve veri çoğaltma işlemlerini yönetir.
-- **İşlem sunucusu**: İşlem sunucusu, çoğaltma ağ geçidi olarak davranır. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir ve Azure 'da bir önbellek depolama hesabına gönderir. İşlem sunucusu Ayrıca, çoğaltmak istediğiniz VM 'Lere Mobility hizmeti Aracısı 'nı da yükleyip şirket içi VMware VM 'lerinin otomatik olarak bulunmasını gerçekleştirir.
-- **Ana hedef sunucu**: Ana hedef sunucu, Azure'dan yeniden çalışma sırasında çoğaltma verilerini işler.
+- **Yapılandırma sunucusu**: yapılandırma sunucusu, şirket Içi ve Azure arasındaki iletişimleri koordine eder ve veri çoğaltmasını yönetir.
+- **İşlem sunucusu**: işlem sunucusu bir çoğaltma ağ geçidi olarak davranır. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir ve Azure 'da bir önbellek depolama hesabına gönderir. İşlem sunucusu Ayrıca, çoğaltmak istediğiniz VM 'Lere Mobility hizmeti Aracısı 'nı da yükleyip şirket içi VMware VM 'lerinin otomatik olarak bulunmasını gerçekleştirir.
+- **Ana hedef sunucu**: Ana hedef sunucu, Azure 'dan yeniden çalışma sırasında çoğaltma verilerini işler.
 
 
 Bu bileşenlerin tümü, *yapılandırma sunucusu*olarak bilinen tek şirket içi makinelerde birlikte yüklenir. Varsayılan olarak, VMware olağanüstü durum kurtarma için yapılandırma sunucusunu yüksek oranda kullanılabilir bir VMware VM 'si olarak ayarladık. Bunu yapmak için, hazırlanan bir açık sanallaştırma uygulaması (OVA) şablonunu indirir ve VM 'yi oluşturmak için şablonu VMware 'ye içeri aktarabilirsiniz. 
@@ -158,7 +158,7 @@ Hedef kaynaklarını seçin ve doğrulayın.
 
 ## <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
-1. [Azure portalını](https://portal.azure.com) açın ve **Tüm kaynaklar**’ı seçin.
+1. [Azure portalı](https://portal.azure.com) açın. **Kurtarma Hizmetleri kasalarını**arayın ve seçin.
 2. Kurtarma Hizmetleri kasasını (bu öğreticide **ContosoVMVault**) seçin.
 3. Bir çoğaltma ilkesi oluşturmak için **Site Recovery altyapısı** > **Çoğaltma İlkeleri** >  **+Çoğaltma İlkesi** seçeneğini belirleyin.
 4. **Çoğaltma ilkesi oluştur** seçeneğinde, ilke adını girin. **VMwareRepPolicy** ilkesini kullanıyoruz.
@@ -187,7 +187,7 @@ VM 'Ler için çoğaltmayı şu şekilde etkinleştirin:
 1. **Özellikler** > **Özellikleri yapılandırma** bölümünde, Mobility Hizmeti’nin makineye otomatik olarak yüklenmesi için işlem sunucusu tarafından kullanılacak hesabı seçin.
 1. **Çoğaltma ayarları** > **Çoğaltma ayarlarını yapılandırma** bölümünde doğru çoğaltma ilkesinin seçilip seçilmediğini doğrulayın.
 1. **Çoğaltmayı Etkinleştir** seçeneğini belirleyin. Bir VM için çoğaltma etkinleştirildiğinde Site Recovery, Mobility Hizmeti’ni yükler.
-1. **Ayarlar** > **İşler** > **Site Recovery İşleri** bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
+1. **Ayarlar**İşler > Site Recovery İşleri >  bölümünden **Korumayı Etkinleştir** işinin ilerleme durumunu izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretme için hazırdır.
 1. Değişikliklerin geçerli olması ve portalda görüntülenmesi 15 dakika veya daha uzun sürebilir.
 1. Eklediğiniz VM’leri izlemek için **Configuration Servers** > **Last Contact At** bölümünde VM’lerin son bulunma zamanını kontrol edin. Zamanlanan bulma işlemini beklemeden VM’leri eklemek için yapılandırma sunucusunu vurgulayın (seçmeyin) ve **Yenile**’yi seçin.
 

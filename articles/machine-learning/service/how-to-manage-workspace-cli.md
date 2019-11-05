@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489712"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLı ile Azure Machine Learning çalışma alanı oluşturma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure CLı kullanarak Azure Machine Learning çalışma alanı oluşturmayı öğreneceksiniz. Azure CLı, Azure kaynaklarını yönetmeye yönelik komutlar sağlar. CLı 'ya makine öğrenimi uzantısı, Azure Machine Learning kaynaklarıyla çalışmaya yönelik komutlar sağlar.
 
@@ -39,7 +40,7 @@ CLı 'dan Azure aboneliğinizde kimlik doğrulayabilmeniz için çeşitli yollar
 az login
 ```
 
-CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, bir yetkilendirme koduna [https://aka.ms/devicelogin](https://aka.ms/devicelogin) göz atmaya ve girmeye yönelik bilgiler içerir.
+CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler [https://aka.ms/devicelogin](https://aka.ms/devicelogin) göz atmayı ve bir yetkilendirme kodu girmeyi içerir.
 
 Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
@@ -68,7 +69,7 @@ Azure Machine Learning çalışma alanı aşağıdaki Azure hizmetlerine veya va
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Machine Learning çalışma alanı bir kaynak grubu içinde oluşturulmalıdır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz. __Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. Bu `<resource-group-name>` kaynak grubu için kullanılacak adla değiştirin. Bu `<location>` kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
+Azure Machine Learning çalışma alanı bir kaynak grubu içinde oluşturulmalıdır. Var olan bir kaynak grubunu kullanabilir veya yeni bir tane oluşturabilirsiniz. __Yeni bir kaynak grubu oluşturmak__için aşağıdaki komutu kullanın. `<resource-group-name>`, bu kaynak grubu için kullanılacak adla değiştirin. `<location>`, bu kaynak grubu için kullanılacak Azure bölgesiyle değiştirin:
 
 > [!TIP]
 > Azure Machine Learning kullanılabildiği bir bölge seçmelisiniz. Bilgi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -133,7 +134,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 > [!IMPORTANT]
 > Var olan tüm kaynakları belirtmeniz gerekmez. Bir veya daha fazla belirtebilirsiniz. Örneğin, var olan bir depolama hesabı belirtebilirsiniz ve çalışma alanı diğer kaynakları oluşturur.
 
-+ **Azure depolama hesabı**:`az storage account show --name <storage-account-name> --query "id"`
++ **Azure depolama hesabı**: `az storage account show --name <storage-account-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve depolama hesabınızın KIMLIĞIDIR:
 
@@ -163,7 +164,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Bu komuttan gelen yanıt aşağıdaki metne benzer ve kapsayıcı kayıt defterinin KIMLIĞIDIR:
 
@@ -172,7 +173,7 @@ Mevcut kaynakları kullanan bir çalışma alanı oluşturmak için, kaynakları
     > [!IMPORTANT]
     > Kapsayıcı kayıt defterinde, bir Azure Machine Learning çalışma alanıyla kullanılmadan önce [yönetici hesabının](/azure/container-registry/container-registry-authentication#admin-account) etkinleştirilmiş olması gerekir.
 
-Çalışma alanıyla kullanmak istediğiniz kaynakların kimliklerine sahip olduktan sonra, temel `az workspace create -w <workspace-name> -g <resource-group-name>` komutunu kullanın ve var olan kaynaklar için parametreleri ve kimlikleri ekleyin. Örneğin, aşağıdaki komut, var olan bir kapsayıcı kayıt defteri kullanan bir çalışma alanı oluşturur:
+Çalışma alanıyla kullanmak istediğiniz kaynakların kimliklerine sahip olduktan sonra, temel `az workspace create -w <workspace-name> -g <resource-group-name>` komutunu kullanın ve var olan kaynaklar için parametreleri ve KIMLIKLERI ekleyin. Örneğin, aşağıdaki komut, var olan bir kapsayıcı kayıt defteri kullanan bir çalışma alanı oluşturur:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
@@ -201,7 +202,7 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 }
 ```
 
-## <a name="list-workspaces"></a>Çalışma alanlarını listele
+## <a name="list-workspaces"></a>Çalışma alanlarını Listele
 
 Azure aboneliğinizin tüm çalışma alanlarını listelemek için aşağıdaki komutu kullanın:
 

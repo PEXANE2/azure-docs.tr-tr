@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 09/19/2019
+ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b42634aa86f210382adb1ae224c847a92d89109b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
-ms.translationtype: MT
+ms.openlocfilehash: 587848c6718a003bf781f81d0298c73ef1549bb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103318"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474880"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -35,18 +35,42 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 * Uygulamanızdaki kullanıcı deneyimlerini etkinleştirmek için [Kullanıcı akışları oluşturun](tutorial-create-user-flows.md) .
 * **ASP.net ve Web geliştirme** iş yüküyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) ' i yükledikten sonra.
 
-## <a name="update-the-application"></a>Uygulamayı güncelleştirme
+## <a name="update-the-application-registration"></a>Uygulama kaydını güncelleştirme
 
-Önkoşulların bir parçası olarak tamamladığınız öğreticide, Azure AD B2C bir Web uygulaması eklediniz. Bu öğreticideki örnekle iletişimi etkinleştirmek için, Azure AD B2C ' de uygulamaya bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
+Önkoşulların bir parçası olarak tamamladığınız öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Bu öğreticideki örnekle iletişimi etkinleştirmek için bir yeniden yönlendirme URI 'SI eklemeniz ve kayıtlı uygulama için bir istemci gizli anahtarı (anahtar) oluşturmanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+### <a name="add-a-redirect-uri-reply-url"></a>Yeniden yönlendirme URI 'SI (yanıt URL 'SI) ekleme
+
+Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Önizleme deneyimi hakkında daha fazla bilgi edinin](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
-1. **Yanıt URL 'si**altında, `https://localhost:44316`ekleyin.
+1. **Yanıt URL 'si**altında `https://localhost:44316`ekleyin.
 1. **Kaydet**’i seçin.
-1. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
-1. **Anahtarlar**' ı seçin, **anahtar oluştur**' u ve **Kaydet**' i seçin. Web uygulamasını yapılandırırken kullanacağınız anahtarı kaydedin.
+1. Özellikler sayfasında, Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere uygulama KIMLIĞINI kaydedin.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Kimlik doğrulaması**' nı seçin ve ardından **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
+1. **Web**altında **URI Ekle** bağlantısını seçin, `https://localhost:44316`girin ve ardından **Kaydet**' i seçin.
+1. **Genel Bakış**’ı seçin.
+1. Web uygulamasını yapılandırırken daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+
+* * *
+
+### <a name="create-a-client-secret"></a>İstemci parolası oluşturma
+
+Sonra, kayıtlı Web uygulaması için bir istemci gizli anahtarı oluşturun. Web uygulaması kod örneği, belirteç istenirken kimliğini kanıtlamak için bunu kullanır.
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma
 
@@ -67,12 +91,12 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
 1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
-    1. `ida:Tenant` Ve`ida:AadInstance` değerlerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, ile `contoso`değiştirin `fabrikamb2c` .
-    1. Değerini `ida:ClientId` , kaydettiğiniz uygulama kimliğiyle değiştirin.
+    1. `ida:Tenant` ve `ida:AadInstance` değerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin `fabrikamb2c` `contoso`ile değiştirin.
+    1. `ida:ClientId` değerini, kaydettiğiniz uygulama KIMLIĞIYLE değiştirin.
     1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. Web. config dosyasına eklemeden önce, istemci gizliliğini XML olarak kodlamanız gerekir.
-    1. Değerini `ida:SignUpSignInPolicyId` ile`b2c_1_signupsignin1`değiştirin.
-    1. Değerini `ida:EditProfilePolicyId` ile`b2c_1_profileediting1`değiştirin.
-    1. Değerini `ida:ResetPasswordPolicyId` ile`b2c_1_passwordreset1`değiştirin.
+    1. `ida:SignUpSignInPolicyId` değerini `b2c_1_signupsignin1`ile değiştirin.
+    1. `ida:EditProfilePolicyId` değerini `b2c_1_profileediting1`ile değiştirin.
+    1. `ida:ResetPasswordPolicyId` değerini `b2c_1_passwordreset1`ile değiştirin.
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
@@ -91,7 +115,7 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 
 Uygulama kullanıcısı artık kendi e-posta adreslerini kullanarak oturum açabilir ve Web uygulamasını kullanabilir.
 
-Ancak, bu yapılacaklar **listesi** özelliği, serideki bir sonraki öğreticiyi tamamlayana kadar çalışmaz, [öğretici: Bir ASP.NET Web API 'sini](active-directory-b2c-tutorials-web-api.md)korumak için Azure AD B2C kullanın.
+Ancak, bu yapılacaklar **listesi** özelliği, serideki bir sonraki öğreticiyi tamamlayana kadar çalışmaz, [öğretici: bir ASP.NET Web API 'sini korumak için Azure AD B2C kullanın](active-directory-b2c-tutorials-web-api.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -105,4 +129,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Şimdi, Web uygulamasının Yapılacaklar **listesi** özelliğini etkinleştirmek için sonraki öğreticiye geçin. Bu durumda, bir Web API uygulamasını kendi Azure AD B2C kiracınıza kaydeder ve sonra API kimlik doğrulaması için kiracınızı kullanacak şekilde kod örneğini değiştirirsiniz.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Bir ASP.NET Web API 'sini korumak için Azure Active Directory B2C kullanın >](active-directory-b2c-tutorials-web-api.md)
+> [Öğretici: bir ASP.NET Web API 'sini korumak için Azure Active Directory B2C kullanın >](active-directory-b2c-tutorials-web-api.md)

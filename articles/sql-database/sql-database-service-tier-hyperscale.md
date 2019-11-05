@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053909"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496199"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
 Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanılabilirlik sağlamak için bulut ortamı için ayarlanmış SQL Server veritabanı motoru mimarisini temel alır. Azure SQL veritabanı 'nda kullanılan üç mimari modeli vardır:
 - Genel Amaçlı/standart 
--  Hiper ölçeklendirme
+-  Hiper Ölçek
 -  İş Açısından Kritik/Premium
 
 Azure SQL veritabanı 'nda bulunan hiper ölçekli hizmet katmanı, sanal çekirdek tabanlı satın alma modelindeki en yeni hizmet katmandır. Bu hizmet katmanı, bir Azure SQL veritabanı için depolama ve işlem kaynaklarının, Genel Amaçlı ve Iş için kullanılabilen limitlerin büyük ölçüde ötesinde ölçeğini genişletmek için Azure mimarisinden yararlanan, yüksek düzeyde ölçeklenebilir bir depolama ve bilgi işlem performans katmanından yararlanır Kritik hizmet katmanları.
@@ -47,7 +47,7 @@ Hiper ölçek hizmeti katmanı, bulut veritabanlarında geleneksel olarak görü
 
 Ayrıca, veritabanı yedeklemeleri oluşturmak için gereken süre ve ölçeği artırma veya azaltma, artık veritabanındaki veri hacmine bağlı değildir. Hiper ölçekli veritabanları neredeyse anında yedeklenebilir. Ayrıca, dakikada on terabaytlık bir veritabanını yukarı veya aşağı doğru bir şekilde ölçekleyebilirsiniz. Bu özellik, sizi ilk yapılandırma seçimlerinizde kutulandığında kaygıları ortadan boşaltır.
 
-Hiper ölçek hizmet katmanının işlem boyutları hakkında daha fazla bilgi için bkz. [hizmet katmanı özellikleri](sql-database-service-tiers-vcore.md#service-tier-characteristics).
+Hiper ölçek hizmet katmanının işlem boyutları hakkında daha fazla bilgi için bkz. [hizmet katmanı özellikleri](sql-database-service-tiers-vcore.md#service-tiers).
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Hiper ölçek hizmet katmanını kimler kabul etmelidir
 
@@ -98,7 +98,7 @@ Sayfa sunucuları, ölçeği genişletilmiş bir depolama altyapısını temsil 
 
 Günlük hizmeti, birincil işlem çoğaltmasındaki günlük kayıtlarını kabul eder, bunları dayanıklı bir önbellekte devam ettirir ve günlük kayıtlarını, verilerin güncelleştirilebilmesi için ilgili sayfa sunucuları ve ilgili sayfa sunucuları gibi işlem çoğaltmalarının geri kalanına iletir. vardır. Bu şekilde, birincil işlem çoğaltmasındaki tüm veriler, tüm ikincil işlem çoğaltmaları ve sayfa sunucularına günlük hizmeti aracılığıyla dağıtılır. Son olarak, günlük kayıtları, Azure Storage 'daki uzun süreli depolamaya gönderilir ve bu, neredeyse sonsuz bir depolama deposudur. Bu mekanizma, sık kullanılan günlük kesilmesi gereksinimini ortadan kaldırır. Günlük hizmeti 'nin günlük kayıtlarına erişimi hızlandırmak için yerel önbelleği de vardır.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure depolama alanı
 
 Azure depolama, bir veritabanındaki tüm veri dosyalarını içerir. Sayfa sunucuları veri dosyalarını Azure depolama 'da güncel tutar. Bu depolama, yedekleme amaçları için ve Azure bölgeleri arasında çoğaltma için kullanılır. Yedeklemeler, veri dosyalarının depolama anlık görüntüleri kullanılarak uygulanır. Anlık görüntüleri kullanarak geri yükleme işlemleri, veri boyutundan bağımsız olarak hızlıdır. Veriler, veritabanının yedekleme saklama süresi içinde herhangi bir noktaya geri yüklenebilir.
 
@@ -166,9 +166,9 @@ Bir Azure SQL veritabanı hiper ölçek veritabanını, bir olağanüstü durum 
 
 Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde kullanılabilir:
 
-- Doğu Avustralya
-- Güneydoğu Avustralya
-- Brezilya Güney
+- Avustralya Doğu
+- Avustralya Güneydoğu
+- Güney Brezilya
 - Kanada Orta
 - Orta ABD
 - Çin Doğu 2
@@ -178,16 +178,16 @@ Azure SQL veritabanı hiper ölçek katmanı Şu anda aşağıdaki bölgelerde k
 - Doğu ABD 2
 - Fransa Orta
 - Doğu Japonya
-- Batı Japonya
+- Japonya Batı
 - Kore Orta
 - Kore Güney
 - Orta Kuzey ABD
 - Kuzey Avrupa
 - Güney Afrika Kuzey
-- Güney Orta ABD
+- Orta Güney ABD
 - Güneydoğu Asya
-- Birleşik Krallık, Güney
-- Birleşik Krallık, Batı
+- Birleşik Krallık Güney
+- Birleşik Krallık Batı
 - Batı Avrupa
 - Batı ABD
 - Batı ABD 2

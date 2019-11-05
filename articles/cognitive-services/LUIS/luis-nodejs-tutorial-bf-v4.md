@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
-description: Node.js'yi kullanarak, dil anlama (LUIS) ile tümleşik bir sohbet robotu oluşturun. Bu sohbet robotu, bir robot çözümünü kısa sürede gerçekleştirmek için İnsan Kaynakları uygulamasını kullanır. Robot, Bot Framework 4 sürümü ve Azure Web uygulaması robotu ile geliştirilmiştir.
+description: Node.js'yi kullanarak, dil anlama (LUIS) ile tümleşik bir sohbet robotu oluşturun. Bu sohbet robotu, bir robot çözümünü kısa sürede gerçekleştirmek için İnsan Kaynakları uygulamasını kullanır. Robot, Bot Framework sürümü 4 ve Azure Web uygulaması robotu ile geliştirilmiştir.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -9,20 +9,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772896"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492695"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Öğretici: Node. js ' de Language Understanding etkin bir Web uygulaması bot kullanın 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Öğretici: node. js ' de Language Understanding etkin bir Web uygulaması bot kullanın 
 
 Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak için Node. js ' yi kullanın. Bot, Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) kaynağı ve [bot Framework sürüm](https://github.com/Microsoft/botbuilder-dotnet) v4 ile oluşturulmuştur.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Web uygulaması robotu oluşturma. Bu işlem sizin için yeni bir LUIS uygulaması oluşturur.
@@ -40,7 +42,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak için Node. js
 
 1. [Azure portalda](https://portal.azure.com) **Yeni kaynak oluştur**'u seçin.
 
-1. Arama kutusunda **Web Uygulaması Robotu**'nu arayın ve bunu seçin. **Oluştur**’u seçin.
+1. Arama kutusunda **Web Uygulaması Robotu**'nu arayın ve bunu seçin. **Oluştur**'u seçin.
 
 1. **Robot Hizmeti**'nde gerekli bilgileri sağlayın:
 
@@ -66,9 +68,9 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak için Node. js
     |SDK dili|Robotun programlama dili|**Node.js**|
     |Hecesi|Robot türü|**Temel robot**|
     
-1. **Oluştur**’u seçin. Robot hizmetini oluşturur ve Azure'a dağıtır. Bu işlemin bir parçası olarak `luis-nodejs-bot-XXXX` adlı bir LUIS uygulaması oluşturulur. Bu ad/Azure bot hizmeti uygulama adını temel alır.
+1. **Oluştur**'u seçin. Robot hizmetini oluşturur ve Azure'a dağıtır. Bu işlemin bir parçası olarak `luis-nodejs-bot-XXXX` adlı bir LUIS uygulaması oluşturulur. Bu ad/Azure bot hizmeti uygulama adını temel alır.
 
-    [![Web uygulaması bot oluştur](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [Web uygulaması bot ![oluştur](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
     Devam etmeden önce bot hizmeti oluşturuluncaya kadar bekleyin.
 
@@ -81,12 +83,12 @@ Bot hizmeti oluşturma işlemi, amaçlar ve örnek dıklarla yeni bir LUO uygula
 |Kitap kolu|`Travel to Paris`|
 |İptal|`bye`|
 |Gethava durumu|`what's the weather like?`|
-|Yok.|Uygulamanın etki alanı dışındaki her şey.|
+|None|Uygulamanın etki alanı dışındaki her şey.|
 
-## <a name="test-the-bot-in-web-chat"></a>Bot Web Chat test edin.
+## <a name="test-the-bot-in-web-chat"></a>Web sohbetinde bot 'ı test etme
 
 1. Yeni bot için Azure portal devam ederken, **Web sohbetinde test**' i seçin. 
-1. **Iletinizi yazın** metin kutusuna metni `Book a flight from Seattle to Berlin tomorrow`girin. Bot, bir uçuş sağlamak istediğiniz doğrulama ile yanıt verir. 
+1. **Iletinizi yazın** metin kutusuna `Book a flight from Seattle to Berlin tomorrow`yazın. Bot, bir uçuş sağlamak istediğiniz doğrulama ile yanıt verir. 
 
     ![Azure portal ekran görüntüsü, ' Merhaba ' metnini girin.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
@@ -99,7 +101,7 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 
 1. **Robot kaynak kodunu indir**'i seçin. 
 
-    [![Temel bot için Web uygulaması bot kaynak kodunu indirin](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [temel bot için Web uygulaması bot kaynak kodunu Indirin ![](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 1. Açılan iletişim kutusu **indirilen ZIP dosyasında uygulama ayarlarını dahil**Istediğinde, **Evet**' i seçin. Bu, LUSıS ayarlarını sağlar. 
 
@@ -109,7 +111,7 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Lua 'ya ve yanıtı almaya yönelik kodu gözden geçirin
 
-1. Kullanıcı iletişim kutusunu LUSıS tahmin uç noktasına göndermek için, **iletişim > Flightbookingtanıyıcı. js** dosyasını açın. Robota girilen kullanıcı konuşmasının LUIS'e gönderildiği yer budur. LU, **executeLuisQuery** yönteminden yanıt döndürülür.  
+1. Kullanıcı iletişim kutusunu LUSıS tahmin uç noktasına göndermek için, **iletişim > Flightbookingtanıyıcı. js** dosyasını açın. Robota girilen kullanıcı konuşmasının LUIS'e gönderildiği yer burasıdır. LU, **executeLuisQuery** yönteminden yanıt döndürülür.  
 
     ````javascript
     class FlightBookingRecognizer {
@@ -199,17 +201,17 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 Kitap uçuş amacı için bir soru sorun.
 
 1. Bot öykünücüsünü başlatın ve **bot 'ı aç**' ı seçin.
-1. **Bir bot** açılır penceresi açın iletişim kutusunda, gıbı bot URL `http://localhost:3978/api/messages`'nizi girin. `/api/messages` Yol, bot 'ın Web adresidir.
+1. **Bir bot** açılır penceresi açın iletişim kutusunda, `http://localhost:3978/api/messages`gıbı bot URL 'nizi girin. `/api/messages` yolu, bot 'un Web adresidir.
 1. İndirdiğiniz bot kodunun kökündeki **. env** dosyasında bulunan **Microsoft uygulama kimliği** ve **Microsoft uygulama parolasını**girin.
 
-1. Bot öykünücüsünde, `Book a flight from Seattle to Berlin tomorrow` **Web sohbetinde testte**aldığınız gibi temel bot için aynı yanıtı girin ve alın.
+1. Bot öykünücüsünde `Book a flight from Seattle to Berlin tomorrow` girin ve **Web sohbetinde testte**aldığınız gibi temel bot için aynı yanıtı alın.
 
-    [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [Öykünücüde temel bot yanıtını ![](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. **Evet**' i seçin. Bot, eylemlerinin bir özeti ile yanıt verir. 
-1. Bot öykünücüsünün günlüğünden, dahil `Luis Trace`edilen satırı seçin. Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
+1. Bot öykünücüsünün günlüğünden `Luis Trace`içeren çizgiyi seçin. Bu, deterance 'in amacı ve varlıkları için LUSıS 'den gelen JSON yanıtını görüntüler.
 
-    [![Öykünücüde temel bot yanıtı](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [Öykünücüde temel bot yanıtını ![](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]

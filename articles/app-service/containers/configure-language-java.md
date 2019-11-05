@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 26f9bac42ef98f1063194340a5aa20aef6fe316e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972944"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470909"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -45,7 +45,7 @@ Performans raporları, trafik görselleştirmeleri ve sistem durumu sağlaması,
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-### <a name="stream-diagnostic-logs"></a>Akış tanılama günlükleri
+### <a name="stream-diagnostic-logs"></a>Tanılama günlüklerini akışla aktarma
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
@@ -82,7 +82,7 @@ JVM 'nin 30 saniyelik bir kaydını başlatmak için aşağıdaki komutu yürüt
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
 ```
 
-30 saniyelik aralıkta, `jcmd 116 JFR.check` ' ı çalıştırarak kaydın gerçekleşdiğini doğrulayabilirsiniz. Bu, verilen Java işleminin tüm kayıtlarını gösterir.
+30 saniyelik Aralık sırasında, `jcmd 116 JFR.check`çalıştırarak kaydın gerçekleşdiğini doğrulayabilirsiniz. Bu, verilen Java işleminin tüm kayıtlarını gösterir.
 
 #### <a name="continuous-recording"></a>Sürekli kayıt
 
@@ -110,7 +110,7 @@ Linux için Azure App Service, Azure portal ve CLı aracılığıyla kullanıma 
 
 - [Uygulama ayarlarını yapılandır](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [Özel etki alanı ayarlama](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [SSL 'yi etkinleştir](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [SSL bağlamalarını yapılandırma](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [CDN ekleme](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Kudu sitesini yapılandırma](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
@@ -118,7 +118,7 @@ Linux için Azure App Service, Azure portal ve CLı aracılığıyla kullanıma 
 
 Hem Tomcat hem de Java örneği ortamlarında ayrılan belleği veya diğer JVM çalışma zamanı seçeneklerini ayarlamak için, seçeneklerle `JAVA_OPTS` adlı bir [uygulama ayarı](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) oluşturun. App Service Linux bu ayarı, başlatıldığında Java çalışma zamanına bir ortam değişkeni olarak geçirir.
 
-Azure portal, Web uygulaması için **uygulama ayarları** altında, `-Xms512m -Xmx1204m` gibi ek ayarları içeren `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun.
+Azure portal, Web uygulaması için **uygulama ayarları** altında, `-Xms512m -Xmx1204m`gibi ek ayarları içeren `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun.
 
 Uygulama ayarını Maven eklentisi ' nden yapılandırmak için, Azure eklentisi bölümüne ayar/değer etiketleri ekleyin. Aşağıdaki örnek, belirli bir minimum ve en büyük Java yığın boyutunu ayarlar:
 
@@ -160,7 +160,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>Varsayılan karakter kodlamasını ayarla
 
-Azure portal, Web uygulaması için **uygulama ayarları** altında, `-Dfile.encoding=UTF-8` değeri ile `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun.
+Azure portal, Web uygulaması için **uygulama ayarları** altında, `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun `-Dfile.encoding=UTF-8`değeri.
 
 Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını yapılandırabilirsiniz. Eklenti yapılandırmasına ayar adı ve değer etiketlerini ekleyin:
 
@@ -175,13 +175,13 @@ Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını y
 
 ### <a name="adjust-startup-timeout"></a>Başlangıç zaman aşımını ayarla
 
-Java uygulamanız özellikle büyükse, başlangıç süresi sınırını artırmanız gerekir. Bunu yapmak için, `WEBSITES_CONTAINER_START_TIME_LIMIT` bir uygulama ayarı oluşturun ve App Service zaman aşımından önce beklemesi gereken saniye sayısına ayarlayın. En büyük değer `1800` saniyedir.
+Java uygulamanız özellikle büyükse, başlangıç süresi sınırını artırmanız gerekir. Bunu yapmak için, bir uygulama ayarı oluşturun, `WEBSITES_CONTAINER_START_TIME_LIMIT` ve App Service zaman aşımından önce bekleyeceği saniye sayısına ayarlayın. En büyük değer `1800` saniyedir.
 
 ### <a name="pre-compile-jsp-files"></a>JSP dosyalarını önceden derle
 
 Tomcat uygulamalarının performansını artırmak için, App Service dağıtım yapmadan önce JSP dosyalarınızı derleyebilirsiniz. Apache Sling tarafından sağlanmış [Maven eklentisini](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) veya bu [ant derleme dosyasını](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)kullanarak kullanabilirsiniz.
 
-## <a name="secure-applications"></a>Uygulamaları güvenli hale getirme
+## <a name="secure-applications"></a>Güvenli uygulamalar
 
 Linux için App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](/azure/security/security-paas-applications-using-app-services) uygulamaları kümesine sahiptir.
 
@@ -191,7 +191,7 @@ Linux için App Service çalıştıran Java uygulamaları, diğer uygulamalarla 
 
 #### <a name="tomcat-and-wildfly"></a>Tomcat ve Yavaya
 
-Tomcat veya Yavaya yönelik uygulamalar, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki kodda `request` `HttpServletRequest` ' in bir örneğidir.
+Tomcat veya Yavaya yönelik uygulamalar, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki kodda, `request` bir `HttpServletRequest`örneğidir.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -221,15 +221,15 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Bu özelliği devre dışı bırakmak için, `1` değerli `WEBSITE_AUTH_SKIP_PRINCIPAL` adlı bir uygulama ayarı oluşturun. App Service tarafından eklenen tüm servlet filtrelerini devre dışı bırakmak için, `1` değeri ile `WEBSITE_SKIP_FILTERS` adlı bir ayar oluşturun.
+Bu özelliği devre dışı bırakmak için, `1`değeri olan `WEBSITE_AUTH_SKIP_PRINCIPAL` adlı bir uygulama ayarı oluşturun. App Service tarafından eklenen tüm servlet filtrelerini devre dışı bırakmak için, `1`değeriyle `WEBSITE_SKIP_FILTERS` adında bir ayar oluşturun.
 
 #### <a name="spring-boot"></a>Spring Boot
 
-Spring Boot geliştiricileri tanıdık yay güvenlik ek açıklamalarını ve API 'Lerini kullanarak uygulamaları güvenli hale getirmek için [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 'ı kullanabilir. *Application. Properties* dosyanızdaki en büyük üst bilgi boyutunu artırdığınızdan emin olun. @No__t-0 değerini öneririz.
+Spring Boot geliştiricileri tanıdık yay güvenlik ek açıklamalarını ve API 'Lerini kullanarak uygulamaları güvenli hale getirmek için [Azure Active Directory Spring Boot Starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) 'ı kullanabilir. *Application. Properties* dosyanızdaki en büyük üst bilgi boyutunu artırdığınızdan emin olun. `16384`değerini öneririz.
 
 ### <a name="configure-tlsssl"></a>TLS/SSL 'yi yapılandırma
 
-Var olan bir SSL sertifikasını karşıya yüklemek için [var olan bir özel SSL sertifikasını bağlama](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) ve uygulamanızın etki alanı adına bağlama bölümündeki yönergeleri izleyin. Varsayılan olarak, uygulamanız HTTP bağlantılarına hala izin verir-SSL ve TLS 'yi zorlamak için öğreticideki belirli adımları izleyin.
+Var olan bir SSL sertifikasını karşıya yüklemek ve uygulamanızın etki alanı adına bağlamak için, [Özel BIR DNS adını Azure App Service BIR SSL bağlamasıyla güvenli hale](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) getirin. Varsayılan olarak, uygulamanız HTTP bağlantılarına hala izin verir-SSL ve TLS 'yi zorlamak için öğreticideki belirli adımları izleyin.
 
 ### <a name="use-keyvault-references"></a>Keykasası başvurularını kullanma
 
@@ -252,8 +252,8 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 5. Paketi açılan Newrelik Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik*konumunda olmalıdır.
 6. */Home/site/Wwwroot/APM/newrelic/newrelic.exe* konumundaki YAML dosyasını değiştirin ve yer tutucu lisans değerini kendi lisans anahtarınızla değiştirin.
 7. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
-    - Uygulamanız **Java SE**kullanıyorsa, `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` değeriyle `JAVA_OPTS` adlı bir ortam değişkeni oluşturun.
-    - **Tomcat**kullanıyorsanız, `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` değeriyle `CATALINA_OPTS` adlı bir ortam değişkeni oluşturun.
+    - Uygulamanız **Java SE**kullanıyorsa, `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`değeri ile `JAVA_OPTS` adlı bir ortam değişkeni oluşturun.
+    - **Tomcat**kullanıyorsanız, `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`değeri ile `CATALINA_OPTS` adlı bir ortam değişkeni oluşturun.
     - KıI kullanıyorsanız,Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.newrelic.com/docs/agents/java-agent/additional-installation/wildfly-version-11-installation-java) yeni relik belgelerine bakın.
 
 ### <a name="configure-appdynamics"></a>AppDynamics 'i yapılandırma
@@ -263,19 +263,19 @@ Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platfor
 3. [App Service örneğine SSH ekleyin](app-service-linux-ssh-support.md) ve */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
 4. Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics*konumunda olmalıdır.
 5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
-    - **Java SE**kullanıyorsanız, `JAVA_OPTS` adlı bir ortam değişkeni oluşturun; burada `<app-name>` App Service adınız olan `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` değeri.
-    - **Tomcat**kullanıyorsanız, `<app-name>` App Service adınız olan `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` değeri ile `CATALINA_OPTS` adlı bir ortam değişkeni oluşturun.
+    - **Java SE**kullanıyorsanız, `JAVA_OPTS` adında bir ortam değişkeni oluşturun; burada `<app-name>` App Service adınız `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`.
+    - **Tomcat**kullanıyorsanız, `CATALINA_OPTS` adında bir ortam değişkeni oluşturun; burada `<app-name>` App Service adınız `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`.
     - KıI kullanıyorsanız,Java Aracısı ve jpatron yapılandırması yükleme hakkında rehberlik Için [buradaki](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings) AppDynamics belgelerine bakın.
 
->  Zaten `JAVA_OPTS` veya `CATALINA_OPTS` için bir ortam değişkeniniz varsa, geçerli değerin sonuna `-javaagent:/...` seçeneğini ekleyin.
+>  `JAVA_OPTS` veya `CATALINA_OPTS`için bir ortam değişkeni zaten varsa, `-javaagent:/...` seçeneğini geçerli değerin sonuna ekleyin.
 
 ## <a name="configure-jar-applications"></a>JAR uygulamalarını yapılandırma
 
 ### <a name="starting-jar-apps"></a>JAR uygulamaları başlatılıyor
 
-Varsayılan olarak, App Service JAR uygulamanızın *app. jar*olarak adlandırıldığını bekliyor. Bu ada sahipse, otomatik olarak çalıştırılır. Maven kullanıcıları için, *Pod. xml*dosyanızın `<build>` bölümüne `<finalName>app</finalName>` ekleyerek jar adını ayarlayabilirsiniz. @No__t-1 özelliğini ayarlayarak [Gradle 'de aynısını](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) yapabilirsiniz.
+Varsayılan olarak, App Service JAR uygulamanızın *app. jar*olarak adlandırıldığını bekliyor. Bu ada sahipse, otomatik olarak çalıştırılır. Maven kullanıcıları için, *Pod. xml*'nizin `<build>` bölümüne `<finalName>app</finalName>` ekleyerek jar adını ayarlayabilirsiniz. `archiveFileName` özelliğini ayarlayarak [Gradle ile aynı](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) yapabilirsiniz.
 
-JAR 'niz için farklı bir ad kullanmak istiyorsanız, JAR dosyanızı yürüten [Başlangıç komutunu](app-service-linux-faq.md#built-in-images) da sağlamanız gerekir. Örneğin, `java -jar my-jar-app.jar`. Portalda başlangıç Komutunuz için değeri, yapılandırma > Genel ayarlar altında veya `STARTUP_COMMAND` adlı bir uygulama ayarıyla ayarlayabilirsiniz.
+JAR 'niz için farklı bir ad kullanmak istiyorsanız, JAR dosyanızı yürüten [Başlangıç komutunu](app-service-linux-faq.md#built-in-images) da sağlamanız gerekir. Örneğin, `java -jar my-jar-app.jar`. Portalda başlangıç Komutunuz için değeri, yapılandırma > Genel ayarlar altında veya `STARTUP_COMMAND`adlı bir uygulama ayarıyla ayarlayabilirsiniz.
 
 ### <a name="server-port"></a>Sunucu bağlantı noktası
 
@@ -294,7 +294,7 @@ App Service Linux gelen istekleri 80 numaralı bağlantı noktasına yönlendiri
 
 Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları, seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyası ile doldurmanız gerekir. , Ortak veritabanları için sınıf adları ve sürücü indirmeleri içeren bir tablodur.
 
-| Veritabanı   | Sürücü sınıfı adı                             | JDBC sürücüsü                                                                      |
+| Database   | Sürücü sınıfı adı                             | JDBC Sürücüsü                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("platformdan bağımsız" seçeneğini belirleyin) |
@@ -319,7 +319,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 1. Projenizin *meta INF/* dizininde bir *Context. xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *Context. xml*dosyasında veri kaynağını bir JNDI adresine bağlamak için bir `Context` öğesi ekleyin. @No__t-0 yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *Context. xml*dosyasında veri kaynağını bir JNDI adresine bağlamak için bir `Context` öğesi ekleyin. `driverClassName` yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -352,7 +352,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
 
-2. @No__t-1 öğesi içindeki *Server. xml* ' ye bir bağlam öğesi ekleyin.
+2. `<Server>` öğesi içindeki *Server. xml* ' ye bir bağlam öğesi ekleyin.
 
     ```xml
     <Server>
@@ -402,7 +402,7 @@ Son olarak, sürücü JARs ' ı Tomcat Sınıfyoluna yerleştirip App Service ye
 
     Alternatif olarak, bir FTP istemcisini kullanarak JDBC sürücüsünü karşıya yükleyebilirsiniz. [FTP kimlik bilgilerinizi almak için bu yönergeleri](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)izleyin.
 
-2. Sunucu düzeyinde bir veri kaynağı oluşturduysanız App Service Linux uygulamasını yeniden başlatın. Tomcat `CATALINA_BASE` ' i `/home/tomcat` ' e sıfırlayacaktır ve güncelleştirilmiş yapılandırmayı kullanır.
+2. Sunucu düzeyinde bir veri kaynağı oluşturduysanız App Service Linux uygulamasını yeniden başlatın. Tomcat, `CATALINA_BASE` `/home/tomcat` sıfırlar ve güncelleştirilmiş yapılandırmayı kullanır.
 
 ### <a name="spring-boot"></a>Spring Boot
 
@@ -410,7 +410,7 @@ Spring Boot uygulamalarındaki veri kaynaklarına bağlanmak için bağlantı di
 
 1. App Service sayfasının "yapılandırma" bölümünde, dize için bir ad belirleyin, JDBC Bağlantı dizenizi değer alanına yapıştırın ve türü "özel" olarak ayarlayın. İsteğe bağlı olarak, bu bağlantı dizesini yuva ayarı olarak ayarlayabilirsiniz.
 
-    Bu bağlantı dizesine, uygulamamız tarafından `CUSTOMCONNSTR_<your-string-name>` adlı bir ortam değişkeni olarak erişilebilir. Örneğin, yukarıda oluşturduğumuz bağlantı dizesi `CUSTOMCONNSTR_exampledb` olarak adlandırılıyordu.
+    Bu bağlantı dizesine, uygulamamız tarafından `CUSTOMCONNSTR_<your-string-name>`adlı bir ortam değişkeni olarak erişilebilir. Örneğin, yukarıda oluşturduğumuz bağlantı dizesi `CUSTOMCONNSTR_exampledb`olarak adlandırılıyordu.
 
 2. *Application. Properties* dosyanızda, bu bağlantı dizesine ortam değişkeni adı ile başvur. Örneğimiz için aşağıdakileri kullanacağız.
 
@@ -452,7 +452,7 @@ Web uygulaması örneklerinin durum bilgisi yoktur, bu nedenle başlatılan her 
 
 Betik çalışır duruma geldiğinde ve uygulama başlamadan önce çalışır. Betik, uygulama sunucusunu sunucu başladıktan sonra gereken herhangi bir yapılandırma veya değişiklik ile yapılandırmak için */opt/JBoss/WildFly/bin/JBoss-cli.sh* adresinden çağrılan [jpatron CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) 'yi kullanmalıdır.
 
-Yavayı yapılandırmak için CLı etkileşimli modunu kullanmayın. Bunun yerine, Jpatron CLı için `--file` komutunu kullanarak bir komut dosyası sağlayabilirsiniz, örneğin:
+Yavayı yapılandırmak için CLı etkileşimli modunu kullanmayın. Bunun yerine, Jpatron CLı için `--file` komutunu kullanarak komutların bir komut dosyası sağlayabilirsiniz, örneğin:
 
 ```bash
 /opt/jboss/wildfly/bin/jboss-cli.sh -c --file=/path/to/your/jboss_commands.cli
@@ -480,7 +480,7 @@ Jpatron CLı aracılığıyla modülleri ve bunların bağımlılıklarını ve 
 Modülünüzün dosyalarını ve içeriğini aldıktan sonra, modülü, Yavaya uygulama sunucusuna eklemek için aşağıdaki adımları izleyin.
 
 1. Dosyalarınızı, */Home/site/Deployments/Tools*gibi bir App Service örneğindeki bir konuma yüklemek için FTP 'yi kullanın. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](../deploy-ftp.md).
-2. Azure portal **yapılandırma** > **Genel ayarlar** sayfasında, **Başlangıç betiği** alanını başlangıç kabuğu betiğinizin konumuna ayarlayın, örneğin */Home/site/Deployments/Tools/Startup.exe*.
+2. Azure portal 'nin **yapılandırma** > **Genel ayarlar** sayfasında, **Başlangıç betiği** alanını başlangıç kabuğu betiğinizin konumuna ayarlayın, örneğin */Home/site/Deployments/Tools/Startup.exe*.
 3. Portalın **genel bakış** bölümündeki veya Azure CLI kullanarak **yeniden başlat** düğmesine basarak App Service örneğinizi yeniden başlatın.
 
 ### <a name="configure-data-sources"></a>Veri kaynaklarını yapılandırma
@@ -495,7 +495,7 @@ Aşağıdaki adımlarda, mevcut App Service ve veritabanınızı bağlama gereks
 
 1. [PostgreSQL](https://jdbc.postgresql.org/download.html), [MySQL](https://dev.mysql.com/downloads/connector/j/)veya [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)için JDBC sürücüsünü indirin. Sürücü. jar dosyasını almak için indirilen arşivin paketini açın.
 
-2. *Module. xml* gibi bir ada sahip bir dosya oluşturun ve aşağıdaki biçimlendirmeyi ekleyin. @No__t-0 yer tutucusunu (açılı ayraçlar dahil), PostgreSQL için `org.postgres`, MySQL için `com.mysql` veya SQL Server için `com.microsoft` ile değiştirin. @No__t-0 ' ı önceki adımdaki. jar dosyasının adı ile değiştirin. Bu dosyanın tam yolu da dahil olmak üzere, dosyanın App Service örneğine yerleştirebilirsiniz. Bu, */Home* dizini altında herhangi bir konum olabilir.
+2. *Module. xml* gibi bir ada sahip bir dosya oluşturun ve aşağıdaki biçimlendirmeyi ekleyin. `<module name>` yer tutucusunu (açılı ayraçlar dahil) PostgreSQL için `org.postgres`, MySQL için `com.mysql` veya SQL Server için `com.microsoft` değiştirin. `<JDBC .jar file path>`, önceki adımdaki. jar dosyasının adı ile değiştirin. Bu dosyanın tam yolu da dahil olmak üzere, dosyanın App Service örneğinize yerleştirebilirsiniz. Bu, */Home* dizini altında herhangi bir konum olabilir.
 
     ```xml
     <?xml version="1.0" ?>
@@ -510,7 +510,7 @@ Aşağıdaki adımlarda, mevcut App Service ve veritabanınızı bağlama gereks
     </module>
     ```
 
-3. *DataSource-Commands. CLI* gibi bir ada sahip bir dosya oluşturun ve aşağıdaki kodu ekleyin. @No__t-0 ' i önceki adımda kullandığınız değerle değiştirin. @No__t-0 ' ı önceki adımdaki dosya adı ve App Service yoluyla değiştirin (örneğin, */Home/Module.xml*).
+3. *DataSource-Commands. CLI* gibi bir ada sahip bir dosya oluşturun ve aşağıdaki kodu ekleyin. `<JDBC .jar file path>`, önceki adımda kullandığınız değerle değiştirin. `<module file path>`, önceki adımdaki dosya adı ve App Service yoluyla değiştirin (örneğin, */Home/Module.xml*).
 
     **PostgreSQL**
 
@@ -550,7 +550,7 @@ Aşağıdaki adımlarda, mevcut App Service ve veritabanınızı bağlama gereks
 
     Bu dosya, bir sonraki adımda açıklanan başlangıç betiği tarafından çalıştırılır. Bu, bir Yavama modülü olarak JDBC sürücüsünü yükler, karşılık gelen bir veri kaynağını oluşturur ve değişikliklerin etkili olabilmesi için sunucuyu yeniden yükler.
 
-4. *Startup.sh* gibi bir ada sahip bir dosya oluşturun ve aşağıdaki kodu ekleyin. @No__t-0 ' yı önceki adımda oluşturduğunuz dosyanın adıyla değiştirin. Dosyayı App Service Örneğinizde yerleştireceğiniz konuma tam yolu eklediğinizden emin olun. Örneğin, */Home/DataSource-Commands.exe*.
+4. *Startup.sh* gibi bir ada sahip bir dosya oluşturun ve aşağıdaki kodu ekleyin. `<JBoss CLI script>`, önceki adımda oluşturduğunuz dosyanın adıyla değiştirin. Dosyayı App Service Örneğinizde yerleştireceğiniz konuma tam yolu eklediğinizden emin olun. Örneğin, */Home/DataSource-Commands.exe*.
 
     ```bash
     #!/usr/bin/env bash
@@ -559,7 +559,7 @@ Aşağıdaki adımlarda, mevcut App Service ve veritabanınızı bağlama gereks
 
 5. JDBC. jar dosyasını, modül XML dosyasını, Jpatron CLı betiğini ve başlangıç betiğini App Service örneğinize yüklemek için FTP 'yi kullanın. Bu dosyaları, önceki adımlarda belirttiğiniz konuma (örneğin, */Home*) koyun. FTP hakkında daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](https://docs.microsoft.com/azure/app-service/deploy-ftp).
 
-6. Veritabanı bağlantı bilgilerinizi tutan App Service ayarları eklemek için Azure CLı 'yi kullanın. @No__t-0 ve `<webapp name>` ' i App Service kullandığı değerlerle değiştirin. @No__t-0, `<database name>`, `<admin name>` ve `<admin password>` ' ü veritabanı bağlantı bilgilerim ile değiştirin. App Service ve veritabanı bilgilerinizi Azure portal alabilirsiniz.
+6. Veritabanı bağlantı bilgilerinizi tutan App Service ayarları eklemek için Azure CLı 'yi kullanın. `<resource group>` ve `<webapp name>` App Service kullandığı değerlerle değiştirin. `<database server name>`, `<database name>`, `<admin name>`ve `<admin password>` yerine veritabanı bağlantı bilgilerinizi koyun. App Service ve veritabanı bilgilerinizi Azure portal alabilirsiniz.
 
     **PostgreSQL**
 
@@ -601,7 +601,7 @@ Aşağıdaki adımlarda, mevcut App Service ve veritabanınızı bağlama gereks
     * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
     * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
 
-7. Azure portal, App Service gidin ve **yapılandırma** > **Genel ayarlar** sayfasını bulun. **Başlangıç betiği** alanını başlangıç betiğinizin adı ve konumuna (örneğin, */Home/Startup.exe*) ayarlayın.
+7. Azure portal App Service gidin ve **yapılandırma** > **Genel ayarlar** sayfasını bulun. **Başlangıç betiği** alanını başlangıç betiğinizin adı ve konumuna (örneğin, */Home/Startup.exe*) ayarlayın.
 
 App Service bir sonraki sefer yeniden başlatıldığında, başlangıç betiğini çalıştırır ve gerekli yapılandırma adımlarını gerçekleştirir. Bu yapılandırmanın doğru şekilde gerçekleştiğinin test olması için SSH kullanarak App Service erişebilir ve sonra başlangıç betiğini Bash isteminden kendiniz çalıştırabilirsiniz. App Service günlüklerini de inceleyebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [uygulamaları günlüğe kaydetme ve hata ayıklama](#logging-and-debugging-apps).
 
@@ -664,7 +664,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
     | RESOURCEGROUP_NAME       | App Service örneğinizi içeren kaynak grubunun adı.       |
     | WEBAPP_NAME              | App Service örneğinizin adı.                                     |
     | WEBAPP_PLAN_NAME         | App Service planınızın adı                                          |
-    | GELI                   | Uygulamanızın barındırıldığı bölgenin adı.                           |
+    | BÖLGE                   | Uygulamanızın barındırıldığı bölgenin adı.                           |
     | REDIS_CACHE_NAME         | Redsıs örneği için Azure önbelleğinizin adı.                           |
     | REDIS_PORT               | Redsıs önbelleğinizin dinlediği SSL bağlantı noktası.                             |
     | REDIS_PASSWORD           | Örneğiniz için birincil erişim anahtarı.                                  |
@@ -712,7 +712,7 @@ Tomcat 'i Redwith ile kullanmak için uygulamanızı bir [Persistentmanager](htt
 
 8. Uygulamanızın *Pod. xml* dosyasındaki `azure-webapp-maven-plugin` yapılandırmasını, redsıs hesap bilgilerinize başvuracak şekilde güncelleştirin. Bu dosya, daha önce ayarladığınız ortam değişkenlerini kullanarak hesap bilgilerinizin kaynak dosyalarınıza ait olmasını sağlar.
 
-    Gerekirse, Azure App Service için `1.7.0` ' ı, [Maven eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)güncel sürümüne değiştirin.
+    Gerekirse, [Azure App Service Için Maven eklentisinin](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)güncel sürümüne `1.7.0` değiştirin.
 
     ```xml
     <plugin>
@@ -767,9 +767,9 @@ Uygulamanız artık, oturum yönetimi için Redsıs önbelleğinizi kullanacakt�
 
 Bu yönergeleri test etmek için kullanabileceğiniz bir örnek için GitHub 'da [ölçeklendirme-durum bilgisi olan Java-Web-App-on-Azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) deposuna bakın.
 
-## <a name="docker-containers"></a>Docker Kapsayıcıları
+## <a name="docker-containers"></a>Docker kapsayıcıları
 
-Kapsayıcılarınızdaki Azure tarafından desteklenen Zulu dili JDK 'yi kullanmak için, önceden oluşturulmuş görüntüleri [Azure için desteklenen Azul Zulu Kurumsal indirme sayfasından](https://www.azul.com/downloads/azure-only/zulu/) belgelendiğinden veya [Microsoft Java GitHub deposundan](https://github.com/Microsoft/java/tree/master/docker)`Dockerfile` örnek olarak kullandığınızdan emin olun.
+Kapsayıcılarınızdaki Azure tarafından desteklenen Zulu dili JDK 'yi kullanmak için, önceden oluşturulmuş görüntüleri [Azure için desteklenen Azul Zulu Kurumsal indirme sayfasından](https://www.azul.com/downloads/azure-only/zulu/) belgelendiğinden veya [Microsoft Java GitHub deposundan](https://github.com/Microsoft/java/tree/master/docker)`Dockerfile` örnekleri kullandığınızdan emin olun.
 
 ## <a name="statement-of-support"></a>Destek beyanı
 

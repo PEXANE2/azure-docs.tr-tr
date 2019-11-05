@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 1a0d0426904ef5f9f49a627120ff2cc65f630861
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 9070c19c668529fac5edea5b4d233361043de16d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785939"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469551"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verileri ile ilgili yaklaşım analizi
 
@@ -43,7 +43,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
-> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
+> Ücretsiz hesabınız varsa, profilinize gidin ve aboneliğinizi **Kullandıkça Öde**ile değiştirin. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Ardından, [harcama limitini kaldırın](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-azure-portal)ve bölgenizdeki vCPU 'lar için [bir kota artışı isteyin](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) . Azure Databricks çalışma alanınızı oluşturduğunuzda, çalışma alanına 14 gün boyunca ücretsiz Premium Azure Databricks DBUs erişimi sağlamak için **deneme (Premium-14 gün ücretsiz DBUs)** fiyatlandırma katmanını seçebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -57,7 +57,7 @@ Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığı
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) oturum açın.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks çalışma alanı oluşturma
 
@@ -160,7 +160,7 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
 
 Bu öğreticide, Azure bilişsel [hizmetler metin analizi API 'lerini](../cognitive-services/text-analytics/overview.md) kullanarak, neredeyse gerçek zamanlı olarak kavaklerin bulunduğu bir akışta yaklaşım analizini çalıştırın. API 'Leri kullanmadan önce Azure 'da bir Azure bilişsel Hizmetler hesabı oluşturmanız ve Metin Analizi API 'Lerini kullanmak için bir erişim anahtarı almanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) oturum açın.
 
 2. **+ Kaynak oluştur**’u seçin.
 
@@ -622,7 +622,7 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
 
 ![Databricks kümesini durdurma](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu\_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Bu kümeyi el ile sonlandıramazsanız, kümeyi oluştururken **\_sonra Sonlandır** onay kutusunu \_, sonra da Durdur seçeneğini belirlediyseniz, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek zamanlı olarak Event Hubs’tan akış verilerini okumak için Azure Databricks’i kullanmayı öğrendiniz. Şunları öğrendiniz:
@@ -640,4 +640,4 @@ Bu öğreticide, verileri Azure Event Hubs’ta akışa almak ve sonra gerçek z
 Azure Databricks kullanarak makine öğrenmesi görevleri gerçekleştirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Azure Databricks kullanarak Machine Learning](https://docs.azuredatabricks.net/spark/latest/mllib/decision-trees.html)
+>[Azure Databricks kullanarak Machine Learning](https://docs.azuredatabricks.net/applications/machine-learning/index.html)

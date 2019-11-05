@@ -1,24 +1,24 @@
 ---
 title: 'Eksik verileri temizle: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Eksik değerleri kaldırmak, değiştirmek veya çıkarsmak için Azure Machine Learning hizmetinde Temizleme eksik veri modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Eksik değerleri kaldırmak, değiştirmek veya çıkarsmak için Azure Machine Learning eksik verileri temizleme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693209"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493814"
 ---
 # <a name="clean-missing-data-module"></a>Eksik veri modülünü temizle
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Eksik değerleri kaldırmak, değiştirmek veya çıkarsmak için bu modülü kullanın. 
 
@@ -133,8 +133,8 @@ Temizleme işlemlerini sıklıkla tekrarlamanız gerekiyorsa, aynı veri kümesi
   
 2.  Temizlemek istediğiniz veri kümesini ekleyin ve veri kümesini sağ taraftaki giriş bağlantı noktasına bağlayın.  
   
-3.  Arabirimin sol bölmesindeki **dönüşümler** grubunu genişletin. Kaydedilen dönüştürmeyi bulun ve ardışık düzene sürükleyin.  
-  
+3.  Tasarımcının sol bölmesindeki **dönüşümler** grubunu genişletin. Kaydedilen dönüştürmeyi bulun ve ardışık düzene sürükleyin.  
+
 4.  Kaydedilen dönüşümü, [dönüşüm Uygula](./apply-transformation.md)'nın sol giriş bağlantı noktasına bağlayın. 
 
     Kaydedilen bir dönüşüm uyguladığınızda, dönüşümün uygulandığı sütunları seçemezsiniz. Bunun nedeni, dönüştürmenin zaten tanımlandığından ve özgün işlemde belirtilen sütunlara otomatik olarak uygulananlarıdır.
@@ -145,4 +145,4 @@ Temizleme işlemlerini sıklıkla tekrarlamanız gerekiyorsa, aynı veri kümesi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

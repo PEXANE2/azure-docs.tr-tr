@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 8/26/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b413bc6d29f1b08949b50570cb5baa2eb758d779
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066499"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491017"
 ---
 # <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile konuşma hizmeti kapsayıcısını kullanma
 
@@ -28,19 +28,19 @@ ms.locfileid: "70066499"
 |Gerekli|Amaç|
 |--|--|
 | Azure hesabı | Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free-azure-account] oluşturun. |
-| Container Registry erişim | Kubernetes 'in, Docker görüntülerini kümeye çekmesi için kapsayıcı kayıt defterine erişmesi gerekir. Önce [kapsayıcı kayıt defterine erişim istemeniz][speech-preview-access] gerekir. |
+| Container Registry erişim | Kubernetes 'in, Docker görüntülerini kümeye çekmesi için kapsayıcı kayıt defterine erişmesi gerekir. |
 | Kubernetes CLı | [Kubernetes CLI][kubernetes-cli] , paylaşılan kimlik bilgilerinin kapsayıcı kayıt defterinden yönetilmesi için gereklidir. Kubernetes, Kubernetes paket yöneticisi olan helk 'dan önce de gereklidir. |
 | Held CLı | [HELı CLI][helm-install] yüklemesinin bir parçası olarak, [Tiller][tiller-install]yükleyecek Held 'yi de başlatmalısınız. |
-|Konuşma kaynağı |Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlgili fatura anahtarını ve faturalama uç noktası URI 'sini almak için bir _konuşma_ Azure kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : kaynak anahtarı<br><br>**{ENDPOINT_URI}** : uç nokta URI örneği:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Konuşma kaynağı |Bu kapsayıcıları kullanabilmeniz için, şunları yapmanız gerekir:<br><br>İlgili fatura anahtarını ve faturalama uç noktası URI 'sini almak için bir _konuşma_ Azure kaynağı. Her iki değer de Azure portal **konuşmaya** genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : kaynak anahtarı<br><br>**{ENDPOINT_URI}** : uç nokta URI örneği: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Önerilen Konak bilgisayar yapılandırması
 
-Bir başvuru olarak [konuşma hizmeti kapsayıcı ana bilgisayar][speech-container-host-computer] ayrıntılarına bakın. Bu *helb grafiği* , kullanıcının belirttiği kaç tane kodunu çözme (eşzamanlı istek) temelinde CPU ve bellek gereksinimlerini otomatik olarak hesaplar. Ayrıca, ses/metin girişi iyileştirmelerinin olarak `enabled`yapılandırılıp yapılandırılmadığını temel alır. HELI grafiğinin varsayılan değeri, iki eşzamanlı istek ve en iyi duruma getirme.
+Bir başvuru olarak [konuşma hizmeti kapsayıcı ana bilgisayar][speech-container-host-computer] ayrıntılarına bakın. Bu *helb grafiği* , kullanıcının belirttiği kaç tane kodunu çözme (eşzamanlı istek) temelinde CPU ve bellek gereksinimlerini otomatik olarak hesaplar. Ayrıca, ses/metin girişine yönelik iyileştirmelerin `enabled`olarak yapılandırılıp yapılandırılmadığını temel alır. HELI grafiğinin varsayılan değeri, iki eşzamanlı istek ve en iyi duruma getirme.
 
 | Hizmet | CPU/kapsayıcı | Bellek/kapsayıcı |
 |--|--|--|
-| **Konuşmayı metne dönüştürme** | bir kod çözücü en az 1.150 milimetre çekirdek gerektirir. `optimizedForAudioFile` Etkinleştirilirse, 1.950 miliçekirdekler gereklidir. (varsayılan: iki kod çözücü) | Gerekli: 2 GB<br>Az  4 GB |
-| **Metin okuma** | bir eşzamanlı istek en az 500 milicore gerektirir. `optimizeForTurboMode` Etkinleştirilirse, 1.000 miliçekirdekler gereklidir. (varsayılan: iki eşzamanlı istek) | Gerekli: 1 GB<br> Az 2 GB |
+| **Konuşmayı metne dönüştürme** | bir kod çözücü en az 1.150 milimetre çekirdek gerektirir. `optimizedForAudioFile` etkinleştirilirse, 1.950 miliçekirdekler gereklidir. (varsayılan: iki kod çözücü) | Gerekli: 2 GB<br>Sınırlı: 4 GB |
+| **Metin okuma** | bir eşzamanlı istek en az 500 milicore gerektirir. `optimizeForTurboMode` etkinleştirilirse, 1.000 miliçekirdekler gereklidir. (varsayılan: iki eşzamanlı istek) | Gerekli: 1 GB<br> Sınırlı: 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>Kubernetes kümesine bağlanma
 
@@ -48,22 +48,22 @@ Ana bilgisayarın kullanılabilir bir Kubernetes kümesi olması beklenmektedir.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker kimlik bilgilerini Kubernetes kümesiyle paylaşma
 
-Kubernetes kümesine, `containerpreview.azurecr.io` kapsayıcı kayıt defterinden `docker pull` yapılandırılmış görüntü (ler) e izin vermek için Docker kimlik bilgilerini kümeye aktarmanız gerekir. Kapsayıcı kayıt defteri erişim önkoşulunu tarafından belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki [komutuyürütün.`kubectl create`][kubectl-create]
+Kubernetes kümesinin, `mcr.microsoft.com` Container kayıt defterinden yapılandırılan resimleri `docker pull` izin vermek için, Docker kimlik bilgilerini kümeye aktarmanız gerekir. Kapsayıcı kayıt defteri erişim önkoşulu ' ndan belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki [`kubectl create`][kubectl-create] komutunu yürütün.
 
-Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. , Ve `<username>` `<password>` 'ıkapsayıcıkayıtdefterikimlikbilgileriyle`<email-address>` değiştirdiğinizden emin olun.
+Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. `<username>`, `<password>`ve `<email-address>` kapsayıcı kayıt defteri kimlik bilgileriyle değiştirdiğinizden emin olun.
 
 ```console
-kubectl create secret docker-registry containerpreview \
-    --docker-server=containerpreview.azurecr.io \
+kubectl create secret docker-registry mcr \
+    --docker-server=mcr.microsoft.com \
     --docker-username=<username> \
     --docker-password=<password> \
     --docker-email=<email-address>
 ```
 
 > [!NOTE]
-> Zaten `containerpreview.azurecr.io` kapsayıcı kayıt defterine erişiminiz varsa, bunun yerine genel bayrağını kullanarak bir Kubernetes gizli dizisi oluşturabilirsiniz. Docker yapılandırmanızda JSON olarak çalıştırılan aşağıdaki komutu göz önünde bulundurun.
+> `mcr.microsoft.com` kapsayıcı kayıt defterine zaten erişiminiz varsa, bunun yerine genel bayrağını kullanarak bir Kubernetes gizli dizisi oluşturabilirsiniz. Docker yapılandırmanızda JSON olarak çalıştırılan aşağıdaki komutu göz önünde bulundurun.
 > ```console
->  kubectl create secret generic containerpreview \
+>  kubectl create secret generic mcr \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
@@ -71,31 +71,31 @@ kubectl create secret docker-registry containerpreview \
 Gizli dizi başarıyla oluşturulduğunda konsola aşağıdaki çıktı yazdırılır.
 
 ```console
-secret "containerpreview" created
+secret "mcr" created
 ```
 
-Gizli dizinin oluşturulduğunu doğrulamak için [`kubectl get`][kubectl-get] `secrets` işaretini bayrağıyla yürütün.
+Gizli dizinin oluşturulduğunu doğrulamak için, [`kubectl get`][kubectl-get] `secrets` bayrağıyla yürütün.
 
 ```console
 kuberctl get secrets
 ```
 
-Yürütülmesi, `kubectl get secrets` yapılandırılan tüm gizli dizileri yazdırır.
+`kubectl get secrets` yürütmek, yapılandırılan tüm gizli dizileri yazdırır.
 
 ```console
-NAME                  TYPE                                  DATA      AGE
-containerpreview      kubernetes.io/dockerconfigjson        1         30s
+NAME    TYPE                              DATA    AGE
+mcr     kubernetes.io/dockerconfigjson    1       30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Dağıtım için Held grafik değerlerini yapılandırma
 
-Microsoft tarafından sunulan tüm genel kullanıma açık HELI grafikleri için [Microsoft HELI hub 'ını][ms-helm-hub] ziyaret edin. Microsoft Held hub 'ında bilişsel **Hizmetler konuşma şirket Içi grafiğini**bulacaksınız. Bilişsel **Hizmetler konuşma şirket içi** , yükleytiğimiz grafiktir, ancak önce açık yapılandırmalara sahip bir `config-values.yaml` dosya oluşturulmalıdır. Helm örneğimize Microsoft deposunu ekleyerek başlayalım.
+Microsoft tarafından sunulan tüm genel kullanıma açık HELI grafikleri için [Microsoft HELI hub 'ını][ms-helm-hub] ziyaret edin. Microsoft Held hub 'ında bilişsel **Hizmetler konuşma şirket Içi grafiğini**bulacaksınız. Bilişsel **Hizmetler konuşma şirket içi** , yükleytiğimiz grafiktir, ancak önce açık yapılandırmalara sahip bir `config-values.yaml` dosyası oluşturulmalıdır. Helm örneğimize Microsoft deposunu ekleyerek başlayalım.
 
 ```console
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Sonra, helk grafik değerlerimizi yapılandıracağız. Aşağıdaki YAML 'yi kopyalayıp adlı `config-values.yaml`bir dosyaya yapıştırın. Bilişsel **Hizmetler konuşma şirket Içi HELI grafiğini**özelleştirme hakkında daha fazla bilgi için bkz. [HELI grafiklerini özelleştirme](#customize-helm-charts). `# {ENDPOINT_URI}` Ve`# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
+Sonra, helk grafik değerlerimizi yapılandıracağız. Aşağıdaki YAML 'yi kopyalayıp `config-values.yaml`adlı bir dosyaya yapıştırın. Bilişsel **Hizmetler konuşma şirket Içi HELI grafiğini**özelleştirme hakkında daha fazla bilgi için bkz. [HELI grafiklerini özelleştirme](#customize-helm-charts). `# {ENDPOINT_URI}` ve `# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -106,11 +106,11 @@ speechToText:
   numberOfConcurrentRequest: 3
   optimizeForAudioFile: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-speech-to-text
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/speech-to-text
     tag: latest
     pullSecrets:
-      - containerpreview # Or an existing secret
+      - mcr # Or an existing secret
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -122,11 +122,11 @@ textToSpeech:
   numberOfConcurrentRequest: 3
   optimizeForTurboMode: true
   image:
-    registry: containerpreview.azurecr.io
-    repository: microsoft/cognitive-services-text-to-speech
+    registry: mcr.microsoft.com
+    repository: azure-cognitive-services/text-to-speech
     tag: latest
     pullSecrets:
-      - containerpreview # Or an existing secret
+      - mcr # Or an existing secret
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -134,19 +134,19 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> `billing` Ve`apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
+> `billing` ve `apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes paketi (helk grafiği)
 
-*Helk grafiği* , `containerpreview.azurecr.io` kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini tanımlayan yapılandırmayı içerir.
+*Helk grafiği* `mcr.microsoft.com` kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini yapılandırmayı içerir.
 
 > [Helk grafiği][helm-charts] , Ilgili bir Kubernetes kaynakları kümesini tanımlayan bir dosya koleksiyonudur. Tek bir grafik, bir veya daha çok karmaşık, örneğin, HTTP sunucuları, veritabanları, önbellekler gibi tam bir Web uygulaması yığını gibi basit bir şeyi dağıtmak için kullanılabilir.
 
-Belirtilen *Helu grafikleri* , `containerpreview.azurecr.io` kapsayıcı kayıt defterinden hem metinden konuşmaya hem de konuşma-metin hizmetleri konuşma hizmetinin Docker görüntülerini çekmesini sağlar.
+Sunulan *Helu grafikleri* , konuşma hizmetinin Docker görüntülerini, hem metinden konuşmaya hem de `mcr.microsoft.com` kapsayıcı kayıt defterinden konuşmaya metin hizmetlerini çekmesini sağlar.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes kümesine helk grafiğini yükler
 
-*Helk grafiğini* yüklemek için [`helm install`][helm-install-cmd] `<config-values.yaml>` komutunu yürütmemiz gerekir ve öğesini uygun yol ve dosya adı bağımsız değişkeniyle değiştirin. Aşağıda belirtilen Helu şemasına [Microsoft Held hub 'ında][ms-helm-hub-speech-chart]ulaşabilirsiniz. `microsoft/cognitive-services-speech-onpremise`
+*Helk grafiğini* yüklemek için, `<config-values.yaml>` uygun yol ve dosya adı bağımsız değişkeniyle değiştirerek [`helm install`][helm-install-cmd] komutunu yürütmemiz gerekir. Aşağıda başvurulan `microsoft/cognitive-services-speech-onpremise` Helu grafiği [burada Microsoft Held hub 'ında][ms-helm-hub-speech-chart]bulunabilir.
 
 ```console
 helm install microsoft/cognitive-services-speech-onpremise \
@@ -239,7 +239,7 @@ helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> Pod durumu yoksa `Running` ve dağıtım `AVAILABLE` sütunun altında listelenmiyorsa, bu testler başarısız olur. Bunun tamamlanması on dakikadan uzun sürebilmesi için sabırlı olun.
+> POD durumu `Running` yoksa ve dağıtım `AVAILABLE` sütununun altında listelenmiyorsa, bu testler başarısız olur. Bunun tamamlanması on dakikadan uzun sürebilmesi için sabırlı olun.
 
 Bu testler çeşitli durum sonuçlarının çıktısını alacak:
 
@@ -250,7 +250,7 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-*Held testlerini*yürütmeye alternatif olarak, *dış IP* adreslerini ve karşılık gelen `kubectl get all` bağlantı noktalarını komuttan toplayabilirsiniz. IP ve bağlantı noktasını kullanarak bir Web tarayıcısı açın ve API Swagger sayfasını `http://<external-ip>:<port>:/swagger/index.html` görüntülemek için adresine gidin.
+*Held testlerini*yürütmeye alternatif olarak, *dış IP* adreslerini ve karşılık gelen bağlantı noktalarını `kubectl get all` komutundan toplayabilirsiniz. IP ve bağlantı noktasını kullanarak bir Web tarayıcısı açın ve `http://<external-ip>:<port>:/swagger/index.html` ' a giderek API Swagger sayfasını görüntüleyin.
 
 ## <a name="customize-helm-charts"></a>Held grafiklerini özelleştirme
 
@@ -279,7 +279,6 @@ Azure Kubernetes Service (AKS) ' de Held ile uygulama yükleme hakkında daha fa
 [helm-install-cmd]: https://helm.sh/docs/helm/#helm-install
 [tiller-install]: https://helm.sh/docs/install/#installing-tiller
 [helm-charts]: https://helm.sh/docs/developing_charts
-[speech-preview-access]: https://aka.ms/speechcontainerspreview
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [helm-test]: https://helm.sh/docs/helm/#helm-test

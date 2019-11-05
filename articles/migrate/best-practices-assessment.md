@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007724"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466937"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -23,13 +23,13 @@ Bu makalede, Azure geçişi sunucu değerlendirmesi Aracı kullanılarak değerl
 
 Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, verilerin bir zaman noktası anlık görüntüsüdür. Azure geçişi 'nde iki tür değerlendirme vardır.
 
-**Değerlendirme türü** | **Ayrıntılar** | **Veri**
+**Değerlendirme türü** | **Ayrıntılar** | **Veriler**
 --- | --- | ---
 **Performans tabanlı** | Toplanan performans verilerine dayalı öneriler oluşturan değerlendirmeler | VM boyutu önerisi, CPU ve bellek kullanımı verilerine göre belirlenir.<br/><br/> Disk türü önerisi (Standart HDD/SSD veya Premium yönetilen diskler), şirket içi disklerin ıOPS ve aktarım hızını temel alır.
 **Şirket içi olarak** | Öneriler oluşturmak için performans verilerini kullanmayan değerlendirmeler. | VM boyutu önerisi, şirket içi VM boyutunu temel alır<br/><br> Önerilen disk türü, değerlendirme için depolama türü ayarında neleri seçdiklerinize bağlıdır.
 
 ### <a name="example"></a>Örnek
-Örnek olarak,% 20 ' de dört çekirdekli bir şirket içi sanal makine ve% 10 kullanımı ile 8 GB bellek varsa, değerlendirmeler aşağıdaki gibi olacaktır:
+Örnek olarak, %20 ' de dört çekirdekli bir şirket içi sanal makine ve %10 kullanımı ile 8 GB bellek varsa, değerlendirmeler aşağıdaki gibi olacaktır:
 
 - **Performans tabanlı değerlendirme**:
     - Core (4 x 0,20 = 0,8) ve bellek (8 GB x 0,10 = 0,8) kullanımı temel alınarak etkin çekirdekleri ve bellek tanımlar.
@@ -41,13 +41,19 @@ Azure geçişi sunucu değerlendirmesi ile oluşturduğunuz değerlendirmeler, v
 
 ## <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
-Azure geçişi gereci, şirket içi ortamınızı sürekli olarak profiller ve meta verileri ve performans verilerini Azure 'a gönderir. Değerlendirme oluşturmak için aşağıdaki en iyi yöntemleri izleyin:
+Azure geçişi gereci, şirket içi ortamınızı sürekli olarak profiller ve meta verileri ve performans verilerini Azure 'a gönderir. Bir gereç kullanılarak bulunan sunucuların değerlendirmelerinde bu en iyi uygulamaları izleyin:
 
-- **As-to değerlendirmeleri oluşturma**: Makineleriniz Azure geçişi portalında gösterildikten hemen sonra as-to değerlendirmesi oluşturabilirsiniz.
-- **Performans tabanlı değerlendirme oluşturma**: Bulmayı ayarladıktan sonra, performans tabanlı bir değerlendirmeyi çalıştırmadan önce en az bir gün beklemeniz önerilir:
+- Bir **as-to değerlendirmesi oluştur**: makineleriniz Azure geçişi portalında görünür.
+- **Performans tabanlı değerlendirme oluşturma**: bulmayı ayarladıktan sonra, performans tabanlı bir değerlendirmeyi çalıştırmadan önce en az bir gün beklemeniz önerilir:
     - Performans verilerinin toplanması zaman alır. En az bir günün beklenmesi, değerlendirmeyi çalıştırmadan önce yeterli performans veri noktası olmasını sağlar.
     - Performans tabanlı değerlendirmeler çalıştırırken ortamınızı değerlendirme süresi boyunca profillediğinizden emin olun. Örneğin, bir haftalık olarak ayarlanan performans süresiyle bir değerlendirme oluşturursanız, tüm veri noktalarının toplanması için bulmayı başlattıktan sonra en az bir hafta beklemeniz gerekir. Aksi takdirde, değerlendirme beş yıldızlı bir derecelendirme almaz.
-- **Değerlendirmeleri yeniden hesapla**: Değerlendirmeler, zaman içinde nokta anlık görüntüleri olduğundan, en son verilerle otomatik olarak güncellenmez. En son verilerle bir değerlendirmeyi güncelleştirmek için yeniden hesaplamanız gerekir.
+- **Değerlendirmeleri yeniden hesapla**: Değerlendirmeler, zaman içinde anlık görüntüler olduğundan, en son verilerle otomatik olarak güncellenmez. En son verilerle bir değerlendirmeyi güncelleştirmek için yeniden hesaplamanız gerekir.
+
+Azure geçişi ile içeri aktarılan sunucuların değerlendirmesi için bu en iyi uygulamaları izleyin. CSV dosyası:
+
+- Bir **as-to değerlendirmesi oluştur**: makineleriniz Azure geçişi portalında görünür.
+- **Performans tabanlı değerlendirme oluştur**: Bu, özellikle de şirket içinde fazla sağlanmış sunucu kapasiteniz varsa daha iyi maliyet tahmini sağlamaya yardımcı olur. Ancak, performans tabanlı değerlendirmenin doğruluğu, sunucular için sizin tarafınızdan belirtilen performans verilerine bağlıdır. 
+- **Değerlendirmeleri yeniden hesapla**: Değerlendirmeler, zaman içinde anlık görüntüler olduğundan, en son verilerle otomatik olarak güncellenmez. En son içeri aktarılan verilerle bir değerlendirmeyi güncelleştirmek için yeniden hesaplamanız gerekir.
 
 ## <a name="best-practices-for-confidence-ratings"></a>Güvenirlik derecelendirmeleri için en iyi uygulamalar
 

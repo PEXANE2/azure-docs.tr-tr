@@ -7,65 +7,24 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: e8ffb9051220cc80aa12adaa9dc9b1fcc6ddfc20
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: MT
+ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839993"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472834"
 ---
-# <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Önizleme-Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma
 
 Bir Azure Kubernetes hizmeti (AKS) kümesi, temel alınan Azure işlem altyapısının mantıksal bölümlerinin düğümleri ve depolanması gibi kaynakları dağıtır. Bu dağıtım modeli, düğümlerin tek bir Azure veri merkezinde ayrı güncelleştirme ve hata etki alanları arasında çalıştığından emin olmanızı sağlar. Bu varsayılan davranışla dağıtılan AKS kümeleri, bir donanım hatası veya planlı bakım olayına karşı korumak için yüksek düzeyde kullanılabilirlik sağlar.
 
 Uygulamalarınıza yönelik daha yüksek düzeyde kullanılabilirlik sağlamak için, AKS kümeleri kullanılabilirlik alanları arasında dağıtılabilir. Bu bölgeler, belirli bir bölgedeki fiziksel olarak ayrı veri merkezlerdir. Küme bileşenleri birden çok bölgeye dağıtıldığında, AKS kümeniz bu bölgelerden birindeki bir hatayı kabul edebilir. Tüm veri merkezinde bir sorun olsa bile Uygulamalarınız ve yönetim işlemleri kullanılabilir olmaya devam eder.
 
-Bu makalede bir AKS kümesi oluşturma ve düğüm bileşenlerini kullanılabilirlik alanları arasında dağıtma gösterilmektedir. Bu özellik şu anda önizleme aşamasındadır.
-
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
->
-> * [AKS destek Ilkeleri][aks-support-policies]
-> * [Azure desteği SSS][aks-faq]
+Bu makalede bir AKS kümesi oluşturma ve düğüm bileşenlerini kullanılabilirlik alanları arasında dağıtma gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.66 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
-
-### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
-
-Kullanılabilirlik alanları kullanan AKS kümeleri oluşturmak için, *aks-Preview* CLI uzantısının sürüm 0.4.12 veya üzeri bir sürümü gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>Aboneliğiniz için kullanılabilirlik bölgesi önizleme özelliği bayrağını kaydedin
-
-Bölge kullanılabilirliği olan bir AKS kümesi oluşturmak için, önce aboneliğinizde kullanılabilirlik *bölgesi önizleme* özelliği bayrağını etkinleştirin. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak, *kullanılabilirliği bilityzonepreview* Özellik bayrağını kaydedin:
-
-> [!CAUTION]
-> Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
-
-```azurecli-interactive
-az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-```
-
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-```
-
-Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="limitations-and-region-availability"></a>Sınırlamalar ve bölge kullanılabilirliği
 
@@ -75,10 +34,10 @@ AKS kümeleri Şu anda şu bölgelerde kullanılabilirlik alanları kullanılara
 * Doğu ABD 2
 * Doğu ABD
 * Fransa Orta
-* Japonya Doğu
+* Doğu Japonya
 * Kuzey Avrupa
 * Güneydoğu Asya
-* UK Güney
+* Birleşik Krallık Güney
 * Batı Avrupa
 * Batı ABD 2
 
@@ -91,7 +50,7 @@ Kullanılabilirlik bölgelerini kullanarak bir AKS kümesi oluşturduğunuzda a�
 * Kullanılabilirlik alanları etkin olan kümeler, bölgeler arasında dağıtım için Azure Standart yük dengeleyiciler kullanılmasını gerektirir.
 * Standart yük dengeleyiciler dağıtmak için Kubernetes sürüm 1.13.5 veya üstünü kullanmanız gerekir.
 
-Kullanılabilirlik bölgelerini kullanan AKS kümelerinin Azure yük dengeleyici *Standart* SKU 'sunu kullanması gerekir. Azure Yük dengeleyicinin varsayılan *temel* SKU 'su, kullanılabilirlik alanları arasında dağıtımı desteklemez. Daha fazla bilgi ve standart yük dengeleyicinin sınırlamaları için bkz. [Azure yük dengeleyici standart SKU sınırlamaları][standard-lb-limitations].
+Kullanılabilirlik bölgelerini kullanan AKS kümelerinin, yük dengeleyici türü için varsayılan değer olan Azure yük dengeleyici *Standart* SKU 'su kullanması gerekir. Bu yük dengeleyici türü, yalnızca küme oluşturma zamanında tanımlanabilir. Daha fazla bilgi ve standart yük dengeleyicinin sınırlamaları için bkz. [Azure yük dengeleyici standart SKU sınırlamaları][standard-lb-limitations].
 
 ### <a name="azure-disks-limitations"></a>Azure diskler sınırlamaları
 
@@ -101,11 +60,11 @@ Durum bilgisi olan iş yükleri çalıştırmanız gerekiyorsa, Kubernetes Sched
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS kümelerine yönelik Kullanılabilirlik Alanları genel bakış
 
-Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bölgeler, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her bölge, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun.
+Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bölgeler, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun.
 
 Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?][az-overview].
 
-Kullanılabilirlik alanları kullanılarak dağıtılan AKS kümeleri, düğümleri tek bir bölge içinde birden çok bölgeye dağıtabilir. Örneğin, *Doğu ABD 2* region içindeki bir küme, *Doğu ABD 2*üç kullanılabilirlik bölgesinde düğüm oluşturabilir. AKS kümesi kaynaklarının bu dağıtımı, belirli bir bölgede hatalara dayanıklı oldukları için küme kullanılabilirliğini geliştirir.
+Kullanılabilirlik alanları kullanılarak dağıtılan AKS kümeleri, düğümleri tek bir bölge içinde birden çok bölgeye dağıtabilir. Örneğin, *Doğu ABD 2* bölgesindeki bir küme, *Doğu ABD 2*üç kullanılabilirlik bölgesinde düğüm oluşturabilir. AKS kümesi kaynaklarının bu dağıtımı, belirli bir bölgede hatalara dayanıklı oldukları için küme kullanılabilirliğini geliştirir.
 
 ![Kullanılabilirlik alanları arasında AKS düğüm dağılımı](media/availability-zones/aks-availability-zones.png)
 
@@ -113,9 +72,9 @@ Bir bölge kesintisi durumunda, düğümler el ile yeniden dengelenebilir veya k
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Kullanılabilirlik alanları arasında AKS kümesi oluşturma
 
-[Az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturduğunuzda `--node-zones` parametresi, aracı düğümlerinin hangi bölgelerde dağıtılacağını tanımlar. Kümeniz için AKS denetim düzlemi bileşenleri, `--node-zones` parametresini belirten bir küme oluşturduğunuzda en yüksek kullanılabilir yapılandırmadaki bölgelere de yayılır.
+[Az aks Create][az-aks-create] komutunu kullanarak bir küme oluşturduğunuzda `--zones` parametresi, aracı düğümlerinin hangi bölgelerde dağıtılacağını tanımlar. Kümeniz için AKS denetim düzlemi bileşenleri, `--zones` parametresini belirten bir küme oluşturduğunuzda, en yüksek kullanılabilir yapılandırmadaki bölgelere de yayılır.
 
-Bir AKS kümesi oluştururken varsayılan aracı havuzu için herhangi bir bölge tanımlamadıysanız, kümenizin AKS denetim düzlemi bileşenleri kullanılabilirlik bölgelerini kullanmaz. [Az aks nodepool Add][az-aks-nodepool-add] komutunu kullanarak diğer düğüm havuzlarını (Şu anda aks 'de önizleme aşamasındadır) ekleyebilir ve bu yeni aracı düğümleri için `--node-zones` ' i belirtirseniz, denetim düzlemi bileşenleri kullanılabilirlik alanı tanıma olmadan kalır. Bir düğüm havuzu veya AKS denetim düzlemi bileşenleri dağıtıldıktan sonra bölge tanımayı değiştiremezsiniz.
+Bir AKS kümesi oluştururken varsayılan aracı havuzu için herhangi bir bölge tanımlamadıysanız, kümenizin AKS denetim düzlemi bileşenleri kullanılabilirlik bölgelerini kullanmaz. [Az aks nodepool Add][az-aks-nodepool-add] komutunu kullanarak ek düğüm havuzları ekleyebilir ve bu yeni aracı düğümleri için `--zones` belirtebilirsiniz, ancak denetim düzlemi bileşenleri kullanılabilirlik alanı tanıma olmadan kalır. Bir düğüm havuzu veya AKS denetim düzlemi bileşenleri dağıtıldıktan sonra bölge tanımayı değiştiremezsiniz.
 
 Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı bir aks kümesi oluşturur. Toplam *3* düğüm oluşturulur-bölge *1*' de bir aracı, biri *2*' de ve diğeri *3*' te. AKS denetim düzlemi bileşenleri, küme oluşturma işleminin bir parçası olarak tanımlandıklarından, en yüksek kullanılabilir yapılandırma alanları arasında da dağıtılır.
 
@@ -129,7 +88,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --node-count 3 \
-    --node-zones 1 2 3
+    --zones 1 2 3
 ```
 
 AKS kümesini oluşturmak birkaç dakika sürer.

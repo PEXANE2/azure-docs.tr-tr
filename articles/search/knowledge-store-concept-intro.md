@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 82f8606f4b4201833667347d3ed16fdd73f70a36
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2e6d20a1eca7a6b3281e33d8534ab3456e79ccdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790364"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485086"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Bilişsel Arama bilgi depolarına giriş
 
@@ -21,7 +21,7 @@ ms.locfileid: "72790364"
 > Bilgi deposu önizleme aşamasındadır ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
 
-Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıktıyı sürekli olarak sürdüren Azure bilişsel arama özelliğidir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. 
+Bilgi deposu, daha sonraki analizler veya diğer aşağı akış işlemleri için bir [AI zenginleştirme ardışık düzeninde](cognitive-search-concept-intro.md) çıktıyı sürekli olarak sürdüren bir Azure bilişsel arama özelliğidir. *Zenginleştirilmiş bir belge* , yapay, yapılandırılmış ve AI süreçlerini kullanılarak çözümlenen içerikten oluşturulan bir ardışık düzen çıktıdır. Standart bir AI ardışık düzeninde, zenginleştirilmiş belgeler yalnızca dizin oluşturma sırasında kullanılır ve sonra atılır. Bilgi deposu ile zenginleştirilmiş belgeler korunur. 
 
 Geçmişte Azure Bilişsel Arama bilişsel yetenekler kullandıysanız, *becerileri* bir belgeyi bir dizi şekilde taşımış olduğunu zaten anlarsınız. Sonuç bir bilgi deposundaki bir arama dizini veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu, aynı içeriği paylaşır, ancak aynı şekilde depolanır ve çok farklı şekillerde kullanılır.
 
@@ -29,13 +29,11 @@ Azure [depolama](https://docs.microsoft.com/azure/storage/common/storage-account
 
 ![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Ardışık düzen diyagramında bilgi deposu")
 
-Projeksiyonlar bir bilgi deposundaki verileri yapılandırmak için mekanizmadır. Örneğin, projeksiyonlar aracılığıyla çıktının tek bir blob olarak kaydedilip kaydedilmediğini veya ilgili tabloların bir koleksiyonunu seçebilirsiniz. 
-
 Bilgi deposu kullanmak için, bir dizin oluşturma işlem hattındaki adım temelinde işlemleri tanımlayan bir beceri öğesine `knowledgeStore` öğesi ekleyin. Yürütme sırasında Azure Bilişsel Arama, Azure depolama hesabınızda bir alan oluşturur ve yapılandırmanıza bağlı olarak, belgeleri Bloblar veya tablolar halinde projeler halinde kaydeder.
 
 ## <a name="benefits-of-knowledge-store"></a>Bilgi deposunun avantajları
 
-Bilgi deposu, yerleşik olarak yapılandırılmamış ve yarı yapılandırılmış veri dosyalarından, uygulanan Analize sahip görüntü dosyalarında veya hatta yeni formlara yeniden şekillenen yapılandırılmış verilere karşı bir yapı, bağlam ve gerçek içerik sağlar. Bu önizleme için yazılan [adım adım](knowledge-store-howto.md) kılavuzda, önce yoğun bir JSON belgesinin nasıl bölümlendiğini, yeni yapılara reconstituted, aksi takdirde makine gibi aşağı akış işlemlerinde nasıl kullanılabilir yapıldığını görebilirsiniz. öğrenme ve veri bilimi iş yükleri.
+Bilgi deposu, yerleşik olarak yapılandırılmamış ve yarı yapılandırılmış veri dosyalarından, uygulanan Analize sahip görüntü dosyalarında veya hatta yeni formlara yeniden şekillenen yapılandırılmış verilere karşı bir yapı, bağlam ve gerçek içerik sağlar. [Adım adım](knowledge-store-howto.md)bir kılavuzda, yoğun bir JSON belgesinin alt yapılara nasıl bölümlendiğini, reconstituted yeni yapılara nasıl ve başka bir şekilde makine öğrenimi ve veri bilimi gibi aşağı akış işlemlerinde nasıl kullanılabilir yapıldığını görebilirsiniz. lerine.
 
 Bir AI zenginleştirme ardışık düzeninin ne işe yarayabileceği görmek faydalı olsa da, bilgi deposunun gerçek gücü verileri yeniden şekillendirmeye olanak tanır. Temel bir beceri ile başlayabilir ve daha sonra yeni yapılar halinde birleştirebileceğiniz, daha sonra Azure Bilişsel Arama yanı sıra diğer uygulamalarda kullanabileceğiniz daha fazla yapı düzeyleri eklemek için bunu yineleyebilirsiniz.
 
@@ -48,21 +46,21 @@ Numaralandırılmış, bilgi deposunun avantajları şunları içerir:
 + Verileri yeni formlara şekillendirin. Yeniden şekillendirme becerileri içinde ortaklaşa bulunur, ancak nokta bir beceri artık bu özelliği sağlayabiliriz. Azure Bilişsel Arama 'de [beceri başına mil](cognitive-search-skill-shaper.md) bu görevi kapsayacak şekilde genişletildi. Yeniden şekillendirme, ilişkileri korurken verilerin amaçlanan kullanımı ile hizalanan bir projeksiyon tanımlamanızı sağlar.
 
 > [!Note]
-> Bilişsel hizmetler 'i kullanarak AI zenginleştirme hakkında bilgi sahibi değil misiniz? Azure Bilişsel Arama, görüntü dosyaları üzerinden optik karakter tanıma (OCR), metin dosyalarından varlık tanıma ve anahtar tümceciği ayıklama ve daha fazlasını kullanarak kaynak verileri ayıklamak ve zenginleştirmek için bilişsel hizmetler düzenleme ve dil özellikleriyle tümleşir. Daha fazla bilgi için bkz. [Azure bilişsel arama 'de AI zenginleştirme](cognitive-search-concept-intro.md).
+> AI zenginleştirme ve bilişsel becerileri yenilikleri nelerdir? Azure Bilişsel Arama, görüntü dosyaları üzerinden optik karakter tanıma (OCR), metin dosyalarından varlık tanıma ve anahtar tümceciği ayıklama ve daha fazlasını kullanarak kaynak verileri ayıklamak ve zenginleştirmek için bilişsel hizmetler düzenleme ve dil özellikleriyle tümleşir. Daha fazla bilgi için bkz. [Azure bilişsel arama 'de AI zenginleştirme](cognitive-search-concept-intro.md).
 
 ## <a name="creating-a-knowledge-store"></a>Bilgi deposu oluşturma
 
 Bilgi deposu, bir [dizin oluşturucunun](search-indexer-overview.md)parçası olan [beceri](cognitive-search-working-with-skillsets.md)bir parçasıdır. 
 
-Bu önizlemede, REST API ve `api-version=2019-05-06-Preview` kullanarak ya da portalda **veri Içeri aktarma** Sihirbazı aracılığıyla bir bilgi deposu oluşturabilirsiniz.
+Bu önizlemede, REST API ve `api-version=2019-05-06-Preview`kullanarak ya da portalda **veri Içeri aktarma** Sihirbazı aracılığıyla bir bilgi deposu oluşturabilirsiniz.
 
 ### <a name="json-representation-of-a-knowledge-store"></a>Bilgi deposunun JSON temsili
 
-Aşağıdaki JSON bir Dizin Oluşturucu tarafından çağrılan bir beceri parçası olan bir `knowledgeStore` belirtir (gösterilmez). AI zenginleştirme hakkında zaten bilgi sahibiyseniz, bir beceri, zenginleştirilmiş her belgenin oluşturulmasını, organizasyonunu ve akklığını belirler. Bir beceri, veri yapılarını modüle ediyorsanız en az bir yetenek, büyük olasılıkla yetenek başına bir yetenek içermelidir.
+Aşağıdaki JSON bir Dizin Oluşturucu tarafından çağrılan bir beceri parçası olan bir `knowledgeStore`belirtir (gösterilmez). AI zenginleştirme hakkında zaten bilgi sahibiyseniz, bir beceri, zenginleştirilmiş her belgenin oluşturulmasını, organizasyonunu ve akklığını belirler. Bir beceri, veri yapılarını modüle ediyorsanız en az bir yetenek, büyük olasılıkla yetenek başına bir yetenek içermelidir.
 
 Bir `knowledgeStore` bağlantı ve projeksiyonlar oluşur. 
 
-+ Bağlantı, Azure Search aynı bölgedeki bir depolama hesabıdır. 
++ Bağlantı, Azure Bilişsel Arama ile aynı bölgedeki bir depolama hesabıdır. 
 
 + Projeksiyonlar tablolar-nesneler çiftleridir. `Tables` Azure Tablo depolamada zenginleştirilmiş belgelerin fiziksel ifadesini tanımlayın. Azure Blob depolamada fiziksel nesneleri tanımlama `Objects`.
 
@@ -182,53 +180,6 @@ Depolarda enzenginler varsa, Azure Blob veya tablo depolama 'ya bağlanan herhan
 
 + Daha fazla düzenleme için [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) .
 
-
-<!---
-## Data lifecycle and billing
-
-Each time you run the indexer, the cache in Azure storage is updated if the skillset definition or underlying source data has changed. As input documents are edited or deleted, changes are propagated through the annotation cache to the projections, ensuring that your projected data is a current representation of your inputs at the end of the indexer run. 
-
-Generally speaking, pipeline processing can be an all-or-nothing operation, but Azure Search can process incremental changes, which saves you time and money.
-
-If a document is new or updated, all skills are run. If only the skillset changes, reprocessing is scoped to just those skills and documents affected by your edit.
-
-### Changes to a skillset
-Suppose that you have a pipeline composed of multiple skills, operating over a large body of static data (for example, scanned documents), that takes 8 hours and costs $200 to create the knowledge store. Now suppose you need to tweak one of the skills in the skillset. Rather than starting over, Azure Search can determine which skill is affected, and reprocess only that skill. Cached data and projections that are unaffected by the change remain intact in the knowledge store.
-
-### Changes in the data
-Scenarios can vary considerably, but let's suppose instead of static data, you have volatile data that changes between indexer invocations. Given no changes to the skillset, you are charged for processing the delta of new and modified document. The timestamp information varies by data source, but for illustration, in a Blob container, Azure Search looks at the `lastmodified` date to determine which blobs need to be ingested.
-
-> [!Note]
-> While you can edit the data in the projections, any edits will be overwritten on the next pipeline invocation, assuming the document in source data is updated. 
-
-### Deletions
-
-Although Azure Search creates and updates structures and content in Azure storage, it does not delete them. Projections and cached documents continue to exist even when the skillset is deleted. As the owner of the storage account, you should delete a projection if it is no longer needed. 
-
-### Tips for development
-
-+ Start small with a representative sample of your data as you make significant changes to skillset composition. As your design finalizes, you can slowly add more data during later-stage development, and then roll in the entire data set when you are comfortable with the pipeline composition.
-
-+ Retain control over indexer invocation. Indexers can run on a schedule, which is helpful for solutions that are rolled into production, but less helpful if you are actively developing your pipeline. During development, avoid schedules so that you don’t lose track of cache or projection state. Once your solution is in production and skillset composition is static, you can put the indexer on a schedule to pick up routine changes in the external source data. 
-
--->
-
-<!-- ## Where do I start?
-
-We recommend the Free service for learning purposes, but be aware that the number of free transactions is limited to 20 documents per day, per subscription.
-
-When using multiple services, create all of your services in the same region for best performance and to minimize costs. You are not charged for bandwidth for inbound data or outbound data that goes to another service in the same region.
-
-**Step 1: [Create an Azure Cognitive Search resource](search-create-service-portal.md)** 
-
-**Step 2: [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
-
-**Step 3: [Create a Cognitive Services resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
-
-**Step 4: [Get started with the portal](cognitive-search-quickstart-blob.md) - or - [Get started with sample data using REST and Postman](knowledge-store-howto.md)** 
-
-You can use REST `api-version=2019-05-06-Preview` to construct an AI-based pipeline that includes knowledge store. In the newest preview API, the Skillset object provides the `knowledgeStore` definition. -->
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bilgi deposu, bir Azure depolama hesabına erişim özellikli herhangi bir istemci uygulaması tarafından tüketimine yönelik bir beceri tasarımı veya yeni yapıların oluşturulması için yararlı olan belgelerin kalıcılığını, yararlı bir şekilde veya yeni yapıların oluşturulmasını sağlar.
@@ -236,5 +187,5 @@ Bilgi deposu, bir Azure depolama hesabına erişim özellikli herhangi bir istem
 Zenginleştirilmiş belgeler oluşturmaya yönelik en basit yaklaşım, **veri alma** Sihirbazı ' nı kullanmaktır, ancak nesnelerin nasıl oluşturulduğuna ve başvurulduğunu öğrenmek isterseniz daha kullanışlı olan Postman ve REST API de kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Portalı kullanarak bir bilgi deposu oluşturun](knowledge-store-create-portal.md) 
+> [Portalı kullanarak bir bilgi deposu oluşturun](knowledge-store-create-portal.md)
 > [POSTMAN ve REST API kullanarak bilgi deposu oluşturma](knowledge-store-create-rest.md)

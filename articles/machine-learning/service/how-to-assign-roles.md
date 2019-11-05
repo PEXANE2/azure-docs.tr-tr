@@ -11,14 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0ceb21d6f77fd9694f7cd564c2e89735cf2a774d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067716"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497418"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
+[!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğreneceksiniz. [Rol tabanlı erişim denetimi (RBAC)](/azure/role-based-access-control/overview) , Azure kaynaklarına erişimi yönetmek için kullanılır. Azure Active Directory kullanıcılara, kaynaklara erişim izni veren belirli roller atanır. Azure, yerleşik roller ve özel roller oluşturma yeteneği sağlar.
 
@@ -26,7 +27,7 @@ Bu makalede, Azure Machine Learning çalışma alanına erişimi yönetmeyi öğ
 
 Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure kaynakları gibi yeni bir Azure Machine Learning çalışma alanı oluşturulduğunda, bu üç varsayılan rolle birlikte gelir. Çalışma alanına kullanıcı ekleyebilir ve bunları bu yerleşik rollerden birine atayabilirsiniz.
 
-| Role | Erişim düzeyi |
+| Rol | Erişim düzeyi |
 | --- | --- |
 | **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular bir çalışma alanındaki varlıkları listeleyebilir ve görüntüleyebilir, ancak bu varlıkları oluşturamaz veya güncelleştiremez. |
 | **Katılımcı** | Çalışma alanındaki varlıkları görüntüleyin, oluşturun, düzenleyin veya silin (uygulanabilir). Örneğin, katkıda bulunanlar bir deneme oluşturabilir, bir işlem kümesi oluşturabilir veya ekleyebilir, bir çalıştırma gönderebilir ve bir Web hizmeti dağıtabilir. |
@@ -52,7 +53,7 @@ Bir çalışma alanının sahibiyseniz, çalışma alanı için roller ekleyebil
 az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-`user` Alan, çalışma alanı üst aboneliğinin yaşadığı Azure Active Directory örneğindeki mevcut bir kullanıcının e-posta adresidir. Bu komutun nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
+`user` alanı, çalışma alanı üst aboneliğinin yaşadığı Azure Active Directory örneğinde mevcut bir kullanıcının e-posta adresidir. Bu komutun nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
@@ -67,7 +68,7 @@ Yerleşik roller yetersizse, özel roller oluşturabilirsiniz. Özel rollerin bu
 
 Özel bir rol oluşturmak için, önce rolün iznini ve kapsamını belirten bir rol tanımı JSON dosyası oluşturun. Aşağıdaki örnek, belirli bir çalışma alanı düzeyinde "veri Bilimcst" kapsamı adlı özel bir rol tanımlar:
 
-`data_scientist_role.json` :
+`data_scientist_role.json` hatasıyla başarısız oldu:
 ```json
 {
     "Name": "Data Scientist",
@@ -86,7 +87,7 @@ Yerleşik roller yetersizse, özel roller oluşturabilirsiniz. Özel rollerin bu
 }
 ```
 
-Bu özel rolün kapsamını `AssignableScopes` abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için alanı değiştirebilirsiniz.
+Bu özel rolün kapsamını abonelik düzeyinde, kaynak grubu düzeyinde veya belirli bir çalışma alanı düzeyinde ayarlamak için `AssignableScopes` alanını değiştirebilirsiniz.
 
 Bu özel rol, aşağıdaki eylemler hariç çalışma alanındaki her şeyi gerçekleştirebilir:
 
@@ -101,7 +102,7 @@ Bu özel rolü dağıtmak için aşağıdaki Azure CLı komutunu kullanın:
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale gelir. Artık bu rolü Azure portal ekleyip atayabilirsiniz. Ya da, `az ml workspace share` CLI komutunu kullanarak bu rolü bir kullanıcıya atayabilirsiniz:
+Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale gelir. Artık bu rolü Azure portal ekleyip atayabilirsiniz. Ya da bu rolü bir kullanıcıya `az ml workspace share` CLı komutunu kullanarak atayabilirsiniz:
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -115,5 +116,5 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 - [Kurumsal güvenliğe genel bakış](concept-enterprise-security.md)
 - [Bir sanal ağ içinde denemeleri ve çıkarımı/puanı güvenli bir şekilde çalıştırın](how-to-enable-virtual-network.md)
-- [Öğretici: Modelleri eğitme](tutorial-train-models-with-aml.md)
+- [Öğretici: modelleri eğitme](tutorial-train-models-with-aml.md)
 - [Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

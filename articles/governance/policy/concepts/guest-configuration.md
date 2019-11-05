@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: MT
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255838"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464066"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Ilkesinin Konuk yapılandırmasını anlama
 
@@ -29,7 +29,7 @@ Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](.
 
 ### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
-Uzantının makinede çalışan etkileyen uygulamalarla sınırlandırılacağından, Konuk yapılandırmasının CPU kullanımının% 5 ' inden fazla olmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
+Uzantının makinede çalışan etkileyen uygulamalarla sınırlandırılacağından, Konuk yapılandırmasının CPU kullanımının %5 ' inden fazla olmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını Kaydet
 
@@ -75,12 +75,12 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sisteminin bir listesi gösterilmektedir:
 
-|Publisher|Name|Sürümler|
+|Yayımcı|Ad|Sürümler|
 |-|-|-|
-|Kurallı|Ubuntu Server|14,04, 16,04, 18,04|
+|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |credavtiv|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Windows Istemcisi|Windows 10|
+|Microsoft|Windows İstemcisi|Windows 10|
 |OpenLogic|CentOS|7,3, 7,4, 7,5|
 |Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
 |SUSE|SLES|12 SP3|
@@ -123,6 +123,29 @@ Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk y
 
 Konuk yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılmak üzere tanımları gruplamak için bir girişimde bulunur. [Önizleme] adlı yerleşik girişim *: Linux ve Windows makineler Içindeki denetim parolası güvenlik ayarları* 18 ilke içerir. Windows için altı **Deployifnotexists** ve **Auditınotexists** çiftleri ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
 
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Sektör temellerini izleyen işletim sistemi ayarlarını denetleme
+
+Azure Ilkesinde bulunan girişimlerden biri, Microsoft 'tan bir "taban çizgisi" dan sonra sanal makineler içindeki işletim sistemi ayarlarını denetleme olanağı sağlar.  Tanım, *[Önizleme]: Azure Güvenlik taban çizgisi ayarlarıyla eşleşmeyen Windows VM 'Lerinin denetimi* , Active Directory Grup İlkesi ayarlara bağlı olarak bir denetim kuralları kümesi içerir.
+
+Ayarların çoğu parametre olarak kullanılabilir.  Bu işlevsellik, ilkeyi Kurumsal gereksinimlerinize göre hizalamak veya ilkeyi sektör mevzuatı standartları gibi üçüncü taraf bilgilerle eşlemek için nelerin denetleneceğini özelleştirmenize olanak sağlar.
+
+Bazı parametreler bir tamsayı değer aralığını destekler.  Örneğin, en fazla parola yaşı parametresi, makine sahiplerine esneklik sağlamak için bir Aralık işleci kullanılarak ayarlanabilir.  Kullanıcıların parolalarını değiştirmesi gereken geçerli grup ilkesi ayarının 70 günden fazla olmaması gerektiğini ve 1 günden az olmaması gerektiğini denetleyebilirsiniz.  Parametresinin info-kabarcık bölümünde açıklandığı gibi, etkin denetim değerini yapmak için değeri "1, 70" olarak ayarlayın.
+
+İlkeyi bir Azure Resource Manager dplosat şablonu kullanarak atarsanız, bu ayarları kaynak denetiminden yönetmek için bir parametre dosyası kullanabilirsiniz.
+Her iadede yorumlarla denetim ilkelerine yapılan değişiklikleri yönetmek için git gibi bir araç kullanarak, bir atamanın beklenen değer için özel durum olarak neden olması gerektiğine dair kanıt belgelecektir.
+
+#### <a name="applying-configurations-using-guest-configuration"></a>Konuk yapılandırması kullanılarak yapılandırmaları uygulama
+
+Azure Ilkesinin en son özelliği makineler içindeki ayarları yapılandırır.
+*Windows makinelerinde saat dilimini yapılandırma* tanımı, saat dilimini yapılandırarak makinede değişiklik yapar.
+
+*Yapılandırma*ile başlayan tanımları atarken, *Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını* da atamanız gerekir.
+Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Azure dışındaki makinelere ilke atama
+
+Konuk yapılandırması için kullanılabilen denetim ilkeleri **Microsoft. HybridCompute/machines** kaynak türünü içerir.  Atama kapsamındaki Azure Arc ile eklendi tüm makineler otomatik olarak dahil edilir.
+
 ### <a name="multiple-assignments"></a>Birden çok atama
 
 Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk atamasının atanmasını, Ilke ataması farklı parametreler kullanıyor olsa bile destekler.
@@ -140,7 +163,7 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-@No__t-0 geçerli sürüm numarasını gösterir.
+`<version>`, geçerli sürüm numarasını belirtir.
 
 ### <a name="collecting-logs-remotely"></a>Günlükleri uzaktan toplama
 
@@ -179,8 +202,8 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
-- [Azure ilke tanımı yapısını](definition-structure.md)gözden geçirin.
-- [İlke efektlerini anlamak](effects.md)için gözden geçirin.
+- [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
+- [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.

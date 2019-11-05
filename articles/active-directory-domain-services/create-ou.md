@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: a3f9ad20e4bfba6e0bb858c82ccce73bb687a826
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7d651849f5c8d930d99e87931eed5b823e90113c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613124"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474757"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında kuruluş birimi (OU) oluşturma
 
 Active Directory Domain Services (AD DS) içindeki kuruluş birimleri (OU), Kullanıcı hesapları, hizmet hesapları veya bilgisayar hesapları gibi nesneleri mantıksal olarak gruplandırmanıza olanak tanır. Daha sonra belirli OU 'Lara Yöneticiler atayabilir ve hedeflenen yapılandırma ayarlarını zorlamak için Grup ilkesi uygulayabilirsiniz.
 
 Azure AD DS yönetilen etki alanları, iki adet yerleşik ou- *Aaddc bilgisayarı* ve *Aaddc kullanıcısı*içerir. *Aaddc bilgisayarları* OU, yönetilen etki alanına katılmış tüm bilgisayarlar için bilgisayar nesneleri içerir. *Aaddc kullanıcıları* OU, Azure AD kiracısından ' de eşitlenen kullanıcıları ve grupları içerir. Azure AD DS kullanan iş yükleri oluşturup çalıştırdığınızda, uygulamaların kimliğini doğrulamak için hizmet hesapları oluşturmanız gerekebilir. Bu hizmet hesaplarını düzenlemek için genellikle Azure AD DS yönetilen etki alanında özel bir OU oluşturup bu OU içinde hizmet hesapları oluşturursunuz.
+
+Karma bir ortamda, şirket içi AD DS ortamında oluşturulan OU 'Lar Azure AD DS ile eşitlenmez. Azure AD DS yönetilen etki alanları düz bir OU yapısını kullanır. Her Kullanıcı hesabı ve grubu, farklı şirket içi etki alanlarından veya ormanlardan eşitlendiğinde, burada bir hiyerarşik OU yapısını yapılandırmış olsanız bile, *Aaddc kullanıcıları* kapsayıcısında depolanır.
 
 Bu makalede, Azure AD DS yönetilen etki alanında bir OU oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
@@ -49,7 +51,7 @@ Azure AD DS yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kull
 * Özel OU 'Lar oluşturmak için, kullanıcıların *AAD DC Yöneticiler* grubunun bir üyesi olması gerekir.
 * Özel bir OU oluşturan bir kullanıcıya, bu OU üzerinden yönetim ayrıcalıkları (tam denetim) verilir ve kaynak sahibidir.
     * Varsayılan olarak, *AAD DC yöneticileri* grubu özel OU 'nun tam denetimine sahiptir.
-* Azure AD kiracınızdan eşitlenen Kullanıcı hesaplarını içeren *Aaddc kullanıcıları* için varsayılan bir OU oluşturulur.
+* Azure AD kiracınızdaki tüm eşitlenmiş Kullanıcı hesaplarını içeren *Aaddc kullanıcıları* için varsayılan bir OU oluşturulur.
     * Kullanıcıları veya grupları *Aaddc kullanıcıları* OU 'dan oluşturduğunuz özel OU 'lara taşıyamazsınız. Yalnızca Azure AD DS tarafından yönetilen etki alanında oluşturulan kullanıcı hesapları veya kaynaklar, özel OU 'Lara taşınabilir.
 * Özel OU 'Lar altında oluşturduğunuz Kullanıcı hesapları, gruplar, hizmet hesapları ve bilgisayar nesneleri Azure AD kiracınızda mevcut değildir.
     * Bu nesneler, Azure AD Graph API veya Azure AD Kullanıcı arabirimindeki ile gösterilmez; Bunlar yalnızca Azure AD DS yönetilen etki alanında kullanılabilir.
@@ -61,6 +63,7 @@ Azure AD DS yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kull
 > [!NOTE]
 > Azure AD DS yönetilen bir etki alanında özel bir OU oluşturmak için *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
 
+1. Yönetim sanal makinenizde oturum açın. Azure portal kullanarak bağlanma adımları için bkz. [Windows Server VM 'ye bağlanma][connect-windows-server-vm].
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
 1. Sol bölmede, *contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Var olan OU 'ların ve kaynakların listesi gösterilir:
@@ -91,3 +94,4 @@ Yönetim araçlarını kullanma veya hizmet hesaplarını oluşturma ve kullanma
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097836"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472885"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ölçeklendirme seçenekleri
 
@@ -56,8 +56,6 @@ Kubernetes 'in değişen Pod taleplerini, düğüm havuzundaki istenen işlem ka
 ![Kubernetes kümesi otomatik Scaler](media/concepts-scale/cluster-autoscaler.png)
 
 Küme otomatik ezici, genellikle yatay Pod otomatik Scaler ile birlikte kullanılır. Birleştirildiğinde, yatay Pod otomatik Scaler, uygulama talebine göre Pod sayısını artırır veya düşürür ve küme otomatik olarak bu ek sınırları yürütmek için gereken düğüm sayısını ayarlar.
-
-Küme otomatik olarak yalnızca AKS kümelerinde önizlemede test edilmelidir.
 
 AKS 'deki küme otomatik Scaler 'ı kullanmaya başlamak için bkz. [aks üzerinde küme otomatik Scaler][aks-cluster-autoscaler].
 

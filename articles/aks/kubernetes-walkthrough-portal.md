@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 0e09d541cb84ef7857e4d68f776b92f845488771
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329882"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472680"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -25,33 +25,35 @@ Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini va
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Azure portal sol üst köşesinde +-3**Kubernetes hizmeti**@no__t kaynak  > **kapsayıcı** **Oluştur**' u seçin.
-
 AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 
-1. **Temel bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
-   - *PROJE AYRINTILARI*: Bir Azure aboneliği seçtikten sonra bir Azure kaynak grubu seçin veya *myResourceGroup* adıyla yeni bir tane oluşturun. **Kubernetes kümesi adı** alanına *myAKSCluster* gibi bir ad girin.
-   - *KÜME AYRINTILARI*: AKS kümesi için bölge, Kubernetes sürümü ve DNS adı ön eki seçin.
-   - **BIRINCIL düğüm havuzu**: aks düğümleri IÇIN bir VM boyutu seçin. AKS kümesi dağıtıldıktan sonra, sanal makine boyutu **değiştirilemez**. 
-       - Kümeye dağıtılacak düğüm sayısını seçin. Bu hızlı başlangıç **Düğüm sayısı** değerini *1* olarak belirleyin. Küme dağıtıldıktan sonra düğüm sayısı **ayarlanabilir**.
+1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
+
+2. **Kubernetes hizmeti** >  **kapsayıcıları** seçin.
+
+3. **Temel bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
+    - **Proje ayrıntıları**: bir Azure **aboneliği**seçin, sonra *Myresourcegroup*gibi bir Azure **kaynak grubu**seçin veya oluşturun.
+    - **Küme ayrıntıları**: *Myakscluster*gibi bir **Kubernetes küme adı**girin. AKS kümesi için bir **bölge**, **Kubernetes sürümü**ve **DNS adı ön eki** seçin.
+    - **Birincil düğüm havuzu**: aks düğümleri IÇIN bir VM **düğüm boyutu** seçin. Bir AKS kümesi dağıtıldıktan sonra *VM boyutu değiştirilemez* . 
+            -Kümeye dağıtılacak düğüm sayısını seçin. Bu hızlı başlangıç **Düğüm sayısı** değerini *1* olarak belirleyin. Küme dağıtıldıktan sonra düğüm sayısı *ayarlanabilir*.
     
-     ![AKS kümesi oluşturma - temel bilgileri sağlama](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+    ![AKS kümesi oluşturma - temel bilgileri sağlama](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     **İleri ' yi seçin: tamamlandığında ölçeklendirin** .
+    **İleri ' yi seçin: tamamlandığında ölçeklendirin** .
 
-2. **Ölçek** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
-> [!CAUTION]
-> Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu şekilde karşılaşırsanız, azaltma işlemleri için lütfen [buraya](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) gidin.
+4. **Ölçek** sayfasında, varsayılan seçenekleri değiştirmeyin. Ekranın alt kısmındaki **İleri: kimlik doğrulama**' ya tıklayın.
+    > [!CAUTION]
+    > Yeni AAD hizmet sorumlularının oluşturulması, yayma ve kullanılabilir hale gelmesi birkaç dakika sürebilir ve bu durum, Azure portal ' de hizmet sorumlusu hata ve doğrulama hataları oluşmasına neden olur. Bu şekilde karşılaşırsanız, azaltma işlemleri için lütfen [buraya](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) gidin.
 
-3. **Kimlik doğrulama** sayfasında, aşağıdaki seçenekleri yapılandırın:
-   - **Hizmet sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu**ile bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir tane kullanmak için *hizmet sorumlusu Yapılandır* ' ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
-   - Kubernetes rol tabanlı erişim denetimleri (RBAC) seçeneğini etkinleştirin. Bu, AKS kümenizde dağıtılan Kubernetes kaynaklarına erişim üzerinde daha ayrıntılı denetim sağlar.
+5. **Kimlik doğrulama** sayfasında, aşağıdaki seçenekleri yapılandırın:
+    - **Hizmet sorumlusu** alanını **(yeni) varsayılan hizmet sorumlusu**ile bırakarak yeni bir hizmet sorumlusu oluşturun. Alternatif olarak, mevcut bir tane kullanmak için *hizmet sorumlusu Yapılandır* ' ı seçebilirsiniz. Mevcut bir tane kullanırsanız, SPN istemci KIMLIĞINI ve parolasını sağlamanız gerekir.
+    - Kubernetes rol tabanlı erişim denetimleri (RBAC) seçeneğini etkinleştirin. Bu, AKS kümenizde dağıtılan Kubernetes kaynaklarına erişim üzerinde daha ayrıntılı denetim sağlar.
 
 Varsayılan olarak, *temel* ağ kullanılır ve kapsayıcılar Için Azure izleyici etkindir. **Gözden geçir + oluştur** ' a tıklayın ve doğrulama tamamlandığında **Oluştur** ' a tıklayın.
 
@@ -67,7 +69,7 @@ Azure portal en üstündeki `>_` düğmesini kullanarak Cloud Shell açın.
 
 ![Azure Cloud Shell'i portalda açma](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-@No__t, Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır. Aşağıdaki örnek *myResourceGroup* adlı kaynak grubu içindeki *myAKSCluster* adlı kümenin kimlik bilgilerini alır:
+Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır. Aşağıdaki örnek *myResourceGroup* adlı kaynak grubu içindeki *myAKSCluster* adlı kümenin kimlik bilgilerini alır:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -93,7 +95,7 @@ Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerin
 > [!TIP]
 > Bu hızlı başlangıçta, uygulama bildirimlerini el ile oluşturup AKS kümesine dağıtacaksınız. Daha çok gerçek dünyada senaryolar için [Azure dev Spaces][azure-dev-spaces] kullanarak doğrudan aks kümesinde kodunuzun hatalarını hızla yineleyebilirsiniz ve hatalarını ayıklayabilirsiniz. Dev Spaces’ı işletim sistemi platformları ile geliştirme ortamlarında kullanabilir ve ekibinizdeki diğer kişilerle birlikte çalışabilirsiniz.
 
-Cloud Shell 'de, `nano` veya `vi` ' i kullanarak `azure-vote.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML tanımına kopyalayın:
+Cloud Shell 'de, `azure-vote.yaml` adlı bir dosya oluşturmak ve aşağıdaki YAML tanımına kopyalamak için `nano` veya `vi` kullanın:
 
 ```yaml
 apiVersion: apps/v1
@@ -212,7 +214,7 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-*Dış IP* adresi *bekliyor* durumundan gerçek ortak ıp adresini değiştirdiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` ' yi kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
+*Dış IP* adresi *bekliyor* durumundan gerçek bir genel IP adresi olarak değiştiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
 ```
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -237,7 +239,7 @@ Aşağıdaki örnekte olduğu gibi *azure-vote-back* ve *azure-vote-front* kapsa
 
 ![AKS'de çalışan kapsayıcıların durumunu görüntüleme](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-@No__t-0 Pod için günlükleri görmek üzere kapsayıcılar listesinin açılan listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
+`azure-vote-front` pod için günlükleri görmek üzere kapsayıcılar listesinin açılan listesinden **kapsayıcı günlüklerini görüntüle** ' yi seçin. Bu günlükler, kapsayıcıdaki *stdout* ve *stderr* akışlarını içerir.
 
 ![AKS'deki kapsayıcı günlüklerini görüntüleme](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
@@ -252,7 +254,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 > [!NOTE]
 > Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [aks hizmet sorumlusu konuları ve silme][sp-delete].
 
-## <a name="get-the-code"></a>Kodu edinin
+## <a name="get-the-code"></a>Kodu alma
 
 Bu hızlı başlangıçta, bir Kubernetes dağıtımı oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanıldı. İlgili uygulama kodu, Dockerfile ve Kubernetes bildirim dosyası GitHub'da bulunur.
 

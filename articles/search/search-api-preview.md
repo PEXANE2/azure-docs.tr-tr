@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792543"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496484"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Bilişsel Arama Service REST API-sürüm 2019-05-06-Önizleme
 
@@ -24,6 +24,8 @@ Bu makalede, arama hizmeti REST API 'ın `api-version=2019-05-06-Preview` sürü
 
 
 ## <a name="new-in-2019-05-06-preview"></a>2019-05-06 içinde yeni-önizleme
+
+[* * Artımlı Dizin](cognitive-search-incremental-indexing-conceptual.md) oluşturma işlemi, veri, Dizin Oluşturucu ve beceri tanımları değişmeden olduğunda var olan çıktıyı yeniden kullanmanıza olanak tanıyan bir dizin oluşturma için durum ve önbelleğe alma için yeni bir moddur. Bu özellik Bilişsel Beceri aracılığıyla yalnızca zenginleştirme için geçerlidir.
 
 [**Bilgi deposu**](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Bir dizine ek olarak, Azure depolama 'da dizin oluşturma sırasında oluşturulan doldurulmuş veri yapılarını artık kalıcı hale getirebilirsiniz. Verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını, yoksa birden çok görünüm mi olduğunu da kapsayan, verilerinizin fiziksel yapılarını bir beceri öğeleri aracılığıyla kontrol edersiniz.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044411"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469737"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme
 
@@ -39,7 +39,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 * İzleyiciyi, eylem runbook'larını ve İzleyici Görevi'ni barındıracak bir [Azure Otomasyonu hesabı](automation-offering-get-started.md).
 * Sisteme eklenecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -47,8 +47,9 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Bu öğretici için öncelikle VM'nizde Güncelleştirme Yönetimi'ni etkinleştirin:
 
-1. Azure portalda sol taraftaki menüden **Sanal makineler**'i seçin. Listeden bir VM seçin.
-2. VM sayfasının **İŞLEMLER** bölümünde **Güncelleştirme yönetimi**'ni seçin. **Güncelleştirme Yönetimini Etkinleştirme** sayfası açılır.
+1. [Azure Portal](https://portal.azure.com) menüsünde, **sanal makineler** ' i seçin veya **giriş** sayfasından **sanal makineler** ' i arayıp seçin.
+1. Güncelleştirme Yönetimi etkinleştirmek istediğiniz VM 'yi seçin.
+1. VM sayfasının **İŞLEMLER** bölümünde **Güncelleştirme yönetimi**'ni seçin. **Güncelleştirme Yönetimini Etkinleştirme** sayfası açılır.
 
 Bu VM için Güncelleştirme Yönetimi özelliğinin etkin olup olmadığını belirlemek için doğrulama gerçekleştirilir. Bu doğrulama kapsamında Azure Log Analytics çalışma alanı ve bağlantılı Otomasyon hesabının yanı sıra Güncelleştirme Yönetimi çözümünün çalışma alanında olup olmadığı kontrol edilir.
 
@@ -145,7 +146,7 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 
    |İşletim Sistemi  |Tür  |
    |---------|---------|
-   |Windows     | Kritik güncelleştirmeler</br>Güvenlik güncelleştirmeleri</br>Güncelleştirme paketleri</br>Özellik paketleri</br>Hizmet paketleri</br>Tanım güncelleştirmeleri</br>Araçlar</br>Güncellemeler        |
+   |Windows     | Kritik güncelleştirmeler</br>Güvenlik güncelleştirmeleri</br>Güncelleştirme paketleri</br>Özellik paketleri</br>Hizmet paketleri</br>Tanım güncelleştirmeleri</br>Araçlar</br>Güncelleştirmeler        |
    |Linux     | Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri</br>Diğer güncelleştirmeler       |
 
    Sınıflandırma türlerinin açıklaması için bkz. [sınıflandırmaları güncelleştirme](automation-view-update-assessments.md#update-classifications).
@@ -153,7 +154,7 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 * **Dahil edilecek/dışlanacak güncelleştirmeler** - Böylece **Dahil Et / Dışla** sayfası açılır. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir.
 
 > [!NOTE]
-> Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, `*` ' ı bir dışlama kuralı tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
+> Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, `*`hariç tutma kuralı tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
 
 * **Zamanlama ayarları**: **Zamanlama Ayarları** bölmesi açılır. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 

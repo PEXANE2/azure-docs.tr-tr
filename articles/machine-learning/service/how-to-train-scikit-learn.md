@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: MT
+ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710075"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489429"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Derleme scikit-Azure Machine Learning uygun ölçekte modeller öğrenin
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning [SKIT tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) sınıfını kullanarak scikit-kurumsal ölçekte eğitim komut dosyalarınızı nasıl çalıştıracağınızı öğrenin. 
 
@@ -25,10 +26,10 @@ Bu makaledeki örnek betikler, ırikit-öğrenme için [Iris veri kümesini](htt
 
 Bir makine öğrenimi scikit-bir modeli baştan sona öğreniyor olun veya var olan bir modeli buluta getiriyor, elastik bulut bilgi işlem kaynaklarını kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
- - Azure Machine Learning Not defteri VM-indirme veya yükleme gerekli değil
+ - Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
 
     - Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
     - Not defteri sunucusundaki örnekler eğitim klasöründe, bu dizine giderek tamamlanmış ve genişletilmiş bir not defteri bulun: **nasıl kullanılır-azureml > ml-çerçeveleri > scikit-> eğitim > tren-hyperparameter-ayarla-dağıt-ile-sköğren** klasörü.
@@ -46,7 +47,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
 
 Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başlatarak, bir deneme oluşturarak ve eğitim verilerini ve eğitim betikleri karşıya yükleyerek Eğitim denemesini ayarlar.
 
-### <a name="import-packages"></a>Paketleri içeri aktar
+### <a name="import-packages"></a>Paketleri içeri aktarma
 
 İlk olarak, gerekli Python kitaplıklarını içeri aktarın.
 
@@ -65,7 +66,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesnesi oluşturarak çalışma alanı yapılarına erişebilirsiniz.
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında, [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesnesi oluşturarak çalışma alanı yapılarına erişebilirsiniz.
 
 [Önkoşullar bölümünde](#prerequisites)oluşturulan `config.json` dosyasından bir çalışma alanı nesnesi oluşturun.
 
@@ -90,7 +91,7 @@ Bu öğreticide, **train_iris. Kopyala** eğitim betiği sizin için zaten sağl
 
 Azure ML 'nin izleme ve ölçüm yeteneklerini kullanmak için eğitim betiğinizin içine küçük miktarda Azure ML kodu ekleyin.  Eğitim betiği **train_iris. Kopyala** , bazı ÖLÇÜMLERIN Azure ML çalıştırmak için betik içinde `Run` nesnesini kullanarak nasıl günlüğe alınacağını gösterir.
 
-Belirtilen eğitim betiği `iris = datasets.load_iris()` işlevinden örnek verileri kullanır.  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#data-upload) gibi adımları kullanmanız gerekebilir.
+Belirtilen eğitim betiği `iris = datasets.load_iris()` işlevindeki örnek verileri kullanır.  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#data-upload) gibi adımları kullanmanız gerekebilir.
 
 Eğitim betiği **train_iris.** Kopyala ' yı proje dizininize kopyalayın.
 
@@ -127,7 +128,7 @@ except ComputeTargetException:
 
 [Scikit-öğrenme tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py) , bir işlem hedefinde bir scikit-öğrenme eğitimi işi başlatmanın basit bir yolunu sunar. Tek düğümlü CPU eğitimini desteklemek için kullanılabilecek [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) sınıfı aracılığıyla uygulanır.
 
-Eğitim betiğinizin çalışması için ek PIP veya Conda paketleri gerekiyorsa, `pip_packages` ve `conda_packages` bağımsız değişkenleri aracılığıyla adlarını geçirerek elde edilen Docker görüntüsüne paketlerin yüklenmesini sağlayabilirsiniz.
+Eğitim betiğinizin çalışması için ek PIP veya Conda paketleri gerekiyorsa, bu paketlerin adlarını `pip_packages` ve `conda_packages` bağımsız değişkenlerle geçirerek elde edilen Docker görüntüsüne yüklenmesini sağlayabilirsiniz.
 
 ```Python
 from azureml.train.sklearn import SKLearn

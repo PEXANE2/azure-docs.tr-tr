@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: nacharya1
-ms.author: nilesha
-ms.date: 06/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+author: cartacioS
+ms.author: sacartac
+ms.date: 11/04/2019
+ms.openlocfilehash: 5c8ce6a588fd630f69d8ffc682b611baba3afdd4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929331"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497577"
 ---
 # <a name="what-is-automated-machine-learning"></a>Otomatik makine öğrenimi nedir?
 
@@ -54,7 +53,9 @@ Sınıflandırma| Regresyon | Zaman serisi tahmin
 
 1. [Yerel bilgisayarınız, Azure Machine Learning hesaplar, uzak VM 'ler veya Azure Databricks](how-to-set-up-training-targets.md)gibi **model eğitimi Için işlem hedefini yapılandırın**.  [Uzak bir kaynakta](how-to-auto-train-remote.md)otomatik eğitim hakkında bilgi edinin.
 
-1. Farklı modeller üzerinde kaç tane yineleme, hiper parametre ayarları, gelişmiş ön işleme/uygun hale getirme ve en iyi modeli belirlerken hangi ölçümlerin görüneceğini belirleyen **otomatik makine öğrenimi parametrelerini yapılandırın** .  Otomatik eğitim denemenize yönelik ayarları [Azure Portal](how-to-create-portal-experiments.md), [çalışma alanı giriş sayfasında (ÖNIZLEME)](https://ml.azure.com)veya [SDK ile](how-to-configure-auto-train.md)yapılandırabilirsiniz. 
+1. Farklı modeller üzerinde kaç tane yineleme, hiper parametre ayarları, gelişmiş ön işleme/uygun hale getirme ve en iyi modeli belirlerken hangi ölçümlerin görüneceğini belirleyen **otomatik makine öğrenimi parametrelerini yapılandırın** .  Otomatik eğitim denemenize yönelik ayarları [Azure Machine Learning Studio](https://ml.azure.com)'DA veya [SDK ile](how-to-configure-auto-train.md)yapılandırabilirsiniz. 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 1. **Eğitim çalıştırmasını gönder.**
 
@@ -94,6 +95,8 @@ Her otomatik makine öğrenimi denemenizde, algoritmaların iyi hale getirmek i�
 ### <a name="advanced-preprocessing-optional-featurization"></a>Gelişmiş ön işleme: isteğe bağlı korleştirme
 
 Eksik değerler imputation, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve korleştirme de mevcuttur. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess). Bu ayarı şu şekilde etkinleştirin:
+
++ Azure Machine Learning Studio: **yapılandırma çalıştırması** bölümünde [Bu adımlarla](how-to-create-portal-experiments.md) **Görünüm özellik ayarlarını** seçme.
 
 + Python SDK: [`AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)Için `"feauturization": auto' / 'off' / FeaturizationConfig` belirtme.
 
@@ -164,7 +167,7 @@ Otomatikleştirilmiş ML, gibi diğer Microsoft çözümlerinde de kullanılabil
 |Tümleştirmeler|Açıklama|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio ve ML.NET otomatik ML (Önizleme) ile Visual Studio Code .NET uygulamalarında otomatik model seçme ve eğitim.|
-|['Tan](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|HDInsight kümelerinde Spark üzerinde otomatik ML eğitim işlerinizi paralel olarak ölçeklendirin.|
+|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|HDInsight kümelerinde Spark üzerinde otomatik ML eğitim işlerinizi paralel olarak ölçeklendirin.|
 |[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Makine öğrenimi modellerini doğrudan Power BI (Önizleme) içinde çağırın.|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 büyük veri kümelerinde verileriniz üzerinde yeni makine öğrenimi modelleri oluşturun.|
 
@@ -175,7 +178,7 @@ Bkz. örnekler ve otomatik makine öğrenimi kullanarak modeller oluşturmayı �
 + [Öğreticiyi izleyin: Azure otomatik Machine Learning regresyon modelini otomatik olarak eğitme](tutorial-auto-train-models.md)
 
 + Otomatik eğitim denemenize yönelik ayarları yapılandırın:
-  + Azure portal arabiriminde veya çalışma alanı giriş sayfasında (Önizleme), [Bu adımları kullanın](how-to-create-portal-experiments.md).
+  + Azure Machine Learning Studio 'da [Bu adımları kullanın](how-to-create-portal-experiments.md).
   + Python SDK ile [Bu adımları kullanın](how-to-configure-auto-train.md).
 
 + Zaman serisi verilerini kullanarak otomatik eğitme yapmayı öğrenin, [Bu adımları kullanın](how-to-auto-train-forecast.md).

@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803840"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473800"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Nasıl yapılır: iOS ve macOS için MSAL 'ı farklı kimlik sağlayıcıları kullanacak şekilde yapılandırma
 
@@ -34,7 +34,7 @@ Bu makalede, iOS ve MacOS için Microsoft kimlik doğrulama kitaplığı uygulam
 `MSALPublicClientApplication`, en Azure Active Directory (AAD) senaryosu için uygun olan `https://login.microsoftonline.com/common`varsayılan yetkili URL 'SI ile yapılandırılır. Ulusal bulutlar gibi gelişmiş senaryolar uygulamadıysanız veya B2C ile çalışmadığınız takdirde, bunu değiştirmeniz gerekmez.
 
 > [!NOTE]
-> Kimlik sağlayıcısı (ADFS) olarak Active Directory Federasyon Hizmetleri (AD FS) modern kimlik doğrulaması desteklenmez (Ayrıntılar için bkz. [geliştiriciler Için ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers) ). ADFS, Federasyon aracılığıyla desteklenir.
+> Kimlik sağlayıcısı (ADFS) olarak Active Directory Federasyon Hizmetleri (AD FS) modern kimlik doğrulaması desteklenmez (Ayrıntılar için bkz. [geliştiriciler Için ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). ADFS, Federasyon aracılığıyla desteklenir.
 
 ## <a name="change-the-default-authority"></a>Varsayılan yetkiyi değiştirme
 
@@ -185,7 +185,7 @@ Her bir bağımsız bulutuna farklı kapsamlar geçirmeniz gerekebilir. Hangi ka
 
 Yetkili URL 'SI `"login.microsoftonline.com/common"`olarak ayarlandığında, Kullanıcı kendi giriş kiracısında oturum açacaktır. Ancak bazı uygulamaların kullanıcı farklı bir kiracıda oturum açması gerekebilir ve bazı uygulamalar yalnızca tek bir kiracı ile çalışır.
 
-Kullanıcıyı belirli bir kiracıda imzalamak için `MSALPublicClientApplication` belirli bir yetkiliyle yapılandırın. Örnek:
+Kullanıcıyı belirli bir kiracıda imzalamak için `MSALPublicClientApplication` belirli bir yetkiliyle yapılandırın. Örneğin:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073207"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470589"
 ---
 # <a name="use-an-app-service-environment"></a>App Service ortamı kullanma #
 
 Azure App Service Ortamı, bir müşterinin Azure sanal ağındaki bir alt ağa Azure App Service bir dağıtımdır. Aşağıdakilerden oluşur:
 
-- **Ön uçlar**: Ön uçlar, HTTP/HTTPS 'nin bir App Service ortamında (ASE) sonlandırmakta olduğu yerdir.
-- **Çalışanlar**: Çalışanlar, uygulamalarınızı barındıran kaynaklardır.
-- **Veritabanı**: Veritabanı ortamı tanımlayan bilgileri barındırır.
-- **Depolama alanı**: Depolama alanı, müşteri tarafından yayımlanan uygulamaları barındırmak için kullanılır.
+- **Ön uçlar**: ön uçlar, http/https 'nin bir App Service ortamında (ASE) sonlandırmakta olduğu yerdir.
+- **Çalışanlar**: uygulamalarınızı barındıran kaynaklar.
+- **Veritabanı**: veritabanı ortamı tanımlayan bilgileri barındırır.
+- **Depolama**: depolama alanı, müşteri tarafından yayımlanan uygulamaları barındırmak için kullanılır.
 
 > [!NOTE]
 > App Service Ortamı iki sürümü vardır: ASEv1 ve ASEv2. ASEv1 ' de, kaynakları kullanabilmeniz için önce kaynakları yönetmeniz gerekir. ASEv1 'ı yapılandırma ve yönetme hakkında bilgi edinmek için bkz. [App Service ortam v1 yapılandırma][ConfigureASEv1]. Bu makalenin geri kalanı ASEv2 ' ye odaklanmaktadır.
@@ -47,7 +47,7 @@ Ao 'a sahip değilseniz, [App Service ortamı oluşturma][MakeExternalASE]bölü
 
 AS 'de bir uygulama oluşturmak için:
 
-1.  > **Web uygulaması** **Web ve mobil**kaynakoluştur'u > seçin.
+1. **Web uygulaması** > **Web ve mobil** > **kaynak oluştur** ' u seçin.
 
 2. Uygulama için bir ad girin. Ao 'da zaten bir App Service planı seçtiyseniz, uygulamanın etki alanı adı Ao 'nun etki alanı adını yansıtır.
 
@@ -67,7 +67,7 @@ AS 'de bir uygulama oluşturmak için:
 
     c. **Konum** açılır listesinden atıcı ' i seçin. 
     
-    d. **Yalıtılmış** bir fiyatlandırma katmanı seçin. Seçin **seçin**.
+    d. **Yalıtılmış** bir fiyatlandırma katmanı seçin. **Seç**' i seçin.
 
     e. **Tamam**’ı seçin.
     
@@ -77,7 +77,7 @@ AS 'de bir uygulama oluşturmak için:
     > Linux uygulamaları ve Windows uygulamaları aynı App Service planında olamaz, ancak aynı App Service Ortamı olabilir. 
     >
 
-2. **Oluştur**’u seçin.
+2. **Oluştur**'u seçin.
 
 ## <a name="how-scale-works"></a>Ölçeklendirmenin çalışması ##
 
@@ -105,7 +105,7 @@ Bu ön uçların çoğu senaryo için yeterince büyük olmalıdır. Ancak, daha
 
 ## <a name="app-access"></a>Uygulama erişimi ##
 
-Bir dış ate, uygulama oluştururken kullanılan etki alanı çok kiracılı App Service farklıdır. ATıCı 'in adını içerir. Dış Ao oluşturma hakkında daha fazla bilgi için bkz. [App Service ortam oluşturma][MakeExternalASE]. Dış Ao 'daki etki alanı adı gibi görünür *.&lt; asename&gt;. p.azurewebsites.net*. Örneğin, ATıCı 'niz _External-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'ye aşağıdaki URL 'lerde ulaşabilirsiniz:
+Bir dış ate, uygulama oluştururken kullanılan etki alanı çok kiracılı App Service farklıdır. ATıCı 'in adını içerir. Dış Ao oluşturma hakkında daha fazla bilgi için bkz. [App Service ortam oluşturma][MakeExternalASE]. Dış bir AO 'daki etki alanı adı, şöyle görünür. *&lt;asename&gt;. p.azurewebsites.net*. Örneğin, ATıCı 'niz _External-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'ye aşağıdaki URL 'lerde ulaşabilirsiniz:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
@@ -133,7 +133,7 @@ Yayımlamayla ilgili önemli fark, bir ıLB Ao 'ya göre belirlenir. ILB Ao ile,
 
 Kullanıma hazır olmayan, GitHub ve Azure DevOps gibi Internet tabanlı CI sistemleri, yayımlama uç noktası Internet 'e erişilemediğinden bir ıLB Ao ile çalışmaz. Azure DevOps için, iç ağınıza şirket içinde barındırılan bir yayın Aracısı yükleyerek bu soruna geçici bir çözüm ekleyebilirsiniz. Alternatif olarak, Dropbox gibi bir çekme modeli kullanan bir CI sistemini de kullanabilirsiniz.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Uygulamayı uygulamanın yayımlama profilinde ve uygulamanın Portal dikey penceresinde ( **genel bakış** > **temelleri** ' nde ve **Özellikler**' de) görebilirsiniz. 
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Uygulamanın yayımlama profilinde ve uygulamanın Portal dikey penceresinde ( **genel bakış** > **Essentials** ve ayrıca **Özellikler**bölümünde) görebilirsiniz. 
 
 ## <a name="pricing"></a>Fiyatlandırma ##
 
@@ -179,7 +179,7 @@ ATıCı 'yi silmek için:
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

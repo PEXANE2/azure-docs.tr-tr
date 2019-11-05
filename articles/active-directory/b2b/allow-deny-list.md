@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62cbe68bcf191c7ee6fc906bc8ba8ea66e3efb31
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233891"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474178"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>İzin verme veya davetleri B2B kullanıcıları belirli kuruluşlardan engelleme
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Belirli kuruluşların B2B kullanıcılarına yönelik davetlere izin verme veya bunları engelleme
 
 Belirli kuruluşlardan B2B kullanıcılarına izin vermek veya bu kullanıcılara yönelik davetleri engellemek için bir izin verilenler listesi veya reddetme listesi kullanabilirsiniz. Örneğin, kişisel e-posta adresi etki alanlarını engellemek istiyorsanız Gmail.com ve Outlook.com gibi etki alanlarını içeren bir reddetme listesi ayarlayabilirsiniz. Ya da işletmenizde Contoso.com, Fabrikam.com ve Litware.com gibi diğer işletmelerle bir ortaklığı varsa ve davetleri yalnızca bu kuruluşlara kısıtlamak istiyorsanız, izin verilenler listenize Contoso.com, Fabrikam.com ve Litware.com ekleyebilirsiniz.
   
@@ -41,15 +41,15 @@ Bu, kuruluşunuzun neredeyse her kuruluşla çalışmak istediği, ancak belirli
 
 Reddetme listesi eklemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > kullanıcılarıKullanıcı > **ayarları**' nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **Kullanıcı ayarlarını** > **Azure Active Directory** > **kullanıcıları** ' nı seçin.
 3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında, **belirtilen etki alanlarına davetleri Reddet**' i seçin.
 5. **Hedef etkı alanları**altında, engellemek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
 
    ![Eklenen etki alanları ile reddetme seçeneğini gösterir](./media/allow-deny-list/DenyListSettings.png)
  
-6. İşiniz bittiğinde tıklayın **Kaydet**.
+6. İşiniz bittiğinde **Kaydet**' e tıklayın.
 
 İlkeyi ayarladıktan sonra, engellenen bir etki alanından bir kullanıcıyı davet etmeye çalışırsanız, kullanıcının etki alanının şu anda davet ilkeniz tarafından engellendiğini söyleyen bir ileti alırsınız.
  
@@ -62,15 +62,15 @@ Bir izin verilenler listesi kullanmak istiyorsanız, işletmenizin ihtiyaçları
 
 Bir izin verilenler listesi eklemek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Azure Active Directory** > kullanıcılarıKullanıcı > **ayarları**' nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. **Kullanıcı ayarlarını** > **Azure Active Directory** > **kullanıcıları** ' nı seçin.
 3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
 4. **İşbirliği kısıtlamaları**' nın altında **yalnızca belirtilen etki alanlarına (en kısıtlayıcı) davetlere izin ver**' i seçin.
 5. **Hedef etkı alanları**altında, izin vermek istediğiniz etki alanlarından birinin adını girin. Birden çok etki alanı için, her etki alanını yeni bir satıra girin. Örneğin:
 
    ![Eklenmiş etki alanları ile izin ver seçeneğini gösterir](./media/allow-deny-list/AllowListSettings.png)
  
-6. İşiniz bittiğinde tıklayın **Kaydet**.
+6. İşiniz bittiğinde **Kaydet**' e tıklayın.
 
 İlkeyi ayarladıktan sonra, izin verilenler listesinde olmayan bir etki alanından bir kullanıcıyı davet etmeye çalışırsanız, kullanıcının etki alanının şu anda davet ilkeniz tarafından engellendiğini söyleyen bir ileti alırsınız.
 
@@ -81,6 +81,9 @@ Bir ilkeden diğerine geçiş yaparsanız, bu, var olan ilke yapılandırmasın�
 ## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>PowerShell kullanarak izin verme veya reddetme listesi ilkesini ayarlama
 
 ### <a name="prerequisite"></a>Önkoşul
+
+> [!Note]
+> AzureADPreview modülü önizlemede olduğundan, tam olarak desteklenmeyen bir modül değil. 
 
 PowerShell kullanarak izin ver veya Reddet listesini ayarlamak için, Windows PowerShell için Azure Active Directory modülünün önizleme sürümünü yüklemelisiniz. Özellikle, AzureADPreview modülü sürüm 2.0.0.98 veya üstünü yükler.
 

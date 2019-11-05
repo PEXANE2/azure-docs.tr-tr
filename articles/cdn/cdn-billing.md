@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996804"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495479"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN faturalamasını anlama
 
@@ -55,9 +55,9 @@ Azure CDN kullanmak, nesneleriniz için kaynak olarak kullanılan hizmetler üze
 
 İçeriğiniz için kaynak olarak Azure Blob depolamayı kullanıyorsanız, önbellek dolguları için aşağıdaki depolama ücretlerine de tabi olursunuz:
 
-- Kullanılan gerçek GB: Kaynak nesnelerinizin gerçek depolaması.
+- Kullanılan gerçek GB: kaynak nesnelerinizin gerçek depolama alanı.
 
-- Hareket Önbelleğin doldurulması için gereken şekilde.
+- İşlemler: önbelleğin doldurulması için gereken şekilde.
 
 - GB cinsinden aktarımlar: CDN önbelleklerini dolduracak şekilde aktarılan veri miktarı.
 
@@ -68,9 +68,9 @@ Azure depolama faturalandırma hakkında daha fazla bilgi için bkz. [Azure depo
 
 *Barındırılan hizmet teslimi*kullanıyorsanız, ücretlendirilecektir:
 
-- Azure İşlem Zamanı: Kaynak olarak davranan işlem örnekleri.
+- Azure İşlem Zamanı: kaynak olarak davranan işlem örnekleri.
 
-- Azure işlem aktarımı: Veriler, Azure CDN önbelleklerini dolduracak şekilde işlem örneklerinden aktarır.
+- Azure işlem aktarımı: verileri Azure CDN önbelleklerini dolduracak şekilde hesaplama örneklerinden aktarır.
 
 İstemciniz, bayt aralığı isteklerini kullanıyorsa (kaynak hizmetten bağımsız olarak) aşağıdaki noktalar geçerlidir:
 
@@ -81,20 +81,20 @@ Azure depolama faturalandırma hakkında daha fazla bilgi için bkz. [Azure depo
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Önbelleği desteklemek için ne kadar aktarım etkinliği meydana geldi?
 Bir CDN POP 'un önbelleğini doldurması gereken her seferinde, önbelleğe alınan nesnenin kaynağına bir istek sağlar. Sonuç olarak, kaynak her önbellek isabetsiz bir faturalanabilir işlem doğurur. Önbellek isabetsizlik sayısı bir dizi etkene bağlıdır:
 
-- İçerik önbelleğe alınabilir: İçerik yüksek TTL (yaşam süresi)/sona erme değerleri içeriyorsa ve sık sık erişilebilir durumda kalırsa, yükün büyük çoğunluğu CDN tarafından işlenir. Tipik bir iyi önbellek isabet oranı% 90 ' dan fazla olduğundan, istemci isteklerinin% 10 ' dan küçük bir önbellek isabetsizliği veya nesne yenilemesi için kaynağa dönmesi gereken anlamına gelir.
+- İçeriğin önbelleklenebilir olması: içerik yüksek TTL (yaşam süresi)/sona erme değerleri Içeriyorsa ve sık sık erişiliyorsa, yükün büyük çoğunluğu CDN tarafından işlenir. Tipik bir iyi önbellek isabet oranı %90 ' dan fazla olduğundan, istemci isteklerinin %10 ' dan küçük bir önbellek isabetsizliği veya nesne yenilemesi için kaynağa dönmesi gereken anlamına gelir.
 
-- Nesneyi yüklemek için kaç düğüm gerekir: Bir düğüm kaynaktan bir nesne yüklediğinde, faturalandırılabilir bir işlem doğurur. Sonuç olarak, daha fazla genel içerik (daha fazla düğümden erişilir), faturalandırılabilir işlemlerin oluşmasına neden olur.
+- Nesne yüklemesi gereken kaç düğüm vardır: bir düğüm kaynaktan bir nesne yüklediğinde, faturalandırılabilir bir işlem doğurur. Sonuç olarak, daha fazla genel içerik (daha fazla düğümden erişilir), faturalandırılabilir işlemlerin oluşmasına neden olur.
 
-- TTL etkisi: Bir nesne için daha yüksek bir TTL, kaynağın kaynaktan daha az sıklıkla getirilmesi gerektiği anlamına gelir. Ayrıca, tarayıcılar gibi istemcilerin nesneyi daha uzun sürede önbelleğe alabileceği anlamına gelir ve bu da işlemleri CDN 'ye düşürebilir.
+- TTL etkisi: bir nesne için daha yüksek bir TTL, kaynağın kaynaktan daha az sıklıkta getirilmesi gerektiği anlamına gelir. Ayrıca, tarayıcılar gibi istemcilerin nesneyi daha uzun sürede önbelleğe alabileceği anlamına gelir ve bu da işlemleri CDN 'ye düşürebilir.
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Microsoft 'tan gelen Azure CDN ücretsiz veri aktarımı için hangi kaynak hizmetleri uygun? 
 CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullanırsanız, kaynaktan CDN pop 'Lara veri aktarımından ücretlendirilmeyecektir. 
 
-- Azure Storage
+- Azure Depolama
 - Azure Media Services
-- Azure sanal makineleri
+- Azure Sanal Makineler
 - Sanal Ağ
-- Load Balancer
+- Yük Dengeleyici
 - Application Gateway
 - Azure DNS
 - ExpressRoute
@@ -107,13 +107,13 @@ CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullan
 - Azure Uygulama Hizmeti
 - Azure İşlevleri
 - Azure Data Factory
-- Azure API Yönetimi
+- Azure API Management
 - Azure Batch 
 - Azure Veri Gezgini
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Azure Machine Learning hizmeti 
+- Azure Machine Learning 
 - Azure SQL veritabanı
 - Redis için Azure Önbelleği
 

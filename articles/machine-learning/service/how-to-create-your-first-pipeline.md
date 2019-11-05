@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755977"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497048"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)kullanarak [makine öğrenimi ardışık düzeni](concept-ml-pipelines.md) oluşturmayı, yayımlamayı, çalıştırmayı ve izlemeyi öğreneceksiniz.  Çeşitli ML aşamalarını içeren bir iş akışı oluşturmak için **ml işlem hatlarını** kullanın ve ardından bu işlem hattını daha sonra erişmek veya başkalarıyla paylaşmak için Azure Machine Learning çalışma alanınıza yayımlayın.  ML işlem hatları, çeşitli hesaplar kullanılarak, yeniden çalıştırmak yerine adımları yeniden kullanarak ve diğer kişilerle ML iş akışlarını paylaşarak Batch Puanlama senaryolarında idealdir. 
 
@@ -36,7 +37,11 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 
 * Tüm işlem hattı kaynaklarınızın tutulacağı bir [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md) oluşturun.
 
-* Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Not defteri VM](tutorial-1st-experiment-sdk-setup.md#azure) 'si kullanın.
+* Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure Machine Learning işlem örneği](concept-compute-instance.md) kullanın.
+
+> [!NOTE]
+> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+>Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
 
 Çalışma alanınızı ekleyerek başlayın:
 
@@ -89,7 +94,7 @@ def_blob_store.upload_files(
 
 ### <a name="configure-data-reference"></a>Veri başvurusunu yapılandırma
 
-Bir işlem hattında bir adım girişi olarak başvurulabilen bir veri kaynağı oluşturdunuz. Bir işlem hattındaki veri kaynağı bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. @No__t_0 nesnesi, bir veri deposundan erişilebilen veya içinde bulunan verilere işaret eder.
+Bir işlem hattında bir adım girişi olarak başvurulabilen bir veri kaynağı oluşturdunuz. Bir işlem hattındaki veri kaynağı bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. `DataReference` nesnesi, bir veri deposundan erişilebilen veya içinde bulunan verilere işaret eder.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -278,7 +283,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-Gereksiz yeniden çalışma olanağı sunan çevikliği ortadan kaldıran, önceki sonuçların (`allow_reuse`) kullanılması, işbirliği ortamında işlem hatları kullanırken anahtardır. Bir adımın script_name, girişleri ve parametreleri aynı kaldığında yeniden kullanım varsayılan davranıştır. Adımın çıkışı yeniden kullanıldığında, iş işleme gönderilmez, bunun yerine önceki çalıştırmanın sonuçları hemen sonraki adımın çalıştırmasında kullanılabilir. @No__t_0 false olarak ayarlandıysa işlem hattı yürütme sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. 
+Gereksiz yeniden çalışma olanağı sunan çevikliği ortadan kaldıran, önceki sonuçların (`allow_reuse`) kullanılması, işbirliği ortamında işlem hatları kullanırken anahtardır. Bir adımın script_name, girişleri ve parametreleri aynı kaldığında yeniden kullanım varsayılan davranıştır. Adımın çıkışı yeniden kullanıldığında, iş işleme gönderilmez, bunun yerine önceki çalıştırmanın sonuçları hemen sonraki adımın çalıştırmasında kullanılabilir. `allow_reuse` false olarak ayarlandıysa işlem hattı yürütme sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. 
 
 Adımlarınızı tanımladıktan sonra, bu adımların bazılarını veya tümünü kullanarak işlem hattını oluşturursunuz.
 
@@ -325,7 +330,7 @@ Daha fazla bilgi için bkz. [Azure-işlem hattı-adımlar paketi](https://docs.m
 İşlem hattını gönderdiğinizde, Azure Machine Learning her adımın bağımlılıklarını denetler ve belirttiğiniz kaynak dizinin bir anlık görüntüsünü yükler. Kaynak dizin belirtilmemişse, geçerli yerel dizin yüklenir. Anlık görüntü Ayrıca çalışma alanınızdaki denemenin bir parçası olarak depolanır.
 
 > [!IMPORTANT]
-> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. @No__t_0 dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
+> Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosyası oluşturun ve dosyaları bu dosyaya ekleyin. `.amlignore` dosyası [. gitignore](https://git-scm.com/docs/gitignore) dosyası ile aynı söz dizimini ve desenleri kullanır. Her iki dosya de varsa `.amlignore` dosyası önceliklidir.
 >
 > Daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
 
@@ -410,34 +415,34 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Yayımlanmış bir işlem hattının sonuçlarını görüntüleme
 
 Tüm yayınlanmış işlem hatlarınızın ve çalıştırma ayrıntılarının listesini görüntüleyin:
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
 1. İşlem hatları listesini bulmak için [çalışma alanınızı görüntüleyin](how-to-manage-workspace.md#view) .
- makine öğrenimi ardışık düzenleri ![list ](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
+ makine öğrenimi ardışık düzenleri ![listesi](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Çalıştırma sonuçlarını görmek için belirli bir işlem hattı seçin.
 
-Bu sonuçlar, [çalışma alanı giriş sayfanız (Önizleme)](https://ml.azure.com)içinde de kullanılabilir.
+Bu sonuçlar Ayrıca [Azure Machine Learning Studio]] (https://ml.azure.com)içinde çalışma alanınızda kullanılabilir.
 
 ### <a name="disable-a-published-pipeline"></a>Yayımlanmış bir ardışık düzeni devre dışı bırakma
 
 Yayınlanan işlem hatları listenizden bir ardışık düzeni gizlemek için devre dışı bırakın:
 
 ```
-# Get the pipeline by using its ID from the Azure portal
+# Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-@No__t_0 için yeniden etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Publishedpipeline sınıf](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) başvurusu.
+`p.enable()`için yeniden etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [Publishedpipeline sınıf](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) başvurusu.
 
 
 ## <a name="caching--reuse"></a>Önbelleğe alma & yeniden kullanım  
 
 İşlem hatlarınızın davranışını iyileştirmek ve özelleştirmek için, önbelleğe alma ve yeniden kullanma konusunda birkaç şey yapabilirsiniz. Örneğin, şunları yapabilirsiniz:
 + Adım [tanımı](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)sırasında `allow_reuse=False` ayarlayarak **adım çalıştırma çıkışının varsayılan yeniden kullanımını devre dışı bırakın** . Gereksiz çalıştırmaları ortadan kaldıran çeviklik sunarak, birlikte çalışma sırasında işlem hattı kullanılırken anahtar kullanın. Ancak, yeniden kullanım dışı bırakabilirsiniz.
-+ @No__t_1 kullanarak diğer dosyalara ve dizinlere yönelik mutlak bir yolu veya göreli yolları da içerecek şekilde, **karma kodun ötesine genişletmeyi genişletin**. 
-+ @No__t_1 **Çalıştırma içindeki tüm adımlarda çıkış yeniden oluşturmayı zorla**
++ `hash_paths=['<file or directory']` kullanarak diğer dosyalara ve dizinlere yönelik mutlak bir yolu veya göreli yolları da içerecek şekilde, **karma kodun ötesine genişletmeyi genişletin**. 
++ `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` **Çalıştırma içindeki tüm adımlarda çıkış yeniden oluşturmayı zorla**
 
 Varsayılan olarak, adımlar için `allow_reuse` etkindir ve yalnızca ana betik dosyası karma hale getirilir. Bu nedenle, belirli bir adımın betiği aynı (`script_name`, girişler ve parametreler) olarak kalırsa, önceki bir adım çalıştırmasının çıkışı yeniden kullanılır, iş işleme gönderilmez ve önceki çalıştırmanın sonuçları hemen bir sonraki adımda kullanılabilir.  
 

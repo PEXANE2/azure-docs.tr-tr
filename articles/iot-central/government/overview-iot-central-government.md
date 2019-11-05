@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 02918df348414058d176246da5c2d0f14df7b405
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026655"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464087"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central kamu çözümleri oluşturma
 
@@ -79,5 +79,5 @@ Bağlı çöp yönetimi uygulama şablonu önceden yapılandırılmış olarak o
 * [Su kalitesi izleme kavramları](./concepts-waterqualitymonitoring-architecture.md) hakkında bilgi edinin
 * [Su tüketim izleme kavramları](./concepts-waterconsumptionmonitoring-architecture.md) hakkında bilgi edinin
 * [Bağlı çöp yönetimi kavramları](./concepts-connectedwastemanagement-architecture.md) hakkında bilgi edinin  
-* IoT Central hakkında bilgi edinin, bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* IoT Central hakkında bilgi edinin, bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
  

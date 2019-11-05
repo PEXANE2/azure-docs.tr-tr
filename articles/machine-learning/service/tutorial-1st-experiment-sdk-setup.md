@@ -10,23 +10,25 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: fc26b224a2af6ab4f1f6bf5551381d4739831351
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053864"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476002"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğreticide, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin bir parçasıdır**ve Python ortamı kurulumu ve yapılandırmasını ve denemeleri ve makine öğrenimi modellerinizi yönetmek için bir çalışma alanı oluşturmayı içerir. Birden çok makine öğrenimi modellerini eğitmek ve hem Azure portal hem de SDK kullanarak model yönetimi işlemini tanıtmak için bu [**Iki bölümden oluşan iki**](tutorial-1st-experiment-sdk-train.md) derleme.
+Bu öğreticide, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin bir parçasıdır**ve Python ortamı kurulumu ve yapılandırmasını ve denemeleri ve makine öğrenimi modellerinizi yönetmek için bir çalışma alanı oluşturmayı içerir. Birden çok makine öğrenimi modeli eğitmek ve hem Azure Machine Learning Studio hem de SDK kullanarak model yönetimi işlemini tanıtmak için bu [**Iki bölümden oluşan iki**](tutorial-1st-experiment-sdk-train.md) derleme.
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
 > * Sonraki öğreticide kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
 > * Öğreticiler Not defterini çalışma alanındaki klasörünüze kopyalayın.
-> * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış bir bulut tabanlı Jupyter Not defteri VM 'si oluşturun.
+> * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış bir bulut tabanlı işlem örneği oluşturun.
+
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
@@ -46,23 +48,27 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure porta
 
 Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](how-to-configure-environment.md#local) kullanın.
 
-Aşağıdaki deneme kurulumunu tamamlayıp çalışma alanı giriş sayfasında (Önizleme), tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için Machine Learning araçları 'nı içeren birleştirilmiş bir arabirim olan
+Tüm beceri seviyeleri için veri bilimi senaryoları gerçekleştirmek üzere Machine Learning araçları 'nı içeren birleştirilmiş bir arabirim olan Azure Machine Learning Studio 'da aşağıdaki deneme sürümü kurulumunu tamamlayıp adımları gerçekleştirin.
 
-1. [Çalışma alanı giriş sayfasında](https://ml.azure.com/)oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 
 1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
-1. Sol taraftaki **not defterlerini ve dosyaları** seçin.
+1. Sol taraftaki **not defterlerini** seçin.
 
 1. **Örnekler** klasörünü açın.
+
+1. **Python** klasörünü açın.
+
+1. Klasörü üzerinde bir sürüm numarasıyla açın.  Bu sayı, Python SDK 'sının geçerli sürümünü temsil eder.
 
 1. **Öğreticiler** klasörünün sağ tarafındaki **"..."** öğesini seçin ve ardından **Kopyala**' yı seçin.
 
     ![Klasörü kopyala](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Çalışma alanına erişen her kullanıcı için bir klasör görüntülenir.  **Eğitim** klasörünü kopyalamak için klasörünüzü seçin.
+1. Çalışma alanına erişen her kullanıcıyı gösteren bir klasör listesi görüntülenir.  **Öğreticiler** klasörünü kopyalamak için klasörünüzü seçin.
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a>Not defterini çalıştırmak için bir VM seçin <a name="open">
+## <a name="a-nameopenopen-the-cloned-notebook"></a>kopyalanan Not defterini açmak <a name="open">
 
 1. **Kullanıcı dosyaları** altında klasörünüzü açın ve kopyalanan **öğreticiler** klasörünü açın.
 
@@ -73,11 +79,9 @@ Aşağıdaki deneme kurulumunu tamamlayıp çalışma alanı giriş sayfasında 
     
 1. **Öğreticiler** klasörünüzdeki **öğretici-1-deneme-SDK-eğitme. ipynb** dosyasını seçin.
 
-1. Üstteki çubukta, Not defterini çalıştırmak için kullanılacak bir not defteri sanal makinesi seçin. Bu VM 'Ler Azure Machine Learning çalıştırmanız gereken her şey ile önceden yapılandırılmıştır. Çalışma alanınızın herhangi bir kullanıcısı tarafından oluşturulan bir VM 'yi seçebilirsiniz. 
+1. Üst kısımdaki çubukta, Not defterini çalıştırmak için kullanılacak bir işlem örneği seçin. Bu VM 'Ler [Azure Machine Learning çalıştırmanız gereken her şey](concept-compute-instance.md#contents)ile önceden yapılandırılmıştır. Çalışma alanınızın herhangi bir kullanıcısı tarafından oluşturulan bir VM 'yi seçebilirsiniz. 
 
-1. VM bulunamazsa, sanal makineyi oluşturmak için **+ yenı VM** ' yi seçin.
-
-    ![VM oluşturma](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+1. VM bulunamazsa, sanal makineyi oluşturmak için **+ Işlem Ekle** ' yi seçin.
 
     1. Bir VM oluşturduğunuzda, bir ad sağlayın.  Ad, 2 ila 16 karakter arasında olmalıdır. Geçerli karakterler harfler, rakamlar ve-karakterdir ve ayrıca Azure aboneliğinizde benzersiz olmalıdır.
 
@@ -85,6 +89,9 @@ Aşağıdaki deneme kurulumunu tamamlayıp çalışma alanı giriş sayfasında 
 
 1. VM kullanılabilir olduktan sonra, üst araç çubuğunda görüntülenir.  Artık Not defterini, araç çubuğunda **Tümünü Çalıştır** ' ı kullanarak veya Not defterinin kod hücrelerinde **SHIFT + enter** ' u kullanarak çalıştırabilirsiniz.
 
+> [!NOTE]
+> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+>Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz.  Not defterinizi çalıştırmak için bir not defteri VM 'si ya da bir işlem örneği kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

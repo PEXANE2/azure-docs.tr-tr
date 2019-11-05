@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4c56c8f98e536060ea18eb6b9d3a37179eebc89f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: eedb9d811e35d606f4d3e1df55d9303d68678b3c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044282"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478749"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -167,7 +167,7 @@ Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yap�
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-003.png)
 
-[Günlük ucunu Azure Resource Manager ile değiştirmek](../../azure-monitor/app/powershell.md)için, değiştirilecek Özellik `dailyQuota` ' dir.  Azure Resource Manager aracılığıyla, `dailyQuotaResetTime` ve günlük Cap `warningThreshold` ' i de ayarlayabilirsiniz. 
+[Günlük ucunu Azure Resource Manager ile değiştirmek](../../azure-monitor/app/powershell.md)için, değiştirilecek Özellik `dailyQuota`.  Azure Resource Manager aracılığıyla `dailyQuotaResetTime` ve günlük Cap `warningThreshold`da ayarlayabilirsiniz. 
 
 ## <a name="sampling"></a>Örnekleme
 [Örnekleme](../../azure-monitor/app/sampling.md) , tanılama aramaları sırasında ilgili olayları bulma özelliğini korurken, telemetrinin uygulamanıza gönderilme hızını azaltma yöntemidir. Ayrıca, doğru olay sayılarını da koruyabilirsiniz.
@@ -193,7 +193,7 @@ Gerçek örnekleme oranını öğrenmek için, nereye uygulandığını fark etm
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-Korunan her kayıtta, `itemCount`, temsil ettiği özgün kayıt sayısını gösterir. 1 + önceki atılan kayıtların sayısına eşittir. 
+Her tutulan kaydında `itemCount`, temsil ettiği orijinal kayıt sayısını belirtir. 1 + önceki atılan kayıtların sayısına eşittir. 
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
@@ -203,7 +203,7 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-005.png)
 
-Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](powershell.md#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
+Saklama Ayrıca, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak program aracılığıyla de ayarlanabilir](powershell.md#set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, uyumluluk ile ilgili senaryolar için faydalı olabilecek `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz. Bu temizleme işlevi yalnızca Azure Resource Manager aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights kullanarak veri aktarımı ücretleri
 
@@ -229,7 +229,7 @@ Düğüm başına (eskiden Enterprise) katmanının düğüm başına ücreti va
 Para birimi ve bölgenizin geçerli fiyatları için bkz. [Application Insights fiyatlandırması](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> 2018 Nisan 'da, Azure izleme için [Yeni bir fiyatlandırma](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) modeli sunuyoruz. Bu model, izleme hizmetlerinin tam portföyüne ilişkin basit bir "Kullandıkça öde" modeli benimsemektedir. [Yeni fiyatlandırma modeli](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)hakkında daha fazla bilgi edinin, kullanım modellerinize bağlı olarak [Bu modele geçme etkisini nasıl değerlendirirsiniz](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) ve [yeni modeli nasıl kabul](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model) edebilirsiniz
+> 2018 Nisan 'da, Azure izleme için [Yeni bir fiyatlandırma](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) modeli sunuyoruz. Bu model, izleme hizmetlerinin tam portföyüne ilişkin basit bir "Kullandıkça öde" modeli benimsemektedir. [Yeni fiyatlandırma modeli](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)hakkında daha fazla bilgi edinin, kullanım modellerinize bağlı olarak [Bu modele geçme etkisini nasıl değerlendirirsiniz](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs) ve [yeni modeli nasıl kabul](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model) edebilirsiniz
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Düğüm başına katman ve Operations Management Suite abonelik yetkilendirmeleri
 

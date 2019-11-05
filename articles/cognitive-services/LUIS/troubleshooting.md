@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488698"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding sık sorulan sorular (SSS)
 
@@ -28,7 +28,7 @@ Language Understanding yenilikleri hakkında [daha fazla bilgi edinin](whats-new
 
 <a name="luis-authoring"></a>
 
-## <a name="authoring"></a>Özgün
+## <a name="authoring"></a>Yazma
 
 ### <a name="what-are-the-luis-best-practices"></a>Lune en iyi uygulamalar nelerdir?
 [Yazma döngüsünü](luis-concept-app-iteration.md)başlatın ve [en iyi uygulamaları](luis-concept-best-practices.md)okuyun.
@@ -50,7 +50,7 @@ Evet, diğer amaçlar için daha fazla etiket eklerken, **hiçbiri** amacınız�
 Bkz. [Bing yazım denetimi API'si v7](luis-tutorial-bing-spellcheck.md) öğreticisi. Lua, Bing Yazım Denetimi API'si v7 tarafından uygulanan limitleri zorlar.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>LUMY uygulamamı programlı bir şekilde Düzenle Nasıl yaparım??
-LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. [lusıs yazma API 'Sini çağırma](./luis-quickstart-node-add-utterance.md) ve [Node. js kullanarak program aracılığıyla bir Lusıs uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-concept-keys.md#authoring-key) kullanmanızı gerektirir. Programlı yazma, ayda 1.000.000 çağrının ve saniyede beş işlem sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-concept-keys.md).
+LUSıS uygulamanızı programlı bir şekilde düzenlemek için [yazma API](https://go.microsoft.com/fwlink/?linkid=2092087)'sini kullanın. Yazma API 'sini çağırma örnekleri için bkz. [lusıs yazma API 'Sini çağırma](./luis-quickstart-node-add-utterance.md) ve [Node. js kullanarak program aracılığıyla bir Lusıs uygulaması oluşturma](./luis-tutorial-node-import-utterances-csv.md) . Yazma API 'SI, bir uç nokta anahtarı yerine bir [yazma anahtarı](luis-concept-keys.md#azure-resources-for-luis) kullanmanızı gerektirir. Programlı yazma, ayda 1.000.000 çağrının ve saniyede beş işlem sağlar. LUO ile kullandığınız anahtarlar hakkında daha fazla bilgi için bkz. [anahtarları yönetme](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Normal ifade eşleşen bir model özelliği nerede?
 Önceki **desen özelliği** Şu anda kullanım dışıdır ve **[desenlerle](luis-concept-patterns.md)** değiştirilmiştir.
@@ -70,7 +70,7 @@ Bir LUO uygulamasını farklı bir Azure aboneliğine aktarmak için, Luo uygula
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Önceden oluşturulmuş bir varlık özel varlığım yerine örnek bir şekilde etiketlidir. Bu Nasıl yaparım? düzeltilsin mi? 
 
-Bkz. [önceden oluşturulmuş varlıklarda sorun giderme](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+Luu portalında, ayıklama işlemi sırasında ilgilendiğiniz tam varlığın metnini etiketleyebilir. Lua portalı doğru varlık tahminini göstermiyorsa, daha fazla işlem eklemeniz ve varlığın metin içinde etiketlenmesi veya bir tanımlayıcı eklemeniz (örn. bir özellik gibi) gerekebilir. 
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Bir uygulama veya sürüm dosyasını içeri aktarmaya çalıştım, ancak bir hata oluştu, ne oldu? 
 
@@ -86,7 +86,7 @@ Ortak çalışanlarla erişim verme hakkında bilgi edinmek için bkz. [Azure Ac
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>Bkz
+## <a name="endpoint"></a>Uç Nokta
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Bir HTTP 403 hata durum kodu aldım. Nasıl yaparım? düzeltilsin mi?
 
@@ -130,7 +130,7 @@ LUSıS, [kültürü](luis-language-support.md#tokenization)temel alan bir şekil
 Azure 'da [hizmet](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) düzeyiniz için [uç nokta anahtarı oluşturun](luis-how-to-azure-subscription.md) . [Anahtarı](luis-how-to-azure-subscription.md) **[Azure kaynakları](luis-how-to-azure-subscription.md)** sayfasına atayın. Bu eylem için karşılık gelen bir API yok. Ardından, [Yeni uç nokta anahtarını kullanmak](luis-concept-keys.md)için http isteğini uç noktaya değiştirmeniz gerekir.
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUSıS puanlarını Nasıl yaparım? yorumlanması mı?
-Sisteminizin değeri ne olursa olsun, en yüksek Puanlama amacını kullanması gerekir. Örneğin, 0,5 altına bir puan (% 50 ' den az) , LUıN düşük güvenilirliğe sahip olduğu anlamına gelmez. Daha fazla eğitim verisi sağlamak, en olası amacın [Puanını](luis-concept-prediction-score.md) artırmaya yardımcı olabilir.
+Sisteminizin değeri ne olursa olsun, en yüksek Puanlama amacını kullanması gerekir. Örneğin, 0,5 altına bir puan (%50 ' den az) , LUıN düşük güvenilirliğe sahip olduğu anlamına gelmez. Daha fazla eğitim verisi sağlamak, en olası amacın [Puanını](luis-concept-prediction-score.md) artırmaya yardımcı olabilir.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Neden uç nokta isabetlerimi uygulamamın panosundan görmüyorum?
 Uygulamanızın panosundaki toplam bitiş noktası isabetlerinin düzenli aralıklarla güncelleştirildiği, ancak Azure portal BASıS uç nokta anahtarınızla ilişkili ölçümler daha sık güncelleştirilir.
@@ -193,7 +193,7 @@ Bkz. [tüm verilerle eğitme](luis-how-to-train.md#train-with-all-data).
 ## <a name="app-publishing"></a>Uygulama yayımlama
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>"Uygulamanıza anahtar ekleme" penceresinde kiracı KIMLIĞI nedir?
-Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. **DIZIN kimliği** kutusunda Azure portal **Azure Active Directory** >   > **özelliklerini** **Yönet**' i seçerek kiracı kimliğinizi bulun.
+Azure 'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder.  > **özelliklerini** **Yönet** > **Azure ACTIVE DIRECTORY** ' i seçerek **dizin kimliği** kutusundaki Azure Portal kiracı kimliğinizi bulun.
 
 ![Azure portal Kiracı KIMLIĞI](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -230,7 +230,7 @@ Yazma [anahtarı deneyimine](luis-migration-authoring.md)geçtikten sonra, yazma
 Varsayılan olarak, LUSıS uygulamanız kullanıcılardan gelen günlükleri günlüğe kaydeder. Kullanıcıların LUSıS uygulamanıza gönderdikleri bir günlük günlüğünü indirmek için **uygulamalarım**' a gidin ve uygulamayı seçin. Bağlam araç çubuğunda, **uç nokta günlüklerini dışarı aktar**' ı seçin. Günlük, virgülle ayrılmış değer (CSV) dosyası olarak biçimlendirilir.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Utterslar günlüğünü nasıl devre dışı bırakabilirim?
-İstemci uygulamanızın LUL 'yi sorgulamak için kullandığı uç nokta URL 'sindeki `log=false` ' i ayarlayarak Kullanıcı utüterlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. Veri gizliliği sorunları nedeniyle `log=false` ' ı ayarlarsanız, bu kullanıcı aradıklarından bir kaydını LUO 'dan indiremez veya uygulamanızı geliştirmek için bu söz konusu söz konusu konuları kullanabilirsiniz.
+İstemci uygulamanızın LUL 'yi sorgulamak için kullandığı uç nokta URL 'sindeki `log=false` ayarlayarak Kullanıcı çeşidlerini günlüğe kaydetmeyi devre dışı bırakabilirsiniz. Ancak, günlüğü kapatmak, LUL uygulamanızın, [etkin öğrenmeyi](luis-concept-review-endpoint-utterances.md#what-is-active-learning)temel alan, bir yandan gelen performansı ve performansı iyileştirebilme yeteneğini devre dışı bırakır. Veri gizliliği sorunları nedeniyle `log=false` ayarlarsanız, bu kullanıcı aradıklarından bir kaydını LUSıS 'den indiremez veya uygulamanızı geliştirmek için bu söz konusu konuları kullanabilirsiniz.
 
 Günlüğe kaydetme, tek tek depolamadaki depodır.
 
@@ -262,7 +262,7 @@ Günlüğü tahmin analizi için kullanıyorsanız, günlükteki test arasların
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Neredeyse kotanın ne olduğunu belirten bir e-posta aldım?
 Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin verilir. Bir LUSıS uç noktası anahtarı (ücretsiz veya ücretli) oluşturun ve uç nokta sorguları yaparken bu anahtarı kullanın. Bir bot veya başka bir istemci uygulamasından uç nokta sorguları yapıyorsanız, bu uç nokta anahtarını orada değiştirmeniz gerekir.
 
-## <a name="bots"></a>Göz
+## <a name="bots"></a>Botlar
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUMY bot çalışmıyor. Ne yapmalıyım?
 
@@ -271,11 +271,11 @@ Yazma/başlangıç anahtarınız yalnızca bir ay 1000 uç nokta sorgusuna izin 
 #### <a name="resolve-issue-in-luis"></a>LUSıS 'de sorunu çözme
 [Luo uç noktasındaki](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)Luo 'ya aynı söylenişi geçirin. Bir hata alırsanız, hata artık döndürülünceye kadar lu, sorununu çözün. Yaygın hatalar şunlardır:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`-Bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini veya [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir. 
+* `Out of call volume quota. Quota will be replenished in <time>.`-bu sorun, yazma anahtarından bir [uç nokta anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz gerektiğini ya da [Hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir. 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure bot hizmetinde sorunu çözme
 
-Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbetinde testin** `Sorry, my bot code is having an issue` döndüğü durumlarda, günlüklerinizi kontrol edin:
+Azure bot hizmetini kullanıyorsanız ve sorun **Web sohbeti Içindeki testin** `Sorry, my bot code is having an issue`döndürmesi durumunda, günlüklerinizi kontrol edin:
 
 1. Azure portal, bot için, **bot yönetimi** bölümünde **Oluştur**' u seçin.
 1. Çevrimiçi kod düzenleyicisini açın. 
@@ -329,7 +329,7 @@ Aşağıdaki özellikler Build 2019 Konferansı 'nda yayımlanmıştır:
 * [Dinamik liste varlıkları](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Dış varlıklar](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
-Larınız
+Videolar:
 
 * [Azure konuşma AI kullanarak işinizi bir sonraki nesil için ölçeklendirin](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 

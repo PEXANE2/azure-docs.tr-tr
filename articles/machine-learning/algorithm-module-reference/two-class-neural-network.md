@@ -1,24 +1,24 @@
 ---
 title: 'İki sınıf sinir ağı: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Yalnızca iki değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning hizmetinde Iki sınıf sinir ağ modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Yalnızca iki değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için, Azure Machine Learning ' de Iki sınıf sinir ağ modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8f38a7b7086e5023eb63e94363301ac5277f7e7c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693608"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485878"
 ---
 # <a name="two-class-neural-network-module"></a>İki sınıf sinir ağ modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Yalnızca iki değeri olan bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için bu modülü kullanın.
 
@@ -89,4 +89,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

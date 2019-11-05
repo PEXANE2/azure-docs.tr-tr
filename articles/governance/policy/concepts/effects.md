@@ -3,15 +3,15 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464041"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -25,6 +25,7 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 - [Reddedebilir](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
+- [Enforceopaconstraint](#enforceopaconstraint) (Önizleme)
 - [Enforceregopolicy](#enforceregopolicy) (Önizleme)
 - [Değiştirebilirler](#modify)
 
@@ -39,7 +40,7 @@ Azure Resource Manager aracılığıyla kaynak oluşturma veya güncelleştirme 
 
 Kaynak sağlayıcı bir başarı kodu döndürdüğünde, **Auditınotexists** ve **deployifnotexists** , ek uyumluluk günlüğü veya eyleminin gerekip gerekmediğini belirleme işlemini değerlendirir.
 
-Şu anda **Enforceregopolicy** efekti için herhangi bir değerlendirme sırası yoktur.
+Şu anda **Enforceopaconstraint** veya **Enforceregopolicy** etkileri için herhangi bir değerlendirme sırası yoktur.
 
 ## <a name="disabled"></a>Devre dışı
 
@@ -99,7 +100,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 
 ## <a name="modify"></a>Değiştir
 
-Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Hedef kaynak bir kaynak grubu değilse, bir değiştirme ilkesinde `mode` ' ın her zaman _dizinli_ olarak ayarlanmış olması gerekir. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Hedef kaynak bir kaynak grubu değilse, bir değiştirme ilkesinde `mode` her zaman _dizinli_ olarak ayarlanmış olması gerekir. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
 
 > [!IMPORTANT]
 > Şu anda yalnızca etiketleriyle kullanım için değiştirin. Etiketleri yönetiyorsanız, Değiştir yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme yeteneği sağlar. Bununla birlikte, yönetilen bir kimlik oluşturabilebilmeniz durumunda ekleme önerilir.
@@ -212,13 +213,13 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 }
 ```
 
-## <a name="deny"></a>Deny
+## <a name="deny"></a>Reddet
 
 Reddetme, bir ilke tanımı aracılığıyla tanımlı standartlarla eşleşmeyen bir kaynak isteğini engellemek için kullanılır ve istekte başarısız olur.
 
 ### <a name="deny-evaluation"></a>Değerlendirmeyi Reddet
 
-Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek `403 (Forbidden)` olarak döndürülür. Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
+Eşleşen bir kaynağı oluştururken veya güncelleştirirken reddetme, isteği kaynak sağlayıcısına gönderilmeden önce engeller. İstek bir `403 (Forbidden)`olarak döndürülür. Portalda, ilke ataması tarafından engellenmiş olan dağıtımda durum olarak yasak görüntülenir.
 
 Mevcut kaynakların değerlendirmesi sırasında, bir reddetme ilke tanımıyla eşleşen kaynaklar uyumlu değil olarak işaretlenir.
 
@@ -242,7 +243,7 @@ Denetim, uyumlu olmayan bir kaynağı değerlendirirken etkinlik günlüğünde 
 
 ### <a name="audit-evaluation"></a>Denetim değerlendirmesi
 
-Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi, etkinlik günlüğüne `Microsoft.Authorization/policies/audit/action` işlemi ekler ve kaynağı uyumlu değil olarak işaretler.
+Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Azure Ilkesi tarafından denetlenen son etkiye sahiptir. Daha sonra Azure Ilkesi kaynağı kaynak sağlayıcısına gönderir. Denetim, bir kaynak isteği ve bir değerlendirme çevrimi için aynı şekilde çalışmaktadır. Azure Ilkesi, etkinlik günlüğüne bir `Microsoft.Authorization/policies/audit/action` işlemi ekler ve kaynağı uyumlu değil olarak işaretler.
 
 ### <a name="audit-properties"></a>Denetim Özellikleri
 
@@ -264,7 +265,7 @@ Auditınotexists, **IF** koşuluyla eşleşen kaynaklarda denetim imkanı sunar,
 
 ### <a name="auditifnotexists-evaluation"></a>Auditınotexists değerlendirmesi
 
-Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, etkinlik günlüğüne denetim efektiyle aynı şekilde `Microsoft.Authorization/policies/audit/action` işlemi ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
+Bir kaynak sağlayıcısı bir oluşturma veya güncelleştirme kaynak isteği tamamladıktan ve başarı durum kodu döndürdüğünden Auditınotexists çalışır. İlgili kaynaklar yoksa veya **ExistenceCondition** tarafından tanımlanan kaynaklar true olarak değerlendirilmiyorsa denetim gerçekleşir. Azure Ilkesi, denetim efektine benzer bir şekilde etkinlik günlüğüne bir `Microsoft.Authorization/policies/audit/action` işlemi ekler. Tetiklendiğinde **, durum durumunu karşılayan** kaynak, uyumlu değil olarak işaretlenen kaynaktır.
 
 ### <a name="auditifnotexists-properties"></a>Auditınotexists özellikleri
 
@@ -431,12 +432,68 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Bu efekt `Microsoft.ContainerService.Data` ' in bir ilke tanımı *moduyla* kullanılır. [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak üzere [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan giriş denetimi kurallarını geçirmek için kullanılır.
+Bu efekt `Microsoft.Kubernetes.Data`ilke tanımı *moduyla* kullanılır. [Ilke aracısını](https://www.openpolicyagent.org/) (Opa) Azure 'da kendi kendine yönetilen Kubernetes kümelerine açmak Için [Opa kısıtlama çerçevesi](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 giriş denetimi kurallarını geçirmek için kullanılır.
 
 > [!NOTE]
-> [Kubernetes Için Azure Ilkesi](rego-for-aks.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.
+> [AKS altyapısı Için Azure Ilkesi](aks-engine.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint değerlendirmesi
+
+Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
+Her 5 dakikada bir küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint özellikleri
+
+EnforceOPAConstraint kısıtlama efektinin **Details** özelliği, Gatekeeper v3 giriş denetimi kuralını tanımlayan alt özellikler içerir.
+
+- **constraintTemplate** [gerekli]
+  - Yeni kısıtlamaları tanımlayan CustomResourceDefinition (CRD) kısıtlama şablonu. Şablon rego mantığını, kısıtlama şemasını ve Azure Ilkesinden **değerler** aracılığıyla geçirilen kısıtlama parametrelerini tanımlar.
+- **kısıtlama** [gerekli]
+  - Kısıtlama şablonunun CRD uygulama. **Değerler** aracılığıyla geçirilen parametreleri `{{ .Values.<valuename> }}`olarak kullanır. Aşağıdaki örnekte bu `{{ .Values.cpuLimit }}` ve `{{ .Values.memoryLimit }}`.
+- **değerler** [isteğe bağlı]
+  - Kısıtlamaya geçirilecek parametreleri ve değerleri tanımlar. Her değer, CRD kısıtlama şablonunda bulunmalıdır.
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy örneği
+
+Örnek: AKS altyapısındaki kapsayıcı CPU ve bellek kaynak sınırlarını ayarlamak için ağ geçidi denetleyicisi v3 giriş denetim kuralı.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Bu efekt `Microsoft.ContainerService.Data`ilke tanımı *moduyla* kullanılır. [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md) [ilke aracısını](https://www.openpolicyagent.org/) (Opa) açmak için [rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 giriş denetimi kurallarını geçirmek için kullanılır.
+
+> [!NOTE]
+> [AKS Için Azure Ilkesi](rego-for-aks.md) sınırlı önizlemededir ve yalnızca yerleşik ilke tanımlarını destekler
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
 
@@ -445,7 +502,7 @@ Her 5 dakikada bir küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesin
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy özellikleri
 
-EnforceRegoPolicy efektinin **Details** özelliği, Rego giriş denetimi kuralını tanımlayan alt özellikler içerir.
+EnforceRegoPolicy efektinin **Details** özelliği, Gatekeeper v2 giriş denetimi kuralını tanımlayan alt özellikler içerir.
 
 - **PolicyId** [gerekli]
   - Rego giriş denetimi kuralına parametre olarak geçirilen benzersiz bir ad.
@@ -456,7 +513,7 @@ EnforceRegoPolicy efektinin **Details** özelliği, Rego giriş denetimi kuralı
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy örneği
 
-Örnek: rego giriş denetimi kuralı, AKS içinde yalnızca belirtilen kapsayıcı görüntülerine izin vermek için.
+Örnek: Gatekeeper v2 giriş denetimi kuralı, AKS içinde yalnızca belirtilen kapsayıcı görüntülerine izin verir.
 
 ```json
 "if": {
@@ -485,7 +542,7 @@ EnforceRegoPolicy efektinin **Details** özelliği, Rego giriş denetimi kuralı
 
 ## <a name="layering-policies"></a>İlkeleri katmanlama
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örnek:
+Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
 
 - İlke 1
   - Kaynak konumunu ' westus ' olarak kısıtlar

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0fdc58ba54c63ba7dd6b74f56aa91e9c2b3c0936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562825"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464601"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -28,7 +28,7 @@ ms.locfileid: "68562825"
 
 ## <a name="upload-your-datasets"></a>Veri kümelerinizi karşıya yükleyin
 
-Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır. Örneğin, bir UK `en-GB` vurgusu ile İngilizce 'de ses kayıtlarının gerçekleştirilip yapıllamadığını seçin.
+Verilerinizi karşıya yüklemeye hazırsanız, [özel sesli portala](https://aka.ms/custom-voice-portal)gidin. Özel bir ses projesi oluşturun veya seçin. Projenin, doğru dil/yerel ayar ve cinsiyet özelliklerini, ses eğitimine yönelik olarak kullanmayı istediğiniz verilerle paylaşmalıdır. Örneğin, bir UK vurgu ile Ingilizce olarak işiniz durumunda `en-GB` ' yi seçin.
 
 **Veri** sekmesine gidin ve **verileri karşıya yükle**' ye tıklayın. Sihirbazda, hazırladığınız verilerle eşleşen doğru veri türünü seçin.
 
@@ -68,7 +68,7 @@ Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kul
 
 3.  Ardından, bu modeli tanımlamanızı sağlayacak bir **ad** ve **Açıklama** girin.
 
-    Bir adı dikkatle seçin. Buraya girdiğiniz ad, SSML girişinin bir parçası olarak konuşma sensimi için isteğiniz için kullandığınız adı kullanacaktır. Yalnızca harfler, rakamlar ve-, \_, ve (', ') gibi birkaç noktalama karakteri kullanılabilir. Farklı ses modelleri için farklı adlar kullanın.
+    Bir adı dikkatle seçin. Buraya girdiğiniz ad, SSML girişinin bir parçası olarak konuşma sensimi için isteğiniz için kullandığınız adı kullanacaktır. Yalnızca harfler, rakamlar ve-, \_ve (', ') gibi birkaç noktalama karakteri kullanılabilir. Farklı ses modelleri için farklı adlar kullanın.
 
     **Description** alanının yaygın bir kullanımı, modeli oluşturmak için kullanılan veri kümelerinin adlarını kaydetmek olur.
 
@@ -78,11 +78,11 @@ Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kul
     > Yinelenen ses adları eğitiminden kaldırılacak. Seçtiğiniz veri kümelerinin birden çok. zip dosyası arasında aynı ses adlarını içermediğinden emin olun.
 
     > [!TIP]
-    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri 6.000 farklı dıklardan toplam sayısı içeriyorsa, Istatistiksel parametrik Sensit tekniği aracılığıyla ses modelinizi eğitecaksınız. Eğitim verilerinizin toplam 6.000 farklı kuralı aşması durumunda, birleştirme birleştirme tekniğinin bulunduğu bir eğitim işlemini kapatıcaksınız. Normalde birleştirme teknolojisi, daha doğal ve daha yüksek uygunlukta sesli sonuçlara neden olabilir. En son sinir TTS teknolojisine sahip bir modeli eğitebilmeniz istiyorsanız, genel kullanıma açık [sinir sesine](language-support.md#neural-voices)bir dijital sesli eşdeğer üretebilmeniz Için [özel ses ekibine başvurun](mailto:speechsupport@microsoft.com) .
+    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri 6.000 farklı dıklardan toplam sayısı içeriyorsa, Istatistiksel parametrik Sensit tekniği aracılığıyla ses modelinizi eğitecaksınız. Eğitim verilerinizin toplam 6.000 farklı kuralı aşması durumunda, birleştirme birleştirme tekniğinin bulunduğu bir eğitim işlemini kapatıcaksınız. Normalde birleştirme teknolojisi, daha doğal ve daha yüksek uygunlukta sesli sonuçlara neden olabilir. En son sinir TTS teknolojisine sahip bir modeli eğitebilmeniz istiyorsanız, genel kullanıma açık [sinir sesine](language-support.md#neural-voices)bir dijital sesli eşdeğer üretebilmeniz Için [özel ses ekibine başvurun](https://go.microsoft.com/fwlink/?linkid=2108737) .
 
 5.  Ses modelinizi oluşturmaya başlamak için **eğitme** ' ye tıklayın.
 
-Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: İşleme, başarılı, başarısız oldu.
+Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: Işlem, başarılı, başarısız.
 
 Gösterilen durum, burada gösterildiği gibi, veri kümenizi bir ses modeline dönüştürme sürecini yansıtır.
 
@@ -100,6 +100,8 @@ Eğitim süresi, işlenen ses verilerinin hacmine bağlı olarak değişir. Tipi
 > [!NOTE]
 > Abonelik başına eğitime izin verilen maksimum ses modeli sayısı, ücretsiz abonelik (F0) kullanıcıları için 10 modeldir ve Standart abonelik (S0) kullanıcıları için 100.
 
+Sinir Voice eğitim özelliğini kullanıyorsanız, gerçek zamanlı akış senaryoları için en iyi duruma getirilmiş bir modeli eğitme veya zaman uyumsuz [Long-Audio birleştirmede](long-audio-api.md)en iyi duruma GETIRILMIŞ bir HD sinir modeli seçebilirsiniz.  
+
 ## <a name="test-your-voice-model"></a>Ses modelinizi test etme
 
 Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan önce test edebilirsiniz.
@@ -115,7 +117,7 @@ Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan �
     > [!NOTE]
     > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
 
-5.            **Oluştur**'a tıklayın.
+5.  **Oluştur**'a tıklayın.
 
 Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
 
@@ -143,5 +145,6 @@ Uç noktanın çevrimiçi testi, özel ses portalı aracılığıyla da kullanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Rehberi Ses örneklerinizi kaydedin](record-custom-voice-samples.md)
+* [Kılavuz: ses örneklerinizi kaydetme](record-custom-voice-samples.md)
 * [Metinden konuşmaya API başvurusu](rest-text-to-speech.md)
+* [Uzun ses API 'SI](long-audio-api.md)

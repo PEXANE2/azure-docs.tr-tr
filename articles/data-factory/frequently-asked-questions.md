@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880135"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481134"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory SSS
 Bu makale Azure Data Factory hakkında sık sorulan soruların yanıtlarını sağlar.  
@@ -55,7 +55,7 @@ Visual Data Developers ve veri mühendislerine yönelik Data Factory Web Kullan�
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Gelişmiş kullanıcılar için zengin platformlar arası SDK 'lar
 Data Factory v2, aşağıdakiler dahil olmak üzere en sevdiğiniz IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek ve izlemek için kullanılabilen zengin bir SDK kümesi sağlar:
-* Python SDK
+* Python SDK'sı
 * PowerShell CLı
 * C# SDK’sı
 
@@ -69,7 +69,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](tutorial-create-azure-ssis-runtime-portal.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK'ler
+### <a name="sdks"></a>SDK'lar
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -109,7 +109,7 @@ Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri 
 ### <a name="pipelines"></a>İşlem hatları
 Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görev gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
 
-### <a name="activities"></a>Olaylar
+### <a name="activities"></a>Etkinlikler
 Etkinlikler bir işlem hattındaki işleme adımını temsil eder. Örneğin, bir veri deposundan başka bir veri deposuna veri kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Benzer şekilde, verilerinizi dönüştürmek veya analiz etmek için bir Azure HDInsight kümesinde Hive sorgusu çalıştıran bir Hive etkinliği kullanabilirsiniz. Data Factory üç tür etkinliği destekler: veri taşıma etkinlikleri, veri dönüştürme etkinlikleri ve denetim etkinlikleri.
 
 ### <a name="datasets"></a>Veri kümeleri
@@ -168,7 +168,7 @@ Evet, parametreler Data Factory ' de birinci sınıf, üst düzey bir kavramdır
 Evet. İşlem hatlarında parametreler için varsayılan değerleri tanımlayabilirsiniz. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>İşlem hattındaki bir etkinlik bir işlem hattı çalıştırmasına geçirilen bağımsız değişkenleri kullanıyor musunuz? 
-Evet. İşlem hattının içindeki her etkinlik, işlem hattına aktarılan parametre değerini tüketebilir ve `@parameter` yapısıyla çalıştırılabilir. 
+Evet. İşlem hattının içindeki her etkinlik, işlem hattına aktarılan ve `@parameter` yapısıyla çalıştırılan parametre değerini tüketebilir. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Etkinlik çıktısı özelliği başka bir etkinlikte tüketilebilir mi? 
 Evet. Etkinlik çıktısı, `@activity` yapısıyla sonraki bir etkinlikte tüketilebilir.
@@ -191,6 +191,82 @@ Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etk
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı veri akışları için kullanılabilir mi?
 
 Şirket içinde barındırılan IR, şirket içi veya VM tabanlı veri kaynaklarına ve havuza veri almak veya buradan veri aktarmak için kopyalama etkinliğiyle birlikte kullanabileceğiniz bir ADF işlem hattı yapısıdır. Verileri bir kopyalama ile önce, ardından dönüştürme için veri akışı ve ardından bu dönüştürülmüş verileri şirket içi depoya geri taşımanız gerekiyorsa sonraki bir kopya.
+
+## <a name="wrangling-data-flows"></a>Wrangling veri akışları
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Denetimi veri akışı için desteklenen bölgeler nelerdir?
+
+Wrangling veri akışı şu anda şu bölgelerde oluşturulan veri fabrikaları 'nda destekleniyor:
+
+* Avustralya Doğu
+* Kanada Orta
+* Orta Hindistan
+* Orta ABD
+* Doğu ABD
+* Doğu ABD 2
+* Doğu Japonya
+* Kuzey Avrupa
+* Güneydoğu Asya
+* Orta Güney ABD
+* Birleşik Krallık Güney
+* Batı Orta ABD
+* Batı Avrupa
+* Batı ABD
+* Batı ABD 2
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Denetimi veri akışı ile ilgili sınırlamalar ve kısıtlamalar nelerdir?
+
+Veri kümesi adları yalnızca alfa sayısal karakterler içerebilir. Aşağıdaki veri depoları desteklenir:
+
+* Hesap anahtarı kimlik doğrulamasını kullanarak Azure Blob depolama 'daki DelimitedText veri kümesi
+* Hesap anahtarını veya hizmet sorumlusu kimlik doğrulamasını kullanarak Azure Data Lake Storage Gen2 içindeki DelimitedText veri kümesi
+* Hizmet sorumlusu kimlik doğrulamasını kullanarak Azure Data Lake Storage Gen1 içindeki DelimitedText veri kümesi
+* SQL kimlik doğrulaması kullanarak Azure SQL veritabanı ve veri ambarı. Aşağıdaki desteklenen SQL türlerini inceleyin. Veri ambarı için PolyBase veya hazırlama desteği yoktur.
+
+Şu anda, bağlı Service Key Vault tümleştirme, denetimi veri akışlarında desteklenmez.
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Eşleme ve denetimi veri akışları arasındaki fark nedir?
+
+Veri akışlarını eşleme, herhangi bir kodlama gerekmeden verileri ölçekteki dönüştürmek için bir yol sağlar. Bir dizi dönüştürme oluşturarak veri akışı tuvalinde bir veri dönüştürme işi tasarlayabilirsiniz. Herhangi bir sayıdaki kaynak dönüşümle başlayın ve ardından veri dönüştürme adımları. Sonuçlarınızı bir hedefe eklemek için veri akışınızı bir havuz ile doldurun. Veri akışı eşleme, veri ve kaynaklardaki bilinen ve bilinmeyen şemalar ile verileri eşlemede ve dönüştürmenin harika bir yoludur.
+
+Wrangling veri akışları, Spark yürütmesi aracılığıyla ölçekte Power Query çevrimiçi karma düzenleyici 'yi kullanarak çevik veri hazırlama ve araştırma yapmanıza olanak sağlar. Verilerin yükseliğiyle birlikte, bazı durumlarda yalnızca bir veri kümesini keşfetmeniz veya Gölü bir veri kümesi oluşturmanız gerekir. Bilinen bir hedefle eşlememeniz yok. Wrangling veri akışları, daha az resmi ve model tabanlı analiz senaryoları için kullanılır.
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power platform veri akışları ile denetimi veri akışları arasındaki fark nedir?
+
+Power platform veri akışları, kullanıcıların çok çeşitli veri kaynaklarından veri içeri aktarıp Common Data Service ve Azure Data Lake PowerApps uygulamaları, Power BI raporları veya akış öngörülerini oluşturmasına olanak tanır. Power platform veri akışları, Power BI ve Excel 'e benzer şekilde, kurulu Power Query veri hazırlama deneyimlerini kullanır. Power platform veri akışları bir kuruluş içinde kolayca yeniden kullanım sağlar ve düzenlemeyi otomatik olarak işler (örn. önceki biri yenilendiğinde başka bir veri akışına bağlı olan veri akışlarını otomatik olarak yenileme).
+
+Azure Data Factory (ADF), veri mühendislerinin ve vatandaşlık veri tümleştirmesinin karmaşık karma Ayıkla-Dönüştür-yükle (ETL) ve Ayıkla-yükle-Dönüştür (ELT) iş akışları oluşturmalarına olanak tanıyan bir yönetilen veri tümleştirme hizmetidir. ADF 'de wrangling veri akışı, kullanıcılara bulutta veri hazırlanmasını kolaylaştıran ve altyapı yönetimi gerektirmeyen herhangi bir veri boyutuna ölçeklendirebilen, kod içermeyen, sunucusuz bir ortama sahip olan kullanıcıları güçler. Verileri hazırlamak ve şekillendirmek için Power Query veri hazırlama teknolojisini (ayrıca Power platform veri akışları, Excel, Power BI) kullanır. Büyük veri tümleştirmesinin tüm karmaşıklıklarını ve ölçeklendirme güçlüklerine yönelik olarak tasarlanan, denetimi veri akışları, kullanıcıların Spark yürütme yoluyla verileri hızla kolayca hazırlamasına olanak sağlar. Kullanıcılar tarayıcı tabanlı arabirimimiz ile erişilebilir bir görsel ortamda dayanıklı veri işlem hatları oluşturabilir ve ADF 'nin Spark yürütmesinin karmaşıklıklarını işlemesini sağlar. İşlem hatlarınız için zamanlamalar oluşturun ve veri akışı yürütmelerini ADF izleme portalından izleyin. Veri kullanılabilirliği SLA 'larını ADF 'nin zengin kullanılabilirlik izleme ve uyarılarla kolayca yönetin ve akışlarınızı yönetilen bir ortamda kaydetmek ve yönetmek için yerleşik sürekli tümleştirme ve dağıtım özelliklerinden yararlanın. Veri akışlarınızı ayarlamanıza kadar mantığınızın planlandığını doğrulamak için uyarılar oluşturun ve yürütme planlarını görüntüleyin.
+
+### <a name="supported-sql-types"></a>Desteklenen SQL türleri
+
+Wrangling veri akışı, SQL 'de aşağıdaki veri türlerini destekler. Desteklenmeyen bir veri türü kullanmaya yönelik bir doğrulama hatası alacaksınız.
+
+* Kısadır
+* double
+* gerçek
+* float
+* Char
+* nchar
+* varchar
+* nvarchar
+* integer
+* int
+* sürümleri
+* boole
+* smallint
+* tinyint
+* bigint
+* Kalacağını
+* metin
+* date
+* datetime
+* datetime2
+* girişin
+* timestamp
+* benzersiz tanımlayıcı
+* xml
+
+Diğer veri türleri gelecekte desteklenecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası oluşturmaya yönelik adım adım yönergeler için aşağıdaki öğreticilere bakın:

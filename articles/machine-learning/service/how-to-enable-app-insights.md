@@ -11,14 +11,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c16b6d769aa191b0e8ac86768a7eafd35ccbc3b9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301034"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490001"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web hizmeti uç noktalarından verileri izleme ve toplama
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Service (AKS) veya Azure Container Instances (acı) içindeki Web hizmeti uç noktalarına dağıtılan modellerden veri toplamaya ve bunları izlemeye öğreneceksiniz. Bir uç noktanın giriş verilerini ve yanıtını toplamaya ek olarak şunları izleyebilirsiniz:
 * İstek ücretleri, yanıt süreleri ve hata oranları.
@@ -37,7 +38,7 @@ Bu makalede, Azure Application Insights etkinleştirerek Azure Kubernetes Servic
 
 ## <a name="web-service-input-and-response-data"></a>Web hizmeti giriş ve yanıt verileri
 
-ML modeline ve tahmine yönelik girişlere karşılık gelen giriş ve yanıt, Azure Application Insights izlerinde `"model_data_collection"` ' a kaydedilir. Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir veya daha uzun bekletme veya daha fazla işleme için depolama hesabına [sürekli bir dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ayarlayabilirsiniz. Model verileri daha sonra etiketleme, yeniden eğitim, explainability, veri analizi veya diğer kullanımı ayarlamak için Azure ML hizmetinde kullanılabilir. 
+ML modeline ve tahmine yönelik girişlere karşılık gelen giriş ve yanıt, Azure Application Insights izlerinde ileti `"model_data_collection"`altında günlüğe kaydedilir. Bu verilere erişmek için doğrudan Azure Application Insights sorgulayabilir veya daha uzun bekletme veya daha fazla işleme için depolama hesabına [sürekli bir dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ayarlayabilirsiniz. Model verileri daha sonra etiketleme, yeniden eğitim, explainability, veri analizi veya diğer kullanımı ayarlamak için Azure ML hizmetinde kullanılabilir. 
 
 ## <a name="use-the-azure-portal-to-configure"></a>Yapılandırmak için Azure portal kullanın
 
@@ -47,7 +48,7 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 1. **Dağıtımlar** sekmesinde, Azure Application Insights etkinleştirmek istediğiniz hizmeti seçin.
 
-   [Dağıtım sekmesindeki ![Hizmet listesi](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [Dağıtımlar sekmesindeki hizmetlerin listesini ![](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. **Düzenle**’yi seçin.
 
@@ -55,7 +56,7 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 4. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu seçin.
 
-   [Tanılamayı etkinleştirmek için ![Seçili onay kutusu](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [Tanılamayı etkinleştirmek için seçili ![onay kutusu](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
 
@@ -67,14 +68,14 @@ Azure portal Azure Application Insights etkinleştirebilir ve devre dışı bır
 
 1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin. 
 
-   [Tanılamayı etkinleştirmek için ![Işaretsiz onay kutusu](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [Tanılamayı etkinleştirmek için ![temizlenmiş onay kutusu](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
  
 ## <a name="use-python-sdk-to-configure"></a>Yapılandırmak için Python SDK 'sını kullanma 
 
 ### <a name="update-a-deployed-service"></a>Dağıtılan bir hizmeti güncelleştirme
-1. Çalışma alanınızdaki hizmeti belirler. @No__t-0 değeri, çalışma alanınızın adıdır.
+1. Çalışma alanınızdaki hizmeti belirler. `ws` değeri, çalışma alanınızın adıdır.
 
     ```python
     from azureml.core.webservice import Webservice
@@ -112,35 +113,68 @@ Azure Application Insights 'yi devre dışı bırakmak için aşağıdaki kodu k
 <service_name>.update(enable_app_insights=False)
 ```
     
+## <a name="use-studio-to-configure"></a>Yapılandırmak için Studio 'yu kullanın
+
+Azure Machine Learning Studio 'da Application Insights etkinleştirebilir ve devre dışı bırakabilirsiniz.
+
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da, çalışma alanınızı açın.
+
+1. **Dağıtımlar** sekmesinde Application Insights etkinleştirmek istediğiniz hizmeti seçin.
+
+   [Dağıtımlar sekmesindeki hizmetlerin listesini ![](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+
+3. **Düzenle**’yi seçin.
+
+   [![Düzenle düğmesi](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+4. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu seçin.
+
+   [Tanılamayı etkinleştirmek için seçili ![onay kutusu](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+
+1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
+
+### <a name="disable"></a>Devre dışı bırakma
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da, çalışma alanınızı açın.
+1. **Dağıtımlar**' ı seçin, hizmeti seçin ve **Düzenle**' yi seçin.
+
+   [![Düzenle düğmesini kullanma](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+1. **Gelişmiş ayarlar**' da **Appınsights tanılamayı etkinleştir** onay kutusunu temizleyin. 
+
+   [Tanılamayı etkinleştirmek için ![temizlenmiş onay kutusu](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+
+1. Değişiklikleri uygulamak için ekranın alt kısmındaki **Güncelleştir** ' i seçin. 
+ 
+
 ## <a name="evaluate-data"></a>Verileri değerlendir
 Hizmetinizin verileri, Azure Application Insights hesabınızda, Azure Machine Learning ile aynı kaynak grubu içinde depolanır.
 Görüntülemek için:
-1. [Azure portal](https://portal.azure.com)Machine Learning hizmet çalışma alanınıza gidin. Azure Application Insights bağlantısına tıklayın.
+1. [Azure Machine Learning Studio](https://ml.azure.com) 'daki Machine Learning hizmet çalışma alanınıza gidin ve Application Insights bağlantısına tıklayın.
 
-    [![Appınsi12sloc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Appınsi, Sloc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
 1. Hizmetinizin temel ölçüm kümesini görmek için **genel bakış** sekmesini seçin.
 
-   [![Genel bakış](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![genel bakış](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Web hizmeti giriş ve yanıt yüklerinizi görmek için **analiz** ' i seçin.
-1. Şema bölümünde **izlemeler** ' ı seçin ve izlemelerinizi `"model_data_collection"` iletisiyle filtreleyin. Özel boyutlarda girişleri, tahminleri ve diğer ilgili ayrıntıları görebilirsiniz.
+1. Şema bölümünde **izlemeler** ' ı seçin ve izleme `"model_data_collection"`ileti ile filtreleyin. Özel boyutlarda girişleri, tahminleri ve diğer ilgili ayrıntıları görebilirsiniz.
 
-   [![Model verileri](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+   [Model verileri ![](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
 3. Özel izlemelerinizi görmek için **analiz**' ı seçin.
 4. Şema bölümünde **izlemeler**' ı seçin. Sonra sorgunuzu çalıştırmak için **Çalıştır** ' ı seçin. Veriler bir tablo biçiminde görünmelidir ve Puanlama dosyanızdaki özel çağrılarınız ile eşleşmelidir. 
 
-   [![özel izlemeler](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [Özel izlemeler ![](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Azure Application Insights kullanma hakkında daha fazla bilgi edinmek için bkz. [Application Insights nedir?](../../azure-monitor/app/app-insights-overview.md).
 
 ## <a name="export-data-for-further-processing-and-longer-retention"></a>Daha fazla işleme ve daha uzun bekletme için verileri dışarı aktarma
 
-Azure Application Insights ' [sürekli dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ' yı, daha uzun bir saklama 'nin ayarlandığı desteklenen bir depolama hesabına ileti göndermek için kullanabilirsiniz. @No__t-0 iletileri JSON biçiminde depolanır ve model verilerini ayıklamak için kolayca ayrıştırılabilir. Azure Data Factory, Azure ML işlem hatları veya diğer veri işleme araçları, verileri gerektiği şekilde dönüştürmek için kullanılabilir. Verileri dönüştürdüğünü daha sonra Azure Machine Learning hizmet çalışma alanıyla bir veri kümesi olarak kaydedebilirsiniz.
+Azure Application Insights ' [sürekli dışarı aktarma](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) ' yı, daha uzun bir saklama 'nin ayarlandığı desteklenen bir depolama hesabına ileti göndermek için kullanabilirsiniz. `"model_data_collection"` iletileri JSON biçiminde depolanır ve model verilerini ayıklamak için kolayca ayrıştırılabilir. Azure Data Factory, Azure ML işlem hatları veya diğer veri işleme araçları, verileri gerektiği şekilde dönüştürmek için kullanılabilir. Verileri dönüştürdüğünü daha sonra Azure Machine Learning çalışma alanıyla bir veri kümesi olarak kaydedebilirsiniz. Bunu yapmak için bkz. [veri kümesi oluşturma ve kaydetme](how-to-create-register-datasets.md).
 
-   [![Sürekli dışarı aktarma](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
+   [Sürekli dışarı aktarma ![](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
 
 
 ## <a name="example-notebook"></a>Örnek Not defteri

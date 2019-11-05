@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/4/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d3cf20e7e950aed01c6a0dc5a4ea95a81f815d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dedd9f3458118117546a900aa1a2c8c5aa627100
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802573"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473731"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)
 Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin güvenli Web API 'Lerine erişmek için Microsoft Identity platform uç noktasından [belirteç](developer-glossary.md#security-token) almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'leri, üçüncü taraf Web API 'Leri veya kendi Web API 'niz olabilir. MSAL, birçok farklı uygulama mimarilerini ve platformunu destekleyen .NET, JavaScript, Android ve iOS için kullanılabilir.
@@ -38,11 +38,11 @@ MSAL, çeşitli platformlar için tutarlı bir API ile belirteç almanın birço
 * Eyleme dönüştürülebilir özel durumlar, günlüğe kaydetme ve telemetri sunarak uygulamanızın sorunlarını gidermenize yardımcı olur.
 
 ## <a name="application-types-and-scenarios"></a>Uygulama türleri ve senaryolar
-MSAL kullanarak bir belirteç birçok uygulama türünden alınabilir: Web uygulamaları, Web API 'Leri, tek sayfalı uygulamalar (JavaScript), mobil ve yerel uygulamalar, Daemon 'ları ve sunucu tarafı uygulamalar. 
+MSAL kullanarak bir belirteç birçok uygulama türünden alınabilir: Web uygulamaları, Web API 'Leri, tek sayfalı uygulamalar (JavaScript), mobil ve yerel uygulamalar, Daemon 'ları ve sunucu tarafı uygulamalar.
 
 MSAL, aşağıdakiler dahil birçok uygulama senaryosunda kullanılabilir:
 
-* [Tek sayfalı uygulamalar (JavaScript)](scenario-spa-overview.md) 
+* [Tek sayfalı uygulamalar (JavaScript)](scenario-spa-overview.md)
 * [Kullanıcılara Web uygulaması oturumu açma](scenario-web-app-sign-user-overview.md)
 * [Web uygulaması oturumu açma ve Kullanıcı adına Web API 'SI çağırma](scenario-web-app-call-api-overview.md)
 * [Yalnızca kimliği doğrulanmış kullanıcıların erişebilmesi için Web API 'sini koruma](scenario-protected-web-api-overview.md)
@@ -54,12 +54,13 @@ MSAL, aşağıdakiler dahil birçok uygulama senaryosunda kullanılabilir:
 ## <a name="languages-and-frameworks"></a>Diller ve çerçeveler
 
 | Kitaplık | Desteklenen platformlar ve çerçeveler|
-| --- | --- | 
+| --- | --- |
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Evrensel Windows Platformu|
 | [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS, Ember. js veya Durandal. js gibi JavaScript/TypeScript çerçeveleri|
 | [Android için MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [İOS ve macOS için MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS ve macOS|
-| [MSAL4J Önizleme](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL Java (Önizleme)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
+| [MSAL Python (Önizleme)](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Python|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL ve MSAL arasındaki farklar
 

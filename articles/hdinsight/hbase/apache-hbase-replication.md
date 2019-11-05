@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağlarında HBase küme çoğaltmasını ayarlama-Azure HDInsight
+title: Sanal ağlarda HBase küme çoğaltması-Azure HDInsight
 description: Yük Dengeleme, yüksek kullanılabilirlik, sıfır kesinti süresi geçişi ve güncelleştirmeleri ve olağanüstü durum kurtarma için bir HDInsight sürümünden diğerine HBase çoğaltmasını ayarlamayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077176"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468418"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama
 
@@ -66,34 +66,34 @@ Ortamları ayarlamanıza yardımcı olması için bazı [Azure Resource Manager 
 
 **VNet 1**
 
-| Özellik | Value |
+| Özellik | Değer |
 |----------|-------|
-| Location | Batı ABD |
-| Sanal ağ adı | &lt;ClusterNamePrevix >-vnet1 |
+| Konum | Batı ABD |
+| VNet adı | &lt;ClusterNamePrevix >-vnet1 |
 | Adres alanı öneki | 10.1.0.0/16 |
 | Alt ağ adı | alt ağ 1 |
 | Alt ağ ön eki | 10.1.0.0/24 |
 | Alt ağ (ağ geçidi) adı | GatewaySubnet (değiştirilemez) |
 | Alt ağ (ağ geçidi) ön eki | 10.1.255.0/27 |
 | Ağ geçidi adı | vnet1gw |
-| Geçit türü | VPN |
+| Ağ Geçidi türü | VPN |
 | Ağ Geçidi VPN türü | RouteBased |
 | Ağ Geçidi SKU 'SU | Temel |
 | Ağ geçidi IP 'si | vnet1gwip |
 
 **VNet 2**
 
-| Özellik | Value |
+| Özellik | Değer |
 |----------|-------|
-| Location | East US |
-| Sanal ağ adı | &lt;ClusterNamePrevix >-vnet2 |
+| Konum | Doğu ABD |
+| VNet adı | &lt;ClusterNamePrevix >-vnet2 |
 | Adres alanı öneki | 10.2.0.0/16 |
 | Alt ağ adı | alt ağ 1 |
 | Alt ağ ön eki | 10.2.0.0/24 |
 | Alt ağ (ağ geçidi) adı | GatewaySubnet (değiştirilemez) |
 | Alt ağ (ağ geçidi) ön eki | 10.2.255.0/27 |
 | Ağ geçidi adı | vnet2gw |
-| Geçit türü | VPN |
+| Ağ Geçidi türü | VPN |
 | Ağ Geçidi VPN türü | RouteBased |
 | Ağ Geçidi SKU 'SU | Temel |
 | Ağ geçidi IP 'si | vnet1gwip |
@@ -118,15 +118,15 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     ssh sshuser@40.68.254.142
     ```
 
-    DNS `sshuser` sanal makinesini oluştururken belirttiğiniz SSH kullanıcı hesabı ile değiştirin.
+    `sshuser`, DNS sanal makinesini oluştururken belirttiğiniz SSH kullanıcı hesabı ile değiştirin.
 
     > [!NOTE]  
-    > `ssh` Yardımcı programını edinmeye yönelik çeşitli yollar vardır. Linux, Unix ve macOS 'ta, işletim sisteminin bir parçası olarak sağlanır. Windows kullanıyorsanız, aşağıdaki seçeneklerden birini göz önünde bulundurun:
+    > `ssh` yardımcı programını almanın çeşitli yolları vardır. Linux, Unix ve macOS 'ta, işletim sisteminin bir parçası olarak sağlanır. Windows kullanıyorsanız, aşağıdaki seçeneklerden birini göz önünde bulundurun:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Windows 10 ' da Ubuntu 'da Bash](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Git https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. Bağlama yüklemek için SSH oturumunda aşağıdaki komutları kullanın:
 
@@ -135,7 +135,7 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     sudo apt-get install bind9 -y
     ```
 
-3. Ad çözümleme isteklerini şirket içi DNS sunucunuza iletmek için bağlamayı yapılandırın. Bunu yapmak için, aşağıdaki metni `/etc/bind/named.conf.options` dosyanın içeriğiyle kullanın:
+3. Ad çözümleme isteklerini şirket içi DNS sunucunuza iletmek için bağlamayı yapılandırın. Bunu yapmak için, `/etc/bind/named.conf.options` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
     ```
     acl goodclients {
@@ -162,7 +162,7 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     ```
     
     > [!IMPORTANT]  
-    > `goodclients` Bölümündeki değerleri iki sanal ağın IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
+    > `goodclients` bölümündeki değerleri iki sanal ağın IP adresi aralığıyla değiştirin. Bu bölümde, bu DNS sunucusunun istekleri kabul ettiği adresler tanımlanmaktadır.
 
     Bu dosyayı düzenlemek için aşağıdaki komutu kullanın:
 
@@ -182,7 +182,7 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    Metin, bu sanal ağ için __DNS son ekidir.__ `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Bu değeri kaydedin çünkü daha sonra kullanılacaktır.
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` metin, bu sanal ağ için __DNS son ekidir__ . Bu değeri kaydedin çünkü daha sonra kullanılacaktır.
 
     DNS son ekini de diğer DNS sunucusundan bulmanız gerekir. Bunu bir sonraki adımda yapmanız gerekir.
 
@@ -197,7 +197,7 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     ```
 
     > [!IMPORTANT]  
-    > Öğesini diğer sanal ağın `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` DNS son ekine sahip olacak şekilde değiştirmelisiniz. Ve iletici IP 'si, diğer sanal ağdaki DNS sunucusunun özel IP adresidir.
+    > `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net`, diğer sanal ağın DNS son ekine sahip olacak şekilde değiştirmelisiniz. Ve iletici IP 'si, diğer sanal ağdaki DNS sunucusunun özel IP adresidir.
 
     Bu dosyayı düzenlemek için aşağıdaki komutu kullanın:
 
@@ -221,9 +221,9 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     ```
 
     > [!IMPORTANT]  
-    > Diğer `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` ağdaki DNS sanal makinesinin tam etki alanı adı (FQDN) ile değiştirin.
+    > `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net`, diğer ağdaki DNS sanal makinesinin tam etki alanı adı (FQDN) ile değiştirin.
     >
-    > Diğer `10.2.0.4` sanal ağdaki özel DNS sunucunuzun __iç IP adresi__ ile değiştirin.
+    > `10.2.0.4`, diğer sanal ağdaki özel DNS sunucunuzun __Iç IP adresi__ ile değiştirin.
 
     Yanıt aşağıdaki metne benzer şekilde görünür:
 
@@ -261,11 +261,11 @@ Aşağıdaki yapılandırmaya sahip iki sanal ağın her birinde bir [Apache HBa
 
 - **Kaynak grubu adı**: sanal ağları oluşturduğunuz kaynak grubu adını kullanın.
 - **Küme türü**: HBase
-- **Sürüm**: HBase 1.1.2 (HDI 3,6)
-- **Konum**: Sanal ağla aynı konumu kullanın.  Varsayılan olarak, vnet1 *Batı ABD*ve vnet2 *Doğu ABD*.
-- **Depolama alanı**: Küme için yeni bir depolama hesabı oluşturun.
-- **Sanal ağ** (portaldaki gelişmiş ayarlardan): Son yordamda oluşturduğunuz vnet1 seçin.
-- **Alt ağ**: Şablonda kullanılan varsayılan ad **subnet1**' dir.
+- **Sürüm**: HBase 1.1.2 (hdı 3,6)
+- **Konum**: sanal ağla aynı konumu kullanın.  Varsayılan olarak, vnet1 *Batı ABD*ve vnet2 *Doğu ABD*.
+- **Depolama**: küme için yeni bir depolama hesabı oluşturun.
+- **Sanal ağ** (portaldaki gelişmiş ayarlardan): son yordamda oluşturduğunuz vnet1 seçin.
+- **Alt ağ**: şablonda kullanılan varsayılan ad **subnet1**' dir.
 
 Ortamın doğru yapılandırıldığından emin olmak için, iki küme arasında headnode 'un FQDN 'sine ping atabilmelisiniz.
 
@@ -273,7 +273,7 @@ Ortamın doğru yapılandırıldığından emin olmak için, iki küme arasında
 
 Bir kümeyi çoğalttığınızda, çoğaltmak istediğiniz tabloları belirtmeniz gerekir. Bu bölümde, bazı verileri kaynak kümesine yüklersiniz. Sonraki bölümde, iki küme arasında çoğaltmayı etkinleştirecektir.
 
-Bir **kişi** tablosu oluşturmak ve tabloya bazı veriler eklemek için [Apache HBase öğreticisindeki yönergeleri izleyin: HDInsight](apache-hbase-tutorial-get-started-linux.md)'Ta Apache HBase kullanmaya başlayın.
+Bir **kişi** tablosu oluşturmak ve tabloya bazı veriler eklemek Için [Apache HBase öğreticisi: HDInsight 'Ta Apache HBase 'i kullanmaya başlama](apache-hbase-tutorial-get-started-linux.md)yönergelerini izleyin.
 
 ## <a name="enable-replication"></a>Çoğaltmayı etkinleştirme
 
@@ -281,15 +281,15 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
 
 **Azure portal HBase çoğaltmasını etkinleştirmek için**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Kaynak HBase kümesini açın.
 3. Küme menüsünde **betik eylemleri**' ni seçin.
 4. Sayfanın üst kısmında **Yeni Gönder**' i seçin.
 5. Aşağıdaki bilgileri seçin veya girin:
 
-   1. **Ad**: **Çoğaltmayı etkinleştir**' i girin.
-   2. **Bash betik URL 'si**: Girin **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
-   3. **Baş**: Bunun seçili olduğundan emin olun. Diğer düğüm türlerini temizleyin.
+   1. **Ad**: **çoğaltmayı etkinleştir**' i girin.
+   2. **Bash betik URL 'si**: **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** girin.
+   3. **Head**: bunun seçili olduğundan emin olun. Diğer düğüm türlerini temizleyin.
    4. **Parametreler**: Aşağıdaki örnek parametreler, tüm mevcut tablolar için çoğaltmayı etkinleştirir ve sonra kaynak kümeden tüm verileri hedef kümeye kopyalar:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
@@ -297,11 +297,11 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
       > [!NOTE]
       > Kaynak ve hedef küme DNS adı için FQDN yerine ana bilgisayar adı kullanın.
 
-6. **Oluştur**’u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
+6. **Oluştur**'u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
 
 Gerekli bağımsız değişkenler:
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |----|-----------|
 |-s,--src-Cluster | Kaynak HBase kümesinin DNS adını belirtir. Örneğin:-s hbsrccluster,--src-Cluster = hbsrccluster |
 |-d,--DST-Cluster | Hedef (çoğaltma) HBase kümesinin DNS adını belirtir. Örneğin:-s dsthbcluster,--src-Cluster = dsthbcluster |
@@ -310,7 +310,7 @@ Gerekli bağımsız değişkenler:
 
 İsteğe bağlı bağımsız değişkenler:
 
-|Name|Açıklama|
+|Ad|Açıklama|
 |----|-----------|
 |-su,--src-ambarı-Kullanıcı | Kaynak HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
 |-du,--DST-ambarı-Kullanıcı | Hedef HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
@@ -320,7 +320,7 @@ Gerekli bağımsız değişkenler:
 |-RPM,-Çoğalt-Phoenix-meta | Phoenix sistem tablolarında çoğaltmayı mümkün. <br><br>*Bu seçeneği dikkatli kullanın.* Bu betiği kullanmadan önce, çoğaltma kümelerinde Phoenix tablolarını yeniden oluşturmanızı öneririz. |
 |-h,--yardım | Kullanım bilgilerini görüntüler. |
 
-Betiğin bölümünde parametrelerin ayrıntılı bir açıklaması vardır. [](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) `print_usage()`
+[Betiğin](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) `print_usage()` bölümünde parametrelerin ayrıntılı bir açıklaması vardır.
 
 Betik eylemi başarıyla dağıtıldıktan sonra, hedef HBase kümesine bağlanmak için SSH 'yi kullanabilir ve sonra verilerin çoğaltıldığından emin olabilirsiniz.
 
@@ -348,22 +348,22 @@ Aşağıdaki listede bazı genel kullanım durumları ve bunların parametre aya
 
 Çoğaltma etkinleştirildikten sonra verileri kopyalamak veya taşımak için kullanılabilecek iki ayrı betik eylem betiği vardır:
 
-- [Küçük tablolar betiği](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (boyut olarak birkaç gigabayt olan tablolar ve genel kopyanın bir saatten az olması beklenir)
+- [Küçük tablolar Için komut dosyası](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (boyut olarak birkaç gigabayt ve genel kopyanın bir saatten kısa bir süre içinde tamamlanmasının bekleniyor)
 
-- [Büyük tablolar Için betik](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (kopyalamanın bir saatten uzun sürmemesi beklenen tabloların)
+- [Büyük tablolar Için komut dosyası](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (kopyalamanın bir saatten uzun sürmemesi beklenen tabloların)
 
 Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replication) bölümünde açıklanan yordamın aynısını izleyebilirsiniz. Aşağıdaki parametreleri kullanın:
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-Betiğin bölümünde parametrelerin ayrıntılı bir açıklaması vardır. [](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) `print_usage()`
+[Betiğin](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) `print_usage()` bölümünde parametrelerin ayrıntılı bir açıklaması vardır.
 
 ### <a name="scenarios"></a>Senaryolar
 
 - **Belirli tabloları (test1, test2 ve test3) Şu anda düzenlenen tüm satırlar Için Kopyala (geçerli zaman damgası)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  Veya
+  veya
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 
@@ -379,14 +379,14 @@ Betiğin bölümünde parametrelerin ayrıntılı bir açıklaması vardır. [](
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-Betiğin bölümünde parametrelerin ayrıntılı bir açıklaması vardır. [](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) `print_usage()`
+[Betiğin](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) `print_usage()` bölümünde parametrelerin ayrıntılı bir açıklaması vardır.
 
 ### <a name="scenarios"></a>Senaryolar
 
 - **Tüm tablolardaki çoğaltmayı devre dışı bırak**:
 
         -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
-  veya
+  or
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 

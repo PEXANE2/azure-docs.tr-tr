@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08e9656e3b899cbb6d4de733696175e8f31b0e66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792004"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479742"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Varlık tanıma Bilişsel Beceri
 
@@ -39,9 +39,8 @@ Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 |--------------------|-------------|
 | kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
 |defaultLanguageCode |  Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `de, en, es, fr, it`|
-|minimumPrecision | Kullanılmayan. Gelecekte kullanılmak üzere ayrılmıştır. |
-|ıncludetypelessentities | Metin, tanınmış bir varlık içeriyorsa, ancak desteklenen kategorilerden birine kategorilendiğinde true olarak ayarlandığında, `"entities"` karmaşık çıkış alanının bir parçası olarak döndürülür. 
-Bunlar iyi bilinen, ancak geçerli olarak desteklenen "kategorilerin" bir parçası olarak sınıflandırılmayan varlıklardır. "Windows 10" örneği, iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" bugün desteklenen kategorilerde değildir. Varsayılan değer `false` |
+|minimumPrecision | 0 ile 1 arasında bir değer. Güven puanı (`namedEntities` çıktısında) bu değerden düşükse, varlık döndürülmez. Varsayılan değer 0 ' dır. |
+|ıncludetypelessentities | Geçerli kategorilere uymayan iyi bilinen varlıkları tanımak istiyorsanız `true` olarak ayarlayın. Tanınan varlıklar `entities` karmaşık çıkış alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlık çıktısı alanına dahil edilir. Varsayılan değer `false` |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -65,7 +64,7 @@ Bunlar iyi bilinen, ancak geçerli olarak desteklenen "kategorilerin" bir parça
 | Tarih saat  | Her bir dizenin bir tarih/saat değerini temsil ettiği dizeler dizisi (metin içinde göründüğü gibi). |
 | adresleri | Her bir dizenin bir URL 'YI temsil ettiği dizelerin dizisi |
 | - | Her bir dizenin bir e-postayı temsil ettiği dizelerin dizisi |
-| namedEntities | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>category</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güven (şimdilik kullanılmıyor. -1 değerine ayarlanır)</li></ul> |
+| namedEntities | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>category</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (daha yüksek değer gerçek bir varlık olması anlamına gelir)</li></ul> |
 | varlıklar | Aşağıdaki alanlarla metinden ayıklanan varlıklar hakkında zengin bilgiler içeren karmaşık türlerin dizisi <ul><li> ad (gerçek varlık adı. Bu bir "normalleştirilmiş" formu temsil eder)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (varlık için Vikipedi sayfasına bağlantı)</li><li>Bingıd</li><li>tür (tanınan varlığın kategorisi)</li><li>Alt tür (yalnızca belirli kategoriler için kullanılabilir, bu varlık türünün daha ayrıntılı bir görünümünü sağlar)</li><li> Eşleşmeler (içeren karmaşık bir koleksiyon)<ul><li>metin (varlık için ham metin)</li><li>fark (konumun bulunduğu konum)</li><li>Uzunluk (ham varlık metninin uzunluğu)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Örnek tanım
@@ -76,6 +75,7 @@ Bunlar iyi bilinen, ancak geçerli olarak desteklenen "kategorilerin" bir parça
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -131,7 +131,7 @@ Bunlar iyi bilinen, ancak geçerli olarak desteklenen "kategorilerin" bir parça
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  

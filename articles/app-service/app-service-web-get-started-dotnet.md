@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240936"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471604"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure’da ASP.NET Core web uygulaması oluşturma
 
@@ -39,8 +39,8 @@ Bu öğreticiyi tamamlayabilmeniz için, **ASP.net ve Web geliştirme** iş yük
 
 Visual Studio 2019 zaten yüklüyse:
 
-- **Güncelleştirmeler için** **Yardım** > denetimi ' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
-- **Araçlar** > **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
+- **Güncelleştirmeler Için** **Yardım** > denetle ' i seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+- Araçlar **ve Özellikler al** > **Araçlar** ' a tıklayarak iş yükünü ekleyin.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
 
@@ -54,13 +54,13 @@ Aşağıdaki adımları izleyerek bir ASP.NET Core Web uygulaması oluşturun:
 
    ![Web uygulaması projenizi yapılandırma](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. Kimlik doğrulamanın **kimlik doğrulaması yok** olarak ayarlandığından emin olun ve başka bir seçenek seçili değildir. **Oluştur**’u seçin.
+1. Bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. Kimlik doğrulamanın **kimlik doğrulaması yok** olarak ayarlandığından emin olun ve başka bir seçenek seçili değildir. **Oluştur**'u seçin.
 
    ![Bu öğretici için ASP.NET Core Razor Pages seçin](./media/app-service-web-get-started-dotnet/aspnet-razor-pages-app.png)
 
     Azure’a herhangi bir türde ASP.NET Core web uygulaması dağıtabilirsiniz.
 
-1. Web uygulamasını yerel olarak çalıştırmak için Visual Studio **menüsünden hata ayıklama** > **olmadan Başlat** ' ı seçin.
+1. Web uygulamasını yerel olarak çalıştırmak için Visual Studio menüsünden **hata ayıkla** > **Başlat** ' ı seçin.
 
    ![Uygulamayı yerel olarak çalıştırma](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
@@ -95,12 +95,12 @@ Aşağıdaki adımları izleyerek bir ASP.NET Core Web uygulaması oluşturun:
    | Ayar | Önerilen Değer | Açıklama |
    |-|-|-|
    |App Service Planı| myAppServicePlan | App Service planının adı. |
-   | Location | Batı Avrupa | Web uygulamasının barındırıldığı veri merkezi. |
-   | Size | Ücretsiz | [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), barındırma özelliklerini belirler. |
+   | Konum | Batı Avrupa | Web uygulamasının barındırıldığı veri merkezi. |
+   | Boyut | Ücretsiz | [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), barındırma özelliklerini belirler. |
 
    ![App Service planı oluşturma](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 
-1. **Ad**alanına,,, `a-z`ve `A-Z` `0-9` yalnızcageçerlikarakterleriiçerenbenzersizbiruygulamaadıgirin.`-` Otomatik olarak oluşturulan benzersiz adı kabul edebilirsiniz. Web uygulamasının URL'si `http://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
+1. **Ad**alanına, yalnızca geçerli karakterleri içeren benzersiz bir uygulama adı girin `a-z`, `A-Z`, `0-9`ve `-`. Otomatik olarak oluşturulan benzersiz adı kabul edebilirsiniz. Web uygulamasının URL'si `http://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
 
    ![Uygulama adını yapılandırma](./media/app-service-web-get-started-dotnet/web-app-name-vs2019.png)
 
@@ -110,13 +110,13 @@ Sihirbaz tamamlandıktan sonra ASP.NET Core web uygulamasını Azure’da yayım
 
 ![Azure’da yayımlanmış ASP.NET web uygulaması](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
-**App Service yeni oluştur** sayfasında belirtilen uygulama adı, biçimdeki `http://<app_name>.azurewebsites.net`URL ön eki olarak kullanılır.
+**App Service yeni oluştur** sayfasında belirtilen uygulama adı, `http://<app_name>.azurewebsites.net`biçiminde URL ön eki olarak kullanılır.
 
 **Tebrikler!** ASP.NET Core Web uygulamanız Azure App Service canlı olarak çalışıyor.
 
 ## <a name="update-the-app-and-redeploy"></a>Uygulamayı güncelleştirme ve yeniden dağıtma
 
-1. **Çözüm Gezgini**' de, projeniz altında, **Sayfalar** > **Index. cshtml**dosyasını açın.
+1. **Çözüm Gezgini**, projenizin altında **Index. cshtml** > **Sayfalar** ' ı açın.
 
 1. İki `<div>` etiketini aşağıdaki kodla değiştirin:
 
@@ -139,17 +139,19 @@ Yayımlama tamamlandığında Visual Studio, web uygulamasının URL’si ile bi
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-1. Web uygulamasını yönetmek için <a href="https://portal.azure.com" target="_blank">Azure portalına</a> gidin.
+Web uygulamasını yönetmek için [Azure Portal](https://portal.azure.com)gidin ve **uygulama hizmetleri**' ni arayıp seçin.
 
-1. Sol menüden **uygulama hizmetleri**' ni seçin ve ardından Azure uygulamanızın adını seçin.
+![Uygulama hizmetlerini seçin](./media/app-service-web-get-started-dotnet/app-services.png)
 
-   ![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
+**Uygulama hizmetleri** sayfasında, Web uygulamanızın adını seçin.
 
-   Web uygulamanızın Genel Bakış sayfasını görürsünüz. Burada, tarama, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetimi yapabilirsiniz.
+![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
 
-   ![Azure portal App Service](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+Web uygulamanızın Genel Bakış sayfasını görürsünüz. Burada, tarama, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetimi yapabilirsiniz.
 
-   Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
+![Azure portal App Service](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+
+Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

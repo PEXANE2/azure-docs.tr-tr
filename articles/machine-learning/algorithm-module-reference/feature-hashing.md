@@ -1,7 +1,7 @@
 ---
 title: Özellik karma modülü başvurusu
-titleSuffix: Azure Machine Learning service
-description: Metin verilerini kullanmak için Azure Machine Learning hizmetinde Özellik karma modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Metin verilerini korlaleştirmek için Azure Machine Learning Özellik karma modülünü kullanmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170882"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497824"
 ---
 # <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında (Önizleme) bulunan bir modül açıklanmaktadır.
 
 Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
@@ -33,35 +33,35 @@ Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel a
 |Kullanıcı metni|Yaklaşım|
 |--------------|---------------|
 |Bu kitabı sevdim|3|
-|Bu kitabı aldım|1\.|
+|Bu kitabı aldım|1|
 |Bu kitap harika|3|
 |Sevdiğim kitaplar|2|
 
 Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin, bu veri kümesi için bigram listesi şuna benzer olacaktır:
 
-|Terim (bigram)|Sıklık|
+|Terim (bigram)|Frequency|
 |------------|---------------|
 |Bu kitap|3|
-|Sevdim|1\.|
-|Ben|1\.|
-|Sevdiğim|1\.|
+|Sevdim|1|
+|Ben|1|
+|Sevdiğim|1|
 
 N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigram seçerseniz, tek tek gram da hesaplanır. Sözlük aşağıdaki gibi tek terimleri de içerir:
 
-|Terim (tek gram)|Sıklık|
+|Terim (tek gram)|Frequency|
 |------------|---------------|
 |Kitabın|3|
 |I|3|
-|Kitap|1\.|
-|sayfası|1\.|
+|kitap|1|
+|bulunamadı|1|
 
 Sözlük derlendikten sonra, özellik karma modülü sözlük koşullarını karma değerlerine dönüştürür. Daha sonra her durumda bir özelliğin kullanılıp kullanılmadığını hesaplar. Her metin verisi satırı için, modül bir sütun kümesi, her karma özellik için bir sütun verir.
 
 Örneğin, karma olduktan sonra Özellik sütunları şuna benzeyebilir:
 
-|Derecelendirme|Karma Özellik 1|Karma özelliği 2|Karma özellik 3|
+|Derecesiyle|Karma Özellik 1|Karma özelliği 2|Karma özellik 3|
 |-----|-----|-----|-----|
-|4|1\.|1|0|
+|4|1|1|0|
 |5|0|0|0|
 
 * Sütundaki değer 0 ise, satır karma özelliği içermiyordu.
@@ -73,7 +73,7 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olm
 
 ## <a name="configure-the-feature-hashing-module"></a>Özellik karma modülünü yapılandırma
 
-1.  Bir görsel arabirimde Özellik karma modülünü denemenize ekleyin.
+1.  Tasarımcı 'daki işlem hattınızı Özellik karma modülünü ekleyin.
 
 1. Çözümlemek istediğiniz metni içeren veri kümesini bağlayın.
 
@@ -94,7 +94,7 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olm
 
     Örneğin, 3, unigram, bigram ve trigram girerseniz.
 
-1. Denemeyi çalıştırın.
+1. İşlem hattını çalıştırma.
 
 ## <a name="results"></a>Sonuçlar
 
@@ -102,8 +102,8 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olm
 
 |Sütun adı 1|Sütun türü 2|
 |-------------------|-------------------|
-|KULLANICI METNI|Özgün veri sütunu|
-|YAKLAŞIM|Özgün veri sütunu|
+|Kullanıcı METNI|Özgün veri sütunu|
+|YAKLAŞıM|Özgün veri sütunu|
 |USERTEXT-karma Özellik 1|Karma özellik sütunu|
 |USERTEXT-karma özelliği 2|Karma özellik sütunu|
 |USERTEXT-karma özelliği n|Karma özellik sütunu|
@@ -127,8 +127,8 @@ Aşağıdaki en iyi yöntemler, özellik karma modülünden en iyi şekilde yara
     * Noktalama işaretleri ve özel karakterlerin kaldırılması
     * Kesintilerinden kaynaklanan  
 
-Herhangi bir çözümde uygulanacak en uygun ön işleme yöntemi kümesi, etki alanı, sözlük ve iş gereksinimlerinize bağlıdır. Hangi metin işleme yöntemlerinin en etkili olduğunu görmek için verilerinize denemeler yapın.
+Herhangi bir çözümde uygulanacak en uygun ön işleme yöntemi kümesi, etki alanı, sözlük ve iş gereksinimlerinize bağlıdır. hangi metin işleme yöntemlerinin en etkili olduğunu görmek için verilerinize sahip işlem hattı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
             
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın 

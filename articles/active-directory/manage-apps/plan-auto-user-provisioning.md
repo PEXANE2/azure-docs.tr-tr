@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758240"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473333"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik Kullanıcı sağlama dağıtımı planlayın
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) otomatik Kullanıcı sağlama, iş kuralların
 
 İşlevselliği daha iyi anlamak için, bkz. [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemlerini otomatik hale getirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) .
 
-## <a name="learn"></a>Öğrenme
+## <a name="learn"></a>Öğrenin
 
 Kullanıcı hazırlama, sürekli kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir.
 
@@ -63,7 +63,7 @@ Bu makale aşağıdaki terimleri kullanır:
 
 * Hedef sistem-Azure AD tarafından sağlanan kullanıcı deposu. Hedef sistem genellikle ServiceNow, Zscaler ve bolluk gibi bir SaaS uygulamasıdır. Hedef sistem, AD gibi bir şirket içi sistem de olabilir.
 
-* [Etki alanları arası kimlik yönetimi (SCıM) Için sistem](http://www.simplecloud.info/)) -Kullanıcı sağlama otomasyonuna izin veren bir açık standart. SCıM, Microsoft gibi kimlik sağlayıcıları ve Salesforce veya Kullanıcı kimlik bilgileri gerektiren diğer SaaS uygulamaları gibi hizmet sağlayıcıları arasında Kullanıcı kimlik verileri iletişim kurar.
+* [Etki alanları arası kimlik yönetimi (SCıM) Için sistem](https://aka.ms/scimoverview) -Kullanıcı sağlama otomasyonuna izin veren bir açık standart. SCıM, Microsoft gibi kimlik sağlayıcıları ve Salesforce veya Kullanıcı kimlik bilgileri gerektiren diğer SaaS uygulamaları gibi hizmet sağlayıcıları arasında Kullanıcı kimlik verileri iletişim kurar.
 
 ### <a name="training-resources"></a>Eğitim kaynakları
 
@@ -281,6 +281,8 @@ Başarılı bir [Başlangıç döngüsünden](https://docs.microsoft.com/azure/a
 * Sağlama işlemi, yüksek hata oranı nedeniyle karantinaya alınır ve otomatik olarak devre dışı bırakıldığında dört haftadan uzun bir süre boyunca karantinaya alınır.
 
 Bu olayları ve sağlama hizmeti tarafından gerçekleştirilen diğer tüm etkinlikleri gözden geçirmek için Azure AD [sağlama günlükleri](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)' ne bakın.
+
+Sağlama döngüsü süresini anlamak ve sağlama işinin ilerlemesini izlemek için [Kullanıcı hazırlama durumunu kontrol](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)edebilirsiniz.
 
 ### <a name="gain-insights-from-reports"></a>Raporlardan Öngörüler elde edin
 

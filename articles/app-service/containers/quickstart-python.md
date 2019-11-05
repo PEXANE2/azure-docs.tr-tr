@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 8c3015f78df1427af760f14bd948057643ef2a98
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990818"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470766"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -88,13 +88,13 @@ flask run
 
 ---
 
-Bir Web tarayıcısı açın ve `http://localhost:5000/` ' da örnek uygulamaya gidin. Uygulama **Merhaba Dünya!** iletisini görüntüler.
+Bir Web tarayıcısı açın ve `http://localhost:5000/`konumundaki örnek uygulamaya gidin. Uygulama **Merhaba Dünya!** iletisini görüntüler.
 
 ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
 Terminal pencerenizde, Web sunucusundan çıkmak için **Ctrl**+**C** tuşlarına basın.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure CLı, Azure kaynaklarını komut satırından sağlamak ve yönetmek için yerel terminalden kullandığınız birçok kullanışlı komut sağlar. Bir tarayıcıda Azure portal istediğiniz görevleri gerçekleştirmek için komutları kullanabilirsiniz. Yönetim işlemlerini otomatikleştirmek için betiklerdeki CLı komutlarını da kullanabilirsiniz.
 
@@ -207,17 +207,19 @@ Günlük akışını istediğiniz zaman durdurmak için `Ctrl`+`C`yazın.
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a>oluşturduğunuz uygulamayı yönetirsiniz. 
+Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri**' ni arayıp seçin.
 
-Sol menüden **uygulama hizmetleri**' ni seçin ve ardından Azure uygulamanızın adını seçin.
+![Azure portal uygulama hizmetleri 'ne gidin](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
+
+Azure uygulamanızın adını seçin.
 
 ![Azure portal App Services 'ta Python uygulamanıza gidin](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-Uygulamanızın genel bakış sayfası görüntülenir. Bu sayfada, gezinme, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
+Uygulamanızın genel bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
 
 ![Python uygulamanızı Azure portal genel bakış sayfasında yönetin](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
-Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar. 
+App Service menüsü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

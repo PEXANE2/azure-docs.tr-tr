@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/25/2019
+ms.openlocfilehash: 45d76328f4a5de4a5cf26b0a126825c1b0a906c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299690"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496953"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning kullanmayı öğrenin. Azure Kubernetes hizmeti, yüksek ölçekli üretim dağıtımları için uygundur. Aşağıdaki özelliklerde bir veya daha fazlasına ihtiyacınız varsa Azure Kubernetes hizmetini kullanın:
 
@@ -30,8 +31,8 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 
 Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlamak için iki yol vardır:
 
-* Azure Machine Learning SDK, Machine Learning CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
-* Azure Machine Learning çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning SDK, Machine Learning CLı veya Azure portal kullanılarak eklenebilir.
+* Azure Machine Learning SDK, Machine Learning CLı veya [Azure Machine Learning Studio 'yu](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
+* Azure Machine Learning çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning SDK, Machine Learning CLı veya Azure Machine Learning Studio kullanılarak iliştirilebilir.
 
 > [!IMPORTANT]
 > Oluşturma veya ekleme işlemi bir kerelik görevdir. Bir AKS kümesi çalışma alanına bağlandıktan sonra dağıtım için kullanabilirsiniz. Artık gerekmiyorsa AKS kümesini ayırabilirsiniz veya silebilirsiniz. Detaalı veya silindikten sonra, artık kümeye dağıtım yapamayacaktır.
@@ -52,7 +53,7 @@ Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir 
 
     Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
-- Bu makaledeki __CLI__ kod parçacıkları `inferenceconfig.json` belgesi oluşturduğunuzu varsayar. Bu belgeyi oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
+- Bu makaledeki __CLI__ kod parçacıkları `inferenceconfig.json` bir belge oluşturduğunuzu varsayar. Bu belgeyi oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
 ## <a name="create-a-new-aks-cluster"></a>Yeni bir AKS kümesi oluşturma
 
@@ -66,7 +67,7 @@ AKS kümesi oluşturma veya iliştirme, çalışma alanınız için tek seferlik
 Üretim yerine __geliştirme__, __doğrulama__ve __Test__ için bir aks kümesi oluşturmak istiyorsanız, geliştirme __testi__için __küme amacını__ belirtebilirsiniz.
 
 > [!WARNING]
-> @No__t-0 ' ı ayarlarsanız, oluşturulan küme üretim düzeyi trafiğe uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez. Geliştirme ve test kümeleri için en az 2 sanal CPU önerilir.
+> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`ayarlarsanız, oluşturulan küme üretim düzeyi trafiğe uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez. Geliştirme ve test kümeleri için en az 2 sanal CPU önerilir.
 
 Aşağıdaki örneklerde SDK ve CLı kullanarak yeni bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir:
 
@@ -91,9 +92,9 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> [@No__t-1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)için, `agent_count` ve `vm_size` için özel değerler seçerseniz ve `cluster_purpose` ' ü `DEV_TEST` değilse, `vm_size` ile çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir. Örneğin, 4 sanal CPU içeren bir `vm_size` ' ı ("Standard_D3_v2") kullanıyorsanız, 3 veya daha büyük bir @no__t seçmeniz gerekir.
+> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)için, `agent_count` ve `vm_size`için özel değerler seçerseniz ve `cluster_purpose` `DEV_TEST`değilse, `agent_count` çarpılarak 12 sanal CPU 'ya eşit veya daha büyük olduğundan emin olmanız gerekir.`vm_size` Örneğin, 4 sanal CPU içeren bir "Standard_D3_v2" `vm_size` kullanıyorsanız, 3 veya daha büyük bir `agent_count` seçmeniz gerekir.
 >
-> Azure Machine Learning SDK, bir AKS kümesini ölçeklendirmeye yönelik destek sağlamaz. Kümedeki düğümleri ölçeklendirmek için Azure portal AKS kümeniz için Kullanıcı arabirimini kullanın. Kümenin VM boyutunu değil, yalnızca düğüm sayısını değiştirebilirsiniz.
+> Azure Machine Learning SDK, bir AKS kümesini ölçeklendirmeye yönelik destek sağlamaz. Kümedeki düğümleri ölçeklendirmek için Azure Machine Learning Studio 'daki AKS kümeniz için Kullanıcı arabirimini kullanın. Kümenin VM boyutunu değil, yalnızca düğüm sayısını değiştirebilirsiniz.
 
 Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
 
@@ -124,9 +125,9 @@ Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1,14 ' den düşükse,
 > [!WARNING]
 > Bir çalışma alanına AKS kümesi eklerken, `cluster_purpose` parametresini ayarlayarak kümeyi nasıl kullanacağınızı tanımlayabilirsiniz.
 >
-> @No__t-0 parametresini ayarlamayın veya `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` ' i ayarlarsanız, kümede en az 12 sanal CPU kullanılabilir olmalıdır.
+> `cluster_purpose` parametresini ayarlamayın veya `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`ayarlarsanız, kümede en az 12 sanal CPU kullanılabilir olmalıdır.
 >
-> @No__t-0 ' ı ayarlarsanız, kümenin 12 sanal CPU 'ya sahip olması gerekmez. Geliştirme ve test için en az 2 sanal CPU önerilir. Ancak, geliştirme/test için yapılandırılan bir küme, üretim düzeyi trafiğe uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez.
+> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`ayarlarsanız, kümenin 12 sanal CPU 'ya sahip olması gerekmez. Geliştirme ve test için en az 2 sanal CPU önerilir. Ancak, geliştirme/test için yapılandırılan bir küme, üretim düzeyi trafiğe uygun değildir ve çıkarım sürelerini artırabilir. Geliştirme ve test kümeleri de hata toleransı garantisi vermez.
 
 Azure CLı veya portalını kullanarak bir AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -160,7 +161,7 @@ Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fa
 
 **CLı 'yi kullanma**
 
-CLı kullanarak var olan bir kümeyi eklemek için, var olan kümenin kaynak KIMLIĞINI almanız gerekir. Bu değeri almak için aşağıdaki komutu kullanın. @No__t-0 değerini AKS kümenizin adıyla değiştirin. @No__t-0 ' yı kümeyi içeren kaynak grubuyla değiştirin:
+CLı kullanarak var olan bir kümeyi eklemek için, var olan kümenin kaynak KIMLIĞINI almanız gerekir. Bu değeri almak için aşağıdaki komutu kullanın. `myexistingcluster`, AKS kümenizin adıyla değiştirin. `myresourcegroup`, kümeyi içeren kaynak grubuyla değiştirin:
 
 ```azurecli
 az aks show -n myexistingcluster -g myresourcegroup --query id
@@ -172,7 +173,7 @@ Bu komut aşağıdaki metne benzer bir değer döndürür:
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
 ```
 
-Mevcut kümeyi çalışma alanınıza eklemek için aşağıdaki komutu kullanın. @No__t-0 ' i önceki komutun döndürdüğü değerle değiştirin. @No__t-0 ' yı, çalışma alanınızı içeren kaynak grubuyla değiştirin. @No__t-0 değerini çalışma alanınızın adıyla değiştirin.
+Mevcut kümeyi çalışma alanınıza eklemek için aşağıdaki komutu kullanın. `aksresourceid`, önceki komutun döndürdüğü değerle değiştirin. `myresourcegroup`, çalışma alanınızı içeren kaynak grubuyla değiştirin. `myworkspace`, çalışma alanınızın adıyla değiştirin.
 
 ```azurecli
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
@@ -210,7 +211,7 @@ Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fa
 
 ### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. @No__t-0 değerini AKS işlem hedefinin adıyla değiştirin. @No__t-0 ' yı kayıtlı modelin adı ve sürümü ile değiştirin. Bu hizmeti vermek için `myservice` ' i adla değiştirin:
+CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. `myaks`, AKS işlem hedefinin adıyla değiştirin. `mymodel:1`, kayıtlı modelin adı ve sürümü ile değiştirin. `myservice`, bu hizmete verilecek adla değiştirin:
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -226,6 +227,69 @@ VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığı
 
 > [!IMPORTANT] 
 > VS Code aracılığıyla dağıtmak, AKS kümesinin önceden oluşturulmasını veya çalışma alanınıza eklenmesini gerektirir.
+
+## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Denetimli dağıtımı kullanarak AKS 'e model dağıtma (Önizleme)
+Uç noktaları kullanarak, denetimli bir biçimde model sürümlerini çözümleyin ve yükseltin. Tek bir uç noktanın arkasında 6 ' a kadar sürüm dağıtın ve her dağıtılan sürüme yönelik Puanlama trafiği yüzdesini yapılandırın. Uç noktaların ve dağıtılan sürümlerin işletimsel ölçümlerini görüntülemek için App Insights 'ı etkinleştirebilirsiniz.
+
+### <a name="create-an-endpoint"></a>Uç nokta oluşturma
+Modellerinizi dağıtmaya hazırsanız, bir Puanlama uç noktası oluşturun ve ilk sürümünüzü dağıtın. Aşağıdaki adımda, son noktanın SDK kullanarak nasıl dağıtılacağı ve oluşturulacağı gösterilmektedir. İlk dağıtım varsayılan sürüm olarak tanımlanacak, yani tüm sürümlerde belirtilmeyen trafik yüzdebirlik değeri varsayılan sürüme gidecektir.  
+
+```python
+import azureml.core,
+from azureml.core.webservice import AksEndpoint
+from azureml.core.compute import AksCompute
+from azureml.core.compute import ComputeTarget
+# select a created compute
+compute = ComputeTarget(ws, 'myaks')
+namespace_name= endpointnamespace 
+# define the endpoint and version name
+endpoint_name = "mynewendpoint",
+version_name= "versiona",
+# create the deployment config and define the scoring traffic percentile for the first deployment
+endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
+                                                              enable_app_insights = true, 
+                                                              tags = {'sckitlearn':'demo'},
+                                                              decription = testing versions,
+                                                              version_name = version_name,
+                                                              traffic_percentile = 20)
+ # deploy the model and endpoint
+ endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ ```
+
+### <a name="update-and-add-versions-to-an-endpoint"></a>Bir uç noktaya güncelleştirme ve sürüm ekleme
+
+Uç noktanıza başka bir sürüm ekleyin ve Puanlama trafiği yüzdebirlik sürümünü sürüme göre yapılandırın. İki tür sürüm, bir denetim ve bir işleme sürümü vardır. Tek bir denetim sürümüne karşı karşılaştırmanıza yardımcı olmak için birden çok işleme sürümü olabilir. 
+
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# add another model deployment to the same endpoint as above
+version_name_add = "versionb" 
+endpoint.create_version(version_name = version_name_add, 
+                        inference_config=inference_config,
+                        models=[model], 
+                        tags = {'modelVersion':'b'}, 
+                        description = "my second version", 
+                        traffic_percentile = 10)
+```
+
+Mevcut sürümleri güncelleştirin veya bir uç noktada silin. Sürümün varsayılan türünü, denetim türünü ve trafik Yüzdeliğini değiştirebilirsiniz. 
+ 
+ ```python
+from azureml.core.webservice import AksEndpoint
+
+# update the version's scoring traffic percentage and if it is a default or control type 
+endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
+                        description="my second version update", 
+                        traffic_percentile=40,
+                        is_default=True,
+                        is_control_version_type=True)
+
+# delete a version in an endpoint 
+endpoint.delete_version(version_name="versionb")
+
+```
+
 
 ## <a name="web-service-authentication"></a>Web hizmeti kimlik doğrulaması
 
@@ -259,7 +323,7 @@ Belirteç kimlik doğrulamasını etkinleştirmek için, bir dağıtım oluştur
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
 ```
 
-Belirteç kimlik doğrulaması etkinse, bir JWT belirteci almak için `get_token` yöntemini ve belirtecin sona erme süresini kullanabilirsiniz:
+Belirteç kimlik doğrulaması etkinleştirilirse, bir JWT belirteci almak için `get_token` yöntemini ve belirtecin süre sonu süresini kullanabilirsiniz:
 
 ```python
 token, refresh_by = service.get_token()
@@ -267,7 +331,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Belirtecin @no__t 0 zamanından sonra yeni bir belirteç istemeniz gerekecektir.
+> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir.
 >
 > Microsoft, Azure Machine Learning çalışma alanınızı Azure Kubernetes hizmet kümeniz ile aynı bölgede oluşturmanızı kesinlikle önerir. Bir belirteçle kimlik doğrulaması yapmak için Web hizmeti, Azure Machine Learning çalışma alanınızın oluşturulduğu bölgeye bir çağrı yapar. Çalışma alanınızın bölgesi kullanılamıyorsa, kümeniz çalışma alanınızdan farklı bir bölgedeyse, Web hizmetiniz için de bir belirteç getirimeyeceksiniz. Bu, çalışma alanınızın bölgesi yeniden kullanılabilir olana kadar belirteç tabanlı kimlik doğrulamanın kullanılamamasına neden olur. Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe ne kadar fazlaysa bir belirteci getirmek için bu daha uzun sürer.
 

@@ -1,29 +1,28 @@
 ---
-title: Görüntü analizi bilişsel arama yeteneği-Azure Search
-description: Azure Search bir zenginleştirme işlem hattında ımageanalysis bilişsel yeteneği kullanarak görüntü analizi aracılığıyla anlamsal metni ayıklayın.
-services: search
+title: Görüntü analizi Bilişsel Beceri
+titleSuffix: Azure Cognitive Search
+description: Azure Bilişsel Arama 'de bir AI zenginleştirme işlem hattındaki görüntü analizi bilişsel yeteneği kullanarak görüntü analizi aracılığıyla anlamsal metin ayıklayın.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 08/28/2019
 ms.author: luisca
-ms.openlocfilehash: e2c8f0519ffcbdbc2445d1fed2725b6f6b948cd1
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 4819f34e16efebcdab734270988382e086c44e36
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064065"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479708"
 ---
-#   <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
+# <a name="image-analysis-cognitive-skill"></a>Görüntü analizi Bilişsel Beceri
 
 **Görüntü analizi** özelliği, görüntü içeriğine göre zengin bir görsel özellikler kümesini ayıklar. Örneğin, bir görüntüden açıklamalı alt yazı oluşturabilir, Etiketler oluşturabilir veya ünlüleri ve yer işaretlerini tanımlayabilir. Bu beceri bilişsel hizmetler 'de [görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) tarafından sunulan makine öğrenimi modellerini kullanır. 
 
 > [!NOTE]
-> Küçük birimler (20 işlem altında) Azure Search ücretsiz olarak yürütülebilir, ancak daha büyük iş yükleri faturalanabilir bilişsel [Hizmetler kaynağı iliştirmesini](cognitive-search-attach-cognitive-services.md)gerektirir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Search içinde belge çözme aşamasının bir parçası olarak görüntü ayıklama için tahakkuk ücretleri. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
+> Küçük birimler (20 işlem altında) Azure Bilişsel Arama ücretsiz olarak yürütülebilir, ancak daha büyük iş yükleri faturalanabilir bilişsel [Hizmetler kaynağı iliştirmesini](cognitive-search-attach-cognitive-services.md)gerektirir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması [Azure Search fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -521,6 +520,6 @@ Aşağıdaki hata durumlarında hiçbir öğe ayıklanmaz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Önceden tanımlanmış yetenekler](cognitive-search-predefined-skills.md)
++ [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Dizin Oluşturucu oluştur (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

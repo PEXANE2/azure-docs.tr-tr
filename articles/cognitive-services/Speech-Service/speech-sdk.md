@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: ee505cc78c16d85640c7e13541272f1bafe30061
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799995"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468767"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK 'Sı hakkında
 
@@ -33,7 +33,7 @@ Windows için aşağıdaki dilleri destekliyoruz:
 
 * C#(UWP ve .NET) C++: konuşma SDK 'sı NuGet paketimizin en son sürümünü başvurabilir ve kullanabilirsiniz. Pakette 32-bit ve 64 bit istemci kitaplıkları ve yönetilen (.NET) kitaplıkları bulunur. SDK, Visual Studio 'da NuGet kullanılarak yüklenebilir. **Microsoft. Biliveservices. Speech**için arama yapın.
 
-* Java: yalnızca Windows x64 destekleyen konuşma SDK Maven paketimizin en son sürümünü kullanabilirsiniz. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ve bir bağımlılık olarak-1 @no__t başvurusu ekleyin.
+* Java: yalnızca Windows x64 destekleyen konuşma SDK Maven paketimizin en son sürümünü kullanabilirsiniz. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ekleyin ve bağımlılık olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` başvurun.
 
 ### <a name="linux"></a>Linux
 
@@ -65,7 +65,7 @@ sudo apt-get install libssl1.0.2 libasound2
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
   ```
 
-* Java: konuşma SDK Maven paketinizin en son sürümünü başvuru yapabilir ve kullanabilirsiniz. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ve bir bağımlılık olarak-1 @no__t başvurusu ekleyin.
+* Java: konuşma SDK Maven paketinizin en son sürümünü başvuru yapabilir ve kullanabilirsiniz. Maven projenizde, ek bir depo olarak `https://csspeechstorage.blob.core.windows.net/maven/` ekleyin ve bağımlılık olarak `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` başvurun.
 
 * C++: SDK 'Yı bir [. tar paketi](https://aka.ms/csspeech/linuxbinary) olarak indirin ve seçtiğiniz bir dizindeki dosyaları paketten çıkarın. Aşağıdaki tabloda SDK klasör yapısı gösterilmektedir:
 
@@ -81,17 +81,17 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ### <a name="android"></a>Android
 
-Android için Java SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir. @No__t-0 ' daki bir Maven deposunda barındırılıyor `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
+Android için Java SDK 'Sı, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android kitaplığı)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir. Paket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`olarak `https://csspeechstorage.blob.core.windows.net/maven/` bir Maven deposunda barındırılır.
 
 Android Studio projenizden paketi kullanmak için aşağıdaki değişiklikleri yapın:
 
-* Proje düzeyi Build. Gradle dosyasında, `repository` bölümüne aşağıdakini ekleyin:
+* Proje düzeyi Build. Gradle dosyasında aşağıdakini `repository` bölümüne ekleyin:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* Modül düzeyi Build. Gradle dosyasında, `dependencies` bölümüne aşağıdakini ekleyin:
+* Modül düzeyi Build. Gradle dosyasında aşağıdakini `dependencies` bölümüne ekleyin:
 
   ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
@@ -104,4 +104,4 @@ Java SDK 'sı Ayrıca [konuşma cihazları SDK 'sının](speech-devices-sdk.md)b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [Bkz. konuşmayı tanımaC#](quickstart-csharp-dotnet-windows.md)
+* [Bkz. konuşmayı tanımaC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

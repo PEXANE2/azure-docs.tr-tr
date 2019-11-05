@@ -5,19 +5,31 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/07/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b3147db8cda04ce7a71b35659eb91a20a06e0c52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028032"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489010"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Öğretici: Azure Sanal WAN kullanarak siteden siteye bağlantı oluşturma
 
 Bu öğreticide Sanal WAN kullanarak Azure'daki kaynaklarınıza bir IPsec/IKE (IKEv1 ve IKEv2) VPN bağlantısı üzerinden bağlanmayı öğreneceksiniz. Bu bağlantı türü için, şirket içinde yer alan ve kendisine atanmış dışarıya yönelik bir genel IP adresi atanmış olan bir VPN cihazı gerekir. Sanal WAN hakkında daha fazla bilgi için bkz. [Sanal WAN'a Genel Bakış](virtual-wan-about.md).
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Sanal WAN oluşturma
+> * Hub oluşturma
+> * Site oluşturma
+> * Bir siteyi hub 'a bağlama
+> * VPN sitesini bir hub 'a bağlama
+> * Bir sanal ağı bir hub'a bağlama
+> * Yapılandırma dosyasını indir
+> * Sanal WAN'ınızı görüntüleme
 
 > [!NOTE]
 > Birden fazla siteniz varsa bu yapılandırmayı oluşturmak için [Sanal WAN iş ortağı](https://aka.ms/virtualwan) kullanmanız gerekir. Ancak ağ bağlantıları ve kendi VPN cihazınızı yapılandırma konularında deneyimliyseniz bu yapılandırmayı kendiniz oluşturabilirsiniz.
@@ -25,76 +37,57 @@ Bu öğreticide Sanal WAN kullanarak Azure'daki kaynaklarınıza bir IPsec/IKE (
 
 ![Sanal WAN diyagramı](./media/virtual-wan-about/virtualwan.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
-
-> [!div class="checklist"]
-> * WAN oluşturma
-> * Site oluşturma
-> * Hub oluşturma
-> * Bir hub'ı bir siteye bağlama
-> * Uyumlu VNet oluşturma (henüz bir tane yoksa)
-> * Bir sanal ağı bir hub'a bağlama
-> * VPN cihazı yapılandırmasını indirme ve uygulama
-> * Sanal WAN'ınızı görüntüleme
-> * Kaynak durumunu görüntüleme
-> * Bir bağlantıyı izleme
-
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
-## <a name="openvwan"></a>1. sanal WAN oluşturma
+* Bağlanmak istediğiniz bir sanal ağınız var. Şirket içi ağlarınızın alt ağlarının hiçbirinin, bağlanmak istediğiniz sanal ağlarla çakışmadığından emin olun. Azure portal bir sanal ağ oluşturmak için [hızlı](../virtual-network/quick-create-portal.md)başlangıca bakın.
 
-Bir tarayıcıdan [Azure portalına](https://aka.ms/azurevirtualwanpreviewfeatures) gidin ve Azure hesabınızla oturum açın.
+* Sanal ağınızda sanal ağ geçidi yok. Sanal ağınızda bir ağ geçidi (VPN veya ExpressRoute) varsa, tüm ağ geçitlerini kaldırmanız gerekir. Bu yapılandırma, sanal ağın bunun yerine sanal WAN hub ağ geçidine bağlanmasını gerektirir.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+* Hub bölgenizden bir IP adresi aralığı edinin. Hub, sanal WAN tarafından oluşturulan ve kullanılan bir sanal ağ. Hub için belirttiğiniz adres aralığı, bağlandığınız mevcut sanal ağlarınızla çakışamaz. Ayrıca bağlandığınız şirket içi adres aralıklarıyla da çakışamaz. Şirket içi ağ yapılandırmanızda bulunan IP adresi aralıklarını tanımıyorsanız, sizin için bu ayrıntıları sağlayabilecek biriyle koordine edebilirsiniz.
 
-## <a name="site"></a>2. bir site oluşturun
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Fiziksel konumlarınıza karşılık gelecek sayıda site oluşturabilirsiniz. Örneğin İstanbul'da, Ankara'da ve İzmir'de birer şubeniz varsa üç ayrı site oluşturmanız gerekir. Bu siteler şirket içi VPN cihazı uç noktalarını içerir. Bu noktada siteniz için yalnızca bir özel adres alanı belirtebilirsiniz.
+## <a name="openvwan"></a>Sanal WAN oluşturma
 
-1. Oluşturduğunuz WAN'a tıklayın. WAN sayfasında, **sanal WAN mimarisi**altında **VPN siteleri ' ne tıklayarak VPN** siteleri sayfasını açın.
-2. **VPN siteleri** sayfasında **+Site oluştur**’a tıklayın.
-3. **Site oluştur** sayfasında aşağıdaki alanları doldurun:
+Bir tarayıcıdan Azure portal gidin ve Azure hesabınızla oturum açın.
 
-   * **Ad** -şirket içi sitenize başvurmak istediğiniz addır.
-   * **Genel IP adresi** -şirket içi SITENIZDE bulunan VPN CIHAZıNıN genel IP adresi.
-   * **Özel adres alanı**: Şirket içi sitenizde yer alan IP adres alanıdır. Bu adres alanını hedefleyen trafik yerel sitenize yönlendirilir.
-   * **Abonelik**: Aboneliği doğrulayın.
-   * **Kaynak Grubu**: Kullanmak istediğiniz kaynak grubudur.
-   * **Konum**
-4. Ek ayarları görüntülemek için **Gelişmiş içeriği göster**'e tıklayın. 
+1. Sanal WAN sayfasına gidin. Portalda **+Kaynak oluştur**’a tıklayın. Arama kutusuna **sanal WAN** yazın ve ENTER ' u seçin.
+2. Sonuçlardan **sanal WAN** ' ı seçin. Sanal WAN sayfasında, **Oluştur** ' a tıklayarak WAN sayfası oluştur sayfasını açın.
+3. **WAN oluştur** sayfasında, **temel bilgiler** sekmesinde aşağıdaki alanları girin:
 
-   BGP 'yi etkinleştirmek için **BGP** 'yi seçebilirsiniz. bu Işlem, Azure 'da bu site için oluşturulan tüm bağlantılarda BGP işlevlerini etkinleştirir. Sanal WAN üzerinde BGP 'yi yapılandırmak, Azure VPN ağ geçidinde BGP 'yi yapılandırmaya eşdeğerdir. Şirket içi BGP eşi adresiniz, cihaza VPN 'nizin genel IP adresi veya VPN sitesinin VNet adres alanı ile *aynı olmamalıdır.* BGP eşi IP 'niz için VPN cihazında farklı bir IP adresi kullanın. Bu aygıttaki geri döngü arabirimine atanmış bir adres olabilir. Ancak, bir APIPA (169,254) *olamaz* . *x*. *x*) adresi. Bu adresi, konumu temsil eden ilgili Yerel Ağ Geçidi’nde belirtin. BGP önkoşulları için bkz. [Azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   ![Sanal WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
-   İsterseniz **Cihaz bilgileri** (isteğe bağlı alanlar) alanını da doldurabilirsiniz. Bunun yapılması, Azure ekibinin daha sonra ek iyileştirme olanakları eklemek veya sorunu gidermenize yardımcı olmak için ortamınızı daha iyi anlamasına yardımcı olabilir.
-   
-5. **Onayla**'ya tıklayın.
-6. **Onayla**’ya tıkladıktan sonra durumu VPN siteleri sayfasında görüntüleyin. Site **Hazırlanıyor**’dan **Hazırlandı** durumuna geçecektir.
+   * **Abonelik**: Kullanmak istediğiniz aboneliği seçin.
+   * **Kaynak grubu** -yeni oluştur veya var olanı kullan.
+   * **Kaynak grubu konumu** -açılan listeden bir kaynak konumu seçin. WAN, global bir kaynaktır ve belirli bir bölgeyle sınırlı değildir. Ancak oluşturduğunuz WAN kaynağını daha kolay yönetmek ve bulmak için bir bölge seçmeniz gerekir.
+   * **Ad** -WAN 'nizi çağırmak istediğiniz adı yazın.
+   * **Şunu yazın:** Temel veya standart. Temel bir WAN oluşturursanız, yalnızca temel bir hub oluşturabilirsiniz. Temel hub 'lar yalnızca VPN siteden siteye bağlantı özelliğine sahiptir.
+4. Alanları doldurmayı tamamladıktan sonra, **gözden geçir + oluştur**' u seçin.
+5. Doğrulama başarılı olduktan sonra, sanal WAN oluşturmak için **Oluştur** ' u seçin.
 
-## <a name="hub"></a>3. bir hub oluşturun
+## <a name="hub"></a>Merkez oluşturma
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+Hub, siteden siteye, ExpressRoute veya Noktadan siteye işlevselliği için ağ geçitleri içerebilen bir sanal ağ. Hub oluşturulduktan sonra site eklemeseniz bile hub için ücretlendirilirsiniz. Sanal hub 'da siteden siteye VPN ağ geçidinin oluşturulması 30 dakika sürer.
 
-## <a name="associate"></a>4. siteleri hub ile ilişkilendirin
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-Hub'lar genellikle VNet’in bulunduğu bölge ile aynı bölgedeki siteler ile ilişkilendirilmelidir.
+## <a name="site"></a>Site oluşturma
 
-1. **VPN siteleri** sayfasında hub ile ilişkilendirmek istediğiniz site veya siteleri seçin, ardından **+Yeni hub ilişkilendirmesi**’ne tıklayın.
-2. **Bir veya birden fazla hub’ı olan ilişkili siteler** sayfasında aşağı açılan listeden bir hub seçin. **+İlişkilendirme ekle**’ye tıklayarak bir siteyi ek hub’lar ile ilişkilendirebilirsiniz.
-3. Ayrıca burada belirli bir **PSK** ekleyebilir veya varsayılanı kullanabilirsiniz.
-4. **Onayla**'ya tıklayın.
-5. **VPN siteleri** sayfasında bağlantı durumunu görüntüleyebilirsiniz.
+Artık fiziksel konumlarınıza karşılık gelen siteleri oluşturmaya hazırsınız. Fiziksel konumlarınıza karşılık gelecek sayıda site oluşturabilirsiniz. Örneğin İstanbul'da, Ankara'da ve İzmir'de birer şubeniz varsa üç ayrı site oluşturmanız gerekir. Bu siteler şirket içi VPN cihazı uç noktalarını içerir. Sanal bir WAN 'da, sanal hub başına en fazla 1000 site oluşturabilirsiniz. Birden çok hub olsaydıysanız, bu hub 'lardan her biri için 1000 oluşturabilirsiniz. Sanal WAN iş ortağı (bağlantı ekleme) CPE cihazı varsa, Azure 'a Otomasyon hakkında bilgi edinmek için bunlarla görüşün. Genellikle otomasyon, büyük ölçekli şube bilgilerini Azure 'a aktarmak ve CPE 'dan Azure sanal WAN VPN Gateway 'e bağlantı kurmak için basit tıklama deneyimi (burada Azure 'dan CPE iş ortaklarına olan otomasyon kılavuzunun bir bağlantısı) sağlar.
 
-## <a name="vnet"></a>5. sanal ağ oluşturma
+[!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-Zaten bir sanal ağınız yoksa, PowerShell veya Azure portal kullanarak hızlı bir şekilde bir tane oluşturabilirsiniz. Sanal ağınız varsa gerekli ölçütleri karşıladığından ve sanal ağ geçidi bulunmadığından emin olun.
+## <a name="connectsites"></a>VPN sitesini hub 'a bağlama
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+Bu adımda, VPN sitenizi hub 'a bağlayaöğreneceksiniz.
 
-## <a name="vnet"></a>6. VNet 'iniz bir hub 'a bağlanır
+[!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-Bu adımda hub'ınızla bir sanal ağ arasında eşleme bağlantısı oluşturacaksınız. Bu adımları bağlanmak istediğiniz tüm sanal ağlar için tekrarlayın.
+## <a name="vnet"></a>VNet 'i hub 'a bağlama
+
+Bu adımda, hub 'ınız ile VNet arasında bağlantı oluşturursunuz. Bu adımları bağlanmak istediğiniz tüm sanal ağlar için tekrarlayın.
 
 1. Sanal WAN'ınızın sayfasında **Sanal ağ bağlantıları**'na tıklayın.
 2. Sanal ağ bağlantısı sayfasında **+Bağlantı ekle**'ye tıklayın.
@@ -104,16 +97,16 @@ Bu adımda hub'ınızla bir sanal ağ arasında eşleme bağlantısı oluşturac
     * **Hub'lar**: Bu bağlantıyla ilişkilendirmek istediğiniz hub'ı seçin.
     * **Abonelik**: Aboneliği doğrulayın.
     * **Sanal ağ**: Bu hub'a bağlamak istediğiniz sanal ağı seçin. Sanal ağda önceden var olan bir sanal ağ geçidi bulunamaz.
-4. Eşleme bağlantısını oluşturmak için **Tamam**’a tıklayın.
+4. Sanal ağ bağlantısını oluşturmak için **Tamam** ' ı tıklatın.
 
-## <a name="device"></a>7. VPN yapılandırmasını indirin
+## <a name="device"></a>VPN yapılandırmasını indir
 
 Şirket içi VPN cihazınızı yapılandırmak için VPN cihazı yapılandırmasını kullanın.
 
 1. Sanal WAN'ınızın sayfasında **Genel bakış**'a tıklayın.
-2. Genel bakış sayfasının en üstünde **VPN yapılandırmasını indir**'e tıklayın. Azure, "microsoft-network-[konum]" kaynak grubunda bir depolama hesabı oluşturur ve burada konum, WAN'ın konumudur. Yapılandırmayı VPN cihazlarınıza uyguladıktan sonra bu depolama hesabını silebilirsiniz.
+2. **Hub-> VPNSite** sayfasının en üstünde **VPN yapılandırması 'nı indir**' e tıklayın. Azure, ' Microsoft-Network-[location] ' kaynak grubunda, konumun WAN konumunun bulunduğu bir depolama hesabı oluşturur. Yapılandırmayı VPN cihazlarınıza uyguladıktan sonra bu depolama hesabını silebilirsiniz.
 3. Dosya oluşturulduktan sonra bağlantıya tıklayarak indirebilirsiniz.
-4. Yapılandırmayı VPN cihazınıza uygulayın.
+4. Yapılandırmayı şirket içi VPN cihazınıza uygulayın.
 
 ### <a name="understanding-the-vpn-device-configuration-file"></a>VPN cihazı yapılandırma dosyasını anlama
 
@@ -255,45 +248,15 @@ Cihazınızı yapılandırma yönergelerine ihtiyaç duyarsanız [VPN cihazı ya
 
 * VPN cihazları sayfasındaki yönergeler Sanal WAN için yazılmamıştır ancak yapılandırma dosyasındaki Sanal WAN değerlerini kullanarak VPN cihazınızı el ile yapılandırabilirsiniz. 
 * Farklı yapılandırmaya sahip olduğundan VPN Gateway'e özgü indirilebilir cihaz yapılandırma betikleri Sanal WAN ile çalışmaz.
-* Yeni bir Sanal WAN hem IKEv1 hem de IKEv2’yi destekleyebilir.
+* Yeni bir sanal WAN, hem IKEv1 hem de IKEv2 destekleyebilir.
 * Sanal WAN yalnızca rota temelli cihazları ve cihaz yönergelerini kullanabilir.
 
-## <a name="viewwan"></a>8. sanal WAN 'nizi görüntüleyin
+## <a name="viewwan"></a>Sanal WAN 'nizi görüntüleme
 
 1. Sanal WAN'a gidin.
-2. Genel bakış sayfasında haritadaki her bir nokta bir hub'ı temsil eder. Hub sistem durumu özetini görüntülemek için noktalardan birinin üzerine gidin.
-3. Hub'lar ve bağlantılar bölümünde herhangi bir hub'ın durumunu, sitesini, bölgesini, VPN bağlantısı durumunu ve gelen/giden baytları görüntüleyebilirsiniz.
-
-## <a name="viewhealth"></a>9. kaynak sistem durumunu görüntüleyin
-
-1. WAN'ınıza gidin.
-2. WAN sayfanızın **Destek ve sorun giderme** bölümünde **Sistem durumu**'na tıklayın ve kaynağınızı görüntüleyin.
-
-## <a name="connectmon"></a>10. bir bağlantıyı izleme
-
-Bir Azure sanal makinesi ile uzak site arasındaki iletişimi izlemek için bir bağlantı oluşturun. Bağlantı izleyici oluşturma hakkında bilgi almak için bkz. [Ağ iletişimini izleme](~/articles/network-watcher/connection-monitor.md). Kaynak alan Azure'daki sanal makinenin IP adresi, hedef IP ise Sitenin IP adresidir.
-
-## <a name="cleanup"></a>11. Kaynakları Temizleme
-
-Bu kaynaklara artık ihtiyacınız kalmadığında, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz. "myResourceGroup" yerine kaynak grubunuzun adını yazın ve aşağıdaki PowerShell komutunu çalıştırın:
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+2. **Genel bakış** sayfasında, haritadaki her bir nokta bir hub 'ı temsil eder. Hub sistem durumu özetini, bağlantı durumunu ve gelen ve giden baytları görüntülemek için herhangi bir noktanın üzerine gelin.
+3. Hub 'Lar ve bağlantılar bölümünde hub durumu, VPN siteleri vb. görüntüleyebilirsiniz. Daha fazla ayrıntı için belirli bir hub adına tıklayıp VPN sitesine gidebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-> [!div class="checklist"]
-> * WAN oluşturma
-> * Site oluşturma
-> * Hub oluşturma
-> * Bir hub'ı bir siteye bağlama
-> * Bir sanal ağı bir hub'a bağlama
-> * VPN cihazı yapılandırmasını indirme ve uygulama
-> * Sanal WAN'ınızı görüntüleme
-> * Kaynak durumunu görüntüleme
-> * Bir bağlantıyı izleme
 
 Sanal WAN hakkında daha fazla bilgi için [Sanal WAN'a Genel Bakış](virtual-wan-about.md) sayfasına bakın.

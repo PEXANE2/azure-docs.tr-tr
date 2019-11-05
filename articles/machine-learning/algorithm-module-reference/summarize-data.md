@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 54d7235ef56a94c9c0e7b780c53cbd9791bf4f53
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694720"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492580"
 ---
 # <a name="summarize-data"></a>Verileri özetleme
 
-Bu makalede Azure Machine Learning görsel arabirimi modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
 Giriş tablosundaki her bir sütunu tanımlayan bir dizi standart istatistiksel ölçü oluşturmak için veri özetleme modülünü kullanın.
 
@@ -32,7 +32,7 @@ Modül her bir sütunun önemli puanlarını hesaplar ve giriş olarak girilen h
 
 ## <a name="how-to-configure-summarize-data"></a>Özet verileri yapılandırma  
 
-1. **Özet veri** modülünü ardışık düzene ekleyin. Bu modülü, görsel arabirimdeki **Istatistiksel işlevler** kategorisinde bulabilirsiniz.
+1. **Özet veri** modülünü ardışık düzene ekleyin. Bu modülü, tasarımcı 'daki **Istatistiksel işlevler** kategorisinde bulabilirsiniz.
 
 1. Rapor oluşturmak istediğiniz veri kümesini bağlayın.
 

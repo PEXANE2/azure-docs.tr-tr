@@ -1,5 +1,5 @@
 ---
-title: Web tarayıcısı kullanarak Apache Hadoop kümeleri oluşturma, Azure HDInsight
+title: Web tarayıcısı, Azure HDInsight kullanarak Apache Hadoop kümeleri oluşturma
 description: Bir Web tarayıcısı ve Azure portal kullanarak HDInsight için Linux 'ta Apache Hadoop, Apache HBase, Apache Storm veya Apache Spark kümeleri oluşturmayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/28/2019
-ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 3a64ba088a24f6202b74ae84ad7fb6c011d3bcbf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71677096"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494769"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal kullanarak HDInsight 'ta Linux tabanlı kümeler oluşturun
 
@@ -25,7 +25,7 @@ Azure portal, Microsoft Azure bulutta barındırılan hizmetler ve kaynaklar iç
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Azure aboneliği**. [HDInsight 'Ta Hadoop test Için Azure Ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)konusuna bakın.
+* **Bir Azure aboneliği**. [HDInsight 'Ta Hadoop test Için Azure Ücretsiz deneme sürümü alma](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)konusuna bakın.
 * **Modern bir Web tarayıcısı**. Azure portal HTML5 ve JavaScript kullanır. Daha eski web tarayıcılarında düzgün çalışmayabilir.
 
 ## <a name="create-clusters"></a>Küme oluşturma
@@ -34,9 +34,9 @@ Azure portal, küme özelliklerinin çoğunu gösterir. Azure Resource Manager �
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Sol taraftaki menüden **+ bir kaynak oluştur**  >  **analiz**  > **HDInsight**' a gidin.
+1. Sol taraftaki menüden **+ bir kaynak oluştur** >  **analiz** > **HDInsight**' a gidin.
 
     ![Azure portal yeni bir küme oluşturun](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Azure portal yeni bir küme oluşturma")
 

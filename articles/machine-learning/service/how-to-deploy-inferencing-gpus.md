@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 07/24/2019
-ms.openlocfilehash: d0e0c5601a6cddf936604df6d5b48b8bf48e7c8d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 2e088557bf61141d3ea3cbeb25d53f711a71fd97
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162442"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496854"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU ile çıkarım için derin öğrenme modeli dağıtma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, GPU özellikli bir modeli bir Web hizmeti olarak dağıtmak için Azure Machine Learning kullanma öğretilir. Bu makaledeki bilgiler, Azure Kubernetes Service (AKS) üzerinde bir model dağıtmaya dayalıdır. AKS kümesi, çıkarım için model tarafından kullanılan bir GPU kaynağı sağlar.
 
@@ -132,11 +133,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Bu dosya adı `score.py`. Giriş betikleri hakkında daha fazla bilgi için bkz. [nasıl ve nereye dağıtılacak](how-to-deploy-and-where.md).
+Bu dosya `score.py`olarak adlandırılmıştır. Giriş betikleri hakkında daha fazla bilgi için bkz. [nasıl ve nereye dağıtılacak](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>Conda ortamını tanımlama
 
-Conda ortamı dosyası hizmetin bağımlılıklarını belirtir. Hem model hem de giriş betiği için gereken bağımlılıkları içerir. Aşağıdaki YAML, bir TensorFlow modeli için ortamı tanımlar. Bu dağıtımda `tensorflow-gpu`kullanılan GPU 'yu kullanacak şekilde belirtir:
+Conda ortamı dosyası hizmetin bağımlılıklarını belirtir. Hem model hem de giriş betiği için gereken bağımlılıkları içerir. Aşağıdaki YAML, bir TensorFlow modeli için ortamı tanımlar. Bu dağıtımda kullanılan GPU 'YU kullanacak olan `tensorflow-gpu`belirtir:
 
 ```yaml
 name: project_environment
@@ -153,7 +154,7 @@ channels:
 - conda-forge
 ```
 
-Bu örnekte, dosya olarak `myenv.yml`kaydedilir.
+Bu örnekte, dosya `myenv.yml`olarak kaydedilir.
 
 ## <a name="define-the-deployment-configuration"></a>Dağıtım yapılandırmasını tanımlama
 
@@ -209,7 +210,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Nesne varsa ,`deployment_target`parametresi GPU sağlayan bir kümeye başvurmalıdır. `enable_gpu=True` `InferenceConfig` Aksi takdirde, dağıtım başarısız olur.
+> `InferenceConfig` nesnesi `enable_gpu=True`varsa `deployment_target` parametresi GPU sağlayan bir kümeye başvurmalıdır. Aksi takdirde, dağıtım başarısız olur.
 
 Daha fazla bilgi için bkz. [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)için başvuru belgeleri.
 

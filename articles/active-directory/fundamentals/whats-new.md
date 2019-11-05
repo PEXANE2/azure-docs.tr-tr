@@ -1,5 +1,5 @@
 ---
-title: Yenilikler neler? Sürüm notları-Azure Active Directory | Microsoft Docs
+title: Yenilikler Sürüm notları-Azure Active Directory | Microsoft Docs
 description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, kullanım dışı işlevler ve yaklaşan değişiklikler gibi Azure Active Directory yenilikleri öğrenin.
 services: active-directory
 author: eross-msft
@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6847384177e71c7f2b012e46211a5c09fa80fedb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7db35b89903de6c5027bb7ea445245d84b96d6ef
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149013"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473300"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -122,7 +122,7 @@ Bu yeni yetenekler hakkında daha fazla bilgi için, bkz. [Kurumsal uygulamalar 
 **Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** & Raporlamayı izleme
 
-Kuruluşunuzun kullanıcılarının olağandışı etkinlikleri denetlemek için en son oturum açma geçmişini görüntülemesine olanak sağlamak üzere yeni bir **oturum açma** sayfası (https://mysignins.microsoft.com) ) ekledik. Bu yeni sayfa, kullanıcılarınızın şunları görmesini sağlar:
+Kuruluşunuzun kullanıcılarının olağandışı etkinlikleri denetlemek için en son oturum açma geçmişini görüntülemesine olanak sağlamak üzere yeni bir **oturum açma** sayfası (https://mysignins.microsoft.com)) ekledik. Bu yeni sayfa, kullanıcılarınızın şunları görmesini sağlar:
 
 - Herkes parolasını tahmin etmeye çalışıyorsa.
 
@@ -434,7 +434,7 @@ Modern güvenlik raporları, aşağıdakiler de dahil olmak üzere eski sürüml
 - Risk durumu, kapsayan: risk, kapatılan, düzeltilen ve onaylanan güvenliği aşılmış
 - Risk ile ilgili yeni algılamalar (Azure AD Premium aboneler için kullanılabilir)
 
-Daha fazla bilgi için bkz. [riskli kullanıcılar](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report), [riskli oturum açma](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report)işlemleri ve [risk algılamaları](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections-report).
+Daha fazla bilgi için bkz. [riskli kullanıcılar](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users), [riskli oturum açma](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)işlemleri ve [risk algılamaları](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections).
 
 ---
 
@@ -466,7 +466,7 @@ Daha fazla bilgi için bkz. [nasıl çalıştığını öğrenin: Azure AD self 
 **Hizmet kategorisi:** Kimlik doğrulamaları (oturum açma)  
 **Ürün yeteneği:** Kullanıcı kimlik doğrulaması
 
-Azure AD kimlik doğrulama kitaplığı (ADAL.NET) sürüm 5.0.0-Preview sürümünden itibaren, uygulama geliştiricileri [Web uygulamaları ve Web API 'leri için hesap başına bir önbellek serileştirmelidir](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Aksi takdirde, `UserAssertion` ' in belirli kullanım durumlarının yanı da, bir dizi [yerinde akışı](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kullanan bazı senaryolar ayrıcalık yükselmesine neden olabilir. Bu güvenlik açığından kaçınmak için, ADAL.NET artık, için Microsoft kimlik doğrulama kitaplığı için DotNet (MSAL.NET) paylaşılan önbellek için Microsoft kimlik doğrulama kitaplığını yok sayar.
+Azure AD kimlik doğrulama kitaplığı (ADAL.NET) sürüm 5.0.0-Preview sürümünden itibaren, uygulama geliştiricileri [Web uygulamaları ve Web API 'leri için hesap başına bir önbellek serileştirmelidir](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Aksi takdirde, bazı belirli kullanım durumları ile birlikte, `UserAssertion`[Şirket adına](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)kullanan bazı senaryolar ayrıcalık yükselmesine neden olabilir. Bu güvenlik açığından kaçınmak için, ADAL.NET artık, için Microsoft kimlik doğrulama kitaplığı için DotNet (MSAL.NET) paylaşılan önbellek için Microsoft kimlik doğrulama kitaplığını yok sayar.
 
 Bu sorun hakkında daha fazla bilgi için bkz. [Azure Active Directory kimlik doğrulaması kitaplığı ayrıcalık yükselmesi güvenlik açığı](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258).
 
@@ -525,7 +525,7 @@ Daha fazla bilgi için bkz. [dinamik üyelik kurallarını yönetme](https://doc
 **Hizmet kategorisi:** Erişim Incelemeleri  
 **Ürün yeteneği:** Kimlik yönetimi
 
-Uygulamaların, grup üyelikleri ve uygulama atamaları için otomatik olarak erişim İncelemeleri oluşturmasına ve almasına izin veren `AccessReview.ReadWrite.Membership` Microsoft Graph yeni bir uygulama izni ekledik. Bu izin, zamanlanmış işleriniz veya Otomasyon kapsamında oturum açmış bir kullanıcı bağlamı gerekmeden kullanılabilir.
+Uygulamaların grup üyelikleri ve uygulama atamaları için otomatik olarak erişim gözden geçirmeleri oluşturmasına ve almasına izin veren yeni bir Microsoft Graph uygulama izni (`AccessReview.ReadWrite.Membership`) sunuyoruz. Bu izin, zamanlanmış işleriniz veya Otomasyon kapsamında oturum açmış bir kullanıcı bağlamı gerekmeden kullanılabilir.
 
 Daha fazla bilgi için bkz. [PowerShell blogu ile Microsoft Graph uygulama izinleri kullanarak Azure AD erişim incelemeleri oluşturma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-how-to-create-Azure-AD-access-reviews-using-Microsoft/m-p/807241).
 
@@ -551,7 +551,7 @@ Azure Izleyici 'yi ayarlama hakkında daha fazla bilgi için bkz. Azure [izleyic
 
 25 Eylül 2019 ' de, Kullanıcı güvenlik bilgilerini kaydetmek ve yönetmek ve yalnızca yeni ve [geliştirilmiş sürümü](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)açmak için eski, gelişmiş olmayan güvenlik bilgileri deneyimini kapatıyoruz. Bu, kullanıcılarınızın artık eski deneyimi kullanamayacağı anlamına gelir.
 
-Gelişmiş güvenlik bilgileri deneyimi hakkında daha fazla bilgi için,   ve [Kullanıcı belgelerimizin](https://aka.ms/securityinfoguide) [yönetici belgelerimize](https://aka.ms/securityinfodocs)bakın.
+Gelişmiş güvenlik bilgileri deneyimi hakkında daha fazla bilgi için [yönetici belgelerimize](https://aka.ms/securityinfodocs) ve [Kullanıcı belgelerimize](https://aka.ms/securityinfoguide)bakın.
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Bu yeni deneyimi etkinleştirmek için şunları yapmanız gerekir:
 
@@ -568,7 +568,7 @@ Gelişmiş güvenlik bilgileri deneyimi hakkında daha fazla bilgi için,   ve
     Ayarlarınızı kaydettikten sonra eski güvenlik bilgileri deneyimine artık erişemezsiniz.
 
 >[!Important]
->25 Eylül 2019 tarihinden önce bu adımları tamamlamazsanız, Azure Active Directory kiracınız gelişmiş deneyim için otomatik olarak etkinleştirilir. Sorularınız varsa lütfen registrationpreview@microsoft.com ' dan bizimle iletişime geçin.
+>25 Eylül 2019 tarihinden önce bu adımları tamamlamazsanız, Azure Active Directory kiracınız gelişmiş deneyim için otomatik olarak etkinleştirilir. Sorularınız varsa lütfen registrationpreview@microsoft.comadresinden bizimle iletişime geçin.
 
 ---
 
@@ -739,7 +739,7 @@ Tüm Azure AD yöneticileri artık riskli **Kullanıcılar** ve **riskli oturum 
 
 - Risk durumu, kapsayan: risk, kapatılan, düzeltilen ve onaylanan güvenliği aşılmış
 
-Daha fazla bilgi için bkz. [riskli kullanıcılar raporu](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report) ve [riskli oturum açma bileşenleri raporu](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report).
+Daha fazla bilgi için bkz. [riskli kullanıcılar raporu](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users) ve [riskli oturum açma bileşenleri raporu](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins).
 
 ---
 

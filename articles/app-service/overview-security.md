@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074111"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470088"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service güvenlik
 
@@ -40,16 +40,20 @@ Aşağıdaki bölümlerde App Service uygulamanızı tehditlere nasıl daha fazl
 
 ## <a name="https-and-certificates"></a>HTTPS ve sertifikalar
 
-App Service, uygulamalarınızı [https](https://wikipedia.org/wiki/HTTPS)ile korumanıza olanak sağlar. Uygulamanız oluşturulduğunda, varsayılan etki alanı adı (\<app_name >. azurewebsites. net) HTTPS kullanılarak zaten erişilebilir. [Uygulamanız için özel bir etki alanı yapılandırırsanız](app-service-web-tutorial-custom-domain.md), istemci tarayıcılarının özel etki alanınız IÇIN güvenli HTTPS bağlantıları yapabilmesi için [bunu özel bir sertifika ile de güvenli](app-service-web-tutorial-custom-ssl.md) hale getirebilirsiniz. Bunu iki şekilde yapabilirsiniz:
+App Service, uygulamalarınızı [https](https://wikipedia.org/wiki/HTTPS)ile korumanıza olanak sağlar. Uygulamanız oluşturulduğunda, varsayılan etki alanı adı (\<app_name >. azurewebsites. net) HTTPS kullanılarak zaten erişilebilir. [Uygulamanız için özel bir etki alanı yapılandırırsanız](app-service-web-tutorial-custom-domain.md), istemci tarayıcılarının özel etki alanınız IÇIN güvenli HTTPS bağlantıları yapabilmesi için, [bunu bir SSL sertifikası ile de güvenli](configure-ssl-bindings.md) hale getirin. App Service tarafından desteklenen çeşitli sertifika türleri vardır:
 
-- **App Service sertifikası** -doğrudan Azure 'da bir sertifika oluşturun. Sertifika, [Azure Key Vault](/azure/key-vault/)güvenlik altına alınır ve App Service uygulamanıza aktarılabilir. Daha fazla bilgi için, bkz. [Azure App Service için BIR SSL sertifikası satın alma ve yapılandırma](web-sites-purchase-ssl-web-site.md).
-- **Üçüncü taraf sertifikası** -güvenilir bir sertifika yetkilisinden satın aldığınız özel bir SSL sertifikasını karşıya yükleyin ve App Service uygulamanıza bağlayın. App Service hem tek etki alanı sertifikaları hem de joker sertifikaları destekler. Test amaçları için otomatik olarak imzalanan sertifikaları da destekler. Daha fazla bilgi için bkz. [var olan bir özel SSL sertifikasını Azure App Service bağlama](app-service-web-tutorial-custom-ssl.md).
+- Ücretsiz App Service yönetilen sertifika
+- App Service sertifikası
+- Üçüncü taraf sertifika
+- Azure Key Vault sertifika içeri aktarıldı
+
+Daha fazla bilgi için bkz. [Azure App SERVICE SSL sertifikası ekleme](configure-ssl-certificate.md).
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Güvenli olmayan protokoller (HTTP, TLS 1,0, FTP)
 
-Uygulamanızın tüm şifrelenmemiş (HTTP) bağlantılara karşı güvenliğini sağlamak için App Service HTTPS 'yi zorlamak için tek tıklamayla yapılandırma sağlar. Güvenli olmayan istekler uygulama kodunuza ulaşmadan önce kapalıdır. Daha fazla bilgi için bkz. [https 'Yi zorlama](app-service-web-tutorial-custom-ssl.md#enforce-https).
+Uygulamanızın tüm şifrelenmemiş (HTTP) bağlantılara karşı güvenliğini sağlamak için App Service HTTPS 'yi zorlamak için tek tıklamayla yapılandırma sağlar. Güvenli olmayan istekler uygulama kodunuza ulaşmadan önce kapalıdır. Daha fazla bilgi için bkz. [https 'Yi zorlama](configure-ssl-bindings.md#enforce-https).
 
-[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 artık [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)gibi sektör standartları tarafından güvenli olarak kabul edilmez. App Service, [TLS 1.1/1.2 'yi zorlayarak](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)güncel olmayan protokolleri devre dışı bırakmanızı sağlar.
+[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 artık [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)gibi sektör standartları tarafından güvenli olarak kabul edilmez. App Service, [TLS 1.1/1.2 'yi zorlayarak](configure-ssl-bindings.md#enforce-tls-versions)güncel olmayan protokolleri devre dışı bırakmanızı sağlar.
 
 App Service, dosyalarınızı dağıtmak için hem FTP hem de FTPS 'yi destekler. Ancak, tüm mümkünse, FTPS 'leri FTP yerine kullanılmalıdır. Bu protokollerin biri veya her ikisi kullanımda olmadığında, [bunları devre dışı bırakmanız](deploy-ftp.md#enforce-ftps)gerekir.
 
@@ -57,7 +61,7 @@ App Service, dosyalarınızı dağıtmak için hem FTP hem de FTPS 'yi destekler
 
 Varsayılan olarak, App Service uygulamanız internet 'ten gelen tüm IP adreslerinden gelen istekleri kabul eder, ancak bu erişimi, IP adreslerinin küçük bir alt kümesiyle sınırlayabilirsiniz. Windows üzerinde App Service, uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı sağlar. İzin verilen liste, tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir IP adresi aralığını içerebilir. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](app-service-ip-restrictions.md).
 
-Windows üzerinde App Service için, _Web. config_'ı yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dinamik IP \<güvenliği dynamicipsecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Windows üzerinde App Service için, _Web. config_'ı yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP güvenliği \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>İstemci kimlik doğrulaması ve yetkilendirme
 

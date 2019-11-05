@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673101"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491977"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
 
@@ -32,7 +32,7 @@ Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma s
 - Batı Avrupa
 - Kuzey Avrupa
 - Fransa Orta
-- Japonya Doğu
+- Doğu Japonya
 - Birleşik Krallık Güney
 - ABD Orta
 - ABD Doğu
@@ -42,6 +42,7 @@ Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma s
 FileStorage hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 
 - Batı Avrupa
+- ABD Doğu
 
 Microsoft, ek Azure bölgelerinde ZRS 'yi etkinleştirmeye devam etmektedir. Yeni bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
 
@@ -56,7 +57,7 @@ Bir bölge kullanılamaz duruma gelirse bile verilerinize hem okuma hem de yazma
 
 Bir bölge kullanılamadığında Azure, DNS yeniden işaretleme gibi ağ güncelleştirmelerini alır. Güncelleştirmeler tamamlanmadan önce verilerinize erişiyorsanız, bu güncelleştirmeler uygulamanızı etkileyebilir.
 
-ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bunun yerine, ZRS geçici olarak kullanılamaz duruma gelirse verileriniz için dayanıklılık sağlar. Bölgesel felate karşı koruma için Microsoft, coğrafi olarak yedekli depolama (GRS) kullanmanızı önerir. GRS hakkında daha fazla bilgi için bkz [. coğrafi olarak yedekli depolama (GRS): Azure depolama](storage-redundancy-grs.md)için çapraz bölgesel çoğaltma.
+ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bunun yerine, ZRS geçici olarak kullanılamaz duruma gelirse verileriniz için dayanıklılık sağlar. Bölgesel felate karşı koruma için Microsoft, coğrafi olarak yedekli depolama (GRS) kullanmanızı önerir. GRS hakkında daha fazla bilgi için bkz. [coğrafi olarak yedekli depolama (GRS): Azure depolama Için çapraz bölgesel çoğaltma](storage-redundancy-grs.md).
 
 ## <a name="converting-to-zrs-replication"></a>ZRS çoğaltmaya dönüştürme
 
@@ -90,7 +91,7 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz. Verilerinizi kaynak hesaptan farklı bir bölgede bulunan bir ZRS hesabına geçirmek istiyorsanız, el ile geçiş gerçekleştirmeniz gerekir.
 - Yalnızca standart depolama hesabı türleri dinamik geçişi destekler. Premium Depolama hesaplarının el ile geçirilmesi gerekir.
-- ZRS 'den LRS 'ye dinamik geçiş, GRS veya RA-GRS desteklenmez. Verileri yeni veya mevcut bir depolama hesabına el ile taşımanız gerekir.
+- ZRS 'den LRS 'ye dinamik geçiş, GRS veya RA-GRS desteklenmez. Verileri yeni veya mevcut depolama hesabına el ile taşımanız gerekir.
 - Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS 'ye geçirilemez. Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS ve ZRS seçenekleri arasında seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz. Kullanılabilirlik kümeleriyle tümleştirme için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 - Arşiv verileri olan LRS veya GRS hesapları ZRS 'ye geçirilemez.
 
@@ -99,14 +100,14 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
 2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun. **Hizmet** bölümünde **depolama hesabı yönetimi** ' ni ve ZRS 'ye dönüştürmek istediğiniz kaynağı seçin. 
 3. **İleri**’yi seçin. 
 4. **Sorun** bölümünün aşağıdaki değerlerini belirtin: 
-    - **Önem derecesi**: Varsayılan değeri olduğu gibi bırakın.
-    - **Sorun türü**: **Veri geçişini**seçin.
+    - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.
+    - **Sorun türü**: **veri geçişini**seçin.
     - **Kategori**: **ZRS 'ye geçir**' i seçin.
-    - **Başlık**: Açıklayıcı bir başlık yazın, örneğin, **ZRS hesabı geçişi**.
-    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ @ no__t-2 bölgesindeki [LRS, GRS] öğesinden ZRS 'ye geçmek istiyorum. 
+    - **Başlık**: Örneğin, **ZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
+    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_\_ bölgesindeki [LRS, GRS] öğesinden ZRS 'ye geçmek istiyorum. 
 5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi bir yardımı sağlar.
 
@@ -136,7 +137,7 @@ ZRS 'ye dinamik geçiş isteği göndermeden önce, uygulamanızın veya iş yü
 
 Verilerinizi kaynak hesabın bölgesinden farklı bir bölgede bulunan bir ZRS hesabına geçirmek istiyorsanız, el ile geçiş gerçekleştirmeniz gerekir.
 
-## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS klasik: Blok bloblarının artıklığı için eski bir seçenek
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS klasik: blok bloblarının artıklığı için eski bir seçenek
 > [!NOTE]
 > Microsoft, ZRS klasik hesaplarını 31 Mart 2021 ' de kullanımdan kaldırır ve geçirebilir. Kullanım dışı bırakmadan önce ZRS klasik müşterilerine daha fazla ayrıntı sunulacaktır. 
 >
@@ -146,7 +147,7 @@ ZRS klasik, verileri bir veya iki bölge içindeki veri merkezlerinde zaman uyum
 
 ZRS klasik, yalnızca genel amaçlı v1 (GPv1) depolama hesaplarında **blok Bloblar** için kullanılabilir. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
-ZRS hesabı verilerini LRS, ZRS klasik, GRS veya RA-GRS hesabına el ile geçirmek için aşağıdaki araçlardan birini kullanın: AzCopy, Azure Depolama Gezgini, Azure PowerShell veya Azure CLı. Ayrıca, Azure depolama istemci kitaplıklarından biriyle kendi geçiş çözümünüzü oluşturabilirsiniz.
+ZRS hesabı verilerini LRS, ZRS klasik, GRS veya RA-GRS hesabına el ile geçirmek için şu araçlardan birini kullanın: AzCopy, Azure Depolama Gezgini, Azure PowerShell veya Azure CLı. Ayrıca, Azure depolama istemci kitaplıklarından biriyle kendi geçiş çözümünüzü oluşturabilirsiniz.
 
 Ayrıca, ZRS Classic hesabınızı portalda ZRS 'ye veya ZRS 'nin kullanılabildiği bölgelerde Azure PowerShell veya Azure CLı 'yi kullanarak yükseltebilirsiniz. Azure portal ZRS 'ye yükseltmek için, hesabın **yapılandırma** bölümüne gidin ve **Yükselt**' i seçin:
 

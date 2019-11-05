@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f5b40e59a4ed2393e3b9912f8e4caa06ee267428
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757516"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482229"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
 
@@ -32,15 +32,15 @@ Başlamadan önce, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üze
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırın
 
 Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. **@No__t_1** veya **+ kaynak oluştur**' u seçin.
+1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
 2. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
 3. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
 
@@ -52,7 +52,7 @@ Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümde
 
 1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
 2. Kişisel masaüstü için uygun seçeneği belirleyin. **Evet**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
-3. Windows sanal masaüstü istemcilerinde oturum açabilen ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişebilen kullanıcıların virgülle ayrılmış bir listesini girin. Örneğin, user1@contoso.com atamak ve erişim user2@contoso.com istiyorsanız "user1@contoso.com, user2@contoso.com" yazın.
+3. Windows sanal masaüstü istemcilerinde oturum açabilen ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişebilen kullanıcıların virgülle ayrılmış bir listesini girin. Örneğin, user1@contoso.com atamak ve erişim user2@contoso.com istiyorsanız "user1@contoso.com,user2@contoso.com" yazın.
 4. Yeni **Oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
 5. **Konum**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
 6. **Tamam**’ı seçin.

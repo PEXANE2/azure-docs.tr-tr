@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803320"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473845"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -51,7 +51,7 @@ Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerek
 
 Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
-1. Uygulamayı atamak istediğiniz kapsam düzeyine gidin. Örneğin, abonelik kapsamında bir rol atamak için **tüm hizmetler** ve **abonelikler**' i seçin.
+1. Azure portal, uygulamayı atamak istediğiniz kapsam düzeyini seçin. Örneğin, abonelik kapsamında bir rol atamak için, **abonelikleri**arayıp seçin ya da **giriş** sayfasında **abonelikler** ' i seçin.
 
    ![Örneğin, abonelik kapsamında bir rol atayın](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -147,7 +147,7 @@ Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici 
 
 ### <a name="check-azure-subscription-permissions"></a>Azure abonelik izinlerini denetle
 
-Azure aboneliğinizde, bir role AD uygulaması atamak için hesabınızın `Microsoft.Authorization/*/Write` erişimi olması gerekir. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınız **katkıda bulunan** rolüne atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusunu bir role atamaya çalışırken bir hata alıyorsunuz.
+Azure aboneliğinizde, bir role AD uygulaması atamak için hesabınızın `Microsoft.Authorization/*/Write` erişimi olmalıdır. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınız **katkıda bulunan** rolüne atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusunu bir role atamaya çalışırken bir hata alıyorsunuz.
 
 Abonelik izinlerinizi denetlemek için:
 

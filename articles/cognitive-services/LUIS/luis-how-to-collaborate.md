@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 004da6c84e6226c4de3114d32cde826cd167e1ab
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 15c7c6664b0c17d02f1f4e9120c9509fda21e0f4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844828"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467536"
 ---
 # <a name="add-contributors-to-your-app"></a>Uygulamanıza katkıda bulunanlar ekleyin
 
-Uygulama sahibi, uygulamalara katkıda bulunanlar ekleyebilir. Bu ortak çalışanlar modeli değiştirirseniz eğitmek ve uygulamayı yayımlayın. 
+Uygulama sahibi, uygulamalara katkıda bulunanlar ekleyebilir. Bu ortak çalışanlar, modeli değiştirebilir, eğleyebilir ve uygulamayı yayımlayabilir. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -30,7 +32,7 @@ Aşağıdaki yordam, Azure yazma kaynağını kullanmak için **geçirilmiş** t
 
 LUSıS yazma deneyiminiz, LUıN portalındaki **Manage-> Azure kaynakları** sayfasında bir yazma kaynağına bağlıysa geçirdiniz.
 
-1. Azure portal, Language Understanding (LUSıS) yazma kaynağını bulun. Türü `LUIS.Authoring`vardır.
+1. Azure portal, Language Understanding (LUSıS) yazma kaynağını bulun. `LUIS.Authoring`türü vardır.
 1. Bu kaynağın **Access Control (IAM)** sayfasında **+ Ekle** ' yi seçin ve **rol ataması Ekle**' yi seçin.
 
     ![Azure portal, yazma kaynağına rol ataması ekleyin.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
@@ -49,17 +51,17 @@ Aşağıdaki yordam, Azure yazma kaynağını kullanmak için **geçirilmeyen** 
 
 LUSıS yazma deneyiminizin bir yazma kaynağına bağlı olmaması durumunda, LUSıS portalındaki **Manage-> Azure kaynaklarını yönetme** sayfasında geçirilmemiş olursunuz.
 
-Uygulama sahibi, tek bir yazar vardır ancak birçok ortak çalışanlar çıkarabilirsiniz. LUIS uygulamanızı düzenlemek ortak çalışanlar izin vermek için ortak çalışanlar listesini LUIS portala erişmek için kullandıkları e-posta eklemeniz gerekir. Bunlar eklendikten sonra uygulama kendi LUIS portalda görüntülenir.
+Uygulamanın tek bir yazarı vardır, sahibi, ancak birçok ortak çalışan olabilir. Ortak çalışanların LUSıS uygulamanızı düzenlemesine izin vermek için, kullandıkları e-postayı, güvenilir olmayan bir şekilde, BASIS portalına erişmek için eklemeniz gerekir. Bunlar eklendikten sonra, uygulama LUı portalında görüntülenir.
 
-1. Seçin **Yönet** seçip sağ üstteki menüden **ortak çalışanlar** soldaki menüde.
+1. Sağ üst menüden **Yönet** ' i seçin ve ardından sol menüdeki **ortak çalışanlar** ' ı seçin.
 
-1. Seçin **ortak çalışanı Ekle** araç çubuğundan.
+1. Araç çubuğundan **ortak çalışan Ekle** ' yi seçin.
 
-    [![Ekle ortak çalışanı](./media/luis-how-to-collaborate/add-collaborator.png "Ekle ortak çalışanı")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+    [![Ortak çalışan Ekle](./media/luis-how-to-collaborate/add-collaborator.png "Ortak çalışan Ekle")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
-1. Ortak çalışanı LUIS portalda oturum açmak için kullandığı e-posta adresi girin.
+1. Ortak çalışanın LUG portalında oturum açmak için kullandığı e-posta adresini girin.
 
-    ![Ortak çalışan kişinin e-posta adresi ekleyin](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
+    ![Ortak çalışan e-posta adresini ekle](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
 ### <a name="users-with-multiple-emails"></a>Birden çok e-posta içeren kullanıcılar 
@@ -70,24 +72,24 @@ Bir LUO uygulamasına katkıda bulunanlar/ortak çalışanlar eklerseniz, tam e-
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory kaynakları
 
-Kuruluşunuzda [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) kullanıyorsanız, Language UNDERSTANDING (lusıs), BASIS kullanmak istediklerinde kullanıcılarınızın erişimi hakkındaki bilgilere izin ister. LUIS gerektirdiği kaynakların düşüktür. 
+Kuruluşunuzda [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) kullanıyorsanız, Language UNDERSTANDING (lusıs), BASIS kullanmak istediklerinde kullanıcılarınızın erişimi hakkındaki bilgilere izin ister. LUBUNUN gerektirdiği kaynaklar en az düzeydedir. 
 
-Yönetici onayı sahip veya yönetici onayı gibi yönetici onayı gerektirmeyen bir hesapla oturum açmaya çalıştığında ayrıntılı açıklamasına bakın:
+Yönetici onayı olan veya yönetici onayı gerektirmeyen bir hesapla kaydolmayı denediğinizde ayrıntılı açıklamayı görürsünüz, örneğin yönetici onayı:
 
-* Uygulamada Kurumsal hesabınızla oturum açın ve profilinizi okuyabilmesine sağlar. Temel şirket bilgilerini okumasına izin verir. Bu, LUO 'NUN Kullanıcı KIMLIĞI, e-posta, ad gibi temel profil verilerini okumasına izin verir
-* Uygulamanın bakın ve bile uygulama kullanmakta olduğunuz değil, verilerinizin güncelleştirmesine izin verir. Kullanıcının erişim belirtecini yenilemek için izin gerekir.
+* Kurumsal hesabınızla uygulamada oturum açmanıza olanak tanır ve uygulamanın profilinizi okumasını sağlayabilirsiniz. Ayrıca, uygulamanın temel şirket bilgilerini okumasına de olanak tanır. Bu, LUO 'NUN Kullanıcı KIMLIĞI, e-posta, ad gibi temel profil verilerini okumasına izin verir
+* Uygulamanın Şu anda kullanmadığınız durumlarda bile verilerinizi görmesini ve güncelleştirmesini sağlar. Kullanıcının erişim belirtecini yenilemek için izin gerekir.
 
 
-### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory Kiracı Kullanıcı
+### <a name="azure-active-directory-tenant-user"></a>Kiracı Kullanıcı Azure Active Directory
 
-LUIS standart Azure Active Directory (Azure AD) onay akışı kullanır. 
+LUSıS, standart Azure Active Directory (Azure AD) onay akışını kullanır. 
 
-Kiracı yönetici, doğrudan Azure AD'de LUIS kullanmak için verilen erişmesi gereken kullanıcı ile çalışması gerekir. 
+Kiracı yöneticisinin, Azure AD 'de LUO 'NUN kullanılmasına erişim izni olan kullanıcıyla doğrudan çalışması gerekir. 
 
-* İlk olarak, kullanıcı HLUISimzalar ve yönetici onayı gerek açılan iletişim görür. Kullanıcı, Kiracı Yöneticisi devam etmeden önce bağlantı kurar. 
-* İkinci olarak, Kiracı yönetici HLUISimzalar ve bir onay akış açılan iletişim görür. Yönetici kullanıcı için izin vermek için gereken iletişim budur. Yönetici izni kabul ettiğinde, kullanıcı ile LUIS devam edebilirsiniz. Kiracı Yöneticisi LUO 'da oturum açamayacak, yönetici, aşağıdaki ekran görüntüsünde gösterilen Lua 'ya erişim [izni](https://account.activedirectory.windowsazure.com/r#/applications) verebilir. Listenin adı `LUIS`içeren öğelere filtrelendiğine dikkat edin.
+* İlk olarak, Kullanıcı LUO 'da oturum açar ve yönetici onayı gerektiren açılır iletişim kutusunu görür. Devam etmeden önce Kullanıcı Kiracı Yöneticisi ile iletişim kurar. 
+* İkincisi, kiracı yöneticisi LUO 'da oturum açar ve bir onay akışı açılır iletişim kutusu görür. Bu, yöneticinin kullanıcı için izin vermesi gereken iletişim kutusu budur. Yönetici izni kabul ettiğinde, Kullanıcı LUO ile devam edebilir. Kiracı Yöneticisi LUO 'da oturum açamayacak, yönetici, aşağıdaki ekran görüntüsünde gösterilen Lua 'ya erişim [izni](https://account.activedirectory.windowsazure.com/r#/applications) verebilir. Listenin `LUIS`adı içeren öğelere filtrelendiğine dikkat edin.
 
-![Uygulama Web sitesi tarafından Azure active directory izni](./media/luis-how-to-collaborate/tenant-permissions.png)
+![Uygulama Web sitesi tarafından Azure Active Directory izni](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Kiracı Yöneticisi yalnızca belirli kullanıcıların LUSıS kullanmasını istiyorsa, olası birçok çözüm vardır:
 * "Yönetici onayı" (Azure AD 'nin tüm kullanıcılarına onay) verme, ancak ardından kurumsal uygulama özellikleri altında "Kullanıcı Ataması gerekli" olarak ayarlanır ve son olarak yalnızca istenen kullanıcıları uygulamaya atayın/ekleyin. Bu yöntemde, yönetici uygulamaya "yönetici onayı" sağlamaya devam eder, ancak buna erişebilen kullanıcıları denetlemek mümkündür.

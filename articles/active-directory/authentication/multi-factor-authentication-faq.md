@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808100"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474273"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication hakkında sık sorulan sorular
 
@@ -219,7 +219,7 @@ Bu hata için geçici bir çözüm, yönetici ile ilgili ve yönetici olmayan i�
 
 Sorunuz burada yanıtlanmazsa, lütfen sayfanın altındaki açıklamalarda bırakın. Veya yardım almak için bazı ek seçenekler aşağıda verilmiştir:
 
-* [Microsoft desteği bilgi bankasında](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) , yaygın teknik sorunların çözümlerini arayın.
+* [Microsoft desteği bilgi bankasında](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) , yaygın teknik sorunların çözümlerini arayın.
 * Topluluk aracılığıyla teknik sorular ve yanıtlar arayın ve bunları inceleyin veya [Azure Active Directory forumlarında](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)kendi sorunuzu sorun.
 * Eski bir PhoneFactor müşterisiyseniz ve sorularınız varsa veya bir parolayı sıfırlamanıza yardımcı olması gerekiyorsa, bir destek talebi açmak için [parola sıfırlama](mailto:phonefactorsupport@microsoft.com) bağlantısını kullanın.
 * [Azure Multi-Factor Authentication sunucusu (PhoneFactor) desteğiyle](https://support.microsoft.com/oas/default.aspx?prid=14947)destek uzmanıyla iletişim kurun. Bizimle iletişim kurarken, sorun hakkında mümkün olduğunca fazla bilgi dahil edebiliyorsanız bu yararlı olur. Sağlayabileceğiniz bilgiler, hatayı gördüğünüz sayfayı, belirli hata kodunu, belirli oturum KIMLIĞINI ve hatayı seçen kullanıcının KIMLIĞINI içerir.

@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: ff4367194f06a8a6895c9c16252b01c3b94995d3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241250"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472503"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme-Azure CLı kullanarak bir Azure Kubernetes Service (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 
 Azure Kubernetes hizmeti (AKS), kümelerinizi hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. Bu makalede, Azure CLı kullanarak bir AKS kümesi dağıtırsınız. Ayrıca, bir Windows Server kapsayıcısında kümeye bir ASP.NET örnek uygulaması da dağıtabilirsiniz.
 
-Bu özellik şu anda önizleme aşamasındadır.
+Bu özellik şu anda önizleme sürümündedir.
 
 ![ASP.NET örnek uygulamasına göz atma görüntüsü](media/windows-container/asp-net-sample-app.png)
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.61 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` ' yı çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][azure-cli-install].
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.61 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli-install].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -69,7 +69,7 @@ Kaydın tamamlanabilmesi birkaç dakika sürer. [Az Feature List][az-feature-lis
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-Kayıt durumu `Registered` olduğunda, durumu izlemeyi durdurmak için CTRL-C tuşlarına basın.  Ardından, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
+Kayıt durumu `Registered`olduğunda, durumu izlemeyi durdurmak için CTRL-C tuşlarına basın.  Ardından, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -79,7 +79,6 @@ az provider register --namespace Microsoft.ContainerService
 
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
-* *Windowspreview*başarıyla kaydedildikten sonra oluşturulan kümeler için birden çok düğüm havuzu kullanılabilir. Aboneliğiniz için *Multiagentpoolpreview* özelliğini kaydetmeniz halinde birden çok düğüm havuzu da kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
 * İlk düğüm havuzunu silemezsiniz.
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
@@ -90,9 +89,9 @@ Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluşturduğunuzda bir konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun.
 
-Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur.
+Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
 > [!NOTE]
 > Bu makalede, bu öğreticideki komutlar için bash sözdizimi kullanılmaktadır.
@@ -141,7 +140,8 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
     --network-plugin azure
 ```
 
@@ -165,23 +165,23 @@ az aks nodepool add \
     --kubernetes-version 1.14.6
 ```
 
-Yukarıdaki komut, *npwin* adlı yeni bir düğüm havuzu oluşturur ve bunu *Myakscluster*öğesine ekler. Windows Server kapsayıcıları çalıştırmak için bir düğüm havuzu oluştururken, *düğüm-VM-boyutu* için varsayılan değer *Standard_D2s_v3*' dir. *Düğüm-VM-boyut* parametresini ayarlamayı seçerseniz, lütfen [kısıtlı VM boyutlarının][restricted-vm-sizes]listesini kontrol edin. Önerilen en düşük boyut *Standard_D2s_v3*' dir. Yukarıdaki komut Ayrıca, `az aks create` çalıştırılırken oluşturulan varsayılan VNET 'teki varsayılan alt ağı kullanır.
+Yukarıdaki komut, *npwin* adlı yeni bir düğüm havuzu oluşturur ve bunu *Myakscluster*öğesine ekler. Windows Server kapsayıcıları çalıştırmak için bir düğüm havuzu oluştururken, *düğüm-VM-boyutu* için varsayılan değer *Standard_D2s_v3*' dir. *Düğüm-VM-boyut* parametresini ayarlamayı seçerseniz, lütfen [kısıtlı VM boyutlarının][restricted-vm-sizes]listesini kontrol edin. Önerilen en düşük boyut *Standard_D2s_v3*' dir. Yukarıdaki komut, `az aks create`çalıştırılırken oluşturulan varsayılan VNET ' de varsayılan alt ağı kullanır.
 
-## <a name="connect-to-the-cluster"></a>Kümeye Bağlan
+## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. Azure Cloud Shell kullanırsanız, `kubectl` zaten yüklüdür. @No__t-0 ' ı yerel olarak yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
+Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. `kubectl` yerel olarak yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
 
 ```azurecli
 az aks install-cli
 ```
 
-@No__t, Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+Kubernetes kümenize bağlanmak üzere `kubectl` yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Kümenizin bağlantısını doğrulamak için [kubectl Get][kubectl-get] komutunu kullanarak küme düğümlerinin bir listesini döndürün.
+Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu kullanarak küme düğümleri listesini alın.
 
 ```azurecli-interactive
 kubectl get nodes
@@ -201,7 +201,7 @@ Bir Kubernetes bildirim dosyası, küme için, hangi kapsayıcı görüntülerin
 
 ASP.NET örnek uygulaması, [.NET Framework örneklerinin][dotnet-samples] bir parçası olarak sağlanır ve bir Windows Server kapsayıcısında çalıştırılır. AKS 'ler Windows Server kapsayıcıları 'nın *Windows server 2019* veya daha büyük görüntülerini temel alarak olmasını gerektirir. Kubernetes bildirim dosyası, AKS kümenizin, Windows Server kapsayıcıları çalıştırabilmiş bir düğümde ASP.NET örnek uygulamanızın Pod özelliğini çalıştırmasını söylemek için bir [düğüm seçici][node-selector] de tanımlamalıdır.
 
-@No__t-0 adlı bir dosya oluşturun ve aşağıdaki YAML tanımına kopyalayın. Azure Cloud Shell kullanırsanız, bu dosya `vi` veya `nano` kullanılarak bir sanal veya fiziksel sistemde çalışırken oluşturulabilir:
+`sample.yaml` adlı bir dosya oluşturun ve aşağıdaki YAML tanımına kopyalayın. Azure Cloud Shell kullanırsanız, bu dosya `vi` veya bir sanal veya fiziksel sistemde çalışırken `nano` kullanılarak oluşturulabilir:
 
 ```yaml
 apiVersion: apps/v1
@@ -266,7 +266,7 @@ service/sample created
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir. Bazen hizmetin sağlanması birkaç dakikadan uzun sürebilir. Bu durumlarda en fazla 10 dakika bekleyin.
 
-İlerlemeyi izlemek için, [kubectl Get Service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
+İlerleme durumunu izlemek için [kubectl get service][kubectl-get] komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
 
 ```azurecli-interactive
 kubectl get service sample --watch
@@ -279,7 +279,7 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-*Dış IP* adresi *bekliyor* durumundan gerçek ortak ıp adresini değiştirdiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` ' yi kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
+*Dış IP* adresi *bekliyor* durumundan gerçek bir genel IP adresi olarak değiştiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
 ```
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -289,7 +289,7 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![ASP.NET örnek uygulamasına göz atma görüntüsü](media/windows-container/asp-net-sample-app.png)
 
-## <a name="delete-cluster"></a>Kümeyi Sil
+## <a name="delete-cluster"></a>Küme silme
 
 Küme artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı hizmetini ve tüm ilgili kaynakları kaldırın.
 
@@ -304,7 +304,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 Bu makalede bir Kubernetes kümesi dağıttınız ve bir Windows Server kapsayıcısında bir ASP.NET örnek uygulaması dağıttınız. Az önce oluşturduğunuz küme için [Kubernetes web panosuna erişin][kubernetes-dashboard] .
 
-AKS hakkında daha fazla bilgi edinmek ve dağıtım örneği için bir bütün kod üzerinde gezinmek için Kubernetes küme öğreticisine geçin.
+AKS hakkında daha fazla bilgi ve dağıtım örneği için tam kod açıklaması için Kubernetes küme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
 > [AKS öğreticisi][aks-tutorial]

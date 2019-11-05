@@ -9,41 +9,43 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7b6c8ba1517de44d01ffbceec812749403465e63
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbd8ad73ff4a03790dd6b22d5ce33acf09a2b125
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638080"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491354"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Tahmin doğruluğunu artırmak için desenler ekleme
 Bir Lua uygulaması uç nokta dıklılığını aldıktan sonra, sözcük sırası ve Word seçimindeki bir düzeni açığa çıkarmaya yönelik tahmin doğruluğunu artırmak için bir [desen](luis-concept-patterns.md) kullanın. Desenler, konumunu belirtmek için özel [sözdizimini](luis-concept-patterns.md#pattern-syntax) kullanır: [varlıklar](luis-concept-entity-types.md), varlık [rolleri](luis-concept-roles.md)ve isteğe bağlı metin.
 
-## <a name="add-template-utterance-to-create-pattern"></a>Desen oluşturmak için şablon utterance Ekle
-1. Adını seçerek uygulamanızı açın **uygulamalarım** sayfasında ve ardından **desenleri** sol bölmede altında **uygulama performansını**.
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-    ![Desen listesinin ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+## <a name="add-template-utterance-to-create-pattern"></a>Desen oluşturmak için Şablon Ekle
+1. **Uygulamalarım** sayfasında adını seçerek uygulamanızı açın ve ardından sol paneldeki **uygulama performansını iyileştirme**altında **desenler** ' i seçin.
 
-2. Desen için doğru hedefini seçin. 
+    ![Desenler listesinin ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
-    ![Hedefi seçin](./media/luis-how-to-model-intent-pattern/patterns-2.png)
+2. Model için doğru amacı seçin. 
 
-3. Şablon metin şablonu utterance yazın ve Enter'ı seçin. Varlık adı girmek istediğiniz zaman doğru deseni varlık sözdizimini kullanın. Varlık sözdizimi ile başlayan `{`. Varlıklar görüntüler listesi. Doğru varlığı seçin ve ardından Enter'ı seçin. 
+    ![Amaç seçin](./media/luis-how-to-model-intent-pattern/patterns-2.png)
 
-    ![Varlık deseni için ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+3. Şablon metin kutusuna, şablonu yazın ve ENTER ' u seçin. Varlık adını girmek istediğinizde, doğru model varlığı sözdizimini kullanın. `{`varlık sözdizimini başlatın. Varlıkların listesi görüntülenir. Doğru varlığı seçin ve ardından ENTER ' ı seçin. 
 
-    Varlığınız bir [rol](luis-concept-roles.md)içeriyorsa, rolü tek bir iki nokta üst üste `:`ile, örneğin, varlık `{Location:Origin}`adından sonra belirtin. Rolleri varlıkların listesini bir liste görüntüler. Rolü seçin ve ardından Enter'ı seçin. 
+    ![Düzenin varlık ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    ![Rolü içeren varlığın ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-4.png)
+    Varlığınız bir [rol](luis-concept-roles.md)içeriyorsa, `{Location:Origin}`gibi varlık adından sonra `:`tek bir iki nokta üst üste sahip rolü belirtin. Varlıkların rollerinin listesi bir listede görüntülenir. Rolü seçin ve ardından ENTER ' u seçin. 
 
-    Doğru varlık seçtikten sonra deseni girdikten ve ardından Enter'ı seçin. Girme desenleri, işiniz bittiğinde [eğitme](luis-how-to-train.md) uygulamanızı.
+    ![Role sahip varlığın ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-    ![Girilen deseninin her iki türdeki varlık ile ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    Doğru varlığı seçtikten sonra, kalıbı girmeyi tamamladıktan sonra ENTER ' u seçin. Desenleri girmeyi bitirdiğinizde uygulamanızı [eğitme](luis-how-to-train.md) .
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Model desenleri ile değiştirdikten sonra uygulamanızı eğitin
-Sonra ekleme, düzenleme, kaldırmak veya bir desen yeniden atama [eğitme](luis-how-to-train.md) ve [yayımlama](luis-how-to-publish-app.md) uygulamanız için uç nokta sorguları etkilemek yaptığınız değişiklikleri. 
+    ![Her iki varlık türü ile girilen düzenin ekran görüntüsü](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Modeli desenlerle değiştirdikten sonra uygulamanızı eğitme
+Bir düzen ekledikten, düzenledikten, kaldırdıktan veya yeniden atadıktan sonra, uç nokta sorgularını etkilemek için uygulamanızı yaptığınız değişiklikler için [eğitin](luis-how-to-train.md) ve [yayımlayın](luis-how-to-publish-app.md) . 
 
 <a name="search-patterns"></a>
 <a name="edit-a-pattern"></a>
@@ -61,17 +63,17 @@ Sonra ekleme, düzenleme, kaldırmak veya bir desen yeniden atama [eğitme](luis
 Desenler listesinin üzerindeki bağlamsal araç çubuğu şunları yapmanıza olanak sağlar:
 
 * Desenler ara
-* Bir desen Düzenle
-* Farklı bir amaç için ayrı ayrı desen yeniden atama
-* Farklı bir hedefi için çeşitli desenlerden yeniden atama
+* Bir düzen düzenleme
+* Tek bir kalıbı farklı amaca yeniden atama
+* Çeşitli desenleri farklı amaca yeniden atama
 * Tek-stili Sil
-* Çeşitli desenlerden Sil
-* Varlık tarafından filtre deseni listesi
+* Birkaç deseni Sil
+* Varlık listesini varlığa göre filtrele
 * Filtre-ölçütü-ölçütü-Listele
-* Varlık veya hedefi Filtreyi Kaldır
-* Desen hedefi veya varlık sayfasında mevcut utterance ekleyin
+* Varlık veya amaç filtresini kaldır
+* Amaç veya varlık sayfasında var olan dıklardan desen ekleme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Bir modelle bir model [oluşturma](luis-tutorial-pattern.md) hakkında bilgi edinin.
-* Bilgi nasıl [eğitme](luis-how-to-train.md) uygulamanızı.
+* Uygulamanızı [eğitme](luis-how-to-train.md) hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
 title: 'Ön işlem metni: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Metni temizlemek ve basitleştirmek için Azure Machine Learning hizmetinde önceden Işlem metin modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Metni temizlemek ve basitleştirmek için Azure Machine Learning 'de ön Işlem metin modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692682"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497674"
 ---
 # <a name="preprocess-text"></a>Metni Ön İşleme
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kullanın. Bu ortak metin işleme işlemlerini destekler:
 
@@ -33,7 +33,7 @@ Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kulla
 
 ## <a name="configure-text-preprocessing"></a>Metin ön Işleme yapılandırma  
 
-1.  Azure Machine Learning hizmetindeki denemenize **önceden Işlem metin** modülünü ekleyin. Bu modülü **metin analizi**altına bulabilirsiniz.
+1.  Azure Machine Learning, **işlem hattınızı ön Işle metin** modülünü ekleyin. Bu modülü **metin analizi**altına bulabilirsiniz.
 
 1. Metin içeren en az bir sütunu olan bir veri kümesini bağlayın.
 
@@ -47,7 +47,7 @@ Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kulla
 
 1. Su **kullanımı: sözcüklerin**kurallı biçimde temsil edilebilmesi istiyorsanız bu seçeneği belirleyin. Bu seçenek, başka türlü benzer metin belirteçlerinin benzersiz oluşum sayısını azaltmak için yararlıdır.
 
-    Bu işlem, yüksek oranda dile bağımlıdır.
+    Katileştirme işlemi yüksek oranda dile bağımlıdır.
 
 1. **Cümleleri Algıla**: modülün analiz gerçekleştirirken bir cümle sınır işareti eklemesini istiyorsanız bu seçeneği belirleyin.
 
@@ -70,21 +70,21 @@ Metni temizlemek ve basitleştirmek için **ön Işlem metin** modülünü kulla
     
     * **Yinelenen karakterleri kaldır**: iki kez tekrarlanacak herhangi bir dizilerden fazla karakter kaldırmak için bu seçeneği belirleyin. Örneğin, "aaaaa" gibi bir sıra "AA" olarak düşürülür.
     
-    * **E-posta adreslerini kaldır**: `<string>@<string>` biçim sırasını kaldırmak için bu seçeneği belirleyin.  
+    * **E-posta adreslerini kaldır**: `<string>@<string>`biçim sırasını kaldırmak için bu seçeneği belirleyin.  
     * **URL 'Leri kaldır**: aşağıdaki URL öneklerini içeren herhangi bir sırayı kaldırmak için bu seçeneği belirleyin: `http`, `https`, `ftp`, `www`
     
 1. **Fiil kodlamalarını Genişlet**: Bu seçenek yalnızca fiil kodlamalarını kullanan diller için geçerlidir; Şu anda yalnızca Ingilizce. 
 
     Örneğin, bu seçeneği belirleyerek "hiçbir zaman" *kalmazın* "olmaz" ifadesini " *Not*edin" olarak değiştirebilirsiniz.
 
-1. **Ters eğik çizgileri eğik çizgi Ile Normalleştir**: tüm `\\` örneklerini `/` eşlemek için bu seçeneği belirleyin.
+1. **Ters eğik çizgileri eğik çizgi Ile Normalleştir**: tüm `\\` örneklerini `/`eşlemek için bu seçeneği belirleyin.
 
-1. **Belirteçleri özel karakterlere Böl**: `&`, `-` vb. gibi karakterlerden sözcükleri kesmek istiyorsanız bu seçeneği belirleyin. Bu seçenek ayrıca, iki kez yinelendiğinde özel karakterleri de azaltabilir. 
+1. **Belirteçleri özel karakterlere Böl**: `&`, `-`vb. gibi karakterlerden sözcükleri kesmek istiyorsanız bu seçeneği belirleyin. Bu seçenek ayrıca, iki kez yinelendiğinde özel karakterleri de azaltabilir. 
 
-    Örneğin, `MS---WORD` dize üç belirtece ayrılabilir, `MS`, `-` ve `WORD`.
+    Örneğin, `MS---WORD` dize üç belirtece ayrılabilir, `MS`, `-`ve `WORD`.
 
-1. Denemeyi çalıştırın.
+1. İşlem hattını çalıştırma.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

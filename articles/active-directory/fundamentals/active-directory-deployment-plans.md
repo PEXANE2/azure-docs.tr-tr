@@ -1,6 +1,6 @@
 ---
-title: Dağıtım planı - Azure Active Directory | Microsoft Docs
-description: Birçok Azure Active Directory özellikleri dağıtmak nasıl uçtan uca yönergeler.
+title: Dağıtım planları-Azure Active Directory | Microsoft Docs
+description: Birçok Azure Active Directory özelliği dağıtma hakkında uçtan uca rehberlik.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336872"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473286"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -29,7 +29,7 @@ Dağıtım planlamasına yeni bir özellik için Başlarken, kuruluşunuzda öne
 
 Roller aşağıdaki gibi bulunabilir 
 
-|Role |Açıklama |
+|Rol |Açıklama |
 |-|-|
 |Son Kullanıcı|Özelliği uygulanacak olan temsili Kullanıcı grubu. Genellikle bir pilot programdaki değişikliklere önizleme gösterir.
 |BT Destek Yöneticisi|Bu değişikliğin bir yardım masası perspektifinden desteklenebilirliği hakkında giriş sağlayabilen kuruluş temsilcisini destekler.  
@@ -61,16 +61,17 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 | Özellik | Açıklama|
 | -| -|
-| [Multi-Factor Authentication](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. |
+| [Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)| Azure Multi-Factor Authentication (MFA) Microsoft'un iki adımlı doğrulama çözümüdür. Azure MFA, yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. |
 | [Koşullu erişim](https://aka.ms/deploymentplans/ca)| Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz. |
 | [Self servis parola sıfırlama](https://aka.ms/deploymentplans/sspr)| Self servis parola sıfırlama, kullanıcılarınızın parolalarını yönetici müdahalesi olmadan sıfırlamasına, ne zaman ve nerede ihtiyaç duymalarına yardımcı olur. |
+| [Passwordless](https://aka.ms/deploymentplans/passwordless) | Kuruluşunuzda Microsoft Authenticator App veya FIDO2 güvenlik anahtarlarını kullanarak passwordless kimlik doğrulaması uygulama |
 
 ## <a name="deploy-application-management"></a>Uygulama yönetimini dağıtma
 
 | Özellik | Açıklama|
 | -| - |
 | [Çoklu oturum açma](https://aka.ms/deploymentplans/sso)| Çoklu oturum açma, kullanıcılarınızın yalnızca bir kez oturum açarken iş yapması gereken uygulamalara ve kaynaklara erişmesine yardımcı olur. Oturum açtıktan sonra, kimlik bilgilerini ikinci bir kez girmek zorunda kalmadan iç uygulamalara Microsoft Office, SalesForce 'a kadar gidebilirler. |
-| [Erişim paneli](https://aka.ms/deploymentplans/accesspanel)| Kullanıcılarınızın bulmak ve tüm uygulamalara erişmek için basit bir hub'ı sunar. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
+| [Erişim paneli](https://aka.ms/deploymentplans/accesspanel)| Kullanıcılarınıza tüm uygulamalarını keşfetmek ve bunlara erişmek için basit bir hub sunun. Uygulamalar ve gruplar için erişim isteğinde bulunma veya diğerleri adına kaynaklara erişimi yönetme gibi self servis özellikleri ile daha üretken olmalarını sağlayın. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Karma senaryoları dağıtma
@@ -86,8 +87,8 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 
 | Özellik | Açıklama|
 | -| -|
-| [Kullanıcı sağlama](https://aka.ms/UserProvisioningDPDownload)| Azure AD; Dropbox, Salesforce ve ServiceNow gibi bulut (SaaS) uygulamalarında kullanıcı oluşturma, bakım ve kaldırma adımlarını otomatikleştirmenize yardımcı olur. |
-| [Workday odaklı gelen kullanıcı sağlama](https://aka.ms/WorkdayDeploymentPlan)| Workday temelli gelen kullanıcı sağlamayı Active Directory, devam eden kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilere dayanan iş süreçlerini kalitesini artırır. Bu özelliği kullanarak, bu çalışanların ve contentik çalışanların kimlik yaşam döngüsünü, birleştirici-Mover-Leaver işlemlerini (örneğin, yeni Işe alma, sonlandırma, aktarım), BT sağlama eylemlerine (örneğin, oluşturma, etkinleştirme) eşleştiren kuralları yapılandırarak sorunsuzca yönetebilirsiniz. Dıı |
+| [Kullanıcı sağlama](https://aka.ms/deploymentplans/userprovisioning)| Azure AD; Dropbox, Salesforce ve ServiceNow gibi bulut (SaaS) uygulamalarında kullanıcı oluşturma, bakım ve kaldırma adımlarını otomatikleştirmenize yardımcı olur. |
+| [Workday odaklı gelen Kullanıcı sağlama](https://aka.ms/WorkdayDeploymentPlan)| Active Directory iş günü odaklı gelen Kullanıcı sağlama, devam eden kimlik yönetimi için bir temel oluşturur ve yetkili kimlik verilerine dayanan iş işlemlerinin kalitesini geliştirir. Bu özelliği kullanarak, bu çalışanların ve contentik çalışanların kimlik yaşam döngüsünü, birleştirici-Mover-Leaver işlemlerini (örneğin, yeni Işe alma, sonlandırma, aktarım), BT sağlama eylemlerine (örneğin, oluşturma, etkinleştirme) eşleştiren kuralları yapılandırarak sorunsuzca yönetebilirsiniz. Dıı |
 
 ## <a name="deploy-governance-and-reporting"></a>İdare ve raporlama dağıtma
 

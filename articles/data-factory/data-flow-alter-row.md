@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387264"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486211"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory alter Row dönüşümü
 
@@ -22,16 +22,16 @@ Satırlarda INSERT, DELETE, Update ve upsert ilkeleri ayarlamak için alter Row 
 ![Satır ayarlarını değiştir](media/data-flow/alter-row1.png "Satır ayarlarını değiştir")
 
 > [!NOTE]
-> Değişiklik satırı dönüşümleri yalnızca veri akışındaki veritabanı havuzları üzerinde çalışır. Satırlara atadığınız eylemler (INSERT, Update, DELETE, upsert) hata ayıklama oturumları sırasında gerçekleşmeyecektir. Bir işlem hattına veri akışı yürütme görevi eklemeniz ve Veritabanı tablolarınızda alter Row ilkelerini uygulamak için ardışık düzen hata ayıklaması veya Tetikleyiciler kullanmanız gerekir.
+> Değişiklik satırı dönüşümleri, yalnızca veri akışınızda veritabanı veya CosmosDB havuzları üzerinde çalışır. Satırlara atadığınız eylemler (INSERT, Update, DELETE, upsert) hata ayıklama oturumları sırasında gerçekleşmeyecektir. Bir işlem hattına veri akışı yürütme görevi eklemeniz ve Veritabanı tablolarınızda alter Row ilkelerini uygulamak için ardışık düzen hata ayıklaması veya Tetikleyiciler kullanmanız gerekir.
 
 ## <a name="indicate-a-default-row-policy"></a>Varsayılan bir satır ilkesi belirtin
 
-Alter Row dönüşümü oluşturun ve `true()` koşulunu içeren bir satır ilkesi belirtin. Önceden tanımlanmış ifadelerden hiçbirini karşılamayan her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyi karşılamayan her bir satır, `Insert` için işaretlenir.
+Alter Row dönüşümü oluşturun ve `true()`koşulu ile bir satır ilkesi belirtin. Önceden tanımlanmış ifadelerden hiçbirini karşılamayan her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyi karşılamayan her bir satır, `Insert`için işaretlenir.
 
 ![Satır değiştirme bir ilke](media/data-flow/alter-row4.png "Satır değiştirme bir ilke")
 
 > [!NOTE]
-> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturabilir ve koşulu `true()` olarak belirtebilirsiniz.
+> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturup `true()`koşulu belirtebilirsiniz.
 
 ## <a name="view-policies"></a>İlkeleri görüntüle
 

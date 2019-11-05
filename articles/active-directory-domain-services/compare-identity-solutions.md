@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173175"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474714"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 
@@ -41,7 +41,7 @@ Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi 
 
 Azure AD DS ile çekirdek hizmet bileşenleri, Microsoft tarafından *yönetilen* etki alanı deneyimi olarak dağıtılır ve korunur. VM 'Ler, Windows Server işletim sistemi veya etki alanı denetleyicileri (DC 'Ler) gibi bileşenler için AD DS altyapısını dağıtmayın, yönetmeyin, yamazsınız ve güvende kalmazsınız.
 
- Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulamalar ve hizmetler için Azure AD DS, en düşük düzeyde yönetim yüküne sahip bir yönetilen etki alanı deneyimi sağlar.
+Azure AD DS, bazı tasarım ve yönetim karmaşıklığını azaltan geleneksel, otomatik olarak yönetilen AD DS ortamına yönelik daha küçük bir özellik alt kümesi sağlar. Örneğin, tasarlamak ve sürdürmek üzere AD Ormanı, etki alanı, siteler ve çoğaltma bağlantıları yoktur. Bulutta çalışan ve Kerberos veya NTLM gibi geleneksel kimlik doğrulama mekanizmalarına erişmesi gereken uygulamalar ve hizmetler için Azure AD DS, en düşük düzeyde yönetim yüküne sahip bir yönetilen etki alanı deneyimi sağlar.
 
 Kendi kendine yönetilen bir AD DS ortamını dağıtıp çalıştırdığınızda, ilişkili tüm altyapı ve Dizin bileşenlerini korumanız gerekir. Kendi kendine yönetilen bir AD DS ortamıyla ek bakım yükü vardır, ancak daha sonra Şemayı genişletme veya orman güvenleri oluşturma gibi ek görevler gerçekleştirebilirsiniz.
 
@@ -104,7 +104,7 @@ Azure AD DS katılmış cihazlarda, uygulamalar kimlik doğrulaması için Kerbe
 | Dizindeki temsili | Azure AD dizinindeki cihaz nesneleri            | Azure AD DS yönetilen etki alanındaki bilgisayar nesneleri                        |
 | Kimlik Doğrulaması                  | OAuth/OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
 | Yönetim                      | Intune gibi mobil cihaz yönetimi (MDM) yazılımı | grup ilkesi                                                              |
-| Networking (Ağ İletişimi)                      | Internet üzerinden çalışarak                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya eşlenmiş olmalıdır |
+| Ağ                      | Internet üzerinden çalışarak                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya eşlenmiş olmalıdır |
 | Harika...                    | Son Kullanıcı mobil veya masaüstü cihazları                  | Azure 'da dağıtılan sunucu VM 'Leri                                              |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172984"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475921"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
-Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmet, Azure depolama, SQL, vb. gibi bir Azure hizmeti veya kendi [özel bağlantı hizmetiniz](private-link-service-overview.md)olabilir.
+Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmet, Azure depolama, Azure Cosmos DB, SQL gibi bir Azure hizmeti ya da kendi [özel bağlantı hizmetiniz](private-link-service-overview.md)olabilir.
   
 ## <a name="private-endpoint-properties"></a>Özel uç nokta özellikleri 
  Özel bir uç nokta aşağıdaki özellikleri belirtir: 
@@ -24,7 +24,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 |Özellik  |Açıklama |
 |---------|---------|
-|Adı    |    Kaynak grubu içinde benzersiz bir ad.      |
+|Ad    |    Kaynak grubu içinde benzersiz bir ad.      |
 |Alt ağ    |  Sanal bir ağdan özel IP adresleri dağıtmak ve ayırmak için alt ağ. Alt ağ gereksinimleri için, bu makaledeki sınırlamalar bölümüne bakın.         |
 |Özel bağlantı kaynağı    |   Kullanılabilir türler listesinden kaynak KIMLIĞI veya diğer ad kullanarak bağlanacak özel bağlantı kaynağı. Bu kaynağa gönderilen tüm trafik için benzersiz bir ağ tanımlayıcısı oluşturulacak.       |
 |Hedef alt kaynak   |      Bağlanılacak alt kaynak. Her özel bağlantı kaynağı türü, tercihe göre seçim yapmak için farklı seçeneklere sahiptir.    |
@@ -57,7 +57,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 |**Azure SQL Veri Ambarı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
 |**Azure Depolama**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (Queue, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage 2.**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
- 
+|**Azure Cosmos DB** | Microsoft. Azu, Smosdb/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tablo|
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktaların ağ güvenliği 
 Azure hizmetleri için özel uç noktalar kullanılırken, trafik belirli bir özel bağlantı kaynağıyla güvenli hale getirilir. Platform yalnızca belirtilen özel bağlantı kaynağına ulaşan ağ bağlantılarını doğrulamak için bir erişim denetimi gerçekleştirir. Aynı Azure hizmeti içindeki ek kaynaklara erişmek için ek özel uç noktalar gereklidir. 
@@ -107,9 +107,12 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 |Depolama hesabı (Microsoft. Storage/storageAccounts)   |    Dosya (dosya, file_secondary)      |    privatelink.file.core.windows.net      |
 |Depolama hesabı (Microsoft. Storage/storageAccounts)     |  Web (Web, web_secondary)        |    privatelink.web.core.windows.net      |
 |Data Lake dosya sistemi Gen2 (Microsoft. Storage/storageAccounts)  |  Data Lake dosya sistemi Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft. Azu, Smosdb/databaseAccounts)|Tablo|privatelink.table.cosmos.azure.com|
  
-
 Azure, çözümü önerilen etki alanı adlarına yönlendirmek için ortak DNS üzerinde kurallı bir ad DNS kaydı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresi ile çözümlemeyi geçersiz kılabileceksiniz. 
  
 Uygulamalarınızın bağlantı URL 'sini değiştirmesi gerekmez. Genel bir DNS kullanarak çözümlemeye çalışırken, DNS sunucusu şimdi özel uç noktalarınıza çözümlenir. İşlem uygulamalarınızı etkilemez. 
@@ -131,4 +134,5 @@ Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaları
 - [PowerShell kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-powershell.md)
 - [CLı kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-cli.md)
 - [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](create-private-endpoint-storage-portal.md)
+- [Portal kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell kullanarak kendi özel bağlantı hizmetinizi oluşturun](create-private-link-service-powershell.md)

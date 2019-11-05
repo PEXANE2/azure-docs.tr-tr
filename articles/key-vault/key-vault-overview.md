@@ -10,14 +10,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cfaa2598d53fa57b4a628a7ad1b847a9b078bf2b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6b59995dc09c0ecf1e5700d8337bd30074083f76
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598154"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483909"
 ---
-# <a name="what-is-azure-key-vault"></a>Azure Key Vault nedir?
+# <a name="what-is-azure-key-vault"></a>Azure Anahtar Kasası nedir?
 
 Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
@@ -73,7 +73,7 @@ Ayrıca, Azure Anahtar Kasalarını kullanarak uygulama gizli dizilerini ayırab
 Azure 'da güvenli bir mağaza olarak, şunun gibi senaryoları basitleştirmek için Key Vault kullanılmıştır:
 -  [Azure disk şifrelemesi](../security/fundamentals/encryption-overview.md)
 -  SQL Server ve Azure SQL veritabanı 'ndaki [her zaman şifrelenmiş]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) işlevler
-- [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
+- [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
 
 Key Vault, depolama hesapları, olay hub’ları ve günlük analizi ile tümleştirilebilir.
 

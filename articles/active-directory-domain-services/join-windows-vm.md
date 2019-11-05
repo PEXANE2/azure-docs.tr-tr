@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172898"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474702"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Öğretici: Windows Server sanal makinesini yönetilen bir etki alanına ekleme
 
@@ -54,7 +54,8 @@ Bir bilgisayarı Azure AD DS yönetilen bir etki alanına nasıl katılabilmek i
 
 Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'Yi Azure AD DS yönetilen etki alanına katmak](#join-the-vm-to-the-azure-ad-ds-managed-domain)için bölümüne atlayın.
 
-1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
+1. Azure portal menüsünden veya **giriş** sayfasından **kaynak oluştur**' u seçin.
+
 1. **Kullanmaya**başlayın ' dan **Windows Server 2016 Datacenter**' u seçin.
 
     ![Azure portal Windows Server 2016 Datacenter VM oluşturmayı seçin](./media/join-windows-vm/select-vm-image.png)

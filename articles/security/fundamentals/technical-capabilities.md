@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468084"
 ---
-# <a name="azure-security-technical-capabilities"></a>Azure güvenliği teknik özellikleri
+# <a name="azure-security-technical-capabilities"></a>Azure güvenliğe yönelik teknik özellikler
 Bu makalede, Azure 'da verilerinizi, kaynaklarınızı ve uygulamalarınızı korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan güvenlik hizmetlerine giriş sunulmaktadır.
 
 ## <a name="azure-platform"></a>Azure platformu
@@ -169,9 +169,9 @@ RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan 
 
 Buluttaki veri korumasına yönelik anahtarlardan biri, verilerinizin gerçekleşebileceği olası durumlara ve bu durum için hangi denetimlerin kullanılabilir olduğuna göre belirlenir. Azure veri güvenliği ve şifreleme en iyi uygulamaları için, öneriler aşağıdaki verilerin durumları etrafında olacaktır.
 
-- Rest: Bu, fiziksel medyada statik olarak bulunan tüm bilgi depolama nesnelerini, kapsayıcıları ve türlerini içerir, bu da manyetik veya optik disk olur.
+- Rest: buna, fiziksel medyada statik olarak bulunan tüm bilgi depolama nesneleri, kapsayıcılar ve türler, manyetik veya optik disk olmak üzere dahildir.
 
-- Aktarım içi: Veriler, bir hizmet veri yolu (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar da dahil olmak üzere) arasında bileşenler, konumlar veya programlar arasında aktarıldığında, bu, hareket halindeyken olduğu düşünüldük.
+- Geçiş içi: veriler, bir hizmet veri yolu (Şirket içinden buluta veya ExpressRoute gibi karma bağlantılar dahil) arasında veya bir giriş/çıkış işlemi sırasında, ağ üzerinden gibi bileşenler, konumlar veya programlar arasında aktarıldığında , hareket halindeyken olduğu düşünüldük.
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
@@ -206,9 +206,9 @@ Verileri depolamak için hangi mağazaların kullandığınızı göz önünde b
 
 Kullandığınız her mağaza için, bekleyen destek ' de var olan şifrelemeden yararlanın.
 
-- Azure depolama: [Bekleyen veriler için bkz. Azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md),
+- Azure depolama: [bekleyen veriler Için bkz. azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md),
 
-- SQL Azure: Bkz. [Saydam veri şifrelemesi (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
+- SQL Azure: bkz. [Saydam veri şifrelemesi (TDE), SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
 - VM & yerel disk depolama ([Azure disk şifrelemesi](../azure-security-disk-encryption-overview.md))
 
@@ -309,7 +309,7 @@ Azure, uygulamanız için hem gelen hem de giden trafiğin güvenliğini sağlam
 
 - [Uygulamanız için Azure Active Directory kimlik doğrulaması kurma](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-- [Aktarım Katmanı Güvenliği (TLS/SSL)-HTTPS ' i etkinleştirerek uygulamanıza yönelik güvenli trafik](../../app-service/app-service-web-tutorial-custom-ssl.md)
+- [Aktarım Katmanı Güvenliği (TLS/SSL)-HTTPS ' i etkinleştirerek uygulamanıza yönelik güvenli trafik](../../app-service/configure-ssl-bindings.md)
 
   - [HTTPS bağlantısı üzerinden tüm gelen trafiği zorla](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -360,7 +360,7 @@ Azure Cloud Services için Microsoft Antimalware ve sanal makineler, virüsler, 
 
 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) , birincil konumunuz daha sonra ikincil bir konumdan kullanılabilmeleri için iş yükleri ve uygulamaların çoğaltılmasını, yük devretmesini ve kurtarılmasına yardımcı olur.
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>Uyumluluk sağlayın: Bulut Hizmetleri, gereken dildenetim listesi
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>Uyumluluk sağlayın: bulut hizmetleri süre denetim listesi
 
 Microsoft, kuruluşların buluta geçiş yapmayı düşünülerek bir süre sonra yardımcı olması için [Cloud Services süresi dolan bir denetim listesi](https://aka.ms/cloudchecklist.download) geliştirmiştir. Kendi performans, hizmet, veri yönetimi ve idare amaçlarını belirlemek için, her türlü boyut ve türden bir kuruluşa (tüm düzeylerde kamu sektörü dahil olmak üzere özel işletmeler ve kamu sektörü kuruluşları) bir yapı sağlar ve gereklilik. Bu, bir bulut hizmeti Sözleşmesinin temelini oluşturan farklı bulut hizmeti sağlayıcılarının tekliflerini karşılaştırmalarını sağlar.
 
@@ -388,7 +388,7 @@ Ayrıca, denetim listesi:
 
 Azure operasyonel güvenlik, Microsoft Güvenlik Yanıt Merkezi programı da dahil Microsoft Security Development Lifecycle (SDL) olmak üzere Microsoft 'a özgü çeşitli yetenekler aracılığıyla elde edilen bilgileri içeren bir çerçeve üzerine kurulmuştur. ve siber güvenlik tehdidi yatay olarak ayrıntılı bir şekilde tanıma.
 
-### <a name="microsoft-azure-monitor"></a>Microsoft Azure İzleyicisi
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Izleyicisi
 
 [Azure izleyici](../../azure-monitor/index.yml) , hibrit bulut için BT yönetimi çözümüdür. Tek başına veya mevcut System Center dağıtımınızı genişletmek için, Azure Izleyici günlükleri, altyapınızın bulut tabanlı yönetimi için en yüksek esneklik ve denetim sağlar.
 
@@ -410,7 +410,7 @@ Bu yöntem, çeşitli kaynaklardan gelen verileri birleştirerek Azure hizmetini
 
 Güvenlik Merkezi, olası güvenlik açıklarını tanımlamak için Azure kaynaklarınızın güvenlik durumunu inceler. Gerekli denetimlerin yapılandırılması işlemi boyunca bir öneri listesi size rehberlik eder.
 
-Örneklere şunlar dahildir:
+Örneğin:
 
 - Kötü amaçlı yazılımı tanımlama ve kaldırmada yardım etmesi için kötü amaçlı yazılımdan koruma yazılımı hazırlama
 
@@ -438,7 +438,7 @@ Güvenlik Merkezi, Azure kaynaklarınızdan, ağdan ve kötü amaçlı yazılım
 
 Bulut uygulamaları birçok hareketli parça ile karmaşıktır. İzleme, uygulamanızın sağlıklı durumda kaldığından ve çalıştığından emin olmak için veri sağlar. Ayrıca, olası sorunları veya geçmişteki sorunları gidermenize yardımcı olur.
 
-![Azure izleyici](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Ayrıca, uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
+Azure Izleyici](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) ![, uygulamanız hakkında derin Öngörüler elde etmek için izleme verilerini de kullanabilirsiniz. Bu bilgi, uygulama performansını veya bakımlılığını iyileştirebilmeniz ya da aksi takdirde el ile müdahale gerektiren eylemleri otomatikleştirmenize yardımcı olabilir.
 
 Ağ güvenliğinizi denetlemek, ağ güvenlik açıklarını saptamak ve BT güvenlik ve mevzuat idare modeliyle uyumluluk sağlamak için önemlidir. Güvenlik grubu görünümü ile, yapılandırılmış ağ güvenlik grubunu ve güvenlik kurallarını ve etkin güvenlik kurallarını alabilirsiniz. Uygulanan kuralların listesi ile açık ve SS ağ güvenlik açığı olan bağlantı noktalarını belirleyebilirsiniz.
 

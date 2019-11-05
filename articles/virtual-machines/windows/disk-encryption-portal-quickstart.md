@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2590b9851b654990795f111e76f6cc5ea6c96723
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553444"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491944"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Windows sanal makinesi oluşturma ve şifreleme
 
@@ -19,9 +19,9 @@ Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. A
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
@@ -49,19 +49,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Erişim Ilkeleri ekranının en altında "gözden geçir + oluştur" a tıklayın.
 1. İnceleme sonrasında "Oluştur" a tıklayın.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 
 1. Yeni sayfada, popüler bölümünde **Windows Server 2016 Datacenter**' ı seçin.
 1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun.
-1. **Kaynak grubu**için, yukarıdaki anahtar kasanızı yaparken oluşturduğunuz kaynak grubunu seçin (örn. **myresourcegroup**)
-1. **Sanal makine adı** Için *myvm*yazın ve şunları seçin 
+1. **Kaynak grubu**için, anahtar kasanızı (örn. **myresourcegroup**) yaparken oluşturduğunuz kaynak grubunu seçin.
+1. **Sanal makine adı**Için *myvm*yazın.
 1. **Bölge**için, anahtar kasanızı oluştururken kullandığınız bölgeyi (örn. **Doğu ABD**) seçin.
 1. **Boyutun** *Standart D2s v3*olduğundan emin olun.
 1. **Yönetici hesabı**altında, **parola**' yı seçin. Bir Kullanıcı adı ve parola girin.
-    ![ResourceGroup oluşturma ekranı ](../media/disk-encryption/portal-qs-windows-vm-creation.png)
-1. "Yönetim" sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, "Yeni oluştur" u seçin, yeni hesabınıza bir ad verin ve "Tamam" ![ResourceGroup oluşturma ekranı ' nı seçin ](../media/disk-encryption/portal-qs-vm-creation-storage.png)
+    ![ResourceGroup oluşturma ekranı](../media/disk-encryption/portal-qs-windows-vm-creation.png)
+1. "Yönetim" sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, "Yeni oluştur" u seçin, yeni hesabınıza bir ad verin ve "Tamam" ![ResourceGroup oluşturma ekranı ' nı seçin](../media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. "Gözden geçir + oluştur" a tıklayın.
 1. **Sanal makine oluştur** sayfasında oluşturmak üzere olduğunuz VM'nin ayrıntılarını görüntüleyebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 

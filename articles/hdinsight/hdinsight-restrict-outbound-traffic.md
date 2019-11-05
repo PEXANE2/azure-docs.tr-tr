@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight kümeleri için giden ağ trafiği kısıtlamasını yapılandırma
+title: Giden ağ trafiği kısıtlamasını Yapılandırma-Azure HDInsight
 description: Azure HDInsight kümeleri için giden ağ trafiği kısıtlamasını yapılandırma hakkında bilgi edinin.
 services: hdinsight
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: df691102b565824d6cb6a86f19e6fce3822d8ba8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789799"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498139"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma (Önizleme)
 
@@ -46,7 +46,7 @@ Azure Güvenlik Duvarı ile mevcut HDInsight 'ınızdan çıkış kilitleme adı
 
 Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulama kuralı koleksiyonu oluşturun.
 
-Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar**  > **uygulama kuralı koleksiyonu**  > **uygulama kuralı koleksiyonu Ekle**' nin altındaki **kurallar** ' a tıklayın.
+Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar** > **uygulama kuralı koleksiyonu** > **uygulama kuralı koleksiyonu Ekle**' nin altındaki **kurallar** ' a tıklayın.
 
 ![Başlık: uygulama kuralı koleksiyonu Ekle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -54,13 +54,13 @@ Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar**  > **uy
 
 1. Bir **ad**, **Öncelik**girin ve **eylem** açılan menüsünden **Izin ver** ' e tıklayın ve **FQDN Etiketleri bölümüne** aşağıdaki kuralları girin:
 
-   | **Adı** | **Kaynak adres** | **FQDN etiketi** | **Notlar** |
+   | **Ad** | **Kaynak adres** | **FQDN etiketi** | **Notlar** |
    | --- | --- | --- | --- |
    | Rule_1 | * | HDInsight ve WindowsUpdate | HDI Hizmetleri için gerekli |
 
 1. **Hedef FQDN 'Ler bölümüne** aşağıdaki kuralları ekleyin:
 
-   | **Adı** | **Kaynak adres** | **Protokol: bağlantı noktası** | **Hedef FQDN 'ler** | **Notlar** |
+   | **Ad** | **Kaynak adres** | **Protokol: bağlantı noktası** | **Hedef FQDN 'ler** | **Notlar** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https: 443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
    | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
@@ -75,11 +75,11 @@ Azure portal yeni güvenlik duvarını **Test-FW01** seçin. **Ayarlar**  > **uy
 HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluşturun.
 
 1. Azure portal yeni güvenlik duvarını **Test-FW01** seçin.
-1. **Ayarlar**  > **ağ kuralı koleksiyonu**  > **ağ kuralı koleksiyonu Ekle**' nin altındaki **kurallar** ' a tıklayın.
+1. **Ayarlar** > **ağ kuralı koleksiyonu** > **ağ kuralı koleksiyonu Ekle**' nin altındaki **kurallar** ' a tıklayın.
 1. **Ağ kuralı koleksiyonu Ekle** ekranında, bir **ad**, **Öncelik**girin ve **eylem** açılan menüsünden **izin ver** ' e tıklayın.
 1. **IP adresleri** bölümünde aşağıdaki kuralları oluşturun:
 
-   | **Adı** | **Protokol** | **Kaynak adres** | **Hedef adres** | **Hedef bağlantı noktası** | **Notlar** |
+   | **Ad** | **Protokol** | **Kaynak adres** | **Hedef adres** | **Hedef bağlantı noktası** | **Notlar** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | PROTOKOLLERINDEN | * | * | `123` | Zaman hizmeti |
    | Rule_2 | Herhangi biri | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Kurumsal Güvenlik Paketi (ESP) kullanıyorsanız, IP adresleri bölümüne, ESP kümeleri için AAD-DS ile iletişime izin veren bir ağ kuralı ekleyin. Etki alanı denetleyicilerinin IP adreslerini portaldaki AAD-DS bölümünde bulabilirsiniz | 
@@ -88,7 +88,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
 1. **Hizmet etiketleri** bölümünde aşağıdaki kuralları oluşturun:
 
-   | **Adı** | **Protokol** | **Kaynak adres** | **Hizmet etiketleri** | **Hedef bağlantı noktası** | **Notlar** |
+   | **Ad** | **Protokol** | **Kaynak adres** | **Hizmet etiketleri** | **Hedef bağlantı noktası** | **Notlar** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_7 | TCP | * | SQL | `1433` | HDInsight alt ağında güvenlik duvarını atlayacak SQL Server için hizmet uç noktaları yapılandırmadığınız müddetçe SQL için hizmet etiketleri bölümünde, SQL trafiğini günlüğe kaydetme ve denetleme izni veren bir ağ kuralı yapılandırın. |
 
@@ -115,19 +115,19 @@ Aşağıdaki girişlerle bir yol tablosu oluşturun:
 
 | Yönlendirme adı | Adres ön eki | Sonraki atlama türü | Sonraki atlama adresi |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | Yok |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | Yok |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | Yok |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | Yok |
-| 13.67.223.215 | 13.67.223.215/32 | Internet | Yok |
-| 40.86.83.253 | 40.86.83.253/32 | Internet | Yok |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.67.223.215 | 13.67.223.215/32 | Internet | NA |
+| 40.86.83.253 | 40.86.83.253/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | Sanal gereç | 10.1.1.4 |
 
 Yol tablosu yapılandırmasını doldurun:
 
 1. **Ayarlar** altında **alt ağlar** ' a ve ardından **ilişkilendir**' e tıklayarak HDInsight alt ağına oluşturduğunuz yol tablosunu atayın.
 1. **Alt ağı ilişkilendir** ekranında, kümenizin oluşturulduğu sanal ağı ve HDInsight kümeniz Için kullandığınız **HDInsight alt ağını** seçin.
-1. **Tamam**’a tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-node veya özel uygulama trafiği
 
@@ -156,7 +156,7 @@ Azure Güvenlik duvarının ölçek sınırları ve istek artışları hakkında
 ## <a name="access-to-the-cluster"></a>Kümeye erişim
 Güvenlik Duvarı kurulumundan başarıyla karşılaşduktan sonra, VNET 'in içinden ambarı 'na erişmek için iç uç noktası (`https://<clustername>-int.azurehdinsight.net`) kullanabilirsiniz. 
 
-Ortak uç nokta (`https://<clustername>.azurehdinsight.net`) veya SSH uç noktası (`<clustername>-ssh.azurehdinsight.net`) kullanmak için, [burada](https://docs.microsoft.com/azure/firewall/integrate-lb)açıklanan assymetric yönlendirme sorununu önlemek için yol tablosunda ve NSG kurallarında doğru yollara sahip olduğunuzdan emin olun. Özellikle bu durumda, gelen NSG kurallarında istemci IP adresine izin vermeniz ve ayrıca sonraki atlama kümesini `internet` olarak Kullanıcı tanımlı yol tablosuna eklemeniz gerekir. Bu doğru şekilde ayarlanamadıysanız bir zaman aşımı hatası görürsünüz.
+Ortak uç nokta (`https://<clustername>.azurehdinsight.net`) veya SSH uç noktası (`<clustername>-ssh.azurehdinsight.net`) kullanmak için, [burada](https://docs.microsoft.com/azure/firewall/integrate-lb)açıklanan assymetric yönlendirme sorununu önlemek için yol tablosunda ve NSG kurallarında doğru yollara sahip olduğunuzdan emin olun. Özellikle bu durumda, gelen NSG kurallarında istemci IP adresine izin vermeniz ve ayrıca sonraki atlama kümesini `internet`olarak Kullanıcı tanımlı yol tablosuna eklemeniz gerekir. Bu doğru şekilde ayarlanamadıysanız bir zaman aşımı hatası görürsünüz.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Başka bir ağ sanal gereci yapılandırma
 
@@ -183,7 +183,7 @@ Ortak uç nokta (`https://<clustername>.azurehdinsight.net`) veya SSH uç noktas
 
 | **Bkz** | **Ayrıntılar** |
 |---|---|
-| \*:123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
+| \*: 123 | NTP saat denetimi. Trafik, 123 numaralı bağlantı noktasında birden çok uç noktaya denetlenir |
 | [Burada](hdinsight-management-ip-addresses.md) Yayınlanan IP 'ler | Bunlar HDInsight hizmetidir |
 | ESP kümeleri için AAD-DS özel IP 'Leri |
 | \*: KMS Windows etkinleştirmesi için 16800 |

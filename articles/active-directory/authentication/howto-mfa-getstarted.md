@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474343"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama
 
@@ -220,6 +220,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
 1. [Azure Portal](https://portal.azure.com) bir genel yönetici hesabı kullanarak oturum açın.
 1. **Azure Active Directory**, **koşullu erişim**' e gidin.
 1. **Yeni ilke**' yi seçin.
+   ![, pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere bir koşullu erişim ilkesi oluşturun](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. İlkeniz için anlamlı bir ad girin.
 1. **Kullanıcılar ve gruplar**altında:
    * **Dahil et** sekmesinde, **tüm kullanıcılar** radyo düğmesini seçin.
@@ -236,9 +237,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
     * **Seç**'e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
-1. **Oluştur**’a tıklayın.
-
-![Pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere koşullu erişim ilkesi oluşturma](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+1. **Oluştur**'a tıklayın.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 

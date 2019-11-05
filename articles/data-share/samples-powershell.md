@@ -1,19 +1,17 @@
 ---
 title: Azure veri paylaşımıyla ilgili Azure PowerShell örnekleri
-description: Azure veri paylaşımı önizlemesinde veri paylaşımları oluşturmanıza ve yönetmenize yardımcı olacak Azure PowerShell örnek betikler hakkında bilgi edinin.
+description: Azure veri paylaşımında veri paylaşımları oluşturmanıza ve yönetmenize yardımcı olacak Azure PowerShell örnek betikler hakkında bilgi edinin.
 ms.service: data-share
-ms.workload: data-services
-ms.topic: conceptual
-ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.date: 07/6/2019
-ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.topic: conceptual
+ms.date: 07/06/2019
+ms.openlocfilehash: c2593c4c03f48624b8b9e3b9d72a3558f5f581be
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166321"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499294"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure veri paylaşımıyla ilgili Azure PowerShell örnekleri
 
@@ -32,3 +30,9 @@ Aşağıdaki tabloda, Azure veri paylaşımında örnek Azure PowerShell betikle
 |[Veri paylaşımlarının ayrıntılarını görüntüleme](scripts/powershell/view-share-details-powershell.md)| Bu örnek PowerShell betiği, veri paylaşımlarının ayrıntılarını listeler ve alır. |
 |[Paylaşılan verilerin kullanımını izleme](scripts/powershell/monitor-usage-powershell.md)| Bu örnek PowerShell betiği, gönderilen paylaşılan verilerin kullanımını izler. |
 |[Anlık görüntü Tetikleyicileri oluşturma ve görüntüleme](scripts/powershell/create-view-trigger-powershell.md)| Bu örnek PowerShell betiği, bir paylaşımın anlık görüntü tetikleyicilerini oluşturur.
+
+
+
+
+
+

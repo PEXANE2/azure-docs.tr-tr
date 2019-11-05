@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345559"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476952"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -25,7 +25,7 @@ Azure fiyatlandırması hakkında daha fazla bilgi edinmek için bkz. [Azure fiy
 > [!NOTE]
 > Sınırı veya kotayı varsayılan sınırın üzerinde yükseltmek istiyorsanız, [ücretsiz bir çevrimiçi müşteri destek isteği açın](azure-resource-manager/resource-manager-quota-errors.md). Sınırlar, aşağıdaki tablolarda gösterilen en büyük sınır değerinin üzerinde olamaz. En fazla limit sütunu yoksa, kaynak, ayarlanabilir sınırlara sahip değildir.
 >
-> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. Varsa bir [ücretsiz deneme aboneliği](https://azure.microsoft.com/offers/ms-azr-0044p), Yükseltme yapabileceğiniz bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) abonelik. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
+> [Ücretsiz deneme abonelikleri](https://azure.microsoft.com/offers/ms-azr-0044p) sınır veya kota artışına uygun değildir. [Ücretsiz bir deneme aboneliğiniz](https://azure.microsoft.com/offers/ms-azr-0044p)varsa, bir [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/) aboneliğine yükseltebilirsiniz. Daha fazla bilgi için bkz. [Azure Ücretsiz deneme aboneliğinizi bir Kullandıkça Öde aboneliğine yükseltme](billing/billing-upgrade-azure-subscription.md) ve [ücretsiz deneme aboneliği hakkında SSS](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Sınırlar ve Azure Resource Manager
@@ -56,7 +56,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Azure Güvenlik Duvarı](#azure-firewall-limits)
 * [Azure İşlevleri](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
-* [Azure Machine Learning hizmeti](#azure-machine-learning-service-limits)
+* [Azure Machine Learning](#azure-machine-learning-limits)
 * [Azure Haritalar](#azure-maps-limits)
 * [Azure İzleyici](#azure-monitor-limits)
 * [Azure İlkesi](#azure-policy-limits)
@@ -84,6 +84,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [Ağ](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
+  * [Azure savunma](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Güvenlik Duvarı](#azure-firewall-limits)
@@ -105,7 +106,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
 * [SQL Veri Ambarı](#sql-data-warehouse-limits)
 * [Depolama](#storage-limits)
 * [StorSimple sistemi](#storsimple-system-limits)
-* [Akış Analizi](#stream-analytics-limits)
+* [Stream Analytics](#stream-analytics-limits)
 * [Abonelik](#subscription-limits)
 * [Sanal Makineler](#virtual-machines-limits)
 * [Sanal makine ölçek kümeleri](#virtual-machine-scale-sets-limits)
@@ -154,7 +155,7 @@ Aşağıdaki tabloda temel, standart ve Premium [hizmet katmanlarının](./conta
 ### <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes hizmet limitleri
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
-### <a name="azure-machine-learning-service-limits"></a>Hizmet sınırlarını Azure Machine Learning
+### <a name="azure-machine-learning-limits"></a>Azure Machine Learning sınırları
 Azure Machine Learning Işlem kotaları için en son değerler [Azure Machine Learning kota sayfasında](../articles/machine-learning/service/how-to-manage-quotas.md) bulunabilir
 
 ### <a name="networking-limits"></a>Ağ limitleri
@@ -179,6 +180,9 @@ Aşağıdaki tablo, aksi belirtilmediği takdirde v1, v2, standart ve WAF SKU 'L
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager sınırları
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
+
+#### <a name="azure-bastion-limits"></a>Azure savunma limitleri
+[!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Azure DNS sınırları
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]

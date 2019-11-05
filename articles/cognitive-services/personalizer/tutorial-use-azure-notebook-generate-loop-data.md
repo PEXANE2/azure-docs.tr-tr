@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515177"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467235"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Öğretici: Azure not defterinde kişiselleştirici kullanma
 
@@ -81,7 +81,7 @@ Dosya açıklamaları:
 
 ## <a name="configure-personalizer-resource"></a>Kişiselleştirici kaynağını yapılandırma
 
-Azure portal, [kişiselleştirici](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) kaynağınızı **güncelleştirme modeli sıklığı** 15 saniyeye ve 15 saniyelik bir **yeniden bekleme süresi** ile yapılandırın. Bu ayarlar, **[Ayarlar](how-to-settings.md#configure-service-settings-in-the-azure-portal)** sayfasında bulunur. 
+Azure portal, [kişiselleştirici](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) kaynağınızı **güncelleştirme modeli sıklığı** 15 saniyeye ve 15 saniyelik bir **yeniden bekleme süresi** ile yapılandırın. Bu değerler **[yapılandırma](how-to-settings.md#configure-service-settings-in-the-azure-portal)** sayfasında bulunur. 
 
 |Ayar|Değer|
 |--|--|
@@ -92,12 +92,12 @@ Bu öğreticideki değişiklikleri göstermek için bu değerlerin çok kısa bi
 
 ## <a name="set-up-the-azure-notebook"></a>Azure Not defteri 'ni ayarlama
 
-1. Çekirdeği `Python 3.6` olarak değiştirin. 
+1. Çekirdeği `Python 3.6`olarak değiştirin. 
 1. `Personalizer.ipynb` dosyasını açın.
 
 ## <a name="run-notebook-cells"></a>Not defteri hücrelerini Çalıştır
 
-Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar `*` yerine bir sayı görüntülerne zaman yapıldığını anlarsınız. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır. 
+Her yürütülebilir hücreyi çalıştırın ve döndürülmesini bekleyin. Hücrenin yanındaki köşeli ayraçlar `*`yerine bir sayı görüntülerne zaman yapıldığını anlarsınız. Aşağıdaki bölümlerde, her hücrenin programlı olarak ne olduğu ve çıktı için ne beklendikleri açıklanmaktadır. 
 
 ### <a name="include-the-python-modules"></a>Python modüllerini dahil et
 
@@ -114,7 +114,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Kişiselleştirici kaynak anahtarını ve adını ayarla
 
-Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. @No__t_0 değerini, kişiselleştirici kaynağınızın adı olarak değiştirin. @No__t_0 değerini, kişiselleştirici anahtarınızla değiştirin. 
+Azure portal, kişiselleştirici kaynağınızın **hızlı başlangıç** sayfasında anahtarınızı ve uç noktayı bulun. `<your-resource-name>` değerini, kişiselleştirici kaynağınızın adı olarak değiştirin. `<your-resource-key>` değerini, kişiselleştirici anahtarınızla değiştirin. 
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -136,7 +136,7 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Son model güncelleştirme zamanını al
 
-@No__t_0 işlevi çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır. 
+`get_last_updated`işlevi çağrıldığında, işlev, modelin güncelleştirildiği son değiştirilme tarihini ve saatini yazdırır. 
 
 Bu hücrelerde çıkış yok. İşlevi çağrıldığında son model eğitim tarihini çıktı olarak yapar.
 
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 Hizmetin durumunu bu iki REST çağrısı ile doğrulayın.
 
-Bu hücrelerde çıkış yok. İşlevi çağrıldığında hizmet ayarlarını çıktı olarak yapar.
+Bu hücrelerde çıkış yok. İşlevi çağrıldığında hizmet değerlerini çıktı olarak yapar.
 
 ```python
 def get_service_settings():
@@ -263,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>İlk REST çağrısının sorunlarını giderme
 
-Bu önceki hücre, Kişiselleştiriciye çağıran ilk hücredir. Çıkışdaki REST durum kodunun `<Response [200]>` olduğundan emin olun. 404 gibi bir hata alırsanız ancak kaynak anahtarınızın ve adınızın doğru olduğundan emin olun, Not defterini yeniden yükleyin.
+Bu önceki hücre, Kişiselleştiriciye çağıran ilk hücredir. Çıkışdaki REST durum kodunun `<Response [200]>`olduğundan emin olun. 404 gibi bir hata alırsanız ancak kaynak anahtarınızın ve adınızın doğru olduğundan emin olun, Not defterini yeniden yükleyin.
 
 Kahve ve kullanıcı sayısının her ikisi de 4 olduğundan emin olun. Bir hata alırsanız, tüm 3 JSON dosyalarını karşıya yüklediğinize bakın. 
 
@@ -392,7 +392,7 @@ Sonraki hücre, dizüstü bilgisayarın _ana_ çalışmadır, rastgele bir Kulla
 
 Döngü `num_requests` süreler boyunca çalışır. Kişiselleştirici, bir model oluşturmak için birkaç bin çağrıya ihtiyaç duyuyor. 
 
-Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. @No__t_0 için tüm JSON 'yi görebilirsiniz.
+Sıralama API 'sine gönderilen JSON örneği aşağıdadır. Breçekimi için kahve listesi tamamlanmamış. `coffee.json`için tüm JSON 'yi görebilirsiniz.
 
 Sıralama API 'sine gönderilen JSON:
 
@@ -549,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Gelişimi görmek için grafik sonuçları 
 
-@No__t_0 ve `rewards` bir grafik oluşturun.
+`count` ve `rewards`bir grafik oluşturun.
 
 ```python
 def createChart(x, y):
@@ -561,7 +561,7 @@ def createChart(x, y):
 
 ## <a name="run-chart-for-10000-rank-requests"></a>10.000 derecelendirme isteği için grafik Çalıştır
 
-@No__t_0 işlevini çalıştırın.
+`createChart` işlevini çalıştırın.
 
 ```python
 createChart(count,rewards)
@@ -574,11 +574,11 @@ Bu grafik, geçerli varsayılan öğrenme ilkesi için modelin başarısını g�
 ![Bu grafik, test süresi için geçerli öğrenme ilkesinin başarısını gösterir.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Testin sonuna kadar ideal hedef olan döngü, araştırmayı yüzde 100 ' a yakın olan bir başarı oranının ortalamasını elde edilir. Varsayılan araştırma ayarı %20 ' dir. 
+Testin sonuna kadar ideal hedef olan döngü, araştırmayı yüzde 100 ' a yakın olan bir başarı oranının ortalamasını elde edilir. Araştırmayla varsayılan değeri %20 ' dir. 
 
 `100-20=80`
 
-Bu araştırma ayarı, **Ayarlar** sayfasında, kişiselleştirici kaynağı için Azure Portal bulunur. 
+Bu araştırma değeri, **yapılandırma** sayfasında, kişiselleştirici kaynağı için Azure Portal bulunur. 
 
 Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak için, kişiselleştirici döngüize yönelik portalda bir [çevrimdışı değerlendirme](how-to-offline-evaluation.md) çalıştırın.
 
@@ -587,7 +587,7 @@ Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak içi
 1. Azure portal, kişiselleştirici kaynağın **değerlendirmeler** sayfasını açın.
 1. **Değerlendirme oluştur**' u seçin.
 1. Döngü değerlendirmesi için gerekli değerlendirme adı ve tarih aralığı verilerini girin. Tarih aralığı yalnızca değerlendirmenize odaklandığınız günleri içermelidir. 
-    Azure portal ![In, kişiselleştirici kaynağın değerlendirmeler sayfasını açın. Değerlendirme oluştur ' u seçin. Değerlendirme adını ve tarih aralığını girin. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    Azure portal ![, kişiselleştirici kaynağın değerlendirmeler sayfasını açın. Değerlendirme oluştur ' u seçin. Değerlendirme adını ve tarih aralığını girin.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Bu çevrimdışı değerlendirmeyi çalıştırmanın amacı, bu döngüde kullanılan özellikler ve eylemler için daha iyi bir öğrenme ilkesi olup olmadığını belirlemektir. Daha iyi öğrenme ilkesini bulmak için **iyileştirme ilkesinin** açık olduğundan emin olun.
 
@@ -598,7 +598,7 @@ Sıralama API 'sine verilerinize göre daha iyi bir öğrenme ilkesi bulmak içi
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Güncelleştirme modeli sıklığını 5 dakikaya Değiştir
 
-1. Azure portal, hala kişiselleştirici kaynağında, **Ayarlar** sayfasını seçin. 
+1. Azure portal, hala kişiselleştirici kaynağında, **yapılandırma** sayfasını seçin. 
 1. **Model güncelleştirme sıklığını** değiştirin ve **bekleme süresini** 5 dakikaya çevirin ve **Kaydet**' i seçin.
 
 Daha fazla [bekleme süresi](concept-rewards.md#reward-wait-time) ve [model güncelleştirme sıklığı](how-to-settings.md#model-update-frequency)hakkında daha fazla bilgi edinin.
@@ -642,7 +642,7 @@ jsonTemplate2 = rankactionsjsonobj
 
 ## <a name="run-chart-for-2000-rank-requests"></a>2\.000 derecelendirme isteği için grafik Çalıştır
 
-@No__t_0 işlevini çalıştırın.
+`createChart` işlevini çalıştırın.
 
 ```python
 createChart(count2,rewards2)

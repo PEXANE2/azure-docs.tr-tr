@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3204387a8e0920d2a7196edbad229bf811a9ba0a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cd118def8b9caf97f26aaa5ad5dc1f6fb015316d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958818"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469294"
 ---
-1. Azure portal [https://portal.azure.com](https://portal.azure.com) açın
+1. Azure portal menüsünde **kaynak oluştur**' u seçin.
 
-1. **Kaynak oluştur** düğmesini seçin
+    ![Azure portal menüsünü kullanarak kaynak ekleme](./media/functions-create-function-app-portal/create-function-app-resource.png)
 
-    ![Kaynak oluştur](./media/functions-create-function-app-portal/function-app-create-resource.png)
-
-1. **İşlem** > **işlev uygulaması**seçin.
-
-    ![Azure portalında işlev uygulaması oluşturma](./media/functions-create-function-app-portal/function-app-create-start.png)
+1. **Yeni** sayfasında, **işlem** > **işlev uygulaması**' ni seçin.
 
 1. Görüntünün altındaki tabloda belirtilen işlev uygulaması ayarlarını kullanın.
 
@@ -34,7 +30,7 @@ ms.locfileid: "72958818"
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. |
     | **[Kaynak Grubu](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
     | **İşlev Uygulaması adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler `a-z` (büyük/küçük harf duyarsız), `0-9`ve `-`.  |
-    |**Yayımlama**| Kodlayın | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
+    |**Yayımlama**| Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
     | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
     |**Bölge**| Tercih edilen bölge | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 

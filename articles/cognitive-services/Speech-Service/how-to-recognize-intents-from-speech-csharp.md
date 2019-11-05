@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: İçin konuşma SDK 'sını kullanarak konuşmadan amaçları tanıyınC#"
+title: "Öğretici: C# için Konuşma SDK'sını kullanarak konuşmadaki amaçları tanıma"
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide C# için Konuşma SDK'sını kullanarak konuşmadaki amaçları tanımayı öğreneceksiniz.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: cf5bf3dfd7b6a408179bb267156433168e562a8e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326844"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464632"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Öğretici: Konuşma SDK 'sını kullanarak konuşma amaçlarını tanımaC#
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Öğretici: C# için Konuşma SDK'sını kullanarak konuşmadaki amaçları tanıma
 
 Bilişsel Hizmetler [konuşma SDK 'sı](speech-sdk.md) , **Amaç tanıma**sağlamak IÇIN [Language Understanding hizmeti (Luo)](https://www.luis.ai/home) ile tümleşir. Amaç, kullanıcının yapmak istediği herhangi bir şeydir: uçak rezervasyonu, hava durumuna bakma veya telefon etme. Kullanıcı kendisine hangi terim doğal geliyorsa onu kullanabilir. Machine Learning kullanarak, LUSıS Kullanıcı isteklerini tanımladığınız amaçlar ile eşleştirir.
 
@@ -45,11 +45,12 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emi
 
 LU, konuşmadan amaçları tanımak için konuşma hizmetleriyle tümleştirilir. Konuşma Hizmetleri aboneliğine ihtiyacınız yoktur, yalnızca LUO.
 
-LUIS iki tür anahtar kullanır:
+LUSıS üç tür anahtar kullanır:
 
 |Anahtar türü|Amaç|
 |--------|-------|
 |Yazma|LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar|
+|Başlangıç|LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
 |Uç Nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
 
 Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
@@ -89,7 +90,7 @@ Ardından, projeye kod eklersiniz.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. Belirtilen `Main()` yönteminin içinde aşağıdaki kodu ekleyin:
+1. Belirtilen `Main()` yöntemi içinde aşağıdaki kodu ekleyin:
 
    ```csharp
    RecognizeIntentAsync().Wait();
@@ -97,7 +98,7 @@ Ardından, projeye kod eklersiniz.
    Console.ReadLine();
    ```
 
-1. Burada gösterildiği gibi boş bir zaman uyumsuz yöntem oluşturun `RecognizeIntentAsync()`:
+1. Burada gösterildiği gibi boş bir zaman uyumsuz yöntem `RecognizeIntentAsync()`oluşturun:
 
    ```csharp
    static async Task RecognizeIntentAsync()
@@ -123,7 +124,7 @@ Aşağıdaki bölümlerde kod açıklaması yer alır.
 
 ## <a name="create-an-intent-recognizer"></a>Amaç tanıyıcı oluşturma
 
-İlk olarak, LUSıS uç nokta anahtarınızdan ve bölgenizde bir konuşma yapılandırması oluşturmanız gerekir. Konuşma SDK 'sının çeşitli özellikleri için Tanıyıcılar oluşturmak üzere konuşma yapılandırmasını kullanabilirsiniz. Konuşma yapılandırmasında, kullanmak istediğiniz aboneliği belirtmek için birden çok yol vardır; burada, abonelik anahtarını ve bölgesini alan `FromSubscription` kullanırız.
+İlk olarak, LUSıS uç nokta anahtarınızdan ve bölgenizde bir konuşma yapılandırması oluşturmanız gerekir. Konuşma SDK 'sının çeşitli özellikleri için Tanıyıcılar oluşturmak üzere konuşma yapılandırmasını kullanabilirsiniz. Konuşma yapılandırmasında, kullanmak istediğiniz aboneliği belirtmek için birden çok yol vardır; burada, abonelik anahtarını ve bölgesini alan `FromSubscription`kullanırız.
 
 > [!NOTE]
 > Bir konuşma Hizmetleri aboneliği değil, LUSıS aboneliğiniz için anahtar ve bölge kullanın.
@@ -134,14 +135,14 @@ Daha sonra, `new IntentRecognizer(config)` kullanarak bir amaç tanıyıcı olu�
 
 Şimdi de, `LanguageUnderstandingModel.FromAppId()` kullanarak LUIS app’ten modeli içeri aktarın ve tanıyıcının `AddIntent()` yöntemi aracılığıyla tanınmasını istediğiniz LUIS amaçlarını ekleyin. Bu iki adım, kullanıcıların isteklerinde kullanabileceği sözcükleri belirterek konuşma tanımanın doğruluğunu güçlendirir. Uygulamanızda tümünü tanımak zorunda olmadığınız takdirde tüm uygulamanın amaçlarını eklemeniz gerekmez.
 
-Amaçları eklemek için üç bağımsız değişken sağlamalısınız: LUSıS modeli (oluşturulan ve `model`), amaç adı ve bir amaç KIMLIĞI. Kimlik ve ad arasındaki fark aşağıda gösterilmiştir.
+Amaçları eklemek için üç bağımsız değişken sağlamalısınız: LUSıS modeli (oluşturulan ve `model`olarak adlandırılır), amaç adı ve bir amaç KIMLIĞI. Kimlik ve ad arasındaki fark aşağıda gösterilmiştir.
 
-|`AddIntent()` @ no__t-1bağımsız değişkeni|Amaç|
+|`AddIntent()`&nbsp;bağımsız değişkeni|Amaç|
 |--------|-------|
 |intentName|LUIS app’te tanımlandığı şekliyle amacın adı. Bu değer, LUO amaç adıyla tam olarak eşleşmelidir.|
 |intentID|Konuşma SDK’sı tarafından tanınan amaca atanan kimlik. Bu değer, istediğiniz her şey olabilir; LUSıS uygulamasında tanımlanan amaç adına karşılık gelmesi gerekmez. Örneğin, aynı kodla birden çok amaç işleniyorsa, bunlar için aynı kimliği kullanabilirsiniz.|
 
-Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `RecognizeIntentAsync()` yöntemindeki üç `AddIntent` satırını bu kodla değiştirin.
+Home Automation LUIN uygulamasının iki amacı vardır: bir cihazı açmak için bir, diğeri de bir cihazı kapatmak için. Aşağıdaki satırlar bu amaçları tanıyıcıya ekler; `AddIntent` yöntemindeki üç `RecognizeIntentAsync()` satırını bu kodla değiştirin.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
@@ -175,7 +176,7 @@ LUIS varsayılan olarak ABD İngilizcesindeki (`en-us`) amaçları tanır. Konu�
 
 ## <a name="continuous-recognition-from-a-file"></a>Dosyadan sürekli tanıma
 
-Aşağıdaki kod, Konuşma SDK’sını kullanarak amaç tanımanın iki ek özelliğini gösterir. Önceden belirtildiği gibi, ilk özellik sonuçlar sağlandığında tanıyıcının olayları gösterdiği sürekli tanımadır. Ardından bu olaylar sağladığınız olay işleyicileri tarafından işlenebilir. Sürekli tanıma sayesinde, `RecognizeOnceAsync()` yerine tanıma başlamak için tanıyıcı `StartContinuousRecognitionAsync()` yöntemini çağırın.
+Aşağıdaki kod, Konuşma SDK’sını kullanarak amaç tanımanın iki ek özelliğini gösterir. Önceden belirtildiği gibi, ilk özellik sonuçlar sağlandığında tanıyıcının olayları gösterdiği sürekli tanımadır. Ardından bu olaylar sağladığınız olay işleyicileri tarafından işlenebilir. Sürekli tanıma sayesinde, `RecognizeOnceAsync()`yerine tanıma başlamak için tanıyıcı `StartContinuousRecognitionAsync()` yöntemini çağırın.
 
 Diğer özellik, işlenecek konuşmayı içeren sesin WAV dosyasından okunmasıdır. Uygulama, amaç tanıyıcı oluştururken kullanılabilecek bir ses yapılandırması oluşturmayı içerir. Bu dosya 16 kHz örnekleme hızıyla tek kanallı (mono) olmalıdır.
 
@@ -183,7 +184,7 @@ Bu özellikleri denemek için `RecognizeIntentAsync()` yönteminin gövdesini si
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 
-Daha önce olduğu gibi LUIS uç nokta anahtarınızı, bölgenizi ve app kimliğinizi dahil etmek, ayrıca Ev Otomasyonu amaçlarını eklemek için kodu düzeltin. @No__t-0 ' yı kayıtlı ses dosyanızın adıyla değiştirin. Sonra derleyin, ses dosyasını yapı dizinine kopyalayın ve uygulamayı çalıştırın.
+Daha önce olduğu gibi LUIS uç nokta anahtarınızı, bölgenizi ve app kimliğinizi dahil etmek, ayrıca Ev Otomasyonu amaçlarını eklemek için kodu düzeltin. `whatstheweatherlike.wav`, kayıtlı ses dosyanızın adıyla değiştirin. Sonra derleyin, ses dosyasını yapı dizinine kopyalayın ve uygulamayı çalıştırın.
 
 Örneğin, "ışıkları kapat" deyin, duraklatıp ve ardından kayıtlı ses dosyanızdaki "ışıkları aç" deyin, aşağıdakilere benzer konsol çıktısı görünebilir:
 
@@ -195,4 +196,4 @@ Daha önce olduğu gibi LUIS uç nokta anahtarınızı, bölgenizi ve app kimli�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşmayı algılama](quickstart-csharp-dotnetcore-windows.md)
+> [Konuşmayı algılama](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

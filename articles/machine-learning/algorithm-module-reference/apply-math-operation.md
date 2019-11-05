@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 49bab338f559b1b43389e12d98c75bbffbb25a85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694772"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493932"
 ---
 # <a name="apply-math-operation"></a>Matematik Işlemini Uygula
 
-Bu makalede Azure Machine Learning görsel arabirimi modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
 Giriş veri kümesindeki sayısal sütunlara uygulanan hesaplamalar oluşturmak için matematik Uygula Işlemini kullanın. 
 
@@ -72,7 +72,7 @@ Bu modülün her örneği aynı anda yalnızca bir işlem türü gerçekleştire
 1.  Hesaplamanın gerçekleştirileceği bir veya daha fazla kaynak sütun seçin.   
   
     - Seçtiğiniz herhangi bir sütun sayısal bir veri türü olmalıdır. 
-    - Veri aralığı, seçilen matematik işlemi için geçerli olmalıdır. Aksi takdirde, bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, LN (-1,0) geçersiz bir işlemdir ve `NaN` değeriyle sonuçlanır.
+    - Veri aralığı, seçilen matematik işlemi için geçerli olmalıdır. Aksi takdirde, bir hata veya NaN (sayı değil) sonucu oluşabilir. Örneğin, LN (-1,0) geçersiz bir işlemdir ve `NaN`değeriyle sonuçlanır.
   
 1.  Gerçekleştirilecek matematik işleminin **türünü** seçmek için **Kategori** ' ye tıklayın.
     
@@ -95,7 +95,7 @@ Sonuçları **append** veya **resultonly** seçeneklerini kullanarak oluştururs
 -   **Eşittir (Col2_Col1)** , col2 ile test edildiğini gösterir.  
 -   **Eşittir (Col2_ $10)** , sütun 2 ' yi sabit 10 ' a karşılaştırdığını gösterir.  
 
-**InPlace** seçeneğini kullanıyor olsanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun hala görsel arabirimde kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
+**InPlace** seçeneğini kullanıyor olsanız bile, kaynak veriler silinmez veya değiştirilmez; özgün veri kümesindeki sütun tasarımcıda hala kullanılabilir. Özgün verileri görüntülemek için, [sütun ekleme](add-columns.md) modülünü bağlanabilir ve **matematik işlemini Uygula işleminin**çıktısına katabilirsiniz.  
     
 ## <a name="basic-math-operations"></a>Temel matematik işlemleri 
 
@@ -208,7 +208,7 @@ Seçili sütundaki değerleri kareler.
 
 ## <a name="comparison-operations"></a>Karşılaştırma işlemleri  
 
-İki değer kümesini birbirlerine karşı test etmeniz gerektiğinde Azure Machine Learning görsel arabirimindeki karşılaştırma işlevlerini kullanın. Örneğin, bir işlem hattının bu karşılaştırma işlemlerini yapmanız gerekebilir:  
+Azure Machine Learning tasarımcısında karşılaştırma işlevlerini, iki değer kümesini birbirlerine karşı test etmeniz gereken her zaman kullanın. Örneğin, bir işlem hattının bu karşılaştırma işlemlerini yapmanız gerekebilir:  
 
 - Bir olasılık değerine karşı olasılık puanları modelinin bir sütununu değerlendirin.
 - İki sonuç kümesinin aynı olup olmadığını belirler. Farklı olan her satır için, daha fazla işleme veya filtreleme için kullanılabilecek bir yanlış bayrak ekleyin.  
@@ -280,7 +280,7 @@ Belirtilen sabit veya sütun değerleriyle **ayarlanan sütundaki** değerleri �
 
 ##  <a name="rounding-operations"></a>Yuvarlama işlemleri 
 
-Azure Machine Learning görsel arabirim, çeşitli yuvarlama işlemlerini destekler. Birçok işlem için, yuvarlama sırasında kullanılacak duyarlık miktarını belirtmeniz gerekir. Sabit olarak belirtilen bir statik duyarlık düzeyi kullanabilir veya bir değer sütunundan elde edilen dinamik bir duyarlık değeri uygulayabilirsiniz.  
+Azure Machine Learning tasarımcı, çeşitli yuvarlama işlemlerini destekler. Birçok işlem için, yuvarlama sırasında kullanılacak duyarlık miktarını belirtmeniz gerekir. Sabit olarak belirtilen bir statik duyarlık düzeyi kullanabilir veya bir değer sütunundan elde edilen dinamik bir duyarlık değeri uygulayabilirsiniz.  
 
 - Sabit kullanırsanız **duyarlık türünü** **sabit** olarak ayarlayın ve ardından **Sabit duyarlık** metin kutusunda basamak sayısını tamsayı olarak yazın. Tamsayı olmayan bir dize yazarsanız modül bir hata oluşturmaz, ancak sonuçlar beklenmedik olabilir.  
 

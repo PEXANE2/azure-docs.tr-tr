@@ -1,24 +1,24 @@
 ---
 title: 'İki sınıf destek vektör makinesi: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için Azure Machine Learning hizmetinde **Iki sınıf destek vektör makinesi** modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için Azure Machine Learning ' de **Iki sınıf destek vektör makinesi** modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692598"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485865"
 ---
 # <a name="two-class-support-vector-machine-module"></a>İki sınıf destek vektör makinesi modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için bu modülü kullanın. 
 
@@ -80,4 +80,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 7560f2395447e81dcd01e1d3e092b39b129b4ce3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8d285bf60e356f15caf55271b0791e9adc97ac14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129837"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481759"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
@@ -28,10 +28,9 @@ ms.locfileid: "71129837"
 |Gerekli|Amaç|
 |--|--|
 | Azure hesabı | Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free-azure-account] oluşturun. |
-| Container Registry erişim | Kubernetes 'in, Docker görüntülerini kümeye çekmesi için kapsayıcı kayıt defterine erişmesi gerekir. Önce [kapsayıcı kayıt defterine erişim istemeniz][vision-preview-access] gerekir. |
 | Kubernetes CLı | [Kubernetes CLI][kubernetes-cli] , paylaşılan kimlik bilgilerinin kapsayıcı kayıt defterinden yönetilmesi için gereklidir. Kubernetes, Kubernetes paket yöneticisi olan helk 'dan önce de gereklidir. |
 | Held CLı | [HELı CLI][helm-install] yüklemesinin bir parçası olarak, [Tiller][tiller-install]yükleyecek Held 'yi de başlatmalısınız. |
-| Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **Anahtarlar** sayfasındaki kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **Genel bakış** sayfasında belirtilen bitiş noktası|
+| Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -49,9 +48,9 @@ Ana bilgisayarın kullanılabilir bir Kubernetes kümesi olması beklenmektedir.
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker kimlik bilgilerini Kubernetes kümesiyle paylaşma
 
-Kubernetes kümesine, `containerpreview.azurecr.io` kapsayıcı kayıt defterinden `docker pull` yapılandırılmış görüntü (ler) e izin vermek için Docker kimlik bilgilerini kümeye aktarmanız gerekir. Kapsayıcı kayıt defteri erişim önkoşulunu tarafından belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki [komutuyürütün.`kubectl create`][kubectl-create]
+Kubernetes kümesinin, `containerpreview.azurecr.io` Container kayıt defterinden yapılandırılan resimleri `docker pull` izin vermek için, Docker kimlik bilgilerini kümeye aktarmanız gerekir. Kapsayıcı kayıt defteri erişim önkoşulu ' ndan belirtilen kimlik bilgilerine göre *Docker-Registry gizli* anahtarı oluşturmak için aşağıdaki [`kubectl create`][kubectl-create] komutunu yürütün.
 
-Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. , Ve `<username>` `<password>` 'ıkapsayıcıkayıtdefterikimlikbilgileriyle`<email-address>` değiştirdiğinizden emin olun.
+Seçtiğiniz komut satırı arabiriminizden aşağıdaki komutu çalıştırın. `<username>`, `<password>`ve `<email-address>` kapsayıcı kayıt defteri kimlik bilgileriyle değiştirdiğinizden emin olun.
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -62,7 +61,7 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> Zaten `containerpreview.azurecr.io` kapsayıcı kayıt defterine erişiminiz varsa, bunun yerine genel bayrağını kullanarak bir Kubernetes gizli dizisi oluşturabilirsiniz. Docker yapılandırmanızda JSON olarak çalıştırılan aşağıdaki komutu göz önünde bulundurun.
+> `containerpreview.azurecr.io` kapsayıcı kayıt defterine zaten erişiminiz varsa, bunun yerine genel bayrağını kullanarak bir Kubernetes gizli dizisi oluşturabilirsiniz. Docker yapılandırmanızda JSON olarak çalıştırılan aşağıdaki komutu göz önünde bulundurun.
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
@@ -75,13 +74,13 @@ Gizli dizi başarıyla oluşturulduğunda konsola aşağıdaki çıktı yazdır�
 secret "containerpreview" created
 ```
 
-Gizli dizinin oluşturulduğunu doğrulamak için [`kubectl get`][kubectl-get] `secrets` işaretini bayrağıyla yürütün.
+Gizli dizinin oluşturulduğunu doğrulamak için, [`kubectl get`][kubectl-get] `secrets` bayrağıyla yürütün.
 
 ```console
 kuberctl get secrets
 ```
 
-Yürütülmesi, `kubectl get secrets` yapılandırılan tüm gizli dizileri yazdırır.
+`kubectl get secrets` yürütmek, yapılandırılan tüm gizli dizileri yazdırır.
 
 ```console
 NAME                  TYPE                                  DATA      AGE
@@ -89,8 +88,6 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>Dağıtım için Held grafik değerlerini yapılandırma
-
-# <a name="readtabread"></a>[Okuma](#tab/read)
 
 *Oku*adlı bir klasör oluşturarak başlayın, ardından aşağıdaki YAML içeriğini *Chart. yıml*adlı yeni bir dosyaya yapıştırın.
 
@@ -101,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAML 'yi kopyalayıp adlı `values.yaml`bir dosyaya yapıştırın. `# {ENDPOINT_URI}` Ve`# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
+HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAML 'yi kopyalayıp `values.yaml`adlı bir dosyaya yapıştırın. `# {ENDPOINT_URI}` ve `# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -121,9 +118,9 @@ read:
 ```
 
 > [!IMPORTANT]
-> `billing` Ve`apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
+> `billing` ve `apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
 
-*Okuma* dizininin altında bir *Şablonlar* klasörü oluşturun. Aşağıdaki YAML 'yi kopyalayıp adlı `deployment.yaml`bir dosyaya yapıştırın. Dosya `deployment.yaml` , helb şablonu olarak görev yapar.
+*Okuma* dizininin altında bir *Şablonlar* klasörü oluşturun. Aşağıdaki YAML 'yi kopyalayıp `deployment.yaml`adlı bir dosyaya yapıştırın. `deployment.yaml` dosyası bir hela şablonu olarak görev yapar.
 
 > Şablonlar, Kubernetes 'in anlayabileceği YAML biçimli kaynak açıklamaları olan bildirim dosyaları oluşturur. [-Help grafik şablonu Kılavuzu][chart-template-guide]
 
@@ -168,99 +165,17 @@ spec:
 
 Şablon, bir yük dengeleyici hizmetini ve okuma için kapsayıcının/görüntünüzün dağıtımını belirtir.
 
-# <a name="recognize-texttabrecognize-text"></a>[Metin tanıma](#tab/recognize-text)
-
-*Metin-tanıyıcı*adlı bir klasör oluşturarak başlayın, kopyalayın ve aşağıdaki YAML içeriğini adlı `Chart.yml`yeni bir dosyaya yapıştırın.
-
-```yaml
-apiVersion: v1
-name: text-recognizer
-version: 1.0.0
-description: A Helm chart to deploy the microsoft/cognitive-services-recognize-text to a Kubernetes cluster
-```
-
-HELI grafiğinin varsayılan değerlerini yapılandırmak için aşağıdaki YAML 'yi kopyalayıp adlı `values.yaml`bir dosyaya yapıştırın. `# {ENDPOINT_URI}` Ve`# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin.
-
-```yaml
-# These settings are deployment specific and users can provide customizations
-
-recognizeText:
-  enabled: true
-  image:
-    name: cognitive-services-recognize-text
-    registry: containerpreview.azurecr.io/
-    repository: microsoft/cognitive-services-recognize-text
-    tag: latest
-    pullSecret: containerpreview # Or an existing secret
-    args:
-      eula: accept
-      billing: # {ENDPOINT_URI}
-      apikey: # {API_KEY}
-```
-
-> [!IMPORTANT]
-> `billing` Ve`apikey` değerleri sağlanmazsa, hizmetlerin süreleri 15 dakikadan sonra dolacak. Benzer şekilde, hizmetler kullanılamadığından doğrulama başarısız olur.
-
-*Metin-tanıyıcı* dizininin altında bir *Şablonlar* klasörü oluşturun. Aşağıdaki YAML 'yi kopyalayıp adlı `deployment.yaml`bir dosyaya yapıştırın. Dosya `deployment.yaml` , helb şablonu olarak görev yapar.
-
-> Şablonlar, Kubernetes 'in anlayabileceği YAML biçimli kaynak açıklamaları olan bildirim dosyaları oluşturur. [-Help grafik şablonu Kılavuzu][chart-template-guide]
-
-```yaml
-apiVersion: apps/v1beta1
-kind: Deployment
-metadata:
-  name: text-recognizer
-spec:
-  template:
-    metadata:
-      labels:
-        app: text-recognizer-app
-    spec:
-      containers:
-      - name: {{.Values.recognizeText.image.name}}
-        image: {{.Values.recognizeText.image.registry}}{{.Values.recognizeText.image.repository}}
-        ports:
-        - containerPort: 5000
-        env:
-        - name: EULA
-          value: {{.Values.recognizeText.image.args.eula}}
-        - name: billing
-          value: {{.Values.recognizeText.image.args.billing}}
-        - name: apikey
-          value: {{.Values.recognizeText.image.args.apikey}}
-      imagePullSecrets:
-      - name: {{.Values.recognizeText.image.pullSecret}}
-
---- 
-apiVersion: v1
-kind: Service
-metadata:
-  name: text-recognizer
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 5000
-  selector:
-    app: text-recognizer-app
-```
-
-Şablon, bir yük dengeleyici hizmetini ve metin tanıma için kapsayıcının/görüntünüzün dağıtımını belirtir.
-
-***
-
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes paketi (helk grafiği)
 
-*Helk grafiği* , `containerpreview.azurecr.io` kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini tanımlayan yapılandırmayı içerir.
+*Helk grafiği* `containerpreview.azurecr.io` kapsayıcı kayıt defterinden hangi Docker görüntüsünün çekeceğini yapılandırmayı içerir.
 
 > [Helk grafiği][helm-charts] , Ilgili bir Kubernetes kaynakları kümesini tanımlayan bir dosya koleksiyonudur. Tek bir grafik, bir veya daha çok karmaşık, örneğin, HTTP sunucuları, veritabanları, önbellekler gibi tam bir Web uygulaması yığını gibi basit bir şeyi dağıtmak için kullanılabilir.
 
-Belirtilen *HELI grafikleri* , görüntü işleme hizmetinin Docker görüntülerini ve `containerpreview.azurecr.io` kapsayıcı kayıt defterinden karşılık gelen hizmeti çeker.
+Belirtilen *HELI grafikleri* , görüntü işleme hizmetinin Docker görüntülerini ve `containerpreview.azurecr.io` Container kayıt defterinden karşılık gelen hizmeti çeker.
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes kümesine helk grafiğini yükler
 
-# <a name="readtabread"></a>[Okuma](#tab/read)
-
-*Helk grafiğini*yüklemek için [`helm install`][helm-install-cmd] komutunu yürütmemiz gerekir. `read` Klasörü yukarıdaki dizinden install komutunu yürütdiğinizden emin olun.
+*Helk grafiğini*yüklemek için [`helm install`][helm-install-cmd] komutunu yürütmemiz gerekir. `read` klasörünün üzerindeki dizinden install komutunu yürütdiğinizden emin olun.
 
 ```console
 helm install read --name read
@@ -297,7 +212,7 @@ kubectl get all
 Aşağıdaki çıktıya benzer bir şey görmeniz beklenir:
 
 ```console
-λ kubectl get all
+kubectl get all
 NAME                        READY   STATUS    RESTARTS   AGE
 pod/read-57cb76bcf7-45sdh   1/1     Running   0          17s
 
@@ -311,63 +226,6 @@ deployment.apps/read   1/1     1            1           17s
 NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/read-57cb76bcf7   1         1         1       17s
 ```
-
-# <a name="recognize-texttabrecognize-text"></a>[Metin tanıma](#tab/recognize-text)
-
-*Helk grafiğini*yüklemek için [`helm install`][helm-install-cmd] komutunu yürütmemiz gerekir. `text-recognizer` Klasörü yukarıdaki dizinden install komutunu yürütdiğinizden emin olun.
-
-```console
-helm install text-recognizer --name text-recognizer
-```
-
-İşte başarılı bir yüklemenin yürütülmesini beklemeniz gerekebilecek bir örnek çıktı:
-
-```console
-NAME:   text-recognizer
-LAST DEPLOYED: Thu Aug 22 13:24:06 2019
-NAMESPACE: default
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/Pod(related)
-NAME                              READY  STATUS             RESTARTS  AGE
-text-recognizer-57cb76bcf7-45sdh  0/1    ContainerCreating  0         0s
-
-==> v1/Service
-NAME             TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
-text-recognizer  LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
-
-==> v1beta1/Deployment
-NAME             READY  UP-TO-DATE  AVAILABLE  AGE
-text-recognizer  0/1    1           0          0s
-```
-
-Kubernetes dağıtımının tamamlanması birkaç dakika sürebilir. Hem yığınların hem de hizmetlerin düzgün bir şekilde dağıtıldığını ve kullanılabilir olduğunu onaylamak için aşağıdaki komutu yürütün:
-
-```console
-kubectl get all
-```
-
-Aşağıdaki çıktıya benzer bir şey görmeniz beklenir:
-
-```console
-λ kubectl get all
-NAME                                   READY   STATUS    RESTARTS   AGE
-pod/text-recognizer-57cb76bcf7-45sdh   1/1     Running   0          17s
-
-NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
-service/kubernetes        ClusterIP      10.96.0.1      <none>        443/TCP          45h
-service/text-recognizer   LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
-
-NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/text-recognizer   1/1     1            1           17s
-
-NAME                                         DESIRED   CURRENT   READY   AGE
-replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
-```
-
-***
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -395,7 +253,6 @@ Azure Kubernetes Service (AKS) ' de Held ile uygulama yükleme hakkında daha fa
 [chart-template-guide]: https://helm.sh/docs/chart_template_guide
 
 <!-- LINKS - internal -->
-[vision-preview-access]: computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry
 [vision-container-host-computer]: computer-vision-how-to-install-containers.md#the-host-computer
 [installing-helm-apps-in-aks]: ../../aks/kubernetes-helm.md
 [cog-svcs-containers]: ../cognitive-services-container-support.md

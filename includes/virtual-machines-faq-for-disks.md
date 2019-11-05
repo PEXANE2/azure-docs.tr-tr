@@ -1,6 +1,6 @@
 ---
-title: dosya ekle
-description: dosya ekle
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
-ms.translationtype: MT
+ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973008"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524021"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ve yönetilen ve yönetilmeyen Premium diskler hakkında sık sorulan sorular
 
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
-## <a name="managed-disks"></a>Yönetilen diskler
+## <a name="managed-disks"></a>Yönetilen Diskler
 
 **Azure yönetilen diskler nedir?**
 
@@ -27,15 +27,15 @@ Yönetilen diskler, depolama hesabı yönetimini sizin için işleyerek Azure Ia
 
 **Mevcut bir VHD 'den 80 GB olan standart bir yönetilen disk oluşturdum, ne kadar ücret alınacaktır?**
 
-80 GB 'lık bir VHD 'den oluşturulan standart bir yönetilen disk, S10 disk olan bir sonraki kullanılabilir standart disk boyutu olarak değerlendirilir. S10 disk fiyatlandırmasına göre ücretlendirilirsiniz. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
+80 GB 'lık bir VHD 'den oluşturulan standart bir yönetilen disk, S10 disk olan bir sonraki kullanılabilir standart disk boyutu olarak değerlendirilir. S10 disk fiyatlandırmasına göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
 **Standart yönetilen diskler için herhangi bir işlem maliyeti var mı?**
 
-Evet. Her işlem için ücretlendirilirsiniz. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
+Evet. Her bir işlem için ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
 **Standart yönetilen bir disk için, diskteki verilerin gerçek boyutu veya diskin sağlanmış kapasitesi için ücretlendirilecektir mi?**
 
-Diskin sağlanan kapasitesine göre ücretlendirilirsiniz. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
+Diskin sağlanan kapasitesine göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
 **Premium yönetilen disklerin fiyatlandırması yönetilmeyen disklerden nasıl farklıdır?**
 
@@ -145,6 +145,30 @@ GPT bölümlendirme, işletim sistemi disklerinde değil yalnızca veri diskleri
 
 Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu üç disk türü için, tüm disk boyutları (boyut olarak 32 TiB 'ye kadar olan diskler dahil) için anlık görüntüler desteklenir. Ultra diskler anlık görüntüleri desteklemez.
 
+### <a name="disk-reservation"></a>Disk ayırma
+
+**Azure disk ayırması nedir?**
+Disk ayırma, toplam maliyetinizi azaltmak için önceden bir yıllık disk depolama alanı satın alma seçeneğidir.
+
+**Azure disk rezervasyonu hangi seçenekleri sunar?**
+Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca, tek, ön ödeme veya aylık ödemeler ile ödeme yapmayı tercih edebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur.
+
+Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske Divvy. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
+
+**Azure disk ayırması için nasıl faturalandırılırım?**
+- Kurumsal Anlaşma (EA) müşterileri için Azure parasal taahhüt, ilk olarak Azure disk ayırmalarını satın almak için kullanılacaktır. EA müşterilerinin tüm parasal taahhüdünü kullanmış olduğu senaryolarda, disk rezervasyonları yine de satın alınabilir ve bu satın alma işlemleri bir sonraki fazla kullanım faturanızda tek, ön ödeme için faturalandırılır.
+
+- Azure.com aracılığıyla satın alan müşteriler için satın alma sırasında dosyadaki kredi kartı, Azure diskleri rezervasyonuna ait tam ödeme (veya aylık sabit ödemeler) için ücretlendirilir.
+
+**Azure disk ayırması nasıl uygulanır?**
+Diskler ayırması, ayrılmış sanal makine (VM) örneklerine benzer bir model izler. Bir sanal makine örneği, bir disk rezervasyonunun farklı SKU 'Lara uygulanamadığından farklılık gösteren fark. VM örnekleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örnekleri ile maliyetleri kaydetme](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) . 
+
+**Birden çok bölgede Azure diskleri ayırması aracılığıyla satın alınan veri depolama alanını kullanabilir miyim?**
+Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gibi) için satın alınır ve bu nedenle bu yapılar dışında kullanılamaz. Diğer bölgelerde veya SKU 'Larda disk depolama gereksinimleriniz için her zaman ek bir Azure diskleri ayırması satın alabilirsiniz.
+
+**Azure disklerimin ayırması sona erdiğinde ne olur?**
+Süresi dolmadan 30 gün önce ve sona erme tarihinde bir süre sonra bir e-posta bildirimi alacaksınız. Ayırma süresi dolduktan sonra, dağıtılan diskler çalışmaya devam eder ve en son [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır.
+
 ## <a name="ultra-disks"></a>Ultra diskler
 
 **Hangi bölgeler Şu anda Ultra diskleri destekliyor?**
@@ -218,8 +242,8 @@ Evet, Azure Backup artık kullanılabilir.
 **Nasıl yaparım? Standart SSD diskler mi oluşturulsun?**
 Azure Resource Manager şablonları, SDK, PowerShell veya CLı kullanarak Standart SSD diskleri oluşturabilirsiniz. Standart SSD disk oluşturmak için Kaynak Yöneticisi şablonunda gereken parametreler şunlardır:
 
-* Microsoft. COMPUTE için *Apiversion* , `2018-04-01` (veya üzeri) olarak ayarlanmalıdır
-* @No__t-1 olarak *Manageddisk. storageAccountType* belirtin
+* Microsoft. COMPUTE için *Apiversion* , `2018-04-01` olarak ayarlanmalıdır (veya üzeri)
+* *Manageddisk. storageAccountType* as `StandardSSD_LRS` belirtin
 
 Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. storageProfile. osDisk* bölümünü gösterir:
 
@@ -238,7 +262,7 @@ Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. st
 Şablon ile Standart SSD disk oluşturma hakkında ayrıntılı bir örnek için, bkz. [Standart SSD Veri disklerine sahip bir Windows GÖRÜNTÜSÜNDEN VM oluşturma](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 **Mevcut disklerimi Standart SSD dönüştürebilir miyim?**
-Evet, şunları yapabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
+Evet, uygulayabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
 -AccountType StandardSSD_LRS
 
 **HDD yerine Standart SSD diskleri kullanmanın avantajı nedir?**
@@ -250,7 +274,7 @@ Hayır, standart SSD diskler yalnızca yönetilen diskler olarak kullanılabilir
 **Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
 Hayır, standart SSD 'Lerin tek örnekli VM SLA 'Sı yoktur. Tek örnekli VM SLA 'Sı için Premium SSD diskleri kullanın.
 
-## <a name="migrate-to-managed-disks"></a>Yönetilen disklere geçirme
+## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere geçme
 
 **Yönetilen diskler performansında geçişin etkileri var mı?**
 
@@ -335,6 +359,18 @@ Hayır. Ancak, şifrelenen bir yönetilen diskten veya anlık görüntüsünden 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium diskler: yönetilen ve yönetilmeyen
 
+**Hangi bölgeler geçerli Premium SSD disk boyutu için ne kadar fazla özelliği destekler?**
+
+Patlama özelliği şu anda Azure Orta Batı ABD 'da desteklenmektedir.
+
+**Hangi bölgeler 4/8/16 GiB yönetilen disk boyutlarına (P1/P2/P3, E1/E2/E3) destekleniyor?**
+
+Bu yeni disk boyutları şu anda Azure Orta Batı ABD 'da desteklenmektedir.
+
+**, Yönetilmeyen diskler veya sayfa Blobları için P1/P2/P3 disk boyutları desteklenir mi?**
+
+Hayır, yalnızca Premium SSD yönetilen disklerde desteklenir. 
+
 **Bir VM, DSv2 gibi Premium SSD diskleri destekleyen bir boyut serisi kullanıyorsa hem Premium hem de standart veri disklerini ekleyebilir miyim?** 
 
 Evet.
@@ -349,7 +385,7 @@ Bir 80 GB VHD 'den oluşturulan Premium veri diski, P10 disk olan bir sonraki ku
 
 **Premium SSD diskleri kullanmak için işlem maliyetleri var mı?**
 
-Her disk boyutu için sabit bir maliyet vardır ve bu, ıOPS ve aktarım hızı için belirli limitlerle sağlanır. Varsa, diğer maliyetler ise giden bant genişliğidir ve anlık görüntü kapasitesidir. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
+Her disk boyutu için sabit bir maliyet vardır ve bu, ıOPS ve aktarım hızı için belirli limitlerle sağlanır. Varsa, diğer maliyetler ise giden bant genişliğidir ve anlık görüntü kapasitesidir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
 **Disk önbelleğinden alabileceği ıOPS ve aktarım hızı sınırları nelerdir?**
 

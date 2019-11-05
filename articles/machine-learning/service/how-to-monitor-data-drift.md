@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 09/13/2019
-ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123277"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489654"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Bu makalede, dağıtılan bir modelin eğitim veri kümesi ve çıkarım verileri arasında veri kayması izlemeyi öğreneceksiniz. Makine öğrenimi bağlamında eğitilen makine öğrenimi modelleri, Drın nedeniyle düşürülmüş tahmin performansına neden olabilir. Azure Machine Learning, veri drınızı izleyebilir ve hizmet, Drın algılandığında size bir e-posta uyarısı gönderebilir.
 
@@ -40,7 +41,7 @@ Azure Machine Learning, AKS üzerinde dağıtılan bir modelin girişlerini izle
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Azure Machine Learning ' de verileri Drın nasıl izlenir
 
-Azure Machine Learning kullanarak, veri kümeleri veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine profil oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](machine-learning-interpretability-explainability.md)kullanarak, değişikliklerini katlarına katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
+Azure Machine Learning kullanarak, veri kümeleri veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine profil oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](how-to-machine-learning-interpretability.md)kullanarak, değişikliklerini katlarına katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -58,12 +59,12 @@ Azure Machine Learning kullanarak, veri kümeleri veri kümeleri veya dağıtım
 - Aşağıdaki komutu kullanarak verileri DRFT SDK 'yi yükler:
 
     ```shell
-    pip install azureml-contrib-datadrift
+    pip install azureml-datadrift
     ```
 
 - Modelinizin eğitim verilerinden bir [veri kümesi](how-to-create-register-datasets.md) oluşturun.
 
-- Modeli [kaydederken](concept-model-management-and-deployment.md) eğitim veri kümesini belirtin. Aşağıdaki örnek, eğitim veri kümesini `datasets` belirtmek için parametresini kullanmayı göstermektedir:
+- Modeli [kaydederken](concept-model-management-and-deployment.md) eğitim veri kümesini belirtin. Aşağıdaki örnek, eğitim veri kümesini belirtmek için `datasets` parametresini kullanmayı gösterir:
 
     ```python
     model = Model.register(model_path=model_file,
@@ -74,17 +75,17 @@ Azure Machine Learning kullanarak, veri kümeleri veri kümeleri veya dağıtım
     print(model_name, image_name, service_name, model)
     ```
 
-- Modelin aks dağıtımından veri toplamak için [model veri toplamayı etkinleştirin](how-to-enable-data-collection.md) ve verilerin `modeldata` blob kapsayıcısında toplanmakta olduğunu onaylayın.
+- Modelin AKS dağıtımından veri toplamak için [model veri toplamayı etkinleştirin](how-to-enable-data-collection.md) ve verilerin `modeldata` blob kapsayıcısında toplandığını onaylayın.
 
 ## <a name="configure-data-drift"></a>Veri drbir yapılandırma
 Denemeniz için veri kayması yapılandırmak üzere aşağıdaki Python örneğinde görüldüğü gibi bağımlılıkları içeri aktarın. 
 
-Bu örnek, [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) nesnesinin yapılandırılmasını gösterir:
+Bu örnekte [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) nesnesinin yapılandırılması gösterilmektedir:
 
 ```python
 # Import Azure ML packages
 from azureml.core import Experiment, Run, RunDetails
-from azureml.contrib.datadrift import DataDriftDetector, AlertConfiguration
+from azureml.datadrift import DataDriftDetector, AlertConfiguration
 
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
@@ -97,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Datadriftalgılayıcısı çalıştırması gönder
 
-Yapılandırılmış nesne ile, model için belirli bir tarihte bir [veri DRI çalıştırması](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) gönderebilirsiniz. `DataDriftDetector` Çalıştırmanın bir parçası olarak, `drift_threshold` parametresini ayarlayarak datadrftalgılayıcısı uyarılarını etkinleştirin. [Datadrift_coefficient](#metrics) verilen `drift_threshold`varsa, bir e-posta gönderilir.
+`DataDriftDetector` nesne yapılandırıldığında, model için verilen bir tarih üzerinde bir [veri DRI çalışması](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) gönderebilirsiniz. Çalıştırmanın bir parçası olarak `drift_threshold` parametresini ayarlayarak Datadriftalgılayıcısı uyarılarını etkinleştirin. [Datadrift_coefficient](#metrics) verilen `drift_threshold`üstündeyse, bir e-posta gönderilir.
 
 ```python
 # adhoc run today
@@ -131,9 +132,9 @@ datadrift_contribution|Drift 'e katkıda bulunan özelliklerin özellik önemi.|
 
 DRFT ölçümlerini görüntülemenin birden çok yolu vardır:
 
-* [Jupyıter pencere öğesini kullanın.](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) `RunDetails`
-* İşlevi herhangi bir `datadrift` çalıştırma nesnesi üzerinde kullanın. [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-)
-* [Çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **modeller** bölümünden ölçümleri görüntüleyin.
+* `RunDetails`[Jupyıter pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)kullanın.
+* Herhangi bir `datadrift` Run nesnesi üzerinde [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) işlevini kullanın.
+* [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızın **modeller** bölümünden ölçümleri görüntüleyin.
 
 Aşağıdaki Python örneği, ilgili veri kayması ölçümlerinin nasıl çizeceğinizi gösterir. Döndürülen ölçümleri özel görselleştirmeler oluşturmak için kullanabilirsiniz:
 
@@ -151,22 +152,22 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Veri drmaları zamanlama 
 
-Veri drime algılamasını etkinleştirdiğinizde, belirtilen ve zamanlanan sıklıkta bir Datadriftalgılayıcısı çalıştırılır. Datadrift_coefficient verilen `drift_threshold`değere ulaşırsa, zamanlanan her çalıştırma ile bir e-posta gönderilir. 
+Veri drime algılamasını etkinleştirdiğinizde, belirtilen ve zamanlanan sıklıkta bir Datadriftalgılayıcısı çalıştırılır. Datadrift_coefficient verilen `drift_threshold`ulaşırsa, zamanlanan her çalıştırma ile bir e-posta gönderilir. 
 
 ```python
 datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-Veri kayması algılayıcısı yapılandırması, [çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **Ayrıntılar** sekmesinde **modeller** altında görülebilir.
+Veri dritörü yapılandırması, [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızdaki **Ayrıntılar** sekmesinde **modeller** altında görülebilir.
 
-![Azure portal veri kayması](media/how-to-monitor-data-drift/drift-config.png)
+![Azure Machine Learning Studio veri kayması](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-your-workspace-landing-page"></a>Çalışma alanınızın giriş sayfasında sonuçları görüntüleme
+## <a name="view-results-in-your-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'daki sonuçları görüntüleme
 
-Çalışma alanı [giriş sayfasında (Önizleme)](https://ml.azure.com)çalışma alanınızdaki sonuçları görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri DRI yapılandırması gösterilir. Veri **Drın bir sekmesi** artık veri yük ölçümlerinin görselleştirilmesi için kullanılabilir. 
+[Azure Machine Learning Studio](https://ml.azure.com)'da çalışma alanınızdaki sonuçları görüntülemek için model sayfasına gidin. Modelin Ayrıntılar sekmesinde, veri DRI yapılandırması gösterilir. Veri **Drın bir sekmesi** artık veri yük ölçümlerinin görselleştirilmesi için kullanılabilir. 
 
-[![çalışma alanı giriş sayfası Veri kayması](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
+[![Azure Machine Learning Studio veri kayması](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
 
 ## <a name="receiving-drift-alerts"></a>DRFT uyarıları alma

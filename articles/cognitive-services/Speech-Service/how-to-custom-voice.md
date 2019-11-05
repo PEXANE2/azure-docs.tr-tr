@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959408"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464521"
 ---
-# <a name="get-started-with-custom-voice"></a>Özel sesle çalışmaya başlama
+# <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
 
 [Özel ses](https://aka.ms/customvoice) , markanız için tanınabilir, tek bir tür ses oluşturmanıza olanak sağlayan bir dizi çevrimiçi araç. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Özel bir metin okuma deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
 
@@ -36,6 +36,13 @@ Aşağıdaki diyagramda [özel ses portalını](https://aka.ms/customvoice)kulla
 3.  [Modelinize eğitme](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) : verilerinizi kullanarak özel bir metinden konuşmaya ses modeli oluşturun. Modeli farklı dillerde eğitebilirsiniz. Eğitim sonrasında modelinizi test edin ve sonuçtan memnun kaldıysanız modeli dağıtabilirsiniz.
 
 4.  [Modelinizi dağıtın](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) -metinden konuşmaya ses modeliniz için özel bir uç nokta oluşturun ve bunu, ürün, araç ve uygulamalarınızda konuşma sensimi için kullanın.
+
+## <a name="custom-neural-voices"></a>Özel sinir sesleri
+
+Sinir ses özelleştirme özelliği şu anda seçili müşterilerle sınırlı olan genel önizlemededir. Başlamak için bu [uygulama formunu](https://go.microsoft.com/fwlink/?linkid=2108737) doldurun.
+
+> [!NOTE]
+> Microsoft 'un sorumlu AI tasarlama taahhüdünün bir parçası olarak, bireyler ve topluluğu 'in haklarını korumaktır. Bu nedenle, özel sinir Voice tüm müşterilerin genel kullanımına açık değildir. Teknolojiden yalnızca uygulamalarınız incelendikten ve bunu etlenmiş ICS ilkelerimize göre hizalı olarak kullanmayı taahhüt ettikten sonra erişebilirsiniz. [Uygulama geçişi sürecimiz](https://aka.ms/custom-neural-gating-overview)hakkında daha fazla bilgi edinin.
 
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 

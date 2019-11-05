@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121989"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470138"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Service etki alanı ve SSL sertifikası sorunlarını giderme
 
 Bu makalede, Azure App Service ' de Web uygulamalarınız için bir etki alanı veya SSL sertifikası yapılandırdığınızda karşılaşabileceğiniz yaygın sorunlar listelenmektedir. Ayrıca, bu sorunlara yönelik olası nedenler ve çözümler açıklanmaktadır.
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -70,33 +70,33 @@ Bu sertifikanın SSL bağlamasını uygulamalardan kaldırın. Ardından sertifi
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>App Service sertifikası satın alamazsınız 
 
 #### <a name="symptom"></a>Belirti
-Azure portal bir [Azure App Service sertifikası](./web-sites-purchase-ssl-web-site.md) satın alamazsınız.
+Azure portal bir [Azure App Service sertifikası](./configure-ssl-certificate.md#import-an-app-service-certificate) satın alamazsınız.
 
 #### <a name="cause-and-solution"></a>Neden ve çözüm
 Bu sorun, aşağıdakilerden herhangi biri nedeniyle oluşabilir:
 
 - App Service planı ücretsizdir veya paylaşılır. Bu fiyatlandırma katmanları SSL 'yi desteklemez. 
 
-    **Çözüm**: Uygulama için App Service planını standart olarak yükseltin.
+    **Çözüm**: uygulama için App Service planını standart olarak yükseltin.
 
 - Aboneliğin geçerli bir kredi kartı yok.
 
-    **Çözüm**: Aboneliğinize geçerli bir kredi kartı ekleyin. 
+    **Çözüm**: aboneliğinize geçerli bir kredi kartı ekleyin. 
 
 - Abonelik teklifi, Microsoft öğrenci gibi bir App Service sertifikası satın almayı desteklemez.  
 
-    **Çözüm**: Aboneliğinizi yükseltin. 
+    **Çözüm**: aboneliğinizi yükseltin. 
 
 - Abonelik, bir abonelikte izin verilen satın alma sınırına ulaştı.
 
-    **Çözüm**: App Service sertifikaların, Kullandıkça öde ve EA Abonelik türleri için 10 sertifika satın alma limiti vardır. Diğer abonelik türleri için sınır 3 ' tür. Limiti artırmak için [Azure desteğine](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
-- App Service sertifikası sahtekarlık olarak işaretlendi. Aşağıdaki hata iletisini aldınız: "Sertifikanız olası sahtekarlık için işaretlendi. İstek şu anda gözden geçirme aşamasındadır. Sertifika 24 saat içinde kullanılabilir duruma gelmezse Azure desteği 'ne başvurun. "
+    **Çözüm**: App Service sertifikalarda, Kullandıkça öde ve EA Abonelik türleri için 10 sertifika satın alma limiti vardır. Diğer abonelik türleri için sınır 3 ' tür. Limiti artırmak için [Azure desteğine](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
+- App Service sertifikası sahtekarlık olarak işaretlendi. Şu hata iletisini aldınız: "sertifikanız olası sahtekarlık için işaretlendi. İstek şu anda gözden geçirme aşamasındadır. Sertifika 24 saat içinde kullanılabilir duruma gelmezse Azure desteği 'ne başvurun. "
 
-    **Çözüm**: Sertifika sahtekarlık olarak işaretlenmişse ve 24 saat sonra çözümlenmiyorsa, şu adımları izleyin:
+    **Çözüm**: sertifika sahtekarlık olarak işaretlenmişse ve 24 saat sonra çözümlenmiyorsa, şu adımları izleyin:
 
-    1. [Azure Portal](https://portal.azure.com) oturum açın.
+    1. [Azure portalında](https://portal.azure.com) oturum açın.
     2. **App Service sertifikalar**' a gidin ve sertifikayı seçin.
-    3. **Sertifika yapılandırması** > Adım2'yiseçin:**Etki alanı doğrulamasını**doğrulayın. >  Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
+    3. **Sertifika yapılandırması** ' nı seçin > **2. Adım:**  > **etki alanı doğrulamasını**doğrulayın. Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
 
 ## <a name="custom-domain-problems"></a>Özel etki alanı sorunları
 
@@ -126,7 +126,7 @@ Internet tarayıcısı, etki alanınız için eski IP adresini önbelleğe almay
 
 **Neden 2 için çözüm**
 
-Tarayıcıyı temizleyin. Windows cihazları için komutunu `ipconfig /flushdns`çalıştırabilirsiniz. Etki alanınızı uygulamanın IP adresine işaret ettiğini doğrulamak için [WhatsmyDNS.net](https://www.whatsmydns.net/) kullanın. 
+Tarayıcıyı temizleyin. Windows cihazları için `ipconfig /flushdns`komutu çalıştırabilirsiniz. Etki alanınızı uygulamanın IP adresine işaret ettiğini doğrulamak için [WhatsmyDNS.net](https://www.whatsmydns.net/) kullanın. 
 
 ### <a name="you-cant-add-a-subdomain"></a>Alt etki alanı ekleyemezsiniz 
 
@@ -196,9 +196,9 @@ App Service, sertifikanızı 48 saat içinde otomatik olarak eşitler. Bir serti
 
 Sertifikanın eşitlenmesini zorunlu hale getirebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **App Service sertifikaları**' nı seçin ve ardından sertifikayı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **App Service sertifikaları**' nı seçin ve ardından sertifikayı seçin.
 2. Yeniden **anahtarlama ve eşitleme**' yi seçin ve ardından **Eşitle**' yi seçin. Eşitlemenin tamamlaması biraz zaman alır. 
-3. Eşitleme tamamlandığında aşağıdaki bildirimi görürsünüz: "Tüm kaynaklar en son sertifika ile başarıyla güncelleştirildi."
+3. Eşitleme tamamlandığında, şu bildirimi görürsünüz: "tüm kaynaklar en son sertifika ile başarıyla güncelleştirildi."
 
 ### <a name="domain-verification-is-not-working"></a>Etki alanı doğrulaması çalışmıyor 
 
@@ -219,7 +219,7 @@ Alternatif olarak, etki alanınızı el ile doğrulamak için HTML Web sayfası 
 3.  Bu dosyayı, etki alanınızı barındıran Web sunucusunun köküne yükleyin.
 4.  Sertifika durumunu denetlemek için **Yenile** ' yi seçin. Doğrulamanın tamamlanması birkaç dakika sürebilir.
 
-Örneğin, etki alanı doğrulama belirteci 1234abcd ile Azure.com için standart bir sertifika satın aldıysanız, ' ye https://azure.com/1234abcd.html yapılan bir Web isteği, 1234abcd döndürmelidir. 
+Örneğin, etki alanı doğrulama belirteci 1234abcd ile azure.com için standart bir sertifika satın alırsanız, https://azure.com/1234abcd.html yapılan bir Web isteği 1234abcd döndürmelidir. 
 
 > [!IMPORTANT]
 > Bir sertifika sırasının, etki alanı doğrulama işlemini tamamlaması için yalnızca 15 gün vardır. 15 gün sonra, sertifika yetkilisi sertifikayı reddeder ve sertifika için ücretlendirilirsiniz. Bu durumda, bu sertifikayı silip yeniden deneyin.
@@ -237,14 +237,14 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
 - Azure aboneliğinde kredi kartı yok veya kredi kartı geçersiz.
 
-    **Çözüm**: Aboneliğinize geçerli bir kredi kartı ekleyin.
+    **Çözüm**: aboneliğinize geçerli bir kredi kartı ekleyin.
 
 - Abonelik sahibi olmadığınızdan, bir etki alanı satın alma izniniz yok.
 
-    **Çözüm**: Hesabınıza [sahip rolünü atayın](../role-based-access-control/role-assignments-portal.md) . Ya da bir etki alanı satın alma izni almak için abonelik yöneticisine başvurun.
+    **Çözüm**: [sahibi rolünü hesabınıza atayın](../role-based-access-control/role-assignments-portal.md) . Ya da bir etki alanı satın alma izni almak için abonelik yöneticisine başvurun.
 - Aboneliğinizdeki etki alanı satın alma sınırına ulaştınız. Geçerli sınır 20 ' dir.
 
-    **Çözüm**: Sınıra bir artış istemek için [Azure desteğine](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
+    **Çözüm**: sınıra bir artış Istemek için [Azure desteğine](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
 - Azure abonelik türü App Service bir etki alanının satın alınmasını desteklemez.
 
     **Çözüm**: Azure aboneliğinizi, Kullandıkça Öde aboneliği gibi başka bir abonelik türüne yükseltin.
@@ -261,12 +261,12 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
 - Ana bilgisayar adı ekleme izniniz yok.
 
-    **Çözüm**: Abonelik yöneticisinden bir ana bilgisayar adı ekleme izni vermesini isteyin.
+    **Çözüm**: abonelik yöneticisinden bir ana bilgisayar adı ekleme izni vermesini isteyin.
 - Etki alanı sahipliğiniz doğrulanamadı.
 
-    **Çözüm**: CNAME veya kaydlarınızın doğru şekilde yapılandırıldığını doğrulayın. Özel bir etki alanını bir uygulamayla eşlemek için bir CNAME kaydı veya bir kayıt oluşturun. Kök etki alanı kullanmak istiyorsanız, ve TXT kayıtlarını kullanmanız gerekir:
+    **Çözüm**: CNAME veya bir kaydın doğru yapılandırıldığını doğrulayın. Özel bir etki alanını bir uygulamayla eşlemek için bir CNAME kaydı veya bir kayıt oluşturun. Kök etki alanı kullanmak istiyorsanız, ve TXT kayıtlarını kullanmanız gerekir:
 
-    |Kayıt türü|Ana bilgisayar|Üzerine gelin|
+    |Kayıt türü|Host|Üzerine gelin|
     |------|------|-----|
     |A|@|Bir uygulama için IP adresi|
     |TXT|@|`<app-name>.azurewebsites.net`|
@@ -276,7 +276,7 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
 **Web siteme özel etki alanım 'ı satın aldıktan sonra yapılandırmam gerekir mi?**
 
-Azure portal bir etki alanı satın aldığınızda, App Service uygulama otomatik olarak bu özel etki alanını kullanacak şekilde yapılandırılır. Ek adımlar uygulamanız gerekmez. Daha fazla bilgi için Azure App Service [kendi kendine yardım 'ı izleyin: Channel9 üzerinde özel bir etki](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) alanı adı ekleyin.
+Azure portal bir etki alanı satın aldığınızda, App Service uygulama otomatik olarak bu özel etki alanını kullanacak şekilde yapılandırılır. Ek adımlar uygulamanız gerekmez. Daha fazla bilgi için [Azure App Service kendi kendine yardım: Channel9 'de özel etki alanı adı ekleme](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) ' yi izleyin.
 
 **Azure portal satın alınan bir etki alanını bir Azure VM 'ye işaret etmek için kullanabilir miyim?**
 
@@ -286,7 +286,7 @@ Evet, etki alanını bir VM 'ye işaret edebilirsiniz. Daha fazla bilgi için bk
 
 App Service etki alanları, etki alanı kaydı için GoDaddy kullanır ve etki alanlarını barındırmak için Azure DNS. 
 
-**Otomatik yenilemem, ancak e-posta yoluyla etki alanım için bir yenileme bildirimi aldı. Ne yapmalıyım?**
+**Otomatik yenilemem, ancak e-posta yoluyla etki alanım için bir yenileme bildirimi aldı. Ne yapmam gerekir?**
 
 Otomatik yenilemeyi etkinleştirdiyseniz, herhangi bir işlem yapmanız gerekmez. Bildirim e-postası, etki alanının süresi dolmak üzere olduğunu ve otomatik yenileme etkinleştirilmemişse el ile yenilemeyi bilgilendirmek için sağlanır.
 

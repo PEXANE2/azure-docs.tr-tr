@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a45755ca13aed6a514b548674ef424c40238fa42
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694746"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493832"
 ---
 # <a name="clip-values"></a>Klip değerleri
 
-Bu makalede Azure Machine Learning görsel arabirimi modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
 Belirtilen eşiğin üstünde veya altında olan veri değerlerini bir ortalama, sabit veya diğer bir alternatif değerle tanımlamak ve isteğe bağlı olarak değiştirmek için klip değerleri modülünü kullanın.  
 

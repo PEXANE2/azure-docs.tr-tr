@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8b8e7270851c71869b1a67f0f0f0ba2187f0e87
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069703"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470663"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Sertifikalar ve App Service Ortamı 
 
@@ -64,7 +64,7 @@ ASA 'da barındırılan uygulamalar, çok kiracılı App Service bulunan uygulam
 - Yalnızca bir dış Ao ile desteklenen IP tabanlı SSL.  ILB ATıCı, IP tabanlı SSL 'yi desteklemez.
 - Anahtar Kasası barındırılan sertifikaları 
 
-Bu sertifikaları yükleme ve yönetmeye yönelik yönergeler App Service SSL öğreticisinde https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl bulunabilir.  Sertifikaları Web uygulamanıza atadığınız özel bir etki alanı adıyla eşleşecek şekilde yapılandırıyorsanız, bu yönergeler de yeterli olur. Bir ıLB Ao Web uygulaması için sertifikayı varsayılan etki alanı adıyla karşıya yüklüyorsanız, daha önce belirtildiği gibi sertifikanın SAN 'ında SCM sitesini belirtin. 
+Bu sertifikaları yükleme ve yönetmeye yönelik yönergeler [Azure App Service ' de SSL sertifikası Ekle](../configure-ssl-certificate.md)' de kullanılabilir.  Sertifikaları Web uygulamanıza atadığınız özel bir etki alanı adıyla eşleşecek şekilde yapılandırıyorsanız, bu yönergeler de yeterli olur. Bir ıLB Ao Web uygulaması için sertifikayı varsayılan etki alanı adıyla karşıya yüklüyorsanız, daha önce belirtildiği gibi sertifikanın SAN 'ında SCM sitesini belirtin. 
 
 ## <a name="tls-settings"></a>TLS ayarları 
 
@@ -82,7 +82,7 @@ Uygulamanızı kendi AŞIRINIZDEKI uygulamanıza yüklemek için:
 4. Parmak izini kopyalayın.
 5. Uygulama ayarları ' na gidin. Değer olarak parmak izine sahip WEBSITE_LOAD_ROOT_CERTIFICATES bir uygulama ayarı oluşturun. Birden çok sertifikanız varsa, bunları virgülle ayırarak aynı ayara ve şu şekilde boşluk olmaksızın koyabilirsiniz 
 
-    84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
+    84EC242A4EC7957817B8E48913E50953552DAFA6, 6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
 Sertifika, bu ayarı yapılandıran uygulamayla aynı App Service planındaki tüm uygulamalar tarafından kullanılabilir. Farklı bir App Service planındaki uygulamalar için kullanılabilir olması gerekiyorsa, bu App Service planındaki bir uygulamada uygulama ayarı işlemini tekrarlamanız gerekir. Sertifikanın ayarlandığını denetlemek için, kudu konsoluna gidin ve PowerShell hata ayıklama konsolunda aşağıdaki komutu verin:
 

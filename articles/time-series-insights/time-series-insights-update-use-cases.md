@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed302b9c98cf5931afa745f5aab4611a54fedb60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989998"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492061"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
 
@@ -60,7 +60,7 @@ Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel 
 
     * [Azure Time Series Insights önizleme Gezgininde verileri görselleştirmeyi](time-series-insights-update-explorer.md)Inceleyerek URL 'leri ve yeni kullanıcı arabirimini paylaşma hakkında daha fazla bilgi edinin.
 
-- Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights, `from`, `to`, `first` ve `last` gibi zamana bağlı işleçlere sahiptir. `average`, `min`, `max`, `split by`, `order by`ve `DateHistogram`gibi toplamalara ve Dönüştürmelere sahiptir. Ayrıca, `has`, `in`, `and`, `or`, `greater than` ve `REGEX` gibi filtreleme işleçleri de vardır. Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Onları, anormal görselleştirmelere göre doldurmak için kullanın.
+- Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights, `from`, `to`, `first`ve `last`gibi zamana bağlı işleçlere sahiptir. `average`, `min`, `max`, `split by`, `order by`ve `DateHistogram`gibi toplamalara ve Dönüştürmelere sahiptir. Ayrıca, `has`, `in`, `and`, `or`, `greater than`ve `REGEX`gibi filtreleme işleçleri de vardır. Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Onları, anormal görselleştirmelere göre doldurmak için kullanın.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>İşlem analizi ve işlem verimliliğini sağlama
 
@@ -70,7 +70,7 @@ Donanımların sistem durumunu, kullanımını ve performansını ölçeklendire
 
 İşlem işlemlerinden gelen verilerin akışını ve sürekli işlenmesi, doğru teknoloji veya çözümle birleştirilirse herhangi bir işi başarıyla dönüştürebilir. Bu çözümler genellikle birden çok sisteminin bir birleşimidir. Bunlar, özellikle IoT bölgesindeki, sürekli olarak değişen verilerin araştırmasını ve analizini etkinleştirir ve ortak bir model paylaşır.
 
-Bu desenler genellikle çeşitli yerel ayarlara yayılan cihazlardan ve sensörlerden milyarlarca olay alan IoT özellikli platformlarla başlar. Bu sistemler, gerçek zamanlı Öngörüler ve eylemler elde etmek için akış verilerini işler ve analiz eder. Veriler genellikle neredeyse gerçek zamanlı ve toplu analiz için normal ve soğuk depolamaya arşivlenir.
+Bu desenler genellikle çeşitli yerel ayarlara yayılan cihazlardan ve sensörlerden milyarlarca olay alan IoT özellikli platformlarla başlar. Bu sistemler, gerçek zamanlı Öngörüler ve eylemler elde etmek için akış verilerini işler ve analiz eder. Veriler genellikle neredeyse gerçek zamanlı ve toplu analiz için normal ve soğuk depoya arşivlenir.
 
 Toplanan veriler, akış sorgulama ve analiz senaryoları için onu temizleştirmek ve bağlamak üzere bir dizi işleme geçer. Azure, varlık bakımı ve üretimi gibi IoT senaryolarına uygulanabilen zengin hizmetler sunar. Bu hizmetler Time Series Insights, IoT Hub, Event Hubs, Azure Stream Analytics, Azure Işlevleri, Azure Logic Apps, Azure Databricks, Azure Machine Learning ve Power BI içerir.
 
@@ -82,7 +82,7 @@ Toplanan veriler, akış sorgulama ve analiz senaryoları için onu temizleştir
 
 Time Series Insights, geçmiş veriler üzerinde neredeyse gerçek zamanlı veri araştırması ve varlık tabanlı öngörüler sunar. İş gereksinimlerinize bağlı olarak, MapReduce ve Hive işleri, Time Series Insights Azure HDInsight 'a bağlanarak Time Series Insights depolanan veriler üzerinde çalışabilir. Time Series Insights depolanan veriler, Time Series Insights ortak yüzey sorgu API 'Leri aracılığıyla Power BI ve diğer müşteri uygulamaları tarafından kullanılabilir. Bu veriler, derin iş ve operasyonel zeka senaryoları için kullanılabilir.
 
-## <a name="advanced-analytics"></a>İleri düzey analitik
+## <a name="advanced-analytics"></a>Gelişmiş analiz
 
 Machine Learning ve Azure Databricks gibi gelişmiş analiz hizmetleriyle tümleştirin. Milyonlarca cihazdan ham verileri Time Series Insights. Azure Analytics Hizmetleri paketi tarafından sorunsuz şekilde kullanılabilecek bağlamsal verileri ekler.
 

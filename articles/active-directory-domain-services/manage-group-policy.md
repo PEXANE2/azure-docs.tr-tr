@@ -8,18 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958556"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474528"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında grup ilkesi yönetme
 
 Azure Active Directory Domain Services (Azure AD DS) içindeki kullanıcı ve bilgisayar nesnelerine yönelik ayarlar genellikle grup ilkesi nesneleri (GPO 'Lar) kullanılarak yönetilir. Azure AD DS, *Aaddc kullanıcıları* ve *Aaddc bilgisayarları* kapsayıcıları için yerleşik GPO 'lar içerir. Bu yerleşik GPO 'Ları, ortamınız için gereken grup ilkesi yapılandırmak üzere özelleştirebilirsiniz. *Azure AD DC Administrators* grubunun üyeleri, Azure AD DS etki alanında Grup ilkesi yönetim ayrıcalıklarına sahiptir ve ayrıca özel GPO 'lar ve kuruluş birimleri (OU 'lar) oluşturabilir. Grup ilkesi ne olduğu ve nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Grup ilkesi genel bakış][group-policy-overview].
+
+Karma bir ortamda, şirket içi AD DS ortamda yapılandırılan Grup ilkeleri Azure AD DS ile eşitlenmez. Azure AD DS 'de kullanıcıların veya bilgisayarların yapılandırma ayarlarını tanımlamak için varsayılan GPO 'Lardan birini düzenleyin veya özel bir GPO oluşturun.
 
 Bu makalede grup ilkesi yönetim araçlarının nasıl yükleneceği ve ardından yerleşik GPO 'Ların nasıl düzenleneceği ve özel GPO 'Ların nasıl oluşturulduğu gösterilir.
 

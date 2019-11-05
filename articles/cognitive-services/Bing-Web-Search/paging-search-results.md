@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: 9fc05ab42c75bac1f8e192dd4fe20bb142881479
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176899"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481731"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Arama API'leri sonuçları arasında sayfa oluşturma
 
@@ -41,15 +41,15 @@ Kullanılabilir sonuçlar aracılığıyla sayfa eklemek için, isteğinizi gön
 
 > [!NOTE]
 >
-> * Bing video, resim ve haber API 'Leri ile sayfalama yalnızca genel video (`/video/search`), Haberler (`/news/search`) ve görüntü (`/image/search`) aramaları için geçerlidir. Popüler konular ve Kategoriler aracılığıyla sayfalama desteklenmez.  
-> * @No__t-0 alanı, geçerli sorgu için toplam arama sonucu sayısının tahminidir. @No__t-0 ve `offset` parametrelerini ayarladığınızda bu tahmin değişebilir.
+> * Bing video, resim ve haber API 'Leri ile sayfalama yalnızca genel video (`/video/search`), Haberler (`/news/search`) ve görüntü (`/image/search`) aramalarında geçerlidir. Popüler konular ve Kategoriler aracılığıyla sayfalama desteklenmez.  
+> * `TotalEstimatedMatches` alanı, geçerli sorgu için toplam arama sonucu sayısının tahminidir. `count` ve `offset` parametrelerini ayarladığınızda bu tahmin değişebilir.
 
-| Parametre | Description                                                                                                                                                                |
+| Parametre | Açıklama                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `count`   | Yanıtta döndürülecek sonuçların sayısını belirtir. @No__t-0 varsayılan değerinin ve talep ettiğiniz en fazla sonuç sayısının API 'ye göre değiştiğini unutmayın. Bu değerleri, [sonraki adımlar](#next-steps)altındaki başvuru belgelerinde bulabilirsiniz. |
-| `offset`  | Atlanacak sonuç sayısını belirtir. @No__t-0, sıfır tabanlıdır ve küçüktür (`totalEstimatedMatches` @ no__t-2 @ no__t-3) olmalıdır.                                           |
+| `count`   | Yanıtta döndürülecek sonuçların sayısını belirtir. `count`varsayılan değerinin ve talep ettiğiniz en fazla sonuç sayısının API 'ye göre değiştiğini unutmayın. Bu değerleri, [sonraki adımlar](#next-steps)altındaki başvuru belgelerinde bulabilirsiniz. |
+| `offset`  | Atlanacak sonuç sayısını belirtir. `offset` sıfır tabanlıdır ve küçüktür (`totalEstimatedMatches` - `count`) olmalıdır.                                           |
 
-Örnek olarak, sayfa başına 15 sonuç göstermek istiyorsanız, sonuçların ilk sayfasını almak için `count` ve 15 ' i `offset` olarak ayarlayın. Sonraki her API çağrısı için `offset` ' ı 15 artırabilirsiniz. Aşağıdaki örnek 45 uzaklığında başlayan 15 Web sayfasını ister.
+Örnek olarak, sayfa başına 15 sonuç göstermek istiyorsanız, sonuçların ilk sayfasını almak için `count` 15 olarak ayarlanır ve 0 olarak `offset`. Sonraki her API çağrısı için `offset` 15 ' i arttırmalısınız. Aşağıdaki örnek 45 uzaklığında başlayan 15 Web sayfasını ister.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
@@ -65,8 +65,10 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
+Bing görüntüsünü ve video API 'Lerini kullanırken yinelenen arama sonuçlarının önüne geçmek için `nextOffset` değerini kullanabilirsiniz. `Images` veya `Videos` yanıt nesnelerinden değeri alın ve `offset` parametresiyle isteklerinizi kullanın.  
+
 > [!NOTE]
-> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. @No__t-0 nesnelerinde arama sonuçları, diğer yanıt türlerinde de görünen sonuçları içerebilir.
+> Bing Web Araması API'si, Web sayfalarını, resimleri, Videoları ve haberleri içerebilen arama sonuçlarını döndürür. Bing Web Araması API'si arama sonuçlarıyla çalışırken, görüntü veya haber gibi diğer yanıt türlerini değil, yalnızca [Web sayfalarının](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)sayfalamalarından olursunuz. `WebPage` nesnelerinde arama sonuçları, diğer yanıt türlerinde da görünen sonuçları içerebilir.
 >
 > Herhangi bir filtre değeri belirtmeden `responseFilter` sorgu parametresini kullanırsanız, `count` ve `offset` parametrelerini kullanmayın. 
 

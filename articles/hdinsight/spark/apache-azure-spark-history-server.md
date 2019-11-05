@@ -1,5 +1,5 @@
 ---
-title: Spark uygulamalarında hata ayıklamak için genişletilmiş Spark geçmiş sunucusu-Azure HDInsight
+title: Uygulamalarda hata ayıklamak için genişletilmiş Spark geçmiş sunucusu-Azure HDInsight
 description: Spark uygulamalarında hata ayıklamak ve tanılamak için genişletilmiş Spark geçmiş sunucusunu kullanın-Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130363"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494732"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
 
@@ -32,7 +32,7 @@ Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalışt�
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>URL 'ye göre Spark geçmiş sunucusu Web Kullanıcı arabirimini açın
 
-Aşağıdaki URL 'ye giderek Spark geçmiş sunucusunu açın, müşteriyi Spark kümesi adıyla `<ClusterName>` değiştirin.
+Aşağıdaki URL 'ye giderek Spark geçmiş sunucusunu açın, `<ClusterName>` adını müşterinin Spark kümesi adıyla değiştirin.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -106,16 +106,16 @@ Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki
 
 + **Kayıttan yürütme** düğmesine tıklayıp Durdur düğmesine tıklayarak her zaman durarak işi oynatın. Kayıttan yürütme sırasında farklı durumu göstermek için görev Color olarak görüntülenir:
 
-  + Başarılı için yeşil: İş başarıyla tamamlandı.
-  + Yeniden denenmek üzere turuncu: Başarısız olan ancak işin nihai sonucunu etkilemeyen görev örnekleri. Bu görevler daha sonra başarılı olabilecek örnekleri tekrarlamıştır veya yeniden dener.
-  + Çalıştırmak için mavi: Görev çalışıyor.
-  + Bekleyen veya Atlanan beyaz: Görev çalışmayı bekliyor veya aşama atlandı.
-  + For Failed için Red: Görev başarısız oldu.
+  + İçin yeşil: iş başarıyla tamamlandı.
+  + Yeniden denenme için turuncu: işin son sonucunu etkilemeyen, ancak başarısız olan görevlerin örnekleri. Bu görevler daha sonra başarılı olabilecek örnekleri tekrarlamıştır veya yeniden dener.
+  + Çalıştırmak için mavi: görev çalışıyor.
+  + Bekliyor veya atlandı: görev çalışmayı bekliyor veya aşama atlandı.
+  + Red başarısız: görev başarısız oldu.
 
     ![Spark uygulaması ve iş grafiği renk örneği, çalışıyor](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
     Atlanan aşama beyaz olarak görüntülenir.
-    ![Spark uygulaması ve iş grafiği renk örneği, atla](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    Spark uygulaması ve iş grafiği renk örneği ![](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png) atla
 
     ![Spark uygulaması ve iş grafiği renk örneği, başarısız oldu](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
@@ -137,7 +137,7 @@ Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki
     ![Spark uygulaması ve iş grafiği eğriltme simgesi](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + İş grafiği düğümü her aşama için aşağıdaki bilgileri görüntüler:
-  + NUMARASINI.
+  + Numarasını.
   + Ad veya açıklama.
   + Toplam görev numarası.
   + Okunan veriler: giriş boyutu ve karışık okuma boyutu toplamı.
@@ -168,7 +168,7 @@ Veri görünümünü almak için iş KIMLIĞI ' ni seçin ve araç menüsündeki
 
 **Veri eğriltme** sekmesi ' ne tıklayın, ilgili asimetrik görevler belirtilen parametrelere göre görüntülenir.
 
-+ **Parametreleri belirtin** -ilk bölüm, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Yerleşik kural: Okunan görev verileri, ortalama görev verisinin 3 katından büyük ve okunan görev verileri 10 ' dan fazla. Çarpıtılmış görevler için kendi kuralınızı tanımlamak istiyorsanız, parametrelerinizi, **asimetrik aşamayı**ve **çarpıklık** bölümünü seçebilirsiniz.
++ **Parametreleri belirtin** -ilk bölüm, veri eğriliğini algılamak için kullanılan parametreleri görüntüler. Yerleşik kural: okunan görev verileri, okunan ortalama görev verilerinin 3 katından büyük ve okunan görev verileri 10 MB 'tan fazla. Çarpıtılmış görevler için kendi kuralınızı tanımlamak istiyorsanız, parametrelerinizi, **asimetrik aşamayı**ve **çarpıklık** bölümünü seçebilirsiniz.
 
 + **Çarpıtılmış aşama** -ikinci bölüm, yukarıda belirtilen ölçütlere uyan bir görev gösteren aşamaları görüntüler. Bir aşamada birden çok asimetrik görev varsa, asimetrik aşama tablosu yalnızca en çok eğilmiş görevi görüntüler (ör. veri eğriliği için en büyük veriler).
 
@@ -202,7 +202,7 @@ Yürütücü kullanım grafiği, Spark işi gerçek yürütücü ayırmayı ve �
 
 ## <a name="faq"></a>SSS
 
-### <a name="1-revert-to-community-version"></a>1. Topluluk sürümüne dön
+### <a name="1-revert-to-community-version"></a>1. topluluk sürümüne dönün
 
 Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın:
 
@@ -224,7 +224,7 @@ Topluluk sürümüne dönmek için aşağıdaki adımları uygulayın:
     ![Apache ambarı Spark2 geçmişi yeniden başlatması](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 9. Spark geçmiş sunucusu Web Kullanıcı arabirimini yenileyerek, bu işlem topluluk sürümüne geri döndürülecek.
 
-### <a name="2-upload-history-server-event"></a>2. Geçmiş sunucusu olayını karşıya yükle
+### <a name="2-upload-history-server-event"></a>2. geçmiş sunucusu olayını karşıya yükle
 
 Geçmiş sunucu hatasıyla karşılaşırsanız, olayı sağlamak için aşağıdaki adımları izleyin:
 
@@ -240,7 +240,7 @@ Geçmiş sunucu hatasıyla karşılaşırsanız, olayı sağlamak için aşağı
 
     ![Apache Spark dosyası sorun örneği](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Düzeltme senaryosu için jar dosyasını yükselt
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. bir düzeltme senaryosu için jar dosyasını yükseltin
 
 Düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanın, Spark-Enhancement. jar * öğesini yükseltecek.
 
@@ -330,4 +330,4 @@ Düzeltme ile yükseltmek istiyorsanız, aşağıdaki betiği kullanın, Spark-E
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
 
-Herhangi bir geri bildiriminiz varsa veya bu aracı kullanırken başka sorunlarla karşılaşırsanız ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)) adresine bir e-posta gönderin.
+Herhangi bir geri bildiriminiz varsa veya bu aracı kullanırken başka sorunlarla karşılaşırsanız, ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)) adresine bir e-posta gönderin.

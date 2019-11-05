@@ -11,14 +11,15 @@ ms.author: jordane
 author: jpe316
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 597cc4e03257b544187fc2bc131974954b64c84b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dcbe535bb92f7755980929956093b0f0121ef41b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819874"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476456"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLı uzantısını kullanın
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning CLı, Azure platformu için platformlar arası komut satırı arabirimi olan [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)'nin bir uzantısıdır. Bu uzantı Azure Machine Learning ile çalışmaya yönelik komutlar sağlar. Machine Learning etkinliklerinizi otomatikleştirmenize olanak tanır. Aşağıdaki listede CLı uzantısıyla yapabileceğiniz bazı örnek eylemler verilmiştir:
 
@@ -100,7 +101,7 @@ Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynaklar�
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Bu komut, örnek runconfig ve Conda ortam dosyalarını içeren bir `.azureml` alt dizini oluşturur. Ayrıca, Azure Machine Learning çalışma alanınız ile iletişim kurmak için kullanılan bir `config.json` dosyası içerir.
+    Bu komut, örnek runconfig ve Conda ortam dosyalarını içeren bir `.azureml` alt dizini oluşturur. Ayrıca, Azure Machine Learning çalışma alanınız ile iletişim kurmak için kullanılan bir `config.json` dosyası da içerir.
 
     Daha fazla bilgi için bkz. [az ml Folder Attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -149,7 +150,7 @@ Aşağıdaki komutlar, Azure Machine Learning tarafından kullanılan kaynaklar�
     >
     > Programlı olarak çalıştırılan bir yapılandırma nesnesi oluşturan bir Python betiğinizin olması halinde, [runconfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) komutunu bir runconfig dosyası olarak kaydetmek için kullanabilirsiniz.
     >
-    > Daha fazla örnek runconfig dosyası için bkz. [https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
+    > Tam runconfig şeması bu [json dosyasında](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)bulunabilir.
 
     Daha fazla bilgi için bkz. [az ml Run gönderme-betiği](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 

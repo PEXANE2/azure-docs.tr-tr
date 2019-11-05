@@ -1,7 +1,7 @@
 ---
 title: 'Veri birleştirin: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Veri kümelerini birleştirmek için Azure Machine Learning hizmetinde birleştirme verilerini birleştirme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Veri kümelerini birleştirmek için Azure Machine Learning ' de birleştirme verilerini birleştirme modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693087"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495085"
 ---
 # <a name="join-data"></a>Verileri birleştirme
 
-Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri kümesini birleştirmek için Azure Machine Learning hizmeti görsel arabirimindeki **veri birleştirme** modülünün nasıl kullanılacağı açıklanır.  
+Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri kümesini birleştirmek için Azure Machine Learning Tasarımcısı 'nda (Önizleme) **veri birleştirme** modülünün nasıl kullanılacağı açıklanır.  
 
 ## <a name="how-to-configure-join-data"></a>JOIN verileri nasıl yapılandırılır
 
@@ -64,8 +64,8 @@ Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri küm
 
 1. İşlem hattını çalıştırın veya veri Birleştir modülünü seçin ve birleşimi gerçekleştirmek için seçili **Çalıştır** ' ı seçin.
 
-1. Sonuçları görüntülemek için **verileri birleştir**  > **sonuçları veri kümesine** sağ tıklayıp**görselleştirip** > .
+1. Sonuçları görüntülemek için **verileri birleştir** > **sonuçları veri kümesine** sağ tıklayıp **görselleştirip** > .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

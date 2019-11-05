@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/24/2019
+ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475077"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme (Azure AD B2C)
 
@@ -48,13 +48,30 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 
 Önkoşulların bir parçası olarak tamamladığınız ikinci öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Öğreticideki örnekle iletişimi etkinleştirmek için, Azure AD B2C içinde uygulamaya bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+Uygulamayı güncelleştirmek için geçerli **uygulamalar** deneyimini veya yeni Birleşik **uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Önizleme deneyimi hakkında daha fazla bilgi edinin](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Uygulamalar](#tab/applications/)
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Yanıt URL 'si**altında `http://localhost:6420`ekleyin.
 1. **Kaydet**’i seçin.
 1. Özellikler sayfasında, **uygulama kimliğini**kaydedin. Uygulama KIMLIĞI ' ni, tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde sonraki bir adımda kullanırsınız.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. **Uygulama kayıtları (Önizleme)** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Kimlik doğrulaması**' nı seçin ve ardından **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
+1. **Web**altında **URI Ekle** bağlantısını seçin, `http://localhost:6420`girin ve ardından **Kaydet**' i seçin.
+1. **Genel Bakış**’ı seçin.
+1. Tek sayfalı Web uygulamasındaki kodu güncelleştirdiğinizde daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+
+* * *
 
 ## <a name="get-the-sample-code"></a>Örnek kodunu alma
 
@@ -91,7 +108,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örnek:
+1. Bir konsol penceresi açın ve örneği içeren dizine geçin. Örneğin:
 
     ```console
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -124,7 +141,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     Geçerli bir e-posta adresi kullanın ve doğrulama kodunu kullanarak doğrulamayı gerçekleştirin. Parola ayarlayın. İstenen öznitelikler için değerleri girin.
 
-    ![Oturum açma/kaydolma Kullanıcı akışından sunulan kaydolma sayfası](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![Oturum açma/kaydolma Kullanıcı akışından sunulan kaydolma sayfası](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
 1. Azure AD B2C dizininde yerel bir hesap oluşturmak için **Oluştur** ' u seçin.
 

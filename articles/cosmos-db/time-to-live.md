@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756859"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498309"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB yaşam süresi (TTL) 
 
 **Yaşam süresi** veya TTL ile, Azure Cosmos DB belirli bir süre sonra bir kapsayıcıdan otomatik olarak öğe silme olanağı sağlar. Varsayılan olarak, kapsayıcı düzeyinde yaşam süresi ayarlayabilir ve değeri öğe temelinde geçersiz kılabilirsiniz. TTL 'yi bir kapsayıcıda veya bir öğe düzeyinde ayarladıktan sonra, Azure Cosmos DB son değiştirildikleri zamandan beri bu öğeleri otomatik olarak zaman dilimi sonra kaldırır. Yaşam süresi değeri Saniyeler içinde yapılandırılır. TTL 'yi yapılandırdığınızda, sistem, istemci uygulaması tarafından açıkça verilen silme işlemine gerek kalmadan, TTL değerine göre süresi geçen öğeleri otomatik olarak siler.
 
-Süre sonu öğelerin silinmesi, Kullanıcı istekleri tarafından tüketilen Istek birimleri olan, sol taraftaki [Istek birimleri](request-units.md)tüketen bir arka plan görevdir. Kapsayıcı ağır yük altındaysa ve bakım görevleri için hiçbir Istek birimi ayrıldıysa, süre sonları geciktirilebilir.
+Süre sonu öğelerin silinmesi, Kullanıcı istekleri tarafından tüketilen Istek birimleri olan, sol taraftaki [Istek birimleri](request-units.md)tüketen bir arka plan görevdir. TTL 'nin süresi dolduktan sonra bile, kapsayıcı isteklerle aşırı yüklenmişse ve yeterli sayıda RU yoksa, veri silme geciktirilir. Silme işlemini gerçekleştirmek için yeterli ru varsa veriler silinir. Veri silme gecikiyor olsa da, TTL süresi dolduktan sonra veriler hiçbir sorgu (herhangi bir API tarafından) tarafından döndürülmez.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Kapsayıcılar ve öğeler için yaşam süresi
 
 Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değiştirilme zamanından Delta olarak yorumlanır. Bir kapsayıcıda veya kapsayıcı içindeki bir öğede yaşam süresi ayarlayabilirsiniz:
 
-1. **Kapsayıcıda yaşam süresi** (`DefaultTimeToLive` kullanarak ayarla):
+1. **Kapsayıcıda yaşam süresi** (`DefaultTimeToLive`kullanarak ayarla):
 
    - Eksik (veya null olarak ayarlandıysa), öğelerin otomatik olarak zaman aşımına ermez.
 
@@ -32,7 +32,7 @@ Yaşam süresi değeri saniye cinsinden ayarlanır ve bir öğenin son değişti
 
    - Varsa ve değer bir sayı *"n"* olarak ayarlanırsa, son değiştirilme zamanından sonra öğelerin süresi *"n"* saniye dolacak.
 
-2. **Bir öğe üzerinde yaşam süresi** (`ttl` kullanarak ayarlayın):
+2. **Bir öğe üzerinde yaşam süresi** (`ttl`kullanarak ayarlayın):
 
    - Bu özellik yalnızca `DefaultTimeToLive` varsa ve üst kapsayıcı için null olarak ayarlanmamışsa geçerlidir.
 

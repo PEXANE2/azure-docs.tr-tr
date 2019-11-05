@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248173"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486011"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>Yük dengeli IoT Hub'larında cihazları sağlama
 
@@ -48,15 +48,15 @@ Kayıt listesi Cihaz Sağlama Hizmeti'ne cihazla hangi kanıtlama yöntemini (ci
 
 Ayırma ilkesi, bir IoT hub’a cihazların nasıl atandığını belirleyen bir Cihaz Sağlama Hizmeti ayarıdır. Desteklenen üç ayırma ilkesi vardır: 
 
-1. **En düşük gecikme**: Cihazlar hub'ında cihaz için en düşük gecikme ile temel bir IOT hub sağlanır.
-2. **Eşit ağırlıklı dağılım** (varsayılan): Bağlı IOT hub'lara cihaz sağlanma olasılığı. Bu varsayılan ayardır. Yalnızca bir IoT hub'a aygıtları sağlıyorsanız bu ayarı değiştirmeyebilirsiniz. 
-3. **Kayıt listesi aracılığıyla statik yapılandırma**: Kayıt listesindeki istenen IOT hub'ın belirtimi, cihaz sağlama hizmeti düzeyindeki ayırma ilkesinden önceliklidir önceliklidir.
+1. **En düşük gecikme**: Cihaza yönelik en düşük gecikme ile hub’a dayalı bir IoT hub’a cihazlar sağlanabilir.
+2. **Eşit ağırlıklı dağılım** (varsayılan): Bağlı IoT hub’lara cihaz sağlanma olasılığı eşittir. Bu varsayılan ayardır. Yalnızca bir IoT hub'a aygıtları sağlıyorsanız bu ayarı değiştirmeyebilirsiniz. 
+3. **Kayıt listesi aracılığıyla statik yapılandırma**: Kayıt listesindeki istenen IoT hub’ın belirtimi, Cihaz Sağlama Hizmeti düzeyindeki ayırma ilkesinden önceliklidir.
 
 Ayırma ilkesini ayarlamak için şu adımları izleyin:
 
 1. Ayırma ilkesini ayarlamak için Cihaz Sağlama Hizmeti sayfasında **Ayırma ilkesini yönetme** seçeneğine tıklayın.
 2. Ayırma ilkesi olarak **Eşit ağırlıklı dağılım**'ı ayarlayın.
-3. **Kaydet**’e tıklayın.
+3. **Kaydet** düğmesine tıklayın.
 
 ## <a name="link-the-new-iot-hub-to-the-device-provisioning-service"></a>Yeni IoT hub’ı Cihaz Sağlama Hizmeti’ne bağlama
 
@@ -66,7 +66,7 @@ Cihaz Sağlama Hizmetini ve IoT hub'ını, Cihaz Sağlama Hizmeti bu hub'a kaydo
 2. Cihaz Sağlama Hizmeti sayfasında **Bağlı IoT hub’lar** seçeneğine tıklayın.
 3. **Ekle**'ye tıklayın.
 4. **IoT hub'a bağlantı ekleme** sayfasında, bağlı IoT hub’ın geçerli abonelikte mi yoksa farklı bir abonelikte mi bulunduğunu belirtmek için radyo düğmelerini kullanın. Sonra **IoT hub** kutusunda IoT hub’ın adını seçin.
-5. **Kaydet**’e tıklayın.
+5. **Kaydet** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -81,5 +81,5 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md
 > [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind an existing custom SSL certificate to Azure Web Apps]()
 -->

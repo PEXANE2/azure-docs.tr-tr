@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/23/2019
-ms.openlocfilehash: 7c03c0c649876143eaa75c98fa0c9001f2b24fbd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b93bf4f67c2581b7cac476b83fc130bf344cfa83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932394"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476731"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Izleyici için izleme verileri kaynakları
 Azure Izleyici, [günlükleri](data-platform-logs.md) ve [ölçümleri](data-platform-metrics.md)içeren [ortak bir izleme verileri platformunu](data-platform.md) temel alır. Bu platforma verilerin toplanması, birden fazla kaynaktan gelen verilerin Azure Izleyici 'de ortak bir araç kümesi kullanılarak analiz edilmesini sağlar. İzleme verileri belirli senaryoları desteklemek için başka konumlara de gönderilebilir ve bazı kaynaklar günlüklere veya ölçümlere toplanmadan önce diğer konumlara yazılabilir.
@@ -173,14 +173,14 @@ Bir izleme paketi yükleyerek bir uygulama için Application Insights etkinleşt
 | Azure İzleyici Günlükleri | Çözümleri izleme, Azure Izleyici günlüklerine veri toplar ve bu, genellikle çözüme dahil edilen sorgu dili veya [Görünümler](view-designer.md) kullanılarak analiz edilebilir. | [Azure 'da çözüm izlemek için veri toplama ayrıntıları](../insights/solutions-inventory.md) |
 
 
-### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici
+### <a name="azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici
 [Kapsayıcılar Için Azure izleyici](../insights/container-insights-overview.md) , [Azure Kubernetes HIZMETI (aks)](/azure/aks/)için özelleştirilmiş bir izleme deneyimi sağlar. Aşağıdaki tabloda açıklanan bu kaynaklarla ilgili ek veriler toplar.
 
 | Hedef | Açıklama | Başvuru |
 |:---|:---|:---|
 | Azure İzleyici Günlükleri | Envanter, Günlükler ve olaylar gibi AKS için izleme verilerini depolar. Ölçüm verileri, portalda analiz işlevlerinin yararlanmak için günlüklere da depolanır. | [Kapsayıcılar için Azure İzleyici ile AKS kümesi performansını anlama](../insights/container-insights-analyze.md) |
 | Azure Izleyici ölçümleri | Ölçüm verileri, görselleştirme ve uyarıları yönlendirmek için ölçüm veritabanında depolanır. | [Ölçüm Gezgininde kapsayıcı ölçümlerini görüntüleme](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | Neredeyse gerçek bir zaman deneyimine yönelik olarak, kapsayıcılar için Azure Izleyici, Azure portal doğrudan Azure Kubernetes hizmetinden veri sunar. | [Kapsayıcılar için Azure İzleyici ile kapsayıcı günlüklerini gerçek zamanlı olarak görüntüleme (önizleme)](../insights/container-insights-live-logs.md) |
+| Azure Kubernetes Service | , Portaldaki Azure Kubernetes hizmeti (AKS) kapsayıcı günlüklerine (stdout/stderror), olaylara ve pod ölçümlere doğrudan erişim sağlar. | [Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme](../insights/container-insights-livedata-overview.md) |
 
 ### <a name="azure-monitor-for-vms"></a>VM'ler için Azure İzleyici
 [VM'ler için Azure izleyici](../insights/vminsights-overview.md) , sanal makineleri izlemeye yönelik özelleştirilmiş bir deneyim sağlar. VM'ler için Azure İzleyici tarafından toplanan verilerin açıklaması yukarıdaki [Işletim sistemi (konuk)](#operating-system-guest) bölümüne dahil edilir.

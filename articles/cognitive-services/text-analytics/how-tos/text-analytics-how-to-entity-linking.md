@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984278"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488626"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -23,47 +23,109 @@ ms.locfileid: "70984278"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Varlık bağlama ve adlandırılmış varlık tanıma
 
-Metin Analizi ' `entities` uç noktası hem adlandırılmış varlık tanıma (ner) hem de varlık bağlamayı destekler.
+Metin Analizi ' `entities` uç noktası hem adlandırılmış varlık tanıma (NER) hem de varlık bağlamayı destekler.
 
 ### <a name="entity-linking"></a>Varlık Bağlama
-Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, "Mars" ın dünya olarak mı yoksa War 'nın roman gerçekleşen olarak mı kullanıldığını belirleme). Bu işlem, tanınan varlıkların bağlandığı bir Bilgi Bankası 'nın varolup olmadığını, `entities` uç nokta metin analizi için Bilgi Bankası olarak kullanılır.
+Varlık bağlama, metinde bulunan bir varlığın kimliğini belirleme ve ayırt etme olanağıdır (örneğin, "Mars" ın dünya olarak mı yoksa War 'nın roman gerçekleşen olarak mı kullanıldığını belirleme). Bu işlem, tanınan varlıkların bağlandığı bir Bilgi Bankası 'nın varolup olmadığını, `entities` uç noktası Metin Analizi Bilgi Bankası olarak kullanılır.
 
 ### <a name="named-entity-recognition-ner"></a>Adlandırılmış varlık tanıma (NER)
-Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar halinde kategorilere ayırma olanağıdır. Desteklenen varlık sınıfları aşağıda listelenmiştir.
+Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar veya türler halinde kategorilere ayırma olanağıdır. 
 
-Metin Analizi [sürüm 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)' de, hem varlık bağlama hem de adlandırılmış varlık tanıma (ner), çeşitli diller için kullanılabilir. Daha fazla bilgi için [dil desteği](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) makalesine bakın.
+## <a name="named-entity-recognition-v3-public-preview"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi
 
-### <a name="language-support"></a>Dil desteği
+[Adlandırılmış varlık tanımanın bir sonraki sürümü](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) artık genel önizlemeye sunuldu. Hem varlık bağlama hem de adlandırılmış varlık tanıma için güncelleştirmeler sağlar. 
 
-Çeşitli dillerde varlık bağlamayı kullanmak için her dilde ilgili bir Bilgi Bankası kullanılması gerekir. Metin Analizi ' de varlık bağlama için bu, `entities` uç nokta tarafından desteklenen her dilin ilgili dilde ilgili Vises corpa bağlantısı olacağı anlamına gelir. Yapılar boyutu diller arasında farklılık gösterdiğinden, varlık bağlama işlevinin geri çağırma işlemi de değişir.
+:::row:::
+    :::column span="":::
+        **Özellik**
+    :::column-end:::
+    ::: column span="":::
+        **Açıklama** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        Genişletilmiş varlık türleri ve alt türleri
+    :::column-end:::
+    :::column span="":::
+     Birkaç adlandırılmış varlık türü için genişletilmiş sınıflandırma ve algılama.
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        İstek uç noktalarını ayır 
+    :::column-end:::
+    :::column span="":::
+        Varlık bağlama ve NER istekleri göndermek için ayrı uç noktalar.
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version` parametresi
+    :::column-end:::
+    :::column span="":::
+        Metin Analizi modelinin bir sürümünü seçmek için isteğe bağlı bir parametre. Şu anda yalnızca varsayılan model kullanıma sunuldu.
+    :::column-end:::
+:::row-end:::
 
-## <a name="supported-types-for-named-entity-recognition"></a>Adlandırılmış varlık tanıma için desteklenen türler
+### <a name="entity-types"></a>Varlık türleri
 
-| Type  | SubType | Örnek |
+Adlandırılmış varlık tanıma v3, birden çok tür genelinde genişletilmiş algılama sağlar. Şu anda NER v3 aşağıdaki varlık kategorilerini algılayabilir. Desteklenen varlıkların ve dillerin ayrıntılı bir listesi için bkz. [adlandırılmış varlık türleri](../named-entity-types.md) makalesi.
+
+* Genel
+* Kişisel bilgiler 
+
+### <a name="request-endpoints"></a>İstek uç noktaları
+
+Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
+
+HI
+* Genel varlıklar-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Kişisel bilgi varlıkları-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Varlık bağlama
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Model sürümü oluşturma
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Adlandırılmış varlık tanıma v2 için desteklenen türler
+
+> [!NOTE]
+> Aşağıdaki varlıklar adlandırılmış varlık tanıma (NER) sürüm 2 tarafından desteklenir. [Ner v3](#named-entity-recognition-v3-public-preview) genel önizlemededir ve metinde tanınan varlıkların sayısını ve derinliğini büyük ölçüde genişletir.   
+
+| Tür  | SubType | Örnek |
 |:-----------   |:------------- |:---------|
-| Kişi        | YOK\*         | "Jeff", "Bill Gates"     |
-| Location      | YOK\*         | "Redmond, Washington", "Paris"  |
-| Kuruluş  | YOK\*         | “Microsoft”   |
+| Kişi        | Yok\*         | "Jeff", "Bill Gates"     |
+| Konum      | Yok\*         | "Redmond, Washington", "Paris"  |
+| Kuruluş  | Yok\*         | “Microsoft”   |
 | Miktar      | Sayı        | "6", "altı"     |
 | Miktar      | Yüzde    | "%50", "yüzde elli"|
 | Miktar      | Sıra       | "2.", "ikinci"     |
 | Miktar      | Yaş           | "90 gün eski", "30 yıl eski"    |
-| Miktar      | Currency      | “10,99 ABD Doları”     |
+| Miktar      | Para birimi      | “10,99 ABD Doları”     |
 | Miktar      | Boyut     | "10 mil", "40 cm"     |
 | Miktar      | Sıcaklık   | "32 derece"    |
-| DateTime      | YOK\*         | “18:30 4 Şubat 2012”      |
-| DateTime      | Date          | “2 Mayıs 2017”, “02.05.2017”   |
-| DateTime      | Time          | "08:00", "8:00"  |
+| DateTime      | Yok\*         | “18:30 4 Şubat 2012”      |
+| DateTime      | Tarih          | “2 Mayıs 2017”, “02.05.2017”   |
+| DateTime      | Zaman          | "08:00", "8:00"  |
 | DateTime      | Tarih Aralığı     | “2 - 5 Mayıs Arası”    |
 | DateTime      | Saat Aralığı     | “18.00 ve 19.00 Arası”     |
-| DateTime      | Duration      | "1 dakika 45 saniye"   |
+| DateTime      | Süre      | "1 dakika 45 saniye"   |
 | DateTime      | Ayarla           | "Her Salı"     |
-| URL           | YOK\*         | "https:\//www.Bing.com"    |
-| Email         | YOK\*         | "support@contoso.com" |
+| URL'si           | Yok\*         | "https:\//www.bing.com"    |
+| Email         | Yok\*         | "support@contoso.com" |
 
-\*Girişe ve ayıklanan varlıklara bağlı olarak, belirli varlıklar seçeneğini atlayabilir `SubType`.  Listelenen tüm desteklenen varlık türleri yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dillerde kullanılabilir.
+giriş ve ayıklanan varlıklara göre \*, bazı varlıklar `SubType`yok edebilir.  Listelenen tüm desteklenen varlık türleri yalnızca Ingilizce, Çince-Basitleştirilmiş, Fransızca, Almanca ve Ispanyolca dillerde kullanılabilir.
 
+### <a name="language-support"></a>Dil desteği
 
+Çeşitli dillerde varlık bağlamayı kullanmak için her dilde ilgili bir Bilgi Bankası kullanılması gerekir. Metin Analizi ' de varlık bağlama için bu, `entities` uç noktası tarafından desteklenen her dilin ilgili dildeki ilişkili Viseı corpa bağlantısı olacağı anlamına gelir. Yapılar boyutu diller arasında farklılık gösterdiğinden, varlık bağlama işlevinin geri çağırma işlemi de değişir. Daha fazla bilgi için [dil desteği](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) makalesine bakın.
 
 ## <a name="preparation"></a>Hazırlık
 
@@ -90,28 +152,28 @@ Belge boyutu belge başına 5.120 karakter altında olmalıdır ve koleksiyon ba
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1\. adım: İsteği yapısı
+## <a name="step-1-structure-the-request"></a>1\. Adım: İsteği yapılandırma
 
 İstek tanımıyla ilgili ayrıntılara [Metin Analizi API’sini çağırma](text-analytics-how-to-call-api.md) bölümünden erişilebilir. Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
-+ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [Varlıklar API 'SI](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [varlıklar API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. Dahil `/text/analytics/v2.1/entities`etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. `/text/analytics/v2.1/entities`dahil etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
 + İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın
 
 > [!Tip]
-> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) **API testi konsolu**’nu açın.
+> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya **belgelerdeki** [API testi konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)’nu açın.
 
-## <a name="step-2-post-the-request"></a>2\. adım: İsteği gönder
+## <a name="step-2-post-the-request"></a>2\. Adım: İsteği gönderme
 
 İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için isteklerin boyutu ve sayısı hakkında genel bakış konusundaki [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
 Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
 
-## <a name="step-3-view-results"></a>3\. adım: Sonuçları görüntüleme
+## <a name="step-3-view-results"></a>3\. Adım: Sonuçları görüntüleme
 
 Tüm POST istekleri, kimlikler ve algılanan özelliklerle JSON tarafından biçimlendirilmiş bir yanıt döndürür.
 
@@ -281,7 +343,7 @@ Bu makalede, bilişsel hizmetler 'deki Metin Analizi kullanarak varlık bağlama
 
 + [Varlıklar API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) seçili diller için kullanılabilir.
 + İstek gövdesindeki JSON belgeleri bir KIMLIK, metin ve dil kodu içerir.
-+ POST isteği, aboneliğiniz için geçerli olan kişiselleştirilmiş bir [erişim anahtarı ve uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kullanılarak `/entities` uç noktasına yapılır.
++ POST isteği, aboneliğiniz için geçerli olan kişiselleştirilmiş bir `/entities`erişim anahtarı ve uç nokta[ kullanılarak ](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) uç noktasına yapılır.
 + Bağlı varlıklardan oluşan yanıt çıkışı (her belge KIMLIĞI için güven puanları, uzaklıklar ve Web bağlantıları dahil) herhangi bir uygulamada kullanılabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar

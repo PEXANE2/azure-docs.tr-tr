@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 07/09/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997170"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489369"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Kubernetes hizmeti ve Azure Container Instances dağıtımı Azure Machine Learning sorunlarını giderme
 
@@ -24,31 +24,31 @@ Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kuber
 
 Azure Machine Learning bir modeli dağıttığınızda, sistem bir dizi görevi gerçekleştirir. Dağıtım görevleri şunlardır:
 
-1. Çalışma alanı model kayıt defterinde modeli kaydedin.
+1. Modeli çalışma alanı modeli kayıt defterine kaydedin.
 
-2. Bir Docker görüntüsü oluşturun dahil olmak üzere:
-    1. Kayıt defterinden kayıtlı modeli indirin. 
-    2. Bir dockerfile ortam yaml dosyasında belirttiğiniz bağımlılıkları temel bir Python ortamı oluşturun.
-    3. Model dosyalarınızı ve sağladığınız Puanlama betiği dockerfile'da ekleyin.
-    4. Dockerfile'ı kullanarak yeni bir Docker görüntüsü oluşturun.
-    5. Çalışma alanı ile ilişkili Azure Container Registry ile Docker görüntü kaydedin.
+2. Aşağıdakiler dahil olmak üzere bir Docker görüntüsü oluşturun:
+    1. Kayıtlı modeli kayıt defterinden indirin. 
+    2. Ortam YAML dosyasında belirttiğiniz bağımlılıklara dayalı bir Python ortamıyla bir dockerfile oluşturun.
+    3. Model dosyalarınızı ve sağladığınız Puanlama betiğini dockerfile içinde ekleyin.
+    4. Dockerfile dosyasını kullanarak yeni bir Docker görüntüsü oluşturun.
+    5. Docker görüntüsünü, çalışma alanıyla ilişkili Azure Container Registry kaydedin.
 
     > [!IMPORTANT]
     > Kodunuza bağlı olarak, görüntü oluşturma, sizin giriş bilgileriniz olmadan otomatik olarak gerçekleşir.
 
-3. Docker görüntüsünü Azure Container örneği (ACI) hizmetine veya Azure Kubernetes Service (AKS) dağıtın.
+3. Docker görüntüsünü Azure Container Instance (ACI) hizmetine veya Azure Kubernetes hizmeti 'ne (AKS) dağıtın.
 
-4. Yeni bir kapsayıcı (veya kapsayıcıları) ACI veya AKS başlatın. 
+4. ACI veya AKS içinde yeni bir kapsayıcı (veya kapsayıcılar) başlatın. 
 
-Bu işlem hakkında daha fazla bilgi [Model Yönetimi](concept-model-management-and-deployment.md) giriş.
+[Model yönetimi](concept-model-management-and-deployment.md) giriş bölümünde bu işlem hakkında daha fazla bilgi edinin.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Herhangi bir sorun çalıştırırsanız, yapılacak ilk şey dağıtım görevi bölmektir (önceki açıklanmıştır) sorunu ayırt etmek için tek tek adımlara.
+Herhangi bir sorunla karşılaşırsanız, ilk yapılacak şey, sorunu yalıtmak için dağıtım görevinin (önceki adı daha önce açıklanan) bireysel adımlara bölünmemaktır.
 
 Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekleştirirken, [Web hizmeti. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API 'Si veya [WebService. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API 'sini kullanıyorsanız, görevleri görevlere bölmek yararlıdır. Genellikle bu API 'Ler kullanışlıdır, ancak bunları aşağıdaki API çağrılarına değiştirerek sorun gidermeye yönelik adımları kesmeniz yardımcı olur.
 
-1. Modeli kaydedin. Bazı örnek kodlar aşağıda verilmiştir:
+1. Modeli kaydedin. Örnek kod aşağıda verilmiştir:
 
     ```python
     # register a model out of a run record
@@ -58,7 +58,7 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Görüntü oluşturun. Bazı örnek kodlar aşağıda verilmiştir:
+2. Görüntü oluşturun. Örnek kod aşağıda verilmiştir:
 
     ```python
     # configure the image
@@ -73,7 +73,7 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     image.wait_for_creation(show_output=True)
     ```
 
-3. Görüntü hizmeti olarak dağıtalım. Bazı örnek kodlar aşağıda verilmiştir:
+3. Görüntüyü hizmet olarak dağıtın. Örnek kod aşağıda verilmiştir:
 
     ```python
     # configure an ACI-based deployment
@@ -86,11 +86,11 @@ Bu işlevlerin her ikisi de tek bir eylem olarak bahsedilen adımları gerçekle
     aci_service.wait_for_deployment(show_output=True)    
     ```
 
-Tek tek görevler dağıtım işlemine aşağı kıran sonra en yaygın hataların bazıları göz atabilirsiniz.
+Dağıtım sürecini tek tek görevlere doldurduktan sonra, en yaygın hatalardan bazılarına bakabiliriz.
 
-## <a name="image-building-fails"></a>Görüntü oluşturma başarısız
+## <a name="image-building-fails"></a>Görüntü oluşturma başarısız oluyor
 
-Docker görüntüsü derlenemez, [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) veya [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) çağrısı bazı ipuçları sunabileceği bazı hata iletileriyle başarısız olur. Görüntü oluşturma günlüğü hataları ile ilgili daha fazla ayrıntı bulabilirsiniz. Aşağıda bazı örnek kodlar görüntü derleme günlük URI'si bulma göstermez.
+Docker görüntüsü derlenemez, [Image. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) veya [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) çağrısı bazı ipuçları sunabileceği bazı hata iletileriyle başarısız olur. Ayrıca, görüntü oluşturma günlüğünden hatalarla ilgili daha fazla ayrıntı bulabilirsiniz. Aşağıda, görüntü derleme günlüğü URI 'sini bulmayı gösteren bazı örnek kodlar verilmiştir.
 
 ```python
 # if you already have the image object handy
@@ -104,7 +104,7 @@ for name, img in ws.images.items():
     print(img.name, img.version, img.image_build_log_uri)
 ```
 
-Görüntü günlük URI'si, Azure blob Depolama'nızda depolanan bir günlük dosyasına işaret eden bir SAS URL'si ' dir. Yalnızca kopyalama ve yapıştırma URI ve bir tarayıcı penceresi içinde indirin ve günlük dosyasını görüntüleyin.
+Görüntü günlüğü URI 'si, Azure Blob depolamada depolanan bir günlük dosyasına işaret eden bir SAS URL 'sidir. URI 'yi kopyalayıp bir tarayıcı penceresine yapıştırmanız yeterlidir ve günlük dosyasını indirebilir ve görüntüleyebilirsiniz.
 
 ### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault erişim ilkesi ve Azure Resource Manager şablonları
 
@@ -154,15 +154,15 @@ Bu sorundan kaçınmak için aşağıdaki yaklaşımlardan birini öneririz:
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
 
-Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız, yerel bir Web hizmeti olarak dağıtımı deneyin. Yerel bir Web hizmeti kullanmak, sorunları gidermenize daha kolay hale getirir. Modeli içeren Docker görüntüsü indirilip yerel sisteminizde başlatılır.
+Bir modeli ACG veya AKS 'e dağıtmaya yönelik sorunlarla karşılaşırsanız, bunu yerel olarak dağıtmaya çalışın. Yerel bir kullanmak, sorunları gidermenize daha kolay hale getirir. Modeli içeren Docker görüntüsü indirilip yerel sisteminizde başlatılır.
 
 > [!IMPORTANT]
-> Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Yerel bir Web hizmetini dağıtmadan önce Docker çalışıyor olmalıdır. Docker 'ı yükleme ve kullanma hakkında daha fazla bilgi [https://www.docker.com/](https://www.docker.com/)için bkz.
+> Yerel dağıtımlar yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Yerel dağıtmadan önce Docker çalışıyor olmalıdır. Docker 'ı yükleme ve kullanma hakkında bilgi için bkz. [https://www.docker.com/](https://www.docker.com/).
 
 > [!WARNING]
-> Yerel Web hizmeti dağıtımları, üretim senaryolarında desteklenmez.
+> Yerel dağıtımlar, üretim senaryolarında desteklenmez.
 
-Yerel olarak dağıtmak için kodunuzu `LocalWebservice.deploy_configuration()` bir dağıtım yapılandırması oluşturmak üzere değiştirin. Ardından hizmeti `Model.deploy()` dağıtmak için kullanın. Aşağıdaki örnek, bir modeli ( `model` değişkeninde yer alan) yerel bir Web hizmeti olarak dağıtır:
+Yerel olarak dağıtmak için kodunuzu bir dağıtım yapılandırması oluşturmak üzere `LocalWebservice.deploy_configuration()` kullanmak üzere değiştirin. Ardından, hizmeti dağıtmak için `Model.deploy()` kullanın. Aşağıdaki örnek, bir modeli (`model` değişkeninde yer alan) yerel olarak dağıtır:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -173,14 +173,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the web service endpoint
+# Create a local deployment, using port 8890 for the  endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the web service is available on
+# Display the port that the  is available on
 print(service.port)
 ```
 
@@ -202,10 +202,10 @@ print(prediction)
 
 ### <a name="update-the-service"></a>Hizmeti güncelleştirme
 
-Yerel test sırasında, kayıt eklemek veya bulduğunuz herhangi bir `score.py` sorunu çözmeye çalışmak için dosyayı güncelleştirmeniz gerekebilir. Değişiklikleri `score.py` dosyaya yeniden yüklemek için kullanın `reload()`. Örneğin, aşağıdaki kod, hizmeti için betiği yeniden yükler ve ardından verileri bu sunucuya gönderir. Veriler, güncelleştirilmiş `score.py` dosya kullanılarak puanlanır:
+Yerel test sırasında, kayıt eklemek veya bulduğunuz herhangi bir sorunu çözmeye çalışmak için `score.py` dosyasını güncelleştirmeniz gerekebilir. `score.py` dosyadaki değişiklikleri yeniden yüklemek için `reload()`kullanın. Örneğin, aşağıdaki kod, hizmeti için betiği yeniden yükler ve ardından verileri bu sunucuya gönderir. Veriler, güncelleştirilmiş `score.py` dosyası kullanılarak puanlanır:
 
 > [!IMPORTANT]
-> `reload` Yöntemi yalnızca yerel dağıtımlar için kullanılabilir. Bir dağıtımı başka bir işlem hedefine güncelleştirme hakkında daha fazla bilgi için bkz. dağıtım [modellerini](how-to-deploy-and-where.md#update)güncelleştirme bölümü.
+> `reload` yöntemi yalnızca yerel dağıtımlar için kullanılabilir. Bir dağıtımı başka bir işlem hedefine güncelleştirme hakkında daha fazla bilgi için bkz. dağıtım [modellerini](how-to-deploy-and-where.md#update)güncelleştirme bölümü.
 
 ```python
 service.reload()
@@ -213,7 +213,7 @@ print(service.run(input_data=test_sample))
 ```
 
 > [!NOTE]
-> Betik, hizmet tarafından kullanılan `InferenceConfig` nesne tarafından belirtilen konumdan yeniden yüklenir.
+> Betik, hizmet tarafından kullanılan `InferenceConfig` nesnesi tarafından belirtilen konumdan yeniden yüklenir.
 
 Modeli, Conda bağımlılıklarını veya dağıtım yapılandırmasını değiştirmek için [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#update--args-)kullanın. Aşağıdaki örnek, hizmet tarafından kullanılan modeli güncelleştirir:
 
@@ -227,7 +227,7 @@ Hizmeti silmek için [Delete ()](https://docs.microsoft.com/python/api/azureml-c
 
 ### <a id="dockerlog"></a>Docker günlüğünü İnceleme
 
-Hizmet nesnesinden ayrıntılı Docker altyapısı günlük iletilerini yazdırabilirsiniz. ACI, AKS ve yerel dağıtımlar için günlüğü görüntüleyebilirsiniz. Aşağıdaki örnek günlükleri nasıl yazdırabileceğinizi gösterir.
+Service nesnesinden ayrıntılı Docker motoru günlük iletilerini yazdırabilirsiniz. ACI, AKS ve yerel dağıtımlar için günlüğü görüntüleyebilirsiniz. Aşağıdaki örnek günlükleri nasıl yazdırabileceğinizi gösterir.
 
 ```python
 # if you already have the service object handy
@@ -237,15 +237,15 @@ print(service.get_logs())
 print(ws.webservices['mysvc'].get_logs())
 ```
 
-## <a name="service-launch-fails"></a>Hizmet başlatma başarısız
+## <a name="service-launch-fails"></a>Hizmet başlatılamadı
 
-Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma artırma işleminin bir parçası olarak `init()` işlevi Puanlama komut dosyanızdaki sistem tarafından çağrılır. İçinde yakalanmamış istisnalar varsa `init()` görebileceğiniz işlev **CrashLoopBackOff** hata hata iletisi.
+Görüntü başarıyla derlendikten sonra, sistem dağıtım yapılandırmanızı kullanarak bir kapsayıcı başlatmaya çalışır. Kapsayıcı başlatma işleminin bir parçası olarak, Puanlama betiğinizdeki `init()` işlevi sistem tarafından çağrılır. `init()` işlevinde yakalanamayan özel durumlar varsa, hata iletisinde **Crashloopgeri** alma hatası ' nı görebilirsiniz.
 
 Günlükleri denetlemek için [Docker günlüğünü İnceleme](#dockerlog) bölümündeki bilgileri kullanın.
 
-## <a name="function-fails-get_model_path"></a>İşlevi başarısız: get_model_path()
+## <a name="function-fails-get_model_path"></a>İşlev başarısız: get_model_path ()
 
-Genellikle, `init()` Puanlama betiğinin işlevinde model [. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi, bir model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Çalıştırmak için bu hata ayıklama için en kolay yolu olan Python kodu kapsayıcı Kabuğu'nda aşağıdaki:
+Genellikle, Puanlama betiğinin `init()` işlevinde, model dosyasını veya kapsayıcıdaki model dosyalarının bir klasörünü bulmak için [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) işlevi çağırılır. Model dosyası veya klasörü bulunamazsa, işlev başarısız olur. Bu hatada hata ayıklamanın en kolay yolu, kapsayıcı kabuğu 'nda aşağıdaki python kodunu çalıştırmalıdır:
 
 ```python
 from azureml.core.model import Model
@@ -254,13 +254,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Bu örnek, Puanlama betiğinizin model dosyasını veya `/var/azureml-app`klasörünü bulmasını beklediği kapsayıcıda yerel yolu (göreli olarak) yazdırır. Ardından, dosya veya klasörün aslında burada olması beklenmektedir olup olmadığını doğrulayabilirsiniz.
+Bu örnek, Puanlama betiğinizin model dosyasını veya klasörünü bulmasını beklediği kapsayıcıda yerel yolu (`/var/azureml-app`göre) yazdırır. Dosya veya klasörün gerçekten beklenen yerde olduğunu doğrulayabilirsiniz.
 
 Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin günlüğe kaydedilmesine neden olabilir ve bu da hatayı belirlemek için yararlı olabilir.
 
-## <a name="function-fails-runinput_data"></a>İşlevi başarısız: run(input_data)
+## <a name="function-fails-runinput_data"></a>İşlev başarısız oldu: Run (input_data)
 
-Hizmet başarıyla dağıtıldı, ancak Puanlama uç noktası veri göndermek çöküyor deyiminde yakalama hata ekleyebilirsiniz, `run(input_data)` ayrıntılı hata iletisi yerine döndürür, böylece işlev. Örneğin:
+Hizmet başarıyla dağıtılırsa, ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` işlevinize hata yakalama açıklaması ekleyebilirsiniz, böylece bunun yerine ayrıntılı hata iletisi döndürülür. Örneğin:
 
 ```python
 def run(input_data):
@@ -275,7 +275,7 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Not**: `run(input_data)` Çağrıdan hata iletilerinin döndürülmesi yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
+**Note**: `run(input_data)` çağrısından alınan hata iletilerinin döndürülmesi yalnızca hata ayıklama amacıyla yapılmalıdır. Güvenlik nedenleriyle, bir üretim ortamında bu şekilde hata iletileri döndürmemelisiniz.
 
 ## <a name="http-status-code-503"></a>HTTP durum kodu 503
 
@@ -285,16 +285,16 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 
 * Otomatik ölçeklendirmenin yeni çoğaltmalar oluşturduğu kullanım düzeyini değiştirin.
     
-    Varsayılan olarak, otomatik ölçeklendirme hedef kullanımı% 70 olarak ayarlanır, bu da hizmetin saniyede% 30 ' a varan (RPS) istek sayısını işleyebileceği anlamına gelir. Daha düşük bir değere ayarlayarak `autoscale_target_utilization` kullanım hedefini ayarlayabilirsiniz.
+    Varsayılan olarak, otomatik ölçeklendirme hedef kullanımı %70 olarak ayarlanır, bu da hizmetin saniyede %30 ' a varan (RPS) istek sayısını işleyebileceği anlamına gelir. `autoscale_target_utilization` daha düşük bir değere ayarlayarak kullanım hedefini ayarlayabilirsiniz.
 
     > [!IMPORTANT]
-    > Bu değişiklik çoğaltmaların *daha hızlı*oluşturulmasına neden olmaz. Bunun yerine, daha düşük bir kullanım eşiğine göre oluşturulur. Hizmetin% 70 olması beklenene kadar beklemek yerine% 30 kullanım gerçekleştiğinde, çoğaltmanın oluşturulmasına neden olur.
+    > Bu değişiklik çoğaltmaların *daha hızlı*oluşturulmasına neden olmaz. Bunun yerine, daha düşük bir kullanım eşiğine göre oluşturulur. Hizmetin %70 olması beklenene kadar beklemek yerine %30 kullanım gerçekleştiğinde, çoğaltmanın oluşturulmasına neden olur.
     
-    Web hizmeti zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, en fazla çoğaltma sayısını artırmak için `autoscale_max_replicas` değeri arttırın.
+    Zaten geçerli en fazla çoğaltmaları kullanıyorsa ve 503 durum kodu görmeye devam ediyorsanız, en fazla çoğaltma sayısını artırmak için `autoscale_max_replicas` değerini artırın.
 
 * En az çoğaltma sayısını değiştirin. En düşük çoğaltmaları artırmak, gelen ani artışları işlemek için daha büyük bir havuz sağlar.
 
-    En az çoğaltma sayısını artırmak için, daha yüksek `autoscale_min_replicas` bir değere ayarlayın. Aşağıdaki kodu kullanarak gerekli çoğaltmaları hesaplayabilirsiniz ve değerleri projenize özgü değerlerle değiştirin:
+    En az çoğaltma sayısını artırmak için `autoscale_min_replicas` daha yüksek bir değere ayarlayın. Aşağıdaki kodu kullanarak gerekli çoğaltmaları hesaplayabilirsiniz ve değerleri projenize özgü değerlerle değiştirin:
 
     ```python
     from math import ceil
@@ -316,7 +316,7 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
     > [!NOTE]
     > Yeni en düşük çoğaltmalardan daha büyük istek ani artışları alırsanız, yeniden 503s alabilirsiniz. Örneğin, hizmetinizin trafiği arttıkça, en düşük çoğaltmaları artırmanız gerekebilir.
 
-`autoscale_target_utilization`, Ve `autoscale_max_replicas`içinayarlarıhakkında daha fazla bilgi için, bkz. [akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu. `autoscale_min_replicas`
+`autoscale_target_utilization`, `autoscale_max_replicas`ve `autoscale_min_replicas` ayarlama hakkında daha fazla bilgi için, bkz. [Akswebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modül başvurusu.
 
 
 ## <a name="advanced-debugging"></a>Gelişmiş hata ayıklama
@@ -324,9 +324,9 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli olarak hata ayıklaması yapmanız gerekebilir. Örneğin, giriş betiği başarısız olursa ve neden ek günlüğe kaydetme ile saptanamaz. Visual Studio Code ve Visual Studio için Python Araçları (PTVSD) kullanarak Docker kapsayıcısının içinde çalışan koda iliştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu hata ayıklama yöntemi, bir modeli yerel olarak `Model.deploy()` dağıtırken `LocalWebservice.deploy_configuration` ve kullanılırken çalışmaz. Bunun yerine, [containerımage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) sınıfını kullanarak bir görüntü oluşturmanız gerekir. 
+> Bu hata ayıklama yöntemi, bir modeli yerel olarak dağıtmak için `Model.deploy()` ve `LocalWebservice.deploy_configuration` kullanılırken çalışmaz. Bunun yerine, [containerımage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) sınıfını kullanarak bir görüntü oluşturmanız gerekir. 
 >
-> Yerel Web hizmeti dağıtımları, yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Yerel bir Web hizmetini dağıtmadan önce Docker çalışıyor olmalıdır. Docker 'ı yükleme ve kullanma hakkında daha fazla bilgi [https://www.docker.com/](https://www.docker.com/)için bkz.
+> Yerel dağıtımlar yerel sisteminizde çalışan bir Docker yüklemesi gerektirir. Yerel dağıtmadan önce Docker çalışıyor olmalıdır. Docker 'ı yükleme ve kullanma hakkında bilgi için bkz. [https://www.docker.com/](https://www.docker.com/).
 
 ### <a name="configure-development-environment"></a>Geliştirme ortamını yapılandırma
 
@@ -342,7 +342,7 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
 
     1. VS Code, __Hata Ayıkla__ menüsünü ve ardından __yapılandırma aç__' ı seçin. __Launch. JSON__ adlı bir dosya açılır.
 
-    1. __Launch. JSON__ dosyasında, içeren `"configurations": [`satırı bulun ve sonra aşağıdaki metni ekleyin:
+    1. __Launch. JSON__ dosyasında `"configurations": [`içeren satırı bulun ve sonra aşağıdaki metni ekleyin:
 
         ```json
         {
@@ -369,7 +369,7 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>PTVSD içeren bir görüntü oluşturma
 
-1. Dağıtım için Conda ortamını, PTVSD öğesini içerecek şekilde değiştirin. Aşağıdaki örnek, `pip_packages` parametresini kullanarak eklemeyi gösterir:
+1. Dağıtım için Conda ortamını, PTVSD öğesini içerecek şekilde değiştirin. Aşağıdaki örnek, `pip_packages` parametresi kullanılarak eklemeyi gösterir:
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
@@ -384,7 +384,7 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
         f.write(myenv.serialize_to_string())
     ```
 
-1. Ptvsd başlatmak ve hizmet başlatıldığında bir bağlantı beklemek için, `score.py` dosyanızın en üstüne aşağıdakileri ekleyin:
+1. PTVSD başlatmak ve hizmet başlatıldığında bir bağlantı beklemek için, `score.py` dosyanızın en üstüne aşağıdakileri ekleyin:
 
     ```python
     import ptvsd
@@ -395,7 +395,7 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
     print("Debugger attached...")
     ```
 
-1. Hata ayıklama sırasında görüntünün dosyalarında yeniden oluşturmanız gerekmeden değişiklikler yapmak isteyebilirsiniz. Docker görüntüsüne bir metin Düzenleyicisi (VIM) yüklemek için adlı `Dockerfile.steps` yeni bir metin dosyası oluşturun ve dosyanın içeriği olarak aşağıdakileri kullanın:
+1. Hata ayıklama sırasında görüntünün dosyalarında yeniden oluşturmanız gerekmeden değişiklikler yapmak isteyebilirsiniz. Docker görüntüsüne bir metin Düzenleyicisi (VIM) yüklemek için `Dockerfile.steps` adlı yeni bir metin dosyası oluşturun ve dosyanın içeriği olarak aşağıdakileri kullanın:
 
     ```text
     RUN apt-get update && apt-get -y install vim
@@ -403,10 +403,10 @@ Bazı durumlarda, model dağıtımınızda bulunan Python kodunda etkileşimli o
 
     Bir metin Düzenleyicisi, yeni bir görüntü oluşturmadan değişiklikleri test etmek için Docker görüntüsündeki dosyaları değiştirmenize olanak sağlar.
 
-1. `Dockerfile.steps` Dosyayı kullanan bir görüntü oluşturmak için, bir görüntü oluştururken `docker_file` parametresini kullanın. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
+1. `Dockerfile.steps` dosyasını kullanan bir görüntü oluşturmak için, bir görüntü oluştururken `docker_file` parametresini kullanın. Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
 
     > [!NOTE]
-    > Bu örnek, Azure Machine Learning `ws` çalışma alanınıza işaret ettiğini `model` ve bu modelin dağıtılmakta olduğunu varsayar. Dosya `myenv.yml` , 1. adımda oluşturulan Conda bağımlılıklarını içerir.
+    > Bu örnekte, `ws` Azure Machine Learning çalışma alanınıza işaret ettiğini ve bu `model` dağıtıldığı model olduğunu varsaymaktadır. `myenv.yml` dosyası, adım 1 ' de oluşturulan Conda bağımlılıklarını içerir.
 
     ```python
     from azureml.core.image import Image, ContainerImage
@@ -429,7 +429,7 @@ Görüntü oluşturulduktan sonra, kayıt defterindeki görüntü konumu görün
 myregistry.azurecr.io/myimage:1
 ```
 
-Bu metin örneğinde, kayıt defteri adı `myregistry` ve görüntü adlandırılır. `myimage` Görüntü sürümü `1`.
+Bu metin örneğinde, kayıt defteri adı `myregistry` ve görüntü `myimage`olarak adlandırılır. Görüntü sürümü `1`.
 
 ### <a name="download-the-image"></a>Görüntüyü indirin
 
@@ -439,37 +439,37 @@ Bu metin örneğinde, kayıt defteri adı `myregistry` ve görüntü adlandırı
     az login
     ```
 
-1. Görüntünüzü içeren Azure Container Registry (ACR) kimlik doğrulaması yapmak için aşağıdaki komutu kullanın. Görüntüyü `myregistry` kaydettiğinizde döndürülen ile değiştirin:
+1. Görüntünüzü içeren Azure Container Registry (ACR) kimlik doğrulaması yapmak için aşağıdaki komutu kullanın. `myregistry`, görüntüyü kaydettiğinizde döndürülen ile değiştirin:
 
     ```azurecli
     az acr login --name myregistry
     ```
 
-1. Görüntüyü yerel Docker 'a indirmek için aşağıdaki komutu kullanın. Görüntüyü `myimagepath` kaydettiğinizde döndürülen konumla değiştirin:
+1. Görüntüyü yerel Docker 'a indirmek için aşağıdaki komutu kullanın. `myimagepath`, görüntüyü kaydettiğinizde döndürülen konumla değiştirin:
 
     ```bash
     docker pull myimagepath
     ```
 
-    Görüntü yolu ile `myregistry.azurecr.io/myimage:1`aynı olmalıdır. Kayıt defteriniz, `myimage` görüntünüz ve `1` görüntü sürümüdür. `myregistry`
+    Görüntü yolu `myregistry.azurecr.io/myimage:1`benzer olmalıdır. Kayıt defteriniz `myregistry`, resminiz `myimage` ve `1` görüntü sürümüdür.
 
     > [!TIP]
     > Önceki adımdan alınan kimlik doğrulaması son olarak süresiz değildir. Kimlik doğrulama komutu ve çekme komutu arasında yeterince uzun süre beklerseniz bir kimlik doğrulama hatası alırsınız. Bu durumda, yeniden kimlik doğrulaması yapın.
 
-    İndirme işleminin tamamlanma süresi Internet bağlantınızın hızına bağlıdır. İşlem sırasında bir indirme durumu görüntülenir. İndirme işlemi tamamlandıktan sonra, indirdiğini doğrulamak için `docker images` komutunu kullanabilirsiniz.
+    İndirme işleminin tamamlanma süresi Internet bağlantınızın hızına bağlıdır. İşlem sırasında bir indirme durumu görüntülenir. İndirme işlemi tamamlandıktan sonra, indirildiği doğrulamak için `docker images` komutunu kullanabilirsiniz.
 
-1. Görüntüyle çalışmayı kolaylaştırmak için, bir etiket eklemek üzere aşağıdaki komutu kullanın. 2 `myimagepath` . adımdaki konum değeriyle değiştirin.
+1. Görüntüyle çalışmayı kolaylaştırmak için, bir etiket eklemek üzere aşağıdaki komutu kullanın. `myimagepath` değerini 2. adımdaki konum değeriyle değiştirin.
 
     ```bash
     docker tag myimagepath debug:1
     ```
 
-    Adımlar geri kalanında, tam görüntü yolu değeri `debug:1` yerine yerel görüntüye başvurabilirsiniz.
+    Adımlar geri kalanında, tam görüntü yolu değeri yerine `debug:1` olarak yerel görüntüye başvurabilirsiniz.
 
 ### <a name="debug-the-service"></a>Hizmette hata ayıkla
 
 > [!TIP]
-> `score.py` Dosyadaki ptvsd bağlantısı için bir zaman aşımı ayarlarsanız, zaman aşımı süresi dolmadan önce vs Code hata ayıklama oturumuna bağlamanız gerekir. VS Code başlatın, yerel kopyasını `score.py`açın, bir kesme noktası ayarlayın ve bu bölümdeki adımları kullanmadan önce başlamaya hazırlanın.
+> `score.py` dosyasında PTVSD bağlantısı için bir zaman aşımı ayarlarsanız, zaman aşımı süresi dolmadan önce VS Code hata ayıklama oturumuna bağlamanız gerekir. VS Code başlatın, `score.py`yerel kopyasını açın, bir kesme noktası ayarlayın ve bu bölümdeki adımları kullanmadan önce başlamaya hazırlanın.
 >
 > Hata ayıklama ve kesme noktaları ayarlama hakkında daha fazla bilgi için bkz. [hata ayıklama](https://code.visualstudio.com/Docs/editor/debugging).
 
@@ -479,7 +479,7 @@ Bu metin örneğinde, kayıt defteri adı `myregistry` ve görüntü adlandırı
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. Kapsayıcının içindeki PTVSD 'e VS Code iliştirmek için, VS Code açın ve F5 tuşunu kullanın veya __Hata Ayıkla__' yı seçin. İstendiğinde __Azure Machine Learning seçin: Docker hata__ ayıklama yapılandırması. Ayrıca, __yan çubukta hata ayıklama simgesini de seçebilirsiniz Azure Machine Learning: Hata ayıklama açılan__ menüsünden Docker hata ayıklama girişi yapın ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanın.
+1. Kapsayıcının içindeki PTVSD 'e VS Code iliştirmek için, VS Code açın ve F5 tuşunu kullanın veya __Hata Ayıkla__' yı seçin. İstendiğinde __Azure Machine Learning: Docker hata ayıklama__ yapılandırması ' nı seçin. Ayrıca, yan çubukta hata ayıklama simgesini, __Azure Machine Learning: Docker__ hata ayıklama girdisini hata ayıkla açılan menüsünden seçebilir ve ardından hata ayıklayıcıyı eklemek için yeşil oku kullanabilirsiniz.
 
     ![Hata ayıklama simgesi, hata ayıklamayı Başlat düğmesi ve yapılandırma Seçicisi](media/how-to-troubleshoot-deployment/start-debugging.png)
 
@@ -504,7 +504,7 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
     cd /var/azureml-app
     ```
 
-    Buradan, `score.py` dosyayı düzenlemek için VIM kullanabilirsiniz. VIM kullanma hakkında daha fazla bilgi için bkz. [VIM düzenleyicisini kullanma](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
+    Buradan `score.py` dosyasını düzenlemek için VIM kullanabilirsiniz. VIM kullanma hakkında daha fazla bilgi için bkz. [VIM düzenleyicisini kullanma](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
 
 1. Kapsayıcıda yapılan değişiklikler normalde kalıcı olmaz. Yaptığınız değişiklikleri kaydetmek için aşağıdaki komutu kullanın, kabuktan çıkmadan önce, yukarıdaki adımda (başka bir kabukta) başlamadan önce aşağıdaki komutu kullanın:
 
@@ -512,7 +512,7 @@ Görüntüdeki dosyalarda değişiklik yapmak için çalışan kapsayıcıya ili
     docker commit debug debug:2
     ```
 
-    Bu komut, düzenlemelerinizi içeren adlı `debug:2` yeni bir görüntü oluşturur.
+    Bu komut, düzenlemelerinizi içeren `debug:2` adlı yeni bir görüntü oluşturur.
 
     > [!TIP]
     > Değişikliklerin etkili olabilmesi için geçerli kapsayıcıyı durdurmanız ve yeni sürümü kullanmaya başlamanız gerekir.
@@ -531,5 +531,5 @@ docker stop debug
 
 Dağıtım hakkında daha fazla bilgi edinin:
 
-* [Nasıl dağıtılacağı ve nerede](how-to-deploy-and-where.md)
-* [Öğretici: Modelleri eğitme & dağıtma](tutorial-train-models-with-aml.md)
+* [Dağıtım ve nerede](how-to-deploy-and-where.md)
+* [Öğretici: eğitim & dağıtım modelleri](tutorial-train-models-with-aml.md)

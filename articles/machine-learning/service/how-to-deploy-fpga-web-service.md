@@ -7,24 +7,25 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.author: tedway
-author: tedway
-ms.date: 07/25/2019
+ms.author: jordane
+author: jpe316
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c3c844ba7044f8e1c9c313f1ac63b94310ea322
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5e8dc6181660f0c1545df0688e2749f8f0187027
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496893"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Alan-programlanabilir kapı dizileri (FPGA) ve dağıtma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makale, alan-programlanabilir kapı dizileri (FPGA) ile bir giriş sağlar ve Azure FPGA 'ye Azure Machine Learning kullanarak modellerinizi nasıl dağıtacağınızı gösterir. 
 
 FPGAs, programlanabilir mantık blokları dizisi ve yeniden yapılandırılabilir birbirine bağlı bir hiyerarşi içerir. Birbirine bağlı, bu blokların üretim sonrasında çeşitli şekillerde yapılandırılmasına izin verir. Diğer yongalarla karşılaştırıldığında, FPGAs, bir programlama programlamasına ve performansına ilişkin bir bileşim sunar.
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA vs. CPU, GPU ve ASIC
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGAs vs. CPU, GPU ve ASIC
 
 Aşağıdaki diyagramda ve tabloda Fpg'in diğer işlemcilerle nasıl Karşılaştırıldığı gösterilmektedir.
 
@@ -32,26 +33,26 @@ Aşağıdaki diyagramda ve tabloda Fpg'in diğer işlemcilerle nasıl Karşıla�
 
 |İşlemci||Açıklama|
 |---|:-------:|------|
-|Özel uygulama tümleşik devreler|ASICS|Özel bağlantı hatları, Google TensorFlow işlemci birimi (TPU) gibi yüksek verimlilik sağlar. Gereksinimleriniz değiştikçe bu değişiklikler yeniden yapılandırılamaz.|
-|Alanda programlanabilir kapı dizileri|FPGA|Azure 'da kullanılabilir olanlar gibi FPGAs 'ler, ASICs performansına yakın performans sağlar. Ayrıca, yeni mantık uygulamak için zaman içinde esnek ve yeniden yapılandırılabilir.|
-|Grafik işleme birimleri|GPU'ları|AI hesaplamaları için popüler bir seçenek. GPU 'Lar paralel işleme özellikleri sunarak CPU 'dan görüntü işlemeye daha hızlı bir şekilde çalışır.|
-|Merkezi işlem birimleri|CPU’lar|Performans ve video işleme için ideal olmayan genel amaçlı işlemciler.|
+|Uygulamaya özgü tümleşik devreler|ASICS|Google 'ın TensorFlow Işlemci birimleri (TPU) gibi özel devreler en yüksek verimliliği sağlar. Gereksinimleriniz değiştikçe bu değişiklikler yeniden yapılandırılamaz.|
+|Alan-programlanabilir kapı dizileri|FPGA'lar|Azure 'da kullanılabilir olanlar gibi FPGAs 'ler, ASICs performansına yakın performans sağlar. Ayrıca, yeni mantık uygulamak için zaman içinde esnek ve yeniden yapılandırılabilir.|
+|Grafik işleme birimleri|GPU’lar|AI hesaplamaları için popüler bir seçenek. GPU 'Lar paralel işleme özellikleri sunarak CPU 'dan görüntü işlemeye daha hızlı bir şekilde çalışır.|
+|Merkezi işleme birimleri|CPU’lar|Performans ve video işleme için ideal olmayan genel amaçlı işlemciler.|
 
 Azure 'daki FPGAs, veri bilimcilerinin ve geliştiricilerin gerçek zamanlı AI hesaplamalarını hızlandırmak için kullanacağı Intel FPGA cihazlarını temel alır. Bu FPGA özellikli mimari, performans, esneklik ve ölçek sunar ve Azure 'da kullanılabilir.
 
 FPGAs gerçek zamanlı çıkarım (veya model Puanlama) istekleri için düşük gecikme süresi elde etmenizi mümkün kılar. Zaman uyumsuz istekler (toplu işleme) gerekli değildir. Daha fazla verinin işlenmesi gerektiğinden, toplu işleme gecikmeye neden olabilir. Sinir işleme birimlerinin uygulamaları toplu işleme gerektirmez; Bu nedenle gecikme süresi, CPU ve GPU işlemcilere kıyasla birçok kez daha düşük olabilir.
 
-### <a name="reconfigurable-power"></a>Sunmanın güç
-Farklı makine öğrenimi modelleri türleri için FPGAs 'yi yeniden yapılandırabilirsiniz. Bu esneklik en iyi sayısal duyarlık ve kullanılan bellek modeli göre uygulamaları hızlandırmak kolaylaştırır. FPGAs yeniden yapılandırdığından, hızlı değişen AI algoritmalarının gereksinimleriyle güncel kalabilirler.
+### <a name="reconfigurable-power"></a>Yeniden yapılandırılabilir güç
+Farklı makine öğrenimi modelleri türleri için FPGAs 'yi yeniden yapılandırabilirsiniz. Bu esneklik, kullanılan en iyi sayısal duyarlık ve bellek modeline göre uygulamaların hızlandırlanmasını kolaylaştırır. FPGAs yeniden yapılandırdığından, hızlı değişen AI algoritmalarının gereksinimleriyle güncel kalabilirler.
 
-## <a name="whats-supported-on-azure"></a>Azure'da desteklenen özellikler
-Microsoft Azure, dünyanın en büyük bulut yatırımı Ile FPGAs ' dir. Bu FPGA özellikli donanım mimarisi kullanarak, eğitilen sinir ağları, hızlı ve daha düşük gecikme süresi ile çalıştırın. Azure, hizmetinizin ölçeğini genişletmek için FPGAs genelinde önceden eğitilen derin sinir ağlarını (DNN) paralel hale getirmek. Dnn'leri, öğrenme veya güncelleştirilmiş ağırlıklara eşleşmiş aktarımı için derin bir özelliği Oluşturucu olarak önceden eğitilmiş.
+## <a name="whats-supported-on-azure"></a>Azure 'da desteklenen özellikler
+Microsoft Azure, dünyanın en büyük bulut yatırımı Ile FPGAs ' dir. Bu FPGA özellikli donanım mimarisini kullanarak eğitilen sinir ağları hızla ve daha düşük gecikme süresiyle çalışır. Azure, hizmetinizin ölçeğini genişletmek için FPGAs genelinde önceden eğitilen derin sinir ağlarını (DNN) paralel hale getirmek. DNNs, aktarım öğrenimi için derin bir şekilde veya güncelleştirilmiş ağırlıklarla ince ayar olarak önceden eğitilmiş olabilir.
 
 Azure 'da FPGAs şunları destekler:
 
-+ Görüntü sınıflandırma ve tanıma senaryoları
-+ TensorFlow dağıtım
-+ Intel FPGA donanım 
++ Görüntü sınıflandırması ve tanıma senaryoları
++ TensorFlow dağıtımı
++ Intel FPGA donanımı 
 
 Bu DNN modelleri şu anda kullanılabilir:
   - ResNet 50
@@ -61,7 +62,7 @@ Bu DNN modelleri şu anda kullanılabilir:
   - SSD-VGG
 
 FPGAs, bu Azure bölgelerinde kullanılabilir:
-  - East US
+  - Doğu ABD
   - Güneydoğu Asya
   - Batı Avrupa
   - Batı ABD 2
@@ -76,13 +77,13 @@ FPGAs, bu Azure bölgelerinde kullanılabilir:
 Azure FPGAs Azure Machine Learning tümleşiktir. Microsoft, DNN değerlendirmesi, Bing Arama derecelendirmesi ve yazılım tanımlı ağ (SDN) hızlandırma için FPGAs ' i kullanarak diğer görevler için CPU 'Ları serbest bırakarak gecikme süresini azaltır.
 
 Aşağıdaki senaryolar FPGAs kullanır:
-+ [Optik denetleme sistemi otomatik](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
++ [Otomatik Optik İnceleme sistemi](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [Land kapak eşleme](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [Land kapağı eşleme](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
 
 
-## <a name="example-deploy-models-on-fpgas"></a>Örnek: FPGAs 'de modeller dağıtma 
+## <a name="example-deploy-models-on-fpgas"></a>Örnek: FPGAs 'de modelleri dağıtma 
 
 Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerinde bir modeli Web hizmeti olarak dağıtabilirsiniz. FPGAs kullanımı, tek bir toplu iş boyutuyla bile Ultra düşük gecikme çıkarımı sağlar. Çıkarım veya model Puanlama, dağıtılan modelin tahmin için en yaygın olarak üretim verilerinde kullanıldığı aşamadır.
 
@@ -98,7 +99,7 @@ Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerind
     ```
 
     > [!TIP]
-    > Diğer olası konumlar, ``southeastasia`` ``westeurope``ve ``westus2``' dir.
+    > Diğer olası konumlar ``southeastasia``, ``westeurope``ve ``westus2``.
 
     Komut şuna benzer bir metin döndürür:
 
@@ -110,7 +111,7 @@ Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerind
 
     __CurrentValue__altında en az 6 vCPU kullandığınızdan emin olun.
 
-    Kotayı yoksa ' de [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)bir istek gönderebilirsiniz.
+    Kotayı yoksa [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)bir istek gönderebilirsiniz.
 
 - Python için bir Azure Machine Learning çalışma alanı ve Azure Machine Learning SDK 'Sı yüklendi. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
  
@@ -121,16 +122,16 @@ Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerind
     ```
 
 
-## <a name="1-create-and-containerize-models"></a>1. Modelleri oluşturma ve Kapsayıcılı hale getirme
+## <a name="1-create-and-containerize-models"></a>1. modelleri oluşturma ve Kapsayıcılı hale getirme
 
 Bu belge, giriş görüntüsünü önceden işlemek için bir TensorFlow grafiği oluşturmayı, bir FPGA üzerinde ResNet 50 ' i kullanarak bir baskın hale getirme yapmayı ve ardından, ImageNet veri kümesi üzerinde eğitilen bir sınıflandırıcı aracılığıyla özellikleri çalıştırmayı açıklamaktadır.
 
-Yönergeleri izleyin:
+Yönergeleri izleyerek şunları yapın:
 
 * TensorFlow modelini tanımlama
 * Modeli Dönüştür
 * Modeli dağıtma
-* Dağıtılan modeli kullanma
+* Dağıtılan modeli tüketme
 * Dağıtılan Hizmetleri Sil
 
 Bir hizmet tanımı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) kullanın. Hizmet tanımı, TensorFlow 'a göre grafiklerin bir işlem hattını (giriş, korturun ve sınıflandırıcı) açıklayan bir dosyadır. Dağıtım komutu, tanım ve grafikleri otomatik olarak bir ZIP dosyası olarak sıkıştırır ve ZIP 'i Azure Blob depolama alanına yükler. DNN, FPGA üzerinde çalışmak üzere zaten dağıtıldı.
@@ -149,7 +150,7 @@ ws = Workspace.from_config()
 print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
 ```
 
-### <a name="preprocess-image"></a>Görüntü önceden işlenir
+### <a name="preprocess-image"></a>Ön işleme resmi
 
 Web hizmeti girişi bir JPEG görüntüsüdür.  İlk adım, JPEG görüntüsünün kodunu çözmeye ve ön işlemden geçmelidir.  JPEG görüntüleri dize olarak değerlendirilir ve sonuç, ResNet 50 modelinin girişi olacak şekilde görünür.
 
@@ -165,7 +166,7 @@ print(image_tensors.shape)
 
 ### <a name="load-featurizer"></a>Yük korleştirici
 
-Model başlatın ve bir TensorFlow denetim noktası bir özelliği Oluşturucu kullanılacak ResNet50 quantized sürümünü indirin.  Aşağıdaki kod parçacığında "QuantizedResnet50" yerine, diğer derin sinir ağlarını içeri aktarabilirsiniz:
+Modeli başlatın ve bir özellik olarak kullanılmak üzere ResNet50 'in quantiizer sürümünün bir TensorFlow kontrol noktasını indirin.  Aşağıdaki kod parçacığında "QuantizedResnet50" yerine, diğer derin sinir ağlarını içeri aktarabilirsiniz:
 
 - QuantizedResnet152
 - QuantizedVgg16
@@ -183,7 +184,7 @@ print(feature_tensor.shape)
 
 ### <a name="add-classifier"></a>Sınıflandırıcı Ekle
 
-Bu sınıflandırıcı Imagenet veri kümesinde eğitim.  Özelleştirilmiş ağırlıklarınız için aktarım öğrenimi ve eğitim örnekleri, [örnek Not defterleri](https://aka.ms/aml-notebooks)kümesinde mevcuttur.
+Bu sınıflandırıcı, ımagenet veri kümesi üzerinde eğitildi.  Özelleştirilmiş ağırlıklarınız için aktarım öğrenimi ve eğitim örnekleri, [örnek Not defterleri](https://aka.ms/aml-notebooks)kümesinde mevcuttur.
 
 ```python
 classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -315,11 +316,11 @@ for i in Image.list(workspace=ws):
         i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
 ```
 
-## <a name="2-deploy-to-cloud-or-edge"></a>2. Buluta veya kenara dağıtın
+## <a name="2-deploy-to-cloud-or-edge"></a>2. buluta veya kenara dağıtın
 
 ### <a name="deploy-to-the-cloud"></a>Buluta dağıtın
 
-Modelinizi ölçekli üretim web hizmeti olarak dağıtmak için Azure Kubernetes Service (AKS) kullanın. Azure Machine Learning SDK, CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak yeni bir tane oluşturabilirsiniz.
+Modelinizi yüksek ölçekli bir üretim Web hizmeti olarak dağıtmak için Azure Kubernetes hizmeti (AKS) kullanın. Azure Machine Learning SDK, CLı veya [Azure Machine Learning Studio](https://ml.azure.com)kullanarak yeni bir tane oluşturabilirsiniz.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -421,9 +422,9 @@ converted_model.delete()
 ### <a name="deploy-to-a-local-edge-server"></a>Yerel bir uç sunucusuna dağıtma
 
 Tüm [Azure Data Box Edge cihazlar](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
-) , modeli çalıştırmak için bir FPGA içerir.  Yalnızca bir model FPGA üzerinde tek seferde çalıştırılabilir.  Farklı bir model çalıştırmak için yeni bir kapsayıcı dağıtmanız yeterlidir. Yönergeler ve örnek kod, [Bu Azure örneğinde](https://github.com/Azure-Samples/aml-hardware-accelerated-models)bulunabilir.
+) , modeli çalıştırmak IÇIN BIR FPGA içerir.  Yalnızca bir model FPGA üzerinde tek seferde çalıştırılabilir.  Farklı bir model çalıştırmak için yeni bir kapsayıcı dağıtmanız yeterlidir. Yönergeler ve örnek kod, [Bu Azure örneğinde](https://github.com/Azure-Samples/aml-hardware-accelerated-models)bulunabilir.
 
-## <a name="secure-fpga-web-services"></a>FPGA web hizmetlerini güvence altına alma
+## <a name="secure-fpga-web-services"></a>Güvenli FPGA Web Hizmetleri
 
 FPGA Web hizmetlerinizin güvenliğini sağlamak için [Güvenli Web Hizmetleri](how-to-secure-web-service.md) belgesine bakın.
 
@@ -433,8 +434,8 @@ Bu not defterlerine, videolara ve bloglara göz atın:
 
 + Birçok [örnek Not defteri](https://aka.ms/aml-accel-models-notebooks).
 
-+ [Hiper ölçekli donanım: Azure + FPGA üzerinde ölçekli ML: Derleme 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [Hiper ölçekli donanım: Azure + FPGA üzerinde ölçekli ML: derleme 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
 + [Microsoft FPGA tabanlı yapılandırılabilir bulut (video) içinde](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-+ [Project Brainwave için gerçek zamanlı AI: Proje giriş sayfası](https://www.microsoft.com/research/project/project-brainwave/)
++ [Gerçek zamanlı AI için Project Brainwave: proje giriş sayfası](https://www.microsoft.com/research/project/project-brainwave/)

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: LUSıS portalında yeni bir uygulama oluşturma'
+title: 'Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksınız. Uygulama, amaç ve varlıkların temel parçalarını oluşturun. Tahmin edilen amacı almak için etkileşimli test paneline örnek bir Kullanıcı yazarak uygulamayı test edin. Uygulama oluşturma ücretsizdir; Azure aboneliği gerektirmez.
 services: cognitive-services
@@ -10,14 +10,17 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307745"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488839"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı Başlangıç: LUSıS portalında yeni bir uygulama oluşturma
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
+
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 Bu hızlı başlangıçta, [LUI portalında](https://www.luis.ai)yeni bir uygulama oluşturacaksınız. İlk olarak bir uygulama, **Amaç**ve **varlıkların**temel parçalarını oluşturursunuz. Ardından, tahmin edilen amacı almak için etkileşimli test panelinde örnek bir Kullanıcı yazarak uygulamayı test edersiniz.
 
@@ -27,17 +30,17 @@ Uygulama oluşturma ücretsizdir ve bir Azure aboneliği gerektirmez. Uygulaman�
 
 ## <a name="create-an-app"></a>Uygulama oluşturma
 
-1. Bağlam araç çubuğundan **Yeni uygulama oluştur** ' u seçin.
+1. Bağlam araç çubuğundan **+ Oluştur** ' u seçin.
 
-   [![LUSıS portalında yeni uygulama oluşturma](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [LUSıS portalında yeni uygulama oluşturma ![](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
 1. Açılır pencerede, uygulamayı aşağıdaki ayarlarla yapılandırın ve **bitti**' yi seçin.
 
-   |Ayar adı| Value | Amaç|
+   |Ayar adı| Değer | Amaç|
    |--|--|--|
-   |Name|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>gerekli|
-   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>gerekli|
-   |Açıklama|`App made with LUIS Portal`|Uygulamanın açıklaması<br>isteğe bağlı|
+   |Ad|`myEnglishApp`|Benzersiz LUSıS uygulama adı<br>Gerekli|
+   |Kültür|**İngilizce**|Kullanıcılardan gelen **söylenme dili, en-US**<br>Gerekli|
+   |Açıklama|`App made with LUIS Portal`|Uygulamanın açıklaması<br>Seçim|
    | | | |
 
    ![Yeni uygulama ayarlarını girin](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -60,25 +63,25 @@ Amaç oluşturmak için aşağıdaki adımları izleyin:
 
 1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olursunuz. **Create new intent** (Yeni amaç oluştur) öğesini seçin.
 
-   [![Yeni amaç Oluştur düğmesini seçin](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![yeni amaç Oluştur düğmesini seçin](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Amaç adını `FindForm`girip **bitti**' yi seçin.
+1. Amaç adı ' nı `FindForm`girin ve **bitti**' yi seçin.
 
    ![FindForm 'un amaç adını girin](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
-## <a name="add-an-example-utterance"></a>Bir örnek utterance Ekle
+## <a name="add-an-example-utterance"></a>Örnek bir mekan ekleyin
 
 Amaçları oluşturduktan sonra örnek bir parametre ekleyin. Örnek, kullanıcının bir sohbet bot veya diğer istemci uygulamasına girdiği metindir. Kullanıcı metninin amacı bir LUO amacı ile eşlenir.
 
-Bu örnek uygulamanın `FindForm` amacı için, örnek olarak form numarasını içerecektir. İstemci uygulaması, kullanıcının isteğini yerine getirmek için form numarasına ihtiyaç duyuyor, bu yüzden bunu utterde eklemek önemlidir.
+Bu örnek uygulamanın `FindForm` amacı için, bu örnek, form numarasını içerir. İstemci uygulaması, kullanıcının isteğini yerine getirmek için form numarasına ihtiyaç duyuyor, bu yüzden bunu utterde eklemek önemlidir.
 
-[![FindForm amacı için örnek bir parametre girin](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![FindForm amacı için örnek utbotları girin](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-`FindForm` Amaç için aşağıdaki 15 örnek utbotları ekleyin.
+Aşağıdaki 15 örnek utbotları `FindForm` amacına ekleyin.
 
 |#|Örnek konuşmalar|
 |--|--|
-|1\.|HRF-123456 aranıyor|
+|1|HRF-123456 aranıyor|
 |2|İnsan kaynakları ne tür HRF-234591?|
 |3|HRF-345623, burada|
 |4|Bana HRF-345794 göndermek mümkün|
@@ -112,7 +115,7 @@ Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
 
 1. **Varlıklar** sayfasında **yeni varlık oluştur** ' u seçin.
 
-1. Adı `Human Resources Form Number`girin, **Regex** varlık türünü seçin ve normal ifadeyi `hrf-[0-9]{6}`girin. Bu giriş, tam olarak 6 basamağa `hrf-`izin veren, değişmez karakterlerle eşleşir.
+1. `Human Resources Form Number`adı girin, **Regex** varlık türünü seçin ve `hrf-[0-9]{6}`normal ifade girin. Bu giriş, `hrf-`değişmez karakterlerle eşleşir ve tam 6 basamağa izin verir.
 
    ![Normal ifade varlığı için varlık bilgilerini girin](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
@@ -146,7 +149,7 @@ Sağ üst taraftaki menüde, amaç ve varlık modeli değişikliklerini uygulama
 
    Varlık, örnek noktada göründüğü yerde işaretlenir. Varlık adı yerine özgün metni görmek isterseniz, **varlıklar görünümünü** araç çubuğundan değiştirin.
 
-   [![Varlıklar ile işaretlenen tüm örnek örnekler](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [varlıklar ile işaretlenen tüm örnek ![örnekleri](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Etkileşimli test bölmesiyle yeni uygulamanızı test etme
 
@@ -160,15 +163,15 @@ Varlığın, uygulamanın henüz görülmemiş yeni dıklardan ayıklandığın�
 
    ![Test bölmesinde yeni söylenişi test etme](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   En iyi tahmin edilen amaç,% 90 güvenilirlikli (0,977) ile doğru **FindForm** . **Insan kaynakları form numarası** varlığı, HRF-234098 değeri ile ayıklanır.
+   En iyi tahmin edilen amaç, %90 güvenilirlikli (0,977) ile doğru **FindForm** . **Insan kaynakları form numarası** varlığı, HRF-234098 değeri ile ayıklanır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu hızlı başlangıç ile işiniz bittiğinde ve sonraki hızlı başlangıca geçmeden, üst gezinti menüsünden **uygulamalarım** ' ı seçin. Ardından listedeki uygulamanın sol onay kutusunu seçin ve listenin üzerindeki bağlam araç çubuğundan **Sil** ' i seçin.
 
-[![Uygulamayı uygulamalarım listesinden sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[Uygulama ![uygulamalarımın listesinden sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [2. Uygulama dağıtma](get-started-portal-deploy-app.md)
+> [2. uygulama dağıtma](get-started-portal-deploy-app.md)

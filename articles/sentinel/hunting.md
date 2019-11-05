@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372417"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489189"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Azure Sentinel 'de bulunan tehditler için Hunt
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel ile tehditler için Hunt
 
 Güvenlik tehditlerini arama konusunda öngörülü bir araştırmacısı, Azure, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri aramak için arama ve sorgu araçlarını güçlü bir şekilde ele almak isteyen bir. Ancak, sistemleriniz ve güvenlik gereçleriniz, anlamlı olaylara ayrıştırma ve filtreleme zor olabilecek veri Dağları oluşturur. Güvenlik analistlerinin güvenlik uygulamalarınız tarafından algılanmayan yeni anormaller için güvenli bir şekilde görünmesine yardımcı olmak için, Azure Sentinel ' yerleşik arama sorguları, ağınızda zaten bulunan verilerde sorunları bulmak için doğru soruları sormaya kılavuzluk eder. 
 
@@ -48,7 +46,7 @@ Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
 ## <a name="get-started-hunting"></a>Kullanmaya başlayın
 
 1. Azure Sentinel portalında, **hunme**' ye tıklayın.
-  ![Azure Sentinel, @ no__t-1 ' i araydırmaya başlıyor
+  ![Azure Sentinel, aramaya](media/tutorial-hunting/hunting-start.png) başlıyor
 
 2. **Hunme** sayfasını açtığınızda, tüm arama sorguları tek bir tabloda görüntülenir. Tabloda Microsoft 'un Güvenlik analistlerinin ekibi tarafından yazılan tüm sorgular ve oluşturduğunuz veya değiştirdiğiniz ek sorgular listelenir. Her sorgu, ne araydıklarından ve üzerinde ne tür verilerin çalıştığı hakkında bir açıklama sağlar. Bu şablonlar çeşitli taktiklerinde gruplandırılır. sağ taraftaki simgeler, tehdit türünü kategorilere ayırarak, ilk erişim, kalıcılık ve exfiltrame gibi. Bu arama şablonlarına, alanlardan herhangi birini kullanarak filtre uygulayabilirsiniz. Sık kullanılanlarınıza herhangi bir sorgu kaydedebilirsiniz. Bir sorguyu sık kullanılanlarınıza **kaydederek, arama sayfasına her** erişildiğinde sorgu otomatik olarak çalışır. Kendi arama sorgunuzu oluşturabilir veya var olan bir sorgu şablonunu kopyalayabilir ve özelleştirebilirsiniz. 
  
@@ -78,7 +76,7 @@ Azure Sentinel 'de arama, kusto sorgu dilini temel alır. Sorgu dili ve destekle
 
 ## <a name="sample-query"></a>Örnek sorgu
 
-Tipik bir sorgu, tablo adıyla başlar ve sonra \| ile ayrılmış bir işleç serisi gelir.
+Tipik bir sorgu, tablo adı ile başlar ve ardından \|ile ayrılmış bir dizi işleç izler.
 
 Yukarıdaki örnekte, SecurityEvent adlı tablo adı ' nı başlatın ve gerektiği gibi, ifklu öğeler ekleyin.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468979"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Android uygulaması kullanarak oturum açma
 
@@ -38,7 +38,9 @@ Sonra, Azure AD B2C kiracınıza bir uygulamayı kaydedin. Bu, Azure AD 'nin uyg
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Daha sonraki bir adımda kullanmak üzere **uygulama kimliğini** kaydedin. Ardından, listeden uygulamayı seçin ve sonraki adımda kullanmak üzere **özel yeniden YÖNLENDIRME URI**'sini kaydedin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+
+Ayrıca, daha sonraki bir adımda kullanmak üzere özel yeniden yönlendirme URI 'nizi kaydedin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Kullanıcı akışlarınızı oluşturun
 
@@ -67,9 +69,9 @@ Kullanıcı akışlarınızı oluşturduktan sonra uygulamanızı oluşturmaya h
 Azure AD B2C ile iletişimi, bulma URI 'sini belirterek veya hem yetkilendirme uç noktası hem de belirteç uç noktası URI 'Lerini belirterek yapılandırabilirsiniz. Her iki durumda da aşağıdaki bilgilere ihtiyacınız olacaktır:
 
 * Kiracı KIMLIĞI (ör. contoso.onmicrosoft.com)
-* Kullanıcı akış adı (ör. B2C @ no__t-01 @ no__t-1SignUpIn)
+* Kullanıcı akış adı (ör. B2C\_1\_SignUpIn)
 
-Yetkilendirme ve belirteç uç noktası URI 'Lerini otomatik olarak bulmayı seçerseniz, bulma URI 'sinden bilgi almanız gerekir. Bulma URI 'SI, şu URL 'deki @ no__t-0ıD ve Ilke @ no__t-1Adı değiştirilerek oluşturulabilir:
+Yetkilendirme ve belirteç uç noktası URI 'Lerini otomatik olarak bulmayı seçerseniz, bulma URI 'sinden bilgi almanız gerekir. Aşağıdaki URL 'deki kiracı\_KIMLIĞI ve Ilke\_adı değiştirilerek bulma URI 'SI oluşturulabilir:
 
 ```java
 String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
@@ -96,7 +98,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Yetkilendirme ve belirteç uç noktası URI 'Lerini elde etmek için bulmayı kullanmak yerine, aşağıdaki URL 'deki @ no__t-0ıD ve Policy @ no__t-1Name adlı kiracı öğesini değiştirerek açıkça de belirtebilirsiniz:
+Yetkilendirme ve belirteç uç noktası URI 'Lerini elde etmek için bulma kullanmak yerine, kiracı\_KIMLIĞINI ve aşağıdaki URL 'deki Ilke\_adını değiştirerek ayrıca bunları açıkça belirtebilirsiniz:
 
 ```java
 String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
@@ -113,7 +115,7 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Yetkilendiriliyor
+### <a name="authorizing"></a>İşlemidir
 
 Yetkilendirme hizmeti yapılandırmasını yapılandırdıktan veya aldıktan sonra bir yetkilendirme isteği oluşturulabilir. İsteği oluşturmak için aşağıdaki bilgilere ihtiyacınız olacaktır:
 

@@ -1,5 +1,5 @@
 ---
-title: Yerleşik veri ayıklama, doğal dil, görüntü işleme
+title: Veri ayıklama, doğal dil, dizin oluşturma sırasında görüntü işleme için yerleşik yetenekler.
 titleSuffix: Azure Cognitive Search
 description: Veri ayıklama, doğal dil, görüntü işleme bilişsel becerileri, Azure Bilişsel Arama işlem hattındaki ham içeriğe semantik ve yapı ekler.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792094"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466803"
 ---
 # <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>İçerik zenginleştirme (Azure Bilişsel Arama) için yerleşik bilişsel yetenekler
 
@@ -41,6 +41,7 @@ Birçok beceri, tüketildikleri veya ürettikleri şekilde esnektir. Genellikle,
 | [Microsoft. yetenekler. Vision. ımageanalysisbeceri](cognitive-search-skill-image-analysis.md) | Bu beceri bir görüntünün içeriğini tanımlamak ve bir metin açıklaması oluşturmak için bir görüntü algılama algoritması kullanır. |
 | [Microsoft. yetenekler. Vision. Ocrbeceri](cognitive-search-skill-ocr.md) | Optik karakter tanıma. |
 | [Microsoft. yetenekler. util. Conditionalbeceri](cognitive-search-skill-conditional.md) | Filtrelemeye, varsayılan bir değere atamaya ve verileri bir koşula göre birleştirmeye izin verir.|
+| [Microsoft. yetenekler. util. Belgetextractionbeceri](cognitive-search-skill-document-extraction.md) | Zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. |
 | [Microsoft. yetenekler. util. Shaperbeceri](cognitive-search-skill-shaper.md) | Çıktıyı bir karmaşık türe eşler (bir tam ad, çok satırlı bir adres veya soyadı ve bir kişisel tanımlayıcı birleşimi için kullanılabilen çok parçalı veri türü). |
 | [Microsoft. yetenekler. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Özel bir Web API 'sine HTTP çağrısı yaparak bir AI zenginleştirme işlem hattının genişletilebilirliğini sağlar |
 

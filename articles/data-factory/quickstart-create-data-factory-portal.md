@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 5baa8c78ad581a00a3601706f31cf815359120c7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3dee054f6c382a00a55e4acf07e2a188c5cc6a07
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077056"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490668"
 ---
-# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı Başlangıç: Azure Data Factory UI kullanarak veri fabrikası oluşturma
+# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlangıç: Azure Data Factory Kullanıcı arabirimini kullanarak veri fabrikası oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-portal.md)
 
-Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürme* hakkında bir öğretici için bkz [. Öğretici: Spark](tutorial-transform-data-spark-portal.md)kullanarak verileri dönüştürme.
+Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürme* hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
-> Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
+> Azure Data Factory kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -35,11 +35,14 @@ Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını o
 Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımcı olur: 
 >[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Visually-build-pipelines-for-Azure-Data-Factory-v2/Player]
 
-## <a name="create-a-data-factory"></a>Data factory oluştur
+## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure Portal](https://portal.azure.com) gidin. 
-1. Soldaki menüden **Kaynak oluşturun**’u, sonra **Analiz**’i ve ardından **Data Factory**’yi seçin. 
+1. Azure portal menüsünde **kaynak oluştur**' u seçin.
+   
+   ![Azure portal menüsünden kaynak oluştur ' u seçin](./media/doc-common-process/create-a-resource.png)
+1. **Analiz**' i ve ardından **Data Factory**' yi seçin. 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
@@ -59,7 +62,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 
    Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra, **Data Factory** sayfasını görürsünüz. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    
@@ -86,8 +89,8 @@ Bu yordamda, Azure depolama hesabınızı veri fabrikasına bağlamak için bağ
 
    d. Bağlı hizmeti kaydetmek için **Son**’u seçin. 
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturma
-Bu yordamda iki veri kümesi oluşturursunuz: **Inputdataset** ve **outputdataset**. Bu veri kümeleri **AzureBlob** türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. 
+## <a name="create-datasets"></a>Veri kümeleri oluşturun
+Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset**. Bu veri kümeleri **AzureBlob** türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur. 
 
 Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını (**adftutorial**), klasörü (**input**) ve dosyayı (**emp.txt**) belirtirsiniz. 
 
@@ -115,7 +118,7 @@ Bağlı hizmet ayarlarında, kaynak verileri içeren Azure depolama hesabını b
 
     d. **Dosya veya klasör seçin** penceresinde **adftutorial** kapsayıcısındaki **input** klasörüne göz atın ve **emp.txt** dosyasını seçip **Son**'u seçin.
     
-    e. Seçin **devam**.   
+    e. **Devam**'ı seçin.   
 
     ![Inputdataset özelliklerini ayarlama](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. Çıktı veri kümesini oluşturmak için adımları yineleyin:  
@@ -130,7 +133,7 @@ Bağlı hizmet ayarlarında, kaynak verileri içeren Azure depolama hesabını b
 
     e. **Dosya yolu**altında **adföğreticisi/çıkış**girin. **Çıkış** klasörü yoksa, kopyalama etkinliği çalışma zamanında oluşturur.
 
-    f. Seçin **devam**.   
+    f. **Devam**'ı seçin.   
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma 
 Bu yordamda, giriş ve çıkış veri kümelerini kullanan kopyalama etkinliğiyle bir işlem hattı oluşturur ve doğrularsınız. Kopyalama etkinliği, giriş veri kümesi ayarlarında belirttiğiniz dosyadaki verileri çıkış veri kümesi ayarlarında belirttiğiniz dosyaya kopyalar. Giriş veri kümesi yalnızca bir klasörü belirtiyorsa (dosya adını belirtmiyorsa), kopyalama etkinliği kaynak klasördeki tüm dosyaları hedefe kopyalar. 

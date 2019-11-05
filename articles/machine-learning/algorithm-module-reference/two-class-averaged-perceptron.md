@@ -1,24 +1,24 @@
 ---
 title: 'Karar ormanı gerileme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Ortalama Perceptron algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için Azure Machine Learning hizmetinde Iki sınıftaki ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Ortalama Perceptron algoritmaya dayalı bir makine öğrenimi modeli oluşturmak için Azure Machine Learning ' de Iki sınıftaki ortalama Perceptron modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693637"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490362"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>İki sınıflı ortalama Perceptron modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Ortalama Perceptron algoritmasını temel alan bir makine öğrenimi modeli oluşturmak için bu modülü kullanın.  
   
@@ -61,4 +61,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

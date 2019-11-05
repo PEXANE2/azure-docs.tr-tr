@@ -18,15 +18,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f2d43455ff15089accc2463db83349abcea564
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 273a8b06b3bd3bf299b47a1cc52fd4660353cec3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802889"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473750"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET içinde destek Active Directory Federasyon Hizmetleri (AD FS)
-Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), geliştirmekte olduğunuz uygulamalara OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. Bu uygulamalar daha sonra kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Daha fazla bilgi için, [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)makalesini okuyun.
+Windows Server 'daki Active Directory Federasyon Hizmetleri (AD FS) (AD FS), geliştirmekte olduğunuz uygulamalara OpenID Connect ve OAuth 2,0 tabanlı kimlik doğrulaması ve yetkilendirme eklemenize olanak sağlar. Bu uygulamalar daha sonra kullanıcıların kimliğini doğrudan AD FS karşı doğrulayabilir. Daha fazla bilgi için, [geliştiriciler için AD FS senaryoları](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)makalesini okuyun.
 
 .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET), AD FS kimlik doğrulama için iki senaryoyu destekler:
 

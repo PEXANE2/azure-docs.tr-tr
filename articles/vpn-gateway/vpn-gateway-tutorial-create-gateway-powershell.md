@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: mvc
-ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489557"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495647"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Öğretici: PowerShell kullanarak bir VPN ağ geçidi oluşturma ve yönetme
 
@@ -85,7 +84,7 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Azure VPN ağ geçidi, sanal ağınız için konumlar arası bağlantı ve P2S VPN sunucusu işlevselliği sağlar. VPN ağ geçidini mevcut bir sanal ağa ekleyin veya yeni bir sanal ağ ile ağ geçidi oluşturun. Örneğin, özel olarak ağ geçidi alt ağının adını belirttiğinden emin olun. Düzgün çalışması için, ağ geçidi alt ağının adını her zaman "GatewaySubnet" olarak belirtmeniz gerekir. Bu örnek, üç alt ağı olan yeni bir sanal ağ oluşturur: [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) ve [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)kullanan ön uç, arka uç ve gatewaysubnet:
+Azure VPN ağ geçidi, sanal ağınız için konumlar arası bağlantı ve P2S VPN sunucusu işlevselliği sağlar. VPN ağ geçidini mevcut bir sanal ağa ekleyin veya yeni bir sanal ağ ile ağ geçidi oluşturun. Örneğin, özel olarak ağ geçidi alt ağının adını belirttiğinden emin olun. Düzgün çalışması için, ağ geçidi alt ağının adını her zaman "GatewaySubnet" olarak belirtmeniz gerekir. Bu örnek üç alt ağı olan yeni bir sanal ağ oluşturur: [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) ve [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)kullanan ön uç, arka uç ve gatewaysubnet:
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -126,9 +125,9 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 ```
 
 Anahtar parametre değerleri:
-* GatewayType Siteden siteye ve VNet 'ten VNet 'e bağlantılar için **VPN** kullanma
-* VpnType Daha geniş VPN cihazları ve daha fazla yönlendirme özelliği ile etkileşim kurmak için **Routebased** kullanın
-* GatewaySku Varsayılan değer **VpnGw1** ; daha yüksek bağlantı veya daha fazla bağlantı gerekiyorsa, bunu VpnGw2 veya VpnGw3 olarak değiştirin. Daha fazla bilgi için bkz. [Ağ geçidi SKU'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+* GatewayType: Siteden siteye ve sanal ağdan sanal ağa bağlantılar için **Vpn** değerini kullanın
+* VpnType: Daha geniş bir VPN cihazı yelpazesiyle etkileşim kurmak ve daha fazla yönlendirme özelliğinden yararlanmak için **RouteBased** seçeneğini kullanın
+* GatewaySku: **VpnGw1** varsayılandır; daha yüksek bağlantı veya daha fazla bağlantı gerekiyorsa, bunu başka bir VpnGw SKU 'SU olarak değiştirin. Daha fazla bilgi için bkz. [Ağ geçidi SKU'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 Tryıt kullanıyorsanız oturumunuz zaman aşımına uğrar. Tamam. Ağ Geçidi yine de oluşturulmaya devam eder.
 
@@ -147,7 +146,7 @@ $myGwIp.IpAddress
 
 ## <a name="resize-a-gateway"></a>Ağ geçidini yeniden boyutlandırma
 
-Ağ geçidi oluşturulduktan sonra VPN ağ geçidi SKU’sunu değiştirebilirsiniz. Farklı ağ geçidi SKU’ları aktarım hızı, bağlantı sayısı gibi konularda farklı belirtimleri destekler. Aşağıdaki örnek, VpnGw1 ile VpnGw2 arasında ağ geçidinizi yeniden boyutlandırmak için [yeniden boyutlandırma-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) kullanır. Daha fazla bilgi için bkz. [Ağ geçidi SKU'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+Ağ geçidi oluşturulduktan sonra VPN ağ geçidi SKU’sunu değiştirebilirsiniz. Farklı ağ geçidi SKU 'Ları, through, bağlantı sayısı vb. gibi farklı belirtimleri destekler. Aşağıdaki örnek, VpnGw1 ile VpnGw2 arasında ağ geçidinizi yeniden boyutlandırmak için [yeniden boyutlandırma-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) kullanır. Daha fazla bilgi için bkz. [Ağ geçidi SKU'ları](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1

@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803362"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473774"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -39,13 +39,13 @@ Bu uygulama rolleri, uygulamanın kayıt bildiriminde [Azure Portal](https://por
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Azure portal kullanarak uygulama rolleri bildirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üstteki çubukta hesabınızı seçin ve ardından dizin ' i **değiştirin**.
 1. **Dizin + abonelik** bölmesi açıldıktan sonra, **Sık Kullanılanlar** veya **tüm dizinler** listesinden uygulamanızı kaydetmek istediğiniz Active Directory kiracıyı seçin.
 1. Sol taraftaki Gezinti bölmesinde **tüm hizmetler** ' i seçin ve **Azure Active Directory**' yi seçin.
-1. **Azure Active Directory** bölmesinde, tüm uygulamalarınızın listesini görüntülemek için **uygulama kayıtları** ' ı seçin.
+1. **Azure Active Directory** bölmesinde, tüm uygulamalarınızın listesini görüntülemek için **uygulama kayıtları (eski)** seçeneğini belirleyin.
 
-     Burada görünmesini istediğiniz uygulamayı görmüyorsanız listeyi kısıtlamak için **uygulama kayıtları** listenin en üstündeki çeşitli filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
+     Burada görünmesini istediğiniz uygulamayı görmüyorsanız, listeyi kısıtlamak için **uygulama kayıtları (eski)** listesinin en üstünde bulunan çeşitli filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
 
 1. İçinde uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
 1. Uygulamanızın dikey penceresinde, **bildirim**' ı seçin.

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927443"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469208"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -71,6 +71,9 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -78,10 +81,7 @@ Aşağıdaki örnek *Host. JSON* dosyaları tüm olası seçenekleri belirtti.
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -222,10 +222,10 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always`, `debugOnly` ' dir. |
-|logLevel|Yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|console|Yok| [Konsol](#console) günlüğü ayarı. |
-|ApplicationInsights|Yok| [ApplicationInsights](#applicationinsights) ayarı. |
+|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always``debugOnly`. |
+|logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
+|console|yok| [Konsol](#console) günlüğü ayarı. |
+|ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
 ## <a name="console"></a>console
 
@@ -245,7 +245,19 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|IsEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+
+## <a name="manageddependency"></a>managedDependency bağımlılığı
+
+Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde desteklenen bir özelliktir. Bağımlılıkların hizmet tarafından otomatik olarak yönetilmesine olanak sağlar. `enabled` özelliği `true`olarak ayarlandığında `requirements.psd1` dosyası işlenir. Tüm küçük sürümler bırakıldığında bağımlılıklar güncelleştirilir. Daha fazla bilgi için bkz. PowerShell makalesinde [yönetilen bağımlılık](functions-reference-powershell.md#dependency-management) .
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
 
 ## <a name="queues"></a>klarında
 
@@ -281,11 +293,11 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
 |Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
-|Locktanışmalationpollingınterval|Yok|Kilit alma denemeleri arasındaki Aralık.| 
+|Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
 ## <a name="version"></a>version
 
-V2 çalışma zamanını hedefleyen bir işlev uygulaması için `"version": "2.0"` sürüm dizesi gereklidir.
+Sürüm dizesi `"version": "2.0"`, v2 çalışma zamanını hedefleyen bir işlev uygulaması için gereklidir.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
@@ -294,18 +306,6 @@ Değişiklikler için izlenmesi gereken bir [paylaşılan kod dizinleri](functio
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency bağımlılığı
-
-Yönetilen bağımlılık Şu anda yalnızca PowerShell tabanlı işlevlerde desteklenen bir önizleme özelliğidir. Bağımlılıkların hizmet tarafından otomatik olarak yönetilmesine olanak sağlar. Enabled özelliği true olarak ayarlandığında, [requirements. psd1](functions-reference-powershell.md#dependency-management) dosyası işlenir. Herhangi bir ikincil sürüm bırakıldığında bağımlılıklar güncelleştirilecektir.
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 

@@ -10,14 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 4d4d83e12d284ce760b8a7e87fd42e6c8ebb4850
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001220"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489311"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning ile eğitim ve dağıtım için yeniden kullanılabilir ortamlar oluşturun ve yönetin.
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning [ortamları](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) oluşturma ve yönetme hakkında bilgi edinmek için projenizin yazılım bağımlılıklarını geliştikçe izleyip yeniden oluşturabilirsiniz.
 
@@ -149,7 +150,7 @@ run = myexp.submit(config=runconfig)
 run.wait_for_completion(show_output=True)
 ```
 
-Benzer şekilde, eğitim için [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) nesnesi kullanıyorsanız, bir ortam belirtmek zorunda kalmadan tahmin aracı örneğini doğrudan bir çalıştırma olarak gönderebilirsiniz. @No__t-0 nesnesi, ortamı ve işlem hedefini zaten kapsüller.
+Benzer şekilde, eğitim için bir [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) nesnesi kullanıyorsanız, bir ortam belirtmek zorunda kalmadan tahmin aracı örneğini doğrudan bir çalıştırma olarak gönderebilirsiniz. `Estimator` nesnesi ortamı ve işlem hedefini zaten kapsüller.
 
 
 ## <a name="add-packages-to-an-environment"></a>Bir ortama paket ekleme
@@ -160,7 +161,7 @@ Bir ortama, Conda, PIP veya özel tekerlek dosyalarıyla paket ekleyin. [Condadd
 
 Bir Conda Package deposunda bir paket varsa, PDA 'nın PIP yüklemesi üzerinden kullanılması önerilir. Bunun nedeni, Conda paketlerinin genellikle yüklemeyi daha güvenilir hale getirmek için önceden oluşturulmuş ikili dosyalarla gelir.
 
-Aşağıdaki örnek, `scikit-learn`, özellikle sürüm 0.21.3 ve `pillow` paketini sırasıyla [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) ve [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) yöntemleriyle @no__t ekler.
+Aşağıdaki örnek, sırasıyla [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) ve [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) yöntemleriyle `myenv`, ortama `scikit-learn`, özellikle sürüm 0.21.3 ve `pillow` paketi ekler.
 
 ```python
 from azureml.core import Environment
@@ -178,7 +179,7 @@ myenv.python.conda_dependencies=conda_dep
 
 ### <a name="private-wheel-files"></a>Özel tekerlek dosyaları
 
-Önce statik [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) metodunu kullanarak, sonra depolama URL 'sini yakalayıp ve URL 'yi `add_pip_package()` yöntemine geçirerek, özel PIT tekerleği dosyalarını çalışma alanı depolama alanınıza yükleyerek kullanabilirsiniz
+Özel PIT tekerleği dosyalarını, önce statik [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) yöntemi kullanarak çalışma alanı depolama alanınıza yükleyerek, sonra depolama URL 'sini yakalayıp ve URL 'yi `add_pip_package()` yöntemine geçirerek kullanabilirsiniz
 
 ```python
 # During environment creation the service replaces the URL by secure SAS URL, so your wheel file is kept private and secure
@@ -197,7 +198,7 @@ Ortamları, işlem hedefleri genelinde ve çalışma alanının diğer kullanıc
 
 Bir Web hizmeti çalıştırdığınızda veya dağıtırken ortam, çalışma alanınıza otomatik olarak kaydedilir. Ayrıca [Register ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#register-workspace-) yöntemini kullanarak ortamı el ile kaydedebilirsiniz. Bu işlem, ortamı bulutta izlenen ve sürümlü bir varlığa yapar ve çalışma alanı kullanıcıları arasında paylaşılabilir.
 
-Aşağıdaki kod, `myenv` ortamını çalışma alanına `ws` ' i kaydeder.
+Aşağıdaki kod ortamı, `myenv``ws`çalışma alanına kaydeder.
 
 ```python
 myenv.register(workspace=ws)
@@ -211,12 +212,12 @@ Ortam sınıfı, çalışma alanınızdaki mevcut ortamları, bir liste olarak v
 
 #### <a name="view-list-of-environments"></a>Ortamların listesini görüntüle
 
-Çalışma alanınızdaki ortamları [`Environment.list(workspace="workspace_name")`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-)ile görüntüleyin ve yeniden kullanmak için bir tane seçin.
+[`Environment.list(workspace="workspace_name")`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#list-workspace-)çalışma alanınızdaki ortamları görüntüleyin ve sonra yeniden kullanmak üzere bir tane seçin.
 
 #### <a name="get-environment-by-name"></a>Ortamı ada göre al
 
 Ayrıca, belirli bir ortamı ada ve sürüme göre de alabilirsiniz.
-Aşağıdaki kod, `ws` çalışma alanında `myenv` ' nin sürümünü @no__t için [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) yöntemini kullanır.
+Aşağıdaki kod, `ws` çalışma alanında `myenv` ortamın sürüm `1` almak için [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) yöntemini kullanır.
 
 ```python
 restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
@@ -251,16 +252,16 @@ build.wait_for_completion(show_output=True)
 
  Azure Machine Learning `Environments` sınıfının [Dockersection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) , eğitim çalıştırmasının çalıştırıldığı Konuk işletim sisteminin ayrıntılarını özelleştirmenize ve denetlemenize olanak tanır.
 
-@No__t-0 Docker kullandığınızda, hizmet bir Docker görüntüsü oluşturur ve bu Docker kapsayıcısı içindeki belirtimlerinizi içeren bir Python ortamı oluşturur. Bu, eğitim çalışmalarınız için ek yalıtım ve reproducibility sağlar.
+Docker `enable`, hizmet bir Docker görüntüsü oluşturur ve bu Docker kapsayıcısı içindeki belirtimlerinizi içeren bir Python ortamı oluşturur. Bu, eğitim çalışmalarınız için ek yalıtım ve reproducibility sağlar.
 
 ```python
 # Creates the environment inside a Docker container.
 myenv.docker.enabled = True
 ```
 
-Oluşturulduktan sonra Docker görüntüsü, varsayılan olarak çalışma alanıyla ilişkili Azure Container Registry görüntülenir.  Depo adı, *azureml/azureml_ @ no__t-1uuıd @ no__t-2*biçiminde bulunur. Benzersiz tanımlayıcı (*UUID*) bölümü, ortam yapılandırmasından hesaplanan bir karma öğesine karşılık gelir. Bu, hizmetin verilen ortama karşılık gelen bir görüntünün yeniden kullanım için zaten mevcut olup olmadığını belirlemesine izin verir.
+Oluşturulduktan sonra Docker görüntüsü, varsayılan olarak çalışma alanıyla ilişkili Azure Container Registry görüntülenir.  Depo adının *azureml_\<uuıd\>'si* vardır. Benzersiz tanımlayıcı (*UUID*) bölümü, ortam yapılandırmasından hesaplanan bir karma öğesine karşılık gelir. Bu, hizmetin verilen ortama karşılık gelen bir görüntünün yeniden kullanım için zaten mevcut olup olmadığını belirlemesine izin verir.
 
-Ayrıca, hizmet Ubuntu Linux tabanlı [temel görüntülerden](https://github.com/Azure/AzureML-Containers)birini otomatik olarak kullanır ve belirtilen Python paketlerini de kurar. Temel görüntüde CPU ve GPU sürümleri vardır. Azure Machine Learning hizmeti, hangi sürümün kullanılacağını otomatik olarak algılar.
+Ayrıca, hizmet Ubuntu Linux tabanlı [temel görüntülerden](https://github.com/Azure/AzureML-Containers)birini otomatik olarak kullanır ve belirtilen Python paketlerini de kurar. Temel görüntüde CPU ve GPU sürümleri vardır. Azure Machine Learning, hangi sürümün kullanılacağını otomatik olarak algılar.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -269,7 +270,7 @@ myenv.docker.base_image_registry="your_registry_location"
 ```
 
 > [!NOTE]
-> Özel bir Docker görüntüsü kullanırken `environment.python.user_managed_dependencies=False` ' ı belirtirseniz, hizmet görüntüde bir Conda ortamı oluşturur ve temel görüntüde yüklü olabilecek Python kitaplıklarını kullanmak yerine bu ortamda çalışmayı yürütür. Kendi yüklü paketlerinizi kullanmak için parametreyi `True` olarak ayarlayın.
+> Özel bir Docker görüntüsü kullanırken `environment.python.user_managed_dependencies=False` belirtirseniz, hizmet, görüntü içinde bir Conda ortamı oluşturur ve temel görüntüde yüklü olabilecek Python kitaplıklarını kullanmak yerine bu ortamda çalışmayı yürütür. Kendi yüklü paketlerinizi kullanmak için parametresini `True` olarak ayarlayın.
 
 ## <a name="using-environments-for-training"></a>Eğitim için ortamları kullanma
 
@@ -300,7 +301,7 @@ run = exp.submit(runconfig)
 ```
 
 > [!NOTE]
-> Çalıştırma geçmişini devre dışı bırakmak veya anlık görüntüleri çalıştırmak için `ScriptRunConfig.run_config.history` altındaki ayarı kullanın.
+> Çalıştırma geçmişini devre dışı bırakmak veya anlık görüntüleri çalıştırmak için `ScriptRunConfig.run_config.history`altındaki ayarı kullanın.
 
 Çalışma yapılandırmanızda ortamı belirtmezseniz, çalıştırdığınız hizmet sizin için varsayılan bir ortam oluşturacaktır.
 
@@ -308,7 +309,7 @@ run = exp.submit(runconfig)
 
 Eğitim için bir [tahmin aracı](how-to-train-ml-models.md) kullanıyorsanız, yalnızca ortamı ve işlem hedefini sarmalayan için tahmin aracı örneğini doğrudan gönderebilirsiniz.
 
-Aşağıdaki kod, bir scikit-öğren modeli için uzak bir işlem üzerinde çalışan tek düğümlü bir eğitim için bir tahmin aracı kullanır ve önceden oluşturulmuş bir işlem hedefi nesnesi, `compute_target` ve veri deposu nesnesi olan `ds` ' i varsayar.
+Aşağıdaki kod, bir scikit-öğren modeli için uzak bir işlem üzerinde çalışan tek düğümlü bir eğitim için bir tahmin aracı kullanır ve daha önce oluşturulan bir işlem hedef nesnesini, `compute_target` ve veri deposu nesnesini `ds`kabul eder.
 
 ```python
 from azureml.train.estimator import Estimator

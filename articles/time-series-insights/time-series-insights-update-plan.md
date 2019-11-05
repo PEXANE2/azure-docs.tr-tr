@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc4336629a4c3b9da906daefca160c5a305603dc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f5a12ca2bdccee1d2f738aa3c810577caf3d8eac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990879"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491960"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights Preview ortamınızı planlayın
 
@@ -43,7 +43,7 @@ Time Series Insights bir önizleme ortamı sağladığınızda iki Azure kaynağ
 * Azure Time Series Insights önizleme ortamı
 * Azure depolama genel amaçlı v1 hesabı
 
-Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek isteyip istemediğinizi belirlersiniz. Sıcak mağaza size katmanlı bir sorgu deneyimi sağlar. Etkinleştirildiğinde, 7 ila 30 gün arasında bir saklama süresi belirtmeniz gerekir. Sıcak mağaza Bekletme dönemi içinde yürütülen sorgular genellikle daha hızlı yanıt süreleri sağlar. Bir sorgu, yarı zamanlı saklama süresi üzerinden yayıldığında, soğuk depolama alanından sunulur.
+Sağlama sürecinin bir parçası olarak, bir ısınma deposunu etkinleştirmek isteyip istemediğinizi belirlersiniz. Sıcak mağaza size katmanlı bir sorgu deneyimi sağlar. Etkinleştirildiğinde, 7 ila 30 gün arasında bir saklama süresi belirtmeniz gerekir. Sıcak mağaza Bekletme dönemi içinde yürütülen sorgular genellikle daha hızlı yanıt süreleri sağlar. Bir sorgu, yarı zamanlı saklama süresi üzerinden yayıldığında, bu, soğuk depodan sunulur.
 
 Isınma mağazasındaki sorgular ücretsizdir, ancak soğuk depodaki sorgular maliyetlendirilir. Sorgu desenlerinizi anlamanız ve ısınma Mağazası yapılandırmanızı buna göre planlamanız önemlidir. En son veriler üzerinde etkileşimli analizler 'in, ısınma mağazalarınızın yanı sıra, uzun süreli eğilimler soğuk bir şekilde bulunmasını öneririz.
 

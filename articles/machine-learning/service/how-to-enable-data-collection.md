@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929375"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489999"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimde modeller için veri toplama
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > Bu SDK yakında devre dışı bırakılıyor. Bu SDK, modellerdeki veri drmasını izleyen geliştiriciler için hala uygundur, ancak çoğu Geliştirici [Application Insights ile basitleştirilmiş veri izlemeyi](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)kullanmalıdır. 
@@ -115,7 +116,7 @@ Bunu etkinleştirmek için şunları yapmanız gerekir:
 
 **Ortam dosyanıza** ve **Puanlama dosyanıza**yüklenmiş bağımlılıklara sahip bir hizmetiniz zaten varsa, veri toplamayı şu şekilde etkinleştirin:
 
-1. [Azure Portal](https://portal.azure.com)gidin.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'ya gidin.
 
 1. Çalışma alanınızı açın.
 
@@ -125,7 +126,7 @@ Bunu etkinleştirmek için şunları yapmanız gerekir:
 
 1. **Gelişmiş ayarlar**' da **model veri toplamayı etkinleştir**' i seçimden çıkar. 
 
-    [Veri toplamayı denetim![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [Veri toplamayı denetim ![](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    Bu pencerede, hizmetinizin sistem durumunu izlemek için "Appınsights tanılamayı etkinleştir" i de seçebilirsiniz.  
 
@@ -133,10 +134,10 @@ Bunu etkinleştirmek için şunları yapmanız gerekir:
 
 
 ## <a name="disable-data-collection"></a>Veri toplamayı devre dışı bırak
-Verileri toplamayı her zaman durdurabilirsiniz. Veri toplamayı devre dışı bırakmak için Python kodu veya Azure portal kullanın.
+Verileri toplamayı her zaman durdurabilirsiniz. Veri toplamayı devre dışı bırakmak için Python kodu veya Azure Machine Learning Studio kullanın.
 
-+ Seçenek 1-Azure portal devre dışı bırak: 
-  1. [Azure portalda](https://portal.azure.com) oturum açın.
++ Seçenek 1-Azure Machine Learning Studio 'da devre dışı bırak: 
+  1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
   1. Çalışma alanınızı açın.
 
@@ -150,7 +151,7 @@ Verileri toplamayı her zaman durdurabilirsiniz. Veri toplamayı devre dışı b
 
   1. Değişikliği uygulamak için **Güncelleştir** ' i seçin.
 
-  Ayrıca, bu ayarlara [çalışma alanı giriş sayfanızda (Önizleme)](https://ml.azure.com)erişebilirsiniz.
+  Ayrıca, bu ayarlara [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda de erişebilirsiniz.
 
 + Seçenek 2-veri toplamayı devre dışı bırakmak için Python kullanın:
 
@@ -160,10 +161,10 @@ Verileri toplamayı her zaman durdurabilirsiniz. Veri toplamayı devre dışı b
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>Verilerinizi doğrulayın ve çözümleyin
-Azure bloba toplanan verileri çözümlemek için tercih ettiğiniz herhangi bir aracı seçebilirsiniz. 
+Azure bloba toplanan verileri çözümlemek için tercih ettiğiniz herhangi bir aracı seçebilirsiniz.
 
 Blobun verilere hızlıca erişmek için:
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'da oturum açın.
 
 1. Çalışma alanınızı açın.
 1. **Depolama**' ya tıklayın.
@@ -184,7 +185,7 @@ Blobun verilere hızlıca erişmek için:
 
 1. **Veri al** ' ı seçin ve [**Azure Blob depolama**](https://docs.microsoft.com/power-bi/desktop-data-sources)' ya tıklayın.
 
-    [PBı blob kurulumunu![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [PBı blob kurulumunu ![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Depolama hesabınızın adını ekleyin ve depolama anahtarınızı girin. Bu bilgileri, blob **ayarlarınızda** > erişim anahtarlarına > bulabilirsiniz. 

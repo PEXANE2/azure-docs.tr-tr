@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b0fab51e002ecb431bf68f58984290889296b2a9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097552"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470101"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service uygulamalar için tanılama günlüğünü etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -25,10 +25,15 @@ Azure, [App Service bir uygulamada](overview.md)hata ayıklamaya yardımcı olma
 
 Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://portal.azure.com) ve Azure CLI kullanılmaktadır. Visual Studio kullanarak tanılama günlükleri ile çalışma hakkında daha fazla bilgi için bkz. [Visual Studio 'Da Azure sorunlarını giderme](troubleshoot-dotnet-visual-studio.md).
 
-|Type|Platform|Location|Açıklama|
+> [!NOTE]
+> Bu makaledeki günlüğe kaydetme yönergelerine ek olarak, Azure Izleme ile yeni ve tümleşik günlüğe kaydetme özelliği de mevcuttur. Bu özelliği [Günlükler sayfasında ve Tanılama ayarları (Önizleme) sayfasında](https://aka.ms/appsvcblog-azmon)bulabilirsiniz. 
+>
+>
+
+|Tür|Platform|Konum|Açıklama|
 |-|-|-|-|
-| Uygulama günlüğü | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti aşağıdaki kategorilerden birine atanır: **Kritik**, **hata**, **Uyarı**, **bilgi**, **hata ayıklama**ve **izleme**. Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
-| Web sunucusu günlüğü tutma| Windows | App Service dosya sistemi veya Azure depolama Blobları| [W3C Genişletilmiş günlük dosyası biçimindeki](/windows/desktop/Http/w3c-logging)ham http istek verileri. Her günlük iletisi HTTP yöntemi, kaynak URI, istemci IP, istemci bağlantı noktası, Kullanıcı Aracısı, yanıt kodu vb. gibi verileri içerir. |
+| Uygulama günlüğüne kaydetme | Windows, Linux | App Service dosya sistemi ve/veya Azure depolama Blobları | Uygulama kodunuz tarafından oluşturulan iletileri günlüğe kaydeder. İletiler seçtiğiniz Web çerçevesi tarafından veya Dilinizdeki standart günlük modelini kullanarak doğrudan uygulama kodunuzda oluşturulabilir. Her ileti şu kategorilerden birine atanır: **kritik**, **hata**, **Uyarı**, **bilgi**, **hata ayıklama**ve **izleme**. Uygulama günlüğünü etkinleştirdiğinizde önem düzeyini ayarlayarak günlüğün ne kadar ayrıntılı olmasını istediğinizi seçebilirsiniz.|
+| Web sunucusu günlüğü| Windows | App Service dosya sistemi veya Azure depolama Blobları| [W3C Genişletilmiş günlük dosyası biçimindeki](/windows/desktop/Http/w3c-logging)ham http istek verileri. Her günlük iletisi HTTP yöntemi, kaynak URI, istemci IP, istemci bağlantı noktası, Kullanıcı Aracısı, yanıt kodu vb. gibi verileri içerir. |
 | Ayrıntılı hata günlüğü | Windows | App Service dosya sistemi | İstemci tarayıcısına gönderilen *. htm* hata sayfalarının kopyaları. Güvenlik nedenleriyle, ayrıntılı hata sayfaları üretimde istemcilere gönderilmemelidir, ancak App Service HTTP kodu 400 veya üzerini içeren bir uygulama hatası oluştuğunda hata sayfasını kaydedebilirler. Sayfa, sunucunun neden hata kodunu döndürdüğünü belirlemede yardımcı olabilecek bilgiler içerebilir. |
 | Başarısız istek izleme | Windows | App Service dosya sistemi | İsteği işlemek için kullanılan IIS bileşenlerinin izlenmesi ve her bileşende geçen süre dahil olmak üzere, başarısız istekler hakkında ayrıntılı izleme bilgileri. Site performansını artırmak veya belirli bir HTTP hatasını yalıtmak istiyorsanız yararlı olur. XML günlük dosyasını içeren her başarısız istek için bir klasör oluşturulur ve günlük dosyasını ile görüntülemek için XSL stil sayfası. |
 | Dağıtım günlüğü | Windows, Linux | App Service dosya sistemi | Bir uygulamaya içerik yayımladığınızda günlüğe kaydedilir. Dağıtım günlüğü otomatik olarak gerçekleşir ve dağıtım günlüğü için yapılandırılabilir bir ayar yoktur. Dağıtımın neden başarısız olduğunu belirlemenize yardımcı olur. Örneğin, [özel bir dağıtım betiği](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)kullanıyorsanız, betiğin neden başarısız olduğunu anlamak için dağıtım günlüğünü kullanabilirsiniz. |
@@ -45,7 +50,7 @@ Bu makalede tanılama günlükleri ile çalışmak için [Azure Portal](https://
 
 **Uygulama günlüğü (dosya sistemi)** veya **uygulama günlüğü (blob)** ya da her ikisi için **Açık** seçeneğini belirleyin. 
 
-**Dosya sistemi** seçeneği geçici hata ayıklama amaçlarıyla yapılır ve 12 saat içinde kendisini kapatır. **BLOB** seçeneği uzun süreli günlüğe kaydetme içindir ve günlükleri yazmak için bir BLOB depolama kapsayıcısı gerekir.  **BLOB** seçeneği Ayrıca günlük iletilerinde (`InstanceId`), iş parçacığı kimliği (`Tid`) ve daha ayrıntılı bir zaman damgasına ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)) ait kaynak sanal makine örneğinin kimliği gibi ek bilgiler içerir.
+**Dosya sistemi** seçeneği geçici hata ayıklama amaçlarıyla yapılır ve 12 saat içinde kendisini kapatır. **BLOB** seçeneği uzun süreli günlüğe kaydetme içindir ve günlükleri yazmak için bir BLOB depolama kapsayıcısı gerekir.  **BLOB** seçeneği Ayrıca günlük iletilerinde (`InstanceId`) kaynak sanal makıne örneğinin kimliği, Iş parçacığı kimliği (`Tid`) ve daha ayrıntılı bir zaman damgası ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)) gibi ek bilgiler içerir.
 
 > [!NOTE]
 > Şu anda yalnızca .NET uygulama günlükleri blob depolamaya yazılabilir. Java, PHP, Node. js, Python uygulama günlükleri yalnızca App Service dosya sisteminde depolanabilir (günlükleri dış depolamaya yazmak için kod değişiklikleri olmadan).
@@ -61,9 +66,9 @@ Günlüğe kaydedilecek ayrıntı düzeyini veya **düzeyi**seçin. Aşağıdaki
 
 | Düzey | Dahil edilen Kategoriler |
 |-|-|
-|**Devre dışı** | Yok. |
-|**Hata:** | Hata, kritik |
-|**Uyarı** | Uyarı, hata, kritik|
+|**Devre dışı** | None |
+|**Hatayla** | Hata, kritik |
+|**Warning** | Uyarı, hata, kritik|
 |**Bilgi** | Bilgi, uyarı, hata, kritik|
 |**Seçeneini** | Trace, Debug, Info, uyarı, hata, kritik (tüm kategoriler) |
 
@@ -158,8 +163,8 @@ Azure Storage bloblarını bir günlük türü için yapılandırırsanız, Azur
 
 App Service dosya sisteminde depolanan Günlükler için en kolay yol, ZIP dosyasını şu adresten tarayıcıda indirmeniz:
 
-- Linux/kapsayıcı uygulamaları:`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Windows uygulamaları:`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/kapsayıcı uygulamaları: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Windows uygulamaları: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 Linux/kapsayıcı uygulamaları için, ZIP dosyası hem Docker konağının hem de Docker kapsayıcısının konsol çıkış günlüklerini içerir. Ölçekli bir uygulama için, ZIP dosyası her örnek için bir günlük kümesi içerir. App Service dosya sisteminde, bu günlük dosyaları */Home/LogFiles* dizininin içeriğidir.
 
@@ -170,7 +175,7 @@ Windows uygulamaları için, ZIP dosyası App Service dosya sistemindeki *D:\hom
 | **Uygulama günlükleri** |*/LogFiles/Application/* | Bir veya daha fazla metin dosyası içeriyor. Günlük iletilerinin biçimi kullandığınız günlük sağlayıcısına bağlıdır. |
 | **Başarısız Istek Izlemeleri** | */LogFiles/W3SVC # # # # # # # # #/* | XML dosyalarını ve bir XSL dosyasını içerir. Biçimli XML dosyalarını tarayıcıda görüntüleyebilirsiniz. |
 | **Ayrıntılı hata günlükleri** | */LogFiles/DetailedErrors/* | HTM hata dosyalarını içerir. HTM dosyalarını tarayıcıda görüntüleyebilirsiniz.<br/>Başarısız istek izlemelerini görüntülemenin bir başka yolu da portalda uygulama sayfanıza gitmenin bir yoludur. Sol menüden **Tanıla ve sorunları çöz**' ü seçin, sonra **başarısız istek izleme günlüklerini**arayın ve ardından istediğiniz izlemeye gözatıp görüntülemek için simgeye tıklayın. |
-| **Web sunucusu günlükleri** | */LogFiles/http/RawLogs/* | [W3C Genişletilmiş günlük dosyası biçimi](/windows/desktop/Http/w3c-logging)kullanılarak biçimlendirilen metin dosyalarını içerir. Bu bilgiler, bir metin düzenleyici veya [günlük ayrıştırıcısı](https://go.microsoft.com/fwlink/?LinkId=246619)gibi bir yardımcı program kullanılarak okunabilir.<br/>App Service `s-computername`, `s-ip`, veya`cs-version` alanlarını desteklemez. |
+| **Web sunucusu günlükleri** | */LogFiles/http/RawLogs/* | [W3C Genişletilmiş günlük dosyası biçimi](/windows/desktop/Http/w3c-logging)kullanılarak biçimlendirilen metin dosyalarını içerir. Bu bilgiler, bir metin düzenleyici veya [günlük ayrıştırıcısı](https://go.microsoft.com/fwlink/?LinkId=246619)gibi bir yardımcı program kullanılarak okunabilir.<br/>App Service, `s-computername`, `s-ip`veya `cs-version` alanlarını desteklemez. |
 | **Dağıtım günlükleri** | */LogFiles/git/* ve */Deployments/* | Ayrıca, iç dağıtım işlemlerine ve git dağıtımları günlüklerine göre oluşturulan günlükleri içerir. |
 
 ## <a name="nextsteps"></a> Sonraki adımlar

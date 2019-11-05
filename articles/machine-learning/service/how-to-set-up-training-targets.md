@@ -3,26 +3,27 @@ title: Model eğitimi için işlem hedefleri oluşturma ve kullanma
 titleSuffix: Azure Machine Learning
 description: Machine Learning model eğitimi için eğitim ortamlarını (işlem hedefleri) yapılandırın. Eğitim ortamları arasında kolayca geçiş yapabilirsiniz. Eğitimi yerel olarak başlatın. Ölçeği ölçeklendirmeniz gerekiyorsa, bulut tabanlı bir işlem hedefine geçiş yapın.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935360"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489586"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-azure-machine-learning-architecture.md#compute-targets)olarak adlandırılan çeşitli kaynaklar veya ortamlar üzerinde eğitebilirsiniz. İşlem hedefi bir yerel makine veya Azure Machine Learning Işlem, Azure HDInsight veya uzak bir sanal makine gibi bir bulut kaynağı olabilir.  Model dağıtımı için, ["modellerinizi dağıtma"](how-to-deploy-and-where.md)bölümünde açıklandığı gibi işlem hedefleri de oluşturabilirsiniz.
 
-Azure Machine Learning SDK, Azure portal, çalışma alanı giriş sayfanız (Önizleme), Azure CLı veya Azure Machine Learning VS Code uzantısını kullanarak bir işlem hedefi oluşturabilir ve yönetebilirsiniz. Başka bir hizmet (örneğin, bir HDInsight kümesi) aracılığıyla oluşturulmuş işlem hedeflerinizin varsa, bunları Azure Machine Learning çalışma alanınıza ekleyerek kullanabilirsiniz.
+Azure Machine Learning SDK, Azure Machine Learning Studio, Azure CLı veya Azure Machine Learning VS Code uzantısını kullanarak bir işlem hedefi oluşturabilir ve yönetebilirsiniz. Başka bir hizmet (örneğin, bir HDInsight kümesi) aracılığıyla oluşturulmuş işlem hedeflerinizin varsa, bunları Azure Machine Learning çalışma alanınıza ekleyerek kullanabilirsiniz.
  
 Bu makalede, model eğitimi için çeşitli işlem hedeflerini nasıl kullanacağınızı öğreneceksiniz.  Tüm işlem hedeflerinin adımları aynı iş akışını izler:
 1. Henüz yoksa bir işlem hedefi __oluşturun__ .
@@ -132,7 +133,7 @@ Kalıcı bir Azure Machine Learning Işlem, işler arasında yeniden kullanılab
    Ayrıca, Azure Machine Learning Işlem oluştururken birçok gelişmiş özelliği de yapılandırabilirsiniz. Özellikler, sabit boyutlu kalıcı bir küme oluşturmanıza veya mevcut bir Azure Sanal Ağa gelen aboneliğinizden bu.  Ayrıntılar için [Amlcompute sınıfına](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) bakın.
     
-   Ya da [Azure Portal](#portal-create)kalıcı bir Azure Machine Learning işlem kaynağı oluşturup ekleyebilirsiniz.
+   Ya da [Azure Machine Learning Studio](#portal-create)'da kalıcı bir Azure Machine Learning işlem kaynağı oluşturup ekleyebilirsiniz.
 
 1. **Yapılandır**: kalıcı işlem hedefi için bir çalıştırma yapılandırması oluşturun.
 
@@ -154,7 +155,7 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
     > [!WARNING]
     > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya var olan bir VM 'yi seçtiğinizde Ubuntu kullanan bir VM seçmeniz gerekir.
 
-1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<fqdn > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. \<Kullanıcı adı > ve \<Password >, VM için SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **İliştirme**: var olan bir sanal makineyi işlem hedefi olarak eklemek için, sanal makine için tam etki alanı adı (FQDN), Kullanıcı adı ve parola sağlamalısınız. Örnekte, \<FQDN > VM 'nin Genel FQDN 'SI veya genel IP adresi ile değiştirin. \<Kullanıcı adı > ve \<Password >, VM için SSH Kullanıcı adı ve parolasıyla değiştirin.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -179,7 +180,7 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
    compute.wait_for_completion(show_output=True)
    ```
 
-   Ya da [Azure Portal kullanarak](#portal-reuse)dsvm 'yi çalışma alanınıza ekleyebilirsiniz.
+   Veya [Azure Machine Learning Studio 'yu kullanarak](#portal-reuse)dsvm 'yi çalışma alanınıza ekleyebilirsiniz.
 
 1. **Yapılandır**: dsvm işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve Conda, DSVM 'de Eğitim ortamı oluşturmak ve yapılandırmak için kullanılır.
 
@@ -196,9 +197,9 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
 
     Kümeyi oluşturduğunuzda bir SSH Kullanıcı adı ve parolası belirtmeniz gerekir. HDInsight 'ı bir işlem hedefi olarak kullanmak için ihtiyacınız olduğu için bu değerleri de göz önünde ayırın.
     
-    Küme oluşturulduktan sonra, \<clustername >-ssh.azurehdinsight.net ana bilgisayar adı ile bağlanın, burada \<clustername >, küme için verdiğiniz addır. 
+    Küme oluşturulduktan sonra, \<clustername >-ssh.azurehdinsight.net adlı ana bilgisayar adı ile bağlanın; burada \<clustername >, küme için verdiğiniz addır. 
 
-1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, çalışma alanınıza bir küme iliştirmek için SDK 'Yı kullanır. Örnekte \<clustername > değerini kümenizin adıyla değiştirin. \<Kullanıcı adı > ve \<Password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
+1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek Için, HDInsight kümesi için konak adı, Kullanıcı adı ve parola sağlamalısınız. Aşağıdaki örnek, çalışma alanınıza bir küme iliştirmek için SDK 'Yı kullanır. Örnekte, \<clustername > değerini kümenizin adıyla değiştirin. \<Kullanıcı adı > ve \<Password >, kümenin SSH Kullanıcı adı ve parolasıyla değiştirin.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -220,7 +221,7 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   Ya da [Azure Portal kullanarak](#portal-reuse)HDInsight kümesini çalışma alanınıza ekleyebilirsiniz.
+   İsterseniz de [Azure Machine Learning Studio kullanarak](#portal-reuse)HDInsight kümesini çalışma alanınıza ekleyebilirsiniz.
 
 1. **Yapılandır**: HDI işlem hedefi için bir çalıştırma yapılandırması oluşturun. 
 
@@ -270,16 +271,16 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-portal"></a>Azure portal ayarla
+## <a name="set-up-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da ayarlama
 
-Azure portal çalışma alanınız ile ilişkili işlem hedeflerine erişebilirsiniz.  Portalı kullanarak şunları yapabilirsiniz:
+Azure Machine Learning Studio 'daki çalışma alanınız ile ilişkili işlem hedeflerine erişebilirsiniz.  Studio 'yu kullanarak şunları yapabilirsiniz:
 
 * Çalışma alanınıza bağlı [işlem hedeflerini görüntüleme](#portal-view)
 * Çalışma alanınızda [bir işlem hedefi oluşturma](#portal-create)
 * Çalışma alanının dışında oluşturulmuş [bir işlem hedefi iliştirme](#portal-reuse)
 
 
-Bir hedef oluşturulduktan ve çalışma alanınıza eklendikten sonra, çalışma yapılandırmanızda `ComputeTarget` nesnesiyle kullanacaksınız: 
+Bir hedef oluşturulduktan ve çalışma alanınıza eklendikten sonra, çalışma yapılandırmanızda bunu bir `ComputeTarget` nesnesiyle kullanacaksınız: 
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -291,11 +292,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Çalışma alanınızın işlem hedeflerini görmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com) gidin ve çalışma alanınızı açın. Ayrıca, aşağıdaki görüntüler Azure portal gösteriyor olsa da, aynı adımlara [çalışma alanı giriş sayfanızda (Önizleme)](https://ml.azure.com)erişebilirsiniz.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'ya gidin.
  
 1. __Uygulamalar__' ın altında, __işlem__' ı seçin.
 
-    [işlem sekmesini![görüntüleme](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [işlem sekmesini ![görüntüleme](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>İşlem hedefi oluştur
 
@@ -310,7 +311,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. __Eğitim__için kullanılacak işlem türü olarak **Machine Learning işlem** seçin. 
 
     >[!NOTE]
-    >Azure Machine Learning Işlem, Azure portal oluşturabileceğiniz tek yönetilen işlem kaynağıdır.  Diğer tüm işlem kaynakları, oluşturulduktan sonra eklenebilir.
+    >Azure Machine Learning Işlem, Azure Machine Learning Studio 'da oluşturabileceğiniz tek yönetilen işlem kaynağıdır.  Diğer tüm işlem kaynakları, oluşturulduktan sonra eklenebilir.
 
 1. Formu doldurun. Gerekli özellikler, özellikle **VM ailesi**ve işlem için kullanılacak **en fazla düğüm** değerlerini sağlayın.  
 
@@ -336,7 +337,7 @@ Daha önce açıklanan adımları izleyerek işlem hedeflerinin listesini görü
 1. __Eğitim__için iliştirilecek işlem türünü seçin:
 
     > [!IMPORTANT]
-    > Tüm işlem türleri Azure portal iliştirilemez. Şu anda eğitim için iliştirilebilecek işlem türleri şunlardır:
+    > Tüm bilgi işlem türleri Azure Machine Learning Studio 'dan iliştirilemez. Şu anda eğitim için iliştirilebilecek işlem türleri şunlardır:
     >
     > * Uzak VM
     > * Azure Databricks (makine öğrenimi ardışık düzenleri kullanımı için)
@@ -391,7 +392,7 @@ Bir çalıştırma yapılandırması oluşturduktan sonra, deneme hesabınızı 
 
 ### <a name="submit-the-experiment"></a>Denemeyi gönderme
 
-Denemeyi `ScriptRunConfig` nesnesiyle birlikte gönder.  Bu nesne şunları içerir:
+Denemeyi bir `ScriptRunConfig` nesnesi ile gönderebilirsiniz.  Bu nesne şunları içerir:
 
 * **source_directory**: eğitim betiğinizi içeren kaynak dizin
 * **betik**: eğitim betiğini tanımla
@@ -414,7 +415,7 @@ Aynı denemeyi, [amlcompute hedefi](#amlcompute)gibi farklı bir çalıştırma 
 
 İsterseniz şunları yapabilirsiniz:
 
-* Denemesi, [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md)bölümünde gösterildiği gibi `Estimator` nesnesiyle birlikte gönder.
+* Girişimi, [ml modellerini tahmini ile eğitme](how-to-train-ml-models.md)bölümünde gösterildiği gibi bir `Estimator` nesnesiyle birlikte gönderebilirsiniz.
 * [Hiper parametre ayarlama](how-to-tune-hyperparameters.md)Için bir Hyperdrive çalıştırması gönderebilirsiniz.
 * [Vs Code uzantısı](how-to-vscode-tools.md#train-and-tune-models)aracılığıyla bir deneme gönderir.
 
@@ -432,7 +433,7 @@ Daha fazla bilgi için [ScriptRunConfig](https://docs.microsoft.com/python/api/a
 az ml folder attach
 ```
 
-Bu komut, farklı işlem hedeflerine yönelik yapılandırma dosyalarını çalıştıran şablon içeren `.azureml` alt klasörü oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
+Bu komut, farklı işlem hedefleri için şablon çalıştırma yapılandırma dosyalarını içeren bir alt klasör `.azureml` oluşturur. Yapılandırmanızı özelleştirmek için bu dosyaları kopyalayabilir ve düzenleyebilirsiniz (örneğin, Python paketleri eklemek veya Docker ayarlarını değiştirmek).  
 
 ### <a name="structure-of-run-configuration-file"></a>Çalışma yapılandırma dosyasının yapısı
 
@@ -446,6 +447,8 @@ Bu komut, farklı işlem hedeflerine yönelik yapılandırma dosyalarını çal�
  * Seçili çerçeveye özgü yapılandırma ayrıntıları.
  * Veri başvurusu ve veri deposu ayrıntıları.
  * Yeni bir küme oluşturmak için Machine Learning İşlem özgü yapılandırma ayrıntıları.
+
+Tam runconfig şeması için örnek [JSON dosyasına](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) bakın.
 
 ### <a name="create-an-experiment"></a>Deneme oluşturma
 
@@ -493,7 +496,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Hiperdrive yapılandırmasında runconfig ve *Parameter Space* içindeki *arguments* bölümüne göz önünde bırakın. Eğitim betiğine geçirilecek komut satırı bağımsız değişkenlerini içerirler. Runconfig içindeki değer her yineleme için aynı kalır, hiper sürücü yapılandırma aralığı üzerinden yinelenir. Her iki dosyada de aynı bağımsız değişkeni belirtmeyin.
 
-Bu ```az ml``` CLı komutları ve tam bağımsız değişken kümesi hakkında daha fazla bilgi için [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
+Bu ```az ml``` CLı komutları ve tam bağımsız değişkenler kümesiyle ilgili daha fazla bilgi için [başvuru belgelerine](reference-azure-machine-learning-cli.md)bakın.
 
 <a id="gitintegration"></a>
 

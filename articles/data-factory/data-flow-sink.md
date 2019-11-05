@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882435"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519324"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Veri akışı için havuz dönüştürme
-
-
 
 Veri akışınızı dönüştürdükten sonra, verileri bir hedef veri kümesine havuza alabilirsiniz. Havuz dönüşümünde, hedef çıktı verileri için bir veri kümesi tanımı seçin. Veri akışınız için gereken sayıda havuz dönüşümlerine sahip olabilirsiniz.
 
@@ -107,6 +105,13 @@ Veritabanı ayarlarını seçin:
 
 > [!NOTE]
 > Veritabanı havuzinizdeki satırları güncelleştirdiğinizde veya sildiğinizde, anahtar sütununu ayarlamanız gerekir. Bu ayar alter-Row dönüşümünün veri taşıma kitaplığındaki (DML) benzersiz satırı belirlemesine izin verir.
+
+### <a name="cosmosdb-specific-settings"></a>CosmosDB 'ye özgü ayarlar
+
+CosmosDB 'de giriş verileri olduğunda, bu ek seçenekleri göz önünde bulundurmanız gerekir:
+
+* Bölüm anahtarı: Bu gerekli bir alandır. Koleksiyonunuz için bölüm anahtarını temsil eden bir dize girin. Örnek: ```/movies/title```
+* Aktarım hızı: Bu veri akışının her yürütmesi için CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri akışınızı oluşturduğunuza göre, işlem [hattınızı bir veri akışı etkinliği](concepts-data-flow-overview.md)ekleyin.

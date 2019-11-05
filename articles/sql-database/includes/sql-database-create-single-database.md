@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496128"
 ---
 Bu adımda, bir Azure SQL veritabanı tek veritabanı oluşturacaksınız. 
 
@@ -55,12 +55,12 @@ Azure portal kullanarak kaynak grubunuzu ve tek veritabanınızı oluşturun.
 
      ![SQL veritabanı ayrıntıları](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - **Sağlanan** ve **5. nesil**öğesini seçin.
+   - **Sağlanan**' ı seçin.
 
      ![Sağlanan 4. nesil](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - **Maksimum sanal çekirdekler**, **Minimum sanal çekirdek**, **oto duraklatma gecikmesi**ve **veri boyutu üst**sınırı için ayarları gözden geçirin. Bunları istediğiniz şekilde değiştirin.
-   - Önizleme koşullarını kabul edin ve **Tamam**' a tıklayın.
+   - **Sanal çekirdekler**için ayarları gözden geçirin ve **veri boyutu üst sınırı**. Bunları istediğiniz şekilde değiştirin. 
+     - İsteğe bağlı olarak, donanım oluşturma 'yı değiştirmek için **yapılandırmayı Değiştir** ' i de seçebilirsiniz.
    - **Uygula**’yı seçin.
 
 5. **Ek ayarlar** sekmesini seçin. 

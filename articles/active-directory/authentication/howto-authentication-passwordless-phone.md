@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648315"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474364"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
@@ -46,7 +46,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Passwordless telefon oturum açma kimlik doğrulama yöntemlerini etkinleştir
 
 1. [Azure portalda](https://portal.azure.com) oturum açma
-1. **Azure Active Directory** > **kimlik doğrulama yöntemleri** > **kimlik doğrulama yöntemi ilkesi (Önizleme)** ' ne gidin
+1. **Kimlik doğrulama yöntemi ilkesi (Önizleme)**  > **Azure AD güvenlik** > **kimlik doğrulama yöntemlerine** gidin
 1. **Passwordless telefon oturumu açma**altında aşağıdaki seçenekleri belirleyin
    1. **Etkinleştir** -Evet veya Hayır
    1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
@@ -54,7 +54,7 @@ Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kay
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasının Kullanıcı kaydı ve yönetimi
 
-1. Buraya gidin[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) gidin
 1. Henüz yoksa oturum aç
 1. **Yöntem Ekle**' ye tıklayıp **Authenticator uygulaması**' nı seçip **Ekle** ' ye tıklayarak bir kimlik doğrulayıcı uygulaması ekleyin
 1. Microsoft Authenticator uygulamasını cihazınıza yüklemek ve yapılandırmak için yönergeleri izleyin
@@ -66,7 +66,7 @@ Kuruluşlar, Microsoft Authenticator uygulamasında kurulum ve telefonla oturum 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Passwordless kimlik bilgileriyle oturum açın
 
-Genel önizleme için, kullanıcıların bu yeni kimlik bilgisini oluşturmasına veya kullanmasına zorlayacağı bir yol yoktur. Bir yönetici kiracıyı etkinleştirdikten sonra Kullanıcı Microsoft Authenticator uygulamasını telefonla oturum açmayı etkinleştirmek üzere güncelleştirdikten sonra , Kullanıcı parolasız oturum açma ile karşılaşacaktır.
+Genel önizleme için, kullanıcıların bu yeni kimlik bilgisini oluşturmasına veya kullanmasına zorlayacağı bir yol yoktur. Bir yönetici **kiracıyı etkinleştirdikten** sonra Kullanıcı Microsoft Authenticator uygulamasını telefonla oturum açmayı etkinleştirmek üzere güncelleştirdikten sonra, Kullanıcı parolasız oturum açma ile karşılaşacaktır.
 
 Web üzerinde Kullanıcı adınızı yazdıktan ve **İleri**' yi seçtikten sonra, kullanıcılara, parolasını kullanmak yerine kimlik doğrulaması yapmak için uygun numarayı seçmesi için bir sayı sunulur ve Microsoft Authenticator uygulamasında istenir. 
 
@@ -78,7 +78,7 @@ Web üzerinde Kullanıcı adınızı yazdıktan ve **İleri**' yi seçtikten son
 
 Bir kullanıcının bir noktada geçerli Microsoft Authenticator uygulamasında veya önceki bir cihazda parolasız telefon oturum açma kimlik bilgisi oluşturmuş olması mümkündür. Yönetici, passwordless telefon oturumu için kimlik doğrulama yöntemi ilkesini etkinleştirdikten sonra, kayıtlı kimlik bilgileri olan herhangi bir Kullanıcı, ilkeyi kullanma özelliğinin etkinleştirilip etkinleştirilmediğini dikkate almaksızın, yeni oturum açma istemiyle karşılaşmaya başlar. Kullanıcının kimlik bilgilerini ilkeye göre kullanmasına izin verilmiyorsa, kimlik doğrulama akışını tamamladıktan sonra bir hata görür. 
 
-Yönetici, kullanıcının passwordless telefon oturum açma özelliğini kullanmasını etkinleştirmeyi seçebilir veya kullanıcının yöntemi kaldırması gerekir. Kullanıcı artık kayıtlı cihaza sahip değilse, bu cihaz ona gidebilir [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ve kaldırabilir. Hala MFA için kimlik doğrulayıcı kullanılıyorsa, Microsoft Authenticator içinden **telefonla oturum açmayı devre dışı bırak** seçeneğini seçebilirler.  
+Yönetici, kullanıcının passwordless telefon oturum açma özelliğini kullanmasını etkinleştirmeyi seçebilir veya kullanıcının yöntemi kaldırması gerekir. Kullanıcı artık kayıtlı cihaza sahip değilse, [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) gidebilir ve kaldırabilir. Hala MFA için kimlik doğrulayıcı kullanılıyorsa, Microsoft Authenticator içinden **telefonla oturum açmayı devre dışı bırak** seçeneğini seçebilirler.  
 
 ### <a name="ad-fs-integration"></a>AD FS tümleştirme
 

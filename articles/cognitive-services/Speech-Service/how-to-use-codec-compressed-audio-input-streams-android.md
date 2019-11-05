@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: df5eb123a2fd47a3eceea8153786442bf56a2718
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803838"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464378"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Android 'de konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
@@ -37,13 +37,13 @@ WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında, aşağı
 
 Codec sıkıştırılmış ses, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedenleriyle, GStreamer ikilileri SDK ile derlenmez. Android için önceden oluşturulmuş ikilileri kullanmanız gerekir. Önceden oluşturulmuş kitaplıkları indirmek için bkz. [Android Için yükleme geliştirme](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
 
-`libgstreamer_android.so` gereklidir. GStreamer eklentilerinizin `libgstreamer_android.so` ' a bağlı olduğundan emin olun.
+`libgstreamer_android.so` gereklidir. GStreamer eklentilerinizin `libgstreamer_android.so`bağlı olduğundan emin olun.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
 ```
 
-Bir örnek `Android.mk` ve `Application.mk` dosyası aşağıda verilmiştir. GStreamer paylaşılan nesnesini oluşturmak için şu adımları izleyin: `libgstreamer_android.so`.
+Aşağıda bir örnek `Android.mk` ve `Application.mk` dosyası verilmiştir. GStreamer paylaşılan nesnesini oluşturmak için şu adımları izleyin: `libgstreamer_android.so`.
 
 ```make
 # Android.mk
@@ -133,9 +133,9 @@ Paylaşılan nesne (libgstreamer_android. so) oluşturulduktan sonra geliştiric
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream` oluşturun. Ardından Stream sınıfınızın bir örneğinden, akışın sıkıştırma biçimini belirterek bir `AudioConfig` oluşturun.
+Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream`oluşturun. Sonra akış sınıfınızın bir örneğinden bir `AudioConfig` oluşturun ve akışın sıkıştırma biçimini belirtin.
 
-@No__t-0 adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
+`myPullStream` adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
 
 ```java
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-- [Bkz. konuşmayı tanımaC#](quickstart-csharp-dotnet-windows.md)
+* [Java 'da konuşmayı tanımayı öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

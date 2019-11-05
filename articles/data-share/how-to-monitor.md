@@ -1,21 +1,21 @@
 ---
-title: Azure veri paylaşımının önizlemesini izleme
-description: Azure veri paylaşımında Önizleme ' de davetiye durumunu izlemeyi, abonelikleri paylaşmayı ve anlık görüntü geçmişini nasıl izleyeceğinizi öğrenin.
+title: Azure veri paylaşımından izleme
+description: Azure veri paylaşımında davetiye durumunu izlemeyi, abonelikleri paylaşmayı ve anlık görüntü geçmişini nasıl izleyeceğinizi öğrenin
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169114"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490509"
 ---
-# <a name="monitor-azure-data-share-preview"></a>Azure veri paylaşımının önizlemesini izleme 
+# <a name="monitor-azure-data-share"></a>Azure Veri Paylaşımı’nı izleme  
 
-Bu makalede, Azure veri paylaşımı önizleme kullanarak veri paylaşımlarınızı nasıl izleyebileceğiniz açıklanır. Veri sağlayıcı olarak, veri paylaşım ilişkilerinizin çeşitli yönlerini izleyebilirsiniz. Veri Tüketicileriniz veri paylaşımında davetinizi kabul etmiş olup olmadıkları ve bir paylaşma aboneliği oluşturulup oluşturulmayacağını ve verilerinizi kullanmaya başlamanızı sağlamak gibi ayrıntılar, izlemek için kullanılabilir. 
+Bu makalede, Azure veri paylaşımı 'nı kullanarak veri paylaşımlarınızı nasıl izleyebileceğiniz açıklanır. Veri sağlayıcı olarak, veri paylaşım ilişkilerinizin çeşitli yönlerini izleyebilirsiniz. Veri Tüketicileriniz veri paylaşımında davetinizi kabul etmiş olup olmadıkları ve bir paylaşma aboneliği oluşturulup oluşturulmayacağını ve verilerinizi kullanmaya başlamanızı sağlamak gibi ayrıntılar, izlemek için kullanılabilir. 
 
 Bir veri tüketicisi olarak, Azure aboneliğinize tetiklenen anlık görüntüleri izleyebilirsiniz. 
 
@@ -23,7 +23,7 @@ Bir veri tüketicisi olarak, Azure aboneliğinize tetiklenen anlık görüntüle
 
 Gönderilen paylaşımlar-> davetlere giderek veri paylaşımı davetlerinizin durumunu görüntüleyin. 
 
-![Davetiye durumu](./media/invitation-status.png "davetiye durumu") 
+![Davetiye durumu](./media/invitation-status.png "Davetiye durumu") 
 
 Davetinizin bulunabileceği üç durum vardır:
 
@@ -42,7 +42,7 @@ Gönderilen paylaşımlar-> paylaşma aboneliklerine giderek paylaşım abonelik
 
 Geçmiş sekmesinde, veri tüketicisinin kiracısına kopyalanmış olan anlık görüntüleri görüntüleyebilirsiniz. Her bir anlık görüntü aralığının sıklığını ve süresini izleyebilirsiniz. 
 
-![Anlık görüntü geçmiş](./media/sent-shares.png "anlık görüntü geçmişi") 
+![Anlık görüntü geçmişi](./media/sent-shares.png "Anlık görüntü geçmişi") 
 
 Çalıştırma başlangıç tarihi ' ne tıklayarak her bir anlık görüntü çalıştırması hakkında daha fazla ayrıntı görüntüleyebilirsiniz. 
 

@@ -1,7 +1,7 @@
 ---
 title: Metin modül başvurusundan N-gram özelliklerini Ayıkla
-titleSuffix: Azure Machine Learning service
-description: Metin verilerini eşitlemek için Azure Machine Learning hizmetinde ayıklama N-gram modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Metin verilerini kullanmak için Azure Machine Learning Ayıkla N-gram modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 0803627b8d2e9fb3db2c7c96d7dd74e9b275f5d8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 71c1afd294b880f68849b283ea1a4b058d744801
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170992"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497844"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Metin modül başvurusundan N-gram özelliklerini Ayıkla
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır. Yapılandırılmamış metin verilerini *korturleştirmek* için metin modülündeki N-gram özelliklerini Ayıkla ' yı kullanın. 
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır. Yapılandırılmamış metin verilerini *korturleştirmek* için metin modülündeki N-gram özelliklerini Ayıkla ' yı kullanın. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Metin modülünden ayıklama N-gram özelliklerinin yapılandırması
 
@@ -32,7 +32,7 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 ### <a name="create-a-new-n-gram-dictionary"></a>Yeni bir n-gram sözlüğü oluştur
 
-1.  Metin modülünden bir N-gram özelliğini denemenize ekleyin ve işlemek istediğiniz metin olan veri kümesini bağlayın.
+1.  Metin modülünden N-gram özelliklerini ayıklama işlem hattınızla ekleyin ve işlemek istediğiniz metni içeren veri kümesini bağlayın.
 
 1.  Ayıklamak istediğiniz metni içeren dize türünde bir sütun seçmek için **metin sütununu** kullanın. Sonuçlar ayrıntılı olduğundan, tek seferde yalnızca bir sütunu işleyebilirsiniz.
 
@@ -44,15 +44,15 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1. **Ağırlık işlevi** , belge özelliği vektörünün nasıl oluşturulacağını ve belgelerden nasıl sözlük ayıklanacağını belirtir.
 
-    * **Ikili ağırlık**: Ayıklanan n-gram için bir ikili bir varlık değeri atar. Her n-gram değeri, belgede mevcutsa 1, aksi durumda 0 ' dır.
+    * **Ikili ağırlık**: ayıklanan n-gram 'a bir ikili bir varlık değeri atar. Her n-gram değeri, belgede mevcutsa 1, aksi durumda 0 ' dır.
 
-    * **Tf Weight**: Ayıklanan n-gram için bir dönem sıklığı (TF) puanı atar. Her n-gram değeri, belgedeki oluşma sıklıktır.
+    * **Tf Weight**: ayıklanan n-gram için bir dönem SıKLıĞı (TF) puanı atar. Her n-gram değeri, belgedeki oluşma sıklıktır.
 
-    * **IDF ağırlığı**: Ayıklanan n-gram için bir ters belge sıklığı (ıDF) puanı atar. Her n-gram değeri, yapı boyutunun, tüm yapı içindeki oluşma sıklığıyla ayrılmış olan günlük değeridir.
+    * **IDF ağırlığı**: ayıklanan n-gram 'a bir ters belge sıklığı (IDF) puanı atar. Her n-gram değeri, yapı boyutunun, tüm yapı içindeki oluşma sıklığıyla ayrılmış olan günlük değeridir.
     
       `IDF = log of corpus_size / document_frequency`
  
-    *  **Tf-ıDF ağırlığı**: Ayıklanan n-gram için bir dönem sıklığı/ters belge sıklığı (TF/ıDF) puanı atar. Her n-gram değeri, kendi ıDF puanı ile çarpılarak TF Score.
+    *  **Tf-IDF Weight**: ayıklanan n-gram için bir dönem sıklığı/ters belge SıKLıĞı (TF/IDF) puanı atar. Her n-gram değeri, kendi ıDF puanı ile çarpılarak TF Score.
 
 1. **En küçük sözcük uzunluğu** ' nu n-gram içindeki herhangi bir *sözcüğe* kullanılabilecek minimum harf sayısına ayarlayın.
 
@@ -73,11 +73,11 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1. Özellik vektörlerini normalleştirmek için **n-gram Özellik vektörlerini normalleştirin** seçeneğini belirleyin. Bu seçenek etkinleştirilirse, her n gram Özellik vektörü L2 norm ile bölünür.
 
-1. Denemeyi çalıştırın.
+1. İşlem hattını çalıştırma.
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>Var olan n-gram sözlüğünü kullanma
 
-1.  Metin modülünden bir N-gram özelliğini denemenize ekleyin ve işlemek istediğiniz metin olan veri kümesini **veri kümesi** bağlantı noktasına bağlayın.
+1.  Metin modülünden N-gram özelliklerini ayıklama işlem hattınızı ekleyin ve işlemek istediğiniz metin olan veri kümesini **veri kümesi** bağlantı noktasına bağlayın.
 
 1.  Metin **sütununu** kullanarak, istediğiniz metni içeren metin sütununu seçin. Varsayılan olarak, modül **dize**türünde tüm sütunları seçer. En iyi sonuçlar için, tek seferde tek bir sütun işleyin.
 
@@ -92,7 +92,7 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1.  Diğer tüm seçenekler için [önceki bölümde](#create-a-new-n-gram-dictionary)bulunan özellik açıklamalarına bakın.
 
-1.  Denemeyi çalıştırın.
+1.  İşlem hattını çalıştırma.
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>N gram kullanan bir modeli puan veya yayınlama
 
@@ -102,7 +102,7 @@ Modül, n-gram sözlüğünü kullanmak için aşağıdaki senaryoları destekle
 
 1.  Puanlama iş akışında, N-gram özelliklerini metin modülünden ayıklayın ve **Sözlük modu** parametresini **ReadOnly**olarak ayarlayın. Diğer tümünü aynı bırakın.
 
-1.  Deneme yayımlamak için **sonuç sözlüğünü** bir veri kümesi olarak kaydedin.
+1.  İşlem hattını yayımlamak için **sonuç sözlüğünü** bir veri kümesi olarak kaydedin.
 
 1.  Kaydedilen veri kümesini, Puanlama grafiğinizde metin modülünden Ayıkla N-gram özelliklerine bağlayın.
 
@@ -112,7 +112,7 @@ Metin modülündeki N-gram özelliklerini Ayıkla iki tür çıktı oluşturur:
 
 * **Sonuç veri kümesi**: Bu çıktı, ayıklanan n-gram ile birleştirilmiş çözümlenen metnin bir özetidir. **Metin sütunu** seçeneğinde seçmediğiniz sütunlar çıkışa geçirilir. Analiz ettiğiniz her metin sütunu için modül şu sütunları oluşturur:
 
-  * **N-gram oluşum matrisi**: Modül, Toplam yapı içinde bulunan her n-gram için bir sütun oluşturur ve bu satır için n-gram kalınlığını göstermek için her sütuna bir puan ekler. 
+  * **N-gram oluşma matrisi**: modül, Toplam yapı içinde bulunan her n-gram için bir sütun oluşturur ve bu satır için n-gram kalınlığını göstermek için her sütuna bir puan ekler. 
 
 * **Sonuç sözlüğü**: Sözlük, çözümlemenin bir parçası olarak oluşturulan terim sıklığı puanlarının yanı sıra gerçek n-gram sözlüğünü içerir. Veri kümesini, farklı bir giriş kümesiyle veya daha sonraki bir güncelleştirme için yeniden kullanım için kaydedebilirsiniz. Ayrıca, modelleme ve Puanlama için sözlüğü de kullanabilirsiniz.
 
@@ -120,10 +120,10 @@ Metin modülündeki N-gram özelliklerini Ayıkla iki tür çıktı oluşturur:
 
 Sözlük, çözümlemenin bir parçası olarak oluşturulan terim sıklığı puanlarını içeren n-gram sözlüğünü içerir. DF ve ıDF puanları, diğer seçeneklere bakılmaksızın oluşturulur.
 
-+ **KİMLİĞİ**: Her benzersiz n-gram için oluşturulan tanımlayıcı.
-+ **Ngram**: N-gram. Boşluk veya diğer sözcük ayırıcıları alt çizgi karakteriyle değiştirilmiştir.
-+ **DF**: Özgün Corpus içindeki n-gram için sıklık puanı.
-+ **IDF**: Özgün Corpus içindeki n-gram için ters belge sıklığı puanı.
++ **ID**: her benzersiz n-gram için oluşturulan bir tanımlayıcı.
++ **Ngram**: n-gram. Boşluk veya diğer sözcük ayırıcıları alt çizgi karakteriyle değiştirilmiştir.
++ **Df**: özgün Corpus içindeki n-gram için sıklık puanı skoru.
++ **IDF**: özgün Corpus içindeki n-gram için ters belge sıklığı puanı.
 
 Bu veri kümesini el ile güncelleştirebilirsiniz, ancak hatalar ortaya çıkabilir. Örneğin:
 
@@ -137,4 +137,4 @@ Bu veri kümesini el ile güncelleştirebilirsiniz, ancak hatalar ortaya çıkab
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

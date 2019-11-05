@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: bf2441d5c0947ec94cbee247bdc4634ff9e53bfd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 768e354281aeb5e2143ddb0e190b0f27bf4f4e24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070307"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470701"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service ortamları için özel yapılandırma ayarları
 ## <a name="overview"></a>Genel Bakış
@@ -54,7 +54,7 @@ Aşağıdaki kısaltılmış Kaynak Yöneticisi şablonu kod parçacığı **Clu
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Bir App Service Ortamı güncelleştirmek için Azure Kaynak Gezgini kullanma
 Alternatif olarak, [Azure Kaynak Gezgini](https://resources.azure.com)kullanarak App Service ortamı güncelleştirebilirsiniz.  
 
-1. Kaynak Gezgini ' de, App Service ortamı düğümüne gidin (**abonelikler** > **ResourceGroups** > **providers** > **Microsoft. Web**  >   **hostingEnvironments**). Sonra güncelleştirmek istediğiniz belirli App Service Ortamı tıklayın.
+1. Kaynak Gezgini, App Service Ortamı düğüme**gidin (** **Microsoft. Web** > **hostingenvironments** >  > **ResourceGroups** > **providers** . Sonra güncelleştirmek istediğiniz belirli App Service Ortamı tıklayın.
 2. Sağ bölmede, Kaynak Gezgini ' de etkileşimli düzenlemelere izin vermek için üstteki araç çubuğundan **oku/yaz** ' a tıklayın.  
 3. Kaynak Yöneticisi şablonunu düzenlenebilir hale getirmek için mavi **Düzenle** düğmesine tıklayın.
 4. Sağ bölmenin en altına kaydırın. **Clustersettings** özniteliği en altta olduğundan, değerini girebilir veya güncelleştirebilirsiniz.
@@ -66,7 +66,7 @@ Ancak değişikliği gönderdiğinizde, değişikliğin etkili olması için App
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1,0 ve TLS 1,1 'yi devre dışı bırakın
 
-Uygulama temelinde bir uygulamadaki TLS ayarlarını yönetmek istiyorsanız, [TLS ayarlarını zorla](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions) belgeleriyle verilen Kılavuzu kullanabilirsiniz. 
+Uygulama temelinde bir uygulamadaki TLS ayarlarını yönetmek istiyorsanız, [TLS ayarlarını zorla](../configure-ssl-bindings.md#enforce-tls-versions) belgeleriyle verilen Kılavuzu kullanabilirsiniz. 
 
 Ao 'daki tüm uygulamalar için tüm gelen TLS 1,0 ve TLS 1,1 trafiğini devre dışı bırakmak istiyorsanız, aşağıdaki **Clustersettings** girişini ayarlayabilirsiniz:
 
@@ -94,7 +94,7 @@ Müşterilerden başka bir soru, sunucusu tarafından anlaşmalı şifre listesi
 > 
 > 
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 Azure hızlı başlangıç Kaynak Yöneticisi şablonu sitesi, [bir App Service ortamı oluşturmak](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)için temel tanımına sahip bir şablon içerir.
 
 <!-- LINKS -->

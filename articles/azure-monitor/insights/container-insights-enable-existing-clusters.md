@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 0ca73d75751259eccd9e952c2d704a09fc081396
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162276"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478612"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -27,11 +27,11 @@ Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümes
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın. 
+[Azure portalında](https://portal.azure.com) oturum açın. 
 
 ## <a name="enable-using-azure-cli"></a>Azure CLı kullanarak etkinleştirme
 
-Aşağıdaki adım, Azure CLı kullanarak AKS kümenizi izlemeye izin vermez. Bu örnekte, oluşturma veya mevcut bir çalışma alanı belirtmeniz gerekmez. Bu komut, bölgede zaten mevcut değilse AKS küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir.  Oluşturulan varsayılan çalışma alanı, *Defaultworkspace-\<GUID >-\<Region >* biçimine benzer.  
+Aşağıdaki adım, Azure CLı kullanarak AKS kümenizi izlemeye izin vermez. Bu örnekte, oluşturma veya mevcut bir çalışma alanı belirtmeniz gerekmez. Bu komut, bölgede zaten mevcut değilse AKS küme aboneliğinin varsayılan kaynak grubunda varsayılan bir çalışma alanı oluşturarak işlemi sizin için basitleştirir.  Oluşturulan varsayılan çalışma alanı, *Defaultworkspace-\<guıd >-\<bölgesi >* biçimine benzer.  
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
@@ -171,7 +171,7 @@ Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilse
 
 * [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version` ' ı çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.59 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü belirlemek için `az --version`çalıştırın. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ### <a name="create-and-execute-a-template"></a>Şablon oluşturma ve yürütme
 
@@ -371,4 +371,6 @@ Birkaç dakika sonra komut tamamlanır ve çözüm hakkında JSON biçimli bilgi
 
 * Çözümü oluşturmaya çalışırken sorunlarla karşılaşırsanız, [sorun giderme kılavuzunu](container-insights-troubleshoot.md) gözden geçirin
 
-* Hem AKS küme düğümleri hem de pods için sistem durumu ölçümlerini yakalamak üzere izleme etkinken, bu durum ölçümleri Azure portal kullanılabilir. Kapsayıcılar için Azure Izleyici 'yi nasıl kullanacağınızı öğrenmek için bkz. [Azure Kubernetes hizmet durumunu görüntüleme](container-insights-analyze.md).
+* İzleme etkinken, AKS kümeniz ve üzerinde çalışan iş yüklerinizin sistem durumunu ve kaynak kullanımını toplayıp, kapsayıcılar için Azure Izleyicisini [nasıl kullanacağınızı](container-insights-analyze.md) öğrenin.
+
+

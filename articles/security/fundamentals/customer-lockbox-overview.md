@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 06/20/2019
-ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727508"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466411"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası
 
@@ -74,8 +74,8 @@ Aşağıdaki adımlarda Müşteri Kasası isteği için tipik bir iş akışı a
     ![Azure Müşteri Kasası-onayla veya Reddet ' i seçin](./media/customer-lockbox-overview/customer-lockbox-approval.png)
     
     Seçimin bir sonucu olarak:
-    - **Onayla**:  Microsoft mühendisine erişim verilir. Erişim varsayılan sekiz saatlik bir süre için verilir.
-    - **Reddetme**: Microsoft mühendisine göre yükseltilmiş erişim isteği reddedilir ve başka bir eylem yapılmaz.
+    - **Onayla**: Microsoft mühendisine erişim verilir. Erişim varsayılan sekiz saatlik bir süre için verilir.
+    - **Reddet**: Microsoft mühendisine göre yükseltilmiş erişim isteği reddedilir ve başka bir eylem yapılmaz.
 
 Denetim amaçlarıyla, bu iş akışında gerçekleştirilen eylemler [müşteri kasası istek günlüklerine](#auditing-logs)kaydedilir.
 
@@ -91,7 +91,7 @@ Müşteri Kasası Günlükler etkinlik günlüklerine depolanır. Azure portal, 
 
 ![Azure Müşteri Kasası-etkinlik günlükleri](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios"></a>Desteklenen hizmetler ve senaryolar
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Genel kullanıma yönelik desteklenen hizmetler ve senaryolar
 
 Aşağıdaki hizmetler ve senaryolar Şu anda Müşteri Kasası için genel kullanıma yöneliktir.
 
@@ -109,7 +109,24 @@ Müşteri Kasası Şu anda sanal makinelere uzak masaüstü erişim istekleri i�
 
 Uzak Masaüstü erişimi içeren senaryolar için, Microsoft mühendis tarafından gerçekleştirilen eylemleri gözden geçirmek üzere Windows olay günlüklerini kullanabilirsiniz. Azure Güvenlik Merkezi 'ni kullanarak Olay günlüklerinizi toplayın ve analiz için verileri çalışma alanınıza kopyalayın. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde veri toplama](../../security-center/security-center-enable-data-collection.md).
 
-## <a name="exclusions"></a>Dışlamalar
+## <a name="supported-services-and-scenarios-in-preview"></a>Önizlemede desteklenen hizmetler ve senaryolar
+
+Aşağıdaki hizmetler şu anda Müşteri Kasası için önizleme aşamasındadır:
+
+- Azure Depolama 
+
+- Azure SQL DB 
+
+- Azure Veri Gezgini 
+
+- Sanal makineler (artık bellek dökümlerinin ve yönetilen disklerin erişimini de kapsayan) 
+
+- Azure abonelik aktarımları
+
+Kuruluşunuzun bu önizleme teklifleri için Müşteri Kasası etkinleştirmek üzere [Azure genel önizlemesi için müşteri kasası](https://aka.ms/customerlockbox/insiderprogram)kaydolun.
+
+
+## <a name="exclusions"></a>İstisnalar
 
 Müşteri Kasası istekleri aşağıdaki mühendislik desteği senaryolarında tetiklenmez:
 

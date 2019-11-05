@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Azure PowerShell kullanarak HDInsight 'ta Spark kümesi oluşturma"
+title: 'Hızlı başlangıç: Azure PowerShell HDInsight Spark kümesi oluşturma'
 description: Bu hızlı başlangıçta, Azure PowerShell kullanılarak nasıl Azure HDInsight’ta Apache Spark kümesi oluşturulacağı ve basit bir Spark SQL sorgusu çalıştırılacağı gösterilmektedir.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc
-ms.openlocfilehash: f4f876c6a0e208c949f8aec2781dda39ba66fb00
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d2ab605d3532df1623ff087dbf1f93dad35445f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337608"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494511"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı Başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
 
-Azure HDInsight 'ta [Apache Spark](https://spark.apache.org/) kümesi oluşturmayı ve Spark SQL sorgularını [Apache Hive](https://hive.apache.org/) tablolarında çalıştırmayı öğrenin. Apache Spark, bellek içi işleme kullanarak hızlı veri analizi ve küme hesaplama sağlar. HDInsight 'ta Spark hakkında daha fazla bilgi için [bkz. genel bakış: Azure HDInsight](apache-spark-overview.md)üzerinde Apache Spark.
+Azure HDInsight 'ta [Apache Spark](https://spark.apache.org/) kümesi oluşturmayı ve Spark SQL sorgularını [Apache Hive](https://hive.apache.org/) tablolarında çalıştırmayı öğrenin. Apache Spark, bellek içi işleme kullanarak hızlı veri analizi ve küme hesaplama sağlar. HDInsight’ta Spark hakkında daha fazla bilgi için bkz. [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md).
 
-Bu hızlı başlangıçta, HDInsight Spark kümesi oluşturmak için Azure PowerShell kullanırsınız. Küme, küme depolama alanı olarak Azure Depolama Bloblarını kullanır. Data Lake Storage 2. kullanma hakkında daha fazla bilgi için bkz [. hızlı başlangıç: HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)'ta kümeleri ayarlama.
+Bu hızlı başlangıçta, HDInsight Spark kümesi oluşturmak için Azure PowerShell kullanırsınız. Küme, küme depolama alanı olarak Azure Depolama Bloblarını kullanır. Data Lake Storage Gen2'yi kullanma hakkında daha fazla bilgi için bkz. [Hızlı başlangıç: HDInsight'ta kümeleri ayarlama](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 > [!IMPORTANT]  
 > İster kullanın, ister kullanmayın, HDInsight kümeleri faturalaması dakika başına eşit olarak dağıtılmıştır. Kullanmayı bitirdikten sonra kümenizi sildiğinizden emin olun. Daha fazla bilgi için bu makalenin [Kaynakları temizleme](#clean-up-resources) bölümüne bakın.
@@ -27,6 +27,8 @@ Bu hızlı başlangıçta, HDInsight Spark kümesi oluşturmak için Azure Power
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisite"></a>Önkoşul
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 PowerShell [az Module](https://docs.microsoft.com/powershell/azure/overview) yüklendi.
 
@@ -40,10 +42,10 @@ HDInsight kümesi oluşturma işlemi, aşağıdaki Azure nesnelerinin ve kaynakl
 
 Kaynakları oluşturmak için bir PowerShell betiği kullanırsınız.  Betiği çalıştırdığınızda aşağıdaki değerleri girmeniz istenir:
 
-|Parametre|Value|
+|Parametre|Değer|
 |------|------|
 |Azure kaynak grubu adı | Kaynak grubu için benzersiz bir ad girin.|
-|Location| Azure bölgesini belirtin (örneğin, 'Orta ABD'). |
+|Konum| Azure bölgesini belirtin (örneğin, 'Orta ABD'). |
 |Varsayılan depolama hesabı adı | Depolama hesabına benzersiz bir ad verin. |
 |Küme adı | HDInsight Spark kümesine benzersiz bir ad verin.|
 |Küme oturum açma kimlik bilgileri | Hızlı başlangıcın ilerleyen kısmında küme panosuna bağlanmak için bu hesabı kullanırsınız.|
@@ -143,11 +145,11 @@ HDInsight kümelerini oluştururken sorunlarla karşılaşırsanız, bunu yapmak
 
 1. Portaldan **Küme panoları**’nı ve sonra **Jupyter Notebook**’u seçin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
 
-   ![Jupyter not defterini açarak etkileşimli Spark SQL sorgusu çalıştırma](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter not defterini açarak etkileşimli Spark SQL sorgusu çalıştırma")
+   ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook açın](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook açın")
 
 1. **Yeni** > **PySpark** seçeneklerini belirleyerek bir not defteri oluşturun.
 
-   ![Jupyter Not Defteri’ni oluşturarak etkileşimli Spark SQL sorgusu çalıştırma](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Not Defteri’ni oluşturarak etkileşimli Spark SQL sorgusu çalıştırma")
+   ![Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu çalıştırmak için Jupyter Notebook oluşturma")
 
    Untitled(Untitled.pynb) adıyla yeni bir not defteri oluşturulur ve açılır.
 
@@ -169,7 +171,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en ço
 
     HDInsight Spark kümeniz için yapılandırılmış bir Jupyter not defteri kullanırken, Spark SQL ile Hive sorguları çalıştırmak için kullanabileceğiniz önceden ayarlanmış bir `sqlContext` alırsınız. `%%sql`, Hive sorgusunu çalıştırmak için Jupyter Not Defteri’ne `sqlContext` ön ayarını kullanmasını söyler. Sorgu, varsayılan olarak tüm HDInsight kümelerinde sağlanan Hive tablosundaki (**hivesampletable**) ilk 10 satırı getirir. Sonuçları almak 30 saniye kadar sürer. Çıkış aşağıdakine benzer olacaktır:
 
-    HDInsight Spark 'ta ![HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive sorgusunda") sorgu Apache Hive
+    ![HDInsight Spark 'ta Apache Hive sorgu](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "HDInsight Spark 'ta Hive sorgusu")
 
     Jupyter’de bir sorguyu her çalıştırdığınızda web tarayıcınızın pencere başlığında not defteri başlığı ile birlikte **(Meşgul)** durumu gösterilir. Ayrıca sağ üst köşedeki **PySpark** metninin yanında içi dolu bir daire görürsünüz.
 
@@ -182,7 +184,7 @@ SQL (Yapılandırılmış Sorgu Dili), veri sorgulama ve tanımlama için en ço
 
     Sorgu çıkışının görüntülenmesi için ekranın yenilenmesi gerekir.
 
-    ![HDInsight Spark'ta Hive sorgusu çıkışı](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark'ta Hive sorgusu çıkışı")
+    ![HDInsight Spark 'ta Hive sorgusu çıkışı](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark 'ta Hive sorgusu çıkışı")
 
 1. Not defterindeki **Dosya** menüsünden **Kapat ve Durdur**’u seçin. Not defterini kapatmak, küme kaynaklarını serbest bırakır.
 
@@ -192,7 +194,7 @@ HDInsight, verilerinizi Azure Depolama’da veya Azure Data Lake Storage’da de
 
 Azure portalına geri dönüp **Sil**’i seçin.
 
-![HDInsight kümesini silme Azure Portal](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini silme")
+![HDInsight kümesini silme Azure portal](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
 Kaynak grubu adını seçerek de kaynak grubu sayfasını açabilir ve sonra **Kaynak grubunu sil**’i seçebilirsiniz. Kaynak grubunu silerek hem HDInsight Spark kümesini hem de varsayılan depolama hesabını silersiniz.
 

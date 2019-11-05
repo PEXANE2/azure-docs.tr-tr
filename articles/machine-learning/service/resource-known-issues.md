@@ -9,35 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476075"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
 Bu makale, Azure Machine Learning kullanırken hataları veya hataları bulmanıza ve düzeltmenize yardımcı olur.
 
-## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>AmlCompute 'teki NCv3 makinelere yaklaşan SR-ıOV yükseltmesi
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Kesinti: AmlCompute içindeki NCv3 makinelere SR-ıOV yükseltmesi
 
-Azure Işlem, tüm MPı uygulamalarını ve sürümlerini desteklemek üzere NCv3 SKU 'Larını ve InfiniBand ile donatılmış sanal makineler için RDMA fiillerini güncelleştirmek olacaktır. Bu, kısa bir kesinti süresi gerektirir [ve SR-IOV yükseltmesi hakkında daha fazla bilgi edinin](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+Azure Işlem, tüm MPı uygulamalarını ve sürümlerini desteklemek üzere NCv3 SKU 2019 'Larını ve InfiniBand ile donatılmış sanal makineler için RDMA fiillerini güncelleştirmek olacaktır. Bu, kısa bir kesinti süresi gerektirir [ve SR-IOV yükseltmesi hakkında daha fazla bilgi edinin](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
 Azure Machine Learning yönetilen işlem sunumu (AmlCompute) müşterisi olarak, şu anda herhangi bir değişiklik yapmanız gerekmez. [Güncelleştirme zamanlaması](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) temelinde, eğitiminde kısa bir kesme planlamanız gerekir. Hizmet, Küme düğümlerinizin VM görüntülerini güncelleştirmek ve kümenizi otomatik olarak ölçeklendirmek için sorumluluğu alacak. Yükseltme tamamlandıktan sonra, daha yüksek InfiniBand bant genişliği, daha düşük gecikme süreleri ve daha iyi dağıtılmış uygulama performansını elde etmek için diğer tüm MPı 'ları (Pytorch ile OpenMPI gibi) kullanabilirsiniz.
 
-## <a name="visual-interface-issues"></a>Görsel arabirim sorunları
+## <a name="azure-machine-learning-designer-issues"></a>Tasarımcı sorunlarını Azure Machine Learning
 
-Machine Learning hizmeti sorunları için görsel arabirim.
+Tasarımcı ile ilgili bilinen sorunlar.
 
 ### <a name="long-compute-preparation-time"></a>Uzun süreli işlem hazırlık süresi
 
 Yeni işlem oluşturun veya çağırabilir işlem zaman alır, birkaç dakika veya daha uzun olabilir. Takım en iyi duruma getirme için çalışıyor.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Deneme yalnızca veri kümesi içeriyor 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>Yalnızca bir veri kümesi içeren bir deneme çalıştırılamaz 
 
 Bir denemeyi çalıştırmak, veri kümesini görselleştirmek için yalnızca veri kümesi içeriyor. Ancak, yalnızca bir denemeyi çalıştırmaya izin verilmez. Bu sorunu etkin bir şekilde düzelttik.
  
@@ -79,7 +78,7 @@ Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, gö
 
 FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>Otomatik makine öğrenmesi
+## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
 Tensor Flow otomatik makine öğrenimi Şu anda Tensor Flow sürüm 1,13 ' i desteklememektedir. Bu sürümün yüklenmesi paket bağımlılıklarının çalışmayı durdurmasına neden olur. Bu sorunu gelecekte yayımlanacak bir sürümde gidermeye çalışıyoruz. 
 
@@ -150,19 +149,20 @@ Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası gör�
 * `azure-dataprep` Version 1.1.8 veya üstünü ekleyin.
 * `pyarrow` sürüm 0,11 veya üstünü ekleyin.
 
+
 ## <a name="datasets"></a>Veri kümeleri
 
 Bunlar Azure Machine Learning veri kümeleri için bilinen sorunlardır.
 
 + **Azure Data Lake Storage 2. 'daki Parquet dosyaları okunamadı** Azure Data Lake Storage 2. veri depolarından Parquet dosyalarının okunması, `azureml-dataprep==1.1.25` yüklüyse çalışmaz. `Cannot seek once reading started.`ile başarısız olur. Bu hatayı görürseniz, `azureml-dataprep<=1.1.24` yükleyebilir ya da `azureml-dataprep>=1.1.26`yükleyebilirsiniz.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
-Çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal genel bakış sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Portal](https://portal.azure.com) gitmek ve çalışma alanı adını aramak olacaktır.
+Çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal genel bakış sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidip çalışma alanı adını arayacak.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir. Bazı günlükleri görmek için [Azure Portal](https://portal.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  Ayrıca, bu bilgileri [çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **denemeleri** bölümünde bulabilirsiniz.
+Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir. Bazı günlükleri görmek için [Azure Machine Learning Studio 'yu](https://ml.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  
 
 > [!NOTE]
 > Azure Machine Learning, eğitim sırasında (örneğin, oto ml) veya eğitim işini çalıştıran Docker kapsayıcısı gibi çeşitli kaynaklardan günlük bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
@@ -199,7 +199,7 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes hizmeti hatalarında WebServices 
 
-Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, `kubectl` kullanılarak kümeye bağlanarak hata ayıklanabilir. Şunu çalıştırarak bir Azure Kubernetes hizmet kümesi için `kubeconfig.json` alabilirsiniz
+Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, `kubectl`kullanılarak kümeye bağlanarak hata ayıklanabilir. Çalıştıran bir Azure Kubernetes hizmet kümesi için `kubeconfig.json` alabilirsiniz
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -233,7 +233,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, `kubectl` ' ı kullanarak kümeye bağlanarak ve gizli dizi `azuremlfessl` ' i alarak bu dosyaları alabilirsiniz.
+Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, `kubectl` kullanarak kümeye bağlanarak ve gizli dizi `azuremlfessl`alarak, bu dosyaları kümeyi kullanımdan çıkarmadan önce alabilirsiniz.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml

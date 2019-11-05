@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286253"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481127"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Öğretici: Azure DevOps Projeleri kullanarak mevcut kodunuz için bir CI/CD işlem hattı oluşturun
 
@@ -46,9 +46,13 @@ Yapacaklarınız:
 
 Azure DevOps Projeleri, Azure Pipelines bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. Azure DevOps Projeleri ayrıca Azure kaynaklarını tercih ettiğiniz Azure aboneliğinde de oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Sol bölmede + sol gezinti çubuğunda **+ kaynak oluştur** ' u seçin ve ardından **DevOps Projeleri**arayın, **Oluştur**' u seçin.
+2. Azure portal menüsünde **kaynak oluştur**' u seçin.
+
+   ![Azure portal menüsü-kaynak oluşturma](_img/azure-devops-project-github/createaresource.png)
+
+3. **Devops > DevOps projesi**' ni seçin.
 
    ![DevOps Projeleri panosu](_img/azure-devops-project-github/azuredashboard.png)
 
@@ -56,7 +60,7 @@ Azure DevOps Projeleri, Azure Pipelines bir CI/CD işlem hattı oluşturur. Yeni
 
 ## <a name="configure-access-to-your-github-repo-and-choose-a-framework"></a>GitHub deponuza erişimi yapılandırma ve bir çerçeve seçme
 
-1. **GitHub** veya harici bir **Git** kod deposu seçin. Bu öğretici için **GitHub**' ı seçin. GitHub deponuza Azure erişimi sağlamak için GitHub ile ilk kez kimlik doğrulaması yapmanız gerekebilir.
+1. **GitHub** veya harici bir **Git** kod deposu seçin. Bu öğretici için **GitHub**' ı seçin. Azure 'un GitHub deponuza erişmesi için ilk kez GitHub ile kimlik doğrulamanız gerekebilir.
 
 2. **Depoyu** ve **dalı**seçip **İleri**' yi seçin.
 

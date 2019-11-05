@@ -7,15 +7,15 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
-ms.translationtype: MT
+ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300742"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475936"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
-Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
+Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama, Azure Cosmos DB ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki [özel bir uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bilinen sınırlamalar için bkz. [Özel uç nokta](private-endpoint-overview.md#limitations) ve [özel bağlantı hizmeti](private-link-service-overview.md#limitations).
@@ -25,13 +25,13 @@ Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 Azure özel bağlantısı aşağıdaki avantajları sağlar:  
-- **Azure platformunda özel olarak hizmetlere erişim**: Sanal ağınızı Azure 'da çalışan hizmetlere, kaynak veya hedefte genel bir IP adresine gerek duymadan özel olarak bağlayın. Hizmet sağlayıcıları kendi sanal ağında hizmetlerini özel olarak işleyebilir ve tüketiciler bu hizmetlere kendi yerel sanal ağında özel olarak erişebilir. Özel bağlantı platformu, Azure omurga ağı üzerinden tüketici ve hizmetler arasındaki bağlantıyı işleymeyecektir. 
+- **Azure platformunda özel olarak erişim Hizmetleri**: Sanal ağınızı Azure 'da çalışan hizmetlere, kaynak veya hedef üzerinde genel bir IP adresi gerekmeden özel olarak bağlayın. Hizmet sağlayıcıları kendi sanal ağında hizmetlerini özel olarak işleyebilir ve tüketiciler bu hizmetlere kendi yerel sanal ağında özel olarak erişebilir. Özel bağlantı platformu, Azure omurga ağı üzerinden tüketici ve hizmetler arasındaki bağlantıyı işleymeyecektir. 
  
-- **Şirket içi ve eşlenmiş ağlar**: Azure 'da, ExpressRoute özel eşlemesi/VPN tünelleri (Şirket içi) ve eşlenmiş sanal ağlardan özel uç noktalar aracılığıyla Şirket içinden çalışan hizmetlere erişin. Hizmete ulaşmak için genel eşlemeyi ayarlamaya veya internet 'e geçiş yapmanıza gerek yoktur. Bu özellik, iş yüklerini Azure 'a geçirmek için güvenli bir yol sağlar.
+- Şirket **içi ve eşlenmiş ağlar**: Azure 'Da, ExpressRoute özel EŞLEMESI/VPN tünelleri (Şirket içi) ve eşlenmiş sanal ağlardan özel uç noktalar aracılığıyla Şirket içinden çalışan hizmetlere erişin. Hizmete ulaşmak için genel eşlemeyi ayarlamaya veya internet 'e geçiş yapmanıza gerek yoktur. Bu özellik, iş yüklerini Azure 'a geçirmek için güvenli bir yol sağlar.
  
-- **Veri taşmasıyla karşı koruma**:  Azure özel bağlantısı ile, VNet 'teki özel uç nokta, hizmetin tamamının aksine müşterinin PaaS kaynağının belirli bir örneğine eşlenir. Özel uç nokta tüketicilerinin kullanılması, hizmette herhangi bir kaynağa değil yalnızca belirli bir kaynağa bağlanabilir. Bu, oluşturulan mekanizmaya yönelik veri kaybı risklerine karşı koruma sağlar. 
+- **Veri taşmasıyla Ilgili koruma**: Azure özel bağlantısı ile VNET 'teki özel uç nokta, hizmetin tamamına karşılık olarak müşterinin PaaS kaynağının belirli bir örneğine eşlenir. Özel uç nokta tüketicilerinin kullanılması, hizmette herhangi bir kaynağa değil yalnızca belirli bir kaynağa bağlanabilir. Bu, oluşturulan mekanizmaya yönelik veri kaybı risklerine karşı koruma sağlar. 
  
-- **Küresel erişim**: Diğer bölgelerde çalışan hizmetlere özel olarak bağlanın. Bu, tüketicinin sanal ağının A bölgesinde olabileceği ve B bölgesinde özel bağlantı arkasındaki hizmetlere bağlanabileceği anlamına gelir.  
+- **Küresel erişim**: diğer bölgelerde çalışan hizmetlere özel olarak bağlanın. Bu, tüketicinin sanal ağının A bölgesinde olabileceği ve B bölgesinde özel bağlantı arkasındaki hizmetlere bağlanabileceği anlamına gelir.  
  
 - **Kendi hizmetlerinizi genişletin**: Azure 'daki tüketicilerinize özel olarak kendi hizmetinizi işlemek için aynı deneyim ve işlevlerden yararlanın. Hizmetinizi bir Standart Load Balancer arkasına yerleştirerek, özel bağlantı için etkinleştirebilirsiniz. Tüketici daha sonra kendi VNet 'inde özel bir uç nokta kullanarak doğrudan hizmetinize bağlanabilir. Bu bağlantı isteklerini, basit bir onay çağrı akışı kullanarak yönetebilirsiniz. Azure özel bağlantısı, farklı Active Directory kiracılarına ait tüketiciler ve hizmetler için de geçerlidir. 
 
@@ -41,17 +41,18 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Senaryo  |Desteklenen hizmetler   |Kullanılabilen bölgeler | Durum   |
 |---------|---------|---------|---------|
 |Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri |Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD  |  Önizleme  |
-|Azure PaaS hizmetleri için özel bağlantı   | Azure Storage        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
-|  | Azure Data Lake Storage 2. Nesil        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
-|  |  Azure SQL Database         | Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD      |   Önizleme      |
+|Azure PaaS hizmetleri için özel bağlantı   | Azure Depolama        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
+|  | Azure Data Lake Storage Gen2        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
+|  |  Azure SQL Veritabanı         | Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD      |   Önizleme      |
 ||Azure SQL Veri Ambarı| Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD |Önizleme|
+||Azure Cosmos DB| Orta Batı ABD; WestUS EastUS Orta Kuzey ABD; EastUS 2; WestUS 2 |Önizleme|
 
-En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin. 
+En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin.
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
 Azure özel bağlantısı, günlükleri bir depolama hesabında arşivlemenize, Olay Hub 'ınıza olay akışına veya Azure Izleyici günlüklerine göndermenize olanak sağlayan Azure Izleyici ile tümleşiktir. Azure Izleyici 'de aşağıdaki bilgilere erişebilirsiniz: 
-- **Özel uç nokta**: Özel uç nokta tarafından işlenen veriler (ın/OUT)
+- **Özel uç nokta**: özel uç nokta tarafından işlenen VERILER (ın/out)
  
 - **Özel bağlantı hizmeti**:
     - Özel bağlantı hizmeti tarafından işlenen veriler (ın/OUT)
@@ -71,6 +72,7 @@ Sınırlar için bkz. [Azure özel bağlantı limitleri](../azure-subscription-s
 - [PowerShell kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-powershell.md)
 - [CLı kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-cli.md)
 - [Portalı kullanarak depolama hesabı için özel bir uç nokta oluşturma](create-private-endpoint-storage-portal.md)
+- [Portal kullanarak Azure Cosmos hesabı için özel bir uç nokta oluşturma](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell kullanarak kendi özel bağlantı hizmetinizi oluşturun](create-private-link-service-powershell.md)
 
 

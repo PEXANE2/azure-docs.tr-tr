@@ -1,5 +1,5 @@
 ---
-title: 'Görüntü sınıflandırma öğreticisi: Modelleri dağıtma'
+title: 'Görüntü sınıflandırma öğreticisi: modelleri dağıtma'
 titleSuffix: Azure Machine Learning
 description: Bu öğreticide, bir Python Jupyter not defterinde scikit-öğrenme ile görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning nasıl kullanılacağı gösterilmektedir. Bu öğretici, iki bölümden oluşan bir serinin ikinci bölümüdür.
 services: machine-learning
@@ -10,14 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 988f91d9ab644df4ecb375114abf4245440cbf13
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162520"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476145"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. [Önceki öğreticide](tutorial-train-models-with-aml.md) makine öğrenmesi modellerini eğittiniz ve buluttaki çalışma alanınıza modeli kaydettiniz.  
 
@@ -32,16 +33,22 @@ Artık modeli, [Azure Container Instances](https://docs.microsoft.com/azure/cont
 > * Modeli Container Instances için dağıtın.
 > * Dağıtılan modeli test edin.
 
-Container Instances, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes hizmeti kullanmayı düşünün. Daha fazla bilgi için bkz. [dağıtma ve nerede](how-to-deploy-and-where.md).
+Container Instances, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes hizmetini kullanmayı göz önünde bulundurun. Daha fazla bilgi için bkz. [dağıtma ve nerede](how-to-deploy-and-where.md).
 
 >[!NOTE]
 > Bu makaledeki kod, Azure Machine Learning SDK sürümü 1.0.41 ile test edilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Not defterini çalıştırmak için ilk olarak öğreticide model eğitimi ' [ni doldurun (1. bölüm): Görüntü sınıflandırma modelini](tutorial-train-models-with-aml.md)eğitme.   Ardından, aynı not defteri sunucusunu kullanarak **öğreticiler/img-Classification-part2-Deploy. ipynb** Not defterini açın.
+Not defterini çalıştırmak için, ilk olarak öğreticide model eğitimi ' ni [(1. bölüm) doldurun: görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).   Ardından, klonlanan **öğreticiler** klasörünüzde **img-Classification-part2-Deploy. ipynb** Not defterini açın.
 
-Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızdaki ve `matplotlib` `scikit-learn` ortamınızda yüklü olduğundan emin olun. 
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızda `matplotlib` ve `scikit-learn` yüklediğinizden emin olun. 
+
+> [!Important]
+> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
+>
+> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin.
+> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
 ## <a name="start"></a>Ortamı ayarlama
 
@@ -220,7 +227,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Ortam dosyası oluşturma
 
-Ardından, betiğin tüm paket bağımlılıklarını belirten **MyENV. yıml**adlı bir ortam dosyası oluşturun. Bu dosya, tüm bu bağımlılıkların Docker görüntüsüne yüklendiğinden emin olmak için kullanılır. Bu model `azureml-sdk`şunları `scikit-learn` gerektirir:
+Ardından, betiğin tüm paket bağımlılıklarını belirten **MyENV. yıml**adlı bir ortam dosyası oluşturun. Bu dosya, tüm bu bağımlılıkların Docker görüntüsüne yüklendiğinden emin olmak için kullanılır. Bu modelin `scikit-learn` ve `azureml-sdk`gerekir:
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies 
@@ -231,7 +238,7 @@ myenv.add_conda_package("scikit-learn")
 with open("myenv.yml", "w") as f:
     f.write(myenv.serialize_to_string())
 ```
-`myenv.yml` Dosyanın içeriğini gözden geçirin:
+`myenv.yml` dosyanın içeriğini gözden geçirin:
 
 ```python
 with open("myenv.yml", "r") as f:
@@ -258,8 +265,8 @@ Dağıtımı tamamlama süresi **yaklaşık yedi ila sekiz dakika**.
 Görüntüyü yapılandırın ve dağıtın. Aşağıdaki kod şu adımlardan geçer:
 
 1. Şu dosyaları kullanarak bir görüntü oluşturun:
-   * Puanlama dosyası, `score.py`.
-   * Ortam dosyası, `myenv.yml`.
+   * Puanlama dosyası `score.py`.
+   * Ortam dosyası `myenv.yml`.
    * Model dosyası.
 1. Görüntüyü çalışma alanının altına kaydedin. 
 1. Görüntüyü Container Instances kapsayıcısına gönderin.

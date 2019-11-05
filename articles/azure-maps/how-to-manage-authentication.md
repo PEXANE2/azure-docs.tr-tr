@@ -3,17 +3,17 @@ title: Azure haritalar 'da kimlik doğrulamasını yönetme | Microsoft Docs
 description: Azure haritalar 'da kimlik doğrulamasını yönetmek için Azure portal kullanabilirsiniz.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/11/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2f4a3d791e6b5d6ff20c09408d1a0bf5995c32fd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756569"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478779"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure haritalar 'da kimlik doğrulamasını yönetme
 
@@ -32,7 +32,7 @@ Kimlik doğrulama ayrıntılarınızı Azure portal görüntüleyebilirsiniz. He
 
 Azure haritalar hesabı oluşturduktan sonra Azure AD kiracınız ile Azure haritalar kaynağı arasında bir bağlantı kurmanız gerekir.
 
-1. Azure AD dikey penceresine gidip bir uygulama kaydı oluşturun. Kayıt için bir ad girin. **Oturum açma URL 'si** kutusunda, Web UYGULAMASıNıN/API 'nin ana sayfasını sağlayın (örneğin, https: \//localhost/). Zaten kayıtlı bir uygulamanız varsa 2. adıma gidin.
+1. Azure AD dikey penceresine gidip bir uygulama kaydı oluşturun. Kayıt için bir ad girin. **Oturum açma URL 'si** kutusunda, Web UYGULAMASıNıN/API 'nin ana sayfasını sağlayın (örneğin, https:\//localhost/). Zaten kayıtlı bir uygulamanız varsa 2. adıma gidin.
 
     ![Uygulama kaydı](./media/how-to-manage-authentication/app-registration.png)
 
@@ -91,7 +91,12 @@ Uygulamanızı kaydettikten ve Azure Maps ile ilişkilendirdikten sonra, erişim
 
 * Uygulamanız Azure Maps web SDK 'Sı ile kullanıcı belirteci kimlik doğrulamasını kullanıyorsa, HTML sayfanızı Azure Maps istemci KIMLIĞI ve Azure AD uygulama KIMLIĞI ile yapılandırmanız gerekir.
 
-* Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa Azure AD oturum açma uç noktası `https://login.microsoftonline.com` bir belirteç istemeniz gerekir. Azure AD kaynak KIMLIĞI `https://atlas.microsoft.com/`, Azure Maps istemci KIMLIĞI, Azure AD uygulama KIMLIĞI ve Azure AD uygulama kaydı parolası veya Sertifika.
+* Uygulamanız sunucu/uygulama kimlik doğrulaması kullanıyorsa Azure ad kaynak KIMLIĞI `https://atlas.microsoft.com/`, Azure Maps istemci KIMLIĞI, Azure AD uygulama KIMLIĞI ve Azure AD uygulama kayıt parolası ile Azure AD belirteç uç noktası `https://login.microsoftonline.com` bir belirteç istemeniz gerekir veya Sertifika.
+
+| Azure ortamı   | Azure AD belirteç uç noktası | Azure Kaynak KIMLIĞI |
+| --------------------|-------------------------|-------------------|
+| Azure genel        | https://login.microsoftonline.com | https://atlas.microsoft.com/ |
+| Azure Kamu    | https://login.microsoftonline.us  | https://atlas.microsoft.com/ | 
 
 Kullanıcılar ve hizmet sorumluları için Azure AD 'den erişim belirteçleri isteme hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 

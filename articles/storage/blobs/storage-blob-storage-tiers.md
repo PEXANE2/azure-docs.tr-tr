@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 642fcc9ac2513329e9223f59a33d51ac5005e1fd
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 5ba2255cfe0d5c4220ec2215ac837649af1ba896
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802173"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521170"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -79,7 +79,7 @@ Hesap erişim katmanını değiştirmek, bir açık katman kümesi olmayan hesap
 
 Blob düzeyinde katman ayarlama, [Blob Katmanını Ayarlama](/rest/api/storageservices/set-blob-tier) adlı tek bir işlem kullanarak nesne düzeyinde verilerinizin katmanını değiştirmenize olanak verir. Bir blob’un erişim katmanını, kullanım şekli değiştikçe verileri hesapları arasında taşımaya gerek kalmadan sık erişimli, seyrek erişimli veya arşiv katmanları arasında kolayca değiştirebilirsiniz. Tüm katman değişiklikleri anında gerçekleşir. Ancak, arşivden bir blobu yeniden doldurma birkaç saat sürebilir.
 
-Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez. Sık erişimli veya seyrek erişimli bir katmanda bir Blobun üzerine yazıldığında, yeni blob üzerine yazılan Blobun katmanını devralır.
+Son blob katmanı değişikliğinin zamanı, **Erişim Katmanı Değişim Zamanı** blob özelliği aracılığıyla gösterilir. Blob arşiv katmanındaysa üzerine yazılamaz, bu nedenle aynı Blobun karşıya yüklemeye Bu senaryoda izin verilmez. Sık erişimli veya seyrek erişimli katmanda bir Blobun üzerine yazarken, yeni oluşturulan blob, yeni blob erişim katmanı oluşturma sırasında açıkça ayarlanmadığı takdirde, üzerine yazılan Blobun katmanını devralır.
 
 > [!NOTE]
 > Arşiv depolama ve blob düzeyinde katman ayarlama, yalnızca blok bloblarını destekler. Ayrıca, anlık görüntülerine sahip bir blok blobunun katmanını değiştiremezsiniz.
@@ -105,7 +105,7 @@ Bir blob bir çarpıtma katmanına taşındığında (Arşiv-> seyrek erişimli,
 
 ### <a name="cool-and-archive-early-deletion"></a>Seyrek erişimli ve arşiv erken silme
 
-Seyrek Erişimli katmana taşınan herhangi bir blob (yalnızca GPv2 hesapları), sık erişimli 30 günlük bir erken silme süresine tabidir. Arşiv katmanına taşınan herhangi bir blob, arşiv erken silme dönemi olan 180 gün ile tabidir. Bu ücret günlere eşit olarak dağıtılır. Örneğin, bir blob arşive taşınır ve 45 gün sonra sık erişimli katmana taşınırsa veya taşınmışsa, bu Blobun arşiv 'de depolanması için bir erken silme ücreti, 135 (180 eksi 45) güne denk ücretlendirilirsiniz.
+Seyrek Erişimli katmana taşınan herhangi bir blob (yalnızca GPv2 hesapları), sık erişimli 30 günlük bir erken silme süresine tabidir. Arşiv katmanına taşınan herhangi bir blob, arşiv erken silme dönemi olan 180 gün ile tabidir. Bu ücret eşit olarak bölünür. Örneğin, bir blob arşive taşınır ve 45 gün sonra sık erişimli katmana taşınırsa veya taşınmışsa, bu Blobun arşiv 'de depolanması için bir erken silme ücreti, 135 (180 eksi 45) güne denk ücretlendirilirsiniz.
 
 Bir erişim katmanı değişikliği yoksa, **son değiştirilme**olan blob özelliğini kullanarak erken silme işlemini hesaplayabilirsiniz. Aksi takdirde, erişim katmanının en son seyrek erişimli veya arşiv olarak değiştirildiği zaman, blob özelliğini görüntüleyerek kullanabilirsiniz: **erişim katmanı değiştirme zamanı**. Blob özellikleri hakkında daha fazla bilgi için bkz. [BLOB özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
 
@@ -138,7 +138,7 @@ Bu bölümde Azure portalı kullanarak aşağıdaki senaryolar gösterilmektedir
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 veya Blob depolama hesabının varsayılan hesap erişim katmanını değiştirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Depolama hesabınıza gitmek için Tüm Kaynaklar’ı ve ardından depolama hesabınızı seçin.
 
@@ -150,7 +150,7 @@ Bu bölümde Azure portalı kullanarak aşağıdaki senaryolar gösterilmektedir
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 veya blob depolama hesabındaki bir Blobun katmanını değiştirme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Depolama hesabınızdaki blobunuza gitmek için Tüm Kaynaklar’ı seçin, depolama hesabınızı seçin, kapsayıcınızı seçin ve ardından blobunuzu seçin.
 
@@ -192,7 +192,7 @@ Evet, depolama hesabındaki **erişim katmanı** özniteliğini ayarlayarak vars
 
 **Varsayılan hesap erişim katmanımı arşiv olarak ayarlayabilir miyim?**
 
-Hayır. Yalnızca sık ve seyrek erişimli katmanlar varsayılan hesap erişim katmanı olarak ayarlanabilir. Arşiv yalnızca nesne düzeyinde ayarlanabilir.
+Hayır. Yalnızca sık ve seyrek erişimli katmanlar varsayılan hesap erişim katmanı olarak ayarlanabilir. Arşiv yalnızca nesne düzeyinde ayarlanabilir. Blob yükleme sırasında, tercih ettiğiniz erişim katmanını varsayılan hesap katmanından bağımsız olarak sık erişimli, seyrek erişimli veya arşiv olarak belirtirsiniz. Bu işlevsellik, blob depolamada veri oluşturduğunuz andan itibaren maliyet tasarrufu sağlamak için doğrudan arşiv katmanına veri yazmanızı sağlar.
 
 **Hangi bölgelerde kullanılabilir sık erişimli, seyrek erişimli ve arşiv erişim katmanları vardır?**
 
@@ -206,7 +206,7 @@ Seyrek Erişimli erişim katmanındaki Bloblar, sık erişimli erişim katmanın
 
 **İşlemler sık erişimli, seyrek erişimli ve arşiv katmanları arasında aynı mıdır?**
 
-Sık erişimli ve seyrek erişimli arasında tüm işlemleri %100 tutarlıdır. GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier ve DeleteBlob dahil tüm geçerli arşiv işlemleri, sık erişimli ve seyrek erişimli% 100 tutarlıdır. Blob verileri, yeniden doldurma yapılıncaya kadar arşiv katmanında okunamaz veya değiştirilemez; Arşiv sırasında yalnızca blob meta veri okuma işlemleri desteklenir.
+Sık erişimli ve seyrek erişimli arasında tüm işlemleri %100 tutarlıdır. GetBlobProperties, GetBlobMetadata, Listbloblar, SetBlobTier ve DeleteBlob dahil tüm geçerli arşiv işlemleri, sık erişimli ve seyrek erişimli %100 tutarlıdır. Blob verileri, yeniden doldurma yapılıncaya kadar arşiv katmanında okunamaz veya değiştirilemez; Arşiv sırasında yalnızca blob meta veri okuma işlemleri desteklenir.
 
 **Blobu arşiv katmanından sık erişimli veya seyrek erişimli katmana yeniden doldururken işlemin ne zaman tamamlandığını nasıl bilebilirim?**
 

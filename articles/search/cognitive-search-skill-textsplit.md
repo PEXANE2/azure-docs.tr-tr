@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784843"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479662"
 ---
 # <a name="text-split-cognitive-skill"></a>Metin bölünmüş Bilişsel Beceri
 
@@ -33,7 +33,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 |--------------------|-------------|
 | textSplitMode      | "Pages" veya "cümleler" | 
 | maximumPageLength | TextSplitMode, "Pages" olarak ayarlanırsa, `String.Length`göre ölçülen maksimum sayfa uzunluğuna başvurur. Minimum değer 100 ' dir.  TextSplitMode değeri "Pages" olarak ayarlandıysa, algoritma metni en çok "maximumPageLength" boyutunda olan parçalara bölmeye çalışır. Bu durumda, algoritma bir cümle sınırında tümceyi bölmek için en iyi şekilde yapılır, bu nedenle öbek boyutu "maximumPageLength" değerinden biraz daha az olabilir. | 
-| defaultLanguageCode   | seçim Şu dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını sonlandırmamak için yararlıdır.</li></ul>  |
+| defaultLanguageCode   | seçim Şu dil kodlarından biri: `da, de, en, es, fi, fr, it, ko, pt`. Varsayılan değer Ingilizce 'dir (en). Göz önünde bulundurulması gereken birkaç nokta vardır:<ul><li>LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.</li><li>Dil önceki listede değilse, bölünmüş beceri metin karakter sınırlarındaki metni keser.</li><li>Bir dil kodu sağlamak, Çince, Japonca ve Korece gibi boşluk olmayan diller için bir sözcüğün yarısını kesmemek için yararlıdır.</li><li>Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), İngilizce (en) varsayılan değer yeterli olmalıdır. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Beceri girişleri
@@ -41,7 +41,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | Parametre adı       | Açıklama      |
 |----------------------|------------------|
 | metin  | Alt dizeden bölünecek metin. |
-| languageCode  | Seçim Belge için dil kodu.  |
+| languageCode  | Seçim Belge için dil kodu. Dili bilmiyor (örneğin, [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)girişi için metin bölmeniz gerekir), bu girişin kaldırılması güvenlidir.  |
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları 
 

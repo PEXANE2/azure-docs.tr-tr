@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970899"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495768"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN Gateway yapılandırma ayarları hakkında
 
@@ -36,7 +36,7 @@ Her sanal ağ, her türde yalnızca bir sanal ağ geçidine sahip olabilir. Bir 
 
 -GatewayType için kullanılabilir değerler şunlardır:
 
-* Sanal
+* VPN
 * ExpressRoute
 
 VPN ağ geçidi `-GatewayType` *VPN*gerektirir.
@@ -49,19 +49,19 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -VpnType RouteBased
 ```
 
-## <a name="gwsku"></a>Ağ Geçidi SKU 'Ları
+## <a name="gwsku"></a>Ağ Geçidi SKU'ları
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ### <a name="configure-a-gateway-sku"></a>Ağ Geçidi SKU 'SU yapılandırma
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 Kaynak Yöneticisi sanal ağ geçidi oluşturmak için Azure portal kullanırsanız, açılan menüyü kullanarak ağ geçidi SKU 'sunu seçebilirsiniz. Size sunulan seçenekler, seçtiğiniz ağ geçidi türü ve VPN türüne karşılık gelir.
 
 #### <a name="powershell"></a>PowerShell
 
-Aşağıdaki PowerShell örneği, VpnGw1 olarak `-GatewaySku` belirtir. Bir ağ geçidi oluşturmak için PowerShell 'i kullanırken, önce IP yapılandırmasını oluşturmanız ve ardından başvurmak için bir değişken kullanmanız gerekir. Bu örnekte, yapılandırma değişkeni $gwipconfig.
+Aşağıdaki PowerShell örneği, `-GatewaySku` VpnGw1 olarak belirtir. Bir ağ geçidi oluşturmak için PowerShell 'i kullanırken, önce IP yapılandırmasını oluşturmanız ve ardından başvurmak için bir değişken kullanmanız gerekir. Bu örnekte, yapılandırma değişkeni $gwipconfig.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -69,7 +69,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLı
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 VPN Gateway 'niz varsa ve farklı bir ağ geçidi SKU 'SU kullanmak istiyorsanız, seçenekleriniz ağ geçidi SKU 'nuzu yeniden boyutlandırırlar ya da başka bir SKU 'ya geçiş yapılır. Başka bir ağ geçidi SKU 'SU olarak değiştirdiğinizde, var olan ağ geçidini tamamen siler ve yeni bir tane oluşturursunuz. Bir ağ geçidinin oluşturulması 45 dakika sürebilir. Karşılaştırmayla, bir ağ geçidi SKU 'sunu yeniden boyutlandırdığınızda, ağ geçidini silip yeniden derlemek zorunda olmadığınızdan çok kapalı kalma süresi yoktur. Ağ Geçidi SKU 'sunu değiştirmek yerine yeniden boyutlandırma seçeneğiniz varsa bunu yapmak isteyeceksiniz. Ancak yeniden boyutlandırmayla ilgili kurallar vardır:
 
-1. VpnGw1, VpnGw2 ve VpnGw3 SKU 'Ları arasında yeniden boyutlandırma yapabilirsiniz.
-2. Eski ağ geçidi SKU 'Ları ile çalışırken, temel, standart ve HighPerformance SKU 'Ları arasında yeniden boyutlandırma yapabilirsiniz.
-3. Temel/standart/HighPerformance SKU 'larından yeni VpnGw1/VpnGw2/VpnGw3 SKU **'larına yeniden boyutlandırılamaz** . Bunun yerine yeni SKU 'Lara [geçiş](#change) yapmanız gerekir.
+1. Temel SKU 'nun dışında, bir VPN ağ geçidi SKU 'sunu aynı nesil (Generation1 veya Generation2) içinde başka bir VPN Gateway SKU 'SU olarak yeniden boyutlandırabilirsiniz. Örneğin, VpnGw1 of Generation1, Generation1 VpnGw2 olarak yeniden boyutlandırılabilir, ancak VpnGw2 Generation2.
+2. Eski ağ geçidi SKU'larıyla çalışırken Temel, Standart ve Yüksek Performanslı SKU'lar arasında yeniden boyutlandırma yapabilirsiniz.
+3. Temel/standart/HighPerformance SKU 'larından VpnGw SKU **'larına yeniden boyutlandırılamaz** . Bunun yerine yeni SKU 'Lara [geçiş](#change) yapmanız gerekir.
 
 #### <a name="resizegwsku"></a>Bir ağ geçidini yeniden boyutlandırmak için
 
@@ -93,9 +93,9 @@ VPN Gateway 'niz varsa ve farklı bir ağ geçidi SKU 'SU kullanmak istiyorsanı
 
 ## <a name="connectiontype"></a>Bağlantı türleri
 
-Kaynak Yöneticisi dağıtım modelinde, her yapılandırma için belirli bir sanal ağ geçidi bağlantı türü gerekir. @No__t-0 için kullanılabilir Kaynak Yöneticisi PowerShell değerleri şunlardır:
+Kaynak Yöneticisi dağıtım modelinde, her yapılandırma için belirli bir sanal ağ geçidi bağlantı türü gerekir. `-ConnectionType` için kullanılabilir Resource Manager PowerShell değerleri şunlardır:
 
-* Bkz
+* IPsec
 * Vnet2Vnet
 * ExpressRoute
 * VPNClient
@@ -118,7 +118,7 @@ Bir sanal ağ geçidi oluşturulduktan sonra VPN türünü değiştiremezsiniz. 
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-Aşağıdaki PowerShell örneği, `-VpnType` ' yı *Routebased*olarak belirtir. Bir ağ geçidi oluştururken,-VpnType ' ın yapılandırmanız için doğru olduğundan emin olmanız gerekir.
+Aşağıdaki PowerShell örneği, `-VpnType` *Routebased*olarak belirtir. Bir ağ geçidi oluştururken, -VpnType öğesinin yapılandırmanız için doğru olduğundan emin olmanız gerekir.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -138,7 +138,7 @@ Bir VPN ağ geçidi oluşturmadan önce bir ağ geçidi alt ağı oluşturmanız
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
 >
 
-Ağ geçidi alt ağını oluştururken, alt ağın içerdiği IP adresi sayısını belirtirsiniz. Ağ geçidi alt ağındaki IP adresleri ağ geçidi VM 'lerine ve ağ geçidi hizmetlerine ayrılır. Bazı yapılandırmalarda diğerlerinden daha fazla IP adresi gerekir. 
+Ağ geçidi alt ağı oluştururken, alt ağın içerdiği IP adresi sayısını belirtirsiniz. Ağ geçidi alt ağındaki IP adresleri ağ geçidi VM 'lerine ve ağ geçidi hizmetlerine ayrılır. Bazı yapılandırmalar için diğerlerinden daha fazla IP adresi gerekir. 
 
 Ağ geçidi alt ağınızın boyutunu planlarken, oluşturmayı planladığınız yapılandırma için belgelere bakın. Örneğin, ExpressRoute/VPN Gateway bir arada bulunan yapılandırma, diğer birçok yapılandırmadan daha büyük bir ağ geçidi alt ağı gerektirir. Ayrıca, ağ geçidi alt ağınızın olası gelecekteki ek yapılandırmalara uyum sağlamak için yeterli IP adresi içerdiğinden emin olmak isteyebilirsiniz. /29 kadar küçük bir ağ geçidi alt ağı oluşturabileceğiniz gibi, kullanılabilir adres alanınız varsa/27 veya daha büyük (/27,/26 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Bu, çoğu yapılandırmaya uyum sağlayacaktır.
 
@@ -152,7 +152,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="lng"></a>Yerel ağ geçitleri
 
- Yerel ağ geçidi, bir sanal ağ geçidinden farklıdır. Bir VPN ağ geçidi yapılandırması oluştururken, yerel ağ geçidi genellikle şirket içi konumunuzu temsil eder. Klasik dağıtım modelinde, yerel ağ geçidine yerel site denir.
+ Yerel ağ geçidi, bir sanal ağ geçidinden farklıdır. Bir VPN ağ geçidi yapılandırması oluştururken, yerel ağ geçidi genellikle şirket içi konumunuzu temsil eder. Klasik dağıtım modelinde, yerel ağ geçidi için Yerel Site olara ifade edilir.
 
 Yerel ağ geçidine bir ad, şirket içi VPN cihazının genel IP adresi verirsiniz ve şirket içi konumda bulunan adres öneklerini belirtebilirsiniz. Azure, ağ trafiği için hedef adres öneklerine bakar, yerel ağ geçidiniz için belirttiğiniz yapılandırmaya bakar ve paketleri buna göre yönlendirir. Ayrıca, bir VPN Ağ Geçidi bağlantısı kullanan VNet-VNet yapılandırmalarına yönelik yerel ağ geçitleri de belirtirsiniz.
 
@@ -169,11 +169,11 @@ Bazen yerel ağ geçidi ayarlarını değiştirmeniz gerekebilir. Örneğin, adr
 
 REST API 'leri, PowerShell cmdlet 'leri veya VPN Gateway yapılandırmalarına yönelik Azure CLı kullanırken ek teknik kaynaklar ve özel sözdizimi gereksinimleri için aşağıdaki sayfalara bakın:
 
-| **Klasik** | **Kaynak Yöneticisi** |
+| **Klasik** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| Desteklenmez | [Azure CLı](/cli/azure/network/vnet-gateway)|
+| Desteklenmiyor | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

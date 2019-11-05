@@ -1,5 +1,5 @@
 ---
-title: 'Görüntü sınıflandırma öğreticisi: Modelleri eğitme'
+title: 'Görüntü sınıflandırma öğreticisi: modelleri eğitme'
 titleSuffix: Azure Machine Learning
 description: Bir görüntü sınıflandırma modelini scikit ile eğitme hakkında bilgi edinin Azure Machine Learning bir Python Jupyter not defterinde öğrenin. Bu öğretici, iki bölümden oluşan bir serinin birinci bölümüdür.
 services: machine-learning
@@ -8,20 +8,21 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/20/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: MT
+ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128941"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493556"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: Veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu öğreticide, bir makine öğrenimi modelini uzaktan işlem kaynaklarında eğitebilirsiniz. Bir Python Jupyter not defterinde Azure Machine Learning için eğitim ve dağıtım iş akışını kullanacaksınız.  Ardından not defterini şablon olarak kullanıp kendi verilerinizle kendi makine öğrenmesi modelinizi eğitebilirsiniz. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin birinci bölümüdür**.  
 
-Bu öğreticide, [Mnist](http://yann.lecun.com/exdb/mnist/) veri kümesini ve scikit 'i kullanarak basit bir Lojistik gerileme yapılır. Azure Machine Learning [hakkında bilgi edinin](https://scikit-learn.org) . MNIST, 70.000 gri tonlamalı resimden oluşan popüler bir veri kümesidir. Her görüntü, sıfır ile dokuz arasında bir sayıyı temsil eden 28 x 28 piksellik bir sayının el ile yazılmış bir rakamdır. Amaç, belirli bir görüntünün temsil ettiği basamağı belirlemek için birden çok Lass sınıflandırıcı oluşturmaktır.
+Bu öğreticide, [Mnist](http://yann.lecun.com/exdb/mnist/) veri kümesini ve scikit 'i kullanarak basit bir Lojistik gerileme yapılır. Azure Machine Learning [hakkında bilgi edinin](https://scikit-learn.org) . MNIST, 70.000 gri tonlamalı resimden oluşan popüler bir veri kümesidir. Her görüntü, sıfır ile dokuz arasında bir sayıyı temsil eden 28 x 28 piksellik bir sayının el ile yazılmış bir rakamdır. Amaç, belirli bir resim temsil ettiği rakamı tanımlamak için çok sınıflı bir sınıflandırıcı oluşturmaktır.
 
 Aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğrenin:
 
@@ -36,19 +37,25 @@ Bir modelin nasıl seçeceğinizi ve [Bu öğreticinin ikinci bölümünde](tuto
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 >[!NOTE]
-> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sürümü 1.0.57 ile test edilmiştir.
+> Bu makaledeki kod, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) sürümü 1.0.65 ile test edilmiştir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Öğreticiyi doldurun: İlk ml denemenizi](tutorial-1st-experiment-sdk-setup.md) oluşturmaya başlayın:
+* [Öğreticiyi doldurun: Ilk ml denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md) :
     * Çalışma alanı oluşturma
-    * Bulut Not defteri sunucusu oluşturma
-    * Jupyter Not defteri panosunu başlatma
+    * Öğreticiler Not defterini çalışma alanındaki klasörünüze kopyalayın.
+    * Bulut tabanlı bir işlem örneği oluşturun.
 
-* Jupyter Not defteri panosunu başlattıktan sonra **öğreticiler/img-Classification-part1-Training. ipynb** Not defterini açın.
+* Klonlanan **öğreticiler** klasörünüzde **img-Classification-part1-eğitim. ipynb** Not defterini açın. 
 
-Öğretici ve ilgili **Utils.py** dosyası, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak isterseniz [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızdaki ve `matplotlib` `scikit-learn` ortamınızda yüklü olduğundan emin olun.
 
+Öğretici ve ilgili **Utils.py** dosyası, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak isterseniz [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir. Bu öğreticinin bağımlılıklarını yüklemek için `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` çalıştırın.
+
+> [!Important]
+> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
+>
+> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
+> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
 ## <a name="start"></a>Geliştirme ortamınızı ayarlama
 
@@ -77,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Çalışma alanına bağlan
 
-Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()`**config. JSON** dosyasını okur ve şu adlı `ws`bir nesneye ayrıntıları yükler:
+Mevcut çalışma alanından bir çalışma alanı nesnesi oluşturun. `Workspace.from_config()`, **config. JSON** dosyasını okur ve `ws`adlı bir nesneye ayrıntıları yükler:
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -143,51 +150,48 @@ Artık bulutta bir modeli eğitmek için gerekli paketleriniz ve işlem kaynakla
 
 ## <a name="explore-data"></a>Verileri inceleme
 
-Bir modeli eğitmadan önce, bunu eğitebilmek için kullandığınız verileri anlamanız gerekir. Bulut eğitim ortamınız tarafından erişilebilmesi için verileri kullanarak buluta de yüklemeniz gerekir. Bu bölümde, aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğreneceksiniz:
+Bir modeli eğitmadan önce, bunu eğitebilmek için kullandığınız verileri anlamanız gerekir. Bu bölümde şunları nasıl yapabileceğinizi öğrenirsiniz:
 
 * MNIST veri kümesini indirin.
 * Örnek görüntüleri görüntüleyin.
-* Bulutta çalışma alanınıza veri yükleyin.
 
 ### <a name="download-the-mnist-dataset"></a>MNIST veri kümesini indirme
 
-MNIST veri kümesini indirin ve dosyaları yerel olarak `data` dizinine kaydedin. Hem eğitim hem de test için görüntüler ve Etiketler indirilir:
+Ham veri dosyalarını almak için Azure açık veri kümelerini kullanın. [Azure açık veri](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Her bir veri kümesi, verileri farklı yollarla almak için karşılık gelen bir sınıfa sahiptir, bu durumda `MNIST`.
+
+Bu kod, `Dataset`bir alt sınıfı olan `FileDataset` nesne olarak verileri alır. `FileDataset`, veri Mağazalarınız veya genel URL 'lerinde herhangi bir biçimin tek veya birden çok dosyasına başvurur. Sınıfı, veri kaynağı konumuna yönelik bir başvuru oluşturarak dosyaları işlem dosyalarınıza indirme veya bağlama olanağı sağlar. Ayrıca, eğitim sırasında kolay bir şekilde almak için veri kümesini çalışma alanınıza kaydedersiniz.
+
+Veri kümeleri ve SDK kullanımları hakkında daha fazla bilgi edinmek için [nasıl yapılır?](how-to-create-register-datasets.md) konusunu izleyin.
 
 ```python
-import urllib.request
-import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
 
 data_folder = os.path.join(os.getcwd(), 'data')
 os.makedirs(data_folder, exist_ok=True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-labels.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-labels.gz'))
-```
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
 
-Aşağıdakine benzer bir çıktı görürsünüz:```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
+mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
+                                                 name='mnist_opendataset',
+                                                 description='training and test dataset',
+                                                 create_new_version=True)
+```
 
 ### <a name="display-some-sample-images"></a>Bazı örnek görüntüleri gösterme
 
-Sıkıştırılmış dosyaları `numpy` dizilerine yükleyin. Ardından `matplotlib` kullanarak, üst kısımlarında etiketleriyle veri kümesinden 30 rastgele görüntü çizin. Bu adım, bir `load_data` `util.py` dosyaya eklenen bir işlev gerektirir. Bu dosya örnek klasöründe bulunur. Bu not defteriyle aynı klasöre yerleştirildiğinden emin olun. İşlevi `load_data` , sıkıştırılmış dosyaları yalnızca sayısal tuş takımı dizileri halinde ayrıştırır:
+Sıkıştırılmış dosyaları `numpy` dizilerine yükleyin. Ardından `matplotlib` kullanarak, üst kısımlarında etiketleriyle veri kümesinden 30 rastgele görüntü çizin. Bu adım, bir `util.py` dosyasına dahil edilen `load_data` bir işlev gerektirir. Bu dosya örnek klasöründe bulunur. Bu not defteriyle aynı klasöre yerleştirildiğinden emin olun. `load_data` işlevi, sıkıştırılmış dosyaları yalnızca sayısal tuş takımı dizileri olarak ayrıştırır.
 
 ```python
 # make sure utils.py is in the same directory as this code
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(
-    data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(
-    data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(os.path.join(data_folder, "train-images-idx3-ubyte.gz"), False) / 255.0
+X_test = load_data(os.path.join(data_folder, "t10k-images-idx3-ubyte.gz"), False) / 255.0
+y_train = load_data(os.path.join(data_folder, "train-labels-idx1-ubyte.gz"), True).reshape(-1)
+y_test = load_data(os.path.join(data_folder, "t10k-labels-idx1-ubyte.gz"), True).reshape(-1)
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
@@ -209,39 +213,12 @@ Rastgele görüntü örnekleri gösterilir:
 
 Artık bu görüntülerin nasıl göründüğü ve beklenen tahmin sonucu hakkında bir fikriniz oldu.
 
-### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
-
-`FileDataset` Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir `FileDataset`oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. Daha fazla bilgi için bkz. `Dataset` paketteki [nasıl yapılır](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) Kılavuzu.
-
-```python
-from azureml.core.dataset import Dataset
-
-web_paths = [
-            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-            ]
-dataset = Dataset.File.from_files(path=web_paths)
-```
-
-Veri kümesini çalışma alanınıza kaydetmek için yönteminikullanın,böylecediğerdenemeleriarasındayenidenkullanılabilirveeğitimbetiğinizdekiadagöreadlandırılır.`register()`
-
-```python
-dataset = dataset.register(workspace=ws,
-                           name='mnist dataset',
-                           description='training and test dataset',
-                           create_new_version=True)
-```
-
-Artık modeli eğitmeye başlamak için gereken her şeye sahipsiniz.
-
 ## <a name="train-on-a-remote-cluster"></a>Uzak kümede eğitme
 
 Bu görev için, işi daha önce ayarlamış olduğunuz uzak eğitim kümesine gönderin.  İş göndermek için şunları yaparsınız:
 * Dizin oluşturma
 * Eğitim betiği oluşturma
-* Tahmin nesne oluşturma
+* Bir tahmin aracı nesnesi oluşturma
 * İşi gönderme
 
 ### <a name="create-a-directory"></a>Dizin oluşturma
@@ -249,7 +226,6 @@ Bu görev için, işi daha önce ayarlamış olduğunuz uzak eğitim kümesine g
 Gerekli kodu bilgisayarınızdan uzak kaynağa teslim etmek için bir dizin oluşturun.
 
 ```python
-import os
 script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
@@ -317,7 +293,7 @@ Betiğin verileri nasıl aldığına ve modelleri nasıl kaydettiğine dikkat ed
 
 + Eğitim betiği, modelinizi **çıktılar**adlı bir dizine kaydeder. Bu dizine yazılan her şey otomatik olarak çalışma alanınıza yüklenir. Modelinize bu dizinden daha sonra öğreticide erişirsiniz. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Eğitim betiği, dosyanın `utils.py` veri kümesini doğru şekilde yüklemesini gerektirir. Aşağıdaki kod, uzak `utils.py` kaynaktaki `script_folder` eğitim betiğiyle birlikte dosyaya erişilebilmesi için ' a kopyalar.
++ Eğitim betiği dosya `utils.py` veri kümesini doğru bir şekilde yüklemesini gerektirir. Aşağıdaki kod, `script_folder`, uzak kaynaktaki eğitim betiğinin yanı sıra dosyaya `utils.py` kopyalar.
 
   ```python
   import shutil
@@ -334,7 +310,7 @@ Bir [sköğrenme tahmin aracı](https://docs.microsoft.com/python/api/azureml-tr
 * Eğitim betiği adı, **train.py**.
 * Eğitim betiğiyle gerekli parametreler.
 
-Bu öğreticide, bu AmlCompute hedefidir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **Data_folder** , veri kümesini kullanacak şekilde ayarlanır. İlk olarak, eğitim için gereken bağımlılıkları belirten bir ortam nesnesi oluşturun. 
+Bu öğreticide, bu hedef AmlCompute ' dir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **Data_folder** , veri kümesini kullanacak şekilde ayarlanır. İlk olarak, eğitim için gereken bağımlılıkları belirten bir ortam nesnesi oluşturun. 
 
 ```python
 from azureml.core.environment import Environment
@@ -351,7 +327,7 @@ Ardından aşağıdaki kodla tahmin aracı oluşturun.
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': dataset.as_named_input('mnist').as_mount(),
+    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
     '--regularization': 0.5
 }
 
@@ -383,11 +359,11 @@ Beklerken ne olur:
 
   Kapsayıcı sonraki çalıştırmalar için önbelleğe alındığından, bu aşama her Python ortamı için bir kez gerçekleşir. Görüntü oluşturma sırasında, günlükler çalıştırma geçmişine aktarılır. Bu günlükleri kullanarak görüntü oluşturma ilerlemesini izleyebilirsiniz.
 
-- **Ölçeklendirme**: Uzak küme, çalışmayı Şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, ek düğümler otomatik olarak eklenir. Ölçeklendirme genellikle **yaklaşık beş dakika sürer.**
+- **Ölçeklendirme**: uzak küme, çalışmayı Şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, ek düğümler otomatik olarak eklenir. Ölçeklendirme genellikle **yaklaşık beş dakika sürer.**
 
-- **Çalıştırma**: Bu aşamada, gerekli betikler ve dosyalar işlem hedefine gönderilir. Ardından veri depoları bağlanır veya kopyalanır. Ve sonra **entry_script** çalıştırılır. İş çalışırken **stdout** ve **./logs** dizini çalıştırma geçmişine akışla kaydedilir. Bu günlükleri kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz.
+- **Çalışıyor**: Bu aşamada, gerekli betikler ve dosyalar işlem hedefine gönderilir. Ardından veri depoları bağlanır veya kopyalanır. Ve sonra **entry_script** çalıştırılır. İş çalışırken **stdout** ve **./logs** dizini çalıştırma geçmişine akışla kaydedilir. Bu günlükleri kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz.
 
-- **Işlem sonrası**: Çalıştırmanın **./çıktılar** dizini, çalışma alanınızdaki çalışma geçmişine kopyalanır, böylece bu sonuçlara erişebilirsiniz.
+- **Işlem sonrası**: Bu sonuçlara erişebilmek için çalıştırmanın **./çıktılar** dizini çalışma alanınızdaki çalışma geçmişine kopyalanır.
 
 Çalışan bir işin ilerlemesini birkaç şekilde denetleyebilirsiniz. Bu öğreticide bir jupi pencere öğesi ve bir `wait_for_completion` yöntemi kullanılmaktadır.
 
@@ -408,7 +384,7 @@ Bir çalıştırmayı iptal etmeniz gerekirse, [Bu yönergeleri](https://aka.ms/
 
 ### <a name="get-log-results-upon-completion"></a>Tamamlandıktan sonra günlük sonuçlarını alma
 
-Model eğitimi ve izlemesi arka planda yapılır. Daha fazla kod çalıştırmadan önce model eğitimi bitirene kadar bekleyin. Model `wait_for_completion` eğitiminin ne zaman bittiğini göstermek için kullanın:
+Model eğitimi ve izlemesi arka planda yapılır. Daha fazla kod çalıştırmadan önce model eğitimi bitirene kadar bekleyin. Model eğitiminin ne zaman bittiğini göstermek için `wait_for_completion` kullanın:
 
 ```python
 run.wait_for_completion(show_output=False)  # specify True for a verbose log
@@ -430,7 +406,7 @@ Sonraki öğreticide, bu modeli daha ayrıntılı bir şekilde araştırın.
 
 ## <a name="register-model"></a>Modeli kaydetme
 
-Eğitim betiğindeki son adım, dosyayı `outputs/sklearn_mnist_model.pkl` işin çalıştırıldığı kümenin VM 'sinde adlı `outputs` bir dizinde yazdı. `outputs`, bu dizindeki tüm içeriklerin çalışma alanınıza otomatik olarak yüklenmesini sağlayan özel bir dizindir. Bu içerik çalışma alanınızın altında yer alan denemedeki çalıştırma kaydında gösterilir. Bu nedenle model dosyası artık çalışma alanınızda de kullanılabilir.
+Eğitim betiğindeki son adım dosya `outputs/sklearn_mnist_model.pkl`, işin çalıştırıldığı kümenin VM 'sinde `outputs` adlı bir dizinde yazdı. `outputs`, bu dizindeki tüm içeriğin çalışma alanınıza otomatik olarak yüklendiği özel bir dizindir. Bu içerik çalışma alanınızın altında yer alan denemedeki çalıştırma kaydında gösterilir. Bu nedenle model dosyası artık çalışma alanınızda de kullanılabilir.
 
 Bu çalıştırma ile ilişkili dosyaları görebilirsiniz:
 

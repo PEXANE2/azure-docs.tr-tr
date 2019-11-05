@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 26793c91c85ba4cc33a07358ab8ff318becb325f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490701"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,20 +42,22 @@ Bu hızlı başlangıçta, genel amaçlı Azure depolama hesabını (özel olara
 Bu hızlı başlangıç için Azure depolama hesabınızın adına ihtiyacınız olacak. Aşağıdaki yordam, depolama hesabınızın adını almak için gereken adımları sağlar: 
 
 1. Bir Web tarayıcısında [Azure Portal](https://portal.azure.com) gidin ve Azure Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
-2. **Tüm hizmetler** > depolamadepolama > **hesapları**' nı seçin.
+2. Azure portal menüsünde **tüm hizmetler**' i seçin ve ardından **depolama** > **depolama hesapları**' nı seçin. Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
 3. **Depolama hesapları** sayfasında, depolama hesabınız için filtre uygulayın (gerekirse) ve ardından depolama hesabınızı seçin. 
+
+Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
 
 #### <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
 Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsayıcısı oluşturursunuz.
 
-1. Depolama hesabı sayfasında **genel bakış** > **BLOB 'ları**' nı seçin.
-2. Hesap adı > Bloblar sayfasının araç çubuğunda kapsayıcı ' yı seçin.  *\<*  - 
-3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. Hesap adı > blob 'lar sayfası, kapsayıcılar listesinde adföğreticisi içerecek şekilde güncelleştirilir.  *\<*  - 
+1. Depolama hesabı sayfasından **genel bakış** > **Blobları**' nı seçin.
+2. *\<hesap adı >*  - **Blobları** sayfasının araç çubuğunda **kapsayıcı**' yı seçin.
+3. **Yeni kapsayıcı** iletişim kutusunda ad olarak **adftutorial** girin ve ardından **Tamam**’ı seçin. *\<hesap adı >*  - **Blobları** sayfası, kapsayıcılar listesinde **adföğreticisi** içerecek şekilde güncelleştirilir.
 
    ![Kapsayıcılar listesi](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için bir giriş klasörü ve dosyası ekleyin
-Bu bölümde, yeni oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki içerikle birlikte bir dosya Düzenleyicisi oluşturun:
+Bu bölümde, yeni oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki **içerikle birlikte bir** dosya Düzenleyicisi oluşturun:
 
 ```emp.txt
 John, Doe
@@ -64,7 +66,12 @@ Jane, Doe
 
 Dosyayı **C:\ADFv2QuickStartPSH** klasörüne kaydedin. (Klasör zaten mevcut değilse, oluşturun.) Sonra Azure portal geri dönüp şu adımları izleyin:
 
-1. Kaldığınız yerden -  *Hesap adı > Blobları sayfasında, güncelleştirilmiş kapsayıcı listesinden adföğreticisi ' ni seçin. \<* (Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın, **tüm hizmetler** > **depolama** > **depolama hesapları**' nı seçin, depolama hesabınızı seçin ve ardından Bloblar ' ı seçin. **adföğreticisi.)**  > 
+1. *\<hesap adı >*  - **Blobları** sayfasında, güncelleştirilmiş kapsayıcı listesinden **adföğreticisi** ' ni seçin.
+
+   1. Pencereyi kapattıysanız veya başka bir sayfaya bir sorun yaşıyorsanız, [Azure Portal](https://portal.azure.com) yeniden oturum açın.
+   1. Azure portal menüsünde **tüm hizmetler**' i seçin ve ardından **depolama** > **depolama hesapları**' nı seçin. Ayrıca, herhangi bir sayfadan *depolama hesaplarını* arayabilir ve seçebilirsiniz.
+   1. Depolama hesabınızı seçin ve ardından **blob** > **adföğreticisi**' ni seçin.
+
 2. **Adföğreticisi** kapsayıcı sayfasının araç çubuğunda **karşıya yükle**' yi seçin.
 3. **Blobu karşıya yükle** sayfasında, **dosyalar** kutusunu seçin ve ardından, ve sonra da **. txt** dosyasını seçin.
 4. **Gelişmiş** başlık ' ı genişletin. Sayfa artık gösterildiği gibi görüntülenir:

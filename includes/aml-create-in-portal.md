@@ -8,25 +8,25 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 08/14/2019
-ms.openlocfilehash: 1da2afc6c0dfa0571d6e7ccbf358bb574aa736c5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: d49a84f26453a6a7b2ff6d7f419fbc53ad8b98ba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71830191"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475959"
 ---
-1. Kullandığınız Azure aboneliğine ait kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
+1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
       ![Yeni kaynak oluşturma](media/aml-create-in-portal/portal-create-resource.png)
 
-1. **Machine Learning hizmeti çalışma alanını**bulmak için arama çubuğunu kullanın.
+1. **Machine Learning**bulmak için arama çubuğunu kullanın.
 
-1. **Machine Learning hizmet çalışma alanı**' nı seçin.
+1. **Machine Learning**seçin.
 
-1. Başlamak için **Machine Learning hizmet çalışma alanı** bölmesinde **Oluştur** ' u seçin.
+1. Başlamak için **Machine Learning** bölmesinde **Oluştur** ' u seçin.
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 
@@ -36,8 +36,9 @@ ms.locfileid: "71830191"
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde var olan bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturmak için bir ad girin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML**kullanılır. 
    Konum | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.
+   Çalışma alanı sürümü | Bu öğretici için çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & Kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler. Bu öğreticideki her şey, temel veya kurumsal çalışma alanıyla gerçekleştirilebilir.
 
-1. Çalışma alanını yapılandırmayı tamamladıktan sonra **Oluştur**' u seçin. 
+1. Çalışma alanını yapılandırmayı tamamladıktan sonra, **gözden geçir + oluştur**' u seçin. 
 
    > [!Warning] 
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.

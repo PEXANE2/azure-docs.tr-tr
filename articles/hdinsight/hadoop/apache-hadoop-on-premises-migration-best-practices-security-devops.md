@@ -1,5 +1,5 @@
 ---
-title: Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-güvenlik
+title: "Güvenlik: şirket içi Apache Hadoop Azure HDInsight 'a geçirme"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmeye yönelik güvenlik ve DevOps en iyi uygulamalarını öğrenin.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736146"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494965"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-Security ve DevOps en iyi uygulamaları
 
@@ -23,7 +23,7 @@ Bu makale, Azure HDInsight sistemlerinde güvenlik ve DevOps için öneriler sa�
 
 Kurumsal Güvenlik Paketi (ESP) Active Directory tabanlı kimlik doğrulamasını, çok kullanıcılı desteği ve rol tabanlı erişim denetimini destekler. ESP seçeneği seçili olduğunda, HDInsight kümesi Active Directory etki alanına katılır ve kuruluş yöneticisi, Apache Ranger kullanarak Apache Hive güvenliği için rol tabanlı erişim denetimi 'ni (RBAC) yapılandırabilir. Yönetici ayrıca çalışanlara göre veri erişimini ve erişim denetimi ilkelerine yapılan değişiklikleri denetleyebilir.
 
-ESP aşağıdaki küme türlerinde kullanılabilir: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka ve etkileşimli sorgu (Hive LLAP). 
+Şu küme türlerinde ESP kullanılabilir: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka ve etkileşimli sorgu (Hive LLAP). 
 
 Etki alanına katılmış HDInsight kümesini dağıtmak için aşağıdaki adımları kullanın:
 
@@ -43,12 +43,12 @@ Etki alanına katılmış HDInsight kümesini dağıtmak için aşağıdaki adı
 
 
 - Aşağıdaki parametreleri ayarlayarak HDInsight ESP kümesini dağıtın:
-    - **Etki alanı adı**: Azure AD DS ile ilişkili etki alanı adı.
-    - **Etki alanı Kullanıcı adı**: Önceki bölümde oluşturduğunuz Azure AD DS DC tarafından yönetilen etki alanındaki hizmet hesabı, örneğin: `hdiadmin@contoso.onmicrosoft.com`. Bu etki alanı kullanıcısı, bu HDInsight kümesinin Yöneticisi olacak.
-    - **Etki alanı parolası**: Hizmet hesabının parolası.
+    - **Etki alanı adı**: Azure AD DS ilişkili etki alanı adı.
+    - **Etki alanı Kullanıcı adı**: önceki bölümde oluşturduğunuz Azure AD DS DC tarafından yönetilen etki alanındaki hizmet hesabı, örneğin: `hdiadmin@contoso.onmicrosoft.com`. Bu etki alanı kullanıcısı, bu HDInsight kümesinin Yöneticisi olacak.
+    - **Etki alanı parolası**: hizmet hesabının parolası.
     - **Kuruluş birimi**: HDInsight kümesiyle kullanmak istediğiniz OU 'nun ayırt edici adı, örneğin: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Bu OU yoksa, HDInsight kümesi hizmet hesabının ayrıcalıklarını kullanarak OU oluşturmayı dener.
-    - **LDAPS URL 'si**: Örneğin, `ldaps://contoso.onmicrosoft.com:636`.
-    - **Erişim Kullanıcı grubu**: Kullanıcıları kümeyle eşitlemek istediğiniz güvenlik grupları, örneğin: `HiveUsers`. Birden çok kullanıcı grubu belirtmek istiyorsanız, bunları noktalı virgül '; ' ile ayırın. ESP kümesi oluşturulmadan önce, gruplar dizinde bulunmalıdır.
+    - **LDAPS URL 'si**: örneğin, `ldaps://contoso.onmicrosoft.com:636`.
+    - **Erişim Kullanıcı grubu**: kullanıcıları kümeyle eşitlemek istediğiniz güvenlik grupları, örneğin: `HiveUsers`. Birden çok kullanıcı grubu belirtmek istiyorsanız, bunları noktalı virgül '; ' ile ayırın. ESP kümesi oluşturulmadan önce, gruplar dizinde bulunmalıdır.
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -108,13 +108,13 @@ En yeni özelliklerden yararlanmak için düzenli olarak en son HDInsight sürü
 1. Yedeklenen tüm geçici verileri içeri aktarın.
 1. Yeni kümeyi kullanarak işleri başlatın/işleme devam edin.
 
-Daha fazla bilgi için şu makaleye bakın: [HDInsight kümesini yeni bir sürüme yükseltin](../hdinsight-upgrade-cluster.md).
+Daha fazla bilgi için bkz: [HDInsight kümesini yeni bir sürüme yükseltme](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Küme işletim sistemlerini düzeltme eki uygulama
 
 Yönetilen bir Hadoop hizmeti olarak HDInsight, HDInsight kümeleri tarafından kullanılan VM 'lerin işletim sisteminde düzeltme eki uygulamayı üstlenir.
 
-Daha fazla bilgi için şu makaleye bakın: [HDInsight Için Işletim sistemi düzeltme eki uygulama](../hdinsight-os-patching.md).
+Daha fazla bilgi için bkz. [HDInsight Için Işletim sistemi düzeltme eki uygulama](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Geçiş sonrası
 

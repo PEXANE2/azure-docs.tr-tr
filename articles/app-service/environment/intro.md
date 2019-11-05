@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5a7374af71b262a72b680ac215f6960f961b3a15
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069232"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470616"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Ortamlarına giriş #
  
@@ -66,7 +66,7 @@ ASE için altyapıya ilişkin ödeme yapan ve ASE’nin boyutuna göre değişme
 
 ## <a name="virtual-network-support"></a>Sanal ağ desteği ##
 
-ASE özelliği, Azure App Service’in doğrudan bir müşterinin Azure resource manager sanal ağına dağıtımıdır. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağları ile ilgili SSS](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Bir ASE her zaman bir sanal ağda ve daha kesin bir şekilde bir sanal ağın alt ağında bulunur. Uygulamalarınıza ilişkin gelen ve giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerini kullanabilirsiniz.
+Ao özelliği, Azure App Service doğrudan bir müşterinin Azure Resource Manager sanal ağına bir dağıtımdır. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağları ile ilgili SSS](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Bir ASE her zaman bir sanal ağda ve daha kesin bir şekilde bir sanal ağın alt ağında bulunur. Uygulamalarınıza ilişkin gelen ve giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerini kullanabilirsiniz.
 
 ASE bir genel IP adresi ile İnternet’e yönelik veya sadece bir Azure iç yük dengeleyici (ILB) adresi ile iç ağa yönelik olabilir.
 
@@ -80,7 +80,7 @@ ASE 'lerin sanal ağlarla ve şirket içi ağlarla nasıl çalıştığı hakkı
 
 ## <a name="app-service-environment-v1"></a>App Service Ortamı v1 ##
 
-App Service Ortamı iki sürüme sahiptir: ASEv1 ve ASEv2. Yukarıdaki bilgiler ASEv2’yi temel alır. Bu bölümde ASEv1 ile ASEv2 arasındaki farklar gösterilmektedir. 
+App Service Ortamının iki sürümü vardır: ASEv1 ve ASEv2. Yukarıdaki bilgiler ASEv2’yi temel alır. Bu bölümde ASEv1 ile ASEv2 arasındaki farklar gösterilmektedir. 
 
 ASEv1’de tüm kaynakları el ile yönetmeniz gerekir. Buna ön uçlar, çalışanlar ve IP tabanlı SSL için kullanılan IP adresleri dahildir. App Service planınızın ölçeğini artırabilmeniz için, öncelikle planınızı barındırmak istediğiniz çalışan havuzunun ölçeğini artırmanız gerekir.
 
@@ -104,7 +104,7 @@ ASEv1, ASEv2’den farklı bir fiyatlandırma modeli kullanır. ASEv1’de ayrı
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md

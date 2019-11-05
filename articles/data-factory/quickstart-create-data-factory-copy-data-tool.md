@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: yexu
-ms.openlocfilehash: b330c6010ddb5401dbf9753c2ea91bfeedf35c3b
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 22ff4adfa3cbb8ead500e817620b9236fe32ed0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490851"
 ---
-# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı Başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
+# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Hızlı başlangıç: Veri Kopyalama aracını kullanarak veri kopyalama
 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -27,17 +27,22 @@ ms.locfileid: "70020028"
 Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Sonra, Veri Kopyalama aracını kullanarak Azure Blob depolama alanındaki bir klasörde bulunan verileri başka bir klasöre kopyalarsınız. 
 
 > [!NOTE]
-> Azure Data Factory'yi kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
+> Azure Data Factory kullanmaya yeni başlıyorsanız, bu hızlı başlangıçtaki işlemleri gerçekleştirmeden önce [Azure Data Factory'ye giriş](data-factory-introduction.md) konusuna bakın. 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-## <a name="create-a-data-factory"></a>Data factory oluştur
+## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 1. [Azure Portal](https://portal.azure.com) gidin. 
-1. Soldaki menüden **Kaynak oluşturun**’u, sonra **Analiz**’i ve ardından **Data Factory**’yi seçin. 
-   
-   ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. Azure portal menüsünde **kaynak oluştur**' u seçin.
+
+    ![Azure portal menüsünden kaynak oluşturma](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
+
+1. **Analiz**' i ve ardından **Data Factory**' yi seçin.
+
+   ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+
 1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
  
    Azure data factory adı *küresel olarak benzersiz* olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin **&lt; adınız&gt;ADFTutorialDataFactory**) ve veri fabrikası oluşturmayı yeniden deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
@@ -55,7 +60,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
    Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
 
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra, **Data Factory** sayfasını görürsünüz. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    
@@ -85,7 +90,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
 1. **Girdi dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
 
-   a. **Adföğreticisi/giriş** klasörüne gitmek için, git ' e tıklayın, sonra da **. txt** dosyasını seçin ve ardından **Seç**' e tıklayın. 
+   a. **Adföğreticisi/giriş** klasörüne gitmek için, git ' **e tıklayın,** sonra da **. txt** dosyasını seçin ve ardından **Seç**' e tıklayın. 
 
    d. Dosyayı olduğu gibi kopyalamak için **ikili kopya** onay kutusunu seçin ve ardından **İleri**' yi seçin. 
 
@@ -106,7 +111,7 @@ Bu hızlı başlangıçta Azure portalını kullanarak bir veri fabrikası oluş
 
     ![“Dağıtım tamamlandı” sayfası](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Uygulama **İzleyici** sekmesine geçer. Bu sekmede işlem hattının durumunu görürsünüz. Listeyi yenilemek için **Yenile**’yi seçin. 
+1. Uygulama **izleyici** sekmesine geçer. Bu sekmede işlem hattının durumunu görürsünüz. Listeyi yenilemek için **Yenile** 'yi seçin. 
     
 1. **Eylemler** sütununda **Etkinlik Çalıştırma İşlemlerini Görüntüle**’yi seçin. İşlem hattı, **Kopyalama** türünde tek bir etkinlik içerir. 
     

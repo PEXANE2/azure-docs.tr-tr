@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: daaced0aae595e839f2b2476562fc5caffb63640
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430044"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473939"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Azure AD koşullu erişimini benimseme
 
@@ -104,10 +104,10 @@ Ayrıca, Azure Active Directory ile tümleştirilmiş tüm hizmetlere erişimi k
 * Ilk olarak, [Azure çözümlerini uygulama-Ikinci sürüm.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
    * "Azure hizmetlerini kullanmaya başlayın ve bunları kuruluşunuzda nasıl uygulayacağınızı öğrenin. Azure AD koşullu erişimi, [Azure Active Directory dağıtımı ve eşitlenmesi](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml)bölümünde ele alınmıştır. "
 
-* Wiley- [Microsoft Azure altyapı hizmetleri](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
+* [Mimarlar için Wiley-Microsoft Azure altyapı hizmetleri: bulut çözümlerini tasarlama](https://www.wiley.com/Microsoft+Azure+Infrastructure+Services+for+Architects%3A+Designing+Cloud+Solutions-p-9781119596547)
    * "Microsoft Azure kullanan ortamları anlamak, değerlendirmek, dağıtmak ve sürdürmek için ihtiyacınız olan her şey."
 
-## <a name="white-papers"></a>Teknik makaleler
+## <a name="white-papers"></a>Teknik incelemeler
 
 * 18 Aralık 2018 ' de yayımlandı, [Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma](../authentication/concept-resilient-controls.md)
    * Bu belge, bir kuruluşun öngörülemeyen kesintiler sırasında kilitleme riskini azaltmak için esnekliği sağlamak üzere benimseyebileceği stratejiler hakkında rehberlik sağlar.

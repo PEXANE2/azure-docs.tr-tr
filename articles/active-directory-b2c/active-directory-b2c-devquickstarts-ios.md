@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326595"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469147"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: İOS uygulaması kullanarak oturum açma
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS uygulaması kullanarak oturum açma
 
 Microsoft kimlik platformu OAuth2 ve OpenID Connect gibi açık standartlar kullanır. Açık bir standart protokol kullanmak, hizmetlerimizle tümleştirilecek bir kitaplığı seçerken daha fazla geliştirici seçeneği sunar. Geliştiricilere Microsoft Identity platformu 'na bağlanan uygulamalar yazma konusunda yardımcı olmak için bu izlenecek yolu ve diğer diğerlerini sağladık. [RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) uygulayan çoğu kitaplık Microsoft Identity platformu 'na bağlanabilir.
 
@@ -37,7 +37,9 @@ Sonra, Azure AD B2C kiracınıza bir uygulamayı kaydedin. Bu, Azure AD 'nin uyg
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Daha sonraki bir adımda kullanmak üzere **uygulama kimliğini** kaydedin. Ardından, listeden uygulamayı seçin ve sonraki adımda kullanmak üzere **özel yeniden YÖNLENDIRME URI**'sini kaydedin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Daha sonraki bir adımda kullanmak üzere **uygulama (istemci) kimliğini** kaydedin.
+
+Ayrıca, daha sonraki bir adımda kullanmak üzere özel yeniden yönlendirme URI 'nizi kaydedin. Örneğin, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Kullanıcı akışlarınızı oluşturun
 Azure AD B2C, her kullanıcı deneyimi bir [Kullanıcı akışı](active-directory-b2c-reference-policies.md)tarafından tanımlanır. Bu uygulama bir kimlik deneyimi içerir: Birleşik bir oturum açma ve kaydolma. Kullanıcı akışını oluştururken şunları yaptığınızdan emin olun:
@@ -63,15 +65,15 @@ Bu örnek, [GitHub 'Daki IOS AppAuth projesi](https://github.com/openid/AppAuth-
 
 Yetkilendirme uç noktası ve belirteç uç noktası URI 'Lerini belirterek Azure AD B2C iletişim yapılandırabilirsiniz.  Bu URI 'Leri oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 * Kiracı KIMLIĞI (örneğin, contoso.onmicrosoft.com)
-* Kullanıcı akış adı (örneğin, B2C @ no__t-01 @ no__t-1SignUpIn)
+* Kullanıcı akış adı (örneğin, B2C\_1\_SignUpIn)
 
-Belirteç uç noktası URI 'SI, şu URL 'deki @ no__t-0ıD ve Policy @ no__t-1Name adlı kiracı değiştirilerek oluşturulabilir:
+Belirteç uç noktası URI 'SI, kiracı\_KIMLIĞI ve Ilke\_adı aşağıdaki URL 'de değiştirilerek oluşturulabilir:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-Yetkilendirme uç noktası URI 'SI, şu URL 'deki @ no__t-0ıD ve Policy @ no__t-1Name adlı kiracı değiştirilerek oluşturulabilir:
+Aşağıdaki URL 'deki kiracı\_KIMLIĞI ve Ilke\_adı değiştirilerek yetkilendirme uç noktası URI 'SI oluşturulabilir:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -85,7 +87,7 @@ OIDServiceConfiguration *configuration =
 // now we are ready to perform the auth request...
 ```
 
-### <a name="authorizing"></a>Yetkilendiriliyor
+### <a name="authorizing"></a>İşlemidir
 
 Yetkilendirme hizmeti yapılandırmasını yapılandırdıktan veya aldıktan sonra bir yetkilendirme isteği oluşturulabilir. İsteği oluşturmak için aşağıdaki bilgilere ihtiyacınız vardır:
 

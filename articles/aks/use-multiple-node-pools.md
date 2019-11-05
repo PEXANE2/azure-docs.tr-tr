@@ -7,91 +7,45 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
-ms.translationtype: MT
+ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212257"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472452"
 ---
-# <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
 Azure Kubernetes hizmeti 'nde (AKS), aynı yapılandırmanın düğümleri *düğüm havuzlarında*birlikte gruplandırılır. Bu düğüm havuzları, uygulamalarınızı çalıştıran temel VM 'Leri içerir. Bir *varsayılan düğüm havuzu*oluşturan bir aks kümesi oluşturduğunuzda, ilk düğüm sayısı ve boyutu (SKU) tanımlanmıştır. Farklı işlem veya depolama taleplerine sahip uygulamaları desteklemek için ek düğüm havuzları oluşturabilirsiniz. Örneğin, işlem yoğunluklu uygulamalar için GPU 'Lar sağlamak veya yüksek performanslı SSD depolamaya erişmek için bu ek düğüm havuzlarını kullanın.
 
 > [!NOTE]
-> Bu özellik, birden çok düğüm havuzunun oluşturulması ve yönetilmesi üzerinde daha yüksek denetim sağlar. Sonuç olarak, oluşturma/güncelleştirme/silme için ayrı komutlar gerekir. Daha önce, managedcluster `az aks update` API 'yi aracılığıyla veya kullanarak `az aks create` işlem yapın ve denetim düzlemini ve tek bir düğüm havuzunu değiştirmek için tek seçenektir. Bu özellik, agentpool API 'si aracılığıyla aracı havuzları için ayarlanan ayrı bir işlem sunar ve tek bir düğüm `az aks nodepool` havuzunda işlemleri yürütmek için komut kümesinin kullanılmasını gerektirir.
+> Bu özellik, birden çok düğüm havuzunun oluşturulması ve yönetilmesi üzerinde daha yüksek denetim sağlar. Sonuç olarak, oluşturma/güncelleştirme/silme için ayrı komutlar gerekir. Daha önce `az aks create` veya `az aks update` aracılığıyla küme işlemleri managedCluster API 'sini kullandı ve denetim düzlemini ve tek bir düğüm havuzunu değiştirmek için tek seçenektir. Bu özellik, agentPool API aracılığıyla aracı havuzları için ayarlanan ayrı bir işlem sunar ve tek bir düğüm havuzunda işlemleri yürütmek için `az aks nodepool` komutunun kullanılmasını gerektirir.
 
-Bu makalede bir AKS kümesinde birden çok düğüm havuzu oluşturma ve yönetme konusu gösterilmektedir. Bu özellik şu anda önizleme sürümündedir.
-
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
->
-> * [AKS destek Ilkeleri][aks-support-policies]
-> * [Azure desteği SSS][aks-faq]
+Bu makalede bir AKS kümesinde birden çok düğüm havuzu oluşturma ve yönetme konusu gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][install-azure-cli].
-
-### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
-
-Birden çok düğüm havuzu kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.16 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-multiple-node-pool-feature-provider"></a>Birden çok düğüm havuzu Özellik sağlayıcısını Kaydet
-
-Birden çok düğüm havuzu kullanan bir AKS kümesi oluşturmak için, öncelikle aboneliğinizde bir özellik bayrağını etkinleştirin. Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak *Multiagentpoolpreview* Özellik bayrağını kaydedin:
-
-> [!CAUTION]
-> Bir abonelik üzerinde bir özelliği kaydettiğinizde, o özelliği şu anda kaydedemezsiniz. Bazı Önizleme özelliklerini etkinleştirdikten sonra, daha sonra abonelikte oluşturulan tüm AKS kümeleri için varsayılanlar kullanılabilir. Üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek ve geri bildirim toplamak için ayrı bir abonelik kullanın.
-
-```azurecli-interactive
-az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-```
-
-> [!NOTE]
-> *Multiagentpoolpreview* 'ı başarıyla kaydettikten sonra oluşturduğunuz aks kümesi, bu önizleme kümesi deneyimini kullanır. Düzenli, tam olarak desteklenen kümeler oluşturmaya devam etmek için üretim aboneliklerinde Önizleme özelliklerini etkinleştirmeyin. Önizleme özelliklerini test etmek için ayrı bir test veya geliştirme Azure aboneliği kullanın.
-
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-```
-
-Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+Azure CLı sürüm 2.0.76 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][install-azure-cli].
 
 ## <a name="limitations"></a>Sınırlamalar
 
 Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken aşağıdaki sınırlamalar geçerlidir:
 
-* Birden çok düğüm havuzu yalnızca, aboneliğiniz için *Multiagentpoolpreview* özelliğini başarıyla kaydettikten sonra oluşturulan kümeler için kullanılabilir. Bu özellik başarıyla kaydedilmeden önce oluşturulan mevcut bir AKS kümesiyle düğüm havuzları ekleyemez veya yönetemezsiniz.
 * Varsayılan (ilk) düğüm havuzunu silemezsiniz.
 * HTTP uygulama yönlendirme eklentisi kullanılamıyor.
 * Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez veya silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
 * Düğüm havuzunun adı küçük harfle başlamalı ve yalnızca alfasayısal karakterler içerebilir. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
-
-Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
-
 * AKS kümesinde en fazla sekiz düğüm havuzu olabilir.
 * AKS kümesi, bu sekiz düğüm havuzunda en fazla 400 düğüme sahip olabilir.
 * Tüm düğüm havuzları aynı alt ağda bulunmalıdır.
+* AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
 Başlamak için, tek düğümlü havuz ile bir AKS kümesi oluşturun. Aşağıdaki örnek, *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu oluşturmak için [az Group Create][az-group-create] komutunu kullanır. *Myakscluster* adlı bir aks kümesi daha sonra [az aks Create][az-aks-create] komutu kullanılarak oluşturulur. Bir *--Kubernetes-* *1.13.10* , aşağıdaki adımlarda bir düğüm havuzunun nasıl güncelleştiğine göstermek için kullanılır. [Desteklenen Kubernetes sürümünü][supported-versions]belirtebilirsiniz.
 
-Birden çok düğüm havuzu kullanılırken standart SKU yük dengeleyicinin kullanılması kesinlikle önerilir. AKS ile standart yük dengeleyiciler kullanma hakkında daha fazla bilgi edinmek için [Bu belgeyi](load-balancer-standard.md) okuyun.
+> [!NOTE]
+> Birden çok düğüm havuzu kullanılırken *temel* Load balanacer SKU 'su desteklenmez. Varsayılan olarak, AKS kümeleri *Standart* loadbalacer SKU 'su ile oluşturulur.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -113,7 +67,7 @@ Kümenin oluşturulması birkaç dakika sürer.
 > [!NOTE]
 > Kümenizin güvenilir bir şekilde çalışmasını sağlamak için, bu düğüm havuzunda önemli sistem hizmetleri çalıştığı için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
 
-Küme kullanıma hazırsa, şu ile `kubectl`kullanılacak küme kimlik bilgilerini almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın:
+Küme hazırlanıyor, `kubectl`ile kullanmak üzere küme kimlik bilgilerini almak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -178,7 +132,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri, bir hata döndürülürse, aynı anda gerçekleşemez. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme kılavuzumuzdan](https://aka.ms/aks-pending-upgrade)bu konuda daha fazla bilgi edinin.
 
-Aks kümeniz ilk adımda ilk kez oluşturulduğunda, bir `--kubernetes-version` *1.13.10* belirtildiğinde. Bu, Kubernetes sürümünü hem denetim düzlemi hem de varsayılan düğüm havuzu için ayarlar. Bu bölümdeki komutlar, tek bir belirli düğüm havuzunun nasıl yükseltileceğini açıklamaktadır.
+AKS kümeniz ilk adımda ilk kez oluşturulduğunda, bir *1.13.10* `--kubernetes-version` belirtildi. Bu, Kubernetes sürümünü hem denetim düzlemi hem de varsayılan düğüm havuzu için ayarlar. Bu bölümdeki komutlar, tek bir belirli düğüm havuzunun nasıl yükseltileceğini açıklamaktadır.
 
 Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltme arasındaki ilişki [aşağıdaki bölümde](#upgrade-a-cluster-control-plane-with-multiple-node-pools)açıklanmıştır.
 
@@ -231,7 +185,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Düğümlerin belirtilen sürüme yükseltilmesi birkaç dakika sürer.
 
-En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Varsayılan davranışı `az aks upgrade` , bu hizalamayı başarmak için tüm düğüm havuzlarını denetim düzlemesiyle birlikte yükseltmekte. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
+En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. `az aks upgrade` varsayılan davranışı, bu hizalamayı başarmak için tüm düğüm havuzlarını denetim düzlemesiyle birlikte yükseltmekte. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Birden çok düğümlü havuzlarla küme denetim düzlemi 'ni yükseltme
 
@@ -244,20 +198,20 @@ En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı K
 
 AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahiptir. Birincisi, bir denetim düzlemi Kubernetes sürümüdür. İkincisi, Kubernetes sürümü olan bir aracı havuzudur. Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
 
-1. Denetim düzlemi 'nin yükseltilmesi için kullanılması gerekir`az aks upgrade`
+* Denetim düzlemi 'nin yükseltilmesi için `az aks upgrade` kullanmanız gerekir
    * Bu, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir
-   * Bayrağıyla`--control-plane-only` geçerek `az aks upgrade` yalnızca küme denetim düzlemi yükseltilir ve ilişkili düğüm havuzlarının hiçbiri değiştirilmez. Bayrak `--control-plane-only` , **aks-Preview uzantısı v 0.4.16** veya üzeri sürümlerde kullanılabilir.
-1. Tek tek düğüm havuzlarının yükseltilmesi için kullanılması gerekir`az aks nodepool upgrade`
+   * `az aks upgrade` `--control-plane-only` bayrağıyla geçirerek yalnızca küme denetim düzlemi yükseltilir ve ilişkili düğüm havuzlarının hiçbiri değiştirilmez.
+* Tek tek düğüm havuzlarının yükseltilmesi için `az aks nodepool upgrade` kullanılması gerekir
    * Bu, yalnızca belirtilen Kubernetes sürümü ile hedef düğüm havuzunu yükseltir
 
 Düğüm havuzlarının tuttuğu Kubernetes sürümleri arasındaki ilişki Ayrıca bir kural kümesine uymalıdır.
 
-1. Denetim düzlemi veya düğüm havuzu Kubernetes sürümünü indirgeyemezsiniz.
-1. Düğüm havuzu Kubernetes sürümü belirtilmemişse, davranış kullanılan istemciye bağlıdır. ARM şablonundaki bildirim için, düğüm havuzu için tanımlanan mevcut sürüm, hiçbir değer ayarlanmamışsa denetim düzlemi sürümü kullanılır.
-1. Belirli bir zamanda bir denetim düzlemi veya düğüm havuzu yükseltebilir ya da ölçeklendirebilirsiniz, her iki işlemi de aynı anda gönderemezsiniz.
-1. Düğüm havuzu Kubernetes sürümü, denetim düzlemi ile aynı ana sürüm olmalıdır.
-1. Düğüm havuzu Kubernetes sürümü en fazla iki (2) alt sürüm olan denetim düzleden daha düşük, hiçbir zaman daha az olabilir.
-1. Düğüm havuzu, hiçbir Kubernetes düzeltme eki veya denetim düzlemine eşit veya daha küçük olabilir.
+* Denetim düzlemi veya düğüm havuzu Kubernetes sürümünü indirgeyemezsiniz.
+* Düğüm havuzu Kubernetes sürümü belirtilmemişse, davranış kullanılan istemciye bağlıdır. Kaynak Yöneticisi şablondaki bildirim için, düğüm havuzu için tanımlanan mevcut sürüm, hiçbir değer ayarlanmamışsa denetim düzlemi sürümü kullanılır.
+* Belirli bir zamanda bir denetim düzlemi veya düğüm havuzu yükseltebilir ya da ölçeklendirebilirsiniz, her iki işlemi de aynı anda gönderemezsiniz.
+* Düğüm havuzu Kubernetes sürümü, denetim düzlemi ile aynı ana sürüm olmalıdır.
+* Düğüm havuzu Kubernetes sürümü en fazla iki (2) alt sürüm olan denetim düzleden daha düşük, hiçbir zaman daha az olabilir.
+* Düğüm havuzu, hiçbir Kubernetes düzeltme eki veya denetim düzlemine eşit veya daha küçük olabilir.
 
 ## <a name="scale-a-node-pool-manually"></a>Düğüm havuzunu el ile ölçeklendirme
 
@@ -313,7 +267,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Küme otomatik Scaler 'ı etkinleştirerek belirli bir düğüm havuzunu otomatik olarak ölçeklendirin
 
-AKS, düğüm havuzlarını [küme](cluster-autoscaler.md)otomatik olarak adlandırılan bir özellik ile otomatik olarak ölçeklendirmek için önizleme aşamasında ayrı bir özellik sunar. Bu özellik, düğüm havuzu başına benzersiz minimum ve maksimum ölçek sayısı olan düğüm havuzu başına etkinleştirilebilen bir AKS eklentisi. [Düğüm havuzu başına küme otomatik Scaler 'ı kullanmayı](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)öğrenin.
+AKS, düğüm havuzlarını [küme](cluster-autoscaler.md)otomatik olarak ölçeklendirme adlı bir özellik ile otomatik olarak ölçeklendirmeye yönelik ayrı bir özellik sunar. Bu özellik, düğüm havuzu başına benzersiz ve en fazla ölçek sayısı olan düğüm havuzu başına etkinleştirilebilir. [Düğüm havuzu başına küme otomatik Scaler 'ı kullanmayı](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)öğrenin.
 
 ## <a name="delete-a-node-pool"></a>Düğüm havuzunu silme
 
@@ -429,11 +383,11 @@ aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.10
 Kubernetes Zamanlayıcı, düğümlerde hangi iş yüklerinin çalıştırılacağını kısıtlamak için tatları ve toleranları kullanabilir.
 
 * Yalnızca belirli yığınların zamanlanabileceğini gösteren bir düğüme bir **taınt** uygulanır.
-* Daha sonra bir **tolerans** , düğümün Taint 'e kabul etmesine izin veren bir pod öğesine uygulanır.
+* Daha sonra bir **tolerans** , düğümün Taint *'e kabul* etmesine izin veren bir pod öğesine uygulanır.
 
 Gelişmiş Kubernetes zamanlanmış özelliklerini kullanma hakkında daha fazla bilgi için bkz. [AKS 'de gelişmiş Zamanlayıcı özellikleri Için en iyi yöntemler][taints-tolerations]
 
-Bu örnekte, [kubectl taınt node][kubectl-taint] komutunu kullanarak GPU tabanlı düğümünüz için bir Taint uygulayın. Önceki `kubectl get nodes` komutun çıktısından GPU tabanlı düğümünüz adını belirtin. Taınt bir anahtar olarak uygulanır *: değer* ve ardından zamanlama seçeneği. Aşağıdaki örnek *SKU = GPU* çiftini kullanır ve pod 'yi tanımlar, aksi takdirde *NoSchedule* özelliğine sahiptir:
+Bu örnekte, [kubectl taınt node][kubectl-taint] komutunu kullanarak GPU tabanlı düğümünüz için bir Taint uygulayın. Önceki `kubectl get nodes` komutunun çıktısından GPU tabanlı düğümünüz adını belirtin. Taınt bir anahtar olarak uygulanır *: değer* ve ardından zamanlama seçeneği. Aşağıdaki örnek *SKU = GPU* çiftini kullanır ve pod 'yi tanımlar, aksi takdirde *NoSchedule* özelliğine sahiptir:
 
 ```console
 kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -441,7 +395,7 @@ kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 
 Aşağıdaki temel örnek YAML bildirimi, Kubernetes Scheduler 'ın GPU tabanlı düğümde bir NGıNX Pod çalıştırmasına izin vermek için bir tolerans kullanır. Daha uygun olan, ancak veri kümesine karşı bir TensorFlow işi çalıştırmak için yoğun zaman tüketen bir örnek için bkz. [AKS üzerinde işlem yoğunluğu yoğun iş yükleri Için GPU 'Ları kullanma][gpu-cluster].
 
-Adlı `gpu-toleration.yaml` bir dosya oluşturun ve aşağıdaki örnekteki YAML 'yi kopyalayın:
+`gpu-toleration.yaml` adlı bir dosya oluşturun ve aşağıdaki örnekte bulunan YAML 'yi kopyalayın:
 
 ```yaml
 apiVersion: v1
@@ -466,7 +420,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Şu `kubectl apply -f gpu-toleration.yaml` komutu kullanarak Pod 'u zamanlayın:
+`kubectl apply -f gpu-toleration.yaml` komutunu kullanarak Pod 'u zamanlayın:
 
 ```console
 kubectl apply -f gpu-toleration.yaml
@@ -497,7 +451,7 @@ Yalnızca bu taınt uygulanmış olan bir düğüm, *gpunodepool*içindeki düğ
 
 Kaynakları oluşturmak ve yönetmek için bir Azure Resource Manager şablonu kullandığınızda, genellikle şablonunuzda ayarları güncelleştirebilir ve kaynağı güncelleştirmek için yeniden dağıtabilirsiniz. AKS içindeki düğüm havuzlarıyla, AKS kümesi oluşturulduktan sonra ilk düğüm havuzu profili güncelleştirilemiyor. Bu davranış, mevcut bir Kaynak Yöneticisi şablonunu güncelleştiremeyeceğiniz, düğüm havuzlarında değişiklik yapamayacağı ve yeniden dağımeyeceğiniz anlamına gelir. Bunun yerine, yalnızca mevcut bir AKS kümesi için aracı havuzlarını güncelleştiren ayrı bir Kaynak Yöneticisi şablonu oluşturmanız gerekir.
 
-Gibi bir şablon `aks-agentpools.json` oluşturun ve aşağıdaki örnek bildirimi yapıştırın. Bu örnek şablon aşağıdaki ayarları yapılandırır:
+`aks-agentpools.json` gibi bir şablon oluşturun ve aşağıdaki örnek bildirimi yapıştırın. Bu örnek şablon aşağıdaki ayarları yapılandırır:
 
 * *Myagentpool* adlı *Linux* aracı havuzunu üç düğüm çalıştıracak şekilde güncelleştirir.
 * Düğüm havuzundaki düğümleri Kubernetes sürüm *1.13.10*çalıştıracak şekilde ayarlar.
@@ -593,7 +547,7 @@ AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak b
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergeleri izleyerek bir Azure Resource Manager şablonu dağıtın ve agentPoolProfiles üzerinde "Enablenodepublicıp" Boole değeri özelliğini ekleyin. Bunu `true` varsayılan olarak olarak ayarla ayarı belirtilmemiş olarak `false` ayarlanır. Bu yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
+Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergeleri izleyerek bir Azure Resource Manager şablonu dağıtın ve agentPoolProfiles üzerinde "Enablenodepublicıp" Boole değeri özelliğini ekleyin. Bunu varsayılan olarak `true` olarak ayarlayın, belirtilmemişse `false` olarak ayarlanır. Bu yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
 
 ```
 "agentPoolProfiles":[  
@@ -637,11 +591,6 @@ Windows Server kapsayıcısı düğüm havuzlarını oluşturmak ve kullanmak i�
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
@@ -659,7 +608,3 @@ Windows Server kapsayıcısı düğüm havuzlarını oluşturmak ve kullanmak i�
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update

@@ -1,27 +1,27 @@
 ---
-title: Mevcut bir Azure veri paylaşımının önizlemesine veri kümeleri ekleme
+title: Mevcut bir Azure veri paylaşımında veri kümeleri ekleme
 description: Azure veri paylaşımında var olan bir veri paylaşımında veri kümelerini nasıl ekleyeceğinizi ve aynı alıcılara nasıl paylaşacağınızı öğrenin.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 8cc61307ae6664889f60469cc3ca65c840c43b86
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 00c96950565b077e65f84e2d8b4977092df5e317
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169187"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490552"
 ---
-# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Azure veri paylaşımında mevcut bir paylaşıma veri kümesi ekleme Önizleme
+# <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Azure veri paylaşımında var olan bir paylaşıma veri kümeleri ekleme
 
-Bu makalede, Azure veri paylaşımının önizlemesi kullanılarak önceden var olan bir veri paylaşımında veri kümelerinin nasıl ekleneceği açıklanmaktadır. Bu, yeni bir paylaşma oluşturmak zorunda kalmadan aynı alıcılara daha fazla veri paylaşmanızı sağlar.
+Bu makalede, Azure veri paylaşımının kullanıldığı önceden var olan bir veri paylaşımında veri kümelerinin nasıl ekleneceği açıklanmaktadır. Bu, yeni bir paylaşma oluşturmak zorunda kalmadan aynı alıcılara daha fazla veri paylaşmanızı sağlar.
 
 Bir paylaşma oluştururken veri kümeleri ekleme hakkında daha fazla bilgi için bkz. [Share Data](share-your-data.md) öğreticisi.
 
 ## <a name="navigate-to-a-sent-data-share"></a>Gönderilen veri paylaşımında gezin
 
-Azure veri paylaşımında Önizleme ' de, gönderilen paylaşımınıza gidin ve **veri kümeleri** sekmesini seçin. daha fazla veri kümesi eklemek Için **+ veri kümesi Ekle** düğmesine tıklayın.
+Azure veri paylaşımında, gönderilen paylaşımınıza gidin ve **veri kümeleri** sekmesini seçin. daha fazla veri kümesi eklemek Için **+ veri kümesi Ekle** düğmesine tıklayın.
 
 ![Veri kümesi Ekle](./media/how-to/how-to-add-datasets/add-datasets.png)
 

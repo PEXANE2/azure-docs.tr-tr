@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176663"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472217"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management geliştirici portalına genel bakış
 
@@ -25,7 +25,10 @@ Geliştirici portalı, API 'lerinizin belgelerinde otomatik olarak oluşturulan 
 
 Bu makalede, API Management 'de geliştirici portalının şirket içinde barındırılan ve yönetilen sürümleri arasındaki farklar açıklanmaktadır. Ayrıca, mimarisini açıklar ve sık sorulan soruların yanıtlarını sağlar.
 
-> [!IMPORTANT]
+> [!WARNING]
+> Yeni geliştirici portalı şu anda API Management Hizmetleri 'ne alındı.
+> Hizmetiniz yeni oluşturulmuşsa veya bir geliştirici katmanı hizmeti ise, en son sürüme sahip olmanız gerekir. Aksi takdirde sorunlarla karşılaşabilirsiniz (örneğin, yayımlama işlevselliğiyle). Özellik dağıtımı Pazartesi 11 Kasım 2019 ' de tamamlanır.
+>
 > [Önizleme sürümünden geliştirici portalının genel kullanıma sunulan sürümüne geçiş yapmayı öğrenin](#preview-to-ga) .
 
 ![API Management geliştirici portalı](media/api-management-howto-developer-portal/cover.png)

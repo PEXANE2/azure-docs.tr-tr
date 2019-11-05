@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073990"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470130"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service uygulamaları izleme
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) , [Azure Portal](https://portal.azure.com)Web Apps, MOBIL arka uçlar ve API uygulamaları için yerleşik izleme işlevleri sağlar.
@@ -43,7 +43,7 @@ Uygulama *temel*, *Standart*veya *Premium* bir planda barındırılıyorsa, kull
 | **CPU (kısa)** | Bu uygulama için, 5 dakikalık bir aralıkta izin verilen CPU miktarı. Bu kota her beş dakikada bir sıfırlanır. |
 | **CPU (gün)** | Bu uygulama için bir günde izin verilen toplam CPU miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
 | **Bellek** | Bu uygulama için izin verilen toplam bellek miktarı. |
-| **Bant genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
+| **Bant Genişliği** | Bu uygulama için günde izin verilen giden bant genişliğinin toplam miktarı. Bu kota, her 24 saatte bir, gece yarısı UTC 'yi sıfırlar. |
 | **Biçimlendiri** | İzin verilen toplam depolama miktarı. |
 
 *Temel*, *Standart*ve *Premium* planlarında barındırılan uygulamalar Için geçerli olan tek Kota dosya sistemi 'dir.
@@ -70,7 +70,7 @@ Bir uygulama için kullanılabilir ölçümler şunlardır:
 
 | Ölçüm | Açıklama |
 | --- | --- |
-| **Ortalama yanıt süresi** | Milisaniye cinsinden, uygulamanın istek görmesi için geçen ortalama süre. |
+| **Ortalama yanıt süresi** | Uygulama için geçen ortalama süre (saniye cinsinden). |
 | **Ortalama bellek çalışma kümesi** | Uygulama tarafından, megabayt (MIB) cinsinden kullanılan ortalama bellek miktarı. |
 | **Bağlantılar** | Korumalı alan içindeki ilişkili yuva sayısı (W3wp. exe ve onun alt işlemi).  Bağlama yuvası, bind ()/Connect () API 'Leri çağırarak ve bir yuva CloseHandle ()/Closesocket () ile kapatılana kadar kalır. |
 | **CPU süresi** | Uygulama tarafından saniye cinsinden tüketilen CPU miktarı. Bu ölçüm hakkında daha fazla bilgi için bkz. [CPU saati vs CPU yüzdesi](#cpu-time-vs-cpu-percentage). |
@@ -124,9 +124,9 @@ App Service planı için kullanılabilir ölçümler şunlardır:
 
 CPU kullanımını yansıtan iki ölçüm vardır:
 
-**CPU süresi**: Ücretsiz veya paylaşılan planlarda barındırılan uygulamalar için yararlıdır, çünkü kotalarından biri uygulama tarafından kullanılan CPU dakikalarında tanımlanmıştır.
+**CPU süresi**: ücretsiz veya paylaşılan planlarda barındırılan uygulamalar için yararlıdır, çünkü kotalarından biri uygulama tarafından kullanılan CPU dakikalarında tanımlanmıştır.
 
-**CPU yüzdesi**: Temel, standart ve Premium planlarında barındırılan uygulamalar için, ölçeklendirilebilir olduklarından faydalıdır. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
+**CPU yüzdesi**: temel, standart ve Premium planlarında barındırılan uygulamalar için kullanışlıdır, çünkü bu kişiler dışarı ölçeklenebilirler. CPU yüzdesi, tüm örneklerde genel kullanım kullanımının iyi bir göstergesidir.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Ölçüm ayrıntı düzeyi ve bekletme ilkesi
 Bir uygulama ve App Service planı için ölçümler, aşağıdaki granuya ve bekletme ilkeleriyle birlikte günlüğe kaydedilir ve hizmet tarafından toplanır:
@@ -140,13 +140,13 @@ Bir uygulamayı etkileyen çeşitli kotalar ve ölçümlerin durumunu gözden ge
 
 ![Azure portal kota grafiği][quotas]
 
-Kotaları bulmak için, **Ayarlar** > **Kotalar**' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
+Kotaları bulmak için **ayarlar** > **Kotalar**' ı seçin. Grafik üzerinde şunları gözden geçirebilirsiniz: 
 1. Kota adı.
 1. Sıfırlama aralığı.
 1. Geçerli sınırı.
 1. Geçerli değeri.
 
-![Azure Portal][metrics] ölçüm grafiği ölçümleri doğrudan **kaynak** sayfasından erişebilirsiniz. Grafiği özelleştirmek için: 
+Azure portal][metrics] ölçüm grafiği ![doğrudan **kaynak** sayfasından ölçümlere erişebilirsiniz. Grafiği özelleştirmek için: 
 1. Grafiği seçin.
 1. **Grafiği Düzenle ' yi**seçin.
 1. **Zaman aralığını**düzenleyin.

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935203"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988780"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
 
@@ -64,7 +64,7 @@ Azure IoT Explorer, [ıot Tak ve kullan cihazlarınızla](#iot-plug-and-play-dev
 - Cihaz [özellikleriyle](#properties)çalışın.
 - Çağrı cihazı [komutları](#commands).
 
-## <a name="azure-iot-hub"></a>Azure IoT Hub
+## <a name="azure-iot-hub"></a>Azure IoT Hub'ı
 
 IoT Hub, bulutta barındırılan ve IoT uygulamanız ve yönettiği cihazlar arasındaki iki yönlü iletişim için merkezi ileti hub’ı görevi gören, yönetilen bir hizmettir. [Iot Tak ve kullan cihazları](#iot-plug-and-play-device) , IoT Hub 'ına bağlanabilir. IoT çözümü, şunları sağlamak için bir IoT Hub 'ı kullanır:
 
@@ -117,7 +117,7 @@ Bir [cihaz geliştiricisi](#device-developer) , [IoT Tak ve kullan cihazının](
 
 ## <a name="device-provisioning-service"></a>Cihaz sağlama hizmeti
 
-[Azure IoT Central](#azure-iot-central) , tüm cihaz kaydı ve bağlantılarını yönetmek Için cihaz sağlama hizmetini kullanır. Daha fazla bilgi için bkz. [Azure IoT Central cihaz bağlantısı](../iot-central/core/concepts-connectivity-pnp.md). Cihaz kaydı ve IoT Hub tabanlı IoT çözümünüze bağlantı yönetmek için cihaz sağlama hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti ile cihazları sağlama](../iot-dps/about-iot-dps.md).
+[Azure IoT Central](#azure-iot-central) , tüm cihaz kaydı ve bağlantılarını yönetmek Için cihaz sağlama hizmetini kullanır. Daha fazla bilgi için bkz. [Azure IoT Central cihaz bağlantısı](../iot-central/core/overview-iot-central-get-connected-pnp.md). Cihaz kaydı ve IoT Hub tabanlı IoT çözümünüze bağlantı yönetmek için cihaz sağlama hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti ile cihazları sağlama](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Cihaz kaydı
 

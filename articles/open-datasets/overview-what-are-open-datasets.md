@@ -1,22 +1,22 @@
 ---
 title: Açık veri kümeleri nelerdir? Seçkin ortak veri kümeleri
-titleSuffix: Azure Open Datasets (preview)
-description: Makine öğrenimi ve analiz çözümlerinde kullanıma hazırlamış olan genel etki alanındaki Azure açık veri kümeleri (Önizleme), seçkin veri kümeleri hakkında bilgi edinin. Veri kümeleri, öngörülü çözümleri zenginleştirmenize yardımcı olmak için hava durumu, Census, tatiller ve konum gibi genel verileri içerir.
+titleSuffix: Azure Open Datasets
+description: Tahmine dayalı çözümlerin zenginleştirildiği Azure açık veri kümeleri, hava durumu, Census, tatiller ve konum gibi genel etki alanından seçkin veri kümeleri hakkında bilgi edinin.
 ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213584"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496595"
 ---
-# <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Azure açık veri kümeleri (Önizleme) nedir ve nasıl kullanılabilir?
+# <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Azure açık veri kümeleri nedir ve bunları nasıl kullanabilirsiniz?
 
-[Azure açık veri](https://azure.microsoft.com/services/open-datasets/) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Açık veri kümeleri bulutta Microsoft Azure ve Azure Databricks, Machine Learning hizmeti ve Machine Learning Studio için hazır. Ayrıca, veri kümelerine API 'Ler aracılığıyla erişebilir ve bunları Power BI ve Azure Data Factory gibi diğer ürünlerde kullanabilirsiniz.
+[Azure açık veri](https://azure.microsoft.com/services/open-datasets/) kümeleri, daha doğru modeller için makine öğrenimi çözümlerine senaryoya özgü özellikler eklemek için kullanabileceğiniz, seçkin ortak veri kümeleridir. Açık veri kümeleri bulutta Microsoft Azure ve Azure Machine Learning tümleşiktir ve Azure Databricks ve Machine Learning Studio (klasik) ile kolayca kullanılabilir. Ayrıca, veri kümelerine API 'Ler aracılığıyla erişebilir ve bunları Power BI ve Azure Data Factory gibi diğer ürünlerde kullanabilirsiniz.
 
 Veri kümeleri, makine öğrenimi modellerini ve zenginleştirme çözümlerini eğitmenize yardımcı olan hava durumu, Census, tatiller, genel güvenlik ve konum için genel etki alanı verilerini içerir. Ayrıca, Azure açık veri kümelerinde ortak veri kümelerinizi de paylaşabilirsiniz. 
 
@@ -47,7 +47,7 @@ Aşağıda, kullanılabilir veri kümeleri örnekleri verilmiştir.
 ## <a name="access-to-datasets"></a>Veri kümelerine erişim  
 Azure hesabıyla, kod kullanarak veya Azure hizmet arabirimi aracılığıyla açık veri kümelerine erişebilirsiniz. Veriler, Machine Learning çözümünüzde kullanılmak üzere Azure bulut işlem kaynaklarıyla birlikte bulunur.  
 
-Açık veri kümeleri, verileri Azure Machine Learning hizmetine ve Azure Databricks bağlamak için kullanabileceğiniz Azure Notebooks ve Azure Databricks Not defterleri sağlar. Veri kümelerine bir Python SDK üzerinden de erişilebilir. 
+Açık veri kümeleri Azure Machine Learning kullanıcı arabirimi ve SDK aracılığıyla kullanılabilir. Açık veri kümeleri Ayrıca, Azure Machine Learning ve Azure Databricks veri bağlamak için kullanabileceğiniz Azure Notebooks ve Azure Databricks Not defterleri de sağlar. Veri kümelerine bir Python SDK üzerinden de erişilebilir. 
 
 Ancak açık veri kümelerine erişmeniz için bir Azure hesabınızın olması gerekmez; Bunlarla veya Spark olmadan herhangi bir Python ortamından erişebilirsiniz.
 
@@ -57,5 +57,5 @@ Ancak açık veri kümelerine erişmeniz için bir Azure hesabınızın olması 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Örnek Not defteri](samples.md)
-* [Öğretici: NY TAXI verileri ile gerileme modelleme](tutorial-opendatasets-automl.md)
+* [Öğretici: NY TAXI verileriyle gerileme modelleme](tutorial-opendatasets-automl.md)
 * [Açık veri kümeleri için Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)

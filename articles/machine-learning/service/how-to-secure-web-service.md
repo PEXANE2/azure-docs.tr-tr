@@ -1,5 +1,5 @@
 ---
-title: SSL kullanarak Web hizmetlerini güvenli hale getirme
+title: SSL kullanarak güvenli hale getirme
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin çok güvenli bir şekilde HTTPS 'yi nasıl etkinleştireceğinizi öğrenin.
 services: machine-learning
@@ -11,47 +11,48 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39b79e5729945a346e9cf022fb93e23da9fa7824
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053556"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489546"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek için SSL kullanma
+# <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Azure Machine Learning ile güvenli hale getirmek için SSL kullanma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlama gösterilmektedir.
+Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir güvenliğini nasıl güvenli hale getirmek gösterilmektedir.
 
-Web hizmetlerine erişimi kısıtlamak ve istemcilerin gönderebileceği verileri güvenli hale getirmek için [https](https://en.wikipedia.org/wiki/HTTPS) 'yi kullanırsınız. HTTPS, iki arasındaki iletişimleri şifreleyerek bir istemci ve Web hizmeti arasındaki iletişimin güvenliğini sağlamaya yardımcı olur. Şifreleme, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanır. TLS, bazen TLS 'nin öncülü olan *Güvenli Yuva Katmanı* (SSL) olarak adlandırılır.
+' A erişimi kısıtlamak ve istemcilerin gönderme verilerini korumak için [https](https://en.wikipedia.org/wiki/HTTPS) 'yi kullanırsınız. HTTPS, iki arasındaki iletişimleri şifreleyerek istemci ile arasında iletişimin güvenli hale getirilmesine yardımcı olur. Şifreleme, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanır. TLS, bazen TLS 'nin öncülü olan *Güvenli Yuva Katmanı* (SSL) olarak adlandırılır.
 
 > [!TIP]
-> Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, Web hizmetinizin *TLS*kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
+> Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, *TLS*kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
 
 TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikaları*kullanır. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi topic [ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
 
 > [!WARNING]
-> Web hizmetiniz için HTTPS kullanmıyorsanız, hizmete gönderilen ve hizmetten gönderilen veriler Internet 'te başkaları tarafından görülebilir.
+> Sizin için HTTPS kullanmıyorsanız, hizmete gönderilen ve hizmetten gelen veriler Internet 'te başkaları tarafından görülebilir.
 >
 > HTTPS Ayrıca istemcinin bağlandığı sunucunun orijinalliğini doğrulamasını sağlar. Bu özellik [, istemcileri ortadaki adam](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) saldırılarına karşı korur.
 
-Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
+Bu, güvenliğini sağlamak için genel bir işlemdir:
 
 1. Bir etki alanı adı alın.
 
 2. Dijital bir sertifika alın.
 
-3. Web hizmetini SSL etkinken dağıtın veya güncelleştirin.
+3. SSL ile dağıtma veya güncelleştirme etkin.
 
-4. DNS 'nizi Web hizmetine işaret etmek üzere güncelleştirin.
+4. DNS 'nizi ' ye işaret etmek için güncelleştirin.
 
 > [!IMPORTANT]
 > Azure Kubernetes Service 'e (AKS) dağıtım yapıyorsanız, kendi sertifikanızı satın alabilir veya Microsoft tarafından sağlanmış bir sertifikayı kullanabilirsiniz. Microsoft 'tan bir sertifika kullanıyorsanız, bir etki alanı adı veya SSL sertifikası almanız gerekmez. Daha fazla bilgi için bu makalenin [SSL ve dağıtımı etkinleştirme](#enable) bölümüne bakın.
 
-[Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde Web hizmetlerini güvenli hale getirmeye yönelik küçük farklılıklar vardır.
+[Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde güvenli hale getirilçalışırken küçük farklılıklar vardır.
 
 ## <a name="get-a-domain-name"></a>Etki alanı adı Al
 
-Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com) Web hizmetinizi barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
+Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com), ' i barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
 ## <a name="get-an-ssl-certificate"></a>SSL sertifikası al
 
@@ -60,7 +61,7 @@ SSL sertifikası almanın pek çok yolu vardır (dijital sertifika). En yaygın 
 * Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
 * Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
-Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
+Bir sertifika istediğinizde, için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
 > [!TIP]
 > Sertifika yetkilisi sertifikayı ve anahtarı pek kodlu dosyalar olarak sağlayamıyorum, biçimi değiştirmek için [OpenSSL](https://www.openssl.org/) gibi bir yardımcı program kullanabilirsiniz.
@@ -75,7 +76,7 @@ SSL etkinken hizmeti dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* p
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS ve Field üzerinde dağıtma-programlanabilir kapı dizisi (FPGA)
 
   > [!NOTE]
-  > Bu bölümdeki bilgiler, görsel arabirim için güvenli bir Web hizmeti dağıttığınızda de geçerlidir. Python SDK 'yı kullanmayı bilmiyorsanız bkz. [Python için Azure MACHINE LEARNING SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+  > Bu bölümdeki bilgiler, tasarımcı için güvenli bir şekilde dağıttığınızda de geçerlidir. Python SDK 'yı kullanmayı bilmiyorsanız bkz. [Python için Azure MACHINE LEARNING SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan bir küme ekleyebilirsiniz. Küme oluşturma veya ekleme hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
   
@@ -136,7 +137,7 @@ Daha fazla bilgi için bkz. [Aciwebservice. deploy_configuration ()](https://doc
 
 ## <a name="update-your-dns"></a>DNS 'nizi güncelleştirme
 
-Sonra, DNS 'nizi Web hizmetine işaret etmek için güncelleştirmeniz gerekir.
+Sonra, DNS 'nizi ' a işaret etmek için güncelleştirmeniz gerekir.
 
 + **Container Instances için:**
 
@@ -151,7 +152,7 @@ Sonra, DNS 'nizi Web hizmetine işaret etmek için güncelleştirmeniz gerekir.
 
   Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
 
-  [![Azure Machine Learning: SSL ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: SSL ile güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>SSL sertifikasını güncelleştirme
 
@@ -247,6 +248,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdakileri nasıl yapacağınızı öğrenin:
-+ [Bir Web hizmeti olarak dağıtılan makine öğrenimi modelini kullanma](how-to-consume-web-service.md)
+Şunları nasıl yapacağınızı öğrenin:
++ [Bir makine öğrenimi modelini şu şekilde dağıtıldı](how-to-consume-web-service.md)
 + [Bir Azure sanal ağı içinde denemeleri ve çıkarımı güvenle çalıştırın](how-to-enable-virtual-network.md)

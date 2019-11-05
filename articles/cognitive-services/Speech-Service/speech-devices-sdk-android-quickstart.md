@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Android konuşma hizmetinde konuşma cihazları SDK 'sını çalıştırma"
+title: "Hızlı başlangıç: Android konuşma hizmetinde konuşma cihazları SDK 'sını çalıştırma"
 titleSuffix: Azure Cognitive Services
 description: Android konuşma cihazları SDK 'Sı ile çalışmaya başlama önkoşulları ve yönergeleri.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f7039b525cf0d52670b8d76a24d8ec3ea5115772
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: acb041ce29d0340686a09764158063ad8d000c7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491304"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Hızlı Başlangıç: Android 'de konuşma cihazları SDK örnek uygulamasını çalıştırma
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Hızlı başlangıç: Android 'de konuşma cihazları SDK örnek uygulamasını çalıştırma
 
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya bir konuşma [dökümü](conversation-transcription-service.md) cihazı olarak kullanmak için Android Için konuşma cihazları SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
 Bu kılavuzda, bir konuşma Hizmetleri kaynağına sahip bir Azure bilişsel [Hizmetler](get-started.md) hesabı gerekir. Bir hesabınız yoksa, abonelik anahtarı almak için [ücretsiz deneme sürümünü](https://azure.microsoft.com/try/cognitive-services/) kullanabilirsiniz.
 
-Örnek uygulama için kaynak kodu konuşma cihaz SDK'sı ile dahil edilir. Ayrıca [github'da](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Örnek uygulamanın kaynak kodu, konuşma cihazları SDK 'sına dahildir. [GitHub 'da da kullanılabilir](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,48 +41,48 @@ Konuşma cihazları SDK 'sını kullanmaya başlamadan önce şunları yapmanız
 
 * Kullanıcı dıklarından amaçları (veya eylemleri) belirlemek için konuşma hizmetlerini kullanmayı planlıyorsanız, bir [Language Understanding hizmeti (Luu)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) aboneliğine sahip olmanız gerekir. Lua ve amaç tanıma hakkında daha fazla bilgi edinmek için bkz. [lusıs C#Ile konuşma amaçlarını tanıma ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-    Yapabilecekleriniz [basit LUIS modeline oluşturma](https://docs.microsoft.com/azure/cognitive-services/luis/) veya LUIS modeline LUIS example.json örneği kullanın. LUIS modeline kullanılabilir örnek [konuşma cihazları SDK indirme sitesi](https://aka.ms/sdsdk-luis). Modelinizin JSON dosyasını karşıya yüklemek için [LUIS portalı](https://www.luis.ai/home)seçin **alma yeni uygulama**ve ardından JSON dosyasını seçin.
+    [Basit BIR luya modeli oluşturabilir](https://docs.microsoft.com/azure/cognitive-services/luis/) veya örnek Luo MODELI, Luu-example. JSON kullanabilirsiniz. Örnek LUSıS modeli, [konuşma cihazları SDK 'sı indirme sitesinden](https://aka.ms/sdsdk-luis)edinilebilir. Modelinizin JSON dosyasını [Lue portalına](https://www.luis.ai/home)yüklemek için **Yeni uygulama al**' ı seçin ve ardından json dosyasını seçin.
 
-* Yükleme [Android Studio](https://developer.android.com/studio/) ve [Vysor](https://vysor.io/download/) PC'nizde.
+* [Android Studio](https://developer.android.com/studio/) ve [vysor](https://vysor.io/download/) 'u bilgisayarınıza yükleyip.
 
 ## <a name="set-up-the-device"></a>Cihazı ayarlama
 
-1. Bilgisayarınızda Vysor başlatın.
+1. Bilgisayarınızda Vysveya ' i başlatın.
 
     ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1. Cihazınızı altında listelenmelidir **bir cihaz seçin**. Seçin **görünümü** cihazın yanındaki düğmesi.
+1. Cihazınızın **cihaz Seç**altında listelenmesi gerekir. Cihazın yanındaki **Görünüm** düğmesini seçin.
 
-1. Klasör simgesini seçerek kablosuz ağınıza bağlayın ve ardından **ayarları** > **WLAN**.
+1. Klasör simgesini seçerek kablosuz ağınıza bağlanın ve sonra da **WLAN** > **Ayarlar** ' ı seçin.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
     > [!NOTE]
-    > Şirketiniz kendi Wi-Fi sisteme cihazlar bağlama hakkında ilkeler varsa, MAC adresini alın ve şirketinizin Wi-Fi'a bağlayın konusunda BT departmanınıza başvurun gerekir.
+    > Şirketinizde cihazları Wi-Fi sistemine bağlama ilkeleri varsa, MAC adresini edinmeniz ve şirketinizin Wi-Fi ' e nasıl bağlayacağına ilişkin BT bölümünüze başvurmanız gerekir.
     >
-    > Dev Seti MAC adresini bulmak için dev Seti masaüstünde dosya klasör simgesini seçin.
+    > Dev Kit MAC adresini bulmak için, Dev Kit 'in masaüstündeki dosya klasörü simgesini seçin.
     >
     >  ![Vysor dosya klasörü](media/speech-devices-sdk/qsg-10.png)
     >
-    > Seçin **ayarları**. "İçin mac adresi" için arama yapın ve ardından **Mac adresi** > **Gelişmiş WLAN**. İletişim kutusunun altına görünen MAC adresi yazın.
+    > **Ayarlar**' ı seçin. "MAC adresi" araması yapın ve ardından **GELIŞMIŞ WLAN** > **Mac adresi** ' ni seçin. İletişim kutusunun alt kısmına yakın görünen MAC adresini yazın.
     >
     > ![Vysor MAC adresi](media/speech-devices-sdk/qsg-11.png)
     >
-    > Bazı şirketler, cihazın ne kadar kalabileceği üzerinde bir zaman sınırı olabilir, Wi-Fi sisteme bağlı. Wi-Fi sisteminizle dev Seti'nın kayıt belirli bir gün sayısından sonra genişletmek gerekebilir.
+    > Bazı şirketlerin, bir cihazın Wi-Fi sistemine ne kadar süreyle bağlı kalabileceğini gösteren bir zaman sınırı olabilir. Belirli bir gün sayısından sonra Dev Kit 'in kaydını Wi-Fi sisteminizle genişletmeniz gerekebilir.
 
 ## <a name="run-the-sample-application"></a>Örnek uygulamayı çalıştırın
 
 Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve kurun:
 
-1. Android Studio'yu başlatın.
+1. Android Studio başlatın.
 
 1. **Var olan Android Studio projesini aç**'ı seçin.
 
-   ![Android Studio - mevcut bir projeyi Aç](media/speech-devices-sdk/qsg-5.png)
+   ![Android Studio var olan bir projeyi açın](media/speech-devices-sdk/qsg-5.png)
 
-1. İçin C:\SDSDK\Android-Sample-Release\example gidin. Seçin **Tamam** örnek projesini açın.
+1. C:\SDSDK\Android-Sample-Release\example. adresine gidin Örnek projeyi açmak için **Tamam ' ı** seçin.
 
-1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanıma denemek istiyorsanız, ayrıca ekleyin, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarı ve uygulama kimliği
+1. Konuşma abonelik anahtarınızı kaynak koda ekleyin. Amaç tanımayı denemek istiyorsanız, [Language Understanding hizmeti](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonelik anahtarınızı ve uygulama kimliğinizi da ekleyin.
 
    Konuşma ve LUSıS için, bilgileriniz MainActivity. Java içine gider:
 
@@ -102,22 +102,22 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Varsayılan Uyandırma sözcüğünü (anahtar) "Bilgisayar" dir. Sağlanan diğer birini de deneyebilirsiniz "Machine" veya "Yardımcısı" gibi sözcükleri Uyandırma. Bu alternatif Uyandırma sözcükler için kaynak dosyaları konuşma cihazları SDK'da anahtar sözcüğü klasörü arasındadır. Örneğin, C:\SDSDK\Android-Sample-Release\keyword\Computer Uyandırma için "Bilgisayar" word kullanılan dosyaları içerir.
+1. Varsayılan anahtar sözcüğü "bilgisayar" dır. "Makine" veya "yardımcı" gibi, belirtilen diğer anahtar sözcüklerden birini de deneyebilirsiniz. Bu alternatif anahtar sözcüklerin kaynak dosyaları, anahtar sözcük klasöründe konuşma cihazları SDK 'snda bulunur. Örneğin, C:\SDSDK\Android-Sample-Release\keyword\Computer "bilgisayar" anahtar sözcüğü için kullanılan dosyaları içerir.
 
    > [!TIP]
-   > Ayrıca [özel Uyandırma word oluşturmak](speech-devices-sdk-create-kws.md).
+   > Ayrıca, [özel bir anahtar sözcük oluşturabilirsiniz](speech-devices-sdk-create-kws.md).
 
-    Yeni bir uyandırma sözcüğü kullanmak için ' de `MainActivity.java`aşağıdaki iki satırı güncelleştirin ve uyandırma Word paketini uygulamanıza kopyalayın. Örneğin, KWS-Machine. zip uyanma Word paketinden ' Machine ' uyandırma sözcüğünü kullanmak için:
+    Yeni bir anahtar sözcük kullanmak için `MainActivity.java`aşağıdaki iki satırı güncelleştirin ve anahtar sözcük paketini uygulamanıza kopyalayın. Örneğin, KWS-Machine. zip anahtar sözcük paketinden ' Machine ' anahtar sözcüğünü kullanmak için:
 
-   * Uyandırma sözcüğü paketini "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" klasörüne kopyalayın.
-   * `MainActivity.java` Anahtar sözcüğüyle ve paket adıyla güncelleştirin:
+   * Anahtar sözcük paketini "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" klasörüne kopyalayın.
+   * `MainActivity.java` anahtar sözcüğüyle ve paket adıyla güncelleştirin:
 
      ```java
      private static final String Keyword = "Machine";
      private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
-1. Mikrofon dizi geometri ayarları içeren aşağıdaki satırları güncelleştirin:
+1. Mikrofon dizisi geometrisi ayarlarını içeren aşağıdaki satırları güncelleştirin:
 
    ```java
    private static final String DeviceGeometry = "Circular6+1";
@@ -128,24 +128,24 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
 
    |Değişken|Anlamı|Kullanılabilir değerler|
    |--------|-------|----------------|
-   |`DeviceGeometry`|Fiziksel MIC yapılandırma|Döngüsel Geliştirme Seti için: `Circular6+1` |
-   |||Doğrusal Geliştirme Seti için: `Linear4`|
-   |`SelectedGeometry`|Yazılım MIC yapılandırması|Tüm mikrofonlardan kullanan bir döngüsel Geliştirme Seti için: `Circular6+1`|
-   |||Dört mikrofonlardan kullanan bir döngüsel Geliştirme Seti için: `Circular3+1`|
-   |||Tüm mikrofonlardan kullanan bir doğrusal Geliştirme Seti için: `Linear4`|
-   |||İki mikrofonlardan kullanan bir doğrusal Geliştirme Seti için: `Linear2`|
+   |`DeviceGeometry`|Fiziksel mik yapılandırması|Döngüsel bir geliştirici seti için: `Circular6+1` |
+   |||Doğrusal bir geliştirici seti için: `Linear4`|
+   |`SelectedGeometry`|Yazılım mik yapılandırması|Tüm mikler kullanan bir döngüsel geliştirici seti için: `Circular6+1`|
+   |||Dört miks kullanan dairesel bir geliştirici seti için: `Circular3+1`|
+   |||Tüm mikler kullanan doğrusal bir geliştirici seti için: `Linear4`|
+   |||İki mikü kullanan doğrusal bir geliştirici seti için: `Linear2`|
 
-1. Uygulamayı derlemek için **çalıştırma** menüsünde **'uygulamayı' Çalıştır**. **Dağıtım hedefini seçin** iletişim kutusu görüntülenir.
+1. Uygulamayı derlemek için, **Çalıştır** menüsünde **' uygulama ' Çalıştır '** ı seçin. **Dağıtım hedefi seç** iletişim kutusu görüntülenir.
 
-1. Cihazınızı seçin ve ardından **Tamam** cihaza uygulamayı dağıtmak için.
+1. Cihazınızı seçin ve ardından uygulamayı cihaza dağıtmak için **Tamam** ' ı seçin.
 
-    ![Dağıtım hedefi iletişim kutusunu seçin](media/speech-devices-sdk/qsg-7.png)
+    ![Dağıtım hedefi seç iletişim kutusu](media/speech-devices-sdk/qsg-7.png)
 
-1. Konuşma cihaz SDK'sı örnek bir uygulama başlar ve şu seçeneklerini gösterir:
+1. Konuşma cihazları SDK örnek uygulaması başlatılır ve aşağıdaki seçenekleri görüntüler:
 
-   ![Örnek konuşma cihaz SDK'sı örnek uygulama ve seçenekleri](media/speech-devices-sdk/qsg-8.png)
+   ![Örnek konuşma cihazları SDK örnek uygulama ve Seçenekler](media/speech-devices-sdk/qsg-8.png)
 
-1. Yeni konuşma dökümü tanıtımı ' nı deneyin. ' Start Session ' ile bir kopyasını başlatın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa cihazdaki bir dosyaya `/video/participants.properties` yerleştirilebilir. Ses imzasını oluşturmak için, [konuşmalar (SDK)](how-to-use-conversation-transcription-service.md)konusuna bakın.
+1. Yeni konuşma dökümü tanıtımı ' nı deneyin. ' Start Session ' ile bir kopyasını başlatın. Varsayılan olarak, herkes bir konudır. Ancak, katılımcının ses imzaları varsa, cihazdaki bir dosyaya `/video/participants.properties` yerleştirebilirsiniz. Ses imzasını oluşturmak için, [konuşmalar (SDK)](how-to-use-conversation-transcription-service.md)konusuna bakın.
 
    ![Demo konuşma dökümü uygulaması](media/speech-devices-sdk/qsg-15.png)
 
@@ -160,9 +160,9 @@ Geliştirme Seti kurulumunuzu doğrulamak için örnek uygulamayı derleyin ve k
    ```
 
    > [!NOTE]
-   > Bu komut, Android Studio yüklemesinin bir `adb.exe`parçası olan Android Debug Bridge kullanır. Bu araç C:\Users bulunur\[kullanıcı adı] \AppData\Local\Android\Sdk\platform araçları. Bu dizin çağırmak daha kullanışlı hale getirmek için yola ekleyebilirsiniz `adb`. Aksi takdirde, yüklemenizin adb.exe çağıran her komut için tam yolunu belirtmeniz gerekir `adb`.
+   > Bu komut Android Studio yüklemesinin parçası olan `adb.exe`Android Debug Bridge kullanır. Bu araç, C:\Users\[Kullanıcı adı] \AppData\Local\Android\Sdk\platform-tools. içinde bulunur Bu dizini, `adb`çağrılmasını daha kolay hale getirmek için yolunuza ekleyebilirsiniz. Aksi takdirde, `adb`çağıran her komutta ADB. exe yüklemenizin tam yolunu belirtmeniz gerekir.
    >
-   > Bir hata `no devices/emulators found` görürseniz, USB kablonuzun bağlı olduğunu ve yüksek kaliteli bir kablonun kullanıldığından emin olun.
+   > `no devices/emulators found` bir hata görürseniz, USB kablonuz bağlı olduğundan ve yüksek kaliteli bir kablonun kullanıldığından emin olun.
    >
 
 ## <a name="next-steps"></a>Sonraki adımlar

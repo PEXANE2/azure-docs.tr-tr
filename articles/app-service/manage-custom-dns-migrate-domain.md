@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679808"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470356"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure App Service geçirme
 
@@ -48,15 +48,15 @@ Bu nasıl yapılır:
 
 ### <a name="create-domain-verification-record"></a>Etki alanı doğrulama kaydı oluştur
 
-Etki alanı sahipliğini doğrulamak için bir TXT kaydı ekleyin. TXT kaydı, _awverify. &lt;subdomain >_ _&lt;appname >. azurewebsites. net_' e eşlenir. 
+Etki alanı sahipliğini doğrulamak için bir TXT kaydı ekleyin. TXT kaydı, _awverify.&lt;alt etki alanından >_ _&lt;AppName >. azurewebsites. net_' e eşlenir. 
 
 İhtiyacınız olan TXT kaydı, geçirmek istediğiniz DNS kaydına bağlıdır. Örnekler için aşağıdaki tabloya bakın (`@` genellikle kök etki alanını temsil eder):
 
 | DNS kaydı örneği | TXT ana bilgisayar | TXT değeri |
 | - | - | - |
-| \@ (kök) | _awverify_ | _&lt;appname >. azurewebsites. net_ |
-| www (Sub) | _awverify. www_ | _&lt;appname >. azurewebsites. net_ |
-| \* (joker karakter) | _awverify. \*_ | _&lt;appname >. azurewebsites. net_ |
+| \@ (kök) | _awverify_ | _&lt;AppName >. azurewebsites. net_ |
+| www (Sub) | _awverify. www_ | _&lt;AppName >. azurewebsites. net_ |
+| \* (joker karakter) | _awverify.\*_ | _&lt;AppName >. azurewebsites. net_ |
 
 DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türünü aklınızda bulabilirsiniz. App Service CNAME ve bir kayıtlardan eşleştirmeleri destekler.
 
@@ -77,7 +77,7 @@ DNS kayıtları sayfanızda, geçirmek istediğiniz DNS adının kayıt türün�
 
 ![Konak adı ekleme](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-@No__t_0 gibi, TXT kaydını eklediğiniz tam etki alanı adını yazın. Joker (\*. contoso.com gibi) bir etki alanı için joker karakterle eşleşen herhangi bir DNS adını kullanabilirsiniz. 
+`www.contoso.com`gibi, TXT kaydını eklediğiniz tam etki alanı adını yazın. Joker (\*. contoso.com gibi) bir etki alanı için joker karakterle eşleşen herhangi bir DNS adını kullanabilirsiniz. 
 
 **Doğrula**'yı seçin.
 
@@ -117,13 +117,13 @@ Sağ üst köşedeki **X** ' i seçerek **konak adı Ekle** sayfasını kapatın
 
 Etki alanı sağlayıcınızın DNS kayıtları sayfasında yeniden eşlemek için DNS kaydını seçin.
 
-@No__t_0 kök etki alanı örneği için, aşağıdaki tabloda yer alan örnekler gibi A veya CNAME kaydını yeniden eşleyin: 
+`contoso.com` kök etki alanı örneği için, aşağıdaki tabloda yer alan örnekler gibi A veya CNAME kaydını yeniden eşleyin: 
 
-| FQDN örneği | Kayıt türü | Ana bilgisayar | Değer |
+| FQDN örneği | Kayıt türü | Host | Değer |
 | - | - | - | - |
 | contoso.com (kök) | A | `@` | [Uygulamanın IP adresini kopyalama](#info) bölümünden IP adresi |
-| www \.contoso. com (Sub) | CNAME | `www` | _&lt;appname >. azurewebsites. net_ |
-| \*. contoso.com (joker karakter) | CNAME | _\*_ | _&lt;appname >. azurewebsites. net_ |
+| www\.contoso.com (Sub) | CNAME | `www` | _&lt;AppName >. azurewebsites. net_ |
+| \*. contoso.com (joker karakter) | CNAME | _\*_ | _&lt;AppName >. azurewebsites. net_ |
 
 Ayarlarınızı kaydedin.
 
@@ -140,4 +140,4 @@ Uygulamanızın dağıtım birimini FTP/S URL 'sinin etki alanı adına bakarak 
 App Service için özel bir SSL sertifikasını bağlamayı öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure App Service'e mevcut özel bir SSL sertifikasını bağlama](app-service-web-tutorial-custom-ssl.md)
+> [SSL sertifikasını Azure App Service bağlama](configure-ssl-bindings.md)

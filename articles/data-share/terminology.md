@@ -1,21 +1,21 @@
 ---
-title: Azure veri paylaşma önizleme terminolojisi
+title: Azure Veri Paylaşımı terminolojisi
 description: Azure veri paylaşımında (veri sağlayıcısı, veri tüketicisi, veri paylaşma, paylaşma aboneliği, anlık görüntü, davet, alıcı) kullanılan kaynakları anlatmak için kullanılan genel terimler hakkında bilgi edinin.
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166282"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468546"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Azure veri paylaşma önizleme kavramları 
+# <a name="azure-data-share-concepts"></a>Azure veri paylaşımında kavramlar 
 
-Azure veri paylaşımı önizlemesi, veri paylaşımıyla ilgili bazı yeni terminoloji sunmaktadır. Bu makalede, hizmet boyunca kullanılan bazı sık kullanılan terimler açıklanmaktadır. 
+Azure veri paylaşımı, veri paylaşımıyla ilgili bazı yeni terminoloji sunmaktadır. Bu makalede, hizmet boyunca kullanılan bazı sık kullanılan terimler açıklanmaktadır. 
 
 ## <a name="data-provider"></a>Veri sağlayıcısı
 
@@ -35,7 +35,7 @@ Bir veri tüketicisi bir veri sağlayıcısından veri paylaşımının davetini
 
 Bir veri tüketicisi, **alınan paylaşımlara** giderek ve alınan paylaşımlarının durumunu görüntüleyerek etkin bir paylaşım aboneliğine sahip olup olmadığını denetleyebilir. 
 
-## <a name="snapshot"></a>Görüntüye
+## <a name="snapshot"></a>Anlık Görüntü
 
 Veri Paylaşma davetini kabul ettiğinde bir veri tüketicisi tarafından bir anlık görüntü oluşturulabilir. Bir daveti kabul ettiğinde, bunlarla paylaşılan verilerin tam anlık görüntüsünü tetikleyebilirler. Anlık görüntü, veri tüketicisinin anlık görüntüyü oluşturduğu zaman içindeki bir kopyasıdır. 
 
@@ -57,11 +57,10 @@ Bir veri sağlayıcısı, kabul edilmediyse gönderildikten sonra bir davetiyeyi
 
 Davetler günde beş kata kadar yeniden kullanılabilir. 
 
-## <a name="recipient"></a>Alı
+## <a name="recipient"></a>Alıcı
 
 Alıcı, bir veri paylaşımında davetiye alan kişidir. Genellikle, bir veri sağlayıcısı, oluşturdukları veri paylaşımında alıcıları ekler. Bir davetin alıcısı daveti kabul ettiğinde bir veri tüketicisi haline gelir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin.
-

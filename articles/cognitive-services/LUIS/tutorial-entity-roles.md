@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Rollerle bağlamsal veriler-LUSıS'
+title: 'Öğretici: rollerle bağlama verisi-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Bağlama göre ilgili verileri bulun. Örneğin, bir bina ya da ofisten başka bir bina ya da ofise fiziksel olarak taşınmada çıkış ve varış konumları.
 services: cognitive-services
@@ -9,22 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308048"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488736"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: Bağlamsal olarak ilgili verileri bir utterden Ayıkla
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: bağlamsal olarak ilgili verileri bir söylenişi 'ten ayıklayın
 
 Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için kaynak ve hedef konumlar. Her iki veri parçası de gerekli olabilir ve birbirleriyle ilişkilidir.  
 
 Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir. 
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
@@ -75,7 +77,7 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
     |San Diego 'dan Bellevue 'e doğru Steve Stançe aktarma |
     |SSAS şehrinde Tanner Thompson 'yı kaldırın ve Chicago 'ye SHIFT 'e gidin|
 
-    [![MoveEmployee 'ın yeni utkolları olan LUSıS ekran görüntüsü](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    [MOVEIN 'ın, MoveEmployee amacına yönelik yeni dıklarla birlikte ![ekran görüntüsü](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Önceden oluşturulmuş varlık geographyV2 Ekle
 
@@ -83,12 +85,12 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
 1. Sol taraftaki gezinmede **varlıklar** ' ı seçin.
 
-1. **Önceden oluşturulmuş varlık Ekle**' yi seçin ve `geo` ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğunda öğesini seçin. 
+1. **Önceden oluşturulmuş varlık Ekle**' yi seçin ve ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğunda `geo` ' ı seçin. 
 
     ![Uygulamaya geographyV2 önceden oluşturulmuş varlık ekleme](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Onay kutusunu seçin ve **bitti**' yi seçin.
 1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2** seçin. 
-1. İki rol `Origin`ekleyin, ve `Destination`. 
+1. İki rol ekleyin, `Origin`ve `Destination`. 
 
     ![Önceden oluşturulmuş varlığa roller ekleme](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Sol taraftaki gezinmede **amaçları** seçin, sonra **Moveemployeetocity** hedefini seçin. Şehir adlarının **geographyV2**önceden oluşturulmuş varlıkla etiketlendirildiğine dikkat edin.
@@ -113,7 +115,7 @@ Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Adres çubuğundaki URL'nin sonuna gidip `Please move Carl Chamerlin from Tampa to Portland` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. Bu söylenişi, etiketlendirmelerdeki herhangi biriyle aynı değildir ve bu sayede iyi bir test olur ve ayıklanan varlıkla ilgili `MoveEmployee` amacı döndürmelidir.
+1. Adres çubuğundaki URL'nin sonuna gidip `Please move Carl Chamerlin from Tampa to Portland` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. Bu söylenişi, etiketlendirmelerdeki herhangi biriyle aynı değildir ve bu nedenle iyi bir test olur ve ayıklanan varlıkla `MoveEmployee` hedefini döndürmelidir.
 
     ```json
     {

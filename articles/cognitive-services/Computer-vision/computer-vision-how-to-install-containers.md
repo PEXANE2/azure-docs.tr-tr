@@ -8,42 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 7c137572fadd07254343b7b4c34b5a63534b9d88
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2b6918e9b334ee8a906a477ee1c3e7e4d86e8551
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936994"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481781"
 ---
-# <a name="install-and-run-computer-vision-containers"></a>Görüntü İşleme kapsayıcıları yükleyip çalıştırma
+# <a name="install-and-run-read-containers"></a>Okuma kapsayıcıları yükleyip çalıştırma
 
 Kapsayıcılar, Görüntü İşleme API 'Lerini kendi ortamınızda çalıştırmanızı sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için harika. Bu makalede bir Görüntü İşleme kapsayıcısını indirme, yükleme ve çalıştırma hakkında bilgi edineceksiniz.
 
-Görüntü İşleme için iki Docker kapsayıcısı mevcuttur: *metin tanıma* ve *okuma*. *Metin tanıma* kapsayıcısı, çeşitli nesnelerin görüntülerini, alış irsaliyeleri, posterler ve iş kartları gibi farklı yüzeylerle ve arka planlarla *algılayıp ayıklamanızı* sağlar. Ancak *okuma* kapsayıcısı, ancak Ayrıca resimlerde *el yazısı metinleri* ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar. Daha fazla bilgi için bkz. [okuma API 'si](concept-recognizing-text.md#read-api) belgeleri.
-
-> [!IMPORTANT]
-> Metin Tanıma kapsayıcısı, okuma kapsayıcısının yararına kullanım dışı bırakılıyor. Okuma kapsayıcısı, Metin Tanıma kapsayıcısının öncülü olan bir üst kümesidir ve tüketiciler, okuma kapsayıcısını kullanarak geçiş yapılmalıdır. Her iki kapsayıcı yalnızca Ingilizce ile çalışır.
+Tek bir Docker kapsayıcısı olan *Read*, görüntü işleme için kullanılabilir. *Okuma* kapsayıcısı, çeşitli nesnelerin görüntülerini, alış irsaliyeleri, posterler ve iş kartları gibi farklı yüzeylerle ve arka planlarla *algılayıp ayıklamanızı* sağlar. Ayrıca, *okuma* kapsayıcısı resimlerde *el yazısı metın* ALGıLAR ve PDF, TIFF ve çok sayfalı dosya desteği sağlar. Daha fazla bilgi için bkz. [okuma API 'si](concept-recognizing-text.md#read-api) belgeleri.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız gerekir:
 
 |Gerekli|Amaç|
 |--|--|
 |Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz. [Docker genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
-|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel `docker` komutlarının bir bilgisine sahip olmanız gerekir.| 
+|Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarından ve temel `docker` komutlarının bilgisine sahip olmanız gerekir.| 
 |Görüntü İşleme kaynağı |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>Uç nokta URI 'SI olan bir Azure **görüntü işleme** kaynağı ve ilişkili API anahtarı. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir.<br><br>**{API_KEY}** : **anahtarlar** sayfasında kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **genel bakış** sayfasında belirtilen bitiş noktası|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteme
-
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Ana bilgisayar
 
@@ -53,29 +46,15 @@ Kapsayıcıları kullanmadan önce aşağıdaki önkoşulları karşılamanız g
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="get-the-container-image-with-docker-pull"></a>@No__t ile kapsayıcı görüntüsünü al-0
-
-# <a name="readtabread"></a>[Read](#tab/read)
+## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` kapsayıcı görüntüsünü al
 
 Okuma için kapsayıcı görüntüleri kullanılabilir.
 
 | Kapsayıcı | Container Registry/depo/görüntü adı |
 |-----------|------------|
-| Oku | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
-
-# <a name="recognize-texttabrecognize-text"></a>[Metin Tanıma](#tab/recognize-text)
-
-Metin Tanıma için kapsayıcı görüntüleri kullanılabilir.
-
-| Kapsayıcı | Container Registry/depo/görüntü adı |
-|-----------|------------|
-| Metin Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
-
-***
+| Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
 Bir kapsayıcı görüntüsünü indirmek için [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanın.
-
-# <a name="readtabread"></a>[Read](#tab/read)
 
 ### <a name="docker-pull-for-the-read-container"></a>Okuma kapsayıcısı için Docker çekme
 
@@ -83,32 +62,20 @@ Bir kapsayıcı görüntüsünü indirmek için [`docker pull`](https://docs.doc
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 ```
 
-# <a name="recognize-texttabrecognize-text"></a>[Metin Tanıma](#tab/recognize-text)
-
-### <a name="docker-pull-for-the-recognize-text-container"></a>Metin Tanıma kapsayıcısı için Docker Pull
-
-```bash
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
-
-***
-
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 ## <a name="how-to-use-the-container"></a>Kapsayıcıyı kullanma
 
 Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. @No__t-1 komutuna daha fazla [örnek](computer-vision-resource-container-config.md) kullanılabilir. 
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. `docker run` komutuna daha fazla [örnek](computer-vision-resource-container-config.md) kullanılabilir. 
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint). 
 
-## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı @no__t ile çalıştırma-0
+## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı `docker run` ile çalıştırma
 
-Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. @No__t-1 ve `{API_KEY}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` ve `{API_KEY}` değerlerini alma hakkında ayrıntılar için [gerekli parametreleri toplama](#gathering-required-parameters) bölümüne bakın.
 
-@No__t-1 komutunun [örnekleri](computer-vision-resource-container-config.md#example-docker-run-commands) mevcuttur.
-
-# <a name="readtabread"></a>[Read](#tab/read)
+`docker run` komut [örnekleri](computer-vision-resource-container-config.md#example-docker-run-commands) mevcuttur.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -125,29 +92,10 @@ Bu komut:
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
-# <a name="recognize-texttabrecognize-text"></a>[Metin Tanıma](#tab/recognize-text)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-Bu komut:
-
-* Kapsayıcı görüntüsünden Metin Tanıma kapsayıcısını çalıştırır.
-* 8 CPU çekirdeği ve 16 gigabayt (GB) bellek ayırır.
-* TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
-* Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
-
-***
-
-@No__t-1 komutuna daha fazla [örnek](./computer-vision-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
+`docker run` komutuna daha fazla [örnek](./computer-vision-resource-container-config.md#example-docker-run-commands) kullanılabilir. 
 
 > [!IMPORTANT]
-> Kapsayıcıyı çalıştırmak için `Eula`, `Billing` ve `ApiKey` seçeneklerinin belirtilmesi gerekir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
+> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -159,19 +107,17 @@ Bu komut:
 
 Kapsayıcı, REST tabanlı sorgu tahmin uç noktası API 'Leri sağlar. 
 
-Kapsayıcı API 'Leri için `http://localhost:5000` olan Konağı kullanın.
-
-# <a name="readtabread"></a>[Read](#tab/read)
+Kapsayıcı API 'Leri için `http://localhost:5000`konak kullanın.
 
 ### <a name="asynchronous-read"></a>Zaman uyumsuz okuma
 
-Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için, `POST /vision/v2.0/read/core/asyncBatchAnalyze` ve `GET /vision/v2.0/read/operations/{operationId}` işlemlerini konser içinde kullanabilirsiniz. Zaman uyumsuz POST yöntemi, HTTP GET isteğine tanımlayıcı olarak kullanılan bir `operationId` döndürür.
+Görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde bir görüntüyü zaman uyumsuz olarak okumak için konser içindeki `POST /vision/v2.0/read/core/asyncBatchAnalyze` ve `GET /vision/v2.0/read/operations/{operationId}` işlemlerini kullanabilirsiniz. Zaman uyumsuz POST yöntemi, HTTP GET isteğine tanımlayıcı olarak kullanılan bir `operationId` döndürür.
 
-Swagger kullanıcı arabiriminden, tarayıcıda genişletmek için `asyncBatchAnalyze` ' ı seçin. Ardından @no__t **deneyin**-1**Dosya Seç**' i seçin. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
+Swagger kullanıcı arabiriminden, tarayıcıda genişletmek için `asyncBatchAnalyze` seçin. Ardından, **deneyin** > **dosyayı seçin**. Bu örnekte, aşağıdaki görüntüyü kullanacağız:
 
 ![sekmeler vs alanları](media/tabs-vs-spaces.png)
 
-Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** durum kodu döndürür. Yanıtın bir parçası olarak, isteğin sonuç uç noktasını tutan `operation-location` üstbilgisi vardır.
+Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** durum kodu döndürür. Yanıtın bir parçası olarak, isteğin sonuç uç noktasını tutan bir `operation-location` üst bilgisi vardır.
 
 ```http
  content-length: 0
@@ -180,7 +126,7 @@ Zaman uyumsuz GÖNDERI başarıyla çalıştırıldığında, bir **HTTP 202** d
  server: Kestrel
 ```
 
-@No__t-0 tam URL 'dir ve bir HTTP GET aracılığıyla erişilir. Önceki görüntüden `operation-location` URL 'sini yürütmenin JSON yanıtı aşağıda verilmiştir:
+`operation-location` tam URL 'dir ve bir HTTP GET aracılığıyla erişilir. Önceki görüntüden `operation-location` URL 'sini yürütmenin JSON yanıtı aşağıda verilmiştir:
 
 ```json
 {
@@ -279,7 +225,7 @@ Bir görüntüyü eşzamanlı olarak okumak için `POST /vision/v2.0/read/core/A
 }
 ```
 
-JSON yanıt nesnesi, zaman uyumsuz sürümle aynı nesne grafiğine sahiptir. Bir JavaScript kullanıcısı ve tür güvenliği istiyorsanız, JSON yanıtını `AnalyzeResult` nesnesi olarak dönüştürmek için aşağıdaki türler kullanılabilir.
+JSON yanıt nesnesi, zaman uyumsuz sürümle aynı nesne grafiğine sahiptir. Bir JavaScript kullanıcısı ve tür güvenliği isterseniz, JSON yanıtını bir `AnalyzeResult` nesnesi olarak dönüştürmek için aşağıdaki türler kullanılabilir.
 
 ```typescript
 export interface AnalyzeResult {
@@ -314,26 +260,19 @@ export interface Line {
     words?: Word[] | null;
 }
 
+export enum Confidence {
+    High = 0,
+    Low = 1
+}
+
 export interface Word {
   boundingBox?: number[] | null;
   text: string;
-  confidence?: string | null;
+  confidence?: Confidence | null;
 }
 ```
 
-Örnek kullanım örneği için, [burada TypeScript korumalı alanı](https://aka.ms/ts-read-api-types) ' na bakın ve kullanım kolaylığını görselleştirmek Için "Çalıştır" ı seçin.
-
-# <a name="recognize-texttabrecognize-text"></a>[Metin Tanıma](#tab/recognize-text)
-
-### <a name="asynchronous-text-recognition"></a>Zaman uyumsuz metin tanıma
-
-@No__t-0 ve `GET /vision/v2.0/textOperations/*{id}*` işlemlerini konser içinde, görüntü işleme hizmetinin ilgili Rest işlemlerini nasıl kullandığına benzer şekilde, görüntüde yazılı metni zaman uyumsuz olarak tanımak için kullanabilirsiniz. Metin Tanıma kapsayıcısı, el ile yazılmış metni değil, şu anda yalnızca yazdırılmış metni tanır, bu nedenle Görüntü İşleme hizmeti işlemi için normalde belirtilen `mode` parametresi Metin Tanıma kapsayıcısı tarafından yok sayılır.
-
-### <a name="synchronous-text-recognition"></a>Zaman uyumlu metin tanıma
-
-Bir görüntüdeki yazdırılmış metni eşzamanlı olarak tanımak için `POST /vision/v2.0/recognizeTextDirect` işlemini kullanabilirsiniz. Bu işlem zaman uyumlu olduğundan, bu işlem için istek gövdesi `POST /vision/v2.0/recognizeText` işlemiyle aynıdır, ancak bu işlemin yanıt gövdesi, `GET /vision/v2.0/textOperations/*{id}*` işlemi tarafından döndürülen ile aynıdır.
-
-***
+Örnek kullanım örneği için, <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">burada <span class="docon docon-navigate-external x-hidden-focus"></span> TypeScript korumalı alanı</a> ' na bakın ve kullanım kolaylığını görselleştirmek için **Çalıştır** ' ı seçin.
 
 ## <a name="stop-the-container"></a>Kapsayıcıyı durdur
 
@@ -345,7 +284,7 @@ Kapsayıcıyı bir çıkış [bağlaması](./computer-vision-resource-container-
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Ödeme
+## <a name="billing"></a>Faturalandırma
 
 Bilişsel hizmetler kapsayıcıları, Azure hesabınızdaki ilgili kaynağı kullanarak faturalandırma bilgilerini Azure 'a gönderir.
 
@@ -361,10 +300,10 @@ Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapıland
 
 Bu makalede, Görüntü İşleme kapsayıcıları indirmek, yüklemek ve çalıştırmak için kavramları ve iş akışını öğrendiniz. Özet:
 
-* Görüntü İşleme, Docker için hem Metin Tanıma hem de okunan bir Linux kapsayıcısı sağlar.
+* Görüntü İşleme, Docker için bir Linux kapsayıcısı sağlar ve bu da kapsülleme okur.
 * Kapsayıcı görüntüleri, Azure 'daki "kapsayıcı önizlemesi" kapsayıcı kayıt defterinden indirilir.
 * Kapsayıcı görüntüleri Docker 'da çalışır.
-* Metin Tanıma işlemleri çağırmak ya da kapsayıcının ana bilgisayar URI 'sini belirterek kapsayıcıları okumak için REST API veya SDK kullanabilirsiniz.
+* Kapsayıcının ana bilgisayar URI 'sini belirterek okuma kapsayıcılarındaki işlemleri çağırmak için REST API veya SDK kullanabilirsiniz.
 * Bir kapsayıcıyı örnekledikten sonra faturalandırma bilgilerini belirtmeniz gerekir.
 
 > [!IMPORTANT]

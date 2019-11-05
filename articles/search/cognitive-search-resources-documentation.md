@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792063"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466723"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme için belge kaynakları
 
@@ -21,9 +21,9 @@ AI zenginleştirme, Azure Bilişsel Arama Dizin oluşturma özelliğinin metin o
 
 Aşağıdaki makaleler AI zenginleştirme için tüm belgeleriydi.
 
-## <a name="getting-started"></a>Başlangıç
-+ [Azure Bilişsel Arama 'de AI zenginleştirme 'ye giriş](cognitive-search-concept-intro.md)
-+ [Hızlı başlangıç: portalda AI zenginleştirme 'yi deneyin](cognitive-search-quickstart-blob.md)
+## <a name="getting-started"></a>Başlarken
++ [Azure Bilişsel Arama 'de AI 'ye giriş](cognitive-search-concept-intro.md)
++ [Hızlı başlangıç: Azure portal Bilişsel Beceri oluşturma](cognitive-search-quickstart-blob.md)
 + [Öğretici: AI ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)
 + [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ Aşağıdaki makaleler AI zenginleştirme için tüm belgeleriydi.
   + [Microsoft. yetenekler. Vision. ımageanalysisbeceri](cognitive-search-skill-image-analysis.md)
   + [Microsoft. yetenekler. Vision. Ocrbeceri](cognitive-search-skill-ocr.md)
   + [Microsoft. yetenekler. util. Conditionalbeceri](cognitive-search-skill-conditional.md)
+  + [Microsoft. yetenekler. util. Belgetextractionbeceri](cognitive-search-skill-document-extraction.md)
   + [Microsoft. yetenekler. util. Shaperbeceri](cognitive-search-skill-shaper.md)
 
 + Özel beceriler

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/12/2019
+ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706f76c00022c5f5661ea261a5bb35eedc13d5ba
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756041"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497523"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: mimari ve kavramlar
 
@@ -23,18 +23,18 @@ Azure Machine Learning için mimari, kavramlar ve iş akışı hakkında bilgi e
 
 ![Azure Machine Learning mimarisi ve iş akışı](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>İş Akışı
+## <a name="workflow"></a>İş akışı
 
 Machine Learning modeli iş akışı genellikle bu diziyi izler:
 
 1. **Eğit**
-    + **Python** 'da veya görsel arabirimle makine öğrenimi eğitim betikleri geliştirin.
+    + **Python** 'da veya görsel tasarımcıda makine öğrenimi eğitim betikleri geliştirin.
     + **İşlem hedefi**oluşturun ve yapılandırın.
     + Bu ortamda çalıştırmak için betikleri yapılandırılan işlem hedefine **Gönder** . Eğitim sırasında betikler, **veri deposundan**okuma veya yazma yapılabilir. Ve yürütme kayıtları **çalışma alanında** **çalışır** olarak kaydedilir ve **denemeleri**altında gruplandırılır.
 
 1. **Paket** -tatmin edici bir çalıştırma oluşturulduktan sonra, kalıcı modeli **model kayıt defterine**kaydedin.
 
-1. Geçerli ve geçmiş çalışmalardan günlüğe kaydedilen ölçümler için denemeyi**sorgulama**  -  **doğrulayın** . Ölçümler istenen sonucu belirtmezse, 1. adıma dönün ve betiklerinizde yineleme yapın.
+1. Geçerli ve geçmiş çalışmalardan günlüğe kaydedilen ölçümler için denemeyi **sorgulama** - **doğrulayın** . Ölçümler istenen sonucu belirtmezse, 1. adıma dönün ve betiklerinizde yineleme yapın.
 
 1. **Dağıtım** -modeli kullanan bir Puanlama betiği geliştirin ve modeli Azure 'da **Web hizmeti** olarak veya **IoT Edge bir cihaza** **dağıtın** .
 
@@ -45,23 +45,26 @@ Machine Learning modeli iş akışı genellikle bu diziyi izler:
 Bu araçları Azure Machine Learning için kullanın:
 
 +  [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında hizmetle etkileşime geçin.
++ [R için Azure MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)ile herhangi bir r ortamındaki hizmetle etkileşime geçin.
 + [Azure MACHINE LEARNING CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)ile makine öğrenimi etkinliklerinizi otomatikleştirin.
 + [Azure Machine Learning vs Code uzantılı](how-to-vscode-tools.md) Visual Studio Code kod yazma
-+ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning için görsel arabirimi (Önizleme)](ui-concept-visual-interface.md) kullanın.
++ Kod yazmadan iş akışı adımlarını gerçekleştirmek için [Azure Machine Learning tasarımcı (Önizleme)](concept-designer.md) kullanın.
+
 
 > [!NOTE]
 > Bu makalede Azure Machine Learning tarafından kullanılan hüküm ve kavramlar tanımlanmakla birlikte, Azure platformu için hüküm ve kavramlar tanımlamaz. Azure platform terminolojisi hakkında daha fazla bilgi için [Microsoft Azure sözlüğü](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)bölümüne bakın.
 
 ## <a name="glossary"></a>Sözlük
 + <a href="#activities">Etkinlik</a>
++ <a href="#compute-instance">İşlem örneği</a>
 + <a href="#compute-targets">İşlem hedefleri</a>
 + <a href="#datasets-and-datastores">Veri kümesi & veri depoları</a>
-+ <a href="#deployment">Dağıtım</a>
++ <a href="#endpoints">Noktalarının</a>
 + <a href="#environments">Lý</a>
 + [Tahmini](#estimators)
 + <a href="#experiments">Denemeler</a>
 + <a href="#github-tracking-and-integration">Git izleme</a>
-+ <a href="#iot-module-deployments">IoT modülleri</a>
++ <a href="#iot-module-endpoints">IoT modülleri</a>
 + <a href="#logging">Açmak</a>
 + <a href="#ml-pipelines">ML işlem hatları</a>
 + <a href="#models">Modelde</a>
@@ -69,10 +72,10 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#run-configurations">Yapılandırmayı Çalıştır</a>
 + <a href="#snapshots">Görüntüye</a>
 + <a href="#training-scripts">Eğitim betiği</a>
-+ <a href="#web-service-deployments">Web Hizmetleri</a>
++ <a href="#web-service-endpoint">Web Hizmetleri</a>
 + <a href="#workspaces">Alanında</a>
 
-### <a name="activities"></a>Olaylar
+### <a name="activities"></a>Etkinlikler
 
 Etkinlik uzun süren bir işlemi temsil eder. Aşağıdaki işlemler etkinlik örnekleridir:
 
@@ -81,9 +84,19 @@ Etkinlik uzun süren bir işlemi temsil eder. Aşağıdaki işlemler etkinlik ö
 
 Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya Web Kullanıcı arabirimi aracılığıyla bildirim sağlayabilir.
 
+### <a name="compute-instance"></a>İşlem örneği
+
+> [!NOTE]
+> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+>Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
+
+Bir **Azure Machine Learning işlem örneği** (eski adıyla Not defteri VM), makine öğrenimi için yüklenmiş birden çok araç ve ortamı içeren tam olarak yönetilen bir bulut tabanlı iş istasyonudur. İşlem örnekleri, eğitim ve ınişsiz işler için işlem hedefi olarak kullanılabilir. Büyük görevler için, çok düğümlü ölçekleme özelliklerine sahip [işlem kümeleri Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) daha iyi bir işlem hedefi seçimleridir.
+
+[İşlem örnekleri](concept-compute-instance.md)hakkında daha fazla bilgi edinin.
+
 ### <a name="compute-targets"></a>İşlem hedefleri
 
-[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındıran işlem kaynağını belirtmenize olanak tanır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağıdır. İşlem hedefleri, kodunuzu değiştirmeden işlem ortamınızı değiştirmeyi kolaylaştırır.
+[İşlem hedefi](concept-compute-target.md) , eğitim betiğinizi çalıştırdığınız veya hizmet dağıtımınızı barındıran işlem kaynağını belirtmenize olanak tanır. Bu konum, yerel makineniz veya bulut tabanlı bir işlem kaynağıdır.
 
 [Eğitim ve dağıtım için kullanılabilir işlem hedefleri](concept-compute-target.md)hakkında daha fazla bilgi edinin.
 
@@ -91,29 +104,29 @@ Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya W
 
 **Azure Machine Learning veri kümeleri** (Önizleme), erişimi daha kolay hale getirir ve verilerinize çalışır. Veri kümeleri, model eğitimi ve işlem hattı oluşturma gibi çeşitli senaryolarda verileri yönetir. Azure Machine Learning SDK 'yı kullanarak, temel depolamaya erişebilir, verileri keşfedebilir ve farklı veri kümesi tanımlarının yaşam döngüsünü yönetebilirsiniz.
 
-Veri kümeleri, `from_delimited_files()` veya `to_pandas_dataframe()` kullanma gibi popüler biçimlerdeki verilerle çalışmak için yöntemler sağlar.
+Veri kümeleri, `from_delimited_files()` veya `to_pandas_dataframe()`kullanma gibi popüler biçimlerdeki verilerle çalışmak için yöntemler sağlar.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning veri kümeleri oluşturma ve kaydetme](how-to-create-register-datasets.md).  Veri kümelerini kullanarak daha fazla örnek için bkz. [örnek Not defterleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
 
 Bir **veri deposu** , bir Azure depolama hesabı üzerinden bir depolama soyutlamasıdır. Veri deposu, arka uç depolama alanı olarak bir Azure Blob kapsayıcısını veya bir Azure dosya paylaşımından kullanabilir. Her çalışma alanının varsayılan bir veri deposu vardır ve ek veri depolarını kaydedebilirsiniz. Veri deposundan dosyaları depolamak ve almak için Python SDK API 'sini veya Azure Machine Learning CLı 'yi kullanın.
 
-### <a name="deployment"></a>Kurulum
+### <a name="endpoints"></a>Uç Noktalar
 
-Dağıtım, modelinize bir Web hizmetine veya tümleşik cihaz dağıtımları için bir IoT modülüne yönelik bir örneklemedir.
+Bir uç nokta, modelinize veya tümleşik cihaz dağıtımları için bir IoT modülüne bir Web hizmetine barındırılabilir.
 
-#### <a name="web-service-deployments"></a>Web hizmeti dağıtımları
+#### <a name="web-service-endpoint"></a>Web hizmeti uç noktası
 
-Dağıtılan bir Web hizmeti Azure Container Instances, Azure Kubernetes Service veya FPGAs kullanabilir. Hizmeti modelinizde, betiğinizden ve ilişkili dosyalardan oluşturursunuz. Bunlar, Web hizmeti için çalışma zamanı ortamı sağlayan bir görüntüde kapsüllenir. Görüntüde, Web hizmetine gönderilen Puanlama isteklerini alan, yük dengeli bir HTTP uç noktası bulunur.
+Bir modeli Web hizmeti olarak dağıtırken, uç nokta Azure Container Instances, Azure Kubernetes hizmeti veya FPGAs üzerinde dağıtılabilir. Hizmeti modelinizde, betiğinizden ve ilişkili dosyalardan oluşturursunuz. Bunlar, modelin yürütme ortamını içeren bir temel kapsayıcı görüntüsüne yerleştirilir. Görüntüde, Web hizmetine gönderilen Puanlama isteklerini alan, yük dengeli bir HTTP uç noktası bulunur.
 
-Azure, bu özelliği etkinleştirmeyi seçtiyseniz Application Insights telemetri veya model telemetri toplayarak Web hizmeti dağıtımınızı izlemenize yardımcı olur. Telemetri verilerine yalnızca sizin için erişilebilir ve Application Insights ve depolama hesabı örneklerinizin içinde depolanır.
+Azure, bu özelliği etkinleştirmeyi seçtiyseniz Application Insights telemetri veya model telemetri toplayarak Web hizmetinizi izlemenize yardımcı olur. Telemetri verilerine yalnızca sizin için erişilebilir ve Application Insights ve depolama hesabı örneklerinizin içinde depolanır.
 
 Otomatik ölçeklendirmeyi etkinleştirdiyseniz, Azure dağıtımınızı otomatik olarak ölçeklendirir.
 
 Bir modeli Web hizmeti olarak dağıtmaya ilişkin bir örnek için, bkz. [Azure Container Instances bir görüntü sınıflandırma modeli dağıtma](tutorial-deploy-models-with-aml.md).
 
-#### <a name="iot-module-deployments"></a>IoT modülü dağıtımları
+#### <a name="iot-module-endpoints"></a>IoT modülü uç noktaları
 
-Dağıtılan bir IoT modülü, modelinizi ve ilişkili betiği ya da uygulamanızı ve ek bağımlılıkları içeren bir Docker kapsayıcısıdır. Bu modülleri, uç cihazlarda Azure IoT Edge kullanarak dağıtırsınız.
+Dağıtılan bir IoT modülü uç noktası, modelinizi ve ilişkili betiği ya da uygulamanızı ve ek bağımlılıkları içeren bir Docker kapsayıcısıdır. Bu modülleri, uç cihazlarda Azure IoT Edge kullanarak dağıtırsınız.
 
 İzlemeyi etkinleştirdiyseniz, Azure Azure IoT Edge modülünün içindeki modelden telemetri verileri toplar. Telemetri verilerine yalnızca sizin için erişilebilir ve depolama hesabı Örneğinizde depolanır.
 
@@ -188,7 +201,6 @@ Etkin bir dağıtım tarafından kullanılan kayıtlı bir modeli silemezsiniz.
 
 Bir modeli kaydetme örneği için bkz. [Azure Machine Learning görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).
 
-
 ### <a name="runs"></a>Çalıştırmalar
 
 Bir çalıştırma, bir eğitim betiğinin tek yürütülmesinden oluşur. Azure Machine Learning tüm çalıştırmaları kaydeder ve aşağıdaki bilgileri depolar:
@@ -220,10 +232,9 @@ Bir modeli eğitebilmeniz için eğitim betiğini ve ilişkili dosyaları içere
 
 Bir örnek için bkz. [öğretici: görüntü sınıflandırma modelini Azure Machine Learning eğitme](tutorial-train-models-with-aml.md).
 
-### <a name="workspaces"></a>Çalışma alanları
+### <a name="workspaces"></a>Çalışma Alanları
 
 [Çalışma alanı](concept-workspace.md) Azure Machine Learning için en üst düzey kaynaktır. Azure Machine Learning kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanını başkalarıyla paylaşabilirsiniz. Çalışma alanlarının ayrıntılı bir açıklaması için bkz. [Azure Machine Learning çalışma alanı nedir?](concept-workspace.md).
-
 
 ### <a name="next-steps"></a>Sonraki adımlar
 

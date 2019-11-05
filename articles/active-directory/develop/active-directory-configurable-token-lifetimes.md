@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73869773597d372affbf02e6a256642c8c1ce8f4
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809312"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473948"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 'de yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -66,11 +66,14 @@ NotOnOrAfter değeri bir TokenLifetimePolicy içindeki AccessTokenLifetime param
 Gizli istemcilerle ortak istemciler arasında ayrım yapmak önemlidir, çünkü yenileme belirteçlerinin ne kadar süreyle kullanılabileceğini etkiler. Farklı istemci türleri hakkında daha fazla bilgi için bkz. [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Gizli istemci yenileme belirteçleriyle belirteç yaşam süreleri
-Gizli istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayabilen uygulamalardır. İsteklerin kötü niyetli bir aktörden değil, güvenli istemci uygulamasından geldiğini kanıtlayabilirler. Örneğin, bir Web uygulaması Web sunucusunda bir istemci gizli dizisi depolayabildiğinden gizli bir istemcdir. Gösterilmez. Bu akışlar daha güvenli olduğundan, bu akışlara verilen yenileme belirteçlerinin varsayılan ömürleri `until-revoked` ' dır, ilke kullanılarak değiştirilemez ve gönüllü parola sıfırlamaları üzerinde iptal edilmez.
+Gizli istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayabilen uygulamalardır. İsteklerin kötü niyetli bir aktörden değil, güvenli istemci uygulamasından geldiğini kanıtlayabilirler. Örneğin, bir Web uygulaması Web sunucusunda bir istemci gizli dizisi depolayabildiğinden gizli bir istemcdir. Gösterilmez. Bu akışlar daha güvenli olduğundan, bu akışlara verilen yenileme belirteçlerinin varsayılan yaşam süreleri `until-revoked`, ilke kullanılarak değiştirilemez ve gönüllü parola sıfırlamaları sırasında iptal edilmez.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Ortak istemci yenileme belirteçleri ile belirteç yaşam süreleri
 
 Ortak istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayaamaz. Örneğin, bir iOS/Android uygulaması, kaynak sahibinden bir parolayı gizli hale getirebilir, bu yüzden ortak istemci olarak kabul edilir. Belirli bir süreden daha eski olan ortak istemcilerden gelen yenileme belirteçlerinin, yeni bir erişim/yenileme belirteci çifti almasını engellemek için kaynaklar üzerinde ilkeler ayarlayabilirsiniz. (Bunu yapmak için, yenileme belirteci en fazla etkin olmayan süre özelliğini kullanın (`MaxInactiveTime`).) Ayrıca, yenileme belirteçlerinin daha fazla kabul edilmeden önce bir süre ayarlamak için ilkeleri kullanabilirsiniz. (Bunu yapmak için, belirteç en fazla kullanım süresini Yenile özelliğini kullanın.) Bir yenileme belirtecinin kullanım süresini, bir genel istemci uygulaması kullanılırken sessizce yeniden kimlik doğrulaması yapmak yerine, kullanıcının kimlik bilgilerini ne zaman ve ne sıklıkta yeniden girmesi gerektiğini denetlemek için ayarlayabilirsiniz.
+
+> [!NOTE]
+> Maksimum yaş özelliği, tek bir belirtecin kullanılabileceği sürenin uzunluğudur. 
 
 ### <a name="id-tokens"></a>Kimlik belirteçleri
 KIMLIK belirteçleri Web sitelerine ve yerel istemcilere geçirilir. KIMLIK belirteçleri bir kullanıcıyla ilgili profil bilgilerini içerir. KIMLIK belirteci, belirli bir Kullanıcı ve istemci birleşimine bağlanır. KIMLIK belirteçleri, süresi doluncaya kadar geçerli kabul edilir. Genellikle, bir Web uygulaması, kullanıcının uygulamadaki oturum ömrünü Kullanıcı için verilen KIMLIK belirtecinin ömrü boyunca eşleştirir. Web uygulamasının uygulama oturumunun ne sıklıkta dolacağını ve kullanıcının Azure AD ile yeniden kimlik doğrulaması gerektirdiğini (sessizce veya etkileşimli) denetlemek için bir KIMLIK belirtecinin ömrünü ayarlayabilirsiniz.
@@ -100,7 +103,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
 * <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 | Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |
@@ -121,7 +124,7 @@ Uygulama nesneleri ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında d
 
 Belirtecin geçerliliği, belirtecin kullanıldığı sırada değerlendirilir. Erişildiği uygulama üzerinde en yüksek önceliğe sahip ilke devreye girer.
 
-Burada kullanılan tüm zaman C# [aralığı](/dotnet/api/system.timespan) ,-D. hh: mm: ss TimeSpan nesnesine göre biçimlendirilir.  Bu nedenle 80 gün ve 30 dakika `80.00:30:00` olur.  Baştaki D, sıfır olduğunda bırakılabilir, bu nedenle 90 dakika `00:90:00` olur.  
+Burada kullanılan tüm zaman C# [aralığı](/dotnet/api/system.timespan) ,-D. hh: mm: ss TimeSpan nesnesine göre biçimlendirilir.  Bu nedenle 80 gün ve 30 dakika `80.00:30:00`.  0 olduğunda önde gelen D bırakılabilir, bu nedenle 90 dakika `00:90:00`.  
 
 > [!NOTE]
 > İşte örnek bir senaryo.

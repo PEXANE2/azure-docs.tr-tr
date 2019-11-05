@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154674"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490889"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Reward puanları, kişiselleştirmenin başarısını gösterir
 
@@ -64,55 +64,49 @@ Etkili kişiselleştirme için, daha fazla etkene göre ödül puanı oluşturab
 |--|--|
 |Kullanıcı üst öğeyi tıkladı.|\+ 0,5 ödül|
 |Kullanıcı o öğenin gerçek içeriğini açtı.|\+ 0,3 ödül|
-|Kullanıcı, içeriğin 5 dakika veya daha uzun bir süre sonra% 30 oranında izleniyor.|\+ 0,2 ödül|
+|Kullanıcı, içeriğin 5 dakika veya daha uzun bir süre sonra %30 oranında izleniyor.|\+ 0,2 ödül|
 |||
 
 Sonra, API 'ye toplam yeniden ödül gönderebilirsiniz.
 
 ## <a name="calling-the-reward-api-multiple-times"></a>Reward API 'YI birden çok kez çağırma
 
-Ayrıca, aynı olay kimliğini kullanarak, farklı rehirlar göndererek, ödül API 'sini de çağırabilirsiniz. Kişiselleştirici bu depoyu aldığında, bu olayın son halini, kişiselleştirici ayarlarında belirtilen şekilde toplayarak belirler.
+Ayrıca, aynı olay kimliğini kullanarak, farklı rehirlar göndererek, ödül API 'sini de çağırabilirsiniz. Kişiselleştirici bu ödüller aldığında, bu olayın, kişiselleştirici yapılandırmasında belirtilen şekilde toplayarak son halini belirler.
 
-Toplama ayarları:
+Toplama değerleri:
 
-*  **İlk**: Olay için ilk geri alma puanı alır ve geri kalanı atar.
-* **Toplam**: EventID için toplanan tüm yeniden puanları alır ve bunları bir araya getirir.
+*  **İlk**: olay için ilk geri alma puanı alır ve geri kalanı atar.
+* **Sum**: EventID için toplanan tüm yeniden puanları alır ve bunları bir araya getirir.
 
 **Yeniden bekleme zamanından**sonra alınan bir olayın tüm depoları atılır ve modellerin eğitimini etkilemez.
 
 Toplama skorları ekleyerek, son ödül tahmini beklenen puan aralığının dışında olabilir. Bu, hizmetin başarısız olmasına neden olmaz.
 
-<!--
-@edjez - is the number ignored if it is outside the acceptable range?
--->
-
 ## <a name="best-practices-for-calculating-reward-score"></a>Ödül Puanını hesaplamak için en iyi uygulamalar
 
-* **Başarılı kişiselleştirmenin doğru göstergelerini göz önünde bulundurun**: Tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın *ne kadar hızlı* *bir şekilde ulaşmasını* istediğinizi göz önünde bulundurun.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
+* **Başarılı bir kişiselleştirmenin gerçek göstergelerini göz önünde bulundurun**: tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın ne *yapmak*istediğinize ilişkin ne kadar hızlı bir şekilde *elde* etmelerini istediğinizi temel alır.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
 
-* **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın**: Bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme uygulamasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
+* **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın**: bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme kullanmasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
 
-* Ödüller **yalnızca Rewarterctionıd için geçerlidir**: Kişiselleştirici, Rewarterctionıd içinde belirtilen eylemin göre etkinliğine anlamak için yeniden ödüller uygular. Diğer eylemleri görüntülemeyi tercih ederseniz ve Kullanıcı bunlara tıkladıysanız, yeniden, sıfır olmalıdır.
+* **Releleler yalnızca rewarterctionıd için geçerlidir**: kişiselleştirici, rewarterctionıd içinde belirtilen eylemin göre etkinliğine anlamak için yeniden ödüller uygular. Diğer eylemleri görüntülemeyi tercih ederseniz ve Kullanıcı bunlara tıkladıysanız, yeniden, sıfır olmalıdır.
 
-* **İstenmeyen sonuçları göz önünde bulundurun**: [Ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
+* **İstemeden oluşan sonuçları göz önünde bulundurun**: [ahlak ve sorumlu kullanım](ethics-responsible-use.md)ile sorumlu sonuçlara yol açabilecek ödül işlevleri oluşturun.
 
-* **Artımlı ödüller kullanın**: Daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
+* **Artımlı yeniden kullanım**: daha küçük kullanıcı davranışları için kısmi reksel ekleme, kişiselleştirmeye daha iyi bir performans sağlamaya yardımcı olur. Bu artımlı yeniden, algoritmanın kullanıcıya son istenen davranışta ilgi çekici olduğunu bilmesini sağlar.
     * Bir film listesi gösteriyorsa, Kullanıcı daha fazla bilgi görüntülemek için ilk bir kez üzerine gelirse, bazı kullanıcı katılımı olduğunu belirleyebilirsiniz. Davranış, 0,1 için bir ödül puanı ile sayabilir. 
     * Kullanıcı sayfayı açtı ve sonra çıkmadıysa, ödül puanı 0,2 olabilir. 
 
-## <a name="reward-wait-time"></a>Ödül bekleme süresi
+## <a name="reward-wait-time"></a>bekleme süresi
 
 Kişiselleştirici, modeli eğitme çağrılarında, bir derece çağrısının bilgilerini, yeniden aramalarla gönderilen ödüller ile ilişkilendirilecektir. Bunlar, farklı zamanlarda gelebilir. Kişiselleştirici, derece çağrısının ne zaman meydana geldiği, sıralama çağrısının etkin olmayan bir olay olarak yapılmış ve daha sonra etkinleştirilse bile, sınırlı bir süre bekler.
 
 Daha fazla **bekleme süresi** dolarsa ve hiçbir bilgi yoksa, eğitim için bu olaya bir varsayılan değer uygulanır. En uzun bekleme süresi 6 gündür.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Yeniden geçen bekleme süresini ayarlamak için en iyi uygulamalar
+## <a name="best-practices-for-reward-wait-time"></a>İlk bekleme süresi için en iyi uygulamalar
 
 Daha iyi sonuçlar için bu önerileri izleyin.
 
 * Kullanıcı geri bildirimi almak için yeterli zaman bırakarak, yeniden bekleme süresini olabildiğince kısa bir hale getirin. 
-
-<!--@Edjez - storage quota? -->
 
 * Geri bildirim almak için gereken süreden daha kısa bir süre seçmeyin. Örneğin, bir Kullanıcı bir videonun 1 dakikalık bir süre sonra geliyorsa, deneme uzunluğu en az çift olmalıdır.
 

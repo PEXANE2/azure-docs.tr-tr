@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998055"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482760"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda tablo bulundurma – hiper ölçek (Citus)
 
@@ -20,7 +20,7 @@ Birlikte bulundurma, ilgili bilgileri aynı düğümlerde depoladığını göst
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Karma Dağıtılmış tablolar için veri birlikte bulundurma
 
-PostgreSQL için Azure veritabanı – Hyperscale (Citus) önizleme sürümünde, dağıtım sütunundaki değerin karması parçanın karma aralığı içinde kalırsa bir satır parça içinde depolanır. Aynı karma aralığa sahip parçalar her zaman aynı düğüme yerleştirilir. Eşit dağıtım sütunu değerleri olan satırlar her zaman tablolar arasında aynı düğüm üzerinde bulunur.
+PostgreSQL için Azure veritabanı – hiper ölçek (Citus) içinde, dağıtım sütunundaki değerin karması parçanın karma aralığı içinde kalırsa bir satır parça içinde depolanır. Aynı karma aralığa sahip parçalar her zaman aynı düğüme yerleştirilir. Eşit dağıtım sütunu değerleri olan satırlar her zaman tablolar arasında aynı düğüm üzerinde bulunur.
 
 ![Parçalar](media/concepts-hyperscale-colocation/colocation-shards.png)
 
@@ -68,7 +68,7 @@ Bu sorgunun [çalışma kümesi](https://en.wikipedia.org/wiki/Working_set) bell
 
 Tek sunuculu sorgular, kiracıların sayısı ve her kiracı için depolanan veriler büyüdükçe yavaşlamadan başlar. Çalışma kümesi, bellek içinde sığdırma işlemini durduruyor ve CPU bir performans sorunu haline geliyor.
 
-Bu durumda, Hyperscale (Citus) kullanarak verileri birçok düğüme parçalayabilirsiniz. Dağıtım sütunu, parçalara ayırmaya karar verirken yapmanız gereken ilk ve en önemli seçenektir. Olay tablosu ve `event_id` `page_id` tabloiçinbirNaïveseçimiilebaşlayalım`page` :
+Bu durumda, Hyperscale (Citus) kullanarak verileri birçok düğüme parçalayabilirsiniz. Dağıtım sütunu, parçalara ayırmaya karar verirken yapmanız gereken ilk ve en önemli seçenektir. Olay tablosu için `event_id` kullanma ve `page` tablosu için `page_id` bir Naïve seçimi ile başlayalım:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +109,7 @@ Veriler dağınık, bu nedenle sorgular paralelleştirilmiş olabilir. Yalnızca
 
 ### <a name="distribute-tables-by-tenant"></a>Tabloları kiracıya göre dağıtma
 
-Hiper ölçekte (Citus), aynı dağıtım sütunu değerine sahip satırların aynı düğümde olması garanti edilir. Sürümünden itibaren, tabloları `tenant_id` dağıtım sütunu olarak oluşturuyoruz.
+Hiper ölçekte (Citus), aynı dağıtım sütunu değerine sahip satırların aynı düğümde olması garanti edilir. Sürümünden itibaren, `tenant_id` dağıtım sütunu olarak tabloları oluşturuyoruz.
 
 ```sql
 -- co-locate tables by using a common distribution column

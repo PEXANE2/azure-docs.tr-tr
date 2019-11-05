@@ -1,7 +1,7 @@
 ---
-title: Sorun giderme kılavuzu
+title: Sorun Giderme Kılavuzu
 titleSuffix: Microsoft Genomics
-description: Microsoft Genomiks kullanımı için sorun giderme stratejileri hakkında bilgi edinin.
+description: Hata iletileri ve bunları çözme gibi Microsoft Genomiks kullanımı için sorun giderme stratejileri hakkında bilgi edinin.
 keywords: sorun giderme, hata, hata ayıklama
 services: genomics
 author: ruchir
@@ -11,12 +11,12 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248523"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486006"
 ---
 # <a name="troubleshooting-guide"></a>Sorun giderme kılavuzu
 
@@ -27,10 +27,10 @@ Aşağıda, Microsoft Genomiks hizmeti, MSGEN kullanılırken olabilecek bazı y
 
 İş akışıyla ilişkili hata iletilerini şu şekilde bulabilirsiniz:
 
-1. Komut satırını kullanma ve @no__t yazma-0
+1. Komut satırını kullanma ve `msgen status` yazma
 2. StandardOutput. txt içeriğini İnceleme.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. komut satırını kullanma `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. komut satırı `msgen status` kullanma
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -47,7 +47,7 @@ Gerekli üç bağımsız değişken vardır:
 
   
 * KIMLIK-iş akışı KIMLIĞI
-    * @No__t-0 komutunda iş akışı KIMLIK türünü bulmak için. Yapılandırma dosyanızın URL 'YI ve erişim anahtarlarınızı içerdiğini ve bulunduğu varsayılırsa, msgen 'i exe 'niz ile aynı konumda bulunur, komut şöyle görünür: 
+    * `msgen list` komutunda iş akışı KIMLIK türünü bulmak için. Yapılandırma dosyanızın URL 'YI ve erişim anahtarlarınızı içerdiğini ve bulunduğu varsayılırsa, msgen 'i exe 'niz ile aynı konumda bulunur, komut şöyle görünür: 
         
         ```bash
         msgen list -f "config.txt"
@@ -88,7 +88,7 @@ Söz konusu iş akışının çıkış kapsayıcısını bulun. MSGEN, her iş a
 * outputFileList. txt-iş akışı sırasında oluşturulan çıkış dosyalarının listesi
 * standartem. txt-Bu dosya boş.
 * StandardOutput. txt-iş akışı çalıştırılırken oluşan hatalar da dahil olmak üzere tüm üst düzey durum iletilerini günlüğe kaydeder.
-* GATK günlük dosyaları-`logs` klasöründeki diğer tüm dosyalar
+* GATK günlük dosyaları-`logs` klasördeki diğer tüm dosyalar
 
 Sorun giderme için, StandardOutput. txt içeriğini inceleyin ve görüntülenen tüm hata iletilerini unutmayın.
 
@@ -116,7 +116,7 @@ Bu hatalar Kullanıcı tarafından işlem yapılabilir. Dosya türüne ve hata k
 
 | Dosya türü | Hata kodu | Hata iletisi                                                                           | Önerilen sorun giderme adımları                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Kaydedilmemiş          | 701        | Read [Readıd], [Numberoftabansayısı] temellerine sahip ancak sınır [maxReadLength]           | Bu hatanın en yaygın nedeni, iki okuma birleştirmesi için dosya bozulması 'nın lideri olur. Giriş dosyalarınızı denetleyin. |
+| Herhangi biri          | 701        | Read [Readıd], [Numberoftabansayısı] temellerine sahip ancak sınır [maxReadLength]           | Bu hatanın en yaygın nedeni, iki okuma birleştirmesi için dosya bozulması 'nın lideri olur. Giriş dosyalarınızı denetleyin. |
 | BAM          | 200        |   ' [YourFileName] ' dosyası okunamıyor.                                                                                       | Baa dosyasının biçimini denetleyin. Düzgün şekilde biçimlendirilen bir dosyayla iş akışını yeniden gönderebilirsiniz.                                                                           |
 | BAM          | 201        |  Bad dosyası [dosya_adı] okunamıyor.                                                                                      |Baa dosyasının biçimini denetleyin.  Doğru biçimli bir dosyayla iş akışını gönder.                                                                            |
 | BAM          | 202        | Bad dosyası [dosya_adı] okunamıyor. Dosya çok küçük ve üst bilgi eksik.                                                                                        | Baa dosyasının biçimini denetleyin.  Doğru biçimli bir dosyayla iş akışını gönder.                                                                            |

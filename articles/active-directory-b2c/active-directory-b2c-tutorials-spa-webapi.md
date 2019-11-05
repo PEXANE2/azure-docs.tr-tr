@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374241"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475119"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim Izni verme
 
@@ -46,7 +46,7 @@ Kapsamlar, korumalı kaynaklara erişimi yönetmek için bir yol sağlar. Kapsam
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Tek sayfalı uygulamayı yapılandırırken daha sonraki bir adımda kullanmak üzere `demo.read` kapsamının **tam kapsam değerini** kaydedin. Tam kapsam değeri `https://yourtenant.onmicrosoft.com/api/demo.read` ' a benzerdir.
+Tek sayfalı uygulamayı yapılandırırken daha sonraki bir adımda kullanmak üzere `demo.read` kapsamı için **kapsamlar** altındaki değeri kaydedin. Tam kapsam değeri `https://contosob2c.onmicrosoft.com/api/demo.read`benzerdir.
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
@@ -62,7 +62,7 @@ Tek sayfalı Web uygulamanız, korumalı Web API 'sini çağırmak için kaydedi
 
 Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web API kodunu Azure AD B2C kiracınızı kullanacak şekilde yapılandırırsınız. Bu öğreticide, GitHub 'dan indirdiğinizde örnek bir .NET Core Web uygulaması yapılandırırsınız.
 
-[Bir @no__t -1. zip arşivi indirin](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) veya örnek Web API projesini GitHub 'dan kopyalayın.
+[Bir \*. zip arşivi indirin](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) veya örnek Web API projesini GitHub 'dan kopyalayın.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 ### <a name="configure-the-web-api"></a>Web API’sini yapılandırma
 
 1. <em>B2C-WebApi/**appSettings. JSON**</em>  dosyasını Visual Studio 'da veya Visual Studio Code açın.
-1. @No__t-0 bloğunu, kiracı adınızı, Web API 'SI uygulamasının uygulama KIMLIĞINI, kaydolma/oturum açma ilkenizin adını ve daha önce tanımladığınız kapsamları yansıtacak şekilde değiştirin. Blok aşağıdaki örneğe benzer olmalıdır (uygun `Tenant` ve `ClientId` değerlerine sahip):
+1. `AzureAdB2C` bloğunu, kiracı adınızı, Web API 'SI uygulamasının uygulama KIMLIĞINI, kaydolma/oturum açma ilkenizin adını ve daha önce tanımladığınız kapsamları yansıtacak şekilde değiştirin. Blok aşağıdaki örneğe benzer olmalıdır (uygun `Tenant` ve `ClientId` değerleriyle):
 
     ```json
     "AzureAdB2C": {
@@ -96,15 +96,15 @@ Tek sayfalı uygulamanızın ASP.NET Core Web API 'sini çağırmasını sağlam
         services.AddCors();
     ```
 
-1. Ayrıca `ConfigureServices()` yönteminde, `jwtOptions.Authority` değerini aşağıdaki belirteç veren URI 'sine ayarlayın.
+1. Ayrıca `ConfigureServices()` yöntemi içinde, `jwtOptions.Authority` değerini aşağıdaki belirteç veren URI 'sine ayarlayın.
 
-    @No__t-0 ' yı B2C kiracınızın adıyla değiştirin.
+    `<your-tenant-name>`, B2C kiracınızın adıyla değiştirin.
 
     ```csharp
     jwtOptions.Authority = $"https://<your-tenant-name>.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
     ```
 
-1. @No__t-0 yönteminde CORS 'yi yapılandırın.
+1. `Configure()` yönteminde CORS 'yi yapılandırın.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -113,8 +113,8 @@ Tek sayfalı uygulamanızın ASP.NET Core Web API 'sini çağırmasını sağlam
             builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-1. (Yalnızca Visual Studio) Çözüm Gezgini **Özellikler** altında, *launchsettings. JSON* dosyasını açın, sonra `iisExpress` bloğunu bulun.
-1. (Yalnızca Visual Studio) @No__t-0 değerini, önceki bir adımda *webapi1* uygulamasını kaydettiğiniz zaman, belirttiğiniz bağlantı noktası numarasıyla güncelleştirin. Örnek:
+1. (Yalnızca Visual Studio) Çözüm Gezgini **Özellikler** altında, *launchsettings. JSON* dosyasını açın ve sonra `iisExpress` bloğunu bulun.
+1. (Yalnızca Visual Studio) `applicationURL` değerini, önceki bir adımda *webapi1* uygulamasını kaydettiğiniz zaman, belirttiğiniz bağlantı noktası numarasıyla güncelleştirin. Örneğin:
 
     ```json
     "iisExpress": {
@@ -133,10 +133,10 @@ SPA 'daki ayarları değiştirmek için:
 
 1. Önceki öğreticide indirdiğiniz veya Klonladığınız [Active-Directory-B2C-JavaScript-msal-singlepageapp][github-js-spa] projesinde *index. html* dosyasını açın.
 1. Örneği için URI ile birlikte yapılandırın. daha önce oluşturduğunuz ve Web API 'sinin URL 'si. *okuma* kapsamı.
-    1. @No__t-0 tanımında, `b2cScopes` değerini kapsamın tam URI 'siyle değiştirin (daha önce kaydettiğiniz **tam kapsam değeri** ).
-    1. @No__t-0 değerini, önceki bölümde belirttiğiniz `applicationURL` değerine değiştirin.
+    1. `appConfig` tanımında, `b2cScopes` değerini kapsamın tam URI 'siyle değiştirin (daha önce kaydettiğiniz **kapsam** değeri).
+    1. `webApi` değerini, Web API uygulamasını önceki bir adımda kaydettiğinizde eklediğiniz yeniden yönlendirme URI 'SI olarak değiştirin.
 
-    @No__t-0 tanımı aşağıdaki kod bloğuna benzer olmalıdır (kiracı adınızla `<your-tenant-name>` ' in yerine):
+    `appConfig` tanımı aşağıdaki kod bloğuna benzer olmalıdır (kiracı adınızla `<your-tenant-name>`yerine):
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -158,11 +158,11 @@ Visual Studio 'da, *B2C-WebAPI. sln* çözümünü derlemek ve hata ayıklamak i
 
 Visual Studio yerine `dotnet` CLı kullanmayı tercih ediyorsanız:
 
-1. Bir konsol penceresi açın ve *@no__t -1. csproj* dosyasını içeren dizine geçin. Örnek:
+1. Bir konsol penceresi açın ve *\*. csproj* dosyasını içeren dizine geçin. Örneğin:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
-1. @No__t-0 ' i yürüterek Web API 'sini derleyin ve çalıştırın.
+1. `dotnet run`yürüterek Web API 'sini derleyin ve çalıştırın.
 
     API çalışır duruma geldiğinde aşağıdakine benzer bir çıktı görmeniz gerekir (öğretici için `NETSDK1059` uyarılarını güvenle yoksayabilirsiniz):
 
@@ -176,7 +176,7 @@ Visual Studio yerine `dotnet` CLı kullanmayı tercih ediyorsanız:
 
 ### <a name="run-the-single-page-app"></a>Tek sayfalı uygulamayı çalıştırma
 
-1. Bir konsol penceresi açın ve Node. js örneğini içeren dizine geçin. Örnek:
+1. Bir konsol penceresi açın ve Node. js örneğini içeren dizine geçin. Örneğin:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 
@@ -193,7 +193,7 @@ Visual Studio yerine `dotnet` CLı kullanmayı tercih ediyorsanız:
     Listening on port 6420...
     ```
 
-1. Uygulamayı görüntülemek için tarayıcınızda `http://localhost:6420` ' a gidin.
+1. Uygulamayı görüntülemek için tarayıcınızda `http://localhost:6420` gidin.
 1. [Önceki öğreticide](active-directory-b2c-tutorials-spa.md)kullandığınız e-posta adresini ve parolayı kullanarak oturum açın. Başarılı oturum açma sonrasında `User 'Your Username' logged-in` iletisini görmeniz gerekir.
 1. **Web API 'Si çağır** düğmesini seçin. SPA, Azure AD B2C bir yetkilendirme izni edinir ve sonra, dizin sayfasının içeriğini göstermek için korunan Web API 'sine erişir:
 

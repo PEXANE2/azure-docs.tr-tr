@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717268"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524096"
 ---
-## <a name="create-a-speech-resource"></a>Konuşma kaynak oluştur
+## <a name="create-a-speech-resource"></a>Konuşma kaynağı oluşturma
 
-1. Oturum [Azure portalı](https://portal.azure.com)
-1. Tıklayın [Oluştur **konuşma** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) kaynak
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [ **Konuşma** kaynağı oluştur](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) ' a tıklayın
 1. Tüm gerekli ayarları girin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |--|--|
     |Ad|İstenen ad (2-64 karakter)|
-    |Subscription|Uygun aboneliği seçin|
-    |Location|Herhangi bir yakındaki ve kullanılabilir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0` -en az bir fiyatlandırma katmanı|
-    |Kaynak Grubu|Kullanılabilir kaynak grubu seçin|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
 
-1. Tıklayın **Oluştur** ve kaynak oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
-1. Toplama yapılandırılmış `endpoint` ve API anahtarı:
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
+1. Yapılandırılmış `endpoint` ve bir API anahtarı toplayın:
 
-    |Portal'daki kaynak sekmesi|Ayar|Value|
+    |Portalda kaynak sekmesi|Ayar|Değer|
     |--|--|--|
-    |**Genel bakış**|Uç Nokta|Uç nokta kopyalayın. Benzer şekilde görünür `https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
-    |**anahtarları**|API anahtarı|İki anahtar 1 kopyalayın. Boşluk veya tire ile 32 bir alfasayısal karakter dizesi olduğu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Genel Bakış**|Uç Nokta|Uç noktayı kopyalayın. Şuna benzer `https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
+    |**Belirlenmesine**|API anahtarı|İki anahtardan oluşan 1 ' i kopyalayın. Boşluk veya kesik çizgi olmayan 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

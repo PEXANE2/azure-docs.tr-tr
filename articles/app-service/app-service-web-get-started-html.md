@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ac0fe7a77496a0dae8606e4599bcb262a191196c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 12c034e6521a1afd25e2390502faec39461bf5b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471480"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure'da statik bir HTML web uygulaması oluşturma
 
@@ -117,9 +117,11 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan ta
 
 ## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetin
 
-Oluşturduğunuz web uygulamasını yönetmek için <a href="https://portal.azure.com" target="_blank">Azure portalına</a> gidin.
+Oluşturduğunuz Web uygulamasını yönetmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin. 
 
-Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
+![Azure portal uygulama hizmetleri 'ni seçin](./media/app-service-web-get-started-html/portal0.png)
+
+**Uygulama hizmetleri** sayfasında, Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-html/portal1.png)
 

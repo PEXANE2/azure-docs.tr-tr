@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d880bcc7c0c3f1b9cf647242a54cc779ba8945e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172413"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474426"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -55,7 +55,7 @@ Bu öğreticide, Azure portal kullanarak Azure AD DS örneğini oluşturup yapı
 
 **Etkinleştirme Azure AD Domain Services** Sihirbazı 'nı başlatmak için aşağıdaki adımları izleyin:
 
-1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
+1. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin.
 1. Arama çubuğuna *etki alanı Hizmetleri* girin, sonra arama önerilerindeki *Azure AD Domain Services* seçin.
 1. Azure AD Domain Services sayfasında **Oluştur**' u seçin. **Etkinleştirme Azure AD Domain Services** Sihirbazı başlatılır.
 1. Yönetilen etki alanını oluşturmak istediğiniz Azure **aboneliğini** seçin.

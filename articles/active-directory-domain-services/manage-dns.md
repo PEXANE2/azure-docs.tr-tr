@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612353"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474576"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında DNS 'yi yönetme
 
@@ -23,7 +23,9 @@ Azure Active Directory Domain Services (Azure AD DS) ' de, anahtar bileşen DNS 
 
 Kendi uygulama ve hizmetlerinizi çalıştırırken, etki alanına katılmamış makineler için DNS kayıtları oluşturmanız, yük dengeleyiciler için sanal IP adresleri yapılandırmanız veya dış DNS ileticileri ayarlamanız gerekebilir. *AAD DC Administrators* grubuna ait kullanıcılara Azure AD DS yönetilen etkı alanında DNS yönetim ayrıcalıkları verilir ve özel DNS kayıtları oluşturabilir ve düzenleyebilir.
 
-Bu makalede, DNS sunucusu araçlarının nasıl yükleneceği ve kayıtları yönetmek için DNS konsolunun nasıl kullanılacağı gösterilmektedir.
+Karma ortamda, şirket içi AD DS ortamında yapılandırılan DNS bölgeleri ve kayıtları Azure AD DS ile eşitlenmez. Kendi DNS girdilerinizi tanımlamak ve kullanmak için Azure AD DS DNS sunucusunda kayıtlar oluşturun veya ortamınızda var olan DNS sunucularını işaret eden koşullu ileticileri kullanın.
+
+Bu makalede, DNS sunucusunu nasıl yükleyeceğiniz ve Azure AD DS kayıtları yönetmek için DNS konsolunu nasıl kullanacağınız gösterilmektedir.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -43,10 +45,10 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 ## <a name="install-dns-server-tools"></a>DNS sunucusu araçları 'nı yükler
 
-DNS oluşturmak ve değiştirmek için, DNS sunucusu araçları 'nı yüklemeniz gerekir. Bu araçlar, Windows Server 'da bir özellik olarak yüklenebilir. Windows istemcisine yönetimsel araçların nasıl yükleneceği hakkında daha fazla bilgi için bkz. Install [uzak sunucu yönetim araçları (RSAT)][install-rsat].
+Azure AD DS 'de DNS kayıtları oluşturmak ve değiştirmek için, DNS sunucusu araçları 'nı yüklemeniz gerekir. Bu araçlar, Windows Server 'da bir özellik olarak yüklenebilir. Windows istemcisine yönetimsel araçların nasıl yükleneceği hakkında daha fazla bilgi için bkz. Install [uzak sunucu yönetim araçları (RSAT)][install-rsat].
 
 1. Yönetim sanal makinenizde oturum açın. Azure portal kullanarak bağlanma adımları için bkz. [Windows Server VM 'ye bağlanma][connect-windows-server-vm].
-1. **Sunucu Yöneticisi** , VM 'de oturum açtığınızda varsayılan olarak açılmalıdır. Aksi takdirde, **Başlat** menüsünde **Sunucu Yöneticisi**' yi seçin.
+1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi**öğesini seçin.
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
 1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.

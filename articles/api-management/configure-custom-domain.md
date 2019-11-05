@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135531"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472206"
 ---
 # <a name="configure-a-custom-domain-name"></a>Özel bir etki alanı adı yapılandırma
 
@@ -59,11 +59,11 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 1. Güncelleştirmek istediğiniz uç noktayı seçin.
 1. Sağdaki pencerede **Özel ' e**tıklayın.
 
-    - **Özel etki alanı adı**' nda, kullanmak istediğiniz adı belirtin. Örneğin: `api.contoso.com`.
+    - **Özel etki alanı adı**' nda, kullanmak istediğiniz adı belirtin. Örneğin, `api.contoso.com`.
     - **Sertifikada**Key Vault bir sertifika seçin. Geçerli bir de yükleyebilirsiniz. Sertifika bir parolayla korunuyorsa PFX dosyası ve **parolasını**girin.
 
     > [!NOTE]
-    > Joker karakter etki alanı adları, `*.contoso.com` örn. tüketim katmanı hariç tüm katmanlarda desteklenir.
+    > Joker karakter etki alanı adları, örn. `*.contoso.com`, tüketim katmanı hariç tüm katmanlarda desteklenir.
 
     > [!TIP]
     > Sertifikaları yönetmek için Azure Key Vault kullanmanızı ve onları oto döndürme için ayarlamayı öneririz.
@@ -88,7 +88,7 @@ Bu makalede açıklanan adımları gerçekleştirmek için şunları yapmanız g
 -   API Management ağ geçidi IP adresinizi işaret eden bir A-kaydı yapılandırın.
 
 > [!NOTE]
-> API Yönetimi örneğinin IP adresi statik olsa da, birkaç senaryoda değişebilir. Bu nedenle, özel etki alanı yapılandırılırken CNAME kullanılması önerilir. DNS yapılandırma yöntemi seçerken göz önüne alın. [API Yönetimi hakkında SSS](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)bölümünde daha fazla bilgi edinin.
+> API Yönetimi örneğinin IP adresi statik olsa da, birkaç senaryoda değişebilir. Bu nedenle, özel etki alanı yapılandırılırken CNAME kullanılması önerilir. DNS yapılandırma yöntemi seçerken göz önüne alın. [API Management SSS](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)bölümünde daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

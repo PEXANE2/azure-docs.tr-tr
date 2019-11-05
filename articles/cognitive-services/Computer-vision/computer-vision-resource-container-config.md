@@ -8,58 +8,58 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1df8199abbbc195db873ab3da515cb1dd5fe9761
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129957"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484082"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Görüntü İşleme Docker kapsayıcılarını yapılandırma
 
-`docker run` Komut bağımsız değişkenlerini kullanarak görüntü işleme kapsayıcısının çalışma zamanı ortamını yapılandırırsınız. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
+Görüntü İşleme kapsayıcısının çalışma zamanı ortamını `docker run` komut bağımsız değişkenlerini kullanarak yapılandırırsınız. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç komuta [örnek](#example-docker-run-commands) vardır. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), Ve [ `Eula` ](#eula-setting) ayarları birlikte kullanılır ve bunları; Aksi takdirde, tüm üç için geçerli değerler sağlamanız gerekir kapsayıcınızı başlatılamıyor. Bir kapsayıcı örneği oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalama](computer-vision-how-to-install-containers.md).
+> [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)ve [`Eula`](#eula-setting) ayarları birlikte kullanılır ve üç tane için de geçerli değerler sağlamanız gerekir; Aksi takdirde Kapsayıcınız başlatılmaz. Bir kapsayıcı oluşturmak için bu yapılandırma ayarlarını kullanma hakkında daha fazla bilgi için bkz. [faturalandırma](computer-vision-how-to-install-containers.md).
 
 ## <a name="apikey-configuration-setting"></a>ApiKey yapılandırma ayarı
 
-Bu ayar, kapsayıcının fatura `Cognitive Services` bilgilerini izlemek için kullanılan Azure Kaynak anahtarını belirtir. `ApiKey` Apikey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen bilişsel _Hizmetler_ kaynağı için geçerli bir anahtar olması gerekir.
+`ApiKey` ayarı, kapsayıcının fatura bilgilerini izlemek için kullanılan Azure `Cognitive Services` kaynak anahtarını belirtir. ApiKey için bir değer belirtmeniz gerekir ve değerin [`Billing`](#billing-configuration-setting) yapılandırma ayarı için belirtilen bilişsel _Hizmetler_ kaynağı için geçerli bir anahtar olması gerekir.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: Bilişsel **Hizmetler** Kaynak yönetimi, **anahtarlar** altında
+* Azure portal: bilişsel **Hizmetler** kaynak yönetimi, **anahtarlar** altında
 
-## <a name="applicationinsights-setting"></a>Applicationınsights ayarı
+## <a name="applicationinsights-setting"></a>ApplicationInsights ayarı
 
 [!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
-## <a name="billing-configuration-setting"></a>Yapılandırma ayarı faturalama
+## <a name="billing-configuration-setting"></a>Faturalandırma yapılandırma ayarı
 
-Ayar, Azure üzerinde bulunan bilişsel hizmetler kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir. `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+`Billing` ayarı, Azure üzerinde bulunan bilişsel _Hizmetler_ kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
 Bu ayar aşağıdaki yerde bulunabilir:
 
-* Azure portal: Bilişsel **Hizmetler** Genel bakış, etiketli`Endpoint`
+* Azure portal: bilişsel **hizmetlere** genel bakış, `Endpoint` etiketli
 
-Aşağıdaki tabloda gösterildiği gibi `vision/v1.0` , yönlendirmeyi, uç nokta URI 'sine eklemeyi unutmayın. 
+Aşağıdaki tabloda gösterildiği gibi `vision/v1.0` yönlendirmeyi uç nokta URI 'sine eklemeyi unutmayın. 
 
 |Gerekli| Ad | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Evet| `Billing` | Dize | Faturalandırma uç noktası URI'si<br><br>Örnek:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Evet| `Billing` | Dize | Faturalama uç noktası URI 'SI<br><br>Örnek:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
-## <a name="eula-setting"></a>EULA'yı ayarlama
+## <a name="eula-setting"></a>EULA ayarı
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
-## <a name="fluentd-settings"></a>Fluentd ayarları
+## <a name="fluentd-settings"></a>Akışkan entd ayarları
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -67,52 +67,50 @@ Aşağıdaki tabloda gösterildiği gibi `vision/v1.0` , yönlendirmeyi, uç nok
 
 [!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
-## <a name="logging-settings"></a>Günlük ayarları
+## <a name="logging-settings"></a>Günlük kaydı ayarları
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 ## <a name="mount-settings"></a>Bağlama ayarları
 
-Kullanım bağlama okumak ve kapsayıcı gelen ve giden veri yazmak için bağlar. Bir giriş bağlama belirtin veya çıkış bağlama belirterek `--mount` seçeneğini [docker run](https://docs.docker.com/engine/reference/commandline/run/) komutu.
+Kapsayıcıya ve kapsayıcılardan veri okumak ve buradan veri yazmak için BIND bağlama kullanın. [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunda `--mount` seçeneğini belirterek bir giriş bağlama veya çıkış bağlama belirtebilirsiniz.
 
 Görüntü İşleme kapsayıcıları, eğitim veya hizmet verilerini depolamak için giriş veya çıkış taklarını kullanmaz. 
 
-Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](computer-vision-how-to-install-containers.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
+Konak bağlama konumunun tam sözdizimi, ana bilgisayar işletim sistemine bağlı olarak değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](computer-vision-how-to-install-containers.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Name | Veri türü | Açıklama |
+|İsteğe bağlı| Ad | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
-|İzin verilmedi| `Input` | Dize | Görüntü İşleme kapsayıcılar bunu kullanmaz.|
-|İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
+|İzin verilmiyor| `Input` | Dize | Görüntü İşleme kapsayıcılar bunu kullanmaz.|
+|İsteğe bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` ' dır. Bu, günlüklerin konumudur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın
+## <a name="example-docker-run-commands"></a>Örnek Docker Run komutları
 
-Aşağıdaki örnekler, yazma ve kullanma göstermek için yapılandırma ayarlarını kullanır. `docker run` komutları.  Kapsayıcıyı çalıştıran sonra dek çalıştırmaya devam [Durdur](computer-vision-how-to-install-containers.md#stop-the-container) bu.
+Aşağıdaki örnekler `docker run` komutlarının nasıl yazılacağını ve kullanılacağını göstermek için yapılandırma ayarlarını kullanır.  Çalışan bir kez, kapsayıcıyı [durduruncaya](computer-vision-how-to-install-containers.md#stop-the-container) kadar çalışmaya devam eder.
 
-* **Satır devamlılık karakteri**: Aşağıdaki bölümlerdeki Docker komutları, satır devamlılık karakteri olarak ters eğik `\`çizgi kullanır. Bu konak işletim sisteminin gereksinimlerine göre kaldırın veya değiştirin. 
+* **Satır devamlılık karakteri**: aşağıdaki bölümlerdeki Docker komutları, satır devamlılık karakteri olarak `\`ters eğik çizgi kullanır. Bunu, ana bilgisayar işletim sisteminizin gereksinimlerine göre değiştirin veya kaldırın. 
 * **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
 
-Yerine {_argument_name_} kendi değerlerinizle:
+{_Argument_name_} değerini kendi değerlerinizle değiştirin:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-| **{API_KEY}** | `Computer Vision` Azure`Computer Vision` anahtarları sayfasında kaynağın uç nokta anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{API_KEY}** | Azure `Computer Vision` Keys sayfasında `Computer Vision` kaynağının bitiş noktası anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `Computer Vision` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](computer-vision-how-to-install-containers.md#gathering-required-parameters) konusuna bakın. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](computer-vision-how-to-install-containers.md#billing).
-> Apikey değeri, Azure `Cognitive Services` kaynak anahtarları sayfasından alınan **anahtardır** .
+> Kapsayıcıyı çalıştırmak için `Eula`, `Billing`ve `ApiKey` seçenekleri belirtilmelidir; Aksi takdirde, kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](computer-vision-how-to-install-containers.md#billing).
+> ApiKey değeri, Azure `Cognitive Services` kaynak anahtarları sayfasından alınan **anahtardır** .
 
 ## <a name="container-docker-examples"></a>Kapsayıcı Docker örnekleri
-
-#### <a name="readtabread"></a>[Okuma](#tab/read)
 
 Aşağıdaki Docker örnekleri okuma kapsayıcısı içindir.
 
 ### <a name="basic-example"></a>Temel örnek
 
-  ```
+  ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
@@ -122,7 +120,7 @@ Aşağıdaki Docker örnekleri okuma kapsayıcısı içindir.
 
 ### <a name="logging-example"></a>Günlüğe kaydetme örneği 
 
-  ```
+  ```docker
   docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
@@ -130,33 +128,6 @@ Aşağıdaki Docker örnekleri okuma kapsayıcısı içindir.
   ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
-
-#### <a name="recognize-texttabrecognize-text"></a>[Metin tanıma](#tab/recognize-text)
-
-Aşağıdaki Docker örnekleri Metin Tanıma kapsayıcısı içindir.
-
-### <a name="basic-example"></a>Temel örnek
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Günlüğe kaydetme örneği
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={ENDPOINT_URI} \
-  ApiKey={API_KEY} \
-  Logging:Console:LogLevel:Default=Information
-  ```
-
-***
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

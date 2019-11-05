@@ -8,27 +8,30 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790078"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485146"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
 
 > [!Note]
-> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. [Azure Bilişsel Arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
+> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. Portal ve [arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
-Bu makalede, Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposunu nasıl bağlayacağınızı ve keşfedeceğinizi öğreneceksiniz. Bu kılavuzda kullanılan bilgi deposu örneğini oluşturmak için, bkz. [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md).
+
+Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğrenin. Şablonlarla daha hızlı çalışmaya başlayabilir veya sıfırdan özel bir pano oluşturabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-+ Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md) bölümündeki adımları izleyin. Ayrıca, bilgi deposunu oluşturmak için kullandığınız Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
-
 + [Power BI Desktop yüklensin](https://powerbi.microsoft.com/downloads/)
 
-## <a name="connect-with-power-bi"></a>Power BI ile bağlanma
++ Azure Tablo depolama alanına yansıtma ile bir bilgi deposu gerekir. Ayrıca, bilgi deposunu oluşturmak için kullanılan Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
+
+Örnek bir bilgi deposuyla çalışmak istiyorsanız [bilgi deposu oluşturmak](knowledge-store-create-portal.md)için yönergeleri izleyin.
+
+## <a name="create-a-custom-report"></a>Özel rapor oluşturma
 
 1. Power BI Desktop başlatın ve **veri al**' a tıklayın.
 

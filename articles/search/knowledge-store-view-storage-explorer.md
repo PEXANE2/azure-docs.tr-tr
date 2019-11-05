@@ -6,21 +6,21 @@ manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789968"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485007"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Depolama Gezgini bir bilgi deposu görüntüleme
 
 > [!Note]
-> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. [Azure Bilişsel Arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
+> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. Portal ve [arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
 >
-Bu makalede, Azure portal Depolama Gezgini kullanarak bir bilgi deposunu nasıl bağlayacağınızı ve keşfedeceğinizi öğreneceksiniz. Bu kılavuzda kullanılan bilgi deposu örneğini oluşturmak için, bkz. [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md).
+Bu makalede, Azure portal Depolama Gezgini kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -30,7 +30,7 @@ Bu makalede, Azure portal Depolama Gezgini kullanarak bir bilgi deposunu nasıl 
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Depolama Gezgini bir bilgi deposunu görüntüleyin, düzenleyin ve sorgulayın
 
-1. Azure portal, bilgi deposunu oluşturmak için kullandığınız depolama hesabını açın.
+1. Azure portal, bilgi deposunu oluşturmak için kullandığınız [Depolama hesabını açın](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) .
 
 1. Depolama hesabının sol gezinti bölmesinde **Depolama Gezgini**' ye tıklayın.
 
@@ -58,12 +58,8 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu bilgi deposunu Power BI bağlama hakkında bilgi edinmek için aşağıdaki makaleye bakın.
+Daha derin analizler için bu bilgi deposunu Power BI bağlayın veya farklı bir bilgi deposu oluşturmak için REST API ve Postman kullanarak kodla ilerle ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Power BI ile bağlanma](knowledge-store-connect-power-bi.md)
-
-REST API 'Leri ve Postman kullanarak bilgi deposu oluşturmayı öğrenmek için aşağıdaki makaleye bakın.  
-
-> [!div class="nextstepaction"]
-> [REST 'te bilgi deposu oluşturma](knowledge-store-howto.md)
+> [Power BI Ile bağlanma](knowledge-store-connect-power-bi.md)
+> [rest 'Te bilgi deposu oluşturma](knowledge-store-howto.md)

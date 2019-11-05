@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472606"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki gelişmiş Zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -31,7 +31,7 @@ Giriş denetleyicileri gibi kaynak kullanımı yoğun uygulamalar için belirli 
 
 AKS kümenizi oluştururken, GPU desteğiyle veya çok sayıda güçlü CPU ile düğümleri dağıtabilirsiniz. Bu düğümler genellikle Machine Learning (ML) veya yapay zeka (AI) gibi büyük veri işleme iş yükleri için kullanılır. Bu tür donanımlar genellikle dağıtılacak maliyetli bir düğüm kaynağı olduğundan, bu düğümlerde zamanlanabilecek iş yüklerini sınırlayın. Bunun yerine, giriş hizmetlerini çalıştırmak ve diğer iş yüklerini engellemek için kümedeki bazı düğümleri ayırmak isteyebilirsiniz.
 
-Farklı düğümler için bu destek, birden çok düğüm havuzu kullanılarak sağlanır. AKS kümesi bir veya daha fazla düğüm havuzu sağlar. AKS 'de birden çok düğüm havuzu desteği şu anda önizlemededir.
+Farklı düğümler için bu destek, birden çok düğüm havuzu kullanılarak sağlanır. AKS kümesi bir veya daha fazla düğüm havuzu sağlar.
 
 Kubernetes Zamanlayıcı, düğümlerde hangi iş yüklerinin çalıştırılacağını kısıtlamak için tatları ve toleranları kullanabilir.
 
@@ -44,7 +44,7 @@ Bir aks kümesine Pod dağıttığınızda, Kubernetes yalnızca bir toleranatio
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Düğümlere bir taınt uygulandıktan sonra, düğümlerde zamanlamaya izin veren Pod belirtiminde bir tolerans tanımlarsınız. Aşağıdaki örnek, `sku: gpu` ve `effect: NoSchedule` ' i tanımlar ve önceki adımda düğüme uygulanmış olan Taint 'e tolerans sağlar:
+Düğümlere bir taınt uygulandıktan sonra, düğümlerde zamanlamaya izin veren Pod belirtiminde bir tolerans tanımlarsınız. Aşağıdaki örnek, önceki adımda düğümüne uygulanan Taint 'e tolerans sağlamak için `sku: gpu` ve `effect: NoSchedule` tanımlar:
 
 ```yaml
 kind: Pod
@@ -69,7 +69,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Bu Pod dağıtıldığında, `kubectl apply -f gpu-toleration.yaml` ' ı kullanma gibi Kubernetes, tüm düğümleri üzerinde taınt uygulanmış olarak başarıyla zamanlayabilir. Bu mantıksal yalıtım, bir küme içindeki kaynaklara erişimi denetlemenize olanak tanır.
+Bu Pod dağıtıldığında, `kubectl apply -f gpu-toleration.yaml`kullanımı gibi Kubernetes, bir Taint uygulanmış olan düğümlerde Pod 'u başarıyla zamanlayabilir. Bu mantıksal yalıtım, bir küme içindeki kaynaklara erişimi denetlemenize olanak tanır.
 
 Taşı uyguladığınızda, uygulama geliştiricileriniz ve sahipleriyle birlikte çalışarak dağıtımlarındaki gerekli toleranları tanımlamasına izin verin.
 
@@ -81,16 +81,16 @@ AKS 'de birden çok düğüm havuzu kullanma hakkında daha fazla bilgi için bk
 
 AKS 'deki bir düğüm havuzunu yükselttiğinizde, litre ve tolerans, yeni düğümlere uygulandıkları sırada bir küme düzeniyle uyar:
 
-- **Sanal makine ölçek desteği olmayan varsayılan kümeler**
-  - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Yükselttiğinizde, ek bir düğüm (*Düğüm3*) oluşturulur.
+- **Sanal makine ölçek kümeleri kullanan varsayılan kümeler**
+  - İki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Düğüm havuzunu yükseltirsiniz.
+  - İki ek düğüm oluşturulur, *Düğüm3* ve *Düğüm4*ve litre sırasıyla geçirilir.
+  - Özgün *Düğüm1* ve *Düğüm2* silinir.
+
+- **Sanal makine ölçek kümesi desteği olmayan kümeler**
+  - Yine de iki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Yükselttiğinizde, ek bir düğüm (*Düğüm3*) oluşturulur.
   - *Düğüm1* 'in talar *Düğüm3*'e uygulanır, sonra *Düğüm1* silinir.
   - Başka bir yeni düğüm oluşturulur (önceki *Düğüm1* silindiği için *Düğüm1*adında) ve *Düğüm2* talitre yeni *Düğüm1*uygulanır. Sonra, *Düğüm2* silinir.
   - *Düğüm1* ' de *Düğüm3*olur ve *Düğüm2* *Düğüm1*olur.
-
-- **Sanal makine ölçek kümeleri kullanan kümeler**
-  - Yine de iki düğümlü bir kümeniz olduğunu varsayalım- *Düğüm1* ve *Düğüm2*. Düğüm havuzunu yükseltirsiniz.
-  - İki ek düğüm oluşturulur, *Düğüm3* ve *Düğüm4*ve litre sırasıyla geçirilir.
-  - Özgün *Düğüm1* ve *Düğüm2* silinir.
 
 AKS 'deki bir düğüm havuzunu ölçeklendirdiğiniz zaman, litre ve tolerans, tasarıma göre yerine geçer.
 
@@ -106,7 +106,7 @@ Yüksek miktarda bellekle bir düğüm örneğine göz atalım. Bu düğümler, 
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-Pod belirtimi daha sonra bir düğüm üzerinde ayarlanan etiketle eşleşen bir düğüm seçici tanımlamak için `nodeSelector` özelliğini ekler:
+Pod belirtimi daha sonra, düğüm üzerinde ayarlanan etiketle eşleşen bir düğüm seçici tanımlamak için `nodeSelector` özelliğini ekler:
 
 ```yaml
 kind: Pod

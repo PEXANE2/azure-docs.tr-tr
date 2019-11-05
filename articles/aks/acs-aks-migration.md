@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097895"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473004"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Azure Container Service (ACS) ile Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -26,9 +26,9 @@ ACS ve AKS, geçişi etkileyen bazı önemli alanlarda farklılık gösterir. He
 
 * AKS düğümleri [yönetilen diskleri](../virtual-machines/windows/managed-disks-overview.md)kullanır.
     * Yönetilmeyen disklerin, AKS düğümlerine iliştirilebilmesi için önce dönüştürülmesi gerekir.
-    * Azure `StorageClass` diskleri için özel nesnelerin, `unmanaged` olarak `managed`değiştirilmesi gerekir.
-    * Her türlü `PersistentVolumes` kullanılmalıdır. `kind: Managed`
-* AKS [birden çok düğüm havuzunu](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) destekler (Şu anda önizleme aşamasındadır).
+    * Azure diskleri için özel `StorageClass` nesnelerinin `unmanaged` `managed`olarak değiştirilmesi gerekir.
+    * Herhangi bir `PersistentVolumes` `kind: Managed`kullanmalıdır.
+* AKS [birden çok düğüm havuzunu](https://docs.microsoft.com/azure/aks/use-multiple-node-pools)destekler.
 * Windows Server tabanlı düğümler Şu anda [AKS 'de önizlemededir](https://azure.microsoft.com/blog/kubernetes-on-azure/).
 * AKS, sınırlı bir [bölge](https://docs.microsoft.com/azure/aks/quotas-skus-regions)kümesini destekler.
 * AKS, barındırılan bir Kubernetes denetim düzlemi içeren bir yönetilen hizmettir. Daha önce ACS asıllarınızın yapılandırmasını değiştirdiyseniz uygulamalarınızı değiştirmeniz gerekebilir.
@@ -47,10 +47,10 @@ AKS, Kubernetes denetim düzlemi 'ni yönetse de, yeni kümenize eklenecek düğ
 
 Örnek:
 
-| Name | Count | VM boyutu | İşletim sistemi |
+| Ad | Sayı | VM boyutu | İşletim sistemi |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 1\. | Standard_D2_v2 | Windows |
+| agentpool1 | 1 | Standard_D2_v2 | Windows |
 
 Geçiş sırasında aboneliğinize daha fazla sanal makine dağıtılacağından, Kotalarınızın ve limitlerinizin bu kaynaklar için yeterli olduğunu doğrulamanız gerekir. 
 
@@ -58,7 +58,7 @@ Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet sınırları](https://do
 
 ### <a name="networking"></a>Ağ
 
-Karmaşık uygulamalar için genellikle her seferinde değil zaman içinde geçiş yapabilirsiniz. Bu, eski ve yeni ortamların ağ üzerinden iletişim kurması gerekebilecek anlamına gelir. Daha önce `ClusterIP` iletişim kurmak için Hizmetleri kullanan uygulamaların tür `LoadBalancer` olarak açığa çıkarılması ve güvenli bir şekilde sağlanması gerekebilir.
+Karmaşık uygulamalar için genellikle her seferinde değil zaman içinde geçiş yapabilirsiniz. Bu, eski ve yeni ortamların ağ üzerinden iletişim kurması gerekebilecek anlamına gelir. Daha önce iletişim kurmak için `ClusterIP` hizmetleri kullanan uygulamaların, tür `LoadBalancer` olarak sunulup güvenli bir şekilde sağlanması gerekebilir.
 
 Geçişi gerçekleştirmek için, istemcileri AKS üzerinde çalışan yeni hizmetlere işaret etmek isteyeceksiniz. DNS 'yi, AKS kümenizin önünde bulunan Load Balancer işaret etmek üzere güncelleştirerek trafiği yeniden yönlendirmenizi öneririz.
 
@@ -112,13 +112,13 @@ Uygulamanız aynı dosya paylaşımının işaret eden birden çok kopyayı bar�
 4. Doğrulamalısınız.
 5. AKS kümesine giden trafiği işaret edin.
 
-Boş bir paylaşımdan başlamak ve kaynak verilerin bir kopyasını oluşturmak istiyorsanız, bu [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) komutları kullanarak verilerinizi geçirebilirsiniz.
+Boş bir paylaşımdan başlamak ve kaynak verilerin bir kopyasını oluşturmak istiyorsanız, [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) komutlarını kullanarak verilerinizi geçirebilirsiniz.
 
 ### <a name="deployment-strategy"></a>Dağıtım stratejisi
 
-AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut CI/CD işlem hattınızı kullanmanızı öneririz. Mevcut dağıtım görevlerinizi kopyalayın ve yeni aks `kubeconfig` kümesine işaret edin.
+AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut CI/CD işlem hattınızı kullanmanızı öneririz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` yeni AKS kümesine işaret ettiğini doğrulayın.
 
-Bu mümkün değilse, kaynak tanımlarını ACS 'den dışarı aktarın ve AKS 'e uygulayın. Nesneleri dışarı aktarmak için ' i kullanabilirsiniz. `kubectl`
+Bu mümkün değilse, kaynak tanımlarını ACS 'den dışarı aktarın ve AKS 'e uygulayın. Nesneleri dışarı aktarmak için `kubectl` kullanabilirsiniz.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
@@ -137,9 +137,9 @@ kubectl get deployment -o=yaml --export > deployments.yaml
    > [!NOTE]
    > GitHub 'daki [Azure/aks](https://github.com/Azure/AKS/tree/master/examples/vnet) deposunda aks için örnek Azure Resource Manager şablonları bulun.
 
-2. YAML tanımlarınızda gerekli değişiklikleri yapın. Örneğin, için `apps/v1beta1` `apps/v1` ile`Deployments`değiştirin.
+2. YAML tanımlarınızda gerekli değişiklikleri yapın. Örneğin, `apps/v1beta1` `Deployments`için `apps/v1` ile değiştirin.
 
-3. [Birimleri geçirme](#migrating-persistent-volumes) (isteğe bağlı) ACS kümenizdeki AKS kümenize.
+3. ACS kümenizdeki birimleri (isteğe bağlı) AKS kümenize [geçirin](#migrating-persistent-volumes) .
 
 4. AKS 'e uygulama dağıtmak için CI/CD sisteminizi kullanın. Ya da YAML tanımlarını uygulamak için kubectl kullanın.
 

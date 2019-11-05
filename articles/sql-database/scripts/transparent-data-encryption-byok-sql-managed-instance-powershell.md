@@ -10,15 +10,15 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 04/19/2019
-ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 11/04/2019
+ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569700"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500052"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Azure Key Vault (Önizleme) ile kendi anahtarınızı kullanarak yönetilen bir örnekteki Saydam Veri Şifrelemesi yönetme
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Yönetilen bir örnekteki Saydam Veri Şifrelemesi, Azure Key Vault kendi anahtarınızı kullanarak yönetin
 
 Bu PowerShell betiği örneği, Azure Key Vault bir anahtar kullanarak Azure SQL yönetilen örneği için Kendi Anahtarını Getir (Önizleme) senaryosunda Saydam Veri Şifrelemesi (TDE) yapılandırır. TDE Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için bkz. [tde kendi anahtarını getir Azure SQL 'e](../transparent-data-encryption-byok-azure-sql.md).
 
@@ -36,7 +36,7 @@ Her iki PowerShell 'i yerel olarak veya Azure Cloud Shell kullanmak için AZ Pow
 
 PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-## <a name="sample-scripts"></a>Örnek betikler
+## <a name="sample-scripts"></a>Örnek komut dosyaları
 
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
 

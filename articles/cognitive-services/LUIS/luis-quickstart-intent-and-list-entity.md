@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Tam metin eşleşmesi-LUSıS'
+title: 'Öğretici: tam metin eşleşmesi-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Bir listedeki önceden tanımlanmış öğelerle eşleşen verileri alma. Listedeki her öğenin tam olarak eşleşen eş anlamlıları da olabilir
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307605"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492714"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Öğretici: Tam metin ile eşleşen verileri bir utterde al
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Öğretici: tam metin ile eşleşen verileri bir utterde alın
 
 Bu öğreticide, önceden tanımlanmış bir öğe listesiyle eşleşen varlık verilerinin nasıl alınacağını anlayın. 
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -31,7 +33,7 @@ Bu öğreticide, önceden tanımlanmış bir öğe listesiyle eşleşen varlık 
 > * Liste varlığı ekleme 
 > * Eğitim 
 > * Yayımlama
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -90,11 +92,11 @@ Her öğenin birincil, _kurallı_adı departman adıdır. Her bir kurallı adın
 
 |Kurallı ad|Eş anlamlılar|
 |--|--|
-|Muhasebe|acct<br>aci<br>3456|
+|Muhasebe|\<br>aci<br>3456|
 |Geliştirme Işlemleri|DevOps<br>4949|
 |Mühendislik|ing<br>altyapısındaki<br>4567|
 |Finans|ın<br>2020|
-|Bilgi teknolojisi|IT<br>2323|
+|Bilgi teknolojisi|BT<br>2323|
 |Satış iç|IaLe<br>ınsatılık<br>1414|
 |Araştırma ve geliştirme|R & D<br>1234|
 
@@ -104,9 +106,9 @@ Her öğenin birincil, _kurallı_adı departman adıdır. Her bir kurallı adın
 
 1. Açılan varlık iletişim kutusunda varlık adı olarak `Department`, varlık türü olarak da **List** (Liste) seçin. **Done** (Bitti) öğesini seçin.  
 
-    [![Yeni varlık açılır iletişim kutusu oluşturma işleminin ekran görüntüsü](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "yeni varlık açılır iletişim kutusu oluşturma işleminin ekran görüntüsü")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![Yeni varlık açılan menüsü oluşturma iletişim kutusu](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Yeni varlık açılan menüsü oluşturma iletişim kutusu")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-1. Departman varlığı sayfasında, yeni değer ' `Accounting` i girin.
+1. Departman varlığı sayfasında, yeni değer olarak `Accounting` girin.
 
 1. Eş anlamlıları için önceki tablodan eş anlamlıları ekleyin.
 
@@ -128,7 +130,7 @@ Her öğenin birincil, _kurallı_adı departman adıdır. Her bir kurallı adın
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-1. Adres çubuğundaki URL'nin sonuna gidip `shift Joe Smith to IT` yazın. Son sorgu dizesi parametresi konuşma **s**orgusu olan `q` öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `TransferEmployeeToDepartment` amacını `Department` ayıklanmış şekilde döndürmelidir.
+1. Adres çubuğundaki URL'nin sonuna gidip `shift Joe Smith to IT` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `TransferEmployeeToDepartment` amacını `Department` ayıklanmış şekilde döndürmelidir.
 
    ```json
     {

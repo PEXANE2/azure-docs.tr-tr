@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8264030593a1e44b2a50d9f95dce925136eb4d26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: edb100901dea4419d65635f9214555c27c1949f0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965982"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494071"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -22,7 +22,7 @@ Kapsayıcılı kodu bir sanal IoT Edge cihazına dağıtarak bu hızlı başlang
 
 Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
-1. Bir IoT Hub oluşturma.
+1. IoT Hub 'ı oluşturun.
 2. Bir IoT Edge cihazını IoT hub'ınıza kaydetme.
 3. IoT Edge çalışma zamanını sanal cihazınıza yükleyip başlatın.
 4. IoT Edge cihazına uzaktan modül dağıtma ve IoT Hub'a telemetri verileri gönderme.
@@ -75,7 +75,7 @@ IoT Edge cihazı:
 >
 > IoT Core çalıştıran cihazlar da dahil olmak üzere kendi Windows cihazınızı IoT Edge yapılandırmaya hazırsanız, [Windows 'a Azure IoT Edge çalışma zamanını yüklemek](how-to-install-iot-edge-windows.md)içindeki adımları izleyin.
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 Azure CLı ile IoT Hub 'ı oluşturarak hızlı başlangıcı başlatın.
 
@@ -91,9 +91,9 @@ Aşağıdaki kod, **IoTEdgeResources** kaynak grubunda ücretsiz bir **F1** hub�
 
    Aboneliğinizde zaten bir ücretsiz hub olduğu için hata alırsanız, SKU değerini **S1** olarak değiştirin. IoT Hub adının kullanılamadığı bir hata alırsanız, başka birinin zaten bu adı taşıyan bir hub 'ı olduğu anlamına gelir. Yeni bir ad deneyin.
 
-## <a name="register-an-iot-edge-device"></a>IoT Edge cihazını kaydetme
+## <a name="register-an-iot-edge-device"></a>IoT Edge cihazı kaydetme
 
-Yeni oluşturulan IoT Hub'ına bir IoT Edge cihazı kaydedin.
+Yeni oluşturulan IoT hub'ına bir IoT Edge cihazı kaydedin.
 ![diyagramı-bir cihazı IoT Hub kimliğiyle kaydetme](./media/quickstart/register-device.png)
 
 IoT hub'ınızla iletişim kurabilmesi amacıyla simülasyon cihazınız için bir cihaz kimliği oluşturun. Cihaz kimliği bulutta kalır ve fiziksel cihazla cihaz kimliği arasında bağlantı kurmak için benzersiz bir bağlantı dizesi kullanılır.
@@ -139,7 +139,7 @@ PowerShell'i kullanarak IoT Edge çalışma zamanını indirin ve yükleyin. Cih
 
 1. Henüz yapmadıysanız, [Yeni bir Azure IoT Edge cihaz kaydetme](how-to-register-device.md) bölümündeki adımları izleyerek cihazınızı kaydedin ve cihaz bağlantı dizesini alın.
 
-2. PowerShell 'i yönetici olarak çalıştırın.
+2. Sanal makinede, PowerShell 'i yönetici olarak çalıştırın.
 
    >[!NOTE]
    >PowerShell (x86) değil IoT Edge yüklemek için PowerShell 'in AMD64 oturumunu kullanın. Hangi oturum türünü kullandığınızdan emin değilseniz, aşağıdaki komutu çalıştırın:

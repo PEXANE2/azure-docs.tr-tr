@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
-ms.translationtype: MT
+ms.openlocfilehash: b30b96e6ae931e0df41b60e16f04127e82a068ad
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146615"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469749"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -21,7 +21,7 @@ Azure Application Gateway, web uygulamalarınıza trafiği yönetmenizi sağlaya
 
 ![Application Gateway kavramsal](media/overview/figure1-720.png)
 
-Application Gateway ile, URI yolu veya konak üstbilgileri gibi bir HTTP isteğinin ek özniteliklerine dayalı yönlendirme kararları alabilirsiniz. Örneğin, gelen URL’yi temel alarak trafiği yönlendirebilirsiniz. Yani `/images` gelen URL’deyse, trafiği görüntüler için yapılandırılmış belirli bir sunucu kümesine (havuz olarak da bilinir) yönlendirebilirsiniz. URL `/video` 'de ise, bu trafik videolar için iyileştirilmiş başka bir havuza yönlendirilir.
+Application Gateway ile, URI yolu veya konak üstbilgileri gibi bir HTTP isteğinin ek özniteliklerine dayalı yönlendirme kararları alabilirsiniz. Örneğin, gelen URL’yi temel alarak trafiği yönlendirebilirsiniz. Yani `/images` gelen URL’deyse, trafiği görüntüler için yapılandırılmış belirli bir sunucu kümesine (havuz olarak da bilinir) yönlendirebilirsiniz. URL 'de `/video`, bu trafik, videolar için en iyi duruma getirilmiş başka bir havuza yönlendirilir.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
@@ -52,6 +52,13 @@ Web uygulaması güvenlik duvarı (WAF), web uygulamalarınızda açıklardan ya
 Web uygulamaları, bilinen yaygın güvenlik açıklarından yararlanan kötü amaçlı saldırıların giderek daha fazla hedefi olmaktadır. Bu açıklardan yararlanma örnekleri arasında SQL ekleme saldırıları, siteler arası komut dosyası saldırıları yaygındır. Uygulama kodunda bu tür saldırıların önlenmesi zor olabilir ve uygulama topolojisinin birçok katmanında ayrıntılı bakım, düzeltme eki uygulama ve izleme işlemleri gerektirebilir. Merkezi bir web uygulaması güvenlik duvarı, güvenlik yönetimini çok daha kolay hale getirir ve yetkisiz erişim ya da izinsiz giriş tehditlerine karşı uygulama yöneticilerine daha iyi güvence verir. Bir WAF çözümü, bilinen bir güvenlik açığına merkezi bir konumda düzeltme eki uygulayarak güvenlik tehdidine karşı, web uygulamalarının her birinin güvenliğini sağlamaya göre daha hızlı tepki verebilir. Var olan uygulama ağ geçitleri, web uygulaması güvenlik duvarı bulunan bir uygulama ağ geçidine kolaylıkla dönüştürülebilir.
 
 Daha fazla bilgi için, bkz. [Application Gateway Web uygulaması güvenlik duvarı (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview).
+
+## <a name="ingress-controller-for-aks"></a>AKS için giriş denetleyicisi
+Application Gateway giriş denetleyicisi (AGIC), bir [Azure Kubernetes hizmeti (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümesi için giriş olarak Application Gateway kullanmanıza olanak sağlar. 
+
+Giriş denetleyicisi AKS kümesi içinde bir pod olarak çalışır ve [Kubernetes giriş kaynaklarını](https://kubernetes.io/docs/concepts/services-networking/ingress/) kullanır ve ağ geçidinin Kubernetes pods 'ye yük dengelemesi yapmasına izin veren bir Application Gateway yapılandırmasına dönüştürür. Giriş denetleyicisi yalnızca Application Gateway v2 SKU 'sunu destekler. 
+
+Daha fazla bilgi için bkz. [Application Gateway giriş denetleyicisi (AGIC)](ingress-controller-overview.md).
 
 ## <a name="url-based-routing"></a>URL tabanlı yönlendirme
 
@@ -97,12 +104,6 @@ WebSocket ve HTTP/2 protokolleri, uzun süre çalışan bir TCP bağlantısı ü
 
 Daha fazla bilgi için bkz. [WebSocket desteği](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) ve [http/2 desteği](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
 
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Azure Kubernetes Service (AKS) giriş denetleyicisi önizlemesi 
-
-Application Gateway giriş denetleyicisi, AKS kümesi içinde bir pod olarak çalışır ve Application Gateway'in AKS kümesi için giriş görevi yapmasını sağlar. Bu yalnızca Application Gateway v2 ile desteklenir.
-
-Daha fazla bilgi için bkz. [Azure Application Gateway Giriş Denetleyicisi](https://azure.github.io/application-gateway-kubernetes-ingress/).
-
 ## <a name="connection-draining"></a>Bağlantı boşaltma
 
 Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Etkinleştirildikten sonra Application Gateway, bir arka uç havuzunun tüm kayıt kaldırma örneklerinin yeni bir istek almamasını sağlarken, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını sağlar. Bu, arka uç havuzundan bir API çağrısıyla açıkça kaldırılan arka uç örnekleri için ve sistem durumu araştırmaları tarafından belirlendiği şekilde sağlıksız olarak bildirilen arka uç örnekleri için geçerlidir.
@@ -131,7 +132,7 @@ Daha fazla bilgi için bkz. [HTTP üstbilgilerini yeniden yazma](rewrite-http-he
 
 Application Gateway Standard_v2 ve WAF_v2 SKU, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU 'Lar farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-Application Gateway Standard ve WAF SKU Şu anda üç boyutta sunulmaktadır: **Küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
+Application Gateway standart ve WAF SKU Şu anda üç boyutta sunulmaktadır: **küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
 Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -140,7 +141,7 @@ Aşağıdaki tabloda SSL boşaltması etkin olan her bir Application Gateway v1 
 | Ortalama arka uç sayfa yanıt boyutu | Küçük | Orta | Büyük |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mbps |13 Mbps |50 Mbps |
-| 100 KB |35 Mbps |100 Mbps |200 Mbps |
+| 100 KB |35 Mbps |100 Mb/sn |200 Mb/sn |
 
 > [!NOTE]
 > Bu değerler bir uygulama ağ geçidi verimliliği için yaklaşık değerlerdir. Gerçek verimlilik; ortalama sayfa boyutu, arka uç örneklerinin konumu ve bir sayfaya hizmet etmek için işleme süresi gibi çeşitli ortam ayrıntılarına bağlıdır. Tam performans rakamlarına ulaşmak için kendi testlerinizi çalıştırmanız gerekir. Bu değerler yalnızca kapasite planlama konusunda yardımcı olmak için verilmiştir.
@@ -149,6 +150,6 @@ Aşağıdaki tabloda SSL boşaltması etkin olan her bir Application Gateway v1 
 
 Gereksinimleriniz ve ortamınıza bağlı olarak, Azure portalı, Azure PowerShell veya Azure CLI kullanarak bir test Application Gateway oluşturabilirsiniz:
 
-- [Hızlı Başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure portal](quick-create-portal.md)
-- [Hızlı Başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure PowerShell](quick-create-powershell.md)
-- [Hızlı Başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure CLı](quick-create-cli.md)
+- [Hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure portal](quick-create-portal.md)
+- [Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure PowerShell](quick-create-powershell.md)
+- [Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure CLI](quick-create-cli.md)

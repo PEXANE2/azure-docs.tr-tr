@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veri ambarı 'nda veri ambarı birimleri (DWUs, cDWUs) | Microsoft Docs
+title: Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) veri ambarı birimleri (DWUs, cDWUs) | Microsoft Docs
 description: Fiyat ve performansı iyileştirmek için ideal veri ambarı birimi (DWUs, cDWUs) seçme ve birim sayısını değiştirme ile ilgili öneriler.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036048"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475751"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Veri ambarı birimleri (DWU 'Lar) ve işlem verileri ambarı birimleri (cDWUs)
 
@@ -24,15 +24,15 @@ Fiyat ve performansı iyileştirmek için ideal veri ambarı birimi (DWUs, cDWUs
 
 ## <a name="what-are-data-warehouse-units"></a>Veri ambarı birimleri nedir?
 
-Azure SQL veri ambarı CPU, bellek ve GÇ, veri ambarı birimleri (DWU) adlı bilgi işlem ölçeği birimlerine paketlenmiştir. Bir DWU, işlem kaynaklarının ve performansının soyut, normalleştirilmiş bir ölçüsünü temsil eder. Hizmet düzeyinizdeki değişiklik, sistem tarafından kullanılabilen DWU sayısını değiştirir ve bu da sisteminizin performansını ve maliyetini ayarlar.
+SQL havuzu, [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)kullanılırken sağlanmakta olan analitik kaynakların bir koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve GÇ birleşimi olarak tanımlanır. Bu üç kaynak, veri ambarı birimleri (DWU) adlı bilgi işlem ölçeği birimlerine paketlenmiştir. Bir DWU, işlem kaynaklarının ve performansının soyut, normalleştirilmiş bir ölçüsünü temsil eder. Hizmet düzeyinizdeki değişiklik, sistem tarafından kullanılabilen DWU sayısını değiştirir ve bu da sisteminizin performansını ve maliyetini ayarlar.
 
 Daha yüksek performans için, veri ambarı birimlerinin sayısını artırabilirsiniz. Daha az performans için veri ambarı birimlerini azaltın. Depolama ve işlem maliyetleri ayrı olarak faturalandırılır, bu nedenle veri ambarı birimlerinin değiştirilmesi depolama maliyetlerini etkilemez.
 
-Veri ambarı birimlerinin performansı, bu veri ambarı iş yükü ölçümlerini temel alır:
+Veri ambarı birimlerinin performansı, bu iş yükü ölçümlerine dayalıdır:
 
 - Standart veri ambarı sorgusunun ne kadar hızlı bir şekilde çok sayıda satır tarayabilmesi ve ardından karmaşık bir toplama işlemi gerçekleştirebilmesi. Bu işlem g/ç ve CPU yoğun.
 - Veri ambarının Azure depolama Bloblarından veya Azure Data Lake veri alma hızını en kısa şekilde öğrenin. Bu işlem ağ ve CPU yoğun.
-- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) t-sql komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
 
 DWUs 'yi artırma:
 
@@ -42,11 +42,11 @@ DWUs 'yi artırma:
 
 ## <a name="service-level-objective"></a>Hizmet düzeyi hedefi
 
-Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 için hizmet düzeyleri, işlem verileri ambarı birimlerinde (cDWU) ölçülür (örneğin, DW2000c). Gen1 hizmet düzeyleri DWUs içinde ölçülür, örneğin DW2000.
+Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzu için hizmet düzeyleri, işlem verileri ambarı birimlerinde (cDWU) ölçülür (örneğin, DW2000c). Gen1 SQL havuzu hizmet düzeyleri DWUs içinde ölçülür, örneğin DW2000.
   > [!NOTE]
-  > Azure SQL veri ambarı Gen2, son zamanlarda 100 cDWU kadar düşük bilgi işlem katmanlarını desteklemek için ek ölçek özellikleri ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan veri ambarları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-generation.md).
+  > Gen 2 SQL havuzu son zamanlarda 100 cDWU kadar düşük işlem katmanlarını desteklemek için ek ölçek özellikleri ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan SQL havuzları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-generation.md).
 
-T-SQL ' de SERVICE_OBJECTIVE ayarı, veri ambarınızın hizmet düzeyini ve performans katmanını belirler.
+T-SQL ' de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini ve performans katmanını belirler.
 
 ```sql
 --Gen1
@@ -68,10 +68,10 @@ CREATE DATABASE myComputeSQLDW
 
 Her performans katmanı, veri ambarı birimleri için biraz farklı bir ölçü birimi kullanır. Ölçek birimi doğrudan faturalandırmaya çevirilmesi halinde bu fark faturaya yansıtılır.
 
-- Gen1 veri ambarları, veri ambarı birimlerinde (DWU) ölçülür.
-- Gen2 veri ambarları, işlem verileri ambarı birimlerinde (cDWUs) ölçülür.
+- Gen1 SQL havuzları, veri ambarı birimlerinde (DWU) ölçülür.
+- Gen2 SQL havuzları, işlem verileri ambarı birimlerinde (cDWUs) ölçülür.
 
-Hem DWUs hem de cDWUs desteği, işlem ölçeğini artırma veya azaltma ve veri ambarını kullanmanıza gerek olmadığında işlem duraklatma. Bu işlemler isteğe bağlıdır. Gen2, performansı artırmak için işlem düğümlerinde yerel bir disk tabanlı önbellek kullanır. Sistemi ölçeklendirerek veya duraklatdığınızda, önbellek geçersiz kılınır ve en iyi performans elde etmeden önce bir süre sonra bir önbellek ısınmanız gerekir.  
+Hem DWUs hem de cDWUs desteği, işlem ölçeğini artırma veya azaltma ve SQL havuzunu kullanmanıza gerek olmadığında işlem duraklatma işlemleri. Bu işlemler isteğe bağlıdır. Gen2, performansı artırmak için işlem düğümlerinde yerel bir disk tabanlı önbellek kullanır. Sistemi ölçeklendirerek veya duraklatdığınızda, önbellek geçersiz kılınır ve en iyi performans elde etmeden önce bir süre sonra bir önbellek ısınmanız gerekir.  
 
 Veri ambarı birimlerini artırdıkça, bilgi işlem kaynaklarını daha erken artırırsınız. Gen2, en iyi sorgu performansını ve en yüksek ölçeği sağlar. Gen2 sistemleri, önbelleğin en iyi şekilde kullanılmasını da kolaylaştırır.
 
@@ -89,7 +89,7 @@ Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri 
 2. Veri yüklerini sisteme test ettiğiniz için uygulama performansınızı izleyin ve seçilen DWU sayısını gözlemlediğiniz performansa göre gözlemleyin.
 3. Dönemsel etkinlik dönemlerine yönelik tüm ek gereksinimleri belirler. Etkinliğin önemli ve Troughs bir şekilde gösterilmesi için iş yüklerinin sık ölçeklendirilmesi gerekebilir.
 
-SQL veri ambarı, büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri miktarları sağlayabilen bir genişleme sistemidir. Özellikle de daha büyük DWU 'Larda ölçeklendirmeye yönelik doğru özellikleri görmek için, CPU 'Ları akışa almak için yeterli veriniz olduğundan emin olmak üzere ölçeği ölçeklendirirken veri kümesini ölçeklendirmeniz önerilir. Ölçek testi için en az 1 TB kullanmanızı öneririz.
+SQL Analytics, büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri miktarları sağlayabilen bir genişleme sistemidir. Özellikle de daha büyük DWU 'Larda ölçeklendirmeye yönelik doğru özellikleri görmek için, CPU 'Ları akışa almak için yeterli veriniz olduğundan emin olmak üzere ölçeği ölçeklendirirken veri kümesini ölçeklendirmeniz önerilir. Ölçek testi için en az 1 TB kullanmanızı öneririz.
 
 > [!NOTE]
 >
@@ -128,7 +128,7 @@ DWUs veya cDWUs 'yi değiştirmek için:
 
 2. **Ölçek**altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
+3. **Kaydet** düğmesine tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -185,25 +185,26 @@ Azure portal genişleme işlemleri için veritabanı durumunu kontrol edebilirsi
 DWU değişikliklerinin durumunu denetlemek için:
 
 1. Mantıksal SQL veritabanı sunucunuz ile ilişkili ana veritabanına bağlanın.
-2. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönder.
 
-```sql
-SELECT    *
-FROM      sys.databases
-;
-```
+1. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönder.
 
+    ```sql
+    SELECT    *
+    FROM      sys.databases
+    ;
+    ```
+    
 1. İşlemin durumunu denetlemek için aşağıdaki sorguyu gönder
 
-```sql
-SELECT    *
-FROM      sys.dm_operation_status
-WHERE     resource_type_desc = 'Database'
-AND       major_resource_id = 'MySQLDW'
-;
-```
-
-Bu DMV, SQL veri Ambarınızda işlem ve işlem durumu gibi IN_PROGRESS veya tamamlanmış olan çeşitli yönetim işlemleri hakkında bilgi döndürür.
+    ```sql
+    SELECT    *
+    FROM      sys.dm_operation_status
+    WHERE     resource_type_desc = 'Database'
+    AND       major_resource_id = 'MySQLDW'
+    ;
+    ```
+    
+Bu DMV, SQL havuzunuzdaki işlem ve işlem durumu gibi IN_PROGRESS veya tamamlanmış olan çeşitli yönetim işlemleri hakkında bilgi döndürür.
 
 ## <a name="the-scaling-workflow"></a>Ölçeklendirme iş akışı
 
