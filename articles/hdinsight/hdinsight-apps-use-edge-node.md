@@ -1,5 +1,5 @@
 ---
-title: HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma-Azure
+title: Azure HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 description: İstemci olarak kullanılabilecek bir HDInsight kümesine boş bir Edge düğümü ekleme ve ardından HDInsight uygulamalarınızı test etme/barındırma.
 ms.reviewer: jasonh
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: a669c6fe0ffd6ff1c4d4613a91074edfe9fa87e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b39d30248e9aedc82b5da1e479a383e0c9bfbdc4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162645"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498023"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
@@ -68,7 +68,7 @@ Bir Edge düğümü oluşturduktan sonra, SSH kullanarak kenar düğümüne bağ
 > Ubuntu görüntüleri, yayımlanmakta olan 3 ay içinde yeni HDInsight kümesi oluşturma için kullanılabilir hale gelir. 2019 Ocak itibariyle, çalışan kümeler (kenar düğümleri dahil) Otomatik Düzeltme Eki **uygulanmaz** . Müşterilerin çalışan bir kümeyi yaması için betik eylemleri veya diğer mekanizmaları kullanması gerekir.  Daha fazla bilgi için bkz. [HDInsight Için Işletim sistemi düzeltme eki uygulama](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Var olan bir kümeye kenar düğümü ekleme
-Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)' da bulunabilir. Kaynak Yöneticisi şablonu https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh konumunda bulunan bir betik eylemini çağırır. Betik herhangi bir eylem gerçekleştirmez.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemi çağırma işlemini gösterir.
+Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)' da bulunabilir. Kaynak Yöneticisi şablonu https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shkonumunda bulunan bir betik eylemini çağırır. Betik herhangi bir eylem gerçekleştirmez.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemi çağırma işlemini gösterir.
 
 **Var olan bir kümeye boş bir Edge düğümü eklemek için**
 
@@ -90,7 +90,7 @@ Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir
 > Mevcut HDInsight kümesi için Azure kaynak grubunu seçtiğinizden emin olun.  Aksi halde, "iç içe kaynak üzerinde istenen işlem gerçekleştirilemiyor" hata iletisini alırsınız. '&lt;ClusterName > ' üst kaynağı bulunamadı. "
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Küme oluştururken kenar düğümü ekleme
-Bu bölümde, bir Edge düğümü ile HDInsight kümesi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu, [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)bulunabilir. Kaynak Yöneticisi şablonu https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh konumunda bulunan bir betik eylemini çağırır. Betik herhangi bir eylem gerçekleştirmez.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemi çağırma işlemini gösterir.
+Bu bölümde, bir Edge düğümü ile HDInsight kümesi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu, [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)bulunabilir. Kaynak Yöneticisi şablonu https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shkonumunda bulunan bir betik eylemini çağırır. Betik herhangi bir eylem gerçekleştirmez.  Bu, bir Kaynak Yöneticisi şablonundan betik eylemi çağırma işlemini gösterir.
 
 **Edge düğümüyle bir HDInsight kümesi oluşturmak için**
 

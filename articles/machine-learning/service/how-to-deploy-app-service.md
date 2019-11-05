@@ -10,14 +10,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034588"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496966"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning bir modeli Azure App Service Web uygulaması olarak nasıl dağıtacağınızı öğrenin.
 
@@ -28,7 +29,7 @@ Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görün
 
 * Gelişmiş güvenlik için Gelişmiş [kimlik doğrulaması](/azure/app-service/configure-authentication-provider-aad) . Kimlik doğrulama yöntemleri hem Azure Active Directory hem de Multi-Factor auth içerir.
 * Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) .
-* İstemcilerle hizmet arasında güvenli iletişim için [SSL desteği](/azure/app-service/app-service-web-ssl-cert-load) .
+* İstemcilerle hizmet arasında güvenli iletişim için [SSL desteği](/azure/app-service/configure-ssl-certificate-in-code) .
 
 Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi için bkz. [App Service genel bakış](/azure/app-service/overview).
 
@@ -45,12 +46,12 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
     > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
     >
     > * `ws`-Azure Machine Learning çalışma alanınız.
-    > * `model`-Dağıtılacak kayıtlı model.
-    > * `inference_config`-Modelin çıkarım yapılandırması.
+    > * `model`-dağıtılacak kayıtlı model.
+    > * `inference_config`-modelin çıkarım yapılandırması.
     >
     > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
-## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
+## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
 
 Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki listede bir dağıtım için gereken temel öğeler açıklanmaktadır:
 
@@ -99,7 +100,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
 
 > [!NOTE]
-> Kod parçacığı, kayıtlı bir `model` model içerdiğini `inference_config` ve çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+> Kod parçacığı, `model` kayıtlı bir model içerdiğini ve `inference_config`, çıkarım ortamının yapılandırmasını içerdiğini varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -110,14 +111,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package:<imagename>`. Örneğin: `myml08024f78fd10.azurecr.io/package:20190827151241`.
+`show_output=True`, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum `<acrinstance>.azurecr.io/package:<imagename>`biçimindedir. Örneğin, `myml08024f78fd10.azurecr.io/package:20190827151241`.
 
 > [!IMPORTANT]
 > Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
 
 ## <a name="deploy-image-as-a-web-app"></a>Web uygulaması olarak görüntü dağıtma
 
-1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. Daha `<acrinstance>` önce ' den `package.location`döndürülen bir değer ile değiştirin: 
+1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. `<acrinstance>`, daha önce `package.location`döndürülen TH değeri ile değiştirin: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -150,12 +151,12 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Bu örnekte, __temel__ bir Fiyatlandırma Katmanı (`--sku B1`) kullanılır.
+    Bu örnekte, __temel__ bir fiyatlandırma katmanı (`--sku B1`) kullanılır.
 
     > [!IMPORTANT]
     > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
 
-1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. `package.location` Ve `<acrinstance>` değerlerinidahaöncedöndürülendeğerlerledeğiştirin`<imagename>` :
+1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagename>`, daha önce döndürülen `package.location` değerlerle değiştirin:
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
@@ -184,7 +185,7 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
     > [!IMPORTANT]
     > Bu noktada, Web uygulaması oluşturulmuştur. Ancak, görüntüyü içeren Azure Container Registry kimlik bilgilerini sağlamadıysanız, Web uygulaması etkin değildir. Bir sonraki adımda, kapsayıcı kayıt defteri için kimlik doğrulama bilgilerini sağlarsınız.
 
-1. Web uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak üzere aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. `package.location` Ve `<acrinstance>` değerlerinidahaöncedöndürülendeğerlerledeğiştirin`<imagename>` . `<username>` Ve`<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
+1. Web uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak üzere aşağıdaki komutu kullanın. `<app-name>`, kullanmak istediğiniz adla değiştirin. `<acrinstance>` ve `<imagename>`, daha önce döndürülen `package.location` değerlerle değiştirin. `<username>` ve `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -230,7 +231,7 @@ Bu noktada, Web uygulaması görüntüyü yüklemeye başlar.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Görüntü yüklendikten ve site etkin olduktan sonra, günlüğü belirten `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`bir ileti görüntüler.
+> Görüntü yüklendikten ve site etkin olduktan sonra, günlük `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`bildiren bir ileti görüntüler.
 
 Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisayar adını bulabilirsiniz:
 
@@ -238,11 +239,11 @@ Görüntü dağıtıldıktan sonra, aşağıdaki komutu kullanarak ana bilgisaya
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Bu komut, aşağıdaki ana bilgisayar adına `<app-name>.azurewebsites.net`benzer bilgileri döndürür. Bu değeri, hizmetin __temel URL__ 'sinin bir parçası olarak kullanın.
+Bu komut aşağıdaki ana bilgisayar adına benzer bilgileri döndürür `<app-name>.azurewebsites.net`. Bu değeri, hizmetin __temel URL__ 'sinin bir parçası olarak kullanın.
 
 ## <a name="use-the-web-app"></a>Web uygulamasını kullanma
 
-İstekleri modele geçiren Web hizmeti konumunda `{baseurl}/score`bulunur. Örneğin: `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
+İstekleri modele geçiren Web hizmeti `{baseurl}/score`konumunda bulunur. Örneğin, `https://<app-name>.azurewebsites.net/score`. Aşağıdaki Python kodu, URL 'ye veri göndermeyi ve yanıtı görüntülemeyi gösterir:
 
 ```python
 import requests
@@ -267,6 +268,6 @@ print(response.json())
 
 * [Linux belgelerindeki App Service](/azure/app-service/containers/) Web uygulamanızı yapılandırmayı öğrenin.
 * [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
-* [Azure App Service BIR SSL sertifikası kullanın](/azure/app-service/app-service-web-ssl-cert-load).
+* [Azure App Service BIR SSL sertifikası kullanın](/azure/app-service/configure-ssl-certificate-in-code).
 * [App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırın](/azure/app-service/configure-authentication-provider-aad).
-* [Bir web hizmeti olarak ML modeli kullanma](how-to-consume-web-service.md)
+* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)

@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5927d27a23e5609079ac2380d8fed13e62d1c592
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: cffa571028dac192e8b8806ee9ec932cf89eb1fe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027553"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498781"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Su kalitesi izleme başvuru mimarisi 
 
@@ -35,7 +35,7 @@ Genellikle su kalite izleme çözümünde bir bölümü oynatacak anahtar bileş
 ## <a name="devices-and-connectivity"></a>Cihazlar ve bağlantı 
 Bu bölümde, genellikle akıllı su cihazları olarak su kalitesinde izleme veya su tüketim izleme 'de kullanılan cihazlara başvuracağız. Akıllı su cihazları Flow ölçümleri, su kalitesi izleyicileri, akıllı vanalar, sızıntı algılayıcıları vb. olabilir.
 
-Akıllı su çözümlerinde kullanılan cihazlar genellikle düşük güç Wide alan ağları (LPWAN) aracılığıyla bir üçüncü taraf ağ operatörü aracılığıyla bağlanır. Bu tür cihazlarda, cihaz verilerinizi Azure IoT Central IoT uygulamanıza göndermek için [azure IoT Central cihaz köprüsünden](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge) yararlanabilirsiniz. Alternatif olarak, IP özellikli cihaz ağ geçitleriniz olabilir ve IoT Central doğrudan bağlanabilir.
+Akıllı su çözümlerinde kullanılan cihazlar genellikle düşük güç Wide alan ağları (LPWAN) aracılığıyla bir üçüncü taraf ağ operatörü aracılığıyla bağlanır. Bu tür cihazlarda, cihaz verilerinizi Azure IoT Central IoT uygulamanıza göndermek için [azure IoT Central cihaz köprüsünden](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) yararlanabilirsiniz. Alternatif olarak, IP özellikli cihaz ağ geçitleriniz olabilir ve IoT Central doğrudan bağlanabilir.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central, IoT çözümünüzde hızla çalışmaya başlamanızı sağlayan bir IoT uygulama platformudur. Çözümünüzü, üçüncü taraf hizmetlerle markalayabilmeniz, özelleştirebilir ve tümleştirebilirsiniz.
@@ -54,5 +54,5 @@ IoT verileri, bir su yardımcı programı dahilinde çeşitli iş uygulamaların
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Su kalitesi izleme](./tutorial-water-quality-monitoring.md) IoT Central uygulaması oluşturmayı öğrenin
 * [IoT Central kamu şablonları](./overview-iot-central-government.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
 

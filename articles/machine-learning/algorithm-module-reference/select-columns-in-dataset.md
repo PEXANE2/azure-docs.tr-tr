@@ -1,24 +1,24 @@
 ---
-title: 'Veri kümesindeki sütunları seçin: Modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Aşağı akış işlemlerinde kullanılacak sütunların bir alt kümesini seçmek için Azure Machine Learning hizmetindeki veri kümesinde sütunları seçme modülünü nasıl kullanacağınızı öğrenin.
+title: 'Veri kümesindeki sütunları seçin: modül başvurusu'
+titleSuffix: Azure Machine Learning
+description: Aşağı akış işlemlerinde kullanılacak sütunların bir alt kümesini seçmek için Azure Machine Learning içindeki sütunları seçme modülünde nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.date: 10/22/2019
+ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128505"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497656"
 ---
 # <a name="select-columns-in-dataset-module"></a>Veri kümesi modülündeki sütunları seçme
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Aşağı akış işlemlerinde kullanılacak sütunların bir alt kümesini seçmek için bu modülü kullanın. Modül, kaynak veri kümesinden sütunları fiziksel olarak kaldırmaz; Bunun yerine, bir veritabanı *görünümü* veya *projeksiyonu*gibi sütunların bir alt kümesini oluşturur.
 
@@ -40,7 +40,7 @@ Modülde ada göre sütun seçmek için birden çok seçenek vardır:
 
     Zaten doldurulmuş bir veri kümesini bağladıysanız, kullanılabilir sütunların bir listesi görünmelidir. Hiçbir sütun görünmezse, sütun listesini görüntülemek için yukarı akış modüllerini çalıştırmanız gerekebilir.
 
-    Listeyi filtrelemek için, arama kutusuna yazın. Örneğin, arama kutusuna harfi `w` yazarsanız liste, harfi `w`içeren sütun adlarını gösterecek şekilde filtrelenir.
+    Listeyi filtrelemek için, arama kutusuna yazın. Örneğin, arama kutusuna `w` harfini yazarsanız, liste, `w`harfini içeren sütun adlarını gösterecek şekilde filtrelenir.
 
     Sütunlar ' ı seçin ve sağ taraftaki bölmedeki seçili sütunları listeye taşımak için sağ ok düğmesine tıklayın.
 
@@ -79,7 +79,7 @@ Modülde ada göre sütun seçmek için birden çok seçenek vardır:
 
 + **Sütun yok** seçeneğini belirlerseniz, sütun listesi boş olarak başlar. Daha sonra listeye sütun *eklemek* için koşulları belirtirsiniz. 
 
-    Birden çok kural uygularsanız, her koşul **eklenebilir**. Örneğin, herhangi bir sütun olmadan başlamanızı ve sonra tüm sayısal sütunları almak için bir kural eklemenizi söyleyin. Otomobil fiyat veri kümesinde, 16 sütun sonucu oluşur. Ardından, yeni bir koşul **+** eklemek için işaretine tıklayın ve **tüm özellikleri dahil et**' i seçin. Elde edilen veri kümesi, bazı dize özelliği sütunları da dahil olmak üzere tüm sayısal sütunları ve tüm özellik sütunlarını içerir.
+    Birden çok kural uygularsanız, her koşul **eklenebilir**. Örneğin, herhangi bir sütun olmadan başlamanızı ve sonra tüm sayısal sütunları almak için bir kural eklemenizi söyleyin. Otomobil fiyat veri kümesinde, 16 sütun sonucu oluşur. Ardından, yeni bir koşul eklemek için **+** işaretine tıklayıp **tüm özellikleri dahil et**' i seçin. Elde edilen veri kümesi, bazı dize özelliği sütunları da dahil olmak üzere tüm sayısal sütunları ve tüm özellik sütunlarını içerir.
 
 ### <a name="choose-by-column-index"></a>Sütun dizinine göre seçin
 
@@ -87,7 +87,7 @@ Sütun dizini, özgün veri kümesindeki sütunun sırasını ifade eder.
 
 + Sütunlar 1 ' den başlayarak ardışık olarak numaralandırılır.  
 + Bir dizi sütun almak için kısa çizgi kullanın. 
-+ `1-` Veya`-3` gibi açık uçlu belirtimlerde izin verilmez.
++ `1-` veya `-3` gibi açık uçlu belirtimlerde izin verilmez.
 + Yinelenen Dizin değerlerine (veya sütun adlarına) izin verilmez ve bir hata oluşmasına neden olabilir.
 
 Örneğin, veri kümenizin en az sekiz sütunu olduğu varsayıldığında, birden çok bitişik olmayan sütun döndürmek için aşağıdaki örneklerden herhangi birini yapıştırabilirsiniz: 
@@ -96,7 +96,7 @@ Sütun dizini, özgün veri kümesindeki sütunun sırasını ifade eder.
 + `1,3-8`
 + `1,3-6,4` 
 
-Son örnek bir hatayla sonuçlanmaz; Ancak, sütunun `4`tek bir örneğini döndürür.
+Son örnek bir hatayla sonuçlanmaz; Ancak, `4`sütunun tek bir örneğini döndürür.
 
 
 
@@ -112,4 +112,4 @@ Son örnek bir hatayla sonuçlanmaz; Ancak, sütunun `4`tek bir örneğini dönd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

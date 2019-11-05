@@ -1,5 +1,5 @@
 ---
-title: 2\. nesil VM 'Ler için Azure Desteği (Önizleme) | Microsoft Docs
+title: 2\. nesil VM 'Ler için Azure desteği | Microsoft Docs
 description: 2\. nesil sanal makineler için Azure desteğine genel bakış
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,31 +11,26 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: c85e02b01e11b94d9e23e669bf2f6fcde7f2c1de
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 63cf3301a08ce4073998c5d281f155a6b3eefe4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491924"
 ---
-# <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 'da 2. nesil VM 'Ler (Önizleme) desteği
+# <a name="support-for-generation-2-vms-on-azure"></a>Azure 'da 2. nesil VM 'Ler için destek
 
-> [!IMPORTANT]
-> 2\. nesil VM 'Ler için Azure desteği şu anda önizleme aşamasındadır.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+2\. nesil sanal makineler (VM 'Ler) için destek artık Azure 'da kullanıma sunuldu. Oluşturduktan sonra bir sanal makinenin neslini değiştiremezsiniz, bu nedenle bir oluşturma seçmeden önce bu sayfadaki konuları gözden geçirin.
 
-2\. nesil sanal makineler (VM 'Ler) için destek artık Azure 'da önizlemede sunulmaktadır. Oluşturduktan sonra bir sanal makinenin neslini değiştiremezsiniz, bu nedenle bir oluşturma seçmeden önce bu sayfadaki konuları gözden geçirin. 
-
-2\. nesil VM 'ler, 1. nesil VM 'lerde desteklenmeyen önemli özellikleri destekler. Bu özellikler, artan bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) içerir. 2\. nesil VM 'Lerde, henüz Azure 'da desteklenmeyen bazı özellikler de vardır. Daha fazla bilgi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
+2\. nesil VM 'ler, 1. nesil VM 'lerde desteklenmeyen önemli özellikleri destekler. Bu özellikler, artan bellek, Intel Software Guard uzantıları (Intel SGX) ve sanallaştırılmış kalıcı bellek (vPMEM) içerir. Şirket içinde çalışan 2. nesil VM 'lerde, henüz Azure 'da desteklenmeyen bazı özellikler var. Daha fazla bilgi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
 2\. nesil sanal makineler, 1. nesil VM 'Ler tarafından kullanılan BIOS tabanlı mimaride değil, yeni UEFı tabanlı önyükleme mimarisini kullanır. 1\. nesil VM 'Lerle karşılaştırıldığında 2. nesil VM 'Ler geliştirilmiş önyükleme ve yükleme süreleriyle aynı olabilir. 2\. nesil VM 'Lere genel bakış ve 1. nesil ve 2. nesil arasındaki farklılıklar için bkz. [Hyper-V ' d e 1. nesil veya 2 sanal makine oluşturmalıyım?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>2\. nesil VM boyutları
 
-1\. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir. Azure artık aşağıdaki seçili VM serileri için Önizleme 2. nesil destek sunuyor:
+1\. nesil sanal makineler, Azure 'daki tüm VM boyutları tarafından desteklenir. Azure şimdi aşağıdaki seçili VM serileri için 2. nesil destek sunuyor:
 
 * [B serisi](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC Serisi](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -65,7 +60,6 @@ ms.locfileid: "73064028"
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04 +
-
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
@@ -107,7 +101,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 Windows ve SLES için 2. nesil görüntüler, Gen1 görüntülerle aynı sunucu teklifine dahildir. Flow perspektifinden bu şekilde, VM 'niz için portaldan teklif ve SKU 'YU seçersiniz. SKU hem 1. kuşak hem de 2. nesil görüntüleri destekliyorsa, VM oluşturma akışındaki *Gelişmiş* sekmesinden 2. nesıl bir VM oluşturmayı seçebilirsiniz.
 

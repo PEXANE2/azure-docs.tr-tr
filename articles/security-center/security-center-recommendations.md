@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201050"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520728"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
@@ -36,7 +36,7 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynak
 Her öneri şunları sağlar:
 
 - Neyin önerilmekte olduğuna ilişkin kısa bir açıklama.
-- Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları. <!-- In some cases, one-click remediation is available. -->
+- Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları. <!-- In some cases, Quick Fix remediation is available. -->
 - Üzerinde önerilen eylemi gerçekleştirmek için gerekli olan kaynakları kullanabilirsiniz.
 - Bu öneriyi uygularsanız, güvenli puanınızın gidebileceği miktar olan **güvenli puan etkisi**.
 
@@ -48,17 +48,17 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
 
 1. **Genel bakış**' ın altında **öneriler kutucuğunu** seçin. **Öneriler** listesi açılır.
 
-      ![Önerileri görüntüle](./media/security-center-recommendations/view-recommendations.png)
+      ![Önerileri görüntüleme](./media/security-center-recommendations/view-recommendations.png)
 
     Önerilere filtre uygulayabilirsiniz. Önerilere filtre uygulamak için **öneriler** dikey penceresinde **filtre** ' yi seçin. **Filtre** dikey penceresi açılır ve görmek istediğiniz önem derecesini ve durum değerlerini seçersiniz.
 
-   * **ÖNERİLER**: Öneri.
-   * **GÜVENLI PUAN ETKİSİ**: Güvenlik önerileriniz kullanılarak Güvenlik Merkezi tarafından oluşturulan ve her bir önerinin ne kadar önemli olduğunu belirleyecek gelişmiş algoritmalar uygulanarak oluşan bir puan. Daha fazla bilgi için bkz. [güvenli puan hesaplaması](security-center-secure-score.md#secure-score-calculation).
-   * **KAYNAK**: Bu önerinin uygulandığı kaynakları listeler.
-   * **DURUM ÇUBUKLARI**:  Bu belirli bir önerinin önem derecesini açıklar:
-       * **Yüksek (kırmızı)** : Anlamlı bir kaynakla (örneğin, bir uygulama, VM veya ağ güvenlik grubu) birlikte bir güvenlik açığı bulunur ve dikkat edilmesi gerekir.
-       * **Orta (turuncu)** : Bir güvenlik açığı var ve kritik olmayan ya da bir işlemi tamamlamaya yönelik ek adımlar gerekir.
-       * **Düşük (mavi)** : Giderilmesi gereken ancak anında ilgilenilmesi gerekmeyen bir güvenlik açığı var. (Varsayılan olarak, düşük öneriler sunulmaz, ancak bunları görmek istiyorsanız düşük önerilere filtre uygulayabilirsiniz.) 
+   * **Öneriler**: öneri.
+   * **GÜVENLI puan etkisi**: güvenlik, güvenlik önerilerinizi kullanarak ve her öneriye ne kadar önemli olduğunu anlamak için gelişmiş algoritmalar uygulayarak oluşturulan bir puandır. Daha fazla bilgi için bkz. [güvenli puan hesaplaması](security-center-secure-score.md#secure-score-calculation).
+   * **Kaynak**: Bu önerinin uygulandığı kaynakları listeler.
+   * **Durum çubukları**: söz konusu önerinin önem derecesini açıklar:
+       * **Yüksek (kırmızı)** : anlamlı bir kaynakta (örneğin, bir uygulama, VM veya ağ güvenlik grubu) bir güvenlik açığı bulunur ve dikkat edilmesi gerekir.
+       * **Orta (turuncu)** : bir güvenlik açığı bulunur ve kritik olmayan ya da bir işlemi tamamlamaya yönelik ek adımlar gerekir.
+       * **Düşük (mavi)** : giderilmesi gereken ancak anında ilgilenilmesi gerekmeyen bir güvenlik açığı var. (Varsayılan olarak, düşük öneriler sunulmaz, ancak bunları görmek istiyorsanız düşük önerilere filtre uygulayabilirsiniz.) 
        * **Sağlıklı (yeşil)** :
        * **Kullanılamıyor (gri)** :
 

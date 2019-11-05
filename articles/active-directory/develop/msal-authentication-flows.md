@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65c68e4f24dd95696cc53b92dd7e2b59d940b6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175726"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473820"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
@@ -83,7 +83,7 @@ Bu kimlik doğrulama akışı, yerel platformlarla etkileşim için daha fazla �
 
 MSAL, [OAuth 2 yetkilendirme kodu vermeyi](v2-oauth2-auth-code-flow.md)destekler. Bu izin, Web API 'Leri gibi korumalı kaynaklara erişim kazanmak için bir cihaza yüklenen uygulamalarda kullanılabilir. Bu, mobil ve Masaüstü uygulamalarınıza oturum açma ve API erişimi eklemenize olanak tanır. 
 
-Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uygulaması bir yetkilendirme kodu alır.  Yetkilendirme kodu, Web API 'Lerini çağırmak için bir belirteç almak üzere kullanılır. ASP.NET ve ASP.NET Core Web Apps 'te, tek `AcquireTokenByAuthorizationCode` hedefi belirteç önbelleğine bir belirteç eklemektir. Belirteç daha sonra uygulama tarafından (genellikle `AcquireTokenSilent` kullanarak bir API için belirteç almış olan denetleyicilerde) kullanılabilir.
+Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uygulaması bir yetkilendirme kodu alır.  Yetkilendirme kodu, Web API 'Lerini çağırmak için bir belirteç almak üzere kullanılır. ASP.NET ve ASP.NET Core Web Apps 'te, tek `AcquireTokenByAuthorizationCode` hedefi belirteç önbelleğine bir belirteç eklemektir. Belirteç daha sonra uygulama tarafından (genellikle `AcquireTokenSilent`kullanarak bir API için belirteç almış olan denetleyicilerde) kullanılabilir.
 
 ![Yetkilendirme kod akışı diyagramı](media/msal-authentication-flows/authorization-code.png)
 
@@ -156,7 +156,7 @@ Uygulama, cihaz kod akışını kullanarak belirteçleri, özellikle bu cihazlar
 
 Önceki diyagramda:
 
-1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'ye (örneğin, internet 'e bağlı bir akıllı telefon) gitmesini ister (örneğin, https://microsoft.com/devicelogin) ). Daha sonra kullanıcıya kodu girmesi istenir ve gerekirse onay istemleri ve çok faktörlü kimlik doğrulaması dahil olmak üzere normal bir kimlik doğrulama deneyimi üzerinden ilerler.
+1. Kullanıcı kimlik doğrulaması gerekli olduğunda, uygulama bir kod sağlar ve kullanıcıdan bir URL 'ye (örneğin, internet 'e bağlı bir akıllı telefon) gitmesini ister (örneğin, https://microsoft.com/devicelogin)). Daha sonra kullanıcıya kodu girmesi istenir ve gerekirse onay istemleri ve çok faktörlü kimlik doğrulaması dahil olmak üzere normal bir kimlik doğrulama deneyimi üzerinden ilerler.
 
 2. Başarılı kimlik doğrulamasından sonra, komut satırı uygulaması gerekli belirteçleri bir arka kanal aracılığıyla alır ve bunları, gereken Web API çağrılarını gerçekleştirmek için kullanır.
 
@@ -203,7 +203,7 @@ Bu, aşağıdakilerden birinin doğru olduğu anlamına gelir:
 - Kullanıcıların uygulamayı onaylaması için bir yol sağladınız (bkz. [bireysel kullanıcı Izni isteme](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Kiracı yöneticisinin uygulamayı kabul etmek için bir yol sağladınız (bkz. [yönetici onayı](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-IWA Flow, .NET Masaüstü, .NET Core ve Windows Evrensel platform uygulamaları için etkinleştirilmiştir. .NET Core 'da yalnızca Kullanıcı adını alan aşırı yükleme kullanılabilir. .NET Core platformu, işletim sistemine Kullanıcı adını soramazsınız.
+IWA Flow, .NET Masaüstü, .NET Core ve Windows Evrensel platform uygulamaları için etkinleştirilmiştir. .NET Core 'da, .NET Core işletim sisteminden Kullanıcı adları edinemediği için ıWA için Kullanıcı adı sağlamanız gerekir.
   
 Onay hakkında daha fazla bilgi için bkz. [v 2.0 izinleri ve onayı](v2-permissions-and-consent.md).
 

@@ -11,14 +11,15 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e9d262380a8e0769b1191673a7e00eed770f7ab2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374304"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497076"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modeli kullanma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bir Azure Machine Learning modelini Web hizmeti olarak dağıtmak bir REST API oluşturur. Bu API 'ye veri gönderebilir ve modelin döndürdüğü tahmini alabilirsiniz. Bu belgede, Web hizmeti için, Go, Java ve Python kullanarak C#istemci oluşturma hakkında bilgi edinin.
 
@@ -38,7 +39,7 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 > [!NOTE]
 > Web hizmeti bilgilerini almak için Azure Machine Learning SDK 'sını kullanın. Bu bir Python SDK 'sına sahiptir. Hizmet için bir istemci oluşturmak üzere herhangi bir dili kullanabilirsiniz.
 
-[Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` özellikleri bir istemci uygulaması oluşturmak için faydalıdır:
+[Azureml. Core. WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) sınıfı, istemci oluşturmak için gereken bilgileri sağlar. Aşağıdaki `Webservice` özellikleri bir istemci uygulaması oluşturmak için yararlıdır:
 
 * `auth_enabled`-anahtar kimlik doğrulaması etkinse, `True`; Aksi takdirde, `False`.
 * `token_auth_enabled`-belirteç kimlik doğrulaması etkinse, `True`; Aksi takdirde, `False`.
@@ -56,7 +57,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
     print(service.swagger_uri)
     ```
 
-* Çalışma alanınızdaki modeller için dağıtılan Web Hizmetleri listesini almak için `Webservice.list` ' yı kullanabilirsiniz. Döndürülen bilgi listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) başvuru belgeleri.
+* Çalışma alanınızdaki modeller için dağıtılan Web Hizmetleri listesini almak için `Webservice.list` kullanabilirsiniz. Döndürülen bilgi listesini daraltmak için filtre ekleyebilirsiniz. Ne filtrelenebilir hakkında daha fazla bilgi için, bkz. [WebService. List](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) başvuru belgeleri.
 
     ```python
     services = Webservice.list(ws)
@@ -64,7 +65,7 @@ Dağıtılan Web Hizmetleri için bu bilgileri almanın üç yolu vardır:
     print(services[0].swagger_uri)
     ```
 
-* Dağıtılan hizmetin adını biliyorsanız, `Webservice` ' ın yeni bir örneğini oluşturup, çalışma alanını ve hizmet adını parametreler olarak sağlayabilirsiniz. Yeni nesne dağıtılan hizmetle ilgili bilgiler içerir.
+* Dağıtılan hizmetin adını biliyorsanız, `Webservice`yeni bir örneğini oluşturabilir ve çalışma alanını ve hizmet adını parametreler olarak sağlayabilirsiniz. Yeni nesne dağıtılan hizmetle ilgili bilgiler içerir.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -81,7 +82,7 @@ Azure Machine Learning, Web hizmetlerinizi erişimi denetlemek için iki yol sa�
 |Anahtar|Varsayılan olarak devre dışı| Varsayılan olarak etkin|
 |Belirteç| Yok| Varsayılan olarak devre dışı |
 
-Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirteç `Bearer <key-or-token>` olarak biçimlendirilmelidir; burada `<key-or-token>`, anahtar veya belirteç değeridir.
+Bir anahtara veya belirteçle güvenli hale getirilmiş bir hizmete istek gönderilirken, anahtar veya belirteci geçirmek için __Yetkilendirme__ üst bilgisini kullanın. Anahtar veya belirteç `Bearer <key-or-token>`olarak biçimlendirilmelidir; burada `<key-or-token>` anahtarınız veya belirteç değeridir.
 
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
@@ -100,7 +101,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmanız gerekiyorsa [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)' i kullanın.
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)kullanın.
 
 #### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -111,7 +112,7 @@ Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, 
 
 Belirteç kimlik doğrulamasını denetlemek için, bir dağıtım oluştururken veya güncelleştirirken `token_auth_enabled` parametresini kullanın.
 
-Belirteç kimlik doğrulaması etkinse, bir taşıyıcı belirteci almak için `get_token` yöntemini ve bu belirteçlerin süre sonu süresini kullanabilirsiniz:
+Belirteç kimlik doğrulaması etkinleştirilirse, bir taşıyıcı belirtecini almak için `get_token` yöntemini kullanabilirsiniz ve belirteçleri sona erme zamanı zaman aşımı süresi:
 
 ```python
 token, refresh_by = service.get_token()
@@ -119,7 +120,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Belirtecin @no__t 0 zamanından sonra yeni bir belirteç istemeniz gerekecektir. 
+> Belirtecin `refresh_by` zamanından sonra yeni bir belirteç istemeniz gerekir. 
 
 ## <a name="request-data"></a>İstek verileri
 

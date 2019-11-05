@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814352"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488520"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Şirket içi makinelerin olağanüstü durum kurtarma işlemleri için Azure kaynaklarını hazırlama
 
@@ -49,21 +49,22 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 - Bir Azure depolama hesabına yazın.
 - Azure yönetilen diskine yazın.
 
-Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerleşik rolünün atanması gerekir. Ayrıca Site Recovery işlemlerini bir kasada yönetmek için hesabınıza Site Recovery Katkıda Bulunan yerleşik rolünün atanması gerekir.
+Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerleşik rolünün atanması gerekir. Ayrıca, bir kasadaki Site Recovery işlemleri yönetmek için hesabınıza Site Recovery katkıda bulunan yerleşik rolü atanmalıdır.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-1. Azure portal **+ kaynak oluştur ' a**tıklayın ve markette **Kurtarma**için arama yapın.
-2. **Yedekle ve Site Recovery**' ye tıklayın ve yedekleme ve Site Recovery sayfasında **Oluştur**' a tıklayın. 
-1. **Kurtarma Hizmetleri Kasası** > **adı**' nda, kasayı tanımlamak için bir kolay ad girin. Bu öğretici dizisi için **ContosoVMVault**’u kullanacağız.
-2. **Kaynak grubu**' nda, var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun. Bu öğreticide **contosoRG**kullandık.
-3. **Konum**' da, kasasının bulunduğu bölgeyi seçin. **Batı Avrupa** kullanacağız.
-4. Panodan kasaya hızlı şekilde erişmek için **Panoya sabitle** > **Oluştur**’u seçin.
+1. Azure portal menüsünde **kaynak oluştur**' u seçin ve markette **Kurtarma**için arama yapın.
+2. **Yedekleme ve** arama sonuçlarından Site Recovery seçin ve yedekleme ve Site Recovery sayfasında **Oluştur**' a tıklayın. 
+3. **Kurtarma Hizmetleri Kasası oluştur** sayfasında, **aboneliği**seçin. **Contoso aboneliği**kullanıyorsunuz.
+4. **Kaynak grubu**' nda, var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun. Bu öğreticide **contosoRG**kullandık.
+5. **Kasa adı**alanına kasayı tanımlamak için bir kolay ad girin. Bu öğretici dizisi için **ContosoVMVault**’u kullanacağız.
+6. **Bölge**bölümünde, kasasının bulunduğu bölgeyi seçin. **Batı Avrupa** kullanacağız.
+7. **İncele ve oluştur**’u seçin.
 
    ![Yeni kasa oluştur](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Yeni kasa, **Pano** > **Tüm kaynaklar** bölümünde ve ana **Kurtarma Hizmetleri kasaları** sayfasında görüntülenir.
+   Yeni kasa artık **pano** > **tüm kaynaklar**' da ve ana **Kurtarma Hizmetleri kasaları** sayfasında listelenir.
 
 ## <a name="set-up-an-azure-network"></a>Azure ağı ayarlama
 
@@ -72,16 +73,17 @@ Bu görevleri tamamlamak için hesabınıza Sanal Makine Katkıda Bulunan yerle�
 1. [Azure portalında](https://portal.azure.com) **Kaynak oluştur** > **Ağ** > **Sanal ağ** seçeneklerini belirleyin.
 2. Dağıtım modeli olarak **Kaynak Yöneticisi** seçili tut.
 3. **Ad** bölümünde bir ağ adı girin. Ad, Azure kaynak grubu içinde benzersiz olmalıdır. Bu öğreticide **ContosoASRnet** kullanıyoruz.
-4. İçinde ağın oluşturulacağı kaynak grubunu belirtin. Biz mevcut **contosoRG** kaynak grubunu kullanıyoruz.
-5. **Adres aralığı**alanına ağ aralığını girin. Bir alt ağ kullanmadığınız için **10.1.0.0/24**kullanıyoruz.
-6. **Abonelik** bölümünde ağın oluşturulacağı aboneliği seçin.
+4. **Adres alanı**' nda, CDR gösteriminde sanal ağın adres aralığını girin. **10.1.0.0/24**kullanıyorsunuz.
+5. **Abonelik** bölümünde ağın oluşturulacağı aboneliği seçin.
+6. Ağın oluşturulacağı **kaynak grubunu** belirtin. Biz mevcut **contosoRG** kaynak grubunu kullanıyoruz.
 7. **Konum**' da, kurtarma hizmetleri kasasının oluşturulduğu bölgeyi seçin. Öğreticimizde **Batı Avrupa**. Ağın kasada aynı bölgede olması gerekir.
-8. Ağda hizmet uç noktası olmadan temel DDoS korumasının varsayılan seçeneklerini bırakıyoruz.
-9. **Oluştur**'a tıklayın.
+8. **Adres aralığı**alanına ağ aralığını girin. Bir alt ağ kullanmadığınız için **10.1.0.0/24**kullanıyoruz.
+9. Temel DDoS korumasının varsayılan seçeneklerini hizmet uç noktası olmayan veya ağ üzerinde güvenlik duvarı olmadan terk ediyoruz.
+9. **Oluştur**'u seçin.
 
    ![Sanal ağ oluşturma](media/tutorial-prepare-azure/create-network.png)
 
-Sanal ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra, Azure portalı panosunda görünür.
+Sanal ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra, Azure portal panosunda görürsünüz.
 
 
 

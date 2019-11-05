@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı DTU tabanlı kaynak sınırları elastik havuzlar | Microsoft Docs
-description: Bu sayfada, Azure SQL veritabanı 'nda esnek havuzlar için bazı yaygın DTU tabanlı kaynak sınırları açıklanmaktadır.
+title: Azure SQL veritabanı DTU kaynağı Esnek havuzları sınırlar | Microsoft Docs
+description: Bu sayfada Azure SQL veritabanı 'nda esnek havuzlar için bazı yaygın DTU kaynak sınırları açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,20 +11,20 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 2bd193c53ee85a1423dc63bf669021de954231c8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568817"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521028"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>DTU tabanlı satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri
 
-Bu makalede, DTU tabanlı satın alma modelini kullanarak Azure SQL veritabanı elastik havuzları ve havuza alınmış veritabanları için ayrıntılı kaynak sınırları sağlanmaktadır.
+Bu makalede, DTU satın alma modelini kullanarak Azure SQL veritabanı elastik havuzları ve havuza alınmış veritabanları için ayrıntılı kaynak sınırları sağlanmaktadır.
 
-Tek veritabanlarına yönelik DTU tabanlı satın alma modeli kaynak sınırları için bkz. [DTU tabanlı kaynak limitleri-tek veritabanları](sql-database-vcore-resource-limits-elastic-pools.md). Sanal çekirdek tabanlı kaynak sınırları için bkz. [Vcore tabanlı kaynak limitleri-tek veritabanları](sql-database-vcore-resource-limits-single-databases.md) ve [sanal çekirdek tabanlı kaynak limitleri-elastik havuzlar](sql-database-vcore-resource-limits-elastic-pools.md).
+Tek veritabanlarına yönelik DTU satın alma modeli kaynak sınırları için bkz. [DTU kaynak limitleri-tek veritabanları](sql-database-vcore-resource-limits-elastic-pools.md). VCore kaynak sınırları için bkz. [Vcore kaynak limitleri-tek veritabanları](sql-database-vcore-resource-limits-single-databases.md) ve [sanal çekirdek kaynak limitleri-elastik havuzlar](sql-database-vcore-resource-limits-elastic-pools.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastik havuz: Depolama boyutları ve işlem boyutları
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastik havuz: depolama boyutları ve işlem boyutları
 
 SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda kullanılabilen kaynaklar gösterilmektedir. Hizmet katmanını, işlem boyutunu ve depolama miktarını [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [POWERSHELL](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)veya [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases)kullanarak ayarlayabilirsiniz.
 
@@ -84,7 +84,7 @@ SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hizmet k
 |:---|---:|---:|---:| ---: | ---: |
 | Havuz başına dahil edilen depolama alanı (GB) | 250 | 500 | 750 | 1024 | 1536 |
 | Havuz başına en fazla depolama seçimi (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| Havuz başına maks. bellek Içi OLTP depolaması (GB) | 1\. | 2 | 4 | 10 | 12 |
+| Havuz başına maks. bellek Içi OLTP depolaması (GB) | 1 | 2 | 4 | 10 | 12 |
 | Havuz başına en fazla veritabanı | 50 | 100 | 100 | 100 | 100 |
 | Havuz başına maks. eş zamanlı çalışan (istek) | 200 | 400 | 800 | 1600 | 2400 |
 | Havuz başına maks. eş zamanlı oturum | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -109,12 +109,12 @@ SQL veritabanı elastik havuzlar için aşağıdaki tablolarda, her bir hizmet k
 |||||||
 
 > [!IMPORTANT]
-> Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeler ve ABD devlet Orta. Bu bölgelerde Premium katmanda depolama için 1 TB üst sınırı uygulanır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
+> Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde Premium katmanda depolama için 1 TB üst sınırı uygulanır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).
 
 Bir elastik havuzun tüm DTU’ları kullanılırsa, sorguları işlemek üzere havuzdaki her bir veritabanı eşit miktarda kaynak alır. SQL Veritabanı hizmeti, eşit dilimlerde işlem süresi sunarak veritabanları arasında kaynak paylaşım eşitliğini sağlar. Elastik havuz kaynak paylaşımı eşitliği, veritabanı başına DTU dakikası sıfır olmayan bir değere ayarlandığında her bir veritabanı için garanti edilen herhangi bir kaynak miktarına ek niteliktedir.
 
 > [!NOTE]
-> Sınırlar `tempdb` için bkz. [tempdb sınırları](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
+> `tempdb` sınırları için bkz. [tempdb limitleri](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ### <a name="database-properties-for-pooled-databases"></a>Havuza alınmış veritabanları için veritabanı özellikleri
 
@@ -129,9 +129,9 @@ Aşağıdaki tabloda, havuza alınmış veritabanlarının özellikleri açıkla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Tek bir veritabanı için sanal çekirdek kaynak sınırları için bkz [. sanal çekirdek tabanlı satın alma modelini kullanarak tek veritabanları için kaynak limitleri](sql-database-vcore-resource-limits-single-databases.md)
-- Tek bir veritabanı için DTU kaynak sınırları için bkz [. DTU tabanlı satın alma modelini kullanarak tek veritabanları için kaynak limitleri](sql-database-dtu-resource-limits-single-databases.md)
-- Elastik havuzlar için sanal çekirdek kaynak sınırları için bkz [. sanal çekirdek tabanlı satın alma modelini kullanarak elastik havuzlar için kaynak limitleri](sql-database-vcore-resource-limits-elastic-pools.md)
+- Tek bir veritabanı için sanal çekirdek kaynak sınırları için bkz [. Vcore satın alma modelini kullanarak tek veritabanları için kaynak sınırları](sql-database-vcore-resource-limits-single-databases.md)
+- Tek bir veritabanı için DTU kaynak sınırları için bkz [. DTU satın alma modelini kullanarak tek veritabanları için kaynak limitleri](sql-database-dtu-resource-limits-single-databases.md)
+- Elastik havuzların sanal çekirdek kaynak sınırları için bkz [. Vcore satın alma modelini kullanarak elastik havuzlar için kaynak sınırları](sql-database-vcore-resource-limits-elastic-pools.md)
 - Yönetilen örnekler için kaynak sınırları için bkz. [yönetilen örnek kaynak sınırları](sql-database-managed-instance-resource-limits.md).
 - Genel Azure limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-subscription-service-limits.md).
 - Bir veritabanı sunucusundaki kaynak sınırları hakkında daha fazla bilgi için bkz. sunucu ve abonelik düzeylerindeki sınırlamalar hakkında bilgi için bkz. [SQL veritabanı sunucusundaki kaynak sınırlarına genel bakış](sql-database-resource-limits-database-server.md) .

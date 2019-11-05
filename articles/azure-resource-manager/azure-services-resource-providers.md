@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: e8bcaf1e55b042f8dfd8bba2e2113894a67e8b13
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3bbd52615962c2cd187fb16282a373688175cf59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035630"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476690"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure hizmetleri için kaynak sağlayıcıları
 
@@ -32,7 +32,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. AppConfiguration | çekirdek |
 | Microsoft. kanıtlama | Azure kanıtlama hizmeti |
 | Microsoft. Authorization | [Azure Resource Manager](index.yml) |
-| Microsoft. Automation | [Automation](../automation/index.yml) |
+| Microsoft. Automation | [Otomasyon](../automation/index.yml) |
 | Microsoft. AzureActiveDirectory | [Azure Active Directory B2C](../active-directory-b2c/index.yml) |
 | Microsoft. AzureStack | çekirdek |
 | Microsoft.Batch | [Batch](../batch/index.yml) |
@@ -45,7 +45,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. Cache | [Redis için Azure Önbelleği](/azure/azure-cache-for-redis/) |
 | Microsoft. Capacity | çekirdek |
 | Microsoft. CDN | [Content Delivery Network](../cdn/index.yml) |
-| Microsoft. CertificateRegistration | [App Service sertifikaları](../app-service/web-sites-purchase-ssl-web-site.md) |
+| Microsoft. CertificateRegistration | [App Service sertifikaları](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate) |
 | Microsoft. ChangeAnalysis | [Azure Izleyici](../azure-monitor/index.yml) |
 | Microsoft.ClassicCompute | Klasik dağıtım modeli sanal makinesi |
 | Microsoft. ClassicInfrastructureMigrate | Klasik dağıtım modeli geçişi |
@@ -93,7 +93,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. GuestConfiguration | [Azure Ilkesi](../governance/policy/index.yml) |
 | Microsoft. HanaOnAzure | [Azure üzerinde SAP HANA](../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft. HardwareSecurityModules | [Azure ayrılmış HSM](../dedicated-hsm/index.yml) |
-| Microsoft. HDInsight | ['Tan](../hdinsight/index.yml) |
+| Microsoft. HDInsight | [HDInsight](../hdinsight/index.yml) |
 | Microsoft. Healthgelişme API 'leri | [FHıR için Azure API](../healthcare-apis/index.yml) |
 | Microsoft. HybridData | [StorSimple](/azure/storsimple/) |
 | Microsoft. ımportexport | [Azure Içeri/dışarı aktarma](../storage/common/storage-import-export-service.md) |
@@ -132,7 +132,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. OperationsManagement | [Azure Izleyici](../azure-monitor/index.yml) |
 | Microsoft. eşleme | Microsoft Azure eşleme hizmeti |
 | Microsoft. Poliyelei | [Azure Ilkesi](../governance/policy/index.yml) |
-| Microsoft. Portal | [Azure portalda](/azure/azure-portal/) |
+| Microsoft. Portal | [Azure Portal](/azure/azure-portal/) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. Powerbiadanmış | [Power BI Embedded](/azure/power-bi-embedded/) |
 | Microsoft. RecoveryServices | [Site Recovery](../site-recovery/index.yml) |
@@ -157,7 +157,7 @@ Bu makalede, kaynak sağlayıcısı ad uzaylarının Azure hizmetleri ile nasıl
 | Microsoft. StorageCache | [Azure HPC önbelleği](/azure/hpc-cache/) |
 | Microsoft. Storagessync | [Depolama](../storage/index.yml) |
 | Microsoft. StorSimple | [StorSimple](/azure/storsimple/) |
-| Microsoft. StreamAnalytics | [Akış Analizi](../stream-analytics/index.yml) |
+| Microsoft. StreamAnalytics | [Stream Analytics](../stream-analytics/index.yml) |
 | Microsoft. Subscription | çekirdek |
 | Microsoft. support | çekirdek |
 | Microsoft. Timeseriesınsights | [Time Series Insights](../time-series-insights/index.yml) |

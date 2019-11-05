@@ -1,24 +1,24 @@
 ---
 title: 'Bölüm ve örnek: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Bir veri kümesinde örnekleme gerçekleştirmek veya veri kümesinizden bölümler oluşturmak için Azure Machine Learning hizmetinde bölüm ve örnek modülün nasıl kullanılacağını öğrenin.
+titleSuffix: Azure Machine Learning
+description: Bir veri kümesinde örnekleme gerçekleştirmek veya veri kümesinizden bölümler oluşturmak için Azure Machine Learning bölümünde Bölüm ve örnek modülün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693749"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497720"
 ---
 # <a name="partition-and-sample-module"></a>Bölüm ve örnek modül
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Bir veri kümesinde örnekleme gerçekleştirmek veya veri kümesinizden bölümler oluşturmak için bu modülü kullanın.
 
@@ -122,7 +122,7 @@ Veri kümesini verilerin alt kümelerine bölmek istediğinizde bu seçeneği ku
 
     - **Özelleştirilmiş oranlar Içeren bölüm**: Bu seçeneği, her bölümün boyutunu virgülle ayrılmış bir liste olarak belirtmek için kullanın.
 
-        Örneğin, üç bölüm oluşturmak istiyorsanız, verilerin %50 ' i ve her biri verilerin %25 ' i içeren kalan iki bölüm varsa, **virgülle ayrılmış metin kutusuna göre boyut listesine** tıklayın ve şu sayıları yazın: @no_ _t_1
+        Örneğin, üç bölüm oluşturmak istiyorsanız, verilerin %50 ' i ve her biri verilerin %25 ' i içeren kalan iki bölüm varsa, **virgülle ayrılmış metin kutusuna göre boyut listesine** tıklayın ve şu sayıları yazın: @no_ _t_1_`.5, .25, .25`
 
         Tüm bölüm boyutlarının toplamı tam olarak 1 ' i içermelidir.
 
@@ -156,7 +156,7 @@ Bu seçenek, bir veri kümesini birden çok bölüme ayırdığınızda ve şimd
 
     Örneğin, daha önce yaşı kullanarak dört katta hastaları daha önce bölümlüyordu. Her katlama ile birlikte çalışmak için **bölüm ve örnek** modülün dört kopyası gerekir ve her birinde aşağıda gösterildiği gibi farklı bir katlama seçersiniz. Doğrudan çıktıyı çıkarmak **Için ata** ' yı kullanmak doğru değildir.  
 
-    [![Partition ve örnek](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [Bölüm ve örnek ![](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
 5. İşlem hattını çalıştırma.
 
@@ -167,4 +167,4 @@ Bu seçenek, bir veri kümesini birden çok bölüme ayırdığınızda ve şimd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

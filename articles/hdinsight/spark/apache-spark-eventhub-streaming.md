@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: HDInsight 'ta Apache Spark Azure Event Hubs verileri Işleme"
+title: 'Öğretici: Azure Event Hubs Data & Apache Spark-HDInsight'
 description: Öğretici-Azure HDInsight 'ta Apache Spark Azure Event Hubs 'a bağlama ve akış verilerini işleme.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/17/2019
-ms.openlocfilehash: 33ec747edaeba60f1c1e5fdb29fd2af1cb29cf8d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0b24d1b0215564fb9f6063d4a2d091bb7a9a1c3e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800076"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494636"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Öğretici: Azure Event Hubs ve HDInsight 'ta Apache Spark ile Işlem Işlemlerini Işleme
 
@@ -48,7 +48,7 @@ Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz.
     |---|---|
     |Uygulama adı|Uygulama adını belirtin. Bu öğretici için kullanılan değer **HDISparkStreamApp0423**. Bu ad benzersiz bir ad olmalıdır.|
     |Uygulama açıklaması|Uygulamanın kısa bir açıklamasını sağlayın. Bu öğretici için kullanılan değer **basit bir HDInsight Spark akış uygulamasıdır**.|
-    |Web sitesi URL 'SI|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici için kullanılan değer `http://www.contoso.com` ' dır.|
+    |Web sitesi URL 'SI|Uygulamanın Web sitesini belirtin. Geçerli bir Web sitesi olması gerekmez.  Bu öğretici için kullanılan değer `http://www.contoso.com`.|
     |Bu uygulamanın nasıl kullanılacağını bize bildirin|Yalnızca test amaçlıdır. Azure Olay Hub 'ına yer aktarmak için Apache Spark bir akış uygulaması oluşturma.|
 
 1. **Oluştur**'u seçin.
@@ -70,7 +70,7 @@ Tweet’lerin akışını almak için Twitter’da bir uygulama oluşturursunuz.
 
 Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol menüden, **Event Hubs** > nesnelerin **Interneti** > **tüm hizmetlere** gidin.  
 
@@ -82,7 +82,7 @@ Bu olay hub 'ını kullanarak, doldurulabilir bir mağaza yapabilirsiniz.
 
     |Özellik |Değer |
     |---|---|
-    |Adı|Olay Hub 'ı için bir ad girin.  Bu öğretici için kullanılan değer **myeventhubns20180403**.|
+    |Ad|Olay Hub 'ı için bir ad girin.  Bu öğretici için kullanılan değer **myeventhubns20180403**.|
     |Fiyatlandırma katmanı|**Standart**' ı seçin.|
     |Abonelik|Uygun aboneliğinizi seçin.|
     |Kaynak grubu|Açılan listeden var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin.|
@@ -137,7 +137,7 @@ Event Hubs ad alanı dağıtıldıktan sonra bir olay hub 'ı oluşturun.  Porta
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-1. @No__t_0, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` ve `<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
+1. `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>`ve `<TOKEN SECRET>` değerlerini uygun değerlerle değiştirerek aşağıdaki kodu düzenleyin. Olay Hub 'ınıza ara kod göndermek için düzenlenmiş kodu çalıştırın:
 
     ```scala
     import java.util._
@@ -219,7 +219,7 @@ Başka bir Jupyter Not defteri oluşturun ve bunu **ReadTweetsFromEventHub**olar
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
-2. @No__t_0 değiştirerek aşağıdaki kodu düzenleyin ve uygun değerlerle `<Event hub namespace connection string>`. Olay Hub 'ınızdan çilleri okumak için düzenlenmiş kodu çalıştırın:
+2. `<Event hub name>`değiştirerek aşağıdaki kodu düzenleyin ve uygun değerlerle `<Event hub namespace connection string>`. Olay Hub 'ınızdan çilleri okumak için düzenlenmiş kodu çalıştırın:
 
     ```scala
     import org.apache.spark.eventhubs._

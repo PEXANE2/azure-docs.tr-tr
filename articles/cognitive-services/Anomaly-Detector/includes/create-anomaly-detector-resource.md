@@ -9,34 +9,34 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: b40f1833f08074cb0a8d45fe3afc6bac7cbac7f0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717111"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524054"
 ---
-## <a name="create-an-anomaly-detector-resource"></a>Bir Anomali algılayıcısı kaynağı oluşturun
+## <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
-1. Oturum [Azure portalı](https://portal.azure.com)
-1. Tıklayın [Oluştur **Anomali algılayıcısı** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) kaynak
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. [ **Anomali algılayıcı** kaynağı oluştur](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) ' a tıklayın
 1. Tüm gerekli ayarları girin:
 
     |Ayar|Değer|
     |--|--|
     |Ad|İstenen ad (2-64 karakter)|
-    |Subscription|Uygun aboneliği seçin|
-    |Location|Herhangi bir yakındaki ve kullanılabilir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0` -en az bir fiyatlandırma katmanı|
-    |Kaynak Grubu|Kullanılabilir kaynak grubu seçin|
-    |Önizleme onay kutusunu (gerekli)|Olup olmadığını okuduğunuz **Önizleme** dikkat edin|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
+    |Önizleme onay kutusu (gerekli)|**Önizleme** bildiriminin okunup okunmayacağı|
 
-1. Tıklayın **Oluştur** ve kaynak oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
-1. Toplama yapılandırılmış `endpoint` ve API anahtarı:
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
+1. Yapılandırılmış `endpoint` ve bir API anahtarı toplayın:
 
-    |Portal'daki kaynak sekmesi|Ayar|Değer|
+    |Portalda kaynak sekmesi|Ayar|Değer|
     |--|--|--|
-    |**Genel bakış**|Uç Nokta|Uç nokta kopyalayın. Benzer şekilde görünür `https://westus2.api.cognitive.microsoft.com/`|
-    |**anahtarları**|API anahtarı|İki anahtar 1 kopyalayın. Boşluk veya tire ile 32 bir alfasayısal karakter dizesi olduğu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Genel Bakış**|Uç Nokta|Uç noktayı kopyalayın. Şuna benzer `https://westus2.api.cognitive.microsoft.com/`|
+    |**Belirlenmesine**|API anahtarı|İki anahtardan oluşan 1 ' i kopyalayın. Boşluk veya kesik çizgi olmayan 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
 
 
 

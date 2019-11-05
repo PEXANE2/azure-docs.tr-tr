@@ -1,5 +1,5 @@
 ---
-title: 'Azure Toolkit for Eclipse: HDInsight Spark için Scala uygulamaları oluşturma '
+title: 'Azure Toolkit for Eclipse: HDInsight Spark için Scala uygulamaları oluşturma'
 description: Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları doğrudan tutulma IDE 'sinden bir HDInsight Spark kümesine göndermek için Azure Toolkit for Eclipse 'de HDInsight araçlarını kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5336153a776f3324e5f73564ba2804389cd96938
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257580"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494679"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse kullanma
 
@@ -71,7 +71,7 @@ Kullanıcı [Azure aboneliğinde oturum](#sign-in-to-your-azure-subscription)aç
 
 ## <a name="link-a-cluster"></a>Bir kümeyi bağlama
 
-Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilirsiniz. Benzer şekilde, etki alanına katılmış bir HDInsight kümesi için, etki alanı ve Kullanıcı adı `user1@contoso.com`(gibi) kullanarak bağlantı oluşturabilirsiniz.
+Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilirsiniz. Benzer şekilde, etki alanına katılmış bir HDInsight kümesi için, `user1@contoso.com`gibi etki alanı ve Kullanıcı adı kullanarak bağlantı oluşturabilirsiniz.
 
 1. **Azure Explorer**'dan **bir küme bağla** ' yı seçin.
 
@@ -83,7 +83,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
    > [!NOTE]  
    > Küme hem Azure abonelikte hem de bir kümeye bağlandığında bağlı depolama anahtarını, Kullanıcı adını ve parolayı kullanırız.
-   > ![Azure Gezgini depolama hesapları](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
+   > Azure Explorer depolama hesaplarını ![](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
 1. Giriş bilgileri doğru ise, Tamam düğmesine tıkladıktan sonra **HDInsight** düğümünde bağlantılı bir küme görebilirsiniz. Artık, bu bağlantılı kümeye bir uygulama gönderebilirsiniz.
 
@@ -206,7 +206,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 1. Azure Explorer 'da Spark kümeniz adına sağ tıklayın ve ardından **Spark geçmişi Kullanıcı arabirimini aç**' ı seçin. İstendiğinde, kümenin yönetici kimlik bilgilerini girin. Kümeyi sağlarken bunları belirtmelisiniz.
 
-1. Spark geçmiş sunucusu panosunda, az önce çalıştırmayı tamamlamış uygulamayı aramak için uygulama adını kullanırsınız. Yukarıdaki kodda, kullanarak `val conf = new SparkConf().setAppName("MyClusterApp")`uygulama adını ayarlarsınız. Bu nedenle, Spark uygulamanızın adı **Myclusterapp**idi.
+1. Spark geçmiş sunucusu panosunda, az önce çalıştırmayı tamamlamış uygulamayı aramak için uygulama adını kullanırsınız. Yukarıdaki kodda `val conf = new SparkConf().setAppName("MyClusterApp")`kullanarak uygulama adını ayarlarsınız. Bu nedenle, Spark uygulamanızın adı **Myclusterapp**idi.
 
 ### <a name="start-the-apache-ambari-portal"></a>Apache ambarı portalını başlatma
 
@@ -214,7 +214,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 1. İstendiğinde, kümenin yönetici kimlik bilgilerini girin. Kümeyi sağlarken bunları belirtmelisiniz.
 
-### <a name="manage-azure-subscriptions"></a>Azure aboneliklerini yönetin
+### <a name="manage-azure-subscriptions"></a>Azure aboneliklerini yönetme
 
 Varsayılan olarak, Azure Toolkit for Eclipse HDInsight aracında tüm Azure aboneliklerinizden Spark kümeleri listelenir. Gerekirse, kümeye erişmek istediğiniz abonelikleri belirtebilirsiniz.
 
@@ -318,13 +318,13 @@ Bir kümeyi bağladığınızda, depolama kimlik bilgilerini sağlamanızı öne
 
 ## <a name="seealso"></a>Ayrıca bkz.
 
-* [Bakýþ Azure HDInsight üzerinde Apache Spark](apache-spark-overview.md)
+* [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [BI ile Apache Spark: Bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: Yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>Uygulamaları oluşturma ve çalıştırma

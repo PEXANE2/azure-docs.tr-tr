@@ -10,14 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496928"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning ile eğitilen modeller dağıttığınızda özel bir Docker temel görüntüsünü nasıl kullanacağınızı öğrenin.
 
@@ -183,7 +184,7 @@ Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şeki
 | Görüntü | Açıklama |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için temel görüntü |
-| `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınizeci için ONNX çalışma zamanını içerir |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınzoni için ONNX çalışma zamanını içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | GPU için ONNX çalışma zamanını ve CUDA 'yı içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | GPU için ONNX çalışma zamanını ve TensorRT 'yi içerir |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Movidius TM myriadx VPUs tabanlı Intel<sup> </sup> Vision Hızlandırıcısı tasarımı için Onnx<sup></sup> çalışma zamanı ve openvino içerir |

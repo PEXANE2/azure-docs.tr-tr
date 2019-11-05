@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045217"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489508"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML deneme çalıştırmaları ve ölçümlerini izleme
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Denemeleri ve izleme çalıştırma ölçümlerinizi izleyerek model oluşturma sürecini geliştirin. Bu makalede, eğitim betiğe günlük kodu eklemeyi, bir deneme çalıştırması göndermeyi, çalışmayı izlemeyi ve Azure Machine Learning sonuçları incelemeyi öğrenin.
 
@@ -36,7 +37,7 @@ Bir denemeye eğitim sırasında aşağıdaki ölçümler bir çalıştırmaya e
 |Liste|Çalışmayacaktır<br>`run.log_list(name, value, description='')`<br><br>Örnek:<br>Çalıştır. log _list ("accuracies", [0,6, 0,7, 0,87]) | Verilen adla çalıştırılacak bir değer listesini günlüğe kaydedin.|
 |sırada|Çalışmayacaktır<br>`run.log_row(name, description=None, **kwargs)`<br>Örnek:<br>Çalıştır. log _row ("X üzerinden X", x = 1, Y = 0,4) | *Log_row* kullanmak, kwarg 'ler içinde açıklandığı gibi birden çok sütunlu bir ölçü oluşturur. Her adlandırılmış parametre belirtilen değeri içeren bir sütun oluşturur.  *log_row* , rastgele bir tanımlama grubu günlüğe kaydetmek için bir kez veya bir döngüde bir bütün tablo oluşturmak için birden çok kez çağrılabilir.|
 |Tablo|Çalışmayacaktır<br>`run.log_table(name, value, description='')`<br><br>Örnek:<br>Çalıştır. log _table ("X üzerinden X", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Bir sözlük nesnesini verilen ada sahip bir çalıştırmaya kaydedin. |
-|Resimler|Çalışmayacaktır<br>`run.log_image(name, path=None, plot=None)`<br><br>Örnek:<br>`run.log_image("ROC", plt)` | Çalıştırma kaydına bir görüntü kaydedin. Log_image kullanarak bir görüntü dosyası veya bir Matplotlib çizimi çalıştırmaya kaydedilir.  Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır.|
+|Görüntüler|Çalışmayacaktır<br>`run.log_image(name, path=None, plot=None)`<br><br>Örnek:<br>`run.log_image("ROC", plt)` | Çalıştırma kaydına bir görüntü kaydedin. Log_image kullanarak bir görüntü dosyası veya bir Matplotlib çizimi çalıştırmaya kaydedilir.  Bu görüntüler, çalıştırma kaydında görünür ve karşılaştırılabilir olacaktır.|
 |Bir çalıştırmayı etiketleme|Çalışmayacaktır<br>`run.tag(key, value=None)`<br><br>Örnek:<br>Run. Tag ("Selected", "Yes") | Çalıştırmayı bir dize anahtarıyla ve isteğe bağlı dize değeriyle etiketleyin.|
 |Dosya veya dizini karşıya yükle|Çalışmayacaktır<br>`run.upload_file(name, path_or_stream)`<br> <br> Örnek:<br>Run. upload_file ("best_model. pkl", "./model.exe") | Çalıştırma kaydına bir dosya yükleyin. , Belirtilen çıkış dizininde dosyayı otomatik olarak yakala, bu, çoğu çalıştırma türü için varsayılan olarak "./çıktılar" olarak belirlenmiştir.  Yalnızca ek dosyaların yüklenmesi gerektiğinde veya bir çıktı dizini belirtilmediğinde upload_file kullanın. Ada `outputs`, çıktılar dizinine karşıya yüklenecek şekilde eklenmesini öneririz. Bu çalıştırma kaydıyla ilişkili tüm dosyaları `run.get_file_names()` çağırılır.|
 
@@ -261,7 +262,7 @@ print(run.get_portal_url())
    ![Otomatik Machine Learning için Jupyter Not defteri pencere öğesi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Bir işlem hattının daha ayrıntılı ayrıntılarını görüntülemek için tabloda araştırmak istediğiniz işlem hattına tıklayın ve grafikler Azure portal bir açılır pencerede işlenir.
+Bir işlem hattının daha ayrıntılı ayrıntılarını görüntülemek için tabloda araştırmak istediğiniz işlem hattına tıklayın ve grafikler Azure Machine Learning Studio 'dan bir açılır pencerede işlenir.
 
 ### <a name="get-log-results-upon-completion"></a>Tamamlandıktan sonra günlük sonuçlarını alma
 
@@ -273,22 +274,19 @@ Model eğitimi ve izleme arka planda gerçekleşirken diğer görevleri beklerke
 ```run.get_metrics()```kullanarak eğitilen bir modelin ölçümlerini görüntüleyebilirsiniz. Bundan böyle, en iyi modeli belirleyebilmek için yukarıdaki örnekte günlüğe kaydedilen tüm ölçümleri elde edebilirsiniz.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Azure portal veya [çalışma alanı giriş sayfanızda denemeyi görüntüleme (Önizleme)](https://ml.azure.com)
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>[Azure Machine Learning Studio](https://ml.azure.com) 'daki çalışma alanınızdaki denemeyi görüntüleyin
 
-Bir deneme çalışmayı tamamladığında, kaydedilen deneme çalıştırması kaydına gidebilirsiniz. Geçmişe iki şekilde erişebilirsiniz:
+Bir deneme çalışmayı tamamladığında, kaydedilen deneme çalıştırması kaydına gidebilirsiniz. [Azure Machine Learning Studio](https://ml.azure.com)'dan geçmişe erişebilirsiniz.
 
-* Doğrudan çalıştırmanın URL 'sini alın ```print(run.get_portal_url())```
-* Çalıştırmanın adını (Bu durumda ```run```) göndererek çalıştırma ayrıntılarını görüntüleyin. Bu şekilde, deneme adı, KIMLIK, tür, durum, Ayrıntılar sayfası, Azure portal bağlantısı ve belge bağlantısı için size yol gösterir.
+Denemeleri sekmesine gidin ve denemenizin seçimini yapın. Her çalıştırma için günlüğe kaydedilen izlenen ölçümleri ve grafikleri görebileceğiniz deneme çalıştırması panosuna yönlendirilirsiniz. Bu durumda, MSE ve Alfa değerlerini günlüğe verdik.
 
-Çalışma bağlantısı sizi, Azure portal doğrudan çalıştırma ayrıntıları sayfasına getirir. Burada, denemenize kaydedilen tüm özellikleri, izlenen ölçümleri, görüntüleri ve grafikleri görebilirsiniz. Bu durumda, MSE ve Alfa değerlerini günlüğe verdik.
+  ![Azure Machine Learning Studio 'da ayrıntıları çalıştırma](./media/how-to-track-experiments/experiment-dashboard.png)
 
-  ![Azure portal ayrıntılarını çalıştırma](./media/how-to-track-experiments/run-details-page.png)
-
-Ayrıca, çalıştırmaya ilişkin tüm çıktıları veya günlükleri görüntüleyebilir veya deneme klasörünü başkalarıyla paylaşabileceğiniz şekilde gönderdiğiniz deneyin anlık görüntüsünü indirebilirsiniz.
+Belirli bir çalıştırmaya gidebilir ya da çıktılarını veya günlüklerini görüntüleyebilir ya da deneme klasörünü başkalarıyla paylaşabileceğiniz şekilde gönderdiğiniz deneyinin anlık görüntüsünü indirebilirsiniz.
 
 ### <a name="viewing-charts-in-run-details"></a>Çalışma ayrıntılarında grafikleri görüntüleme
 
-Bir çalıştırma sırasında farklı ölçüm türlerini kaydetmek ve bunları Azure portal grafik olarak görüntülemek için günlük API 'Lerini kullanmanın çeşitli yolları vardır. 
+Bir çalıştırma sırasında farklı ölçüm türlerini kaydetmek ve bunları Azure Machine Learning Studio 'da grafik olarak görüntülemek için günlük API 'Leri kullanmanın çeşitli yolları vardır.
 
 |Günlüğe kaydedilen değer|Örnek kod| Portalda görüntüle|
 |----|----|----|

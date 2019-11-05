@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: Azure HDInsight 'ta Spark Machine Learning uygulaması oluşturma"
+title: 'Öğretici: Spark Machine Learning uygulaması oluşturma-Azure HDInsight'
 description: Öğretici-Jupyter Not defteri 'ni kullanarak HDInsight Spark kümelerinde Apache Spark Machine Learning uygulamasının nasıl oluşturulacağı hakkında adım adım yönergeler.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: e77414da964d548b64250bbf98f86bee1529f2ab
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327000"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494563"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark Machine Learning uygulaması oluşturma
 
@@ -33,9 +33,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="understand-the-data-set"></a>Veri kümesini anlamak
 
-Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC. csv** verilerini kullanır. Dosya `\HdiSamples\HdiSamples\SensorSampleData\hvac` konumunda bulunur. Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Verileri kullanarak, bir sistem kimliği ve sistem yaşı için binanın hedef sıcaklığa göre daha sıcak ya da daha soğuk olacağını öngörebilirsiniz.
+Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC. csv** verilerini kullanır. Dosya `\HdiSamples\HdiSamples\SensorSampleData\hvac`konumunda bulunur. Veriler, HVAC sistemlerinin yüklü olduğu bazı binaların hedef sıcaklığı ile gerçek sıcaklığını gösterir. **System** sütunu sistem kimliğini, **SystemAge** sütunu ise HVAC sisteminin binada kaç yıldır kullanıldığını ifade eder. Verileri kullanarak, bir sistem kimliği ve sistem yaşı için binanın hedef sıcaklığa göre daha sıcak ya da daha soğuk olacağını öngörebilirsiniz.
 
-![Spark makine öğrenimi örneği için kullanılan verilerin anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark makine öğrenimi örneği için kullanılan verilerin anlık görüntüsü")
+![Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning örneği için kullanılan verilerin anlık görüntüsü")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Spark MLlib kullanarak Spark makine öğrenimi uygulaması geliştirme
 
@@ -141,7 +141,7 @@ Bu uygulamada bir belge sınıflandırması gerçekleştirmek için Spark [ML i�
 
     Çıktıyı ham CSV dosyasıyla karşılaştırın. Örneğin, CSV dosyasının bu verileri içeren ilk satırı:
 
-    ![Spark makine öğrenimi örneği için çıktı verileri anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark makine öğrenimi örneği için çıktı verileri anlık görüntüsü")
+    ![Spark Machine Learning örneği için çıkış verileri anlık görüntüsü](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark Machine Learning örneği için çıkış verileri anlık görüntüsü")
 
     Binanın soğuk olduğunu göstermek üzere gerçek sıcaklığın hedef sıcaklıktan az olduğuna dikkat edin. Bu nedenle, eğitim çıktısındaki ilk satırda **label** değeri **0.0**’dır ve binanın sıcak olmadığı anlamına gelir.
 
@@ -192,7 +192,7 @@ HDInsight’ta Apache Spark kümeleri, Anaconda kitaplıklarını içerir. Ayrı
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight**yazın.
 
@@ -202,7 +202,7 @@ Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aş
 
 1. **Sil**’i seçin. **Evet**' i seçin.
 
-![HDInsight kümesini silme Azure Portal](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini silme")
+![HDInsight kümesini silme Azure portal](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight kümesini Sil")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

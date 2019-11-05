@@ -6,33 +6,28 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
+ms.date: 10/07/2019
 ms.author: dapine
-ms.openlocfilehash: cbf11c13bfb5c90739ea67fab92df08796a88e50
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2cb2cfbdfbac5d496f109d85977b41a050766ab0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499096"
 ---
-## <a name="create-an-computer-vision-resource"></a>Bir görüntü işleme kaynağı oluşturun
+## <a name="create-an-computer-vision-resource"></a>Görüntü İşleme kaynağı oluşturma
 
-1. Oturum [Azure portalı](https://portal.azure.com)
-1. Tıklayın [Oluştur **görüntü işleme** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) kaynak
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [ **Görüntü işleme** kaynağı oluştur](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) ' a tıklayın.
 1. Tüm gerekli ayarları girin:
 
-    |Ayar|Value|
+    |Ayar|Değer|
     |--|--|
     |Ad|İstenen ad (2-64 karakter)|
-    |Subscription|Uygun aboneliği seçin|
-    |Location|Herhangi bir yakındaki ve kullanılabilir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0` -en az bir fiyatlandırma katmanı|
-    |Kaynak Grubu|Kullanılabilir kaynak grubu seçin|
+    |Abonelik|Uygun aboneliği seçin|
+    |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
+    |Fiyatlandırma Katmanı|`F0`-minimum Fiyatlandırma Katmanı|
+    |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
 
-1. Tıklayın **Oluştur** ve kaynak oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
-1. Toplama yapılandırılmış `endpoint` ve API anahtarı:
-
-    |Portal'daki kaynak sekmesi|Ayar|Value|
-    |--|--|--|
-    |**Genel bakış**|Uç Nokta|Uç nokta kopyalayın. Benzer şekilde görünür `https://computer-vision.cognitiveservices.azure.com/`|
-    |**anahtarları**|API anahtarı|İki anahtar 1 kopyalayın. Boşluk veya tire ile 32 bir alfasayısal karakter dizesi olduğu `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin.
+1. Yapılandırılmış `{ENDPOINT_URI}` ve `{API_KEY}`toplayın, Ayrıntılar için [gerekli parametreleri toplama](../computer-vision-how-to-install-containers.md#gathering-required-parameters) konusuna bakın.

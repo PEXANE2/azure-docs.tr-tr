@@ -1,24 +1,24 @@
 ---
 title: 'Artırılmış karar ağacı gerileme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Yükseltme kullanarak regresyon ağaçlarının bir listesini oluşturmak için Azure Machine Learning hizmetinde, artırılmış karar ağacı gerileme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Artırma kullanarak regresyon ağaçlarının bir listesini oluşturmak için Azure Machine Learning ' de, artırılmış karar ağacı gerileme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693847"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493878"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Artırılmış karar ağacı gerileme modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Bu modülü, artırma kullanarak regresyon ağaçlarının bir listesini oluşturmak için kullanın. *Yükseltme* , her ağacın önceki ağaçlara bağlı olduğu anlamına gelir. Algoritma, önünde olan ağaçların fazlalıklarını sunarak öğrenir. Bu nedenle, bir karar ağacı ' nın artması, daha az sayıda daha az bir riske karşı doğruluğu artırmaya eğilimlidir.  
   
@@ -97,6 +97,8 @@ Eğitim tamamlandıktan sonra:
 
 + Puanlama için modeli kullanmak üzere, yeni giriş örneklerine ilişkin değerleri tahmin etmek için [modeli puan](./score-model.md)alanına bağlayın.
 
++ Eğitilen modelin anlık görüntüsünü kaydetmek için eğitim modülünün **eğitilen model** çıktısına sağ tıklayın ve **farklı kaydet**' i seçin. Tasarruf ettiğiniz eğitilen modelin kopyası, ardışık düzenin art arda çalıştırmaları üzerinde güncellenmez.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

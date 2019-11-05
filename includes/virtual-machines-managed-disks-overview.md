@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 979fa8bed99a8244e9ebae9de4b615bfac4bd773
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72966473"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524022"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -85,14 +85,14 @@ Her VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygu
 
 Yönetilen disk anlık görüntüsü, varsayılan olarak standart yönetilen disk olarak depolanan bir yönetilen diskin salt okunurdur, kilitlenmeyle tutarlı bir tam kopyasıdır. Anlık görüntülerle, yönetilen disklerinizi dilediğiniz zaman bir noktada yedekleyebilirsiniz. Bu anlık görüntüler, kaynak diskten bağımsız olarak bulunur ve yeni yönetilen diskler oluşturmak için kullanılabilir. 
 
-Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır. [Azure kullanım raporuna](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)bakarak anlık görüntülerinizin kullanılan boyutunu görebilirsiniz. Örneğin, bir anlık görüntünün kullanılan veri boyutu 10 GiB ise kullanım raporu, tüketilen miktar olarak 10 GiB/(31 gün x 24 saat) = 0,013441 GiB gösterir.
+Anlık görüntüler, kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, bu anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır. [Azure kullanım raporuna](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)bakarak anlık görüntülerinizin kullanılan boyutunu görebilirsiniz. Örneğin, bir anlık görüntünün kullanılan veri boyutu 10 GiB ise **günlük** kullanım raporu, tüketilen miktar olarak 10 GiB/(31 gün) = 0,3226 gösterir.
 
-Yönetilen disklerle anlık görüntü oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+Yönetilen diskler için anlık görüntüler oluşturma hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [Windows 'da anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Linux’ta anlık görüntüler kullanılarak yönetilen disk olarak depolanmış VHD kopyası oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Windows 'da yönetilen diskin anlık görüntüsünü oluşturma](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Linux 'ta yönetilen diskin anlık görüntüsünü oluşturma](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Resimler
+### <a name="images"></a>Görüntüler
 
 Yönetilen diskler ayrıca yönetilen bir özel görüntü oluşturmayı destekler. Bir depolama hesabındaki özel VHD 'nizden veya doğrudan Genelleştirilmiş (Sysprep uygulanmış) bir VM 'den görüntü oluşturabilirsiniz. Bu işlem tek bir görüntüyü yakalar. Bu görüntü, hem işletim sistemi hem de veri diskleri dahil olmak üzere bir VM ile ilişkili tüm yönetilen diskleri içerir. Bu yönetilen özel görüntü, herhangi bir depolama hesabını kopyalamaya veya yönetmeye gerek olmadan özel görüntünüzü kullanarak yüzlerce VM oluşturulmasına olanak sağlar.
 

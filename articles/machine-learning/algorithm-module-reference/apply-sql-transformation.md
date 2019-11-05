@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 8eede9d1fbee7d8b70f6b6924b9767b4d3f4e0bf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694642"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493924"
 ---
 # <a name="apply-sql-transformation"></a>SQL dönüşümünü Uygula
 
-Bu makalede Azure Machine Learning görsel arabirimi modülü açıklanmaktadır.
+Bu makalede bir Azure Machine Learning Designer (Önizleme) modülü açıklanır.
 
 SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
   
@@ -33,7 +33,7 @@ SQL dönüştürme modülünü Uygula ' yı kullanarak şunları yapabilirsiniz:
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>SQL dönüşümünü Uygula ' yı yapılandırma  
 
-Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, `t1`, `t2` ve `t3` adlarını kullanmanız gerekir. Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
+Modülün giriş olarak üç veri kümesi olabilir. Her giriş bağlantı noktasına bağlı veri kümelerine başvurduğunuzda, `t1`, `t2`ve `t3`adlarını kullanmanız gerekir. Tablo numarası, giriş bağlantı noktasının dizinini gösterir.  
   
 Kalan parametre, SQLite sözdizimini kullanan bir SQL sorgusudur. **SQL betiği** metin kutusuna birden çok satır yazarken her bir ifadeyi sonlandırmak için noktalı virgül kullanın. Aksi takdirde, satır sonları boşluklara dönüştürülür.  
 
@@ -53,11 +53,11 @@ SQLite, ANSI SQL standardının çoğunu desteklese de, ticari ilişkisel verita
   
 - SQLite, en ilişkisel veritabanı sistemlerinde olduğu gibi bir sütuna bir tür atamak yerine, değerler için dinamik yazma kullanır. Kesin olarak yazılmış ve örtük tür dönüştürmeye izin veren.  
   
-- `LEFT OUTER JOIN` uygulanmış, ancak `RIGHT OUTER JOIN` veya `FULL OUTER JOIN` değil.  
+- `LEFT OUTER JOIN` uygulanmış, ancak `RIGHT OUTER JOIN` veya `FULL OUTER JOIN`değil.  
 
-- @No__t_2 komutuyla `RENAME TABLE` ve `ADD COLUMN` deyimlerini kullanabilirsiniz, ancak `DROP COLUMN`, `ALTER COLUMN` ve `ADD CONSTRAINT` dahil diğer yan tümceler desteklenmez.  
+- `ALTER TABLE` komutuyla `RENAME TABLE` ve `ADD COLUMN` deyimlerini kullanabilirsiniz, ancak `DROP COLUMN`, `ALTER COLUMN`ve `ADD CONSTRAINT`dahil diğer yan tümceler desteklenmez.  
   
-- SQLite içinde bir görünüm oluşturabilirsiniz, ancak bundan sonra görünümler salt okunurdur. Bir görünümde `DELETE`, `INSERT` veya `UPDATE` ifadesini yürütemezsiniz. Ancak, bir görünüm üzerinde `DELETE`, `INSERT` veya `UPDATE` ve Tetikleyicinin gövdesinde diğer işlemleri gerçekleştirmek için bir girişim tetikleyen bir tetikleyici oluşturabilirsiniz.  
+- SQLite içinde bir görünüm oluşturabilirsiniz, ancak bundan sonra görünümler salt okunurdur. Bir görünümde `DELETE`, `INSERT`veya `UPDATE` ifadesini yürütemezsiniz. Ancak, bir görünüm üzerinde `DELETE`, `INSERT`veya `UPDATE` ve Tetikleyicinin gövdesinde diğer işlemleri gerçekleştirmek için bir girişim tetikleyen bir tetikleyici oluşturabilirsiniz.  
   
 
 Resmi SQLite sitesinde sağlanan desteklenmeyen işlevlerin listesine ek olarak, aşağıdaki wiki desteklenmeyen diğer özelliklerin bir listesini sağlar: [SQLite-desteklenmeyen SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 972223815810917684f35c4e99f04e1ab5b882c8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952127"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492283"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>Hyper-V ' d e ait müşterilerin sahip olduğu siteler arasında ve SCVMM tarafından Azure 'a yönetilen siteler arasında DR 'nin kullanım dışı bırakılması
 
@@ -32,13 +32,13 @@ Bu makalede, gelecekteki kullanım dışı bırakma planı, ilgili etkileri ve A
 
 - Senaryolar kullanım dışı olduktan sonra, müşteri önerilen adımları izlemediği takdirde aşağıdaki bazı etkileri olur.
 
-    - SCVMM tarafından yönetilen, şirkete ait siteler arasında çalışan Hyper-V VM 'Ler arasında DR: Hyper-V çoğaltma 'nın temel özelliği çalışmaya devam edecek, ancak müşteriler, DR ile ilgili olan işlemleri görüntüleyemez, yönetemez veya gerçekleştiremez. Azure Sire kurtarma deneyimi aracılığıyla Azure portal. 
+    - SCVMM tarafından yönetilen, şirkete ait siteler arasında çalışan Hyper-V VM 'Ler arasında DR: Hyper-V çoğaltma 'nın temel özelliği çalışmaya devam edecek, ancak müşteriler DR ile ilgili herhangi bir işlemi göremez, yönetemeyecek veya gerçekleştiremez. Azure Sire kurtarma deneyimi aracılığıyla Azure portal. 
     - SCVMM tarafından Azure 'a yönetilen Hyper-V VM 'lerinin DR: var olan çoğaltmalar kesintiye uğracaktır ve müşteriler Azure Site Recovery aracılığıyla DR ile ilgili işlemleri görüntüleyemez, yönetemez veya gerçekleştiremez.
 
 
 ## <a name="recommended-actions-to-be-taken"></a>Gerçekleştirilecek Önerilen Eylemler
 
-Bunun nedeni, müşterinin, senaryo kullanım dışı olduktan sonra DR stratejilerinin etkilenmemesini sağlamak için gereken alternatif seçeneklerdir. 
+Aşağıda, müşterinin, senaryo kullanım dışı olduktan sonra DR stratejilerinin etkilenmemesini sağlamak için gereken seçenekler verilmiştir. 
 
 - [Hyper-V konaklarındaki VM 'ler Için Azure 'U Dr hedefi olarak kullanmaya başlamak](hyper-v-azure-tutorial.md)için seçin.
 

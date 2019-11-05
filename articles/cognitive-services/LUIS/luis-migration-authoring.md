@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 86a7575c173b4515eaf0f690bcd00c6fb70ee581
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973306"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492725"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure Kaynak yazma anahtarına geçiş
 
 Language Understanding (LUSıS) yazma kimlik doğrulaması, bir e-posta hesabından Azure kaynağına değişti. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="why-migrate"></a>Neden geçirilir?
 
@@ -65,7 +67,7 @@ Pencereyi iptal ederek geçiş işlemini erteleyebilirsiniz. Geçiş yapılınca
 * **Isteğe bağlı**olarak, her bir uygulamanın ortak kayıt listesini kaydedin. Bu e-posta listesi, geçiş işleminin bir parçası olarak sağlanır.
 * **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, LUSıS kullandığınızda ücretsiz (`F0`) fiyatlandırma katmanını kullanabilirsiniz. 
 
-@No__t-1 katmanı tarafından belirtilen **lusıs uygulamanızı yazma işlemi ücretsizdir**. [Fiyatlandırma katmanları hakkında daha fazla](luis-boundaries.md#key-limits)bilgi edinin.
+**Lusıs uygulamanızı yazma**`F0` katmanı tarafından belirtilen ücretsizdir. [Fiyatlandırma katmanları hakkında daha fazla](luis-boundaries.md#key-limits)bilgi edinin.
 
 Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/). 
 
@@ -73,7 +75,7 @@ Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/).
 
 [Bu geçiş adımlarını](luis-migration-authoring-steps.md)izleyin.
 
-### <a name="after-you-migrate"></a>Geçiş yaptıktan sonra 
+### <a name="after-you-migrate"></a>Geçişinizden sonra 
 
 Geçiş işleminden sonra, tüm LUO uygulamalarınız tek bir LUıN yazma kaynağına atanır.
 
@@ -84,7 +86,7 @@ Kaynak için **Access Control (IAM)** sayfasında _Azure Portal_yazma kaynağın
 |Portal|Amaç|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* Tahmin ve yazma kaynakları oluşturun.<br>* Katkıda bulunanlar ata.|
-|[LUıS](https://www.luis.ai)|* Yeni yazma kaynaklarına geçirin.<br>* **Manage-> Azure Resources** sayfasından tahmine ve yazma kaynaklarını uygulamalara atayın veya atamayı yapın.| 
+|[LUIS](https://www.luis.ai)|* Yeni yazma kaynaklarına geçirin.<br>* **Manage-> Azure Resources** sayfasından tahmine ve yazma kaynaklarını uygulamalara atayın veya atamayı yapın.| 
 
 ## <a name="migration-for-the-app-contributor"></a>Uygulama katılımcısı için geçiş
 

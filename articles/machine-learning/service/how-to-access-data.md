@@ -9,16 +9,17 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 08/2/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07c23d3b93c85e3409814ab0eb635a51344e2ab2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: eac10c8c680caf834bbe4be18ca22a5af936c7a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929259"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497410"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Storage hizmetlerindeki verilerinize Azure Machine Learning veri depoları aracılığıyla kolayca nasıl erişebileceğinizi öğrenin. Veri depoları, abonelik KIMLIĞINIZ ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolamak için kullanılır. Datamağazaların kullanılması, betiklerinizde bulunan bağlantı bilgilerini sabit bir şekilde kodlamadan depolamaya erişmenizi sağlar. Bu [Azure depolama çözümlerinden](#matrix)veri depoları oluşturabilirsiniz. Desteklenmeyen depolama çözümleri için Machine Learning denemeleri sırasında veri çıkış maliyetini kaydetmek üzere verilerinizi desteklenen Azure depolama çözümlerimize taşımanızı öneririz. [Verilerinizi taşımayı öğrenin](#move). 
 
@@ -35,7 +36,7 @@ Bu nasıl yapılır, aşağıdaki görevlerin örneklerini gösterir:
 
 - Azure [BLOB kapsayıcısı](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) veya [Azure dosya paylaşımıyla](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)Azure depolama hesabı.
 
-- [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [çalışma alanı giriş sayfanız (Önizleme)](https://ml.azure.com/)erişimi.
+- [Python için Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Studio](https://ml.azure.com/)'ya erişim.
 
 - Azure Machine Learning çalışma alanı. 
     - [Azure Machine Learning bir çalışma alanı oluşturun](how-to-manage-workspace.md) veya Python SDK 'sını kullanarak mevcut bir tane kullanın.
@@ -51,13 +52,13 @@ Bu nasıl yapılır, aşağıdaki görevlerin örneklerini gösterir:
 
 ## <a name="create-and-register-datastores"></a>Veri depoları oluşturma ve kaydetme
 
-Bir Azure depolama çözümünü bir veri deposu olarak kaydettiğinizde, bu veri deposunu otomatik olarak belirli bir çalışma alanında oluşturursunuz. Python SDK veya çalışma alanı giriş sayfasını kullanarak, veri depolarını bir çalışma alanına oluşturup kaydedebilirsiniz.
+Bir Azure depolama çözümünü bir veri deposu olarak kaydettiğinizde, bu veri deposunu otomatik olarak belirli bir çalışma alanında oluşturursunuz. Python SDK veya Azure Machine Learning Studio kullanarak bir çalışma alanına veri depoları oluşturabilir ve kaydedebilirsiniz.
 
 ### <a name="using-the-python-sdk"></a>Python SDK'yı kullanma
 
 Tüm yazmaç yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) sınıfta bulunur ve register_azure_ * biçiminde olmalıdır.
 
-Register () metodunu doldurmanız için gereken bilgiler [Azure Portal](https://ms.portal.azure.com)aracılığıyla bulunabilir. Sol bölmede **depolama hesapları** ' nı seçin ve kaydettirmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı ve kapsayıcısı ya da dosya paylaşma adı gibi bilgiler sağlar. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama bilgileri için sol taraftaki **Ayarlar** bölmesi altındaki **Hesap anahtarlarına** gidin. 
+Register () metodunu doldurmanız için gereken bilgiler [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla bulunabilir. Sol bölmede **depolama hesapları** ' nı seçin ve kaydettirmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı ve kapsayıcısı ya da dosya paylaşma adı gibi bilgiler sağlar. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama bilgileri için sol taraftaki **Ayarlar** bölmesi altındaki **Hesap anahtarlarına** gidin. 
 
 Aşağıdaki örneklerde bir Azure Blob kapsayıcısını veya Azure dosya paylaşımının bir veri deposu olarak nasıl kaydedileceği gösterilmektedir.
 
@@ -92,16 +93,16 @@ Aşağıdaki örneklerde bir Azure Blob kapsayıcısını veya Azure dosya payla
 
 Azure Blob kapsayıcısını öneririz. Blob 'lar için hem standart hem de Premium depolama alanı kullanılabilir. Daha pahalı olsa da, özellikle büyük bir veri kümesine göre eğiteseniz, eğitimin hızını iyileştirebilecek daha hızlı üretilen iş hızları nedeniyle Premium Depolama önerilir. Depolama hesabı maliyet bilgileri için [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) ' na bakın.
 
-### <a name="using-the-workspace-landing-page"></a>Çalışma alanı giriş sayfasını kullanma 
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'yu kullanma 
 
-Çalışma alanı giriş sayfasında birkaç adımda yeni bir veri deposu oluşturun.
+Azure Machine Learning Studio 'da birkaç adımda yeni bir veri deposu oluşturun.
 
-1. [Çalışma alanı giriş sayfasında](https://ml.azure.com/)oturum açın.
+1. [Azure Machine Learning Studio](https://ml.azure.com/)'da oturum açın.
 1. **Yönet**altında sol bölmedeki **veri depoları** ' nı seçin.
 1. **+ Yeni veri deposu**seçin.
 1. Yeni veri deposu formunu doldurun. Form, Azure depolama türü ve kimlik doğrulama türü seçimlerini temel alan bir şekilde günceller.
   
-Formu doldurmanız için gereken bilgiler [Azure Portal](https://ms.portal.azure.com)aracılığıyla bulunabilir. Sol bölmede **depolama hesapları** ' nı seçin ve kaydettirmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı ve kapsayıcısı ya da dosya paylaşma adı gibi bilgiler sağlar. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için soldaki **Ayarlar** bölmesinde bulunan **Hesap anahtarlarına** gidin.
+Formu doldurmanız için gereken bilgiler [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla bulunabilir. Sol bölmede **depolama hesapları** ' nı seçin ve kaydettirmek istediğiniz depolama hesabını seçin. **Genel bakış** sayfası, hesap adı ve kapsayıcısı ya da dosya paylaşma adı gibi bilgiler sağlar. Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için soldaki **Ayarlar** bölmesinde bulunan **Hesap anahtarlarına** gidin.
 
 Aşağıdaki örnekte formun Azure blob veri deposu oluşturmak için nasıl görüneceğine ilişkin bir örnek gösterilmektedir. 
     
@@ -112,7 +113,7 @@ Aşağıdaki örnekte formun Azure blob veri deposu oluşturmak için nasıl gö
 
 ## <a name="get-datastores-from-your-workspace"></a>Çalışma alanınızdan veri depoları alın
 
-Geçerli çalışma alanında kayıtlı belirli bir veri deposunu almak için, veri deposu sınıfında [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) statik yöntemini kullanın:
+Geçerli çalışma alanında kayıtlı belirli bir veri deposunu almak için, veri deposu sınıfında [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) static metodunu kullanın:
 
 ```Python
 #get named datastore from current workspace
@@ -127,7 +128,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımının sırasıyla `workspaceblobstore` ve `workspacefilestore` adlı çalışma alanına kayıtlı olması gerekir. Blob kapsayıcısının bağlantı bilgilerini ve çalışma alanına bağlı depolama hesabında sağlanan dosya paylaşımının depolarlar. `workspaceblobstore` varsayılan veri deposu olarak ayarlanır.
+Bir çalışma alanı oluşturduğunuzda, bir Azure Blob kapsayıcısı ve bir Azure dosya paylaşımında sırasıyla `workspaceblobstore` ve `workspacefilestore` adlı çalışma alanına kaydedilir. Blob kapsayıcısının bağlantı bilgilerini ve çalışma alanına bağlı depolama hesabında sağlanan dosya paylaşımının depolarlar. `workspaceblobstore` varsayılan veri deposu olarak ayarlanır.
 
 Çalışma alanının varsayılan veri deposunu almak için:
 
@@ -144,9 +145,9 @@ ws.set_default_datastore('your datastore name')
 
 <a name="up-and-down"></a>
 ## <a name="upload--download-data"></a>Karşıya yükleme & indirme verileri
-Aşağıdaki örneklerde açıklanan [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) ve [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) yöntemleri, [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) ve [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) sınıflarına özgüdür ve aynı şekilde çalışır.
+Aşağıdaki örneklerde açıklanan [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) ve [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) yöntemleri, [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) ve [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) sınıfları için özeldir ve aynı şekilde çalışır.
 
-### <a name="upload"></a>Karşıya Yükleme
+### <a name="upload"></a>Karşıya Yükle
 
  Python SDK kullanarak veri deposuna bir dizin ya da tek bir dosya yükleyin.
 
@@ -162,7 +163,7 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-`target_path` parametresi, karşıya yüklenecek dosya paylaşımında (veya blob kapsayıcısında) konumu belirtir. Varsayılan değer `None` ' dır, bu durumda veriler köke yüklenir. `target_path` konumundaki mevcut verilerin üzerine yazıldığında `overwrite=True`.
+`target_path` parametresi, karşıya yüklenecek dosya paylaşımında (veya blob kapsayıcısında) konumu belirtir. Bu, verilerin köke yüklendiği `None`varsayılan olarak olur. `target_path` konumundaki mevcut verilerin üzerine yazıldığında `overwrite=True`.
 
 Ya da `upload_files()` yöntemi aracılığıyla veri deposuna tek tek dosyaların bir listesini yükleyin.
 
@@ -176,7 +177,7 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-`target_path` parametresi, verilerin indirileceği yerel dizinin konumudur. İndirilecek dosya paylaşımında (veya blob kapsayıcısında) klasörün yolunu belirtmek için bu yolu `prefix` ' a sağlayın. `prefix` `None`, dosya paylaşımınızın (veya blob kapsayıcısının) tüm içerikleri indirilir.
+`target_path` parametresi, verilerin indirileceği yerel dizinin konumudur. İndirilecek dosya paylaşımında (veya blob kapsayıcısında) klasörün yolunu belirtmek için bu yolu `prefix`sağlayın. `prefix` `None`, dosya paylaşımınızın (veya blob kapsayıcısının) tüm içerikleri indirilir.
 
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Eğitim sırasında verilerinize erişin
@@ -190,9 +191,9 @@ Yapmanın|Yöntem|Açıklama|
 ----|-----|--------
 Bağlama| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Veri deposunu işlem hedefine bağlamak için kullanın.
 İndirin|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Veri deposunun içeriğini `path_on_compute`tarafından belirtilen konuma indirmek için kullanın. <br><br> Bu indirme, çalıştırmadan önce oluşur.
-Karşıya Yükleme|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| `path_on_compute` tarafından belirtilen konumdan bir dosyayı veri deposuna yüklemek için kullanın. <br><br> Bu karşıya yükleme, çalıştırıldıktan sonra olur.
+Karşıya Yükle|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| `path_on_compute` tarafından belirtilen konumdan bir dosyayı veri deposuna yüklemek için kullanın. <br><br> Bu karşıya yükleme, çalıştırıldıktan sonra olur.
 
-Veri deposundaki belirli bir klasöre veya dosyaya başvurmak ve işlem hedefinde kullanılabilir hale getirmek için, veri deposu [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) metodunu kullanın.
+Veri deposundaki belirli bir klasöre veya dosyaya başvurmak ve işlem hedefinde kullanılabilir hale getirmek için veri deposu [`path()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#path-path-none--data-reference-name-none-) yöntemini kullanın.
 
 ```Python
 #to mount the full contents in your storage to the compute target
@@ -224,10 +225,10 @@ est = Estimator(source_directory='your code directory',
                 )
 ```
 
-Ayrıca veri depolamalardan/bu kaynaklardan veri bağlamak veya veri kopyalamak için `inputs` parametresine bir veri depoları listesini de geçirebilirsiniz. Bu kod örneği:
+Ayrıca veri depolarınızı/veritabanından veri bağlamak veya buralardan veri kopyalamak için Estimator Oluşturucusu `inputs` parametreye bir veri depoları listesi geçirebilirsiniz. Bu kod örneği:
 * Eğitim betiğinizin `train.py` çalıştırılabilmesi için `datastore1` tüm içeriğini işlem hedefine indirir
 * `train.py` çalıştırılmadan önce `datastore2` `'./foo'` klasörü işlem hedefine indirir
-* Komut dosyanız çalıştırıldıktan sonra işlem hedefinden `'./bar.pkl'` dosyasını `datastore3` ' e yükler
+* Komut dosyanız çalıştıktan sonra işlem hedefinden dosya `'./bar.pkl'` `datastore3` yükler
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -281,10 +282,10 @@ SDK 'nın veri depolarına erişim sağlamadığı durumlarda, verilere erişmek
 <a name="move"></a>
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Verileri desteklenen Azure depolama çözümlerine taşıma
 
-Azure Machine Learning hizmeti, Azure blob, Azure dosyası, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL 'tan verilere erişimi destekler. Desteklenmeyen depolama için, Machine Learning denemeleri sırasında veri çıkış maliyetini kaydetmek üzere verilerinizi Azure Data Factory kullanarak desteklenen Azure depolama çözümlerimize taşımanızı öneririz. Azure Data Factory, ek bir ücret ödemeden Azure veri Hizmetleri, şirket içi veri kaynakları, Amazon S3 ve Redshift ve Google BigQuery dahil 80 ' den fazla yerleşik bağlayıcı ile verimli ve esnek veri aktarımı sağlar. [Azure Data Factory kullanarak verilerinizi taşımak için adım adım kılavuzu izleyin](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
+Azure Machine Learning, Azure blob, Azure dosyası, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL verilerine erişimi destekler. Desteklenmeyen depolama için, Machine Learning denemeleri sırasında veri çıkış maliyetini kaydetmek üzere verilerinizi Azure Data Factory kullanarak desteklenen Azure depolama çözümlerimize taşımanızı öneririz. Azure Data Factory, ek bir ücret ödemeden Azure veri Hizmetleri, şirket içi veri kaynakları, Amazon S3 ve Redshift ve Google BigQuery dahil 80 ' den fazla yerleşik bağlayıcı ile verimli ve esnek veri aktarımı sağlar. [Azure Data Factory kullanarak verilerinizi taşımak için adım adım kılavuzu izleyin](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Model eğitme](how-to-train-ml-models.md)
+* [Bir modeli eğitme](how-to-train-ml-models.md).
 
-* [Model dağıtma](how-to-deploy-and-where.md)
+* [Model dağıtın](how-to-deploy-and-where.md).

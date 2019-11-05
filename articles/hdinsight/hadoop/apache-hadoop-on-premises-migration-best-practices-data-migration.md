@@ -1,5 +1,5 @@
 ---
-title: Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-veri geçişi
+title: "Veri geçişi: Azure HDInsight 'a şirket içi Apache Hadoop"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmek için veri geçişi en iyi yöntemlerini öğrenin.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735923"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494983"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-veri geçişi en iyi yöntemleri
 
@@ -24,8 +24,8 @@ Bu makale, Azure HDInsight 'a veri taşımaya yönelik öneriler sağlar. Şirke
 Şirket içinden Azure ortamına veri geçirmek için iki ana seçenek vardır:
 
 1.  TLS ile ağ üzerinden veri aktarımı
-    1. Internet üzerinden, çeşitli araçlardan birini kullanarak düzenli bir internet bağlantısı üzerinden Azure depolama 'ya veri aktarabilirsiniz: Azure Depolama Gezgini, AzCopy, Azure PowerShell ve Azure CLı.  Daha fazla bilgi için bkz. [Azure Storage 'a veri taşıma](../../storage/common/storage-moving-data.md) .
-    2. Express Route-ExpressRoute, Microsoft veri merkezleri ile şirket içinde veya bir birlikte bulundurma tesisinde bulunan altyapı arasında özel bağlantılar oluşturmanızı sağlayan bir Azure hizmetidir. ExpressRoute bağlantıları değil genel Internet üzerinden gidin ve daha yüksek güvenlik, güvenilirlik ve hız tipik daha düşük gecikme süreleriyle Internet üzerinden sunar. Daha fazla bilgi için bkz. [ExpressRoute bağlantı hattı oluşturma ve değiştirme](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    1. Internet üzerinden: Azure Depolama Gezgini, AzCopy, Azure PowerShell ve Azure CLı gibi çeşitli araçlardan birini kullanarak düzenli bir internet bağlantısı üzerinden Azure depolama 'ya veri aktarabilirsiniz.  Daha fazla bilgi için bkz. [Azure Storage 'a veri taşıma](../../storage/common/storage-moving-data.md) .
+    2. Express Route-ExpressRoute, Microsoft veri merkezleri ile şirket içinde veya bir birlikte bulundurma tesisinde bulunan altyapı arasında özel bağlantılar oluşturmanızı sağlayan bir Azure hizmetidir. ExpressRoute bağlantıları, genel Internet üzerinden geçmez ve Internet üzerinden tipik bağlantılardan daha düşük gecikme süreleriyle daha yüksek güvenlik, güvenilirlik ve hız sunar. Daha fazla bilgi için bkz. [ExpressRoute bağlantı hattı oluşturma ve değiştirme](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Data Box çevrimiçi veri aktarımı-Data Box Edge ve Data Box Gateway, siteniz ile Azure arasında verileri yönetmek için ağ depolama ağ geçitleri görevi gören çevrimiçi veri aktarımı ürünlerdir. Şirket içi bir ağ cihazı olan Data Box Edge, Azure’ın içine ve dışına veri aktarımı gerçekleştirmesinin yanı sıra verileri işlemek için yapay zeka (AI) özellikli uç işlemini kullanır. Data Box Gateway, depolama ağ geçidi özelliklerine sahip sanal bir gereçtir. Daha fazla bilgi için bkz. [Azure Data Box belgeleri-çevrimiçi aktarım](https://docs.microsoft.com/azure/databox-online/).
 1.  Verileri çevrimdışı aktarma
     1. Data Box çevrimdışı veri aktarımı-Data Box, Data Box Disk ve Data Box Heavy cihazları, ağ bir seçenek olmadığında büyük miktarlarda verileri Azure 'a aktarmanızı sağlar. Bu çevrimdışı veri aktarım cihazları kuruluşunuz ile Azure veri merkezi arasında çift yönlü olarak sevk edilebilir. Bunlar aktarım sırasında verilerinizin korunmasına yardımcı olmak için AES şifrelemesi kullanır ve karşıya yükleme sonrası temizlik işlemine tabi tutularak verileriniz cihazdan silinir. Data Box çevrimdışı aktarım cihazları hakkında daha fazla bilgi için bkz. [Azure Data Box belgeleri-çevrimdışı aktarım](https://docs.microsoft.com/azure/databox/). Hadoop kümelerinin geçirilmesi hakkında daha fazla bilgi için bkz. [on-premises bir sunucudan Azure Storage 'a geçiş yapmak için Azure Data Box kullanma](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
@@ -58,7 +58,7 @@ DistCp, verileri aktarmak, hataları işlemek ve bu hatalardan kurtarmak için M
 Detcp, her bir kopyanın kabaca aynı bayt sayısına eşit olması için eşleme görevleri oluşturmaya çalışır. Varsayılan olarak, DistCp işleri 20 mapto kullanır. Distcp için daha fazla Maplıya (komut satırında 'm parametresi ile) kullanmak, veri aktarım işlemi sırasında paralellik düzeyini artırır ve veri aktarımının uzunluğunu azaltır. Ancak, Mapıı sayısını artırırken dikkate alınması gereken iki şey vardır:
 
 1. Detcp 'nin en düşük ayrıntı düzeyi tek bir dosyadır. Kaynak dosya sayısından daha fazla sayıda Mapbir eşleme belirtmek yardımcı değildir ve kullanılabilir küme kaynaklarını boşa karşılacaktır.
-1. Mapçların sayısını öğrenmek için kümede kullanılabilir Yarn belleğini göz önünde bulundurun. Her harita görevi bir Yarn kapsayıcısı olarak başlatılır. Kümede başka bir ağır iş yükünün çalışmadığını varsayarsak, mapcontroller sayısı şu formül tarafından belirlenebilir: d = (her çalışan düğümü için çalışan \* düğüm sayısı)/Yarn kapsayıcı boyutu. Ancak, diğer uygulamalar bellek kullanıyorsa, DistCp işleri için yalnızca YARN belleğin bir kısmını kullanmayı seçin.
+1. Mapçların sayısını öğrenmek için kümede kullanılabilir Yarn belleğini göz önünde bulundurun. Her harita görevi bir Yarn kapsayıcısı olarak başlatılır. Kümede başka bir ağır iş yükünün çalışmadığını varsayarsak, Mapcontroller sayısı şu formül tarafından belirlenebilir: d = (her çalışan düğümü için YARN bellek \* çalışan düğüm sayısı)/YARN kapsayıcı boyutu. Ancak, diğer uygulamalar bellek kullanıyorsa, DistCp işleri için yalnızca YARN belleğin bir kısmını kullanmayı seçin.
 
 ### <a name="use-more-than-one-distcp-job"></a>Birden fazla DistCp işi kullanın
 
@@ -70,15 +70,15 @@ Az sayıda büyük dosya varsa, daha fazla mapa ile daha fazla eşzamanlılık s
 
 ### <a name="use-the-strategy-command-line-parameter"></a>' Strateji ' komut satırı parametresini kullanın
 
-Komut satırında `strategy = dynamic` parametresini kullanmayı düşünün. `strategy` Parametresinin varsayılandeğeri,herharitanınkabacaaynısayıdabaytolarakkopyaladığıdurumdur.`uniform size` Bu parametre olarak `dynamic`değiştirildiğinde, liste dosyası birkaç "öbek dosyası" olarak bölünür. Öbek dosyalarının sayısı, haritalar sayısının birden çok sayısıdır. Her eşleme görevi, öbek dosyalarından birine atanır. Bir öbekteki tüm yollar işlendikten sonra, geçerli öbek silinir ve yeni bir öbek elde edilir. İşlem, başka bir öbek kullanılabilir olana kadar devam eder. Bu "dinamik" yaklaşım daha hızlı eşleme görevlerinin daha yavaş yollardan daha fazla yol kullanmasına olanak sağlar. böylece, genel olarak DistCp işini hızlanın.
+Komut satırında `strategy = dynamic` parametresi kullanmayı düşünün. `strategy` parametresinin varsayılan değeri `uniform size`, bu durumda her eşleme kabaca aynı sayıda bayt olarak kopyalanır. Bu parametre `dynamic`olarak değiştirildiğinde, liste dosyası birkaç "öbek dosyası" olarak bölünür. Öbek dosyalarının sayısı, haritalar sayısının birden çok sayısıdır. Her eşleme görevi, öbek dosyalarından birine atanır. Bir öbekteki tüm yollar işlendikten sonra, geçerli öbek silinir ve yeni bir öbek elde edilir. İşlem, başka bir öbek kullanılabilir olana kadar devam eder. Bu "dinamik" yaklaşım daha hızlı eşleme görevlerinin daha yavaş yollardan daha fazla yol kullanmasına olanak sağlar. böylece, genel olarak DistCp işini hızlanın.
 
 ### <a name="increase-the-number-of-threads"></a>İş parçacığı sayısını artırma
 
-`-numListstatusThreads` Parametrenin artırılması performansı artırdığından bkz. Bu parametre, dosya listesi oluşturmak için kullanılacak iş parçacığı sayısını denetler ve 40 en büyük değerdir.
+`-numListstatusThreads` parametresinin artması performansı artırdığından bkz. Bu parametre, dosya listesi oluşturmak için kullanılacak iş parçacığı sayısını denetler ve 40 en büyük değerdir.
 
 ### <a name="use-the-output-committer-algorithm"></a>Çıkış komter algoritmasını kullanın
 
-Parametrenin `-Dmapreduce.fileoutputcommitter.algorithm.version=2` geçirilme performansını artırdığı konusunda bilgi için bkz. Bu çıkış komter algoritması, çıkış dosyalarını hedefe yazma etrafında iyileştirmelere sahiptir. Aşağıdaki komut, farklı parametrelerin kullanımını gösteren bir örnektir:
+`-Dmapreduce.fileoutputcommitter.algorithm.version=2` parametre geçirmenin, performansı artırdığı konusunda bilgi için bkz. Bu çıkış komter algoritması, çıkış dosyalarını hedefe yazma etrafında iyileştirmelere sahiptir. Aşağıdaki komut, farklı parametrelerin kullanımını gösteren bir örnektir:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

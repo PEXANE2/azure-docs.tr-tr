@@ -1,6 +1,6 @@
 ---
 title: Modül hatalarında sorun giderme
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hata kodlarını kullanarak Azure Machine Learning Studio modül özel durumlarının sorunlarını giderme
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693068"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497733"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Algoritma & modül başvurusu için özel durumlar ve hata kodları
 
-Azure Machine Learning Studio modüller kullanarak karşılaşabileceğiniz hata iletileri ve özel durum kodları hakkında bilgi edinin. 
+Azure Machine Learning tasarımcısında modüller kullanarak karşılaşabileceğiniz hata iletileri ve özel durum kodları hakkında bilgi edinin (Önizleme). 
 
-Bu sorunu çözmek için, bu makaledeki hata olup olmadığına bakarak yaygın nedenler hakkında bilgi edinin. Studio 'da bir hata iletisinin tam metnini almanın iki yolu vardır:  
+Bu sorunu çözmek için, bu makaledeki hata olup olmadığına bakarak yaygın nedenler hakkında bilgi edinin. Tasarımcıda bir hata iletisinin tam metnini almanın iki yolu vardır:  
  
 - Sağ bölmedeki bağlantıyı tıklatın, **Çıkış günlüğünü görüntüleyin**ve en alta kaydırın. Ayrıntılı hata iletisi pencerenin son iki satırı içinde görüntülenir.  
   
 - Hatayı içeren modülü seçin ve kırmızı X ' e tıklayın. Yalnızca ilgili hata metni görüntülenir.  
   
-Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değişiklikler hakkında bize bilgi gönderin. Hata konusuyla ilgili geri bildirim gönderebilir veya [Azure MACHINE LEARNING STUDIO Forumu](https://aka.ms/aml-forum-studio) ' nu ziyaret edebilir ve soru gönderebilirsiniz.  
+Hata iletisi metni yararlı değilse, geri bildirimde bulunarak bağlam ve istenen eklemeler ya da değişiklikler hakkında bize bilgi gönderin.
 
 
 ## <a name="error-0001"></a>Hata 0001  
@@ -39,8 +39,8 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Belirtilen bir veya daha fazla sütun bulunamadı|  
-|"@No__t_0" adına veya dizinine sahip sütun bulunamadı|  
-|"@No__t_0" adına veya dizinine sahip sütun "{1}" içinde yok|  
+|"{0}" adına veya dizinine sahip sütun bulunamadı|  
+|"{0}" adına veya dizinine sahip sütun "{1}" içinde yok|  
  
 
 ## <a name="error-0002"></a>Hata 0,0002  
@@ -53,11 +53,11 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Parametre ayrıştırılamadı|  
-|"@No__t_0" parametresi ayrıştırılamadı|  
-|"@No__t_0" parametresi "{1}" olarak ayrıştırılamadı|  
-|"@No__t_1" olan "{0}" parametresi "{2}" olarak dönüştürülemedi|  
-|"@No__t_1" "{0}" parametre değeri "{2}" iken "{3}" olarak dönüştürülemedi|  
-|"@No__t_1" sütunundaki "{0}" değeri "{2}", "{4}" biçiminin kullanımı ile "{3}" olarak dönüştürülemedi|  
+|"{0}" parametresi ayrıştırılamadı|  
+|"{0}" parametresi "{1}" olarak ayrıştırılamadı|  
+|"{1}" olan "{0}" parametresi "{2}" olarak dönüştürülemedi|  
+|"{1}" "{0}" parametre değeri "{2}" iken "{3}" olarak dönüştürülemedi|  
+|"{1}" sütunundaki "{0}" değeri "{2}", "{4}" biçiminin kullanımı ile "{3}" olarak dönüştürülemedi|  
   
 
 ## <a name="error-0003"></a>Hata 0003  
@@ -76,7 +76,7 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Bir veya daha fazla giriş null veya boş|  
-|"@No__t_0" girişi null veya boş|  
+|"{0}" girişi null veya boş|  
   
 
 ## <a name="error-0004"></a>Hata 0,0004  
@@ -89,8 +89,8 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Parametre sınır değerinden büyük olmalıdır.|  
-|"@No__t_0" parametresinin değeri {1} daha büyük olmalıdır.|  
-|"@No__t_0" parametresi, {2} daha büyük olması gereken "{1}" değerine sahip|  
+|"{0}" parametresinin değeri {1}daha büyük olmalıdır.|  
+|"{0}" parametresi, {2} daha büyük olması gereken "{1}" değerine sahip|  
   
 
 
@@ -104,8 +104,8 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Parametre, sınır değerinden büyük veya buna eşit olmalıdır.|  
-|"@No__t_0" parametresinin değeri {1} eşit veya daha büyük olmalıdır.|  
-|"@No__t_0" parametresi, {2} büyük veya eşit olması gereken "{1}" değerine sahip.|  
+|"{0}" parametresinin değeri {1}eşit veya daha büyük olmalıdır.|  
+|"{0}" parametresi, {2}büyük veya eşit olması gereken "{1}" değerine sahip.|  
   
 
 ## <a name="error-0006"></a>Hata 0006  
@@ -118,8 +118,8 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Parametre uyumsuzluğu. Parametrelerden biri başka bir değerden küçük olmalıdır.|  
-|"@No__t_0" parametresinin değeri "{1}" değerinden küçük olmalıdır.|  
-|"@No__t_0" parametresi, {2} daha az olması gereken "{1}" değerine sahip.|  
+|"{0}" parametresinin değeri "{1}" değerinden küçük olmalıdır.|  
+|"{0}" parametresi, {2}daha az olması gereken "{1}" değerine sahip.|  
   
 
 ## <a name="error-0007"></a>Hata 0007  
@@ -140,8 +140,8 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum iletileri|  
 |------------------------|  
 |Parametre uyumsuzluğu. Parametrelerden biri başka bir değerden küçük veya buna eşit olmalıdır.|  
-|"@No__t_0" parametresi "{1}" değerinden küçük veya bu değere eşit olmalıdır.|  
-|"@No__t_0" parametresi, {2} küçük veya eşit olması gereken "{1}" değerine sahip.|  
+|"{0}" parametresi "{1}" değerinden küçük veya bu değere eşit olmalıdır.|  
+|"{0}" parametresi, {2}küçük veya eşit olması gereken "{1}" değerine sahip.|  
   
 
 ## <a name="error-0008"></a>Hata 0008  
@@ -156,16 +156,16 @@ Hata iletisi metni yararlı değilse, bağlam ve istenen eklemeler ya da değiş
 |Özel durum Iletileri|  
 |------------------------|  
 |Parametre değeri belirtilen aralıkta değil.|  
-|"@No__t_0" parametresinin değeri Aralık içinde değil.|  
-|"@No__t_0" parametresinin değeri [{1}, {2}] aralığında olmalıdır.|  
+|"{0}" parametresinin değeri Aralık içinde değil.|  
+|"{0}" parametresinin değeri [{1}, {2}] aralığında olmalıdır.|  
   
 
 ## <a name="error-0009"></a>Hata 0009  
  Azure depolama hesabı adı veya kapsayıcı adı yanlış belirtildiğinde özel durum oluşur.  
   
-Bu hata, bir Azure depolama hesabı için parametreler belirttiğinizde, ancak ad veya parola çözümlenemediğinde Azure Machine Learning Studio oluşur. Parolalardan veya hesap adlarındaki hatalar birçok nedenden kaynaklanabilir:
+Bu hata, bir Azure depolama hesabının parametrelerini belirttiğinizde, ancak ad veya parola çözümlenemediğinde Azure Machine Learning tasarımcısında oluşur. Parolalardan veya hesap adlarındaki hatalar birçok nedenden kaynaklanabilir:
  
- + Hesap yanlış türde. Bazı yeni hesap türleri Machine Learning Studio ile kullanım için desteklenmez. Ayrıntılar için bkz. [verileri Içeri aktarma](import-data.md) .
+ + Hesap yanlış türde. Machine Learning Designer ile kullanım için bazı yeni hesap türleri desteklenmez. Ayrıntılar için bkz. [verileri Içeri aktarma](import-data.md) .
  + Yanlış hesap adı girdiniz
  + Hesap artık yok
  + Depolama hesabının parolası yanlış veya değişmiş
@@ -287,7 +287,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |Özel durum Iletileri|  
 |------------------------|  
 |Sütun benzersiz değerlerinin sayısı izin verilenden fazla.|  
-|Sütundaki benzersiz değer sayısı: "{0}", {1} demet sayısını aşıyor.|  
+|Sütundaki benzersiz değer sayısı: "{0}", {1}demet sayısını aşıyor.|  
   
 
 ## <a name="error-0015"></a>Hata 0015  
@@ -314,7 +314,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |Özel durum Iletileri|  
 |------------------------|  
 |Giriş veri kümelerinde karşılık gelen dizine sahip sütunlarda uyumsuz türler vardır.|  
-|@No__t_0 ve {1} sütunları uyumsuzdur.|  
+|{0} ve {1} sütunları uyumsuzdur.|  
 |Sütun öğesi türleri, giriş veri kümelerinin ({1} ve {2} sırasıyla) sütun {0} (sıfır tabanlı) için uyumlu değildir.|  
   
 
@@ -339,15 +339,15 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |Özel durum Iletileri|  
 |------------------------|  
 |Geçerli türdeki sütun işlenemiyor. Tür modül tarafından desteklenmiyor.|  
-|@No__t_0 türünde sütun işlenemiyor. Tür modül tarafından desteklenmiyor.|  
-|@No__t_1 türündeki "{1}" sütunu işlenemiyor. Tür modül tarafından desteklenmiyor.|  
-|@No__t_1 türündeki "{1}" sütunu işlenemiyor. Tür modül tarafından desteklenmiyor. Parametre adı: {2}|  
+|{0}türünde sütun işlenemiyor. Tür modül tarafından desteklenmiyor.|  
+|{0}türündeki "{1}" sütunu işlenemiyor. Tür modül tarafından desteklenmiyor.|  
+|{0}türündeki "{1}" sütunu işlenemiyor. Tür modül tarafından desteklenmiyor. Parametre adı: {2}|  
   
 
 ## <a name="error-0018"></a>Hata 0018  
  Giriş veri kümesi geçerli değilse özel durum oluşur.  
   
-**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örnek:  
+**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örneğin:  
   
 -   Modül bir etiket sütunu gerektiriyor, ancak hiçbir sütun etiket olarak işaretlenmemiş veya henüz bir etiket sütunu seçmediniz.  
   
@@ -381,8 +381,8 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |Özel durum Iletileri|  
 |------------------------|  
 |Sütundaki değerler sıralanmaz.|  
-|"@No__t_0" sütunundaki değerler sıralanmaz.|  
-|"@No__t_1" veri kümesinin "{0}" sütunundaki değerler sıralanmaz.|  
+|"{0}" sütunundaki değerler sıralanmaz.|  
+|"{1}" veri kümesinin "{0}" sütunundaki değerler sıralanmaz.|  
   
 
 ## <a name="error-0020"></a>Hata 0020  
@@ -396,7 +396,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |------------------------|  
 |Giriş veri kümesindeki sütun sayısı izin verilen en küçük değerden küçük.|  
 |Giriş veri kümesindeki sütun sayısı, izin verilen en az {0} sütundan daha az.|  
-|"@No__t_0" giriş veri kümesindeki sütun sayısı izin verilen en az {1} sütundan az.|
+|"{0}" giriş veri kümesindeki sütun sayısı izin verilen en az {1} sütundan az.|
 
 ## <a name="error-0021"></a>Hata 0021  
  Modüle geçirilen bazı veri kümelerinde satır sayısı çok küçük olduğunda özel durum oluşur.  
@@ -415,7 +415,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 ## <a name="error-0022"></a>Hata 0022  
  Giriş veri kümesindeki Seçili sütunların sayısı beklenen sayıya eşit değilse özel durum oluşur.  
   
- Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örnek:  
+ Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örneğin:  
   
 -   Tek etiketli bir sütun veya anahtar sütunu ve yanlışlıkla birden çok sütun seçtiniz.  
   
@@ -438,9 +438,9 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |Özel durum Iletileri|  
 |------------------------|  
 |Giriş veri kümesindeki Seçili sütunların sayısı beklenen sayıya eşit değil.|  
-|Giriş veri kümesindeki Seçili sütunların sayısı {0} eşit değil.|  
-|"@No__t_0" sütun seçim deseninin, giriş veri kümesinde {1} eşit değildir.|  
-|"@No__t_0" sütun seçim deseninin giriş veri kümesinde seçilmiş {1} sütun (ler) sağlaması bekleniyordu, ancak {2} sütunları/öğeleri sağlanmalıdır.|  
+|Giriş veri kümesindeki Seçili sütunların sayısı {0}eşit değil.|  
+|"{0}" sütun seçim deseninin, giriş veri kümesinde {1}eşit değildir.|  
+|"{0}" sütun seçim deseninin giriş veri kümesinde seçilmiş {1} sütun (ler) sağlaması bekleniyordu, ancak {2} sütunları/öğeleri sağlanmalıdır.|  
 
 
 
@@ -455,7 +455,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz s�
 |------------------------|  
 |Giriş veri kümesinde desteklenmeyen hedef sütun yok.|  
 |Giriş veri kümesinde desteklenmeyen "{0}" hedef sütunu yok.|  
-|Giriş veri kümesinde, {1} türünde Learner için desteklenmeyen "{0}" hedef sütunu yok.|  
+|Giriş veri kümesinde, {1}türünde Learner için desteklenmeyen "{0}" hedef sütunu yok.|  
  
 
 ## <a name="error-0024"></a>Hata 0024  
@@ -475,7 +475,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 |Özel durum Iletileri|  
 |------------------------|  
 |Veri kümesinde etiket sütunu yok.|  
-|"@No__t_0" içinde etiket sütunu yok.|  
+|"{0}" içinde etiket sütunu yok.|  
   
 
 ## <a name="error-0025"></a>Hata 0025  
@@ -488,8 +488,8 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 |Özel durum Iletileri|  
 |------------------------|  
 |Veri kümesinde puan sütunu yok.|  
-|"@No__t_0" içinde puan sütunu yok.|  
-|"@No__t_0" içinde "{1}" tarafından üretilen puan sütunu yok. Doğru öğrenner türünü kullanarak veri kümesini puan edin.|  
+|"{0}" içinde puan sütunu yok.|  
+|"{0}" içinde "{1}" tarafından üretilen puan sütunu yok. Doğru öğrenner türünü kullanarak veri kümesini puan edin.|  
   
 
 ## <a name="error-0026"></a>Hata 0026  
@@ -502,7 +502,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 |Özel durum Iletileri|  
 |------------------------|  
 |Bağımsız değişkenlerde eşit sütun adları belirtilmiştir. Modül tarafından eşit sütun adlarına izin verilmiyor.|  
-|"@No__t_0" ve "{1}" bağımsız değişkenlerine eşit sütun adlarına izin verilmez. Farklı adlar belirtin.|  
+|"{0}" ve "{1}" bağımsız değişkenlerine eşit sütun adlarına izin verilmez. Farklı adlar belirtin.|  
   
 
 ## <a name="error-0027"></a>Hata 0027  
@@ -521,7 +521,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 |Özel durum Iletileri|  
 |------------------------|  
 |Geçirilen nesnelerin boyutu tutarsız.|  
-|"@No__t_0" boyutu "{1}" boyutuyla tutarsız.|  
+|"{0}" boyutu "{1}" boyutuyla tutarsız.|  
   
 
 ## <a name="error-0028"></a>Hata 0028  
@@ -534,8 +534,8 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 |Özel durum Iletileri|  
 |------------------------|  
 |Sütun kümesi yinelenen sütun adları içeriyor.|  
-|"@No__t_0" adı yineleniyor.|  
-|"@No__t_0" adı "{1}" içinde yineleniyor.|  
+|"{0}" adı yineleniyor.|  
+|"{0}" adı "{1}" içinde yineleniyor.|  
   
 
 ## <a name="error-0029"></a>Hata 0029  
@@ -601,7 +601,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 ## <a name="error-0033"></a>Hata 0033  
  Bağımsız değişken sonsuzluk ise özel durum oluşur.  
   
- Bağımsız değişken sonsuz ise Azure Machine Learning bu hata oluşur. Bağımsız değişken `double.NegativeInfinity` ya da `double.PositiveInfinity` ise bu hatayı alırsınız.  
+ Bağımsız değişken sonsuz ise Azure Machine Learning bu hata oluşur. Bağımsız değişken `double.NegativeInfinity` ya da `double.PositiveInfinity`ise bu hatayı alırsınız.  
   
 **Çözüm:** Belirtilen bağımsız değişkeni geçerli bir değer olacak şekilde değiştirin.  
   
@@ -647,7 +647,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Özel durum Iletileri|  
 |------------------------|  
 |Gerekli bir kullanıcı veya öğe için hiçbir özellik belirtilmedi.|  
-|@No__t_0 için özellikler gerekli ancak sağlanmadı.|  
+|{0} için özellikler gerekli ancak sağlanmadı.|  
   
 
 ## <a name="error-0036"></a>Hata 0036  
@@ -660,7 +660,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Özel durum Iletileri|  
 |------------------------|  
 |Bir kullanıcı veya öğe için yinelenen özellik tanımı.|  
-|@No__t_0 için yinelenen özellik tanımı.|  
+|{0}için yinelenen özellik tanımı.|  
   
 
 ## <a name="error-0037"></a>Hata 0037  
@@ -685,8 +685,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Özel durum Iletileri|  
 |------------------------|  
 |Öğe sayısı geçerli değil.|  
-|"@No__t_0" içindeki öğe sayısı geçerli değil.|  
-|"@No__t_0" içindeki öğe sayısı, geçerli {1} öğe sayısına eşit değil.|  
+|"{0}" içindeki öğe sayısı geçerli değil.|  
+|"{0}" içindeki öğe sayısı, geçerli {1} öğe sayısına eşit değil.|  
   
 
 ## <a name="error-0039"></a>Hata 0039  
@@ -715,7 +715,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Özel durum Iletileri|  
 |------------------------|  
 |Kullanım dışı modüle erişme.|  
-|"@No__t_0" modülü kullanım dışıdır. Bunun yerine "{1}" modülünü kullanın.|  
+|"{0}" modülü kullanım dışıdır. Bunun yerine "{1}" modülünü kullanın.|  
  
 
 ## <a name="error-0041"></a>Hata 0041  
@@ -728,7 +728,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Özel durum Iletileri|  
 |------------------------|  
 |Kullanım dışı modüle erişme.|  
-|"@No__t_0" modülü kullanım dışıdır. İstenen işlevsellik için "{1}" modüllerini kullanın.|  
+|"{0}" modülü kullanım dışıdır. İstenen işlevsellik için "{1}" modüllerini kullanın.|  
  
 
 ## <a name="error-0042"></a>Hata 0042  
@@ -764,9 +764,9 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Dönüştürmeye izin verilmiyor.|  
-|@No__t_0 türündeki sütun {1} türünde bir sütuna dönüştürülemedi.|  
-|@No__t_1 türündeki "{2}" sütunu {1} türünde bir sütuna dönüştürülemedi.|  
-|@No__t_1 türündeki "{2}" sütunu {1} türündeki "{3}" sütununa dönüştürülemedi.|  
+|{0} türündeki sütun {1}türünde bir sütuna dönüştürülemedi.|  
+|{0} türündeki "{2}" sütunu {1}türünde bir sütuna dönüştürülemedi.|  
+|{0} türündeki "{2}" sütunu {1}türündeki "{3}" sütununa dönüştürülemedi.|  
   
 
 ## <a name="error-0043"></a>Hata 0043  
@@ -779,7 +779,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Erişilebilir açık yöntem bulunamadı.|  
-|@No__t_3 türündeki "{0} \\" \\ sütun değerleri karşılaştırılamıyor. Erişilebilir açık yöntem bulunamadı.|  
+|{1}türündeki "{0}\\" \\sütun değerleri karşılaştırılamıyor. Erişilebilir açık yöntem bulunamadı.|  
 
 
 ## <a name="error-0044"></a>Hata 0044  
@@ -792,8 +792,8 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Sütunun öğe türü türetilemiyor.|  
-|"@No__t_0" sütunu için öğe türü türetilemez--tüm öğeler null başvurulardır.|  
-|"@No__t_1" veri kümesinin "{0}" sütunu için öğe türü türetilemez--tüm öğeler null başvurulardır.|  
+|"{0}" sütunu için öğe türü türetilemez--tüm öğeler null başvurulardır.|  
+|"{1}" veri kümesinin "{0}" sütunu için öğe türü türetilemez--tüm öğeler null başvurulardır.|  
   
 
 ## <a name="error-0045"></a>Hata 0045  
@@ -806,7 +806,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Karışık öğe türleri olan sütun oluşturulamıyor.|  
-|Karışık öğe türlerindeki KIMLIĞI "{0}" olan sütun oluşturulamıyor: \ n\tType of Data [{1}, {0}] {2} \N\tveri türü [{3}, {0}] {4}.|  
+|Karışık öğe türlerindeki KIMLIĞI "{0}" olan sütun oluşturulamıyor: \ n\tType of Data [{1}, {0}] {2}\N\tveri türü [{3}, {0}] {4}.|  
   
 
 ## <a name="error-0046"></a>Hata 0046  
@@ -833,7 +833,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |------------------------|  
 |Giriş veri kümesindeki Özellik sütunlarının sayısı izin verilen en küçük değerden küçük.|  
 |Giriş veri kümesindeki Özellik sütunlarının sayısı izin verilen en az {0} sütundan daha az.|  
-|"@No__t_0" giriş veri kümesindeki Özellik sütunlarının sayısı izin verilen en az {1} sütundan az.|  
+|"{0}" giriş veri kümesindeki Özellik sütunlarının sayısı izin verilen en az {1} sütundan az.|  
   
 
 ## <a name="error-0048"></a>Hata 0048  
@@ -939,7 +939,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Kullanım dışı modüle erişme.|  
-|"@No__t_0" modülü kullanım dışıdır.|  
+|"{0}" modülü kullanım dışıdır.|  
 
 ## <a name="error-0056"></a>Hata 0056  
  İşlem için seçtiğiniz sütunlar gereksinimleri ihlal ederse özel durum oluşur.  
@@ -963,7 +963,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Seçilen bir veya daha fazla sütun izin verilen bir kategoride değildi.|  
-|"@No__t_0" adlı sütun izin verilen bir kategoride değil.|  
+|"{0}" adlı sütun izin verilen bir kategoride değil.|  
   
 
 ## <a name="error-0057"></a>Hata 0057  
@@ -981,7 +981,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Dosya veya blob zaten var.|  
-|"@No__t_0" dosyası veya blobu zaten var.|  
+|"{0}" dosyası veya blobu zaten var.|  
   
 
 ## <a name="error-0058"></a>Hata 0058  
@@ -1001,7 +1001,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |------------------------|  
 |Etiket sütunu beklenen şekilde değil|  
 |Etiket sütunu "{0}" içinde beklendiği gibi değil.|  
-|"@No__t_1" içinde "{0}" etiket sütunu beklenmiyor.|  
+|"{1}" içinde "{0}" etiket sütunu beklenmiyor.|  
   
 
 ## <a name="error-0059"></a>Hata 0059  
@@ -1027,7 +1027,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Geçersiz veya Aralık dışı sütun dizini aralığı belirtildi.|  
-|"@No__t_0" sütun aralığı geçersiz veya Aralık dışında.|  
+|"{0}" sütun aralığı geçersiz veya Aralık dışında.|  
   
 
 ## <a name="error-0061"></a>Hata 0061  
@@ -1063,7 +1063,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
@@ -1086,7 +1086,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |------------------------|  
 |R betiği değerlendirmesi sırasında hata oluştu.|  
 |R betiği değerlendirmesi sırasında şu hata oluştu: r----------hata iletisinin----------başlangıcını {0}-----------hata iletisinin sonu-----------|  
-|"@No__t_0" R betiğinin değerlendirmesi sırasında şu hata oluştu: r----------{0} hata iletisinin----------başlangıcı----------------------hata iletisinin sonu|  
+|"{1}" R betiğinin değerlendirmesi sırasında şu hata oluştu: r----------{0} hata iletisinin----------başlangıcı----------------------hata iletisinin sonu|  
   
 
 
@@ -1134,7 +1134,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |Kaynak Azure depolama 'ya yüklenemedi.|  
-|"@No__t_0" dosyası Azure depolama 'ya {1} olarak yüklenemedi.|  
+|"{0}" dosyası Azure depolama 'ya {1}olarak yüklenemedi.|  
   
 
 ## <a name="error-0067"></a>Hata 0067  
@@ -1147,7 +1147,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 |Özel durum Iletileri|  
 |------------------------|  
 |DataTable 'da beklenmeyen sayıda sütun.|  
-|"@No__t_0" sütunları bekleniyordu ancak bunun yerine "{1}" sütunları bulundu.|  
+|"{0}" sütunları bekleniyordu ancak bunun yerine "{1}" sütunları bulundu.|  
   
 
 ## <a name="error-0068"></a>Hata 0068  
@@ -1192,14 +1192,14 @@ Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki mak
   
  Modül özel durumu tarafından bildirilen bir SQL tarafından oluşturulan ileti varsa, bildirilen hataya göre işlem yapın. Örneğin, hata iletileri bazen olası hataya özgü yönergeler içerir:
 + *Böyle bir sütun veya eksik veritabanı değil*, bir sütun adı yanlış yazmış olabileceğiniz. Sütun adının doğru olduğundan eminseniz, sütun tanımlayıcısını kapsamak için köşeli ayraç veya tırnak işaretleri kullanmayı deneyin.
-+ Belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirten *\<SQL anahtar sözcük \> yakınında SQL Logic Error*
++ Belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirten *\<SQL anahtar sözcük\>yakınında SQL Logic Error*
 
   
 |Özel durum Iletileri|  
 |------------------------|  
 |SQL betiği yanlış.|  
-|"@No__t_0" SQL sorgusu doğru değil.|  
-|"@No__t_0" SQL sorgusu doğru değil: {1}|  
+|"{0}" SQL sorgusu doğru değil.|  
+|"{0}" SQL sorgusu doğru değil: {1}|  
   
 
 ## <a name="error-0070"></a>Hata 0070  
@@ -1212,7 +1212,7 @@ Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki mak
 |Özel durum Iletileri|  
 |------------------------|  
 |Azure tablosu yok.|  
-|"@No__t_0" Azure tablosu yok.|  
+|"{0}" Azure tablosu yok.|  
   
 ## <a name="error-0071"></a>Hata 0071  
  Girilen kimlik bilgileri yanlışsa özel durum oluşur.  
@@ -1263,7 +1263,7 @@ Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki mak
 |Özel durum Iletileri|  
 |------------------------|  
 |Sütun dönüştürülemedi.|  
-|Sütun {0} dönüştürülemedi.|  
+|Sütun {0}dönüştürülemedi.|  
   
 
 ## <a name="error-0074"></a>Hata 0074  
@@ -1429,8 +1429,8 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Geçersiz sayım dönüşümü belirtildi.|  
-|' @No__t_0 ' giriş bağlantı noktasındaki sayım dönüştürmesi geçersiz.|  
-|' @No__t_0 ' giriş bağlantı noktasındaki sayım dönüştürmesi, ' {1} ' giriş bağlantı noktasındaki sayım dönüşümüyle birleştirilemez. Eşleşenleri saymak için kullanılan meta verileri doğrulamak için işaretleyin.|  
+|'{0}' giriş bağlantı noktasındaki sayım dönüştürmesi geçersiz.|  
+|'{0}' giriş bağlantı noktasındaki sayım dönüştürmesi, '{1}' giriş bağlantı noktasındaki sayım dönüşümüyle birleştirilemez. Eşleşenleri saymak için kullanılan meta verileri doğrulamak için işaretleyin.|  
   
 
 ## <a name="error-0087"></a>Hata 0087  
@@ -1463,7 +1463,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Geçersiz sayım türü belirtildi.|  
-|Belirtilen ' {0} ' sayım türü geçerli bir sayım türü değil.|  
+|Belirtilen '{0}' sayım türü geçerli bir sayım türü değil.|  
   
 
 ## <a name="error-0089"></a>Hata 0089  
@@ -1480,7 +1480,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Sınıfların sayısı yanlış. Parametre bölmesinde belirttiğiniz sınıf sayısının etiket sütunundaki sınıf sayısından büyük veya ona eşit olduğundan emin olun.|  
-|Belirtilen sınıf sayısı ' {0} ' ve bu değer, saymak için kullanılan veri kümesindeki ' {1} ' Etiket değerinden büyük değil. Parametre bölmesinde belirttiğiniz sınıf sayısının etiket sütunundaki sınıf sayısından büyük veya ona eşit olduğundan emin olun.|  
+|Belirtilen sınıf sayısı '{0}' ve bu değer, saymak için kullanılan veri kümesindeki '{1}' Etiket değerinden büyük değil. Parametre bölmesinde belirttiğiniz sınıf sayısının etiket sütunundaki sınıf sayısından büyük veya ona eşit olduğundan emin olun.|  
   
 
 ## <a name="error-0090"></a>Hata 0090  
@@ -1493,18 +1493,18 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Hive tablosu oluşturulamadı. Bir HDInsight kümesi için, kümeyle ilişkili Azure depolama hesabı adının modül parametresi aracılığıyla geçirilen ile aynı olduğundan emin olun.|  
-|"@No__t_0" Hive tablosu oluşturulamadı. Bir HDInsight kümesi için, kümeyle ilişkili Azure depolama hesabı adının modül parametresi aracılığıyla geçirilen ile aynı olduğundan emin olun.|  
-|"@No__t_0" Hive tablosu oluşturulamadı. HDInsight kümesi için, kümeyle ilişkili Azure depolama hesabı adının "{1}" olduğundan emin olun.|  
+|"{0}" Hive tablosu oluşturulamadı. Bir HDInsight kümesi için, kümeyle ilişkili Azure depolama hesabı adının modül parametresi aracılığıyla geçirilen ile aynı olduğundan emin olun.|  
+|"{0}" Hive tablosu oluşturulamadı. HDInsight kümesi için, kümeyle ilişkili Azure depolama hesabı adının "{1}" olduğundan emin olun.|  
  
 
 ## <a name="error-0100"></a>Hata 0100  
  Özel bir modül için desteklenmeyen bir dil belirtildiğinde özel durum oluşur.  
   
- Bu Azure Machine Learning hata, özel bir modül oluşturulurken ve özel bir modül XML tanım dosyasındaki **Language** öğesinin Name özelliğinin geçersiz bir değere sahip olduğu durumlarda oluşur. Şu anda bu özellik için geçerli olan tek değer `R`. Örnek:  
+ Bu Azure Machine Learning hata, özel bir modül oluşturulurken ve özel bir modül XML tanım dosyasındaki **Language** öğesinin Name özelliğinin geçersiz bir değere sahip olduğu durumlarda oluşur. Şu anda bu özellik için geçerli olan tek değer `R`. Örneğin:  
   
  `<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Çözüm:** Özel modül XML tanım dosyasındaki **Language** öğesinin name özelliğinin `R` olarak ayarlandığını doğrulayın. Dosyayı kaydedin, özel modül ZIP paketini güncelleştirin ve özel modülü yeniden eklemeyi deneyin.  
+**Çözüm:** Özel modül XML tanım dosyasındaki **Language** öğesinin name özelliğinin `R`olarak ayarlandığını doğrulayın. Dosyayı kaydedin, özel modül ZIP paketini güncelleştirin ve özel modülü yeniden eklemeyi deneyin.  
   
 |Özel durum Iletileri|  
 |------------------------|  
@@ -1521,7 +1521,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Bir modülün tüm bağlantı noktası ve parametre kimlikleri benzersiz olmalıdır|  
-|' @No__t_0 ' modülünün yinelenen bağlantı noktası/bağımsız değişken kimlikleri vardır. Tüm bağlantı noktası/bağımsız değişken kimlikleri bir modül için benzersiz olmalıdır.|  
+|'{0}' modülünün yinelenen bağlantı noktası/bağımsız değişken kimlikleri vardır. Tüm bağlantı noktası/bağımsız değişken kimlikleri bir modül için benzersiz olmalıdır.|  
   
 
 ## <a name="error-0102"></a>Hata 0102  
@@ -1555,7 +1555,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 ## <a name="error-0104"></a>Hata 0104  
  Modül tanımı dosyası bulunamayan bir betiğe başvurduğunda oluşturulur  
   
- Bu Azure Machine Learning hata, özel bir modül XML tanım dosyası, ZIP paketinde bulunmayan **Language** öğesindeki bir betik dosyasına başvurduğunda oluşur. Betik dosyası yolu, **Language** öğesinin **SourceFile** özelliğinde tanımlanmıştır. Kaynak dosyanın yolu, ZIP paketinin köküne göredir (modül XML tanım dosyalarıyla aynı konum). Betik dosyası bir alt klasörce ise, betik dosyasının göreli yolu belirtilmelidir. Örneğin, tüm betikler ZIP paketi içindeki bir **myscripts** klasöründe depolanıyorsa, **Language** öğesinin bu yolu aşağıdaki gibi **SourceFile** özelliğine eklemesi gerekir. Örnek:  
+ Bu Azure Machine Learning hata, özel bir modül XML tanım dosyası, ZIP paketinde bulunmayan **Language** öğesindeki bir betik dosyasına başvurduğunda oluşur. Betik dosyası yolu, **Language** öğesinin **SourceFile** özelliğinde tanımlanmıştır. Kaynak dosyanın yolu, ZIP paketinin köküne göredir (modül XML tanım dosyalarıyla aynı konum). Betik dosyası bir alt klasörce ise, betik dosyasının göreli yolu belirtilmelidir. Örneğin, tüm betikler ZIP paketi içindeki bir **myscripts** klasöründe depolanıyorsa, **Language** öğesinin bu yolu aşağıdaki gibi **SourceFile** özelliğine eklemesi gerekir. Örneğin:  
   
  `<Language name="R" sourceFile="myScripts/CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
@@ -1564,7 +1564,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Başvurulan R betiği dosyası yok.|  
-|Başvurulan R betik dosyası ' {0} ' bulunamıyor. Dosya için göreli yolun, tanımlar konumundan doğru olduğundan emin olun.|  
+|Başvurulan R betik dosyası '{0}' bulunamıyor. Dosya için göreli yolun, tanımlar konumundan doğru olduğundan emin olun.|  
 
 
 ## <a name="error-0105"></a>Hata 0105  
@@ -1577,7 +1577,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Desteklenmeyen parametre türü.|  
-|Desteklenmeyen parametre türü ' {0} ' belirtildi.|  
+|Desteklenmeyen parametre türü '{0}' belirtildi.|  
 
 
 ## <a name="error-0106"></a>Hata 0106  
@@ -1590,7 +1590,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Desteklenmeyen giriş türü.|  
-|Desteklenmeyen giriş türü ' {0} ' belirtildi.|  
+|Desteklenmeyen giriş türü '{0}' belirtildi.|  
 
 
 ## <a name="error-0107"></a>Hata 0107  
@@ -1603,7 +1603,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Desteklenmeyen çıkış türü.|  
-|Desteklenmeyen çıkış türü ' {0} ' belirtildi.|  
+|Desteklenmeyen çıkış türü '{0}' belirtildi.|  
 
 
 ## <a name="error-0108"></a>Hata 0108  
@@ -1616,7 +1616,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Desteklenen giriş veya çıkış bağlantı noktası sayısı aşıldı.|  
-|Desteklenen ' {0} ' bağlantı noktası sayısı aşıldı. İzin verilen en fazla ' {0} ' bağlantı noktası sayısı ' {1} '.| 
+|Desteklenen '{0}' bağlantı noktası sayısı aşıldı. İzin verilen en fazla '{0}' bağlantı noktası sayısı '{1}'.| 
 
 ## <a name="error-0109"></a>Hata 0109  
  Bir modül tanımı dosyası bir sütun seçiciyi yanlış bir şekilde tanımladığında oluşturulur  
@@ -1640,7 +1640,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Sütun seçici mevcut olmayan bir giriş bağlantı noktası KIMLIĞINE başvuruyor.|  
-|Sütun seçici, mevcut olmayan bir ' {0} ' giriş bağlantı noktası KIMLIĞINE başvuruyor.|  
+|Sütun seçici, mevcut olmayan bir '{0}' giriş bağlantı noktası KIMLIĞINE başvuruyor.|  
   
 
 ## <a name="error-0111"></a>Hata 0111  
@@ -1653,7 +1653,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Özellik tanımı geçersiz.|  
-|Özellik tanımı ' {0} ' geçersiz.|  
+|Özellik tanımı '{0}' geçersiz.|  
   
 
 ## <a name="error-0112"></a>Hata 0112  
@@ -1666,7 +1666,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Modül tanım dosyası ayrıştırılamıyor.|  
-|' @No__t_0 ' modül tanımı dosyası ayrıştırılamıyor.|  
+|'{0}' modül tanımı dosyası ayrıştırılamıyor.|  
   
 
 ## <a name="error-0113"></a>Hata 0113  
@@ -1679,8 +1679,8 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Modül tanımı dosyası hatalar içeriyor.|  
-|' @No__t_0 ' modül tanımı dosyası hatalar içeriyor.|  
-|' @No__t_0 ' modül tanımı dosyası hatalar içeriyor. {1}|  
+|'{0}' modül tanımı dosyası hatalar içeriyor.|  
+|'{0}' modül tanımı dosyası hatalar içeriyor. {1}|  
   
 
 ## <a name="error-0114"></a>Hata 0114  
@@ -1805,7 +1805,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Resim piksel boyutu izin verilen sınırı aşıyor.|  
-|' @No__t_0 ' dosyasındaki resim piksel boyutu izin verilen sınırı aşıyor: ' {1} '|  
+|'{0}' dosyasındaki resim piksel boyutu izin verilen sınırı aşıyor: '{1}'|  
 
 
 ## <a name="error-0128"></a>Hata 0128  
@@ -1816,7 +1816,7 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Kategorik sütunlar için koşullu olasılıkların sayısı sınırı aşıyor.|  
-|Kategorik sütunlar için koşullu olasılıkların sayısı sınırı aşıyor. ' @No__t_0 ' ve ' {1} ' sütunları sorunlu çiftidir.|  
+|Kategorik sütunlar için koşullu olasılıkların sayısı sınırı aşıyor. '{0}' ve '{1}' sütunları sorunlu çiftidir.|  
 
 
 ## <a name="error-0129"></a>Hata 0129  
@@ -1827,9 +1827,9 @@ Genel olarak, sayı tabanlı bir dönüşüm yalnızca dönüştürmenin ilk ola
 |Özel durum Iletileri|  
 |------------------------|  
 |Veri kümesindeki sütun sayısı izin verilen sınırı aşıyor.|  
-|' @No__t_0 ' içindeki veri kümesindeki sütun sayısı izin verilen sınırı aşıyor. '|  
-|' @No__t_0 ' içindeki veri kümesindeki sütun sayısı izin verilen ' {1} ' sınırını aşıyor. '|  
-|' @No__t_0 ' içindeki veri kümesindeki sütun sayısı ' {2} ' için izin verilen ' {1} ' sınırını aşıyor. '|  
+|'{0}' içindeki veri kümesindeki sütun sayısı izin verilen sınırı aşıyor. '|  
+|'{0}' içindeki veri kümesindeki sütun sayısı izin verilen '{1}' sınırını aşıyor. '|  
+|'{0}' içindeki veri kümesindeki sütun sayısı '{2}' için izin verilen '{1}' sınırını aşıyor. '|  
 ## <a name="error-0130"></a>Hata 0130  
  Eğitim veri kümesindeki tüm satırlar eksik değerler içerdiğinde özel durum oluşur.  
   
@@ -1980,9 +1980,9 @@ Bu hata, önceki bir işlem, bir aşağı akış işleminde yeterli sayıda sat�
 |Dönüştürmeye izin verilmiyor.|  
 |Dönüştürülemedi: {0}.|  
 |Dönüştürülemedi: {0}, satır {1}.|  
-|@No__t_0 türündeki sütun, satır {2} {1} türündeki sütuna dönüştürülemedi.|  
-|@No__t_1 türündeki "{2}" sütunu, satır {3} {1} türünde bir sütuna dönüştürülemedi.|  
-|@No__t_1 türündeki "{2}" sütunu, satır {4} {1} türündeki "{3}" sütununa dönüştürülemedi.| 
+|{0} türündeki sütun, satır {2}{1} türündeki sütuna dönüştürülemedi.|  
+|{0} türündeki "{2}" sütunu, satır {3}{1} türünde bir sütuna dönüştürülemedi.|  
+|{0} türündeki "{2}" sütunu, satır {4}{1} türündeki "{3}" sütununa dönüştürülemedi.| 
 
 ## <a name="error-0140"></a>Hata 0140  
  Geçirilen sütun kümesi bağımsız değişkeni etiket sütunu dışında başka sütunlar içermiyorsa özel durum oluşur.  
@@ -2041,12 +2041,12 @@ Bu hata, önceki bir işlem, bir aşağı akış işleminde yeterli sayıda sat�
   
  Azure Machine Learning içindeki bu hata, geçersiz bir URL biçimi kullanarak bir GitHub dosya kaynağı belirttiğinizde oluşur.  
   
-**Çözüm:** GitHub deposunun URL 'sinin geçerli olduğunu ve \blob\ veya \tree \\ ile bitip bitmediğini denetleyin.  
+**Çözüm:** GitHub deposunun URL 'sinin geçerli olduğunu ve \blob\ veya \tree\\ile bitip bitmediğini denetleyin.  
   
 |Özel durum Iletileri|  
 |------------------------|  
 |GitHub URL 'SI ayrıştırılamıyor.|  
-|GitHub URL 'SI ayrıştırılamıyor (depo adından sonra ' \blob \\ ' veya ' \tree \\ ' bekleniyor): {0}|  
+|GitHub URL 'SI ayrıştırılamıyor (depo adından sonra ' \blob\\' veya ' \tree\\' bekleniyor): {0}|  
 
 ## <a name="error-0145"></a>Hata 0145  
  Çoğaltma dizini bazı nedenlerle oluşturulamıyor.  

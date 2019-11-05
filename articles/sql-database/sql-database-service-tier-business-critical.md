@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899731"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496233"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>İş Açısından Kritik katmanı-Azure SQL veritabanı
 
@@ -26,7 +26,7 @@ ms.locfileid: "70899731"
 Azure SQL veritabanı, altyapı hatalarının durumlarında bile% 99,99 kullanılabilirlik sağlamak için bulut ortamı için ayarlanmış SQL Server veritabanı motoru mimarisini temel alır. Azure SQL veritabanı 'nda kullanılan üç mimari modeli vardır:
 - Genel Amaçlı/standart 
 - İş Açısından Kritik/Premium
-- Hiper ölçek
+- Hiper Ölçek
 
 Premium/İş Açısından Kritik hizmet katmanı modeli, bir veritabanı altyapısı işlemlerinin kümesini temel alır. Bu mimari model, kullanılabilir veritabanı altyapısı düğümlerinin her zaman bir çekirdeği olduğunu ve bakım etkinlikleri sırasında bile iş yükünüzde en az performans etkisi olduğunu bir olgusuna bağımlıdır.
 
@@ -49,17 +49,17 @@ Ayrıca, İş Açısından Kritik kümede, birincil ağınızın performansını
 Genel Amaçlı katmanı yerine İş Açısından Kritik hizmet katmanını seçmeniz gereken önemli nedenler şunlardır:
 -   Düşük GÇ gecikme gereksinimleri – depolama katmanından (ortalama 1-2 milisaniye) hızlı yanıt gerektiren iş yükü İş Açısından Kritik katmanını kullanmalıdır. 
 -   Uygulama ve veritabanı arasındaki sık kullanılan iletişim. Uygulama katmanı önbelleğe alma veya [istek toplu işleme](sql-database-use-batching-to-improve-performance.md) özelliğinden yararlanamaz uygulama ve hızlı bir şekilde işlenmesi gereken birçok SQL sorgusu gönderilmesi iş açısından kritik katmanı için iyi adaylardır.
--   Çok sayıda güncelleştirme – INSERT, Update ve DELETE işlemleri, işlem ile `CHECKPOINT` veri dosyalarına kaydedilmesi gereken bellekteki veri sayfalarını (kirli sayfa) değiştirir. Olası veritabanı altyapısı işlem kilitlenmesi veya çok sayıda kirli sayfayla veritabanının yük devretmesi Genel Amaçlı katmanındaki kurtarma süresini artırabilir. Birçok bellek içi değişikliğe neden olan bir iş yükünüz varsa İş Açısından Kritik katmanını kullanın. 
+-   Çok sayıda güncelleştirme – INSERT, Update ve DELETE işlemleri, veri dosyalarına `CHECKPOINT` işlemle kaydedilmesi gereken bellekteki (kirli sayfa) veri sayfalarını değiştirir. Olası veritabanı altyapısı işlem kilitlenmesi veya çok sayıda kirli sayfayla veritabanının yük devretmesi Genel Amaçlı katmanındaki kurtarma süresini artırabilir. Birçok bellek içi değişikliğe neden olan bir iş yükünüz varsa İş Açısından Kritik katmanını kullanın. 
 -   Verileri değiştiren uzun süre çalışan işlemler. Daha uzun bir süre açılan işlemler, günlük boyutunu ve [sanal günlük dosyalarının (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)sayısını artırabilecek günlük dosyasının kesilmesini önler. Yük devretmeden sonra, yüksek sayıda VLF veritabanının kurtarılmasını yavaşlatabilir.
 -   Raporlama ve analitik sorguları olan iş yükü, ücretsiz, ikincil salt okuma çoğaltmasına yeniden yönlendirilebilir.
 - Hatalardan daha yüksek dayanıklılık ve daha hızlı kurtarma. Sistem arızası durumunda, birincil örnekteki veritabanı devre dışı bırakılır ve ikincil çoğaltmalardan biri, sorguları işlemeye yönelik yeni okuma-yazma birincil veritabanına anında gönderilir. Veritabanı altyapısının, günlük dosyasındaki işlemleri çözümlemek ve yinelemek ve tüm verileri bellek arabelleğine yüklemesi gerekmez.
 - Gelişmiş veri bozulması koruması-İş Açısından Kritik katmanı, iş sürekliliği açısından arka planda veritabanı Çoğaltmalarından yararlanır ve bu nedenle hizmet, SQL Server veritabanı için kullanılan teknolojiden de otomatik sayfa onarmasını kullanır [yansıtma ve kullanılabilirlik grupları](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring). Bir veri bütünlüğü sorunu nedeniyle bir çoğaltmanın bir sayfayı okuyamadığında, sayfanın yeni bir kopyası başka bir yinelemeden alınır ve bu da veri kaybı veya müşteri kapalı kalma süresi olmadan okunamaz sayfa değişir. Bu işlev, veritabanının coğrafi ikincil çoğaltma özelliği varsa Genel Amaçlı katmanında geçerlidir.
 - Multi-AZ Configuration içindeki daha yüksek kullanılabilirlik-İş Açısından Kritik katmanı, Genel Amaçlı katmanının% 99,99 ' i ile karşılaştırıldığında% 99,995 kullanılabilirliği garanti eder.
-- Coğrafi çoğaltma ile yapılandırılan hızlı coğrafi kurtarma-İş Açısından Kritik katmanı, dağıtılan saatlerin% 100 ' i için 5 sn ve kurtarma süresi hedefi (RTO) ile 30 sn arasında bir garantili kurtarma noktası hedefi (RPO) sağlar.
+- Coğrafi çoğaltma ile yapılandırılan hızlı coğrafi kurtarma-İş Açısından Kritik katmanı, dağıtılan saatlerin %100 ' i için 5 sn ve kurtarma süresi hedefi (RTO) ile 30 sn arasında bir garantili kurtarma noktası hedefi (RPO) sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yönetilen örnekteki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)iş açısından kritik katmanının kaynak özelliklerini (çekirdek sayısı, GÇ, bellek), [Vcore modeli](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) veya [DTU modelinde](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)tek veritabanı ya da [Vcore modeli](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) ve [DTU modelinde](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)esnek havuz bulun.
+- [Yönetilen örnekteki](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)iş açısından kritik katmanının kaynak özelliklerini (çekirdek sayısı, GÇ, bellek), [Vcore modeli](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) veya [DTU modelinde](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)tek veritabanı ya da [Vcore modeli](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) ve [DTU modelinde](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)esnek havuz bulun.
 - [Genel amaçlı](sql-database-service-tier-general-purpose.md) ve [hiper ölçek](sql-database-service-tier-hyperscale.md) katmanları hakkında bilgi edinin.
 - [Service Fabric](../service-fabric/service-fabric-overview.md)hakkında bilgi edinin.
 - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla seçenek için bkz. [Iş sürekliliği](sql-database-business-continuity.md).

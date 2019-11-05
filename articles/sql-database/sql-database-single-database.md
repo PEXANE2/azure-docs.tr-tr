@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316654"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496006"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek bir veritabanı nedir?
 
@@ -29,7 +29,7 @@ Tek veritabanı dağıtım seçeneği, Azure SQL veritabanı 'nda kendi kaynak k
 
 ## <a name="dynamic-scalability"></a>Dinamik ölçeklenebilirlik
 
-İlk uygulamanızı sunucusuz (Önizleme) işlem katmanında düşük maliyetli küçük, tek bir veritabanında veya sağlanan işlem katmanındaki küçük bir işlem boyutu üzerinde oluşturabilirsiniz. [İşlem veya hizmet katmanını](sql-database-single-database-scale.md) , çözümünüzün ihtiyaçlarını karşılamak üzere dilediğiniz zaman el ile veya programlama yoluyla değiştirirsiniz. Performansı uygulamanız veya müşterileriniz kesinti yaşamadan ayarlayabilirsiniz. Dinamik ölçeklenebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine hızlı şekilde yanıt vermesini ve yalnızca ihtiyaç duyduğunuz kaynaklara ve ihtiyaç duyduğunuz süre boyunca ödeme yapmanızı sağlar.
+İlk uygulamanızı sunucusuz işlem katmanında düşük maliyetli küçük, tek bir veritabanında veya sağlanan işlem katmanındaki küçük bir işlem boyutu üzerinde oluşturabilirsiniz. [İşlem veya hizmet katmanını](sql-database-single-database-scale.md) , çözümünüzün ihtiyaçlarını karşılamak üzere dilediğiniz zaman el ile veya programlama yoluyla değiştirirsiniz. Performansı uygulamanız veya müşterileriniz kesinti yaşamadan ayarlayabilirsiniz. Dinamik ölçeklenebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine hızlı şekilde yanıt vermesini ve yalnızca ihtiyaç duyduğunuz kaynaklara ve ihtiyaç duyduğunuz süre boyunca ödeme yapmanızı sağlar.
 
 ## <a name="single-databases-and-elastic-pools"></a>Tek veritabanları ve elastik havuzlar
 

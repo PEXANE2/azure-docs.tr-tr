@@ -1,24 +1,24 @@
 ---
 title: 'Meta verileri Düzenle: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Bir veri kümesindeki sütunlarla ilişkili meta verileri değiştirmek için Azure Machine Learning hizmetindeki meta verileri Düzenle modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Bir veri kümesindeki sütunlarla ilişkili meta verileri değiştirmek için Azure Machine Learning meta verileri Düzenle modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 2c8224edbe95c8185e390c2ce48cbb4263f97586
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693823"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497947"
 ---
 # <a name="edit-metadata-module"></a>Meta veri modülünü Düzenle
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında (Önizleme) bulunan bir modül açıklanmaktadır.
 
 Bir veri kümesindeki sütunlarla ilişkili meta verileri değiştirmek için veri düzenleme modülünü kullanın. Veri kümesinin değeri ve veri türü, verileri Düzenle modülü kullanıldıktan sonra değişir.
 
@@ -34,7 +34,7 @@ Tipik meta veri değişiklikleri şunları içerebilir:
   
 + Sütunları yeniden adlandırma.
   
- Genellikle bir aşağı akış modülünün gereksinimlerini karşılamak için, bir sütunun tanımını değiştirmeniz gereken her zaman meta verileri Düzenle ' yi kullanın. Örneğin, bazı modüller yalnızca belirli veri türleriyle çalışır veya `IsFeature` ya da `IsCategorical` gibi sütunlarda bayrak gerektirir.  
+ Genellikle bir aşağı akış modülünün gereksinimlerini karşılamak için, bir sütunun tanımını değiştirmeniz gereken her zaman meta verileri Düzenle ' yi kullanın. Örneğin, bazı modüller yalnızca belirli veri türleriyle çalışır veya `IsFeature` ya da `IsCategorical`gibi sütunlarda bayrak gerektirir.  
   
  Gerekli işlemi gerçekleştirdikten sonra, meta verileri özgün durumuna sıfırlayabilirsiniz.
   
@@ -98,4 +98,4 @@ Tipik meta veri değişiklikleri şunları içerebilir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın.
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın.

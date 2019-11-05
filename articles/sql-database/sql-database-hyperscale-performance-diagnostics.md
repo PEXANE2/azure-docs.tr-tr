@@ -9,12 +9,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 92a1fda85e5ee49f12a13123e8a296492fd9eb4b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa8b02cf5ee6f24bcc77aae057f41842da721981
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598180"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521146"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
 
@@ -58,7 +58,7 @@ Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan gelen ve toplam oku
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - sorgu-store_execution_runtime_info
-- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örnek:
+- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örneğin:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
@@ -101,7 +101,7 @@ Tüm diğer veri dosyalarında yapılan toplanmış okumaların, RBPEX üzerinde
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- Tek bir hiper ölçekli tek bir veritabanı için Vcore kaynak sınırları için bkz. [hiper ölçekli Service Tier Vcore limitleri](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute)
+- Tek bir hiper ölçekli tek bir veritabanı için Vcore kaynak sınırları için bkz. [hiper ölçekli Service Tier Vcore limitleri](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
 - Azure SQL veritabanı performans ayarlaması için bkz. [Azure SQL veritabanı 'Nda sorgu performansı](sql-database-performance-guidance.md)
 - Sorgu deposu kullanarak performans ayarlaması için bkz. [sorgu deposu kullanarak performans izleme](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
 - DMV İzleme betikleri için bkz. [dinamik yönetim görünümlerini kullanarak performansı Izleme Azure SQL veritabanı](sql-database-monitoring-with-dmvs.md)

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/07/2019
-ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: e834c55ec35195ff627176603c7611abbf6adf1c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035554"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497506"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -23,7 +23,7 @@ Bu makalede Azure Machine Learning için kullanılabilen güvenlik özellikleri 
 
 Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullanıcılarla kısıtlayabilmeniz en iyi uygulamadır. Hizmetini, hizmet tarafından kullanılan kimlik doğrulama ve yetkilendirme modelini inceleyerek başlatın. Ayrıca, ağ erişimini kısıtlamak veya şirket içi ağınızdaki kaynakları güvenli bir şekilde buluta katmak isteyebilirsiniz. Veri şifreleme Ayrıca, hem bekleyen hem de veriler hizmetler arasında taşınıyor. Son olarak, hizmeti izleyebilmeniz ve tüm etkinliklerin denetim günlüğünü üretmeniz gerekir.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-Factor Authentication desteklenir. Kimlik doğrulama işlemi şu şekildedir:
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-
 1. İstemci belirteci Azure Resource Manager ve tüm Azure Machine Learning gösterir.
 1. Machine Learning hizmeti, Kullanıcı işlem hedefine bir Machine Learning hizmet belirteci sağlar (örneğin, Machine Learning İşlem). Bu belirteç, Kullanıcı işlem hedefi tarafından, çalıştırma tamamlandıktan sonra Machine Learning hizmetine geri çağrı yapmak için kullanılır. Kapsam, çalışma alanıyla sınırlıdır.
 
-[![Azure Machine Learning kimlik doğrulaması](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[Azure Machine Learning ![kimlik doğrulaması](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web hizmeti dağıtımı için kimlik doğrulaması
 
@@ -40,7 +40,7 @@ Azure Machine Learning, Web Hizmetleri için iki kimlik doğrulama biçimini des
 |Kimlik doğrulama Yöntemi|Azure Container Instances|AKS|
 |---|---|---|
 |Anahtar|Varsayılan olarak devre dışı| Varsayılan olarak etkin|
-|Belirteç| Yok| Varsayılan olarak devre dışı |
+|Belirteç| Kullanılamaz| Varsayılan olarak devre dışı |
 
 #### <a name="authentication-with-keys"></a>Anahtarlar ile kimlik doğrulama
 
@@ -49,9 +49,9 @@ Bir dağıtım için anahtar kimlik doğrulamasını etkinleştirdiğinizde, oto
 * Azure Kubernetes Service 'e (AKS) dağıtırken kimlik doğrulaması varsayılan olarak etkindir.
 * Azure Container Instances ' a dağıtırken kimlik doğrulaması varsayılan olarak devre dışıdır.
 
-Anahtar kimlik doğrulamasını etkinleştirmek için, bir `auth_enabled` dağıtım oluştururken veya güncelleştirdiğinizde parametresini kullanın.
+Anahtar kimlik doğrulamasını etkinleştirmek için, bir dağıtım oluştururken veya güncelleştirdiğinizde `auth_enabled` parametresini kullanın.
 
-Anahtar kimlik doğrulaması etkinleştirilirse, birincil ve ikincil kimlik doğrulama `get_keys` anahtarını almak için yöntemini kullanabilirsiniz:
+Anahtar kimlik doğrulaması etkinleştirilirse, birincil ve ikincil kimlik doğrulama anahtarını almak için `get_keys` yöntemini kullanabilirsiniz:
 
 ```python
 primary, secondary = service.get_keys()
@@ -59,7 +59,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Bir anahtarı yeniden oluşturmak ihtiyacınız varsa [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Bir anahtarı yeniden oluşturmanız gerekiyorsa [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)kullanın.
 
 #### <a name="authentication-with-tokens"></a>Belirteçlerle kimlik doğrulama
 
@@ -68,9 +68,9 @@ Bir Web hizmeti için belirteç kimlik doğrulamasını etkinleştirdiğinizde, 
 * Belirteç kimlik doğrulaması, Azure Kubernetes hizmetine dağıtırken varsayılan olarak devre dışıdır.
 * Azure Container Instances ' a dağıtırken belirteç kimlik doğrulaması desteklenmez.
 
-Belirteç kimlik doğrulamasını denetlemek için, bir `token_auth_enabled` dağıtımı oluştururken veya güncelleştirdiğinizde parametresini kullanın.
+Belirteç kimlik doğrulamasını denetlemek için, bir dağıtım oluştururken veya güncelleştirdiğinizde `token_auth_enabled` parametresini kullanın.
 
-Belirteç kimlik doğrulaması etkinleştirilirse, bir JSON Web token (JWT) `get_token` almak için yöntemini ve bu belirtecin sona erme süresini kullanabilirsiniz:
+Belirteç kimlik doğrulaması etkinleştirilirse, bir JSON Web Token (JWT) almak için `get_token` yöntemini ve belirtecin sona erme süresini kullanabilirsiniz:
 
 ```python
 token, refresh_by = service.get_token()
@@ -86,9 +86,9 @@ print(token)
 >
 > Ayrıca, kümenizin bölgesi ve çalışma alanınızın bölgesi arasındaki mesafe arttıkça bir belirteç getirmek için o kadar sürer.
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Yetkilendirme
 
-Her bir çalışma alanı birden çok kişi tarafından paylaşılabilir ve birden çok çalışma alanı oluşturabilirsiniz. Bir çalışma alanını paylaştığınızda, kullanıcılara bu rolleri atayarak erişimi denetleyebilirsiniz:
+Birden çok çalışma alanı oluşturabilirsiniz ve her çalışma alanı birden çok kişi tarafından paylaşılabilir. Bir çalışma alanını paylaştığınızda, kullanıcılara bu rolleri atayarak erişimi denetleyebilirsiniz:
 
 * Sahip
 * Katılımcı
@@ -100,10 +100,11 @@ Aşağıdaki tabloda, bazı önemli Azure Machine Learning işlemleri ve bunlar�
 | ---- |:----:|:----:|:----:|
 | Çalışma alanı oluşturma | ✓ | ✓ | |
 | Çalışma alanını paylaşma | ✓ | |  |
+| Çalışma alanını Enterprise Edition 'a yükselt | ✓ | |
 | İşlem hedefi oluştur | ✓ | ✓ | |
 | İşlem hedefi Ekle | ✓ | ✓ | |
 | Veri depoları Ekle | ✓ | ✓ | |
-| Denemeyi çalıştırma | ✓ | ✓ | |
+| Deneme Çalıştır | ✓ | ✓ | |
 | Çalıştırmaları/ölçümleri görüntüle | ✓ | ✓ | ✓ |
 | Modeli kaydetme | ✓ | ✓ | |
 | Görüntü oluştur | ✓ | ✓ | |
@@ -121,18 +122,18 @@ Her çalışma alanı Ayrıca, çalışma alanıyla aynı ada sahip ilişkili bi
 
 Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Resource | İzinler |
+| Kaynak | İzinler |
 | ----- | ----- |
 | Çalışma alanı | Katılımcı |
-| Depolama hesabı | Depolama Blob Verileri Katkıda Bulunanı |
-| Anahtar kasası | Tüm anahtarlar, gizlilikler, sertifikalara erişim |
+| Depolama hesabı | Depolama Blobu veri Katılımcısı |
+| Key Vault | Tüm anahtarlar, gizlilikler, sertifikalara erişim |
 | Azure Container Registry | Katılımcı |
 | Çalışma alanını içeren kaynak grubu | Katılımcı |
 | Anahtar kasasını içeren kaynak grubu (çalışma alanını içeren bunlardan farklıysa) | Katılımcı |
 
 Yöneticilerin yönetilen kimliğin önceki tabloda bahsedilen kaynaklara erişimini iptal etmemenizi önermiyoruz. Yeniden eşitleme anahtarları işlemini kullanarak erişimi geri yükleyebilirsiniz.
 
-Azure Machine Learning, her çalışma alanı bölgesi için aboneliğinizde katkıda bulunan `aml-` düzeyinde `Microsoft-AzureML-Support-App-`erişim ile ek bir uygulama (adı ile başlar) oluşturur. Örneğin, Doğu ABD içinde bir çalışma alanınız ve aynı abonelikte Kuzey Avrupa başka bir çalışma alanı varsa, bu uygulamalardan ikisini de görürsünüz. Bu uygulamalar, işlem kaynaklarını yönetmenize yardımcı olmak için Azure Machine Learning sağlar.
+Azure Machine Learning, her çalışma alanı bölgesi için aboneliğinizde katkıda bulunan düzeyinde erişim ile ek bir uygulama (ad `aml-` veya `Microsoft-AzureML-Support-App-`ile başlar) oluşturur. Örneğin, Doğu ABD içinde bir çalışma alanınız ve aynı abonelikte Kuzey Avrupa başka bir çalışma alanı varsa, bu uygulamalardan ikisini de görürsünüz. Bu uygulamalar, işlem kaynaklarını yönetmenize yardımcı olmak için Azure Machine Learning sağlar.
 
 ## <a name="network-security"></a>Ağ güvenliği
 
@@ -140,7 +141,7 @@ Azure Machine Learning, işlem kaynakları için diğer Azure hizmetlerini kulla
 
 Daha fazla bilgi için bkz. [Sanal ağda denemeleri ve çıkarımı çalıştırma](how-to-enable-virtual-network.md).
 
-## <a name="data-encryption"></a>Veri şifreleme
+## <a name="data-encryption"></a>Veri şifrelemesi
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
@@ -162,7 +163,7 @@ Azure Machine Learning ölçümleri ve meta verileri Azure Machine Learning tara
 
 Kayıt defterinizde (Azure Container Registry) bulunan tüm kapsayıcı görüntüleri, bekleyen olarak şifrelenir. Azure, bir görüntüyü depolamadan önce otomatik olarak şifreler ve Azure Machine Learning görüntüyü çeker.
 
-#### <a name="machine-learning-compute"></a>Machine Learning İşlemi
+#### <a name="machine-learning-compute"></a>Machine Learning İşlem
 
 Azure depolama 'da depolanan her işlem düğümü için işletim sistemi diski, Azure Machine Learning depolama hesaplarında Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu işlem hedefi kısa ömürlü ve hiçbir çalışma sıraya alınmaz kümeler genellikle ölçeği aşağı ölçeklendirilir. Temel alınan sanal makine de sağlanmamıştır ve işletim sistemi diski silinir. Azure disk şifrelemesi, işletim sistemi diski için desteklenmez.
 
@@ -193,7 +194,7 @@ Her çalışma alanı, çalışma alanıyla aynı ada sahip ilişkili, sistem ta
 
 Azure Machine Learning çalışma alanınızın ölçümlerini görüntülemek ve izlemek için Azure Izleyici ölçümlerini kullanabilirsiniz. [Azure Portal](https://portal.azure.com), çalışma alanınızı seçin ve ardından **ölçümler**' i seçin:
 
-[![Bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
+[bir çalışma alanı için örnek ölçümleri gösteren ekran görüntüsü ![](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Ölçümler, çalıştırmalar, dağıtımlar ve kayıtlar hakkındaki bilgileri içerir.
 
@@ -205,7 +206,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de ölçümler](/azure/azure-monito
 
 Bu ekran görüntüsünde bir çalışma alanının etkinlik günlüğü gösterilmektedir:
 
-[![Bir çalışma alanının etkinlik günlüğünü gösteren ekran görüntüsü](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
+[bir çalışma alanının etkinlik günlüğünü gösteren ekran görüntüsü ![](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Puanlama isteği ayrıntıları Application Insights depolanır. Application Insights, bir çalışma alanı oluşturduğunuzda aboneliğinizde oluşturulur. Günlüğe kaydedilen bilgiler HTTPMethod, UserAgent, ComputeType, RequestUrl, StatusCode, RequestId ve Duration gibi alanları içerir.
 
@@ -233,7 +234,7 @@ Aşağıdaki diyagramda, çalışma alanı oluşturma iş akışı gösterilmekt
 
 Kullanıcı, gerektiğinde bir çalışma alanına (Azure Kubernetes hizmeti veya VM 'Ler gibi) bağlı diğer işlem hedeflerini de temin edebilir.
 
-[![Çalışma alanı iş akışı oluştur](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
+[![çalışma alanı iş akışı oluşturma](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Kaynak kodunu kaydet (eğitim betikleri)
 
@@ -241,7 +242,7 @@ Aşağıdaki diyagramda, kod anlık görüntüsü iş akışı gösterilmektedir
 
 Bir Azure Machine Learning çalışma alanıyla ilişkili, kaynak kodu (eğitim betikleri) içeren dizinlerdir (denemeleri). Bu betikler yerel makinenizde ve bulutta depolanır (aboneliğiniz için Azure Blob depolama alanında). Kod anlık görüntüleri, geçmiş denetimi için yürütme veya denetleme için kullanılır.
 
-[![Kod anlık görüntüsü iş akışı](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
+[![Code Snapshot iş akışı](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Eğitim
 
@@ -268,7 +269,7 @@ Machine Learning İşlem yönetilen bir işlem hedefi olduğundan (Microsoft tar
 
 Aşağıdaki akış diyagramında, bu adım, eğitim işlem hedefi Cosmos DB veritabanındaki depolamadan Azure Machine Learning için yeniden çalıştırma ölçümleri yazdığında meydana gelir. İstemciler, Azure Machine Learning çağırabilir. Machine Learning, Cosmos DB veritabanından çekme ölçümlerini açıp istemciye geri döndürmeyecektir.
 
-[![Eğitim iş akışı](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
+[Eğitim iş akışı ![](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Web Hizmetleri oluşturma
 
@@ -283,13 +284,13 @@ Ayrıntılar aşağıda verilmiştir:
 * Puanlama isteği ayrıntıları, Kullanıcı aboneliğindeki Application Insights depolanır.
 * Telemetri ayrıca Microsoft/Azure aboneliğine de gönderilir.
 
-[![Çıkarım iş akışı](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
+[![çıkarım iş akışı](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Machine Learning web hizmetleri SSL ile güvenli hale getirme](how-to-secure-web-service.md)
+* [SSL ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Machine Learning modeli kullanma](how-to-consume-web-service.md)
-* [Batch Öngörüler çalıştırma](how-to-run-batch-predictions.md)
+* [Toplu tahminleri çalıştırma](how-to-run-batch-predictions.md)
 * [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
 * [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

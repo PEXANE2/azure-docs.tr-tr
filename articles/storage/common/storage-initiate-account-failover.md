@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985335"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521001"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Depolama hesabı yük devretmesini başlatma (Önizleme)
 
@@ -32,19 +32,19 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesab�
 Depolama hesabınızda bir hesap yük devretmesi gerçekleştirebilmeniz için önce aşağıdaki adımları gerçekleştirdiğinizden emin olun:
 
 - Hesap yük devretmesi önizlemesine kaydolun. Nasıl kaydedileceği hakkında bilgi için [Önizleme hakkında](storage-disaster-recovery-guidance.md#about-the-preview)bölümüne bakın.
-- Depolama hesabınızın coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanacak şekilde yapılandırıldığından emin olun. Coğrafi olarak yedekli depolama hakkında daha fazla bilgi için bkz [. coğrafi olarak yedekli depolama (GRS): Azure depolama](storage-redundancy-grs.md)için çapraz bölgesel çoğaltma. 
+- Depolama hesabınızın coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) kullanacak şekilde yapılandırıldığından emin olun. Coğrafi olarak yedekli depolama hakkında daha fazla bilgi için bkz. [coğrafi olarak yedekli depolama (GRS): Azure depolama Için çapraz bölgesel çoğaltma](storage-redundancy-grs.md). 
 
 ## <a name="important-implications-of-account-failover"></a>Hesap yük devretmesinin önemli etkileri
 
 Depolama hesabınız için bir hesap yük devretmesi başlattığınızda, ikincil uç nokta için DNS kayıtları, ikincil uç nokta birincil uç nokta olacak şekilde güncelleştirilir. Yük devretme işlemine başlamadan önce depolama hesabınıza yönelik olası etkiyi anladığınızdan emin olun.
 
-Yük devretme başlamadan önce büyük olasılıkla veri kaybı kapsamını tahmin etmek için `Get-AzStorageAccount` PowerShell cmdlet 'ini kullanarak **son eşitleme zamanı** özelliğini denetleyin ve `-IncludeGeoReplicationStats` parametresini ekleyin. Ardından, `GeoReplicationStats` hesabınızın özelliğini denetleyin. 
+Yük devretme başlamadan önce büyük olasılıkla veri kaybı kapsamını tahmin etmek için `Get-AzStorageAccount` PowerShell cmdlet 'ini kullanarak **son eşitleme zamanı** özelliğini denetleyin ve `-IncludeGeoReplicationStats` parametresini ekleyin. Ardından, hesabınız için `GeoReplicationStats` özelliğini kontrol edin. 
 
 Yük devretmenin ardından, depolama hesabı türü otomatik olarak yeni birincil bölgedeki yerel olarak yedekli depolama (LRS) olarak dönüştürülür. Hesap için coğrafi olarak yedekli depolamayı (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) yeniden etkinleştirebilirsiniz. LRS 'den GRS 'ye veya RA-GRS ' ye dönüştürme ek bir maliyet doğurur. Daha fazla bilgi için bkz. [bant genişliği fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
 Depolama hesabınız için GRS 'yi yeniden etkinleştirdikten sonra Microsoft, hesabınızdaki verileri yeni ikincil bölgeye çoğaltmaya başlar. Çoğaltma süresi, çoğaltılan veri miktarına bağlıdır.  
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları izleyin:
 
@@ -60,14 +60,14 @@ Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları iz
 
     ![Hesap yük devretmesi için onay iletişim kutusunu gösteren ekran görüntüsü](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Bir hesap yük devretmesi başlatmak üzere PowerShell 'i kullanmak için, önce 6.0.1 Preview modülünü yüklemeniz gerekir. Modülünü yüklemek için şu adımları izleyin:
 
 1. Azure PowerShell önceki tüm yüklemelerini kaldırın:
 
     - **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
-    - Tüm **Azure** modüllerini ' den `%Program Files%\WindowsPowerShell\Modules`kaldırın.
+    - Tüm **Azure** modüllerini `%Program Files%\WindowsPowerShell\Modules`'dan kaldırın.
 
 1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -97,7 +97,7 @@ PowerShell 'den bir hesap yük devretmesi başlatmak için aşağıdaki komutu y
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Hesap yük devretmesi başlatmak için Azure CLı 'yı kullanmak üzere aşağıdaki komutları yürütün:
 
@@ -105,6 +105,8 @@ Hesap yük devretmesi başlatmak için Azure CLı 'yı kullanmak üzere aşağı
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

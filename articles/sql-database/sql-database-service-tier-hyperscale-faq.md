@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044971"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496175"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 
@@ -39,7 +39,7 @@ Hyperscale hizmet katmanı yalnızca Azure SQL veritabanı 'ndaki sanal çekirde
 
 Sanal çekirdek tabanlı hizmet katmanları, aşağıdaki tabloda açıklandığı gibi veritabanı kullanılabilirliğine ve depolama türüne, performansa ve en büyük boyuta göre farklılaştırılır.
 
-| | Kaynak türü | Genel Amaçlı |  Hiper ölçeklendirme | İş Açısından Kritik |
+| | Kaynak türü | Genel Amaçlı |  Hiper Ölçek | İş Açısından Kritik |
 |:---:|:---:|:---:|:---:|:---:|
 | **En iyisi** |Tümü|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Birçok iş yükü. Otomatik ölçeklendirme depolama boyutu 100 TB 'ye kadar, hızlı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|
 |  **Kaynak türü** ||Tek veritabanı/elastik havuz/yönetilen örnek | Tek veritabanı | Tek veritabanı/elastik havuz/yönetilen örnek |
@@ -89,7 +89,7 @@ Hiper ölçek, iş yükü talebe göre hızlı ölçeklenebilirlik sağlar.
 
   Hiperscale ile, okuma isteklerinizi karşılamak için kullanabileceğiniz bir veya daha fazla ek işlem çoğaltması sağlama olanağı da alırsınız. Yani, bu ek bilgi işlem çoğaltmalarını, birincil işlem üzerinden okuma iş yükünüzü boşaltmak için salt okuma çoğaltmaları olarak kullanabilirsiniz. Salt okuma özelliklerine ek olarak, bu çoğaltmalar Ayrıca birincil sunucudan yük devretme durumunda sık erişimli olarak da çalışır.
 
-  Bu ek bilgi işlem çoğaltmalarının sağlanması, sabit zamanlı olarak yapılabilir ve çevrimiçi bir işlemdir. Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. `ReadOnly` uygulama amacına sahip tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.
+  Bu ek bilgi işlem çoğaltmalarının sağlanması, sabit zamanlı olarak yapılabilir ve çevrimiçi bir işlemdir. Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly`olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. `ReadOnly` uygulama amacına sahip tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.
 
 ## <a name="deep-dive-questions"></a>Derinlemesine bakış soruları
 
@@ -127,7 +127,7 @@ Bu sırada değil, yoğun olmayan saatlerde maliyeti azaltmak için işlem ve yi
 
 ### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>Bellek yoğun iş yüküm için ek RAM ile bir işlem çoğaltması sağlayabilir miyim
 
-Hayır. Daha fazla RAM almak için, daha yüksek bir işlem boyutuna yükseltmeniz gerekir. Daha fazla bilgi için bkz. [hiper ölçek depolama ve işlem boyutları](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute).
+Hayır. Daha fazla RAM almak için, daha yüksek bir işlem boyutuna yükseltmeniz gerekir. Daha fazla bilgi için bkz. [hiper ölçek depolama ve işlem boyutları](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5).
 
 ### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>Farklı boyutlarda birden çok işlem çoğaltması sağlayabilir miyim
 
@@ -278,7 +278,7 @@ Evet.  Coğrafi geri yükleme tam olarak desteklenmektedir.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Hiper ölçekli veritabanı ile Coğrafi çoğaltmayı ayarlayabilir miyim
 
-Şimdilik hayır.
+Şu anda değil.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Hiper ölçekli bir veritabanı yedeklemesini alabilir ve şirket içi sunucuma veya bir VM 'deki SQL Server geri yüklemenize olanak verebilir
 
@@ -354,7 +354,7 @@ Hiper ölçek veritabanları için varsayılan olarak bir ikincil çoğaltma olu
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Nasıl yaparım? bu ikincil işlem çoğaltmalarına bağlanın
 
-Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly` olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. `ReadOnly` ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.  
+Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkenini `ReadOnly`olarak ayarlayarak, bu ek salt okuma işlem çoğaltmalarına bağlanabilirsiniz. `ReadOnly` ile işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem Çoğaltmalarından birine yönlendirilir.  
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-replica-using-ssms-or-other-client-tools"></a>SSMS veya diğer istemci araçlarını kullanarak ikincil işlem çoğaltmasına başarıyla bağlanıp bağlanmadım Nasıl yaparım? doğrulayın.
 
@@ -363,7 +363,7 @@ Bir salt okunurdur, ikincil çoğaltmaya bağlıysanız ve birincil çoğaltmaya
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-a-read-scale-out-replica"></a>Okuma ölçeği genişletme çoğaltması için adanmış bir uç nokta oluşturabilir miyim
 
-Hayır. Yalnızca `ApplicationIntent=ReadOnly` belirterek, okuma ölçeği çoğaltmaları için bağlanabilirsiniz.
+Hayır. Yalnızca `ApplicationIntent=ReadOnly`belirterek, okuma ölçeği çoğaltmaları için bağlanabilirsiniz.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Sistem, okuma iş yükünün akıllı yük dengelemesini yapar
 

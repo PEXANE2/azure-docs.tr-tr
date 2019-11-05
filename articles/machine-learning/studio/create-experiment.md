@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı Başlangıç: Veri bilimi denemesi oluşturma'
-titleSuffix: Azure Machine Learning Studio
+title: 'Hızlı başlangıç: veri bilimi denemesi oluşturma'
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Bu Machine Learning hızlı başlangıcı size kolay bir veri bilimi denemesinin nasıl olduğunu gösterir. Regresyon algoritması kullanarak bir arabanın fiyatını tahmin edeceğiz.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c95954bbe96b947312a952ebaab4e6bfc2b2f5a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515108"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493294"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Hızlı Başlangıç: Azure Machine Learning Studio ilk veri bilimi denemenizi oluşturun
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Hızlı başlangıç: Azure Machine Learning Studio (klasik) ilk veri bilimi denemenizi oluşturma
 
-Bu hızlı başlangıçta, marka ve teknik belirtimler gibi farklı değişkenlere göre bir otomobil fiyatını tahmin eden [Azure Machine Learning Studio](what-is-ml-studio.md) bir makine öğrenimi denemesi oluşturursunuz.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+Bu hızlı başlangıçta, marka ve teknik belirtimler gibi farklı değişkenlere göre bir otomobil fiyatını tahmin eden [Azure Machine Learning Studio (klasik)](what-is-ml-studio.md) ' de bir makine öğrenimi denemesi oluşturursunuz.
 
 Machine Learning 'e yepyeni bir deneyiminiz varsa, yeni [başlayanlar için video serisi veri bilimi](data-science-for-beginners-the-5-questions-data-science-answers.md) , gündelik dil ve kavramlar kullanılarak makine öğrenimine harika bir giriş niteliğindedir.
 
@@ -40,20 +42,18 @@ Bu hızlı başlangıç, bir deneme için varsayılan iş akışını izler:
 [Algoritma seçme ve uygulama]: #choose-and-apply-an-algorithm
 [Yeni otomobil fiyatlarını tahmin etme]: #predict-new-automobile-prices
 
-Bir Studio hesabınız yoksa, bir ücretsiz hesap oluşturmak için [Studio giriş sayfasına](https://studio.azureml.net) gidin ve **buradan kaydol** ' u seçin. Ücretsiz çalışma alanı, bu hızlı başlangıç için gereken tüm özelliklere sahip olacaktır.
-
 ## <a name="get-the-data"></a>Verileri alma
 
 Machine Learning 'de ihtiyaç duyduğunuz ilk şey veri.
-Studio 'Ya dahil edilen birkaç örnek veri kümesi vardır veya pek çok kaynaktan veri aktarabilirsiniz. Bu örnekte, **Otomobil fiyat verileri (Ham)** adlı çalışma alanınıza dahil edilmiş örnek veri kümesini kullanacağız.
+.Net 'in kullanabileceğiniz klasik sürümüne dahil edilen birkaç örnek veri kümesi vardır veya pek çok kaynaktan veri içeri aktarabilirsiniz. Bu örnekte, **Otomobil fiyat verileri (Ham)** adlı çalışma alanınıza dahil edilmiş örnek veri kümesini kullanacağız.
 Bu veri kümesi; marka, model, teknik belirtimler ve fiyat gibi bilgiler dahil olmak üzere birçok ayrı otomobil için giriş içerir.
 
 > [!TIP]
-> Aşağıdaki denemenin çalışan bir kopyasını [Azure AI Gallery](https://gallery.azure.ai)’de bulabilirsiniz. **[İlk veri bilimi denemeniz - Otomobil fiyat tahmini](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** ’ne gidin ve denemenin bir kopyasını Machine Learning Studio çalışma alanınıza indirmek için **Studio’da Aç**’a tıklayın.
+> Aşağıdaki denemenin çalışan bir kopyasını [Azure AI Gallery](https://gallery.azure.ai)’de bulabilirsiniz. **[İlk veri bilimi denemenize-otomobil fiyat tahminine](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** gidin ve denemenin bir kopyasını Machine Learning Studio (klasik) çalışma alanınıza Indirmek için **Studio 'da aç** ' a tıklayın.
 
 Veri kümesini denemenize aşağıdaki gibi aktarabilirsiniz.
 
-1. Machine Learning Studio penceresinin en altında **+ Yeni** ' ye tıklayarak yeni bir deneme oluşturun. **Deneme** >  **boş deneme**' yı seçin.
+1. Machine Learning Studio (klasik) penceresinin altında **+ Yeni** ' ye tıklayarak yeni bir deneme oluşturun. **Boş >  deneyin** **' i seçin** .
 
 1. Denemenize tuvalin üzerinde görebileceğiniz bir varsayılan ad verilir. Bu adı seçerek anlamlı bir adla değiştirin, örneğin, **Otomobil fiyat tahmini**. Adın benzersiz olması gerekmez.
 
@@ -207,7 +207,7 @@ Verilerimizin yüzde 75'ini kullanarak modeli eğittiğimize göre, modelimizin 
 
     !["Model Puanlama" modülünü "modeli eğitme" ve "verileri bölme" modüllerine bağlayın](./media/create-experiment/connect-score-model.png)
 
-1. Deneme modelinin çıkış bağlantı noktasına tıklayıp **Görselleştir**' [][score-model] i seçin. [][score-model] Çıkış, fiyat için tahmin edilen değerleri ve test verileri için bilinen değerleri gösterir.  
+1. Deneme [modelinin çıkış][score-model] bağlantı noktasına tıklayıp **Görselleştir** [' i][score-model] seçin. Çıkış, fiyat için tahmin edilen değerleri ve test verileri için bilinen değerleri gösterir.  
 
     !["Model puanı" modülünün çıkışı](./media/create-experiment/score-model-output.png)
 
@@ -223,11 +223,11 @@ Verilerimizin yüzde 75'ini kullanarak modeli eğittiğimize göre, modelimizin 
 
 Modelimiz için aşağıdaki istatistikler gösterilir:
 
-- **Ortalama mutlak hata** (MAE): Mutlak hataların ortalaması (bir *hata* , tahmin edilen değer ile gerçek değer arasındaki farktır).
-- **Kök ortalama kare hatası** (Rmo): Test veri kümesinde yapılan tahmine dayalı olarak kare içinde oluşan ortalama hata sayısının kare kökü.
-- **Göreli mutlak hata**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak farka göre ortalama mutlak hata sayısı.
-- **Göreli kare hatası**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki kare farklılığa göre ortalama kare dışı hataların ortalaması.
-- **Belirleme katsayısı**: **R kare değeri**olarak da bilinen bu, modelin verilere ne kadar iyi uyduğunu gösteren istatistiksel bir ölçümdür.
+- **Mean Absolute Error (Ortalama Mutlak Hata)** (MAE): Mutlak hataların ortalaması (*hata*, tahmin edilen değer ile gerçek değer arasındaki farktır).
+- **Root Mean Squared Error (Kök Ortalama Karesi Alınmış Hata)** (RMSE): Test veri kümesinde yapılan tahminlerin karesi alınmış hata ortalamasının kare kökü.
+- **Relative Absolute Error (Göreli Mutlak Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
+- **Relative Squared Error (Göreli Karesi Alınmış Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
+- **Coefficient of Determination (Determinasyon Katsayısı)** : **R karesi alınmış değer** olarak da bilinen ve modelin verilere ne kadar iyi uyumlu olduğunu gösteren istatistik ölçümleridir.
 
 Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük olan bir değer, tahminlerin gerçek değerlerle daha yakından eşleştiğini gösterir. **Coefficient of Determination (Determinasyon Katsayısı)** değeri bire (1.0) ne kadar yakınsa tahminler o kadar iyi olur.
 
@@ -240,7 +240,7 @@ Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük
 Bu hızlı başlangıçta, örnek veri kümesi kullanarak basit bir deneme oluşturdunuz. Daha ayrıntılı bir şekilde model oluşturma ve dağıtma sürecini araştırmak için tahmine dayalı çözüm öğreticisine devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Studio 'da tahmine dayalı bir çözüm geliştirin](tutorial-part1-credit-risk.md)
+> [Öğretici: Studio 'da tahmine dayalı bir çözüm geliştirme (klasik)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

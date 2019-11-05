@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002885"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490749"
 ---
 # <a name="how-personalizer-works"></a>Kişiselleştirme nasıl çalışır?
 
-Kişiselleştirici, bir bağlamda hangi eylemin kullanılacağını saptamak için makine öğrenimini kullanır. Her öğrenme döngüsünün, **işleme ve** **yeniden** arama yoluyla kendisine gönderdiğiniz veriler üzerinde özel olarak eğitilen bir modeli vardır. Her öğrenme döngüsü birbirleriyle tamamen bağımsızdır. Kişiselleştirmek istediğiniz her bir bölüm veya davranış için bir öğrenme döngüsü oluşturun.
+Kişiselleştirici, bir bağlamda hangi eylemin kullanılacağını saptamak için makine öğrenimini kullanır. Her öğrenme döngüsünün, işleme ve **yeniden** arama yoluyla kendisine gönderdiğiniz veriler üzerinde özel olarak **eğitilen bir** modeli vardır. Her öğrenme döngüsü birbirleriyle tamamen bağımsızdır. Kişiselleştirmek istediğiniz her bir bölüm veya davranış için bir öğrenme döngüsü oluşturun.
 
 Her döngü için, geçerli bağlamı temel alarak **Rank API 'sini** şu şekilde çağırın:
 
@@ -27,13 +27,13 @@ Her döngü için, geçerli bağlamı temel alarak **Rank API 'sini** şu şekil
 
 **Derecelendirme** API 'si şu iki seçenekten birini kullanmanıza karar verir:
 
-* _Yararlanma_: Geçmiş verilere göre en iyi eyleme karar vermek için geçerli model.
-* _Keşfet_: En üstteki eylem yerine farklı bir eylem seçin.
+* _Yararlanma_: geçmiş verilere göre en iyi eyleme karar vermeye yönelik geçerli model.
+* _Keşfet_: en üstteki eylem yerine farklı bir eylem seçin.
 
 **Reward** API 'si:
 
 * Her bir derece çağrısının özelliklerini ve yeniden puanlarını kaydederek modeli eğitmek için veri toplar.
-* , _Öğrenme ilkesinde_belirtilen ayarlara bağlı olarak modeli güncelleştirmek için bu verileri kullanır.
+* , _Öğrenme ilkesinde_belirtilen yapılandırmaya göre modeli güncelleştirmek için bu verileri kullanır.
 
 ## <a name="architecture"></a>Mimari
 
@@ -55,11 +55,11 @@ Kişiselleştirici, Microsoft Research 'daki incelemeler, araştırma etkinlikle
 
 ## <a name="terminology"></a>Terminoloji
 
-* **Öğrenme döngüsü**: Uygulamanızın, kişiselleştirmeye faydalanabilir her bölümü için bir öğrenme döngüsü oluşturabilirsiniz. Kişiselleştirmek için birden fazla deneyim varsa, her biri için bir döngü oluşturun. 
+* **Öğrenme döngüsü**: uygulamanızın, kişiselleştirmeye faydalanabilir her bölümü için bir öğrenme döngüsü oluşturabilirsiniz. Kişiselleştirmek için birden fazla deneyim varsa, her biri için bir döngü oluşturun. 
 
 * **Eylemler**: Eylemler, ürün veya promosyon gibi, aralarından seçim yapabileceğiniz içerik öğeleridir. Kişiselleştirici, sıralama API 'SI aracılığıyla kullanıcılarınıza, _Reward eylemi_olarak bilinen, göstermek için en iyi eylemi seçer. Her eylem, sıralama isteğiyle gönderilen özelliklere sahip olabilir.
 
-* **Bağlam**: Daha doğru bir derece sağlamak için, içeriğiniz hakkında bilgi sağlayın, örneğin:
+* **Bağlam**: daha doğru bir derece sağlamak için, içeriğiniz hakkında bilgi sağlayın, örneğin:
     * Kullanıcı.
     * Bulundukları cihaz. 
     * Geçerli saat.
@@ -68,19 +68,19 @@ Kişiselleştirici, Microsoft Research 'daki incelemeler, araştırma etkinlikle
 
     Özel uygulamanız farklı bağlam bilgilerine sahip olabilir. 
 
-* **[Özellikler](concepts-features.md)** : Bir içerik öğesi veya Kullanıcı bağlamı hakkındaki bilgi birimi.
+* **[Özellikler](concepts-features.md)** : bir içerik öğesi veya Kullanıcı bağlamı hakkındaki bilgi birimi.
 
-* **Ödül**: 0 ile 1 arasında bir puan olarak kullanıcının sıralama API 'SI tarafından döndürülen işleme nasıl yanıt verdiğini gösteren bir ölçü. 0-1 değeri, iş mantığınızla belirlenir ve bu seçenek, nasıl kişiselleştirmenin iş hedeflerine nasıl ulaştığından yardımcı olur. 
+* **Reward**: Kullanıcı, 0 ile 1 arasında bir puan olarak döndürülen API 'Yi sırasıyla derecelendirme API 'sine nasıl yanıtladığını gösteren bir ölçüdür. 0-1 değeri, iş mantığınızla belirlenir ve bu seçenek, nasıl kişiselleştirmenin iş hedeflerine nasıl ulaştığından yardımcı olur. 
 
-* **Araştırma**: Kişiselleştirici hizmeti, en iyi eylemi döndürmek yerine Kullanıcı için farklı bir eylem seçerse, ne zaman araştırma yapılır. Kişiselleştirici hizmeti, ve ' yi inceleyerek devam eden kullanıcı davranışına uyum sağlayabilir. 
+* **Araştırma**: kişiselleştirici hizmeti, en iyi eylemi döndürmek yerine, Kullanıcı için farklı bir eylem seçerse, ne zaman araştırma yapılır. Kişiselleştirici hizmeti, ve ' yi inceleyerek devam eden kullanıcı davranışına uyum sağlayabilir. 
 
-* **Deneme süresi**: Bu olay için sıralama çağrısının başladığı andan itibaren, kişiselleştirici hizmetin bir azalma beklediği zaman miktarı.
+* **Deneme süresi**: Bu etkinlik için sıralama çağrısının başladığı andan Itibaren, kişiselleştirici hizmetin bir azalma için beklediği süre miktarı.
 
-* **Etkin olmayan olaylar**: Etkin olmayan bir olay, derece olarak adlandırduğunuz bir olaydır, ancak istemci uygulama kararlarından dolayı kullanıcının sonucu göreceğinden emin olmadığınızı unutmayın. Etkin olmayan olaylar, kişiselleştirme sonuçları oluşturup depolamanıza olanak tanır ve ardından makine öğrenimi modelini etkilemeden daha sonra atmayı seçebilirsiniz.
+* **Etkin olmayan olaylar**: etkin olmayan bir olay, derece olarak adlandırduğunuz bir olaydır, ancak istemci uygulama kararlarından dolayı kullanıcının sonucu göreceğinden emin olmadığınızı unutmayın. Etkin olmayan olaylar, kişiselleştirme sonuçları oluşturup depolamanıza olanak tanır ve ardından makine öğrenimi modelini etkilemeden daha sonra atmayı seçebilirsiniz.
 
-* **Model**: Bir kişiselleştirici modeli, Kullanıcı davranışı hakkında öğrenilen tüm verileri yakalar, işleme ve yeniden aramalar için göndereceğiniz bağımsız değişkenlerin birleşiminden eğitim verileri alma ve öğrenme Ilkesi tarafından belirlenen bir eğitim davranışı. 
+* **Model**: bir kişiselleştirici modeli, Kullanıcı davranışı hakkında öğrenilen tüm verileri yakalar, daha fazla bilgi almak için göndereceğiniz bağımsız değişkenlerin birleşiminden eğitim verileri alma ve öğrenme ilkesi tarafından belirlenen bir eğitim davranışı. 
 
-* **Öğrenme ilkesi**: Her olay üzerinde kişiselleştirici, makine öğrenimi algoritmalarının nasıl çalıştığını etkileyen bazı meta parametrelere göre belirlenir. Yeni kişiselleştirme döngüleri, bir varsayılan öğrenme Ilkesiyle başlatılır ve bu da Orta performans elde edebilir. [Değerlendirme](concepts-offline-evaluation.md)çalıştırılırken, kişiselleştirici, özel olarak döngülerinizin kullanım örneklerine Iyileştirilmiş yeni öğrenme ilkeleri oluşturabilir. Kişiselleştirmede, değerlendirme sırasında oluşturulan her bir döngü için en iyi duruma getirilmiş ilkelerle önemli ölçüde daha iyi işlem yapılır.
+* **Öğrenme ilkesi**: her olay üzerinde kişiselleştirici, makine öğrenimi algoritmalarının nasıl çalıştığını etkileyen bazı meta parametrelere göre belirlenir. Yeni kişiselleştirme döngüleri, bir varsayılan öğrenme Ilkesiyle başlatılır ve bu da Orta performans elde edebilir. [Değerlendirme](concepts-offline-evaluation.md)çalıştırılırken, kişiselleştirici, özel olarak döngülerinizin kullanım örneklerine Iyileştirilmiş yeni öğrenme ilkeleri oluşturabilir. Kişiselleştirmede, değerlendirme sırasında oluşturulan her bir döngü için en iyi duruma getirilmiş ilkelerle önemli ölçüde daha iyi işlem yapılır.
 
 ## <a name="example-use-cases-for-personalizer"></a>Kişiselleştirici için örnek kullanım örnekleri
 

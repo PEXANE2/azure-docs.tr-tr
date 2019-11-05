@@ -8,19 +8,22 @@ ms.topic: include
 ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12c28969ed00a1370b90e06e9d57cd666c50ea29
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970821"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524027"
 ---
-1. Portalda, sol tarafta **+ Kaynak oluştur**’a tıklayın ve arama alanına ‘Sanal Ağ Geçidi’ yazın. Arama sonuçlarında **Sanal ağ geçidi** seçeneğini bulun ve girişe tıklayın. **Sanal ağ geçidi** sayfasında **Oluştur**' a tıklayın. Bu işlem **Sanal ağ geçidi oluşturma** sayfasını açar.
+1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin. 
 
-   ![Sanal ağ geçidi oluştur sayfasının alanları](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Sanal ağ geçidi oluştur sayfasının alanları")
+   ![Azure portal bir kaynak oluşturun](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+2. Market 'te **Ara** alanına ' sanal ağ geçidi ' yazın. Arama sonuçlarında **Sanal ağ geçidi** seçeneğini bulun ve girişe tıklayın. **Sanal ağ geçidi** sayfasında **Oluştur**' a tıklayın. Bu işlem **Sanal ağ geçidi oluşturma** sayfasını açar.
 
-   ![Sanal ağ geçidi oluştur sayfasının alanları](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Sanal ağ geçidi oluştur sayfasının alanları")
-2. **Sanal ağ geçidi oluştur** sayfasında, sanal ağ geçidinize ait değerleri girin.
+   ![Sanal ağ geçidi sayfası alanı oluştur](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Sanal ağ geçidi sayfası alanı oluştur")
+
+   ![Sanal ağ geçidi sayfası alanı oluştur](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Sanal ağ geçidi sayfası alanı oluştur")
+3. **Sanal ağ geçidi oluştur** sayfasında, sanal ağ geçidinize ait değerleri girin.
 
    **Proje ayrıntıları**
 
@@ -49,6 +52,6 @@ ms.locfileid: "71970821"
 
    Yapılandırmanız için **BGP ASN yapılandır** ayarı özellikle gerekli değilse bu ayarı işaretlemeyin. Bu ayar gerekliyse varsayılan ASN değeri 65515’tir ancak bu değiştirilebilir.
 
-3. Doğrulamayı çalıştırmak için **gözden geçir + oluştur** ' a tıklayın. Doğrulama başarılı olduktan sonra, VPN ağ geçidini dağıtmak için **Oluştur** ' a tıklayın. Bir ağ geçidinin, tam olarak oluşturulması ve dağıtılması 45 dakika sürebilir. Dağıtım durumunu ağ geçidinizin Genel Bakış sayfasında görebilirsiniz.
+4. Doğrulamayı çalıştırmak için **gözden geçir + oluştur** ' a tıklayın. Doğrulama başarılı olduktan sonra, VPN ağ geçidini dağıtmak için **Oluştur** ' a tıklayın. Bir ağ geçidinin, tam olarak oluşturulması ve dağıtılması 45 dakika sürebilir. Dağıtım durumunu ağ geçidinizin Genel Bakış sayfasında görebilirsiniz.
 
 Ağ geçidi oluşturulduktan sonra, portalda sanal ağa bakarak bu ağ geçidine atanmış IP adresini görüntüleyebilirsiniz. Ağ geçidi bağlı bir cihaz gibi görüntülenir.

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a43783110f625dd5faef13c83228a2659155ead0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843296"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492232"
 ---
 # <a name="automated-backups"></a>Otomatik yedeklemeler
 
@@ -36,7 +36,7 @@ Bu yedeklemeleri kullanarak şunları yapabilirsiniz:
   - [Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) veya [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)kullanarak tek veritabanı ve elastik havuzlarda **uzun süreli saklama ilkesini 10 yıla kadar değiştirin** .
 - **Silinen bir veritabanını silindiği zamana** veya saklama dönemi içinde herhangi bir zamanda geri yükleyin. Silinen veritabanı yalnızca özgün veritabanının oluşturulduğu mantıksal sunucuya veya yönetilen örneğe geri yüklenebilir.
 - **Veritabanını başka bir coğrafi bölgeye geri yükleyin**. Coğrafi geri yükleme, sunucunuza ve veritabanınıza erişene zaman coğrafi bir olağanüstü durumdan kurtulmanızı sağlar. Dünyanın her yerindeki var olan herhangi bir sunucuda yeni bir veritabanı oluşturur.
-- Veritabanı uzun süreli bir bekletme ilkesiyle (LTR) yapılandırılmışsa, Tek Veritabanı veya Elastik Havuz **belirli bir uzun süreli yedekten bir veritabanını geri yükleyin** . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) veya [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [uzun süreli saklama](sql-database-long-term-retention.md).
+- Veritabanı uzun süreli bir bekletme ilkesiyle (LTR) yapılandırılmışsa, Tek Veritabanı veya Elastik Havuz **belirli bir uzun süreli yedekten bir veritabanını geri yükleyin** . LTR, bir uyumluluk isteğini karşılamak veya uygulamanın eski bir sürümünü çalıştırmak için [Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) veya [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) kullanarak veritabanının eski bir sürümünü geri yüklemenize olanak tanır. Daha fazla bilgi için bkz. [Uzun süreli saklama](sql-database-long-term-retention.md).
 - Geri yükleme gerçekleştirmek için bkz. [veritabanlarını yedeklerden geri yükleme](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Aşağıdaki örnekleri kullanarak bu işlemlerden bazılarını deneyebilirsini
 | Yedekleme bekletmesini değiştirme | [Tek Veritabanı](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Yönetilen örnek](sql-database-automated-backups.md#managed-instance-database) | [Tek Veritabanı](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Uzun süreli yedekleme bekletmesini değiştirme | [Tek veritabanı](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Yönetilen örnek-yok  | [Tek Veritabanı](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Yönetilen örnek-yok  |
 | Veritabanını zaman noktasından geri yükle | [Tek veritabanı](sql-database-recovery-using-backups.md#point-in-time-restore) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Silinen veritabanını geri yükle | [Tek veritabanı](sql-database-recovery-using-backups.md) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Silinen veritabanını geri yükleme | [Tek veritabanı](sql-database-recovery-using-backups.md) | [Tek veritabanı](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Yönetilen örnek](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Veritabanını Azure Blob depolamadan geri yükleme | Tek veritabanı-yok <br/>Yönetilen örnek-yok  | Tek veritabanı-yok <br/>[Yönetilen örnek](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>Yedeklemeler ne kadar tutuldu
@@ -58,7 +58,7 @@ Tüm Azure SQL veritabanlarının (tek, havuza alınmış ve yönetilen örnek v
 
 Bir veritabanını silerseniz, SQL veritabanı yedeklemeleri çevrimiçi bir veritabanı ile aynı şekilde tutacaktır. Örneğin, bir saklama süresi yedi güne sahip olan temel bir veritabanını silerseniz, dört günden eski bir yedekleme üç gün boyunca kaydedilir.
 
-Yedeklemeleri maksimum saklama süresinden daha uzun süre tutmanız gerekiyorsa, veritabanınıza bir veya daha fazla uzun süreli bekletme dönemi eklemek için yedekleme özelliklerini değiştirebilirsiniz. Daha fazla bilgi için bkz. [uzun süreli saklama](sql-database-long-term-retention.md).
+Yedeklemeleri maksimum saklama süresinden daha uzun süre tutmanız gerekiyorsa, veritabanınıza bir veya daha fazla uzun süreli bekletme dönemi eklemek için yedekleme özelliklerini değiştirebilirsiniz. Daha fazla bilgi için bkz. [Uzun süreli saklama](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
 > SQL veritabanlarını barındıran Azure SQL Server 'ı silerseniz, sunucuya ait olan tüm elastik havuzlar ve veritabanları da silinir ve kurtarılamaz. Silinen bir sunucuyu geri yükleyemezsiniz. Ancak uzun süreli saklama yapılandırdıysanız, LTR içeren veritabanlarının yedeklemeleri silinmez ve bu veritabanları geri yüklenebilir.
@@ -82,7 +82,7 @@ Invr gibi, LTR yedeklemeler coğrafi olarak yedekli ve [Azure Storage çapraz b�
 Daha fazla bilgi için bkz. [uzun süreli yedek saklama](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Depolama maliyetleri
-Tek veritabanları için, veritabanı boyutunun% 100 ' ına eşit olan en düşük yedekleme depolama miktarı ek ücret ödemeden sunulmaktadır. Elastik havuzlar için, havuz için ayrılan veri depolamanın% 100 ' ına eşit olan en düşük yedekleme depolama miktarı ek ücret ödemeden sunulmaktadır. Yedekleme depolama alanının ek tüketimi GB/ay olarak ücretlendirilir. Bu ek tüketim, bireysel veritabanlarının iş yüküne ve boyutuna bağlı olarak değişir.
+Tek veritabanları ve yönetilen örnekler için, veritabanı boyutunun %100 ' ına eşit olan en düşük yedekleme depolama miktarı ek bir ücret ödemeden sunulmaktadır. Elastik havuzlar için, havuz için ayrılan veri depolamanın %100 ' ına eşit olan en düşük yedekleme depolama miktarı ek ücret ödemeden sunulmaktadır. Ek yedekleme alanı kullanımı, GB/ay üzerinden ücretlendirilir. Bu ek tüketim, bireysel veritabanlarının iş yüküne ve boyutuna bağlı olarak değişir.
 
 Depolama fiyatları hakkında daha fazla bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/sql-database/single/) sayfası. 
 
@@ -94,7 +94,7 @@ Veritabanınız TDE ile şifrelenirse, yedeklemeler, LTR yedeklemeler de dahil o
 
 Azure SQL veritabanı Mühendisliği ekibi, sürekli olarak mantıksal sunuculara ve elastik havuzlara yerleştirilmiş veritabanlarının otomatik veritabanı yedeklerinin geri yüklenmesini otomatik olarak sınar (yönetilen örnekte kullanılamaz). Bir noktadan sonra geri yükleme sonrasında veritabanları DBCC CHECKDB kullanarak bütünlük denetimleri de alır.
 
-Yönetilen örnek, geçiş işlemi tamamlandıktan sonra yerel `RESTORE` komutu veya veri geçiş hizmeti kullanılarak geri yüklenen veritabanlarının `CHECKSUM` ile otomatik ilk yedeklemeyi alır.
+Yönetilen örnek, geçiş tamamlandıktan sonra yerel `RESTORE` komutu veya veri geçiş hizmeti kullanılarak geri yüklenen veritabanlarının `CHECKSUM` otomatik olarak ilk yedeklemesini alır.
 
 Bütünlük denetimi sırasında bulunan tüm sorunlar, mühendislik ekibine bir uyarıya neden olur. Azure SQL veritabanı 'nda veri bütünlüğü hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda veri bütünlüğü](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
@@ -142,13 +142,13 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>REST API kullanarak elde tutma süresini değiştirme
 
-#### <a name="sample-request"></a>Örnek Istek
+#### <a name="sample-request"></a>Örnek İstek
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
 ```
 
-#### <a name="request-body"></a>İstek gövdesi
+#### <a name="request-body"></a>İstek Gövdesi
 
 ```json
 {
@@ -158,7 +158,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 }
 ```
 
-#### <a name="sample-response"></a>Örnek yanıt
+#### <a name="sample-response"></a>Örnek Yanıtı
 
 Durum kodu: 200
 

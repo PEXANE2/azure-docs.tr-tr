@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163128"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493998"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 
@@ -172,7 +172,7 @@ Ardından, çözümümüze yönlendirici modülünü ekliyoruz. Yönlendirici mo
 4. Docker görüntü deponuz sorulduğunda, Machine Learning çalışma alanındaki kayıt defterini kullanın (kayıt defterini dağıtımınızın kayıt kimlik bilgileri düğümünde bulabilirsiniz *. Template. JSON* dosyası). Bu değer, kayıt **defterinizin\>. azurecr.io/turbofanrouter\<** gibi tam olarak nitelenmiş adresidir.
 
     > [!NOTE]
-    > Bu makalede, sınıflandırımızda eğitim ve dağıtım yapmak için kullandığımız Azure Machine Learning hizmeti çalışma alanı tarafından oluşturulan Azure Container Registry kullanırız. Bu yalnızca kolaylık sağlaması içindir. Yeni bir kapsayıcı kayıt defteri oluşturup modüllerimizi burada yayımladık.
+    > Bu makalede, sınıflandırımızda eğitim ve dağıtım yapmak için kullandığımız Azure Machine Learning çalışma alanı tarafından oluşturulan Azure Container Registry kullanırız. Bu yalnızca kolaylık sağlaması içindir. Yeni bir kapsayıcı kayıt defteri oluşturup modüllerimizi burada yayımladık.
 
 5. Visual Studio Code ( > **terminalini** **görüntüle** ) ' de yeni bir Terminal penceresi açın ve dosyaları modüller dizininden kopyalayın.
 
@@ -752,7 +752,7 @@ Artık yapılandırma değişikliklerini yaptığımız için, görüntüleri ol
 
 Oluşturma başarıyla tamamlandıktan sonra, yayımlanan modüllerimizi gözden geçirmek için Azure portal kullanacağız.
 
-1. Azure portal, Azure Machine Learning hizmeti çalışma alanınıza gidin ve **kayıt defteri**köprüsüne tıklayın.
+1. Azure portal, Azure Machine Learning çalışma alanınıza gidin ve **kayıt defteri**köprüsüne tıklayın.
 
     ![Machine Learning hizmeti çalışma alanından kayıt defterine git](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 

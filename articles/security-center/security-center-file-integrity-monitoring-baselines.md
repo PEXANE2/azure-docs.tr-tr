@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e7ef558ec75622b804aef96781b549f1a833e21
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202147"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518856"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Dosya bütünlüğü Izleme (FIM) kullanarak temelleri karşılaştırın
 
@@ -36,7 +36,7 @@ Aslında, PCI DSS & ISO 17799 gibi birçok yasal uyumluluk standardı FIM deneti
 
 FIM kayıt defteri Hive Varsayılanları, ortak güvenlik alanlarındaki özyinelemeli değişiklikleri izlemek için kullanışlı bir yol sağlar.  Örneğin, bir saldırgan başlatma veya kapatmada bir yürütme yapılandırarak LOCAL_SYSTEM bağlamında yürütülecek bir betiği yapılandırabilir.  Bu türdeki değişiklikleri izlemek için yerleşik denetimi etkinleştirin.  
 
-![Kayıt defteri](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Kayıt Defteri](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > Özyinelemeli denetimler yalnızca önerilen güvenlik kovanları için geçerlidir ve özel kayıt defteri yollarına uygulanmaz.  
@@ -48,19 +48,19 @@ FIM temelleri, işletim sistemi ve destekleyici uygulama için bilinen iyi durum
 
 |İlke Adı                 | Kayıt defteri ayarı|
 |---------------------------------------|-------------|
-|Etki alanı denetleyicisi: Makine hesabı parola değişikliklerini reddet| Machıne\system\currentcontrolset\services \Netlogon\Parameters\RefusePasswordChange|
-|Etki alanı üyesi: Güvenli kanal verilerini dijital olarak şifrele veya imzala (her zaman)|Machıne\system\currentcontrolset\services \Netlogon\parameters\requiresignorcontası|
-|Etki alanı üyesi: Güvenli kanal verilerini dijital olarak şifrele (mümkün olduğunda)|Machıne\system\currentcontrolset\services \Netlogon\Parameters\SealSecureChannel|
-|Etki alanı üyesi: Güvenli kanal verilerini dijital olarak imzala (mümkün olduğunda)|Machıne\system\currentcontrolset\services \Netlogon\Parameters\SignSecureChannel|
-|Etki alanı üyesi: Makine hesabı parola değişikliklerini devre dışı bırak|Machıne\system\currentcontrolset\services \Netlogon\Parameters\DisablePasswordChange|
-|Etki alanı üyesi: Maksimum makine hesabı parola yaşı|Machıne\system\currentcontrolset\services \Netlogon\parameters\maximferasswordavge|
-|Etki alanı üyesi: Güçlü (Windows 2000 veya üzeri) oturum anahtarı gerektir|Machıne\system\currentcontrolset\services \Netlogon\Parameters\RequireStrongKey|
-|Ağ güvenliği: NTLM 'yi kısıtla:  Bu etki alanında NTLM kimlik doğrulaması|Machıne\system\currentcontrolset\services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Ağ güvenliği: NTLM 'yi kısıtla: Bu etki alanına sunucu özel durumları Ekle|Machıne\system\currentcontrolset\services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Etki alanı denetleyicisi: makine hesabı parola değişikliklerini reddetme| Machıne\system\currentcontrolset\services \Netlogon\Parameters\RefusePasswordChange|
+|Etki alanı üyesi: güvenli kanal verilerini dijital olarak şifrele veya imzala (her zaman)|Machıne\system\currentcontrolset\services \Netlogon\parameters\requiresignorcontası|
+|Etki alanı üyesi: güvenli kanal verilerini dijital olarak şifrele (mümkün olduğunda)|Machıne\system\currentcontrolset\services \Netlogon\Parameters\SealSecureChannel|
+|Etki alanı üyesi: güvenli kanal verilerini dijital olarak imzala (mümkün olduğunda)|Machıne\system\currentcontrolset\services \Netlogon\Parameters\SignSecureChannel|
+|Etki alanı üyesi: makine hesabı parola değişikliklerini devre dışı bırak|Machıne\system\currentcontrolset\services \Netlogon\Parameters\DisablePasswordChange|
+|Etki alanı üyesi: en fazla makine hesabı parola yaşı|Machıne\system\currentcontrolset\services \Netlogon\parameters\maximferasswordavge|
+|Etki alanı üyesi: güçlü (Windows 2000 veya üzeri) oturum anahtarı gerektir|Machıne\system\currentcontrolset\services \Netlogon\Parameters\RequireStrongKey|
+|Ağ güvenliği: NTLM 'yi kısıtla: Bu etki alanında NTLM kimlik doğrulaması|Machıne\system\currentcontrolset\services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Ağ güvenliği: NTLM 'yi kısıtla: Bu etki alanında sunucu özel durumları Ekle|Machıne\system\currentcontrolset\services \Netlogon\Parameters\DCAllowedNTLMServers|
 |Ağ güvenliği: NTLM 'yi kısıtla: Bu etki alanında NTLM kimlik doğrulamasını denetle|Machıne\system\currentcontrolset\services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Çeşitli işletim sistemi sürümleri tarafından desteklenen kayıt defteri ayarları hakkında daha fazla bilgi edinmek için [Grup İlkesi ayarları başvuru elektronik tablosuna](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250)bakın.
+> Çeşitli işletim sistemi sürümleri tarafından desteklenen kayıt defteri ayarları hakkında daha fazla bilgi edinmek için [Grup İlkesi ayarları başvuru elektronik tablosuna](https://www.microsoft.com/download/confirmation.aspx?id=25250)bakın.
 
 *FIM 'yi kayıt defteri temellerini izleyecek şekilde yapılandırmak için:*
 

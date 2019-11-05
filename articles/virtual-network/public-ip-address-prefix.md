@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 964bc915347d11e087da0b34a8d4160d807a4158
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f89218b066b0a22559c00c4a53316f0df9c0bb8f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965409"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488450"
 ---
 # <a name="public-ip-address-prefix"></a>Genel IP adresi ön eki
 
@@ -48,7 +48,7 @@ Aşağıdaki kaynakları bir önekten statik bir genel IP adresi ile ilişkilend
 
 |Kaynak|Senaryo|Adımlar|
 |---|---|---|
-|Virtual Machines (Sanal Makineler)| Azure 'daki sanal makinelerinize genel IP 'Lerin bir önekden ilişkilendirilmesi, bir güvenlik duvarındaki IP 'Leri beyaz listeye alırken yönetim yükünü azaltır. Tek bir güvenlik duvarı kuralıyla, tüm ön eki kolayca listeleyebilirsiniz. Azure 'daki sanal makinelerle ölçeklendirdiğinizde, IP 'Leri aynı önek tasarrufu, zaman ve yönetim yüküyle ilişkilendirebilirsiniz.| IP 'Leri bir önekten sanal makinenize ilişkilendirmek için: 1. [Ön ek oluşturun.](manage-public-ip-address-prefix.md) 2. [Önekten bir IP oluşturun.](manage-public-ip-address-prefix.md) 3. [IP 'yi sanal makinenizin ağ arabirimiyle ilişkilendirin.](virtual-network-network-interface-addresses.md#add-ip-addresses)
+|Virtual Machines| Azure 'daki sanal makinelerinize genel IP 'Lerin bir önekden ilişkilendirilmesi, bir güvenlik duvarındaki IP 'Leri beyaz listeye alırken yönetim yükünü azaltır. Tek bir güvenlik duvarı kuralıyla, tüm ön eki kolayca listeleyebilirsiniz. Azure 'daki sanal makinelerle ölçeklendirdiğinizde, IP 'Leri aynı önek tasarrufu, zaman ve yönetim yüküyle ilişkilendirebilirsiniz.| IP 'Leri bir önekten sanal makinenize ilişkilendirmek için: 1. [Ön ek oluşturun.](manage-public-ip-address-prefix.md) 2. [Önekten bir IP oluşturun.](manage-public-ip-address-prefix.md) 3. [IP 'yi sanal makinenizin ağ arabirimiyle ilişkilendirin.](virtual-network-network-interface-addresses.md#add-ip-addresses) Ayrıca [, IP 'leri bir sanal makine ölçek kümesi ile ilişkilendirebilirsiniz](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Standart yük dengeleyiciler | Genel IP 'Leri bir önekten ön uç IP yapılandırmanıza veya bir Load Balancer giden kuralına ilişkilendirerek, Azure genel IP adresi alanınızı basitleştirilmesini sağlar. Genel IP öneki tarafından tanımlanan bir dizi bitişik IP adresinden kaynaklayarak giden bağlantıları temizliği yaparak senaryonuzu kolaylaştırabilirsiniz. | IP 'Leri bir önekden yük dengeleyicinizle ilişkilendirmek için: 1. [Ön ek oluşturun.](manage-public-ip-address-prefix.md) 2. [Önekten bir IP oluşturun.](manage-public-ip-address-prefix.md) 3. Load Balancer oluştururken yukarıdaki 2. adımda oluşturulan IP 'yi Load Balancer ön uç IP 'si olarak seçin veya güncelleştirin. |
 | Azure Güvenlik Duvarı | Giden SNAT için bir önekte ortak IP kullanabilirsiniz. Bu, tüm giden sanal ağ trafiğinin [Azure Güvenlik Duvarı](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) genel IP 'ye çevrildiği anlamına gelir. Bu IP önceden belirlenmiş bir önekden geldiği için, Azure 'daki genel IP parmak izinizden nasıl görüneceğine ilişkin bir süre önce daha kolay bir şekilde haberdar olmak çok kolaydır. | 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) 2. [Önekten bir IP oluşturun.](manage-public-ip-address-prefix.md) 3. [Azure Güvenlik duvarını dağıtırken](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), ön ekten daha önce AYıRMıŞ olduğunuz IP 'yi seçtiğinizden emin olun.|
 | Application Gateway v2 | Otomatik ölçeklendirme ve bölgesel olarak yedekli Application Gateway v2 için bir önekten ortak IP kullanabilirsiniz. Bu IP önceden belirlenmiş bir önekden geldiği için, Azure 'daki genel IP parmak izinizden nasıl görüneceğine ilişkin bir süre önce daha kolay bir şekilde haberdar olmak çok kolaydır. | 1. [bir ön ek oluşturun.](manage-public-ip-address-prefix.md) 2. [Önekten bir IP oluşturun.](manage-public-ip-address-prefix.md) 3. [Application Gateway dağıttığınızda](../application-gateway/quick-create-portal.md#create-an-application-gateway), daha önce önekden AYıRMıŞ olduğunuz IP 'yi seçtiğinizden emin olun.|

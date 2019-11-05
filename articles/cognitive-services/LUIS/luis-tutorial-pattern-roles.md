@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Model rolleri-LUSıS'
+title: 'Öğretici: model rolleri-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Desenler, iyi biçimlendirilmiş şablon dıklarından verileri ayıklar. Konuşma şablonu basit bir varlığın yanı sıra kaynak konum ve hedef konum gibi ilgili verileri ayıklamak için roller kullanır.
 ms.custom: seodec18
@@ -9,21 +9,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 13a1589a6cc6ed48f159f361ff69a5a3ba8f0f80
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387634"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499443"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Öğretici: Rolleri kullanarak bağlamsal olarak ile ilgili desenleri Ayıkla
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Öğretici: rolleri kullanarak bağlamsal olarak ile ilgili desenleri Ayıkla
 
 Bu öğreticide iyi biçimlendirilmiş konuşma şablonundan veri ayıklamak için desen kullanacaksınız. Şablon, kaynak konumu ve hedef konum gibi ilgili verileri ayıklamak için [basit bir varlık](luis-concept-entity-types.md#simple-entity) ve [Roller](luis-concept-roles.md) kullanır.  Desen kullandığınızda amaç için daha az sayıda örnek konuşmaya ihtiyacınız vardır.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
@@ -31,10 +32,10 @@ Bu öğreticide iyi biçimlendirilmiş konuşma şablonundan veri ayıklamak iç
 > * Yeni amaç oluşturma
 > * Eğitim
 > * Yayımlama
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 > * Role sahip desen oluşturma
 > * Şehirleri içeren tümcecik listesi oluşturma
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -47,7 +48,7 @@ Yeni çalışanın adı Billy Patterson henüz **Employee** liste varlığının
 
 Yeni çalışanın ve ailesinin bulundukları şehirden hayali bir şirketin bulunduğu başka bir şehre taşınmaları gerekmektedir. Yeni bir çalışan herhangi bir şehirde bulunabileceği için konumların bulunması gerekir. Yalnızca listedeki şehirlerin ayıklanmasına neden olacağından liste varlığı gibi sabit bir liste işe yaramayacaktır.
 
-Kaynak ve hedef şehirlerle ilişkilendirilmiş rol adlarının tüm varlıklarda benzersiz olması gerekir. Rollerin benzersiz olduğundan emin olmanın kolay yollarından biri, adlandırma stratejisi ile içeren varlığa bağlamaktır. **NewEmployeeRelocation** varlığı, iki rolü olan basit bir varlıktır: **NewEmployeeReloOrigin** ve **NewEmployeeReloDestination**. Relo, "relocation" (konum değiştirme) teriminin kısaltmasıdır.
+Kaynak ve hedef şehirlerle ilişkilendirilmiş rol adlarının tüm varlıklarda benzersiz olması gerekir. Rollerin benzersiz olduğundan emin olmanın kolay yollarından biri, adlandırma stratejisi ile içeren varlığa bağlamaktır. **NewEmployeeRelocation** varlığı iki role sahip olan basit bir varlıktır: **NewEmployeeReloOrigin** ve **NewEmployeeReloDestination**. Relo, "relocation" (konum değiştirme) teriminin kısaltmasıdır.
 
 `Move new employee Robert Williams from Sacramento and San Francisco` örnek konuşmasında yalnızca makine öğrenimi varlıkları bulunduğundan varlıkların tespit edilmesi için amaca yeterli sayıda örnek konuşmanın sağlanması önemlidir.  
 
@@ -64,7 +65,7 @@ Aşağıdaki adımları kullanın:
 
 2. JSON'ı yeni bir uygulamaya içeri aktarın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `roles` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `roles` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 ## <a name="create-new-entities"></a>Yeni varlıklar oluşturma
 
@@ -74,11 +75,11 @@ Aşağıdaki adımları kullanın:
 
 3. **Create new entity** (Yeni varlık oluştur) öğesini seçin.
 
-4. Açılan pencereye **Simple** (Basit) varlık olarak `NewEmployee` girin.
+4. Açılan pencereye `NewEmployee`Simple **(Basit) varlık olarak** girin.
 
 5. **Create new entity** (Yeni varlık oluştur) öğesini seçin.
 
-6. Açılan pencereye **Simple** (Basit) varlık olarak `NewEmployeeRelocation` girin.
+6. Açılan pencereye `NewEmployeeRelocation`Simple **(Basit) varlık olarak** girin.
 
 7. Varlık listesinden **NewEmployeeRelocation** öğesini seçin. 
 
@@ -107,7 +108,7 @@ Bu bölümdeki adımlara başlamadan önceden oluşturulmuş keyPhrase varlığ�
     |Move **J. Benson** from **Boston** to **Staines-upon-Thames**|J. Benson|Boston, Staines-upon-Thames|
     |Move **Travis "Trav" Hinton** from **Castelo Branco** to **Orlando**|Travis "Trav" Hinton|Castelo Branco, Orlando|
     |Move **Trevor Nottington III** from **Aranda de Duero** to **Boise**|Trevor Nottington III|Aranda de Duero, Boise|
-    |Move **Dr. Greg Williams** from **Orlando** to **Ellicott City**|Dr. Greg Williams|Orlando, Ellicott City|
+    |**Dr. Greg Williams** 'yi **Orlando** 'dan **Ellicott City** 'e taşıyın|Dr. Greg Williams|Orlando, Ellicott City|
     |Move **Robert "Bobby" Gregson** from **Kansas City** to **San Juan Capistrano**|Robert "Bobby" Gregson|Kansas City, San Juan Capistrano|
     |Move **Patti Owens** from **Bellevue** to **Rockford**|Patti Owens|Bellevue, Rockford|
     |Move **Janet Bartlet** from **Tuscan** to **Santa Fe**|Janet Bartlet|Tuscan, Santa Fe|
@@ -130,7 +131,7 @@ Bu bölümdeki adımlara başlamadan önceden oluşturulmuş keyPhrase varlığ�
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Adres çubuğundaki URL'nin sonuna gidip `Move Wayne Berry from Miami to Mount Vernon` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. 
+2. Adres çubuğundaki URL'nin sonuna gidip `Move Wayne Berry from Miami to Mount Vernon` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. 
 
     ```json
     {
@@ -260,7 +261,7 @@ Kişi adları gibi şehir adları da farklı sözcükler ve noktalama işaretler
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Adres çubuğundaki URL'nin sonuna gidip `Move wayne berry from miami to mount vernon` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. 
+2. Adres çubuğundaki URL'nin sonuna gidip `Move wayne berry from miami to mount vernon` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. 
 
     ```json
     {

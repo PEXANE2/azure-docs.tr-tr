@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555418"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477099"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici günlüklerini sorgulama
 
@@ -36,7 +36,7 @@ Kapsayıcılar için Azure Izleyici tarafından toplanan kayıt örnekleri ve g�
 | Kubernetes kümesinin kapsayıcılar bölümü için performans ölçümleri | Perf &#124; WHERE ObjectName = = "K8SContainer" | CounterName &#40; CpuRequestNanoCores, memoryRequestBytes, CpuLimitNanoCores, memoryWorkingSetBytes, RestartTimeEpoch, Cpuuslationanoçekirdekler, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, dir | 
 | Özel Ölçümler |`InsightsMetrics` | Bilgisayar, ad, ad alanı, Origin, dir, Etiketler<sup>1</sup>, TimeGenerated, Type, VA, _resourceıd | 
 
-<sup>1</sup> *Etiketler* özelliği, karşılık gelen ölçüm için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. @No__t_0 tablosunda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında daha fazla bilgi için bkz. [ınsightsölçümlerini genel bakış](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
+<sup>1</sup> *Etiketler* özelliği, karşılık gelen ölçüm için [birden çok boyutu](../platform/data-platform-metrics.md#multi-dimensional-metrics) temsil eder. `InsightsMetrics` tablosunda toplanan ve depolanan ölçümler ve kayıt özelliklerinin açıklaması hakkında daha fazla bilgi için bkz. [ınsightsölçümlerini genel bakış](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
 
 >[!NOTE]
 >Prometheus desteği şu anda genel önizlemede bir özelliktir.
@@ -46,7 +46,7 @@ Kapsayıcılar için Azure Izleyici tarafından toplanan kayıt örnekleri ve g�
 
 Azure Izleyici günlükleri, geçerli küme yapılandırmasının en iyi şekilde performans yapıp gerçekleştirmediğini belirlemenize yardımcı olabilecek eğilimleri bulmanıza, performans sorunlarını tanılamanıza, tahmin etmenize veya aralarındaki verileri ilişkilendirmenize yardımcı olabilir. Önceden tanımlanmış günlük aramaları, bilgileri istediğiniz şekilde döndürmek için veya ' i hemen kullanmaya başlayabilmeniz için sağlanır.
 
-Önizleme bölmesindeki **Kubernetes olay günlüklerini görüntüle** veya **kapsayıcı günlüklerini görüntüle** seçeneğini belirleyerek çalışma alanındaki etkileşimli veri analizini gerçekleştirebilirsiniz. **Günlük araması** sayfası, üzerinde olduğunuz Azure Portal sayfanın sağında görüntülenir.
+**Analiz bölmesindeki Görünüm** açılır listesinden **Kubernetes olay günlüklerini görüntüle** veya **kapsayıcı günlüklerini görüntüle** seçeneğini belirleyerek çalışma alanındaki verilerin etkileşimli analizini yapabilirsiniz. **Günlük araması** sayfası, üzerinde olduğunuz Azure Portal sayfanın sağında görüntülenir.
 
 ![Log Analytics’te verileri analiz etme](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -65,37 +65,57 @@ Genellikle bir örnekle başlayan sorgular oluşturmak ve sonra gereksinimlerini
 | **Çizgi grafik görüntüleme seçeneğini belirleyin**:<br> Erişen<br> &#124;Burada ObjectName = = "K8SContainer" ve CounterName = = "memoryRssBytes" &#124; , bin (TimeGenerated, 30D), InstanceName | Kapsayıcı belleği |
 | Insightsölçümlerini<br> &#124;Burada Name = = "requests_count"<br> &#124;Değer = Any (Val) ile TimeGenerated = bin (TimeGenerated, 1m)<br> &#124;TimeGenerated ASC 'e göre sırala<br> &#124;Proje RequestsPerMinute = Val-önceki (Val), TimeGenerated <br> &#124;oluşturma bargrafiği  | Özel ölçümler ile dakika başına istek |
 
-Aşağıdaki örnek bir Prometheus ölçümleri sorgusudur. Toplanan ölçümler sayılır ve belirli bir dönemde kaç hatanın oluştuğunu öğrenmek için, sayımız sayısından çıkarıdık. Veri kümesi *Partitionkey*tarafından bölümlenir, her bir benzersiz ad, *ana bilgisayar* *adı*ve *OperationType*kümesi için, bu küme üzerinde günlükleri *TimeGenerated*tarafından sipariş eden bir işlem, bunu mümkün kılan bir işlem olan bir alt sorgu çalıştırdık. bir oranı öğrenmek için, önceki *TimeGenerated* ve bu süre için kaydedilen sayıyı bulun.
+## <a name="query-prometheus-metrics-data"></a>Sorgu Prometheus ölçüm verileri
+
+Aşağıdaki örnek, düğüm başına disk başına saniye başına disk okuma gösteren bir Prometheus ölçüm sorgusudur.
 
 ```
-let data = InsightsMetrics 
-| where Namespace contains 'prometheus' 
-| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
-| extend Tags = todynamic(Tags) 
-| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
-| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
-| partition by partitionKey ( 
-    order by TimeGenerated asc 
-    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
-    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
-    | where isnull(Rate) == false 
-) 
-| project TimeGenerated, Name, HostName, OperationType, Rate; 
-let operationData = data 
-| where Name == 'kubelet_docker_operations' 
-| project-rename OperationCount = Rate; 
-let errorData = data 
-| where Name == 'kubelet_docker_operations_errors' 
-| project-rename ErrorCount = Rate; 
-operationData 
-| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
-| project-away TimeGenerated1, Name1, HostName1, OperationType1 
-| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+InsightsMetrics
+| where Namespace == 'container.azm.ms/diskio'
+| where TimeGenerated > ago(1h)
+| where Name == 'reads'
+| extend Tags = todynamic(Tags)
+| extend HostName = tostring(Tags.hostName), Device = Tags.name
+| extend NodeDisk = strcat(Device, "/", HostName)
+| order by NodeDisk asc, TimeGenerated asc
+| serialize
+| extend PrevVal = iif(prev(NodeDisk) != NodeDisk, 0.0, prev(Val)), PrevTimeGenerated = iif(prev(NodeDisk) != NodeDisk, datetime(null), prev(TimeGenerated))
+| where isnotnull(PrevTimeGenerated) and PrevTimeGenerated != TimeGenerated
+| extend Rate = iif(PrevVal > Val, Val / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1), iif(PrevVal == Val, 0.0, (Val - PrevVal) / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1)))
+| where isnotnull(Rate)
+| project TimeGenerated, NodeDisk, Rate
+| render timechart
+
+```
+
+Azure Izleyici tarafından ad alanına göre filtrelenmiş Prometheus ölçümlerini görüntülemek için "Prometheus" seçeneğini belirtin. İşte `default` Kubernetes ad alanından Prometheus ölçümlerini görüntülemek için örnek bir sorgu.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| extend tags=parse_json(Tags)
+| summarize count() by Name
+```
+
+Prometheus verileri, ad ile doğrudan sorgulanabilir.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| where Name contains "some_prometheus_metric"
+```
+
+### <a name="query-config-or-scraping-errors"></a>Sorgu yapılandırması veya scraping hataları
+
+Herhangi bir yapılandırmayı veya bir hatayı araştırmak için aşağıdaki örnek sorgu `KubeMonAgentEvents` tablosundan bilgilendirici olaylar döndürür.
+
+```
+KubeMonAgentEvents | where Level != "Info" 
 ```
 
 Çıktı aşağıdakine benzer sonuçları gösterir:
 
-![Veri alma biriminin günlük sorgu sonuçları](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+![Bilgi olaylarının aracıdan günlük sorgusu sonuçları](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

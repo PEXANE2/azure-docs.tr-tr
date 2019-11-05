@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 08/07/2019
-ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.date: 11/04/2019
+ms.openlocfilehash: cc98e620194c5bf67d2efa12d61af44d5527bafc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063132"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497485"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
 
@@ -113,6 +113,11 @@ Video tanıma, görüntü tanıma ve öneren sistemleri gibi alanlarda, evsel si
 Aşağıdaki makalelerde [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri)' de derin öğrenme teknolojisinin nasıl kullanılacağı gösterilmektedir:
 
 - [Bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+
 - [Bir TensorFlow tahmin aracı ve keras kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+
 - [Pytorch modeli kullanarak görüntüleri sınıflandırın](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+
 - [Bir Chainer modeli kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+
+Ayrıca, modelinize yönelik algoritmaları seçmek için [Machine Learning algoritması tek yemek sayfasını](../algorithm-cheat-sheet.md) kullanın.

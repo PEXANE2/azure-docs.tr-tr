@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f7cdfb8b9edbce5ef2b094cf6a603904d39a7404
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493586"
 ---
 İşlem hattı, çalışma alanınıza bağlı bir işlem kaynağı olan bir işlem hedefi üzerinde çalışır. Bir işlem hedefi oluşturduktan sonra, gelecekteki çalıştırmalar için onu yeniden kullanabilirsiniz.
 
@@ -25,7 +25,7 @@ ms.locfileid: "72792644"
     Zaten kullanılabilir bir işlem hedefi varsa, bu işlem hattını çalıştırmak için seçin.
 
     > [!NOTE]
-    > Görsel arabirim yalnızca Machine Learning İşlem hedeflerinde denemeleri çalıştırabilir. Diğer işlem hedefleri gösterilmeyecektir.
+    > Tasarımcı yalnızca Machine Learning İşlem hedeflerinde denemeleri çalıştırabilir. Diğer işlem hedefleri gösterilmeyecektir.
 
 1. İşlem kaynağı için bir ad girin.
 

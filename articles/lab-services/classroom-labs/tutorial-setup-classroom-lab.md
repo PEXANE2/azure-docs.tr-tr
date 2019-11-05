@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332255"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483895"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -111,11 +111,11 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
 
     ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/add-schedule-button.png)
-2. **Standart** **olay türünün**seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
-7. **Yinele** bölümünde geçerli zamanlamayı seçin. 
+2. **Standart** **olay türü**olarak seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
+3. **Yinele** bölümünde geçerli zamanlamayı seçin. 
 
     ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/select-current-schedule.png)
-5. **Yinele** iletişim kutusunda, aşağıdaki adımları uygulayın:
+4. Zamanlamayı seçtiğinizde **Yinele** iletişim kutusu açılır. Bu iletişim kutusunda, aşağıdaki adımları uygulayın:
     1. **Yineleme** alanı için **Her haftanın** ayarlandığını onaylayın. 
     3. **Başlangıç tarihini**belirtin.
     4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** belirtin.
@@ -124,10 +124,8 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
     2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Perşembe seçilidir. 
     8. **Kaydet**’i seçin. 
 
-        ![Yineleme zamanlaması ayarla](../media/how-to-create-schedules/set-repeat-schedule.png)
-
-3. Şimdi, **zamanlanan olay Ekle** sayfasında, **notlar için (isteğe bağlı)** , zamanlama için herhangi bir açıklama veya Not girin. 
-4. **Zamanlanmış olay Ekle** sayfasında **Kaydet**' i seçin. 
+5. Şimdi, **zamanlanan olay Ekle** sayfasında, **notlar için (isteğe bağlı)** , zamanlama için herhangi bir açıklama veya Not girin. 
+6. **Zamanlanmış olay Ekle** sayfasında **Kaydet**' i seçin. 
 
     ![Haftalık zamanlama](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
@@ -140,7 +138,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 1. **E-postaya davet gönder** sayfasında, isteğe bağlı bir ileti girin ve ardından **Gönder**' i seçin. E-posta otomatik olarak kayıt bağlantısını içerir. Bu kayıt bağlantısını,... öğesini seçerek alabilirsiniz **. (üç nokta)** araç çubuğunda ve **kayıt bağlantısı**. 
 
     ![Kayıt bağlantısını e-posta ile gönder](../media/tutorial-setup-classroom-lab/send-email.png)
-4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **&lt;date @ no__t-3 tarihinde gönderilmek** **üzere ve sonrasında gönderilmek üzere değiştirilmelidir** . 
+4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **&lt;tarih&gt;** **gönderilmesi ve ardından** gönderilmek üzere değiştirilmelidir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, bir sınıf laboratuvarı oluşturdunuz ve laboratuvarı yapılandırdınız. Bir öğrencinin, kayıt bağlantısını kullanarak laboratuvardaki bir sanal makineye nasıl erişebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:

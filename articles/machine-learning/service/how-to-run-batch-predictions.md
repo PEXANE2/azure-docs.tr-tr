@@ -1,160 +1,157 @@
 ---
-title: İşlem hatları ile büyük veriler üzerinde toplu tahmine dayalı çalıştırma
+title: Büyük miktarlarda veri üzerinde toplu çıkarımı Çalıştır
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning kullanarak büyük miktarlarda veriler üzerinde zaman uyumsuz olarak toplu tahmine dayalı hale getirme hakkında bilgi edinin.
+description: Azure Machine Learning toplu çıkarımı kullanarak büyük miktarlardaki verileri zaman uyumsuz olarak nasıl alabileceğinizi öğrenin. Toplu çıkarım, büyük veri kullanım durumları için, kullanıma hazır olan paralel işleme yetenekleri sağlar ve yüksek aktarım hızı, yangın ve unutma çıkarımı için en iyi duruma getirir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.reviewer: jmartens, garye
-ms.author: jordane
-author: jpe316
-ms.date: 07/12/2019
-ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.topic: tutorial
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracych
+ms.date: 11/04/2019
+ms.custom: Ignite2019
+ms.openlocfilehash: 4390fab3d59706bf692de46d17923dad4f9a8f21
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489611"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları ile büyük veri kümelerinde toplu tahminleri çalıştırma
+# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning kullanarak büyük miktarlarda veri üzerinde toplu çıkarımı çalıştırın
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning ile ML işlem hatlarını kullanarak büyük miktarlarda verileri zaman uyumsuz olarak tahmin etme hakkında bilgi edineceksiniz.
+Bu nasıl yapılır, Azure Machine Learning kullanarak, büyük miktarlarda verileri zaman uyumsuz ve paralel olarak nasıl alabileceğinizi öğrenirsiniz. Burada açıklanan toplu işlem çıkarım özelliği genel önizlemeye sunuldu. Bu, anahtarların ve işlem verilerinin işlenmesi için yüksek performanslı ve yüksek maliyetli bir yoldur. Bu, kutudan zaman uyumsuz yetenekler sağlar.
 
-Toplu işlem Tahmini (veya toplu Puanlama), zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım sağlar. Toplu tahmin işlem hatları, terabaytlarca üretim verilerinde çıkarım gerçekleştirmek üzere ölçeklendirebilir. Toplu tahmin, büyük bir veri koleksiyonu için yüksek aktarım hızı, yangın ve unutma tahminleri için iyileştirilmiştir.
+Batch çıkarımı sayesinde, çevrimdışı ınmalların terabaytlarca üretim verilerinde büyük miktarda makine kümelerine göre daha fazla verimlilik ve optimize edilmiş maliyetle ölçeklendirilmesi basittir.
 
->[!TIP]
-> Sisteminiz düşük gecikmeli işleme gerektiriyorsa (tek bir belgeyi veya küçük bir belge kümesini hızlı bir şekilde işlemek için), toplu tahmin yerine [gerçek zamanlı Puanlama](how-to-consume-web-service.md) kullanın.
+Bu nasıl yapılır bölümünde aşağıdaki görevleri öğrenirsiniz:
 
-Aşağıdaki adımlarda, önceden eğitilen bir bilgisayar Vision modelini ([Inception-v3](https://arxiv.org/abs/1512.00567)) kaydetmek için bir [makine öğrenimi işlem hattı](concept-ml-pipelines.md) oluşturacaksınız. Daha sonra, Azure Blob depolama hesabınızda bulunan görüntülerde toplu Puanlama yapmak için önceden eğitilen modeli kullanın. Puanlama için kullanılan bu görüntüler, [ımagenet](http://image-net.org/) veri kümesinin etiketlendirmede olmayan görüntüleridir.
+> * Uzaktan işlem kaynağı oluşturun.
+> * Özel bir çıkarım betiği yazın.
+> * Bir [makine öğrenme işlem hattı](concept-ml-pipelines.md) [oluşturun ve daha](https://publicdataset.azurewebsites.net/dataDetail/mnist/) önce eğitimli bir görüntü sınıflandırma modelini, veri kümesine göre kaydedin. 
+> * Azure Blob depolama hesabınızda bulunan örnek görüntülerde toplu çıkarımı çalıştırmak için modeli kullanın. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+* Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-- Azure Machine Learning SDK 'Yı yüklemek için geliştirme ortamınızı yapılandırın. Daha fazla bilgi için bkz. [Azure Machine Learning için bir geliştirme ortamı yapılandırma](how-to-configure-environment.md).
+* Bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, kılavuzlu bir hızlı başlangıç için [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun. 
 
-- Tüm işlem hattı kaynaklarınızı tutacak bir Azure Machine Learning çalışma alanı oluşturun. Aşağıdaki kodu kullanabilir veya daha fazla seçenek için bkz. [çalışma alanı yapılandırma dosyası oluşturma](how-to-configure-environment.md#workspace).
-
-  ```python
-  from azureml.core import Workspace
-  ws = Workspace.create(name = '<workspace-name>',
-                        subscription_id = '<subscription-id>',
-                        resource_group = '<resource-group>',
-                        location = '<workspace_region>',
-                        exist_ok = True
-                        )
-  ```
+* Kendi ortamınızı ve bağımlılıklarınızı yönetmek için kendi ortamınızı yapılandırma hakkında [nasıl yapılır Kılavuzu](how-to-configure-environment.md) ' na bakın. Gerekli bağımlılıkları indirmek için ortamınızda `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` çalıştırın.
 
 ## <a name="set-up-machine-learning-resources"></a>Makine öğrenimi kaynaklarını ayarlama
 
-Aşağıdaki adımlar bir işlem hattı çalıştırmak için gereken kaynakları ayarlar:
+Aşağıdaki eylemler bir toplu çıkarım ardışık düzeni çalıştırmak için ihtiyacınız olan kaynakları ayarlar:
 
-- Önceden eğitilen modele, giriş etiketlerine ve puanına sahip olan görüntülere sahip olan veri deposuna erişin (bu zaten sizin için ayarlanmıştır).
-- Çıktılarınızı depolamak için bir veri deposu ayarlayın.
-- Önceki veri depolarındaki verileri göstermek için @ no__t-0 @ no__t-1nesnelerini yapılandırın.
-- Ardışık düzen adımlarının çalışacağı işlem makinelerini veya kümeleri ayarlayın.
+- Çıkarımını görüntülere sahip bir blob kapsayıcısını işaret eden bir veri deposu oluşturun.
+- Toplu çıkarım ardışık düzen adımı için veri başvurularını giriş ve çıkış olarak ayarlayın.
+- Yığın çıkarımı adımını çalıştırmak için bir işlem kümesi ayarlayın.
 
-### <a name="access-the-datastores"></a>Veri depolarına erişin
+### <a name="create-a-datastore-with-sample-images"></a>Örnek görüntülerle bir veri deposu oluşturma
 
-İlk olarak, model, Etiketler ve görüntülerin bulunduğu veri deposuna erişin.
+Ortak blob kapsayıcısından `sampledata`, `pipelinedata`adlı bir hesapta yer alan özel bir değerlendirme kümesini alın. Bu kapsayıcıya işaret eden `mnist_datastore`adlı bir veri deposu oluşturun. `register_azure_blob_container`için aşağıdaki çağrıda `overwrite` bayrağını `True` olarak ayarlamak, daha önce bu adla oluşturulmuş herhangi bir veri deposundaki üzerine yazar. 
 
-Imagenet değerlendirme kümesinden görüntüleri tutan *pipelinedata* hesabında *sampleData*adlı bir genel blob kapsayıcısı kullanın. Bu ortak kapsayıcının veri deposu adı *images_datastore*. Bu veri deposunu çalışma alanınıza kaydedin:
+`datastore_name`, `container_name`ve `account_name`için kendi değerlerinizi sağlayarak bu adımı blob kapsayıcınızı işaret etmek üzere değiştirebilirsiniz.
 
 ```python
 from azureml.core import Datastore
+from azureml.core import Workspace
 
-account_name = "pipelinedata"
-datastore_name = "images_datastore"
-container_name = "sampledata"
+# Load workspace authorization details from config.json
+ws = Workspace.from_config()
 
-batchscore_blob = Datastore.register_azure_blob_container(ws,
-                                                          datastore_name=datastore_name,
-                                                          container_name=container_name,
-                                                          account_name=account_name,
-                                                          overwrite=True)
+mnist_blob = Datastore.register_azure_blob_container(ws, 
+                      datastore_name="mnist_datastore", 
+                      container_name="sampledata", 
+                      account_name="pipelinedata",
+                      overwrite=True)
 ```
 
-Ardından, çıktılar için varsayılan veri deposunu kullanacak şekilde ayarlayın.
+Ardından, çıkış veri deposu olarak çalışma alanı varsayılan veri deposunu belirtin. Çıkarımı çıkışı için kullanacaksınız.
 
-Çalışma alanınızı oluştururken,  ve [BLOB storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)  [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)varsayılan olarak çalışma alanına iliştirilir. Azure dosyaları bir çalışma alanı için varsayılan veri depo, ancak blob depolamayı da bir veri deposu olarak kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage seçenekleri](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Çalışma alanınızı oluşturduğunuzda, [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ve [BLOB depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) varsayılan olarak çalışma alanına eklenir. Azure dosyaları bir çalışma alanı için varsayılan veri depo, ancak blob depolamayı da bir veri deposu olarak kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage seçenekleri](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-references"></a>Veri başvurularını yapılandırma
+### <a name="configure-data-inputs-and-outputs"></a>Veri girişlerini ve çıkışları yapılandırma
 
-Şimdi işlem hattınızdaki verilere işlem hattı adımlarına giriş olarak başvurun.
+Artık aşağıdakiler dahil olmak üzere veri girişlerini ve çıkışları yapılandırmanız gerekir:
 
-Bir işlem hattındaki veri kaynağı bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. @ No__t-0 @ no__t-1nesnesi, bir veri deposu tarafından erişilebilen veya ' de erişilebilir olan verileri işaret eder. Giriş görüntüleri için kullanılan dizin için `DataReference` @ no__t-1objects, önceden eğitilen modelin depolandığı dizin, Etiketler için dizin ve çıkış dizini gerekir.
+- Girdi görüntülerini içeren dizin.
+- Önceden eğitilen modelin depolandığı dizin.
+- Etiketleri içeren dizin.
+- Çıkış dizini.
+
+`Dataset`, Azure Machine Learning verileri keşfetmek, dönüştürmek ve yönetmek için bir sınıftır. Bu sınıfta iki tür vardır: `TabularDataset` ve `FileDataset`. Bu örnekte, Batch çıkarım ardışık düzen adımının girdileri olarak `FileDataset` kullanacaksınız. 
+
+> [!NOTE] 
+> Batch çıkarımı 'nda `FileDataset` desteği şimdilik Azure Blob depolama ile kısıtlıdır. 
+
+Ayrıca, özel çıkarım betiğinizdeki diğer veri kümelerine de başvurabilirsiniz. Örneğin, `Dataset.register` ve `Dataset.get_by_name`kullanarak resimleri etiketlemek için betiğinizdeki etiketlere erişmek üzere kullanabilirsiniz.
+
+Azure Machine Learning veri kümeleri hakkında daha fazla bilgi için bkz. [veri kümeleri oluşturma ve erişim (Önizleme)](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets).
+
+`PipelineData` nesneler, işlem hattı adımları arasında ara verileri aktarmak için kullanılır. Bu örnekte, çıkarım çıktıları için kullanacaksınız.
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core.dataset import Dataset
 
-input_images = DataReference(datastore=batchscore_blob,
-                             data_reference_name="input_images",
-                             path_on_datastore="batchscoring/images",
-                             mode="download")
+mnist_ds_name = 'mnist_sample_data'
 
-model_dir = DataReference(datastore=batchscore_blob,
-                          data_reference_name="input_model",
-                          path_on_datastore="batchscoring/models",
-                          mode="download")
+path_on_datastore = mnist_blob.path('mnist/')
+input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
+named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
 
-label_dir = DataReference(datastore=batchscore_blob,
-                          data_reference_name="input_labels",
-                          path_on_datastore="batchscoring/labels",
-                          mode="download")
-
-output_dir = PipelineData(name="scores",
-                          datastore=def_data_store,
-                          output_path_on_compute="batchscoring/results")
+output_dir = PipelineData(name="inferences", 
+                          datastore=def_data_store, 
+                          output_path_on_compute="mnist/results")
 ```
 
-### <a name="set-up-compute-target"></a>İşlem hedefini ayarla
+### <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 
-Azure Machine Learning, *işlem* (veya *işlem hedefi*), makine öğrenimi ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur. Örneğin, [Amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) sınıfıyla bir Azure Machine Learning işlem oluşturabilirsiniz.
+Azure Machine Learning, *işlem* (veya *işlem hedefi*), makine öğrenimi ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur. CPU tabanlı bir [Amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) hedefi oluşturmak için aşağıdaki kodu çalıştırın.
 
 ```python
-from azureml.core.compute import AmlCompute
-from azureml.core.compute import ComputeTarget
+from azureml.core.compute import AmlCompute, ComputeTarget
+from azureml.core.compute_target import ComputeTargetException
 
-compute_name = "gpucluster"
-compute_min_nodes = 0
-compute_max_nodes = 4
-vm_size = "STANDARD_NC6"
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
+
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
 
 if compute_name in ws.compute_targets:
     compute_target = ws.compute_targets[compute_name]
     if compute_target and type(compute_target) is AmlCompute:
-        print('Found compute target. just use it. ' + compute_name)
+        print('found compute target. just use it. ' + compute_name)
 else:
-    print('Creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(
-        vm_size=vm_size,  # NC6 is GPU-enabled
-        vm_priority='lowpriority',  # optional
-        min_nodes=compute_min_nodes,
-        max_nodes=compute_max_nodes)
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws,
-                                          compute_name,
-                                          provisioning_config)
-
-    compute_target.wait_for_completion(
-        show_output=True,
-        min_node_count=None,
-        timeout_in_minutes=20)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 ## <a name="prepare-the-model"></a>Modeli hazırlama
 
-Önceden eğitilen modeli kullanabilmeniz için modeli indirmeniz ve çalışma alanınıza kaydetmeniz gerekir.
-
-### <a name="download-the-pretrained-model"></a>Önceden eğitilen modeli indirin
-
-@No__t-0 ' dan önceden eğitilen bilgisayar vizyonu modelini (InceptionV3) indirin. Sonra `models` alt klasörüne ayıklayın.
+[Önceden eğitilen görüntü sınıflandırma modelini indirin](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)ve ardından `models` dizinine ayıklayın.
 
 ```python
 import os
@@ -165,197 +162,194 @@ model_dir = 'models'
 if not os.path.isdir(model_dir):
     os.mkdir(model_dir)
 
-url = "http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz"
+url="https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz"
 response = urllib.request.urlretrieve(url, "model.tar.gz")
 tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-### <a name="register-the-model"></a>Modeli Kaydet
-
-Modelin nasıl kaydedileceği aşağıda verilmiştir:
+Ardından, uzak işlem kaynağınız tarafından kullanılabilmesi için modeli çalışma alanınıza kaydedin.
 
 ```python
-import shutil
 from azureml.core.model import Model
 
-# register downloaded model
-model = Model.register(
-    model_path="models/inception_v3.ckpt",
-    model_name="inception",  # This is the name of the registered model
-    tags={'pretrained': "inception"},
-    description="Imagenet trained tensorflow inception",
-    workspace=ws)
+# Register the downloaded model 
+model = Model.register(model_path="models/",
+                       model_name="mnist",
+                       tags={'pretrained': "mnist"},
+                       description="Mnist trained tensorflow model",
+                       workspace=ws)
 ```
 
-## <a name="write-your-scoring-script"></a>Puanlama betiğinizi yazma
+## <a name="write-your-inference-script"></a>Çıkarım betiğinizi yazma
 
 >[!Warning]
->Aşağıdaki kod, [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)tarafından kullanılan [batch_score. Kopyala](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) dosyasında yer alan bir örnektir. Senaryonuz için kendi Puanlama betiğinizi oluşturmanız gerekir.
+>Aşağıdaki kod, [örnek Not defterinin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/notebooks/contrib/batch_inferencing/file-dataset-image-inference-mnist.ipynb) kullandığı bir örnektir. Senaryonuz için kendi komut dosyanızı oluşturmanız gerekir.
 
-@No__t-0 betiği *dataset_path*içinde giriş görüntülerini alır, model_dir 'de önceden eğitilen modeller ve *results-Label. txt* ' *yi* *output_dir*olarak verir.
+Betik iki işlev *içermelidir* :
+- `init()`: Bu işlevi, daha sonraki çıkarım için pahalı veya genel hazırlık için kullanın. Örneğin, modeli genel bir nesneye yüklemek için kullanın.
+-  `run(mini_batch)`: işlev her bir `mini_batch` örneği için çalışacaktır.
+    -  `mini_batch`: Batch çıkarımı Run metodunu çağırır ve bir liste ya da Pandas DataFrame 'i yönteme bağımsız değişken olarak geçiracaktır. Min_batch içindeki her giriş, giriş bir TabularDataset ise, bir dosya yolu, giriş bir dosya veri kümesi ise bir FilePath olur.
+    -  `response`: Run () yöntemi bir Pandas DataFrame veya Array döndürmelidir. Append_row output_action için, döndürülen bu öğeler ortak çıkış dosyasına eklenir. Summary_only için öğelerin içeriği yok sayılır. Tüm çıkış eylemleri için döndürülen her çıkış öğesi, giriş öğesinin girdi mini Batch 'de başarılı bir çıkardığını gösterir. Kullanıcı, girişi çıkarımı ile eşlemek için çıkarım sonucuna yeterli miktarda veri eklendiğinden emin olmalıdır. Çıkarım çıkışı çıkış dosyasında yazılır ve bu sırada olması garanti edilmez, kullanıcının çıktıda bir anahtar kullanması gerekir.
 
 ```python
-# Snippets from a sample scoring script
-# Refer to the accompanying batch-scoring Notebook
-# https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb
-# for the implementation script
+# Snippets from a sample script.
+# Refer to the accompanying digit_identification.py
+# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# for the implementation script.
 
-# Get labels
-def get_class_label_dict(label_file):
-  label = []
-  proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
-  for l in proto_as_ascii_lines:
-    label.append(l.rstrip())
-  return label
+import os
+import numpy as np
+import tensorflow as tf
+from PIL import Image
+from azureml.core import Model
 
-class DataIterator:
-  # Definition of the DataIterator here
 
-def main(_):
-    # Refer to batch-scoring Notebook for implementation.
-    label_file_name = os.path.join(args.label_dir, "labels.txt")
-    label_dict = get_class_label_dict(label_file_name)
-    classes_num = len(label_dict)
-    test_feeder = DataIterator(data_dir=args.dataset_path)
-    total_size = len(test_feeder.labels)
+def init():
+    global g_tf_sess
 
-    # get model from model registry
-    model_path = Model.get_model_path(args.model_name)
-    with tf.Session() as sess:
-        test_images = test_feeder.input_pipeline(batch_size=args.batch_size)
-        with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
-            input_images = tf.placeholder(tf.float32, [args.batch_size, image_size, image_size, num_channel])
-            logits, _ = inception_v3.inception_v3(input_images,
-                                                        num_classes=classes_num,
-                                                        is_training=False)
-            probabilities = tf.argmax(logits, 1)
+    # Pull down the model from the workspace
+    model_path = Model.get_model_path("mnist")
 
-        sess.run(tf.global_variables_initializer())
-        sess.run(tf.local_variables_initializer())
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-        saver = tf.train.Saver()
-        saver.restore(sess, model_path)
-        out_filename = os.path.join(args.output_dir, "result-labels.txt")
+    # Construct a graph to execute
+    tf.reset_default_graph()
+    saver = tf.train.import_meta_graph(os.path.join(model_path, 'mnist-tf.model.meta'))
+    g_tf_sess = tf.Session()
+    saver.restore(g_tf_sess, os.path.join(model_path, 'mnist-tf.model'))
 
-        # copy the file to artifacts
-        shutil.copy(out_filename, "./outputs/")
+
+def run(mini_batch):
+    print(f'run method start: {__file__}, run({mini_batch})')
+    resultList = []
+    in_tensor = g_tf_sess.graph.get_tensor_by_name("network/X:0")
+    output = g_tf_sess.graph.get_tensor_by_name("network/output/MatMul:0")
+
+    for image in mini_batch:
+        # Prepare each image
+        data = Image.open(image)
+        np_im = np.array(data).reshape((1, 784))
+        # Perform inference
+        inference_result = output.eval(feed_dict={in_tensor: np_im}, session=g_tf_sess)
+        # Find the best probability, and add it to the result list
+        best_result = np.argmax(inference_result)
+        resultList.append("{}: {}".format(os.path.basename(image), best_result))
+
+    return resultList
 ```
 
-## <a name="build-and-run-the-batch-scoring-pipeline"></a>Batch Puanlama ardışık düzenini derleyin ve çalıştırın
+## <a name="build-and-run-the-batch-inference-pipeline"></a>Toplu çıkarım ardışık düzeni oluşturma ve çalıştırma
+
+Artık işlem hattını oluşturmak için ihtiyacınız olan her şeye sahipsiniz.
 
 ### <a name="prepare-the-run-environment"></a>Çalıştırma ortamını hazırlama
 
-Betiğinizin Conda bağımlılıklarını belirtin. İşlem hattı adımını oluştururken bu nesneye daha sonra ihtiyacınız olacaktır.
+İlk olarak, betiğinizin bağımlılıklarını belirtin. Bu nesneyi daha sonra işlem hattı adımını oluştururken kullanırsınız.
 
 ```python
-from azureml.core.runconfig import DEFAULT_GPU_IMAGE
-from azureml.core.runconfig import RunConfiguration
+from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(
-    pip_packages=["tensorflow-gpu==1.10.0", "azureml-defaults"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
 
-# Runconfig
-amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
-amlcompute_run_config.environment.docker.enabled = True
-amlcompute_run_config.environment.docker.gpu_support = True
-amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
-amlcompute_run_config.environment.spark.precache_packages = False
+batch_env = Environment(name="batch_environment")
+batch_env.python.conda_dependencies = batch_conda_deps
+batch_env.docker.enabled = True
+batch_env.docker.base_image = DEFAULT_CPU_IMAGE
+batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameter-for-your-pipeline"></a>İşlem hatlarınızın parametresini belirtin
+### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Toplu çıkarım ardışık düzen adımınızda parametreleri belirtin
 
-Varsayılan değere sahip bir [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) nesnesi kullanarak bir işlem hattı parametresi oluşturun.
+`ParallelRunConfig`, Azure Machine Learning işlem hattının içindeki yeni tanıtılan toplu iş çıkarımı `ParallelRunStep` örneğinin ana yapılandırmadır. Komut dosyanızı kaydırmak ve aşağıdakiler dahil olmak üzere gerekli parametreleri yapılandırmak için kullanın:
+- `entry_script`: bir Kullanıcı betiği, birden çok düğümde paralel olarak çalıştırılacak yerel dosya yolu olarak. `source_directly` varsa, göreli bir yol kullanın. Aksi takdirde, makinede erişilebilen herhangi bir yolu kullanın.
+- `mini_batch_size`: tek bir `run()` çağrısına geçirilen mini toplu iş boyutu. (İsteğe bağlı; varsayılan değer `1`.)
+    - `FileDataset`için, en az `1`değeri olan dosya sayısıdır. Birden çok dosyayı tek bir mini toplu işte birleştirebilirsiniz.
+    - `TabularDataset`, verilerin boyutudur. Örnek değerler `1024`, `1024KB`, `10MB`ve `1GB`. Önerilen değer `1MB`. `TabularDataset` 'den mini toplu işin hiçbir yere dosya sınırları hiçbir şekilde kesileceğini unutmayın. Örneğin, çeşitli boyutlarda. csv dosyalarınız varsa en küçük dosya 100 KB 'tır ve en büyük değer 10 MB 'tır. `mini_batch_size = 1MB`ayarlarsanız, boyutu 1 MB 'tan küçük olan dosyalar bir mini toplu işlem olarak kabul edilir. Boyutu 1 MB 'tan büyük olan dosyalar birden çok mini toplu iş içine bölünür.
+- `error_threshold`: işleme sırasında yoksayılması gereken `FileDataset` için `TabularDataset` ve dosya hatalarıyla ilgili kayıt hatalarının sayısı. Tüm girdinin hata sayısı bu değerin üzerine gittiğinde, iş durdurulur. Hata eşiği, `run()` yöntemine gönderilen tek bir mini toplu iş için değil, tüm giriş içindir. Aralık `[-1, int.max]`. `-1` bölümü, işleme sırasındaki tüm hataların yok saydığını gösterir.
+- `output_action`: aşağıdaki değerlerden biri çıktının nasıl düzenleneceğini gösterir:
+    - `summary_only`: Kullanıcı betiği çıktıyı depolayacaktır. `ParallelRunStep` yalnızca hata eşiği hesaplaması için çıktıyı kullanacaktır.
+    - `append_row`: tüm giriş dosyaları Için, Line ile ayrılmış tüm çıktıları eklemek için çıkış klasöründe yalnızca bir dosya oluşturulur. Dosya adı parallel_run_step. txt olacaktır.
+- `source_directory`: işlem hedefinde yürütülecek tüm dosyaları içeren klasörlere yollar (isteğe bağlı).
+- `compute_target`: yalnızca `AmlCompute` desteklenir.
+- `node_count`: Kullanıcı betiğini çalıştırmak için kullanılacak işlem düğümlerinin sayısı.
+- `process_count_per_node`: düğüm başına işlem sayısı.
+- `environment`: Python ortam tanımı. Bunu mevcut bir Python ortamını kullanacak şekilde yapılandırabilir veya deneme için geçici bir ortam ayarlayabilirsiniz. Tanım ayrıca gerekli uygulama bağımlılıklarını ayarlamaktan de sorumludur (isteğe bağlı).
+- `logging_level`: günlük ayrıntı düzeyi. Artan ayrıntı değerleri: `WARNING`, `INFO`ve `DEBUG`. Varsayılan değer `INFO` (isteğe bağlı).
+- `run_invocation_timeout`: saniye cinsinden `run()` yöntemi çağırma zaman aşımı. Varsayılan değer `60` ' dır.
 
 ```python
-from azureml.pipeline.core.graph import PipelineParameter
-batch_size_param = PipelineParameter(
-    name="param_batch_size",
-    default_value=20)
+from azureml.contrib.pipeline.steps import ParallelRunConfig
+
+parallel_run_config = ParallelRunConfig(
+    source_directory=scripts_folder,
+    entry_script="digit_identification.py",
+    mini_batch_size="5",
+    error_threshold=10,
+    output_action="append_row",
+    environment=batch_env,
+    compute_target=compute_target,
+    node_count=4)
 ```
 
 ### <a name="create-the-pipeline-step"></a>İşlem hattı adımını oluşturma
 
-Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Komut dosyasının yürütme hedefi olarak çalışma alanınıza zaten iliştirtiğiniz işlem hedefini belirtin. İşlem hattı adımını oluşturmak için [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) kullanın.
+Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Komut dosyası için yürütme hedefi olarak çalışma alanınıza zaten iliştirtiğiniz işlem hedefini belirtin. Aşağıdaki parametreleri alan toplu çıkarım ardışık düzen adımını oluşturmak için `ParallelRunStep` kullanın:
+- `name`: adım adı, şu adlandırma kısıtlamalarına sahip: benzersiz, 3-32 karakter ve Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
+- `models`: Azure Machine Learning modeli kayıt defterinde sıfır veya daha fazla model adı zaten kaydedilmiş.
+- `parallel_run_config`: daha önce tanımlanan bir `ParallelRunConfig` nesnesi.
+- `inputs`: bir veya daha fazla tek tür Azure Machine Learning veri kümesi.
+- `output`: çıkış dizinine karşılık gelen bir `PipelineData` nesnesi.
+- `arguments`: Kullanıcı betiğine geçirilen bağımsız değişkenlerin listesi (isteğe bağlı).
+- `allow_reuse`: aynı ayarlarla/girişlerle çalıştırıldığında, adımın önceki sonuçları yeniden kullanıp kullanmayacağını belirtir. Bu parametre `False`, işlem hattı yürütmesi sırasında bu adım için her zaman yeni bir çalıştırma oluşturulacaktır. (İsteğe bağlı; varsayılan değer `True`.)
 
 ```python
-from azureml.pipeline.steps import PythonScriptStep
-inception_model_name = "inception_v3.ckpt"
+from azureml.contrib.pipeline.steps import ParallelRunStep
 
-batch_score_step = PythonScriptStep(
-    name="batch_scoring",
-    script_name="batch_score.py",
-    arguments=["--dataset_path", input_images,
-               "--model_name", "inception",
-               "--label_dir", label_dir,
-               "--output_dir", output_dir,
-               "--batch_size", batch_size_param],
-    compute_target=compute_target,
-    inputs=[input_images, label_dir],
-    outputs=[output_dir],
-    runconfig=amlcompute_run_config,
-    source_directory=scripts_folder
+parallelrun_step = ParallelRunStep(
+    name="batch-mnist",
+    models=[model],
+    parallel_run_config=parallel_run_config,
+    inputs=[named_mnist_ds],
+    output=output_dir,
+    arguments=[],
+    allow_reuse=True
+)
 ```
 
 ### <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-Şimdi işlem hattını çalıştırın ve ürettiği çıktıyı inceleyin. Çıktıda her giriş görüntüsüne karşılık gelen bir puan bulunur.
+Şimdi işlem hattını çalıştırın. İlk olarak, çalışma alanı başvurusunu ve oluşturduğunuz işlem hattı adımını kullanarak bir `Pipeline` nesnesi oluşturun. `steps` parametresi bir adım dizisidir. Bu durumda, toplu Puanlama için yalnızca bir adım vardır. Birden çok adım içeren işlem hatları oluşturmak için, adımları Bu dizide sırayla yerleştirin.
+
+Sonra, işlem hattını yürütmeye göndermek için `Experiment.submit()` işlevini kullanın.
 
 ```python
-import pandas as pd
 from azureml.pipeline.core import Pipeline
+from azureml.core.experiment import Experiment
 
-# Run the pipeline
-pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(
-    pipeline, pipeline_params={"param_batch_size": 20})
+pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
+pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+```
 
-# Wait for the run to finish (this might take several minutes)
+## <a name="monitor-the-batch-inference-job"></a>Toplu çıkarım işini izleme
+
+Bir toplu çıkarım işinin tamamlanması uzun zaman alabilir. Bu örnek, bir Jupyıter pencere öğesi kullanarak ilerlemeyi izler. Ayrıca şunları kullanarak işin ilerlemesini yönetebilirsiniz:
+
+* Azure Machine Learning Studio. 
+* [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) nesnesinden konsol çıktısı.
+
+```python
+from azureml.widgets import RunDetails
+RunDetails(pipeline_run).show()
+
 pipeline_run.wait_for_completion(show_output=True)
-
-# Download and review the output
-step_run = list(pipeline_run.get_children())[0]
-step_run.download_file("./outputs/result-labels.txt")
-
-df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
-df.columns = ["Filename", "Prediction"]
-df.head()
-```
-
-## <a name="publish-the-pipeline"></a>İşlem hattını yayımlama
-
-Çalıştırmanın sonucuna memnun olduktan sonra, işlem hattını yayımlayın, böylece daha sonra farklı giriş değerleriyle çalıştırabilirsiniz. Bir işlem hattı yayımladığınızda, bir REST uç noktası alırsınız. Bu uç nokta, [Pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)kullanarak zaten dahil ettiğiniz parametrelerin kümesiyle işlem hattının çağrılması kabul eder.
-
-```python
-published_pipeline = pipeline_run.publish_pipeline(
-    name="Inception_v3_scoring",
-    description="Batch scoring using Inception v3 model",
-    version="1.0")
-```
-
-## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>REST uç noktasını kullanarak işlem hattını yeniden çalıştırma
-
-İşlem hattını yeniden çalıştırmak için, [Azurecliauthentication sınıfında](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)açıklandığı gibi Azure Active Directory bir kimlik doğrulama üst bilgisi belirtecine ihtiyacınız olacaktır.
-
-```python
-from azureml.pipeline.core.run import PipelineRun
-from azureml.pipeline.core import PublishedPipeline
-
-rest_endpoint = published_pipeline.endpoint
-# specify batch size when running the pipeline
-response = requests.post(rest_endpoint,
-                         headers=aad_token,
-                         json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
-
-# Monitor the run
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
-
-RunDetails(published_pipeline_run).show()
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu çalışmayı uçtan uca görmek için, [GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)'da Batch Puanlama Not defterini deneyin veya örnek bir çözüm mimarisini görmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/ai/batch-scoring-python) 'ne gidin.
+Bu işlemin sona erdirmek için, [toplu çıkarım Not defterini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/)deneyin. 
+
+İşlem hatları için hata ayıklama ve sorun giderme kılavuzu için bkz. [nasıl yapılır Kılavuzu](how-to-debug-pipelines.md).
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+

@@ -1,5 +1,5 @@
 ---
-title: ODBC sürücüsü ve PowerShell ile sorgu Apache Hive-Azure HDInsight
+title: ODBC sürücüsü ile sorgu Apache Hive & PowerShell-Azure HDInsight
 description: Azure HDInsight 'ta Apache Hive kümelerini sorgulamak için Microsoft Hive ODBC sürücüsünü ve PowerShell 'i kullanın.
 keywords: Hive, Hive ODBC, PowerShell
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 4ec580c3d4c30fa4d86c24defb7eaded464dea3b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177323"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494327"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Öğretici: ODBC ve PowerShell ile Apache Hive sorgulama
 

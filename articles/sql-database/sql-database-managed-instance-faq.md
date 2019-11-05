@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710160"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496291"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -58,7 +58,7 @@ Yönetilen örnek, *Database.Windows.net*ile biten bir ada sahip olmalıdır. Va
 
 Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
 
-Yönetilen örnek SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan, yerel @no__t-yönetilen örnekten alınan yedeklemeler SQL Server geri yüklenemez.
+Yönetilen örnekten alınan yerel `COPY_ONLY` yedeklemeleri, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez.
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Örnek veritabanımı tek bir Azure SQL veritabanına nasıl geçirebilirim?
 
@@ -179,7 +179,7 @@ Veri yükleme, zorunlu tam kurtarma modeli ve işlem günlüğü yazma aktarım 
 Evet, yönetilen örneğe geri yükleyebilmek için veritabanınızın şifresini çözmeniz gerekmez. Şifrelenmiş yedekleme dosyasından veri okuyabilmeniz için, yönetilen örneğe kaynak sistemde şifreleme anahtarı koruyucusu olarak kullanılan bir sertifika/anahtar sağlamanız gerekir. Bunu yapmak için iki olası yol vardır:
 
 - *Yönetilen örneğe sertifika koruyucuyu yükleyin*. Yalnızca PowerShell kullanılarak yapılabilir. [Örnek betik](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) , tüm süreci açıklar.
-- *Asimetrik anahtar koruyucuyu Azure Key Vault (AKV) ve işaret ile yönetilen örneğe yükleyin*. Bu yaklaşım, şifreleme anahtarını depolamak için aynı zamanda AKV tümleştirmesini kullanan, kendi anahtarını getir (BYOK) TDE kullanım örneğine benzer. Anahtarı şifreleme anahtar koruyucusu olarak kullanmak istemiyorsanız ve yalnızca anahtarı yönetilen örneğin şifrelenmiş veritabanlarını geri yüklemek için kullanılabilir hale getirmek istiyorsanız, [BYOK TDE ayarlama](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)yönergelerini izleyin ve onay kutusunu *Seçili anahtarı oluştur onay kutusunu işaretlemeyin Varsayılan TDE koruyucusu*.
+- *Asimetrik anahtar koruyucuyu Azure Key Vault (AKV) ve işaret ile yönetilen örneğe yükleyin*. Bu yaklaşım, şifreleme anahtarını depolamak için aynı zamanda AKV tümleştirmesini kullanan, kendi anahtarını getir (BYOK) TDE kullanım örneğine benzer. Anahtarı şifreleme anahtar koruyucusu olarak kullanmak istemiyorsanız ve yalnızca anahtarı yönetilen örneğin şifrelenmiş veritabanlarını geri yüklemek için kullanılabilir hale getirmek istiyorsanız, [BYOK TDE ayarlama](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)yönergelerini izleyin ve onay kutusunu *Seçili anahtarı oluştur onay kutusunu işaretlemeyin Varsayılan TDE koruyucusu*.
 
 Şifreleme koruyucusunu yönetilen örnek için kullanılabilir hale getirildikten sonra, standart veritabanı geri yükleme yordamıyla devam edebilirsiniz.
 

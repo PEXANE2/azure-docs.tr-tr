@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 258e547c58016cb449c74b058d02f2a2e4d7d683
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04dd7cb55f9a6d4ceb722606f0eb90792413e414
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471762"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure’da ASP.NET Framework web uygulaması oluşturma
 
@@ -74,7 +74,7 @@ Aşağıdaki adımları izleyerek bir ASP.NET Web uygulaması oluşturun:
    >
    >
 
-   ![Azure'da oturum açın](./media/app-service-web-get-started-dotnet-framework/sign-in-azure-framework-vs2019.png)
+   ![Azure'da oturum açma](./media/app-service-web-get-started-dotnet-framework/sign-in-azure-framework-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
@@ -131,9 +131,11 @@ Yayımlama tamamlandığında Visual Studio, web uygulamasının URL’si ile bi
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-1. Web uygulamasını yönetmek için <a href="https://portal.azure.com" target="_blank">Azure portalına</a> gidin.
+1. Web uygulamasını yönetmek için [Azure Portal](https://portal.azure.com)gidin ve **uygulama hizmetleri**' ni arayıp seçin.
 
-2. Sol menüden **uygulama hizmetleri**' ni seçin ve ardından Azure uygulamanızın adını seçin.
+   ![Uygulama hizmetlerini seçin](./media/app-service-web-get-started-dotnet-framework/app-services.png)
+
+2. **Uygulama hizmetleri** sayfasında, Web uygulamanızın adını seçin.
 
    ![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 

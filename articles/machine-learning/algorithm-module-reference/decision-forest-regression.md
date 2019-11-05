@@ -1,28 +1,28 @@
 ---
 title: 'Karar ormanı gerileme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak için Azure Machine Learning hizmetinde karar ormanı gerileme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak için Azure Machine Learning karar ormanı gerileme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693182"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497966"
 ---
 # <a name="decision-forest-regression-module"></a>Karar ormanı gerileme modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Karar ağaçlarının bir listesini temel alan bir regresyon modeli oluşturmak için bu modülü kullanın.
 
-Modeli yapılandırdıktan sonra, etiketli bir veri kümesi ve [model eğitimi](./train-model.md) modülünü kullanarak modeli eğmeniz gerekir.  Daha sonra eğitilen model, tahminleri yapmak için kullanılabilir. 
+Modeli yapılandırdıktan sonra, etiketli bir veri kümesi ve [model eğitimi](./train-model.md) modülünü kullanarak modeli eğmeniz gerekir. Daha sonra eğitilen model, tahminleri yapmak için kullanılabilir. 
 
 ## <a name="how-it-works"></a>Nasıl çalışır
 
@@ -42,11 +42,11 @@ Bu algoritmanın ve uygulamanın teorik çerçevesi hakkında daha fazla bilgi i
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Karar ormanı regresyon modelini yapılandırma
 
-1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. Modülün **Machine Learning**, **modeli Başlat**ve **gerileme**altındaki arabirimde bulabilirsiniz.
+1. **Karar verme ormanı gerileme** modülünü ardışık düzene ekleyin. **Machine Learning**, **modeli Başlat**ve **gerileme**' nın altında, modülü tasarımcıda bulabilirsiniz.
 
 2. Modül özelliklerini açın ve yeniden **örnekleme yöntemi**için, bireysel ağaçları oluşturmak için kullanılan yöntemi seçin.  **Bagging** veya **çoğaltma**seçeneklerinden birini belirleyebilirsiniz.
 
-    - **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm Gaussians birleştirilerek verilen Gaussians 'in karışımındaki süre ile eşleşen bir Gauss bulmadır.
+    - **Bagging**: Bagging de *önyükleme toplama*olarak adlandırılır. Regresyon kararı ormanındaki her ağaç, tahmin yöntemiyle bir Gauss dağılımı çıkarır. Toplama işlemi, her iki dakika, tek tek ağaçlar tarafından döndürülen tüm dağıtımları birleştirerek verilen Gauss dağıtımlarından oluşan bir süre ile eşleşen bir Gauss bulmadır.
 
          Daha fazla bilgi için bkz. [önyükleme toplama](https://wikipedia.org/wiki/Bootstrap_aggregating)Için Vikipedi girişi.
 
@@ -96,4 +96,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

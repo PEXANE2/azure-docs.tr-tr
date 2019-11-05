@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Yaklaşım Analizi-LUSıS'
+title: 'Öğretici: yaklaşım Analizi-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, dıklardan olumlu, olumsuz ve nötr yaklaşımı nasıl alacağınızı gösteren bir uygulama oluşturun. Yaklaşım konuşmanın tamamından belirlenir.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 07afd197e514adb0f2fc65c11e9fec552aa05b99
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307583"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492661"
 ---
-# <a name="tutorial--get-sentiment-of-utterance"></a>Öğretici:  Söylenişi 'in duygunluyararlanın
+# <a name="tutorial--get-sentiment-of-utterance"></a>Öğretici: söylenişi 'in duygu kazanın
 
 Bu öğreticide, senslerden olumlu, olumsuz ve nötr yaklaşımı belirlemeyi gösteren bir uygulama oluşturun. Yaklaşım konuşmanın tamamından belirlenir.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -93,7 +95,7 @@ Yayımlama ayarı olduğu için amaçlar veya varlıklar sayfalarında görmezsi
 
     **Görünüm seçeneklerini**belirleyin, adları görmek için **varlık değerlerini göster** ' i seçin.
 
-    [![EmployeeFeedback amacına örnek olarak yağar uygulamasının ekran görüntüsü](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [EmployeeFeedback amacına örnek olarak YAĞıN uygulamasının ekran görüntüsünü ![](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme 
 
@@ -109,7 +111,7 @@ Yayımlama ayarı olduğu için amaçlar veya varlıklar sayfalarında görmezsi
 
 1. **Kullanıcının utterinin pozitif, negatif veya nötr olduğunu belirlemek için yaklaşım analizini kullan** ' ı seçin. Bu ayarı etkinleştirmek için. 
 
-    ![Yayımlama ayarı olarak üzerinde yaklaşım analizi Aç](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![Yayımlama ayarı olarak Yaklaşım Analizi aç](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Eğitilen modelin uç noktadan sorgulanabilir olması için uygulamayı yayımlayın
 
@@ -123,7 +125,7 @@ Yayımlama ayarı olduğu için amaçlar veya varlıklar sayfalarında görmezsi
 
     `Jill Jones work with the media team on the public portal was amazing` 
 
-    Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `EmployeeFeedback` amacını yaklaşım analizi ayıklanmış şekilde döndürmelidir.
+    Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `EmployeeFeedback` amacını yaklaşım analizi ayıklanmış şekilde döndürmelidir.
     
     ```json
     {
@@ -157,9 +159,9 @@ Yayımlama ayarı olduğu için amaçlar veya varlıklar sayfalarında görmezsi
     }
     ```
 
-    SentimentAnalysis% 86 puanı ile pozitif bir değer. 
+    SentimentAnalysis %86 puanı ile pozitif bir değer. 
 
-    Tarayıcının adres çubuğunda öğesinin değerini `q` kaldırarak başka bir deneyimlik deneyin: `William Jones did a terrible job presenting his ideas.`Yaklaşım puanı, düşük puan `0.18597582`döndürerek negatif bir yaklaşım gösterir.
+    Tarayıcının adres çubuğunda `q` değerini kaldırarak başka bir yaklaşım deneyin: `William Jones did a terrible job presenting his ideas.` yaklaşım puanı, düşük puan `0.18597582`döndürerek negatif bir yaklaşım gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

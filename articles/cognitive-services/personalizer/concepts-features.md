@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756100"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490771"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -25,8 +25,8 @@ Kişiselleştirici, en iyi **eylemi**seçmek için **geçerli bağlamla** ilgili
 
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
-* @No__t_1 gibi _Kullanıcı_ . Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
-* Bir video `Documentary`, bir `Movie` veya `TV Series` ya da bir perakende öğesinin mağazada kullanılabilir olup olmadığı gibi _içerikler_ .
+* `Sports_Shopper`gibi _Kullanıcı_ . Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
+* Bir video `Documentary`, bir `Movie`veya `TV Series`ya da bir perakende öğesinin mağazada kullanılabilir olup olmadığı gibi _içerikler_ .
 * Haftanın günün saati gibi _geçerli_ süre.
 
 Kişiselleştirici, Eylemler ve bağlam için göndereceğiniz özellikleri etkilemez, sınırlamaz veya düzelmez:
@@ -61,7 +61,7 @@ Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda ver
 * http_user_agent
 * VideoResolution
 * Userdeviceınfo
-* Gü
+* Hava durumu
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,10 @@ Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda ver
 Özellik ad alanlarını, geçerli JSON anahtarları oldukları sürece kendi kurallarınızı izleyerek adlandırın. Ad alanları, özellikleri farklı kümeler halinde düzenlemek ve benzer adlarla özellikleri ortadan kaldırmak için kullanılır. Ad alanlarını, özellik adlarına eklenen bir ' önek ' olarak düşünebilirsiniz. Ad alanları iç içe olamaz.
 
 
-Aşağıdaki JSON 'da, `user`, `state` ve `device` Özellik ad uzaylardır. Genel Önizleme notunun: Şu anda UTF-8 tabanlı özellik ad alanları için adların kullanılması ve farklı harfler ile başlaması önemle önerilir. Örneğin, `user`, `state` ve `device` `u`, `s` ve `d` ile başlayın. Şu anda aynı ilk karakterlerle ad alanları olması makine öğreniminde kullanılan dizinlerde çakışmaları ortaya çıkmasına neden olabilir.
+Aşağıdaki JSON 'da, `user`, `state`ve `device` Özellik ad uzaylardır. 
+
+> [!Note]
+> Şu anda UTF-8 tabanlı özellik ad alanları için adların kullanılması ve farklı harfler ile başlaması önemle önerilir. Örneğin, `user`, `state`ve `device` `u`, `s`ve `d`ile başlayın. Şu anda aynı ilk karakterlerle ad alanları olması makine öğreniminde kullanılan dizinlerde çakışmaları ortaya çıkmasına neden olabilir.
 
 JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri içerebilir. Bir dizi yalnızca dizi öğeleri sayı ise dahil edilebilir. 
 
@@ -140,7 +143,7 @@ Yapay zeka ve çalıştırmaya hazırlanma bilişsel hizmetler, Kişiselleştiri
 
 Yapay zeka hizmetlerini kullanarak öğelerinizi ön işlemden yararlanarak, kişiselleştirmeyle ilgili olabilecek olası bilgileri otomatik olarak ayıklayabilirsiniz.
 
-Örnek:
+Örneğin:
 
 * Sahne öğelerini, metni, yaklaşımı ve diğer birçok özniteliği ayıklamak için [video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) aracılığıyla bir film dosyası çalıştırabilirsiniz. Bu öznitelikler daha sonra, özgün öğe meta verilerinde bulunmayan özellikleri yansıtacak şekilde daha yoğun hale getirilebilir. 
 * Görüntüler, nesne algılama, yaklaşım, yüz ve benzeri işlemler aracılığıyla çalıştırılabilir.

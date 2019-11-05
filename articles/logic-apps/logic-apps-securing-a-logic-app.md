@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045065"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499916"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps 'da güvenli erişim ve veriler
 
@@ -83,7 +83,7 @@ Diğer kişilerle istek tabanlı bir tetikleyici için uç nokta URL 'SI paylaş
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-Gövdesinde, JSON tarih dizesi kullanarak `NotAfter`özelliğini ekleyin. Bu özellik yalnızca `NotAfter` Tarih ve saatine kadar geçerli olan bir geri çağırma URL 'SI döndürür.
+Gövdesinde, bir JSON tarih dizesi kullanarak `NotAfter`özelliğini ekleyin. Bu özellik yalnızca `NotAfter` tarih ve saate kadar geçerli olan bir geri çağırma URL 'SI döndürür.
 
 <a name="primary-secondary-key"></a>
 
@@ -95,7 +95,7 @@ Gövdesinde, JSON tarih dizesi kullanarak `NotAfter`özelliğini ekleyin. Bu öz
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-Gövdede `KeyType` özelliğini `Primary` veya `Secondary` olarak ekleyin. Bu özellik, belirtilen güvenli anahtar tarafından imzalanmış bir URL döndürür.
+Gövdede `KeyType` özelliğini `Primary` veya `Secondary`olarak ekleyin. Bu özellik, belirtilen güvenli anahtar tarafından imzalanmış bir URL döndürür.
 
 <a name="restrict-inbound-ip"></a>
 
@@ -109,7 +109,7 @@ Paylaşılan erişim Imzası (SAS) ile birlikte, mantıksal uygulamanızı çağ
 
 1. Mantıksal uygulamanızın menüsünde, **Ayarlar**' ın altında, **iş akışı ayarları**' nı seçin.
 
-1. **Erişim denetimi yapılandırması** > **ızın verilen gelen IP adresleri**altında, **belirli IP aralıklarını**seçin.
+1. **Erişim denetimi yapılandırması** **ızın verilen gelen IP adreslerine** > , **belirli IP aralıklarını**seçin.
 
 1. **Tetikleyiciler Için IP aralıkları**altında, tetikleyicinin kabul ettiği IP adresi aralıklarını belirtin.
 
@@ -201,7 +201,7 @@ Mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara e
 
 ### <a name="restrict-access-by-ip-address-range"></a>IP adresi aralığına göre erişimi kısıtla
 
-Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görüntülemesi için mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara erişimi sınırlayabilirsiniz. Örneğin, herhangi bir kişinin girişlere ve çıkışlara erişmesini engellemek için `0.0.0.0-0.0.0.0` gibi bir IP adresi aralığı belirtin. Yalnızca yönetici izinlerine sahip bir kişi, mantıksal uygulamanızın verilerine "tam zamanında" erişim olanağı sunan bu kısıtlamayı kaldırabilir. Azure portal veya mantıksal uygulama dağıtımı için kullandığınız bir Azure Resource Manager şablonunda kısıtlamak için IP aralıklarını belirtebilirsiniz.
+Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görüntülemesi için mantıksal uygulamanızın çalıştırma geçmişinde giriş ve çıkışlara erişimi sınırlayabilirsiniz. Örneğin, herhangi bir kişinin girişlere ve çıkışlara erişmesini engellemek için `0.0.0.0-0.0.0.0`gibi bir IP adresi aralığı belirtin. Yalnızca yönetici izinlerine sahip bir kişi, mantıksal uygulamanızın verilerine "tam zamanında" erişim olanağı sunan bu kısıtlamayı kaldırabilir. Azure portal veya mantıksal uygulama dağıtımı için kullandığınız bir Azure Resource Manager şablonunda kısıtlamak için IP aralıklarını belirtebilirsiniz.
 
 #### <a name="restrict-ip-ranges-in-azure-portal"></a>Azure portal IP aralıklarını kısıtla
 
@@ -209,7 +209,7 @@ Yalnızca belirli IP adresi aralıklarından gelen isteklerin bu verileri görü
 
 1. Mantıksal uygulamanızın menüsünde, **Ayarlar**' ın altında, **iş akışı ayarları**' nı seçin.
 
-1. **Erişim denetimi yapılandırması** > **ızın verilen gelen IP adresleri**altında, **belirli IP aralıklarını**seçin.
+1. **Erişim denetimi yapılandırması** **ızın verilen gelen IP adreslerine** > , **belirli IP aralıklarını**seçin.
 
 1. İçerik **Için IP aralıkları**altında girişler ve çıkışlardan IÇERIĞE erişebilen IP adresi aralıklarını belirtin. 
 
@@ -298,10 +298,10 @@ Birçok tetikleyici ve eylemin, girdileri, çıkışları veya her ikisini de ma
 
 #### <a name="secure-inputs-and-outputs-in-code-view"></a>Kod görünümünde güvenli girişler ve çıktılar
 
-Temel tetikleyici veya eylem tanımında, `runtimeConfiguration.secureData.properties` diziyi bu değerlerden birini veya her ikisini de ekleyin veya güncelleştirin:
+Temel tetikleyici veya eylem tanımında, `runtimeConfiguration.secureData.properties` diziyi bu değerlerden birini ya da her ikisini de ekleyin veya güncelleştirin:
 
 * `"inputs"`: çalıştırma geçmişindeki girişlerin güvenliğini sağlar.
-* `"outputs"`: çalışma geçmişinde çıkışları güvenli bir şekilde korur.
+* `"outputs"`: çalıştırma geçmişindeki çıkışların güvenliğini sağlar.
 
 Bu verileri güvenli hale getirmek için bu ayarları kullandığınızda [göz önünde bulundurmanız gereken bazı noktalar](#obfuscation-considerations) aşağıda verilmiştir.
 
@@ -430,11 +430,11 @@ Mantıksal uygulamanızın iş akışı tanımındaki hassas bilgileri korumak i
 
 Mantıksal uygulama için bir [Kaynak Yöneticisi şablonu](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) birden çok `parameters` bölümüne sahiptir. Parolaları, anahtarları, sırları ve diğer hassas bilgileri korumak için, `securestring` veya `secureobject` türünü kullanarak şablon düzeyinde ve iş akışı tanımı düzeyinde güvenli parametreleri tanımlayın. Daha sonra bu değerleri [Azure Key Vault](../key-vault/key-vault-overview.md) saklayabilir ve anahtar kasası ve gizli dizi için [parametre dosyasını](../azure-resource-manager/resource-manager-parameter-files.md) kullanabilirsiniz. Şablonunuz daha sonra bu bilgileri dağıtımda alır. Daha fazla bilgi için bkz. [Azure Key Vault kullanarak dağıtımda gizli değerleri geçirme](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-Bu `parameters` bölümleri hakkında daha fazla bilgi aşağıdadır:
+Bu `parameters` bölümler hakkında daha fazla bilgi aşağıda verilmiştir:
 
-* Şablonun en üst düzeyinde `parameters` bölümü, şablonun *dağıtımda*kullandığı değerler için parametreleri tanımlar. Örneğin, bu değerler belirli bir dağıtım ortamı için bağlantı dizeleri içerebilir. Daha sonra bu değerleri ayrı bir [parametre dosyasında](../azure-resource-manager/resource-manager-parameter-files.md)saklayabilirsiniz, bu da bu değerlerin değiştirilmesini kolaylaştırır.
+* Şablonun en üst düzeyinde, bir `parameters` bölümü, şablonun *dağıtımda*kullandığı değerler için parametreleri tanımlar. Örneğin, bu değerler belirli bir dağıtım ortamı için bağlantı dizeleri içerebilir. Daha sonra bu değerleri ayrı bir [parametre dosyasında](../azure-resource-manager/resource-manager-parameter-files.md)saklayabilirsiniz, bu da bu değerlerin değiştirilmesini kolaylaştırır.
 
-* Mantıksal uygulamanızın kaynak tanımında, ancak iş akışı tanımınızın dışında bir `parameters` bölümü, iş akışı tanımınızın parametrelerinin değerlerini belirtir. Bu bölümde, şablonunuzun parametrelerine başvuran şablon ifadelerini kullanarak bu değerleri atayabilirsiniz. Bu ifadeler dağıtımda değerlendirilir.
+* Mantıksal uygulamanızın kaynak tanımı içinde, ancak iş akışı tanımınızın dışında, bir `parameters` bölümü, iş akışı tanımınızın parametrelerinin değerlerini belirtir. Bu bölümde, şablonunuzun parametrelerine başvuran şablon ifadelerini kullanarak bu değerleri atayabilirsiniz. Bu ifadeler dağıtımda değerlendirilir.
 
 * İş akışı tanımınızın içinde, bir `parameters` bölümü mantıksal uygulamanızın çalışma zamanında kullandığı parametreleri tanımlar. Daha sonra bu parametrelere, çalışma zamanında değerlendirilen iş akışı Tanım ifadelerini kullanarak mantıksal uygulamanızın iş akışının içinde başvurabilirsiniz.
 
@@ -615,11 +615,11 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 
 [Temel](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) seçenek varsa, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | Temel | Kullanılacak kimlik doğrulaması türü |
-| **Kullanıcı Adı** | `username` | Yes | <*Kullanıcı adı*>| Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
-| **Parola** | `password` | Yes | <*parola*> | Hedef hizmet uç noktasına erişim doğrulaması için parola |
+| **Kimlik doğrulaması** | `type` | Evet | Temel | Kullanılacak kimlik doğrulaması türü |
+| **Kullanıcı Adı** | `username` | Evet | <*Kullanıcı adı*>| Hedef hizmet uç noktasına erişim doğrulaması için Kullanıcı adı |
+| **Parola** | `password` | Evet | <*parola*> | Hedef hizmet uç noktasına erişim doğrulaması için parola |
 ||||||
 
 Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulama `type` `Basic` olarak belirtir ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -646,11 +646,11 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 [Istemci sertifikası](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) seçeneği varsa, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | **İstemci sertifikası** <br>or <br>`ClientCertificate` | Güvenli Yuva Katmanı (SSL) istemci sertifikaları için kullanılacak kimlik doğrulaması türü. Otomatik olarak imzalanan sertifikalar desteklenirken, SSL için otomatik olarak imzalanan sertifikalar desteklenmez. |
-| **Türk** | `pfx` | Yes | <*kodlu-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
-| **Parola** | `password`| Yes | *pfx dosyası için parola* <> | PFX dosyasına erişim parolası |
+| **Kimlik doğrulaması** | `type` | Evet | **İstemci sertifikası** <br>or <br>`ClientCertificate` | Güvenli Yuva Katmanı (SSL) istemci sertifikaları için kullanılacak kimlik doğrulaması türü. Otomatik olarak imzalanan sertifikalar desteklenirken, SSL için otomatik olarak imzalanan sertifikalar desteklenmez. |
+| **Türk** | `pfx` | Evet | <*kodlu-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
+| **Parola** | `password`| Evet | *pfx dosyası için parola* <> | PFX dosyasına erişim parolası |
 |||||
 
 Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulama `type` `ClientCertificate` olarak belirtir ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -677,7 +677,7 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 * [Azure API Management istemci sertifikası kimlik doğrulamasını kullanarak arka uç hizmetleri güvenli hale getirme](../api-management/api-management-howto-mutual-certificates.md)
 * [İstemci sertifikalarını kullanarak yeniden takip eden hizmetinizi güvenli hale getirin](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 * [Uygulama kimlik doğrulaması için sertifika kimlik bilgileri](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Uygulama kodunuzda bir SSL sertifikası kullanın Azure App Service](../app-service/app-service-web-ssl-cert-load.md)
+* [Uygulama kodunuzda bir SSL sertifikası kullanın Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -685,17 +685,17 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) seçeneği varsa, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
-| **Kiracı** | `tenant` | Yes | <*KIRACı kimliği* > | Azure AD kiracısı için kiracı KIMLIĞI |
-| **Grubu** | `audience` | Yes | *kaynaktan yetkilendir* > < | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/`) |
-| **İstemci KIMLIĞI** | `clientId` | Yes | <*ISTEMCI kimliği* > | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
-| **Kimlik bilgisi türü** | `credentialType` | Yes | Sertifika <br>or <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
+| **Kimlik doğrulaması** | `type` | Evet | **Active Directory OAuth** <br>or <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulaması türü. Logic Apps Şu anda [OAuth 2,0 protokolünü](../active-directory/develop/v2-overview.md)izler. |
+| **Kiracı** | `tenant` | Evet | <*KIRACı kimliği*> | Azure AD kiracısı için kiracı KIMLIĞI |
+| **Grubu** | `audience` | Evet | *kaynaktan yetkilendir*> < | Yetkilendirme için kullanmak istediğiniz kaynak (örneğin, `https://management.core.windows.net/`) |
+| **İstemci KIMLIĞI** | `clientId` | Evet | <*ISTEMCI kimliği*> | Yetkilendirme isteyen uygulamanın istemci KIMLIĞI |
+| **Kimlik bilgisi türü** | `credentialType` | Evet | Sertifika <br>or <br>Gizli dizi | İstemcinin yetkilendirme istemek için kullandığı kimlik bilgisi türü. Bu özellik ve değer mantıksal uygulamanızın temel tanımında görünmez, ancak seçilen kimlik bilgisi türü için görüntülenen özellikleri belirler. |
 | **Gizli dizi** | `secret` | Evet, ancak yalnızca "gizli" kimlik bilgisi türü için | <*istemci gizli*> | Yetkilendirme isteğinde bulunan istemci parolası |
 | **Türk** | `pfx` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | <*kodlu-pfx-dosya-içerik*> | Kişisel bilgi değişimi (PFX) dosyasından gelen Base64 kodlamalı içerik |
 | **Parola** | `password` | Evet, ancak yalnızca "sertifika" kimlik bilgisi türü için | *pfx dosyası için parola* <> | PFX dosyasına erişim parolası |
-| **İniz** | `authority` | Hayır | <*URL-yetki-belirteç-veren* > | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net`. <p>**Note**: Bu özelliği tasarımcıda görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **yetkili**' i seçin. |
+| **İniz** | `authority` | Hayır | <*URL-yetki-belirteç-veren*> | Kimlik doğrulama belirtecini sağlayan yetkilinin URL 'SI. Varsayılan olarak, bu değer `https://login.windows.net`. <p>**Note**: Bu özelliği tasarımcıda görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **yetkili**' i seçin. |
 |||||
 
 Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulama `type` `ActiveDirectoryOAuth`olarak belirtir, kimlik bilgisi türü `Secret`olarak belirtir ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -739,10 +739,10 @@ Authorization: OAuth realm="Photos",
 
 Ham kimlik doğrulamasını destekleyen tetikleyici veya eylemde, bu özellik değerlerini belirtin:
 
-| Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
+| Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Yes | Madde | Kullanılacak kimlik doğrulaması türü |
-| **Değer** | `value` | Yes | <*yetkilendirmesi-üst bilgi-değer*> | Kimlik doğrulaması için kullanılacak yetkilendirme üst bilgisi değeri |
+| **Kimlik doğrulaması** | `type` | Evet | Madde | Kullanılacak kimlik doğrulaması türü |
+| **Değer** | `value` | Evet | <*yetkilendirmesi-üst bilgi-değer*> | Kimlik doğrulaması için kullanılacak yetkilendirme üst bilgisi değeri |
 ||||||
 
 Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulama `type` `Raw`olarak belirtir ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:
@@ -770,14 +770,14 @@ Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-actio
 
 1. Mantıksal uygulamanızın sistem tarafından atanan kimliği kullanabilmesi [için Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulama](../logic-apps/create-managed-service-identity.md)bölümündeki adımları izleyin. Bu adımlar, mantıksal uygulamanızda yönetilen kimliği etkinleştirir ve bu kimliğin hedef Azure kaynağına erişimini ayarlar.
 
-1. Bir Azure işlevinin sistem tarafından atanan kimliği kullanabilmesi [için önce Azure işlevleri için kimlik doğrulamasını etkinleştirin](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+2. Bir Azure işlevinin sistem tarafından atanan kimliği kullanabilmesi [için önce Azure işlevleri için kimlik doğrulamasını etkinleştirin](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
 
-1. Yönetilen kimliği kullanmak istediğiniz tetikleyici veya eylemde, bu özellik değerlerini belirtin:
+3. Yönetilen kimliği kullanmak istediğiniz tetikleyici veya eylemde, bu özellik değerlerini belirtin:
 
-   | Özellik (Tasarımcı) | Özellik (JSON) | Gereklidir | Değer | Açıklama |
+   | Özellik (Tasarımcı) | Özellik (JSON) | Gerekli | Değer | Açıklama |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Kimlik doğrulaması** | `type` | Yes | **Yönetilen kimlik** <br>or <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
-   | **Grubu** | `audience` | Yes | <*target-kaynak kimliği*> | Erişmek istediğiniz hedef kaynağın kaynak KIMLIĞI. <p>Örneğin `https://storage.azure.com/`, tüm depolama hesapları için kimlik doğrulaması için erişim belirteçlerini geçerli hale getirir. Ancak, belirli bir depolama hesabı için `https://fabrikamstorageaccount.blob.core.windows.net` gibi bir kök hizmeti URL 'SI de belirtebilirsiniz. <p>**Note**: Bu özellik bazı tetikleyicilere veya eylemlere gizlenmiş olabilir. Bu özelliği görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **hedef kitle**' i seçin. <p><p>**Önemli**: Bu hedef kaynak kimliğinin, tüm gerekli eğik çizgiler de dahil olmak üzere Azure AD 'nin beklediği değerle tam olarak eşleştiğinden emin olun. Bu nedenle, tüm Azure Blob depolama hesapları için `https://storage.azure.com/` kaynak KIMLIĞI sonunda eğik çizgi gerekir. Ancak, belirli bir depolama hesabının kaynak KIMLIĞI, sonunda eğik çizgi gerektirmez. Bu kaynak kimliklerini bulmak için bkz. [Azure AD 'yi destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
+   | **Kimlik doğrulaması** | `type` | Evet | **Yönetilen kimlik** <br>or <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulaması türü |
+   | **Grubu** | `audience` | Evet | <*target-kaynak kimliği*> | Erişmek istediğiniz hedef kaynağın kaynak KIMLIĞI. <p>Örneğin `https://storage.azure.com/`, tüm depolama hesapları için kimlik doğrulaması için erişim belirteçlerini geçerli hale getirir. Ancak, belirli bir depolama hesabı için `https://fabrikamstorageaccount.blob.core.windows.net` gibi bir kök hizmeti URL 'SI de belirtebilirsiniz. <p>**Note**: Bu özellik bazı tetikleyicilere veya eylemlere gizlenmiş olabilir. Bu özelliği görünür hale getirmek için tetikleyici veya eylemde, **yeni parametre Ekle** listesini açın ve **hedef kitle**' i seçin. <p><p>**Önemli**: Bu hedef kaynak kimliğinin, tüm gerekli eğik çizgiler de dahil olmak üzere Azure AD 'nin beklediği değerle tam olarak eşleştiğinden emin olun. Bu nedenle, tüm Azure Blob depolama hesapları için `https://storage.azure.com/` kaynak KIMLIĞI sonunda eğik çizgi gerekir. Ancak, belirli bir depolama hesabının kaynak KIMLIĞI, sonunda eğik çizgi gerektirmez. Bu kaynak kimliklerini bulmak için bkz. [Azure AD 'yi destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
    Gizli bilgileri işlemek ve korumak için [güvenli parametreleri](#secure-action-parameters) kullandığınızda (örneğin, [dağıtımı otomatikleştirmek için bir Azure Resource Manager şablonunda](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)), çalışma zamanında bu parametre değerlerine erişmek için ifadeleri kullanabilirsiniz. Bu örnek HTTP eylemi tanımı, kimlik doğrulama `type` `ManagedServiceIdentity` olarak belirtir ve parametre değerlerini almak için [Parameters () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#parameters) kullanır:

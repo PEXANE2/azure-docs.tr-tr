@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387721"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486178"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory veri akışı sorunlarını giderme
 
@@ -67,6 +67,14 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 - **Neden**: hedef veritabanında, kaynağınızda veya veri kümesinde tanımlanmış aynı ada sahip bir tablo adı zaten var
 
 - **Çözüm**: oluşturmaya çalıştığınız tablonun adını değiştirin
+
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Hata iletisi: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: String veya binary verileri kesilecek. 
+
+- **Belirtiler**: bir SQL havuzuna veri yazarken, olası kesme hatası ile veri akışınız işlem hattı yürütmesinde başarısız olur.
+
+- **Neden**: veri akışınızdan SQL veritabanınızdaki bir sütuna haritalardan bir alan, değeri depolamak için yeterince geniş DEĞIL ve SQL sürücüsünün bu hatayı oluşturmasına neden oluyor
+
+- **Çözüm**: türetilmiş bir sütunda ```left()``` kullanarak veya ["hata satırı" modelini](how-to-data-flow-error-rows.md) uyguladığınızda dize sütunlarının verilerinin uzunluğunu azaltabilirsiniz.
 
 ## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu
 

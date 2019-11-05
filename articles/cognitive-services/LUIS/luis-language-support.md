@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949556"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500173"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
@@ -34,7 +34,7 @@ LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikan Ingilizcesi |`en-US` | ✔ | ✔  |✔|✔|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Felemenkçe |`nl-NL` |✔|  -   |-|✔|
+| Hollanda dili |`nl-NL` |✔|  -   |-|✔|
 | Fransızca (Fransa) |`fr-FR` |✔| ✔ |✔ |✔|
 | Fransızca (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Almanca |`de-DE` |✔| ✔ |✔ |✔|
@@ -47,15 +47,9 @@ LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 | İspanyolca (Meksika)|`es-MX` |-|  -   |✔|✔|
 | Türkçe | `tr-TR` |✔|-|-|Yalnızca yaklaşım|
 
-
 Dil desteği, [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md) ve [önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md)için farklılık gösterir.
 
-### <a name="chinese-support-notes"></a>\* Çince destek notları
-
- - @No__t-0 kültüründe, LUıN geleneksel karakter kümesi yerine Basitleştirilmiş Çince karakter kümesi bekler.
- - Amaç, varlık, özellik ve normal ifadelerin adları, Çince veya Latin karakterler olabilir.
- - @No__t-1 kültürüyle hangi önceden oluşturulmuş etki alanlarının desteklendiği hakkında bilgi için [önceden oluşturulan etki alanları başvurusuna](luis-reference-prebuilt-domains.md) bakın.
-<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
 ### <a name="japanese-support-notes"></a>\* Japonca destek notları
 
@@ -63,8 +57,7 @@ Dil desteği, [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entit
      - でございます, です ile aynı değildir.
      - です, だ ile aynı değildir.
 
-### <a name="text-analytics-support-notes"></a>\* * Metin analizi destek notları
-Metin analizi keyPhrase önceden oluşturulmuş varlık ve yaklaşım analizini içerir. Alt kültürler için yalnızca Portekizce desteklenir: `pt-PT` ve `pt-BR`. Diğer tüm kültürler birincil kültür düzeyinde desteklenir. [Desteklenen metin analizi diller](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)hakkında daha fazla bilgi edinin.
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Konuşma API 'SI desteklenen diller
 Konuşma dikte modu dilleri için bkz. konuşma tarafından [desteklenen diller](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) .
@@ -73,7 +66,7 @@ Konuşma dikte modu dilleri için bkz. konuşma tarafından [desteklenen diller]
 Desteklenen dillerin ve durumun bir listesi için [desteklenen Bing yazım denetimi diller](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) bölümüne bakın.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Bir uygulamadaki nadir veya yabancı sözcükler
-@No__t-0 kültüründe, Lu, Slang dahil olmak üzere çoğu Ingilizce sözcüğü ayırt edebilir. @No__t-0 kültüründe, LUSıS çoğu Çince karakteri ayırt edebilir. @No__t-1 ' de `en-us` veya karakter içinde nadir bir kelime kullanırsanız ve LUBUNUN söz konusu sözcüğü veya karakteri ayırt edemediği görürseniz, bu sözcüğü veya karakteri bir [tümcecik listesi özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulamanın kültürünün dışındaki kelimeler (yani, yabancı sözcükler) bir tümcecik listesi özelliğine eklenmelidir. 
+`en-us` kültürü olan lu, Slang dahil olmak üzere çoğu Ingilizce sözcüğü ayırt etmek için öğrenir. `zh-cn` kültürü, Lu, çoğu Çince karakteri ayırt ediyor. `zh-cn``en-us` veya karakter içinde nadir bir kelime kullanırsanız ve LUBUNUN söz konusu sözcüğü veya karakteri ayırt edemediği görürseniz, bu sözcüğü veya karakteri bir [tümcecik listesi özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulamanın kültürünün dışındaki kelimeler (yani, yabancı sözcükler) bir tümcecik listesi özelliğine eklenmelidir. 
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -86,8 +79,8 @@ Makine öğrenimi yapmak için, Lua, kültürü temel alan [belirteçlere](luis-
 |Dil|  Her boşluk veya özel karakter | karakter düzeyi|bileşik sözcükler|[simgeleştirilmiş varlık döndürüldü](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |Çince||✔||✔|
-|Felemenkçe|||✔|✔|
-|İngilizce (en-US)|✔ ||||
+|Hollanda dili|||✔|✔|
+|İngilizce (en-us)|✔ ||||
 |Fransızca (fr-FR)|✔||||
 |Fransızca (fr-CA)|✔||||
 |Almanca|||✔|✔|
@@ -103,10 +96,10 @@ Makine öğrenimi yapmak için, Lua, kültürü temel alan [belirteçlere](luis-
 
 Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 
-|Ayarı|Version|Amaç|
+|Kültür|Sürüm|Amaç|
 |--|--|--|
-|Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı utterance olarak `Ich fahre einen krankenwagen` ' ı girerse, `Ich fahre einen kranken wagen` ' e açıktır. @No__t-0 ve `wagen` ' in işaretlenmesi farklı varlıklar olarak bağımsız olarak izin verir.|
-|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> bir Kullanıcı bir utterance olarak `Ich fahre einen krankenwagen` girerse, tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |
+|Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, `Ich fahre einen kranken wagen`açıktır. `kranken` ve `wagen` bağımsız olarak farklı varlıklar olarak işaretlemeye izin verme.|
+|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Kullanıcı `Ich fahre einen krankenwagen` bir utterance olarak girerse, tek bir belirteç kalır. Bu nedenle `krankenwagen` tek bir varlık olarak işaretlenir. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Belirteç Oluşturucu sürümler arasında geçiş yapma
 <!--

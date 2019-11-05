@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: dfc137375e35d0d13a34ff45b0c6639bcf6784df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561067"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73519148"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı Başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme Sınıflandırıcısı oluşturma
 
 Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir sınıflandırıcı oluşturmayı öğreneceksiniz. Bir sınıflandırıcı modeli oluşturduktan sonra, görüntü sınıflandırması için Özel Görüntü İşleme hizmetini kullanabilirsiniz.
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal Özel Görüntü İşleme kaynakları oluşturma
 
-Özel Görüntü İşleme Hizmeti kullanmak için, Azure portal Özel Görüntü İşleme eğitim ve tahmin kaynakları oluşturmanız gerekir. Hem eğitim hem de tahmin kaynağı oluşturmak için [özel görüntü işleme oluştur](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) sayfasındaki iletişim kutusunu doldurun. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
@@ -51,7 +51,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
 
 1. Sonra, kullanılabilir etki alanlarından birini seçin. Her etki alanı, aşağıdaki tabloda açıklandığı gibi belirli görüntü türleri için sınıflandırıcıyı iyileştirir. İsterseniz, etki alanını daha sonra değiştirebileceksiniz.
 
-    |Etki Alanı|Amaç|
+    |Domain|Amaç|
     |---|---|
     |__Yorlar__| Çok çeşitli resim Sınıflandırma görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. |
     |__Yemek__|Bir restoran menüsünde gördüğünüz gibi yemeklerin fotoğrafları için iyileştirildi. Bireysel meyve veya vegetables fotoğraflarını sınıflandırmak istiyorsanız, yiyecek etki alanını kullanın.|
@@ -98,8 +98,8 @@ Eğitim süreci yalnızca birkaç dakika sürer. Bu süre boyunca, eğitim işle
 
 Eğitim tamamlandıktan sonra, modelin performansı tahmini ve görüntülenir. Özel Görüntü İşleme Hizmeti, [k katlamalı çapraz doğrulama](https://en.wikipedia.org/wiki/Cross-validation_(statistics))adlı bir işlem kullanarak duyarlık ve geri çekme işlemlerini hesaplamak için gönderdiğiniz görüntüleri kullanır. Duyarlık ve geri çekme, sınıflandırıcının verimliliğinden oluşan iki farklı ölçümlerdir:
 
-- **Duyarlık** , doğru olan belirlenen sınıflandırmaların kesirini gösterir. Örneğin, model, 100 görüntüsünü köpekler olarak tanımlarsa ve bunların 99 ' i gerçekten dotalar ise, duyarlık% 99% olur.
-- **Geri çağırma** , doğru şekilde tanımlanan gerçek sınıflandırmaların kesirini belirtir. Örneğin, gerçekten de 100 resim ve bir model, her ikisi de 80 olarak tanımlanmış ise, geri çekme% 80% olur.
+- **Duyarlık** , doğru olan belirlenen sınıflandırmaların kesirini gösterir. Örneğin, model, 100 görüntüsünü köpekler olarak tanımlarsa ve bunların 99 ' i gerçekten dotalar ise, duyarlık %99% olur.
+- **Geri çağırma** , doğru şekilde tanımlanan gerçek sınıflandırmaların kesirini belirtir. Örneğin, gerçekten de 100 resim ve bir model, her ikisi de 80 olarak tanımlanmış ise, geri çekme %80% olur.
 
 ![Eğitim sonuçları, sınıflandırıcının her bir etiketi için genel duyarlık ve geri çekmeyi ve duyarlık ve geri çekmeyi gösterir.](./media/getting-started-build-a-classifier/train03.png)
 

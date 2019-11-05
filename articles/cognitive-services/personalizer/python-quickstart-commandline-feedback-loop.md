@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515197"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494426"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Hızlı başlangıç: Python için kişiselleştirici istemci kitaplığı
 
@@ -26,7 +26,7 @@ Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın
  * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
  * En çok kullanılan derecelendirme eyleminin başarısını belirten rapor ödül.
 
-[Package (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Package (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +39,7 @@ Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın
 Bu hızlı başlangıcı kullanmanın birkaç adımı vardır:
 
 * Azure portal, bir kişiselleştirici kaynağı oluşturun
-* Azure portal, kişiselleştirici kaynağı için, **Ayarlar** sayfasında, model güncelleştirme sıklığını değiştirin
+* Azure portal, kişiselleştirici kaynağı için **yapılandırma** sayfasında, model güncelleştirme sıklığını değiştirin
 * Kod düzenleyicisinde bir kod dosyası oluşturun ve kod dosyasını düzenleyin
 * Komut satırı veya terminalinde, komut satırından SDK 'Yı yükler
 * Komut satırında veya terminalde, kod dosyasını çalıştırın
@@ -70,7 +70,7 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
-Azure portal, **Ayarlar** sayfasındaki kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
+Azure portal, **yapılandırma** sayfasındaki kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
 
 ![Model güncelleştirme sıklığını Değiştir](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -96,7 +96,7 @@ Bu kod parçacıkları, Python için kişiselleştirici istemci kitaplığı ile
 
 ## <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de `sample.py` adlı yeni bir Python uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya IDE 'de `sample.py`adlı yeni bir Python uygulaması oluşturun. 
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
@@ -106,7 +106,7 @@ Proje dizininden, **Sample.py** dosyasını tercih ettiğiniz DÜZENLEYICIDE vey
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-@No__t_0 ve `PERSONALIZER_RESOURCE_ENDPOINT` adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+`PERSONALIZER_RESOURCE_KEY` ve `PERSONALIZER_RESOURCE_ENDPOINT`adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
 
 Kaynak adı, uç nokta URL 'sinin bir parçası: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
@@ -146,7 +146,7 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-conten
 
 ## <a name="request-a-rank"></a>Bir derece iste
 
-Program, derecelendirme isteğini gerçekleştirmek için kullanıcının tercihlerine içerik seçeneklerinin `currentContent` oluşturmasını ister. İşlem, `excludeActions` olarak gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
+Program, derecelendirme isteğini gerçekleştirmek için kullanıcının tercihlerine içerik seçeneklerinin `currentContent` oluşturmasını ister. İşlem, `excludeActions`olarak gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
 
 Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](concepts-features.md) belirlemek ve [değerlendirmek](concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.  
 

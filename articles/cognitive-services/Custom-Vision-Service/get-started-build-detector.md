@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561128"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520454"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı Başlangıç: Özel Görüntü İşleme ile nesne algılayıcısı oluşturma
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme bir nesne algılayıcısı oluşturma
 
 Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir nesne algılayıcısı oluşturmayı öğreneceksiniz. Bir algılayıcı modeli oluşturduğunuzda, nesne algılama için Özel Görüntü İşleme hizmetini kullanabilirsiniz.
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal Özel Görüntü İşleme kaynakları oluşturma
 
-Özel Görüntü İşleme Hizmeti kullanmak için, Azure portal Özel Görüntü İşleme eğitim ve tahmin kaynakları oluşturmanız gerekir. Hem eğitim hem de tahmin kaynağı oluşturmak için [özel görüntü işleme oluştur](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) sayfasındaki iletişim kutusunu doldurun. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
@@ -51,7 +51,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
 
 1. Sonra, kullanılabilir etki alanlarından birini seçin. Her etki alanı, aşağıdaki tabloda açıklandığı gibi belirli görüntü türleri için algılayıcısının en iyi duruma getirir. İsterseniz, etki alanını daha sonra değiştirebileceksiniz.
 
-    |Etki Alanı|Amaç|
+    |Domain|Amaç|
     |---|---|
     |__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. |
     |__Le__|Görüntülerde marka logolarını bulmak için iyileştirildi.|
@@ -75,7 +75,7 @@ Bu bölümde, algılayıcısının eğitilmesi için görüntüleri karşıya y�
 
     ![Karşıya yüklenen görüntüler, etiketlenmemiş bölüm](./media/get-started-build-detector/images-untagged.png)
 
-1. Görüntinizdeki nesnenin etrafına bir dikdörtgeni tıklatın ve sürükleyin. Ardından, **+** düğme ile yeni bir etiket adı girin veya açılan listeden varolan bir etiketi seçin. Algılayıcı, eğitiminde negatif bir örnek olarak etiketlenmemiş arka plan alanını kullandığından, algılamak istediğiniz nesnelerin her örneğini etiketlemek çok önemlidir. Etiketlerinizi tamamladığınızda, sağ taraftaki oka tıklayarak etiketlerinizi kaydedin ve sonraki görüntüde geçiş yapın.
+1. Görüntinizdeki nesnenin etrafına bir dikdörtgeni tıklatın ve sürükleyin. Sonra, **+** düğmesini kullanarak yeni bir etiket adı girin veya açılan listeden varolan bir etiketi seçin. Algılayıcı, eğitiminde negatif bir örnek olarak etiketlenmemiş arka plan alanını kullandığından, algılamak istediğiniz nesnelerin her örneğini etiketlemek çok önemlidir. Etiketlerinizi tamamladığınızda, sağ taraftaki oka tıklayarak etiketlerinizi kaydedin ve sonraki görüntüde geçiş yapın.
 
     ![Bir nesneyi dikdörtgen seçim ile etiketleme](./media/get-started-build-detector/image-tagging.png)
 
@@ -95,8 +95,8 @@ Eğitim süreci yalnızca birkaç dakika sürer. Bu süre boyunca, eğitim işle
 
 Eğitim tamamlandıktan sonra modelin performansı hesaplanır ve görüntülenir. Özel Görüntü İşleme Hizmeti, duyarlılık, geri çağırma ve ortalama ortalama duyarlık hesaplamak için eğitim için gönderdiğiniz görüntüleri kullanır. Duyarlık ve geri çağırma, bir algılayıcısının verimliliğinden oluşan iki farklı ölçümlerdir:
 
-- **Duyarlık** , doğru olan belirlenen sınıflandırmaların kesirini gösterir. Örneğin, model, 100 görüntüsünü köpekler olarak tanımlarsa ve bunların 99 ' i gerçekten dotalar ise, duyarlık% 99% olur.
-- **Geri çağırma** , doğru şekilde tanımlanan gerçek sınıflandırmaların kesirini belirtir. Örneğin, gerçekten de 100 resim ve bir model, her ikisi de 80 olarak tanımlanmış ise, geri çekme% 80% olur.
+- **Duyarlık** , doğru olan belirlenen sınıflandırmaların kesirini gösterir. Örneğin, model, 100 görüntüsünü köpekler olarak tanımlarsa ve bunların 99 ' i gerçekten dotalar ise, duyarlık %99% olur.
+- **Geri çağırma** , doğru şekilde tanımlanan gerçek sınıflandırmaların kesirini belirtir. Örneğin, gerçekten de 100 resim ve bir model, her ikisi de 80 olarak tanımlanmış ise, geri çekme %80% olur.
 
 ![Eğitim sonuçları, genel duyarlık ve geri çağırma ve ortalama duyarlık hassasiyetini gösterir.](./media/get-started-build-detector/trained-performance.png)
 

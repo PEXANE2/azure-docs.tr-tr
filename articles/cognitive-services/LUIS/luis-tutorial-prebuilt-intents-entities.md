@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a59d9783eac122f96b1671f2dba5d0d708e1d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757116"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499389"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Öğretici: ortak amaçları ve varlıkları tanımla
 
@@ -24,13 +24,15 @@ Bu öğreticide, hızlı bir şekilde amaç ve veri ayıklama kazanmak için bir
 
 Önceden oluşturulmuş modeller (etki alanları, amaçlar ve varlıklar) modelinizi hızlı bir şekilde oluşturmanıza yardımcı olur.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 **Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
 > * Önceden oluşturulmuş amaçları ekleme 
 > * Önceden oluşturulmuş varlıkları ekleme 
-> * Eğitin 
+> * Eğitim 
 > * Yayımlama 
 > * Uç noktasındaki amaçları ve varlıkları alma
 
@@ -83,7 +85,7 @@ LUIS, ortak veri ayıklama işlemi için önceden oluşturulmuş birkaç varlık
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Tarayıcı adres çubuğundaki URL'nin sonuna gidip `I want to cancel my trip to Seattle` yazın. Son sorgu dizesi parametresi konuşma **sorgusu** olan `q` öğesidir. 
+1. Tarayıcı adres çubuğundaki URL'nin sonuna gidip `I want to cancel my trip to Seattle` yazın. Son sorgu dizesi parametresi konuşma `q`sorgusu**olan** öğesidir. 
 
     ```json
     {

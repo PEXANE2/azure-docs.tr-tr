@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744460"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492193"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 
@@ -53,7 +53,7 @@ SQL veritabanı, çeşitli planlanmamış senaryoları azaltmak için kullanabil
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Aynı Azure bölgesi içindeki bir veritabanını kurtarma
 
-Bir veritabanını geçmişteki bir zaman noktasına geri yüklemek için otomatik veritabanı yedeklemeleri kullanabilirsiniz. Bu şekilde, insan hatalarının neden olduğu veri bozukluklarının kurtarılmasını sağlayabilirsiniz. Bu arada geri yükleme, aynı sunucuda, bozulmadan önce verilerin durumunu temsil eden yeni bir veritabanı oluşturmanıza olanak sağlar. Çoğu veritabanı için geri yükleme işlemleri 12 saatten daha az sürer. Çok büyük veya çok etkin bir veritabanını kurtarmak daha uzun sürebilir. Kurtarma zamanı hakkında daha fazla bilgi için bkz. [veritabanı kurtarma süresi](sql-database-recovery-using-backups.md#recovery-time). 
+Bir veritabanını geçmişteki bir zaman noktasına geri yüklemek için otomatik veritabanı yedeklemeleri kullanabilirsiniz. Bu şekilde, insan hatalarının neden olduğu veri bozukluklarının kurtarılmasını sağlayabilirsiniz. Zaman içinde geri yükleme, aynı sunucuda, bozulmadan önce verilerin durumunu temsil eden yeni bir veritabanı oluşturmanıza olanak sağlar. Çoğu veritabanı için geri yükleme işlemleri 12 saatten daha az sürer. Çok büyük veya çok etkin bir veritabanını kurtarmak daha uzun sürebilir. Kurtarma zamanı hakkında daha fazla bilgi için bkz. [veritabanı kurtarma süresi](sql-database-recovery-using-backups.md#recovery-time). 
 
 Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme saklama süresi, uygulamanız için yeterli değilse, veritabanları için uzun süreli bir saklama (LTR) ilkesi yapılandırarak bunu genişletebilirsiniz. Daha fazla bilgi için bkz. [uzun süreli yedek saklama](sql-database-long-term-retention.md).
 
@@ -87,8 +87,8 @@ Farklı kurtarma yöntemleri farklı RPO ve RTO düzeyleri sunar. Belirli bir ku
 
 | Kurtarma yöntemi | RTO | RPO |
 | --- | --- | --- | 
-| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | 12 h | 1 s |
-| Otomatik yük devretme grupları | 1 s | 5 s |
+| Coğrafi olarak çoğaltılan yedeklerden coğrafi geri yükleme | 12 h | 1 h |
+| Otomatik yük devretme grupları | 1 h | 5 s |
 | El ile veritabanı yük devretmesi | 30 s | 5 s |
 
 > [!NOTE]

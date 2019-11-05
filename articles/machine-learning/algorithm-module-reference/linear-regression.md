@@ -1,23 +1,23 @@
 ---
 title: 'Doğrusal regresyon: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Ardışık düzende kullanmak üzere doğrusal regresyon modeli oluşturmak için Azure Machine Learning hizmetinde doğrusal regresyon modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Ardışık düzende kullanmak üzere doğrusal regresyon modeli oluşturmak için Azure Machine Learning doğrusal regresyon modülünü kullanmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693705"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497740"
 ---
 # <a name="linear-regression-module"></a>Doğrusal regresyon modülü
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 İşlem hattında kullanılmak üzere doğrusal regresyon modeli oluşturmak için bu modülü kullanın.  Doğrusal regresyon bir veya daha fazla bağımsız değişken ile sayısal bir sonuç veya bağımlı değişken arasında doğrusal bir ilişki kurmaya çalışır. 
 
@@ -63,7 +63,7 @@ Bu modül, farklı seçeneklerle bir gerileme modeline sığdırma için iki yö
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>Normal en az kare kullanarak regresyon modeli oluşturma
 
-1. Arayüzünüzün ardışık düzenine **Doğrusal regresyon modeli** modülünü ekleyin.
+1. Tasarımcıdaki ardışık düzene **Doğrusal regresyon modeli** modülünü ekleyin.
 
     Bu modülü **Machine Learning** kategorisinde bulabilirsiniz. **Modeli Başlat**' ı genişletin, **regresyon**' i genişletin ve sonra **Doğrusal regresyon modeli** modülünü işlem hattınızla sürükleyin.
 
@@ -97,7 +97,7 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="bkmk_GradientDescent"></a>Çevrimiçi degradeyi kullanarak regresyon modeli oluşturma
 
-1. Arayüzünüzün ardışık düzenine **Doğrusal regresyon modeli** modülünü ekleyin.
+1. Tasarımcıdaki ardışık düzene **Doğrusal regresyon modeli** modülünü ekleyin.
 
     Bu modülü **Machine Learning** kategorisinde bulabilirsiniz. **Modeli Başlat**' ı genişletin, **regresyon**' i genişletin ve **Doğrusal regresyon modeli** modülünü ardışık düzene sürükleyin
 
@@ -143,4 +143,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

@@ -8,17 +8,19 @@ ms.topic: include
 ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6c59513c2c84b5f280e8200411b53848768eaf29
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9648f4c16e8d266bbdd504d4a7599b67a5c846b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970820"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524029"
 ---
-1. Portalda **+Kaynak oluştur**’a tıklayın.
-2. Arama kutusuna **Yerel ağ geçidi** yazıp aramak için **Enter** tuşuna basın. Böylece sonuçların bir listesi döndürülür. **Yerel ağ geçidi**’ne ve sonra **Oluştur** düğmesine tıklayarak **Yerel ağ geçidi oluştur** sayfasını açın.
+1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin. 
 
-   ![Yerel ağ geçidi oluşturma](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Yerel ağ geçidi oluşturma")
+   ![Azure portal bir kaynak oluşturun](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
+2. Market 'te **Ara** alanına **yerel ağ geçidi**yazın ve aramak için **ENTER** tuşuna basın. Böylece sonuçların bir listesi döndürülür. **Yerel ağ geçidi**’ne ve sonra **Oluştur** düğmesine tıklayarak **Yerel ağ geçidi oluştur** sayfasını açın.
+
+   ![Yerel ağ geçidini oluşturma](./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway.png "Yerel ağ geçidini oluşturma")
 
 3. **Yerel ağ geçidi oluştur** sayfasında, yerel ağ geçidiniz için değerlerleri belirtin.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Model. any varlık-LUSıS'
+title: 'Öğretici: model. any varlığı-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonunun konuşmadaki diğer sözcüklerle karıştırılma ihtimalinin yüksek olduğu konuşmalardan veri ayıklamak için pattern.any varlığını kullanın.
 services: cognitive-services
@@ -9,20 +9,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390293"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499436"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Öğretici: Modelle serbest biçimli verileri ayıklayın. herhangi bir varlık
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Öğretici: modelle serbest biçimli verileri ayıklama. herhangi bir varlık
 
 Bu öğreticide konuşmaların iyi biçimlendirilmiş olduğu ve verilerin sonunun konuşmadaki diğer sözcüklerle karıştırılma ihtimalinin yüksek olduğu konuşmalardan veri ayıklamak için pattern.any varlığını kullanacaksınız. 
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar
@@ -70,7 +72,7 @@ Sözcüklerin uzunluklarının değişmesi, LUIS'in varlığın sonunu belirleme
 
 1. [Luu portalında](https://www.luis.ai), **UYGULAMALARıM** sayfasında, JSON 'u yeni bir uygulamaya aktarın.
 
-1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patt-any` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+1. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patt-any` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 ## <a name="add-example-utterances"></a>Örnek konuşmalar ekleme 
 

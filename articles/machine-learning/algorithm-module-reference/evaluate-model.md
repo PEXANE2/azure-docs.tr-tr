@@ -1,7 +1,7 @@
 ---
 title: 'Modeli değerlendir: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Eğitilen bir modelin doğruluğunu ölçmek için Azure Machine Learning hizmetinde modeli değerlendir modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Eğitilen bir modelin doğruluğunu ölçmek için Azure Machine Learning modeli değerlendir modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693813"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497917"
 ---
 # <a name="evaluate-model-module"></a>Model modülünü değerlendir
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Eğitilen bir modelin doğruluğunu ölçmek için bu modülü kullanın. Bir modelden oluşturulan puanları içeren bir veri kümesi sağlarsınız ve **modeli değerlendir** modülü bir sektör standardı değerlendirme ölçümleri kümesini hesaplar.
   
@@ -66,10 +66,10 @@ Aynı verilerdeki iki farklı modelden sonuçları kolayca karşılaştırabilme
 
 ## <a name="results"></a>Sonuçlar
 
-**Modeli değerlendir**' i çalıştırdıktan sonra, modüle sağ tıklayın ve sonuçları görmek için **değerlendirme sonuçları** ' nı seçin. Yapabilecekleriniz:
+**Modeli değerlendir**' i çalıştırdıktan sonra, modüle sağ tıklayın ve sonuçları görmek için **değerlendirme sonuçları** ' nı seçin. Şunları yapabilirsiniz:
 
 + Diğer araçlarla daha kolay analize yönelik olarak sonuçları bir veri kümesi olarak kaydedin
-+ Arabirimde görselleştirme oluşturma
++ Tasarımcıda görselleştirme oluşturma
 
 Veri kümelerini her iki **değerlendirme modeli**girişi için bağladığınızda, sonuçlar hem veri kümesinin hem de her iki modelin ölçümlerini içerir.
 Sol bağlantı noktasına eklenen model veya veriler, önce raporda, ardından veri kümesi için ölçümler veya sağ bağlantı noktasında eklenmiş model tarafından sunulur.  
@@ -119,11 +119,11 @@ Regresyon modelleri için döndürülen ölçümler genellikle hata miktarını 
   
 - **Göreli kare hatası (RSE)** , gerçek değerlerin toplam kare şeklinde hataya göre öngörülen değerlerin toplam kare halinde hata sayısını normalleştirir.  
   
-- **Ortalama sıfır bir hata (MZOE)** , tahmine uygun olup olmadığını gösterir.  Diğer bir deyişle: `x!=y` `ZeroOneLoss(x,y) = 1`; Aksi takdirde `0`.
+- **Ortalama sıfır bir hata (MZOE)** , tahmine uygun olup olmadığını gösterir.  Diğer bir deyişle: `x!=y``ZeroOneLoss(x,y) = 1`; Aksi takdirde `0`.
   
 - Genellikle R<sup>2</sup>olarak anılan **belirleme katsayısı**, modelin tahmine dayalı gücünü 0 ile 1 arasında bir değer olarak temsil eder. Sıfır, modelin rastgele olduğu anlamına gelir (hiçbir şey açıklar); 1, mükemmel bir uyum olduğu anlamına gelir. Ancak, düşük değerler tamamen normal olabilir ve yüksek değerler şüpheli olduğundan, R<sup>2</sup> değerlerini yorumlamak için dikkatli bir değer kullanılmalıdır.
   
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

@@ -1,5 +1,5 @@
 ---
-title: Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop-Azure
+title: Erişim Apache Hadoop YARN uygulama günlükleri-Azure HDInsight
 description: Hem komut satırı hem de bir Web tarayıcısı kullanarak Linux tabanlı HDInsight (Apache Hadoop) kümesinde YARN uygulama günlüklerine erişmeyi öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091515"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494887"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop
 
@@ -40,7 +40,7 @@ Uygulama günlükleri (ve ilişkili kapsayıcı günlükleri), sorunlu Hadoop uy
 
     /app-logs/<user>/logs/<applicationId>
 
-Yolda, `user` uygulamayı başlatan kullanıcının adıdır. , `applicationId` Yarn RM tarafından bir uygulamaya atanan benzersiz tanıtıcıdır.
+Yolda, uygulamayı başlatan kullanıcının adı `user`. `applicationId`, YARN RM tarafından bir uygulamaya atanan benzersiz tanıtıcıdır.
 
 Toplanan Günlükler, bir [tfile][T-file]dosyasında yazıldığı gibi doğrudan okunamaz, kapsayıcı tarafından dizine alınmış [ikili biçimdedir][binary-format] . Bu günlükleri uygulamalar veya ilgilendiğiniz kapsayıcılar için düz metin olarak görüntülemek üzere YARN ResourceManager günlüklerini veya CLı araçlarını kullanın.
 
@@ -53,13 +53,13 @@ Aşağıdaki komutlardan birini çalıştırarak, bu günlükleri düz metin ola
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Bu komutları çalıştırırken &lt; &lt; &lt;Application>, Kullanıcı tarafından başlatılan-uygulama >, containerıd > ve çalışan düğümü-adresi > bilgilerini belirtin. &lt;
+Bu komutları çalıştırırken &lt;ApplicationId >, &lt;Kullanıcı tarafından başlatılan-uygulama >, &lt;Containerıd > ve &lt;çalışan düğümü-adresi > bilgilerini belirtin.
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager Kullanıcı arabirimi
 
 YARN ResourceManager Kullanıcı arabirimi küme headnode üzerinde çalışır. Bu, ambarı Web Kullanıcı arabirimi üzerinden erişilir. YARN günlüklerini görüntülemek için aşağıdaki adımları kullanın:
 
-1. Web tarayıcınızda öğesine https://CLUSTERNAME.azurehdinsight.net gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
+1. Web tarayıcınızda https://CLUSTERNAME.azurehdinsight.net' a gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
 2. Soldaki hizmetler listesinden **Yarn**' yi seçin.
 
     ![Apache ambarı Yarn hizmeti seçildi](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)

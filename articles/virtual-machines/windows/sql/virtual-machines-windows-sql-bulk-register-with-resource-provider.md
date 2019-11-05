@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 80a1ac3ebe5f49d6a63f47e08e0b16114d75e91f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199207"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489067"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>SQL VM kaynak sağlayıcısı ile Azure 'da SQL sanal makinelerini toplu kaydetme
 
@@ -37,9 +37,9 @@ SQL Server VM kaynak sağlayıcısına kaydetmek için şunlar gerekir:
 - [Kaynak sağlayıcısına kayıtlı](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp) ve kaydedilmemiş SQL Server sanal makineler Içeren bir [Azure aboneliği](https://azure.microsoft.com/free/) . 
 - Sanal makineleri kaydetmek için kullanılan istemci kimlik bilgileri şu RBAC rollerinin hiçbirinde bulunuyor: **sanal makine katılımcısı**, **katkıda bulunan**veya **sahip**. 
 - En son [az PowerShell](/powershell/azure/new-azureps-module-az)sürümü. 
-- En son [az. SqlVirtualMachine] sürümü (https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0.
+- En son [az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)sürümü.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Devam etmeden önce, önce betiğin yerel bir kopyasını oluşturmanız, PowerShell modülü olarak içeri aktarmanız ve Azure 'a bağlanmanız gerekir. 
 

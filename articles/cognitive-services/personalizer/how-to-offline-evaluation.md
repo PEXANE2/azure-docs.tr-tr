@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515216"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490713"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleyin
 
 Çevrimdışı değerlendirmeyi tamamlamayı ve sonuçları anlamayı öğrenin.
 
-Çevrimdışı değerlendirmeler, etkin kişiselleştirmenin uygulamanızın varsayılan davranışıyla nasıl karşılaştırıldığını ölçmenize olanak tanır, kişiselleştirmeye en çok katkıda bulunan özellikleri öğrenin ve yeni makine öğrenimi ayarlarını otomatik olarak bulabilir.
+Çevrimdışı değerlendirmeler, etkin kişiselleştirmenin uygulamanızın varsayılan davranışıyla nasıl karşılaştırıldığını ölçmenize olanak tanır, kişiselleştirmeye en çok katkıda bulunan özellikleri öğrenin ve yeni makine öğrenimi değerlerini otomatik olarak bulabilir.
 
 Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offline-evaluation.md) hakkında bölümünü okuyun.
 
@@ -35,11 +35,11 @@ Daha fazla bilgi edinmek için [çevrimdışı değerlendirmeler](concepts-offli
 
 1. [Azure Portal](https://azure.microsoft.com/free/), kişiselleştirme kaynağınızı bulun.
 1. Azure portal **değerlendirmeler** bölümüne gidin ve **değerlendirme oluştur**' u seçin.
-    Azure portal ![In, * * Değerlendirmeler * * bölümüne gidin ve * * değerlendirme oluştur * * seçeneğini belirleyin. ](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. Aşağıdaki ayarları seçin:
+    Azure portal ![, * * Değerlendirmeler * * bölümüne gidin ve * * değerlendirme oluştur * * seçeneğini belirleyin.](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. Aşağıdaki değerleri yapılandırın:
 
     * Değerlendirme adı
-    * Başlangıç ve bitiş tarihi-bunlar geçmişte, değerlendirmede kullanılacak veri aralığını belirten tarihlerdir. [Veri saklama](how-to-settings.md) ayarında belirtilen şekilde bu verilerin günlüklerde bulunması gerekir.
+    * Başlangıç ve bitiş tarihi-bunlar geçmişte, değerlendirmede kullanılacak veri aralığını belirten tarihlerdir. [Veri saklama](how-to-settings.md) değerinde belirtildiği gibi bu verilerin günlüklerde bulunması gerekir.
     * İyileştirme bulma, **Evet** olarak ayarlandı
 
     ![Çevrimdışı değerlendirme ayarlarını seçin](./media/offline-evaluation/create-an-evaluation-form.png)

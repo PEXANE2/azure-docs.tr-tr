@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: 1d80c30e3573d76aabcf854b2d97ea849197577c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c945fa7e2e8eccb12cc105610adee3d25a5e5316
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173042"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495785"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -39,12 +39,12 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Uyumlu değil  |[Yapılandırma kılavuzu](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR Serisi VPN Yönlendiricileri |AR Serisi 5.4.7 +               | [Yapılandırma kılavuzu](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[Yapılandırma kılavuzu](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
-| Barracuda Networks, Inc. |Barbcuda CloudGen güvenlik duvarı |PolicyBased 5.4.3<br>RouteBased 6.2.0 |[Yapılandırma kılavuzu](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[Yapılandırma kılavuzu](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
-| Check Point |Güvenlik Ağ Geçidi |R 80.10 |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
+| Barracuda Networks, Inc. |Barbcuda CloudGen güvenlik duvarı |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[Yapılandırma kılavuzu](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[Yapılandırma kılavuzu](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
+| Denetim Noktası |Güvenlik Ağ Geçidi |R 80.10 |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Desteklenen |[Yapılandırma kılavuzu*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
-| Cisco |ASR |PolicyBased IOS 15,1<br>RouteBased IOS 15,2 |Desteklenen |Desteklenen |
-| Cisco | 'NIN | RouteBased IOS-XE 16,10 | (sınanmamıştır) | [Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
-| Cisco |ISR |PolicyBased IOS 15,0<br>RouteBased *: IOS 15,1 |Desteklenen |Desteklenen |
+| Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |Desteklenen |Desteklenen |
+| Cisco | 'Nın | RouteBased: IOS-XE 16,10 | (sınanmamıştır) | [Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
+| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |Desteklenen |Desteklenen |
 | Cisco |Meraki |Yok |Uyumlu değil |Uyumlu değil |
 | Cisco | vEdge (Viptela OS) | 18.4.0 (etkin/Pasif mod)<br><br>19,2 (etkin/etkin mod) | Uyumlu değil |  [El ile yapılandırma (etkin/Pasif)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onrampa yapılandırması (etkin/etkin)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 ve sonraki sürümleri |[Yapılandırma kılavuzu](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Uyumlu değil |
@@ -52,14 +52,14 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Fortinet |FortiGate |FortiOS 5.6 | (sınanmamıştır) |[Yapılandırma kılavuzu](https://docs.fortinet.com/document/fortigate/5.6.0/cookbook/255100/ipsec-vpn-to-azure) |
 | Teplstone ağları | Sonraki-genel güvenlik duvarları (NGFW) | 5,5 R7  | (sınanmamıştır) | [Yapılandırma kılavuzu](https://www.hillstonenet.com/wp-content/uploads/How-to-setup-Site-to-Site-VPN-between-Microsoft-Azure-and-an-on-premise-Hillstone-Networks-Security-Gateway.pdf) |
 | Internet Initiative Japan (IIJ) |SEIL Serisi |SEIL/X 4.60<br>SEIL/B1 4.60<br>SEIL/x86 3.20 |[Yapılandırma kılavuzu](https://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) |Uyumlu değil |
-| Juniper |SRX |PolicyBased JunOS 10,2<br>Routebased JunOS 11,4 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
-| Juniper |J-Serisi |PolicyBased JunOS 10.4 R9<br>RouteBased JunOS 11,4 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |SRX |PolicyBased: JunOS 10.2<br>Routebased: JunOS 11.4 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
+| Juniper |J-Serisi |PolicyBased: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |ISG |ScreenOS 6.3 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |SSG |ScreenOS 6.2 |Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Desteklenen |[Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Yönlendirme ve Uzaktan Erişim Hizmeti |Windows Server 2012 |Uyumlu değil |Desteklenen |
 | Open Systems AG |Mission Control Security Ağ Geçidi |Yok |[Yapılandırma kılavuzu](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Uyumlu değil |
-| Palo Alto Networks |PAN-OS çalıştıran tüm cihazlar |PAN-OS<br>PolicyBased 6.1.5 veya üzeri<br>RouteBased 7.1.4 |Desteklenen |[Yapılandırma kılavuzu](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
+| Palo Alto Networks |PAN-OS çalıştıran tüm cihazlar |PAN-OS<br>PolicyBased: 6.1.5 veya üzeri<br>RouteBased: 7.1.4 |Desteklenen |[Yapılandırma kılavuzu](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (Geliştirici) | VyOS | VyOS 1.2.2 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Yeni Nesil UTM (NU serisi) | 9.0.1.3 | Uyumlu değil | [Yapılandırma kılavuzu](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ Series, NSA Series<br>SuperMassive Series<br>E-Class NSA Series |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Uyumlu değil |[Yapılandırma kılavuzu](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
@@ -103,7 +103,7 @@ Sağlanan VPN cihazı yapılandırma örneğini indirdikten sonra, ortamınıza 
 | &lt;RP_AccessList&gt; |Bu nesne için seçtiğiniz ad. Örnek: myAzureAccessList |
 | &lt;RP_IPSecTransformSet&gt; |Bu nesne için seçtiğiniz ad. Örnek: myIPSecTransformSet |
 | &lt;RP_IPSecCryptoMap&gt; |Bu nesne için seçtiğiniz ad. Örnek: myIPSecCryptoMap |
-| &lt;SP_AzureNetworkIpRange&gt; |Aralığı belirtin. Örnek: numaralı |
+| &lt;SP_AzureNetworkIpRange&gt; |Aralığı belirtin. Örnek: 192.168.0.0 |
 | &lt;SP_AzureNetworkSubnetMask&gt; |Alt ağ maskesi belirtin. Örnek: 255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |Şirket içi aralığı belirtin. Örnek: 10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |Şirket içi alt ağ maskesini belirtin. Örnek: 255.255.255.0 |
@@ -128,7 +128,7 @@ Aşağıdaki tablolarda:
 
 | **Özellik**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
-| IKE Sürümü           |IKEv1              |IKEv2              |
+| IKE Sürümü           |IKEv1              |IKEv1 ve IKEv2    |
 | Diffie-Hellman Grubu  |Grup 2 (1024 bit) |Grup 2 (1024 bit) |
 | Kimlik Doğrulama Yöntemi |Önceden Paylaşılan Anahtar     |Önceden Paylaşılan Anahtar     |
 | Şifreleme ve Karma Algoritmaları |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |1. AES256, SHA1<br>2. AES256, SHA256<br>3. AES128, SHA1<br>4. AES128, SHA256<br>5. 3DES, SHA1<br>6. 3DES, SHA256 |
@@ -138,9 +138,9 @@ Aşağıdaki tablolarda:
 
 | **Özellik**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
-| IKE Sürümü                   |IKEv1          |IKEv2                                        |
+| IKE Sürümü                   |IKEv1          |IKEv1 ve IKEv2                              |
 | Şifreleme ve Karma Algoritmaları |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
-| SA Yaşam Süresi (Zaman)            |3\.600 saniye  |27.000 saniye                                |
+| SA Yaşam Süresi (Zaman)            |3\.600 saniye  |27.000 saniye                               |
 | SA Yaşam Süresi (Bayt)           |102.400.000 KB | -                                           |
 | Kusursuz İletme Gizliliği (PFS) |Hayır             |[RouteBased QM SA Teklifleri](#RouteBasedOffers) |
 | Kullanılmayan Eş Algılama (DPD)     |Desteklenmiyor  |Desteklenen                                    |
@@ -152,42 +152,42 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 
 #### <a name="azure-gateway-as-initiator"></a>Başlatıcı olarak Azure Gateway
 
-|-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
+|-  |**Şifreleme**|**Kimlik doğrulaması**|**PFS Grubu**|
 |---| ---          |---               |---          |
-| 1\. |GCM AES256    |GCM (AES256)      |Yok.         |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |Yok.         |
-| 4 |AES256        |SHA256            |Yok.         |
-| 5 |AES128        |SHA1              |Yok.         |
-| 6 |3DES          |SHA256            |Yok.         |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |None         |
+| 6 |3DES          |SHA256            |None         |
 
 #### <a name="azure-gateway-as-responder"></a>Yanıtlayıcı olarak Azure Gateway
 
-|-  |**Şifreleme**|**Kimlik Doğrulaması**|**PFS Grubu**|
+|-  |**Şifreleme**|**Kimlik doğrulaması**|**PFS Grubu**|
 |---| ---          | ---              |---          |
-| 1\. |GCM AES256    |GCM (AES256)      |Yok.         |
+| 1 |GCM AES256    |GCM (AES256)      |None         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |Yok.         |
-| 4 |AES256        |SHA256            |Yok.         |
-| 5 |AES128        |SHA1              |Yok.         |
-| 6 |3DES          |SHA256            |Yok.         |
-| 7 |DES           |SHA1              |Yok.         |
-| 8 |AES256        |SHA1              |1\.            |
+| 3 |3DES          |SHA1              |None         |
+| 4 |AES256        |SHA256            |None         |
+| 5 |AES128        |SHA1              |None         |
+| 6 |3DES          |SHA256            |None         |
+| 7 |DES           |SHA1              |None         |
+| 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
-| 11|AES128        |SHA1              |1\.            |
+| 11|AES128        |SHA1              |1            |
 | 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
-| 14|3DES          |SHA1              |1\.            |
+| 14|3DES          |SHA1              |1            |
 | 15|3DES          |SHA1              |2            |
 | 16|3DES          |SHA256            |2            |
-| 17|AES256        |SHA256            |1\.            |
+| 17|AES256        |SHA256            |1            |
 | 18|AES256        |SHA256            |2            |
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Yok.         |
-| 23|AES128        |SHA256            |1\.            |
+| 22|AES128        |SHA256            |None         |
+| 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
@@ -204,7 +204,7 @@ Aşağıdaki tabloda IPsec SA (IKE Hızlı Mod) Teklifleri listelenir. Teklifler
 
 ### <a name="feb-16-2017"></a>16 Şubat 2017
 
-Azure Route tabanlı VPN için **7.1.4 öncesinde sürümü olan Palo Alto Networks cihazları** : 7.1.4 ' den önceki PAN-OS sürümüne sahip Palo Alto Networks 'un VPN cihazlarını kullanıyorsanız ve Azure rota tabanlı VPN ağ geçitlerinde bağlantı sorunları yaşıyorsanız, aşağıdaki adımları uygulayın:
+Azure rota tabanlı VPN için **7.1.4’ten eski bir sürüme sahip Palo Alto Networks cihazları**: Palo Alto Networks tarafından sağlanan ve PAN-OS sürümü 7.1.4’ten eski olan VPN cihazları kullanıyor ve Azure rota tabanlı VPN ile bağlantı sorunları yaşıyorsanız aşağıdaki adımları gerçekleştirin:
 
 1. Palo Alto Networks cihazınızın üretici yazılımı sürümünü denetleyin. PAN-OS sürümünüz 7.1.4’ten eskiyse 7.1.4 sürümüne yükseltin
 2. Palo Alto Networks cihazında, Azure VPN Gateway’e bağlanırken kullanılan Phase 2 SA (veya Quick Mode SA) ömrünü 28.800 saniye (8 saat) olarak değiştirin.

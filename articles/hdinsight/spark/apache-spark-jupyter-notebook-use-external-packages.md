@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Spark 'ta Jupyıter ile özel Maven paketleri kullanma
+title: Spark-Azure HDInsight 'ta Jupyıter ile özel Maven paketleri kullanma
 description: Özel Maven paketleri kullanmak için HDInsight Spark kümeleri ile kullanılabilen jupi not defterlerini yapılandırma hakkında adım adım yönergeler.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: cd88c85c927c635269d814c20b15f574212e1a6d
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337682"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494554"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma
 
@@ -46,27 +46,27 @@ Aşağıdakilere sahip olmanız gerekir:
 
 1. Yeni bir not defteri oluşturun. **Yeni**' ye ve ardından **Spark**' a tıklayın.
    
-    ![Yeni bir Spark Jupyter Not defteri oluşturma](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Yeni Jupyter Not defteri oluşturma")
+    ![Yeni bir Spark Jupyter Not defteri oluşturun](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Yeni bir Jupyter not defteri oluşturma")
 
 1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki not defteri adına tıklayın ve kolay bir ad girin.
    
-    ![Not defteri adını belirtme](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Not defteri adını belirtme")
+    ![Not defteri için bir ad girin](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Not defteri adını belirtme")
 
-1. Not defterini harici bir paket kullanacak şekilde yapılandırmak için `%%configure` Magic kullanın. Dış paketleri kullanan not defterlerinde ilk kod hücresinde `%%configure` Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
+1. Not defterini harici bir paket kullanacak şekilde yapılandırmak için `%%configure` Magic kullanacaksınız. Dış paketleri kullanan not defterlerinde, ilk kod hücresinde `%%configure` Magic ' i çağırdığınızdan emin olun. Bu, çekirdeğin oturum başlamadan önce paketi kullanacak şekilde yapılandırılmasını sağlar.
 
     >[!IMPORTANT]  
-    >İlk hücrede çekirdeği yapılandırmayı unutursanız, `-f` parametresiyle `%%configure` ' ı kullanabilirsiniz, ancak bu oturum oturumunu yeniden başlatır ve tüm ilerleme kaybedilir.
+    >İlk hücrede çekirdeği yapılandırmayı unutursanız, `%%configure` `-f` parametresiyle kullanabilirsiniz, ancak bu oturum oturumunu yeniden başlatır ve tüm ilerleme kaybedilir.
 
     | HDInsight sürümü | Komut |
     |-------------------|---------|
     |HDInsight 3,3 ve HDInsight için 3,4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
     | HDInsight 3,5 ve HDInsight için 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-1. Yukarıdaki kod parçacığı, Maven merkezi deposundaki Dış paketin Maven koordinatlarını bekler. Bu kod parçacığında, `com.databricks:spark-csv_2.10:1.4.0` **Spark-CSV** paketi için Maven koordinatıdır. Bir paket için koordinatları nasıl oluşturabileceğiniz aşağıda açıklanmaktadır.
+1. Yukarıdaki kod parçacığı, Maven merkezi deposundaki Dış paketin Maven koordinatlarını bekler. Bu kod parçacığında, `com.databricks:spark-csv_2.10:1.4.0` **Spark-CSV** paketi için Maven koordinatı ' dir. Bir paket için koordinatları nasıl oluşturabileceğiniz aşağıda açıklanmaktadır.
    
     a. Maven deposundaki paketi bulun. Bu makalede [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)kullanırız.
    
-    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,10 ve Spark 1.4.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. Spark jupi çekirdeğinde veya Spark göndermesi üzerinde `scala.util.Properties.versionString` çalıştırarak, kümeinizdeki Scala sürümünü bulabilirsiniz. Jupi Not defterleri üzerinde `sc.version` çalıştırarak kümenizdeki Spark sürümünü bulabilirsiniz.
+    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,10 ve Spark 1.4.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. Spark Jupyıter çekirdeğinde veya Spark gönderme üzerinde `scala.util.Properties.versionString` çalıştırarak, kümeinizdeki Scala sürümünü bulabilirsiniz. Jupyıter Not defterlerindeki `sc.version` çalıştırarak, kümelerinizde Spark sürümünü bulabilirsiniz.
    
     ![Jupyter Not defteri ile dış paketleri kullanma](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Not defteri ile dış paketleri kullanma")
    
@@ -96,13 +96,13 @@ Aşağıdakilere sahip olmanız gerekir:
 
 ## <a name="seealso"></a>Ayrıca bkz.
 
-* [Bakýþ Azure HDInsight üzerinde Apache Spark](apache-spark-overview.md)
+* [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [BI ile Apache Spark: Bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: Yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma
@@ -119,7 +119,7 @@ Aşağıdakilere sahip olmanız gerekir:
 * [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Kaynakları yönet
+### <a name="manage-resources"></a>Kaynakları yönetme
 
 * [Azure HDInsight’ta Apache Spark kümesi kaynaklarını yönetme](apache-spark-resource-manager.md)
 * [HDInsight’ta bir Apache Spark kümesinde çalışan işleri izleme ve hata ayıklama](apache-spark-job-debugging.md)

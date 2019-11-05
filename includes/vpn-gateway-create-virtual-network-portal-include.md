@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b585a47d3950d232eb3e8047c12ee8949030c95
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 19b8a73835e8ac5ecaac7b42793140325964d17c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68780158"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524026"
 ---
 Azure portalını kullanarak Resource Manager dağıtımında bir VNet oluşturmak için aşağıdaki adımları izleyin. Bu adımları öğretici olarak kullanıyorsanız **örnek değerleri** kullanın. Bu adımları öğretici olarak uygulamıyorsanız değerleri kendi değerlerinizle değiştirmeyi unutmayın. Sanal ağlarla çalışma hakkında daha fazla bilgi için bkz. [Virtual Network’e Genel Bakış](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -21,9 +21,11 @@ Azure portalını kullanarak Resource Manager dağıtımında bir VNet oluşturm
 >Bu VNet’in bir şirket içi konuma bağlanması için şirket içi ağ yöneticinizle bu ağ için özellikle kullanabileceğiniz bir IP adresi aralığı ayırma işlemini koordine etmeniz gerekir. VPN bağlantısının her iki tarafında bir yinelenen adres aralığı varsa, trafik beklediğiniz şekilde yönlendirilmez. Ayrıca, bu sanal ağı başka bir sanal ağa bağlamak isterseniz adres alanı diğer sanal ağ ile örtüşemez. Ağ yapılandırmanızı uygun şekilde planlamaya dikkat edin.
 >
 
-1. Bir tarayıcıdan [Azure portalına](https://portal.azure.com) gidin ve Azure hesabınızla oturum açın.
-2. **Kaynak oluştur**’a tıklayın. **Markette ara** alanına 'sanal ağ' yazın. Döndürülen listeden **Sanal ağ**’ı bulun ve tıklayarak **Sanal Ağ** sayfasını açın.
-3. **Oluştur**’a tıklayın. Bu, **sanal ağ oluştur** sayfasını açar.
+1. [Azure Portal](https://portal.azure.com) menüsünde **kaynak oluştur**' u seçin. 
+
+   ![Azure portal bir kaynak oluşturun](./media/vpn-gateway-create-virtual-network-portal-include/azure-portal-create-resource.png)
+2. **Markette ara** alanına 'sanal ağ' yazın. Döndürülen listeden **Sanal ağ**’ı bulun ve tıklayarak **Sanal Ağ** sayfasını açın.
+3. **Oluştur**'a tıklayın. Bu, **sanal ağ oluştur** sayfasını açar.
 4. **Sanal ağ oluştur** sayfasında sanal ağ ayarlarını yapılandırın. Alanları doldururken, alana girilen karakterler geçerliyse kırmızı ünlem işareti yeşil onay işaretine dönüşür. Aşağıdaki değerleri kullanın:
 
    - **Ad**: VNet1

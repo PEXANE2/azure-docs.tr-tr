@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight GÇ Cache (Önizleme) ile iş yükleri performansını Apache Spark
+title: Apache Spark performans-Azure HDInsight GÇ önbelleği (Önizleme)
 description: Azure HDInsight GÇ önbelleği ve Apache Spark performansını geliştirmek için nasıl kullanılacağı hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: b60906df01f640877e90281812acf64082ffad01
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162840"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494643"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight GÇ önbelleği 'ni kullanarak Apache Spark iş yüklerinin performansını iyileştirme
 
@@ -30,7 +30,7 @@ GÇ önbelleğinin kullanılması, Azure Blob depolamadan veri okuyan işler iç
 
 GÇ önbelleği kullanırken performans artışına bakmak için Spark işleriniz üzerinde herhangi bir değişiklik yapmanız gerekmez. GÇ önbelleği devre dışı bırakıldığında, bu Spark kodu verileri Azure Blob depolamadan uzaktan okur: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. GÇ önbelleği etkinleştirildiğinde, aynı kod satırı, önbelleğe alınan okuma GÇ önbelleğinde neden olur. Aşağıdaki okumalar, veriler SSD 'den yerel olarak okunur. HDInsight kümesindeki çalışan düğümleri yerel olarak eklenmiş, ayrılmış SSD sürücüleriyle donatılmıştır. HDInsight GÇ önbelleği, en düşük gecikme düzeyi ve bant genişliğini en üst düzeye çıkaran önbelleğe alma için bu yerel SSD 'leri kullanır.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 Azure HDInsight GÇ önbelleği, önizleme aşamasında varsayılan olarak devre dışıdır. GÇ önbelleği, 2,3 Apache Spark çalıştıran Azure HDInsight 3.6 + Spark kümelerinde kullanılabilir.  GÇ önbelleğini etkinleştirmek için aşağıdakileri yapın:
 
@@ -69,7 +69,7 @@ GÇ önbelleğini etkinleştirdikten sonra Spark işlerini çalıştıran disk a
 
 1. Sağ üst köşedeki **Kaydet** ' i seçin.
 
-1. **Yeniden Başlat** ' ı seçin  > **etkilenen tümünü yeniden başlatın**.
+1. **Yeniden Başlat** ' ı seçin > **etkilenen tümünü yeniden başlatın**.
 
     ![Apache ambarı yeniden başlatma etkilendi](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Etkilenen tümünü yeniden Başlat")
 

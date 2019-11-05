@@ -1,24 +1,24 @@
 ---
 title: 'Satır ekleme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: İki veri kümesini birleştirmek için Azure Machine Learning hizmetinde satır ekle modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: İki veri kümesini birleştirmek için Azure Machine Learning satır ekle modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a16dc0bfc3fae8852c46435f6407c56149e1b14e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693244"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493943"
 ---
 # <a name="add-rows-module"></a>Satır ekleme modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 İki veri kümesini birleştirmek için bu modülü kullanın. Birleştirme sırasında, ikinci veri kümesinin satırları ilk veri kümesinin sonuna eklenir.  
   
@@ -42,4 +42,4 @@ Satırları birleştirme, aşağıdaki gibi senaryolarda faydalıdır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

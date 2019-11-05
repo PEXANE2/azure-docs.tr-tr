@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802186"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498704"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V değerlendirmesi ve geçiş için destek matrisi
 
@@ -35,26 +35,7 @@ Tablo, Hyper-V VM 'Leri için desteklenen senaryoları özetler.
 --- | ---
 Azure izinleri | Azure geçişi projesi oluşturmak için abonelikte katkıda bulunan veya sahip izinlerinizin olması gerekir.
 Hyper-V Sanal Makineleri | Tek bir projede 35.000 adede kadar Hyper-V VM 'yi değerlendirin. Bir Azure aboneliğinde birden çok projeniz olabilir. Bir proje, değerlendirme sınırlarına kadar hem VMware VM 'lerini hem de Hyper-V sanal makinelerini içerebilir.
-Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturabilirsiniz. Belirli coğrafi bölgelerde projeler oluşturabilseniz de, diğer hedef konumlar için makineleri değerlendirebilir veya geçirebilirsiniz. Proje Coğrafya yalnızca keşfedilen meta verileri depolamak için kullanılır.
-
-  **Coğrafya** | **Meta veri depolama konumu**
-  --- | ---
-  Azure Devlet Kurumları | ABD Hükümeti Virginia
-  Asya Pasifik | Doğu Asya veya Güneydoğu Asya
-  Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
-  Brezilya | Brezilya Güney
-  Kanada | Kanada Orta veya Kanada Doğu
-  Avrupa | Kuzey Avrupa veya Batı Avrupa
-  Fransa | Fransa Orta
-  Hindistan | Orta Hindistan veya Güney Hindistan
-  Japonya |  Japonya Doğu veya Japonya Batı
-  Güney Kore | Kore Orta veya Kore Güney
-  Birleşik Krallık | UK Güney veya UK Batı
-  Birleşik Devletler | Orta ABD veya Batı ABD 2
-
-
- > [!NOTE]
- > Azure Kamu desteği şu anda yalnızca Azure geçişi 'nin [eski sürümünde](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) sunulmaktadır.
+Coğrafya | Desteklenen coğrafi lıkları [gözden geçirin](migrate-support-matrix.md#supported-geographies) .
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Değerlendirme-Hyper-V ana bilgisayar gereksinimleri

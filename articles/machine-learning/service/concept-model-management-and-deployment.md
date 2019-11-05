@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML modellerini yönetin, dağıtın & izleyin'
+title: 'MLOps: ML modellerini yönetme, dağıtma, & izleme'
 titleSuffix: Azure Machine Learning
-description: 'MLOps için Azure Machine Learning kullanmayı öğrenin: modellerinizi dağıtmak, yönetmek ve izlemek için modellerini sürekli olarak geliştirmek üzere kullanın. Azure Machine Learning ile yerel makinenizde veya diğer kaynaklardan eğitilmiş modeller dağıtabilirsiniz.'
+description: 'MLOps için Azure Machine Learning kullanmayı öğrenin: modellerinizi dağıtmak, yönetmek ve izlemek için modellerini sürekli olarak geliştirmek üzere kullanın. Azure Machine Learning, yerel makinenizde veya diğer kaynaklardan eğitilen modelleri dağıtabilirsiniz.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 06/24/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035475"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497435"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Azure Machine Learning modelleri yönetin, dağıtın ve izleyin
 
@@ -47,7 +47,7 @@ Model kaydı, modellerinizi Azure bulutu 'nda çalışma alanınızda depolaman�
 > [!TIP]
 > Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları Azure Machine Learning çalışma alanınızda tek bir model olarak kaydedebilirsiniz. Kayıttan sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kayıtlı tüm dosyaları alabilirsiniz.
  
-Kayıtlı modeller ad ve sürüm ile tanımlanır. Mevcut bir aynı ada sahip bir model her kaydettirdiğinizde, kayıt defteri sürüm artırır. Ek meta veri etiketleri aramak modellerinde kullanılabilir kayıt sırasında de sağlayabilirsiniz. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
+Kayıtlı modeller ad ve sürüm ile tanımlanır. Varolan bir adla aynı ada sahip bir modeli her kaydettiğinizde kayıt defteri sürümü arttırır. Ayrıca, model ararken kullanılabilecek kayıt sırasında ek meta veri etiketleri de sağlayabilirsiniz. Azure Machine Learning, Python 3.5.2 veya üzeri kullanılarak yüklenebilecek tüm modelleri destekler.
 
 > [!TIP]
 > Azure Machine Learning dışında eğitilen modelleri de kaydedebilirsiniz.
@@ -90,7 +90,7 @@ Bu varlıklar bir Docker görüntüsüne paketlenir ve bir Web hizmeti veya IoT 
 
 * GPU 'YU etkinleştir: Docker görüntüsünde GPU desteğini etkinleştirmek için kullanılır. Görüntü, Azure Container Instances, Azure Kubernetes hizmeti, Azure Machine Learning Işlem veya Azure sanal makineleri gibi Microsoft Azure hizmetlerinde kullanılmalıdır.
 * Ek Docker dosya adımları: Docker görüntüsünü oluştururken çalıştırmak için ek Docker adımları içeren bir dosya.
-* Temel görüntü: Temel görüntü olarak kullanılacak özel bir görüntü. Özel bir görüntü kullanmıyorsanız, temel görüntü Azure Machine Learning tarafından sağlanır.
+* Temel görüntü: temel görüntü olarak kullanılacak özel bir görüntü. Özel bir görüntü kullanmıyorsanız, temel görüntü Azure Machine Learning tarafından sağlanır.
 
 Ayrıca, hedef dağıtım platformunun yapılandırmasını da sağlarsınız. Örneğin, sanal makine aile türü, kullanılabilir bellek ve Azure Kubernetes hizmetine dağıtım yaparken çekirdek sayısı.
 
@@ -115,7 +115,7 @@ Modeli bir Web hizmeti olarak dağıtmak için aşağıdaki öğeleri sağlaman�
 
 Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>IoT Edge cihazları
+#### <a name="iot-edge-devices"></a>IoT Edge cihazlar
 
 IoT cihazlarıyla modelleri **Azure IoT Edge modüller**aracılığıyla kullanabilirsiniz. IoT Edge modüller, cihazda çıkarım veya model Puanlama sağlayan bir donanım cihazına dağıtılır.
 
@@ -157,7 +157,7 @@ Azure Machine Learning ile Azure Pipelines kullanma hakkında daha fazla bilgi i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning ile [modelleri nasıl dağıtabileceğiniz](how-to-deploy-and-where.md) hakkında daha fazla bilgi edinin. Dağıtım örneği için bkz [. Öğretici: Azure Container Instances](tutorial-deploy-models-with-aml.md)bir görüntü sınıflandırma modeli dağıtın.
+Azure Machine Learning ile [modelleri nasıl dağıtabileceğiniz](how-to-deploy-and-where.md) hakkında daha fazla bilgi edinin. Dağıtım örneği için bkz. [öğretici: görüntü sınıflandırma modelini Azure Container Instances dağıtma](tutorial-deploy-models-with-aml.md).
 
 [Azure Pipelines Ile ml modellerinin sürekli tümleştirme ve dağıtımı](/azure/devops/pipelines/targets/azure-machine-learning)oluşturmayı öğrenin. 
 

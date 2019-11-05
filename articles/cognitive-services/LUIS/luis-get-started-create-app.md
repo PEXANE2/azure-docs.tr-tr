@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/27/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 748c51e74db20ac101dc2dff0d924567acded114
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: MT
+ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703232"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495377"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Hızlı başlangıç: Önceden oluşturulmuş ev otomasyonu uygulamasını kullanma
 
@@ -31,48 +31,44 @@ Bu makale için [https://www.luis.ai](https://www.luis.ai) adresindeki LUIS port
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 **Uygulamalarım** sayfasından uygulama oluşturabilir ve yönetebilirsiniz. 
 
-1. **Yeni uygulama oluştur**'u seçin.
+1. LUU portalında, Uygulamalarım listesinden **+ Oluştur**' u seçin.
 
-    [Uygulama(media/luis-quickstart-new-app/app-list.png "listesi uygulama") ![listesinin ekran görüntüsü]](media/luis-quickstart-new-app/app-list.png)
+    ![LUU portalında, Uygulamalarım listesinde ' + oluştur ' u seçin.](./media/create-app-in-portal.png)
 
-1. İletişim kutusunda uygulamanıza "Home Automation" adını verin.
+1. İletişim kutusunda `Home Automation` uygulamanızı adlandırın, sonra **bitti**' yi seçin. LUO uygulamayı oluşturur.
 
-    [Yeni uygulama oluştur açılır menüsü(media/luis-quickstart-new-app/create-new-app-dialog.png "ekran") görüntüsü yeni uygulama iletişim kutusu ![ekran görüntüsü]](media/luis-quickstart-new-app/create-new-app-dialog.png)
-
-1. Uygulamanızın kültürünü seçin. Bu Home Automation uygulaması için İngilizce seçeneğini belirleyin. Ardından **Bitti**'yi seçin. LUIS, Home Automation uygulamasını oluşturur. 
+    ![İletişim kutusunda, uygulamanızın giriş Otomasyonu ' nu adlandırın](./media/create-new-app-details.png)
 
     >[!NOTE]
     >Uygulama oluşturduktan sonra kültür değiştirilemez. 
 
 ## <a name="add-prebuilt-domain"></a>Önceden oluşturulmuş etki alanını ekleme
 
-Sol taraftaki gezinti bölmesinden **Önceden oluşturulmuş etki alanları**'nı seçin. Ardından "Home" araması yapın. **Etki alanı ekle**'yi seçin.
+**Önceden oluşturulmuş etki alanlarını** seçin ve ardından **homeautomation**' ı arayın. HomeAutomation kartında **etki alanı Ekle** ' yi seçin.
 
-[Önceden oluşturulmuş etki(media/luis-quickstart-new-app/home-automation.png "alanı menüsünde") ![çağrılan giriş Otomasyonu etki alanının ekran görüntüsü]](media/luis-quickstart-new-app/home-automation.png)
+![' Önceden oluşturulmuş etki alanları ' ' nı seçin ve ' HomeAutomation ' araması yapın. HomeAutomation kartında ' etki alanı Ekle ' seçeneğini belirleyin.](media/luis-quickstart-new-app/home-automation.png)
 
 Etki alanı başarıyla eklendiğinde önceden oluşturulmuş etki alanı kutusunda **Etki alanını kaldır** düğmesi görüntülenir.
 
-[Kaldır düğmesi(media/luis-quickstart-new-app/remove-domain.png "olan") giriş Otomasyonu etki ![alanının ekran görüntüsü]](media/luis-quickstart-new-app/remove-domain.png)
-
 ## <a name="intents-and-entities"></a>Amaçlar ve varlıklar
 
-HomeAutomation etki alanının amaçlarını incelemek için sol taraftaki gezinti bölmesinden **Amaçlar**'ı seçin. Her amaçta örnek konuşmalar bulunur.
+HomeAutomation etki alanı amaçlarını gözden geçirmek için **amaçlar** ' ı seçin. Önceden oluşturulmuş etki alanı amaçları, örnek söylenebilir.
 
-![Homeautomation hedefleri listesinin ekran]görüntüsü(media/luis-quickstart-new-app/home-automation-intents.png "homeautomation hedefleri listesinin ekran görüntüsü")]
+![HomeAutomation amaçları listesinin ekran görüntüsü](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation amaçları listesinin ekran görüntüsü")
 
 > [!NOTE]
 > **Hiçbiri**, tüm LUIS uygulamaları tarafından sağlanan bir amaçtır. Uygulamanızın sağladığı işlevleri karşılamayan konuşmaların işlenmesi için bunu seçersiniz. 
 
 **HomeAutomation.TurnOff** amacını seçin. Amaçta varlıklarla etiketlenmiş olan konuşmaların bir listesini görebilirsiniz.
 
-[Homeautomation.(media/luis-quickstart-new-app/home-automation-turnoff.png "kapatma amaçlı ekranının") ![ekran görüntüsü]](media/luis-quickstart-new-app/home-automation-turnoff.png)
+[![HomeAutomation. kapatma amaçlı ekran görüntüsü](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation. kapatma amaçlı ekran görüntüsü")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>LUIS uygulamasını eğitme
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>Uygulamanızı test etme
-Uygulamanızı eğittikten sonra test edebilirsiniz. Üst gezinti bölmesinde **Test**'i seçin. Etkileşimli Test bölmesine "Turn off the lights" (Işıkları kapat) gibi bir test konuşması yazın. 
+Uygulamanızı eğittikten sonra test edebilirsiniz. **Test**' i seçin. Etkileşimli test bölmesine `Turn off the lights` benzer bir test yazın ve ENTER tuşuna basın. 
 
 ```
 Turn off the lights
@@ -80,14 +76,13 @@ Turn off the lights
 
 En yüksek puana sahip olan amacın test konuşması için beklediğiniz amaca karşılık geldiğinden emin olun.
 
-Bu örnekte, `Turn off the lights`, **Homeautomation. TurnOff**'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
+Bu örnekte `Turn off the lights`, **Homeautomation. TurnOff**'un en üst Puanlama hedefi olarak doğru şekilde tanımlanır.
 
-[(media/luis-quickstart-new-app/test.png "Söylenişi ile test paneli vurgulanmış ekran") görüntüsü ![ile test paneli ekran görüntüsü]](media/luis-quickstart-new-app/test.png)
-
+![Söylenişi vurgulanmış şekilde test paneli ekran görüntüsü](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
 Tahmin hakkında daha fazla **bilgi için İnceleme** ' yi seçin.
 
-![Söylenişi vurgulanmış şekilde test paneli ekran görüntüsü](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
+![İnceleme bilgileriyle test bölmesinin ekran görüntüsü](media/luis-quickstart-new-app/test.png)
 
 Test bölmesini daraltmak için yeniden **Test**'i seçin. 
 
@@ -95,75 +90,96 @@ Test bölmesini daraltmak için yeniden **Test**'i seçin.
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Uç nokta URL'sini almak için uygulamayı yayımlama
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
 
-## <a name="query-the-v2-api-prediction-endpoint"></a>V2 API tahmini uç noktasını sorgulama
+<a name="query-the-v2-api-prediction-endpoint"></a>
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
+## <a name="query-the-v3-api-prediction-endpoint"></a>V3 API tahmini uç noktasını sorgulama
 
-1. Adresteki URL'nin sonuna gidin ve `turn off the living room light` tümcesini girip Enter tuşuna basın. 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
 
-    #### <a name="v2-prediction-endpointtabv2"></a>[V2 tahmin uç noktası](#tab/V2)
+1. Tarayıcı adres çubuğunda, sorgu dizesi için aşağıdaki ad ve değer çubuklarının URL 'de olduğundan emin olun. Sorgu dizesinde yoksa, bunları ekleyin:
 
-    `https://<region>.api.cognitive.microsoft.com/luis/**v2.0**/apps/<appID>?subscription-key=<YOUR_KEY>&**q=<user-utterance-text>**`
+    |Ad/değer çifti|
+    |--|
+    |`verbose=true`|
+    |`show-all-intents=true`|
 
-    Tarayıcı, HTTP uç noktanızın JSON yanıtının **v2 API** sürümünü görüntüler.
-
-    ```json
-    {
-      "query": "turn off the lights",
-      "topScoringIntent": {
-        "intent": "HomeAutomation.TurnOff",
-        "score": 0.995867
-      },
-      "entities": [
-        {
-          "entity": "lights",
-          "type": "HomeAutomation.DeviceType",
-          "startIndex": 13,
-          "endIndex": 18,
-          "resolution": {
-            "values": [
-              "light"
-            ]
-          }
-        }
-      ]
-    }
-    ```
-    
-    #### <a name="v3-prediction-endpointtabv3"></a>[V3 tahmin uç noktası](#tab/V3)
-
-    Bir [v3 API sorgusu](luis-migration-api-v3.md)için, tarayıcıda alma yöntemi https isteğini değiştirin, değerleri kendi değerlerinizin açılı ayraçlar cinsinden değiştirin.     
-
-    `https://<region>.api.cognitive.microsoft.com/luis/**v3.0-preview**/apps/<appID>/**slots**/**production**/**predict**?subscription-key=<YOUR_KEY>&**query=<user-utterance-text>**`
+1. Tarayıcının adres çubuğunda URL 'nin sonuna gidin ve _sorgu_ değeri için `turn off the living room light` girin ve ardından ENTER tuşuna basın.
 
     ```json
     {
-        "query": "turn off the lights",
+        "query": "turn off the living room light",
         "prediction": {
-            "normalizedQuery": "turn off the lights",
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.99649024
+                    "score": 0.967174649
                 }
             },
             "entities": {
+                "HomeAutomation.Location": [
+                    "living room"
+                ],
+                "HomeAutomation.DeviceName": [
+                    [
+                        "living room light"
+                    ]
+                ],
                 "HomeAutomation.DeviceType": [
                     [
                         "light"
                     ]
-                ]
+                ],
+                "$instance": {
+                    "HomeAutomation.Location": [
+                        {
+                            "type": "HomeAutomation.Location",
+                            "text": "living room",
+                            "startIndex": 13,
+                            "length": 11,
+                            "score": 0.9494325,
+                            "modelTypeId": 1,
+                            "modelType": "Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "HomeAutomation.DeviceName": [
+                        {
+                            "type": "HomeAutomation.DeviceName",
+                            "text": "living room light",
+                            "startIndex": 13,
+                            "length": 17,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "HomeAutomation.DeviceType": [
+                        {
+                            "type": "HomeAutomation.DeviceType",
+                            "text": "light",
+                            "startIndex": 25,
+                            "length": 5,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
         }
     }
     ```
 
-
     [V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
     
-    * * * 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

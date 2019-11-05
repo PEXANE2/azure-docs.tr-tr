@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Node. js için Özel Görüntü İşleme SDK ile bir görüntü sınıflandırma projesi oluşturma'
+title: 'Hızlı başlangıç: node. js için Özel Görüntü İşleme SDK ile bir görüntü sınıflandırma projesi oluşturma'
 titleSuffix: Azure Cognitive Services
 description: Node. js SDK 'sını kullanarak bir proje oluşturun, Etiketler ekleyin, görüntü yükleyin, projenize eğitme yapın ve tahmin edin.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1a7780c78e8771ae0eae19d7c8b9da6fbedd220c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982373"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519399"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı Başlangıç: Özel Görüntü İşleme Node. js SDK 'Sı ile bir görüntü sınıflandırma projesi oluşturma
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Hızlı başlangıç: Özel Görüntü İşleme Node. js SDK 'Sı ile bir görüntü sınıflandırma projesi oluşturma
 
 Bu makale, bir görüntü sınıflandırma modeli oluşturmak için Node. js ile Özel Görüntü İşleme SDK 'Yı kullanmaya başlamanıza yardımcı olacak bilgiler ve örnek kod sağlar. Oluşturulduktan sonra Etiketler ekleyebilir, görüntü yükleyebilir, projeyi eğitebilir, projenin yayımlanmış tahmin uç noktası URL 'sini alabilir ve bir görüntüyü programlı olarak test etmek için uç noktayı kullanabilirsiniz. Bu örneği kendi Node. js uygulamanızı oluşturmak için bir şablon olarak kullanın. Kod _içermeyen_ bir sınıflandırma modeli oluşturma ve kullama işlemi yapmak istiyorsanız, [tarayıcı tabanlı kılavuz](getting-started-build-a-classifier.md) konusuna bakın.
 
@@ -25,6 +25,7 @@ Bu makale, bir görüntü sınıflandırma modeli oluşturmak için Node. js ile
 
 - [Node. js 8](https://www.nodejs.org/en/download/) veya üzeri yüklü.
 - [NPM](https://www.npmjs.com/) yüklendi.
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>Özel Görüntü İşleme SDK’sını yükleme
 
@@ -60,7 +61,7 @@ const predictionKey = "<your prediction key>";
 const predictionResourceId = "<your prediction resource id>";
 const sampleDataRoot = "<path to image files>";
 
-const endPoint = "https://southcentralus.api.cognitive.microsoft.com"
+const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 

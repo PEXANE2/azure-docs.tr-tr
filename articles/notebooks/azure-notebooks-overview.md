@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 12d9a1a92c0b008244c7db4ec23d5a28888b042a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: ad4a1d89809ebd1b7ac933ef391965accbfd1a6c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973161"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496734"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks genel bakış
 
 Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla IPython), markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri tek bir paylaşılabilir tuval, *not defteri* (Jupyter.org Image hitap) üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem ' dir:
 
-[![Jupyıter Not defteri örnekleri](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[Jupi Not defterlerinin ![örnekleri](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Kod, grafik ve açıklayıcı metinlerin bu güçlü birleşimi nedeniyle, Jupyıter, veri bilimi yönergeleri, veri temizleme ve dönüştürme, sayısal benzetim, istatistiksel modelleme ve geliştirme gibi birçok kullanım için popüler hale geldi. makine öğrenimi modelleri.
 
@@ -118,4 +118,4 @@ Azure Notebooks hakkındaki sorularınızı tartışmak için [GitHub deposunda]
   - [Bir slayt gösterisi sunun](present-jupyter-notebooks-slideshow.md)
   - [Veri dosyalarıyla çalışma](work-with-project-data-files.md)
   - [Veri kaynaklarına erişin](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning hizmetlerini kullanma](use-machine-learning-services-jupyter-notebooks.md)
+  - [Azure Machine Learning kullan](use-machine-learning-services-jupyter-notebooks.md)

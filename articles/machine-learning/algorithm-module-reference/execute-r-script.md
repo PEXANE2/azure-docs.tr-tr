@@ -1,7 +1,7 @@
 ---
 title: 'R betiğini Yürüt: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: R kodunu çalıştırmak için Azure Machine Learning hizmetinde R betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: R kodunu çalıştırmak için Azure Machine Learning R betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693780"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497876"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
-Bu makalede, Visual Interface işlem hattınızda R kodunu çalıştırmak için **r betiği yürütme** modülünün nasıl kullanılacağı açıklanır.
+Bu makalede, Azure Machine Learning tasarımcı (Önizleme) ardışık düzeninde R kodu çalıştırmak için **r betiği yürütme** modülünün nasıl kullanılacağı açıklanır.
 
 R ile Şu anda mevcut modüller tarafından desteklenmeyen görevleri gerçekleştirebilirsiniz: 
 - Özel veri dönüştürmeleri oluşturma
 - Tahminleri değerlendirmek için kendi ölçümlerinizi kullanın
-- Visual Interface 'de tek başına modüller olarak uygulanmayan algoritmaları kullanarak modeller oluşturun
+- Tasarımcıda tek başına modüller olarak uygulanmayan algoritmaları kullanarak modeller oluşturun
 
 ## <a name="r-version-support"></a>R sürüm desteği
 
-Azure Machine Learning hizmeti görsel arabirimi R 'nin CRAN (kapsamlı R arşiv ağı) dağıtımını kullanır. Şu anda kullanılan sürüm, CRAN 3.5.1 sürümüdür.
+Azure Machine Learning tasarımcı, R 'nin CRAN (kapsamlı R arşiv ağı) dağıtımını kullanır. Şu anda kullanılan sürüm, CRAN 3.5.1 sürümüdür.
 
 ## <a name="supported-r-packages"></a>Desteklenen R paketleri
 
@@ -73,7 +73,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ![R-modülü](media/module/execute-r-script.png)
 
-Visual Interface 'e depolanmış veri kümeleri, bu modülle yüklendiğinde otomatik olarak R veri çerçevesine dönüştürülür.
+Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik olarak R veri çerçevesine dönüştürülür.
 
 1.  İşlem hattınızla **R betiği yürütme** modülünü ekleyin.
 
@@ -81,9 +81,9 @@ Visual Interface 'e depolanmış veri kümeleri, bu modülle yüklendiğinde oto
 
 1. Betiği için gereken tüm girdileri bağlayın. Girişler isteğe bağlıdır ve veri ve ek R kodu içerebilir.
 
-    * **DataSet1**: ilk girişe `dataframe1` olarak başvur. Giriş veri kümesi, CSV, TSV, ARFF olarak biçimlendirilmelidir veya bir Azure Machine Learning veri kümesini bağlayabilmeniz gerekir.
+    * **DataSet1**: ilk girişe `dataframe1`olarak başvur. Giriş veri kümesi, CSV, TSV, ARFF olarak biçimlendirilmelidir veya bir Azure Machine Learning veri kümesini bağlayabilmeniz gerekir.
 
-    * **DataSet2**: ikinci girişe `dataframe2` olarak başvurun. Bu veri kümesi aynı zamanda CSV, TSV, ARFF dosyası veya Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
+    * **DataSet2**: ikinci girişe `dataframe2`olarak başvurun. Bu veri kümesi aynı zamanda CSV, TSV, ARFF dosyası veya Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
 
     * **Betik paketi**: Üçüncü giriş ZIP dosyalarını kabul eder. Daraltılmış dosya birden çok dosya ve birden çok dosya türü içerebilir.
 
@@ -111,15 +111,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
- * Betik, Bu modülün giriş noktası olan `azureml_main` adlı bir işlev içermelidir.
+ * Betik, Bu modülün giriş noktası olan `azureml_main`adlı bir işlev içermelidir.
 
  * Giriş noktası işlevi, en fazla iki giriş bağımsız değişkeni içerebilir: `Param<dataframe1>` ve `Param<dataframe2>`
  
    > [!NOTE]
-    > **Execute R betiği** modülüne geçirilen verilere, Azure Machine Learning Studio farklı olan `dataframe1` ve `dataframe2` olarak başvurulur (`dataset1`, `dataset2` olarak Studio başvurusu). Giriş verilerinin betiğe doğru şekilde yazıldığından emin olmak için lütfen kontrol edin.  
+    > **Execute R betik** modülüne geçirilen verilere `dataframe1` ve Azure Machine Learning `dataframe2`olarak başvurulur (tasarımcı başvurusu `dataset1`, `dataset2`). Giriş verilerinin betiğe doğru şekilde yazıldığından emin olmak için lütfen kontrol edin.  
  
     > [!NOTE]
-    >  Var olan R kodunun bir görsel arabirim işlem hattında çalışması için küçük değişiklikler gerekebilir. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri de görsel arabirimde kullanılan veri ve sütun türlerinden bazı yollarla farklılık gösterir.
+    >  Varolan R kodunun bir tasarımcı işlem hattında çalıştırmak için küçük değişiklikler gerekebilir. Örneğin, CSV biçiminde sağladığınız giriş verileri, kodunuzda kullanabilmeniz için açıkça bir veri kümesine dönüştürülmelidir. R dilinde kullanılan veri ve sütun türleri, tasarımcıda kullanılan veri ve sütun türlerinden bazı yollarla da farklılık gösterir.
 
 1.  **Rastgele çekirdek**: R ortamının içinde rastgele çekirdek değeri olarak kullanılacak bir değer yazın. Bu parametre, R kodundaki `set.seed(value)` çağırma ile eşdeğerdir.  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>Sonuçlar
 
-**Execute r betik** modülleri birden çok çıkış döndürebilir, ancak r veri çerçevesi olarak sağlanmalıdır. Veri çerçeveleri, diğer modüllerle uyumluluk için otomatik olarak görsel arabirim veri kümelerine dönüştürülür.
+**Execute r betik** modülleri birden çok çıkış döndürebilir, ancak r veri çerçevesi olarak sağlanmalıdır. Veri çerçeveleri, diğer modüllerle uyumluluk için otomatik olarak tasarımcıda veri kümelerine dönüştürülür.
 
 R 'deki standart iletiler ve hatalar modülün günlüğüne döndürülür.
 
@@ -235,7 +235,7 @@ R nesnelerini, iç serileştirme mekanizmasını kullanarak **r betiği yürütm
     }
     ```
 
-    Tamsayı türüne açık dönüştürme işlemi, serileştirme işlevi, Visual arabirimi tarafından desteklenmeyen R `Raw` biçiminde veri çıktısı oluşturduğundan yapılır.
+    Tamsayı türüne açık dönüştürme işlemi, serileştirme işlevi, tasarımcı tarafından desteklenmeyen R `Raw` biçiminde veri çıktısı oluşturduğundan yapılır.
 
 1. **Execute R betik** modülünün ikinci bir örneğini ekleyin ve önceki modülün çıkış bağlantı noktasına bağlayın.
 
@@ -402,4 +402,4 @@ Kullanılabilecek önceden yüklenmiş R paketlerinin geçerli listesi:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

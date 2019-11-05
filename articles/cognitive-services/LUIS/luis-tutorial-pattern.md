@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Desenler-LUSıS'
+title: 'Öğretici: desenler-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Daha az örnek konuşma sağlayıp amaç ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yok sayılabilir metni tanımlama söz dizimini içeren şablon konuşma örneğiyle sağlanır.
 services: cognitive-services
@@ -9,27 +9,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390350"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499000"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Öğretici: Ortak desen şablonu söylenişi biçimleri ekleme
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Öğretici: ortak desen şablonu söylenişi biçimleri ekleme
 
 Bu öğreticide daha az örnek konuşma sağlayıp amaç ve varlık tahminini artırmak için desenleri kullanacaksınız. Desen, varlıkları ve yok sayılabilir metni tanımlama söz dizimini içeren şablon konuşma örneğiyle sağlanır. Desen, ifade eşleme ve makine öğrenimi işlemlerinin birleşimidir.  Şablon konuşma örneği amaç konuşmalarıyla birlikte LUIS hizmetinin amaca uygun konuşmaları anlamasını kolaylaştırır. 
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Örnek uygulamayı içeri aktar 
 > * Amaç oluşturma
 > * Eğitim
 > * Yayımlama
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 > * Desen oluşturma
 > * Desen tahmin geliştirmelerini onaylama
 > * Metni yok sayılabilir olarak işaretleme ve desen içine yerleştirme
@@ -47,7 +49,7 @@ Aşağıdaki adımları kullanın:
 
 2. JSON'ı yeni bir uygulamaya içeri aktarın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patterns` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `patterns` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Yeni amaçları ve konuşmalarını oluşturma
 
@@ -69,7 +71,7 @@ Aşağıdaki adımları kullanın:
     |Who does Jill Jones directly report to? (Jill Jones kime bağlı?)|
     |Who is Jill Jones supervisor? (Jill Jones'un süpervizörü kim?)|
 
-    [![LUIS ile amaca yeni konuşma ekleme ekran görüntüsü](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "LUIS ile amaca yeni konuşma ekleme ekran görüntüsü")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![LU, hedefe yeni söyleyeni ekleme gibi bir ekran görüntüsü](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "LU, hedefe yeni söyleyeni ekleme gibi bir ekran görüntüsü")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Amacın konuşmalarında employee varlığı yerine keyPhrase varlığı etiketlenmişse endişelenmeyin. İkisi de uç noktanın Test bölmesinde doğru şekilde tahmin edilir. 
 
@@ -105,7 +107,7 @@ Aşağıdaki adımları kullanın:
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Adres çubuğundaki URL'nin sonuna gidip `Who is the boss of Jill Jones?` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. 
+2. Adres çubuğundaki URL'nin sonuna gidip `Who is the boss of Jill Jones?` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. 
 
     ```json
     {
@@ -263,7 +265,7 @@ Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zam
 
 1. Tarayıcıda uç nokta URL'si sekmesine geçin.
 
-1. Adres çubuğundaki URL'nin sonuna gidip konuşma olarak `Who is the boss of Jill Jones?` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. 
+1. Adres çubuğundaki URL'nin sonuna gidip konuşma olarak `Who is the boss of Jill Jones?` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. 
 
     ```json
     {
@@ -377,11 +379,11 @@ Bu isteğe bağlı bilgilere izin veren örnek şablon örnekleri:
 Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe bağlı metnin konuşma şablonuna eklenmesini kolaylaştırır, ikinci düzeye kadar iç içe yerleştirilebilir `[[]]` ve varlık ya da metin içerebilir.
 
 
-**Unuza Her bir şablon için `w` ilk harf olan tüm harfler, küçük harflerle neden kullanılır? Bunlar isteğe bağlı olarak büyük veya küçük yazılabilir mi?** İstemci uygulaması tarafından sorgu uç noktasına gönderilen konuşma küçük harfe dönüştürülür. Konuşma şablonu ve uç nokta konuşmasında büyük harf veya küçük harf kullanılabilir. Karşılaştırma her zaman küçük harfe dönüştürme sonrasında gerçekleştirilir.
+**Soru: her bir şablon için ilk harf olan her bir `w` harf, küçük harfle neden. İsteğe bağlı olarak büyük veya küçük harf olmaması gerekir mi?** İstemci uygulaması tarafından sorgu uç noktasına gönderilen konuşma küçük harfe dönüştürülür. Konuşma şablonu ve uç nokta konuşmasında büyük harf veya küçük harf kullanılabilir. Karşılaştırma her zaman küçük harfe dönüştürme sonrasında gerçekleştirilir.
 
-**Unuza 3 Mart 'un her ikisi de sayı `3` ve Tarih `March 3`olarak tahmin edildiğinde, şablon neden önceden derlenmiş sayı kapsamında değil mi?** Konuşma şablonu tahmini `March 3` olarak doğrudan veya `in a month` çıkarımıyla bağlamsal olarak kullanmaktadır. Tarih, sayı içerebilir ancak her sayı tarih olmayabilir. Her zaman tahmin JSON sonuçlarında döndürülmesini istediğiniz türü en iyi temsil eden varlığını kullanın.  
+**Soru: March 3 (Mart 3) hem sayı `3` hem de tarih `March 3` olarak tahmin ediliyorsa konuşma şablonunun sayı bölümü neden önceden oluşturulmuş durumda değil?** Konuşma şablonu tahmini `March 3` olarak doğrudan veya `in a month` çıkarımıyla bağlamsal olarak kullanmaktadır. Tarih, sayı içerebilir ancak her sayı tarih olmayabilir. Her zaman tahmin JSON sonuçlarında döndürülmesini istediğiniz türü en iyi temsil eden varlığını kullanın.  
 
-**Unuza Gibi kötü phrased `Who will {Employee}['s] manager be on March 3?`lere göre.** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz. 
+**Soru: `Who will {Employee}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz. 
 
 **Unutmayın: Önce varlıklar bulunur, ardından desen eşleştirilir.**
 
@@ -389,7 +391,7 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
 
 1. LUIS web sitesinin üst menüsünden **Build** (Derle) öğesini seçip sol taraftaki menüden **Patterns** (Desenler) öğesini belirleyin. 
 
-1. Mevcut şablon `Who is {Employee}['s] manager[?]`için arama yapın ve sağ taraftaki üç nokta (***...***) simgesini seçin ve ardından açılır menüden **Düzenle** ' yi seçin. 
+1. Mevcut şablon için arama yapın, `Who is {Employee}['s] manager[?]`ve sağ taraftaki üç nokta (***...***) simgesini seçin ve ardından açılır menüden **Düzenle** ' yi seçin. 
 
 1. Konuşma şablonunu şu şekilde değiştirin: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
@@ -424,9 +426,9 @@ Bu konuşmaların tümü varlık bulduğundan aynı desenle eşleşir ve yüksek
 
 ## <a name="use-the-or-operator-and-groups"></a>OR işlecini ve gruplarını kullanın
 
-Önceki şablon dıklıları çok yakın. Şablon uttaslarını azaltmak için **grubunu** `()` ve **veya** `|` sözdizimini kullanın. 
+Önceki şablon dıklıları çok yakın. Şablon uttaslarını azaltmak için **grup** `()` ve **veya** `|` söz dizimini kullanın. 
 
-Aşağıdaki 2 desenleri, Grup `()` ve veya `|` söz dizimini kullanarak tek bir desen içinde birleştirilebilir.
+Aşağıdaki 2 desenleri, Grup `()` ve veya `|` söz dizimini kullanarak tek bir düzende birleştirebilir.
 
 |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
 |--|--|
@@ -437,9 +439,9 @@ Yeni şablon söylenişi şu şekilde olacaktır:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-Bu, gerekli fiil zaman hali ve isteğe bağlı `in` ve `on` aralarında bir **veya** dikey çizgi etrafında bir grup kullanır. 
+Bu, gerekli fiil zaman hali etrafında bir **Grup** kullanır ve isteğe bağlı `in` ve aralarında bir **veya** dikey çizgi ile `on`. 
 
-1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. Öğesini arayarak `manager`listeyi daraltın. 
+1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. `manager`arayarak listeyi daraltın. 
 
     ![' Manager ' terimiyle ilgili kuruluş yöneticisi amaç desenlerinde ara](./media/luis-tutorial-pattern/search-patterns.png)
 
@@ -465,7 +467,7 @@ Bu, gerekli fiil zaman hali ve isteğe bağlı `in` ve `on` aralarında bir **ve
 
 ## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Söylenişi başlangıç ve bitiş bağlayıcılarını kullanma
 
-Desen sözdizimi, `^`bir giriş işaretinin başlangıç ve bitiş söylenişi bağlantı sözdizimini sağlar. Başlangıç ve bitiş söylenişi bağlayıcıları, tek özel ve büyük olasılıkla sabit değerli bir şekilde hedeflemek veya hedef amaçlar için ayrı olarak kullanılmak üzere birlikte kullanılabilir. 
+Desen sözdizimi, `^`bir giriş işaretinin başlangıç ve bitiş noktası sözdizimini sağlar. Başlangıç ve bitiş söylenişi bağlayıcıları, tek özel ve büyük olasılıkla sabit değerli bir şekilde hedeflemek veya hedef amaçlar için ayrı olarak kullanılmak üzere birlikte kullanılabilir. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

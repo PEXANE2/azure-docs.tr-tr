@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: a65a36734af235312f3b8edd3d18ba5b3e0645c6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: 680d4c90078131b44e39e3f2b3d526ca53b34a95
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177041"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496764"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -44,11 +44,13 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 
 [IıJ](https://www.iij.ad.jp/biz/cloudex/)
 
-[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/)
+[Interxiyon] (https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/
 
 [ixreach](https://www.ixreach.com/)
 
 [KINX](https://www.kinx.net/service/cloud/?lang=en)
+
+[Sıvı telekomünikasyon](https://www.liquidtelecom.com/products-and-services/microsoft-azure.html)
 
 [Macquarie telekomünikasyon](https://macquariecloudservices.com/azure-managed-services/)
 
@@ -63,6 +65,8 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
 
 [Tata Iletişimleri](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
+
+[TCTS](https://www.tatacommunications-ts.com/index.php)
 
 [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
 

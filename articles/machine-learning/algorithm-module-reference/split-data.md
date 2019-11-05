@@ -1,24 +1,24 @@
 ---
 title: 'Verileri bölme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Bir veri kümesini iki ayrı küme içine bölmek için Azure Machine Learning hizmetinde bölünmüş veri modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Bir veri kümesini iki ayrı küme içine bölmek için Azure Machine Learning bölünmüş veri modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692659"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492650"
 ---
 # <a name="split-data-module"></a>Veri modülünü Böl
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Bir veri kümesini iki ayrı küme içine bölmek için bu modülü kullanın.
 
@@ -30,7 +30,7 @@ Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğ
 > Bölme modunu seçmeden önce, ihtiyacınız olan bölme türünü belirlemek için tüm seçenekleri okuyun.
 > Bölme modunu değiştirirseniz diğer tüm seçenekler sıfırlanabilir.
 
-1. Arabirim içindeki işlem hattınızı **bölünmüş veri** modülünü ekleyin. Bu modülü, **veri dönüştürme**altında, **örnek ve bölünmüş** kategoride bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı **bölünmüş veri** modülünü ekleyin. Bu modülü, **veri dönüştürme**altında, **örnek ve bölünmüş** kategoride bulabilirsiniz.
 
 2. **Ayırma modu**: sahip olduğunuz veri türüne ve onu bölmek istediğiniz bir değere bağlı olarak aşağıdaki modlardan birini seçin. Her bölme modunun farklı seçenekleri vardır. Ayrıntılı yönergeler ve örnekler için aşağıdaki konulara tıklayın. 
 
@@ -45,7 +45,8 @@ Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğ
     - **Göreli Ifade bölme**: bir sayı sütununa koşul uygulamak istediğinizde bu seçeneği kullanın. Sayı bir tarih/saat alanı, Yaş veya dolar miktarları içeren bir sütun veya hatta bir yüzde olabilir. Örneğin, öğelerin maliyetine göre veri kümesini bölmek, kişileri yaş aralıklarına göre gruplamak veya bir Takvim tarihine göre verileri ayırmak isteyebilirsiniz.
 
 ### <a name="split-rows"></a>Satırları Böl
-1.  Veri hattınızı arabirime [ayırın](./split-data.md) ve ayırmak istediğiniz veri kümesini bağlayın.
+
+1.  Tasarımcıdaki [veri hattınızı bölünmüş veri](./split-data.md) modülünü ekleyin ve ayırmak istediğiniz veri kümesini bağlayın.
   
 2.  **Ayırma modu**Için **satırları Böl**' ü seçin. 
 
@@ -101,7 +102,7 @@ Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğ
 
     - Şu işleçler desteklenir: `<`, `>`, `<=`, `>=`, `==`, `!=`
 
-    - @No__t_0 ve `)` kullanarak işlemler gruplandırılamıyor.
+    - `(` ve `)`kullanarak işlemler gruplandırılamıyor.
 
  - Dize sütunu: 
     - Şu işleçler desteklenir: `==`, `!=`
@@ -114,4 +115,4 @@ Bu modül özellikle, verileri eğitim ve test kümelerine ayırmanız gerektiğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

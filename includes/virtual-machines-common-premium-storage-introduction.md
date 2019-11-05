@@ -9,24 +9,24 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717129"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73524101"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium Depolama: yüksek performans tasarımı
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
-Bu makalede, Azure Premium depolama kullanan yüksek performanslı uygulamalar oluşturmak için yönergeler sağlar. Performansı en iyi uygulamaları, uygulamanız tarafından kullanılan teknolojiler için geçerli bir araya geldiğinde bu belgede sağlanan yönergeleri kullanabilirsiniz. Yönergeler göstermek için bu belge boyunca örnek olarak Premium depolama üzerinde çalışan SQL Server kullandınız.
+Bu makalede, Azure Premium depolama kullanan yüksek performanslı uygulamalar oluşturmaya yönelik yönergeler sağlanmaktadır. Bu belgede sunulan yönergeleri, uygulamanız tarafından kullanılan teknolojiler için geçerli olan performans en iyi uygulamalarıyla birlikte kullanabilirsiniz. Yönergeleri göstermek için, bu belgenin tamamında bir örnek olarak Premium depolamada çalışan SQL Server kullandık.
 
-Biz bu makalede depolama katmanı için performans senaryosu, ancak uygulama katmanına en iyi duruma getirmek gerekir. Örneğin, Azure Premium depolama bir SharePoint Çiftliğini barındırıyorsanız, veritabanı sunucusu en iyi duruma getirmek için bu makalede SQL Server örneklerinden kullanabilirsiniz. Ayrıca, SharePoint grubunun Web sunucusu ve uygulama sunucusu çoğu performansı elde etmek için iyileştirin.
+Bu makaledeki depolama katmanının performans senaryolarını ele alırken uygulama katmanını iyileştirmeniz gerekecektir. Örneğin, Azure Premium depolamada bir SharePoint grubu barındırıyorsanız, veritabanı sunucusunu iyileştirmek için bu makaledeki SQL Server örnekleri kullanabilirsiniz. Ayrıca, en iyi performansı almak için SharePoint grubunun Web sunucusunu ve uygulama sunucusunu iyileştirin.
 
-Bu makalede, Azure Premium depolama üzerinde uygulama performansını iyileştirme hakkında sık sorulan sorular aşağıdaki yanıt yardımcı olur,
+Bu makale, Azure Premium depolamada uygulama performansını iyileştirmek için aşağıdaki yaygın soruların yanıtlanmasına yardımcı olur.
 
-* Uygulama performansını ölçmek nasıl?  
-* Neden beklenen yüksek performanslı görmediğinizden?  
-* Hangi faktörlerin Premium depolama, uygulama performansınızı etkileyen?  
-* Nasıl bu faktörlerin Premium depolama, uygulamanızın performansını etkileyen?  
-* Nasıl, IOPS, bant genişliği ve gecikme süresi için en iyi duruma getirebilirsiniz?  
+* Uygulamanızın performansını ölçme  
+* Beklenen yüksek performansa neden görmüyorsunuz?  
+* Premium depolamada uygulama performansınızı hangi etkenlere etkiler?  
+* Bu faktörler, Premium depolamada uygulamanızın performansını nasıl etkiler?  
+* IOPS, bant genişliği ve gecikme süresi için nasıl iyileştirebileceğinizi?  
 
-Premium depolama alanında çalışan iş yükleri yüksek performans duyarlı olduğu için özel olarak Premium depolama için bu yönergeleri sağladık. Uygun yerlerde örnek sağladık. Ayrıca standart depolama diskleri ile Iaas Vm'lerinde çalışan uygulamaları bu yönergeleri bazıları uygulayabilirsiniz.
+Premium depolamada çalışan iş yükleri yüksek performansa duyarlı olduğundan, bu yönergeleri özellikle Premium Depolama için sağladık. Uygun yerlerde örnek sağladık. Ayrıca, bu yönergelerin bazılarını standart depolama diskleriyle IaaS VM 'lerinde çalışan uygulamalar için de uygulayabilirsiniz.

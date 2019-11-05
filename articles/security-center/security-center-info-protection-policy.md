@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202084"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520800"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesini özelleştirme (Önizleme)
  
@@ -50,9 +50,9 @@ Azure kiracınız için Information Protection ilkesini özelleştirmek üzere [
  
 1. Varolan herhangi bir etiketi düzenleyebilir veya silebilir veya yeni bir etiket ekleyebilirsiniz. Varolan bir etiketi düzenlemek için, bu etiketi seçin ve sonra üstteki ya da sağdaki bağlam menüsünde **Yapılandır**' a tıklayın. Yeni bir etiket eklemek için üstteki menü çubuğunda veya Etiketler tablosunun en altında **etiket oluştur** ' a tıklayın.
 2. **Duyarlılık etiketini Yapılandır** ekranında, etiket adı ve açıklamasını oluşturabilir veya değiştirebilirsiniz. Ayrıca, **etkin** anahtarı değiştirerek veya devre dışı bırakmak için etiketin etkin veya devre dışı olduğunu da ayarlayabilirsiniz. Son olarak, etiketle ilişkili bilgi türlerini ekleyebilir veya kaldırabilirsiniz. Bu bilgi türüyle eşleşen tüm veriler, sınıflandırma önerilerine ilişkili duyarlılık etiketini otomatik olarak dahil eder.
-3. **Tamam**'ı tıklatın.
+3. **Tamam** düğmesine tıklayın.
  
-   ![Duyarlılık etiketini yapılandırın](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Duyarlılık etiketini Yapılandır](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Etiketler, artan duyarlılık sırasına göre listelenmiştir. Etiketler arasındaki derecelendirmeyi değiştirmek için etiketleri tablo içinde yeniden sıralamak üzere sürükleyin veya sıralamayı değiştirmek için **yukarı** taşı ve **aşağı taşı** düğmelerini kullanın. 
  
@@ -83,8 +83,5 @@ Bu makalede, Azure Güvenlik Merkezi 'nde bir SQL Information Protection ilkesi 
 
 Azure Güvenlik Merkezi 'nde güvenlik ilkeleri ve veri güvenliği hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
  
-- [Güvenlik ilkelerine genel bakış](security-center-policies-overview.md): Güvenlik Merkezi 'nde güvenlik ilkelerine genel bakış edinme
 - [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md): Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin
 - [Azure Güvenlik Merkezi veri güvenliği](security-center-data-security.md): Güvenlik Merkezi 'nin verileri nasıl yönettiğini ve korumalarını öğrenin
-
-

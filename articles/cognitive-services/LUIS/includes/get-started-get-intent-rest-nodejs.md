@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: a6dfe21cd92c5bf5580d7b121f33f68fb4e135fa
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 5d8ed625e13d31e148ef1e54d8028fc7d13a6ede
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499658"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -21,45 +21,136 @@ ms.locfileid: "71838519"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Genel uygulama kimliği: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-
-> [!NOTE] 
-> Tam Node. js çözümü, [ **Azure-Samples** GitHub deposundan](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node)bulunabilir.
-
 ## <a name="get-luis-key"></a>LUIS anahtarını alma
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-Node.js kullanarak bir önceki adımda tarayıcı penceresinde gördüğünüz sonuçlara ulaşabilirsiniz.
+Tahmin sonucunu almak için Use [API](https://aka.ms/luis-apim-v3-prediction) Get for the The ENDPOINT Endpoint The Node. js ' i kullanın.
 
-1. Aşağıdaki kod parçacığını kopyalayın:
+1. Aşağıdaki kod parçacığını `predict.js`adlı bir dosyaya kopyalayın:
 
-   [!code-nodejs[Console app code that calls a LUIS endpoint for Node.js](~/samples-luis/documentation-samples/quickstarts/analyze-text/node/call-endpoint.js)]
-
-2. Aşağıdaki metin ile `.env` dosyasını oluşturun veya sistem ortamında bu değişkenleri ayarlayın:
-
-    ```CMD
-    LUIS_APP_ID=df67dcdb-c37d-46af-88e1-8b97951ca1c2
-    LUIS_ENDPOINT_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```javascript
+    var request = require('request');
+    var requestpromise = require('request-promise');
+    var querystring = require('querystring');
+    
+    // Analyze text
+    //
+    getPrediction = async () => {
+    
+        // YOUR-KEY - Language Understanding starter key
+        var endpointKey = "YOUR-KEY";
+    
+        // YOUR-ENDPOINT Language Understanding endpoint URL, an example is westus2.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT";
+    
+        // Set the LUIS_APP_ID environment variable 
+        // to df67dcdb-c37d-46af-88e1-8b97951ca1c2, which is the ID
+        // of a public sample application.    
+        var appId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
+    
+        var utterance = "turn on all lights";
+    
+        // Create query string 
+        var queryParams = {
+            "show-all-intents": true,
+            "verbose":  true,
+            "query": utterance,
+            "subscription-key": endpointKey
+        }
+    
+        // append query string to endpoint URL
+        var URI = `https://${endpoint}/luis/prediction/v3.0/apps/${appId}/slots/production/predict?${querystring.stringify(queryParams)}`
+    
+        // HTTP Request
+        const response = await requestpromise(URI);
+    
+        // HTTP Response
+        console.log(response);
+    
+    }
+    
+    // Pass an utterance to the sample LUIS app
+    getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-3. Anahtarınıza `LUIS_ENDPOINT_KEY` ortam değişkenini ayarlayın.
+1. Aşağıdaki değerleri ayarlayın:
 
-4. Komut satırında şu komutu çalıştırarak bağımlılıkları yükleyin: `npm install`.
+    * başlangıç anahtarınıza `YOUR-KEY`
+    * uç nokta URL 'nize `YOUR-ENDPOINT`
 
-5. Kodu `npm start` ile çalıştırın. Tarayıcı penceresinde daha önce gördüğünüz değerleri görüntüler.
+1. Komut satırında aşağıdaki komutu çalıştırarak bağımlılıkları yükler: 
 
+    ```console
+    npm install request request-promise querystring
+    ```
+
+1. Kodu aşağıdaki komutla çalıştırın:
+
+    ```console
+    node predict.js
+    ```
+
+ 1. JSON biçiminde tahmini yanıtı gözden geçirin:   
+    
+    ```console
+    {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
+    ```
+
+    Okunabilirlik için biçimlendirilen JSON yanıtı: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
 ## <a name="luis-keys"></a>LUIS anahtarları
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlangıcı tamamladıktan sonra Visual Studio projesini kapatın ve proje dizinini dosya sisteminden kaldırın. 
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Node. js ile uttersları ekleme ve eğitme](../luis-get-started-node-add-utterance.md)
+> [Utterslar ve tren ekleme](../luis-get-started-node-add-utterance.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 8e4c817437c22d15e60cf48d5976c30433e83d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 715db36921427dc0ac5dcdad24c2c026b1ea1326
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970016"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496684"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Örnek not defterlerini bulma ve kullanma
 
@@ -26,11 +26,11 @@ Internet, Azure Notebooks kolayca getirebilmeniz için çok sayıda ilginç ve y
 Araştırmak istediğiniz bir not defterini tanımladıktan sonra, anlamak istediğiniz bazı ayrıntılar aşağıda verilmiştir:
 
 - Bir not defteri zaten Azure Notebooks, kendi hesabınızda projenin bir kopyasını oluşturmak için Proje panosundaki **Kopyala** düğmesini kullanın.
-- Bazı Not defterleri belirli paketlerin çalıştırılmasını gerektirir. Bir not defterinin kendisinden paket yüklemek için `!pip install` (Python) veya `install.packages` (R) kullanabilirsiniz; ancak, [uygun ortamla bir Azure Notebooks projesi de yapılandırabilirsiniz](configure-manage-azure-notebooks-projects.md).
+- Bazı Not defterleri belirli paketlerin çalıştırılmasını gerektirir. Bir not defterinden paket yüklemek için `!pip install` (Python) veya `install.packages` (R) kullanabilirsiniz, ancak [uygun ortamla bir Azure Notebooks projesi de yapılandırabilirsiniz](configure-manage-azure-notebooks-projects.md).
 
 ## <a name="great-sample-notebooks"></a>Harika örnek Not defterleri
 
-- [Azure Notebooks başlangıç kümesi](https://notebooks.azure.com/#sample-redirect) , Python, R ve F#, veri erişimi, Azure Machine Learning Hizmetleri ve birkaç veri bilimi ' i gösteren Not defterleriyle ilgili tanıtımları içerir.
+- [Azure Notebooks başlangıç kümesi](https://notebooks.azure.com/#sample-redirect) , Python, R ve F#, veri erişimi, Azure Machine Learning ve birkaç veri bilimi öğesini gösteren Not defterleriyle ilgili tanıtımları içerir.
 - [Jupyıter not defterlerine giriş](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (Jupyter.org)
 - Jake Vanderplas tarafından [veri bilimi 'Ne giriş](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) .
 - [İlginç not defterleri Galerisi](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (GitHub 'da jupi Projesi)
@@ -43,4 +43,4 @@ Araştırmak istediğiniz bir not defterini tanımladıktan sonra, anlamak isted
 - [Nasıl yapılır: projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
 - [Nasıl yapılır: veri dosyalarıyla çalışma](work-with-project-data-files.md)
 - [Nasıl yapılır: veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)
-- [Nasıl yapılır: Azure Machine Learning hizmetlerini kullanma](use-machine-learning-services-jupyter-notebooks.md)
+- [Nasıl yapılır: Azure Machine Learning kullanma](use-machine-learning-services-jupyter-notebooks.md)

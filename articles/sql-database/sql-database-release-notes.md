@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249379"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496268"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -26,6 +26,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 | Özellik | Ayrıntılar |
 | ---| --- |
+| Yeni Fsv2 serisi ve d serisi donanım nesilleri| Bilgi için bkz. [donanım nesilleri](sql-database-service-tiers-vcore.md#hardware-generations).|
 | [Azure özel bağlantısı](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Özel Bağlantı, ağ mimarisini yalınlaştırır ve verileri Azure ağında tutarak internete maruz kalma riskini ortadan kaldırıp Azure uç noktaları arasındaki bağlantıyı güvenli bir hale getirir. Ayrıca Özel Bağlantı sayesinde Azure’da kendi hizmetlerinizi oluşturabilirsiniz. |
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md).|
 |Yaklaşık sayı farklı|Daha fazla bilgi için bkz. [yaklaşık Count DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
@@ -37,7 +38,6 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 |Bellek Izni geri bildirimi (satır modu) (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [bellek verme geri bildirimi (satır modu)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | Azure portal sorgu Düzenleyicisi |Bilgi için bkz. [Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](sql-database-connect-query-portal.md).|
 | Tek veritabanları ve elastik havuzlarla R Hizmetleri/makine öğrenimi |Bilgi için bkz. [Azure SQL veritabanı 'nda Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
-| Sunucusuz işlem katmanı | Daha fazla bilgi için bkz. [SQL veritabanı sunucusuz (Önizleme)](sql-database-serverless.md).|
 |SQL Analytics|Bilgi için bkz. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Tablo değişkeni ertelenmiş derlemesi (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [tablo değişkeni ertelenmiş derleme](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
@@ -80,7 +80,7 @@ Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde et
 
 - **2019 Ağu** -kapsanan veritabanları yönetilen örnekte tam olarak desteklenmektedir.
 
-## <a name="updates"></a>Güncellemeler
+## <a name="updates"></a>Güncelleştirmeler
 
 SQL veritabanı güncelleştirmelerinin ve geliştirmelerin bir listesi için bkz. [SQL Database Service Updates](https://azure.microsoft.com/updates/?product=sql-database).
 

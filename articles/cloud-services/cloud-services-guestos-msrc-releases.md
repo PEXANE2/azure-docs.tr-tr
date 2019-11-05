@@ -10,43 +10,40 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/15/2019
+ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: b4150858986f204723dc258b23daf22de5d39842
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430174"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500258"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
 ## <a name="october-2019-guest-os"></a>Ekim 2019 Konuk işletim sistemi
 
->[!NOTE]
->Ekim Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Ekim Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir.
-
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 19-10   |  [4520003]  |  Windows güvenliği   |  2,91  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519985]  |  Windows güvenliği   |  3,78  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519990]  |  Windows güvenliği   |  4,71  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519998]  |  En son birikimli güncelleştirme   |  5,36  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519338]  |  En son birikimli güncelleştirme   |  6,12  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  2,91, 3,78, 4,71  |  8 Ekim 2019  |
-|  Rel 19-10   |  [4516065]  |  Güvenlik dışı   |  2,91  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4516655]  |  SSU   |  2,91  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4516055]  |  Güvenlik dışı   |  3,78  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4512939]  |  SSU   |  3,78  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4514370]  |  .NET Framework 3,5   |  3,78  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  3,78  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4516067]  |  Güvenlik dışı   |  4,71  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4512938]  |  SSU   |  4,71  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4514371]  |  .NET Framework 3,5   |  4,71  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  4,71  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4512574]  |  SSU   |  5,36  |  10 Eylül 2019  |
-|  Rel 19-10   |  [4512577]  |  SSU   |  6,12  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4520003]  |  Windows güvenliği   |  [2,91]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519985]  |  Windows güvenliği   |  [3,78]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519990]  |  Windows güvenliği   |  [4,71]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519998]  |  En son birikimli güncelleştirme   |  [5,36]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519338]  |  En son birikimli güncelleştirme   |  [6,12]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  8 Ekim 2019  |
+|  Rel 19-10   |  [4516065]  |  Güvenlik dışı   |  [2,91]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4516655]  |  SSU   |  [2,91]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4516055]  |  Güvenlik dışı   |  [3,78]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512939]  |  SSU   |  [3,78]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514370]  |  .NET Framework 3,5   |  [3,78]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514368]  |  .NET Framework 4.5.2   |  [3,78]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4516067]  |  Güvenlik dışı   |  [4,71]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512938]  |  SSU   |  [4,71]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514371]  |  .NET Framework 3,5   |  [4,71]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4514367]  |  .NET Framework 4.5.2   |  [4,71]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512574]  |  SSU   |  [5,36]  |  10 Eylül 2019  |
+|  Rel 19-10   |  [4512577]  |  SSU   |  [6,12]  |  10 Eylül 2019  |
 
 [4520003]: https://support.microsoft.com/kb/4520003
 [4519985]: https://support.microsoft.com/kb/4519985
@@ -67,6 +64,11 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
+[6,12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>Eylül 2019 Konuk işletim sistemi
@@ -1206,7 +1208,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15-075 |[3072633] |OLE 'deki güvenlik açıkları ayrıcalık yükselmesine izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-076 |[3067505] |Windows Uzaktan yordam çağrısındaki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 | MS15-077 |[3077657] |ATM yazı tipi sürücüsündeki güvenlik açığı ayrıcalık yükselmesine Izin verebilir |4,22, 3,29, 2,41 |14 Temmuz 2015 |
-| Yok |[3057154] |DES şifrelemesi kullanımını kısıtlamak için güncelleştirme |4,22, 3,29, 2,41 |14 Temmuz 2015 |
+| NA |[3057154] |DES şifrelemesi kullanımını kısıtlamak için güncelleştirme |4,22, 3,29, 2,41 |14 Temmuz 2015 |
 
 ## <a name="june-2015-guest-os"></a>Haziran 2015 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
@@ -1239,7 +1241,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | MS15- |[3045711] |ADFS 'deki güvenlik açığı bilgilerin açığa çıkmasına neden olabilir |4,20, 3,27, 2,39 |17 Nisan 2015 |
 | MS15-041 |[3048010] |.NET Framework güvenlik açığı bilgilerin açığa çıkmasına neden olabilir |4,20, 3,27, 2,39 |17 Nisan 2015 |
 | MS15-042 |[3047234] |Windows Hyper-V ' d i güvenlik açığı hizmet reddine Izin verebilir |4,20, 3,27, 2,39 |17 Nisan 2015 |
-| Yok |[3045755] |PKU2U kimlik doğrulamasını geliştirmek için Güncelleştir |4,20, 3,27, 2,39 |17 Nisan 2015 |
+| NA |[3045755] |PKU2U kimlik doğrulamasını geliştirmek için Güncelleştir |4,20, 3,27, 2,39 |17 Nisan 2015 |
 
 ## <a name="april-2015-guest-os"></a>Nisan 2015 Konuk işletim sistemi
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |

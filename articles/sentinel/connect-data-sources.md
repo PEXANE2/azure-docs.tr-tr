@@ -13,20 +13,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: d4605ad448916d788fd0a7089835a9ad3828697e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980416"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496379"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
-
-
-
-
 
 Azure Sentinel 'e kadar, önce veri kaynaklarınıza bağlanmanız gerekir. Azure Sentinel, Microsoft çözümleri için çok sayıda bağlayıcı sunar ve Microsoft tehdit koruması çözümleri dahil gerçek zamanlı tümleştirme ve Office 365, Azure AD, Azure ATP ve dahil olmak üzere Microsoft 365 kaynakları sağlar. Microsoft Cloud App Security ve daha fazlası. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar vardır. Ayrıca, veri kaynaklarınızı Azure Sentinel 'e bağlamak için ortak olay biçimi, syslog veya REST API de kullanabilirsiniz.  
 
@@ -62,7 +58,9 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
 - **API aracılığıyla dış çözümler**: bazı veri kaynakları, bağlı veri kaynağı tarafından sağlanmış API 'ler kullanılarak bağlanır. Genellikle, çoğu güvenlik teknolojisi, olay günlüklerinin alınabileceği bir API kümesi sağlar. API 'Ler Azure Sentinel 'e bağlanır ve belirli veri türlerini toplayıp Azure Log Analytics 'e gönderir. API aracılığıyla bağlı olan gereçler şunları içerir:
     - [Barracuda](connect-barracuda.md)
     - ['E](connect-symantec.md)
-- **Aracı aracılığıyla dış çözümler**: Azure Sentinel, bir aracı aracılığıyla Syslog protokolünü kullanarak gerçek zamanlı günlük akışı gerçekleştirebilen diğer tüm veri kaynaklarına bağlanabilir. <br>Çoğu gereçleri, günlüğü kapsayan olay iletilerini ve günlük bilgilerini içeren olay iletilerini göndermek için Syslog protokolünü kullanır. Günlüklerin biçimi değişir, ancak çoğu gereç ortak olay biçimi (CEF) standardını destekler. <br>Log Analytics aracısına dayalı Azure Sentinel Aracısı, CEF biçimli günlükleri Log Analytics tarafından kullanılabilecek bir biçime dönüştürür. Gereç türüne bağlı olarak, aracı doğrudan gereç üzerine ya da adanmış bir Linux sunucusuna yüklenir. Linux Aracısı, syslog arka plan programından UDP üzerinden olay alır, ancak bir Linux makinenin yüksek hacimli bir Syslog olayları toplaması bekleniyorsa, bunlar Syslog arka plan programından aracıya ve Log Analytics için Buradan TCP üzerinden gönderilir.
+    - [Citrix Analytics (güvenlik)](connect-citrix-analytics.md)
+
+- **Aracı aracılığıyla dış çözümler**: Azure Sentinel, bir aracı aracılığıyla Syslog protokolünü kullanarak gerçek zamanlı günlük akışı gerçekleştirebilen diğer tüm veri kaynaklarına bağlanabilir. <br>Çoğu gereçleri, günlüğü kapsayan olay iletilerini ve günlük bilgilerini içeren olay iletilerini göndermek için Syslog protokolünü kullanır. Günlüklerin biçimi değişir, ancak çoğu gereçte, günlük verilerine yönelik ortak olay biçimi (CEF) tabanlı biçimlendirme desteklenir. <br>Log Analytics aracısına dayalı Azure Sentinel Aracısı, CEF biçimli günlükleri Log Analytics tarafından kullanılabilecek bir biçime dönüştürür. Gereç türüne bağlı olarak, aracı doğrudan gereç üzerine ya da adanmış bir Linux sunucusuna yüklenir. Linux Aracısı, syslog arka plan programından UDP üzerinden olay alır, ancak bir Linux makinenin yüksek hacimli bir Syslog olayları toplaması bekleniyorsa, bunlar Syslog arka plan programından aracıya ve Log Analytics için Buradan TCP üzerinden gönderilir.
     - Güvenlik duvarları, proxy 'ler ve uç noktalar:
         - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
@@ -71,6 +69,10 @@ Aşağıdaki veri bağlantısı yöntemleri Azure Sentinel tarafından desteklen
         - [Palo Alto](connect-paloalto.md)
         - [Diğer CEF cihazları](connect-common-event-format.md)
         - [Diğer Syslog cihazları](connect-syslog.md)
+        - [Barbcuda CloudGen güvenlik duvarı](connect-barracuda-cloudgen-firewall.md)
+        - [ExtraHop açığa çıkar (x)](connect-extrahop.md)
+        - [Bir kimlik koruma](connect-one-identity.md)
+        - [Trend mikro derin güvenlik](connect-trend-micro.md)
     - DLP çözümleri
     - [Tehdit bilgileri sağlayıcıları](connect-threat-intelligence.md)
     - DNS [makineleri](connect-dns.md) -aracı doğrudan DNS makinesine yüklendi

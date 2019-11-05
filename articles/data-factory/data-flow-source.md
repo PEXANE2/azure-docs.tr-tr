@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596491"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519299"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Eşleme veri akışı için kaynak dönüşümü 
-
-
 
 Kaynak dönüştürmesi veri akışı için veri kaynağınızı yapılandırır. Veri akışları tasarlarken, ilk adımınız her zaman bir kaynak dönüşümü yapılandıracaktır. Kaynak eklemek için veri akışı tuvalindeki **Kaynak Ekle** kutusuna tıklayın.
 
@@ -27,11 +25,12 @@ Her kaynak dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişki
 
 Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
     
-* Azure Blob Depolama
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Blob depolama (JSON, avro, metin, Parquet)
+* Azure Data Lake Storage 1. (JSON, avro, metin, Parquet)
+* Azure Data Lake Storage 2. (JSON, avro, metin, Parquet)
 * Azure SQL Veri Ambarı
 * Azure SQL Veritabanı
+* Azure CosmosDB
 
 Azure Data Factory, 80 yerel bağlayıcı üzerinde erişime sahiptir. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
 
@@ -78,10 +77,10 @@ Joker karakter örnekleri:
 * ```[]``` parantez içindeki daha fazla karakterden biriyle eşleşiyor
 
 * ```/data/sales/**/*.csv```/Data/Sales altındaki tüm CSV dosyalarını alır
-* ```/data/sales/20??/**``` ' daki tüm dosyalar 20. yüzyıl içinde alınır
+* ```/data/sales/20??/**``` 20. yüzyıl içindeki tüm dosyaları alır
 * ```/data/sales/2004/*/12/[XY]1?.csv```, iki basamaklı bir sayı tarafından önekli X veya Y ile başlayan Aralık içinde 2004 içindeki tüm CSV dosyalarını alır
 
-**Bölüm kök yolu:** Dosya kaynağınızda ```key=value``` biçiminde bölümlenmiş klasörler varsa (örneğin, Year = 2019), bu bölüm klasör ağacının en üst düzeyini veri akışı veri akışınızdaki bir sütun adına atayabilirsiniz.
+**Bölüm kök yolu:** Dosya kaynağınızda bir ```key=value``` biçimiyle bölümlenmiş klasörler varsa (örneğin, Year = 2019), bu bölüm klasör ağacının en üst düzeyini veri akışı veri akışınızdaki bir sütun adına atayabilirsiniz.
 
 İlk olarak, bölümlenmiş klasörler ve okumak istediğiniz yaprak dosyaları olan tüm yolları içerecek şekilde bir joker karakter ayarlayın.
 
@@ -128,9 +127,9 @@ Tüm kaynak ayarları, [eşleme veri akışının dönüştürme ifade dili](dat
 
 Kaynağınız SQL veritabanı veya SQL veri ambarı 'nda ise, **kaynak seçenekleri** sekmesinde SQL 'e özgü ek ayarlar bulunur. 
 
-**Giriş:** Kaynağı bir tabloya (```Select * from <table-name>```) işaret edip etmeyeceğinizi seçin ya da özel bir SQL sorgusu girin.
+**Giriş:** Kaynağınızı bir tabloya mi işaret etmeyeceğinizi (```Select * from <table-name>```eşdeğerini) seçin veya özel bir SQL sorgusu girin.
 
-**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur.
+**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur. Örnek: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Toplu iş boyutu**: büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin.
 
@@ -152,6 +151,19 @@ Veri kümelerinde bulunan şemalar gibi, bir kaynaktaki projeksiyon, kaynak veri
 Metin dosyanızda tanımlı bir şema yoksa, Data Factory veri türlerini ve çıkarması için veri **türünü Algıla** ' yı seçin. Varsayılan veri biçimlerini otomatik algıla için **varsayılan biçimi tanımla** ' yı seçin. 
 
 Sütun veri türlerini bir aşağı akış türetilmiş sütunlu dönüşümde değiştirebilirsiniz. Sütun adlarını değiştirmek için bir seçme dönüşümü kullanın.
+
+### <a name="import-schema"></a>Şemayı içeri aktar
+
+Karmaşık veri yapılarını destekleyen avro ve CosmosDB gibi veri kümeleri, şema tanımlarının veri kümesinde mevcut olmasını gerektirmez. Bu nedenle, bu tür kaynaklar için Izdüşüm sekmesine "şemayı Içeri aktar" düğmesine tıklayabilirsiniz.
+
+## <a name="cosmosdb-specific-settings"></a>CosmosDB 'ye özgü ayarlar
+
+CosmosDB 'yi kaynak türü olarak kullanırken göz önünde bulundurmanız gereken birkaç seçenek vardır:
+
+* Sistem sütunlarını dahil et: bunu belirlerseniz, ```id```, ```_ts```ve diğer sistem sütunları CosmosDB 'den veri akışı meta verilerinize dahil edilir. Koleksiyonları güncelleştirirken, mevcut satır kimliğini elde edebilmeniz için bunu dahil etmek önemlidir.
+* Sayfa boyutu: Sorgu sonucunun sayfa başına belge sayısı. Varsayılan değer, hizmet dinamik sayfasını 1000 ' e kadar kullanan "-1" ' dir.
+* Aktarım hızı: okuma işlemi sırasında bu veri akışının her yürütmesi için CosmosDB koleksiyonunuza uygulamak istediğiniz ru sayısı için isteğe bağlı bir değer ayarlayın. Minimum değer 400 ' dir.
+* Tercih edilen bölgeler: Bu işlem için tercih edilen okuma bölgelerini seçebilirsiniz.
 
 ## <a name="optimize-the-source-transformation"></a>Kaynak dönüşümünü iyileştirme
 

@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: MT
+ms.openlocfilehash: 91278bdc1748615c91675e3894ebae4cf5fce1e4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710080"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489506"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile Chainer modellerini eğitme ve kaydetme
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, Azure Machine Learning [Chainer tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) sınıfını kullanarak [Chainer](https://chainer.org/) eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin. Bu makaledeki örnek eğitim betiği, el yazısı [y](https://www.numpy.org/)'nin üstünde çalışan Chainer Python kitaplığı kullanılarak oluşturulan derin bir sinir ağı (DNN) kullanarak el yazısı rakamları sınıflandırmak için popüler [veri kümesini](http://yann.lecun.com/exdb/mnist/) kullanır.
 
@@ -27,11 +28,11 @@ Derin bir öğrenme Chainer modelini baştan sona eğiyor veya mevcut bir modeli
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
-- Azure Machine Learning Not defteri VM-indirme veya yükleme gerekli değil
+- Azure Machine Learning işlem örneği-indirme veya yükleme gerekli değil
 
     - Öğreticiyi doldurun: SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanını kurma](tutorial-1st-experiment-sdk-setup.md) .
     - Not defteri sunucusundaki örnekler derin öğrenimi klasöründe, **nasıl yapılır-kullan-azureml > ml-çerçeveleri > chainer > deployment > tren-hyperparameter-ayarla-dağıt-Chainer klasörünü içeren** tamamlanmış bir not defteri ve dosya bulun.  Not defteri, akıllı hiper parametre ayarlamayı, model dağıtımını ve Not defteri pencere öğelerini kapsayan genişletilmiş bölümler içerir.
@@ -47,7 +48,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
 
 Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başlatarak, bir deneme oluşturarak ve eğitim verilerini ve eğitim betikleri karşıya yükleyerek Eğitim denemesini ayarlar.
 
-### <a name="import-packages"></a>Paketleri içeri aktar
+### <a name="import-packages"></a>Paketleri içeri aktarma
 
 İlk olarak, azureml. Core Python kitaplığını içeri aktarın ve sürüm numarasını görüntüleyin.
 
@@ -60,7 +61,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesnesi oluşturarak çalışma alanı yapılarına erişebilirsiniz.
+[Azure Machine Learning çalışma alanı](concept-workspace.md) , hizmet için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Python SDK 'sında, [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) nesnesi oluşturarak çalışma alanı yapılarına erişebilirsiniz.
 
 [Önkoşullar bölümünde](#prerequisites)oluşturulan `config.json` dosyasını okuyarak bir çalışma alanı nesnesi oluşturun:
 
@@ -194,7 +195,7 @@ model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/m
 > [!TIP]
 > Modelin bulunamadığını belirten bir hata alırsanız bir dakika verin ve yeniden deneyin.  Bazen, eğitimin bitişi ile çıkış dizinindeki modelin kullanılabilirliği arasında küçük bir gecikme olur.
 
-Ayrıca modelin yerel bir kopyasını da indirebilirsiniz. Bu, ek model doğrulama işini yerel olarak gerçekleştirmek için yararlı olabilir. Eğitim betikindeki `chainer_mnist.py`, bir koruyucu nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefi) devam ettirir. Veri deposundan bir kopya indirmek için Run nesnesini kullanabilirsiniz.
+Ayrıca modelin yerel bir kopyasını da indirebilirsiniz. Bu, ek model doğrulama işini yerel olarak gerçekleştirmek için yararlı olabilir. Eğitim betikindeki `chainer_mnist.py`, bir koruyucu nesnesi modeli yerel bir klasöre (yerel olarak işlem hedefine) devam ettirir. Veri deposundan bir kopya indirmek için Run nesnesini kullanabilirsiniz.
 
 ```Python
 # Create a model folder in the current directory

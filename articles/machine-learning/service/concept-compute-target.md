@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/10/2019
-ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: c3791946ee31183e4b3c5131a8e62934bf87dfee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497481"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning işlem hedefleri nelerdir? 
 
@@ -46,16 +46,31 @@ Aşağıdaki işlem kaynakları, model dağıtımınızı barındırmak için ku
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning işlem (yönetilen)
 
-Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur ve yönetilir. Bu işlem makine öğrenimi iş yükleri için iyileştirilmiştir. Azure Machine Learning Işlem, 30 Mayıs 2019 itibariyle yalnızca yönetilen işlem olur. Daha sonra ek yönetilen işlem kaynakları eklenebilir.
+Yönetilen bir işlem kaynağı Azure Machine Learning tarafından oluşturulur ve yönetilir. Bu işlem makine öğrenimi iş yükleri için iyileştirilmiştir. Azure Machine Learning işlem kümeleri ve [işlem örnekleri](concept-compute-instance.md) yalnızca yönetilen hesaplalardır. Daha sonra ek yönetilen işlem kaynakları eklenebilir.
 
-Eğitim için Azure Machine Learning Işlem ve toplu iş kullanımı (Önizleme) için kullanabilirsiniz.  Bu işlem kaynağıyla şunları yapabilirsiniz:
+İçinde Azure Machine Learning işlem örnekleri veya işlem kümeleri oluşturabilirsiniz:
+
+| | Azure Machine Learning Studio | Azure portal | SDK | Resource Manager şablonu | CLI |
+|---| ----- | ----- | ----- | ----- | ----- |
+| İşlem örneği | evet | evet | evet | evet |  |
+| İşlem kümesi | evet | evet | evet | evet | evet |
+
+Bu işlem kaynakları oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçasıdır.
+
+> [!NOTE]
+> İşlem örnekleri yalnızca **Orta Kuzey ABD** veya **UK Güney**bölgesi olan çalışma alanları için kullanılabilir.
+>Çalışma alanınız başka bir bölgedeyse, bunun yerine bir [Not DEFTERI VM](concept-compute-instance.md#notebookvm) 'si oluşturmaya ve kullanmaya devam edebilirsiniz. 
+
+### <a name="compute-clusters"></a>İşlem kümeleri
+
+Eğitim için Azure Machine Learning işlem kümelerini ve toplu iş ınuzyı (Önizleme) için kullanabilirsiniz.  Bu işlem kaynağıyla şunları yapabilirsiniz:
 
 * Tek veya çok düğümlü küme
 * Her çalıştırma gönderdiğinizde otomatik ölçekler 
 * Otomatik küme yönetimi ve iş zamanlaması 
 * Hem CPU hem de GPU kaynakları için destek
 
-Azure portal veya [çalışma alanı giriş sayfanızda (Önizleme)](https://ml.azure.com), SDK Ile veya clı Ile Azure Machine Learning işlem örnekleri oluşturabilirsiniz. Oluşturulduğunda, diğer tür bilgi işlem hedeflerinin aksine, çalışma alanınızın otomatik olarak bir parçası olur.
+
 
 ## <a name="unmanaged-compute"></a>Yönetilmeyen işlem
 

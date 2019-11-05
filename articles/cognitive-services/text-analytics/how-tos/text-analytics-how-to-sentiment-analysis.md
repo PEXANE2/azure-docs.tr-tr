@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d516b4f71f78a5da113356a4bdf6647585292999
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494443"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Örnek: Metin Analizi ile yaklaşımı Algıla
 
@@ -33,104 +33,6 @@ Bu yetenek; sosyal medya, müşteri incelemeleri ve tartışma forumlarında poz
 Metin Analizi, 0 ile 1 arasında bir yaklaşım puanı oluşturmak için makine öğrenmesi sınıflandırma algoritması kullanır. 1’e yakın puanlar pozitif yaklaşımı, 0’a yakın puanlar ise negatif yaklaşımı gösterir. Model, yaklaşım ilişkilendirmeleri ile kapsamlı bir metin gövdesi kullanılarak önceden eğitilir. Şu anda kendi eğitim verilerinizi sağlamak mümkün değildir. Model, metin analizi sırasında tekniklerin birleşimini kullanır. Teknik işleme, konuşma bölümü analizi, sözcük yerleşimi ve Word ilişkilendirmelerini içeren teknikler. Algoritma hakkında daha fazla bilgi için bkz. [Metin Analizi Tanıtımı](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/).
 
 Metindeki belirli bir varlık için yaklaşımı ayıklamanın tersine yaklaşım analizi, belgenin tamamında gerçekleştirilir. Uygulamada, büyük bir metin bloğu yerine bir ya da iki cümle içerdiğinde, gelişmenin doğruluğu için kullanım eğilimi vardır. Nesnellik değerlendirmesi aşamasında model, belgenin tamamının nesnel mi olduğunu yoksa yaklaşım mı içerdiğini belirler. Genellikle hedefi olan bir belge, daha fazla işlem olmadan 0,50 puanı ile sonuçlanan yaklaşım algılama aşamasına ileretmez. Ardışık düzende devam eden belgeler için, sonraki aşama 0,50 veya üzeri bir puan üretir. Puan, belgede algılanan yaklaşım derecesine bağlıdır.
-
-## <a name="preparation"></a>Hazırlık
-
-Yaklaşım analizi, daha küçük metin öbeklerini üzerinde çalışmaya verdiğiniz zaman daha yüksek kaliteli bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
-
-Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil.
-
-Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiyon başına en fazla 1.000 öğe (kimlik) kullanabilirsiniz. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, yaklaşım analizi için gönderebilecek içeriklere bir örnektir:
-
-```json
-    {
-        "documents": [
-            {
-                "language": "en",
-                "id": "1",
-                "text": "We love this trail and make the trip every year. The views are breathtaking and well worth the hike!"
-            },
-            {
-                "language": "en",
-                "id": "2",
-                "text": "Poorly marked trails! I thought we were goners. Worst hike ever."
-            },
-            {
-                "language": "en",
-                "id": "3",
-                "text": "Everyone in my family liked the trail but thought it was too challenging for the less athletic among us. Not necessarily recommended for small children."
-            },
-            {
-                "language": "en",
-                "id": "4",
-                "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },
-            {
-                "language": "en",
-                "id": "5",
-                "text": "This is my favorite trail. It has beautiful views and many places to stop and rest"
-            }
-        ]
-    }
-```
-
-## <a name="step-1-structure-the-request"></a>1\. Adım: İsteği yapılandırma
-
-İstek tanımı hakkında daha fazla bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
-
-+ POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [YAKLAŞıM ANALIZI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)'sine bakın.
-
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTP uç noktasını ayarlayın. URL 'ye `/text/analytics/v2.1/sentiment` dahil etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
-
-+ Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
-
-+ İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
-
-> [!Tip]
-> İsteği yapılandırmak ve hizmete göndermek için [Postman](text-analytics-how-to-call-api.md) 'ı kullanın veya [belgelerde](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) **API test konsolunu** açın.
-
-## <a name="step-2-post-the-request"></a>2\. Adım: İsteği gönderme
-
-İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için istek boyutu ve sayısı hakkında bilgi için genel bakış konusunun [veri sınırları](../overview.md#data-limits) bölümüne bakın.
-
-Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
-
-
-## <a name="step-3-view-the-results"></a>3\. Adım: sonuçları görüntüleme
-
-Yaklaşım Çözümleyicisi, metni ağırlıklı pozitif veya negatif olarak sınıflandırır. 0 ile 1 arasında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize yaklaşım için çözümlenememesi veya yaklaşım yoksa, puan her zaman 0,5 ' dir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
-
-Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın.
-
-Aşağıdaki örnekte, bu makaledeki belge koleksiyonu yanıtı gösterilmektedir:
-
-```json
-    {
-        "documents": [
-            {
-                "score": 0.9999237060546875,
-                "id": "1"
-            },
-            {
-                "score": 0.0000540316104888916,
-                "id": "2"
-            },
-            {
-                "score": 0.99990355968475342,
-                "id": "3"
-            },
-            {
-                "score": 0.980544924736023,
-                "id": "4"
-            },
-            {
-                "score": 0.99996328353881836,
-                "id": "5"
-            }
-        ],
-        "errors": []
-    }
-```
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Yaklaşım Analizi v3 genel önizleme
 
@@ -163,20 +65,10 @@ Yaklaşım Analizi v3, bir tümce ve belge düzeyinde puanlar ve Etiketler dönd
 
 ### <a name="model-versioning"></a>Model sürümü oluşturma
 
-Sürüm 3,0 ' den başlayarak, Metin Analizi API'si verilerinizde kullanılan Metin Analizi modeli seçmenize olanak sağlar. İstekinizdeki modelin bir sürümünü seçmek için isteğe bağlı `model-version` parametresini kullanın. Bu parametre belirtilmemişse, API varsayılan olarak en son kararlı model sürümüne `latest`.
+> [!NOTE]
+> Yaklaşım analizi için model sürümü oluşturma, sürüm `v3.0-preview.1`başlayarak kullanılabilir.
 
-Kullanılabilir model sürümleri:
-* `2019-10-01` (`latest`)
-
-V3 uç noktalarından alınan her yanıt, kullanılan model sürümünü belirten bir `model-version` alanı içerir.
-
-```json
-{
-    "documents": […]
-    "errors": []
-    "model-version": "2019-10-01"
-}
-```
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
 ### <a name="sentiment-analysis-v3-example-request"></a>Yaklaşım Analizi v3 örnek isteği
 
@@ -276,6 +168,104 @@ Aşağıdaki JSON Yaklaşım Analizi yeni sürümüne yapılan bir isteğin örn
 ### <a name="example-c-code"></a>Örnek C# kod
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs)üzerinde yaklaşım analizi bu sürümünü C# çağıran örnek bir uygulama bulabilirsiniz.
+
+## <a name="preparation"></a>Hazırlık
+
+Yaklaşım analizi, daha küçük metin öbeklerini üzerinde çalışmaya verdiğiniz zaman daha yüksek kaliteli bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
+
+Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil.
+
+Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiyon başına en fazla 1.000 öğe (kimlik) kullanabilirsiniz. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, yaklaşım analizi için gönderebilecek içeriklere bir örnektir:
+
+```json
+    {
+        "documents": [
+            {
+                "language": "en",
+                "id": "1",
+                "text": "We love this trail and make the trip every year. The views are breathtaking and well worth the hike!"
+            },
+            {
+                "language": "en",
+                "id": "2",
+                "text": "Poorly marked trails! I thought we were goners. Worst hike ever."
+            },
+            {
+                "language": "en",
+                "id": "3",
+                "text": "Everyone in my family liked the trail but thought it was too challenging for the less athletic among us. Not necessarily recommended for small children."
+            },
+            {
+                "language": "en",
+                "id": "4",
+                "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
+            },
+            {
+                "language": "en",
+                "id": "5",
+                "text": "This is my favorite trail. It has beautiful views and many places to stop and rest"
+            }
+        ]
+    }
+```
+
+## <a name="step-1-structure-the-request"></a>1\. Adım: İsteği yapılandırma
+
+İstek tanımı hakkında daha fazla bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
+
++ POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [YAKLAŞıM ANALIZI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)'sine bakın.
+
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTP uç noktasını ayarlayın. URL 'ye `/text/analytics/v2.1/sentiment` dahil etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
+
++ Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
+
++ İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
+
+> [!Tip]
+> İsteği yapılandırmak ve hizmete göndermek için [Postman](text-analytics-how-to-call-api.md) 'ı kullanın veya [belgelerde](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) **API test konsolunu** açın.
+
+## <a name="step-2-post-the-request"></a>2\. Adım: İsteği gönderme
+
+İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için istek boyutu ve sayısı hakkında bilgi için genel bakış konusunun [veri sınırları](../overview.md#data-limits) bölümüne bakın.
+
+Hizmetin durum bilgisi olmadığını unutmayın. Hesabınızda bir veri depolanmaz. Sonuçlar hemen yanıtta döndürülür.
+
+
+## <a name="step-3-view-the-results"></a>3\. Adım: sonuçları görüntüleme
+
+Yaklaşım Çözümleyicisi, metni ağırlıklı pozitif veya negatif olarak sınıflandırır. 0 ile 1 arasında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize yaklaşım için çözümlenememesi veya yaklaşım yoksa, puan her zaman 0,5 ' dir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
+
+Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın.
+
+Aşağıdaki örnekte, bu makaledeki belge koleksiyonu yanıtı gösterilmektedir:
+
+```json
+    {
+        "documents": [
+            {
+                "score": 0.9999237060546875,
+                "id": "1"
+            },
+            {
+                "score": 0.0000540316104888916,
+                "id": "2"
+            },
+            {
+                "score": 0.99990355968475342,
+                "id": "3"
+            },
+            {
+                "score": 0.980544924736023,
+                "id": "4"
+            },
+            {
+                "score": 0.99996328353881836,
+                "id": "5"
+            }
+        ],
+        "errors": []
+    }
+```
 
 ## <a name="summary"></a>Özet
 

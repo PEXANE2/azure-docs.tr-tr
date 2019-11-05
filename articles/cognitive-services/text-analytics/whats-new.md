@@ -8,18 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 79a573f6338d0ea3a7c3c0e772f120c34c09b05c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931518"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499952"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="named-entity-recognition-v3-public-preview---october-2019"></a>Adlandırılmış varlık tanıma v3 genel önizlemesi-Ekim 2019
+
+Adlandırılmış varlık tanıma 'nın (NER) sonraki sürümü artık genel önizlemeye sunuldu ve metinde bulunan varlıkların genişletilmiş algılanması ve kategorilerini sağlar. Şu olanakları sunar:
+
+* Aşağıdaki yeni varlık türlerinin tanınması:
+    * Telefon numarası
+    * IP adresi
+
+* Kişisel bilgi varlık türlerini (Yalnızca Ingilizce) tanıma için yeni bir uç nokta
+* Varlık tanıma ve varlık bağlama için ayrı uç noktalar.
+
+Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlık türüne göre farklılık gösterir. Daha fazla bilgi için aşağıdaki bağlantıya bakın. 
+
+> [!div class="nextstepaction"]
+> [Adlandırılmış varlık tanıma v3 hakkında daha fazla bilgi edinin](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Yaklaşım Analizi v3 genel önizleme-Ekim 2019
 
@@ -32,7 +48,6 @@ Ingilizce (`en`), Japonca (`ja`), Çince Basitleştirilmiş (`zh-Hans`), gelenek
 
 > [!div class="nextstepaction"]
 > [Yaklaşım Analizi v3 hakkında daha fazla bilgi edinin](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
-
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

@@ -7,14 +7,12 @@ ms.date: 10/22/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom:
-- iot-p0-scenario
-ms.openlocfilehash: b0200be389e6f0d59690f041695da368de6828ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d91784201b3e8745459dada3790ec0eebaef9caf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027383"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495157"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Azure IoT Central ile perakende çözümler oluşturma
 

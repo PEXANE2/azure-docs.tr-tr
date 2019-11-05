@@ -5,17 +5,17 @@ services: iot-central
 ms.service: iot-central
 ms.topic: tutorial
 ms.custom:
-- iot-storeAnalytics-conditionMonitor
+- iot-storeAnalytics-checkout
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026385"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495124"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
 
@@ -41,7 +41,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Olay Hub 'ınızı ve mantıksal uygulamanızı oluşturmadan önce, bunları yönetmek için bir kaynak grubu oluşturmanız gerekir. Kaynak grubu, **Mağaza Analytics-checkout** IoT Central uygulaması ile aynı konumda olmalıdır. Kaynak grubu oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **kaynak grupları**' nı seçin. Ardından **Ekle**'yi seçin.
 1. **Abonelik**için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
 1. **Kaynak grubu** adı için _Retail-Store-Analysis_* yazın.
@@ -109,7 +109,7 @@ Power BI panonuz, perakende izleme uygulamanızdan verileri görüntüler. Bu ç
 
     | Değer adı  | Değer türü |
     | ----------- | ---------- |
-    | Zaman damgası   | Tarih Saat   |
+    | Zaman damgası   | DateTime   |
     | Nem oranı    | Sayı     |
     | Sıcaklık | Sayı     |
 
@@ -132,7 +132,7 @@ Ayrıca, doluluk telemetrisi için bir akış veri kümesi gerekir:
 
     | Değer adı     | Değer türü |
     | -------------- | ---------- |
-    | Zaman damgası      | Tarih Saat   |
+    | Zaman damgası      | DateTime   |
     | Sıra uzunluğu 1 | Sayı     |
     | Sıra uzunluğu 2 | Sayı     |
     | İyi zaman 1   | Sayı     |

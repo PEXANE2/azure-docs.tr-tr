@@ -1,5 +1,5 @@
 ---
-title: Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı
+title: "Altyapı: şirket içi Apache Hadoop Azure HDInsight 'a"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmek için en iyi altyapı uygulamalarını öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087443"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499227"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-altyapı en iyi yöntemleri
 
@@ -42,7 +42,7 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 
 Şirket içi kümelerde bulunan ancak HDInsight kümelerinin bir parçası olmayan uygulamalar veya bileşenler, bir kenar düğümüne veya HDInsight kümesiyle aynı VNet 'teki bir sanal makineye eklenebilir. Azure HDInsight üzerinde kullanılamayan bir üçüncü taraf Hadoop uygulaması, HDInsight kümesindeki "uygulamalar" seçeneği kullanılarak yüklenebilir. Özel Hadoop uygulamaları, HDInsight kümesine "betik eylemleri" kullanılarak yüklenebilir. Aşağıdaki tabloda bazı ortak uygulamalar ve bunların HDInsight tümleştirme seçenekleri listelenmektedir:
 
-|**Uygulama**|**Tümleştirme**
+|**Uygulamanızı**|**Tümleştirme**
 |---|---|
 |Airflow|IaaS veya HDInsight Edge düğümü
 |Alluxıo|IaaS  
@@ -61,7 +61,7 @@ Ayrıca, HDInsight 'taki Hadoop bileşenlerini ve sürümlerini denetlemek için
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
-|'LARININ|IaaS 
+|'LARıNıN|IaaS 
 |Vertica|IaaS (Azure 'da SQLDW bir alternatif)
 |Tableau|IaaS 
 |Su çizgisi|HDInsight Edge düğümü
@@ -81,13 +81,13 @@ Betik kalıcı olabilir veya bir kez çalıştırılabilir. Kalıcı betikler, �
 
 HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için önceden yazılmış betikler sağlar:
 
-- Azure Depolama hesabı ekleme
-- Hue Yükleme
-- Presto yükleme
-- Solr Yükleme
-- Giraph Yükleme
+- Azure depolama hesabı ekleme
+- Hue yükleme
+- Presto 'A Install
+- Solr 'yi yükler
+- Giraph 'yi yükler
 - Hive kitaplıklarını önceden yükle
-- Mono yükleme veya güncelleştirme
+- Mono’yu yükleme veya güncelleştirme
 
 > [!Note]  
 > HDInsight, özel Hadoop bileşenleri veya betik eylemleri kullanılarak yüklenen bileşenler için doğrudan destek sağlamaz.
@@ -102,7 +102,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Önyükleme kullanarak HDInsight yapılandırmalarını özelleştirme
 
-`core-site.xml` `oozie-env.xml` , Gibiyapılandırmadosyalarındakikurulumunundeğişiklikleriveönyüklemekullanılarakyapılabilir.`hive-site.xml` Aşağıdaki betik, PowerShell [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)kullanarak bir örnektir:
+`core-site.xml`, `hive-site.xml` ve `oozie-env.xml` gibi yapılandırma dosyalarındaki kurulumunun değişiklikleri önyükleme kullanılarak yapılabilir. Aşağıdaki betik, PowerShell [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)kullanarak bir örnektir:
 
 ```powershell
 # hive-site.xml configuration
@@ -168,7 +168,7 @@ HDInsight, yeni veya mevcut bir Azure sanal ağına eklenebilir. HDInsight var o
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure sanal ağları-genel bakış](../../virtual-network/virtual-networks-overview.md)
-- [Bir Azure sanal ağı kullanarak Azure Hdınsight genişletme](../hdinsight-plan-virtual-network-deployment.md)
+- [Azure Sanal Ağını kullanarak Azure HDInsight kapsamını genişletme](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure sanal ağ hizmet uç noktaları ile Azure hizmetlerine güvenli bir şekilde bağlanma
 

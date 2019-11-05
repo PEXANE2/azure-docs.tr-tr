@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "72167360"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499203"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive ve HiveQL nedir?
 
 [Apache Hive](https://hive.apache.org/) , Apache Hadoop için bir veri ambarı sistemidir. Hive, verilerin özetlenmesi, sorgulanmasına ve analizine izin vermez. Hive sorguları, SQL 'e benzer bir sorgu dili olan HiveQL 'e yazılır.
 
-Hive büyük ölçüde yapılandırılmamış veriler üzerinde proje yapısı oluşturmanızı sağlar. Yapıyı tanımladıktan sonra, bir Java veya MapReduce bilgisi olmadan verileri sorgulamak için HiveQL kullanabilirsiniz.
+Hive, büyük ölçüde yapılandırılmış veriler üzerinde proje yapısı oluşturmanızı sağlar. Yapıyı tanımladıktan sonra, bir Java veya MapReduce bilgisi olmadan verileri sorgulamak için HiveQL kullanabilirsiniz.
 
 HDInsight, belirli iş yükleri için ayarlanmış çeşitli küme türleri sağlar. Aşağıdaki küme türleri genellikle Hive sorguları için kullanılır:
 
@@ -74,7 +74,7 @@ Hive tarafından desteklenen dosya biçimleri hakkında daha fazla bilgi için b
 
 Hive ile oluşturabileceğiniz iki tür tablo vardır:
 
-* __İç__: veriler Hive veri ambarında depolanır. Veri ambarı, küme için varsayılan depolamada `/hive/warehouse/` konumunda bulunur.
+* __İç__: veriler Hive veri ambarında depolanır. Veri ambarı, kümenin varsayılan depolama alanı üzerinde `/hive/warehouse/` bulunur.
 
     Aşağıdaki koşullardan biri geçerli olduğunda iç tabloları kullanın:
 
@@ -108,7 +108,7 @@ Hive, **Kullanıcı tanımlı işlevler (UDF)** aracılığıyla da genişletile
 
 ## <a id="data"></a>Örnek veriler
 
-HDInsight üzerinde Hive, `hivesampletable` adlı bir iç tabloyla önceden yüklenmiş olarak gelir. HDInsight, Hive ile kullanılabilecek örnek veri kümeleri de sağlar. Bu veri kümeleri `/example/data` ve `/HdiSamples` dizinlerinde depolanır. Bu dizinler, kümenizin varsayılan depolamada bulunur.
+HDInsight üzerinde Hive, `hivesampletable`adlı bir iç tabloyla önceden yüklenmiş olarak gelir. HDInsight, Hive ile kullanılabilecek örnek veri kümeleri de sağlar. Bu veri kümeleri `/example/data` ve `/HdiSamples` dizinlerinde depolanır. Bu dizinler, kümenizin varsayılan depolamada bulunur.
 
 ## <a id="job"></a>Örnek Hive sorgusu
 
@@ -137,7 +137,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 * `CREATE EXTERNAL TABLE`: Hive içinde yeni bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumunda ve özgün biçimde bırakılır.
 
-* `ROW FORMAT`: kovanın verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
+* `ROW FORMAT`: Hive verilerin nasıl biçimlendirildiğini söyler. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
 
 * `STORED AS TEXTFILE LOCATION`: kovanın verilerin depolandığını (`example/data` dizini) ve metin olarak depolandığını belirtir. Veriler tek bir dosyada olabilir veya dizin içindeki birden çok dosyaya yayılabilir.
 

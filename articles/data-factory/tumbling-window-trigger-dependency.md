@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: HT
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725540"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520580"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Atlayan pencere tetikleyici bağımlılığı oluşturma
 
@@ -79,8 +79,8 @@ Aşağıdaki tabloda, bir atlayan pencere bağımlılığı tanımlamak için ge
 | **Özellik adı** | **Açıklama**  | **Tür** | **Gerekli** |
 |---|---|---|---|
 | type  | Varolan tüm pencere Tetikleyicileri bu açılan pencerede görüntülenir. Bağımlılık yapılacak tetikleyiciyi seçin.  | TumblingWindowTriggerDependencyReference veya SelfDependencyTumblingWindowTriggerReference | Evet |
-| offset | Bağımlılık tetikleyicisinin boşluğu. Zaman aralığı biçiminde bir değer sağlayın ve hem negatif hem de pozitif uzaklıklara izin verilir. Tetikleyici kendisine bağlı ise ve tüm diğer durumlarda isteğe bağlı ise bu özellik zorunludur. Kendinden bağımlılık her zaman negatif bir konum olmalıdır. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Zaman aralığı<br/>(SS: DD: SS) | Kendinden bağımlılık: Evet<br/>Diğer: Hayır |
-| size | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Zaman aralığı<br/>(SS: DD: SS) | Hayır  |
+| konumu | Bağımlılık tetikleyicisinin boşluğu. Zaman aralığı biçiminde bir değer sağlayın ve hem negatif hem de pozitif uzaklıklara izin verilir. Tetikleyici kendisine bağlı ise ve tüm diğer durumlarda isteğe bağlı ise bu özellik zorunludur. Kendinden bağımlılık her zaman negatif bir konum olmalıdır. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Timespan<br/>(SS: DD: SS) | Kendinden bağımlılık: Evet<br/>Diğer: Hayır |
+| Boyutla | Bağımlılık penceresinin boyutu. Pozitif bir TimeSpan değeri belirtin. Bu özellik isteğe bağlıdır. | Timespan<br/>(SS: DD: SS) | Hayır  |
 
 > [!NOTE]
 > Atlayan bir pencere tetikleyicisi, en fazla iki tetikleyicisine bağlı olabilir.
@@ -151,15 +151,17 @@ Son yedi gün çıktısını toplayarak günlük telemetri işleme işi ve yedi 
 
 ## <a name="monitor-dependencies"></a>Bağımlılıkları izle
 
-Bağımlılık zincirini ve ilgili pencereleri tetikleyici çalışma izleme sayfasından izleyebilirsiniz. **İzleme > tetikleme çalıştırmaları**' na gidin.
+Bağımlılık zincirini ve ilgili pencereleri tetikleyici çalışma izleme sayfasından izleyebilirsiniz. **İzleme > tetikleme çalıştırmaları**' na gidin. Eylemler sütununun altında Tetikleyiciyi yeniden çalıştırabilir veya bağımlılıklarını görüntüleyebilirsiniz.
 
-![Tetikleyici çalıştırmalarını izleme](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Tetikleyici çalıştırmalarını izleme")
+![Tetikleyici çalıştırmalarını izleme](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Tetikleme çalıştırmalarını izleme")
 
-Seçili pencerenin tüm bağımlı tetikleyici çalıştırmalarını görüntülemek için eylem simgesine tıklayın.
+' Tetikleyici bağımlılıklarını görüntüle ' seçeneğine tıklarsanız, bağımlılıkların durumunu görebilirsiniz. Bağımlılık tetiklerinin biri başarısız olursa, bağımlı tetikleyicinin çalışması için onu başarıyla yeniden çalıştırmanız gerekir. Bir atlayan pencere tetikleyicisi, zaman aşımından önce yedi gün boyunca bağımlılıklarda bekler.
 
 ![Bağımlılıkları izle](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Bağımlılıkları izle")
 
-Yukarıdaki örnekte, günlük tetikleyici, hiçbir pencere tanımlanmadığı ve 3 saat bir uzaklığa sahip saatlik bir tetikleyiciye bağımlıdır. Sonuç olarak, tetikleyici, bağımlılığın 24 başarılı çalıştıktan sonra çalışır.
+Tetikleme bağımlılığı zamanlamasını görüntülemek için daha fazla görselde, Gantt görünümünü seçin.
+
+![Bağımlılıkları izle](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Bağımlılıkları izle")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

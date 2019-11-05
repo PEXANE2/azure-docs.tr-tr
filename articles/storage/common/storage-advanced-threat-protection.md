@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673249"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495953"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure depolama için Gelişmiş tehdit koruması
 
@@ -30,7 +30,7 @@ Azure depolama için Gelişmiş tehdit koruması, tehdit algılama için blob de
 
 Gelişmiş tehdit koruması, depolama hesabınız için varsayılan olarak etkinleştirilmiştir. Gelişmiş tehdit korumasını aşağıdaki bölümlerde açıklanan çeşitli yollarla yapılandırabilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com/)başlatın.
 1. Azure depolama hesabınıza gidin. **Ayarlar**altında **Gelişmiş güvenlik**' i seçin.
@@ -40,7 +40,7 @@ Gelişmiş tehdit koruması, depolama hesabınız için varsayılan olarak etkin
 
     ![Azure Storage Gelişmiş tehdit korumasını aç](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>Azure Güvenlik Merkezi'ni kullanma
+### <a name="azure-security-centertabazure-security-center"></a>[Azure Güvenlik Merkezi](#tab/azure-security-center)
 
 Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, tüm depolama hesaplarınızda Gelişmiş tehdit koruması otomatik olarak ayarlanır. Belirli bir abonelik kapsamındaki depolama hesaplarınız için Gelişmiş tehdit korumasını aşağıdaki gibi etkinleştirebilir veya devre dışı bırakabilirsiniz:
 
@@ -54,13 +54,13 @@ Azure Güvenlik Merkezi 'nde Standart katmana abone olduğunuzda, tüm depolama 
 1. **Kaynak türüne göre fiyatlandırma katmanını Seç** bölümünde, **depolama hesapları** satırında, **etkin** veya **devre dışı**' ya tıklayın.
 
     ![Güvenlik Merkezi 'nde ATP 'yi etkinleştir](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanma
+### <a name="templatetabtemplate"></a>[Şablon](#tab/template)
 
 Gelişmiş tehdit koruması etkinleştirilmiş bir Azure depolama hesabı dağıtmak için Azure Resource Manager şablonu kullanın. Daha fazla bilgi için bkz. [Gelişmiş tehdit koruması olan depolama hesabı](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="using-an-azure-policy"></a>Azure Ilkesi kullanma
+### <a name="azure-policytabazure-policy"></a>[Azure İlkesi](#tab/azure-policy)
 
 Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde gelişmiş tehdit korumasını etkinleştirmek için bir Azure Ilkesi kullanın.
 
@@ -78,20 +78,22 @@ Belirli bir abonelik veya kaynak grubu altındaki depolama hesapları genelinde 
 
     ![İlke tanımları sayfası](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>REST API’sini kullanma
+### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
 
 Belirli bir depolama hesabı için Gelişmiş tehdit koruması ayarı oluşturmak, güncelleştirmek veya almak için REST API komutlarını kullanın.
 
 * [Gelişmiş tehdit koruması-oluştur](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Gelişmiş tehdit koruması-Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki PowerShell cmdlet 'lerini kullanın:
 
 * [Gelişmiş tehdit korumasını etkinleştir](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [Gelişmiş tehdit koruması al](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [Gelişmiş tehdit korumasını devre dışı bırak](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>Güvenlik anormalilerini keşfet
 

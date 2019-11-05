@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965385"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494019"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -73,11 +73,11 @@ Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullan
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Sertifikaları Azure Key Vault yükleme
 
-Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla cihazdan erişilebilir hale getirmek için, sertifikaları Azure Key Vault içine yükleyeceğiz. Yukarıdaki listeden görebileceğiniz gibi iki tür sertifika dosyası vardır: PFX ve ped. PFX 'yi, Key Vault yüklenecek Key Vault sertifikaları olarak değerlendireceğiz. PEK dosyaları düz metinlerdir ve bunları Key Vault gizli dizileri olarak değerlendireceğiz. [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)çalıştırarak oluşturduğumuz Azure Machine Learning hizmeti çalışma alanıyla ilişkili Key Vault kullanacağız.
+Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla cihazdan erişilebilir hale getirmek için, sertifikaları Azure Key Vault içine yükleyeceğiz. Yukarıdaki listeden görebileceğiniz gibi iki tür sertifika dosyası vardır: PFX ve ped. PFX 'yi, Key Vault yüklenecek Key Vault sertifikaları olarak değerlendireceğiz. PEK dosyaları düz metinlerdir ve bunları Key Vault gizli dizileri olarak değerlendireceğiz. [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)çalıştırarak oluşturduğumuz Azure Machine Learning çalışma alanıyla ilişkili Key Vault kullanacağız.
 
-1. [Azure Portal](https://portal.azure.com), Azure Machine Learning hizmeti çalışma alanınıza gidin.
+1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınıza gidin.
 
-2. Azure Machine Learning hizmet çalışma alanının Genel Bakış sayfasında, **Key Vault**adını bulun.
+2. Azure Machine Learning çalışma alanının Genel Bakış sayfasında, **Key Vault**adını bulun.
 
     ![Anahtar Kasası adını Kopyala](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
