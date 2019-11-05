@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 2fc22a8f2a9e1e9410f2e6a9738c50a296a6287f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180725"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472136"
 ---
 # <a name="access-and-customize-developer-portal"></a>Geliştirici portalına erişme ve özelleştirme
 
@@ -35,6 +35,10 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Geliştirici Portalında daha fazla ayrıntı için [Azure API Management geliştirici portalına genel bakış ' a](api-management-howto-developer-portal.md)ulaşabilirsiniz.
 
 ![API Management Geliştirici Portalı-yönetici modu](media/api-management-howto-developer-portal-customize/cover.png)
+
+> [!WARNING]
+> Geliştirici portalı şu anda API Management Hizmetleri 'ne alındı.
+> Hizmetiniz yeni oluşturulmuşsa veya bir geliştirici katmanı hizmeti ise, en son sürüme sahip olmanız gerekir. Aksi takdirde sorunlarla karşılaşabilirsiniz (örneğin, yayımlama işlevselliğiyle). Özellik dağıtımı Pazartesi 11 Kasım 2019 ' de tamamlanır. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 

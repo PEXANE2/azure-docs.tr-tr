@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813271"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498942"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
-Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler notları, Videoları, blog yayınlarını ve diğer bilgi türlerini bırakabilir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.  
+Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Videoları, blog gönderilerini ve diğer bilgi türlerini içerir. Hizmetle güncel kalmasını sağlamak için bu sayfaya yer işareti ekleyin.  
 
 ## <a name="release-notes"></a>Sürüm notları 
+
+### <a name="november-4-2019---ignite"></a>4 Kasım 2019-Menite
+
+* Geliştirilmiş geliştirici verimliliği
+    * [Tahmin uç noktası v3](luis-migration-api-v3.md)'nin genel kullanılabilirliği. 
+    * Uygulamaları. lu ([Luaşağı](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) biçimiyle içeri ve dışarı aktarma özelliği. Bu, etkin bir CI/CD işleminin yolunu ele alır. 
+* Dil genişletmesi
+    * [Arapça ve Hintçe](luis-language-support.md) genel önizlemede.
+* Ön derleme modelleri
+    * [Önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md) artık genel kullanıma sunuldu (GA)
+    * Japonca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#japanese-entity-support) -yaş, para birimi, sayı, yüzde, v3 'de desteklenmez.
+    * İtalyanca [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md#italian-entity-support) -yaş, para birimi, boyut, sayı, yüzde çözünürlüğü v2 'den değişti.
+* [Preview.Luis.ai Portal](https://preview.luis.ai) 'da Kullanıcı deneyimini geliştirin-karmaşık modellerin oluşturulmasını ve hata ayıklamasını etkinleştirmek için yeniden etiketleme deneyimidir.
+* Gelişmiş dil özelliklerini anlama-daha az çaba ile [Gelişmiş dil modelleri oluşturma](luis-concept-entity-types.md) . 
+* Makine öğrenimi özelliklerini model düzeyinde tanımlama ve modelleri amaçlar ve diğer varlıklara özellikler olarak kullanma gibi diğer modele işaret olarak kullanılmak üzere etkinleştirme.
+* Yeni, genişletilmiş [sınırlar](luis-boundaries.md) -tümcecik listeleri ve toplam ifadeler için daha yüksek maksimum değer, özellik sınırları olarak yeni model
+* Derin hiyerarşi yapısı biçimindeki metinden bilgi ayıklayın ve konuşma uygulamalarını daha güçlü hale getirir.
+
+    ![makine tarafından öğrenilen varlık görüntüsü](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3 Eylül 2019
 

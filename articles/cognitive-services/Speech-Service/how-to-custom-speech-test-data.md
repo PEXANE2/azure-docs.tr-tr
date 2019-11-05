@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802506"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464552"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma Tanıma için veri hazırlama
 
@@ -27,7 +27,7 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Miktar | Eğitim için kullanılır | Miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Müzik](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
 | [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1.000 saat ses |
 | [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
@@ -52,11 +52,11 @@ Ses verileri, Microsoft 'un temel konuşma konuşmadan metin modelinin veya öze
 
 Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimlendirildiğinden emin olmak için bu tabloyu kullanın:
 
-| Özellik | Value |
+| Özellik | Değer |
 |----------|-------|
 | Dosya biçimi | RIFF (WAV) |
-| Örnek hızı | 8\.000 Hz veya 16.000 Hz |
-| Kanal Sayısı | 1 (mono) |
+| Örnek hız | 8\.000 Hz veya 16.000 Hz |
+| Kanallar | 1 (mono) |
 | Ses başına maksimum uzunluk | 2 saat |
 | Örnek biçim | PCM, 16 bit |
 | Arşiv biçimi | .zip |
@@ -73,11 +73,11 @@ Sesimiz bu özellikleri karşılamaz veya bunun olup olmadığını denetlemek i
 
 Ses dosyalarınızı işlerken Microsoft 'un konuşmadan metne doğruluğu için doğruluğu ölçmek amacıyla, karşılaştırma için insan etiketli dökümlere (Word-Word) sağlamanız gerekir. İnsanlar etiketli döküm genellikle zaman alıcı olsa da doğruluğu değerlendirmek ve modeli kullanım durumlarınız için eğitmek gerekir. Göz önünde bulundurmanız durumunda, tanınma iyileştirmeleri yalnızca belirtilen veriler kadar iyi olacaktır. Bu nedenle, yalnızca yüksek kaliteli döküm dosyalarının karşıya yüklenmesi önemlidir.  
 
-| Özellik | Value |
+| Özellik | Değer |
 |----------|-------|
 | Dosya biçimi | RIFF (WAV) |
-| Örnek hızı | 8\.000 Hz veya 16.000 Hz |
-| Kanal Sayısı | 1 (mono) |
+| Örnek hız | 8\.000 Hz veya 16.000 Hz |
+| Kanallar | 1 (mono) |
 | Ses başına maksimum uzunluk | 60 s |
 | Örnek biçim | PCM, 16 bit |
 | Arşiv biçimi | .zip |
@@ -94,7 +94,7 @@ Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geli
 > [!NOTE]
 > Transkripsiyon UTF-8 bayt sırası işareti (BOM) ile kodlanmış olmalıdır.
 
-Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak veriler Özel Konuşma Tanıma Hizmeti'ne yüklenmeden _önce_ kullanıcı tarafından gerçekleştirilmesi gereken bazı önemli normalleştirme adımları vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
+Transkripsiyon metinleri sistem tarafından işlenebilmesi için normalleştirilir. Ancak, veriler konuşma Studio 'ya yüklenmeden _önce_ Kullanıcı tarafından gerçekleştirilmesi gereken bazı önemli normalleştirmeler vardır. Dökümü hazırlarken kullanılacak uygun dil için, bkz. [nasıl yapılır: insan etiketli döküm oluşturma](how-to-custom-speech-human-labeled-transcriptions.md)
 
 Ses dosyalarınızı ve bunlara karşılık gelen onayları topladıktan sonra, [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)yüklemeden önce tek bir. zip dosyası olarak paketlenmesi gerekir. Bu, üç ses dosyası ve bir insan etiketli döküm dosyası içeren örnek bir veri kümesidir:
 
@@ -138,7 +138,7 @@ Kullanıcılarınızın karşılaşabilmesi veya kullanması gereken standart te
 
 Bu, konuşulan bir utterance örnekleri ve her biri için özel bir telaffuz içerir:
 
-| Tanınan/görüntülenmiş form | Konuşulan formu |
+| Tanınan/görüntülenmiş form | Konuşulan form |
 |--------------|--------------------------|
 | 3CPO | Üç c p o |  
 | CNTK | c n t k |
@@ -148,7 +148,7 @@ Konuşulan biçim fonetik bir dizidir. Bu, harf, sözcük, hecelere veya üçün
 
 Özelleştirilmiş telaffuz Ingilizce (en-US) ve Almanca (de-DE) olarak kullanılabilir. Bu tabloda dile göre desteklenen karakterler gösterilmektedir:
 
-| Dil | Yerel Ayar | Karakterler |
+| Dil | Yerel Ayar | Karakterle |
 |----------|--------|------------|
 | Türkçe | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | Almanca | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
@@ -158,7 +158,7 @@ Söylenişleri için ilgili veri dosyanızın doğru biçimlendirildiğinden emi
 | Özellik | Değer |
 |----------|-------|
 | Metin kodlaması | UTF-8 BOM (Ingilizce için de ANSI desteklenir) |
-| satır başına söylenişleri sayısı | 1\. |
+| satır başına söylenişleri sayısı | 1 |
 | En büyük dosya boyutu | 1 MB (ücretsiz katman için 1 KB) |
 
 ## <a name="next-steps"></a>Sonraki adımlar

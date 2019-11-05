@@ -8,14 +8,14 @@ manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959033"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491341"
 ---
 # <a name="scenario-availability"></a>Senaryo kullanılabilirliği
 
@@ -28,16 +28,16 @@ Konuşma hizmeti SDK 'Sı çok çeşitli programlama dilleri ve ortamları genel
   - C#/Windows & UWP & Unity
   - Java (JRE ve Android)
   - Python
-  - SWIFT
+  - Swift
   - Objective-C
   - TTS REST API, her durumda kullanılabilir.
-- **Uyandırma sözcüğü (anahtar sözcük spour/KWS)**
+- **Anahtar sözcük biriktirme (KWS)**
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (konuşma cihazları SDK)
-  - Uyandırma sözcüğü (anahtar sözcük spour/KWS) işlevi herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır
-- **Ses-Ilk Sanal Yardımcısı**
+  - Anahtar sözcük biriktirme (KWS) işlevi herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır
+- **Ses yardımcıları**
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (konuşma cihazları SDK)

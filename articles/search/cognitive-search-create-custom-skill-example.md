@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784944"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466823"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 
@@ -33,9 +33,9 @@ Bu örnek, bir Web API 'sini barındırmak için bir Azure Işlevi kullansa da g
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-1. Visual Studio 'da Dosya menüsünden **yeni**  > **Proje** ' yi seçin.
+1. Visual Studio 'da Dosya menüsünden **yeni** > **Proje** ' yi seçin.
 
-1. Yeni proje iletişim kutusunda, **yüklü**' i seçin, **Visual C#**   > **Cloud**' ı genişletin, **Azure işlevleri**' ni seçin, projeniz için bir ad yazın ve **Tamam**' ı seçin. İşlev uygulaması adının bir C# ad alanı olarak geçerli olması gerekir, bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan diğer karakterlerden hiçbirini kullanmayın.
+1. Yeni proje iletişim kutusunda, **yüklü**' i seçin, **Visual C#**  > **Cloud**' ı genişletin, **Azure işlevleri**' ni seçin, projeniz için bir ad yazın ve **Tamam**' ı seçin. İşlev uygulaması adının bir C# ad alanı olarak geçerli olması gerekir, bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan diğer karakterlerden hiçbirini kullanmayın.
 
 1. **Azure işlevleri v2 (.NET Core)** seçeneğini belirleyin. Bunu sürüm 1 ile de yapabilirsiniz, ancak aşağıda yazılan kod v2 şablonunu temel alır.
 
@@ -313,9 +313,9 @@ namespace SampleSkills
 
 Bing varlık arama API 'sine kaydolurken aldığınız anahtara göre `key` sabitine kendi *anahtar* değerini girdiğinizden emin olun.
 
-Bu örnek, kolay bir şekilde tek bir dosyadaki tüm gerekli kodu içerir. Aynı becerinin biraz daha yapısal bir sürümünü ve ayrıca [Power beceriler deposundaki](https://aka.ms/entity-search-power-skill)özel yeteneklerin diğer örneklerini bulabilirsiniz.
+Bu örnek, kolay bir şekilde tek bir dosyadaki tüm gerekli kodu içerir. [Power becerileri deposunda](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)aynı becerinin biraz daha yapısal bir sürümünü bulabilirsiniz.
 
-Kuşkusuz `Function1.cs` dosyayı `BingEntitySearch.cs` olarak yeniden adlandırabilirsiniz.
+Kuşkusuz `Function1.cs` dosyayı `BingEntitySearch.cs`olarak yeniden adlandırabilirsiniz.
 
 ## <a name="test-the-function-from-visual-studio"></a>İşlevi Visual Studio 'dan test etme
 
@@ -375,7 +375,7 @@ Aşağıdaki örneğe benzer bir yanıt görmeniz gerekir:
 
 İşlev davranışından memnun kaldığınızda, bunu yayımlayabilirsiniz.
 
-1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. Yeni  > **Yayımla** **Oluştur** seçeneğini belirleyin.
+1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. Yeni > **Yayımla** **Oluştur** seçeneğini belirleyin.
 
 1. Zaten Visual Studio 'Yu Azure hesabınıza bağladıysanız **Hesap Ekle...** seçeneğini belirleyin.
 
@@ -476,10 +476,10 @@ Burada, yerleşik [varlık tanıma beceriye](cognitive-search-skill-entity-recog
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tebrikler! İlk özel zengini oluşturdunuz. Artık kendi özel işlevselliklerinizi eklemek için aynı kalıbı izleyebilirsiniz. 
+Tebrikler! İlk özel becerinizi oluşturdunuz. Artık kendi özel işlevselliklerinizi eklemek için aynı kalıbı izleyebilirsiniz. Daha fazla bilgi edinmek için aşağıdaki bağlantılara tıklayın.
 
-+ [Güç becerileri: özel yeteneklerin bir deposu](https://aka.ms/powerskills)
-+ [Bilişsel arama ardışık düzenine özel bir yetenek ekleyin](cognitive-search-custom-skill-interface.md)
++ [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
 + [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

@@ -1,5 +1,5 @@
 ---
-title: Örnek Jupyter Not Defterleri
+title: Örnek Jupyıter Not defterleri
 titleSuffix: Azure Machine Learning
 description: SDK için Azure Machine Learning Python 'u araştırmak için örnek jupi not defterlerini bulun ve kullanın.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
-ms.translationtype: MT
+ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997072"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476070"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupi Not defterleri ile Azure Machine Learning araştırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "70997072"
 
 Bu makalede, aşağıdaki ortamlardan depoya nasıl erişebileceğiniz gösterilmektedir:
 
-- [Azure Machine Learning Not defteri VM 'si](#notebookvm)
+- [Azure Machine Learning işlem örneği](#notebookvm)
 - [Kendi Not defteri sunucunuzu getir](#byo)
 - [Veri Bilimi Sanal Makinesi](#dsvm)
 
@@ -32,9 +32,9 @@ Bu makalede, aşağıdaki ortamlardan depoya nasıl erişebileceğiniz gösteril
 > Depoyu kopyaladıktan sonra, öğretici ve **kullanım için nasıl yapılır-azureml** klasöründeki ilgili not defterlerindeki **eğitim** not defterlerini bulacaksınız.
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Azure Machine Learning Not defteri VM 'sinde örnekleri al
+## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneğinde örnekleri al
 
-Örnekleri kullanmaya başlamak için en kolay yol, [öğreticiyi tamamdır: Kurulum ortamı ve çalışma](tutorial-1st-experiment-sdk-setup.md)alanı. Tamamlandıktan sonra, SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu olacaktır. İndirme veya yükleme gerekli değildir.
+Örnekleri kullanmaya başlamanın en kolay yolu, öğreticiyi tamamlamaya yönelik bir yöntemdir [: Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md). Tamamlandıktan sonra, SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu olacaktır. İndirme veya yükleme gerekli değildir.
 
 <a name="byo"></a>
 
@@ -57,6 +57,6 @@ Veri Bilimi Sanal Makinesi (DSVM), özellikle veri bilimi yapmak için oluşturu
 
 Azure Machine Learning neler yapabileceğini öğrenmek için [örnek not defterlerini](https://aka.ms/aml-notebooks) bulun veya bu öğreticileri deneyin:
 
-- [Eğitmek ve bir görüntü sınıflandırma modeli MNIST ile dağıtma](tutorial-train-models-with-aml.md)
+- [IIST ile görüntü sınıflandırma modeli eğitme ve dağıtma](tutorial-train-models-with-aml.md)
 
-- [Veri hazırlama ve NYC taksi veri kümesiyle bir regresyon modeli eğitmek için otomatik makine öğrenimi kullanıyor](tutorial-auto-train-models.md)
+- [NYC TAXI veri kümesiyle bir regresyon modeli eğitmek için veri hazırlama ve otomatik makine öğrenimi kullanma](tutorial-auto-train-models.md)

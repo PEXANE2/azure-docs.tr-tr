@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782615"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468043"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure sanal makineleri için bir Azure bölgesinden diğerine �
 > * Kurtarma Hizmetleri kasası oluşturma
 > * Hedef kaynak ayarlarını doğrulama
 > * VM 'Ler için giden ağ bağlantısını ayarlama
-> * VM için çoğaltmayı etkinleştirme
+> * Sanal makine için çoğaltmayı etkinleştirme
 
 > [!NOTE]
 > Bu makale, en basit ayarlarla olağanüstü durum kurtarma dağıtımı için yönergeler sağlar. Özelleştirilmiş ayarlar hakkında bilgi edinmek istiyorsanız, [nasıl yapılır bölümü](azure-to-azure-how-to-enable-replication.md)altındaki makaleleri gözden geçirin.
@@ -40,10 +40,10 @@ Bu öğreticiyi tamamlamak için:
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
-Kasayı, kaynak bölgesi dışında herhangi bir bölgede oluşturun.
+Kaynak bölgesi dışında herhangi bir bölgede kasayı oluşturun.
 
 1. [Azure Portal](https://portal.azure.com) > **Kurtarma Hizmetleri**’nde oturum açın.
-2. **Kaynak** > **yönetimi**araçlarıyedeklemesi > **ve Site Recovery**oluştur ' a tıklayın.
+2. Azure portal menüsünde veya **giriş** sayfasında, **kaynak oluştur**' u seçin. Ardından **yedekleme ve Site Recovery** > **Yönetim Araçları** ' nı seçin.
 3. **Ad** alanında, kasayı tanımlamak için bir kolay ad belirtin. Birden fazla aboneliğiniz varsa uygun olanı seçin.
 4. Kaynak grubu oluşturun veya var olan bir grubu seçin. Bir Azure bölgesi belirtin. Desteklenen bölgeleri kontrol etmek için [Azure Site Recovery Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/site-recovery/) bölümündeki coğrafi kullanılabilirlik kısmına bakın.
 5. Panodan kasaya hızlıca erişmek için önce **Panoya sabitle** seçeneğine ve sonra **Oluştur**’a tıklayın.
@@ -92,7 +92,7 @@ NSG kullanıyorsanız, kaynak bölge için bir depolama hizmeti etiketi NSG kura
 
 Çoğaltmak istediğiniz VM 'Lerin en son kök sertifikalara sahip olup olmadığını denetleyin. Bunlar, güvenlik kısıtlamaları nedeniyle Site Recovery sanal makine tarafından kaydedilmemişse.
 
-- Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
+- Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme işlemlerini uygulayın.
 - Linux VM'lerde, VM’deki en son güvenilen kök sertifikalarını ve sertifika iptal listesini almak için Linux dağıtıcınız tarafından sağlanan yönergeleri uygulayın.
 
 ## <a name="set-permissions-on-the-account"></a>Hesapta izinleri ayarlama
@@ -107,7 +107,7 @@ Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için üç y
 
 [Azure RBAC yerleşik rolleri](../role-based-access-control/built-in-roles.md)hakkında daha fazla bilgi edinin.
 
-## <a name="enable-replication-for-a-vm"></a>VM için çoğaltmayı etkinleştirme
+## <a name="enable-replication-for-a-vm"></a>Sanal makine için çoğaltmayı etkinleştirme
 
 ### <a name="select-the-source"></a>Kaynağı seçme
 
@@ -124,7 +124,7 @@ Azure Site Recovery, Site Recovery yönetim işlemlerini denetlemek için üç y
 Site Recovery, abonelik ve kaynak grup/bulut hizmeti ile ilişkili VM’lerin listesini alır.
 
 1. **Sanal Makineler** bölümünde çoğaltmak istediğiniz VM’leri seçin.
-2.           **Tamam**'ı tıklatın.
+2. **Tamam** düğmesine tıklayın.
 
 ### <a name="configure-replication-settings"></a>Çoğaltma ayarlarını yapılandırma
 
@@ -175,8 +175,8 @@ Site Recovery, hedef bölge için varsayılan ayarları ve çoğaltma ilkesini o
 Kaynak VM 'de Azure disk şifrelemesi (ADE) etkinse ayarları gözden geçirin.
 
 1. Ayarları doğrulayın:
-    - **Disk şifreleme anahtarı kasaları**: Varsayılan olarak Site Recovery, kaynak VM disk şifreleme anahtarları üzerinde "ASR" sonekiyle yeni bir Anahtar Kasası oluşturur. Anahtar Kasası zaten varsa, yeniden kullanılır.
-    - **Anahtar şifreleme anahtarı kasaları**: Varsayılan olarak, Site Recovery hedef bölgede yeni bir Anahtar Kasası oluşturur. Ad "ASR" sonekine sahiptir ve kaynak VM anahtar şifreleme anahtarlarını temel alır. Site Recovery tarafından oluşturulan Anahtar Kasası zaten varsa, yeniden kullanılır.
+    - **Disk şifreleme anahtarı kasaları**: varsayılan olarak Site Recovery, kaynak VM disk şifreleme anahtarları üzerinde "ASR" sonekiyle yeni bir Anahtar Kasası oluşturur. Anahtar Kasası zaten varsa, yeniden kullanılır.
+    - **Anahtar şifreleme anahtarı kasaları**: varsayılan olarak Site Recovery, hedef bölgede yeni bir Anahtar Kasası oluşturur. Ad "ASR" sonekine sahiptir ve kaynak VM anahtar şifreleme anahtarlarını temel alır. Site Recovery tarafından oluşturulan Anahtar Kasası zaten varsa, yeniden kullanılır.
 
 2. Özel anahtar kasaları seçmek için **Özelleştir** ' e tıklayın.
 
@@ -188,7 +188,7 @@ Kaynak VM 'de Azure disk şifrelemesi (ADE) etkinse ayarları gözden geçirin.
 
 1. En son durumu görüntülemek için **Ayarlar**’da **Yenile**’ye tıklayın.
 2. İlerleme durumunu ve durumu aşağıdaki gibi izleyin:
-    - **Ayarlar**  > işleriSiteRecoveryişler'dekorumayıetkinleştirmeişininilerlemesiniizleyin. > 
+    - **Ayarlar** > **işleri** **Site Recovery işleri** > , **Korumayı etkinleştirme** işinin ilerlemesini izleyin.
     - **Ayarlar** > **Çoğaltılan Öğeler** bölümünde VM’lerin durumunu ve ilk çoğaltma ilerleme durumunu görüntüleyebilirsiniz. Ayarlarının detayına gitmek için VM’ye tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

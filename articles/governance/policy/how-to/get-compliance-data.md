@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: bd65fcf6ebff931fbb408ca8337a37d355221dfe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480253"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
@@ -89,10 +89,10 @@ Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk 
 
 | Kaynak durumu | Etki | İlke değerlendirmesi | Uyumluluk durumu |
 | --- | --- | --- | --- |
-| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Doğru | Uyumlu değil |
-| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Yanlış | Uyumlu |
-| Yeni | Audit, AuditIfNotExist\* | Doğru | Uyumlu değil |
-| Yeni | Audit, AuditIfNotExist\* | Yanlış | Uyumlu |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Uyumlu değil |
+| Var | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Uyumlu |
+| Yeni | Audit, AuditIfNotExist\* | True | Uyumlu değil |
+| Yeni | Audit, AuditIfNotExist\* | False | Uyumlu |
 
 \* Append, DeployIfNotExist ve AuditIfNotExist etkileri IF deyiminin TRUE olmasını gerektirir.
 Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
@@ -131,9 +131,16 @@ Bir ilke veya girişim farklı kapsamlara atanabileceği için tablo, her ataman
 **Kaynak uyumluluğu** sekmesindeki kaynakların listesi, geçerli atama için mevcut kaynakların değerlendirme durumunu gösterir. Sekme varsayılan olarak **uyumlu değildir**, ancak filtrelenebilir.
 Kaynak oluşturma isteği tarafından tetiklenen olaylar (Append, denetle, Reddet, dağıt), **Olaylar** sekmesi altında gösterilir.
 
+> [!NOTE]
+> AKS altyapı ilkesi için, gösterilen kaynak kaynak grubudur.
+
 ![Azure Ilkesi uyumluluk olayları örneği](../media/getting-compliance-data/compliance-events.png)
 
-Daha fazla ayrıntı toplamak istediğiniz olayın satırına sağ tıklayın ve **etkinlik günlüklerini göster**' i seçin. Etkinlik günlüğü sayfası açılır ve atamanın ayrıntılarını ve olayları gösteren aramaya önceden filtrelenmiştir. Etkinlik günlüğü ek bağlam ve bu olaylar hakkında bilgi sağlar.
+Kaynak [sağlayıcısı modu](../concepts/definition-structure.md#resource-provider-modes) kaynakları için kaynak **uyumluluğu** sekmesinde, kaynağı seçip satırı sağ tıklatıp **görünüm uyumluluk ayrıntıları** ' nı seçerek bileşen uyumluluk ayrıntılarını açılır. Bu sayfa, bu kaynağa, olaylara, bileşen olaylarına ve değişiklik geçmişine atanan ilkeleri görmek için de sekmeler sağlar.
+
+![Azure Ilke bileşeni uyumluluk ayrıntıları örneği](../media/getting-compliance-data/compliance-components.png)
+
+Kaynak uyumluluğu sayfasına dönün, daha fazla ayrıntı toplamak istediğiniz olayın satırına sağ tıklayın ve **etkinlik günlüklerini göster**' i seçin. Etkinlik günlüğü sayfası açılır ve atamanın ayrıntılarını ve olayları gösteren aramaya önceden filtrelenmiştir. Etkinlik günlüğü ek bağlam ve bu olaylar hakkında bilgi sağlar.
 
 ![Azure Ilke uyumluluğu etkinlik günlüğü örneği](../media/getting-compliance-data/compliance-activitylog.png)
 

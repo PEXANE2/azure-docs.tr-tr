@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1c9cdfa54494cd6d77edcd13110a79e5265e5032
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817840"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467930"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage 2. depolama hesabı oluşturma
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 |           | Önkoşul |
 |-----------|--------------|
-|Portal     | Hiçbiri         |
+|Portal     | None         |
 |PowerShell | Bu makale, PowerShell modülünü az. Storage sürüm **0,7** veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `Get-Module -ListAvailable Az.Storage` komutunu çalıştırın. Bu komutu çalıştırdıktan sonra hiçbir sonuç görünmez veya **0,7** 'den daha düşük bir sürüm görüntülenirse, PowerShell modülünüzü yükseltmeniz gerekir. Bu kılavuzun [PowerShell modülünü yükseltme](#upgrade-your-powershell-module) bölümüne bakın.
 |CLI        | Azure 'da oturum açabilir ve Azure CLı komutlarını iki şekilde çalıştırabilirsiniz: <ul><li>CLI komutlarını Azure portalında Azure Cloud Shell içinden çalıştırabilirsiniz </li><li>CLI yükleyip CLI komutlarını yerel olarak çalıştırabilirsiniz</li></ul>|
 
@@ -45,7 +45,7 @@ Düğme, bu makaledeki adımları çalıştırmak için kullanabileceğiniz etki
 
 ### <a name="install-the-cli-locally"></a>CLI’yi yerel olarak yükleme
 
-Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu makalede, Azure CLı sürüm 2.0.38 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
+Ayrıca, Azure CLI’yi yerel olarak yükleyip kullanabilirsiniz. Bu makalede, Azure CLı sürüm 2.0.38 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Azure Data Lake Storage 2. Nesil etkin bir depolama hesabı oluşturma
 
@@ -58,7 +58,7 @@ Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure Depolama hesab�
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Azure portalı kullanarak bir hesap oluşturma
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -78,7 +78,7 @@ Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşa�
 4. Ardından, depolama hesabınız için bir ad girin. Seçtiğiniz ad Azure genelinde benzersiz olmalıdır. Ad ayrıca 3 - 24 karakter uzunluğunda olmalıdır ve yalnızca rakam ve küçük harf içerebilir.
 5. Konum seçin.
 6. **StorageV2 (genel amaçlı v2)** **hesabının, hesap türü** açılan listesinde seçili şekilde göründüğünden emin olun.
-7. İsteğe bağlı olarak şu alanların her birinde bulunan değerleri değiştirin: **performans**, **çoğaltma**, **erişim katmanı**. Bu seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure depolama 'Ya giriş](https://docs.microsoft.com/azure/storage/common/storage-introduction#introducing-the-azure-storage-services).
+7. İsteğe bağlı olarak şu alanların her birinde bulunan değerleri değiştirin: **performans**, **çoğaltma**, **erişim katmanı**. Bu seçenekler hakkında daha fazla bilgi edinmek için bkz. [Azure depolama 'Ya giriş](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
 8. **Gelişmiş** sekmesini seçin.
 10. **Data Lake Storage 2.** bölümünde **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
 11. Depolama hesabı oluşturmak için **gözden geçir + oluştur** ' a tıklayın.

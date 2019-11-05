@@ -3,15 +3,15 @@ title: İlke tanımı yapısının ayrıntıları
 description: İlkenin ne zaman zorlandığını ve hangi etkiyi uygulanacağını açıklayarak, kuruluşunuzdaki kaynaklara yönelik kurallar oluşturmak için kaynak ilkesi tanımının Azure Ilkesi tarafından nasıl kullanıldığını açıklar.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053492"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464036"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -81,12 +81,17 @@ Tüm Azure Ilke örnekleri [Azure ilke örneklerimizle](../samples/index.md).
 
 Etiketler veya konumlar uygulayan ilkeler oluşturulurken `indexed` kullanılmalıdır. Gerekli olmasa da, etiketleri ve konumları desteklemeyen kaynakların, uyumluluk sonuçlarında uyumlu değil olarak gösterilmesini engeller. Özel durum **kaynak gruplarıdır**. Bir kaynak grubunda konum veya etiket uygulayan ilkelerin **modu** `all` olarak ayarlaması ve özel olarak `Microsoft.Resources/subscriptions/resourceGroups` türünü hedeflemesi gerekir. Bir örnek için bkz. [kaynak grubu etiketlerini zorlama](../samples/enforce-tag-rg.md). Etiketleri destekleyen kaynakların listesi için bkz. [Azure kaynakları Için etiket desteği](../../../azure-resource-manager/tag-support.md).
 
-### <a name="resource-provider-modes"></a>Kaynak sağlayıcısı modları
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />kaynak sağlayıcısı modları (Önizleme)
 
-Şu anda desteklenen tek kaynak sağlayıcısı modu, [Azure Kubernetes hizmetindeki](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarının yönetilmesi için `Microsoft.ContainerService.Data`.
+Şu anda önizleme sırasında şu kaynak sağlayıcısı modları destekleniyor:
+
+- [Azure Kubernetes hizmetinde](../../../aks/intro-kubernetes.md)giriş denetleyicisi kurallarını yönetmek için `Microsoft.ContainerService.Data`. Bu kaynak sağlayıcısı modunu kullanan ilkelerin [Enforceregopolicy](./effects.md#enforceregopolicy) efektini kullanması **gerekir** .
+- Azure 'da kendi kendine yönetilen AKS motoru Kubernetes kümelerini yönetmeye yönelik `Microsoft.Kubernetes.Data`.
+  Bu kaynak sağlayıcısı modunu kullanan ilkelerde [Enforceopaconstraint](./effects.md#enforceopaconstraint) etkisi **kullanılmalıdır** .
+- [Azure Key Vault](../../../key-vault/key-vault-overview.md)içindeki kasaların ve sertifikaların yönetilmesine yönelik `Microsoft.KeyVault.Data`.
 
 > [!NOTE]
-> [Kubernetes Için Azure Ilkesi](rego-for-aks.md) genel önizlemede ve yalnızca yerleşik ilke tanımlarını destekler.
+> Kaynak sağlayıcısı modları yalnızca yerleşik ilke tanımlarını destekler ve önizleme aşamasında girişimleri desteklemez.
 
 ## <a name="parameters"></a>Parametreler
 
@@ -134,7 +139,7 @@ Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 
 ### <a name="using-a-parameter-value"></a>Parametre değeri kullanma
 
-İlke kuralında, parametrelere aşağıdaki `parameters` dağıtım değeri işlev sözdizimiyle başvurulamıyor:
+İlke kuralında, parametrelere aşağıdaki `parameters` işlevi sözdizimiyle başvurulamıyor:
 
 ```json
 {
@@ -272,7 +277,7 @@ Aşağıdaki alanlar desteklenir:
 - `tags['''<tagName>''']`
   - Bu köşeli ayraç sözdizimi, çift tırnak işaretiyle kaçış ile kesme işareti olan etiket adlarını destekler.
   - Burada **'\<tagName\>'** , koşulun doğrulanması için etiketin adıdır.
-  - Örnek: **'\<tagName\>'** öğesinin etiketin adı olduğu `tags['''My.Apostrophe.Tag''']`.
+  - Örnek: **' My. kesme. Tag '** öğesinin etiketin adı olduğu `tags['''My.Apostrophe.Tag''']`.
 - Özellik diğer adları-bir liste için bkz. [diğer adlar](#aliases).
 
 > [!NOTE]
@@ -282,7 +287,7 @@ Aşağıdaki alanlar desteklenir:
 
 Bir parametre değeri, bir etiket alanına geçirilebilir. Bir parametreyi bir etiket alanına geçirmek, ilke ataması sırasında ilke tanımının esnekliğini artırır.
 
-Aşağıdaki örnekte `concat` **TagName** parametresinin değeri adlı etiket için bir etiket alanı araması oluşturmak üzere kullanılır. Bu etiket yoksa, `resourcegroup()` arama işlevini kullanarak, denetlenen kaynaklar üst kaynak grubunda ayarlanan aynı adlandırılmış etiketin değerini kullanarak etiketi eklemek için **ekleme** efekti kullanılır.
+Aşağıdaki örnekte `concat` **TagName** parametresinin değeri adlı etiket için bir etiket alanı araması oluşturmak üzere kullanılır. Bu etiket yoksa, `resourcegroup()` arama işlevini kullanarak, denetlenen kaynaklar üst kaynak grubunda ayarlanan aynı adlandırılmış etiketin değerini kullanarak etiketi eklemek için **değişiklik** efekti kullanılır.
 
 ```json
 {
@@ -291,11 +296,17 @@ Aşağıdaki örnekte `concat` **TagName** parametresinin değeri adlı etiket i
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
@@ -390,42 +401,15 @@ Düzeltilen ilke kuralıyla `if()`, üç karakterden kısa bir değerde `substri
 
 Azure Ilkesi aşağıdaki efekt türlerini destekler:
 
-- **Reddet**: etkinlik günlüğünde bir olay oluşturur ve istekte başarısız olur
-- **Denetim**: etkinlik günlüğünde bir uyarı olayı oluşturur, ancak bu istek başarısız olmaz
 - **Append**: isteğe tanımlı alan kümesini isteğe ekler
-- **Auditınotexists**: bir kaynak yoksa denetimi etkinleştirilir
-- **Deployifnotexists**: zaten yoksa bir kaynak dağıtır
+- **Denetim**: etkinlik günlüğünde bir uyarı olayı oluşturur, ancak bu istek başarısız olmaz
+- **Auditınotexists**: ilgili bir kaynak yoksa, etkinlik günlüğünde bir uyarı olayı oluşturur
+- **Reddet**: etkinlik günlüğünde bir olay oluşturur ve istekte başarısız olur
+- **Deployifnotexists**: zaten yoksa ilgili bir kaynak dağıtır
 - **Devre dışı**: kaynakları ilke kuralına uyum için değerlendirmez
-- **Enforceregopolicy**: Azure Kubernetes hizmetinde açık ilke aracısı sayede denetleyicisini yapılandırır (Önizleme)
+- **Enforceopaconstraint** (Önizleme): Azure 'da kendi kendine yönetilen Kubernetes kümeleri için ağ geçidi denetleyicisi ile açık ilke aracısı sayede denetleyicisini yapılandırır (Önizleme)
+- **Enforceregopolicy** (Önizleme): Azure Kubernetes hizmetinde Gatekeeper v2 ile açık ilke aracısı sayede denetleyiciyi yapılandırır
 - **Değiştir**: bir kaynaktaki tanımlı etiketleri ekler, güncelleştirir veya kaldırır
-
-**Ekleme**için aşağıdaki ayrıntıları sağlamanız gerekir:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-Değer bir dize ya da JSON biçim nesnesi olabilir.
-
-**Auditınotexists** ve **deployifnotexists** ilgili bir kaynağın varlığını değerlendirir ve bir kural uygular. Kaynak kuralla eşleşmezse, efekt uygulanır. Örneğin, tüm sanal ağlar için bir ağ izleyicisinin dağıtılmasını zorunlu kılabilirsiniz. Daha fazla bilgi için, [uzantının var olup olmadığını denetleme](../samples/audit-ext-not-exist.md) örneği.
-
-**Deployifnotexists** efekti, ilke kuralının **Ayrıntılar** bölümünde **roledefinitionıd** özelliğini gerektirir. Daha fazla bilgi için bkz. [Düzeltme-ilke tanımını yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-Benzer şekilde, [Düzeltme görevi](../how-to/remediate-resources.md)için ilke kuralının **Ayrıntılar** bölümünde, **Değiştir** **roledefinitionıd** özelliğini gerektirir. **Değiştirme** Ayrıca, kaynaklar etiketlerinde gerçekleştirilecek eylemleri tanımlamak için bir **işlem** dizisi gerektirir.
 
 Her etkileriyle ilgili tüm ayrıntılar, değerlendirme, özellik ve örnek sıralaması için bkz. [Azure Ilke efektlerini anlama](effects.md).
 
@@ -509,7 +493,7 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların bazıları, ' normal ' ad olarak görünen bir sürüme ve buna ekli **[\*]** sahip. Örnek:
+Kullanılabilir diğer adların bazıları, ' normal ' ad olarak görünen bir sürüme ve buna ekli **[\*]** sahip. Örneğin:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

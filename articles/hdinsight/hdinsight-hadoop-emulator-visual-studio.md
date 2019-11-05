@@ -1,5 +1,5 @@
 ---
-title: Hortonçalışmalar korumalı alanı ile Visual Studio için Data Lake araçları-Azure HDInsight
+title: Visual Studio için Data Lake araçları & Hortonçalışmalar-Azure HDInsight
 description: Yerel bir VM 'de çalışan Hortonrunning korumalı alanı ile Visual Studio için Azure Data Lake araçları 'nı nasıl kullanacağınızı öğrenin. Bu araçlarla, Hive ve Pig işlerini sanal alanda oluşturup çalıştırabilir ve iş çıktısını ve geçmişini görüntüleyebilirsiniz.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500161"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonçalışmalar korumalı alanı ile Visual Studio için Azure Data Lake araçları 'nı kullanma
 
@@ -33,7 +33,7 @@ Hortonçalışmalar korumalı alanının kullanılması, geliştirme ortamınız
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Korumalı alan için parolaları yapılandırma
 
-Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardından, [Horton, çalışma alanı belgesinde kullanmaya başlama](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) bölümündeki adımları izleyin. Bu adımlar, SSH `root` hesabı ve Apache ambarı `admin` hesabı için parolayı yapılandırır. Bu parolalar, Visual Studio 'dan korumalı alana bağlandığınızda kullanılır.
+Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardından, [Horton, çalışma alanı belgesinde kullanmaya başlama](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) bölümündeki adımları izleyin. Bu adımlar SSH `root` hesabının parolasını ve Apache ambarı `admin` hesabını yapılandırır. Bu parolalar, Visual Studio 'dan korumalı alana bağlandığınızda kullanılır.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Araçları korumalı alana bağlama
 
@@ -49,7 +49,7 @@ Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardında
 
     Devam etmek için **İleri**’yi seçin.
 
-4. `root` Hesap için yapılandırdığınız parolayı girmek için **parola** alanını kullanın. Diğer alanları varsayılan değerde bırakın.
+4. `root` hesabı için yapılandırdığınız parolayı girmek için **parola** alanını kullanın. Diğer alanları varsayılan değerde bırakın.
 
     ![Kök parola metin kutusu vurgulanmış iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
@@ -63,7 +63,7 @@ Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardında
     > Güncelleştirme işlemi, Hortonçalışmalar korumalı alanı yapılandırmasını Visual Studio için Data Lake araçları tarafından beklenildiği şekilde değiştirmek için ambarı kullanır.
 
 6. Doğrulama bittikten sonra, yapılandırmayı tamamladıktan sonra **son** ' u seçin.
-    ![Son düğme vurgulanmış şekilde iletişim kutusunun ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
+    Son düğme vurgulanmış şekilde iletişim kutusunun ![ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > Geliştirme ortamınızın hızına ve sanal makineye ayrılan bellek miktarına bağlı olarak, hizmetleri yapılandırmak ve doğrulamak birkaç dakika sürebilir.
@@ -99,7 +99,7 @@ Hive yapılandırılmış verilerle çalışmak için SQL benzeri bir sorgu dili
     **Iş durumu** **tamamlandı**olarak değiştirildikten sonra, yönlendirilmiş bir ÇEVRIMSIZ Graf (DAG) görüntülenir. Bu diyagram, Hive sorgusu işlenirken tez tarafından belirlenen yürütme yolunu açıklar. Tez, yerel kümedeki Hive için varsayılan yürütme altyapısıdır.
 
     > [!NOTE]  
-    > Linux tabanlı HDInsight kümeleri kullanırken Apache Tez de varsayılandır. Windows tabanlı HDInsight 'ta varsayılan değildir. Burada kullanmak için, satırı `set hive.execution.engine = tez;` Hive sorgunuzun başlangıcına eklemeniz gerekir.
+    > Linux tabanlı HDInsight kümeleri kullanırken Apache Tez de varsayılandır. Windows tabanlı HDInsight 'ta varsayılan değildir. Burada kullanmak için, Hive sorgunuzun başlangıcına satır `set hive.execution.engine = tez;` eklemeniz gerekir.
 
     Çıktıyı görüntülemek için **Iş çıkışı** bağlantısını kullanın. Bu durumda, sample_08 tablosundaki satır sayısı 823 ' dir. İş **günlüğünü** kullanarak iş hakkında tanılama bilgilerini görüntüleyebilir ve **Yarn günlük bağlantılarını indirebilirsiniz** .
 

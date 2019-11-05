@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 8727de7b13b6ac036e714ac5aca7ae017200097c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b07ce135d9efec6ecad369b6333d0a3bf2c3aab1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951230"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468251"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Bir Rigado basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -32,7 +32,7 @@ Cascade 500, çözüm oluşturucularımızın cihazı uçtan uca çözümlere ko
 Bu nasıl yapılır kılavuzunda ilerlemek için aşağıdaki kaynaklara ihtiyacınız vardır:
 
 * Bir Rigado Cascade 500 cihazı. Daha fazla bilgi için lütfen [Rigado](https://www.rigado.com/)adresini ziyaret edin.
-* Önizleme uygulaması şablonlarından birinden oluşturulmuş bir Azure IoT Central uygulaması. Daha fazla bilgi için [Yeni uygulama oluşturma](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)bölümüne bakın.
+* Önizleme uygulaması şablonlarından birinden oluşturulmuş bir Azure IoT Central uygulaması. Daha fazla bilgi için [Yeni uygulama oluşturma](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)bölümüne bakın.
 
 ## <a name="add-a-device-template"></a>Cihaz şablonu ekleme
 
@@ -54,7 +54,7 @@ Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanızın 
 2. IoT Central uygulamanızın **kapsam kimliğini** bir yere getirin.
 ![uygulama kapsamı KIMLIĞI](./media/howto-connect-rigado-cascade500-pnp/app-scope-id.png)
 3. Şimdi, **anahtarları görüntüle** ' ye tıklayın ve birincil **anahtar
-birincil anahtar![** bir yere göz önünde yapın](./media/howto-connect-rigado-cascade500-pnp/primary-key-sas.png)  
+birincil anahtar ![** bir yere göz önünde yapın](./media/howto-connect-rigado-cascade500-pnp/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>Ağ geçidine bağlanmak için Rigado ile iletişim kurun 
 

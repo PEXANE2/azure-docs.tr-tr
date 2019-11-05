@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: 44cdc2d6b93ac9a62f96875ca6c679fbb97d85a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477135"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyicisini etkinleştirme
 
-Bu makalede, Kubernetes ortamlarına dağıtılan ve [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks/)'nde barındırılan iş yüklerinin performansını izlemek üzere kapsayıcılar Için Azure izleyici 'yi ayarlama için kullanılabilen seçeneklere bir genel bakış sunulmaktadır.
+Bu makalede, Kubernetes ortamlarına dağıtılan ve [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks/)'nde barındırılan iş yüklerinin performansını izlemek üzere kapsayıcılar Için Azure izleyici 'yi ayarlama için kullanılabilen seçeneklere genel bir bakış sunulmaktadır [Azure Stack ](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)veya şirket içinde dağıtılan Kubernetes.
 
 Kapsayıcılar için Azure Izleyici, aşağıdaki desteklenen yöntemleri kullanarak yeni veya bir veya daha fazla AKS dağıtımı için etkinleştirilebilir:
 
@@ -26,6 +26,7 @@ Kapsayıcılar için Azure Izleyici, aşağıdaki desteklenen yöntemleri kullan
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
+
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
 * **Log Analytics çalışma alanı.**
@@ -40,7 +41,41 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* Prometheus ölçümleri varsayılan olarak toplanmaz. Aracıyı toplayacak şekilde [yapılandırmadan](container-insights-agent-config.md) önce, neleri tanımlayabileceğinizi anlamak Için Prometheus [belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
+* Prometheus ölçümleri varsayılan olarak toplanmaz. Aracıyı toplayacak şekilde [yapılandırmadan](container-insights-prometheus-integration.md) önce, neleri tanımlayabileceğinizi anlamak Için Prometheus [belgelerini](https://prometheus.io/) gözden geçirmeniz önemlidir.
+
+## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
+
+Aşağıdaki tablodaki bilgiler Kapsayıcılı aracının kapsayıcılar için Azure Izleyici ile iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir. Aracıdan gelen tüm ağ trafiği Azure Izleyici 'ye giden.
+
+|Aracı Kaynağı|Bağlantı Noktaları |
+|--------------|------|
+| *.ods.opinsights.azure.com | 443 |  
+| *.oms.opinsights.azure.com | 443 | 
+| *.blob.core.windows.net | 443 |
+| dc.services.visualstudio.com | 443 |
+| *.microsoftonline.com | 443 |
+| *. monitoring.azure.com | 443 |
+| login.microsoftonline.com | 443 |
+
+Aşağıdaki tablodaki bilgiler, Azure Çin için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
+
+|Aracı Kaynağı|Bağlantı Noktaları |Açıklama | 
+|--------------|------|-------------|
+| *. ods.opinsights.azure.cn | 443 | Veri alımı |
+| *. oms.opinsights.azure.cn | 443 | OMS ekleme |
+| *.blob.core.windows.net | 443 | Giden bağlantıyı izlemek için kullanılır. |
+| microsoft.com | 80 | Ağ bağlantısı için kullanılır. Bu yalnızca aracı görüntüsü sürümü ciprod09262019 veya daha önceki bir sürümdeyse gereklidir. |
+| dc.services.visualstudio.com | 443 | Azure genel bulut Application Insights kullanan aracı telemetri için. |
+
+Aşağıdaki tablodaki bilgiler, Azure ABD kamu için proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.
+
+|Aracı Kaynağı|Bağlantı Noktaları |Açıklama | 
+|--------------|------|-------------|
+| *. ods.opinsights.azure.us | 443 | Veri alımı |
+| *. oms.opinsights.azure.us | 443 | OMS ekleme |
+| *.blob.core.windows.net | 443 | Giden bağlantıyı izlemek için kullanılır. |
+| microsoft.com | 80 | Ağ bağlantısı için kullanılır. Bu yalnızca aracı görüntüsü sürümü ciprod09262019 veya daha önceki bir sürümdeyse gereklidir. |
+| dc.services.visualstudio.com | 443 | Azure genel bulut Application Insights kullanan aracı telemetrisi için. |
 
 ## <a name="components"></a>Bileşenler
 
@@ -67,6 +102,7 @@ Aşağıdaki tabloda açıklanan aşağıdaki yöntemlerden birini kullanarak ka
 | | [Azure Izleyici 'den etkinleştir](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Izleyici 'de AKS Multi-Cluster sayfasından zaten dağıtılmış bir veya daha fazla AKS kümesinin izlenmesini etkinleştirebilirsiniz. |
 | | [AKS kümesinden etkinleştir](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| İzlemeyi, Azure portal doğrudan bir AKS kümesinden etkinleştirebilirsiniz. |
 | | [Azure Resource Manager şablonu kullanarak etkinleştir](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| Bir AKS kümesinin önceden yapılandırılmış Azure Resource Manager şablonuyla izlenmesini etkinleştirebilirsiniz. |
+| | [Karma Kubernetes kümesi için etkinleştir](container-insights-hybrid-setup.md) | Azure Stack veya şirket içinde barındırılan Kubernetes için barındırılan bir AKS altyapısının izlenmesini etkinleştirebilirsiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

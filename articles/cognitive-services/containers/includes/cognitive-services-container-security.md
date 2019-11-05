@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842593"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499155"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure bilişsel hizmetler kapsayıcı güvenliği
 
-Uygulamalar geliştirirken güvenlik birincil bir odak olmalıdır. Güvenliğin önemi başarı için bir ölçümdür. Bilişsel hizmetler kapsayıcıları içeren bir yazılım çözümünü mimarmaya çalışırken, kullanabileceğiniz sınırlamaları ve özellikleri anlamak çok önemlidir. Daha fazla bilgi için bkz. [Azure güvenliği][az-security].
+Uygulamalar geliştirirken güvenlik birincil bir odak olmalıdır. Güvenliğin önemi başarı için bir ölçümdür. Bilişsel hizmetler kapsayıcıları içeren bir yazılım çözümünü mimarmaya çalışırken, kullanabileceğiniz sınırlamaları ve özellikleri anlamak çok önemlidir. Ağ güvenliği hakkında daha fazla bilgi için bkz. Azure bilişsel [Hizmetler sanal ağlarını yapılandırma][az-security].
 
 > [!IMPORTANT]
 > Varsayılan olarak bilişsel hizmetler kapsayıcı API 'sinde bir *güvenlik yoktur* . Bunun nedeni, kapsayıcının bir ağ köprüsü tarafından dışından korunan Pod 'ın bir parçası olarak çalışacaktır. Ancak, [bulut tabanlı][request-authentication]bilişsel hizmetlere erişirken kullanılan kimlik doğrulaması ile aynı şekilde çalışacak kimlik doğrulamasını etkinleştirmek mümkündür.
@@ -31,7 +31,7 @@ Alternatif ve *güvenli* bir yaklaşım olarak bilişsel hizmet kapsayıcıları
 
 [NGINX][nginx] aynı kategoride yer alan başka bir popüler seçenektir. Hem Istio hem de NGINX hizmet ağı olarak davranır ve Yük Dengeleme, Yönlendirme ve oran denetimi gibi ek özellikler sunar.
 
-### <a name="container-networking"></a>Kapsayıcı ağı
+### <a name="container-networking"></a>Kapsayıcı ağ iletişimi
 
 Bilişsel hizmetler kapsayıcıları, faturalandırma amaçlarıyla ölçüm bilgilerini göndermek için gereklidir. Tek özel durum, farklı bir faturalandırma metodolojisini izledikleri için *çevrimdışı kapsayıcılardır* . İzin verme hatası, bilişsel hizmetler kapsayıcılarının bağlı olduğu çeşitli ağ kanallarının kapsayıcının çalışmasını engelleyecek.
 
@@ -51,4 +51,4 @@ Bilişsel hizmetler kapsayıcılarının Microsoft sunucuları 'nda oluşturmakt
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com
 [request-authentication]: ../../authentication.md
-[az-security]: ../../../security/fundamentals/overview.md
+[az-security]: ../../cognitive-services-virtual-networks.md

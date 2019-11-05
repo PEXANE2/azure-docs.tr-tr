@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97470494af0d64cc20d78d69957d84a8acebc16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027719"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494901"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive ile Apache Beeline istemcisini kullanma
 
@@ -24,7 +24,7 @@ Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdı
 
 ### <a name="from-an-ssh-session"></a>Bir SSH oturumundan
 
-Bir SSH oturumundan bir küme headnode 'a bağlanırken, `10001` bağlantı noktasındaki `headnodehost` adresine bağlanabilirsiniz:
+Bir SSH oturumundan bir küme headnode 'a bağlanırken, `10001`bağlantı noktasındaki `headnodehost` adresine bağlanabilirsiniz:
 
 ```bash
 beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -34,7 +34,7 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 
 ### <a name="over-an-azure-virtual-network"></a>Bir Azure sanal ağı üzerinden
 
-Bir istemciden HDInsight 'a bir Azure sanal ağı üzerinden bağlanılırken, bir küme baş düğümünün tam etki alanı adını (FQDN) sağlamanız gerekir. Bu bağlantı doğrudan küme düğümlerine yapıldığından, bağlantı bağlantı noktasını kullanır `10001`:
+Bir istemciden HDInsight 'a bir Azure sanal ağı üzerinden bağlanılırken, bir küme baş düğümünün tam etki alanı adını (FQDN) sağlamanız gerekir. Bu bağlantı doğrudan küme düğümlerine yapıldığından, bağlantı noktası `10001`kullanır:
 
 ```bash
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
@@ -46,20 +46,20 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos kullanarak HDInsight Kurumsal Güvenlik Paketi (ESP) kümesine
 
-Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir Kurumsal Güvenlik Paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve izinleri olan bir etki alanı kullanıcı hesabının adını da belirtmeniz gerekir. `<username>` kümesine erişin:
+Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir Kurumsal Güvenlik Paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve izinleri olan bir etki alanı kullanıcı hesabının adını da belirtmeniz gerekir. kümeye `<username>`erişin:
 
 ```bash
 kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-`<username>`, kümeye erişim izinleri olan etki alanındaki bir hesabın adıyla değiştirin. `<AAD-DOMAIN>`, kümenin katıldığı Azure Active Directory (AAD) adıyla değiştirin. `<AAD-DOMAIN>` değeri için bir büyük harfli dize kullanın, aksi takdirde kimlik bilgisi bulunamadı. Gerekirse bölge adları için `/etc/krb5.conf` ' yı işaretleyin.
+`<username>`, kümeye erişim izinleri olan etki alanındaki bir hesabın adıyla değiştirin. `<AAD-DOMAIN>`, kümenin katıldığı Azure Active Directory (AAD) adıyla değiştirin. `<AAD-DOMAIN>` değeri için bir büyük harfli dize kullanın, aksi takdirde kimlik bilgisi bulunamadı. Gerekirse bölge adları için `/etc/krb5.conf` denetleyin.
 
 ---
 
 ### <a name="over-public-or-private-endpoints"></a>Herkese açık veya özel uç noktalar
 
-Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı `443` bağlantı noktası üzerinden yapılır ve SSL kullanılarak şifrelenir:
+Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı, bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
@@ -73,7 +73,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 `clustername` değerini HDInsight kümenizin adıyla değiştirin. `<username>`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için, tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
 
-Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla [bilgi için bkz](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
+Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler üzerindeki kısıtlamalar](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce, genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
 ---
 
@@ -97,13 +97,13 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 `clustername` değerini HDInsight kümenizin adıyla değiştirin. `<username>`, kümenizin küme oturum açma hesabı ile değiştirin. ESP kümeleri için, tam UPN (ör. user@domain.com) kullanın. `password` küme oturum açma hesabı parolasıyla değiştirin.
 
-Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla [bilgi için bkz](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
+Özel uç noktalar, yalnızca aynı bölgedeki VNET 'lerden erişilebilen temel bir yük dengeleyiciye işaret ediyor. Daha fazla bilgi için bkz. [genel VNET eşlemesi ve yük dengeleyiciler üzerindeki kısıtlamalar](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Beeline kullanmadan önce, genel veya özel uç noktalarla bağlantı sorunlarını gidermek için `-v` seçeneğiyle `curl` komutunu kullanabilirsiniz.
 
 ---
 
 #### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>Apache Spark ile küme kafası veya Azure sanal ağı içinden
 
-Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal ağı içindeki bir kaynaktan bağlanırken, `10001` yerine Spark Thrift sunucusu için bağlantı noktası `10002` kullanılmalıdır. Aşağıdaki örnek, baş düğüme doğrudan nasıl bağlanılacağını gösterir:
+Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal ağı içindeki bir kaynaktan bağlanırken, bağlantı noktası `10002` `10001`yerine Spark Thrift sunucusu için kullanılmalıdır. Aşağıdaki örnek, baş düğüme doğrudan nasıl bağlanılacağını gösterir:
 
 ```bash
 /usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
@@ -115,7 +115,7 @@ Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal 
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Kümenizin birincil depolama alanı için [URI düzenine](../hdinsight-hadoop-linux-information.md#URI-and-scheme) dikkat edin. Örneğin, Azure depolama için `wasb://`, Azure Data Lake Storage 2. için `abfs://` veya Azure Data Lake Storage 1. için `adl://`. Azure depolama için güvenli aktarım etkinse, URI `wasbs://` ' dır. Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* Kümenizin birincil depolama alanı için [URI düzenine](../hdinsight-hadoop-linux-information.md#URI-and-scheme) dikkat edin. Örneğin, Azure depolama için `wasb://`, Azure Data Lake Storage 2. için `abfs://` veya Azure Data Lake Storage 1. `adl://`. Azure depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`. Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
 * Seçenek 1: bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar.
 
@@ -137,9 +137,9 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. Beeline Commands `!` karakteriyle başlar, örneğin `!help`, yardımı görüntüler. Ancak bazı komutlarda `!` atlanabilir. Örneğin `help` de geçerlidir.
+3. Beeline Commands, bir `!` karakteriyle başlar, örneğin `!help` yardım görüntüler. Ancak bazı komutlarda `!` atlanabilir. Örneğin, `help` de işe yarar.
 
-    HiveQL deyimlerini yürütmek için kullanılan `!sql` vardır. Ancak, HiveQL, önceki `!sql` ' ı atlamanızı sağlayan yaygın olarak kullanılır. Aşağıdaki iki deyim eşdeğerdir:
+    HiveQL deyimlerini yürütmek için kullanılan `!sql`vardır. Ancak, HiveQL, önceki `!sql`belirleyebilmeniz için yaygın olarak kullanılır. Aşağıdaki iki deyim eşdeğerdir:
 
     ```hiveql
     !sql show tables;
@@ -236,7 +236,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. Beeline çıkmak için `!exit` kullanın.
+6. Beeline çıkmak için `!exit`kullanın.
 
 ## <a id="file"></a>HiveQL dosyası çalıştırma
 
@@ -273,7 +273,7 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
     ```
 
     > [!NOTE]  
-    > `-i` parametresi, Beeline başlar ve `query.hql` dosyasındaki deyimleri çalıştırır. Sorgu tamamlandıktan sonra, `jdbc:hive2://headnodehost:10001/>` istemine ulaşrsınız. Sorgu tamamlandıktan sonra Beeline çıkar `-f` parametresini kullanarak da bir dosya çalıştırabilirsiniz.
+    > `-i` parametresi, Beeline başlar ve `query.hql` dosyasındaki deyimleri çalıştırır. Sorgu tamamlandıktan sonra `jdbc:hive2://headnodehost:10001/>` istemine geldiğinizde. Sorgu tamamlandıktan sonra Beeline çıkış `-f` parametresini kullanarak da bir dosya çalıştırabilirsiniz.
 
 5. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden**tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
 

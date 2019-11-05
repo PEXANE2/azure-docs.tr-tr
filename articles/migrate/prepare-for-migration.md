@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176741"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480120"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
-Bu makalede, [Azure geçişi sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration)ile Azure 'a geçirmeye başlamadan önce şirket içi ve bulut tabanlı makinenin nasıl hazırlanacağı açıklanmaktadır.
+Bu makalede, [Azure geçişi sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)ile Azure 'a geçirmeye başlamadan önce şirket içi makinelerin nasıl hazırlanacağı açıklanmaktadır.
 
 
-Bu makalede şunları yapabilirsiniz:
+Bu makalede şunları yapacaksınız:
 > [!div class="checklist"]
 > * Geçiş sınırlamalarını doğrulayın.
 > * İşletim sistemi gereksinimlerini ve destek sınırlamalarını denetleyin.
@@ -130,7 +130,7 @@ Azure VM 'Leri Azure 'a geçiş sırasında oluşturulur. Geçişten sonra, yeni
 Şirket içi Linux makinelerinde şunları yapın:
 
 1. Secure Shell hizmetinin sistem önyüklemesi sırasında otomatik olarak başlayacak şekilde ayarlandığından emin olun.
-2. Güvenlik Duvarı kurallarının bir SSH bağlantısına izin verolduğunu denetleyin.
+2. Güvenlik duvarı kurallarının SSH bağlantısına izin verdiğinden emin olun.
 
 ### <a name="configure-azure-vms-after-migration"></a>Geçiş sonrasında Azure VM 'lerini yapılandırma
 

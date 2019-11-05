@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 0e4d0eb19da2485b689b1c5d5192e344153aef0b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 353e0478172ed03cde848d8c5127d2ee41724963
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799969"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481247"
 ---
 # <a name="release-notes"></a>Sürüm notları
 ## <a name="speech-sdk-170-2019-september-release"></a>Konuşma SDK 1.7.0:2019-Eylül sürümü
@@ -65,7 +65,7 @@ ms.locfileid: "71799969"
 * Proxy, kalıcı bağlantıyı destekleyecek şekilde TTS REST bağdaştırıcısını güncelleştirme
 * Geçersiz bir bölge geçirildiğinde hata iletisini geliştir
 * Swift/amaç-C:
-    * Geliştirilmiş hata raporlama: hata ile sonuçlanan Yöntemler Şu anda iki sürümde mevcuttur: hata işleme için bir `NSError` nesnesi ve bir özel durum Başlatan bir tane. İlki Swift 'a açıktır. Bu değişiklik, mevcut Swift koduna uyarlamalar gerektirir.
+    * Geliştirilmiş hata raporlama: hata ile sonuçlanan Yöntemler Şu anda iki sürümde mevcuttur: hata işleme için bir `NSError` nesnesi ve bir özel durum Başlatan bir nesne. İlki Swift 'a açıktır. Bu değişiklik, mevcut Swift koduna uyarlamalar gerektirir.
     * Geliştirilmiş olay işleme
 
 **Hata düzeltmeleri**
@@ -76,7 +76,7 @@ ms.locfileid: "71799969"
 *   Güvenli bir şekilde Web yuvası kapatma için çözüm
 *   Linux üzerinde çok ağır yük altında bir bağlantı açılırken olası kilitlenme için çözüm
 *   MacOS için çerçeve paketinde eksik meta veriler için çözüm
-*   Windows üzerinde `pip install --user` ile sorun giderme
+*   Windows üzerinde `pip install --user` sorunları giderme
 
 
 ## <a name="speech-sdk-151"></a>Konuşma SDK 1.5.1
@@ -86,17 +86,17 @@ Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyo
 **Hata düzeltmeleri**
 
 * Konuşma dökümü ile kullanıldığında FromSubscription 'ı onarın.
-* Ses-ilk Sanal Yardımcısı için anahtar sözcük biriktirmesine hata giderme.
+* Sesli Yardımcılar için anahtar sözcük biriktirmesiyle ilgili hatayı düzeltir.
 
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Konuşma SDK 1.5.0:2019-yayın Mayıs
 
 **Yeni özellikler**
 
-* Word 'ü uyandırma (anahtar sözcük biriktirme/KWS) işlevselliği artık Windows ve Linux 'ta kullanılabilir. KWS işlevselliği herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır.
+* Anahtar sözcük biriktirme (KWS) artık Windows ve Linux için kullanılabilir. KWS işlevselliği herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır.
 * Tümcecik ipucu işlevselliği SDK aracılığıyla kullanılabilir. Daha fazla bilgi için [buraya](how-to-phrase-lists.md)bakın.
 * Konuşma dökümü işlevselliği SDK aracılığıyla kullanılabilir. [Buraya](conversation-transcription-service.md)bakın.
-* Doğrudan hat konuşma kanalını kullanarak, sesli ilk sanal Yardımcılar için destek ekleyin.
+* Doğrudan hat konuşma kanalını kullanarak sesli Yardımcılar için destek ekleyin.
 
 **Örnekler**
 
@@ -105,7 +105,7 @@ Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyo
 **Geliştirmeler/değişiklikler**
 
 * Hizmet davranışını veya hizmet sonuçlarını (maskeleme küfür ve diğerleri gibi) ayarlamak için çeşitli tanıyıcı özellikleri eklendi.
-* Artık tanıyıcı `FromEndpoint` ' ı oluşturmuş olsanız bile, tanıyıcıyı standart yapılandırma özellikleri aracılığıyla yapılandırabilirsiniz.
+* Artık tanıyıcı `FromEndpoint`oluşturmuş olsanız bile, tanıyıcıyı standart yapılandırma özellikleri aracılığıyla yapılandırabilirsiniz.
 * Hedef-C: `OutputFormat` özelliği SPXSpeechConfiguration 'e eklendi.
 * SDK artık Linux dağıtımı olarak 9.
 
@@ -163,8 +163,8 @@ Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyo
 **Yeni özellikler**
 
 * Konuşma SDK 'Sı, ses yapılandırma sınıfı aracılığıyla giriş mikrofonunun seçimini destekler. Bu, konuşma hizmetlerinde varsayılan olmayan bir mikrofondan ses verileri akışını sağlar. Daha fazla bilgi için bkz. [ses girişi cihaz seçimini](how-to-select-audio-input-devices.md)açıklayan belgeler. Bu özellik JavaScript 'te henüz kullanılamaz.
-* Konuşma SDK 'Sı artık bir beta sürümünde Unity 'yi desteklemektedir. [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)sorun bölümüne geri bildirim sağlayın. Bu sürüm, Windows x86 ve x64 (masaüstü veya Evrensel Windows Platformu uygulamaları) ve Android (ARM32/64, x86) üzerinde Unity 'yi destekler. [Unity hızlı](quickstart-csharp-unity.md)başlangıçmızda daha fazla bilgi bulabilirsiniz.
-* @No__t-0 (önceki sürümlerde gönderilen) dosya artık gerekli değildir. İşlevsellik artık temel SDK ile tümleşiktir.
+* Konuşma SDK 'Sı artık bir beta sürümünde Unity 'yi desteklemektedir. [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)sorun bölümüne geri bildirim sağlayın. Bu sürüm, Windows x86 ve x64 (masaüstü veya Evrensel Windows Platformu uygulamaları) ve Android (ARM32/64, x86) üzerinde Unity 'yi destekler. [Unity hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)başlangıçmızda daha fazla bilgi bulabilirsiniz.
+* `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` dosya (önceki sürümlerde sunulan) artık gerekli değildir. İşlevsellik artık temel SDK ile tümleşiktir.
 
 
 **Örnekler**
@@ -194,12 +194,12 @@ Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyo
   * Tümcecik ipuçları için başlangıç desteği ve uygulama.
   * Tanıma için Service JSON ile Özellikler koleksiyonunu döndürün
 * Windows dll 'Leri artık bir sürüm kaynağı içeriyor.
-* Bir tanıyıcı oluşturursanız `FromEndpoint`, doğrudan uç nokta URL 'sine parametreler ekleyebilirsiniz. @No__t kullanma-0, tanıyıcıyı standart yapılandırma özellikleri aracılığıyla yapılandıramazsınız.
+* Bir tanıyıcı oluşturursanız `FromEndpoint` doğrudan uç nokta URL 'sine parametreler ekleyebilirsiniz. `FromEndpoint` kullanarak, tanıyıcıyı standart yapılandırma özellikleri aracılığıyla yapılandıramazsınız.
 
 **Hata düzeltmeleri**
 
 * Boş Proxy Kullanıcı adı ve proxy parolası doğru işlenmedi. Bu sürümle birlikte, Proxy Kullanıcı adı ve proxy parolasını boş bir dizeye ayarlarsanız, ara sunucuya bağlanılırken gönderilmez.
-* SDK tarafından oluşturulan SessionID, bazı dillerin @ no__t-0/ortamları için her zaman gerçekten rastgele değildi. Bu sorunu giderecek rastgele Oluşturucu başlatması eklendi.
+* SDK tarafından oluşturulan SessionID, bazı diller&nbsp;/ortamları için her zaman gerçekten gelişigüzel değildir. Bu sorunu giderecek rastgele Oluşturucu başlatması eklendi.
 * Yetkilendirme belirtecinin işlenmesini geliştirme. Bir yetkilendirme belirteci kullanmak istiyorsanız, SpeechConfig içinde belirtin ve abonelik anahtarını boş bırakın. Ardından tanıyıcı her zamanki gibi oluşturun.
 * Bazı durumlarda bağlantı nesnesi doğru şekilde yayımlanmamıştı. Bu sorun düzeltildi.
 * JavaScript örneği, çeviri birleştirmesinin ses çıkışını desteklemek için de Safari 'de düzeltildi.
@@ -261,7 +261,7 @@ Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıd
 
 * Android x86/x64 desteği.
 * Proxy desteği: SpeechConfig nesnesinde, artık proxy bilgilerini (konak adı, bağlantı noktası, Kullanıcı adı ve parola) ayarlamak için bir işlev çağırabilirsiniz. Bu özellik henüz iOS üzerinde kullanılamıyor.
-* Geliştirilmiş hata kodu ve iletileri. Bir tanıma bir hata döndürdüğünden, bu zaten `Reason` (iptal edildi olayında) veya `CancellationDetails` (tanınma sonucunda) `Error` olarak ayarlanmıştır. İptal edilen olay artık iki ek üye içerir, `ErrorCode` ve `ErrorDetails`. Sunucu, bildirilen hata ile ek hata bilgileri döndürdüğünden, artık yeni üyelerde kullanılabilir olacaktır.
+* Geliştirilmiş hata kodu ve iletileri. Bir tanıma hata döndürmediğinde bu, zaten `Reason` (iptal edildi olayında) veya `CancellationDetails` (tanınma sonucunda) `Error`olarak ayarlanmıştır. İptal edilen olay artık iki ek üye içerir, `ErrorCode` ve `ErrorDetails`. Sunucu, bildirilen hata ile ek hata bilgileri döndürdüğünden, artık yeni üyelerde kullanılabilir olacaktır.
 
 **Geliştirmeleri**
 
@@ -304,7 +304,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 **Yeni özellikler**
 
-* İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](quickstart-objectivec-ios.md)öğreticimize göz atın.
+* İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)öğreticimize göz atın.
 * Tarayıcıda JavaScript desteği. [JavaScript hızlı](quickstart-js-browser.md)başlangıçmıza göz atın.
 
 **Son değişiklikler**
@@ -317,10 +317,10 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 **Yeni özellikler**
 
 * Konuşma SDK 'Sı ile oluşturulan UWP uygulamaları artık Windows uygulama sertifikasyon seti 'Ni (WACK) geçirebilir.
-  [UWP hızlı](quickstart-csharp-uwp.md)başlangıcı ' nı inceleyin.
+  [UWP hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp)başlangıcı ' nı inceleyin.
 * Linux (Ubuntu 16,04 x64) üzerinde .NET Standard 2,0 desteği.
 * Deneysel: Windows (64-bit) ve Linux (Ubuntu 16,04 x64) üzerinde Java 8 desteği.
-  [Java Runtime Environment hızlı](quickstart-java-jre.md)başlangıcı ' nı inceleyin.
+  [Java Runtime Environment hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)başlangıcı ' nı inceleyin.
 
 **İşlevsel değişiklik**
 
@@ -329,7 +329,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 **Son değişiklikler**
 
 * Java 'da (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlevi artık bir yol parametresi gerektirmez. Artık tüm desteklenen platformlarda yol otomatik olarak algılanır.
-* Java C# 'da `EndpointUrl` özelliğinin get-accessor özelliği kaldırılmıştır.
+* Özelliğin get-erişimcisi Java 'da `EndpointUrl` ve C# kaldırılmıştır.
 
 **Hata düzeltmeleri**
 
@@ -342,10 +342,10 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 **Yeni özellikler**
 
-* Android platformu desteği (API 23: Android 6,0 sıralamada Mallow veya üzeri). [Android hızlı başlangıç](quickstart-java-android.md)' a göz atın.
-* Windows üzerinde 2,0 .NET Standard destekler. [.NET Core hızlı başlangıç](quickstart-csharp-dotnetcore-windows.md)' i inceleyin.
+* Android platformu desteği (API 23: Android 6,0 sıralamada Mallow veya üzeri). [Android hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android)' a göz atın.
+* Windows üzerinde 2,0 .NET Standard destekler. [.NET Core hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)' i inceleyin.
 * Deneysel: Windows 'da UWP 'yi destekleme (sürüm 1709 veya üzeri).
-  * [UWP hızlı](quickstart-csharp-uwp.md)başlangıcı ' nı inceleyin.
+  * [UWP hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)başlangıcı ' nı inceleyin.
   * Not: konuşma SDK 'Sı ile derlenen UWP uygulamaları henüz Windows uygulama sertifikasyon Kit 'ı (WACK) iletmez.
 * Otomatik yeniden bağlantı ile uzun süre çalışan tanıma desteği.
 
@@ -359,15 +359,15 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 * Tanıma olayları: NoMatch olay türü hata olayında birleştirildi.
 * SpeechOutputFormat içinde C# , ile C++hizalı kalmak için OutputFormat olarak yeniden adlandırıldı.
-* @No__t-0 arabirimindeki bazı yöntemlerin dönüş türü biraz değişti:
-   * Java 'da `read` yöntemi artık `int` yerine `long` döndürür.
-   * ' C#De `Read` yöntemi artık `int` yerine `uint` ' yi döndürür.
-   * ' C++De, `Read` ve `GetFormat` yöntemleri artık `int` yerine `size_t` ' ü döndürür.
-* C++: Ses giriş akışlarının örnekleri artık yalnızca `shared_ptr` olarak geçirilebilir.
+* `AudioInputStream` arabirimindeki bazı yöntemlerin dönüş türü biraz değişti:
+   * Java 'da `read` yöntemi artık `int`yerine `long` döndürüyor.
+   * ' C#De `Read` yöntemi artık `int`yerine `uint` döndürüyor.
+   * ' C++De, `Read` ve `GetFormat` yöntemleri artık `int`yerine `size_t` döndürüyor.
+* C++: Ses giriş akışlarının örnekleri artık yalnızca bir `shared_ptr`olarak geçirilebilir.
 
 **Hata düzeltmeleri**
 
-* @No__t-0 zaman aşımı olduğunda sonuçdaki hatalı dönüş değerleri düzeltildi.
+* `RecognizeAsync()` zaman aşımı olduğunda sonuçdaki hatalı dönüş değerleri düzeltildi.
 * Windows 'daki Media Foundation kitaplıkları bağımlılığı kaldırılmıştır. SDK artık çekirdek ses API 'Lerini kullanır.
 * Belge onarımı: desteklenen bölgeleri anlatmak için bir [bölgeler](regions.md) sayfası eklendi.
 
@@ -385,11 +385,11 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - Ayrıntılı çıkış biçimi
 
-  @No__t-0 oluşturduğunuzda, `Detailed` veya `Simple` çıkış biçimi isteyebilirsiniz. @No__t-0, maskeli bir küfür ile Güvenirlik puanı, tanınan metin, ham sözlü form, normalleştirilmiş form ve normalleştirilmiş form içerir.
+  Bir `SpeechRecognizer`oluşturduğunuzda, `Detailed` veya `Simple` çıkış biçimi isteyebilirsiniz. `DetailedSpeechRecognitionResult`, maskeli bir küfür ile Güvenirlik puanı, tanınan metin, ham sözlü form, normalleştirilmiş form ve normalleştirilmiş form içerir.
 
 **Son değişiklik**
 
-- İçindeki `SpeechRecognitionResult.RecognizedText` ' C#den `SpeechRecognitionResult.Text` olarak değiştirildi.
+- İçindeki C#`SpeechRecognitionResult.RecognizedText` `SpeechRecognitionResult.Text` olarak değiştirildi.
 
 **Hata düzeltmeleri**
 
@@ -399,7 +399,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - İleti göndericisi ve tanıyıcı arasında birkaç kilitlenme kaldırıldı.
 
-- Hizmetten gelen yanıt zaman aşımına uğradığından `NoMatch` sonucunu harekete geçirin.
+- Hizmetten gelen yanıt zaman aşımına uğradığından `NoMatch` bir sonuç tetikle.
 
 - Windows 'daki Media Foundation kitaplıkları gecikmeli yüklendi. Bu kitaplık yalnızca mikrofon girişi için gereklidir.
 
@@ -407,7 +407,7 @@ Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
 - Windows 'da, C# .NET derlemeleri artık güçlü adlandırılmış.
 
-- Belge onarımı: `Region`, tanıyıcı oluşturmak için gerekli bilgiler.
+- Belge onarımı: `Region` tanıyıcı oluşturmak için gerekli bilgiler.
 
 Daha fazla örnek eklenmiştir ve sürekli olarak güncelleştirilir. En son örnek kümesi için bkz. [konuşma SDK örnekleri GitHub deposu](https://aka.ms/csspeech/samples).
 

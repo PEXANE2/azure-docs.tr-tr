@@ -1,24 +1,23 @@
 ---
-title: Özel bilişsel arama yeteneği-Azure Search
-description: Web API 'Lerine çağrı yaparak bilişsel arama becerileri 'in yeteneklerini genişletme
-services: search
+title: Bir zenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
+titleSuffix: Azure Cognitive Search
+description: Web API 'Lerine çağırarak Azure Bilişsel Arama becerileri 'in yeteneklerini genişletin. Özel kodunuzu bütünleştirmek için özel Web API 'SI yeteneklerinizi kullanın.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466726"
 ---
-# <a name="custom-web-api-skill"></a>Özel Web API 'SI yeteneği
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
 
-**Özel Web API 'si** yeteneği, özel işlemler sağlayan BIR Web API uç noktasına çağrı yaparak bilişsel aramayı genişletmenizi sağlar. Yerleşik becerilerle benzer şekilde, **özel Web API 'si** becerilerinin giriş ve çıkışları vardır. Girişlere bağlı olarak, Web API 'niz, Dizin Oluşturucu çalıştırıldığında bir JSON yükü alır ve başarılı durum kodu ile birlikte bir JSON yükünün yanıt olarak çıkışını verir. Yanıtın özel becerinize göre belirtilen çıkışların olması beklenir. Diğer herhangi bir yanıt bir hata olarak değerlendirilir ve hiçbir zenginleştirilmez.
+**Özel Web API 'si** yeteneği, özel işlemler sağlayan BIR Web API uç noktasına çağrı yaparak AI zenginleştirme kapsamını genişletmenizi sağlar. Yerleşik becerilerle benzer şekilde, **özel Web API 'si** becerilerinin giriş ve çıkışları vardır. Girişlere bağlı olarak, Web API 'niz, Dizin Oluşturucu çalıştırıldığında bir JSON yükü alır ve başarılı durum kodu ile birlikte bir JSON yükünün yanıt olarak çıkışını verir. Yanıtın özel becerinize göre belirtilen çıkışların olması beklenir. Diğer herhangi bir yanıt bir hata olarak değerlendirilir ve hiçbir zenginleştirilmez.
 
 JSON yükleri yapısı, bu belgede daha fazla açıklanacaktır.
 
@@ -58,7 +57,7 @@ Bu beceri için "önceden tanımlanmış" çıkış yok. Web API 'nizin döndür
 ```json
   {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "A custom skill that can count the number of words or characters or lines in text",
+        "description": "A custom skill that can identify positions of different phrases in the source text",
         "uri": "https://contoso.count-things.com",
         "batchSize": 4,
         "context": "/document",
@@ -72,14 +71,13 @@ Bu beceri için "önceden tanımlanmış" çıkış yok. Web API 'nizin döndür
             "source": "/document/languageCode"
           },
           {
-            "name": "countOf",
-            "source": "/document/propertyToCount"
+            "name": "phraseList",
+            "source": "/document/keyphrases"
           }
         ],
         "outputs": [
           {
-            "name": "count",
-            "targetName": "countOfThings"
+            "name": "hitPositions"
           }
         ]
       }
@@ -103,7 +101,7 @@ Her zaman şu kısıtlamalara uyar:
            {
              "text": "Este es un contrato en Inglés",
              "language": "es",
-             "countOf": "words"
+             "phraseList": ["Este", "Inglés"]
            }
       },
       {
@@ -112,16 +110,16 @@ Her zaman şu kısıtlamalara uyar:
            {
              "text": "Hello world",
              "language": "en",
-             "countOf": "characters"
+             "phraseList": ["Hi"]
            }
       },
       {
         "recordId": "2",
         "data":
            {
-             "text": "Hello world \r\n Hi World",
+             "text": "Hello world, Hi world",
              "language": "en",
-             "countOf": "lines"
+             "phraseList": ["world"]
            }
       },
       {
@@ -130,7 +128,7 @@ Her zaman şu kısıtlamalara uyar:
            {
              "text": "Test",
              "language": "es",
-             "countOf": null
+             "phraseList": []
            }
       }
     ]
@@ -159,7 +157,7 @@ Her zaman şu kısıtlamalara uyar:
             },
             "errors": [
               {
-                "message" : "Cannot understand what needs to be counted"
+                "message" : "'phraseList' should not be null or empty"
               }
             ],
             "warnings": null
@@ -167,7 +165,7 @@ Her zaman şu kısıtlamalara uyar:
         {
             "recordId": "2",
             "data": {
-                "count": 2
+                "hitPositions": [6, 16]
             },
             "errors": null,
             "warnings": null
@@ -175,7 +173,7 @@ Her zaman şu kısıtlamalara uyar:
         {
             "recordId": "0",
             "data": {
-                "count": 6
+                "hitPositions": [0, 23]
             },
             "errors": null,
             "warnings": null
@@ -183,10 +181,12 @@ Her zaman şu kısıtlamalara uyar:
         {
             "recordId": "1",
             "data": {
-                "count": 11
+                "hitPositions": []
             },
             "errors": null,
-            "warnings": null
+            "warnings": {
+                "message": "No occurrences of 'Hi' were found in the input text"
+            }
         },
     ]
 }
@@ -203,7 +203,6 @@ Web API 'sinin kullanılamadığı veya bir HTTP hatası döndürdüğü durumla
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Güç becerileri: özel yeteneklerin bir deposu](https://aka.ms/powerskills)
 + [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Bilişsel arama 'ya özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
-+ [Örnek: bilişsel arama için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
++ [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
++ [Örnek: AI zenginleştirme için özel bir yetenek oluşturma (bilişsel-arama-oluşturma-özel-beceri-example.md)

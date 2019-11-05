@@ -1,21 +1,21 @@
 ---
-title: 'Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma bir ağda dağıtma ve yapılandırma'
+title: 'Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma'
 description: Bu öğreticide, Azure portal kullanarak Azure Güvenlik Duvarı 'Nı dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 11/02/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018967"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468473"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma bir ağda dağıtma ve yapılandırma
+# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak Azure Güvenlik duvarını karma ağda dağıtma ve yapılandırma
 
 Karma ağ oluşturmak için şirket içi ağınızı bir Azure sanal ağına bağladığınızda, Azure ağ kaynaklarınıza erişimi denetleme özelliği, genel bir güvenlik planının önemli bir parçasıdır.
 
@@ -72,12 +72,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 İlk olarak, Bu öğreticinin kaynaklarını içerecek kaynak grubunu oluşturun:
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. Azure Portal giriş sayfasında **kaynak grupları** > **Ekle**' yi seçin.
+2. Azure portal giriş sayfasında, **ekle** > **kaynak grupları** ' nı seçin.
 3. **Kaynak grubu adı**Için, **FW-karma-test**yazın.
 4. **Abonelik** bölümünde aboneliğinizi seçin.
 5. **Bölge**için **Doğu ABD**' yi seçin. Daha sonra oluşturduğunuz tüm kaynakların aynı konumda olması gerekir.
 6. **Gözden geçir + oluştur**' u seçin.
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 Şimdi VNet 'i oluşturun:
 
@@ -107,14 +107,6 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 9. **Alt ağ** altında, **Ad** için **SN-Workload** yazın.
 10. **Adres aralığı**için **10.6.0.0/24**yazın.
 11. Diğer varsayılan ayarları kabul edin ve **Oluştur**' u seçin.
-
-Şimdi ağ geçidi için ikinci bir alt ağ oluşturun.
-
-1. **VNET-bağlı** sayfasında **alt ağlar**' ı seçin.
-2. **+ Alt ağ**' ı seçin.
-3. **Ad**Için **gatewaysubnet**yazın.
-4. **Adres aralığı (CIDR bloğu)** için **10.6.1.0/24**yazın.
-5. **Tamam**’ı seçin.
 
 ## <a name="create-the-on-premises-virtual-network"></a>Şirket içi sanal ağı oluşturma
 
@@ -157,14 +149,14 @@ Bu, şirket içi ağ geçidi için kullanılan genel IP adresidir.
 2. Sol sütunda **ağ iletişimi**' ni seçin ve ardından **güvenlik duvarı**' nı seçin.
 4. **Güvenlik duvarı oluştur** sayfasında aşağıdaki ayarları kullanarak güvenlik duvarını yapılandırın:
 
-   |Ayar  |Value  |
+   |Ayar  |Değer  |
    |---------|---------|
-   |Subscription     |\<aboneliğiniz\>|
-   |Resource group     |**FW-karma-test** |
-   |Name     |**AzFW01**|
-   |Location     |Önceden kullandığınız konumu seçin|
+   |Abonelik     |\<aboneliğiniz\>|
+   |Kaynak grubu     |**FW-karma-test** |
+   |Ad     |**AzFW01**|
+   |Konum     |Önceden kullandığınız konumu seçin|
    |Bir sanal ağ seçin     |**Mevcut olanı kullan**:<br> **VNet-hub**|
-   |Genel IP adresi     |Yeni oluştur: <br>Ad - **FW-PIP**. |
+   |Genel IP adresi     |Yeni oluştur: <br> - **FW-PIP** **adı** . |
 
 5. **İncele ve oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.
@@ -304,11 +296,11 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 5. Ad için **UDR-hub-kol**yazın.
 6. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
-9. **Oluştur**’u seçin.
+9. **Oluştur**'u seçin.
 10. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 11. Sol sütundaki **rotalar** ' ı seçin.
 12. **Add (Ekle)** seçeneğini belirleyin.
@@ -332,16 +324,16 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. Arama metin kutusuna **yol tablosu** yazın ve **ENTER**tuşuna basın.
 3. **Yol tablosu**' nu seçin.
-5. **Oluştur**’u seçin.
+5. **Oluştur**'u seçin.
 6. Ad için **UDR-DG**yazın.
 7. Kaynak grubu için **FW-karma-test** ' i seçin.
 8. **Konum** alanında önceden kullandığınız konumu seçin.
 4. **Sanal ağ geçidi yol yayma**Için **devre dışı**' yı seçin.
-1. **Oluştur**’u seçin.
+1. **Oluştur**'u seçin.
 2. Yol tablosu oluşturulduktan sonra, yol tablosu sayfasını açmak için seçin.
 3. Sol sütundaki **rotalar** ' ı seçin.
 4. **Add (Ekle)** seçeneğini belirleyin.
-5. Yol adı için, uzak **bileşene**yazın.
+5. Yol adı için, **Tohub**yazın.
 6. Adres ön eki için **0.0.0.0/0**yazın.
 7. Sonraki atlama türü için **Sanal Gereç**' ı seçin.
 8. Sonraki atlama adresi için, daha önce not ettiğiniz güvenlik duvarının özel IP adresini yazın.
@@ -368,12 +360,12 @@ Genel IP adresi olmadan IIS çalıştıran, bağlı olan sanal ağda bir sanal m
 2. **Popüler**bölümünde **Windows Server 2016 Datacenter**' u seçin.
 3. Sanal makine için şu değerleri girin:
     - **Kaynak grubu** - **ILT-hibrit-test**' i seçin.
-    - **Sanal makine adı**: *VM-bağlı-01*.
+    - **Sanal makine adı**: *VM-ışınsal-01*.
     - **Bölge** -daha önce kullandığınız bölge.
     - **Kullanıcı adı**: *azureuser*.
     - **Parola**: *Azure123456!*
 4. **İleri ' yi seçin: diskler**.
-5. Varsayılanları kabul edin ve İleri **' yi seçin: Ağ**iletişimi.
+5. Varsayılanları kabul edin ve **İleri ' yi seçin: ağ**.
 6. Sanal ağ için **VNET-ışınsal** ve alt ağ **sn-iş yükü**' ı seçin.
 7. **Genel IP**için **hiçbiri**' ni seçin.
 8. **Ortak gelen bağlantı noktaları**için **Seçili bağlantı noktalarına izin ver**' i seçin ve ardından **http (80)** ve **RDP (3389)** öğesini seçin.
@@ -384,7 +376,7 @@ Genel IP adresi olmadan IIS çalıştıran, bağlı olan sanal ağda bir sanal m
 ### <a name="install-iis"></a>IIS yükleme
 
 1. Azure portal, Cloud Shell açın ve **PowerShell**olarak ayarlandığından emin olun.
-2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın:
+2. Sanal makineye IIS yüklemek ve gerekirse konumu değiştirmek için aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
    Set-AzVMExtension `
@@ -420,15 +412,15 @@ Bu, Uzak Masaüstü kullanarak genel IP adresine bağlanmak için kullandığın
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme
 
-1. İlk olarak, **VM-ışınsal-01** sanal makinesi IÇIN özel IP adresini alın ve ardından aklınızda yapın.
+1. İlk olarak, **VM-ışınsal-01** sanal makinesi IÇIN özel IP adresi ' ni aklınızda yazın.
 
 2. Azure portalından, **VM-Onprem** sanal makinesine bağlanın.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. **VM-onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-ışınsal-01 özel IP\>konumuna gidin.
+3. **VM-Onpred**üzerinde bir Web tarayıcısı açın ve http://\<VM-ışınsal-01 özel IP\>gidin.
 
-   **VM-ışınsal-01** Web sayfasını görmeniz gerekir: ![VM-ışınsal-01 Web sayfası](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   VM-kol- **01** Web sayfasını görmeniz gerekir: ![VM-ışınsal-01 web sayfası](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 
 4. **VM-Onpree** sanal makinesinden, özel IP adresinde **VM-ışınsal-01 arası** uzak bir masaüstü açın.
 

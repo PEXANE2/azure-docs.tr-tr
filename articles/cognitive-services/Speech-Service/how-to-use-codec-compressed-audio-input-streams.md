@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802253"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464352"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
@@ -43,9 +43,9 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream` oluşturun. Ardından Stream sınıfınızın bir örneğinden, akışın sıkıştırma biçimini belirterek bir `AudioConfig` oluşturun.
+Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream`oluşturun. Sonra akış sınıfınızın bir örneğinden bir `AudioConfig` oluşturun ve akışın sıkıştırma biçimini belirtin.
 
-@No__t-0 adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
+`myPushStream` adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -67,4 +67,4 @@ var text = result.GetText();
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-- [Bkz. konuşmayı tanımaC#](quickstart-csharp-dotnet-windows.md)
+* [Java 'da konuşmayı tanımayı öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

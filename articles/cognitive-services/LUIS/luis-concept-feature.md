@@ -9,33 +9,53 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949610"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487516"
 ---
-# <a name="phrase-list-features-in-your-luis-app"></a>LUSıS uygulamanızdaki ifade listesi özellikleri
+# <a name="machine-learned-features"></a>Makine tarafından öğrenilen Özellikler 
 
-Machine Learning 'de, bir *özellik* sistem engelinizdeki verilerin bir ayırt edici nitelik veya özniteliğidir. 
+Machine Learning 'de, bir *özellik* , sistem engellerinizin öğrendiği & öğrendiği verilerin bir ayırt edici nitelik veya özniteliğidir. Language Understanding (LUSıS) ' de bir özellik, amaç ve varlıklarınız hakkında ne kadar önemli olduğunu açıklar ve açıklar.
 
-Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin. Özellikler LUıN hem amaçları hem de varlıkları tanımasına karşın özellikler, amaç veya varlıkların kendileri değildir. Bunun yerine, Özellikler ilgili koşullara örnek verebilir.  
+## <a name="features-in-language-understanding"></a>Language Understanding Özellikler
 
-## <a name="what-is-a-phrase-list-feature"></a>Tümcecik listesi özelliği nedir?
-Tümcecik listesi, uygulamanız için önemli olan sözcüklerin veya deyimlerin listesidir ve diğer sözcüklerden daha fazlasını yapın. Bir tümcecik listesi, bu sözcüklerin yaklaşık olarak LUO 'ya ek bir sinyal olarak uygulama etki alanının sözlüğüne ekler. Bunlardan biri hakkında ne tür bir saldırgan, diğerlerine de otomatik olarak uygulanır. Bu liste, tam metin eşleştirmelerinin kapalı bir [liste varlığı](luis-concept-entity-types.md#types-of-entities) değildir.
+Tanımlayıcılar olarak da bilinen özellikler, örnek söylerinizi belirlemek Language Understanding yardım için ipuçlarına açıklama sağlar. Şu özellikler mevcuttur: 
 
-Tümcecik listeleri, sözcük ve tümcecik için çok sayıda sözcük ve tümcecik kullanan söylenişi örnekleri eklemeniz gerekir.
+* Amaçlar veya varlıklar için özellik olarak ifade listesi
+* Amaçlar veya varlıklara özellikler olarak varlıklar
 
-## <a name="phrase-lists-help-all-models"></a>Tümcecik listeleri tüm modellere yardımcı olur
+Özellikler, model ayrıştırma için şemanızın gerekli bir parçası olarak düşünülmelidir. 
 
-Tümcecik listeleri belirli bir amaca veya varlığa bağlı değildir, ancak tüm amaçlar ve varlıklara önemli bir artırma olarak eklenmiştir. Amacı, amaç algılamayı ve varlık sınıflandırmasını geliştirmaktır.
+## <a name="what-is-a-phrase-list"></a>Tümcecik listesi nedir?
 
-## <a name="how-to-use-phrase-lists"></a>Tümcecik listelerini kullanma
+Tümcecik listesi, belirlemeye çalıştığınız kavramı belirlemeye yardımcı olan sözcüklerin, deyimlerin, sayıların veya diğer karakterlerin bir listesidir. Liste büyük/küçük harfe duyarlıdır. 
 
-Uygulamanızda uygulama için önemli sözcükler veya tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) , örneğin:
+## <a name="when-to-use-a-phrase-list"></a>Tümcecik listesi ne zaman kullanılır?
+
+Bir tümcecik listesi ile, LUSıS, bağlamı ve genelleştirir, ancak tam metin eşleşmesi değil, öğesine benzer öğeleri belirler. LUSıS uygulamanızın yeni öğeleri genelleştirabilmesi ve belirleyebilmesi gerekiyorsa, bir tümcecik listesi kullanın. 
+
+Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi yeni örnekleri tanıyabilmek istediğinizde, makine tarafından öğrenilen bir varlıkla başlayın. Ardından, LUO 'NUN benzer anlamlara sahip sözcüklerin bulmasına yardımcı olan bir tümcecik listesi oluşturun. Bu tümcecik listesi, LUSıS 'in bu sözcüklerin değerine ek anlam ekleyerek örnekleri tanımasını sağlar. 
+
+Tümcecik listeleri, hem amaçları hem de varlıkların anlaşılmasına yardımcı olan, etki alanına özgü sözlük gibidir. 
+
+## <a name="considerations-when-using-a-phrase-list"></a>Tümcecik listesi kullanırken dikkat edilecek noktalar
+
+Bir tümcecik listesi, varsayılan olarak uygulamadaki tüm modellere uygulanır. Bu, tüm amaçları ve varlıkları çapraz bir şekilde ifade eden tümcecik listelerinde çalışacaktır. Ölülebilirlik için, yalnızca ilgili olduğu modellere bir tümcecik listesi uygulamanız gerekir. 
+
+Bir tümcecik listesi oluşturur (varsayılan olarak genel olarak oluşturulur), daha sonra bunu belirli bir modele tanımlayıcı (özellik) olarak uygularsanız, diğer modellerden kaldırılır. Bu kaldırma, uygulandığı model için tümcecik listesine ilgi ekler ve modelin sağladığı doğruluğu artırmaya yardımcı olur. 
+
+`enabledForAllModels` bayrağı, bu model kapsamını API 'de denetler. 
+
+<a name="how-to-use-phrase-lists"></a>
+
+### <a name="how-to-use-a-phrase-list"></a>Tümcecik listesi kullanma
+
+Amaç veya varlığınızda, şu gibi önemli sözcükler ya da tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) :
 
 * sektör koşulları
 * Argo
@@ -44,46 +64,27 @@ Uygulamanızda uygulama için önemli sözcükler veya tümcecikler olduğunda [
 * başka bir dilden, ancak uygulamanızda sık kullanılan dil
 * örneğinizdeki önemli sözcükler ve tümcecikler
 
-Birkaç sözcük veya tümcecik girdikten sonra, ilgili değerleri bulmak için **öner** özelliğini kullanın. İfade listesi değerlerinize eklemeden önce ilgili değerleri gözden geçirin.
-
-Tümcecik listesi, eş anlamlı olan değerler içindir. Örneğin, tüm su gövdelerini, ve gibi örnek bir örnek elde etmek istiyorsanız: 
-
-* Harika Lakes 'e hangi şehirler yakınlıyor? 
-* Gölü Havasu hangi yolda çalışır?
-* Nve bitişi nerede? 
-
-Her söylük, su gövdesinden bağımsız olarak hem amaç hem de varlıklar için belirtilmelidir: 
-
-* [Bodyofsu] için hangi şehirler yakın?
-* [Bodyofsu] üzerinde hangi yol çalıştırılır?
-* [Bodyofsu] başlangıcı ve bitişi nerede? 
-
-Su gövdesi için sözcükler veya ifadeler eşanlamlı olduğundan ve söylerde birbirinin yerine kullanılabilir. 
+Olası her sözcük veya **tümceciği eklemeyin.** Bunun yerine, bir kerede birkaç sözcük veya tümce ekleyin, sonra yeniden eğitme ve yayımlama. Liste zamanla büyüdükçe, bazı terimlerin birçok formu (eş anlamlı) olduğunu fark edebilirsiniz. Bunları başka bir listeye bölün. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Tümcecik listeleri basit bir değiştirilebilir varlıkların belirlenmesine yardımcı olur
-Değiştirilebilir tümcecik listeleri, LUSıS uygulamanızın performansını ayarlamak için iyi bir yoldur. Uygulamanız, doğru amaca göre tahmin etmeye veya varlıkları tanıma karşı bir sorunla karşılaşmışsa, en fazla alışılmadık sözcükler içerip içermediğini veya anlamı anlamlı olabilecek kelimeleri düşünün. Bu sözcükler, bir tümcecik listesine dahil etmek için iyi adaylardır.
+## <a name="when-to-use-an-entity-as-a-feature"></a>Bir varlık özellik olarak ne zaman kullanılır? 
 
-## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Tümcecik listeleri, bağlamı daha iyi anlamak için amaçları belirlemesine yardımcı olur
-Tümcecik listesi, bir LUSıS için bir yönerge değildir ve her zaman tümcecik listesindeki tüm terimleri tamamen aynı şekilde etiketleyebilir. Yalnızca bir ipucu. Örneğin, "PATTI" ve "Selma" adlarının olduğunu gösteren bir tümcecik listeniz olabilir, ancak LUP, "Şunun için PATTI için" bir ayırma, akşam yemeği için de Selma 'nın yönleri, Georgia ". 
+Bir varlık, amaç veya varlık düzeyinde bir özellik olarak eklenebilir. 
 
-Tümcecik listesi eklemek, bir amaca daha fazla örnek eklemek için bir alternatiftir. 
+### <a name="entity-as-a-feature-to-an-intent"></a>Amaç özelliği olarak varlık
 
-## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Tümcecik listeleri ve liste varlıkları ne zaman kullanılır?
-Her iki ifade listesi ve [liste varlığı](reference-entity-list.md) , her türlü amaç genelinde bir şekilde etkilenirken, bu, her biri farklı bir şekilde olur. Amaç tahmin Puanını etkilemek için bir tümcecik listesi kullanın. Tam metin eşleşmesi için varlık ayıklamayı etkilemek üzere bir liste varlığı kullanın. 
+Varlığın algılanması amaç için önemli olduğunda bir amaca tanımlayıcı (özellik) olarak bir varlık ekleyin.
 
-### <a name="use-a-phrase-list"></a>Tümcecik listesi kullanma
-Bir ifade listesi ile, LUSıS, bir listedeki öğeler olarak tam bir eşleşmeye benzer ancak tam eşleşme olmayan öğeleri belirlemek için yine de hesap ve genelleştirilebilen bir içerik alabilir. LUSıS uygulamanızın bir kategorideki yeni öğeleri genelleştirabilmesi ve belirleyebilmesi gerekiyorsa, bir tümcecik listesi kullanın. 
+Örneğin, amaç bir uçuş sağlamak için ise ve varlık bilet bilgileri (örneğin, bilgisayar sayısı, kaynak ve hedef) ise, Bilet bilgileri varlığının bulunması, kitap kolu hedefinin tahminiyle ilgili ağırlık eklemesi gerekir. 
 
-Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi bir varlığın yeni örneklerini tanıyabilmek istediğinizde, basit bir varlık gibi başka bir makine tarafından öğrenilen varlık türü kullanın. Ardından, LUTO 'nın varlığa benzer diğer sözcükleri bulmasına yardımcı olan sözcüklerin ve tümceciklerin bir ifade listesi oluşturun. Bu liste, bu sözcüklerin değerine daha fazla anlam ekleyerek, bu kelimelerin örneklerini tanımak için LUSıS 'e kılavuzluk eder. 
+### <a name="entity-as-a-feature-to-another-entity"></a>Başka bir varlığa özellik olarak varlık
 
-Tümcecik listeleri, hem amaçları hem de varlıkların anlaşılmasına yardımcı olan, etki alanına özgü sözlük gibidir. Bir tümcecik listesinin yaygın kullanımları, şehir adları gibi uygun adlarla aynıdır. Şehir adı, kısa çizgiler veya kesme işareti dahil olmak üzere birkaç sözcük olabilir.
- 
-### <a name="dont-use-a-phrase-list"></a>Tümcecik listesi kullanma 
-Bir liste varlığı bir varlığın aldığı her değeri açıkça tanımlar ve yalnızca tam olarak eşleşen değerleri tanımlar. Bir liste varlığı, bir varlığın tüm örneklerinin bilinen ve sık değişmediği bir uygulama için uygun olabilir. Örnek olarak, bir restoran menüsünde seyrek olarak değişen yiyecek öğeleri verilebilir. Bir varlıkla tam metin eşleşmesi gerekiyorsa, tümcecik listesi kullanmayın. 
+Bir varlık (a), bu varlığın (A) algılanması (B) için önemli olduğunda başka bir varlığa (B) bir özellik olarak eklenmelidir.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+Örneğin, sokak adresi varlığı (A) algılanırsa, sokak adresini bulma (A), sevkiyat adresi varlığı için tahmine ağırlık ekler (B). 
+
+## <a name="best-practices"></a>En iyi uygulamalar
 [En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

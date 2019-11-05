@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257258"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496457"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure Güvenlik ve Uyumluluk Şeması: FFIEC Finansal Hizmetleri için analiz
 
@@ -29,7 +29,7 @@ FFIEC uyumluluğu elde etmek, nitelikli denetçilerin bir üretim müşteri çö
 
 Bu Azure Güvenlik ve Uyumluluk Şeması, müşterilerin kendi analiz araçlarını oluşturabileceğiniz bir analiz platformu sağlar. Başvuru mimarisi, müşterilerin verileri SQL/veri Yöneticisi tarafından toplu veri içeri aktarmaları ya da Işlemsel bir kullanıcı aracılığıyla işletimsel veri güncelleştirmeleri aracılığıyla veri girişi yaptığı genel kullanım durumunu özetler. Her iki iş akışı da Azure SQL veritabanı 'na veri aktarmak için Azure Işlevleri birleştirir. Azure Işlevleri, her müşterinin kendi analiz gereksinimlerine özgü içeri aktarma görevlerini işlemek için Azure portal aracılığıyla müşteri tarafından yapılandırılmalıdır.
 
-Azure, müşteriler için çeşitli raporlama ve analiz hizmetleri sunar. Bu çözüm, verileri hızla taramak ve daha akıllı modelleme yoluyla daha hızlı sonuçlar sunmak için Azure SQL veritabanı ile birlikte Azure Machine Learning hizmetlerini içerir. Azure Machine Learning, veri kümeleri arasında yeni ilişkiler keşfederek sorgu hızlarını artırır. Veriler birkaç istatistiksel işlev aracılığıyla eğitilirken, en fazla 7 ek sorgu Havuzu (müşteri sunucusu dahil 8 Toplam), sorgu iş yüklerini yaymak ve yanıt sürelerini azaltmak için aynı tablolu modellerle eşitlenebilir.
+Azure, müşteriler için çeşitli raporlama ve analiz hizmetleri sunar. Bu çözüm, verileri hızla taramak ve daha akıllı modelleme yoluyla daha hızlı sonuçlar sunmak için Azure SQL veritabanı ile birlikte Azure Machine Learning içerir. Azure Machine Learning, veri kümeleri arasında yeni ilişkiler keşfederek sorgu hızlarını artırır. Veriler birkaç istatistiksel işlev aracılığıyla eğitilirken, en fazla 7 ek sorgu Havuzu (müşteri sunucusu dahil 8 Toplam), sorgu iş yüklerini yaymak ve yanıt sürelerini azaltmak için aynı tablolu modellerle eşitlenebilir.
 
 Gelişmiş analiz ve raporlama için Azure SQL veritabanları, columnstore dizinleri ile yapılandırılabilir. Hem Azure Machine Learning hem de Azure SQL veritabanı, müşteri kullanımına yanıt olarak tamamen ölçeklendirilebilir veya kapatılabilir veya kapatılabilir. Tüm SQL trafiği, otomatik olarak imzalanan sertifikaların dahil edilmesi yoluyla SSL ile şifrelenir. En iyi uygulama olarak, Azure, gelişmiş güvenlik için güvenilir bir sertifika yetkilisinin kullanılmasını önerir.
 
@@ -57,7 +57,7 @@ Bu çözüm aşağıdaki Azure hizmetlerini kullanır. Dağıtım mimarisinin ay
 - Azure Güvenlik Merkezi
 - Azure SQL Veritabanı
 - Azure Depolama
-- Azure Sanal Ağı
+- Azure Sanal Ağ
     - (1)/16 ağ
     - (2)/24 ağ
     - (2) ağ güvenlik grupları
@@ -71,7 +71,7 @@ Aşağıdaki bölümde dağıtım ve uygulama öğelerinin ayrıntıları verilm
 
 **Azure işlevleri**: [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview) , kullanıcıların altyapıyı açıkça sağlaması veya yönetmek zorunda kalmadan isteğe bağlı olarak kod çalıştırmasına olanak tanıyan sunucu-daha az bir işlem hizmetidir. Çok çeşitli olaylara yanıt olarak bir komut dosyası veya kod parçası çalıştırmak için Azure İşlevleri’ni kullanın.
 
-**Azure Machine Learning hizmeti**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) , bilgisayarların gelecekteki davranışları, sonuçları ve eğilimleri tahmin etmek için mevcut verileri kullanmasına izin veren bir veri bilimi tekniğidir.
+**Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) , bilgisayarların gelecekteki davranışları, sonuçları ve eğilimleri tahmin etmek için mevcut verileri kullanmasına izin veren bir veri bilimi tekniğidir.
 
 **Azure Veri Kataloğu**: [Veri Kataloğu](../../data-catalog/overview.md) , veri kaynaklarını verileri yöneten kullanıcılar tarafından kolayca bulunabilir ve anlaşılabilir hale getirir. Ortak veri kaynakları, finansal veriler için kaydedilebilir, etiketlenebilir ve aranabilir. Veriler mevcut konumunda kalır, ancak veri kaynağı konumuna yönelik bir başvuru ile birlikte meta verilerinin bir kopyası veri kataloğuna eklenir. Bu meta veriler ayrıca her bir veri kaynağının arama ile kolayca bulunabilmesini ve bunları bulan kullanıcılar tarafından anlaşılabilmesini sağlamak üzere dizine alınır.
 
@@ -182,7 +182,7 @@ Bu başvuru mimarisi için veri akışı diyagramı [indirilebilir](https://aka.
 
 Güvenli bir VPN tüneli veya [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) , bu veri analizi başvuru mimarisinin bir parçası olarak dağıtılan kaynaklarla güvenli bir şekilde bağlantı kuracak şekilde yapılandırılmalıdır. Bir VPN veya ExpressRoute 'u uygun şekilde ayarlayarak, müşteriler aktarım sırasında veriler için bir koruma katmanı ekleyebilir.
 
-Azure ile güvenli bir VPN tüneli uygulayarak, şirket içi ağ ve Azure sanal ağı arasında sanal bir özel bağlantı oluşturulabilir. Bu bağlantı Internet üzerinden gerçekleşir ve müşterilerin müşteri&#39;ağı ile Azure arasında şifrelenmiş bir bağlantı içinde &quot; bilgileri güvenli bir şekilde &quot;tunnel sağlar. Siteden siteye VPN, delikler için tüm boyutlardaki kuruluşlar tarafından dağıtılan güvenli, Olgun bir teknolojidir. [IPSec tünel modu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) Bu seçenekte bir şifreleme mekanizması olarak kullanılır.
+Azure ile güvenli bir VPN tüneli uygulayarak, şirket içi ağ ve Azure sanal ağı arasında sanal bir özel bağlantı oluşturulabilir. Bu bağlantı Internet üzerinden gerçekleşir ve müşterilerin, müşteri&#39;s ağı ile Azure arasında şifrelenmiş bir bağlantı içinde tünel&quot; bilgilerini güvenli bir şekilde &quot;sağlar. Siteden siteye VPN, delikler için tüm boyutlardaki kuruluşlar tarafından dağıtılan güvenli, Olgun bir teknolojidir. [IPSec tünel modu](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) Bu seçenekte bir şifreleme mekanizması olarak kullanılır.
 
 VPN tünelinin içindeki trafik, siteden siteye VPN ile Internet 'Te gezintiğinden, Microsoft başka bir daha bile daha güvenli bağlantı seçeneği sunar. Azure ExpressRoute, Azure ile şirket içi bir konum veya bir Exchange barındırma sağlayıcısı arasındaki adanmış bir WAN bağlantıdır. ExpressRoute bağlantıları Internet üzerinden gitmediğinden, bu bağlantılar daha fazla güvenilirlik, daha hızlı hız, daha düşük gecikme süreleri ve Internet üzerinden tipik bağlantılardan daha yüksek güvenlik sunar. Ayrıca, bu, müşteri&#39;s telekomünikasyon sağlayıcısı 'nın doğrudan bir bağlantısı olduğundan, veriler Internet üzerinden hareket etmez ve bu nedenle buna maruz değildir.
 

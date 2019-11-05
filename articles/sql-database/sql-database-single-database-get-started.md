@@ -11,14 +11,14 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0035495d9dd3b82b65aa3b4a7b1d918c73288df8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845302"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496173"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Hızlı Başlangıç: Azure portal, PowerShell ve Azure CLı kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Hızlı başlangıç: Azure portal, PowerShell ve Azure CLı kullanarak Azure SQL veritabanı 'nda tek bir veritabanı oluşturma
 
 Tek bir [veritabanı](sql-database-single-database.md) oluşturmak, Azure SQL veritabanı 'nda veritabanı oluşturmak için en hızlı ve en basit dağıtım seçeneğidir. Bu hızlı başlangıçta, Azure portal kullanarak tek bir veritabanını nasıl oluşturacağınız ve sorgulayan gösterilmektedir.
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçtaki tüm adımlar için [Azure Portal](https://portal.az
 
 ## <a name="create-a-single-database"></a>Tek bir veritabanı oluşturma
 
-Sağlanan ya da sunucusuz (Önizleme) işlem katmanında tek bir veritabanı oluşturulabilir.
+Sağlanan veya sunucusuz işlem katmanında tek bir veritabanı oluşturulabilir.
 
 - Sağlanan işlem katmanındaki tek bir veritabanı, iki [satın alma modelinden](sql-database-purchase-models.md)bırını kullanarak CPU ve bellek dahil olmak üzere sabit bir işlem kaynakları miktarı önceden ayrıldı.
 - Sunucusuz işlem katmanındaki tek bir veritabanı, otomatik olarak ölçeklenen ve yalnızca [sanal çekirdek tabanlı satın alma modellerinde](sql-database-service-tiers-vcore.md)bulunan CPU ve bellek dahil olmak üzere bir dizi işlem kaynağına sahiptir.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066738"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470242"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service plana genel bakış
 
@@ -35,9 +35,9 @@ Belirli bir bölgede bir App Service planı oluşturduğunuzda (örneğin, Batı
 
 Bir App Service planının _fiyatlandırma katmanı_ , aldığınız App Service özelliklerini ve plan için ne kadar ücret ödersiniz belirler. Fiyatlandırma katmanlarının birkaç kategorisi vardır:
 
-- **Paylaşılan işlem**: **Ücretsiz** ve **paylaşılan**iki temel katman, diğer müşterilerin uygulamaları da dahil olmak üzere diğer App SERVICE uygulamalarla aynı Azure VM üzerinde bir uygulamayı çalıştırır. Bu katmanlar, paylaşılan kaynaklarda çalışan her bir uygulamaya CPU kotaları ayırır ve kaynaklar ölçeklenmez.
-- **Adanmış işlem**: **Temel**, **Standart**, **Premium**ve **PremiumV2** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını paylaşır. Katman arttıkça, daha fazla sanal makine örneği, ölçek genişletme için kullanılabilir.
-- **Yalıtılmış**: Bu katman adanmış Azure sanal ağlarında adanmış Azure VM 'Leri çalıştırır. Uygulamalarınıza işlem yalıtımının en üstünde ağ yalıtımı sağlar. En büyük genişleme özelliklerini sağlar.
+- **Paylaşılan işlem**: **ücretsiz** ve **paylaşılan**iki temel katman, diğer müşterilerin uygulamaları da dahil olmak üzere diğer App Service uygulamalarla aynı Azure VM üzerinde bir uygulamayı çalıştırır. Bu katmanlar, paylaşılan kaynaklarda çalışan her bir uygulamaya CPU kotaları ayırır ve kaynaklar ölçeklenmez.
+- **Adanmış işlem**: **temel**, **Standart**, **Premium**ve **PremiumV2** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını paylaşır. Katman arttıkça, daha fazla sanal makine örneği, ölçek genişletme için kullanılabilir.
+- **Yalıtılmış**: Bu katman adanmış Azure sanal ağlarında adanmış Azure VM 'leri çalıştırır. Uygulamalarınıza işlem yalıtımının en üstünde ağ yalıtımı sağlar. En büyük genişleme özelliklerini sağlar.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -95,7 +95,7 @@ Kullanabileceğiniz App Service Özellikleri (özel etki alanları, SSL sertifik
 
 App Service planınız dilediğiniz zaman yukarı ve aşağı ölçeklendirilebilir. Planın fiyatlandırma katmanını değiştirmek kadar basittir. İlk başta daha düşük bir fiyatlandırma katmanı seçebilir ve daha sonra daha fazla App Service özelliğine ihtiyacınız olduğunda ölçeği daha sonra değiştirebilirsiniz.
 
-Örneğin, Web uygulamanızı **ücretsiz** bir App Service planınızdan test etmeye başlayabilir ve hiçbir şey ödeyebilirsiniz. [Özel DNS adınızı](app-service-web-tutorial-custom-domain.md) Web uygulamasına eklemek istediğinizde, planınızı **paylaşılan** katmana ölçeklendirmeniz yeterlidir. Daha sonra, [Özel BIR SSL sertifikası](app-service-web-tutorial-custom-ssl.md)eklemek istediğinizde, planınızı **temel** katmana ölçeklendirin. [Hazırlama ortamları](deploy-staging-slots.md)kullanmak Istediğinizde, **Standart** katmana kadar ölçeklendirin. Daha fazla çekirdeğe, belleğe veya depolamaya ihtiyacınız olduğunda, aynı katmanda daha büyük bir VM boyutuna kadar ölçeklendirin.
+Örneğin, Web uygulamanızı **ücretsiz** bir App Service planınızdan test etmeye başlayabilir ve hiçbir şey ödeyebilirsiniz. [Özel DNS adınızı](app-service-web-tutorial-custom-domain.md) Web uygulamasına eklemek istediğinizde, planınızı **paylaşılan** katmana ölçeklendirmeniz yeterlidir. Daha sonra, [BIR SSL bağlaması oluşturmak](configure-ssl-bindings.md)istediğinizde, planınızı **temel** katmana ölçeklendirin. [Hazırlama ortamları](deploy-staging-slots.md)kullanmak Istediğinizde, **Standart** katmana kadar ölçeklendirin. Daha fazla çekirdeğe, belleğe veya depolamaya ihtiyacınız olduğunda, aynı katmanda daha büyük bir VM boyutuna kadar ölçeklendirin.
 
 Aynı işlem tersine de geçerlidir. Daha yüksek bir katmanın özelliklerine veya özelliklerine artık ihtiyacınız olmadığını düşünüyorsanız, daha düşük bir katmana ölçeklendirebilirsiniz ve bu sayede paradan tasarruf edebilirsiniz.
 

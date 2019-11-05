@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 56490ede89a5859ef73d9110b46ea55fd9b96d54
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 3b24da4d988554da240baba2984df44ff4744aaf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033558"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464091"
 ---
 # <a name="how-to-receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Nasıl yapılır: Azure Event Grid ile Anahtar Kasası bildirimleri alma ve yanıtlama (Önizleme)
 
@@ -120,7 +120,7 @@ write-Error "No input data found."
 
 [Azure Portal](https://portal.azure.com)üzerinden Event Grid bir abonelik oluşturun.
 
-1.  Aşağıdaki bağlantıyı kullanarak Azure portal açın: https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
+1.  Aşağıdaki bağlantıyı kullanarak Azure portal açın: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
 
 1.  Anahtar kasanıza gidin ve "olaylar" sekmesini seçin. Olaylar sekmesini göremiyorsanız [portalın önizleme sürümünü](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)kullandığınızdan emin olun.
 

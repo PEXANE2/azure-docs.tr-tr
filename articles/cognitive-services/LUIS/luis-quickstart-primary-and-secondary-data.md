@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Basit varlık, tümcecik listesi-LUSıS'
+title: 'Öğretici: basit varlık, tümcecik listesi-LUSıS'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, basit varlığı kullanarak bir noktadan itibaren iş işi adının makineye öğrenilen verilerini ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özgü terimlerin tümcecik listesini ekleyin.
 services: cognitive-services
@@ -9,22 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376259"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465409"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: Basit varlık ve tümcecik listesi ile adları Ayıkla
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Öğretici: basit varlık ve tümcecik listesi olan adları Ayıkla
 
 Bu öğreticide, **Basit** varlığını kullanarak bir ifadeden iş adının makine öğrenmesi verilerini ayıklayın. Ayıklama doğruluğunu artırmak için, basit varlığa özgü terimlerin tümcecik listesini ekleyin.
 
 Basit varlık, sözcükler veya tümceciklerde bulunan tek bir veri kavramını algılar.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -33,7 +35,7 @@ Basit varlık, sözcükler veya tümceciklerde bulunan tek bir veri kavramını 
 > * Sinyal sözcüklerini artırmak için tümcecik listesi ekleme
 > * Eğitim 
 > * Yayımlama 
-> * Uç noktadan amaçları ve varlıkları alma
+> * Uç noktasındaki amaçları ve varlıkları alma
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -60,7 +62,7 @@ Bir sohbet botundan alınmış olan aşağıdaki ifadelere göz atın:
 
 İş adı isim, fiil veya birden fazla kelimeden oluşan bir tümcecik olabileceğinden belirlemek zordur. Örneğin:
 
-|İşler|
+|İş|
 |--|
 |engineer (mühendis)|
 |software engineer (yazılım mühendisi)|
@@ -83,7 +85,7 @@ Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalin
 
 2. JSON'ı yeni bir uygulamaya içeri aktarın.
 
-3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `simple` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+3. **Yönet** bölümünde **Sürümler** sekmesinde sürümü kopyalayın ve `simple` olarak adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan hiçbir karakter içeremez.
 
 ## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Varlıkları örnek bir amaç halinde işaretleyin
 
@@ -93,7 +95,7 @@ Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalin
 
 1. `I want to apply for the new accounting job` konuşmasında `accounting` öğesini seçin, açılır menünün en üst kısmına `Job` yazın ve ardından açılır menüden **Create new entity** (Yeni varlık oluştur) girişini seçin. 
 
-    [![LUIS ekran görüntüsü ile 'ApplyForJob' hedefi ile vurgulanmış varlık adımları oluşturma](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "LUIS ekran görüntüsü ile 'ApplyForJob' hedefi ile vurgulanmış varlık adımları oluşturma")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Varlık oluşturma adımları vurgulanmış şekilde ' ApplyForJob ' amacına sahip LUSıS ekran görüntüsü](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Varlık oluşturma adımları vurgulanmış şekilde ' ApplyForJob ' amacına sahip LUSıS ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. Açılır pencerede varlığın adını ve türünü doğrulayıp **Done** (Bitti) öğesini seçin.
 
@@ -101,7 +103,7 @@ Varlıklar, örnek ifadelerde işaretlendikten sonra, basit varlığın sinyalin
 
 1. Kalan söylerde, **iş varlığıyla işle** ilgili kelimeleri, sözcüğü veya tümceciği seçip açılır menüden **iş** öğesini seçerek işaretleyin. 
 
-    [![Vurgulanan iş Varlık etiketleme LUIS ekran](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "vurgulanan iş Varlık etiketleme LUIS ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![LUSıS etiketleme iş varlığının vurgulandığı ekran görüntüsü](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "LUSıS etiketleme iş varlığının vurgulandığı ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>Daha fazla örnek ekleme ve işaret varlığı ekleme
@@ -151,7 +153,7 @@ Basit varlıkların, yüksek tahmine sahip olması için çok sayıda örnek ger
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Adres çubuğundaki URL'nin sonuna gidip `Here is my c.v. for the engineering job` yazın. Son sorgu dizesi parametresi konuşma **s**orgusu olan `q` öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `ApplyForJob` konuşmaları döndürmelidir.
+2. Adres çubuğundaki URL'nin sonuna gidip `Here is my c.v. for the engineering job` yazın. Son sorgu dizesi parametresi konuşma `q`s**orgusu olan**  öğesidir. Bu konuşma, etiketlenmiş olan konuşmalarla aynı olmadığından iyi bir testtir ve `ApplyForJob` konuşmaları döndürmelidir.
 
     ```json
     {
@@ -186,7 +188,7 @@ Basit varlıkların, yüksek tahmine sahip olması için çok sayıda örnek ger
     }
     ```
     
-    LUIS, doğru amacı (**ApplyForJob**) buldu ve `engineering` değeriyle doğru **İş** varlığını ayıkladı.
+    LUIS, doğru amacı (**ApplyForJob**) buldu ve **değeriyle doğru**İş`engineering` varlığını ayıkladı.
 
 
 ## <a name="names-are-tricky"></a>Adlar kafa karıştırıcı olabilir
@@ -231,7 +233,7 @@ Azure-Samples GitHub deposundan [Jobs-phrase-List. csv](https://github.com/Azure
 
 1. Yeni tümcecik listesine `JobNames` adını verin ve jobs-phrase-list.csv dosyasındaki listeyi kopyalayıp **Values** (Değerler) metin kutusuna yapıştırın.
 
-    [![Ekran görüntüsü yeni ifade listesi iletişim kutusu açılır oluşturma](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Oluştur ekran görüntüsü yeni ifade listesi iletişim kutusu açılır")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Yeni tümcecik listesi oluştur iletişim kutusu açılır penceresi](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Yeni tümcecik listesi oluştur iletişim kutusu açılır penceresi")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Tümcecik listesine daha fazla sözcük eklemek istiyorsanız, **yeniden komut** ' yi seçin ve ardından yeni **ilgili değerleri** gözden geçirin ve ilgili olanları ekleyin. 
 
@@ -239,7 +241,7 @@ Azure-Samples GitHub deposundan [Jobs-phrase-List. csv](https://github.com/Azure
 
 1. Tümcecik listesini etkinleştirmek için **bitti** ' yi seçin.
 
-    [![Ekran görüntüsü oluşturma yeni ifade listesi iletişim kutusu açılır sözcük, tümcecik değerler listesinde](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Oluştur ekran görüntüsü yeni ifade listesi iletişim kutusu açılır sözcük, tümcecik değerler listesinde")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Tümcecik liste değerleri kutusunda kelimeyle yeni tümcecik listesi oluştur iletişim kutusu açılır ekran görüntüsü](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Tümcecik liste değerleri kutusunda kelimeyle yeni tümcecik listesi oluştur iletişim kutusu açılır ekran görüntüsü")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. Tümcecik listesini kullanmak için uygulamayı eğitin ve yayımlayın.
 

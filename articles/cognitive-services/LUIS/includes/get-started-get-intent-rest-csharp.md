@@ -1,66 +1,181 @@
 ---
-title: REST çağrısı ile amacı alC#
+title: REST çağrısı ile tahmin alC#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: e6ae9590cee3a2ddc3b8e121161fcf84815da28a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 81c95dc58e8cfaddf981e3911e88310cea508115
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838536"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499604"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Visual Studio Community 2017 sürümü](https://visualstudio.microsoft.com/vs/community/)
-* C#programlama dili (VS Community 2017 ile birlikte)
-* Ortak uygulama KIMLIĞI: df67dcdb-C37D-46AF-88e1-8b97951ca1c2
+* [.NET Core V 2.2 +](https://dotnet.microsoft.com/download)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* Genel uygulama kimliği: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
+## <a name="get-luis-key"></a>LUIS anahtarını alma
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-luis-key"></a>LUSıS anahtarını al
+## <a name="get-intent-programmatically"></a>Amacı programlamayla alma
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+Tahmin C# sonucunu almak için, tahmin uç noktası Al [API](https://aka.ms/luis-apim-v3-prediction) 'sini sorgulamak için kullanın. 
 
-## <a name="get-intent-programmatically"></a>Programlı olarak amacı al
+1. `predict-with-rest`bir proje ve klasör adı ile C# dili hedefleyen yeni bir konsol uygulaması oluşturun. 
 
-Önceki C# bölümde bulunan tarayıcı penceresinde gördüğünüz şekilde aynı sonuçları almak için, tahmin uç noktası Al [API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) 'sini sorgulamak için kullanın. 
+    ```console
+    dotnet new console -lang C# -n predict-with-rest
+    ```
 
-1. Visual Studio 'da yeni bir konsol uygulaması oluşturun. 
+1. Aşağıdaki DotNet CLı komutlarıyla gerekli bağımlılıkları yükler.
 
-    ![Visual Studio 'da yeni bir konsol uygulaması oluşturma](../media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
-
-2. Visual Studio projesinde, Çözüm Gezgini ' nde, **Başvuru Ekle**' yi seçin ve ardından derlemeler sekmesinden **System. Web** ' i seçin.
-
-    ![Başvuru Ekle ' yi seçin ve ardından derlemeler sekmesinden System. Web ' i seçin](../media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
-
-3. Aşağıdaki kodla Program.cs üzerine yazın:
+    ```console
+    dotnet add package System.Net.Http
+    ```
+1. Program.cs içeriğini şu kodla değiştirin:
     
-   [!code-csharp[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/csharp/Program.cs)]
+   ```csharp
+    using System;
+    using System.Net.Http;
+    using System.Web;
+    
+    namespace predict_with_rest
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                // YOUR-KEY: for example, the starter key
+                var key = "YOUR-KEY";
+                
+                // YOUR-ENDPOINT: example is westus2.api.cognitive.microsoft.com
+                var endpoint = "YOUR-ENDPOINT";
 
-4. @No__t-0 değerini LUSıS anahtarınızla değiştirin.
+                // //public sample app
+                var appId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"; 
+    
+                var utterance = "turn on all lights";
+    
+                MakeRequest(key, endpoint, appId, utterance);
+    
+                Console.WriteLine("Hit ENTER to exit...");
+                Console.ReadLine();
+            }
+            static async void MakeRequest(string key, string endpoint, string appId, string utterance)
+            {
+                var client = new HttpClient();
+                var queryString = HttpUtility.ParseQueryString(string.Empty);
+    
+                // The request header contains your subscription key
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+    
+                // The "q" parameter contains the utterance to send to LUIS
+                queryString["query"] = utterance;
+    
+                // These optional request parameters are set to their default values
+                queryString["verbose"] = "true";
+                queryString["show-all-intents"] = "true";
+                queryString["staging"] = "false";
+                queryString["timezoneOffset"] = "0";
+    
+                var endpointUri = String.Format("https://{0}/luis/prediction/v3.0/apps/{1}/slots/production/predict?query={2}", endpoint, appId, queryString);
+    
+                var response = await client.GetAsync(endpointUri);
+    
+                var strResponseContent = await response.Content.ReadAsStringAsync();
+                
+                // Display the JSON result from LUIS
+                Console.WriteLine(strResponseContent.ToString());
+            }
+        }
+    }
 
-5. Konsol uygulamasını derleyin ve çalıştırın. Daha önce tarayıcı penceresinde gördüğünüz JSON 'ı görüntüler.
+   ```
 
-    ![Konsol penceresi LUO 'dan JSON sonucu görüntülüyor](../media/luis-get-started-cs-get-intent/console-turn-on.png)
+1. Aşağıdaki değerleri değiştirin:
 
+    * başlangıç anahtarınızla `YOUR-KEY`
+    * uç noktanızla `YOUR-ENDPOINT`, örneğin, `westus2.api.cognitive.microsoft.com`
 
+1. Konsol uygulamasını derleyin. 
 
-## <a name="luis-keys"></a>LUSıS anahtarları
+    ```console
+    dotnet build
+    ```
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+1. Konsol uygulamasını çalıştırın. Konsol çıktısı, daha önce tarayıcı penceresinde gördüğünüz JSON 'ı görüntüler.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+    ```console
+    dotnet run
+    ```
 
-Bu hızlı başlangıç ile işiniz bittiğinde, Visual Studio projesini kapatın ve proje dizinini dosya sisteminden kaldırın. 
+1. JSON biçiminde tahmini yanıtı gözden geçirin:
+
+    ```console
+    Hit ENTER to exit...
+    {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
+    ```
+
+    Okunabilirlik için biçimlendirilen JSON yanıtı: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
+
+## <a name="luis-keys"></a>LUIS anahtarları
+
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Ve ile tren ekleyinC#](../luis-get-started-cs-add-utterance.md)
+> [Utterslar ve tren ekleme](../luis-get-started-cs-add-utterance.md)

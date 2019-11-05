@@ -1,125 +1,137 @@
 ---
-title: VMware Vm'leri için Azure geçişi Server değerlendirme/geçiş için bir gereç ayarlama | Microsoft Docs
-description: Bulma, değerlendirme ve VMware vm'lerinin Azure geçişi Server değerlendirme/geçiş kullanarak aracısız geçiş için bir gereç ayarlama açıklanır.
+title: VMware VM 'Leri için Azure geçişi sunucu değerlendirmesini/geçişini ayarlama | Microsoft Docs
+description: Azure geçişi sunucu değerlendirmesini/geçişini kullanarak VMware VM 'lerinin keşfi, değerlendirmesi ve aracısız geçirilmesi için bir gereç ayarlamayı açıklar.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: fe190381df346278e75a3e6fd9876b80c33bd86b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467129"
 ---
-# <a name="set-up-an-appliance-for-vmware-vms"></a>VMware Vm'leri için bir gereç ayarlama
+# <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM 'Leri için bir gereç ayarlama
 
-Bu makalede, VMware Vm'lerini Azure geçişi Server değerlendirmesi aracı ile değerlendirme veya VMware sanal makinelerini Azure geçişi sunucu geçiş aracını kullanarak aracısız geçiş ile Azure'a geçiş, Azure geçişi gerecini ayarlamak açıklar.
+Bu makalede, Azure geçişi sunucu taşıma aracı 'nı kullanarak VMware VM 'lerini Azure geçişi sunucu değerlendirmesi aracıyla değerlendiriyorsanız veya VMware VM 'lerini Azure 'a taşıma
 
-VMware sanal gereç, aşağıdakileri yapmak için Azure geçişi Server değerlendirme/geçiş tarafından kullanılan basit bir gereçtir:
+VMware VM gereci, aşağıdakileri yapmak için Azure geçişi sunucu değerlendirmesi/geçişi tarafından kullanılan hafif bir gereç:
 
-- Şirket içi VMware Vm'lerini keşfedin.
-- Meta veri ve performans verilerini bulunan VM'ler için Azure geçişi Server değerlendirme/geçirme gönderin.
+- Şirket içi VMware VM'lerini bulun.
+- Keşfedilen VM 'Ler için meta verileri ve performans verilerini Azure geçişi sunucu değerlendirmesini/geçişini gönderin.
 
-[Daha fazla bilgi edinin](migrate-appliance.md) Azure geçişi Gereci hakkında.
+Azure geçişi gereci hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
 
 
 ## <a name="appliance-deployment-steps"></a>Gereç dağıtım adımları
 
-Ayarladığınız gerecini ayarlamak için:
-- OVA bir şablon dosyasını indirin ve vCenter Server'a aktarın.
-- Aleti oluşturmak ve Azure geçişi Server değerlendirmesi için bağlanıp bağlanamadığını denetleyin. 
-- İlk kez Gereci yapılandırın ve Azure geçişi projesi ile kaydedin.
+Gereci kurmak için şunları yapın:
+- Bir OVA şablon dosyasını indirip vCenter Server içe aktarın.
+- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
+- Gereci ilk kez yapılandırın ve Azure geçişi projesi ile kaydedin.
 
-## <a name="download-the-ova-template"></a>OVA şablonunu indirme
+## <a name="download-the-ova-template"></a>OVA şablonunu indirin
 
-1. İçinde **geçiş hedefleri** > **sunucuları** > **Azure geçişi: Server değerlendirmesi**, tıklayın **bulma**.
-2. İçinde **makineleri keşfet** > **makineleriniz sanallaştırıldı mı?** , tıklayın **Evet, VMWare vSphere hiper Yöneticisi ile**.
-3. Tıklayın **indirme** indirilemedi. OVA şablon dosyası.
+1. **Azure geçişi: Sunucu değerlendirmesi** > **sunucuları** > **geçiş hedeflerde** **bul**' a tıklayın.
+2. **Makineleri bul** > **Makineleriniz sanallaştırıldı mı?** bölümünde **Evet, VMware vSphere hiper yöneticisi ile** seçeneğini belirleyin.
+3. .OVA şablon dosyasını indirmek için **İndir**’e tıklayın.
 
 
 
-### <a name="verify-security"></a>Güvenlik doğrulayın
+### <a name="verify-security"></a>Güvenliği doğrulama
 
-OVA dosyasını dağıtmadan önce güvenli olup olmadığını denetleyin.
+Dağıtmadan önce OVA dosyasının güvenli olduğundan emin olun.
 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
-2. OVA'ın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
+2. OVA 'nın karmasını oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Gereç sürüm 1.0.0.5 oluşturulan karma bu ayarlara uygun olmalıdır. 
+3. Gereç sürümü 1.0.0.5 için, oluşturulan karma bu ayarlarla eşleşmelidir.
 
   **Algoritma** | **Karma değeri**
   --- | ---
   MD5 | ddfdf21c64af02a222ed517ce300c977
 
 
-## <a name="create-the-appliance-vm"></a>' % S'Gereci VM oluşturma
+## <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
 
 İndirilen dosyayı içeri aktarın ve bir VM oluşturun.
 
 1. vSphere Client konsolunda **Dosya** > **OVF Şablonu Dağıt**’a tıklayın.
-2. OVF şablonu Dağıtma Sihirbazı > **kaynak**, OVA dosyasının konumunu belirtin.
-3. İçinde **adı** ve **konumu**, VM için bir kolay ad belirtin. Sanal Makinenin barındırılacağı Envanter nesnesini seçin.
-5. İçinde **konak/küme**, konağı veya kümeyi belirtin, sanal Makinenin çalıştığı.
-6. İçinde **depolama**, VM için depolama hedefini belirtin.
+2. OVF şablonu Dağıtma Sihirbazı > **kaynak**bölümünde ova dosyasının konumunu belirtin.
+3. **Ad** ve **konum**bölümünde VM için bir kolay ad belirtin. VM 'nin barındırıldığı envanter nesnesini seçin.
+5. **Konakta/kümede**, sanal makinenin çalıştırılacağı konağı veya kümeyi belirtin.
+6. **Depolama**alanında VM için depolama hedefini belirtin.
 7. **Disk Biçimi**’nde disk türünü ve boyutunu belirtin.
-8. İçinde **ağ eşlemesi**, sanal Makinenin bağlanacağı ağı belirtin. Ağ Azure geçişi Server değerlendirmesi için meta verileri göndermek için internet bağlantısına sahip olmalıdır.
+8. **Ağ eşlemesinde**, sanal makinenin bağlanacağı ağı belirtin. Ağ, Azure geçişi sunucu değerlendirmesi 'ne meta veri göndermek için internet bağlantısı gerektirir.
 9. Ayarları gözden geçirip onayladıktan sonra **Son**’a tıklayın.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Azure'a Gereci erişimi doğrulayın
+### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
-Gereç için VM bağlanabildiğinden emin olun [Azure URL'lerini](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Gereç VM 'sinin [Azure URL 'lerine](migrate-support-matrix-vmware.md#assessment-url-access-requirements)bağlanabildiğinizden emin olun.
 
 
-## <a name="configure-the-appliance"></a>Gereci yapılandırın
+## <a name="configure-the-appliance"></a>Gereci yapılandırma
 
-Gereç ilk kez ayarlayın.
+Gereci ilk kez ayarlayın.
 
 1. vSphere Client konsolunda VM’ye sağ tıklayın ve **Konsolu Aç** seçeneğini belirleyin.
 2. Gereç için dil, saat dilimi ve parola sağlayın.
-3. VM'ye bağlanın ve gereç web uygulamasının URL'sini açın herhangi bir makinede bir tarayıcı açın: **https://*gereç adı veya IP adresi*: 44368**.
+3. VM 'ye bağlanabilecek herhangi bir makinede bir tarayıcı açın ve gereç Web uygulamasının URL 'sini açın: **https://*Gereç adı veya IP adresi*: 44368**.
 
-   Alternatif olarak, uygulamayı uygulama kısayoluna tıklayarak Gereci Desktop'tan açabilirsiniz.
-4. Web uygulamasında > **önkoşulları ayarlama**, aşağıdakileri yapın:
-    - **Lisans**: Lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
-    - **Bağlantı**: Uygulama, VM internet erişimi olup olmadığını denetler. VM bir ara sunucu kullanıyorsa:
-        - Tıklayın **Proxy ayarlarını**ve dinleme bağlantı noktasını ve proxy adresi biçiminde belirtin http://ProxyIPAddress veya http://ProxyFQDN.
+   Alternatif olarak, uygulama kısayoluna tıklayarak uygulamayı gereç masaüstünden açabilirsiniz.
+4. **Önkoşulları ayarlamak**> Web uygulamasında şunları yapın:
+    - **Lisans**: lisans koşullarını kabul edin ve üçüncü taraf bilgilerini okuyun.
+    - **Bağlantı**: uygulama, sanal makinenin internet erişimi olup olmadığını denetler. VM bir proxy kullanıyorsa:
+        - **Ara sunucu ayarları**' na tıklayın ve proxy adresini ve dinleme bağlantı noktasını, http://ProxyIPAddress veya http://ProxyFQDNbiçiminde belirtin.
         - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
         - Yalnızca HTTP proxy’si desteklenir.
-    - **Zaman eşitleme**: Zaman doğrulanır. Gereç zamanında düzgün çalışması bulma için internet saati ile eşitlenmiş olması gerekir.
-    - **Güncelleştirmeleri yüklemek**: Azure geçişi, en son Gereci güncelleştirmelerin yüklü olduğunu denetler.
-    - **VDDK yükleme**: Azure geçişi, VMWare vSphere Sanal Disk Geliştirme Seti (VDDK) yüklü olduğunu denetler.
-        - Azure Migrates VDDK makineleri, azure'a geçiş sırasında çoğaltmak için kullanır.
-        - Vmware'den VDDK 6.7 yükleyin ve indirilen ZIP içeriği gereçte belirtilen konuma ayıklayın.
+    - **Zaman eşitleme**: Saat doğrulandı. Bulmanın düzgün çalışması için gerecin Internet saatine eşit olması gerekir.
+    - **Güncelleştirmeleri yükleme**: Azure geçişi, en son gereç güncelleştirmelerinin yüklü olduğunu denetler.
+    - **VDDK 'Yi yükleme**: Azure geçişi, VMware vSphere sanal disk geliştirme seti 'nın (VDDK) yüklü olduğunu denetler.
+        - Azure geçişi, Azure 'a geçiş sırasında makineleri çoğaltmak için VDDK 'yi kullanır.
+        - VMware 'den VDDK 6,7 ' i indirin ve indirilen ZIP içeriğini gereç üzerindeki belirtilen konuma ayıklayın.
 
-## <a name="register-the-appliance-with-azure-migrate"></a>Gerecin Azure geçişi ile kaydetme
+## <a name="register-the-appliance-with-azure-migrate"></a>Gereci Azure geçişi ile kaydetme
 
-1. Tıklayın **oturum**. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bıraktık emin olun.
-2. Yeni sekmede Azure kimlik bilgilerinizi kullanarak oturum açın. 
-    - Kullanıcı adı ve parola ile oturum açın.
-    - Bir PIN ile oturum desteklenmiyor.
-3. Başarıyla oturum açtıktan sonra web uygulamasına geri dönün.
-2. Azure geçişi projesi oluşturulduğu abonelik seçin. Ardından, projeyi seçin.
-3. Gereç için bir ad belirtin. Ad ile 14 karakterler alfasayısal veya daha az olmalıdır.
-4. Tıklayın **kaydetme**.
-
-
-## <a name="start-continuous-discovery"></a>Sürekli bulmayı Başlat
-
-Şimdi, Gereci vCenter Server'a bağlanın ve VM bulmayı Başlat. 
-
-1. İçinde **vCenter Server ayrıntılarını belirtin**, adını (FQDN) veya vCenter Server'ın IP adresi belirtin. Varsayılan bağlantı noktasını değiştirmeyin veya vCenter Server'ınıza dinlediği bir özel bağlantı noktası belirtin.
-2. İçinde **kullanıcı adı** ve **parola**, Gereci vCenter sunucusundaki Vm'leri bulmak için kullanacağı salt okunur hesabın kimlik bilgilerini belirtin. Hesabı olduğundan emin olun [bulma için gerekli izinler](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions).
-3. Tıklayın **bağlantısını doğrulama** için Gereci vCenter Server'a bağlanabildiğinden emin olun.
-4. Bağlantı kurulduktan sonra tıklayın **kaydedin ve bulmayı Başlat**.
+1. **Oturum aç**' a tıklayın. Görünmüyorsa, tarayıcıda açılır pencere engelleyicisini devre dışı bırakmış olduğunuzdan emin olun.
+2. Yeni sekmede, Azure kimlik bilgilerinizi kullanarak oturum açın.
+    - Kullanıcı adınızla ve parolanızla oturum açın.
+    - PIN ile oturum açma desteklenmez.
+3. Başarıyla oturum açtıktan sonra Web uygulamasına geri dönün.
+2. Azure geçişi projesinin oluşturulduğu aboneliği seçin. Ardından projeyi seçin.
+3. Gereç için bir ad belirtin. Ad 14 karakter veya daha az olmalıdır.
+4. **Kaydol**' a tıklayın.
 
 
-Bu bulma başlatır. Portalda görünmesi bulunan VM'ler meta verilerini yaklaşık 15 dakika sürer. 
+## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>vCenter Server ve VM kimlik bilgilerini sağlayarak sürekli bulmayı Başlat
 
+Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCenter Server 'e bağlanması gerekir.
+
+### <a name="specify-vcenter-server-details"></a>vCenter Server ayrıntılarını belirtin
+1. **VCenter Server ayrıntılarını belirtin**bölümünde vCenter Server adı (FQDN) veya IP adresini belirtin. Varsayılan bağlantı noktasını bırakabilir veya vCenter Server dinlediği özel bir bağlantı noktası belirtebilirsiniz.
+2. **Kullanıcı adı** ve **parola**' da, gerecin vCenter sunucusundaki VM 'leri bulması için kullanacağı salt okuma hesabı kimlik bilgilerini belirtin. Hesabın [bulma için gerekli izinlere](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)sahip olduğundan emin olun. VCenter hesabına erişimi uygun şekilde sınırlayarak bulma kapsamını belirleyebilirsiniz; kapsam [bulma hakkında](tutorial-assess-vmware.md#scoping-discovery)daha fazla bilgi edinin.
+3. Gerecin vCenter Server bağlanabildiğini sağlamak için **bağlantıyı doğrula** ' ya tıklayın.
+
+### <a name="specify-vm-credentials"></a>VM kimlik bilgilerini belirtin
+Uygulama, rol ve özellik bulma ve VM 'lerin bağımlılıklarını görselleştirme için, VMware VM 'lerine erişimi olan bir VM kimlik bilgisi sağlayabilirsiniz. Windows VM 'ler için bir kimlik bilgisi ve Linux sanal makineleri için bir kimlik bilgisi ekleyebilirsiniz. Gerekli erişim ayrıcalıkları hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) .
+
+> [!NOTE]
+> Bu girdi isteğe bağlıdır ve uygulama bulma ve aracısız bağımlılık görselleştirmesini etkinleştirmek için gereklidir.
+
+1. **VM 'lerde uygulamaları ve bağımlılıkları bul**' da, **kimlik bilgileri ekle**' ye tıklayın.
+2. **Işletim sistemini**seçin.
+3. Kimlik bilgisi için kolay bir ad sağlayın.
+4. **Kullanıcı adı** ve **parola**' da, VM 'lerde en az konuk erişimi olan bir hesap belirtin.
+5. **Ekle**'ye tıklayın.
+
+VCenter Server ve VM kimlik bilgilerini (isteğe bağlı) belirledikten sonra, şirket içi ortamı bulmaya başlamak için **Kaydet ve bulmayı Başlat** ' a tıklayın.
+
+Keşfedilen VM 'lerin meta verilerinde portalda görünmesi 15 dakika sürer. Yüklenen uygulamaların, rollerin ve özelliklerin bulunması biraz zaman alabilir, süre bulunan VM sayısına bağlıdır. 500 VM 'Ler için, uygulama envanterinin Azure geçişi portalında görünmesi yaklaşık 1 saat sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Öğreticileri için gözden [VMware değerlendirme](tutorial-assess-vmware.md) ve [aracısız geçiş](tutorial-migrate-vmware.md).
+[VMware değerlendirmesi](tutorial-assess-vmware.md) ve [aracısız geçiş](tutorial-migrate-vmware.md)öğreticilerini gözden geçirin.

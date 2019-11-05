@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f23ef5506027a5de9f4189a11636d323679707f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883338"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488474"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL veritabanı şart sözlüğü
 
-|Bağlam|Terim|Daha fazla bilgi|
+|Bağlam|Sözleşme Dönemi|Daha fazla bilgi|
 |:---|:---|:---|
 |Azure hizmet adı|Azure SQL veritabanı veya SQL veritabanı|[Azure SQL veritabanı hizmeti](sql-database-technical-overview.md)|
-|İşlem Katmanı|Sunucusuz (Önizleme)|[Sunucusuz işlem katmanı](sql-database-serverless.md)
-||Sağlandı|[Sunucusuz işlem katmanı](sql-database-serverless.md)
+|İşlem Katmanı|Sunucusuz |[Sunucusuz işlem katmanı](sql-database-serverless.md)
+||Sağlanan|[Sunucusuz işlem katmanı](sql-database-serverless.md)
 |Dağıtım seçenekleri |Tek veritabanı|[Tek veritabanları](sql-database-single-database.md)|
 ||Elastik havuz|[Elastik havuz](sql-database-elastic-pool.md)|
 ||Yönetilen örnek|[Yönetilen örnek](sql-database-managed-instance.md)|
@@ -43,7 +43,7 @@ Veritabanı nesneleri|Azure SQL veritabanı|Azure SQL veritabanı 'nda herhangi 
 ||Sağlanan veritabanı|Sağlanan işlem katmanında yapılandırılmış bir veritabanı|
 |[Model ve kaynak satın alma](sql-database-purchase-models.md)|DTU tabanlı satın alma modeli|[DTU tabanlı satın alma modeli](sql-database-service-tiers-dtu.md)|
 ||Sanal çekirdek tabanlı satın alma modeli|[Sanal çekirdek tabanlı satın alma modeli](sql-database-service-tiers-vcore.md)|
-||vCore|Hiper yönetici tarafından Konuk işletim sistemine bir çekirdek verilmiştir.|
+||Sanal Çekirdek|Hiper yönetici tarafından Konuk işletim sistemine bir çekirdek verilmiştir.|
 ||Hizmet katmanı|Bir satın alma modeli içindeki bir hizmet düzeyi|
 ||İşlem boyutu|Bir hizmet katmanındaki tek bir veritabanı, elastik havuz veya yönetilen örnek için işlem kaynakları miktarı|
 ||Depolama miktarı|Tek bir veritabanı, elastik havuz veya yönetilen örnek için kullanılabilir depolama alanı miktarı|

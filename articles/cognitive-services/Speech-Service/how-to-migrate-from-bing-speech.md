@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 5694894a78a46ad658ec18f210c6a82fb82df23f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 00a20ac2d7f05c42be9e955eeb8f47c302db7885
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559606"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464578"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Konuşma konuşma hizmetine geçirme
 
@@ -39,29 +39,29 @@ Konuşma Hizmetleri, aşağıdaki farklılıklarla büyük ölçüde Bing Konuş
 
 Özellik | Bing Konuşma | Konuşma Hizmetleri | Ayrıntılar
 -|-|-|-
-C++'SININ | : heavy_minus_sign: | :heavy_check_mark: | Konuşma Hizmetleri Windows ve Linux 'u destekler.
+C++'SıNıN | :heavy_minus_sign: | :heavy_check_mark: | Konuşma Hizmetleri Windows ve Linux 'u destekler.
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | Konuşma Hizmetleri, Android ve konuşma cihazlarını destekler.
 C# SDK’sı | :heavy_check_mark: | :heavy_check_mark: | Konuşma Hizmetleri, Windows 10, Evrensel Windows Platformu (UWP) ve .NET Standard 2,0 'yi destekler.
 Sürekli konuşma tanıma | 10 dakika | Sınırsız (SDK ile) | Hem Bing Konuşma hem de konuşma Hizmetleri WebSockets protokolleri çağrı başına en fazla 10 dakika destekler. Ancak, konuşma SDK 'Sı zaman aşımına göre otomatik olarak yeniden bağlanır veya bağlantıyı keser.
 Kısmi veya geçici sonuçlar | :heavy_check_mark: | :heavy_check_mark: | WebSockets Protocol veya SDK ile.
 Özel konuşma modelleri | :heavy_check_mark: | :heavy_check_mark: | Bing Konuşma, ayrı bir Özel Konuşma Tanıma aboneliği gerektirir.
 Özel ses yazı tipleri | :heavy_check_mark: | :heavy_check_mark: | Bing Konuşma ayrı bir özel ses aboneliği gerektirir.
-24-KHz sesler | : heavy_minus_sign: | :heavy_check_mark:
+24-KHz sesler | :heavy_minus_sign: | :heavy_check_mark:
 Konuşma niyeti tanıma | Ayrı bir LUSıS API çağrısı gerektirir | Tümleşik (SDK ile) |  Konuşma hizmetiyle bir LUO anahtarı kullanabilirsiniz.
-Basit amaç tanıma | : heavy_minus_sign: | :heavy_check_mark:
-Uzun ses dosyalarının toplu olarak dökümünü alma | : heavy_minus_sign: | :heavy_check_mark:
-Tanıma modu | Uç nokta URI 'SI aracılığıyla el ile | Otomatik | Tanıma modu konuşma hizmetinde kullanılamıyor.
+Basit amaç tanıma | :heavy_minus_sign: | :heavy_check_mark:
+Uzun ses dosyalarının toplu olarak dökümünü alma | :heavy_minus_sign: | :heavy_check_mark:
+Tanıma modu | Uç nokta URI 'SI aracılığıyla el ile | Automatic | Tanıma modu konuşma hizmetinde kullanılamıyor.
 Uç nokta konumu | Genel | Sel | Bölgesel uç noktalar gecikme süresini geliştirir.
 REST API'leri | :heavy_check_mark: | :heavy_check_mark: | Konuşma Hizmetleri REST API 'Leri Bing Konuşma (farklı uç nokta) ile uyumludur. REST API 'Leri, metinden konuşmaya ve sınırlı konuşmadan metne işlevselliği destekler.
 WebSockets protokolleri | :heavy_check_mark: | :heavy_check_mark: | Konuşma Hizmetleri WebSockets API 'SI Bing Konuşma (farklı uç nokta) ile uyumludur. Mümkünse, kodunuzu basitleştirmek için konuşma SDK 'sına geçiş yapın.
-Hizmetten hizmete API çağrıları | :heavy_check_mark: | : heavy_minus_sign: | C# Hizmet kitaplığı aracılığıyla Bing Konuşma olarak sunulmaktadır.
-Açık kaynak SDK 'Sı | :heavy_check_mark: | : heavy_minus_sign: |
+Hizmetten hizmete API çağrıları | :heavy_check_mark: | :heavy_minus_sign: | C# Hizmet kitaplığı aracılığıyla Bing Konuşma olarak sunulmaktadır.
+Açık kaynak SDK 'Sı | :heavy_check_mark: | :heavy_minus_sign: |
 
 Konuşma Hizmetleri, zaman tabanlı bir fiyatlandırma modeli kullanır (işlem tabanlı model yerine). Ayrıntılar için bkz. [konuşma Hizmetleri Fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) .
 
 ## <a name="migration-strategies"></a>Geçiş stratejileri
 
-Siz veya kuruluşunuzun bir Bing Konuşma API'si kullanan geliştirme veya üretimde uygulamalar varsa, bunları konuşma hizmetlerini mümkün olan en kısa sürede kullanacak şekilde güncelleştirmelisiniz. Kullanılabilir SDK 'lar, kod örnekleri ve öğreticiler için [konuşma Hizmetleri belgelerine](index.yml) bakın.
+Siz veya kuruluşunuzun bir Bing Konuşma API'si kullanan geliştirme veya üretimde uygulamalar varsa, bunları konuşma hizmetlerini mümkün olan en kısa sürede kullanacak şekilde güncelleştirmelisiniz. Kullanılabilir SDK 'lar, kod örnekleri ve öğreticiler için [konuşma Hizmetleri belgelerine](index.md) bakın.
 
 Konuşma Hizmetleri [REST API 'leri](rest-apis.md) Bing Konuşma API 'leriyle uyumludur. Şu anda Bing Konuşma REST API 'Lerini kullanıyorsanız, yalnızca REST uç noktasını değiştirmeniz ve bir konuşma Hizmetleri abonelik anahtarına geçmeniz gerekir.
 
@@ -77,8 +77,8 @@ Uygulamanız uzun süreli bağlantılar kullanıyorsa ve kullanılabilir bir SDK
 
 Konuşma SDK 'sını kullanmaya başlamak için:
 
-1. İndirme [konuşma SDK](speech-sdk.md).
-1. Konuşma Hizmetleri [hızlı başlangıç kılavuzlarından](quickstart-csharp-dotnet-windows.md) ve [öğreticilerle](how-to-recognize-intents-from-speech-csharp.md)çalışın. Ayrıca, yeni API 'lerle ilgili deneyim almak için [kod örneklerine](samples.md) bakın.
+1. [Konuşma SDK 'sını](speech-sdk.md)indirin.
+1. Konuşma Hizmetleri [hızlı başlangıç kılavuzlarından](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) ve [öğreticilerle](how-to-recognize-intents-from-speech-csharp.md)çalışın. Ayrıca, yeni API 'lerle ilgili deneyim almak için [kod örneklerine](samples.md) bakın.
 1. Konuşma hizmetlerini kullanmak için uygulamanızı güncelleştirin.
 
 ## <a name="support"></a>Destek
@@ -90,9 +90,9 @@ Konuşma hizmeti, SDK ve API desteği için konuşma Hizmetleri [desteği sayfas
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma hizmetlerini ücretsiz deneyin](get-started.md)
-* [Hızlı Başlangıç: Konuşma SDK 'sını kullanarak UWP uygulamasındaki konuşmayı tanıma](quickstart-csharp-uwp.md)
+* [Hızlı başlangıç: konuşma SDK 'sını kullanarak UWP uygulamasındaki konuşmayı tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Konuşma Hizmetleri sürüm notları](releasenotes.md)
-* [Konuşma hizmeti nedir](overview.md)
+* [Konuşma hizmeti nedir?](overview.md)
 * [Konuşma Hizmetleri ve konuşma SDK belgeleri](speech-sdk.md#get-the-sdk)

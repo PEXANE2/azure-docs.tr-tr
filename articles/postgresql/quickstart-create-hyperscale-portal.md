@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL için Azure veritabanı – Hyperscale (Citus) (Önizleme) hızlı başlangıç
-description: PostgreSQL için Azure veritabanı hiper ölçek (Citus) (Önizleme) üzerinde dağıtılmış tablolar oluşturmak ve sorgulamak için hızlı başlangıç.
+title: PostgreSQL için Azure veritabanı – Hyperscale (Citus) hızlı başlangıç
+description: PostgreSQL için Azure veritabanı hiper ölçek (Citus) üzerinde dağıtılmış tablolar oluşturmak ve sorgulamak için hızlı başlangıç.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 6b5bfbf16e76cbf90a5536332d8e3bf1035f983a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70164011"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500068"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı-hiper ölçek (Citus) (Önizleme) oluşturma
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal PostgreSQL için Azure veritabanı-hiper ölçek (Citus) oluşturma
 
-PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız, yönetilen bir hizmettir. Bu hızlı başlangıçta, Azure portal kullanarak bir PostgreSQL için Azure veritabanı-hiper ölçek (Citus) (Önizleme) sunucu grubu oluşturma gösterilmektedir. Dağıtılmış verileri keşfedeceğiz: düğümler arasında parça tabloları, örnek verileri geri almak ve birden çok düğümde yürütülen sorguları çalıştırmak isteyeceksiniz.
+PostgreSQL için Azure Veritabanı, bulutta son derece kullanılabilir olan PostgreSQL veritabanlarını çalıştırmak, yönetmek ve ölçeklendirmek için kullandığınız, yönetilen bir hizmettir. Bu hızlı başlangıçta, Azure portal kullanarak bir PostgreSQL için Azure veritabanı-hiper ölçek (Citus) sunucu grubu oluşturma gösterilmektedir. Dağıtılmış verileri keşfedeceğiz: düğümler arasında parça tabloları, örnek verileri geri almak ve birden çok düğümde yürütülen sorguları çalıştırmak isteyeceksiniz.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -62,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-@No__t_1 `payload` alanının bir JSONB veri türü vardır. JSONB, Postgres 'de ikili biçimdeki JSON veri türüdür. Veri türü, esnek bir şemayı tek bir sütunda depolamayı kolaylaştırır.
+`github_events` `payload` alanının bir JSONB veri türü vardır. JSONB, Postgres 'de ikili biçimdeki JSON veri türüdür. Veri türü, esnek bir şemayı tek bir sütunda depolamayı kolaylaştırır.
 
 Postgres bu tür üzerinde `GIN` bir dizin oluşturabilir ve bu, içindeki her anahtar ve değerin dizinini oluşturur. Bir dizin ile yükü çeşitli koşullarla sorgulamak hızlı ve kolay hale gelir. Biz de verilerimizi yüklemeden önce birkaç dizin oluşturalım. Psql 'de:
 
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, `user_id` hem olayları hem de Kullanıcı tablosunu parçalara parçalarız:
+Daha sonra, bu Postgres tablolarını düzenleyici düğümünde ele alacağız ve hiper ölçeğe çalışanlar genelinde onları parçalamayı söyler. Bunu yapmak için, üzerine gelecek anahtarı belirten her tablo için bir sorgu çalıştıracağız. Geçerli örnekte, `user_id`hem olayları hem de Kullanıcı tablosunu parçalara parçalarız:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Şimdiye kadar sorgular GitHub \_events özel olarak katıldı, ancak bu bilgileri GitHub \_users birleştirebiliriz. Hem kullanıcıları hem de olayları aynı tanımlayıcı (`user_id`) üzerinde bulundurduğumuz için, eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [edilir ve](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) kolayca eklenebilir.
+Şimdiye kadar sorgular GitHub\_olaylarını özel olarak katıldı, ancak bu bilgileri GitHub\_kullanıcılar ile birleştirebiliriz. Hem kullanıcıları hem de olayları aynı tanımlayıcı (`user_id`) üzerinde bulundurduğumuz için, eşleşen Kullanıcı kimliklerine sahip her iki tablonun satırları aynı veritabanı düğümlerine dahil [edilir ve](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) kolayca eklenebilir.
 
-@No__t_0 katılıyoruz hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
+`user_id`katılıyoruz hiper ölçek, çalışan düğümlerinde paralel olarak yürütülmesi için JOIN yürütmesini parçalara parçalar halinde gönderebilir. Örneğin, en fazla sayıda depo oluşturan kullanıcıları bulalım:
 
 ```sql
 SELECT gu.login, count(*)

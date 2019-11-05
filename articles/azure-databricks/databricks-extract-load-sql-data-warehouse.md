@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: c2d7d7d97dce974ad8d72cc98f9ec6d3d554fb6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 39f71e109b0d9d7b3b0375c0ec2c4d1e4a657994
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783979"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469498"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -65,7 +65,7 @@ Bu öğreticiye başlamadan önce bu görevleri doldurun:
 
    * Makalenin [oturum açma için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
 
-* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+* [Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="gather-the-information-that-you-need"></a>İhtiyaç duyduğunuz bilgileri toplayın
 
@@ -89,9 +89,15 @@ Bu öğreticinin önkoşullarını tamamladığınızdan emin olun.
 
 Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursunuz.
 
-1. Azure portalında **Kaynak oluşturun** > **Analiz** > **Azure Databricks**'i seçin.
+1. Azure portal menüsünde **kaynak oluştur**' u seçin.
 
-    ![Azure portal databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure portal databricks")
+    ![Azure portal kaynak oluşturma](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
+
+    Ardından **analiz** > **Azure Databricks**' ni seçin.
+
+    ![Azure portal üzerinde Azure Databricks oluşturma](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
+
+
 
 2. **Azure Databricks hizmeti**altında, Databricks hizmeti oluşturmak için aşağıdaki değerleri sağlayın:
 
@@ -123,7 +129,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
     * Küme için bir ad girin.
 
-    * **\_sonra\_ dakika etkinliksizlik** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
+    * **\_sonra \_ dakika etkinliksizlik** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
 
     * **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
@@ -182,13 +188,13 @@ Bu bölümde, Azure Databricks çalışma alanında bir not defteri oluşturun v
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `<app-id>`, `<password>`, `<tenant-id>` ve `<storage-account-name>` yer tutucu değerlerini topladığınız değerlerle değiştirin. @No__t_0 yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir adla değiştirin.
+6. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `<app-id>`, `<password>`, `<tenant-id>`ve `<storage-account-name>` yer tutucu değerlerini topladığınız değerlerle değiştirin. `<file-system-name>` yer tutucu değerini, dosya sistemine vermek istediğiniz herhangi bir adla değiştirin.
 
-   * @No__t_0 ve `<password>`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
+   * `<app-id>`ve `<password>`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
 
-   * @No__t_0 aboneliğinizden.
+   * `<tenant-id>` aboneliğinizden.
 
-   * @No__t_0, Azure Data Lake Storage 2. depolama hesabınızın adıdır.
+   * `<storage-account-name>`, Azure Data Lake Storage 2. depolama hesabınızın adıdır.
 
 7. Bu bloktaki kodu çalıştırmak için **SHIFT + enter** tuşlarına basın.
 

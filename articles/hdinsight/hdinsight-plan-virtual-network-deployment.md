@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077033"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498177"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -71,7 +71,7 @@ Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak içi
 
     * Ağ güvenlik grupları
 
-        Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+        `RESOURCEGROUP`, sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
     
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak içi
 
     * Kullanıcı tanımlı yollar
 
-        Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+        `RESOURCEGROUP`, sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -136,7 +136,7 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 
 2. Sanal ağı özel DNS sunucusunu kullanacak şekilde yapılandırın.
 
-3. Sanal ağınız için Azure tarafından atanan DNS sonekini bulun. Bu değer değerine benzerdir `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. DNS sonekini bulma hakkında daha fazla bilgi için şu [örneğe bakın: Özel DNS](hdinsight-create-virtual-network.md#example-dns) bölümü.
+3. Sanal ağınız için Azure tarafından atanan DNS sonekini bulun. Bu değer `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`benzerdir. DNS sonekini bulma hakkında daha fazla bilgi için bkz. [özel DNS](hdinsight-create-virtual-network.md#example-dns) bölümü.
 
 4. DNS sunucuları arasında yönlendirmeyi yapılandırın. Yapılandırma, uzak ağın türüne bağlıdır.
 
@@ -148,7 +148,7 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 
          * Diğer tüm istekleri şirket içi DNS sunucusuna ilet. Şirket içi DNS, diğer tüm ad çözümleme isteklerini, hatta Microsoft.com gibi internet kaynakları için istekleri işler.
 
-     * __Şirket ıçı DNS__: Sanal ağ DNS son eki için istekleri özel DNS sunucusuna ilet. Özel DNS sunucusu daha sonra Azure özyinelemeli çözümleyiciye iletilir.
+     * __Şirket ıçı DNS__: sanal ağ DNS son eki için ISTEKLERI özel DNS sunucusuna iletir. Özel DNS sunucusu daha sonra Azure özyinelemeli çözümleyiciye iletilir.
 
        Bu yapılandırma, sanal ağın DNS sonekini özel DNS sunucusuna içeren tam etki alanı adları için istekleri yönlendirir. Diğer tüm istekler (genel internet adresleri için bile) Şirket içi DNS sunucusu tarafından işlenir.
 
@@ -162,19 +162,19 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 
        Her ağın DNS sunucusu, DNS son ekine bağlı olarak istekleri birbirlerine iletir. Diğer istekler Azure özyinelemeli çözümleyici kullanılarak çözümlenir.
 
-     Her yapılandırmanın bir örneği için bkz [. örnek: Özel DNS](hdinsight-create-virtual-network.md#example-dns) bölümü.
+     Her yapılandırmanın bir örneği için bkz. [özel DNS](hdinsight-create-virtual-network.md#example-dns) bölümü.
 
 Daha fazla bilgi için bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) belgesi.
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Apache Hadoop hizmetlerine doğrudan bağlanma
 
-Üzerinde `https://CLUSTERNAME.azurehdinsight.net`kümeye bağlanabilirsiniz. Bu adres, internet 'ten gelen trafiği kısıtlamak için NSG 'ler kullandıysanız ulaşılamaz olabilecek genel bir IP kullanır. Ayrıca, kümeyi bir sanal ağda dağıttığınızda özel uç nokta `https://CLUSTERNAME-int.azurehdinsight.net`kullanarak erişebilirsiniz. Bu uç nokta, küme erişimi için VNet 'in içindeki özel bir IP 'ye çözümlenir.
+`https://CLUSTERNAME.azurehdinsight.net`adresinden kümeye bağlanabilirsiniz. Bu adres, internet 'ten gelen trafiği kısıtlamak için NSG 'ler kullandıysanız ulaşılamaz olabilecek genel bir IP kullanır. Ayrıca, kümeyi bir sanal ağa dağıttığınızda özel uç nokta `https://CLUSTERNAME-int.azurehdinsight.net`kullanarak erişebilirsiniz. Bu uç nokta, küme erişimi için VNet 'in içindeki özel bir IP 'ye çözümlenir.
 
 Apache ambarı ve diğer Web sayfalarına sanal ağ üzerinden bağlanmak için aşağıdaki adımları kullanın:
 
 1. HDInsight küme düğümlerinin iç tam etki alanı adlarını (FQDN) öğrenmek için aşağıdaki yöntemlerden birini kullanın:
 
-    Öğesini `RESOURCEGROUP` sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
+    `RESOURCEGROUP`, sanal ağı içeren kaynak grubunun adıyla değiştirin ve ardından şu komutu girin:
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -194,7 +194,7 @@ Apache ambarı ve diğer Web sayfalarına sanal ağ üzerinden bağlanmak için 
     az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Döndürülen düğüm listesinde, baş düğümlerin FQDN 'sini bulun ve bu, ambarı ve diğer Web hizmetlerine bağlanmak için FQDN 'leri kullanın. Örneğin, ambarı 'na `http://<headnode-fqdn>:8080` erişmek için kullanın.
+    Döndürülen düğüm listesinde, baş düğümlerin FQDN 'sini bulun ve bu, ambarı ve diğer Web hizmetlerine bağlanmak için FQDN 'leri kullanın. Örneğin, `http://<headnode-fqdn>:8080` kullanarak ambarı 'na erişin.
 
     > [!IMPORTANT]  
     > Baş düğümlerde barındırılan bazı hizmetler tek seferde yalnızca bir düğümde etkindir. Bir baş düğümde bir hizmete erişmeyi denerseniz ve 404 hatası döndürürse, diğer bir baş düğüme geçin.
@@ -209,7 +209,7 @@ Bir Azure sanal ağlarındaki ağ trafiği aşağıdaki yöntemler kullanılarak
 
 * **Ağ güvenlik grupları** (NSG) ağa gelen ve giden trafiği filtrelemenize izin verir. Daha fazla bilgi için bkz. ağ [güvenlik grupları ile ağ trafiğini filtreleme](../virtual-network/security-overview.md) belgesi.
 
-* **Ağ sanal cihazları** (NVA) yalnızca giden trafikle birlikte kullanılabilir. NVA 'lar güvenlik duvarları ve yönlendiriciler gibi cihazların işlevlerini çoğaltın. Daha fazla bilgi için bkz. [ağ araçları](https://azure.microsoft.com/solutions/network-appliances) belgesi.
+* **Ağ sanal** gereçleri (NVA), yalnızca giden trafikle birlikte kullanılabilir. NVA 'lar güvenlik duvarları ve yönlendiriciler gibi cihazların işlevlerini çoğaltın. Daha fazla bilgi için bkz. [ağ araçları](https://azure.microsoft.com/solutions/network-appliances) belgesi.
 
 Yönetilen bir hizmet olarak, HDInsight, VNET 'ten gelen ve giden trafik için HDInsight sistem durumu ve Yönetim Hizmetleri için sınırsız erişim gerektirir. NSG 'leri kullanırken, bu hizmetlerin HDInsight kümesiyle iletişim kurabildiğinden emin olmanız gerekir.
 
@@ -248,6 +248,10 @@ Bir **güvenlik duvarı** kullanmayı ve kümeye belirli bağlantı noktalarınd
 Belirli hizmetlere yönelik bağlantı noktalarının listesi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından kullanılan bağlantı noktaları](hdinsight-hadoop-port-settings-for-services.md) .
 
 Sanal gereçler güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [Sanal Gereç senaryo](../virtual-network/virtual-network-scenario-udr-gw-nva.md) belgesi.
+
+## <a name="load-balancing"></a>Yük dengeleme
+
+Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. Bu yük dengeleyicinin türü, belirli kısıtlamalara sahip olan [temel SKU düzeyinde](../load-balancer/load-balancer-overview.md#skus) bulunur. Bu kısıtlamalardan biri, farklı bölgelerde iki sanal ağınız varsa temel yük dengeleyicilere bağlanamazsınız. Daha fazla bilgi için bkz. [sanal ağlar SSS: genel VNET eşlemesi üzerindeki kısıtlamalar](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803816"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464288"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>İOS 'ta konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
@@ -39,29 +39,29 @@ Lisanslama nedenleriyle, bu işlevler SDK ile birlikte sunulmayabilir, ancak bu 
 Bu sarmalayıcı kitaplığı oluşturmak için önce [GStreamer SDK 'sını](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)indirip yükleyin.
 Ardından, [sarmalayıcı kitaplığı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper)Için Xcode projesini indirin.
 Projeyi Xcode 'da açın ve **genel IOS cihaz** hedefi için oluşturun; Bu, belirli bir hedef için oluşturmak için çalışmaz.
-Derleme adımı, `GStreamerWrapper.framework` adlı tüm gerekli mimarilere yönelik dinamik bir kitaplık içeren dinamik bir çerçeve paketi oluşturur.
+Yapı adımı, `GStreamerWrapper.framework`adı ile tüm gerekli mimarilere yönelik dinamik bir kitaplık içeren dinamik bir çerçeve paketi oluşturur.
 Bu çerçevenin konuşma Hizmetleri SDK 'Sı ile sıkıştırılmış ses akışları kullanan tüm uygulamalara dahil olması gerekir.
 
 Bunu gerçekleştirmek için aşağıdaki ayarları Xcode projenize uygulayın:
 
-1. Yeni oluşturduğunuz `GStreamerWrapper.framework` ' ı ve bilişsel hizmetler konuşma SDK 'sının çerçevesini, [buradan](https://aka.ms/csspeech/iosbinary)indirebilirsiniz, örnek projenizi içeren dizine kopyalayın.
+1. Yeni oluşturduğunuz `GStreamerWrapper.framework` ve bilişsel hizmetler konuşma SDK 'sının çerçevesini, [buradan](https://aka.ms/csspeech/iosbinary)indirebilirsiniz, örnek projenizi içeren dizine kopyalayın.
 1. *Proje ayarlarındaki*çerçeveler için yolları ayarlayın.
-    1. **Katıştırılmış Ikili dosyalar** başlığı altındaki **genel** sekmesinde, bir Framework olarak SDK Kitaplığı ekleyin: **katıştırılmış ikililer Ekle** > **diğer Ekle...** > seçtiğiniz dizine gidin ve her iki çerçeveyi seçin.
+    1. **Katıştırılmış Ikili dosyalar** başlığı altındaki **genel** sekmesinde, bir Framework olarak SDK Kitaplığı ekleyin: **katıştırılmış ikililer Ekle** > **diğer...** > seçtiğiniz dizine gidin ve her iki çerçeveyi seçin.
     1. **Derleme Ayarları** sekmesine gidin ve **Tümü** ayarını etkinleştirin.
-1. `$(SRCROOT)/..` dizinini **Arama Yolları** başlığı altında *Çerçeve Arama Yolları*’na ekleyin.
+1. `$(SRCROOT)/..` dizinini *Arama Yolları* başlığı altında **Çerçeve Arama Yolları**’na ekleyin.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için, `SPXPullAudioInputStream` veya `SPXPushAudioInputStream` oluşturun.
-Aşağıdaki kod parçacığında, akışın sıkıştırma biçimi olarak MP3 belirterek, bir `SPXPushAudioInputStream` örneğinden `SPXAudioConfiguration` oluşturma gösterilmektedir.
+Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için bir `SPXPullAudioInputStream` veya `SPXPushAudioInputStream`oluşturun.
+Aşağıdaki kod parçacığında, akışın sıkıştırma biçimi olarak MP3 belirterek bir `SPXPushAudioInputStream`örneğinden bir `SPXAudioConfiguration` oluşturma gösterilmektedir.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=66-77&highlight=2-11)]
 
-Sonraki kod parçacığında sıkıştırılmış ses verilerinin bir dosyadan okunmasının ve `SPXPushAudioInputStream` ' a nasıl balde gösterildiği gösterilmektedir.
+Sonraki kod parçacığında sıkıştırılmış ses verilerinin bir dosyadan okunmasının ve `SPXPushAudioInputStream`nasıl balde gösterildiği gösterilmektedir.
 
 [!code-objectivec[Push compressed audio data into the stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=105-151&highlight=19-44)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-- [Bkz. konuşmayı tanımaC#](quickstart-csharp-dotnet-windows.md)
+* [Java 'da konuşmayı tanımayı öğrenin](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

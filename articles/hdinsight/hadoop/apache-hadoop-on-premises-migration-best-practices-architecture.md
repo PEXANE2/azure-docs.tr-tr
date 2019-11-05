@@ -1,5 +1,5 @@
 ---
-title: Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mimari
+title: "Mimari: şirket içi Apache Hadoop Azure HDInsight 'a"
 description: Şirket içi Hadoop kümelerini Azure HDInsight 'a geçirmeye yönelik mimari en iyi yöntemlerini öğrenin.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735893"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499259"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mimari en iyi uygulamaları
 
@@ -32,13 +32,13 @@ Azure HDInsight kümeleri belirli bir işlem kullanımı türü için tasarlanm�
 |IoT/akış|Kafka, fırtınası, Spark|
 |NoSQL Işlem işleme|HBase|
 |Bellek içi önbelleğe alma ile etkileşimli ve daha hızlı sorgular|Interactive Query|
-|Veri bilimi|ML Hizmetleri, Spark|
+|Veri Bilimi|ML Hizmetleri, Spark|
 
 Aşağıdaki tabloda, HDInsight kümesi oluşturmak için kullanılabilecek farklı yöntemler gösterilmektedir.
 
 |**Araç**|**Tarayıcı tabanlı**|**Komut satırı**|**REST API**|**SDK**|
 |---|---|---|---|---|
-|[Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLı (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
@@ -105,11 +105,11 @@ Bazı HDInsight Hive meta veri deposu en iyi yöntemler şunlardır:
 - Özel meta veri deposunu düzenli olarak yedekleyin.
 - Meta veri ve HDInsight kümesini aynı bölgede saklayın.
 - Azure portal veya Azure Izleyici günlükleri gibi Azure SQL veritabanı Izleme araçlarını kullanarak performans ve kullanılabilirlik için meta veri deposunu izleyin.
-- Tablo ve sütun istatistikleri oluşturmak için gereken şekilde **Tabloyu Çözümle** komutunu yürütün. Örneğin: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Tablo ve sütun istatistikleri oluşturmak için gereken şekilde **Tabloyu Çözümle** komutunu yürütün. Örneğin, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Farklı iş yükleri için en iyi uygulamalar
 
-- İyileştirilmiş yanıt süresi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) ile etkileşimli Hive sorguları için LLAP kümesi kullanmayı düşünün, sorguların bellek içi önbelleğe alınmasına izin veren Hive 2,0 ' de yeni bir özelliktir. LLAP, bazı durumlarda Hive sorgularını çok daha hızlı ve [Hive 1. x 'ten daha hızlı](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)hale getirir.
+- İyileştirilmiş yanıt süresi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) Ile etkileşimli Hive sorguları için LLAP kümesi kullanmayı düşünün , sorguların bellek içi önbelleğe alınmasına Izin veren Hive 2,0 ' de yeni bir özelliktir. LLAP, bazı durumlarda Hive sorgularını çok daha hızlı ve [Hive 1. x 'ten daha hızlı](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)hale getirir.
 - Hive işlerinin yerine Spark işleri kullanmayı göz önünde bulundurun.
 - Impala tabanlı sorguları LLAP sorgularıyla değiştirmeyi göz önünde bulundurun.
 - MapReduce işlerini Spark işleri ile değiştirmeyi düşünün.

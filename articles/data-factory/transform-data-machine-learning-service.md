@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory işlem hatlarında Azure Machine Learning hizmeti işlem hatlarını yürütün | Microsoft Docs
-description: Azure Machine Learning hizmet işlem hatlarınızı Azure Data Factory işlem hatlarınız içinde nasıl çalıştıracağınızı öğrenin.
+title: Azure Machine Learning işlem hatlarını Azure Data Factory işlem hatlarında yürütün | Microsoft Docs
+description: Azure Machine Learning işlem hatlarınızı Azure Data Factory işlem hatlarınız içinde nasıl çalıştıracağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: ddaa020b3567f8f00cfd7fc7f7728f1160d9306b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c05a0fde7019d9162a051a04696c2251301d70dc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301353"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490592"
 ---
-# <a name="execute-azure-machine-learning-service-pipelines-in-azure-data-factory"></a>Azure Data Factory Azure Machine Learning hizmet işlem hatlarını yürütme
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Data Factory Azure Machine Learning işlem hatlarını yürütme
 
-Azure Machine Learning hizmet işlem hatlarınızı, Azure Data Factory işlem hatlarında bir adım olarak çalıştırın. Machine Learning yürütme işlem hattı etkinliği, olası kredi varsayılanlarını tanımlama, yaklaşımı belirleme ve müşteri davranış düzenlerini çözümleme gibi toplu tahmin senaryolarına olanak tanır.
+Azure Machine Learning işlem hatlarınızı, Azure Data Factory işlem hatlarında bir adım olarak çalıştırın. Machine Learning yürütme işlem hattı etkinliği, olası kredi varsayılanlarını tanımlama, yaklaşımı belirleme ve müşteri davranış düzenlerini çözümleme gibi toplu tahmin senaryolarına olanak tanır.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -44,15 +44,15 @@ Azure Machine Learning hizmet işlem hatlarınızı, Azure Data Factory işlem h
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Açıklama | İzin verilen değerler | Gereklidir
+Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | İşlem hattındaki etkinliğin adı | Dize | Yes
-type | Etkinliğin türü ' AzureMLExecutePipeline ' | Dize | Yes
-linkedServiceName | Azure Machine Learning hizmetine bağlı hizmet | Bağlı hizmet başvurusu | Yes
-Mlpipelineıd | Yayınlanan Azure Machine Learning işlem hattının KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Yes
+ad | İşlem hattındaki etkinliğin adı | Dize | Evet
+type | Etkinliğin türü ' AzureMLExecutePipeline ' | Dize | Evet
+linkedServiceName | Azure Machine Learning bağlı hizmet | Bağlı hizmet başvurusu | Evet
+Mlpipelineıd | Yayınlanan Azure Machine Learning işlem hattının KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Evet
 experimentName | Machine Learning işlem hattı çalıştırmasının çalışma geçmişi deneme adı | Dize (veya dize resultType 'ı olan ifade) | Hayır
 mlPipelineParameters | Yayımlanan Azure Machine Learning ardışık düzen uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Machine Learning işlem hattında tanımlanan işlem hattı parametrelerinin adlarıyla eşleşmesi gerekir | Anahtar değer çiftlerine sahip nesne (veya resultType nesnesi olan Ifade) | Hayır
-mlParentRunId | Ana Azure Machine Learning hizmeti işlem hattı çalıştırma KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Hayır
+mlParentRunId | Ana Azure Machine Learning işlem hattı çalıştırma KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Hayır
 Devam Onstepfailure | Bir adım başarısız olursa Machine Learning ardışık düzen çalıştırmasında diğer adımların yürütülmesine devam edilip edilmeyeceğini belirtir | boole | Hayır
 
 ## <a name="next-steps"></a>Sonraki adımlar

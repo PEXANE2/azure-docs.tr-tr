@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 277333cbca5a31fdc08ae943d2ff61c35d2c9310
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 992cface653bf3fe52afc7efa3f17573fcf91399
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802368"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469653"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasındaki Key Vault başvurularını kullanma
 
@@ -82,7 +82,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama yapılandırmasına Key Vault başvurusu ekleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve ardından hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin.
 
@@ -123,7 +123,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Aşağıdaki komutlarda, gizli *anahtar ve ClientSecret* yerine gizli diziler Yöneticisi 'ne *gizli dizi ekleyin* . Komutların *. csproj* dosyasıyla aynı dizinde çalıştırılması gerekir.
+1. Gizli verileri ve hızlı başlangıç bölümünde *. csproj* dosyasına eklediğiniz gizli verileri *depolamaya yönelik araç* [hızlı başlangıç: Azure Uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md). Bu komutların *. csproj* dosyasıyla aynı dizinde yürütülmesi gerekir.
 
     ```
     dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
@@ -203,7 +203,7 @@ Kasaya bir gizli dizi eklemek için yalnızca birkaç ek adım gerçekleştirmen
     dotnet run
     ```
 
-1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000` ' a gidin.
+1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000`' a gidin.
 
     ![Hızlı başlangıç yerel uygulama başlatma](./media/key-vault-reference-launch-local.png)
 

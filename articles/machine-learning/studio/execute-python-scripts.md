@@ -1,6 +1,6 @@
 ---
 title: Python makine öğrenimi betikleri yürütün
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Machine Learning Studio (klasik) denemeleri ve Web hizmetlerinde Python kodu kullanmak için Python betiği yürütme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 1be367191ab042611f45d1f773df0d499400c500
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053782"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493004"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio’da Python machine learning betikleri yürütme
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) üzerinde Python Machine Learning betikleri yürütme
 
 Python birçok veri bilimcilerinin araç çındaki değerli bir araçtır. Veri araştırması, özellik ayıklama, model eğitimi ve doğrulama ve dağıtım dahil olmak üzere tipik makine öğrenimi iş akışlarının her aşamasında kullanılır.
 
-Bu makalede, Azure Machine Learning Studio denemeleri ve Web hizmetinizdeki Python kodunu kullanmak için Python betik modülünü yürütme işlemini nasıl kullanabileceğiniz açıklanır.
+Bu makalede, Azure Machine Learning Studio (klasik) denemeleri ve Web hizmetlerinde Python kodu kullanmak için Python betik modülünü yürütme işlemini nasıl kullanabileceğiniz açıklanır.
 
 ## <a name="using-the-execute-python-script-module"></a>Python betiği yürütme modülünü kullanma
 
-Studio 'da Python 'a yönelik birincil arabirim, [Python betik modülünü Çalıştır][execute-python-script] ' dır. En fazla üç giriş kabul eder ve [R betiği Yürüt][execute-r-script] modülüne benzer şekilde en fazla iki çıkış üretir. Python kodu, `azureml_main`adlı özel olarak adlandırılmış bir giriş noktası işlevi aracılığıyla parametre kutusuna girilir.
+Studio 'da (klasik) Python 'a yönelik birincil arabirim, [Python betik modülünü Çalıştır][execute-python-script] ' dır. En fazla üç giriş kabul eder ve [R betiği Yürüt][execute-r-script] modülüne benzer şekilde en fazla iki çıkış üretir. Python kodu, `azureml_main`adlı özel olarak adlandırılmış bir giriş noktası işlevi aracılığıyla parametre kutusuna girilir.
 
 ![Python betik modülünü Yürüt](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -53,7 +53,7 @@ Giriş bağlantı noktalarının `azureml_main` işlevinin parametreleriyle nas�
 
 ## <a name="translation-of-input-and-output-data-types"></a>Giriş ve çıkış veri türlerinin çevirisi
 
-Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, Studio 'daki giriş veri kümeleri Pandas DataFrame 'e dönüştürülür ve çıkış veri çerçeveleri Studio veri kümelerine geri dönüştürülür. Bu dönüştürme işlemi sırasında aşağıdaki Çeviriler de gerçekleştirilir:
+Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, klasik Studio sürümündeki giriş veri kümeleri Pandas DataFrame 'e dönüştürülür ve çıkış veri çerçeveleri, Studio (klasik) veri kümelerine geri dönüştürülür. Bu dönüştürme işlemi sırasında aşağıdaki Çeviriler de gerçekleştirilir:
 
  **Python veri türü** | **Studio çeviri yordamı** |
 | --- | --- |
@@ -67,9 +67,9 @@ Studio veri kümeleri, Panda Dataframe ile aynı değildir. Sonuç olarak, Studi
 
 ## <a id="import-modules"></a>Mevcut Python betik modüllerini içeri aktarma
 
-Python 'u yürütmek için kullanılan arka uç, yaygın [olarak kullanılan](https://www.anaconda.com/distribution/)bir bilimsel Python dağıtımına dayanır. Bu, veri merkezli iş yüklerinde kullanılan en yaygın Python paketlerinin 200 ' e yakın bir sürümüne sahiptir. Studio şu anda, dış kitaplıkları yüklemek ve yönetmek için PIP veya Conda gibi paket yönetim sistemlerinin kullanımını desteklememektedir.  Ek kitaplıklar ekleme gereksinimini fark ederseniz, kılavuz olarak aşağıdaki senaryoyu kullanın.
+Python 'u yürütmek için kullanılan arka uç, yaygın [olarak kullanılan](https://www.anaconda.com/distribution/)bir bilimsel Python dağıtımına dayanır. Bu, veri merkezli iş yüklerinde kullanılan en yaygın Python paketlerinin 200 ' e yakın bir sürümüne sahiptir. Studio 'nun klasik sürümü şu anda dış kitaplıkları yüklemek ve yönetmek için PIP veya Conda gibi paket yönetim sistemlerinin kullanılmasını desteklememektedir.  Ek kitaplıklar ekleme gereksinimini fark ederseniz, kılavuz olarak aşağıdaki senaryoyu kullanın.
 
-Yaygın kullanım örneği, mevcut Python betikleri Studio denemeleri ' e dahil değildir. [Execute Python betik][execute-python-script] modülü, üçüncü giriş bağlantı noktasında Python modüllerini içeren bir ZIP dosyasını kabul eder. Dosya, çalışma zamanında yürütme çerçevesi tarafından sıkıştırıldı ve içerik Python yorumlayıcı kitaplık yoluna eklenir. `azureml_main` giriş noktası işlevi daha sonra bu modülleri doğrudan içeri aktarabilir. 
+Yaygın kullanım örneği, mevcut Python betikleri, Studio denemeleri 'ın klasik sürümüne dahil değildir. [Execute Python betik][execute-python-script] modülü, üçüncü giriş bağlantı noktasında Python modüllerini içeren bir ZIP dosyasını kabul eder. Dosya, çalışma zamanında yürütme çerçevesi tarafından sıkıştırıldı ve içerik Python yorumlayıcı kitaplık yoluna eklenir. `azureml_main` giriş noktası işlevi daha sonra bu modülleri doğrudan içeri aktarabilir. 
 
 Örnek olarak, basit bir "Hello, World" işlevi içeren Hello.py dosyasını göz önünde bulundurun.
 
@@ -79,7 +79,7 @@ Daha sonra, Hello.py içeren bir Hello. zip dosyası oluşturacağız:
 
 ![Kullanıcı tanımlı Python kodunu içeren zip dosyası](./media/execute-python-scripts/figure5.png)
 
-Zip dosyasını bir veri kümesi olarak Studio 'ya yükleyin. Ardından, aşağıdaki görüntüde gösterildiği gibi, bu dosyayı **yürütme komut dosyası** modülünün üçüncü giriş bağlantı noktasına ekleyerek Hello. zip dosyasında Python kodunu kullanan bir deneme oluşturun ve çalıştırın.
+Zip dosyasını bir veri kümesi olarak klasik Studio sürümüne yükleyin. Ardından, aşağıdaki görüntüde gösterildiği gibi, bu dosyayı **yürütme komut dosyası** modülünün üçüncü giriş bağlantı noktasına ekleyerek Hello. zip dosyasında Python kodunu kullanan bir deneme oluşturun ve çalıştırın.
 
 ![Yürütme Python betik modülüne giriş olarak Hello. zip ile örnek deneme](./media/execute-python-scripts/figure6a.png)
 
@@ -94,7 +94,7 @@ Modül çıktısı, ZIP dosyasının paketlenmemiş olduğunu ve işlevin `print
 Aşağıdaki adımları kullanarak, bir Azure Blob depolama hesabında depolanan verilere erişebilirsiniz:
 
 1. [Python Için Azure Blob depolama paketini](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) yerel olarak indirin.
-1. ZIP dosyasını bir veri kümesi olarak Studio çalışma alanınıza yükleyin.
+1. ZIP dosyasını veri kümesi olarak Studio (klasik) çalışma alanınıza yükleyin.
 1. `protocol='http'` blob hizmeti nesneniz oluşturma
 
 ```
@@ -141,11 +141,11 @@ Bu işlem, Pandas 'teki scatter_matrix işlevini kullanarak dağılım çizim ma
 
 ![Python kodu kullanarak örnek bir deneme için çizimleri görselleştirme](./media/execute-python-scripts/figure-v2-9b.png)
 
-Farklı görüntülere kaydederek birden çok şekil döndürmek mümkündür. Studio çalışma zamanı tüm görüntüleri seçer ve bunları görselleştirme için birleştirir.
+Farklı görüntülere kaydederek birden çok şekil döndürmek mümkündür. Studio çalışma zamanının klasik sürümü tüm görüntüleri alır ve bunları görselleştirme için birleştirir.
 
 ## <a name="advanced-examples"></a>Gelişmiş örnekler
 
-Studio 'da yüklü Anaconda ortamı, sayısal tuş y, SciPy ve Scikits-öğren gibi ortak paketleri içerir. Bu paketler, makine öğrenimi ardışık düzeninde veri işleme için etkili bir şekilde kullanılabilir.
+Studio 'nun klasik sürümünde yüklü Anaconda ortamı, sayısal tuş y, SciPy ve Scikits-öğren gibi ortak paketleri içerir. Bu paketler, makine öğrenimi ardışık düzeninde veri işleme için etkili bir şekilde kullanılabilir.
 
 Örneğin, aşağıdaki deneme ve komut dosyası, bir veri kümesi için özellik önem puanlarını hesaplama hakkında bilgi edinin. Puanlar, denetimli özellik seçimini başka bir modele gönderilmeden önce gerçekleştirmek için kullanılabilir.
 
@@ -153,7 +153,7 @@ Studio 'da yüklü Anaconda ortamı, sayısal tuş y, SciPy ve Scikits-öğren g
 
 ![Özellikleri puanlara göre derecelendirmek için işlev](./media/execute-python-scripts/figure8.png)
 
-Aşağıdaki deneme daha sonra, Azure Machine Learning Studio "Pima Hint diabetes" veri kümesindeki özelliklerin önem puanlarını hesaplar ve döndürür:
+Aşağıdaki deneme daha sonra, klasik Azure Machine Learning Studio "Pima Hint diabetes" veri kümesindeki özelliklerin önem puanlarını hesaplar ve döndürür:
 
 ![Python kullanarak Pima Hint diabetes veri kümesindeki özellikleri derecelendirmek için denemeler yapın](./media/execute-python-scripts/figure9a.png)
 
@@ -173,7 +173,7 @@ Python modülü şu anda IntelliSense ve hata ayıklama gibi IDE özelliklerini 
 
 ### <a name="single-data-frame-output"></a>Tek veri çerçevesi çıkışı
 
-Python giriş noktasının yalnızca çıkış olarak tek bir veri çerçevesi döndürmesine izin verilir. Şu anda doğrudan Studio çalışma zamanına eğitilen modeller gibi rastgele Python nesneleri döndürmek mümkün değildir. Aynı sınırlamaya sahip olan [R betiği Yürüt][execute-r-script]gibi, nesnelerin bir bayt dizisine pickve sonra da bir veri çerçevesinin içinde döndürülmesi olasıdır.
+Python giriş noktasının yalnızca çıkış olarak tek bir veri çerçevesi döndürmesine izin verilir. Şu anda doğrudan Stüdyo (klasik) çalışma zamanına eğitilen modeller gibi rastgele Python nesneleri döndürmek mümkün değildir. Aynı sınırlamaya sahip olan [R betiği Yürüt][execute-r-script]gibi, nesnelerin bir bayt dizisine pickve sonra da bir veri çerçevesinin içinde döndürülmesi olasıdır.
 
 ### <a name="inability-to-customize-python-installation"></a>Python yüklemesini özelleştirememe
 

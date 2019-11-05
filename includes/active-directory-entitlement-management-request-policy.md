@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934700"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73413021"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
@@ -105,19 +105,19 @@ Daha önce seçtiğiniz kullanıcıların onay ayarlarını belirtmek için bu a
 
 1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet**olarak ayarlayın. İsteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır**olarak ayarlayın.
 
-    ![Erişim paketi Istekleri-onay ayarları](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **istek sahibine iste** modunu **Evet**olarak ayarlayın.
 
-1. İsteğin tek veya çok aşamalı onay gerektirdiğini belirleme. Tek aşamalı için **kaç aşamanın** **1** ' e geçiş yapıldığını ayarlayın.
+    ![Erişim paketi Istekleri-onay ayarları](./media/active-directory-entitlement-management-request-policy/approval.png)
+
+### <a name="single-stage-approval"></a>Tek aşamalı onay
 
 1. Onaylayanlar için, **onaylayan olarak yönetici** ' yi seçin veya **belirli onaylayanları**seçin.
 
-    Yönetici, kullanıcının Azure AD profilinde **yönetici** özniteliği tarafından belirlenir. Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
-
-    ![Kullanıcı profili-Yöneticisi özniteliği Azure Active Directory](./media/active-directory-entitlement-management-request-policy/profile-manager.png)
+    ![Erişim paketi Istekleri-tek aşamalı ayarlar](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
 
 1. Yöneticiyi onaylayan olarak seçtiyseniz, yetkilendirme yönetiminin yöneticiyi bulamamasını sağlamak için dizininizdeki bir veya daha fazla Kullanıcı ya da Grup seçmek üzere **geri dönüş Ekle** ' ye tıklayın.
+
+    Yönetici, kullanıcının Azure AD profilinde **yönetici** özniteliği tarafından belirlenir. Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
 1. Belirli onaylayanları Seç ' i seçtiyseniz, dizininizdeki bir veya daha fazla Kullanıcı ya da grubun onaylayanlarını seçmek için **onaylayan Ekle** ' ye tıklayın.
 
@@ -125,9 +125,34 @@ Daha önce seçtiğiniz kullanıcıların onay ayarlarını belirtmek için bu a
 
     Bu süre içinde bir istek onaylanmamışsa, otomatik olarak reddedilir. Kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
 
-1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **gerekçe iste** seçeneğini **Evet**olarak ayarlayın.
+1. Kullanıcıların erişim paketini talep etmek için bir gerekçe sağlamasını gerektirmek için, **onaylayan gerekçe iste** seçeneğini **Evet**olarak ayarlayın.
 
     Bir gerekçe diğer onaylayanlara ve istek sahibine görünür.
+
+### <a name="alternate-approvers"></a>Alternatif onaylayanlar
+
+İstekleri onaylayabilecek birincil onaylayanları belirtmenin yanı sıra, alternatif onaylayanlar de belirtebilirsiniz. Bu, isteklerin süresi dolmadan önce onaylanmış veya reddedilmiş olduğundan emin olmaya yardımcı olur (zaman aşımı).
+
+Alternatif onaylamalarda, birincil onaylayanın isteği onaylaması veya reddetmemiş olması durumunda, bekleyen istek, ilke kurulumu sırasında belirttiğiniz iletme zamanlaması başına alternatif onaylayanlarına iletilir. Bekleyen isteği onaylamak veya reddetmek için bir e-posta alırlar.
+
+İstek alternatif onaylayanlara iletilirse, birincil onaylayanlar isteği yine de onaylayabilir veya reddedebilir. Alternatif onaylayanlar, bekleyen isteği onaylamak veya reddetmek için, birincil onaylayanlar olarak aynı erişim sitemin aynısını kullanır.
+
+İnsanları veya gruplarını birincil onaylayanlar ve alternatif onaylayanlar olacak şekilde listeliyoruz. Lütfen birincil onaylayanlar ve alternatif onaylayanlar olacak farklı kişi kümelerini listediğinizden emin olun.
+Örneğin, Gamze ve Bob 'u birincil onaylayan olarak listedıysanız, diğer onaylayan olarak Carol ve Davve listeleyin. Bir erişim paketine alternatif onaylayanlar eklemek için aşağıdaki adımları kullanın:
+
+1. **Gelişmiş istek ayarlarını göster**' e tıklayın.
+
+    ![Erişim paketi-Ilke-Gelişmiş istek ayarlarını göster](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+
+1. **Herhangi bir eylem yapılmadı, alternatif onaylayanlara ilet mi?** **Evet**olarak değiştirin.
+
+1. **Alternatif onaylayanlar Ekle** ' ye tıklayın ve listeden alternatif onaylayanı seçin.
+
+    ![Erişim paketi-Ilke-alternatif onaylayanlar ekleme](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. **Kaç gün sonra diğer onaylayanlara ilet** kutusunda, onaylayanın bir isteği onaylaması veya reddetmesi için sahip olduğu gün sayısına koyun. Onaylayan, istek süresinden önce isteği onaylamadıysa veya reddetmezse, isteğin süresi dolar (zaman aşımı) ve kullanıcının erişim paketi için başka bir istek göndermesi gerekecektir. 
+
+    İstekler yalnızca, istek süresi yarım hayata geçtikten sonra bir gün daha, alternatif onaylayanlara iletilebilir. Bu örnekte, istek süresi 14 gündür. Bu, istek süresinin 7. gün yarı yaşam süresine eriştiği anlamına gelir. Bu nedenle istek, 8. günden daha önce değil iletilebilir. Ayrıca, istekler istek süresinin son gününde alternatif onaylayana iletilemez. Bu nedenle, isteğin iletilebilmesi için en son, gün 13 ' dir.
 
 ## <a name="enable-requests"></a>İstekleri etkinleştir
 

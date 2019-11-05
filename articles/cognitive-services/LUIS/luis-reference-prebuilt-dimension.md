@@ -9,122 +9,87 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 15ba8ad4d3bcf00024a0c7b14b004de08d37621a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6699b1617ccd1fef9a507e71fdd73a02b0e98bea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677658"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465039"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için boyut önceden oluşturulmuş varlık
 Önceden oluşturulmuş boyut varlığı, LUSıS uygulama kültürüne bakılmaksızın çeşitli boyut türlerini algılar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını boyutlar içeren örnek bir değer eklemeniz gerekmez. Boyut varlığı [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir. 
 
 ## <a name="types-of-dimension"></a>Boyut türleri
 
-Boyut, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub deposundan yönetiliyor
-
+Boyut, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub deposundan yönetilir.
 
 ## <a name="resolution-for-dimension-entity"></a>Boyut varlığı için çözüm
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+Sorgu için aşağıdaki varlık nesneleri döndürülür:
+
+`10 1/2 miles of cable`
+
+#### <a name="v3-responsetabv3"></a>[V3 yanıtı](#tab/V3)
+
+Aşağıdaki JSON, `verbose` parametresi `false`olarak ayarlanmıştır:
+
+```json
+"entities": {
+    "dimension": [
+        {
+            "number": 10.5,
+            "units": "Mile"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+Aşağıdaki JSON, `verbose` parametresi `true`olarak ayarlanmıştır:
+
+```json
+"entities": {
+    "dimension": [
+        {
+            "number": 10.5,
+            "units": "Mile"
+        }
+    ],
+    "$instance": {
+        "dimension": [
+            {
+                "type": "builtin.dimension",
+                "text": "10 1/2 miles",
+                "startIndex": 0,
+                "length": 12,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+#### <a name="v2-responsetabv2"></a>[V2 yanıtı](#tab/V2)
 
 Aşağıdaki örnek, **yerleşik. Dimension** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
-  "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.762141049
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.762141049
-    }
-  ],
-  "entities": [
-    {
-      "entity": "10 1/2 miles",
-      "type": "builtin.dimension",
-      "startIndex": 19,
-      "endIndex": 30,
-      "resolution": {
-        "unit": "Mile",
-        "value": "10.5"
-      }
-    }
-  ]
-}
-```
-
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
-
-Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
-
-```json
-{
-    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-    "prediction": {
-        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.400049
-            }
-        },
-        "entities": {
-            "dimension": [
-                {
-                    "number": 10.5,
-                    "unit": "Mile"
-                }
-            ]
-        }
+    "entity": "10 1/2 miles",
+    "type": "builtin.dimension",
+    "startIndex": 0,
+    "endIndex": 11,
+    "resolution": {
+    "unit": "Mile",
+    "value": "10.5"
     }
 }
 ```
-
-Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
-
-```json
-{
-    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-    "prediction": {
-        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.400049
-            }
-        },
-        "entities": {
-            "dimension": [
-                {
-                    "number": 10.5,
-                    "unit": "Mile"
-                }
-            ],
-            "$instance": {
-                "dimension": [
-                    {
-                        "type": "builtin.dimension",
-                        "text": "10 1/2 miles",
-                        "startIndex": 19,
-                        "length": 12,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 07/05/2019
+ms.date: 11/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 46e9182d9660729dbf65367f52483d96428760ff
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803341"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467394"
 ---
 # <a name="what-are-the-speech-services"></a>Konuşma Tanıma Hizmetleri nelerdir?
 
@@ -30,12 +30,12 @@ Bu özellikler Azure konuşma hizmetlerini yapar. Her bir özellik için genel k
 |---------|---------|-------------|-----|------|
 | [Konuşmayı metne dönüştürme](speech-to-text.md) | Konuşmayı metne dönüştürme | Konuşmadan metne dönüştürme, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı olarak metin halinde ses akışları. Kullanıcı amaçlarını [Language Understanding (lusıs)](https://docs.microsoft.com/azure/cognitive-services/luis/) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Toplu iş dökümü](batch-transcription.md) | Toplu iş dökümü, büyük hacimde verilerin zaman uyumsuz konuşmadan metne dökümünü sağlar. Bu, özelleştirme ve model yönetimi ile aynı uç noktayı kullanan REST tabanlı bir hizmettir. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
-| | [Konuşma dökümü](conversation-transcription-service.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Yes | Hayır |
+| | [Konuşma dökümü](conversation-transcription-service.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Evet | Hayır |
 | | [Özel Konuşma Tanıma modelleri oluşturma](#customize-your-speech-experience) | Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
 | [Metin okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | Hayır | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Konuşma Çevirisi](speech-translation.md) | Konuşma çevirisi | Konuşma çevirisi, uygulamalarınıza, araçlara ve cihazlara gerçek zamanlı, çok dilli konuşma çevirisi sağlar. Konuşmayı konuşmaya dönüştürme ve konuşmadan metne çevirme için bu hizmeti kullanın. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Hayır |
-| [Ses-ilk sanal yardımcılar](voice-first-virtual-assistants.md) | Ses-ilk sanal yardımcılar | Azure konuşma Hizmetleri 'ni kullanan özel sanal yardımcılar, geliştiricilerin uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Bot çerçevesinin doğrudan hat konuşma kanalı, daha düşük gecikme süresi ve yüksek güvenilirliğe sahip ses girişi, ses çıkış etkileşimini sağlayan uyumlu bir bot 'a Eşgüdümlü, düzenlenmiş bir giriş noktası sağlayarak bu özellikleri geliştirir. | [Evet](voice-first-virtual-assistants.md) | Hayır |
+| [Ses yardımcıları](voice-assistants.md) | Ses yardımcıları | Azure konuşma Hizmetleri 'ni kullanan sesli yardımcılar, geliştiricilerin uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak sağlar. Ses Yardımcısı hizmeti, bir cihaz ile bir yardımcı uygulama arasında hızlı ve güvenilir bir etkileşim sağlar ve bu sayede, görev tamamlama için bir aygıt ve doğrudan hat konuşma kanalı veya tümleşik özel komutlar (Önizleme) hizmeti kullanılır. | [Evet](voice-assistants.md) | Hayır |
 
 ## <a name="news-and-updates"></a>Haberler ve güncelleştirmeler
 
@@ -45,10 +45,10 @@ Azure konuşma Hizmetleri yenilikleri hakkında bilgi edinin.
   * Yayınlanan konuşma SDK 1.7.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
 * Ağustos 2019
   * **Yeni öğretici**: [konuşma SDK 'sı ile sesinizi etkinleştirme, C# ](tutorial-voice-enable-your-bot-speech-sdk.md)
-  * @No__t 2 sesi için [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)yeni bir konuşma stili eklendi. 
+  * `en-US-JessaNeural` sesi için yeni bir konuşma stili [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)eklendi. 
 * Haziran 2019
   * Yayınlanan konuşma SDK 1.6.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
-* 2019 Mayıs-belgeler artık [konuşma dökümü](conversation-transcription-service.md), [çağrı merkezi dökümü](call-center-transcription.md)ve [sesli ilk sanal yardımcılar](voice-first-virtual-assistants.md)için kullanılabilir.
+* 2019 Mayıs-belgeler artık [konuşma dökümü](conversation-transcription-service.md), [çağrı merkezi dökümü](call-center-transcription.md)ve [sesli yardımcılar](voice-assistants.md)için kullanılabilir.
 * Mayıs 2019
   * Yayınlanan konuşma SDK 1.5.1. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
   * Yayınlanan konuşma SDK 1.5.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
@@ -59,10 +59,9 @@ Her biri 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlan
 
 | Konuşmayı metne dönüştürme (SDK) | Metinden konuşmaya (SDK) | Çeviri (SDK) |
 |----------------------|----------------------|-------------------|
-| [C#, .NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [C#, .NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) | [Java (Windows, Linux)](quickstart-translate-speech-java-jre.md) |
-| [JavaScript (tarayıcı)](quickstart-js-browser.md) | [C++Pencerelerin](quickstart-text-to-speech-cpp-windows.md) | [C#, .NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) |
-| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C++'Un](quickstart-text-to-speech-cpp-linux.md) | [C#, .NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
-| [Java (Windows, Linux)](quickstart-java-jre.md) | | [C++Pencerelerin](quickstart-translate-speech-cpp-windows.md) |
+| [Ses dosyasından konuşmayı tanıma](quickstarts/speech-to-text-from-file.md) | [Konuşmayı bir ses dosyasına sentezleştirme](quickstarts/text-to-speech-audio-file.md) | [Konuşmayı metne çevir](quickstarts/translate-speech-to-text.md) |
+| [Konuşmayı bir mikrofonla tanıma](quickstarts/speech-to-text-from-microphone.md) | [Konuşmayı konuşmacıyı sentezleştirme](quickstarts/text-to-speech.md) | [Konuşmayı birden çok hedef dile çevirme](quickstarts/translate-speech-to-text-multiple-languages.md) |
+| [Blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md) | [Uzun biçimli ses için zaman uyumsuz sensıs](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Konuşmayı konuşmaya çevir](quickstarts/translate-speech-to-speech.md) |
 
 > [!NOTE]
 > Konuşmadan metne ve metinden konuşmaya Ayrıca REST uç noktalarına ve ilgili hızlı başlangıçlara sahiptir.
@@ -80,7 +79,7 @@ Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını 
 * [Konuşmadan metne, metinden konuşmaya ve konuşma çevirisi örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Toplu iş dökümü örnekleri (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 * [Metinden konuşmaya örnekleri (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-* [Ses-ilk Sanal Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples)
+* [Ses Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples)
 
 ## <a name="customize-your-speech-experience"></a>Konuşma deneyiminizi özelleştirin
 

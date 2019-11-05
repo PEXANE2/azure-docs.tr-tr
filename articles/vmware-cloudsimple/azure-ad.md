@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1a5871a052998e9dd32d698c5a89f57064cc7d6b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972920"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987577"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple özel bulutu 'nda vCenter için kimlik sağlayıcısı olarak Azure AD kullanma
 
@@ -83,19 +83,26 @@ Başlamadan önce, genel yönetici ayrıcalıklarıyla Azure aboneliğinize eri�
 1. Özel bulut vCenter için [ayrıcalıkları ilerletin](escalate-private-cloud-privileges.md) .
 2. Kimlik kaynağının kurulması için gereken yapılandırma parametrelerini toplayın.
 
-    | **Seçeneği** | **Açıklama** |
+    | **Seçenek** | **Açıklama** |
     |------------|-----------------|
-    | **Name** | Kimlik kaynağının adı. |
-    | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
+    | **Ad** | Kimlik kaynağının adı. |
+    | **Kullanıcılar için temel DN** | Kullanıcılar için temel ayırt edici ad.  Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
     | **Etki alanı adı** | Etki alanının FDQN 'ı, örneğin, example.com. Bu metin kutusunda bir IP adresi sağlamaın. |
     | **Etki alanı diğer adı** | *(isteğe bağlı)* Etki alanı NetBIOS adı. SSPI kimlik doğrulamaları kullanıyorsanız, Active Directory etki alanının NetBIOS adını kimlik kaynağının diğer adı olarak ekleyin. |
-    | **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Örneğinde`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br>Biçimini `ldaps://hostname:port`kullanın. Bağlantı noktası genellikle LDAPS bağlantıları için 636 ' dir. <br><br>Birincil veya ikincil LDAP URL 'sinde kullandığınızda `ldaps://` Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
+    | **Gruplar için temel DN** | Gruplar için temel ayırt edici ad. Azure AD için şunu kullanın: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` örnek: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Birincil sunucu URL 'SI** | Etki alanı için birincil etki alanı denetleyicisi LDAP sunucusu.<br><br> `ldaps://hostname:port`biçimini kullanın. Bağlantı noktası genellikle LDAPS bağlantıları için 636 ' dir. <br><br>Birincil veya ikincil LDAP URL 'sinde `ldaps://` kullandığınızda Active Directory sunucusunun LDAPS uç noktası için güven kuran bir sertifika gerekir. |
     | **İkincil sunucu URL 'SI** | Yük devretme için kullanılan ikincil etki alanı denetleyicisi LDAP sunucusunun adresi. |
-    | **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız, URL metin kutusuna yazdıktan `ldaps://` sonra Sertifika Seç düğmesi görünür. İkincil bir URL gerekli değildir. |
+    | **Sertifika Seç** | Active Directory LDAP sunucunuz veya OpenLDAP sunucu kimlik kaynağı ile LDAPS kullanmak istiyorsanız, URL metin kutusuna `ldaps://` yazdıktan sonra Sertifika Seç düğmesi görünür. İkincil bir URL gerekli değildir. |
     | **Kullanıcı Adı** | Etki alanındaki, kullanıcılar ve gruplar için temel DN 'ye yönelik en az salt okuma erişimi olan bir kullanıcının KIMLIĞI. |
     | **Parola** | Kullanıcı adı tarafından belirtilen kullanıcının parolası. |
 
 3. Ayrıcalıkların ilerletiden sonra özel bulut vCenter 'unuzda oturum açın.
 4. Azure Active Directory bir kimlik kaynağı olarak ayarlamak için önceki adımdaki değerleri kullanarak [vCenter 'da kimlik kaynağı ekleme](set-vcenter-identity.md#add-an-identity-source-on-vcenter) bölümündeki yönergeleri izleyin.
 5. [Bir vCenter çoklu oturum açma grubuna üye ekleme](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)VMware konusunda açıklandığı gibi, Azure AD 'den vCenter gruplarına kullanıcı/grup ekleyin.
+
+> [!CAUTION]
+> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Özel bulut izin modeli hakkında bilgi edinin](learn-private-cloud-permissions.md)

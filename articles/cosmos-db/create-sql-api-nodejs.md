@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK kullanarak Node. js uygulaması oluşturma'
+title: 'Azure Cosmos DB: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK’sını kullanarak bir Node.js uygulaması derleme'
 description: Azure Cosmos DB SQL API'sine bağlanmak ve sorgu göndermek için kullanabileceğiniz bir Node.js kodu örneği sunar
 author: deborahc
 ms.service: cosmos-db
@@ -8,22 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: dech
-ms.openlocfilehash: e6a04c840e0982947e1223abf82737e1cd9d4445
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd9405630a471fc1909b1930db8efb7d0419daaa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854143"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495202"
 ---
-# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Node. js uygulaması oluşturma
+# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak bir Node. js uygulaması oluşturma
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
 
@@ -146,7 +146,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
     `config.endpoint = "https://FILLME.documents.azure.com"`
 
-4. Ardından portaldaki BİRİNCİL ANAHTAR değerinizi kopyalayıp `config.js` dosyasına `config.key` değeri olarak yapıştırın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
+4. Ardından portaldaki BİRİNCİL ANAHTAR değerinizi kopyalayıp `config.key` dosyasına `config.js` değeri olarak yapıştırın. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
 
     `config.key = "FILLME"`
     

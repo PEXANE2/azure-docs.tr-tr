@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516770"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465000"
 ---
 # <a name="speech-services-for-telephony-data"></a>Telefon verileri için konuşma Hizmetleri
 
@@ -38,9 +38,9 @@ Konuşma hizmetlerinin birincil amacına göre işlevsel en iyi yönlerinin öte
 
 * Çağrı sonrası analizi, çağrı kayıtlarının toplu işlemesi
 * Arama gerçekleştiği sırada çeşitli içgörüler ayıklamak için ses sinyalinin gerçek zamanlı analiz işlemesi (önemli bir kullanım durumu olması durumunda) ve
-* Sanal yardımcılar (robotlar), müşterinin aracı katılımı olmadan müşterinin sorununu çözme veya aracıya yardımcı olacak AI protokollerinin uygulaması gibi iletişim kutusu
+* Sesli yardımcılar (robotlar), müşterinin aracı katılımı olmadan müşterinin sorununu çözme veya aracıya yardımcı olmak için AI protokollerinin uygulaması olan bir girişimle ilgili iletişim kutusunu ortaya sürüş.
 
-Bir Batch senaryosu uygulamasının tipik bir mimari diyagramı, aşağıdaki resimde ![Call Center döküm mimarisi ](media/scenarios/call-center-transcription-architecture.png) gösterilmiştir.
+Bir Batch senaryosu uygulamasının tipik bir mimari diyagramı, çağrı merkezi döküm mimarisi ![aşağıdaki resimde gösterilmiştir](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Konuşma analizi teknoloji bileşenleri
 
@@ -50,7 +50,7 @@ Etki alanı, çağrı sonrası veya gerçek zamanlı olup olmadığı için Azur
 
 [Konuşmayı metne](speech-to-text.md) dönüştürme işlemi, herhangi bir çağrı merkezi çözümünde özelliğinden sonra en çok aranan özelliktir. Aşağı akış analizlerinin birçoğu, metnin sonuna kadar bir metin kullandığından, hata oranı (WER) en önemli öneme sahiptir. Çağrı merkezi 'ndeki önemli güçlüklerden biri, çağrı merkezi 'nde (örneğin, arka planda konuşuyor diğer aracılar) yaygın olarak kullanılan ve gerçek telefon sinyalinin en düşük kalitesindeki, çok sayıda dil yerel ayarı ve diapahı 'nin yaygın olduğu gürültü. WER, belirli bir yerel ayar için akustik ve dil modellerinin eğitilme ve bu sayede modeli yerel ayarınızdaki bir şekilde özelleştirebilme açısından önemli ölçüde bağıntılı bir seçenektir. En son birleştirilmiş sürüm 4. x modellerimiz, hem döküm doğruluğu hem de gecikme süresi çözümüdür. On binlerce saatlik akustik veri ve milyarlarca sözlü bilgi birleştirilmiş modellerle eğitilen, pazara giren en doğru modellerdir.
 
-### <a name="sentiment"></a>Duygu
+### <a name="sentiment"></a>Yaklaşım
 Ölçmek, arama merkezi alanına uygulandığında konuşma analizinin en önemli alanlarından biridir. [Toplu Iş dökümü API](batch-transcription.md) 'imiz, utterance başına yaklaşım analizi sunar. Hem aracılarınız hem de müşteri için çağrının yaklaşımını tespit etmek üzere çağrı dökümünü bir parçası olarak elde edilen değerler kümesini toplayabilirsiniz.
 
 ### <a name="silence-non-talk"></a>Sessizlik (konuş olmayan)
@@ -69,7 +69,7 @@ Yeni seslerimiz de insan seslerinden ayırt edilemez. Botunuza benzersiz kişili
 ### <a name="search"></a>Arama
 Analize ait başka bir zımba, belirli bir olay veya deneyimin gerçekleştiği etkileşimleri belirlemektir. Bu işlem genellikle, kullanıcının bir tümceciği ve sistem yanıt verdiğini veya daha yapılandırılmış bir sorguyu, yani bir analistin çağrı içindeki bir senaryoyu tanımlayan bir mantıksal deyimler kümesi oluşturmasının gerektiği daha yapılandırılmış bir sorgu olan iki yaklaşımdan biriyle yapılır ve sonra her çağrının bu sorgu kümesiyle dizini oluşturulabilir. İyi bir arama örneği, ubititous uyumluluk deyimidir "Bu çağrı kalite amacıyla kaydedilecek... "– birçok şirket, aracıların gerçekten kaydedilmeden önce bu vazgeçme belgesi müşterilere bu bildirimi sağladığından emin olmak istiyor. Çoğu analiz sistemi, bu eğilimleri raporlamak son olarak bir analiz sisteminin en önemli işlevlerinden biri olduğundan, sorgu/arama algoritmaları tarafından bulunan davranışları eğilim özelliğine sahiptir. Bilişsel [Hizmetler dizini](https://azure.microsoft.com/services/cognitive-services/directory/search/) sayesinde uçtan uca çözümünüz, dizin oluşturma ve arama özellikleri ile önemli ölçüde iyileştirilen olabilir.
 
-### <a name="key-phrase-extraction"></a>Anahtar Tümcecik Ayıklama
+### <a name="key-phrase-extraction"></a>Anahtar İfade Ayıklama
 Bu alan, daha zorlu analitik uygulamalardan biridir ve bunlardan biri AI ve ML uygulamasından yararlanırken. Burada birincil senaryo, müşteri amacını çıkarmaktır. Müşteri neden çağrılıyor? Müşteri sorunu nedir? Müşterinin neden negatif bir deneyimi var? [Metin analizi](https://azure.microsoft.com/services/cognitive-services/text-analytics/) hizmetimiz, bu önemli anahtar sözcükleri veya tümceleri ayıklamak üzere uçtan uca çözümünüzü hızlı bir şekilde yükseltmek için kutudan çıkan bir analiz kümesi sağlar.
 
 Artık, toplu işleme ve konuşma tanıma için gerçek zamanlı işlem hatlarına biraz daha ayrıntılı bir göz atalım.
@@ -92,7 +92,7 @@ Tipik bir çözüm bu hizmetleri kullanır:
 * [Web kancaları](webhooks.md) , döküm tamamlandığında bildirim almak için kullanılır.
 
 Dahili olarak, Microsoft Müşteri çağrılarını toplu Iş modunda desteklemek için yukarıdaki teknolojileri kullanıyoruz.
-![Batch mimari ](media/scenarios/call-center-batch-pipeline.png)
+Batch mimarisi ![](media/scenarios/call-center-batch-pipeline.png)
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Çağrı merkezi verileri için gerçek zamanlı döküm
 

@@ -1,7 +1,7 @@
 ---
 title: Tümcecik listeleri-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu kategori ve desenleri algılama veya hedefleri ve varlıkların tahmin iyileştirebilir uygulama özelliklerini eklemek için Language Understanding (LUIS) kullanın
+description: Bu kategorilerin ve desenlerin ve varlıklarının kullanımını ve tahminini iyileştirebilecek uygulama özellikleri eklemek için Language Understanding (LUO) kullanın
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,52 +9,56 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932905"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467622"
 ---
-# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Kullanım deyimi word listesinin boost sinyale listeler
+# <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Sözcük listesinin sinyalini artırmak için tümcecik listelerini kullanma
 
-LUIS uygulamanızı kendi doğruluğunu artırmak için özellikler ekleyebilirsiniz. Bu belirli kelimeleri ipuçları sağlayarak Yardım LUIS özellikleri ve ifadeleri bir uygulama etki alanı sözlüğü bir parçasıdır. 
+Doğruluğunu artırmak için LUSıS uygulamanıza özellikler ekleyebilirsiniz. Özellikler, belirli sözcüklerin ve deyimlerin bir uygulama etki alanı sözlüğü 'nün parçası olduğunu gösteren ipuçları sunarak LUYA yardımcı olur. 
 
-A [tümcecik listesi](luis-concept-feature.md) aynı sınıfa ait benzer şekilde (örneğin, şehirler ya da ürün adlarını) işlenmesi gereken değerleri (sözcük ve tümcecikleri) bir grup içerir. LUIS bunları biri hakkında ne öğrenir otomatik olarak başkaları için de uygulanır. Bu liste, eşleşen sözcüklerin bir [liste varlığıyla](reference-entity-list.md) (tam metin eşleşmeleri) aynı şey değildir.
+[Tümcecik listesi](luis-concept-feature.md) , aynı sınıfa ait olan ve benzer şekilde (örneğin, şehirlerin veya ürünlerin adları) bir grup değer (sözcükler veya ifadeler) içerir. Bunlardan biri hakkında ne tür bir saldırgan, diğerlerine de otomatik olarak uygulanır. Bu liste, eşleşen sözcüklerin bir [liste varlığıyla](reference-entity-list.md) (tam metin eşleşmeleri) aynı şey değildir.
 
-Bir ifade listesi uygulama etki alanının sözlüğü LUIS için ikinci bir sinyal sözcükleri ilgili olarak ekler.
+Bir tümcecik listesi, bu sözcüklerin yaklaşık olarak LUO 'ya ikinci bir sinyal olarak uygulama etki alanının sözlüğüne ekler.
 
-## <a name="add-phrase-list"></a>İfade listesi ekleme
+Bir tümcecik listesinin ne zaman ve neden kullanılacağını anlamak için [özellik kavramlarını](luis-concept-feature.md) gözden geçirin. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+## <a name="add-phrase-list"></a>Tümcecik listesi ekle
 
 LUO, uygulama başına en fazla 10 ifade listesine izin verir. 
 
-1. Adını tıklayarak uygulamanızı açın **uygulamalarım** sayfasında ve ardından **derleme**, ardından **tümcecik listeleri** uygulamanızın sol panelde. 
+1. **Uygulamalarım** sayfasında adına tıklayarak uygulamanızı açın ve ardından **Oluştur**' a tıklayın ve ardından uygulamanızın sol panelinde **tümcecik listeleri** ' ne tıklayın. 
 
-1. Üzerinde **tümcecik listeleri** sayfasında **oluştur yeni ifade listesi**. 
+1. **Tümcecik listeleri** sayfasında, **Yeni tümcecik listesi oluştur**' a tıklayın. 
  
-1. **Tümcecik listesi Ekle** iletişim kutusunda, tümcecik listesinin adı `Cities` olarak yazın. İçinde **değer** tümcecik listesi değerlerini yazın. Bir saat veya virgülle ayrılmış değerler kümesi tek bir değer yazın ve sonra basın **Enter**.
+1. **Tümcecik listesi Ekle** iletişim kutusunda, tümcecik listesinin adı olarak `Cities` yazın. **Değer** kutusuna, tümcecik listesinin değerlerini yazın. Tek seferde bir değer veya virgülle ayrılmış bir değerler kümesi yazabilir ve ardından **ENTER**tuşuna basabilirsiniz.
 
-    ![İfade listesi şehirler Ekle](./media/luis-add-features/add-phrase-list-cities.png)
+    ![Tümcecik listesi şehirleri ekleme](./media/luis-add-features/add-phrase-list-cities.png)
 
-1. LUIS, tümcecik listenize eklemek için ilgili değerleri önerebilirsiniz. Tıklayın **önerilir** bir grup için added value(s) anlamsal olarak ilişkili önerilen değerleri almak için. Önerilen değerlerden herhangi birini tıklatın veya tıklatın **Ekle** bunları eklemek için tüm.
+1. LUSıS, tümcecik listenize eklemek için ilgili değerler önerebilir. Eklenen değer (ler) ile ilgili anlam içeren önerilen değerler grubunu almak için **öner** ' e tıklayın. Önerilen değerlerden herhangi birini tıklatabilir veya tümünü eklemek için **Tümünü Ekle** ' ye tıklayabilirsiniz.
 
     ![Tümcecik listesi önerilen değerler-tümünü ekle](./media/luis-add-features/related-values.png)
 
-1. Tıklayın **birbirinin yerine bu değerleri** birbirlerinin yerine kullanılabilir seçenekleri eklendi ifade listesi değerler.
+1. Eklenen tümcecik listesi değerleri birbirinin yerine kullanılabilen alternatifler ise, **Bu değerlere** tıklayın.
 
     ![Tümcecik listesi önerilen değerler-değiştirilebilir kutu seç](./media/luis-add-features/interchangeable.png)
 
-1. **Bitti**’ye tıklayın. "Şehir" tümceciği listeye eklenen **tümcecik listeleri** sayfası.
+1. **Bitti**’ye tıklayın. "Şehirler" ifade listesi, **tümcecik listeleri** sayfasına eklenir.
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Silme veya üzerinde bağlamsal araç tümcecik listeden devre dışı bırakmak **tümcecik listeleri** sayfası.
+> Tümcecik **listeleri** sayfasındaki bağlamsal araç çubuğundan bir tümcecik listesini silebilir veya devre dışı bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonra ekleme, düzenleme, silme veya bir ifade listesi devre dışı bırakma [eğitme ve uygulamayı test etme](luis-interactive-test.md) performansı artıran yeniden görmek için.
+Bir tümcecik listesini ekledikten, düzenledikten, sildikten veya devre dışı bırakadıktan sonra, performansın gelişip artmediğini görmek için [uygulamayı yeniden eğitin ve test](luis-interactive-test.md) edin.

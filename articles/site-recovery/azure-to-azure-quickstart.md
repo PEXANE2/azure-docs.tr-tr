@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d23d16d1315eeaf224a5291641ab088212fcdc77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146947"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467969"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Bir Azure VM’si için ikincil Azure bölgesine olağanüstü durum kurtarma ayarlama        
 
@@ -28,24 +28,26 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com ) adresinden Azure portalında oturum açın.
+https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure VM için çoğaltmayı etkinleştirme
 
-1. Azure portalında, **Sanal makineler** seçeneğine tıklayın ve çoğaltmak istediğiniz VM’yi seçin.
-2. **İşlemler** menüsünde **Olağanüstü durum kurtarma** seçeneğine tıklayın.
-3. **Olağanüstü durumdan kurtarma yapılandırma** > **Hedef bölge** bölümünde, çoğaltma yapacağınız hedef bölgeyi seçin.
+1. Azure portal menüsünde, **sanal makineler**' i seçin veya herhangi bir sayfada *sanal makineler* arayın ve seçin. Çoğaltmak istediğiniz VM 'yi seçin.
+2. **İşlemler** menüsünden **Olağanüstü durum kurtarma** seçeneğini belirleyin.
+3. **Olağanüstü durum kurtarmayı yapılandır** > **Hedef bölge** bölümünde, çoğaltmak istediğiniz hedef bölgeyi seçin.
 4. Bu Hızlı Başlangıç için, diğer varsayılan ayarları kabul edin.
-5. **Çoğaltmayı etkinleştir**’e tıklayın. Bu, sanal makineye yönelik çoğaltmayı etkinleştirmek için bir iş başlatır.
+5. **Gözden geçir + çoğaltmayı Başlat**' ı seçin. Ardından, sanal makine için çoğaltmayı etkinleştirmek üzere bir iş başlatmak üzere **çoğaltmayı Başlat** ' ı seçin.
 
-    ![çoğaltmayı etkinleştir](media/azure-to-azure-quickstart/enable-replication1.png)
+    ![çoğaltmayı etkinleştirme](media/azure-to-azure-quickstart/enable-replication1.png)
 
 ## <a name="verify-settings"></a>Ayarları doğrulama
 
 Çoğaltma işlemi bittikten sonra, çoğaltma durumunu denetleyebilir, çoğaltma ayarlarını değiştirebilir ve dağıtımı test edebilirsiniz.
 
-1. **İşlemler** menüsünde **Olağanüstü durum kurtarma** seçeneğine tıklayın.
-2. Çoğaltma durumunu, oluşturulan kurtarma noktalarını ve haritadaki kaynak ve hedef bölgelerini doğrulayabilirsiniz.
+1. Azure portal menüsünde, **sanal makineler**' i seçin veya herhangi bir sayfada *sanal makineler* arayın ve seçin. Doğrulamak istediğiniz VM 'yi seçin.
+2. **İşlemler** menüsünden **Olağanüstü durum kurtarma** seçeneğini belirleyin.
+
+   Çoğaltma durumunu, oluşturulan kurtarma noktalarını ve haritadaki kaynak ve hedef bölgelerini doğrulayabilirsiniz.
 
    ![Çoğaltma durumu](media/azure-to-azure-quickstart/replication-status.png)
 
@@ -58,8 +60,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Çoğaltmayı aşağıdaki şekilde durdur
 
-1. VM’yi seçin.
-2. **Olağanüstü durum kurtarma** bölümünde **Çoğaltmayı devre dışı bırak**'a tıklayın.
+1. Azure portal menüsünde, **sanal makineler**' i seçin veya herhangi bir sayfada *sanal makineler* arayın ve seçin. Değiştirmek istediğiniz VM 'yi seçin.
+2. **Olağanüstü durum kurtarma**bölümünde **çoğaltmayı devre dışı bırak**' ı seçin.
 
    ![Çoğaltmayı devre dışı bırakma](media/azure-to-azure-quickstart/disable2-replication.png)
 

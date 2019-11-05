@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Power BI etkileşimli sorgu Hive verilerini görselleştirin
+title: Azure HDInsight 'ta Power BI etkileşimli sorgu Hive verilerine bakın
 description: Azure HDInsight 'tan etkileşimli sorgu Hive verilerini görselleştirmek için Microsoft Power BI kullanma
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123030"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467143"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI ile etkileşimli sorgu Apache Hive verilerini görselleştirme
 
-Bu makalede, Microsoft Power BI 'yi Azure HDInsight etkileşimli sorgu kümelerine bağlama ve doğrudan sorgu kullanarak Apache Hive verileri görselleştirme açıklanır. Belirtilen örnek, verileri bir `hivesampletable` Hive tablosundan Power BI yükler. `hivesampletable` Hive tablosu bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
+Bu makalede, Microsoft Power BI 'yi Azure HDInsight etkileşimli sorgu kümelerine bağlama ve doğrudan sorgu kullanarak Apache Hive verileri görselleştirme açıklanır. Belirtilen örnek, verileri bir `hivesampletable` Hive tablosundan Power BI için yükler. `hivesampletable` Hive tablosu, bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
 
 ![Eşleme raporu Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -35,7 +35,7 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
 1. Power BI Desktop başlatın.
 
-2. Menü çubuğundan **ana** > **veri** > Al**daha fazla...** seçeneğine gidin.
+2. Menü çubuğundan **Home** > **veri al** > **daha fazla...** seçeneğine gidin.
 
     ![HDInsight Power BI verileri daha fazla al](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
@@ -49,7 +49,7 @@ Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
     |Özellik | Değer |
     |---|---|
-    |Sunucusu |Küme adını girin, örneğin *myiqcluster.azurehdinsight.net*.|
+    |Sunucu |Küme adını girin, örneğin *myiqcluster.azurehdinsight.net*.|
     |Database |Bu makale için **varsayılan** girin.|
     |Veri bağlantısı modu |Bu makale için **DirectQuery** 'yi seçin.|
 

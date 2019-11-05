@@ -6,17 +6,21 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 08/14/2019
-ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555437"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477411"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Kapsayıcılar için Azure Izleyici sık sorulan sorular
 
 Bu Microsoft SSS, kapsayıcılar için Azure Izleyici hakkında sık sorulan sorulardan oluşan bir listesidir. Çözümle ilgili başka sorularınız varsa, [tartışma forumuna](https://feedback.azure.com/forums/34192--general-feedback) gidin ve sorularınızı gönderin. Bir soru sıkça sorulduğunda, hızlı ve kolay bir şekilde bulunabilmesi için bu makaleye ekleyeceğiz.
+
+## <a name="can-i-view-metrics-collected-in-grafana"></a>Grafana ' de toplanan ölçümleri görüntüleyebilir miyim?
+
+Kapsayıcılar için Azure Izleyici, Grafana panolar içinde Log Analytics çalışma alanınızda depolanan ölçümlerin görüntülenmesini destekler. Grafana 'in [Pano deposundan](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) indirebileceğiniz bir şablon sağladık. bu şekilde, izlenen kümelerinizdeki ek verileri nasıl sorgulacağınızı ve özel Grafana kesik baords 'de görselleştirmeyi öğreneceksiniz. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>AKS-Engine kümenizi kapsayıcılar için Azure Izleyici ile izleyebilir miyim?
 
@@ -72,20 +76,15 @@ Soruna ilişkin ayrıntılı bir bakış için aşağıdaki [GitHub bağlantıs�
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Canlı günlükleri etkinleştirdiğimde Azure AD hatalarını Nasıl yaparım? çözün misiniz? 
 
-Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' < Uygulama kimliği \> '** . Çözümü çözecek çözüm, [kapsayıcılar Için Azure izleyici ile kapsayıcı günlüklerinin gerçek zamanlı olarak nasıl görüntüleneceği](container-insights-live-logs.md#configure-aks-with-azure-active-directory)makalesinde bulunabilir. 
+Şu hatayı görebilirsiniz: **istekte belirtilen yanıt URL 'si, uygulama için yapılandırılan yanıt URL 'leriyle eşleşmiyor: ' < Uygulama kimliği\>'** . Çözümü çözecek çözüm, [kapsayıcılar Için Azure izleyici ile kapsayıcı verilerinin gerçek zamanlı olarak nasıl görüntüleneceği](container-insights-livedata-setup.md#configure-ad-integrated-authentication)makalesinde bulunabilir. 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Ekleme işleminden sonra kümeyi neden yükseltemiyorum?
 
 Bir AKS kümesi için Azure Izleyicisini etkinleştirdikten sonra, kümenin verilerini gönderdiği Log Analytics çalışma alanını sildiğinizde, kümeyi yükseltmeye çalışırken başarısız olur. Bu sorunu geçici olarak çözmek için, izlemeyi devre dışı bırakmanız ve ardından aboneliğinizdeki farklı bir geçerli çalışma alanına başvuruda bulunan yeniden etkinleştirmeniz gerekir. Küme yükseltmesini yeniden gerçekleştirmeye çalıştığınızda, başarıyla işlemeli ve tamamlanmalıdır.  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Aracı için hangi bağlantı noktalarına ve etki alanlarına açık/beyaz listeye ihtiyacım var?
-- *. ods.opinsights.azure.com 443
-- *. oms.opinsights.azure.com 443
-- *. blob.core.windows.net 443
-- dc.services.visualstudio.com 443
-- *. microsoftonline.com 443
-- *. monitoring.azure.com 443
-- login.microsoftonline.com 443
+
+Azure, Azure ABD kamu ve Azure Çin bulutları ile Kapsayıcılı aracı için gereken ara sunucu ve güvenlik duvarı yapılandırma bilgileri için [ağ güvenlik duvarı gereksinimlerine](container-insights-onboard.md#network-firewall-requirements) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494521"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesi için bilinen sorunlar
 
@@ -32,7 +32,7 @@ Sorunu geçici olarak çözmek için aşağıdaki yordamı kullanın:
 
         yarn application –list
 
-    İşlerin açık adı olmayan bir etkileşimli oturumla başlatılmış olması halinde varsayılan iş adları kesin olur. [Jupyter Notebook](https://jupyter.org/)tarafından başlatılan bir oturum için iş adı ile `remotesparkmagics_*`başlar.
+    İşlerin açık adı olmayan bir etkileşimli oturumla başlatılmış olması halinde varsayılan iş adları kesin olur. [Jupyter Notebook](https://jupyter.org/)tarafından başlatılan bir oturum için iş adı `remotesparkmagics_*`başlar.
 
 3. Bu işleri sonlandırmak için aşağıdaki komutu çalıştırın.
 
@@ -81,17 +81,17 @@ Jupyter Not defteri dosya adlarında ASCII olmayan karakterler kullanmayın. ASC
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Daha büyük boyutlarda Not defterleri yüklenirken hata oluştu
 
-Bir hata görebilirsiniz **`Error loading notebook`** yükü olduğunda daha büyük boyutta olan dizüstü bilgisayarlar.  
+Boyutu daha büyük olan not defterlerini yüklerken **`Error loading notebook`** bir hata görebilirsiniz.  
 
 **Mayı**
 
-Bu hatayı alırsanız, verileriniz bozuk veya kayıp anlamına gelmez.  Not defterleriniz hala üzerinde disk `/var/lib/jupyter`üzerinde kalır ve bunlara erişmek için kümeye SSH ekleyebilirsiniz. Bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Bu hatayı alırsanız, verileriniz bozuk veya kayıp anlamına gelmez.  Not defterleriniz hala `/var/lib/jupyter`diskte kalır ve bunlara erişmek için kümeye SSH ekleyebilirsiniz. Bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 SSH kullanarak kümeye bağlandıktan sonra, Not defterinizdeki önemli verilerin kaybolmasını engellemek için not defterlerinizi kümenizdeki yerel makinenize (SCP veya WinSCP kullanarak) bir yedekleme olarak kopyalayabilirsiniz. Daha sonra, bağlantı noktası 8001 ' de, ağ geçidine geçmeden jupi 'ye erişmek için bağlantı düğümünüz için SSH tünelini kullanabilirsiniz.  Buradan, dizüstü bilgisayarınızın çıktısını temizleyebilir ve Not defterinin boyutunu en aza indirmek için yeniden kaydedebilirsiniz.
 
 Bu hatanın gelecekte oluşmasını engellemek için bazı en iyi yöntemleri izlemeniz gerekir:
 
-* Not defteri boyutunun küçük tutulması önemlidir. Jupyter 'a geri gönderilen Spark işlerinizin tüm çıktıları not defterinde kalıcıdır.  Büyük RDD 'ler veya veri çerçeveleri üzerinde çalışmayı `.collect()` önlemek için genel olarak jupi ile ilgili en iyi uygulamadır. bunun yerine, bir RDD 'nin içeriğine gözatmak istiyorsanız `.take()` veya çıktınızın çok büyük olmaması için veya `.sample()` kullanmayı düşünün.
+* Not defteri boyutunun küçük tutulması önemlidir. Jupyter 'a geri gönderilen Spark işlerinizin tüm çıktıları not defterinde kalıcıdır.  Büyük RDD 'ler veya veri çerçeveleri üzerinde `.collect()` çalıştırmanın önüne geçmek için genel olarak jupi ile en iyi uygulamadır. Bunun yerine, bir RDD 'nin içeriğine gözatmak istiyorsanız, çıktınızın çok büyük olmaması için `.take()` veya `.sample()` çalıştırmayı deneyin.
 * Ayrıca, bir not defterini kaydettiğinizde, boyutu azaltmak için tüm çıkış hücrelerini temizleyebilirsiniz.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Not defteri ilk başlatması beklenenden uzun sürüyor
@@ -117,13 +117,13 @@ Spark kümesi kaynak dışı olduğunda, Jupyter Not defteri 'ndeki Spark ve PyS
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Bakýþ Azure HDInsight üzerinde Apache Spark](apache-spark-overview.md)
+* [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [BI ile Apache Spark: Bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
-* [Machine Learning Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning Apache Spark: Yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Uygulamaları oluşturma ve çalıştırma

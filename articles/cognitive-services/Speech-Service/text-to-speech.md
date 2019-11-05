@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d12b952d298b41c8d06f0fcac141a45749de9051
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799950"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468669"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
 Azure konuşma hizmetlerinden gelen metin okuma, uygulamalarınızın, araçların veya cihazların metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesini sağlayan bir hizmettir. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve 4 dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Tam liste için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
-Metin okuma teknolojisi, içerik oluşturucularının kullanıcılarıyla farklı yollarla etkileşime geçmesini sağlar. Metin okuma, kullanıcılara içerik sesiyle etkileşime geçme seçeneği sunarak erişilebilirliği iyileştirebilir. Kullanıcının görsel bir biçimde, öğrenimi bir eğitim veya geliştirme sırasında gezinme bilgileri gerektirmesi durumunda, metinden konuşmaya, mevcut bir deneyimi iyileştirebilir. Ayrıca metin okuma, sesli botlar ve sanal Yardımcılar için de değerli bir eklentidir.
+Metin okuma teknolojisi, içerik oluşturucularının kullanıcılarıyla farklı yollarla etkileşime geçmesini sağlar. Metin okuma, kullanıcılara içerik sesiyle etkileşime geçme seçeneği sunarak erişilebilirliği iyileştirebilir. Kullanıcının görsel bir biçimde, öğrenimi bir eğitim veya geliştirme sırasında gezinme bilgileri gerektirmesi durumunda, metinden konuşmaya, mevcut bir deneyimi iyileştirebilir. Metin okuma, sesli botlar ve ses yardımcıları için de değerli bir eklentidir.
 
 
 XML tabanlı bir biçimlendirme dili olan konuşma sentezleme dili (SSML) özelliğinden yararlanarak, metin okuma hizmetini kullanan geliştiriciler giriş metninin sentezleştirilmiş konuşmaya nasıl dönüştürüleceğini belirtebilir. SSML ile, sıklık, telaffuz, konuşma oranı, hacim ve daha fazlasını ayarlayabilirsiniz. Daha fazla bilgi için bkz. [SSML](#speech-synthesis-markup-language-ssml).
@@ -34,7 +34,7 @@ Standart sesler Istatistiksel parametrik sen, ve/veya birleştirme birleştirme 
 
 Sinir sesleri, konuşulan dilde stres ve kullanım desenlerini eşleştirirken ve konuşma birimlerinin bir bilgisayar sesine çıkarılması halinde geleneksel metin okuma sistemlerinin sınırlarını aşmak için derin sinir ağlarını kullanır. Standart metin okuma, bağımsız modeller tarafından yönetilen ayrı bir dil analizine ve akustik tahmin adımlarına sahiptir ve bu da muffled Voice senile sonuçlanabilir. Sinir yetenekimiz, daha akıcı ve doğal bir ses elde eden daha hızlı bir tahmin ve ses senişçisi.
 
-Sinir sesleri, chatbots ve sanal yardımcılar ile daha doğal ve ilgi çekici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır.
+Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır.
 
 Sinir sesleri, nötr ve peynsuz gibi farklı stilleri destekler. Örneğin, Jessa (en-US) sesi, normal ve mutlu konuşmalar için en iyi duruma getirilmiş cheertam olarak konuşabilmektedir. Ses çıkışını, [konuşma birleştirme biçimlendirme dilini](speech-synthesis-markup.md)kullanarak ton, sıklık ve hız gibi ayarlayabilirsiniz. Kullanılabilir seslerin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
@@ -55,7 +55,7 @@ Metin okuma hizmetine gönderilen tüm metin girişlerinin SSML olarak yapıland
 Metin okuma hizmeti kullanılırken, noktalama, noktalama dahil olmak üzere her bir karakter için faturalandırılırsınız. SSML belgesinin kendisi faturalanabilir olsa da, metnin, alfabesine ve sıklık gibi bir şekilde konuşmaya dönüştürülmesini ayarlamak için kullanılan isteğe bağlı öğeler faturalanabilir karakter olarak sayılır. Faturalandırılabilir nelerin listesi aşağıda verilmiştir:
 
 * İsteğin SSML gövdesinde metin okuma hizmetine geçilen metin
-* @No__t-0 ve `<voice>` etiketleri dışında SSML biçimindeki istek gövdesinin metin alanı içindeki tüm biçimlendirmeler
+* `<speak>` ve `<voice>` etiketleri dışında SSML biçimindeki istek gövdesinin metin alanı içindeki tüm biçimlendirmeler
 * Harfler, noktalama, boşluk, sekme, biçimlendirme ve tüm beyaz boşluk karakterleri
 * Unicode 'da tanımlanan her kod noktası
 
@@ -70,14 +70,14 @@ Bu tabloda, metinden konuşmaya için temel özellikler listelenmektedir:
 
 | Kullanım örneği | SDK | REST |
 |----------|-----|------|
-| Metni konuşmaya dönüştürün. | Yes | Yes |
-| Ses uyarlama için veri kümelerini karşıya yükleyin. | Hayır | Evet @ no__t-0 |
-| Ses yazı tipi modelleri oluşturun ve yönetin. | Hayır | Evet @ no__t-0 |
-| Ses yazı tipi dağıtımları oluşturun ve yönetin. | Hayır | Evet @ no__t-0 |
-| Ses yazı tipi testleri oluşturun ve yönetin. | Hayır | Evet @ no__t-0 |
-| Abonelikleri yönetin. | Hayır | Evet @ no__t-0 |
+| Metni konuşmaya dönüştürün. | Evet | Evet |
+| Ses uyarlama için veri kümelerini karşıya yükleyin. | Hayır | Evet\* |
+| Ses yazı tipi modelleri oluşturun ve yönetin. | Hayır | Evet\* |
+| Ses yazı tipi dağıtımları oluşturun ve yönetin. | Hayır | Evet\* |
+| Ses yazı tipi testleri oluşturun ve yönetin. | Hayır | Evet\* |
+| Abonelikleri yönetin. | Hayır | Evet\* |
 
-\* *Bu hizmetler Cris.ai uç noktası kullanılarak kullanılabilir. Bkz. [Swagger başvurusu](https://westus.cris.ai/swagger/ui/index). Bu özel sesli eğitim ve yönetim API 'Leri, istekleri 5 saniyede 25 ' e sınırlayan azaltma uygular, ancak konuşma birleştirme API 'sinin kendisi için saniyede 200 istek sağlayan azaltma uygular. Kısıtlama gerçekleştiğinde ileti üstbilgileri aracılığıyla size bildirilir.*
+*Bu hizmetlere \*, Cris.ai uç noktası kullanılarak kullanılabilir. Bkz. [Swagger başvurusu](https://westus.cris.ai/swagger/ui/index). Bu özel sesli eğitim ve yönetim API 'Leri, istekleri 5 saniyede 25 ' e sınırlayan azaltma uygular, ancak konuşma birleştirme API 'sinin kendisi için saniyede 200 istek sağlayan azaltma uygular. Kısıtlama gerçekleştiğinde ileti üstbilgileri aracılığıyla size bildirilir.*
 
 ## <a name="get-started-with-text-to-speech"></a>Metin okuma ile çalışmaya başlama
 
@@ -87,25 +87,25 @@ Kodu, 10 dakikadan kısa bir süre içinde çalıştırmak için tasarlanan hız
 
 | Hızlı Başlangıç (SDK) | Platform | API başvurusu |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-text-to-speech-dotnetcore.md) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](quickstart-text-to-speech-csharp-uwp.md) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
-| [C#, Unity](quickstart-text-to-speech-csharp-unity.md) | Windows, Android | [Ata](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Ata](https://aka.ms/csspeech/cppref) |
-| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Ata](https://aka.ms/csspeech/cppref) |
-| [Java](quickstart-text-to-speech-java-jre.md) | Windows, Linux, macOS | [Ata](https://aka.ms/csspeech/javaref) |
-| [Java](quickstart-text-to-speech-java-android.md) | Android | [Ata](https://aka.ms/csspeech/javaref) |
-| [Objective-C](quickstart-text-to-speech-objectivec-macos.md) | macOS | [Ata](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](quickstart-text-to-speech-objectivec-ios.md) | iOS | [Ata](https://aka.ms/csspeech/objectivecref) |
-| [Swift](quickstart-text-to-speech-swift-macos.md) | macOS | [Ata](https://aka.ms/csspeech/objectivecref) |
-| [Swift](quickstart-text-to-speech-swift-ios.md) | iOS | [Ata](https://aka.ms/csspeech/objectivecref) |
-| [Python](quickstart-text-to-speech-python.md) | Pencere, Linux, macOS | [Ata](https://aka.ms/csspeech/pythonref) |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C#.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Ata](https://aka.ms/csspeech/csharpref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Ata](https://aka.ms/csspeech/cppref) |
+| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Ata](https://aka.ms/csspeech/cppref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows, Linux, macOS | [Ata](https://aka.ms/csspeech/javaref) |
+| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Ata](https://aka.ms/csspeech/javaref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Ata](https://aka.ms/csspeech/objectivecref) |
+| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Ata](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Ata](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Ata](https://aka.ms/csspeech/objectivecref) |
+| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Pencere, Linux, macOS | [Ata](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST hızlı başlangıç
 
 | Hızlı Başlangıç (REST) | Platform | API başvurusu |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Ata](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Ata](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Pencere, macOS, Linux | [Ata](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Pencere, macOS, Linux | [Ata](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 

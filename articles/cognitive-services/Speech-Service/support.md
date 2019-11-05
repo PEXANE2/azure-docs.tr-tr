@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558830"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468623"
 ---
 # <a name="support-and-help-options"></a>Destek ve yardım seçenekleri
 
@@ -37,7 +37,7 @@ Bilişsel hizmetler hakkında haberler bilişsel [Hizmetler blogu](https://azure
 
 [Sürüm notları](https://aka.ms/csspeech/whatsnew) , yeni bir sürüm kullanılabilir duruma geldiğinde güncelleştirilir. Notlar yeni özellikler, geliştirmeler ve hata düzeltmeleri hakkında bilgiler içerir.
 
-## <a name="search"></a>Ara
+## <a name="search"></a>Arama
 
 Belgelerinize, örneklere veya [Stack Overflow](https://www.stackoverflow.com) soruların veya örneklerde cevapdaki cevapları bulabilirsiniz.
 
@@ -55,7 +55,7 @@ Burada *{arama koşullarınız}* arama anahtar sözcüklerdir.
 
 Azure müşterileri Azure portal destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Birleşik Devletler kamu Azure portal](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow bir soru gönderin
@@ -64,14 +64,14 @@ Stack Overflow, geliştirmeyle ilgili sorular için tercih edilen kanaldır. Bu,
 
 Arama yoluyla sorununuz için bir yanıt bulamazsanız, Stack Overflow için yeni bir soru gönderin. Soruyu seçerken aşağıdaki etiketlerden birini kullanın:
 
-|Bileşen/alan  |Tags  |
+|Bileşen/alan  |Etiketler  |
 |---------|---------|
 |Konuşma Tanıma |[[Microsoft-bilişsel + konuşmayı metne]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Konuşma Senşü |[[Microsoft-bilişsel + metinden konuşmaya]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
 |Konuşma Çevirisi |[[Microsoft-bilişsel + çeviri]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Konuşma hedefi |[[Microsoft-bilişsel + lu,]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |Genel konuşma SDK 'Sı |[[Microsoft-bilişsel + Microsoft-Speech-API]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Ses-ilk sanal yardımcılar (Önizleme) | [[Microsoft-bilişsel + sanal-yardımcı + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+|Ses yardımcıları | [[Microsoft-bilişsel + sanal-yardımcı + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Stack Overflow 'den aşağıdaki gönderiler, soruların nasıl ayarlanacağını ve kaynak kodu nasıl ekleneceğini gösteren ipuçları içerir. Bu yönergelerin ardından, topluluk üyelerinin sorunuzu hızla değerlendirmesi ve yanıtlaması ihtimalini artırmaya yardımcı olabilirsiniz:  

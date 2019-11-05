@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242231"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470079"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -322,11 +322,24 @@ Daha fazla bilgi için bkz. [OWASP Top-10 güvenlik açıkları](https://www.owa
 
 ### <a name="does-waf-support-ddos-protection"></a>WAF, DDoS korumasını destekliyor mu?
 
-Evet. DDoS korumasını, uygulama ağ geçidinin dağıtıldığı sanal ağ üzerinde etkinleştirebilirsiniz. Bu ayar, Azure DDoS Koruması hizmetinin Application Gateway sanal IP 'yi (VIP) de korumasını sağlar.
+Evet. Uygulama ağ geçidinin dağıtıldığı sanal ağda DDoS korumasını etkinleştirebilirsiniz. Bu ayar, Azure DDoS Koruması hizmetinin uygulama ağ geçidi sanal IP'sini de (VIP) korumasını sağlar.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>V1 SKU 'sunda v2 SKU 'suna geçiş yapmak için kullanılabilecek bir kılavuz var mı?
 
 Evet. Ayrıntılar için bkz: [Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme](migrate-v1-v2.md).
+
+## <a name="configuration---ingress-controller-for-aks"></a>AKS için yapılandırma girişi denetleyicisi
+
+### <a name="what-is-an-ingress-controller"></a>Giriş denetleyicisi nedir?
+
+Kubernetes `deployment` ve `service` kaynak oluşturulmasına olanak tanır. Aynı hizmeti dışarıdan göstermek için, Yük Dengeleme, SSL sonlandırma ve ad tabanlı sanal barındırma sağlayan bir [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) kaynağı tanımlanmıştır.
+Bu `Ingress` kaynağını karşılamak için, `Ingress` kaynaklarında yapılan herhangi bir değişikliği dinleyen ve yük dengeleyici ilkelerini yapılandıran bir giriş denetleyicisi gerekir.
+
+Application Gateway giriş denetleyicisi, [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) 'nin bir aks kümesi olarak da bilinen bir [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) için giriş olarak kullanılmasına izin verir.
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Tek bir giriş denetleyicisi örneği birden çok uygulama ağ geçidini yönetebilir mi?
+
+Şu anda bir giriş denetleyicisi örneği yalnızca bir Application Gateway ilişkilendirilebilir.
 
 ## <a name="diagnostics-and-logging"></a>Tanılama ve günlüğe kaydetme
 

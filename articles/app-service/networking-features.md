@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 950818d08cb654bad969deaede24231cab9bcbe2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098567"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470266"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -34,7 +34,7 @@ Azure App Service dağıtılmış bir sistemdir. Gelen HTTP/HTTPS isteklerini i�
 | Gelen özellikler | Giden Özellikler |
 |---------------------|-------------------|
 | Uygulama tarafından atanan adres | Karma Bağlantılar |
-| Erişim Kısıtlamaları | Ağ Geçidi gerekli VNet tümleştirmesi |
+| Erişim kısıtlamaları | Ağ Geçidi gerekli VNet tümleştirmesi |
 | Hizmet Uç Noktaları | VNet tümleştirmesi (Önizleme) |
 
 Aksi belirtilmedikçe tüm özellikler birlikte kullanılabilir. Çeşitli sorunlarınızı çözümlemek için özellikleri karıştırabilirsiniz.
@@ -45,12 +45,12 @@ Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir.  Ku
  
 | Gelen kullanım örnekleri | Özellik |
 |---------------------|-------------------|
-| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | uygulama tarafından atanan adres |
-| Paylaştırılmamış, uygulamanız için adanmış gelen adres | uygulama tarafından atanan adres |
-| Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın | Erişim Kısıtlamaları |
-| Uygulamamı sanal ağım içindeki özel IP 'lerde kullanıma sunun | ILB ATICI </br> Hizmet uç noktaları ile Application Gateway |
-| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet Uç Noktaları </br> ILB ATICI |
-| Uygulamamın sanal ağı 'nda özel bir IP 'de kullanıma sunulması | ILB ATICI </br> hizmet uç noktalarına sahip bir Application Gateway gelen için özel IP |
+| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | Uygulama tarafından atanan adres |
+| Paylaştırılmamış, uygulamanız için adanmış gelen adres | Uygulama tarafından atanan adres |
+| Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın | Erişim kısıtlamaları |
+| Uygulamamı sanal ağım içindeki özel IP 'lerde kullanıma sunun | ıLB ATıCı </br> Hizmet uç noktaları ile Application Gateway |
+| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet Uç Noktaları </br> ıLB ATıCı |
+| Uygulamamın sanal ağı 'nda özel bir IP 'de kullanıma sunulması | ıLB ATıCı </br> hizmet uç noktalarına sahip bir Application Gateway gelen için özel IP |
 | Bir WAF ile uygulamamı koruyun | Application Gateway + ıLB Ao </br> Hizmet uç noktaları ile Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
 | Farklı bölgelerde uygulamalarıma trafik yükünü dengelemek | Erişim kısıtlamalarına sahip Azure ön kapısı | 
 | Aynı bölgedeki Yük Dengeleme trafiği | Hizmet uç noktaları ile Application Gateway | 
@@ -89,11 +89,11 @@ Uygulama tarafından atanan bir adres kullandığınızda, trafiğiniz hala App 
 
 [IP tabanlı SSL 'Yi yapılandırma][appassignedaddress]öğreticisiyle uygulamanızda bir adresin nasıl ayarlanacağını öğrenebilirsiniz. 
 
-### <a name="access-restrictions"></a>Erişim Kısıtlamaları 
+### <a name="access-restrictions"></a>Erişim kısıtlamaları 
 
 Erişim kısıtlamaları özelliği, **gelen** istekleri, özgün IP adresine göre filtrelemenize olanak sağlar. Filtre eylemi, uygulamalarınızın çalıştırıldığı yerden yukarı akış olan ön uç rolleri üzerinde gerçekleşir. Ön uç rolleri çalışanlardan yukarı akış olduğundan, erişim kısıtlamaları özelliği uygulamalarınız için ağ düzeyinde koruma olarak kabul edilebilir. Özelliği, öncelik sırasına göre değerlendirilen izin verme ve reddetme adres bloklarının bir listesini oluşturmanızı sağlar. Azure ağı 'nda bulunan ağ güvenlik grubu (NSG) özelliğine benzer.  Bu özelliği bir ate veya çok kiracılı hizmette kullanabilirsiniz. ILB Ao ile birlikte kullanıldığında, erişimi özel adres bloklarından kısıtlayabilirsiniz.
 
-![Erişim Kısıtlamaları](media/networking-features/access-restrictions.png)
+![Erişim kısıtlamaları](media/networking-features/access-restrictions.png)
 
 Erişim kısıtlamaları özelliği, uygulamanıza ulaşmak için kullanılabilecek IP adreslerini kısıtlamak istediğiniz senaryolarda yardımcı olur. Bu özellik için kullanım örnekleri arasında:
 
@@ -222,7 +222,7 @@ Bu dağıtım stili size internet 'e giden trafik için özel bir adres vermeyeb
 Birden çok ön uç uygulamanız, API uygulamasındaki diğer ön uç uygulamalardan ve hizmet uç noktalarından, alt ağları ile aynı API uygulamasını kullanarak aynı API uygulamasını kullanabilir.  
 
 <!--Links-->
-[appassignedaddress]: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
 [iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
 [hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections

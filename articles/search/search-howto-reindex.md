@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793718"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466451"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinini yeniden oluşturma
 
@@ -46,7 +46,7 @@ Diğer herhangi bir değişiklik, mevcut fiziksel yapıları etkilemeden yapıla
 
 Yeni bir alan eklediğinizde, var olan dizinli belgelere yeni alan için null değer verilir. Gelecekteki bir veri yenilemesinde, dış kaynak verilerinden alınan değerler Azure Bilişsel Arama tarafından eklenen null değerleri değiştirir. Dizin içeriğini güncelleştirme hakkında daha fazla bilgi için bkz. [belge ekleme, güncelleştirme veya silme](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="partial-or-incremental-indexing"></a>Kısmi veya artımlı dizin oluşturma
+## <a name="partial-indexing"></a>Kısmi dizin oluşturma
 
 Azure Bilişsel Arama ' de, alan temelinde Dizin oluşturmayı denetleyemezsiniz, belirli alanları silmeyi veya yeniden oluşturmayı seçebilirsiniz. Benzer şekilde, [ölçütlere göre belgeleri dizine alma](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents)için yerleşik bir mekanizma yoktur. Ölçüt temelli dizin oluşturma için sahip olduğunuz tüm gereksinimlere özel kod aracılığıyla ulaşılması gerekir.
 

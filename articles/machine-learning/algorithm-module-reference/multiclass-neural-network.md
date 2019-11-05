@@ -1,24 +1,24 @@
 ---
 title: 'Birden çok Lass sinir ağı: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Birden fazla değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning hizmetinde çok Lass sinir ağ modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Birden fazla değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning ' de çok Lass sinir ağ modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692716"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466040"
 ---
 # <a name="multiclass-neural-network-module"></a>Birden çok Lass sinir ağ modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Birden çok değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için bu modülü kullanın. 
 
@@ -40,7 +40,7 @@ Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlar
 
 ## <a name="configure-multiclass-neural-network"></a>Birden çok Lass sinir ağını yapılandırma
 
-1. Arabirim içindeki işlem hattınızı çoklu **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı çoklu **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.
 
 2. **Eğitmen modu oluşturma**: modelin nasıl eğitilme etmek istediğinizi belirtmek için bu seçeneği kullanın:
 
@@ -93,4 +93,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

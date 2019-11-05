@@ -1,24 +1,24 @@
 ---
 title: 'Birden çok Lass Lojistik gerileme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Birden fazla değeri tahmin etmek için kullanılabilecek bir lojistik regresyon modeli oluşturmak için Azure Machine Learning hizmetinde çok Lass lojistik regresyon modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Birden fazla değeri tahmin etmek için kullanılabilecek bir lojistik regresyon modeli oluşturmak için Azure Machine Learning içinde çok Lass lojistik regresyon modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: d31329d6d45fd9f137bd6d57a638915e0833ee4a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692751"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465971"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Birden çok Lass lojistik regresyon modülü
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Birden çok değeri tahmin etmek için kullanılabilecek bir lojistik regresyon modeli oluşturmak için bu modülü kullanın.
 
@@ -67,4 +67,4 @@ Eğitim tamamlandıktan sonra, modellerden öğrenilen Özellik ağırlıkların
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

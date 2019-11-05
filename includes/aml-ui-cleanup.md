@@ -7,16 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 10/16/2019
-ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5a66212122745d0f4426e48e9487e9d674cec53f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489939"
 ---
 >[!IMPORTANT]
->Diğer Azure Machine Learning hizmet öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
+>Diğer Azure Machine Learning öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
 
 ### <a name="delete-everything"></a>Her şeyi sil
 
@@ -32,7 +32,7 @@ Oluşturduğunuz herhangi bir şeyi kullanmayı planlamıyorsanız, herhangi bir
 
 1. **Kaynak grubunu sil**'i seçin.
 
-Kaynak grubu silindiğinde, görsel arabirimde oluşturduğunuz tüm kaynaklar da silinir.  
+Kaynak grubunun silinmesi, tasarımcıda oluşturduğunuz tüm kaynakları da siler.  
 
 ### <a name="delete-only-the-compute-target"></a>Yalnızca işlem hedefini Sil
 
@@ -48,6 +48,12 @@ Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfı
 
 ### <a name="delete-individual-assets"></a>Tek tek varlıkları Sil
 
-Denemenizi oluşturduğunuz görsel arabirimde, her bir varlığı seçerek ve ardından **Sil** düğmesini seçerek tek tek varlıkları silin. Veri kümelerinin her bir veri kümesini seçip **kayıt Sil**' i seçerek çalışma alanınızdan kaydı yapılabilir.
+Denemenizi oluşturduğunuz tasarımcıda, her bir varlığı seçerek ve ardından **Sil** düğmesini seçerek tek tek varlıkları silin.
 
 ![Varlıkları Sil](./media/aml-ui-cleanup/delete-asset.png)
+
+Veri kümelerinin her bir veri kümesini seçip **kayıt Sil**' i seçerek çalışma alanınızdan kaydı yapılabilir.
+
+![Veri kümesinin kaydını sil](./media/aml-ui-cleanup/unregister-dataset.png)
+
+

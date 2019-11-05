@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Xamarin ile ToDo uygulaması oluşturma'
+title: 'Azure Cosmos DB: Xamarin ile todo uygulaması derleme'
 description: Azure Cosmos DB'ye bağlanmak ve veritabanını sorgulamak için kullanabileceğiniz bir Xamarin kod örneği sunar
 author: codemillmatt
 ms.service: cosmos-db
@@ -8,22 +8,22 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615745"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466314"
 ---
-# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı Başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
+# <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Hızlı başlangıç: Azure Cosmos DB SQL API hesabı kullanarak Xamarin ile ToDo uygulaması oluşturma
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz.
 
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak Azure Cosmos DB bir SQL API h
 
 Windows üzerinde geliştirme yapıyorsanız ve henüz Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirme** ve **.NET ile Mobil Dağıtım** iş yüklerini etkinleştirdiğinizden emin olun.
 
-Mac kullanıyorsanız, [Mac için Visual Studio](https://www.visualstudio.com/vs/mac/)’yu **ücretsiz** olarak indirebilirsiniz.
+Mac kullanıyorsanız, **Mac için Visual Studio**’yu [ücretsiz](https://www.visualstudio.com/vs/mac/) olarak indirebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -61,7 +61,7 @@ Mac kullanıyorsanız, [Mac için Visual Studio](https://www.visualstudio.com/vs
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi Xamarin SQL API uygulamasını GitHub 'dan kopyalayalım, kodu gözden geçirin, API anahtarlarını edinin ve çalıştırın. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz.
+Şimdi Xamarin SQL API uygulamasını GitHub 'dan kopyalayalım, kodu gözden geçirin, API anahtarlarını edinin ve çalıştırın. Verilerle programlı bir şekilde çalışmanın ne kadar kolay olduğunu göreceksiniz.
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -111,26 +111,26 @@ Bu çözüm, Azure Cosmos DB SQL API ve Xamarin.Forms kullanarak bir ToDo uygula
 
 ToDoItems çözümündeki kod şunları içerir:
 
-* Todoıtems. Core: Bu, Azure Cosmos DB içindeki Todo öğelerini tutan bir Xamarin. Forms projesi ve paylaşılan uygulama mantığı kodu tutan bir .NET Standard projem.
-* Todoıtems. Android: Bu proje Android uygulamasını içerir.
-* Todoıtems. iOS: Bu proje iOS uygulamasını içerir.
+* ToDoItems.Core: Azure Cosmos DB’de todo öğelerini sürdüren bir paylaşılan uygulama mantığı ve bir Xamarin.Forms projesi içeren .NET Standard projesidir.
+* ToDoItems.Android: Bu proje Android uygulamasını içerir.
+* ToDoItems.iOS: Bu proje iOS uygulamasını içerir.
 
 Şimdi uygulamanın Azure Cosmos DB ile nasıl iletişim kurduğuna hızlıca göz atalım.
 
 * [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) NuGet paketinin tüm projelere eklenmesi gerekir.
-* Azure-DocumentDB-DotNet/Samples/Xamarin/todoıtems/todoıtems. Core/modeller klasöründeki sınıf,yukarıdaoluşturulanöğekapsayıcısındakibelgelerimodelleyen`ToDoItem` . Özellik adlarının büyük/küçük harfe duyarlı olduğunu unutmayın.
+* Azure-DocumentDB-DotNet/Samples/Xamarin/Todoıtems/Todoıtems. Core/modeller klasöründeki `ToDoItem` sınıfı, yukarıda oluşturulan **öğe** kapsayıcısındaki belgeleri modelledir. Özellik adlarının büyük/küçük harfe duyarlı olduğunu unutmayın.
 * azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services klasöründeki `CosmosDBService` sınıfı, Azure Cosmos DB ile iletişimi kapsüller.
-* `CosmosDBService` sınıfında bir `DocumentClient` tür değişkeni bulunur. , `DocumentClient` Azure Cosmos DB hesabına karşı istekleri yapılandırmak ve yürütmek için kullanılır ve örneği oluşturulur:
+* `CosmosDBService` sınıfında bir `DocumentClient` tür değişkeni bulunur. `DocumentClient`, Azure Cosmos DB hesabına göre istekleri yapılandırmak ve yürütmek için kullanılır ve örneği oluşturulur:
 
     ```csharp
     docClient = new DocumentClient(new Uri(APIKeys.CosmosEndpointUrl), APIKeys.CosmosAuthKey);
     ```
 
-* Belgeler için bir kapsayıcı sorgulanırken, `DocumentClient.CreateDocumentQuery<T>` yöntemi `CosmosDBService.GetToDoItems` işlevinde görüldüğü gibi kullanılır:
+* Belgeler için bir kapsayıcı sorgulanırken, `CosmosDBService.GetToDoItems` işlevinde görüldüğü gibi `DocumentClient.CreateDocumentQuery<T>` yöntemi kullanılır:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
 
-    , `CreateDocumentQuery<T>` Önceki bölümde oluşturulan kapsayıcıyı işaret eden bir URI alır. Ayrıca, bir `Where` yan tümcesi gibi LINQ işleçleri belirtebilirsiniz. Bu durumda yalnızca tamamlanmamış todo öğeleri döndürülür.
+    `CreateDocumentQuery<T>`, önceki bölümde oluşturulan kapsayıcıyı işaret eden bir URI alır. Ayrıca, bir `Where` yan tümcesi gibi LINQ işleçleri belirtebilirsiniz. Bu durumda yalnızca tamamlanmamış todo öğeleri döndürülür.
 
     `CreateDocumentQuery<T>` işlevi zaman uyumlu olarak yürütülür ve bir `IQueryable<T>` döndürür. Ancak, `AsDocumentQuery` yöntemi `IQueryable<T>` değerini zaman uyumsuz olarak yürütülebilen bir `IDocumentQuery<T>` nesnesine dönüştürür. Böylece, mobil uygulamalar için kullanıcı arabirimi iş parçacığı engellenmez.
 
@@ -139,25 +139,25 @@ ToDoItems çözümündeki kod şunları içerir:
 > [!TIP]
 > Azure Cosmos kapsayıcılarında ve belgelerinde çalışan çeşitli işlevler, bir URI 'yi kapsayıcı veya belgenin adresini belirten bir parametre olarak alır. Bu URI `URIFactory` sınıfı kullanılarak oluşturulur. Veritabanları, kapsayıcılar ve belgelerin URI 'Leri bu sınıfla oluşturulabilir.
 
-* `ComsmosDBService.InsertToDoItem` İşlevi nasıl yeni bir belge ekleneceğini gösterir:
+* `ComsmosDBService.InsertToDoItem` işlevi nasıl yeni bir belge ekleneceğini gösterir:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
 
     Öğe URI 'sinin yanı sıra eklenecek öğe.
 
-* İşlevi `CosmosDBService.UpdateToDoItem` , var olan bir belgenin yeni bir belgenin nasıl değiştirileceğini gösterir:
+* `CosmosDBService.UpdateToDoItem` işlevi, var olan bir belgenin yeni bir belgenin nasıl değiştirileceğini gösterir:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
 
-    Burada, değiştirilecek belgeyi benzersiz bir şekilde tanımlamak için yeni bir URI gerekir ve kullanarak `UriFactory.CreateDocumentUri` , veritabanı ve kapsayıcı adları ve belgenin kimliği geçirerek elde edilir.
+    Burada, değiştirilecek belgeyi benzersiz bir şekilde tanımlamak için yeni bir URI gerekir ve `UriFactory.CreateDocumentUri` kullanarak elde edilir ve veritabanı ve kapsayıcı adlarını ve belge KIMLIĞINI geçirerek alınır.
 
     `DocumentClient.ReplaceDocumentAsync`, URI tarafından tanımlanan belgeyi parametre olarak belirtilen bir belgeyle değiştirir.
 
-* Bir öğeyi silme `CosmosDBService.DeleteToDoItem` işlevi ile gösterilmiştir:
+* Bir öğeyi silmek `CosmosDBService.DeleteToDoItem` işleviyle gösterilmiştir:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
 
-    Oluşturulan ve `DocumentClient.DeleteDocumentAsync` işleve geçirilen benzersiz belge URI 'sini yeniden aklınızda edin.
+    Daha sonra, oluşturulan ve `DocumentClient.DeleteDocumentAsync` işlevine geçirilen benzersiz belge URI 'sine göz önünde yer.
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 

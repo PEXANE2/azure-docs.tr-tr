@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/27/2018
-ms.openlocfilehash: ec75f607f707405d6a5bea98deb784f4306c04f1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 3d6ed3b13c134d8e9c1df72ae2cb880a477a803a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477039"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici sorunlarını giderme
 
@@ -25,7 +25,7 @@ Ekleme veya güncelleştirme işlemi sırasında, küme kaynağında **Izleme ö
 
 Ayrıca, aşağıdaki adımları uygulayarak bu rolü Azure portal el ile de verebilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Kubernetes**yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Azure Kubernetes**' i seçin.
 3. Kubernetes kümeleri listesinde, listeden bir tane seçin.
 2. Sol taraftaki menüden **erişim denetimi (IAM)** öğesine tıklayın.
@@ -106,10 +106,30 @@ Aşağıdaki tabloda, kapsayıcılar için Azure Izleyicisini kullanırken karş
 | Hata iletileri  | Eylem |  
 | ---- | --- |  
 | Hata Iletisi `No data for selected filters`  | Yeni oluşturulan kümeler için izleme veri akışı oluşturulması biraz zaman alabilir. Kümenizde verilerin görünmesi için en az 10 ila 15 dakika bekleyin. |   
-| Hata Iletisi `Error retrieving data` | Azure Kubenetes hizmet kümesi sistem durumu ve performans izleme için ayarlarken, küme ve Azure Log Analytics çalışma alanı arasında bir bağlantı oluşturulur. Log Analytics çalışma alanı, kümenizin tüm izleme verilerini depolamak için kullanılır. Bu hata, Log Analytics çalışma alanınız silindiğinde oluşabilir. Çalışma alanının silinip silinmediğini ve olup olmadığını denetleyin, Kapsayıcınız için Azure Izleyici ile kümenizi izlemeyi yeniden etkinleştirmeniz ve var olan veya yeni bir çalışma alanı oluşturmanız gerekir. Yeniden etkinleştirmek için, küme için izlemeyi [devre dışı bırakmanız](container-insights-optout.md) ve kapsayıcılar Için Azure izleyicisini yeniden [etkinleştirmeniz](container-insights-enable-new-cluster.md) gerekir. |  
-| az aks CLI aracılığıyla kapsayıcılar için Azure Izleyici eklendikten sonra `Error retrieving data` | @No__t_0 kullanarak izlemeyi etkinleştirdiğinizde, kapsayıcılar için Azure Izleyici düzgün şekilde dağıtılamaz. Çözümün dağıtılıp dağıtılmadığını denetleyin. Bunu yapmak için Log Analytics çalışma alanınıza gidin ve sol taraftaki bölmeden **çözümler** ' i seçerek çözümün kullanılabilir olup olmadığını görün. Bu sorunu çözmek için, [kapsayıcılar Için Azure izleyicisini dağıtma](container-insights-onboard.md) yönergelerini izleyerek çözümü yeniden dağıtmanız gerekir |  
+| Hata Iletisi `Error retrieving data` | Azure Kubernetes hizmet kümesi sistem durumu ve performans izleme için ayarlanırken, küme ve Azure Log Analytics çalışma alanı arasında bir bağlantı oluşturulur. Log Analytics çalışma alanı, kümenizin tüm izleme verilerini depolamak için kullanılır. Bu hata, Log Analytics çalışma alanınız silindiğinde oluşabilir. Çalışma alanının silinip silinmediğini ve olup olmadığını denetleyin, Kapsayıcınız için Azure Izleyici ile kümenizi izlemeyi yeniden etkinleştirmeniz ve var olan veya yeni bir çalışma alanı oluşturmanız gerekir. Yeniden etkinleştirmek için, küme için izlemeyi [devre dışı bırakmanız](container-insights-optout.md) ve kapsayıcılar Için Azure izleyicisini yeniden [etkinleştirmeniz](container-insights-enable-new-cluster.md) gerekir. |  
+| az aks CLI aracılığıyla kapsayıcılar için Azure Izleyici eklendikten sonra `Error retrieving data` | `az aks cli`kullanarak izlemeyi etkinleştirdiğinizde, kapsayıcılar için Azure Izleyici düzgün şekilde dağıtılamaz. Çözümün dağıtılıp dağıtılmadığını denetleyin. Bunu yapmak için Log Analytics çalışma alanınıza gidin ve sol taraftaki bölmeden **çözümler** ' i seçerek çözümün kullanılabilir olup olmadığını görün. Bu sorunu çözmek için, [kapsayıcılar Için Azure izleyicisini dağıtma](container-insights-onboard.md) yönergelerini izleyerek çözümü yeniden dağıtmanız gerekir |  
 
-Sorunu tanılamanıza yardımcı olması için [burada](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)bir sorun giderme betiği sunuyoruz.  
+Sorunu tanılamanıza yardımcı olması için [burada](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)bir sorun giderme betiği sunuyoruz.
+
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Kapsayıcılar için Azure Izleyici aracı ReplicaSet pods, Azure olmayan Kubernetes kümesinde zamanlanmadı
+
+Kapsayıcılar için Azure Izleyici aracı ReplicaSet pods, zamanlamaya ait çalışan (veya aracı) düğümlerinde aşağıdaki düğüm seçicilerini içeren bir bağımlılığa sahiptir:
+
+```
+nodeSelector:
+  beta.kubernetes.io/os: Linux
+  kubernetes.io/role: agent
+```
+
+Çalışan düğümlerinizde düğüm etiketleri ekli değilse, aracı ReplicaSet pods zamanlanmaz. Etiketi nasıl bağlayacağınız hakkında yönergeler için [Kubernetes etiket seçicileri atama](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) bölümüne bakın.
+
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Performans grafikleri, Azure olmayan bir kümede CPU veya düğüm ve kapsayıcıların belleğini göstermez
+
+Kapsayıcılar için Azure Izleyici aracı pods, performans ölçümlerini toplamak için düğüm aracısında Cadvizörü uç noktasını kullanır. Düğüm üzerindeki Kapsayıcılı aracının, performans ölçümlerini toplamak için kümedeki tüm düğümlerde `cAdvisor port: 10255` açılmasına izin verecek şekilde yapılandırıldığını doğrulayın.
+
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Azure olmayan Kubernetes kümesi kapsayıcılar için Azure Izleyici 'de gösterilmiyor
+
+Kapsayıcılar için Azure Izleyici 'de Azure Kubernetes kümesini görüntülemek için, bu Öngörüyi destekleyen Log Analytics çalışma alanında ve kapsayıcı öngörüleri çözüm kaynak **containerınsights (*çalışma alanı*)** üzerinde okuma erişimi gereklidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

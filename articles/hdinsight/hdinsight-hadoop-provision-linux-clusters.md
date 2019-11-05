@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop, Spark, Kafka, HBase veya R Server-Azure için küme kurulumu
+title: Azure HDInsight 'ta Apache ve R Server için küme kurulumu
 description: HDInsight için Hadoop, Kafka, Spark, HBase, R Server veya fırtınası kümelerini tarayıcıdan, klasik Azure CLı, Azure PowerShell, REST veya SDK 'dan ayarlayın.
 keywords: Hadoop kümesi kurulumu, Kafka küme kurulumu, Spark kümesi kurulumu, Hadoop 'da küme nedir?
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 28038743f859b1a41bb332bf70b481e07b2ff29c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498252"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight 'ta Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını içeren kümeler ayarlayın
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, bir HDInsight kümesi kurmak için kullanabileceğiniz far
 
 | İle oluşturulan kümeler | Web tarayıcısı | Komut satırı | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure portalda](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -100,13 +100,13 @@ HDInsight kümeleri ile, küme oluşturma sırasında iki kullanıcı hesabını
 HTTP Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
 * İzin verilen özel karakterler: _ ve @
-* Karakterlere izin verilmiyor: #;. "', \/: '! *? $ () {} [] < > | &--= +% ~ ^ boşluk
+* Karakterlere izin verilmiyor: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ boşluk
 * En fazla uzunluk: 20
 
 SSH Kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 
 * İzin verilen özel karakterler: _ ve @
-* Karakterlere izin verilmiyor: #;. "', \/: '! *? $ () {} [] < > | &--= +% ~ ^ boşluk
+* Karakterlere izin verilmiyor: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ boşluk
 * En fazla uzunluk: 64
 * Ayrılmış adlar: Hadoop, kullanıcılar, Oozie, Hive, mapred, ambarı-qa, Zookeeper, tez, Ise, Sqoop, Yarn, hcat, AMS, HBase, fırtınası, yönetici, yönetici, Kullanıcı, Kullanıcı1, test, kullanıcı2, test1, User3, admin1, 1, 123, a, ACTUser, adm, Admin2, ASPNET, Backup, Console, David, Konuk, John, Owner, root, Server, SQL, support, SUPPORT_388945a0, sys, test2, test3, User4, user5, Spark
 

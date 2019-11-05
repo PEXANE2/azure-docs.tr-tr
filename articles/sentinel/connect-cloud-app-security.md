@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6e71028855344d083dedf3493682e1e27685de48
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498662"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security verileri bağlama 
 
@@ -30,18 +30,22 @@ ms.locfileid: "71240118"
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip Kullanıcı
+- Azure Sentinel 'de Cloud Discovery günlüklerini akışa almak için, [Microsoft Cloud App Security olarak Azure Sentinel 'i etkinleştirin](aka.ms. https://aka.ms/AzureSentinelMCAS).
 
+> [!IMPORTANT]
+> Cloud Discovery günlüklerin alımı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+ 
 ## <a name="connect-to-cloud-app-security"></a>Cloud App Security Bağlan
 
 Zaten Cloud App Security varsa, [Ağınızda etkinleştirildiğinden](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)emin olun.
 Cloud App Security dağıtılırsa ve verileriniz geri alıyorsa, uyarı verileri kolayca Azure Sentinel 'e akışla eklenebilir.
 
 
-1. Azure Sentinel 'de **veri bağlayıcıları** ' nı seçin ve **Cloud App Security** kutucuğuna tıklayın.
+1. Azure Sentinel 'de **veri bağlayıcıları**' nı, **Cloud App Security** kutucuğunu ve **bağlayıcı sayfasını aç**' ı seçin.
 
-1. Azure Sentinel 'e hangi günlükleri aktarmak istediğinizi seçin, **Uyarılar**' ı seçebilirsiniz. 
-
-1. Microsoft Cloud App Security uyarıların otomatik olarak Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
+1. Azure Sentinel 'e hangi günlükleri aktarmak istediğinizi seçin, **Uyarılar** ve **Cloud Discovery günlükleri** (Önizleme) seçeneğini belirleyebilirsiniz. 
 
 1. **Bağlan**'a tıklayın.
 
@@ -53,4 +57,4 @@ Cloud App Security dağıtılırsa ve verileriniz geri alıyorsa, uyarı veriler
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede Microsoft Cloud App Security Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.

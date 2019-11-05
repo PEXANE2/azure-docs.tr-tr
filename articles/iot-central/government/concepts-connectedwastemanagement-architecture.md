@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 806b853b7d3a6291b576c0dde6cdc0b88beec4eb
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 2905a7ab7999c66bde0a705ff129fa049617df10
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027618"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498862"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Bağlı çöp izleme başvuru mimarisi 
 
@@ -33,7 +33,7 @@ Kavramlar:
 Genellikle su tüketim izleme çözümünde bir parçayı oynayan önemli bileşenlere göz atalım.
 
 ## <a name="devices-and-connectivity"></a>Cihazlar ve bağlantı 
-Çöp kutuları gibi açık ortamlarda kullanılan cihazlar genellikle düşük güç geniş alan ağları (LPWAN) aracılığıyla bir üçüncü taraf ağ operatörü aracılığıyla bağlanabilir. Bu tür cihazlarda, cihaz verilerinizi Azure IoT Central IoT uygulamanıza göndermek için [azure IoT Central cihaz köprüsünden](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge) yararlanabilirsiniz. Alternatif olarak, IP özellikli cihaz ağ geçitleriniz olabilir ve IoT Central doğrudan bağlanabilir.
+Çöp kutuları gibi açık ortamlarda kullanılan cihazlar genellikle düşük güç geniş alan ağları (LPWAN) aracılığıyla bir üçüncü taraf ağ operatörü aracılığıyla bağlanabilir. Bu tür cihazlarda, cihaz verilerinizi Azure IoT Central IoT uygulamanıza göndermek için [azure IoT Central cihaz köprüsünden](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) yararlanabilirsiniz. Alternatif olarak, IP özellikli cihaz ağ geçitleriniz olabilir ve IoT Central doğrudan bağlanabilir.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central, IoT çözümünüzde hızla çalışmaya başlamanızı sağlayan bir IoT uygulama platformudur. Çözümünüzü, üçüncü taraf hizmetlerle markalayabilmeniz, özelleştirebilir ve tümleştirebilirsiniz.
@@ -51,5 +51,5 @@ IoT verileri, bir çöp yardımcı programı dahilinde çeşitli iş uygulamalar
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Bağlı bir çöp yönetimi](./tutorial-connected-waste-management.md) IoT Central uygulaması oluşturmayı öğrenin
 * [IoT Central kamu şablonları](./overview-iot-central-government.md) hakkında daha fazla bilgi edinin
-* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
+* IoT Central hakkında daha fazla bilgi edinmek için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
 

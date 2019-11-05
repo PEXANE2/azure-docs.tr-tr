@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793537"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466526"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Azure Bilişsel Arama hizmetinizi PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ PowerShell, hizmetinizin adını, bölgesini veya katmanını değiştirmek içi
 
 PowerShell veya başka bir API aracılığıyla desteklenmeyen diğer görevler (yalnızca portal) şunları içerir:
 + [AI zenginleştirilmiş dizin oluşturma](cognitive-search-concept-intro.md)için bilişsel [Hizmetler kaynağı ekleyin](cognitive-search-attach-cognitive-services.md) . Bilişsel hizmet bir abonelik veya hizmete değil, bir beceri bağlı.
-+ İzleme Azure Search için [eklenti izleme çözümleri](search-monitor-usage.md#add-on-monitoring-solutions) .
++ Azure Bilişsel Arama izlemeye yönelik [eklenti izleme çözümleri](search-monitor-usage.md#add-on-monitoring-solutions) .
 
 <a name="check-versions-and-load"></a>
 
@@ -84,7 +84,7 @@ Birden çok Azure aboneliği tutarsanız, Azure aboneliğinizi ayarlayın. Geçe
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription` ' dır.
+Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription`.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -201,7 +201,7 @@ Tags
 
 Beklenirken, istemci kodunu güncelleştirmeden anahtarları yeniden oluşturursanız, eski anahtarı kullanan istekler başarısız olur. Tüm yeni anahtarların yeniden oluşturulması, hizmetinizi kalıcı olarak kilitlemez ve Portal üzerinden hizmete erişmeye devam edebilirsiniz. Birincil ve ikincil anahtarları yeniden oluşturduktan sonra, yeni anahtarları kullanmak için istemci kodunu güncelleştirebilirsiniz ve işlemler buna uygun şekilde sürdürülür.
 
-API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Bilişsel Arama kullanılmak üzere özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular `primary` veya `secondary` olan sabit dizelerdir. 
+API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Bilişsel Arama kullanılmak üzere özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular, `primary` veya `secondary`sabit dizelerdir. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

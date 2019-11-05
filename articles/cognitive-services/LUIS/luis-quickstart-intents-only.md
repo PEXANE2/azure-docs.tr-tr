@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Amaçları tahmin etme-LUO'
+title: 'Öğretici: amaçları tahmin etme-LUO'
 titleSuffix: Azure Cognitive Services
 description: Bu öğreticide, kullanıcının amaç 'ı tahmin eden özel bir uygulama oluşturun. E-posta adresleri veya tarihler gibi konuşma metinlerinden çeşitli veri öğeleri ayıklamadığından bu uygulama en basit LUIS uygulaması türüdür.
 services: cognitive-services
@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 83ecf0767f2b21065c698421e3ad8f07f31d5b16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375814"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465293"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için LUSıS uygulaması oluşturun
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Öğretici: Kullanıcı amaçları 'nı öğrenmek için LUSıS uygulaması oluşturma
 
 Bu öğreticide, konuşmaya (metne) göre bir kullanıcının amacını tahmin eden özel bir İnsan Kaynakları (İK) uygulaması oluşturacaksınız. 
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni bir uygulama oluşturma 
@@ -47,9 +49,9 @@ Bu uygulamanın birkaç amacı vardır.
 
 |Amaç|Amaç|
 |--|--|
-|ApplyForJob|Kullanıcının bir iş için uygulama uygulayıp uygulamamadığını belirleme.|
-|Getjobınformation|Kullanıcının genel veya belirli bir işteki işler hakkında bilgi arayıp aramadığını belirleme.|
-|Yok.|Kullanıcının bir uygulamanın yanıt vermesi gerekip gerekmediğini isteyip istemediğini belirleme. Bu amaç, uygulama oluşturmanın bir parçası olarak sağlanmışsa ve silinemezler. |
+|`ApplyForJob`|Kullanıcının bir iş için uygulama uygulayıp uygulamamadığını belirleme.|
+|`GetJobInformation`|Kullanıcının genel veya belirli bir işteki işler hakkında bilgi arayıp aramadığını belirleme.|
+|`None`|Kullanıcının bir uygulamanın yanıt vermesi gerekip gerekmediğini isteyip istemediğini belirleme. Bu amaç, uygulama oluşturmanın bir parçası olarak sağlanmışsa ve silinemezler. |
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
@@ -59,7 +61,7 @@ Bu uygulamanın birkaç amacı vardır.
 
 1. **Create new intent** (Yeni amaç oluştur) öğesini seçin. Yeni amaç adı olarak `GetJobInformation` girin. Bu amaç, bir Kullanıcı şirketteki açık işler hakkında bilgi istediğinde tahmin edilir. 
 
-    ![Ekran görüntüsü, arama Language Understanding (LUIS) yeni hedefi iletişim](media/luis-quickstart-intents-only/create-intent.png "ekran görüntüsü, arama Language Understanding (LUIS) yeni hedefi iletişim kutusu")
+    ![Language Understanding (LUA) yeni amaç iletişim kutusunun ekran görüntüsü](media/luis-quickstart-intents-only/create-intent.png "Language Understanding (LUA) yeni amaç iletişim kutusunun ekran görüntüsü")
 
 1. **Done** (Bitti) öğesini seçin.
 
@@ -67,24 +69,24 @@ Bu uygulamanın birkaç amacı vardır.
 
     | Örnek konuşmalar|
     |--|
-    |Any new jobs posted today? (Bugün yayımlanan yeni iş ilanı var mı?)|
-    |Are there any new positions in the Seattle office? (Seattle ofisinde yeni pozisyon var mı?)|
-    |Mühendisler için uzak çalışan veya telecommute işleri açık mı?|
-    |Is there any work in databases? (Veritabanı alanında iş var mı?)|
-    |Bu ofiste, birlikte çalışan bir durum arıyor.|
-    |San Francisco ofisinde bir internship var mı?|
-    |Okul 'daki kişiler için bir yarı zamanlı iş var mı?|
-    |Looking for a new situation with responsibilities in accounting (Muhasebe alanında yeni bir iş arayışım mevcut)|
-    |İki dilli hoparlör için New York şehrinde bir iş aranıyor.|
-    |Muhasebesinde sorumlulukların bulunduğu yeni bir durum aranıyor.|
-    |New jobs? (Yeni iş var mı?)|
-    |Son 2 güne eklenen mühendisler için tüm işleri göster.|
-    |Bugünün iş nakilleri mı?|
-    |Londra ofisinin hangi muhasebe konumları açık?|
-    |What positions are available for Senior Engineers? (Kıdemli Mühendisler için uygun olan pozisyonlar hangileri?)|
-    |Where is the job listings (İş ilanları nerede?)|
+    |`Any new jobs posted today?`|
+    |`Are there any new positions in the Seattle office?`|
+    |`Are there any remote worker or telecommute jobs open for engineers?`|
+    |`Is there any work with databases?`|
+    |`I'm looking for a co-working situation in the tampa office.`|
+    |`Is there an internship in the san francisco office?`|
+    |`Is there any part-time work for people in college?`|
+    |`Looking for a new situation with responsibilities in accounting`|
+    |`Looking for a job in new york city for bilingual speakers.`|
+    |`Looking for a new situation with responsibilities in accounting.`|
+    |`New jobs?`|
+    |`Show me all the jobs for engineers that were added in the last 2 days.`|
+    |`Today's job postings?`|
+    |`What accounting positions are open in the london office?`|
+    |`What positions are available for Senior Engineers?`|
+    |`Where is the job listings`|
 
-    [![Yeni Konuşma DepolamaAlanım hedefi için girme ekran görüntüsü](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "DepolamaAlanım hedefi için yeni konuşma girme ekran görüntüsü")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![MyStore amacı için yeni uttersları girme ekran görüntüsü](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "MyStore amacı için yeni uttersları girme ekran görüntüsü")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     _Örnek_bir amaç sunarak, bu amaçla ne tür bir anlamı tahmin etmeniz gerektiğini eğitme. 
 
@@ -106,7 +108,7 @@ Bu uygulamanın birkaç amacı vardır.
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Adres çubuğundaki URL'nin sonuna gidip `I'm looking for a job with Natural Language Processing` yazın. Son sorgu dizesi parametresi konuşma **sorgusu** olan `q` öğesidir. Bu konuşma, örnek konuşmalarından hiçbiriyle aynı değil. İyi bir test olduğundan `GetJobInformation` amacını en yüksek puanlı amaç olarak döndürmelidir. 
+1. Adres çubuğundaki URL'nin sonuna gidip `I'm looking for a job with Natural Language Processing` yazın. Son sorgu dizesi parametresi konuşma `q`sorgusu**olan** öğesidir. Bu konuşma, örnek konuşmalarından hiçbiriyle aynı değil. İyi bir test olduğundan `GetJobInformation` amacını en yüksek puanlı amaç olarak döndürmelidir. 
 
     ```JSON
     {
@@ -129,7 +131,7 @@ Bu uygulamanın birkaç amacı vardır.
     }
     ```
 
-    QueryString parametresi, uygulamanın sorgu sonuçlarındaki **Tüm amaçları** içerir. `verbose=true` Bu uygulamanın şu anda bir varlığı olmadığından varlıklar dizisi boştur. 
+    `verbose=true` QueryString parametresi, uygulamanın sorgu sonuçlarındaki **Tüm amaçları** içerir. Bu uygulamanın şu anda bir varlığı olmadığından varlıklar dizisi boştur. 
 
     JSON sonucu, en yüksek puanlı amacı **`topScoringIntent`** özelliği olarak tanımlar. Tüm puanlar 1 ile 0 arasındadır ve 1'e yakın olan puanlar daha iyidir. 
 
@@ -149,29 +151,22 @@ LUE portalına dönün ve Kullanıcı için bir iş için uygulama hakkında bil
 
     | Örnek konuşmalar|
     |--|
-    |Fill out application for Job 123456 (123456 numaralı iş için başvuru yap)|
-    |Here is my c.v. for position 654234 (654234 numaralı pozisyon için özgeçmişimi gönderiyorum)|
-    |Burada, bölüm zamanı Alım gönderisi için özgeçmişim.|
-    |Bu PaperWork ile resim masası işine uygulamadım.|
-    |San Diego 'de araştırma ve geliştirme bölümünde yaz üniversite internship için Uygulamam|
-    |Demin 'i Cafeteria 'daki geçici konuma göndermek istiyorum.|
-    |Yeni otomobil ekibi için özgeçmişimi Columbus, OH|
-    |I want to apply for the new accounting job (Yeni muhasebe işine başvurmak istiyorum)|
-    |İş 456789 muhasebe internship PaperWork burada|
-    |Job 567890 and my paperwork (567890 numaralı iş için belgelerim)|
-    |Tulsa Accounting internship için kağıtlarım eklendi.|
-    |Tatil teslim konumu için paperçalışmam|
-    |Lütfen Seattle 'daki yeni muhasebe işi için özgeçmişimi gönderin|
-    |Submit resume for engineering position (Mühendislik pozisyonu için özgeçmişimi gönder)|
-    |This is my c.v. Kura 'da 234123 sonrası için.|
+    |`Fill out application for Job 123456`|
+    |`Here is my c.v. for position 654234`|
+    |`Here is my resume for the part-time receptionist post.`|
+    |`I'm applying for the art desk job with this paperwork.`|
+    |`I'm applying for the summer college internship in Research and Development in San Diego`|
+    |`I'm requesting to submit my resume to the temporary position in the cafeteria.`|
+    |`I'm submitting my resume for the new Autocar team in Columbus, OH`|
+    |`I want to apply for the new accounting job`|
+    |`Job 456789 accounting internship paperwork is here`|
+    |`Job 567890 and my paperwork`|
+    |`My papers for the tulsa accounting internship are attached.`|
+    |`My paperwork for the holiday delivery position`|
+    |`Please send my resume for the new accounting job in seattle`|
+    |`Submit resume for engineering position`|
+    |`This is my c.v. for post 234123 in Tampa.`|
 
-<!--
-
-    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
-
-    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
-
--->
 
 ## <a name="train-again"></a>Yeniden eğitme
 

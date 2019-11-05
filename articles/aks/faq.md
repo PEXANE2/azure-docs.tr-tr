@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827364"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472841"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) hakkında sık sorulan sorular
 
@@ -33,7 +33,7 @@ Evet, [Gelişmiş Ağ özelliğini][aks-advanced-networking]kullanarak bir aks k
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API sunucusuna kimlerin erişebileceğini sınırlayabilir miyim?
 
-Evet, şu anda önizleme aşamasında olan [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][api-server-authorized-ip-ranges]kullanarak Kubernetes API sunucusuna erişimi sınırlayabilirsiniz.
+Evet, [API sunucusu YETKILENDIRILMIŞ IP aralıklarını][api-server-authorized-ip-ranges]kullanarak Kubernetes API sunucusuna erişimi sınırlayabilirsiniz.
 
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API sunucusunu yalnızca sanal ağım içinde erişilebilir yapabilir miyim?
 
@@ -41,7 +41,7 @@ Evet, şu anda önizleme aşamasında olan [API sunucusu YETKILENDIRILMIŞ IP ar
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Tek bir kümede farklı VM boyutlarına sahip olabilir miyim?
 
-Evet, şu anda önizleme aşamasında olan [birden çok düğüm havuzu][multi-node-pools]oluşturarak aks kümenizde farklı sanal makine boyutları kullanabilirsiniz.
+Evet, [birden çok düğüm havuzu][multi-node-pools]oluşturarak aks kümenizde farklı sanal makine boyutları kullanabilirsiniz.
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Güvenlik güncelleştirmeleri AKS aracı düğümlerine uygulandı mi?
 
@@ -118,13 +118,13 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 
 Hizmet düzeyi sözleşmesinde (SLA), sağlayıcı, yayımlanan hizmet düzeyi karşılanmazsa müşteriyi hizmetin maliyeti olarak tarafımızca kuruluşlarımız kabul eder. AKS ücretsizdir, tarafımızca kuruluşlarımız için kullanılabilir maliyet yok, bu nedenle AKS 'in resmi SLA 'Sı yok. Ancak, AKS, Kubernetes API sunucusu için en az% 99,5 kullanılabilirlik düzeyini korumak üzere arar.
 
-Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) okuyun.
+Kubernetes denetim düzlemi 'nin çalışma süresini ve Azure sanal makinelerinde çalışan özel iş yükünüzün kullanılabilirliğini ifade eden AKS hizmet kullanılabilirliği arasındaki ayrımı bilmek önemlidir. Denetim düzlemi uygun değilse denetim düzlemi kullanılamayabilir, ancak Azure VM 'lerinde çalışan küme iş yükleriniz yine de çalışabilir. Verilen Azure VM 'Leri, bir finans SLA 'Sı tarafından desteklenen ücretli kaynaklardır. Azure VM SLA 'Sı hakkında daha fazla bilgi ve [kullanılabilirlik alanları][availability-zones]gibi özelliklerle Kullanılabilirliği artırma hakkında [daha fazla bilgi için Buradan](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) okuyun.
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Neden Maxpod 'yi 30 altında ayarlayamıyorum?
 
 AKS 'de, Azure CLı ve Azure Resource Manager şablonlarını kullanarak kümeyi oluştururken `maxPods` değerini ayarlayabilirsiniz. Ancak, hem Kubenet hem de Azure CNı, *en az bir değer* gerektirir (oluşturma sırasında doğrulama):
 
-| Networking (Ağ İletişimi) | Minimum | Maksimum |
+| Ağ | Minimum | Maksimum |
 | -- | :--: | :--: |
 | Azure CNı | 30 | 250 |
 | Kubernetes kullanan | 30 | 110 |
@@ -139,7 +139,7 @@ AKS aracı düğümleri standart Azure sanal makineleri olarak faturalandırıl�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kümemi Azure kiracılar arasında taşıyabilir/geçirebilir miyim?
 
-@No__t-0 komutu, bir AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](https://docs.microsoft.com/azure/aks/update-credentials) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+`az aks update-credentials` komutu, bir AKS kümesini Azure kiracılar arasında taşımak için kullanılabilir. [Hizmet sorumlusunu güncelleştirmek veya oluşturmak Için seçin](https://docs.microsoft.com/azure/aks/update-credentials) ' deki yönergeleri izleyin ve ardından [aks kümesini yeni kimlik bilgileriyle güncelleştirin](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Abonelikler arasında kümemi taşıyabilir/geçirebilir miyim?
 

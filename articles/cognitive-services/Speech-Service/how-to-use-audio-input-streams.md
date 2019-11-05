@@ -1,7 +1,7 @@
 ---
-title: Konuşma SDK'sı ses giriş akışı kavramları
+title: Konuşma SDK 'Sı ses girişi akışı kavramları
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK'ın ses giriş akışı API özelliklerine genel bakış.
+description: Konuşma SDK 'sının ses giriş akışı API 'sinin özelliklerine genel bakış.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 06b69da7f7435ce8a1e32150b7abe161ebdf527c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606497"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464310"
 ---
-# <a name="about-the-speech-sdk-audio-input-stream-api"></a>API Speech SDK'sı ses giriş akışı
+# <a name="about-the-speech-sdk-audio-input-stream-api"></a>Konuşma SDK 'Sı ses girişi akış API 'SI hakkında
 
-Konuşma SDK'ın **ses giriş Stream** API mikrofon ya da giriş dosyası API'lerini kullanarak yerine tanıyıcıları içine ses akışları akış için bir yol sağlar.
+Konuşma SDK 'sının **ses girişi akış** API 'si, mikrofon veya giriş dosyası API 'leri kullanmak yerine tanıyıcılara ses akışları akışı sağlamak için bir yol sağlar.
 
-Giriş akışları ses kullanarak aşağıdaki adımlar gereklidir:
+Ses giriş akışları kullanılırken aşağıdaki adımlar gereklidir:
 
-- Ses akışı biçimini tanımlar. Biçim Speech SDK'sı ve konuşma hizmeti tarafından desteklenmesi gerekir. Şu anda yalnızca aşağıdaki yapılandırma desteklenir:
+- Ses akışının biçimini belirler. Biçim, konuşma SDK 'Sı ve konuşma hizmeti tarafından desteklenmelidir. Şu anda yalnızca aşağıdaki yapılandırma desteklenir:
 
-  PCM biçimi, bir kanal, saniyede 32000 bayt / saniye, 16000 örnekleri Ses örneği iki blok (16 bir örnek için doldurma dahil olmak üzere bit) cihazları, örnek başına 16 bit hizalayın.
+  PCM biçimindeki ses örnekleri, bir kanal, saniyede 16000 örnek, 32000 bayt/saniye, iki blok hizalanır (örnek için doldurma dahil olmak üzere 16 bit), örnek başına 16 bit.
 
-  İlgili ses biçimi oluşturmak için SDK'sı kodda şöyle görünür:
+  Ses biçimini oluşturmak için SDK 'daki karşılık gelen kod şöyle görünür:
 
   ```
   byte channels = 1;
@@ -36,9 +36,9 @@ Giriş akışları ses kullanarak aşağıdaki adımlar gereklidir:
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- Kodunuzu ham ses verileri bu belirtimlere göre sağlayabilir emin olun. Ses kaynağından verilerinizi desteklenen biçimler eşleşmiyorsa, ses gerekli biçime dönüştürülebilir olmalıdır.
+- Kodunuzun ham ses verilerini bu belirtimlere göre sağlaya, emin olun. Ses kaynağı verileriniz desteklenen biçimleriyle eşleşmiyorsa, sesin gerekli biçime dönüştürülmesi gerekir.
 
-- Kendi ses giriş akışı sınıfından türetilen oluşturma `PullAudioInputStreamCallback`. Uygulama `Read()` ve `Close()` üyeleri. Tam işlev imzası dile bağlıdır, ancak kod bu kod örneği için benzer olacaktır:
+- `PullAudioInputStreamCallback`türetilmiş kendi ses giriş akışı sınıfınızı oluşturun. `Read()` ve `Close()` üyelerini uygulayın. Tam işlev imzası dile bağımlıdır, ancak kod şu kod örneğine benzer şekilde görünür:
 
   ```
    public class ContosoAudioStream : PullAudioInputStreamCallback {
@@ -59,7 +59,7 @@ Giriş akışları ses kullanarak aşağıdaki adımlar gereklidir:
    };
   ```
 
-- Ses üzerinde temel bir ses yapılandırması oluşturma biçimini ve Giriş akışı. Tanıyıcı oluşturduğunuzda normal konuşma yapılandırmanızı ve ses giriş yapılandırmasını geçirin. Örneğin:
+- Ses biçiminizi ve giriş akışınızı temel alan bir ses yapılandırması oluşturun. Tanıyıcıyı oluştururken hem normal konuşma yapılandırmanızın hem de ses giriş yapılandırmasında geçiş yapın. Örneğin:
 
   ```
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
@@ -76,4 +76,4 @@ Giriş akışları ses kullanarak aşağıdaki adımlar gereklidir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [C# ' de Konuşma tanıma öğrenin](quickstart-csharp-dotnet-windows.md)
+* [Bkz. konuşmayı tanımaC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

@@ -1,27 +1,27 @@
 ---
-title: Azure veri paylaşımında alıcıları ekleme Önizleme
-description: Azure veri paylaşımında önizleme sürümünde mevcut bir veri paylaşımında alıcı eklemeyi öğrenin.
+title: Azure veri paylaşımında alıcı ekleme
+description: Azure veri paylaşımında mevcut bir veri paylaşımında alıcı ekleme hakkında bilgi edinin.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 1deda63f7f440116eaf47c41fa00c8b5f7566dcf
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9f49ab3aed60bfbe04ad022070a931461e3f52f5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169178"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490530"
 ---
-# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share-preview"></a>Azure veri paylaşımında mevcut bir veri paylaşımında alıcı ekleme Önizleme
+# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Azure veri paylaşımında mevcut bir veri paylaşımında alıcı ekleme
 
-Bu makalede, önceden var olan bir veri paylaşımında alıcı ekleme gösterilmektedir. 
+Bu makalede, önceden var olan bir veri paylaşımında alıcı ekleme gösterilmektedir.
 
 Bir paylaşma oluştururken alıcı ekleme hakkında daha fazla bilgi için bkz. [veri paylaşma](share-your-data.md) öğreticisi.
 
 ## <a name="navigate-to-a-sent-data-share"></a>Gönderilen veri paylaşımında gezin
 
-Azure veri paylaşımında Önizleme ' de, gönderdiğiniz paylaşıma gidin ve **davetler** sekmesini seçin. burada listelenen bu veri paylaşımının tüm davetlerini bulabilirsiniz. Yeni bir tane eklemek için **Alıcı Ekle**' ye tıklayın.
+Azure veri paylaşımında, gönderilen paylaşımınıza gidin ve **davetler** sekmesini seçin. burada listelenen bu veri paylaşımının tüm davetlerinin alıcıları aşağıda verilmiştir. Yeni bir tane eklemek için **Alıcı Ekle**' ye tıklayın.
 
 ![Alıcı Ekle](./media/how-to/how-to-add-recipients/add-recipient.png)
 

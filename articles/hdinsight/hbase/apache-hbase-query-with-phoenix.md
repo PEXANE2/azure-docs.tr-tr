@@ -1,5 +1,5 @@
 ---
-title: "Hızlı başlangıç: Azure HDInsight 'ta Apache HBase 'i sorgulama-Apache Phoenix"
+title: 'Hızlı başlangıç: Apache HBase & Apache Phoenix-Azure HDInsight'
 description: Bu hızlı başlangıçta, HDInsight 'ta Apache Phoenix kullanmayı öğreneceksiniz. Ayrıca, HDInsight 'ta bir HBase kümesine bağlanmak için bilgisayarınıza SQLLine yüklemeyi ve ayarlamayı öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 20af6d32d03ae5d4fe37b1a37198ef1f2c50ec95
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312204"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467046"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Hızlı başlangıç: Apache Phoenix ile Azure HDInsight 'ta Apache HBase 'i sorgulama
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="identify-a-zookeeper-node"></a>ZooKeeper düğümünü tanımla
 
-Bir HBase kümesine bağlandığınızda Apache ZooKeeper düğümlerinden birine bağlanmanız gerekir. Her HDInsight kümesinde üç ZooKeeper düğümü vardır. Kıvrımlı, bir ZooKeeper düğümünü hızlı bir şekilde tanımlamak için kullanılabilir. @No__t-0 ve `CLUSTERNAME` ' i ilgili değerlerle değiştirerek aşağıdaki kıvrımlı komutunu düzenleyin ve ardından komutu bir komut istemine girin:
+Bir HBase kümesine bağlandığınızda Apache ZooKeeper düğümlerinden birine bağlanmanız gerekir. Her HDInsight kümesinde üç ZooKeeper düğümü vardır. Kıvrımlı, bir ZooKeeper düğümünü hızlı bir şekilde tanımlamak için kullanılabilir. `PASSWORD` ve `CLUSTERNAME` ilgili değerlerle değiştirerek aşağıdaki kıvrımlı komutunu düzenleyin ve komut istemine komutu girin:
 
 ```cmd
 curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
@@ -47,68 +47,68 @@ curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clus
       }
 ```
 
-Daha sonra kullanmak üzere `host_name` değerini bir yere göz atın.
+`host_name` değerini daha sonra kullanmak üzere bir yere göz atın.
 
 ## <a name="create-a-table-and-manipulate-data"></a>Tablo oluşturma ve verileri işleme
 
 HBase kümelerine bağlanmak için SSH kullanabilir ve sonra HBase tabloları oluşturmak, veri eklemek ve verileri sorgulamak için Apache Phoenix kullanabilirsiniz.
 
-1. HBase kümenize bağlanmak için `ssh` komutunu kullanın. @No__t-0 ' ı kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+1. HBase kümenize bağlanmak için `ssh` komutunu kullanın. `CLUSTERNAME` kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Dizini Phoenix istemcisine değiştirin. Aşağıdaki komutu girin:
+2. Dizini Phoenix istemcisine değiştirin. Aşağıdaki komutu kullanın:
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-3. [Sqlline](http://sqlline.sourceforge.net/)'ı başlatın. @No__t-0 ' ı daha önce tanımlanan ZooKeeper düğümüyle değiştirerek aşağıdaki komutu düzenleyin, sonra şu komutu girin:
+3. [Sqlline](http://sqlline.sourceforge.net/)'ı başlatın. Daha önce tanımlanan ZooKeeper düğümle `ZOOKEEPER` değiştirerek aşağıdaki komutu düzenleyin, sonra şu komutu girin:
 
     ```bash
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
     ```
 
-4. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin:
+4. Bir HBase tablosu oluşturun. Aşağıdaki komutu kullanın:
 
     ```sql
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. HBase 'deki tüm tabloları listelemek için SQLLine `!tables` komutunu kullanın. Aşağıdaki komutu girin:
+5. HBase 'deki tüm tabloları listelemek için SQLLine `!tables` komutunu kullanın. Aşağıdaki komutu kullanın:
 
     ```sqlline
     !tables
     ```
 
-6. Tablodaki değerleri ekleyin. Aşağıdaki komutu girin:
+6. Tablodaki değerleri ekleyin. Aşağıdaki komutu kullanın:
 
     ```sql
     UPSERT INTO Company VALUES(1, 'Microsoft');
     UPSERT INTO Company VALUES(2, 'Apache');
     ```
 
-7. Tabloyu sorgulayın. Aşağıdaki komutu girin:
+7. Tabloyu sorgulayın. Aşağıdaki komutu kullanın:
 
     ```sql
     SELECT * FROM Company;
     ```
 
-8. Bir kaydı silin. Aşağıdaki komutu girin:
+8. Bir kaydı silin. Aşağıdaki komutu kullanın:
 
     ```sql
     DELETE FROM Company WHERE COMPANY_ID=1;
     ```
 
-9. Tabloyu bırakın. Aşağıdaki komutu girin:
+9. Tabloyu bırakın. Aşağıdaki komutu kullanın:
 
     ```hbase
     DROP TABLE Company;
     ```
 
-10. SQLLine 'den çıkmak için SQLLine `!quit` komutunu kullanın. Aşağıdaki komutu girin:
+10. SQLLine 'dan çıkmak için SQLLine `!quit` komutunu kullanın. Aşağıdaki komutu kullanın:
 
     ```sqlline
     !quit

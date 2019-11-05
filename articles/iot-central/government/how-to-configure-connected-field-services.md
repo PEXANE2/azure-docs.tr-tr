@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d8eda3aefb317b9c6383561dd2094913e5d8f7d1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 957e9337bf8ea5941b140ba4f3266417d36df6a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026632"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498768"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Azure IoT Central ve Dynamics 365 alan hizmeti ile uçtan uca çözüm oluşturma 
 
@@ -34,5 +34,5 @@ Aşağıdaki uçtan uca tümleştirme işlemlerine, saf bir yapılandırma deney
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [IoT Central kamu şablonları](./overview-iot-central-government.md) hakkında daha fazla bilgi edinin
-* [IoT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central) hakkında daha fazla bilgi edinin
+* [IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) hakkında daha fazla bilgi edinin
 * [Dynamics 365 alan Hizmetleri](https://docs.microsoft.com/dynamics365/field-service/cfs-iot-overview) hakkında daha fazla bilgi edinin

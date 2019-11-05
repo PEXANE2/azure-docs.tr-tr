@@ -1,20 +1,20 @@
 ---
 title: 'Sinir ağ gerileme: modül başvurusu'
-titleSuffix: Azure Machine Learning service
-description: Özelleştirilebilir bir sinir ağ algoritması kullanarak regresyon modeli oluşturmak için Azure Machine Learning hizmetinde sinir ağ gerileme modülünü nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Özelleştirilebilir bir sinir ağ algoritması kullanarak regresyon modeli oluşturmak için Azure Machine Learning 'de sinir ağ gerileme modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692746"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466002"
 ---
 # <a name="neural-network-regression-module"></a>Sinir ağ gerileme modülü
 
@@ -24,7 +24,7 @@ ms.locfileid: "72692746"
   
 ## <a name="module-overview"></a>Modüle genel bakış  
 
-Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
 Özelleştirilebilir bir sinir ağı algoritması kullanarak regresyon modeli oluşturmak için bu modülü kullanın.
   
@@ -51,8 +51,8 @@ Sinir ağları kapsamlı bir şekilde özelleştirilebilir. Bu bölümde, iki y�
     Sinir ağlarını zaten biliyorsanız, bu seçenek en iyisidir. Ağ mimarisini tanımlamak için NET # dilini kullanın.  
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Varsayılan mimariyi kullanarak bir sinir ağ modeli oluşturma
-  
-1.  Arabirimindeki **sinir Network regresyon** modülünü işlem hattınızı ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz. 
+
+1.  **Sinir ağ regresyon** modülünü, tasarımcıda işlem hattınızı ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz. 
   
 2. Eğitim **modunu oluşturma** seçeneğini ayarlayarak modelin eğitilme biçimini belirtin.  
   
@@ -98,4 +98,4 @@ Eğitim tamamlandıktan sonra:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmeti için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

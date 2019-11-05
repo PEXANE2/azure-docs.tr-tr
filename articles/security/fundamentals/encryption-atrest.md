@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: bcf66515fe24dda0d060a0b5c290bd05e46bf9d7
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0fddabc7973fbea147de9f3b6e6da5556407030c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498462"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -241,7 +241,7 @@ Microsoft Azure Hizmetleri, bekleyen modellerdeki bir veya daha fazla şifreleme
 
 Hizmet olarak altyapı (IaaS) özelliklerinin kullanıldığı tüm müşteriler, Azure disk şifrelemesi aracılığıyla IaaS VM 'Leri ve diskleri için bekleyen şifreleme elde edebilir. Azure disk şifrelemesi hakkında daha fazla bilgi için bkz. [Azure disk şifrelemesi belgeleri](../azure-security-disk-encryption-overview.md).
 
-#### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure depolama alanı
 
 Tüm Azure depolama hizmetleri (BLOB depolama, kuyruk depolama, tablo depolama ve Azure dosyaları), bekleyen sunucu tarafı şifrelemeyi destekler; Ayrıca, bazı hizmetler müşteri tarafından yönetilen anahtarları ve istemci tarafı şifrelemeyi destekler. 
 
@@ -262,64 +262,64 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen anahtarı kullanarak istemci tarafı**      |
 | **AI ve Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Yes                | Önizleme            | -                  |
-| Azure Machine Learning Hizmeti   | Yes                | -                  | -                  |
-| Azure Machine Learning Studio    | Yes                | Önizleme, RSA 2048 bit | -               |
-| Power BI                         | Yes                | Önizleme, RSA 2048 bit | -                  |
-| **Analizler**                    |                    |                    |                    |
-| Azure Stream Analytics           | Yes                | -                  | -                  |
-| Event Hubs                       | Yes                | Önizleme, tüm RSA uzunlukları. | -                  |
-| Azure Analysis Services          | Yes                | -                  | -                  |
-| Azure Veri Kataloğu               | Yes                | -                  | -                  |
-| Azure HDInsight üzerinde Apache Kafka  | Yes                | Tüm RSA uzunlukları.   | -                  |
-| Azure Veri Gezgini              | Yes                | -                  | -                  |
-| Azure Data Factory               | Yes                | Yes                | -                  |
-| Azure Data Lake Store            | Yes                | Evet, RSA 2048 bit  | -                  |
+| Azure Search                     | Evet                | Önizleme            | -                  |
+| Azure Machine Learning   | Evet                | -                  | -                  |
+| Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048 bit | -               |
+| Power BI                         | Evet                | Önizleme, RSA 2048 bit | -                  |
+| **Analiz**                    |                    |                    |                    |
+| Azure Stream Analytics           | Evet                | -                  | -                  |
+| Event Hubs                       | Evet                | Önizleme, tüm RSA uzunlukları. | -                  |
+| Azure Analysis Services          | Evet                | -                  | -                  |
+| Azure Veri Kataloğu               | Evet                | -                  | -                  |
+| Azure HDInsight üzerinde Apache Kafka  | Evet                | Tüm RSA uzunlukları.   | -                  |
+| Azure Veri Gezgini              | Evet                | -                  | -                  |
+| Azure Data Factory               | Evet                | Evet                | -                  |
+| Azure Data Lake Store            | Evet                | Evet, RSA 2048 bit  | -                  |
 | **Kapsayıcılar**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Yes                | -                  | -                  |
-| Container Registry               | Yes                | -                  | -                  |
+| Azure Kubernetes Service         | Evet                | -                  | -                  |
+| Container Registry               | Evet                | -                  | -                  |
 | **İşlem**                      |                    |                    |                    |
-| Virtual Machines (Sanal Makineler)                 | Yes                | Evet, RSA 2048 bit  | -                  |
-| Sanal makine ölçek kümesi        | Yes                | Evet, RSA 2048 bit  | -                  |
-| SAP HANA                         | Yes                | Evet, RSA 2048 bit  | -                  |
+| Virtual Machines                 | Evet                | Evet, RSA 2048 bit  | -                  |
+| Sanal makine ölçek kümesi        | Evet                | Evet, RSA 2048 bit  | -                  |
+| SAP HANA                         | Evet                | Evet, RSA 2048 bit  | -                  |
 | **Veritabanları**                    |                    |                    |                    |
-| Sanal Makinelerde SQL Server   | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Azure SQL Veritabanı               | Yes                | Evet, RSA 2048 bit  | Yes                |
-| MariaDB için Azure SQL veritabanı   | Yes                | -                  | -                  |
-| MySQL için Azure SQL veritabanı     | Yes                | -                  | -                  |
-| PostgreSQL için Azure SQL veritabanı | Yes                | -                  | -                  |
-| Azure SQL Veri Ambarı         | Yes                | Evet, RSA 2048 bit  | Yes                |
-| SQL Server Stretch Database      | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Tablo Depolama                    | Yes                | -                  | Yes                |
-| Azure Cosmos DB                  | Yes                | -                  | -                  |
+| Sanal Makinelerde SQL Server   | Evet                | Evet, RSA 2048 bit  | Evet                |
+| Azure SQL Veritabanı               | Evet                | Evet, RSA 2048 bit  | Evet                |
+| MariaDB için Azure SQL veritabanı   | Evet                | -                  | -                  |
+| MySQL için Azure SQL veritabanı     | Evet                | -                  | -                  |
+| PostgreSQL için Azure SQL veritabanı | Evet                | -                  | -                  |
+| Azure SQL Veri Ambarı         | Evet                | Evet, RSA 2048 bit  | Evet                |
+| SQL Server Stretch Database      | Evet                | Evet, RSA 2048 bit  | Evet                |
+| Tablo Depolama                    | Evet                | -                  | Evet                |
+| Azure Cosmos DB                  | Evet                | -                  | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Yes                | -                  | Yes                |
-| Azure Repos                      | Yes                | -                  | Yes                |
+| Azure DevOps                     | Evet                | -                  | Evet                |
+| Azure Repos                      | Evet                | -                  | Evet                |
 | **Kimlik**                     |                    |                    |                    |
-| Azure Active Directory           | Yes                | -                  | -                  |
-| Azure Active Directory Domain Services | Yes          | Evet, RSA 2048 bit  | -                  |
+| Azure Active Directory           | Evet                | -                  | -                  |
+| Azure Active Directory Domain Services | Evet          | Evet, RSA 2048 bit  | -                  |
 | **Tümleştirme**                  |                    |                    |                    |
-| Service Bus                      | Yes                | -                  | Yes                |
-| Event Grid                       | Yes                | -                  | -                  |
-| API Management                   | Yes                | -                  | -                  |
+| Service Bus                      | Evet                | -                  | Evet                |
+| Event Grid                       | Evet                | -                  | -                  |
+| API Management                   | Evet                | -                  | -                  |
 | **IoT Hizmetleri**                 |                    |                    |                    |
-| IoT Hub                          | Yes                | -                  | Yes                |
+| IoT Hub                          | Evet                | -                  | Evet                |
 | **Yönetim ve Idare**    |                    |                    |                    |
-| Azure Site Recovery              | Yes                | Evet, RSA 2048 bit  | Yes                |
+| Azure Site Recovery              | Evet                | Evet, RSA 2048 bit  | Evet                |
 | **Medyasını**                        |                    |                    |                    |
-| Media Services                   | Yes                | -                  | Yes                |
+| Media Services                   | Evet                | -                  | Evet                |
 | **Depolama**                      |                    |                    |                    |
-| Blob Depolama                     | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Disk Depolama                     | Yes                | -                  | -                  |
-| Yönetilen Disk Depolama             | Yes                | -                  | -                  |
-| Dosya Depolama                     | Yes                | Evet, RSA 2048 bit  | -                  |
-| Kuyruk Depolama                    | Yes                | -                  | Yes                |
-| Avere vFXT                       | Yes                | -                  | -                  |
-| Azure NetApp Files               | Yes                | -                  | -                  |
-| Arşiv Depolama                  | Yes                | Evet, RSA 2048 bit  | -                  |
-| StorSimple                       | Yes                | Evet, RSA 2048 bit  | Yes                |
-| Azure Yedekleme                     | Yes                | -                  | Yes                |
-| Data Box                         | Yes                | -                  | Yes                |
+| Blob Depolama                     | Evet                | Evet, RSA 2048 bit  | Evet                |
+| Disk Depolama                     | Evet                | -                  | -                  |
+| Yönetilen Disk Depolama             | Evet                | -                  | -                  |
+| Dosya Depolama                     | Evet                | Evet, RSA 2048 bit  | -                  |
+| Kuyruk Depolama                    | Evet                | -                  | Evet                |
+| Avere vFXT                       | Evet                | -                  | -                  |
+| Azure NetApp Files               | Evet                | -                  | -                  |
+| Arşiv Depolama                  | Evet                | Evet, RSA 2048 bit  | -                  |
+| StorSimple                       | Evet                | Evet, RSA 2048 bit  | Evet                |
+| Azure Backup                     | Evet                | -                  | Evet                |
+| Data Box                         | Evet                | -                  | Evet                |
 
 ## <a name="conclusion"></a>Sonuç
 

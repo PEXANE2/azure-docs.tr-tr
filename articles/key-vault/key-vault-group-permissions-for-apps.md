@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73102359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467167"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Erişim denetimi ilkesiyle Key Vault kimlik doğrulaması sağlama
 
@@ -162,7 +162,7 @@ Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys
 
 Bir Azure AD grubu oluşturabilir, gruba uygulamalar ve kullanıcılar ekleyebilir ve gruba anahtar kasanıza erişim izni verebilirsiniz.  Bu, bir anahtar kasasına tek bir erişim ilkesi girişi olarak bir dizi uygulama eklemenize olanak tanır ve kullanıcılara anahtar kasanıza doğrudan erişim verme gereksinimini ortadan kaldırır. Daha ayrıntılı bilgi için bkz. [Azure Active Directory grupları kullanarak uygulama ve kaynak erişimini yönetme](../active-directory/fundamentals/active-directory-manage-groups.md).
 
-### <a name="addition-prerequisites"></a>Toplama önkoşulları
+### <a name="additional-prerequisites"></a>Ek önkoşullar
 
 [Yukarıdaki önkoşullara](#prerequisites)ek olarak, Azure Active Directory kiracınızda Grup oluşturma/düzenleme izinlerine de ihtiyacınız olacaktır. İzinleriniz yoksa Azure Active Directory yöneticinize başvurmanız gerekebilir.
 

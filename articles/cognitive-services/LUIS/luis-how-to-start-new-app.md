@@ -1,7 +1,7 @@
 ---
 title: Yeni bir uygulama oluşturun-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Oluşturun ve Language Understanding (LUIS) sayfasındaki yönetin.
+description: Language Understanding (LUSıS) Web sayfasında uygulamalarınızı oluşturun ve yönetin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,31 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500299"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUSıS portalında yeni bir LUO uygulaması oluşturma
-Çeşitli şekillerde LUIS uygulaması oluşturmak için vardır. Bir LUIS uygulaması oluşturabileceğiniz [LUIS](https://www.luis.ai) portal ya da yazma LUIS aracılığıyla [API'leri](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+Bir LUSıS uygulaması oluşturmanın birkaç yolu vardır. [LUIS portalında veya](https://www.luis.ai) LUIS yazma [API 'leri](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)aracılığıyla bir LUIS uygulaması oluşturabilirsiniz.
 
-## <a name="using-the-luis-portal"></a>LUIS portalı kullanma
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-Çeşitli şekillerde LUIS portalında yeni bir uygulama oluşturabilirsiniz:
+## <a name="using-the-luis-portal"></a>LUO portalını kullanma
 
-* Boş bir uygulama ile başlayın ve hedefleri, konuşma ve varlıklar oluşturun.
-* Boş bir uygulamayla başlayıp bir [önceden oluşturulmuş etki alanı](luis-how-to-use-prebuilt-domains.md).
-* Bir LUIS uygulaması zaten hedefleri ve konuşma varlıklarını içeren bir JSON dosyasından içeri aktarın.
+LUO portalında çeşitli yollarla yeni bir uygulama oluşturabilirsiniz:
 
-## <a name="using-the-authoring-apis"></a>Yazma API'leri kullanma
-Çeşitli şekillerde yazma API'leri ile yeni bir uygulama oluşturabilirsiniz:
+* Boş bir uygulamayla başlayın ve amaçlar, utbotslar ve varlıklar oluşturun.
+* Boş bir uygulama ile başlayın ve [önceden oluşturulmuş bir etki alanı](luis-how-to-use-prebuilt-domains.md)ekleyin.
+* Zaten amaçlar, utbotslar ve varlıklar içeren bir JSON dosyasından bir LUO uygulamasını içeri aktarın.
 
-* [Başlangıç](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) boş bir uygulama ile ve hedefleri, konuşma ve varlıklar oluşturun.
-* [Başlangıç](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) önceden oluşturulmuş bir etki alanına sahip.  
+## <a name="using-the-authoring-apis"></a>Yazma API 'Lerini kullanma
+Yazma API 'Leriyle birkaç yolla yeni bir uygulama oluşturabilirsiniz:
+
+* Boş bir uygulamayla [başlayın](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) ve amaçlar, utbotslar ve varlıklar oluşturun.
+* Önceden oluşturulmuş bir etki alanıyla [başlayın](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) .  
 
 
 <a name="export-app"></a>
@@ -43,18 +45,18 @@ ms.locfileid: "70258526"
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-## <a name="create-new-app-in-luis"></a>LUIS yeni uygulama oluştur
+## <a name="create-new-app-in-luis"></a>LUSıS 'de yeni uygulama oluşturma
 
-1. Üzerinde **uygulamalarım** sayfasında **yeni uygulama oluştur**.
+1. **Uygulamalarım** sayfasında **+ Oluştur**' u seçin.
 
     ![LUIS uygulamalarının listesi](./media/luis-create-new-app/apps-list.png)
 
 
-2. İletişim kutusunda, "TravelAgent" uygulamanızı adlandırın.
+2. İletişim kutusunda, uygulamanızı "TravelAgent" olarak adlandırın.
 
-    ![Yeni uygulama iletişim kutusu oluşturma](./media/luis-create-new-app/create-app.png)
+    ![Yeni uygulama oluştur iletişim kutusu](./media/luis-create-new-app/create-app.png)
 
-3. Uygulama kültürü seçin (TravelAgent bir uygulama için İngilizce seçin) ve ardından **Bitti**. 
+3. Uygulama külbilgilerinizi seçin (TravelAgent uygulaması için Ingilizce ' yi seçin) ve **bitti**' yi seçin. 
 
     > [!NOTE]
     > Uygulama oluşturduktan sonra kültür değiştirilemez. 
@@ -84,7 +86,7 @@ Olası hatalar şunlardır:
 
     Yalnızca bir eğitilen modeli HALSıS kapsayıcısı ile kullanılmak üzere dışarı aktarmaya ilgileniyorsanız, **sürümler** sayfasına gidin ve oradan dışarı aktarın. 
 
-## <a name="delete-app"></a>Uygulamayı silme
+## <a name="delete-app"></a>Uygulamayı Sil
 
 1. **Uygulamalarım** sayfasında, uygulama satırının sonundaki üç noktayı (...) seçin.
 1. Menüden **Sil** ' i seçin.
@@ -92,4 +94,4 @@ Olası hatalar şunlardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamadaki ilk göreviniz [hedef ekleme](luis-how-to-add-intents.md).
+Uygulamadaki ilk göreviniz [Amaç eklemektir](luis-how-to-add-intents.md).

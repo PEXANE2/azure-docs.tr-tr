@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: 1d7f08dbaa9b91cd2dbac28daf5c17ea85d09985
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676735"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482209"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisiyle bağlantı
+# <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisine bağlanma
 
 > Uygulama hedefi: Windows 7 ve Windows 10
 
@@ -25,11 +25,11 @@ Windows Masaüstü istemcisi 'ni kullanarak Windows 7 veya Windows 10 ile cihazl
 
 ## <a name="install-the-windows-desktop-client"></a>Windows masaüstü istemcisini yükler
 
-Şu anda indirebileceğiniz istemciler şunlardır:
+Windows sürümünüzle eşleşen istemciyi seçin:
 
 - [Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2068602)
-
-İstemci Windows 'un daha fazla sürümü için kullanılabilir hale geldiği için bu listeyi güncelleştireceğiz.
+- [Windows 32-bit önizleme](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows ARM64 önizlemesi](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Yönetici hakları gerektirmeyen geçerli kullanıcı için istemcisini yükleyebilir veya yöneticiniz, cihazdaki tüm kullanıcıların erişebilmesi için istemciyi yükleyip yapılandırabilir.
 
