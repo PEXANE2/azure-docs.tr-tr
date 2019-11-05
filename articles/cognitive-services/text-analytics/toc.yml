@@ -104,6 +104,8 @@
       href: text-analytics-resource-faq.md
     - name: Dil ve bölge desteği
       href: language-support.md
+    - name: Adlandırılmış varlık türleri
+      href: named-entity-types.md
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Bölgesel kullanılabilirlik

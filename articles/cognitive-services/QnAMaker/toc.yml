@@ -147,6 +147,10 @@
       href: limits.md
     - name: Sorun giderme
       href: troubleshooting.md
+    - name: Dosya biçimleri
+      items:
+        - name: Toplu test TSV
+          href: reference-tsv-format-batch-testing.md
     - name: REST API Başvurusu
       items:
         - name: Yazma API’leri

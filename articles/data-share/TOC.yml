@@ -1,9 +1,11 @@
-- name: Azure Veri Paylaşımı Önizleme Belgeleri
+- name: Azure Veri Paylaşımı Belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure Veri Paylaşımı Önizleme nedir?
+    - name: Azure Veri Paylaşımı nedir?
       href: overview.md
+    - name: Desteklenen veri depoları
+      href: supported-data-stores.md
 - name: Öğreticiler
   expanded: true
   items:
@@ -19,6 +21,8 @@
       href: concepts-roles-permissions.md
 - name: Örnekler
   items:
+    - name: Kod örnekleri
+      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
 - name: Nasıl yapılır kılavuzları
@@ -52,7 +56,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog
-      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+      href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'
     - name: Microsoft Teknoloji Topluluğu
       href: 'https://techcommunity.microsoft.com/'
     - name: Ürün geri bildirimi

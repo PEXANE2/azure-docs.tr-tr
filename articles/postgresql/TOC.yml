@@ -92,6 +92,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: Bağlantı mimarisi
               href: concepts-connectivity-architecture.md
+            - name: Azure AD kimlik doğrulaması
+              href: concepts-aad-authentication.md
         - name: İş sürekliliği
           items:
             - name: İş sürekliliğine giriş
@@ -153,8 +155,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL yapılandırma
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: İzleme ve ayarlama
+          items:
+            - name: İzleme ve ayarlama
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL uzantıları
           href: concepts-hyperscale-extensions.md
+        - name: Yüksek kullanılabilirlik
+          href: concepts-hyperscale-high-availability.md
         - name: Kaynaklar
           items:
             - name: Yapılandırma seçenekleri
@@ -163,8 +171,12 @@
   items:
     - name: Tek sunucu
       items:
-        - name: Kullanıcı oluşturma
-          href: howto-create-users.md
+        - name: Kimlik Doğrulaması
+          items:
+            - name: Kullanıcı oluşturma
+              href: howto-create-users.md
+            - name: Azure AD tümleştirmesini yapılandırma
+              href: howto-configure-sign-in-aad-authentication.md
         - name: İyileştirme
           items:
             - name: Toplu eklemeler
@@ -245,12 +257,20 @@
               href: howto-read-replicas-cli.md
     - name: Hiper Ölçek (Citus)
       items:
-        - name: Ölçeklendirme
+        - name: Kullanıcı oluşturma
+          href: howto-hyperscale-create-users.md
+        - name: Ölçek
           href: howto-hyperscale-scaling.md
         - name: Güvenlik duvarını yönetme
           items:
             - name: Azure portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Yüksek kullanılabilirlik
+          href: howto-hyperscale-high-availability.md
+        - name: İzleme
+          items:
+            - name: Ölçümler üzerinde uyarı oluşturma
+              href: howto-hyperscale-alert-on-metric.md
         - name: Sorun giderme
           items:
             - name: Bağlantı hatalarını giderme

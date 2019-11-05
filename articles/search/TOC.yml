@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: Öğreticiler
   items:
-    - name: İlk uygulamanızı oluşturma
+    - name: 'İlk C# uygulamanızı oluşturma'
       items:
         - name: 1 - Temel arama sayfası
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: Alanları eşleme
           href: search-indexer-field-mappings.md
-        - name: Artımlı dizin oluşturma
-          href: search-howto-incremental-index.md
         - name: SQL Yönetilen Örneğine bağlanma
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: SQL Server VM’lerine bağlanma
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: Görüntülerdeki bilgileri işleme ve ayıklama
               href: cognitive-search-concept-image-scenarios.md
+            - name: Artımlı dizin ayarlama
+              href: search-howto-incremental-index.md
         - name: Özel beceriler
           items:
             - name: Özel becerileri tümleştirme
               href: cognitive-search-custom-skill-interface.md
             - name: Örnek - Azure İşlevleri
               href: cognitive-search-create-custom-skill-example.md
-            - name: Örnekler - Power Becerileri
-              href: 'https://aka.ms/powerskills'
             - name: Örnek - Kapsayıcılar
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Sorun giderme ipuçları
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: Koşullu
           href: cognitive-search-skill-conditional.md
+        - name: Belge Ayıklama
+          href: cognitive-search-skill-document-extraction.md
     - name: Özel beceriler
       items:
         - name: Özel Web API'si

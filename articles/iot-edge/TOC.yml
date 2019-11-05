@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: Azure Stream Analytics ile ortalamaları bulma
           href: tutorial-deploy-stream-analytics.md
-        - name: Azure Machine Learning hizmetiyle verileri puanlama
+        - name: Azure Machine Learning ile verileri puanlama
           href: tutorial-deploy-machine-learning.md
         - name: Özel Görüntü İşleme ile görüntüleri sınıflandırma
           href: tutorial-deploy-custom-vision.md

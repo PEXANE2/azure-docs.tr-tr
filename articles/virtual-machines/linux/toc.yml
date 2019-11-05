@@ -137,6 +137,8 @@
           href: disk-encryption.md
         - name: Yüksek performansa uygun tasarım yapma
           href: premium-storage-performance.md
+        - name: Disk genişletme
+          href: disk-bursting.md
         - name: Diskler için ölçeklenebilirlik hedefleri
           href: disk-scalability-targets.md
         - name: Diskler için yedekleme ve olağanüstü durum kurtarma

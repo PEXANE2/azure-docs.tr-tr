@@ -36,17 +36,7 @@
         - name: Amaç alma
           href: luis-get-started-get-intent-from-rest.md
         - name: Model değiştirme
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-add-utterance.md
-            - name: Başlayın
-              href: luis-get-started-go-add-utterance.md
-            - name: Java
-              href: luis-get-started-java-add-utterance.md
-            - name: Node.js
-              href: luis-get-started-node-add-utterance.md
-            - name: Python
-              href: luis-get-started-python-add-utterance.md
+          href: get-started-get-model-rest-apis.md
 - name: Öğreticiler
   items:
     - name: Uygulama oluşturma
@@ -103,49 +93,47 @@
               href: luis-tutorial-bot-nodejs-appinsights.md
 - name: Kavramlar
   items:
-    - name: En iyi uygulamalar
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
-    - name: LUIS ve Soru-Cevap Oluşturma'yı kullanma
-      href: choose-natural-language-processing-service.md
-      displayName: 'nlp, qna maker'
+    - name: Geliştirme yaşam döngüsü
+      href: luis-concept-app-iteration.md
     - name: Uygulamanızı planlama
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Yazma ve çalışma zamanı anahtarları
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
-    - name: Uygulama modelini yazma
+    - name: Uygulama modelleri
       items:
-        - name: Yazma döngüsü
-          href: luis-concept-app-iteration.md
-        - name: Sürüm oluşturma
-          href: luis-concept-version.md
-          displayName: import
-    - name: Tasarım Modeli
-      items:
+        - name: Türler
+          href: luis-concept-model.md
         - name: Hedefler
           href: luis-concept-intent.md
+        - name: Konuşmalar
+          href: luis-concept-utterance.md
         - name: Varlıklar
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
-        - name: Varlık rolleri
-          href: luis-concept-roles.md
-        - name: Konuşmalar
-          href: luis-concept-utterance.md
         - name: Önceden oluşturulmuş modeller
           href: luis-concept-prebuilt-model.md
-    - name: Uygulama performansını geliştirme
-      items:
-        - name: Tahmin puanı
-          href: luis-concept-prediction-score.md
-        - name: Uç nokta konuşmasını gözden geçirme
-          href: luis-concept-review-endpoint-utterances.md
-        - name: Tümcecik listeleri
-          href: luis-concept-feature.md
         - name: Desenler
           href: luis-concept-patterns.md
           displayName: roles
+        - name: Özellikler
+          href: luis-concept-feature.md
+    - name: Tahmin puanı
+      href: luis-concept-prediction-score.md
+    - name: En iyi uygulamalar
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: Uygulama performansını geliştirme
+      items:
+        - name: Uç nokta ifadelerini gözden geçirme
+          href: luis-concept-review-endpoint-utterances.md
+    - name: Test etme
+      items:
+        - name: Etkileşimli test
+          href: luis-concept-test.md
+        - name: Toplu işe testi
+          href: luis-concept-batch-test.md
+    - name: Yazma ve çalışma zamanı anahtarları
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
     - name: Veri yönetimi
       items:
         - name: Verileri değiştirme
@@ -157,12 +145,9 @@
           displayName: roles
         - name: Veri Depolama
           href: luis-concept-data-storage.md
-    - name: Test etme
-      items:
-        - name: Etkileşimli test
-          href: luis-concept-test.md
-        - name: Toplu işe testi
-          href: luis-concept-batch-test.md
+    - name: LUIS ve Soru-Cevap Oluşturma'yı kullanma
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: Enterprise
       items:
         - name: Tasarım stratejileri
@@ -183,13 +168,7 @@
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Önceden oluşturulmuş modelleri kullanma
-          items:
-            - name: Etki alanlarını kullanma
-              href: luis-prebuilt-domains.md
-            - name: Amaçları kullanma
-              href: luis-prebuilt-intent.md
-            - name: Varlıkları kullanma
-              href: luis-prebuilt-entities.md
+          href: howto-add-prebuilt-models.md
         - name: REST API’ler ile
           items:
             - name: Node.js kullanarak program aracılığıyla uygulama derleme
@@ -218,6 +197,7 @@
           href: luis-how-to-model-intent-pattern.md
     - name: Eğitim
       href: luis-how-to-train.md
+      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
     - name: Test etme
       items:
         - name: Etkileşimli test
@@ -246,13 +226,17 @@
           diplayName: 'import, export, container'
         - name: Traffic Manager ile
           href: luis-traffic-manager.md
-    - name: API'yi geçirme
+    - name: API kullanma
       items:
-        - name: V2 REST API’ye geçiş
-          href: luis-migration-api-v1-to-v2.md
-        - name: V3 REST API'ye geçiş
+        - name: Geliştiriciler için
+          href: developer-reference-resource.md
+        - name: Yazma API’leri
+          href: luis-migration-api-authoring.md
+        - name: V3 API'ye geçiş
           href: luis-migration-api-v3.md
           displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
+        - name: V2 API’ye geçiş
+          href: luis-migration-api-v1-to-v2.md
     - name: Kapsayıcıları kullanma
       items:
         - name: Kapsayıcıları yükleme ve çalıştırma
@@ -262,6 +246,9 @@
           href: luis-container-configuration.md
         - name: Kapsayıcı örnekleri kullanma
           href: deploy-luis-on-container-instances.md
+        - name: Kapsayıcı sınırlamaları
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
 - name: Başvuru
   items:
     - name: Kullanıcı gizliliği
@@ -325,6 +312,8 @@
           href: reference-entity-regular-expression.md
         - name: Basit varlık
           href: reference-entity-simple.md
+    - name: Yaklaşım
+      href: luis-reference-prebuilt-sentiment.md
     - name: Geliştirici kaynakları
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
@@ -334,9 +323,15 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: REST API'leri
       items:
-        - name: V2 REST API’lerde yazma
+        - name: V3 Yazma REST API'leri (Önizleme)
+          href: 'https://aka.ms/luis-apim-v3-authoring'
+        - name: V3 Tahmin REST API'leri
+          href: 'https://aka.ms/luis-apim-v3-prediction'
+        - name: V2 Yazma REST API’leri
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
-        - name: V2 REST API uç noktası
+        - name: V2 Tahmin REST API'leri
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
+        - name: Uç Nokta V3 REST API'si
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: HTTP kodları
           displayName: '400, 401, 403, 409, 410, 414, 429'
@@ -413,7 +408,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dil ve bölge desteği
       href: luis-language-support.md
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure Yol Haritası
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Sözlük
