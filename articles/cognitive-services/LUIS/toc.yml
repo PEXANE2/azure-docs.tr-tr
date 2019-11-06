@@ -42,7 +42,7 @@
     - name: Uygulama oluşturma
       items:
         - name: Kullanıcı amaçlarını belirleme
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: Önceden oluşturulmuş modellerle ortak kullanıcı verilerini belirleme
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: Kullanıcı sözlerinden yaklaşımı alma
@@ -116,6 +116,7 @@
           displayName: roles
         - name: Özellikler
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: Tahmin puanı
       href: luis-concept-prediction-score.md
     - name: En iyi uygulamalar

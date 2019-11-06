@@ -78,6 +78,8 @@
           items:
             - name: Fiyatlandırma katmanları
               href: concepts-pricing-tiers.md
+            - name: Ayrılmış kapasite için ön ödeme yapma
+              href: concept-reserved-pricing.md
             - name: Sınırlar
               href: concepts-limits.md
         - name: Veri erişimi ve güvenlik

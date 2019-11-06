@@ -6,6 +6,8 @@
   items:
     - name: Konuşma tanıma hizmeti nedir?
       href: overview.md
+    - name: Dil ve bölge desteği
+      href: language-support.md
 - name: Konuşmayı metne dönüştürme
   expanded: false
   items:
@@ -38,7 +40,7 @@
         - name: Sıkıştırılmış ses giriş biçimlerini kullanma
           href: how-to-use-codec-compressed-audio-input-streams.md
         - name: Docker kapsayıcılarıyla konuşma tanıma özelliğini kullanma
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=stt
     - name: Başvuru
       items:
         - name: Konuşma SDK'sı API'leri
@@ -87,7 +89,7 @@
         - name: Uzun Ses API'siyle konuşmayı sentezleme
           href: long-audio-api.md
         - name: Docker kapsayıcılarıyla konuşma sentezi özelliğini kullanma
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=tts
     - name: Başvuru
       items:
         - name: Konuşma SDK'sı

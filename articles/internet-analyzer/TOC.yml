@@ -9,7 +9,7 @@
     - name: Portalı kullanarak Internet Analyzer testi oluşturma
       href: internet-analyzer-create-test-portal.md
     - name: CLI kullanarak Internet Analyzer testi oluşturma
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: İstemciyi ekleme

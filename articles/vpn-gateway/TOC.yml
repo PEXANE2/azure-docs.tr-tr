@@ -200,8 +200,6 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Paket yakalamalarını yapılandırma
       href: packet-capture.md
-    - name: Özel trafik seçicilerini yapılandırma
-      href: custom-traffic-selectors.md
     - name: Sorun giderme
       href: vpn-gateway-troubleshoot.md
       items:
