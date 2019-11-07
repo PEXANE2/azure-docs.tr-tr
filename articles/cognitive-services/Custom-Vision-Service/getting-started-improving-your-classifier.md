@@ -1,7 +1,7 @@
 ---
 title: Sınıflandırıcınızı geliştirme-Özel Görüntü İşleme Hizmeti
 titleSuffix: Azure Cognitive Services
-description: Sınıflandırıcınızı kalitesini geliştirmeyi öğrenin.
+description: Bu makalede, miktardaki, kalitede ve çeşitli verilerin Özel Görüntü İşleme hizmetinde sınıflandırıcının kalitesini nasıl iyileştirebileceğinizi öğreneceksiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561045"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718532"
 ---
 # <a name="how-to-improve-your-classifier"></a>Sınıflandırıcınızı geliştirme
 
@@ -53,11 +53,11 @@ Normal kullanım sırasında sınıflandırıcıya gönderilecek öğeleri temsi
 
 Bu sorunu düzeltmek için, sınıflandırıcınızı iyi genelleştirdiğinden emin olmak üzere çeşitli görüntüler ekleyin. Aşağıda, eğitim ayarlarınızı daha farklı hale getirmek için kullanabileceğiniz bazı yollar verilmiştir:
 
-* __Arka plan__ Nesnenizin görüntülerini farklı arka planların önüne girin. Doğal bağlamlardaki fotoğraflar, sınıflandırıcının daha fazla bilgi sağlaması için nötr arka planların önünde bulunan fotoğraflardan daha iyidir.
+* __Arka plan:__ Nesnenizin görüntülerini farklı arka planların önüne girin. Doğal bağlamlardaki fotoğraflar, sınıflandırıcının daha fazla bilgi sağlaması için nötr arka planların önünde bulunan fotoğraflardan daha iyidir.
 
     ![Arka plan örneklerinin görüntüsü](./media/getting-started-improving-your-classifier/background.png)
 
-* __Aydınlatma__ Özellikle tahmin için kullanılan görüntülerin farklı ışıklandırmaya sahip olması halinde değişen aydınlatma (yani, Flash, yüksek pozlama vb. ile alınan) görüntüleri sağlayın. Ayrıca, değişen doygunluk, ton ve parlaklık ile görüntüleri kullanmak da yararlıdır.
+* __Aydınlatma:__ Özellikle tahmin için kullanılan görüntülerin farklı ışıklandırmaya sahip olması halinde değişen aydınlatma (yani, Flash, yüksek pozlama vb. ile alınan) görüntüleri sağlayın. Ayrıca, değişen doygunluk, ton ve parlaklık ile görüntüleri kullanmak da yararlıdır.
 
     ![Aydınlatma örneklerinin görüntüsü](./media/getting-started-improving-your-classifier/lighting.png)
 
@@ -65,11 +65,11 @@ Bu sorunu düzeltmek için, sınıflandırıcınızı iyi genelleştirdiğinden 
 
     ![Boyut örnekleri görüntüsü](./media/getting-started-improving-your-classifier/size.png)
 
-* __Kamera açısı:__ Farklı kamera açılarla çekilen görüntüleri sağlayın. Alternatif olarak, tüm fotoğraflarınızın sabit kameralar (örneğin, Gözetleme Kameralar) ile alınması gerekiyorsa, ilişkisiz nesneleri (lampgönderimleri gibi)&mdash;yorumlama üzerine çıkmasını önlemek için her düzenli olarak oluşan her nesneye farklı bir etiket atadığınızdan emin olun anahtar özelliği olarak.
+* __Kamera açısı:__ Farklı kamera açılarla çekilen görüntüleri sağlayın. Alternatif olarak, tüm fotoğraflarınızın sabit kameralar (örneğin, Gözetleme Kameralar) ile alınması gerekiyorsa, ilgisiz nesneleri (örneğin, lampgönderimleri gibi) yorumlama&mdash;anahtar özelliği.
 
     ![Açı örneklerinin görüntüsü](./media/getting-started-improving-your-classifier/angle.png)
 
-* __Biçim__ Aynı sınıfa ait farklı stillerin görüntülerini sağlayın (örneğin, aynı meyve 'in farklı değişen özellikleri). Ancak, büyük ölçüde farklı stilleriniz varsa (örneğin, Mickey Mouse ve gerçek hayatta bir fare), farklı özelliklerini daha iyi göstermek için bunları ayrı sınıflar olarak etiketlemenize önerilir.
+* __Stil:__ Aynı sınıfa ait farklı stillerin görüntülerini sağlayın (örneğin, aynı meyve 'in farklı değişen özellikleri). Ancak, büyük ölçüde farklı stilleriniz varsa (örneğin, Mickey Mouse ve gerçek hayatta bir fare), farklı özelliklerini daha iyi göstermek için bunları ayrı sınıflar olarak etiketlemenize önerilir.
 
     ![Stil örnekleri görüntüsü](./media/getting-started-improving-your-classifier/style.png)
 
@@ -78,9 +78,9 @@ Bu sorunu düzeltmek için, sınıflandırıcınızı iyi genelleştirdiğinden 
 Projenizde bir noktada, sınıflandırıcınızı daha doğru hale getirmenize yardımcı olmak için _negatif örnekler_ eklemeniz gerekebilir. Negatif örnekler, diğer etiketlerden hiçbiriyle eşleşmeyen olanlardır. Bu görüntüleri karşıya yüklediğinizde, özel **negatif** etiketi bunlara uygulayın.
 
 > [!NOTE]
-> Özel Görüntü İşleme Hizmeti, bazı otomatik negatif görüntü işlemeyi destekler. Örneğin, bir Grape vs. muz Sınıflandırıcısı oluşturuyorsanız ve tahmin için bir showe görüntüsü gönderirseniz, sınıflandırıcının hem Grape hem de muz için% 0 ' a yakın olması gerekir.
+> Özel Görüntü İşleme Hizmeti, bazı otomatik negatif görüntü işlemeyi destekler. Örneğin, bir Grape vs. muz Sınıflandırıcısı oluşturuyorsanız ve tahmin için bir showe görüntüsü gönderirseniz, sınıflandırıcının hem Grape hem de muz için %0 ' a yakın olması gerekir.
 > 
-> Öte yandan, negatif görüntülerin yalnızca eğitiminde kullanılan görüntülerin bir çeşitlemesi olduğu durumlarda, büyük benzerlikler nedeniyle modelin negatif görüntüleri etiketli bir sınıf olarak sınıflandırmasına neden olur. Örneğin, bir turuncu vs. grapemeyve sınıflandırıcınız varsa ve bir klementin 'nin görüntüsüne akış yaparsanız, klementin 'nın birçok özelliği Portages 'lere benzediğinden, klementin bir turuncu olarak puan verebilir. Negatif görüntüleriniz bu doğası içeriyorsa, modelin bu sınıflar arasında daha iyi ayırt edilmesini sağlamak için eğitim sırasında bir veya daha fazla ek etiket oluşturmanızı ve bu etiketle negatif görüntüleri etiketlemesini öneririz.
+> Öte yandan, negatif görüntülerin yalnızca eğitiminde kullanılan görüntülerin bir çeşitlemesi olduğu durumlarda, büyük benzerlikler nedeniyle modelin negatif görüntüleri etiketli bir sınıf olarak sınıflandırmasına neden olur. Örneğin, bir turuncu vs. grapemeyve sınıflandırıcınız varsa ve bir klementin 'nin görüntüsüne akış yaparsanız, klementin 'nın birçok özelliği Portages 'lere benzediğinden, klementin bir turuncu olarak puan verebilir. Negatif görüntüleriniz bu doğası içeriyorsa, modelin bu sınıflar arasında daha iyi ayırt edilmesini sağlamak için eğitim sırasında bir veyadaha fazla ek etiket oluşturmanızı ve bu etiketle negatif görüntüleri etiketlemesini öneririz.
 
 ## <a name="use-prediction-images-for-further-training"></a>Daha fazla eğitim için tahmin görüntülerini kullanma
 
@@ -92,7 +92,7 @@ Tahmin uç noktasına görüntü göndererek görüntü sınıflandırıcısın�
 
 2. Sınıflandırıcı tarafından tahmin edilen etiketleri görmek için bir görüntünün üzerine gelin. Görüntüler, Sınıflandırıcıların en iyi geliştirmelerini getirebileceği şekilde sıralanır. Farklı bir sıralama yöntemi kullanmak için __sıralama__ bölümünde bir seçim yapın. 
 
-    Mevcut eğitim verilerinize bir görüntü eklemek için görüntüyü seçin, doğru etiketleri ayarlayın ve __Kaydet ve Kapat__' a tıklayın. Görüntü tahminlerden kaldırılır ve eğitim  görüntüleri kümesine eklenir. Bunu, __eğitim görüntüleri__ sekmesini seçerek görüntüleyebilirsiniz.
+    Mevcut eğitim verilerinize bir görüntü eklemek için görüntüyü seçin, doğru etiketleri ayarlayın ve __Kaydet ve Kapat__' a tıklayın. Görüntü __tahminlerden__ kaldırılır ve eğitim görüntüleri kümesine eklenir. Bunu, __eğitim görüntüleri__ sekmesini seçerek görüntüleyebilirsiniz.
 
     ![Etiketleme sayfasının görüntüsü](./media/getting-started-improving-your-classifier/tag.png)
 

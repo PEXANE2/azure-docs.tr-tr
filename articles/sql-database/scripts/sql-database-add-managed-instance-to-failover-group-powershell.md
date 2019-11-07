@@ -1,5 +1,5 @@
 ---
-title: PowerShell örneği-yük devretme grubu-Azure SQL veritabanı yönetilen örneği | Microsoft Docs
+title: PowerShell örneği-yük devretme grubu-Azure SQL veritabanı yönetilen örneği
 description: Azure SQL veritabanı yönetilen örneği oluşturmak, bir yük devretme grubuna eklemek ve yük devretme sınamasını yapmak için örnek betik Azure PowerShell.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f753dbce66c8db9c4098e716725f0a63fc68d4f7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e50877f6f3194885b139683fe865144384716b48
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956295"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691750"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>PowerShell kullanarak bir yük devretme grubuna Azure SQL veritabanı yönetilen örneği ekleme 
 

@@ -1,7 +1,7 @@
 ---
 title: Marka Algılama-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API'si kullanarak marka/logo algılamayla ilgili kavramlar.
+description: Bu makalede, nesne algılamada özelleştirilmiş bir mod ele alınmaktadır; Görüntü İşleme API'si kullanarak marka ve/veya amblem algılama.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967084"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718624"
 ---
 # <a name="detect-popular-brands-in-images"></a>Görüntülerde popüler markaların algılanması
 
@@ -74,7 +74,7 @@ Bazı durumlarda, marka algılayıcısı hem logo görüntüsünü hem de stiliz
 
 ## <a name="use-the-api"></a>API’yi kullanma
 
-Marka algılama özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. `Brands` **Visualfeatures** sorgu parametresine dahil edin. Ardından, tam JSON yanıtını aldığınızda, bu dizeyi yalnızca `"brands"` bölüm içeriği için ayrıştırın.
+Marka algılama özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. **Visualfeatures** sorgu parametresine `Brands` ekleyin. Ardından, tam JSON yanıtını aldığınızda `"brands"` bölümünün içeriği için dizeyi ayrıştırın.
 
-* [Hızlı Başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [Hızlı Başlangıç: Görüntü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+* [Hızlı başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

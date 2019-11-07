@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus - Event Grid tümleştirmesi örnekleri | Microsoft Docs
-description: Bu makalede, Service Bus mesajlaşma ve Event Grid tümleştirmesi örnekleri sağlanmaktadır.
+title: 'Öğretici: Event Grid tümleştirme örneklerine Azure Service Bus'
+description: 'Öğretici: Bu makalede Service Bus mesajlaşma ve Event Grid tümleştirme örnekleri sunulmaktadır.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304231"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719012"
 ---
-# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verin
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Öğretici: Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına yanıt verme
 Bu öğreticide, Azure Işlevleri ve Azure Logic Apps kullanarak Azure Event Grid aracılığıyla alınan Azure Service Bus olaylarına nasıl yanıt verileceğini öğreneceksiniz. Aşağıdaki adımları uygulayın:
  
 - Hata ayıklama ve Event Grid ilk olay akışını görüntülemek için bir test Azure işlevi oluşturun.
@@ -35,7 +35,7 @@ Service Bus, Event Grid, Azure Işlevleri ve Logic Apps yapıtları oluşturdukt
 3. Olaya abone olan işlevin veya mantıksal uygulamanın olayı aldığını doğrulayın. 
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus ad alanı oluşturma
-Bu öğreticideki yönergeleri izleyin: [Hızlı Başlangıç: Aşağıdaki görevleri yapmak için Azure Portal, konuya](service-bus-quickstart-topics-subscriptions-portal.md) Service Bus konu ve abonelikler oluşturmak için kullanın:
+Bu öğreticideki yönergeleri izleyin: [hızlı başlangıç: Azure Portal kullanarak aşağıdaki görevleri yapmak için konuya bir Service Bus konu ve abonelik oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :
 
 - **Premium** Service Bus ad alanı oluşturun. 
 - Bağlantı dizesini alın. 
@@ -280,7 +280,7 @@ Aşağıdaki adımları izleyerek bir mantıksal uygulamayı Azure Service Bus v
     3. **Kaynak adı**için Service Bus ad alanınızı seçin. 
     4. **Yeni parametre Ekle**' yi seçin ve **sonek filtresi**' ni seçin. 
     5. **Sonek filtresi**için ikinci Service Bus konu aboneliğinizin adını girin. 
-        ![Logic Apps Tasarımcısı-olayı yapılandırma](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+        ![Logic Apps Tasarımcısı-olay](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png) yapılandırma
 6. Tasarımcıda **+ yeni adım** ' ı seçin ve aşağıdaki adımları uygulayın:
     1. **Service Bus**arayın.
     2. Listeden **Service Bus** seçin. 
@@ -291,10 +291,10 @@ Aşağıdaki adımları izleyerek bir mantıksal uygulamayı Azure Service Bus v
     5. **Bağlantı için bir ad**girin. Örneğin: **Konu aboneliğinden Iletiler alın**ve Service Bus ad alanını seçin. 
 
         ![Logic Apps Tasarımcısı-Service Bus ad alanını seçin](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
-    6. Seçin **RootManageSharedAccessKey**.
+    6. **RootManageSharedAccessKey**öğesini seçin.
 
         ![Logic Apps Tasarımcısı-paylaşılan erişim anahtarını seçin](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
-    7. **Oluştur**’u seçin. 
+    7. **Oluştur**'u seçin. 
     8. Konuyu ve aboneliğinizi seçin. 
     
         ![Logic Apps tasarımcı-Service Bus konu ve aboneliğinizi seçin](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)

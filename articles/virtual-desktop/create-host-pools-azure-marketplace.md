@@ -1,5 +1,5 @@
 ---
-title: Azure Marketi 'ni kullanarak bir Windows sanal masaüstü konak havuzu oluşturma-Azure
+title: Windows sanal masaüstü konak havuzu Azure Marketi-Azure
 description: Azure Marketi 'ni kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482229"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605579"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
 
@@ -73,7 +73,9 @@ Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümde
 **Sanal makine ayarları** dikey penceresi için:
 
 >[!NOTE]
-> VM 'lerinizi bir Azure Active Directory Domain Services (Azure AD DS) ortamına katılıyorsanız, etki alanına katılma kullanıcısının [AAD DC Yöneticiler grubunun](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)da bir üyesi olduğundan emin olun.
+> VM 'lerinizi bir Azure Active Directory Domain Services (Azure AD DS) ortamına katılıyorsanız, etki alanına katılma Kullanıcı tarafından [AAD DC yöneticileri grubunun](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)bir üyesi olduğundan emin olun.
+>
+> Hesap Ayrıca Azure AD DS yönetilen etki alanının veya Azure AD kiracısının bir parçası olmalıdır-Azure AD kiracınızla ilişkili dış dizinlerden gelen hesaplar, etki alanına ekleme işlemi sırasında doğru şekilde kimlik doğrulaması yapamaz. 
 
 1. **Görüntü kaynağı**için kaynağı seçin ve nasıl bulacağınızı ve nasıl depolanacağını öğrenmek için uygun bilgileri girin. Yönetilen diskler kullanmayı tercih ederseniz,. vhd dosyasını içeren depolama hesabını seçin.
 2. VM 'Lere Active Directory etki alanına katılacak etki alanı hesabının kullanıcı asıl adını ve parolasını girin. Bu aynı Kullanıcı adı ve parola, sanal makinelerde yerel bir hesap olarak oluşturulacaktır. Bu yerel hesapları daha sonra sıfırlayabilirsiniz.

@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici 2: Kredi risk modellerini eğitme'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio klasik sürümünde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür. Modellerin nasıl eğiteleceğini ve değerlendirileceğini gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: ce3661a75d35ab39b7e8b551cc0b84b57a76e032
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 375fdf9b64afcce2d521008d353949e650f9df5e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492549"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622068"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Öğretici 2: Kredi risk modellerini eğitme-Azure Machine Learning Studio (klasik)
 
@@ -38,7 +38,7 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 
 [Öğreticinin üçüncü kısmında](tutorial-part3-credit-risk-deploy.md), modeli bir Web hizmeti olarak dağıtacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Öğreticiden birinin bir kısmını](tutorial-part1-credit-risk.md)doldurun.
 
@@ -88,7 +88,7 @@ Denemenin bu bölümü artık şuna benzer:
 
 1. **Tamam** onay işaretine tıklayın.
 
-### <a name="two-class-support-vector-machine"></a>İki Sınıflı Destek Vektör Makinesi
+### <a name="two-class-support-vector-machine"></a>Çift Sınıflı Destek Vektör Makinesi
 
 Ardından, SVM modelini ayarlarsınız.  
 

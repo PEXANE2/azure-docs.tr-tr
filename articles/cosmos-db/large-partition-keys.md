@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436800"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721102"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Büyük bölüm anahtarı ile kapsayıcılar oluşturma
 
@@ -71,13 +71,14 @@ Büyük bölüm anahtarları, SDK 'ların aşağıdaki en düşük sürümleriyl
 |.NET     |    1,18     |
 |Java eşitleme     |   2.4.0      |
 |Java zaman uyumsuz   |  2.5.0        |
-| REST API | `x-ms-version` istek üst bilgisini kullanarak `2017-05-03` ' dan yüksek sürüm.|
+| REST API | `x-ms-version` istek üst bilgisini kullanarak `2017-05-03` sürümü daha yüksektir.|
+| Resource Manager şablonu | sürüm 2, `partitionKey` nesnesi içindeki `"version":2` özelliğini kullanarak. |
 
 Şu anda, Power BI ve Azure Logic Apps içinde büyük bölüm anahtarı ile kapsayıcıları kullanamazsınız. Kapsayıcıları, bu uygulamalardan büyük bir bölüm anahtarı olmadan kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
-* [Azure Cosmos DB'de İstek Birimleri](request-units.md)
+* [Azure Cosmos DB'de İstek birimleri](request-units.md)
 * [Kapsayıcılar ve veritabanları üzerinde üretilen iş sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)

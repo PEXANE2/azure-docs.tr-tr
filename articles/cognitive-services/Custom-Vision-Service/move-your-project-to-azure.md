@@ -1,7 +1,7 @@
 ---
 title: Sınırlı bir deneme projesini Azure 'a taşıma
 titleSuffix: Azure Cognitive Services
-description: Sınırlı bir deneme projesini Azure 'a taşımayı öğrenin.
+description: Özel Görüntü İşleme için sınırlı bir deneme projeniz mı var? Bu makalede, bir geçiş betiği ile Azure 'a nasıl taşıyacağınız gösterilmektedir.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560919"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718898"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Sınırlı deneme projenizi Azure 'a taşıma
 
@@ -27,7 +27,7 @@ Sınırlı deneme sürümü kaldırma işlemindeki anahtar son tarihleri dahil o
 
 [Geçiş betiği](https://github.com/Azure-Samples/custom-vision-move-project) , geçerli yineleinizdeki tüm etiketleri, bölgeleri ve görüntüleri indirip karşıya yükleyerek bir projeyi yeniden oluşturmanızı sağlar. Daha sonra eğitebileceğiniz yeni aboneliğinizdeki yeni bir proje ile sizi bu şekilde bırakacaktır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Özel görüntü işleme web sitesinde](https://customvision.ai)oturum açmak için kullanmak istediğiniz Microsoft hesabı veya Azure ACTIVE DIRECTORY (AAD) hesabıyla ilişkili geçerli bir Azure aboneliğine ihtiyacınız olacaktır. 
     - Azure hesabınız yoksa ücretsiz [bir hesap oluşturun](https://azure.microsoft.com/free/) .
@@ -46,7 +46,7 @@ Birden çok proje tek bir kaynakla ilişkilendirilebilir. [Fiyatlandırma ve lim
 
 ## <a name="find-your-limited-trial-project-information"></a>Sınırlı deneme projesi bilgilerinizi bulun
 
-Projenizi taşımak için geçirmeye çalıştığınız proje için _proje kimliği_ ve _eğitim anahtarına_ ihtiyacınız olacaktır. Bu bilgilere sahip değilseniz, projelerinizden her birine [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) ait kimliği ve anahtarı almak için adresini ziyaret edin. 
+Projenizi taşımak için geçirmeye çalıştığınız proje için _proje kimliği_ ve _eğitim anahtarına_ ihtiyacınız olacaktır. Bu bilgilere sahip değilseniz, projelerinizden her birine ait KIMLIĞI ve anahtarı almak için [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) ziyaret edin. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Projenizi Azure 'a kopyalamak için Python örnek kodunu kullanın
 

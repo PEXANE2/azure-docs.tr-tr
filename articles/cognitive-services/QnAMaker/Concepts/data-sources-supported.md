@@ -1,7 +1,7 @@
 ---
 title: Desteklenen veri kaynakları-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Soru-Cevap Oluşturma, SSS, ürün el kitabı, yönergeler, destek belgeleri ve Web sayfaları, PDF dosyaları ya da MS Word Doc dosyaları olarak depolanan ilkeler gibi yarı yapılandırılmış içeriklerden soru-cevap çiftlerini otomatik olarak ayıklar. İçerik, yapılandırılmış QnA içerik dosyalarından Bilgi Bankası 'na da eklenebilir.
+description: Soru-Cevap Oluşturma Web sayfaları, PDF dosyaları veya MS Word belge dosyaları ya da yapılandırılmış QnA içerik dosyaları olarak depolanan soru-cevap çiftlerini otomatik olarak ayıklar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a1fcc1bec5db3ad64dc045cf5e1a449fce808132
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176365"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721211"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Soru-Cevap Oluşturma içerik için veri kaynakları
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda, Soru-Cevap Oluşturma tarafından desteklenen içerik ve d
 
 |Kaynak Türü|İçerik türü| Örnekler|
 |--|--|--|
-|URL|SSS<br> (Düz, bölümler ile veya konu başlığı ile)<br>Destek sayfaları <br> (Tek sayfalı nasıl yapılır makaleleri, sorun giderme makaleleri vb.)|[Düz SSS](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Bağlantılarla Ilgili SSS](https://www.microsoft.com/en-us/software-download/faq),<br> [Konularda SSS giriş sayfası](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Destek makalesi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|URL'si|SSS<br> (Düz, bölümler ile veya konu başlığı ile)<br>Destek sayfaları <br> (Tek sayfalı nasıl yapılır makaleleri, sorun giderme makaleleri vb.)|[Düz SSS](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Bağlantılarla Ilgili SSS](https://www.microsoft.com/en-us/software-download/faq),<br> [Konularda SSS giriş sayfası](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Destek makalesi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
 |PDF/BELGE|Sık<br> Ürün el kitabı,<br> Broşürler<br> T<br> El ilanı Ilkesi,<br> Destek Kılavuzu,<br> Yapılandırılmış QnA,<br> benzerlerini.|[Yapılandırılmış QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek ürün el ile. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Örnek semi-structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek Teknik İnceleme. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf),<br>[Örnek multi-turn. docx](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
 |\* Excel|Yapılandırılmış QnA dosyası<br> (RTF, HTML desteği dahil)|[Örnek QnA SSS. xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |\* TXT/TSV|Yapılandırılmış QnA dosyası|[Örnek Chit-Chat. tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
@@ -213,8 +213,8 @@ Güncelleştirme/değiştirme Bilgi Bankası API 'Lerini kullanarak içerik ekle
 
 | HTML 'yi koru  | API isteğindeki temsili  | KB cinsinden temsil |
 |-----------|---------|-------------------------|
-| Yes | \&lt; br\&gt; | &lt;br&gt; |
-| Yes | \&lt; H3\&gt; üst bilgi\&lt;/H3\&gt; | &lt;H3&gt;üst bilgisi&lt;/H3&gt; |
+| Evet | \&lt; br\&gt; | &lt;br&gt; |
+| Evet | \&lt; H3\&gt; üst bilgi\&lt;/H3\&gt; | &lt;H3&gt;üst bilgisi&lt;/H3&gt; |
 
 Ayrıca, CR LF (\r\n), BB 'ye dönüştürülür. LF (\n) olduğu gibi tutulur. Bir kaçış sırasını \t veya \n gibi atlamak istiyorsanız ters eğik çizgi kullanabilirsiniz, örneğin: '\\\\r\\\\n ' ve '\\\\t '
 

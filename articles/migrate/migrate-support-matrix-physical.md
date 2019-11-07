@@ -7,16 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 56e49ab60733c9c0a813ca6e46712bcd8052a2ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518157"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715378"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Fiziksel sunucu değerlendirmesi ve geçişi için destek matrisi
 
 Makineleri değerlendirmek ve Microsoft Azure buluta geçirmek için [Azure geçişi hizmetini](migrate-overview.md) kullanabilirsiniz. Bu makalede, şirket içi fiziksel sunucuları değerlendirmek ve geçirmek için destek ayarları ve sınırlamaları özetlenmektedir.
+
+> [!NOTE]
+> Burada henüz Azure geçişi portalında görmeyeceğiniz Özellikler bahsedildiğinde, ' ı kapatın. Bu, sonraki hafta içinde görünürler.
 
 
 ## <a name="physical-server-scenarios"></a>Fiziksel sunucu senaryoları

@@ -1,19 +1,19 @@
 ---
 title: Öğretici-Azure 'da Azure Kubernetes hizmeti (AKS) kümelerini kullanarak yapılandırma
-description: Azure 'da bir Azure Kubernetes hizmet kümesi oluşturmak ve yönetmek için nasıl kullanılacağını öğrenin
+description: Ansible'ı kullanarak Azure'da Azure Kubernetes Service kümesi oluşturmayı ve kullanmayı öğrenin
 keywords: anyalabilen, Azure, DevOps, Bash, cloudshell, PlayBook, aks, Container, aks, Kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/04/2019
+ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242080"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614372"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Öğretici: Azure 'da Azure Kubernetes hizmeti (AKS) kümelerini anormal kullanarak yapılandırma
 
@@ -30,7 +30,7 @@ AKS, Kullanıcı kimlik doğrulaması için [Azure Active Directory (ad)](/azure
 > * AKS kümesi oluşturma
 > * AKS kümesi yapılandırma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -40,7 +40,7 @@ AKS, Kullanıcı kimlik doğrulaması için [Azure Active Directory (ad)](/azure
 
 Örnek PlayBook, kaynak grubu içinde bir kaynak grubu ve bir AKS kümesi oluşturur.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `azure_create_aks.yml` olarak kaydedin:
 
 ```yml
 - name: Create Azure Kubernetes Service
@@ -54,7 +54,8 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
     ssh_key: "your_ssh_key"
     client_id: "your_client_id"
     client_secret: "your_client_secret"
-  tasks:
+    aks_version: aks_version
+tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
@@ -65,6 +66,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
       location: "{{ location }}"
       resource_group: "{{ resource_group }}"
       dns_prefix: "{{ aks_name }}"
+      kubernetes_version: "{{aks_version}}"
       linux_profile:
         admin_username: "{{ username }}"
         ssh_key: "{{ ssh_key }}"
@@ -81,11 +83,12 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-- @No__t-0 ' daki ilk bölüm, `eastus` konumunda `myResourceGroup` adlı bir kaynak grubu tanımlar.
-- @No__t-0 ' daki ikinci bölüm, `myResourceGroup` kaynak grubu içinde `myAKSCluster` adlı bir AKS kümesini tanımlar.
-- @No__t-0 yer tutucusu için, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan RSA ortak anahtarınızı tek satırlık biçimde girin.
+- `tasks` içindeki ilk bölüm `eastus` konumu içinde `myResourceGroup` adlı bir kaynak grubu tanımlar.
+- `tasks` içindeki ikinci bölüm `myResourceGroup` kaynak grubu içinde `myAKSCluster` adlı bir AKS kümesini tanımlar.
+- `your_ssh_key` yer tutucusu için, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan RSA ortak anahtarınızı tek satırlık biçimde girin.
+- `aks_version` yer tutucusu için [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) komutunu kullanın.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook azure_create_aks.yml
@@ -109,11 +112,11 @@ PLAY RECAP
 localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
-## <a name="scale-aks-nodes"></a>AKS düğümlerini ölçeklendirin
+## <a name="scale-aks-nodes"></a>AKS düğümlerini ölçeklendirme
 
-Önceki bölümde yer aldığı örnek PlayBook iki düğümü tanımlar. @No__t-1 bloğundaki `count` değerini değiştirerek düğüm sayısını ayarlayabilirsiniz.
+Önceki bölümde yer alan örnek playbook, iki düğüm tanımlar. `agent_pool_profiles` bloğundaki `count` değerini değiştirerek düğüm sayısını ayarlayabilirsiniz.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `azure_configure_aks.yml` olarak kaydedin:
 
 ```yml
 - name: Scale AKS cluster
@@ -148,9 +151,9 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-- @No__t-0 yer tutucusu için, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan RSA ortak anahtarınızı tek satırlık biçimde girin.
+- `your_ssh_key` yer tutucusu için, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan RSA ortak anahtarınızı tek satırlık biçimde girin.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
@@ -171,11 +174,11 @@ PLAY RECAP
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="delete-a-managed-aks-cluster"></a>Yönetilen bir AKS kümesini silme
+## <a name="delete-a-managed-aks-cluster"></a>Yönetilen AKS kümesini silme
 
 Örnek PlayBook bir AKS kümesini siler.
 
-Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
+Aşağıdaki playbook'u `azure_delete_aks.yml` olarak kaydedin:
 
 
 ```yml
@@ -193,7 +196,7 @@ Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
       state: absent
   ```
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook azure_delete_aks.yml
@@ -216,4 +219,4 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Kubernetes Service 'te (AKS) uygulama ölçeklendirme](/azure/aks/tutorial-kubernetes-scale)
+> [Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamayı ölçeklendirme](/azure/aks/tutorial-kubernetes-scale)

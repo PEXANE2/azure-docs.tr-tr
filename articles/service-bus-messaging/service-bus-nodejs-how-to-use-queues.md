@@ -1,6 +1,6 @@
 ---
-title: Node. js ' de Azure Service Bus kuyruklarını kullanma
-description: Azure 'da bir Node. js uygulamasından Service Bus kuyruklarını nasıl kullanacağınızı öğrenin.
+title: "Hızlı başlangıç: node. js ' de Azure Service Bus kuyrukları kullanma"
+description: "Hızlı başlangıç: bir Node. js uygulamasından Azure 'da Service Bus kuyruklarını nasıl kullanacağınızı öğrenin."
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,27 +11,28 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 1aba29f8ed7cacb8f2911ae2d37358869e6a7730
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 404163ed93549b55ceadad10825a9cf682de470b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001132"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719232"
 ---
-# <a name="use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Node. js ve Azure-SB paketi ile Azure 'da Service Bus kuyruklarını kullanma
+# <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Hızlı başlangıç: node. js ve Azure-SB paketi ile Azure 'da Service Bus kuyruklarını kullanma
+
 > [!div class="op_multi_selector" title1="Programlama dili" title2="Node. js 'a paketi ekleyin"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-queues.md)
 > - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
 
 Bu öğreticide, [Azure-SB](https://www.npmjs.com/package/azure-sb) paketini kullanarak bir Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Node. js uygulamaları oluşturmayı öğreneceksiniz. Örnekler JavaScript 'te yazılır ve Azure-SB paketini dahili olarak kullanan Node. js [Azure modülünü](https://www.npmjs.com/package/azure) kullanır.
 
-[Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni [@azure/service-bus ' i](https://www.npmjs.com/package/@azure/service-bus) kullanarak daha hızlı bir deneyim edinebilirsiniz. Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Node. js ve @azure/service-bus paketiyle Service Bus kuyrukları kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), aksi takdirde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
+[Azure-SB](https://www.npmjs.com/package/azure-sb) PAKETI [Service Bus Rest çalışma zamanı API 'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullanır. Daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md)kullanan yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) kullanarak daha hızlı bir deneyim edinebilirsiniz. Yeni paket hakkında daha fazla bilgi edinmek için bkz. [Node. js ve @azure/service-bus paketiyle Service Bus kuyruklarını kullanma](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), aksi halde okumaya devam etme, [Azure](https://www.npmjs.com/package/azure) paketini nasıl kullanacağınızı öğrenmek için.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
 - Birlikte çalışmak için bir kuyruğunuz yoksa, bir kuyruk oluşturmak için [Service Bus kuyruğu oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-portal.md) adımlarını izleyin.
     1. Service Bus **kuyruklara**hızlı **genel bakış** konusunu okuyun. 
@@ -49,7 +50,7 @@ Boş bir Node. js uygulaması oluşturun. Node. js uygulamasının nasıl oluşt
 Azure Service Bus kullanmak için Node. js Azure paketini indirip kullanın. Bu paket, Service Bus REST hizmetleriyle iletişim kuran bir kitaplıklar kümesi içerir.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi edinmek için düğüm Paket Yöneticisi 'Ni (NPM) kullanın
-1. Örnek uygulamanızı oluşturduğunuz **c: \\node @ no__t-3sbqueues @ no__t-4WebRole1** klasörüne gitmek için **Node. js için Windows PowerShell** komut penceresini kullanın.
+1. Örnek uygulamanızı oluşturduğunuz **\\sbqueues\\WebRole1 klasörüne\\** gitmek için **Node. js için Windows PowerShell** komut penceresini kullanın.
 2. Komut penceresine **NPM 'yi yüklemek** için aşağıdaki örneğe benzer bir çıktı ile sonuçlanır:
 
     ```
@@ -75,18 +76,18 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Azure Service Bus bağlantısını ayarlama
-Azure modülü Service Bus bağlanmak için gereken bilgileri almak üzere `AZURE_SERVICEBUS_CONNECTION_STRING` ortam değişkenini okur. Bu ortam değişkeni ayarlanmamışsa, `createServiceBusService` ' ı çağırırken hesap bilgilerini belirtmeniz gerekir.
+Azure modülü Service Bus bağlanmak için gereken bilgileri almak üzere `AZURE_SERVICEBUS_CONNECTION_STRING` ortam değişkenini okur. Bu ortam değişkeni ayarlanmamışsa, `createServiceBusService`çağırırken hesap bilgilerini belirtmeniz gerekir.
 
 Bir Azure Web sitesi için [Azure Portal][Azure portal] ortam değişkenlerini ayarlamaya ilişkin bir örnek için, bkz. [Storage ile Node. js web uygulaması][Node.js Web Application with Storage].
 
-## <a name="create-a-queue"></a>Bir kuyruk oluşturma
+## <a name="create-a-queue"></a>Kuyruk oluşturma
 **Servicebusservice** nesnesi Service Bus kuyruklarıyla çalışmanıza olanak sağlar. Aşağıdaki kod bir **Servicebusservice** nesnesi oluşturur. Azure modülünü içeri aktarma ifadesinden sonra, **Server. js** dosyasının en üstüne yakın bir şekilde ekleyin:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-**Servicebusservice** nesnesinde `createQueueIfNotExists` ' ı çağırarak, belirtilen sıra döndürülür (varsa) veya belirtilen ada sahip yeni bir sıra oluşturulur. Aşağıdaki kod, `myqueue` adlı kuyruğu oluşturmak veya bu kuyruğa bağlanmak için `createQueueIfNotExists` kullanır:
+**Servicebusservice** nesnesinde `createQueueIfNotExists` çağırarak, belirtilen sıra döndürülür (varsa) veya belirtilen ada sahip yeni bir sıra oluşturulur. Aşağıdaki kod, `myqueue`adlı kuyruğu oluşturmak veya bu kuyruğa bağlanmak için `createQueueIfNotExists` kullanır:
 
 ```javascript
 serviceBusService.createQueueIfNotExists('myqueue', function(error){
@@ -96,7 +97,7 @@ serviceBusService.createQueueIfNotExists('myqueue', function(error){
 });
 ```
 
-@No__t-0 yöntemi, ileti Süresi canlı veya en büyük sıra boyutu gibi varsayılan sıra ayarlarını geçersiz kılmanızı sağlayan ek seçenekleri de destekler. Aşağıdaki örnek, en büyük sıra boyutunu 5 GB ve yaşam süresi (TTL) değeri olarak 1 dakika olarak ayarlar:
+`createServiceBusService` yöntemi, ileti Süresi canlı veya en büyük sıra boyutu gibi varsayılan sıra ayarlarını geçersiz kılmanızı sağlayan ek seçenekleri de destekler. Aşağıdaki örnek, en büyük sıra boyutunu 5 GB ve yaşam süresi (TTL) değeri olarak 1 dakika olarak ayarlar:
 
 ```javascript
 var queueOptions = {
@@ -118,15 +119,15 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 function handle (requestOptions, next)
 ```
 
-İstek seçeneklerinde ön işlemesini gerçekleştirdikten sonra, yöntem `next` ' ı çağırmalıdır ve aşağıdaki imzayla bir geri çağırma işlemi geçirmelidir:
+İstek seçeneklerinde ön işlemesini gerçekleştirdikten sonra, yöntem `next`çağırmalıdır ve aşağıdaki imzayla bir geri çağırma işlemi döndürmelidir:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-Bu geri çağırmada ve `returnObject` (istekten sunucuya olan yanıt) işlendikten sonra geri çağırma, diğer filtreleri işlemeye devam etmek için varsa veya hizmet çağrısını sonlandıran `finalCallback` ' yi çağırmak için, `next` ' i çağırmalıdır.
+Bu geri çağırmada ve `returnObject` (istekten sunucuya olan yanıt) işlendikten sonra geri çağırma, diğer filtreleri işlemeye devam etmek için varsa ve hizmet çağrısını sonlandıran `finalCallback`çağırmak için `next` çağırmalıdır.
 
-Node. js için Azure SDK, `ExponentialRetryPolicyFilter` ve `LinearRetryPolicyFilter` için yeniden deneme mantığı uygulayan iki filtre bulunur. Aşağıdaki kod, `ExponentialRetryPolicyFilter` ' i kullanan `ServiceBusService` nesnesi oluşturur:
+Yeniden deneme mantığını uygulayan iki filtre Node. js, `ExponentialRetryPolicyFilter` ve `LinearRetryPolicyFilter`Azure SDK 'sına dahildir. Aşağıdaki kod, `ExponentialRetryPolicyFilter`kullanan bir `ServiceBusService` nesnesi oluşturur:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -136,7 +137,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ## <a name="send-messages-to-a-queue"></a>Kuyruğa ileti gönderme
 Service Bus kuyruğuna ileti göndermek için, uygulamanız **Servicebusservice** nesnesinde `sendQueueMessage` yöntemini çağırır. Service Bus sıralara gönderilen iletiler (ve öğesinden alınan), **Brokeredmessage** nesneleridir ve standart özellikler kümesi ( **etiket** ve **TimeToLive**gibi), uygulamaya özgü özel özellikleri tutmak için kullanılan bir sözlük ve Rastgele uygulama verilerinin gövdesi. Bir uygulama ileti olarak bir dize geçirerek ileti gövdesini ayarlayabilir. Gerekli standart özellikler varsayılan değerlerle doldurulur.
 
-Aşağıdaki örnek, `sendQueueMessage` kullanarak `myqueue` adlı kuyruğa test iletisinin nasıl gönderileceğini gösterir:
+Aşağıdaki örnek, `sendQueueMessage`kullanarak `myqueue` adlı kuyruğa test iletisinin nasıl gönderileceğini gösterir:
 
 ```javascript
 var message = {
@@ -154,13 +155,13 @@ serviceBusService.sendQueueMessage('myqueue', message, function(error){
 Service Bus kuyrukları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Standart ve özel uygulama özelliklerini içeren üst bilginin maksimum dosya boyutu 64 KB olabilir. Bir kuyrukta tutulan ileti sayısında bir sınır yoktur ancak bir sıranın tuttuğu iletilerin toplam boyutunun bir üst sınırı vardır. Bu kuyruk boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
-İleti, **Servicebusservice** nesnesindeki `receiveQueueMessage` yöntemi kullanılarak kuyruktan alınır. Varsayılan olarak, iletiler, okunan sırada kuyruktan silinir; Bununla birlikte, isteğe bağlı `isPeekLock` parametresini **true**olarak ayarlayarak iletiyi kuyruktan silmeksizin okuyabilir (Peek) ve kilitleyebilir.
+İleti, **Servicebusservice** nesnesindeki `receiveQueueMessage` yöntemi kullanılarak kuyruktan alınır. Varsayılan olarak, iletiler, okunan sırada kuyruktan silinir; Bununla birlikte, isteğe bağlı parametre `isPeekLock` **true**olarak ayarlayarak iletiyi kuyruktan silmeden iletiyi okuyabilir (Peek) ve kilitle ' yi kullanabilirsiniz.
 
 İletiyi alma işleminin bir parçası olarak okuma ve silmenin varsayılan davranışı en basit modeldir ve bir hata oluştuğunda bir uygulamanın bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonucu verir. Bu davranışı anlamak için, tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretleneceği için, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenmeden önce tüketilen ileti kaçırılmış olur.
 
-@No__t-0 parametresi **true**olarak ayarlanırsa, alma işlemi iki aşamalı bir işlem olur ve bu da eksik iletileri kabul edemediği uygulamaları desteklemeye olanak tanır. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), `deleteMessage` yöntemini çağırarak ve bir parametre olarak silinecek iletiyi sağlayarak alma işleminin ikinci aşamasını tamamlar. @No__t-0 yöntemi iletiyi tüketildiği şekilde işaretler ve kuyruktan kaldırır.
+`isPeekLock` parametresi **true**olarak ayarlanırsa, alma işlemi iki aşamalı bir işlem olur ve bu da eksik iletileri kabul edemediği uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), `deleteMessage` yöntemini çağırarak ve bir parametre olarak silinecek iletiyi sağlayarak alma işleminin ikinci aşamasını tamamlar. `deleteMessage` yöntemi iletiyi tüketildiği gibi işaretler ve sıradan kaldırır.
 
-Aşağıdaki örnek, `receiveQueueMessage` kullanarak iletilerin nasıl alınacağını ve işleyeceğini gösterir. Örnek öncelikle bir ileti alır ve siler, sonra `isPeekLock` ' ı **true**olarak ayarla ' yı kullanarak iletiyi alır, sonra iletiyi `deleteMessage` kullanarak siler:
+Aşağıdaki örnek, `receiveQueueMessage`kullanarak iletilerin nasıl alınacağını ve işleyeceğini gösterir. Örnek öncelikle bir iletiyi alır ve siler ve ardından `isPeekLock` **true**olarak ayarlanmış bir ileti alır ve `deleteMessage`kullanarak iletiyi siler:
 
 ```javascript
 serviceBusService.receiveQueueMessage('myqueue', function(error, receivedMessage){
@@ -181,7 +182,7 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunmayan iletileri giderme
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulaması iletiyi bir nedenden dolayı işleyebilirse, **Servicebusservice** nesnesinde `unlockMessage` yöntemini çağırabilir. Service Bus, kuyruktaki iletinin kilidini açmasına ve aynı uygulama ya da başka bir uygulama tarafından yeniden alınabileceğinden neden olur.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulaması iletiyi bir nedenden dolayı işleyebilirse, **Servicebusservice** nesnesinde `unlockMessage` yöntemi çağırabilir. Service Bus, kuyruktaki iletinin kilidini açmasına ve aynı uygulama ya da başka bir uygulama tarafından yeniden alınabileceğinden neden olur.
 
 Ayrıca, kuyruk içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı ve uygulamanın kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse), Service Bus otomatik olarak iletinin kilidini açar ve bunu yapar yeniden alınmak üzere kullanılabilir.
 

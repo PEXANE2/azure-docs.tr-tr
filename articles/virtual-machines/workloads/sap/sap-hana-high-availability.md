@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
+ms.date: 11/06/2019
 ms.author: sedusch
-ms.openlocfilehash: 5632ccf6c9b9cb67d169c5b60f1adefd85b576b8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791654"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721508"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği
 
@@ -124,7 +124,7 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
 1. Sanal ağ oluşturun.
 1. Bir kullanılabilirlik kümesi oluşturun.
    - En fazla güncelleştirme etki alanını ayarlayın.
-1. Yük Dengeleyici (iç) oluşturun.
+1. Yük Dengeleyici (iç) oluşturun. [Standart yük dengeleyiciyi](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)öneririz.
    - 2\. adımda oluşturulan sanal ağı seçin.
 1. Sanal makine oluşturun 1.
    - Seçtiğiniz VM türü üzerinde SAP HANA için desteklenen Azure galerisinde bir SLES4SAP görüntüsü kullanın.
@@ -133,64 +133,104 @@ GitHub üzerinde olan hızlı başlangıç şablonlarından birini, gerekli tüm
    - Seçtiğiniz VM türü üzerinde SAP HANA için desteklenen Azure galerisinde bir SLES4SAP görüntüsü kullanın.
    - Adım 3 ' te oluşturulan kullanılabilirlik kümesini seçin. 
 1. Veri diskleri ekleyin.
-1. Yük dengeleyiciyi yapılandırın. İlk olarak, bir ön uç IP havuzu oluşturun:
+1. Standart yük dengeleyici kullanıyorsanız, bu yapılandırma adımlarını izleyin:
+   1. İlk olarak, bir ön uç IP havuzu oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
+      1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
+      1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
+      1. **Tamam**’ı seçin.
+      1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
+   
+   1. Sonra, bir arka uç havuzu oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **arka uç havuzları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni arka uç havuzunun adını girin (örneğin, **Hana arka ucu**).
+      1. **Sanal ağ**' ı seçin.
+      1. **Sanal makine Ekle**' yi seçin.
+      1. \* * Sanal makine * * öğesini seçin.
+      1. SAP HANA kümesinin sanal makinelerini ve IP adreslerini seçin.
+      1. **Add (Ekle)** seçeneğini belirleyin.
+   
+   1. Sonra, bir sistem durumu araştırması oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
+      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. **Tamam**’ı seçin.
+   
+   1. Sonra, Yük Dengeleme kurallarını oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, **Hana-lb**).
+      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**, **Hana-arka uç** ve **Hana-HP**) seçin.
+      1. **Ha bağlantı noktalarını**seçin.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
 
-   1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
-   1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
-   1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
-   1. **Tamam**’ı seçin.
-   1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
+   > [!Note]
+   > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
-1. Sonra, bir arka uç havuzu oluşturun:
+1. Alternatif olarak, senaryonuz temel yük dengeleyiciyi kullanmayı belirlemesi durumunda aşağıdaki yapılandırma adımlarını izleyin:
+   1. İlk olarak, bir ön uç IP havuzu oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **ön uç IP havuzu**' nu seçin ve **Ekle**' yi seçin.
+      1. Yeni ön uç IP havuzunun adını girin (örneğin, **Hana-ön uç**).
+      1. **Atamayı** **statik** olarak ayarlayın ve IP adresini (örneğin, **10.0.0.13**) girin.
+      1. **Tamam**’ı seçin.
+      1. Yeni ön uç IP havuzu oluşturulduktan sonra, havuzun IP adresini aklınızda edin.
+   
+   1. Sonra, bir arka uç havuzu oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **arka uç havuzları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni arka uç havuzunun adını girin (örneğin, **Hana arka ucu**).
+      1. **Sanal makine Ekle**' yi seçin.
+      1. Adım 3 ' te oluşturulan kullanılabilirlik kümesini seçin.
+      1. SAP HANA kümesinin sanal makinelerini seçin.
+      1. **Tamam**’ı seçin.
+   
+   1. Sonra, bir sistem durumu araştırması oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
+      1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
+      1. **Tamam**’ı seçin.
+   
+   1. SAP HANA 1,0 için, Yük Dengeleme kurallarını oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**15).
+      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
+      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**15 girin.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
+      1. Bağlantı noktası 3**03**17 için bu adımları tekrarlayın.
+   
+   1. SAP HANA 2,0 için, sistem veritabanı için Yük Dengeleme kurallarını oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**13).
+      1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
+      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**13 yazın.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
+      1. Bağlantı noktası 3**03**14 için bu adımları tekrarlayın.
+   
+   1. SAP HANA 2,0 için, önce Kiracı veritabanı için Yük Dengeleme kurallarını oluşturun:
+   
+      1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
+      1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**40).
+      1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **Hana-ön uç**).
+      1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**40 yazın.
+      1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
+      1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
+      1. **Tamam**’ı seçin.
+      1. Bağlantı noktaları 3**03**41 ve 3**03**42 için bu adımları yineleyin.
 
-   1. Yük dengeleyiciyi açın, **arka uç havuzları**' nı seçin ve **Ekle**' yi seçin.
-   1. Yeni arka uç havuzunun adını girin (örneğin, **Hana arka ucu**).
-   1. **Sanal makine Ekle**' yi seçin.
-   1. Adım 3 ' te oluşturulan kullanılabilirlik kümesini seçin.
-   1. SAP HANA kümesinin sanal makinelerini seçin.
-   1. **Tamam**’ı seçin.
-
-1. Sonra, bir sistem durumu araştırması oluşturun:
-
-   1. Yük dengeleyiciyi açın, **sistem durumu araştırmaları**' nı seçin ve **Ekle**' yi seçin.
-   1. Yeni sistem durumu araştırmasının adını girin (örneğin, **Hana-HP**).
-   1. Protokol ve bağlantı noktası 625**03**olarak **TCP** ' yi seçin. **Aralık** değerini 5 olarak ve **sağlıksız eşik** değerini 2 olarak ayarlayın.
-   1. **Tamam**’ı seçin.
-
-1. SAP HANA 1,0 için, Yük Dengeleme kurallarını oluşturun:
-
-   1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-   1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**15).
-   1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
-   1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**15 girin.
-   1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
-   1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-   1. **Tamam**’ı seçin.
-   1. Bağlantı noktası 3**03**17 için bu adımları tekrarlayın.
-
-1. SAP HANA 2,0 için, sistem veritabanı için Yük Dengeleme kurallarını oluşturun:
-
-   1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-   1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**13).
-   1. Ön uç IP adresini, arka uç havuzunu ve daha önce oluşturduğunuz sistem durumu araştırmasını (örneğin, **Hana-ön uç**) seçin.
-   1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**13 yazın.
-   1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
-   1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-   1. **Tamam**’ı seçin.
-   1. Bağlantı noktası 3**03**14 için bu adımları tekrarlayın.
-
-1. SAP HANA 2,0 için, önce Kiracı veritabanı için Yük Dengeleme kurallarını oluşturun:
-
-   1. Yük dengeleyiciyi açın, **Yük Dengeleme kuralları**' nı seçin ve **Ekle**' yi seçin.
-   1. Yeni yük dengeleyici kuralının adını girin (örneğin, Hana-lb-3**03**40).
-   1. Daha önce oluşturduğunuz ön uç IP adresini, arka uç havuzunu ve sistem durumu araştırmasını seçin (örneğin, **Hana-ön uç**).
-   1. **Protokolü** **TCP**olarak ayarlayın ve bağlantı noktası 3**03**40 yazın.
-   1. **Boşta kalma zaman aşımını** 30 dakikaya yükseltin.
-   1. **Kayan IP**'yi etkinleştirdiğinizden emin olun.
-   1. **Tamam**’ı seçin.
-   1. Bağlantı noktaları 3**03**41 ve 3**03**42 için bu adımları yineleyin.
-
-SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya [SAP Note 2388694][2388694]' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
+   SAP HANA için gereken bağlantı noktaları hakkında daha fazla bilgi için, [SAP HANA kiracı veritabanları](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) Kılavuzu veya [SAP Note 2388694][2388694]' de [kiracı veritabanlarına yönelik bölüm bağlantılarını](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) okuyun.
 
 > [!IMPORTANT]
 > Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. TCP _Zaman damgaları** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

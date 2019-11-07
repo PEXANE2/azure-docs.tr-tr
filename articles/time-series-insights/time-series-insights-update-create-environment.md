@@ -8,36 +8,38 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 840280eecce60ac74514404497b857cd5362c9a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171652"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719457"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Öğretici: Azure Time Series Insights önizleme ortamı ayarlama
 
-Bu öğretici, bir Azure Time Series Insights Preview Kullandıkça Öde (PAYG) ortamı oluşturma sürecinde size rehberlik eder. 
+Bu öğretici, bir Azure Time Series Insights Preview Kullandıkça Öde (PAYG) ortamı oluşturma sürecinde size rehberlik eder.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
+>
 > * Azure Time Series Insights önizleme ortamı oluşturun.
-> * Azure Time Series Insights Preview ortamını Azure Event Hubs bir olay hub 'ına bağlayın.
+> * Azure Time Series Insights Preview ortamını bir IoT Hub bağlayın.
 > * Azure Time Series Insights önizleme ortamına veri akışı sağlamak için bir çözüm Hızlandırıcısı örneği çalıştırın.
 > * Veriler üzerinde temel analiz gerçekleştirin.
 > * Bir zaman serisi model türü ve hiyerarşisi tanımlayın ve bunları örneklerle ilişkilendirin.
+> * Power BI bağlayıcısını kullanın ve Power BI verileri görselleştirin.
 
 >[!TIP]
 > [IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) , özel IoT çözümlerinin geliştirilmesini hızlandırmak için kullanabileceğiniz kurumsal sınıf önceden yapılandırılmış çözümler sunar.
 
 Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure oturum açma hesabınız Ayrıca aboneliğin **sahip** rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
+* En azından, Azure aboneliği için **katkıda bulunan** rolüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Cihaz benzetimi oluşturma
 
@@ -47,7 +49,9 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
 
    [![Azure IoT Çözüm Hızlandırıcıları sayfası](media/v2-update-provision/device-one-accelerator.png)](media/v2-update-provision/device-one-accelerator.png#lightbox)
 
-   **Şimdi dene**' yi seçin.
+1. Sonraki sayfada **Şimdi dene**' yi seçin.
+
+   [Cihaz benzetimi sayfası ![](media/v2-update-provision/device-two-try.png)](media/v2-update-provision/device-two-try.png#lightbox)
 
 1. **Cihaz simülasyonu çözümü oluştur** sayfasında, aşağıdaki parametreleri ayarlayın:
 
@@ -55,12 +59,15 @@ Bu bölümde, bir Azure IoT Hub örneğine veri gönderen üç sanal cihaz oluş
     | --- | --- |
     | **Dağıtım adı** | Yeni bir kaynak grubu için benzersiz bir değer girin. Listelenen Azure kaynakları oluşturulur ve kaynak grubuna atanır. |
     | **Azure aboneliği** | Time Series Insights ortamınızı oluşturacağınız aboneliği seçin. |
-    | **Azure konumu** | Time Series Insights ortamınızı oluşturmak için kullandığınız bölgeyi seçin. |
+    | **Azure konumu** | Time Series Insights ortamınızı depolamayı planladığınız bölgeyi seçin. Cihaz benzeticisinin yalnızca sınırlı sayıda bölgede sunuldığına, bu nedenle istediğiniz bölgeyi görmüyorsanız yalnızca öğreticide bir konum seçin ve sonra da yeni bir TSI ortamı oluşturarak-b ' nin sonraki aşamasına geçmeye hazırsınız demektir. oarding.  |
     | **Dağıtım seçenekleri** | **Yeni IoT Hub sağla**' yı seçin. |
- 
-    **Çözüm oluştur**' u seçin. Çözümün dağıtımı tamamlaması 20 dakikaya kadar sürebilir.
 
-    [![cihaz benzetimi çözüm sayfası oluştur](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+    1. **Oluştur**'u seçin.
+    [Cihaz benzetimi sayfası ![](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
+
+1. Yaklaşık 20 dakika sonra çözüm hızlandırıcılarınız hazırlanacaktır.
+
+    [Cihaz benzetimi sayfası ![](media/v2-update-provision/device-two-ready.png)](media/v2-update-provision/device-two-ready.png#lightbox)
 
 ## <a name="create-a-preview-payg-environment"></a>Önizleme PAYG ortamı oluşturma
 
@@ -68,7 +75,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
 1. Abonelik hesabınızı kullanarak Azure portal oturum açın.
 
-1. **Time Series Insights** > **nesnelerin interneti**  >  **kaynak oluştur** ' u seçin.
+1. **Time Series Insights** > **nesnelerin interneti** > **kaynak oluştur** ' u seçin.
 
    [Nesnelerin İnterneti ' ![seçin ve Time Series Insights ' yı seçin.](media/v2-update-provision/payg-one-azure.png)](media/v2-update-provision/payg-one-azure.png#lightbox)
 
@@ -79,24 +86,24 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
     | **Ortam adı** | Azure Time Series Insights önizleme ortamı için benzersiz bir ad girin. |
     | **Abonelik** | Azure Time Series Insights Preview ortamını oluşturmak istediğiniz aboneliği girin. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı aboneliği kullanmaktır. |
     | **Kaynak grubu** | Mevcut bir kaynak grubunu seçin veya Azure Time Series Insights Preview ortamı kaynağı için yeni bir kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. En iyi uygulama, cihaz simülatörü tarafından oluşturulan diğer IoT kaynaklarıyla aynı kaynak grubunu kullanmaktır. |
-    | **Konum** | Azure Time Series Insights Preview ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, Azure Time Series Insights önizleme ortamınızı diğer IoT kaynaklarınızla aynı bölgede oluşturmak en iyisidir. |
+    | **Konum** | Azure Time Series Insights Preview ortamınız için bir veri merkezi bölgesi seçin. Ek gecikme süresini önlemek için, cihaz simülatörü tarafından oluşturulan IoT Hub 'ınız ile aynı bölgede Azure Time Series Insights önizleme ortamınızı oluşturmak en iyisidir. |
     | **Tier** |  **PAYG** (*Kullandıkça Öde*) öğesini seçin. Bu, Azure Time Series Insights önizleme ürünü için SKU 'dır. |
-    | **Özellik KIMLIĞI** | Zaman serisi örneğinizi benzersiz bir şekilde tanımlayan bir değer girin. **ÖZELLIK kimliği** kutusuna girdiğiniz değer sabittir ve daha sonra değiştirilemez. Bu öğretici için **ıothub-Connection-Device-ID**girin. Zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için bkz. [bir zaman SERISI kimliği seçmek Için en iyi uygulamalar](./time-series-insights-update-how-to-id.md). |
-    | **Depolama hesabı adı** | Soğuk depo için yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
-    |**Depolama hesabı çoğaltma**|İşletmeniz için uygun olan çoğaltma stratejisini seçin. Çeşitli çoğaltma stratejileri hakkında daha fazla bilgi edinmek için bkz. [Azure depolama artıklığı](../storage/common/storage-redundancy.md). |
-    |**Isınma deposunu etkinleştir**|İsteğe bağlı bir ısınma deposu oluşturun. Bu, herhangi bir zamanda silinebilir. Sıcak mağaza, en son verileriniz üzerinde daha hızlı, sınırsız sorgu (son 31 güne kadar) sağlar  |
-    |**Veri bekletme (gün)**|Isınma deposunda veri bekletmesini seçin. Varsayılan değer 7 gündür ve 31 güne kadar genişletilebilir |
-   
-   **İleri ' yi seçin: olay kaynağı**.
+    | **Özellik KIMLIĞI** | Zaman serisi örneğinizi benzersiz bir şekilde tanımlayan bir değer girin. **ÖZELLIK kimliği** kutusuna girdiğiniz değer daha sonra değiştirilemez. Bu öğretici için **ıothub-Connection-Device-ID**girin. Zaman serisi KIMLIĞI hakkında daha fazla bilgi edinmek için bkz. [bir zaman SERISI kimliği seçmek Için en iyi uygulamalar](./time-series-insights-update-how-to-id.md). |
+    | **Depolama hesabı adı** | Yeni bir depolama hesabı için genel olarak benzersiz bir ad girin.|
+    |**Isınma deposunu etkinleştir**|Isınma mağazasını etkinleştirmek için **Evet** ' i seçin.|
+    |**Veri bekletme (gün)**|Varsayılan 7 gün seçeneğini belirleyin. |
 
-   [Time Series Insights ortamı oluşturmak için ![bölmesi](media/v2-update-provision/payg-two-create.png)](media/v2-update-provision/payg-two-create.png#lightbox)
+    **İleri ' yi seçin: olay kaynağı**.
+
+   [Time Series Insights ortamı oluşturmak için![bölmesi](media/v2-update-provision/payg-two-2-create.png)](media/v2-update-provision/payg-two-2-create.png#lightbox)
+   [Time Series Insights ortamı oluşturmaya yönelik![bölmesi](media/v2-update-provision/payg-two-1-create.png)](media/v2-update-provision/payg-two-1-create.png#lightbox)
 
 1. **Olay kaynağı** sekmesinde, aşağıdaki parametreleri ayarlayın:
 
    | Parametre | Eylem |
    | --- | --- |
-   | **Olay kaynağı oluşturulsun mu?** | **Evet**’i seçin.|
-   | **Adı** | Olay kaynağı adı için benzersiz bir değer girin. |
+   | **Olay kaynağı oluşturulsun mu?** | **Evet**' i seçin.|
+   | **Ad** | Olay kaynağı adı için benzersiz bir değer girin. |
    | **Kaynak türü** | **IoT Hub**seçin. |
    | **Bir hub seçin** | **Varolanı Seç ' i**seçin. |
    | **Abonelik** | Cihaz simülatörü için kullandığınız aboneliği seçin. |
@@ -109,7 +116,7 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
    [Olay kaynağını yapılandırma ![](media/v2-update-provision/payg-five-event-source.png)](media/v2-update-provision/payg-five-event-source.png#lightbox)
 
-1. **Gözden geçir + oluştur** sekmesinde seçimlerinizi gözden geçirin ve ardından **Oluştur**' u seçin.
+1. **Oluştur**'u seçin.
 
     [![gözden geçir + oluştur düğmesi ile sayfa oluştur](media/v2-update-provision/payg-six-review.png)](media/v2-update-provision/payg-six-review.png#lightbox)
 
@@ -117,29 +124,30 @@ Bu bölümde, Azure Time Series Insights önizleme ortamının nasıl oluşturul
 
     [dağıtımın tamamlandığını ![bildirimi](media/v2-update-provision/payg-seven-deploy.png)](media/v2-update-provision/payg-seven-deploy.png#lightbox)
 
-1. Kiracıya sahipseniz Azure Time Series Insights Preview ortamınıza erişebilirsiniz. Erişiminizin olduğundan emin olmak için:
+1. Azure aboneliğinin sahibiyseniz, varsayılan olarak Azure Time Series Insights önizleme ortamınıza erişebilirsiniz. Erişiminizin olduğunu doğrulayın:
 
-   1. Kaynak grubunuzu arayın ve ardından Azure Time Series Insights Preview ortamını seçin:
-
+   1. Kaynak grubunuzu arayın ve ardından yeni oluşturduğunuz Azure Time Series Insights önizleme ortamınızı seçin. 
       [Seçili ortamı ![](media/v2-update-provision/payg-eight-environment.png)](media/v2-update-provision/payg-eight-environment.png#lightbox)
 
-   1. Azure Time Series Insights önizleme sayfasında, **veri erişim ilkeleri**' ni seçin:
-
-      [![veri erişim ilkeleri](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox)
+   1. Azure Time Series Insights önizleme sayfasında, **veri erişim ilkeleri**: [![veri erişim ilkeleri](media/v2-update-provision/payg-nine-data-access.png)](media/v2-update-provision/payg-nine-data-access.png#lightbox) ' ni seçin.
 
    1. Kimlik bilgilerinizin listelendiğini doğrulayın:
 
       [![listelenen kimlik bilgileri](media/v2-update-provision/payg-ten-verify.png)](media/v2-update-provision/payg-ten-verify.png#lightbox)
 
-   Kimlik bilgileriniz listelenmiyorsa, ortama erişmek için kendinize izin vermeniz gerekir. İzinleri ayarlama hakkında daha fazla bilgi edinmek için bkz. [veri erişimi izni](./time-series-insights-data-access.md)okuma.
+   Kimlik bilgileriniz listelenmiyorsa, kimlik bilgileriniz için Ekle ve ara ' yı seçerek ortama erişmek için kendinize izin vermeniz gerekir. İzinleri ayarlama hakkında daha fazla bilgi edinmek için bkz. [veri erişimi izni](./time-series-insights-data-access.md)okuma.
 
 ## <a name="stream-data"></a>Veri akışı yapma
 
-Time Series Insights ortamınızı dağıttığınıza göre, verileri analiz etmek için veri akışını sağlayabilirsiniz.
+Time Series Insights ortamınızı dağıttığınıza göre, analiz için veri akışı oluşturmaya başlayabilirsiniz.
 
-1. [Azure IoT Çözüm Hızlandırıcıları sayfasına](https://www.azureiotsolutions.com/Accelerators)geri gidin. Çözümünüzü Çözüm Hızlandırıcısı panosunda bulun. Ardından **Başlat**' ı seçin:
+1. [Azure IoT Çözüm Hızlandırıcıları sayfasına](https://www.azureiotsolutions.com/Accelerators)geri gidin. Çözümünüzü Çözüm Hızlandırıcısı panosunda bulun ve **Başlat**' ı seçin:
 
     [cihaz benzetimi çözümünü ![başlatın](media/v2-update-provision/device-three-launch.png)](media/v2-update-provision/device-three-launch.png#lightbox)
+
+1. **Çözüm hızlandırıcısına git**' i seçin.
+
+    [cihaz benzetimi çözümünü ![başlatın](media/v2-update-provision/device-accelerator.png)](media/v2-update-provision/device-accelerator.png#lightbox)
 
 1. **Microsoft Azure IoT cihaz benzetimi** sayfasına yönlendirilirsiniz. Sayfanın sağ üst köşesinde **Yeni simülasyon**' ı seçin.
 
@@ -149,21 +157,21 @@ Time Series Insights ortamınızı dağıttığınıza göre, verileri analiz et
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Adı** | Simülatör için benzersiz bir ad girin. |
+    | **Ad** | Simülatör için benzersiz bir ad girin. |
     | **Açıklama** | Bir tanım girin. |
     | **Benzetim süresi** | Süresiz olarak **çalışacak**şekilde ayarlayın. |
-    | **Cihaz modeli** | **Ad**: **Chiller**girin. <br />**Tutar**: **3**girin. |
+    | **Cihaz modeli** | \+ **Cihaz türü Ekle** ' ye tıklayın <br />**Ad**: **Asansör**girin. <br />**Tutar**: **3**girin. <br /> Kalan varsayılan değerleri bırakın |
     | **Hedef IoT Hub'ı** | **Önceden sağlanmış IoT Hub kullanılacak**şekilde ayarlayın. |
 
     [Ayarlanacak parametreleri ![](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)
 
     **Benzetimi Başlat**' ı seçin.
 
-    Cihaz benzetimi panosunda, **etkin cihazlar** ve **iletiler için saniye başına**gösterilen bilgileri aklınızda edin.
+    Cihaz benzetimi panosunda, **etkin cihazlar** ve **Toplam mesaj**görürsünüz.
 
     [Azure IoT simülasyonu panosu ![](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data"></a>Verileri analiz edin
+## <a name="analyze-data"></a>Verileri çözümleme
 
 Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-insights-update-explorer.md)kullanarak zaman serisi verilerinizde temel analiz gerçekleştirirsiniz.
 
@@ -171,7 +179,10 @@ Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-ins
 
     [Time Series Insights önizleme Gezgini URL 'sini ![](media/v2-update-provision/analyze-one-portal.png)](media/v2-update-provision/analyze-one-portal.png#lightbox)
 
-1. Gezgin 'de, ortamdaki tüm Azure Time Series Insights önizleme örneklerini görmek için **zaman serisi örnekleri** düğümünü seçin.
+1. Time Series Insights Gezgini 'nde, ekranın üst kısmına yayılan bir çubuk görürsünüz. Bu, kullanılabilirlik seçicinizdeki bir değer. En az iki 2m seçtiğinizden emin olun ve gerekirse, seçici tutamaçlarını seçip sola ve sağa sürükleyerek zaman çerçevesini genişletin.
+
+1. Sol tarafta **zaman serisi örneklerini** görebileceksiniz.
+
 
     [üst öğe olmayan örneklerin ![listesi](media/v2-update-provision/analyze-two-unparented.png)](media/v2-update-provision/analyze-two-unparented.png#lightbox)
 
@@ -179,17 +190,21 @@ Bu bölümde, [Azure Time Series Insights önizleme Gezginini](./time-series-ins
 
     [Ortalama basıncı göstermek için menü komutuyla seçili zaman serisi örneğini ![](media/v2-update-provision/analyze-three-show-pressure.png)](media/v2-update-provision/analyze-three-show-pressure.png#lightbox)
 
-    Bir zaman serisi grafiği görüntülenir. **Aralığı** **15**' e değiştirin.
+    Bir zaman serisi grafiği görüntülenir. **Aralığı** **30 saniye**olarak değiştirin.
 
     [![zaman serisi grafiği](media/v2-update-provision/analyze-four-chart.png)](media/v2-update-provision/analyze-four-chart.png#lightbox)
 
-1. 3\. adımı diğer iki zaman serisi örneğiyle tekrarlayın. Tüm zaman serisi örneklerini bu grafikte gösterildiği gibi görüntüleyebilirsiniz:
+1. Bu grafikte gösterildiği gibi, üçü de görüntülemek için 3. adımı diğer iki zaman serisi örneğiyle yineleyin:
 
     [Tüm zaman serileri için grafik ![](media/v2-update-provision/analyze-five-chart.png)](media/v2-update-provision/analyze-five-chart.png#lightbox)
 
-1. **Zaman aralığı seçenek kutusunda** , son saat içindeki zaman serisi eğilimlerini görmek için zaman aralığını değiştirin:
+1. Sağ üst köşedeki zaman aralığı seçicisini seçin. Burada, belirli başlangıç ve bitiş zamanlarını milisaniyeye doğru seçebilirsiniz veya son saat gibi önceden yapılandırılmış seçenekler arasından seçim yapabilirsiniz. Varsayılan saat dilimini de değiştirebilirsiniz.
 
     [![saat aralığını bir saate ayarlayın](media/v2-update-provision/analyze-six-time.png)](media/v2-update-provision/analyze-six-time.png#lightbox)
+
+    Aşağıda bir saat için benzetim çalıştırıldıktan sonra Grafik bölmesinin ekran görüntüsü verilmiştir:
+
+    [![grafik bölmesi](media/v2-update-provision/analyze-seven-time.png)](media/v2-update-provision/analyze-seven-time.png#lightbox)
 
 ## <a name="define-and-apply-a-model"></a>Model tanımlama ve uygulama
 
@@ -199,58 +214,68 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
    [Gezgin 'de ![model sekmesi](media/v2-update-provision/define-one-model.png)](media/v2-update-provision/define-one-model.png#lightbox)
 
-1. Tür eklemek için **Ekle** ' yi seçin:
+1. **Türler** sekmesinde **Ekle**' yi seçin.
 
    [türler için Ekle düğmesini ![](media/v2-update-provision/define-two-add.png)](media/v2-update-provision/define-two-add.png#lightbox)
 
-1. Daha sonra, tür için üç değişken tanımlarsınız: *basınç*, *sıcaklık*ve *nem*. **Tür Ekle** bölmesinde, aşağıdaki parametreleri ayarlayın:
+1. Aşağıdaki parametreleri girin:
 
     | Parametre | Eylem |
     | --- | ---|
-    | **Adı** | **Chiller**'i girin. |
-    | **Açıklama** | **Bu değer, Chiller 'in bir tür tanımıdır**. |
+    | **Ad** | **Asansör** girin |
+    | **Açıklama** | **Bu, Asansör için bir tür tanımı** girin |
 
-   * *Basınç*' ı tanımlamak Için, **değişkenler**altında aşağıdaki parametreleri ayarlayın:
+    [türler için Ekle düğmesini ![](media/v2-update-provision/define-three-properties.png)](media/v2-update-provision/define-three-properties.png#lightbox)
 
-     | Parametre | Eylem |
-     | --- | ---|
-     | **Adı** | **Ortalama basınç**girin. |
-     | **Değer** | **Basınç (Double)** seçeneğini belirleyin. Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir. |
-     | **Toplama Işlemi** | **Ort**' ı seçin. |
+1. Sonra, **değişkenler** sekmesini seçin. [![değişkenler sekmesini seçin](media/v2-update-provision/define-four-variables.png)](media/v2-update-provision/define-four-variables.png#lightbox)
 
-      [basınç tanımlamak için ![seçimleri](media/v2-update-provision/define-three-variable.png)](media/v2-update-provision/define-three-variable.png#lightbox)
+1. **+ Değişken Ekle** ' yi seçin ve Asansör türünün ilk değişkeni için aşağıdaki değerleri girin. Toplam olarak üç değişken yazardan olursunuz.
 
-      Sonraki değişkeni eklemek için **değişken Ekle**' yi seçin.
+    | Parametre | Eylem |
+    | --- | --- |
+    | **Ad** | **Ort sıcaklık**girin. |
+    | **Denetlenmesi** | **Sayısal** seçin |
+    | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
+    | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
-   * *Sıcaklık*tanımla:
+    [sıcaklık tanımlama ![seçimleri](media/v2-update-provision/define-five-variable.png)](media/v2-update-provision/define-five-variable.png#lightbox)
 
-     | Parametre | Eylem |
-     | --- | ---|
-     | **Adı** | **Ort sıcaklık**girin. |
-     | **Değer** | **Sıcaklık (Double)** seçeneğini belirleyin. Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir. |
-     | **Toplama Işlemi** | **Ort**' ı seçin.|
+    **Uygula**’yı seçin.
 
-      [sıcaklık tanımlama ![seçimleri](media/v2-update-provision/define-four-avg.png)](media/v2-update-provision/define-four-avg.png#lightbox)
+    **+ Değişken Ekle** ' yi seçin ve aşağıdaki değerleri ayarlayın:
 
-      Sonraki değişkeni eklemek için **değişken Ekle**' yi seçin.
+    | Parametre | Eylem |
+    | --- | --- |
+    | **Ad** | **Ortalama titreşim**girin. |
+    | **Denetlenmesi** | **Sayısal** seçin |
+    | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
+    | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
-   * *Nem*tanımla:
+    [titreşimi tanımlamaya yönelik ![seçimleri](media/v2-update-provision/define-five-vibration.png)](media/v2-update-provision/define-five-vibration.png#lightbox)
 
-      | | |
-      | --- | ---|
-      | **Adı** | **En fazla nem** girin |
-      | **Değer** | **Nem (Double)** seçeneğini belirleyin. Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir. |
-      | **Toplama Işlemi** | **En fazla**' yı seçin.|
+    **Uygula**’yı seçin.
 
-      [sıcaklık tanımlama ![seçimleri](media/v2-update-provision/define-five-humidity.png)](media/v2-update-provision/define-five-humidity.png#lightbox)
+    **+ Değişken Ekle** ' yi seçin ve üçüncü ve son değişken için aşağıdaki değerleri ayarlayın:
 
-    **Oluştur**'u seçin.
+    | Parametre | Eylem |
+    | --- | --- |
+    | **Ad** | **Kat**girin. |
+    | **Denetlenmesi** | **Kategorik** seçin |
+    | **Değer** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights önizlemesi olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
+    | **Kategorisine** | <span style="text-decoration: underline">Etiket</span>  - <span style="text-decoration: underline">değerleri</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
+    | **Varsayılan kategori** | **Bilinmeyen** girin |
 
-    Eklediğiniz türü görebilirsiniz:
+    [titreşimi tanımlamaya yönelik ![seçimleri](media/v2-update-provision/define-five-floor.png)](media/v2-update-provision/define-five-floor.png#lightbox)
 
-    [eklenen tür hakkında bilgi ![](media/v2-update-provision/define-six-type.png)](media/v2-update-provision/define-six-type.png#lightbox)
+    **Uygula**’yı seçin. Oluşturulan üç değişken görmeniz gerekir:
 
-1. Sonraki adım bir hiyerarşi eklemektir. **Hiyerarşiler**altında **Ekle**' yi seçin:
+    [titreşimi tanımlamaya yönelik ![seçimleri](media/v2-update-provision/define-five-floor2.png)](media/v2-update-provision/define-five-floor2.png#lightbox)
+
+   **Kaydet**’i seçin. Oluşturulan **türü** görürsünüz:
+
+    [titreşimi tanımlamaya yönelik ![seçimleri](media/v2-update-provision/define-five-floor3.png)](media/v2-update-provision/define-five-floor3.png#lightbox)
+
+1. **Hiyerarşiler** sekmesini seçin. **+ Ekle**' yi seçin.
 
     [Ekle düğmesi ile hiyerarşi sekmesi ![](media/v2-update-provision/define-seven-hierarchy.png)](media/v2-update-provision/define-seven-hierarchy.png#lightbox)
 
@@ -258,10 +283,8 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
    | Parametre | Eylem |
    | --- | ---|
-   | **Adı** | **Konum hiyerarşisini**girin. |
-   | **Düzey 1** | **Ülkeyi**girin. |
-   | **Düzey 2** | **Şehir**girin. |
-   | **Düzey 3** | **Oluşturma**girin. |
+   | **Ad** | **Konum hiyerarşisini**girin. |
+   |**Düzeyleri**| **Ülkeyi** ilk düzeyin adı olarak girin <br> **+ Düzey Ekle** seçeneğini belirleyin <br> İkinci düzey için **şehir** girin ve ardından **+ düzey Ekle** ' yi seçin. <br> Üçüncü ve son düzeyin adı olarak **oluşturma** girin |
 
    **Kaydet**’i seçin.
 
@@ -271,69 +294,68 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
     [hiyerarşi hakkında bilgi ![](media/v2-update-provision/define-nine-created.png)](media/v2-update-provision/define-nine-created.png#lightbox)
 
-1. **Örnekleri**seçin. İlk örneği seçin ve ardından **Düzenle**' yi seçin:
-
-    [örnek için Düzenle düğmesini seçme ![](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
-
-1. **Örnekleri düzenle** bölmesinde, aşağıdaki parametreleri ayarlayın:
+1. **Örneklere**gidin. En sağdaki **Eylemler** altında, ilk örneği aşağıdaki değerlerle düzenlemek için kurşun kalem simgesini seçin:
 
     | Parametre | Eylem |
     | --- | --- |
-    | **Tür** | **Chiller**'i seçin. |
-    | **Açıklama** | **Chiller-01,1 Için örnek**girin. |
-    | **Hiyerarşileri** | **Konum hiyerarşisi**' ni seçin. |
-    | **Ülke** | **USA**girin. |
-    | **Baş** | **Seattle**girin. |
-    | **Yapım** | **Space iğne**girin. |
+    | **Tür** | **Asansör**öğesini seçin. |
+    | **Ad** | **Asansör 1** girin|
+    | **Açıklama** | **Asansör 1 Için örnek** girin |
 
-    [Kaydet düğmesi ile örnek alanlarını ![](media/v2-update-provision/define-eleven-chiller.png)](media/v2-update-provision/define-eleven-chiller.png#lightbox)
+    [örnek için Düzenle düğmesini seçme ![](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
 
-   **Kaydet**’i seçin.
+    **Örnek alanlarına** gidin ve aşağıdakileri girin:
 
-1. Diğer Algılayıcılar için önceki adımı tekrarlayın. Aşağıdaki değerleri güncelleştirin:
+    | Parametre | Eylem |
+    | --- | --- |
+    | **Hiyerarşileri** | **Konum hiyerarşisini** seçin |
+    | **Ülke** | **USA** girin |
+    | **Baş** | **Seattle** girin |
+    | **Yapım** | **Space iğne** girin |
 
-   * Chil01,2 için:
+    [örnek için Düzenle düğmesini seçme ![](media/v2-update-provision/define-ten2-edit.png)](media/v2-update-provision/define-ten2-edit.png#lightbox)
 
-     | Parametre | Eylem |
-     | --- | --- |
-     | **Tür** | **Chiller**'i seçin. |
-     | **Açıklama** | **Chiller-01,2 Için örnek**girin. |
-     | **Hiyerarşileri** | **Konum hiyerarşisi**' ni seçin. |
-     | **Ülke** | **USA**girin. |
-     | **Baş** | **Seattle**girin. |
-     | **Yapım** | **Pasifik bilimi merkezini**girin. |
+    **Kaydet**’i seçin.
 
-   * Chil01,3 için:
+1. Aşağıdaki değerlere sahip diğer iki örnek ile 8. adımı yineleyin:
 
-     | Parametre | Eylem |
-     | --- | --- |
-     | **Tür** | **Chiller**'i seçin. |
-     | **Açıklama** | **Chiller-01,3 Için örnek**girin. |
-     | **Hiyerarşileri** | **Konum hiyerarşisi**' ni seçin. |
-     | **Ülke** | **USA**girin. |
-     | **Baş** | **New York**girin. |
-     | **Yapım** | **Empire durum oluşturmayı**girin. |
+    <span style="text-decoration: underline;">Asansör 2 için</span>:
 
-1. **Çözümle** sekmesini seçin ve sonra sayfayı yenileyin. **Konum hiyerarşisi**altında, zaman serisi örneklerini göstermek için tüm hiyerarşi düzeylerini genişletin:
+    | Parametre | Eylem |
+    | --- | --- |
+    | **Tür** | **Asansör**öğesini seçin. |
+    | **Ad** | **Asansör 2** girin|
+    | **Açıklama** | **Asansör Için örnek girin 2** |
+    | **Hiyerarşileri** | **Konum hiyerarşisini** seçin |
+    | **Ülke** | **USA** girin |
+    | **Baş** | **Seattle** girin |
+    | **Yapım** | **Pasifik bilimi merkezini** girin |
+
+    <span style="text-decoration: underline;">Asansör 3 için</span>:
+
+    | Parametre | Eylem |
+    | --- | --- |
+    | **Tür** | **Asansör**öğesini seçin. |
+    | **Ad** | **Asansör 3** girin|
+    | **Açıklama** | **Asansör 3 Için örnek** girin |
+    | **Hiyerarşileri** | **Konum hiyerarşisini** seçin |
+    | **Ülke** | **USA** girin |
+    | **Baş** | **New York** girin |
+    | **Yapım** | **Empire durum oluşturmayı** girin |
+
+1. Grafik bölmesini görüntülemek için **Çözümle** sekmesine geri gidin. **Konum hiyerarşisi**altında, zaman serisi örneklerini göstermek için tüm hiyerarşi düzeylerini genişletin:
 
    [Çözümle sekmesine ![](media/v2-update-provision/define-twelve.png)](media/v2-update-provision/define-twelve.png#lightbox)
 
-1. Son bir saat içindeki zaman serisi örneklerini araştırmak için, **hızlı zamanları** **son saate**göre değiştirin:
+1. **Pasifik bilimi merkezi**altında, **Asansör 2**zaman serisi örneğini seçin ve sonra **ortalama sıcaklığı göster**' i seçin.
 
-    [Son saat seçiliyken hızlı saatler kutusunu ![](media/v2-update-provision/define-thirteen-explore.png)](media/v2-update-provision/define-thirteen-explore.png#lightbox)
+    [![zaman serisi örneği ortalama sıcaklığın gösterilmesi](media/v2-update-provision/define-eleven-temperature.png)](media/v2-update-provision/define-eleven-temperature.png#lightbox)
 
-1. **Pasifik bilimi merkezi**altında zaman serisi örneğini seçin ve **en fazla nem göster**' i seçin.
+1. Aynı örnek için, **Asansör 2**Için **tabanı göster**' i seçin.
 
-    [Seçili zaman serisi örneği ve en fazla nem göster menü seçimi ![](media/v2-update-provision/define-fourteen-show-max.png)](media/v2-update-provision/define-fourteen-show-max.png#lightbox)
+    [![zaman serisi örneği Floor 'yi göster](media/v2-update-provision/define-twelve-floor.png)](media/v2-update-provision/define-twelve-floor.png#lightbox)
 
-1. **1 dakikalık** Aralık boyutuyla **en fazla nem** için zaman serisi açılır. Bir aralığı filtrelemek için bir bölge seçin. Zaman çerçevesinde olayları çözümlemek için grafiğe sağ tıklayın ve sonra **Yakınlaştır**' ı seçin:
-
-   [bir kısayol menüsünde zoom komutuyla seçili aralığı ![](media/v2-update-provision/define-fifteen-filter.png)](media/v2-update-provision/define-fifteen-filter.png#lightbox)
-
-1. Olay ayrıntılarını görmek için bir bölge seçin ve ardından grafiğe sağ tıklayın:
-
-   [olayların ayrıntılı listesini ![](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
-
+    Kategorik değişkeniniz sayesinde, Asansör üst, alt ve orta kat üzerinde ne kadar zaman harcadığını belirleyebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -346,13 +368,12 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
 
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:  
 
-> [!div class="checklist"]
-> * Cihaz benzetimi hızlandırıcıyı oluşturun ve kullanın.
-> * Azure Time Series Insights Preview PAYG ortamı oluşturun.
-> * Azure Time Series Insights Preview ortamını bir IoT Hub 'ına bağlayın.
-> * Azure Time Series Insights önizleme ortamına veri akışı sağlamak için bir çözüm Hızlandırıcısı örneği çalıştırın.
-> * Verilerin temel analizini yapın.
-> * Bir zaman serisi model türü ve hiyerarşisi tanımlayın ve bunları örneklerle ilişkilendirin.
+* Cihaz benzetimi hızlandırıcıyı oluşturun ve kullanın.
+* Azure Time Series Insights Preview PAYG ortamı oluşturun.
+* Azure Time Series Insights Preview ortamını bir IoT Hub 'ına bağlayın.
+* Azure Time Series Insights önizleme ortamına veri akışı sağlamak için bir çözüm Hızlandırıcısı örneği çalıştırın.
+* Verilerin temel analizini yapın.
+* Bir zaman serisi model türü ve hiyerarşisi tanımlayın ve bunları örneklerle ilişkilendirin.
 
 Şimdi kendi Azure Time Series Insights önizleme ortamınızı oluşturmayı bildiğinize göre, Azure Time Series Insights temel kavramlar hakkında daha fazla bilgi edinin.
 

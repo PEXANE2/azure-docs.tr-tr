@@ -1,26 +1,24 @@
 ---
 title: Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz anahtarlar aracılığıyla Azure Bilişsel Arama Dizin ve eş anlamlı haritalar üzerinde sunucu tarafı şifrelemeyi tamamlar.
+description: Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz anahtarlar aracılığıyla Azure Bilişsel Arama Dizin ve eş anlamlı haritalar üzerinde sunucu tarafı şifrelemeyi tamamlar. Bu özellik şu anda genel önizleme aşamasındadır.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794366"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721758"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault içindeki müşteri tarafından yönetilen anahtarlar kullanılarak Azure Bilişsel Arama içerik şifrelemesi
 
-> [!Note]
-> Müşteri tarafından yönetilen anahtarlarla şifreleme, önizleme aşamasındadır ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. .NET SDK 8,0-Preview sürümünü de kullanabilirsiniz.
->
-> Bu özellik ücretsiz hizmetler için kullanılamaz. 2019-01-01 tarihinde veya sonrasında oluşturulmuş bir faturalanabilir arama hizmeti kullanmanız gerekir. Şu anda bir portal desteği yok.
+> [!IMPORTANT] 
+> Rest 'ten şifreleme desteği şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) ve [.net SDK sürüm 8,0-Önizleme](search-dotnet-sdk-migration-version-9.md) bu özelliği sağlar. Şu anda portal desteği yok.
 
 Azure Bilişsel Arama, varsayılan olarak, [hizmet tarafından yönetilen anahtarlarla](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)bekleyen Kullanıcı içeriğini şifreler. Azure Key Vault içinde oluşturduğunuz ve yönettiğiniz anahtarları kullanarak, varsayılan şifrelemeyi ek bir şifreleme katmanıyla birlikte destekleyebilirsiniz. Bu makalede adımlarda adım adım açıklanmaktadır.
 
@@ -30,7 +28,7 @@ Müşteri tarafından yönetilen anahtarlarla şifreleme, bu nesneler oluşturul
 
 Farklı anahtar kasalarından farklı anahtarlar kullanabilirsiniz. Bu, tek bir arama hizmetinin birden çok şifrelenmiş ındexes\eş anlamlı haritalarını barındırabileceği anlamına gelir. Bu, her şifrelenmiş, müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmeyen ındexes\eş anlamlı eşlemlerle birlikte, her biri bir müşteri tarafından yönetilen farklı 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki hizmetler bu örnekte kullanılır. 
 

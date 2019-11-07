@@ -1,7 +1,7 @@
 ---
-title: Azure Bilişsel Arama blob Indexer ile CSV bloblarını dizinle
+title: Delimitedmetin ayrıştırma modunu kullanarak CSV bloblarını dizine bağlama (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama Dizin kullanarak tam metin araması için Azure Blob depolamada CSV bloblarını gezin. Dizin oluşturucular, Azure Blob depolama gibi seçili veri kaynakları için veri alımını otomatik hale getirir.
+description: Şu anda genel önizleme aşamasında olan Delimitedmetin ayrıştırma modunu kullanarak Azure Blob depolamadan CSV 'yi ayıklayın ve içeri aktarın.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793775"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719240"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama blob Indexer kullanarak CSV bloblarını dizin oluşturma 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama ile aynı Demitedmetin ayrıştırma modunu ve BLOB Dizin oluşturucularını kullanarak CSV bloblarını dizin oluşturma 
 
-> [!Note]
-> delimitedText ayrıştırma modu önizlemededir ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
->
+> [!IMPORTANT] 
+> Delimitedmetin ayrıştırma modu şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 Varsayılan olarak, [Azure bilişsel arama blob Indexer](search-howto-indexing-azure-blob-storage.md) , ayrılmış metin bloblarını tek bir metin öbeği olarak ayrıştırır. Ancak, CSV verileri içeren bloblarla, genellikle blobdaki her satırı ayrı bir belge olarak değerlendirmek istersiniz. Örneğin, aşağıdaki sınırlandırılmış metin verildiğinde, her biri "ID", "Dateyayınlanan" ve "Tags" alanlarını içeren iki belgeye ayrıştırın: 
 
@@ -28,7 +27,7 @@ Varsayılan olarak, [Azure bilişsel arama blob Indexer](search-howto-indexing-a
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Bu makalede, `delimitedText` ayrıştırma modunu ayarlama indexerby bir Azure Bilişsel Arama blob ile CSV bloblarını ayrıştırmanın nasıl yapılacağını öğreneceksiniz. 
+Bu makalede, `delimitedText` ayrıştırma modunu ayarlayarak CSV bloblarını bir Azure Bilişsel Arama blob Dizinleyicisi ile ayrıştırmayı öğreneceksiniz. 
 
 > [!NOTE]
 > Birden çok arama belgesini bir Azure blobundan çıkarmak için [bire çok dizin oluşturma](search-howto-index-one-to-many-blobs.md) içindeki Dizin Oluşturucu yapılandırma önerilerini izleyin.
@@ -47,7 +46,7 @@ Blob 'lar bir başlangıç üst bilgisi satırı içermiyorsa, üst bilgiler Diz
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-`delimitedTextDelimiter` yapılandırma ayarını kullanarak sınırlayıcı karakteri özelleştirebilirsiniz. Örnek:
+`delimitedTextDelimiter` yapılandırma ayarını kullanarak sınırlayıcı karakteri özelleştirebilirsiniz. Örneğin:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 

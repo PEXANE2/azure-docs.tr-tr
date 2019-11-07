@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932671"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569633"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sertifika için hazırlamış bir IoT Tak ve Kullan önizleme cihazı oluşturun
 
@@ -28,14 +28,14 @@ Sertifika sınamaları şunları denetler:
 - Cihaz kodunuz cihaz bilgileri arabirimini uygular.
 - Yetenek modeli ve cihaz kodu IoT Central birlikte çalışır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Vs Code Uzantı paketi Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-Ayrıca [hızlı başlangıçta oluşturduğunuz IoT Tak ve kullan cihazının olması gerekir: Cihaz oluşturmak](quickstart-create-pnp-device.md)için bir cihaz yetenek modeli kullanın.
+Ayrıca, hızlı başlangıçta oluşturduğunuz IoT Tak ve Kullan cihazının olması gerekir: cihaz [oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Yetenek modeli ve arabirimleri depolayın
 
@@ -58,9 +58,9 @@ Sertifika sürecini geçirmek için, **cihaz bilgileri** arabirimini yetenek mod
 ```
 
 > [!NOTE]
-> [Hızlı başlangıcı tamamladıysanız: Cihaz yetenek modeli kullanarak cihaz oluşturma](quickstart-create-pnp-device.md), modelinize **cihaz bilgileri** arabirimini zaten eklemiş oldunuz.
+> [Hızlı başlangıç: bir cihaz oluşturmak için bir cihaz yetenek modeli kullanın](quickstart-create-pnp-device.md), modelinize **cihaz bilgileri** arabirimini eklemiş oldunuz.
 
-Cihaz modelinize **cihaz bilgileri** arabirimini dahil etmek için, arabirim kimliğini `implements` yetenek modelinin özelliğine ekleyin:
+Cihaz modelinize **cihaz bilgileri** arabirimini dahil etmek için, arabirim kimliğini yetenek modelinin `implements` özelliğine ekleyin:
 
 ```json
 {
@@ -111,26 +111,17 @@ Cihazı onaylamak için, [Azure IoT cihaz sağlama hizmeti (DPS)](https://docs.m
 
 1. Dil olarak **ANSI C** 'yi seçin.
 
-1. Proje türü olarak **CMake projesini** seçin.
-
 1. Bağlantı yöntemi olarak, **DPS (cihaz sağlama hizmeti) ile simetrik anahtar** arasında seçim yapın.
+
+1. Cihaz işletim sistemine bağlı olarak, Linux 'ta **CMake projesini Windows** veya **CMake** projesinde proje şablonu olarak seçin.
 
 1. VS Code, oluşturulan cihaz kodu saplama dosyaları ile yeni bir pencere açar.
 
-1. Öğesini `main.c`açın, hazırladığınız **dpsıdscope**, **saskey**ve **RegistrationId** değerlerini doldurabilirsiniz. Bu bilgileri sertifika portalından alabilirsiniz. Daha fazla bilgi için bkz. [ıot Tak ve kullan cihazınızı bağlama ve test](tutorial-certification-test.md#connect-and-discover-interfaces)etme.
+1. Kodu oluşturduktan sonra, uygulama için parametreler olarak DPS kimlik bilgilerini (**DPS kimlik kapsamı**, **DPS simetrik anahtar**, **cihaz kimliği**) girin. Sertifika portalından kimlik bilgilerini almak için bkz. [ıot Tak ve kullan cihazınızı bağlama ve test](tutorial-certification-test.md#connect-and-discover-interfaces)etme.
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. Dosyayı kaydedin.
 
 ### <a name="implement-standard-interfaces"></a>Standart arabirimleri Uygula
 

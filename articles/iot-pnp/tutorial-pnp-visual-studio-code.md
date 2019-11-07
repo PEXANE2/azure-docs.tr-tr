@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858871"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569892"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Öğretici: Visual Studio Code kullanarak cihaz yetenek modeli oluşturma ve test etme
 
@@ -30,11 +30,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Oluşturulan koddaki saplamaları uygulayın
 > * Bir IoT Hub ile etkileşimleri test etmek için kodu çalıştırın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide cihaz yetenek modeliyle çalışmak için şunlar gerekir:
 
-* [Visual Studio Code](https://code.visualstudio.com/download): VS Code birden çok platformda kullanılabilir
+* [Visual Studio Code](https://code.visualstudio.com/download): vs Code birden çok platformda kullanılabilir
 * [Vs Code Uzantı paketi Için Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) . VS Code ' ye uzantı paketini yüklemek için aşağıdaki adımları kullanın:
 
     1. VS Code, **Uzantılar** sekmesini seçin.
@@ -43,14 +43,9 @@ Bu öğreticide cihaz yetenek modeliyle çalışmak için şunlar gerekir:
 
 Bu öğreticide Windows üzerinde oluşturulan C kodunu derlemek için şunlar gerekir:
 
-* [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) -Visual Studio 'yu yüklerken **NuGet Paket Yöneticisi** bileşenini ve iş yüküyle **Masaüstü geliştirmeyi C++**  eklediğinizden emin olun.
+* Visual Studio  **C++ için derleme araçları ve** **NuGet Paket Yöneticisi bileşen** iş yükleri [için derleme araçları](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) . Ya da [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 veya 2015 aynı iş yükleri yüklüyken zaten yüklüyse.
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
-* Azure IoT C SDK 'sının yerel bir kopyası:
-
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
 
 Bu öğreticide cihaz kodunuzu test etmek için şunlar gerekir:
 
@@ -71,13 +66,13 @@ VS Code ' de IoT cihazınızın yeteneklerini tanımlayan bir arabirim dosyası 
 
 1. VS Code başlatın ve komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT eklentisi & oynat ' ı seçin: Arabirim** komutu oluştur.
+1. **Tak ve kullan** girin ve ardından **IoT eklentisi & Play: Create Interface** komutunu seçin.
 
 1. ' A gidin ve oluşturduğunuz **devicemodel** klasörünü seçin.
 
 1. Sonra arabirimin adı olarak **Environmentalalgılayıcı** girin ve **ENTER**'a basın. VS Code **Environmentalalgılayıcı. Interface. JSON**adlı örnek bir arabirim dosyası oluşturur.
 
-1. Bu dosyanın içeriğini aşağıdaki JSON ile değiştirin ve `{your name}` `@id` alanında benzersiz bir değer koyun. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın. Daha fazla bilgi için bkz. [Digital ikizi Identifier Format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). Arabirimi depoya kaydetmek için arabirim KIMLIĞI benzersiz olmalıdır:
+1. Bu dosyanın içeriğini aşağıdaki JSON ile değiştirin ve `@id` alanındaki `{your name}` benzersiz bir değerle değiştirin. Yalnızca a-z, A-Z, 0-9 ve alt çizgi karakterlerini kullanın. Daha fazla bilgi için bkz. [Digital ikizi Identifier Format](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). Arabirimi depoya kaydetmek için arabirim KIMLIĞI benzersiz olmalıdır:
 
     ```json
     {
@@ -176,7 +171,7 @@ VS Code ' de IoT cihazınızın yeteneklerini tanımlayan bir arabirim dosyası 
           "commandType": "synchronous"
         }
       ],
-      "@context": "http://azureiot.com/v1/contexts/Interface.json"
+      "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
     }
     ```
 
@@ -219,9 +214,9 @@ IoT Tak ve Kullan cihazınızın VS Code uyguladığı arabirimleri belirten bir
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT eklentisi & oynat ' ı seçin: Yetenek modeli** komutu oluştur. Ardından, modelin adı olarak **Sensorboxmodel** girin. VS Code **Sensorboxmodel. capabilitymodel. JSON**adlı örnek bir arabirim dosyası oluşturur.
+1. **Tak ve kullan** girin ve ardından **IoT eklentisi & Play: yetenek modeli oluştur** komutunu seçin. Ardından, modelin adı olarak **Sensorboxmodel** girin. VS Code **Sensorboxmodel. capabilitymodel. JSON**adlı örnek bir arabirim dosyası oluşturur.
 
-1. Bu dosyanın içeriğini aşağıdaki JSON ile `{your name}` değiştirin ve `@id` alanında ve `EnvironmentalSensor` arabiriminde, **environmentalalgılayıcı. Interface. JSON** dosyasında kullandığınız değerle değiştirin. Arabirimi depoya kaydetmek için arabirim KIMLIĞI benzersiz olmalıdır:
+1. Bu dosyanın içeriğini aşağıdaki JSON ile değiştirin ve `@id` alanındaki ve `EnvironmentalSensor` arabirimindeki `{your name}`, **Environmentalalgılayıcı. Interface. JSON** dosyasında kullandığınız değerle değiştirin. Arabirimi depoya kaydetmek için arabirim KIMLIĞI benzersiz olmalıdır:
 
     ```json
     {
@@ -256,7 +251,7 @@ VS Code kullanarak, ortak model deposundan **Deviceınformation** arabirimini in
 
 1. **Tak ve kullan**girin, **model depoyu aç** komutunu seçin ve ardından **ortak model deposunu aç**' ı seçin.
 
-1. **Arabirimler**' i seçin, ardından kimliği `urn:azureiot:DeviceManagement:DeviceInformation:1`olan cihaz bilgileri arabirimini seçin ve ardından **İndir**' i seçin.
+1. **Arabirimler**' i seçin, sonra kimlik `urn:azureiot:DeviceManagement:DeviceInformation:1`cihaz bilgileri arabirimini seçin ve ardından **İndir**' i seçin.
 
 Artık cihaz yetenek modelinizi oluşturan üç dosya vardır:
 
@@ -264,7 +259,7 @@ Artık cihaz yetenek modelinizi oluşturan üç dosya vardır:
 * Environmentalalgılayıcı. Interface. JSON
 * SensorboxModel. capabilitymodel. JSON
 
-## <a name="publish-the-model"></a>Modeli yayımlayın
+## <a name="publish-the-model"></a>Modeli Yayımla
 
 Azure IoT gezgin aracının cihaz yetenek modelinizi okuyabilmesi için, bunu şirket deponuzda yayımlamanız gerekir. VS Code yayımlamak için şirket deposu için bağlantı dizesine ihtiyacınız vardır:
 
@@ -280,7 +275,7 @@ Azure IoT gezgin aracının cihaz yetenek modelinizi okuyabilmesi için, bunu ş
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT eklentisi & oynat ' ı seçin: Model deposu** komutunu açın.
+1. **Tak ve kullan** girin ve ardından **IoT eklentisi & Play: model depoyu aç** komutunu seçin.
 
 1. **Kurumsal model deposunu aç** ' ı seçin ve Bağlantı dizenizi yapıştırın.
 
@@ -290,7 +285,7 @@ Cihaz yetenek modelinizi ve arabirimlerini şirket deponuza yayımlamak için:
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT eklentisi & oynat ' ı seçin: Dosyaları model deposuna** Gönder komutu.
+1. **Tak ve kullan** girin ve ardından **IoT eklentisi & Play: dosyaları model deposuna gönder** komutunu seçin.
 
 1. **Environmentalsensörü. Interface. JSON** ve **sensorboxmodel. capabilitymodel. JSON** dosyalarını seçin ve **Tamam**' ı seçin.
 
@@ -302,7 +297,7 @@ Modelinizden iskelet C kodu oluşturmak için **vs Code Için Azure IoT araçlar
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın.
 
-1. **Tak ve kullan** girin ve ardından **IoT eklentisi & oynat ' ı seçin: Cihaz kodu saplama** komutu oluştur.
+1. **Tak ve kullan** girin ve ardından **IoT eklentisi & Play: cihaz kodu saplama oluştur** komutunu seçin.
 
 1. **Sensorboxmodel. capabilitymodel. JSON** yetenek modeli dosyanızı seçin.
 
@@ -310,9 +305,11 @@ Modelinizden iskelet C kodu oluşturmak için **vs Code Için Azure IoT araçlar
 
 1. Dil olarak **ANSI C** 'yi seçin.
 
-1. Hedef olarak **CMake projesini** seçin.
-
 1. Bağlama yöntemi olarak **IoT Hub cihaz bağlantı dizesi aracılığıyla** seçim yapın.
+
+1. Proje şablonu olarak **Windows 'Da CMake projesi** seçin.
+
+1. Cihaz SDK 'sını dahil etmek için **Vcpkg aracılığıyla** öğesini seçin.
 
 VS Code iskelet C kodunu oluşturur ve dosyaları **modelcode** klasöründeki **sensorbox_app** klasörüne kaydeder. VS Code oluşturulan kod dosyalarını içeren yeni bir pencere açar.
 
@@ -355,7 +352,7 @@ Kodu çalıştırdığınızda, IoT Hub bağlanır ve örnek telemetri ve özell
 
     Bağlantı dizesini bir yere getirin.
 
-1. Bir komut isteminde, SDK ve örnekleri oluşturduğunuz **Azure-IoT-SDK-c** klasörüne gidin. Sonra **CMake\\sensorbox_app\\Release** klasörüne gidin.
+1. Bir komut isteminde, SDK ve örnekleri oluşturduğunuz **Azure-IoT-SDK-c** klasörüne gidin. Sonra **CMake\\sensorbox_app\\yayın** klasörüne gidin.
 
 1. Şu komutu çalıştırın:
 

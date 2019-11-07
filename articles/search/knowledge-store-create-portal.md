@@ -1,25 +1,24 @@
 ---
-title: Azure portal bilgi deposu oluşturma
+title: Azure portal bilgi deposu (Önizleme) oluşturma
 titleSuffix: Azure Cognitive Search
-description: Kalıcı içerik için kullanılan bir bilgi deposu oluşturmak için veri Içeri aktarma Sihirbazı 'nı kullanın. Diğer uygulamalardan analizler için bir bilgi deposuna bağlanın veya yukarı akış işlemlerine zenginleştirilmiş içerik gönderin.
+description: Kalıcı içerik için kullanılan bir bilgi deposu oluşturmak için veri Içeri aktarma Sihirbazı 'nı kullanın. Diğer uygulamalardan analizler için bir bilgi deposuna bağlanın veya yukarı akış işlemlerine zenginleştirilmiş içerik gönderin. Bu özellik şu anda genel önizleme aşamasındadır.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607075"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720116"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama bilgi deposu oluşturma
 
-> [!Note]
-> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. Hem Azure portal hem de [arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
->
+> [!IMPORTANT] 
+> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Bilgi deposu, sonraki analizler veya aşağı akış işleme için bilişsel yetenekler ardışık düzeninde çıktıyı sürekli olarak sürdüren Azure Bilişsel Arama özelliğidir. 
 

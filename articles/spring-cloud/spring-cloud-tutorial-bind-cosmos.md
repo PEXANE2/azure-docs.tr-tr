@@ -1,20 +1,17 @@
 ---
 title: Azure Spring Cloud uygulamanıza bir Azure Cosmos DB bağlama | Microsoft Docs
 description: Azure Cosmos DB Azure Spring Cloud uygulamanıza nasıl bağlayacağınızı öğrenin
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d051fd431180e9cb86f1df4642fb5e947103c007
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 76a2b9f305f041a19b8d7ace8234a804825f6a0e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038736"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607124"
 ---
 # <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>Öğretici: Azure Spring Cloud uygulamanıza bir Azure Cosmos DB bağlama
 
@@ -28,9 +25,9 @@ Azure yay bulutu, Spring Boot uygulamanızı el ile yapılandırmak yerine, Azur
 
 Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir:
 
-1. Azure Cosmos DB veritabanı oluşturun. Veritabanı oluşturma konusunda yardım için [Bu makaleye başvurun](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) . Veritabanınızın adını kaydedin. Bizde `testdb` olarak adlandırılmıştır.
+1. Azure Cosmos DB veritabanı oluşturun. Veritabanı oluşturma konusunda yardım için [Bu makaleye başvurun](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) . Veritabanınızın adını kaydedin. Bizde `testdb`olarak adlandırılmıştır.
 
-1. Aşağıdaki bağımlılıklardan birini,, API türüne göre Spring Cloud uygulamanızın `pom.xml` ' a ekleyin.
+1. Aşağıdaki bağımlılıklardan birini, API türüne göre Spring Cloud uygulamanızın `pom.xml` ekleyin.
     
     #### <a name="api-type-core-sql"></a>API türü: çekirdek (SQL)
 
@@ -80,16 +77,16 @@ Azure Cosmos DB, bağlamayı destekleyen beş farklı API türüne sahiptir:
     </dependency>
     ```
 
-1. @No__t-0 kullanarak geçerli dağıtımı güncelleştirin veya bu değişiklik için `az spring-cloud app deployment create` kullanarak yeni bir dağıtım oluşturun.  Bu komutlar uygulamayı yeni bağımlılık ile güncelleştirir veya oluşturur.
+1. `az spring-cloud app update` kullanarak geçerli dağıtımı güncelleştirin veya bu değişiklik için `az spring-cloud app deployment create`kullanarak yeni bir dağıtım oluşturun.  Bu komutlar uygulamayı yeni bağımlılık ile güncelleştirir veya oluşturur.
 
-1. Azure portal Azure Spring Cloud Service sayfanıza gidin. Bu, önceki adımda güncelleştirdiğiniz veya dağıttığınız bir uygulamadır. **Uygulama panosunu** bulun ve Cosmos DB bağlanacak uygulamayı seçin. Sonra `Service binding` ' ı seçin ve `Create service binding` düğmesini seçin. Formu doldurun, `Azure Cosmos DB` **bağlama türünü** , API türünü, veritabanı adınızı ve Azure Cosmos DB hesabı seçin.
+1. Azure portal Azure Spring Cloud Service sayfanıza gidin. Bu, önceki adımda güncelleştirdiğiniz veya dağıttığınız bir uygulamadır. **Uygulama panosunu** bulun ve Cosmos DB bağlanacak uygulamayı seçin. Sonra `Service binding` ' yi seçin ve `Create service binding` düğmesini seçin. Formu doldurun, **bağlama türü** `Azure Cosmos DB`, API türü, veritabanınızın adı ve Azure Cosmos DB hesabı ' nı seçin.
 
     > [!NOTE]
     > Cassandra kullanıyorsanız, veritabanı adı için bir anahtar alanı kullanın.
 
 1. Uygulama sayfasındaki **Yeniden Başlat** düğmesini seçerek uygulamayı yeniden başlatın.
 
-1. Hizmetin doğru şekilde bağlandığından emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. @No__t-0 alanı şuna benzer olmalıdır:
+1. Hizmetin doğru şekilde bağlandığından emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property` alanı şuna benzer olmalıdır:
 
     ```
     azure.cosmosdb.uri=https:/<some account>.documents.azure.com:443

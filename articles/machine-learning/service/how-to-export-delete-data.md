@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 05/02/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489869"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716517"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -243,17 +243,16 @@ Denemenizi oluşturduğunuz tasarımcıda tek tek varlıkları silin:
 
 1. Listede, silinecek tek işlem hattı taslağını seçin.
 
-1. Alt kısımdaki **Sil**' i seçin.
+1. **Sil**’i seçin.
 
-## <a name="unregister-data-in-the-designer"></a>Tasarımcıda verileri silme
+### <a name="delete-datasets-in-the-designer"></a>Tasarımcıda veri kümelerini silme
+
+Tasarımcıda veri kümelerini silmek için Azure portal veya Depolama Gezgini kullanarak bağlı depolama hesaplarına gidin ve veri kümelerini burada silin. Tasarımcıdaki veri kümelerinin kaydı, yalnızca depolamadaki başvuru noktasını kaldırır. 
+
+## <a name="export-data-in-the-designer"></a>Tasarımcıda verileri dışarı aktarma
 
 Denemenizi oluşturduğunuz tasarımcıda, eklediğiniz verileri dışarı aktarın:
 
 1. Sol tarafta **veri kümeleri**' ni seçin.
 
-
-
     ![Verileri indir](media/how-to-export-delete-data.md/unregister-dataset.png)
-
-1. Listede, tek bir veri kümesini seçin ve kayıt Sil ' e tıklayın.
-

@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044134"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718753"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşlenmiş bölgeler
 
@@ -29,10 +29,10 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | Coğrafya | Eşleştirilmiş bölgeler |  |
 |:--- |:--- |:--- |
 | Asya |Doğu Asya |Güneydoğu Asya |
-| Avustralya |Doğu Avustralya |Güneydoğu Avustralya |
+| Avustralya |Avustralya Doğu |Avustralya Güneydoğu |
 | Avustralya |Avustralya Orta |Avustralya Orta 2 |
-| Brezilya |Brezilya Güney |Güney Orta ABD |
-| Kanada |Kanada Orta |Kanada Doğu |
+| Brezilya |Güney Brezilya |Orta Güney ABD |
+| Kanada |Kanada Orta |Doğu Kanada |
 | Çin |Çin Kuzey |Çin Doğu|
 | Çin |Çin Kuzey 2 |Çin Doğu 2|
 | Avrupa |Kuzey Avrupa (İrlanda) |Batı Avrupa (Hollanda) |
@@ -40,19 +40,19 @@ Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirili
 | Almanya |Almanya Orta |Almanya Kuzeydoğu |
 | Hindistan |Orta Hindistan |Güney Hindistan |
 | Hindistan |Batı Hindistan |Güney Hindistan |
-| Japonya |Doğu Japonya |Batı Japonya |
+| Japonya |Japonya Doğu |Japonya Batı |
 | Güney Kore |Kore Orta |Kore Güney |
 | Kuzey Amerika |Doğu ABD |Batı ABD |
 | Kuzey Amerika |Doğu ABD 2 |Orta ABD |
-| Kuzey Amerika |Orta Kuzey ABD |Güney Orta ABD |
+| Kuzey Amerika |Orta Kuzey ABD |Orta Güney ABD |
 | Kuzey Amerika |Batı ABD 2 |Orta Batı ABD 
 | Güney Afrika | Güney Afrika Kuzey | Güney Afrika Batı
-| UK |Birleşik Krallık, Batı |Birleşik Krallık, Güney |
+| UK |Birleşik Krallık Batı |Birleşik Krallık Güney |
 | Birleşik Arap Emirlikleri | BAE Kuzey | BAE Orta
-| ABD Savunma Bakanlığı |ABD DoD Doğu |US DoD Orta |
-| ABD Devleti |US Gov Arizona |US Gov Teksas |
-| ABD Devleti |US Gov Iowa |ABD Hükümeti Virginia |
-| ABD Devleti |ABD Hükümeti Virginia |US Gov Teksas |
+| ABD Savunma Bakanlığı |US DoD Doğu |US DoD Orta |
+| ABD Devleti |ABD Devleti Arizona |ABD Devleti Texas |
+| ABD Devleti |US Gov Iowa |ABD Devleti Virginia |
+| ABD Devleti |ABD Devleti Virginia |ABD Devleti Texas |
 
 Tablo 1-Azure bölgesel çiftlerinin eşleme
 
@@ -75,7 +75,7 @@ Aşağıdaki şekil 2 ' de olağanüstü durum kurtarma için bölgesel çifti k
 ## <a name="cross-region-activities"></a>Çapraz bölge etkinlikleri
 Şekil 2 ' de adlandırılmaktadır.
 
-IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure işlem (IaaS)** ![: bir olağanüstü durum sırasında kaynakların başka bir bölgede kullanılabilmesini sağlamak için daha önce ek işlem kaynakları sağlamalısınız. Daha fazla bilgi için bkz. [Azure dayanıklılık Teknik Kılavuzu](resiliency/resiliency-technical-guidance.md).
+IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure işlem (IaaS)** ![: bir olağanüstü durum sırasında kaynakların başka bir bölgede kullanılabilmesini sağlamak için daha önce ek işlem kaynakları sağlamalısınız. Daha fazla bilgi için bkz. [Azure dayanıklılık Teknik Kılavuzu](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md).
 
 ![depolama](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** -yönetilen diskler kullanıyorsanız, Azure Backup olan [çapraz bölge yedeklemeleri](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) hakkında bilgi edinin ve Azure Site Recovery Ile bir bölgeden diğer [VM 'leri çoğaltma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) . Depolama hesapları kullanıyorsanız, coğrafi olarak yedekli depolama (GRS), bir Azure depolama hesabı oluşturulduğunda varsayılan olarak yapılandırılır. GRS ile, verileriniz birincil bölgede otomatik olarak üç kez ve eşleştirilmiş bölgede üç kez çoğaltılır. Daha fazla bilgi için bkz. [Azure Storage artıklık seçenekleri](storage/common/storage-redundancy.md).
 

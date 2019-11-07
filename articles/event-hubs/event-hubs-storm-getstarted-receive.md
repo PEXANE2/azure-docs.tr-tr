@@ -1,6 +1,6 @@
 ---
-title: Apache Storm-Azure Event Hubs kullanarak olay alma | Microsoft Docs
-description: Bu makalede, Azure Event Hubs Apache Storm kullanarak nasıl olay alınacağı hakkında bilgi verilmektedir.
+title: 'Hızlı başlangıç: Apache Storm Azure Event Hubs kullanarak olay alma'
+description: 'Hızlı başlangıç: Bu makalede, Azure Event Hubs Apache Storm kullanarak nasıl olay alınacağı hakkında bilgi sağlanır.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,24 +11,24 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800201"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717617"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm kullanarak Event Hubs olay alma
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Hızlı başlangıç: Event Hubs Apache Storm kullanarak olay alma
 
 [Apache Storm](https://storm.incubator.apache.org) , sınırsız miktarda veri akışının güvenilir işlemesini kolaylaştıran dağıtılmış bir gerçek zamanlı hesaplama sistemidir. Bu bölümde, Event Hubs olayları almak için Azure Event Hubs fırtınası Spout kullanımı gösterilmektedir. Apache Storm kullanarak, olayları farklı düğümlerde barındırılan birden çok işlem arasında ayırabilirsiniz. Event Hubs tümleştirme, fırtınası Zookeeper yüklemesi kullanarak ilerleme durumunu saydam bir şekilde işaretleyerek, kalıcı denetim noktaları ve Event Hubs paralel alma işlemlerini yönetebilir.
 
 Event Hubs alma desenleri hakkında daha fazla bilgi için bkz. [Event Hubs genel bakış][Event Hubs overview].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Hızlı başlangıç ile başlamadan önce **bir Event Hubs ad alanı ve bir olay hub 'ı oluşturun**. Event Hubs türünde bir ad alanı oluşturmak ve uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini almak için [Azure Portal](https://portal.azure.com) kullanın. Bir ad alanı ve Olay Hub 'ı oluşturmak için [Bu makaledeki](event-hubs-create.md)yordamı izleyin. 
 
 ## <a name="create-project-and-add-code"></a>Proje oluşturma ve kod ekleme

@@ -1,43 +1,33 @@
 ---
 title: Redsıs için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlama | Microsoft Docs
 description: Reda için Azure önbelleğini Azure Spring Cloud uygulamanıza bağlamayı öğrenin
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038947"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607566"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Öğretici: Azure hizmetlerini Azure Spring Cloud uygulamanıza bağlama: Redsıs için Azure önbelleği
 
 Azure yay bulutu, Spring Boot uygulamanızı el ile yapılandırmak yerine, Azure hizmetlerini uygulamalarınıza otomatik olarak bağlamanıza olanak tanır. Bu makalede, redin için uygulamanızı Azure önbelleğine bağlama işlemi gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Dağıtılan bir Azure yay bulutu örneği
 * Redsıs hizmet örneği için bir Azure önbelleği
 * Azure CLı için Azure yay bulutu uzantısı
 
-Gerekirse, aşağıdaki komutu kullanarak Azure CLı için Azure yay bulutu uzantısını yüklemelisiniz:
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur.  Git, JDK, Maven ve Azure CLı 'nin en son sürümleri de dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız, shell.azure.com adresinden [Azure Cloud Shell](https://shell.azure.com) başlatın.  [Belgelerimizi okuyarak](../cloud-shell/overview.md) Azure Cloud Shell hakkında daha fazla bilgi edinebilirsiniz
+Dağıtılmış bir Azure yay bulut örneğiniz yoksa, ilk Spring Cloud uygulamanızı dağıtmak için bu [hızlı](spring-cloud-quickstart-launch-app-portal.md) başlangıçta bulunan adımları izleyin.
 
 ## <a name="bind-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini bağlama
 
-1. Projenizin @no__t aşağıdaki bağımlılığı ekleyin-0
+1. Aşağıdaki bağımlılığı projenizin `pom.xml` ekleyin
 
     ```xml
     <dependency>
@@ -45,15 +35,15 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. @No__t-1 dosyasında, varsa `spring.redis.*` özelliklerini kaldırın
+1. `application.properties` dosyasında, varsa `spring.redis.*` özellikleri kaldırın
 
-1. @No__t-0 kullanarak geçerli dağıtımı güncelleştirin veya `az spring-cloud app deployment create` kullanarak yeni bir dağıtım oluşturun.
+1. `az spring-cloud app update` kullanarak geçerli dağıtımı güncelleştirin veya `az spring-cloud app deployment create`kullanarak yeni bir dağıtım oluşturun.
 
-1. Azure portal Azure Spring Cloud Service sayfanıza gidin. **Uygulama panosunu** bulun ve Redsıs Için Azure önbelleğine bağlanacak uygulamayı seçin.  Bu, önceki adımda güncelleştirdiğiniz veya dağıttığınız bir uygulamadır. Sonra `Service binding` ' ı seçin ve `Create service binding` düğmesini seçin. Formu doldurun, `Azure Cache for Redis`, Redsıs sunucunuz ve birincil anahtar **seçeneğini seçtiğinizden emin** olun. 
+1. Azure portal Azure Spring Cloud Service sayfanıza gidin. **Uygulama panosunu** bulun ve Redsıs Için Azure önbelleğine bağlanacak uygulamayı seçin.  Bu, önceki adımda güncelleştirdiğiniz veya dağıttığınız bir uygulamadır. Sonra `Service binding` öğesini seçin ve `Create service binding` düğmesini seçin. **Bağlantı türü** `Azure Cache for Redis`, redsıs sunucunuzu ve birincil anahtar seçeneğini seçtiğinizden emin olmak için formu doldurun. 
 
 1. Uygulamayı yeniden başlatın ve bu bağlamanın şimdi çalışması gerekir.
 
-1. Hizmet bağlamasının doğru olduğundan emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. @No__t-0 alanı şöyle görünmelidir:
+1. Hizmet bağlamasının doğru olduğundan emin olmak için bağlama adını seçin ve ayrıntılarını doğrulayın. `property` alanı şöyle görünmelidir:
     ```
     spring.redis.host=some-redis.redis.cache.windows.net
     spring.redis.port=6380

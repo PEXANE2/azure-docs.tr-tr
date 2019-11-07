@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: dae708a417a1bf8ca4b118f218e353a28e5675c1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684965"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716682"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Azure Machine Learning ML Studio 'den farklı (klasik)
 
@@ -37,10 +37,10 @@ Hızlı bir karşılaştırma aşağıda verilmiştir.
 
 ||  Azure Machine Learning Tasarımcısı|Studio (klasik) |
 |---| --- | --- |
-||Tasarımcı önizleme aşamasındadır, Azure Machine Learning GA 'dir|Genel olarak kullanılabilir (GA) | 
+||Tasarımcı önizlemededir, Azure Machine Learning GA 'dir|Genel olarak kullanılabilir (GA) | 
 |Sürükle ve bırak arabirimi| Evet | Evet|
 |Deneyin| İşlem hedefi ile ölçeklendirme|Ölçek (10 GB eğitim veri limiti) | 
-|Arabirim için modüller|  Birçok popüler modül|Sayısı |
+|Arabirim için modüller| [Birçok popüler modül](algorithm-module-reference/module-reference.md) | Sayısı |
 |Eğitim işlem hedefleri| AML Işlem (GPU/CPU)|Özel işlem hedefi, yalnızca CPU|
 |Inlekrime işlem hedefleri| Gerçek zamanlı çıkarım için Azure Kubernetes hizmeti <br/>Toplu çıkarım için AML Işlem|Özel Web hizmeti biçimi özelleştirilebilir değil | 
 |ML işlem hattı| İşlem hattı yazma <br/> Yayınlanan işlem hattı <br/> Ardışık düzen uç noktası <br/> [ML işlem hattı hakkında daha fazla bilgi](service/concept-ml-pipelines.md)|Desteklenmiyor | 
@@ -48,7 +48,7 @@ Hızlı bir karşılaştırma aşağıda verilmiştir.
 |Model| Standart biçim, çeşitli eğitim işine bağlıdır|Tescilli, taşınabilir olmayan biçim.| 
 |Otomatik model eğitimi|Henüz tasarımcıda değildir, ancak arabirim ve SDK 'lar aracılığıyla mümkün değildir.| Hayır | 
 
-## <a name="get-started-with-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcı ile çalışmaya başlama
+## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning kullanmaya başlayın
 
 Aşağıdaki kaynaklar Azure Machine Learning kullanmaya başlamanıza yardımcı olabilir
 
@@ -56,12 +56,11 @@ Aşağıdaki kaynaklar Azure Machine Learning kullanmaya başlamanıza yardımc�
 
 - Otomatik fiyatları tahmin etmek için [ilk tasarımcı işlem hattınızı oluşturun](service/tutorial-designer-automobile-price-train-score.md) .
 
-
 ![Azure Machine Learning tasarımcı örneği](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tasarımcıda Sürükle-n-Bırak özelliklerine ek olarak Azure Machine Learning başka araçlar da mevcuttur:  
+Tasarımcıda Sürükle ve bırak özelliklerine ek olarak, Azure Machine Learning başka araçlar da mevcuttur:  
   + [ML modellerini eğitmek & dağıtmak için Python not defterlerini kullanma](./service/tutorial-1st-experiment-sdk-setup.md)
   + [ML modellerini eğitme & dağıtmak için R Markdown kullanma](./service/tutorial-1st-r-experiment.md) 
   + [ML modellerini eğitmek & dağıtmak için otomatik makine öğrenimi kullanma](./service/tutorial-designer-automobile-price-train-score.md) 

@@ -1,6 +1,6 @@
 ---
-title: Karşıya yüklenen görüntülerin yeniden boyutlandırılmasını otomatikleştirmek için Azure Event Grid kullanma | Microsoft Docs
-description: Azure Event Grid, Azure Depolama’da blob yüklemelerini tetikleyebilir. Bu hizmeti kullanarak, Azure Depolama’ya yüklenmiş görüntü dosyalarını, yeniden boyutlandırma ve diğer iyileştirmeler için Azure İşlevleri gibi diğer hizmetlere gönderebilirsiniz.
+title: 'Öğretici: karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirmek için Azure Event Grid kullanma'
+description: "Öğretici: Azure Event Grid Azure Storage 'daki blob karşıya yüklemelere tetiklenebilir. Bu hizmeti kullanarak, Azure Depolama’ya yüklenmiş görüntü dosyalarını, yeniden boyutlandırma ve diğer iyileştirmeler için Azure İşlevleri gibi diğer hizmetlere gönderebilirsiniz."
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,17 +9,17 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623867"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718227"
 ---
-# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme
 
 [Azure Event Grid](overview.md), bulut için bir olay oluşturma hizmetidir. Event Grid, Azure hizmetleri veya üçüncü taraf kaynaklar tarafından başlatılan olaylara abonelikler oluşturmanızı sağlar.  
 
@@ -48,13 +48,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure İşlevleri’ni kullanarak sunucusuz kod dağıtma
 > * Event Grid’de bir Blob depolama olayı aboneliği oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Bu öğreticiyi tamamlamak için:
 
-Önceki BLOB depolama öğreticisini tamamlamış olmanız gerekir: [Azure depolama ile veri görüntüsünü buluta yükleyin][previous-tutorial].
+Önceki BLOB depolama öğreticisini tamamlamış olmanız gerekir: [Azure depolama ile bulut içindeki görüntü verilerini karşıya yükleyin][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -235,7 +235,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
 
     | Ayar      | Önerilen değer  | Açıklama                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | imageresizersub | Yeni olay aboneliğinizi tanımlayan ad. | 
+    | **Ad** | imageresizersub | Yeni olay aboneliğinizi tanımlayan ad. | 
     | **Konu türü** |  Depolama hesapları | Depolama hesabı olay sağlayıcısını seçin. | 
     | **Abonelik** | Azure aboneliğiniz | Varsayılan olarak, geçerli Azure aboneliğiniz seçili durumdadır.   |
     | **Kaynak grubu** | myResourceGroup | **Var olanı kullan**’ı seçin ve bu öğreticide kullandığınız kaynak grubunu belirleyin.  |
@@ -248,7 +248,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     2. **Konu için ile başlıyorsa**, şu değeri girin: **/Blobservices/default/containers/images/Blobs/** .
 
         ![Olay aboneliği için filtre belirtin](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
-2. Olay aboneliğini eklemek için **Oluştur** ' u seçin. Bu, `Thumbnail` `images` kapsayıcıya bir blob eklendiğinde işlev tetikleyen bir olay aboneliği oluşturur. İşlev görüntüleri yeniden boyutlandırır ve `thumbnails` kapsayıcıya ekler.
+2. Olay aboneliğini eklemek için **Oluştur** ' u seçin. Bu, `images` kapsayıcısına bir blob eklendiğinde `Thumbnail` işlevi tetikleyen bir olay aboneliği oluşturur. İşlev görüntüleri yeniden boyutlandırır ve `thumbnails` kapsayıcısına ekler.
 
 Arka uç hizmetleri yapılandırıldıktan sonra, görüntü yeniden boyutlandırma işlevini örnek web uygulamasında test edin. 
 
@@ -266,13 +266,13 @@ Karşıya yüklenen görüntü kaybolduktan sonra **Oluşturulan küçük resiml
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
-Dosyayı seçmek için **Dosya Seç** ' e tıklayın ve ardından **görüntüyü karşıya yükle**' ye tıklayın. Karşıya yükleme başarılı olduğunda, tarayıcı başarı sayfasına gider. Giriş sayfasına geri dönmek için bağlantıya tıklayın. Yüklenen görüntünün bir kopyası **oluşturulan küçük resimler** alanında görüntülenir. (Görüntü ilk başta görünmezse, sayfayı yeniden yüklemeyi deneyin.) Bu görüntü, işlev tarafından yeniden boyutlandırılmış, *thumbnails* kapsayıcısına eklenmiş ve web istemcisi tarafından indirilmiştir.
+Dosyayı seçmek için **Dosya Seç** ' e tıklayın ve ardından **görüntüyü karşıya yükle**' ye tıklayın. Karşıya yükleme başarılı olduğunda, tarayıcı başarı sayfasına gider. Giriş sayfasına geri dönmek için bağlantıya tıklayın. Yüklenen görüntünün bir kopyası **oluşturulan küçük resimler** alanında görüntülenir. (Görüntü ilk başta görünmezse, sayfayı yeniden yüklemeyi deneyin.) Bu görüntü, işlev tarafından yeniden boyutlandırılmış, *küçük resim* kapsayıcısına eklenmiş ve Web istemcisi tarafından indirilmişti.
 
 ![Tarayıcıda yayınlanan web uygulaması](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node. js Ile v10 arasındaki SDK](#tab/nodejsv10)
 
-Dosyayı seçmek için **Dosya Seç** ' e tıklayın ve ardından **görüntüyü karşıya yükle**' ye tıklayın. Karşıya yükleme başarılı olduğunda, tarayıcı başarı sayfasına gider. Giriş sayfasına geri dönmek için bağlantıya tıklayın. Yüklenen görüntünün bir kopyası **oluşturulan küçük resimler** alanında görüntülenir. (Görüntü ilk başta görünmezse, sayfayı yeniden yüklemeyi deneyin.) Bu görüntü, işlev tarafından yeniden boyutlandırılmış, *thumbnails* kapsayıcısına eklenmiş ve web istemcisi tarafından indirilmiştir.
+Dosyayı seçmek için **Dosya Seç** ' e tıklayın ve ardından **görüntüyü karşıya yükle**' ye tıklayın. Karşıya yükleme başarılı olduğunda, tarayıcı başarı sayfasına gider. Giriş sayfasına geri dönmek için bağlantıya tıklayın. Yüklenen görüntünün bir kopyası **oluşturulan küçük resimler** alanında görüntülenir. (Görüntü ilk başta görünmezse, sayfayı yeniden yüklemeyi deneyin.) Bu görüntü, işlev tarafından yeniden boyutlandırılmış, *küçük resim* kapsayıcısına eklenmiş ve Web istemcisi tarafından indirilmişti.
 
 ![Tarayıcıda yayınlanan web uygulaması](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

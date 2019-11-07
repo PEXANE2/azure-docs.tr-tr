@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma'
-description: Bu hızlı başlangıçta, redin için Azure önbelleği kullanan bir Python uygulaması oluşturmayı öğreneceksiniz.
+description: Bu hızlı başlangıçta, Redu için Azure önbelleği kullanan bir Python uygulaması oluşturmayı öğreneceksiniz.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -12,52 +12,47 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: cache
 ms.workload: tbd
-ms.date: 05/11/2018
+ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435539"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720400"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma
 
 Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Python 2 veya 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Azure üzerinde Redsıs için Azure önbelleği oluşturma
+## <a name="create-an-azure-cache-for-redis-instance"></a>Redsıs örneği için Azure önbelleği oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>redis-py yükleyin
 
-[Redin-](https://github.com/andymccurdy/redis-py) , Redsıs Için Azure önbelleğine yönelik bir Python arabirimidir. Python paketleri aracı olan *pip*’i kullanarak redis-py paketini yükleyin. 
+[Redin-](https://github.com/andymccurdy/redis-py) , Redsıs Için Azure önbelleğine yönelik bir Python arabirimidir. Komut isteminden *Redu-Kopyala* paketini yüklemek için, *PIP*Python paketleri aracını kullanın. 
 
-Aşağıdaki örnek, yükseltilmiş yönetici ayrıcalıklarıyla çalışan bir Visual Studio 2019 Geliştirici komut istemi kullanarak Windows 10 ' da reddo-Kopyala paketini yüklemek için *pip3* for Python3 kullanır.
-
-```python
-    pip3 install redis
-```
+Aşağıdaki örnek, bir yönetici komut isteminden Windows 10 ' da *Reda-Kopyala* yüklemek için Python 3 için *pip3* kullandı.
 
 ![Redsıs için Azure önbelleğine Reda-Kopyala Python arabirimini yükler](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
-
 ## <a name="read-and-write-to-the-cache"></a>Önbellek üzerinde okuma ve yazma
 
-Python’u çalıştırın ve komut satırındaki önbelleği kullanarak test edin. @No__t-0 ve `<Your Access Key>` ' i redin için Azure önbelleğinizin değerleriyle değiştirin. 
+Komut satırından Python komutunu çalıştırın ve aşağıdaki kodu kullanarak önbelleğinizi test edin. `<Your Host Name>` ve `<Your Access Key>` değerini Redsıs örneği için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız *\<DNS adı >. redsıs. cache. Windows. net*biçiminde.
 
 ```python
 >>> import redis
->>> r = redis.StrictRedis(host='<Your Host Name>.redis.cache.windows.net',
+>>> r = redis.StrictRedis(host='<Your Host Name>',
         port=6380, db=0, password='<Your Access Key>', ssl=True)
 >>> r.set('foo', 'bar')
 True
@@ -66,18 +61,16 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Redsıs sürümü 3,0 veya daha yüksekse, SSL sertifikası denetimi zorlanır. Redsıs 'e bağlanılırken ssl_ca_certs açıkça ayarlanması gerekir. RH Linux söz konusu olduğunda, ssl_ca_certs "/etc/pki/TLS/certs/CA-Paketleyici Le.CRT" sertifika modülünde bulunabilir.
+> Redsıs sürüm 3,0 veya üzeri için Azure önbelleği için SSL sertifikası denetimi zorlanır. Redsıs için Azure Cache 'e bağlanılırken ssl_ca_certs açık olarak ayarlanmalıdır. RedHat Linux için ssl_ca_certs, */etc/pki/TLS/certs/CA-Paketleyici ka.exe CRT* sertifika modülüdür.
 
-## <a name="create-a-python-script"></a>Python betiği oluşturma
+## <a name="create-a-python-sample-app"></a>Python örnek uygulaması oluşturma
 
-*PythonApplication1.py* adlı yeni bir betik metni dosyası oluşturun.
-
-Aşağıdaki betiği *PythonApplication1.py* dosyasına ekleyin ve dosyayı kaydedin. Bu betik, önbellek erişimini test eder. @No__t-0 ve `<Your Access Key>` ' i redin için Azure önbelleğinizin değerleriyle değiştirin. 
+Yeni bir metin dosyası oluşturun, aşağıdaki betiği ekleyin ve dosyayı *PythonApplication1.py*olarak kaydedin. `<Your Host Name>` ve `<Your Access Key>` değerini Redsıs örneği için Azure önbelleğinizin değerleriyle değiştirin. Ana bilgisayar adınız *\<DNS adı >. redsıs. cache. Windows. net*biçiminde.
 
 ```python
 import redis
 
-myHostname = "<Your Host Name>.redis.cache.windows.net"
+myHostname = "<Your Host Name>"
 myPassword = "<Your Access Key>"
 
 r = redis.StrictRedis(host=myHostname, port=6380,
@@ -98,36 +91,28 @@ for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
 
-Python ile betiği çalıştırın.
+Python ile *PythonApplication1.py* çalıştırın. Aşağıdaki örnekte olduğu gibi sonuçlar görmeniz gerekir:
 
-![Redsıs için Azure önbelleğinde önbellek erişimini test etmek için Python betiği çalıştırma](./media/cache-python-get-started/cache-python-completed.png)
-
+![Önbellek erişimini sınamak için Python betiği çalıştırma](./media/cache-python-get-started/cache-python-completed.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Başka bir öğretici ile devam edecekseniz, bu hızlı başlangıçta oluşturulan kaynakları tutabilir ve sonraki öğreticide yeniden kullanabilirsiniz.
-
-Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücret yansıtılmaması için bu hızlı başlangıçta oluşturulan Azure kaynaklarını silebilirsiniz. 
+Bu hızlı başlangıçta oluşturduğunuz Azure Kaynak grubu ve kaynakları ile işiniz bittiğinde, ücretleri önlemek için bunları silebilirsiniz.
 
 > [!IMPORTANT]
-> Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
->
+> Bir kaynak grubunun silinmesi geri alınamaz ve kaynak grubu ve içindeki tüm kaynaklar kalıcı olarak silinir. Korumak istediğiniz var olan bir kaynak grubunda Redsıs örneği için Azure önbelleğinizi oluşturduysanız, yalnızca önbelleğin **genel bakış** sayfasında **Sil** ' i seçerek önbelleği silebilirsiniz. 
 
-[Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+Kaynak grubunu ve Azure örneği için Redis Cache silmek için:
 
-**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin**.
-
-![Redsıs için Azure önbelleği için hızlı başlangıç kaynak grubunuzu silme](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
-
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını girin ve **Sil**' i seçin.
-
-Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
+1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını**arayıp seçin.
+1. **Ada göre filtrele** metin kutusunda, önbellek örneğinizi içeren kaynak grubunun adını girin ve arama sonuçlarından bunu seçin. 
+1. Kaynak grubu sayfanızda **kaynak grubunu sil**' i seçin.
+1. Kaynak grubu adını yazın ve ardından **Sil**' i seçin.
+   
+   ![Redsıs için Azure önbelleği için kaynak grubunuzu silme](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [Redsıs için Azure önbelleği kullanan basit bir ASP.NET Web uygulaması oluşturun.](./cache-web-app-howto.md)
 
-<!--Image references-->
-[1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
-[2]: ./media/cache-python-get-started/redis-cache-cache-create.png

@@ -1,5 +1,5 @@
 ---
-title: NOAA açık veri kümesi kullanan örnek jupi Not defterleri
+title: NOAA verileri kullanan örnek jupi Not defterleri
 titleSuffix: Azure Open Datasets
 description: Açık veri kümelerini nasıl yükleyeceğinizi ve tanıtım verilerini zenginleştirmek için bunları nasıl kullanacağınızı öğrenmek için Azure açık veri kümeleri için örnek jupi not defterlerini kullanın. Teknikler, verileri işlemek için Spark ve Pandas kullanımını içerir.
 ms.service: open-datasets
@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496565"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606135"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Örnek jupi Not defterleri açık veri kümeleriyle verilerin nasıl zenginleştiralınacağını gösterir 
 Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri kümelerinin nasıl yükleneceğini ve bunları zenginleştirmek için bunları nasıl kullanacağınızı gösterir. Teknikler, verileri işlemek için Apache Spark ve Pandas kullanımını içerir.
@@ -40,6 +40,6 @@ Azure açık veri kümelerine yönelik örnek jupi Not defterleri, açık veri k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: otomatik makine öğrenimi ve açık bir veri kümesi ile gerileme modelleme](tutorial-opendatasets-automl.md)
+* [Öğretici: otomatik makine öğrenimi ve açık bir veri kümesi ile gerileme modelleme](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Açık veri kümeleri için Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure açık veri kümeleri kataloğu](https://azure.microsoft.com/services/open-datasets/catalog/)

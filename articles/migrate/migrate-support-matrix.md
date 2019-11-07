@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18032250bc5c321d638ad46204738f49f1a0c744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480134"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715474"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -34,20 +34,30 @@ Tablo, desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 **Dağıtım** | **Ayrıntılar** 
 --- | --- 
 **Uygulamaya özel bulma** | VMware VM 'lerinde çalışan uygulamaları, rolleri ve özellikleri bulabilirsiniz. Şu anda bu özellik yalnızca bulma ile sınırlıdır. Değerlendirme Şu anda makine düzeyindedir. Henüz uygulama, rol veya özelliğe özgü değerlendirme sunmuyoruz. 
-**Şirket içi değerlendirme** | VMware VM 'lerinde ve Hyper-V VM 'lerinde çalışan şirket içi iş yüklerini ve verileri değerlendirin. Azure geçişi sunucu değerlendirmesi ve Microsoft Data Migration Yardımcısı (DMA) kullanmayı ve Cloudamize, Corent Tech ve Turbonomic Server 'ı içeren üçüncü taraf araçları kullanmayı değerlendirin.
-**Azure 'a şirket içi geçiş** | Fiziksel sunucular, VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve bulut tabanlı VM 'lerde çalışan iş yüklerini ve verileri Azure 'a geçirin. Azure geçişi sunucu değerlendirmesini ve Azure veritabanı geçiş hizmeti 'ni (DMS) kullanarak geçirin ve Carbonite ve CorentTech dahil üçüncü taraf araçları kullanın.
+**Şirket içi değerlendirme** | Şirket içi iş yüklerini ve VMware VM 'leri, Hyper-V VM 'Leri ve fiziksel sunucularda çalışan verileri değerlendirin. Azure geçişi sunucu değerlendirmesi ve Microsoft Data Migration Yardımcısı (DMA) ile diğer araçların yanı sıra diğer araçları ve ISV tekliflerini kullanmayı değerlendirin.
+**Azure 'a şirket içi geçiş** | Fiziksel sunucular, VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular ve bulut tabanlı VM 'lerde çalışan iş yüklerini ve verileri Azure 'a geçirin. Azure geçişi sunucu değerlendirmesi ve Azure veritabanı geçiş hizmeti 'ni (DMS) ve diğer araçlar ve ISV tekliflerini kullanarak geçirin.
 
-Belirli araç desteği aşağıdaki gibi özetlenmektedir.
 
-**Araç** | **Değerlendirme/geçiş** | **Ayrıntılar**
+## <a name="supported-tools"></a>Desteklenen Araçlar
+
+Belirli araç desteği tabloda özetlenmiştir.
+
+**Araç** | **Lamayı** | **Geçirme** 
 --- | --- | ---
-Azure geçişi sunucu değerlendirmesi | Değerlendirme | [Hyper-V](tutorial-prepare-hyper-v.md) ve [VMware](tutorial-prepare-vmware.md)için sunucu değerlendirmesini deneyin.
-Cloudamize | Değerlendirme | [Daha fazla bilgi edinin](https://www.cloudamize.com/platform#tab-0).
-CorentTech | Değerlendirme | [Daha fazla bilgi edinin](https://www.corenttech.com/).
-Turbonomic | Değerlendirme | [Daha fazla bilgi edinin](https://turbonomic.com/solutions/technologies/azure-cloud/).
-Azure geçiş sunucusu geçişi | Geçiş | [Hyper-V](tutorial-migrate-hyper-v.md) ve [VMware](tutorial-migrate-vmware.md)için sunucu geçişini deneyin.
-Carbonite | Geçiş | [Daha fazla bilgi edinin](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure).
-CorentTech | Geçiş | [Daha fazla bilgi edinin](https://www.corenttech.com/).
+Azure geçişi sunucu değerlendirmesi | [VMware VM](tutorial-prepare-vmware.md)'lerini, [Hyper-V VM](tutorial-prepare-hyper-v.md)'lerini ve [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirin. |  Kullanılamıyor (yok)
+Azure geçiş sunucusu geçişi | NA | [VMware VM 'leri](tutorial-migrate-vmware.md), [Hyper-V VM 'leri](tutorial-migrate-hyper-v.md)ve [fiziksel sunucuları](tutorial-migrate-physical-virtual-machines.md)geçirin.
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
+[Corent teknolojisi](https://go.microsoft.com/fwlink/?linkid=2084928) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin ve geçirin. |  VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri geçirin.
+[Cihaz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin.| NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Şirket içi SQL Server veritabanlarını değerlendirin. | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB geçirin. | NA
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Sanal Masaüstü altyapısını (VDı) değerlendirme | NA
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'Leri, fiziksel makineler, iş istasyonları (VDı dahil), genel bulut iş yükleri | NA
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare VM 'leri, Hyper-V VM 'Leri, Xen VM 'leri, KVM VM 'Leri, fiziksel makineler, genel bulut iş yükleri geçirin 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri değerlendirin. | NA
+[Unifrivcloud](https://go.microsoft.com/fwlink/?linkid=2097195) | VMware VM 'leri, Hyper-V VM 'Leri, fiziksel sunucular, genel bulut iş yükleri ve SQL Server veritabanlarını değerlendirin. | NA
+[WEBAPP Geçiş Yardımcısı](https://appmigration.microsoft.com/) | Web uygulamalarını değerlendirme | Web uygulamalarını geçirme.
 
 
 ## <a name="azure-migrate-projects"></a>Azure geçişi projeleri

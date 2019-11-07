@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73483895"
+ms.locfileid: "73584903"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * Laboratuvar için zamanlamayı ayarla
 > * Öğrenciye davetiye e-postası gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Laboratuvar hesabında bir derslik Laboratuvarı ayarlamak için laboratuvar hesabındaki şu rollerden birine üye olmanız gerekir: sahip, laboratuvar Oluşturucusu veya katkıda bulunan. Laboratuvar hesabı oluşturmak için kullandığınız hesap, sahip rolüne otomatik olarak eklenir.
 
 Laboratuvar sahibi, başka kullanıcıları **Laboratuvar Oluşturucu** rolüne ekleyebilir. Örneğin, bir laboratuar sahibi, laboratuvar Oluşturucu rolüne meslektedir ekler. Daha sonra, mesleler, sınıfları için VM 'Ler ile laboratuvarları oluşturur. Öğrenciler, mesleler tarafından laboratuvara kaydolmak için aldıkları kayıt bağlantısını kullanır. Kaydolduktan sonra, iş ve ev işlerini yapmak için laboratuvarlarda VM 'Leri kullanabilirler. Laboratuvar Oluşturucu rolüne kullanıcı ekleme hakkında ayrıntılı adımlar için bkz. [Laboratuvar Oluşturucu rolüne kullanıcı ekleme](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
@@ -92,6 +92,11 @@ Laboratuvar sahibi, başka kullanıcıları **Laboratuvar Oluşturucu** rolüne 
     2. Tüm VM 'Leri aynı anda başlatmak için araç çubuğunda **Tümünü Başlat** ' ı seçin. 
     3. Belirli bir sanal makineyi başlatmak için, **durumunda**aşağı oku seçin ve ardından **Başlat**' ı seçin. Ayrıca, ilk sütunda bir VM seçerek ve ardından araç çubuğundan **Başlat** ' ı seçerek bir VM başlatabilirsiniz.
 
+    Şablon oluşturma ve yönetme hakkında daha fazla bilgi ve öğrenci sanal makinelerini ayarlama ve yönetme hakkında daha fazla bilgi için aşağıdaki makalelere bakın: 
+    
+    - [Sınıf Laboratuvarı şablonları oluşturma ve yönetme](how-to-create-manage-template.md)
+    - [Sanal makine havuzunu ayarlama ve yönetme](how-to-set-virtual-machine-passwords.md)
+
 ## <a name="add-users-to-the-lab"></a>Laboratuvara Kullanıcı ekleme
 
 1. Sol menüdeki **Kullanıcılar** ' ı seçin. Varsayılan olarak, **erişimi kısıtla** seçeneği etkinleştirilmiştir. Bu ayar açık olduğunda, Kullanıcı kullanıcılar listesinde olmadığı takdirde Kullanıcı kayıt bağlantısına sahip olsa bile, Kullanıcı laboratuvara kayıt yapamıyor. Yalnızca listedeki kullanıcılar, göndereceğiniz kayıt bağlantısını kullanarak laboratuvara kayıt yapabilir. Bu yordamda, kullanıcıları listeye eklersiniz. Alternatif olarak, kayıt bağlantısı olduğu sürece kullanıcıların laboratuvara kaydolmaları için **erişimi kısıtla**' yı devre dışı bırakabilirsiniz. 
@@ -105,29 +110,40 @@ Laboratuvar sahibi, başka kullanıcıları **Laboratuvar Oluşturucu** rolüne 
 
     ![Kullanıcı listesi](../media/how-to-configure-student-usage/users-list-new.png)
 
+    Laboratuvar 'e kaydolduktan sonra listedeki kullanıcıların adlarını görürsünüz. 
+    
 ## <a name="set-a-schedule-for-the-lab"></a>Laboratuvar için zamanlama ayarlama
 Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/durdurulması için laboratuvar için zamanlanmış bir olay oluşturun. Daha önce belirttiğiniz Kullanıcı kotası, bu zamanlanan sürenin dışında her bir kullanıcıya atanan ek süredir. 
 
 1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
 
     ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/add-schedule-button.png)
-2. **Standart** **olay türü**olarak seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
-3. **Yinele** bölümünde geçerli zamanlamayı seçin. 
-
-    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/select-current-schedule.png)
-4. Zamanlamayı seçtiğinizde **Yinele** iletişim kutusu açılır. Bu iletişim kutusunda, aşağıdaki adımları uygulayın:
-    1. **Yineleme** alanı için **Her haftanın** ayarlandığını onaylayın. 
-    3. **Başlangıç tarihini**belirtin.
+2. **Zamanlanmış olay Ekle** sayfasında, aşağıdaki adımları uygulayın:
+    1. **Standart** **olay türünün**seçili olduğunu onaylayın.  
+    2. Sınıf için **başlangıç tarihini** belirtin. 
     4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** belirtin.
     5. VM 'Lerin kapatıldığı **bitiş saatini** belirtin. 
     6. Belirttiğiniz başlangıç ve durdurma zamanları için **saat dilimini** belirtin. 
-    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Perşembe seçilidir. 
+3. Aynı **Zamanlanmış olay Ekle** sayfasında, **Yinele** bölümünde geçerli zamanlamayı seçin.  
+
+    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/select-current-schedule.png)
+5. **Yinele** iletişim kutusunda, aşağıdaki adımları uygulayın:
+    1. **Yineleme** alanı için **Her haftanın** ayarlandığını onaylayın. 
+    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Cuma seçilidir. 
+    3. Zamanlama için bir **bitiş tarihi** seçin.
     8. **Kaydet**’i seçin. 
 
-5. Şimdi, **zamanlanan olay Ekle** sayfasında, **notlar için (isteğe bağlı)** , zamanlama için herhangi bir açıklama veya Not girin. 
-6. **Zamanlanmış olay Ekle** sayfasında **Kaydet**' i seçin. 
+        ![Yineleme zamanlaması ayarla](../media/how-to-create-schedules/set-repeat-schedule.png)
+
+3. Şimdi, **zamanlanan olay Ekle** sayfasında, **notlar için (isteğe bağlı)** , zamanlama için herhangi bir açıklama veya Not girin. 
+4. **Zamanlanmış olay Ekle** sayfasında **Kaydet**' i seçin. 
 
     ![Haftalık zamanlama](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+5. Zamanlamanın ayarlandığını doğrulamak için takvimdeki başlangıç tarihine gidin.
+    
+    ![Takvimde zamanla](../media/how-to-create-schedules/schedule-calendar.png)
+
+    Bir sınıfa yönelik zamanlamalar oluşturma ve yönetme hakkında daha fazla bilgi için bkz. sınıf [laboratuvarları için zamanlama oluşturma ve yönetme](how-to-create-schedules.md).
 
 ## <a name="send-invitation-emails-to-students"></a>Öğrencilere davetiye e-postaları gönderin
 
@@ -139,6 +155,8 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 
     ![Kayıt bağlantısını e-posta ile gönder](../media/tutorial-setup-classroom-lab/send-email.png)
 4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **&lt;tarih&gt;** **gönderilmesi ve ardından** gönderilmek üzere değiştirilmelidir. 
+
+    Bir sınıfa öğrenci ekleme ve laboratuvarın kullanımını yönetme hakkında daha fazla bilgi için bkz. [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, bir sınıf laboratuvarı oluşturdunuz ve laboratuvarı yapılandırdınız. Bir öğrencinin, kayıt bağlantısını kullanarak laboratuvardaki bir sanal makineye nasıl erişebileceğinizi öğrenmek için sonraki öğreticiye ilerleyin:

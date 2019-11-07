@@ -1,38 +1,38 @@
 ---
-title: Python kullanarak olay gönderme ve alma-Azure Event Hubs
-description: Bu izlenecek yol, Azure Event Hubs olay gönderen veya olayları alan Python betikleri oluşturmayı ve çalıştırmayı gösterir.
+title: 'Hızlı başlangıç: Python kullanarak olay gönderme ve alma-Azure Event Hubs'
+description: 'Hızlı başlangıç: Bu izlenecek yol, Azure Event Hubs olay gönderen veya olayları alan Python betikleri oluşturmayı ve çalıştırmayı gösterir.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 10/11/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 330a7f5dc325c707b5be7ce9f9b3242a1d4c9547
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428889"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720556"
 ---
-# <a name="send-and-receive-events-with-event-hubs-using-python"></a>Python kullanarak Event Hubs olay gönderme ve alma
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>Hızlı başlangıç: Python kullanarak Event Hubs olay gönderme ve alma
 
-Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs, dağıtılmış yazılım ve cihazlardan olayları, verileri veya Telemetriyi işleyebilir ve saklayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı veya işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs hakkında daha fazla bilgi için Azure Event Hubs 'de [azure Event Hubs](event-hubs-about.md) ve [özellikleri ve terimleri](event-hubs-features.md)bölümüne bakın.
+Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs, dağıtılmış yazılım ve cihazlardan olayları, verileri veya Telemetriyi işleyebilir ve saklayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Event Hubs hakkında daha fazla bilgi için Azure Event Hubs 'de [azure Event Hubs](event-hubs-about.md) ve [özellikleri ve terimleri](event-hubs-features.md)bölümüne bakın.
 
 Bu hızlı başlangıçta, Olay Hub 'ından olayları gönderen ve olayları alan Python uygulamalarının nasıl oluşturulacağı gösterilmektedir. 
 
 > [!NOTE]
-> Hızlı başlangıç üzerinden çalışmak yerine, GitHub 'dan [örnek uygulamaları](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) indirebilir ve çalıştırabilirsiniz. @No__t-0 ve `EventHubName` dizelerini Olay Hub değerlerinizle değiştirin. 
+> Hızlı başlangıç üzerinden çalışmak yerine, GitHub 'dan [örnek uygulamaları](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) indirebilir ve çalıştırabilirsiniz. `EventHubConnectionString` ve `EventHubName` dizelerini Olay Hub değerlerinizle değiştirin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
 
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 - [Hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturmak](event-hubs-create.md)için bir Active Event Hubs ad alanı ve Olay Hub 'ı oluşturulur. Bu izlenecek yolda daha sonra kullanmak üzere ad alanı ve Olay Hub 'ı adlarını bir yere unutmayın. 
 - Event Hubs ad alanınız için paylaşılan erişim anahtarı adı ve birincil anahtar değeri. [Bağlantı dizesini al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)bölümündeki yönergeleri izleyerek erişim anahtarı adını ve değerini alın. Varsayılan erişim anahtarı adı **RootManageSharedAccessKey**' dir. Bu izlenecek yolda daha sonra kullanmak için anahtar adını ve birincil anahtar değerini kopyalayın. 
-- @No__t-0 yüklü ve güncelleştirilmiş Python 3,4 veya sonraki bir sürümü.
+- `pip` yüklenip güncelleştirildiğinden Python 3,4 veya sonraki bir sürümü.
 - Event Hubs için Python paketi. Paketi yüklemek için bu komutu, yolunda Python içeren bir komut isteminde çalıştırın: 
   
   ```cmd
@@ -48,7 +48,7 @@ Olayları bir olay hub 'ına gönderen bir Python uygulaması oluşturmak için:
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz Python düzenleyicisini açın
 2. *Send.py*adlı yeni bir dosya oluşturun. Bu betik, 100 olaylarını Olay Hub 'ınıza gönderir.
-3. Aşağıdaki *kodu, Event Hubs*\<ad alanı >, \<eventhub >, \<AccessKeyName > ve \<birincil anahtar değeri > değerlerinizle değiştirerek değiştirin: 
+3. Aşağıdaki *kodu, Event Hubs*\<ad alanı >, \<eventhub >, \<accesskeyname > ve \<birincil anahtar değeri > değerlerinizle değiştirin: 
    
    ```python
    import sys
@@ -111,7 +111,7 @@ Tebrikler! Bir olay hub'ına ileti gönderdiniz.
 Olay Hub 'ından olayları alan bir Python uygulaması oluşturmak için:
 
 1. Python Düzenleyicinizde *recv.py*adlı bir dosya oluşturun.
-2. Aşağıdaki *kodu, Event Hubs*\<ad alanı >, \<eventhub >, \<AccessKeyName > ve \<birincil anahtar değeri > değerlerinizle değiştirerek değiştirin: 
+2. Aşağıdaki *kodu, Event Hubs*\<ad alanı >, \<eventhub >, \<accesskeyname > ve \<birincil anahtar değeri > değerlerinizle değiştirin: 
    
    ```python
    import os

@@ -1,6 +1,6 @@
 ---
-title: Python uygulamasından yakalanan verileri okuma-Azure Event Hubs | Microsoft Docs
-description: Event Hubs yakalama özelliğini göstermek için Azure Python SDK 'sını kullanan betikler.
+title: 'Hızlı başlangıç: Python uygulamasından yakalanan verileri okuma-Azure Event Hubs'
+description: "Hızlı başlangıç: Event Hubs yakalama özelliğini göstermek için Azure Python SDK 'sını kullanan betikler."
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428934"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717852"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture izlenecek yol: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Hızlı başlangıç: Event Hubs Capture izlenecek yol: Python
 
 Capture, Azure Event Hubs 'ın bir özelliğidir. Olay Hub 'ınızdaki akış verilerini seçtiğiniz bir Azure Blob depolama hesabına otomatik olarak teslim etmek için yakalama ' yı kullanabilirsiniz. Bu özellik, gerçek zamanlı akış verilerinde toplu işleme yapmayı kolaylaştırır. Bu makalede, Python ile Event Hubs yakalama 'nın nasıl kullanılacağı açıklanır. Event Hubs yakalama hakkında daha fazla bilgi için bkz. [Azure Event Hubs aracılığıyla olayları yakalama][Overview of Event Hubs Capture].
 
@@ -36,9 +36,9 @@ Bu izlenecek yolda şunları yapabilirsiniz:
 > * Bir Python betiği kullanarak Olay Hub 'ınıza veri gönderme.
 > * Başka bir Python betiği kullanarak Event Hubs yakalamadan dosyaları okuyun ve işleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- @No__t-0 yüklü ve güncelleştirilmiş Python 3,4 veya sonraki bir sürümü.
+- `pip` yüklenip güncelleştirildiğinden Python 3,4 veya sonraki bir sürümü.
   
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
   
@@ -54,7 +54,7 @@ Bu izlenecek yolda şunları yapabilirsiniz:
 
 Yakalama için kullanılacak bir depolama hesabı ve kapsayıcı oluşturun. 
 
-1. [Azure Portal][Azure portal]’ında oturum açın.
+1. [Azure portalında][Azure portal] oturum açın.
 2. Sol gezinti bölmesinde **depolama hesapları**' nı seçin ve **depolama hesapları** ekranında **Ekle**' yi seçin.
 3. Depolama hesabı oluşturma ekranında bir abonelik ve kaynak grubu seçin ve depolama hesabına bir ad verin. Diğer seçimleri varsayılan olarak bırakabilirsiniz. **Gözden geçir + oluştur**' u seçin, ayarları gözden geçirin ve ardından **Oluştur**' u seçin. 
    
@@ -78,7 +78,7 @@ Bu betik, 200 olaylarını Olay Hub 'ınıza gönderir. Olaylar JSON ile gönder
 
 1. [Visual Studio Code][Visual Studio Code]gibi en sevdiğiniz Python düzenleyicisini açın.
 2. *Sender.py*adlı yeni bir dosya oluşturun. 
-3. Aşağıdaki kodu *Sender.py*' ye yapıştırın. Event Hubs \<AD alanı >, \<AccessKeyName >, \<birincil anahtar değeri > ve \<eventhub > için kendi değerlerinizi yerine koyun.
+3. Aşağıdaki kodu *Sender.py*' ye yapıştırın. Event Hubs \<ad alanı >, \<AccessKeyName >, \<birincil anahtar değeri > ve \<eventhub > için kendi değerlerinizi değiştirin.
    
    ```python
    import uuid
@@ -106,7 +106,7 @@ Bu betik, 200 olaylarını Olay Hub 'ınıza gönderir. Olaylar JSON ile gönder
 Bu betik yakalanan dosyaları okur ve yalnızca bu cihaz için verileri yazmak üzere cihazlarınızın her biri için bir dosya oluşturur.
 
 1. Python Düzenleyicinizde *capturereader.py*adlı yeni bir dosya oluşturun. 
-2. Aşağıdaki kodu *capturereader.py*' ye yapıştırın. @No__t-0storageaccount >, \<Depolama hesabı erişim anahtarı > ve \<storagecontainer > için kaydedilen değerleri değiştirin.
+2. Aşağıdaki kodu *capturereader.py*' ye yapıştırın. \<storageaccount >, \<depolama hesabı erişim anahtarı > ve \<storagecontainer > için kaydedilmiş değerlerinizi değiştirin.
    
    ```python
    import os
@@ -162,7 +162,7 @@ Bu betik yakalanan dosyaları okur ve yalnızca bu cihaz için verileri yazmak �
    pip install avro-python3
    ```
    
-   @No__t-0 veya `azure` ' in önceki bir sürümüne sahipseniz `--upgrade` seçeneğini kullanmanız gerekebilir.
+   `azure-storage` veya `azure`daha önceki bir sürümüne sahipseniz `--upgrade` seçeneğini kullanmanız gerekebilir.
    
    Ayrıca, aşağıdaki komutu çalıştırmanız gerekebilir. Bu komutun çalıştırılması çoğu sistemde gerekli değildir. 
    

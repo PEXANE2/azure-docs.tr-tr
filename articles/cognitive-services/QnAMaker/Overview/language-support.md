@@ -1,7 +1,7 @@
 ---
 title: Dil desteği-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bir Bilgi Bankası 'nın dili, kaynaklardan gelen soruların ve yanıtların otomatik olarak ayıklanabileceği Soru-Cevap Oluşturma ve sonuçların uygunluğunu, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma etkiler. Bilgi tabanınız için Soru-Cevap Oluşturma tarafından desteklenen bir kültürün, doğal dillerin bir listesi. Aynı bilgi bankasındaki dilleri karıştırmayın.
+description: Bilgi tabanınız için Soru-Cevap Oluşturma tarafından desteklenen bir kültürün, doğal dillerin bir listesi. Aynı bilgi bankasındaki dilleri karıştırmayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285867"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720991"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
 

@@ -1,20 +1,17 @@
 ---
 title: Azure yay bulutu 'nda dağıtım için bir yay uygulaması hazırlama | Microsoft Docs
 description: Bu hızlı başlangıçta, bir Java Spring uygulamasını dağıtım için hazırlarsınız.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 98d9f3f656cff84cec8d223ed535255157155bd2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039010"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721242"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Öğretici: Azure yay bulutu 'nda dağıtım için bir Java Spring uygulaması hazırlama
 
@@ -35,7 +32,7 @@ Spring Boot sürümü | Yay bulutu sürümü
 2.0. x | Finchley. RELEASE
 2.1. x | Greenwich. RELEASE
 
-@No__t-0 dosyanızda, sürümünüze bağlı olarak Spring Boot ve Spring Cloud Dependencies olduğunu doğrulayın.
+`pom.xml` dosyanızda, sürümünüze bağlı olarak Spring Boot ve Spring Cloud Dependencies olduğunu doğrulayın.
 
 ### <a name="version-20"></a>Sürüm 2,0:
 
@@ -93,27 +90,27 @@ Aşağıdaki tabloda bahar önyükleme/yay bulut uygulamanız için doğru sür�
 
 Spring Boot sürümü | Yay bulutu sürümü | Azure Spring Cloud sürümü
 ---|---|---
-2.0. x | Finchley. RELEASE | 2.0.0-ANLıK GÖRÜNTÜ
-2.1. x | Greenwich. RELEASE | 2.1.0-ANLıK GÖRÜNTÜ
+2.0. x | Finchley. RELEASE | 2.0. x
+2.1. x | Greenwich. RELEASE | 2.1. x
 
-Bu kod parçacığını, ' Dependency ' içindeki doğru Azure yay bulutu sürümüne `pom.xml` ' a ekleyin:
+`pom.xml`aşağıdaki kod parçacıklarında birini ekleyin.  Sürümü kendi ile eşleşen kod parçacığını seçin.
 
+### <a name="version-20x"></a>Sürüm 2.0. x:
 ```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    
-    <dependency>
+<dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
-    </dependency>
+        <version>2.0.0</version>
+</dependency>
+```
+
+### <a name="version-21x"></a>2\.1. x sürümü:
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.1.0</version>
+</dependency>
 ```
 
 ## <a name="other-required-dependencies"></a>Diğer gerekli bağımlılıklar
@@ -122,7 +119,7 @@ Azure Spring Cloud 'ın yerleşik özelliklerini etkinleştirmek için, uygulama
 
 ### <a name="service-registry"></a>Hizmet kayıt defteri
 
-Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için, aşağıda gösterildiği gibi, `POM.xml` ' de `spring-cloud-starter-netflix-eureka-client` ' ı ekleyin.
+Yönetilen Azure hizmeti kayıt defteri hizmetini kullanmak için aşağıda gösterildiği gibi `POM.xml` `spring-cloud-starter-netflix-eureka-client` ekleyin.
 
 Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenleri olarak otomatik olarak eklenir. Uygulamalar, kendilerini hizmet kayıt defteri sunucusuna kaydedebilir ve diğer bağımlı mikro hizmetleri bulabilir.
 
@@ -135,7 +132,7 @@ Hizmet kayıt defteri sunucusunun uç noktası, uygulamanıza ortam değişkenle
 
 ### <a name="distributed-configuration"></a>Dağıtılmış yapılandırma
 
-Dağıtılmış yapılandırmayı etkinleştirmek için, `pom.xml` ' in bağımlılıklar bölümüne `spring-cloud-config-client` ekleyin.
+Dağıtılmış yapılandırmayı etkinleştirmek için `pom.xml`bağımlılıklar bölümüne `spring-cloud-config-client` ekleyin.
 
 ```xml
 <dependency>
@@ -160,7 +157,7 @@ Pod. xml 'nizin bağımlılıklar bölümüne `spring-boot-starter-actuator` ekl
 
 ### <a name="distributed-tracing"></a>Dağıtılmış Izleme
 
-Pod. xml 'nizin Dependencies bölümüne `spring-cloud-starter-sleuth` ve `spring-cloud-starter-zipkin` dahil edin. Ayrıca, Azure Application Insights örneğini Azure Spring Cloud Service örneğiniz ile çalışacak şekilde etkinleştirmeniz gerekir. Azure [Spring Cloud Ile](spring-cloud-tutorial-distributed-tracing.md) uygulama öngörülerini nasıl etkinleştirebilirim hakkında daha fazla bilgi edinin
+Pod. xml 'nizin bağımlılıklar bölümüne `spring-cloud-starter-sleuth` ve `spring-cloud-starter-zipkin` ekleyin. Ayrıca, Azure Application Insights örneğini Azure Spring Cloud Service örneğiniz ile çalışacak şekilde etkinleştirmeniz gerekir. Azure [Spring Cloud Ile](spring-cloud-tutorial-distributed-tracing.md) uygulama öngörülerini nasıl etkinleştirebilirim hakkında daha fazla bilgi edinin
 
 ```xml
 <dependency>

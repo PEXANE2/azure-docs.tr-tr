@@ -1,24 +1,24 @@
 ---
-title: Verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
-description: Azure Cosmos DB verileri içeri aktarmak, verileri çözümlemek ve çıktıyı görselleştirmek için yerleşik Jupyıter not defterlerini nasıl kullanacağınızı öğrenin.
+title: 'Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun'
+description: 'Öğretici: Azure Cosmos DB verileri içeri aktarmak, verileri çözümlemek ve çıktıyı görselleştirmek için yerleşik Jupyter not defterlerini nasıl kullanacağınızı öğrenin.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
-ms.date: 09/25/2019
+ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931497"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720916"
 ---
-# <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Öğretici: verileri analiz etmek ve görselleştirmek için Azure Cosmos DB bir not defteri oluşturun
 
 Bu makalede, örnek perakende verileri Azure Cosmos DB aktarmak için yerleşik jupi Not defterlerinin nasıl kullanılacağı açıklanır. Sorguları çalıştırmak, verileri çözümlemek ve sonuçları görselleştirmek için SQL ve Azure Cosmos DB Magic komutlarının nasıl kullanılacağını göreceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Cosmos hesabını oluştururken Not defteri desteğini etkinleştir](enable-notebooks.md)
 
@@ -28,7 +28,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
 
 1. Azure Cosmos hesabınıza gidin ve **Veri Gezgini açın.**
 
-1. **Not defterleri** sekmesine gidin, **Not defterlerimin** yanındaki `…` ' i seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
+1. **Not** defterleri sekmesine gidin, **Not defterlerimin** yanındaki `…` seçin ve **Yeni bir not defteri**oluşturun. Varsayılan Çekirdek olarak **Python 3 ' ü** seçin.
 
    ![Yeni not defteri oluşturma](./media/create-notebook-visualize-data/create-new-notebook.png)
 
@@ -47,7 +47,7 @@ Bu bölümde, Azure Cosmos veritabanını, kapsayıcısını oluşturacak ve per
    print('Container WebsiteData created')
    ```
 
-   Bir hücreyi çalıştırmak için, `Shift + Enter` ' ı seçin veya hücreyi seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
+   Bir hücreyi çalıştırmak için `Shift + Enter` seçin veya hücreyi seçin ve veri Gezgini gezinti çubuğunda **etkin hücreyi Çalıştır** seçeneğini belirleyin.
 
    ![Etkin hücreyi Çalıştır](./media/create-notebook-visualize-data/run-active-cell.png)
 

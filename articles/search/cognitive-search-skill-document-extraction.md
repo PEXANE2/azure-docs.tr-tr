@@ -1,21 +1,24 @@
 ---
-title: Belge ayıklama bilişsel arama yeteneği
+title: Belge ayıklama bilişsel arama yeteneği (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar.
+description: Zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. Bu yetenek Şu anda genel önizlemededir.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512203"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720132"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Belge ayıklama bilişsel yeteneği
+
+> [!IMPORTANT] 
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 **Belge ayıklama** becerisi, zenginleştirme işlem hattının içindeki bir dosyadan içerik ayıklar. Bu, normalde, diğer yetenekler tarafından oluşturulabilecek dosyalarla beceri yürütmeden önce gerçekleşen belge ayıklama adımının avantajlarından yararlanmanızı sağlar.
 
@@ -63,7 +66,7 @@ Bu dosya başvuru nesnesi 3 farklı bir şekilde oluşturulabilir:
 
  - Dizin Oluşturucu tanımınızda `allowSkillsetToReadFileData` parametresi "true" olarak ayarlanıyor.  Bu işlem, blob veri kaynağınızdan indirilen özgün dosya verilerini temsil eden bir nesne olan `/document/file_data` bir yol oluşturur. Bu parametre yalnızca blob depolamada bulunan veriler için geçerlidir.
 
- - Dizin Oluşturucu tanımınızda `imageAction` parametresi `none`dışında bir değere ayarlanıyor.  Bu, tek tek geçirilirse (örn. `/document/normalized_images/*`), bu beceriye giriş için gerekli kuralı izleyen `/document/normalized_images` bir dizi görüntü oluşturur.
+ - Dizin Oluşturucu tanımınızda `imageAction` parametresi `none`dışında bir değere ayarlanıyor.  Bu, tek tek geçirilirse (yani `/document/normalized_images/*`), bu beceriye giriş için gerekli kuralı izleyen bir görüntü dizisi oluşturur.
 
  - Özel bir beceriye sahip olmak, yukarıdaki gibi tam olarak tanımlanmış bir JSON nesnesi döndürür.  `$type` parametresi tam olarak `file` olarak ayarlanmalıdır ve `data` parametresi dosya içeriğinin temel 64 kodlu bayt dizisi verileri olmalıdır.
 

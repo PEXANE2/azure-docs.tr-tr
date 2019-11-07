@@ -1,22 +1,20 @@
 ---
-title: Azure Işlevleri Premium planı (Önizleme) | Microsoft Docs
+title: Azure İşlevleri Premium planı
 description: Azure Işlevleri Premium planı için Ayrıntılar ve yapılandırma seçenekleri (VNet, soğuk başlatma yok, sınırsız yürütme süresi).
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755407"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719042"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Azure Işlevleri Premium planı (Önizleme)
+# <a name="azure-functions-premium-plan"></a>Azure İşlevleri Premium planı
 
 Azure Işlevleri Premium planı, işlev uygulamaları için bir barındırma seçeneğidir. Premium planı, VNet bağlantısı, soğuk başlatma ve Premium donanım gibi özellikler sağlar.  Birden çok işlev uygulaması aynı Premium plana dağıtılabilir ve plan, işlem örneği boyutunu, temel plan boyutunu ve maksimum plan boyutunu yapılandırmanıza olanak tanır.  Premium planı ve diğer plan ve barındırma türlerinin karşılaştırması için bkz. [işlev ölçekleme ve barındırma seçenekleri](functions-scale.md).
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Premium plana dağıtılan Azure Işlevleri, [Web Apps için yeni VNET tümleştirmesinden](../app-service/web-sites-integrate-with-vnet.md)yararlanır.  Yapılandırıldığında, uygulamanız VNet 'iniz içindeki kaynaklarla iletişim kurabilir veya hizmet uç noktaları aracılığıyla güvenli hale getirilir.  Ayrıca, gelen trafiği kısıtlamak için uygulamada IP kısıtlamaları da mevcuttur.
 
-Bir Premium planında işlev uygulamanıza bir alt ağ atarken, her potansiyel örnek için yeterli IP adresi olan bir alt ağa ihtiyacınız vardır. Önizleme sırasında en fazla örnek sayısı değişebilse de, kullanılabilir en az 100 adresi olan bir IP bloğunun olması gerekir.
+Bir Premium planında işlev uygulamanıza bir alt ağ atarken, her potansiyel örnek için yeterli IP adresi olan bir alt ağa ihtiyacınız vardır. Kullanılabilir en az 100 adresi olan bir IP bloğuna ihtiyacımız var.
 
 Daha fazla bilgi için bkz. [işlev uygulamanızı VNET ile tümleştirme](functions-create-vnet.md).
 
@@ -71,11 +69,9 @@ Tüketim planıyla aynı hızlı ölçeklendirme mantığı kullanılarak uygula
 
 Bir tüketim planındaki Azure Işlevleri tek bir yürütme için 10 dakikaya sınırlandırılmıştır.  Premium planda, yürütme süresi, ard ların önlenmesi için en az 30 dakika olur. Bununla birlikte, Premium plan uygulamaları için bunu sınırlandırılmamış hale getirmek üzere [Host. JSON yapılandırmasını değiştirebilirsiniz](./functions-host-json.md#functiontimeout) .
 
-Önizleme aşamasında, süresi 12 dakikadan daha fazla garanti edilmez ve uygulamanız en düşük çalışan sayısının ötesinde ölçeklenmiyorsa 30 dakikadan daha fazla çalışma şansı elde edilir.
-
 ## <a name="plan-and-sku-settings"></a>Plan ve SKU ayarları
 
-Planı oluştururken iki ayarı yapılandırırsınız: minimum örnek sayısı (veya plan boyutu) ve en fazla patlama sınırı.  Premium plan için en az örnek 1 ' dir ve Önizleme sırasında en fazla patlama 20 ' dir.  Minimum örnekler ayrılmıştır ve her zaman çalışır.
+Planı oluştururken iki ayarı yapılandırırsınız: minimum örnek sayısı (veya plan boyutu) ve en fazla patlama sınırı.  Minimum örnekler ayrılmıştır ve her zaman çalışır.
 
 > [!IMPORTANT]
 > İşlevlerin yürütülmesi veya olmaması durumunda ne olursa olsun, minimum örnek sayısı için ayrılan her bir örnek için ücretlendirilirsiniz.
@@ -94,7 +90,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
 
-|SKU|Çekirdek|Hafıza|Depolama|
+|SKU|Çekirdek|Bellek|Depolama|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7 GB|250 GB|
@@ -102,42 +98,39 @@ Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından
 
 ## <a name="regions"></a>Bölgeler
 
-Aşağıda, her bir işletim sisteminin genel önizlemesi için desteklenen şu bölgeler verilmiştir.
+Her işletim sistemi için şu anda desteklenen bölgeler aşağıda verilmiştir.
 
 |Bölge| Windows | Linux |
 |--| -- | -- |
-|Avustralya Orta| ✔ * | |
-|Avustralya Orta 2| ✔ * | |
-|Doğu Avustralya| ✔ | |
-|Güneydoğu Avustralya | ✔ | ✔ |
-|Brezilya Güney| ✔ * * |  |
+|Avustralya Orta| ✔<sup>1</sup> | |
+|Avustralya Orta 2| ✔<sup>1</sup> | |
+|Avustralya Doğu| ✔ | |
+|Avustralya Güneydoğu | ✔ | ✔ |
+|Güney Brezilya| ✔<sup>2</sup> |  |
 |Kanada Orta| ✔ |  |
 |Orta ABD| ✔ |  |
 |Doğu Asya| ✔ |  |
 |Doğu ABD | ✔ | ✔ |
 |Doğu ABD 2| ✔ |  |
 |Fransa Orta| ✔ |  |
-|Doğu Japonya| ✔ | ✔ |
-|Batı Japonya| ✔ | |
+|Japonya Doğu| ✔ | ✔ |
+|Japonya Batı| ✔ | |
 |Kore Orta| ✔ |  |
 |Orta Kuzey ABD| ✔ |  |
 |Kuzey Avrupa| ✔ | ✔ |
-|Güney Orta ABD| ✔ |  |
+|Orta Güney ABD| ✔ |  |
 |Güney Hindistan | ✔ | |
 |Güneydoğu Asya| ✔ | ✔ |
-|Birleşik Krallık, Güney| ✔ | |
-|Birleşik Krallık, Batı| ✔ |  |
+|Birleşik Krallık Güney| ✔ | |
+|Birleşik Krallık Batı| ✔ |  |
 |Batı Avrupa| ✔ | ✔ |
 |Batı Hindistan| ✔ |  |
 |Batı ABD| ✔ | ✔ |
+|Batı ABD 2| ✔ |  |
 
-\* en fazla ölçek genişletme, 20 örneğe sınırlı
+<sup>1</sup> Maksimum ölçeği 20 örneğe sınırlı.  
+<sup>2</sup> Maksimum ölçeği 60 örnek ile sınırlıdır.
 
-\** maksimum ölçeği 60 örneğe sınırlı
-
-## <a name="known-issues"></a>Bilinen Sorunlar
-
-[GitHub 'da genel önizlemeye](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)yönelik bilinen sorunların durumunu izleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

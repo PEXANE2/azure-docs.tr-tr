@@ -1,20 +1,17 @@
 ---
 title: 'Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma | Microsoft Docs'
 description: Spring Cloud 'ın dağıtılmış Izlemesini Azure 'da nasıl kullanacağınızı öğrenin Application Insights
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 95aae47bddffd102c5d6d6dac67f22e6777cc3e7
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038940"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607560"
 ---
 # <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma
 
@@ -28,7 +25,7 @@ Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
 > * Mikro hizmet uygulamalarınız için bağımlılık haritalarını görüntüleyin
 > * Farklı filtrelerle izleme verilerini ara
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -67,7 +64,7 @@ spring.zipkin.sender.type = web
 * Bu değişiklikleri yansıtacak şekilde Azure Spring Cloud Service için derleyin ve dağıtın. 
 
 ## <a name="modify-the-sample-rate"></a>Örnek hızını değiştirme
-Örnek hızını değiştirerek telemetrinizin toplandığı oranı değiştirebilirsiniz. Örneğin, çoğunlukla yarı bir örnek örneklemek istiyorsanız, `application.properties` dosyanıza gidin ve aşağıdaki satırı değiştirin:
+Örnek hızını değiştirerek telemetrinizin toplandığı oranı değiştirebilirsiniz. Örneğin, çoğunlukla yarı bir örnek örneklemek istiyorsanız `application.properties` dosyanıza gidin ve aşağıdaki satırı değiştirin:
 
 ```xml
 spring.sleuth.sampler.probability=0.5

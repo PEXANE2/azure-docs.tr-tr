@@ -1,21 +1,24 @@
 ---
-title: Metin çevirisi Bilişsel Beceri
+title: Metin çevirisi Bilişsel Beceri (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Metni değerlendirir ve her kayıt için Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde belirtilen hedef dile çevrilen metni döndürür.
+description: Metni değerlendirir ve her kayıt için Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde belirtilen hedef dile çevrilen metni döndürür. Bu yetenek Şu anda genel önizlemededir.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791852"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715403"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Metin çevirisi Bilişsel Beceri
+
+> [!IMPORTANT] 
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Metin **çevirisi** becerisi metni değerlendirir ve her kayıt için belirtilen hedef dile çevrilen metni döndürür. Bu beceri bilişsel hizmetler 'de bulunan [Translator metin çevirisi API'si v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) 'ı kullanır.
 

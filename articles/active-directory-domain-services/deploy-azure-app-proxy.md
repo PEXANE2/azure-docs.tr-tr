@@ -1,131 +1,127 @@
 ---
 title: Azure AD Domain Services için Azure AD Uygulama Ara Sunucusu Dağıtma | Microsoft Docs
-description: Azure Active Directory Domain Services yönetilen etki alanlarında Azure AD Uygulama Ara Sunucusu kullanma
+description: Azure Active Directory Domain Services yönetilen bir etki alanında Azure Active Directory Uygulama Ara Sunucusu dağıtarak ve yapılandırarak uzak çalışanlar için iç uygulamalara güvenli erişim sağlama hakkında bilgi edinin
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: 80c3b2120a617e5c4c0f8de252b9436753fea011
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754396"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720518"
 ---
-# <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Uygulama Ara Sunucusu Azure AD Domain Services yönetilen bir etki alanında dağıtma
-Azure Active Directory (AD) uygulama proxy 'Si, internet üzerinden erişilecek şirket içi uygulamaları yayımlayarak uzak çalışanları desteklemenize yardımcı olur. Azure AD Domain Services ile, artık şirket içinde çalışan eski uygulamaları Azure altyapı hizmetleri 'ne açabilir ve taşıyabilirsiniz. Böylece, kuruluşunuzdaki kullanıcılara güvenli uzaktan erişim sağlamak için Azure AD Uygulama Ara Sunucusu kullanarak bu uygulamaları yayımlayabilirsiniz.
+# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında iç uygulamalara güvenli erişim için Azure AD Uygulama Ara Sunucusu Dağıtma
 
-Azure AD Uygulama Ara Sunucusu yeni başladıysanız, bu özellik hakkında daha fazla bilgi edinmek için aşağıdaki makaleye gidin: Şirket [içi uygulamalara güvenli uzaktan erişim sağlama](../active-directory/manage-apps/application-proxy.md).
+Azure AD Domain Services (Azure AD DS) ile şirket içinde çalışan eski uygulamaları Azure 'a kopyalayıp öteye taşıyabilirsiniz. Azure Active Directory (AD) uygulama proxy 'Si daha sonra, Azure AD DS yönetilen bir etki alanının iç uygulamalarını güvenli bir şekilde yayımlayarak, internet üzerinden erişilebilmesi için uzak çalışanları desteklemenize yardımcı olur.
+
+Azure AD Uygulama Ara Sunucusu yeni başladıysanız ve daha fazla bilgi edinmek istiyorsanız bkz. [iç uygulamalara güvenli uzaktan erişim sağlama](../active-directory/manage-apps/application-proxy.md).
+
+Bu makalede, Azure AD DS yönetilen bir etki alanındaki uygulamalara güvenli erişim sağlamak için bir Azure AD Uygulama Ara Sunucusu Bağlayıcısı oluşturma ve yapılandırma gösterilmektedir.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Bu makalede listelenen görevleri gerçekleştirmek için şunlar gerekir:
 
-1. Geçerli bir **Azure aboneliği**.
-2. Bir **Azure ad dizini** -şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
-3. Azure AD Uygulama Ara Sunucusu kullanmak için bir **Azure AD Premium Lisansı** gerekir.
-4. Azure AD dizini için **Azure AD Domain Services** etkinleştirilmelidir. Bunu yapmadıysanız, [Başlarken kılavuzunda](tutorial-create-instance.md)özetlenen tüm görevleri izleyin.
+Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
-<br>
+* Etkin bir Azure aboneliği.
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
+    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+    * Azure AD Uygulama Ara Sunucusu kullanmak için bir **Azure AD Premium Lisansı** gerekir.
+* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 
-## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Görev 1-Azure AD dizininiz için Azure AD Uygulama Ara Sunucusu Etkinleştirme
-Azure AD dizininiz için Azure AD Uygulama Ara Sunucusu etkinleştirmek üzere aşağıdaki adımları gerçekleştirin.
+## <a name="create-a-domain-joined-windows-vm"></a>Etki alanına katılmış Windows VM oluşturma
 
-1. [Azure Portal](https://portal.azure.com)yönetici olarak oturum açın.
+Trafiği ortamınızda çalışan uygulamalara yönlendirmek için Azure AD Uygulama Ara Sunucusu Bağlayıcısı bileşenini yüklersiniz. Bu Azure AD Uygulama Ara Sunucusu Bağlayıcısı, Azure AD DS tarafından yönetilen etki alanına katılmış Windows Server sanal makinelerinde (VM) yüklü olmalıdır. Bazı uygulamalarda, her birinin bağlayıcının yüklü olduğu birden çok sunucu dağıtabilirsiniz. Bu dağıtım seçeneği, daha fazla kullanılabilirlik sağlar ve daha ağır kimlik doğrulama yüklerini işlemeye yardımcı olur.
 
-2. Dizine genel bakışı getirmek için **Azure Active Directory** ' a tıklayın. **Kurumsal uygulamalar**' a tıklayın.
+Azure AD Uygulama Ara Sunucusu bağlayıcısını çalıştıran VM aynı veya Azure AD DS etkinleştirdiğiniz eşlenmiş bir sanal ağ üzerinde olmalıdır. Daha sonra uygulama proxy 'Si kullanarak yayımladığınız uygulamaları barındıran VM 'Lerin aynı Azure sanal ağına dağıtılması gerekir.
 
-3. **Uygulama proxy 'si**' ne tıklayın.
+Azure AD Uygulama Ara Sunucusu Bağlayıcısı için bir sanal makine oluşturmak için aşağıdaki adımları izleyin:
 
-4. Bağlayıcıyı indirmek için **bağlayıcı** düğmesine tıklayın.
+1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu Azure AD DS yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz. Azure AD Uygulama Ara Sunucusu ve uygulamalarınızı çalıştıran VM 'Ler, varsayılan *AAD DC bilgisayarları* OU 'ya değil, özel OU 'nun bir parçası olmalıdır.
+1. [Etki alanı-][create-join-windows-vm]Azure AD uygulama ara sunucusu bağlayıcısını çalıştıran bir sanal makineyi ve uygulamalarınızı çalıştıran Azure AD DS yönetilen etki alanına ekleyin. Önceki adımda özel OU 'da bu bilgisayar hesaplarını oluşturun.
 
-5. İndirme sayfasında, lisans koşullarını ve gizlilik sözleşmesi 'ni kabul edin ve **İndir** düğmesine tıklayın.
+## <a name="download-the-azure-ad-application-proxy-connector"></a>Azure AD Uygulama Ara Sunucusu bağlayıcısını indirin
 
-    ![İndirmeyi Onayla](./media/app-proxy/app-proxy-enabled-confirm-download.png)
+Azure AD Uygulama Ara Sunucusu bağlayıcısını indirmek için aşağıdaki adımları gerçekleştirin. Yüklediğiniz kurulum dosyası, sonraki bölümde uygulama proxy 'Si sanal makinenize kopyalanır.
 
+1. Azure AD 'de *Kurumsal Yönetici* izinlerine sahip bir kullanıcı hesabıyla [Azure Portal](https://portal.azure.com) oturum açın.
+1. Portalın üst kısmındaki **Azure Active Directory** arayıp seçin, sonra **Kurumsal uygulamalar**' ı seçin.
+1. Sol taraftaki menüden **uygulama proxy 'si** ' ni seçin. İlk bağlayıcınızı oluşturmak ve uygulama proxy 'Sini etkinleştirmek için **bağlayıcıyı indirmek**üzere bağlantıyı seçin.
+1. İndirme sayfasında, lisans koşullarını ve gizlilik sözleşmesi 'ni kabul edin, ardından **terimleri kabul et & indir**' i seçin.
 
-## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>Görev 2-Azure AD Uygulama Ara Sunucusu bağlayıcısını dağıtmak için etki alanına katılmış Windows Server sağlama
-Azure AD Uygulama Ara Sunucusu bağlayıcısını yükleyebileceğiniz, etki alanına katılmış Windows Server sanal makinelerine ihtiyacınız vardır. Bazı uygulamalarda, bağlayıcının yüklendiği birden çok sunucu sağlamayı tercih edebilirsiniz. Bu dağıtım seçeneği, daha fazla kullanılabilirlik sağlar ve daha ağır kimlik doğrulama yüklerini işlemeye yardımcı olur.
+    ![Azure AD Uygulaması Proxy bağlayıcısını indirin](./media/app-proxy/download-app-proxy-connector.png)
 
-Azure AD Domain Services yönetilen etki alanınızı etkinleştirdiğiniz aynı sanal ağa (veya bağlı/eşlenmiş bir sanal ağ) bağlayıcı sunucuları sağlayın. Benzer şekilde, uygulama proxy 'Si aracılığıyla yayımladığınız uygulamaları barındıran sunucuların aynı Azure sanal ağına yüklenmesi gerekir.
+## <a name="install-and-register-the-azure-ad-application-proxy-connector"></a>Azure AD Uygulama Ara Sunucusu bağlayıcısını yükleyip kaydetme
 
-Bağlayıcı sunucuları sağlamak için, [Windows sanal makinesini yönetilen bir etki alanına katma](active-directory-ds-admin-guide-join-windows-vm.md)başlıklı makalede özetlenen görevleri izleyin.
+Azure AD Uygulama Ara Sunucusu Bağlayıcısı olarak kullanılmak üzere bir VM ile, şimdi Azure portal indirilen kurulum dosyasını kopyalayın ve çalıştırın.
 
+1. Azure AD Uygulama Ara Sunucusu Bağlayıcısı kurulum dosyasını sanal makinenize kopyalayın.
+1. *Aadapplicationproxyconnectorınstaller. exe*gibi kurulum dosyasını çalıştırın. Yazılım lisans koşulları 'nı kabul edin.
+1. Yüklemesi sırasında, bağlayıcıyı Azure AD dizininize uygulama proxy 'Si ile kaydetmeniz istenir.
+   * Azure AD dizininizde genel yönetici için kimlik bilgilerini sağlayın. Azure AD Genel yönetici kimlik bilgileri, portalda Azure kimlik bilgilerinizle farklı olabilir
 
-## <a name="task-3---install-and-register-the-azure-ad-application-proxy-connector"></a>Görev 3-Azure AD Uygulama Ara Sunucusu bağlayıcısını yükleyip kaydetme
-Daha önce, bir Windows Server sanal makinesi sağladınız ve yönetilen etki alanına katıldınız. Bu görevde Azure AD Uygulama Ara Sunucusu bağlayıcısını bu sanal makineye yüklersiniz.
+        > [!NOTE]
+        > Bağlayıcıyı kaydetmek için kullanılan genel yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır.
+        >
+        > Örneğin, Azure AD etki alanı *contoso.com*ise, genel yönetici bu etki alanında `admin@contoso.com` veya geçerli bir diğer ad olmalıdır.
 
-1. Bağlayıcı yükleme paketini Azure AD Web uygulaması proxy bağlayıcısını yüklediğiniz VM 'ye kopyalayın.
+   * Bağlayıcıyı yüklediğiniz VM için Internet Explorer Artırılmış Güvenlik Yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için, hata iletisindeki yönergeleri uygulayın veya yüklemenin işlemi sırasında Internet Explorer gelişmiş güvenliği ' ni kapatın.
+   * Bağlayıcı kaydı başarısız olursa bkz. [uygulama proxy 'Si sorunlarını giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).
+1. Kurulumun sonunda, giden ara sunucuya sahip ortamlar için bir Note gösterilir. Azure AD Uygulama Ara Sunucusu bağlayıcısını giden proxy üzerinden çalışacak şekilde yapılandırmak için, `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`gibi, belirtilen betiği çalıştırın.
+1. Azure portal uygulama proxy 'si sayfasında, yeni bağlayıcı aşağıdaki örnekte gösterildiği gibi *etkin*durumuyla listelenir:
 
-2. Sanal makinede **Aadapplicationproxyconnectorınstaller. exe** ' yi çalıştırın. Yazılım lisans koşulları 'nı kabul edin.
-
-    ![Yüklenmek üzere koşulları kabul et](./media/app-proxy/app-proxy-install-connector-terms.png)
-3. Yükleme sırasında, bağlayıcıyı Azure AD dizininizin uygulama proxy 'Si ile kaydetmeniz istenir.
-   * **Azure AD uygulama Yöneticisi kimlik bilgilerinizi**sağlayın. Uygulama Yöneticisi kiracınız Microsoft Azure kimlik bilgilerinizle farklı olabilir.
-   * Bağlayıcıyı kaydetmek için kullanılan yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır. Örneğin, kiracı etki alanı contoso.com ise yönetici bu etki alanında admin@contoso.com veya başka bir geçerli diğer ad olmalıdır.
-   * Bağlayıcıyı yüklemekte olduğunuz sunucu için IE artırılmış güvenlik yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için hata iletisindeki yönergeleri uygulayın. Internet Explorer Artırılmış Güvenlik seçeneğinin devre dışı olduğundan emin olun.
-   * Bağlayıcı kaydı başarısız olursa bkz. [Uygulama Proxy’si Sorunlarını Giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).
-
-     ![Bağlayıcı yüklendi](./media/app-proxy/app-proxy-connector-installed.png)
-4. Bağlayıcının düzgün çalıştığından emin olmak için Azure AD Uygulama Ara Sunucusu Bağlayıcısı sorun gidericisini çalıştırın. Sorun gidericiyi çalıştırdıktan sonra başarılı bir rapor görmeniz gerekir.
-
-    ![Sorun giderici başarısı](./media/app-proxy/app-proxy-connector-troubleshooter.png)
-5. Yeni yüklenen bağlayıcıyı Azure AD dizininizin uygulama proxy 'si sayfasında görmeniz gerekir.
-
-    ![Azure portal, yüklü bağlayıcı kullanılabilir olarak gösterilir](./media/app-proxy/app-proxy-connector-page.png)
-
-> [!NOTE]
-> Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlanan uygulamaların kimlik doğrulaması için yüksek kullanılabilirlik sağlamak üzere bağlayıcıları birden çok sunucuya yüklemeyi tercih edebilirsiniz. Bağlayıcıyı, yönetilen etki alanına katılmış diğer sunuculara yüklemek için yukarıda listelenen adımların aynısını gerçekleştirin.
->
->
-
-## <a name="next-steps"></a>Sonraki Adımlar
-Azure AD Uygulama Ara Sunucusu ayarlamış ve Azure AD Domain Services yönetilen etki alanınız ile tümleştirmiş olabilirsiniz.
-
-* **Uygulamalarınızı Azure sanal makinelerine geçirin:** Şirket içi sunuculardan uygulamalarınızı, yönetilen etki alanına katılmış Azure sanal makinelerine açabilir ve taşıyabilirsiniz. Bunun yapılması, şirket içi sunucuları çalıştırmanın altyapı maliyetlerinden kurtuya yardımcı olur.
-
-* **Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama:** Azure AD Uygulama Ara Sunucusu kullanarak Azure sanal makinelerinizde çalışan uygulamalar yayımlayın. Daha fazla bilgi için bkz. [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
-
-
-## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Dağıtım notunun-Azure AD Uygulama Ara Sunucusu kullanarak ıWA (tümleşik Windows kimlik doğrulaması) uygulamalarını yayımlayın
-Uygulama ara sunucusu bağlayıcılarını kullanıcılara taklit etmek için izin vererek ve kendi adına belirteçler alıp alarak tümleşik Windows kimlik doğrulaması (ıWA) kullanarak uygulamalarınızda çoklu oturum açmayı etkinleştirin. Yönetilen etki alanındaki kaynaklara erişmek için gerekli izinleri vermek üzere bağlayıcı için Kerberos kısıtlanmış temsilcisini (KCD) yapılandırın. Daha yüksek güvenlik için yönetilen etki alanlarında kaynak tabanlı KCD mekanizmasını kullanın.
-
-
-### <a name="enable-resource-based-kerberos-constrained-delegation-for-the-azure-ad-application-proxy-connector"></a>Azure AD Uygulama Ara Sunucusu Bağlayıcısı için kaynak tabanlı Kerberos kısıtlı temsilcisini etkinleştirme
-Azure uygulama proxy Bağlayıcısı, Kerberos kısıtlanmış temsil (KCD) için yapılandırılmalıdır, bu nedenle yönetilen etki alanındaki kullanıcıların kimliğine bürünebilir. Azure AD Domain Services yönetilen bir etki alanında etki alanı yöneticisi ayrıcalıklarına sahip değilsiniz. Bu nedenle, **yönetilen bir etki alanında geleneksel hesap düzeyi KCD yapılandırılamaz**.
-
-Bu [makalede](deploy-kcd.md)açıklandığı gibi kaynak tabanlı KCD 'yi kullanın.
+    ![Azure portal etkin olarak gösterilen yeni Azure AD Uygulama Ara Sunucusu Bağlayıcısı](./media/app-proxy/connected-app-proxy.png)
 
 > [!NOTE]
-> AD PowerShell cmdlet 'lerini kullanarak yönetilen etki alanını yönetmek için ' AAD DC Administrators ' grubunun bir üyesi olmanız gerekir.
->
->
+> Azure AD Uygulama Ara Sunucusu kimlik doğrulaması yapan uygulamalar için yüksek kullanılabilirlik sağlamak üzere, bağlayıcıları birden çok VM 'ye yükleyebilirsiniz. Bağlayıcıyı Azure AD DS yönetilen etki alanına katılmış diğer sunuculara yüklemek için önceki bölümde listelenen adımları yineleyin.
 
-Azure AD Uygulama Ara Sunucusu bağlayıcısının yüklü olduğu bilgisayarın ayarlarını almak için Get-ADComputer PowerShell cmdlet 'ini kullanın.
+## <a name="enable-resource-based-kerberos-constrained-delegation"></a>Kaynak tabanlı Kerberos kısıtlı temsilcisini etkinleştirin
+
+Tümleşik Windows kimlik doğrulaması (ıWA) kullanarak uygulamalarınızda çoklu oturum açma özelliğini kullanmak istiyorsanız, Azure AD Uygulama Ara Sunucusu bağlayıcılarına kullanıcıları taklit etmek ve adına belirteç göndermek ve almak için izin verin. Bu izinleri vermek için, bağlayıcı için Kerberos kısıtlanmış temsilciyi (KCD) Azure AD DS yönetilen etki alanındaki kaynaklara erişecek şekilde yapılandırırsınız. Azure AD DS yönetilen bir etki alanında etki alanı yöneticisi ayrıcalıklarına sahip olmadığınız için, yönetilen bir etki alanında geleneksel hesap düzeyi KCD yapılandırılamaz. Bunun yerine, kaynak tabanlı KCD 'yi kullanın.
+
+Daha fazla bilgi için, [Azure Active Directory Domain Services Içinde Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma](deploy-kcd.md)konusuna bakın.
+
+> [!NOTE]
+> Aşağıdaki PowerShell cmdlet 'lerini çalıştırmak için Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
+>
+> Uygulama proxy Bağlayıcısı sanal makinelerinizin ve uygulama VM 'lerinin bilgisayar hesapları, kaynak tabanlı KCD 'yi yapılandırma izninizin olduğu özel bir OU 'da olmalıdır. Yerleşik *AAD DC bilgisayarları* kapsayıcısında bir bilgisayar hesabı için kaynak tabanlı KCD 'yi yapılandıramazsınız.
+
+Azure AD Uygulama Ara Sunucusu bağlayıcısının yüklü olduğu bilgisayarın ayarlarını almak için [Get-ADComputer][Get-ADComputer] komutunu kullanın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın.
+
+Aşağıdaki örnek, *appproxy.contoso.com*adlı bilgisayar hesabı hakkında bilgi alır. Önceki adımlarda yapılandırılan Azure AD Uygulama Ara Sunucusu sanal makinesi için kendi bilgisayar adınızı girin.
+
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
 ```
 
-Bundan sonra, Resource Server için kaynak tabanlı KCD 'yi ayarlamak için set-ADComputer cmdlet 'ini kullanın.
+Azure AD Uygulama Ara Sunucusu arka plandaki uygulamaları çalıştıran her uygulama sunucusu için, kaynak tabanlı KCD 'yi yapılandırmak üzere [set-ADComputer][Set-ADComputer] PowerShell cmdlet 'ini kullanın. Aşağıdaki örnekte, Azure AD Uygulama Ara Sunucusu bağlayıcısının *appserver.contoso.com* bilgisayarı kullanma izinleri verilmiştir:
+
 ```powershell
-Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
-Yönetilen etki alanında birden çok uygulama proxy Bağlayıcısı dağıttıysanız, bu tür bağlayıcı örnekleri için kaynak tabanlı KCD 'yi yapılandırmanız gerekir.
+Birden çok Azure AD Uygulama Ara Sunucusu Bağlayıcısı dağıtırsanız, her bağlayıcı örneği için kaynak tabanlı KCD 'yi yapılandırmanız gerekir.
 
+## <a name="next-steps"></a>Sonraki adımlar
 
-## <a name="related-content"></a>İlgili İçerik
-* [Azure AD Domain Services-Başlarken Kılavuzu](tutorial-create-instance.md)
-* [Yönetilen bir etki alanında Kerberos kısıtlanmış temsilciyi yapılandırma](deploy-kcd.md)
-* [Kerberos kısıtlı temsilciye genel bakış](https://technet.microsoft.com/library/jj553400.aspx)
+Azure AD Uygulama Ara Sunucusu ile tümleştirilmiş Azure AD DS ile, kullanıcıların erişebileceği uygulamalar yayımlayın. Daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
+[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

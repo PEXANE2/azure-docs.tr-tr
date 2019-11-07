@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici 3: Kredi risk modelini dağıtma'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio klasik sürümünde kredi riski değerlendirmesi için tahmine dayalı bir analiz çözümü oluşturmayı gösteren ayrıntılı bir öğretici. Bu öğretici, üç bölümden oluşan bir öğretici serisinin üçüncü bölümüdür. Bir modelin Web hizmeti olarak nasıl dağıtılacağını gösterir.
 keywords: kredi riski, tahmine dayalı analiz çözümü, risk değerlendirmesi, dağıtma, Web hizmeti
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 34b0e783b3655aba52cc3d40957b63dd3b0e03b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492528"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619007"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Öğretici 3: Kredi risk modelini dağıtma-Azure Machine Learning Studio (klasik)
 
@@ -34,17 +34,17 @@ Bu üç bölümden oluşan öğreticide, genel kullanıma açık kredi riski ver
 Öğreticinin bu bölümünde şunları yapabilirsiniz:
 
 > [!div class="checklist"]
-> * Dağıtım için hazırlanma
+> * Dağıtıma hazırlanma
 > * Web hizmetini dağıtma
 > * Web hizmetini test etme
 > * Web hizmetini yönetme
 > * Web hizmetine erişme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [Öğreticinin ikinci bölümünü](tutorial-part2-credit-risk-train.md)doldurun.
 
-## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
+## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 Başkalarına bu öğreticide geliştirdiğiniz tahmine dayalı modeli kullanma şansı vermek için, Azure 'da Web hizmeti olarak dağıtabilirsiniz.
 
 Modelimizi eğitmek için bu noktaya kadar deneme yapmış olursunuz. Ancak dağıtılan hizmet artık eğitimi yapamayacak. modelimize bağlı olarak kullanıcının girişini Puanlama yoluyla yeni tahminler oluşturacağız. Bu nedenle, bu denemeyi bir ***eğitim deneyminden*** tahmine ***dayalı*** bir deneyle dönüştürmek için bazı hazırlıklar yapacağız. 
@@ -244,7 +244,7 @@ Web uygulaması şablonlarını kullanma hakkında daha fazla bilgi için bkz. [
 Bu öğreticide, şu adımları tamamladınız:
 
 > [!div class="checklist"]
-> * Dağıtım için hazırlanma
+> * Dağıtıma hazırlanma
 > * Web hizmetini dağıtma
 > * Web hizmetini test etme
 > * Web hizmetini yönetme

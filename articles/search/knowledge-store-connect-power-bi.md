@@ -1,37 +1,42 @@
 ---
-title: Power BI ile bir bilgi deposuna bağlanma
+title: Power BI ile bir bilgi deposuna (Önizleme) bağlanma
 titleSuffix: Azure Cognitive Search
-description: Analiz ve araştırma için Power BI bir Azure Bilişsel Arama bilgi deposu bağlayın.
+description: Analiz ve araştırma için Power BI bir Azure Bilişsel Arama bilgi deposu (Önizleme) bağlayın.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485146"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715498"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Bilgi deposunu Power BI bağlama
 
-> [!Note]
-> Bilgi deposu önizlemededir ve üretimde kullanılmamalıdır. Portal ve [arama REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda .NET SDK desteği yok.
->
+> [!IMPORTANT] 
+> bilgi deposu Şu anda genel önizleme aşamasındadır. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) , Önizleme özellikleri sağlar. Şu anda sınırlı sayıda portal desteği var ve .NET SDK desteği yok.
 
 Bu makalede Power BI Desktop uygulamasındaki Power Query kullanarak bir bilgi deposuna nasıl bağlanacağınızı ve keşfedeceğinizi öğrenin. Şablonlarla daha hızlı çalışmaya başlayabilir veya sıfırdan özel bir pano oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
++ Bu kılavuzda kullanılan örnek bilgi deposunu oluşturmak için, [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md) ' daki adımları IZLEYIN veya [rest kullanarak bir Azure bilişsel arama bilgi deposu oluşturun](knowledge-store-create-rest.md) . Ayrıca, bilgi deposunu oluşturmak için kullandığınız Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
 
 + [Power BI Desktop yüklensin](https://powerbi.microsoft.com/downloads/)
 
-+ Azure Tablo depolama alanına yansıtma ile bir bilgi deposu gerekir. Ayrıca, bilgi deposunu oluşturmak için kullanılan Azure depolama hesabının adına, Azure portal erişim anahtarıyla birlikte ihtiyacınız olacaktır.
+## <a name="sample-power-bi-template---azure-portal-only"></a>Örnek Power BI şablonu-yalnızca Azure portal
 
-Örnek bir bilgi deposuyla çalışmak istiyorsanız [bilgi deposu oluşturmak](knowledge-store-create-portal.md)için yönergeleri izleyin.
+[Bilgi deponuzu Azure Portal kullanarak oluşturduysanız](knowledge-store-create-portal.md), Power BI görselleştirmeleri görüntülemek ve denemek için [Azure bilişsel arama Power BI şablon örneğini](https://github.com/Azure-Samples/cognitive-search-templates) kullanabilirsiniz. Bu şablon, **verileri Içeri aktarma** Sihirbazı ' nı adım adım yaptığınızda da indirilebilir.
 
-## <a name="create-a-custom-report"></a>Özel rapor oluşturma
+Örnek şablon, bu makalenin geri kalanında belirtilen kurulum adımlarını otomatik olarak gerçekleştirir. Bununla birlikte, bilgi deponuzu oluşturmak için REST API kullandıysanız, şablonu atlayın ve bilgi deponuzu Power BI bağlamak için bu makaledeki geri kalan bölümleri kullanın. [Power BI Connect](#connect-with-power-bi)ile başlayın.
+
+Örnek şablon, WordCloud ve Network Navigator gibi çeşitli görselleştirmeler içerir. Şablondaki bazı görselleştirmeler, örneğin konumlar Haritası ve varlık-grafik Görüntüleyici, [Azure Portal bilgi deposu oluşturma](knowledge-store-create-portal.md)bölümünde oluşturulan örnek bilgi deposu için verileri göstermez. Bunun nedeni, **verileri Içeri aktarma** Sihirbazı 'nda yalnızca bir AI zenginleştirme 'nin kullanılabilir olduğu bir alt kümesidir.
+
+![Örnek Azure Bilişsel Arama Power BI şablonu](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Örnek Power BI şablonu")
+
+## <a name="connect-with-power-bi"></a>Power BI ile bağlanma
 
 1. Power BI Desktop başlatın ve **veri al**' a tıklayın.
 

@@ -1,5 +1,5 @@
 ---
-title: T-SQL DDL sözdizimini kullanarak şirket içi Windows kullanıcılarını ve gruplarını Azure SQL veritabanı yönetilen örneği 'ne SQL Server geçirme | Microsoft Docs
+title: T-SQL DDL sözdizimini kullanarak şirket içi Windows kullanıcılarını ve gruplarını Azure SQL veritabanı yönetilen örneği 'ne SQL Server geçirme
 description: Şirket içi Windows kullanıcılarını ve gruplarını yönetilen örneğe SQL Server geçirme hakkında bilgi edinin
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 079d684b56625b8327a94a1bfef222cb93572bd3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163978"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686735"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Öğretici: T-SQL DDL sözdizimini kullanarak şirket içi Windows kullanıcılarını ve gruplarını Azure SQL veritabanı yönetilen örneği 'ne SQL Server geçirme
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > - Kullanıcıları ALTER USER söz dizimini kullanarak el ile MI?
 > - Yeni eşlenen kullanıcılarla kimlik doğrulamasını test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullar geçerlidir:
 
@@ -214,9 +214,12 @@ go
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>4\. Bölüm: kullanıcıları yönetilen örneğe geçirme
 
+> [!NOTE]
+> Oluşturulduktan sonra yönetilen örnek işlevselliği için Azure AD yöneticisi değişti. Daha fazla bilgi için bkz. [mı Için yeni Azure AD yönetici işlevselliği](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+
 Yönetilen örnekteki geçiş işlemini gerçekleştirmek için ALTER USER komutunu yürütün.
 
-1. Yönetilen örnek için SQL yönetici hesabını kullanarak yönetilen Örneğinizde oturum açın. Ardından, aşağıdaki sözdizimini kullanarak yönetilen örnekte Azure AD oturum açma bilgilerinizi oluşturun. Daha fazla bilgi için bkz. [öğretici: Azure ad sunucu sorumlularını (oturumlar) kullanarak Azure SQL veritabanı 'Nda yönetilen örnek güvenliği](sql-database-managed-instance-aad-security-tutorial.md).
+1. Yönetilen örnek için Azure AD yönetici hesabını kullanarak yönetilen Örneğinizde oturum açın. Ardından, aşağıdaki sözdizimini kullanarak yönetilen örnekte Azure AD oturum açma bilgilerinizi oluşturun. Daha fazla bilgi için bkz. [öğretici: Azure ad sunucu sorumlularını (oturumlar) kullanarak Azure SQL veritabanı 'Nda yönetilen örnek güvenliği](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

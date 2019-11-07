@@ -1,5 +1,5 @@
 ---
-title: "Öğretici: SSMS kullanarak Azure SQL veritabanı 'nda ilk ilişkisel veritabanınızı tasarlama | Microsoft Docs"
+title: "Öğretici: SSMS kullanarak Azure SQL veritabanı 'nda ilk ilişkisel veritabanınızı tasarlama "
 description: SQL Server Management Studio kullanarak Azure SQL veritabanı 'nda tek bir veritabanında ilk ilişkisel veritabanınızı tasarlamayı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ea8bcd353311d0e6f666a0086f8f2f3b24b55d2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492039"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690733"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Öğretici: SSMS kullanarak Azure SQL veritabanı 'nda tek bir veritabanında ilişkisel veritabanı tasarlama
 
@@ -35,7 +35,7 @@ Azure SQL veritabanı, Microsoft Bulut (Azure) içindeki ilişkisel bir hizmet o
 > [!NOTE]
 > Bu öğreticinin amacı doğrultusunda tek bir veritabanı kullanıyoruz. Ayrıca, bir elastik havuzda veya yönetilen bir örnekteki örnek veritabanında havuza alınmış bir veritabanı da kullanabilirsiniz. Yönetilen bir örneğe bağlantı için bkz. bu yönetilen örneğe hızlı başlangıçlara bakın: [hızlı başlangıç: Azure SQL veritabanı yönetilen örneğine bağlanmak Için Azure VM 'Yi yapılandırma](sql-database-managed-instance-configure-vm.md) ve [hızlı başlangıç: Azure SQL veritabanı 'na Noktadan siteye bağlantı yapılandırma Şirket içinden yönetilen örnek](sql-database-managed-instance-configure-p2s.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için yüklediğinizden emin olun:
 

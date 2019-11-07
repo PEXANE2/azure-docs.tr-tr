@@ -1,6 +1,6 @@
 ---
-title: Java ile Azure Service Bus konuları ve abonelikleri kullanma
-description: Azure 'da Service Bus konuları ve abonelikleri kullanın.
+title: 'Hızlı başlangıç: Java ile Azure Service Bus konuları ve abonelikleri kullanma'
+description: "Hızlı başlangıç: Azure 'da Service Bus konuları ve abonelikleri kullanın."
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,27 +11,27 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155605"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720008"
 ---
-# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Java ile Service Bus konuları ve abonelikleri kullanma
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Hızlı başlangıç: Java ile Service Bus konuları ve abonelikleri kullanma
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. [Hızlı başlangıçtaki adımları izleyin: Aşağıdaki görevleri yapmak için Azure Portal, konuya](service-bus-quickstart-topics-subscriptions-portal.md) Service Bus konu ve abonelikler oluşturmak için kullanın:
+2. Hızlı Başlangıç bölümündeki adımları uygulayın: Azure portal kullanarak aşağıdaki görevleri yapmak için [Service Bus konu başlığı ve konuya yönelik abonelikler oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :
     1. Service Bus **ad alanı**oluşturun.
     2. **Bağlantı dizesini**alın.
     3. Ad alanında bir **Konu** oluşturun.
@@ -49,7 +49,7 @@ Ayrıca, aşağıdaki JARs öğesini Java derleme yoluna eklemeniz gerekir:
 - Commons-cli-1.4. jar
 - Proton-j-0.21.0. jar
 
-**Main** yöntemine sahip bir sınıf ekleyin ve ardından Java dosyasının en üstüne aşağıdaki `import` deyimleri ekleyin:
+**Main** yöntemine sahip bir sınıf ekleyin ve ardından Java dosyasının en üstüne aşağıdaki `import` deyimlerini ekleyin:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -69,8 +69,8 @@ import org.apache.commons.cli.DefaultParser;
 Bir **Topicclient** nesnesi oluşturmak için **Main** yöntemini güncelleştirin ve Service Bus konusuna zaman uyumsuz olarak örnek iletileri gönderen bir yardımcı yöntemi çağırın.
 
 > [!NOTE] 
-> - Service Bus `<NameOfServiceBusNamespace>` ad alanının adıyla değiştirin. 
-> - Ad `<AccessKey>` alanınız için erişim anahtarıyla değiştirin.
+> - `<NameOfServiceBusNamespace>`, Service Bus ad alanının adıyla değiştirin. 
+> - `<AccessKey>`, ad alanınız için erişim anahtarıyla değiştirin.
 
 ```java
 public class MyServiceBusTopicClient {

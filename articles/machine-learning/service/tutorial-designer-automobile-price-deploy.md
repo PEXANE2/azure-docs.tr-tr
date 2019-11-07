@@ -9,52 +9,50 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fba508eac4b778dcd72371fd1471625ecb8c1a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501606"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715923"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Başkalarına [öğreticinin birinci kısmında](tutorial-designer-automobile-price-train-score.md)geliştirilen tahmine dayalı modeli kullanma şansı vermek için bunu gerçek zamanlı bir uç nokta olarak dağıtabilirsiniz. 1\. Bölüm 'de, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapabilirsiniz:
+Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci](tutorial-designer-automobile-price-train-score.md) kısmında geliştirilen tahmine dayalı modeli dağıtabilirsiniz. 1\. Bölüm 'de, modelinizi eğitilolursunuz. Şimdi, kullanıcı girişine göre yeni tahmin oluşturma zamanı. Öğreticinin bu bölümünde şunları yapmanız gerekir:
 
 > [!div class="checklist"]
-> * Gerçek zamanlı uç nokta dağıtma
+> * Gerçek zamanlı bir çıkarım işlem hattı oluşturma
 > * Bir ınıri yalıtma kümesi oluşturma
+> * Gerçek zamanlı uç nokta dağıtma
 > * Gerçek zamanlı uç noktayı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıralınacağını öğrenmek için [öğreticiden birinin bir kısmını](tutorial-designer-automobile-price-train-score.md) doldurun.
 
-## <a name="deploy-a-real-time-endpoint"></a>Gerçek zamanlı uç nokta dağıtma
+## <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
 
-İşlem hattınızı dağıtmak için şunları yapmanız gerekir:
-
-1. Eğitim işlem hattını, eğitim modüllerini kaldıran ve ınsekmek istekleri için giriş ve çıkışları ekleyen gerçek zamanlı bir çıkarım işlem hattına dönüştürün.
-1. Çıkarım işlem hattını dağıtın.
+İşlem hattınızı dağıtmak için öncelikle eğitim işlem hattını gerçek zamanlı bir çıkarım işlem hattına dönüştürmeniz gerekir. Bu işlem, eğitim modüllerini kaldırır ve ınırm istekleri için giriş ve çıkış ekler.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Gerçek zamanlı bir çıkarım işlem hattı oluşturma
 
-1. Ardışık düzen tuvalinin üst kısmında, **gerçek zamanlı çıkarım işlem hattı** > **çıkarım işlem hattı oluştur** ' u seçin.
-
-    **Çıkarım işlem hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
-    
-    * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim**altında bulabilirsiniz.
-    * Eğitim için kullanılan model ve **bölünmüş verileri** **eğitme** gibi modüller kaldırılır.
-    * Kaydedilen eğitilen model ardışık düzene geri eklenir.
-    * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller Kullanıcı verilerinin modeli nereye giremeyeceğini ve verilerin döndürüldüğü yeri belirler.
-
-    > [!Note]
-    > **Eğitim işlem hattı** , ardışık düzen tuvalinin en üstündeki yeni sekmenin altına kaydedilir. Ayrıca, tasarımcıda yayımlanmış bir işlem hattı olarak bulunabilir.
-    >
+1. Ardışık düzen tuvalinin üst kısmında, **gerçek zamanlı çıkarım işlem hattı** > **çıkarım işlem hattı oluştur**
 
     İşlem hatlarınız şu şekilde görünmelidir:  
 
    ![Dağıtım için hazırlandıktan sonra işlem hattının beklenen yapılandırmasını gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+
+    **Çıkarım işlem hattı oluştur**' u seçtiğinizde birkaç şey meydana gelir:
+    
+    * Eğitilen model, modül paletinde bir **veri kümesi** modülü olarak depolanır. **Veri kümelerim**altında bulabilirsiniz.
+    * Model ve **bölünmüş verileri** **eğitme** gibi eğitim modülleri kaldırılır.
+    * Kaydedilen eğitilen model ardışık düzene geri eklenir.
+    * **Web hizmeti girişi** ve **Web hizmeti çıkış** modülleri eklendi. Bu modüller, Kullanıcı verilerinin modeli nereye giremeyeceğini ve verilerin döndürüldüğü yeri gösterir.
+
+    > [!Note]
+    > **Eğitim işlem hattı** , ardışık düzen tuvalinin en üstündeki yeni sekmenin altına kaydedilir. Ayrıca, tasarımcıda yayımlanmış bir işlem hattı olarak bulunabilir.
+    >
 
 1. **Çalıştır** ' ı seçin ve aynı işlem hedefini kullanın ve Bölüm 1 ' de kullanmayı deneyin.
 
@@ -64,11 +62,11 @@ Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıra
 
 1. **Dağıt**'ı seçin.
 
-### <a name="create-an-inferencing-cluster"></a>Bir ınıri yalıtma kümesi oluşturma
+## <a name="create-an-inferencing-cluster"></a>Bir ınıri yalıtma kümesi oluşturma
 
-Görüntülenen iletişim kutusunda, modelinizi dağıtmak için çalışma alanınızdaki mevcut Azure Kubernetes hizmeti (AKS) kümelerinden seçim yapabilirsiniz. AKS kümeniz yoksa, bir tane oluşturmak için aşağıdaki adımları kullanın.
+Görüntülenen iletişim kutusunda, modelinize dağıtmak için içindeki mevcut Azure Kubernetes hizmeti (AKS) kümelerinden seçim yapabilirsiniz. AKS kümeniz yoksa, bir tane oluşturmak için aşağıdaki adımları kullanın.
 
-1. **İşlem** sayfasına gitmek için Iletişim kutusunda **işlem** ' ı seçin.
+1. **İşlem** sayfasına gitmek için görüntülenen Iletişim kutusunda **işlem** ' ı seçin.
 
 1. Gezinti şeridinde, **çıkarım kümeleri** >  **+ Yeni**' yi seçin.
 
@@ -86,7 +84,7 @@ Görüntülenen iletişim kutusunda, modelinizi dağıtmak için çalışma alan
     > Yeni bir AKS hizmeti oluşturmak yaklaşık 15 dakika sürer. **Çıkarım kümeleri** sayfasında sağlama durumunu kontrol edebilirsiniz
     >
 
-### <a name="deploy-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı dağıtma
+## <a name="deploy-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı dağıtma
 
 AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönelik gerçek zamanlı ıntıma ardışık düzenine geri dönün.
 
@@ -104,7 +102,7 @@ AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönel
 
 ## <a name="test-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı test etme
 
-Soldaki çalışma alanı gezinti bölmesindeki **uç noktalar** sayfasına giderek gerçek zamanlı uç noktanızı test edebilirsiniz.
+Dağıtım tamamlandıktan sonra, **uç noktalar** sayfasına giderek gerçek zamanlı uç noktanızı test edebilirsiniz.
 
 1. **Uç noktalar** sayfasında, dağıttığınız uç noktayı seçin.
 
@@ -112,9 +110,9 @@ Soldaki çalışma alanı gezinti bölmesindeki **uç noktalar** sayfasına gide
 
 1. **Test**' i seçin.
 
-1. Test verilerini girin veya oto dolgulu örnek verileri kullanın ve **Test**' i seçin.
+1. Test verilerini el ile belirtebilir veya oto dolgulu örnek verileri kullanabilir ve **Test**' i seçebilirsiniz.
 
-    Test isteği uç noktaya gönderilir ve sonuçlar sayfada gösterilir. Giriş verileri için bir fiyat değeri oluşturulsa da tahmin değeri oluşturmak için kullanılmaz.
+    Portal, uç noktaya bir test isteği gönderir ve sonuçları gösterir. Giriş verileri için bir fiyat değeri oluşturulsa da tahmin değeri oluşturmak için kullanılmaz.
 
     ![Fiyat vurgulanmış olarak gerçek zamanlı uç noktanın puanlanmış etiketle nasıl test leneceğini gösteren ekran görüntüsü](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 

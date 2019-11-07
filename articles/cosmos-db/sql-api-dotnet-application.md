@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: abff58be25a23c783f476dc849e0d6fa97e9eed2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 1cfb7718c55920d817e1f87407fa1af590e9f006
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299303"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720899"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure Cosmos DB ile ASP.NET Core MVC web uygulaması geliştirme
 
@@ -24,7 +24,7 @@ ms.locfileid: "71299303"
 > * [Python](sql-api-python-application.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 
-Bu öğreticide Azure üzerinde barındırılan bir ASP.NET MVC uygulaması erişim verileri ve depolamak için Azure Cosmos DB kullanmayı gösterir. Bu öğreticide .NET SDK V3 ' i kullanırsınız. Aşağıdaki görüntüde, bu makaledeki örneği kullanarak oluşturacağınız Web sayfası gösterilmektedir:
+Bu öğretici, Azure 'da barındırılan bir ASP.NET MVC uygulamasındaki verileri depolamak ve erişmek için Azure Cosmos DB nasıl kullanacağınızı gösterir. Bu öğreticide .NET SDK V3 ' i kullanırsınız. Aşağıdaki görüntüde, bu makaledeki örneği kullanarak oluşturacağınız Web sayfası gösterilmektedir:
 
 ![Bu öğretici tarafından oluşturulan yapılacaklar listesi MVC web uygulaması ekran görüntüsü-ASP NET Core MVC öğretici adım adım](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
@@ -34,13 +34,13 @@ Bu öğreticinin içindekiler:
 
 > [!div class="checklist"]
 >
-> * Bir Azure Cosmos hesabı oluşturma
+> * Azure Cosmos hesabı oluşturma
 > * ASP.NET Core MVC uygulaması oluşturma
-> * Uygulamayı Azure Cosmos DB'ye bağlanma
+> * Uygulamayı Azure Cosmos DB bağlama
 > * Veriler üzerinde oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemleri gerçekleştiriliyor
 
 > [!TIP]
-> Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi derledikten sonra proje bağlamında kodu daha iyi kavramak için bu makaleyi inceleyebilirsiniz.
+> Bu öğreticide, ASP.NET Core MVC ve Azure App Service kullanarak önceki deneyiminiz olduğunu varsaymaktadır. ASP.NET Core veya [Önkoşul araçları](#prerequisites)' nı yeni kullanıyorsanız, [GitHub][GitHub]'dan tüm örnek projeyi indirmeniz, gerekli NuGet paketlerini eklemeniz ve çalıştırmanız önerilir. Projeyi oluşturduktan sonra, proje bağlamındaki kodla ilgili bilgi edinmek için bu makaleyi gözden geçirebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -56,7 +56,7 @@ Bu makaledeki tüm ekran görüntüleri Microsoft Visual Studio Community 2019 '
 
 ## <a name="create-an-azure-cosmos-account"></a>1. Adım: Azure Cosmos hesabı oluşturma
 
-Bir Azure Cosmos hesabı oluşturarak başlayalım. Zaten bir Azure Cosmos db SQL API hesabınız varsa veya Azure Cosmos DB öykünücüsü 'nü kullanıyorsanız 2. [adıma atlayın: Yeni bir ASP.NET MVC uygulaması](#create-a-new-mvc-application)oluşturun.
+Bir Azure Cosmos hesabı oluşturarak başlayalım. Zaten bir Azure Cosmos DB SQL API hesabınız varsa veya Azure Cosmos DB öykünücüsü 'nü kullanıyorsanız [2. Adım: yeni bir ASP.NET MVC uygulaması oluşturma](#create-a-new-mvc-application)bölümüne atlayın.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -64,7 +64,7 @@ Bir Azure Cosmos hesabı oluşturarak başlayalım. Zaten bir Azure Cosmos db SQ
 
 Sonraki bölümde, yeni bir ASP.NET Core MVC uygulaması oluşturacaksınız.
 
-## <a name="create-a-new-mvc-application"></a>2. Adım: Yeni bir ASP.NET Core MVC uygulaması oluşturma
+## <a name="create-a-new-mvc-application"></a>2. Adım: yeni bir ASP.NET Core MVC uygulaması oluşturma
 
 1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
 
@@ -78,9 +78,9 @@ Sonraki bölümde, yeni bir ASP.NET Core MVC uygulaması oluşturacaksınız.
 
    Visual Studio boş bir MVC uygulaması oluşturur.
 
-1. ASP.NET uygulamanızı yerel olarak çalıştırmak için hata**ayıklamayı Başlat** veya F5 **' i seçin.**  > 
+1. ASP.NET uygulamanızı yerel olarak çalıştırmak için hata **ayıklamayı başlatın** veya F5 > **Hata Ayıkla** ' yı seçin.
 
-## <a name="add-nuget-packages"></a>Adım 3: Projeye Azure Cosmos DB NuGet paketi Ekle
+## <a name="add-nuget-packages"></a>3. Adım: projeye Azure Cosmos DB NuGet paketi ekleme
 
 Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğunu kullandığımıza göre, Azure Cosmos DB bağlanmak için gereken NuGet paketlerini ekleyelim.
 
@@ -92,7 +92,7 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
    Visual Studio, Azure Cosmos DB paketini ve bağımlılıklarını indirir ve yükler.
 
-   NuGet paketini yüklemek için **Paket Yöneticisi konsolu 'nu** da kullanabilirsiniz. Bunu yapmak için **Araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. İsteminde aşağıdaki komutu yazın:
+   NuGet paketini yüklemek için **Paket Yöneticisi konsolu 'nu** da kullanabilirsiniz. Bunu yapmak için **araçlar** > **NuGet Paket Yöneticisi** > **Paket Yöneticisi konsolu**' nu seçin. Komut isteminde aşağıdaki komutu yazın:
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
@@ -102,9 +102,9 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
 Şimdi modelleri, görünümleri ve denetleyicileri bu MVC uygulamasına ekleyelim.
 
-### <a name="add-a-model"></a> Model ekleme
+### <a name="add-a-model"></a>Model ekleme
 
-1. **Çözüm Gezgini**, **modeller** klasörüne sağ tıklayın,**sınıf** **Ekle** > ' yi seçin.
+1. **Çözüm Gezgini**, **modeller** klasörüne sağ tıklayın, > **sınıfı** **Ekle** ' yi seçin.
 
 1. **Yeni öğe Ekle**' de, yeni sınıfınızı *Item.cs* olarak adlandırın ve **Ekle**' yi seçin.
 
@@ -112,7 +112,7 @@ Bu çözüm için ihtiyaç duyduğumuz ASP.NET Core MVC Framework kodunun çoğu
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs)]
 
-Azure Cosmos DB verileri taşımak ve depolamak için JSON kullanır. `JsonProperty` Özniteliğini kullanarak JSON serileştirmelerini ve nesneleri seri hale getirir. `Item` Sınıfı ,`JsonProperty` özniteliğini gösterir. Bu kod, JSON 'a giden Özellik adının biçimini denetler. Ayrıca .NET özelliğini `Completed`yeniden adlandırır.
+Azure Cosmos DB verileri taşımak ve depolamak için JSON kullanır. `JsonProperty` özniteliğini kullanarak JSON serileştirmelerini ve nesneleri seri hale getirir. `Item` sınıfı `JsonProperty` özniteliğini gösterir. Bu kod, JSON 'a giden Özellik adının biçimini denetler. Ayrıca, `Completed`.NET özelliğini yeniden adlandırır.
 
 ### <a name="add-views"></a>Görünümler ekleme
 
@@ -122,11 +122,11 @@ Ardından, aşağıdaki üç görünümü oluşturalım.
 * Yeni öğe görünümü ekleme
 * Düzenleme öğesi görünümü ekleme
 
-#### <a name="AddItemIndexView"></a>Bir liste öğesi görünümü ekleme
+#### <a name="AddItemIndexView"></a>Liste öğesi görünümü ekleme
 
-1. **Çözüm Gezgini**, **Görünümler** klasörüne sağ tıklayın ve**Yeni klasör** **Ekle** > ' yi seçin. Klasör *öğesini*adlandırın.
+1. **Çözüm Gezgini**, **Görünümler** klasörüne sağ tıklayın ve > **Yeni klasör** **Ekle** ' yi seçin. Klasör *öğesini*adlandırın.
 
-1. Boş **öğe** klasörünü sağ tıklatın ve ardından**Görünüm** **Ekle** > ' yi seçin.
+1. Boş **öğe** klasörüne sağ tıklayın ve ardından > **görünümü** **Ekle** ' yi seçin.
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değerleri sağlayın:
 
@@ -137,15 +137,15 @@ Ardından, aşağıdaki üç görünümü oluşturalım.
 
    ![MVC görünümü Ekle iletişim kutusunu gösteren ekran görüntüsü](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png)
 
-1. Bu değerleri ekledikten sonra seçin **Ekle** ve Visual Studio'nun yeni bir şablon görünümü oluşturmasına izin verin.
+1. Bu değerleri ekledikten sonra **Ekle** ' yi seçin ve Visual Studio 'nun yeni bir şablon görünümü oluşturmasına izin verin.
 
 İşiniz bittiğinde, Visual Studio oluşturduğu *cshtml* dosyasını açar. Bu dosyayı, Visual Studio 'da kapatabilirsiniz. Daha sonra bu yüklemeye geri döneceğiz.
 
 #### <a name="AddNewIndexView"></a>Yeni öğe görünümü ekleme
 
-Liste öğeleri için bir görünüm oluşturun aşağıdaki adımları kullanarak öğeleri oluşturmak için yeni bir görünüm nasıl oluşturduğunuz benzer:
+Öğeleri listelemek için bir görünüm oluşturma ile benzer şekilde, aşağıdaki adımları kullanarak öğe oluşturmak için yeni bir görünüm oluşturun:
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın,**Görünüm** **Ekle** > ' yi seçin.
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, > **görünümü** **Ekle** ' yi seçin.
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -157,9 +157,9 @@ Liste öğeleri için bir görünüm oluşturun aşağıdaki adımları kullanar
 
 #### <a name="AddEditIndexView"></a>Düzenleme öğesi görünümü ekleme
 
-Ve son olarak, aşağıdaki adımlarla bir öğeyi düzenlemek için bir görünüm ekleyin:
+Son olarak, aşağıdaki adımlarla bir öğeyi düzenlemek için bir görünüm ekleyin:
 
-1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın,**Görünüm** **Ekle** > ' yi seçin.
+1. **Çözüm Gezgini**, **öğe** klasörünü yeniden sağ tıklatın, > **görünümü** **Ekle** ' yi seçin.
 
 1. **MVC görünümü Ekle**' de, aşağıdaki değişiklikleri yapın:
 
@@ -173,7 +173,7 @@ Bu adımları tamamladıktan sonra, bu görünümlere daha sonra geri döndüğ�
 
 ### <a name="add-a-controller"></a>Denetleyici ekleme
 
-1. **Çözüm Gezgini**, **denetleyiciler** klasörüne sağ tıklayın,**Denetleyici** **Ekle** > ' yi seçin.
+1. **Çözüm Gezgini**, **denetleyiciler** klasörüne sağ tıklayın, > **denetleyicisi** **Ekle** ' yi seçin.
 
 1. **Yapı Iskelesi Ekle**' de **MVC denetleyicisi-boş** ' yı seçin ve **Ekle**' yi seçin.
 
@@ -185,21 +185,21 @@ Bu adımları tamamladıktan sonra, bu görünümlere daha sonra geri döndüğ�
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
 
-**ValidateAntiForgeryToken** özniteliği burada bu uygulamayı siteler arası istek sahteciliği saldırılarına karşı korumaya yardımcı olmak için kullanılır. Görünümleriniz, bu karşı koruma belirteci ile birlikte çalışmalıdır. Daha fazla bilgi ve örnek için bkz. [ASP.NET MVC uygulamasındaki siteler arası Istek forgery (CSRF) saldırılarını önleme][Preventing Cross-Site Request Forgery]. [GitHub][GitHub]'da sağlanan kaynak kodu tam uygulamayı içerir.
+Bu uygulamayı siteler arası istek sahteciliği saldırılarına karşı korumaya yardımcı olmak için **Validateantiforgerıtoken** özniteliği burada kullanılır. Görünümleriniz, bu karşı koruma belirteci ile birlikte çalışmalıdır. Daha fazla bilgi ve örnek için bkz. [ASP.NET MVC uygulamasındaki siteler arası Istek forgery (CSRF) saldırılarını önleme][Preventing Cross-Site Request Forgery]. [GitHub][GitHub]'da sağlanan kaynak kodu tam uygulamayı içerir.
 
-Biz de **bağlama** korumaya gönderim saldırılarına karşı korunmaya yardımcı olmak için yöntem parametresinde özniteliği. Daha fazla bilgi için bkz [. Öğretici: ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC]'de Entity Framework CRUD işlevlerini uygulayın.
+Ayrıca, aşırı gönderme saldırılarına karşı korumaya yardımcı olmak için yöntem parametresindeki **bind** özniteliğini de kullanırız. Daha fazla bilgi için bkz. [öğretici: ASP.NET MVC 'de Entity Framework CRUD Işlevselliği uygulama][Basic CRUD Operations in ASP.NET MVC].
 
-## <a name="connect-to-cosmosdb"></a>5. Adım: Azure Cosmos DB’ye bağlanma
+## <a name="connect-to-cosmosdb"></a>5. Adım: Azure Cosmos DB bağlanma
 
 Standart MVC 'nin ele alındığı artık, Azure Cosmos DB ve CRUD işlemlerine bağlanmak için kodu eklemeye bakalım.
 
 ### <a name="perform-crud-operations"></a>Veriler üzerinde CRUD işlemleri gerçekleştirme
 
-İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı adlı `CosmosDBService` bir sınıfa ve adlı `ICosmosDBService`bir arabirime kapsülliyoruz. Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
+İlk olarak, Azure Cosmos DB bağlanma ve kullanma mantığını içeren bir sınıf ekleyeceğiz. Bu öğreticide, bu mantığı `CosmosDBService` adlı bir sınıfa ve `ICosmosDBService`adlı bir arabirime kapsülliyoruz. Bu hizmet CRUD işlemlerini yapar. Ayrıca, tamamlanmamış öğeleri Listeleme, öğeleri oluşturma, düzenlemesi ve silme gibi akış işlemlerini de okur.
 
-1. **Çözüm Gezgini**, projenize sağ tıklayın ve**Yeni klasör** **Ekle** > ' yi seçin. Klasör *hizmetlerini*adlandırın.
+1. **Çözüm Gezgini**, projenize sağ tıklayın ve > **Yeni klasör** **Ekle** ' yi seçin. Klasör *hizmetlerini*adlandırın.
 
-1. **Hizmetler** klasörüne sağ tıklayın,**sınıf** **Ekle** > ' yi seçin. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
+1. **Hizmetler** klasörüne sağ tıklayın, > **sınıf** **Ekle** ' yi seçin. Yeni sınıfı *Cosmosdbservice* olarak adlandırın ve **Ekle**' yi seçin.
 
 1. *CosmosDBService.cs* içeriğini aşağıdaki kodla değiştirin:
 
@@ -238,7 +238,7 @@ Uygulamayı çalıştırırsanız, ASP.NET Core işlem hattı **Cosmosdbservice*
 
 ![Bu veritabanı öğreticisi tarafından oluşturulan yapılacaklar listesi Web uygulamasının ekran görüntüsü](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
 
-## <a name="run-the-application"></a>Adım 6: Uygulamayı yerel olarak çalıştırma
+## <a name="run-the-application"></a>6. Adım: Uygulamayı yerel olarak çalıştırma
 
 Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları kullanın:
 
@@ -248,7 +248,7 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 1. **Yeni oluştur** bağlantısını seçin ve **ad** ve **Açıklama** alanlarına değer ekleyin. **Tamamlandı** onay kutusunu seçilmemiş olarak bırakın. Bu seçeneği belirlerseniz, uygulama yeni öğeyi tamamlanmış durumuna ekler. Öğe artık ilk listede görünmüyor.
 
-1. **Oluştur**’u seçin. Uygulama sizi **Dizin** görünümüne geri gönderir ve öğe listede görüntülenir. **Yapılacaklar** listenize birkaç öğe ekleyebilirsiniz.
+1. **Oluştur**'u seçin. Uygulama sizi **Dizin** görünümüne geri gönderir ve öğe listede görüntülenir. **Yapılacaklar** listenize birkaç öğe ekleyebilirsiniz.
 
     ![Dizin görünümünün ekran görüntüsü](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
   
@@ -260,7 +260,7 @@ Uygulamayı yerel bilgisayarınızda test etmek için aşağıdaki adımları ku
 
 1. Uygulamayı sınadıktan sonra, uygulamanın hata ayıklamasını durdurmak için CTRL + F5 ' i seçin. Dağıtıma hazırsınız!
 
-## <a name="deploy-the-application-to-azure"></a>Adım 7: Uygulamayı dağıtma
+## <a name="deploy-the-application-to-azure"></a>7. Adım: uygulamayı dağıtma
 
 Artık uygulamanın tamamı Azure Cosmos DB ile doğru şekilde çalıştığına göre, bu web uygulamasını Azure App Service’e dağıtacağız.  
 
@@ -270,9 +270,9 @@ Artık uygulamanın tamamı Azure Cosmos DB ile doğru şekilde çalıştığın
 
 1. Mevcut bir App Service profilini kullanmak için **Varolanı Seç**' i seçin ve ardından **Yayımla**' yı seçin.
 
-1. **App Service**bir **abonelik**seçin. Kullanım **görünümü** filtresi kaynak grubu veya kaynak türüne göre sıralayabilirsiniz.
+1. **App Service**bir **abonelik**seçin. Kaynak grubuna veya kaynak türüne göre sıralamak için **Görünüm** filtresini kullanın.
 
-1. Profilinizi bulun ve **Tamam**' ı seçin. Ardından gerekli Azure App Service'ı arayın ve seçin **Tamam**.
+1. Profilinizi bulun ve **Tamam**' ı seçin. Sonra gerekli Azure App Service arayın ve **Tamam**' ı seçin.
 
    ![Visual Studio’da App Service iletişim kutusu](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png)
 

@@ -14,19 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585129"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
 
 ## <a name="register-to-the-lab"></a>Laboratuvara kaydolun
 
-1. Profesörden/eğitimciden aldığınız **kayıt URL’sine** gidin. Kayıt tamamlandıktan sonra kayıt URL 'sini kullanmanız gerekmez. Bunun yerine, URL 'YI kullanın [https://labs.azure.com](https://labs.azure.com):. Internet Explorer 11 henüz desteklenmiyor. 
+1. Profesörden/eğitimciden aldığınız **kayıt URL’sine** gidin. Kayıt tamamlandıktan sonra kayıt URL 'sini kullanmanız gerekmez. Bunun yerine, URL 'YI kullanın: [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 henüz desteklenmiyor. 
 1. Kaydı tamamlamak için okul hesabınızı kullanarak hizmette oturum açın. 
 
     > [!NOTE]
@@ -63,13 +63,13 @@ Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm labora
 ## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Mac üzerinde RDP kullanarak VM 'ye bağlanma
 Bu bölümde, bir öğrencinin RDP kullanarak Mac 'ten bir VM 'ye nasıl bağlanabildiği gösterilmektedir.
 
-### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>1\. adım: Mac 'e Microsoft Uzak Masaüstü yüklemesi
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>1\. Adım: Mac 'e Microsoft Uzak Masaüstü yüklemesi
 1. Mac 'inizde App Store ' u açın ve **Microsoft Uzak Masaüstü**arayın.
 
     ![Microsoft Uzak Masaüstü](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. En son Microsoft Uzak Masaüstü sürümünü yükler. 
 
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>2\. adım: RDP kullanarak Mac 'Inizden VM 'ye erişme
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>2\. Adım: RDP kullanarak Mac 'Inizden VM 'ye erişme
 1. **Microsoft Uzak Masaüstü** yüklü olan bilgisayarınızda indirilen **RDP** dosyasını açın. VM 'ye bağlanmaya başlamalıdır. 
 
     ![VM’ye bağlanma](../media/how-to-use-classroom-lab/connect-linux-vm.png)
@@ -103,11 +103,11 @@ Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-u
 ## <a name="view-all-the-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleme
 Laboratuvarlara kaydolduktan sonra, aşağıdaki adımları uygulayarak tüm sınıf laboratuvarlarını görüntüleyebilirsiniz: 
 
-1. Öğesine [https://labs.azure.com](https://labs.azure.com)gidin. Internet Explorer 11 henüz desteklenmiyor. 
+1. [https://labs.azure.com](https://labs.azure.com)gidin. Internet Explorer 11 henüz desteklenmiyor. 
 2. Laboratuvara kaydolmak için kullandığınız kullanıcı hesabını kullanarak hizmette oturum açın. 
 3. Erişiminiz olan tüm laboratuvarları görtığınızdan emin olun. 
 
-    ![Tüm laboratuvarları görüntüleme](../media/how-to-use-classroom-lab/all-labs.png)
+    ![Tüm laboratuvarları görüntüleme](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

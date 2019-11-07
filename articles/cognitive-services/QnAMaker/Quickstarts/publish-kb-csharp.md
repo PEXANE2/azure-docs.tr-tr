@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı başlangıç: yayımlama bilgi tabanı, REST C# ,-soru-cevap oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu C# REST tabanlı hızlı başlangıç, bilgi bankasını yayımlarken, sınanan bilgi tabanının en son sürümünü yayımlanan bilgi bankasını temsil eden ayrılmış bir Azure Search dizinine gönderen adım adım açıklar. Ayrıca uygulamanızda veya sohbet botunuzda çağrılabilecek bir uç nokta da oluşturulur.
+description: Bu C# REST tabanlı hızlı başlangıç bilgi tabanınızı yayımlar ve uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8bb1b87e5df92605192a60c49a11f1995449d255
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802910"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721154"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Hızlı başlangıç: C# kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
@@ -25,7 +25,7 @@ Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şe
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * En son [**Visual Studio Community sürümü**](https://www.visualstudio.com/downloads/).
 * [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
@@ -41,7 +41,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 ## <a name="create-knowledge-base-project"></a>Bilgi bankası projesi oluşturma
 
 1. Visual Studio 2019 Community Edition 'ı açın.
-1. Yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun ve `QnaMakerQuickstart` olarak projeyi adlandırın. Diğer ayarlar için varsayılan değerleri kabul edin.
+1. Yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun ve proje `QnaMakerQuickstart`adlandırın. Diğer ayarlar için varsayılan değerleri kabul edin.
 
 ## <a name="add-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 

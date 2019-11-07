@@ -1,7 +1,7 @@
 ---
 title: Bilgi Bankası Soru-Cevap Oluşturma geliştirme-
 titleSuffix: Azure Cognitive Services
-description: Etkin öğrenme, sorularınızı ve yanıt çiftiyle Kullanıcı Gönderimlerini temel alan alternatif sorular önererek bilgi Bankalarınızın kalitesini iyileştirmenize olanak tanır. Bu önerileri, mevcut sorulara ekleyerek veya reddetmek için gözden geçirin. Bilgi tabanınız otomatik olarak değişmez. Herhangi bir değişikliğin etkili olması için önerileri kabul etmelisiniz. Bu öneriler, sorular ekler ancak mevcut soruları değiştirmez veya kaldırmaz.
+description: Etkin öğrenme ile bilgi Bankalarınızın kalitesini artırabilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin, ekleyin.
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: add4bbead880fb9b74d342abc1d4b3c0e9475fad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328025"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721187"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Bilgi bankanızı geliştirmek için etkin öğrenmeyi kullanma
 
@@ -71,7 +71,7 @@ Etkin öğrenme varsayılan olarak kapalıdır. Önerilen soruları görmek içi
 
 1. Soru-Cevap Oluşturma hizmeti bulun ve ardından **etkin öğrenimi**değiştirin. 
 
-    [![ Service Settings sayfasında, etkin öğrenme özelliği ' nde geçiş yapın. Özelliği geçiş yapadıysanız hizmetinizi yükseltmeniz gerekebilir.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [Hizmet ayarları sayfasında ![, etkin öğrenme özelliği ' ne geçiş yapın. Özelliği geçiş yapadıysanız hizmetinizi yükseltmeniz gerekebilir.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > Önceki görüntüde yer alan tam sürüm yalnızca bir örnek olarak gösterilir. Sürümünüz farklı olabilir. 
@@ -84,15 +84,15 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
 1. Önerilen soruları görmek için Bilgi Bankası **Düzenle** sayfasında, **seçenekleri görüntüle**' yi seçin ve ardından **etkin öğrenme önerilerini göster**' i seçin. 
 
-    [![Portalın düzenleme bölümünde, etkin öğrenmesinin yeni soru alternatiflerini görmek için önerileri göster ' i seçin.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [Portalın düzenleme bölümünde ![, etkin öğrenmesinin yeni soru alternatiflerini görmek için önerileri göster ' i seçin.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. Yalnızca önerilere **göre filtrele**' yi seçerek önerileri göstermek için bilgi bankasını soru ve yanıt çiftleri ile filtreleyin.
 
-    [![ yalnızca etkin öğrenme 'nın önerilen soru alternatiflerini görüntülemek için önerilere göre filtrele ' ye geçin.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![önerilere göre filtrele ' ye tıklayarak yalnızca etkin öğrenme 'nın önerilen soru alternatiflerini görüntüleyin.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Her bir QnA çifte, `✔` ' ı bir onay işaretiyle, soruyu kabul edecek şekilde veya bir `x` ' i benimsemeye yönelik yeni soru alternatifleri önerilir. Soruyu eklemek için onay işaretini seçin. 
+1. Her QnA çifti, bir onay işareti ile yeni soru alternatiflerini `✔`, soruyu kabul etmek için soru veya bir `x` kabul eder. Soruyu eklemek için onay işaretini seçin. 
 
-    [![ yeşil onay işaretini veya kırmızı silme işaretini seçerek, etkin öğrenmesinin önerilen soru seçeneklerini seçin veya reddedin.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![yeşil onay işaretini veya kırmızı silme işaretini seçerek, etkin öğrenmesinin önerilen soru alternatiflerini seçin veya reddedin.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Bağlam araç çubuğunda Tümünü **Ekle** veya **Tümünü Reddet** ' i seçerek _tüm önerileri_ ekleyebilir veya silebilirsiniz.
 
@@ -186,10 +186,10 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP istek özelliği|Adı|Tür|Amaç|
+|HTTP istek özelliği|Ad|Tür|Amaç|
 |--|--|--|--|
 |URL yol parametresi|Bilgi Bankası KIMLIĞI|string|Bilgi tabanınız için GUID.|
-|Özel alt etki alanı|QnAMaker kaynak adı|string|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. @No__t-0 olarak listelenir.|
+|Özel alt etki alanı|QnAMaker kaynak adı|string|Kaynak adı, Soru-Cevap Oluşturma özel alt etki alanı olarak kullanılır. Bu, Bilgi Bankası 'nı yayımladıktan sonra Ayarlar sayfasında bulunur. `host`olarak listelenir.|
 |Üst bilgi|İçerik türü|string|API 'ye gönderilen gövdenin medya türü. Varsayılan değer: `application/json`|
 |Üst bilgi|Yetkilendirme|string|Uç nokta anahtarınız (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Gövde gönder|JSON nesnesi|JSON|Eğitim geri bildirimi|
@@ -221,7 +221,7 @@ Başarılı bir yanıt, 204 durumunu ve hiçbir JSON yanıt gövdesi döndürmez
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Tek bir çağrıda toplu işlem birçok geri bildirim kaydı
 
-Bir bot gibi istemci tarafı uygulamada, verileri saklayabilir ve sonra `feedbackRecords` dizisindeki tek bir JSON gövdesinde çok sayıda kayıt gönderebilirsiniz. 
+Bir bot gibi istemci tarafı uygulamada, verileri depolayıp `feedbackRecords` dizisindeki tek bir JSON gövdesinde birçok kayıt gönderebilirsiniz. 
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -368,9 +368,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Etkin öğrenme, dışarıya kaydedilen Bilgi Bankası 'nda kaydedilir
 
-Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktardığınızda, TSV dosyasındaki `SuggestedQuestions` sütunu, etkin öğrenme verilerini korur. 
+Uygulamanızda etkin öğrenme etkin olduğunda ve uygulamayı dışarı aktardığınızda, TSV dosyasındaki `SuggestedQuestions` sütunu etkin öğrenme verilerini korur. 
 
-@No__t-0 sütunu örtük, `autosuggested` ve açık, `usersuggested` geri bildirimlerinden oluşan bir JSON nesnesidir. @No__t-0 ' a ait tek kullanıcı tarafından gönderilen soru için bu JSON nesnesine bir örnek:
+`SuggestedQuestions` sütunu örtük, `autosuggested`ve açık `usersuggested` geri bildirimlerinden oluşan bir JSON nesnesidir. `help` Kullanıcı tarafından gönderilen tek bir soru için bu JSON nesnesine bir örnek:
 
 ```JSON
 [

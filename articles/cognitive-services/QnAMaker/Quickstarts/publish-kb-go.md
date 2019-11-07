@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Bilgi Bankası 'nı yayımlama, REST, go-Soru-Cevap Oluşturma"
 titleSuffix: Azure Cognitive Services
-description: Bu, REST tabanlı hızlı başlangıçta, sınanan Bilgi Bankası 'nın en son sürümünü yayımlanan Bilgi Bankası 'nı temsil eden ayrılmış bir Azure Search dizinine gönderen bilgi bankasını yayımlama konusunda size yol gösterir. Ayrıca, uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
+description: Bu Go, REST tabanlı hızlı başlangıç bilgi tabanınızı yayımlar ve uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,41 +11,41 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 20e48d0c16281d6b1399d46f5ca9a7781cbaeea7
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: e6a38392b6f83479db9036eab944dc498382f5c4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840200"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720982"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Hızlı başlangıç: go kullanarak Soru-Cevap Oluşturma bilgi tabanı yayımlama
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Hızlı başlangıç: Go kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
-Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şekilde yayımlama konusunda size yol gösterir. Yayımlama, bilgi tabanının en son sürümünü adanmış bir Azure Search dizinine gönderir ve uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
+Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şekilde yayımlama konusunda size yol gösterir. Yayımlama, bilgi bankanızın son sürümünü adanmış bir Azure Search dizinine gönderir ve uygulamanızda ya da sohbet botunuzda çağrılabilecek bir uç nokta oluşturur.
 
-Bu hızlı başlangıç Soru-Cevap Oluşturma API 'Leri çağırır:
-* [Yayımla](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) -bu API, isteğin gövdesinde herhangi bir bilgi gerektirmez.
+Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
+* [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Go 1.10.1](https://golang.org/dl/)
-* Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
+* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
 
-* Aşağıda gösterildiği gibi, KBID sorgu dizesi parametresindeki URL 'de Soru-Cevap Oluşturma Bilgi Bankası (KB) KIMLIĞI bulundu.
+* Soru-Cevap Oluşturma bilgi bankası (KB) kimliği aşağıda gösterildiği gibi URL'nin kbid sorgu dizesi bölümünde bulunur.
 
-    ![Soru-Cevap Oluşturma Bilgi Bankası KIMLIĞI](../media/qnamaker-quickstart-kb/qna-maker-id.png)
+    ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Henüz bir bilgi tabanınız yoksa, bu hızlı başlangıç için kullanmak üzere bir örnek oluşturabilirsiniz: [Yeni bir Bilgi Bankası oluşturun](create-new-kb-csharp.md).
+    Henüz bir bilgi bankanız yoksa, bu hızlı başlangıçta kullanmak için bir örneğini oluşturabilirsiniz: [Yeni bilgi bankası oluşturma](create-new-kb-csharp.md).
 
 > [!NOTE] 
 > Tam çözüm dosyası (ler) [ **Azure-Samples/bilişsel hizmetler-qnamaker-go** GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base)bulunur.
 
 ## <a name="create-a-go-file"></a>Go dosyası oluşturma
 
-VSCode 'u açın ve `publish-kb.go` adlı yeni bir dosya oluşturun.
+VSCode 'u açın ve `publish-kb.go`adlı yeni bir dosya oluşturun.
 
-## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları Ekle
+## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
-@No__t-0 ' nın üstünde, gerekli bağımlılıkları projeye eklemek için aşağıdaki satırları ekleyin:
+Aşağıdaki satırları `publish-kb.go` adlı dosyanın en üstüne ekleyerek projeye gerekli bağımlılıkları dahil edin:
 
 [!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/publish-knowledge-base/publish-kb.go?range=3-7 "Add the required dependencies")]
 
@@ -61,7 +61,7 @@ func main() {
 }
 ```
 
-## <a name="add-required-constants"></a>Gerekli sabitleri Ekle
+## <a name="add-required-constants"></a>Gerekli sabitleri ekleme
 
 **Ana** iç
 
@@ -70,25 +70,25 @@ func main() {
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/publish-knowledge-base/publish-kb.go?range=16-20 "Add the required constants")]
 
-## <a name="add-post-request-to-publish-kb"></a>Yayımla BB 'ye POST isteği Ekle
+## <a name="add-post-request-to-publish-kb"></a>KB yayımlamak için POST isteğini ekleme
 
 Gerekli sabitlerden sonra, bir Bilgi Bankası yayımlamak ve yanıtı almak için Soru-Cevap Oluşturma API'si HTTPS isteği yapan aşağıdaki kodu ekleyin:
 
 [!code-go[Add a POST request to publish KB](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=35-48 "Add a POST request to publish KB")]
 
-API çağrısı, yanıt gövdesinde içerik olmadan başarılı bir yayımlama için 204 durumu döndürür. Kod, 204 yanıt için içerik ekler.
+Yayımlama başarılı olursa API çağrısı boş yanıt gövdesiyle 204 durumunu döndürür. Kod 204 yanıtları için içerik ekler.
 
-Diğer herhangi bir yanıt için, bu yanıt değiştirilmemiş olarak döndürülür.
+Diğer yanıtlarda döndürülen yanıt değiştirilmez.
 
-## <a name="build-and-run-the-program"></a>Programı derleyin ve çalıştırın
+## <a name="build-and-run-the-program"></a>Programı derleme ve çalıştırma
 
-Dosyayı derlemek için aşağıdaki komutu girin. Komut istemi, başarılı bir derleme için herhangi bir bilgi döndürmez.
+Dosyayı derlemek için aşağıdaki komutu girin. Komut istemi başarılı bir derleme için herhangi bir bilgi döndürmez.
 
 ```bash
 go build publish-kb.go
 ```
 
-Programı çalıştırmak için komut satırına aşağıdaki komutu girin. Bu işlem, KB 'yi yayımlamak için Soru-Cevap Oluşturma API'si isteği gönderir, sonra başarı veya hatalar için 204 yazdır.
+Programı çalıştırmak için aşağıdaki komutu bir komut satırına yazın. Bu işlem, KB 'yi yayımlamak için Soru-Cevap Oluşturma API'si isteği gönderir, sonra başarı veya hatalar için 204 yazdır.
 
 ```bash
 ./publish-kb
@@ -101,4 +101,4 @@ Programı çalıştırmak için komut satırına aşağıdaki komutu girin. Bu i
 Bilgi Bankası yayımlandıktan sonra, [bir yanıt oluşturmak için uç nokta URL 'sine](../Tutorials/create-publish-answer.md#generating-an-answer)ihtiyacınız vardır. 
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma (v4) REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)

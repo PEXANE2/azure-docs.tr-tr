@@ -9,24 +9,24 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: 8b333dbd043ea0a0fe6fb1042e255e7e9c07ade5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493418"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633768"
 ---
 1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure Portal](https://portal.azure.com/) oturum açın. 
 
 1. Azure portal sol üst köşesinde **+ kaynak oluştur**' u seçin.
 
-      ![Yeni kaynak oluşturma](media/aml-create-in-portal/portal-create-resource.png)
+      ![Yeni kaynak oluşturma](media/aml-create-in-portal/create-workspace.gif)
 
-1. **Machine Learning hizmeti çalışma alanını**bulmak için arama çubuğunu kullanın.
+1. **Machine Learning**bulmak için arama çubuğunu kullanın.
 
-1. **Machine Learning hizmet çalışma alanı**' nı seçin.
+1. **Machine Learning**seçin.
 
-1. Başlamak için **Machine Learning hizmet çalışma alanı** bölmesinde **Oluştur** ' u seçin.
+1. Başlamak için **Machine Learning** bölmesinde **Oluştur** ' u seçin.
 
 1. Yeni çalışma alanınızı yapılandırmak için aşağıdaki bilgileri sağlayın:
 

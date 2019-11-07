@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/06/2019
+ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680497"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721376"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -28,9 +28,9 @@ ISE 'nizi oluşturduktan sonra mantıksal uygulamanızı veya tümleştirme hesa
 
 Mantıksal uygulamanız artık bu öğelerden herhangi birini kullanarak sanal ağınıza doğrudan veya bağlı olan sistemlere doğrudan erişebilir:
 
-* Bu sistem için, SQL Server gibi bir **Ise**etiketli bağlayıcı
+* Bu sistem için **Ise**etiketli bağlayıcı
 * HTTP tetikleyicisi veya eylemi gibi **çekirdek**etiketli bir yerleşik tetikleyici veya eylem
-* özel bağlayıcı
+* Özel bağlayıcı
 
 Bu genel bakışta, bir ıSE 'nin mantıksal uygulamalarınızın ve tümleştirme hesaplarınızın Azure sanal ağınıza doğrudan erişimini nasıl verdiği ve bir ıSE ile küresel Logic Apps hizmeti arasındaki farkları karşılaştıran daha fazla ayrıntı açıklanmaktadır.
 
@@ -51,7 +51,7 @@ Bir ıSE 'de Logic Apps, genel Logic Apps hizmetiyle aynı kullanıcı deneyimle
 * Azure Blob depolama, dosya depolama ve tablo depolama
 * Azure kuyrukları, Azure Service Bus, Azure Event Hubs ve IBM MQ
 * FTP ve SFTP-SSH
-* SQL Server, SQL veri ambarı Azure Cosmos DB
+* SQL Server, Azure SQL veri ambarı Azure Cosmos DB
 * AS2, x12 ve EDIOLGU
 
 ISE ve ıSE olmayan bağlayıcılar arasındaki fark, Tetikleyiciler ve eylemlerin çalıştırıldığı konumlardır:
@@ -92,6 +92,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı tercih edebilirsiniz. Bu uç noktalar, işinizdeki Logic Apps 'teki istek veya Web kancasının, sanal ağınızın dışından çağrı alıp almamadığını belirtir. Bu uç noktalar Ayrıca Logic App çalıştırma geçmişinde girişlere ve çıkışlara erişimi de etkiler.
 
 * **İç**: e-postalarda Logic Apps çağrılarına ve yalnızca *sanal ağınızın* içinden çalıştırma geçmişinde girişlere ve çıkışlara erişilmesine izin veren özel uç noktalar
+
 * **Dış**: işinizdeki Logic Apps çağrılarına ve *sanal ağınızın dışından* çalıştırma geçmişindeki giriş ve çıkışlara erişilmesine izin veren genel uç noktalar
 
 > [!IMPORTANT]
@@ -103,15 +104,20 @@ ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı te
 
 Bir Azure sanal ağına bağlı şirket içi sistemler için, mantıksal uygulamalarınızın şu öğelerden herhangi birini kullanarak bu sistemlere doğrudan erişebilmesi için o ağa bir ıSE ekleyin:
 
-* ISE-bu sistem için sürüm Bağlayıcısı, örneğin, SQL Server
 * HTTP eylemi
+
+* O sistem için ıSE etiketli bağlayıcı
+
+  > [!IMPORTANT]
+  > Windows kimlik doğrulamasını SQL Server Bağlayıcısı ile kullanmak için şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md)kullanmanız gerekir. SQL Server Bağlayıcısı, ıSE 'deki bir mantıksal uygulama için Windows kimlik doğrulamasını desteklemez.
+
 * Özel bağlayıcı
 
   * Şirket içi veri ağ geçidini gerektiren özel bağlayıcılarınız varsa ve bu bağlayıcıları bir ıSE dışında oluşturduysanız, bir ıSE içindeki Logic Apps de bu bağlayıcıları kullanabilir.
   
   * Bir ıSE içinde oluşturulan özel bağlayıcılar şirket içi veri ağ geçidi ile çalışmaz. Ancak, bu bağlayıcılar, ıSE 'yi barındıran sanal ağa bağlı şirket içi veri kaynaklarına doğrudan erişebilir. Bu nedenle, bir ıSE içindeki Logic Apps, bu kaynaklarla iletişim kurarken veri ağ geçidine ihtiyaç duymamasından kaynaklanıyor olabilir.
 
-Bir sanal ağa bağlı olmayan veya o sürüme ait bağlayıcılar bulunmayan şirket içi sistemler için, mantıksal uygulamalarınızın bu sistemlere bağlanabilmesi için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
+Bir sanal ağa bağlı olmayan veya ıSE-lablı bağlayıcılar bulunmayan şirket içi sistemler için, mantıksal uygulamalarınızın bu sistemlere bağlanabilmesi için önce şirket [içi veri ağ geçidini ayarlamanız](../logic-apps/logic-apps-gateway-install.md) gerekir.
 
 <a name="create-integration-account-environment"></a>
 

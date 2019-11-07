@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501186"
+ms.locfileid: "73572146"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service bir SSL sertifikası Ekle
 
@@ -36,7 +36,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 
@@ -65,6 +65,7 @@ Bir SSL bağlamasındaki özel bir etki alanının güvenliğini sağlamak için
 
 App Service yönetilen ücretsiz sertifika, App Service özel DNS adınızı güvenli hale getirmek için bir açılan anahtar çözümüdür. Bu, App Service tarafından yönetilen ve otomatik olarak yenilenen tam işlevli bir SSL sertifikasıdır. Ücretsiz sertifika aşağıdaki sınırlamalara sahiptir:
 
+- Joker sertifikaları desteklemez.
 - Çıplak etki alanlarını desteklemez.
 - Dışarı aktarılabilir değil.
 
@@ -281,7 +282,7 @@ Uygulamanızın sol gezinti bölmesinde, genel **Sertifikalar (. cer)** ** >  > 
 
 ![App Service ortak sertifikayı karşıya yükle](./media/configure-ssl-certificate/upload-public-cert.png)
 
-Sertifika karşıya yüklendikten sonra, sertifika parmak izini kopyalayın ve [sertifikayı erişilebilir yapın](configure-ssl-certificate-in-code.md#load-the-certificate).
+Sertifika karşıya yüklendikten sonra, sertifika parmak izini kopyalayın ve [sertifikayı erişilebilir yapın](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
 
 ## <a name="manage-app-service-certificates"></a>App Service sertifikalarını yönetme
 

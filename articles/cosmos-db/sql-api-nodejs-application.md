@@ -1,22 +1,22 @@
 ---
-title: "Öğretici: Azure Cosmos DB SQL API verileri yönetmek için JavaScript SDK'sını kullanarak bir Node.js web uygulaması derleme"
+title: 'Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK’sını kullanarak bir Node.js web uygulaması derleme'
 description: Bu Node. js öğreticisi, Microsoft Azure App Service Web Apps özelliğinde barındırılan bir Node. js Express web uygulamasındaki verileri depolamak ve erişmek için Microsoft Azure Cosmos DB kullanmayı araştırır.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 0f410e06e1f5b9ae3b5319c4ff63f9632a2159dc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989443"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720814"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB bir SQL API hesabını yönetmek için JavaScript SDK 'sını kullanarak Node. js web uygulaması oluşturma 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB ' de bir SQL API hesabını yönetmek için JavaScript SDK 'sını kullanarak Node. js web uygulaması oluşturma 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -51,7 +51,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
 * Yerel iş istasyonunuza [Git][Git] 'i yükler.
 
 ## <a name="_Toc395637761"></a>Azure Cosmos DB hesabı oluşturma
-İlk olarak bir Azure Cosmos DB hesabı oluşturalım. Zaten bir hesabınız varsa veya bu öğretici için Azure Cosmos DB öykünücüsü kullanıyorsanız 2. [adıma atlayabilirsiniz: Yeni bir Node. js uygulaması](#_Toc395783178)oluşturun.
+İlk olarak bir Azure Cosmos DB hesabı oluşturalım. Zaten bir hesabınız varsa veya bu öğretici için Azure Cosmos DB Öykünücüsü’nü kullanıyorsanız [2. Adım: Yeni Node.js uygulaması oluşturma](#_Toc395783178) adımına atlayabilirsiniz.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -93,7 +93,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
 
 **Package.json** dosyası, projenin kökünde oluşturulan dosyalardan biridir. Bu dosya, Node.js uygulamanız için gerekli olan ek modüllerin listesini içerir. Bu uygulamayı Azure'a dağıttığınızda uygulamanızı desteklemek amacıyla Azure'a hangi modüllerin yüklenmesi gerektiğini belirlemek için bu dosya kullanılır. Bu öğretici için iki paket daha yükleyeceksiniz.
 
-1. Azure/Cosmos modülünü NPM aracılığıyla yükler.  **\@** 
+1. **\@Azure/Cosmos** modülünü NPM aracılığıyla yükler. 
 
    ```bash
    npm install @azure/cosmos
@@ -437,7 +437,7 @@ Bu kod, düzeni genişletir ve daha önce **layout.jade** dosyasında gördüğ�
 
 Artık uygulamayı oluşturduğunuza göre, aşağıdaki adımları kullanarak yerel olarak çalıştırabilirsiniz:  
 
-1. Uygulamayı yerel makinenizde test etmek için terminalde çalıştırarak `npm start` uygulamanızı başlatın ve [http://localhost:3000](http://localhost:3000) tarayıcı sayfasını yenileyin. Sayfa, aşağıdaki ekran görüntüsünde gösterildiği gibi görünmelidir:
+1. Uygulamayı yerel makinenizde test etmek için terminalde `npm start` çalıştırarak uygulamanızı başlatın ve [http://localhost:3000](http://localhost:3000) tarayıcı sayfasını yenileyin. Sayfa, aşağıdaki ekran görüntüsünde gösterildiği gibi görünmelidir:
    
     ![Bir tarayıcı penceresinde Yapılacaklar Listem uygulamasının ekran görüntüsü](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

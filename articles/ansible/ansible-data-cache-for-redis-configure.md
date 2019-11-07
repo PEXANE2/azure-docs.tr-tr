@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Redto kullanarak Azure önbelleğinde önbellekleri yapılandırma
-description: Redsıs için Azure önbelleğini oluşturmak, ölçeklendirmek ve yeniden önyüklemek üzere nasıl kullanılacağını öğrenin
+description: Redsıs için Azure önbelleği 'ne bir güvenlik duvarı kuralı oluşturmak, ölçeklendirmek, yeniden başlatmak ve bu kuralı eklemek için nasıl kullanacağınızı öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Cache, redsıs
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241803"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614357"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Öğretici: redin kullanarak Azure önbelleğinde önbellekleri yapılandırma
 
@@ -25,18 +25,18 @@ ms.locfileid: "72241803"
 
 > [!div class="checklist"]
 >
-> * Önbellek oluşturma
+> * Bir önbellek oluşturma
 > * Bir önbelleği ölçeklendirme
 > * Önbelleği yeniden Başlat
 > * Önbelleğe bir güvenlik duvarı kuralı ekleme
 > * Önbellek silme
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-cache"></a>Önbellek oluşturma
+## <a name="create-a-cache"></a>Bir önbellek oluşturma
 
 Yeni bir kaynak grubu içinde Reda için Azure önbelleği oluşturun.
 
@@ -161,8 +161,8 @@ Aşağıdaki kod önbelleği siler:
 ## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
 
 Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) ve `rediscache.yml` ' e kaydedin.
-- @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) ve `rediscache.yml`kaydedin.
+- `rediscache.yml` adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 - name: Manage Azure Cache for Redis
@@ -242,9 +242,9 @@ Aşağıdaki kod önbelleği siler:
 
 Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
 
-@No__t-0 bölümünde `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+`vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook rediscache.yml
@@ -324,11 +324,11 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu @no__t olarak kaydet-0:
+Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
 
 ```yml
 - hosts: localhost
@@ -341,9 +341,9 @@ Aşağıdaki kodu @no__t olarak kaydet-0:
         state: absent
 ```
 
-@No__t-0 bölümünde `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
+`vars` bölümünde, `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 
-@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
+`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -352,4 +352,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure üzerinde anormal](https://docs.microsoft.com/azure/ansible/)
+> [Azure üzerinde Ansible](https://docs.microsoft.com/azure/ansible/)

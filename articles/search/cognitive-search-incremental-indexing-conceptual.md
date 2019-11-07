@@ -1,25 +1,24 @@
 ---
 title: Artımlı dizine giriş (Önizleme)
 titleSuffix: Azure Cognitive Search
-description: Beceriler, becerileri, Dizin oluşturucular veya veri kaynaklarına yönelik tüm güncelleştirmeleri işlemek üzere verilerinizi nihai tutarlılık altına almak için AI zenginleştirme işlem hattınızı yapılandırın.
+description: Beceriler, becerileri, Dizin oluşturucular veya veri kaynaklarına yönelik tüm güncelleştirmeleri işlemek üzere verilerinizi nihai tutarlılık altına almak için AI zenginleştirme işlem hattınızı yapılandırın. Bu özellik şu anda genel önizlemede
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549125"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715425"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure Bilişsel Arama artımlı dizin oluşturma nedir?
 
-> [!Note]
-> Artımlı dizin oluşturma önizlemededir ve üretim kullanımı için tasarlanmamıştır. [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
->
+> [!IMPORTANT] 
+> Artımlı dizin oluşturma şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 Artımlı dizin oluşturma, bir Bilişsel Beceri içindeki içeriğe yönelik önbelleğe alma ve durum ekleyen yeni bir Azure Bilişsel Arama özelliğidir. Bu, bir zenginleştirme ardışık düzeninde bireysel adımların işleme ve yeniden işlenmesine ilişkin denetim sağlar. Bunu yalnızca, işlem sırasında parasal yatırımınızı korumaması, ancak Ayrıca daha verimli bir sistem için de sağlar. Yapılar ve içerik önbelleğe alındığında, bir Dizin Oluşturucu hangi yeteneklerin değiştirildiğini ve yalnızca değiştirilmiş olanları ve herhangi bir aşağı akış bağımlı becerileri tespit edebilir. 
 

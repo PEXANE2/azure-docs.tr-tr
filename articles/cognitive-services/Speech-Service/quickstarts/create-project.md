@@ -1,26 +1,26 @@
 ---
 title: 'Hızlı başlangıç: proje oluşturma'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: Bu hızlı başlangıçta, bir hızlı başlangıcı tamamlamaya veya bir uygulama oluşturmaya yönelik kullanacağınız tercih ettiğiniz programlama dili için boş bir proje oluşturacaksınız.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 25d6e8f7642db05663082414f013b2b11bff46da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276dbcdfe3f40122b6a7a14e78aeee4d6ab2fbe9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504049"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721004"
 ---
-# <a name="quickstart-create-an-empty-project"></a>Hızlı başlangıç: boş bir proje oluşturun.
+# <a name="quickstart-create-a-project"></a>Hızlı başlangıç: proje oluşturma
 
-Bu kılavuzda, diğer hızlı başlangıçlarda kullanılmak üzere boş bir projenin nasıl oluşturulacağı gösterilmektedir.
+Bu hızlı başlangıçta, bir hızlı başlangıcı tamamlamaya veya bir uygulama oluşturmaya yönelik kullanacağınız tercih ettiğiniz programlama dili için boş bir proje oluşturacaksınız.
 
 ::: zone pivot="programming-language-csharp"
 **Hedef ortamınızı seçin**
@@ -54,6 +54,9 @@ Bu örnekte, g + + ile derlememiz gerekir. bu nedenle, boş bir proje için tüm
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
+
+Python tabanlı hızlı başlangıçlarda, tek yapmanız gereken, en sevdiğiniz metin Düzenleyicisi veya IDE ile `helloworld.py` adlı bir dosya oluşturmaktır.
+
 ::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -63,4 +66,3 @@ Bu örnekte, g + + ile derlememiz gerekir. bu nedenle, boş bir proje için tüm
 - [Hızlı başlangıç: konuşmayı metne çevirme](translate-speech-to-text.md)
 - [Hızlı başlangıç: konuşmayı metne Sentezleştirme](text-to-speech.md)
 - [Hızlı başlangıç: amaçları tanıma](intent-recognition.md)
-

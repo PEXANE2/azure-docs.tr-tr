@@ -4,19 +4,19 @@ description: Azure geçişi projesi oluşturmayı ve değerlendirme/geçiş arac
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934172"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720251"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Bir değerlendirmeyi/geçiş aracını ilk kez ekleme
 
 Bu makalede, bir [Azure geçiş](migrate-overview.md) projesine ilk kez nasıl değerlendirme veya geçiş aracı ekleneceği açıklanmaktadır.  
-Azure geçişi, şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve ayrıca üçüncü taraf, bağımsız yazılım satıcısı (ISV) [teklifleri](migrate-services-overview.md#isv-integration) sağlar. 
+Azure geçişi, şirket içi uygulamalarınızı, iş yüklerinizi ve özel/genel bulut VM 'lerini Azure 'a bulmayı, değerlendirmeyi ve geçirmeyi izlemek için bir merkezi Merkez sağlar. Hub, değerlendirme ve geçiş için Azure geçiş araçları ve diğer araçlar ve bağımsız yazılım satıcısı (ISV) [tekliflerini](migrate-services-overview.md#isv-integration) sağlar. 
 
 ## <a name="create-a-project-and-add-a-tool"></a>Proje oluşturma ve araç ekleme
 
@@ -50,7 +50,7 @@ Azure aboneliğinde yeni bir Azure geçişi projesi ayarlayın ve bir araç ekle
     Japonya  | Japonya Doğu veya Japonya Batı
     Birleşik Krallık | UK Güney veya UK Batı
     Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
-    Kanada | Orta Kanada
+    Kanada | Kanada Orta
     Hindistan  | Hindistan Orta veya Hindistan Güney
     Avustralya | Avustralya Güneydoğu
 
@@ -66,8 +66,8 @@ Azure aboneliğinde yeni bir Azure geçişi projesi ayarlayın ve bir araç ekle
     > [!NOTE]
     > Bir proje oluşturduğunuzda, en az bir değerlendirme veya geçiş aracı eklemeniz gerekir.
 
-5. **Değerlendirme aracı seçin**' de bir değerlendirme aracı ekleyin. Bir değerlendirme aracına ihtiyacınız yoksa >  **Şimdi bir değerlendirme aracı eklemeyi atla**' yı**seçin.** 
-2. **Geçiş aracı Seç**bölümünde, gereken şekilde bir geçiş aracı ekleyin. Şu anda bir geçiş aracına ihtiyacınız yoksa >  **Şimdi bir geçiş aracı eklemeyi atla**' yı**seçin.**
+5. **Değerlendirme aracı seçin**' de bir değerlendirme aracı ekleyin. Bir değerlendirme aracına ihtiyacınız yoksa şimdi ** > ** **için değerlendirme aracı eklemeyi atla** ' yı seçin. 
+2. **Geçiş aracı Seç**bölümünde, gereken şekilde bir geçiş aracı ekleyin. Şu anda bir geçiş aracına gerek duymuyorsanız şimdi > **İleri**' ye **geçiş aracı eklemeyi atla** ' yı seçin.
 3. **İnceleme ve araç ekle**' de ayarları gözden geçirin ve **araç ekle**' ye tıklayın.
 
 Projeyi oluşturduktan sonra sunucuların ve iş yüklerinin, veritabanlarının ve Web uygulamalarının değerlendirilmesi ve geçirilmesi için ek araçlar seçebilirsiniz.

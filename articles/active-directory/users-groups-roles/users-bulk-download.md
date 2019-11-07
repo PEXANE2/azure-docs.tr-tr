@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517068"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720293"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory portalında kullanıcıların listesini indirme (Önizleme)
 
@@ -31,8 +31,9 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
 ## <a name="to-download-a-list-of-users"></a>Kullanıcı listesini indirmek için
 
 1. Kuruluştaki bir Kullanıcı Yöneticisi hesabıyla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de **kullanıcılar** > **kullanıcıları indir**' i seçin.
-1. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hatalar varsa, sonuçlar dosyasını toplu işlem sonuçları sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
+2. Azure Active Directory > kullanıcılara gidin. Ardından, her kullanıcının yanındaki sol sütundaki kutuyu seçerek karşıdan yüklemeye dahil etmek istediğiniz kullanıcıları seçin. Note: Şu anda, dışarı aktarma için tüm kullanıcıları seçmenin bir yolu yoktur. Her birinin tek tek seçilmiş olması gerekir.
+3. Azure AD 'de kullanıcıları **indirmek** > **Kullanıcılar** ' ı seçin.
+4. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hatalar varsa, sonuçlar dosyasını toplu işlem sonuçları sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
    ![Listeden indirmek istediğiniz kullanıcıları seçin](./media/users-bulk-download/bulk-download.png)
 
@@ -41,24 +42,24 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
    Aşağıdaki Kullanıcı öznitelikleri dahil edilecek: 
 
    - userPrincipalName
-   - DisplayName
+   - displayName
    - Soyadı
    - -
-   - GivenName
+   - givenName
    - Uzantının
    - userType
-   - JobTitle
-   - Bölüme
+   - jobTitle
+   - bölüme
    - Manager
-   - AccountEnabled
+   - accountEnabled
    - usageLocation
    - streetAddress
    - durum
-   - Ülke
+   - ülke
    - physicalDeliveryOfficeName
    - city
-   - PostalCode
-   - TelephoneNumber 'dır
+   - postalCode
+   - telephoneNumber 'dır
    - Mo
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber

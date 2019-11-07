@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 11eaafec750b2ca35933b431866def51c25e8961
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476172"
+ms.locfileid: "73582467"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -31,7 +31,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 > * Portalda Eğitim sonuçlarını görüntüleme
 > * En iyi modeli alma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanını](tutorial-1st-experiment-sdk-setup.md)çalıştırmanın bir parçasıdır.
 
@@ -133,7 +133,7 @@ Eğitim tamamlandıktan sonra, portalda deneye bir bağlantı getirmek için `ex
 experiment
 ```
 
-<table style="width:100%"><tr><th>Ad</th><th>Çalışma alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Ad</th><th>Çalışma Alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
 
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamamlamayın.
 
-### <a name="stop-the-compute-instance"></a>İşlem örneğini durdur
+### <a name="stop-the-notebook-vm"></a>Not defteri VM 'sini durdur
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

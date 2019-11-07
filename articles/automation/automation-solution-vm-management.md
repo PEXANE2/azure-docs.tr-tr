@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: bobbytreed
 ms.author: robreed
-ms.date: 05/21/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376103"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718672"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda VM'leri çalışma saatleri dışında başlat/durdur çözümü
 
@@ -29,31 +29,31 @@ Bu çözüm, VM maliyetlerini iyileştirmek isteyen kullanıcılar için merkezi
 - Azure etiketlerini kullanarak (klasik VM 'Lerde desteklenmez), sanal makinelerin artan sırada başlamasını ve durdurulmasını zamanlayın.
 - VM 'Leri düşük CPU kullanımına göre oto durdur.
 
-Geçerli çözüme yönelik sınırlamalar aşağıda verilmiştir:
+Geçerli çözümle ilgili sınırlamalar aşağıda verilmiştir:
 
 - Bu çözüm, herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınızla aynı abonelikte kullanılabilir.
 - Bu çözüm, Azure 'da kullanılabilir ve bir Log Analytics çalışma alanını, bir Azure Otomasyonu hesabını ve uyarıları destekleyen herhangi bir bölgeye AzureGov. AzureGov bölgeleri Şu anda e-posta işlevlerini desteklemiyor.
 
 > [!NOTE]
-> Klasik VM 'Ler için çözüm kullanıyorsanız, tüm VM 'niz bulut hizmeti başına sırayla işlenir. Sanal makineler, farklı bulut hizmetlerinde paralel olarak hala işlenir.
+> Klasik VM 'Ler için çözüm kullanıyorsanız, tüm VM 'niz bulut hizmeti başına sırayla işlenir. Sanal makineler, farklı bulut hizmetlerinde paralel olarak hala işlenir. Bulut hizmeti başına 20 ' den fazla VM varsa, üst runbook **ScheduledStartStop_Parent** birden çok zamanlama oluşturmanızı ve zamanlama başına 20 VM belirtmenizi öneririz. Zamanlama özelliklerinde, **Vmlist** parametresinde, virgülle ayrılmış bir LISTE, VM adı olarak belirtin. Aksi takdirde, bu çözüm için Otomasyon işi üçten fazla saatten fazla çalışırsa, bu, [dengeli](automation-runbook-execution.md#fair-share) olmayan bir şekilde kaldırılır veya durdurulur.
 >
 > Azure bulut çözümü sağlayıcısı (Azure CSP) abonelikleri yalnızca Azure Resource Manager modelini destekler, Azure Resource Manager olmayan hizmetler programda kullanılamaz. Başlat/Durdur çözümü çalıştırıldığında, klasik kaynakları yönetmek için cmdlet 'ler olduğu için hatalar alabilirsiniz. CSP hakkında daha fazla bilgi edinmek için bkz. [CSP aboneliklerinde kullanılabilir hizmetler](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). CSP aboneliği kullanıyorsanız, [**External_EnableClassicVMs**](#variables) değişkenini dağıtımdan sonra **false** olarak değiştirmelisiniz.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu çözüme yönelik runbook 'lar bir [Azure farklı çalıştır hesabıyla](automation-create-runas-account.md)çalışır. Bu, kullanım dışı veya sıklıkla değişebilir bir parola yerine sertifika kimlik doğrulaması kullandığından, farklı çalıştır hesabı tercih edilen kimlik doğrulama yöntemidir.
 
-Sanal makine Başlat/Durdur çözümü için ayrı bir Otomasyon hesabı kullanılması önerilir. Bunun nedeni, Azure modül sürümlerinin sık sık yükseltilme ve parametrelerinin değişme nedeni olabilir. Başlat/Durdur sanal makine çözümü aynı temposunda üzerinde yükseltilmemiştir, bu nedenle kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Modül güncelleştirmelerinin üretim Otomasyonu hesabınıza içeri aktarmadan önce bir test Otomasyonu hesabında test yapılması önerilir.
+VM çözümünü Başlat/Durdur çözümü için ayrı bir Otomasyon hesabı kullanmanızı öneririz. Bunun nedeni, Azure modül sürümlerinin sık sık yükseltilme ve parametrelerinin değişme nedeni olabilir. Başlat/Durdur sanal makine çözümü aynı temposunda üzerinde yükseltilmemiştir, bu nedenle kullandığı cmdlet 'lerin daha yeni sürümleriyle çalışmayabilir. Ayrıca, bir test Otomasyon hesabındaki modül güncelleştirmelerini Üretim otomasyon hesabınızda içeri aktarmadan önce test bir test Otomasyon hesabında test etmenizi öneririz.
 
 ### <a name="permissions-needed-to-deploy"></a>Dağıtım için gereken izinler
 
 Bir kullanıcının, saatlerde VM 'Leri Başlat/Durdur çözümü dağıtması için sahip olması gereken bazı izinler vardır. Önceden oluşturulmuş bir Otomasyon hesabı ve Log Analytics çalışma alanı kullanılıyorsa veya dağıtım sırasında yenilerini oluştururken bu izinler farklıdır. Abonelik üzerinde ve Azure Active Directory kiracınızda genel yönetici olarak bir katkıda bulunağınız varsa, aşağıdaki izinleri yapılandırmanız gerekmez. Bu haklara sahip değilseniz veya özel bir rol yapılandırmanız gerekmiyorsa, aşağıda gereken izinlere bakın.
 
-#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Önceden var olan Otomasyon hesabı ve Log Analytics hesabı
+#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>Önceden var olan Otomasyon hesabı ve Log Analytics çalışma alanı
 
-Çalışma saatleri dışında VM 'Leri başlatma/durdurma çözümünü bir Otomasyon hesabına dağıtmak ve çözümü dağıtmak Log Analytics, **kaynak grubunda**aşağıdaki izinleri gerektirir. Roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).
+Mevcut bir Otomasyon hesabına ve Log Analytics çalışma alanına, saat dışı bir şekilde VM 'Leri Başlat/Durdur çözümü dağıtmak için, çözümü dağıtan Kullanıcı **kaynak grubunda**aşağıdaki izinleri gerektirir. Roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](../role-based-access-control/custom-roles.md).
 
 | İzin | Kapsam|
 | --- | --- |
@@ -78,10 +78,10 @@ Bir kullanıcının, saatlerde VM 'Leri Başlat/Durdur çözümü dağıtması i
 
 #### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Yeni Otomasyon hesabı ve yeni bir Log Analytics çalışma alanı
 
-Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü ile yeni bir Otomasyon hesabına dağıtmak ve Log Analytics çalışma alanına, çözümü dağıtmaya yönelik Kullanıcı, önceki bölümde tanımlanan izinlere ve aşağıdaki izinlere sahip olması gerekir:
+Yeni bir Otomasyon hesabına ve Log Analytics çalışma alanına, saat dışı bir şekilde VM 'Leri Başlat/Durdur çözümü dağıtmak için, çözümü dağıtan Kullanıcı, önceki bölümde tanımlanan izinlere ve aşağıdaki izinlere sahip olmalıdır:
 
-- Abonelikte ortak yönetici-bu yalnızca klasik VM 'Leri yöneecekseniz klasik farklı çalıştır hesabını oluşturmak için gereklidir. [Klasik runas hesapları](automation-create-standalone-account.md#classic-run-as-accounts) artık varsayılan olarak oluşturulmaz.
-- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **uygulama geliştirici** rolünün bir parçası olun. Farklı Çalıştır hesaplarını yapılandırma hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesaplarını yapılandırma izinleri](manage-runas-account.md#permissions).
+- Abonelikte ortak yönetici-klasik VM 'Leri yönetecekleriniz yalnızca klasik farklı çalıştır hesabı oluşturmak için gereklidir. [Klasik runas hesapları](automation-create-standalone-account.md#classic-run-as-accounts) artık varsayılan olarak oluşturulmaz.
+- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **uygulama geliştirici** rolünün bir üyesi. Farklı Çalıştır hesaplarını yapılandırma hakkında daha fazla bilgi için bkz. [Farklı Çalıştır hesaplarını yapılandırma izinleri](manage-runas-account.md#permissions).
 - Abonelik üzerinde veya aşağıdaki izinlerle katkıda bulunan.
 
 | İzin |Kapsam|
@@ -109,7 +109,7 @@ VM'leri çalışma saatleri dışında başlat/durdur çözümünü Otomasyon he
 
 2. Seçili çözümün **VM'leri çalışma saatleri dışında Başlat/Durdur** sayfasında, Özet bilgilerini gözden geçirin ve ardından **Oluştur**' a tıklayın.
 
-   ![Azure portalı](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. **Çözüm Ekle** sayfası görüntülenir. Çözümü Otomasyon aboneliğinize aktarmadan önce yapılandırmanız istenir.
 
@@ -120,7 +120,7 @@ VM'leri çalışma saatleri dışında başlat/durdur çözümünü Otomasyon he
    - Varsayılan seçilen değer uygun değilse, açılan listeden seçerek bağlantı için bir **abonelik** seçin.
    - **Kaynak grubu**için, yeni bir kaynak grubu oluşturabilir veya var olan bir grup seçebilirsiniz.
    - Bir **Konum** seçin. Şu anda yalnızca **Avustralya Güneydoğu**, **Kanada Orta**, **Orta Hindistan**, **Doğu ABD**, **Japonya Doğu**, **Güneydoğu Asya**, **UK Güney**, **Batı Avrupa**ve **Batı ABD 2** yer aldığı konumlar mevcuttur .
-   - Bir **Fiyatlandırma katmanı** seçin. **GB başına (tek başına)** seçeneğini belirleyin. Azure Izleyici günlükleri, [fiyatlandırmayı](https://azure.microsoft.com/pricing/details/log-analytics/) GÜNCELLEŞTIRILMIŞ ve GB başına katman tek seçenektir.
+   - Bir **Fiyatlandırma katmanı** seçin. **GB başına (tek başına)** seçeneğini belirleyin. Azure Izleyici günlükleri güncelleştirilmiş [fiyatlandırmaya](https://azure.microsoft.com/pricing/details/log-analytics/) sahıptır ve GB başına katman tek seçenektir.
 
    > [!NOTE]
    > Çözümleri etkinleştirirken Log Analytics çalışma alanı ile Otomasyon Hesabı arasında bağlantı kurma seçeneği yalnızca belirli bölgelerde desteklenmektedir.
@@ -148,7 +148,7 @@ VM'leri çalışma saatleri dışında başlat/durdur çözümünü Otomasyon he
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > **Hedef ResourceGroup adları** için varsayılan değer **&ast;** ' dir. Bu, bir abonelikteki tüm VM 'Leri hedefler. Çözümün aboneliğinizdeki tüm VM 'Leri hedeflemesini istemiyorsanız, zamanlamalar etkinleştirilmeden önce bu değerin kaynak grubu adları listesine güncelleştirilmesi gerekir.
+     > **Hedef ResourceGroup adları** için varsayılan değer bir **&ast;** . Bu, bir abonelikteki tüm VM 'Leri hedefler. Çözümün aboneliğinizdeki tüm VM 'Leri hedeflemesini istemiyorsanız, zamanlamalar etkinleştirilmeden önce bu değerin kaynak grubu adları listesine güncelleştirilmesi gerekir.
 
 8. Çözüm için gereken başlangıç ayarlarını yapılandırdıktan sonra, **Tamam** ' a tıklayarak **Parametreler** sayfasını kapatın ve **Oluştur**' u seçin. Tüm ayarlar doğrulandıktan sonra, çözüm aboneliğinize dağıtılır. Bu işlemin tamamlanması birkaç saniye sürebilir ve ilerleme durumunu menüdeki **Bildirimler** ' in altından izleyebilirsiniz.
 
@@ -309,7 +309,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |JobId | Runbook işinin KIMLIĞI olan GUID.|
 |operationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur.|
 |resourceId | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
-|adlı yönetilen örnek, | Runbook işine ait kaynak grubunun adını belirtir.|
+|ResourceGroup | Runbook işine ait kaynak grubunun adını belirtir.|
 |ResourceProvider | Dağıtıp yönetebileceğiniz kaynakları sağlayan Azure hizmetini belirtir. Otomasyon için değer, Azure Otomasyonu olacaktır.|
 |ResourceType | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
 |resultType | Runbook işinin durumudur. Olası değerler şunlardır:<br>- Başlatıldı<br>- Durduruldu<br>- Askıya alındı<br>- Başarısız oldu<br>- Başarılı oldu|
@@ -317,7 +317,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |RunbookName | Runbook’un adını belirtir.|
 |SourceSystem | Gönderilen verilere ilişkin kaynak sistemi belirtir. Otomasyon için, değer OpsManager ' dır|
 |StreamType | Olay türünü belirtir. Olası değerler şunlardır:<br>- Ayrıntılı<br>- Çıktı<br>- Hata<br>- Uyarı|
-|kaynak grubundaki | İşin abonelik kimliğini belirtir.
+|SubscriptionId | İşin abonelik kimliğini belirtir.
 |Zaman | Runbook işinin yürütüldüğü tarih ve saat.|
 
 ### <a name="job-streams"></a>İş akışları
@@ -328,7 +328,7 @@ Otomasyon Log Analytics çalışma alanında iki tür kayıt oluşturur: iş gü
 |Kategori | Veri türü sınıflandırması. Otomasyon için değer JobStreams olacaktır.|
 |JobId | Runbook işinin KIMLIĞI olan GUID.|
 |operationName | Azure’da gerçekleştirilen işlem türünü belirtir. Otomasyon için değer Iş olur.|
-|adlı yönetilen örnek, | Runbook işine ait kaynak grubunun adını belirtir.|
+|ResourceGroup | Runbook işine ait kaynak grubunun adını belirtir.|
 |resourceId | Azure 'da kaynak KIMLIĞINI belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
 |ResourceProvider | Dağıtıp yönetebileceğiniz kaynakları sağlayan Azure hizmetini belirtir. Otomasyon için değer, Azure Otomasyonu olacaktır.|
 |ResourceType | Azure’daki kaynak türünü belirtir. Otomasyon için değer, runbook ile ilişkilendirilmiş Otomasyon hesabı olacaktır.|
@@ -389,9 +389,9 @@ Aşağıda, çözüm sanal makineleri kapattığında gönderilen örnek bir e-p
 
 Çalışan bir sanal makinenin, çalıştırıldığında Başlat/Durdur çözümüne eklendiğinden emin olmak için kullanabileceğiniz birkaç seçenek vardır.
 
-* Çözümün üst [runbook](#runbooks) 'larının her biri bir **vmlist** parametresine sahiptir. Durumunuza uygun üst runbook 'u zamanlarken ve bu VM 'Ler çözüm çalışırken dahil edildiğinde, VM adlarının virgülle ayrılmış bir listesini bu parametreye geçirebilirsiniz.
+* Çözümün üst [runbook](#runbooks) 'larının her biri bir **vmlist** parametresine sahiptir. Durumunuza uygun üst runbook 'u zamanlarken ve bu VM 'Ler çözüm çalışırken dahil edilse bu parametreye, virgülle ayrılmış bir VM adları listesi geçirebilirsiniz.
 
-* Birden çok sanal makine seçmek için, **External_Start_ResourceGroupNames** ve **External_Stop_ResourceGroupNames** ' yi başlatmak veya durdurmak istediğiniz VM 'leri içeren kaynak grubu adlarıyla ayarlayın. Bu değeri, çözümün abonelikteki tüm kaynak grupları üzerinde çalışmasını sağlamak için `*` olarak da ayarlayabilirsiniz.
+* Birden çok sanal makine seçmek için, **External_Start_ResourceGroupNames** ve **External_Stop_ResourceGroupNames** ' yi başlatmak veya durdurmak istediğiniz VM 'leri içeren kaynak grubu adlarıyla ayarlayın. Bu değeri, çözümün abonelikteki tüm kaynak grupları üzerinde çalışmasını sağlamak için `*`olarak da ayarlayabilirsiniz.
 
 ### <a name="exclude-a-vm"></a>VM dışlama
 
@@ -422,7 +422,7 @@ Bu çözümün önceki bir sürümünü dağıttıysanız, önce güncelleştiri
 1. Otomasyon hesabınızdan, **ilgili kaynaklar**altında, **bağlantılı çalışma alanı**' nı seçin.
 1. **Çalışma alanına git**' i seçin.
 1. **Genel**altında **çözümler**' i seçin. 
-1. **Çözümler** sayfasında, **Başlat-Durdur-VM [çalışma alanı]** çözümünü seçin. **Vmmanagementsolution [çalışma alanı]** sayfasında, menüden **Sil**' i seçin.<br><br> ![Vm yönetimi çözümünü silme @ no__t-1
+1. **Çözümler** sayfasında, **Başlat-Durdur-VM [çalışma alanı]** çözümünü seçin. **Vmmanagementsolution [çalışma alanı]** sayfasında, menüden **Sil**' i seçin.<br><br> ![VM yönetimi çözümünü Sil](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. **Çözümü Sil** penceresinde, çözümü silmek istediğinizi onaylayın.
 1. Bilgiler doğrulanırken ve çözüm silinirken, menünün **Bildirimler** altında ilerleme durumunu izleyebilirsiniz. Çözümü kaldırma işlemi başladıktan sonra **çözümler** sayfasına dönersiniz.
 

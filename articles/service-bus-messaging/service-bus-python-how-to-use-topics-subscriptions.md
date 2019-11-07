@@ -1,6 +1,6 @@
 ---
-title: Python ile Azure Service Bus konuları kullanma | Microsoft Docs
-description: Python 'dan Azure Service Bus konuları ve abonelikleri kullanmayı öğrenin.
+title: 'Hızlı başlangıç: Python ile Azure Service Bus konuları kullanma'
+description: "Hızlı başlangıç: Python 'dan Azure Service Bus konuları ve abonelikleri kullanmayı öğrenin."
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8f7d47879a025742dbca6a5cafa634899e60ee68
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141894"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719170"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Python ile Service Bus konuları ve abonelikleri kullanma
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Hızlı başlangıç: Python ile Service Bus konuları ve abonelikleri kullanma
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -33,15 +33,15 @@ Bu makale, Service Bus konu başlıklarını ve aboneliklerini kullanmayı açı
 - Bir abonelikten ileti alma
 - Konuları ve abonelikleri silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. [Hızlı başlangıçtaki adımları izleyin: Service Bus](service-bus-quickstart-topics-subscriptions-portal.md) **ad alanı** oluşturmak ve **bağlantı dizesini**almak için konuya bir Service Bus konu ve abonelik oluşturmak için Azure Portal kullanın.
+2. Hızlı başlangıç içindeki adımları izleyin: bir Service Bus **ad alanı** oluşturmak ve **bağlantı dizesini**almak için [Azure Portal Service Bus konu başlığı ve abonelikleri oluşturmak üzere kullanın](service-bus-quickstart-topics-subscriptions-portal.md) .
 
     > [!NOTE]
     > Bu hızlı başlangıçta **Python** kullanarak konu için bir **Konu** ve bir **abonelik** oluşturacaksınız. 
 3. [Azure Python paketini][Azure Python package]yükler. Bkz. [Python Yükleme Kılavuzu](/azure/python/python-sdk-azure-install).
 
-## <a name="create-a-topic"></a>Konu oluştur
+## <a name="create-a-topic"></a>Konu başlığı oluşturma
 
 **Servicebusservice** nesnesi konularda çalışmanıza olanak sağlar. Service Bus programlı olarak erişmek istediğiniz herhangi bir Python dosyasının üst tarafına yakın bir şekilde aşağıdaki kodu ekleyin:
 
@@ -49,7 +49,7 @@ Bu makale, Service Bus konu başlıklarını ve aboneliklerini kullanmayı açı
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Aşağıdaki kod bir **Servicebusservice** nesnesi oluşturur. , `mynamespace` Vedeğerlerini`sharedaccesskey` gerçek ad alanınız, paylaşılan erişim imzası (SAS) anahtar adı ve anahtar değeri ile değiştirin. `sharedaccesskeyname`
+Aşağıdaki kod bir **Servicebusservice** nesnesi oluşturur. `mynamespace`, `sharedaccesskeyname`ve `sharedaccesskey` gerçek ad alanınız, paylaşılan erişim Imzası (SAS) anahtar adı ve anahtar değeri ile değiştirin.
 
 ```python
 bus_service = ServiceBusService(
@@ -64,7 +64,7 @@ SAS anahtar adı ve değerinin değerlerini [Azure Portal][Azure portal]elde ede
 bus_service.create_topic('mytopic')
 ```
 
-`create_topic` Yöntemi Ayrıca, ileti Süresi canlı veya en büyük konu boyutu gibi varsayılan konu ayarlarını geçersiz kılmanızı sağlayan ek seçenekleri de destekler. Aşağıdaki örnek, en büyük konu boyutunu 5 GB ve bir dakikalık yaşam süresi (TTL) değeri olarak ayarlar:
+`create_topic` yöntemi, ileti Süresi canlı veya en büyük konu boyutu gibi varsayılan konu ayarlarını geçersiz kılmanızı sağlayan ek seçenekleri de destekler. Aşağıdaki örnek, en büyük konu boyutunu 5 GB ve bir dakikalık yaşam süresi (TTL) değeri olarak ayarlar:
 
 ```python
 topic_options = Topic()
@@ -85,7 +85,7 @@ Konuya abonelikler **Servicebusservice** nesnesiyle de oluşturulur. Abonelikler
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Varsayılan (MatchAll) filtreyle abonelik oluşturma
 
-Yeni bir abonelik oluşturulduğunda bir filtre belirtilmemişse, **Matchall** filtresi (varsayılan) kullanılır. **Matchall** filtresi kullanıldığında, konuya yayınlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek adlı `AllMessages` bir abonelik oluşturur ve varsayılan **Matchall** filtresini kullanır.
+Yeni bir abonelik oluşturulduğunda bir filtre belirtilmemişse, **Matchall** filtresi (varsayılan) kullanılır. **Matchall** filtresi kullanıldığında, konuya yayınlanan tüm iletiler aboneliğin sanal kuyruğuna yerleştirilir. Aşağıdaki örnek, `AllMessages` adlı bir abonelik oluşturur ve varsayılan **Matchall** filtresini kullanır.
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -97,14 +97,14 @@ Ayrıca, bir konuya gönderilen iletilerin belirli bir konu aboneliği içinde g
 
 Abonelikler tarafından desteklenen en esnek filtre türü, SQL92 alt kümesini uygulayan bir **sqlfilter**. SQL filtreleri, konu başlığında yayımlanan iletilerin özelliklerinde çalışır. SQL filtresi ile kullanılabilen ifadeler hakkında daha fazla bilgi edinmek için [SqlFilter.SqlExpression][SqlFilter.SqlExpression] söz dizimine bakın.
 
-**Servicebusservice** nesnesinin **\_Create Rule** metodunu kullanarak bir aboneliğe filtre ekleyebilirsiniz. Bu yöntem, mevcut bir aboneliğe yeni filtreler eklemenize olanak tanır.
+**Servicebusservice** nesnesinin **Create\_Rule** metodunu kullanarak bir aboneliğe filtre ekleyebilirsiniz. Bu yöntem, mevcut bir aboneliğe yeni filtreler eklemenize olanak tanır.
 
 > [!NOTE]
-> Varsayılan filtre tüm yeni aboneliklere otomatik olarak uygulandığından, ilk olarak varsayılan filtreyi kaldırmanız gerekir veya **Matchall** , belirtebileceğiniz diğer filtreleri geçersiz kılar. `delete_rule` **Servicebusservice** nesnesinin yöntemini kullanarak varsayılan kuralı kaldırabilirsiniz.
+> Varsayılan filtre tüm yeni aboneliklere otomatik olarak uygulandığından, ilk olarak varsayılan filtreyi kaldırmanız gerekir veya **Matchall** , belirtebileceğiniz diğer filtreleri geçersiz kılar. **Servicebusservice** nesnesinin `delete_rule` yöntemini kullanarak varsayılan kuralı kaldırabilirsiniz.
 > 
 > 
 
-Aşağıdaki örnek, yalnızca 3 ' ten `HighMessages` büyük özel `messagenumber` bir özelliği olan iletileri seçen **sqlfilter** ile adlı bir abonelik oluşturur:
+Aşağıdaki örnekte, yalnızca 3 ' ten büyük özel bir `messagenumber` özelliğine sahip iletileri seçen **Sqlfilter** ile `HighMessages` adlı bir abonelik oluşturulur:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -117,7 +117,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Benzer şekilde, aşağıdaki örnekte, yalnızca 3 ' `LowMessages` ten küçük veya buna eşit bir `messagenumber` özelliği olan iletileri seçen **sqlfilter** ile adlı bir abonelik oluşturulur:
+Benzer şekilde, aşağıdaki örnekte, yalnızca 3 ' ten küçük veya buna eşit bir `messagenumber` özelliğine sahip iletileri seçen **Sqlfilter** ile `LowMessages` adlı bir abonelik oluşturulur:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -130,13 +130,13 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-Bundan `mytopic` böyle bir ileti gönderildiğinde, her zaman **allmessages** konu aboneliğine abone olan alıcılar ' e dağıtılır ve **highmessages** ve **lowmessages** konusuna abone olunan alıcılar için seçmeli olarak dağıtılır Abonelikler (ileti içeriğine bağlı olarak).
+Artık `mytopic` bir ileti gönderildiğinde, her zaman **allmessages** konu aboneliğine abone olan alıcılar ' e dağıtılır ve **Highmessages** ve **lowmessages** konusuna abone olunan alıcılar için seçmeli olarak dağıtılır Abonelikler (ileti içeriğine bağlı olarak).
 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
 
-Service Bus bir konuya ileti göndermek için uygulamanızın `send_topic_message` **servicebusservice** nesnesinin yöntemini kullanması gerekir.
+Service Bus bir konuya ileti göndermek için uygulamanızın **Servicebusservice** nesnesinin `send_topic_message` yöntemini kullanması gerekir.
 
-Aşağıdaki örnek, öğesine `mytopic`beş sınama iletisinin nasıl gönderileceğini gösterir. Her `messagenumber` iletinin Özellik değeri, döngünün yinelemesinde farklılık gösterir (Bu, hangi aboneliklerin bunu alacağını belirler):
+Aşağıdaki örnek, `mytopic`beş test iletisinin nasıl gönderileceğini gösterir. Her iletinin `messagenumber` Özellik değeri, döngünün yinelemesinde farklılık gösterir (Bu, hangi aboneliklerin bunu alacağını belirler):
 
 ```python
 for i in range(5):
@@ -149,7 +149,7 @@ Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messagin
 
 ## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
 
-`receive_subscription_message` **Servicebusservice** nesnesinde yöntemi kullanılarak bir abonelikten iletiler alınır:
+**Servicebusservice** nesnesindeki `receive_subscription_message` yöntemi kullanılarak bir abonelikten iletiler alınır:
 
 ```python
 msg = bus_service.receive_subscription_message(
@@ -157,11 +157,11 @@ msg = bus_service.receive_subscription_message(
 print(msg.body)
 ```
 
-Parametreler, parametre `peek_lock` **false**olarak ayarlandığında okunduklarında, abonelikten silinir. Parametreyi `peek_lock` , **doğru**olarak ayarlayarak iletiyi okuyabilir (Peek) ve kilitle 'yi kuyruktan silebilirsiniz.
+`peek_lock` parametresi **false**olarak ayarlandığında okunan iletiler, abonelikten silinir. `peek_lock` parametresini **true**olarak ayarlayarak iletiyi, kuyruktan silmeden bir şekilde okuyabilir (Peek) ve kilitleyebilir.
 
 İletiyi alma işleminin bir parçası olarak okuma ve silme davranışı en basit modeldir ve bir hata olduğunda uygulamanın bir iletiyi işlememesinin kabul edebildiği senaryolar için en iyi sonuç verir. Bu davranışı anlamak için, tüketicinin alma isteğini yaptığı ve işlemeden önce çöktüğü bir senaryo düşünün. Service Bus ileti tüketildiği gibi işaretlendiğinden, uygulama yeniden başlatıldığında ve iletileri yeniden kullanmaya başladığında, kilitlenme öncesinde tüketilen iletiyi kaçırmıştır.
 
-Parametresi true olarak ayarlanırsa, Receive iki aşamalı bir işlem haline gelir ve bu, eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. `peek_lock` Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), `delete` **ileti** nesnesine metodu çağırarak alma işleminin ikinci aşamasını tamamlar. `delete` Yöntemi iletiyi tüketildiği gibi işaretler ve abonelikten kaldırır.
+`peek_lock` parametresi **true**olarak ayarlanırsa, Receive iki aşamalı bir işlem olur ve bu da eksik iletilere izin verilmeyen uygulamaları desteklemeyi olanaklı kılar. Service Bus bir istek aldığında bir sonraki kullanılacak iletiyi bulur, diğer tüketicilerin bu iletiyi almasını engellemek için kilitler ve ardından uygulamaya döndürür. Uygulama iletiyi işlemeyi tamamladıktan (veya gelecekteki işlemler için güvenilir bir şekilde depolar), **ileti** nesnesine `delete` yöntemi çağırarak alma işleminin ikinci aşamasını tamamlar. `delete` yöntemi iletiyi tüketildiği gibi işaretler ve abonelikten kaldırır.
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -172,21 +172,21 @@ msg.delete()
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunmayan iletileri giderme
 
-Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bir nedenden dolayı işleyemeyeceği takdirde `unlock` **ileti** nesnesinde yöntemi çağırabilir. Bu yöntem Service Bus, aboneliğin içindeki iletinin kilidini açma ve bu uygulamayı aynı uygulama veya başka bir uygulama tarafından yeniden alınmak üzere kullanılabilir hale getirmesine neden olur.
+Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulamasının iletiyi bazı nedenlerle işleyemeyeceği takdirde **ileti** nesnesinde `unlock` yöntemi çağırabilir. Bu yöntem Service Bus, aboneliğin içindeki iletinin kilidini açma ve bu uygulamayı aynı uygulama veya başka bir uygulama tarafından yeniden alınmak üzere kullanılabilir hale getirmesine neden olur.
 
 Ayrıca, abonelik içinde kilitlenen bir iletiyle ilişkili bir zaman aşımı vardır. uygulama, kilit zaman aşımı dolmadan önce iletiyi işleyemezse (örneğin, uygulama çökerse), Service Bus otomatik olarak iletinin kilidini açar ve yeniden alınmak üzere kullanılabilir hale getirir.
 
-İleti işlendikten sonra, ancak `delete` Yöntem çağrılmadan önce uygulamanın çöktüğü durumda, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu davranış genellikle çağırılır. En az bir kez\*işleme; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bunu yapmak için, iletinin **MessageID** özelliğini kullanabilirsiniz. Bu, teslim girişimleri arasında sabitde kalır.
+İleti işlendikten sonra, ancak `delete` yöntemi çağrılmadan önce uygulamanın çöktüğü durumda, yeniden başlatıldığında ileti uygulamaya yeniden gönderilir. Bu davranış genellikle çağırılır. En az bir kez Işleme\*; diğer bir deyişle, her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bunu yapmak için, iletinin **MessageID** özelliğini kullanabilirsiniz. Bu, teslim girişimleri arasında sabitde kalır.
 
 ## <a name="delete-topics-and-subscriptions"></a>Konu başlıklarını ve abonelikleri silme
 
-[Auto_delete_on_idle özelliği](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) ayarlanmadığı takdirde konular ve abonelikler kalıcıdır. [Azure Portal][Azure portal] veya program aracılığıyla silinebilirler. Aşağıdaki örnek, adlı `mytopic`konunun nasıl silineceğini göstermektedir:
+[Auto_delete_on_idle özelliği](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) ayarlanmadığı takdirde konular ve abonelikler kalıcıdır. [Azure Portal][Azure portal] veya program aracılığıyla silinebilirler. Aşağıdaki örnek, `mytopic`adlı konunun nasıl silineceğini göstermektedir:
 
 ```python
 bus_service.delete_topic('mytopic')
 ```
 
-Bir konu başlığı silindiğinde bu konu başlığıyla kaydedilen tüm abonelikler de silinir. Ayrıca, abonelikler bağımsız olarak da silinebilir. Aşağıdaki kod, `HighMessages` `mytopic` konusunun adlı bir aboneliğin nasıl silineceğini göstermektedir:
+Bir konu başlığı silindiğinde bu konu başlığıyla kaydedilen tüm abonelikler de silinir. Ayrıca, abonelikler bağımsız olarak da silinebilir. Aşağıdaki kod, `mytopic` konusunun `HighMessages` adlı bir aboneliğin nasıl silineceğini gösterir:
 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')

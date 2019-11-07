@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: Öğreticiler
   items:
-    - name: Web uygulaması güvenlik duvarını etkinleştirme
-      href: application-gateway-web-application-firewall-portal.md
     - name: SSL ile güvenli
       href: create-ssl-portal.md
     - name: Birden çok site barındırma
@@ -127,12 +125,6 @@
           items:
             - name: SSL ilkesi yapılandırma
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Web Uygulaması Güvenlik Duvarı’nı Yapılandırma
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Azure CLI
-          href: tutorial-restrict-web-traffic-cli.md
     - name: AKS için giriş
       items:
         - name: Mevcut Application Gateway ile ayarlama

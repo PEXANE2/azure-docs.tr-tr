@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak Azure SQL Veritabanı Elastik İş aracısı oluşturma | Microsoft Docs
+title: 'PowerShell kullanarak bir Azure SQL veritabanı elastik Iş Aracısı oluşturma '
 description: PowerShell kullanarak Elastik İş aracısı oluşturmayı öğrenin.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935049"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692256"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell kullanarak Elastik İş aracısı oluşturma
 
@@ -29,12 +29,12 @@ Bu öğreticide, birden çok veritabanında bir sorgu çalıştırmak için gere
 > * İşlerin hedeflerinde betik yürütebilmesi için iş kimlik bilgileri oluşturma
 > * İşi çalıştırmak istediğiniz hedefleri (sunucular, elastik havuzlar, parça eşlemeleri) tanımlama
 > * Aracının işlere bağlanıp yürütebilmesi için hedef veritabanlarında veritabanlı kapsamlı kimlik bilgileri oluşturma
-> * İş oluştur
+> * Bir iş oluşturma
 > * Bir işe iş adımları ekleme
 > * Bir işin yürütülmesini başlatma
 > * Bir işi izleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
 
@@ -70,7 +70,7 @@ Get-Module Az.Sql
 
 Elastik İş aracısı oluşturmak için [İş veritabanı](sql-database-job-automation-overview.md#job-database) olarak kullanılacak bir veritabanı (S0 veya üzeri) gerekir. 
 
-*Aşağıdaki betik yeni bir kaynak grubu ve sunucunun yanı sıra İş veritabanı olarak kullanılacak bir veritabanı oluşturur. Aşağıdaki komut dosyası, işleri yürütmek için iki boş veritabanı içeren ikinci bir sunucu da oluşturur.*
+*Aşağıdaki komut dosyası, Iş veritabanı olarak kullanılmak üzere yeni bir kaynak grubu, sunucu ve veritabanı oluşturur. Aşağıdaki komut dosyası, işleri yürütmek için iki boş veritabanı içeren ikinci bir sunucu da oluşturur.*
 
 Elastik İşlere özel adlandırma gereksinimleri olmadığından [Azure gereksinimlerine](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) uygun olduğu sürece istediğiniz adlandırma kuralını kullanabilirsiniz.
 
@@ -215,7 +215,7 @@ $JobCred = $JobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [Hedef grup](sql-database-job-automation-overview.md#target-group), işin üzerinde çalışacağı veritabanı bir veya daha fazla veritabanından oluşan kümeyi tanımlar. 
 
-Aşağıdaki kod parçacığı iki hedef grubu oluşturur: *ServerGroup*ve *ServerGroupExcludingDb2*. *ServerGroup*, sunucuda yürütme anında var olan tüm veritabanlarını hedeflerken *ServerGroupExcludingDb2*, *TargetDb2* hariç sunucudaki tüm veritabanlarını hedefler:
+Aşağıdaki kod parçacığı iki hedef grup oluşturur: *ServerGroup* ve *ServerGroupExcludingDb2*. *ServerGroup*, sunucuda yürütme anında var olan tüm veritabanlarını hedeflerken *ServerGroupExcludingDb2*, *TargetDb2* hariç sunucudaki tüm veritabanlarını hedefler:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -229,7 +229,7 @@ $ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerNa
 $ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerName -Database $Db2.DatabaseName -Exclude
 ```
 
-## <a name="create-a-job"></a>İş oluştur
+## <a name="create-a-job"></a>Bir iş oluşturma
 
 ```powershell
 Write-Output "Creating a new job"
@@ -296,7 +296,7 @@ Aşağıdaki tabloda olası iş yürütme durumları listelenmektedir:
 |**WaitingForRetry** | İş yürütmesi, işlemini tamamlayamadı ve yeniden denenmayı bekliyor.|
 |**Baarı** | İşin yürütülmesi başarıyla tamamlandı.|
 |**SucceededWithSkipped** | İş yürütmesi başarıyla tamamlandı, ancak bazı alt öğeleri atlandı.|
-|**Başarısız** | İş yürütmesi başarısız oldu ve yeniden deneme süresi bitti.|
+|**Başaramadı** | İş yürütmesi başarısız oldu ve yeniden deneme süresi bitti.|
 |**Zaman aşımına uğradı** | İş yürütme zaman aşımına uğradı.|
 |**Edilmesi** | İş yürütmesi iptal edildi.|
 |**Atlandı** | Aynı iş adımının başka bir yürütmesi aynı hedefte zaten çalıştığı için iş yürütmesi atlandı.|
@@ -333,7 +333,7 @@ Bu öğreticide bir veritabanı kümesinde Transact-SQL betiği çalıştırdın
 > * İşlerin hedeflerinde betik yürütebilmesi için iş kimlik bilgileri oluşturma
 > * İşi çalıştırmak istediğiniz hedefleri (sunucular, elastik havuzlar, parça eşlemeleri) tanımlama
 > * Aracının işlere bağlanıp yürütebilmesi için hedef veritabanlarında veritabanlı kapsamlı kimlik bilgileri oluşturma
-> * İş oluştur
+> * Bir iş oluşturma
 > * İşe bir iş adımı ekleme
 > * Bir işi yürütmeye başlatma
 > * İş izleme

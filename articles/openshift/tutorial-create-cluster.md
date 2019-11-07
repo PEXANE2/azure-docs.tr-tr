@@ -7,17 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/14/2019
-ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285524"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582383"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Öğretici: Azure Red Hat OpenShift kümesi oluşturma
 
-Bu öğretici, bir dizinin birinci bölümüdür. Azure CLı kullanarak Microsoft Azure Red Hat OpenShift kümesi oluşturmayı öğrenirsiniz, ölçeklendirerek kaynakları temizleyebilirsiniz.
+Bu öğretici, bir serinin birinci bölümüdür. Azure CLı kullanarak Microsoft Azure Red Hat OpenShift kümesi oluşturmayı öğrenirsiniz, ölçeklendirerek kaynakları temizleyebilirsiniz.
 
 Serinin birinci bölümünde şunları yapmayı öğreneceksiniz:
 
@@ -30,12 +30,10 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Azure Red Hat OpenShift kümesini ölçeklendirme](tutorial-scale-cluster.md)
 > * [Azure Red Hat OpenShift kümesini silme](tutorial-delete-cluster.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!IMPORTANT]
 > Bu öğretici, Azure CLı 'nin sürüm 2.0.65 gerektirir.
->    
-> Azure Red Hat OpenShift 'i kullanabilmeniz için, [Azure Red Hat OpenShift geliştirme ortamınızı ayarlama](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances)bölümünde açıklandığı gibi en az 4 Azure Red Hat OpenShift ayrılmış uygulama düğümleri satın almanız gerekir.
 
 Bu öğreticiye başlamadan önce:
 
@@ -48,13 +46,13 @@ Bu öğreticiye başlamadan önce:
 
 ## <a name="step-1-sign-in-to-azure"></a>1\. Adım: Azure 'da oturum açma
 
-Azure CLı 'yi yerel olarak çalıştırıyorsanız, bir bash komut kabuğu açın ve Azure 'da oturum açmak için `az login` ' ı çalıştırın.
+Azure CLı 'yi yerel olarak çalıştırıyorsanız, bir bash komut kabuğu açın ve Azure 'da oturum açmak için `az login` çalıştırın.
 
 ```bash
 az login
 ```
 
- Birden çok aboneliğe erişiminiz varsa, `{subscription ID}` ' i @no__t öğesini kullanmak istediğiniz abonelikle değiştirerek çalıştırın.
+ Birden çok aboneliğe erişiminiz varsa, `{subscription ID}` yerine kullanmak istediğiniz abonelikle değiştirin `az account set -s {subscription ID}` çalıştırın.
 
 ## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>2\. Adım: Azure Red Hat OpenShift kümesi oluşturma
 
@@ -73,7 +71,7 @@ Kümenizi oluşturmak için bir konum seçin. Azure üzerinde OpenShift 'i deste
 LOCATION=<location>
 ```
 
-@No__t-0 ' yı [Azure AD uygulama kaydı oluşturma](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)' nın 5. adımında kaydettiğiniz değere ayarlayın.  
+[Azure AD uygulama kaydı oluşturma](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)' nın 5. adımında kaydettiğiniz değere `APPID` ayarlayın.  
 
 ```bash
 APPID=<app ID value>
@@ -85,13 +83,13 @@ APPID=<app ID value>
 GROUPID=<group ID value>
 ```
 
-@No__t-0 ' yı, [istemci parolası oluşturma](howto-aad-app-configuration.md#create-a-client-secret)' nın 8. adımında kaydettiğiniz değere ayarlayın.  
+`SECRET`, [bir istemci gizli anahtarı oluşturun](howto-aad-app-configuration.md#create-a-client-secret). Adım 8 ' de kaydettiğiniz değere ayarlayın.  
 
 ```bash
 SECRET=<secret value>
 ```
 
-@No__t-0 değerini, [Yeni bir kiracı oluşturmak](howto-create-tenant.md#create-a-new-azure-ad-tenant) için 7. adımda KAYDETTIĞINIZ Kiracı kimliği değerine ayarlayın  
+[Yeni bir kiracı oluşturmak](howto-create-tenant.md#create-a-new-azure-ad-tenant) için 7. adımda KAYDETTIĞINIZ Kiracı kimliği değerine `TENANT` ayarlayın  
 
 ```bash
 TENANT=<tenant ID>
@@ -145,7 +143,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 > [!NOTE]
 > Ana bilgisayar adının kullanılamadığı bir hata alırsanız, bunun nedeni Küme adınızın benzersiz olmaması olabilir. Yeni bir Kullanıcı ve güvenlik grubu oluşturma adımını atlayarak [Yeni bir uygulama kaydı oluştur](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)' da, özgün uygulama kaydınızı silmeyi ve farklı bir küme adıyla adımları yeniden yapmayı deneyin.
 
-Birkaç dakika sonra, `az openshift create` tamamlanır.
+Birkaç dakika sonra `az openshift create` tamamlanır.
 
 ### <a name="get-the-sign-in-url-for-your-cluster"></a>Kümeniz için oturum açma URL 'sini alın
 
@@ -155,9 +153,9 @@ Aşağıdaki komutu çalıştırarak kümenizde oturum açmak için URL 'YI alı
 az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 ```
 
-Çıkışta `publicHostName` ' ı arayın, örneğin: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
+Çıktıda `publicHostName` arayın, örneğin: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
 
-Kümeniz için oturum açma URL 'SI `https://` ve ardından `publicHostName` değeri olacaktır.  Örneğin: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Bu URI 'yi, uygulama kaydı yeniden yönlendirme URI 'sinin bir parçası olarak bir sonraki adımda kullanacaksınız.
+Kümeniz için oturum açma URL 'SI `https://` ve ardından `publicHostName` değer olacaktır.  Örneğin: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Bu URI 'yi, uygulama kaydı yeniden yönlendirme URI 'sinin bir parçası olarak bir sonraki adımda kullanacaksınız.
 
 ## <a name="step-3-update-your-app-registration-redirect-uri"></a>3\. Adım: uygulama kaydı yeniden yönlendirme URI 'nizi güncelleştirme
 
@@ -166,7 +164,7 @@ Artık küme için oturum açma URL 'sine sahip olduğunuza göre, uygulama kayd
 1. [Uygulama kayıtları dikey penceresini](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)açın.
 2. Uygulama kayıt nesneniz ' na tıklayın.
 3. **Yeniden yönlendirme URI 'Si Ekle**' ye tıklayın.
-4. **Türün** **Web** olduğundan emin olun ve **yeniden yönlendirme URI** 'sini şu stili kullanarak ayarlayın: `https://<public host name>/oauth2callback/Azure%20AD`. Örneğin, `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+4. **Türün** **Web** olduğundan emin olun ve aşağıdaki KALıBı kullanarak **yeniden yönlendirme URI** 'sini ayarlayın: `https://<public host name>/oauth2callback/Azure%20AD`. Örneğin, `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
 5. **Kaydet**’e tıklayın
 
 ## <a name="step-4-sign-in-to-the-openshift-console"></a>4\. Adım: OpenShift konsolunda oturum açma
@@ -199,9 +197,9 @@ OpenShift konsolunda, oturum açma adınızın sağ üst köşesinde bulunan sor
 >
 > Alternatif olarak, [OC CLI](https://www.okd.io/download.html) 'yı doğrudan indirebilirsiniz.
 
-**Komut satırı araçları** sayfası `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` biçiminde bir komut sağlar.  Bu komutu kopyalamak için *Panoya Kopyala* düğmesine tıklayın.  Bir Terminal penceresinde, OC araçları yerel yüklemenizi içerecek şekilde [yolunu ayarlayın](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) . Ardından, kopyaladığınız OC CLı komutunu kullanarak kümede oturum açın.
+**Komut satırı araçları** sayfası `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`formun bir komutunu sağlar.  Bu komutu kopyalamak için *Panoya Kopyala* düğmesine tıklayın.  Bir Terminal penceresinde, OC araçları yerel yüklemenizi içerecek şekilde [yolunu ayarlayın](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) . Ardından, kopyaladığınız OC CLı komutunu kullanarak kümede oturum açın.
 
-Yukarıdaki adımları kullanarak belirteç değerini alamazsanız, belirteç değeri: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` ' dan alın.
+Yukarıdaki adımları kullanarak belirteç değerini alamazsanız, belirteç değeri: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`alın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

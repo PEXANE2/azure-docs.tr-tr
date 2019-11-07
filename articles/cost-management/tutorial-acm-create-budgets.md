@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025763"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720720"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçeleri oluşturma ve yönetme
 
@@ -36,7 +36,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Azure portal bir bütçe oluşturun
 > * Bir bütçeyi düzenleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bütçeler, çeşitli Azure hesap türleri için desteklenir. Desteklenen hesap türlerinin tam listesini görüntülemek için bkz. [maliyet yönetimi verilerini anlama](understand-cost-mgt-data.md). Bütçeleri görüntülemek için, Azure hesabınız için en azından okuma erişiminizin olması gerekir.
 
@@ -50,7 +50,7 @@ Aşağıdaki Azure izinleri veya kapsamları, Kullanıcı ve grup bütçeleri i�
 
 Maliyet yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [maliyet yönetimi verilerine erişim atama](assign-access-acm-data.md).
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 - https://portal.azure.com adresinden Azure portalında oturum açın.
 
@@ -78,7 +78,7 @@ Bütçeye şu ana kadar seçtiğiniz alanlara bağlı olarak, bütçeniz için k
 
 ![Aylık maliyet verileriyle bütçe oluşturmayı gösteren örnek ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Bütçe tutarını yapılandırdıktan sonra, bütçe uyarılarını yapılandırmak için **İleri** ' ye tıklayın. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gereklidir. İsteğe bağlı olarak, tek bir bütçede en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında, e-posta bildirimleri genellikle 20 saatten az bir sürede alınır. Bildirimler hakkında daha fazla bilgi için bkz. [kullanım maliyeti uyarıları](cost-mgt-alerts-monitor-usage-spending.md). Aşağıdaki örnekte, bütçenin% 90 ' ına ulaşıldığında bir e-posta uyarısı oluşturulur.
+Bütçe tutarını yapılandırdıktan sonra, bütçe uyarılarını yapılandırmak için **İleri** ' ye tıklayın. Bütçeler için en az bir maliyet eşiği (bütçe yüzdesi) ve buna karşılık gelen bir e-posta adresi gereklidir. İsteğe bağlı olarak, tek bir bütçede en fazla beş eşik ve beş e-posta adresi ekleyebilirsiniz. Bir bütçe eşiği karşılandığında, e-posta bildirimleri genellikle 20 saatten az bir sürede alınır. Bildirimler hakkında daha fazla bilgi için bkz. [kullanım maliyeti uyarıları](cost-mgt-alerts-monitor-usage-spending.md). Aşağıdaki örnekte, bütçenin %90 ' ına ulaşıldığında bir e-posta uyarısı oluşturulur. Bütçeler API 'SI ile bir bütçe oluşturursanız, kullanıcılara uyarı almak için roller de atayabilirsiniz. Kişilere rol atama Azure portal desteklenmez. Azure bütçeleri API 'SI hakkında daha fazla bilgi için bkz. [Bütçe API 'si](/rest/api/consumption/budgets).
 
 ![Uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -86,7 +86,7 @@ Bir bütçe oluşturduktan sonra, maliyet analizi bölümünde gösterilir. Mali
 
 ![Maliyet analizinde gösterilen örnek bütçe ve harcama](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-Yukarıdaki örnekte, abonelik için bir bütçe oluşturdunuz. Ancak, bir kaynak grubu için bir bütçe de oluşturabilirsiniz. Bir kaynak grubu için bir bütçe oluşturmak istiyorsanız, **maliyet yönetimi + faturalandırma** &gt; **abonelikleri** ' ne gidin &gt; bir abonelik > **kaynak grupları** seçin > bir kaynak grubu > **Bütçe** > seçin ve ardından Bütçe **ekleyin** .
+Yukarıdaki örnekte, abonelik için bir bütçe oluşturdunuz. Ancak, bir kaynak grubu için bir bütçe de oluşturabilirsiniz. Bir kaynak grubu için bir bütçe oluşturmak istiyorsanız, **maliyet yönetimi + faturalandırma** &gt; **abonelikler** ' e gidin &gt; bir abonelik > **kaynak grupları** seçin > Kaynak Grubu > **bütçeleri** seçin > ve ardından Bütçe **ekleyin** .
 
 ## <a name="trigger-an-action-group"></a>Bir eylem grubu tetikleyin
 
@@ -108,9 +108,11 @@ Tek bir eşik karşılandığında, bütçenizi eylem grubunuzu kullanacak şeki
 
 ![Uyarı koşulunun eylem grubu seçimini gösteren örnek](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
 
-Aşağıdaki örnek,% 50, 75% ve% 100 olarak ayarlanan bütçe eşiklerini gösterir. Her biri belirlenen eylem grubu içinde belirtilen eylemleri tetiklemek üzere yapılandırılır.
+Aşağıdaki örnek, %50, 75% ve %100 olarak ayarlanan bütçe eşiklerini gösterir. Her biri belirlenen eylem grubu içinde belirtilen eylemleri tetiklemek üzere yapılandırılır.
 
 ![Çeşitli eylem gruplarıyla ve eylem türüyle yapılandırılan uyarı koşullarını gösteren örnek](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+
+Eylem gruplarıyla bütçe tümleştirmesi yalnızca ortak uyarı şeması devre dışı olan eylem grupları için geçerlidir. Şemayı devre dışı bırakma hakkında daha fazla bilgi için, bkz [. nasıl yaparım? ortak uyarı şemasını etkinleştirmek istiyor musunuz?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

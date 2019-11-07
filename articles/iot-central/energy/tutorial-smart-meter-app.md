@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581249"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
 
@@ -29,8 +29,8 @@ Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı öl
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Önkoşullar
-- Hiçbiri
+## <a name="prerequisites"></a>Ön koşullar
+- None
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı ölçüm izleme uygulaması oluşturma 
@@ -41,8 +41,8 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
 2. **Enerji** sekmesini seçin ve **akıllı ölçüm izleme** uygulaması kutucuğunda uygulama **Oluştur** ' a tıklayın.
 
-    [!div class="mx-imgBorder"]
-    ![Build App](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    > [!div class="mx-imgBorder"]
+    > ![Build App](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
 3. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
@@ -72,25 +72,25 @@ Adatum, akıllı ölçümleri izleyen ve yöneten kurgusal bir enerji şirketidi
 * Planlama ve faturalandırma amaçlarıyla toplam enerji tüketimini izleyin
 * Yeniden bağlama ölçer ve üretici yazılımı sürümünü güncelleştir gibi komut ve denetim işlemleri. Şablonda, komut düğmeleri olası işlevleri gösterir ve gerçek komutları göndermez. 
 
-[!div class="mx-imgBorder"]
-Akıllı ölçüm izleme panosu ![](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+> [!div class="mx-imgBorder"]
+> Akıllı ölçüm izleme panosu ![](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Cihazlar
 Uygulama, örnek bir akıllı ölçüm cihazından gelir. **Cihazlar** sekmesine tıklayarak cihaz ayrıntılarını görebilirsiniz.
 
-[!div class="mx-imgBorder"]
-![akıllı ölçüm cihazları](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+> [!div class="mx-imgBorder"]
+> ![akıllı ölçüm cihazları](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Cihaz ayrıntılarını görmek için örnek cihaz **SM0123456789** bağlantısına tıklayın. Aygıtın yazılabilir özelliklerini **güncelleştirme özellikleri** sayfasında güncelleştirebilir ve panoda güncelleştirilmiş değerleri görselleştirebilirsiniz.
 
-[!div class="mx-imgBorder"]
-Akıllı Ölçüm özellikleri ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+> [!div class="mx-imgBorder"]
+> Akıllı Ölçüm özellikleri ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Cihaz şablonu
 Akıllı ölçüm cihaz modelini görmek için **cihaz şablonları** sekmesine tıklayın. Modelde veriler, özellikler, komutlar ve görünümler için önceden tanımlama arabirimi bulunur.
 
-[!div class="mx-imgBorder"]
-Akıllı ölçüm cihaz şablonlarını ![](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+> [!div class="mx-imgBorder"]
+> Akıllı ölçüm cihaz şablonlarını ![](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

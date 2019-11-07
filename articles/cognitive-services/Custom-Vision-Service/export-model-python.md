@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Python’da TensorFlow modelini çalıştırma - Özel Görüntü İşleme Hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Python’da TensorFlow modeli çalıştırın.
+description: Python’da TensorFlow modeli çalıştırın. Bu makale yalnızca Özel Görüntü İşleme hizmetindeki görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 43fbf7b13c75b9bdbaa810905ed9a25e8faa664f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898357"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718431"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Öğretici: Python’da TensorFlow modelini çalıştırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "72898357"
 > [!NOTE]
 > Bu öğretici yalnızca görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi kullanmak için aşağıdakileri yapmanız gerekir:
 

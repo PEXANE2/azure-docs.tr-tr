@@ -1,7 +1,7 @@
 ---
-title: Zenginleştirilmiş içerik tabanlı değişiklik izleme için artımlı dizin oluşturma ayarlama
+title: Zenginleştirilmiş içerik tabanlı değişiklik izleme için artımlı dizin oluşturma (Önizleme) ayarlama
 titleSuffix: Azure Cognitive Search
-description: Bilişsel Beceri 'de denetimli işleme için, değişiklik izlemeyi ve korunan içeriğin durumunu koru özelliğini etkinleştirin.
+description: Bilişsel Beceri 'de denetimli işleme için, değişiklik izlemeyi ve korunan içeriğin durumunu koru özelliğini etkinleştirin. Bu özellik şu anda genel önizleme aşamasındadır.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512190"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719932"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Azure Bilişsel Arama zenginleştirilmiş belgelerin artımlı dizin oluşturma özelliği nasıl ayarlanır
+
+> [!IMPORTANT] 
+> Artımlı dizin oluşturma şu anda genel önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API sürüm 2019-05-06-önizleme](search-api-preview.md) bu özelliği sağlar. Şu anda portal veya .NET SDK desteği yok.
 
 Bu makalede, bir Azure Bilişsel Arama zenginleştirme işlem hattı aracılığıyla taşınan belgelerde, desteklenen veri kaynaklarından herhangi birini artımlı olarak dizinlemek için durum ve önbelleğe alma işlemlerini nasıl ekleyeceğiniz gösterilir. Varsayılan olarak, bir beceri durum bilgisiz değildir ve kompozisyonunun herhangi bir bölümünü değiştirmek, dizin oluşturucunun tam yeniden çalıştırma işlemini gerektirir. Artımlı dizin oluşturma ile, Dizin Oluşturucu, işlem hattının hangi bölümlerinin değiştiğini belirleyebilir, değişmeyen parçalar için mevcut zenginleştirmelerin yeniden kullanımını ve değişiklik yapan adımlarla zenginleştirmeyi yeniden gözden verebilir. Önbelleğe alınmış içerik Azure Storage 'a yerleştirilir.
 
 Dizinleyicilerle ilgili bilgi sahibi değilseniz, [dizin oluşturucuya genel bakış](search-indexer-overview.md) ile başlayın ve ardından zenginleştirme işlem hatları hakkında bilgi edinmek için [becerileri](cognitive-search-working-with-skillsets.md) 'ye devam edin. Temel kavramlar hakkında daha fazla arka plan için bkz. [artımlı dizin oluşturma](cognitive-search-incremental-indexing-conceptual.md).
-
-Artımlı dizin oluşturma, [arama REST API-sürümü = 2019-05 -06-Preview](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)kullanılarak yapılandırılır.
-
-> [!NOTE]
-> Bu özellik portalda henüz kullanılamaz ve programlı olarak kullanılmalıdır.
->
 
 ## <a name="modify-an-existing-indexer"></a>Mevcut bir dizin oluşturucuyu değiştirme
 

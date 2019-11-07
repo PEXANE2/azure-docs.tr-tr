@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 98ebc8d9408d937730643056f65c3d8011c1fdc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493450"
+ms.locfileid: "73581574"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğren
 > * Deneme ayrıntılarını görüntüleyin.
 > * Modeli dağıtın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree)oluşturun.
 
@@ -171,18 +171,21 @@ Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en
 
 1. Sol alt köşedeki **En Iyi modeli dağıt** düğmesini seçin.
 
-1. **Dağıtım En Iyi modeli** bölmesini aşağıdaki gibi doldurun:
+1. **Model dağıt** bölmesini aşağıdaki gibi doldurun:
 
     Alan| Değer
     ----|----
     Dağıtım adı| My-Oto ml-Deploy
     Dağıtım açıklaması| İlk otomatik makine öğrenimi deneme dağıtımı
-    Puanlama betiği| Otomatik olarak açıklamalı
-    Ortam betiği| Otomatik olarak açıklamalı
+    İşlem türü | Azure Işlem örneği (acı) seçin
+    Kimlik doğrulamayı etkinleştirme| Dıı. 
+    Özel dağıtımlar kullanın| Dıı. Varsayılan sürücü dosyası (Puanlama betiği) ve ortam dosyasının yeniden oluşturulmasına izin verir. 
     
+    Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 
+
 1. **Dağıt**'ı seçin.  
 
-    **Önerilen model** bölmesinde, dağıtım tamamlandığında dağıtım **durumu** ' nun altında bir dağıtım başarı iletisi görüntülenir. Dağıtım durumunu denetlemek için düzenli aralıklarla **Yenile** ' yi seçin.
+    **Çalıştır** ekranının üst kısmında yeşil başarı iletisi görünür ve **Önerilen model** bölmesinde, **dağıtım durumu**altında bir durum iletisi görüntülenir. Dağıtım durumunu denetlemek için düzenli aralıklarla **Yenile** ' yi seçin.
     
 Artık tahminleri oluşturmak için işlemsel bir Web hizmetiniz vardır. 
 

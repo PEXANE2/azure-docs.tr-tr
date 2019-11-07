@@ -1,18 +1,18 @@
 ---
-title: Öğretici-yönetici ve Kullanıcı rollerini Azure Analysis Services yapılandırma | Microsoft Docs
-description: Azure Analysis Services rollerinin nasıl yapılandırılacağını öğrenin.
+title: Öğretici-Azure Analysis Services rollerini yapılandırma | Microsoft Docs
+description: Azure portal veya SQL Server Management Studio kullanarak Azure Analysis Services Yönetici ve Kullanıcı rollerinin nasıl yapılandırılacağını öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294422"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572365"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
@@ -27,7 +27,7 @@ ms.locfileid: "72294422"
 
 Azure Analysis Services'de kullanıcı güvenliği hakkında daha fazla bilgi edinmek için bkz: [Kimlik doğrulaması ve kullanıcı izinleri](../analysis-services-manage-users.md). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Aboneliğinizde bir Azure Active Directory.
 - Aboneliğinizde bir [Azure Analysis Services sunucusu](../analysis-services-create-server.md) oluşturmuş olmanız.
@@ -52,7 +52,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 1. SSMS > **Nesne Gezgini**'nde **Bağlan** > **Analysis Services**'e tıklayın.
 
-    ![Bağlayın](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Bağlan](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. **Sunucuya Bağlan** iletişim kutusunda, **Sunucu adı**'na portaldan kopyaladığınız sunucu adını yapıştırın. **Kimlik doğrulaması**'nda **MFA Desteğiyle Active Directory Universal**'ı seçin, sonra kullanıcı hesabınızı girin ve **Bağlan**'a basın.
    

@@ -1,6 +1,5 @@
 ---
-title: Azure IaaS VM 'lerini başka bir Azure bölgesine, Azure Site Recovery hizmetini kullanarak bölge ile sabitlenmiş VM 'Ler olarak taşıyın | Microsoft Docs
-description: Azure IaaS VM 'lerini başka bir Azure bölgesine bölge sabitlenmiş VM 'Ler olarak taşımak için Azure Site Recovery kullanın.
+title: Azure Site Recovery kullanarak VM 'Leri kullanılabilirlik alanları içeren bir Azure bölgesine taşıyın
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a9e8ddcca727c4c457e4d92a880fb0cafe5ca6f8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375736"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693192"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM 'lerini Kullanılabilirlik Alanları içine taşıyın
 Azure 'daki Kullanılabilirlik Alanları, veri merkezi hatalarından uygulamalarınızın ve verilerinizin korunmasına yardımcı olur. Her Kullanılabilirlik Alanı, bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaların ve verilerin veri merkezi hatalarından korunmasını sağlar. Azure, Kullanılabilirlik Alanları ile sanal makinelerin (VM) çalışma süresi için% 99,99 ' lik bir hizmet düzeyi sözleşmesi (SLA) sunmaktadır. Kullanılabilirlik Alanları, [Azure 'da kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)olarak bahsedildiği gibi, seçme bölgelerinde desteklenir.
@@ -45,7 +44,7 @@ Sanal makinelerinizin belirli bir bölgeye *tek bir örnek* olarak dağıtıldı
 1. Site Recovery kullanarak bunları bir kullanılabilirlik bölgesine taşımak istiyorsanız sanal makinelerinizin yönetilen diskleri kullanması gerekir. Yönetilmeyen diskleri kullanan mevcut Windows VM 'lerini yönetilen diskleri kullanmak üzere dönüştürebilirsiniz. [Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)bölümündeki adımları izleyin. Kullanılabilirlik kümesinin *yönetilen*olarak yapılandırıldığından emin olun.
 2. Taşımak istediğiniz Azure VM 'lerinde en son kök sertifikaların mevcut olup olmadığını denetleyin. En son kök sertifikalar mevcut değilse, hedef bölgeye veri kopyalama güvenlik kısıtlamaları nedeniyle etkinleştirilemez.
 
-3. Windows VM’ler için, güvenilir kök sertifikaların tamamı makinede mevcut olacak şekilde sanal makineye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme süreçlerini izleyin.
+3. Windows VM'lerde, güvenilen kök sertifikaların tamamı makinede mevcut olacak şekilde, VM’ye en son Windows güncelleştirmelerinin tümünü yükleyin. Bağlantısı kesilmiş bir ortamda, kuruluşunuz için standart Windows Update ve sertifika güncelleştirme süreçlerini izleyin.
 
 4. Linux sanal makineleri için, VM 'deki en son güvenilen kök sertifikaları ve sertifika iptal listesini almak için Linux dağıtıcısının sunduğu yönergeleri izleyin.
 5. Taşımak istediğiniz VM 'Ler için ağ bağlantısını denetlemek üzere bir kimlik doğrulama proxy 'si kullandığınızdan emin olun.
@@ -90,7 +89,7 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
 
     ![Hedef bölgenin seçimi](media/azure-vms-to-zones/enable-rep-1.PNG)
 
-4. İleri **' yi seçin: Gelişmiş ayarlar**.
+4. **İleri ' yi seçin: Gelişmiş ayarlar**.
 5. Hedef abonelik, hedef VM kaynak grubu ve sanal ağ için uygun değerleri seçin.
 6. **Kullanılabilirlik** bölümünde, sanal makineyi taşımak Istediğiniz kullanılabilirlik bölgesini seçin. 
    > [!NOTE]
@@ -115,8 +114,8 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
 2. **Yük devretme testi** simgesini seçin.
 3. Yük **devretme testi**bölümünde, yük devretme için kullanılacak bir kurtarma noktası seçin:
 
-   - **En son işlenen**: VM 'yi, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük kurtarma süresi hedefi (RTO) elde edilir.
-   - **En son uygulamayla tutarlı**: Bu seçenek, tüm VM 'Lerin üzerinde en son uygulamayla tutarlı kurtarma noktasına devredildi. Zaman damgası gösterilir.
+   - **En son işlenen**: VM’nin yükünü, Site Recovery hizmeti tarafından işlenen en son kurtarma noktasına devreder. Zaman damgası gösterilir. Bu seçenekle veri işlemeye zaman harcanmadığından düşük kurtarma süresi hedefi (RTO) elde edilir.
+   - **En son uygulamayla tutarlı**: Bu seçenekte tüm VM yükü, uygulamayla tutarlı en son kurtarma noktasına devredilir. Zaman damgası gösterilir.
    - **Özel**: Herhangi bir kurtarma noktası seçin.
 
 3. Yapılandırmayı sınamak için Azure VM 'lerini taşımak istediğiniz test hedefi Azure sanal ağını seçin. 
@@ -124,8 +123,8 @@ Aşağıdaki adımlar, verilerin hedef bölgeye çoğaltılmasını sağlamak i�
     > [!IMPORTANT]
     > VM 'lerinizi taşımak istediğiniz hedef bölgede üretim ağı değil, test hatası için ayrı bir Azure VM ağı kullanmanızı öneririz.
 
-4. Taşımayı test etmeye başlamak için **Tamam**' ı seçin. İlerlemeyi izlemek için VM 'yi seçerek özelliklerini açın. Ya da, **Yük devretme testi** işini kasa adı > **Ayarlar** > **işler** > **Site Recovery işler**' de seçebilirsiniz.
-5. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. VM’nin çalıştığından, uygun şekilde boyutlandırıldığından ve uygun ağa bağlı olduğundan emin olun.
+4. Taşımayı test etmeye başlamak için **Tamam**' ı seçin. İlerlemeyi izlemek için VM 'yi seçerek özelliklerini açın. Ya da kasa adı ' nda **Yük devretme testi** işini seçebilirsiniz > **ayarlar** > **işler** > **Site Recovery işleri**.
+5. Yük devretme işlemi tamamlandıktan sonra çoğaltma Azure sanal makinesi, Azure portalı > **Sanal Makineler** bölümünde görüntülenir. VM’nin çalıştığından, uygun şekilde boyutlandırıldığından ve uygun ağa bağlı olduğundan emin olun.
 6. Taşımayı test etme işleminin bir parçası olarak oluşturulan VM 'yi silmek istiyorsanız, çoğaltılan öğedeki **Yük devretme testini temizle** ' yi seçin. **Notlar**' da, testle ilişkili tüm gözlemlerinizi kaydedin ve kaydedin.
 
 ## <a name="move-to-the-target-region-and-confirm"></a>Hedef bölgeye gidin ve onaylayın

@@ -1,18 +1,18 @@
 ---
-title: Öğretici - Power BI Desktop ile Azure Analysis Services'e bağlanma | Microsoft Docs
+title: Öğretici-Power BI Desktop ile Azure Analysis Services bağlama | Microsoft Docs
 author: minewiskan
-description: Power BI Desktop Azure Analysis Services nasıl bağlanacağınızı öğrenin.
+description: Azure portal Analysis Services sunucu adı almayı ve sonra Power BI Desktop kullanarak sunucuya bağlanmayı öğrenin.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294478"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572328"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop ile bağlanma
 
@@ -23,7 +23,7 @@ Bu öğreticide, Power BI Desktop'u kullanarak sunucunuzdaki örnek adventurewor
 > * Power BI Desktop kullanarak bağlanma
 > * Temel bir rapor oluşturma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sunucunuza [örnek adventureworks model veritabanını ekleyin](../analysis-services-create-sample-model.md).
 - Örnek adventureworks model veritabanı üzerinde [*okuma*](../analysis-services-server-admins.md) izinlerine sahip olun.

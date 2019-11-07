@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/31/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 1f423fcb4de22747d6fccfdfd360d8d8909ea7d8
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6bd78d68e8273989ae1a11011d2759c70d916276
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200813"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581340"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>Fedrampa orta şema örneğini dağıtma
 
@@ -122,7 +122,7 @@ Fedrampa orta şema örneğini dağıtma adımlarını gözden geçirdiğinize g
 > [Fedratin orta şeması-genel bakış](./index.md)
 > [Fedrampa orta şeması-denetim eşleme](./control-mapping.md)
 
-Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
+Planlar ve bunların nasıl kullanılacağı hakkında ek makaleler:
 
 - [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.

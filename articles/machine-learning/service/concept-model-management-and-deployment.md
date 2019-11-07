@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497435"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716606"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Azure Machine Learning modelleri yönetin, dağıtın ve izleyin
 
@@ -126,7 +126,7 @@ Daha fazla bilgi için bkz. [modelleri dağıtma](how-to-deploy-and-where.md).
 Microsoft Power BI, veri analizi için makine öğrenimi modellerinin kullanılmasını destekler. Daha fazla bilgi için bkz. [Power BI Azure Machine Learning Tümleştirme (Önizleme)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>İşletimsel ve ML ile ilgili sorunlar için ML uygulamalarını izleyin
+## <a name="monitor-for-operational--ml-issues"></a>İşlemsel & ML sorunlarını izleme
 
 İzleme, modelinize hangi verilerin gönderildiğini ve döndürdüğü tahminleri anlamanıza olanak sağlar.
 
@@ -135,7 +135,7 @@ Bu bilgiler, modelinizin nasıl kullanıldığını anlamanıza yardımcı olur.
 Daha fazla bilgi için bkz. [model veri toplamayı etkinleştirme](how-to-enable-data-collection.md).
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>ML yaşam döngüsünün uçtan uca denetim izini yakalayın
+## <a name="audit-trail-of-the-ml-lifecycle"></a>ML yaşam döngüsünün denetim izi
 
 Azure ML, tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı sunar. Bu avantajlar şunlardır:
 
@@ -144,7 +144,7 @@ Azure ML, tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı 
 - Azure ML çalışma geçmişi, bir modeli eğitmek için kullanılan kodun, verilerin ve işlemin bir anlık görüntüsünü depolar.
 - Azure ML modeli kayıt defteri, modelinizle ilişkili tüm meta verileri yakalar (Bu, dağıtımları, dağıtımı sağlıklı ise, dağıtıldığı yerde).
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>Uçtan uca ML yaşam döngüsünü otomatikleştirin 
+## <a name="automate-the-ml-lifecycle"></a>ML yaşam döngüsünü otomatikleştirin 
 
 Bir modeli gösteren bir sürekli tümleştirme işlemi oluşturmak için GitHub ve Azure Pipelines kullanabilirsiniz. Tipik bir senaryoda, bir veri Bilimconu bir proje için git deposunda değişiklik denetlediğinde, Azure işlem hattı bir eğitim çalıştırması başlatır. Daha sonra, eğitilen modelin performans özelliklerini görmek için çalıştırmanın sonuçları incelenebilir. Ayrıca, modeli bir Web hizmeti olarak dağıtan bir işlem hattı da oluşturabilirsiniz.
 
@@ -157,8 +157,18 @@ Azure Machine Learning ile Azure Pipelines kullanma hakkında daha fazla bilgi i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning ile [modelleri nasıl dağıtabileceğiniz](how-to-deploy-and-where.md) hakkında daha fazla bilgi edinin. Dağıtım örneği için bkz. [öğretici: görüntü sınıflandırma modelini Azure Container Instances dağıtma](tutorial-deploy-models-with-aml.md).
+Aşağıdaki kaynakları okuyarak ve inceleyerek daha fazla bilgi edinin:
 
-[Azure Pipelines Ile ml modellerinin sürekli tümleştirme ve dağıtımı](/azure/devops/pipelines/targets/azure-machine-learning)oluşturmayı öğrenin. 
++ Azure Machine Learning ile [modellerin dağıtılacağı konum &](how-to-deploy-and-where.md)
 
-[Web hizmeti olarak dağıtılan bir modeli](how-to-consume-web-service.md)kullanan istemci uygulamaları ve Hizmetleri oluşturmayı öğrenin.
++ [Öğretici: ACI 'de görüntü sınıflandırma modeli dağıtın](tutorial-deploy-models-with-aml.md).
+
++ [Uçtan uca MLOps örnekleri deposu](https://github.com/microsoft/MLOps)
+
++ [Azure Pipelines ile ML modellerinin CI/CD 'si](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ [Dağıtılan bir modeli](how-to-consume-web-service.md) kullanan istemciler oluşturma
+
++ [Uygun ölçekte makine öğrenimi](/architecture/data-guide/big-data/machine-learning-at-scale)
+
++ [Azure AI başvuru mimarileri & en iyi yöntemler temsilcisi](https://github.com/microsoft/AI)

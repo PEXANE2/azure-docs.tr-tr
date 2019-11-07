@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496484"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720017"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Bilişsel Arama Service REST API-sürüm 2019-05-06-Önizleme
 
@@ -25,20 +25,27 @@ Bu makalede, arama hizmeti REST API 'ın `api-version=2019-05-06-Preview` sürü
 
 ## <a name="new-in-2019-05-06-preview"></a>2019-05-06 içinde yeni-önizleme
 
-[* * Artımlı Dizin](cognitive-search-incremental-indexing-conceptual.md) oluşturma işlemi, veri, Dizin Oluşturucu ve beceri tanımları değişmeden olduğunda var olan çıktıyı yeniden kullanmanıza olanak tanıyan bir dizin oluşturma için durum ve önbelleğe alma için yeni bir moddur. Bu özellik Bilişsel Beceri aracılığıyla yalnızca zenginleştirme için geçerlidir.
++ [Artımlı Dizin](cognitive-search-incremental-indexing-conceptual.md) oluşturma işlemi, kaynak verileri, Dizin Oluşturucu ve beceri tanımları değişirken var olan çıktıyı yeniden kullanmanıza olanak sağlayan dizin oluşturma için yeni bir moddur. Bu özellik yalnızca Bilişsel Beceri tanımlanan zenginleştirmeleri için geçerlidir.
 
-[**Bilgi deposu**](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Bir dizine ek olarak, Azure depolama 'da dizin oluşturma sırasında oluşturulan doldurulmuş veri yapılarını artık kalıcı hale getirebilirsiniz. Verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını, yoksa birden çok görünüm mi olduğunu da kapsayan, verilerinizin fiziksel yapılarını bir beceri öğeleri aracılığıyla kontrol edersiniz.
++ [Cosmos DB Dizin Oluşturucu](search-howto-index-cosmosdb.md) MongoDB API 'Si, Gremlin apı ve Cassandra API destekler.
 
-Hizmet tarafı şifreleme için [**müşteri tarafından yönetilen şifreleme anahtarları**](search-security-manage-encryption-keys.md) Ayrıca yeni bir önizleme özelliğidir. Microsoft tarafından yönetilen yerleşik şifrelemeye ek olarak, anahtarların tek sahibi olduğunuz sırada ek bir şifreleme katmanı da uygulayabilirsiniz.
++ [Azure Data Lake Storage 2. Indexer](search-howto-index-azure-data-lake-storage.md) Data Lake Storage 2. içerik ve meta verileri dizinedebilir.
 
-## <a name="other-preview-features"></a>Diğer Önizleme özellikleri
++ [Belge ayıklama (Önizleme)](cognitive-search-skill-document-extraction.md) , dizin oluşturma sırasında kullanılan bilişsel bir beceriye sahiptir ve bir dosyanın içeriğini bir beceri içinden ayıklamanızı sağlar. Daha önce belge çözme yalnızca beceri yürütmeden önce oluşmuştur. Bu beceriye ek olarak, bu işlemi beceri yürütme içinde de gerçekleştirebilirsiniz.
+
++ [Metin çevirisi (Önizleme)](cognitive-search-skill-text-translation.md) , dizinleme sırasında metin değerlendiren ve her kayıt için belirtilen hedef dile çevrilen metni döndüren bilişsel bir yetenküldür.
+
++ [Bilgi deposu](knowledge-store-concept-intro.md) , bir AI tabanlı zenginleştirme işlem hattının yeni bir hedefi. Fiziksel veri yapısı Azure Blob depolama ve Azure Tablo depolamada bulunur ve ekli bilişsel beceri sahip bir Dizin Oluşturucu çalıştırdığınızda oluşturulur ve doldurulur. Bilgi deposunun kendisi tanımı bir beceri tanımı içinde belirtilir. Bilgi deposu tanımı içinde, verilerin nasıl şekillendirilmiş olduğunu, verilerin tablo depolama veya blob depolama alanında mi depolandığını ve birden çok görünüm olup olmadığını belirten *projeksiyon* öğeleri aracılığıyla verilerinizin fiziksel yapılarını kontrol edersiniz.
+
++ Hizmet tarafı şifreleme için [müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) Ayrıca yeni bir önizleme özelliğidir. Microsoft tarafından yönetilen yerleşik şifrelemeye ek olarak, anahtarların tek sahibi olduğunuz sırada ek bir şifreleme katmanı da uygulayabilirsiniz.
+
+## <a name="earlier-preview-features"></a>Önceki Önizleme özellikleri
 
 Önceki önizlemelerde duyurulan Özellikler hala genel önizlemede. Önceki bir Preview API sürümü ile bir API 'yi arıyorsanız, bu sürümü kullanmaya devam edebilir veya beklenen davranışa hiçbir değişiklik yapmadan `2019-05-06-Preview` geçebilirsiniz.
 
 + [Morelikethis sorgu parametresi](search-more-like-this.md) , belirli bir belgeyle ilgili belgeleri bulur. Bu özellik daha önceki önizlemelerde yer aldı. 
-* [CSV blobu dizin oluşturma](search-howto-index-csv-blobs.md) , her metin blobu için bir belge yerine her satır için bir belge oluşturur.
-* [Cosmos DB Dizin oluşturucular Için MongoDB API desteği](search-howto-index-cosmosdb.md) önizlemededir.
 
++ [CSV blobu dizin oluşturma](search-howto-index-csv-blobs.md) , her metin blobu için bir belge yerine her satır için bir belge oluşturur.
 
 ## <a name="how-to-call-a-preview-api"></a>Önizleme API 'sini çağırma
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: b408d2cc0754cc1f2dd8671d037d4f9d348e883b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c560c7e298dabbb5a3c31d90e0d48d0d63cfac5f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581512"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonunu oluşturun ve ilerleyin 
 
@@ -30,8 +30,8 @@ Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar pane
 
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Önkoşullar
-- Hiçbiri
+## <a name="prerequisites"></a>Ön koşullar
+- None
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 
@@ -43,8 +43,8 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
 2. **Enerji** sekmesini seçin ve sonra da **güneş paneli izleme** uygulaması kutucuğunda **uygulama oluştur** ' a tıklayın. 
 
-    [!div class="mx-imgBorder"]
-    ![Build App](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    > [!div class="mx-imgBorder"]
+    > ![Build App](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
 3. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
     * **Uygulama adı**: IoT Central uygulamanız için bir ad seçin. 
@@ -72,27 +72,27 @@ Adatum, Solar bölmelerini izleyen ve yöneten kurgusal bir enerji şirketidir. 
 * Planlama ve faturalandırma amaçlarıyla toplam enerji üretimini izleyin
 * Etkinleştirme paneli ve bellenim sürümünü güncelleştirme gibi komut ve denetim işlemleri. Şablonda, komut düğmeleri olası işlevleri gösterir ve gerçek komutları göndermez.
 
-[!div class="mx-imgBorder"]
-![Solar paneli izleme panosu](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+> [!div class="mx-imgBorder"]
+> ![Solar paneli izleme panosu](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Cihazlar
 Uygulama bir örnek Solar Panel aygıtıyla birlikte gelir. **Cihazlar** sekmesine tıklayarak cihaz ayrıntılarını görebilirsiniz.
 
-[!div class="mx-imgBorder"]
-![Solar Panel cihazları](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+> [!div class="mx-imgBorder"]
+> ![Solar Panel cihazları](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
 
 Cihaz ayrıntılarını görmek için örnek cihaz **SP0123456789** bağlantısına tıklayın. **Güncelleştirme özellikleri** sayfasında, cihazın yazılabilir özelliklerini güncelleştirebilir ve panoda güncelleştirilmiş değerleri görselleştirebilirsiniz. 
 
-[!div class="mx-imgBorder"]
-![Solar paneli özellikleri](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+> [!div class="mx-imgBorder"]
+> ![Solar paneli özellikleri](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Cihaz şablonu
 Güneş paneli cihaz modelini görmek için **cihaz şablonları** sekmesine tıklayın. Modelde veriler, özellikler, komutlar ve görünümler için önceden tanımlama arabirimi bulunur.
 
-[!div class="mx-imgBorder"]
-![Solar paneli cihaz şablonu](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+> [!div class="mx-imgBorder"]
+> ![Solar paneli cihaz şablonu](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -101,8 +101,8 @@ Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağ�
 1. Sol bölmeden Yönetim sekmesini açın
 2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
 
-    [!div class="mx-imgBorder"]
-    ![uygulama](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) Sil
+    > [!div class="mx-imgBorder"]
+    > ![uygulama](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) Sil
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

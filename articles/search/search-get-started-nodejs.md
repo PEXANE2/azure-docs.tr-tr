@@ -2,19 +2,19 @@
 title: "Hızlı başlangıç: REST API 'Leri kullanarak Node. js içinde arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama için Node. js örneği, nasıl oluşturma, veri yükleme ve JavaScript 'ten sorgu yapma.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787438"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719996"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Node. js ' de Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Bir Azure Bilişsel Arama dizini oluşturan, yükleyen ve sorgulayan bir Node. j
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki hizmetler, Araçlar ve veriler bu hızlı başlangıçta kullanılır.
 
@@ -58,7 +58,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Tüm istekler, hizmetinize gönderilen her isteğin üstbilgisinde bir API anahtarı gerektirir. Geçerli bir anahtar, istek başına, isteği gönderen uygulama ve onu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-environment"></a>Ortamınızı kurma
+## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
 Bir PowerShell konsolunu veya Node. js ' yi yüklediğiniz başka bir ortamı açarak başlayın.
 
@@ -450,7 +450,7 @@ run();
 
 `run()`için son çağrıyı unutmayın! Bir sonraki adımda `node index.js` çalıştırdığınızda programınızın giriş noktasıdır.
 
-`AzureSearchClient.indexExistsAsync()` ve `AzureSearchClient.deleteIndexAsync()` parametre almaz. Bu işlevler, `bodyJson` bağımsız değişken olmadan `AzureSearchClient.request()` çağırır. `AzureSearchClient.request()`içinde `bodyJson === null` `true`olduğu için `init` yapısı yalnızca HTTP fiili ("GET" ve `indexExistsAsync()` için "SIL") olarak ayarlanmıştır ve bu da istek anahtarını belirten üst bilgiler.  
+`AzureSearchClient.indexExistsAsync()` ve `AzureSearchClient.deleteIndexAsync()` parametre almaz. Bu işlevler, `bodyJson` bağımsız değişken olmadan `AzureSearchClient.request()` çağırır. `AzureSearchClient.request()`içinde `bodyJson === null` `true`olduğu için `init` yapısı yalnızca HTTP fiili ("GET" ve `indexExistsAsync()` için "SIL") olarak ayarlanmıştır ve bu da istek anahtarını belirten üst bilgiler.`deleteIndexAsync()`  
 
 Buna karşılık _`AzureSearchClient.createIndexAsync(indexDefinition)` yöntemi bir_ parametre alır. `index.js``run` işlevi, **hotels_quickstart_index. JSON** dosyasının içeriğini `AzureSearchClient.createIndexAsync(indexDefinition)` yöntemine geçirir. `createIndexAsync()` yöntemi bu tanımı `AzureSearchClient.request()`geçirir. `AzureSearchClient.request()`, `bodyJson === null` artık `false`olduğundan `init` yapısı yalnızca HTTP fiili ("PUT") ve üst bilgileri değil, `body` dizin tanım verilerine ayarlar.
 
@@ -680,7 +680,7 @@ Programı `node index.js`çalıştırın. Şimdi, önceki adımlara ek olarak so
 
 Örnek, Azure Bilişsel Arama Dizin oluşturma ve sorgulama hakkında temel bilgileri göstermek için yeterli miktarda otel verisi kullanır.
 
-**AzureSearchClient** sınıfı, arama hizmeti için yapılandırma, URL 'ler ve temel http isteklerini kapsar. **İndex. js** dosyası, Azure bilişsel arama hizmeti için yapılandırma verilerini, dizin oluşturma için karşıya yüklenecek otel verilerini ve bu durumda `run` işlevini, siparişlerini ve çeşitli işlemleri yürüten bir şekilde yükler.
+**AzureSearchClient** sınıfı, arama hizmeti için yapılandırma, URL 'ler ve temel http isteklerini kapsar. **İndex. js** dosyası, Azure bilişsel arama hizmeti için yapılandırma verilerini, dizin oluşturma için karşıya yüklenecek otel verilerini ve `run` işlevinde, siparişlerde ve çeşitli işlemleri yürüten şekilde yükler.
 
 `run` işlevinin genel davranışı, varsa Azure Bilişsel Arama dizinini silmek, dizini oluşturmak, bazı verileri eklemek ve bazı sorgular gerçekleştirmek için kullanılır.  
 

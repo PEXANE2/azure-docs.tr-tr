@@ -1,5 +1,5 @@
 ---
-title: Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanının güvenliğini sağlama | Microsoft Docs
+title: Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 description: Azure SQL veritabanı 'nda tek veya havuza alınmış bir veritabanının güvenliğini sağlamaya yönelik teknikler ve özellikler hakkında size öğreten bir öğretici.
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,16 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231195"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687424"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>Öğretici: Tek veya havuza alınmış bir veritabanının güvenliğini sağlama
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Öğretici: tek veya havuza alınmış bir veritabanının güvenliğini sağlama
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > - Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları oluşturma
@@ -42,7 +42,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğine genel b
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)hakkında bilgi edinmenize yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
 
@@ -50,7 +50,7 @@ Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı güvenliğine genel b
 - Azure SQL Server ve veritabanı
   - [Azure Portal](sql-database-single-database-get-started.md), [CLI](sql-database-cli-samples.md)veya [PowerShell](sql-database-powershell-samples.md) ile oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -193,7 +193,7 @@ Azure Active Directory kimlik doğrulaması, veritabanı kullanıcılarının ka
 > Örneğin, *SQL Server katkıda bulunan* rolü bir veritabanına veya veri ambarına bağlanmak için erişim vermez. Bu izin, T-SQL deyimleri kullanılarak veritabanı içinde verilmelidir.
 
 > [!IMPORTANT]
-> T `:` -SQL `&` `CREATE LOGIN` ve deyimlerdekikullanıcıadlarındaikinoktaveyaampersangibiözelkarakterlerdesteklenmez.`CREATE USER`
+> T-SQL `CREATE LOGIN` ve `CREATE USER` deyimlerinin kullanıcı adlarında, iki nokta üst üste `:` veya ve işareti `&` gibi özel karakterler desteklenmez.
 
 Azure AD kimlik doğrulamasıyla bir kullanıcı eklemek için:
 
@@ -201,14 +201,14 @@ Azure AD kimlik doğrulamasıyla bir kullanıcı eklemek için:
 
 1. **Nesne Gezgini**, veritabanına sağ tıklayın ve **Yeni sorgu**' yı seçin.
 
-1. Sorgu penceresinde, aşağıdaki komutu girin ve Azure AD kullanıcısının asıl `<Azure_AD_principal_name>` adına veya Azure AD grubunun görünen adına değiştirin:
+1. Sorgu penceresinde, aşağıdaki komutu girin ve `<Azure_AD_principal_name>` Azure AD kullanıcısının asıl adına veya Azure AD grubunun görünen adına değiştirin:
 
    ```sql
    CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
    ```
 
 > [!NOTE]
-> Azure AD kullanıcıları, gruplar için tür `E (EXTERNAL_USER)` ve tür `X (EXTERNAL_GROUPS)` ile veritabanı meta verilerinde işaretlenir. Daha fazla bilgi için bkz. [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> Azure AD kullanıcıları, tür `E (EXTERNAL_USER)` ile veritabanı meta verilerinde işaretlenir ve gruplar için `X (EXTERNAL_GROUPS)` yazın. Daha fazla bilgi için bkz. [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ### <a name="secure-connection-strings"></a>Güvenli bağlantı dizeleri
 
@@ -334,7 +334,7 @@ Veri maskeleme 'yi etkinleştirmek için:
     ![Saydam Veri Şifrelemesi](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Şifreleme durumunu görüntülemek için [SSMS](./sql-database-connect-query-ssms.md) kullanarak veritabanına bağlanın ve `encryption_state` [sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) görünümünün sütununu sorgulayın. Durumu, veritabanının `3` şifrelendiğini gösterir.
+> Şifreleme durumunu görüntülemek için [SSMS](./sql-database-connect-query-ssms.md) kullanarak veritabanına bağlanın ve [sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) görünümünün `encryption_state` sütununu sorgulayın. `3` durumu veritabanının şifrelendiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
