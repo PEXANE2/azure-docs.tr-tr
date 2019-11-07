@@ -2,7 +2,6 @@
   href: index.yml
 - name: Mimari ve tasarım
   href: overview.md
-  expanded: false
   items:
     - name: Bulutta paylaşılan sorumluluk
       href: shared-responsibility.md
@@ -23,6 +22,7 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Güvenliğe yönelik teknik özellikler
       href: technical-capabilities.md
+  expanded: false
 - name: Veri güvenliği ve şifreleme
   href: encryption-overview.md
   items:
@@ -128,19 +128,6 @@
         - name: Uzaktan yönetim güvenliği
           href: management.md
         - name: Azure günlük tümleştirmesi
-          items:
-            - name: Giriş
-              href: azure-log-integration-overview.md
-            - name: Başlarken
-              href: azure-log-integration-get-started.md
-            - name: Azure AD denetim günlüklerini tümleştirme
-              displayName: active directory
-              href: azure-log-integration-ad.md
-            - name: Key Vault’tan günlükleri tümleştirme
-              displayName: keyvault
-              href: azure-log-integration-keyvault-eventhub.md
-            - name: SSS
-              href: azure-log-integration-faq.md
     - name: İşletimsel güvenlik
       href: operational-overview.md
       items:
